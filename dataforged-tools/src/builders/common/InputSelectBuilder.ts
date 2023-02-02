@@ -5,7 +5,7 @@ import { InputType } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
 import { badJsonError } from '@utils/logging/badJsonError.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

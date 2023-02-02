@@ -1,5 +1,5 @@
 import { YamlRowContentItem, YamlRowRoll, YamlSimpleTableRow } from '@schema'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Extracts the first two elements (floor and ceiling) of a raw row array.

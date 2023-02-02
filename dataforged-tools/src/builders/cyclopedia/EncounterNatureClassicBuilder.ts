@@ -3,7 +3,7 @@ import type { Display, EncounterClassic, EncounterNatureClassic, Source, YamlEnc
 import { Game } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Represents the metadata describing an *Ironsworn* encounter's nature; used as a category to contain all Encounters of that type.

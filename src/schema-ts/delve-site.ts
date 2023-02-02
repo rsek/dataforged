@@ -1,7 +1,7 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 
 const definitions: Record<string, JSONSchema7Definition> = {
-  definitions: {
+
     DelveSite: {
       type: 'object',
       required: [
@@ -678,6 +678,6 @@ const definitions: Record<string, JSONSchema7Definition> = {
       ]
     }
   }
-}
+
 
 export default definitions

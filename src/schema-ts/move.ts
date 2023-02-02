@@ -1,6 +1,6 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { DF_KEY } from 'src/schema-ts/id.js'
-import { dfRecordSchema } from 'src/schema-ts/utils.js'
+import { DF_KEY } from './id'
+import { dfRecordSchema } from './utils'
 
 export const MoveExtension: JSONSchema7Definition = {
   title: 'MoveExtension',

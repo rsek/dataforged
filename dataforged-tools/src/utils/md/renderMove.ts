@@ -1,5 +1,5 @@
 import type { Move } from '@schema'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * It renders a move.

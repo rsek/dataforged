@@ -1,7 +1,7 @@
 import { AssetTypeBuilder } from '@builders/assets/AssetTypeBuilder.js'
 import { RootCollectionBuilder } from '@builders/RootCollectionBuilder'
 import type { AssetType, Game, Source, YamlAssetRoot, YamlAssetType } from '@schema'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 export class AssetTypeCollection<G extends Game> extends RootCollectionBuilder<G, AssetType, YamlAssetType, YamlAssetRoot> {
   buildItem (item: YamlAssetType, key: string): AssetType {

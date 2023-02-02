@@ -1,5 +1,5 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { DF_KEY } from 'src/schema-ts/id.js'
+import { DF_KEY } from './id'
 
 export function dfRecordSchema (itemSchema: string, title: string = itemSchema + 's'): JSONSchema7Definition {
   return {

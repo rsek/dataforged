@@ -1,6 +1,6 @@
 import { buildLog } from '@utils/logging/buildLog.js'
 import { JSONPath, JSONPathOptions } from 'jsonpath-plus'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 interface JpResult<T> {
   'value': T

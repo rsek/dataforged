@@ -5,7 +5,7 @@ import { buildLog } from '@utils/logging/buildLog.js'
 import { concatWithYamlRefs } from '@utils/yaml/concatWithYamlRefs.js'
 import type { YamlTruthRootClassic, YamlTruthRootStarforged } from '@schema'
 import { existsSync } from 'fs'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * It takes the YAML files that contain the setting truths, and builds a list of SettingTruth objects

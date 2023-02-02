@@ -2,7 +2,7 @@ import { InputBuilder, MoveBuilder } from '@builders'
 import type { Asset, AssetAbility, Game, InputClock, InputNumber, InputSelect, InputText, InputToggle, Move, YamlAssetAbility } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

@@ -1,5 +1,5 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { DF_KEY } from 'src/schema-ts/id'
+import { DF_KEY } from './id'
 
 const definitions: Record<string, JSONSchema7Definition> = {
   CustomStat: {

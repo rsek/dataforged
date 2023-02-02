@@ -3,7 +3,7 @@ import type { OracleTableBuilder } from '@builders'
 import type { NodeLike } from '@builders/NodeBuilder.js'
 import type { Display, GameObject, ImageUrl, MultipleRolls, OracleContent, OracleTable, OracleTableRow, Raster, RollTemplate, Suggestions, Vector, YamlOracleTableRow, YamlRowLike, YamlSimpleTableRow } from '@schema'
 import { badJsonError } from '@utils/logging/badJsonError.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 type RangeString = `${number}` | `${number}-${number}` | `null${number}`
 

@@ -2,7 +2,7 @@ import { DisplayBuilder, MoveBuilder, SourceBuilder, TitleBuilder } from '@build
 import type { Display, Game, Move, MoveCategory, Source, Title, YamlMoveCategory } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

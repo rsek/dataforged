@@ -11,7 +11,7 @@ import metadata from './metadata'
 import move from './move'
 import progressTrack from './progress-track'
 import truth from './truth'
-import { NamespaceClassic, NamespaceStarforged } from 'src/schema-ts/namespace.js'
+import { NamespaceClassic, NamespaceStarforged } from './namespace'
 
 const schema: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',

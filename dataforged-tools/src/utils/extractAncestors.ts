@@ -1,5 +1,5 @@
 import type { MixinId } from '@schema'
-import { inRange } from 'lodash-es'
+import { inRange } from 'lodash'
 
 /**
  * Infers the ancestor IDs of a Dataforged ID.

@@ -2,7 +2,7 @@ import type { OracleTableBuilder } from '@builders'
 import { Game } from '@schema'
 import type { GameDataRoot, Ironsworn, Starforged } from '@schema'
 import { JSONPath } from 'jsonpath-plus'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Extracts statistics on Ironsworn game data.

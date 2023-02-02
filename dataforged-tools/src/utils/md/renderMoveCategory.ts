@@ -1,6 +1,6 @@
 import type { MoveCategory } from '@schema'
 import { renderMove } from '@utils/md/renderMove.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * It takes a MoveCategory and returns a string that is a markdown list of all the moves in that

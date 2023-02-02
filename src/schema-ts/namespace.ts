@@ -1,6 +1,6 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { merge } from 'lodash-es'
-import { dfRecordSchema } from 'src/schema-ts/utils.js'
+import { merge } from 'lodash'
+import { dfRecordSchema } from './utils'
 
 /**
  * Schemas common to both classic Ironsworn and Starforged.

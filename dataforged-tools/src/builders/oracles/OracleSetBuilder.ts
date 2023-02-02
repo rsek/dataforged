@@ -4,7 +4,7 @@ import { OracleBuilder, OracleSetDisplayBuilder, OracleTableBuilder } from '@bui
 import type { OracleSet, OracleSetDisplay, OracleTable, YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { propagateToChildren } from '@utils/object_transform/propagateToChildren.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

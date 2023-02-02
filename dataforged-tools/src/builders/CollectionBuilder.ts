@@ -3,7 +3,7 @@ import type { MASTER_DATA_PATH } from '@constants'
 import type { Game, MixinId, MixinSource, Source, YamlDataRoot } from '@schema'
 import { formatId } from '@utils'
 import { buildLog } from '@utils/logging/buildLog.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ConstructorOf<T> = new (...args: any[]) => T

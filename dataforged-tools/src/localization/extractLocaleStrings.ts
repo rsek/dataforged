@@ -3,7 +3,7 @@ import type { MixinId, MixinLocalizable } from '@schema'
 import { LocalizableKey } from '@schema'
 import yaml from 'js-yaml'
 import { JSONPath } from 'jsonpath-plus'
-import _ from 'lodash-es'
+import _ from 'lodash'
 import fs from 'fs'
 
 import datasworn from '../json/ironsworn/datasworn.json' assert {type: 'json'}

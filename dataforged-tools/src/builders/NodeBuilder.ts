@@ -1,7 +1,7 @@
 import type { MixinLocalizable, MixinSource, Source } from '@schema'
 import { LocalizableKey } from '@schema'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 export interface NodeLike<TJsonOut> extends MixinSource, Partial <MixinLocalizable > {
   $id: string

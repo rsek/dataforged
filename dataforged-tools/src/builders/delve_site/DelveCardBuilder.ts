@@ -3,7 +3,7 @@ import { DelveCardType, Game } from '@schema'
 import type { DelveCard, DelveSiteDomain, DelveSiteTheme, OracleTableRow, Source, Title, YamlDelveCard, YamlDelveSiteDomain, YamlDelveSiteTheme, YamlRowLike } from '@schema'
 import type { PartialBy } from '@utils'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 const domainFeaturesStatic: PartialBy<OracleTableRow, '$id'>[] = [
   {

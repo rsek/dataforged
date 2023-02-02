@@ -1,7 +1,7 @@
 import type { OracleTableBuilder, OracleSetBuilder } from '@builders'
 import type { OracleSet } from '@schema'
 import { findById } from '@utils/md/findById.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * It replaces all the links to the moves.md file with the correct link.

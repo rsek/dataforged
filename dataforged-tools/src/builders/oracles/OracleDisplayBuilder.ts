@@ -2,7 +2,7 @@ import { DisplayBuilder } from '@builders'
 import type { OracleDisplayBase, OracleSet, OracleSetDisplay, OracleTable, OracleTableDisplay, OracleTableRow, TableColumnRoll, TableColumnText, YamlOracleDisplayBase, YamlOracleSetDisplay, YamlOracleTableDisplay } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

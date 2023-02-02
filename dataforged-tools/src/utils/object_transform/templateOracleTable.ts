@@ -2,7 +2,7 @@
 import { YamlOracleTable, YamlSimpleTableRow, YamlTemplateTable } from '@schema'
 import { extractRowContent } from '@utils/object_transform/extractRowContent.js'
 import { extractRowRolls } from '@utils/object_transform/extractRowRolls.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Given a table template object, extract the rolls and content into separate arrays and combine them into a single table.

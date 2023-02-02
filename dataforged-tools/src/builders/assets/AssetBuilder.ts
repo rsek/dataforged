@@ -5,7 +5,7 @@ import { formatId } from '@utils'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 import { buildLog } from '@utils/logging/buildLog.js'
 import { replaceInAllStrings } from '@utils/object_transform/replaceInAllStrings.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

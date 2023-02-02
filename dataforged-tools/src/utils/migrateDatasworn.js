@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs'
 import * as yaml from 'js-yaml'
-import * as _ from 'lodash-es'
+import * as _ from 'lodash'
 
 const rawData = readFileSync('./src/data/ironsworn/ironsworn_moves.json', 'utf-8')
 const json = JSON.parse(rawData)

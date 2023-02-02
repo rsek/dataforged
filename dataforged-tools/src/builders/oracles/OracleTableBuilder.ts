@@ -4,7 +4,7 @@ import { OracleBuilder, OracleContentBuilder, OracleTableDisplayBuilder, OracleT
 import type { OracleContent, OracleTable, OracleTableDisplay, OracleTableRow, YamlOracleTable, YamlRowLike } from '@schema'
 import type { AttributeMap } from '@utils'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

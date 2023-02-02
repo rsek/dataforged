@@ -2,7 +2,7 @@ import { YamlOracleSet, YamlOracleSetTemplate, YamlOracleTable, YamlOracleTableT
 import { buildLog } from '@utils/logging/buildLog.js'
 import { replaceInAllStrings } from '@utils/object_transform/replaceInAllStrings.js'
 
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * It takes an oracle metadata template and builds it out with variables from a json object.

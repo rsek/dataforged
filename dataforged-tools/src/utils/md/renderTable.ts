@@ -1,6 +1,6 @@
 import { lengthOfLongest } from '@utils/md/longestLength.js'
 import { transpose2dArray } from '@utils/md/transpose2dArray.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Renders an object array as a markdown table.

@@ -1,7 +1,7 @@
 import { AlterMoveOutcomesBuilder, MoveTriggerBuilder } from '@builders'
 import type { AlterMove, AlterMoveOutcomes, AssetAbility, Move, MoveTrigger, YamlAlterMove } from '@schema'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

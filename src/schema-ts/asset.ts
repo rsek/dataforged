@@ -1,5 +1,5 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { DF_KEY } from 'src/schema-ts/id.js'
+import { DF_KEY } from './id'
 
 export const AssetAbilityBase: JSONSchema7Definition = {
   type: 'object',

@@ -2,89 +2,1617 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Schema definitions used for Datasworn and Dataforged (v2+).",
   "definitions": {
-    "OracleRowLike": {
-      "type": "object",
-      "required": [
-        "floor",
-        "ceiling"
-      ],
-      "properties": {
-        "floor": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 100
+    "Impact.ID": {
+      "$comment": "{namespace}/impacts/{impactType}/{impact}",
+      "type": "string",
+      "pattern": "^$"
+    },
+    "PlayerConditionMeter.ID": {
+      "description": "A standard player character condition meter.",
+      "enum": [
+        "player/condition_meters/health",
+        "player/condition_meters/spirit",
+        "player/condition_meters/supply"
+      ]
+    },
+    "PlayerStat.ID": {
+      "description": "A standard player character stat.",
+      "enum": [
+        "player/stats/edge",
+        "player/stats/heart",
+        "player/stats/iron",
+        "player/stats/shadow",
+        "player/stats/wits"
+      ]
+    },
+    "AssetAbility.ID": {
+      "type": "string",
+      "pattern": "^$"
+    },
+    "Move.ID": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CoreMove.ID"
         },
-        "ceiling": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 100
+        {
+          "$ref": "#/definitions/AssetMove.ID"
+        }
+      ]
+    },
+    "DataforgedNamespace": {
+      "type": "string",
+      "pattern": "^$"
+    },
+    "ID": {
+      "type": "string",
+      "pattern": "^/[a-z0-9][a-z0-9_]*[a-z0-9]/(/[a-z0-9][a-z0-9_]*[a-z0-9])+$",
+      "description": "A unique, human-readable ID."
+    },
+    "MoveCategory.ID": {
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "CoreMove.ID": {
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "AssetType.ID": {
+      "$comment": "{namespace}/assets/{assetType}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "Asset.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "{namespace}/assets/{assetType}/{asset}",
+      "pattern": "^$"
+    },
+    "AssetMove.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "{namespace}/assets/{assetType}/{asset}/moves/{assetMove}",
+      "pattern": "^$"
+    },
+    "DelveSiteTheme.ID": {
+      "$comment": "{namespace}/site_themes/{siteTheme}",
+      "pattern": "^$"
+    },
+    "DelveSiteDomain.ID": {
+      "$comment": "{namespace}/site_domains/{siteDomain}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "IronlandsRegion.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "{namespace}/regions/{region}",
+      "pattern": "^$"
+    },
+    "OracleSet.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "{namespace}/oracles/{oracleSet}"
+    },
+    "OracleTable.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "{namespace}/oracles/{oracleSet}/{oracle}",
+      "pattern": "^/[a-z0-9][a-z0-9_]*[a-z0-9]//oracles(//[a-z][a-z_]*[a-z]/){2,}$"
+    },
+    "EncounterNatureClassic.ID": {
+      "$comment": "{namespace}/encounters/{nature}"
+    },
+    "EncounterClassic.ID": {
+      "$comment": "{namespace}/encounters/{nature}/{encounter}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "EncounterVariantStarforged.ID": {
+      "$comment": "{namespace}/encounters/{encounter}/variants/{variant}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "EncounterStarforged.ID": {
+      "$comment": "{namespace}/encounters/{encounter}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "Rarity.ID": {
+      "$comment": "{namespace}/rarities/{rarity}",
+      "$ref": "#/definitions/ID",
+      "pattern": "^$"
+    },
+    "Attribute.ID": {
+      "$ref": "#/definitions/ID",
+      "$comment": "\n      {namespace}/assets/{key}/{key}/attributes/{key}\n        *or*\n      {namespace}/assets/{key}/{key}/moves/{key}/attributes/{key}\n        *or*\n      {namespace}/moves/{key}/{key}/attributes/{key}\n      ",
+      "pattern": "/(assets/[a-z_]+/[a-z_]+(/moves/[a-z_]+)?|moves/[a-z_]+/[a-z_]+)/attributes/[a-z_]+$",
+      "anyOf": [
+        {
+          "pattern": "^$"
+        },
+        {
+          "pattern": "^$"
+        },
+        {
+          "pattern": "^$"
+        }
+      ]
+    },
+    "AssetAbilityBase": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "text": {
+          "description": "The rules text for this asset ability.",
+          "$ref": "#/definitions/LocalizedMarkdown"
+        },
+        "attachments": {
+          "description": "Details on what attachments (other assets) are accepted by this asset.",
+          "$comment": "#/definitions/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?"
+        },
+        "attributes": {
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/AttributeNumericOverride"
+                },
+                {
+                  "$comment": "New condition meters require an ID.",
+                  "oneOf": [
+                    {
+                      "$ref": "#/definitions/AttributeConditionMeter"
+                    },
+                    {
+                      "$ref": "#/definitions/AttributeCounter"
+                    },
+                    {
+                      "$ref": "#/definitions/AttributeText"
+                    },
+                    {
+                      "$ref": "#/definitions/AttributeClock"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "moves": {
+          "description": "Unique, self-contained moves added by this asset ability.",
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/Move"
+            }
+          }
+        },
+        "alter_moves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MoveExtensionBase"
+          }
+        },
+        "alter_player": {
+          "$ref": "#/definitions/PlayerExtension"
+        },
+        "_id": {
+          "$ref": "#/definitions/AssetAbility.ID"
+        },
+        "enabled": {
+          "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
+          "type": "boolean",
+          "default": false
         }
       }
     },
-    "DelveSiteDenizenRarity": {
-      "enum": [
-        "very_common",
-        "common",
-        "uncommon",
-        "rare",
-        "unforeseen"
-      ]
-    },
-    "DelveSiteDenizen": {
-      "type": "object",
+    "AssetAbility": {
+      "title": "AssetAbility",
+      "description": "Describes an asset ability.",
       "allOf": [
         {
-          "$ref": "#/definitions/OracleRowLike"
+          "$ref": "#/definitions/AssetAbilityBase"
         },
         {
           "required": [
-            "rarity",
-            "encounter"
+            "text"
           ],
           "properties": {
-            "name": {
-              "description": "A name for the encounter, if it differs from the original entry's default name.",
+            "alter_moves": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MoveExtension"
+              }
+            },
+            "extend_abilities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AssetAbilityExtension"
+              }
+            },
+            "text": {
+              "$ref": "#/definitions/AssetAbilityBase/properties/text"
+            }
+          }
+        }
+      ]
+    },
+    "AssetAbilityExtension": {
+      "description": "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AssetAbilityBase"
+        },
+        {
+          "required": [
+            "_ability"
+          ],
+          "properties": {
+            "_ability": {
+              "description": "The ID of the asset ability to be extended.",
+              "$ref": "#/definitions/AssetAbility.ID"
+            }
+          }
+        }
+      ]
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID",
+          "pattern": "^[a-z_]+/assets/[a-z_]+/[a-z_]+$"
+        },
+        "attributes": {
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/Attribute"
+            }
+          }
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "abilities": {
+          "type": "array",
+          "additionalItems": false,
+          "items": [
+            {
+              "$ref": "#/definitions/AssetAbility"
+            },
+            {
+              "$ref": "#/definitions/AssetAbility"
+            },
+            {
+              "$ref": "#/definitions/AssetAbility"
+            }
+          ]
+        },
+        "requirement": {
+          "description": "A markdown string representing the requirement text that appears at the top of some asset cards.",
+          "$ref": "#/definitions/LocalizedMarkdown"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "attachments": {
+          "description": "Details on what attachments (other assets) are accepted by this asset.",
+          "$comment": "#/definitions/AssetAttachment"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "examples": [
+              "animal_companion",
+              "beast_companion",
+              "biological_companion",
+              "deed",
+              "ironlander_companion",
+              "mechanical_companion"
+            ],
+            "type": "string"
+          }
+        },
+        "usage": {
+          "$comment": "#/definitions/AssetUsage",
+          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
+        }
+      },
+      "required": [
+        "abilities",
+        "name"
+      ],
+      "not": {
+        "required": [
+          "inputs"
+        ],
+        "properties": {
+          "inputs": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "AssetExtension": {
+      "title": "AssetExtension",
+      "description": "Extends/alters existing assets data",
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Asset.ID"
+          }
+        }
+      }
+    },
+    "AssetType": {
+      "title": "AssetType",
+      "type": "object",
+      "allOf": [
+        {
+          "title": "AssetType",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CategoryMetadata"
+            },
+            {
+              "required": [
+                "assets",
+                "description",
+                "title"
+              ],
+              "properties": {
+                "assets": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "patternProperties": {
+                    "^[a-z][a-z_]*[a-z]$": {
+                      "$ref": "#/definitions/Asset"
+                    }
+                  }
+                },
+                "description": {
+                  "$ref": "#/definitions/Description"
+                },
+                "source": {
+                  "$ref": "#/definitions/Source"
+                },
+                "title": {
+                  "$ref": "#/definitions/Title"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "$ref": "#/definitions/CategoryMetadata"
+        },
+        {
+          "required": [
+            "assets",
+            "description",
+            "title"
+          ],
+          "properties": {
+            "assets": {
+              "type": "object",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "$ref": "#/definitions/Asset"
+                }
+              }
+            },
+            "description": {
+              "$ref": "#/definitions/Description"
+            },
+            "source": {
+              "$ref": "#/definitions/Source"
+            },
+            "title": {
+              "$ref": "#/definitions/Title"
+            }
+          }
+        }
+      ]
+    },
+    "AssetTypeExtension": {
+      "title": "AssetTypeExtension",
+      "description": "Extends a canonical asset type with additional assets.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "_extends",
+        "assets"
+      ],
+      "properties": {
+        "_extends": {
+          "type": "string",
+          "pattern": "^(starforged|ironsworn)/assets/[a-z][a-z_+]*[a-z]$",
+          "examples": [
+            "ironsworn/assets/companion",
+            "ironsworn/assets/path",
+            "ironsworn/assets/combat_talent",
+            "ironsworn/assets/ritual",
+            "starforged/assets/command_vehicle",
+            "starforged/assets/module",
+            "starforged/assets/support_vehicle",
+            "starforged/assets/path",
+            "starforged/assets/companion",
+            "starforged/assets/deed"
+          ]
+        },
+        "assets": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/Asset"
+            }
+          }
+        }
+      }
+    },
+    "AssetTypes": {
+      "title": "AssetTypes",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z][a-z_]*[a-z]$": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AssetTypeExtension"
+            },
+            {
+              "$ref": "#/definitions/AssetType"
+            }
+          ]
+        }
+      }
+    },
+    "ConditionMeterAlias": {
+      "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
+      "enum": [
+        "companion_health",
+        "vehicle_integrity",
+        "command_vehicle_integrity",
+        "support_vehicle_integrity",
+        "incidental_vehicle_integrity",
+        "attached_asset_meter"
+      ]
+    },
+    "ConditionMeterType": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/PlayerConditionMeter.ID"
+        },
+        {
+          "$ref": "#/definitions/ConditionMeterAlias"
+        }
+      ]
+    },
+    "OracleTableRoll": {
+      "description": "Parameters for an oracle table roll.",
+      "required": [
+        "table"
+      ],
+      "properties": {
+        "table": {
+          "$ref": "#/definitions/OracleTable.ID"
+        },
+        "times": {
+          "description": "The number of times to roll",
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        },
+        "allow_duplicates": {
+          "description": "TODO",
+          "type": "boolean",
+          "default": false
+        },
+        "make_it_worse": {
+          "description": "TODO",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "OracleTableRow": {
+      "type": "object",
+      "required": [
+        "result",
+        "ceiling"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "floor": {
+              "description": "The high end of the dice range for this table row.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "ceiling": {
+              "description": "The low end of the dice range for this table row.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        },
+        {
+          "properties": {
+            "floor": {
+              "type": "null"
+            },
+            "ceiling": {
+              "type": "null"
+            }
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "floor": {
+          "description": "The low end of the dice range for this table row."
+        },
+        "ceiling": {
+          "description": "The high end of the dice range for this table row."
+        },
+        "result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.",
+          "$ref": "#/definitions/LocalizedMarkdown"
+        },
+        "summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/Summary"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "template": {
+          "description": "TODO",
+          "examples": [],
+          "type": "object",
+          "properties": {
+            "result": {
+              "$ref": "#/definitions/LocalizedTemplateString"
+            },
+            "summary": {
+              "$ref": "#/definitions/LocalizedTemplateString"
+            },
+            "description": {
+              "$ref": "#/definitions/LocalizedTemplateString"
+            }
+          }
+        },
+        "rolls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OracleTableRoll"
+          }
+        },
+        "suggestions": {
+          "$ref": "#/definitions/Suggestions"
+        },
+        "render": {
+          "$ref": "#/definitions/RenderMetadata"
+        }
+      }
+    },
+    "OracleTable": {
+      "required": [
+        "table"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "_id": {},
+        "sets": {
+          "title": "OracleSets",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleSet"
+            }
+          }
+        },
+        "tables": {
+          "title": "OracleTables",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleTable"
+            }
+          }
+        },
+        "sample_names": {
+          "description": "A list of sample names for this oracle set. Only used by Planets.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "content": {},
+        "match": {
+          "title": "OracleMatchBehaviour",
+          "type": "object",
+          "properties": {
+            "_id": {
+              "$ref": "#/definitions/ID"
+            },
+            "text": {
+              "$ref": "#/definitions/LocalizedMarkdown"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "text"
+          ]
+        },
+        "requires": {
+          "title": "OracleRequirements",
+          "type": "object"
+        },
+        "render": {
+          "title": "OracleTableRenderMetadata",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RenderMetadata"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "columns": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "oneOf": [
+                      {
+                        "$comment": "#/definitions/TableColumnRoll"
+                      },
+                      {
+                        "$comment": "#/definitions/TableColumnText"
+                      }
+                    ]
+                  }
+                },
+                "column_of": {
+                  "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+                  "type": "string"
+                },
+                "embed_in": {
+                  "description": "This table is displayed as embedded in a row of another table.",
+                  "type": "string"
+                },
+                "source": {
+                  "$ref": "#/definitions/Source"
+                }
+              }
+            }
+          ]
+        },
+        "table": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OracleTableRow"
+          }
+        }
+      },
+      "title": "OracleSet",
+      "type": "object",
+      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
+      "additionalProperties": false
+    },
+    "OracleSet": {
+      "required": [
+        "table"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "_id": {},
+        "sets": {
+          "title": "OracleSets",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleSet"
+            }
+          }
+        },
+        "tables": {
+          "title": "OracleTables",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleTable"
+            }
+          }
+        },
+        "sample_names": {
+          "description": "A list of sample names for this oracle set. Only used by Planets.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "content": {},
+        "match": {
+          "title": "OracleMatchBehaviour",
+          "type": "object",
+          "properties": {
+            "_id": {
+              "$ref": "#/definitions/ID"
+            },
+            "text": {
+              "$ref": "#/definitions/LocalizedMarkdown"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "text"
+          ]
+        },
+        "requires": {
+          "title": "OracleRequirements",
+          "type": "object"
+        },
+        "render": {
+          "title": "OracleTableRenderMetadata",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RenderMetadata"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "columns": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "oneOf": [
+                      {
+                        "$comment": "#/definitions/TableColumnRoll"
+                      },
+                      {
+                        "$comment": "#/definitions/TableColumnText"
+                      }
+                    ]
+                  }
+                },
+                "column_of": {
+                  "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+                  "type": "string"
+                },
+                "embed_in": {
+                  "description": "This table is displayed as embedded in a row of another table.",
+                  "type": "string"
+                },
+                "source": {
+                  "$ref": "#/definitions/Source"
+                }
+              }
+            }
+          ]
+        },
+        "table": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OracleTableRow"
+          }
+        }
+      },
+      "title": "OracleSet",
+      "type": "object",
+      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
+      "additionalProperties": false
+    },
+    "OracleContentMetadata": {
+      "type": "object",
+      "description": "Metadata that describes an oracle's semantic or lexical content.",
+      "additionalProperties": false,
+      "properties": {
+        "part_of_speech": {
+          "description": "The part of speech of this oracle.",
+          "type": "array",
+          "items": {
+            "examples": [
+              "adjective",
+              "common_noun",
+              "compound_noun",
+              "fragment",
+              "name",
+              "noun",
+              "plural",
+              "possessive_case",
+              "proper_noun",
+              "proper_noun_fragment",
+              "sentences",
+              "verb"
+            ],
+            "type": "string"
+          }
+        },
+        "tags": {
+          "description": "Any arbitrary string tags associated with this oracle.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PlayerConditionMeterName": {
+      "enum": [
+        "health",
+        "spirit",
+        "supply"
+      ]
+    },
+    "PlayerStat": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/PlayerStat.ID"
+        },
+        "value": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        }
+      }
+    },
+    "PlayerCharacter": {
+      "description": "Schema used by both classic and Starforged characters",
+      "properties": {
+        "stats": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/PlayerStat"
+            }
+          }
+        },
+        "condition_meters": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/AttributeConditionMeter"
+            }
+          }
+        },
+        "momentum": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "integer",
+              "const": -6
+            },
+            "max": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 10,
+              "minimum": -6
+            },
+            "value": {
+              "type": "integer",
+              "default": 2,
+              "minimum": -6,
+              "maximum": 10
+            },
+            "resetValue": {
+              "type": "integer",
+              "default": 2,
+              "maximum": 10,
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "PlayerExtension": {
+      "title": "PlayerExtension",
+      "description": "Alters an attribute intrinsic to the player, such as a stat or condition meter.",
+      "type": "object"
+    },
+    "CustomStat": {
+      "type": "object",
+      "required": [
+        "label",
+        "options"
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "options": {
+          "title": "CustomStatOptions",
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "title": "CustomStatOption",
+              "type": "object",
+              "required": [
+                "label",
+                "value"
+              ],
+              "properties": {
+                "label": {
+                  "$ref": "#/definitions/LocalizedLabel"
+                },
+                "value": {
+                  "description": "The numeric value to be used as +stat when making an Action Roll.",
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "InputPosition": {
+      "title": "InputPosition",
+      "enum": [
+        "card-top",
+        "card-back",
+        "card-bottom",
+        "ability-1-right",
+        "ability-2-right",
+        "ability-3-right",
+        "ability-1-bottom",
+        "ability-2-bottom",
+        "ability-3-bottom"
+      ],
+      "type": "string"
+    },
+    "Attribute": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/AttributePlayerStat"
+        },
+        {
+          "$ref": "#/definitions/AttributePlayerConditionMeter"
+        },
+        {
+          "$ref": "#/definitions/AttributeText"
+        },
+        {
+          "$ref": "#/definitions/AttributeImpact"
+        },
+        {
+          "$ref": "#/definitions/AttributeConditionMeter"
+        }
+      ]
+    },
+    "AttributeClock": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeNumericBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "min",
+            "value",
+            "max"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "clock"
+            },
+            "min": {
+              "const": 0
+            },
+            "value": {
+              "default": 0
+            },
+            "max": {
+              "title": "ClockSegments",
+              "type": "integer",
+              "multipleOf": 2,
+              "minimum": 4,
+              "maximum": 10
+            }
+          }
+        }
+      ]
+    },
+    "AttributeConditionMeter": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeNumericBase"
+        },
+        {
+          "required": [
+            "label",
+            "position",
+            "attribute_type",
+            "min",
+            "value",
+            "max"
+          ],
+          "properties": {
+            "label": {
               "$ref": "#/definitions/LocalizedLabel"
             },
-            "rarity": {
-              "$ref": "#/definitions/DelveSiteDenizenRarity"
+            "position": {
+              "const": "card-bottom"
             },
-            "encounter": {
-              "default": null,
+            "attribute_type": {
+              "const": "condition_meter"
+            },
+            "value": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            },
+            "min": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "AttributePlayerConditionMeter": {
+      "description": "A select element with predefined options to pick a standard player character condition meter.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "value",
+            "options",
+            "position"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "player_condition_meter"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "description": "The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
               "oneOf": [
                 {
-                  "$ref": "#/definitions/IDEncounterClassic"
+                  "type": "null"
                 },
                 {
-                  "type": "null"
+                  "$ref": "#/definitions/PlayerConditionMeter.ID"
                 }
+              ],
+              "default": null
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "$ref": "#/definitions/LocalizedLabel"
+                    },
+                    "value": {
+                      "$ref": "#/definitions/PlayerConditionMeter.ID"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AttributeText": {
+      "description": "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "position",
+            "value"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "text"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "default": null
+            }
+          }
+        }
+      ]
+    },
+    "AttributePlayerStat": {
+      "description": "An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type",
+            "position",
+            "value",
+            "options"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "player_stat"
+            },
+            "position": {
+              "default": "card-top"
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/definitions/PlayerStat.ID"
+                }
+              ],
+              "default": null
+            },
+            "options": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "$ref": "#/definitions/LocalizedLabel"
+                    },
+                    "value": {
+                      "$ref": "#/definitions/PlayerStat.ID"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "AttributeSetter": {
+      "propertyNames": {
+        "$ref": "#/definitions/Attribute.ID"
+      },
+      "patternProperties": {
+        "^.*$": {
+          "$ref": "#/definitions/PlayerStat.ID"
+        }
+      }
+    },
+    "AttributeNumericType": {
+      "type": "string",
+      "enum": [
+        "condition_meter",
+        "clock",
+        "counter"
+      ]
+    },
+    "AttributeCounter": {
+      "allOf": [
+        {
+          "$ref": "#definitions/AttributeNumericBase"
+        },
+        {
+          "properties": {
+            "attribute_type": {
+              "const": "counter"
+            },
+            "min": {
+              "type": "integer",
+              "default": 0
+            },
+            "max": {
+              "type": [
+                "null",
+                "integer"
+              ],
+              "default": null
+            },
+            "value": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        }
+      ]
+    },
+    "AttributeNumericBase": {
+      "description": "Schema from which other numeric attributes are derived. Shouldn't be used directly.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "min",
+            "max",
+            "value",
+            "attribute_type"
+          ],
+          "properties": {
+            "attribute_type": {
+              "$ref": "#/definitions/AttributeNumericType"
+            },
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "value": {
+              "type": [
+                "integer",
+                "null"
               ]
             }
           }
         }
       ]
     },
-    "IDEncounterClassic": {
-      "$comment": "{namespace}/encounters/{nature}/{encounter}",
-      "type": "string",
-      "pattern": "^[a-z][a-z_+]*[a-z]/encounters/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
-    },
-    "IDEncounterStarforged": {
-      "$comment": "{namespace}/encounters/{encounter} or {namespace}/encounters/{encounter}/variants/{variant}",
-      "type": "string"
-    },
-    "License": {
-      "description": "The URI pointing to the license which this item's *text* content falls under. If this is null, no license is specified -- use with caution.",
-      "type": [
-        "string",
-        "null"
+    "AttributeNumericOverride": {
+      "description": "Adjusts an existing numeric input, usually a condition meter",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "_extends"
       ],
-      "format": "uri",
-      "default": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-      "examples": [
-        "https://creativecommons.org/licenses/by-nc-sa/4.0",
-        "https://creativecommons.org/licenses/by/4.0"
+      "properties": {
+        "_extends": {
+          "$ref": "#/definitions/Attribute.ID"
+        },
+        "min": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        },
+        "value": {
+          "type": "integer"
+        }
+      }
+    },
+    "AttributeImpact": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AttributeBase"
+        },
+        {
+          "required": [
+            "attribute_type"
+          ],
+          "properties": {
+            "attribute_type": {
+              "const": "impact"
+            }
+          }
+        }
       ]
+    },
+    "AttributeBase": {
+      "type": "object",
+      "required": [
+        "attribute_type",
+        "position",
+        "label"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/Attribute.ID"
+        },
+        "label": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "position": {
+          "$ref": "#/definitions/InputPosition"
+        },
+        "attribute_type": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AttributeNumericType"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "player_stat",
+                "player_condition_meter",
+                "impact",
+                "text"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "RegionEntry": {
+      "type": "object",
+      "required": [
+        "quest_starter",
+        "features",
+        "summary",
+        "description"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocalizedMarkdown"
+          }
+        },
+        "quest_starter": {
+          "$ref": "#/definitions/QuestStarter"
+        }
+      },
+      "description": "Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/EncounterStub"
+        },
+        {
+          "required": [
+            "drives",
+            "tactics"
+          ],
+          "properties": {
+            "drives": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizedMarkdown"
+              }
+            },
+            "tactics": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizedMarkdown"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EncounterStub": {
+      "required": [
+        "rank",
+        "name",
+        "description",
+        "nature"
+      ],
+      "properties": {
+        "rank": {
+          "$ref": "#/definitions/ChallengeRank"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizableLabel"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "nature": {
+          "type": "string"
+        }
+      }
+    },
+    "Encounter": {
+      "type": "object",
+      "required": [
+        "quest_starter",
+        "features",
+        "summary",
+        "description"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocalizedMarkdown"
+          }
+        },
+        "quest_starter": {
+          "$ref": "#/definitions/QuestStarter"
+        }
+      },
+      "description": "Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/EncounterStub"
+        },
+        {
+          "required": [
+            "drives",
+            "tactics"
+          ],
+          "properties": {
+            "drives": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizedMarkdown"
+              }
+            },
+            "tactics": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizedMarkdown"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EncounterClassic": {
+      "title": "EncounterClassic",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encounter"
+        },
+        {
+          "properties": {
+            "nature": {
+              "$ref": "#/definitions/EncounterTypeClassic"
+            }
+          }
+        }
+      ]
+    },
+    "EncounterStarforged": {
+      "title": "EncounterStarforged",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encounter"
+        },
+        {
+          "properties": {
+            "nature": {
+              "$ref": "#/definitions/EncounterTypeStarforged"
+            },
+            "variants": {
+              "title": "EncounterVariantsStarforged",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "$ref": "#/definitions/EncounterVariantStarforged"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EncounterVariantStarforged": {
+      "title": "EncounterVariantStarforged",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encounter"
+        },
+        {
+          "properties": {
+            "nature": {
+              "$ref": "#/definitions/EncounterTypeStarforged"
+            }
+          }
+        }
+      ]
+    },
+    "EncounterTypeStarforged": {
+      "title": "EncounterTypeStarforged",
+      "type": "string",
+      "examples": [
+        "creature",
+        "horror",
+        "human",
+        "machine",
+        "monster",
+        "vehicle"
+      ]
+    },
+    "EncounterTypeClassic": {
+      "title": "EncounterTypeClassic",
+      "type": "string",
+      "examples": [
+        "Ironlander",
+        "firstborn",
+        "animal",
+        "beast",
+        "horror",
+        "anomaly"
+      ]
+    },
+    "EncounterNatureClassic": {
+      "title": "EncounterNatureClassic",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "nature": {
+          "$ref": "#/definitions/EncounterTypeClassic"
+        }
+      }
     },
     "DelveSite": {
       "type": "object",
@@ -107,10 +1635,10 @@
           "$ref": "#/definitions/ChallengeRank"
         },
         "theme": {
-          "$ref": "#/definitions/IDDelveSiteTheme"
+          "$ref": "#/definitions/DelveSiteTheme.ID"
         },
         "domain": {
-          "$ref": "#/definitions/IDDelveSiteDomain"
+          "$ref": "#/definitions/DelveSiteDomain.ID"
         },
         "denizens": {
           "type": "array",
@@ -285,11 +1813,6 @@
         }
       }
     },
-    "IDRarity": {
-      "$comment": "{namespace}/{rarities}/{name}",
-      "type": "string",
-      "pattern": "^[a-z][a-z_+]*[a-z]/rarities/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
-    },
     "Rarity": {
       "type": "object",
       "additionalProperties": false,
@@ -302,7 +1825,7 @@
       ],
       "properties": {
         "_id": {
-          "$ref": "#/definitions/IDRarity"
+          "$ref": "#/definitions/Rarity.ID"
         },
         "name": {
           "$ref": "#/definitions/LocalizedLabel"
@@ -311,7 +1834,7 @@
           "$ref": "#/definitions/Icon"
         },
         "asset": {
-          "$ref": "#/definitions/IDAsset"
+          "$ref": "#/definitions/Asset.ID"
         },
         "source": {
           "$ref": "#/definitions/Source"
@@ -326,1288 +1849,48 @@
         }
       }
     },
-    "NamespaceKey": {
-      "description": "The name of the dataset, used as a key in the root data object and to compose Dataforged's string IDs. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
-      "type": "string",
-      "pattern": "^[a-z0-9][a-z0-9_+]*[a-z0-9]$",
-      "examples": [
-        "starforged",
-        "ironsworn",
-        "ironsworn_delve",
-        "sundered_isles"
-      ]
-    },
-    "Color": {
-      "type": "string",
-      "pattern": "^#([\\dA-f]{2}){3}$"
-    },
-    "IDAttribute": {
-      "type": "string",
-      "pattern": "^[a-z_]+/(assets/[a-z_]+/[a-z_]+(/moves/[a-z_]+)?|moves/[a-z_]+/[a-z_]+)/attributes/[a-z_]+$"
-    },
-    "AttributeSetter": {
-      "propertyNames": {
-        "$ref": "#/definitions/IDAttribute"
-      },
-      "patternProperties": {
-        "^.*$": {
-          "$ref": "#/definitions/IDPlayerStat"
-        }
-      }
-    },
-    "AttributeNumericType": {
-      "type": "string",
+    "DelveSiteDenizenRarity": {
       "enum": [
-        "condition_meter",
-        "clock",
-        "counter"
+        "very_common",
+        "common",
+        "uncommon",
+        "rare",
+        "unforeseen"
       ]
     },
-    "AttributeCounter": {
-      "allOf": [
-        {
-          "$ref": "#definitions/AttributeNumericBase"
-        },
-        {
-          "properties": {
-            "attribute_type": {
-              "const": "counter"
-            },
-            "min": {
-              "type": "integer",
-              "default": 0
-            },
-            "max": {
-              "type": [
-                "null",
-                "integer"
-              ],
-              "default": null
-            },
-            "value": {
-              "type": "integer",
-              "default": 0
-            }
-          }
-        }
-      ]
-    },
-    "AttributeNumericBase": {
-      "description": "Schema from which other numeric attributes are derived. Shouldn't be used directly.",
+    "DelveSiteDenizen": {
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/AttributeBase"
+          "$ref": "#/definitions/OracleRowLike"
         },
         {
           "required": [
-            "min",
-            "max",
-            "value",
-            "attribute_type"
+            "rarity",
+            "encounter"
           ],
           "properties": {
-            "attribute_type": {
-              "$ref": "#/definitions/AttributeNumericType"
-            },
-            "min": {
-              "type": "integer"
-            },
-            "max": {
-              "type": [
-                "integer",
-                "null"
-              ]
-            },
-            "value": {
-              "type": [
-                "integer",
-                "null"
-              ]
-            }
-          }
-        }
-      ]
-    },
-    "AttributeNumericOverride": {
-      "description": "Adjusts an existing numeric input, usually a condition meter",
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "_extends"
-      ],
-      "properties": {
-        "_extends": {
-          "$ref": "#/definitions/IDAttribute"
-        },
-        "min": {
-          "type": "integer"
-        },
-        "max": {
-          "type": "integer"
-        },
-        "value": {
-          "type": "integer"
-        }
-      }
-    },
-    "AttributeImpact": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeBase"
-        },
-        {
-          "required": [
-            "attribute_type"
-          ],
-          "properties": {
-            "attribute_type": {
-              "const": "impact"
-            }
-          }
-        }
-      ]
-    },
-    "AttributeBase": {
-      "type": "object",
-      "required": [
-        "attribute_type",
-        "position",
-        "label"
-      ],
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDAttribute"
-        },
-        "label": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "position": {
-          "$ref": "#/definitions/InputPosition"
-        },
-        "attribute_type": {
-          "oneOf": [
-            {
-              "$ref": "#/definitions/AttributeNumericType"
-            },
-            {
-              "type": "string",
-              "enum": [
-                "player_stat",
-                "player_condition_meter",
-                "impact",
-                "text"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "PlayerConditionMeterName": {
-      "enum": [
-        "health",
-        "spirit",
-        "supply"
-      ]
-    },
-    "AttributeClock": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeNumericBase"
-        },
-        {
-          "required": [
-            "attribute_type",
-            "min",
-            "value",
-            "max"
-          ],
-          "properties": {
-            "attribute_type": {
-              "const": "clock"
-            },
-            "min": {
-              "const": 0
-            },
-            "value": {
-              "default": 0
-            },
-            "max": {
-              "title": "ClockSegments",
-              "type": "integer",
-              "multipleOf": 2,
-              "minimum": 4,
-              "maximum": 10
-            }
-          }
-        }
-      ]
-    },
-    "AttributeConditionMeter": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeNumericBase"
-        },
-        {
-          "required": [
-            "label",
-            "position",
-            "attribute_type",
-            "min",
-            "value",
-            "max"
-          ],
-          "properties": {
-            "label": {
+            "name": {
+              "description": "A name for the encounter, if it differs from the original entry's default name.",
               "$ref": "#/definitions/LocalizedLabel"
             },
-            "position": {
-              "const": "card-bottom"
+            "rarity": {
+              "$ref": "#/definitions/DelveSiteDenizenRarity"
             },
-            "attribute_type": {
-              "const": "condition_meter"
-            },
-            "value": {
-              "type": "integer"
-            },
-            "max": {
-              "type": "integer"
-            },
-            "min": {
-              "const": 0
-            }
-          }
-        }
-      ]
-    },
-    "AttributePlayerConditionMeter": {
-      "description": "A select element with predefined options to pick a standard player character condition meter.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeBase"
-        },
-        {
-          "required": [
-            "attribute_type",
-            "value",
-            "options",
-            "position"
-          ],
-          "properties": {
-            "attribute_type": {
-              "const": "player_condition_meter"
-            },
-            "position": {
-              "default": "card-top"
-            },
-            "value": {
-              "description": "The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
+            "encounter": {
+              "default": null,
               "oneOf": [
+                {
+                  "$ref": "#/definitions/EncounterClassic.ID"
+                },
                 {
                   "type": "null"
-                },
-                {
-                  "$ref": "#/definitions/IDPlayerConditionMeter"
-                }
-              ],
-              "default": null
-            },
-            "options": {
-              "type": "object",
-              "patternProperties": {
-                "^[a-z][a-z_+]*[a-z]$": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "$ref": "#/definitions/LocalizedLabel"
-                    },
-                    "value": {
-                      "$ref": "#/definitions/IDPlayerConditionMeter"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "AttributeText": {
-      "description": "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeBase"
-        },
-        {
-          "required": [
-            "attribute_type",
-            "position",
-            "value"
-          ],
-          "properties": {
-            "attribute_type": {
-              "const": "text"
-            },
-            "position": {
-              "default": "card-top"
-            },
-            "value": {
-              "type": [
-                "null",
-                "string"
-              ],
-              "default": null
-            }
-          }
-        }
-      ]
-    },
-    "AttributePlayerStat": {
-      "description": "An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AttributeBase"
-        },
-        {
-          "required": [
-            "attribute_type",
-            "position",
-            "value",
-            "options"
-          ],
-          "properties": {
-            "attribute_type": {
-              "const": "player_stat"
-            },
-            "position": {
-              "default": "card-top"
-            },
-            "value": {
-              "oneOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "$ref": "#/definitions/IDPlayerStat"
-                }
-              ],
-              "default": null
-            },
-            "options": {
-              "type": "object",
-              "patternProperties": {
-                "^[a-z][a-z_+]*[a-z]$": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "$ref": "#/definitions/LocalizedLabel"
-                    },
-                    "value": {
-                      "$ref": "#/definitions/IDPlayerStat"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    "MoveTrigger": {
-      "title": "MoveTrigger",
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "oneOf": [
-            {
-              "items": {
-                "$ref": "#/definitions/MoveTriggerOptionAction"
-              }
-            },
-            {
-              "items": {
-                "$ref": "#/definitions/MoveTriggerOptionProgress"
-              }
-            }
-          ]
-        },
-        "text": {
-          "description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.",
-          "type": "string"
-        },
-        "by": {
-          "description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
-          "additionalProperties": false,
-          "properties": {
-            "player": {
-              "type": "boolean",
-              "default": "true"
-            },
-            "ally": {
-              "type": "boolean",
-              "default": "false"
-            }
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "PlayerStatName": {
-      "enum": [
-        "edge",
-        "heart",
-        "iron",
-        "shadow",
-        "wits"
-      ]
-    },
-    "IDImpact": {
-      "type": "string",
-      "pattern": "^[a-z][a-z_+]*[a-z]/impacts/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
-    },
-    "PlayerCharacter": {
-      "properties": {
-        "stats": {
-          "type": "object",
-          "propertyNames": {
-            "$ref": "#/definitions/PlayerStatName"
-          },
-          "patternProperties": {
-            ".*": {
-              "type": "object",
-              "properties": {
-                "_id": {
-                  "$ref": "#/definitions/IDPlayerStat"
-                },
-                "max": {
-                  "const": 4
-                },
-                "min": {
-                  "const": 0
-                },
-                "value": {
-                  "type": "integer",
-                  "minimum": 0,
-                  "maximum": 4
-                }
-              }
-            }
-          }
-        },
-        "condition_meters": {
-          "type": "object",
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "$ref": "#/definitions/AttributeConditionMeter"
-            }
-          }
-        },
-        "momentum": {
-          "type": "object",
-          "properties": {
-            "min": {
-              "type": "integer",
-              "const": -6
-            },
-            "max": {
-              "type": "integer",
-              "default": 10,
-              "maximum": 10
-            },
-            "value": {
-              "type": "integer",
-              "default": 2
-            },
-            "resetValue": {
-              "type": "integer",
-              "default": 2,
-              "min": 0
-            }
-          }
-        }
-      }
-    },
-    "ProgressTrackType": {
-      "$ref": "#/definitions/SnakeCase",
-      "enum": [
-        "discoveries_legacy",
-        "combat",
-        "expedition",
-        "journey",
-        "bond",
-        "connection",
-        "delve"
-      ]
-    },
-    "SnakeCase": {
-      "type": "string",
-      "pattern": "^[a-z][a-z_0-9]*[a-z0-9]$",
-      "description": "A plain text string in snake_case. Usually this is an internal value for programmatic use only, so it shouldn't be localized."
-    },
-    "IDPlayerStat": {
-      "description": "A standard player character stat.",
-      "enum": [
-        "player/stats/edge",
-        "player/stats/heart",
-        "player/stats/iron",
-        "player/stats/shadow",
-        "player/stats/wits"
-      ]
-    },
-    "IDPlayerConditionMeter": {
-      "description": "A standard player character condition meter.",
-      "enum": [
-        "player/condition_meters/health",
-        "player/condition_meters/spirit",
-        "player/condition_meters/supply"
-      ]
-    },
-    "ConditionMeterAlias": {
-      "$ref": "#/definitions/SnakeCase",
-      "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
-      "enum": [
-        "companion_health",
-        "vehicle_integrity",
-        "command_vehicle_integrity",
-        "support_vehicle_integrity",
-        "incidental_vehicle_integrity",
-        "attached_asset_meter"
-      ]
-    },
-    "ConditionMeterType": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/IDPlayerConditionMeter"
-        },
-        {
-          "$ref": "#/definitions/ConditionMeterAlias"
-        }
-      ]
-    },
-    "GameObject": {
-      "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "type": {
-          "title": "GameObjectType",
-          "$ref": "#/definitions/SnakeCase",
-          "enum": [
-            "character",
-            "creature",
-            "derelict",
-            "derelict_zone",
-            "faction",
-            "planet",
-            "precursor_vault",
-            "settlement",
-            "starship"
-          ]
-        }
-      }
-    },
-    "ChallengeRank": {
-      "type": "integer",
-      "description": "A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.",
-      "enum": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
-    },
-    "IDAssetAbility": {
-      "type": "string",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/assets(/[a-z][a-z_]*[a-z]){2}/abilities/[0-2]$"
-    },
-    "AssetAbility": {
-      "title": "AssetAbility",
-      "description": "Describes an asset ability.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AssetAbilityBase"
-        },
-        {
-          "required": [
-            "text"
-          ],
-          "properties": {
-            "alter_moves": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/MoveExtension"
-              }
-            },
-            "extend_abilities": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AssetAbilityExtension"
-              }
-            },
-            "text": {
-              "$ref": "#/definitions/AssetAbilityBase/properties/text"
-            }
-          }
-        }
-      ]
-    },
-    "AssetAbilityBase": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "text": {
-          "description": "The rules text for this asset ability.",
-          "$ref": "#/definitions/LocalizedMarkdown"
-        },
-        "attachments": {
-          "description": "Details on what attachments (other assets) are accepted by this asset.",
-          "$comment": "#/definitions/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?"
-        },
-        "attributes": {
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/AttributeNumericOverride"
-                },
-                {
-                  "$comment": "New condition meters require an ID.",
-                  "allOf": [
-                    {
-                      "oneOf": [
-                        {
-                          "$ref": "#/definitions/AttributeConditionMeter"
-                        },
-                        {
-                          "$ref": "#/definitions/AttributeCounter"
-                        },
-                        {
-                          "$ref": "#/definitions/AttributeText"
-                        },
-                        {
-                          "$ref": "#/definitions/AttributeClock"
-                        }
-                      ]
-                    },
-                    {
-                      "required": [
-                        "_id"
-                      ]
-                    }
-                  ]
                 }
               ]
             }
           }
-        },
-        "moves": {
-          "description": "Unique, self-contained moves added by this asset ability.",
-          "type": "object",
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "$ref": "#/definitions/Move"
-            }
-          }
-        },
-        "alter_moves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MoveExtensionBase"
-          }
-        },
-        "alter_player": {
-          "$ref": "#/definitions/PlayerExtension"
-        },
-        "_id": {
-          "$ref": "#/definitions/IDAssetAbility"
-        },
-        "enabled": {
-          "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
-          "type": "boolean",
-          "default": false
-        }
-      }
-    },
-    "Attribute": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/AttributePlayerStat"
-        },
-        {
-          "$ref": "#/definitions/AttributePlayerConditionMeter"
-        },
-        {
-          "$ref": "#/definitions/AttributeText"
-        },
-        {
-          "$ref": "#/definitions/AttributeImpact"
-        },
-        {
-          "$ref": "#/definitions/AttributeConditionMeter"
         }
       ]
-    },
-    "Asset": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged",
-          "pattern": "^[a-z_]+/assets/[a-z_]+/[a-z_]+$"
-        },
-        "attributes": {
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "$ref": "#/definitions/Attribute"
-            }
-          }
-        },
-        "name": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "abilities": {
-          "type": "array",
-          "additionalItems": false,
-          "items": [
-            {
-              "$ref": "#/definitions/AssetAbility"
-            },
-            {
-              "$ref": "#/definitions/AssetAbility"
-            },
-            {
-              "$ref": "#/definitions/AssetAbility"
-            }
-          ]
-        },
-        "requirement": {
-          "description": "A markdown string representing the requirement text that appears at the top of some asset cards.",
-          "$ref": "#/definitions/LocalizedMarkdown"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
-        "attachments": {
-          "description": "Details on what attachments (other assets) are accepted by this asset.",
-          "$comment": "#/definitions/AssetAttachment"
-        },
-        "tags": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "animal_companion",
-              "beast_companion",
-              "biological_companion",
-              "deed",
-              "ironlander_companion",
-              "mechanical_companion"
-            ],
-            "type": "string"
-          }
-        },
-        "usage": {
-          "$comment": "#/definitions/AssetUsage",
-          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
-        }
-      },
-      "required": [
-        "abilities",
-        "name",
-        "_id"
-      ],
-      "not": {
-        "required": [
-          "inputs"
-        ],
-        "properties": {
-          "inputs": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "CustomStat": {
-      "type": "object",
-      "required": [
-        "label",
-        "options"
-      ],
-      "properties": {
-        "label": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "options": {
-          "title": "CustomStatOptions",
-          "type": "object",
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "CustomStatOption",
-              "type": "object",
-              "required": [
-                "label",
-                "value"
-              ],
-              "properties": {
-                "label": {
-                  "$ref": "#/definitions/LocalizedLabel"
-                },
-                "value": {
-                  "description": "The numeric value to be used as +stat when making an Action Roll.",
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-    "AssetAbilityExtension": {
-      "description": "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AssetAbilityBase"
-        },
-        {
-          "required": [
-            "_ability"
-          ],
-          "properties": {
-            "_ability": {
-              "description": "The ID of the asset ability to be extended.",
-              "$ref": "#/definitions/IDAssetAbility"
-            }
-          }
-        }
-      ]
-    },
-    "MoveExtension": {
-      "title": "MoveExtension",
-      "allOf": [
-        {
-          "$ref": "#/definitions/MoveExtensionBase"
-        },
-        {
-          "required": [
-            "_moves"
-          ],
-          "properties": {
-            "_moves": {
-              "$ref": "#/definitions/MoveExtensionBase/properties/_moves"
-            }
-          }
-        }
-      ]
-    },
-    "IDMove": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/IDCoreMove"
-        },
-        {
-          "$ref": "#/definitions/IDAssetMove"
-        }
-      ]
-    },
-    "MoveExtensionBase": {
-      "description": "Describes changes made to moves by asset abilities.",
-      "type": "object",
-      "properties": {
-        "_moves": {
-          "description": "The IDs of the affected moves. Use 'null' if it can apply to any move.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "$ref": "#/definitions/IDMove"
-          },
-          "default": null
-        },
-        "trigger": {
-          "$ref": "#/definitions/MoveTrigger"
-        }
-      }
-    },
-    "AlterAsset": {
-      "title": "AlterAsset",
-      "description": "Alters another asset",
-      "type": "object",
-      "properties": {
-        "assets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/IDAsset"
-          }
-        }
-      }
-    },
-    "PlayerExtension": {
-      "title": "PlayerExtension",
-      "description": "Alters an attribute intrinsic to the player, such as a stat or condition meter.",
-      "type": "object"
-    },
-    "MoveTriggerOptionAction": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/MoveTriggerOption"
-        },
-        {
-          "properties": {
-            "using": {
-              "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/IDPlayerStat"
-                  },
-                  {
-                    "$ref": "#/definitions/IDPlayerConditionMeter"
-                  },
-                  {
-                    "$ref": "#/definitions/ConditionMeterAlias"
-                  },
-                  {
-                    "$ref": "#/definitions/IDAttribute"
-                  }
-                ]
-              }
-            },
-            "roll_type": {
-              "const": "action_roll"
-            }
-          }
-        }
-      ]
-    },
-    "MoveTriggerOptionProgress": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/MoveTriggerOption"
-        },
-        {
-          "properties": {
-            "using": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ProgressTrackType"
-              }
-            },
-            "roll_type": {
-              "const": "progress_roll"
-            }
-          }
-        }
-      ]
-    },
-    "MoveOutcomeType": {
-      "enum": [
-        "miss",
-        "weak_hit",
-        "strong_hit"
-      ]
-    },
-    "MoveOutcomeWithMatch": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/MoveOutcome"
-        },
-        {
-          "properties": {
-            "match": {
-              "$ref": "#/definitions/MoveOutcome"
-            }
-          }
-        }
-      ]
-    },
-    "MoveOutcome": {
-      "properties": {
-        "text": {
-          "$ref": "#/definitions/LocalizedMarkdown"
-        }
-      }
-    },
-    "MoveOutcomes": {
-      "properties": {
-        "miss": {
-          "$ref": "#/definitions/MoveOutcomeWithMatch"
-        },
-        "weak_hit": {
-          "$ref": "#/definitions/MoveOutcome"
-        },
-        "strong_hit": {
-          "$ref": "#/definitions/MoveOutcomeWithMatch"
-        }
-      }
-    },
-    "MoveTriggerOption": {
-      "properties": {
-        "method": {
-          "$ref": "#/definitions/SnakeCase",
-          "title": "RollMethod",
-          "type": "string",
-          "description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled.\n\n`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks.\n\n`strong_hit`: The move trigger option results in an automatic strong hit - no roll required.\n\n`weak_hit`: The move trigger option results in an automatic weak hit - no roll required.\n\n`miss`: The move trigger options results in an automatic miss - no roll required.",
-          "default": "any",
-          "enum": [
-            "all",
-            "any",
-            "highest",
-            "inherit",
-            "lowest",
-            "strong_hit",
-            "weak_hit",
-            "miss"
-          ]
-        },
-        "text": {
-          "$ref": "#/definitions/LocalizedMarkdown"
-        },
-        "using": {
-          "type": "array",
-          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
-          "items": {
-            "type": "string"
-          },
-          "roll_type": {
-            "title": "RollType",
-            "$ref": "#/definitions/SnakeCase",
-            "enum": [
-              "action_roll",
-              "progress_roll"
-            ]
-          }
-        }
-      }
-    },
-    "IDDataforged": {
-      "type": "string",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9](/[a-z][a-z_]*[a-z])+$",
-      "description": "A unique string ID."
-    },
-    "IDMoveCategory": {
-      "$ref": "#/definitions/IDDataforged",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/moves/[a-z][a-z_]*[a-z]$"
-    },
-    "IDCoreMove": {
-      "$ref": "#/definitions/IDDataforged",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/moves(/[a-z][a-z_]*[a-z]){2}$"
-    },
-    "IDAssetMove": {
-      "$ref": "#/definitions/IDCoreMove",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/assets(/[a-z][a-z_]*[a-z]){2}/moves/[a-z][a-z_]*[a-z]$"
-    },
-    "IDAssetType": {
-      "$ref": "#/definitions/IDDataforged",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/assets/[a-z][a-z_]*[a-z]$"
-    },
-    "IDAsset": {
-      "$ref": "#/definitions/IDDataforged",
-      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]/assets(/[a-z][a-z_]*[a-z]){2}$"
-    },
-    "Localizable": {
-      "description": "A localizable string of plain text.",
-      "type": "string"
-    },
-    "LocalizedLabel": {
-      "$ref": "#/definitions/Localizable",
-      "description": "A localizable string of plain text used to provide a player-facing label for this element."
-    },
-    "LocalizedMarkdown": {
-      "$ref": "#/definitions/Localizable",
-      "description": "A localizable string formatted in markdown. This usually represents a direct excerpt from the source material."
-    },
-    "LocalizedTemplateStrings": {
-      "type": "object",
-      "properties": {
-        "result": {
-          "$ref": "#/definitions/LocalizedTemplateString"
-        },
-        "summary": {
-          "$ref": "#/definitions/LocalizedTemplateString"
-        },
-        "description": {
-          "$ref": "#/definitions/LocalizedTemplateString"
-        }
-      }
-    },
-    "LocalizedTemplateString": {
-      "description": "A localizable markdown string template where variables are provided by rolling an oracle table.",
-      "$ref": "#/definitions/LocalizedMarkdown"
-    },
-    "Title": {
-      "required": [
-        "canonical"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged"
-        },
-        "canonical": {
-          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "short": {
-          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\n Unless you're very pressed for space, most UX should use {@link Title.standard} instead.",
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "standard": {
-          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some classic Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").",
-          "$ref": "#/definitions/LocalizedLabel"
-        }
-      }
-    },
-    "Icon": {
-      "description": "A URI of an vector icon in the SVG format.",
-      "type": "string",
-      "format": "uri-reference"
-    },
-    "Image": {
-      "description": "The URI of a raster image in the WEBP format.",
-      "type": "string",
-      "format": "uri-reference"
-    },
-    "Images": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Image"
-      }
-    },
-    "RenderMetadata": {
-      "description": "Contains data relevant to rendering the item.",
-      "properties": {
-        "icon": {
-          "$ref": "#/definitions/Icon"
-        },
-        "images": {
-          "$ref": "#/definitions/Images"
-        },
-        "color": {
-          "description": "A CSS color associated with this item, for use as e.g. an accent color when rendering it.",
-          "type": "number",
-          "format": "color"
-        }
-      }
-    },
-    "Summary": {
-      "description": "A player-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
-      "$ref": "#/definitions/LocalizedMarkdown"
-    },
-    "Description": {
-      "$ref": "#/definitions/LocalizedMarkdown",
-      "description": "A player-facing markdown description of the item, consisting of one or more paragraphs."
-    },
-    "Source": {
-      "description": "Information on this item's source. For 'canonical' content, this is usually a book with a page number, but it might also be a link to a web site.",
-      "type": "object",
-      "required": [
-        "authors",
-        "license",
-        "title",
-        "date",
-        "uri"
-      ],
-      "additionalProperties": false,
-      "examples": [
-        {
-          "title": "Ironsworn Assets Master Set",
-          "authors": [
-            "Shawn Tomkin"
-          ],
-          "license": "https://creativecommons.org/licenses/by/4.0",
-          "date": "2023-01-15",
-          "uri": "https://ironswornrpg.com"
-        }
-      ],
-      "properties": {
-        "title": {
-          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
-          "type": "string",
-          "examples": [
-            "Ironsworn: Starforged Rulebook",
-            "Ironsworn Rulebook",
-            "Ironsworn: Delve",
-            "Ironsworn: Starforged Assets",
-            "Ironsworn Assets Master Set"
-          ]
-        },
-        "authors": {
-          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
-          "default": [
-            "Shawn Tomkin"
-          ],
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "page": {
-          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
-          "type": "integer",
-          "minimum": 1
-        },
-        "uri": {
-          "description": "The URI where the source material is available.",
-          "type": "string",
-          "format": "uri",
-          "examples": [
-            "https://ironswornrpg.com"
-          ]
-        },
-        "date": {
-          "description": "The date when the source document's content was last updated.",
-          "format": "date",
-          "type": "string"
-        },
-        "license": {
-          "$ref": "#/definitions/License"
-        }
-      }
-    },
-    "QuestStarter": {
-      "description": "A localizable markdown string describing the quest starter associated with this item.",
-      "$ref": "#/definitions/LocalizedMarkdown"
-    },
-    "Tags": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/SnakeCase"
-      }
-    },
-    "CategoryMetadata": {
-      "type": "object",
-      "required": [
-        "_id",
-        "title",
-        "source"
-      ],
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged"
-        },
-        "title": {
-          "$ref": "#/definitions/Title"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
-        "summary": {
-          "$ref": "#/definitions/Summary"
-        },
-        "description": {
-          "$ref": "#/definitions/Description"
-        },
-        "tags": {
-          "$ref": "#/definitions/Tags"
-        }
-      }
     },
     "DelveCardType": {
       "type": "string",
@@ -2006,13 +2289,205 @@
         }
       ]
     },
-    "IDDelveSiteTheme": {
-      "type": "string",
-      "pattern": "[a-z_]+/site_themes/[a-z_]+"
+    "Localizable": {
+      "description": "A localizable string of plain text.",
+      "type": "string"
     },
-    "IDDelveSiteDomain": {
+    "LocalizedLabel": {
+      "$ref": "#/definitions/Localizable",
+      "description": "A localizable string of plain text used to provide a player-facing label for this element."
+    },
+    "LocalizedMarkdown": {
+      "$ref": "#/definitions/Localizable",
+      "description": "A localizable string formatted in markdown. This usually represents a direct excerpt from the source material."
+    },
+    "LocalizedTemplateString": {
+      "description": "A localizable markdown string template where variables are provided by rolling an oracle table.",
+      "$ref": "#/definitions/LocalizedMarkdown"
+    },
+    "QuestStarter": {
+      "description": "A localizable markdown string describing the quest starter associated with this item.",
+      "$ref": "#/definitions/LocalizedMarkdown"
+    },
+    "Summary": {
+      "description": "A player-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
+      "$ref": "#/definitions/LocalizedMarkdown"
+    },
+    "Description": {
+      "$ref": "#/definitions/LocalizedMarkdown",
+      "description": "A player-facing markdown description of the item, consisting of one or more paragraphs."
+    },
+    "CategoryMetadata": {
+      "type": "object",
+      "required": [
+        "title",
+        "source"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        }
+      }
+    },
+    "Game": {
+      "enum": [
+        "starforged",
+        "classic"
+      ]
+    },
+    "NamespaceKey": {
+      "description": "The name of the dataset, used as a key in the root data object and to compose Dataforged's string ID. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
       "type": "string",
-      "pattern": "[a-z_]+/site_domains/[a-z_]+"
+      "pattern": "^[a-z0-9][a-z0-9_+]*[a-z0-9]$",
+      "examples": [
+        "starforged",
+        "ironsworn",
+        "ironsworn_delve",
+        "sundered_isles"
+      ]
+    },
+    "Color": {
+      "description": "A hexadecimal color associated with this item, for use as e.g. an accent color when rendering it.",
+      "type": "string",
+      "pattern": "^#([\\dA-f]{2}){3}$",
+      "format": "color"
+    },
+    "License": {
+      "description": "The URI pointing to the license which this item's *text* content falls under. If this is null, no license is specified -- use with caution.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri",
+      "default": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+      "examples": [
+        "https://creativecommons.org/licenses/by-nc-sa/4.0",
+        "https://creativecommons.org/licenses/by/4.0"
+      ]
+    },
+    "Title": {
+      "required": [
+        "canonical"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "canonical": {
+          "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "short": {
+          "description": "The shortest title for this item that remains distinct amongst its siblings.\n\n Unless you're very pressed for space, most UX should use {@link Title.standard} instead.",
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "standard": {
+          "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some classic Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").",
+          "$ref": "#/definitions/LocalizedLabel"
+        }
+      }
+    },
+    "Icon": {
+      "description": "The URI of an SVG vector icon.",
+      "type": "string",
+      "format": "uri-reference",
+      "pattern": ".svg$"
+    },
+    "Image": {
+      "description": "The URI of a WEBP image.",
+      "type": "string",
+      "format": "uri-reference",
+      "pattern": ".webp$"
+    },
+    "Source": {
+      "description": "Information on this item's source. For 'canonical' content, this is usually a book with a page number, but it might also be a link to a web site.",
+      "type": "object",
+      "required": [
+        "authors",
+        "license",
+        "title",
+        "date",
+        "uri"
+      ],
+      "additionalProperties": false,
+      "examples": [
+        {
+          "title": "Ironsworn Assets Master Set",
+          "authors": [
+            "Shawn Tomkin"
+          ],
+          "license": "https://creativecommons.org/licenses/by/4.0",
+          "date": "2023-01-15",
+          "uri": "https://ironswornrpg.com"
+        }
+      ],
+      "properties": {
+        "title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "examples": [
+            "Ironsworn: Starforged Rulebook",
+            "Ironsworn Rulebook",
+            "Ironsworn: Delve",
+            "Ironsworn: Starforged Assets",
+            "Ironsworn Assets Master Set"
+          ]
+        },
+        "authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": [
+            "Shawn Tomkin"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "uri": {
+          "description": "The URI where the source material is available.",
+          "type": "string",
+          "format": "uri",
+          "examples": [
+            "https://ironswornrpg.com"
+          ]
+        },
+        "date": {
+          "description": "The date when the source document's content was last updated.",
+          "format": "date",
+          "type": "string"
+        },
+        "license": {
+          "$ref": "#/definitions/License"
+        }
+      }
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z_0-9]*[a-z0-9]$"
+      }
     },
     "Suggestions": {
       "type": "object",
@@ -2022,405 +2497,87 @@
         "rolls": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IDOracleTable"
+            "$ref": "#/definitions/OracleTable.ID"
           }
         },
         "regions": {
           "type": "array",
           "items": {
-            "title": "IDIronlandsRegion",
-            "type": "string",
-            "pattern": "[a-z_]+/regions/[a-z_]+"
+            "$ref": "#/definitions/IronlandsRegion.ID"
           }
         },
         "assets": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IDAsset"
+            "$ref": "#/definitions/Asset.ID"
           }
         },
         "site_themes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IDDelveSiteTheme"
+            "$ref": "#/definitions/DelveSiteTheme.ID"
           }
         },
         "site_domains": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IDDelveSiteDomain"
+            "$ref": "#/definitions/DelveSiteDomain.ID"
           }
         }
       }
     },
-    "CyclopediaEntry": {
-      "description": "Schema common to \"cyclopedia\" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*) ",
-      "required": [
-        "name",
-        "description"
-      ],
+    "RenderMetadata": {
+      "description": "Contains data relevant to rendering the item.",
       "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged"
+        "icon": {
+          "$ref": "#/definitions/Icon"
         },
-        "name": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
-        "tags": {
-          "$ref": "#/definitions/Tags"
-        },
-        "description": {
-          "$ref": "#/definitions/Description"
-        },
-        "summary": {
-          "$ref": "#/definitions/Summary"
-        },
-        "features": {
+        "images": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/LocalizedMarkdown"
+            "$ref": "#/definitions/Image"
           }
         },
-        "quest_starter": {
-          "$ref": "#/definitions/QuestStarter"
+        "color": {
+          "$ref": "#/definitions/Color"
         }
       }
     },
-    "Encounter": {
-      "description": "Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.",
-      "allOf": [
-        {
-          "$ref": "#/definitions/CyclopediaEntry"
-        },
-        {
-          "type": "object",
-          "required": [
-            "rank"
-          ],
-          "properties": {
-            "nature": {
-              "type": "string"
-            },
-            "summary": {
-              "$ref": "#/definitions/Summary"
-            },
-            "rank": {
-              "$ref": "#/definitions/ChallengeRank"
-            },
-            "drives": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/LocalizedMarkdown"
-              }
-            },
-            "tactics": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/LocalizedMarkdown"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "Oracle": {
-      "description": "Interface with elements common to various Oracle-related interfaces and classes.\n\nIf you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.\n\nBut if for some reason you can't, you can use this interface to type both {@link OracleTable} and {@link OracleSet} as you recurse the oracle hierarchy. Objects with `sets` and `tables` are \"branches\", and objects with `table` are \"leaves\".",
-      "properties": {
-        "title": {
-          "$ref": "#/definitions/Title"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
-        "summary": {
-          "$ref": "#/definitions/Summary"
-        },
-        "description": {
-          "$ref": "#/definitions/Description"
-        },
-        "ancestors": {
-          "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/IDDataforged"
-          }
-        }
-      }
-    },
-    "OracleSet": {
-      "title": "OracleSet",
+    "MoveCategory": {
+      "title": "MoveCategory",
       "type": "object",
-      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
-      "additionalProperties": false,
       "properties": {
-        "_id": {
-          "type": "string"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
         "title": {
           "$ref": "#/definitions/Title"
         },
-        "summary": {
-          "$ref": "#/definitions/Summary"
+        "color": {
+          "$ref": "#/definitions/Color"
         },
         "description": {
           "$ref": "#/definitions/Description"
         },
-        "requires": {
-          "$comment": "TODO"
-        },
-        "usage": {
+        "source": {
           "$ref": "#/definitions/Source"
         },
-        "sets": {
+        "moves": {
+          "title": "Moves",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "$ref": "#/definitions/OracleSet"
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/Move"
             }
-          }
-        },
-        "tables": {
-          "additionalProperties": false,
-          "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "$ref": "#/definitions/OracleTable"
-            }
-          }
-        },
-        "content": {
-          "$comment": "TODO"
-        },
-        "sample_names": {
-          "description": "A list of sample names for this category. Only used by Planets.",
-          "type": "array",
-          "items": {
-            "type": "string"
           }
         }
       }
-    },
-    "OracleTable": {
-      "type": "object",
-      "required": [
-        "title",
-        "table"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "type": "string"
-        },
-        "content": {
-          "title": "OracleContent",
-          "type": "object",
-          "description": "Metadata that describes an oracle's semantic or lexical content.",
-          "additionalProperties": false,
-          "properties": {
-            "part_of_speech": {
-              "description": "The part of speech of this oracle.",
-              "type": "array",
-              "items": {
-                "examples": [
-                  "adjective",
-                  "common noun",
-                  "compound noun",
-                  "fragment",
-                  "name",
-                  "noun",
-                  "plural",
-                  "possessive case",
-                  "proper noun",
-                  "proper noun fragment",
-                  "sentences",
-                  "verb"
-                ],
-                "type": "string"
-              }
-            },
-            "tags": {
-              "description": "Any arbitrary string tags associated with this oracle.",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "title": {
-          "$ref": "#/definitions/Title"
-        },
-        "usage": {
-          "title": "OracleUsage",
-          "type": "object"
-        },
-        "requires": {
-          "title": "OracleRequirements",
-          "type": "object"
-        },
-        "display": {
-          "title": "OracleTableRenderMetadata",
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/definitions/RenderMetadata"
-            },
-            {
-              "additionalProperties": false,
-              "properties": {
-                "columns": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "anyOf": [
-                      {
-                        "$comment": "#/definitions/TableColumnRoll"
-                      },
-                      {
-                        "$comment": "#/definitions/TableColumnText"
-                      }
-                    ]
-                  }
-                },
-                "column_of": {
-                  "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
-                  "type": "string"
-                },
-                "embed_in": {
-                  "description": "This table is displayed as embedded in a row of another table.",
-                  "type": "string"
-                },
-                "source": {
-                  "$ref": "#/definitions/Source"
-                }
-              }
-            }
-          ]
-        },
-        "table": {
-          "$ref": "#/definitions/OracleTableRows"
-        },
-        "match": {
-          "title": "OracleMatchBehaviour",
-          "type": "object",
-          "properties": {
-            "_id": {
-              "$ref": "#/definitions/IDDataforged"
-            },
-            "text": {
-              "$ref": "#/definitions/LocalizedMarkdown"
-            }
-          },
-          "additionalProperties": false,
-          "required": [
-            "text"
-          ]
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        },
-        "description": {
-          "$ref": "#/definitions/Description"
-        },
-        "summary": {
-          "$ref": "#/definitions/Summary"
-        }
-      }
-    },
-    "OracleTableRows": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/OracleTableRow"
-      }
-    },
-    "OracleTableRow": {
-      "type": "object",
-      "required": [
-        "result",
-        "floor",
-        "ceiling"
-      ],
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged"
-        },
-        "floor": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 1,
-          "maximum": 100
-        },
-        "ceiling": {
-          "type": [
-            "integer",
-            "null"
-          ],
-          "minimum": 1,
-          "maximum": 100
-        },
-        "result": {
-          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.",
-          "$ref": "#/definitions/LocalizedMarkdown"
-        },
-        "summary": {
-          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `OracleTableRow.summary` is longer than `OracleTableRow.result`.\n\nSome tables label this column as something other than `OracleTableRow.result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-          "oneOf": [
-            {
-              "$ref": "#/definitions/LocalizedMarkdown"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "display": {
-          "$ref": "#/definitions/RenderMetadata"
-        },
-        "suggestions": {
-          "$ref": "#/definitions/Suggestions"
-        },
-        "rolls": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/IDOracleTable"
-          }
-        },
-        "embed_table": {
-          "$ref": "#/definitions/IDOracleTable"
-        },
-        "template": {
-          "$ref": "#/definitions/LocalizedTemplateStrings"
-        }
-      }
-    },
-    "IDOracleTable": {
-      "type": "string",
-      "pattern": "^[a-z][a-z_+]*[a-z]/oracles(/[a-z][a-z_+]*[a-z]){2,}$"
-    },
-    "InputPosition": {
-      "title": "InputPosition",
-      "enum": [
-        "card-top",
-        "card-back",
-        "card-bottom",
-        "ability-1-right",
-        "ability-2-right",
-        "ability-3-right",
-        "ability-1-bottom",
-        "ability-2-bottom",
-        "ability-3-bottom"
-      ],
-      "type": "string"
     },
     "Move": {
       "type": "object",
+      "required": [
+        "text",
+        "name",
+        "trigger"
+      ],
+      "additionalProperties": false,
       "properties": {
         "name": {
           "$ref": "#/definitions/LocalizedLabel"
@@ -2431,7 +2588,7 @@
         "attributes": {
           "type": "object",
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/definitions/CustomStat"
             }
           }
@@ -2447,7 +2604,7 @@
         },
         "asset": {
           "description": "The ID of the parent Asset of the move, if any.",
-          "$ref": "#/definitions/IDAsset"
+          "$ref": "#/definitions/Asset.ID"
         },
         "progress_move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
@@ -2455,13 +2612,13 @@
         },
         "variant_of": {
           "description": "The ID of the move that this move is a variant of, if any.",
-          "type": "string"
+          "$ref": "#/definitions/Move.ID"
         },
         "oracles": {
-          "description": "The IDs of any oracles directly referenced by the move, or vice versa.",
+          "description": "The ID of any oracles directly referenced by the move, or vice versa.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IDDataforged"
+            "$ref": "#/definitions/OracleTable.ID"
           }
         },
         "optional": {
@@ -2478,18 +2635,253 @@
         },
         "category": {
           "description": "The ID of the move's category.",
-          "type": "string"
+          "$ref": "#/definitions/MoveCategory.ID"
         },
         "source": {
           "$ref": "#/definitions/Source"
         }
-      },
-      "additionalProperties": false,
-      "required": [
-        "text",
-        "name",
-        "trigger"
+      }
+    },
+    "MoveTriggerOptionAction": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MoveTriggerOption"
+        },
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/PlayerStat.ID"
+                  },
+                  {
+                    "$ref": "#/definitions/PlayerConditionMeter.ID"
+                  },
+                  {
+                    "$ref": "#/definitions/ConditionMeterAlias"
+                  },
+                  {
+                    "$ref": "#/definitions/Attribute.ID"
+                  }
+                ]
+              }
+            },
+            "roll_type": {
+              "const": "action_roll"
+            }
+          }
+        }
       ]
+    },
+    "MoveTriggerOptionProgress": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MoveTriggerOption"
+        },
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ProgressTrackType"
+              }
+            },
+            "roll_type": {
+              "const": "progress_roll"
+            }
+          }
+        }
+      ]
+    },
+    "MoveOutcomeType": {
+      "enum": [
+        "miss",
+        "weak_hit",
+        "strong_hit"
+      ]
+    },
+    "MoveOutcomeWithMatch": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/MoveOutcome"
+        },
+        {
+          "properties": {
+            "match": {
+              "$ref": "#/definitions/MoveOutcome"
+            }
+          }
+        }
+      ]
+    },
+    "MoveOutcome": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/definitions/LocalizedMarkdown"
+        }
+      }
+    },
+    "MoveOutcomes": {
+      "type": "object",
+      "properties": {
+        "miss": {
+          "$ref": "#/definitions/MoveOutcomeWithMatch"
+        },
+        "weak_hit": {
+          "$ref": "#/definitions/MoveOutcome"
+        },
+        "strong_hit": {
+          "$ref": "#/definitions/MoveOutcomeWithMatch"
+        }
+      }
+    },
+    "MoveTriggerOptionBase": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "title": "RollMethod",
+          "type": "string",
+          "description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled.\n\n`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks.\n\n`strong_hit`: The move trigger option results in an automatic strong hit - no roll required.\n\n`weak_hit`: The move trigger option results in an automatic weak hit - no roll required.\n\n`miss`: The move trigger options results in an automatic miss - no roll required.",
+          "default": "any",
+          "enum": [
+            "all",
+            "any",
+            "highest",
+            "inherit",
+            "lowest",
+            "strong_hit",
+            "weak_hit",
+            "miss"
+          ]
+        },
+        "text": {
+          "$ref": "#/definitions/LocalizedMarkdown"
+        },
+        "using": {
+          "type": "array",
+          "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "roll_type": {
+          "title": "RollType",
+          "enum": [
+            "action_roll",
+            "progress_roll"
+          ]
+        }
+      }
+    },
+    "MoveTriggerOption": {
+      "title": "MoveTriggerOption",
+      "oneOf": [
+        {
+          "items": {
+            "$ref": "#/definitions/MoveTriggerOptionAction"
+          }
+        },
+        {
+          "items": {
+            "$ref": "#/definitions/MoveTriggerOptionProgress"
+          }
+        }
+      ]
+    },
+    "MoveTrigger": {
+      "title": "MoveTrigger",
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MoveTriggerOption"
+          }
+        },
+        "text": {
+          "description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.",
+          "type": "string"
+        },
+        "by": {
+          "description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
+          "additionalProperties": false,
+          "properties": {
+            "player": {
+              "type": "boolean",
+              "default": true
+            },
+            "ally": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ChallengeRank": {
+      "type": "integer",
+      "description": "A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ProgressTrackStarforgedType": {
+      "enum": [
+        "discoveries_legacy",
+        "bonds_legacy",
+        "quests_legacy",
+        "vow",
+        "combat",
+        "expedition",
+        "connection",
+        "scene_challenge"
+      ]
+    },
+    "ProgressTrackClassicType": {
+      "enum": [
+        "vow",
+        "combat",
+        "journey",
+        "bonds",
+        "delve",
+        "scene_challenge"
+      ]
+    },
+    "ProgressTrackType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ProgressTrackStarforgedType"
+        },
+        {
+          "$ref": "#/definitions/ProgressTrackClassicType"
+        }
+      ]
+    },
+    "SettingTruth": {
+      "type": "object",
+      "required": [
+        "name",
+        "source"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "name": {
+          "$ref": "#/definitions/LocalizedLabel"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        }
+      }
     },
     "SettingTruthOption": {
       "required": [
@@ -2502,199 +2894,144 @@
         }
       }
     },
-    "SettingTruth": {
-      "type": "object",
-      "required": [
-        "name",
-        "source"
-      ],
-      "properties": {
-        "_id": {
-          "$ref": "#/definitions/IDDataforged"
+    "SettingTruthStarforged": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SettingTruth"
         },
-        "name": {
-          "$ref": "#/definitions/LocalizedLabel"
-        },
-        "source": {
-          "$ref": "#/definitions/Source"
-        }
-      }
-    },
-    "AssetTypes": {
-      "title": "AssetTypes",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-z][a-z_+]*[a-z]$": {
-          "oneOf": [
-            {
-              "title": "AssetTypeExtension",
-              "description": "Extends a canonical asset type with additional assets.",
-              "type": "object",
-              "additionalProperties": false,
-              "required": [
-                "_extends",
-                "assets"
-              ],
-              "properties": {
-                "_extends": {
-                  "type": "string",
-                  "pattern": "^(starforged|ironsworn)/assets/[a-z][a-z_+]*[a-z]$",
-                  "examples": [
-                    "ironsworn/assets/companion",
-                    "ironsworn/assets/path",
-                    "ironsworn/assets/combat_talent",
-                    "ironsworn/assets/ritual",
-                    "starforged/assets/command_vehicle",
-                    "starforged/assets/module",
-                    "starforged/assets/support_vehicle",
-                    "starforged/assets/path",
-                    "starforged/assets/companion",
-                    "starforged/assets/deed"
-                  ]
-                },
-                "assets": {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[a-z][a-z_+]*[a-z]$": {
-                      "$ref": "#/definitions/Asset"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "title": "AssetType",
-              "type": "object",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/CategoryMetadata"
-                },
-                {
-                  "required": [
-                    "assets",
-                    "description",
-                    "title"
-                  ],
-                  "properties": {
-                    "assets": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "patternProperties": {
-                        "^[a-z][a-z_+]*[a-z]$": {
-                          "$ref": "#/definitions/Asset"
-                        }
-                      }
-                    },
-                    "description": {
-                      "$ref": "#/definitions/Description"
-                    },
-                    "source": {
-                      "$ref": "#/definitions/Source"
-                    },
-                    "title": {
-                      "$ref": "#/definitions/Title"
-                    }
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "MoveCategories": {
-      "title": "MoveCategories",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-z][a-z_+]*[a-z]$": {
-          "title": "MoveCategory",
+        {
           "properties": {
-            "title": {
-              "$ref": "#/definitions/Title"
-            },
-            "color": {
-              "$ref": "#/definitions/Color"
-            },
-            "description": {
-              "$ref": "#/definitions/Description"
-            },
-            "source": {
-              "$ref": "#/definitions/Source"
-            },
-            "moves": {
-              "patternProperties": {
-                "^[a-z][a-z_+]*[a-z]$": {
-                  "$ref": "#/definitions/Move"
+            "options": {
+              "$ref": "#/definitions/OracleTableRows"
+            }
+          }
+        }
+      ]
+    },
+    "WorldTruthClassic": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/SettingTruth"
+        },
+        {
+          "properties": {
+            "options": {
+              "type": "array",
+              "maxItems": 3,
+              "minItems": 3,
+              "items": {
+                "type": "object",
+                "required": [
+                  "description",
+                  "quest_starter"
+                ],
+                "properties": {
+                  "description": {
+                    "$ref": "#/definitions/Description"
+                  },
+                  "quest_starter": {
+                    "$ref": "#/definitions/QuestStarter"
+                  }
                 }
               }
             }
           }
         }
-      }
+      ]
     },
-    "OracleSets": {
-      "title": "OracleSets",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-z][a-z_+]*[a-z]$": {
-          "$ref": "#/definitions/OracleSet"
-        }
-      }
-    },
-    "NamespaceStarforged": {
+    "NamespaceClassic": {
       "additionalProperties": false,
       "properties": {
         "asset_types": {
-          "$ref": "#/definitions/AssetTypes"
-        },
-        "oracle_sets": {
-          "$ref": "#/definitions/OracleSets"
+          "title": "AssetTypes",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/AssetType"
+            }
+          }
         },
         "move_categories": {
-          "$ref": "#/definitions/MoveCategories"
+          "title": "MoveCategories",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/MoveCategory"
+            }
+          }
+        },
+        "oracle_sets": {
+          "title": "OracleSets",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleSet"
+            }
+          }
+        },
+        "_game": {
+          "const": "starforged"
+        },
+        "world_truths": {
+          "title": "WorldTruthsClassic",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/WorldTruthClassic"
+            }
+          }
         },
         "encounters": {
           "title": "EncountersStarforged",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "EncounterStarforged",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/Encounter"
-                },
-                {
-                  "required": [
-                    "summary",
-                    "nature"
-                  ],
-                  "properties": {
-                    "summary": {
-                      "$ref": "#/definitions/Summary"
-                    },
-                    "nature": {
-                      "title": "EncounterNatureTypeStarforged",
-                      "type": "string",
-                      "examples": [
-                        "creature",
-                        "horror",
-                        "human",
-                        "machine",
-                        "monster",
-                        "vehicle"
-                      ]
-                    },
-                    "variants": {
-                      "additionalProperties": false,
-                      "patternProperties": {
-                        "^[a-z][a-z_+]*[a-z]$": {
-                          "$ref": "#/definitions/Encounter"
-                        }
-                      }
-                    }
-                  }
-                }
-              ]
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/EncounterStarforged"
+            }
+          }
+        },
+        "regions": {
+          "title": "Regions",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/RegionEntry"
+            }
+          }
+        },
+        "rarities": {
+          "title": "Rarities",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/Rarity"
+            }
+          }
+        },
+        "site_domains": {
+          "title": "DelveSiteDomains",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/DelveSiteDomain"
+            }
+          }
+        },
+        "site_themes": {
+          "title": "DelveSiteThemes",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/DelveSiteTheme"
+            }
+          }
+        },
+        "delve_sites": {
+          "title": "DelveSites",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/DelveSite"
             }
           }
         },
@@ -2702,172 +3039,115 @@
           "title": "SettingTruthsStarforged",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "SettingTruthStarforged",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/SettingTruth"
-                },
-                {
-                  "properties": {
-                    "options": {
-                      "$ref": "#/definitions/OracleTableRows"
-                    }
-                  }
-                }
-              ]
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/SettingTruthStarforged"
             }
           }
         }
       }
     },
-    "NamespaceClassic": {
+    "NamespaceStarforged": {
       "additionalProperties": false,
       "properties": {
         "asset_types": {
-          "$ref": "#/definitions/AssetTypes"
-        },
-        "oracle_sets": {
-          "$ref": "#/definitions/OracleSets"
-        },
-        "move_categories": {
-          "$ref": "#/definitions/MoveCategories"
-        },
-        "world_truths": {
-          "title": "SettingTruthsClassic",
+          "title": "AssetTypes",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "WorldTruthClassic",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/SettingTruth"
-                },
-                {
-                  "properties": {
-                    "options": {
-                      "type": "array",
-                      "maxItems": 3,
-                      "minItems": 3,
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "description",
-                          "quest_starter"
-                        ],
-                        "properties": {
-                          "description": {
-                            "$ref": "#/definitions/Description"
-                          },
-                          "quest_starter": {
-                            "$ref": "#/definitions/QuestStarter"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              ]
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/AssetType"
+            }
+          }
+        },
+        "move_categories": {
+          "title": "MoveCategories",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/MoveCategory"
+            }
+          }
+        },
+        "oracle_sets": {
+          "title": "OracleSets",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/OracleSet"
+            }
+          }
+        },
+        "_game": {
+          "const": "starforged"
+        },
+        "world_truths": {
+          "title": "WorldTruthsClassic",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/WorldTruthClassic"
             }
           }
         },
         "encounters": {
-          "title": "EncountersClassic",
+          "title": "EncountersStarforged",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "EncounterNatureClassic",
-              "additionalProperties": false,
-              "properties": {
-                "encounters": {
-                  "additionalProperties": false,
-                  "patternProperties": {
-                    "^[a-z][a-z_+]*[a-z]$": {
-                      "title": "EncounterClassic",
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/Encounter"
-                        },
-                        {
-                          "additionalProperties": false,
-                          "properties": {
-                            "nature": {
-                              "title": "EncounterNatureTypeClassic",
-                              "type": "string",
-                              "examples": [
-                                "Ironlander",
-                                "firstborn",
-                                "animal",
-                                "beast",
-                                "horror",
-                                "anomaly"
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/EncounterStarforged"
             }
           }
         },
         "regions": {
-          "title": "IronlandsRegions",
+          "title": "Regions",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
-              "title": "IronlandsRegion",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/CyclopediaEntry"
-                },
-                {
-                  "required": [
-                    "description",
-                    "features",
-                    "quest_starter",
-                    "summary"
-                  ]
-                }
-              ]
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/RegionEntry"
             }
           }
         },
         "rarities": {
-          "type": "object",
+          "title": "Rarities",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/definitions/Rarity"
             }
           }
         },
         "site_domains": {
-          "type": "object",
+          "title": "DelveSiteDomains",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/definitions/DelveSiteDomain"
             }
           }
         },
         "site_themes": {
-          "type": "object",
+          "title": "DelveSiteThemes",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/definitions/DelveSiteTheme"
             }
           }
         },
         "delve_sites": {
-          "type": "object",
+          "title": "DelveSites",
           "additionalProperties": false,
           "patternProperties": {
-            "^[a-z][a-z_+]*[a-z]$": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/definitions/DelveSite"
+            }
+          }
+        },
+        "setting_truths": {
+          "title": "SettingTruthsStarforged",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/definitions/SettingTruthStarforged"
             }
           }
         }
@@ -2878,18 +3158,36 @@
   "propertyNames": {
     "$ref": "#/definitions/NamespaceKey"
   },
-  "patternProperties": {
-    ".*": {
-      "title": "Namespace",
-      "description": "The name of the dataset, used as a key in the root data object and to compose Dataforged's string IDs. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
-      "anyOf": [
-        {
-          "$ref": "#/definitions/NamespaceClassic"
-        },
-        {
+  "oneOf": [
+    {
+      "required": [
+        "_game"
+      ],
+      "properties": {
+        "_game": {
+          "const": "starforged"
+        }
+      },
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9_]*[a-z0-9]$": {
           "$ref": "#/definitions/NamespaceStarforged"
         }
-      ]
+      }
+    },
+    {
+      "required": [
+        "_game"
+      ],
+      "properties": {
+        "_game": {
+          "const": "classic"
+        }
+      },
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9_]*[a-z0-9]$": {
+          "$ref": "#/definitions/NamespaceClassic"
+        }
+      }
     }
-  }
+  ]
 }

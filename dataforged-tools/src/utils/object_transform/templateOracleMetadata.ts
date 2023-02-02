@@ -1,6 +1,6 @@
 import { YamlOracleTable, YamlOracleTableTemplate } from '@schema'
 import { replaceInAllStrings } from '@utils/object_transform/replaceInAllStrings.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * Builds Oracle metadata from a template, replacing template string values where appropriate.

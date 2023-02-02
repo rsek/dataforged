@@ -2,7 +2,7 @@ import { MASTER_DATA_PATH } from '@constants'
 import { Asset, Game, YamlAssetType, YamlAssetRoot } from '@schema'
 import { buildLog } from '@utils/logging/buildLog.js'
 import yaml from 'js-yaml'
-import _ from 'lodash-es'
+import _ from 'lodash'
 import fs from 'fs'
 import { AssetTypeBuilder } from '@builders'
 

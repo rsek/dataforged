@@ -3,7 +3,7 @@ import type { Asset, AssetType, AssetUsage, Display, Game, Source, Title, YamlAs
 import { SourceTitle } from '@schema'
 import type { SnakeCaseString } from '@schema/json/common/String.js'
 import { formatId } from '@utils'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

@@ -2,7 +2,7 @@
 import type { Game, Source, YamlSource } from '@schema'
 import { License, SourceTitle } from '@schema'
 import { badJsonError } from '@utils/logging/badJsonError.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @internal

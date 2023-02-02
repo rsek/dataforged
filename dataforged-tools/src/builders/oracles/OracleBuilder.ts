@@ -7,7 +7,7 @@ import { extractAncestors } from '@utils/extractAncestors.js'
 import { buildLog } from '@utils/logging/buildLog.js'
 import { templateOracle } from '@utils/object_transform/templateOracle.js'
 import { templateTableRows } from '@utils/object_transform/templateOracleTable.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 /**
  * @see {@link OracleSet}, {@link OracleTable}

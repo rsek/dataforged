@@ -1,6 +1,6 @@
 
 import { readFileSync, writeFileSync } from 'fs'
-import _ from 'lodash-es'
+import _ from 'lodash'
 import yaml from 'js-yaml'
 
 const moveData = JSON.parse(readFileSync('./src/data/moves.json'))

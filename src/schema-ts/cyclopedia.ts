@@ -1,6 +1,6 @@
 import { JSONSchema7Definition } from 'json-schema'
-import { merge } from 'lodash-es'
-import { dfRecordSchema } from 'src/schema-ts/utils.js'
+import { merge } from 'lodash'
+import { dfRecordSchema } from './utils'
 
 /**
  * Schema with features common to "cyclopedia" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*)

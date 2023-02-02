@@ -7,7 +7,7 @@ import { buildLog } from '@utils/logging/buildLog.js'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
 import yaml from 'js-yaml'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 export abstract class RootCollectionBuilder<
   G extends Game,

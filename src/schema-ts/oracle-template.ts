@@ -1,4 +1,4 @@
-import { fill, inRange, isInteger, sum } from 'lodash-es'
+import { fill, inRange, isInteger, sum } from 'lodash'
 
 export function distributeOracleRows (numberOfRows: number): Array<{ floor: number, ceiling: number }> {
   if (!isInteger(numberOfRows)) throw new Error('Expected an integer value')

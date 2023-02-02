@@ -4,7 +4,7 @@ import { Game } from '@schema'
 import type { Starforged } from '@schema'
 import { buildDataforged } from '@utils/builders/buildDataforged.js'
 import { writeJson } from '@utils/io/writeJSON.js'
-import _ from 'lodash-es'
+import _ from 'lodash'
 
 const data = buildDataforged(Game.Starforged) as Starforged
 export { data }
