@@ -3,7 +3,7 @@ import { JSONSchema7 } from 'json-schema'
 export const WorldTruthClassic: JSONSchema7 = {
   allOf: [
     {
-      $ref: '#/definitions/SettingTruth'
+      $ref: '#/$defs/SettingTruth'
     },
     {
       properties: {
@@ -19,10 +19,10 @@ export const WorldTruthClassic: JSONSchema7 = {
             ],
             properties: {
               description: {
-                $ref: '#/definitions/Description'
+                $ref: '#/$defs/Description'
               },
               quest_starter: {
-                $ref: '#/definitions/QuestStarter'
+                $ref: '#/$defs/QuestStarter'
               }
             }
           }
@@ -39,7 +39,7 @@ export const SettingTruthOption: JSONSchema7 = {
   additionalProperties: false,
   properties: {
     quest_starter: {
-      $ref: '#/definitions/QuestStarter'
+      $ref: '#/$defs/QuestStarter'
     }
   }
 }
@@ -52,13 +52,13 @@ export const SettingTruth: JSONSchema7 = {
   ],
   properties: {
     _id: {
-      $ref: '#/definitions/ID'
+      $ref: '#/$defs/ID'
     },
     name: {
-      $ref: '#/definitions/LocalizedLabel'
+      $ref: '#/$defs/LocalizedLabel'
     },
     source: {
-      $ref: '#/definitions/Source'
+      $ref: '#/$defs/Source'
     }
   }
 }
@@ -66,14 +66,14 @@ export const SettingTruth: JSONSchema7 = {
 const SettingTruthStarforged: JSONSchema7 = {
   allOf: [
     {
-      $ref: '#/definitions/SettingTruth'
+      $ref: '#/$defs/SettingTruth'
     },
     {
       properties: {
         options: {
           type: 'array',
           items: {
-            $ref: '#/definitions/OracleTableRow'
+            $ref: '#/$defs/OracleTableRow'
           }
         }
       }

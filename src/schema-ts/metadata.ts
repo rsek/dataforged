@@ -9,22 +9,22 @@ const
     ],
     properties: {
       _id: {
-        $ref: '#/definitions/ID'
+        $ref: '#/$defs/ID'
       },
       title: {
-        $ref: '#/definitions/Title'
+        $ref: '#/$defs/Title'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       },
       summary: {
-        $ref: '#/definitions/Summary'
+        $ref: '#/$defs/Summary'
       },
       description: {
-        $ref: '#/definitions/Description'
+        $ref: '#/$defs/Description'
       },
       tags: {
-        $ref: '#/definitions/Tags'
+        $ref: '#/$defs/Tags'
       }
     }
   }
@@ -71,19 +71,19 @@ const $defs: Record<string, JSONSchema7> = {
     additionalProperties: false,
     properties: {
       _id: {
-        $ref: '#/definitions/ID'
+        $ref: '#/$defs/ID'
       },
       canonical: {
         description: "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       short: {
         description: "The shortest title for this item that remains distinct amongst its siblings.\n\n Unless you're very pressed for space, most UX should use {@link Title.standard} instead.",
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       standard: {
         description: 'The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some classic Ironsworn oracles (because *nobody* remembers it as "Oracle 15").',
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       }
     }
   },
@@ -163,7 +163,7 @@ const $defs: Record<string, JSONSchema7> = {
         type: 'string'
       },
       license: {
-        $ref: '#/definitions/License'
+        $ref: '#/$defs/License'
       }
     }
   },
@@ -182,31 +182,31 @@ const $defs: Record<string, JSONSchema7> = {
       rolls: {
         type: 'array',
         items: {
-          $ref: '#/definitions/OracleTable.ID'
+          $ref: '#/$defs/OracleTable.ID'
         }
       },
       regions: {
         type: 'array',
         items: {
-          $ref: '#/definitions/IronlandsRegion.ID'
+          $ref: '#/$defs/IronlandsRegion.ID'
         }
       },
       assets: {
         type: 'array',
         items: {
-          $ref: '#/definitions/Asset.ID'
+          $ref: '#/$defs/Asset.ID'
         }
       },
       site_themes: {
         type: 'array',
         items: {
-          $ref: '#/definitions/DelveSiteTheme.ID'
+          $ref: '#/$defs/DelveSiteTheme.ID'
         }
       },
       site_domains: {
         type: 'array',
         items: {
-          $ref: '#/definitions/DelveSiteDomain.ID'
+          $ref: '#/$defs/DelveSiteDomain.ID'
         }
       }
     }
@@ -215,16 +215,16 @@ const $defs: Record<string, JSONSchema7> = {
     description: 'Contains data relevant to rendering the item.',
     properties: {
       icon: {
-        $ref: '#/definitions/Icon'
+        $ref: '#/$defs/Icon'
       },
       images: {
         type: 'array',
         items: {
-          $ref: '#/definitions/Image'
+          $ref: '#/$defs/Image'
         }
       },
       color: {
-        $ref: '#/definitions/Color'
+        $ref: '#/$defs/Color'
       }
     }
   }

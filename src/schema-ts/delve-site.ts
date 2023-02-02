@@ -14,26 +14,26 @@ const $defs: Record<string, JSONSchema7> = {
     ],
     properties: {
       name: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       },
       rank: {
-        $ref: '#/definitions/ChallengeRank'
+        $ref: '#/$defs/ChallengeRank'
       },
       theme: {
-        $ref: '#/definitions/DelveSiteTheme.ID'
+        $ref: '#/$defs/DelveSiteTheme.ID'
       },
       domain: {
-        $ref: '#/definitions/DelveSiteDomain.ID'
+        $ref: '#/$defs/DelveSiteDomain.ID'
       },
       denizens: {
         type: 'array',
         allOf: [
           {
             items: {
-              $ref: '#/definitions/DelveSiteDenizen'
+              $ref: '#/$defs/DelveSiteDenizen'
             }
           },
           {
@@ -213,19 +213,19 @@ const $defs: Record<string, JSONSchema7> = {
     ],
     properties: {
       _id: {
-        $ref: '#/definitions/Rarity.ID'
+        $ref: '#/$defs/Rarity.ID'
       },
       name: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       icon: {
-        $ref: '#/definitions/Icon'
+        $ref: '#/$defs/Icon'
       },
       asset: {
-        $ref: '#/definitions/Asset.ID'
+        $ref: '#/$defs/Asset.ID'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       },
       xp_cost: {
         type: 'integer',
@@ -233,7 +233,7 @@ const $defs: Record<string, JSONSchema7> = {
         maximum: 5
       },
       description: {
-        $ref: '#/definitions/Description'
+        $ref: '#/$defs/Description'
       }
     }
   },
@@ -250,7 +250,7 @@ const $defs: Record<string, JSONSchema7> = {
     type: 'object',
     allOf: [
       {
-        $ref: '#/definitions/OracleRowLike'
+        $ref: '#/$defs/OracleRowLike'
       },
       {
         required: [
@@ -260,16 +260,16 @@ const $defs: Record<string, JSONSchema7> = {
         properties: {
           name: {
             description: "A name for the encounter, if it differs from the original entry's default name.",
-            $ref: '#/definitions/LocalizedLabel'
+            $ref: '#/$defs/LocalizedLabel'
           },
           rarity: {
-            $ref: '#/definitions/DelveSiteDenizenRarity'
+            $ref: '#/$defs/DelveSiteDenizenRarity'
           },
           encounter: {
             default: null,
             oneOf: [
               {
-                $ref: '#/definitions/EncounterClassic.ID'
+                $ref: '#/$defs/EncounterClassic.ID'
               },
               {
                 type: 'null'
@@ -293,28 +293,28 @@ const $defs: Record<string, JSONSchema7> = {
     additionalProperties: false,
     properties: {
       name: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       card_type: {
-        $ref: '#/definitions/DelveCardType'
+        $ref: '#/$defs/DelveCardType'
       },
       summary: {
-        $ref: '#/definitions/Summary'
+        $ref: '#/$defs/Summary'
       },
       description: {
-        $ref: '#/definitions/Description'
+        $ref: '#/$defs/Description'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       },
       features: {
         items: {
-          $ref: '#/definitions/OracleTableRow'
+          $ref: '#/$defs/OracleTableRow'
         }
       },
       dangers: {
         items: {
-          $ref: '#/definitions/OracleTableRow'
+          $ref: '#/$defs/OracleTableRow'
         }
       }
     }
@@ -322,7 +322,7 @@ const $defs: Record<string, JSONSchema7> = {
   DelveSiteDomain: {
     allOf: [
       {
-        $ref: '#/definitions/DelveCardBase'
+        $ref: '#/$defs/DelveCardBase'
       },
       {
         properties: {
@@ -486,7 +486,7 @@ const $defs: Record<string, JSONSchema7> = {
   DelveSiteTheme: {
     allOf: [
       {
-        $ref: '#/definitions/DelveCardBase'
+        $ref: '#/$defs/DelveCardBase'
       },
       {
         properties: {

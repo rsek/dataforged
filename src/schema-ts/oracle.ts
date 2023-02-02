@@ -89,7 +89,7 @@ export const OracleTableRoll: JSONSchema7 = {
   ],
   properties: {
     table: {
-      $ref: '#/definitions/OracleTable.ID'
+      $ref: '#/$defs/OracleTable.ID'
     },
     times: {
       description: 'The number of times to roll',
@@ -128,7 +128,7 @@ export const OracleTableRowRenderMetadata: JSONSchema7 = {
     embed_table: {
       description: 'The ID of another oracle table, which should be rendered *within* this table row.',
       // TODO: point to an example in the Ironsworn rulebook
-      $ref: '#/definitions/OracleTable.ID'
+      $ref: '#/$defs/OracleTable.ID'
     }
   }
 }
@@ -142,7 +142,7 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
   properties: {
     _id: {
       // TODO
-      $ref: '#/definitions/ID'
+      $ref: '#/$defs/ID'
     },
     floor: {
       description: 'The low end of the dice range for this table row.'
@@ -152,13 +152,13 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
     },
     result: {
       description: 'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.',
-      $ref: '#/definitions/LocalizedMarkdown'
+      $ref: '#/$defs/LocalizedMarkdown'
     },
     summary: {
       description: "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       oneOf: [
         {
-          $ref: '#/definitions/Summary'
+          $ref: '#/$defs/Summary'
         },
         {
           type: 'null'
@@ -172,27 +172,27 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
       type: 'object',
       properties: {
         result: {
-          $ref: '#/definitions/LocalizedTemplateString'
+          $ref: '#/$defs/LocalizedTemplateString'
         },
         summary: {
-          $ref: '#/definitions/LocalizedTemplateString'
+          $ref: '#/$defs/LocalizedTemplateString'
         },
         description: {
-          $ref: '#/definitions/LocalizedTemplateString'
+          $ref: '#/$defs/LocalizedTemplateString'
         }
       }
     },
     rolls: {
       type: 'array',
       items: {
-        $ref: '#/definitions/OracleTableRoll'
+        $ref: '#/$defs/OracleTableRoll'
       }
     },
     suggestions: {
-      $ref: '#/definitions/Suggestions'
+      $ref: '#/$defs/Suggestions'
     },
     render: {
-      $ref: '#/definitions/RenderMetadata'
+      $ref: '#/$defs/RenderMetadata'
     }
   }
 })
@@ -204,16 +204,16 @@ export const BaseOracle: JSONSchema7 = {
   required: ['title'],
   properties: {
     title: {
-      $ref: '#/definitions/Title'
+      $ref: '#/$defs/Title'
     },
     source: {
-      $ref: '#/definitions/Source'
+      $ref: '#/$defs/Source'
     },
     summary: {
-      $ref: '#/definitions/Summary'
+      $ref: '#/$defs/Summary'
     },
     description: {
-      $ref: '#/definitions/Description'
+      $ref: '#/$defs/Description'
     }
   }
 }
@@ -254,10 +254,10 @@ export const OracleTable: JSONSchema7 = merge(BaseOracle,
         type: 'object',
         properties: {
           _id: {
-            $ref: '#/definitions/ID'
+            $ref: '#/$defs/ID'
           },
           text: {
-            $ref: '#/definitions/LocalizedMarkdown'
+            $ref: '#/$defs/LocalizedMarkdown'
           }
         },
         additionalProperties: false,
@@ -274,7 +274,7 @@ export const OracleTable: JSONSchema7 = merge(BaseOracle,
         type: 'object',
         allOf: [
           {
-            $ref: '#/definitions/RenderMetadata'
+            $ref: '#/$defs/RenderMetadata'
           },
           {
             additionalProperties: false,
@@ -284,10 +284,10 @@ export const OracleTable: JSONSchema7 = merge(BaseOracle,
                 additionalProperties: {
                   oneOf: [
                     {
-                      $comment: '#/definitions/TableColumnRoll'
+                      $comment: '#/$defs/TableColumnRoll'
                     },
                     {
-                      $comment: '#/definitions/TableColumnText'
+                      $comment: '#/$defs/TableColumnText'
                     }
                   ]
                 }
@@ -301,7 +301,7 @@ export const OracleTable: JSONSchema7 = merge(BaseOracle,
                 type: 'string'
               },
               source: {
-                $ref: '#/definitions/Source'
+                $ref: '#/$defs/Source'
               }
             }
           }
@@ -310,7 +310,7 @@ export const OracleTable: JSONSchema7 = merge(BaseOracle,
       table: {
         type: 'array',
         items: {
-          $ref: '#/definitions/OracleTableRow'
+          $ref: '#/$defs/OracleTableRow'
         }
       }
     }

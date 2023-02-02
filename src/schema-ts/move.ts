@@ -6,7 +6,7 @@ export const MoveExtension: JSONSchema7 = {
   title: 'MoveExtension',
   allOf: [
     {
-      $ref: '#/definitions/MoveExtensionBase'
+      $ref: '#/$defs/MoveExtensionBase'
     },
     {
       required: [
@@ -14,7 +14,7 @@ export const MoveExtension: JSONSchema7 = {
       ],
       properties: {
         _moves: {
-          $ref: '#/definitions/MoveExtensionBase/properties/_moves'
+          $ref: '#/$defs/MoveExtensionBase/properties/_moves'
         }
       }
     }
@@ -32,12 +32,12 @@ export const MoveExtensionBase: JSONSchema7 = {
         'null'
       ],
       items: {
-        $ref: '#/definitions/Move.ID'
+        $ref: '#/$defs/Move.ID'
       },
       default: null
     },
     trigger: {
-      $ref: '#/definitions/MoveTrigger'
+      $ref: '#/$defs/MoveTrigger'
     }
   }
 }
@@ -47,16 +47,16 @@ export const MoveCategory: JSONSchema7 = {
   type: 'object',
   properties: {
     title: {
-      $ref: '#/definitions/Title'
+      $ref: '#/$defs/Title'
     },
     color: {
-      $ref: '#/definitions/Color'
+      $ref: '#/$defs/Color'
     },
     description: {
-      $ref: '#/definitions/Description'
+      $ref: '#/$defs/Description'
     },
     source: {
-      $ref: '#/definitions/Source'
+      $ref: '#/$defs/Source'
     },
     moves: dfRecordSchema('Move')
   }
@@ -76,31 +76,31 @@ MoveExtensionBase,
     additionalProperties: false,
     properties: {
       name: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       trigger: {
-        $ref: '#/definitions/MoveTrigger'
+        $ref: '#/$defs/MoveTrigger'
       },
       attributes: {
         type: 'object',
         patternProperties: {
           [DF_KEY]: {
-            $ref: '#/definitions/CustomStat'
+            $ref: '#/$defs/CustomStat'
           }
         }
       },
       outcomes: {
-        $ref: '#/definitions/MoveOutcomes'
+        $ref: '#/$defs/MoveOutcomes'
       },
       text: {
-        $ref: '#/definitions/LocalizedMarkdown'
+        $ref: '#/$defs/LocalizedMarkdown'
       },
       suggestions: {
-        $ref: '#/definitions/Suggestions'
+        $ref: '#/$defs/Suggestions'
       },
       asset: {
         description: 'The ID of the parent Asset of the move, if any.',
-        $ref: '#/definitions/Asset.ID'
+        $ref: '#/$defs/Asset.ID'
       },
       progress_move: {
         description: 'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
@@ -108,13 +108,13 @@ MoveExtensionBase,
       },
       variant_of: {
         description: 'The ID of the move that this move is a variant of, if any.',
-        $ref: '#/definitions/Move.ID'
+        $ref: '#/$defs/Move.ID'
       },
       oracles: {
         description: 'The ID of any oracles directly referenced by the move, or vice versa.',
         type: 'array',
         items: {
-          $ref: '#/definitions/OracleTable.ID'
+          $ref: '#/$defs/OracleTable.ID'
         }
       },
       optional: {
@@ -131,10 +131,10 @@ MoveExtensionBase,
       },
       category: {
         description: "The ID of the move's category.",
-        $ref: '#/definitions/MoveCategory.ID'
+        $ref: '#/$defs/MoveCategory.ID'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       }
     }
 
@@ -142,7 +142,7 @@ MoveExtensionBase,
   MoveTriggerOptionAction: {
     allOf: [
       {
-        $ref: '#/definitions/MoveTriggerOption'
+        $ref: '#/$defs/MoveTriggerOption'
       },
       {
         properties: {
@@ -151,16 +151,16 @@ MoveExtensionBase,
             items: {
               anyOf: [
                 {
-                  $ref: '#/definitions/PlayerStat.ID'
+                  $ref: '#/$defs/PlayerStat.ID'
                 },
                 {
-                  $ref: '#/definitions/PlayerConditionMeter.ID'
+                  $ref: '#/$defs/PlayerConditionMeter.ID'
                 },
                 {
-                  $ref: '#/definitions/ConditionMeterAlias'
+                  $ref: '#/$defs/ConditionMeterAlias'
                 },
                 {
-                  $ref: '#/definitions/Attribute.ID'
+                  $ref: '#/$defs/Attribute.ID'
                 }
               ]
             }
@@ -175,14 +175,14 @@ MoveExtensionBase,
   MoveTriggerOptionProgress: {
     allOf: [
       {
-        $ref: '#/definitions/MoveTriggerOption'
+        $ref: '#/$defs/MoveTriggerOption'
       },
       {
         properties: {
           using: {
             type: 'array',
             items: {
-              $ref: '#/definitions/ProgressTrackType'
+              $ref: '#/$defs/ProgressTrackType'
             }
           },
           roll_type: {
@@ -202,12 +202,12 @@ MoveExtensionBase,
   MoveOutcomeWithMatch: {
     allOf: [
       {
-        $ref: '#/definitions/MoveOutcome'
+        $ref: '#/$defs/MoveOutcome'
       },
       {
         properties: {
           match: {
-            $ref: '#/definitions/MoveOutcome'
+            $ref: '#/$defs/MoveOutcome'
           }
         }
       }
@@ -217,7 +217,7 @@ MoveExtensionBase,
     type: 'object',
     properties: {
       text: {
-        $ref: '#/definitions/LocalizedMarkdown'
+        $ref: '#/$defs/LocalizedMarkdown'
       }
     }
   },
@@ -225,13 +225,13 @@ MoveExtensionBase,
     type: 'object',
     properties: {
       miss: {
-        $ref: '#/definitions/MoveOutcomeWithMatch'
+        $ref: '#/$defs/MoveOutcomeWithMatch'
       },
       weak_hit: {
-        $ref: '#/definitions/MoveOutcome'
+        $ref: '#/$defs/MoveOutcome'
       },
       strong_hit: {
-        $ref: '#/definitions/MoveOutcomeWithMatch'
+        $ref: '#/$defs/MoveOutcomeWithMatch'
       }
     }
   },
@@ -255,7 +255,7 @@ MoveExtensionBase,
         ]
       },
       text: {
-        $ref: '#/definitions/LocalizedMarkdown'
+        $ref: '#/$defs/LocalizedMarkdown'
       },
       using: {
         type: 'array',
@@ -278,12 +278,12 @@ MoveExtensionBase,
     oneOf: [
       {
         items: {
-          $ref: '#/definitions/MoveTriggerOptionAction'
+          $ref: '#/$defs/MoveTriggerOptionAction'
         }
       },
       {
         items: {
-          $ref: '#/definitions/MoveTriggerOptionProgress'
+          $ref: '#/$defs/MoveTriggerOptionProgress'
         }
       }
     ]
@@ -295,7 +295,7 @@ MoveExtensionBase,
       options: {
         type: 'array',
         items: {
-          $ref: '#/definitions/MoveTriggerOption'
+          $ref: '#/$defs/MoveTriggerOption'
         }
       },
       text: {

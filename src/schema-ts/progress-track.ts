@@ -37,8 +37,8 @@ const $defs: Record<string, JSONSchema7> = {
   },
   ProgressTrackType: {
     anyOf: [
-      { $ref: '#/definitions/ProgressTrackStarforgedType' },
-      { $ref: '#/definitions/ProgressTrackClassicType' }
+      { $ref: '#/$defs/ProgressTrackStarforgedType' },
+      { $ref: '#/$defs/ProgressTrackClassicType' }
     ]
   }
 }

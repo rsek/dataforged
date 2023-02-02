@@ -15,31 +15,31 @@ const CyclopediaEntry: JSONSchema7 = {
   ],
   properties: {
     _id: {
-      $ref: '#/definitions/ID'
+      $ref: '#/$defs/ID'
     },
     name: {
-      $ref: '#/definitions/LocalizedLabel'
+      $ref: '#/$defs/LocalizedLabel'
     },
     source: {
-      $ref: '#/definitions/Source'
+      $ref: '#/$defs/Source'
     },
     tags: {
-      $ref: '#/definitions/Tags'
+      $ref: '#/$defs/Tags'
     },
     summary: {
-      $ref: '#/definitions/Summary'
+      $ref: '#/$defs/Summary'
     },
     description: {
-      $ref: '#/definitions/Description'
+      $ref: '#/$defs/Description'
     },
     features: {
       type: 'array',
       items: {
-        $ref: '#/definitions/LocalizedMarkdown'
+        $ref: '#/$defs/LocalizedMarkdown'
       }
     },
     quest_starter: {
-      $ref: '#/definitions/QuestStarter'
+      $ref: '#/$defs/QuestStarter'
     }
   }
 }
@@ -54,9 +54,9 @@ const RegionEntry: JSONSchema7 = merge(CyclopediaEntry,
 const EncounterStub: JSONSchema7 = {
   required: ['rank', 'name', 'description', 'nature'],
   properties: {
-    rank: { $ref: '#/definitions/ChallengeRank' },
-    name: { $ref: '#/definitions/LocalizedLabel' },
-    description: { $ref: '#/definitions/Description' },
+    rank: { $ref: '#/$defs/ChallengeRank' },
+    name: { $ref: '#/$defs/LocalizedLabel' },
+    description: { $ref: '#/$defs/Description' },
     nature: { type: 'string' }
   }
 }
@@ -64,7 +64,7 @@ const EncounterStub: JSONSchema7 = {
 const Encounter: JSONSchema7 = merge(CyclopediaEntry, {
   description: 'Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.',
   allOf: [
-    { $ref: '#/definitions/EncounterStub' },
+    { $ref: '#/$defs/EncounterStub' },
     {
       required: [
         'drives',
@@ -74,13 +74,13 @@ const Encounter: JSONSchema7 = merge(CyclopediaEntry, {
         drives: {
           type: 'array',
           items: {
-            $ref: '#/definitions/LocalizedMarkdown'
+            $ref: '#/$defs/LocalizedMarkdown'
           }
         },
         tactics: {
           type: 'array',
           items: {
-            $ref: '#/definitions/LocalizedMarkdown'
+            $ref: '#/$defs/LocalizedMarkdown'
           }
         }
       }
@@ -118,11 +118,11 @@ const EncounterTypeClassic: JSONSchema7 = {
 const EncounterVariantStarforged: JSONSchema7 = {
   title: 'EncounterVariantStarforged',
   allOf: [
-    { $ref: '#/definitions/Encounter' },
+    { $ref: '#/$defs/Encounter' },
     {
       properties: {
         nature: {
-          $ref: '#/definitions/EncounterTypeStarforged'
+          $ref: '#/$defs/EncounterTypeStarforged'
         }
       }
     }
@@ -133,12 +133,12 @@ const EncounterStarforged: JSONSchema7 = {
   title: 'EncounterStarforged',
   allOf: [
     {
-      $ref: '#/definitions/Encounter'
+      $ref: '#/$defs/Encounter'
     },
     {
       properties: {
         nature: {
-          $ref: '#/definitions/EncounterTypeStarforged'
+          $ref: '#/$defs/EncounterTypeStarforged'
         },
         variants: dfRecordSchema('EncounterVariantStarforged', 'EncounterVariantsStarforged')
       }
@@ -148,10 +148,10 @@ const EncounterStarforged: JSONSchema7 = {
 
 const EncounterClassic: JSONSchema7 = {
   title: 'EncounterClassic',
-  allOf: [{ $ref: '#/definitions/Encounter' }, {
+  allOf: [{ $ref: '#/$defs/Encounter' }, {
     properties: {
       nature: {
-        $ref: '#/definitions/EncounterTypeClassic'
+        $ref: '#/$defs/EncounterTypeClassic'
       }
     }
   }]
@@ -160,8 +160,8 @@ const EncounterClassic: JSONSchema7 = {
 const EncounterNatureClassic: JSONSchema7 = {
   title: 'EncounterNatureClassic',
   properties: {
-    name: { $ref: '#/definitions/LocalizedLabel' },
-    nature: { $ref: '#/definitions/EncounterTypeClassic' }
+    name: { $ref: '#/$defs/LocalizedLabel' },
+    nature: { $ref: '#/$defs/EncounterTypeClassic' }
   }
 }
 

@@ -6,38 +6,38 @@ export const AssetAbilityBase: JSONSchema7 = {
   properties: {
     name: {
       description: 'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
-      $ref: '#/definitions/LocalizedLabel'
+      $ref: '#/$defs/LocalizedLabel'
     },
     text: {
       description: 'The rules text for this asset ability.',
-      $ref: '#/definitions/LocalizedMarkdown'
+      $ref: '#/$defs/LocalizedMarkdown'
     },
     attachments: {
       description: 'Details on what attachments (other assets) are accepted by this asset.',
-      $comment: '#/definitions/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
+      $comment: '#/$defs/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
     },
     attributes: {
       patternProperties: {
         [DF_KEY]: {
           oneOf: [
             {
-              $ref: '#/definitions/AttributeNumericOverride'
+              $ref: '#/$defs/AttributeNumericOverride'
             },
             {
               $comment: 'New condition meters require an ID.',
 
               oneOf: [
                 {
-                  $ref: '#/definitions/AttributeConditionMeter'
+                  $ref: '#/$defs/AttributeConditionMeter'
                 },
                 {
-                  $ref: '#/definitions/AttributeCounter'
+                  $ref: '#/$defs/AttributeCounter'
                 },
                 {
-                  $ref: '#/definitions/AttributeText'
+                  $ref: '#/$defs/AttributeText'
                 },
                 {
-                  $ref: '#/definitions/AttributeClock'
+                  $ref: '#/$defs/AttributeClock'
                 }
               ]
 
@@ -51,21 +51,21 @@ export const AssetAbilityBase: JSONSchema7 = {
       type: 'object',
       patternProperties: {
         [DF_KEY]: {
-          $ref: '#/definitions/Move'
+          $ref: '#/$defs/Move'
         }
       }
     },
     alter_moves: {
       type: 'array',
       items: {
-        $ref: '#/definitions/MoveExtensionBase'
+        $ref: '#/$defs/MoveExtensionBase'
       }
     },
     alter_player: {
-      $ref: '#/definitions/PlayerExtension'
+      $ref: '#/$defs/PlayerExtension'
     },
     _id: {
-      $ref: '#/definitions/AssetAbility.ID'
+      $ref: '#/$defs/AssetAbility.ID'
     },
     enabled: {
       description: "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
@@ -79,7 +79,7 @@ export const AssetAbility: JSONSchema7 = {
   description: 'Describes an asset ability.',
   allOf: [
     {
-      $ref: '#/definitions/AssetAbilityBase'
+      $ref: '#/$defs/AssetAbilityBase'
     },
     {
       required: [
@@ -89,17 +89,17 @@ export const AssetAbility: JSONSchema7 = {
         alter_moves: {
           type: 'array',
           items: {
-            $ref: '#/definitions/MoveExtension'
+            $ref: '#/$defs/MoveExtension'
           }
         },
         extend_abilities: {
           type: 'array',
           items: {
-            $ref: '#/definitions/AssetAbilityExtension'
+            $ref: '#/$defs/AssetAbilityExtension'
           }
         },
         text: {
-          $ref: '#/definitions/AssetAbilityBase/properties/text'
+          $ref: '#/$defs/AssetAbilityBase/properties/text'
         }
       }
     }
@@ -109,7 +109,7 @@ export const AssetAbilityExtension: JSONSchema7 = {
   description: "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
   allOf: [
     {
-      $ref: '#/definitions/AssetAbilityBase'
+      $ref: '#/$defs/AssetAbilityBase'
     },
     {
       required: [
@@ -118,7 +118,7 @@ export const AssetAbilityExtension: JSONSchema7 = {
       properties: {
         _ability: {
           description: 'The ID of the asset ability to be extended.',
-          $ref: '#/definitions/AssetAbility.ID'
+          $ref: '#/$defs/AssetAbility.ID'
         }
       }
     }
@@ -128,44 +128,44 @@ export const Asset: JSONSchema7 = {
   type: 'object',
   properties: {
     _id: {
-      $ref: '#/definitions/ID',
+      $ref: '#/$defs/ID',
       pattern: '^[a-z_]+/assets/[a-z_]+/[a-z_]+$'
     },
     attributes: {
       patternProperties: {
         [DF_KEY]: {
-          $ref: '#/definitions/Attribute'
+          $ref: '#/$defs/Attribute'
         }
       }
     },
     name: {
-      $ref: '#/definitions/LocalizedLabel'
+      $ref: '#/$defs/LocalizedLabel'
     },
     abilities: {
       type: 'array',
       additionalItems: false,
       items: [
         {
-          $ref: '#/definitions/AssetAbility'
+          $ref: '#/$defs/AssetAbility'
         },
         {
-          $ref: '#/definitions/AssetAbility'
+          $ref: '#/$defs/AssetAbility'
         },
         {
-          $ref: '#/definitions/AssetAbility'
+          $ref: '#/$defs/AssetAbility'
         }
       ]
     },
     requirement: {
       description: 'A markdown string representing the requirement text that appears at the top of some asset cards.',
-      $ref: '#/definitions/LocalizedMarkdown'
+      $ref: '#/$defs/LocalizedMarkdown'
     },
     source: {
-      $ref: '#/definitions/Source'
+      $ref: '#/$defs/Source'
     },
     attachments: {
       description: 'Details on what attachments (other assets) are accepted by this asset.',
-      $comment: '#/definitions/AssetAttachment'
+      $comment: '#/$defs/AssetAttachment'
     },
     tags: {
       type: 'array',
@@ -182,7 +182,7 @@ export const Asset: JSONSchema7 = {
       }
     },
     usage: {
-      $comment: '#/definitions/AssetUsage',
+      $comment: '#/$defs/AssetUsage',
       description: "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
     }
   },
@@ -210,7 +210,7 @@ export const AssetExtension: JSONSchema7 = {
     assets: {
       type: 'array',
       items: {
-        $ref: '#/definitions/Asset.ID'
+        $ref: '#/$defs/Asset.ID'
       }
     }
   }
@@ -223,7 +223,7 @@ export const AssetType: JSONSchema7 = {
     type: 'object',
     allOf: [
       {
-        $ref: '#/definitions/CategoryMetadata'
+        $ref: '#/$defs/CategoryMetadata'
       },
       {
         required: [
@@ -237,25 +237,25 @@ export const AssetType: JSONSchema7 = {
             additionalProperties: false,
             patternProperties: {
               [DF_KEY]: {
-                $ref: '#/definitions/Asset'
+                $ref: '#/$defs/Asset'
               }
             }
           },
           description: {
-            $ref: '#/definitions/Description'
+            $ref: '#/$defs/Description'
           },
           source: {
-            $ref: '#/definitions/Source'
+            $ref: '#/$defs/Source'
           },
           title: {
-            $ref: '#/definitions/Title'
+            $ref: '#/$defs/Title'
           }
         }
       }
     ]
   },
   {
-    $ref: '#/definitions/CategoryMetadata'
+    $ref: '#/$defs/CategoryMetadata'
   },
   {
     required: [
@@ -269,18 +269,18 @@ export const AssetType: JSONSchema7 = {
         additionalProperties: false,
         patternProperties: {
           [DF_KEY]: {
-            $ref: '#/definitions/Asset'
+            $ref: '#/$defs/Asset'
           }
         }
       },
       description: {
-        $ref: '#/definitions/Description'
+        $ref: '#/$defs/Description'
       },
       source: {
-        $ref: '#/definitions/Source'
+        $ref: '#/$defs/Source'
       },
       title: {
-        $ref: '#/definitions/Title'
+        $ref: '#/$defs/Title'
       }
     }
   }
@@ -317,7 +317,7 @@ export const AssetTypeExtension: JSONSchema7 = {
       type: 'object',
       patternProperties: {
         [DF_KEY]: {
-          $ref: '#/definitions/Asset'
+          $ref: '#/$defs/Asset'
         }
       }
     }
@@ -330,8 +330,8 @@ export const AssetTypes: JSONSchema7 = {
   patternProperties: {
     [DF_KEY]: {
       oneOf: [
-        { $ref: '#/definitions/AssetTypeExtension' },
-        { $ref: '#/definitions/AssetType' }
+        { $ref: '#/$defs/AssetTypeExtension' },
+        { $ref: '#/$defs/AssetType' }
       ]
     }
   }
@@ -360,10 +360,10 @@ const $defs: Record<string, JSONSchema7> = {
   ConditionMeterType: {
     oneOf: [
       {
-        $ref: '#/definitions/PlayerConditionMeter.ID'
+        $ref: '#/$defs/PlayerConditionMeter.ID'
       },
       {
-        $ref: '#/definitions/ConditionMeterAlias'
+        $ref: '#/$defs/ConditionMeterAlias'
       }
     ]
   }

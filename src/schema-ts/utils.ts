@@ -7,7 +7,7 @@ export function dfRecordSchema (itemSchema: string, title: string = itemSchema +
     additionalProperties: false,
     patternProperties: {
       [DF_KEY]: {
-        $ref: `#/definitions/${itemSchema}`
+        $ref: `#/$defs/${itemSchema}`
       }
     }
   }

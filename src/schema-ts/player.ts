@@ -28,7 +28,7 @@ const $defs: Record<string, JSONSchema7> = {
     type: 'object',
     properties: {
       _id: {
-        $ref: '#/definitions/PlayerStat.ID'
+        $ref: '#/$defs/PlayerStat.ID'
       },
       value: {
         type: 'integer',
@@ -44,14 +44,14 @@ const $defs: Record<string, JSONSchema7> = {
         type: 'object',
         // TODO: reformat to harmonize with CustomStat?
         patternProperties: {
-          [DF_KEY]: { $ref: '#/definitions/PlayerStat' }
+          [DF_KEY]: { $ref: '#/$defs/PlayerStat' }
         }
       },
       condition_meters: {
         type: 'object',
         patternProperties: {
           [DF_KEY]: {
-            $ref: '#/definitions/AttributeConditionMeter'
+            $ref: '#/$defs/AttributeConditionMeter'
           }
         }
       },

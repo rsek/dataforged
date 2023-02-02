@@ -14,7 +14,7 @@ import truth from './truth'
 import { NamespaceClassic, NamespaceStarforged } from './namespace'
 
 const dataforged:JSONSchema7 = {
-  $comment: {},
+  $comment: "Don't edit this by hand -- use the files in ./src/schema-ts instead.",
   title: "Dataforged",
     required: ['_game'],
     properties: {
@@ -24,7 +24,7 @@ const dataforged:JSONSchema7 = {
 
     patternProperties: {
       [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/definitions/NamespaceStarforged'
+        $ref: '#/$defs/NamespaceStarforged'
       }
     }
   }
@@ -39,7 +39,7 @@ const datasworn:JSONSchema7 =   {
 
     patternProperties: {
       [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/definitions/NamespaceClassic'
+        $ref: '#/$defs/NamespaceClassic'
       }
     }
   }

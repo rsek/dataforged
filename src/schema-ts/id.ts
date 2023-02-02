@@ -82,10 +82,10 @@ const $defs: Record<string, JSONSchema7> = {
   'Move.ID': {
     anyOf: [
       {
-        $ref: '#/definitions/CoreMove.ID'
+        $ref: '#/$defs/CoreMove.ID'
       },
       {
-        $ref: '#/definitions/AssetMove.ID'
+        $ref: '#/$defs/AssetMove.ID'
       }
     ]
   },
@@ -100,25 +100,25 @@ const $defs: Record<string, JSONSchema7> = {
   },
 
   'MoveCategory.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('moves', dfKey).toString()
   },
   'CoreMove.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('moves', dfKey, dfKey).toString()
   },
   'AssetType.ID': {
     $comment: '{namespace}/assets/{assetType}',
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('assets', dfKey).toString()
   },
   'Asset.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment: '{namespace}/assets/{assetType}/{asset}',
     pattern: new IdPattern('assets', dfKey, dfKey).toString()
   },
   'AssetMove.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment: '{namespace}/assets/{assetType}/{asset}/moves/{assetMove}',
     pattern: new IdPattern('assets', dfKey, dfKey, 'moves', dfKey).toString()
   },
@@ -129,49 +129,49 @@ const $defs: Record<string, JSONSchema7> = {
   },
   'DelveSiteDomain.ID': {
     $comment: '{namespace}/site_domains/{siteDomain}',
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('site_domains', dfKey).toString()
   },
 
   'IronlandsRegion.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment: '{namespace}/regions/{region}',
     pattern: new IdPattern('regions', dfKey).toString()
   },
   'OracleSet.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment: '{namespace}/oracles/{oracleSet}'
   },
 
   'OracleTable.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment: '{namespace}/oracles/{oracleSet}/{oracle}',
     pattern: `^${IdPattern.namespaceFragment}/oracles(/${dfKey}){2,}$`
   },
   'EncounterNatureClassic.ID': { $comment: '{namespace}/encounters/{nature}' },
   'EncounterClassic.ID': {
     $comment: '{namespace}/encounters/{nature}/{encounter}',
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('encounters', dfKey, dfKey).toString()
   },
   'EncounterVariantStarforged.ID': {
     $comment: '{namespace}/encounters/{encounter}/variants/{variant}',
 
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('encounters', dfKey, 'variants', 'dfKey').toString()
   },
   'EncounterStarforged.ID': {
     $comment: '{namespace}/encounters/{encounter}',
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('encounters', dfKey).toString()
   },
   'Rarity.ID': {
     $comment: '{namespace}/rarities/{rarity}',
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     pattern: new IdPattern('rarities', dfKey).toString()
   },
   'Attribute.ID': {
-    $ref: '#/definitions/ID',
+    $ref: '#/$defs/ID',
     $comment:
         `
       {namespace}/assets/{key}/{key}/attributes/{key}

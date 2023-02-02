@@ -10,7 +10,7 @@ const $defs: Record<string, JSONSchema7> = {
     ],
     properties: {
       label: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       options: {
         title: 'CustomStatOptions',
@@ -25,7 +25,7 @@ const $defs: Record<string, JSONSchema7> = {
             ],
             properties: {
               label: {
-                $ref: '#/definitions/LocalizedLabel'
+                $ref: '#/$defs/LocalizedLabel'
               },
               value: {
                 description: 'The numeric value to be used as +stat when making an Action Roll.',
@@ -58,26 +58,26 @@ const $defs: Record<string, JSONSchema7> = {
   Attribute: {
     oneOf: [
       {
-        $ref: '#/definitions/AttributePlayerStat'
+        $ref: '#/$defs/AttributePlayerStat'
       },
       {
-        $ref: '#/definitions/AttributePlayerConditionMeter'
+        $ref: '#/$defs/AttributePlayerConditionMeter'
       },
       {
-        $ref: '#/definitions/AttributeText'
+        $ref: '#/$defs/AttributeText'
       },
       {
-        $ref: '#/definitions/AttributeImpact'
+        $ref: '#/$defs/AttributeImpact'
       },
       {
-        $ref: '#/definitions/AttributeConditionMeter'
+        $ref: '#/$defs/AttributeConditionMeter'
       }
     ]
   },
   AttributeClock: {
     allOf: [
       {
-        $ref: '#/definitions/AttributeNumericBase'
+        $ref: '#/$defs/AttributeNumericBase'
       },
       {
         required: [
@@ -110,7 +110,7 @@ const $defs: Record<string, JSONSchema7> = {
   AttributeConditionMeter: {
     allOf: [
       {
-        $ref: '#/definitions/AttributeNumericBase'
+        $ref: '#/$defs/AttributeNumericBase'
       },
       {
         required: [
@@ -123,7 +123,7 @@ const $defs: Record<string, JSONSchema7> = {
         ],
         properties: {
           label: {
-            $ref: '#/definitions/LocalizedLabel'
+            $ref: '#/$defs/LocalizedLabel'
           },
           position: {
             const: 'card-bottom'
@@ -148,7 +148,7 @@ const $defs: Record<string, JSONSchema7> = {
     description: 'A select element with predefined options to pick a standard player character condition meter.',
     allOf: [
       {
-        $ref: '#/definitions/AttributeBase'
+        $ref: '#/$defs/AttributeBase'
       },
       {
         required: [
@@ -171,7 +171,7 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'null'
               },
               {
-                $ref: '#/definitions/PlayerConditionMeter.ID'
+                $ref: '#/$defs/PlayerConditionMeter.ID'
               }
             ],
             default: null
@@ -183,10 +183,10 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'object',
                 properties: {
                   label: {
-                    $ref: '#/definitions/LocalizedLabel'
+                    $ref: '#/$defs/LocalizedLabel'
                   },
                   value: {
-                    $ref: '#/definitions/PlayerConditionMeter.ID'
+                    $ref: '#/$defs/PlayerConditionMeter.ID'
                   }
                 }
               }
@@ -200,7 +200,7 @@ const $defs: Record<string, JSONSchema7> = {
     description: "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
     allOf: [
       {
-        $ref: '#/definitions/AttributeBase'
+        $ref: '#/$defs/AttributeBase'
       },
       {
         required: [
@@ -230,7 +230,7 @@ const $defs: Record<string, JSONSchema7> = {
     description: 'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
     allOf: [
       {
-        $ref: '#/definitions/AttributeBase'
+        $ref: '#/$defs/AttributeBase'
       },
       {
         required: [
@@ -252,7 +252,7 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'null'
               },
               {
-                $ref: '#/definitions/PlayerStat.ID'
+                $ref: '#/$defs/PlayerStat.ID'
               }
             ],
             default: null
@@ -264,10 +264,10 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'object',
                 properties: {
                   label: {
-                    $ref: '#/definitions/LocalizedLabel'
+                    $ref: '#/$defs/LocalizedLabel'
                   },
                   value: {
-                    $ref: '#/definitions/PlayerStat.ID'
+                    $ref: '#/$defs/PlayerStat.ID'
                   }
                 }
               }
@@ -279,11 +279,11 @@ const $defs: Record<string, JSONSchema7> = {
   },
   AttributeSetter: {
     propertyNames: {
-      $ref: '#/definitions/Attribute.ID'
+      $ref: '#/$defs/Attribute.ID'
     },
     patternProperties: {
       '^.*$': {
-        $ref: '#/definitions/PlayerStat.ID'
+        $ref: '#/$defs/PlayerStat.ID'
       }
     }
   },
@@ -298,7 +298,7 @@ const $defs: Record<string, JSONSchema7> = {
   AttributeCounter: {
     allOf: [
       {
-        $ref: '#/definitions/AttributeNumericBase'
+        $ref: '#/$defs/AttributeNumericBase'
       },
       {
         properties: {
@@ -329,7 +329,7 @@ const $defs: Record<string, JSONSchema7> = {
     type: 'object',
     allOf: [
       {
-        $ref: '#/definitions/AttributeBase'
+        $ref: '#/$defs/AttributeBase'
       },
       {
         required: [
@@ -340,7 +340,7 @@ const $defs: Record<string, JSONSchema7> = {
         ],
         properties: {
           attribute_type: {
-            $ref: '#/definitions/AttributeNumericType'
+            $ref: '#/$defs/AttributeNumericType'
           },
           min: {
             type: 'integer'
@@ -370,7 +370,7 @@ const $defs: Record<string, JSONSchema7> = {
     ],
     properties: {
       _extends: {
-        $ref: '#/definitions/Attribute.ID'
+        $ref: '#/$defs/Attribute.ID'
       },
       min: {
         type: 'integer'
@@ -386,7 +386,7 @@ const $defs: Record<string, JSONSchema7> = {
   AttributeImpact: {
     allOf: [
       {
-        $ref: '#/definitions/AttributeBase'
+        $ref: '#/$defs/AttributeBase'
       },
       {
         required: [
@@ -409,18 +409,18 @@ const $defs: Record<string, JSONSchema7> = {
     ],
     properties: {
       _id: {
-        $ref: '#/definitions/Attribute.ID'
+        $ref: '#/$defs/Attribute.ID'
       },
       label: {
-        $ref: '#/definitions/LocalizedLabel'
+        $ref: '#/$defs/LocalizedLabel'
       },
       position: {
-        $ref: '#/definitions/InputPosition'
+        $ref: '#/$defs/InputPosition'
       },
       attribute_type: {
         oneOf: [
           {
-            $ref: '#/definitions/AttributeNumericType'
+            $ref: '#/$defs/AttributeNumericType'
           },
           {
             type: 'string',
