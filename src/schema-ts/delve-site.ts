@@ -1,6 +1,6 @@
-import { JSONSchema7 } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 
-const schema: JSONSchema7 = {
+const definitions: Record<string, JSONSchema7Definition> = {
   definitions: {
     DelveSite: {
       type: 'object',
@@ -680,4 +680,4 @@ const schema: JSONSchema7 = {
   }
 }
 
-export default schema
+export default definitions

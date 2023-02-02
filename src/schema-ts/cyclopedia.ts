@@ -1,7 +1,6 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 import { merge } from 'lodash-es'
-import { DF_KEY } from 'src/schema-ts/id.js'
-import { dfRecordSchema } from 'src/schema-ts/schema.js'
+import { dfRecordSchema } from 'src/schema-ts/utils.js'
 
 /**
  * Schema with features common to "cyclopedia" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*)
@@ -141,7 +140,7 @@ const EncounterStarforged: JSONSchema7Definition = {
         nature: {
           $ref: '#/definitions/EncounterTypeStarforged'
         },
-        variants: dfRecordSchema('EncounterVariantStarforged','EncounterVariantsStarforged' )
+        variants: dfRecordSchema('EncounterVariantStarforged', 'EncounterVariantsStarforged')
       }
     }
   ]
@@ -166,18 +165,16 @@ const EncounterNatureClassic: JSONSchema7Definition = {
   }
 }
 
-const schema: JSONSchema7 = {
-  definitions: {
-    RegionEntry,
-    EncounterStub,
-    Encounter,
-    EncounterClassic,
-    EncounterStarforged,
-    EncounterVariantStarforged,
-    EncounterTypeStarforged,
-    EncounterTypeClassic,
-    EncounterNatureClassic
-  }
+const definitions: Record<string, JSONSchema7Definition> = {
+  RegionEntry,
+  EncounterStub,
+  Encounter,
+  EncounterClassic,
+  EncounterStarforged,
+  EncounterVariantStarforged,
+  EncounterTypeStarforged,
+  EncounterTypeClassic,
+  EncounterNatureClassic
 }
 
-export default schema
+export default definitions

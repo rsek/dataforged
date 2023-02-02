@@ -1,4 +1,4 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 
 export const WorldTruthClassic: JSONSchema7Definition = {
   allOf: [
@@ -78,13 +78,11 @@ const SettingTruthStarforged = {
   ]
 }
 
-const schema: JSONSchema7 = {
-  definitions: {
-    SettingTruth,
-    SettingTruthOption,
-    SettingTruthStarforged,
-    WorldTruthClassic
+const definitions: Record<string, JSONSchema7Definition> = {
+  SettingTruth,
+  SettingTruthOption,
+  SettingTruthStarforged,
+  WorldTruthClassic
 
-  }
 }
-export default schema
+export default definitions

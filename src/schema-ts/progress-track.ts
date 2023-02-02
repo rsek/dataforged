@@ -1,48 +1,46 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 
-const schema: JSONSchema7 = {
-  definitions: {
-    ChallengeRank: {
-      type: 'integer',
-      description: 'A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.',
-      enum: [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
-    },
+const definitions: Record<string, JSONSchema7Definition> = {
 
-    ProgressTrackStarforgedType: {
-      enum: [
-        'discoveries_legacy',
-        'bonds_legacy',
-        'quests_legacy',
-        'vow',
-        'combat',
-        'expedition',
-        'connection',
-        'scene_challenge'
-      ]
-    },
-    ProgressTrackClassicType: {
-      enum: [
-        'vow',
-        'combat',
-        'journey',
-        'bonds',
-        'delve',
-        'scene_challenge'
-      ]
-    },
-    ProgressTrackType: {
-      anyOf: [
-        { $ref: '#/definitions/ProgressTrackStarforgedType' },
-        { $ref: '#/definitions/ProgressTrackClassicType' }
-      ]
-    }
+  ChallengeRank: {
+    type: 'integer',
+    description: 'A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.',
+    enum: [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  ProgressTrackStarforgedType: {
+    enum: [
+      'discoveries_legacy',
+      'bonds_legacy',
+      'quests_legacy',
+      'vow',
+      'combat',
+      'expedition',
+      'connection',
+      'scene_challenge'
+    ]
+  },
+  ProgressTrackClassicType: {
+    enum: [
+      'vow',
+      'combat',
+      'journey',
+      'bonds',
+      'delve',
+      'scene_challenge'
+    ]
+  },
+  ProgressTrackType: {
+    anyOf: [
+      { $ref: '#/definitions/ProgressTrackStarforgedType' },
+      { $ref: '#/definitions/ProgressTrackClassicType' }
+    ]
   }
 }
 
-export default schema
+export default definitions

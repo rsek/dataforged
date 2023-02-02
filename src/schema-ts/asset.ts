@@ -1,4 +1,4 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 import { DF_KEY } from 'src/schema-ts/id.js'
 
 export const AssetAbilityBase: JSONSchema7Definition = {
@@ -25,29 +25,22 @@ export const AssetAbilityBase: JSONSchema7Definition = {
             },
             {
               $comment: 'New condition meters require an ID.',
-              allOf: [
+
+              oneOf: [
                 {
-                  oneOf: [
-                    {
-                      $ref: '#/definitions/AttributeConditionMeter'
-                    },
-                    {
-                      $ref: '#/definitions/AttributeCounter'
-                    },
-                    {
-                      $ref: '#/definitions/AttributeText'
-                    },
-                    {
-                      $ref: '#/definitions/AttributeClock'
-                    }
-                  ]
+                  $ref: '#/definitions/AttributeConditionMeter'
                 },
                 {
-                  required: [
-                    '_id'
-                  ]
+                  $ref: '#/definitions/AttributeCounter'
+                },
+                {
+                  $ref: '#/definitions/AttributeText'
+                },
+                {
+                  $ref: '#/definitions/AttributeClock'
                 }
               ]
+
             }
           ]
         }
@@ -195,8 +188,7 @@ export const Asset: JSONSchema7Definition = {
   },
   required: [
     'abilities',
-    'name',
-    '_id'
+    'name'
   ],
   not: {
     required: [
@@ -345,17 +337,36 @@ export const AssetTypes: JSONSchema7Definition = {
   }
 }
 
-const schema: JSONSchema7 = {
-  definitions: {
-    AssetAbilityBase,
-    AssetAbility,
-    AssetAbilityExtension,
-    Asset,
-    AssetExtension,
-    AssetType,
-    AssetTypeExtension,
-    AssetTypes
+const definitions: Record<string, JSONSchema7Definition> = {
+  AssetAbilityBase,
+  AssetAbility,
+  AssetAbilityExtension,
+  Asset,
+  AssetExtension,
+  AssetType,
+  AssetTypeExtension,
+  AssetTypes,
+  ConditionMeterAlias: {
+    description: 'Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.',
+    enum: [
+      'companion_health',
+      'vehicle_integrity',
+      'command_vehicle_integrity',
+      'support_vehicle_integrity',
+      'incidental_vehicle_integrity',
+      'attached_asset_meter'
+    ]
+  },
+  ConditionMeterType: {
+    oneOf: [
+      {
+        $ref: '#/definitions/PlayerConditionMeter.ID'
+      },
+      {
+        $ref: '#/definitions/ConditionMeterAlias'
+      }
+    ]
   }
 }
 
-export default schema
+export default definitions

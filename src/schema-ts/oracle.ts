@@ -1,6 +1,6 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 import { merge } from 'lodash-es'
-import { dfRecordSchema } from 'src/schema-ts/schema.js'
+import { dfRecordSchema } from 'src/schema-ts/utils.js'
 
 const d100Value: JSONSchema7Definition = {
   type: 'integer',
@@ -226,7 +226,7 @@ export const OracleSet: JSONSchema7Definition = merge(BaseOracle,
     additionalProperties: false,
     properties: {
       _id: {
-      // TODO: figure out ID type???
+        // TODO: figure out ID type???
       },
       sets: dfRecordSchema('OracleSet'),
       tables: dfRecordSchema('OracleTable'),
@@ -246,7 +246,7 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
     additionalProperties: false,
     properties: {
       _id: {
-      // TODO: figure out ID type
+        // TODO: figure out ID type
       },
       content: {},
       match: {
@@ -316,14 +316,11 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
     }
   })
 
-export const schema: JSONSchema7 = {
-  definitions: {
-    OracleTableRoll,
-    OracleTableRow,
-    OracleTable,
-    OracleSet,
-    OracleContentMetadata
-  }
+export const definitions: Record<string, JSONSchema7Definition> = {
+  OracleTableRoll,
+  OracleTableRow,
+  OracleTable,
+  OracleSet,
+  OracleContentMetadata
 }
-
-export default schema
+export default definitions

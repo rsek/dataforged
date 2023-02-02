@@ -1,4 +1,4 @@
-import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7Definition } from 'json-schema'
 import { DF_KEY } from 'src/schema-ts/id.js'
 
 const MOMENTUM_MAX = 10
@@ -15,77 +15,76 @@ const
     type: 'object'
   }
 
-const schema: JSONSchema7 = {
-  definitions: {
-    PlayerConditionMeterName: {
-      enum: [
-        'health',
-        'spirit',
-        'supply'
-      ]
-    },
-    PlayerStat: {
-      type: 'object',
-      properties: {
-        _id: {
-          $ref: '#/definitions/PlayerStat.ID'
-        },
-        value: {
-          type: 'integer',
-          minimum: STAT_MIN,
-          maximum: STAT_MAX
-        }
+const definitions: Record<string, JSONSchema7Definition> = {
+
+  PlayerConditionMeterName: {
+    enum: [
+      'health',
+      'spirit',
+      'supply'
+    ]
+  },
+  PlayerStat: {
+    type: 'object',
+    properties: {
+      _id: {
+        $ref: '#/definitions/PlayerStat.ID'
+      },
+      value: {
+        type: 'integer',
+        minimum: STAT_MIN,
+        maximum: STAT_MAX
       }
-    },
-    PlayerCharacter: {
-      description: 'Schema used by both classic and Starforged characters',
-      properties: {
-        stats: {
-          type: 'object',
-          // TODO: reformat to harmonize with CustomStat?
-          patternProperties: {
-            [DF_KEY]: { $ref: '#/definitions/PlayerStat' }
-          }
-        },
-        condition_meters: {
-          type: 'object',
-          patternProperties: {
-            [DF_KEY]: {
-              $ref: '#/definitions/AttributeConditionMeter'
-            }
-          }
-        },
-        momentum: {
-          type: 'object',
-          properties: {
-            min: {
-              type: 'integer',
-              const: MOMENTUM_MIN
-            },
-            max: {
-              type: 'integer',
-              default: MOMENTUM_MAX,
-              maximum: MOMENTUM_MAX,
-              minimum: MOMENTUM_MIN
-            },
-            value: {
-              type: 'integer',
-              default: MOMENTUM_RESET_BASE,
-              minimum: MOMENTUM_MIN,
-              maximum: MOMENTUM_MAX
-            },
-            resetValue: {
-              type: 'integer',
-              default: MOMENTUM_RESET_BASE,
-              maximum: MOMENTUM_MAX,
-              minimum: MOMENTUM_RESET_MIN
-            }
+    }
+  },
+  PlayerCharacter: {
+    description: 'Schema used by both classic and Starforged characters',
+    properties: {
+      stats: {
+        type: 'object',
+        // TODO: reformat to harmonize with CustomStat?
+        patternProperties: {
+          [DF_KEY]: { $ref: '#/definitions/PlayerStat' }
+        }
+      },
+      condition_meters: {
+        type: 'object',
+        patternProperties: {
+          [DF_KEY]: {
+            $ref: '#/definitions/AttributeConditionMeter'
           }
         }
+      },
+      momentum: {
+        type: 'object',
+        properties: {
+          min: {
+            type: 'integer',
+            const: MOMENTUM_MIN
+          },
+          max: {
+            type: 'integer',
+            default: MOMENTUM_MAX,
+            maximum: MOMENTUM_MAX,
+            minimum: MOMENTUM_MIN
+          },
+          value: {
+            type: 'integer',
+            default: MOMENTUM_RESET_BASE,
+            minimum: MOMENTUM_MIN,
+            maximum: MOMENTUM_MAX
+          },
+          resetValue: {
+            type: 'integer',
+            default: MOMENTUM_RESET_BASE,
+            maximum: MOMENTUM_MAX,
+            minimum: MOMENTUM_RESET_MIN
+          }
+        }
       }
-    },
-    PlayerExtension
-  }
+    }
+  },
+  PlayerExtension
 }
 
-export default schema
+export default definitions
