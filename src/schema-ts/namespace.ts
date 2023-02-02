@@ -1,11 +1,11 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { merge } from 'lodash'
 import { dfRecordSchema } from './utils'
 
 /**
  * Schemas common to both classic Ironsworn and Starforged.
  */
-const NamespaceBase: JSONSchema7Definition = {
+const NamespaceBase: JSONSchema7 = {
   additionalProperties: false,
   properties: {
     asset_types: dfRecordSchema('AssetType'),
@@ -14,7 +14,7 @@ const NamespaceBase: JSONSchema7Definition = {
   }
 }
 
-export const NamespaceClassic: JSONSchema7Definition = merge(NamespaceBase, {
+export const NamespaceClassic: JSONSchema7 = merge(NamespaceBase, {
   properties: {
     _game: { const: 'classic' },
     world_truths: dfRecordSchema('WorldTruthClassic', 'WorldTruthsClassic'),
@@ -27,7 +27,7 @@ export const NamespaceClassic: JSONSchema7Definition = merge(NamespaceBase, {
   }
 })
 
-export const NamespaceStarforged: JSONSchema7Definition = merge(NamespaceBase, {
+export const NamespaceStarforged: JSONSchema7 = merge(NamespaceBase, {
   properties: {
     _game: { const: 'starforged' },
     encounters: dfRecordSchema('EncounterStarforged', 'EncountersStarforged'),

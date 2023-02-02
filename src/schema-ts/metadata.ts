@@ -1,7 +1,7 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 
 const
-  CategoryMetadata: JSONSchema7Definition = {
+  CategoryMetadata: JSONSchema7 = {
     type: 'object',
     required: [
       'title',
@@ -29,7 +29,7 @@ const
     }
   }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
   CategoryMetadata,
   Game: {
     enum: ['starforged', 'classic']
@@ -231,4 +231,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
 
 }
 
-export default definitions
+export default $defs

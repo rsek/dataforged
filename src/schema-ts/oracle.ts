@@ -1,14 +1,14 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { merge } from 'lodash'
 import { dfRecordSchema } from './utils'
 
-const d100Value: JSONSchema7Definition = {
+const d100Value: JSONSchema7 = {
   type: 'integer',
   minimum: 1,
   maximum: 100
 }
 
-const d100Range: JSONSchema7Definition = {
+const d100Range: JSONSchema7 = {
   type: 'object',
   required: [
     'floor',
@@ -22,7 +22,7 @@ const d100Range: JSONSchema7Definition = {
   }
 }
 
-const d100RangeNullable: JSONSchema7Definition = {
+const d100RangeNullable: JSONSchema7 = {
   type: d100Range.type,
   required: d100Range.required,
   oneOf: [
@@ -31,7 +31,7 @@ const d100RangeNullable: JSONSchema7Definition = {
   ]
 }
 
-export const OracleContentMetadata: JSONSchema7Definition = {
+export const OracleContentMetadata: JSONSchema7 = {
   type: 'object',
   description: "Metadata that describes an oracle's semantic or lexical content.",
   additionalProperties: false,
@@ -67,7 +67,7 @@ export const OracleContentMetadata: JSONSchema7Definition = {
   }
 }
 
-export const OracleTableRollMethod: JSONSchema7Definition = {
+export const OracleTableRollMethod: JSONSchema7 = {
   description: `
   no_duplicates = Reroll duplicate OracleTableRows
   allow_duplicates = Don't reroll duplicate OracleTableRows
@@ -82,7 +82,7 @@ export const OracleTableRollMethod: JSONSchema7Definition = {
   default: 'no_duplicates'
 }
 
-export const OracleTableRoll: JSONSchema7Definition = {
+export const OracleTableRoll: JSONSchema7 = {
   description: 'Parameters for an oracle table roll.',
   required: [
     'table'
@@ -110,14 +110,14 @@ export const OracleTableRoll: JSONSchema7Definition = {
   }
 }
 
-export const OracleRowLike: JSONSchema7Definition = d100Range
+export const OracleRowLike: JSONSchema7 = d100Range
 
-export const OracleTableRowContentMetadata: JSONSchema7Definition = {}
+export const OracleTableRowContentMetadata: JSONSchema7 = {}
 
-export const OracleTableRenderMetadata: JSONSchema7Definition = {}
+export const OracleTableRenderMetadata: JSONSchema7 = {}
 
-export const OracleTableRowRenderMetadata: JSONSchema7Definition = {
-  definitions: {
+export const OracleTableRowRenderMetadata: JSONSchema7 = {
+  $defs: {
     icon: {// TODO
     },
     images: {// TODO
@@ -133,7 +133,7 @@ export const OracleTableRowRenderMetadata: JSONSchema7Definition = {
   }
 }
 
-export const OracleTableRow: JSONSchema7Definition = merge(d100RangeNullable, {
+export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
   type: 'object',
   required: [
     'result'
@@ -200,7 +200,7 @@ export const OracleTableRow: JSONSchema7Definition = merge(d100RangeNullable, {
 /**
  * Shared oracle metadata.
  */
-export const BaseOracle: JSONSchema7Definition = {
+export const BaseOracle: JSONSchema7 = {
   required: ['title'],
   properties: {
     title: {
@@ -218,7 +218,7 @@ export const BaseOracle: JSONSchema7Definition = {
   }
 }
 
-export const OracleSet: JSONSchema7Definition = merge(BaseOracle,
+export const OracleSet: JSONSchema7 = merge(BaseOracle,
   {
     title: 'OracleSet',
     type: 'object',
@@ -239,7 +239,7 @@ export const OracleSet: JSONSchema7Definition = merge(BaseOracle,
       }
     }
   })
-export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
+export const OracleTable: JSONSchema7 = merge(BaseOracle,
   {
     type: 'object',
     required: ['table'],
@@ -316,11 +316,12 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
     }
   })
 
-export const definitions: Record<string, JSONSchema7Definition> = {
+export const $defs: Record<string, JSONSchema7> = {
+  OracleRowLike,
   OracleTableRoll,
   OracleTableRow,
   OracleTable,
   OracleSet,
   OracleContentMetadata
 }
-export default definitions
+export default $defs

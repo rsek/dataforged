@@ -1,4 +1,4 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 
 type RegExpParams = ConstructorParameters<typeof RegExp>
 
@@ -7,7 +7,7 @@ type RegExpParams = ConstructorParameters<typeof RegExp>
    */
 const dfKey = /[a-z][a-z_]*[a-z]/
 
-export const DF_KEY = `^${dfKey.source}$`
+export const DF_KEY = `^[a-z][a-z_]*[a-z]$`
 
 export class IdPattern extends String {
   static separator = '/'
@@ -50,7 +50,7 @@ export class IdPattern extends String {
   }
 }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
 
   'Impact.ID': {
     $comment: '{namespace}/impacts/{impactType}/{impact}',
@@ -196,4 +196,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
 
 }
 
-export default definitions
+export default $defs

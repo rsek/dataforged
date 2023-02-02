@@ -1,5 +1,5 @@
 /**
- * Writes schema for YAML input to file
+ * Regenerates schema for YAML input and writes it to file
  */
 
 import { writeFileSync } from 'fs'

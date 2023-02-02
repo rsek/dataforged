@@ -1,6 +1,6 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
 
   Localizable: {
     description: 'A localizable string of plain text.',
@@ -33,4 +33,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
 
 }
 
-export default definitions
+export default $defs

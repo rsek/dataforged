@@ -1,7 +1,7 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './id'
 
-export const AssetAbilityBase: JSONSchema7Definition = {
+export const AssetAbilityBase: JSONSchema7 = {
   type: 'object',
   properties: {
     name: {
@@ -74,7 +74,7 @@ export const AssetAbilityBase: JSONSchema7Definition = {
     }
   }
 }
-export const AssetAbility: JSONSchema7Definition = {
+export const AssetAbility: JSONSchema7 = {
   title: 'AssetAbility',
   description: 'Describes an asset ability.',
   allOf: [
@@ -105,7 +105,7 @@ export const AssetAbility: JSONSchema7Definition = {
     }
   ]
 }
-export const AssetAbilityExtension: JSONSchema7Definition = {
+export const AssetAbilityExtension: JSONSchema7 = {
   description: "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
   allOf: [
     {
@@ -124,7 +124,7 @@ export const AssetAbilityExtension: JSONSchema7Definition = {
     }
   ]
 }
-export const Asset: JSONSchema7Definition = {
+export const Asset: JSONSchema7 = {
   type: 'object',
   properties: {
     _id: {
@@ -202,7 +202,7 @@ export const Asset: JSONSchema7Definition = {
   }
 }
 
-export const AssetExtension: JSONSchema7Definition = {
+export const AssetExtension: JSONSchema7 = {
   title: 'AssetExtension',
   description: 'Extends/alters existing assets data',
   type: 'object',
@@ -215,7 +215,7 @@ export const AssetExtension: JSONSchema7Definition = {
     }
   }
 }
-export const AssetType: JSONSchema7Definition = {
+export const AssetType: JSONSchema7 = {
   title: 'AssetType',
   type: 'object',
   allOf: [{
@@ -287,7 +287,7 @@ export const AssetType: JSONSchema7Definition = {
   ]
 }
 
-export const AssetTypeExtension: JSONSchema7Definition = {
+export const AssetTypeExtension: JSONSchema7 = {
   title: 'AssetTypeExtension',
   description: 'Extends a canonical asset type with additional assets.',
   type: 'object',
@@ -324,7 +324,7 @@ export const AssetTypeExtension: JSONSchema7Definition = {
   }
 }
 
-export const AssetTypes: JSONSchema7Definition = {
+export const AssetTypes: JSONSchema7 = {
   title: 'AssetTypes',
   additionalProperties: false,
   patternProperties: {
@@ -337,7 +337,7 @@ export const AssetTypes: JSONSchema7Definition = {
   }
 }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
   AssetAbilityBase,
   AssetAbility,
   AssetAbilityExtension,
@@ -369,4 +369,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
   }
 }
 
-export default definitions
+export default $defs

@@ -1,6 +1,6 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 
-export const GameObject: JSONSchema7Definition = {
+export const GameObject: JSONSchema7 = {
   description: 'Describes a game object, with optional required parameters (for example, a specific Location result).',
   type: 'object',
   additionalProperties: false,
@@ -22,6 +22,6 @@ export const GameObject: JSONSchema7Definition = {
   }
 }
 
-const definitions: Record<string, JSONSchema7Definition> = { GameObject }
+const $defs: Record<string, JSONSchema7> = { GameObject }
 
-export default definitions
+export default $defs

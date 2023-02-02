@@ -1,4 +1,4 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './id'
 
 const MOMENTUM_MAX = 10
@@ -9,13 +9,13 @@ const STAT_MIN = 0
 const STAT_MAX = 4
 
 const
-  PlayerExtension: JSONSchema7Definition = {
+  PlayerExtension: JSONSchema7 = {
     title: 'PlayerExtension',
     description: 'Alters an attribute intrinsic to the player, such as a stat or condition meter.',
     type: 'object'
   }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
 
   PlayerConditionMeterName: {
     enum: [
@@ -87,4 +87,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
   PlayerExtension
 }
 
-export default definitions
+export default $defs

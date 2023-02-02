@@ -1,6 +1,6 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 
-export const WorldTruthClassic: JSONSchema7Definition = {
+export const WorldTruthClassic: JSONSchema7 = {
   allOf: [
     {
       $ref: '#/definitions/SettingTruth'
@@ -32,7 +32,7 @@ export const WorldTruthClassic: JSONSchema7Definition = {
   ]
 }
 
-export const SettingTruthOption: JSONSchema7Definition = {
+export const SettingTruthOption: JSONSchema7 = {
   required: [
     'quest_starter'
   ],
@@ -44,7 +44,7 @@ export const SettingTruthOption: JSONSchema7Definition = {
   }
 }
 
-export const SettingTruth: JSONSchema7Definition = {
+export const SettingTruth: JSONSchema7 = {
   type: 'object',
   required: [
     'name',
@@ -63,7 +63,7 @@ export const SettingTruth: JSONSchema7Definition = {
   }
 }
 
-const SettingTruthStarforged = {
+const SettingTruthStarforged: JSONSchema7 = {
   allOf: [
     {
       $ref: '#/definitions/SettingTruth'
@@ -71,18 +71,21 @@ const SettingTruthStarforged = {
     {
       properties: {
         options: {
-          $ref: '#/definitions/OracleTableRows'
+          type: 'array',
+          items: {
+            $ref: '#/definitions/OracleTableRow'
+          }
         }
       }
     }
   ]
 }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
   SettingTruth,
   SettingTruthOption,
   SettingTruthStarforged,
   WorldTruthClassic
 
 }
-export default definitions
+export default $defs

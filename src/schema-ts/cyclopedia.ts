@@ -1,11 +1,11 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { merge } from 'lodash'
 import { dfRecordSchema } from './utils'
 
 /**
  * Schema with features common to "cyclopedia" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*)
  */
-const CyclopediaEntry: JSONSchema7Definition = {
+const CyclopediaEntry: JSONSchema7 = {
   type: 'object',
   required: [
     'name',
@@ -44,24 +44,24 @@ const CyclopediaEntry: JSONSchema7Definition = {
   }
 }
 
-const RegionEntry: JSONSchema7Definition = merge(CyclopediaEntry,
+const RegionEntry: JSONSchema7 = merge(CyclopediaEntry,
   {
     required: [
       'quest_starter'
     ]
   })
 
-const EncounterStub: JSONSchema7Definition = {
+const EncounterStub: JSONSchema7 = {
   required: ['rank', 'name', 'description', 'nature'],
   properties: {
     rank: { $ref: '#/definitions/ChallengeRank' },
-    name: { $ref: '#/definitions/LocalizableLabel' },
+    name: { $ref: '#/definitions/LocalizedLabel' },
     description: { $ref: '#/definitions/Description' },
     nature: { type: 'string' }
   }
 }
 
-const Encounter: JSONSchema7Definition = merge(CyclopediaEntry, {
+const Encounter: JSONSchema7 = merge(CyclopediaEntry, {
   description: 'Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.',
   allOf: [
     { $ref: '#/definitions/EncounterStub' },
@@ -89,7 +89,7 @@ const Encounter: JSONSchema7Definition = merge(CyclopediaEntry, {
 
 })
 
-const EncounterTypeStarforged: JSONSchema7Definition = {
+const EncounterTypeStarforged: JSONSchema7 = {
   title: 'EncounterTypeStarforged',
   type: 'string',
   examples: [
@@ -102,7 +102,7 @@ const EncounterTypeStarforged: JSONSchema7Definition = {
   ]
 }
 
-const EncounterTypeClassic: JSONSchema7Definition = {
+const EncounterTypeClassic: JSONSchema7 = {
   title: 'EncounterTypeClassic',
   type: 'string',
   examples: [
@@ -115,7 +115,7 @@ const EncounterTypeClassic: JSONSchema7Definition = {
   ]
 }
 
-const EncounterVariantStarforged: JSONSchema7Definition = {
+const EncounterVariantStarforged: JSONSchema7 = {
   title: 'EncounterVariantStarforged',
   allOf: [
     { $ref: '#/definitions/Encounter' },
@@ -129,7 +129,7 @@ const EncounterVariantStarforged: JSONSchema7Definition = {
   ]
 }
 
-const EncounterStarforged: JSONSchema7Definition = {
+const EncounterStarforged: JSONSchema7 = {
   title: 'EncounterStarforged',
   allOf: [
     {
@@ -146,7 +146,7 @@ const EncounterStarforged: JSONSchema7Definition = {
   ]
 }
 
-const EncounterClassic: JSONSchema7Definition = {
+const EncounterClassic: JSONSchema7 = {
   title: 'EncounterClassic',
   allOf: [{ $ref: '#/definitions/Encounter' }, {
     properties: {
@@ -157,7 +157,7 @@ const EncounterClassic: JSONSchema7Definition = {
   }]
 }
 
-const EncounterNatureClassic: JSONSchema7Definition = {
+const EncounterNatureClassic: JSONSchema7 = {
   title: 'EncounterNatureClassic',
   properties: {
     name: { $ref: '#/definitions/LocalizedLabel' },
@@ -165,7 +165,7 @@ const EncounterNatureClassic: JSONSchema7Definition = {
   }
 }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
   RegionEntry,
   EncounterStub,
   Encounter,
@@ -177,4 +177,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
   EncounterNatureClassic
 }
 
-export default definitions
+export default $defs

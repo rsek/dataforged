@@ -1,6 +1,8 @@
 import { fill, inRange, isInteger, sum } from 'lodash'
+import { FromSchema, JSONSchema } from "json-schema-to-ts"
+import { OracleTableRow } from 'src/schema-ts/oracle.js'
 
-export function distributeOracleRows (numberOfRows: number): Array<{ floor: number, ceiling: number }> {
+export function distributeOracleRows(numberOfRows: number): Array<{ floor: number, ceiling: number }> {
   if (!isInteger(numberOfRows)) throw new Error('Expected an integer value')
   if (!inRange(numberOfRows, 1, 101)) throw new Error('Expected a value between 1 and 100 (inclusive)')
 
@@ -28,3 +30,5 @@ export function distributeOracleRows (numberOfRows: number): Array<{ floor: numb
 
   return rows
 }
+
+// export function rowToStaticSchema()

@@ -11,8 +11,9 @@
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "build-cjs": "tsc --project tsconfig-cjs.json",
-    "build-esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
+    "build:inputSchema": "ts-node ./src/scripts/build-input-schema && ts-node ./src/scripts/build-ts-types",
+    "build:cjs": "tsc --project tsconfig-cjs.json",
+    "build:esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
     "build": "yarn build-cjs && yarn build-esm",
     "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json",
     "postversion": "yarn readme && git add README.md"
@@ -54,6 +55,7 @@
     "eslint-plugin-jsonc": "^2.6.0",
     "json-schema": "^0.4.0",
     "json-schema-to-ts": "^2.6.2",
+    "json-schema-to-typescript": "^11.0.3",
     "jsonpointer": "^5.0.1",
     "lodash-es": "4.17.6",
     "ts-node": "^10.9.1",

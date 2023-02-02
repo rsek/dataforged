@@ -489,6 +489,27 @@
         }
       ]
     },
+    "OracleRowLike": {
+      "type": "object",
+      "required": [
+        "result",
+        "ceiling"
+      ],
+      "properties": {
+        "floor": {
+          "description": "The high end of the dice range for this table row.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "ceiling": {
+          "description": "The low end of the dice range for this table row.",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
     "OracleTableRoll": {
       "description": "Parameters for an oracle table roll.",
       "required": [
@@ -1238,7 +1259,7 @@
     "AttributeCounter": {
       "allOf": [
         {
-          "$ref": "#definitions/AttributeNumericBase"
+          "$ref": "#/definitions/AttributeNumericBase"
         },
         {
           "properties": {
@@ -1451,7 +1472,7 @@
           "$ref": "#/definitions/ChallengeRank"
         },
         "name": {
-          "$ref": "#/definitions/LocalizableLabel"
+          "$ref": "#/definitions/LocalizedLabel"
         },
         "description": {
           "$ref": "#/definitions/Description"
@@ -2543,6 +2564,44 @@
         }
       }
     },
+    "MoveExtension": {
+      "title": "MoveExtension",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MoveExtensionBase"
+        },
+        {
+          "required": [
+            "_moves"
+          ],
+          "properties": {
+            "_moves": {
+              "$ref": "#/definitions/MoveExtensionBase/properties/_moves"
+            }
+          }
+        }
+      ]
+    },
+    "MoveExtensionBase": {
+      "description": "Describes changes made to moves by asset abilities.",
+      "type": "object",
+      "properties": {
+        "_moves": {
+          "description": "The ID of the affected moves. Use 'null' if it can apply to any move.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Move.ID"
+          },
+          "default": null
+        },
+        "trigger": {
+          "$ref": "#/definitions/MoveTrigger"
+        }
+      }
+    },
     "MoveCategory": {
       "title": "MoveCategory",
       "type": "object",
@@ -2902,7 +2961,10 @@
         {
           "properties": {
             "options": {
-              "$ref": "#/definitions/OracleTableRows"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OracleTableRow"
+              }
             }
           }
         }
@@ -3154,27 +3216,9 @@
       }
     }
   },
-  "additionalProperties": false,
-  "propertyNames": {
-    "$ref": "#/definitions/NamespaceKey"
-  },
   "oneOf": [
     {
-      "required": [
-        "_game"
-      ],
-      "properties": {
-        "_game": {
-          "const": "starforged"
-        }
-      },
-      "patternProperties": {
-        "^[a-z0-9][a-z0-9_]*[a-z0-9]$": {
-          "$ref": "#/definitions/NamespaceStarforged"
-        }
-      }
-    },
-    {
+      "title": "Datasworn",
       "required": [
         "_game"
       ],
@@ -3183,9 +3227,27 @@
           "const": "classic"
         }
       },
+      "additionalProperties": false,
       "patternProperties": {
         "^[a-z0-9][a-z0-9_]*[a-z0-9]$": {
           "$ref": "#/definitions/NamespaceClassic"
+        }
+      }
+    },
+    {
+      "title": "Dataforged",
+      "required": [
+        "_game"
+      ],
+      "properties": {
+        "_game": {
+          "const": "starforged"
+        }
+      },
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z0-9][a-z0-9_]*[a-z0-9]$": {
+          "$ref": "#/definitions/NamespaceStarforged"
         }
       }
     }

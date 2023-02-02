@@ -1,7 +1,7 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './id'
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const $defs: Record<string, JSONSchema7> = {
   CustomStat: {
     type: 'object',
     required: [
@@ -298,7 +298,7 @@ const definitions: Record<string, JSONSchema7Definition> = {
   AttributeCounter: {
     allOf: [
       {
-        $ref: '#definitions/AttributeNumericBase'
+        $ref: '#/definitions/AttributeNumericBase'
       },
       {
         properties: {
@@ -437,4 +437,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
   }
 }
 
-export default definitions
+export default $defs

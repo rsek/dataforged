@@ -1,8 +1,8 @@
-import { JSONSchema7Definition } from 'json-schema'
+import { JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './id'
 import { dfRecordSchema } from './utils'
 
-export const MoveExtension: JSONSchema7Definition = {
+export const MoveExtension: JSONSchema7 = {
   title: 'MoveExtension',
   allOf: [
     {
@@ -21,7 +21,7 @@ export const MoveExtension: JSONSchema7Definition = {
   ]
 }
 
-export const MoveExtensionBase: JSONSchema7Definition = {
+export const MoveExtensionBase: JSONSchema7 = {
   description: 'Describes changes made to moves by asset abilities.',
   type: 'object',
   properties: {
@@ -42,7 +42,7 @@ export const MoveExtensionBase: JSONSchema7Definition = {
   }
 }
 
-export const MoveCategory: JSONSchema7Definition = {
+export const MoveCategory: JSONSchema7 = {
   title: 'MoveCategory',
   type: 'object',
   properties: {
@@ -62,7 +62,9 @@ export const MoveCategory: JSONSchema7Definition = {
   }
 }
 
-const definitions: Record<string, JSONSchema7Definition> = {
+const defs: Record<string, JSONSchema7> = {
+  MoveExtension,
+MoveExtensionBase,
   MoveCategory,
   Move: {
     type: 'object',
@@ -319,4 +321,4 @@ const definitions: Record<string, JSONSchema7Definition> = {
   }
 }
 
-export default definitions
+export default defs

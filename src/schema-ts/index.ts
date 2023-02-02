@@ -13,10 +13,41 @@ import progressTrack from './progress-track'
 import truth from './truth'
 import { NamespaceClassic, NamespaceStarforged } from './namespace'
 
+const dataforged:JSONSchema7 = {
+  $comment: {},
+  title: "Dataforged",
+    required: ['_game'],
+    properties: {
+      _game: { const: 'starforged' }
+    },
+      additionalProperties: false,
+
+    patternProperties: {
+      [`^${IdPattern.namespaceFragment.source}$`]: {
+        $ref: '#/definitions/NamespaceStarforged'
+      }
+    }
+  }
+
+const datasworn:JSONSchema7 =   {
+    title: "Datasworn",
+    required: ['_game'],
+    properties: {
+      _game: { const: 'classic' }
+    },
+      additionalProperties: false,
+
+    patternProperties: {
+      [`^${IdPattern.namespaceFragment.source}$`]: {
+        $ref: '#/definitions/NamespaceClassic'
+      }
+    }
+  }
+
 const schema: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
   description: 'Schema definitions used for Datasworn and Dataforged (v2+).',
-  definitions: {
+  $defs: {
     ...id,
     ...asset,
     ...oracle,
@@ -34,34 +65,9 @@ const schema: JSONSchema7 = {
     NamespaceStarforged
 
   },
-  additionalProperties: false,
-  propertyNames: {
-    $ref: '#/definitions/NamespaceKey'
-  },
-  oneOf: [{
-    required: ['_game'],
-
-    properties: {
-      _game: { const: 'starforged' }
-    },
-    patternProperties: {
-      [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/definitions/NamespaceStarforged'
-      }
-    }
-  },
-  {
-    required: ['_game'],
-
-    properties: {
-      _game: { const: 'classic' }
-    },
-    patternProperties: {
-      [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/definitions/NamespaceClassic'
-      }
-    }
-  }
+  oneOf: [
+    datasworn,
+    dataforged
   ]
 }
 
