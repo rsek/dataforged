@@ -28,7 +28,7 @@ export class OracleTableRowBuilder<
   multiple_rolls?: MultipleRolls | undefined
   suggestions?: Suggestions | undefined
   // sets_attributes?: AttributeSetterBuilder | undefined
-  roll_template?: RollTemplate | undefined
+  template?: RollTemplate | undefined
   display?: Display | undefined
   content?: OracleContent
   static rowDataFromArray (rowArray: YamlSimpleTableRow): YamlOracleTableRow {
@@ -129,8 +129,8 @@ export class OracleTableRowBuilder<
       this.display = new DisplayBuilder({ ...this._rawData.display })
     }
     if (this._rawData.game_objects != null) { this.game_objects = this._rawData.game_objects }
-    if (this._rawData.roll_template != null) {
-      this.roll_template = new RollTemplateBuilder(this._rawData.roll_template, this)
+    if (this._rawData.template != null) {
+      this.template = new RollTemplateBuilder(this._rawData.template, this)
     }
   }
 }

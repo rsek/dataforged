@@ -1,5 +1,228 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { DF_KEY } from 'src/schema-ts/id.js'
 
+export const AssetAbilityBase: JSONSchema7Definition = {
+  type: 'object',
+  properties: {
+    name: {
+      description: 'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
+      $ref: '#/definitions/LocalizedLabel'
+    },
+    text: {
+      description: 'The rules text for this asset ability.',
+      $ref: '#/definitions/LocalizedMarkdown'
+    },
+    attachments: {
+      description: 'Details on what attachments (other assets) are accepted by this asset.',
+      $comment: '#/definitions/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
+    },
+    attributes: {
+      patternProperties: {
+        [DF_KEY]: {
+          oneOf: [
+            {
+              $ref: '#/definitions/AttributeNumericOverride'
+            },
+            {
+              $comment: 'New condition meters require an ID.',
+              allOf: [
+                {
+                  oneOf: [
+                    {
+                      $ref: '#/definitions/AttributeConditionMeter'
+                    },
+                    {
+                      $ref: '#/definitions/AttributeCounter'
+                    },
+                    {
+                      $ref: '#/definitions/AttributeText'
+                    },
+                    {
+                      $ref: '#/definitions/AttributeClock'
+                    }
+                  ]
+                },
+                {
+                  required: [
+                    '_id'
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    moves: {
+      description: 'Unique, self-contained moves added by this asset ability.',
+      type: 'object',
+      patternProperties: {
+        [DF_KEY]: {
+          $ref: '#/definitions/Move'
+        }
+      }
+    },
+    alter_moves: {
+      type: 'array',
+      items: {
+        $ref: '#/definitions/MoveExtensionBase'
+      }
+    },
+    alter_player: {
+      $ref: '#/definitions/PlayerExtension'
+    },
+    _id: {
+      $ref: '#/definitions/AssetAbility.ID'
+    },
+    enabled: {
+      description: "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
+      type: 'boolean',
+      default: false
+    }
+  }
+}
+export const AssetAbility: JSONSchema7Definition = {
+  title: 'AssetAbility',
+  description: 'Describes an asset ability.',
+  allOf: [
+    {
+      $ref: '#/definitions/AssetAbilityBase'
+    },
+    {
+      required: [
+        'text'
+      ],
+      properties: {
+        alter_moves: {
+          type: 'array',
+          items: {
+            $ref: '#/definitions/MoveExtension'
+          }
+        },
+        extend_abilities: {
+          type: 'array',
+          items: {
+            $ref: '#/definitions/AssetAbilityExtension'
+          }
+        },
+        text: {
+          $ref: '#/definitions/AssetAbilityBase/properties/text'
+        }
+      }
+    }
+  ]
+}
+export const AssetAbilityExtension: JSONSchema7Definition = {
+  description: "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
+  allOf: [
+    {
+      $ref: '#/definitions/AssetAbilityBase'
+    },
+    {
+      required: [
+        '_ability'
+      ],
+      properties: {
+        _ability: {
+          description: 'The ID of the asset ability to be extended.',
+          $ref: '#/definitions/AssetAbility.ID'
+        }
+      }
+    }
+  ]
+}
+export const Asset: JSONSchema7Definition = {
+  type: 'object',
+  properties: {
+    _id: {
+      $ref: '#/definitions/Dataforged.ID',
+      pattern: '^[a-z_]+/assets/[a-z_]+/[a-z_]+$'
+    },
+    attributes: {
+      patternProperties: {
+        [DF_KEY]: {
+          $ref: '#/definitions/Attribute'
+        }
+      }
+    },
+    name: {
+      $ref: '#/definitions/LocalizedLabel'
+    },
+    abilities: {
+      type: 'array',
+      additionalItems: false,
+      items: [
+        {
+          $ref: '#/definitions/AssetAbility'
+        },
+        {
+          $ref: '#/definitions/AssetAbility'
+        },
+        {
+          $ref: '#/definitions/AssetAbility'
+        }
+      ]
+    },
+    requirement: {
+      description: 'A markdown string representing the requirement text that appears at the top of some asset cards.',
+      $ref: '#/definitions/LocalizedMarkdown'
+    },
+    source: {
+      $ref: '#/definitions/Source'
+    },
+    attachments: {
+      description: 'Details on what attachments (other assets) are accepted by this asset.',
+      $comment: '#/definitions/AssetAttachment'
+    },
+    tags: {
+      type: 'array',
+      items: {
+        examples: [
+          'animal_companion',
+          'beast_companion',
+          'biological_companion',
+          'deed',
+          'ironlander_companion',
+          'mechanical_companion'
+        ],
+        type: 'string'
+      }
+    },
+    usage: {
+      $comment: '#/definitions/AssetUsage',
+      description: "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
+    }
+  },
+  required: [
+    'abilities',
+    'name',
+    '_id'
+  ],
+  not: {
+    required: [
+      'inputs'
+    ],
+    properties: {
+      inputs: {
+        type: 'object'
+      }
+    }
+  }
+}
+
+export const AssetExtension: JSONSchema7Definition = {
+  title: 'AssetExtension',
+  description: 'Extends/alters existing assets data',
+  type: 'object',
+  properties: {
+    assets: {
+      type: 'array',
+      items: {
+        $ref: '#/definitions/Asset.ID'
+      }
+    }
+  }
+}
 export const AssetType: JSONSchema7Definition = {
   title: 'AssetType',
   type: 'object',
@@ -21,7 +244,7 @@ export const AssetType: JSONSchema7Definition = {
             type: 'object',
             additionalProperties: false,
             patternProperties: {
-              '^[a-z][a-z_+]*[a-z]$': {
+              [DF_KEY]: {
                 $ref: '#/definitions/Asset'
               }
             }
@@ -53,7 +276,7 @@ export const AssetType: JSONSchema7Definition = {
         type: 'object',
         additionalProperties: false,
         patternProperties: {
-          '^[a-z][a-z_+]*[a-z]$': {
+          [DF_KEY]: {
             $ref: '#/definitions/Asset'
           }
         }
@@ -71,6 +294,7 @@ export const AssetType: JSONSchema7Definition = {
   }
   ]
 }
+
 export const AssetTypeExtension: JSONSchema7Definition = {
   title: 'AssetTypeExtension',
   description: 'Extends a canonical asset type with additional assets.',
@@ -100,7 +324,7 @@ export const AssetTypeExtension: JSONSchema7Definition = {
     assets: {
       type: 'object',
       patternProperties: {
-        '^[a-z][a-z_+]*[a-z]$': {
+        [DF_KEY]: {
           $ref: '#/definitions/Asset'
         }
       }
@@ -108,269 +332,29 @@ export const AssetTypeExtension: JSONSchema7Definition = {
   }
 }
 
+export const AssetTypes: JSONSchema7Definition = {
+  title: 'AssetTypes',
+  additionalProperties: false,
+  patternProperties: {
+    [DF_KEY]: {
+      oneOf: [
+        { $ref: '#/definitions/AssetTypeExtension' },
+        { $ref: '#/definitions/AssetType' }
+      ]
+    }
+  }
+}
+
 const schema: JSONSchema7 = {
   definitions: {
+    AssetAbilityBase,
+    AssetAbility,
+    AssetAbilityExtension,
+    Asset,
+    AssetExtension,
     AssetType,
     AssetTypeExtension,
-    AssetTypes: {
-      title: 'AssetTypes',
-      additionalProperties: false,
-      patternProperties: {
-        '^[a-z][a-z_+]*[a-z]$': {
-          oneOf: [
-            { $ref: '#/definitions/AssetTypeExtension' },
-            { $ref: '#/definitions/AssetType' }
-          ]
-        }
-      }
-    },
-    AlterPlayer: {
-      title: 'AlterPlayer',
-      description: 'Alters an attribute intrinsic to the player, such as a stat or condition meter.',
-      type: 'object'
-    },
-    AlterMove: {
-      title: 'AlterMove',
-      allOf: [
-        {
-          $ref: '#/definitions/AlterMoveBase'
-        },
-        {
-          required: [
-            '_moves'
-          ],
-          properties: {
-            _moves: {
-              $ref: '#/definitions/AlterMoveBase/properties/_moves'
-            }
-          }
-        }
-      ]
-    },
-
-    AlterMoveBase: {
-      description: 'Describes changes made to moves by asset abilities.',
-      type: 'object',
-      properties: {
-        _moves: {
-          description: "The IDs of the affected moves. Use 'null' if it can apply to any move.",
-          type: [
-            'array',
-            'null'
-          ],
-          items: {
-            $ref: '#/definitions/IDMove'
-          },
-          default: null
-        },
-        trigger: {
-          $ref: '#/definitions/MoveTrigger'
-        }
-      }
-    },
-    AlterAsset: {
-      title: 'AlterAsset',
-      description: 'Alters another asset',
-      type: 'object',
-      properties: {
-        assets: {
-          type: 'array',
-          items: {
-            $ref: '#/definitions/IDAsset'
-          }
-        }
-      }
-    },
-
-    AssetAbility: {
-      title: 'AssetAbility',
-      description: 'Describes an asset ability.',
-      allOf: [
-        {
-          $ref: '#/definitions/AssetAbilityBase'
-        },
-        {
-          required: [
-            'text'
-          ],
-          properties: {
-            alter_moves: {
-              type: 'array',
-              items: {
-                $ref: '#/definitions/AlterMove'
-              }
-            },
-            extend_abilities: {
-              type: 'array',
-              items: {
-                $ref: '#/definitions/ExtendAssetAbility'
-              }
-            },
-            text: {
-              $ref: '#/definitions/AssetAbilityBase/properties/text'
-            }
-          }
-        }
-      ]
-    },
-    AssetAbilityBase: {
-      type: 'object',
-      properties: {
-        name: {
-          description: 'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
-          $ref: '#/definitions/LocalizedLabel'
-        },
-        text: {
-          description: 'The rules text for this asset ability.',
-          $ref: '#/definitions/LocalizedMarkdown'
-        },
-        attachments: {
-          description: 'Details on what attachments (other assets) are accepted by this asset.',
-          $comment: '#/definitions/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
-        },
-        attributes: {
-          patternProperties: {
-            '^[a-z][a-z_+]*[a-z]$': {
-              oneOf: [
-                {
-                  $ref: '#/definitions/AttributeNumericOverride'
-                },
-                {
-                  $comment: 'New condition meters require an ID.',
-                  allOf: [
-                    {
-                      oneOf: [
-                        {
-                          $ref: '#/definitions/AttributeConditionMeter'
-                        },
-                        {
-                          $ref: '#/definitions/AttributeCounter'
-                        },
-                        {
-                          $ref: '#/definitions/AttributeText'
-                        },
-                        {
-                          $ref: '#/definitions/AttributeClock'
-                        }
-                      ]
-                    },
-                    {
-                      required: [
-                        '_id'
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        },
-        moves: {
-          description: 'Unique, self-contained moves added by this asset ability.',
-          type: 'object',
-          patternProperties: {
-            '^[a-z][a-z_+]*[a-z]$': {
-              $ref: '#/definitions/Move'
-            }
-          }
-        },
-        alter_moves: {
-          type: 'array',
-          items: {
-            $ref: '#/definitions/AlterMoveBase'
-          }
-        },
-        alter_player: {
-          $ref: '#/definitions/AlterPlayer'
-        },
-        _id: {
-          $ref: '#/definitions/IDAssetAbility'
-        },
-        enabled: {
-          description: "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
-          type: 'boolean',
-          default: false
-        }
-      }
-    },
-    Asset: {
-      type: 'object',
-      properties: {
-        _id: {
-          $ref: '#/definitions/IDDataforged',
-          pattern: '^[a-z_]+/assets/[a-z_]+/[a-z_]+$'
-        },
-        attributes: {
-          patternProperties: {
-            '^[a-z][a-z_+]*[a-z]$': {
-              $ref: '#/definitions/Attribute'
-            }
-          }
-        },
-        name: {
-          $ref: '#/definitions/LocalizedLabel'
-        },
-        abilities: {
-          type: 'array',
-          additionalItems: false,
-          items: [
-            {
-              $ref: '#/definitions/AssetAbility'
-            },
-            {
-              $ref: '#/definitions/AssetAbility'
-            },
-            {
-              $ref: '#/definitions/AssetAbility'
-            }
-          ]
-        },
-        requirement: {
-          description: 'A markdown string representing the requirement text that appears at the top of some asset cards.',
-          $ref: '#/definitions/LocalizedMarkdown'
-        },
-        source: {
-          $ref: '#/definitions/Source'
-        },
-        attachments: {
-          description: 'Details on what attachments (other assets) are accepted by this asset.',
-          $comment: '#/definitions/AssetAttachment'
-        },
-        tags: {
-          type: 'array',
-          items: {
-            examples: [
-              'animal_companion',
-              'beast_companion',
-              'biological_companion',
-              'deed',
-              'ironlander_companion',
-              'mechanical_companion'
-            ],
-            type: 'string'
-          }
-        },
-        usage: {
-          $comment: '#/definitions/AssetUsage',
-          description: "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
-        }
-      },
-      required: [
-        'abilities',
-        'name',
-        '_id'
-      ],
-      not: {
-        required: [
-          'inputs'
-        ],
-        properties: {
-          inputs: {
-            type: 'object'
-          }
-        }
-      }
-    }
+    AssetTypes
   }
 }
 

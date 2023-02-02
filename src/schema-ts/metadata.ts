@@ -1,7 +1,68 @@
-import { JSONSchema7 } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+
+
+const
+    CategoryMetadata: JSONSchema7Definition = {
+      type: 'object',
+      required: [
+        '_id',
+        'title',
+        'source'
+      ],
+      properties: {
+        _id: {
+          $ref: '#/definitions/Dataforged.ID'
+        },
+        title: {
+          $ref: '#/definitions/Title'
+        },
+        source: {
+          $ref: '#/definitions/Source'
+        },
+        summary: {
+          $ref: '#/definitions/Summary'
+        },
+        description: {
+          $ref: '#/definitions/Description'
+        },
+        tags: {
+          $ref: '#/definitions/Tags'
+        }
+      }
+    }
 
 const schema: JSONSchema7 = {
   definitions: {
+    NamespaceKey: {
+      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string s.ID. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
+      type: 'string',
+      pattern: '^[a-z0-9][a-z0-9_+]*[a-z0-9]$',
+      examples: [
+        'starforged',
+        'ironsworn',
+        'ironsworn_delve',
+        'sundered_isles'
+      ]
+    },
+    Color: {
+      description: 'A hexadecimal color associated with this item, for use as e.g. an accent color when rendering it.',
+      type: 'string',
+      pattern: '^#([\\dA-f]{2}){3}$',
+      format: 'color'
+    },
+    License: {
+      description: "The URI pointing to the license which this item's *text* content falls under. If this is null, no license is specified -- use with caution.",
+      type: [
+        'string',
+        'null'
+      ],
+      format: 'uri',
+      default: 'https://creativecommons.org/licenses/by-nc-sa/4.0',
+      examples: [
+        'https://creativecommons.org/licenses/by-nc-sa/4.0',
+        'https://creativecommons.org/licenses/by/4.0'
+      ]
+    },
     Title: {
       required: [
         'canonical'
@@ -9,7 +70,7 @@ const schema: JSONSchema7 = {
       additionalProperties: false,
       properties: {
         _id: {
-          $ref: '#/definitions/IDDataforged'
+          $ref: '#/definitions/Dataforged.ID'
         },
         canonical: {
           description: "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
@@ -26,20 +87,16 @@ const schema: JSONSchema7 = {
       }
     },
     Icon: {
-      description: 'A URI of an vector icon in the SVG format.',
+      description: 'The URI of an SVG vector icon.',
       type: 'string',
-      format: 'uri-reference'
+      format: 'uri-reference',
+      pattern: '\.svg$'
     },
     Image: {
-      description: 'The URI of a raster image in the WEBP format.',
+      description: 'The URI of a WEBP image.',
       type: 'string',
-      format: 'uri-reference'
-    },
-    Images: {
-      type: 'array',
-      items: {
-        $ref: '#/definitions/Image'
-      }
+      format: 'uri-reference',
+      pattern: '\.webp$'
     },
     Source: {
       description: "Information on this item's source. For 'canonical' content, this is usually a book with a page number, but it might also be a link to a web site.",
@@ -119,63 +176,35 @@ const schema: JSONSchema7 = {
       description: '"Non-canonical" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.',
       additionalProperties: false,
       properties: {
-        oracle_rolls: {
+        rolls: {
           type: 'array',
           items: {
-            $ref: '#/definitions/IDOracleTable'
+            $ref: '#/definitions/OracleTable.ID'
           }
         },
         regions: {
           type: 'array',
           items: {
-            $ref: '#/definitions/IDIronlandsRegion'
+            $ref: '#/definitions/IronlandsRegion.ID'
           }
         },
         assets: {
           type: 'array',
           items: {
-            $ref: '#/definitions/IDAsset'
+            $ref: '#/definitions/Asset.ID'
           }
         },
         site_themes: {
           type: 'array',
           items: {
-            $ref: '#/definitions/IDDelveSiteTheme'
+            $ref: '#/definitions/DelveSiteTheme.ID'
           }
         },
         site_domains: {
           type: 'array',
           items: {
-            $ref: '#/definitions/IDDelveSiteDomain'
+            $ref: '#/definitions/DelveSiteDomain.ID'
           }
-        }
-      }
-    },
-    CategoryMetadata: {
-      type: 'object',
-      required: [
-        '_id',
-        'title',
-        'source'
-      ],
-      properties: {
-        _id: {
-          $ref: '#/definitions/IDDataforged'
-        },
-        title: {
-          $ref: '#/definitions/Title'
-        },
-        source: {
-          $ref: '#/definitions/Source'
-        },
-        summary: {
-          $ref: '#/definitions/Summary'
-        },
-        description: {
-          $ref: '#/definitions/Description'
-        },
-        tags: {
-          $ref: '#/definitions/Tags'
         }
       }
     },
@@ -186,12 +215,13 @@ const schema: JSONSchema7 = {
           $ref: '#/definitions/Icon'
         },
         images: {
-          $ref: '#/definitions/Images'
+          type: 'array',
+          items: {
+            $ref: '#/definitions/Image'
+          }
         },
         color: {
-          description: 'A CSS color associated with this item, for use as e.g. an accent color when rendering it.',
-          type: 'number',
-          format: 'color'
+          $ref: '#/definitions/Color'
         }
       }
     }

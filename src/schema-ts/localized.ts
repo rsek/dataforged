@@ -14,20 +14,6 @@ const schema: JSONSchema7 = {
       $ref: '#/definitions/Localizable',
       description: 'A localizable string formatted in markdown. This usually represents a direct excerpt from the source material.'
     },
-    LocalizedTemplateStrings: {
-      type: 'object',
-      properties: {
-        result: {
-          $ref: '#/definitions/LocalizedTemplateString'
-        },
-        summary: {
-          $ref: '#/definitions/LocalizedTemplateString'
-        },
-        description: {
-          $ref: '#/definitions/LocalizedTemplateString'
-        }
-      }
-    },
     LocalizedTemplateString: {
       description: 'A localizable markdown string template where variables are provided by rolling an oracle table.',
       $ref: '#/definitions/LocalizedMarkdown'

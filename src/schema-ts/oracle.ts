@@ -31,51 +31,162 @@ const d100RangeNullable: JSONSchema7Definition = {
   ]
 }
 
+export const OracleContentMetadata: JSONSchema7Definition = {
+  type: 'object',
+  description: "Metadata that describes an oracle's semantic or lexical content.",
+  additionalProperties: false,
+  properties: {
+    part_of_speech: {
+      description: 'The part of speech of this oracle.',
+      type: 'array',
+      items: {
+        examples: [
+          'adjective',
+          'common_noun',
+          'compound_noun',
+          'fragment',
+          'name',
+          'noun',
+          'plural',
+          'possessive_case',
+          'proper_noun',
+          'proper_noun_fragment',
+          'sentences',
+          'verb'
+        ],
+        type: 'string'
+      }
+    },
+    tags: {
+      description: 'Any arbitrary string tags associated with this oracle.',
+      type: 'array',
+      items: {
+        type: 'string'
+      }
+    }
+  }
+}
+
+export const OracleTableRollMethod: JSONSchema7Definition = {
+  description: `
+  no_duplicates = Reroll duplicate OracleTableRows
+  allow_duplicates = Don't reroll duplicate OracleTableRows
+  make_it_worse = Don't reroll duplicate OracleTableRows; duplicates compound
+  `,
+  type: 'string',
+  enum: [
+    'no_duplicates',
+    'allow_duplicates',
+    'make_it_worse'
+  ],
+  default: 'no_duplicates'
+}
+
+export const OracleTableRoll: JSONSchema7Definition = {
+  description: 'Parameters for an oracle table roll.',
+  required: [
+    'table'
+  ],
+  properties: {
+    table: {
+      $ref: '#/definitions/OracleTable.ID'
+    },
+    times: {
+      description: 'The number of times to roll',
+      type: 'integer',
+      minimum: 1,
+      default: 1
+    },
+    allow_duplicates: {
+      description: 'TODO',
+      type: 'boolean',
+      default: false
+    },
+    make_it_worse: {
+      description: 'TODO',
+      type: 'boolean',
+      default: false
+    }
+  }
+}
+
 export const OracleRowLike: JSONSchema7Definition = d100Range
 
-export const OracleTableRow: JSONSchema7Definition = {
+export const OracleTableRowContentMetadata: JSONSchema7Definition = {}
+
+export const OracleTableRenderMetadata: JSONSchema7Definition = {}
+
+export const OracleTableRowRenderMetadata: JSONSchema7Definition = {
+  definitions: {
+    icon: {// TODO
+    },
+    images: {// TODO
+    },
+    color: {
+      // TODO
+    },
+    embed_table: {
+      description: 'The ID of another oracle table, which should be rendered *within* this table row.',
+      // TODO: point to an example in the Ironsworn rulebook
+      $ref: '#/definitions/OracleTable.ID'
+    }
+  }
+}
+
+export const OracleTableRow: JSONSchema7Definition = merge(d100RangeNullable, {
   type: 'object',
   required: [
-    'result',
-    'floor',
-    'ceiling'
+    'result'
   ],
   additionalProperties: false,
   properties: {
     _id: {
       // TODO
-      $ref: '#/definitions/IDDataforged'
+      $ref: '#/definitions/Dataforged.ID'
     },
     floor: {
-      description: 'The low end of the dice range for this table row.',
-      ...d100Value
+      description: 'The low end of the dice range for this table row.'
     },
     ceiling: {
-      description: 'The high end of the dice range for this table row.',
-      ...d100Value
+      description: 'The high end of the dice range for this table row.'
     },
     result: {
       description: 'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.',
       $ref: '#/definitions/LocalizedMarkdown'
     },
     summary: {
-      description: "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `OracleTableRow.summary` is longer than `OracleTableRow.result`.\n\nSome tables label this column as something other than `OracleTableRow.result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+      description: "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       oneOf: [
         {
-          $ref: '#/definitions/LocalizedMarkdown'
+          $ref: '#/definitions/Summary'
         },
         {
           type: 'null'
         }
       ]
     },
-    roll_template: {
-      $ref: '#/definitions/LocalizedTemplateStrings'
+    template: {
+      description: 'TODO',
+      examples: [
+        {result: }
+      ],
+      type: 'object',
+      properties: {
+        result: {
+          $ref: '#/definitions/LocalizedTemplateString'
+        },
+        summary: {
+          $ref: '#/definitions/LocalizedTemplateString'
+        },
+        description: {
+          $ref: '#/definitions/LocalizedTemplateString'
+        }
+      }
     },
-    oracle_rolls: {
+    rolls: {
       type: 'array',
       items: {
-        $ref: '#/definitions/IDOracleTable'
+        $ref: '#/definitions/OracleTableRoll'
       }
     },
     suggestions: {
@@ -83,13 +194,9 @@ export const OracleTableRow: JSONSchema7Definition = {
     },
     render: {
       $ref: '#/definitions/RenderMetadata'
-    },
-    embed_table: {
-      description: 'The ID of another oracle table ',
-      $ref: '#/definitions/IDOracleTable'
     }
   }
-}
+})
 
 /**
  * Shared oracle metadata.
@@ -142,45 +249,22 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
       _id: {
       // TODO: figure out ID type
       },
-      content: {
-        title: 'OracleContent',
+      content: {},
+      match: {
+        title: 'OracleMatchBehaviour',
         type: 'object',
-        description: "Metadata that describes an oracle's semantic or lexical content.",
-        additionalProperties: false,
         properties: {
-          part_of_speech: {
-            description: 'The part of speech of this oracle.',
-            type: 'array',
-            items: {
-              examples: [
-                'adjective',
-                'common noun',
-                'compound noun',
-                'fragment',
-                'name',
-                'noun',
-                'plural',
-                'possessive case',
-                'proper noun',
-                'proper noun fragment',
-                'sentences',
-                'verb'
-              ],
-              type: 'string'
-            }
+          _id: {
+            $ref: '#/definitions/Dataforged.ID'
           },
-          tags: {
-            description: 'Any arbitrary string tags associated with this oracle.',
-            type: 'array',
-            items: {
-              type: 'string'
-            }
+          text: {
+            $ref: '#/definitions/LocalizedMarkdown'
           }
-        }
-      },
-      usage: {
-        title: 'OracleUsage',
-        type: 'object'
+        },
+        additionalProperties: false,
+        required: [
+          'text'
+        ]
       },
       requires: {
         title: 'OracleRequirements',
@@ -229,31 +313,17 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
         items: {
           $ref: '#/definitions/OracleTableRow'
         }
-      },
-      match: {
-        title: 'OracleMatchBehaviour',
-        type: 'object',
-        properties: {
-          _id: {
-            $ref: '#/definitions/IDDataforged'
-          },
-          text: {
-            $ref: '#/definitions/LocalizedMarkdown'
-          }
-        },
-        additionalProperties: false,
-        required: [
-          'text'
-        ]
       }
     }
   })
 
 export const schema: JSONSchema7 = {
   definitions: {
-    OracleSet,
+    OracleTableRoll,
+    OracleTableRow,
     OracleTable,
-    OracleTableRow
+    OracleSet,
+    OracleContentMetadata
   }
 }
 

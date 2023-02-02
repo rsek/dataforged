@@ -133,7 +133,7 @@ const schema: JSONSchema7 = {
                   type: 'null'
                 },
                 {
-                  $ref: '#/definitions/IDPlayerConditionMeter'
+                  $ref: '#/definitions/PlayerConditionMeter.ID'
                 }
               ],
               default: null
@@ -148,7 +148,7 @@ const schema: JSONSchema7 = {
                       $ref: '#/definitions/LocalizedLabel'
                     },
                     value: {
-                      $ref: '#/definitions/IDPlayerConditionMeter'
+                      $ref: '#/definitions/PlayerConditionMeter.ID'
                     }
                   }
                 }
@@ -214,7 +214,7 @@ const schema: JSONSchema7 = {
                   type: 'null'
                 },
                 {
-                  $ref: '#/definitions/IDPlayerStat'
+                  $ref: '#/definitions/PlayerStat.ID'
                 }
               ],
               default: null
@@ -229,7 +229,7 @@ const schema: JSONSchema7 = {
                       $ref: '#/definitions/LocalizedLabel'
                     },
                     value: {
-                      $ref: '#/definitions/IDPlayerStat'
+                      $ref: '#/definitions/PlayerStat.ID'
                     }
                   }
                 }
@@ -241,11 +241,11 @@ const schema: JSONSchema7 = {
     },
     AttributeSetter: {
       propertyNames: {
-        $ref: '#/definitions/IDAttribute'
+        $ref: '#/definitions/Attribute.ID'
       },
       patternProperties: {
         '^.*$': {
-          $ref: '#/definitions/IDPlayerStat'
+          $ref: '#/definitions/PlayerStat.ID'
         }
       }
     },
@@ -332,7 +332,7 @@ const schema: JSONSchema7 = {
       ],
       properties: {
         _extends: {
-          $ref: '#/definitions/IDAttribute'
+          $ref: '#/definitions/Attribute.ID'
         },
         min: {
           type: 'integer'
@@ -371,7 +371,7 @@ const schema: JSONSchema7 = {
       ],
       properties: {
         _id: {
-          $ref: '#/definitions/IDAttribute'
+          $ref: '#/definitions/Attribute.ID'
         },
         label: {
           $ref: '#/definitions/LocalizedLabel'

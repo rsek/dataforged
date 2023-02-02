@@ -19,7 +19,7 @@ const CyclopediaEntry: JSONSchema7Definition = {
   ],
   properties: {
     _id: {
-      $ref: '#/definitions/IDDataforged'
+      $ref: '#/definitions/Dataforged.ID'
     },
     name: {
       $ref: '#/definitions/LocalizedLabel'
@@ -47,6 +47,21 @@ const CyclopediaEntry: JSONSchema7Definition = {
     }
   }
 }
+
+export const RegionEntry: JSONSchema7Definition = {
+          allOf: [
+            {
+              $ref: '#/definitions/CyclopediaEntry'
+            },
+            {
+              required: [
+                'description',
+                'features',
+                'quest_starter',
+                'summary'
+              ]
+            }
+          ]}
 
 const Encounter: JSONSchema7Definition = {
   description: 'Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.',

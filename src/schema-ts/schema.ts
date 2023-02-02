@@ -2,6 +2,16 @@ import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 import { merge } from 'lodash-es'
 import id, { DF_KEY } from './id'
 import oracle from './oracle'
+import player from './player'
+import asset from './asset'
+import attribute from './attribute'
+import cyclopedia from './cyclopedia'
+import delveSite from './delve-site'
+import localized from './localized'
+import metadata from './metadata'
+import move from './move'
+import progressTrack from './progress-track'
+import truth from './truth'
 
 export function dfRecord (itemSchema: string, title: string = itemSchema + 's'): JSONSchema7Definition {
   return {
@@ -67,7 +77,7 @@ const NamespaceClassic: JSONSchema7Definition = merge(NamespaceBase, {
         }
       }
     },
-    encounter_natures: {
+    encounters: {
       title: 'EncountersClassic',
       additionalProperties: false,
       patternProperties: {
@@ -109,64 +119,11 @@ const NamespaceClassic: JSONSchema7Definition = merge(NamespaceBase, {
         }
       }
     },
-    regions: {
-      title: 'IronlandsRegions',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          title: 'IronlandsRegion',
-          allOf: [
-            {
-              $ref: '#/definitions/CyclopediaEntry'
-            },
-            {
-              required: [
-                'description',
-                'features',
-                'quest_starter',
-                'summary'
-              ]
-            }
-          ]
-        }
-      }
-    },
-    rarities: {
-      type: 'object',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          $ref: '#/definitions/Rarity'
-        }
-      }
-    },
-    site_domains: {
-      type: 'object',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          $ref: '#/definitions/DelveSiteDomain'
-        }
-      }
-    },
-    site_themes: {
-      type: 'object',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          $ref: '#/definitions/DelveSiteTheme'
-        }
-      }
-    },
-    delve_sites: {
-      type: 'object',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          $ref: '#/definitions/DelveSite'
-        }
-      }
-    }
+    regions: dfRecord('RegionEntry'),
+    rarities: dfRecord('Rarity', 'Rarities'),
+    site_domains: dfRecord('DelveSiteDomain'),
+    site_themes: dfRecord('DelveSiteTheme'),
+    delve_sites: dfRecord('DelveSite')
   }
 })
 const NamespaceStarforged: JSONSchema7Definition = merge(NamespaceBase, {
@@ -245,44 +202,19 @@ const schema: JSONSchema7 = {
   description: 'Schema definitions used for Datasworn and Dataforged (v2+).',
   definitions: {
     ...id.definitions,
+    ...asset.definitions,
     ...oracle.definitions,
+    ...player.definitions,
+    ...attribute.definitions,
+    ...cyclopedia.definitions,
+    ...delveSite.definitions,
+    ...localized.definitions,
+    ...metadata.definitions,
+    ...move.definitions,
+    ...progressTrack.definitions,
+    ...truth.definitions,
 
-    License: {
-      description: "The URI pointing to the license which this item's *text* content falls under. If this is null, no license is specified -- use with caution.",
-      type: [
-        'string',
-        'null'
-      ],
-      format: 'uri',
-      default: 'https://creativecommons.org/licenses/by-nc-sa/4.0',
-      examples: [
-        'https://creativecommons.org/licenses/by-nc-sa/4.0',
-        'https://creativecommons.org/licenses/by/4.0'
-      ]
-    },
-    NamespaceKey: {
-      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string IDs. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
-      type: 'string',
-      pattern: '^[a-z0-9][a-z0-9_+]*[a-z0-9]$',
-      examples: [
-        'starforged',
-        'ironsworn',
-        'ironsworn_delve',
-        'sundered_isles'
-      ]
-    },
-    ThematicColor: {
-      type: 'string',
-      pattern: '^#([\\dA-f]{2}){3}$'
-    },
 
-    PlayerConditionMeterName: {
-      enum: [
-        'health',
-        'spirit',
-        'supply'
-      ]
-    },
 
     SnakeCase: {
       type: 'string',
@@ -305,7 +237,7 @@ const schema: JSONSchema7 = {
     ConditionMeterType: {
       oneOf: [
         {
-          $ref: '#/definitions/IDPlayerConditionMeter'
+          $ref: '#/definitions/PlayerConditionMeter.ID'
         },
         {
           $ref: '#/definitions/ConditionMeterAlias'
@@ -372,25 +304,6 @@ const schema: JSONSchema7 = {
       },
       additionalProperties: false
     },
-    ExtendAssetAbility: {
-      description: "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
-      allOf: [
-        {
-          $ref: '#/definitions/AssetAbilityBase'
-        },
-        {
-          required: [
-            '_ability'
-          ],
-          properties: {
-            _ability: {
-              description: 'The ID of the asset ability to be extended.',
-              $ref: '#/definitions/IDAssetAbility'
-            }
-          }
-        }
-      ]
-    },
     NamespaceClassic,
     NamespaceStarforged
 
@@ -402,7 +315,7 @@ const schema: JSONSchema7 = {
   patternProperties: {
     '.*': {
       title: 'Namespace',
-      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string IDs. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
+      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string ID. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
       anyOf: [
         {
           $ref: '#/definitions/NamespaceClassic'

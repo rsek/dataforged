@@ -1,5 +1,45 @@
 import { JSONSchema7Definition, JSONSchema7 } from 'json-schema'
 
+export const MoveExtension: JSONSchema7Definition = {
+  title: 'MoveExtension',
+  allOf: [
+    {
+      $ref: '#/definitions/MoveExtensionBase'
+    },
+    {
+      required: [
+        '_moves'
+      ],
+      properties: {
+        _moves: {
+          $ref: '#/definitions/MoveExtensionBase/properties/_moves'
+        }
+      }
+    }
+  ]
+}
+
+export const MoveExtensionBase: JSONSchema7Definition = {
+  description: 'Describes changes made to moves by asset abilities.',
+  type: 'object',
+  properties: {
+    _moves: {
+      description: "The s.ID of the affected moves. Use 'null' if it can apply to any move.",
+      type: [
+        'array',
+        'null'
+      ],
+      items: {
+        $ref: '#/definitions/Move.ID'
+      },
+      default: null
+    },
+    trigger: {
+      $ref: '#/definitions/MoveTrigger'
+    }
+  }
+}
+
 export const MoveCategory: JSONSchema7Definition = {
   title: 'MoveCategory',
   type: 'object',
@@ -8,7 +48,7 @@ export const MoveCategory: JSONSchema7Definition = {
       $ref: '#/definitions/Title'
     },
     color: {
-      $ref: '#/definitions/ThematicColor'
+      $ref: '#/definitions/Color'
     },
     description: {
       $ref: '#/definitions/Description'
@@ -64,7 +104,7 @@ const schema: JSONSchema7 = {
         },
         asset: {
           description: 'The ID of the parent Asset of the move, if any.',
-          $ref: '#/definitions/IDAsset'
+          $ref: '#/definitions/Asset.ID'
         },
         progress_move: {
           description: 'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
@@ -75,10 +115,10 @@ const schema: JSONSchema7 = {
           type: 'string'
         },
         oracles: {
-          description: 'The IDs of any oracles directly referenced by the move, or vice versa.',
+          description: 'The s.ID of any oracles directly referenced by the move, or vice versa.',
           type: 'array',
           items: {
-            $ref: '#/definitions/IDDataforged'
+            $ref: '#/definitions/Dataforged.ID'
           }
         },
         optional: {
@@ -120,16 +160,16 @@ const schema: JSONSchema7 = {
               items: {
                 anyOf: [
                   {
-                    $ref: '#/definitions/IDPlayerStat'
+                    $ref: '#/definitions/PlayerStat.ID'
                   },
                   {
-                    $ref: '#/definitions/IDPlayerConditionMeter'
+                    $ref: '#/definitions/PlayerConditionMeter.ID'
                   },
                   {
                     $ref: '#/definitions/ConditionMeterAlias'
                   },
                   {
-                    $ref: '#/definitions/IDAttribute'
+                    $ref: '#/definitions/Attribute.ID'
                   }
                 ]
               }

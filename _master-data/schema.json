@@ -65,9 +65,9 @@
       ]
     },
     "IDEncounterClassic": {
-      "$comment": "{namespace}/encounter_natures/{nature}/{encounter}",
+      "$comment": "{namespace}/encounters/{nature}/{encounter}",
       "type": "string",
-      "pattern": "^[a-z][a-z_+]*[a-z]/encounter_natures/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
+      "pattern": "^[a-z][a-z_+]*[a-z]/encounters/[a-z][a-z_+]*[a-z]/[a-z][a-z_+]*[a-z]$"
     },
     "IDEncounterStarforged": {
       "$comment": "{namespace}/encounters/{encounter} or {namespace}/encounters/{encounter}/variants/{variant}",
@@ -337,7 +337,7 @@
         "sundered_isles"
       ]
     },
-    "ThematicColor": {
+    "Color": {
       "type": "string",
       "pattern": "^#([\\dA-f]{2}){3}$"
     },
@@ -937,13 +937,13 @@
             "alter_moves": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/AlterMove"
+                "$ref": "#/definitions/MoveExtension"
               }
             },
             "extend_abilities": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ExtendAssetAbility"
+                "$ref": "#/definitions/AssetAbilityExtension"
               }
             },
             "text": {
@@ -1017,11 +1017,11 @@
         "alter_moves": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AlterMoveBase"
+            "$ref": "#/definitions/MoveExtensionBase"
           }
         },
         "alter_player": {
-          "$ref": "#/definitions/AlterPlayer"
+          "$ref": "#/definitions/PlayerExtension"
         },
         "_id": {
           "$ref": "#/definitions/IDAssetAbility"
@@ -1168,7 +1168,7 @@
       },
       "additionalProperties": false
     },
-    "ExtendAssetAbility": {
+    "AssetAbilityExtension": {
       "description": "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
       "allOf": [
         {
@@ -1187,11 +1187,11 @@
         }
       ]
     },
-    "AlterMove": {
-      "title": "AlterMove",
+    "MoveExtension": {
+      "title": "MoveExtension",
       "allOf": [
         {
-          "$ref": "#/definitions/AlterMoveBase"
+          "$ref": "#/definitions/MoveExtensionBase"
         },
         {
           "required": [
@@ -1199,7 +1199,7 @@
           ],
           "properties": {
             "_moves": {
-              "$ref": "#/definitions/AlterMoveBase/properties/_moves"
+              "$ref": "#/definitions/MoveExtensionBase/properties/_moves"
             }
           }
         }
@@ -1215,7 +1215,7 @@
         }
       ]
     },
-    "AlterMoveBase": {
+    "MoveExtensionBase": {
       "description": "Describes changes made to moves by asset abilities.",
       "type": "object",
       "properties": {
@@ -1248,8 +1248,8 @@
         }
       }
     },
-    "AlterPlayer": {
-      "title": "AlterPlayer",
+    "PlayerExtension": {
+      "title": "PlayerExtension",
       "description": "Alters an attribute intrinsic to the player, such as a stat or condition meter.",
       "type": "object"
     },
@@ -2019,7 +2019,7 @@
       "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended.",
       "additionalProperties": false,
       "properties": {
-        "oracle_rolls": {
+        "rolls": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/IDOracleTable"
@@ -2386,7 +2386,7 @@
         "suggestions": {
           "$ref": "#/definitions/Suggestions"
         },
-        "oracle_rolls": {
+        "rolls": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/IDOracleTable"
@@ -2395,7 +2395,7 @@
         "embed_table": {
           "$ref": "#/definitions/IDOracleTable"
         },
-        "roll_template": {
+        "template": {
           "$ref": "#/definitions/LocalizedTemplateStrings"
         }
       }
@@ -2613,7 +2613,7 @@
               "$ref": "#/definitions/Title"
             },
             "color": {
-              "$ref": "#/definitions/ThematicColor"
+              "$ref": "#/definitions/Color"
             },
             "description": {
               "$ref": "#/definitions/Description"
@@ -2771,7 +2771,7 @@
             }
           }
         },
-        "encounter_natures": {
+        "encounters": {
           "title": "EncountersClassic",
           "additionalProperties": false,
           "patternProperties": {

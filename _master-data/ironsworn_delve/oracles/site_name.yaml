@@ -35,31 +35,31 @@ ironsworn_delve:
             - floor: 1
               ceiling: 25
               result: "[Description] [Place]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
             - floor: 26
               ceiling: 50
               result: "[Place] of [Detail]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/detail}}"}
             - floor: 51
               ceiling: 70
               result: "[Place] of [Description] [Detail]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/detail}}"}
             - floor: 71
               ceiling: 80
               result: "[Place] of [Namesake's] [Detail]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/detail}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/detail}}"}
             - floor: 81
               ceiling: 85
               result: "[Namesake's] [Place]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/namesake}}'s {{roll:ironsworn_delve/oracles/site_name/place/domain}}"}
             - floor: 86
               ceiling: 95
               result: "[Description] [Place] of [Namesake]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/description}} {{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
             - floor: 96
               ceiling: 100
               result: "[Place] of [Namesake]"
-              roll_template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
+              template: { result: "{{roll:ironsworn_delve/oracles/site_name/place/domain}} of {{roll:ironsworn_delve/oracles/site_name/namesake}}"}
         description:
           title:
             canonical: "Site Name: Description"
@@ -584,84 +584,84 @@ ironsworn_delve:
                 - floor: 1
                   ceiling: 6
                   result: Barrow
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/barrow"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/barrow"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/barrow"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/barrow"
                 - floor: 7
                   ceiling: 18
                   result: Cavern
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/cavern"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/cavern"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/cavern"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/cavern"
                 - floor: 19
                   ceiling: 28
                   result: Frozen Cavern
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/frozen_cavern"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/frozen_cavern"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/frozen_cavern"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/frozen_cavern"
                 - floor: 29
                   ceiling: 32
                   result: Icereach
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/icereach"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/icereach"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/icereach"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/icereach"
                 - floor: 33
                   ceiling: 38
                   result: Mine
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/mine"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/mine"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/mine"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/mine"
                 - floor: 39
                   ceiling: 48
                   result: Pass
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/pass"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/pass"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/pass"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/pass"
                 - floor: 49
                   ceiling: 58
                   result: Ruin
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/ruin"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/ruin"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/ruin"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/ruin"
                 - floor: 59
                   ceiling: 68
                   result: Sea Cave
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/sea_cave"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/sea_cave"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/sea_cave"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/sea_cave"
                 - floor: 69
                   ceiling: 78
                   result: Shadowfen
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/shadowfen"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/shadowfen"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/shadowfen"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/shadowfen"
                 - floor: 79
                   ceiling: 83
                   result: Stronghold
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/stronghold"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/stronghold"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/stronghold"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/stronghold"
                 - floor: 84
                   ceiling: 95
                   result: Tanglewood
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/tanglewood"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/tanglewood"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/tanglewood"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/tanglewood"
                 - floor: 96
                   ceiling: 100
                   result: Underkeep
-                  oracle_rolls: ["ironsworn_delve/oracles/site_name/place/underkeep"]
+                  rolls: ["ironsworn_delve/oracles/site_name/place/underkeep"]
                   suggestions:
                     site_domains: ["ironsworn_delve/site_domains/underkeep"]
                   embed_table: "ironsworn_delve/oracles/site_name/place/underkeep"

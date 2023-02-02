@@ -48,19 +48,19 @@ starforged:
                 - floor: 1
                   ceiling: 40
                   result: "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]"
-                  roll_template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}" }
+                  template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}" }
                 - floor: 41
                   ceiling: 55
                   result: "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]"
-                  roll_template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
+                  template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
                 - floor: 56
                   ceiling: 70
                   result: "[[⏵Identity](starforged/oracles/factions/identity)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]"
-                  roll_template: {result: "{{roll:starforged/oracles/factions/identity}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}"}
+                  template: {result: "{{roll:starforged/oracles/factions/identity}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}"}
                 - floor: 71
                   ceiling: 100
                   result: "[[⏵Affiliation](starforged/oracles/factions/affiliation)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]"
-                  roll_template: {result: "{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
+                  template: {result: "{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
             legacy:
               title:
                 canonical: Legacy
@@ -481,19 +481,19 @@ starforged:
               ceiling: 40
               result: "[⏵Dominion](starforged/oracles/factions/dominion)"
               summary: "Governing power"
-              oracle_rolls: [starforged/oracles/factions/dominion, starforged/oracles/factions/leadership]
+              rolls: [starforged/oracles/factions/dominion, starforged/oracles/factions/leadership]
               # set_attributes: {faction_type: [dominion]}
             - floor: 41
               ceiling: 70
               result: "[⏵Guild](starforged/oracles/factions/guild)"
               summary: "Organization of specialists"
-              oracle_rolls: [starforged/oracles/factions/guild]
+              rolls: [starforged/oracles/factions/guild]
               # set_attributes: {faction_type: [guild]}
             - floor: 71
               ceiling: 100
               result: "[⏵Fringe Group](starforged/oracles/factions/fringe_group)"
               summary: "Band of outlaws, outcasts, or rogues"
-              oracle_rolls: [starforged/oracles/factions/fringe_group]
+              rolls: [starforged/oracles/factions/fringe_group]
               # set_attributes: {faction_type: [fringe_group]}
         influence:
           title:

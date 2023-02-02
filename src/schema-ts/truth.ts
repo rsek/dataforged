@@ -21,7 +21,7 @@ const schema: JSONSchema7 = {
       ],
       properties: {
         _id: {
-          $ref: '#/definitions/IDDataforged'
+          $ref: '#/definitions/Dataforged.ID'
         },
         name: {
           $ref: '#/definitions/LocalizedLabel'

@@ -19,9 +19,9 @@ export class TruthOptionStarforgedBuilder extends OracleTableRowBuilder<YamlTrut
     this.result = yaml.result
     this.description = yaml.description
     this.quest_starter = yaml.quest_starter
-    if (yaml.roll_template != null) {
+    if (yaml.template != null) {
       // @ts-expect-error
-      this.roll_template = { ...yaml.roll_template, $id: formatId('roll_template', this.$id) }
+      this.template = { ...yaml.template, $id: formatId('template', this.$id) }
     }
     // @ts-expect-error
     if (this.$id === null) {

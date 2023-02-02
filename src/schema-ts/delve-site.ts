@@ -23,10 +23,10 @@ const schema: JSONSchema7 = {
           $ref: '#/definitions/ChallengeRank'
         },
         theme: {
-          $ref: '#/definitions/IDDelveSiteTheme'
+          $ref: '#/definitions/DelveSiteTheme.ID'
         },
         domain: {
-          $ref: '#/definitions/IDDelveSiteDomain'
+          $ref: '#/definitions/DelveSiteDomain.ID'
         },
         denizens: {
           type: 'array',
@@ -213,7 +213,7 @@ const schema: JSONSchema7 = {
       ],
       properties: {
         _id: {
-          $ref: '#/definitions/IDRarity'
+          $ref: '#/definitions/Rarity.ID'
         },
         name: {
           $ref: '#/definitions/LocalizedLabel'
@@ -222,7 +222,7 @@ const schema: JSONSchema7 = {
           $ref: '#/definitions/Icon'
         },
         asset: {
-          $ref: '#/definitions/IDAsset'
+          $ref: '#/definitions/Asset.ID'
         },
         source: {
           $ref: '#/definitions/Source'
@@ -269,7 +269,7 @@ const schema: JSONSchema7 = {
               default: null,
               oneOf: [
                 {
-                  $ref: '#/definitions/IDEncounterClassic'
+                  $ref: '#/definitions/EncounterClassic.ID'
                 },
                 {
                   type: 'null'
