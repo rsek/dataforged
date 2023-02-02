@@ -1,40 +1,39 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 
-
 const
-    CategoryMetadata: JSONSchema7Definition = {
-      type: 'object',
-      required: [
-        '_id',
-        'title',
-        'source'
-      ],
-      properties: {
-        _id: {
-          $ref: '#/definitions/Dataforged.ID'
-        },
-        title: {
-          $ref: '#/definitions/Title'
-        },
-        source: {
-          $ref: '#/definitions/Source'
-        },
-        summary: {
-          $ref: '#/definitions/Summary'
-        },
-        description: {
-          $ref: '#/definitions/Description'
-        },
-        tags: {
-          $ref: '#/definitions/Tags'
-        }
+  CategoryMetadata: JSONSchema7Definition = {
+    type: 'object',
+    required: [
+      '_id',
+      'title',
+      'source'
+    ],
+    properties: {
+      _id: {
+        $ref: '#/definitions/ID'
+      },
+      title: {
+        $ref: '#/definitions/Title'
+      },
+      source: {
+        $ref: '#/definitions/Source'
+      },
+      summary: {
+        $ref: '#/definitions/Summary'
+      },
+      description: {
+        $ref: '#/definitions/Description'
+      },
+      tags: {
+        $ref: '#/definitions/Tags'
       }
     }
+  }
 
 const schema: JSONSchema7 = {
   definitions: {
     NamespaceKey: {
-      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string s.ID. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
+      description: "The name of the dataset, used as a key in the root data object and to compose Dataforged's string ID. This *must* be unique; if you need override behaviour, you can use properties like _extends.",
       type: 'string',
       pattern: '^[a-z0-9][a-z0-9_+]*[a-z0-9]$',
       examples: [
@@ -70,7 +69,7 @@ const schema: JSONSchema7 = {
       additionalProperties: false,
       properties: {
         _id: {
-          $ref: '#/definitions/Dataforged.ID'
+          $ref: '#/definitions/ID'
         },
         canonical: {
           description: "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",

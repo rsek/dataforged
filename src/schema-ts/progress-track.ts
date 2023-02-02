@@ -1,7 +1,19 @@
-import { JSONSchema7 } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 
 const schema: JSONSchema7 = {
   definitions: {
+    ChallengeRank: {
+      type: 'integer',
+      description: 'A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.',
+      enum: [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+
     ProgressTrackStarforgedType: {
       enum: [
         'discoveries_legacy',

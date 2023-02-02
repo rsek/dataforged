@@ -1,4 +1,5 @@
 import { JSONSchema7 } from 'json-schema'
+import { DF_KEY } from 'src/schema-ts/id'
 
 const schema: JSONSchema7 = {
   definitions: {
@@ -141,7 +142,7 @@ const schema: JSONSchema7 = {
             options: {
               type: 'object',
               patternProperties: {
-                '^[a-z][a-z_+]*[a-z]$': {
+                [DF_KEY]: {
                   type: 'object',
                   properties: {
                     label: {
@@ -222,7 +223,7 @@ const schema: JSONSchema7 = {
             options: {
               type: 'object',
               patternProperties: {
-                '^[a-z][a-z_+]*[a-z]$': {
+                [DF_KEY]: {
                   type: 'object',
                   properties: {
                     label: {

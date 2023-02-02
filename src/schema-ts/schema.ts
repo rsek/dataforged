@@ -13,7 +13,7 @@ import move from './move'
 import progressTrack from './progress-track'
 import truth from './truth'
 
-export function dfRecord (itemSchema: string, title: string = itemSchema + 's'): JSONSchema7Definition {
+export function dfRecordSchema (itemSchema: string, title: string = itemSchema + 's'): JSONSchema7Definition {
   return {
     title,
     additionalProperties: false,
@@ -31,169 +31,27 @@ export function dfRecord (itemSchema: string, title: string = itemSchema + 's'):
 const NamespaceBase: JSONSchema7Definition = {
   additionalProperties: false,
   properties: {
-    asset_types: dfRecord('AssetType'),
-    move_categories: dfRecord('MoveCategory', 'MoveCategories'),
-    oracle_sets: dfRecord('OracleSet')
+    asset_types: dfRecordSchema('AssetType'),
+    move_categories: dfRecordSchema('MoveCategory', 'MoveCategories'),
+    oracle_sets: dfRecordSchema('OracleSet')
   }
 }
 
 const NamespaceClassic: JSONSchema7Definition = merge(NamespaceBase, {
   properties: {
-    world_truths: {
-      title: 'SettingTruthsClassic',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          title: 'SettingTruthClassic',
-          allOf: [
-            {
-              $ref: '#/definitions/SettingTruth'
-            },
-            {
-              properties: {
-                options: {
-                  type: 'array',
-                  maxItems: 3,
-                  minItems: 3,
-                  items: {
-                    type: 'object',
-                    required: [
-                      'description',
-                      'quest_starter'
-                    ],
-                    properties: {
-                      description: {
-                        $ref: '#/definitions/Description'
-                      },
-                      quest_starter: {
-                        $ref: '#/definitions/QuestStarter'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      }
-    },
-    encounters: {
-      title: 'EncountersClassic',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          title: 'EncounterNatureClassic',
-          additionalProperties: false,
-          properties: {
-            encounters: {
-              additionalProperties: false,
-              patternProperties: {
-                [DF_KEY]: {
-                  title: 'EncounterClassic',
-                  allOf: [
-                    {
-                      $ref: '#/definitions/Encounter'
-                    },
-                    {
-                      additionalProperties: false,
-                      properties: {
-                        nature: {
-                          title: 'EncounterNatureTypeClassic',
-                          type: 'string',
-                          examples: [
-                            'Ironlander',
-                            'firstborn',
-                            'animal',
-                            'beast',
-                            'horror',
-                            'anomaly'
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    regions: dfRecord('RegionEntry'),
-    rarities: dfRecord('Rarity', 'Rarities'),
-    site_domains: dfRecord('DelveSiteDomain'),
-    site_themes: dfRecord('DelveSiteTheme'),
-    delve_sites: dfRecord('DelveSite')
+    world_truths: dfRecordSchema('WorldTruthClassic', 'WorldTruthsClassic'),
+    encounters: dfRecordSchema('Encounter'),
+    regions: dfRecordSchema('RegionEntry', 'Regions'),
+    rarities: dfRecordSchema('Rarity', 'Rarities'),
+    site_domains: dfRecordSchema('DelveSiteDomain'),
+    site_themes: dfRecordSchema('DelveSiteTheme'),
+    delve_sites: dfRecordSchema('DelveSite')
   }
 })
 const NamespaceStarforged: JSONSchema7Definition = merge(NamespaceBase, {
   properties: {
-    encounters: {
-      title: 'EncountersStarforged',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          title: 'EncounterStarforged',
-          allOf: [
-            {
-              $ref: '#/definitions/Encounter'
-            },
-            {
-              required: [
-                'summary',
-                'nature'
-              ],
-              properties: {
-                summary: {
-                  $ref: '#/definitions/Summary'
-                },
-                nature: {
-                  title: 'EncounterNatureTypeStarforged',
-                  type: 'string',
-                  examples: [
-                    'creature',
-                    'horror',
-                    'human',
-                    'machine',
-                    'monster',
-                    'vehicle'
-                  ]
-                },
-                variants: {
-                  additionalProperties: false,
-                  patternProperties: {
-                    [DF_KEY]: {
-                      $ref: '#/definitions/Encounter'
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
-      }
-    },
-    setting_truths: {
-      title: 'SettingTruthsStarforged',
-      additionalProperties: false,
-      patternProperties: {
-        [DF_KEY]: {
-          title: 'SettingTruthStarforged',
-          allOf: [
-            {
-              $ref: '#/definitions/SettingTruth'
-            },
-            {
-              properties: {
-                options: {
-                  $ref: '#/definitions/OracleTableRows'
-                }
-              }
-            }
-          ]
-        }
-      }
-    }
+    encounters: dfRecordSchema('EncounterStarforged', 'EncountersStarforged'),
+    setting_truths: dfRecordSchema('SettingTruthStarforged', 'SettingTruthsStarforged')
   }
 })
 
@@ -213,8 +71,6 @@ const schema: JSONSchema7 = {
     ...move.definitions,
     ...progressTrack.definitions,
     ...truth.definitions,
-
-
 
     SnakeCase: {
       type: 'string',

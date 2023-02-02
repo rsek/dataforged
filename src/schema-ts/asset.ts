@@ -135,7 +135,7 @@ export const Asset: JSONSchema7Definition = {
   type: 'object',
   properties: {
     _id: {
-      $ref: '#/definitions/Dataforged.ID',
+      $ref: '#/definitions/ID',
       pattern: '^[a-z_]+/assets/[a-z_]+/[a-z_]+$'
     },
     attributes: {

@@ -1,25 +1,22 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
+import { merge } from 'lodash-es'
+import { DF_KEY } from 'src/schema-ts/id.js'
+import { dfRecordSchema } from 'src/schema-ts/schema.js'
 
-const ChallengeRank: JSONSchema7Definition = {
-  type: 'integer',
-  description: 'A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.',
-  enum: [
-    1,
-    2,
-    3,
-    4,
-    5
-  ]
-}
+/**
+ * Schema with features common to "cyclopedia" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*)
+ */
 const CyclopediaEntry: JSONSchema7Definition = {
-  description: 'Schema common to "cyclopedia" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*) ',
+  type: 'object',
   required: [
     'name',
+    'features',
+    'summary',
     'description'
   ],
   properties: {
     _id: {
-      $ref: '#/definitions/Dataforged.ID'
+      $ref: '#/definitions/ID'
     },
     name: {
       $ref: '#/definitions/LocalizedLabel'
@@ -30,11 +27,11 @@ const CyclopediaEntry: JSONSchema7Definition = {
     tags: {
       $ref: '#/definitions/Tags'
     },
-    description: {
-      $ref: '#/definitions/Description'
-    },
     summary: {
       $ref: '#/definitions/Summary'
+    },
+    description: {
+      $ref: '#/definitions/Description'
     },
     features: {
       type: 'array',
@@ -48,42 +45,33 @@ const CyclopediaEntry: JSONSchema7Definition = {
   }
 }
 
-export const RegionEntry: JSONSchema7Definition = {
-          allOf: [
-            {
-              $ref: '#/definitions/CyclopediaEntry'
-            },
-            {
-              required: [
-                'description',
-                'features',
-                'quest_starter',
-                'summary'
-              ]
-            }
-          ]}
+const RegionEntry: JSONSchema7Definition = merge(CyclopediaEntry,
+  {
+    required: [
+      'quest_starter'
+    ]
+  })
 
-const Encounter: JSONSchema7Definition = {
+const EncounterStub: JSONSchema7Definition = {
+  required: ['rank', 'name', 'description', 'nature'],
+  properties: {
+    rank: { $ref: '#/definitions/ChallengeRank' },
+    name: { $ref: '#/definitions/LocalizableLabel' },
+    description: { $ref: '#/definitions/Description' },
+    nature: { type: 'string' }
+  }
+}
+
+const Encounter: JSONSchema7Definition = merge(CyclopediaEntry, {
   description: 'Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.',
   allOf: [
+    { $ref: '#/definitions/EncounterStub' },
     {
-      $ref: '#/definitions/CyclopediaEntry'
-    },
-    {
-      type: 'object',
       required: [
-        'rank'
+        'drives',
+        'tactics'
       ],
       properties: {
-        nature: {
-          type: 'string'
-        },
-        summary: {
-          $ref: '#/definitions/Summary'
-        },
-        rank: {
-          $ref: '#/definitions/ChallengeRank'
-        },
         drives: {
           type: 'array',
           items: {
@@ -99,13 +87,96 @@ const Encounter: JSONSchema7Definition = {
       }
     }
   ]
+
+})
+
+const EncounterTypeStarforged: JSONSchema7Definition = {
+  title: 'EncounterTypeStarforged',
+  type: 'string',
+  examples: [
+    'creature',
+    'horror',
+    'human',
+    'machine',
+    'monster',
+    'vehicle'
+  ]
+}
+
+const EncounterTypeClassic: JSONSchema7Definition = {
+  title: 'EncounterTypeClassic',
+  type: 'string',
+  examples: [
+    'Ironlander',
+    'firstborn',
+    'animal',
+    'beast',
+    'horror',
+    'anomaly'
+  ]
+}
+
+const EncounterVariantStarforged: JSONSchema7Definition = {
+  title: 'EncounterVariantStarforged',
+  allOf: [
+    { $ref: '#/definitions/Encounter' },
+    {
+      properties: {
+        nature: {
+          $ref: '#/definitions/EncounterTypeStarforged'
+        }
+      }
+    }
+  ]
+}
+
+const EncounterStarforged: JSONSchema7Definition = {
+  title: 'EncounterStarforged',
+  allOf: [
+    {
+      $ref: '#/definitions/Encounter'
+    },
+    {
+      properties: {
+        nature: {
+          $ref: '#/definitions/EncounterTypeStarforged'
+        },
+        variants: dfRecordSchema('EncounterVariantStarforged','EncounterVariantsStarforged' )
+      }
+    }
+  ]
+}
+
+const EncounterClassic: JSONSchema7Definition = {
+  title: 'EncounterClassic',
+  allOf: [{ $ref: '#/definitions/Encounter' }, {
+    properties: {
+      nature: {
+        $ref: '#/definitions/EncounterTypeClassic'
+      }
+    }
+  }]
+}
+
+const EncounterNatureClassic: JSONSchema7Definition = {
+  title: 'EncounterNatureClassic',
+  properties: {
+    name: { $ref: '#/definitions/LocalizedLabel' },
+    nature: { $ref: '#/definitions/EncounterTypeClassic' }
+  }
 }
 
 const schema: JSONSchema7 = {
   definitions: {
-    ChallengeRank,
-    CyclopediaEntry,
-    Encounter
+    RegionEntry,
+    EncounterStub,
+    Encounter,
+    EncounterClassic,
+    EncounterStarforged,
+    EncounterVariantStarforged,
+    EncounterTypeStarforged,
+    EncounterTypeClassic,
+    EncounterNatureClassic
   }
 }
 

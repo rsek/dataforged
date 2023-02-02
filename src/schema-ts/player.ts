@@ -17,7 +17,7 @@ const
 
 const schema: JSONSchema7 = {
   definitions: {
-      PlayerConditionMeterName: {
+    PlayerConditionMeterName: {
       enum: [
         'health',
         'spirit',

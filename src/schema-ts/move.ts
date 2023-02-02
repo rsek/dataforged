@@ -1,4 +1,6 @@
 import { JSONSchema7Definition, JSONSchema7 } from 'json-schema'
+import { DF_KEY } from 'src/schema-ts/id.js'
+import { dfRecordSchema } from 'src/schema-ts/schema.js'
 
 export const MoveExtension: JSONSchema7Definition = {
   title: 'MoveExtension',
@@ -24,7 +26,7 @@ export const MoveExtensionBase: JSONSchema7Definition = {
   type: 'object',
   properties: {
     _moves: {
-      description: "The s.ID of the affected moves. Use 'null' if it can apply to any move.",
+      description: "The ID of the affected moves. Use 'null' if it can apply to any move.",
       type: [
         'array',
         'null'
@@ -56,28 +58,21 @@ export const MoveCategory: JSONSchema7Definition = {
     source: {
       $ref: '#/definitions/Source'
     },
-    moves: {
-      patternProperties: {
-        '^[a-z][a-z_+]*[a-z]$': {
-          $ref: '#/definitions/Move'
-        }
-      }
-    }
+    moves: dfRecordSchema('Move')
   }
 }
 
 const schema: JSONSchema7 = {
   definitions: {
     MoveCategory,
-    MoveCategories: {
-      title: 'MoveCategories',
-      additionalProperties: false,
-      patternProperties: {
-        '^[a-z][a-z_+]*[a-z]$': { $ref: '#/definitions/MoveCategory' }
-      }
-    },
     Move: {
       type: 'object',
+      required: [
+        'text',
+        'name',
+        'trigger'
+      ],
+      additionalProperties: false,
       properties: {
         name: {
           $ref: '#/definitions/LocalizedLabel'
@@ -88,7 +83,7 @@ const schema: JSONSchema7 = {
         attributes: {
           type: 'object',
           patternProperties: {
-            '^[a-z][a-z_+]*[a-z]$': {
+            [DF_KEY]: {
               $ref: '#/definitions/CustomStat'
             }
           }
@@ -112,13 +107,13 @@ const schema: JSONSchema7 = {
         },
         variant_of: {
           description: 'The ID of the move that this move is a variant of, if any.',
-          type: 'string'
+          $ref: '#/definitions/Move.ID'
         },
         oracles: {
-          description: 'The s.ID of any oracles directly referenced by the move, or vice versa.',
+          description: 'The ID of any oracles directly referenced by the move, or vice versa.',
           type: 'array',
           items: {
-            $ref: '#/definitions/Dataforged.ID'
+            $ref: '#/definitions/OracleTable.ID'
           }
         },
         optional: {
@@ -135,18 +130,13 @@ const schema: JSONSchema7 = {
         },
         category: {
           description: "The ID of the move's category.",
-          type: 'string'
+          $ref: "#/definitions/MoveCategory.ID"
         },
         source: {
           $ref: '#/definitions/Source'
         }
-      },
-      additionalProperties: false,
-      required: [
-        'text',
-        'name',
-        'trigger'
-      ]
+      }
+
     },
     MoveTriggerOptionAction: {
       allOf: [
@@ -223,6 +213,7 @@ const schema: JSONSchema7 = {
       ]
     },
     MoveOutcome: {
+      type: "object",
       properties: {
         text: {
           $ref: '#/definitions/LocalizedMarkdown'
@@ -230,6 +221,7 @@ const schema: JSONSchema7 = {
       }
     },
     MoveOutcomes: {
+      type: "object",
       properties: {
         miss: {
           $ref: '#/definitions/MoveOutcomeWithMatch'
@@ -242,10 +234,10 @@ const schema: JSONSchema7 = {
         }
       }
     },
-    MoveTriggerOption: {
+    MoveTriggerOptionBase: {
+      type: 'object',
       properties: {
         method: {
-          $ref: '#/definitions/SnakeCase',
           title: 'RollMethod',
           type: 'string',
           description: "The method this move trigger uses to select which stat(s) or progress track(s) are rolled.\n\n`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks.\n\n`strong_hit`: The move trigger option results in an automatic strong hit - no roll required.\n\n`weak_hit`: The move trigger option results in an automatic weak hit - no roll required.\n\n`miss`: The move trigger options results in an automatic miss - no roll required.",
@@ -281,24 +273,30 @@ const schema: JSONSchema7 = {
         }
       }
     },
+    MoveTriggerOption: {
+      title: 'MoveTriggerOption',
+      oneOf: [
+        {
+          items: {
+            $ref: '#/definitions/MoveTriggerOptionAction'
+          }
+        },
+        {
+          items: {
+            $ref: '#/definitions/MoveTriggerOptionProgress'
+          }
+        }
+      ]
+    },
     MoveTrigger: {
       title: 'MoveTrigger',
       type: 'object',
       properties: {
         options: {
           type: 'array',
-          oneOf: [
-            {
-              items: {
-                $ref: '#/definitions/MoveTriggerOptionAction'
-              }
-            },
-            {
-              items: {
-                $ref: '#/definitions/MoveTriggerOptionProgress'
-              }
-            }
-          ]
+          items: {
+            $ref: '#/definitions/MoveTriggerOption'
+          }
         },
         text: {
           description: 'A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.',
@@ -310,11 +308,11 @@ const schema: JSONSchema7 = {
           properties: {
             player: {
               type: 'boolean',
-              default: 'true'
+              default: true
             },
             ally: {
               type: 'boolean',
-              default: 'false'
+              default: false
             }
           }
         }

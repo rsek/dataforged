@@ -1,6 +1,6 @@
 import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 import { merge } from 'lodash-es'
-import { dfRecord } from 'src/schema-ts/schema.js'
+import { dfRecordSchema } from 'src/schema-ts/schema.js'
 
 const d100Value: JSONSchema7Definition = {
   type: 'integer',
@@ -142,7 +142,7 @@ export const OracleTableRow: JSONSchema7Definition = merge(d100RangeNullable, {
   properties: {
     _id: {
       // TODO
-      $ref: '#/definitions/Dataforged.ID'
+      $ref: '#/definitions/ID'
     },
     floor: {
       description: 'The low end of the dice range for this table row.'
@@ -168,7 +168,6 @@ export const OracleTableRow: JSONSchema7Definition = merge(d100RangeNullable, {
     template: {
       description: 'TODO',
       examples: [
-        {result: }
       ],
       type: 'object',
       properties: {
@@ -229,8 +228,8 @@ export const OracleSet: JSONSchema7Definition = merge(BaseOracle,
       _id: {
       // TODO: figure out ID type???
       },
-      sets: dfRecord('OracleSet'),
-      tables: dfRecord('OracleTable'),
+      sets: dfRecordSchema('OracleSet'),
+      tables: dfRecordSchema('OracleTable'),
       sample_names: {
         description: 'A list of sample names for this oracle set. Only used by Planets.',
         type: 'array',
@@ -255,7 +254,7 @@ export const OracleTable: JSONSchema7Definition = merge(BaseOracle,
         type: 'object',
         properties: {
           _id: {
-            $ref: '#/definitions/Dataforged.ID'
+            $ref: '#/definitions/ID'
           },
           text: {
             $ref: '#/definitions/LocalizedMarkdown'

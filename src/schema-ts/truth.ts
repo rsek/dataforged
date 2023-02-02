@@ -1,36 +1,90 @@
-import { JSONSchema7 } from 'json-schema'
+import { JSONSchema7, JSONSchema7Definition } from 'json-schema'
 
-const schema: JSONSchema7 = {
-  definitions: {
-    SettingTruthOption: {
-      required: [
-        'quest_starter'
-      ],
-      additionalProperties: false,
-      properties: {
-        quest_starter: {
-          $ref: '#/definitions/QuestStarter'
-        }
-      }
+export const WorldTruthClassic: JSONSchema7Definition = {
+  allOf: [
+    {
+      $ref: '#/definitions/SettingTruth'
     },
-    SettingTruth: {
-      type: 'object',
-      required: [
-        'name',
-        'source'
-      ],
+    {
       properties: {
-        _id: {
-          $ref: '#/definitions/Dataforged.ID'
-        },
-        name: {
-          $ref: '#/definitions/LocalizedLabel'
-        },
-        source: {
-          $ref: '#/definitions/Source'
+        options: {
+          type: 'array',
+          maxItems: 3,
+          minItems: 3,
+          items: {
+            type: 'object',
+            required: [
+              'description',
+              'quest_starter'
+            ],
+            properties: {
+              description: {
+                $ref: '#/definitions/Description'
+              },
+              quest_starter: {
+                $ref: '#/definitions/QuestStarter'
+              }
+            }
+          }
         }
       }
     }
+  ]
+}
+
+export const SettingTruthOption: JSONSchema7Definition = {
+  required: [
+    'quest_starter'
+  ],
+  additionalProperties: false,
+  properties: {
+    quest_starter: {
+      $ref: '#/definitions/QuestStarter'
+    }
+  }
+}
+
+export const SettingTruth: JSONSchema7Definition = {
+  type: 'object',
+  required: [
+    'name',
+    'source'
+  ],
+  properties: {
+    _id: {
+      $ref: '#/definitions/ID'
+    },
+    name: {
+      $ref: '#/definitions/LocalizedLabel'
+    },
+    source: {
+      $ref: '#/definitions/Source'
+    }
+  }
+}
+
+const SettingTruthStarforged = {
+  allOf: [
+    {
+      $ref: '#/definitions/SettingTruth'
+    },
+    {
+      properties: {
+        options: {
+          $ref: '#/definitions/OracleTableRows'
+        }
+      }
+    }
+  ]
+}
+
+const schema: JSONSchema7 = {
+  definitions: {
+    SettingTruth,
+    SettingTruthOption,
+    SettingTruthStarforged,
+    WorldTruthClassic
+
   }
 }
 export default schema
