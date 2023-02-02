@@ -4,7 +4,7 @@ import { loadYamlTemplates } from '@utils/yaml/loadYamlTemplates.js'
 import type { YamlWithRef } from '@schema'
 import yaml from 'js-yaml'
 import fs from 'fs'
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 /**
  * Concatenates YAML with reference objects.

@@ -7,7 +7,7 @@ import { badJsonError } from '@utils/logging/badJsonError.js'
 import { buildLog } from '@utils/logging/buildLog.js'
 import { concatWithYamlRefs } from '@utils/yaml/concatWithYamlRefs.js'
 import fg from 'fast-glob'
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 /**
  * Assembles encounter data from YAML shorthand into JSON.

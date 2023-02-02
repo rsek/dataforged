@@ -15,7 +15,7 @@ export class IdPattern extends String {
  * Pattern used for Dataforged root/namespace fragments, which is slightly more permissive (to account for e.g. a
  */
   static namespaceFragment = /[a-z0-9][a-z0-9_]*[a-z0-9]/
-  static fragmentChars = /[a-z0-9][a-z_-0-9]*[a-z0-9]/
+  static fragmentChars = /[a-z0-9][a-z0-9_]*[a-z0-9]/
 
   fragments: Array<RegExpParams[0]> = [IdPattern.namespaceFragment]
 

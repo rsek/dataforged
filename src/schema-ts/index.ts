@@ -63,7 +63,6 @@ const schema: JSONSchema7 = {
     }
   }
   ]
-
 }
 
 export default schema

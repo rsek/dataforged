@@ -7,7 +7,7 @@ import { concatWithYamlRefs } from '@utils/yaml/concatWithYamlRefs.js'
 import fs from 'fs-extra'
 
 import fg from 'fast-glob'
-import _ from 'lodash'
+import _ from 'lodash-es'
 import { validate } from 'jsonschema'
 import { badJsonError } from '@utils/logging/badJsonError.js'
 

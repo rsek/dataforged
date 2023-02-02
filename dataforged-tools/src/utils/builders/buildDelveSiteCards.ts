@@ -4,7 +4,7 @@ import { DelveCardType, Game, YamlDelveSiteDomainRoot, YamlDelveSiteThemeRoot } 
 import { buildLog } from '@utils/logging/buildLog.js'
 import fs from 'fs'
 import yaml from 'js-yaml'
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 export function buildDelveSiteCards<T extends DelveCardType> (
   type: T
