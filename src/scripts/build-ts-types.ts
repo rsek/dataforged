@@ -10,10 +10,20 @@ compile(schema as JSONSchema4, 'YamlRoot', {unreachableDefinitions: true})
     writeFileSync('./src/types/dataforged-yaml.d.ts', typings)
   })
 
-// TODO: make this smarter about extending/inheriting types?
-// ditto enums
-// are these transforms sth i could accomplish with a DIY solution?
+// TODO: investigate rewriting this as a JSON Type Definition schema. it's purpose-made for generating types for multiple languages
+// this can output many languages: https://jsontypedef.com/docs/jtd-codegen/
+// i suspect it'll be smarter about e.g. enums and type inheritance
+// discriminator can be used for things like MoveTriggerActionRoll and MoveTriggerProgressRoll
 
-// if nothing else, it's definitely faster now!
+// if nothing else, it's definitely running faster now!
 
-// alternately: ship with a "type your TS using json schemas library"?
+
+
+// AJV has lots of support for it.
+// e.g. https://ajv.js.org/json-schema.html
+// https://ajv.js.org/guide/typescript.html
+
+// can help with migration, too:
+// AJV JTD supports: "JSON Schema keywords, as long as their names are different from standard JTD keywords. It can be used to enable a gradual migration from JSON Schema to JTD, should it be required."
+
+// the
