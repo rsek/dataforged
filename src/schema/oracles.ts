@@ -22,7 +22,7 @@ export const Oracle: Schema<Types.Oracle> = {
   }
 }
 
-const Roll: Schema<Types.Roll> = {
+export const Roll: Schema<Types.Roll> = {
   title: 'OracleRoll',
   type: 'object',
   description: 'Parameters for an oracle roll.',
