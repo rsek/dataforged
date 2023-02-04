@@ -218,18 +218,29 @@ export const BaseOracle: JSONSchema7 = {
   }
 }
 
-export const OracleSet: JSONSchema7 = merge(BaseOracle,
-  {
-    title: 'OracleSet',
+export const OracleCollection: JSONSchema7 = {
+    title: 'OracleCollection',
     type: 'object',
-    description: "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
     additionalProperties: false,
     properties: {
+      title: {
+        $ref: '#/$defs/Title'
+      },
+      source: {
+        $ref: '#/$defs/Source'
+      },
+      summary: {
+        $ref: '#/$defs/Summary'
+      },
+      description: {
+        $ref: '#/$defs/Description'
+      },
       _id: {
+        type: 'string'
         // TODO: figure out ID type???
       },
-      sets: dfRecordSchema('OracleSet'),
-      tables: dfRecordSchema('OracleTable'),
+      collections: dfRecordSchema('OracleCollection'),
+      contents: dfRecordSchema('OracleTable'),
       sample_names: {
         description: 'A list of sample names for this oracle set. Only used by Planets.',
         type: 'array',
@@ -238,7 +249,7 @@ export const OracleSet: JSONSchema7 = merge(BaseOracle,
         }
       }
     }
-  })
+  }
 export const OracleTable: JSONSchema7 = merge(BaseOracle,
   {
     type: 'object',
@@ -321,7 +332,7 @@ export const $defs: Record<string, JSONSchema7> = {
   OracleTableRoll,
   OracleTableRow,
   OracleTable,
-  OracleSet,
+  OracleCollection,
   OracleContentMetadata
 }
 export default $defs

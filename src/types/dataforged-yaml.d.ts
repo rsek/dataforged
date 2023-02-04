@@ -10,10 +10,10 @@
  */
 export type YamlRoot = Datasworn | Dataforged;
 /**
- * This interface was referenced by `AssetTypes`'s JSON-Schema definition
+ * This interface was referenced by `AssetCollections`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*[a-z]$".
  */
-export type AssetType = AssetType1 &
+export type AssetCollection = AssetCollection1 &
   CategoryMetadata & {
     assets: {
       [k: string]: Asset;
@@ -26,7 +26,7 @@ export type AssetType = AssetType1 &
     title: Title;
     [k: string]: unknown;
   };
-export type AssetType1 = CategoryMetadata & {
+export type AssetCollection1 = CategoryMetadata & {
   assets: {
     [k: string]: Asset;
   };
@@ -1361,9 +1361,9 @@ export interface Datasworn {
  * via the `patternProperty` "^[a-z0-9][a-z0-9_]*[a-z0-9]$".
  */
 export interface NamespaceStarforged {
-  asset_types?: AssetTypes;
-  move_categories?: MoveCategories;
-  oracle_sets?: OracleSets;
+  assets?: AssetCollections;
+  moves?: MoveCollections;
+  oracles?: OracleCollections;
   _game?: "starforged";
   world_truths?: WorldTruthsClassic;
   encounters?: EncountersStarforged;
@@ -1374,8 +1374,8 @@ export interface NamespaceStarforged {
   delve_sites?: DelveSites;
   setting_truths?: SettingTruthsStarforged;
 }
-export interface AssetTypes {
-  [k: string]: AssetType;
+export interface AssetCollections {
+  [k: string]: AssetCollection;
 }
 export interface CategoryMetadata {
   _id?: ID;
@@ -1676,14 +1676,14 @@ export interface MoveExtensionBase {
 export interface PlayerExtension {
   [k: string]: unknown;
 }
-export interface MoveCategories {
-  [k: string]: MoveCategory;
+export interface MoveCollections {
+  [k: string]: MoveCollection;
 }
 /**
- * This interface was referenced by `MoveCategories`'s JSON-Schema definition
+ * This interface was referenced by `MoveCollections`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*[a-z]$".
  */
-export interface MoveCategory {
+export interface MoveCollection {
   title?: Title;
   color?: Color;
   /**
@@ -1697,18 +1697,18 @@ export interface MoveCategory {
 export interface Moves {
   [k: string]: Move;
 }
-export interface OracleSets {
-  [k: string]: OracleSet;
+export interface OracleCollections {
+  [k: string]: OracleCollection;
 }
 /**
- * Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.
+ * Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleCollection}, but doesn't have its own `Table` key.
  *
- * See {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.
+ * See {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleCollection} to crawl the oracle hierarchy in search of a specific `_id`.
  *
- * This interface was referenced by `OracleSets`'s JSON-Schema definition
+ * This interface was referenced by `OracleCollections`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*[a-z]$".
  */
-export interface OracleSet {
+export interface OracleCollection {
   title?: Title;
   source?: Source;
   /**
@@ -1720,8 +1720,8 @@ export interface OracleSet {
    */
   description?: string;
   _id?: unknown;
-  sets?: OracleSets1;
-  tables?: OracleTables;
+  collections?: OracleCollections1;
+  contents?: OracleTables;
   /**
    * A list of sample names for this oracle set. Only used by Planets.
    */
@@ -1732,11 +1732,11 @@ export interface OracleSet {
   render?: OracleTableRenderMetadata;
   table: OracleTableRow[];
 }
-export interface OracleSets1 {
-  [k: string]: OracleSet;
+export interface OracleCollections1 {
+  [k: string]: OracleCollection;
 }
 export interface OracleTables {
-  [k: string]: OracleSet;
+  [k: string]: OracleCollection;
 }
 export interface OracleMatchBehaviour {
   _id?: ID;

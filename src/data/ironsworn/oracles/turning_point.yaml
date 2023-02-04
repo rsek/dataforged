@@ -1,10 +1,11 @@
+_game: classic
 ironsworn:
   source:
     authors:
       - Shawn Tomkin
     title: Ironsworn Rulebook
     license: https://creativecommons.org/licenses/by/4.0
-  oracle_sets:
+  oracles:
     turning_point:
       title:
         canonical: Turning Point
@@ -14,7 +15,7 @@ ironsworn:
         title: Ironsworn Rulebook
         page: 188
         license: https://creativecommons.org/licenses/by/4.0
-      tables:
+      contents:
         combat_action:
           title:
             canonical: "Oracle 16: Combat Action"
@@ -106,48 +107,42 @@ ironsworn:
             - floor: 21
               ceiling: 24
               result: "You collapse, and drift into a troubled sleep."
-            - [
-                25,
-                28,
-                "You undergo a physical torment which leaves its mark upon you.",
-              ]
+            - floor: 25
+              ceiling: 28
+              result: "You undergo a physical torment which leaves its mark upon you.",
+
             - floor: 29
               ceiling: 32
               result: "You hear ghostly voices whispering of dark portents."
-            - [
-                33,
-                36,
-                "You are lost in shadow, and find yourself in another place without memory of how you got there.",
-              ]
+            - floor: 33
+              ceiling: 36
+              result: "You are lost in shadow, and find yourself in another place without memory of how you got there.",
+
             - floor: 37
               ceiling: 40
               result: "You alert someone or something to your presence."
-            - [
-                41,
-                44,
-                "You are not yourself, and act against a friend, ally, or companion.",
-              ]
-            - [
-                45,
-                48,
-                "You affect or damage your surroundings, causing a disturbance or potential harm.",
-              ]
+            - floor: 41
+              ceiling: 44
+              result: "You are not yourself, and act against a friend, ally, or companion.",
+
+            - floor: 45
+              ceiling: 48
+              result: "You affect or damage your surroundings, causing a disturbance or potential harm.",
+
             - floor: 49
               ceiling: 52
               result: "You waste resources."
             - floor: 53
               ceiling: 56
               result: "You suffer the loss of a sense for several hours."
-            - [
-                57,
-                60,
-                "You lose your connection to magic for a day or so, and cannot perform rituals.",
-              ]
-            - [
-                61,
-                64,
-                "Your ritual affects the target in an unexpected and problematic way.",
-              ]
+            - floor: 57
+              ceiling: 60
+              result: "You lose your connection to magic for a day or so, and cannot perform rituals.",
+
+            - floor: 61
+              ceiling: 64
+              result: "Your ritual affects the target in an unexpected and problematic way.",
+
             - floor: 65
               ceiling: 68
               result: "Your ritual reveals a surprising and troubling truth."
@@ -157,31 +152,28 @@ ironsworn:
             - floor: 73
               ceiling: 76
               result: "You see a troubling vision of your future."
-            - [
-                77,
-                80,
-                "You can't perform this ritual again until you acquire an important component.",
-              ]
+            - floor: 77
+              ceiling: 80
+              result: "You can't perform this ritual again until you acquire an important component.",
+
             - floor: 81
               ceiling: 84
               result: "You develop a strange fear or compulsion."
-            - [
-                85,
-                88,
-                "Your ritual causes creatures to exhibit strange or aggressive behavior.",
-              ]
+            - floor: 85
+              ceiling: 88
+              result: "Your ritual causes creatures to exhibit strange or aggressive behavior.",
+
             - floor: 89
               ceiling: 92
               result: "You are tormented by an apparition from your past."
             - floor: 93
               ceiling: 96
               result: "You are wracked with sudden sickness."
-            - [
-                97,
-                100,
-                "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
-                *result:RollTwice.MakeItWorse
-              ]
+            - floor: 97
+              ceiling: 100
+              result: "Roll twice more on this table. Both results occur. If they are the same result, make it worse."
+                # *reslt:RollTwice.MakeItWorse
+
         major_plot_twist:
           title:
             canonical: "Oracle 18: Major Plot Twist"
@@ -242,21 +234,18 @@ ironsworn:
             - floor: 81
               ceiling: 85
               result: "The truth of a relationship is revealed."
-            - [
-                86,
-                90,
-                "Two seemingly unrelated situations are shown to be connected.",
-              ]
+            - floor: 86
+              ceiling: 90
+              result: "Two seemingly unrelated situations are shown to be connected.",
             - floor: 91
               ceiling: 95
               result: "Unexpected powers or abilities are revealed."
-            - [
-                96,
-                100,
-                "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic.",
-                *result:RollTwice.MakeItWorse
-              ]
-      sets:
+            - floor: 96
+              ceiling: 100
+              result: "Roll twice more on this table. Both results occur. If they are the same result, make it more dramatic."
+                # *result:RollTwice.MakeItWorse
+
+      collections:
         challenge_rank:
           title:
             canonical: "Oracle 19: Challenge Rank"
@@ -296,28 +285,33 @@ ironsworn:
           description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
           source:
             page: 190
-          tables:
+          contents:
             quest:
               title:
                 canonical: Quest
               display:
                 column_of: ironsworn/oracles/turning_point/challenge_rank
               table: &challenge_rank_table
-                  - floor: 1
-                    ceiling: 20
-                    result: Troublesome, "A challenging quest with a small number of obstacles"
-                  - floor: 21
-                    ceiling: 55
-                    result: Dangerous, "An involved quest with several tough obstacles"
-                  - floor: 56
-                    ceiling: 80
-                    result: Formidable, "A complex quest with many intimidating obstacles"
-                  - floor: 81
-                    ceiling: 93
-                    result: Extreme, "An overwhelming quest of staggering proportions"
-                  - floor: 94
-                    ceiling: 100
-                    result: Epic, "A life-defining quest of unknowable scope"
+                - floor: 1
+                  ceiling: 20
+                  result: Troublesome
+                  summary: "A challenging quest with a small number of obstacles"
+                - floor: 21
+                  ceiling: 55
+                  result: Dangerous
+                  summary: "An involved quest with several tough obstacles"
+                - floor: 56
+                  ceiling: 80
+                  result: Formidable
+                  summary: "A complex quest with many intimidating obstacles"
+                - floor: 81
+                  ceiling: 93
+                  result: Extreme
+                  summary: "An overwhelming quest of staggering proportions"
+                - floor: 94
+                  ceiling: 100
+                  result: Epic
+                  summary: "A life-defining quest of unknowable scope"
             journey:
               title:
                 canonical: Journey

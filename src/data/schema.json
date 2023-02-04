@@ -48,7 +48,7 @@
       "pattern": "^/[a-z0-9][a-z0-9_]*[a-z0-9]/(/[a-z0-9][a-z0-9_]*[a-z0-9])+$",
       "description": "A unique, human-readable ID."
     },
-    "MoveCategory.ID": {
+    "MoveCollection.ID": {
       "$ref": "#/$defs/ID",
       "pattern": "^$"
     },
@@ -56,7 +56,7 @@
       "$ref": "#/$defs/ID",
       "pattern": "^$"
     },
-    "AssetType.ID": {
+    "AssetCollection.ID": {
       "$comment": "{namespace}/assets/{assetType}",
       "$ref": "#/$defs/ID",
       "pattern": "^$"
@@ -85,7 +85,7 @@
       "$comment": "{namespace}/regions/{region}",
       "pattern": "^$"
     },
-    "OracleSet.ID": {
+    "OracleCollection.ID": {
       "$ref": "#/$defs/ID",
       "$comment": "{namespace}/oracles/{oracleSet}"
     },
@@ -344,12 +344,12 @@
         }
       }
     },
-    "AssetType": {
-      "title": "AssetType",
+    "AssetCollection": {
+      "title": "AssetCollection",
       "type": "object",
       "allOf": [
         {
-          "title": "AssetType",
+          "title": "AssetCollection",
           "type": "object",
           "allOf": [
             {
@@ -416,8 +416,8 @@
         }
       ]
     },
-    "AssetTypeExtension": {
-      "title": "AssetTypeExtension",
+    "AssetCollectionExtension": {
+      "title": "AssetCollectionExtension",
       "description": "Extends a canonical asset type with additional assets.",
       "type": "object",
       "additionalProperties": false,
@@ -452,17 +452,17 @@
         }
       }
     },
-    "AssetTypes": {
-      "title": "AssetTypes",
+    "AssetCollections": {
+      "title": "AssetCollections",
       "additionalProperties": false,
       "patternProperties": {
         "^[a-z][a-z_]*[a-z]$": {
           "oneOf": [
             {
-              "$ref": "#/$defs/AssetTypeExtension"
+              "$ref": "#/$defs/AssetCollectionExtension"
             },
             {
-              "$ref": "#/$defs/AssetType"
+              "$ref": "#/$defs/AssetCollection"
             }
           ]
         }
@@ -645,16 +645,16 @@
           "$ref": "#/$defs/Description"
         },
         "_id": {},
-        "sets": {
-          "title": "OracleSets",
+        "collections": {
+          "title": "OracleCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/OracleSet"
+              "$ref": "#/$defs/OracleCollection"
             }
           }
         },
-        "tables": {
+        "contents": {
           "title": "OracleTables",
           "additionalProperties": false,
           "patternProperties": {
@@ -736,12 +736,12 @@
           }
         }
       },
-      "title": "OracleSet",
+      "title": "OracleCollection",
       "type": "object",
-      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
+      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleCollection}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleCollection} to crawl the oracle hierarchy in search of a specific `_id`.",
       "additionalProperties": false
     },
-    "OracleSet": {
+    "OracleCollection": {
       "required": [
         "table"
       ],
@@ -759,16 +759,16 @@
           "$ref": "#/$defs/Description"
         },
         "_id": {},
-        "sets": {
-          "title": "OracleSets",
+        "collections": {
+          "title": "OracleCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/OracleSet"
+              "$ref": "#/$defs/OracleCollection"
             }
           }
         },
-        "tables": {
+        "contents": {
           "title": "OracleTables",
           "additionalProperties": false,
           "patternProperties": {
@@ -850,9 +850,9 @@
           }
         }
       },
-      "title": "OracleSet",
+      "title": "OracleCollection",
       "type": "object",
-      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleSet}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleSet} to crawl the oracle hierarchy in search of a specific `_id`.",
+      "description": "Represents an oracle set: a grouping that can contain both {@link OracleTable}s and other instances of {@link OracleCollection}, but doesn't have its own `Table` key.\n\nSee {@link Oracle} if you need to type both {@link OracleTable} and {@link OracleCollection} to crawl the oracle hierarchy in search of a specific `_id`.",
       "additionalProperties": false
     },
     "OracleContentMetadata": {
@@ -2602,8 +2602,8 @@
         }
       }
     },
-    "MoveCategory": {
-      "title": "MoveCategory",
+    "MoveCollection": {
+      "title": "MoveCollection",
       "type": "object",
       "properties": {
         "title": {
@@ -2694,7 +2694,7 @@
         },
         "category": {
           "description": "The ID of the move's category.",
-          "$ref": "#/$defs/MoveCategory.ID"
+          "$ref": "#/$defs/MoveCollection.ID"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -3004,30 +3004,30 @@
     "NamespaceClassic": {
       "additionalProperties": false,
       "properties": {
-        "asset_types": {
-          "title": "AssetTypes",
+        "assets": {
+          "title": "AssetCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/AssetType"
+              "$ref": "#/$defs/AssetCollection"
             }
           }
         },
-        "move_categories": {
-          "title": "MoveCategories",
+        "moves": {
+          "title": "MoveCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/MoveCategory"
+              "$ref": "#/$defs/MoveCollection"
             }
           }
         },
-        "oracle_sets": {
-          "title": "OracleSets",
+        "oracles": {
+          "title": "OracleCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/OracleSet"
+              "$ref": "#/$defs/OracleCollection"
             }
           }
         },
@@ -3111,30 +3111,30 @@
     "NamespaceStarforged": {
       "additionalProperties": false,
       "properties": {
-        "asset_types": {
-          "title": "AssetTypes",
+        "assets": {
+          "title": "AssetCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/AssetType"
+              "$ref": "#/$defs/AssetCollection"
             }
           }
         },
-        "move_categories": {
-          "title": "MoveCategories",
+        "moves": {
+          "title": "MoveCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/MoveCategory"
+              "$ref": "#/$defs/MoveCollection"
             }
           }
         },
-        "oracle_sets": {
-          "title": "OracleSets",
+        "oracles": {
+          "title": "OracleCollections",
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/OracleSet"
+              "$ref": "#/$defs/OracleCollection"
             }
           }
         },

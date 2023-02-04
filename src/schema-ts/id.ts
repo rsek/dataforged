@@ -99,7 +99,7 @@ const $defs: Record<string, JSONSchema7> = {
     description: 'A unique, human-readable ID.'
   },
 
-  'MoveCategory.ID': {
+  'MoveCollection.ID': {
     $ref: '#/$defs/ID',
     pattern: new IdPattern('moves', dfKey).toString()
   },
@@ -107,7 +107,7 @@ const $defs: Record<string, JSONSchema7> = {
     $ref: '#/$defs/ID',
     pattern: new IdPattern('moves', dfKey, dfKey).toString()
   },
-  'AssetType.ID': {
+  'AssetCollection.ID': {
     $comment: '{namespace}/assets/{assetType}',
     $ref: '#/$defs/ID',
     pattern: new IdPattern('assets', dfKey).toString()
@@ -138,7 +138,7 @@ const $defs: Record<string, JSONSchema7> = {
     $comment: '{namespace}/regions/{region}',
     pattern: new IdPattern('regions', dfKey).toString()
   },
-  'OracleSet.ID': {
+  'OracleCollection.ID': {
     $ref: '#/$defs/ID',
     $comment: '{namespace}/oracles/{oracleSet}'
   },

@@ -42,8 +42,8 @@ export const MoveExtensionBase: JSONSchema7 = {
   }
 }
 
-export const MoveCategory: JSONSchema7 = {
-  title: 'MoveCategory',
+export const MoveCollection: JSONSchema7 = {
+  title: 'MoveCollection',
   type: 'object',
   properties: {
     title: {
@@ -65,7 +65,7 @@ export const MoveCategory: JSONSchema7 = {
 const defs: Record<string, JSONSchema7> = {
   MoveExtension,
 MoveExtensionBase,
-  MoveCategory,
+  MoveCollection,
   Move: {
     type: 'object',
     required: [
@@ -131,7 +131,7 @@ MoveExtensionBase,
       },
       category: {
         description: "The ID of the move's category.",
-        $ref: '#/$defs/MoveCategory.ID'
+        $ref: '#/$defs/MoveCollection.ID'
       },
       source: {
         $ref: '#/$defs/Source'

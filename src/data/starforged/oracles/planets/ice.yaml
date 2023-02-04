@@ -3,13 +3,13 @@ source:
     - Shawn Tomkin
   title: "Ironsworn: Starforged Rulebook"
   license: https://creativecommons.org/licenses/by-nc-sa/4.0
-oracle_sets:
+collections:
   planets:
     title:
       canonical: Planets
     source:
       date: 2022-05-06
-    sets:
+    collections:
       ice:
         _templateOracleSet: *template.category:Planet
         _templateVars:
@@ -42,10 +42,10 @@ oracle_sets:
           - Taiga
           - Thule
           - Varnholme
-        sets:
+        collections:
           settlements:
             _templateOracleSet: *template.info:Planet.Settlements
-            tables:
+            contents:
               terminus:
                 _templateOracleTable: *template.info:Planet.Settlements.Terminus
                 _templateTableRows:
@@ -76,7 +76,7 @@ oracle_sets:
                     - [97, 100] # Planetside settlement
                     - [null, null] # Multiple settlements
                     - [null, null] # Settlements in conflict
-        tables:
+        contents:
           atmosphere:
             _templateOracleTable: *template.info:Planet.Atmosphere
             _templateTableRows:

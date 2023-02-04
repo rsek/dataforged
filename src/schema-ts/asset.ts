@@ -215,11 +215,11 @@ export const AssetExtension: JSONSchema7 = {
     }
   }
 }
-export const AssetType: JSONSchema7 = {
-  title: 'AssetType',
+export const AssetCollection: JSONSchema7 = {
+  title: 'AssetCollection',
   type: 'object',
   allOf: [{
-    title: 'AssetType',
+    title: 'AssetCollection',
     type: 'object',
     allOf: [
       {
@@ -287,8 +287,8 @@ export const AssetType: JSONSchema7 = {
   ]
 }
 
-export const AssetTypeExtension: JSONSchema7 = {
-  title: 'AssetTypeExtension',
+export const AssetCollectionExtension: JSONSchema7 = {
+  title: 'AssetCollectionExtension',
   description: 'Extends a canonical asset type with additional assets.',
   type: 'object',
   additionalProperties: false,
@@ -324,14 +324,14 @@ export const AssetTypeExtension: JSONSchema7 = {
   }
 }
 
-export const AssetTypes: JSONSchema7 = {
-  title: 'AssetTypes',
+export const AssetCollections: JSONSchema7 = {
+  title: 'AssetCollections',
   additionalProperties: false,
   patternProperties: {
     [DF_KEY]: {
       oneOf: [
-        { $ref: '#/$defs/AssetTypeExtension' },
-        { $ref: '#/$defs/AssetType' }
+        { $ref: '#/$defs/AssetCollectionExtension' },
+        { $ref: '#/$defs/AssetCollection' }
       ]
     }
   }
@@ -343,9 +343,9 @@ const $defs: Record<string, JSONSchema7> = {
   AssetAbilityExtension,
   Asset,
   AssetExtension,
-  AssetType,
-  AssetTypeExtension,
-  AssetTypes,
+  AssetCollection,
+  AssetCollectionExtension,
+  AssetCollections,
   ConditionMeterAlias: {
     description: 'Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.',
     enum: [

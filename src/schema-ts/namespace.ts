@@ -8,9 +8,9 @@ import { dfRecordSchema } from './utils'
 const NamespaceBase: JSONSchema7 = {
   additionalProperties: false,
   properties: {
-    asset_types: dfRecordSchema('AssetType'),
-    move_categories: dfRecordSchema('MoveCategory', 'MoveCategories'),
-    oracle_sets: dfRecordSchema('OracleSet')
+    assets: dfRecordSchema('AssetCollection'),
+    moves: dfRecordSchema('MoveCollection'),
+    oracles: dfRecordSchema('OracleCollection')
   }
 }
 

@@ -15,7 +15,7 @@ Planet: &template:Planet
       title: "Ironsworn: Starforged Rulebook"
       license: https://creativecommons.org/licenses/by-nc-sa/4.0
       date: 2022-05-06
-  sets:
+  oracles:
     settlements:
       _templateOracleSet: &template.info:Planet.Settlements
         title:
@@ -36,7 +36,7 @@ Planet: &template:Planet
               label: Expanse
             - type: string
               content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
-        tables:
+        contents:
           terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               title:
@@ -76,7 +76,7 @@ Planet: &template:Planet
                 requires: *attr:Region.Expanse
             _templateTableRows:
               content: *template.content:Planet.Settlements
-  tables:
+  contents:
     atmosphere:
       _templateOracleTable: &template.info:Planet.Atmosphere
         title:
