@@ -1,4 +1,4 @@
-import { JSONSchema7 } from 'json-schema'
+import { type JSONSchema7 } from 'json-schema'
 
 export const GameObject: JSONSchema7 = {
   description: 'Describes a game object, with optional required parameters (for example, a specific Location result).',

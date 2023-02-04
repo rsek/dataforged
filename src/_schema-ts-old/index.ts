@@ -1,4 +1,4 @@
-import { JSONSchema7 } from 'json-schema'
+import { type JSONSchema7 } from 'json-schema'
 import id, { IdPattern } from './id'
 import oracle from './oracle'
 import player from './player'

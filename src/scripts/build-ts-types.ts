@@ -1,14 +1,13 @@
 import { writeFileSync } from 'fs'
 import { JSONSchema4 } from 'json-schema'
 import { compile } from 'json-schema-to-typescript'
-import schema from '../schema-ts'
+import schema from '../_schema-ts-old/index'
 
-
-compile(schema as JSONSchema4, 'YamlRoot', {unreachableDefinitions: true})
-  .then(typings => {
-
-    writeFileSync('./src/types/dataforged-yaml.d.ts', typings)
-  })
+compile(schema as JSONSchema4, 'YamlRoot', {
+  unreachableDefinitions: true
+}).then((typings) => {
+  writeFileSync('./src/types/dataforged-yaml.d.ts', typings)
+})
 
 // TODO: investigate rewriting this as a JSON Type Definition schema. it's purpose-made for generating types for multiple languages
 // this can output many languages: https://jsontypedef.com/docs/jtd-codegen/
@@ -16,8 +15,6 @@ compile(schema as JSONSchema4, 'YamlRoot', {unreachableDefinitions: true})
 // discriminator can be used for things like MoveTriggerActionRoll and MoveTriggerProgressRoll
 
 // if nothing else, it's definitely running faster now!
-
-
 
 // AJV has lots of support for it.
 // e.g. https://ajv.js.org/json-schema.html

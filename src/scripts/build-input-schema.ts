@@ -3,10 +3,10 @@
  */
 
 import { writeFileSync } from 'fs'
-import schema from '../schema-ts'
+import schema from '../_schema-ts-old/index'
 
 const out = './src/data/schema.json'
 
-const json = JSON.stringify(schema,undefined,2)
+const json = JSON.stringify(schema, undefined, 2)
 
-writeFileSync(out,json)
+writeFileSync(out, json)

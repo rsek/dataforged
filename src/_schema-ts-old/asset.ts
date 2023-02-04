@@ -1,4 +1,4 @@
-import { JSONSchema7 } from 'json-schema'
+import { type JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './id'
 
 export const AssetAbilityBase: JSONSchema7 = {
