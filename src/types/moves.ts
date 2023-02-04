@@ -8,7 +8,9 @@ import type * as Metadata from './metadata'
 import type * as Player from './players'
 
 export type MoveID = string
-export interface Move extends Node<MoveID> {
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export interface Move<T extends Metadata.Ruleset> extends Node<MoveID> {
   name: Localized.Label
   source: Metadata.Source
   text: Localized.MarkdownParagraphs

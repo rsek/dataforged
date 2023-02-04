@@ -8,6 +8,8 @@ import {
   Oracles
 } from 'src/json-schema'
 
+// TODO: to generate data-entry-friendly schema - crawl the "full" one and remove 'source' and '_id' from all 'required' arrays
+
 export const defs: Record<string, Schema<any>> = {
   ...(Metadata as any),
   ...Localize,
@@ -26,10 +28,10 @@ export const defsClassic = {
   ...defs,
   ..._.pickBy(Encounters, (_, k) => k.includes('Classic')),
   ...Regions
-  // rarities
-  // delve sites
-  // site themes
-  // site domains
+  // ...Rarities,
+  // ...DelveSites,
+  // ...SiteThemes,
+  // ...SiteDomains,
 }
 
 export type DataforgedDefs = typeof defs

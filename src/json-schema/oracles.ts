@@ -38,7 +38,11 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
       nullable: true
     },
     method: {
-      // TODO description
+      description: `
+      no_duplicates = Reroll duplicate OracleTableRows
+      allow_duplicates = Don't reroll duplicate OracleTableRows
+      make_it_worse = Don't reroll duplicate OracleTableRows; duplicates compound
+      `,
       type: 'string',
       enum: ['no_duplicates', 'keep_duplicates', 'make_it_worse'],
       default: 'no_duplicates',

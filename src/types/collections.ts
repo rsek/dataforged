@@ -24,12 +24,13 @@ export type OracleCollectionID = string
 export interface OracleCollection
   extends RecursiveCollection<Oracles.Oracle, OracleCollectionID> {}
 
-export type AssetCollectionID = string
-export interface AssetCollection extends Collection<Assets.Asset> {}
+export type AssetTypeID = string
+export interface AssetType<T extends Metadata.Ruleset>
+  extends Collection<Assets.Asset<T>> {}
 
-export type MoveCollectionID = string
-export interface MoveCollection
-  extends Collection<Moves.Move, MoveCollectionID> {}
+export type MoveCategoryID = string
+export interface MoveCategory<T extends Metadata.Ruleset>
+  extends Collection<Moves.Move<T>, MoveCategoryID> {}
 
 export type EncounterCollectionID = string
 export interface EncounterCollection
