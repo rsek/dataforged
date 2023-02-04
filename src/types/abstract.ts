@@ -2,7 +2,7 @@
  * Abstract interfaces and utility types that are only used internally.
  */
 
-import type * as Localized from 'src/types/localized'
+import type * as Localized from 'src/types/localize'
 import type * as Metadata from 'src/types/metadata'
 
 /**
@@ -63,7 +63,7 @@ export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?
 /**
- * Extends multiple rules elements. If it's
+ * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
  */
 export type ExtendMany<T extends Node = Node> = Partial<
   OmitMetaAndLocale<T>
