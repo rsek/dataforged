@@ -1,22 +1,11 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "src/**/*.d.ts",
-    "src/index-esm.ts",
-    "dataforged-tools",
-    "dist"
-  ],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.d.ts", "src/index-esm.ts", "dataforged-tools", "dist"],
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "lib": [
-      "es2020",
-      "es2021",
-      "esnext"
-    ],
+    "lib": ["es2020", "es2021", "esnext"],
     "target": "ESnext",
     "strictNullChecks": true,
     "baseUrl": ".",
@@ -30,9 +19,6 @@
     "noImplicitAny": true,
     "skipLibCheck": true,
     "strict": true,
-    "typeRoots": [
-      "types",
-      "node_modules/@types"
-    ]
+    "typeRoots": ["types", "node_modules/@types"]
   }
 }

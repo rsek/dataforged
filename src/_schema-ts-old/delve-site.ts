@@ -1,17 +1,9 @@
 import { type JSONSchema7 } from 'json-schema'
 
 const $defs: Record<string, JSONSchema7> = {
-
   DelveSite: {
     type: 'object',
-    required: [
-      'name',
-      'source',
-      'rank',
-      'theme',
-      'domain',
-      'denizens'
-    ],
+    required: ['name', 'source', 'rank', 'theme', 'domain', 'denizens'],
     properties: {
       name: {
         $ref: '#/$defs/LocalizedLabel'
@@ -44,10 +36,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'very_common'
                   },
-                  floor: {
+                  low: {
                     const: 1
                   },
-                  ceiling: {
+                  high: {
                     const: 27
                   }
                 }
@@ -57,10 +49,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'common'
                   },
-                  floor: {
+                  low: {
                     const: 28
                   },
-                  ceiling: {
+                  high: {
                     const: 41
                   }
                 }
@@ -70,10 +62,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'common'
                   },
-                  floor: {
+                  low: {
                     const: 42
                   },
-                  ceiling: {
+                  high: {
                     const: 55
                   }
                 }
@@ -83,10 +75,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'common'
                   },
-                  floor: {
+                  low: {
                     const: 56
                   },
-                  ceiling: {
+                  high: {
                     const: 69
                   }
                 }
@@ -96,10 +88,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'uncommon'
                   },
-                  floor: {
+                  low: {
                     const: 70
                   },
-                  ceiling: {
+                  high: {
                     const: 75
                   }
                 }
@@ -109,10 +101,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'uncommon'
                   },
-                  floor: {
+                  low: {
                     const: 76
                   },
-                  ceiling: {
+                  high: {
                     const: 81
                   }
                 }
@@ -122,10 +114,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'uncommon'
                   },
-                  floor: {
+                  low: {
                     const: 82
                   },
-                  ceiling: {
+                  high: {
                     const: 87
                   }
                 }
@@ -135,10 +127,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'uncommon'
                   },
-                  floor: {
+                  low: {
                     const: 88
                   },
-                  ceiling: {
+                  high: {
                     const: 93
                   }
                 }
@@ -148,10 +140,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'rare'
                   },
-                  floor: {
+                  low: {
                     const: 94
                   },
-                  ceiling: {
+                  high: {
                     const: 95
                   }
                 }
@@ -161,10 +153,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'rare'
                   },
-                  floor: {
+                  low: {
                     const: 96
                   },
-                  ceiling: {
+                  high: {
                     const: 97
                   }
                 }
@@ -174,10 +166,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'rare'
                   },
-                  floor: {
+                  low: {
                     const: 98
                   },
-                  ceiling: {
+                  high: {
                     const: 99
                   }
                 }
@@ -187,10 +179,10 @@ const $defs: Record<string, JSONSchema7> = {
                   rarity: {
                     const: 'unforeseen'
                   },
-                  floor: {
+                  low: {
                     const: 100
                   },
-                  ceiling: {
+                  high: {
                     const: 100
                   }
                 }
@@ -204,13 +196,7 @@ const $defs: Record<string, JSONSchema7> = {
   Rarity: {
     type: 'object',
     additionalProperties: false,
-    required: [
-      'name',
-      'asset',
-      'source',
-      'xp_cost',
-      'description'
-    ],
+    required: ['name', 'asset', 'source', 'xp_cost', 'description'],
     properties: {
       _id: {
         $ref: '#/$defs/Rarity.ID'
@@ -238,13 +224,7 @@ const $defs: Record<string, JSONSchema7> = {
     }
   },
   DelveSiteDenizenRarity: {
-    enum: [
-      'very_common',
-      'common',
-      'uncommon',
-      'rare',
-      'unforeseen'
-    ]
+    enum: ['very_common', 'common', 'uncommon', 'rare', 'unforeseen']
   },
   DelveSiteDenizen: {
     type: 'object',
@@ -253,13 +233,11 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/OracleRowLike'
       },
       {
-        required: [
-          'rarity',
-          'encounter'
-        ],
+        required: ['rarity', 'encounter'],
         properties: {
           name: {
-            description: "A name for the encounter, if it differs from the original entry's default name.",
+            description:
+              "A name for the encounter, if it differs from the original entry's default name.",
             $ref: '#/$defs/LocalizedLabel'
           },
           rarity: {
@@ -282,10 +260,7 @@ const $defs: Record<string, JSONSchema7> = {
   },
   DelveCardType: {
     type: 'string',
-    enum: [
-      'theme',
-      'domain'
-    ]
+    enum: ['theme', 'domain']
   },
   DelveCardBase: {
     description: 'Schema shared by delve site themes and delve site domains.',
@@ -334,90 +309,90 @@ const $defs: Record<string, JSONSchema7> = {
             items: [
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 21
                   },
-                  ceiling: {
+                  high: {
                     const: 43
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 44
                   },
-                  ceiling: {
+                  high: {
                     const: 56
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 57
                   },
-                  ceiling: {
+                  high: {
                     const: 64
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 65
                   },
-                  ceiling: {
+                  high: {
                     const: 68
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 69
                   },
-                  ceiling: {
+                  high: {
                     const: 72
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 73
                   },
-                  ceiling: {
+                  high: {
                     const: 76
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 77
                   },
-                  ceiling: {
+                  high: {
                     const: 80
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 81
                   },
-                  ceiling: {
+                  high: {
                     const: 84
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 85
                   },
-                  ceiling: {
+                  high: {
                     const: 88
                   }
                 }
@@ -429,50 +404,50 @@ const $defs: Record<string, JSONSchema7> = {
             items: [
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 31
                   },
-                  ceiling: {
+                  high: {
                     const: 33
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 34
                   },
-                  ceiling: {
+                  high: {
                     const: 36
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 37
                   },
-                  ceiling: {
+                  high: {
                     const: 39
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 40
                   },
-                  ceiling: {
+                  high: {
                     const: 42
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 43
                   },
-                  ceiling: {
+                  high: {
                     const: 45
                   }
                 }
@@ -498,50 +473,50 @@ const $defs: Record<string, JSONSchema7> = {
             items: [
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 1
                   },
-                  ceiling: {
+                  high: {
                     const: 4
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 5
                   },
-                  ceiling: {
+                  high: {
                     const: 8
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 9
                   },
-                  ceiling: {
+                  high: {
                     const: 12
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 13
                   },
-                  ceiling: {
+                  high: {
                     const: 16
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 17
                   },
-                  ceiling: {
+                  high: {
                     const: 20
                   }
                 }
@@ -553,120 +528,120 @@ const $defs: Record<string, JSONSchema7> = {
             items: [
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 1
                   },
-                  ceiling: {
+                  high: {
                     const: 5
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 6
                   },
-                  ceiling: {
+                  high: {
                     const: 10
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 11
                   },
-                  ceiling: {
+                  high: {
                     const: 12
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 13
                   },
-                  ceiling: {
+                  high: {
                     const: 14
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 15
                   },
-                  ceiling: {
+                  high: {
                     const: 16
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 17
                   },
-                  ceiling: {
+                  high: {
                     const: 18
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 19
                   },
-                  ceiling: {
+                  high: {
                     const: 20
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 21
                   },
-                  ceiling: {
+                  high: {
                     const: 22
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 23
                   },
-                  ceiling: {
+                  high: {
                     const: 24
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 25
                   },
-                  ceiling: {
+                  high: {
                     const: 26
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 27
                   },
-                  ceiling: {
+                  high: {
                     const: 28
                   }
                 }
               },
               {
                 properties: {
-                  floor: {
+                  low: {
                     const: 29
                   },
-                  ceiling: {
+                  high: {
                     const: 30
                   }
                 }

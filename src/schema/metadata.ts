@@ -57,7 +57,7 @@ export const Source: Schema<Types.Source> = {
     },
     license: {
       type: 'string',
-      // nullable: true,
+      nullable: true,
       description:
         'An absolute URI pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
       examples: [
@@ -70,5 +70,11 @@ export const Source: Schema<Types.Source> = {
 
 export const Suggestions: Schema<Types.Suggestions> = {
   description: 'TODO',
-  type: 'object'
+  type: 'object',
+  properties: {
+    assets: { type: 'array', items: { $ref: '#/$defs/Asset.ID' } },
+    moves: { type: 'array', items: { $ref: '#/$defs/Move.ID' } },
+    oracles: { type: 'array', items: { $ref: '#/$defs/Oracle.ID' } },
+    encounters: { type: 'array', items: { $ref: '#/$defs/Encounter.ID' } }
+  }
 }

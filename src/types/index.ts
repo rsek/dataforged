@@ -1,6 +1,6 @@
 export * as Assets from './assets'
 export * as Encounters from './encounters'
-export * as Localized from './localized'
+export * as Localize from './localize'
 export * as Metadata from './metadata'
 export * as Moves from './moves'
 export * as Oracles from './oracles'

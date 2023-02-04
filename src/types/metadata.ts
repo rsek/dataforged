@@ -1,11 +1,12 @@
 import {
+  type Localize,
   type Assets,
   type Encounters,
   type Moves,
   type Oracles
 } from 'src/types'
-import { type Label } from 'src/types/localized'
 
+export type Ruleset = 'classic' | 'starforged'
 export type ID = string
 export type Icon = string
 export type Image = string
@@ -20,9 +21,9 @@ export interface Source {
 }
 
 export interface Title {
-  canonical: Label
-  standard?: Label
-  short?: Label
+  canonical: Localize.Label
+  standard?: Localize.Label
+  short?: Localize.Label
 }
 
 export interface Suggestions {

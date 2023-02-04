@@ -22,11 +22,11 @@ starforged:
                 text: On a match, envision an extreme result or twist.
               # Aliases: ["90"]
               table:
-                - floor: 1
-                  ceiling: 90
+                - low: 1
+                  high: 90
                   result: "Yes"
-                - floor: 91
-                  ceiling: 100
+                - low: 91
+                  high: 100
                   result: "No"
             likely:
               title:
@@ -34,11 +34,11 @@ starforged:
               match: *AtO.Match
               # Aliases: ["75"]
               table:
-                - floor: 1
-                  ceiling: 75
+                - low: 1
+                  high: 75
                   result: "Yes"
-                - floor: 76
-                  ceiling: 100
+                - low: 76
+                  high: 100
                   result: "No"
             fifty_fifty:
               title:
@@ -46,11 +46,11 @@ starforged:
               match: *AtO.Match
               # Aliases: ["50"]
               table:
-                - floor: 1
-                  ceiling: 50
+                - low: 1
+                  high: 50
                   result: "Yes"
-                - floor: 51
-                  ceiling: 100
+                - low: 51
+                  high: 100
                   result: "No"
             unlikely:
               match: *AtO.Match
@@ -58,11 +58,11 @@ starforged:
                 canonical: Unlikely
               # Aliases: ["25"]
               table:
-                - floor: 1
-                  ceiling: 25
+                - low: 1
+                  high: 25
                   result: "Yes"
-                - floor: 26
-                  ceiling: 100
+                - low: 26
+                  high: 100
                   result: "No"
             small_chance:
               match: *AtO.Match
@@ -70,11 +70,11 @@ starforged:
                 canonical: Small Chance
               # Aliases: ["10"]
               table:
-                - floor: 1
-                  ceiling: 10
+                - low: 1
+                  high: 10
                   result: "Yes"
-                - floor: 11
-                  ceiling: 100
+                - low: 11
+                  high: 100
                   result: "No"
       contents:
         begin_a_session:
@@ -85,39 +85,39 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - floor: 1
-              ceiling: 10
+            - low: 1
+              high: 10
               result: "Flashback reveals an aspect of your background or nature"
               # suggestions: [*roll:Event]
-            - floor: 11
-              ceiling: 20
+            - low: 11
+              high: 20
               result: "Flashback reveals an aspect of another character, place, or faction"
               # suggestions: [*roll:Event, *obj:Faction]
-            - floor: 21
-              ceiling: 30
+            - low: 21
+              high: 30
               result: "Influential character or faction is introduced or given new detail"
               # suggestions: [*obj:Npc, *obj:Faction]
-            - floor: 31
-              ceiling: 40
+            - low: 31
+              high: 40
               result: "Seemingly unrelated situations are shown to be connected"
-            - floor: 41
-              ceiling: 50
+            - low: 41
+              high: 50
               result: "External factors create new danger, urgency, or importance for a quest"
               # suggestions: [*roll:Event]
-            - floor: 51
-              ceiling: 60
+            - low: 51
+              high: 60
               result: "Important character is put in danger or suffers a misadventure"
-            - floor: 61
-              ceiling: 70
+            - low: 61
+              high: 70
               result: "Key location is made unsafe or becomes mired in conflict"
-            - floor: 71
-              ceiling: 80
+            - low: 71
+              high: 80
               result: "Unexpected return of an enemy or threat"
-            - floor: 81
-              ceiling: 90
+            - low: 81
+              high: 90
               result: "Peril lies ahead or lurks just out of view"
-            - floor: 91
-              ceiling: 100
+            - low: 91
+              high: 100
               result: "Unforeseen aid is on the way or within reach"
         make_a_discovery:
           title:
@@ -127,89 +127,89 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - floor: 1
-              ceiling: 4
+            - low: 1
+              high: 4
               result: Advanced technology waiting to be harnessed or salvaged
               # suggestions: [*roll:Object]
-            - floor: 5
-              ceiling: 8
+            - low: 5
+              high: 8
               result: Ancient archive or message
               # suggestions: [*roll:Event]
-            - floor: 9
-              ceiling: 10
+            - low: 9
+              high: 10
               result: Artificial consciousness evolved to a higher state
-            - floor: 11
-              ceiling: 12
+            - low: 11
+              high: 12
               result: Clues to a crucial resource or uncharted domain
               # suggestions: [*roll:Object]
-            - floor: 13
-              ceiling: 14
+            - low: 13
+              high: 14
               result: Envoy from another time or reality
-            - floor: 15
-              ceiling: 22
+            - low: 15
+              high: 22
               result: Extraordinary natural phenomenon
-            - floor: 23
-              ceiling: 24
+            - low: 23
+              high: 24
               result: First contact with intelligent life
               # suggestions: [*obj:Creature]
-            - floor: 25
-              ceiling: 26
+            - low: 25
+              high: 26
               result: Gateway to another time or alternate reality
               # suggestions: [*roll:Event]
-            - floor: 27
-              ceiling: 28
+            - low: 27
+              high: 28
               result: Key to unlocking a language or method of communication
-            - floor: 29
-              ceiling: 34
+            - low: 29
+              high: 34
               result: Lost or hidden people
-            - floor: 35
-              ceiling: 42
+            - low: 35
+              high: 42
               result: Majestic or unusual lifeforms
               # suggestions: [*obj:Creature]
-            - floor: 43
-              ceiling: 46
+            - low: 43
+              high: 46
               result: Marvel of ancient engineering
               # suggestions: [*roll:Object]
-            - floor: 47
-              ceiling: 50
+            - low: 47
+              high: 50
               result: Miraculously preserved artifact or specimen
               # suggestions: [*roll:Object]
-            - floor: 51
-              ceiling: 56
+            - low: 51
+              high: 56
               result: Monumental architecture or artistry of an ancient civilization
               # suggestions: [*roll:Object]
-            - floor: 57
-              ceiling: 62
+            - low: 57
+              high: 62
               result: Mysterious device or artifact of potential value
               # suggestions: [*roll:Object]
-            - floor: 63
-              ceiling: 66
+            - low: 63
+              high: 66
               result: New understanding of an enduring mystery
               # suggestions: [*roll:Event]
-            - floor: 67
-              ceiling: 68
+            - low: 67
+              high: 68
               result: Pathway or means of travel to a distant location
               # suggestions: [*roll:Place]
-            - floor: 69
-              ceiling: 70
+            - low: 69
+              high: 70
               result: Person or lifeform with phenomenal abilities
               # suggestions: [*obj:Creature, *obj:Npc]
-            - floor: 71
-              ceiling: 78
+            - low: 71
+              high: 78
               result: Place of awe-inspiring beauty
-            - floor: 79
-              ceiling: 86
+            - low: 79
+              high: 86
               result: Rare and valuable resource
               # suggestions: [*roll:Object]
-            - floor: 87
-              ceiling: 88
+            - low: 87
+              high: 88
               result: Safeguarded or idyllic location
-            - floor: 89
-              ceiling: 90
+            - low: 89
+              high: 90
               result: Visions or prophesies of the future
               # suggestions: [*roll:Event]
-            - floor: 91
-              ceiling: 100
+            - low: 91
+              high: 100
               result: *result:RollTwice
         confront_chaos:
           title:
@@ -219,82 +219,82 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - floor: 1
-              ceiling: 4
+            - low: 1
+              high: 4
               result: Baneful weapon of mass destruction
               # suggestions: [*roll:Object]
-            - floor: 5
-              ceiling: 9
+            - low: 5
+              high: 9
               result: Cataclysmic environmental effects
-            - floor: 10
-              ceiling: 12
+            - low: 10
+              high: 12
               result: Dead given unnatural life
-            - floor: 13
-              ceiling: 17
+            - low: 13
+              high: 17
               result: Destructive lifeform of monstrous proportion
               # suggestions: [*obj:Creature]
-            - floor: 18
-              ceiling: 20
+            - low: 18
+              high: 20
               result: Dread hallucinations or illusions
-            - floor: 21
-              ceiling: 24
+            - low: 21
+              high: 24
               result: Harbingers of an imminent invasion
-            - floor: 25
-              ceiling: 27
+            - low: 25
+              high: 27
               result: Horde of insatiable hunger or fury
-            - floor: 28
-              ceiling: 32
+            - low: 28
+              high: 32
               result: Horrific lifeforms of inscrutable purpose
               # suggestions: [*obj:Creature]
-            - floor: 33
-              ceiling: 36
+            - low: 33
+              high: 36
               result: Impostors in human form
-            - floor: 37
-              ceiling: 41
+            - low: 37
+              high: 41
               result: Machines made enemy
               # suggestions: [*roll:Object]
-            - floor: 42
-              ceiling: 45
+            - low: 42
+              high: 45
               result: Malignant contagion or parasite
-            - floor: 46
-              ceiling: 50
+            - low: 46
+              high: 50
               result: Messenger or signal with a dire warning
               # suggestions: [*roll:Event]
-            - floor: 51
-              ceiling: 53
+            - low: 51
+              high: 53
               result: Passage to a grim alternate reality
-            - floor: 54
-              ceiling: 58
+            - low: 54
+              high: 58
               result: People corrupted by chaos
-            - floor: 59
-              ceiling: 63
+            - low: 59
+              high: 63
               result: Powerful distortions of time or space
-            - floor: 64
-              ceiling: 68
+            - low: 64
+              high: 68
               result: Signs of an impending catastrophe
-            - floor: 69
-              ceiling: 72
+            - low: 69
+              high: 72
               result: Site of a baffling disappearance
-            - floor: 73
-              ceiling: 77
+            - low: 73
+              high: 77
               result: Site of a horrible disaster
               # suggestions: [*roll:Event]
-            - floor: 78
-              ceiling: 82
+            - low: 78
+              high: 82
               result: Site of terrible carnage
-            - floor: 83
-              ceiling: 87
+            - low: 83
+              high: 87
               result: Technology nullified or made unstable
               # suggestions: [*roll:Object]
-            - floor: 88
-              ceiling: 92
+            - low: 88
+              high: 92
               result: Technology warped for dark purpose
-            - floor: 93
-              ceiling: 96
+            - low: 93
+              high: 96
               result: Vault of dread technology or power
               # suggestions: [*obj:Vault]
-            - floor: 97
-              ceiling: 100
+            - low: 97
+              high: 100
               result: Worshipers of great and malevolent powers
         take_decisive_action:
           title:
@@ -304,23 +304,23 @@ starforged:
           content:
             part_of_speech: [sentences]
           table:
-            - floor: 1
-              ceiling: 40
+            - low: 1
+              high: 40
               result: "It’s worse than you thought: Make a suffer move (-2)"
-            - floor: 41
-              ceiling: 52
+            - low: 41
+              high: 52
               result: "Victory is short-lived: A new peril or foe appears"
-            - floor: 53
-              ceiling: 64
+            - low: 53
+              high: 64
               result: "You face collateral damage: Something is lost, damaged, or broken"
-            - floor: 65
-              ceiling: 76
+            - low: 65
+              high: 76
               result: "Others pay the price: Someone else suffers the cost"
-            - floor: 77
-              ceiling: 88
+            - low: 77
+              high: 88
               result: "Others won’t forget: You are marked for vengeance"
-            - floor: 89
-              ceiling: 100
+            - low: 89
+              high: 100
               result: "It gets complicated: The true nature of a foe or objective is revealed"
         endure_harm:
           title:
@@ -330,20 +330,20 @@ starforged:
           content:
             part_of_speech: [sentences]
           table:
-            - floor: 1
-              ceiling: 10
+            - low: 1
+              high: 10
               result: "You suffer mortal harm. [Face Death](starforged/moves/threshold/face_death)."
-            - floor: 11
-              ceiling: 20
+            - low: 11
+              high: 20
               result: "You are dying. Within an hour or two, you must [Heal](starforged/moves/recover/heal) and raise your health above 0, or [Face Death](starforged/moves/threshold/face_death)."
-            - floor: 21
-              ceiling: 35
+            - low: 21
+              high: 35
               result: "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](starforged/moves/threshold/face_death)."
-            - floor: 36
-              ceiling: 50
+            - low: 36
+              high: 50
               result: "You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move)."
-            - floor: 51
-              ceiling: 100
+            - low: 51
+              high: 100
               result: You are still standing.
         endure_stress:
           title:
@@ -353,17 +353,17 @@ starforged:
           content:
             part_of_speech: [sentences]
           table:
-            - floor: 1
-              ceiling: 10
+            - low: 1
+              high: 10
               result: "You are overwhelmed. [Face Desolation](starforged/moves/threshold/face_desolation)."
-            - floor: 11
-              ceiling: 25
+            - low: 11
+              high: 25
               result: "You give up. [Forsake Your Vow](starforged/moves/quest/forsake_your_vow)."
-            - floor: 26
-              ceiling: 50
+            - low: 26
+              high: 50
               result: "You give in to fear or compulsion, and act against your better instincts."
-            - floor: 51
-              ceiling: 100
+            - low: 51
+              high: 100
               result: You persevere.
         withstand_damage:
           title:
@@ -373,29 +373,29 @@ starforged:
           content:
             part_of_speech: [sentences]
           table:
-            - floor: 1
-              ceiling: 10
+            - low: 1
+              high: 10
               result: "Immediate catastrophic destruction. All aboard must [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death), as appropriate."
-            - floor: 11
-              ceiling: 25
+            - low: 11
+              high: 25
               result: "Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death) as appropriate."
-            - floor: 26
-              ceiling: 40
+            - low: 26
+              high: 40
               result: "Destruction is imminent, but can be averted if you [Repair](starforged/moves/recover/repair) your vehicle and raise its integrity above 0. If you fail, see 11-25."
-            - floor: 41
-              ceiling: 55
+            - low: 41
+              high: 55
               result: "You cannot [Repair](starforged/moves/recover/repair) this vehicle until you [Resupply](starforged/moves/recover/resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25."
-            - floor: 56
-              ceiling: 70
+            - low: 56
+              high: 70
               result: "The vehicle is crippled or out of your control. To get it back in action, you must [Repair](starforged/moves/recover/repair) and raise its integrity above 0."
-            - floor: 71
-              ceiling: 85
+            - low: 71
+              high: 85
               result: "It's a rough ride. All aboard must make the [Endure Harm](starforged/moves/suffer/endure_harm), [Endure Stress](starforged/moves/suffer/endure_stress), or [Companion Takes a Hit](starforged/moves/suffer/companion_takes_a_hit) move, suffering a serious (-2) cost."
-            - floor: 86
-              ceiling: 95
+            - low: 86
+              high: 95
               result: "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-2)."
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: "Against all odds, the vehicle holds together."
         pay_the_price:
           title:
@@ -405,63 +405,63 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - floor: 1
-              ceiling: 2
+            - low: 1
+              high: 2
               result: A trusted individual or community acts against you
-            - floor: 3
-              ceiling: 4
+            - low: 3
+              high: 4
               result: An individual or community you care about is exposed to danger
-            - floor: 5
-              ceiling: 7
+            - low: 5
+              high: 7
               result: You encounter signs of a looming threat
-            - floor: 8
-              ceiling: 10
+            - low: 8
+              high: 10
               result: You create an opportunity for an enemy
-            - floor: 11
-              ceiling: 14
+            - low: 11
+              high: 14
               result: You face a tough choice
-            - floor: 15
-              ceiling: 18
+            - low: 15
+              high: 18
               result: You face the consequences of an earlier choice
-            - floor: 19
-              ceiling: 22
+            - low: 19
+              high: 22
               result: A surprising development complicates your quest
-            - floor: 23
-              ceiling: 26
+            - low: 23
+              high: 26
               result: You are separated from something or someone
-            - floor: 27
-              ceiling: 32
+            - low: 27
+              high: 32
               result: Your action causes collateral damage or has an unintended effect
-            - floor: 33
-              ceiling: 38
+            - low: 33
+              high: 38
               result: Something of value is lost or destroyed
-            - floor: 39
-              ceiling: 44
+            - low: 39
+              high: 44
               result: The environment or terrain introduces a new hazard
-            - floor: 45
-              ceiling: 50
+            - low: 45
+              high: 50
               result: A new enemy is revealed
-            - floor: 51
-              ceiling: 56
+            - low: 51
+              high: 56
               result: "A friend, companion, or ally is in harm’s way (or you are, if alone)"
-            - floor: 57
-              ceiling: 62
+            - low: 57
+              high: 62
               result: Your equipment or vehicle malfunctions
-            - floor: 63
-              ceiling: 68
+            - low: 63
+              high: 68
               result: Your vehicle suffers damage
-            - floor: 69
-              ceiling: 74
+            - low: 69
+              high: 74
               result: You waste resources
-            - floor: 75
-              ceiling: 81
+            - low: 75
+              high: 81
               result: You are harmed
-            - floor: 82
-              ceiling: 88
+            - low: 82
+              high: 88
               result: You are stressed
-            - floor: 89
-              ceiling: 95
+            - low: 89
+              high: 95
               result: You are delayed or put at a disadvantage
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: *result:RollTwice

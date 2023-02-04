@@ -22,28 +22,28 @@ starforged:
           summary: |-
             Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
           table:
-            - floor: 1
-              ceiling: 5
+            - low: 1
+              high: 5
               result: Space
               display: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}
               # set_attributes: {environment: [space]}, rolls: [starforged/oracles/creatures/basic_form/space]
-            - floor: 6
-              ceiling: 15
+            - low: 6
+              high: 15
               result: Interior
               display: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}
               # set_attributes: {environment: [interior]}, rolls: [starforged/oracles/creatures/basic_form/interior]
-            - floor: 16
-              ceiling: 55
+            - low: 16
+              high: 55
               result: Land
               display: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}
               # set_attributes: {environment: [land]}, rolls: [starforged/oracles/creatures/basic_form/land]
-            - floor: 56
-              ceiling: 80
+            - low: 56
+              high: 80
               result: Liquid
               display: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}
               # set_attributes: {environment: [liquid]}, rolls: [starforged/oracles/creatures/basic_form/liquid]
-            - floor: 81
-              ceiling: 100
+            - low: 81
+              high: 100
               result: Air
               display: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}
               # set_attributes: {environment: [air]}, rolls: [starforged/oracles/creatures/basic_form/air]
@@ -57,32 +57,32 @@ starforged:
           content:
             part_of_speech: [adjective]
           table:
-            - floor: 1
-              ceiling: 3
+            - low: 1
+              high: 3
               result: Minuscule (bug-sized)
               # set_attributes: {creature_scale: [minuscule]}
-            - floor: 4
-              ceiling: 10
+            - low: 4
+              high: 10
               result: Tiny (rodent-sized)
               # set_attributes: {creature_scale: [tiny]}
-            - floor: 11
-              ceiling: 25
+            - low: 11
+              high: 25
               result: Small (dog-sized)
               # set_attributes: {creature_scale: [small]}
-            - floor: 26
-              ceiling: 60
+            - low: 26
+              high: 60
               result: Medium (person-sized)
               # set_attributes: {creature_scale: [medium]}
-            - floor: 61
-              ceiling: 90
+            - low: 61
+              high: 90
               result: Large (vehicle-sized)
               # set_attributes: {creature_scale: [large]}
-            - floor: 91
-              ceiling: 99
+            - low: 91
+              high: 99
               result: Huge (whale-sized)
               # set_attributes: {creature_scale: [huge]}
-            - floor: 100
-              ceiling: 100
+            - low: 100
+              high: 100
               result: "[⏵Ultra-scale](starforged/oracles/creatures/ultra_scale)"
               rolls: [starforged/oracles/creatures/ultra_scale]
         ultra_scale:
@@ -95,16 +95,16 @@ starforged:
           usage:
             initial: true
           table:
-            - floor: 1
-              ceiling: 89
+            - low: 1
+              high: 89
               result: Titanic (hill-sized)
               # set_attributes: {creature_scale: [titanic]}
-            - floor: 90
-              ceiling: 99
+            - low: 90
+              high: 99
               result: Colossal (mountain-sized)
               # set_attributes: {creature_scale: [colossal]}
-            - floor: 100
-              ceiling: 100
+            - low: 100
+              high: 100
               result: Vast (planet-sized)
               # set_attributes: {creature_scale: [vast]}
         creature_first_look:
@@ -122,155 +122,155 @@ starforged:
             part_of_speech: [fragment]
             tags: [description, first look]
           table:
-            - floor: 1
-              ceiling: 2
+            - low: 1
+              high: 2
               result: Antennae or sensory organs
-            - floor: 3
-              ceiling: 4
+            - low: 3
+              high: 4
               result: Armored
-            - floor: 5
-              ceiling: 6
+            - low: 5
+              high: 6
               result: Beautiful
-            - floor: 7
-              ceiling: 8
+            - low: 7
+              high: 8
               result: Biotech
-            - floor: 9
-              ceiling: 10
+            - low: 9
+              high: 10
               result: Bony or gaunt
-            - floor: 11
-              ceiling: 12
+            - low: 11
+              high: 12
               result: Brutish or muscled
-            - floor: 13
-              ceiling: 14
+            - low: 13
+              high: 14
               result: Camouflaged
-            - floor: 15
-              ceiling: 16
+            - low: 15
+              high: 16
               result: Claws or talons
-            - floor: 17
-              ceiling: 18
+            - low: 17
+              high: 18
               result: Compound eyes
-            - floor: 19
-              ceiling: 20
+            - low: 19
+              high: 20
               result: Comprised of many creatures
-            - floor: 21
-              ceiling: 22
+            - low: 21
+              high: 22
               result: Corrupted
-            - floor: 23
-              ceiling: 24
+            - low: 23
+              high: 24
               result: Crystalline
-            - floor: 25
-              ceiling: 26
+            - low: 25
+              high: 26
               result: Dead or undead
-            - floor: 27
-              ceiling: 28
+            - low: 27
+              high: 28
               result: Distinctive markings
-            - floor: 29
-              ceiling: 30
+            - low: 29
+              high: 30
               result: Distinctive smell
-            - floor: 31
-              ceiling: 32
+            - low: 31
+              high: 32
               result: Distinctive sound
-            - floor: 33
-              ceiling: 34
+            - low: 33
+              high: 34
               result: Dripping mucus
-            - floor: 35
-              ceiling: 36
+            - low: 35
+              high: 36
               result: Elongated Neck
-            - floor: 37
-              ceiling: 38
+            - low: 37
+              high: 38
               result: Energy emissions
-            - floor: 39
-              ceiling: 40
+            - low: 39
+              high: 40
               result: Extra limbs
-            - floor: 41
-              ceiling: 42
+            - low: 41
+              high: 42
               result: Faceless or inexpressive
-            - floor: 43
-              ceiling: 44
+            - low: 43
+              high: 44
               result: Fangs or rows of teeth
-            - floor: 45
-              ceiling: 46
+            - low: 45
+              high: 46
               result: Feathered
-            - floor: 47
-              ceiling: 48
+            - low: 47
+              high: 48
               result: Fungal growth
-            - floor: 49
-              ceiling: 50
+            - low: 49
+              high: 50
               result: "Fur, hair, or filaments"
-            - floor: 51
-              ceiling: 52
+            - low: 51
+              high: 52
               result: Graceful
-            - floor: 53
-              ceiling: 54
+            - low: 53
+              high: 54
               result: Hideous
-            - floor: 55
-              ceiling: 56
+            - low: 55
+              high: 56
               result: Hooded or crested
-            - floor: 57
-              ceiling: 58
+            - low: 57
+              high: 58
               result: Immobile or trapped
-            - floor: 59
-              ceiling: 60
+            - low: 59
+              high: 60
               result: Injured or scarred
-            - floor: 61
-              ceiling: 62
+            - low: 61
+              high: 62
               result: Iridescent
-            - floor: 63
-              ceiling: 64
+            - low: 63
+              high: 64
               result: Long-limbed
-            - floor: 65
-              ceiling: 66
+            - low: 65
+              high: 66
               result: Luminescent
-            - floor: 67
-              ceiling: 68
+            - low: 67
+              high: 68
               result: Mandibles or pincers
-            - floor: 69
-              ceiling: 70
+            - low: 69
+              high: 70
               result: Many-eyed
-            - floor: 71
-              ceiling: 72
+            - low: 71
+              high: 72
               result: Mineral or metallic
-            - floor: 73
-              ceiling: 74
+            - low: 73
+              high: 74
               result: Multi-jointed
-            - floor: 75
-              ceiling: 76
+            - low: 75
+              high: 76
               result: Multi-segmented body
-            - floor: 77
-              ceiling: 78
+            - low: 77
+              high: 78
               result: Ornamented or colorful
-            - floor: 79
-              ceiling: 80
+            - low: 79
+              high: 80
               result: Oversized mouth
-            - floor: 81
-              ceiling: 82
+            - low: 81
+              high: 82
               result: Prominent tail
-            - floor: 83
-              ceiling: 84
+            - low: 83
+              high: 84
               result: Prominent wings or fins
-            - floor: 85
-              ceiling: 86
+            - low: 85
+              high: 86
               result: Ridges or plates
-            - floor: 87
-              ceiling: 88
+            - low: 87
+              high: 88
               result: Scaled
-            - floor: 89
-              ceiling: 90
+            - low: 89
+              high: 90
               result: Single eye or oversized eyes
-            - floor: 91
-              ceiling: 92
+            - low: 91
+              high: 92
               result: Spikes or spines
-            - floor: 93
-              ceiling: 94
+            - low: 93
+              high: 94
               result: Stinger or barbs
-            - floor: 95
-              ceiling: 96
+            - low: 95
+              high: 96
               result: Tentacles or tendrils
-            - floor: 97
-              ceiling: 98
+            - low: 97
+              high: 98
               result: Translucent
-            - floor: 99
-              ceiling: 100
+            - low: 99
+              high: 100
               result: Visible symbiote
         encountered_behavior:
           title:
@@ -284,88 +284,88 @@ starforged:
           usage:
             initial: true
           table:
-            - floor: 1
-              ceiling: 5
+            - low: 1
+              high: 5
               result: Ambusher
               # set_attributes: {encountered_behavior: [ambusher]}
-            - floor: 6
-              ceiling: 10
+            - low: 6
+              high: 10
               result: Apex predator
               # set_attributes: {encountered_behavior: [apex_predator]}
-            - floor: 11
-              ceiling: 14
+            - low: 11
+              high: 14
               result: Builder
               # set_attributes: {encountered_behavior: [builder]}
-            - floor: 15
-              ceiling: 19
+            - low: 15
+              high: 19
               result: Camouflager
               # set_attributes: {encountered_behavior: [camouflager]}
-            - floor: 20
-              ceiling: 24
+            - low: 20
+              high: 24
               result: Forager
               # set_attributes: {encountered_behavior: [forager]}
-            - floor: 25
-              ceiling: 29
+            - low: 25
+              high: 29
               result: Grazer
               # set_attributes: {encountered_behavior: [grazer]}
-            - floor: 30
-              ceiling: 33
+            - low: 30
+              high: 33
               result: Herder
               # set_attributes: {encountered_behavior: [herder]}
-            - floor: 34
-              ceiling: 37
+            - low: 34
+              high: 37
               result: Hibernator
               # set_attributes: {encountered_behavior: [hibernator]}
-            - floor: 38
-              ceiling: 41
+            - low: 38
+              high: 41
               result: Hoarder
               # set_attributes: {encountered_behavior: [hoarder]}
-            - floor: 42
-              ceiling: 46
+            - low: 42
+              high: 46
               result: Hunter
               # set_attributes: {encountered_behavior: [hunter]}
-            - floor: 47
-              ceiling: 51
+            - low: 47
+              high: 51
               result: Lurer
               # set_attributes: {encountered_behavior: [lurer]}
-            - floor: 52
-              ceiling: 55
+            - low: 52
+              high: 55
               result: Migratory
               # set_attributes: {encountered_behavior: [migratory]}
-            - floor: 56
-              ceiling: 60
+            - low: 56
+              high: 60
               result: Mimic
               # set_attributes: {encountered_behavior: [mimic]}
-            - floor: 61
-              ceiling: 65
+            - low: 61
+              high: 65
               result: Nester
               # set_attributes: {encountered_behavior: [nester]}
-            - floor: 66
-              ceiling: 70
+            - low: 66
+              high: 70
               result: Pack hunter
               # set_attributes: {encountered_behavior: [pack_hunter]}
-            - floor: 71
-              ceiling: 75
+            - low: 71
+              high: 75
               result: Prey
               # set_attributes: {encountered_behavior: [prey]}
-            - floor: 76
-              ceiling: 80
+            - low: 76
+              high: 80
               result: Protector
               # set_attributes: {encountered_behavior: [protector]}
-            - floor: 81
-              ceiling: 85
+            - low: 81
+              high: 85
               result: Scavenger
               # set_attributes: {encountered_behavior: [scavenger]}
-            - floor: 86
-              ceiling: 90
+            - low: 86
+              high: 90
               result: Tracker
               # set_attributes: {encountered_behavior: [tracker]}
-            - floor: 91
-              ceiling: 95
+            - low: 91
+              high: 95
               result: Trapper
               # set_attributes: {encountered_behavior: [trapper]}
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: *result:RollTwice
         revealed_creature_aspect:
           title:
@@ -380,155 +380,155 @@ starforged:
           usage:
             max_rolls: 2
           table:
-            - floor: 1
-              ceiling: 2
+            - low: 1
+              high: 2
               result: Alternative environment
-            - floor: 3
-              ceiling: 4
+            - low: 3
+              high: 4
               result: Alternative movement
-            - floor: 5
-              ceiling: 6
+            - low: 5
+              high: 6
               result: Alternative senses
-            - floor: 7
-              ceiling: 8
+            - low: 7
+              high: 8
               result: Burrower
-            - floor: 9
-              ceiling: 10
+            - low: 9
+              high: 10
               result: Chameleon
-            - floor: 11
-              ceiling: 12
+            - low: 11
+              high: 12
               result: Clever
-            - floor: 13
-              ceiling: 14
+            - low: 13
+              high: 14
               result: Consumes energy
-            - floor: 15
-              ceiling: 16
+            - low: 15
+              high: 16
               result: Consumes inorganic matter
-            - floor: 17
-              ceiling: 18
+            - low: 17
+              high: 18
               result: Controlled or puppeteered
-            - floor: 19
-              ceiling: 20
+            - low: 19
+              high: 20
               result: Controls lesser creatures
-            - floor: 21
-              ceiling: 22
+            - low: 21
+              high: 22
               result: Corrosive excretion
-            - floor: 23
-              ceiling: 24
+            - low: 23
+              high: 24
               result: Crusher or constrictor
-            - floor: 25
-              ceiling: 26
+            - low: 25
+              high: 26
               result: Egg sac or carried offspring
-            - floor: 27
-              ceiling: 28
+            - low: 27
+              high: 28
               result: Electric shock
-            - floor: 29
-              ceiling: 30
+            - low: 29
+              high: 30
               result: Electromagnetic pulse
-            - floor: 31
-              ceiling: 32
+            - low: 31
+              high: 32
               result: Energy breath
-            - floor: 33
-              ceiling: 34
+            - low: 33
+              high: 34
               result: Energy manipulation
-            - floor: 35
-              ceiling: 36
+            - low: 35
+              high: 36
               result: Engineered biology
-            - floor: 37
-              ceiling: 38
+            - low: 37
+              high: 38
               result: Enhanced senses
-            - floor: 39
-              ceiling: 40
+            - low: 39
+              high: 40
               result: Enhanced strength
-            - floor: 41
-              ceiling: 42
+            - low: 41
+              high: 42
               result: Entangling secretion
-            - floor: 43
-              ceiling: 44
+            - low: 43
+              high: 44
               result: Extradimensional
-            - floor: 45
-              ceiling: 46
+            - low: 45
+              high: 46
               result: Hallucinogen secretion
-            - floor: 47
-              ceiling: 48
+            - low: 47
+              high: 48
               result: Hidden symbiote
-            - floor: 49
-              ceiling: 50
+            - low: 49
+              high: 50
               result: Hive mind
-            - floor: 51
-              ceiling: 52
+            - low: 51
+              high: 52
               result: Illusionary
-            - floor: 53
-              ceiling: 54
+            - low: 53
+              high: 54
               result: Infectious
-            - floor: 55
-              ceiling: 56
+            - low: 55
+              high: 56
               result: Infested with parasites
-            - floor: 57
-              ceiling: 58
+            - low: 57
+              high: 58
               result: Intimidating threat display
-            - floor: 59
-              ceiling: 60
+            - low: 59
+              high: 60
               result: Limited sense
-            - floor: 61
-              ceiling: 62
+            - low: 61
+              high: 62
               result: Magnetic
-            - floor: 63
-              ceiling: 64
+            - low: 63
+              high: 64
               result: Mental influence or control
-            - floor: 65
-              ceiling: 66
+            - low: 65
+              high: 66
               result: Metamorphic
-            - floor: 67
-              ceiling: 68
+            - low: 67
+              high: 68
               result: Noxious cloud or spores
-            - floor: 69
-              ceiling: 70
+            - low: 69
+              high: 70
               result: Paralytic toxin
-            - floor: 71
-              ceiling: 72
+            - low: 71
+              high: 72
               result: Parasitic
-            - floor: 73
-              ceiling: 74
+            - low: 73
+              high: 74
               result: Pheromones
-            - floor: 75
-              ceiling: 76
+            - low: 75
+              high: 76
               result: Poisonous
-            - floor: 77
-              ceiling: 78
+            - low: 77
+              high: 78
               result: Powerful bite
-            - floor: 79
-              ceiling: 80
+            - low: 79
+              high: 80
               result: Proboscis or inner jaw
-            - floor: 81
-              ceiling: 82
+            - low: 81
+              high: 82
               result: Projectile attack
-            - floor: 83
-              ceiling: 84
+            - low: 83
+              high: 84
               result: Radioactive
-            - floor: 85
-              ceiling: 86
+            - low: 85
+              high: 86
               result: Regeneration
-            - floor: 87
-              ceiling: 88
+            - low: 87
+              high: 88
               result: Replication
-            - floor: 89
-              ceiling: 90
+            - low: 89
+              high: 90
               result: Sacrificial defense
-            - floor: 91
-              ceiling: 92
+            - low: 91
+              high: 92
               result: Shapechanger
-            - floor: 93
-              ceiling: 94
+            - low: 93
+              high: 94
               result: Telekinetic
-            - floor: 95
-              ceiling: 96
+            - low: 95
+              high: 96
               result: Teleportation
-            - floor: 97
-              ceiling: 98
+            - low: 97
+              high: 98
               result: Territorial
-            - floor: 99
-              ceiling: 100
+            - low: 99
+              high: 100
               result: Toxic spew
       collections:
         basic_form:
@@ -585,76 +585,76 @@ starforged:
                   attributes:
                     environment: [space]
               table: &table:Creatures.BasicForm
-                  - floor: 1
-                    ceiling: 5
+                  - low: 1
+                    high: 5
                     result: Amoeba / pseudopods
                     display: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}
-                  - floor: 6
-                    ceiling: 20
+                  - low: 6
+                    high: 20
                     result: Amorphous / elemental
                     display: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}
-                  - floor: 21
-                    ceiling: 30
+                  - low: 21
+                    high: 30
                     result: Avian / winged
                     display: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}
-                  - floor: 31
-                    ceiling: 32
+                  - low: 31
+                    high: 32
                     result: Beast / mammal
                     display: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}
-                  - floor: 33
-                    ceiling: 34
+                  - low: 33
+                    high: 34
                     result: Crustacean / shelled
                     display: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}
-                  - floor: 35
-                    ceiling: 37
+                  - low: 35
+                    high: 37
                     result: Fish / torpedo-shaped
                     display: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}
-                  - floor: 38
-                    ceiling: 39
+                  - low: 38
+                    high: 39
                     result: Humanoid / bipedal
                     display: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}
-                  - floor: 40
-                    ceiling: 41
+                  - low: 40
+                    high: 41
                     result: Insectoid / exoskeletal
                     display: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}
-                  - floor: 42
-                    ceiling: 60
+                  - low: 42
+                    high: 60
                     result: Jellyfish / gasbag
                     display: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}
-                  - floor: 61
-                    ceiling: 62
+                  - low: 61
+                    high: 62
                     result: Lizard / reptilian
                     display: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}
-                  - floor: 63
-                    ceiling: 67
+                  - low: 63
+                    high: 67
                     result: Octopoid / tentacled
                     display: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}
-                  - floor: 68
-                    ceiling: 72
+                  - low: 68
+                    high: 72
                     result: Plant / fungus
                     display: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}
-                  - floor: 73
-                    ceiling: 82
+                  - low: 73
+                    high: 82
                     result: Ray / flat-bodied
                     display: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}
-                  - floor: 83
-                    ceiling: 84
+                  - low: 83
+                    high: 84
                     result: Snake / eel
                     display: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}
-                  - floor: 85
-                    ceiling: 86
+                  - low: 85
+                    high: 86
                     result: Spider / web-weaver
                     display: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}
-                  - floor: 87
-                    ceiling: 88
+                  - low: 87
+                    high: 88
                     result: Starfish / symmetrical
                     display: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}
-                  - floor: 89
-                    ceiling: 90
+                  - low: 89
+                    high: 90
                     result: Worm / slug / larva
                     display: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}
-                  - floor: 91
-                    ceiling: 100
+                  - low: 91
+                    high: 100
                     result: *result:RollTwice
             interior:
               title:

@@ -10,15 +10,16 @@ const d100Value: JSONSchema7 = {
 
 const d100Range: JSONSchema7 = {
   type: 'object',
-  required: [
-    'floor',
-    'ceiling'
-  ],
+  required: ['floor', 'ceiling'],
   properties: {
-
-    floor: merge({ description: 'The high end of the dice range for this table row.' }, d100Value),
-    ceiling: merge(
-      { description: 'The low end of the dice range for this table row.' }, d100Value)
+    low: merge(
+      { description: 'The high end of the dice range for this table row.' },
+      d100Value
+    ),
+    high: merge(
+      { description: 'The low end of the dice range for this table row.' },
+      d100Value
+    )
   }
 }
 
@@ -27,13 +28,14 @@ const d100RangeNullable: JSONSchema7 = {
   required: d100Range.required,
   oneOf: [
     { properties: d100Range.properties },
-    { properties: { floor: { type: 'null' }, ceiling: { type: 'null' } } }
+    { properties: { low: { type: 'null' }, high: { type: 'null' } } }
   ]
 }
 
 export const OracleContentMetadata: JSONSchema7 = {
   type: 'object',
-  description: "Metadata that describes an oracle's semantic or lexical content.",
+  description:
+    "Metadata that describes an oracle's semantic or lexical content.",
   additionalProperties: false,
   properties: {
     part_of_speech: {
@@ -74,19 +76,13 @@ export const OracleTableRollMethod: JSONSchema7 = {
   make_it_worse = Don't reroll duplicate OracleTableRows; duplicates compound
   `,
   type: 'string',
-  enum: [
-    'no_duplicates',
-    'allow_duplicates',
-    'make_it_worse'
-  ],
+  enum: ['no_duplicates', 'allow_duplicates', 'make_it_worse'],
   default: 'no_duplicates'
 }
 
 export const OracleTableRoll: JSONSchema7 = {
   description: 'Parameters for an oracle table roll.',
-  required: [
-    'table'
-  ],
+  required: ['table'],
   properties: {
     table: {
       $ref: '#/$defs/OracleTable.ID'
@@ -118,15 +114,18 @@ export const OracleTableRenderMetadata: JSONSchema7 = {}
 
 export const OracleTableRowRenderMetadata: JSONSchema7 = {
   $defs: {
-    icon: {// TODO
+    icon: {
+      // TODO
     },
-    images: {// TODO
+    images: {
+      // TODO
     },
     color: {
       // TODO
     },
     embed_table: {
-      description: 'The ID of another oracle table, which should be rendered *within* this table row.',
+      description:
+        'The ID of another oracle table, which should be rendered *within* this table row.',
       // TODO: point to an example in the Ironsworn rulebook
       $ref: '#/$defs/OracleTable.ID'
     }
@@ -135,27 +134,27 @@ export const OracleTableRowRenderMetadata: JSONSchema7 = {
 
 export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
   type: 'object',
-  required: [
-    'result'
-  ],
+  required: ['result'],
   additionalProperties: false,
   properties: {
     _id: {
       // TODO
       $ref: '#/$defs/ID'
     },
-    floor: {
+    low: {
       description: 'The low end of the dice range for this table row.'
     },
-    ceiling: {
+    high: {
       description: 'The high end of the dice range for this table row.'
     },
     result: {
-      description: 'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.',
+      description:
+        'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.',
       $ref: '#/$defs/LocalizedMarkdown'
     },
     summary: {
-      description: "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+      description:
+        "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       oneOf: [
         {
           $ref: '#/$defs/Summary'
@@ -167,8 +166,7 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
     },
     template: {
       description: 'TODO',
-      examples: [
-      ],
+      examples: [],
       type: 'object',
       properties: {
         result: {
@@ -219,113 +217,113 @@ export const BaseOracle: JSONSchema7 = {
 }
 
 export const OracleCollection: JSONSchema7 = {
-    title: 'OracleCollection',
-    type: 'object',
-    additionalProperties: false,
-    properties: {
-      title: {
-        $ref: '#/$defs/Title'
-      },
-      source: {
-        $ref: '#/$defs/Source'
-      },
-      summary: {
-        $ref: '#/$defs/Summary'
-      },
-      description: {
-        $ref: '#/$defs/Description'
-      },
-      _id: {
+  title: 'OracleCollection',
+  type: 'object',
+  additionalProperties: false,
+  properties: {
+    title: {
+      $ref: '#/$defs/Title'
+    },
+    source: {
+      $ref: '#/$defs/Source'
+    },
+    summary: {
+      $ref: '#/$defs/Summary'
+    },
+    description: {
+      $ref: '#/$defs/Description'
+    },
+    _id: {
+      type: 'string'
+      // TODO: figure out ID type???
+    },
+    collections: dfRecordSchema('OracleCollection'),
+    contents: dfRecordSchema('OracleTable'),
+    sample_names: {
+      description:
+        'A list of sample names for this oracle set. Only used by Planets.',
+      type: 'array',
+      items: {
         type: 'string'
-        // TODO: figure out ID type???
-      },
-      collections: dfRecordSchema('OracleCollection'),
-      contents: dfRecordSchema('OracleTable'),
-      sample_names: {
-        description: 'A list of sample names for this oracle set. Only used by Planets.',
-        type: 'array',
-        items: {
-          type: 'string'
-        }
       }
     }
   }
-export const OracleTable: JSONSchema7 = merge(BaseOracle,
-  {
-    type: 'object',
-    required: ['table'],
-    additionalProperties: false,
-    properties: {
-      _id: {
-        // TODO: figure out ID type
-      },
-      content: {},
-      match: {
-        title: 'OracleMatchBehaviour',
-        type: 'object',
-        properties: {
-          _id: {
-            $ref: '#/$defs/ID'
-          },
-          text: {
-            $ref: '#/$defs/LocalizedMarkdown'
-          }
+}
+export const OracleTable: JSONSchema7 = merge(BaseOracle, {
+  type: 'object',
+  required: ['table'],
+  additionalProperties: false,
+  properties: {
+    _id: {
+      // TODO: figure out ID type
+    },
+    content: {},
+    match: {
+      title: 'OracleMatchBehaviour',
+      type: 'object',
+      properties: {
+        _id: {
+          $ref: '#/$defs/ID'
         },
-        additionalProperties: false,
-        required: [
-          'text'
-        ]
+        text: {
+          $ref: '#/$defs/LocalizedMarkdown'
+        }
       },
-      requires: {
-        title: 'OracleRequirements',
-        type: 'object'
-      },
-      render: {
-        title: 'OracleTableRenderMetadata',
-        type: 'object',
-        allOf: [
-          {
-            $ref: '#/$defs/RenderMetadata'
-          },
-          {
-            additionalProperties: false,
-            properties: {
-              columns: {
-                type: 'object',
-                additionalProperties: {
-                  oneOf: [
-                    {
-                      $comment: '#/$defs/TableColumnRoll'
-                    },
-                    {
-                      $comment: '#/$defs/TableColumnText'
-                    }
-                  ]
-                }
-              },
-              column_of: {
-                description: "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
-                type: 'string'
-              },
-              embed_in: {
-                description: 'This table is displayed as embedded in a row of another table.',
-                type: 'string'
-              },
-              source: {
-                $ref: '#/$defs/Source'
+      additionalProperties: false,
+      required: ['text']
+    },
+    requires: {
+      title: 'OracleRequirements',
+      type: 'object'
+    },
+    render: {
+      title: 'OracleTableRenderMetadata',
+      type: 'object',
+      allOf: [
+        {
+          $ref: '#/$defs/RenderMetadata'
+        },
+        {
+          additionalProperties: false,
+          properties: {
+            columns: {
+              type: 'object',
+              additionalProperties: {
+                oneOf: [
+                  {
+                    $comment: '#/$defs/TableColumnRoll'
+                  },
+                  {
+                    $comment: '#/$defs/TableColumnText'
+                  }
+                ]
               }
+            },
+            column_of: {
+              description:
+                "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+              type: 'string'
+            },
+            embed_in: {
+              description:
+                'This table is displayed as embedded in a row of another table.',
+              type: 'string'
+            },
+            source: {
+              $ref: '#/$defs/Source'
             }
           }
-        ]
-      },
-      table: {
-        type: 'array',
-        items: {
-          $ref: '#/$defs/OracleTableRow'
         }
+      ]
+    },
+    table: {
+      type: 'array',
+      items: {
+        $ref: '#/$defs/OracleTableRow'
       }
     }
-  })
+  }
+})
 
 export const $defs: Record<string, JSONSchema7> = {
   OracleRowLike,

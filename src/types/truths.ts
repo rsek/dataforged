@@ -1,4 +1,4 @@
-import { type Localized, type Metadata } from 'src/types'
+import { type Localize, type Metadata } from 'src/types'
 import { type Node } from 'src/types/abstract'
 
 export type ID = string
@@ -18,11 +18,11 @@ export interface TruthClassic extends SettingTruth {}
 export type TruthOptionID = string
 export interface TruthOption {
   _id: TruthOptionID
-  description: Localized.MarkdownParagraphs | Localized.MarkdownParagraph
-  quest_starter: Localized.MarkdownParagraph
+  description: Localize.MarkdownParagraphs | Localize.MarkdownParagraph
+  quest_starter: Localize.MarkdownParagraph
 }
 
 export interface TruthOptionStarforged extends TruthOption {
-  summary: Localized.MarkdownSentences
-  description: Localized.MarkdownParagraphs
+  summary: Localize.MarkdownSentences
+  description: Localize.MarkdownParagraphs
 }

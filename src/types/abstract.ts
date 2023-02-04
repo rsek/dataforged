@@ -10,8 +10,8 @@ import type * as Metadata from 'src/types/metadata'
  * @internal
  */
 export interface Range {
-  floor: number | null
-  ceiling: number | null
+  low: number | null
+  high: number | null
 }
 
 /**

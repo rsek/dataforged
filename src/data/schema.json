@@ -493,16 +493,16 @@
       "type": "object",
       "required": [
         "result",
-        "ceiling"
+        "high"
       ],
       "properties": {
-        "floor": {
+        "low": {
           "description": "The high end of the dice range for this table row.",
           "type": "integer",
           "minimum": 1,
           "maximum": 100
         },
-        "ceiling": {
+        "high": {
           "description": "The low end of the dice range for this table row.",
           "type": "integer",
           "minimum": 1,
@@ -541,18 +541,18 @@
       "type": "object",
       "required": [
         "result",
-        "ceiling"
+        "high"
       ],
       "oneOf": [
         {
           "properties": {
-            "floor": {
+            "low": {
               "description": "The high end of the dice range for this table row.",
               "type": "integer",
               "minimum": 1,
               "maximum": 100
             },
-            "ceiling": {
+            "high": {
               "description": "The low end of the dice range for this table row.",
               "type": "integer",
               "minimum": 1,
@@ -562,10 +562,10 @@
         },
         {
           "properties": {
-            "floor": {
+            "low": {
               "type": "null"
             },
-            "ceiling": {
+            "high": {
               "type": "null"
             }
           }
@@ -576,10 +576,10 @@
         "_id": {
           "$ref": "#/$defs/ID"
         },
-        "floor": {
+        "low": {
           "description": "The low end of the dice range for this table row."
         },
-        "ceiling": {
+        "high": {
           "description": "The high end of the dice range for this table row."
         },
         "result": {
@@ -1677,10 +1677,10 @@
                     "rarity": {
                       "const": "very_common"
                     },
-                    "floor": {
+                    "low": {
                       "const": 1
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 27
                     }
                   }
@@ -1690,10 +1690,10 @@
                     "rarity": {
                       "const": "common"
                     },
-                    "floor": {
+                    "low": {
                       "const": 28
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 41
                     }
                   }
@@ -1703,10 +1703,10 @@
                     "rarity": {
                       "const": "common"
                     },
-                    "floor": {
+                    "low": {
                       "const": 42
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 55
                     }
                   }
@@ -1716,10 +1716,10 @@
                     "rarity": {
                       "const": "common"
                     },
-                    "floor": {
+                    "low": {
                       "const": 56
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 69
                     }
                   }
@@ -1729,10 +1729,10 @@
                     "rarity": {
                       "const": "uncommon"
                     },
-                    "floor": {
+                    "low": {
                       "const": 70
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 75
                     }
                   }
@@ -1742,10 +1742,10 @@
                     "rarity": {
                       "const": "uncommon"
                     },
-                    "floor": {
+                    "low": {
                       "const": 76
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 81
                     }
                   }
@@ -1755,10 +1755,10 @@
                     "rarity": {
                       "const": "uncommon"
                     },
-                    "floor": {
+                    "low": {
                       "const": 82
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 87
                     }
                   }
@@ -1768,10 +1768,10 @@
                     "rarity": {
                       "const": "uncommon"
                     },
-                    "floor": {
+                    "low": {
                       "const": 88
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 93
                     }
                   }
@@ -1781,10 +1781,10 @@
                     "rarity": {
                       "const": "rare"
                     },
-                    "floor": {
+                    "low": {
                       "const": 94
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 95
                     }
                   }
@@ -1794,10 +1794,10 @@
                     "rarity": {
                       "const": "rare"
                     },
-                    "floor": {
+                    "low": {
                       "const": 96
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 97
                     }
                   }
@@ -1807,10 +1807,10 @@
                     "rarity": {
                       "const": "rare"
                     },
-                    "floor": {
+                    "low": {
                       "const": 98
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 99
                     }
                   }
@@ -1820,10 +1820,10 @@
                     "rarity": {
                       "const": "unforeseen"
                     },
-                    "floor": {
+                    "low": {
                       "const": 100
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 100
                     }
                   }
@@ -1967,90 +1967,90 @@
               "items": [
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 21
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 43
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 44
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 56
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 57
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 64
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 65
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 68
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 69
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 72
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 73
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 76
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 77
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 80
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 81
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 84
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 85
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 88
                     }
                   }
@@ -2062,50 +2062,50 @@
               "items": [
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 31
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 33
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 34
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 36
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 37
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 39
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 40
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 42
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 43
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 45
                     }
                   }
@@ -2131,50 +2131,50 @@
               "items": [
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 1
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 4
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 5
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 8
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 9
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 12
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 13
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 16
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 17
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 20
                     }
                   }
@@ -2186,120 +2186,120 @@
               "items": [
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 1
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 5
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 6
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 10
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 11
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 12
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 13
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 14
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 15
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 16
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 17
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 18
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 19
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 20
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 21
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 22
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 23
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 24
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 25
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 26
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 27
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 28
                     }
                   }
                 },
                 {
                   "properties": {
-                    "floor": {
+                    "low": {
                       "const": 29
                     },
-                    "ceiling": {
+                    "high": {
                       "const": 30
                     }
                   }

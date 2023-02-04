@@ -51,24 +51,24 @@ starforged:
                   attributes:
                     region: [terminus]
               table: &table:Population
-                - floor: 1
-                  ceiling: 10
+                - low: 1
+                  high: 10
                   result: Few
                   # set_attributes: {population: [few]}
-                - floor: 11
-                  ceiling: 25
+                - low: 11
+                  high: 25
                   result: Dozens
                   # set_attributes: {population: [dozens]}
-                - floor: 26
-                  ceiling: 55
+                - low: 26
+                  high: 55
                   result: Hundreds
                   # set_attributes: {population: [hundreds]}
-                - floor: 56
-                  ceiling: 85
+                - low: 56
+                  high: 85
                   result: Thousands
                   # set_attributes: {population: [thousands]}
-                - floor: 86
-                  ceiling: 100
+                - low: 86
+                  high: 100
                   result: Tens of thousands
                   # set_attributes: {population: [tens_of_thousands]}
             outlands:
@@ -132,69 +132,69 @@ starforged:
             part_of_speech: [fragment]
             tags: [description]
           table:
-            - floor: 1
-              ceiling: 3
+            - low: 1
+              high: 3
               result: Beautiful architecture
-            - floor: 4
-              ceiling: 9
+            - low: 4
+              high: 9
               result: Built from organic materials
-            - floor: 10
-              ceiling: 15
+            - low: 10
+              high: 15
               result: Built from random scrap
-            - floor: 16
-              ceiling: 21
+            - low: 16
+              high: 21
               result: Built within repurposed ship
-            - floor: 22
-              ceiling: 26
+            - low: 22
+              high: 26
               result: Built within terrain or asteroid
-            - floor: 27
-              ceiling: 31
+            - low: 27
+              high: 31
               result: Defensible location
-            - floor: 32
-              ceiling: 35
+            - low: 32
+              high: 35
               result: Elevated or multi-level construction
-            - floor: 36
-              ceiling: 40
+            - low: 36
+              high: 40
               result: Hidden or subsurface location
-            - floor: 41
-              ceiling: 43
+            - low: 41
+              high: 43
               result: High-tech construction
-            - floor: 44
-              ceiling: 49
+            - low: 44
+              high: 49
               result: Industrial architecture
-            - floor: 50
-              ceiling: 53
+            - low: 50
+              high: 53
               result: Intimidating defenses
-            - floor: 54
-              ceiling: 56
+            - low: 54
+              high: 56
               result: Moving or transforming
-            - floor: 57
-              ceiling: 61
+            - low: 57
+              high: 61
               result: Obvious social stratification
-            - floor: 62
-              ceiling: 66
+            - low: 62
+              high: 66
               result: Precarious location
-            - floor: 67
-              ceiling: 72
+            - low: 67
+              high: 72
               result: Rustic architecture
-            - floor: 73
-              ceiling: 76
+            - low: 73
+              high: 76
               result: Significant structural damage
-            - floor: 77
-              ceiling: 80
+            - low: 77
+              high: 80
               result: Sprawling or dispersed structures
-            - floor: 81
-              ceiling: 83
+            - low: 81
+              high: 83
               result: Temporary or seasonal location
-            - floor: 84
-              ceiling: 87
+            - low: 84
+              high: 87
               result: Toxic or polluted habitat
-            - floor: 88
-              ceiling: 90
+            - low: 88
+              high: 90
               result: "Within or near [⏵Precursor Vault](starforged/oracles/vaults)"
               # suggestions: [*obj:Vault]
-            - floor: 91
-              ceiling: 100
+            - low: 91
+              high: 100
               result: *result:Descriptor+Focus
 
         initial_contact:
@@ -208,48 +208,48 @@ starforged:
             part_of_speech: [fragment]
             tags: [description]
           table:
-            - floor: 1
-              ceiling: 20
+            - low: 1
+              high: 20
               result: Welcoming
               # set_attributes: {initial_contact: [welcoming]}
-            - floor: 21
-              ceiling: 30
+            - low: 21
+              high: 30
               result: Neutral / automated
               # set_attributes: {initial_contact: [neutral_automated]}
-            - floor: 31
-              ceiling: 50
+            - low: 31
+              high: 50
               result: Wary
               # set_attributes: {initial_contact: [wary]}
-            - floor: 51
-              ceiling: 60
+            - low: 51
+              high: 60
               result: Uncooperative
               # set_attributes: {initial_contact: [uncooperative]}
-            - floor: 61
-              ceiling: 70
+            - low: 61
+              high: 70
               result: Hostile
               # set_attributes: {initial_contact: [hostile]}
-            - floor: 71
-              ceiling: 83
+            - low: 71
+              high: 83
               result: Asking for help
               # set_attributes: {initial_contact: [asking_for_help]}
-            - floor: 84
-              ceiling: 86
+            - low: 84
+              high: 86
               result: In battle
               # set_attributes: {initial_contact: [in_battle]}
-            - floor: 87
-              ceiling: 89
+            - low: 87
+              high: 89
               result: Captured
               # set_attributes: {initial_contact: [captured]}
-            - floor: 90
-              ceiling: 92
+            - low: 90
+              high: 92
               result: Unresponsive
               # set_attributes: {initial_contact: [unresponsive]}
-            - floor: 93
-              ceiling: 95
+            - low: 93
+              high: 95
               result: Destroyed
               # set_attributes: {initial_contact: [destroyed]}
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: "[⏵Derelict](starforged/oracles/derelicts)"
               *inherit:Derelict.Settlement
 
@@ -263,32 +263,32 @@ starforged:
           content:
             part_of_speech: [adjective]
           table:
-            - floor: 1
-              ceiling: 15
+            - low: 1
+              high: 15
               result: None / lawless
               # set_attributes: {authority: [none_lawless]}
-            - floor: 16
-              ceiling: 30
+            - low: 16
+              high: 30
               result: Ineffectual
               # set_attributes: {authority: [ineffectual]}
-            - floor: 31
-              ceiling: 45
+            - low: 31
+              high: 45
               result: Tolerant
               # set_attributes: {authority: [tolerant]}
-            - floor: 46
-              ceiling: 55
+            - low: 46
+              high: 55
               result: Fair
               # set_attributes: {authority: [fair]}
-            - floor: 56
-              ceiling: 70
+            - low: 56
+              high: 70
               result: Unyielding
               # set_attributes: {authority: [unyielding]}
-            - floor: 71
-              ceiling: 85
+            - low: 71
+              high: 85
               result: Corrupt
               # set_attributes: {authority: [corrupt]}
-            - floor: 86
-              ceiling: 100
+            - low: 86
+              high: 100
               result: Oppressive
               # set_attributes: {authority: [oppressive]}
         projects:
@@ -305,104 +305,104 @@ starforged:
           description: |-
             Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
           table:
-            - floor: 1
-              ceiling: 5
+            - low: 1
+              high: 5
               result: Agriculture
-            - floor: 6
-              ceiling: 7
+            - low: 6
+              high: 7
               result: Archeology
-            - floor: 8
-              ceiling: 9
+            - low: 8
+              high: 9
               result: Automation
-            - floor: 10
-              ceiling: 11
+            - low: 10
+              high: 11
               result: Black market
-            - floor: 12
-              ceiling: 13
+            - low: 12
+              high: 13
               result: Command
-            - floor: 14
-              ceiling: 17
+            - low: 14
+              high: 17
               result: Defense
-            - floor: 18
-              ceiling: 22
+            - low: 18
+              high: 22
               result: Energy
-            - floor: 23
-              ceiling: 25
+            - low: 23
+              high: 25
               result: Engineering
-            - floor: 26
-              ceiling: 27
+            - low: 26
+              high: 27
               result: Entertainment
-            - floor: 28
-              ceiling: 29
+            - low: 28
+              high: 29
               result: Environmentalism
-            - floor: 30
-              ceiling: 31
+            - low: 30
+              high: 31
               result: Evacuation
-            - floor: 32
-              ceiling: 33
+            - low: 32
+              high: 33
               result: Expansion
-            - floor: 34
-              ceiling: 37
+            - low: 34
+              high: 37
               result: Exploration
-            - floor: 38
-              ceiling: 39
+            - low: 38
+              high: 39
               result: Festival
-            - floor: 40
-              ceiling: 41
+            - low: 40
+              high: 41
               result: History
-            - floor: 42
-              ceiling: 43
+            - low: 42
+              high: 43
               result: Hunting
-            - floor: 44
-              ceiling: 46
+            - low: 44
+              high: 46
               result: Manufacturing
-            - floor: 47
-              ceiling: 49
+            - low: 47
+              high: 49
               result: Medical
-            - floor: 50
-              ceiling: 51
+            - low: 50
+              high: 51
               result: Migration
-            - floor: 52
-              ceiling: 57
+            - low: 52
+              high: 57
               result: Mining
-            - floor: 58
-              ceiling: 59
+            - low: 58
+              high: 59
               result: Pacifism
-            - floor: 60
-              ceiling: 62
+            - low: 60
+              high: 62
               result: Raiding
-            - floor: 63
-              ceiling: 65
+            - low: 63
+              high: 65
               result: Research
-            - floor: 66
-              ceiling: 69
+            - low: 66
+              high: 69
               result: Salvage
-            - floor: 70
-              ceiling: 72
+            - low: 70
+              high: 72
               result: Secrecy
-            - floor: 73
-              ceiling: 75
+            - low: 73
+              high: 75
               result: Shipbuilding
-            - floor: 76
-              ceiling: 78
+            - low: 76
+              high: 78
               result: Spirituality
-            - floor: 79
-              ceiling: 84
+            - low: 79
+              high: 84
               result: Subsistence
-            - floor: 85
-              ceiling: 86
+            - low: 85
+              high: 86
               result: Surveillance
-            - floor: 87
-              ceiling: 88
+            - low: 87
+              high: 88
               result: Terraforming
-            - floor: 89
-              ceiling: 92
+            - low: 89
+              high: 92
               result: Trade
-            - floor: 93
-              ceiling: 95
+            - low: 93
+              high: 95
               result: Warfare
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: *result:Action+Theme
         trouble:
           title:
@@ -418,126 +418,126 @@ starforged:
             part_of_speech: [fragment]
             tags: [peril, event, present]
           table:
-            - floor: 1
-              ceiling: 3
+            - low: 1
+              high: 3
               result: Battle for leadership
               # suggestions: [*obj:Faction]
-            - floor: 4
-              ceiling: 6
+            - low: 4
+              high: 6
               result: Betrayal from within
-            - floor: 7
-              ceiling: 8
+            - low: 7
+              high: 8
               result: Caught in the crossfire
-            - floor: 9
-              ceiling: 11
+            - low: 9
+              high: 11
               result: Changing environment
-            - floor: 12
-              ceiling: 13
+            - low: 12
+              high: 13
               result: Clash of cultures
               # suggestions: [*roll:Event]
-            - floor: 14
-              ceiling: 17
+            - low: 14
+              high: 17
               result: Dangerous discovery
               # suggestions: [*roll:Event]
-            - floor: 18
-              ceiling: 21
+            - low: 18
+              high: 21
               result: Depleted supplies
               # suggestions: [*roll:Object]
-            - floor: 22
-              ceiling: 24
+            - low: 22
+              high: 24
               result: Deprived of a resource
               # suggestions: [*roll:Object]
-            - floor: 25
-              ceiling: 28
+            - low: 25
+              high: 28
               result: Failing technology
               # suggestions: [*roll:Object]
-            - floor: 29
-              ceiling: 32
+            - low: 29
+              high: 32
               result: Feuding factions
-            - floor: 33
-              ceiling: 34
+            - low: 33
+              high: 34
               result: Ghostly visitations
-            - floor: 35
-              ceiling: 38
+            - low: 35
+              high: 38
               result: Hazardous environment
               # suggestions: [*roll:Object]
-            - floor: 39
-              ceiling: 42
+            - low: 39
+              high: 42
               result: Hostile lifeforms
               # suggestions: [*obj:Creature]
-            - floor: 43
-              ceiling: 45
+            - low: 43
+              high: 45
               result: Impassable route
-            - floor: 46
-              ceiling: 48
+            - low: 46
+              high: 48
               result: Impending attack
-            - floor: 49
-              ceiling: 51
+            - low: 49
+              high: 51
               result: Impending natural disaster
               # suggestions: [*roll:Event]
-            - floor: 52
-              ceiling: 53
+            - low: 52
+              high: 53
               result: Invasive organisms
-            - floor: 54
-              ceiling: 55
+            - low: 54
+              high: 55
               result: Mounting debt
-            - floor: 56
-              ceiling: 57
+            - low: 56
+              high: 57
               result: Mysterious deaths
-            - floor: 58
-              ceiling: 60
+            - low: 58
+              high: 60
               result: Overdue delivery
-            - floor: 61
-              ceiling: 62
+            - low: 61
+              high: 62
               result: Plagued by sickness
-            - floor: 63
-              ceiling: 65
+            - low: 63
+              high: 65
               result: Preyed upon by raiders
-            - floor: 66
-              ceiling: 67
+            - low: 66
+              high: 67
               result: Revolt against leadership
               # suggestions: [*obj:Npc]
-            - floor: 68
-              ceiling: 69
+            - low: 68
+              high: 69
               result: Sabotaged technology
               # suggestions: [*roll:Object]
-            - floor: 70
-              ceiling: 71
+            - low: 70
+              high: 71
               result: Shunned by others
-            - floor: 72
-              ceiling: 74
+            - low: 72
+              high: 74
               result: Social strife
               # suggestions: [*roll:Event]
-            - floor: 75
-              ceiling: 76
+            - low: 75
+              high: 76
               result: Someone is ill or injured
               # suggestions: [*obj:Npc]
-            - floor: 77
-              ceiling: 78
+            - low: 77
+              high: 78
               result: Someone is missing
               # suggestions: [*obj:Npc]
-            - floor: 79
-              ceiling: 80
+            - low: 79
+              high: 80
               result: Stolen technology or object
               # suggestions: [*roll:Object]
-            - floor: 81
-              ceiling: 83
+            - low: 81
+              high: 83
               result: Strange phenomenon
               # suggestions: [*roll:Event]
-            - floor: 84
-              ceiling: 86
+            - low: 84
+              high: 86
               result: Toxic waste or pollution
               # suggestions: [*roll:Object]
-            - floor: 87
-              ceiling: 88
+            - low: 87
+              high: 88
               result: Volatile energy source
               # suggestions: [*roll:Object]
-            - floor: 89
-              ceiling: 90
+            - low: 89
+              high: 90
               result: Vulnerable lifeforms
               # suggestions: [*obj:Creature]
-            - floor: 91
-              ceiling: 100
+            - low: 91
+              high: 100
               result: *result:Action+Theme
         name:
           title:
@@ -554,345 +554,345 @@ starforged:
             tags: [name]
           table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
-            - floor: 1
-              ceiling: 1
+            - low: 1
+              high: 1
               result: Aegis
-            - floor: 2
-              ceiling: 2
+            - low: 2
+              high: 2
               result: Altair
               content: {part_of_speech: [proper noun]}
-            - floor: 3
-              ceiling: 3
+            - low: 3
+              high: 3
               result: Altura
               content: {part_of_speech: [proper noun]}
-            - floor: 4
-              ceiling: 4
+            - low: 4
+              high: 4
               result: Amity
-            - floor: 5
-              ceiling: 5
+            - low: 5
+              high: 5
               result: Apex
-            - floor: 6
-              ceiling: 6
+            - low: 6
+              high: 6
               result: Apogee
-            - floor: 7
-              ceiling: 7
+            - low: 7
+              high: 7
               result: Argosy
-            - floor: 8
-              ceiling: 8
+            - low: 8
+              high: 8
               result: Astra
               content: {part_of_speech: [proper noun]}
-            - floor: 9
-              ceiling: 9
+            - low: 9
+              high: 9
               result: Aurora
-            - floor: 10
-              ceiling: 10
+            - low: 10
+              high: 10
               result: Beacon
-            - floor: 11
-              ceiling: 11
+            - low: 11
+              high: 11
               result: Brink
-            - floor: 12
-              ceiling: 12
+            - low: 12
+              high: 12
               result: Bulwark
-            - floor: 13
-              ceiling: 13
+            - low: 13
+              high: 13
               result: Burnell
               content: {part_of_speech: [proper noun]}
-            - floor: 14
-              ceiling: 14
+            - low: 14
+              high: 14
               result: Burrow
-            - floor: 15
-              ceiling: 15
+            - low: 15
+              high: 15
               result: Concord
-            - floor: 16
-              ceiling: 16
+            - low: 16
+              high: 16
               result: Crux
-            - floor: 17
-              ceiling: 17
+            - low: 17
+              high: 17
               result: Deadrock
               content: {part_of_speech: [compound noun]}
-            - floor: 18
-              ceiling: 18
+            - low: 18
+              high: 18
               result: Deception
-            - floor: 19
-              ceiling: 19
+            - low: 19
+              high: 19
               result: Elysium
-            - floor: 20
-              ceiling: 20
+            - low: 20
+              high: 20
               result: Enigma
-            - floor: 21
-              ceiling: 21
+            - low: 21
+              high: 21
               result: Erebus
               content: {part_of_speech: [proper noun]}
-            - floor: 22
-              ceiling: 22
+            - low: 22
+              high: 22
               result: Eris
               content: {part_of_speech: [proper noun]}
-            - floor: 23
-              ceiling: 23
+            - low: 23
+              high: 23
               result: Evenfall
-            - floor: 24
-              ceiling: 24
+            - low: 24
+              high: 24
               result: Eventide
-            - floor: 25
-              ceiling: 25
+            - low: 25
+              high: 25
               result: Farpoint
               content: {part_of_speech: [compound noun]}
-            - floor: 26
-              ceiling: 26
+            - low: 26
+              high: 26
               result: Felicity
-            - floor: 27
-              ceiling: 27
+            - low: 27
+              high: 27
               result: Florin
               content: {part_of_speech: [proper noun]}
-            - floor: 28
-              ceiling: 28
+            - low: 28
+              high: 28
               result: Forlorn
-            - floor: 29
-              ceiling: 29
+            - low: 29
+              high: 29
               result: Forsaken
-            - floor: 30
-              ceiling: 30
+            - low: 30
+              high: 30
               result: Freya
               content: {part_of_speech: [proper noun]}
-            - floor: 31
-              ceiling: 31
+            - low: 31
+              high: 31
               result: Glimmer
-            - floor: 32
-              ceiling: 32
+            - low: 32
+              high: 32
               result: Gloam
-            - floor: 33
-              ceiling: 33
+            - low: 33
+              high: 33
               result: Hearth
-            - floor: 34
-              ceiling: 34
+            - low: 34
+              high: 34
               result: Helia
               content: {part_of_speech: [proper noun]}
-            - floor: 35
-              ceiling: 35
+            - low: 35
+              high: 35
               result: Hypatia
               content: {part_of_speech: [proper noun]}
-            - floor: 36
-              ceiling: 36
+            - low: 36
+              high: 36
               result: Hyperion
               content: {part_of_speech: [proper noun]}
-            - floor: 37
-              ceiling: 37
+            - low: 37
+              high: 37
               result: Janus
               content: {part_of_speech: [proper noun]}
-            - floor: 38
-              ceiling: 38
+            - low: 38
+              high: 38
               result: Karma
-            - floor: 39
-              ceiling: 39
+            - low: 39
+              high: 39
               result: Kepler
               content: {part_of_speech: [proper noun]}
-            - floor: 40
-              ceiling: 40
+            - low: 40
+              high: 40
               result: Koshiba
               content: {part_of_speech: [proper noun]}
-            - floor: 41
-              ceiling: 41
+            - low: 41
+              high: 41
               result: Lagrange
               content: {part_of_speech: [proper noun]}
-            - floor: 42
-              ceiling: 42
+            - low: 42
+              high: 42
               result: Larissa
               content: {part_of_speech: [proper noun]}
-            - floor: 43
-              ceiling: 43
+            - low: 43
+              high: 43
               result: Lasthope
               content: {part_of_speech: [compound noun]}
-            - floor: 44
-              ceiling: 44
+            - low: 44
+              high: 44
               result: Lastport
               content: {part_of_speech: [compound noun]}
-            - floor: 45
-              ceiling: 45
+            - low: 45
+              high: 45
               result: Legacy
-            - floor: 46
-              ceiling: 46
+            - low: 46
+              high: 46
               result: Lodestar
-            - floor: 47
-              ceiling: 47
+            - low: 47
+              high: 47
               result: Luminus
               content: {part_of_speech: [proper noun]}
-            - floor: 48
-              ceiling: 48
+            - low: 48
+              high: 48
               result: Lyra
               content: {part_of_speech: [proper noun]}
-            - floor: 49
-              ceiling: 49
+            - low: 49
+              high: 49
               result: Marrow
-            - floor: 50
-              ceiling: 50
+            - low: 50
+              high: 50
               result: Meridian
-            - floor: 51
-              ceiling: 51
+            - low: 51
+              high: 51
               result: Moirai
               content: {part_of_speech: [proper noun]}
-            - floor: 52
-              ceiling: 52
+            - low: 52
+              high: 52
               result: Mudd
               content: {part_of_speech: [proper noun]}
-            - floor: 53
-              ceiling: 53
+            - low: 53
+              high: 53
               result: Neoma
               content: {part_of_speech: [proper noun]}
-            - floor: 54
-              ceiling: 54
+            - low: 54
+              high: 54
               result: Nerio
               content: {part_of_speech: [proper noun]}
-            - floor: 55
-              ceiling: 55
+            - low: 55
+              high: 55
               result: Nova
-            - floor: 56
-              ceiling: 56
+            - low: 56
+              high: 56
               result: Nyx
               content: {part_of_speech: [proper noun]}
-            - floor: 57
-              ceiling: 57
+            - low: 57
+              high: 57
               result: Osseus
               content: {part_of_speech: [proper noun]}
-            - floor: 58
-              ceiling: 58
+            - low: 58
+              high: 58
               result: Paradox
-            - floor: 59
-              ceiling: 59
+            - low: 59
+              high: 59
               result: Paragon
-            - floor: 60
-              ceiling: 60
+            - low: 60
+              high: 60
               result: Paxton
               content: {part_of_speech: [proper noun]}
-            - floor: 61
-              ceiling: 61
+            - low: 61
+              high: 61
               result: Perchance
-            - floor: 62
-              ceiling: 62
+            - low: 62
+              high: 62
               result: Pinnacle
-            - floor: 63
-              ceiling: 63
+            - low: 63
+              high: 63
               result: Polaris
-            - floor: 64
-              ceiling: 64
+            - low: 64
+              high: 64
               result: Portent
-            - floor: 65
-              ceiling: 65
+            - low: 65
+              high: 65
               result: Prism
-            - floor: 66
-              ceiling: 66
+            - low: 66
+              high: 66
               result: Providence
-            - floor: 67
-              ceiling: 67
+            - low: 67
+              high: 67
               result: Purgatory
-            - floor: 68
-              ceiling: 68
+            - low: 68
+              high: 68
               result: Rampart
-            - floor: 69
-              ceiling: 69
+            - low: 69
+              high: 69
               result: Ramshackle
-            - floor: 70
-              ceiling: 70
+            - low: 70
+              high: 70
               result: Redemption
-            - floor: 71
-              ceiling: 71
+            - low: 71
+              high: 71
               result: Redhaven
               content: {part_of_speech: [compound noun]}
-            - floor: 72
-              ceiling: 72
+            - low: 72
+              high: 72
               result: Relic
-            - floor: 73
-              ceiling: 73
+            - low: 73
+              high: 73
               result: Reprise
-            - floor: 74
-              ceiling: 74
+            - low: 74
+              high: 74
               result: Reverie
-            - floor: 75
-              ceiling: 75
+            - low: 75
+              high: 75
               result: Rhiannon
               content: {part_of_speech: [proper noun]}
-            - floor: 76
-              ceiling: 76
+            - low: 76
+              high: 76
               result: Rockhome
-            - floor: 77
-              ceiling: 77
+            - low: 77
+              high: 77
               result: Rust
-            - floor: 78
-              ceiling: 78
+            - low: 78
+              high: 78
               result: Sagan
               content: {part_of_speech: [proper noun]}
-            - floor: 79
-              ceiling: 79
+            - low: 79
+              high: 79
               result: Sanctity
-            - floor: 80
-              ceiling: 80
+            - low: 80
+              high: 80
               result: Selena
               content: {part_of_speech: [proper noun]}
-            - floor: 81
-              ceiling: 81
+            - low: 81
+              high: 81
               result: Sepulcher
-            - floor: 82
-              ceiling: 82
+            - low: 82
+              high: 82
               result: Sigil
-            - floor: 83
-              ceiling: 83
+            - low: 83
+              high: 83
               result: Silvana
               content: {part_of_speech: [proper noun]}
-            - floor: 84
-              ceiling: 84
+            - low: 84
+              high: 84
               result: Sirius
               content: {part_of_speech: [proper noun]}
-            - floor: 85
-              ceiling: 85
+            - low: 85
+              high: 85
               result: Sisyphus
               content: {part_of_speech: [proper noun]}
-            - floor: 86
-              ceiling: 86
+            - low: 86
+              high: 86
               result: Solitude
-            - floor: 87
-              ceiling: 87
+            - low: 87
+              high: 87
               result: Spire
-            - floor: 88
-              ceiling: 88
+            - low: 88
+              high: 88
               result: Starfall
               content: {part_of_speech: [compound noun]}
-            - floor: 89
-              ceiling: 89
+            - low: 89
+              high: 89
               result: Summit
-            - floor: 90
-              ceiling: 90
+            - low: 90
+              high: 90
               result: Tranquility
-            - floor: 91
-              ceiling: 91
+            - low: 91
+              high: 91
               result: Tyson
               content: {part_of_speech: [proper noun]}
-            - floor: 92
-              ceiling: 92
+            - low: 92
+              high: 92
               result: Unity
-            - floor: 93
-              ceiling: 93
+            - low: 93
+              high: 93
               result: Utopia
-            - floor: 94
-              ceiling: 94
+            - low: 94
+              high: 94
               result: Vega
               content: {part_of_speech: [proper noun]}
-            - floor: 95
-              ceiling: 95
+            - low: 95
+              high: 95
               result: Vesper
-            - floor: 96
-              ceiling: 96
+            - low: 96
+              high: 96
               result: Wayward
-            - floor: 97
-              ceiling: 97
+            - low: 97
+              high: 97
               result: Welkin
-            - floor: 98
-              ceiling: 98
+            - low: 98
+              high: 98
               result: Wellspring
-            - floor: 99
-              ceiling: 99
+            - low: 99
+              high: 99
               result: Weyland
               content: {part_of_speech: [proper noun]}
-            - floor: 100
-              ceiling: 100
+            - low: 100
+              high: 100
               result: Wreck
 
 

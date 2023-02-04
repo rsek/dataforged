@@ -1,4 +1,4 @@
-import { type Localized, type Progress } from 'src/types'
+import { type Localize, type Progress } from 'src/types'
 import { type Cyclopedia } from 'src/types/abstract'
 
 // TODO
@@ -10,11 +10,11 @@ export type NatureClassic = string
 interface EncounterLike {
   rank: Progress.ChallengeRank
   nature: string
-  description: Localized.MarkdownParagraph
+  description: Localize.MarkdownParagraph
 }
 interface Encounter extends EncounterLike, Cyclopedia<string> {
-  drives: Localized.MarkdownPhrase[]
-  tactics: Localized.MarkdownPhrase[]
+  drives: Localize.MarkdownPhrase[]
+  tactics: Localize.MarkdownPhrase[]
 }
 // TODO: Might make more sense as an ExtendOne
 

@@ -49,11 +49,11 @@ starforged:
               usage:
                 requires: *attr:Location.Planetside
               table: &derelictTypeTable
-                - floor: 1
-                  ceiling: 25
+                - low: 1
+                  high: 25
                   result: Starship, *attr:DerelictType.Starship
-                - floor: 26
-                  ceiling: 100
+                - low: 26
+                  high: 100
                   result: Settlement, *attr:DerelictType.Settlement
             orbital:
               title:
@@ -114,43 +114,43 @@ starforged:
                   attributes:
                     derelict_type: [starship]
               table: &derelictZoneTable
-                - floor: null
-                  ceiling: null
+                - low: null
+                  high: null
                   result: "[⏵Access](starforged/oracles/derelicts/access)"
                   display: {icon: "img/vector/derelicts/access.svg"}
                   # game_objects: *obj:DerelictZone.Access
-                - floor: 1
-                  ceiling: 5
+                - low: 1
+                  high: 5
                   result: "[⏵Community](starforged/oracles/derelicts/community)"
                   display: {icon: "img/vector/derelicts/community.svg"}
                   # game_objects: *obj:DerelictZone.Community
-                - floor: 6
-                  ceiling: 30
+                - low: 6
+                  high: 30
                   result: "[⏵Engineering](starforged/oracles/derelicts/engineering)"
                   display: {icon: "img/vector/derelicts/engineering.svg"}
                   # game_objects: *obj:DerelictZone.Engineering
-                - floor: 31
-                  ceiling: 55
+                - low: 31
+                  high: 55
                   result: "[⏵Living](starforged/oracles/derelicts/living)"
                   display: {icon: "img/vector/derelicts/living.svg"}
                   # game_objects: *obj:DerelictZone.Living
-                - floor: 56
-                  ceiling: 65
+                - low: 56
+                  high: 65
                   result: "[⏵Medical](starforged/oracles/derelicts/medical)"
                   display: {icon: "img/vector/derelicts/medical.svg"}
                   # game_objects: *obj:DerelictZone.Medical
-                - floor: 66
-                  ceiling: 85
+                - low: 66
+                  high: 85
                   result: "[⏵Operations](starforged/oracles/derelicts/operations)"
                   display: {icon: "img/vector/derelicts/operations.svg"}
                   # game_objects: *obj:DerelictZone.Operations
-                - floor: 86
-                  ceiling: 90
+                - low: 86
+                  high: 90
                   result: "[⏵Production](starforged/oracles/derelicts/production)"
                   display: {icon: "img/vector/derelicts/production.svg"}
                   # game_objects: *obj:DerelictZone.Production
-                - floor: 91
-                  ceiling: 100
+                - low: 91
+                  high: 100
                   result: "[⏵Research](starforged/oracles/derelicts/research)"
                   display: {icon: "img/vector/derelicts/research.svg"}
                   # game_objects: *obj:DerelictZone.Research
@@ -197,23 +197,23 @@ starforged:
           content:
             part_of_speech: [fragment]
           table:
-            - floor: 1
-              ceiling: 10
+            - low: 1
+              high: 10
               result: Functional
-            - floor: 11
-              ceiling: 30
+            - low: 11
+              high: 30
               result: Limited power
-            - floor: 31
-              ceiling: 60
+            - low: 31
+              high: 60
               result: Cold and dark
-            - floor: 61
-              ceiling: 90
+            - low: 61
+              high: 90
               result: Damaged or breached
-            - floor: 91
-              ceiling: 98
+            - low: 91
+              high: 98
               result: Heavily damaged
-            - floor: 99
-              ceiling: 100
+            - low: 99
+              high: 100
               result: Impending destruction
         outer_first_look:
           title:
@@ -226,35 +226,35 @@ starforged:
             part_of_speech: [fragment]
             tags: [first look]
           table:
-            - floor: 1
-              ceiling: 15
+            - low: 1
+              high: 15
               result: Blocked access
-            - floor: 16
-              ceiling: 30
+            - low: 16
+              high: 30
               result: Corpses
-            - floor: 31
-              ceiling: 45
+            - low: 31
+              high: 45
               result: Hazardous readings
-            - floor: 46
-              ceiling: 50
+            - low: 46
+              high: 50
               result: Mutated structure
-            - floor: 51
-              ceiling: 60
+            - low: 51
+              high: 60
               result: Odd orientation
-            - floor: 61
-              ceiling: 65
+            - low: 61
+              high: 65
               result: Overgrown or entangled
-            - floor: 66
-              ceiling: 80
+            - low: 66
+              high: 80
               result: Sending a signal or message
-            - floor: 81
-              ceiling: 85
+            - low: 81
+              high: 85
               result: Signs that others are here
-            - floor: 86
-              ceiling: 95
+            - low: 86
+              high: 95
               result: Stripped exterior
-            - floor: 96
-              ceiling: 100
+            - low: 96
+              high: 100
               result: Time or reality distortions
         inner_first_look:
           title:
@@ -267,99 +267,99 @@ starforged:
           usage:
             max_rolls: 2
           table:
-            - floor: 1
-              ceiling: 3
+            - low: 1
+              high: 3
               result: Abnormal gravity
-            - floor: 4
-              ceiling: 6
+            - low: 4
+              high: 6
               result: Active bots
-            - floor: 7
-              ceiling: 9
+            - low: 7
+              high: 9
               result: Archaic equipment
-            - floor: 10
-              ceiling: 12
+            - low: 10
+              high: 12
               result: Automated announcements
-            - floor: 13
-              ceiling: 15
+            - low: 13
+              high: 15
               result: Biological infestation
-            - floor: 16
-              ceiling: 18
+            - low: 16
+              high: 18
               result: Charred surfaces
-            - floor: 19
-              ceiling: 21
+            - low: 19
+              high: 21
               result: Claw marks
-            - floor: 22
-              ceiling: 24
+            - low: 22
+              high: 24
               result: Cluttered with debris
-            - floor: 25
-              ceiling: 27
+            - low: 25
+              high: 27
               result: Corroded surfaces
-            - floor: 28
-              ceiling: 30
+            - low: 28
+              high: 30
               result: Cramped spaces
-            - floor: 31
-              ceiling: 33
+            - low: 31
+              high: 33
               result: Creaking hull
-            - floor: 34
-              ceiling: 36
+            - low: 34
+              high: 36
               result: Esoteric writing or symbols
-            - floor: 37
-              ceiling: 39
+            - low: 37
+              high: 39
               result: Evidence of new inhabitants
-            - floor: 40
-              ceiling: 42
+            - low: 40
+              high: 42
               result: Exposed wiring or conduits
-            - floor: 43
-              ceiling: 45
+            - low: 43
+              high: 45
               result: Flashing strobe lights
-            - floor: 46
-              ceiling: 48
+            - low: 46
+              high: 48
               result: Fluctuating power
-            - floor: 49
-              ceiling: 51
+            - low: 49
+              high: 51
               result: Haunting visions of the dead
-            - floor: 52
-              ceiling: 54
+            - low: 52
+              high: 54
               result: Hazardous temperature
-            - floor: 55
-              ceiling: 57
+            - low: 55
+              high: 57
               result: Heavy steam or moisture
-            - floor: 58
-              ceiling: 60
+            - low: 58
+              high: 60
               result: Littered with corpses
-            - floor: 61
-              ceiling: 63
+            - low: 61
+              high: 63
               result: Nesting or feeding creatures
-            - floor: 64
-              ceiling: 66
+            - low: 64
+              high: 66
               result: Ornate furnishings
-            - floor: 67
-              ceiling: 69
+            - low: 67
+              high: 69
               result: Scarred by gunfire
-            - floor: 70
-              ceiling: 72
+            - low: 70
+              high: 72
               result: Sealed against intruders
-            - floor: 73
-              ceiling: 75
+            - low: 73
+              high: 75
               result: Signs of looting or scavenging
-            - floor: 76
-              ceiling: 78
+            - low: 76
+              high: 78
               result: Smell of decay
-            - floor: 79
-              ceiling: 81
+            - low: 79
+              high: 81
               result: Splattered with blood
-            - floor: 82
-              ceiling: 84
+            - low: 82
+              high: 84
               result: Temporal distortions
-            - floor: 85
-              ceiling: 87
+            - low: 85
+              high: 87
               result: Thick haze or smoke
-            - floor: 88
-              ceiling: 90
+            - low: 88
+              high: 90
               result: Unstable energy surges
-            - floor: 91
-              ceiling: 93
+            - low: 91
+              high: 93
               result: Watchful AI
-            - floor: 94
-              ceiling: 100
+            - low: 94
+              high: 100
               result: *result:Descriptor+Focus

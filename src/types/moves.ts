@@ -3,7 +3,7 @@ import {
   type ProgressTypeClassic,
   type ProgressTypeStarforged
 } from 'src/types/progress'
-import type * as Localized from './localized'
+import type * as Localized from './localize'
 import type * as Metadata from './metadata'
 import type * as Player from './players'
 
