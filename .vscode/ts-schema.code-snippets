@@ -1,0 +1,32 @@
+{
+  "Schema file": {
+    "scope": "typescript",
+    "prefix": "simports",
+    "isFileTemplate": true,
+    "body": [
+      "import { type JSONSchemaType as Schema } from 'ajv'",
+      "import { type ${TM_FILENAME_BASE/(.*)/${1:/pascalCase}/} as Types } from 'src/types'",
+      "",
+      "$0"
+    ],
+    "description": "Initializes imports for a JSON schema written in typescript"
+  },
+  "Schema": {
+    "scope": "typescript",
+    "prefix": "schema",
+    "description": "Integer schema",
+    "body": [
+      "export const $1: Schema<Types.$1> = {",
+      "\ttype: '${2|string,object,integer,array|}',",
+      "\tdescription: '$3',",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Ref definition": {
+    "scope": "typescript",
+    "prefix": "ref",
+    "body": ["{ \\$ref: '#/\\$defs/$1' },$0"],
+    "description": "Reference to a schema definition"
+  }
+}

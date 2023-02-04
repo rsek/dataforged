@@ -1,0 +1,23 @@
+{
+  "env": {
+    "TS_NODE_PROJECT": "tsconfig.json"
+  },
+  "runtimeArgs": [
+    "-r",
+    "ts-node/register",
+    "--experimental-json-modules"
+  ],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/dist/start.js",
+      // "program": "${workspaceFolder}/index.json",
+      // "preLaunchTask": "${defaultBuildTask}",
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ]
+    }
+  ]
+}

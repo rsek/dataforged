@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "typedocOptions": {
+    "name": "Dataforged",
+    "entryPoints": [
+      "src/json_out/assets/index.ts",
+      "src/json_out/common/index.ts",
+      "src/json_out/cyclopedia/index.ts",
+      "src/json_out/game_objects/index.ts",
+      "src/json_out/meta/index.ts",
+      "src/json_out/moves/index.ts",
+      "src/json_out/oracles/index.ts",
+      "src/json_out/truths/index.ts"
+    ],
+    "excludeExternals": true,
+    "excludeInternal": true
+  },
+  "ts-node": {
+    "compiler": "ttypescript",
+    "require": [
+      "typescript-transform-paths/register"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "build",
+    "src/utils/md/**/*",
+    "src/**/*.d.ts",
+    "src/utils/**/*.js",
+    "src/utils/simulation/**/*",
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build",
+    "module": "ESNext",
+    "target": "esnext",
+    "lib": [
+      "es2020",
+      "es2021",
+      "esnext"
+    ],
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ],
+    "paths": {
+      "@constants": [
+        "src/constants/index",
+        "build/constants/index"
+      ],
+      "@constants/*": [
+        "src/constants/*",
+        "build/constants/*"
+      ],
+      "@schema": [
+        "src/schema/index",
+        "build/schema/index"
+      ],
+      "@schema/*": [
+        "src/schema/*",
+        "build/schema/*"
+      ],
+      "@utils": [
+        "src/utils/index",
+        "build/utils/index"
+      ],
+      "@utils/*": [
+        "src/utils/*",
+        "build/utils/*"
+      ],
+      "@builders": [
+        "src/builders/index",
+        "build/builders/index"
+      ],
+      "@builders/*": [
+        "src/builders/*",
+        "build/builders/*"
+      ],
+      "@game_objects": [
+        "src/game_objects/index",
+        "build/game_objects/index"
+      ],
+      "@game_objects/*": [
+        "src/game_objects/*",
+        "build/game_objects/*"
+      ]
+    },
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "allowUnreachableCode": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "preserveSymlinks": true,
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "useDefineForClassFields": false,
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ]
+  }
+}

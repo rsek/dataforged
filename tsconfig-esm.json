@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "./src/**/*.d.ts",
+    "./src/index.ts"
+  ],
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "es6",
+    "lib": [
+      "es2020",
+      "es2021",
+      "esnext"
+    ],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": false,
+    "declaration": false,
+    "allowSyntheticDefaultImports": true
+  },
+}
