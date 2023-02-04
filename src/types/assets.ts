@@ -1,8 +1,6 @@
 import { type Node } from 'src/types/abstract'
 
-export type ID = string
-export default interface Asset extends Node {
-  _id: ID
-}
+export type AssetID = string
+export interface Asset extends Node<AssetID> {}
 
 export interface Extend extends Partial<Asset> {}

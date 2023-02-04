@@ -1,10 +1,11 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Encounters as Types } from 'src/types'
 
-export const NatureStarforged: Schema<Types.EncounterNatureStarforged> = {
-  type: 'string',
-  examples: ['creature', 'horror', 'human', 'machine', 'monster', 'vehicle']
-}
+export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
+  {
+    type: 'string',
+    examples: ['creature', 'horror', 'human', 'machine', 'monster', 'vehicle']
+  }
 export const EncounterNatureClassic: Schema<Types.EncounterNatureClassic> = {
   type: 'string',
   examples: ['Ironlander', 'firstborn', 'animal', 'beast', 'horror', 'anomaly']
@@ -38,7 +39,7 @@ export const EncounterClassic: Schema<Types.EncounterClassic> = {
   ],
   properties: {
     name: { $ref: '#/$defs/Label' },
-    nature: { $ref: '#/$defs/NatureClassic' },
+    nature: { $ref: '#/$defs/EncounterNatureClassic' },
     rank: { $ref: '#/$defs/ChallengeRank' },
     features: {
       type: 'array',

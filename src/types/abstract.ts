@@ -33,18 +33,6 @@ export interface Cyclopedia<IDType> extends Node<IDType> {
   quest_starter?: Localized.MarkdownParagraph
 }
 
-export interface CollectionNode<T, IDType = Metadata.ID>
-  extends NodeLike<IDType> {
-  title: Metadata.Title
-  contents: Record<string, T>
-  summary?: Localized.MarkdownSentences
-}
-
-export interface RecursiveCollection<T, IDType = Metadata.ID>
-  extends CollectionNode<T, IDType> {
-  collections: Record<string, CollectionNode<T, IDType>>
-}
-
 type LocalizedKeys = 'name' | 'description' | 'summary' | 'text'
 type MetaKeys = '_id' | 'source' | 'title'
 

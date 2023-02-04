@@ -7,8 +7,8 @@ import type * as Localized from './localize'
 import type * as Metadata from './metadata'
 import type * as Player from './players'
 
-export type ID = string
-export default interface Move extends Node<ID> {
+export type MoveID = string
+export interface Move extends Node<MoveID> {
   name: Localized.Label
   source: Metadata.Source
   text: Localized.MarkdownParagraphs

@@ -28,7 +28,7 @@ export interface Title {
 
 export interface Suggestions {
   oracles?: Oracles.OracleTableID[]
-  assets?: Assets.ID[]
-  moves?: Moves.ID[]
+  assets?: Assets.AssetID[]
+  moves?: Moves.MoveID[]
   encounters?: Encounters.EncounterClassicID[]
 }
