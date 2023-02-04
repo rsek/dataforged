@@ -17,7 +17,7 @@ export const Oracle: Schema<Types.Oracle> = {
     _id: { $ref: '#/$defs/Oracle.ID' },
     table: {
       type: 'array',
-      items: { $ref: '#/$defs/Oracle.TableRow' }
+      items: { $ref: '#/$defs/Oracle.TableRow' } as any
     }
   }
 }
@@ -51,7 +51,7 @@ export const TableRowID: Schema<Types.TableRowID> = { type: 'string' }
 export const TableRow: Schema<Types.TableRow> = {
   type: 'object',
   description: 'Represents a row from an oracle table.',
-  required: ['_id', 'floor', 'ceiling', 'result'],
+  required: ['_id', 'low', 'high', 'result'],
   properties: {
     low: {
       description: "The low end of this row's range",
@@ -70,9 +70,8 @@ export const TableRow: Schema<Types.TableRow> = {
     embed_table: { $ref: '#/$defs/Oracle.TableRow.ID' },
     rolls: {
       type: 'array',
-      items: Roll,
-      nullable: true
-    },
+      items: { $ref: '#/$defs/Oracle.TableRoll' }
+    } as any,
     suggestions: { $ref: '#/$defs/Suggestions' },
     _id: { $ref: '#/$defs/Oracle.TableRow.ID' }
   }
