@@ -5,15 +5,15 @@
     "isFileTemplate": true,
     "body": [
       "import { type JSONSchemaType as Schema } from 'ajv'",
-      "import { type ${TM_FILENAME_BASE/(.*)/${1:/pascalCase}/} as Types } from 'src/types'",
+      "import { type ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} as Types } from 'src/types'",
       "",
       "$0"
     ],
     "description": "Initializes imports for a JSON schema written in typescript"
   },
-  "Schema": {
+  "Schema export": {
     "scope": "typescript",
-    "prefix": "schema",
+    "prefix": "sexport",
     "description": "Integer schema",
     "body": [
       "export const $1: Schema<Types.$1> = {",

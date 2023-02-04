@@ -1,7 +1,10 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Regions as Types } from 'src/types'
-export const ID: Schema<Types.ID> = {
-  type: 'string'
+
+export const RegionEntryID: Schema<Types.RegionEntryID> = {
+  type: 'string',
+  $comment: '{namespace}/regions/{region}'
+  // TODO: pattern
 }
 export const RegionEntry: Schema<Types.RegionEntry> = {
   type: 'object',

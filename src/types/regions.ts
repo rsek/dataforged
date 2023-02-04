@@ -1,7 +1,7 @@
 import { type Localize } from 'src/types'
 import { type Cyclopedia } from 'src/types/abstract'
 
-export interface RegionEntry extends Cyclopedia<ID> {
+export interface RegionEntry extends Cyclopedia<RegionEntryID> {
   quest_starter: Localize.MarkdownParagraph
 }
-export type ID = string
+export type RegionEntryID = string

@@ -58,7 +58,7 @@ export type OmitMetaAndLocale<T> = Omit<T, LocalizedKeys | MetaKeys>
  */
 export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
   _extends: T['_id']
-  _id?: Metadata.ID
+  _id: Metadata.ID
 }
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?
