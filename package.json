@@ -12,7 +12,6 @@
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "postinstall": "patch-package",
     "build:inputSchema": "ts-node ./src/scripts/build-input-schema && ts-node ./src/scripts/build-ts-types",
     "build:cjs": "tsc --project tsconfig-cjs.json",
     "build:esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
