@@ -16,8 +16,8 @@ export interface Source {
   page?: number
   authors: string[]
   date: string
-  license: string | null
   uri: string
+  license: string | null
 }
 
 export interface Title {

@@ -1,21 +1,32 @@
-import { type Collections, type Regions, type Metadata } from 'src/types'
-import { type EncounterStarforged } from 'src/types/encounters'
+import {
+  type Collections,
+  type Regions,
+  type Metadata,
+  type DelveSites,
+  type Rarities,
+  type Encounters
+} from 'src/types'
 
-interface Namespace<T extends Metadata.Ruleset> {
+interface Dataset<T extends Metadata.Ruleset> {
   _ruleset: T
-  moves?: Record<string, Collections.MoveCategory<T>>
-  assets?: Record<string, Collections.AssetType<T>>
+  // '_source' prop when in yaml format only
+  moves?: Record<string, Collections.MoveCategory>
+  assets?: Record<string, Collections.AssetType>
   oracles?: Record<string, Collections.OracleCollection>
 }
 
-export interface NamespaceStarforged extends Namespace<'starforged'> {
-  encounters?: Record<string, EncounterStarforged>
+export interface Dataforged extends Dataset<'starforged'> {
+  moves?: Record<string, Collections.MoveCategoryStarforged>
+  assets?: Record<string, Collections.AssetTypeStarforged>
+  encounters?: Record<string, Encounters.EncounterStarforged>
 }
-export interface NamespaceClassic extends Namespace<'classic'> {
+export interface Datasworn extends Dataset<'classic'> {
+  moves?: Record<string, Collections.MoveCategoryClassic>
+  assets?: Record<string, Collections.AssetTypeClassic>
   regions?: Record<string, Regions.RegionEntry>
-  encounters?: Record<string, Collections.EncounterCollection>
-  rarities?: Record<string, object>
-  delve_sites?: Record<string, object>
-  site_themes?: Record<string, object>
-  site_domains?: Record<string, object>
+  encounters?: Record<string, Collections.EncounterCollectionClassic>
+  rarities?: Record<string, Rarities.Rarity>
+  delve_sites?: Record<string, DelveSites.DelveSite>
+  site_themes?: Record<string, DelveSites.DelveSiteTheme>
+  site_domains?: Record<string, DelveSites.DelveSiteDomain>
 }

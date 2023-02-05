@@ -1,4 +1,4 @@
-_game: classic
+_ruleset: classic
 ironsworn:
   asset_types:
     companion:
@@ -66,7 +66,6 @@ ironsworn:
               text: |-
                 When you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) or [Strike](ironsworn/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.
               alter_moves:
-
                 - _moves:
                     - ironsworn/moves/combat/enter_the_fray
                     - ironsworn/moves/combat/strike
@@ -83,7 +82,6 @@ ironsworn:
               text: |-
                 When you [Make Camp](ironsworn/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
               alter_moves:
-
                 - _moves: [ironsworn/moves/adventure/make_camp]
                   text: Your cat is alert to trouble.
                   outcomes:
@@ -129,14 +127,13 @@ ironsworn:
                         roll_type: action_roll
                   text: Add +1.
                   outcomes: &outcomes:+1_momentum.HIT
-                      strong_hit: &outcome:+1_momentum
-                        text: Take +1 momentum.
-                      weak_hit: *outcome:+1_momentum
+                    strong_hit: &outcome:+1_momentum
+                      text: Take +1 momentum.
+                    weak_hit: *outcome:+1_momentum
             - name: Soul-Piercing
               text: |-
                 You may [Face Danger](ironsworn/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](ironsworn/moves/adventure/gather_information) and reroll any dice.
               alter_moves:
-
                 - _moves: [ironsworn/moves/adventure/face_danger]
                   trigger:
                     options:
@@ -194,7 +191,6 @@ ironsworn:
               text: |-
                 When you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), or when you [Resupply](ironsworn/moves/adventure/resupply) by hunting for small game, add +1.
               alter_moves:
-
                 - _moves: [ironsworn/moves/adventure/undertake_a_journey]
                   text: Add +1.
                 - _moves: [ironsworn/moves/adventure/resupply]
@@ -208,7 +204,6 @@ ironsworn:
               text: |-
                 When you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
               alter_moves:
-
                 - _moves: [ironsworn/moves/adventure/secure_an_advantage]
                   trigger:
                     options:
@@ -266,7 +261,6 @@ ironsworn:
               text: |-
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), add +1.
               alter_moves:
-
                 - _moves: [ironsworn/moves/adventure/undertake_a_journey]
                   text: Add +1.
                 - _moves: [ironsworn/moves/adventure/face_danger]
@@ -281,7 +275,6 @@ ironsworn:
               text: |-
                 When you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) or [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.
               alter_moves:
-
                 - _moves:
                     - ironsworn/moves/combat/enter_the_fray
                     - ironsworn/moves/adventure/secure_an_advantage
@@ -297,7 +290,6 @@ ironsworn:
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) or [Clash](ironsworn/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
               alter_moves:
-
                 - _moves:
                     - ironsworn/moves/combat/strike
                     - ironsworn/moves/combat/clash
@@ -423,7 +415,6 @@ ironsworn:
               text: |-
                 When you [Clash](ironsworn/moves/combat/clash) or [Battle](ironsworn/moves/combat/battle) alongside your companion, or when you [Face Danger](ironsworn/moves/adventure/face_danger) against an attack by standing together, add +1.
               alter_moves:
-
                 - _moves:
                     - ironsworn/moves/combat/clash
                     - ironsworn/moves/combat/battle

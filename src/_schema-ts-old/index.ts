@@ -11,38 +11,39 @@ import metadata from './metadata'
 import move from './move'
 import progressTrack from './progress-track'
 import truth from './truth'
-import { NamespaceClassic, NamespaceStarforged } from './namespace'
+import { DataswornCollection, NamespaceStarforged } from './namespace'
 
-const dataforged:JSONSchema7 = {
-  $comment: "Don't edit this by hand -- use the files in ./src/schema-ts instead.",
-  title: "Dataforged",
-    required: ['_game'],
-    properties: {
-      _game: { const: 'starforged' }
-    },
-      additionalProperties: false,
+const dataforged: JSONSchema7 = {
+  $comment:
+    "Don't edit this by hand -- use the files in ./src/schema-ts instead.",
+  title: 'Dataforged',
+  required: ['_ruleset'],
+  properties: {
+    _ruleset: { const: 'starforged' }
+  },
+  additionalProperties: false,
 
-    patternProperties: {
-      [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/$defs/NamespaceStarforged'
-      }
+  patternProperties: {
+    [`^${IdPattern.namespaceFragment.source}$`]: {
+      $ref: '#/$defs/NamespaceStarforged'
     }
   }
+}
 
-const datasworn:JSONSchema7 =   {
-    title: "Datasworn",
-    required: ['_game'],
-    properties: {
-      _game: { const: 'classic' }
-    },
-      additionalProperties: false,
+const datasworn: JSONSchema7 = {
+  title: 'Datasworn',
+  required: ['_ruleset'],
+  properties: {
+    _ruleset: { const: 'classic' }
+  },
+  additionalProperties: false,
 
-    patternProperties: {
-      [`^${IdPattern.namespaceFragment.source}$`]: {
-        $ref: '#/$defs/NamespaceClassic'
-      }
+  patternProperties: {
+    [`^${IdPattern.namespaceFragment.source}$`]: {
+      $ref: '#/$defs/NamespaceClassic'
     }
   }
+}
 
 const schema: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
@@ -61,14 +62,10 @@ const schema: JSONSchema7 = {
     ...progressTrack,
     ...truth,
     // ...gameObject,
-    NamespaceClassic,
+    NamespaceClassic: DataswornCollection,
     NamespaceStarforged
-
   },
-  oneOf: [
-    datasworn,
-    dataforged
-  ]
+  oneOf: [datasworn, dataforged]
 }
 
 export default schema

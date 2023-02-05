@@ -2,7 +2,8 @@ import type * as Types from 'src/types/metadata'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const ID: Schema<Types.ID> = {
-  type: 'string'
+  type: 'string',
+  $comment: '{namespace}/{element}/{*}'
 }
 
 export const Icon: Schema<Types.Icon> = {

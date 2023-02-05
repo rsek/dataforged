@@ -1,10 +1,10 @@
-_game: starforged
+_ruleset: starforged
 starforged:
   asset_types:
     command_vehicle:
       _id: starforged/assets/command_vehicle
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 55
         authors:
@@ -12,7 +12,7 @@ starforged:
       title:
         canonical: Command vehicle
       display:
-        color: "#9aa3ad"
+        color: '#9aa3ad'
       usage:
         shared: true
       # Summary: This is your interstellar spacecraft.
@@ -28,8 +28,8 @@ starforged:
             asset_types: [starforged/assets/module]
             max: null
           attributes:
-            name: &InputTextName
-              # TODO: need to provide unique IDs for everything now, sigh
+            name:
+              &InputTextName # TODO: need to provide unique IDs for everything now, sigh
               _id: starforged/assets/command_vehicle/starship/attributes/name
               label: Name
               attribute_type: text
@@ -81,12 +81,12 @@ starforged:
                         using: [player/stats/heart]
                   outcomes:
                     weak_hit: &Starship.3
-                      text: "[Endure Stress](starforged/moves/suffer/endure_stress) (-1)."
+                      text: '[Endure Stress](starforged/moves/suffer/endure_stress) (-1).'
                     miss: *Starship.3
     module:
       _id: starforged/assets/module
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 55
         authors:
@@ -95,7 +95,7 @@ starforged:
         canonical: Modules
         standard: Module
       display:
-        color: "#7f5a90"
+        color: '#7f5a90'
       usage:
         shared: true
       # Summary: Enhanced features or capabilities of your STARSHIP. As with the ship itself, these are shared assets; a module’s abilities can benefit other player characters if it’s reasonable for them to make use of it.
@@ -192,8 +192,7 @@ starforged:
           # states:
           #   - *Broken
           abilities:
-            -
-              # TODO: when you gain [condition meter] trigger?
+            - # TODO: when you gain [condition meter] trigger?
               # alternately: could happen with some kind of tag system?
               # the suffer trigger is fairly easy to hit, i guess
               text: |-
@@ -631,7 +630,7 @@ starforged:
                         text: Take +2 momentum as you surge through the chaos and put yourself in perfect position.
                     weak_hit: *outcome:+1_momentum
                     miss:
-                      text: "[Pay the Price](starforged/moves/fate/pay_the_price) by marking this component as broken."
+                      text: '[Pay the Price](starforged/moves/fate/pay_the_price) by marking this component as broken.'
         research_lab:
           _id: starforged/assets/module/research_lab
           name: Research Lab
@@ -1057,7 +1056,7 @@ starforged:
     support_vehicle:
       _id: starforged/assets/support_vehicle
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 56
         authors:
@@ -1066,7 +1065,7 @@ starforged:
         canonical: Support vehicles
         standard: Support vehicle
       display:
-        color: "#495790"
+        color: '#495790'
       usage:
         shared: true
       # Summary: Secondary vehicles that your starship can carry and launch. If you are playing with others, these are a shared asset with abilities available to any character aboard that vehicle. The person who selects a support vehicle might typically serve as the pilot or manage the asset.
@@ -1453,7 +1452,7 @@ starforged:
     path:
       _id: starforged/assets/path
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 56
         authors:
@@ -1462,7 +1461,7 @@ starforged:
         canonical: Paths
         standard: Path
       display:
-        color: "#3f7faa"
+        color: '#3f7faa'
       # Summary: Background aspects, careers, interests, training, and skills.
       description: |-
         **Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.
@@ -1627,9 +1626,9 @@ starforged:
             - text: |-
                 When you must [Endure Harm](starforged/moves/suffer/endure_harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](starforged/moves/recover/repair) and spend 5 repair points to bring it back to working condition.
               # alter:
-                # properties:
-                  # states:
-                  #   - *Broken
+              # properties:
+              # states:
+              #   - *Broken
               alter_moves:
                 - _moves:
                     - starforged/moves/suffer/endure_harm
@@ -1748,14 +1747,14 @@ starforged:
             - text: |-
                 You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.
               # alter:
-                # properties:
-                #   states:
-                #     # TODO: adjust/annotate AlterProperties interface to clarify that array items should be concatenated
-                #     - name: broken (augment 2)
-                #       enabled: false
-                #       disables_asset: false
-                #       impact: false
-                #       permanent: false
+              # properties:
+              #   states:
+              #     # TODO: adjust/annotate AlterProperties interface to clarify that array items should be concatenated
+              #     - name: broken (augment 2)
+              #       enabled: false
+              #       disables_asset: false
+              #       impact: false
+              #       permanent: false
             - text: |-
                 When you must [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death), you may instead mark an augment as broken. [Repair](starforged/moves/recover/repair) it as detailed above.
               alter_moves:
@@ -2010,7 +2009,7 @@ starforged:
                       - text: Aggressively
                         method: inherit
                         roll_type: action_roll
-                  text: "[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2)."
+                  text: '[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).'
                   outcomes:
                     weak_hit:
                       count_as: strong_hit
@@ -2022,7 +2021,7 @@ starforged:
                       - text: Defensively
                         method: inherit
                         roll_type: action_roll
-                  text: "[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2)."
+                  text: '[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).'
                   outcomes:
                     miss:
                       count_as: weak_hit
@@ -2130,7 +2129,7 @@ starforged:
                       - text: To attack, destroy, or sabotage by deploying or triggering an explosive device
                         method: inherit
                         roll_type: action_roll
-                  text: "Choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss."
+                  text: 'Choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.'
             - text: |-
                 When you make a move to craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device, add +1 and take +1 momentum on a hit.
               alter_moves:
@@ -2755,7 +2754,7 @@ starforged:
                       match: &outcome:bonds_1_tick
                         text: Mark 1 tick on your bonds legacy track.
                     weak_hit:
-                      text: "[Endure Stress](starforged/moves/suffer/endure_stress) (-1)."
+                      text: '[Endure Stress](starforged/moves/suffer/endure_stress) (-1).'
             - text: |-
                 When you [Face Death](starforged/moves/threshold/face_death) guided by the spirit, add +1. On a strong hit, envision what you learn from them or about them, and mark 2 ticks on your bonds legacy track.
               alter_moves:
@@ -3440,7 +3439,8 @@ starforged:
                   trigger:
                     options:
                       - method: highest
-                        using: [player/stats/wits, player/condition_meters/supply]
+                        using:
+                          [player/stats/wits, player/condition_meters/supply]
                         roll_type: action_roll
                   outcomes: *outcomes:+1_momentum.HIT
         scoundrel:
@@ -3801,7 +3801,7 @@ starforged:
                         using: [player/condition_meters/supply]
                   outcomes:
                     strong_hit: &Trader.1
-                      text: "[Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1)."
+                      text: '[Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).'
                     weak_hit: *Trader.1
                     miss: *Trader.1
               enabled: true
@@ -3943,7 +3943,7 @@ starforged:
                           you_have_a_history: you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](starforged/moves/connection/develop_your_relationship) now.
                     miss:
                       match:
-                        text: "You have a history: You once fought against them, and they hold a grudge."
+                        text: 'You have a history: You once fought against them, and they hold a grudge.'
             - text: |-
                 When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) or [Gain Ground](starforged/moves/combat/gain_ground) by recounting or recalling a hard-won lesson from your battlefield experiences, envision the memory and add +1. On a hit, take +1 momentum.
               alter_moves:
@@ -4055,7 +4055,7 @@ starforged:
                     weak_hit:
                       text: Mark progress, then [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).
                     miss:
-                      text: "[Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1)."
+                      text: '[Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).'
             - text: |-
                 When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by suiting up and gathering your gear for a perilous encounter or mission, you may roll +supply. If you do, take +2 momentum on a hit.
               alter_moves:
@@ -4072,7 +4072,7 @@ starforged:
     companion:
       _id: starforged/assets/companion
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 57
         authors:
@@ -4081,7 +4081,7 @@ starforged:
         canonical: Companions
         standard: Companion
       display:
-        color: "#3d8b8a"
+        color: '#3d8b8a'
       # Summary: NPC helpers, including alien creatures and robots.
       description: |-
         **Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.
@@ -4758,7 +4758,7 @@ starforged:
     deed:
       _id: starforged/assets/deed
       source:
-        title: "Ironsworn: Starforged Rulebook"
+        title: 'Ironsworn: Starforged Rulebook'
         license: https://creativecommons.org/licenses/by-nc-sa/4.0
         page: 57
         authors:
@@ -4767,7 +4767,7 @@ starforged:
         canonical: Deeds
         standard: Deed
       display:
-        color: "#40834f"
+        color: '#40834f'
       # Summary: Represent the notable achievement and situations of your story, and how those events change your character.
       description: |-
         **Deeds** represent the notable achievement and situations of your story, and how those events change your character.

@@ -22,16 +22,21 @@ export interface RecursiveCollection<T, IDType = Metadata.ID>
 
 export type OracleCollectionID = string
 export interface OracleCollection
-  extends RecursiveCollection<Oracles.Oracle, OracleCollectionID> {}
+  extends RecursiveCollection<Oracles.OracleTable, OracleCollectionID> {}
 
 export type AssetTypeID = string
-export interface AssetType<T extends Metadata.Ruleset>
-  extends Collection<Assets.Asset<T>> {}
+export interface AssetTypeStarforged
+  extends Collection<Assets.AssetStarforged> {}
+export interface AssetTypeClassic extends Collection<Assets.AssetClassic> {}
+export type AssetType = AssetTypeStarforged | AssetTypeClassic
 
 export type MoveCategoryID = string
-export interface MoveCategory<T extends Metadata.Ruleset>
-  extends Collection<Moves.Move<T>, MoveCategoryID> {}
+export interface MoveCategoryStarforged
+  extends Collection<Moves.MoveStarforged, MoveCategoryID> {}
+export interface MoveCategoryClassic
+  extends Collection<Moves.MoveClassic, MoveCategoryID> {}
+export type MoveCategory = MoveCategoryStarforged | MoveCategoryClassic
 
 export type EncounterCollectionID = string
-export interface EncounterCollection
+export interface EncounterCollectionClassic
   extends Collection<Encounters.EncounterClassic, EncounterCollectionID> {}

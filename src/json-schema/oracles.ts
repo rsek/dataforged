@@ -3,11 +3,11 @@ import { type Oracles as Types } from 'src/types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
   type: 'string',
-  $comment: '{namespace}/oracles/{...collection}/{oracle}'
+  $comment: '{namespace}/oracles/{*}/{oracle}'
   // TODO
 }
 
-export const OracleTable: Schema<Types.Oracle> = {
+export const OracleTable: Schema<Types.OracleTable> = {
   type: 'object',
   required: ['_id', 'name', 'source', 'table'],
   properties: {
@@ -51,9 +51,12 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
   }
 }
 
-export const TableRowID: Schema<Types.TableRowID> = { type: 'string' }
+export const TableRowID: Schema<Types.OracleTableRowID> = {
+  type: 'string',
+  $comment: '{namespace}/oracles/{*}/{oracle}/{low}-{high}'
+}
 
-export const TableRow: Schema<Types.TableRow> = {
+export const TableRow: Schema<Types.OracleTableRow> = {
   type: 'object',
   description: 'Represents a row from an oracle table.',
   required: ['_id', 'low', 'high', 'result'],

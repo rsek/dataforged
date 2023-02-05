@@ -9,9 +9,12 @@ import type * as Metadata from 'src/types/metadata'
  * A number range, for things shaped like rollable table rows.
  * @internal
  */
-export interface Range {
-  low: number | null
-  high: number | null
+export interface Range<
+  Low extends number | null = number | null,
+  High extends number | null = number | null
+> {
+  low: Low
+  high: High
 }
 
 /**

@@ -19,11 +19,11 @@ export const MarkdownSentences: Schema<Types.MarkdownSentences> = {
 export const MarkdownParagraph: Schema<Types.MarkdownParagraph> = {
   type: 'string',
   description:
-    'Localized markdown text, usually one paragraph. It may included ordered or unordered lists.'
+    'Localized markdown text, usually one paragraph. This may included ordered or unordered lists.'
 }
 
 export const MarkdownParagraphs: Schema<Types.MarkdownParagraphs> = {
   type: 'string',
   description:
-    'Localized markdown text, usually multiple paragraphs. They may include ordered or unordered lists.'
+    'Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists.'
 }

@@ -5,18 +5,20 @@ import { dfRecordSchema } from './utils'
 /**
  * Schemas common to both classic Ironsworn and Starforged.
  */
-const NamespaceBase: JSONSchema7 = {
+const DataCollectionBase: JSONSchema7 = {
   additionalProperties: false,
+  required: ['_source'],
   properties: {
+    _source: { $ref: '#/$defs/Source' },
     assets: dfRecordSchema('AssetCollection'),
     moves: dfRecordSchema('MoveCollection'),
     oracles: dfRecordSchema('OracleCollection')
   }
 }
 
-export const NamespaceClassic: JSONSchema7 = merge(NamespaceBase, {
+export const DataswornCollection: JSONSchema7 = merge(DataCollectionBase, {
   properties: {
-    _game: { const: 'classic' },
+    _ruleset: { const: 'classic' },
     world_truths: dfRecordSchema('WorldTruthClassic', 'WorldTruthsClassic'),
     encounters: dfRecordSchema('Encounter'),
     regions: dfRecordSchema('RegionEntry', 'Regions'),
@@ -27,10 +29,13 @@ export const NamespaceClassic: JSONSchema7 = merge(NamespaceBase, {
   }
 })
 
-export const NamespaceStarforged: JSONSchema7 = merge(NamespaceBase, {
+export const NamespaceStarforged: JSONSchema7 = merge(DataCollectionBase, {
   properties: {
-    _game: { const: 'starforged' },
+    _ruleset: { const: 'starforged' },
     encounters: dfRecordSchema('EncounterStarforged', 'EncountersStarforged'),
-    setting_truths: dfRecordSchema('SettingTruthStarforged', 'SettingTruthsStarforged')
+    setting_truths: dfRecordSchema(
+      'SettingTruthStarforged',
+      'SettingTruthsStarforged'
+    )
   }
 })
