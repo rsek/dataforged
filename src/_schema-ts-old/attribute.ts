@@ -4,10 +4,7 @@ import { DF_KEY } from './id'
 const $defs: Record<string, JSONSchema7> = {
   CustomStat: {
     type: 'object',
-    required: [
-      'label',
-      'options'
-    ],
+    required: ['label', 'options'],
     properties: {
       label: {
         $ref: '#/$defs/LocalizedLabel'
@@ -19,16 +16,14 @@ const $defs: Record<string, JSONSchema7> = {
           [DF_KEY]: {
             title: 'CustomStatOption',
             type: 'object',
-            required: [
-              'label',
-              'value'
-            ],
+            required: ['label', 'value'],
             properties: {
               label: {
                 $ref: '#/$defs/LocalizedLabel'
               },
               value: {
-                description: 'The numeric value to be used as +stat when making an Action Roll.',
+                description:
+                  'The numeric value to be used as +stat when making an Action Roll.',
                 type: 'integer',
                 minimum: 0
               }
@@ -80,12 +75,7 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/AttributeNumericBase'
       },
       {
-        required: [
-          'attribute_type',
-          'min',
-          'value',
-          'max'
-        ],
+        required: ['attribute_type', 'min', 'value', 'max'],
         properties: {
           attribute_type: {
             const: 'clock'
@@ -145,18 +135,14 @@ const $defs: Record<string, JSONSchema7> = {
     ]
   },
   AttributePlayerConditionMeter: {
-    description: 'A select element with predefined options to pick a standard player character condition meter.',
+    description:
+      'A select element with predefined options to pick a standard player character condition meter.',
     allOf: [
       {
         $ref: '#/$defs/AttributeBase'
       },
       {
-        required: [
-          'attribute_type',
-          'value',
-          'options',
-          'position'
-        ],
+        required: ['attribute_type', 'value', 'options', 'position'],
         properties: {
           attribute_type: {
             const: 'player_condition_meter'
@@ -165,13 +151,14 @@ const $defs: Record<string, JSONSchema7> = {
             default: 'card-top'
           },
           value: {
-            description: "The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
+            description:
+              "The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
             oneOf: [
               {
                 type: 'null'
               },
               {
-                $ref: '#/$defs/PlayerConditionMeter.ID'
+                $ref: '#/$defs/PlayerConditionMeterID'
               }
             ],
             default: null
@@ -186,7 +173,7 @@ const $defs: Record<string, JSONSchema7> = {
                     $ref: '#/$defs/LocalizedLabel'
                   },
                   value: {
-                    $ref: '#/$defs/PlayerConditionMeter.ID'
+                    $ref: '#/$defs/PlayerConditionMeterID'
                   }
                 }
               }
@@ -197,17 +184,14 @@ const $defs: Record<string, JSONSchema7> = {
     ]
   },
   AttributeText: {
-    description: "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
+    description:
+      "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
     allOf: [
       {
         $ref: '#/$defs/AttributeBase'
       },
       {
-        required: [
-          'attribute_type',
-          'position',
-          'value'
-        ],
+        required: ['attribute_type', 'position', 'value'],
         properties: {
           attribute_type: {
             const: 'text'
@@ -216,10 +200,7 @@ const $defs: Record<string, JSONSchema7> = {
             default: 'card-top'
           },
           value: {
-            type: [
-              'null',
-              'string'
-            ],
+            type: ['null', 'string'],
             default: null
           }
         }
@@ -227,18 +208,14 @@ const $defs: Record<string, JSONSchema7> = {
     ]
   },
   AttributePlayerStat: {
-    description: 'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
+    description:
+      'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
     allOf: [
       {
         $ref: '#/$defs/AttributeBase'
       },
       {
-        required: [
-          'attribute_type',
-          'position',
-          'value',
-          'options'
-        ],
+        required: ['attribute_type', 'position', 'value', 'options'],
         properties: {
           attribute_type: {
             const: 'player_stat'
@@ -252,7 +229,7 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'null'
               },
               {
-                $ref: '#/$defs/PlayerStat.ID'
+                $ref: '#/$defs/PlayerStatID'
               }
             ],
             default: null
@@ -267,7 +244,7 @@ const $defs: Record<string, JSONSchema7> = {
                     $ref: '#/$defs/LocalizedLabel'
                   },
                   value: {
-                    $ref: '#/$defs/PlayerStat.ID'
+                    $ref: '#/$defs/PlayerStatID'
                   }
                 }
               }
@@ -279,21 +256,17 @@ const $defs: Record<string, JSONSchema7> = {
   },
   AttributeSetter: {
     propertyNames: {
-      $ref: '#/$defs/Attribute.ID'
+      $ref: '#/$defs/AttributeID'
     },
     patternProperties: {
       '^.*$': {
-        $ref: '#/$defs/PlayerStat.ID'
+        $ref: '#/$defs/PlayerStatID'
       }
     }
   },
   AttributeNumericType: {
     type: 'string',
-    enum: [
-      'condition_meter',
-      'clock',
-      'counter'
-    ]
+    enum: ['condition_meter', 'clock', 'counter']
   },
   AttributeCounter: {
     allOf: [
@@ -310,10 +283,7 @@ const $defs: Record<string, JSONSchema7> = {
             default: 0
           },
           max: {
-            type: [
-              'null',
-              'integer'
-            ],
+            type: ['null', 'integer'],
             default: null
           },
           value: {
@@ -325,19 +295,15 @@ const $defs: Record<string, JSONSchema7> = {
     ]
   },
   AttributeNumericBase: {
-    description: "Schema from which other numeric attributes are derived. Shouldn't be used directly.",
+    description:
+      "Schema from which other numeric attributes are derived. Shouldn't be used directly.",
     type: 'object',
     allOf: [
       {
         $ref: '#/$defs/AttributeBase'
       },
       {
-        required: [
-          'min',
-          'max',
-          'value',
-          'attribute_type'
-        ],
+        required: ['min', 'max', 'value', 'attribute_type'],
         properties: {
           attribute_type: {
             $ref: '#/$defs/AttributeNumericType'
@@ -346,16 +312,10 @@ const $defs: Record<string, JSONSchema7> = {
             type: 'integer'
           },
           max: {
-            type: [
-              'integer',
-              'null'
-            ]
+            type: ['integer', 'null']
           },
           value: {
-            type: [
-              'integer',
-              'null'
-            ]
+            type: ['integer', 'null']
           }
         }
       }
@@ -365,12 +325,10 @@ const $defs: Record<string, JSONSchema7> = {
     description: 'Adjusts an existing numeric input, usually a condition meter',
     type: 'object',
     additionalProperties: false,
-    required: [
-      '_extends'
-    ],
+    required: ['_extends'],
     properties: {
       _extends: {
-        $ref: '#/$defs/Attribute.ID'
+        $ref: '#/$defs/AttributeID'
       },
       min: {
         type: 'integer'
@@ -389,9 +347,7 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/AttributeBase'
       },
       {
-        required: [
-          'attribute_type'
-        ],
+        required: ['attribute_type'],
         properties: {
           attribute_type: {
             const: 'impact'
@@ -402,14 +358,10 @@ const $defs: Record<string, JSONSchema7> = {
   },
   AttributeBase: {
     type: 'object',
-    required: [
-      'attribute_type',
-      'position',
-      'label'
-    ],
+    required: ['attribute_type', 'position', 'label'],
     properties: {
       _id: {
-        $ref: '#/$defs/Attribute.ID'
+        $ref: '#/$defs/AttributeID'
       },
       label: {
         $ref: '#/$defs/LocalizedLabel'
@@ -424,12 +376,7 @@ const $defs: Record<string, JSONSchema7> = {
           },
           {
             type: 'string',
-            enum: [
-              'player_stat',
-              'player_condition_meter',
-              'impact',
-              'text'
-            ]
+            enum: ['player_stat', 'player_condition_meter', 'impact', 'text']
           }
         ]
       }

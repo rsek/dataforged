@@ -8,27 +8,22 @@ const MOMENTUM_RESET_MIN = 0
 const STAT_MIN = 0
 const STAT_MAX = 4
 
-const
-  PlayerExtension: JSONSchema7 = {
-    title: 'PlayerExtension',
-    description: 'Alters an attribute intrinsic to the player, such as a stat or condition meter.',
-    type: 'object'
-  }
+const PlayerExtension: JSONSchema7 = {
+  title: 'PlayerExtension',
+  description:
+    'Alters an attribute intrinsic to the player, such as a stat or condition meter.',
+  type: 'object'
+}
 
 const $defs: Record<string, JSONSchema7> = {
-
   PlayerConditionMeterName: {
-    enum: [
-      'health',
-      'spirit',
-      'supply'
-    ]
+    enum: ['health', 'spirit', 'supply']
   },
   PlayerStat: {
     type: 'object',
     properties: {
       _id: {
-        $ref: '#/$defs/PlayerStat.ID'
+        $ref: '#/$defs/PlayerStatID'
       },
       value: {
         type: 'integer',

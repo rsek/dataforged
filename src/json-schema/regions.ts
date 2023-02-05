@@ -20,7 +20,7 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
     '_id'
   ],
   properties: {
-    _id: { $ref: '#/$defs/RegionEntry.ID' },
+    _id: { $ref: '#/$defs/RegionEntryID' },
     name: { $ref: '#/$defs/Label' },
     summary: { $ref: '#/$defs/MarkdownSentences' },
     description: { $ref: '#/$defs/MarkdownParagraphs' },

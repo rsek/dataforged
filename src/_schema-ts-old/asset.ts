@@ -5,7 +5,8 @@ export const AssetAbilityBase: JSONSchema7 = {
   type: 'object',
   properties: {
     name: {
-      description: 'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
+      description:
+        'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
       $ref: '#/$defs/LocalizedLabel'
     },
     text: {
@@ -13,8 +14,10 @@ export const AssetAbilityBase: JSONSchema7 = {
       $ref: '#/$defs/LocalizedMarkdown'
     },
     attachments: {
-      description: 'Details on what attachments (other assets) are accepted by this asset.',
-      $comment: '#/$defs/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
+      description:
+        'Details on what attachments (other assets) are accepted by this asset.',
+      $comment:
+        '#/$defs/AssetAttachment ... consider rewriting as an attribute? Could attachments be managed with e.g. a regex?'
     },
     attributes: {
       patternProperties: {
@@ -40,7 +43,6 @@ export const AssetAbilityBase: JSONSchema7 = {
                   $ref: '#/$defs/AttributeClock'
                 }
               ]
-
             }
           ]
         }
@@ -65,10 +67,11 @@ export const AssetAbilityBase: JSONSchema7 = {
       $ref: '#/$defs/PlayerExtension'
     },
     _id: {
-      $ref: '#/$defs/AssetAbility.ID'
+      $ref: '#/$defs/AssetAbilityID'
     },
     enabled: {
-      description: "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
+      description:
+        "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
       type: 'boolean',
       default: false
     }
@@ -82,9 +85,7 @@ export const AssetAbility: JSONSchema7 = {
       $ref: '#/$defs/AssetAbilityBase'
     },
     {
-      required: [
-        'text'
-      ],
+      required: ['text'],
       properties: {
         alter_moves: {
           type: 'array',
@@ -106,19 +107,18 @@ export const AssetAbility: JSONSchema7 = {
   ]
 }
 export const AssetAbilityExtension: JSONSchema7 = {
-  description: "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
+  description:
+    "Describes an upgrade to another asset ability. If a given property is omitted, assume it's the same as the original ability.",
   allOf: [
     {
       $ref: '#/$defs/AssetAbilityBase'
     },
     {
-      required: [
-        '_ability'
-      ],
+      required: ['_ability'],
       properties: {
         _ability: {
           description: 'The ID of the asset ability to be extended.',
-          $ref: '#/$defs/AssetAbility.ID'
+          $ref: '#/$defs/AssetAbilityID'
         }
       }
     }
@@ -157,14 +157,16 @@ export const Asset: JSONSchema7 = {
       ]
     },
     requirement: {
-      description: 'A markdown string representing the requirement text that appears at the top of some asset cards.',
+      description:
+        'A markdown string representing the requirement text that appears at the top of some asset cards.',
       $ref: '#/$defs/LocalizedMarkdown'
     },
     source: {
       $ref: '#/$defs/Source'
     },
     attachments: {
-      description: 'Details on what attachments (other assets) are accepted by this asset.',
+      description:
+        'Details on what attachments (other assets) are accepted by this asset.',
       $comment: '#/$defs/AssetAttachment'
     },
     tags: {
@@ -183,17 +185,13 @@ export const Asset: JSONSchema7 = {
     },
     usage: {
       $comment: '#/$defs/AssetUsage',
-      description: "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
+      description:
+        "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
     }
   },
-  required: [
-    'abilities',
-    'name'
-  ],
+  required: ['abilities', 'name'],
   not: {
-    required: [
-      'inputs'
-    ],
+    required: ['inputs'],
     properties: {
       inputs: {
         type: 'object'
@@ -210,7 +208,7 @@ export const AssetExtension: JSONSchema7 = {
     assets: {
       type: 'array',
       items: {
-        $ref: '#/$defs/Asset.ID'
+        $ref: '#/$defs/AssetID'
       }
     }
   }
@@ -218,72 +216,65 @@ export const AssetExtension: JSONSchema7 = {
 export const AssetCollection: JSONSchema7 = {
   title: 'AssetCollection',
   type: 'object',
-  allOf: [{
-    title: 'AssetCollection',
-    type: 'object',
-    allOf: [
-      {
-        $ref: '#/$defs/CategoryMetadata'
-      },
-      {
-        required: [
-          'assets',
-          'description',
-          'title'
-        ],
-        properties: {
-          assets: {
-            type: 'object',
-            additionalProperties: false,
-            patternProperties: {
-              [DF_KEY]: {
-                $ref: '#/$defs/Asset'
+  allOf: [
+    {
+      title: 'AssetCollection',
+      type: 'object',
+      allOf: [
+        {
+          $ref: '#/$defs/CategoryMetadata'
+        },
+        {
+          required: ['assets', 'description', 'title'],
+          properties: {
+            assets: {
+              type: 'object',
+              additionalProperties: false,
+              patternProperties: {
+                [DF_KEY]: {
+                  $ref: '#/$defs/Asset'
+                }
               }
+            },
+            description: {
+              $ref: '#/$defs/Description'
+            },
+            source: {
+              $ref: '#/$defs/Source'
+            },
+            title: {
+              $ref: '#/$defs/Title'
             }
-          },
-          description: {
-            $ref: '#/$defs/Description'
-          },
-          source: {
-            $ref: '#/$defs/Source'
-          },
-          title: {
-            $ref: '#/$defs/Title'
           }
         }
-      }
-    ]
-  },
-  {
-    $ref: '#/$defs/CategoryMetadata'
-  },
-  {
-    required: [
-      'assets',
-      'description',
-      'title'
-    ],
-    properties: {
-      assets: {
-        type: 'object',
-        additionalProperties: false,
-        patternProperties: {
-          [DF_KEY]: {
-            $ref: '#/$defs/Asset'
+      ]
+    },
+    {
+      $ref: '#/$defs/CategoryMetadata'
+    },
+    {
+      required: ['assets', 'description', 'title'],
+      properties: {
+        assets: {
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: {
+              $ref: '#/$defs/Asset'
+            }
           }
+        },
+        description: {
+          $ref: '#/$defs/Description'
+        },
+        source: {
+          $ref: '#/$defs/Source'
+        },
+        title: {
+          $ref: '#/$defs/Title'
         }
-      },
-      description: {
-        $ref: '#/$defs/Description'
-      },
-      source: {
-        $ref: '#/$defs/Source'
-      },
-      title: {
-        $ref: '#/$defs/Title'
       }
     }
-  }
   ]
 }
 
@@ -292,10 +283,7 @@ export const AssetCollectionExtension: JSONSchema7 = {
   description: 'Extends a canonical asset type with additional assets.',
   type: 'object',
   additionalProperties: false,
-  required: [
-    '_extends',
-    'assets'
-  ],
+  required: ['_extends', 'assets'],
   properties: {
     _extends: {
       type: 'string',
@@ -347,7 +335,8 @@ const $defs: Record<string, JSONSchema7> = {
   AssetCollectionExtension,
   AssetCollections,
   ConditionMeterAlias: {
-    description: 'Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.',
+    description:
+      'Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.',
     enum: [
       'companion_health',
       'vehicle_integrity',
@@ -360,7 +349,7 @@ const $defs: Record<string, JSONSchema7> = {
   ConditionMeterType: {
     oneOf: [
       {
-        $ref: '#/$defs/PlayerConditionMeter.ID'
+        $ref: '#/$defs/PlayerConditionMeterID'
       },
       {
         $ref: '#/$defs/ConditionMeterAlias'

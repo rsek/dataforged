@@ -85,7 +85,7 @@ export const OracleTableRoll: JSONSchema7 = {
   required: ['table'],
   properties: {
     table: {
-      $ref: '#/$defs/OracleTable.ID'
+      $ref: '#/$defs/OracleTableID'
     },
     times: {
       description: 'The number of times to roll',
@@ -127,7 +127,7 @@ export const OracleTableRowRenderMetadata: JSONSchema7 = {
       description:
         'The ID of another oracle table, which should be rendered *within* this table row.',
       // TODO: point to an example in the Ironsworn rulebook
-      $ref: '#/$defs/OracleTable.ID'
+      $ref: '#/$defs/OracleTableID'
     }
   }
 }

@@ -29,16 +29,26 @@ Derelict Zone: &template:Zone
           Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
       _templateTableRows:
         rolls: &template.rolls:Zone.Area
-          - [1, 8]
-          - [9, 16]
-          - [17, 24]
-          - [25, 32]
-          - [33, 40]
-          - [41, 48]
-          - [49, 56]
-          - [57, 64]
-          - [65, 72]
-          - [73, 80]
+          - low: 1
+            high: 8
+          - low: 9
+            high: 16
+          - low: 17
+            high: 24
+          - low: 25
+            high: 32
+          - low: 33
+            high: 40
+          - low: 41
+            high: 48
+          - low: 49
+            high: 56
+          - low: 57
+            high: 64
+          - low: 65
+            high: 72
+          - low: 73
+            high: 80
           - low: 81
             high: 85
             result: New zone
@@ -59,17 +69,28 @@ Derelict Zone: &template:Zone
           Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
       _templateTableRows:
         rolls: &template.rolls:Zone.Feature
-          - [1, 8]
-          - [9, 16]
-          - [17, 24]
-          - [25, 32]
-          - [33, 40]
-          - [41, 48]
-          - [49, 56]
-          - [57, 64]
-          - [65, 72]
-          - [73, 80]
-          - [81, 88]
+          - low: 1
+            high: 8
+          - low: 9
+            high: 16
+          - low: 17
+            high: 24
+          - low: 25
+            high: 32
+          - low: 33
+            high: 40
+          - low: 41
+            high: 48
+          - low: 49
+            high: 56
+          - low: 57
+            high: 64
+          - low: 65
+            high: 72
+          - low: 73
+            high: 80
+          - low: 81
+            high: 88
           - low: 89
             high: 100
             result: *result:Descriptor+Focus
@@ -85,15 +106,24 @@ Derelict Zone: &template:Zone
           Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
       _templateTableRows:
         rolls: &template.rolls:Zone.Peril
-          - [1, 10]
-          - [11, 20]
-          - [21, 30]
-          - [31, 40]
-          - [41, 50]
-          - [51, 60]
-          - [61, 70]
-          - [71, 80]
-          - [81, 90]
+          - low: 1
+            high: 10
+          - low: 11
+            high: 20
+          - low: 21
+            high: 30
+          - low: 31
+            high: 40
+          - low: 41
+            high: 50
+          - low: 51
+            high: 60
+          - low: 61
+            high: 70
+          - low: 71
+            high: 80
+          - low: 81
+            high: 90
           - low: 91
             high: 98
             result: *result:Action+Theme
@@ -111,8 +141,13 @@ Derelict Zone: &template:Zone
         summary: |-
           Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
         rolls: &template.rolls:Zone.Opportunity
-          - [1, 20]
-          - [21, 40]
-          - [41, 60]
-          - [61, 80]
-          - [81, 100]
+          - low: 1
+            high: 20
+          - low: 21
+            high: 40
+          - low: 41
+            high: 60
+          - low: 61
+            high: 80
+          - low: 81
+            high: 100

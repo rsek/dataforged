@@ -15,10 +15,10 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/ChallengeRank'
       },
       theme: {
-        $ref: '#/$defs/DelveSiteTheme.ID'
+        $ref: '#/$defs/DelveSiteThemeID'
       },
       domain: {
-        $ref: '#/$defs/DelveSiteDomain.ID'
+        $ref: '#/$defs/DelveSiteDomainID'
       },
       denizens: {
         type: 'array',
@@ -199,7 +199,7 @@ const $defs: Record<string, JSONSchema7> = {
     required: ['name', 'asset', 'source', 'xp_cost', 'description'],
     properties: {
       _id: {
-        $ref: '#/$defs/Rarity.ID'
+        $ref: '#/$defs/RarityID'
       },
       name: {
         $ref: '#/$defs/LocalizedLabel'
@@ -208,7 +208,7 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/Icon'
       },
       asset: {
-        $ref: '#/$defs/Asset.ID'
+        $ref: '#/$defs/AssetID'
       },
       source: {
         $ref: '#/$defs/Source'
@@ -247,7 +247,7 @@ const $defs: Record<string, JSONSchema7> = {
             default: null,
             oneOf: [
               {
-                $ref: '#/$defs/EncounterClassic.ID'
+                $ref: '#/$defs/EncounterClassicID'
               },
               {
                 type: 'null'

@@ -73,12 +73,12 @@ export const Suggestions: Schema<Types.Suggestions> = {
   description: 'TODO',
   type: 'object',
   properties: {
-    assets: { type: 'array', items: { $ref: '#/$defs/Asset.ID' } } as any,
-    moves: { type: 'array', items: { $ref: '#/$defs/Move.ID' } } as any,
-    oracles: { type: 'array', items: { $ref: '#/$defs/Oracle.ID' } } as any,
+    assets: { type: 'array', items: { $ref: '#/$defs/AssetID' } } as any,
+    moves: { type: 'array', items: { $ref: '#/$defs/MoveID' } } as any,
+    oracles: { type: 'array', items: { $ref: '#/$defs/OracleID' } } as any,
     encounters: {
       type: 'array',
-      items: { $ref: '#/$defs/Encounter.ID' }
+      items: { $ref: '#/$defs/EncounterID' }
     } as any
   }
 }
