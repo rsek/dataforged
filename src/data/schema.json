@@ -2,12 +2,14 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Schema definitions used for Datasworn and Dataforged (v2+).",
   "$defs": {
-    "Impact.ID": {
+    "ImpactID": {
       "$comment": "{namespace}/impacts/{impactType}/{impact}",
-      "type": "string",
-      "pattern": "^$"
+      "type": "string"
     },
-    "PlayerConditionMeter.ID": {
+    "MarkdownSentences": {
+      "type": "string"
+    },
+    "PlayerConditionMeterID": {
       "description": "A standard player character condition meter.",
       "enum": [
         "player/condition_meters/health",
@@ -15,7 +17,7 @@
         "player/condition_meters/supply"
       ]
     },
-    "PlayerStat.ID": {
+    "PlayerStatID": {
       "description": "A standard player character stat.",
       "enum": [
         "player/stats/edge",
@@ -25,120 +27,95 @@
         "player/stats/wits"
       ]
     },
-    "AssetAbility.ID": {
-      "type": "string",
-      "pattern": "^$"
+    "AssetAbilityID": {
+      "type": "string"
     },
-    "Move.ID": {
+    "MoveID": {
       "anyOf": [
         {
-          "$ref": "#/$defs/CoreMove.ID"
+          "$ref": "#/$defs/CoreMoveID"
         },
         {
-          "$ref": "#/$defs/AssetMove.ID"
+          "$ref": "#/$defs/AssetMoveID"
         }
       ]
     },
     "DataforgedNamespace": {
-      "type": "string",
-      "pattern": "^$"
+      "type": "string"
     },
     "ID": {
       "type": "string",
-      "pattern": "^/[a-z0-9][a-z0-9_]*[a-z0-9]/(/[a-z0-9][a-z0-9_]*[a-z0-9])+$",
+      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9](/[a-z0-9][a-z0-9_]*[a-z0-9])+$",
       "description": "A unique, human-readable ID."
     },
-    "MoveCollection.ID": {
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+    "MoveCollectionID": {
+      "$ref": "#/$defs/ID"
     },
-    "CoreMove.ID": {
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+    "CoreMoveID": {
+      "$ref": "#/$defs/ID"
     },
-    "AssetCollection.ID": {
+    "AssetCollectionID": {
       "$comment": "{namespace}/assets/{assetType}",
+      "$ref": "#/$defs/ID"
+    },
+    "AssetID": {
       "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$comment": "{namespace}/assets/{assetType}/{asset}"
     },
-    "Asset.ID": {
+    "AssetMoveID": {
       "$ref": "#/$defs/ID",
-      "$comment": "{namespace}/assets/{assetType}/{asset}",
-      "pattern": "^$"
+      "$comment": "{namespace}/assets/{assetType}/{asset}/moves/{assetMove}"
     },
-    "AssetMove.ID": {
-      "$ref": "#/$defs/ID",
-      "$comment": "{namespace}/assets/{assetType}/{asset}/moves/{assetMove}",
-      "pattern": "^$"
+    "DelveSiteThemeID": {
+      "$comment": "{namespace}/site_themes/{siteTheme}"
     },
-    "DelveSiteTheme.ID": {
-      "$comment": "{namespace}/site_themes/{siteTheme}",
-      "pattern": "^$"
-    },
-    "DelveSiteDomain.ID": {
+    "DelveSiteDomainID": {
       "$comment": "{namespace}/site_domains/{siteDomain}",
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$ref": "#/$defs/ID"
     },
-    "IronlandsRegion.ID": {
+    "IronlandsRegionID": {
       "$ref": "#/$defs/ID",
-      "$comment": "{namespace}/regions/{region}",
-      "pattern": "^$"
+      "$comment": "{namespace}/regions/{region}"
     },
-    "OracleCollection.ID": {
+    "OracleCollectionID": {
       "$ref": "#/$defs/ID",
       "$comment": "{namespace}/oracles/{oracleSet}"
     },
-    "OracleTable.ID": {
+    "OracleTableID": {
       "$ref": "#/$defs/ID",
       "$comment": "{namespace}/oracles/{oracleSet}/{oracle}",
-      "pattern": "^/[a-z0-9][a-z0-9_]*[a-z0-9]//oracles(//[a-z][a-z_]*[a-z]/){2,}$"
+      "pattern": "^[a-z0-9][a-z0-9_]*[a-z0-9]//oracles(//[a-z][a-z_]*[a-z]/){2,}$"
     },
-    "EncounterNatureClassic.ID": {
+    "EncounterNatureClassicID": {
       "$comment": "{namespace}/encounters/{nature}"
     },
-    "EncounterClassic.ID": {
+    "EncounterClassicID": {
       "$comment": "{namespace}/encounters/{nature}/{encounter}",
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$ref": "#/$defs/ID"
     },
-    "EncounterVariantStarforged.ID": {
+    "EncounterVariantStarforgedID": {
       "$comment": "{namespace}/encounters/{encounter}/variants/{variant}",
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$ref": "#/$defs/ID"
     },
-    "EncounterStarforged.ID": {
+    "EncounterStarforgedID": {
       "$comment": "{namespace}/encounters/{encounter}",
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$ref": "#/$defs/ID"
     },
-    "Rarity.ID": {
+    "RarityID": {
       "$comment": "{namespace}/rarities/{rarity}",
-      "$ref": "#/$defs/ID",
-      "pattern": "^$"
+      "$ref": "#/$defs/ID"
     },
-    "Attribute.ID": {
+    "AttributeID": {
       "$ref": "#/$defs/ID",
       "$comment": "\n      {namespace}/assets/{key}/{key}/attributes/{key}\n        *or*\n      {namespace}/assets/{key}/{key}/moves/{key}/attributes/{key}\n        *or*\n      {namespace}/moves/{key}/{key}/attributes/{key}\n      ",
-      "pattern": "/(assets/[a-z_]+/[a-z_]+(/moves/[a-z_]+)?|moves/[a-z_]+/[a-z_]+)/attributes/[a-z_]+$",
-      "anyOf": [
-        {
-          "pattern": "^$"
-        },
-        {
-          "pattern": "^$"
-        },
-        {
-          "pattern": "^$"
-        }
-      ]
+      "pattern": "/(assets/[a-z_]+/[a-z_]+(/moves/[a-z_]+)?|moves/[a-z_]+/[a-z_]+)/attributes/[a-z_]+$"
     },
     "AssetAbilityBase": {
       "type": "object",
       "properties": {
         "name": {
           "description": "Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.",
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "text": {
           "description": "The rules text for this asset ability.",
@@ -195,7 +172,7 @@
           "$ref": "#/$defs/PlayerExtension"
         },
         "_id": {
-          "$ref": "#/$defs/AssetAbility.ID"
+          "$ref": "#/$defs/AssetAbilityID"
         },
         "enabled": {
           "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
@@ -248,7 +225,7 @@
           "properties": {
             "_ability": {
               "description": "The ID of the asset ability to be extended.",
-              "$ref": "#/$defs/AssetAbility.ID"
+              "$ref": "#/$defs/AssetAbilityID"
             }
           }
         }
@@ -269,7 +246,7 @@
           }
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "abilities": {
           "type": "array",
@@ -336,10 +313,10 @@
       "description": "Extends/alters existing assets data",
       "type": "object",
       "properties": {
-        "assets": {
+        "contents": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/Asset.ID"
+            "$ref": "#/$defs/AssetID"
           }
         }
       }
@@ -357,12 +334,12 @@
             },
             {
               "required": [
-                "assets",
+                "contents",
                 "description",
                 "title"
               ],
               "properties": {
-                "assets": {
+                "contents": {
                   "type": "object",
                   "additionalProperties": false,
                   "patternProperties": {
@@ -389,12 +366,12 @@
         },
         {
           "required": [
-            "assets",
+            "contents",
             "description",
             "title"
           ],
           "properties": {
-            "assets": {
+            "contents": {
               "type": "object",
               "additionalProperties": false,
               "patternProperties": {
@@ -423,7 +400,7 @@
       "additionalProperties": false,
       "required": [
         "_extends",
-        "assets"
+        "contents"
       ],
       "properties": {
         "_extends": {
@@ -442,7 +419,7 @@
             "starforged/assets/deed"
           ]
         },
-        "assets": {
+        "contents": {
           "type": "object",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
@@ -482,7 +459,7 @@
     "ConditionMeterType": {
       "oneOf": [
         {
-          "$ref": "#/$defs/PlayerConditionMeter.ID"
+          "$ref": "#/$defs/PlayerConditionMeterID"
         },
         {
           "$ref": "#/$defs/ConditionMeterAlias"
@@ -517,7 +494,7 @@
       ],
       "properties": {
         "table": {
-          "$ref": "#/$defs/OracleTable.ID"
+          "$ref": "#/$defs/OracleTableID"
         },
         "times": {
           "description": "The number of times to roll",
@@ -590,7 +567,7 @@
           "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
           "oneOf": [
             {
-              "$ref": "#/$defs/Summary"
+              "$ref": "#/$defs/MarkdownSentences"
             },
             {
               "type": "null"
@@ -639,7 +616,7 @@
           "$ref": "#/$defs/Source"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -753,7 +730,7 @@
           "$ref": "#/$defs/Source"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -901,7 +878,7 @@
       "type": "object",
       "properties": {
         "_id": {
-          "$ref": "#/$defs/PlayerStat.ID"
+          "$ref": "#/$defs/PlayerStatID"
         },
         "value": {
           "type": "integer",
@@ -971,7 +948,7 @@
       ],
       "properties": {
         "label": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "options": {
           "title": "CustomStatOptions",
@@ -986,7 +963,7 @@
               ],
               "properties": {
                 "label": {
-                  "$ref": "#/$defs/LocalizedLabel"
+                  "$ref": "#/$defs/Label"
                 },
                 "value": {
                   "description": "The numeric value to be used as +stat when making an Action Roll.",
@@ -1084,7 +1061,7 @@
           ],
           "properties": {
             "label": {
-              "$ref": "#/$defs/LocalizedLabel"
+              "$ref": "#/$defs/Label"
             },
             "position": {
               "const": "card-bottom"
@@ -1132,7 +1109,7 @@
                   "type": "null"
                 },
                 {
-                  "$ref": "#/$defs/PlayerConditionMeter.ID"
+                  "$ref": "#/$defs/PlayerConditionMeterID"
                 }
               ],
               "default": null
@@ -1144,10 +1121,10 @@
                   "type": "object",
                   "properties": {
                     "label": {
-                      "$ref": "#/$defs/LocalizedLabel"
+                      "$ref": "#/$defs/Label"
                     },
                     "value": {
-                      "$ref": "#/$defs/PlayerConditionMeter.ID"
+                      "$ref": "#/$defs/PlayerConditionMeterID"
                     }
                   }
                 }
@@ -1213,7 +1190,7 @@
                   "type": "null"
                 },
                 {
-                  "$ref": "#/$defs/PlayerStat.ID"
+                  "$ref": "#/$defs/PlayerStatID"
                 }
               ],
               "default": null
@@ -1225,10 +1202,10 @@
                   "type": "object",
                   "properties": {
                     "label": {
-                      "$ref": "#/$defs/LocalizedLabel"
+                      "$ref": "#/$defs/Label"
                     },
                     "value": {
-                      "$ref": "#/$defs/PlayerStat.ID"
+                      "$ref": "#/$defs/PlayerStatID"
                     }
                   }
                 }
@@ -1240,11 +1217,11 @@
     },
     "AttributeSetter": {
       "propertyNames": {
-        "$ref": "#/$defs/Attribute.ID"
+        "$ref": "#/$defs/AttributeID"
       },
       "patternProperties": {
         "^.*$": {
-          "$ref": "#/$defs/PlayerStat.ID"
+          "$ref": "#/$defs/PlayerStatID"
         }
       }
     },
@@ -1331,7 +1308,7 @@
       ],
       "properties": {
         "_extends": {
-          "$ref": "#/$defs/Attribute.ID"
+          "$ref": "#/$defs/AttributeID"
         },
         "min": {
           "type": "integer"
@@ -1370,10 +1347,10 @@
       ],
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Attribute.ID"
+          "$ref": "#/$defs/AttributeID"
         },
         "label": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "position": {
           "$ref": "#/$defs/InputPosition"
@@ -1409,7 +1386,7 @@
           "$ref": "#/$defs/ID"
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -1418,7 +1395,7 @@
           "$ref": "#/$defs/Tags"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -1472,7 +1449,7 @@
           "$ref": "#/$defs/ChallengeRank"
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -1495,7 +1472,7 @@
           "$ref": "#/$defs/ID"
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -1504,7 +1481,7 @@
           "$ref": "#/$defs/Tags"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -1628,7 +1605,7 @@
       "title": "EncounterNatureClassic",
       "properties": {
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "nature": {
           "$ref": "#/$defs/EncounterTypeClassic"
@@ -1647,7 +1624,7 @@
       ],
       "properties": {
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -1656,10 +1633,10 @@
           "$ref": "#/$defs/ChallengeRank"
         },
         "theme": {
-          "$ref": "#/$defs/DelveSiteTheme.ID"
+          "$ref": "#/$defs/DelveSiteThemeID"
         },
         "domain": {
-          "$ref": "#/$defs/DelveSiteDomain.ID"
+          "$ref": "#/$defs/DelveSiteDomainID"
         },
         "denizens": {
           "type": "array",
@@ -1674,7 +1651,7 @@
               "items": [
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "very_common"
                     },
                     "low": {
@@ -1687,7 +1664,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "common"
                     },
                     "low": {
@@ -1700,7 +1677,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "common"
                     },
                     "low": {
@@ -1713,7 +1690,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "common"
                     },
                     "low": {
@@ -1726,7 +1703,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "uncommon"
                     },
                     "low": {
@@ -1739,7 +1716,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "uncommon"
                     },
                     "low": {
@@ -1752,7 +1729,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "uncommon"
                     },
                     "low": {
@@ -1765,7 +1742,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "uncommon"
                     },
                     "low": {
@@ -1778,7 +1755,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "rare"
                     },
                     "low": {
@@ -1791,7 +1768,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "rare"
                     },
                     "low": {
@@ -1804,7 +1781,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "rare"
                     },
                     "low": {
@@ -1817,7 +1794,7 @@
                 },
                 {
                   "properties": {
-                    "rarity": {
+                    "frequency": {
                       "const": "unforeseen"
                     },
                     "low": {
@@ -1846,16 +1823,16 @@
       ],
       "properties": {
         "_id": {
-          "$ref": "#/$defs/Rarity.ID"
+          "$ref": "#/$defs/RarityID"
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "icon": {
           "$ref": "#/$defs/Icon"
         },
         "asset": {
-          "$ref": "#/$defs/Asset.ID"
+          "$ref": "#/$defs/AssetID"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -1887,22 +1864,22 @@
         },
         {
           "required": [
-            "rarity",
+            "frequency",
             "encounter"
           ],
           "properties": {
             "name": {
               "description": "A name for the encounter, if it differs from the original entry's default name.",
-              "$ref": "#/$defs/LocalizedLabel"
+              "$ref": "#/$defs/Label"
             },
-            "rarity": {
+            "frequency": {
               "$ref": "#/$defs/DelveSiteDenizenRarity"
             },
             "encounter": {
               "default": null,
               "oneOf": [
                 {
-                  "$ref": "#/$defs/EncounterClassic.ID"
+                  "$ref": "#/$defs/EncounterClassicID"
                 },
                 {
                   "type": "null"
@@ -1926,13 +1903,13 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "card_type": {
           "$ref": "#/$defs/DelveCardType"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -2314,7 +2291,7 @@
       "description": "A localizable string of plain text.",
       "type": "string"
     },
-    "LocalizedLabel": {
+    "Label": {
       "$ref": "#/$defs/Localizable",
       "description": "A localizable string of plain text used to provide a player-facing label for this element."
     },
@@ -2355,7 +2332,7 @@
           "$ref": "#/$defs/Source"
         },
         "summary": {
-          "$ref": "#/$defs/Summary"
+          "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/Description"
@@ -2412,15 +2389,15 @@
         },
         "canonical": {
           "description": "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "short": {
           "description": "The shortest title for this item that remains distinct amongst its siblings.\n\n Unless you're very pressed for space, most UX should use {@link Title.standard} instead.",
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "standard": {
           "description": "The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like \"Oracle 15\" in some classic Ironsworn oracles (because *nobody* remembers it as \"Oracle 15\").",
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         }
       }
     },
@@ -2518,31 +2495,31 @@
         "rolls": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/OracleTable.ID"
+            "$ref": "#/$defs/OracleTableID"
           }
         },
         "regions": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/IronlandsRegion.ID"
+            "$ref": "#/$defs/IronlandsRegionID"
           }
         },
         "assets": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/Asset.ID"
+            "$ref": "#/$defs/AssetID"
           }
         },
         "site_themes": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/DelveSiteTheme.ID"
+            "$ref": "#/$defs/DelveSiteThemeID"
           }
         },
         "site_domains": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/DelveSiteDomain.ID"
+            "$ref": "#/$defs/DelveSiteDomainID"
           }
         }
       }
@@ -2593,12 +2570,12 @@
             "null"
           ],
           "items": {
-            "$ref": "#/$defs/Move.ID"
+            "$ref": "#/$defs/MoveID"
           },
           "default": null
         },
         "trigger": {
-          "$ref": "#/$defs/MoveTrigger"
+          "$ref": "#/$defs/Trigger"
         }
       }
     },
@@ -2639,10 +2616,10 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "trigger": {
-          "$ref": "#/$defs/MoveTrigger"
+          "$ref": "#/$defs/Trigger"
         },
         "attributes": {
           "type": "object",
@@ -2663,7 +2640,7 @@
         },
         "asset": {
           "description": "The ID of the parent Asset of the move, if any.",
-          "$ref": "#/$defs/Asset.ID"
+          "$ref": "#/$defs/AssetID"
         },
         "progress_move": {
           "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
@@ -2671,13 +2648,13 @@
         },
         "variant_of": {
           "description": "The ID of the move that this move is a variant of, if any.",
-          "$ref": "#/$defs/Move.ID"
+          "$ref": "#/$defs/MoveID"
         },
         "oracles": {
           "description": "The ID of any oracles directly referenced by the move, or vice versa.",
           "type": "array",
           "items": {
-            "$ref": "#/$defs/OracleTable.ID"
+            "$ref": "#/$defs/OracleTableID"
           }
         },
         "optional": {
@@ -2694,17 +2671,17 @@
         },
         "category": {
           "description": "The ID of the move's category.",
-          "$ref": "#/$defs/MoveCollection.ID"
+          "$ref": "#/$defs/MoveCollectionID"
         },
         "source": {
           "$ref": "#/$defs/Source"
         }
       }
     },
-    "MoveTriggerOptionAction": {
+    "TriggerOptionAction": {
       "allOf": [
         {
-          "$ref": "#/$defs/MoveTriggerOption"
+          "$ref": "#/$defs/TriggerOption"
         },
         {
           "properties": {
@@ -2713,16 +2690,16 @@
               "items": {
                 "anyOf": [
                   {
-                    "$ref": "#/$defs/PlayerStat.ID"
+                    "$ref": "#/$defs/PlayerStatID"
                   },
                   {
-                    "$ref": "#/$defs/PlayerConditionMeter.ID"
+                    "$ref": "#/$defs/PlayerConditionMeterID"
                   },
                   {
                     "$ref": "#/$defs/ConditionMeterAlias"
                   },
                   {
-                    "$ref": "#/$defs/Attribute.ID"
+                    "$ref": "#/$defs/AttributeID"
                   }
                 ]
               }
@@ -2734,10 +2711,10 @@
         }
       ]
     },
-    "MoveTriggerOptionProgress": {
+    "TriggerOptionProgress": {
       "allOf": [
         {
-          "$ref": "#/$defs/MoveTriggerOption"
+          "$ref": "#/$defs/TriggerOption"
         },
         {
           "properties": {
@@ -2797,7 +2774,7 @@
         }
       }
     },
-    "MoveTriggerOptionBase": {
+    "TriggerOptionBase": {
       "type": "object",
       "properties": {
         "method": {
@@ -2835,29 +2812,29 @@
         }
       }
     },
-    "MoveTriggerOption": {
-      "title": "MoveTriggerOption",
+    "TriggerOption": {
+      "title": "TriggerOption",
       "oneOf": [
         {
           "items": {
-            "$ref": "#/$defs/MoveTriggerOptionAction"
+            "$ref": "#/$defs/TriggerOptionAction"
           }
         },
         {
           "items": {
-            "$ref": "#/$defs/MoveTriggerOptionProgress"
+            "$ref": "#/$defs/TriggerOptionProgress"
           }
         }
       ]
     },
-    "MoveTrigger": {
-      "title": "MoveTrigger",
+    "Trigger": {
+      "title": "Trigger",
       "type": "object",
       "properties": {
         "options": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/MoveTriggerOption"
+            "$ref": "#/$defs/TriggerOption"
           }
         },
         "text": {
@@ -2935,7 +2912,7 @@
           "$ref": "#/$defs/ID"
         },
         "name": {
-          "$ref": "#/$defs/LocalizedLabel"
+          "$ref": "#/$defs/Label"
         },
         "source": {
           "$ref": "#/$defs/Source"

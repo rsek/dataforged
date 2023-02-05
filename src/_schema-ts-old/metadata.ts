@@ -14,10 +14,10 @@ const CategoryMetadata: JSONSchema7 = {
       $ref: '#/$defs/Source'
     },
     summary: {
-      $ref: '#/$defs/Summary'
+      $ref: '#/$defs/MarkdownSentences'
     },
     description: {
-      $ref: '#/$defs/Description'
+      $ref: '#/$defs/MarkdownParagraphs'
     },
     tags: {
       $ref: '#/$defs/Tags'
@@ -65,17 +65,17 @@ const $defs: Record<string, JSONSchema7> = {
       canonical: {
         description:
           "The title of this item, which here is defined as the associated header text *exactly* as it appears on the page (though it should be rendered in title case appropriate to the language, not all-caps).\n\nFor items that represent a single table column, this is the label that appears at the top of the column.\n\nUse this title if you want high fidelity to the book. For most interactive UX, it's recommended to use {@link Title.standard} instead.",
-        $ref: '#/$defs/LocalizedLabel'
+        $ref: '#/$defs/Label'
       },
       short: {
         description:
           "The shortest title for this item that remains distinct amongst its siblings.\n\n Unless you're very pressed for space, most UX should use {@link Title.standard} instead.",
-        $ref: '#/$defs/LocalizedLabel'
+        $ref: '#/$defs/Label'
       },
       standard: {
         description:
           'The recommended title for most implementations.\n\nThis is usually the same as the canonical title, but editorializes a bit by trimming out things like "Oracle 15" in some classic Ironsworn oracles (because *nobody* remembers it as "Oracle 15").',
-        $ref: '#/$defs/LocalizedLabel'
+        $ref: '#/$defs/Label'
       }
     }
   },

@@ -9,7 +9,12 @@ export interface OracleTable extends Node<OracleTableID> {
   source: Metadata.Source
   summary?: Localize.MarkdownSentences
   description?: Localize.MarkdownParagraphs
+  match?: MatchBehavior
   table: OracleTableRow[]
+}
+
+interface MatchBehavior {
+  text: Localize.MarkdownSentences
 }
 
 export type OracleTableRowID = string

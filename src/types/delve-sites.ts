@@ -28,7 +28,7 @@ export interface DelveSite extends Node<DelveSiteID> {
   ]
 }
 
-export type DelveSiteDenizenRarity =
+export type DelveSiteDenizenFrequency =
   | 'very_common'
   | 'common'
   | 'uncommon'
@@ -38,9 +38,9 @@ export type DelveSiteDenizenRarity =
 export interface DelveSiteDenizen<
   Low extends number,
   High extends number,
-  Rarity extends DelveSiteDenizenRarity
+  Frequency extends DelveSiteDenizenFrequency
 > extends Range<Low, High> {
-  rarity: Rarity
+  frequency: Frequency
   encounter: Encounters.EncounterClassicID | null
   name?: Localize.Label
 }

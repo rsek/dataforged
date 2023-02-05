@@ -29,6 +29,6 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
       items: { $ref: '#/$defs/MarkdownPhrase' } as any
     },
     quest_starter: { $ref: '#/$defs/MarkdownParagraph' },
-    source: { $ref: '#/$defs/Metadata.Source' }
+    source: { $ref: '#/$defs/Source' }
   }
 }

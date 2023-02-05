@@ -5,7 +5,10 @@ import {
   Localize,
   Encounters,
   Regions,
-  Oracles
+  Oracles,
+  Players,
+  Moves,
+  DelveSites
 } from 'src/json-schema'
 
 // TODO: to generate data-entry-friendly schema - crawl the "full" one and remove 'source' and '_id' from all 'required' arrays
@@ -13,9 +16,9 @@ import {
 export const defs: Record<string, Schema<any>> = {
   ...(Metadata as any),
   ...Localize,
-  ...Oracles
-  // ...Players
-  // ...Moves,
+  ...Oracles,
+  ...Players,
+  ...Moves
   // ...Assets,
 }
 
@@ -27,11 +30,9 @@ export const defsStarforged = {
 export const defsClassic = {
   ...defs,
   ..._.pickBy(Encounters, (_, k) => k.includes('Classic')),
-  ...Regions
+  ...Regions,
   // ...Rarities,
-  // ...DelveSites,
-  // ...SiteThemes,
-  // ...SiteDomains,
+  ...DelveSites
 }
 
 export type DataforgedDefs = typeof defs

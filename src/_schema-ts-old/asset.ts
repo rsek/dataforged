@@ -1,5 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from './id'
+import { DF_KEY } from 'src/json-schema/attributes'
+// import { DF_KEY } from './id'
 
 export const AssetAbilityBase: JSONSchema7 = {
   type: 'object',
@@ -7,11 +8,11 @@ export const AssetAbilityBase: JSONSchema7 = {
     name: {
       description:
         'Ironsworn companion assets provide names for their abilities. Starforged asset abilities do not have names.',
-      $ref: '#/$defs/LocalizedLabel'
+      $ref: '#/$defs/Label'
     },
     text: {
       description: 'The rules text for this asset ability.',
-      $ref: '#/$defs/LocalizedMarkdown'
+      $ref: '#/$defs/MarkdownSentences'
     },
     attachments: {
       description:
@@ -139,7 +140,7 @@ export const Asset: JSONSchema7 = {
       }
     },
     name: {
-      $ref: '#/$defs/LocalizedLabel'
+      $ref: '#/$defs/Label'
     },
     abilities: {
       type: 'array',
@@ -159,7 +160,7 @@ export const Asset: JSONSchema7 = {
     requirement: {
       description:
         'A markdown string representing the requirement text that appears at the top of some asset cards.',
-      $ref: '#/$defs/LocalizedMarkdown'
+      $ref: '#/$defs/MarkdownPhrase'
     },
     source: {
       $ref: '#/$defs/Source'
@@ -205,7 +206,7 @@ export const AssetExtension: JSONSchema7 = {
   description: 'Extends/alters existing assets data',
   type: 'object',
   properties: {
-    assets: {
+    contents: {
       type: 'array',
       items: {
         $ref: '#/$defs/AssetID'
@@ -227,7 +228,7 @@ export const AssetCollection: JSONSchema7 = {
         {
           required: ['assets', 'description', 'title'],
           properties: {
-            assets: {
+            contents: {
               type: 'object',
               additionalProperties: false,
               patternProperties: {
@@ -237,7 +238,7 @@ export const AssetCollection: JSONSchema7 = {
               }
             },
             description: {
-              $ref: '#/$defs/Description'
+              $ref: '#/$defs/MarkdownParagraphs'
             },
             source: {
               $ref: '#/$defs/Source'
@@ -255,7 +256,7 @@ export const AssetCollection: JSONSchema7 = {
     {
       required: ['assets', 'description', 'title'],
       properties: {
-        assets: {
+        contents: {
           type: 'object',
           additionalProperties: false,
           patternProperties: {
@@ -265,7 +266,7 @@ export const AssetCollection: JSONSchema7 = {
           }
         },
         description: {
-          $ref: '#/$defs/Description'
+          $ref: '#/$defs/MarkdownParagraphs'
         },
         source: {
           $ref: '#/$defs/Source'
@@ -301,7 +302,7 @@ export const AssetCollectionExtension: JSONSchema7 = {
         'starforged/assets/deed'
       ]
     },
-    assets: {
+    contents: {
       type: 'object',
       patternProperties: {
         [DF_KEY]: {

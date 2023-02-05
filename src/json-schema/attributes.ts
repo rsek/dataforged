@@ -1,5 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from './id'
+
+export const DF_KEY = /$[a-z][a-z_]*[a-z]^/.source
 
 const $defs: Record<string, JSONSchema7> = {
   CustomStat: {
@@ -7,7 +8,7 @@ const $defs: Record<string, JSONSchema7> = {
     required: ['label', 'options'],
     properties: {
       label: {
-        $ref: '#/$defs/LocalizedLabel'
+        $ref: '#/$defs/Label'
       },
       options: {
         title: 'CustomStatOptions',
@@ -19,7 +20,7 @@ const $defs: Record<string, JSONSchema7> = {
             required: ['label', 'value'],
             properties: {
               label: {
-                $ref: '#/$defs/LocalizedLabel'
+                $ref: '#/$defs/Label'
               },
               value: {
                 description:
@@ -113,7 +114,7 @@ const $defs: Record<string, JSONSchema7> = {
         ],
         properties: {
           label: {
-            $ref: '#/$defs/LocalizedLabel'
+            $ref: '#/$defs/Label'
           },
           position: {
             const: 'card-bottom'
@@ -170,7 +171,7 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'object',
                 properties: {
                   label: {
-                    $ref: '#/$defs/LocalizedLabel'
+                    $ref: '#/$defs/Label'
                   },
                   value: {
                     $ref: '#/$defs/PlayerConditionMeterID'
@@ -241,7 +242,7 @@ const $defs: Record<string, JSONSchema7> = {
                 type: 'object',
                 properties: {
                   label: {
-                    $ref: '#/$defs/LocalizedLabel'
+                    $ref: '#/$defs/Label'
                   },
                   value: {
                     $ref: '#/$defs/PlayerStatID'
@@ -364,7 +365,7 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/AttributeID'
       },
       label: {
-        $ref: '#/$defs/LocalizedLabel'
+        $ref: '#/$defs/Label'
       },
       position: {
         $ref: '#/$defs/InputPosition'

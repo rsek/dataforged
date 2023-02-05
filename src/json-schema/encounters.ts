@@ -51,10 +51,14 @@ export const EncounterClassic: Schema<Types.EncounterClassic> = {
       items: { $ref: '#/$defs/MarkdownPhrase' } as any
     },
     description: { $ref: '#/$defs/MarkdownParagraphs' },
-    quest_starter: { $ref: '#/$defs/MarkdownParagraphs' },
+    quest_starter: {
+      description:
+        'A localizable markdown string describing the quest starter associated with this item.',
+      $ref: '#/$defs/MarkdownParagraphs'
+    },
     your_truths: { $ref: '#/$defs/MarkdownSentences' },
     source: { $ref: '#/$defs/Source' },
-    _id: { $ref: '#/$defs/EncounterNatureClassic' }
+    _id: { $ref: '#/$defs/EncounterClassicID' }
   }
 }
 
@@ -76,23 +80,17 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
     '_id'
   ],
   properties: {
-    name: { $ref: '#/$defs/Label' },
+    name: EncounterClassic.properties!.name,
     nature: { $ref: '#/$defs/EncounterNatureStarforged' },
     summary: { $ref: '#/$defs/MarkdownSentences' },
-    rank: { $ref: '#/$defs/ChallengeRank' },
-    features: {
-      type: 'array',
-      items: { $ref: '#/$defs/MarkdownPhrase' } as any
-    },
-    drives: { type: 'array', items: { $ref: '#/$defs/MarkdownPhrase' } as any },
-    tactics: {
-      type: 'array',
-      items: { $ref: '#/$defs/MarkdownPhrase' } as any
-    },
+    rank: EncounterClassic.properties!.rank,
+    features: EncounterClassic.properties!.features,
+    drives: EncounterClassic.properties!.drives,
+    tactics: EncounterClassic.properties!.tactics,
     variants: { $ref: '#/$defs/EncounterVariantStarforged' },
-    description: { $ref: '#/$defs/MarkdownParagraphs' },
-    quest_starter: { $ref: '#/$defs/MarkdownParagraphs' },
-    source: { $ref: '#/$defs/Source' },
+    description: EncounterClassic.properties!.description,
+    quest_starter: EncounterClassic.properties!.quest_starter,
+    source: EncounterClassic.properties!.source,
     _id: { $ref: '#/$defs/EncounterStarforgedID' }
   }
 }

@@ -13,13 +13,10 @@ export const WorldTruthClassic: JSONSchema7 = {
           minItems: 3,
           items: {
             type: 'object',
-            required: [
-              'description',
-              'quest_starter'
-            ],
+            required: ['description', 'quest_starter'],
             properties: {
               description: {
-                $ref: '#/$defs/Description'
+                $ref: '#/$defs/MarkdownParagraphs'
               },
               quest_starter: {
                 $ref: '#/$defs/QuestStarter'
@@ -33,9 +30,7 @@ export const WorldTruthClassic: JSONSchema7 = {
 }
 
 export const SettingTruthOption: JSONSchema7 = {
-  required: [
-    'quest_starter'
-  ],
+  required: ['quest_starter'],
   additionalProperties: false,
   properties: {
     quest_starter: {
@@ -46,16 +41,13 @@ export const SettingTruthOption: JSONSchema7 = {
 
 export const SettingTruth: JSONSchema7 = {
   type: 'object',
-  required: [
-    'name',
-    'source'
-  ],
+  required: ['name', 'source'],
   properties: {
     _id: {
       $ref: '#/$defs/ID'
     },
     name: {
-      $ref: '#/$defs/LocalizedLabel'
+      $ref: '#/$defs/Label'
     },
     source: {
       $ref: '#/$defs/Source'
@@ -86,6 +78,5 @@ const $defs: Record<string, JSONSchema7> = {
   SettingTruthOption,
   SettingTruthStarforged,
   WorldTruthClassic
-
 }
 export default $defs

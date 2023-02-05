@@ -36,9 +36,8 @@ export const Source: Schema<Types.Source> = {
     },
     page: {
       type: 'integer',
-      minimum: 1,
-      nullable: true
-    },
+      minimum: 1
+    } as any,
     uri: {
       type: 'string',
       description: 'The URI where the source is available.'

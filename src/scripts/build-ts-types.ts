@@ -12,7 +12,7 @@ compile(schema as JSONSchema4, 'YamlRoot', {
 // TODO: investigate rewriting this as a JSON Type Definition schema. it's purpose-made for generating types for multiple languages
 // this can output many languages: https://jsontypedef.com/docs/jtd-codegen/
 // i suspect it'll be smarter about e.g. enums and type inheritance
-// discriminator can be used for things like MoveTriggerActionRoll and MoveTriggerProgressRoll
+// discriminator can be used for things like TriggerActionRoll and TriggerProgressRoll
 
 // if nothing else, it's definitely running faster now!
 

@@ -1,5 +1,5 @@
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from './id'
+import { DF_KEY } from 'src/json-schema/attributes'
 import { dfRecordSchema } from './utils'
 
 export const MoveExtension: JSONSchema7 = {
@@ -33,7 +33,7 @@ export const MoveExtensionBase: JSONSchema7 = {
       default: null
     },
     trigger: {
-      $ref: '#/$defs/MoveTrigger'
+      $ref: '#/$defs/Trigger'
     }
   }
 }
@@ -49,7 +49,7 @@ export const MoveCollection: JSONSchema7 = {
       $ref: '#/$defs/Color'
     },
     description: {
-      $ref: '#/$defs/Description'
+      $ref: '#/$defs/MarkdownParagraphs'
     },
     source: {
       $ref: '#/$defs/Source'
@@ -58,87 +58,88 @@ export const MoveCollection: JSONSchema7 = {
   }
 }
 
+export const Move: JSONSchema7 = {
+  type: 'object',
+  required: ['text', 'name', 'trigger'],
+  additionalProperties: false,
+  properties: {
+    name: {
+      $ref: '#/$defs/Label'
+    },
+    trigger: {
+      $ref: '#/$defs/Trigger'
+    },
+    attributes: {
+      type: 'object',
+      patternProperties: {
+        [DF_KEY]: {
+          $ref: '#/$defs/CustomStat'
+        }
+      }
+    },
+    outcomes: {
+      $ref: '#/$defs/MoveOutcomes'
+    },
+    text: {
+      $ref: '#/$defs/LocalizedMarkdown'
+    },
+    suggestions: {
+      $ref: '#/$defs/Suggestions'
+    },
+    asset: {
+      description: 'The ID of the parent Asset of the move, if any.',
+      $ref: '#/$defs/AssetID'
+    },
+    progress_move: {
+      description:
+        'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
+      type: 'boolean'
+    },
+    variant_of: {
+      description: 'The ID of the move that this move is a variant of, if any.',
+      $ref: '#/$defs/MoveID'
+    },
+    oracles: {
+      description:
+        'The ID of any oracles directly referenced by the move, or vice versa.',
+      type: 'array',
+      items: {
+        $ref: '#/$defs/OracleTableID'
+      }
+    },
+    optional: {
+      description:
+        'Whether or not the source material presents this rules item as optional.',
+      default: false,
+      type: 'boolean'
+    },
+    tags: {
+      description:
+        "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
+      type: 'array',
+      items: {
+        type: 'string'
+      }
+    },
+    category: {
+      description: "The ID of the move's category.",
+      $ref: '#/$defs/MoveCollectionID'
+    },
+    source: {
+      $ref: '#/$defs/Source'
+    }
+  }
+}
+
 const defs: Record<string, JSONSchema7> = {
   MoveExtension,
   MoveExtensionBase,
   MoveCollection,
-  Move: {
-    type: 'object',
-    required: ['text', 'name', 'trigger'],
-    additionalProperties: false,
-    properties: {
-      name: {
-        $ref: '#/$defs/LocalizedLabel'
-      },
-      trigger: {
-        $ref: '#/$defs/MoveTrigger'
-      },
-      attributes: {
-        type: 'object',
-        patternProperties: {
-          [DF_KEY]: {
-            $ref: '#/$defs/CustomStat'
-          }
-        }
-      },
-      outcomes: {
-        $ref: '#/$defs/MoveOutcomes'
-      },
-      text: {
-        $ref: '#/$defs/LocalizedMarkdown'
-      },
-      suggestions: {
-        $ref: '#/$defs/Suggestions'
-      },
-      asset: {
-        description: 'The ID of the parent Asset of the move, if any.',
-        $ref: '#/$defs/AssetID'
-      },
-      progress_move: {
-        description:
-          'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
-        type: 'boolean'
-      },
-      variant_of: {
-        description:
-          'The ID of the move that this move is a variant of, if any.',
-        $ref: '#/$defs/MoveID'
-      },
-      oracles: {
-        description:
-          'The ID of any oracles directly referenced by the move, or vice versa.',
-        type: 'array',
-        items: {
-          $ref: '#/$defs/OracleTableID'
-        }
-      },
-      optional: {
-        description:
-          'Whether or not the source material presents this rules item as optional.',
-        default: false,
-        type: 'boolean'
-      },
-      tags: {
-        description:
-          "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
-        type: 'array',
-        items: {
-          type: 'string'
-        }
-      },
-      category: {
-        description: "The ID of the move's category.",
-        $ref: '#/$defs/MoveCollectionID'
-      },
-      source: {
-        $ref: '#/$defs/Source'
-      }
-    }
-  },
-  MoveTriggerOptionAction: {
+  Move,
+  TriggerOptionAction: {
     allOf: [
       {
-        $ref: '#/$defs/MoveTriggerOption'
+        $ref: '#/$defs/TriggerOption'
       },
       {
         properties: {
@@ -168,10 +169,10 @@ const defs: Record<string, JSONSchema7> = {
       }
     ]
   },
-  MoveTriggerOptionProgress: {
+  TriggerOptionProgress: {
     allOf: [
       {
-        $ref: '#/$defs/MoveTriggerOption'
+        $ref: '#/$defs/TriggerOption'
       },
       {
         properties: {
@@ -227,7 +228,7 @@ const defs: Record<string, JSONSchema7> = {
       }
     }
   },
-  MoveTriggerOptionBase: {
+  TriggerOptionBase: {
     type: 'object',
     properties: {
       method: {
@@ -264,29 +265,29 @@ const defs: Record<string, JSONSchema7> = {
       }
     }
   },
-  MoveTriggerOption: {
-    title: 'MoveTriggerOption',
+  TriggerOption: {
+    title: 'TriggerOption',
     oneOf: [
       {
         items: {
-          $ref: '#/$defs/MoveTriggerOptionAction'
+          $ref: '#/$defs/TriggerOptionAction'
         }
       },
       {
         items: {
-          $ref: '#/$defs/MoveTriggerOptionProgress'
+          $ref: '#/$defs/TriggerOptionProgress'
         }
       }
     ]
   },
-  MoveTrigger: {
-    title: 'MoveTrigger',
+  Trigger: {
+    title: 'Trigger',
     type: 'object',
     properties: {
       options: {
         type: 'array',
         items: {
-          $ref: '#/$defs/MoveTriggerOption'
+          $ref: '#/$defs/TriggerOption'
         }
       },
       text: {

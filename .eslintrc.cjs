@@ -6,7 +6,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
   parserOptions: {
-    project: './tsconfig.json'
+    project: './tsconfig.json',
+    ecmaVersion: 'latest'
   },
   rules: {
     'tsdoc/syntax': 'error',

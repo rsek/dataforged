@@ -149,7 +149,7 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
     },
     result: {
       description:
-        'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) `Oracle.display` for more information.',
+        'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column.',
       $ref: '#/$defs/LocalizedMarkdown'
     },
     summary: {
@@ -157,7 +157,7 @@ export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
         "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       oneOf: [
         {
-          $ref: '#/$defs/Summary'
+          $ref: '#/$defs/MarkdownSentences'
         },
         {
           type: 'null'
@@ -208,10 +208,10 @@ export const BaseOracle: JSONSchema7 = {
       $ref: '#/$defs/Source'
     },
     summary: {
-      $ref: '#/$defs/Summary'
+      $ref: '#/$defs/MarkdownSentences'
     },
     description: {
-      $ref: '#/$defs/Description'
+      $ref: '#/$defs/MarkdownParagraphs'
     }
   }
 }
@@ -228,10 +228,10 @@ export const OracleCollection: JSONSchema7 = {
       $ref: '#/$defs/Source'
     },
     summary: {
-      $ref: '#/$defs/Summary'
+      $ref: '#/$defs/MarkdownSentences'
     },
     description: {
-      $ref: '#/$defs/Description'
+      $ref: '#/$defs/MarkdownParagraphs'
     },
     _id: {
       type: 'string'
