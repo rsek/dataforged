@@ -2,8 +2,8 @@
  * Abstract interfaces and utility types that are only used internally.
  */
 
-import type * as Localized from 'src/types/localize'
-import type * as Metadata from 'src/types/metadata'
+import type * as Localized from '@df-types/localize'
+import type * as Metadata from '@df-types/metadata'
 
 /**
  * A number range, for things shaped like rollable table rows.

@@ -1,5 +1,5 @@
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from 'src/json-schema/attributes'
+import { DF_KEY } from '@df-json-schema/attributes'
 // import { DF_KEY } from './id'
 
 export const AssetAbilityBase: JSONSchema7 = {
@@ -58,13 +58,13 @@ export const AssetAbilityBase: JSONSchema7 = {
         }
       }
     },
-    alter_moves: {
+    extend_moves: {
       type: 'array',
       items: {
         $ref: '#/$defs/MoveExtensionBase'
       }
     },
-    alter_player: {
+    extend_player: {
       $ref: '#/$defs/PlayerExtension'
     },
     _id: {
@@ -88,7 +88,7 @@ export const AssetAbility: JSONSchema7 = {
     {
       required: ['text'],
       properties: {
-        alter_moves: {
+        extend_moves: {
           type: 'array',
           items: {
             $ref: '#/$defs/MoveExtension'

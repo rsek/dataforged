@@ -1,4 +1,4 @@
-import { type Label } from 'src/types/localize'
+import { type Label } from '@df-types/localize'
 
 export default interface Player {}
 export interface Extend extends Partial<Player> {}

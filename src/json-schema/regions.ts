@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Regions as Types } from 'src/types'
+import { type Regions as Types } from '@df-types'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {
   type: 'string',

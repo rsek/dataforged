@@ -1,7 +1,10 @@
+import { DF_KEY } from '@df-json-schema/attributes'
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from './id'
 
-export function dfRecordSchema (itemSchema: string, title: string = itemSchema + 's'): JSONSchema7 {
+export function dfRecordSchema(
+  itemSchema: string,
+  title: string = itemSchema + 's'
+): JSONSchema7 {
   return {
     title,
     additionalProperties: false,

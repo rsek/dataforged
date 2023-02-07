@@ -1,11 +1,11 @@
-import { type OracleCollection } from 'src/types/collections'
-import { type OracleTableRow, type OracleTable } from 'src/types/oracles'
+import { type OracleCollection } from '@df-types/collections'
+import { type OracleTableRow, type OracleTable } from '@df-types/oracles'
 import {
   type DescriptorFocusRow,
   type ActionThemeRow,
   type RollTwiceRow,
   type OracleTable5
-} from 'src/types/templates/common'
+} from '@df-types/templates/common'
 
 export interface DerelictZoneOracles extends OracleCollection {
   contents: {

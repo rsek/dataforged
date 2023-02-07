@@ -1,6 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
-import { merge } from 'lodash'
-import { dfRecordSchema } from './utils'
+import _ from 'lodash'
+import { dfRecordSchema } from './utils.js'
 
 const d100Value: JSONSchema7 = {
   type: 'integer',
@@ -12,11 +12,11 @@ const d100Range: JSONSchema7 = {
   type: 'object',
   required: ['floor', 'ceiling'],
   properties: {
-    low: merge(
+    low: _.merge(
       { description: 'The high end of the dice range for this table row.' },
       d100Value
     ),
-    high: merge(
+    high: _.merge(
       { description: 'The low end of the dice range for this table row.' },
       d100Value
     )
@@ -132,7 +132,7 @@ export const OracleTableRowRenderMetadata: JSONSchema7 = {
   }
 }
 
-export const OracleTableRow: JSONSchema7 = merge(d100RangeNullable, {
+export const OracleTableRow: JSONSchema7 = _.merge(d100RangeNullable, {
   type: 'object',
   required: ['result'],
   additionalProperties: false,
@@ -249,7 +249,7 @@ export const OracleCollection: JSONSchema7 = {
     }
   }
 }
-export const OracleTable: JSONSchema7 = merge(BaseOracle, {
+export const OracleTable: JSONSchema7 = _.merge(BaseOracle, {
   type: 'object',
   required: ['table'],
   additionalProperties: false,

@@ -1,28 +1,28 @@
 import { type JSONSchemaType as JsonSchema } from 'ajv'
-import { type JTDSchemaType as JtdSchema } from 'ajv/dist/core'
-import * as _ from 'lodash'
+// import { JTDSchemaType } from 'ajv/dist/core'
+import _ from 'lodash'
 
-export function stringToTypeDef(
-  jsonSchema: JsonSchema<string>
-): JtdSchema<string> {
-  const jtdSchema: JtdSchema<string> = {
-    type: 'string',
-    metadata: {
-      ..._.omit(jsonSchema, ['type'])
-    }
-  }
-  return jtdSchema
-}
+// export function stringToTypeDef(
+//   jsonSchema: JsonSchema<string>
+// ): JTDSchemaType<string> {
+//   const jtdSchema: JTDSchemaType<string> = {
+//     type: 'string',
+//     metadata: {
+//       ..._.omit(jsonSchema, ['type'])
+//     }
+//   }
+//   return jtdSchema
+// }
 
-export function refToTypeDef(jsonSchema: { $ref: string }): { ref: string } {
-  const jtdSchema = {
-    ref: jsonSchema.$ref.replace('#/$defs/', ''),
-    metadata: {
-      ..._.omit(jsonSchema, ['type'])
-    }
-  }
-  return jtdSchema
-}
+// export function refToTypeDef(jsonSchema: { $ref: string }): { ref: string } {
+//   const jtdSchema = {
+//     ref: jsonSchema.$ref.replace('#/$defs/', ''),
+//     metadata: {
+//       ..._.omit(jsonSchema, ['type'])
+//     }
+//   }
+//   return jtdSchema
+// }
 
 // function to invert optional property logic
 

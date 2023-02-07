@@ -1,5 +1,6 @@
+_ruleset: starforged
 sundered_isles:
-  asset_types:
+  assets:
     command_vehicle:
       _extends: starforged/assets/command_vehicle
       assets:
@@ -99,8 +100,8 @@ sundered_isles:
           abilities:
             - text: |-
                 You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost as -1 command. If you [Face Danger](starforged/moves/adventure/face_danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
-            # TODO figure out how to denote individual abilities/triggers invocable by any party member
-              alter_moves:
+              # TODO figure out how to denote individual abilities/triggers invocable by any party member
+              extend_moves:
                 - _moves: null
                   trigger:
                     options:
@@ -144,7 +145,7 @@ sundered_isles:
                   _extends: sundered_isles/assets/path/crew_commander/inputs/command
                   max: 6
             - text: When your command is 0 and the situation desperate, you may [Compel](starforged/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - starforged/moves/adventure/compel
                   trigger:
@@ -237,7 +238,7 @@ sundered_isles:
           abilities:
             - text: |-
                 When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, Take Decisive Action with an automatic strong hit. When the clock is filled, Ask the Oracle (using the yes/no table) if the Kraken turns against you, making it 50/50. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - starforged/moves/combat/take_decisive_action
                   trigger:
@@ -260,7 +261,7 @@ sundered_isles:
                   position: ability-1-right
             - text: |-
                 When you make a move using a threat to call the Kraken as leverage, add +2.
-              alter_moves:
+              extend_moves:
                 - _moves: null
                   trigger:
                     options:
@@ -270,7 +271,7 @@ sundered_isles:
                   text: Add +2.
             - text: |-
                 One time only, when you Fulfill Your Vow (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - starforged/moves/quest/fulfill_your_vow
                   trigger:
@@ -280,7 +281,7 @@ sundered_isles:
                         method: inherit
                   outcomes:
                     strong_hit: &Kraken.3
-                      text: "Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track."
+                      text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
                     weak_hit: *Kraken.3
     deed:
       _extends: starforged/assets/deed
@@ -296,20 +297,20 @@ sundered_isles:
               enabled: true
               alter:
                 moves:
-                - _moves:
-                    - starforged/moves/suffer/withstand_damage
-                  outcomes:
-                    miss:
-                      text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
-                - _moves:
-                    - starforged/moves/fate/pay_the_price
-                  text: *Cohort.1
+                  - _moves:
+                      - starforged/moves/suffer/withstand_damage
+                    outcomes:
+                      miss:
+                        text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+                  - _moves:
+                      - starforged/moves/fate/pay_the_price
+                    text: *Cohort.1
             - text: |-
                 You may gain additional specialists by spending 1 experience to add a connection to your crew as a specialist. Specialist bonuses may not be stacked for a single action.
             # TODO: alternate experience use
             - text: |-
                 When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - starforged/moves/adventure/secure_an_advantage
                   trigger:
@@ -332,7 +333,7 @@ sundered_isles:
             - text: |-
                 Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](starforged/moves/fate/pay_the_price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](starforged/moves/recover/sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
               enabled: true
-              alter_moves:
+              extend_moves:
                 - _moves: null
                   trigger:
                     options:
@@ -358,7 +359,7 @@ sundered_isles:
                   max: 5
             - text: |-
                 When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - starforged/moves/exploration/undertake_an_expedition
                   trigger:
@@ -390,15 +391,15 @@ sundered_isles:
             - text: |-
                 This is not your end. Envision your undead form and nature. This asset counts as a permanent impact, but you are now resistant to mortal harm. When you [Endure Harm](starforged/moves/suffer/endure_harm), you may first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1, -2, or -3) to offset an equal amount of harm. If potential harm remains, and you choose to resist the harm, roll +spirit.
               # counts as impact
-              # alter_moves:
+              # extend_moves:
               #   - moves:
               #       - starforged/moves/suffer/endure_harm
             - text: |-
                 When you make a move using your undead aspects to intimidate, scare, or confound, reroll any dice; on a hit, take +2 momentum.
-              # alter_moves:
+              # extend_moves:
               #   - moves: null
             - text: |-
                 You may move between the realms of the dead and the mortal world, may take others with you, and can use those paths as a shortcut for a mortal journey. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within the realms of the dead, roll +spirit. On a strong hit, mark progress.
-              # alter_moves:
+              # extend_moves:
               #   - moves:
               #       - starforged/moves/exploration/undertake_an_expedition

@@ -1,0 +1,938 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Dataforged data entry",
+  "description": "Data entry schema for Dataforged. It allows sparse metadata and provides templates, which may then be processed into the standard Dataforged format.",
+  "$defs": {
+    "ID": {
+      "type": "string",
+      "$comment": "{namespace}/{element}/{*}"
+    },
+    "Icon": {
+      "type": "string",
+      "format": "uri",
+      "description": "A relative URI pointing to an SVG icon."
+    },
+    "Image": {
+      "type": "string",
+      "format": "uri",
+      "description": "A relative URI pointing to a WEBP image."
+    },
+    "Ruleset": {
+      "type": "string",
+      "enum": [
+        "classic",
+        "starforged"
+      ]
+    },
+    "Source": {
+      "type": "object",
+      "description": "",
+      "required": [
+        "title",
+        "uri",
+        "authors",
+        "date",
+        "license"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "examples": [
+            "Ironsworn Rulebook",
+            "Ironsworn Assets Master Set",
+            "Ironsworn: Delve",
+            "Ironsworn: Starforged Rulebook",
+            "Ironsworn: Starforged Assets",
+            "Sundered Isles"
+          ]
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI where the source is available."
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": "Shawn Tomkin"
+          }
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of the source material's last update."
+        },
+        "license": {
+          "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+          "examples": [
+            "https://creativecommons.org/licenses/by/4.0",
+            "https://creativecommons.org/licenses/by-nc-sa/4.0"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Suggestions": {
+      "description": "TODO",
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AssetID"
+          }
+        },
+        "moves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MoveID"
+          }
+        },
+        "oracles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableID"
+          }
+        },
+        "encounters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EncounterID"
+          }
+        }
+      }
+    },
+    "Title": {
+      "type": "object",
+      "required": [
+        "canonical"
+      ],
+      "properties": {
+        "canonical": {
+          "type": "string"
+        },
+        "standard": {
+          "type": "string"
+        },
+        "short": {
+          "type": "string"
+        }
+      }
+    },
+    "Label": {
+      "type": "string",
+      "description": "A localized plain text name or label."
+    },
+    "MarkdownParagraph": {
+      "type": "string",
+      "description": "Localized markdown text, usually one paragraph. This may included ordered or unordered lists."
+    },
+    "MarkdownParagraphs": {
+      "type": "string",
+      "description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
+    },
+    "MarkdownPhrase": {
+      "type": "string",
+      "description": "Localized markdown text, usually a phrase or single sentence."
+    },
+    "MarkdownSentences": {
+      "type": "string",
+      "description": "Localized markdown text, usually a few sentences at most."
+    },
+    "ChallengeRank": {
+      "type": "integer",
+      "description": "Enumerates challenge ranks: 1=troublesome; 2=dangerous; 3=formidable; 4=extreme; 5=epic.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "AssetID": {
+      "type": "string"
+    },
+    "OracleCollectionColumn": {
+      "type": "object",
+      "required": [
+        "content_type",
+        "content_source"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "enum": [
+            "result",
+            "summary",
+            "description",
+            "range"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/Label"
+        },
+        "content_source": {
+          "$ref": "#/$defs/OracleTableID"
+        }
+      },
+      "oneOf": [
+        {
+          "title": "OracleTableColumnRoll",
+          "properties": {
+            "content_type": {
+              "const": "range"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Roll"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnResult",
+          "properties": {
+            "content_type": {
+              "const": "result"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Result"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnSummary",
+          "properties": {
+            "content_type": {
+              "const": "summary"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Summary"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnDescription",
+          "properties": {
+            "content_type": {
+              "const": "description"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Description"
+            }
+          }
+        }
+      ]
+    },
+    "OracleTable": {
+      "type": "object",
+      "required": [
+        "name",
+        "table"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/OracleTableID"
+        },
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "summary": {
+          "$ref": "#/$defs/MarkdownSentences"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
+        "rendering": {
+          "$ref": "#/$defs/OracleTableRendering"
+        },
+        "match": {
+          "title": "Oracle match behavior",
+          "description": "A handful of oracles have special behavior of a match.",
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "$ref": "#/$defs/MarkdownSentences"
+            }
+          }
+        },
+        "table": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableRow"
+          }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
+    },
+    "OracleTableColumn": {
+      "type": "object",
+      "required": [
+        "content_type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "content_type": {
+          "type": "string",
+          "enum": [
+            "result",
+            "summary",
+            "description",
+            "range"
+          ]
+        },
+        "label": {
+          "$ref": "#/$defs/Label"
+        }
+      },
+      "oneOf": [
+        {
+          "title": "OracleTableColumnRoll",
+          "properties": {
+            "content_type": {
+              "const": "range"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Roll"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnResult",
+          "properties": {
+            "content_type": {
+              "const": "result"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Result"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnSummary",
+          "properties": {
+            "content_type": {
+              "const": "summary"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Summary"
+            }
+          }
+        },
+        {
+          "title": "OracleTableColumnDescription",
+          "properties": {
+            "content_type": {
+              "const": "description"
+            },
+            "label": {
+              "$ref": "#/$defs/Label",
+              "default": "Description"
+            }
+          }
+        }
+      ]
+    },
+    "OracleTableID": {
+      "type": "string",
+      "$comment": "{namespace}/oracles/{*}/{oracle}"
+    },
+    "OracleTableRendering": {
+      "type": "object",
+      "required": [
+        "columns",
+        "style"
+      ],
+      "properties": {
+        "columns": {
+          "required": [],
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/OracleTableColumn"
+            }
+          },
+          "default": {
+            "roll": {
+              "label": "Roll",
+              "content_type": "range"
+            },
+            "result": {
+              "label": "Result",
+              "content_type": "result"
+            }
+          }
+        },
+        "style": {
+          "type": "string",
+          "description": "The style used to render this table in the source material.\n\n        * embed_as_column: This table appears as a column of a table that corresponds to its OracleCollection parent.\n        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.\n        * table: A standard table, typically with a roll column and a result column.\n        ",
+          "enum": [
+            "embed_as_column",
+            "embed_in_row",
+            "table"
+          ],
+          "default": "table"
+        }
+      }
+    },
+    "OracleTableRoll": {
+      "title": "OracleRoll",
+      "type": "object",
+      "description": "Parameters for an oracle roll.",
+      "required": [
+        "oracle"
+      ],
+      "properties": {
+        "oracle": {
+          "$ref": "#/$defs/OracleTableID"
+        },
+        "times": {
+          "description": "The number of times to roll.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "min": 1,
+          "default": 1
+        },
+        "method": {
+          "title": "Oracle roll method",
+          "description": "\n      no_duplicates = Reroll duplicate OracleTableRows\n      allow_duplicates = Don't reroll duplicate OracleTableRows\n      make_it_worse = Don't reroll duplicate OracleTableRows; duplicates compound\n      ",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "no_duplicates",
+            "keep_duplicates",
+            "make_it_worse"
+          ],
+          "default": "no_duplicates"
+        }
+      }
+    },
+    "OracleTableRow": {
+      "type": "object",
+      "description": "Represents a row from an oracle table.",
+      "required": [
+        "low",
+        "high",
+        "result"
+      ],
+      "properties": {
+        "low": {
+          "const": 100
+        },
+        "high": {
+          "const": 100
+        },
+        "result": {
+          "const": "You transition into a new domain"
+        },
+        "summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MarkdownSentences"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "embed_table": {
+          "$ref": "#/$defs/OracleTableID"
+        },
+        "rolls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableRoll"
+          }
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
+        "_id": {
+          "$ref": "#/$defs/OracleTableRowID"
+        }
+      }
+    },
+    "OracleTableRowID": {
+      "type": "string",
+      "$comment": "{namespace}/oracles/{*}/{oracle}/{low}-{high}"
+    },
+    "ConditionMeterID": {
+      "type": "string",
+      "description": "ID for a standard player character condition meter.",
+      "enum": [
+        "player/condition_meters/health",
+        "player/condition_meters/spirit",
+        "player/condition_meters/supply"
+      ]
+    },
+    "StatID": {
+      "type": "string",
+      "description": "ID for a standard player character stat.",
+      "enum": [
+        "player/stats/edge",
+        "player/stats/heart",
+        "player/stats/iron",
+        "player/stats/shadow",
+        "player/stats/wits"
+      ]
+    },
+    "EncounterID": {
+      "oneOf": [
+        {
+          "type": "string",
+          "$comment": "{namespace}/encounters/{nature}/{encounter}"
+        },
+        {
+          "type": "string",
+          "$comment": "{namespace}/encounters/{encounter}"
+        }
+      ]
+    },
+    "EncounterNatureStarforged": {
+      "type": "string",
+      "examples": [
+        "creature",
+        "horror",
+        "human",
+        "machine",
+        "monster",
+        "vehicle"
+      ]
+    },
+    "EncounterStarforged": {
+      "type": "object",
+      "description": "An encounter entry similar to those in Chapter 4 of Ironsworn: Starforged.",
+      "required": [
+        "name",
+        "nature",
+        "summary",
+        "rank",
+        "features",
+        "drives",
+        "tactics",
+        "description",
+        "quest_starter"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "nature": {
+          "$ref": "#/$defs/EncounterNatureStarforged"
+        },
+        "summary": {
+          "$ref": "#/$defs/MarkdownSentences"
+        },
+        "rank": {
+          "$ref": "#/$defs/ChallengeRank"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MarkdownPhrase"
+          }
+        },
+        "drives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MarkdownPhrase"
+          }
+        },
+        "tactics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MarkdownPhrase"
+          }
+        },
+        "variants": {
+          "$ref": "#/$defs/EncounterVariantStarforged"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "quest_starter": {
+          "description": "A localizable markdown string describing the quest starter associated with this item.",
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "_id": {
+          "$ref": "#/$defs/EncounterStarforgedID"
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
+    },
+    "EncounterStarforgedID": {
+      "type": "string",
+      "$comment": "{namespace}/encounters/{encounter}"
+    },
+    "EncounterVariantStarforged": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "nature",
+        "rank",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "nature": {
+          "$ref": "#/$defs/EncounterNatureStarforged"
+        },
+        "rank": {
+          "$ref": "#/$defs/ChallengeRank"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        }
+      }
+    },
+    "MoveID": {
+      "type": "string",
+      "$comment": "{namespace}/moves/{moveCategory}/{move}"
+    },
+    "AssetTypeID": {
+      "type": "string"
+    },
+    "AssetTypeStarforged": {},
+    "MoveCategoryID": {
+      "type": "string"
+    },
+    "MoveCategoryStarforged": {},
+    "OracleCollection": {
+      "type": "object",
+      "required": [
+        "title",
+        "contents",
+        "collections"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/OracleCollectionID"
+        },
+        "title": {
+          "$ref": "#/$defs/Title"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "summary": {
+          "$ref": "#/$defs/MarkdownSentences"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "rendering": {
+          "type": "object",
+          "required": [
+            "columns",
+            "style"
+          ],
+          "properties": {
+            "style": {
+              "const": "multi_table",
+              "type": "string"
+            },
+            "columns": {
+              "$ref": "#/$defs/OracleCollectionColumn"
+            }
+          }
+        },
+        "contents": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/OracleTable"
+            }
+          }
+        },
+        "collections": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/OracleCollection"
+            }
+          }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
+    },
+    "OracleCollectionID": {
+      "type": "string",
+      "$comment": "{namespace}/oracle_collections/{grandparent}?/{parent}?/{collection}"
+    },
+    "SettingTruth": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/ID"
+        },
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
+    },
+    "SettingTruthOption": {
+      "required": [
+        "quest_starter"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "quest_starter": {
+          "$ref": "#/$defs/QuestStarter"
+        }
+      }
+    },
+    "SettingTruthStarforged": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/SettingTruth"
+        },
+        {
+          "properties": {
+            "options": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/OracleTableRow"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "default": {
+      "SettingTruth": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "_id": {
+            "$ref": "#/$defs/ID"
+          },
+          "name": {
+            "$ref": "#/$defs/Label"
+          },
+          "source": {
+            "$ref": "#/$defs/Source"
+          },
+          "_source": {
+            "$ref": "#/$defs/SourcePartial"
+          }
+        }
+      },
+      "SettingTruthOption": {
+        "required": [
+          "quest_starter"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "quest_starter": {
+            "$ref": "#/$defs/QuestStarter"
+          }
+        }
+      },
+      "SettingTruthStarforged": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/SettingTruth"
+          },
+          {
+            "properties": {
+              "options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/OracleTableRow"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "WorldTruthClassic": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/SettingTruth"
+          },
+          {
+            "properties": {
+              "options": {
+                "type": "array",
+                "maxItems": 3,
+                "minItems": 3,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "description",
+                    "quest_starter"
+                  ],
+                  "properties": {
+                    "description": {
+                      "$ref": "#/$defs/MarkdownParagraphs"
+                    },
+                    "quest_starter": {
+                      "$ref": "#/$defs/QuestStarter"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "SourcePartial": {
+      "description": "A source data stub that inherits data from ancestor elements during post-processing.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "examples": [
+            "Ironsworn Rulebook",
+            "Ironsworn Assets Master Set",
+            "Ironsworn: Delve",
+            "Ironsworn: Starforged Rulebook",
+            "Ironsworn: Starforged Assets",
+            "Sundered Isles"
+          ]
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uri": {
+          "type": "string",
+          "description": "The URI where the source is available."
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": "Shawn Tomkin"
+          }
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "The date of the source material's last update."
+        },
+        "license": {
+          "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+          "examples": [
+            "https://creativecommons.org/licenses/by/4.0",
+            "https://creativecommons.org/licenses/by-nc-sa/4.0"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_ruleset": {
+      "$ref": "#/$defs/Ruleset"
+    },
+    "_source": {
+      "$ref": "#/$defs/SourcePartial"
+    }
+  },
+  "patternProperties": {
+    "^[a-z0-9][a-z0-9_]+$": {
+      "type": "object",
+      "properties": {
+        "oracles": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/OracleCollection"
+            }
+          }
+        },
+        "moves": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/MoveCategoryStarforged"
+            }
+          }
+        },
+        "assets": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/AssetTypeStarforged"
+            }
+          }
+        },
+        "encounters": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/EncounterStarforged"
+            }
+          }
+        },
+        "setting_truth": {
+          "type": "object",
+          "patternProperties": {
+            "$[a-z][a-z_]*[a-z]^": {
+              "$ref": "#/$defs/SettingTruthStarforged"
+            }
+          }
+        }
+      }
+    }
+  }
+}

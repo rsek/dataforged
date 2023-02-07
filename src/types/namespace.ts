@@ -5,7 +5,7 @@ import {
   type DelveSites,
   type Rarities,
   type Encounters
-} from 'src/types'
+} from '@df-types'
 
 interface Dataset<T extends Metadata.Ruleset> {
   _ruleset: T

@@ -162,13 +162,13 @@
             }
           }
         },
-        "alter_moves": {
+        "extend_moves": {
           "type": "array",
           "items": {
             "$ref": "#/$defs/MoveExtensionBase"
           }
         },
-        "alter_player": {
+        "extend_player": {
           "$ref": "#/$defs/PlayerExtension"
         },
         "_id": {
@@ -193,7 +193,7 @@
             "text"
           ],
           "properties": {
-            "alter_moves": {
+            "extend_moves": {
               "type": "array",
               "items": {
                 "$ref": "#/$defs/MoveExtension"
@@ -719,9 +719,6 @@
       "additionalProperties": false
     },
     "OracleCollection": {
-      "required": [
-        "table"
-      ],
       "properties": {
         "title": {
           "$ref": "#/$defs/Title"

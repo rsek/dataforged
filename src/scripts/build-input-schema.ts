@@ -3,10 +3,10 @@
  */
 
 import { writeFileSync } from 'fs'
-import schema from '../_schema-ts-old/index'
+import { Dataforged } from '../json-schema/index.js'
 
-const out = './src/data/schema.json'
+const out = './src/data/schema-input.json'
 
-const json = JSON.stringify(schema, undefined, 2)
+const json = JSON.stringify(Dataforged.SchemaInput, undefined, 2)
 
 writeFileSync(out, json)

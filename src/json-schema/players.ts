@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Players as Types } from 'src/types'
+import { type Players as Types } from '@df-types'
 
 export const StatID: Schema<Types.StatID> = {
   type: 'string',

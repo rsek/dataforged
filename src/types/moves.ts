@@ -1,15 +1,15 @@
-import { type Node } from 'src/types/abstract'
+import { type Node } from '@df-types/abstract'
 import {
   type ConditionMeterAliasClassic,
   type ConditionMeterAliasStarforged
-} from 'src/types/assets'
+} from '@df-types/assets'
 import {
   type ProgressTypeClassic,
   type ProgressTypeStarforged
-} from 'src/types/progress'
-import type * as Localized from './localize'
-import type * as Metadata from './metadata'
-import type * as Player from './players'
+} from '@df-types/progress'
+import type * as Localized from '@df-types/localize'
+import type * as Metadata from '@df-types/metadata'
+import type * as Player from '@df-types/players'
 
 export type MoveID = string
 

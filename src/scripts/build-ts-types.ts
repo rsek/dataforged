@@ -1,13 +1,13 @@
 import { writeFileSync } from 'fs'
 import { JSONSchema4 } from 'json-schema'
 import { compile } from 'json-schema-to-typescript'
-import schema from '../_schema-ts-old/index'
+// import schema from '../_schema-ts-old/index.js'
 
-compile(schema as JSONSchema4, 'YamlRoot', {
-  unreachableDefinitions: true
-}).then((typings) => {
-  writeFileSync('./src/types/dataforged-yaml.d.ts', typings)
-})
+// compile(schema as JSONSchema4, 'YamlRoot', {
+//   unreachableDefinitions: true
+// }).then((typings) => {
+//   writeFileSync('.@df-types/dataforged-yaml.d.ts', typings)
+// })
 
 // TODO: investigate rewriting this as a JSON Type Definition schema. it's purpose-made for generating types for multiple languages
 // this can output many languages: https://jsontypedef.com/docs/jtd-codegen/

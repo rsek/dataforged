@@ -1,38 +1,47 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import * as _ from 'lodash'
+import _ from 'lodash'
 import {
-  Metadata,
-  Localize,
+  Assets,
+  Collections,
+  DelveSites,
   Encounters,
-  Regions,
+  // GameObjects,
+  Localize,
+  Metadata,
+  Moves,
   Oracles,
   Players,
-  Moves,
-  DelveSites
-} from 'src/json-schema'
-
-// TODO: to generate data-entry-friendly schema - crawl the "full" one and remove 'source' and '_id' from all 'required' arrays
+  Rarities,
+  Regions,
+  Truths,
+  Progress
+} from '@df-json-schema'
 
 export const defs: Record<string, Schema<any>> = {
   ...(Metadata as any),
   ...Localize,
+  ...Progress,
+  ...Assets,
   ...Oracles,
   ...Players,
-  ...Moves
+  ...Encounters,
+  ...Moves,
+  ...Collections,
+  ...Truths
   // ...Assets,
 }
 
-export const defsStarforged = {
-  ...defs,
-  ..._.pickBy(Encounters, (_, k) => k.includes('Starforged'))
-}
+export const defsStarforged = _.omitBy(defs, (_, key) =>
+  key.includes('Classic')
+)
 
-export const defsClassic = {
-  ...defs,
-  ..._.pickBy(Encounters, (_, k) => k.includes('Classic')),
-  ...Regions,
-  // ...Rarities,
-  ...DelveSites
-}
-
-export type DataforgedDefs = typeof defs
+export const defsClassic = _.omitBy(
+  {
+    ...defs,
+    ...Encounters,
+    ...Regions,
+    ...Rarities,
+    ...DelveSites
+  },
+  (_, key) => key.includes('Starforged')
+)

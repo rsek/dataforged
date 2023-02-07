@@ -5,8 +5,9 @@ import {
   type Assets,
   type Moves,
   type Encounters
-} from 'src/types'
-import { type NodeLike } from 'src/types/abstract'
+} from '@df-types'
+import { type NodeLike } from '@df-types/abstract'
+import { OracleCollectionRendering } from '@df-types/oracles'
 
 export interface Collection<T, IDType = Metadata.ID> extends NodeLike<IDType> {
   title: Metadata.Title
@@ -22,7 +23,9 @@ export interface RecursiveCollection<T, IDType = Metadata.ID>
 
 export type OracleCollectionID = string
 export interface OracleCollection
-  extends RecursiveCollection<Oracles.OracleTable, OracleCollectionID> {}
+  extends RecursiveCollection<Oracles.OracleTable, OracleCollectionID> {
+  rendering?: OracleCollectionRendering
+}
 
 export type AssetTypeID = string
 export interface AssetTypeStarforged

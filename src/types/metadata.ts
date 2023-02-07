@@ -4,7 +4,7 @@ import {
   type Encounters,
   type Moves,
   type Oracles
-} from 'src/types'
+} from '@df-types'
 
 export type Ruleset = 'classic' | 'starforged'
 export type ID = string
@@ -30,5 +30,8 @@ export interface Suggestions {
   oracles?: Oracles.OracleTableID[]
   assets?: Assets.AssetID[]
   moves?: Moves.MoveID[]
-  encounters?: Encounters.EncounterClassicID[]
+  encounters?: (
+    | Encounters.EncounterStarforgedID
+    | Encounters.EncounterClassicID
+  )[]
 }

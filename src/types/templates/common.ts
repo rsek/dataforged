@@ -3,7 +3,7 @@ import {
   type OracleTable,
   type OracleTableRoll,
   type OracleTableRollMethod
-} from 'src/types/oracles'
+} from '@df-types/oracles'
 
 export interface RollTwiceRow<
   Low extends number,

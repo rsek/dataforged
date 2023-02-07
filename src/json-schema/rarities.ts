@@ -1,4 +1,4 @@
-import { type Rarities as Types } from 'src/types'
+import { type Rarities as Types } from '@df-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const RarityID: Schema<Types.RarityID> = {

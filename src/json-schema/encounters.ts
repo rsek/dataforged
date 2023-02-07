@@ -1,5 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Encounters as Types } from 'src/types'
+import { type Encounters as Types } from '@df-types'
+import _ from 'lodash'
 
 export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
   {
@@ -19,6 +20,11 @@ export const EncounterClassicID: Schema<Types.EncounterClassicID> = {
 export const EncounterStarforgedID: Schema<Types.EncounterStarforgedID> = {
   type: 'string',
   $comment: '{namespace}/encounters/{encounter}'
+}
+
+// FIXME: i should probably just make this game-specific across all things that use it.
+export const EncounterID: Schema<Types.EncounterID> = {
+  oneOf: [EncounterClassicID, EncounterStarforgedID]
 }
 
 export const EncounterClassic: Schema<Types.EncounterClassic> = {
@@ -94,3 +100,13 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
     _id: { $ref: '#/$defs/EncounterStarforgedID' }
   }
 }
+
+const SFVariantKeys = ['name', 'nature', 'rank', 'description']
+
+export const EncounterVariantStarforged: Schema<Types.EncounterVariantStarforged> =
+  {
+    type: 'object',
+    additionalProperties: false,
+    required: SFVariantKeys as any,
+    properties: _.pick(EncounterStarforged.properties, ...SFVariantKeys) as any
+  }

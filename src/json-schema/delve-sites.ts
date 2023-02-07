@@ -1,7 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { isEmpty } from 'lodash'
-import { OracleTableRow } from 'src/json-schema/oracles'
-import { type DelveSites, type DelveSites as Types } from 'src/types'
+import _ from 'lodash'
+import { OracleTableRow } from './oracles.js'
+import { type DelveSites, type DelveSites as Types } from '@df-types'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
   type: 'string',
@@ -238,7 +238,8 @@ function staticFeatureDangerRow<
   const rowSchema = OracleTableRow
   rowSchema.properties.low = { const: row.low }
   rowSchema.properties.high = { const: row.high }
-  if (!isEmpty(row.result)) rowSchema.properties.result = { const: row.result }
+  if (!_.isEmpty(row.result))
+    rowSchema.properties.result = { const: row.result }
 
   return rowSchema as Schema<T>
 }

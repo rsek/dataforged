@@ -1,9 +1,95 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Oracles as Types } from 'src/types'
+import { DF_KEY } from './attributes.js'
+import { type Oracles as Types } from '@df-types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
   type: 'string',
   $comment: '{namespace}/oracles/{*}/{oracle}'
+}
+
+export const OracleTableColumn: Schema<Types.OracleTableColumn> = {
+  type: 'object',
+  required: ['content_type'],
+  additionalProperties: false,
+  properties: {
+    content_type: {
+      type: 'string',
+      enum: ['result', 'summary', 'description', 'range']
+    },
+    label: { $ref: '#/$defs/Label' }
+  },
+  oneOf: [
+    {
+      title: 'OracleTableColumnRoll',
+      properties: {
+        content_type: { const: 'range' },
+        label: { $ref: '#/$defs/Label', default: 'Roll' }
+      }
+    } as any,
+    {
+      title: 'OracleTableColumnResult',
+      properties: {
+        content_type: { const: 'result' },
+        label: { $ref: '#/$defs/Label', default: 'Result' }
+      }
+    },
+    {
+      title: 'OracleTableColumnSummary',
+      properties: {
+        content_type: { const: 'summary' },
+        label: { $ref: '#/$defs/Label', default: 'Summary' }
+      }
+    },
+    {
+      title: 'OracleTableColumnDescription',
+      properties: {
+        content_type: { const: 'description' },
+        label: { $ref: '#/$defs/Label', default: 'Description' }
+      }
+    }
+  ]
+}
+
+export const OracleCollectionColumn: Schema<
+  Types.OracleCollectionColumn<Types.OracleTableColumn>
+> = {
+  type: 'object',
+  required: ['content_type', 'content_source'],
+  additionalProperties: false,
+  properties: {
+    ...OracleTableColumn.properties,
+    content_source: { $ref: '#/$defs/OracleTableID' }
+  },
+  oneOf: OracleTableColumn.oneOf
+}
+
+export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
+  type: 'object',
+  required: ['columns', 'style'],
+  properties: {
+    columns: {
+      required: [],
+      type: 'object',
+      patternProperties: {
+        [DF_KEY]: { $ref: '#/$defs/OracleTableColumn' } as any
+      },
+      default: {
+        roll: { label: 'Roll', content_type: 'range' },
+        result: { label: 'Result', content_type: 'result' }
+      }
+    },
+    style: {
+      type: 'string',
+      description: `The style used to render this table in the source material.
+
+        * embed_as_column: This table appears as a column of a table that corresponds to its OracleCollection parent.
+        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.
+        * table: A standard table, typically with a roll column and a result column.
+        `,
+      enum: ['embed_as_column', 'embed_in_row', 'table'],
+      default: 'table'
+    }
+  }
 }
 
 export const OracleTable: Schema<Types.OracleTable> = {
@@ -15,6 +101,8 @@ export const OracleTable: Schema<Types.OracleTable> = {
     source: { $ref: '#/$defs/Source' },
     summary: { $ref: '#/$defs/MarkdownSentences' },
     description: { $ref: '#/$defs/MarkdownParagraphs' },
+    suggestions: { $ref: '#/$defs/Suggestions' },
+    rendering: { $ref: '#/$defs/OracleTableRendering' },
     match: {
       title: 'Oracle match behavior',
       description: 'A handful of oracles have special behavior of a match.',

@@ -1,10 +1,11 @@
-import { type Localize, type Progress } from 'src/types'
-import { type Cyclopedia } from 'src/types/abstract'
-import { type MarkdownSentences } from 'src/types/localize'
+import { type Localize, type Progress } from '@df-types'
+import { type Cyclopedia } from '@df-types/abstract'
+import { type MarkdownSentences } from '@df-types/localize'
 
 // TODO
 export type EncounterClassicID = string
 export type EncounterStarforgedID = string
+export type EncounterID = EncounterClassicID | EncounterStarforgedID
 
 export type EncounterNatureStarforged = string
 export type EncounterNatureClassic = string

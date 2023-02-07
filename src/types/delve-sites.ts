@@ -4,8 +4,8 @@ import {
   type Encounters,
   type Oracles,
   type Metadata
-} from 'src/types'
-import { type Range, type Node } from 'src/types/abstract'
+} from '@df-types'
+import { type Range, type Node } from '@df-types/abstract'
 
 export type DelveSiteID = string
 export interface DelveSite extends Node<DelveSiteID> {

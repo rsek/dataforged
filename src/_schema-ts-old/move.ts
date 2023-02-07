@@ -1,6 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from 'src/json-schema/attributes'
-import { dfRecordSchema } from './utils'
+import { DF_KEY } from '@df-json-schema/attributes'
+import { dfRecordSchema } from './utils.js'
 
 export const MoveExtension: JSONSchema7 = {
   title: 'MoveExtension',
@@ -38,8 +38,8 @@ export const MoveExtensionBase: JSONSchema7 = {
   }
 }
 
-export const MoveCollection: JSONSchema7 = {
-  title: 'MoveCollection',
+export const MoveCategory: JSONSchema7 = {
+  title: 'MoveCategory',
   type: 'object',
   properties: {
     title: {
@@ -123,7 +123,7 @@ export const Move: JSONSchema7 = {
     },
     category: {
       description: "The ID of the move's category.",
-      $ref: '#/$defs/MoveCollectionID'
+      $ref: '#/$defs/MoveCategoryID'
     },
     source: {
       $ref: '#/$defs/Source'
@@ -134,7 +134,7 @@ export const Move: JSONSchema7 = {
 const defs: Record<string, JSONSchema7> = {
   MoveExtension,
   MoveExtensionBase,
-  MoveCollection,
+  MoveCategory,
   Move,
   TriggerOptionAction: {
     allOf: [

@@ -2,22 +2,18 @@
   "name": "dataforged",
   "version": "2.0.0-2",
   "description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
-  "type": "commonjs",
+  "type": "module",
   "prettier": "prettier-config-standard",
   "exports": {
     ".": {
-      "import": "./dist/index-esm.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     }
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "build:inputSchema": "ts-node ./src/scripts/build-input-schema && ts-node ./src/scripts/build-ts-types",
-    "build:cjs": "tsc --project tsconfig-cjs.json",
-    "build:esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
-    "build": "yarn build-cjs && yarn build-esm",
-    "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json",
-    "postversion": "yarn readme && git add README.md"
+    "build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
+    "build:inputSchema": "node ./dist/scripts/build-input-schema.js",
+    "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
   },
   "files": [
     "dist",
@@ -49,11 +45,13 @@
   "homepage": "https://rsek.github.io/dataforged",
   "readme": "https://rsek.github.io/dataforged",
   "devDependencies": {
+    "@swc/core": "^1.3.32",
     "@types/json-schema": "^7.0.11",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "ajv": "8.11.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "ajv": "^8.12.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -69,6 +67,8 @@
     "prettier": "^2.8.3",
     "prettier-config-standard": "^5.0.0",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
+    "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.5"
   },
   "packageManager": "yarn@3.4.1",

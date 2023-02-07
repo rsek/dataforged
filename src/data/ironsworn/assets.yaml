@@ -51,7 +51,7 @@ ironsworn:
             - name: Eager
               text: |-
                 When your cat chases down big game, you may [Resupply](ironsworn/moves/adventure/resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/adventure/resupply
                   trigger:
@@ -65,7 +65,7 @@ ironsworn:
             - name: Inescapable
               text: |-
                 When you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) or [Strike](ironsworn/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/combat/enter_the_fray
                     - ironsworn/moves/combat/strike
@@ -81,7 +81,7 @@ ironsworn:
             - name: Protective
               text: |-
                 When you [Make Camp](ironsworn/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/make_camp]
                   text: Your cat is alert to trouble.
                   outcomes:
@@ -117,7 +117,7 @@ ironsworn:
             - name: Discreet
               text: |-
                 When you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/adventure/secure_an_advantage
                   trigger:
@@ -133,7 +133,7 @@ ironsworn:
             - name: Soul-Piercing
               text: |-
                 You may [Face Danger](ironsworn/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](ironsworn/moves/adventure/gather_information) and reroll any dice.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/face_danger]
                   trigger:
                     options:
@@ -150,7 +150,7 @@ ironsworn:
             - name: Ensnaring
               text: |-
                 When your spider sets a trap, add +1 as you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/combat/enter_the_fray]
                   trigger:
                     options:
@@ -190,7 +190,7 @@ ironsworn:
             - name: Far-seeing
               text: |-
                 When you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), or when you [Resupply](ironsworn/moves/adventure/resupply) by hunting for small game, add +1.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/undertake_a_journey]
                   text: Add +1.
                 - _moves: [ironsworn/moves/adventure/resupply]
@@ -203,7 +203,7 @@ ironsworn:
             - name: Fierce
               text: |-
                 When you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/secure_an_advantage]
                   trigger:
                     options:
@@ -216,7 +216,7 @@ ironsworn:
             - name: Vigilant
               text: |-
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) +wits against an ambush, add +2.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/face_danger]
                   trigger:
                     options:
@@ -260,7 +260,7 @@ ironsworn:
             - name: Swift
               text: |-
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), add +1.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/undertake_a_journey]
                   text: Add +1.
                 - _moves: [ironsworn/moves/adventure/face_danger]
@@ -274,7 +274,7 @@ ironsworn:
             - name: Fearless
               text: |-
                 When you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) or [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/combat/enter_the_fray
                     - ironsworn/moves/adventure/secure_an_advantage
@@ -289,7 +289,7 @@ ironsworn:
             - name: Mighty
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) or [Clash](ironsworn/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/combat/strike
                     - ironsworn/moves/combat/clash
@@ -333,7 +333,7 @@ ironsworn:
             - name: Sharp
               text: |-
                 When you [Gather Information](ironsworn/moves/adventure/gather_information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/adventure/gather_information
                   trigger:
@@ -345,7 +345,7 @@ ironsworn:
             - name: Ferocious
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) or [Clash](ironsworn/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/combat/strike
                     - ironsworn/moves/combat/clash
@@ -360,7 +360,7 @@ ironsworn:
                     weak_hit: *Hound.3
             - name: Loyal
               text: When you [Endure Stress](ironsworn/moves/suffer/endure_stress) in the company of your hound, add +1.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/suffer/endure_stress]
                   trigger:
                     options:
@@ -403,7 +403,7 @@ ironsworn:
                   label: Expertise
                   position: ability-1-bottom
                   value: null
-              alter_moves:
+              extend_moves:
                 - _moves: null
                   trigger:
                     options:
@@ -414,7 +414,7 @@ ironsworn:
             - name: Shield-Kin
               text: |-
                 When you [Clash](ironsworn/moves/combat/clash) or [Battle](ironsworn/moves/combat/battle) alongside your companion, or when you [Face Danger](ironsworn/moves/adventure/face_danger) against an attack by standing together, add +1.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/combat/clash
                     - ironsworn/moves/combat/battle
@@ -435,7 +435,7 @@ ironsworn:
             - name: Bonded
               text: |-
                 Once you mark a bond with your companion, add +1 when you [Face Desolation](ironsworn/moves/suffer/face_desolation) in their presence.
-              alter_moves:
+              extend_moves:
                 # TODO revisit later, consider removing or adding trigger info?
                 - _moves: [ironsworn/moves/suffer/face_desolation]
                   text: Once you mark a bond with your companion, add +1 when you [Face Desolation](ironsworn/moves/suffer/face_desolation) in their presence.
@@ -582,7 +582,7 @@ ironsworn:
             - name: Savage
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/combat/strike]
                   trigger:
                     options:
@@ -728,7 +728,7 @@ ironsworn:
               # fixme: property for health/momentum/impact adjustment
             - text: |-
                 you_have_stared_down_death_before: When you are at 0 health and [Endure Harm](ironsworn/moves/suffer/endure_harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/suffer/endure_harm]
                   trigger:
                     options:
@@ -796,7 +796,7 @@ ironsworn:
             - text: |-
                 You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](ironsworn/moves/adventure/face_danger), [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage), [Compel](ironsworn/moves/relationship/compel), or [Battle](ironsworn/moves/combat/battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](ironsworn/moves/adventure/make_camp) or [Sojourn](ironsworn/moves/relationship/sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.
               enabled: true
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/adventure/face_danger
                     - ironsworn/moves/adventure/secure_an_advantage
@@ -810,7 +810,7 @@ ironsworn:
                           - ironsworn/assets/path/commander/attributes/strength
             - text: |-
                 You may dispatch scouts from your warband to [Gather Information](ironsworn/moves/adventure/gather_information) or [Resupply](ironsworn/moves/adventure/resupply); if you do, roll +strength.
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/adventure/gather_information
                     - ironsworn/moves/adventure/resupply
@@ -916,7 +916,7 @@ ironsworn:
               enabled: true
             - text: |-
                 When you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/quest/swear_an_iron_vow]
                   trigger:
                     options:
@@ -926,7 +926,7 @@ ironsworn:
                           - ironsworn/assets/path/devotant/attributes/stat
             - text: |-
                 When you [Sojourn](ironsworn/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/relationship/sojourn]
                   trigger:
                     options:
@@ -1070,7 +1070,7 @@ ironsworn:
           abilities:
             - text: |-
                 When you [Check Your Gear](ironsworn_delve/moves/delve/check_your_gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn_delve/moves/delve/check_your_gear]
                   trigger:
                     options:
@@ -1099,7 +1099,7 @@ ironsworn:
               enabled: true
             - text: |-
                 When you [Gather Information](ironsworn/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/gather_information]
                   trigger:
                     options:
@@ -1114,7 +1114,7 @@ ironsworn:
                         text: Within an enemy area area through observation
             - text: |-
                 When you [Resupply](ironsworn/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/resupply]
                   trigger:
                     options:
@@ -1208,7 +1208,7 @@ ironsworn:
                 As above, and you may instead add +2 and suffer -2 (decide before rolling).
             - text: |-
                 When you [Face Death](ironsworn/moves/suffer/face_death) or [Face Desolation](ironsworn/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).
-              alter_moves:
+              extend_moves:
                 - _moves:
                     - ironsworn/moves/suffer/face_death
                     - ironsworn/moves/suffer/face_desolation
@@ -1316,7 +1316,7 @@ ironsworn:
                     miss: *move:Generic.Miss
             - text: |-
                 As above, and you may roll +shadow (instead of +heart) when you [Sojourn](ironsworn/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/relationship/sojourn]
                   trigger:
                     options:
@@ -1414,7 +1414,7 @@ ironsworn:
                 you_are_attuned_to_the_realms_of_shadow: When you perform a ritual, add +1.
             - text: |-
                 you_know_the_sly_ways_of_death: When you [Face Death](ironsworn/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/suffer/face_death]
                   trigger:
                     options:
@@ -1524,7 +1524,7 @@ ironsworn:
               enabled: true
             - text: |-
                 When you [Gather Information](ironsworn/moves/adventure/gather_information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/gather_information]
                   trigger:
                     options:
@@ -1536,7 +1536,7 @@ ironsworn:
 
                   * Keep your secret: Roll +shadow (instead of +heart).
                   * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/relationship/forge_a_bond]
                   trigger:
                     options:
@@ -1652,7 +1652,7 @@ ironsworn:
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) or [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) by hiding or sneaking in the woodlands, add +1 and take +1 momentum on a hit.
             - text: |-
                 When you [Make Camp](ironsworn/moves/adventure/make_camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.
-              alter_moves:
+              extend_moves:
                 - _moves: [ironsworn/moves/adventure/make_camp]
                   trigger:
                     options:

@@ -2,8 +2,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "javascript.preferences.quoteStyle": "single",
-  "typescript.preferences.quoteStyle": "single",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifierEnding": "minimal",
@@ -11,7 +9,7 @@
   "npm.packageManager": "yarn",
   "typescript.suggest.jsdoc.generateReturns": false,
   "yaml.schemas": {
-    "src/data/schema.json": ["src/data/**/*.yaml"]
+    "src/data/schema-input.json": ["src/data/**/*.yaml"]
   },
   "editor.suggest.showDeprecated": false,
   "editor.formatOnSave": true,
@@ -28,10 +26,13 @@
   "prettier.enable": true,
   "prettier.requireConfig": false,
   "yaml.format.enable": false,
-  "prettier.documentSelectors": ["*.ts", "*.cjs", "*.json", "*.yaml"],
+  "prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
   "eslint.lintTask.enable": true,
   "eslint.packageManager": "yarn",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "CodeRun.typescript": [
+    "ts-node -e --cwd --esm --swc --experimental-specifier-resolution node"
+  ]
 }

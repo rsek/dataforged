@@ -1,9 +1,9 @@
-import { type OracleCollection } from 'src/types/collections'
-import { type OracleTableRow, type OracleTable } from 'src/types/oracles'
+import { type OracleCollection } from '@df-types/collections'
+import { type OracleTableRow, type OracleTable } from '@df-types/oracles'
 import {
   type DescriptorFocusRow,
   type PrecursorVaultRow
-} from 'src/types/templates/common'
+} from '@df-types/templates/common'
 
 export interface PlanetOracles extends OracleCollection {
   collections: {

@@ -1,5 +1,5 @@
-import { type Metadata, type Assets, type Localize } from 'src/types'
-import { type Node } from 'src/types/abstract'
+import { type Metadata, type Assets, type Localize } from '@df-types'
+import { type Node } from '@df-types/abstract'
 
 export type RarityID = string
 

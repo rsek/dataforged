@@ -1,5 +1,5 @@
-import { type Moves, type Localize } from 'src/types'
-import { type Node } from 'src/types/abstract'
+import { type Moves, type Localize } from '@df-types'
+import { type Node } from '@df-types/abstract'
 
 // TODO: make these ruleset sensitive
 

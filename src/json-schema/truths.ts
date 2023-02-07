@@ -55,7 +55,7 @@ export const SettingTruth: JSONSchema7 = {
   }
 }
 
-const SettingTruthStarforged: JSONSchema7 = {
+export const SettingTruthStarforged: JSONSchema7 = {
   allOf: [
     {
       $ref: '#/$defs/SettingTruth'

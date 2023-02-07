@@ -1,6 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
 
-export const DF_KEY = /$[a-z][a-z_]*[a-z]^/.source
+export const DF_KEY = /^[a-z][a-z_]*[a-z]$/.source
 
 const $defs: Record<string, JSONSchema7> = {
   CustomStat: {
