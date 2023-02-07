@@ -80,7 +80,6 @@ const oracleTableRenderDefault: Types.OracleTableRendering = {
 
 export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
   type: 'object',
-  required: ['style'],
   additionalProperties: false,
   default: oracleTableRenderDefault,
   properties: {

@@ -39,7 +39,7 @@
 * names are now provided for Ironsworn ritual moves (so their IDs may have changed)
 * the URIs provided by `image` and `icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;) they're also lower cased, both to match with the new `$id`s and to be a little more predictable for use on the web
     * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
-    * new: `img/vector/oracles/creature/environment/space.svg`
+    * new: `icon/oracles/creature/environment/space.svg`
 
 #### Oracles
 

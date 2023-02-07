@@ -1,21 +1,26 @@
 import { Localize } from '@df-types'
 import { OracleTableRoll } from '@df-types/oracles'
 
+export type OracleRowAttribute = 'location' | 'region'
+
 export interface ObjectTemplate {
   name: Localize.Label
   attributes: Record<string, ObjectTemplateAttribute>
+
+  // ability to extend another game object
 }
 
 export interface ObjectTemplateAttribute {
   label: Localize.Label
   min: number
   max: number
+  dependents?: ObjectTemplateAttribute[]
+  // requirement -- by attribute? by regex?
 }
 export interface ObjectTemplateRoll extends OracleTableRoll {
   // way to express "depends on"...
   // way to make specific results point to? by ID perhaps?
   // option for regex of an ID?
-  // ability to extend another game object
   // schema for table results? then some can be provided as empty results.
 }
 

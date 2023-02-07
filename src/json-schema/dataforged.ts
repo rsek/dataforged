@@ -100,7 +100,11 @@ export const SchemaInput: JSONSchema7 = {
   required: ['_ruleset', '_source'],
   properties: {
     _ruleset: { $ref: '#/$defs/Ruleset' },
-    _source: { $ref: '#/$defs/Source' }
+    _source: {
+      $ref: '#/$defs/Source',
+      description:
+        "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
+    }
   },
   patternProperties: SchemaJson.patternProperties
 }

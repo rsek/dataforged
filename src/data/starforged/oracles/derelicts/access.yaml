@@ -1,136 +1,137 @@
-source:
+_source:
   authors: [Shawn Tomkin]
   title: "Ironsworn: Starforged Rulebook"
   license: https://creativecommons.org/licenses/by/4.0
-collections:
-  derelicts:
-    title:
-      canonical: Derelicts
-    _source:
-      date: 2022-05-06
-    collections:
-      access:
-        _templateOracleSet: *template.category:Zone
-        _templateVars:
-          zone: Access
-        title:
-          canonical: Access
-        _source:
-          page: 352
-        contents:
-          area:
-            _templateOracleTable: *template.info:Zone.Area
-            table:
-              - low: 1
-                high: 50
-                result: Corridor
-              - low: 51
-                high: 60
-                result: Stairs
-              - low: 61
-                high: 70
-                result: Lift or elevator
-              - low: 71
-                high: 80
-                result: Catwalk or bridge
-              - low: 81
-                high: 85
-                result: Vertical shaft or ladder
-              - low: 86
-                high: 90
-                result: Hub or intersection
-              - low: 91
-                high: 95
-                result: Crawl space or duct
-              - low: 96
-                high: 100
-                result: Airlock or external
-          feature:
-            _templateOracleTable: *template.info:Zone.Feature
-            table:
-              - low: 1
-                high: 5
-                result: Abandoned gear
-              - low: 6
-                high: 10
-                result: Blood trail
-              - low: 11
-                high: 15
-                result: Breached door or hatch
-              - low: 16
-                high: 20
-                result: Control or terminal station
-              - low: 21
-                high: 25
-                result: Corpse
-              - low: 26
-                high: 30
-                result: Dismantled equipment
-              - low: 31
-                high: 35
-                result: Flashing strobes
-              - low: 36
-                high: 40
-                result: Leaking pipes
-              - low: 41
-                high: 45
-                result: Makeshift barricade
-              - low: 46
-                high: 50
-                result: Opened or missing panels
-              - low: 51
-                high: 55
-                result: Organic growths
-              - low: 56
-                high: 60
-                result: Ruined bot
-              - low: 61
-                high: 65
-                result: Scrawled warning
-              - low: 66
-                high: 70
-                result: Sealed breach
-              - low: 71
-                high: 75
-                result: Sounds of movement
-              - low: 76
-                high: 80
-                result: Steam or smoke
-              - low: 81
-                high: 85
-                result: Wandering bot
-              - low: 86
-                high: 90
-                result: Windows or viewports
-              - low: 91
-                high: 95
-                result: Wrecked passage or debris
-              - low: 96
-                high: 100
-                result: *result:Descriptor+Focus
-          peril:
-            _templateOracleTable: *template.info:Zone.Peril
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Peril
-              content:
-                - Alarm or failsafe is triggered
-                - Automated defenses
-                - Blocked or sealed path
-                - Dreadful scene of death or violence
-                - Foe closes in
-                - Gear is failing or broken
-                - Hazardous environmental change
-                - Path is trapped
-                - Unsettling sound or disturbance
-                - *result:Action+Theme
-                - *result:RollTwice
-          opportunity:
-            _templateOracleTable: *template.info:Zone.Opportunity
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Opportunity
-              content:
-                - Directions, shortcut, or alternate path
-                - Encounter with a friendly survivor, explorer, or denizen
-                - Hopeful signs of life
-                - Opening to outmaneuver or escape a threat or foe
-                - Useful equipment
+  date: 2022-05-06
+starforged:
+  oracles:
+    derelicts:
+      $schema: ./schema-derelict-zone.json
+      title:
+        canonical: Derelicts
+      collections:
+        access:
+          _templateOracleSet: *template.category:Zone
+          _templateVars:
+            zone: Access
+          title:
+            canonical: Access
+          _source:
+            page: 352
+          contents:
+            area:
+              _templateOracleTable: *template.info:Zone.Area
+              table:
+                - low: 1
+                  high: 50
+                  result: Corridor
+                - low: 51
+                  high: 60
+                  result: Stairs
+                - low: 61
+                  high: 70
+                  result: Lift or elevator
+                - low: 71
+                  high: 80
+                  result: Catwalk or bridge
+                - low: 81
+                  high: 85
+                  result: Vertical shaft or ladder
+                - low: 86
+                  high: 90
+                  result: Hub or intersection
+                - low: 91
+                  high: 95
+                  result: Crawl space or duct
+                - low: 96
+                  high: 100
+                  result: Airlock or external
+            feature:
+              _templateOracleTable: *template.info:Zone.Feature
+              table:
+                - low: 1
+                  high: 5
+                  result: Abandoned gear
+                - low: 6
+                  high: 10
+                  result: Blood trail
+                - low: 11
+                  high: 15
+                  result: Breached door or hatch
+                - low: 16
+                  high: 20
+                  result: Control or terminal station
+                - low: 21
+                  high: 25
+                  result: Corpse
+                - low: 26
+                  high: 30
+                  result: Dismantled equipment
+                - low: 31
+                  high: 35
+                  result: Flashing strobes
+                - low: 36
+                  high: 40
+                  result: Leaking pipes
+                - low: 41
+                  high: 45
+                  result: Makeshift barricade
+                - low: 46
+                  high: 50
+                  result: Opened or missing panels
+                - low: 51
+                  high: 55
+                  result: Organic growths
+                - low: 56
+                  high: 60
+                  result: Ruined bot
+                - low: 61
+                  high: 65
+                  result: Scrawled warning
+                - low: 66
+                  high: 70
+                  result: Sealed breach
+                - low: 71
+                  high: 75
+                  result: Sounds of movement
+                - low: 76
+                  high: 80
+                  result: Steam or smoke
+                - low: 81
+                  high: 85
+                  result: Wandering bot
+                - low: 86
+                  high: 90
+                  result: Windows or viewports
+                - low: 91
+                  high: 95
+                  result: Wrecked passage or debris
+                - low: 96
+                  high: 100
+                  result: *result:Descriptor+Focus
+            peril:
+              _templateOracleTable: *template.info:Zone.Peril
+              _templateTableRows:
+                rolls: *template.rolls:Zone.Peril
+                content:
+                  - Alarm or failsafe is triggered
+                  - Automated defenses
+                  - Blocked or sealed path
+                  - Dreadful scene of death or violence
+                  - Foe closes in
+                  - Gear is failing or broken
+                  - Hazardous environmental change
+                  - Path is trapped
+                  - Unsettling sound or disturbance
+                  - *result:Action+Theme
+                  - *result:RollTwice
+            opportunity:
+              _templateOracleTable: *template.info:Zone.Opportunity
+              _templateTableRows:
+                rolls: *template.rolls:Zone.Opportunity
+                content:
+                  - Directions, shortcut, or alternate path
+                  - Encounter with a friendly survivor, explorer, or denizen
+                  - Hopeful signs of life
+                  - Opening to outmaneuver or escape a threat or foe
+                  - Useful equipment
