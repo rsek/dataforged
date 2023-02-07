@@ -14,6 +14,7 @@ export const OracleTableColumn: Schema<Types.OracleTableColumn> = {
   properties: {
     content_type: {
       type: 'string',
+      description: `'range' displays the number range. 'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.`,
       enum: ['result', 'summary', 'description', 'range']
     },
     label: { $ref: '#/$defs/Label' }
@@ -54,11 +55,17 @@ export const OracleCollectionColumn: Schema<
   Types.OracleCollectionColumn<Types.OracleTableColumn>
 > = {
   type: 'object',
-  required: ['content_type', 'content_source'],
+  required: ['content_type', 'table_key'],
   additionalProperties: false,
   properties: {
     ...OracleTableColumn.properties,
-    content_source: { $ref: '#/$defs/OracleTableID' }
+    table_key: {
+      description:
+        "A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
+      type: 'string',
+      pattern: DF_KEY
+    },
+    color: { $ref: '#/$defs/Color' }
   },
   oneOf: OracleTableColumn.oneOf
 }
@@ -74,32 +81,37 @@ const oracleTableRenderDefault: Types.OracleTableRendering = {
 export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
   type: 'object',
   required: ['style'],
+  additionalProperties: false,
   default: oracleTableRenderDefault,
   properties: {
+    style: {
+      type: 'string',
+      description: `The style used to render this table in the source material.
+
+        * embed_as_column: This table appears as a column of a table handled by its OracleCollection parent.
+        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.
+        * table: A standard table, typically with a roll column and a result column.
+        `,
+      enum: ['embed_as_column', 'embed_in_row', 'table'],
+      default: oracleTableRenderDefault.style
+    },
+
+    icon: { $ref: '#/$defs/Icon' },
+    color: { $ref: '#/$defs/Color' },
     columns: {
       type: 'object',
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/OracleTableColumn' } as any
       },
       default: oracleTableRenderDefault.columns
-    } as any,
-    style: {
-      type: 'string',
-      description: `The style used to render this table in the source material.
-
-        * embed_as_column: This table appears as a column of a table that corresponds to its OracleCollection parent.
-        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.
-        * table: A standard table, typically with a roll column and a result column.
-        `,
-      enum: ['embed_as_column', 'embed_in_row', 'table'],
-      default: oracleTableRenderDefault.style
-    }
+    } as any
   }
 }
 
 export const OracleTable: Schema<Types.OracleTable> = {
   type: 'object',
   required: ['_id', 'title', 'source', 'table'],
+  additionalProperties: false,
   properties: {
     _id: { $ref: '#/$defs/OracleTableID' },
     title: { $ref: '#/$defs/Title' },
@@ -110,7 +122,7 @@ export const OracleTable: Schema<Types.OracleTable> = {
     rendering: { $ref: '#/$defs/OracleTableRendering' },
     match: {
       title: 'Oracle match behavior',
-      description: 'A handful of oracles have special behavior of a match.',
+      description: 'A handful of oracles have special behavior on a match.',
       type: 'object',
       required: ['text'],
       properties: { text: { $ref: '#/$defs/MarkdownSentences' } }

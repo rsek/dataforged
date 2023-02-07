@@ -34,11 +34,13 @@ export const OracleCollection: Schema<Types.OracleCollection> = {
     } as any,
     contents: {
       type: 'object',
+      description: 'The OracleTables contained by this OracleCollection.',
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/OracleTable' }
       }
     } as any,
     collections: {
+      description: 'OracleCollections contained by this OracleCollection.',
       type: 'object',
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/OracleCollection' }

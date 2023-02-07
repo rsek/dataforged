@@ -254,17 +254,13 @@ export const OracleTable: JSONSchema7 = _.merge(BaseOracle, {
   required: ['table'],
   additionalProperties: false,
   properties: {
-    _id: {
-      // TODO: figure out ID type
-    },
-    content: {},
+    _id: { $ref: '#/$defs/OracleTableID' },
+    // content: {},
+    icon: { $ref: '#/$defs/Icon' },
     match: {
       title: 'OracleMatchBehaviour',
       type: 'object',
       properties: {
-        _id: {
-          $ref: '#/$defs/ID'
-        },
         text: {
           $ref: '#/$defs/LocalizedMarkdown'
         }
@@ -272,10 +268,10 @@ export const OracleTable: JSONSchema7 = _.merge(BaseOracle, {
       additionalProperties: false,
       required: ['text']
     },
-    requires: {
-      title: 'OracleRequirements',
-      type: 'object'
-    },
+    // requires: {
+    //   title: 'OracleRequirements',
+    //   type: 'object'
+    // },
     render: {
       title: 'OracleTableRenderMetadata',
       type: 'object',

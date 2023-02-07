@@ -21,6 +21,13 @@ export const Title: Schema<Types.Title> = {
   }
 }
 
+export const Color: Schema<Types.Color> = {
+  type: 'string',
+  pattern: /^#([A-f0-9]{2}){3}$/.source,
+  description:
+    'A CSS hex color. Use it to provide thematic accents when rendering this item.'
+}
+
 export const Icon: Schema<Types.Icon> = {
   type: 'string',
   format: 'uri',

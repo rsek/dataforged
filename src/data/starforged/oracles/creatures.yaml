@@ -1,61 +1,66 @@
 _ruleset: starforged
+_source:
+  title: 'Ironsworn: Starforged Rulebook'
+  uri: https://ironswornrpg.com
+  authors:
+    - Shawn Tomkin
+  date: 2022-05-06
+  license: https://creativecommons.org/licenses/by/4.0
 starforged:
   oracles:
     creatures:
       title:
         canonical: Creatures
         short: Creature
-      source:
-        date: 2022-05-06
       summary: |-
         Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
       contents:
         environment:
           title:
             canonical: Environment
-          usage:
-            initial: true
-          source:
+          # usage:
+          #   initial: true
+          _source:
             page: 336
-          content:
-            part_of_speech: [noun]
+          # content:
+          #   part_of_speech: [noun]
           summary: |-
             Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
           table:
             - low: 1
               high: 5
               result: Space
-              rendering: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}
+              icon: &icon.Space img/vector/oracles/creature/environment/space.svg
               # set_attributes: {environment: [space]}, rolls: [starforged/oracles/creatures/basic_form/space]
             - low: 6
               high: 15
               result: Interior
-              rendering: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}
+              icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg
               # set_attributes: {environment: [interior]}, rolls: [starforged/oracles/creatures/basic_form/interior]
             - low: 16
               high: 55
               result: Land
-              rendering: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}
+              icon: &icon.Land img/vector/oracles/creature/environment/land.svg
               # set_attributes: {environment: [land]}, rolls: [starforged/oracles/creatures/basic_form/land]
             - low: 56
               high: 80
               result: Liquid
-              rendering: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}
+              icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg
               # set_attributes: {environment: [liquid]}, rolls: [starforged/oracles/creatures/basic_form/liquid]
             - low: 81
               high: 100
               result: Air
-              rendering: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}
+              icon: &icon.Air img/vector/oracles/creature/environment/air.svg
               # set_attributes: {environment: [air]}, rolls: [starforged/oracles/creatures/basic_form/air]
         scale:
           title:
             canonical: Scale
-          source:
+          _source:
             page: 336
-          usage:
-            initial: true
-          content:
-            part_of_speech: [adjective]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [adjective]
           table:
             - low: 1
               high: 3
@@ -84,16 +89,17 @@ starforged:
             - low: 100
               high: 100
               result: "[⏵Ultra-scale](starforged/oracles/creatures/ultra_scale)"
-              rolls: [starforged/oracles/creatures/ultra_scale]
+              rolls:
+                - oracle: starforged/oracles/creatures/ultra_scale
         ultra_scale:
           title:
             canonical: Ultra-scale
-          source:
+          _source:
             page: 336
-          content:
-            part_of_speech: [adjective]
-          usage:
-            initial: true
+          # content:
+          #   part_of_speech: [adjective]
+          # usage:
+          #   initial: true
           table:
             - low: 1
               high: 89
@@ -111,16 +117,16 @@ starforged:
           title:
             canonical: Creature First Look
             short: First Look
-          source:
+          _source:
             page: 338
-          usage:
-            initial: true
-            max_rolls: 2
+          # usage:
+          #   initial: true
+          #   max_rolls: 2
           summary: |-
             Roll for a basic form, and flesh out the creature’s appearance using the First Look table.
-          content:
-            part_of_speech: [fragment]
-            tags: [description, first look]
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [description, first look]
           table:
             - low: 1
               high: 2
@@ -275,14 +281,14 @@ starforged:
         encountered_behavior:
           title:
             canonical: Encountered Behavior
-          source:
+          _source:
             page: 338
           summary: |-
             Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
-          content:
-            part_of_speech: [noun, common noun]
-          usage:
-            initial: true
+          # content:
+          #   part_of_speech: [noun, common noun]
+          # usage:
+          #   initial: true
           table:
             - low: 1
               high: 5
@@ -371,14 +377,14 @@ starforged:
           title:
             canonical: Revealed Creature Aspect
             short: Revealed Aspect
-          source:
+          _source:
             page: 339
           description: |-
             Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
-          content:
-            part_of_speech: [fragment]
-          usage:
-            max_rolls: 2
+          # content:
+          #   part_of_speech: [fragment]
+          # usage:
+          #   max_rolls: 2
           table:
             - low: 1
               high: 2
@@ -535,41 +541,47 @@ starforged:
           title:
             short: Basic Form
             canonical: Creature Basic Form
-          source:
+          _source:
             page: 337
-          usage:
-            initial: true
-            requires:
-              attributes:
-                environment: null
-          content:
-            part_of_speech: [fragment]
+          # usage:
+          #   initial: true
+          #   requires:
+          #     attributes:
+          #       environment: null
+          # content:
+            # part_of_speech: [fragment]
           rendering:
+            style: multi_table
             columns:
                 space:
                   content_type: range
-                  content: starforged/oracles/creatures/basic_form/space
+                  table_key: space
                   label: Space
+                  color: &color.Space "#121b21"
                 interior:
                   content_type: range
-                  content: starforged/oracles/creatures/basic_form/interior
+                  table_key: interior
                   label: Interior
+                  color: &color.Interior "#707a83"
                 land:
                   content_type: range
-                  content: starforged/oracles/creatures/basic_form/land
+                  table_key: land
                   label: Land
+                  color: &color.Land "#ed1a38"
                 liquid:
                   content_type: range
-                  content: starforged/oracles/creatures/basic_form/liquid
+                  table_key: liquid
                   label: Liquid
+                  color: &color.Liquid "#0082bf"
                 air:
                   content_type: range
-                  content: starforged/oracles/creatures/basic_form/air
+                  table_key: air
                   label: Air
+                  color: &color.Air "#90278f"
                 result:
-                  content_type: string
-                  content: starforged/oracles/creatures/basic_form/space
-                  key: result
+                  content_type: result
+                  table_key: space
+                  label: Result
           summary: |-
             Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
           contents:
@@ -577,210 +589,407 @@ starforged:
               title:
                 canonical: Space
               rendering:
-                color: "#121b21"
                 icon: *icon.Space
-                column_of: starforged/oracles/creatures/basic_form
-              usage:
-                requires:
-                  attributes:
-                    environment: [space]
-              table: &table:Creatures.BasicForm
-                  - low: 1
-                    high: 5
-                    result: Amoeba / pseudopods
-                    rendering: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}
-                  - low: 6
-                    high: 20
-                    result: Amorphous / elemental
-                    rendering: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}
-                  - low: 21
-                    high: 30
-                    result: Avian / winged
-                    rendering: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}
-                  - low: 31
-                    high: 32
-                    result: Beast / mammal
-                    rendering: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}
-                  - low: 33
-                    high: 34
-                    result: Crustacean / shelled
-                    rendering: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}
-                  - low: 35
-                    high: 37
-                    result: Fish / torpedo-shaped
-                    rendering: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}
-                  - low: 38
-                    high: 39
-                    result: Humanoid / bipedal
-                    rendering: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}
-                  - low: 40
-                    high: 41
-                    result: Insectoid / exoskeletal
-                    rendering: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}
-                  - low: 42
-                    high: 60
-                    result: Jellyfish / gasbag
-                    rendering: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}
-                  - low: 61
-                    high: 62
-                    result: Lizard / reptilian
-                    rendering: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}
-                  - low: 63
-                    high: 67
-                    result: Octopoid / tentacled
-                    rendering: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}
-                  - low: 68
-                    high: 72
-                    result: Plant / fungus
-                    rendering: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}
-                  - low: 73
-                    high: 82
-                    result: Ray / flat-bodied
-                    rendering: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}
-                  - low: 83
-                    high: 84
-                    result: Snake / eel
-                    rendering: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}
-                  - low: 85
-                    high: 86
-                    result: Spider / web-weaver
-                    rendering: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}
-                  - low: 87
-                    high: 88
-                    result: Starfish / symmetrical
-                    rendering: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}
-                  - low: 89
-                    high: 90
-                    result: Worm / slug / larva
-                    rendering: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}
-                  - low: 91
-                    high: 100
-                    result: *result:RollTwice
+                style: embed_as_column
+                color: *color.Space
+              # usage:
+                # requires:
+                #   attributes:
+                #     environment: [space]
+              table:
+                - low: 1
+                  high: 5
+                  result: &BasicForm0.result Amoeba / pseudopods
+                  icon: &BasicForm0.icon img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg
+                - low: 6
+                  high: 20
+                  result: &BasicForm1.result Amorphous / elemental
+                  icon: &BasicForm1.icon img/vector/oracles/creature/basic_form/amorphous_elemental.svg
+                - low: 21
+                  high: 30
+                  result: &BasicForm2.result Avian / winged
+                  icon: &BasicForm2.icon img/vector/oracles/creature/basic_form/avian_winged.svg
+                - low: 31
+                  high: 32
+                  result: &BasicForm3.result Beast / mammal
+                  icon: &BasicForm3.icon img/vector/oracles/creature/basic_form/beast_mammal.svg
+                - low: 33
+                  high: 34
+                  result: &BasicForm4.result Crustacean / shelled
+                  icon: &BasicForm4.icon img/vector/oracles/creature/basic_form/crustacean_shelled.svg
+                - low: 35
+                  high: 37
+                  result: &BasicForm5.result Fish / torpedo-shaped
+                  icon: &BasicForm5.icon img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg
+                - low: 38
+                  high: 39
+                  result: &BasicForm6.result Humanoid / bipedal
+                  icon: &BasicForm6.icon img/vector/oracles/creature/basic_form/humanoid.svg
+                - low: 40
+                  high: 41
+                  result: &BasicForm7.result Insectoid / exoskeletal
+                  icon: &BasicForm7.icon img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg
+                - low: 42
+                  high: 60
+                  result: &BasicForm8.result Jellyfish / gasbag
+                  icon: &BasicForm8.icon img/vector/oracles/creature/basic_form/jellyish_gasbag.svg
+                - low: 61
+                  high: 62
+                  result: &BasicForm9.result Lizard / reptilian
+                  icon: &BasicForm9.icon img/vector/oracles/creature/basic_form/lizard_reptilian.svg
+                - low: 63
+                  high: 67
+                  result: &BasicForm10.result Octopoid / tentacled
+                  icon: &BasicForm10.icon img/vector/oracles/creature/basic_form/octopoid_tentacled.svg
+                - low: 68
+                  high: 72
+                  result: &BasicForm11.result Plant / fungus
+                  icon: &BasicForm11.icon img/vector/oracles/creature/basic_form/plant_fungus.svg
+                - low: 73
+                  high: 82
+                  result: &BasicForm12.result Ray / flat-bodied
+                  icon: &BasicForm12.icon img/vector/oracles/creature/basic_form/ray_flat_bodied.svg
+                - low: 83
+                  high: 84
+                  result: &BasicForm13.result Snake / eel
+                  icon: &BasicForm13.icon img/vector/oracles/creature/basic_form/snake_eel.svg
+                - low: 85
+                  high: 86
+                  result: &BasicForm14.result Spider / web-weaver
+                  icon: &BasicForm14.icon img/vector/oracles/creature/basic_form/spider_web_weaver.svg
+                - low: 87
+                  high: 88
+                  result: &BasicForm15.result Starfish / symmetrical
+                  icon: &BasicForm15.icon img/vector/oracles/creature/basic_form/starfish_symmetrical.svg
+                - low: 89
+                  high: 90
+                  result: &BasicForm16.result Worm / slug / larva
+                  icon: &BasicForm16.icon img/vector/oracles/creature/basic_form/worm_slug_larva.svg
+                - &BasicForm17
+                  low: 91
+                  high: 100
+                  result: *result:RollTwice
             interior:
               title:
                 canonical: Interior
               rendering:
-                color: "#707a83"
+                style: embed_as_column
+                color: *color.Interior
                 icon: *icon.Interior
-                column_of: starforged/oracles/creatures/basic_form
-              usage:
-                requires:
-                  attributes:
-                    environment: [interior]
-              _templateTableRows:
-                content: *table:Creatures.BasicForm
-                rolls:
-                  - [1, 3]
-                  - [4, 6]
-                  - [7, 12]
-                  - [13, 19]
-                  - [20, 22]
-                  - [23, 24]
-                  - [25, 37]
-                  - [38, 49]
-                  - [50, 51]
-                  - [52, 56]
-                  - [57, 58]
-                  - [59, 63]
-                  - [64, 65]
-                  - [66, 68]
-                  - [69, 83]
-                  - [84, 85]
-                  - [86, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       environment: [interior]
+              table:
+                - low: 1
+                  high: 3
+                  result: *BasicForm0.result
+                  icon: *BasicForm0.icon
+                - low: 4
+                  high: 6
+                  result: *BasicForm1.result
+                  icon: *BasicForm1.icon
+                - low: 7
+                  high: 12
+                  result: *BasicForm2.result
+                  icon: *BasicForm2.icon
+                - low: 13
+                  high: 19
+                  result: *BasicForm3.result
+                  icon: *BasicForm3.icon
+                - low: 20
+                  high: 22
+                  result: *BasicForm4.result
+                  icon: *BasicForm4.icon
+                - low: 23
+                  high: 24
+                  result: *BasicForm5.result
+                  icon: *BasicForm5.icon
+                - low: 25
+                  high: 37
+                  result: *BasicForm6.result
+                  icon: *BasicForm6.icon
+                - low: 38
+                  high: 49
+                  result: *BasicForm7.result
+                  icon: *BasicForm7.icon
+                - low: 50
+                  high: 51
+                  result: *BasicForm8.result
+                  icon: *BasicForm8.icon
+                - low: 52
+                  high: 56
+                  result: *BasicForm9.result
+                  icon: *BasicForm9.icon
+                - low: 57
+                  high: 58
+                  result: *BasicForm10.result
+                  icon: *BasicForm10.icon
+                - low: 59
+                  high: 63
+                  result: *BasicForm11.result
+                  icon: *BasicForm11.icon
+                - low: 64
+                  high: 65
+                  result: *BasicForm12.result
+                  icon: *BasicForm12.icon
+                - low: 66
+                  high: 68
+                  result: *BasicForm13.result
+                  icon: *BasicForm13.icon
+                - low: 69
+                  high: 83
+                  result: *BasicForm14.result
+                  icon: *BasicForm14.icon
+                - low: 84
+                  high: 85
+                  result: *BasicForm15.result
+                  icon: *BasicForm15.icon
+                - low: 86
+                  high: 90
+                  result: *BasicForm16.result
+                  icon: *BasicForm16.icon
+                - *BasicForm17
             land:
               title:
                 canonical: Land
               rendering:
-                color: "#ed1a38"
+                style: embed_as_column
+                color: *color.Land
                 icon: *icon.Land
-                column_of: starforged/oracles/creatures/basic_form
-              usage:
-                requires:
-                  attributes:
-                    environment: [land]
-              _templateTableRows:
-                content: *table:Creatures.BasicForm
-                rolls:
-                  - [1, 2]
-                  - [3, 5]
-                  - [6, 10]
-                  - [11, 25]
-                  - [26, 32]
-                  - [33, 34]
-                  - [35, 39]
-                  - [40, 49]
-                  - [50, 51]
-                  - [52, 58]
-                  - [59, 60]
-                  - [61, 65]
-                  - [66, 67]
-                  - [68, 74]
-                  - [75, 81]
-                  - [82, 83]
-                  - [84, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       environment: [land]
+              table:
+                - low: 1
+                  high: 2
+                  result: *BasicForm0.result
+                  icon: *BasicForm0.icon
+                - low: 3
+                  high: 5
+                  result: *BasicForm1.result
+                  icon: *BasicForm1.icon
+                - low: 6
+                  high: 10
+                  result: *BasicForm2.result
+                  icon: *BasicForm2.icon
+                - low: 11
+                  high: 25
+                  result: *BasicForm3.result
+                  icon: *BasicForm3.icon
+                - low: 26
+                  high: 32
+                  result: *BasicForm4.result
+                  icon: *BasicForm4.icon
+                - low: 33
+                  high: 34
+                  result: *BasicForm5.result
+                  icon: *BasicForm5.icon
+                - low: 35
+                  high: 39
+                  result: *BasicForm6.result
+                  icon: *BasicForm6.icon
+                - low: 40
+                  high: 49
+                  result: *BasicForm7.result
+                  icon: *BasicForm7.icon
+                - low: 50
+                  high: 51
+                  result: *BasicForm8.result
+                  icon: *BasicForm8.icon
+                - low: 52
+                  high: 58
+                  result: *BasicForm9.result
+                  icon: *BasicForm9.icon
+                - low: 59
+                  high: 60
+                  result: *BasicForm10.result
+                  icon: *BasicForm10.icon
+                - low: 61
+                  high: 65
+                  result: *BasicForm11.result
+                  icon: *BasicForm11.icon
+                - low: 66
+                  high: 67
+                  result: *BasicForm12.result
+                  icon: *BasicForm12.icon
+                - low: 68
+                  high: 74
+                  result: *BasicForm13.result
+                  icon: *BasicForm13.icon
+                - low: 75
+                  high: 81
+                  result: *BasicForm14.result
+                  icon: *BasicForm14.icon
+                - low: 82
+                  high: 83
+                  result: *BasicForm15.result
+                  icon: *BasicForm15.icon
+                - low: 84
+                  high: 90
+                  result: *BasicForm16.result
+                  icon: *BasicForm16.icon
+                - *BasicForm17
             liquid:
               title:
                 canonical: Liquid
               rendering:
-                color: "#0082bf"
+                style: embed_as_column
+                color: *color.Liquid
                 icon: *icon.Liquid
-                column_of: starforged/oracles/creatures/basic_form
-              usage:
-                requires:
-                  attributes:
-                    environment: [liquid]
-              _templateTableRows:
-                content: *table:Creatures.BasicForm
-                rolls:
-                  - [1, 5]
-                  - [6, 8]
-                  - [9, 11]
-                  - [12, 17]
-                  - [18, 24]
-                  - [25, 39]
-                  - [40, 42]
-                  - [43, 45]
-                  - [46, 53]
-                  - [54, 56]
-                  - [57, 63]
-                  - [64, 68]
-                  - [69, 75]
-                  - [76, 80]
-                  - [81, 82]
-                  - [83, 87]
-                  - [88, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       environment: [liquid]
+              table:
+                - low: 1
+                  high: 5
+                  result: *BasicForm0.result
+                  icon: *BasicForm0.icon
+                - low: 6
+                  high: 8
+                  result: *BasicForm1.result
+                  icon: *BasicForm1.icon
+                - low: 9
+                  high: 11
+                  result: *BasicForm2.result
+                  icon: *BasicForm2.icon
+                - low: 12
+                  high: 17
+                  result: *BasicForm3.result
+                  icon: *BasicForm3.icon
+                - low: 18
+                  high: 24
+                  result: *BasicForm4.result
+                  icon: *BasicForm4.icon
+                - low: 25
+                  high: 39
+                  result: *BasicForm5.result
+                  icon: *BasicForm5.icon
+                - low: 40
+                  high: 42
+                  result: *BasicForm6.result
+                  icon: *BasicForm6.icon
+                - low: 43
+                  high: 45
+                  result: *BasicForm7.result
+                  icon: *BasicForm7.icon
+                - low: 46
+                  high: 53
+                  result: *BasicForm8.result
+                  icon: *BasicForm8.icon
+                - low: 54
+                  high: 56
+                  result: *BasicForm9.result
+                  icon: *BasicForm9.icon
+                - low: 57
+                  high: 63
+                  result: *BasicForm10.result
+                  icon: *BasicForm10.icon
+                - low: 64
+                  high: 68
+                  result: *BasicForm11.result
+                  icon: *BasicForm11.icon
+                - low: 69
+                  high: 75
+                  result: *BasicForm12.result
+                  icon: *BasicForm12.icon
+                - low: 76
+                  high: 80
+                  result: *BasicForm13.result
+                  icon: *BasicForm13.icon
+                - low: 81
+                  high: 82
+                  result: *BasicForm14.result
+                  icon: *BasicForm14.icon
+                - low: 83
+                  high: 87
+                  result: *BasicForm15.result
+                  icon: *BasicForm15.icon
+                - low: 88
+                  high: 90
+                  result: *BasicForm16.result
+                  icon: *BasicForm16.icon
+                - *BasicForm17
             air:
               title:
                 canonical: Air
               rendering:
-                color: "#90278f"
+                style: embed_as_column
+                color: *color.Air
                 icon: *icon.Air
-                column_of: starforged/oracles/creatures/basic_form
-              usage:
-                requires:
-                  attributes:
-                    environment: [air]
-              _templateTableRows:
-                content: *table:Creatures.BasicForm
-                rolls:
-                  - [1, 2]
-                  - [3, 12]
-                  - [13, 37]
-                  - [38, 40]
-                  - [41, 42]
-                  - [43, 47]
-                  - [48, 49]
-                  - [50, 51]
-                  - [52, 66]
-                  - [67, 68]
-                  - [69, 70]
-                  - [71, 72]
-                  - [73, 82]
-                  - [83, 84]
-                  - [85, 86]
-                  - [87, 88]
-                  - [89, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       environment: [air]
+              table:
+                - low: 1
+                  high: 2
+                  result: *BasicForm0.result
+                  icon: *BasicForm0.icon
+                - low: 3
+                  high: 12
+                  result: *BasicForm1.result
+                  icon: *BasicForm1.icon
+                - low: 13
+                  high: 37
+                  result: *BasicForm2.result
+                  icon: *BasicForm2.icon
+                - low: 38
+                  high: 40
+                  result: *BasicForm3.result
+                  icon: *BasicForm3.icon
+                - low: 41
+                  high: 42
+                  result: *BasicForm4.result
+                  icon: *BasicForm4.icon
+                - low: 43
+                  high: 47
+                  result: *BasicForm5.result
+                  icon: *BasicForm5.icon
+                - low: 48
+                  high: 49
+                  result: *BasicForm6.result
+                  icon: *BasicForm6.icon
+                - low: 50
+                  high: 51
+                  result: *BasicForm7.result
+                  icon: *BasicForm7.icon
+                - low: 52
+                  high: 66
+                  result: *BasicForm8.result
+                  icon: *BasicForm8.icon
+                - low: 67
+                  high: 68
+                  result: *BasicForm9.result
+                  icon: *BasicForm9.icon
+                - low: 69
+                  high: 70
+                  result: *BasicForm10.result
+                  icon: *BasicForm10.icon
+                - low: 71
+                  high: 72
+                  result: *BasicForm11.result
+                  icon: *BasicForm11.icon
+                - low: 73
+                  high: 82
+                  result: *BasicForm12.result
+                  icon: *BasicForm12.icon
+                - low: 83
+                  high: 84
+                  result: *BasicForm13.result
+                  icon: *BasicForm13.icon
+                - low: 85
+                  high: 86
+                  result: *BasicForm14.result
+                  icon: *BasicForm14.icon
+                - low: 87
+                  high: 88
+                  result: *BasicForm15.result
+                  icon: *BasicForm15.icon
+                - low: 89
+                  high: 90
+                  result: *BasicForm16.result
+                  icon: *BasicForm16.icon
+                - *BasicForm17

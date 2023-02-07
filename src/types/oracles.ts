@@ -1,6 +1,6 @@
 import { type Node, type Range } from '@df-types/abstract'
 import { type Localize, type Metadata } from '@df-types'
-import { Title } from '@df-types/metadata'
+import { Icon, Title } from '@df-types/metadata'
 
 export type OracleTableID = string
 
@@ -29,11 +29,11 @@ interface OracleRenderingBase {
    */
   columns?: Record<string, OracleTableColumn>
   style?: OracleTableStyle
+  color?: Metadata.Color
 }
 
 export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
-  content_source: OracleTableID
-  // alt: point at a key?
+  table_key: OracleTableID
 }
 
 export interface OracleCollectionRendering extends OracleRenderingBase {
@@ -42,7 +42,9 @@ export interface OracleCollectionRendering extends OracleRenderingBase {
 }
 
 export interface OracleTableRendering extends OracleRenderingBase {
+  icon?: Icon
   style: Exclude<OracleTableStyle, 'multi_table'>
+  color?: Metadata.Color
 }
 
 interface OracleTableColumnBase {

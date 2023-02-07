@@ -29,17 +29,17 @@ starforged:
             columns:
               roll:
                 content_type: range
-                content_source: starforged/oracles/characters/name/given_name
+                table_key: given_name
                 label: Roll
               given_name:
                 content_type: result
-                content_source: starforged/oracles/characters/name/given_name
+                table_key: given_name
               family_name:
                 content_type: result
-                content_source: starforged/oracles/characters/name/family_name
+                table_key: family_name
               callsign:
                 content_type: result
-                content_source: starforged/oracles/characters/name/callsign
+                table_key: callsign
           # usage:
           #   initial: true
           contents:
@@ -54,9 +54,8 @@ starforged:
                   - starforged/oracles/characters/name/family_name
               rendering:
                 style: embed_as_column
-                column_of: starforged/oracles/characters/name
-              content:
-                part_of_speech: [proper noun]
+              # content:
+              #   part_of_speech: [proper noun]
               table:
                 - low: 1
                   high: 1
@@ -370,9 +369,8 @@ starforged:
                   - starforged/oracles/characters/name/family_name
               rendering:
                 style: embed_as_column
-                column_of: starforged/oracles/characters/name
-              content:
-                part_of_speech: [proper noun]
+              # content:
+              #   part_of_speech: [proper noun]
               table:
                 - low: 1
                   high: 1
@@ -680,15 +678,14 @@ starforged:
                 canonical: Family Name
               description: |-
                 Given and family names can be used independently as standalone names. In many cases you can reverse the order.
-              content:
-                part_of_speech: [proper noun]
+              # content:
+              #   part_of_speech: [proper noun]
               suggestions:
                 oracles:
                   - starforged/oracles/characters/name/given_name
                   - starforged/oracles/characters/name/callsign
               rendering:
                 style: embed_as_column
-                column_of: starforged/oracles/characters/name
               table:
                 - low: 1
                   high: 1
@@ -996,12 +993,12 @@ starforged:
             canonical: First Look
           _source:
             page: 330
-          content:
-            part_of_speech: [adjective]
-            tags: [first look]
-          usage:
-            initial: true
-            max_rolls: 2
+          # content:
+          #   part_of_speech: [adjective]
+          #   tags: [first look]
+          # usage:
+          #   initial: true
+          #   max_rolls: 2
           table:
             - low: 1
               high: 3
@@ -1126,10 +1123,10 @@ starforged:
             short: Disposition
           _source:
             page: 330
-          content:
-            part_of_speech: [adjective]
-          usage:
-            initial: true
+          # content:
+          #   part_of_speech: [adjective]
+          # usage:
+          #   initial: true
           table:
             - low: 1
               high: 6
@@ -1173,9 +1170,9 @@ starforged:
             short: Role
           _source:
             page: 331
-          content:
-            part_of_speech: [noun, common noun]
-            tags: [people, actor]
+          # content:
+          #   part_of_speech: [noun, common noun]
+          #   tags: [people, actor]
           table:
             - low: 1
               high: 2
@@ -1327,9 +1324,9 @@ starforged:
             short: Goal
           _source:
             page: 331
-          content:
-            part_of_speech: [fragment]
-            tags: [objective]
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [objective]
           table:
             - low: 1
               high: 2
@@ -1486,10 +1483,10 @@ starforged:
             page: 332
           description: |-
             As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.
-          content:
-            part_of_speech: [adjective]
-          usage:
-            max_rolls: 3
+          # content:
+          #   part_of_speech: [adjective]
+          # usage:
+          #   max_rolls: 3
           table:
             - low: 1
               high: 1

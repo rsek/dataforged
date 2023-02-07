@@ -10,6 +10,7 @@ export type Ruleset = 'classic' | 'starforged'
 export type ID = string
 export type Icon = string
 export type Image = string
+export type Color = string
 
 export interface Source {
   title: string
