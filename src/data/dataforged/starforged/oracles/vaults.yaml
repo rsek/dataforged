@@ -1,4 +1,10 @@
 _ruleset: starforged
+_source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  uri: https://ironswornrpg.com
 starforged:
   oracles:
     vaults:
@@ -6,10 +12,6 @@ starforged:
         canonical: Precursor Vaults
         short: Vault
       _source:
-        authors: [Shawn Tomkin]
-        title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-05-06
         page: 360
       description: |-
         When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.
@@ -29,10 +31,10 @@ starforged:
             canonical: Scale
           _source:
             page: 360
-          usage:
-            initial: true
-          content:
-            part_of_speech: [fragment]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
           table:
             - low: 1
               high: 30
@@ -54,10 +56,10 @@ starforged:
             canonical: Form
           _source:
             page: 360
-          usage:
-            initial: true
-          content:
-            part_of_speech: [noun, common noun]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [noun, common noun]
           table:
             - low: 1
               high: 35
@@ -73,16 +75,17 @@ starforged:
               result: Machine
             - low: 96
               high: 100
-              result: Incomprehensible, content: {part_of_speech: [adjective]}
+              result: Incomprehensible
+              # content: {part_of_speech: [adjective]}
         shape:
           title:
             canonical: Shape
           _source:
             page: 361
-          usage:
-            initial: true
-          content:
-            part_of_speech: [adjective]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [adjective]
           table:
             - low: 1
               high: 15
@@ -110,10 +113,12 @@ starforged:
               result: Organic or curved
             - low: 56
               high: 60
-              result: Platform or disc, content: {part_of_speech: [common noun]}
+              result: Platform or disc
+              # content: {part_of_speech: [common noun]}
             - low: 61
               high: 65
-              result: Spires or towers, content: {part_of_speech: [common noun, plural]}
+              result: Spires or towers
+              # content: {part_of_speech: [common noun, plural]}
             - low: 66
               high: 68
               result: Domed
@@ -138,10 +143,10 @@ starforged:
             canonical: Material
           _source:
             page: 361
-          usage:
-            initial: true
-          content:
-            part_of_speech: [adjective]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [adjective]
           table:
             - low: 1
               high: 30
@@ -166,7 +171,8 @@ starforged:
               result: Plant-like
             - low: 87
               high: 88
-              result: Energy, content: {part_of_speech: [common noun]}
+              result: Energy
+              # content: {part_of_speech: [common noun]}
             - low: 89
               high: 90
               result: Liquid
@@ -178,12 +184,12 @@ starforged:
             canonical: Outer First Look
           _source:
             page: 361
-          content:
-            part_of_speech: [fragment]
-            tags: [first look]
-          usage:
-            initial: true
-            max_rolls: 2
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [first look]
+          # usage:
+          #   initial: true
+          #   max_rolls: 2
           table:
             - low: 1
               high: 3
@@ -286,7 +292,8 @@ starforged:
             date: 2022-05-06
             license: https://creativecommons.org/licenses/by/4.0
           rendering:
-            icon: icons/Vaults/Interior.svg
+          # TODO: adjust schema so that the non-icon stuff is optional
+            icon: icons/vaults/interior.svg
           contents:
             first_look:
               _source:
@@ -294,13 +301,13 @@ starforged:
               title:
                 canonical: Inner First Look
                 short: First Look
-              usage:
-                initial: true
-                max_rolls: 2
-              content:
-                part_of_speech: [fragment]
-                tags: [first look]
-              description: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
+              # usage:
+              #   initial: true
+              #   max_rolls: 2
+              # content:
+              #   part_of_speech: [fragment]
+              #   tags: [first look]
+              summary: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
               table:
                 - low: 1
                   high: 3
@@ -404,10 +411,10 @@ starforged:
                 short: Feature
               _source:
                 page: 366
-              usage:
-                repeatable: true
-              content:
-                part_of_speech: [fragment]
+              # usage:
+              #   repeatable: true
+              # content:
+              #   part_of_speech: [fragment]
               table:
                 - low: 1
                   high: 3
@@ -507,7 +514,8 @@ starforged:
                   result: Vertical shaft
                 - low: 86
                   high: 90
-                  result: "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)", suggestions: {collections: [starforged/oracles/vaults/sanctum]}
+                  result: "Transition into the [⏵Sanctum](starforged/oracles/vaults/sanctum)"
+                  suggestions: {collections: [starforged/oracles/vaults/sanctum]}
                 - low: 91
                   high: 95
                   result: *result:Descriptor+Focus
@@ -520,12 +528,12 @@ starforged:
                 short: Peril
               _source:
                 page: 367
-              usage:
-                repeatable: true
-              description: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision a peril.
-              content:
-                part_of_speech: [fragment]
-                tags: [peril, event, present]
+              # usage:
+              #   repeatable: true
+              summary: Use this table to help envision a complication within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision a peril.
+              # content:
+              #   part_of_speech: [fragment]
+              #   tags: [peril, event, present]
               table:
                 - low: 1
                   high: 5
@@ -596,12 +604,12 @@ starforged:
                 short: Opportunity
               _source:
                 page: 367
-              usage:
-                repeatable: true
-              description: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision an opportunity.
-              content:
-                part_of_speech: [fragment]
-                tags: [opportunity]
+              # usage:
+              #   repeatable: true
+              summary: Use this table to help envision a favorable circumstance within a vault, such as when you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and are prompted to envision an opportunity.
+              # content:
+              #   part_of_speech: [fragment]
+              #   tags: [opportunity]
               table:
                 - low: 1
                   high: 10
@@ -638,7 +646,7 @@ starforged:
             canonical: Sanctum
           description: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
           rendering:
-            icon: icons/Vaults/Sanctum.svg
+            icon: icons/vaults/sanctum.svg
           _source:
             license: https://creativecommons.org/licenses/by/4.0
             authors: [Shawn Tomkin]
@@ -651,8 +659,8 @@ starforged:
               title:
                 canonical: Vault Purpose
                 short: Purpose
-              content:
-                part_of_speech: [fragment]
+              # content:
+              #   part_of_speech: [fragment]
               description: |-
                 Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
               table:
@@ -749,10 +757,10 @@ starforged:
               title:
                 canonical: Sanctum Feature
                 short: Feature
-              usage:
-                repeatable: true
-              content:
-                part_of_speech: [fragment]
+              # usage:
+              #   repeatable: true
+              # content:
+              #   part_of_speech: [fragment]
               table:
                 - low: 1
                   high: 2
@@ -865,11 +873,11 @@ starforged:
               title:
                 canonical: Sanctum Peril
                 short: Peril
-              usage:
-                repeatable: true
-              content:
-                part_of_speech: [fragment]
-                tags: [peril, event, present]
+              # usage:
+              #   repeatable: true
+              # content:
+              #   part_of_speech: [fragment]
+              #   tags: [peril, event, present]
               table:
                 - low: 1
                   high: 5
@@ -940,11 +948,11 @@ starforged:
                 short: Opportunity
               _source:
                 page: 369
-              usage:
-                repeatable: true
-              content:
-                part_of_speech: [fragment]
-                tags: [opportunity]
+              # usage:
+              #   repeatable: true
+              # content:
+              #   part_of_speech: [fragment]
+              #   tags: [opportunity]
               table:
                 - low: 1
                   high: 10

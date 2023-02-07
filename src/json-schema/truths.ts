@@ -19,7 +19,7 @@ export const WorldTruthClassic: JSONSchema7 = {
                 $ref: '#/$defs/MarkdownParagraphs'
               },
               quest_starter: {
-                $ref: '#/$defs/QuestStarter'
+                $ref: '#/$defs/MarkdownParagraph'
               }
             }
           }
@@ -34,7 +34,7 @@ export const SettingTruthOption: JSONSchema7 = {
   additionalProperties: false,
   properties: {
     quest_starter: {
-      $ref: '#/$defs/QuestStarter'
+      $ref: '#/$defs/MarkdownParagraph'
     }
   }
 }

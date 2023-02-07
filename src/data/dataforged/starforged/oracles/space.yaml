@@ -1,15 +1,16 @@
 _ruleset: starforged
+_source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2022-05-06
 starforged:
   oracles:
     space:
       title:
         canonical: Space Encounters
         short: Space
-      _source:
-        authors: [Shawn Tomkin]
-        title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-05-06
       collections:
         sighting:
           title:
@@ -18,25 +19,24 @@ starforged:
           _source:
             page: 300
           rendering:
+            style: multi_table
             columns:
               terminus:
-                content: starforged/oracles/space/sighting/terminus
-                label: Terminus
+                table_key: terminus
                 content_type: range
               outlands:
-                content: starforged/oracles/space/sighting/outlands
-                label: Outlands
+                table_key: outlands
                 content_type: range
               expanse:
-                content: starforged/oracles/space/sighting/expanse
-                label: Expanse
+                table_key: expanse
                 content_type: range
               result:
-                content: starforged/oracles/space/sighting/terminus
-                content_type: string
-          content:
-            part_of_speech: [fragment]
-          description: |-
+                table_key: terminus
+                content_type: result
+                label: Result
+          # content:
+          #   part_of_speech: [fragment]
+          summary: |-
             Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
           usage:
             allow_duplicates: true
@@ -48,18 +48,18 @@ starforged:
             terminus:
               title:
                 canonical: Terminus
-              rendering:
-                column_of: starforged/oracles/space/sighting
-              usage:
-                requires:
-                  attributes:
-                    region: [terminus]
+              # rendering:
+              #   column_of: starforged/oracles/space/sighting
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [terminus]
               table: &table:SpaceSighting
                 - low: 1
                   high: 15
                   result: "[⏵Stellar Object](starforged/oracles/space/stellar_object)"
                   rolls:
-                    - starforged/oracles/space/stellar_object
+                    - oracle: starforged/oracles/space/stellar_object
                 - low: 16
                   high: 35
                   result: "[⏵Planet](starforged/oracles/planets)"
@@ -130,11 +130,11 @@ starforged:
               title:
                 canonical: Outlands
               rendering:
-                column_of: starforged/oracles/space/sighting
-              usage:
-                requires:
-                  attributes:
-                    region: [outlands]
+                style: embed_as_column
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [outlands]
               _templateTableRows:
                 content: *table:SpaceSighting
                 rolls:

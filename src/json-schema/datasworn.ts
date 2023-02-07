@@ -1,12 +1,12 @@
 import { JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
-import { defsStarforged } from './definitions.js'
+import { defsClassic } from './definitions.js'
 import { type JSONSchemaType as Schema } from 'ajv'
 import { Metadata } from '@df-types'
 import { Source } from './metadata.js'
 import { DF_KEY } from './common.js'
 
-export const DATAFORGED_VERSION = '2.0.0'
+export const DATASWORN_VERSION = '2.0.0'
 
 // TODO: figure out if there's a sensible way to version the schema
 
@@ -38,10 +38,10 @@ function toInputDefinitions(defs: Record<string, JSONSchema7>) {
 
 export const SchemaJson: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
-  title: 'Dataforged',
+  title: 'Datasworn',
   description:
-    'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
-  $defs: defsStarforged as Record<string, JSONSchema7>,
+    'Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
+  $defs: defsClassic as Record<string, JSONSchema7>,
   type: 'object',
   additionalProperties: false,
   patternProperties: {
@@ -63,7 +63,7 @@ export const SchemaJson: JSONSchema7 = {
           type: 'object',
           additionalProperties: false,
           patternProperties: {
-            [DF_KEY]: { $ref: '#/$defs/MoveCategoryStarforged' }
+            [DF_KEY]: { $ref: '#/$defs/MoveCategoryClassic' }
           }
         },
         assets: {
@@ -71,23 +71,55 @@ export const SchemaJson: JSONSchema7 = {
           type: 'object',
           additionalProperties: false,
           patternProperties: {
-            [DF_KEY]: { $ref: '#/$defs/AssetTypeStarforged' }
+            [DF_KEY]: { $ref: '#/$defs/AssetTypeClassic' }
           }
         },
         encounters: {
-          title: 'Enconters',
+          title: 'Encounters',
           type: 'object',
           additionalProperties: false,
           patternProperties: {
-            [DF_KEY]: { $ref: '#/$defs/EncounterStarforged' }
+            [DF_KEY]: { $ref: '#/$defs/EncounterCollectionClassic' }
           }
         },
-        setting_truths: {
-          title: 'Setting truths',
+        world_truths: {
+          title: 'World truths',
           type: 'object',
           additionalProperties: false,
           patternProperties: {
-            [DF_KEY]: { $ref: '#/$defs/SettingTruthStarforged' }
+            [DF_KEY]: { $ref: '#/$defs/WorldTruthClassic' }
+          }
+        },
+        delve_site_themes: {
+          title: 'Delve site themes',
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/DelveSiteTheme' }
+          }
+        },
+        delve_site_domains: {
+          title: 'Delve site domains',
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/DelveSiteDomain' }
+          }
+        },
+        delve_sites: {
+          title: 'Delve sites',
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/DelveSite' }
+          }
+        },
+        rarities: {
+          title: 'Rarities',
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/Rarity' }
           }
         }
       }
@@ -97,10 +129,10 @@ export const SchemaJson: JSONSchema7 = {
 
 export const SchemaInput: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
-  title: 'Dataforged data entry',
+  title: 'Datasworn data entry',
   description:
-    'Data entry schema for Dataforged. It allows sparse metadata and provides templates, which may then be processed into the standard Dataforged format.',
-  $defs: toInputDefinitions(defsStarforged as Record<string, JSONSchema7>),
+    'Data entry schema for Datasworn. It allows sparse metadata and provides templates, which may then be processed into the standard Datasworn format.',
+  $defs: toInputDefinitions(defsClassic as Record<string, JSONSchema7>),
   type: SchemaJson.type,
   additionalProperties: false,
   required: ['_ruleset', '_source'],

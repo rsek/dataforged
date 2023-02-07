@@ -1,4 +1,3 @@
-import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 import {
   Assets,
@@ -16,8 +15,9 @@ import {
   Truths,
   Progress
 } from '@df-json-schema'
+import { JSONSchema7 } from 'json-schema'
 
-export const defs: Record<string, Schema<any>> = {
+export const defs: Record<string, JSONSchema7> = {
   ...(Metadata as any),
   ...Localize,
   ...Progress,
@@ -31,17 +31,26 @@ export const defs: Record<string, Schema<any>> = {
   // ...Assets,
 }
 
-export const defsStarforged = _.omitBy(defs, (_, key) =>
-  key.includes('Classic')
-)
+export const defsStarforged = _(defs)
+  .mapValues((def: JSONSchema7, defKey: string) =>
+    _.merge({ title: defKey }, def)
+  )
+  .omitBy((_, key) => key.includes('Classic'))
+  .value() as Record<string, JSONSchema7>
 
-export const defsClassic = _.omitBy(
-  {
-    ...defs,
-    ...Encounters,
-    ...Regions,
-    ...Rarities,
-    ...DelveSites
-  },
-  (_, key) => key.includes('Starforged')
-)
+export const defsClassic = _({
+  ...defs,
+  ...Encounters,
+  ...Regions,
+  ...Rarities,
+  ...DelveSites
+})
+  .mapValues((def: JSONSchema7, defKey: string) =>
+    _.merge({ title: defKey }, def)
+  )
+  .omitBy((_, key) => key.includes('Starforged'))
+  .value() as Record<string, JSONSchema7>
+
+export type DefsClassic = typeof defsClassic
+
+export type DefsStarforged = typeof defsStarforged

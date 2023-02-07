@@ -1,15 +1,16 @@
 _ruleset: starforged
+_source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  uri: https://creativecommons.org/licenses/by/4.0
 starforged:
   oracles:
     starships:
       title:
         canonical: Starships
         short: Starship
-      _source:
-        authors: [Shawn Tomkin]
-        title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-05-06
       collections:
         mission:
           title:
@@ -18,245 +19,363 @@ starforged:
           _source:
             page: 328
           rendering:
+            style: multi_table
             columns:
               terminus:
                 content_type: range
-                content: starforged/oracles/starships/mission/terminus
+                table_key: terminus
                 label: Terminus
               outlands:
                 content_type: range
-                content: starforged/oracles/starships/mission/outlands
+                table_key: outlands
                 label: Outlands
               expanse:
                 content_type: range
-                content: starforged/oracles/starships/mission/expanse
+                table_key: expanse
                 label: Expanse
               mission:
-                content_type: string
-                content: starforged/oracles/starships/mission/terminus
+                content_type: result
+                table_key: terminus
                 label: Mission
-          content:
-            part_of_speech: [fragment]
-            tags: [objective]
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [objective]
           summary: |-
             Use the Starship Mission table when prompted by another oracle, or to flesh out the nature of a ship or fleet which has a flexible or uncertain role. You can also roll to generate the focus of a spaceborne quest.
-          usage:
-            requires:
-              attributes:
-                region: null
+          # usage:
+          #   requires:
+          #     attributes:
+          #       region: null
           contents:
             terminus:
               title:
                 canonical: Terminus
               rendering: &display:Mission
-                column_of: starforged/oracles/starships/mission
+                style: embed_as_column
                 columns:
                   roll:
                     content_type: range
                   mission:
                     label: Mission
-                    key: result
-                    content_type: string
-              usage:
-                requires:
-                  attributes:
-                    region: [terminus]
+                    content_type: result
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [terminus]
               table: &table:Mission
                 - low: 1
                   high: 3
-                  result: Blockade a location
-                  suggestions: [*roll:Place]
+                  result: &Mission.0.result Blockade a location
+                  # suggestions: [*roll:Place]
                 - low: 4
                   high: 6
-                  result: Break a blockade
+                  result: &Mission.1.result Break a blockade
                 - low: 7
                   high: 9
-                  result: Collect a resource
-                  suggestions: [*roll:Object]
+                  result: &Mission.2.result Collect a resource
+                  # suggestions: [*roll:Object]
                 - low: 10
                   high: 11
-                  result: Command others
+                  result: &Mission.3.result Command others
                 - low: 12
                   high: 14
-                  result: Conduct diplomacy
+                  result: &Mission.4.result Conduct diplomacy
                 - low: 15
                   high: 17
-                  result: Conduct espionage
+                  result: &Mission.5.result Conduct espionage
                 - low: 18
                   high: 20
-                  result: Conduct piracy
+                  result: &Mission.6.result Conduct piracy
                 - low: 21
                   high: 23
-                  result: Conduct research
+                  result: &Mission.7.result Conduct research
                 - low: 24
                   high: 26
-                  result: Defend against an attack
+                  result: &Mission.8.result Defend against an attack
                 - low: 27
                   high: 29
-                  result: Deliver messages or data
+                  result: &Mission.9.result Deliver messages or data
                 - low: 30
                   high: 32
-                  result: Establish a settlement
+                  result: &Mission.10.result Establish a settlement
                 - low: 33
                   high: 35
-                  result: Evacuate a location
+                  result: &Mission.11.result Evacuate a location
                   # suggestions: [*obj:Settlement]
                 - low: 36
                   high: 37
-                  result: Explore a region
+                  result: &Mission.12.result Explore a region
                 - low: 38
                   high: 39
-                  result: Hold prisoners
+                  result: &Mission.13.result Hold prisoners
                 - low: 40
                   high: 42
-                  result: Hunt down another ship
+                  result: &Mission.14.result Hunt down another ship
                   # suggestions: [*obj:Starship]
                 - low: 43
                   high: 45
-                  result: Launch an attack
+                  result: &Mission.15.result Launch an attack
                 - low: 46
                   high: 48
-                  result: Patrol an area
+                  result: &Mission.16.result Patrol an area
                 - low: 49
                   high: 51
-                  result: Provide medical aid
+                  result: &Mission.17.result Provide medical aid
                 - low: 52
                   high: 54
-                  result: Provide repairs
+                  result: &Mission.18.result Provide repairs
                 - low: 55
                   high: 57
-                  result: Provide shelter
+                  result: &Mission.19.result Provide shelter
                 - low: 58
                   high: 59
-                  result: Quarantine a danger
+                  result: &Mission.20.result Quarantine a danger
                   # suggestions: [*roll:Event]
                 - low: 60
                   high: 62
-                  result: Raid a settlement
+                  result: &Mission.21.result Raid a settlement
                   # suggestions: [*obj:Settlement]
                 - low: 63
                   high: 65
-                  result: Resupply a settlement
+                  result: &Mission.22.result Resupply a settlement
                   # suggestions: [*obj:Settlement]
                 - low: 66
                   high: 68
-                  result: Retrieve salvage
+                  result: &Mission.23.result Retrieve salvage
                 - low: 69
                   high: 71
-                  result: Search and rescue
+                  result: &Mission.24.result Search and rescue
                 - low: 72
                   high: 74
-                  result: Smuggle cargo
+                  result: &Mission.25.result Smuggle cargo
                   # suggestions: [*roll:Object]
                 - low: 75
                   high: 77
-                  result: Survey a site
+                  result: &Mission.26.result Survey a site
                   # suggestions: [*roll:Place]
                 - low: 78
                   high: 79
-                  result: Test a technology
+                  result: &Mission.27.result Test a technology
                   # suggestions: [*roll:Object]
                 - low: 80
                   high: 82
-                  result: Transport cargo
+                  result: &Mission.28.result Transport cargo
                   # suggestions: [*roll:Object]
                 - low: 83
                   high: 85
-                  result: Transport passengers
+                  result: &Mission.29.result Transport passengers
                   # suggestions: [*obj:Npc]
-                - low: 86
+                - &Mission.30
+                  low: 86
                   high: 90
                   result: *result:Action+Theme
-                - low: 91
+                - &Mission.31
+                  low: 91
                   high: 100
                   result: *result:RollTwice
             outlands:
               title:
                 canonical: Outlands
               rendering: *display:Mission
-              usage:
-                requires:
-                  attributes:
-                    region: [outlands]
-              _templateTableRows:
-                content: *table:Mission
-                rolls:
-                  - [1, 2]
-                  - [3, 4]
-                  - [5, 7]
-                  - [8, 9]
-                  - [10, 11]
-                  - [12, 13]
-                  - [14, 16]
-                  - [17, 20]
-                  - [21, 24]
-                  - [25, 28]
-                  - [29, 32]
-                  - [33, 36]
-                  - [37, 40]
-                  - [41, 42]
-                  - [43, 45]
-                  - [46, 48]
-                  - [49, 50]
-                  - [51, 53]
-                  - [54, 56]
-                  - [57, 59]
-                  - [60, 61]
-                  - [62, 64]
-                  - [65, 68]
-                  - [69, 71]
-                  - [72, 73]
-                  - [74, 75]
-                  - [76, 78]
-                  - [79, 80]
-                  - [81, 83]
-                  - [84, 85]
-                  - [86, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [outlands]
+              table:
+                - low: 1
+                  high: 2
+                  result: *Mission.0.result
+                - low: 3
+                  high: 4
+                  result: *Mission.1.result
+                - low: 5
+                  high: 7
+                  result: *Mission.2.result
+                - low: 8
+                  high: 9
+                  result: *Mission.3.result
+                - low: 10
+                  high: 11
+                  result: *Mission.4.result
+                - low: 12
+                  high: 13
+                  result: *Mission.5.result
+                - low: 14
+                  high: 16
+                  result: *Mission.6.result
+                - low: 17
+                  high: 20
+                  result: *Mission.7.result
+                - low: 21
+                  high: 24
+                  result: *Mission.8.result
+                - low: 25
+                  high: 28
+                  result: *Mission.9.result
+                - low: 29
+                  high: 32
+                  result: *Mission.10.result
+                - low: 33
+                  high: 36
+                  result: *Mission.11.result
+                - low: 37
+                  high: 40
+                  result: *Mission.12.result
+                - low: 41
+                  high: 42
+                  result: *Mission.13.result
+                - low: 43
+                  high: 45
+                  result: *Mission.14.result
+                - low: 46
+                  high: 48
+                  result: *Mission.15.result
+                - low: 49
+                  high: 50
+                  result: *Mission.16.result
+                - low: 51
+                  high: 53
+                  result: *Mission.17.result
+                - low: 54
+                  high: 56
+                  result: *Mission.18.result
+                - low: 57
+                  high: 59
+                  result: *Mission.19.result
+                - low: 60
+                  high: 61
+                  result: *Mission.20.result
+                - low: 62
+                  high: 64
+                  result: *Mission.21.result
+                - low: 65
+                  high: 68
+                  result: *Mission.22.result
+                - low: 69
+                  high: 71
+                  result: *Mission.23.result
+                - low: 72
+                  high: 73
+                  result: *Mission.24.result
+                - low: 74
+                  high: 75
+                  result: *Mission.25.result
+                - low: 76
+                  high: 78
+                  result: *Mission.26.result
+                - low: 79
+                  high: 80
+                  result: *Mission.27.result
+                - low: 81
+                  high: 83
+                  result: *Mission.28.result
+                - low: 84
+                  high: 85
+                  result: *Mission.29.result
+                - *Mission.30
+                - *Mission.31
 
             expanse:
               title:
                 canonical: Expanse
               rendering: *display:Mission
-              usage:
-                requires:
-                  attributes:
-                    region: [expanse]
-              _templateTableRows:
-                content: *table:Mission
-                rolls:
-                  - [1, 2]
-                  - [3, 4]
-                  - [5, 8]
-                  - [9, 10]
-                  - [11, 12]
-                  - [13, 14]
-                  - [15, 16]
-                  - [17, 22]
-                  - [23, 25]
-                  - [26, 29]
-                  - [30, 35]
-                  - [36, 39]
-                  - [40, 45]
-                  - [46, 47]
-                  - [48, 49]
-                  - [50, 51]
-                  - [52, 53]
-                  - [54, 55]
-                  - [56, 57]
-                  - [58, 61]
-                  - [62, 63]
-                  - [64, 65]
-                  - [66, 69]
-                  - [70, 71]
-                  - [72, 73]
-                  - [74, 75]
-                  - [76, 77]
-                  - [78, 79]
-                  - [80, 83]
-                  - [84, 85]
-                  - [86, 90]
-                  - [91, 100]
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [expanse]
+              table:
+                - low: 1
+                  high:  2
+                  result: *Mission.0.result
+                - low: 3
+                  high:  4
+                  result: *Mission.1.result
+                - low: 5
+                  high:  8
+                  result: *Mission.2.result
+                - low: 9
+                  high: 10
+                  result: *Mission.3.result
+                - low: 11
+                  high: 12
+                  result: *Mission.4.result
+                - low: 13
+                  high: 14
+                  result: *Mission.5.result
+                - low: 15
+                  high: 16
+                  result: *Mission.6.result
+                - low: 17
+                  high: 22
+                  result: *Mission.7.result
+                - low: 23
+                  high: 25
+                  result: *Mission.8.result
+                - low: 26
+                  high: 29
+                  result: *Mission.9.result
+                - low: 30
+                  high: 35
+                  result: *Mission.10.result
+                - low: 36
+                  high: 39
+                  result: *Mission.11.result
+                - low: 40
+                  high: 45
+                  result: *Mission.12.result
+                - low: 46
+                  high: 47
+                  result: *Mission.13.result
+                - low: 48
+                  high: 49
+                  result: *Mission.14.result
+                - low: 50
+                  high: 51
+                  result: *Mission.15.result
+                - low: 52
+                  high: 53
+                  result: *Mission.16.result
+                - low: 54
+                  high: 55
+                  result: *Mission.17.result
+                - low: 56
+                  high: 57
+                  result: *Mission.18.result
+                - low: 58
+                  high: 61
+                  result: *Mission.19.result
+                - low: 62
+                  high: 63
+                  result: *Mission.20.result
+                - low: 64
+                  high: 65
+                  result: *Mission.21.result
+                - low: 66
+                  high: 69
+                  result: *Mission.22.result
+                - low: 70
+                  high: 71
+                  result: *Mission.23.result
+                - low: 72
+                  high: 73
+                  result: *Mission.24.result
+                - low: 74
+                  high: 75
+                  result: *Mission.25.result
+                - low: 76
+                  high: 77
+                  result: *Mission.26.result
+                - low: 78
+                  high: 79
+                  result: *Mission.27.result
+                - low: 80
+                  high: 83
+                  result: *Mission.28.result
+                - low: 84
+                  high: 85
+                  result: *Mission.29.result
+                - *Mission.30
+                - *Mission.31
       contents:
         type:
           title:
@@ -264,29 +383,28 @@ starforged:
             standard: Starship Type
           _source:
             page: 326
-          usage:
-            initial: true
-          content:
-            part_of_speech: [common noun, fragment]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [common noun, fragment]
           rendering:
+            style: table
             columns:
               roll:
                 label: Roll
                 content_type: range
               class:
                 label: Class
-                content_type: string
-                key: result
+                content_type: result
               typical_role:
                 label: Typical Role
-                content_type: string
-                key: summary
+                content_type: summary
           table:
             - low: 1
               high: 2
               result: Carrier
               summary: Launches fighters
-              # set_attributes: {starship_type: [ carrier]}
+              # set_attributes: {starship_type: [carrier]}
             - low: 3
               high: 6
               result: Corvette
@@ -375,8 +493,9 @@ starforged:
             - low: 68
               high: 82
               result: Multipurpose
-              summary: "[⏵Starship Mission(starforged/oracles/starships/mission)"
-              rolls: [starforged/oracles/starships/mission]
+              summary: "[⏵Starship Mission](starforged/oracles/starships/mission)"
+              rolls:
+                - oracle: starforged/oracles/starships/mission
                 # set_attributes: {starship_type: [multipurpose]}]
             - low: 83
               high: 84
@@ -386,12 +505,14 @@ starforged:
               high: 94
               result: "[⏵Fleet](starforged/oracles/starships/fleet)"
               summary: null
-              rolls: [starforged/oracles/starships/fleet]
+              rolls:
+                - oracle: starforged/oracles/starships/fleet
             - low: 95
               high: 100
               result: Ships in conflict (roll twice)
               summary: null
-              rolls: [starforged/oracles/starships/type]
+              rolls:
+                - oracle: starforged/oracles/starships/type
               # *obj:Starship
             # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
         fleet:
@@ -399,10 +520,10 @@ starforged:
             canonical: Fleet
           _source:
             page: 326
-          content:
-            part_of_speech: [noun, common noun]
-          usage:
-            initial: true
+          # content:
+          #   part_of_speech: [noun, common noun]
+          # usage:
+          #   initial: true
           table:
             - low: 1
               high: 10
@@ -427,18 +548,19 @@ starforged:
               result: Transport and escorts
             - low: 91
               high: 100
-              result: "[⏵Starship Mission(starforged/oracles/starships/mission)"
-              rolls: [starforged/oracles/starships/mission]
+              result: "[⏵Starship Mission](starforged/oracles/starships/mission)"
+              rolls:
+                - oracle: starforged/oracles/starships/mission
         initial_contact:
           title:
             canonical: Initial Contact
           _source:
             page: 327
-          usage:
-            initial: true
-          content:
-            part_of_speech: [fragment]
-            tags: [relationship]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [relationship]
           table:
             - low: 1
               high: 3
@@ -482,12 +604,12 @@ starforged:
             canonical: First Look
           _source:
             page: 327
-          usage:
-            initial: true
-            max_rolls: 2
-          content:
-            part_of_speech: [fragment]
-            tags: [description]
+          # usage:
+          #   initial: true
+          #   max_rolls: 2
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [description]
           table:
             - low: 1
               high: 4
@@ -561,11 +683,11 @@ starforged:
             short: Name
           _source:
             page: 329
-          description: |-
+          summary: |-
             Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
-          content:
-            part_of_speech: [noun, proper noun]
-            tags: [name]
+          # content:
+          #   part_of_speech: [noun, proper noun]
+          #   tags: [name]
           table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
             - low: 1

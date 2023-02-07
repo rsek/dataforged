@@ -1,10 +1,10 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY } from './attributes.js'
+import { DF_KEY } from './common.js'
 import { type Oracles as Types } from '@df-types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
   type: 'string',
-  $comment: '{namespace}/oracles/{*}/{oracle}'
+  $comment: '{namespace}/oracles/{...collections}/{oracle}'
 }
 
 export const OracleTableColumn: Schema<Types.OracleTableColumn> = {
@@ -93,7 +93,7 @@ export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
         `,
       enum: ['embed_as_column', 'embed_in_row', 'table'],
       default: oracleTableRenderDefault.style
-    },
+    } as any,
 
     icon: { $ref: '#/$defs/Icon' },
     color: { $ref: '#/$defs/Color' },
@@ -162,7 +162,7 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
 
 export const OracleTableRowID: Schema<Types.OracleTableRowID> = {
   type: 'string',
-  $comment: '{namespace}/oracles/{*}/{oracle}/{low}-{high}'
+  $comment: '{namespace}/oracles/{*...collections/{oracle}/{low}-{high}'
 }
 
 export const OracleTableRow: Schema<Types.OracleTableRow> = {

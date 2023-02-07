@@ -43,7 +43,7 @@ export interface OracleCollectionRendering extends OracleRenderingBase {
 
 export interface OracleTableRendering extends OracleRenderingBase {
   icon?: Icon
-  style: Exclude<OracleTableStyle, 'multi_table'>
+  style?: Exclude<OracleTableStyle, 'multi_table'>
   color?: Metadata.Color
 }
 

@@ -3,10 +3,16 @@
  */
 
 import { writeFileSync } from 'fs'
-import { Dataforged } from '../json-schema/index.js'
+import { Dataforged, Datasworn } from '../json-schema/index.js'
 
-const out = './src/data/schema-input.json'
+const dfOut = './src/data/dataforged/schema-dataforged-input.json'
 
-const json = JSON.stringify(Dataforged.SchemaInput, undefined, 2)
+const dfJson = JSON.stringify(Dataforged.SchemaInput, undefined, 2)
 
-writeFileSync(out, json)
+writeFileSync(dfOut, dfJson)
+
+const dsOut = './src/data/datasworn/schema-datasworn-input.json'
+
+const dsJson = JSON.stringify(Datasworn.SchemaInput, undefined, 2)
+
+writeFileSync(dsOut, dsJson)

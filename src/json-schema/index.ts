@@ -15,3 +15,4 @@ export * as Regions from './regions.js'
 export * as Truths from './truths.js'
 
 export * as Dataforged from './dataforged.js'
+export * as Datasworn from './datasworn.js'

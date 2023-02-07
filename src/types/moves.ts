@@ -18,7 +18,7 @@ interface MoveBase extends Node<MoveID> {
   name: Localized.Label
   source: Metadata.Source
   text: Localized.MarkdownParagraphs
-  outcomes: Outcomes
+  outcomes: MoveOutcomes
   trigger: Trigger
 }
 export interface MoveStarforged extends MoveBase {
@@ -30,25 +30,25 @@ export interface MoveClassic extends MoveBase {
 
 export type Move = MoveStarforged | MoveClassic
 
-export type OutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
+export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
-export interface Outcome {
+export interface MoveOutcome {
   text: Localized.MarkdownParagraph
 }
 
 // TODO: would match outcomes make sense as ExtendOne?
-export interface OutcomeMatchable extends Outcome {
-  match?: Outcome
+export interface MoveOutcomeMatchable extends MoveOutcome {
+  match?: MoveOutcome
 }
-export interface Outcomes extends Record<OutcomeType, Outcome> {
-  miss: OutcomeMatchable
-  weak_hit: Outcome
-  strong_hit: OutcomeMatchable
+export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
+  miss: MoveOutcomeMatchable
+  weak_hit: MoveOutcome
+  strong_hit: MoveOutcomeMatchable
 }
 
 interface TriggerBase<OptionType extends TriggerOptionBase<any>> {
   text: Localized.MarkdownPhrase
-  options?: OptionType
+  options?: OptionType[]
 }
 
 export interface TriggerStarforged
@@ -64,7 +64,7 @@ export type RollMethod =
   | 'highest'
   | 'lowest'
   | 'inherit'
-  | OutcomeType
+  | MoveOutcomeType
 
 interface TriggerOptionBase<UsingType extends string> {
   text: Localized.MarkdownPhrase
@@ -72,7 +72,7 @@ interface TriggerOptionBase<UsingType extends string> {
   using: UsingType[]
 }
 
-type RollableStatIDCommon = Player.StatID | Player.ConditionMeterID
+export type RollableStatIDCommon = Player.StatID | Player.ConditionMeterID
 
 export type RollableStatStarforgedID =
   | RollableStatIDCommon

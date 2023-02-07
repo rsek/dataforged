@@ -26,7 +26,9 @@
   "Ref definition": {
     "scope": "typescript",
     "prefix": "ref",
-    "body": ["{ \\$ref: '#/\\$defs/$1' },$0"],
+    "body": [
+      "schemaRef<${1|Types,Metadata,Localize,Assets,Oracles,Encounters,Collections,Players,Progress|}.$2>('$2')$0"
+    ],
     "description": "Reference to a schema definition"
   }
 }

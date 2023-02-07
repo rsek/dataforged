@@ -1,22 +1,16 @@
 # TODO
-  - [x] put moves back in categories? there's a fair amount of extra category text now, so it's probably the most logical way to structure it
-  - [ ] automate the versioning from the readme
-  - [x ] oracle markdown adjustments:
-    - [x] category descriptions
-    - [x] fix missing Summary columns
-    - [x] "⏵" should link to stuff where appropriate
-    - [ ] split table rendering for tall skinny tables
-    - [ ] omit some descriptions if they're repetitive/redundant
-    - [ ] integrate summaries from markdown files
-  - [x] template string for setting truths
-  - [ ] gh-pages branch with simple rendering of table tree so ppl can browse it
-  - [ ] propagate OracleInfo.Usage.Requires to objects in child rows
 
-  - [x] basic markdown output for oracles
-  - [x] rebuild markdown output for moves
-  - [x] update content for 022322
-    - [x] assets
-    - [x] moves
-    - [x] oracles
-  - [x] propagate OracleCategory.Usage.Requires to child OracleInfo, OracleCategory
-  - [x] have OracleInfo check rows for attribute setters, and generate a Usage.SetsAttributes from it (just the key part)
+## v2 preview
+* [ ] generate some python and c# types with Quicktype
+* [ ] finish move schema
+* [ ] finish asset schema
+
+
+## v2
+* [ ] investigate using dependentRequired? https://json-schema.org/understanding-json-schema/reference/conditionals.html
+* [ ] investigate JSON typedef for cleaner typing?
+* [ ] game object templates?
+* [ ] oracle attributes?
+
+## Optional
+* [ ] re-implement some of the meta

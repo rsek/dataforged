@@ -38,26 +38,6 @@ export const MoveExtensionBase: JSONSchema7 = {
   }
 }
 
-export const MoveCategory: JSONSchema7 = {
-  title: 'MoveCategory',
-  type: 'object',
-  properties: {
-    title: {
-      $ref: '#/$defs/Title'
-    },
-    color: {
-      $ref: '#/$defs/Color'
-    },
-    description: {
-      $ref: '#/$defs/MarkdownParagraphs'
-    },
-    source: {
-      $ref: '#/$defs/Source'
-    },
-    moves: dfRecordSchema('Move')
-  }
-}
-
 export const Move: JSONSchema7 = {
   type: 'object',
   required: ['text', 'name', 'trigger'],
@@ -134,7 +114,6 @@ export const Move: JSONSchema7 = {
 const defs: Record<string, JSONSchema7> = {
   MoveExtension,
   MoveExtensionBase,
-  MoveCategory,
   Move,
   TriggerOptionAction: {
     allOf: [

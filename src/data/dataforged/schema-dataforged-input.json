@@ -4,25 +4,30 @@
   "description": "Data entry schema for Dataforged. It allows sparse metadata and provides templates, which may then be processed into the standard Dataforged format.",
   "$defs": {
     "Color": {
+      "title": "Color",
       "type": "string",
       "pattern": "^#([A-f0-9]{2}){3}$",
       "description": "A CSS hex color. Use it to provide thematic accents when rendering this item."
     },
     "ID": {
+      "title": "ID",
       "type": "string",
       "$comment": "{namespace}/{element}/{*}"
     },
     "Icon": {
+      "title": "Icon",
       "type": "string",
       "format": "uri",
       "description": "A relative URI pointing to an SVG icon."
     },
     "Image": {
+      "title": "Image",
       "type": "string",
       "format": "uri",
       "description": "A relative URI pointing to a WEBP image."
     },
     "Ruleset": {
+      "title": "Ruleset",
       "type": "string",
       "enum": [
         "classic",
@@ -30,6 +35,7 @@
       ]
     },
     "Source": {
+      "title": "Source",
       "type": "object",
       "description": "",
       "required": [
@@ -85,6 +91,7 @@
       }
     },
     "Suggestions": {
+      "title": "Suggestions",
       "description": "TODO",
       "type": "object",
       "properties": {
@@ -115,6 +122,7 @@
       }
     },
     "Title": {
+      "title": "Title",
       "type": "object",
       "required": [
         "canonical"
@@ -132,26 +140,32 @@
       }
     },
     "Label": {
+      "title": "Label",
       "type": "string",
       "description": "A localized plain text name or label."
     },
     "MarkdownParagraph": {
+      "title": "MarkdownParagraph",
       "type": "string",
       "description": "Localized markdown text, usually one paragraph. This may included ordered or unordered lists."
     },
     "MarkdownParagraphs": {
+      "title": "MarkdownParagraphs",
       "type": "string",
       "description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
     },
     "MarkdownPhrase": {
+      "title": "MarkdownPhrase",
       "type": "string",
       "description": "Localized markdown text, usually a phrase or single sentence."
     },
     "MarkdownSentences": {
+      "title": "MarkdownSentences",
       "type": "string",
       "description": "Localized markdown text, usually a few sentences at most."
     },
     "ChallengeRank": {
+      "title": "ChallengeRank",
       "type": "integer",
       "description": "Enumerates challenge ranks: 1=troublesome; 2=dangerous; 3=formidable; 4=extreme; 5=epic.",
       "enum": [
@@ -162,10 +176,38 @@
         5
       ]
     },
+    "ProgressTypeStarforged": {
+      "title": "ProgressTypeStarforged",
+      "type": "string",
+      "enum": [
+        "combat",
+        "vow",
+        "scene_challenge",
+        "expedition",
+        "connection",
+        "quests_legacy",
+        "bonds_legacy",
+        "discoveries_legacy"
+      ]
+    },
     "AssetID": {
+      "title": "AssetID",
       "type": "string"
     },
+    "ConditionMeterAliasStarforged": {
+      "title": "ConditionMeterAliasStarforged",
+      "type": "string",
+      "enum": [
+        "companion_health",
+        "attached_asset_meter",
+        "vehicle_integrity",
+        "command_vehicle_integrity",
+        "support_vehicle_integrity",
+        "incidental_vehicle_integrity"
+      ]
+    },
     "OracleCollectionColumn": {
+      "title": "OracleCollectionColumn",
       "type": "object",
       "required": [
         "content_type",
@@ -247,6 +289,7 @@
       ]
     },
     "OracleTable": {
+      "title": "OracleTable",
       "type": "object",
       "required": [
         "title",
@@ -300,6 +343,7 @@
       }
     },
     "OracleTableColumn": {
+      "title": "OracleTableColumn",
       "type": "object",
       "required": [
         "content_type"
@@ -372,14 +416,13 @@
       ]
     },
     "OracleTableID": {
+      "title": "OracleTableID",
       "type": "string",
-      "$comment": "{namespace}/oracles/{*}/{oracle}"
+      "$comment": "{namespace}/oracles/{...collections}/{oracle}"
     },
     "OracleTableRendering": {
+      "title": "OracleTableRendering",
       "type": "object",
-      "required": [
-        "style"
-      ],
       "additionalProperties": false,
       "default": {
         "style": "table",
@@ -397,7 +440,7 @@
       "properties": {
         "style": {
           "type": "string",
-          "description": "The style used to render this table in the source material.\n\n        * embed_as_column: This table appears as a column of a table that corresponds to its OracleCollection parent.\n        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.\n        * table: A standard table, typically with a roll column and a result column.\n        ",
+          "description": "The style used to render this table in the source material.\n\n        * embed_as_column: This table appears as a column of a table handled by its OracleCollection parent.\n        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.\n        * table: A standard table, typically with a roll column and a result column.\n        ",
           "enum": [
             "embed_as_column",
             "embed_in_row",
@@ -468,6 +511,7 @@
       }
     },
     "OracleTableRow": {
+      "title": "OracleTableRow",
       "type": "object",
       "description": "Represents a row from an oracle table.",
       "required": [
@@ -526,10 +570,12 @@
       }
     },
     "OracleTableRowID": {
+      "title": "OracleTableRowID",
       "type": "string",
-      "$comment": "{namespace}/oracles/{*}/{oracle}/{low}-{high}"
+      "$comment": "{namespace}/oracles/{*...collections/{oracle}/{low}-{high}"
     },
     "ConditionMeterID": {
+      "title": "ConditionMeterID",
       "type": "string",
       "description": "ID for a standard player character condition meter.",
       "enum": [
@@ -539,6 +585,7 @@
       ]
     },
     "StatID": {
+      "title": "StatID",
       "type": "string",
       "description": "ID for a standard player character stat.",
       "enum": [
@@ -550,6 +597,7 @@
       ]
     },
     "EncounterID": {
+      "title": "EncounterID",
       "oneOf": [
         {
           "type": "string",
@@ -562,6 +610,7 @@
       ]
     },
     "EncounterNatureStarforged": {
+      "title": "EncounterNatureStarforged",
       "type": "string",
       "examples": [
         "creature",
@@ -573,6 +622,7 @@
       ]
     },
     "EncounterStarforged": {
+      "title": "EncounterStarforged",
       "type": "object",
       "description": "An encounter entry similar to those in Chapter 4 of Ironsworn: Starforged.",
       "required": [
@@ -618,6 +668,7 @@
           }
         },
         "variants": {
+          "title": "Encounter variants",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
@@ -645,10 +696,12 @@
       }
     },
     "EncounterStarforgedID": {
+      "title": "EncounterStarforgedID",
       "type": "string",
       "$comment": "{namespace}/encounters/{encounter}"
     },
     "EncounterVariantStarforged": {
+      "title": "EncounterVariantStarofrged",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -672,19 +725,312 @@
         }
       }
     },
+    "CustomStat": {
+      "title": "CustomStat"
+    },
     "MoveID": {
+      "title": "MoveID",
       "type": "string",
       "$comment": "{namespace}/moves/{moveCategory}/{move}"
     },
+    "MoveOutcome": {
+      "title": "MoveOutcome",
+      "type": "object",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownParagraph"
+        }
+      }
+    },
+    "MoveOutcomeMatchable": {
+      "title": "MoveOutcomeMatchable",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/MoveOutcome"
+        },
+        {
+          "properties": {
+            "match": {
+              "$ref": "#/$defs/MoveOutcome"
+            }
+          }
+        }
+      ]
+    },
+    "MoveOutcomeType": {
+      "title": "MoveOutcomeType",
+      "type": "string",
+      "enum": [
+        "miss",
+        "weak_hit",
+        "strong_hit"
+      ]
+    },
+    "MoveOutcomes": {
+      "title": "MoveOutcomes",
+      "type": "object",
+      "required": [
+        "miss",
+        "weak_hit",
+        "strong_hit"
+      ],
+      "properties": {
+        "miss": {
+          "$ref": "#/$defs/MoveOutcomeMatchable"
+        },
+        "weak_hit": {
+          "$ref": "#/$defs/MoveOutcome"
+        },
+        "strong_hit": {
+          "$ref": "#/$defs/MoveOutcomeMatchable"
+        }
+      }
+    },
+    "MoveStarforged": {
+      "title": "MoveStarforged",
+      "type": "object",
+      "required": [
+        "text",
+        "name",
+        "trigger"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/MoveID"
+        },
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "trigger": {
+          "$ref": "#/$defs/TriggerClassic"
+        },
+        "attributes": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/CustomStat"
+            }
+          }
+        },
+        "outcomes": {
+          "$ref": "#/$defs/MoveOutcomes"
+        },
+        "text": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
+        "asset": {
+          "description": "The ID of the parent Asset of the move, if any.",
+          "$ref": "#/$defs/AssetID"
+        },
+        "progress_move": {
+          "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
+          "type": "boolean"
+        },
+        "variant_of": {
+          "description": "The ID of the move that this move is a variant of, if any.",
+          "$ref": "#/$defs/MoveID"
+        },
+        "oracles": {
+          "description": "The ID of any oracles directly referenced by the move, or vice versa.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableID"
+          }
+        },
+        "optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean"
+        },
+        "tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "$ref": "#/$defs/MoveCategoryID",
+          "description": "The ID of the move's category."
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        }
+      }
+    },
+    "RollableStatIDCommon": {
+      "title": "RollableStatIDCommon",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/StatID"
+        },
+        {
+          "$ref": "#/$defs/ConditionMeterID"
+        }
+      ]
+    },
+    "RollableStatStarforgedID": {
+      "title": "RollableStatStarforgedID",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/RollableStatIDCommon"
+        },
+        {
+          "$ref": "#/$defs/ConditionMeterAliasStarforged"
+        }
+      ]
+    },
+    "Trigger": {
+      "title": "Trigger",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/TriggerStarforged"
+        },
+        {
+          "$ref": "#/$defs/TriggerClassic"
+        }
+      ]
+    },
+    "TriggerOptionActionStarforged": {
+      "title": "TriggerOptionActionStarforged",
+      "type": "object",
+      "required": [
+        "text",
+        "method",
+        "using"
+      ],
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownPhrase"
+        },
+        "method": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "using": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RollableStatStarforgedID"
+          }
+        }
+      }
+    },
+    "TriggerOptionProgressStarforged": {
+      "title": "TriggerOptionProgressStarforged",
+      "type": "object",
+      "required": [
+        "text",
+        "method",
+        "using"
+      ],
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownPhrase"
+        },
+        "method": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "using": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProgressTypeStarforged"
+          }
+        }
+      }
+    },
+    "TriggerStarforged": {
+      "title": "TriggerStarforged",
+      "required": [
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownPhrase"
+        },
+        "options": {
+          "type": "array",
+          "oneOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/TriggerOptionProgressStarforged"
+              }
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/TriggerOptionActionStarforged"
+              }
+            }
+          ]
+        }
+      }
+    },
     "AssetTypeID": {
-      "type": "string"
+      "title": "AssetTypeID",
+      "type": "string",
+      "$comment": "{namespace}/collections/assets/{name}"
     },
-    "AssetTypeStarforged": {},
+    "AssetTypeStarforged": {
+      "title": "AssetTypeStarforged"
+    },
     "MoveCategoryID": {
-      "type": "string"
+      "title": "MoveCategoryID",
+      "type": "string",
+      "$comment": "{namespace}/collections/moves/{name}"
     },
-    "MoveCategoryStarforged": {},
+    "MoveCategoryStarforged": {
+      "title": "MoveCategoryStarforged",
+      "type": "object",
+      "required": [
+        "contents",
+        "title"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/MoveCategoryID"
+        },
+        "title": {
+          "$ref": "#/$defs/Title"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "summary": {
+          "$ref": "#/$defs/MarkdownSentences"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "contents": {
+          "type": "object",
+          "description": "The moves contained by this collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/MoveStarforged"
+            }
+          }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
+    },
     "OracleCollection": {
+      "title": "OracleCollection",
       "type": "object",
       "required": [
         "title",
@@ -730,6 +1076,7 @@
         },
         "contents": {
           "type": "object",
+          "description": "The OracleTables contained by this OracleCollection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleTable"
@@ -737,6 +1084,7 @@
           }
         },
         "collections": {
+          "description": "OracleCollections contained by this OracleCollection.",
           "type": "object",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
@@ -750,10 +1098,12 @@
       }
     },
     "OracleCollectionID": {
+      "title": "OracleCollectionID",
       "type": "string",
-      "$comment": "{namespace}/oracle_collections/{grandparent}?/{parent}?/{collection}"
+      "$comment": "{namespace}/collections/oracles/{grandparent}?/{parent}?/{name}"
     },
     "SettingTruth": {
+      "title": "SettingTruth",
       "type": "object",
       "required": [
         "name"
@@ -774,17 +1124,19 @@
       }
     },
     "SettingTruthOption": {
+      "title": "SettingTruthOption",
       "required": [
         "quest_starter"
       ],
       "additionalProperties": false,
       "properties": {
         "quest_starter": {
-          "$ref": "#/$defs/QuestStarter"
+          "$ref": "#/$defs/MarkdownParagraph"
         }
       }
     },
     "SettingTruthStarforged": {
+      "title": "SettingTruthStarforged",
       "allOf": [
         {
           "$ref": "#/$defs/SettingTruth"
@@ -802,10 +1154,12 @@
       ]
     },
     "default": {
+      "title": "default",
       "SettingTruth": {
         "type": "object",
         "required": [
-          "name"
+          "name",
+          "source"
         ],
         "properties": {
           "_id": {
@@ -816,9 +1170,6 @@
           },
           "source": {
             "$ref": "#/$defs/Source"
-          },
-          "_source": {
-            "$ref": "#/$defs/SourcePartial"
           }
         }
       },
@@ -829,7 +1180,7 @@
         "additionalProperties": false,
         "properties": {
           "quest_starter": {
-            "$ref": "#/$defs/QuestStarter"
+            "$ref": "#/$defs/MarkdownParagraph"
           }
         }
       },
@@ -872,7 +1223,7 @@
                       "$ref": "#/$defs/MarkdownParagraphs"
                     },
                     "quest_starter": {
-                      "$ref": "#/$defs/QuestStarter"
+                      "$ref": "#/$defs/MarkdownParagraph"
                     }
                   }
                 }
@@ -942,15 +1293,18 @@
       "$ref": "#/$defs/Ruleset"
     },
     "_source": {
-      "$ref": "#/$defs/Source"
+      "$ref": "#/$defs/Source",
+      "description": "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
     }
   },
   "patternProperties": {
     "^[a-z0-9][a-z0-9_]+$": {
+      "title": "Namespace",
       "type": "object",
       "additionalProperties": false,
       "properties": {
         "oracles": {
+          "title": "Oracles",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
@@ -960,6 +1314,7 @@
           }
         },
         "moves": {
+          "title": "Moves",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
@@ -969,6 +1324,7 @@
           }
         },
         "assets": {
+          "title": "Assets",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
@@ -978,6 +1334,7 @@
           }
         },
         "encounters": {
+          "title": "Enconters",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
@@ -987,6 +1344,7 @@
           }
         },
         "setting_truths": {
+          "title": "Setting truths",
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {
