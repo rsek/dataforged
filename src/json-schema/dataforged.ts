@@ -47,33 +47,39 @@ export const SchemaJson: JSONSchema7 = {
   patternProperties: {
     [NAMESPACE_KEY]: {
       type: 'object',
+      additionalProperties: false,
       properties: {
         oracles: {
           type: 'object',
+          additionalProperties: false,
           patternProperties: {
             [DF_KEY]: { $ref: '#/$defs/OracleCollection' }
           }
         },
         moves: {
           type: 'object',
+          additionalProperties: false,
           patternProperties: {
             [DF_KEY]: { $ref: '#/$defs/MoveCategoryStarforged' }
           }
         },
         assets: {
           type: 'object',
+          additionalProperties: false,
           patternProperties: {
             [DF_KEY]: { $ref: '#/$defs/AssetTypeStarforged' }
           }
         },
         encounters: {
           type: 'object',
+          additionalProperties: false,
           patternProperties: {
             [DF_KEY]: { $ref: '#/$defs/EncounterStarforged' }
           }
         },
         setting_truth: {
           type: 'object',
+          additionalProperties: false,
           patternProperties: {
             [DF_KEY]: { $ref: '#/$defs/SettingTruthStarforged' }
           }

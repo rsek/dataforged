@@ -1,5 +1,5 @@
 export * as Assets from './assets.js'
-// export * as Attributes from './attributes.js'
+export * as Attributes from './attributes.js'
 // export * as GameObjects from './game-objects.js'
 export * as Collections from './collections.js'
 export * as DelveSites from './delve-sites.js'

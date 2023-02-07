@@ -373,7 +373,7 @@
           "required": [],
           "type": "object",
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleTableColumn"
             }
           },
@@ -575,7 +575,13 @@
           }
         },
         "variants": {
-          "$ref": "#/$defs/EncounterVariantStarforged"
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/EncounterVariantStarforged"
+            }
+          }
         },
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
@@ -678,7 +684,7 @@
         "contents": {
           "type": "object",
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleTable"
             }
           }
@@ -686,7 +692,7 @@
         "collections": {
           "type": "object",
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleCollection"
             }
           }
@@ -891,43 +897,49 @@
   "patternProperties": {
     "^[a-z0-9][a-z0-9_]+$": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "oracles": {
           "type": "object",
+          "additionalProperties": false,
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleCollection"
             }
           }
         },
         "moves": {
           "type": "object",
+          "additionalProperties": false,
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/MoveCategoryStarforged"
             }
           }
         },
         "assets": {
           "type": "object",
+          "additionalProperties": false,
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/AssetTypeStarforged"
             }
           }
         },
         "encounters": {
           "type": "object",
+          "additionalProperties": false,
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/EncounterStarforged"
             }
           }
         },
         "setting_truth": {
           "type": "object",
+          "additionalProperties": false,
           "patternProperties": {
-            "$[a-z][a-z_]*[a-z]^": {
+            "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/SettingTruthStarforged"
             }
           }

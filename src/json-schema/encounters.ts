@@ -1,6 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Encounters as Types } from '@df-types'
 import _ from 'lodash'
+import { Attributes } from '@df-json-schema'
 
 export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
   {
@@ -93,7 +94,13 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
     features: EncounterClassic.properties!.features,
     drives: EncounterClassic.properties!.drives,
     tactics: EncounterClassic.properties!.tactics,
-    variants: { $ref: '#/$defs/EncounterVariantStarforged' },
+    variants: {
+      type: 'object',
+      additionalProperties: false,
+      patternProperties: {
+        [Attributes.DF_KEY]: { $ref: '#/$defs/EncounterVariantStarforged' }
+      }
+    } as any,
     description: EncounterClassic.properties!.description,
     quest_starter: EncounterClassic.properties!.quest_starter,
     source: EncounterClassic.properties!.source,
