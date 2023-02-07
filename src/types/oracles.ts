@@ -1,11 +1,12 @@
 import { type Node, type Range } from '@df-types/abstract'
 import { type Localize, type Metadata } from '@df-types'
+import { Title } from '@df-types/metadata'
 
 export type OracleTableID = string
 
-export interface OracleTable extends Node<OracleTableID> {
+export interface OracleTable {
   _id: OracleTableID
-  name: Localize.Label
+  title: Title
   source: Metadata.Source
   summary?: Localize.MarkdownSentences
   description?: Localize.MarkdownParagraphs
@@ -26,8 +27,8 @@ interface OracleRenderingBase {
   /**
    * Describes the rendering of this oracle as a standalone table.
    */
-  columns: Record<string, OracleTableColumn>
-  style: OracleTableStyle
+  columns?: Record<string, OracleTableColumn>
+  style?: OracleTableStyle
 }
 
 export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
@@ -36,6 +37,7 @@ export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
 }
 
 export interface OracleCollectionRendering extends OracleRenderingBase {
+  columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
   style: 'multi_table'
 }
 

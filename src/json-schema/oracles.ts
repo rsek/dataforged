@@ -63,21 +63,26 @@ export const OracleCollectionColumn: Schema<
   oneOf: OracleTableColumn.oneOf
 }
 
+const oracleTableRenderDefault: Types.OracleTableRendering = {
+  style: 'table',
+  columns: {
+    roll: { content_type: 'range', label: 'Roll' },
+    result: { content_type: 'result', label: 'Result' }
+  }
+}
+
 export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
   type: 'object',
-  required: ['columns', 'style'],
+  required: ['style'],
+  default: oracleTableRenderDefault,
   properties: {
     columns: {
-      required: [],
       type: 'object',
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/OracleTableColumn' } as any
       },
-      default: {
-        roll: { label: 'Roll', content_type: 'range' },
-        result: { label: 'Result', content_type: 'result' }
-      }
-    },
+      default: oracleTableRenderDefault.columns
+    } as any,
     style: {
       type: 'string',
       description: `The style used to render this table in the source material.
@@ -87,17 +92,17 @@ export const OracleTableRendering: Schema<Types.OracleTableRendering> = {
         * table: A standard table, typically with a roll column and a result column.
         `,
       enum: ['embed_as_column', 'embed_in_row', 'table'],
-      default: 'table'
+      default: oracleTableRenderDefault.style
     }
   }
 }
 
 export const OracleTable: Schema<Types.OracleTable> = {
   type: 'object',
-  required: ['_id', 'name', 'source', 'table'],
+  required: ['_id', 'title', 'source', 'table'],
   properties: {
     _id: { $ref: '#/$defs/OracleTableID' },
-    name: { $ref: '#/$defs/Label' },
+    title: { $ref: '#/$defs/Title' },
     source: { $ref: '#/$defs/Source' },
     summary: { $ref: '#/$defs/MarkdownSentences' },
     description: { $ref: '#/$defs/MarkdownParagraphs' },

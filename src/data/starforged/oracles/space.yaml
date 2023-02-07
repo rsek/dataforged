@@ -17,23 +17,23 @@ starforged:
             short: Sighting
           source:
             page: 300
-          display:
+          rendering:
             columns:
               terminus:
                 content: starforged/oracles/space/sighting/terminus
                 label: Terminus
-                column_type: dice_range
+                content_type: range
               outlands:
                 content: starforged/oracles/space/sighting/outlands
                 label: Outlands
-                column_type: dice_range
+                content_type: range
               expanse:
                 content: starforged/oracles/space/sighting/expanse
                 label: Expanse
-                column_type: dice_range
+                content_type: range
               result:
                 content: starforged/oracles/space/sighting/terminus
-                column_type: string
+                content_type: string
           content:
             part_of_speech: [fragment]
           description: |-
@@ -48,7 +48,7 @@ starforged:
             terminus:
               title:
                 canonical: Terminus
-              display:
+              rendering:
                 column_of: starforged/oracles/space/sighting
               usage:
                 requires:
@@ -129,7 +129,7 @@ starforged:
             outlands:
               title:
                 canonical: Outlands
-              display:
+              rendering:
                 column_of: starforged/oracles/space/sighting
               usage:
                 requires:
@@ -162,7 +162,7 @@ starforged:
             expanse:
               title:
                 canonical: Expanse
-              display:
+              rendering:
                 column_of: starforged/oracles/space/sighting
               usage:
                 requires:
@@ -197,18 +197,18 @@ starforged:
             canonical: Sector Name
           source:
             page: 302
-          display:
+          rendering:
             columns:
               result:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/space/sector_name/prefix
               prefix:
-                column_type: string
+                content_type: string
                 key: result
                 content: starforged/oracles/space/sector_name/prefix
                 label: Prefix
               suffix:
-                column_type: string
+                content_type: string
                 key: result
                 content: starforged/oracles/space/sector_name/suffix
                 label: Suffix
@@ -219,7 +219,7 @@ starforged:
             prefix:
               title:
                 canonical: Prefix
-              display:
+              rendering:
                 column_of: starforged/oracles/space/sector_name
               description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
               usage:
@@ -405,7 +405,7 @@ starforged:
             suffix:
               title:
                 canonical: Suffix
-              display:
+              rendering:
                 column_of: starforged/oracles/space/sector_name
               description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
               usage:

@@ -429,20 +429,20 @@ ironsworn:
             standard: Quick Settlement Name Generator
             short: Quick Name
           summary: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
-          display:
+          rendering:
             columns:
               roll:
-                column_type: dice_range
+                content_type: range
                 content: ironsworn/oracles/settlement/quick_name/prefix
                 label: Roll
                 _tableKey: prefix
               prefix:
-                column_type: string
+                content_type: string
                 content: ironsworn/oracles/settlement/quick_name/prefix
                 label: Prefix
                 _tableKey: prefix
               suffix:
-                column_type: string
+                content_type: string
                 content: ironsworn/oracles/settlement/quick_name/suffix
                 label: Suffix
                 _tableKey: suffix
@@ -455,7 +455,7 @@ ironsworn:
             prefix:
               title:
                 canonical: Prefix
-              display:
+              rendering:
                 column_of: ironsworn/oracles/settlement/quick_name
               table:
                 # - [1, 4, Bleak-]
@@ -561,7 +561,7 @@ ironsworn:
             suffix:
               title:
                 canonical: Suffix
-              display:
+              rendering:
                 column_of: ironsworn/oracles/settlement/quick_name
               table:
                 # - [1, 4, -moor]

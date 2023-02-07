@@ -21,22 +21,22 @@ starforged:
             requires:
               attributes:
                 region: null
-          display:
+          rendering:
             columns:
               terminus:
-                column_type: dice_range
+                content_type: range
                 # content: starforged/oracles/settlements/population/terminus
                 label: Terminus
               outlands:
-                column_type: dice_range
+                content_type: range
                 # content: starforged/oracles/settlements/population/outlands
                 label: Outlands
               expanse:
-                column_type: dice_range
+                content_type: range
                 # content: starforged/oracles/settlements/population/expanse
                 label: Expanse
               number:
-                column_type: string
+                content_type: string
                 # content: starforged/oracles/settlements/population/terminus
                 label: Number
                 key: result
@@ -44,7 +44,7 @@ starforged:
             terminus:
               title:
                 canonical: Terminus
-              display:
+              rendering:
                 column_of: starforged/oracles/settlements/population
               usage:
                 requires:
@@ -74,7 +74,7 @@ starforged:
             outlands:
               title:
                 canonical: Outlands
-              display:
+              rendering:
                 column_of: starforged/oracles/settlements/population
               usage:
                 requires:
@@ -92,7 +92,7 @@ starforged:
             expanse:
               title:
                 canonical: Expanse
-              display:
+              rendering:
                 column_of: starforged/oracles/settlements/population
               usage:
                 requires:

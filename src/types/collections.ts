@@ -18,7 +18,7 @@ export interface Collection<T, IDType = Metadata.ID> extends NodeLike<IDType> {
 
 export interface RecursiveCollection<T, IDType = Metadata.ID>
   extends Collection<T, IDType> {
-  collections: Record<string, Collection<T, IDType>>
+  collections?: Record<string, Collection<T, IDType>>
 }
 
 export type OracleCollectionID = string

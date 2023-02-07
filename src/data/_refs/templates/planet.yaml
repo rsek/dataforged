@@ -23,7 +23,7 @@ Planet: &template:Planet
         usage:
           initial: true
           requires: *attr:Region.Any
-        display:
+        rendering:
           columns:
             - type: dice range
               content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
@@ -41,7 +41,7 @@ Planet: &template:Planet
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               title:
                 canonical: Terminus
-              display: &template.display:Planet.Settlements
+              rendering: &template.display:Planet.Settlements
                 column_of: starforged/oracles/planets/${{planetary_class}}/settlements
               usage:
                 requires: *attr:Region.Terminus
@@ -62,7 +62,7 @@ Planet: &template:Planet
             _templateOracleTable: &template.info:Planet.Settlements.Outlands
               title:
                 canonical: Outlands
-              display: *template.display:Planet.Settlements
+              rendering: *template.display:Planet.Settlements
               usage:
                 requires: *attr:Region.Outlands
             _templateTableRows:
@@ -71,7 +71,7 @@ Planet: &template:Planet
             _templateOracleTable: &template.info:Planet.Settlements.Expanse
               title:
                 canonical: Expanse
-              display: *template.display:Planet.Settlements
+              rendering: *template.display:Planet.Settlements
               usage:
                 requires: *attr:Region.Expanse
             _templateTableRows:

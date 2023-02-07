@@ -641,24 +641,24 @@ ironsworn:
             standard: Other Names
             short: Other
           description: Use this oracle to generate names for other firstborn characters.
-          display:
+          rendering:
             columns:
               roll:
-                column_type: dice_range
+                content_type: range
                 content: ironsworn/oracles/name/other/giants
                 _tableKey: giants
               giant:
-                column_type: string
+                content_type: string
                 content: ironsworn/oracles/name/other/giant
                 label: Giants
                 _tableKey: giants
               varou:
-                column_type: string
+                content_type: string
                 content: ironsworn/oracles/name/other/varou
                 label: Varou
                 _tableKey: varou
               troll:
-                column_type: string
+                content_type: string
                 content: ironsworn/oracles/name/other/troll
                 label: Trolls
                 _tableKey: trolls
@@ -670,7 +670,7 @@ ironsworn:
               title:
                 canonical: Giants
                 short: Giant
-              display:
+              rendering:
                 column_of: ironsworn/oracles/name/other
               table:
                 - low: 1
@@ -752,7 +752,7 @@ ironsworn:
               title:
                 canonical: Varou
                 short: Varou
-              display:
+              rendering:
                 column_of: ironsworn/oracles/name/other
               table:
                 - low: 1
@@ -834,7 +834,7 @@ ironsworn:
               title:
                 canonical: Trolls
                 short: Troll
-              display:
+              rendering:
                 column_of: ironsworn/oracles/name/other
               table:
                 - low: 1

@@ -77,7 +77,7 @@ export const SchemaJson: JSONSchema7 = {
             [DF_KEY]: { $ref: '#/$defs/EncounterStarforged' }
           }
         },
-        setting_truth: {
+        setting_truths: {
           type: 'object',
           additionalProperties: false,
           patternProperties: {
@@ -97,9 +97,10 @@ export const SchemaInput: JSONSchema7 = {
   $defs: toInputDefinitions(defsStarforged as Record<string, JSONSchema7>),
   type: SchemaJson.type,
   additionalProperties: false,
+  required: ['_ruleset', '_source'],
   properties: {
     _ruleset: { $ref: '#/$defs/Ruleset' },
-    _source: { $ref: '#/$defs/SourcePartial' }
+    _source: { $ref: '#/$defs/Source' }
   },
   patternProperties: SchemaJson.patternProperties
 }

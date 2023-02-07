@@ -23,28 +23,28 @@ starforged:
           usage:
             initial: true
             requires: *attr:Location.Any
-          display:
+          rendering:
             columns:
               planetside:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/derelicts/type/planetside
                 label: Planetside
               orbital:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/derelicts/type/orbital
                 label: Orbital
               deep_space:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/derelicts/type/deep_space
                 label: Deep Space
               result:
-                column_type: string
+                content_type: string
                 content: starforged/oracles/derelicts/type/planetside
           contents:
             planetside:
               title:
                 canonical: Planetside
-              display: &derelictTypeDisplay
+              rendering: &derelictTypeDisplay
                 column_of: starforged/oracles/derelicts/type
               usage:
                 requires: *attr:Location.Planetside
@@ -58,7 +58,7 @@ starforged:
             orbital:
               title:
                 canonical: Orbital
-              display: *derelictTypeDisplay
+              rendering: *derelictTypeDisplay
               usage:
                 requires: *attr:Location.Orbital
               _templateTableRows:
@@ -69,7 +69,7 @@ starforged:
             deep_space:
               title:
                 canonical: Deep Space
-              display:
+              rendering:
                 column_of: starforged/oracles/derelicts/type
               usage:
                 requires: *attr:Location.DeepSpace
@@ -85,18 +85,18 @@ starforged:
 
           source:
             page: 351
-          display:
+          rendering:
             columns:
               starship:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/derelicts/zones/starship
                 label: Starship
               settlement:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/derelicts/zones/settlement
                 label: Settlement
               result:
-                column_type: string
+                content_type: string
                 content: starforged/oracles/derelicts/zones/starship
           usage:
             repeatable: true
@@ -107,7 +107,7 @@ starforged:
             starship:
               title:
                 canonical: Starship
-              display:
+              rendering:
                 column_of: starforged/oracles/derelicts/zone
               usage:
                 requires:
@@ -117,47 +117,47 @@ starforged:
                 - low: null
                   high: null
                   result: "[⏵Access](starforged/oracles/derelicts/access)"
-                  display: {icon: "img/vector/derelicts/access.svg"}
+                  rendering: {icon: "img/vector/derelicts/access.svg"}
                   # game_objects: *obj:DerelictZone.Access
                 - low: 1
                   high: 5
                   result: "[⏵Community](starforged/oracles/derelicts/community)"
-                  display: {icon: "img/vector/derelicts/community.svg"}
+                  rendering: {icon: "img/vector/derelicts/community.svg"}
                   # game_objects: *obj:DerelictZone.Community
                 - low: 6
                   high: 30
                   result: "[⏵Engineering](starforged/oracles/derelicts/engineering)"
-                  display: {icon: "img/vector/derelicts/engineering.svg"}
+                  rendering: {icon: "img/vector/derelicts/engineering.svg"}
                   # game_objects: *obj:DerelictZone.Engineering
                 - low: 31
                   high: 55
                   result: "[⏵Living](starforged/oracles/derelicts/living)"
-                  display: {icon: "img/vector/derelicts/living.svg"}
+                  rendering: {icon: "img/vector/derelicts/living.svg"}
                   # game_objects: *obj:DerelictZone.Living
                 - low: 56
                   high: 65
                   result: "[⏵Medical](starforged/oracles/derelicts/medical)"
-                  display: {icon: "img/vector/derelicts/medical.svg"}
+                  rendering: {icon: "img/vector/derelicts/medical.svg"}
                   # game_objects: *obj:DerelictZone.Medical
                 - low: 66
                   high: 85
                   result: "[⏵Operations](starforged/oracles/derelicts/operations)"
-                  display: {icon: "img/vector/derelicts/operations.svg"}
+                  rendering: {icon: "img/vector/derelicts/operations.svg"}
                   # game_objects: *obj:DerelictZone.Operations
                 - low: 86
                   high: 90
                   result: "[⏵Production](starforged/oracles/derelicts/production)"
-                  display: {icon: "img/vector/derelicts/production.svg"}
+                  rendering: {icon: "img/vector/derelicts/production.svg"}
                   # game_objects: *obj:DerelictZone.Production
                 - low: 91
                   high: 100
                   result: "[⏵Research](starforged/oracles/derelicts/research)"
-                  display: {icon: "img/vector/derelicts/research.svg"}
+                  rendering: {icon: "img/vector/derelicts/research.svg"}
                   # game_objects: *obj:DerelictZone.Research
             settlement:
               title:
                 canonical: Settlement
-              display:
+              rendering:
                 column_of: starforged/oracles/derelicts/zone
               usage:
                 requires:

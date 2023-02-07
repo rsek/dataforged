@@ -17,22 +17,22 @@ starforged:
             short: Mission
           source:
             page: 328
-          display:
+          rendering:
             columns:
               terminus:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/starships/mission/terminus
                 label: Terminus
               outlands:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/starships/mission/outlands
                 label: Outlands
               expanse:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/starships/mission/expanse
                 label: Expanse
               mission:
-                column_type: string
+                content_type: string
                 content: starforged/oracles/starships/mission/terminus
                 label: Mission
           content:
@@ -48,15 +48,15 @@ starforged:
             terminus:
               title:
                 canonical: Terminus
-              display: &display:Mission
+              rendering: &display:Mission
                 column_of: starforged/oracles/starships/mission
                 columns:
                   roll:
-                    column_type: dice_range
+                    content_type: range
                   mission:
                     label: Mission
                     key: result
-                    column_type: string
+                    content_type: string
               usage:
                 requires:
                   attributes:
@@ -173,7 +173,7 @@ starforged:
             outlands:
               title:
                 canonical: Outlands
-              display: *display:Mission
+              rendering: *display:Mission
               usage:
                 requires:
                   attributes:
@@ -217,7 +217,7 @@ starforged:
             expanse:
               title:
                 canonical: Expanse
-              display: *display:Mission
+              rendering: *display:Mission
               usage:
                 requires:
                   attributes:
@@ -268,18 +268,18 @@ starforged:
             initial: true
           content:
             part_of_speech: [common noun, fragment]
-          display:
+          rendering:
             columns:
               roll:
                 label: Roll
-                column_type: dice_range
+                content_type: range
               class:
                 label: Class
-                column_type: string
+                content_type: string
                 key: result
               typical_role:
                 label: Typical Role
-                column_type: string
+                content_type: string
                 key: summary
           table:
             - low: 1

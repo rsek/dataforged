@@ -11,7 +11,7 @@ export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
 
 export const OracleCollection: Schema<Types.OracleCollection> = {
   type: 'object',
-  required: ['_id', 'title', 'source', 'contents', 'collections'],
+  required: ['_id', 'title', 'source', 'contents'],
   additionalProperties: false,
   properties: {
     _id: { $ref: '#/$defs/OracleCollectionID' } as any,
@@ -22,9 +22,14 @@ export const OracleCollection: Schema<Types.OracleCollection> = {
     rendering: {
       type: 'object',
       required: ['columns', 'style'],
+      description: "A column's default label is the title of the source table.",
       properties: {
         style: { const: 'multi_table', type: 'string' },
-        columns: { $ref: '#/$defs/OracleCollectionColumn' }
+        columns: {
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/OracleCollectionColumn' }
+          }
+        }
       }
     } as any,
     contents: {

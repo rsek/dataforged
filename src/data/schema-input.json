@@ -238,15 +238,15 @@
     "OracleTable": {
       "type": "object",
       "required": [
-        "name",
+        "title",
         "table"
       ],
       "properties": {
         "_id": {
           "$ref": "#/$defs/OracleTableID"
         },
-        "name": {
-          "$ref": "#/$defs/Label"
+        "title": {
+          "$ref": "#/$defs/Title"
         },
         "source": {
           "$ref": "#/$defs/Source"
@@ -365,12 +365,23 @@
     "OracleTableRendering": {
       "type": "object",
       "required": [
-        "columns",
         "style"
       ],
+      "default": {
+        "style": "table",
+        "columns": {
+          "roll": {
+            "content_type": "range",
+            "label": "Roll"
+          },
+          "result": {
+            "content_type": "result",
+            "label": "Result"
+          }
+        }
+      },
       "properties": {
         "columns": {
-          "required": [],
           "type": "object",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
@@ -379,12 +390,12 @@
           },
           "default": {
             "roll": {
-              "label": "Roll",
-              "content_type": "range"
+              "content_type": "range",
+              "label": "Roll"
             },
             "result": {
-              "label": "Result",
-              "content_type": "result"
+              "content_type": "result",
+              "label": "Result"
             }
           }
         },
@@ -446,13 +457,25 @@
       ],
       "properties": {
         "low": {
-          "const": 100
+          "description": "The low end of this row's roll range",
+          "minimum": 1,
+          "maximum": 100,
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "high": {
-          "const": 100
+          "description": "The high end of this row's roll range",
+          "minimum": 1,
+          "maximum": 100,
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "result": {
-          "const": "You transition into a new domain"
+          "$ref": "#/$defs/MarkdownPhrase"
         },
         "summary": {
           "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
@@ -645,8 +668,7 @@
       "type": "object",
       "required": [
         "title",
-        "contents",
-        "collections"
+        "contents"
       ],
       "additionalProperties": false,
       "properties": {
@@ -671,13 +693,18 @@
             "columns",
             "style"
           ],
+          "description": "A column's default label is the title of the source table.",
           "properties": {
             "style": {
               "const": "multi_table",
               "type": "string"
             },
             "columns": {
-              "$ref": "#/$defs/OracleCollectionColumn"
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "$ref": "#/$defs/OracleCollectionColumn"
+                }
+              }
             }
           }
         },
@@ -886,12 +913,16 @@
   },
   "type": "object",
   "additionalProperties": false,
+  "required": [
+    "_ruleset",
+    "_source"
+  ],
   "properties": {
     "_ruleset": {
       "$ref": "#/$defs/Ruleset"
     },
     "_source": {
-      "$ref": "#/$defs/SourcePartial"
+      "$ref": "#/$defs/Source"
     }
   },
   "patternProperties": {
@@ -935,7 +966,7 @@
             }
           }
         },
-        "setting_truth": {
+        "setting_truths": {
           "type": "object",
           "additionalProperties": false,
           "patternProperties": {

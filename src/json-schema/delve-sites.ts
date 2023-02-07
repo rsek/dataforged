@@ -235,7 +235,7 @@ const DelveCardCommon: Partial<
 function staticFeatureDangerRow<
   T extends DelveSites.FeatureOrDanger<number, number, string>
 >(row: Omit<T, '_id'>): Schema<T> {
-  const rowSchema = OracleTableRow
+  const rowSchema = _.cloneDeep(OracleTableRow)
   rowSchema.properties.low = { const: row.low }
   rowSchema.properties.high = { const: row.high }
   if (!_.isEmpty(row.result))

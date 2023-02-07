@@ -85,18 +85,18 @@ starforged:
             short: Peril
           source:
             page: 320
-          display:
+          rendering:
             columns:
               lifebearing:
                 label: Lifebearing
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/planets/peril/lifebearing
               lifeless:
                 label: Lifeless
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/planets/peril/lifeless
               result:
-                column_type: string
+                content_type: string
                 content: starforged/oracles/planets/peril/lifebearing
           usage:
             repeatable: true
@@ -112,7 +112,7 @@ starforged:
             lifebearing:
               title:
                 canonical: Lifebearing
-              display:
+              rendering:
                 column_of: starforged/oracles/planets/peril
               usage:
                 requires: &attr:Life.Lifebearing
@@ -237,7 +237,7 @@ starforged:
             lifeless:
               title:
                 canonical: Lifeless
-              display:
+              rendering:
                 column_of: starforged/oracles/planets/peril
               usage:
                 requires: &attr:Life.Lifeless
@@ -286,18 +286,18 @@ starforged:
             short: Opportunity
           source:
             page: 321
-          display:
+          rendering:
             columns:
               lifebearing:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/planets/opportunity/lifebearing
                 label: Lifebearing
               lifeless:
-                column_type: dice_range
+                content_type: range
                 content: starforged/oracles/planets/opportunity/lifeless
                 label: Lifeless
               result:
-                column_type: string
+                content_type: string
                 content: starforged/oracles/planets/opportunity/lifebearing
           content:
             part_of_speech: [fragment]
@@ -311,7 +311,7 @@ starforged:
             Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
           contents:
             lifebearing:
-              display:
+              rendering:
                 column_of: starforged/oracles/planets/opportunity
               title:
                 canonical: Lifebearing
@@ -405,7 +405,7 @@ starforged:
                   result: Vantage point reveals the lay of the land
                   suggestions: [*roll:Object]
             lifeless:
-              display:
+              rendering:
                 column_of: starforged/oracles/planets/opportunity
               title:
                 canonical: Lifeless

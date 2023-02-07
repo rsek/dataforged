@@ -25,27 +25,27 @@ starforged:
             - low: 1
               high: 5
               result: Space
-              display: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}
+              rendering: {icon: &icon.Space img/vector/oracles/creature/environment/space.svg}
               # set_attributes: {environment: [space]}, rolls: [starforged/oracles/creatures/basic_form/space]
             - low: 6
               high: 15
               result: Interior
-              display: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}
+              rendering: {icon: &icon.Interior img/vector/oracles/creature/environment/interior.svg}
               # set_attributes: {environment: [interior]}, rolls: [starforged/oracles/creatures/basic_form/interior]
             - low: 16
               high: 55
               result: Land
-              display: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}
+              rendering: {icon: &icon.Land img/vector/oracles/creature/environment/land.svg}
               # set_attributes: {environment: [land]}, rolls: [starforged/oracles/creatures/basic_form/land]
             - low: 56
               high: 80
               result: Liquid
-              display: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}
+              rendering: {icon: &icon.Liquid img/vector/oracles/creature/environment/liquid.svg}
               # set_attributes: {environment: [liquid]}, rolls: [starforged/oracles/creatures/basic_form/liquid]
             - low: 81
               high: 100
               result: Air
-              display: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}
+              rendering: {icon: &icon.Air img/vector/oracles/creature/environment/air.svg}
               # set_attributes: {environment: [air]}, rolls: [starforged/oracles/creatures/basic_form/air]
         scale:
           title:
@@ -544,30 +544,30 @@ starforged:
                 environment: null
           content:
             part_of_speech: [fragment]
-          display:
+          rendering:
             columns:
                 space:
-                  column_type: dice_range
+                  content_type: range
                   content: starforged/oracles/creatures/basic_form/space
                   label: Space
                 interior:
-                  column_type: dice_range
+                  content_type: range
                   content: starforged/oracles/creatures/basic_form/interior
                   label: Interior
                 land:
-                  column_type: dice_range
+                  content_type: range
                   content: starforged/oracles/creatures/basic_form/land
                   label: Land
                 liquid:
-                  column_type: dice_range
+                  content_type: range
                   content: starforged/oracles/creatures/basic_form/liquid
                   label: Liquid
                 air:
-                  column_type: dice_range
+                  content_type: range
                   content: starforged/oracles/creatures/basic_form/air
                   label: Air
                 result:
-                  column_type: string
+                  content_type: string
                   content: starforged/oracles/creatures/basic_form/space
                   key: result
           summary: |-
@@ -576,7 +576,7 @@ starforged:
             space:
               title:
                 canonical: Space
-              display:
+              rendering:
                 color: "#121b21"
                 icon: *icon.Space
                 column_of: starforged/oracles/creatures/basic_form
@@ -588,78 +588,78 @@ starforged:
                   - low: 1
                     high: 5
                     result: Amoeba / pseudopods
-                    display: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/amoeba_pseudopods.svg}
                   - low: 6
                     high: 20
                     result: Amorphous / elemental
-                    display: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/amorphous_elemental.svg}
                   - low: 21
                     high: 30
                     result: Avian / winged
-                    display: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/avian_winged.svg}
                   - low: 31
                     high: 32
                     result: Beast / mammal
-                    display: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/beast_mammal.svg}
                   - low: 33
                     high: 34
                     result: Crustacean / shelled
-                    display: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/crustacean_shelled.svg}
                   - low: 35
                     high: 37
                     result: Fish / torpedo-shaped
-                    display: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/fish_torpedo_shaped.svg}
                   - low: 38
                     high: 39
                     result: Humanoid / bipedal
-                    display: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/humanoid.svg}
                   - low: 40
                     high: 41
                     result: Insectoid / exoskeletal
-                    display: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/insectoid_exoskeletal.svg}
                   - low: 42
                     high: 60
                     result: Jellyfish / gasbag
-                    display: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/jellyish_gasbag.svg}
                   - low: 61
                     high: 62
                     result: Lizard / reptilian
-                    display: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/lizard_reptilian.svg}
                   - low: 63
                     high: 67
                     result: Octopoid / tentacled
-                    display: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/octopoid_tentacled.svg}
                   - low: 68
                     high: 72
                     result: Plant / fungus
-                    display: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/plant_fungus.svg}
                   - low: 73
                     high: 82
                     result: Ray / flat-bodied
-                    display: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/ray_flat_bodied.svg}
                   - low: 83
                     high: 84
                     result: Snake / eel
-                    display: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/snake_eel.svg}
                   - low: 85
                     high: 86
                     result: Spider / web-weaver
-                    display: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/spider_web_weaver.svg}
                   - low: 87
                     high: 88
                     result: Starfish / symmetrical
-                    display: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/starfish_symmetrical.svg}
                   - low: 89
                     high: 90
                     result: Worm / slug / larva
-                    display: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}
+                    rendering: {icon: img/vector/oracles/creature/basic_form/worm_slug_larva.svg}
                   - low: 91
                     high: 100
                     result: *result:RollTwice
             interior:
               title:
                 canonical: Interior
-              display:
+              rendering:
                 color: "#707a83"
                 icon: *icon.Interior
                 column_of: starforged/oracles/creatures/basic_form
@@ -691,7 +691,7 @@ starforged:
             land:
               title:
                 canonical: Land
-              display:
+              rendering:
                 color: "#ed1a38"
                 icon: *icon.Land
                 column_of: starforged/oracles/creatures/basic_form
@@ -723,7 +723,7 @@ starforged:
             liquid:
               title:
                 canonical: Liquid
-              display:
+              rendering:
                 color: "#0082bf"
                 icon: *icon.Liquid
                 column_of: starforged/oracles/creatures/basic_form
@@ -755,7 +755,7 @@ starforged:
             air:
               title:
                 canonical: Air
-              display:
+              rendering:
                 color: "#90278f"
                 icon: *icon.Air
                 column_of: starforged/oracles/creatures/basic_form

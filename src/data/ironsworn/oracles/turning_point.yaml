@@ -251,36 +251,36 @@ ironsworn:
             canonical: "Oracle 19: Challenge Rank"
             standard: Challenge Rank
             short: Rank
-          display:
+          rendering:
             columns:
               roll:
                 label: Roll
-                column_type: dice_range
+                content_type: range
                 content: ironsworn/oracles/turning_point/challenge_rank/quest
                 _tableKey: quest
               rank:
                 label: Rank
                 content: ironsworn/oracles/turning_point/challenge_rank/quest
                 _tableKey: quest
-                column_type: string
+                content_type: string
                 key: result
               quest:
                 label: Quest
                 content: ironsworn/oracles/turning_point/challenge_rank/quest
                 _tableKey: quest
-                column_type: string
+                content_type: string
                 key: summary
               journey:
                 label: Journey
                 content: ironsworn/oracles/turning_point/challenge_rank/journey
                 _tableKey: journey
-                column_type: string
+                content_type: string
                 key: summary
               foes:
                 label: Foes
                 content: ironsworn/oracles/turning_point/challenge_rank/foes
                 _tableKey: foes
-                column_type: string
+                content_type: string
                 key: summary
           description: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
           source:
@@ -289,7 +289,7 @@ ironsworn:
             quest:
               title:
                 canonical: Quest
-              display:
+              rendering:
                 column_of: ironsworn/oracles/turning_point/challenge_rank
               table: &challenge_rank_table
                 - low: 1
@@ -315,7 +315,7 @@ ironsworn:
             journey:
               title:
                 canonical: Journey
-              display:
+              rendering:
                 column_of: ironsworn/oracles/turning_point/challenge_rank
               _templateTableRows:
                 rolls: *challenge_rank_table
@@ -329,7 +329,7 @@ ironsworn:
               title:
                 canonical: Foes
                 short: Foe
-              display:
+              rendering:
                 column_of: ironsworn/oracles/turning_point/challenge_rank
               _templateTableRows:
                 rolls: *challenge_rank_table
