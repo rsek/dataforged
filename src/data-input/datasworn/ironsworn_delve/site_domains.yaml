@@ -1,12 +1,12 @@
-_ruleset: classic
-_source:
-  license: https://creativecommons.org/licenses/by/4.0
-  uri: https://ironswornrpg.com
-  date: 2020-02-13
-  title: 'Ironsworn: Delve'
-  authors:
-    - Shawn Tomkin
 ironsworn_delve:
+  _ruleset: classic
+  _source:
+    license: https://creativecommons.org/licenses/by/4.0
+    uri: https://ironswornrpg.com
+    date: 2020-02-13
+    title: 'Ironsworn: Delve'
+    authors:
+      - Shawn Tomkin
   site_domains:
     barrow:
       card_type: domain
@@ -47,7 +47,30 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Exhumed corpses
-
+        - &Row.UnusualOrUnexpected
+          low: 89
+          high: 98
+          result: Something unusual or unexpected
+          suggestions:
+            oracles:
+              - ironsworn/oracles/action_and_theme/action
+              - ironsworn/oracles/action_and_theme/theme
+              - ironsworn_delve/oracles/feature/aspect
+              - ironsworn_delve/oracles/feature/focus
+        - &Row.NewTheme
+          low: 99
+          high: 99
+          result: You transition into a new theme
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/site_nature/theme
+        - &Row.NewDomain
+          low: 100
+          high: 100
+          result: You transition into a new domain
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/site_nature/domain
       dangers:
         - low: 31
           high: 33
@@ -107,6 +130,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Dark pit
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -161,6 +187,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Discovery locked in the ice
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -214,7 +243,10 @@ ironsworn_delve:
           result: Frozen carcass
         - low: 85
           high: 88
-          result: Camp or outpost
+          result: Camp or
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -270,6 +302,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Unearthed secret
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -324,6 +359,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Camp or outpost
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -379,6 +417,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Mausoleum
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -434,6 +475,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Shipwreck or boat
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -488,6 +532,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Camp or outpost
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -539,6 +586,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Courtyard
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -595,6 +645,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Camp or outpost
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33
@@ -619,9 +672,9 @@ ironsworn_delve:
         page: 93
       summary: An age-old subterranean dungeon.
       description: |-
-        These subterranean structures are a mystery. They are inexplicably ancient, older perhaps than even the [Firstborn](ironsworn/encounters/firstborn). Their passages and halls hide dangers within unfathomable darkness.
+        These subterranean structures are a mystery. They are inexplicably ancient, older perhaps than even the [Firstborn](ironsworn/collections/encounters/firstborn). Their passages and halls hide dangers within unfathomable darkness.
 
-        Most [Ironlanders](ironsworn/encounters/ironlanders) stay well clear of these places. But some stumble upon the entrance to an underkeep and delve inside, drawn by its secrets or the alluring promise of forgotten power. Others, desperate for protection from the perils of the surface world, foolishly try to use the depths of an underkeep as a sanctum for their kin or clan. They soon discover that the greatest threats lie beneath.
+        Most [Ironlanders](ironsworn/collections/encounters/ironlanders) stay well clear of these places. But some stumble upon the entrance to an underkeep and delve inside, drawn by its secrets or the alluring promise of forgotten power. Others, desperate for protection from the perils of the surface world, foolishly try to use the depths of an underkeep as a sanctum for their kin or clan. They soon discover that the greatest threats lie beneath.
       features:
         - low: 21
           high: 43
@@ -650,6 +703,9 @@ ironsworn_delve:
         - low: 85
           high: 88
           result: Imposing architecture or artistry
+        - *Row.UnusualOrUnexpected
+        - *Row.NewTheme
+        - *Row.NewDomain
       dangers:
         - low: 31
           high: 33

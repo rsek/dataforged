@@ -7,7 +7,7 @@ export function dfRecordSchema(
 ): JSONSchema7 {
   return {
     title,
-    additionalProperties: false,
+    // additionalProperties: false,
     patternProperties: {
       [DF_KEY]: {
         $ref: `#/$defs/${itemSchema}`

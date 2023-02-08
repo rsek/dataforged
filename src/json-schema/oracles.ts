@@ -4,7 +4,8 @@ import { type Oracles as Types } from '@df-types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
   type: 'string',
-  $comment: '{namespace}/oracles/{...collections}/{oracle}'
+  $comment: '{namespace}/oracles/{...collections}/{oracle}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}$/.source
 }
 
 export const OracleTableColumn: Schema<Types.OracleTableColumn> = {
@@ -162,7 +163,10 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
 
 export const OracleTableRowID: Schema<Types.OracleTableRowID> = {
   type: 'string',
-  $comment: '{namespace}/oracles/{*...collections/{oracle}/{low}-{high}'
+  $comment: '{namespace}/oracles/{*...collections/{oracle}/{low}-{high}',
+  pattern:
+    /^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/
+      .source
 }
 
 export const OracleTableRow: Schema<Types.OracleTableRow> = {
@@ -183,9 +187,11 @@ export const OracleTableRow: Schema<Types.OracleTableRow> = {
       type: ['integer', 'null']
     } as any,
     result: {
+      title: 'Result text',
       $ref: '#/$defs/MarkdownPhrase'
     },
     summary: {
+      title: 'Summary text',
       description:
         "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       anyOf: [{ $ref: '#/$defs/MarkdownSentences' }, { type: 'null' }]

@@ -15,12 +15,14 @@ export const EncounterNatureClassic: Schema<Types.EncounterNatureClassic> = {
 
 export const EncounterClassicID: Schema<Types.EncounterClassicID> = {
   type: 'string',
-  $comment: '{namespace}/encounters/{nature}/{encounter}'
+  $comment: '{namespace}/encounters/{nature}/{encounter}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/.source
 }
 
 export const EncounterStarforgedID: Schema<Types.EncounterStarforgedID> = {
   type: 'string',
-  $comment: '{namespace}/encounters/{encounter}'
+  $comment: '{namespace}/encounters/{encounter}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){1}$/.source
 }
 
 // FIXME: i should probably just make this game-specific across all things that use it.
@@ -98,7 +100,7 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
     variants: {
       title: 'Encounter variants',
       type: 'object',
-      additionalProperties: false,
+      // additionalProperties: false,
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/EncounterVariantStarforged' }
       }
@@ -115,7 +117,7 @@ const SFVariantKeys = ['name', 'nature', 'rank', 'description', 'suggestions']
 
 export const EncounterVariantStarforged: Schema<Types.EncounterVariantStarforged> =
   {
-    title: 'EncounterVariantStarofrged',
+    title: 'Encounter variant (Starforged)',
     type: 'object',
     additionalProperties: false,
     required: SFVariantKeys as any,

@@ -4,8 +4,8 @@ import { type JSONSchemaType as Schema } from 'ajv'
 
 export const RarityID: Schema<Types.RarityID> = {
   type: 'string',
-  $comment: '{namespace}/rarities/{rarity}'
-  // TODO: pattern
+  $comment: '{namespace}/rarities/{rarity}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/rarities(\/[a-z][a-z_]*[a-z]){1}$/.source
 }
 
 export const Rarity: Schema<Types.Rarity> = {

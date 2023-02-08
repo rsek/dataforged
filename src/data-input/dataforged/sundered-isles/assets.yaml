@@ -1,15 +1,15 @@
-_ruleset: starforged
-_source:
-  title: Sundered Isles Asset Preview
-  authors:
-    - Shawn Tomkin
-  license: null
-  uri: https://ironswornrpg.com
-  date: 2022-11-06
 sundered_isles:
+  _ruleset: starforged
+  _source:
+    title: Sundered Isles Asset Preview
+    authors:
+      - Shawn Tomkin
+    license: null
+    uri: https://ironswornrpg.com
+    date: 2022-11-06
   assets:
     command_vehicle:
-      _extends: starforged/assets/command_vehicle
+      _extends: starforged/collections/assets/command_vehicle
       contents:
         sailing_ship:
           name: Sailing Ship
@@ -23,7 +23,7 @@ sundered_isles:
             - text: |-
                 You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
     module:
-      _extends: starforged/assets/module
+      _extends: starforged/collections/assets/module
       contents:
         ironclad:
           name: Ironclad
@@ -78,7 +78,7 @@ sundered_isles:
                 On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).
 
     path:
-      _extends: starforged/assets/path
+      _extends: starforged/collections/assets/path
       contents:
         cannoneer:
           name: Cannoneer
@@ -241,7 +241,7 @@ sundered_isles:
                 When you [React Under Fire](starforged/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
 
     companion:
-      _extends: starforged/assets/companion
+      _extends: starforged/collections/assets/companion
       contents:
         the_kraken:
           name: The Kraken
@@ -296,7 +296,7 @@ sundered_isles:
                       text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
                     weak_hit: *Kraken.3
     deed:
-      _extends: starforged/assets/deed
+      _extends: starforged/collections/assets/deed
       contents:
         cohort:
           name: Cohort

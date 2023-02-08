@@ -77,7 +77,7 @@ export const AssetAbilityBase: JSONSchema7 = {
   }
 }
 export const AssetAbility: JSONSchema7 = {
-  title: 'AssetAbility',
+  title: 'Asset ability',
   description: 'Describes an asset ability.',
   allOf: [
     {
@@ -200,7 +200,7 @@ export const Asset: JSONSchema7 = {
 }
 
 export const AssetExtension: JSONSchema7 = {
-  title: 'AssetExtension',
+  title: 'Asset extension',
   description: 'Extends/alters existing assets data',
   type: 'object',
   properties: {

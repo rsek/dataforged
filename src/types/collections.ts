@@ -6,7 +6,7 @@ import {
   type Moves,
   type Encounters
 } from '@df-types'
-import { type NodeLike } from '@df-types/abstract'
+import { OmitMetaAndLocale, type NodeLike } from '@df-types/abstract'
 import {
   OracleCollectionColumn,
   OracleRenderingBase,

@@ -95,7 +95,7 @@ export const Source: Schema<Types.Source> = {
       type: 'string',
       format: 'date',
       description:
-        "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
+        "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
     },
     license: {
       description:
@@ -132,7 +132,7 @@ const SuggestionsBase: Schema<Partial<Types.SuggestionsBase>> = {
   }
 } as any
 
-export const SuggestionsClassic = _.merge(_.cloneDeep(SuggestionsBase), {
+export const SuggestionsClassic = _.merge({}, SuggestionsBase, {
   properties: {
     regions: {
       title: 'Suggested regions',
@@ -158,7 +158,8 @@ export const SuggestionsClassic = _.merge(_.cloneDeep(SuggestionsBase), {
 })
 
 export const SuggestionsStarforged = _.merge(
-  _.cloneDeep(SuggestionsBase),
+  {},
+  SuggestionsBase,
 
   {
     properties: {

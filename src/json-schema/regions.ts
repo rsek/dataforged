@@ -4,7 +4,8 @@ import { schemaRef } from './common.js'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {
   type: 'string',
-  $comment: '{namespace}/regions/{region}'
+  $comment: '{namespace}/regions/{region}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/regions(\/[a-z][a-z_]*[a-z]){1}$/.source
   // TODO: pattern
 }
 export const RegionEntry: Schema<Types.RegionEntry> = {

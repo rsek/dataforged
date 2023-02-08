@@ -18,7 +18,8 @@ import _ from 'lodash'
 
 export const MoveID: Schema<Types.MoveID> = {
   type: 'string',
-  $comment: '{namespace}/moves/{moveCategory}/{move}'
+  $comment: '{namespace}/moves/{moveCategory}/{move}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source
 }
 
 export const RollableStatIDCommon: Schema<Types.RollableStatIDCommon> = {
@@ -227,14 +228,11 @@ export const TriggerOptionProgressClassic: Schema<Types.TriggerOptionProgressCla
     ]
   } as any
 
-export const MoveClassic: Schema<Types.MoveClassic> = _.merge(
-  _.cloneDeep(MoveBase),
-  {
-    properties: {
-      trigger: schemaRef<Types.TriggerClassic>('TriggerClassic')
-    }
+export const MoveClassic: Schema<Types.MoveClassic> = _.merge({}, MoveBase, {
+  properties: {
+    trigger: schemaRef<Types.TriggerClassic>('TriggerClassic')
   }
-) as any
+}) as any
 
 ////
 /// STARFORGED
@@ -307,7 +305,8 @@ export const RollableStatStarforgedID: Schema<Types.RollableStatStarforgedID> =
   }
 
 export const MoveStarforged: Schema<Types.MoveStarforged> = _.merge(
-  _.cloneDeep(MoveBase),
+  {},
+  MoveBase,
   {
     properties: {
       trigger: schemaRef<Types.TriggerStarforged>('TriggerStarforged')

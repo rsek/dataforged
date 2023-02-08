@@ -13,6 +13,5 @@ export * as Progress from './progress.js'
 export * as Rarities from './rarities.js'
 export * as Regions from './regions.js'
 export * as Truths from './truths.js'
-
-export * as Dataforged from './dataforged.js'
-export * as Datasworn from './datasworn.js'
+export * as Namespaces from './namespaces.js'
+export * as Schema from './schema.js'

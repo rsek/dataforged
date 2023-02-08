@@ -5,7 +5,13 @@ import { schemaRef } from './common.js'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
   type: 'string',
-  $comment: '{namespace}/delve_sites/{delveSite}'
+  $comment: '{namespace}/delve_sites/{delveSite}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/delve_sites(\/[a-z][a-z_]*[a-z]){1}$/.source
+}
+
+export const DelveSiteCardType: Schema<Types.DelveSiteCardType> = {
+  type: 'string',
+  enum: ['theme', 'domain']
 }
 
 export const DelveSite: Schema<Types.DelveSite> = {
@@ -200,11 +206,13 @@ export const DelveSiteDenizen: Schema<
   required: ['encounter', 'frequency', 'low', 'high'],
   properties: {
     encounter: {
+      description:
+        'This is set to `null` if no encounter has been specified for this slot yet.',
       oneOf: [{ $ref: '#/$defs/EncounterClassicID' }, { type: 'null' }]
     } as any,
     name: { $ref: '#/$defs/Label' },
     frequency: {
-      title: 'DelveSiteDenizenFrequency',
+      title: 'Frequency keyword',
       type: 'string',
       enum: ['very_common', 'common', 'uncommon', 'rare', 'unforeseen']
     },
@@ -213,9 +221,28 @@ export const DelveSiteDenizen: Schema<
   }
 }
 
-const DelveCardCommon: Partial<
-  Schema<Types.DelveSiteTheme | Types.DelveSiteDomain>
-> = {
+function staticFeatureDangerRow<
+  T extends DelveSites.FeatureOrDanger<number, number, string>
+>(row: Omit<T, '_id'>): Schema<T> {
+  const emptyRow = {
+    type: 'object',
+    properties: { low: { const: row.low }, high: { const: row.high } }
+  } as Schema<T>
+  if (!_.isEmpty(row.result)) emptyRow.properties.result = { const: row.result }
+  if (row.suggestions)
+    emptyRow.properties.suggestions = {
+      properties: _.mapValues(row.suggestions, (value) => {
+        return { type: 'array', items: value?.map((item) => ({ const: item })) }
+      })
+    }
+
+  return emptyRow
+}
+
+export const DelveSiteCard = {
+  description: 'Schema shared by delve site themes and delve site domains.',
+  type: 'object',
+  additionalProperties: false,
   required: [
     'card_type',
     'name',
@@ -226,43 +253,21 @@ const DelveCardCommon: Partial<
     '_id'
   ],
   properties: {
-    name: { $ref: '#/$defs/Label' },
-    icon: { $ref: '#/$defs/Icon' },
-    summary: { $ref: '#/$defs/MarkdownSentences' },
-    source: { $ref: '#/$defs/Source' },
-    description: { $ref: '#/$defs/MarkdownParagraphs' }
-  }
-}
-
-function staticFeatureDangerRow<
-  T extends DelveSites.FeatureOrDanger<number, number, string>
->(row: Omit<T, '_id'>): Schema<T> {
-  const emptyRow = {
-    properties: { low: { const: row.low }, high: { const: row.high } }
-  } as Schema<T>
-  if (!_.isEmpty(row.result)) emptyRow.properties.result = { const: row.result }
-
-  return emptyRow
-}
-
-export const DelveSiteCardBase = {
-  description: 'Schema shared by delve site themes and delve site domains.',
-  type: 'object',
-  additionalProperties: false,
-  required: DelveCardCommon.required,
-  properties: {
     _id: { type: 'string' },
     name: { $ref: '#/$defs/Label' },
+    card_type: { $ref: '#/$defs/DelveSiteCardType' },
     icon: { $ref: '#/$defs/Icon' },
     summary: { $ref: '#/$defs/MarkdownSentences' },
     source: { $ref: '#/$defs/Source' },
     description: { $ref: '#/$defs/MarkdownParagraphs' },
     features: {
+      type: 'array',
       items: {
         $ref: '#/$defs/OracleTableRow'
       }
     },
     dangers: {
+      type: 'array',
       items: {
         $ref: '#/$defs/OracleTableRow'
       }
@@ -272,18 +277,19 @@ export const DelveSiteCardBase = {
 
 export const DelveSiteThemeID: Schema<Types.DelveSiteThemeID> = {
   type: 'string',
-  $comment: '{namespace}/site_themes/{siteTheme}'
+  $comment: '{namespace}/site_themes/{siteTheme}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/site_themes(\/[a-z][a-z_]*[a-z]){1}$/.source
 }
 
 export const DelveSiteTheme: Schema<Types.DelveSiteTheme> = {
   type: 'object',
   description: 'A delve site theme card.',
   allOf: [
-    { $ref: '#/$defs/DelveSiteCardBase' },
+    { $ref: '#/$defs/DelveSiteCard' },
     {
       properties: {
         _id: { $ref: '#/$defs/DelveSiteThemeID' },
-        card_type: 'theme',
+        card_type: { const: 'theme' },
         features: {
           type: 'array',
           minItems: 5,
@@ -390,50 +396,19 @@ export const DelveSiteTheme: Schema<Types.DelveSiteTheme> = {
 
 export const DelveSiteDomainID: Schema<Types.DelveSiteDomainID> = {
   type: 'string',
-  $comment: '{namespace}/site_domains/{siteDomain}'
+  $comment: '{namespace}/site_domains/{siteDomain}',
+  pattern: /^[a-z0-9][a-z0-9_]+\/site_domains(\/[a-z][a-z_]*[a-z]){1}$/.source
 }
 export const DelveSiteDomain: Schema<Types.DelveSiteDomain> = {
   type: 'object',
   description: 'A delve site domain card.',
   allOf: [
-    { $ref: '#/$defs/DelveSiteCardBase' },
+    { $ref: '#/$defs/DelveSiteCard' },
     {
       properties: {
         _id: { $ref: '#/$defs/DelveSiteDomainID' },
-        card_type: 'domain',
+        card_type: { const: 'domain' },
         features: {
-          type: 'array',
-          minItems: 5,
-          maxItems: 5,
-          items: [
-            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][0]>({
-              low: 31,
-              high: 33,
-              result: ''
-            }),
-            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][1]>({
-              low: 34,
-              high: 36,
-              result: ''
-            }),
-            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][2]>({
-              low: 37,
-              high: 39,
-              result: ''
-            }),
-            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][3]>({
-              low: 40,
-              high: 42,
-              result: ''
-            }),
-            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][4]>({
-              low: 43,
-              high: 45,
-              result: ''
-            })
-          ]
-        },
-        dangers: {
           type: 'array',
           minItems: 12,
           maxItems: 12,
@@ -486,17 +461,63 @@ export const DelveSiteDomain: Schema<Types.DelveSiteDomain> = {
             staticFeatureDangerRow<Types.DelveSiteDomain['features'][9]>({
               low: 89,
               high: 98,
-              result: 'Something unusual or unexpected'
+              result: 'Something unusual or unexpected',
+              suggestions: {
+                oracles: [
+                  'ironsworn/oracles/action_and_theme/action',
+                  'ironsworn/oracles/action_and_theme/theme',
+                  'ironsworn_delve/oracles/feature/aspect',
+                  'ironsworn_delve/oracles/feature/focus'
+                ]
+              }
             }),
             staticFeatureDangerRow<Types.DelveSiteDomain['features'][10]>({
               low: 99,
               high: 99,
-              result: 'You transition into a new theme'
+              result: 'You transition into a new theme',
+              suggestions: {
+                oracles: ['ironsworn_delve/oracles/site_nature/theme']
+              }
             }),
             staticFeatureDangerRow<Types.DelveSiteDomain['features'][11]>({
               low: 100,
               high: 100,
-              result: 'You transition into a new domain'
+              result: 'You transition into a new domain',
+              suggestions: {
+                oracles: ['ironsworn_delve/oracles/site_nature/domain']
+              }
+            })
+          ]
+        },
+        dangers: {
+          type: 'array',
+          minItems: 5,
+          maxItems: 5,
+          items: [
+            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][0]>({
+              low: 31,
+              high: 33,
+              result: ''
+            }),
+            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][1]>({
+              low: 34,
+              high: 36,
+              result: ''
+            }),
+            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][2]>({
+              low: 37,
+              high: 39,
+              result: ''
+            }),
+            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][3]>({
+              low: 40,
+              high: 42,
+              result: ''
+            }),
+            staticFeatureDangerRow<Types.DelveSiteDomain['dangers'][4]>({
+              low: 43,
+              high: 45,
+              result: ''
             })
           ]
         }

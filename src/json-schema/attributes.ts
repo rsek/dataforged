@@ -10,11 +10,11 @@ const $defs: Record<string, JSONSchema7> = {
         $ref: '#/$defs/Label'
       },
       options: {
-        title: 'CustomStatOptions',
+        title: 'Custom stat options',
         type: 'object',
         patternProperties: {
           [DF_KEY]: {
-            title: 'CustomStatOption',
+            title: 'Custom stat option',
             type: 'object',
             required: ['label', 'value'],
             properties: {
@@ -36,7 +36,7 @@ const $defs: Record<string, JSONSchema7> = {
     additionalProperties: false
   },
   InputPosition: {
-    title: 'InputPosition',
+    title: 'Input position',
     enum: [
       'card-top',
       'card-back',
@@ -84,10 +84,11 @@ const $defs: Record<string, JSONSchema7> = {
             const: 0
           },
           value: {
+            title: 'Filled clock segments',
             default: 0
           },
           max: {
-            title: 'ClockSegments',
+            title: 'Clock segments (total)',
             type: 'integer',
             multipleOf: 2,
             minimum: 4,

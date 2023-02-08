@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "Datasworn data entry",
-  "description": "Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Datasworn format.",
+  "description": "Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.",
   "$defs": {
     "Color": {
       "title": "Color",
@@ -10,7 +10,7 @@
       "description": "A CSS hex color. Use it to provide thematic accents when rendering this item."
     },
     "ID": {
-      "title": "ID",
+      "title": "Id",
       "type": "string",
       "$comment": "{namespace}/{element}/{*}"
     },
@@ -86,7 +86,7 @@
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
@@ -125,27 +125,27 @@
       "description": "A localized plain text name or label."
     },
     "MarkdownParagraph": {
-      "title": "MarkdownParagraph",
+      "title": "Markdown paragraph",
       "type": "string",
       "description": "Localized markdown text, usually one paragraph. This may included ordered or unordered lists."
     },
     "MarkdownParagraphs": {
-      "title": "MarkdownParagraphs",
+      "title": "Markdown paragraphs",
       "type": "string",
       "description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
     },
     "MarkdownPhrase": {
-      "title": "MarkdownPhrase",
+      "title": "Markdown phrase",
       "type": "string",
       "description": "Localized markdown text, usually a phrase or single sentence."
     },
     "MarkdownSentences": {
-      "title": "MarkdownSentences",
+      "title": "Markdown sentences",
       "type": "string",
       "description": "Localized markdown text, usually a few sentences at most."
     },
     "ChallengeRank": {
-      "title": "ChallengeRank",
+      "title": "Challenge rank",
       "type": "integer",
       "description": "Enumerates challenge ranks: 1=troublesome; 2=dangerous; 3=formidable; 4=extreme; 5=epic.",
       "enum": [
@@ -157,7 +157,7 @@
       ]
     },
     "ProgressTypeClassic": {
-      "title": "ProgressTypeClassic",
+      "title": "Progress type (Classic)",
       "type": "string",
       "description": "Standard progress track types found in Ironsworn or Ironsworn: Delve",
       "enum": [
@@ -170,7 +170,8 @@
       ]
     },
     "AssetAbilityClassic": {
-      "title": "AssetAbilityClassic",
+      "title": "Asset ability (Classic)",
+      "type": "object",
       "required": [
         "text"
       ],
@@ -182,11 +183,7 @@
           "$ref": "#/$defs/MarkdownParagraph"
         },
         "moves": {
-          "^[a-z][a-z_]*[a-z]$": {
-            "patternProperties": {
-              "$ref": "#/$defs/MoveStarforged"
-            }
-          },
+          "type": "object",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/MoveClassic"
@@ -196,7 +193,7 @@
       }
     },
     "AssetClassic": {
-      "title": "AssetClassic",
+      "title": "Asset (Classic)",
       "type": "object",
       "required": [
         "name",
@@ -229,11 +226,12 @@
       }
     },
     "AssetID": {
-      "title": "AssetID",
-      "type": "string"
+      "title": "Asset ID",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
     },
     "ConditionMeterAliasClassic": {
-      "title": "ConditionMeterAliasClassic",
+      "title": "Condition meter alias (Classic)",
       "type": "string",
       "enum": [
         "companion_health",
@@ -241,7 +239,7 @@
       ]
     },
     "OracleCollectionColumn": {
-      "title": "OracleCollectionColumn",
+      "title": "Oracle collection column",
       "type": "object",
       "required": [
         "content_type",
@@ -323,7 +321,7 @@
       ]
     },
     "OracleTable": {
-      "title": "OracleTable",
+      "title": "Oracle table",
       "type": "object",
       "required": [
         "title",
@@ -377,7 +375,7 @@
       }
     },
     "OracleTableColumn": {
-      "title": "OracleTableColumn",
+      "title": "Oracle table column",
       "type": "object",
       "required": [
         "content_type"
@@ -450,12 +448,13 @@
       ]
     },
     "OracleTableID": {
-      "title": "OracleTableID",
+      "title": "Oracle table ID",
       "type": "string",
-      "$comment": "{namespace}/oracles/{...collections}/{oracle}"
+      "$comment": "{namespace}/oracles/{...collections}/{oracle}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$"
     },
     "OracleTableRendering": {
-      "title": "OracleTableRendering",
+      "title": "Oracle table rendering",
       "type": "object",
       "additionalProperties": false,
       "default": {
@@ -545,7 +544,7 @@
       }
     },
     "OracleTableRow": {
-      "title": "OracleTableRow",
+      "title": "Oracle table row",
       "type": "object",
       "description": "Represents a row from an oracle table.",
       "required": [
@@ -573,9 +572,11 @@
           ]
         },
         "result": {
+          "title": "Result text",
           "$ref": "#/$defs/MarkdownPhrase"
         },
         "summary": {
+          "title": "Summary text",
           "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
           "anyOf": [
             {
@@ -605,12 +606,13 @@
       }
     },
     "OracleTableRowID": {
-      "title": "OracleTableRowID",
+      "title": "Oracle table row ID",
       "type": "string",
-      "$comment": "{namespace}/oracles/{*...collections/{oracle}/{low}-{high}"
+      "$comment": "{namespace}/oracles/{*...collections/{oracle}/{low}-{high}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$"
     },
     "ConditionMeterID": {
-      "title": "ConditionMeterID",
+      "title": "Condition meter ID",
       "type": "string",
       "description": "ID for a standard player character condition meter.",
       "enum": [
@@ -620,7 +622,7 @@
       ]
     },
     "StatID": {
-      "title": "StatID",
+      "title": "Stat ID",
       "type": "string",
       "description": "ID for a standard player character stat.",
       "enum": [
@@ -632,7 +634,7 @@
       ]
     },
     "EncounterClassic": {
-      "title": "EncounterClassic",
+      "title": "Encounter (Classic)",
       "type": "object",
       "description": "An encounter entry similar to those in Chapter 5 of classic Ironsworn.",
       "required": [
@@ -698,25 +700,28 @@
       }
     },
     "EncounterClassicID": {
-      "title": "EncounterClassicID",
+      "title": "Encounter (Classic) ID",
       "type": "string",
-      "$comment": "{namespace}/encounters/{nature}/{encounter}"
+      "$comment": "{namespace}/encounters/{nature}/{encounter}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/encounters(\\/[a-z][a-z_]*[a-z]){2}$"
     },
     "EncounterID": {
-      "title": "EncounterID",
+      "title": "Encounter ID",
       "oneOf": [
         {
           "type": "string",
-          "$comment": "{namespace}/encounters/{nature}/{encounter}"
+          "$comment": "{namespace}/encounters/{nature}/{encounter}",
+          "pattern": "^[a-z0-9][a-z0-9_]+\\/encounters(\\/[a-z][a-z_]*[a-z]){2}$"
         },
         {
           "type": "string",
-          "$comment": "{namespace}/encounters/{encounter}"
+          "$comment": "{namespace}/encounters/{encounter}",
+          "pattern": "^[a-z0-9][a-z0-9_]+\\/encounters(\\/[a-z][a-z_]*[a-z]){1}$"
         }
       ]
     },
     "EncounterNatureClassic": {
-      "title": "EncounterNatureClassic",
+      "title": "Encounter nature (Classic)",
       "type": "string",
       "examples": [
         "Ironlander",
@@ -728,10 +733,10 @@
       ]
     },
     "CustomStat": {
-      "title": "CustomStat"
+      "title": "Custom stat"
     },
     "MoveClassic": {
-      "title": "MoveClassic",
+      "title": "Move (Classic)",
       "type": "object",
       "required": [
         "text",
@@ -810,12 +815,13 @@
       }
     },
     "MoveID": {
-      "title": "MoveID",
+      "title": "Move ID",
       "type": "string",
-      "$comment": "{namespace}/moves/{moveCategory}/{move}"
+      "$comment": "{namespace}/moves/{moveCategory}/{move}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$"
     },
     "MoveOutcome": {
-      "title": "MoveOutcome",
+      "title": "Move outcome",
       "type": "object",
       "required": [
         "text"
@@ -827,7 +833,7 @@
       }
     },
     "MoveOutcomeMatchable": {
-      "title": "MoveOutcomeMatchable",
+      "title": "Move outcome matchable",
       "type": "object",
       "allOf": [
         {
@@ -843,7 +849,7 @@
       ]
     },
     "MoveOutcomeType": {
-      "title": "MoveOutcomeType",
+      "title": "Move outcome type",
       "type": "string",
       "enum": [
         "miss",
@@ -852,7 +858,7 @@
       ]
     },
     "MoveOutcomes": {
-      "title": "MoveOutcomes",
+      "title": "Move outcomes",
       "type": "object",
       "required": [
         "miss",
@@ -872,7 +878,7 @@
       }
     },
     "RollableStatClassicID": {
-      "title": "RollableStatClassicID",
+      "title": "Rollable stat (Classic) ID",
       "oneOf": [
         {
           "$ref": "#/$defs/RollableStatIDCommon"
@@ -883,7 +889,7 @@
       ]
     },
     "RollableStatIDCommon": {
-      "title": "RollableStatIDCommon",
+      "title": "Rollable stat id common",
       "oneOf": [
         {
           "$ref": "#/$defs/StatID"
@@ -894,7 +900,7 @@
       ]
     },
     "TriggerBase": {
-      "title": "TriggerBase",
+      "title": "Trigger base",
       "required": [
         "text"
       ],
@@ -909,7 +915,7 @@
       }
     },
     "TriggerClassic": {
-      "title": "TriggerClassic",
+      "title": "Trigger (Classic)",
       "required": [
         "text"
       ],
@@ -936,7 +942,7 @@
       }
     },
     "TriggerOptionActionClassic": {
-      "title": "TriggerOptionActionClassic",
+      "title": "Trigger option action (Classic)",
       "type": "object",
       "allOf": [
         {
@@ -955,7 +961,7 @@
       ]
     },
     "TriggerOptionBase": {
-      "title": "TriggerOptionBase",
+      "title": "Trigger option base",
       "type": "object",
       "required": [
         "roll_type",
@@ -1000,7 +1006,7 @@
       }
     },
     "TriggerOptionProgressClassic": {
-      "title": "TriggerOptionProgressClassic",
+      "title": "Trigger option progress (Classic)",
       "type": "object",
       "allOf": [
         {
@@ -1019,13 +1025,12 @@
       ]
     },
     "AssetTypeClassic": {
-      "title": "AssetTypeClassic",
+      "title": "Asset type (Classic)",
       "type": "object",
       "required": [
         "title",
         "contents"
       ],
-      "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/AssetTypeID"
@@ -1047,7 +1052,7 @@
         },
         "contents": {
           "type": "object",
-          "description": "The AssetClassics contained by this collection.",
+          "description": "The elements contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/AssetClassic"
@@ -1059,19 +1064,45 @@
         }
       }
     },
+    "AssetTypeExtensionClassic": {
+      "title": "Asset type extension (Classic)",
+      "description": "Extends a collection with additional items.",
+      "type": "object",
+      "required": [
+        "_extends"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/AssetTypeID"
+        },
+        "_extends": {
+          "description": "The ID of the collection to be extended.",
+          "$ref": "#/$defs/AssetTypeID"
+        },
+        "contents": {
+          "type": "object",
+          "description": "Items to be added to the extended collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/AssetClassic"
+            }
+          }
+        }
+      }
+    },
     "AssetTypeID": {
-      "title": "AssetTypeID",
+      "title": "Asset type ID",
       "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/assets(\\/[a-z][a-z_]*[a-z]){1}$",
       "$comment": "{namespace}/collections/assets/{name}"
     },
     "EncounterCollectionClassic": {
-      "title": "EncounterCollectionClassic",
+      "title": "Encounter collection (Classic)",
       "type": "object",
       "required": [
         "title",
         "contents"
       ],
-      "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/EncounterCollectionClassicID"
@@ -1093,7 +1124,7 @@
         },
         "contents": {
           "type": "object",
-          "description": "The EncounterClassics contained by this collection.",
+          "description": "The elements contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/EncounterClassic"
@@ -1106,17 +1137,43 @@
       }
     },
     "EncounterCollectionClassicID": {
-      "title": "EncounterCollectionClassicID",
-      "type": "string"
+      "title": "Encounter collection (Classic) ID",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/encounters(\\/[a-z][a-z_]*[a-z]){1}$"
+    },
+    "EncounterCollectionExtensionClassic": {
+      "title": "Encounter collection extension (Classic)",
+      "description": "Extends a collection with additional items.",
+      "type": "object",
+      "required": [
+        "_extends"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/EncounterCollectionClassicID"
+        },
+        "_extends": {
+          "description": "The ID of the collection to be extended.",
+          "$ref": "#/$defs/EncounterCollectionClassicID"
+        },
+        "contents": {
+          "type": "object",
+          "description": "Items to be added to the extended collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/EncounterClassic"
+            }
+          }
+        }
+      }
     },
     "MoveCategoryClassic": {
-      "title": "MoveCategoryClassic",
+      "title": "Move category (Classic)",
       "type": "object",
       "required": [
         "title",
         "contents"
       ],
-      "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/MoveCategoryID"
@@ -1138,7 +1195,7 @@
         },
         "contents": {
           "type": "object",
-          "description": "The MoveClassics contained by this collection.",
+          "description": "The elements contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/MoveClassic"
@@ -1150,19 +1207,45 @@
         }
       }
     },
+    "MoveCategoryExtensionClassic": {
+      "title": "Move category extension (Classic)",
+      "description": "Extends a collection with additional items.",
+      "type": "object",
+      "required": [
+        "_extends"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/MoveCategoryID"
+        },
+        "_extends": {
+          "description": "The ID of the collection to be extended.",
+          "$ref": "#/$defs/MoveCategoryID"
+        },
+        "contents": {
+          "type": "object",
+          "description": "Items to be added to the extended collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/MoveClassic"
+            }
+          }
+        }
+      }
+    },
     "MoveCategoryID": {
-      "title": "MoveCategoryID",
+      "title": "Move category ID",
       "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves(\\/[a-z][a-z_]*[a-z]){1}$",
       "$comment": "{namespace}/collections/moves/{name}"
     },
     "OracleCollection": {
-      "title": "OracleCollection",
+      "title": "Oracle collection",
       "type": "object",
       "required": [
         "title",
         "contents"
       ],
-      "additionalProperties": false,
       "properties": {
         "_id": {
           "$ref": "#/$defs/OracleCollectionID"
@@ -1184,7 +1267,7 @@
         },
         "contents": {
           "type": "object",
-          "description": "The OracleTables contained by this collection.",
+          "description": "The elements contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleTable"
@@ -1217,6 +1300,7 @@
             "default": null
           },
           "columns": {
+            "type": "object",
             "patternProperties": {
               "^[a-z][a-z_]*[a-z]$": {
                 "description": "A column's default label is the title of the source table.",
@@ -1231,18 +1315,51 @@
         "type": "object",
         "patternProperties": {
           "^[a-z][a-z_]*[a-z]$": {
-            "$ref": "#/$defs/OracleCollection"
+            "oneOf": [
+              {
+                "$ref": "#/$defs/OracleCollection"
+              },
+              {
+                "$ref": "#/$defs/OracleCollectionExtension"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "OracleCollectionExtension": {
+      "title": "Oracle collection extension",
+      "description": "Extends a collection with additional items.",
+      "type": "object",
+      "required": [
+        "_extends"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/OracleCollectionID"
+        },
+        "_extends": {
+          "description": "The ID of the collection to be extended.",
+          "$ref": "#/$defs/OracleCollectionID"
+        },
+        "contents": {
+          "type": "object",
+          "description": "Items to be added to the extended collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/OracleTable"
+            }
           }
         }
       }
     },
     "OracleCollectionID": {
-      "title": "OracleCollectionID",
+      "title": "Oracle collection ID",
       "type": "string",
-      "$comment": "{namespace}/collections/oracles/{grandparent}?/{parent}?/{name}"
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/oracles(\\/[a-z][a-z_]*[a-z]){1,3}$"
     },
     "SettingTruth": {
-      "title": "SettingTruth",
+      "title": "Setting truth",
       "type": "object",
       "required": [
         "name"
@@ -1263,7 +1380,7 @@
       }
     },
     "SettingTruthOption": {
-      "title": "SettingTruthOption",
+      "title": "Setting truth option",
       "required": [
         "quest_starter"
       ],
@@ -1275,7 +1392,7 @@
       }
     },
     "WorldTruthClassic": {
-      "title": "WorldTruthClassic",
+      "title": "World truth (Classic)",
       "allOf": [
         {
           "$ref": "#/$defs/SettingTruth"
@@ -1307,7 +1424,7 @@
       ]
     },
     "default": {
-      "title": "default",
+      "title": "Default",
       "SettingTruth": {
         "type": "object",
         "required": [
@@ -1387,7 +1504,7 @@
       }
     },
     "RegionEntry": {
-      "title": "RegionEntry",
+      "title": "Region entry",
       "type": "object",
       "description": "A region entry, like the Ironlands region entries found in classic Ironsworn.",
       "required": [
@@ -1431,9 +1548,10 @@
       }
     },
     "RegionEntryID": {
-      "title": "RegionEntryID",
+      "title": "Region entry ID",
       "type": "string",
-      "$comment": "{namespace}/regions/{region}"
+      "$comment": "{namespace}/regions/{region}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/regions(\\/[a-z][a-z_]*[a-z]){1}$"
     },
     "Rarity": {
       "title": "Rarity",
@@ -1482,12 +1600,13 @@
       }
     },
     "RarityID": {
-      "title": "RarityID",
+      "title": "Rarity ID",
       "type": "string",
-      "$comment": "{namespace}/rarities/{rarity}"
+      "$comment": "{namespace}/rarities/{rarity}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/rarities(\\/[a-z][a-z_]*[a-z]){1}$"
     },
     "DelveSite": {
-      "title": "DelveSite",
+      "title": "Delve site",
       "type": "object",
       "description": "A delve site with a theme, domain, and denizen table.",
       "required": [
@@ -1697,8 +1816,8 @@
         }
       }
     },
-    "DelveSiteCardBase": {
-      "title": "DelveSiteCardBase",
+    "DelveSiteCard": {
+      "title": "Delve site card",
       "description": "Schema shared by delve site themes and delve site domains.",
       "type": "object",
       "additionalProperties": false,
@@ -1716,6 +1835,9 @@
         "name": {
           "$ref": "#/$defs/Label"
         },
+        "card_type": {
+          "$ref": "#/$defs/DelveSiteCardType"
+        },
         "icon": {
           "$ref": "#/$defs/Icon"
         },
@@ -1729,11 +1851,13 @@
           "$ref": "#/$defs/MarkdownParagraphs"
         },
         "features": {
+          "type": "array",
           "items": {
             "$ref": "#/$defs/OracleTableRow"
           }
         },
         "dangers": {
+          "type": "array",
           "items": {
             "$ref": "#/$defs/OracleTableRow"
           }
@@ -1743,8 +1867,16 @@
         }
       }
     },
+    "DelveSiteCardType": {
+      "title": "Delve site card type",
+      "type": "string",
+      "enum": [
+        "theme",
+        "domain"
+      ]
+    },
     "DelveSiteDenizen": {
-      "title": "DelveSiteDenizen",
+      "title": "Delve site denizen",
       "type": "object",
       "description": "A denizen entry in a delve site.",
       "required": [
@@ -1755,6 +1887,7 @@
       ],
       "properties": {
         "encounter": {
+          "description": "This is set to `null` if no encounter has been specified for this slot yet.",
           "oneOf": [
             {
               "$ref": "#/$defs/EncounterClassicID"
@@ -1768,7 +1901,7 @@
           "$ref": "#/$defs/Label"
         },
         "frequency": {
-          "title": "DelveSiteDenizenFrequency",
+          "title": "Frequency keyword",
           "type": "string",
           "enum": [
             "very_common",
@@ -1791,82 +1924,28 @@
       }
     },
     "DelveSiteDomain": {
-      "title": "DelveSiteDomain",
+      "title": "Delve site domain",
       "type": "object",
       "description": "A delve site domain card.",
       "allOf": [
         {
-          "$ref": "#/$defs/DelveSiteCardBase"
+          "$ref": "#/$defs/DelveSiteCard"
         },
         {
           "properties": {
             "_id": {
               "$ref": "#/$defs/DelveSiteDomainID"
             },
-            "card_type": "domain",
-            "features": {
-              "type": "array",
-              "minItems": 5,
-              "maxItems": 5,
-              "items": [
-                {
-                  "properties": {
-                    "low": {
-                      "const": 31
-                    },
-                    "high": {
-                      "const": 33
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "low": {
-                      "const": 34
-                    },
-                    "high": {
-                      "const": 36
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "low": {
-                      "const": 37
-                    },
-                    "high": {
-                      "const": 39
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "low": {
-                      "const": 40
-                    },
-                    "high": {
-                      "const": 42
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "low": {
-                      "const": 43
-                    },
-                    "high": {
-                      "const": 45
-                    }
-                  }
-                }
-              ]
+            "card_type": {
+              "const": "domain"
             },
-            "dangers": {
+            "features": {
               "type": "array",
               "minItems": 12,
               "maxItems": 12,
               "items": [
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 21
@@ -1877,6 +1956,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 44
@@ -1887,6 +1967,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 57
@@ -1897,6 +1978,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 65
@@ -1907,6 +1989,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 69
@@ -1917,6 +2000,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 73
@@ -1927,6 +2011,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 77
@@ -1937,6 +2022,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 81
@@ -1947,6 +2033,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 85
@@ -1957,6 +2044,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 89
@@ -1966,10 +2054,32 @@
                     },
                     "result": {
                       "const": "Something unusual or unexpected"
+                    },
+                    "suggestions": {
+                      "properties": {
+                        "oracles": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "const": "ironsworn/oracles/action_and_theme/action"
+                            },
+                            {
+                              "const": "ironsworn/oracles/action_and_theme/theme"
+                            },
+                            {
+                              "const": "ironsworn_delve/oracles/feature/aspect"
+                            },
+                            {
+                              "const": "ironsworn_delve/oracles/feature/focus"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 99
@@ -1979,10 +2089,23 @@
                     },
                     "result": {
                       "const": "You transition into a new theme"
+                    },
+                    "suggestions": {
+                      "properties": {
+                        "oracles": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "const": "ironsworn_delve/oracles/site_nature/theme"
+                            }
+                          ]
+                        }
+                      }
                     }
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 100
@@ -1992,6 +2115,80 @@
                     },
                     "result": {
                       "const": "You transition into a new domain"
+                    },
+                    "suggestions": {
+                      "properties": {
+                        "oracles": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "const": "ironsworn_delve/oracles/site_nature/domain"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            "dangers": {
+              "type": "array",
+              "minItems": 5,
+              "maxItems": 5,
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "low": {
+                      "const": 31
+                    },
+                    "high": {
+                      "const": 33
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "low": {
+                      "const": 34
+                    },
+                    "high": {
+                      "const": 36
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "low": {
+                      "const": 37
+                    },
+                    "high": {
+                      "const": 39
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "low": {
+                      "const": 40
+                    },
+                    "high": {
+                      "const": 42
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "low": {
+                      "const": 43
+                    },
+                    "high": {
+                      "const": 45
                     }
                   }
                 }
@@ -2002,35 +2199,40 @@
       ]
     },
     "DelveSiteDomainID": {
-      "title": "DelveSiteDomainID",
+      "title": "Delve site domain ID",
       "type": "string",
-      "$comment": "{namespace}/site_domains/{siteDomain}"
+      "$comment": "{namespace}/site_domains/{siteDomain}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/site_domains(\\/[a-z][a-z_]*[a-z]){1}$"
     },
     "DelveSiteID": {
-      "title": "DelveSiteID",
+      "title": "Delve site ID",
       "type": "string",
-      "$comment": "{namespace}/delve_sites/{delveSite}"
+      "$comment": "{namespace}/delve_sites/{delveSite}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/delve_sites(\\/[a-z][a-z_]*[a-z]){1}$"
     },
     "DelveSiteTheme": {
-      "title": "DelveSiteTheme",
+      "title": "Delve site theme",
       "type": "object",
       "description": "A delve site theme card.",
       "allOf": [
         {
-          "$ref": "#/$defs/DelveSiteCardBase"
+          "$ref": "#/$defs/DelveSiteCard"
         },
         {
           "properties": {
             "_id": {
               "$ref": "#/$defs/DelveSiteThemeID"
             },
-            "card_type": "theme",
+            "card_type": {
+              "const": "theme"
+            },
             "features": {
               "type": "array",
               "minItems": 5,
               "maxItems": 5,
               "items": [
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 1
@@ -2041,6 +2243,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 5
@@ -2051,6 +2254,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 9
@@ -2061,6 +2265,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 13
@@ -2071,6 +2276,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 17
@@ -2088,6 +2294,7 @@
               "maxItems": 12,
               "items": [
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 1
@@ -2098,6 +2305,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 6
@@ -2108,6 +2316,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 11
@@ -2118,6 +2327,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 13
@@ -2128,6 +2338,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 15
@@ -2138,6 +2349,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 17
@@ -2148,6 +2360,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 19
@@ -2158,6 +2371,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 21
@@ -2168,6 +2382,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 23
@@ -2178,6 +2393,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 25
@@ -2188,6 +2404,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 27
@@ -2198,6 +2415,7 @@
                   }
                 },
                 {
+                  "type": "object",
                   "properties": {
                     "low": {
                       "const": 29
@@ -2214,9 +2432,10 @@
       ]
     },
     "DelveSiteThemeID": {
-      "title": "DelveSiteThemeID",
+      "title": "Delve site theme ID",
       "type": "string",
-      "$comment": "{namespace}/site_themes/{siteTheme}"
+      "$comment": "{namespace}/site_themes/{siteTheme}",
+      "pattern": "^[a-z0-9][a-z0-9_]+\\/site_themes(\\/[a-z][a-z_]*[a-z]){1}$"
     },
     "Suggestions": {
       "title": "Suggestions",
@@ -2317,7 +2536,7 @@
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
@@ -2335,29 +2554,26 @@
   },
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "_ruleset",
-    "_source"
-  ],
-  "properties": {
-    "_ruleset": {
-      "$ref": "#/$defs/Ruleset"
-    },
-    "_source": {
-      "$ref": "#/$defs/Source",
-      "description": "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
-    }
-  },
   "patternProperties": {
     "^[a-z0-9][a-z0-9_]+$": {
       "title": "Namespace",
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "_ruleset",
+        "_source"
+      ],
       "properties": {
+        "_ruleset": {
+          "const": "classic"
+        },
+        "_source": {
+          "$ref": "#/$defs/Source",
+          "description": "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
+        },
         "oracles": {
           "title": "Oracles",
           "type": "object",
-          "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleCollection"
@@ -2370,7 +2586,14 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/MoveCategoryClassic"
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/MoveCategoryClassic"
+                },
+                {
+                  "$ref": "#/$defs/MoveCategoryExtensionClassic"
+                }
+              ]
             }
           }
         },
@@ -2380,7 +2603,14 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/AssetTypeClassic"
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/AssetTypeClassic"
+                },
+                {
+                  "$ref": "#/$defs/AssetTypeExtensionClassic"
+                }
+              ]
             }
           }
         },
@@ -2390,7 +2620,14 @@
           "additionalProperties": false,
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/EncounterCollectionClassic"
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/EncounterCollectionClassic"
+                },
+                {
+                  "$ref": "#/$defs/EncounterCollectionExtensionClassic"
+                }
+              ]
             }
           }
         },

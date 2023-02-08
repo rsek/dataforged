@@ -10,7 +10,8 @@ import { DF_KEY, schemaRef } from './common.js'
 import _ from 'lodash'
 
 export const AssetID: Schema<Types.AssetID> = {
-  type: 'string'
+  type: 'string',
+  pattern: /^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}$/.source
 }
 
 export const ConditionMeterAliasStarforged: Schema<Types.ConditionMeterAliasStarforged> =
@@ -45,7 +46,8 @@ const AssetBase: Schema<Types.AssetBase> = {
 }
 
 export const AssetStarforged: Schema<Types.AssetStarforged> = _.merge(
-  _.cloneDeep(AssetBase),
+  {},
+  AssetBase,
   {
     properties: {
       abilities: {
@@ -57,7 +59,7 @@ export const AssetStarforged: Schema<Types.AssetStarforged> = _.merge(
   }
 ) as Schema<Types.AssetStarforged>
 
-export const AssetClassic = _.merge(_.cloneDeep(AssetBase), {
+export const AssetClassic = _.merge({}, AssetBase, {
   properties: {
     abilities: {
       items: schemaRef<Assets.AssetAbilityClassic>('AssetAbilityClassic')
@@ -66,6 +68,7 @@ export const AssetClassic = _.merge(_.cloneDeep(AssetBase), {
 }) as Schema<Types.AssetClassic>
 
 const AssetAbilityBase = {
+  type: 'object',
   required: ['text'],
   properties: {
     name: schemaRef<Localize.Label>('Label'),
@@ -73,21 +76,24 @@ const AssetAbilityBase = {
   }
 } as Partial<Schema<Types.AssetAbilityBase>>
 
-export const AssetAbilityStarforged = _.merge(_.clone(AssetAbilityBase), {
+export const AssetAbilityStarforged = _.merge({}, AssetAbilityBase, {
   properties: {
     moves: {
-      [DF_KEY]: {
-        patternProperties: schemaRef<Moves.MoveStarforged>('MoveStarforged')
+      type: 'object',
+      patternProperties: {
+        [DF_KEY]: schemaRef<Moves.MoveStarforged>('MoveStarforged')
       }
     }
   }
 }) as Schema<Types.AssetAbilityStarforged>
 
 export const AssetAbilityClassic: Schema<Types.AssetAbilityClassic> = _.merge(
-  _.clone(AssetAbilityBase),
+  {},
+  AssetAbilityBase,
   {
     properties: {
       moves: {
+        type: 'object',
         patternProperties: {
           [DF_KEY]: schemaRef<Moves.MoveClassic>('MoveClassic')
         }

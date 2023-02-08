@@ -38,7 +38,7 @@ export interface Cyclopedia<IDType> extends Node<IDType> {
 }
 
 type LocalizedKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
-type MetaKeys = '_id' | 'source' | 'title'
+type MetaKeys = '_id' | 'source' | 'title' | 'rendering'
 
 /**
  * Omits common metadata and localization keys.
@@ -48,9 +48,11 @@ export type OmitMetaAndLocale<T> = Omit<T, LocalizedKeys | MetaKeys>
 /**
  * Extends a single rules element
  */
-export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
+export type ExtendOne<T extends NodeLike = NodeLike> = Partial<
+  OmitMetaAndLocale<T>
+> & {
   _extends: T['_id']
-  _id: Metadata.ID
+  _id: T['_id']
 }
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?

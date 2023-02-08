@@ -3,18 +3,18 @@
  */
 
 import { writeFileSync } from 'fs'
-import { Dataforged, Datasworn } from '../json-schema/index.js'
+import { Schema } from '@df-json-schema'
 
 // Write Starforged-compatible schema for Dataforged
-const dfOut = './src/data/dataforged/schema-dataforged-input.json'
+const dfOut = './src/data-input/dataforged/schema-dataforged-input.json'
 
-const dfJson = JSON.stringify(Dataforged.SchemaInput, undefined, 2)
+const dfJson = JSON.stringify(Schema.DataforgedInput, undefined, 2)
 
 writeFileSync(dfOut, dfJson)
 
 // Write Ironsworn-compatible schema for Datasworn
-const dsOut = './src/data/datasworn/schema-datasworn-input.json'
+const dsOut = './src/data-input/datasworn/schema-datasworn-input.json'
 
-const dsJson = JSON.stringify(Datasworn.SchemaInput, undefined, 2)
+const dsJson = JSON.stringify(Schema.DataswornInput, undefined, 2)
 
 writeFileSync(dsOut, dsJson)
