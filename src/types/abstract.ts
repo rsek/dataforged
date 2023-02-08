@@ -37,7 +37,7 @@ export interface Cyclopedia<IDType> extends Node<IDType> {
   quest_starter?: Localized.MarkdownParagraph
 }
 
-type LocalizedKeys = 'name' | 'description' | 'summary' | 'text'
+type LocalizedKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
 type MetaKeys = '_id' | 'source' | 'title'
 
 /**

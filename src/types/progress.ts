@@ -1,9 +1,20 @@
 type LegacyType = 'quests' | 'bonds' | 'discoveries'
 
-type ProgressTypeCommon = 'combat' | 'vow' | 'scene_challenge'
+type ProgressTypeCommon =
+  | 'combat_progress'
+  | 'vow_progress'
+  | 'scene_challenge_progress'
 
-export type ProgressTypeStarforged = ProgressTypeCommon | 'expedition' | 'connection' | `${LegacyType}_legacy`
+export type ProgressTypeStarforged =
+  | ProgressTypeCommon
+  | 'expedition_progress'
+  | 'connection_progress'
+  | `${LegacyType}_legacy`
 
-export type ProgressTypeClassic = ProgressTypeCommon | 'journey' | 'delve' | 'bonds_classic'
+export type ProgressTypeClassic =
+  | ProgressTypeCommon
+  | 'journey_progress'
+  | 'delve_progress'
+  | 'bonds_progress'
 
-export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
+export type ChallengeRank = 1 | 2 | 3 | 4 | 5

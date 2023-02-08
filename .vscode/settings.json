@@ -8,14 +8,6 @@
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "npm.packageManager": "yarn",
   "typescript.suggest.jsdoc.generateReturns": false,
-  "yaml.schemas": {
-    "src/data/dataforged/schema-dataforged-input.json": [
-      "src/data/dataforged/**/*.yaml"
-    ],
-    "src/data/datasworn/schema-datasworn-input.json": [
-      "src/data/datasworn/**/*.yaml"
-    ]
-  },
   "editor.suggest.showDeprecated": false,
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
@@ -30,7 +22,6 @@
   "eslint.validate": ["javascript", "typescript", "yaml", "json"],
   "prettier.enable": true,
   "prettier.requireConfig": false,
-  "yaml.format.enable": false,
   "prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
   "eslint.lintTask.enable": true,
   "eslint.packageManager": "yarn",
@@ -40,9 +31,13 @@
   "CodeRun.typescript": [
     "ts-node -e --cwd --esm --swc --experimental-specifier-resolution node"
   ],
-  "vscode-yaml-sort.quotingType": "'",
-  "vscode-yaml-sort.schema": "JSON_SCHEMA",
-  "vscode-yaml-sort.useLeadingDashes": false,
-  "vscode-yaml-sort.customSortKeywords_1": [],
-  "vscode-yaml-sort.useHelmProcessor": false
+  "yaml.format.enable": false,
+  "yaml.schemas": {
+    "src/data-input/dataforged/schema-dataforged-input.json": [
+      "src/data-input/dataforged/**/*.yaml"
+    ],
+    "src/data-input/datasworn/schema-datasworn-input.json": [
+      "src/data-input/datasworn/**/*.yaml"
+    ]
+  }
 }

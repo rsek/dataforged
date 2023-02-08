@@ -1,6 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
-import { OracleTableRow } from './oracles.js'
 import { Metadata, type DelveSites, type DelveSites as Types } from '@df-types'
 import { schemaRef } from './common.js'
 
@@ -238,13 +237,12 @@ const DelveCardCommon: Partial<
 function staticFeatureDangerRow<
   T extends DelveSites.FeatureOrDanger<number, number, string>
 >(row: Omit<T, '_id'>): Schema<T> {
-  const rowSchema = _.cloneDeep(OracleTableRow)
-  rowSchema.properties.low = { const: row.low }
-  rowSchema.properties.high = { const: row.high }
-  if (!_.isEmpty(row.result))
-    rowSchema.properties.result = { const: row.result }
+  const emptyRow = {
+    properties: { low: { const: row.low }, high: { const: row.high } }
+  } as Schema<T>
+  if (!_.isEmpty(row.result)) emptyRow.properties.result = { const: row.result }
 
-  return rowSchema as Schema<T>
+  return emptyRow
 }
 
 export const DelveSiteCardBase = {

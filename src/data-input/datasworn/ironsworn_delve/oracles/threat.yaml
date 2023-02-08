@@ -15,7 +15,7 @@ ironsworn_delve:
       description: |-
         These oracles support the optional threat mechanics detailed in Chapter 6.
 
-        You can use the [Category] oracle above to randomly select a broad type of threat for your campaign. If you are told to roll twice, take both results and decide how these two threats act together or represent a more complex situation. For example, choosing both a [Malignant Plague](ironsworn_delve/oracles/threat/malignant_plague) and [Zealous Cult](ironsworn_delve/oracles/threat/zealous_cult) might signify an evil sect which has unleashed a sickness upon the Ironlands in service to some dark god.
+        You can use the [Category](ironsworn_delve/oracles/threat/category) oracle above to randomly select a broad type of threat for your campaign. If you are told to roll twice, take both results and decide how these two threats act together or represent a more complex situation. For example, choosing both a [Malignant Plague](ironsworn_delve/oracles/threat/malignant_plague) and [Zealous Cult](ironsworn_delve/oracles/threat/zealous_cult) might signify an evil sect which has unleashed a sickness upon the Ironlands in service to some dark god.
 
         For additional detail, use other oracles as appropriate. For example, you can look to the [Action](ironsworn/oracles/action_and_theme/action) and [Theme](ironsworn/oracles/action_and_theme/theme) oracles (Ironsworn Core, page 174) or [Character Goal](ironsworn/oracles/character/goal) oracle (Ironsworn Core, page 182) to define the motivations of a [Scheming Leader](ironsworn_delve/oracles/threat/scheming_leader).
 
@@ -34,51 +34,69 @@ ironsworn_delve:
         category:
           title:
             canonical: "Threat: Category"
-            short: Category
+            standard: Category
           table:
             - low: 1
               high: 10
               result: Burgeoning Conflict
-              rolls: [ironsworn_delve/oracles/threat/burgeoning_conflict]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/burgeoning_conflict
             - low: 11
               high: 20
               result: Cursed Site
-              rolls: [ironsworn_delve/oracles/threat/cursed_site]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/cursed_site
             - low: 21
               high: 30
               result: Environmental Calamity
-              rolls: [ironsworn_delve/oracles/threat/environmental_calamity]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/environmental_calamity
             - low: 31
               high: 40
               result: Malignant Plague
-              rolls: [ironsworn_delve/oracles/threat/malignant_plague]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/malignant_plague
             - low: 41
               high: 50
               result: Rampaging Creature
-              rolls: [ironsworn_delve/oracles/threat/rampaging_creature]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/rampaging_creature
             - low: 51
               high: 60
               result: Ravaging Horde
-              rolls: [ironsworn_delve/oracles/threat/ravaging_horde]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/ravaging_horde
             - low: 61
               high: 70
               result: Scheming Leader
-              rolls: [ironsworn_delve/oracles/threat/scheming_leader]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/scheming_leader
             - low: 71
               high: 80
               result: Power-Hungry Mystic
-              rolls: [ironsworn_delve/oracles/threat/power_hungry_mystic]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/power_hungry_mystic
             - low: 81
               high: 90
               result: Zealous Cult
-              rolls: [ironsworn_delve/oracles/threat/zealous_cult]
+              suggestions:
+                oracles:
+                  - ironsworn_delve/oracles/threat/zealous_cult
             - low: 91
               high: 100
               result: *result:RollTwice
         burgeoning_conflict:
           title:
             canonical: "Threat: Burgeoning Conflict"
-            short: Burgeoning Conflict
+            standard: Burgeoning Conflict
           _source:
             page: 221
           table:
@@ -115,7 +133,7 @@ ironsworn_delve:
         cursed_site:
           title:
             canonical: "Threat: Cursed Site"
-            short: Cursed Site
+            standard: Cursed Site
           _source:
             page: 221
           table:
@@ -152,7 +170,7 @@ ironsworn_delve:
         environmental_calamity:
           title:
             canonical: "Threat: Environmental Calamity"
-            short: Environmental Calamity
+            standard: Environmental Calamity
           _source:
             page: 221
           table:
@@ -189,7 +207,7 @@ ironsworn_delve:
         malignant_plague:
           title:
             canonical: "Threat: Malignant Plague"
-            short: Malignant Plague
+            standard: Malignant Plague
           _source:
             page: 222
           table:
@@ -226,7 +244,7 @@ ironsworn_delve:
         rampaging_creature:
           title:
             canonical: "Threat: Rampaging Creature"
-            short: Rampaging Creature
+            standard: Rampaging Creature
           _source:
             page: 222
           table:
@@ -263,7 +281,7 @@ ironsworn_delve:
         ravaging_horde:
           title:
             canonical: "Threat: Ravaging Horde"
-            short: Ravaging Horde
+            standard: Ravaging Horde
           _source:
             page: 222
           table:
@@ -300,7 +318,7 @@ ironsworn_delve:
         scheming_leader:
           title:
             canonical: "Threat: Scheming Leader"
-            short: Scheming Leader
+            standard: Scheming Leader
           _source:
             page: 223
           table:
@@ -337,7 +355,7 @@ ironsworn_delve:
         power_hungry_mystic:
           title:
             canonical: "Threat: Power-Hungry Mystic"
-            short: Power-Hungry Mystic
+            standard: Power-Hungry Mystic
           _source:
             page: 223
           table:
@@ -374,7 +392,7 @@ ironsworn_delve:
         zealous_cult:
           title:
             canonical: "Threat: Zealous Cult"
-            short: Zealous Cult
+            standard: Zealous Cult
           _source:
             page: 223
           table:

@@ -10,24 +10,27 @@ export const ChallengeRank: Schema<Types.ChallengeRank> = {
 
 export const ProgressTypeClassic: Schema<Types.ProgressTypeClassic> = {
   type: 'string',
+  description:
+    'Standard progress track types found in Ironsworn or Ironsworn: Delve',
   enum: [
-    'combat',
-    'vow',
-    'scene_challenge',
-    'journey',
-    'delve',
-    'bonds_classic'
+    'combat_progress',
+    'vow_progress',
+    'scene_challenge_progress',
+    'journey_progress',
+    'delve_progress',
+    'bonds_progress'
   ]
 }
 
 export const ProgressTypeStarforged: Schema<Types.ProgressTypeStarforged> = {
   type: 'string',
+  description: 'Standard progress track types found in Ironsworn: Starforged.',
   enum: [
-    'combat',
-    'vow',
-    'scene_challenge',
-    'expedition',
-    'connection',
+    'combat_progress',
+    'vow_progress',
+    'scene_challenge_progress',
+    'expedition_progress',
+    'connection_progress',
     'quests_legacy',
     'bonds_legacy',
     'discoveries_legacy'

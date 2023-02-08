@@ -8,8 +8,8 @@ export type AssetID = string
 export type AssetType = string
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface AssetBase extends Node<AssetID> {
-  asset_type: AssetType
+export interface AssetBase extends Node<AssetID> {
+  // asset_type: AssetType
   abilities: [AssetAbility, AssetAbility, AssetAbility]
 }
 
@@ -26,7 +26,7 @@ export interface AssetClassic extends AssetBase {
 
 export type Asset = AssetStarforged | AssetClassic
 
-interface AssetAbilityBase {
+export interface AssetAbilityBase {
   name?: Localize.Label
   text: Localize.MarkdownParagraph
   moves?: Record<string, Moves.Move>

@@ -1,4 +1,11 @@
 _ruleset: classic
+_source:
+  authors:
+    - Shawn Tomkin
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2019-06-05
 ironsworn:
   oracles:
     name:
@@ -645,33 +652,29 @@ ironsworn:
             columns:
               roll:
                 content_type: range
-                content: ironsworn/oracles/name/other/giants
-                _tableKey: giants
-              giant:
-                content_type: string
-                content: ironsworn/oracles/name/other/giant
+                table_key: giants
+                label: Roll
+              giants:
+                content_type: result
+                table_key: giants
                 label: Giants
-                _tableKey: giants
               varou:
-                content_type: string
-                content: ironsworn/oracles/name/other/varou
+                content_type: result
+                table_key: varou
                 label: Varou
-                _tableKey: varou
-              troll:
-                content_type: string
-                content: ironsworn/oracles/name/other/troll
+              trolls:
+                content_type: result
+                table_key: trolls
                 label: Trolls
-                _tableKey: trolls
           _source:
             title: Ironsworn Rulebook
             page: 187
           contents:
-            giant:
+            giants:
               title:
                 canonical: Giants
-                short: Giant
               rendering:
-                column_of: ironsworn/oracles/name/other
+                style: embed_as_column
               table:
                 - low: 1
                   high: 4
@@ -753,7 +756,7 @@ ironsworn:
                 canonical: Varou
                 short: Varou
               rendering:
-                column_of: ironsworn/oracles/name/other
+                style: embed_as_column
               table:
                 - low: 1
                   high: 4
@@ -830,12 +833,12 @@ ironsworn:
                 - low: 97
                   high: 100
                   result: Vojan
-            troll:
+            trolls:
               title:
                 canonical: Trolls
                 short: Troll
               rendering:
-                column_of: ironsworn/oracles/name/other
+                style: embed_as_column
               table:
                 - low: 1
                   high: 4

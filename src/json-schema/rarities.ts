@@ -10,7 +10,7 @@ export const RarityID: Schema<Types.RarityID> = {
 
 export const Rarity: Schema<Types.Rarity> = {
   type: 'object',
-  description: 'A rarity from Ironsworn: Delve.',
+  description: 'A rarity, like those presented in Ironsworn: Delve.',
   required: ['_id', 'asset', 'description', 'name', 'source', 'xp_cost'],
   additionalProperties: false,
   properties: {

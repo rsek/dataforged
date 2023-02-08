@@ -1,6 +1,13 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common.js'
-import { Metadata, type Collections as Types, type Oracles } from '@df-types'
+import {
+  Assets,
+  Localize,
+  Metadata,
+  type Collections as Types,
+  type Oracles
+} from '@df-types'
+import _ from 'lodash'
 
 export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
   type: 'string',
@@ -8,17 +15,45 @@ export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
   // TODO
 }
 
-export const OracleCollection: Schema<Types.OracleCollection> = {
-  type: 'object',
-  required: ['_id', 'title', 'source', 'contents'],
-  additionalProperties: false,
-  properties: {
-    _id: { $ref: '#/$defs/OracleCollectionID' } as any,
-    title: { $ref: '#/$defs/Title' } as any,
-    source: { $ref: '#/$defs/Source' } as any,
-    summary: { $ref: '#/$defs/MarkdownSentences' } as any,
-    description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
-    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
+function collection<TCollection extends Types.Collection<any, any>>(
+  contentsRef: string,
+  idRef: string,
+  merge: Partial<TCollection> = {}
+) {
+  const CollectionBase = {
+    type: 'object',
+    required: ['_id', 'title', 'source', 'contents'],
+    additionalProperties: false,
+    properties: {
+      _id: { $ref: `#/$defs/${idRef}` } as any,
+      title: schemaRef<Metadata.Title>('Title') as any,
+      source: schemaRef<Metadata.Source>('Source') as any,
+      summary: schemaRef<Localize.MarkdownSentences>(
+        'MarkdownSentences'
+      ) as any,
+      description: schemaRef<Localize.MarkdownParagraphs>(
+        'MarkdownParagraphs'
+      ) as any,
+      suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
+      contents: {
+        type: 'object',
+        description: `The ${contentsRef}s contained by this collection.`,
+        patternProperties: {
+          [DF_KEY]: { $ref: `#/$defs/${contentsRef}` }
+        }
+      }
+    } as any
+  } as Schema<Types.Collection<any, string>>
+  return _.merge(
+    _.cloneDeep(CollectionBase),
+    merge
+  ) as unknown as Schema<TCollection>
+}
+
+export const OracleCollection: Schema<Types.OracleCollection> = collection(
+  'OracleTable',
+  'OracleCollectionID',
+  {
     rendering: {
       type: 'object',
       definition:
@@ -39,102 +74,44 @@ export const OracleCollection: Schema<Types.OracleCollection> = {
           }
         }
       }
-    } as any,
-    contents: {
-      type: 'object',
-      description: 'The OracleTables contained by this OracleCollection.',
-      patternProperties: {
-        [DF_KEY]: { $ref: '#/$defs/OracleTable' }
-      }
-    } as any,
+    },
     collections: {
       description: 'OracleCollections contained by this OracleCollection.',
       type: 'object',
       patternProperties: {
         [DF_KEY]: { $ref: '#/$defs/OracleCollection' }
       }
-    } as any
-  }
-}
+    }
+  } as any
+) as Schema<Types.OracleCollection>
 
 export const AssetTypeID: Schema<Types.AssetTypeID> = {
   type: 'string',
   $comment: '{namespace}/collections/assets/{name}'
 }
 
-export const AssetTypeStarforged: Schema<Types.AssetTypeStarforged> = {} as any
+export const AssetTypeStarforged: Schema<Types.AssetTypeStarforged> =
+  collection('AssetStarforged', 'AssetTypeID')
 
-export const AssetTypeClassic: Schema<Types.AssetTypeClassic> = {} as any
+export const AssetTypeClassic: Schema<Types.AssetTypeClassic> = collection(
+  'AssetClassic',
+  'AssetTypeID'
+)
 
 export const MoveCategoryID: Schema<Types.MoveCategoryID> = {
   type: 'string',
   $comment: '{namespace}/collections/moves/{name}'
 }
 
-export const MoveCategoryStarforged: Schema<Types.MoveCategoryStarforged> = {
-  type: 'object',
-  required: ['_id', 'contents', 'source', 'title'],
-  additionalProperties: false,
-  properties: {
-    _id: { $ref: '#/$defs/MoveCategoryID' } as any,
-    title: { $ref: '#/$defs/Title' } as any,
-    source: { $ref: '#/$defs/Source' } as any,
-    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
-    summary: { $ref: '#/$defs/MarkdownSentences' } as any,
-    description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
-    contents: {
-      type: 'object',
-      description: 'The moves contained by this collection.',
-      patternProperties: {
-        [DF_KEY]: { $ref: '#/$defs/MoveStarforged' }
-      }
-    } as any
-  }
-}
+export const MoveCategoryStarforged: Schema<Types.MoveCategoryStarforged> =
+  collection('MoveStarforged', 'MoveCategoryID')
 
-export const MoveCategoryClassic: Schema<Types.MoveCategoryClassic> = {
-  type: 'object',
-  required: ['_id', 'contents', 'source', 'title'],
-  additionalProperties: false,
-  properties: {
-    _id: { $ref: '#/$defs/MoveCategoryID' } as any,
-    title: { $ref: '#/$defs/Title' } as any,
-    source: { $ref: '#/$defs/Source' } as any,
-    summary: { $ref: '#/$defs/MarkdownSentences' } as any,
-    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
-    description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
-    contents: {
-      type: 'object',
-      description: 'The moves contained by this collection.',
-      patternProperties: {
-        [DF_KEY]: { $ref: '#/$defs/MoveClassic' }
-      }
-    } as any
-  }
-}
+export const MoveCategoryClassic: Schema<Types.MoveCategoryClassic> =
+  collection('MoveClassic', 'MoveCategoryID')
 
 export const EncounterCollectionClassicID: Schema<Types.EncounterCollectionID> =
   {
     type: 'string'
   }
 export const EncounterCollectionClassic: Schema<Types.EncounterCollectionClassic> =
-  {
-    type: 'object',
-    required: ['_id', 'contents', 'source', 'title'],
-    additionalProperties: false,
-    properties: {
-      _id: { $ref: '#/$defs/EncounterCollectionClassicID' } as any,
-      title: { $ref: '#/$defs/Title' } as any,
-      source: { $ref: '#/$defs/Source' } as any,
-      summary: { $ref: '#/$defs/MarkdownSentences' } as any,
-      description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
-      suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
-      contents: {
-        type: 'object',
-        description: 'The encounters contained by this collection.',
-        patternProperties: {
-          [DF_KEY]: { $ref: '#/$defs/EncounterClassic' }
-        }
-      } as any
-    }
-  }
+  collection('EncounterClassic', 'EncounterCollectionClassicID')

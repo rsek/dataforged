@@ -1,19 +1,20 @@
 _ruleset: starforged
+_source:
+  title: Sundered Isles Asset Preview
+  authors:
+    - Shawn Tomkin
+  license: null
+  uri: https://ironswornrpg.com
+  date: 2022-11-06
 sundered_isles:
   assets:
     command_vehicle:
       _extends: starforged/assets/command_vehicle
-      assets:
+      contents:
         sailing_ship:
-          _id: sundered_isles/assets/command_vehicle/sailing_ship
           name: Sailing Ship
-          _source: &Sundered_Isles_Asset_Preview_2
-            title: Sundered Isles Asset Preview
+          _source:
             date: 2022-11-06
-            authors:
-              - Shawn Tomkin
-            license: null
-            uri: https://ironswornrpg.com
           abilities:
             - text: |-
                 Your seagoing flagship is armed with cannons, transports crew and cargo, and can carry and launch support vehicles. When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vessel with module assets.
@@ -23,10 +24,11 @@ sundered_isles:
                 You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
     module:
       _extends: starforged/assets/module
-      assets:
+      contents:
         ironclad:
-          _id: sundered_isles/assets/module/ironclad
           name: Ironclad
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 Your ship has a reinforced hull. When you [Withstand Damage](starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.
@@ -36,7 +38,8 @@ sundered_isles:
                 When you [Strike](starforged/moves/combat/strike) or [Face Danger](starforged/moves/adventure/face_danger) by ramming a foe or obstacle, choose the the force of the hit: 1, 2, or 3. Then, add +that amount. On a strong hit, take that amount as +momentum. On a weak hit or miss, in addition to any other outcome of the move, [Withstand Damage](starforged/moves/suffer/withstand_damage) and suffer an amount equal to the force of the hit.
         overgunned:
           name: Overgunned
-          _id: sundered_isles/assets/module/overgunned
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 Your gundecks house an intimidating array of heavy cannons. When you use them to [Strike](starforged/moves/combat/strike), choose one.
@@ -48,7 +51,8 @@ sundered_isles:
                 When you [Compel](starforged/moves/adventure/compel) or [Enter the Fray](starforged/moves/combat/enter_the_fray) by opening your gunports to send a promise of violence, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
         rigged_for_speed:
           name: Rigged for Speed
-          _id: sundered_isles/assets/module/rigged_for_speed
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 Your ship’s shallow draft, quality sails, and well-drilled crew makes it fast and manueverable. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die take +2 momentum instead of +1.
@@ -60,7 +64,8 @@ sundered_isles:
                 When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your crew and the ship’s rigging to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
         submersible:
           name: Submersible
-          _id: sundered_isles/assets/module/submersible
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 Your ship can cruise unseen below the surface. When you make a move against a foe or threat to avoid detection, add +1. If you [Enter the Fray](starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
@@ -74,10 +79,11 @@ sundered_isles:
 
     path:
       _extends: starforged/assets/path
-      assets:
+      contents:
         cannoneer:
-          _id: starforged/assets/path/cannoneer
           name: Cannoneer
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 When make a move by firing or directing the fire of a vehicle’s weapons, and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum. Otherwise, take +1 momentum after you reset.
@@ -87,8 +93,9 @@ sundered_isles:
                 When you Strike using a vehicle’s weapons, and hold your fire for maximum effect, decide the amount of momentum you risk (1, 2, or 3) and add +that amount. On a strong hit, mark progress. On a weak hit or miss, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to 1 + the amount risked (in addition to any other cost).
 
         crew_commander:
-          _id: sundered_isles/assets/path/crew_commander
           name: Crew Commander
+          _source:
+            date: 2022-11-06
           attributes:
             command:
               label: command
@@ -157,8 +164,9 @@ sundered_isles:
                       text: Take +2 command.
                     weak_hit: *Crew_Commander.3
         duelist:
-          _id: starforged/assets/path/duelist
           name: Duelist
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 When you Enter the Fray or Battle in a formal duel against a single notable foe, add +2. If you set a new objective (dangerous or greater) in the midst of a fight by facing off against a single worthy opponent, take +2 momentum; you are in control as the duel begins.
@@ -168,8 +176,9 @@ sundered_isles:
                 When you roll a miss with a match in a situation where your reputation is known, you may suffer the cost by envisioning a notable rival who challenges you to a duel. If you defeat them, mark two ticks on your quests legacy track. If you decline, mark one tick on your bonds legacy track but envision the fallout of this refusal.
 
         necromancer:
-          _id: starforged/assets/path/necromancer
           name: Necromancer
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 While in the presence of the remains of an intelligent being, you may [Gather Information](starforged/moves/adventure/gather_information) by summoning their spirit to answer your questions. If you do, roll +heart and take +1 momentum on a hit.
@@ -179,8 +188,9 @@ sundered_isles:
                 You may [Face Danger](starforged/moves/adventure/face_danger) (+heart) to imbue a corpse with soulless life. On a hit, the corpse follows your commands. If it aids you through force, threat, or fear as you make a move, add +2 and fill one segment of a 4-segment clock. You may also suffer the cost of a move by filling a segment. When the clock is full, the corpse crumbles to ash.
 
         pirate:
-          _id: starforged/assets/path/pirate
           name: Pirate
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 When you seize a notable ship or treasure, roll +wits. On a strong hit, take both, or choose one twice. On a weak hit, choose one. On a miss, choose one, but this prize also brings an an unexpected danger; [Pay the Price](starforged/moves/fate/pay_the_price).
@@ -192,8 +202,9 @@ sundered_isles:
                 You may spend 1 experience to [Sojourn](starforged/moves/recover/sojourn) in a community—even one allied against you— with an automatic strong hit. If you do, you and your allies take one extra recovery move.
 
         seaborn:
-          _id: starforged/assets/path/seaborn
           name: Seaborn
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 You are most suited to a life bound to wind and tide. When you are at sea, increase your momentum reset by 1. When you make landfall, adjust your momentum reset to its usual value and [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1).
@@ -203,8 +214,9 @@ sundered_isles:
                 When you Secure an Advantage to plot a course through careful study of currents and weather, or if you [Face Danger](starforged/moves/adventure/face_danger) aboard ship to overcome or avoid an environmental hazard such as a storm or rogue wave, add +1 and take +1 momentum on a hit.
 
         socialite:
-          _id: starforged/assets/path/socialite
           name: Socialite
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 When you make a move using using charm, flattery, or seduction, or by navigating elite social circles, add +1.
@@ -217,8 +229,9 @@ sundered_isles:
                 When you Hearten while attending an exclusive social event, reroll any dice. On a strong hit, you and any allies in your company mark one tick on your bonds legacy track.
 
         swashbuckler:
-          _id: starforged/assets/path/swashbuckler
           name: Swashbuckler
+          _source:
+            date: 2022-11-06
           abilities:
             - text: |-
                 When you make a move with outrageous style, and do not roll a 1 on your action die, you may reroll that die. If you burn momentum to improve your result on this move, roll your action die again; on a 5 or 6, do not reset momentum.
@@ -229,11 +242,11 @@ sundered_isles:
 
     companion:
       _extends: starforged/assets/companion
-      assets:
+      contents:
         the_kraken:
-          _id: starforged/assets/companion/the_kraken
           name: The Kraken
-          _source: *Sundered_Isles_Asset_Preview_2
+          _source:
+            date: 2022-11-06
           requirement: While it is your companion, the Kraken cannot be harmed.
           abilities:
             - text: |-
@@ -252,7 +265,6 @@ sundered_isles:
                     When the clock is filled, [Ask the Oracle](starforged/moves/fate/ask_the_oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
               attributes:
                 clock:
-                  _id: starforged/assets/companion/the_kraken/attributes/clock
                   label: Krakendoom
                   attribute_type: clock
                   max: 4
@@ -285,11 +297,11 @@ sundered_isles:
                     weak_hit: *Kraken.3
     deed:
       _extends: starforged/assets/deed
-      assets:
+      contents:
         cohort:
-          _id: sundered_isles/assets/deed/cohort
           name: Cohort
-          _source: *Sundered_Isles_Asset_Preview_2
+          _source:
+            date: 2022-11-06
           requirement: Once you [Make a Connection](starforged/moves/connection/make_a_connection) and take them on as a crewmate...
           abilities:
             - text: |-
@@ -325,9 +337,9 @@ sundered_isles:
                     weak_hit: *Cohort.3
                     miss: *Cohort.3
         fleet_commander:
-          _id: sundered_isles/assets/deed/fleet_commander
           name: Fleet Commander
-          _source: *Sundered_Isles_Asset_Preview_2
+          _source:
+            date: 2022-11-06
           requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
           abilities:
             - text: |-
@@ -384,8 +396,9 @@ sundered_isles:
               # conditions:
               #   - wrecked
         undead:
-          _id: sundered_isles/assets/deed/undead
           name: Undead
+          _source:
+            date: 2022-11-06
           requirement: Once you die...
           abilities:
             - text: |-

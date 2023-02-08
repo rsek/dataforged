@@ -1,6 +1,8 @@
 import { type Node, type Range } from '@df-types/abstract'
 import { type Localize, type Metadata } from '@df-types'
 import { Icon, Title } from '@df-types/metadata'
+import { OracleCollectionStyle } from '@df-types/collections'
+import { ExtractKeysOfValueType, PickByType } from '@df-types/utils'
 
 export type OracleTableID = string
 
@@ -16,11 +18,14 @@ export interface OracleTable {
   suggestions?: Metadata.Suggestions
 }
 
-type OracleTableStyle = 'table' | 'embed_in_row' | 'embed_as_column'
-type OracleCollectionStyle = 'multi_table'
-type OracleColumnContent = 'range' | 'result' | 'summary' | 'description'
+export type OracleTableStyle = 'table' | 'embed_in_row' | 'embed_as_column'
+export type OracleColumnContentType =
+  | 'range'
+  | 'result'
+  | 'summary'
+  | 'description'
 
-interface OracleRenderingBase {
+export interface OracleRenderingBase {
   /**
    * Describes the rendering of this oracle as a standalone table.
    */
@@ -33,11 +38,6 @@ export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
   table_key: OracleTableID
 }
 
-export interface OracleCollectionRendering extends OracleRenderingBase {
-  columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
-  style?: OracleCollectionStyle | null
-}
-
 export interface OracleTableRendering extends OracleRenderingBase {
   icon?: Icon
   style?: OracleTableStyle
@@ -46,7 +46,7 @@ export interface OracleTableRendering extends OracleRenderingBase {
 
 interface OracleTableColumnBase {
   label?: Localize.Label
-  content_type: OracleColumnContent
+  content_type: OracleColumnContentType
 }
 
 export interface OracleTableColumnRange extends OracleTableColumnBase {
@@ -54,7 +54,7 @@ export interface OracleTableColumnRange extends OracleTableColumnBase {
 }
 
 export interface OracleTableColumnText extends OracleTableColumnBase {
-  content_type: Exclude<OracleColumnContent, 'range'>
+  content_type: Exclude<OracleColumnContentType, 'range'>
 }
 
 export type OracleTableColumn = OracleTableColumnRange | OracleTableColumnText
@@ -63,16 +63,20 @@ export interface OracleTableMatchBehavior {
   text: Localize.MarkdownSentences
 }
 
+export interface OracleStringTemplate
+  extends Omit<PickByType<OracleTableRow, string>, NonLocaleStringKeys> {}
+
+type NonLocaleStringKeys = `_${string}` | 'embed_table'
+
 export type OracleTableRowID = string
 
 export interface OracleTableRow<
   Low extends number | null = number | null,
   High extends number | null = number | null,
-  Result extends string = Localize.MarkdownPhrase,
   ID extends string = OracleTableRowID
 > extends Range<Low, High> {
   _id: ID
-  result: Result
+  result: Localize.MarkdownPhrase
   summary?: Localize.MarkdownSentences
   rolls?: OracleTableRoll[]
   suggestions?: Metadata.Suggestions

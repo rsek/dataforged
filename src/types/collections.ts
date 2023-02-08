@@ -7,7 +7,11 @@ import {
   type Encounters
 } from '@df-types'
 import { type NodeLike } from '@df-types/abstract'
-import { OracleCollectionRendering } from '@df-types/oracles'
+import {
+  OracleCollectionColumn,
+  OracleRenderingBase,
+  OracleTableColumn
+} from '@df-types/oracles'
 
 export interface Collection<T, IDType = Metadata.ID> extends NodeLike<IDType> {
   title: Metadata.Title
@@ -25,6 +29,13 @@ export type OracleCollectionID = string
 export interface OracleCollection
   extends RecursiveCollection<Oracles.OracleTable, OracleCollectionID> {
   rendering?: OracleCollectionRendering
+}
+
+export type OracleCollectionStyle = 'multi_table'
+
+export interface OracleCollectionRendering extends OracleRenderingBase {
+  columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
+  style?: OracleCollectionStyle | null
 }
 
 export type AssetTypeID = string

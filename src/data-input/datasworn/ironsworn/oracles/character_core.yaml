@@ -1,14 +1,18 @@
 _ruleset: classic
+_source:
+  authors:
+    - Shawn Tomkin
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2019-06-05
 ironsworn:
   oracles:
     character:
       title:
         canonical: Character
       _source:
-        authors: ["Shawn Tomkin"]
-        title: Ironsworn Rulebook
         page: 182
-        license: https://creativecommons.org/licenses/by/4.0
       contents:
         role:
           title:
@@ -108,7 +112,9 @@ ironsworn:
               result: Farmer
             - low: 100
               high: 100
-              result: Unusual role, suggestions: {oracles: [ironsworn/oracles/action_and_theme/action, ironsworn/oracles/action_and_theme/theme]}
+              result: Unusual role
+              suggestions:
+                oracles: [ironsworn/oracles/action_and_theme/action, ironsworn/oracles/action_and_theme/theme]
         goal:
           title:
             short: Goal
@@ -223,8 +229,8 @@ ironsworn:
             canonical: "Oracle 12: Character Descriptor"
             standard: Character Descriptor
           description: Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.
-          usage:
-            max_rolls: 3 # a bit arbitrary, but reasonable
+          # usage:
+          #   max_rolls: 3 # a bit arbitrary, but reasonable
           _source:
             page: 183
           table:

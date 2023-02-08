@@ -1,15 +1,18 @@
 _ruleset: classic
+_source:
+  authors:
+    - Shawn Tomkin
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2019-06-05
 ironsworn:
   oracles:
     settlement:
       title:
         canonical: Settlement
       _source:
-        authors:
-          - Shawn Tomkin
-        title: Ironsworn Rulebook
         page: 178
-        license: https://creativecommons.org/licenses/by/4.0
       contents:
         trouble:
           title:
@@ -433,22 +436,18 @@ ironsworn:
             columns:
               roll:
                 content_type: range
-                content: ironsworn/oracles/settlement/quick_name/prefix
                 label: Roll
-                _tableKey: prefix
+                table_key: prefix
               prefix:
-                content_type: string
-                content: ironsworn/oracles/settlement/quick_name/prefix
+                content_type: result
                 label: Prefix
-                _tableKey: prefix
+                table_key: prefix
               suffix:
-                content_type: string
-                content: ironsworn/oracles/settlement/quick_name/suffix
+                content_type: result
                 label: Suffix
-                _tableKey: suffix
-          usage:
-            template:
-              result: "{{roll:ironsworn/oracles/settlement/quick_name/prefix}}{{roll:ironsworn/oracles/settlement/quick_name/suffix}}"
+                table_key: suffix
+          template:
+            result: "{{roll:ironsworn/oracles/settlement/quick_name/prefix}}{{roll:ironsworn/oracles/settlement/quick_name/suffix}}"
           _source:
             page: 180
           contents:
@@ -456,7 +455,7 @@ ironsworn:
               title:
                 canonical: Prefix
               rendering:
-                column_of: ironsworn/oracles/settlement/quick_name
+                style: embed_as_column
               table:
                 # - [1, 4, Bleak-]
                 # - [5, 8, Green-]
@@ -562,7 +561,7 @@ ironsworn:
               title:
                 canonical: Suffix
               rendering:
-                column_of: ironsworn/oracles/settlement/quick_name
+                style: embed_as_column
               table:
                 # - [1, 4, -moor]
                 # - [5, 8, -ford]
@@ -670,10 +669,45 @@ ironsworn:
                 standard: Name Theme
                 short: Theme
               table:
-                - [ 1, 15, *Landscape_Feature, rolls: [ironsworn/oracles/settlement/name/landscape_feature] ]
-                - [ 16, 30, *Manmade_Edifice, rolls: [ironsworn/oracles/settlement/name/manmade_edifice] ]
-                - [ 31, 45, *Creature, rolls: [ironsworn/oracles/settlement/name/creature] ]
-                - [ 46, 60, *Historical_Event, rolls: [ironsworn/oracles/settlement/name/historical_event] ]
-                - [ 61, 75, *Old_World_Language, rolls: [ironsworn/oracles/settlement/name/old_world_language] ]
-                - [ 76, 90, *Environmental_Aspect, rolls: [ironsworn/oracles/settlement/name/environmental_aspect] ]
-                - [ 91, 100, "Something Else...", rolls: [ironsworn/oracles/settlement/name/something_else]]
+                - low: 1
+                  high: 15
+                  result: *Landscape_Feature
+                  embed_table: ironsworn/oracles/settlement/name/landscape_feature
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/landscape_feature
+                - low: 16
+                  high: 30
+                  result: *Manmade_Edifice
+                  embed_table: ironsworn/oracles/settlement/name/manmade_edifice
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/manmade_edifice
+                - low: 31
+                  high: 45
+                  result: *Creature
+                  embed_table: ironsworn/oracles/settlement/name/creature
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/creature
+                - low: 46
+                  high: 60
+                  result: *Historical_Event
+                  embed_table: ironsworn/oracles/settlement/name/historical_event
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/historical_event
+                - low: 61
+                  high: 75
+                  result: *Old_World_Language
+                  embed_table: ironsworn/oracles/settlement/name/old_world_language
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/old_world_language
+                - low: 76
+                  high: 90
+                  result: *Environmental_Aspect
+                  embed_table: ironsworn/oracles/settlement/name/environmental_aspect
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/environmental_aspect
+                - low: 91
+                  high: 100
+                  result: "Something Else..."
+                  embed_table: ironsworn/oracles/settlement/name/something_else
+                  rolls:
+                    - oracle: ironsworn/oracles/settlement/name/something_else

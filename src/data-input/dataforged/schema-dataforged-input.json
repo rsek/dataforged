@@ -159,20 +159,80 @@
     "ProgressTypeStarforged": {
       "title": "ProgressTypeStarforged",
       "type": "string",
+      "description": "Standard progress track types found in Ironsworn: Starforged.",
       "enum": [
-        "combat",
-        "vow",
-        "scene_challenge",
-        "expedition",
-        "connection",
+        "combat_progress",
+        "vow_progress",
+        "scene_challenge_progress",
+        "expedition_progress",
+        "connection_progress",
         "quests_legacy",
         "bonds_legacy",
         "discoveries_legacy"
       ]
     },
+    "AssetAbilityStarforged": {
+      "title": "AssetAbilityStarforged",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "text": {
+          "$ref": "#/$defs/MarkdownParagraph"
+        },
+        "moves": {
+          "^[a-z][a-z_]*[a-z]$": {
+            "patternProperties": {
+              "$ref": "#/$defs/MoveStarforged"
+            }
+          },
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/MoveClassic"
+            }
+          }
+        }
+      }
+    },
     "AssetID": {
       "title": "AssetID",
       "type": "string"
+    },
+    "AssetStarforged": {
+      "title": "AssetStarforged",
+      "type": "object",
+      "required": [
+        "name",
+        "abilities"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/Label"
+        },
+        "_id": {
+          "$ref": "#/$defs/AssetID"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
+        "abilities": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/AssetAbilityStarforged"
+          }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
     },
     "ConditionMeterAliasStarforged": {
       "title": "ConditionMeterAliasStarforged",
@@ -1010,7 +1070,45 @@
       "$comment": "{namespace}/collections/assets/{name}"
     },
     "AssetTypeStarforged": {
-      "title": "AssetTypeStarforged"
+      "title": "AssetTypeStarforged",
+      "type": "object",
+      "required": [
+        "title",
+        "contents"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "_id": {
+          "$ref": "#/$defs/AssetTypeID"
+        },
+        "title": {
+          "$ref": "#/$defs/Title"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "summary": {
+          "$ref": "#/$defs/MarkdownSentences"
+        },
+        "description": {
+          "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
+        "contents": {
+          "type": "object",
+          "description": "The AssetStarforgeds contained by this collection.",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/AssetStarforged"
+            }
+          }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
+        }
+      }
     },
     "MoveCategoryID": {
       "title": "MoveCategoryID",
@@ -1021,8 +1119,8 @@
       "title": "MoveCategoryStarforged",
       "type": "object",
       "required": [
-        "contents",
-        "title"
+        "title",
+        "contents"
       ],
       "additionalProperties": false,
       "properties": {
@@ -1035,18 +1133,18 @@
         "source": {
           "$ref": "#/$defs/Source"
         },
-        "suggestions": {
-          "$ref": "#/$defs/Suggestions"
-        },
         "summary": {
           "$ref": "#/$defs/MarkdownSentences"
         },
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "contents": {
           "type": "object",
-          "description": "The moves contained by this collection.",
+          "description": "The MoveStarforgeds contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/MoveStarforged"
@@ -1085,57 +1183,57 @@
         "suggestions": {
           "$ref": "#/$defs/Suggestions"
         },
-        "rendering": {
-          "type": "object",
-          "definition": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
-          "properties": {
-            "icon": {
-              "$ref": "#/$defs/Icon"
-            },
-            "style": {
-              "oneOf": [
-                {
-                  "enum": [
-                    "multi_table"
-                  ],
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": null
-            },
-            "columns": {
-              "patternProperties": {
-                "^[a-z][a-z_]*[a-z]$": {
-                  "description": "A column's default label is the title of the source table.",
-                  "$ref": "#/$defs/OracleCollectionColumn"
-                }
-              }
-            }
-          }
-        },
         "contents": {
           "type": "object",
-          "description": "The OracleTables contained by this OracleCollection.",
+          "description": "The OracleTables contained by this collection.",
           "patternProperties": {
             "^[a-z][a-z_]*[a-z]$": {
               "$ref": "#/$defs/OracleTable"
             }
           }
         },
-        "collections": {
-          "description": "OracleCollections contained by this OracleCollection.",
-          "type": "object",
-          "patternProperties": {
-            "^[a-z][a-z_]*[a-z]$": {
-              "$ref": "#/$defs/OracleCollection"
-            }
-          }
-        },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
+        }
+      },
+      "rendering": {
+        "type": "object",
+        "definition": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
+        "properties": {
+          "icon": {
+            "$ref": "#/$defs/Icon"
+          },
+          "style": {
+            "oneOf": [
+              {
+                "enum": [
+                  "multi_table"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "columns": {
+            "patternProperties": {
+              "^[a-z][a-z_]*[a-z]$": {
+                "description": "A column's default label is the title of the source table.",
+                "$ref": "#/$defs/OracleCollectionColumn"
+              }
+            }
+          }
+        }
+      },
+      "collections": {
+        "description": "OracleCollections contained by this OracleCollection.",
+        "type": "object",
+        "patternProperties": {
+          "^[a-z][a-z_]*[a-z]$": {
+            "$ref": "#/$defs/OracleCollection"
+          }
         }
       }
     },
