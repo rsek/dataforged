@@ -1,4 +1,11 @@
 _ruleset: classic
+_source:
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - Shawn Tomkin
 ironsworn_delve:
   oracles:
     combat_event:
@@ -11,19 +18,17 @@ ironsworn_delve:
         Roll once each on the [Method](ironsworn_delve/oracles/combat_event/method) oracle and the [Target](ironsworn_delve/oracles/combat_event/target) oracle. Then, interpret the response as appropriate to the current situation and the nature of your foe.
 
         For example, you are fighting a rhaskar, a bear-like beast. It has initiative, and you want to know what it does next. You [Ask the Oracle](Ask the Oracle), rolling [Method](ironsworn_delve/oracles/combat_event/method) and [Target](ironsworn_delve/oracles/combat_event/target). The oracle responds, “Await Weakness.” You envision the rhaskar circling you, its keen eyes narrowing as it looks for an opening in your defenses. You must [Face Danger](ironsworn/moves/adventure/face_danger) to avoid being outmaneuvered.
-      usage:
-        suggestions:
-          oracle_tables:
-            - ironsworn/oracles/turning_point/combat_action
+      suggestions:
+        oracles:
+          - ironsworn/oracles/turning_point/combat_action
       contents:
         method:
           title:
             canonical: 'Combat Event: Method'
             short: Method
-          usage:
-            suggestions:
-              oracle_tables:
-                - ironsworn_delve/oracles/combat_event/target
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/combat_event/target
           _source:
             page: 218
             authors:
@@ -187,10 +192,9 @@ ironsworn_delve:
           title:
             canonical: 'Combat Event: Target'
             standard: Target
-          usage:
-            suggestions:
-              oracle_tables:
-                - ironsworn_delve/oracles/combat_event/method
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/combat_event/method
           _source:
             page: 219
             authors:

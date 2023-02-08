@@ -1,6 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY } from './common.js'
-import { type Collections as Types, type Oracles } from '@df-types'
+import { DF_KEY, schemaRef } from './common.js'
+import { Metadata, type Collections as Types, type Oracles } from '@df-types'
 
 export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
   type: 'string',
@@ -18,15 +18,24 @@ export const OracleCollection: Schema<Types.OracleCollection> = {
     source: { $ref: '#/$defs/Source' } as any,
     summary: { $ref: '#/$defs/MarkdownSentences' } as any,
     description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
     rendering: {
       type: 'object',
-      required: ['columns', 'style'],
-      description: "A column's default label is the title of the source table.",
+      definition:
+        'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
       properties: {
-        style: { const: 'multi_table', type: 'string' },
+        icon: schemaRef<Metadata.Icon>('Icon'),
+        style: {
+          oneOf: [{ enum: ['multi_table'], type: 'string' }, { type: 'null' }],
+          default: null
+        },
         columns: {
           patternProperties: {
-            [DF_KEY]: { $ref: '#/$defs/OracleCollectionColumn' }
+            [DF_KEY]: {
+              description:
+                "A column's default label is the title of the source table.",
+              $ref: '#/$defs/OracleCollectionColumn'
+            }
           }
         }
       }
@@ -70,6 +79,7 @@ export const MoveCategoryStarforged: Schema<Types.MoveCategoryStarforged> = {
     _id: { $ref: '#/$defs/MoveCategoryID' } as any,
     title: { $ref: '#/$defs/Title' } as any,
     source: { $ref: '#/$defs/Source' } as any,
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
     summary: { $ref: '#/$defs/MarkdownSentences' } as any,
     description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
     contents: {
@@ -91,6 +101,7 @@ export const MoveCategoryClassic: Schema<Types.MoveCategoryClassic> = {
     title: { $ref: '#/$defs/Title' } as any,
     source: { $ref: '#/$defs/Source' } as any,
     summary: { $ref: '#/$defs/MarkdownSentences' } as any,
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
     description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
     contents: {
       type: 'object',
@@ -117,6 +128,7 @@ export const EncounterCollectionClassic: Schema<Types.EncounterCollectionClassic
       source: { $ref: '#/$defs/Source' } as any,
       summary: { $ref: '#/$defs/MarkdownSentences' } as any,
       description: { $ref: '#/$defs/MarkdownParagraphs' } as any,
+      suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
       contents: {
         type: 'object',
         description: 'The encounters contained by this collection.',

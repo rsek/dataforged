@@ -1,4 +1,11 @@
 _ruleset: classic
+_source:
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - Shawn Tomkin
 ironsworn_delve:
   oracles:
     character:
@@ -12,12 +19,11 @@ ironsworn_delve:
           title:
             canonical: 'Character: Activity'
             standard: Activity
-          description: To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](ironsworn_delve/oracles/feature/focus) oracle or [Theme](ironsworn/oracles/action_and_theme/theme) oracle.
-          usage:
-            suggestions:
-              oracle_tables:
-                - ironsworn_delve/oracles/feature/focus
-                - ironsworn/oracles/action_and_theme/theme
+          summary: To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](ironsworn_delve/oracles/feature/focus) oracle or [Theme](ironsworn/oracles/action_and_theme/theme) oracle.
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/feature/focus
+              - ironsworn/oracles/action_and_theme/theme
           _source:
             title: 'Ironsworn: Delve'
             page: 213
@@ -178,8 +184,8 @@ ironsworn_delve:
             canonical: 'Character: Disposition'
             standard: Disposition
           summary: Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.
-          usage:
-            initial: true
+          # usage:
+          #   initial: true
           _source:
             title: 'Ironsworn: Delve'
             page: 213

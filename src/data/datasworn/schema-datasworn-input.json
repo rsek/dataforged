@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "Datasworn data entry",
-  "description": "Data entry schema for Datasworn. It allows sparse metadata and provides templates, which may then be processed into the standard Datasworn format.",
+  "description": "Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Datasworn format.",
   "$defs": {
     "Color": {
       "title": "Color",
@@ -18,13 +18,15 @@
       "title": "Icon",
       "type": "string",
       "format": "uri",
-      "description": "A relative URI pointing to an SVG icon."
+      "description": "A relative URI pointing to an SVG icon.",
+      "pattern": "^.+\\.svg$"
     },
     "Image": {
       "title": "Image",
       "type": "string",
       "format": "uri",
-      "description": "A relative URI pointing to a WEBP image."
+      "description": "A relative URI pointing to a WEBP image.",
+      "pattern": "^.+\\.webp$"
     },
     "Ruleset": {
       "title": "Ruleset",
@@ -37,7 +39,7 @@
     "Source": {
       "title": "Source",
       "type": "object",
-      "description": "",
+      "description": "Metadata describing the source of this item's text content ",
       "required": [
         "title",
         "uri",
@@ -48,6 +50,7 @@
       "properties": {
         "title": {
           "type": "string",
+          "description": "The title of the source document.",
           "examples": [
             "Ironsworn Rulebook",
             "Ironsworn Assets Master Set",
@@ -58,24 +61,32 @@
           ]
         },
         "page": {
+          "description": "The page number on which this item appears most prominently, if applicable.",
           "type": "integer",
           "minimum": 1
         },
         "uri": {
           "type": "string",
-          "description": "The URI where the source is available."
+          "description": "The URI where the source document is available.",
+          "examples": [
+            "https://ironswornrpg.com"
+          ]
         },
         "authors": {
+          "title": "Authors",
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
-            "default": "Shawn Tomkin"
+            "examples": [
+              "Shawn Tomkin"
+            ]
           }
         },
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source material's last update."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
@@ -90,37 +101,6 @@
         }
       }
     },
-    "Suggestions": {
-      "title": "Suggestions",
-      "description": "TODO",
-      "type": "object",
-      "properties": {
-        "assets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/AssetID"
-          }
-        },
-        "moves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/MoveID"
-          }
-        },
-        "oracles": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/OracleTableID"
-          }
-        },
-        "encounters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/EncounterID"
-          }
-        }
-      }
-    },
     "Title": {
       "title": "Title",
       "type": "object",
@@ -129,13 +109,13 @@
       ],
       "properties": {
         "canonical": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         },
         "standard": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         },
         "short": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         }
       }
     },
@@ -547,6 +527,7 @@
           ]
         },
         "embed_table": {
+          "description": "A table to be rendered inside this table row.",
           "$ref": "#/$defs/OracleTableID"
         },
         "rolls": {
@@ -648,6 +629,9 @@
         "_id": {
           "$ref": "#/$defs/EncounterClassicID"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
         }
@@ -705,6 +689,9 @@
         "trigger": {
           "$ref": "#/$defs/TriggerClassic"
         },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
         "attributes": {
           "type": "object",
           "patternProperties": {
@@ -757,8 +744,8 @@
           "$ref": "#/$defs/MoveCategoryID",
           "description": "The ID of the move's category."
         },
-        "source": {
-          "$ref": "#/$defs/Source"
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
         }
       }
     },
@@ -846,16 +833,20 @@
         }
       ]
     },
-    "Trigger": {
-      "title": "Trigger",
-      "oneOf": [
-        {
-          "$ref": "#/$defs/TriggerStarforged"
+    "TriggerBase": {
+      "title": "TriggerBase",
+      "required": [
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownPhrase"
         },
-        {
-          "$ref": "#/$defs/TriggerClassic"
+        "options": {
+          "$ref": "#/$defs/TriggerOption"
         }
-      ]
+      }
     },
     "TriggerClassic": {
       "title": "TriggerClassic",
@@ -887,9 +878,27 @@
     "TriggerOptionActionClassic": {
       "title": "TriggerOptionActionClassic",
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/TriggerOptionBase"
+        },
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RollableStatClassicID"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TriggerOptionBase": {
+      "title": "TriggerOptionBase",
+      "type": "object",
       "required": [
-        "text",
-        "method",
+        "roll_type",
         "using"
       ],
       "properties": {
@@ -897,15 +906,35 @@
           "$ref": "#/$defs/MarkdownPhrase"
         },
         "method": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "title": "RollSelectionMethod",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "any",
+                "highest",
+                "lowest",
+                "inherit",
+                "all"
+              ]
+            },
+            {
+              "$ref": "#/$defs/MoveOutcomeType"
+            }
+          ],
+          "default": "any"
+        },
+        "roll_type": {
+          "type": "string",
+          "enum": [
+            "action_roll",
+            "progress_roll"
+          ]
         },
         "using": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/RollableStatClassicID"
+            "type": "string"
           }
         }
       }
@@ -913,28 +942,21 @@
     "TriggerOptionProgressClassic": {
       "title": "TriggerOptionProgressClassic",
       "type": "object",
-      "required": [
-        "text",
-        "method",
-        "using"
-      ],
-      "properties": {
-        "text": {
-          "$ref": "#/$defs/MarkdownPhrase"
+      "allOf": [
+        {
+          "$ref": "#/$defs/TriggerOptionBase"
         },
-        "method": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "using": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/ProgressTypeClassic"
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProgressTypeClassic"
+              }
+            }
           }
         }
-      }
+      ]
     },
     "AssetTypeClassic": {
       "title": "AssetTypeClassic"
@@ -967,6 +989,9 @@
         },
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
         },
         "contents": {
           "type": "object",
@@ -1006,6 +1031,9 @@
         },
         "summary": {
           "$ref": "#/$defs/MarkdownSentences"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
         },
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
@@ -1053,21 +1081,34 @@
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "rendering": {
           "type": "object",
-          "required": [
-            "columns",
-            "style"
-          ],
-          "description": "A column's default label is the title of the source table.",
+          "definition": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
           "properties": {
+            "icon": {
+              "$ref": "#/$defs/Icon"
+            },
             "style": {
-              "const": "multi_table",
-              "type": "string"
+              "oneOf": [
+                {
+                  "enum": [
+                    "multi_table"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
             },
             "columns": {
               "patternProperties": {
                 "^[a-z][a-z_]*[a-z]$": {
+                  "description": "A column's default label is the title of the source table.",
                   "$ref": "#/$defs/OracleCollectionColumn"
                 }
               }
@@ -1283,6 +1324,9 @@
         "source": {
           "$ref": "#/$defs/Source"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
         }
@@ -1312,12 +1356,14 @@
           "$ref": "#/$defs/Label"
         },
         "asset": {
+          "description": "The asset enhanced by this rarity.",
           "$ref": "#/$defs/AssetID"
         },
         "icon": {
           "$ref": "#/$defs/Icon"
         },
         "xp_cost": {
+          "description": "From Ironsworn: Delve, p. 174:\n\n    Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n    If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
           "type": "integer",
           "min": 3,
           "max": 5,
@@ -1328,6 +1374,9 @@
         },
         "source": {
           "$ref": "#/$defs/Source"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
         },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
@@ -1542,6 +1591,9 @@
         "_id": {
           "$ref": "#/$defs/DelveSiteID"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
         }
@@ -1690,6 +1742,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1737,6 +1790,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1784,6 +1838,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1831,6 +1886,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1878,6 +1934,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1932,6 +1989,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -1979,6 +2037,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2026,6 +2085,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2073,6 +2133,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2120,6 +2181,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2167,6 +2229,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2214,6 +2277,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2261,6 +2325,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2308,6 +2373,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2355,6 +2421,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2402,6 +2469,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2449,6 +2517,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2531,6 +2600,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2578,6 +2648,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2625,6 +2696,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2672,6 +2744,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2719,6 +2792,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2773,6 +2847,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2820,6 +2895,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2867,6 +2943,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2914,6 +2991,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -2961,6 +3039,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3008,6 +3087,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3055,6 +3135,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3102,6 +3183,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3149,6 +3231,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3196,6 +3279,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3243,6 +3327,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3290,6 +3375,7 @@
                       ]
                     },
                     "embed_table": {
+                      "description": "A table to be rendered inside this table row.",
                       "$ref": "#/$defs/OracleTableID"
                     },
                     "rolls": {
@@ -3317,12 +3403,70 @@
       "type": "string",
       "$comment": "{namespace}/site_themes/{siteTheme}"
     },
+    "Suggestions": {
+      "title": "Suggestions",
+      "description": "Related items that can be presented as useful shortcuts.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assets": {
+          "title": "Suggested assets",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AssetID"
+          }
+        },
+        "moves": {
+          "title": "Suggested moves",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MoveID"
+          }
+        },
+        "oracles": {
+          "title": "Suggested oracle tables",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableID"
+          }
+        },
+        "regions": {
+          "title": "Suggested regions",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RegionEntryID"
+          }
+        },
+        "encounters": {
+          "title": "Suggested encounters",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EncounterClassicID"
+          }
+        },
+        "site_themes": {
+          "title": "Suggested delve site themes",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DelveSiteThemeID"
+          }
+        },
+        "site_domains": {
+          "title": "Suggested delve site domains",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DelveSiteDomainID"
+          }
+        }
+      }
+    },
     "SourcePartial": {
       "description": "A source data stub that inherits data from ancestor elements during post-processing.",
       "type": "object",
       "properties": {
         "title": {
           "type": "string",
+          "description": "The title of the source document.",
           "examples": [
             "Ironsworn Rulebook",
             "Ironsworn Assets Master Set",
@@ -3333,24 +3477,32 @@
           ]
         },
         "page": {
+          "description": "The page number on which this item appears most prominently, if applicable.",
           "type": "integer",
           "minimum": 1
         },
         "uri": {
           "type": "string",
-          "description": "The URI where the source is available."
+          "description": "The URI where the source document is available.",
+          "examples": [
+            "https://ironswornrpg.com"
+          ]
         },
         "authors": {
+          "title": "Authors",
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
-            "default": "Shawn Tomkin"
+            "examples": [
+              "Shawn Tomkin"
+            ]
           }
         },
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source material's last update."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
@@ -3437,7 +3589,17 @@
             }
           }
         },
-        "delve_site_themes": {
+        "regions": {
+          "title": "Regions",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "$ref": "#/$defs/RegionEntry"
+            }
+          }
+        },
+        "site_themes": {
           "title": "Delve site themes",
           "type": "object",
           "additionalProperties": false,
@@ -3447,7 +3609,7 @@
             }
           }
         },
-        "delve_site_domains": {
+        "site_domains": {
           "title": "Delve site domains",
           "type": "object",
           "additionalProperties": false,

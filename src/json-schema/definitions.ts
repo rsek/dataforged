@@ -17,8 +17,8 @@ import {
 } from '@df-json-schema'
 import { JSONSchema7 } from 'json-schema'
 
-export const defs: Record<string, JSONSchema7> = {
-  ...(Metadata as any),
+const defs: Record<string, JSONSchema7> = {
+  ...(_.omit(Metadata, 'SuggestionsClassic', 'SuggestionsStarforged') as any),
   ...Localize,
   ...Progress,
   ...Assets,
@@ -31,19 +31,23 @@ export const defs: Record<string, JSONSchema7> = {
   // ...Assets,
 }
 
-export const defsStarforged = _(defs)
+const defsStarforged = _({
+  ...defs,
+  Suggestions: Metadata.SuggestionsStarforged
+})
   .mapValues((def: JSONSchema7, defKey: string) =>
     _.merge({ title: defKey }, def)
   )
   .omitBy((_, key) => key.includes('Classic'))
   .value() as Record<string, JSONSchema7>
 
-export const defsClassic = _({
+const defsClassic = _({
   ...defs,
   ...Encounters,
   ...Regions,
   ...Rarities,
-  ...DelveSites
+  ...DelveSites,
+  Suggestions: Metadata.SuggestionsClassic
 })
   .mapValues((def: JSONSchema7, defKey: string) =>
     _.merge({ title: defKey }, def)
@@ -54,3 +58,5 @@ export const defsClassic = _({
 export type DefsClassic = typeof defsClassic
 
 export type DefsStarforged = typeof defsStarforged
+
+export { defsStarforged, defsClassic }

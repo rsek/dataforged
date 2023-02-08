@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "title": "Dataforged data entry",
-  "description": "Data entry schema for Dataforged. It allows sparse metadata and provides templates, which may then be processed into the standard Dataforged format.",
+  "description": "Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.",
   "$defs": {
     "Color": {
       "title": "Color",
@@ -18,13 +18,15 @@
       "title": "Icon",
       "type": "string",
       "format": "uri",
-      "description": "A relative URI pointing to an SVG icon."
+      "description": "A relative URI pointing to an SVG icon.",
+      "pattern": "^.+\\.svg$"
     },
     "Image": {
       "title": "Image",
       "type": "string",
       "format": "uri",
-      "description": "A relative URI pointing to a WEBP image."
+      "description": "A relative URI pointing to a WEBP image.",
+      "pattern": "^.+\\.webp$"
     },
     "Ruleset": {
       "title": "Ruleset",
@@ -37,7 +39,7 @@
     "Source": {
       "title": "Source",
       "type": "object",
-      "description": "",
+      "description": "Metadata describing the source of this item's text content ",
       "required": [
         "title",
         "uri",
@@ -48,6 +50,7 @@
       "properties": {
         "title": {
           "type": "string",
+          "description": "The title of the source document.",
           "examples": [
             "Ironsworn Rulebook",
             "Ironsworn Assets Master Set",
@@ -58,24 +61,32 @@
           ]
         },
         "page": {
+          "description": "The page number on which this item appears most prominently, if applicable.",
           "type": "integer",
           "minimum": 1
         },
         "uri": {
           "type": "string",
-          "description": "The URI where the source is available."
+          "description": "The URI where the source document is available.",
+          "examples": [
+            "https://ironswornrpg.com"
+          ]
         },
         "authors": {
+          "title": "Authors",
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
-            "default": "Shawn Tomkin"
+            "examples": [
+              "Shawn Tomkin"
+            ]
           }
         },
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source material's last update."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
@@ -90,37 +101,6 @@
         }
       }
     },
-    "Suggestions": {
-      "title": "Suggestions",
-      "description": "TODO",
-      "type": "object",
-      "properties": {
-        "assets": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/AssetID"
-          }
-        },
-        "moves": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/MoveID"
-          }
-        },
-        "oracles": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/OracleTableID"
-          }
-        },
-        "encounters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/EncounterID"
-          }
-        }
-      }
-    },
     "Title": {
       "title": "Title",
       "type": "object",
@@ -129,13 +109,13 @@
       ],
       "properties": {
         "canonical": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         },
         "standard": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         },
         "short": {
-          "type": "string"
+          "$ref": "#/$defs/Label"
         }
       }
     },
@@ -553,6 +533,7 @@
           ]
         },
         "embed_table": {
+          "description": "A table to be rendered inside this table row.",
           "$ref": "#/$defs/OracleTableID"
         },
         "rolls": {
@@ -690,6 +671,9 @@
         "_id": {
           "$ref": "#/$defs/EncounterStarforgedID"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "_source": {
           "$ref": "#/$defs/SourcePartial"
         }
@@ -708,7 +692,8 @@
         "name",
         "nature",
         "rank",
-        "description"
+        "description",
+        "suggestions"
       ],
       "properties": {
         "name": {
@@ -722,6 +707,9 @@
         },
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
+        },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
         }
       }
     },
@@ -807,7 +795,10 @@
           "$ref": "#/$defs/Label"
         },
         "trigger": {
-          "$ref": "#/$defs/TriggerClassic"
+          "$ref": "#/$defs/TriggerStarforged"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
         },
         "attributes": {
           "type": "object",
@@ -861,8 +852,8 @@
           "$ref": "#/$defs/MoveCategoryID",
           "description": "The ID of the move's category."
         },
-        "source": {
-          "$ref": "#/$defs/Source"
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
         }
       }
     },
@@ -888,23 +879,45 @@
         }
       ]
     },
-    "Trigger": {
-      "title": "Trigger",
-      "oneOf": [
-        {
-          "$ref": "#/$defs/TriggerStarforged"
+    "TriggerBase": {
+      "title": "TriggerBase",
+      "required": [
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "$ref": "#/$defs/MarkdownPhrase"
         },
-        {
-          "$ref": "#/$defs/TriggerClassic"
+        "options": {
+          "$ref": "#/$defs/TriggerOption"
         }
-      ]
+      }
     },
     "TriggerOptionActionStarforged": {
       "title": "TriggerOptionActionStarforged",
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/TriggerOptionBase"
+        },
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RollableStatStarforgedID"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "TriggerOptionBase": {
+      "title": "TriggerOptionBase",
+      "type": "object",
       "required": [
-        "text",
-        "method",
+        "roll_type",
         "using"
       ],
       "properties": {
@@ -912,15 +925,35 @@
           "$ref": "#/$defs/MarkdownPhrase"
         },
         "method": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "title": "RollSelectionMethod",
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "any",
+                "highest",
+                "lowest",
+                "inherit",
+                "all"
+              ]
+            },
+            {
+              "$ref": "#/$defs/MoveOutcomeType"
+            }
+          ],
+          "default": "any"
+        },
+        "roll_type": {
+          "type": "string",
+          "enum": [
+            "action_roll",
+            "progress_roll"
+          ]
         },
         "using": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/RollableStatStarforgedID"
+            "type": "string"
           }
         }
       }
@@ -928,28 +961,21 @@
     "TriggerOptionProgressStarforged": {
       "title": "TriggerOptionProgressStarforged",
       "type": "object",
-      "required": [
-        "text",
-        "method",
-        "using"
-      ],
-      "properties": {
-        "text": {
-          "$ref": "#/$defs/MarkdownPhrase"
+      "allOf": [
+        {
+          "$ref": "#/$defs/TriggerOptionBase"
         },
-        "method": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "using": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/ProgressTypeStarforged"
+        {
+          "properties": {
+            "using": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProgressTypeStarforged"
+              }
+            }
           }
         }
-      }
+      ]
     },
     "TriggerStarforged": {
       "title": "TriggerStarforged",
@@ -1009,6 +1035,9 @@
         "source": {
           "$ref": "#/$defs/Source"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "summary": {
           "$ref": "#/$defs/MarkdownSentences"
         },
@@ -1053,21 +1082,34 @@
         "description": {
           "$ref": "#/$defs/MarkdownParagraphs"
         },
+        "suggestions": {
+          "$ref": "#/$defs/Suggestions"
+        },
         "rendering": {
           "type": "object",
-          "required": [
-            "columns",
-            "style"
-          ],
-          "description": "A column's default label is the title of the source table.",
+          "definition": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
           "properties": {
+            "icon": {
+              "$ref": "#/$defs/Icon"
+            },
             "style": {
-              "const": "multi_table",
-              "type": "string"
+              "oneOf": [
+                {
+                  "enum": [
+                    "multi_table"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
             },
             "columns": {
               "patternProperties": {
                 "^[a-z][a-z_]*[a-z]$": {
+                  "description": "A column's default label is the title of the source table.",
                   "$ref": "#/$defs/OracleCollectionColumn"
                 }
               }
@@ -1233,12 +1275,49 @@
         ]
       }
     },
+    "Suggestions": {
+      "title": "Suggestions",
+      "description": "Related items that can be presented as useful shortcuts.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assets": {
+          "title": "Suggested assets",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AssetID"
+          }
+        },
+        "moves": {
+          "title": "Suggested moves",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MoveID"
+          }
+        },
+        "oracles": {
+          "title": "Suggested oracle tables",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OracleTableID"
+          }
+        },
+        "encounters": {
+          "title": "Suggested encounters",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EncounterStarforgedID"
+          }
+        }
+      }
+    },
     "SourcePartial": {
       "description": "A source data stub that inherits data from ancestor elements during post-processing.",
       "type": "object",
       "properties": {
         "title": {
           "type": "string",
+          "description": "The title of the source document.",
           "examples": [
             "Ironsworn Rulebook",
             "Ironsworn Assets Master Set",
@@ -1249,24 +1328,32 @@
           ]
         },
         "page": {
+          "description": "The page number on which this item appears most prominently, if applicable.",
           "type": "integer",
           "minimum": 1
         },
         "uri": {
           "type": "string",
-          "description": "The URI where the source is available."
+          "description": "The URI where the source document is available.",
+          "examples": [
+            "https://ironswornrpg.com"
+          ]
         },
         "authors": {
+          "title": "Authors",
           "type": "array",
+          "minItems": 1,
           "items": {
             "type": "string",
-            "default": "Shawn Tomkin"
+            "examples": [
+              "Shawn Tomkin"
+            ]
           }
         },
         "date": {
           "type": "string",
           "format": "date",
-          "description": "The date of the source material's last update."
+          "description": "The date of the source documents's last update, formatted YYYY-MM-DD. Important because it's used to determine whether the data needs updating."
         },
         "license": {
           "description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",

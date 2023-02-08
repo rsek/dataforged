@@ -16,11 +16,8 @@ export interface OracleTable {
   suggestions?: Metadata.Suggestions
 }
 
-type OracleTableStyle =
-  | 'table'
-  | 'embed_in_row'
-  | 'embed_as_column'
-  | 'multi_table'
+type OracleTableStyle = 'table' | 'embed_in_row' | 'embed_as_column'
+type OracleCollectionStyle = 'multi_table'
 type OracleColumnContent = 'range' | 'result' | 'summary' | 'description'
 
 interface OracleRenderingBase {
@@ -28,7 +25,7 @@ interface OracleRenderingBase {
    * Describes the rendering of this oracle as a standalone table.
    */
   columns?: Record<string, OracleTableColumn>
-  style?: OracleTableStyle
+  style?: OracleTableStyle | OracleCollectionStyle | null
   color?: Metadata.Color
 }
 
@@ -38,12 +35,12 @@ export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
 
 export interface OracleCollectionRendering extends OracleRenderingBase {
   columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
-  style: 'multi_table'
+  style?: OracleCollectionStyle | null
 }
 
 export interface OracleTableRendering extends OracleRenderingBase {
   icon?: Icon
-  style?: Exclude<OracleTableStyle, 'multi_table'>
+  style?: OracleTableStyle
   color?: Metadata.Color
 }
 

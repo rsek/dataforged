@@ -1,7 +1,8 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 import { OracleTableRow } from './oracles.js'
-import { type DelveSites, type DelveSites as Types } from '@df-types'
+import { Metadata, type DelveSites, type DelveSites as Types } from '@df-types'
+import { schemaRef } from './common.js'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
   type: 'string',
@@ -186,7 +187,9 @@ export const DelveSite: Schema<Types.DelveSite> = {
       ]
     } as any,
     source: { $ref: '#/$defs/Source' },
-    _id: { $ref: '#/$defs/DelveSiteID' }
+    _id: { $ref: '#/$defs/DelveSiteID' },
+
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
   }
 }
 

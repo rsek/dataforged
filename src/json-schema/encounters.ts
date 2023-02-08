@@ -1,7 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Encounters as Types } from '@df-types'
+import { Metadata, type Encounters as Types } from '@df-types'
 import _ from 'lodash'
-import { DF_KEY } from './common.js'
+import { DF_KEY, schemaRef } from './common.js'
 
 export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
   {
@@ -65,7 +65,8 @@ export const EncounterClassic: Schema<Types.EncounterClassic> = {
     },
     your_truths: { $ref: '#/$defs/MarkdownSentences' },
     source: { $ref: '#/$defs/Source' },
-    _id: { $ref: '#/$defs/EncounterClassicID' }
+    _id: { $ref: '#/$defs/EncounterClassicID' },
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
   }
 }
 
@@ -105,11 +106,12 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
     description: EncounterClassic.properties!.description,
     quest_starter: EncounterClassic.properties!.quest_starter,
     source: EncounterClassic.properties!.source,
-    _id: { $ref: '#/$defs/EncounterStarforgedID' }
+    _id: { $ref: '#/$defs/EncounterStarforgedID' },
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
   }
 }
 
-const SFVariantKeys = ['name', 'nature', 'rank', 'description']
+const SFVariantKeys = ['name', 'nature', 'rank', 'description', 'suggestions']
 
 export const EncounterVariantStarforged: Schema<Types.EncounterVariantStarforged> =
   {

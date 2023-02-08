@@ -23,7 +23,7 @@ export const SourcePartial: Schema<Partial<Metadata.Source>> = {
 function toInputDefinitions(defs: Record<string, JSONSchema7>) {
   const newDefs = { ...defs, SourcePartial } as Record<string, JSONSchema7>
   const toMakeOptional = ['_id', 'source']
-  _.forEach(newDefs, (def, defKey) => {
+  _.forEach(newDefs, (def) => {
     if (def.required) {
       if (def.required.includes('source')) {
         def.properties![SOURCE_PARTIAL_KEY] = { $ref: '#/$defs/SourcePartial' }
@@ -99,7 +99,7 @@ export const SchemaInput: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
   title: 'Dataforged data entry',
   description:
-    'Data entry schema for Dataforged. It allows sparse metadata and provides templates, which may then be processed into the standard Dataforged format.',
+    'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
   $defs: toInputDefinitions(defsStarforged as Record<string, JSONSchema7>),
   type: SchemaJson.type,
   additionalProperties: false,

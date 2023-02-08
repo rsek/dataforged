@@ -12,148 +12,14 @@ import {
 } from '@df-types'
 import _ from 'lodash'
 
+////
+/// COMMON
+////
+
 export const MoveID: Schema<Types.MoveID> = {
   type: 'string',
   $comment: '{namespace}/moves/{moveCategory}/{move}'
 }
-
-export const CustomStat: Schema<any> = {} as any
-
-export const Trigger: Schema<Types.Trigger> = {
-  oneOf: [
-    schemaRef<Types.TriggerStarforged>('TriggerStarforged'),
-    schemaRef<Types.TriggerClassic>('TriggerClassic')
-  ]
-}
-
-export const TriggerStarforged: Schema<Types.TriggerStarforged> = {
-  required: ['text'],
-  type: 'object',
-  properties: {
-    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
-    options: {
-      type: 'array',
-      oneOf: [
-        {
-          items: schemaRef<Types.TriggerOptionProgressStarforged>(
-            'TriggerOptionProgressStarforged'
-          )
-        },
-        {
-          items: schemaRef<Types.TriggerOptionActionStarforged>(
-            'TriggerOptionActionStarforged'
-          )
-        }
-      ]
-    } as any
-  }
-}
-
-export const TriggerClassic: Schema<Types.TriggerClassic> = {
-  required: ['text'],
-  type: 'object',
-  properties: {
-    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
-    options: {
-      type: 'array',
-      oneOf: [
-        {
-          items: schemaRef<Types.TriggerOptionProgressClassic>(
-            'TriggerOptionProgressClassic'
-          )
-        },
-        {
-          items: schemaRef<Types.TriggerOptionActionClassic>(
-            'TriggerOptionActionClassic'
-          )
-        }
-      ]
-    } as any
-  }
-}
-
-const TriggerOptionBase: Schema<Types.TriggerOption> = {
-  type: 'object',
-  required: ['text', 'method', 'using'],
-  properties: {
-    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
-    method: {
-      title: 'RollSelectionMethod',
-      type: 'string',
-      oneOf: [
-        { enum: ['any', 'highest', 'lowest', 'inherit', 'all'] },
-        schemaRef<Types.MoveOutcomeType>('MoveOutcomeType')
-      ],
-      default: 'any'
-    },
-    using: {
-      type: 'array',
-      items: { type: 'string' }
-    }
-  }
-}
-
-export const TriggerOptionActionStarforged: Schema<Types.TriggerOptionActionStarforged> =
-  {
-    type: TriggerOptionBase.type,
-    text: TriggerOptionBase.text,
-    required: TriggerOptionBase.required,
-    properties: {
-      text: TriggerOptionBase.properties?.text as any,
-      method: TriggerOptionBase.properties?.using as any,
-      using: {
-        type: 'array',
-        items: schemaRef<Types.RollableStatStarforgedID>(
-          'RollableStatStarforgedID'
-        )
-      }
-    }
-  }
-export const TriggerOptionProgressStarforged: Schema<Types.TriggerOptionProgressStarforged> =
-  {
-    type: TriggerOptionBase.type,
-    text: TriggerOptionBase.text,
-    required: TriggerOptionBase.required,
-    properties: {
-      text: TriggerOptionBase.properties?.text as any,
-      method: TriggerOptionBase.properties?.using as any,
-      using: {
-        type: 'array',
-        items: schemaRef<Progress.ProgressTypeStarforged>(
-          'ProgressTypeStarforged'
-        )
-      }
-    }
-  }
-
-export const TriggerOptionActionClassic: Schema<Types.TriggerOptionActionClassic> =
-  {
-    type: TriggerOptionBase.type,
-    text: TriggerOptionBase.text,
-    required: TriggerOptionBase.required,
-    properties: {
-      text: TriggerOptionBase.properties?.text as any,
-      method: TriggerOptionBase.properties?.using as any,
-      using: {
-        type: 'array',
-        items: schemaRef<Types.RollableStatClassicID>('RollableStatClassicID')
-      }
-    }
-  }
-export const TriggerOptionProgressClassic: Schema<Types.TriggerOptionProgressClassic> =
-  {
-    type: TriggerOptionBase.type,
-    text: TriggerOptionBase.text,
-    required: TriggerOptionBase.required,
-    properties: {
-      text: TriggerOptionBase.properties?.text as any,
-      method: TriggerOptionBase.properties?.using as any,
-      using: {
-        type: 'array',
-        items: schemaRef<Progress.ProgressTypeClassic>('ProgressTypeClassic')
-      }
-    }
-  }
 
 export const RollableStatIDCommon: Schema<Types.RollableStatIDCommon> = {
   oneOf: [
@@ -162,31 +28,15 @@ export const RollableStatIDCommon: Schema<Types.RollableStatIDCommon> = {
   ]
 }
 
-export const RollableStatStarforgedID: Schema<Types.RollableStatStarforgedID> =
-  {
-    oneOf: [
-      schemaRef<Types.RollableStatIDCommon>('RollableStatIDCommon'),
-      schemaRef<Assets.ConditionMeterAliasStarforged>(
-        'ConditionMeterAliasStarforged'
-      )
-    ]
-  }
-
-export const RollableStatClassicID: Schema<Types.RollableStatClassicID> = {
-  oneOf: [
-    schemaRef<Types.RollableStatIDCommon>('RollableStatIDCommon'),
-    schemaRef<Assets.ConditionMeterAliasClassic>('ConditionMeterAliasClassic')
-  ]
-}
-
 const MoveBase: Schema<Types.Move> = {
   type: 'object',
-  required: ['_id', 'text', 'name', 'trigger'],
+  required: ['_id', 'text', 'name', 'trigger', 'source'],
   additionalProperties: false,
   properties: {
     _id: { $ref: '#/$defs/MoveID' },
     name: schemaRef<Localize.Label>('Label'),
-    trigger: schemaRef<Types.Trigger>('Trigger') as any,
+    trigger: {} as any,
+    source: schemaRef<Metadata.Source>('Source'),
     attributes: {
       type: 'object',
       patternProperties: {
@@ -197,7 +47,7 @@ const MoveBase: Schema<Types.Move> = {
     },
     outcomes: schemaRef<Types.MoveOutcomes>('MoveOutcomes'),
     text: schemaRef<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
-    suggestions: schemaRef<Metadata.Suggestions>('Suggestions'),
+    suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
     asset: {
       description: 'The ID of the parent Asset of the move, if any.',
       ...schemaRef<Assets.AssetID>('AssetID')
@@ -234,8 +84,7 @@ const MoveBase: Schema<Types.Move> = {
     category: {
       ...schemaRef<Collections.MoveCategoryID>('MoveCategoryID'),
       description: "The ID of the move's category."
-    },
-    source: schemaRef<Metadata.Source>('Source')
+    }
   }
 }
 
@@ -266,7 +115,7 @@ export const MoveOutcomeMatchable: Schema<Types.MoveOutcomeMatchable> = {
 
 export const MoveOutcomes: Schema<Types.MoveOutcomes> = {
   type: 'object',
-  required: MoveOutcomeType.enum,
+  required: MoveOutcomeType.enum as Types.MoveOutcomeType[],
   properties: {
     miss: schemaRef<Types.MoveOutcomeMatchable>('MoveOutcomeMatchable'),
     weak_hit: schemaRef<Types.MoveOutcome>('MoveOutcome'),
@@ -274,12 +123,194 @@ export const MoveOutcomes: Schema<Types.MoveOutcomes> = {
   }
 }
 
-export const MoveStarforged: Schema<Types.MoveStarforged> = _.merge(MoveBase, {
-  properties: {
-    trigger: schemaRef<Types.TriggerStarforged>('TriggerStarforged')
-  }
-}) as any
+export const CustomStat: Schema<any> = {} as any
 
-export const MoveClassic: Schema<Types.MoveClassic> = _.merge(MoveBase, {
-  properties: { trigger: schemaRef<Types.TriggerClassic>('TriggerClassic') }
-}) as any
+export const TriggerBase: Schema<Types.TriggerBase<any>> = {
+  required: ['text'],
+  type: 'object',
+  properties: {
+    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
+    options: schemaRef<Types.TriggerOption>('TriggerOption')
+  }
+} as any
+
+export const TriggerOptionBase: Schema<Types.TriggerOptionBase<any>> = {
+  type: 'object',
+  required: ['roll_type', 'using'],
+  properties: {
+    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
+    method: {
+      title: 'RollSelectionMethod',
+      type: 'string',
+      oneOf: [
+        { enum: ['any', 'highest', 'lowest', 'inherit', 'all'] },
+        schemaRef<Types.MoveOutcomeType>('MoveOutcomeType')
+      ],
+      default: 'any'
+    } as any,
+    roll_type: {
+      type: 'string',
+      enum: ['action_roll', 'progress_roll']
+    } as any,
+    using: {
+      type: 'array',
+      items: { type: 'string' }
+    }
+  }
+}
+
+////
+/// IRONSWORN CLASSIC
+////
+
+export const RollableStatClassicID: Schema<Types.RollableStatClassicID> = {
+  oneOf: [
+    schemaRef<Types.RollableStatIDCommon>('RollableStatIDCommon'),
+    schemaRef<Assets.ConditionMeterAliasClassic>('ConditionMeterAliasClassic')
+  ]
+}
+
+export const TriggerClassic: Schema<Types.TriggerClassic> = {
+  required: ['text'],
+  type: 'object',
+  properties: {
+    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
+    options: {
+      type: 'array',
+      oneOf: [
+        {
+          items: schemaRef<Types.TriggerOptionProgressClassic>(
+            'TriggerOptionProgressClassic'
+          )
+        },
+        {
+          items: schemaRef<Types.TriggerOptionActionClassic>(
+            'TriggerOptionActionClassic'
+          )
+        }
+      ]
+    } as any
+  }
+}
+export const TriggerOptionActionClassic: Schema<Types.TriggerOptionActionClassic> =
+  {
+    type: 'object',
+    allOf: [
+      schemaRef<Types.TriggerOptionBase<any>>('TriggerOptionBase'),
+      {
+        properties: {
+          using: {
+            type: 'array',
+            items: schemaRef<Types.RollableStatClassicID>(
+              'RollableStatClassicID'
+            )
+          }
+        }
+      }
+    ]
+  } as any
+export const TriggerOptionProgressClassic: Schema<Types.TriggerOptionProgressClassic> =
+  {
+    type: 'object',
+    allOf: [
+      schemaRef<Types.TriggerOptionBase<any>>('TriggerOptionBase'),
+      {
+        properties: {
+          using: {
+            type: 'array',
+            items: schemaRef<Progress.ProgressTypeClassic>(
+              'ProgressTypeClassic'
+            )
+          }
+        }
+      }
+    ]
+  } as any
+
+export const MoveClassic: Schema<Types.MoveClassic> = _.merge(
+  _.cloneDeep(MoveBase),
+  {
+    properties: {
+      trigger: schemaRef<Types.TriggerClassic>('TriggerClassic')
+    }
+  }
+) as any
+
+////
+/// STARFORGED
+////
+
+export const TriggerStarforged: Schema<Types.TriggerStarforged> = {
+  required: ['text'],
+  type: 'object',
+  properties: {
+    text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
+    options: {
+      type: 'array',
+      oneOf: [
+        {
+          items: schemaRef<Types.TriggerOptionProgressStarforged>(
+            'TriggerOptionProgressStarforged'
+          )
+        },
+        {
+          items: schemaRef<Types.TriggerOptionActionStarforged>(
+            'TriggerOptionActionStarforged'
+          )
+        }
+      ]
+    } as any
+  }
+}
+export const TriggerOptionActionStarforged: Schema<Types.TriggerOptionActionStarforged> =
+  {
+    type: 'object',
+    allOf: [
+      schemaRef<Types.TriggerOptionBase<any>>('TriggerOptionBase'),
+      {
+        properties: {
+          using: {
+            type: 'array',
+            items: schemaRef<Types.RollableStatStarforgedID>(
+              'RollableStatStarforgedID'
+            )
+          }
+        }
+      }
+    ]
+  } as any
+export const TriggerOptionProgressStarforged: Schema<Types.TriggerOptionProgressStarforged> =
+  {
+    type: 'object',
+    allOf: [
+      schemaRef<Types.TriggerOptionBase<any>>('TriggerOptionBase'),
+      {
+        properties: {
+          using: {
+            type: 'array',
+            items: schemaRef<Progress.ProgressTypeStarforged>(
+              'ProgressTypeStarforged'
+            )
+          }
+        }
+      }
+    ]
+  } as any
+export const RollableStatStarforgedID: Schema<Types.RollableStatStarforgedID> =
+  {
+    oneOf: [
+      schemaRef<Types.RollableStatIDCommon>('RollableStatIDCommon'),
+      schemaRef<Assets.ConditionMeterAliasStarforged>(
+        'ConditionMeterAliasStarforged'
+      )
+    ]
+  }
+
+export const MoveStarforged: Schema<Types.MoveStarforged> = _.merge(
+  _.cloneDeep(MoveBase),
+  {
+    properties: {
+      trigger: schemaRef<Types.TriggerStarforged>('TriggerStarforged')
+    }
+  }
+) as any

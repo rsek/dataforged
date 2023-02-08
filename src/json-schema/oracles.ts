@@ -190,7 +190,10 @@ export const OracleTableRow: Schema<Types.OracleTableRow> = {
         "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
       anyOf: [{ $ref: '#/$defs/MarkdownSentences' }, { type: 'null' }]
     } as any,
-    embed_table: { $ref: '#/$defs/OracleTableID' },
+    embed_table: {
+      description: 'A table to be rendered inside this table row.',
+      $ref: '#/$defs/OracleTableID'
+    },
     rolls: {
       type: 'array',
       items: { $ref: '#/$defs/OracleTableRoll' }

@@ -46,7 +46,7 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
   strong_hit: MoveOutcomeMatchable
 }
 
-interface TriggerBase<OptionType extends TriggerOptionBase<any>> {
+export interface TriggerBase<OptionType extends TriggerOptionBase<any>> {
   text: Localized.MarkdownPhrase
   options?: OptionType[]
 }
@@ -66,9 +66,12 @@ export type RollMethod =
   | 'inherit'
   | MoveOutcomeType
 
-interface TriggerOptionBase<UsingType extends string> {
-  text: Localized.MarkdownPhrase
-  method: RollMethod
+export type RollType = 'action_roll' | 'progress_roll'
+
+export interface TriggerOptionBase<UsingType extends string> {
+  text?: Localized.MarkdownPhrase
+  method?: RollMethod
+  roll_type: RollType
   using: UsingType[]
 }
 
@@ -83,16 +86,24 @@ export type RollableStatClassicID =
   | ConditionMeterAliasClassic
 
 export interface TriggerOptionActionStarforged
-  extends TriggerOptionBase<RollableStatStarforgedID> {}
+  extends TriggerOptionBase<RollableStatStarforgedID> {
+  roll_type: 'action_roll'
+}
 
 export interface TriggerOptionActionClassic
-  extends TriggerOptionBase<RollableStatClassicID> {}
+  extends TriggerOptionBase<RollableStatClassicID> {
+  roll_type: 'action_roll'
+}
 
 export interface TriggerOptionProgressStarforged
-  extends TriggerOptionBase<ProgressTypeStarforged> {}
+  extends TriggerOptionBase<ProgressTypeStarforged> {
+  roll_type: 'progress_roll'
+}
 
 export interface TriggerOptionProgressClassic
-  extends TriggerOptionBase<ProgressTypeClassic> {}
+  extends TriggerOptionBase<ProgressTypeClassic> {
+  roll_type: 'progress_roll'
+}
 
 export type TriggerOptionStarforged =
   | TriggerOptionActionStarforged

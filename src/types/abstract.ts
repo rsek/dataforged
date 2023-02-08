@@ -23,6 +23,7 @@ export interface Range<
 export interface NodeLike<IDType = Metadata.ID> {
   _id: IDType
   source: Metadata.Source
+  suggestions?: Metadata.Suggestions
 }
 
 export interface Node<IDType = Metadata.ID> extends NodeLike<IDType> {

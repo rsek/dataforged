@@ -132,68 +132,71 @@ export const OracleTableRowRenderMetadata: JSONSchema7 = {
   }
 }
 
-export const OracleTableRow: JSONSchema7 = _.merge(d100RangeNullable, {
-  type: 'object',
-  required: ['result'],
-  additionalProperties: false,
-  properties: {
-    _id: {
-      // TODO
-      $ref: '#/$defs/ID'
-    },
-    low: {
-      description: 'The low end of the dice range for this table row.'
-    },
-    high: {
-      description: 'The high end of the dice range for this table row.'
-    },
-    result: {
-      description:
-        'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column.',
-      $ref: '#/$defs/LocalizedMarkdown'
-    },
-    summary: {
-      description:
-        "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-      oneOf: [
-        {
-          $ref: '#/$defs/MarkdownSentences'
-        },
-        {
-          type: 'null'
+export const OracleTableRow: JSONSchema7 = _.merge(
+  _.cloneDeep(d100RangeNullable),
+  {
+    type: 'object',
+    required: ['result'],
+    additionalProperties: false,
+    properties: {
+      _id: {
+        // TODO
+        $ref: '#/$defs/ID'
+      },
+      low: {
+        description: 'The low end of the dice range for this table row.'
+      },
+      high: {
+        description: 'The high end of the dice range for this table row.'
+      },
+      result: {
+        description:
+          'The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column.',
+        $ref: '#/$defs/LocalizedMarkdown'
+      },
+      summary: {
+        description:
+          "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+        oneOf: [
+          {
+            $ref: '#/$defs/MarkdownSentences'
+          },
+          {
+            type: 'null'
+          }
+        ]
+      },
+      template: {
+        description: 'TODO',
+        examples: [],
+        type: 'object',
+        properties: {
+          result: {
+            $ref: '#/$defs/LocalizedTemplateString'
+          },
+          summary: {
+            $ref: '#/$defs/LocalizedTemplateString'
+          },
+          description: {
+            $ref: '#/$defs/LocalizedTemplateString'
+          }
         }
-      ]
-    },
-    template: {
-      description: 'TODO',
-      examples: [],
-      type: 'object',
-      properties: {
-        result: {
-          $ref: '#/$defs/LocalizedTemplateString'
-        },
-        summary: {
-          $ref: '#/$defs/LocalizedTemplateString'
-        },
-        description: {
-          $ref: '#/$defs/LocalizedTemplateString'
+      },
+      rolls: {
+        type: 'array',
+        items: {
+          $ref: '#/$defs/OracleTableRoll'
         }
+      },
+      suggestions: {
+        $ref: '#/$defs/Suggestions'
+      },
+      render: {
+        $ref: '#/$defs/RenderMetadata'
       }
-    },
-    rolls: {
-      type: 'array',
-      items: {
-        $ref: '#/$defs/OracleTableRoll'
-      }
-    },
-    suggestions: {
-      $ref: '#/$defs/Suggestions'
-    },
-    render: {
-      $ref: '#/$defs/RenderMetadata'
     }
   }
-})
+)
 
 /**
  * Shared oracle metadata.

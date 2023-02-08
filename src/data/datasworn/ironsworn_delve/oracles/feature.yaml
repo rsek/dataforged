@@ -1,14 +1,18 @@
+_ruleset: classic
+_source:
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - Shawn Tomkin
 ironsworn_delve:
   oracles:
     feature:
       title:
         canonical: Feature
       _source:
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Delve'
         page: 204
-        license: https://creativecommons.org/licenses/by/4.0
       summary: Use the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) oracles to answer questions or provide inspiration for a location or event within a site.
       description: |-
         Use the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) oracles to generate the details of a location or event within a site, or to answer questions about the site’s nature or history.
@@ -19,10 +23,9 @@ ironsworn_delve:
           title:
             canonical: 'Feature: Aspect'
             short: Aspect
-          usage:
-            suggestions:
-              oracle_tables:
-                - ironsworn_delve/oracles/feature/focus
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/feature/focus
           _source:
             page: 204
           table:
@@ -180,10 +183,9 @@ ironsworn_delve:
           title:
             canonical: 'Feature: Focus'
             short: Focus
-          usage:
-            suggestions:
-              oracle_tables:
-                - ironsworn_delve/oracles/feature/aspect
+          suggestions:
+            oracles:
+              - ironsworn_delve/oracles/feature/aspect
           _source:
             page: 205
           table:

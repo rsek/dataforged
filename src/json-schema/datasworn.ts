@@ -90,7 +90,15 @@ export const SchemaJson: JSONSchema7 = {
             [DF_KEY]: { $ref: '#/$defs/WorldTruthClassic' }
           }
         },
-        delve_site_themes: {
+        regions: {
+          title: 'Regions',
+          type: 'object',
+          additionalProperties: false,
+          patternProperties: {
+            [DF_KEY]: { $ref: '#/$defs/RegionEntry' }
+          }
+        },
+        site_themes: {
           title: 'Delve site themes',
           type: 'object',
           additionalProperties: false,
@@ -98,7 +106,7 @@ export const SchemaJson: JSONSchema7 = {
             [DF_KEY]: { $ref: '#/$defs/DelveSiteTheme' }
           }
         },
-        delve_site_domains: {
+        site_domains: {
           title: 'Delve site domains',
           type: 'object',
           additionalProperties: false,
@@ -131,7 +139,7 @@ export const SchemaInput: JSONSchema7 = {
   $schema: 'http://json-schema.org/draft-07/schema',
   title: 'Datasworn data entry',
   description:
-    'Data entry schema for Datasworn. It allows sparse metadata and provides templates, which may then be processed into the standard Datasworn format.',
+    'Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Datasworn format.',
   $defs: toInputDefinitions(defsClassic as Record<string, JSONSchema7>),
   type: SchemaJson.type,
   additionalProperties: false,

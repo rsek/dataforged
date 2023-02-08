@@ -1,3 +1,11 @@
+_ruleset: classic
+_source:
+  license: https://creativecommons.org/licenses/by/4.0
+  uri: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - Shawn Tomkin
 ironsworn_delve:
   oracles:
     moves:
@@ -5,15 +13,27 @@ ironsworn_delve:
         canonical: Moves
       collections:
         delve_the_depths:
+          rendering:
+            columns:
+              edge:
+                content_type: range
+                table_key: edge
+              shadow:
+                content_type: range
+                table_key: shadow
+              wits:
+                content_type: range
+                table_key: wits
+              weak_hit_result:
+                table_key: edge
+                content_type: result
+                label: Weak Hit Result
           title:
             canonical: Delve the Depths
-          # Move: ironsworn_delve/moves/delve/delve_the_depths
+          # move: ironsworn_delve/moves/delve/delve_the_depths
           _source:
             page: 21
-            authors:
-              - Shawn Tomkin
-            title: 'Ironsworn: Delve'
-            license: https://creativecommons.org/licenses/by/4.0
+
           contents:
             edge:
               title:
