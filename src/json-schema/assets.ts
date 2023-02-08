@@ -5,7 +5,7 @@ import {
   Metadata,
   Moves,
   type Assets as Types
-} from '@df-types'
+} from '@base-types'
 import { DF_KEY, schemaRef } from './common.js'
 import _ from 'lodash'
 

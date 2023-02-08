@@ -6,7 +6,7 @@ import { compile } from 'json-schema-to-typescript'
 // compile(schema as JSONSchema4, 'YamlRoot', {
 //   unreachableDefinitions: true
 // }).then((typings) => {
-//   writeFileSync('.@df-types/dataforged-yaml.d.ts', typings)
+//   writeFileSync('.@base-types/dataforged-yaml.d.ts', typings)
 // })
 
 // TODO: investigate rewriting this as a JSON Type Definition schema. it's purpose-made for generating types for multiple languages

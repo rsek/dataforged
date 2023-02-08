@@ -1,5 +1,5 @@
 import { DF_KEY, schemaRef } from './common.js'
-import * as Types from '@df-types/moves'
+import * as Types from '@base-types/moves'
 import { type JSONSchemaType as Schema } from 'ajv'
 import {
   Assets,
@@ -9,7 +9,7 @@ import {
   Oracles,
   Players,
   Progress
-} from '@df-types'
+} from '@base-types'
 import _ from 'lodash'
 
 ////

@@ -1,5 +1,5 @@
 import { DF_KEY, schemaRef } from './common.js'
-import { Metadata } from '@df-types'
+import { Metadata } from '@base-types'
 import { JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
 

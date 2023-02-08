@@ -1,6 +1,10 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
-import { Metadata, type DelveSites, type DelveSites as Types } from '@df-types'
+import {
+  Metadata,
+  type DelveSites,
+  type DelveSites as Types
+} from '@base-types'
 import { schemaRef } from './common.js'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
@@ -207,7 +211,7 @@ export const DelveSiteDenizen: Schema<
   properties: {
     encounter: {
       description:
-        'This is set to `null` if no encounter has been specified for this slot yet.',
+        'The ID of the relevant encounter, or `null` if no encounter has been specified.',
       oneOf: [{ $ref: '#/$defs/EncounterClassicID' }, { type: 'null' }]
     } as any,
     name: { $ref: '#/$defs/Label' },

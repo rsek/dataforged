@@ -16,7 +16,7 @@ import {
   Progress
 } from '@df-json-schema'
 import { JSONSchema7 } from 'json-schema'
-import { Ruleset } from '@df-types/metadata'
+import { Ruleset } from '@base-types/metadata'
 
 /**
  * Splits a camelcase title to something nicer

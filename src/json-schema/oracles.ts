@@ -1,6 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY } from './common.js'
-import { type Oracles as Types } from '@df-types'
+import { type Oracles as Types } from '@base-types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
   type: 'string',

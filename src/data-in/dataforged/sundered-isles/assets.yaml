@@ -1,0 +1,418 @@
+sundered_isles:
+  _ruleset: starforged
+  _source:
+    title: Sundered Isles Asset Preview
+    authors:
+      - Shawn Tomkin
+    license: null
+    uri: https://ironswornrpg.com
+    date: 2022-11-06
+  assets:
+    command_vehicle:
+      _extends: starforged/collections/assets/command_vehicle
+      contents:
+        sailing_ship:
+          name: Sailing Ship
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                Your seagoing flagship is armed with cannons, transports crew and cargo, and can carry and launch support vehicles. When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vessel with module assets.
+            - text: |-
+                When you [Finish an Expedition](starforged/moves/exploration/finish_an_expedition) (dangerous or greater) on a seagoing journey and score a hit, this expedition strengthened your ties to your vessel, crew, and other fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
+            - text: |-
+                You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
+    module:
+      _extends: starforged/collections/assets/module
+      contents:
+        ironclad:
+          name: Ironclad
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                Your ship has a reinforced hull. When you [Withstand Damage](starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.
+            - text: |-
+                When you [React Under Fire](starforged/moves/combat/react_under_fire) by letting your reinforced hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos. On a miss, [Pay the Price](starforged/moves/fate/pay_the_price) by marking this module as broken.
+            - text: |-
+                When you [Strike](starforged/moves/combat/strike) or [Face Danger](starforged/moves/adventure/face_danger) by ramming a foe or obstacle, choose the the force of the hit: 1, 2, or 3. Then, add +that amount. On a strong hit, take that amount as +momentum. On a weak hit or miss, in addition to any other outcome of the move, [Withstand Damage](starforged/moves/suffer/withstand_damage) and suffer an amount equal to the force of the hit.
+        overgunned:
+          name: Overgunned
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                Your gundecks house an intimidating array of heavy cannons. When you use them to [Strike](starforged/moves/combat/strike), choose one.
+                  * Find your range: Add +1 and take +1 momentum on a hit.
+                  * Unleash hell: Mark progress on a hit, but [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1).
+            - text: |-
+                Once per fight, when you [Clash](starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire, add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.
+            - text: |-
+                When you [Compel](starforged/moves/adventure/compel) or [Enter the Fray](starforged/moves/combat/enter_the_fray) by opening your gunports to send a promise of violence, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
+        rigged_for_speed:
+          name: Rigged for Speed
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                Your ship’s shallow draft, quality sails, and well-drilled crew makes it fast and manueverable. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die take +2 momentum instead of +1.
+            - text: |-
+                When you [Enter the Fray](starforged/moves/combat/enter_the_fray), choose one (before rolling).
+                  * Battle sails: Add +1 and take +1 momentum on a strong hit.
+                  * Full sails: Take +2 momentum on a hit.
+            - text: |-
+                When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your crew and the ship’s rigging to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
+        submersible:
+          name: Submersible
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                Your ship can cruise unseen below the surface. When you make a move against a foe or threat to avoid detection, add +1. If you [Enter the Fray](starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
+            - text: |-
+                When you travel submerged as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) (+shadow), you may reroll your action die. On a strong hit with a match, envision a remarkable underwater feature. If you then [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint), reroll any dice.
+            - text: |-
+                When you are poised to [Strike](starforged/moves/combat/strike) at a foe while submerged, you may roll +shadow. If you do, choose one (before rolling).
+                  * Strike true: Reroll any dice.
+                  * Strike hard: Mark progress on a hit.
+                On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).
+
+    path:
+      _extends: starforged/collections/assets/path
+      contents:
+        cannoneer:
+          name: Cannoneer
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                When make a move by firing or directing the fire of a vehicle’s weapons, and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum. Otherwise, take +1 momentum after you reset.
+            - text: |-
+                When you Secure an Advantage or Gain Ground by preparing or loading special ammunition for a vehicle’s weapons, roll +supply. On a hit, take +1 momentum. Then, when you first make a move to fire this ammunition, reroll any dice.
+            - text: |-
+                When you Strike using a vehicle’s weapons, and hold your fire for maximum effect, decide the amount of momentum you risk (1, 2, or 3) and add +that amount. On a strong hit, mark progress. On a weak hit or miss, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to 1 + the amount risked (in addition to any other cost).
+
+        crew_commander:
+          name: Crew Commander
+          _source:
+            date: 2022-11-06
+          attributes:
+            command:
+              label: command
+              min: 0
+              max: 4
+              value: 2
+              attribute_type: condition_meter
+              position: card-bottom
+          abilities:
+            - text: |-
+                You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost as -1 command. If you [Face Danger](starforged/moves/adventure/face_danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
+              # TODO figure out how to denote individual abilities/triggers invocable by any party member
+              extend_moves:
+                - _extends: null
+                  trigger:
+                    options:
+                      - text: Leading or aided by your crew
+                        roll_type: action_roll
+                  text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
+                  outcomes:
+                    miss:
+                      text: You may (after rolling) suffer -1 command and improve a miss to a weak hit.
+                    weak_hit:
+                      text: You may (after rolling) suffer -1 command and improve a weak hit to a strong hit.
+                - _extends:
+                    - starforged/moves/adventure/face_danger
+                  trigger:
+                    options:
+                      - text: As a test of your leadership
+                        roll_type: action_roll
+                        using:
+                          - sundered_isles/assets/path/crew_commander/attributes/command
+              moves:
+                bolster_crew:
+                  name: Bolster Crew
+                  trigger:
+                    text: When you bolster your crew...
+                    options:
+                      - roll_type: action_roll
+                        using:
+                          - player/stats/heart
+                  text: To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
+                  outcomes:
+                    strong_hit:
+                      text: Take +4 command.
+                    weak_hit:
+                      text: Take +2 command.
+                    miss:
+                      text: Take +2 command but envision a threat to your crew or leadership.
+              enabled: true
+            - text: Take +2 command; your max is now 6.
+              inputs:
+                command:
+                  _extends: sundered_isles/assets/path/crew_commander/inputs/command
+                  max: 6
+            - text: When your command is 0 and the situation desperate, you may [Compel](starforged/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
+              extend_moves:
+                - _extends:
+                    - starforged/moves/adventure/compel
+                  trigger:
+                    options:
+                      - text: When your command is 0 and the situation desperate
+                        roll_type: action_roll
+                  outcomes:
+                    strong_hit: &Crew_Commander.3
+                      text: Take +2 command.
+                    weak_hit: *Crew_Commander.3
+        duelist:
+          name: Duelist
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                When you Enter the Fray or Battle in a formal duel against a single notable foe, add +2. If you set a new objective (dangerous or greater) in the midst of a fight by facing off against a single worthy opponent, take +2 momentum; you are in control as the duel begins.
+            - text: |-
+                Once per fight, when you Gain Ground in the midst of a duel by studying your opponents technique, reroll any dice. On a hit, envision what you learn and take +1 momentum.
+            - text: |-
+                When you roll a miss with a match in a situation where your reputation is known, you may suffer the cost by envisioning a notable rival who challenges you to a duel. If you defeat them, mark two ticks on your quests legacy track. If you decline, mark one tick on your bonds legacy track but envision the fallout of this refusal.
+
+        necromancer:
+          name: Necromancer
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                While in the presence of the remains of an intelligent being, you may [Gather Information](starforged/moves/adventure/gather_information) by summoning their spirit to answer your questions. If you do, roll +heart and take +1 momentum on a hit.
+            - text: |-
+                When you [Face Death](starforged/moves/adventure/face_danger), mark 2 ticks on your bonds legacy track. If an ally must [Face Death](starforged/moves/adventure/face_danger), you may [Aid Your Ally](starforged/moves/adventure/face_danger) to guide them (before or after they roll); on a hit, they may reroll any dice.
+            - text: |-
+                You may [Face Danger](starforged/moves/adventure/face_danger) (+heart) to imbue a corpse with soulless life. On a hit, the corpse follows your commands. If it aids you through force, threat, or fear as you make a move, add +2 and fill one segment of a 4-segment clock. You may also suffer the cost of a move by filling a segment. When the clock is full, the corpse crumbles to ash.
+
+        pirate:
+          name: Pirate
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                When you seize a notable ship or treasure, roll +wits. On a strong hit, take both, or choose one twice. On a weak hit, choose one. On a miss, choose one, but this prize also brings an an unexpected danger; [Pay the Price](starforged/moves/fate/pay_the_price).
+                  * Build your fortune: Mark one tick on your quests legacy track.
+                  * Share the spoils: Mark one tick on your bonds legacy track.
+            - text: |-
+                Your dreaded pirate flag bears a meaningful and distinctive symbol. Envision it. Once per situation, when you hoist the flag to announce your identity or signal your intent, take +1 momentum and add +1 on your next move.
+            - text: |-
+                You may spend 1 experience to [Sojourn](starforged/moves/recover/sojourn) in a community—even one allied against you— with an automatic strong hit. If you do, you and your allies take one extra recovery move.
+
+        seaborn:
+          name: Seaborn
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                You are most suited to a life bound to wind and tide. When you are at sea, increase your momentum reset by 1. When you make landfall, adjust your momentum reset to its usual value and [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1).
+            - text: |-
+                When you make a move to hunt, oppose, study, pacify, or gain the favor of a creature of the sea, add +1. On a strong hit with a match, envision the surprising insight you gain into the nature of the creature or its environment; mark one tick on your discoveries legacy track.
+            - text: |-
+                When you Secure an Advantage to plot a course through careful study of currents and weather, or if you [Face Danger](starforged/moves/adventure/face_danger) aboard ship to overcome or avoid an environmental hazard such as a storm or rogue wave, add +1 and take +1 momentum on a hit.
+
+        socialite:
+          name: Socialite
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                When you make a move using using charm, flattery, or seduction, or by navigating elite social circles, add +1.
+            - text: |-
+                When you first make an appearance at a social event, you may attempt a grand or memorable entrace. If you do, roll +heart. On a strong hit, mark one tick on your bonds legacy track and take +3 momentum. On a weak hit, take +2 momentum. On a miss, choose one and Endure Stress (-2).
+                  * You spot an unwelcome rival, authority, or former beau.
+                  * You commit an embarrassing faux pas.
+                  * You are upstaged by another’s entrance.
+            - text: |-
+                When you Hearten while attending an exclusive social event, reroll any dice. On a strong hit, you and any allies in your company mark one tick on your bonds legacy track.
+
+        swashbuckler:
+          name: Swashbuckler
+          _source:
+            date: 2022-11-06
+          abilities:
+            - text: |-
+                When you make a move with outrageous style, and do not roll a 1 on your action die, you may reroll that die. If you burn momentum to improve your result on this move, roll your action die again; on a 5 or 6, do not reset momentum.
+            - text: |-
+                When you Enter the Fray in personal combat, or when an ongoing fight transitions to personal combat, you may envision up to three useful aspects of your surroundings. Take +1 momentum for each. Then, when you make a daring or unexpected move incorporating one of those aspects (once per aspect), add +2.
+            - text: |-
+                When you [React Under Fire](starforged/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
+
+    companion:
+      _extends: starforged/collections/assets/companion
+      contents:
+        the_kraken:
+          name: The Kraken
+          _source:
+            date: 2022-11-06
+          requirement: While it is your companion, the Kraken cannot be harmed.
+          abilities:
+            - text: |-
+                When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, Take Decisive Action with an automatic strong hit. When the clock is filled, Ask the Oracle (using the yes/no table) if the Kraken turns against you, making it 50/50. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
+              extend_moves:
+                - _extends:
+                    - starforged/moves/combat/take_decisive_action
+                  trigger:
+                    options:
+                      - text: Summon the Kraken (and fill one segment of its clock)
+                        roll_type: progress_roll
+                        method: inherit
+                  text: |-
+                    The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](starforged/moves/combat/take_decisive_action) with an automatic strong hit.
+
+                    When the clock is filled, [Ask the Oracle](starforged/moves/fate/ask_the_oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
+              attributes:
+                clock:
+                  label: Krakendoom
+                  attribute_type: clock
+                  max: 4
+                  min: 0
+                  value: 0
+                  position: ability-1-right
+            - text: |-
+                When you make a move using a threat to call the Kraken as leverage, add +2.
+              extend_moves:
+                - _extends: null
+                  trigger:
+                    options:
+                      - text: Make a move using a threat to call the Kraken as leverage
+                        roll_type: action_roll
+                        method: inherit
+                  text: Add +2.
+            - text: |-
+                One time only, when you Fulfill Your Vow (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.
+              extend_moves:
+                - _extends:
+                    - starforged/moves/quest/fulfill_your_vow
+                  trigger:
+                    options:
+                      - text: In service to the Kraken (formidable or greater, one time only)
+                        roll_type: progress_roll
+                        method: inherit
+                  outcomes:
+                    strong_hit: &Kraken.3
+                      text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
+                    weak_hit: *Kraken.3
+    deed:
+      _extends: starforged/collections/assets/deed
+      contents:
+        cohort:
+          name: Cohort
+          _source:
+            date: 2022-11-06
+          requirement: Once you [Make a Connection](starforged/moves/connection/make_a_connection) and take them on as a crewmate...
+          abilities:
+            - text: |-
+                You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](starforged/moves/suffer/withstand_damage) and score a miss, or if you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+              enabled: true
+              alter:
+                moves:
+                  - _extends:
+                      - starforged/moves/suffer/withstand_damage
+                    outcomes:
+                      miss:
+                        text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+                  - _extends:
+                      - starforged/moves/fate/pay_the_price
+                    text: *Cohort.1
+            - text: |-
+                You may gain additional specialists by spending 1 experience to add a connection to your crew as a specialist. Specialist bonuses may not be stacked for a single action.
+            # TODO: alternate experience use
+            - text: |-
+                When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.
+              extend_moves:
+                - _extends:
+                    - starforged/moves/adventure/secure_an_advantage
+                  trigger:
+                    options:
+                      - text: By gathering your specialists to strategize or problem-solve
+                        roll_type: action_roll
+                  outcomes:
+                    strong_hit: &Cohort.3
+                      reroll:
+                        dice: any
+                        text: You may reroll one die for each participating specialist.
+                    weak_hit: *Cohort.3
+                    miss: *Cohort.3
+        fleet_commander:
+          name: Fleet Commander
+          _source:
+            date: 2022-11-06
+          requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
+          abilities:
+            - text: |-
+                Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](starforged/moves/fate/pay_the_price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](starforged/moves/recover/sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
+              enabled: true
+              extend_moves:
+                - _extends: null
+                  trigger:
+                    options:
+                      - text: As a fleetwide action to get in position, avoid a hazard, or fight
+                        roll_type: action_roll
+                        using:
+                          - sundered_isles/assets/deed/fleet_commander/attributes/power
+                - _extends:
+                    - starforged/moves/fate/pay_the_price
+                  text: If your fleet bears the cost, suffer -1 power.
+                - _extends:
+                    - starforged/moves/recover/sojourn
+                  outcomes:
+                    strong_hit: &Fleet_Commander.1
+                      text: You may forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
+                    weak_hit: *Fleet_Commander.1
+                    miss: *Fleet_Commander.1
+            - text: |-
+                Take +2 power and set your max power to 5.
+              attributes:
+                power:
+                  _extends: sundered_isles/assets/deed/fleet_commander/attributes/power
+                  max: 5
+            - text: |-
+                When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
+              extend_moves:
+                - _extends:
+                    - starforged/moves/exploration/undertake_an_expedition
+                  trigger:
+                    options:
+                      - text: With your fleet
+                        roll_type: action_roll
+                  outcomes:
+                    strong_hit: &Fleet_Commander.3
+                      reroll:
+                        text: You may reroll your action die if its value is less than your fleet’s power.
+                        dice: action_die
+                    weak_hit: *Fleet_Commander.3
+                    miss: *Fleet_Commander.3
+          attributes:
+            power:
+              label: power
+              max: 4
+              value: 4
+              min: 0
+              position: card-bottom
+              attribute_type: condition_meter
+              # conditions:
+              #   - wrecked
+        undead:
+          name: Undead
+          _source:
+            date: 2022-11-06
+          requirement: Once you die...
+          abilities:
+            - text: |-
+                This is not your end. Envision your undead form and nature. This asset counts as a permanent impact, but you are now resistant to mortal harm. When you [Endure Harm](starforged/moves/suffer/endure_harm), you may first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1, -2, or -3) to offset an equal amount of harm. If potential harm remains, and you choose to resist the harm, roll +spirit.
+              # counts as impact
+              # extend_moves:
+              #   - moves:
+              #       - starforged/moves/suffer/endure_harm
+            - text: |-
+                When you make a move using your undead aspects to intimidate, scare, or confound, reroll any dice; on a hit, take +2 momentum.
+              # extend_moves:
+              #   - moves: null
+            - text: |-
+                You may move between the realms of the dead and the mortal world, may take others with you, and can use those paths as a shortcut for a mortal journey. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within the realms of the dead, roll +spirit. On a strong hit, mark progress.
+              # extend_moves:
+              #   - moves:
+              #       - starforged/moves/exploration/undertake_an_expedition

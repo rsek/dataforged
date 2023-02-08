@@ -8,7 +8,7 @@ import {
   type Oracles,
   type Metadata as Types,
   Regions
-} from '@df-types'
+} from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 

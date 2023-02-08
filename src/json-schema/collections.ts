@@ -1,8 +1,8 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common.js'
-import { Localize, Metadata, type Collections as Types } from '@df-types'
+import { Localize, Metadata, type Collections as Types } from '@base-types'
 import _ from 'lodash'
-import { ExtendOne } from '@df-types/abstract'
+import { ExtendOne } from '@base-types/abstract'
 
 export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
   type: 'string',

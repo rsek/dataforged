@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { Metadata, type Encounters as Types } from '@df-types'
+import { Metadata, type Encounters as Types } from '@base-types'
 import _ from 'lodash'
 import { DF_KEY, schemaRef } from './common.js'
 
@@ -120,6 +120,6 @@ export const EncounterVariantStarforged: Schema<Types.EncounterVariantStarforged
     title: 'Encounter variant (Starforged)',
     type: 'object',
     additionalProperties: false,
-    required: SFVariantKeys as any,
+    required: SFVariantKeys.filter((item) => item !== 'suggestions') as any,
     properties: _.pick(EncounterStarforged.properties, ...SFVariantKeys) as any
   }
