@@ -29,7 +29,7 @@ export interface Title {
 	short?: Localize.Label
 }
 
-export interface SuggestionsBase extends Record<string, string[] | undefined> {
+export interface SuggestionsBase {
 	oracles?: Oracles.OracleTableID[]
 	assets?: Assets.AssetID[]
 	moves?: Moves.MoveID[]

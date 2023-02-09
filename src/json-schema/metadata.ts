@@ -35,7 +35,7 @@ export const Title: Schema<Types.Title> = {
 
 export const Color: Schema<Types.Color> = {
 	type: 'string',
-	pattern: /^#([A-f0-9]{2}){3}$/.source,
+	pattern: /^#([0-9A-f]{2}){3}$/.source,
 	description:
 		'A CSS hex color. Use it to provide thematic accents when rendering this item.'
 }
@@ -99,18 +99,18 @@ export const Source: Schema<Types.Source> = {
 				"The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 		},
 		license: {
+			type: ['string', 'null'] as any,
 			description:
 				'An absolute URI pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
 			examples: [
 				'https://creativecommons.org/licenses/by/4.0',
 				'https://creativecommons.org/licenses/by-nc-sa/4.0'
-			],
-			type: ['string', 'null'] as any
+			]
 		}
 	}
 }
 
-const SuggestionsBase: Schema<Partial<Types.SuggestionsBase>> = {
+const SuggestionsBase: Schema<Types.SuggestionsBase> = {
 	description: 'Related items that can be presented as useful shortcuts.',
 	type: 'object',
 	additionalProperties: false,
@@ -118,20 +118,23 @@ const SuggestionsBase: Schema<Partial<Types.SuggestionsBase>> = {
 		assets: {
 			title: 'Suggested assets',
 			type: 'array',
-			items: schemaRef<Assets.AssetID>('AssetID')
-		} as any,
+			items: schemaRef<Assets.AssetID>('AssetID'),
+			nullable: true
+		},
 		moves: {
 			title: 'Suggested moves',
 			type: 'array',
-			items: schemaRef<Moves.MoveID>('MoveID')
-		} as any,
+			items: schemaRef<Moves.MoveID>('MoveID'),
+			nullable: true
+		},
 		oracles: {
 			title: 'Suggested oracle tables',
 			type: 'array',
-			items: schemaRef<Oracles.OracleTableID>('OracleTableID')
-		} as any
+			items: schemaRef<Oracles.OracleTableID>('OracleTableID'),
+			nullable: true
+		}
 	}
-} as any
+}
 
 export const SuggestionsClassic = _.merge({}, SuggestionsBase, {
 	properties: {
@@ -144,18 +147,18 @@ export const SuggestionsClassic = _.merge({}, SuggestionsBase, {
 			title: 'Suggested encounters',
 			type: 'array',
 			items: schemaRef<Encounters.EncounterClassicID>('EncounterClassicID')
-		} as any,
+		},
 		site_themes: {
 			title: 'Suggested delve site themes',
 			type: 'array',
 			items: schemaRef<DelveSites.DelveSiteThemeID>('DelveSiteThemeID')
-		} as any,
+		},
 		site_domains: {
 			title: 'Suggested delve site domains',
 			type: 'array',
 			items: schemaRef<DelveSites.DelveSiteDomainID>('DelveSiteDomainID')
-		} as any
-	}
+		}
+	} as Partial<Schema<Types.Suggestions>>
 })
 
 export const SuggestionsStarforged = _.merge(

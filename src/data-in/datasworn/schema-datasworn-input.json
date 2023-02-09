@@ -6,7 +6,7 @@
 		"Color": {
 			"title": "Color",
 			"type": "string",
-			"pattern": "^#([A-f0-9]{2}){3}$",
+			"pattern": "^#([0-9A-f]{2}){3}$",
 			"description": "A CSS hex color. Use it to provide thematic accents when rendering this item."
 		},
 		"ID": {
@@ -65,10 +65,7 @@
 					"title": "Authors",
 					"type": "array",
 					"minItems": 1,
-					"items": {
-						"type": "string",
-						"examples": ["Shawn Tomkin"]
-					}
+					"items": { "type": "string", "examples": ["Shawn Tomkin"] }
 				},
 				"date": {
 					"type": "string",
@@ -76,12 +73,12 @@
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 				},
 				"license": {
+					"type": ["string", "null"],
 					"description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
 					"examples": [
 						"https://creativecommons.org/licenses/by/4.0",
 						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"type": ["string", "null"]
+					]
 				}
 			}
 		},
@@ -91,15 +88,9 @@
 			"required": ["canonical"],
 			"additionalProperties": false,
 			"properties": {
-				"canonical": {
-					"$ref": "#/$defs/Label"
-				},
-				"standard": {
-					"$ref": "#/$defs/Label"
-				},
-				"short": {
-					"$ref": "#/$defs/Label"
-				}
+				"canonical": { "$ref": "#/$defs/Label" },
+				"standard": { "$ref": "#/$defs/Label" },
+				"short": { "$ref": "#/$defs/Label" }
 			}
 		},
 		"Label": {
@@ -151,18 +142,12 @@
 			"type": "object",
 			"required": ["text"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"text": {
-					"$ref": "#/$defs/MarkdownParagraph"
-				},
+				"name": { "$ref": "#/$defs/Label" },
+				"text": { "$ref": "#/$defs/MarkdownParagraph" },
 				"moves": {
 					"type": "object",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/MoveClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/MoveClassic" }
 					}
 				}
 			}
@@ -172,29 +157,17 @@
 			"type": "object",
 			"required": ["name", "abilities"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"_id": {
-					"$ref": "#/$defs/AssetID"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"name": { "$ref": "#/$defs/Label" },
+				"_id": { "$ref": "#/$defs/AssetID" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"abilities": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"$ref": "#/$defs/AssetAbilityClassic"
-					}
+					"items": { "$ref": "#/$defs/AssetAbilityClassic" }
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"AssetID": {
@@ -218,65 +191,41 @@
 					"description": "'range' displays the number range. 'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
 					"enum": ["result", "summary", "description", "range"]
 				},
-				"label": {
-					"$ref": "#/$defs/Label"
-				},
+				"label": { "$ref": "#/$defs/Label" },
 				"table_key": {
 					"description": "A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 					"type": "string",
 					"pattern": "^[a-z][a-z_]*[a-z]$"
 				},
-				"color": {
-					"$ref": "#/$defs/Color"
-				}
+				"color": { "$ref": "#/$defs/Color" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableColumnRoll",
 					"properties": {
-						"content_type": {
-							"const": "range"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Roll"
-						}
+						"content_type": { "const": "range" },
+						"label": { "$ref": "#/$defs/Label", "default": "Roll" }
 					}
 				},
 				{
 					"title": "OracleTableColumnResult",
 					"properties": {
-						"content_type": {
-							"const": "result"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Result"
-						}
+						"content_type": { "const": "result" },
+						"label": { "$ref": "#/$defs/Label", "default": "Result" }
 					}
 				},
 				{
 					"title": "OracleTableColumnSummary",
 					"properties": {
-						"content_type": {
-							"const": "summary"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Summary"
-						}
+						"content_type": { "const": "summary" },
+						"label": { "$ref": "#/$defs/Label", "default": "Summary" }
 					}
 				},
 				{
 					"title": "OracleTableColumnDescription",
 					"properties": {
-						"content_type": {
-							"const": "description"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Description"
-						}
+						"content_type": { "const": "description" },
+						"label": { "$ref": "#/$defs/Label", "default": "Description" }
 					}
 				}
 			]
@@ -287,47 +236,25 @@
 			"required": ["title", "table"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"title": {
-					"$ref": "#/$defs/Title"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"rendering": {
-					"$ref": "#/$defs/OracleTableRendering"
-				},
+				"_id": { "$ref": "#/$defs/OracleTableID" },
+				"title": { "$ref": "#/$defs/Title" },
+				"source": { "$ref": "#/$defs/Source" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"rendering": { "$ref": "#/$defs/OracleTableRendering" },
 				"match": {
 					"title": "Oracle match behavior",
 					"description": "A handful of oracles have special behavior on a match.",
 					"type": "object",
 					"required": ["text"],
-					"properties": {
-						"text": {
-							"$ref": "#/$defs/MarkdownSentences"
-						}
-					}
+					"properties": { "text": { "$ref": "#/$defs/MarkdownSentences" } }
 				},
 				"table": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableRow"
-					}
+					"items": { "$ref": "#/$defs/OracleTableRow" }
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"OracleTableColumn": {
@@ -341,57 +268,35 @@
 					"description": "'range' displays the number range. 'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
 					"enum": ["result", "summary", "description", "range"]
 				},
-				"label": {
-					"$ref": "#/$defs/Label"
-				}
+				"label": { "$ref": "#/$defs/Label" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableColumnRoll",
 					"properties": {
-						"content_type": {
-							"const": "range"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Roll"
-						}
+						"content_type": { "const": "range" },
+						"label": { "$ref": "#/$defs/Label", "default": "Roll" }
 					}
 				},
 				{
 					"title": "OracleTableColumnResult",
 					"properties": {
-						"content_type": {
-							"const": "result"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Result"
-						}
+						"content_type": { "const": "result" },
+						"label": { "$ref": "#/$defs/Label", "default": "Result" }
 					}
 				},
 				{
 					"title": "OracleTableColumnSummary",
 					"properties": {
-						"content_type": {
-							"const": "summary"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Summary"
-						}
+						"content_type": { "const": "summary" },
+						"label": { "$ref": "#/$defs/Label", "default": "Summary" }
 					}
 				},
 				{
 					"title": "OracleTableColumnDescription",
 					"properties": {
-						"content_type": {
-							"const": "description"
-						},
-						"label": {
-							"$ref": "#/$defs/Label",
-							"default": "Description"
-						}
+						"content_type": { "const": "description" },
+						"label": { "$ref": "#/$defs/Label", "default": "Description" }
 					}
 				}
 			]
@@ -409,14 +314,8 @@
 			"default": {
 				"style": "table",
 				"columns": {
-					"roll": {
-						"content_type": "range",
-						"label": "Roll"
-					},
-					"result": {
-						"content_type": "result",
-						"label": "Result"
-					}
+					"roll": { "content_type": "range", "label": "Roll" },
+					"result": { "content_type": "result", "label": "Result" }
 				}
 			},
 			"properties": {
@@ -426,28 +325,16 @@
 					"enum": ["embed_as_column", "embed_in_row", "table"],
 					"default": "table"
 				},
-				"icon": {
-					"$ref": "#/$defs/Icon"
-				},
-				"color": {
-					"$ref": "#/$defs/Color"
-				},
+				"icon": { "$ref": "#/$defs/Icon" },
+				"color": { "$ref": "#/$defs/Color" },
 				"columns": {
 					"type": "object",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/OracleTableColumn"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/OracleTableColumn" }
 					},
 					"default": {
-						"roll": {
-							"content_type": "range",
-							"label": "Roll"
-						},
-						"result": {
-							"content_type": "result",
-							"label": "Result"
-						}
+						"roll": { "content_type": "range", "label": "Roll" },
+						"result": { "content_type": "result", "label": "Result" }
 					}
 				}
 			}
@@ -458,9 +345,7 @@
 			"description": "Parameters for an oracle roll.",
 			"required": ["oracle"],
 			"properties": {
-				"oracle": {
-					"$ref": "#/$defs/OracleTableID"
-				},
+				"oracle": { "$ref": "#/$defs/OracleTableID" },
 				"times": {
 					"description": "The number of times to roll.",
 					"type": ["integer", "null"],
@@ -494,21 +379,11 @@
 					"maximum": 100,
 					"type": ["integer", "null"]
 				},
-				"result": {
-					"title": "Result text",
-					"$ref": "#/$defs/MarkdownPhrase"
-				},
+				"result": { "title": "Result text", "$ref": "#/$defs/MarkdownPhrase" },
 				"summary": {
 					"title": "Summary text",
 					"description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow.summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-					"anyOf": [
-						{
-							"$ref": "#/$defs/MarkdownSentences"
-						},
-						{
-							"type": "null"
-						}
-					]
+					"anyOf": [{ "$ref": "#/$defs/MarkdownSentences" }, { "type": "null" }]
 				},
 				"embed_table": {
 					"description": "A table to be rendered inside this table row.",
@@ -516,16 +391,10 @@
 				},
 				"rolls": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableRoll"
-					}
+					"items": { "$ref": "#/$defs/OracleTableRoll" }
 				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"_id": {
-					"$ref": "#/$defs/OracleTableRowID"
-				}
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"_id": { "$ref": "#/$defs/OracleTableRowID" }
 			}
 		},
 		"OracleTableRowID": {
@@ -571,55 +440,31 @@
 				"quest_starter"
 			],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"nature": {
-					"$ref": "#/$defs/EncounterNatureClassic"
-				},
-				"rank": {
-					"$ref": "#/$defs/ChallengeRank"
-				},
+				"name": { "$ref": "#/$defs/Label" },
+				"nature": { "$ref": "#/$defs/EncounterNatureClassic" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MarkdownPhrase"
-					}
+					"items": { "$ref": "#/$defs/MarkdownPhrase" }
 				},
 				"drives": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MarkdownPhrase"
-					}
+					"items": { "$ref": "#/$defs/MarkdownPhrase" }
 				},
 				"tactics": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MarkdownPhrase"
-					}
+					"items": { "$ref": "#/$defs/MarkdownPhrase" }
 				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
 				"quest_starter": {
 					"description": "A localizable markdown string describing the quest starter associated with this item.",
 					"$ref": "#/$defs/MarkdownParagraphs"
 				},
-				"your_truths": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"_id": {
-					"$ref": "#/$defs/EncounterClassicID"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"your_truths": { "$ref": "#/$defs/MarkdownSentences" },
+				"source": { "$ref": "#/$defs/Source" },
+				"_id": { "$ref": "#/$defs/EncounterClassicID" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"EncounterClassicID": {
@@ -655,44 +500,26 @@
 				"anomaly"
 			]
 		},
-		"CustomStat": {
-			"title": "Custom stat"
-		},
+		"CustomStat": { "title": "Custom stat" },
 		"MoveClassic": {
 			"title": "Move (Classic)",
 			"type": "object",
 			"required": ["text", "name", "trigger"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/MoveID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerClassic"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
+				"_id": { "$ref": "#/$defs/MoveID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"trigger": { "$ref": "#/$defs/TriggerClassic" },
+				"source": { "$ref": "#/$defs/Source" },
 				"attributes": {
 					"type": "object",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/CustomStat"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/CustomStat" }
 					}
 				},
-				"outcomes": {
-					"$ref": "#/$defs/MoveOutcomes"
-				},
-				"text": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
+				"text": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"asset": {
 					"description": "The ID of the parent Asset of the move, if any.",
 					"$ref": "#/$defs/AssetID"
@@ -708,9 +535,7 @@
 				"oracles": {
 					"description": "The ID of any oracles directly referenced by the move, or vice versa.",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableID"
-					}
+					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
 				"optional": {
 					"description": "Whether or not the source material presents this rules item as optional.",
@@ -720,17 +545,13 @@
 				"tags": {
 					"description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
 					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"items": { "type": "string" }
 				},
 				"category": {
 					"$ref": "#/$defs/MoveCategoryID",
 					"description": "The ID of the move's category."
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"MoveID": {
@@ -743,26 +564,14 @@
 			"title": "Move outcome",
 			"type": "object",
 			"required": ["text"],
-			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownParagraph"
-				}
-			}
+			"properties": { "text": { "$ref": "#/$defs/MarkdownParagraph" } }
 		},
 		"MoveOutcomeMatchable": {
 			"title": "Move outcome matchable",
 			"type": "object",
 			"allOf": [
-				{
-					"$ref": "#/$defs/MoveOutcome"
-				},
-				{
-					"properties": {
-						"match": {
-							"$ref": "#/$defs/MoveOutcome"
-						}
-					}
-				}
+				{ "$ref": "#/$defs/MoveOutcome" },
+				{ "properties": { "match": { "$ref": "#/$defs/MoveOutcome" } } }
 			]
 		},
 		"MoveOutcomeType": {
@@ -775,37 +584,23 @@
 			"type": "object",
 			"required": ["miss", "weak_hit", "strong_hit"],
 			"properties": {
-				"miss": {
-					"$ref": "#/$defs/MoveOutcomeMatchable"
-				},
-				"weak_hit": {
-					"$ref": "#/$defs/MoveOutcome"
-				},
-				"strong_hit": {
-					"$ref": "#/$defs/MoveOutcomeMatchable"
-				}
+				"miss": { "$ref": "#/$defs/MoveOutcomeMatchable" },
+				"weak_hit": { "$ref": "#/$defs/MoveOutcome" },
+				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchable" }
 			}
 		},
 		"RollableStatClassicID": {
 			"title": "Rollable stat (Classic) ID",
 			"oneOf": [
-				{
-					"$ref": "#/$defs/RollableStatIDCommon"
-				},
-				{
-					"$ref": "#/$defs/ConditionMeterAliasClassic"
-				}
+				{ "$ref": "#/$defs/RollableStatIDCommon" },
+				{ "$ref": "#/$defs/ConditionMeterAliasClassic" }
 			]
 		},
 		"RollableStatIDCommon": {
 			"title": "Rollable stat id common",
 			"oneOf": [
-				{
-					"$ref": "#/$defs/StatID"
-				},
-				{
-					"$ref": "#/$defs/ConditionMeterID"
-				}
+				{ "$ref": "#/$defs/StatID" },
+				{ "$ref": "#/$defs/ConditionMeterID" }
 			]
 		},
 		"TriggerBase": {
@@ -813,14 +608,10 @@
 			"required": ["text"],
 			"type": "object",
 			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownPhrase"
-				},
+				"text": { "$ref": "#/$defs/MarkdownPhrase" },
 				"options": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerOptionBase"
-					}
+					"items": { "$ref": "#/$defs/TriggerOptionBase" }
 				}
 			}
 		},
@@ -829,22 +620,12 @@
 			"required": ["text"],
 			"type": "object",
 			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownPhrase"
-				},
+				"text": { "$ref": "#/$defs/MarkdownPhrase" },
 				"options": {
 					"type": "array",
 					"oneOf": [
-						{
-							"items": {
-								"$ref": "#/$defs/TriggerOptionProgressClassic"
-							}
-						},
-						{
-							"items": {
-								"$ref": "#/$defs/TriggerOptionActionClassic"
-							}
-						}
+						{ "items": { "$ref": "#/$defs/TriggerOptionProgressClassic" } },
+						{ "items": { "$ref": "#/$defs/TriggerOptionActionClassic" } }
 					]
 				}
 			}
@@ -853,16 +634,12 @@
 			"title": "Trigger option action (Classic)",
 			"type": "object",
 			"allOf": [
-				{
-					"$ref": "#/$defs/TriggerOptionBase"
-				},
+				{ "$ref": "#/$defs/TriggerOptionBase" },
 				{
 					"properties": {
 						"using": {
 							"type": "array",
-							"items": {
-								"$ref": "#/$defs/RollableStatClassicID"
-							}
+							"items": { "$ref": "#/$defs/RollableStatClassicID" }
 						}
 					}
 				}
@@ -873,19 +650,13 @@
 			"type": "object",
 			"required": ["roll_type", "using"],
 			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownPhrase"
-				},
+				"text": { "$ref": "#/$defs/MarkdownPhrase" },
 				"method": {
 					"title": "RollSelectionMethod",
 					"type": "string",
 					"oneOf": [
-						{
-							"enum": ["any", "highest", "lowest", "inherit", "all"]
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomeType"
-						}
+						{ "enum": ["any", "highest", "lowest", "inherit", "all"] },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
 					],
 					"default": "any"
 				},
@@ -893,28 +664,19 @@
 					"type": "string",
 					"enum": ["action_roll", "progress_roll"]
 				},
-				"using": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				}
+				"using": { "type": "array", "items": { "type": "string" } }
 			}
 		},
 		"TriggerOptionProgressClassic": {
 			"title": "Trigger option progress (Classic)",
 			"type": "object",
 			"allOf": [
-				{
-					"$ref": "#/$defs/TriggerOptionBase"
-				},
+				{ "$ref": "#/$defs/TriggerOptionBase" },
 				{
 					"properties": {
 						"using": {
 							"type": "array",
-							"items": {
-								"$ref": "#/$defs/ProgressTypeClassic"
-							}
+							"items": { "$ref": "#/$defs/ProgressTypeClassic" }
 						}
 					}
 				}
@@ -925,36 +687,20 @@
 			"type": "object",
 			"required": ["title", "contents"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/AssetTypeID"
-				},
-				"title": {
-					"$ref": "#/$defs/Title"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"_id": { "$ref": "#/$defs/AssetTypeID" },
+				"title": { "$ref": "#/$defs/Title" },
+				"source": { "$ref": "#/$defs/Source" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"contents": {
 					"type": "object",
 					"description": "The elements contained by this collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/AssetClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/AssetClassic" }
 					}
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"AssetTypeExtensionClassic": {
@@ -963,9 +709,7 @@
 			"type": "object",
 			"required": ["_extends"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/AssetTypeID"
-				},
+				"_id": { "$ref": "#/$defs/AssetTypeID" },
 				"_extends": {
 					"description": "The ID of the collection to be extended.",
 					"$ref": "#/$defs/AssetTypeID"
@@ -974,9 +718,7 @@
 					"type": "object",
 					"description": "Items to be added to the extended collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/AssetClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/AssetClassic" }
 					}
 				}
 			}
@@ -992,36 +734,20 @@
 			"type": "object",
 			"required": ["title", "contents"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/EncounterCollectionClassicID"
-				},
-				"title": {
-					"$ref": "#/$defs/Title"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"_id": { "$ref": "#/$defs/EncounterCollectionClassicID" },
+				"title": { "$ref": "#/$defs/Title" },
+				"source": { "$ref": "#/$defs/Source" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"contents": {
 					"type": "object",
 					"description": "The elements contained by this collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/EncounterClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/EncounterClassic" }
 					}
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"EncounterCollectionClassicID": {
@@ -1035,9 +761,7 @@
 			"type": "object",
 			"required": ["_extends"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/EncounterCollectionClassicID"
-				},
+				"_id": { "$ref": "#/$defs/EncounterCollectionClassicID" },
 				"_extends": {
 					"description": "The ID of the collection to be extended.",
 					"$ref": "#/$defs/EncounterCollectionClassicID"
@@ -1046,9 +770,7 @@
 					"type": "object",
 					"description": "Items to be added to the extended collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/EncounterClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/EncounterClassic" }
 					}
 				}
 			}
@@ -1058,36 +780,20 @@
 			"type": "object",
 			"required": ["title", "contents"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/MoveCategoryID"
-				},
-				"title": {
-					"$ref": "#/$defs/Title"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"_id": { "$ref": "#/$defs/MoveCategoryID" },
+				"title": { "$ref": "#/$defs/Title" },
+				"source": { "$ref": "#/$defs/Source" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"contents": {
 					"type": "object",
 					"description": "The elements contained by this collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/MoveClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/MoveClassic" }
 					}
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"MoveCategoryExtensionClassic": {
@@ -1096,9 +802,7 @@
 			"type": "object",
 			"required": ["_extends"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/MoveCategoryID"
-				},
+				"_id": { "$ref": "#/$defs/MoveCategoryID" },
 				"_extends": {
 					"description": "The ID of the collection to be extended.",
 					"$ref": "#/$defs/MoveCategoryID"
@@ -1107,9 +811,7 @@
 					"type": "object",
 					"description": "Items to be added to the extended collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/MoveClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/MoveClassic" }
 					}
 				}
 			}
@@ -1125,49 +827,28 @@
 			"type": "object",
 			"required": ["title", "contents"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/OracleCollectionID"
-				},
-				"title": {
-					"$ref": "#/$defs/Title"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
+				"_id": { "$ref": "#/$defs/OracleCollectionID" },
+				"title": { "$ref": "#/$defs/Title" },
+				"source": { "$ref": "#/$defs/Source" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"contents": {
 					"type": "object",
 					"description": "The elements contained by this collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/OracleTable"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/OracleTable" }
 					}
 				},
 				"rendering": {
 					"type": "object",
 					"description": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
 					"properties": {
-						"icon": {
-							"$ref": "#/$defs/Icon"
-						},
+						"icon": { "$ref": "#/$defs/Icon" },
 						"style": {
 							"oneOf": [
-								{
-									"enum": ["multi_table"],
-									"type": "string"
-								},
-								{
-									"type": "null"
-								}
+								{ "enum": ["multi_table"], "type": "string" },
+								{ "type": "null" }
 							],
 							"default": null
 						},
@@ -1188,19 +869,13 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
 							"oneOf": [
-								{
-									"$ref": "#/$defs/OracleCollection"
-								},
-								{
-									"$ref": "#/$defs/OracleCollectionExtension"
-								}
+								{ "$ref": "#/$defs/OracleCollection" },
+								{ "$ref": "#/$defs/OracleCollectionExtension" }
 							]
 						}
 					}
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"OracleCollectionExtension": {
@@ -1209,9 +884,7 @@
 			"type": "object",
 			"required": ["_extends"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/OracleCollectionID"
-				},
+				"_id": { "$ref": "#/$defs/OracleCollectionID" },
 				"_extends": {
 					"description": "The ID of the collection to be extended.",
 					"$ref": "#/$defs/OracleCollectionID"
@@ -1220,9 +893,7 @@
 					"type": "object",
 					"description": "Items to be added to the extended collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/OracleTable"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/OracleTable" }
 					}
 				}
 			}
@@ -1237,18 +908,10 @@
 			"type": "object",
 			"required": ["name"],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/ID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_id": { "$ref": "#/$defs/ID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"SettingTruthOption": {
@@ -1256,19 +919,13 @@
 			"required": ["quest_starter"],
 			"additionalProperties": false,
 			"type": "object",
-			"properties": {
-				"quest_starter": {
-					"$ref": "#/$defs/MarkdownParagraph"
-				}
-			}
+			"properties": { "quest_starter": { "$ref": "#/$defs/MarkdownParagraph" } }
 		},
 		"WorldTruthClassic": {
 			"title": "World truth (Classic)",
 			"type": "object",
 			"allOf": [
-				{
-					"$ref": "#/$defs/SettingTruth"
-				},
+				{ "$ref": "#/$defs/SettingTruth" },
 				{
 					"properties": {
 						"options": {
@@ -1279,93 +936,14 @@
 								"type": "object",
 								"required": ["description", "quest_starter"],
 								"properties": {
-									"description": {
-										"$ref": "#/$defs/MarkdownParagraphs"
-									},
-									"quest_starter": {
-										"$ref": "#/$defs/MarkdownParagraph"
-									}
+									"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+									"quest_starter": { "$ref": "#/$defs/MarkdownParagraph" }
 								}
 							}
 						}
 					}
 				}
 			]
-		},
-		"default": {
-			"title": "Default",
-			"SettingTruth": {
-				"type": "object",
-				"required": ["name", "source"],
-				"properties": {
-					"_id": {
-						"$ref": "#/$defs/ID"
-					},
-					"name": {
-						"$ref": "#/$defs/Label"
-					},
-					"source": {
-						"$ref": "#/$defs/Source"
-					}
-				}
-			},
-			"SettingTruthOption": {
-				"required": ["quest_starter"],
-				"additionalProperties": false,
-				"type": "object",
-				"properties": {
-					"quest_starter": {
-						"$ref": "#/$defs/MarkdownParagraph"
-					}
-				}
-			},
-			"SettingTruthStarforged": {
-				"type": "object",
-				"allOf": [
-					{
-						"$ref": "#/$defs/SettingTruth"
-					},
-					{
-						"properties": {
-							"options": {
-								"type": "array",
-								"items": {
-									"$ref": "#/$defs/OracleTableRow"
-								}
-							}
-						}
-					}
-				]
-			},
-			"WorldTruthClassic": {
-				"type": "object",
-				"allOf": [
-					{
-						"$ref": "#/$defs/SettingTruth"
-					},
-					{
-						"properties": {
-							"options": {
-								"type": "array",
-								"maxItems": 3,
-								"minItems": 3,
-								"items": {
-									"type": "object",
-									"required": ["description", "quest_starter"],
-									"properties": {
-										"description": {
-											"$ref": "#/$defs/MarkdownParagraphs"
-										},
-										"quest_starter": {
-											"$ref": "#/$defs/MarkdownParagraph"
-										}
-									}
-								}
-							}
-						}
-					}
-				]
-			}
 		},
 		"RegionEntry": {
 			"title": "Region entry",
@@ -1379,36 +957,18 @@
 				"quest_starter"
 			],
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/RegionEntryID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
+				"_id": { "$ref": "#/$defs/RegionEntryID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MarkdownPhrase"
-					}
+					"items": { "$ref": "#/$defs/MarkdownPhrase" }
 				},
-				"quest_starter": {
-					"$ref": "#/$defs/MarkdownParagraph"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"quest_starter": { "$ref": "#/$defs/MarkdownParagraph" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"RegionEntryID": {
@@ -1424,19 +984,13 @@
 			"required": ["asset", "description", "name", "xp_cost"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": {
-					"$ref": "#/$defs/RarityID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
+				"_id": { "$ref": "#/$defs/RarityID" },
+				"name": { "$ref": "#/$defs/Label" },
 				"asset": {
 					"description": "The asset enhanced by this rarity.",
 					"$ref": "#/$defs/AssetID"
 				},
-				"icon": {
-					"$ref": "#/$defs/Icon"
-				},
+				"icon": { "$ref": "#/$defs/Icon" },
 				"xp_cost": {
 					"description": "From Ironsworn: Delve, p. 174:\n\n    Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n    If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 					"type": "integer",
@@ -1444,18 +998,10 @@
 					"maximum": 5,
 					"default": 3
 				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"RarityID": {
@@ -1470,25 +1016,15 @@
 			"description": "A delve site with a theme, domain, and denizen table.",
 			"required": ["name", "rank", "theme", "domain", "denizens"],
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"rank": {
-					"$ref": "#/$defs/ChallengeRank"
-				},
-				"theme": {
-					"$ref": "#/$defs/DelveSiteThemeID"
-				},
-				"domain": {
-					"$ref": "#/$defs/DelveSiteDomainID"
-				},
+				"name": { "$ref": "#/$defs/Label" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"theme": { "$ref": "#/$defs/DelveSiteThemeID" },
+				"domain": { "$ref": "#/$defs/DelveSiteDomainID" },
 				"denizens": {
 					"allOf": [
 						{
 							"type": "array",
-							"items": {
-								"$ref": "#/$defs/DelveSiteDenizen"
-							}
+							"items": { "$ref": "#/$defs/DelveSiteDenizen" }
 						},
 						{
 							"type": "array",
@@ -1498,187 +1034,107 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "very_common"
-										},
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 27
-										}
+										"frequency": { "const": "very_common" },
+										"low": { "const": 1 },
+										"high": { "const": 27 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 28
-										},
-										"high": {
-											"const": 41
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 28 },
+										"high": { "const": 41 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 42
-										},
-										"high": {
-											"const": 55
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 42 },
+										"high": { "const": 55 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 56
-										},
-										"high": {
-											"const": 69
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 56 },
+										"high": { "const": 69 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 70
-										},
-										"high": {
-											"const": 75
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 70 },
+										"high": { "const": 75 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 76
-										},
-										"high": {
-											"const": 81
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 76 },
+										"high": { "const": 81 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 82
-										},
-										"high": {
-											"const": 87
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 82 },
+										"high": { "const": 87 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 88
-										},
-										"high": {
-											"const": 93
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 88 },
+										"high": { "const": 93 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 94
-										},
-										"high": {
-											"const": 95
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 94 },
+										"high": { "const": 95 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 96
-										},
-										"high": {
-											"const": 97
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 96 },
+										"high": { "const": 97 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 98
-										},
-										"high": {
-											"const": 99
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 98 },
+										"high": { "const": 99 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "unforeseen"
-										},
-										"low": {
-											"const": 100
-										},
-										"high": {
-											"const": 100
-										}
+										"frequency": { "const": "unforeseen" },
+										"low": { "const": 100 },
+										"high": { "const": 100 }
 									}
 								}
 							]
 						}
 					]
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"_id": {
-					"$ref": "#/$defs/DelveSiteID"
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"source": { "$ref": "#/$defs/Source" },
+				"_id": { "$ref": "#/$defs/DelveSiteID" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"DelveSiteCard": {
@@ -1688,42 +1144,22 @@
 			"additionalProperties": false,
 			"required": ["card_type", "name", "summary", "features", "dangers"],
 			"properties": {
-				"_id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"card_type": {
-					"$ref": "#/$defs/DelveSiteCardType"
-				},
-				"icon": {
-					"$ref": "#/$defs/Icon"
-				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownSentences"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"description": {
-					"$ref": "#/$defs/MarkdownParagraphs"
-				},
+				"_id": { "type": "string" },
+				"name": { "$ref": "#/$defs/Label" },
+				"card_type": { "$ref": "#/$defs/DelveSiteCardType" },
+				"icon": { "$ref": "#/$defs/Icon" },
+				"summary": { "$ref": "#/$defs/MarkdownSentences" },
+				"source": { "$ref": "#/$defs/Source" },
+				"description": { "$ref": "#/$defs/MarkdownParagraphs" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableRow"
-					}
+					"items": { "$ref": "#/$defs/OracleTableRow" }
 				},
 				"dangers": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableRow"
-					}
+					"items": { "$ref": "#/$defs/OracleTableRow" }
 				},
-				"_source": {
-					"$ref": "#/$defs/SourcePartial"
-				}
+				"_source": { "$ref": "#/$defs/SourcePartial" }
 			}
 		},
 		"DelveSiteCardType": {
@@ -1740,32 +1176,18 @@
 				"encounter": {
 					"description": "The ID of the relevant encounter, or `null` if no encounter has been specified.",
 					"oneOf": [
-						{
-							"$ref": "#/$defs/EncounterClassicID"
-						},
-						{
-							"type": "null"
-						}
+						{ "$ref": "#/$defs/EncounterClassicID" },
+						{ "type": "null" }
 					]
 				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
+				"name": { "$ref": "#/$defs/Label" },
 				"frequency": {
 					"title": "Frequency keyword",
 					"type": "string",
 					"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 				},
-				"low": {
-					"type": "integer",
-					"minimum": 1,
-					"maximum": 100
-				},
-				"high": {
-					"type": "integer",
-					"minimum": 1,
-					"maximum": 100
-				}
+				"low": { "type": "integer", "minimum": 1, "maximum": 100 },
+				"high": { "type": "integer", "minimum": 1, "maximum": 100 }
 			}
 		},
 		"DelveSiteDomain": {
@@ -1773,17 +1195,11 @@
 			"type": "object",
 			"description": "A delve site domain card.",
 			"allOf": [
-				{
-					"$ref": "#/$defs/DelveSiteCard"
-				},
+				{ "$ref": "#/$defs/DelveSiteCard" },
 				{
 					"properties": {
-						"_id": {
-							"$ref": "#/$defs/DelveSiteDomainID"
-						},
-						"card_type": {
-							"const": "domain"
-						},
+						"_id": { "$ref": "#/$defs/DelveSiteDomainID" },
+						"card_type": { "const": "domain" },
 						"features": {
 							"type": "array",
 							"minItems": 12,
@@ -1792,111 +1208,71 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 21
-										},
-										"high": {
-											"const": 43
-										}
+										"low": { "const": 21 },
+										"high": { "const": 43 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 44
-										},
-										"high": {
-											"const": 56
-										}
+										"low": { "const": 44 },
+										"high": { "const": 56 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 57
-										},
-										"high": {
-											"const": 64
-										}
+										"low": { "const": 57 },
+										"high": { "const": 64 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 65
-										},
-										"high": {
-											"const": 68
-										}
+										"low": { "const": 65 },
+										"high": { "const": 68 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 69
-										},
-										"high": {
-											"const": 72
-										}
+										"low": { "const": 69 },
+										"high": { "const": 72 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 73
-										},
-										"high": {
-											"const": 76
-										}
+										"low": { "const": 73 },
+										"high": { "const": 76 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 77
-										},
-										"high": {
-											"const": 80
-										}
+										"low": { "const": 77 },
+										"high": { "const": 80 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 81
-										},
-										"high": {
-											"const": 84
-										}
+										"low": { "const": 81 },
+										"high": { "const": 84 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 85
-										},
-										"high": {
-											"const": 88
-										}
+										"low": { "const": 85 },
+										"high": { "const": 88 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 89
-										},
-										"high": {
-											"const": 98
-										},
+										"low": { "const": 89 },
+										"high": { "const": 98 },
 										"result": {
 											"$ref": "#/$defs/MarkdownPhrase",
 											"default": "Something unusual or unexpected"
@@ -1917,12 +1293,8 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 99
-										},
-										"high": {
-											"const": 99
-										},
+										"low": { "const": 99 },
+										"high": { "const": 99 },
 										"result": {
 											"$ref": "#/$defs/MarkdownPhrase",
 											"default": "You transition into a new theme"
@@ -1938,12 +1310,8 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 100
-										},
-										"high": {
-											"const": 100
-										},
+										"low": { "const": 100 },
+										"high": { "const": 100 },
 										"result": {
 											"$ref": "#/$defs/MarkdownPhrase",
 											"default": "You transition into a new domain"
@@ -1968,56 +1336,36 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 31
-										},
-										"high": {
-											"const": 33
-										}
+										"low": { "const": 31 },
+										"high": { "const": 33 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 34
-										},
-										"high": {
-											"const": 36
-										}
+										"low": { "const": 34 },
+										"high": { "const": 36 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 37
-										},
-										"high": {
-											"const": 39
-										}
+										"low": { "const": 37 },
+										"high": { "const": 39 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 40
-										},
-										"high": {
-											"const": 42
-										}
+										"low": { "const": 40 },
+										"high": { "const": 42 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 43
-										},
-										"high": {
-											"const": 45
-										}
+										"low": { "const": 43 },
+										"high": { "const": 45 }
 									}
 								}
 							]
@@ -2043,17 +1391,11 @@
 			"type": "object",
 			"description": "A delve site theme card.",
 			"allOf": [
-				{
-					"$ref": "#/$defs/DelveSiteCard"
-				},
+				{ "$ref": "#/$defs/DelveSiteCard" },
 				{
 					"properties": {
-						"_id": {
-							"$ref": "#/$defs/DelveSiteThemeID"
-						},
-						"card_type": {
-							"const": "theme"
-						},
+						"_id": { "$ref": "#/$defs/DelveSiteThemeID" },
+						"card_type": { "const": "theme" },
 						"features": {
 							"type": "array",
 							"minItems": 5,
@@ -2062,56 +1404,36 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 4
-										}
+										"low": { "const": 1 },
+										"high": { "const": 4 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 5
-										},
-										"high": {
-											"const": 8
-										}
+										"low": { "const": 5 },
+										"high": { "const": 8 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 9
-										},
-										"high": {
-											"const": 12
-										}
+										"low": { "const": 9 },
+										"high": { "const": 12 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 13
-										},
-										"high": {
-											"const": 16
-										}
+										"low": { "const": 13 },
+										"high": { "const": 16 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 17
-										},
-										"high": {
-											"const": 20
-										}
+										"low": { "const": 17 },
+										"high": { "const": 20 }
 									}
 								}
 							]
@@ -2124,133 +1446,85 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 5
-										}
+										"low": { "const": 1 },
+										"high": { "const": 5 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 6
-										},
-										"high": {
-											"const": 10
-										}
+										"low": { "const": 6 },
+										"high": { "const": 10 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 11
-										},
-										"high": {
-											"const": 12
-										}
+										"low": { "const": 11 },
+										"high": { "const": 12 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 13
-										},
-										"high": {
-											"const": 14
-										}
+										"low": { "const": 13 },
+										"high": { "const": 14 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 15
-										},
-										"high": {
-											"const": 16
-										}
+										"low": { "const": 15 },
+										"high": { "const": 16 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 17
-										},
-										"high": {
-											"const": 18
-										}
+										"low": { "const": 17 },
+										"high": { "const": 18 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 19
-										},
-										"high": {
-											"const": 20
-										}
+										"low": { "const": 19 },
+										"high": { "const": 20 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 21
-										},
-										"high": {
-											"const": 22
-										}
+										"low": { "const": 21 },
+										"high": { "const": 22 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 23
-										},
-										"high": {
-											"const": 24
-										}
+										"low": { "const": 23 },
+										"high": { "const": 24 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 25
-										},
-										"high": {
-											"const": 26
-										}
+										"low": { "const": 25 },
+										"high": { "const": 26 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 27
-										},
-										"high": {
-											"const": 28
-										}
+										"low": { "const": 27 },
+										"high": { "const": 28 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 29
-										},
-										"high": {
-											"const": 30
-										}
+										"low": { "const": 29 },
+										"high": { "const": 30 }
 									}
 								}
 							]
@@ -2274,51 +1548,40 @@
 				"assets": {
 					"title": "Suggested assets",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/AssetID"
-					}
+					"items": { "$ref": "#/$defs/AssetID" },
+					"nullable": true
 				},
 				"moves": {
 					"title": "Suggested moves",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveID"
-					}
+					"items": { "$ref": "#/$defs/MoveID" },
+					"nullable": true
 				},
 				"oracles": {
 					"title": "Suggested oracle tables",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableID"
-					}
+					"items": { "$ref": "#/$defs/OracleTableID" },
+					"nullable": true
 				},
 				"regions": {
 					"title": "Suggested regions",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/RegionEntryID"
-					}
+					"items": { "$ref": "#/$defs/RegionEntryID" }
 				},
 				"encounters": {
 					"title": "Suggested encounters",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/EncounterClassicID"
-					}
+					"items": { "$ref": "#/$defs/EncounterClassicID" }
 				},
 				"site_themes": {
 					"title": "Suggested delve site themes",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/DelveSiteThemeID"
-					}
+					"items": { "$ref": "#/$defs/DelveSiteThemeID" }
 				},
 				"site_domains": {
 					"title": "Suggested delve site domains",
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/DelveSiteDomainID"
-					}
+					"items": { "$ref": "#/$defs/DelveSiteDomainID" }
 				}
 			}
 		},
@@ -2352,10 +1615,7 @@
 					"title": "Authors",
 					"type": "array",
 					"minItems": 1,
-					"items": {
-						"type": "string",
-						"examples": ["Shawn Tomkin"]
-					}
+					"items": { "type": "string", "examples": ["Shawn Tomkin"] }
 				},
 				"date": {
 					"type": "string",
@@ -2363,12 +1623,12 @@
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 				},
 				"license": {
+					"type": ["string", "null"],
 					"description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
 					"examples": [
 						"https://creativecommons.org/licenses/by/4.0",
 						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"type": ["string", "null"]
+					]
 				}
 			}
 		}
@@ -2382,9 +1642,7 @@
 			"additionalProperties": false,
 			"required": ["_ruleset", "_source"],
 			"properties": {
-				"_ruleset": {
-					"const": "classic"
-				},
+				"_ruleset": { "const": "classic" },
 				"_source": {
 					"$ref": "#/$defs/Source",
 					"description": "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
@@ -2394,9 +1652,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/OracleCollection"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/OracleCollection" }
 					}
 				},
 				"moves": {
@@ -2406,12 +1662,8 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
 							"oneOf": [
-								{
-									"$ref": "#/$defs/MoveCategoryClassic"
-								},
-								{
-									"$ref": "#/$defs/MoveCategoryExtensionClassic"
-								}
+								{ "$ref": "#/$defs/MoveCategoryClassic" },
+								{ "$ref": "#/$defs/MoveCategoryExtensionClassic" }
 							]
 						}
 					}
@@ -2423,12 +1675,8 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
 							"oneOf": [
-								{
-									"$ref": "#/$defs/AssetTypeClassic"
-								},
-								{
-									"$ref": "#/$defs/AssetTypeExtensionClassic"
-								}
+								{ "$ref": "#/$defs/AssetTypeClassic" },
+								{ "$ref": "#/$defs/AssetTypeExtensionClassic" }
 							]
 						}
 					}
@@ -2440,12 +1688,8 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
 							"oneOf": [
-								{
-									"$ref": "#/$defs/EncounterCollectionClassic"
-								},
-								{
-									"$ref": "#/$defs/EncounterCollectionExtensionClassic"
-								}
+								{ "$ref": "#/$defs/EncounterCollectionClassic" },
+								{ "$ref": "#/$defs/EncounterCollectionExtensionClassic" }
 							]
 						}
 					}
@@ -2455,9 +1699,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/WorldTruthClassic"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/WorldTruthClassic" }
 					}
 				},
 				"regions": {
@@ -2465,9 +1707,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/RegionEntry"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/RegionEntry" }
 					}
 				},
 				"site_themes": {
@@ -2475,9 +1715,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/DelveSiteTheme"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/DelveSiteTheme" }
 					}
 				},
 				"site_domains": {
@@ -2485,9 +1723,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/DelveSiteDomain"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/DelveSiteDomain" }
 					}
 				},
 				"delve_sites": {
@@ -2495,9 +1731,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/DelveSite"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/DelveSite" }
 					}
 				},
 				"rarities": {
@@ -2505,9 +1739,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"$ref": "#/$defs/Rarity"
-						}
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/$defs/Rarity" }
 					}
 				}
 			}

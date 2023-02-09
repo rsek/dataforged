@@ -2,11 +2,13 @@
  * Regenerates schema for YAML input and writes it to file
  */
 
-import { writeFileSync } from 'fs'
+import { PathLike, writeFileSync } from 'fs'
 import { Schema } from '@df-json-schema'
 import Ajv from 'ajv'
 import path from 'path'
 import addFormats from 'ajv-formats'
+import prettier from 'prettier'
+import _ from 'lodash'
 
 const ajv = new Ajv.default({ removeAdditional: true })
 addFormats.default(ajv)
@@ -20,11 +22,21 @@ const dfOut = path.join(
 	'src/data-in/dataforged/schema-dataforged-input.json'
 )
 
-// const dfJson = JSON.stringify(Schema.DataforgedInput, undefined, 2)
+async function getPrettierOptions(filepath: string) {
+	const defaultConfig = (await prettier.resolveConfig(filepath)) ?? {}
+	const jsonOverrides: prettier.Options = { filepath, parser: 'json' }
+	const prettierOptions = _.merge({}, defaultConfig, jsonOverrides)
+	return prettierOptions
+}
+
+// const dfJson = JSON.stringify(Schema.DataforgedInput)
 
 writeFileSync(
 	dfOut,
-	JSON.stringify(ajv.getSchema('DataforgedInput')?.schema, undefined, 2)
+	prettier.format(
+		JSON.stringify(ajv.getSchema('DataforgedInput')?.schema),
+		await getPrettierOptions(dfOut)
+	)
 )
 
 // Write Ironsworn-compatible schema for Datasworn
@@ -33,9 +45,12 @@ const dsOut = path.join(
 	'./src/data-in/datasworn/schema-datasworn-input.json'
 )
 
-// const dsJson = JSON.stringify(Schema.DataswornInput, undefined, 2)
+// const dsJson = JSON.stringify(Schema.DataswornInput)
 
 writeFileSync(
 	dsOut,
-	JSON.stringify(ajv.getSchema('DataswornInput')?.schema, undefined, 2)
+	prettier.format(
+		JSON.stringify(ajv.getSchema('DataswornInput')?.schema),
+		await getPrettierOptions(dsOut)
+	)
 )

@@ -1,7 +1,8 @@
 import { writeFileSync } from 'fs'
 import { compileFromFile } from 'json-schema-to-typescript'
-import { Options } from 'prettier'
-import * as prettierConfig from 'prettier-config-standard' assert { type: 'json' }
+import { type Options } from 'prettier'
+// @ts-ignore
+import prettierConfig from '../../.prettierrc.cjs'
 
 compileFromFile('./src/data-in/dataforged/schema-dataforged-input.json', {
 	strictIndexSignatures: true,
