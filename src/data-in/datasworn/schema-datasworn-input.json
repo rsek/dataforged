@@ -107,6 +107,7 @@
       "required": [
         "canonical"
       ],
+      "additionalProperties": false,
       "properties": {
         "canonical": {
           "$ref": "#/$defs/Label"
@@ -524,7 +525,7 @@
             "integer",
             "null"
           ],
-          "min": 1,
+          "minimum": 1,
           "default": 1
         },
         "method": {
@@ -910,7 +911,10 @@
           "$ref": "#/$defs/MarkdownPhrase"
         },
         "options": {
-          "$ref": "#/$defs/TriggerOption"
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TriggerOptionBase"
+          }
         }
       }
     },
@@ -1274,56 +1278,56 @@
             }
           }
         },
-        "_source": {
-          "$ref": "#/$defs/SourcePartial"
-        }
-      },
-      "rendering": {
-        "type": "object",
-        "definition": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
-        "properties": {
-          "icon": {
-            "$ref": "#/$defs/Icon"
-          },
-          "style": {
-            "oneOf": [
-              {
-                "enum": [
-                  "multi_table"
-                ],
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "default": null
-          },
-          "columns": {
-            "type": "object",
-            "patternProperties": {
-              "^[a-z][a-z_]*[a-z]$": {
-                "description": "A column's default label is the title of the source table.",
-                "$ref": "#/$defs/OracleCollectionColumn"
+        "rendering": {
+          "type": "object",
+          "description": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
+          "properties": {
+            "icon": {
+              "$ref": "#/$defs/Icon"
+            },
+            "style": {
+              "oneOf": [
+                {
+                  "enum": [
+                    "multi_table"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "columns": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z][a-z_]*[a-z]$": {
+                  "description": "A column's default label is the title of the source table.",
+                  "$ref": "#/$defs/OracleCollectionColumn"
+                }
               }
             }
           }
-        }
-      },
-      "collections": {
-        "description": "OracleCollections contained by this OracleCollection.",
-        "type": "object",
-        "patternProperties": {
-          "^[a-z][a-z_]*[a-z]$": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/OracleCollection"
-              },
-              {
-                "$ref": "#/$defs/OracleCollectionExtension"
-              }
-            ]
+        },
+        "collections": {
+          "description": "OracleCollections contained by this OracleCollection.",
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-z_]*[a-z]$": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/OracleCollection"
+                },
+                {
+                  "$ref": "#/$defs/OracleCollectionExtension"
+                }
+              ]
+            }
           }
+        },
+        "_source": {
+          "$ref": "#/$defs/SourcePartial"
         }
       }
     },
@@ -1581,8 +1585,8 @@
         "xp_cost": {
           "description": "From Ironsworn: Delve, p. 174:\n\n    Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n    If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
           "type": "integer",
-          "min": 3,
-          "max": 5,
+          "minimum": 3,
+          "maximum": 5,
           "default": 3
         },
         "description": {
@@ -1913,13 +1917,13 @@
         },
         "low": {
           "type": "integer",
-          "min": 1,
-          "max": 100
+          "minimum": 1,
+          "maximum": 100
         },
         "high": {
           "type": "integer",
-          "min": 1,
-          "max": 100
+          "minimum": 1,
+          "maximum": 100
         }
       }
     },

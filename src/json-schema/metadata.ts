@@ -25,6 +25,7 @@ export const Ruleset: Schema<Types.Ruleset> = {
 export const Title: Schema<Types.Title> = {
   type: 'object',
   required: ['canonical'],
+  additionalProperties: false,
   properties: {
     canonical: schemaRef<Localize.Label>('Label'),
     standard: schemaRef<Localize.Label>('Label') as any,

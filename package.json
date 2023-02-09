@@ -13,6 +13,7 @@
   "scripts": {
     "build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
     "build:inputSchema": "node ./dist/scripts/build-input-schema.js",
+    "build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",
     "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
   },
   "files": [
@@ -52,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
@@ -66,6 +68,7 @@
     "lodash-es": "4.17.6",
     "prettier": "^2.8.3",
     "prettier-config-standard": "^5.0.0",
+    "quicktype": "^21.0.10",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^4.1.2",

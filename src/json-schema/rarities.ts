@@ -29,8 +29,8 @@ export const Rarity: Schema<Types.Rarity> = {
     If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.`,
 
       type: 'integer',
-      min: 3,
-      max: 5,
+      minimum: 3,
+      maximum: 5,
       default: 3
     },
     description: { $ref: '#/$defs/MarkdownParagraphs' },

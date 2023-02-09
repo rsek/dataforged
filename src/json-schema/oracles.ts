@@ -25,21 +25,33 @@ export const OracleTableColumn: Schema<Types.OracleTableColumn> = {
       title: 'OracleTableColumnRoll',
       properties: {
         content_type: { const: 'range' },
-        label: { $ref: '#/$defs/Label', default: 'Roll' }
+        label: {
+          $ref: '#/$defs/Label',
+          default: 'Roll'
+          // tsType: 'Label'
+        }
       }
     } as any,
     {
       title: 'OracleTableColumnResult',
       properties: {
         content_type: { const: 'result' },
-        label: { $ref: '#/$defs/Label', default: 'Result' }
+        label: {
+          $ref: '#/$defs/Label',
+          default: 'Result'
+          // tsType: 'Label'
+        }
       }
     },
     {
       title: 'OracleTableColumnSummary',
       properties: {
         content_type: { const: 'summary' },
-        label: { $ref: '#/$defs/Label', default: 'Summary' }
+        label: {
+          $ref: '#/$defs/Label',
+          default: 'Summary'
+          // tsType: 'Label'
+        }
       }
     },
     {
@@ -144,7 +156,7 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
     times: {
       description: 'The number of times to roll.',
       type: ['integer', 'null'],
-      min: 1,
+      minimum: 1,
       default: 1
     } as any,
     method: {

@@ -100,37 +100,42 @@ export const OracleCollection: Schema<Types.OracleCollection> = collection(
   'OracleTable',
   'OracleCollectionID',
   {
-    rendering: {
-      type: 'object',
-      definition:
-        'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
-      properties: {
-        icon: schemaRef<Metadata.Icon>('Icon'),
-        style: {
-          oneOf: [{ enum: ['multi_table'], type: 'string' }, { type: 'null' }],
-          default: null
-        },
-        columns: {
-          type: 'object',
-          patternProperties: {
-            [DF_KEY]: {
-              description:
-                "A column's default label is the title of the source table.",
-              $ref: '#/$defs/OracleCollectionColumn'
+    properties: {
+      rendering: {
+        type: 'object',
+        description:
+          'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
+        properties: {
+          icon: schemaRef<Metadata.Icon>('Icon'),
+          style: {
+            oneOf: [
+              { enum: ['multi_table'], type: 'string' },
+              { type: 'null' }
+            ],
+            default: null
+          },
+          columns: {
+            type: 'object',
+            patternProperties: {
+              [DF_KEY]: {
+                description:
+                  "A column's default label is the title of the source table.",
+                $ref: '#/$defs/OracleCollectionColumn'
+              }
             }
           }
         }
-      }
-    },
-    collections: {
-      description: 'OracleCollections contained by this OracleCollection.',
-      type: 'object',
-      patternProperties: {
-        [DF_KEY]: {
-          oneOf: [
-            { $ref: `#/$defs/OracleCollection` },
-            { $ref: `#/$defs/OracleCollectionExtension` }
-          ]
+      },
+      collections: {
+        description: 'OracleCollections contained by this OracleCollection.',
+        type: 'object',
+        patternProperties: {
+          [DF_KEY]: {
+            oneOf: [
+              { $ref: `#/$defs/OracleCollection` },
+              { $ref: `#/$defs/OracleCollectionExtension` }
+            ]
+          }
         }
       }
     }

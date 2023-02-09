@@ -131,7 +131,10 @@ export const TriggerBase: Schema<Types.TriggerBase<any>> = {
   type: 'object',
   properties: {
     text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase') as any,
-    options: schemaRef<Types.TriggerOption>('TriggerOption')
+    options: {
+      type: 'array',
+      items: schemaRef<Types.TriggerOption>('TriggerOptionBase')
+    }
   }
 } as any
 
