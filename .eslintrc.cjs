@@ -5,6 +5,7 @@ module.exports = {
 	extends: ['standard-with-typescript', 'prettier'],
 	parser: '@typescript-eslint/parser',
 	plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
+
 	ignorePatterns: [
 		'github',
 		'vscode',
@@ -19,7 +20,9 @@ module.exports = {
 		'src/data-out',
 		'src/_schema-ts-old',
 		'src/type-gen/results',
-		'*.d.ts'
+		'.eslintrc.cjs',
+		'*.d.ts',
+		'*.json'
 	],
 	parserOptions: {
 		project: './tsconfig.json',
@@ -32,5 +35,16 @@ module.exports = {
 			'error',
 			{ prefer: 'type-imports', fixStyle: 'inline-type-imports' }
 		]
-	}
+	},
+	overrides: [
+		{
+			files: ['./src/class-schema/**/*.ts'],
+			rules: {
+				'@typescript-eslint/no-extraneous-class': [
+					2,
+					{ allowWithDecorator: true, allowStaticOnly: true }
+				]
+			}
+		}
+	]
 }

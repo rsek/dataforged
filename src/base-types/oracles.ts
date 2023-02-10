@@ -15,7 +15,7 @@ export interface OracleTable {
 	match?: OracleTableMatchBehavior
 	table: OracleTableRow[]
 	rendering?: OracleTableRendering
-	suggestions?: Metadata.Suggestions
+	suggestions?: Metadata.SuggestionsBase
 }
 
 export type OracleTableStyle = 'table' | 'embed_in_row' | 'embed_as_column'
@@ -79,7 +79,7 @@ export interface OracleTableRow<
 	result: Localize.MarkdownPhrase
 	summary?: Localize.MarkdownSentences
 	rolls?: OracleTableRoll[]
-	suggestions?: Metadata.Suggestions
+	suggestions?: Metadata.SuggestionsBase
 	embed_table?: OracleTableRowID
 }
 

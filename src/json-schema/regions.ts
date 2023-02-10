@@ -32,6 +32,6 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 		},
 		quest_starter: { $ref: '#/$defs/MarkdownParagraph' },
 		source: { $ref: '#/$defs/Source' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any
 	}
 }

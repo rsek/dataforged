@@ -24,7 +24,7 @@ export interface Range<
 export interface Node<IDType = Metadata.ID> {
 	_id: IDType
 	source: Metadata.Source
-	suggestions?: Metadata.Suggestions
+	suggestions?: Metadata.SuggestionsBase
 }
 
 export interface Collectible<IDType = Metadata.ID> extends Node<IDType> {

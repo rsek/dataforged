@@ -35,6 +35,6 @@ export const Rarity: Schema<Types.Rarity> = {
 		},
 		description: { $ref: '#/$defs/MarkdownParagraphs' },
 		source: { $ref: '#/$defs/Source' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any
 	}
 }

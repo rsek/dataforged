@@ -56,7 +56,7 @@ function collection<TCollection extends Types.Collection<any, any>>(
 			description: schemaRef<Localize.MarkdownParagraphs>(
 				'MarkdownParagraphs'
 			) as any,
-			suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
+			suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any,
 			contents: {
 				type: 'object',
 				description: `The elements contained by this collection.`,

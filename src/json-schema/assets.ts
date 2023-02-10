@@ -21,7 +21,7 @@ export const Asset: Schema<Types.Asset> = {
 		name: schemaRef<Localize.Label>('Label'),
 		_id: schemaRef<Assets.AssetID>('AssetID'),
 		source: schemaRef<Metadata.Source>('Source'),
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any,
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any,
 		abilities: {
 			type: 'array',
 			minItems: 3,
