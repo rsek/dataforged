@@ -13,17 +13,15 @@ interface Namespace<T extends Metadata.Ruleset> {
 	_ruleset: T
 	_source: Metadata.Source
 	oracles?: Record<string, Collections.OracleCollection>
+	moves?: Record<string, Collections.MoveCategory>
+	assets?: Record<string, Collections.AssetType>
 }
 
 export interface NamespaceDataforged extends Namespace<'starforged'> {
-	moves?: Record<string, Collections.MoveCategoryStarforged>
-	assets?: Record<string, Collections.AssetTypeStarforged>
 	encounters?: Record<string, Encounters.EncounterStarforged>
 	setting_truths?: Record<string, Truths.TruthStarforged>
 }
 export interface NamespaceDatasworn extends Namespace<'classic'> {
-	moves?: Record<string, Collections.MoveCategoryClassic>
-	assets?: Record<string, Collections.AssetTypeClassic>
 	regions?: Record<string, Regions.RegionEntry>
 	encounters?: Record<string, Collections.EncounterCollectionClassic>
 	rarities?: Record<string, Rarities.Rarity>

@@ -1,6 +1,6 @@
 import { DF_KEY, schemaRef } from './common.js'
-import { Metadata } from '@base-types'
-import { JSONSchema7 } from 'json-schema'
+import { type Metadata } from '@base-types'
+import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
 
 const NamespaceShared: JSONSchema7 = {
@@ -11,10 +11,10 @@ const NamespaceShared: JSONSchema7 = {
 	properties: {
 		_ruleset: {},
 		_source: {
-			...schemaRef<Metadata.Source>('Source'),
+			...(schemaRef<Metadata.Source>('Source') as JSONSchema7),
 			description:
 				"Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
-		} as JSONSchema7,
+		},
 		oracles: {
 			title: 'Oracles',
 			type: 'object',

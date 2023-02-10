@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { Metadata, type Regions as Types } from '@base-types'
+import { type Metadata, type Regions as Types } from '@base-types'
 import { schemaRef } from './common.js'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {

@@ -4,8 +4,8 @@ import {
 	type Encounters,
 	type Moves,
 	type Oracles,
-	DelveSites,
-	Regions
+	type DelveSites,
+	type Regions
 } from '@base-types'
 
 export type Ruleset = 'classic' | 'starforged'
@@ -29,7 +29,8 @@ export interface Title {
 	short?: Localize.Label
 }
 
-export interface SuggestionsBase {
+export interface SuggestionsBase
+	extends Record<string | never, string[] | undefined> {
 	oracles?: Oracles.OracleTableID[]
 	assets?: Assets.AssetID[]
 	moves?: Moves.MoveID[]

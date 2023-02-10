@@ -1,4 +1,4 @@
-import { type JSONSchema7 } from 'json-schema'
+// import { type JSONSchema7 } from 'json-schema'
 import { DF_KEY } from './common.js'
 
 export const CustomStat = {

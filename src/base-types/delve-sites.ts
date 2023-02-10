@@ -5,10 +5,10 @@ import {
 	type Oracles,
 	type Metadata
 } from '@base-types'
-import { type Range, type Node } from '@base-types/abstract'
+import { type Range, type Collectible } from '@base-types/abstract'
 
 export type DelveSiteID = string
-export interface DelveSite extends Node<DelveSiteID> {
+export interface DelveSite extends Collectible<DelveSiteID> {
 	rank: Progress.ChallengeRank
 	theme: DelveSiteThemeID
 	domain: DelveSiteCardID
@@ -51,7 +51,7 @@ export type DelveSiteDomainID = string
 type DelveSiteCardID = DelveSiteThemeID | DelveSiteDomainID
 export type DelveSiteCardType = 'theme' | 'domain'
 
-interface DelveCardBase extends Node<DelveSiteCardID> {
+interface DelveCardBase extends Collectible<DelveSiteCardID> {
 	icon?: Metadata.Icon
 	summary: Localize.MarkdownPhrase
 	description?: Localize.MarkdownSentences

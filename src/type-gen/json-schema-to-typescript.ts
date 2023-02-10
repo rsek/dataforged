@@ -1,7 +1,8 @@
 import { writeFileSync } from 'fs'
 import { compileFromFile } from 'json-schema-to-typescript'
 import { type Options } from 'prettier'
-// @ts-ignore
+import logger from '../scripts/logger.js'
+// @ts-expect-error idk, it shows an error (probably due to it being commonJS) but works fine
 import prettierConfig from '../../.prettierrc.cjs'
 
 compileFromFile('./src/data-in/dataforged/schema-dataforged-input.json', {
@@ -10,4 +11,8 @@ compileFromFile('./src/data-in/dataforged/schema-dataforged-input.json', {
 	additionalProperties: false,
 	unreachableDefinitions: true,
 	style: prettierConfig as Options
-}).then((ts) => writeFileSync('./src/type-gen/results/types-in.d.ts', ts))
+})
+	.then((ts) => {
+		writeFileSync('./src/type-gen/results/types-in.d.ts', ts)
+	})
+	.catch(logger.error)

@@ -1,5 +1,5 @@
-import { Localize } from '@base-types'
-import { OracleTableRoll } from '@base-types/oracles'
+import { type Localize } from '@base-types'
+import { type OracleTableRoll } from '@base-types/oracles'
 
 export type OracleRowAttribute = 'location' | 'region'
 
@@ -24,7 +24,7 @@ export interface ObjectTemplateRoll extends OracleTableRoll {
 	// schema for table results? then some can be provided as empty results.
 }
 
-const creature: ObjectTemplate = {
+export const creature: ObjectTemplate = {
 	name: 'Creature',
 	attributes: {
 		environment: {

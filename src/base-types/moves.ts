@@ -1,34 +1,20 @@
-import { type Node } from '@base-types/abstract'
-import {
-	type ConditionMeterAliasClassic,
-	type ConditionMeterAliasStarforged
-} from '@base-types/assets'
-import {
-	type ProgressTypeClassic,
-	type ProgressTypeStarforged
-} from '@base-types/progress'
+import { type Collectible } from '@base-types/abstract'
 import type * as Localized from '@base-types/localize'
-import type * as Metadata from '@base-types/metadata'
 import type * as Player from '@base-types/players'
+import type * as Starforged from '@base-types/ruleset-starforged'
+import type * as Classic from '@base-types/ruleset-classic'
 
 export type MoveID = string
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface MoveBase extends Node<MoveID> {
-	name: Localized.Label
-	source: Metadata.Source
+export type RollType = 'action_roll' | 'progress_roll'
+
+export interface Move<T extends RollType = RollType>
+	extends Collectible<MoveID> {
+	progress_move?: T extends 'progress_roll' ? true : false
 	text: Localized.MarkdownParagraphs
 	outcomes: MoveOutcomes
-	trigger: Trigger
+	trigger: Trigger<T>
 }
-export interface MoveStarforged extends MoveBase {
-	trigger: TriggerStarforged
-}
-export interface MoveClassic extends MoveBase {
-	trigger: TriggerClassic
-}
-
-export type Move = MoveStarforged | MoveClassic
 
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
@@ -46,17 +32,10 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 	strong_hit: MoveOutcomeMatchable
 }
 
-export interface TriggerBase<OptionType extends TriggerOptionBase<any>> {
+export interface Trigger<T extends RollType = RollType> {
 	text: Localized.MarkdownPhrase
-	options?: OptionType[]
+	options?: Array<TriggerOption<T>>
 }
-
-export interface TriggerStarforged
-	extends TriggerBase<TriggerOptionStarforged> {}
-
-export interface TriggerClassic extends TriggerBase<TriggerOptionClassic> {}
-
-export type Trigger = TriggerClassic | TriggerStarforged
 
 export type RollMethod =
 	| 'any'
@@ -66,51 +45,25 @@ export type RollMethod =
 	| 'inherit'
 	| MoveOutcomeType
 
-export type RollType = 'action_roll' | 'progress_roll'
+export type ProgressType = Starforged.ProgressType | Classic.ProgressType
 
-export interface TriggerOptionBase<UsingType extends string> {
+export type RollableStatID =
+	| Player.StatID
+	| Player.ConditionMeterID
+	| Starforged.ConditionMeterAlias
+	| Classic.ConditionMeterAlias
+
+export type Rollable<T extends RollType = RollType> = T extends 'progress_roll'
+	? T extends 'action_roll'
+		? // if it's a union, allow both types:
+		  ProgressType | RollableStatID
+		: // otherwise, restrict types as appropriate:
+		  ProgressType
+	: RollableStatID
+
+export interface TriggerOption<T extends RollType = RollType> {
 	text?: Localized.MarkdownPhrase
-	method?: RollMethod
-	roll_type: RollType
-	using: UsingType[]
+	method: RollMethod
+	roll_type: T
+	using: Array<Rollable<T>>
 }
-
-export type RollableStatIDCommon = Player.StatID | Player.ConditionMeterID
-
-export type RollableStatStarforgedID =
-	| RollableStatIDCommon
-	| ConditionMeterAliasStarforged
-
-export type RollableStatClassicID =
-	| RollableStatIDCommon
-	| ConditionMeterAliasClassic
-
-export interface TriggerOptionActionStarforged
-	extends TriggerOptionBase<RollableStatStarforgedID> {
-	roll_type: 'action_roll'
-}
-
-export interface TriggerOptionActionClassic
-	extends TriggerOptionBase<RollableStatClassicID> {
-	roll_type: 'action_roll'
-}
-
-export interface TriggerOptionProgressStarforged
-	extends TriggerOptionBase<ProgressTypeStarforged> {
-	roll_type: 'progress_roll'
-}
-
-export interface TriggerOptionProgressClassic
-	extends TriggerOptionBase<ProgressTypeClassic> {
-	roll_type: 'progress_roll'
-}
-
-export type TriggerOptionStarforged =
-	| TriggerOptionActionStarforged
-	| TriggerOptionProgressStarforged
-
-export type TriggerOptionClassic =
-	| TriggerOptionActionClassic
-	| TriggerOptionProgressClassic
-
-export type TriggerOption = TriggerOptionStarforged | TriggerOptionClassic

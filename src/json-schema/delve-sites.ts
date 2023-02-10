@@ -1,8 +1,8 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 import {
-	Localize,
-	Metadata,
+	type Localize,
+	type Metadata,
 	type DelveSites,
 	type DelveSites as Types
 } from '@base-types'
@@ -241,22 +241,22 @@ export const DelveSiteDenizen: Schema<
 function staticFeatureDangerRow<
 	T extends DelveSites.FeatureOrDanger<number, number, string>
 >(row: Omit<T, '_id'>): Schema<T> {
-	const emptyRow = {
+	const emptyRow: any = {
 		type: 'object',
 		properties: { low: { const: row.low }, high: { const: row.high } }
-	} as Schema<T>
+	}
 	if (!_.isEmpty(row.result))
 		emptyRow.properties.result = {
 			...schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
 			default: row.result
 		}
-	if (row.suggestions)
+	if (row.suggestions != null)
 		emptyRow.properties.suggestions = {
 			...schemaRef<Metadata.Suggestions>('Suggestions'),
 			default: row.suggestions
 		}
 
-	return emptyRow
+	return emptyRow as Schema<T>
 }
 
 export const DelveSiteCard = {

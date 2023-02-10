@@ -7,14 +7,15 @@ import {
 	type Moves,
 	type Oracles,
 	type Metadata as Types,
-	Regions
+	type Regions
 } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 
 export const ID: Schema<Types.ID> = {
 	type: 'string',
-	$comment: '{namespace}/{element}/{*}'
+	$comment: '{namespace}/{element}/{*}',
+	pattern: /^[a-z0-9][a-z0-9_]+\/(\/[a-z][a-z_]*[a-z]){2,}$/.source
 }
 
 export const Ruleset: Schema<Types.Ruleset> = {
@@ -158,7 +159,7 @@ export const SuggestionsClassic = _.merge({}, SuggestionsBase, {
 			type: 'array',
 			items: schemaRef<DelveSites.DelveSiteDomainID>('DelveSiteDomainID')
 		}
-	} as Partial<Schema<Types.Suggestions>>
+	}
 })
 
 export const SuggestionsStarforged = _.merge(

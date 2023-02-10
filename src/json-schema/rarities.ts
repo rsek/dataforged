@@ -1,5 +1,5 @@
 import { schemaRef } from './common.js'
-import { Metadata, type Rarities as Types } from '@base-types'
+import { type Metadata, type Rarities as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const RarityID: Schema<Types.RarityID> = {

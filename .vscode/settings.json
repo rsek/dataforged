@@ -1,43 +1,41 @@
 {
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.importModuleSpecifier": "non-relative",
-  "javascript.preferences.importModuleSpecifierEnding": "minimal",
-  "typescript.preferences.importModuleSpecifierEnding": "minimal",
-  "npm.packageManager": "yarn",
-  "typescript.suggest.jsdoc.generateReturns": false,
-  "editor.suggest.showDeprecated": false,
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "json.validate.enable": true,
-  "eslint.validate": ["javascript", "typescript", "yaml", "json"],
-  "prettier.enable": true,
-  "prettier.requireConfig": false,
-  "prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
-  "eslint.lintTask.enable": true,
-  "eslint.packageManager": "yarn",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "CodeRun.typescript": [
-    "ts-node -e --cwd --esm --swc --experimental-specifier-resolution node"
-  ],
-  "yaml.format.enable": false,
-  "yaml.schemas": {
-    "src/data-in/dataforged/schema-dataforged-input.json": [
-      "src/data-in/dataforged/**/*.yaml"
-    ],
-    "src/data-in/datasworn/schema-datasworn-input.json": [
-      "src/data-in/datasworn/**/*.yaml"
-    ]
-  }
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.preferences.importModuleSpecifierEnding": "minimal",
+	"typescript.preferences.importModuleSpecifierEnding": "minimal",
+	"typescript.suggest.jsdoc.generateReturns": false,
+	"editor.suggest.showDeprecated": false,
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"json.validate.enable": true,
+	"eslint.validate": ["javascript", "typescript", "yaml", "json"],
+	"prettier.enable": true,
+	"prettier.requireConfig": false,
+	"prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
+	"eslint.lintTask.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"CodeRun.typescript": [
+		"ts-node -e --cwd --esm --swc --experimental-specifier-resolution node"
+	],
+	"yaml.format.enable": false,
+	"yaml.schemas": {
+		"src/data-in/dataforged/schema-dataforged-input.json": [
+			"src/data-in/dataforged/**/*.yaml"
+		],
+		"src/data-in/datasworn/schema-datasworn-input.json": [
+			"src/data-in/datasworn/**/*.yaml"
+		]
+	}
 }

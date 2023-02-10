@@ -1,8 +1,12 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common.js'
-import { Localize, Metadata, type Collections as Types } from '@base-types'
+import {
+	type Localize,
+	type Metadata,
+	type Collections as Types
+} from '@base-types'
 import _ from 'lodash'
-import { ExtendOne } from '@base-types/abstract'
+import { type ExtendOne } from '@base-types/abstract'
 
 export const OracleCollectionID: Schema<Types.OracleCollectionID> = {
 	type: 'string',
@@ -37,8 +41,8 @@ function collection<TCollection extends Types.Collection<any, any>>(
 	contentsRef: string,
 	idRef: string,
 	mergeWith: Partial<TCollection> = {}
-) {
-	const CollectionBase = {
+): Schema<TCollection> {
+	const CollectionBase: Schema<Types.Collection<any, string>> = {
 		type: 'object',
 		required: ['_id', 'title', 'source', 'contents'],
 		// additionalProperties: false,
@@ -61,7 +65,7 @@ function collection<TCollection extends Types.Collection<any, any>>(
 				}
 			}
 		} as any
-	} as Schema<Types.Collection<any, string>>
+	} as any
 	return _.merge(
 		{},
 		CollectionBase,
@@ -73,7 +77,7 @@ function collectionExtension<TCollection extends Types.Collection<any, any>>(
 	contentsRef: string,
 	idRef: string,
 	mergeWith: Partial<TCollection> = {}
-) {
+): Schema<ExtendOne<TCollection>> {
 	const newSchema: Schema<ExtendOne<TCollection>> = {
 		description: 'Extends a collection with additional items.',
 		type: 'object',
@@ -93,7 +97,7 @@ function collectionExtension<TCollection extends Types.Collection<any, any>>(
 			}
 		}
 	} as any
-	return newSchema as Schema<ExtendOne<TCollection>>
+	return newSchema
 }
 
 export const OracleCollection: Schema<Types.OracleCollection> = collection(
@@ -140,7 +144,7 @@ export const OracleCollection: Schema<Types.OracleCollection> = collection(
 			}
 		}
 	} as any
-) as Schema<Types.OracleCollection>
+)
 
 export const OracleCollectionExtension: Schema<
 	ExtendOne<Types.OracleCollection>
@@ -161,35 +165,19 @@ export const OracleCollectionExtension: Schema<
 	}
 } as any)
 
-export const AssetTypeStarforged: Schema<Types.AssetTypeStarforged> =
-	collection('AssetStarforged', 'AssetTypeID')
-
-export const AssetTypeExtensionStarforged = collectionExtension(
-	'AssetStarforged',
+export const AssetType: Schema<Types.AssetType> = collection(
+	'Asset',
 	'AssetTypeID'
 )
 
-export const AssetTypeClassic: Schema<Types.AssetTypeClassic> = collection(
-	'AssetClassic',
-	'AssetTypeID'
-)
+export const AssetTypeExtension = collectionExtension('Asset', 'AssetTypeID')
 
-export const AssetTypeExtensionClassic = collectionExtension(
-	'AssetClassic',
-	'AssetTypeID'
-)
-
-export const MoveCategoryStarforged: Schema<Types.MoveCategoryStarforged> =
-	collection('MoveStarforged', 'MoveCategoryID')
-export const MoveCategoryExtensionStarforged = collectionExtension(
-	'MoveStarforged',
+export const MoveCategory: Schema<Types.MoveCategory> = collection(
+	'Move',
 	'MoveCategoryID'
 )
-
-export const MoveCategoryClassic: Schema<Types.MoveCategoryClassic> =
-	collection('MoveClassic', 'MoveCategoryID')
-export const MoveCategoryExtensionClassic = collectionExtension(
-	'MoveClassic',
+export const MoveCategoryExtension = collectionExtension(
+	'Move',
 	'MoveCategoryID'
 )
 
