@@ -1,7 +1,6 @@
-import { type Localize } from '@base-types'
-import { type Cyclopedia } from '@base-types/abstract'
+import { type Abstract, type Localize } from '@base-types'
 
-export interface RegionEntry extends Cyclopedia<RegionEntryID> {
+export interface RegionEntry extends Abstract.Cyclopedia<RegionEntryID> {
 	quest_starter: Localize.MarkdownParagraph
 }
 export type RegionEntryID = string

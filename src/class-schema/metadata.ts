@@ -1,64 +1,142 @@
 import { type Metadata as Types } from '@base-types'
 import {
-	IsArray,
 	IsEnum,
-	IsHexColor,
-	IsNumber,
+	IsInt,
 	IsOptional,
 	IsString,
 	IsUrl,
+	Matches,
 	Min,
 	MinLength,
-	ValidateNested
+	type ValidationOptions
 } from 'class-validator'
-import { Type } from 'class-transformer'
-import {
-	JSONSchema,
-	validationMetadatasToSchemas
-} from 'class-validator-jsonschema'
+import { JSONSchema } from 'class-validator-jsonschema'
 import _ from 'lodash'
-import Localize from './localize.js'
+import { Localize } from '@class-schema'
 
-enum Ruleset {
+export enum Ruleset {
 	Classic = 'classic',
 	Starforged = 'starforged'
 }
 
-export abstract class Metadata {
-	@IsEnum(Ruleset)
-	static Ruleset = Ruleset
+export function IsRuleset(validationOptions?: ValidationOptions) {
+	return IsEnum(Ruleset, validationOptions)
+}
 
-	// how would a regex work here?
-	@IsString()
-	static ID: Types.ID
+// IDs need to live in this file rather than with their associated classes to avoid import restrictions
 
-	@IsUrl()
-	static Icon: Types.Icon
+/**
+ * @deprecated This is a placeholder so that stuff works for the moment.
+ */
+export function IsID(validationOptions?: ValidationOptions) {
+	const pattern = /^[a-z0-9][a-z0-9_]*[a-z0-9](\/[a-z0-9][a-z0-9_]*[a-z0-9])+$/
 
-	@IsUrl()
-	static Image: Types.Image
+	return Matches(pattern, validationOptions)
+}
 
-	@IsHexColor()
-	static Color: Types.Color
+export function IsOracleTableRowID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/,
+		validationOptions
+	)
+}
+export function IsOracleTableID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}$/,
+		validationOptions
+	)
+}
+
+export function IsOracleCollectionID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/collections\/oracles(\/[a-z][a-z_]*[a-z]){1,3}$/,
+		validationOptions
+	)
+}
+
+export function IsAssetID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}$/,
+		validationOptions
+	)
+}
+
+export function IsAssetAbilityID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/[0-2]$/,
+		validationOptions
+	)
+}
+
+export function IsAssetTypeID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/collections\/assets(\/[a-z][a-z_]*[a-z]){1}$/,
+		validationOptions
+	)
+}
+
+export function IsMoveID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/,
+		validationOptions
+	)
+}
+
+export function IsMoveCategoryID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/collections\/moves(\/[a-z][a-z_]*[a-z]){1}$/,
+		validationOptions
+	)
+}
+
+export function IsEncounterCollectionClassicID(
+	validationOptions?: ValidationOptions
+) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/collections\/encounters(\/[a-z][a-z_]*[a-z]){1}$/,
+		validationOptions
+	)
+}
+
+export function IsEncounterStarforgedID(validationOptions?: ValidationOptions) {
+	return Matches(
+		/^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/,
+		validationOptions
+	)
+}
+
+export function IsIcon(
+	...[options, validationOptions]: Parameters<typeof IsUrl>
+) {
+	return IsUrl(options, validationOptions)
+}
+
+export function IsImage(
+	...[options, validationOptions]: Parameters<typeof IsUrl>
+) {
+	return IsUrl(options, validationOptions)
 }
 
 @JSONSchema({
 	description: 'Provides short and long labels for this element.'
 })
 export class Title implements Types.Title {
-	canonical = Localize.Label
+	@Localize.IsLabel()
+	canonical: string
 
 	@IsOptional()
-	standard = Localize.Label
+	@Localize.IsLabel()
+	standard?: string
 
 	@IsOptional()
-	short = Localize.Label
+	@Localize.IsLabel()
+	short?: string
 
-	// constructor(data: Types.Title) {
-	// 	// this.canonical = data.canonical
-	// 	// this.short = data.short
-	// 	// this.standard = data.standard
-	// }
+	constructor(data: Types.Title) {
+		this.canonical = data.canonical
+		this.short = data.short
+		this.standard = data.standard
+	}
 }
 
 @JSONSchema({
@@ -80,7 +158,7 @@ export class Source implements Types.Source {
 	title!: string
 
 	@IsOptional()
-	@IsNumber({ maxDecimalPlaces: 0 })
+	@IsInt()
 	@Min(1)
 	@JSONSchema({
 		description:
@@ -91,10 +169,8 @@ export class Source implements Types.Source {
 	@JSONSchema({
 		examples: [['Shawn Tomkin']]
 	})
-	@IsArray()
+	@IsString({ each: true })
 	@MinLength(1)
-	@ValidateNested({ each: true })
-	@Type(() => String)
 	authors!: [string, ...string[]]
 
 	@IsString()
@@ -106,21 +182,51 @@ export class Source implements Types.Source {
 	date!: string
 
 	@IsUrl()
+	@JSONSchema({
+		description: 'The URI where the source document is available.',
+		examples: ['https://ironswornrpg.com']
+	})
 	uri!: string
 
 	@IsUrl()
+	@JSONSchema({
+		type: ['string', 'null'],
+		description:
+			'An absolute URI pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
+		examples: [
+			'https://creativecommons.org/licenses/by/4.0',
+			'https://creativecommons.org/licenses/by-nc-sa/4.0'
+		]
+	})
 	license!: string | null
 
 	/**
 	 *
-	 * @param sourceRoot - A complete Source object, usually the one provided by the YAML file's highest-level _source properties.
-	 * @param sources - Additional sources, from . The last source should belong to the current object.
+	 * @param sources - Source objects arranged from least recent to more recent. In other words: the first source should be from the namespace root, while the last source should belong to the current object.
 	 */
-	constructor(sourceRoot: Types.Source, ...sources: Array<Partial<Source>>) {
-		const data: Types.Source = _.merge({}, sourceRoot, ...sources)
+	constructor(...sources: [Types.Source, ...Partial<Types.Source>[]]) {
+		const data: Types.Source = _.merge({}, ...sources)
 		Object.assign(this, data)
 	}
 }
 
-const schemas = validationMetadatasToSchemas()
-console.log(JSON.stringify(schemas, undefined, 2))
+@JSONSchema({
+	description: ''
+})
+export class SuggestionsBase implements Types.SuggestionsBase {
+	@IsOracleTableID({ each: true })
+	@IsOptional()
+	oracles?: string[] | undefined
+
+	@IsAssetID({ each: true })
+	@IsOptional()
+	assets?: string[] | undefined
+
+	@IsMoveID({ each: true })
+	@IsOptional()
+	moves?: string[] | undefined
+
+	constructor(data: Types.SuggestionsBase) {
+		Object.assign(this, data)
+	}
+}

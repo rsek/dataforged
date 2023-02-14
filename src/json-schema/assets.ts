@@ -4,9 +4,10 @@ import {
 	type Localize,
 	type Metadata,
 	type Moves,
-	type Assets as Types
+	type Assets as Types,
+	type Attributes
 } from '@base-types'
-import { DF_KEY, schemaRef } from './common.js'
+import { DF_KEY, schemaRef } from './common'
 
 export const AssetID: Schema<Types.AssetID> = {
 	type: 'string',
@@ -18,33 +19,75 @@ export const Asset: Schema<Types.Asset> = {
 	required: ['_id', 'name', 'source', 'abilities'],
 	additionalProperties: false,
 	properties: {
-		name: schemaRef<Localize.Label>('Label'),
 		_id: schemaRef<Assets.AssetID>('AssetID'),
+		attributes: {
+			type: 'object',
+			required: undefined as any,
+			patternProperties: {
+				[DF_KEY]: schemaRef<Attributes.Attribute>('Attribute')
+			}
+		},
+		name: schemaRef<Localize.Label>('Label'),
 		source: schemaRef<Metadata.Source>('Source'),
-		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any,
+		attachments: schemaRef<Types.AssetAttachment>('AssetAttachment'),
+		requirement: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions'),
 		abilities: {
 			type: 'array',
 			minItems: 3,
 			maxItems: 3,
-			additionalItems: false,
-			items: schemaRef<Assets.AssetAbility>('AssetAbility') as any
+			items: schemaRef<Assets.AssetAbility>('AssetAbility')
 		}
 	}
 }
 
+export const AssetAttachment: Schema<Types.AssetAttachment> = {
+	description:
+		'Describes which assets can be attached to this asset. The "canonical" example for this are Starforged\'s Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.',
+	type: 'object',
+	required: ['patterns', 'max'],
+	properties: {
+		max: {
+			title: 'Maximum attached assets',
+			description:
+				"If there's no upper limit to the number of attached assets, this is `null`.",
+			type: ['integer', 'null'] as any,
+			minimum: 1,
+			default: null
+		},
+		patterns: {
+			title: 'Attached asset ID patterns',
+			description:
+				'Regular expressions matching the IDs of assets that can be attached to this asset.',
+			type: 'array',
+			items: {
+				type: 'string',
+				format: 'regex',
+				examples: [
+					/^[a-z0-9][a-z0-9_]+\/assets\/module\/[a-z][a-z_]*[a-z]$/.source
+				]
+			}
+		}
+	}
+}
+
+export const AssetAbilityID: Schema<Types.AssetAbilityID> = {
+	type: 'string',
+	pattern: /^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}$/.source
+}
+
 export const AssetAbility: Schema<Types.AssetAbility> = {
 	type: 'object',
-	required: ['text'],
+	required: ['_id', 'text'],
 	properties: {
-		name: { nullable: true, ...schemaRef<Localize.Label>('Label') },
-		text: {
-			nullable: false,
-			...schemaRef<Localize.MarkdownParagraph>('MarkdownParagraph')
-		},
+		_id: schemaRef<Types.AssetAbilityID>('AssetAbilityID'),
+		name: schemaRef<Localize.Label>('Label'),
+		text: schemaRef<Localize.MarkdownParagraph>('MarkdownParagraph'),
+		attachments: schemaRef<Types.AssetAttachment>('AssetAttachment'),
 		moves: {
 			type: 'object',
 			additionalProperties: false,
-			required: [],
+			required: undefined as any,
 			nullable: true,
 			patternProperties: {
 				[DF_KEY]: schemaRef<Moves.Move>('Move')

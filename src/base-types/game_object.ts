@@ -1,5 +1,4 @@
-import { type Localize } from '@base-types'
-import { type OracleTableRoll } from '@base-types/oracles'
+import { type Oracles, type Localize } from '@base-types'
 
 export type OracleRowAttribute = 'location' | 'region'
 
@@ -17,7 +16,7 @@ export interface ObjectTemplateAttribute {
 	dependents?: ObjectTemplateAttribute[]
 	// requirement -- by attribute? by regex?
 }
-export interface ObjectTemplateRoll extends OracleTableRoll {
+export interface ObjectTemplateRoll extends Oracles.OracleTableRoll {
 	// way to express "depends on"...
 	// way to make specific results point to? by ID perhaps?
 	// option for regex of an ID?

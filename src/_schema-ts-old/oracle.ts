@@ -1,6 +1,6 @@
 import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
-import { dfRecordSchema } from './utils.js'
+import { dfRecordSchema } from './utils'
 
 const d100Value: JSONSchema7 = {
 	type: 'integer',

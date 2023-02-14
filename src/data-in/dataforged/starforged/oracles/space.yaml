@@ -1,11 +1,11 @@
-_ruleset: starforged
-_source:
-  authors: [Shawn Tomkin]
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-  uri: https://ironswornrpg.com
-  date: 2022-05-06
 starforged:
+  _ruleset: starforged
+  _source:
+    authors: [Shawn Tomkin]
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    url: https://ironswornrpg.com
+    date: 2022-05-06
   oracles:
     space:
       title:
@@ -38,94 +38,109 @@ starforged:
           #   part_of_speech: [fragment]
           summary: |-
             Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
-          usage:
-            allow_duplicates: true
-            requires:
-              attributes:
-                region: null
-            repeatable: true
+          # usage:
+          #   allow_duplicates: true
+          #   requires:
+          #     attributes:
+          #       region: null
+          #   repeatable: true
           contents:
             terminus:
               title:
                 canonical: Terminus
-              # rendering:
-              #   column_of: starforged/oracles/space/sighting
+              rendering:
+                style: embed_as_column
               # usage:
               #   requires:
               #     attributes:
               #       region: [terminus]
-              table: &table:SpaceSighting
+              table:
                 - low: 1
                   high: 15
-                  result: "[⏵Stellar Object](starforged/oracles/space/stellar_object)"
+                  result: &Sighting.0.result "[⏵Stellar Object](starforged/oracles/space/stellar_object)"
                   rolls:
                     - oracle: starforged/oracles/space/stellar_object
                 - low: 16
                   high: 35
-                  result: "[⏵Planet](starforged/oracles/planets)"
+                  result: &Sighting.1.result "[⏵Planet](starforged/collections/oracles/planets)"
                   # game_objects: [*obj:Planet]
                 - low: 36
                   high: 40
-                  result: "[⏵Settlement](starforged/oracles/settlements)"
+                  result: &Sighting.2.result "[⏵Settlement](starforged/collections/oracles/settlements)"
                   # game_objects: [*obj:Settlement]
                 - low: 41
                   high: 47
-                  result: "[⏵Starship](starforged/oracles/starships)"
+                  result: &Sighting.3.result "[⏵Starship](starforged/collections/oracles/starships)"
                   # game_objects: [*obj:Starship]
                 - low: 48
                   high: 51
-                  result: "[⏵Derelict](starforged/oracles/derelicts)"
+                  result: &Sighting.4.result "[⏵Derelict](starforged/collections/oracles/derelicts)"
                   # game_objects: [*obj:Derelict]
                 - low: 52
                   high: 53
-                  result: "[⏵Precursor Vault](starforged/oracles/vaults)"
+                  result: &Sighting.5.result "[⏵Precursor Vault](starforged/collections/oracles/vaults)"
                   # game_objects: [*obj:Vault]
                 - low: 54
                   high: 55
-                  result: "[⏵Creature](starforged/oracles/creatures)"
+                  result: &Sighting.6.result "[⏵Creature](starforged/collections/oracles/creatures)"
                   # game_objects: [*obj:Creature]
                 - low: 56
                   high: 60
-                  result: *result:Descriptor+Focus
+                  result: &Sighting.7.result "[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)"
+                  rolls: &Sighting.7.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                      times: 1
+                      method: no_duplicates
+                    - oracle: starforged/oracles/core/focus
+                      times: 1
+                      method: no_duplicates
                 - low: 61
                   high: 65
-                  result: "Debris field: Mineral asteroids"
+                  result: &Sighting.8.result "Debris field: Mineral asteroids"
                 - low: 66
                   high: 68
-                  result: "Debris field: Frozen asteroids"
+                  result: &Sighting.9.result "Debris field: Frozen asteroids"
                 - low: 69
                   high: 70
-                  result: "Debris field: Crystalline asteroids"
+                  result: &Sighting.10.result "Debris field: Crystalline asteroids"
                 - low: 71
                   high: 72
-                  result: "Debris field: Creature boneyard"
+                  result: &Sighting.11.result "Debris field: Creature boneyard"
                 - low: 73
                   high: 74
-                  result: "Debris field: Metallic wreckage"
+                  result: &Sighting.12.result "Debris field: Metallic wreckage"
                 - low: 75
                   high: 76
-                  result: Large rogue asteroid
+                  result: &Sighting.13.result Large rogue asteroid
                 - low: 77
                   high: 78
-                  result: Comet with a tail of ionized gas
+                  result: &Sighting.14.result Comet with a tail of ionized gas
                 - low: 79
                   high: 81
-                  result: Fiery energy storm
+                  result: &Sighting.15.result Fiery energy storm
                 - low: 82
                   high: 83
-                  result: Chaotic meteoroid storm
+                  result: &Sighting.16.result Chaotic meteoroid storm
                 - low: 84
                   high: 85
-                  result: Turbulent gravitational wave
+                  result: &Sighting.17.result Turbulent gravitational wave
                 - low: 86
                   high: 93
-                  result: Dense nebula cloud
-                - low: 94
+                  result: &Sighting.18.result Dense nebula cloud
+                - &Sighting.19
+                  low: 94
                   high: 98
-                  result: *result:RollTwice.RepeatsOk
-                - low: 99
+                  result: Roll twice
+                  rolls:
+                    - times: 2
+                      method: keep_duplicates
+                - &Sighting.20
+                  low: 99
                   high: 100
-                  result: *result:RollThreeTimes.RepeatsOk
+                  result: Roll three times
+                  rolls:
+                    - times: 3
+                      method: keep_duplicates
             outlands:
               title:
                 canonical: Outlands
@@ -135,63 +150,137 @@ starforged:
               #   requires:
               #     attributes:
               #       region: [outlands]
-              _templateTableRows:
-                content: *table:SpaceSighting
-                rolls:
-                  - [1, 15]
-                  - [16, 35]
-                  - [36, 38]
-                  - [39, 43]
-                  - [44, 46]
-                  - [47, 49]
-                  - [50, 52]
-                  - [53, 58]
-                  - [59, 63]
-                  - [64, 66]
-                  - [67, 68]
-                  - [69, 70]
-                  - [71, 72]
-                  - [73, 74]
-                  - [75, 76]
-                  - [77, 80]
-                  - [81, 82]
-                  - [83, 85]
-                  - [86, 93]
-                  - [94, 98]
-                  - [99, 100]
+              table:
+                - low: 1
+                  high: 15
+                  result: *Sighting.0.result
+                - low: 16
+                  high: 35
+                  result: *Sighting.1.result
+                - low: 36
+                  high: 38
+                  result: *Sighting.2.result
+                - low: 39
+                  high: 43
+                  result: *Sighting.3.result
+                - low: 44
+                  high: 46
+                  result: *Sighting.4.result
+                - low: 47
+                  high: 49
+                  result: *Sighting.5.result
+                - low: 50
+                  high: 52
+                  result: *Sighting.6.result
+                - low: 53
+                  high: 58
+                  result: *Sighting.7.result
+                  rolls: *Sighting.7.rolls
+                - low: 59
+                  high: 63
+                  result: *Sighting.8.result
+                - low: 64
+                  high: 66
+                  result: *Sighting.9.result
+                - low: 67
+                  high: 68
+                  result: *Sighting.10.result
+                - low: 69
+                  high: 70
+                  result: *Sighting.11.result
+                - low: 71
+                  high: 72
+                  result: *Sighting.12.result
+                - low: 73
+                  high: 74
+                  result: *Sighting.13.result
+                - low: 75
+                  high: 76
+                  result: *Sighting.14.result
+                - low: 77
+                  high: 80
+                  result: *Sighting.15.result
+                - low: 81
+                  high: 82
+                  result: *Sighting.16.result
+                - low: 83
+                  high: 85
+                  result: *Sighting.17.result
+                - low: 86
+                  high: 93
+                  result: *Sighting.18.result
+                - *Sighting.19
+                - *Sighting.20
             expanse:
               title:
                 canonical: Expanse
               rendering:
-                column_of: starforged/oracles/space/sighting
-              usage:
-                requires:
-                  attributes:
-                    region: [expanse]
-              _templateTableRows:
-                content: *table:SpaceSighting
-                rolls:
-                  - [1, 15]
-                  - [16, 35]
-                  - [36, 37]
-                  - [38, 39]
-                  - [40, 41]
-                  - [42, 45]
-                  - [46, 49]
-                  - [50, 56]
-                  - [57, 61]
-                  - [62, 64]
-                  - [65, 66]
-                  - [67, 68]
-                  - [69, 70]
-                  - [71, 72]
-                  - [73, 74]
-                  - [75, 79]
-                  - [80, 81]
-                  - [82, 85]
-                  - [86, 93]
-                  - [94, 98]
-                  - [99, 100]
+                style: embed_as_column
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [expanse]
+              table:
+                - low: 1
+                  high: 15
+                  result: *Sighting.0.result
+                - low: 16
+                  high: 35
+                  result: *Sighting.1.result
+                - low: 36
+                  high: 37
+                  result: *Sighting.2.result
+                - low: 38
+                  high: 39
+                  result: *Sighting.3.result
+                - low: 40
+                  high: 41
+                  result: *Sighting.4.result
+                - low: 42
+                  high: 45
+                  result: *Sighting.5.result
+                - low: 46
+                  high: 49
+                  result: *Sighting.6.result
+                - low: 50
+                  high: 56
+                  result: *Sighting.7.result
+                  rolls: *Sighting.7.rolls
+                - low: 57
+                  high: 61
+                  result: *Sighting.8.result
+                - low: 62
+                  high: 64
+                  result: *Sighting.9.result
+                - low: 65
+                  high: 66
+                  result: *Sighting.10.result
+                - low: 67
+                  high: 68
+                  result: *Sighting.11.result
+                - low: 69
+                  high: 70
+                  result: *Sighting.12.result
+                - low: 71
+                  high: 72
+                  result: *Sighting.13.result
+                - low: 73
+                  high: 74
+                  result: *Sighting.14.result
+                - low: 75
+                  high: 79
+                  result: *Sighting.15.result
+                - low: 80
+                  high: 81
+                  result: *Sighting.16.result
+                - low: 82
+                  high: 85
+                  result: *Sighting.17.result
+                - low: 86
+                  high: 93
+                  result: *Sighting.18.result
+                - *Sighting.19
+                - *Sighting.20
         sector_name:
           title:
             canonical: Sector Name
@@ -201,16 +290,15 @@ starforged:
             columns:
               result:
                 content_type: range
-                content: starforged/oracles/space/sector_name/prefix
+                table_key: prefix
+                label: Roll
               prefix:
-                content_type: string
-                key: result
-                content: starforged/oracles/space/sector_name/prefix
+                content_type: result
+                table_key: prefix
                 label: Prefix
               suffix:
-                content_type: string
-                key: result
-                content: starforged/oracles/space/sector_name/suffix
+                content_type: result
+                table_key: suffix
                 label: Suffix
           usage:
             template:
@@ -220,16 +308,16 @@ starforged:
               title:
                 canonical: Prefix
               rendering:
-                column_of: starforged/oracles/space/sector_name
+                style: embed_as_column
               description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-              usage:
-                initial: true
-                suggestions:
-                  oracles:
-                    - starforged/oracles/space/sector_name/suffix
-              content:
-                part_of_speech: [adjective, proper noun fragment]
-                tags: [template fragment]
+              # usage:
+              #   initial: true
+              suggestions:
+                oracles:
+                  - starforged/oracles/space/sector_name/suffix
+              # content:
+              #   part_of_speech: [adjective, proper noun fragment]
+              #   tags: [template fragment]
               table:
                 - low: 1
                   high: 2
@@ -406,16 +494,16 @@ starforged:
               title:
                 canonical: Suffix
               rendering:
-                column_of: starforged/oracles/space/sector_name
+                style: embed_as_column
               description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
-              usage:
-                initial: true
-                suggestions:
-                  oracles:
-                    - starforged/oracles/space/sector_name/prefix
-              content:
-                part_of_speech: [noun, proper noun fragment]
-                tags: [template fragment, place]
+              # usage:
+              #   initial: true
+              suggestions:
+                oracles:
+                  - starforged/oracles/space/sector_name/prefix
+              # content:
+              #   part_of_speech: [noun, proper noun fragment]
+              #   tags: [template fragment, place]
               table:
                 - low: 1
                   high: 2
@@ -573,8 +661,8 @@ starforged:
             canonical: Stellar Object
           _source:
             page: 303
-          content:
-            part_of_speech: [fragment]
+          # content:
+          #   part_of_speech: [fragment]
           description: Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.
           table:
             - low: 1
@@ -622,14 +710,14 @@ starforged:
           title:
             canonical: Spaceborne Peril
             short: Peril
-          usage:
-            repeatable: true
-            requires:
-              attributes:
-                location: [orbital, deep_space]
-          content:
-            tags: [peril, event, present]
-            part_of_speech: [fragment]
+          # usage:
+          #   repeatable: true
+          #   requires:
+          #     attributes:
+          #       location: [orbital, deep_space]
+          # content:
+          #   tags: [peril, event, present]
+          #   part_of_speech: [fragment]
           description: Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.
           table:
             - low: 1
@@ -745,14 +833,14 @@ starforged:
           title:
             canonical: Spaceborne Opportunity
             short: Opportunity
-          usage:
-            repeatable: true
-            requires:
-              attributes:
-                location: [orbital, deep_space]
-          content:
-            part_of_speech: [fragment]
-            tags: [opportunity]
+          # usage:
+          #   repeatable: true
+          #   requires:
+          #     attributes:
+          #       location: [orbital, deep_space]
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [opportunity]
           description: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
           table:
             - low: 1

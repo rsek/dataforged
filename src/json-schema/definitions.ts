@@ -13,11 +13,13 @@ import {
 	Rarities,
 	Regions,
 	Truths,
-	Progress
+	Progress,
+	RulesetClassic,
+	RulesetStarforged,
+	Attributes
 } from '@df-json-schema'
 import { type JSONSchema7 } from 'json-schema'
-import { type Ruleset } from '@base-types/metadata'
-import { RulesetClassic, RulesetStarforged } from '@base-types'
+import type * as Types from '@base-types'
 
 /**
  * Splits a camelcase title to something nicer
@@ -25,7 +27,7 @@ import { RulesetClassic, RulesetStarforged } from '@base-types'
 function niceTitle(
 	def: JSONSchema7,
 	defKey: string,
-	game: Ruleset
+	game: Types.Metadata.Ruleset
 ): JSONSchema7 {
 	let newTitle = _.lowerCase(defKey)
 	newTitle = newTitle.replace(game, `(${_.startCase(game)})`)
@@ -44,14 +46,13 @@ const defs: Record<string, JSONSchema7> = {
 	...Encounters,
 	...Moves,
 	...Collections,
-	...Truths
-	// ...Assets,
+	...Truths,
+	...Attributes
 }
 
 const defsStarforged = _({
 	...defs,
-	...RulesetStarforged,
-	Suggestions: Metadata.SuggestionsStarforged
+	...RulesetStarforged
 })
 	.mapValues((def: JSONSchema7, defKey: string) =>
 		niceTitle(def, defKey, 'starforged')
@@ -65,8 +66,7 @@ const defsClassic = _({
 	...Encounters,
 	...Regions,
 	...Rarities,
-	...DelveSites,
-	Suggestions: Metadata.SuggestionsClassic
+	...DelveSites
 })
 	.mapValues((def: JSONSchema7, defKey: string) =>
 		niceTitle(def, defKey, 'classic')

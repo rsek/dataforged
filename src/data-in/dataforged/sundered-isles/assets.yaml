@@ -5,7 +5,7 @@ sundered_isles:
     authors:
       - Shawn Tomkin
     license: null
-    uri: https://ironswornrpg.com
+    url: https://ironswornrpg.com
     date: 2022-11-06
   assets:
     command_vehicle:
@@ -22,9 +22,55 @@ sundered_isles:
                 When you [Finish an Expedition](starforged/moves/exploration/finish_an_expedition) (dangerous or greater) on a seagoing journey and score a hit, this expedition strengthened your ties to your vessel, crew, and other fellow travelers. You and your allies may mark 1 tick on your bonds legacy track.
             - text: |-
                 You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
+    support_vehicle:
+      _extends: starforged/collections/assets/support_vehicle
+      contents:
+        diving_bell:
+          name: Diving Bell
+          abilities:
+            - text: Your diving bell carries passengers into the depths within an air-filled chamber. It offers a refuge when diving the seabed, or while exploring underwater wrecks, ruins, or caves. When you return to the bell from a perilous undersea foray, take +1 momentum.
+            - text: Your diving bell is fitted with a rigid hull. When you [Face Danger](starforged/moves/adventure/face_danger) to test its strength against the crushing depths, roll +integrity and add +1. When you must [Withstand Damage](starforged/moves/suffer/withstand_damage) against pressure or impact, take +1 momentum or +1 integrity on a strong hit.
+            - text: When you use the diving bell to Explore a Waypoint, add +1.
+          # integrity 3, battered
+          # name
+        flying_machine:
+          name: Flying Machine
+          abilities:
+            - text: Your flying machine can carry you and a passenger on aerial missions. When you make a move to scout or survey from above, add +1 and take +1 momentum on a hit.
+            - text: Your flying machine carries iron grenades. When you [Strike](starforged/moves/combat/strike) by dropping a grenade (+edge), add +1. If you wait until you are in close quarters (+iron), add +1 and reroll any dice; however, on a weak hit you are caught in the blast and must [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
+            - text: When you scout ahead as you [Set a Course](starforged/moves/exploration/set_a_course), add +1. On a strong hit with a match, you spot a remarkable location or opportunity en route. Mark one tick on your discoveries legacy track, envision what you find, and resolve the encounter. Then, continue to your destination.
+          # integrity 3, battered
+          # name
+        longboat:
+          name: Longboat
+          abilities:
+            - text: Your sturdy longboat transports crew, passengers, and cargo to and from your flagship. When you (or a landing party under your command) use the craft to haul provisions as you [Resupply](starforged/moves/recover/resupply) through forage, scavenge, trade, or thievery, take +1 supply on a hit.
+            - text: Able crew and strong sails speed your longboat on its way. When you make a move to outrun a danger, pursue a target, or race against a deadline, add +1 and take +1 momentum on a hit.
+            - text: When you use your longboat to board an enemy vessel or make a landing on hostile shores, you and your allies take +2 momentum as you disembark.
+          # integrity 4, battered
+          # name
     module:
       _extends: starforged/collections/assets/module
       contents:
+        armored_prow:
+          name: Armored Prow
+          abilities:
+            - text: |-
+                When you [Face Danger](starforged/moves/adventure/face_danger) or [React Under Fire](starforged/moves/combat/react_under_fire) by sailing through an obstacle or barrier, add +1. If you [Withstand Damage](starforged/moves/suffer/withstand_damage) as an outcome of this action, also add +1.
+            - text: |-
+                When you [Strike](starforged/moves/combat/strike) by ramming your foe, choose the the force of the hit: 1, 2, or 3. Then, add +that amount. On a strong hit, mark progress. On a weak hit or miss, in addition to any other outcome of the move, [Withstand Damage](starforged/moves/suffer/withstand_damage) and suffer damage equal to the force of the hit.
+            - text: |-
+                When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) or [Gain Ground](starforged/moves/combat/gain_ground) by bringing your ship to ramming speed and sailing headlong toward a threat, roll +integrity or +heart, whichever is higher. On a strong hit, take +1 momentum.
+        figureheard:
+          name: Figureheard
+          abilities:
+            - text: |-
+                A finely-crafted figurehead adorns the prow of your vessel. Choose one of your stats to represent its theme. When you depart a port or anchorage, you may roll +linked stat. You cannot burn momentum on this roll. On a strong hit, the figurehead’s luck offers a boon; you and your allies take +2 momentum and +1 spirit. On a weak hit, you and your allies take +1 momentum. On a miss, the luck is foul; you and your allies [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1), and the figurehead offers no benefits until you next check its luck.
+            - text: |-
+                When you make a move +linked stat while aboard ship, and roll a miss with a match, you may reroll both challenge dice.
+            - text: |-
+                When you must [Withstand Damage](starforged/moves/suffer/withstand_damage), you may (before or after rolling) mark the figurehead as broken, and ignore all damage.
+        harpoon_cannon:
         ironclad:
           name: Ironclad
           _source:
@@ -76,7 +122,6 @@ sundered_isles:
                   * Strike true: Reroll any dice.
                   * Strike hard: Mark progress on a hit.
                 On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).
-
     path:
       _extends: starforged/collections/assets/path
       contents:
@@ -163,6 +208,8 @@ sundered_isles:
                     strong_hit: &Crew_Commander.3
                       text: Take +2 command.
                     weak_hit: *Crew_Commander.3
+        cutthroat:
+        deck_clearer:
         duelist:
           name: Duelist
           _source:
@@ -174,7 +221,9 @@ sundered_isles:
                 Once per fight, when you Gain Ground in the midst of a duel by studying your opponents technique, reroll any dice. On a hit, envision what you learn and take +1 momentum.
             - text: |-
                 When you roll a miss with a match in a situation where your reputation is known, you may suffer the cost by envisioning a notable rival who challenges you to a duel. If you defeat them, mark two ticks on your quests legacy track. If you decline, mark one tick on your bonds legacy track but envision the fallout of this refusal.
-
+        harpooner:
+        musician:
+        musketeer:
         necromancer:
           name: Necromancer
           _source:
@@ -200,8 +249,8 @@ sundered_isles:
                 Your dreaded pirate flag bears a meaningful and distinctive symbol. Envision it. Once per situation, when you hoist the flag to announce your identity or signal your intent, take +1 momentum and add +1 on your next move.
             - text: |-
                 You may spend 1 experience to [Sojourn](starforged/moves/recover/sojourn) in a community—even one allied against you— with an automatic strong hit. If you do, you and your allies take one extra recovery move.
-
-        seaborn:
+        pistoleer:
+        seadog:
           name: Seaborn
           _source:
             date: 2022-11-06
@@ -227,7 +276,7 @@ sundered_isles:
                   * You are upstaged by another’s entrance.
             - text: |-
                 When you Hearten while attending an exclusive social event, reroll any dice. On a strong hit, you and any allies in your company mark one tick on your bonds legacy track.
-
+        sorcerer:
         swashbuckler:
           name: Swashbuckler
           _source:
@@ -239,10 +288,17 @@ sundered_isles:
                 When you Enter the Fray in personal combat, or when an ongoing fight transitions to personal combat, you may envision up to three useful aspects of your surroundings. Take +1 momentum for each. Then, when you make a daring or unexpected move incorporating one of those aspects (once per aspect), add +2.
             - text: |-
                 When you [React Under Fire](starforged/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
+        urchin:
+        windwright:
 
     companion:
       _extends: starforged/collections/assets/companion
       contents:
+        dolphin:
+        dragon:
+        jungle_cat:
+        monkey:
+        parrot:
         the_kraken:
           name: The Kraken
           _source:
@@ -336,6 +392,7 @@ sundered_isles:
                         text: You may reroll one die for each participating specialist.
                     weak_hit: *Cohort.3
                     miss: *Cohort.3
+        damned:
         fleet_commander:
           name: Fleet Commander
           _source:

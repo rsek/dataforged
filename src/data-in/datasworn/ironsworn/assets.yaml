@@ -6,7 +6,7 @@ ironsworn:
     license: https://creativecommons.org/licenses/by/4.0
     title: Ironsworn Rulebook
     date: 2019-06-05
-    uri: https://ironswornrpg.com
+    url: https://ironswornrpg.com
   assets:
     companion:
       title:
@@ -26,7 +26,7 @@ ironsworn:
           name: Cave Lion
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/delapouite/saber-toothed-cat-head.html
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: &InputTextName
               label: Name
@@ -90,7 +90,7 @@ ironsworn:
           name: Giant Spider
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/carl-olsen/spider-alt.html
-          tags: [beast_companion]
+          # tags: [beast_companion]
           attributes:
             name: *InputTextName
             health:
@@ -157,7 +157,7 @@ ironsworn:
           name: Hawk
           # icon not on game-icons
           # sub https://game-icons.net/1x1/lorc/hawk-emblem.html ?
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: *InputTextName
             health:
@@ -220,7 +220,7 @@ ironsworn:
             page: 2
           name: Horse
           # icon not on game-icons
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: *InputTextName
             health:
@@ -286,7 +286,7 @@ ironsworn:
           name: Hound
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/hound.html
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: *InputTextName
             health:
@@ -342,7 +342,7 @@ ironsworn:
             page: 2
           name: Kindred
           # icon not on game-icons
-          tags: [ironlander_companion]
+          # tags: [ironlander_companion]
           attributes:
             name: *InputTextName
             health:
@@ -406,7 +406,7 @@ ironsworn:
           name: Mammoth
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/delapouite/mammoth.html
-          tags: [beast_companion]
+          # tags: [beast_companion]
           attributes:
             name: *InputTextName
             health:
@@ -436,7 +436,7 @@ ironsworn:
           name: Owl
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/caro-asercion/barn-owl.html
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: *InputTextName
             health:
@@ -465,7 +465,7 @@ ironsworn:
           name: Raven
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/raven.html
-          tags: [animal_companion]
+          # tags: [animal_companion]
           attributes:
             name: *InputTextName
             health:
@@ -493,7 +493,7 @@ ironsworn:
           name: Young Wyvern
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/wyvern.html
-          tags: [beast_companion]
+          # tags: [beast_companion]
           attributes:
             name: *InputTextName
             health:
@@ -533,7 +533,7 @@ ironsworn:
         page: 40
         license: https://creativecommons.org/licenses/by/4.0
         date: 2019-06-05
-        uri: https://ironswornrpg.com
+        url: https://ironswornrpg.com
       description: |-
         Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.
       contents:
@@ -554,18 +554,23 @@ ironsworn:
                     text: When you create an elixir...
                     options:
                       - roll_type: action_roll
+                        method: any
                         text: Elixir of deftness (edge)
                         using: [player/stats/wits]
                       - roll_type: action_roll
+                        method: any
                         text: Elixir of audacity (heart)
                         using: [player/stats/wits]
                       - roll_type: action_roll
+                        method: any
                         text: Elixir of vigor (iron)
                         using: [player/stats/wits]
                       - roll_type: action_roll
+                        method: any
                         text: Elixir of slyness (shadow)
                         using: [player/stats/wits]
                       - roll_type: action_roll
+                        method: any
                         text: Elixir of clarity (wits)
                         using: [player/stats/wits]
                   text: *move:Asset.Alchemist
@@ -625,7 +630,7 @@ ironsworn:
             page: 4
           name: Battle-Scarred
           # icon not on game-icons
-          tags: [deed]
+          # tags: [deed]
           requirement: Once you become maimed...
           abilities:
             - text: |-
@@ -741,6 +746,7 @@ ironsworn:
                     text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/edge]
                   text: *move:Asset.Dancer
                   outcomes:
@@ -1035,7 +1041,7 @@ ironsworn:
             page: 8
           name: Oathbreaker
           # https://game-icons.net/1x1/lorc/shattered-sword.html
-          tags: [deed]
+          # tags: [deed]
           requirement: Once you [Forsake Your Vow](ironsworn/moves/quest/forsake_your_vow)...
           abilities:
             - text: |-
@@ -1058,12 +1064,13 @@ ironsworn:
               moves:
                 scrape_by:
                   name: Scrape By
-                  category: ironsworn/collections/moves/assets
-                  asset: ironsworn/assets/path/outcast
+                  # category: ironsworn/collections/moves/assets
+                  # asset: ironsworn/assets/path/outcast
                   trigger:
                     text: When your supply is reduced to 0...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Outcast
                   outcomes:
@@ -1091,12 +1098,13 @@ ironsworn:
               moves:
                 establish_false_identity:
                   name: Establish False Identity
-                  category: ironsworn/collections/moves/assets
-                  asset: ironsworn/assets/path/pretender
+                  # category: ironsworn/collections/moves/assets
+                  # asset: ironsworn/assets/path/pretender
                   trigger:
                     text: When you establish a false identity...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/shadow]
                   text: *move:Asset.Pretender
                   outcomes:
@@ -1125,7 +1133,7 @@ ironsworn:
             page: 8
           name: Revenant
           # https://game-icons.net/1x1/lorc/heartburn.html
-          tags: [deed]
+          # tags: [deed]
           requirement: Once you [Face Death](ironsworn/moves/suffer/face_death) and return to the world of the living...
           abilities:
             - text: |-
@@ -1156,7 +1164,7 @@ ironsworn:
             page: 8
           name: Ritualist
           # https://game-icons.net/1x1/lorc/divided-spiral.html
-          tags: [deed]
+          # tags: [deed]
           requirement: |-
             Once you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) (formidable or greater) in service to an elder
             mystic, and [Forge a Bond](ironsworn/moves/relationship/forge_a_bond) to train with them...
@@ -1174,7 +1182,7 @@ ironsworn:
             page: 8
           name: Shadow-Kin
           # icon not on game-icons
-          tags: [deed]
+          # tags: [deed]
           requirement: Once you become corrupted...
           abilities:
             - text: |-
@@ -1337,7 +1345,7 @@ ironsworn:
             page: 10
           name: Weaponmaster
           # https://game-icons.net/1x1/lorc/all-for-one.html
-          tags: [deed]
+          # tags: [deed]
           requirement: Once you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](ironsworn/moves/relationship/forge_a_bond) to train with them...
           abilities:
             - text: |-
@@ -1399,7 +1407,7 @@ ironsworn:
         page: 40
         license: https://creativecommons.org/licenses/by/4.0
         date: 2019-06-05
-        uri: https://ironswornrpg.com
+        url: https://ironswornrpg.com
       description: |-
         *Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](ironsworn/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.
 
@@ -1521,6 +1529,7 @@ ironsworn:
                     text: When you craft a single arrow designated for a specific foe
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Fletcher
                   outcomes:
@@ -1669,6 +1678,7 @@ ironsworn:
                     text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Sunderer
                   outcomes:
@@ -1721,7 +1731,7 @@ ironsworn:
           - Shawn Tomkin
         license: https://creativecommons.org/licenses/by/4.0
         date: 2019-06-05
-        uri: https://ironswornrpg.com
+        url: https://ironswornrpg.com
         page: 41
       description: |-
         Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.
@@ -1746,6 +1756,7 @@ ironsworn:
                     text: When you summon a flock of crows and ask a single question...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Augur
                   outcomes:
@@ -1776,6 +1787,7 @@ ironsworn:
                     text: When you create a simulacrum...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Awakening
                   outcomes:
@@ -1821,6 +1833,7 @@ ironsworn:
                     text: When you wear an animal pelt and dance in moonlight...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Bind
                   outcomes:
@@ -1853,6 +1866,7 @@ ironsworn:
                     text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Communion
                   outcomes:
@@ -1885,6 +1899,7 @@ ironsworn:
                     text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Divination
                   outcomes:
@@ -1921,6 +1936,7 @@ ironsworn:
                     text: When you consume the mystical essence of your surroundings...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Invoke
                   outcomes:
@@ -1964,6 +1980,7 @@ ironsworn:
                     text: When you hold a weapon and sing a keen for those it has killed...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Keen
                   outcomes:
@@ -1996,6 +2013,7 @@ ironsworn:
                     text: When you mark your hands or weapon with an intricate blood rune...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - player/stats/iron
                   text: *move:Asset.Leech
@@ -2039,6 +2057,7 @@ ironsworn:
                     text: When you focus on a source of light and capture its essence...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Lightbearer
                   outcomes:
@@ -2077,6 +2096,7 @@ ironsworn:
                     text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/shadow]
                   text: *move:Asset.Scry
                   outcomes:
@@ -2113,6 +2133,7 @@ ironsworn:
                     text: When you cloak yourself with the gossamer veil of the shadow realms...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/shadow]
                   text: *move:Asset.Shadow-Walk
                   outcomes:
@@ -2145,6 +2166,7 @@ ironsworn:
                     text: When you speak a person’s name three times to the wind...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Sway
                   outcomes:
@@ -2177,6 +2199,7 @@ ironsworn:
                     text: When you fashion a charm that protects against a specific person or creature...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Talisman
                   outcomes:
@@ -2207,6 +2230,7 @@ ironsworn:
                     text: When you commune with the spirits of a place
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Tether
                   outcomes:
@@ -2239,6 +2263,7 @@ ironsworn:
                     text: When you hold a totem of your animal or beast companion and focus on it...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   text: *move:Asset.Totem
                   outcomes:
@@ -2272,6 +2297,7 @@ ironsworn:
                     text: When you paint yourself in blood and ash...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Visage
                   outcomes:
@@ -2308,6 +2334,7 @@ ironsworn:
                     text: When you walk a wide circle, sprinkling the ground with salt...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Ward
                   outcomes:

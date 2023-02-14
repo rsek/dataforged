@@ -1,0 +1,380 @@
+{
+	"$defs": {
+		"Title": {
+			"properties": {
+				"standard": {
+					"type": "string",
+					"description": "A localized plain text name or label."
+				},
+				"short": {
+					"type": "string",
+					"description": "A localized plain text name or label."
+				}
+			},
+			"type": "object",
+			"description": "Provides short and long labels for this element."
+		},
+		"Source": {
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					]
+				},
+				"page": {
+					"minimum": 1,
+					"type": "integer",
+					"description": "The page number on which this item appears most prominently, if applicable."
+				},
+				"authors": {
+					"minLength": 1,
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"examples": [["Shawn Tomkin"]]
+				},
+				"date": {
+					"type": "string",
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
+				},
+				"url": {
+					"format": "url",
+					"type": "string",
+					"description": "The URI where the source document is available.",
+					"examples": ["https://ironswornrpg.com"]
+				},
+				"license": {
+					"format": "url",
+					"type": ["string", "null"],
+					"description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					]
+				}
+			},
+			"type": "object",
+			"required": ["title", "authors", "date", "url", "license"],
+			"description": "Metadata describing the source of this item's text content."
+		},
+		"SuggestionsBase": {
+			"properties": {
+				"oracles": {
+					"items": {
+						"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"assets": {
+					"items": {
+						"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"moves": {
+					"items": {
+						"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"type": "object",
+			"description": ""
+		},
+		"Node": {
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				}
+			},
+			"type": "object",
+			"required": ["source"]
+		},
+		"Collection": {
+			"properties": {
+				"title": {
+					"$ref": "#/$defs/Title"
+				},
+				"summary": {
+					"type": "string",
+					"description": "Localized markdown text, usually a few sentences at most."
+				},
+				"description": {
+					"type": "string",
+					"description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				}
+			},
+			"type": "object",
+			"required": ["title", "source"]
+		},
+		"Move": {
+			"properties": {
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$",
+					"type": "string"
+				},
+				"progress_move": {
+					"type": "boolean"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				}
+			},
+			"type": "object",
+			"required": ["_id", "progress_move", "source"]
+		},
+		"Trigger": {
+			"properties": {
+				"options": {}
+			},
+			"type": "object"
+		},
+		"TriggerOption": {
+			"properties": {
+				"text": {
+					"type": "string",
+					"description": "Localized markdown text, usually a phrase or single sentence."
+				}
+			},
+			"type": "object"
+		},
+		"AssetAbility": {
+			"properties": {
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]$",
+					"type": "string"
+				},
+				"name": {
+					"type": "string",
+					"description": "A localized plain text name or label."
+				}
+			},
+			"type": "object",
+			"required": ["_id"]
+		},
+		"Asset": {
+			"properties": {
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$",
+					"type": "string"
+				},
+				"abilities": {
+					"items": {
+						"$ref": "#/$defs/Array"
+					},
+					"type": "string",
+					"maxLength": 3,
+					"minLength": 3
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				}
+			},
+			"type": "object",
+			"required": ["_id", "abilities", "source"]
+		},
+		"Range": {
+			"properties": {
+				"low": {
+					"maximum": 100,
+					"type": "integer",
+					"minimum": 1
+				},
+				"high": {
+					"maximum": 100,
+					"type": "integer",
+					"minimum": 1
+				}
+			},
+			"type": "object",
+			"required": ["low", "high"]
+		},
+		"OracleTableRoll": {
+			"properties": {
+				"oracle": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
+					"type": "string"
+				},
+				"times": {
+					"type": "integer"
+				},
+				"method": {
+					"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"],
+					"type": "string"
+				}
+			},
+			"type": "object",
+			"required": ["oracle"]
+		},
+		"OracleTableRow": {
+			"properties": {
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
+					"type": "string"
+				},
+				"summary": {
+					"type": "string",
+					"description": "Localized markdown text, usually a few sentences at most."
+				},
+				"rolls": {
+					"items": {
+						"$ref": "#/$defs/Array"
+					},
+					"type": "array"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				},
+				"embed_table": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+					"type": "string"
+				},
+				"low": {
+					"maximum": 100,
+					"type": "integer",
+					"minimum": 1
+				},
+				"high": {
+					"maximum": 100,
+					"type": "integer",
+					"minimum": 1
+				}
+			},
+			"type": "object",
+			"required": ["_id", "low", "high"]
+		},
+		"OracleTable": {
+			"properties": {
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+					"type": "string"
+				},
+				"title": {
+					"$ref": "#/$defs/Title"
+				},
+				"summary": {
+					"type": "string",
+					"description": "Localized markdown text, usually a few sentences at most."
+				},
+				"description": {
+					"type": "string",
+					"description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
+				},
+				"match": {},
+				"table": {
+					"items": {
+						"$ref": "#/$defs/Array"
+					},
+					"type": "array"
+				},
+				"rendering": {},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
+				}
+			},
+			"type": "object",
+			"required": ["_id", "title", "table", "source"]
+		},
+		"OracleTableRendering": {
+			"properties": {
+				"icon": {
+					"format": "url",
+					"type": "string"
+				},
+				"style": {
+					"enum": ["table", "embed_as_column", "embed_in_row"],
+					"type": "string",
+					"description": "The style used to render this table in the source material.\n\n      * embed_as_column: This table appears as a column of a table handled by its OracleCollection parent.\n      * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.\n      * table: A standard table, typically with a roll column and a result column."
+				},
+				"color": {
+					"pattern": "^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"OracleTableColumn": {
+			"properties": {
+				"label": {
+					"type": "string",
+					"description": "A localized plain text name or label."
+				},
+				"content_type": {
+					"enum": ["range", "result", "summary", "description"],
+					"type": "string"
+				}
+			},
+			"type": "object",
+			"required": ["content_type"]
+		},
+		"OracleCollectionRendering": {
+			"properties": {
+				"style": {},
+				"color": {
+					"pattern": "^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"OracleCollection": {
+			"properties": {
+				"rendering": {},
+				"collections": {},
+				"_id": {
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/oracles(\\/[a-z][a-z_]*[a-z]){1,3}$",
+					"type": "string"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Object"
+				},
+				"title": {
+					"$ref": "#/$defs/Title"
+				},
+				"summary": {
+					"type": "string",
+					"description": "Localized markdown text, usually a few sentences at most."
+				},
+				"description": {
+					"type": "string",
+					"description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
+				}
+			},
+			"type": "object",
+			"required": ["_id", "source", "title"]
+		}
+	}
+}

@@ -3,7 +3,7 @@ starforged:
   _source:
     title: 'Ironsworn: Starforged Rulebook'
     license: https://creativecommons.org/licenses/by/4.0
-    uri: https://ironswornrpg.com
+    url: https://ironswornrpg.com
     date: 2022-05-06
     authors:
       - Shawn Tomkin
@@ -28,7 +28,8 @@ starforged:
           _source:
             title: 'Ironsworn: Starforged Assets'
           attachments:
-            asset_types: [starforged/assets/module]
+            patterns:
+              - ^[a-z0-9][a-z0-9_]+\/assets\/module\/[a-z][a-z_]*[a-z]$
             max: null
           attributes:
             name: &InputTextName
@@ -1229,7 +1230,8 @@ starforged:
             - text: |-
                 You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](starforged/moves/suffer/withstand_damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.
               attachments:
-                asset_types: [starforged/assets/module]
+                patterns:
+                  - ^[a-z0-9][a-z0-9_]+\/assets\/module\/[a-z][a-z_]*[a-z]$
                 max: 1
             - text: |-
                 When you [Face Danger](starforged/moves/adventure/face_danger) or [React Under Fire](starforged/moves/combat/react_under_fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
@@ -4116,7 +4118,7 @@ starforged:
           name: Banshee
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4184,7 +4186,7 @@ starforged:
           name: Combat Bot
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [mechanical_companion]
+          # tags: [mechanical_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4256,7 +4258,7 @@ starforged:
           name: Glowcat
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4318,7 +4320,7 @@ starforged:
           name: Protocol Bot
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [mechanical_companion]
+          # tags: [mechanical_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4370,7 +4372,7 @@ starforged:
           name: Rockhorn
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4432,7 +4434,7 @@ starforged:
           name: Sidekick
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             expertise:
@@ -4504,7 +4506,7 @@ starforged:
           name: Sprite
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4548,7 +4550,7 @@ starforged:
           name: Survey Bot
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [mechanical_companion]
+          # tags: [mechanical_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4620,7 +4622,7 @@ starforged:
           name: Symbiote
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -4667,7 +4669,7 @@ starforged:
           name: Utility Bot
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [mechanical_companion]
+          # tags: [mechanical_companion]
 
           attributes:
             name: *InputTextName
@@ -4732,7 +4734,7 @@ starforged:
           name: Voidglider
           _source:
             title: 'Ironsworn: Starforged Assets'
-          tags: [biological_companion]
+          # tags: [biological_companion]
           attributes:
             name: *InputTextName
             health:
@@ -5158,6 +5160,7 @@ starforged:
                     text: When you seek a safe location in a remote environment...
                     options:
                       - roll_type: progress_roll
+                        method: any
                         using: [discoveries_legacy]
                   progress_move: true
                   text: *move:Asset.Vanguard

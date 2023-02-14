@@ -1,9 +1,9 @@
 import { writeFileSync } from 'fs'
 import { compileFromFile } from 'json-schema-to-typescript'
 import { type Options } from 'prettier'
-import logger from '../scripts/logger.js'
+import logger from '../scripts/logger'
 // @ts-expect-error idk, it shows an error (probably due to it being commonJS) but works fine
-import prettierConfig from '../../.prettierrc.cjs'
+import prettierConfig from '../../.prettierrc'
 
 compileFromFile('./src/data-in/dataforged/schema-dataforged-input.json', {
 	strictIndexSignatures: true,

@@ -1,17 +1,22 @@
-import { type Collectible } from '@base-types/abstract'
-import type * as Localized from '@base-types/localize'
-import type * as Player from '@base-types/players'
-import type * as Starforged from '@base-types/ruleset-starforged'
-import type * as Classic from '@base-types/ruleset-classic'
+import {
+	type RulesetClassic,
+	type RulesetStarforged,
+	type Abstract,
+	type Localize,
+	type Players,
+	type Attributes
+} from '@base-types'
 
 export type MoveID = string
 
 export type RollType = 'action_roll' | 'progress_roll'
 
 export interface Move<T extends RollType = RollType>
-	extends Collectible<MoveID> {
+	extends Abstract.Node<MoveID> {
+	name: Localize.Label
 	progress_move?: T extends 'progress_roll' ? true : false
-	text: Localized.MarkdownParagraphs
+	attributes?: Record<string, Attributes.Attribute>
+	text: Localize.MarkdownParagraphs
 	outcomes: MoveOutcomes
 	trigger: Trigger<T>
 }
@@ -19,7 +24,7 @@ export interface Move<T extends RollType = RollType>
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
 export interface MoveOutcome {
-	text: Localized.MarkdownParagraph
+	text: Localize.MarkdownParagraph
 }
 
 // TODO: would match outcomes make sense as ExtendOne?
@@ -33,25 +38,21 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 }
 
 export interface Trigger<T extends RollType = RollType> {
-	text: Localized.MarkdownPhrase
+	text: Localize.MarkdownPhrase
 	options?: Array<TriggerOption<T>>
 }
 
-export type RollMethod =
-	| 'any'
-	| 'all'
-	| 'highest'
-	| 'lowest'
-	| 'inherit'
-	| MoveOutcomeType
+export type RollMethod = 'any' | 'all' | 'highest' | 'lowest' | 'inherit'
 
-export type ProgressType = Starforged.ProgressType | Classic.ProgressType
+export type ProgressType =
+	| RulesetStarforged.ProgressType
+	| RulesetClassic.ProgressType
 
 export type RollableStatID =
-	| Player.StatID
-	| Player.ConditionMeterID
-	| Starforged.ConditionMeterAlias
-	| Classic.ConditionMeterAlias
+	| Players.StatID
+	| Players.ConditionMeterID
+	| RulesetStarforged.ConditionMeterAlias
+	| RulesetClassic.ConditionMeterAlias
 
 export type Rollable<T extends RollType = RollType> = T extends 'progress_roll'
 	? T extends 'action_roll'
@@ -62,8 +63,8 @@ export type Rollable<T extends RollType = RollType> = T extends 'progress_roll'
 	: RollableStatID
 
 export interface TriggerOption<T extends RollType = RollType> {
-	text?: Localized.MarkdownPhrase
-	method: RollMethod
+	text?: Localize.MarkdownPhrase
+	method: RollMethod | MoveOutcomeType
 	roll_type: T
 	using: Array<Rollable<T>>
 }

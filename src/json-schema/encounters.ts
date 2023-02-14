@@ -1,7 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata, type Encounters as Types } from '@base-types'
 import _ from 'lodash'
-import { DF_KEY, schemaRef } from './common.js'
+import { DF_KEY, schemaRef } from './common'
 
 export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
 	{
@@ -68,7 +68,7 @@ export const EncounterClassic: Schema<Types.EncounterClassic> = {
 		your_truths: { $ref: '#/$defs/MarkdownSentences' },
 		source: { $ref: '#/$defs/Source' },
 		_id: { $ref: '#/$defs/EncounterClassicID' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
+		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
 	}
 }
 
@@ -109,7 +109,7 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
 		quest_starter: EncounterClassic.properties?.quest_starter,
 		source: EncounterClassic.properties?.source,
 		_id: { $ref: '#/$defs/EncounterStarforgedID' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
+		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
 	} as any
 }
 

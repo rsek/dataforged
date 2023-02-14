@@ -1,9 +1,9 @@
-import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
-import { defsStarforged, defsClassic } from './definitions.js'
+import { defsStarforged, defsClassic } from './definitions'
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata } from '@base-types'
-import { Source } from './metadata.js'
+import { Source } from './metadata'
+import { type JSONSchema7 } from 'json-schema'
 import { Namespaces } from '@df-json-schema'
 
 export const DATASWORN_VERSION = '2.0.0'
@@ -31,7 +31,7 @@ function toInputDefinitions(
 	const toMakeOptional = ['_id', 'source']
 	_.forEach(newDefs, (def) => {
 		if (def.required != null) {
-			if (def.required.includes('source')) {
+			if (def.required.includes('source') === true) {
 				if (def.properties == null) throw Error('No properties key found')
 				def.properties[SOURCE_PARTIAL_KEY] = { $ref: '#/$defs/SourcePartial' }
 			}

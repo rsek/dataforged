@@ -1,6 +1,4 @@
-import { type Localize, type Progress } from '@base-types'
-import { type Cyclopedia } from '@base-types/abstract'
-import { type MarkdownSentences } from '@base-types/localize'
+import { type Abstract, type Localize, type Progress } from '@base-types'
 
 // TODO
 export type EncounterClassicID = string
@@ -15,7 +13,7 @@ interface EncounterLike {
 	nature: string
 	description: Localize.MarkdownParagraph
 }
-interface Encounter extends EncounterLike, Cyclopedia<string> {
+interface Encounter extends EncounterLike, Abstract.Cyclopedia<string> {
 	drives: Localize.MarkdownPhrase[]
 	tactics: Localize.MarkdownPhrase[]
 	quest_starter: Localize.MarkdownParagraph
@@ -28,11 +26,11 @@ export interface EncounterVariantStarforged extends EncounterLike {
 
 export interface EncounterClassic extends Omit<Encounter, 'summary'> {
 	nature: EncounterNatureClassic
-	your_truths?: MarkdownSentences
+	your_truths?: Localize.MarkdownSentences
 }
 
 export interface EncounterStarforged extends Encounter {
-	summary: MarkdownSentences
+	summary: Localize.MarkdownSentences
 	nature: EncounterNatureStarforged
 	variants?: Record<string, EncounterVariantStarforged>
 }

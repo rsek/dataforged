@@ -1,12 +1,12 @@
-_ruleset: starforged
-_source:
-  title: 'Ironsworn: Starforged Rulebook'
-  uri: https://ironswornrpg.com
-  authors:
-    - Shawn Tomkin
-  date: 2022-05-06
-  license: https://creativecommons.org/licenses/by/4.0
 starforged:
+  _ruleset: starforged
+  _source:
+    title: 'Ironsworn: Starforged Rulebook'
+    url: https://ironswornrpg.com
+    authors:
+      - Shawn Tomkin
+    date: 2022-05-06
+    license: https://creativecommons.org/licenses/by/4.0
   oracles:
     core:
       title:
@@ -20,12 +20,11 @@ starforged:
             canonical: Action
           _source:
             page: 296
-          usage:
-            suggestions:
-              oracles:
-                - starforged/oracles/core/theme
-          content:
-            part_of_speech: [verb]
+          suggestions:
+            oracles:
+              - starforged/oracles/core/theme
+          # content:
+          #   part_of_speech: [verb]
           description: &action_theme_desc |-
             When you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) about a goal, situation, or event, roll for an [Action](starforged/oracles/core/action) and [Theme](starforged/oracles/core/theme). Together, these provide an interpretative verb/noun prompt.
           table:
@@ -334,13 +333,12 @@ starforged:
             canonical: Theme
           _source:
             page: 297
-          usage:
-            suggestions:
-              oracles:
-                - starforged/oracles/core/action
-          content:
-            part_of_speech: [noun, common noun]
-            tags: [abstract noun]
+          suggestions:
+            oracles:
+              - starforged/oracles/core/action
+          # content:
+          #   part_of_speech: [noun, common noun]
+          #   tags: [abstract noun]
           description: *action_theme_desc
           table:
             - low: 1
@@ -648,12 +646,11 @@ starforged:
             canonical: Descriptor
           _source:
             page: 298
-          usage:
-            suggestions:
-              oracles:
-                - starforged/oracles/core/focus
-          content:
-            part_of_speech: [adjective]
+          suggestions:
+            oracles:
+              - starforged/oracles/core/focus
+          # content:
+          #   part_of_speech: [adjective]
           description: &descriptor_focus_desc |-
             When you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to help define the nature of a location, discovery, or encounter, roll for a [Descriptor](starforged/oracles/core/descriptor) and a [Focus](starforged/oracles/core/focus) for an adjective/noun prompt.
           table:
@@ -962,13 +959,12 @@ starforged:
             canonical: Focus
           _source:
             page: 299
-          usage:
-            suggestions:
-              oracles:
-                - starforged/oracles/core/descriptor
-          content:
-            part_of_speech: [noun, common noun]
-            tags: [concrete noun]
+          suggestions:
+            oracles:
+              - starforged/oracles/core/descriptor
+          # content:
+          #   part_of_speech: [noun, common noun]
+          #   tags: [concrete noun]
           description: *descriptor_focus_desc
           table:
             - low: 1

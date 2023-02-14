@@ -2,8 +2,7 @@
  * Abstract interfaces and utility types that are only used internally.
  */
 
-import type * as Localized from '@base-types/localize'
-import type * as Metadata from '@base-types/metadata'
+import { type Metadata, type Localize } from '@base-types'
 
 /**
  * A number range, for things shaped like rollable table rows. Type parameters are for for row-like objects that have a static range, such as delve features/dangers.
@@ -27,25 +26,26 @@ export interface Node<IDType = Metadata.ID> {
 	suggestions?: Metadata.SuggestionsBase
 }
 
-export interface Collectible<IDType = Metadata.ID> extends Node<IDType> {
-	name: Localized.Label
-	// collection?: string
+// export interface Collectible<IDType = Metadata.ID> extends Node<IDType> {
+// 	name: Localize.Label
+// 	// collection?: string
+// }
+
+export interface Cyclopedia<IDType> extends Node<IDType> {
+	name: Localize.Label
+	features: Localize.MarkdownPhrase[]
+	summary: Localize.MarkdownSentences
+	description: Localize.MarkdownParagraphs
+	quest_starter?: Localize.MarkdownParagraph
 }
 
-export interface Cyclopedia<IDType> extends Collectible<IDType> {
-	features: Localized.MarkdownPhrase[]
-	summary: Localized.MarkdownSentences
-	description: Localized.MarkdownParagraphs
-	quest_starter?: Localized.MarkdownParagraph
-}
-
-type LocalizedKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
+type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
 type MetaKeys = '_id' | 'source' | 'title' | 'rendering'
 
 /**
  * Omits common metadata and localization keys.
  */
-export type OmitMetaAndLocale<T> = Omit<T, LocalizedKeys | MetaKeys>
+export type OmitMetaAndLocale<T> = Omit<T, LocalizeKeys | MetaKeys>
 
 /**
  * Extends a single rules element
@@ -59,6 +59,6 @@ export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
 /**
  * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
  */
-export type ExtendMany<T extends Collectible = Collectible> = Partial<
+export type ExtendMany<T extends Node = Node> = Partial<
 	OmitMetaAndLocale<T>
 > & { _extends: Array<T['_id']> | null; _id?: Metadata.ID }

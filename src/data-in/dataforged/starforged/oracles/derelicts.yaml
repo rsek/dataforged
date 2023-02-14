@@ -1,11 +1,11 @@
-_ruleset: starforged
-_source:
-  authors: [Shawn Tomkin]
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-  date: 2022-05-06
-  uri: https://ironswornrpg.com
 starforged:
+  _ruleset: starforged
+  _source:
+    authors: [Shawn Tomkin]
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
   oracles:
     derelicts:
       title:
@@ -28,25 +28,25 @@ starforged:
             columns:
               planetside:
                 content_type: range
-                content: starforged/oracles/derelicts/type/planetside
+                table_key: planetside
                 label: Planetside
               orbital:
                 content_type: range
-                content: starforged/oracles/derelicts/type/orbital
+                table_key: orbital
                 label: Orbital
               deep_space:
                 content_type: range
-                content: starforged/oracles/derelicts/type/deep_space
+                table_key: deep_space
                 label: Deep Space
               result:
-                content_type: string
-                content: starforged/oracles/derelicts/type/planetside
+                content_type: result
+                table_key: planetside
           contents:
             planetside:
               title:
                 canonical: Planetside
               rendering: &derelictTypeDisplay
-                column_of: starforged/oracles/derelicts/type
+                style: embed_as_column
               usage:
                 requires: *attr:Location.Planetside
               table: &derelictTypeTable

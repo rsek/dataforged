@@ -1,12 +1,17 @@
-_ruleset: starforged
 starforged:
+  _ruleset: starforged
+  _source:
+    date: 2022-05-06
+    authors:
+      - Shawn Tomkin
+    title: "Ironsworn: Starforged Rulebook"
+    url: https://ironswornrpg.com
+    license: https://creativecommons.org/licenses/by/4.0
   oracles:
     planets:
       title:
         canonical: Planets
         short: Planet
-      _source:
-        date: 2022-05-06
       contents:
         class:
           title:
@@ -14,13 +19,13 @@ starforged:
             short: Class
           _source:
             page: 306
-          usage:
-            initial: true
-            suggestions:
-              oracles:
-                - starforged/oracles/core/descriptor
-          content:
-            part_of_speech: [noun]
+          # usage:
+          #   initial: true
+          suggestions:
+            oracles:
+              - starforged/oracles/core/descriptor
+          # content:
+          #   part_of_speech: [noun]
           description: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
           table:
             - low: 1
@@ -90,14 +95,14 @@ starforged:
               lifebearing:
                 label: Lifebearing
                 content_type: range
-                content: starforged/oracles/planets/peril/lifebearing
+                table_key: lifebearing
               lifeless:
                 label: Lifeless
                 content_type: range
-                content: starforged/oracles/planets/peril/lifeless
+                table_key: lifeless
               result:
-                content_type: string
-                content: starforged/oracles/planets/peril/lifebearing
+                content_type: result
+                table_key: lifebearing
           usage:
             repeatable: true
             requires:

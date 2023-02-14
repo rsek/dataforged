@@ -1,17 +1,20 @@
-import { type Encounters, type Metadata } from '@base-types'
-import { type ProgressTypeCommon } from '@base-types/progress'
-import { type ConditionMeterAliasCommon } from '@base-types/ruleset-classic'
+import {
+	type Encounters,
+	type Metadata,
+	type Progress,
+	type RulesetClassic
+} from '@base-types'
 
 type LegacyType = 'quests' | 'bonds' | 'discoveries'
 
 export type ProgressType =
-	| ProgressTypeCommon
+	| Progress.ProgressTypeCommon
 	| 'expedition_progress'
 	| 'connection_progress'
 	| `${LegacyType}_legacy`
 
 export type ConditionMeterAlias =
-	| ConditionMeterAliasCommon
+	| RulesetClassic.ConditionMeterAliasCommon
 	| 'vehicle_integrity'
 	| 'command_vehicle_integrity'
 	| 'support_vehicle_integrity'

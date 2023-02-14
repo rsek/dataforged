@@ -1,7 +1,9 @@
 // import { type JSONSchema7 } from 'json-schema'
-import { DF_KEY } from './common.js'
+import type * as Types from '@base-types'
+import { type JSONSchemaType as Schema } from 'ajv'
+import { DF_KEY, schemaRef } from './common'
 
-export const CustomStat = {
+export const CustomStat: Schema<Types.Attributes.CustomStat> = {
 	type: 'object',
 	required: ['label', 'options'],
 	properties: {
@@ -11,29 +13,32 @@ export const CustomStat = {
 		options: {
 			title: 'Custom stat options',
 			type: 'object',
+			required: [],
 			patternProperties: {
-				[DF_KEY]: {
-					title: 'Custom stat option',
-					type: 'object',
-					required: ['label', 'value'],
-					properties: {
-						label: {
-							$ref: '#/$defs/Label'
-						},
-						value: {
-							description:
-								'The numeric value to be used as +stat when making an Action Roll.',
-							type: 'integer',
-							minimum: 0
-						}
-					},
-					additionalProperties: false
-				}
+				[DF_KEY]:
+					schemaRef<Types.Attributes.CustomStatOption>('CustomStatOption')
 			}
 		}
 	},
 	additionalProperties: false
 }
+
+export const CustomStatOption: Schema<Types.Attributes.CustomStatOption> = {
+	title: 'Custom stat option',
+	type: 'object',
+	required: ['label', 'value'],
+	properties: {
+		label: schemaRef<Types.Localize.Label>('Label'),
+		value: {
+			description:
+				'The numeric value to be used as +stat when making an Action Roll.',
+			type: 'integer',
+			minimum: 0
+		}
+	},
+	additionalProperties: false
+}
+
 export const InputPosition = {
 	title: 'Input position',
 	enum: [
@@ -52,157 +57,36 @@ export const InputPosition = {
 export const Attribute = {
 	oneOf: [
 		{
-			$ref: '#/$defs/AttributePlayerStat'
-		},
-		{
-			$ref: '#/$defs/AttributePlayerConditionMeter'
-		},
-		{
 			$ref: '#/$defs/AttributeText'
 		},
-		{
-			$ref: '#/$defs/AttributeImpact'
-		},
-		{
-			$ref: '#/$defs/AttributeConditionMeter'
-		}
+		{ $ref: '#/$defs/AttributeNumeric' }
 	]
 }
-export const AttributeClock = {
-	type: 'object',
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeNumericBase'
-		},
-		{
-			required: ['attribute_type', 'min', 'value', 'max'],
-			properties: {
-				attribute_type: {
-					const: 'clock'
-				},
-				min: {
-					const: 0
-				},
-				value: {
-					title: 'Filled clock segments',
-					default: 0
-				},
-				max: {
-					title: 'Clock segments (total)',
-					type: 'integer',
-					multipleOf: 2,
-					minimum: 4,
-					maximum: 10
-				}
-			}
-		}
-	]
-}
-export const AttributeConditionMeter = {
-	type: 'object',
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeNumericBase'
-		},
-		{
-			required: ['label', 'position', 'attribute_type', 'min', 'value', 'max'],
-			properties: {
-				label: {
-					$ref: '#/$defs/Label'
-				},
-				position: {
-					const: 'card-bottom'
-				},
-				attribute_type: {
-					const: 'condition_meter'
-				},
-				value: {
-					type: 'integer'
-				},
-				max: {
-					type: 'integer'
-				},
-				min: {
-					const: 0
-				}
-			}
-		}
-	]
-}
-export const AttributePlayerConditionMeter = {
-	type: 'object',
-	description:
-		'A select element with predefined options to pick a standard player character condition meter.',
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeBase'
-		},
-		{
-			required: ['attribute_type', 'value', 'options', 'position'],
-			properties: {
-				attribute_type: {
-					const: 'player_condition_meter'
-				},
-				position: {
-					default: 'card-top'
-				},
-				value: {
-					description:
-						"The current value of this attribute. In Dataforged/Datasworn's data, this will almost always be `null`, but other values are provided to ensure that types generated from the schema can be used at run-time or for static typing.",
-					oneOf: [
-						{
-							type: 'null'
-						},
-						{
-							$ref: '#/$defs/PlayerConditionMeterID'
-						}
-					],
-					default: null
-				},
-				options: {
-					type: 'object',
-					patternProperties: {
-						[DF_KEY]: {
-							type: 'object',
-							properties: {
-								label: {
-									$ref: '#/$defs/Label'
-								},
-								value: {
-									$ref: '#/$defs/PlayerConditionMeterID'
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	]
-}
-export const AttributeText = {
+
+export const AttributeText: Schema<Types.Attributes.AttributeText> = {
 	type: 'object',
 	description:
 		"A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeBase'
+	required: [
+		'attribute_type',
+		'label',
+		'value'
+		// 'position',
+	],
+	properties: {
+		label: schemaRef<Types.Localize.Label>('Label'),
+		attribute_type: {
+			type: 'string',
+			const: 'text'
 		},
-		{
-			required: ['attribute_type', 'position', 'value'],
-			properties: {
-				attribute_type: {
-					const: 'text'
-				},
-				position: {
-					default: 'card-top'
-				},
-				value: {
-					type: ['null', 'string'],
-					default: null
-				}
-			}
+		// position: {
+		// 	default: 'card-top'
+		// },
+		value: {
+			type: ['null', 'string'] as any,
+			default: null
 		}
-	]
+	}
 }
 export const AttributePlayerStat = {
 	description:
@@ -261,65 +145,68 @@ export const AttributeSetter = {
 		}
 	}
 }
-export const AttributeNumericType = {
-	type: 'string',
-	enum: ['condition_meter', 'clock', 'counter']
+
+export const ClockSegments: Schema<Types.Attributes.ClockSegments> = {
+	type: 'integer',
+	enum: [4, 6, 8, 10]
 }
-export const AttributeCounter = {
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeNumericBase'
-		},
-		{
-			properties: {
-				attribute_type: {
-					const: 'counter'
-				},
-				min: {
-					type: 'integer',
-					default: 0
-				},
-				max: {
-					type: ['null', 'integer'],
-					default: null
-				},
-				value: {
-					type: 'integer',
-					default: 0
-				}
-			}
-		}
-	]
-}
-export const AttributeNumericBase = {
-	description:
-		"Schema from which other numeric attributes are derived. Shouldn't be used directly.",
+
+export const AttributeNumeric: Schema<Types.Attributes.AttributeNumeric> = {
 	type: 'object',
-	allOf: [
+	required: ['attribute_type', 'label', 'min', 'value', 'max'],
+	additionalProperties: false,
+	properties: {
+		attribute_type: schemaRef<Types.Attributes.AttributeNumericType>(
+			'AttributeNumericType'
+		),
+		label: schemaRef<Types.Localize.Label>('Label'),
+		min: { type: 'integer' },
+		value: {
+			type: 'integer',
+			maximum: { $data: '1/max' } as any,
+			minimum: { $data: '1/min' } as any
+		},
+		max: { type: ['integer', 'null'] as any }
+	},
+	oneOf: [
 		{
-			$ref: '#/$defs/AttributeBase'
+			type: 'object',
+			properties: {
+				attribute_type: { const: 'clock', type: 'string' },
+				min: { const: 0, type: 'integer' },
+				value: { default: 0, type: 'integer', title: 'Filled clock segments' },
+				max: {
+					...schemaRef<Types.Attributes.ClockSegments>('ClockSegments'),
+					title: 'Clock segments (total)'
+				}
+			}
 		},
 		{
-			required: ['min', 'max', 'value', 'attribute_type'],
+			type: 'object',
 			properties: {
-				attribute_type: {
-					$ref: '#/$defs/AttributeNumericType'
-				},
-				min: {
-					type: 'integer'
-				},
-				max: {
-					type: ['integer', 'null']
-				},
-				value: {
-					type: ['integer'],
-					maximum: { $data: '1/max' } as any,
-					minimum: { $data: '1/min' } as any
-				}
+				attribute_type: { type: 'string', const: 'condition_meter' },
+				min: { const: 0, type: 'integer' },
+				value: { default: 0, type: 'integer' },
+				max: { type: 'integer' }
+			}
+		},
+		{
+			type: 'object',
+			properties: {
+				attribute_type: { type: 'string', const: 'counter' },
+				min: { const: 0, type: 'integer' },
+				value: { default: 0, type: 'integer' },
+				max: { type: ['integer', 'null'] as any, default: null }
 			}
 		}
 	]
 }
+
+export const AttributeNumericType: Schema<Types.Attributes.AttributeNumericType> =
+	{
+		type: 'string',
+		enum: ['condition_meter', 'clock', 'counter']
+	}
 export const AttributeNumericOverride = {
 	description: 'Adjusts an existing numeric input, usually a condition meter',
 	type: 'object',
@@ -354,30 +241,4 @@ export const AttributeImpact = {
 			}
 		}
 	]
-}
-export const AttributeBase = {
-	type: 'object',
-	required: ['attribute_type', 'position', 'label'],
-	properties: {
-		_id: {
-			$ref: '#/$defs/AttributeID'
-		},
-		label: {
-			$ref: '#/$defs/Label'
-		},
-		position: {
-			$ref: '#/$defs/InputPosition'
-		},
-		attribute_type: {
-			oneOf: [
-				{
-					$ref: '#/$defs/AttributeNumericType'
-				},
-				{
-					type: 'string',
-					enum: ['player_stat', 'player_condition_meter', 'impact', 'text']
-				}
-			]
-		}
-	}
 }

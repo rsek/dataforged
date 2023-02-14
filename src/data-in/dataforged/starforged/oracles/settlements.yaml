@@ -1,15 +1,16 @@
-_ruleset: starforged
 starforged:
+  _ruleset: starforged
+  _source:
+    authors: [Shawn Tomkin]
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
   oracles:
     settlements:
       title:
         canonical: Settlements
         short: Settlement
-      _source:
-        authors: [Shawn Tomkin]
-        title: "Ironsworn: Starforged Rulebook"
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-05-06
       collections:
         population:
           title:
@@ -25,31 +26,30 @@ starforged:
             columns:
               terminus:
                 content_type: range
-                # content: starforged/oracles/settlements/population/terminus
+                table_key: terminus
                 label: Terminus
               outlands:
                 content_type: range
-                # content: starforged/oracles/settlements/population/outlands
+                table_key: outlands
                 label: Outlands
               expanse:
                 content_type: range
-                # content: starforged/oracles/settlements/population/expanse
+                table_key: expanse
                 label: Expanse
               number:
-                content_type: string
-                # content: starforged/oracles/settlements/population/terminus
+                content_type: result
+                table_key: terminus
                 label: Number
-                key: result
           contents:
             terminus:
               title:
                 canonical: Terminus
               rendering:
-                column_of: starforged/oracles/settlements/population
-              usage:
-                requires:
-                  attributes:
-                    region: [terminus]
+                style: embed_as_column
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [terminus]
               table: &table:Population
                 - low: 1
                   high: 10
@@ -75,7 +75,7 @@ starforged:
               title:
                 canonical: Outlands
               rendering:
-                column_of: starforged/oracles/settlements/population
+                style: embed_as_column
               usage:
                 requires:
                   attributes:

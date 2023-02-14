@@ -381,7 +381,7 @@ export interface Source {
 	/**
 	 * The URI where the source document is available.
 	 */
-	uri: string
+	url: string
 	authors: Authors
 	/**
 	 * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
@@ -444,7 +444,7 @@ export interface Source1 {
 	/**
 	 * The URI where the source document is available.
 	 */
-	uri: string
+	url: string
 	authors: Authors
 	/**
 	 * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.

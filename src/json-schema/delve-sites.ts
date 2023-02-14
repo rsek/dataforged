@@ -6,7 +6,7 @@ import {
 	type DelveSites,
 	type DelveSites as Types
 } from '@base-types'
-import { schemaRef } from './common.js'
+import { schemaRef } from './common'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
 	type: 'string',
@@ -211,7 +211,7 @@ export const DelveSite: Schema<Types.DelveSite> = {
 		source: { $ref: '#/$defs/Source' },
 		_id: { $ref: '#/$defs/DelveSiteID' },
 
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') as any
+		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
 	}
 }
 

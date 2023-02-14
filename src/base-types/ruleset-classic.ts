@@ -2,12 +2,12 @@ import {
 	type DelveSites,
 	type Encounters,
 	type Regions,
-	type Metadata
+	type Metadata,
+	type Progress
 } from '@base-types'
-import { type ProgressTypeCommon } from '@base-types/progress'
 
 export type ProgressType =
-	| ProgressTypeCommon
+	| Progress.ProgressTypeCommon
 	| 'journey_progress'
 	| 'delve_progress'
 	| 'bonds_progress'

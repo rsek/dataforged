@@ -4,17 +4,12 @@ import {
 	type Oracles,
 	type Assets,
 	type Moves,
-	type Encounters
+	type Encounters,
+	type Abstract
 } from '@base-types'
-import { type Node } from '@base-types/abstract'
-import { type RollType } from '@base-types/moves'
-import {
-	type OracleCollectionColumn,
-	type OracleRenderingBase,
-	type OracleTableColumn
-} from '@base-types/oracles'
 
-export interface Collection<T, IDType = Metadata.ID> extends Node<IDType> {
+export interface Collection<T, IDType = Metadata.ID>
+	extends Abstract.Node<IDType> {
 	title: Metadata.Title
 	contents: Record<string, T>
 	summary?: Localize.MarkdownSentences
@@ -34,8 +29,12 @@ export interface OracleCollection
 
 export type OracleCollectionStyle = 'multi_table'
 
-export interface OracleCollectionRendering extends OracleRenderingBase {
-	columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
+export interface OracleCollectionRendering extends Oracles.OracleRenderingBase {
+	color?: string
+	columns: Record<
+		string,
+		Oracles.OracleCollectionColumn<Oracles.OracleTableColumn>
+	>
 	style?: OracleCollectionStyle | null
 }
 
@@ -44,7 +43,7 @@ export interface AssetType extends Collection<Assets.Asset> {}
 
 export type MoveCategoryID = string
 export interface MoveCategory
-	extends Collection<Moves.Move<RollType>, MoveCategoryID> {}
+	extends Collection<Moves.Move<Moves.RollType>, MoveCategoryID> {}
 
 export type EncounterCollectionID = string
 export interface EncounterCollectionClassic

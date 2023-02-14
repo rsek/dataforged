@@ -1,5 +1,8 @@
-import { type RulesetStarforged as Types } from '@base-types'
+import { type Encounters, type RulesetStarforged as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
+import _ from 'lodash'
+import { schemaRef } from './common'
+import { SuggestionsBase } from './ruleset-classic'
 
 export const ConditionMeterAlias: Schema<Types.ConditionMeterAlias> = {
 	type: 'string',
@@ -29,3 +32,18 @@ export const ProgressType: Schema<Types.ProgressType> = {
 		'discoveries_legacy'
 	]
 }
+
+export const Suggestions: Schema<Types.Suggestions> = _.merge(
+	{},
+	SuggestionsBase,
+
+	{
+		properties: {
+			encounters: {
+				title: 'Suggested encounters',
+				type: 'array',
+				items: schemaRef<Encounters.EncounterClassicID>('EncounterStarforgedID')
+			}
+		}
+	}
+) as any

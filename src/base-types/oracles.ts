@@ -1,14 +1,15 @@
-import { type Range } from '@base-types/abstract'
-import { type Localize, type Metadata } from '@base-types'
-import { type Icon, type Title } from '@base-types/metadata'
-import { type OracleCollectionStyle } from '@base-types/collections'
-import { type PickByType } from '@base-types/utils'
-
+import {
+	type Localize,
+	type Metadata,
+	type Utils,
+	type Abstract,
+	type Collections
+} from '@base-types'
 export type OracleTableID = string
 
 export interface OracleTable {
 	_id: OracleTableID
-	title: Title
+	title: Metadata.Title
 	source: Metadata.Source
 	summary?: Localize.MarkdownSentences
 	description?: Localize.MarkdownParagraphs
@@ -30,41 +31,33 @@ export interface OracleRenderingBase {
 	 * Describes the rendering of this oracle as a standalone table.
 	 */
 	columns?: Record<string, OracleTableColumn>
-	style?: OracleTableStyle | OracleCollectionStyle | null
+	style?: OracleTableStyle | Collections.OracleCollectionStyle | null
 	color?: Metadata.Color
 }
 
-export type OracleCollectionColumn<T extends OracleTableColumn> = T & {
+export type OracleCollectionColumn<
+	T extends OracleTableColumn = OracleTableColumn
+> = T & {
 	table_key: OracleTableID
 }
 
 export interface OracleTableRendering extends OracleRenderingBase {
-	icon?: Icon
+	icon?: Metadata.Icon
 	style?: OracleTableStyle
 	color?: Metadata.Color
 }
 
-interface OracleTableColumnBase {
+export interface OracleTableColumn {
 	label?: Localize.Label
 	content_type: OracleColumnContentType
 }
-
-export interface OracleTableColumnRange extends OracleTableColumnBase {
-	content_type: 'range'
-}
-
-export interface OracleTableColumnText extends OracleTableColumnBase {
-	content_type: Exclude<OracleColumnContentType, 'range'>
-}
-
-export type OracleTableColumn = OracleTableColumnRange | OracleTableColumnText
 
 export interface OracleTableMatchBehavior {
 	text: Localize.MarkdownSentences
 }
 
 export interface OracleStringTemplate
-	extends Omit<PickByType<OracleTableRow, string>, NonLocaleStringKeys> {}
+	extends Omit<Utils.PickByType<OracleTableRow, string>, NonLocaleStringKeys> {}
 
 type NonLocaleStringKeys = `_${string}` | 'embed_table'
 
@@ -74,8 +67,10 @@ export interface OracleTableRow<
 	Low extends number | null = number | null,
 	High extends number | null = number | null,
 	ID extends string = OracleTableRowID
-> extends Range<Low, High> {
+> extends Abstract.Range<Low, High> {
 	_id: ID
+	low: Low
+	high: High
 	result: Localize.MarkdownPhrase
 	summary?: Localize.MarkdownSentences
 	rolls?: OracleTableRoll[]
@@ -93,7 +88,7 @@ export interface OracleTableRoll<
 	Times extends number | undefined = number | undefined,
 	Method extends OracleTableRollMethod = OracleTableRollMethod
 > {
-	oracle: ID
+	oracle?: ID | null
 	times?: Times
 	method?: Method
 }

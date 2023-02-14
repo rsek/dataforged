@@ -20,7 +20,7 @@ module.exports = {
 		'src/data-out',
 		'src/_schema-ts-old',
 		'src/type-gen/results',
-		'.eslintrc.cjs',
+		'.eslintrc.js',
 		'*.d.ts',
 		'*.json'
 	],
@@ -30,6 +30,7 @@ module.exports = {
 	},
 	rules: {
 		'tsdoc/syntax': 'error',
+		'@typescript-eslint/key-spacing': 'off',
 		'@typescript-eslint/no-empty-interface': 'off',
 		'@typescript-eslint/consistent-type-imports': [
 			'error',
@@ -40,10 +41,17 @@ module.exports = {
 		{
 			files: ['./src/class-schema/**/*.ts'],
 			rules: {
+				'@typescript-eslint/no-redeclare': [
+					2,
+					{ ignoreDeclarationMerge: true }
+				],
+				// might want to turn this back on later
+				'@typescript-eslint/explicit-function-return-type': [0],
 				'@typescript-eslint/no-extraneous-class': [
 					2,
 					{ allowWithDecorator: true, allowStaticOnly: true }
-				]
+				],
+				'@typescript-eslint/array-type': [2, { array: true }]
 			}
 		}
 	]

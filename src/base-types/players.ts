@@ -1,4 +1,4 @@
-import { type Label } from '@base-types/localize'
+import { type Localize } from '@base-types'
 
 export interface Player {}
 export interface Extend extends Partial<Player> {}
@@ -14,7 +14,7 @@ export interface PlayerCharacter {
 	momentum: MomentumMeter
 }
 
-export interface Stat<Name extends string = Label> {
+export interface Stat<Name extends string = Localize.Label> {
 	name: Name
 	value: number
 }
@@ -25,7 +25,7 @@ interface MeterBase<Min extends number = number, Max extends number = number> {
 	max: Max
 }
 
-export interface ConditionMeter<Name extends string = Label>
+export interface ConditionMeter<Name extends string = Localize.Label>
 	extends MeterBase<0> {
 	name: Name
 }

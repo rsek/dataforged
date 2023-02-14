@@ -48,7 +48,7 @@ const $defs: Record<string, JSONSchema7> = {
 		description:
 			"The URI pointing to the license which this item's *text* content falls under. If this is null, no license is specified -- use with caution.",
 		type: ['string', 'null'],
-		format: 'uri',
+		format: 'url',
 		default: 'https://creativecommons.org/licenses/by-nc-sa/4.0',
 		examples: [
 			'https://creativecommons.org/licenses/by-nc-sa/4.0',
@@ -96,7 +96,7 @@ const $defs: Record<string, JSONSchema7> = {
 		description:
 			"Information on this item's source. For 'canonical' content, this is usually a book with a page number, but it might also be a link to a web site.",
 		type: 'object',
-		required: ['authors', 'license', 'title', 'date', 'uri'],
+		required: ['authors', 'license', 'title', 'date', 'url'],
 		additionalProperties: false,
 		examples: [
 			{
@@ -104,7 +104,7 @@ const $defs: Record<string, JSONSchema7> = {
 				authors: ['Shawn Tomkin'],
 				license: 'https://creativecommons.org/licenses/by/4.0',
 				date: '2023-01-15',
-				uri: 'https://ironswornrpg.com'
+				url: 'https://ironswornrpg.com'
 			}
 		],
 		properties: {
@@ -135,10 +135,10 @@ const $defs: Record<string, JSONSchema7> = {
 				type: 'integer',
 				minimum: 1
 			},
-			uri: {
+			url: {
 				description: 'The URI where the source material is available.',
 				type: 'string',
-				format: 'uri',
+				format: 'url',
 				examples: ['https://ironswornrpg.com']
 			},
 			date: {

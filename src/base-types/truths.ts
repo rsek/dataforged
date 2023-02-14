@@ -1,9 +1,8 @@
-import { type Localize, type Metadata } from '@base-types'
-import { type Collectible } from '@base-types/abstract'
+import { type Abstract, type Localize, type Metadata } from '@base-types'
 
 export type ID = string
 
-interface SettingTruth extends Collectible<ID> {
+interface SettingTruth extends Abstract.Node<ID> {
 	_id: ID
 	icon: Metadata.Icon
 	options: TruthOption[]

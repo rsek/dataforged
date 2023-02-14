@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY, schemaRef } from './common.js'
+import { DF_KEY, schemaRef } from './common'
 import {
 	type Localize,
 	type Metadata,
@@ -48,15 +48,15 @@ function collection<TCollection extends Types.Collection<any, any>>(
 		// additionalProperties: false,
 		properties: {
 			_id: { $ref: `#/$defs/${idRef}` } as any,
-			title: schemaRef<Metadata.Title>('Title') as any,
-			source: schemaRef<Metadata.Source>('Source') as any,
+			title: schemaRef<Metadata.Title>('Title') ,
+			source: schemaRef<Metadata.Source>('Source') ,
 			summary: schemaRef<Localize.MarkdownSentences>(
 				'MarkdownSentences'
-			) as any,
+			) ,
 			description: schemaRef<Localize.MarkdownParagraphs>(
 				'MarkdownParagraphs'
-			) as any,
-			suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') as any,
+			) ,
+			suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') ,
 			contents: {
 				type: 'object',
 				description: `The elements contained by this collection.`,

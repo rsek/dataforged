@@ -3,12 +3,12 @@ import {
 	type Localize,
 	type Encounters,
 	type Oracles,
-	type Metadata
+	type Metadata,
+	type Abstract
 } from '@base-types'
-import { type Range, type Collectible } from '@base-types/abstract'
 
 export type DelveSiteID = string
-export interface DelveSite extends Collectible<DelveSiteID> {
+export interface DelveSite extends Abstract.Node<DelveSiteID> {
 	rank: Progress.ChallengeRank
 	theme: DelveSiteThemeID
 	domain: DelveSiteCardID
@@ -39,7 +39,7 @@ export interface DelveSiteDenizen<
 	Low extends number,
 	High extends number,
 	Frequency extends DelveSiteDenizenFrequency
-> extends Range<Low, High> {
+> extends Abstract.Range<Low, High> {
 	frequency: Frequency
 	encounter: Encounters.EncounterClassicID | null
 	name?: Localize.Label
@@ -51,7 +51,7 @@ export type DelveSiteDomainID = string
 type DelveSiteCardID = DelveSiteThemeID | DelveSiteDomainID
 export type DelveSiteCardType = 'theme' | 'domain'
 
-interface DelveCardBase extends Collectible<DelveSiteCardID> {
+interface DelveCardBase extends Abstract.Node<DelveSiteCardID> {
 	icon?: Metadata.Icon
 	summary: Localize.MarkdownPhrase
 	description?: Localize.MarkdownSentences

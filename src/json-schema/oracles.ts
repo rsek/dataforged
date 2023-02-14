@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY } from './common.js'
+import { DF_KEY, schemaRef } from './common'
 import { type Oracles as Types } from '@base-types'
 
 export const OracleTableID: Schema<Types.OracleTableID> = {
@@ -152,10 +152,13 @@ export const OracleTableRoll: Schema<Types.OracleTableRoll> = {
 	description: 'Parameters for an oracle roll.',
 	required: ['oracle'],
 	properties: {
-		oracle: { $ref: '#/$defs/OracleTableID' },
+		oracle: {
+			default: null,
+			oneOf: [{ type: 'null' }, schemaRef<Types.OracleTableID>('OracleTableID')]
+		},
 		times: {
 			description: 'The number of times to roll.',
-			type: ['integer', 'null'],
+			type: ['integer'],
 			minimum: 1,
 			default: 1
 		} as any,

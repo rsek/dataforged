@@ -16,7 +16,7 @@ export interface Source {
 	page?: number
 	authors: [string, ...string[]]
 	date: string
-	uri: string
+	url: string
 	license: string | null
 }
 
@@ -31,8 +31,7 @@ export interface Title {
  * @see {@link RulesetClassic.Suggestions}
  * @see {@link RulesetStarforged.Suggestions}
  */
-export interface SuggestionsBase
-	extends Record<string | never, string[] | undefined> {
+export interface SuggestionsBase {
 	oracles?: Oracles.OracleTableID[]
 	assets?: Assets.AssetID[]
 	moves?: Moves.MoveID[]

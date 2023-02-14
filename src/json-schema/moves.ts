@@ -1,12 +1,14 @@
-import { schemaRef } from './common.js'
-import type * as Types from '@base-types/moves'
+import { DF_KEY, schemaRef } from './common'
 import { type JSONSchemaType as Schema } from 'ajv'
 import {
+	type Attributes,
+	type Moves as Types,
 	type Localize,
 	type Metadata,
 	type Players,
 	type RulesetClassic,
-	type RulesetStarforged
+	type RulesetStarforged,
+	type Moves
 } from '@base-types'
 
 /// /
@@ -29,39 +31,53 @@ export const RollableStatID: Schema<Types.RollableStatID> = {
 	]
 }
 
+export const RollType: Schema<Types.RollType> = {
+	type: 'string',
+	enum: ['action_roll', 'progress_roll']
+}
+
+export const RollMethod: Schema<Types.RollMethod> = {
+	type: 'string',
+	enum: ['any', 'inherit', 'highest', 'lowest', 'all']
+}
+
 export const TriggerOption: Schema<Types.TriggerOption> = {
 	title: 'Trigger option',
 	type: 'object',
 	required: ['roll_type', 'method', 'using'],
 	additionalProperties: false,
 	properties: {
-		text: {
-			...schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
-			nullable: true
-		},
+		text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
 		roll_type: schemaRef<Types.RollType>('RollType'),
-		method: schemaRef<Types.RollMethod>('RollMethod'),
+		method: {
+			default: 'any',
+			oneOf: [
+				schemaRef<Types.RollMethod>('RollMethod'),
+				schemaRef<Types.MoveOutcomeType>('MoveOutcomeType')
+			]
+		},
 		using: { type: 'array', items: { type: 'string' } }
 	},
-	if: {
-		properties: { roll_type: { const: 'progress_roll' } }
-	},
-	then: {
-		properties: {
-			using: {
-				type: 'array',
-				items: schemaRef<Types.ProgressType>('ProgressType')
+	oneOf: [
+		{
+			properties: {
+				roll_type: { const: 'progress_roll' },
+				using: {
+					type: 'array',
+					items: schemaRef<Types.ProgressType>('ProgressType')
+				}
+			}
+		},
+		{
+			properties: {
+				roll_type: { const: 'action_roll' },
+				using: {
+					type: 'array',
+					items: schemaRef<Types.RollableStatID>('RollableStatID')
+				}
 			}
 		}
-	},
-	else: {
-		properties: {
-			using: {
-				type: 'array',
-				items: schemaRef<Types.RollableStatID>('RollableStatID')
-			}
-		}
-	}
+	]
 }
 
 export const Trigger: Schema<Types.Trigger> = {
@@ -73,7 +89,6 @@ export const Trigger: Schema<Types.Trigger> = {
 		options: {
 			type: 'array',
 			nullable: true,
-			additionalItems: false as any,
 			items: TriggerOption
 		}
 	}
@@ -84,30 +99,28 @@ export const Move: Schema<Types.Move> = {
 	required: ['_id', 'text', 'name', 'trigger', 'source'],
 	additionalProperties: false,
 	properties: {
-		_id: { $ref: '#/$defs/MoveID' },
+		_id: schemaRef<Moves.MoveID>('MoveID'),
 		name: schemaRef<Localize.Label>('Label'),
 		trigger: schemaRef<Types.Trigger>('Trigger'),
 		source: schemaRef<Metadata.Source>('Source'),
 		outcomes: schemaRef<Types.MoveOutcomes>('MoveOutcomes'),
 		text: schemaRef<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
-		suggestions: {
-			...schemaRef<Metadata.Suggestions>('Suggestions'),
-			nullable: true
-		},
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions'),
 		progress_move: {
 			description:
 				'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
 			type: 'boolean',
+			default: false,
 			nullable: true
+		},
+		attributes: {
+			type: 'object',
+			required: undefined as any,
+			patternProperties: {
+				[DF_KEY]: schemaRef<Attributes.Attribute>('Attribute')
+			},
+			nullable: undefined as any
 		}
-		// attributes: {
-		// 	type: 'object',
-		// 	patternProperties: {
-		// 		[DF_KEY]: {
-		// 			$ref: '#/$defs/CustomStat'
-		// 		}
-		// 	}
-		// },
 		// asset: {
 		// 	description: 'The ID of the parent Asset of the move, if any.',
 		// 	...schemaRef<Assets.AssetID>('AssetID')
@@ -135,29 +148,46 @@ export const Move: Schema<Types.Move> = {
 		// 	description: "The ID of the move's category."
 		// }
 	},
-	if: { properties: { progress_move: { const: true } } },
-	then: {
-		properties: {
-			trigger: {
-				properties: {
-					options: {
-						item: { properties: { roll_type: { const: 'progress_roll' } } }
+	oneOf: [
+		{
+			properties: {
+				progress_move: { const: true },
+				trigger: {
+					type: 'object',
+					properties: {
+						options: {
+							type: 'array',
+							items: {
+								type: 'object',
+								properties: { roll_type: { const: 'progress_roll' } }
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			// not: {
+			// 	properties: {
+			// 		progress_move: { const: true }
+			// 	}
+			// },
+			properties: {
+				trigger: {
+					type: 'object',
+					properties: {
+						options: {
+							type: 'array',
+							items: {
+								type: 'object',
+								properties: { roll_type: { const: 'action_roll' } }
+							}
+						}
 					}
 				}
 			}
 		}
-	},
-	else: {
-		properties: {
-			trigger: {
-				properties: {
-					options: {
-						item: { properties: { roll_type: { const: 'action_roll' } } }
-					}
-				}
-			}
-		}
-	}
+	]
 }
 
 export const MoveOutcomeType: Schema<Types.MoveOutcomeType> = {

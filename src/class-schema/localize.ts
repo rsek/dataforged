@@ -1,37 +1,50 @@
-import { type Localize as Types } from '@base-types'
-import { IsString } from 'class-validator'
 import { JSONSchema } from 'class-validator-jsonschema'
+import _ from 'lodash'
 
-export default abstract class Localize {
-	@IsString()
-	@JSONSchema({
-		description: 'A localized plain text name or label.'
-	})
-	static Label: Types.Label
+export function IsLabel() {
+	return JSONSchema((schema) =>
+		_.merge({}, schema, {
+			type: 'string',
+			description: 'A localized plain text name or label.'
+		})
+	)
+}
 
-	@IsString()
-	@JSONSchema({
-		description: 'Localized markdown text, usually a phrase or single sentence.'
-	})
-	static MarkdownPhrase: Types.MarkdownPhrase
+export function IsMarkdownPhrase() {
+	return JSONSchema((schema) =>
+		_.merge({}, schema, {
+			type: 'string',
+			description:
+				'Localized markdown text, usually a phrase or single sentence.'
+		})
+	)
+}
 
-	@IsString()
-	@JSONSchema({
-		description: 'Localized markdown text, usually a few sentences at most.'
-	})
-	static MarkdownSentences: Types.MarkdownSentences
+export function IsMarkdownSentences() {
+	return JSONSchema((schema) =>
+		_.merge({}, schema, {
+			type: 'string',
+			description: 'Localized markdown text, usually a few sentences at most.'
+		})
+	)
+}
 
-	@IsString()
-	@JSONSchema({
-		description:
-			'Localized markdown text, usually one paragraph. This may included ordered or unordered lists.'
-	})
-	static MarkdownParagraph: Types.MarkdownParagraph
+export function IsMarkdownParagraph() {
+	return JSONSchema((schema) =>
+		_.merge({}, schema, {
+			type: 'string',
+			description:
+				'Localized markdown text, usually one paragraph. This may included ordered or unordered lists.'
+		})
+	)
+}
 
-	@IsString()
-	@JSONSchema({
-		description:
-			'Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists.'
-	})
-	static MarkdownParagraphs: Types.MarkdownParagraphs
+export function IsMarkdownParagraphs() {
+	return JSONSchema((schema) =>
+		_.merge({}, schema, {
+			type: 'string',
+			description:
+				'Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists.'
+		})
+	)
 }

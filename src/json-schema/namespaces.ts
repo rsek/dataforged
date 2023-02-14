@@ -1,4 +1,4 @@
-import { DF_KEY, schemaRef } from './common.js'
+import { DF_KEY, schemaRef } from './common'
 import { type Metadata } from '@base-types'
 import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
@@ -22,13 +22,7 @@ const NamespaceShared: JSONSchema7 = {
 			patternProperties: {
 				[DF_KEY]: { $ref: '#/$defs/OracleCollection' }
 			}
-		}
-	}
-}
-
-export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
-	properties: {
-		_ruleset: { const: 'classic' },
+		},
 		moves: {
 			title: 'Moves',
 			type: 'object',
@@ -36,8 +30,8 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						{ $ref: '#/$defs/MoveCategoryClassic' },
-						{ $ref: '#/$defs/MoveCategoryExtensionClassic' }
+						{ $ref: '#/$defs/MoveCategory' },
+						{ $ref: '#/$defs/MoveCategoryExtension' }
 					]
 				}
 			}
@@ -49,12 +43,18 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						{ $ref: '#/$defs/AssetTypeClassic' },
-						{ $ref: '#/$defs/AssetTypeExtensionClassic' }
+						{ $ref: '#/$defs/AssetType' },
+						{ $ref: '#/$defs/AssetTypeExtension' }
 					]
 				}
 			}
-		},
+		}
+	}
+}
+
+export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
+	properties: {
+		_ruleset: { const: 'classic' },
 		encounters: {
 			title: 'Encounters',
 			type: 'object',
@@ -122,32 +122,6 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 export const NamespaceDataforged: JSONSchema7 = _.merge({}, NamespaceShared, {
 	properties: {
 		_ruleset: { const: 'starforged' },
-		moves: {
-			title: 'Moves',
-			type: 'object',
-			additionalProperties: false,
-			patternProperties: {
-				[DF_KEY]: {
-					oneOf: [
-						{ $ref: '#/$defs/MoveCategoryStarforged' },
-						{ $ref: '#/$defs/MoveCategoryExtensionStarforged' }
-					]
-				}
-			}
-		},
-		assets: {
-			title: 'Assets',
-			type: 'object',
-			additionalProperties: false,
-			patternProperties: {
-				[DF_KEY]: {
-					oneOf: [
-						{ $ref: '#/$defs/AssetTypeStarforged' },
-						{ $ref: '#/$defs/AssetTypeExtensionStarforged' }
-					]
-				}
-			}
-		},
 		encounters: {
 			title: 'Encounters',
 			type: 'object',
