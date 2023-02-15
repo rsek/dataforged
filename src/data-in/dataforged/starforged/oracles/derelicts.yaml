@@ -21,9 +21,9 @@ starforged:
             short: Type
           _source:
             page: 348
-          usage:
-            initial: true
-            requires: *attr:Location.Any
+          # usage:
+          #   initial: true
+          #   requires: *attr:Location.Any
           rendering:
             columns:
               planetside:
@@ -41,44 +41,51 @@ starforged:
               result:
                 content_type: result
                 table_key: planetside
+                label: Result
           contents:
             planetside:
               title:
                 canonical: Planetside
               rendering: &derelictTypeDisplay
                 style: embed_as_column
-              usage:
-                requires: *attr:Location.Planetside
+              # usage:
+              #   requires: *attr:Location.Planetside
               table: &derelictTypeTable
                 - low: 1
                   high: 25
-                  result: Starship, *attr:DerelictType.Starship
+                  result: Starship
+                  # *attr:DerelictType.Starship
                 - low: 26
                   high: 100
-                  result: Settlement, *attr:DerelictType.Settlement
+                  result: Settlement
+                  # *attr:DerelictType.Settlement
             orbital:
               title:
                 canonical: Orbital
               rendering: *derelictTypeDisplay
-              usage:
-                requires: *attr:Location.Orbital
-              _templateTableRows:
-                content: *derelictTypeTable
-                rolls:
-                  - [1, 40]
-                  - [41, 100]
+              # usage:
+              #   requires: *attr:Location.Orbital
+              table:
+                - low: 1
+                  high: 40
+                  result: Starship
+                - low: 41
+                  high: 100
+                  result: Settlement
             deep_space:
               title:
                 canonical: Deep Space
               rendering:
-                column_of: starforged/oracles/derelicts/type
-              usage:
-                requires: *attr:Location.DeepSpace
-              _templateTableRows:
-                content: *derelictTypeTable
-                rolls:
-                  - [1, 75]
-                  - [76, 100]
+                style: embed_as_column
+              # usage:
+              #   requires: *attr:Location.DeepSpace
+              table:
+                - low: 1
+                  high: 75
+                  result: Starship
+                - low: 76
+                  high: 100
+                  result: Settlement
         zones:
           title:
             canonical: Derelict Zones
@@ -90,30 +97,31 @@ starforged:
             columns:
               starship:
                 content_type: range
-                content: starforged/oracles/derelicts/zones/starship
+                table_key: starship
                 label: Starship
               settlement:
                 content_type: range
-                content: starforged/oracles/derelicts/zones/settlement
+                table_key: settlement
                 label: Settlement
               result:
-                content_type: string
-                content: starforged/oracles/derelicts/zones/starship
-          usage:
-            repeatable: true
-            requires:
-              attributes:
-                derelict_type: null
+                content_type: result
+                table_key: starship
+                label: Result
+          # usage:
+          #   repeatable: true
+          #   requires:
+          #     attributes:
+          #       derelict_type: null
           contents:
             starship:
               title:
                 canonical: Starship
               rendering:
-                column_of: starforged/oracles/derelicts/zone
-              usage:
-                requires:
-                  attributes:
-                    derelict_type: [starship]
+                style: embed_as_column
+              # usage:
+              #   requires:
+              #     attributes:
+              #       derelict_type: [starship]
               table: &derelictZoneTable
                 - low: null
                   high: null
@@ -159,11 +167,11 @@ starforged:
               title:
                 canonical: Settlement
               rendering:
-                column_of: starforged/oracles/derelicts/zone
-              usage:
-                requires:
-                  attributes:
-                    derelict_type: [settlement]
+                style: embed_as_column
+              # usage:
+              #   requires:
+              #     attributes:
+              #       derelict_type: [settlement]
               _templateTableRows:
                 content: *derelictZoneTable
                 rolls:
@@ -176,27 +184,31 @@ starforged:
                   - [71, 90]
                   - [91, 100]
       contents:
-        canonical:
+        location:
+          _template: LocationOracle
           title:
             canonical: Location
-          _templateOracleTable: *template.info:Generic.Location
           _source:
             page: 348
-          _templateTableRows:
-            content: *template.content:Generic.Location
-            rolls:
-              - [1, 40]
-              - [41, 60]
-              - [61, 100]
+          table:
+            - low: 1
+              high: 40
+              result: Planetside
+            - low: 41
+              high: 60
+              result: Orbital
+            - low: 61
+              high: 100
+              result: Terminus
         condition:
           title:
             canonical: Condition
           _source:
             page: 348
-          usage:
-            initial: true
-          content:
-            part_of_speech: [fragment]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
           table:
             - low: 1
               high: 10
@@ -221,11 +233,11 @@ starforged:
             canonical: Outer First Look
           _source:
             page: 349
-          usage:
-            initial: true
-          content:
-            part_of_speech: [fragment]
-            tags: [first look]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [first look]
           table:
             - low: 1
               high: 15
@@ -262,11 +274,11 @@ starforged:
             canonical: Inner First Look
           _source:
             page: 349
-          content:
-            part_of_speech: [fragment]
-            tags: [first look]
-          usage:
-            max_rolls: 2
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [first look]
+          # usage:
+          #   max_rolls: 2
           table:
             - low: 1
               high: 3

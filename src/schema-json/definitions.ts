@@ -19,8 +19,10 @@ import {
 } from '@schema-json'
 import { type JSONSchema7 } from 'json-schema'
 import type * as Types from '@base-types'
-import { OracleCollectionTemplate } from 'schema-json/templates'
-import { schemaRef } from 'schema-json/common'
+import {
+	OracleCollectionTemplate,
+	OracleTableTemplate
+} from 'schema-json/templates'
 
 /**
  * Splits a camelcase title to something nicer
@@ -48,7 +50,8 @@ const defs: Record<string, JSONSchema7> = {
 	...Moves,
 	...Abstract,
 	...Attributes,
-	OracleCollectionTemplate
+	OracleCollectionTemplate,
+	OracleTableTemplate
 }
 
 const defsStarforged = _({

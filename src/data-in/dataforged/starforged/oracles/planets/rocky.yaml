@@ -1,137 +1,241 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-collections:
-  planets:
-    title:
-      canonical: Planets
-    _source:
-      date: 2022-05-06
-    collections:
-      rocky:
-        _templateOracleSet: *template.category:Planet
-        _templateVars:
-          planetary_class: Rocky
-        title:
-          canonical: Rocky World
-        rendering:
-          images: *images:RockyWorld
-        _source:
-          page: 315
-        summary: A rugged planet scarred by eons of destructive asteroid impacts.
-        sample_names:
-          - Aphelion
-          - Artemis
-          - Capella
-          - Cobalt
-          - Crag
-          - Dusk
-          - Eos
-          - Hecate
-          - Imbrium
-          - Latona
-          - Losna
-          - Orpheus
-          - Ory
-          - Quietus
-          - Selene
-          - Silas
-          - Silex
-          - Slate
-          - Themis
-          - Umbra
-        collections:
-          settlements:
-            _templateOracleSet: *template.info:Planet.Settlements
-            contents:
-              terminus:
-                _templateOracleTable: *template.info:Planet.Settlements.Terminus
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 50] # None
-                    - [51, 70] # Orbital settlement
-                    - [71, 85] # Planetside settlement
-                    - [86, 95] # Multiple settlements
-                    - [96, 100] # Settlements in conflict
-              outlands:
-                _templateOracleTable: *template.info:Planet.Settlements.Outlands
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 75] # None
-                    - [76, 87] # Orbital settlement
-                    - [88, 95] # Planetside settlement
-                    - [96, 98] # Multiple settlements
-                    - [99, 100] # Settlements in conflict
-              expanse:
-                _templateOracleTable: *template.info:Planet.Settlements.Expanse
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 90] # None
-                    - [91, 96] # Orbital settlement
-                    - [97, 100] # Planetside settlement
-                    - [null, null] # Multiple settlements
-                    - [null, null] # Settlements in conflict
-        contents:
-          atmosphere:
-            _templateOracleTable: *template.info:Planet.Atmosphere
-            _templateTableRows:
-              content: *template.content:Planet.Atmosphere
-              rolls:
-                - [1, 65] # None / thin
-                - [66, 85] # Toxic
-                - [86, 90] # Corrosive
-                - [91, 100] # Marginal
-                - [null, null] # Breathable
-                - [null, null] # Ideal
-
-          observed_from_space:
-            _templateOracleTable: *template.info:Planet.ObservedFromSpace
-            _templateTableRows:
-              rolls: *template.rolls:Planet.ObservedFromSpace
-              content:
-                - Barren plains
-                - Constant asteroid strikes
-                - Dense ring system
-                - Jagged mountains
-                - Massive impact crater
-                - Misshapen form (low gravity)
-                - Perpetual night
-                - Towering plateaus
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Orbital
-          planetside_feature:
-            _templateOracleTable: *template.info:Planet.PlanetsideFeature
-            _templateTableRows:
-              rolls: *template.rolls:Planet.PlanetsideFeature
-              content:
-                - Crystalline formations
-                - Crystalline caves
-                - Exposed mineral deposits
-                - Geometric terrain features
-                - Geothermal vents
-                - Glassy impact craters
-                - Massive dust dunes
-                - Powerful magnetic fields
-                - Rubble-strewn lava fields
-                - Steam-heated caves
-                - Subsurface magma flows
-                - Swirling low-lying gases
-                - Towering rocky spires
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Planetside
-          life:
-            _templateOracleTable: *template.info:Planet.Life
-            _templateTableRows:
-              content: *template.content:Planet.Life
-              rolls:
-                - [1, 65] # None
-                - [66, 80] # Extinct
-                - [81, 90] # Scarce
-                - [91, 95] # Diverse
-                - [96, 98] # Bountiful
-                - [99, 100] # Overrun
+starforged:
+  _ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    title: 'Ironsworn: Starforged Rulebook'
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
+  oracles:
+    planets:
+      _extends: starforged/collections/oracles/planets
+      collections:
+        rocky:
+          _template: PlanetOracles
+          title:
+            canonical: Rocky World
+            short: Rocky
+          rendering:
+            images:
+              - img/planets/rocky-01.webp
+              - img/planets/rocky-02.webp
+          _source:
+            page: 315
+          summary: A rugged planet scarred by eons of destructive asteroid impacts.
+          sample_names:
+            - Aphelion
+            - Artemis
+            - Capella
+            - Cobalt
+            - Crag
+            - Dusk
+            - Eos
+            - Hecate
+            - Imbrium
+            - Latona
+            - Losna
+            - Orpheus
+            - Ory
+            - Quietus
+            - Selene
+            - Silas
+            - Silex
+            - Slate
+            - Themis
+            - Umbra
+          collections:
+            settlements:
+              title:
+                canonical: Settlements
+              contents:
+                terminus:
+                  title:
+                    canonical: Terminus
+                  table:
+                    - low: 1
+                      high: 50
+                      result: &Set.0 None
+                    - low: 51
+                      high: 70
+                      result: &Set.1 Orbital settlement
+                    - low: 71
+                      high: 85
+                      result: &Set.2 Planetside settlement
+                    - low: 86
+                      high: 95
+                      result: &Set.3 Multiple settlements
+                    - low: 96
+                      high: 100
+                      result: &Set.4 Settlements in conflict
+                outlands:
+                  title:
+                    canonical: Outlands
+                  table:
+                    - low: 1
+                      high: 75
+                      result: *Set.0
+                    - low: 76
+                      high: 87
+                      result: *Set.1
+                    - low: 88
+                      high: 95
+                      result: *Set.2
+                    - low: 96
+                      high: 98
+                      result: *Set.3
+                    - low: 99
+                      high: 100
+                      result: *Set.4
+                expanse:
+                  title:
+                    canonical: Expanse
+                  table:
+                    - low: 1
+                      high: 90
+                      result: *Set.0
+                    - low: 91
+                      high: 96
+                      result: *Set.1
+                    - low: 97
+                      high: 100
+                      result: *Set.2
+                    - low: null
+                      high: null
+                      result: *Set.3
+                    - low: null
+                      high: null
+                      result: *Set.4
+          contents:
+            atmosphere:
+              title:
+                canonical: Atmosphere
+              table:
+                - low: 1
+                  high: 65
+                  result: None / thin
+                - low: 66
+                  high: 85
+                  result: Toxic
+                - low: 86
+                  high: 90
+                  result: Corrosive
+                - low: 91
+                  high: 100
+                  result: Marginal
+                - low: null
+                  high: null
+                  result: Breathable
+                - low: null
+                  high: null
+                  result: Ideal
+            observed_from_space:
+              title:
+                canonical: Observed From Space
+              table:
+                - low: 1
+                  high: 11
+                  result: Barren plains
+                - low: 12
+                  high: 22
+                  result: Constant asteroid strikes
+                - low: 23
+                  high: 33
+                  result: Dense ring system
+                - low: 34
+                  high: 44
+                  result: Jagged mountains
+                - low: 45
+                  high: 55
+                  result: Massive impact crater
+                - low: 56
+                  high: 66
+                  result: Misshapen form (low gravity)
+                - low: 67
+                  high: 77
+                  result: Perpetual night
+                - low: 78
+                  high: 88
+                  result: Towering plateaus
+                - low: 89
+                  high: 98
+                  result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                  rolls: &DF.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                    - oracle: starforged/oracles/core/focus
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (orbital)
+            feature:
+              title:
+                canonical: Planetside Feature
+                short: Feature
+              table:
+                - low: 1
+                  high: 7
+                  result: Crystalline formations
+                - low: 8
+                  high: 14
+                  result: Crystalline caves
+                - low: 15
+                  high: 21
+                  result: Exposed mineral deposits
+                - low: 22
+                  high: 28
+                  result: Geometric terrain features
+                - low: 29
+                  high: 35
+                  result: Geothermal vents
+                - low: 36
+                  high: 42
+                  result: Glassy impact craters
+                - low: 43
+                  high: 49
+                  result: Massive dust dunes
+                - low: 50
+                  high: 56
+                  result: Powerful magnetic fields
+                - low: 57
+                  high: 63
+                  result: Rubble-strewn lava fields
+                - low: 64
+                  high: 70
+                  result: Steam-heated caves
+                - low: 71
+                  high: 77
+                  result: Subsurface magma flows
+                - low: 78
+                  high: 84
+                  result: Swirling low-lying gases
+                - low: 85
+                  high: 91
+                  result: Towering rocky spires
+                - low: 92
+                  high: 98
+                  result: *DF.result
+                  rolls: *DF.rolls
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (planetside)
+            life:
+              title:
+                canonical: Life
+              table:
+                - low: 1
+                  high: 65
+                  result: None
+                - low: 66
+                  high: 80
+                  result: Extinct
+                - low: 81
+                  high: 90
+                  result: Scarce
+                - low: 91
+                  high: 95
+                  result: Diverse
+                - low: 96
+                  high: 98
+                  result: Bountiful
+                - low: 99
+                  high: 100
+                  result: Overrun

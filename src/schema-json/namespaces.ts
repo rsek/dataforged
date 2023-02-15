@@ -24,7 +24,12 @@ const NamespaceShared: JSONSchema7 = {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/definitions/OracleCollection' }
+				[DF_KEY]: {
+					oneOf: [
+						{ $ref: '#/definitions/OracleCollection' },
+						{ $ref: '#/definitions/OracleCollectionExtension' }
+					]
+				}
 			}
 		},
 		moves: {

@@ -17,11 +17,11 @@ starforged:
             canonical: Population
           _source:
             page: 322
-          usage:
-            initial: true
-            requires:
-              attributes:
-                region: null
+          # usage:
+          #   initial: true
+          #   requires:
+          #     attributes:
+          #       region: null
           rendering:
             columns:
               terminus:
@@ -44,69 +44,81 @@ starforged:
             terminus:
               title:
                 canonical: Terminus
-              rendering:
+              rendering: &Pop.rendering
                 style: embed_as_column
               # usage:
               #   requires:
               #     attributes:
               #       region: [terminus]
-              table: &table:Population
+              table:
                 - low: 1
                   high: 10
-                  result: Few
+                  result: &Pop.0 Few
                   # set_attributes: {population: [few]}
                 - low: 11
                   high: 25
-                  result: Dozens
+                  result: &Pop.1 Dozens
                   # set_attributes: {population: [dozens]}
                 - low: 26
                   high: 55
-                  result: Hundreds
+                  result: &Pop.2 Hundreds
                   # set_attributes: {population: [hundreds]}
                 - low: 56
                   high: 85
-                  result: Thousands
+                  result: &Pop.3 Thousands
                   # set_attributes: {population: [thousands]}
                 - low: 86
                   high: 100
-                  result: Tens of thousands
+                  result: &Pop.4 Tens of thousands
                   # set_attributes: {population: [tens_of_thousands]}
             outlands:
               title:
                 canonical: Outlands
-              rendering:
-                style: embed_as_column
-              usage:
-                requires:
-                  attributes:
-                    region: [outlands]
-              _templateTableRows:
-                # content: *table:Population
-                rolls:
-                  - [1, 15]
-                  - [16, 35]
-                  - [36, 65]
-                  - [66, 90]
-                  - [91, 100]
-
+              rendering: *Pop.rendering
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [outlands]
+              table:
+                - low: 1
+                  high: 15
+                  result: *Pop.0
+                - low: 16
+                  high: 35
+                  result: *Pop.1
+                - low: 36
+                  high: 65
+                  result: *Pop.2
+                - low: 66
+                  high: 90
+                  result: *Pop.3
+                - low: 91
+                  high: 100
+                  result: *Pop.4
             expanse:
               title:
                 canonical: Expanse
-              rendering:
-                column_of: starforged/oracles/settlements/population
-              usage:
-                requires:
-                  attributes:
-                    region: [expanse]
-              _templateTableRows:
-                # content: *table:Population
-                rolls:
-                  - [1, 20]
-                  - [21, 50]
-                  - [51, 80]
-                  - [81, 95]
-                  - [96, 100]
-
+              rendering: *Pop.rendering
+              # usage:
+              #   requires:
+              #     attributes:
+              #       region: [expanse]
+              table:
+                - low: 1
+                  high: 20
+                  result: *Pop.0
+                - low: 21
+                  high: 50
+                  result: *Pop.1
+                - low: 51
+                  high: 80
+                  result: *Pop.2
+                - low: 81
+                  high: 95
+                  result: *Pop.3
+                - low: 96
+                  high: 100
+                  result: *Pop.4
       contents:
         location:
           title:
@@ -125,12 +137,12 @@ starforged:
             canonical: First Look
           _source:
             page: 323
-          usage:
-            max_rolls: 2
-            initial: true
-          content:
-            part_of_speech: [fragment]
-            tags: [description]
+          # usage:
+          #   max_rolls: 2
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [description]
           table:
             - low: 1
               high: 3
@@ -202,11 +214,11 @@ starforged:
             canonical: Initial Contact
           _source:
             page: 323
-          usage:
-            initial: true
-          content:
-            part_of_speech: [fragment]
-            tags: [description]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [description]
           table:
             - low: 1
               high: 20
@@ -251,17 +263,17 @@ starforged:
             - low: 96
               high: 100
               result: "[⏵Derelict](starforged/oracles/derelicts)"
-              *inherit:Derelict.Settlement
+              # *inherit:Derelict.Settlement
 
         authority:
           title:
             canonical: Authority
           _source:
             page: 323
-          usage:
-            initial: true
-          content:
-            part_of_speech: [adjective]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [adjective]
           table:
             - low: 1
               high: 15
@@ -297,11 +309,11 @@ starforged:
             short: Projects
           _source:
             page: 324
-          content:
-            part_of_speech: [noun, common noun]
-            tags: [abstract noun]
-          usage:
-            max_rolls: 2
+          # content:
+          #   part_of_speech: [noun, common noun]
+          #   tags: [abstract noun]
+          # usage:
+          #   max_rolls: 2
           description: |-
             Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
           table:
@@ -410,13 +422,13 @@ starforged:
             short: Trouble
           _source:
             page: 324
-          usage:
-            max_rolls: 2
+          # usage:
+          #   max_rolls: 2
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [peril, event, present]
           description: |-
             Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.
-          content:
-            part_of_speech: [fragment]
-            tags: [peril, event, present]
           table:
             - low: 1
               high: 3
@@ -547,11 +559,11 @@ starforged:
             page: 325
           description: |-
             Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
-          usage:
-            initial: true
-          content:
-            part_of_speech: [proper noun]
-            tags: [name]
+          # usage:
+          #   initial: true
+          # content:
+          #   part_of_speech: [proper noun]
+          #   tags: [name]
           table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
             - low: 1

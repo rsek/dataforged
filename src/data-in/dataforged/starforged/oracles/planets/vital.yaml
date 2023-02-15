@@ -1,235 +1,338 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-collections:
-  planets:
-    title:
-      canonical: Planets
-    _source:
-      date: 2022-05-06
-    collections:
-      vital:
-        _templateOracleSet: *template.category:Planet
-        _templateVars:
-          planetary_class: Vital
-        title:
-          canonical: Vital World
-        rendering:
-          images: *images:VitalWorld
-        _source:
-          page: 318
-        summary: This diverse, life-bearing planet might provide some small measure of hope.
-        sample_names:
-          - Chiron
-          - Demeter
-          - Erebos
-          - Erembour
-          - Feronia
-          - Fortuna
-          - Gaia
-          - Harbinger
-          - Haven
-          - Hope
-          - Morpheus
-          - Nemus
-          - Sapphire
-          - Serenity
-          - Sif
-          - Silva
-          - Sirona
-          - Solstice
-          - Vale
-          - Valinor
-        collections:
-          settlements:
-            _templateOracleSet: *template.info:Planet.Settlements
-            contents:
-              terminus:
-                _templateOracleTable: *template.info:Planet.Settlements.Terminus
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
+starforged:
+  _ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    title: 'Ironsworn: Starforged Rulebook'
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
+  oracles:
+    planets:
+      _extends: starforged/collections/oracles/planets
+      collections:
+        vital:
+          _template: PlanetOracles
+          title:
+            canonical: Vital World
+            short: Vital
+          rendering:
+            images:
+              - img/planets/vital-01.webp
+              - img/planets/vital-02.webp
+          _source:
+            page: 318
+          summary: This diverse, life-bearing planet might provide some small measure of hope.
+          sample_names:
+            - Chiron
+            - Demeter
+            - Erebos
+            - Erembour
+            - Feronia
+            - Fortuna
+            - Gaia
+            - Harbinger
+            - Haven
+            - Hope
+            - Morpheus
+            - Nemus
+            - Sapphire
+            - Serenity
+            - Sif
+            - Silva
+            - Sirona
+            - Solstice
+            - Vale
+            - Valinor
+          collections:
+            settlements:
+              title:
+                canonical: Settlements
+              contents:
+                terminus:
+                  title:
+                    canonical: Terminus
+                  table:
+                    - low: 1
+                      high: 20
+                      result: &Set.0 None
+                    - low: 21
+                      high: 30
+                      result: &Set.1 Orbital settlement
+                    - low: 31
+                      high: 70
+                      result: &Set.2 Planetside settlement
+                    - low: 71
+                      high: 90
+                      result: &Set.3 Multiple settlements
+                    - low: 91
+                      high: 100
+                      result: &Set.4 Settlements in conflict
+                outlands:
+                  title:
+                    canonical: Outlands
+                  table:
+                    - low: 1
+                      high: 50
+                      result: *Set.0
+                    - low: 51
+                      high: 55
+                      result: *Set.1
+                    - low: 56
+                      high: 85
+                      result: *Set.2
+                    - low: 86
+                      high: 95
+                      result: *Set.3
+                    - low: 96
+                      high: 100
+                      result: *Set.4
+                expanse:
+                  title:
+                    canonical: Expanse
+                  table:
+                    - low: 1
+                      high: 80
+                      result: *Set.0
+                    - low: 81
+                      high: 83
+                      result: *Set.1
+                    - low: 84
+                      high: 93
+                      result: *Set.2
+                    - low: 94
+                      high: 98
+                      result: *Set.3
+                    - low: 99
+                      high: 100
+                      result: *Set.4
+          contents:
+            atmosphere:
+              title:
+                canonical: Atmosphere
+              table:
+                - low: null
+                  high: null
+                  result: None / thin
+                - low: null
+                  high: null
+                  result: Toxic
+                - low: null
+                  high: null
+                  result: Corrosive
+                - low: 1
+                  high: 20
+                  result: Marginal
+                - low: 21
+                  high: 50
+                  result: Breathable
+                - low: 51
+                  high: 100
+                  result: Ideal
+            observed_from_space:
+              title:
+                canonical: Observed From Space
+              table:
+                - low: 1
+                  high: 11
+                  result: Complex ring system
+                - low: 12
+                  high: 22
+                  result: Numerous small moons
+                - low: 23
+                  high: 33
+                  result: Dramatic seasonal variation
+                - low: 34
+                  high: 44
+                  result: Unusual day or night cycle
+                - low: 45
+                  high: 55
+                  result: High gravity
+                - low: 56
+                  high: 66
+                  result: Vibrantly colored landscapes
+                - low: 67
+                  high: 77
+                  result: Large moon
+                - low: 78
+                  high: 88
+                  result: Narrow livable band
+                - low: 89
+                  high: 98
+                  result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                  rolls: &DF.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                    - oracle: starforged/oracles/core/focus
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (orbital)
+            feature:
+              title:
+                canonical: Planetside Feature
+                short: Feature
+              table:
+                - low: 1
+                  high: 7
+                  result: Background radiation
+                - low: 8
+                  high: 14
+                  result: Chaotically juxtaposed biomes
+                - low: 15
+                  high: 21
+                  result: Creature boneyards
+                - low: 22
+                  high: 28
+                  result: Creature lairs or watering holes
+                - low: 29
+                  high: 35
+                  result: Crystalline formations
+                - low: 36
+                  high: 42
+                  result: Fierce electrical storms
+                - low: 43
+                  high: 49
+                  result: Floating terrain
+                - low: 50
+                  high: 56
+                  result: Frequent seismic activity
+                - low: 57
+                  high: 63
+                  result: Magnetic disturbances
+                - low: 64
+                  high: 70
+                  result: Scarred or excavated terrain
+                - low: 71
+                  high: 77
+                  result: Signs of an engineered biosphere
+                - low: 78
+                  high: 84
+                  result: Sudden weather fluctuations
+                - low: 85
+                  high: 91
+                  result: Towering geological formations
+                - low: 92
+                  high: 98
+                  result: *DF.result
+                  rolls: *DF.rolls
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (planetside)
+            life:
+              title:
+                canonical: Life
+              table:
+                - low: null
+                  high: null
+                  result: None
+                - low: null
+                  high: null
+                  result: Extinct
+                - low: 1
+                  high: 10
+                  result: Scarce
+                - low: 11
+                  high: 45
+                  result: Diverse
+                - low: 46
+                  high: 85
+                  result: Bountiful
+                - low: 86
+                  high: 100
+                  result: Overrun
+            diversity:
+              title:
+                canonical: Diversity
+              # content:
+              #   part_of_speech: [adjective]
+              description: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
+              table:
+                - low: 1
+                  high: 20
+                  result: Simple (two biomes)
                   rolls:
-                    - [1, 20] # None
-                    - [21, 30] # Orbital settlement
-                    - [31, 70] # Planetside settlement
-                    - [71, 90] # Multiple settlements
-                    - [91, 100] # Settlements in conflict
-              outlands:
-                _templateOracleTable: *template.info:Planet.Settlements.Outlands
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
+                    - times: 2
+                      oracle: &biome starforged/oracles/planets/vital/biomes
+                - low: 21
+                  high: 70
+                  result: Diverse (three biomes)
                   rolls:
-                    - [1, 50] # None
-                    - [51, 55] # Orbital settlement
-                    - [56, 85] # Planetside settlement
-                    - [86, 95] # Multiple settlements
-                    - [96, 100] # Settlements in conflict
-              expanse:
-                _templateOracleTable: *template.info:Planet.Settlements.Expanse
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
+                    - times: 3
+                      oracle: *biome
+                - low: 71
+                  high: 90
+                  result: Complex (four biomes)
                   rolls:
-                    - [1, 80] # None
-                    - [81, 83] # Orbital settlement
-                    - [84, 93] # Planetside settlement
-                    - [94, 98] # Multiple settlements
-                    - [99, 100] # Settlements in conflict
-        contents:
-          atmosphere:
-            _templateOracleTable: *template.info:Planet.Atmosphere
-            _templateTableRows:
-              content: *template.content:Planet.Atmosphere
-              rolls:
-                - [null, null] # None / thin
-                - [null, null] # Toxic
-                - [null, null] # Corrosive
-                - [1, 20] # Marginal
-                - [21, 50] # Breathable
-                - [51, 100] # Ideal
-          observed_from_space:
-            _templateOracleTable: *template.info:Planet.ObservedFromSpace
-            _templateTableRows:
-              rolls: *template.rolls:Planet.ObservedFromSpace
-              content:
-                - Complex ring system
-                - Numerous small moons
-                - Dramatic seasonal variation
-                - Unusual day or night cycle
-                - High gravity
-                - Vibrantly colored landscapes
-                - Large moon
-                - Narrow livable band
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Orbital
-          diversity:
-            title:
-              canonical: Diversity
-            description: &description:Vital.Diversity |-
-              To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
-            content:
-              part_of_speech: [adjective]
-            table:
-              - [1, 20, "Simple (two biomes)",
-                  oracles: [
-                    &biome starforged/oracles/planets/vital/biomes,
-                    *biome ]]
-              - [21, 70, "Diverse (three biomes)",
-                  oracles: [
-                    *biome,
-                    *biome,
-                    *biome ]]
-              - [71, 90, "Complex (four biomes)",
-                  oracles: [
-                    *biome,
-                    *biome,
-                    *biome,
-                    *biome ]]
-              - [91, 100, "Garden world (five or more biomes)",
-                  oracles: [
-                    *biome,
-                    *biome,
-                    *biome,
-                    *biome,
-                    *biome ]]
-          biomes:
-            title:
-              canonical: Biomes
-            description: *description:Vital.Diversity
-            usage:
-              allow_duplicates: true
-            content:
-              part_of_speech: [noun, common noun]
-            table:
-              - low: 1
-                high: 5
-                result: Caves
-              - low: 6
-                high: 10
-                result: Cold forest
-              - low: 11
-                high: 15
-                result: Fungal
-              - low: 16
-                high: 20
-                result: Glacial or snow
-              - low: 21
-                high: 25
-                result: Grassland
-              - low: 26
-                high: 30
-                result: Islands
-              - low: 31
-                high: 35
-                result: Jungle
-              - low: 36
-                high: 40
-                result: Mountainous
-              - low: 41
-                high: 45
-                result: Ocean
-              - low: 46
-                high: 50
-                result: Rocky desert
-              - low: 51
-                high: 55
-                result: Sandy desert
-              - low: 56
-                high: 60
-                result: Savanna
-              - low: 61
-                high: 65
-                result: Shallow seas
-              - low: 66
-                high: 70
-                result: Shrubland
-              - low: 71
-                high: 75
-                result: Temperate rainforest
-              - low: 76
-                high: 80
-                result: Temperate forest
-              - low: 81
-                high: 85
-                result: Tundra
-              - low: 86
-                high: 90
-                result: Volcanic
-              - low: 91
-                high: 95
-                result: Waterways
-              - low: 96
-                high: 100
-                result: Wetland
-          planetside_feature:
-            _templateOracleTable: *template.info:Planet.PlanetsideFeature
-            _templateTableRows:
-              rolls: *template.rolls:Planet.PlanetsideFeature
-              content:
-                - Background radiation
-                - Chaotically juxtaposed biomes
-                - Creature boneyards
-                - Creature lairs or watering holes
-                - Crystalline formations
-                - Fierce electrical storms
-                - Floating terrain
-                - Frequent seismic activity
-                - Magnetic disturbances
-                - Scarred or excavated terrain
-                - Signs of an engineered biosphere
-                - Sudden weather fluctuations
-                - Towering geological formations
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Planetside
-          life:
-            _templateOracleTable: *template.info:Planet.Life
-            _templateTableRows:
-              content: *template.content:Planet.Life
-              rolls:
-                - [null, null] # None
-                - [null, null] # Extinct
-                - [1, 10] # Scarce
-                - [11, 45] # Diverse
-                - [46, 85] # Bountiful
-                - [86, 100] # Overrun
+                    - times: 4
+                      oracle: *biome
+                - low: 91
+                  high: 100
+                  result: Garden world (five or more biomes)
+                  rolls:
+                    - times: 5
+                      oracle: *biome
+            biomes:
+              title:
+                canonical: Biomes
+              # content:
+              #   part_of_speech: [noun, common noun]
+              table:
+                - low: 1
+                  high: 5
+                  result: Caves
+                - low: 6
+                  high: 10
+                  result: Cold forest
+                - low: 11
+                  high: 15
+                  result: Fungal
+                - low: 16
+                  high: 20
+                  result: Glacial or snow
+                - low: 21
+                  high: 25
+                  result: Grassland
+                - low: 26
+                  high: 30
+                  result: Islands
+                - low: 31
+                  high: 35
+                  result: Jungle
+                - low: 36
+                  high: 40
+                  result: Mountainous
+                - low: 41
+                  high: 45
+                  result: Ocean
+                - low: 46
+                  high: 50
+                  result: Rocky desert
+                - low: 51
+                  high: 55
+                  result: Sandy desert
+                - low: 56
+                  high: 60
+                  result: Savanna
+                - low: 61
+                  high: 65
+                  result: Shallow seas
+                - low: 66
+                  high: 70
+                  result: Shrubland
+                - low: 71
+                  high: 75
+                  result: Temperate rainforest
+                - low: 76
+                  high: 80
+                  result: Temperate forest
+                - low: 81
+                  high: 85
+                  result: Tundra
+                - low: 86
+                  high: 90
+                  result: Volcanic
+                - low: 91
+                  high: 95
+                  result: Waterways
+                - low: 96
+                  high: 100
+                  result: Wetland

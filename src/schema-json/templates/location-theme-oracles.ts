@@ -1,135 +1,90 @@
 import { type LocationThemeOracles as TemplateTypes } from 'base-types/templates'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
 import {
-	staticRow,
 	descriptorFocusRow,
 	actionThemeRow,
-	rollTwiceRow
+	rollTwiceRow,
+	toTemplateSchema
 } from './common'
-import { schemaRef } from 'schema-json/common'
-import { type Title } from 'base-types/metadata'
 
 const LocationThemeFeatureOraclePartial: PartialSchema<TemplateTypes.LocationThemeFeatureOracle> =
-	{
-		type: 'object',
-		properties: {
-			title: {
-				...schemaRef<Title>('Title'),
-				default: {
-					canonical: 'Feature'
-				}
-			},
-			_template: {
-				type: 'string',
-				const: 'LocationThemeFeatureOracle'
-			},
-			summary: {
-				type: 'string',
-				default: 'Use this table to reveal a new aspect of the location.'
-			},
-			table: {
-				type: 'array',
-				minItems: 13,
-				maxItems: 13,
-				items: [
-					staticRow(1, 8),
-					staticRow(9, 16),
-					staticRow(17, 24),
-					staticRow(25, 32),
-					staticRow(33, 40),
-					staticRow(41, 48),
-					staticRow(49, 56),
-					staticRow(57, 64),
-					staticRow(65, 72),
-					staticRow(73, 80),
-					staticRow(81, 88),
-					staticRow(89, 96),
-					descriptorFocusRow(97, 100)
-				]
-			}
+	toTemplateSchema(
+		{
+			table: [
+				{ low: 1, high: 8 },
+				{ low: 9, high: 16 },
+				{ low: 17, high: 24 },
+				{ low: 25, high: 32 },
+				{ low: 33, high: 40 },
+				{ low: 41, high: 48 },
+				{ low: 49, high: 56 },
+				{ low: 57, high: 64 },
+				{ low: 65, high: 72 },
+				{ low: 73, high: 80 },
+				{ low: 81, high: 88 },
+				{ low: 89, high: 96 },
+				{ ...descriptorFocusRow, low: 97, high: 100 }
+			]
+		},
+		'LocationThemeFeatureOracle',
+		{
+			title: { canonical: 'Feature' },
+			summary: 'Use this table to reveal a new aspect of the location.'
 		}
-	}
+	) as any
 
 const LocationThemePerilOraclePartial: PartialSchema<TemplateTypes.LocationThemePerilOracle> =
-	{
-		type: 'object',
-		properties: {
-			title: {
-				...schemaRef<Title>('Title'),
-				default: {
-					canonical: 'Peril'
-				}
-			},
-			_template: {
-				type: 'string',
-				const: 'LocationThemePerilOracle'
-			},
-			summary: {
-				type: 'string',
-				default: 'Use this table to help envision a complication or hazard.'
-			},
-			table: {
-				type: 'array',
-				minItems: 12,
-				maxItems: 12,
-				items: [
-					staticRow(1, 9),
-					staticRow(10, 18),
-					staticRow(19, 27),
-					staticRow(28, 36),
-					staticRow(37, 45),
-					staticRow(46, 54),
-					staticRow(55, 63),
-					staticRow(64, 72),
-					staticRow(73, 81),
-					staticRow(82, 90),
-					actionThemeRow(91, 98),
-					rollTwiceRow(99, 100)
-				]
-			}
+	toTemplateSchema(
+		{
+			table: [
+				{ low: 1, high: 9 },
+				{ low: 10, high: 18 },
+				{ low: 19, high: 27 },
+				{ low: 28, high: 36 },
+				{ low: 37, high: 45 },
+				{ low: 46, high: 54 },
+				{ low: 55, high: 63 },
+				{ low: 64, high: 72 },
+				{ low: 73, high: 81 },
+				{ low: 82, high: 90 },
+				{ ...actionThemeRow, low: 91, high: 98 },
+				{ ...rollTwiceRow, low: 99, high: 100 }
+			]
+		},
+		'LocationThemePerilOracle',
+		{
+			title: { canonical: 'Peril' },
+			summary: 'Use this table to help envision a complication or hazard.'
 		}
-	}
+	) as any
 
 const LocationThemeOpportunityOraclePartial: PartialSchema<TemplateTypes.LocationThemeOpportunityOracle> =
-	{
-		type: 'object',
-		properties: {
+	toTemplateSchema(
+		{
+			table: [
+				{ low: 1, high: 20 },
+				{ low: 21, high: 40 },
+				{ low: 41, high: 60 },
+				{ low: 61, high: 80 },
+				{ low: 81, high: 100 }
+			]
+		},
+		'LocationThemeOpportunityOracle',
+		{
 			title: {
-				...schemaRef<Title>('Title'),
-				default: {
-					canonical: 'Opportunity'
-				}
-			},
-			_template: {
-				type: 'string',
-				const: 'LocationThemeOpportunityOracle'
-			},
-			summary: {
-				type: 'string',
-				default:
+				canonical: 'Opportunity',
+				summary:
 					'Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.'
-			},
-			table: {
-				type: 'array',
-				minItems: 5,
-				maxItems: 5,
-				items: [
-					staticRow(1, 20),
-					staticRow(21, 40),
-					staticRow(41, 60),
-					staticRow(61, 80),
-					staticRow(81, 100)
-				]
 			}
 		}
-	}
+	) as any
 
 export const LocationThemeOraclesPartial: PartialSchema<TemplateTypes.LocationThemeOracles> =
 	{
 		type: 'object',
 		required: ['_template', 'contents'],
 		properties: {
-			_template: { const: 'LocationThemeOracles' },
+			_template: { type: 'string', const: 'LocationThemeOracles' },
 			contents: {
 				type: 'object',
 				properties: {
@@ -139,4 +94,4 @@ export const LocationThemeOraclesPartial: PartialSchema<TemplateTypes.LocationTh
 				}
 			}
 		}
-	}
+	} as any

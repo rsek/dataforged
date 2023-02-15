@@ -151,7 +151,7 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	additionalProperties: false,
 	properties: {
 		_id: { $ref: '#/definitions/OracleTableID' },
-		_template: { type: 'string' },
+		_template: { type: 'string', nullable: undefined as any },
 		title: { $ref: '#/definitions/Title' },
 		source: schemaRef<Types.Metadata.Source>('Source'),
 		summary: { $ref: '#/definitions/MarkdownSentences' },
@@ -163,8 +163,9 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 			description: 'A handful of oracles have special behavior on a match.',
 			type: 'object',
 			required: ['text'],
-			properties: { text: { $ref: '#/definitions/MarkdownSentences' } }
-		} as any,
+			properties: { text: { $ref: '#/definitions/MarkdownSentences' } },
+			nullable: undefined as any
+		},
 		table: {
 			type: 'array',
 			items: schemaRef<Types.Oracles.OracleTableRow>('OracleTableRow')
@@ -264,12 +265,29 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 	}
 }
 
+const maybeTemplate = {
+	oneOf: [
+		{
+			not: {
+				required: ['_template'],
+				properties: {
+					_template: { type: 'string' }
+				}
+			}
+		},
+		schemaRef<any>('OracleCollectionTemplate')
+	]
+}
+
 export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 	JsonSchema.Abstract.collectionSchema<Types.Oracles.OracleCollection>(
 		'OracleTable',
 		'OracleCollectionID',
 		{
+			additionalProperties: false,
+			...maybeTemplate,
 			properties: {
+				_template: { type: 'string' },
 				rendering: {
 					type: 'object',
 					description:
@@ -295,6 +313,7 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 						}
 					}
 				},
+				sample_names: { type: 'array', items: { type: 'string' } },
 				collections: {
 					description: 'OracleCollections contained by this OracleCollection.',
 					type: 'object',
@@ -309,18 +328,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 						}
 					}
 				}
-			},
-			oneOf: [
-				{
-					type: 'object',
-					not: {
-						required: ['_template'],
-						properties: { _template: { type: 'string' } }
-					}
-				},
-				schemaRef<any>('OracleCollectionTemplate')
-			]
-		} as any
+			}
+		}
 	)
 
 export const OracleCollectionExtension: Schema<
@@ -330,6 +339,7 @@ export const OracleCollectionExtension: Schema<
 	'OracleCollectionID',
 	{
 		required: ['_extends', '_id'],
+		...maybeTemplate,
 		properties: {
 			collections: {
 				type: 'object',

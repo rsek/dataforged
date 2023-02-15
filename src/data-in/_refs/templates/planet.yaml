@@ -26,23 +26,23 @@ Planet: &template:Planet
         rendering:
           columns:
             - type: dice range
-              content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
+              table_key: terminus
               label: Terminus
             - type: dice range
-              content: starforged/oracles/planets/${{planetary_class}}/settlements/outlands
+              table_key: outlands
               label: Outlands
             - type: dice range
-              content: starforged/oracles/planets/${{planetary_class}}/settlements/expanse
+              table_key: expanse
               label: Expanse
             - type: string
-              content: starforged/oracles/planets/${{planetary_class}}/settlements/terminus
+              table_key: terminus
         contents:
           terminus:
             _templateOracleTable: &template.info:Planet.Settlements.Terminus
               title:
                 canonical: Terminus
               rendering: &template.display:Planet.Settlements
-                column_of: starforged/oracles/planets/${{planetary_class}}/settlements
+                style: embed_as_column
               usage:
                 requires: *attr:Region.Terminus
             _templateTableRows:

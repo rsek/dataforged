@@ -1,8 +1,8 @@
 import { type Oracles } from '@base-types'
 
 export interface RollTwiceRow<
-	Low extends number,
-	High extends number,
+	Low extends number = number,
+	High extends number = number,
 	Method extends Oracles.OracleTableRollMethod = 'no_duplicates'
 > extends Oracles.OracleTableRow<Low, High> {
 	_template: 'RollTwiceRow'
@@ -20,8 +20,10 @@ export interface PrecursorVaultRow<
 	result: `Precursor Vault (${Location})`
 }
 
-export interface DescriptorFocusRow<Low extends number, High extends number>
-	extends Oracles.OracleTableRow<Low, High> {
+export interface DescriptorFocusRow<
+	Low extends number = number,
+	High extends number = number
+> extends Oracles.OracleTableRow<Low, High> {
 	_template: 'DescriptorFocusRow'
 	result: '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
 	rolls: [
@@ -30,8 +32,10 @@ export interface DescriptorFocusRow<Low extends number, High extends number>
 	]
 }
 
-export interface ActionThemeRow<Low extends number, High extends number>
-	extends Oracles.OracleTableRow<Low, High> {
+export interface ActionThemeRow<
+	Low extends number = number,
+	High extends number = number
+> extends Oracles.OracleTableRow<Low, High> {
 	_template: 'ActionThemeRow'
 	result: '[⏵Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
 	rolls: [

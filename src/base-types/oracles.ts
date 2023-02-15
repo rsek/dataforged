@@ -97,6 +97,7 @@ export type OracleCollectionID = string
 export interface OracleCollection
 	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
 	rendering?: OracleCollectionRendering
+	sample_names?: string[]
 }
 
 export type OracleCollectionStyle = 'multi_table'

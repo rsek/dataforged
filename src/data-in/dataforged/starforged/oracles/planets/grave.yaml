@@ -1,139 +1,241 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-collections:
-  planets:
-    title:
-      canonical: Planets
-    _source:
-      date: 2022-05-06
-    collections:
-      grave:
-        _templateOracleSet: *template.category:Planet
-        _templateVars:
-          planetary_class: Grave
-        title:
-          canonical: Grave World
-        rendering:
-          images: *images:GraveWorld
-        _source:
-          page: 310
-        summary: A once-thriving world—now a grim monument to a fallen civilization.
-        sample_names:
-          - Anubis
-          - Banshee
-          - Barrow
-          - Cairn
-          - Cerberus
-          - Charon
-          - Elysia
-          - Keen
-          - Kur
-          - Lament
-          - Mantus
-          - Morrigan
-          - Mourn
-          - Necropolis
-          - Orcus
-          - Osiris
-          - Requiem
-          - Stygia
-          - Tartarus
-          - Thrace
-        collections:
-          settlements:
-            _templateOracleSet: *template.info:Planet.Settlements
-            contents:
-              terminus:
-                _templateOracleTable: *template.info:Planet.Settlements.Terminus
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 80] # None
-                    - [81, 90] # Orbital settlement
-                    - [91, 95] # Planetside settlement
-                    - [96, 98] # Multiple settlements
-                    - [99, 100] # Settlements in conflict
-
-              outlands:
-                _templateOracleTable: *template.info:Planet.Settlements.Outlands
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 90] # None
-                    - [91, 97] # Orbital settlement
-                    - [98, 100] # Planetside settlement
-                    - [null, null] # Multiple settlements
-                    - [null, null] # Settlements in conflict
-
-              expanse:
-                _templateOracleTable: *template.info:Planet.Settlements.Expanse
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 95] # None
-                    - [96, 98] # Orbital settlement
-                    - [99, 100] # Planetside settlement
-                    - [null, null] # Multiple settlements
-                    - [null, null] # Settlements in conflict
-        contents:
-          atmosphere:
-            _templateOracleTable: *template.info:Planet.Atmosphere
-            _templateTableRows:
-              content: *template.content:Planet.Atmosphere
-              rolls:
-                - [1, 10] # None / thin
-                - [11, 45] # Toxic
-                - [46, 70] # Corrosive
-                - [71, 90] # Marginal
-                - [91, 100] # Breathable
-                - [null, null] # Ideal
-
-          observed_from_space:
-            _templateOracleTable: *template.info:Planet.ObservedFromSpace
-            _templateTableRows:
-              rolls: *template.rolls:Planet.ObservedFromSpace
-              content:
-                - Broken moon
-                - Perpetual overcast
-                - Cratered surface
-                - Sky-breaching ruins
-                - Dry seabeds
-                - Vast wastelands
-                - Irradiated atmosphere
-                - Orbiting ship graveyard
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Orbital
-          planetside_feature:
-            _templateOracleTable: *template.info:Planet.PlanetsideFeature
-            _templateTableRows:
-              rolls: *template.rolls:Planet.PlanetsideFeature
-              content:
-                - Acid pools
-                - Ash dunes
-                - Corrosive rains
-                - Dead forests
-                - Fetid mudflats
-                - Mass graves
-                - Moldering bones
-                - Noxious fog
-                - Radioactive hotspots
-                - Ravaged cities
-                - Scarred battlefields
-                - Ship graveyards
-                - Whispers of the dead
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Planetside
-          life:
-            _templateOracleTable: *template.info:Planet.Life
-            _templateTableRows:
-              content: *template.content:Planet.Life
-              rolls:
-                - [1, 25] # None
-                - [26, 75] # Extinct
-                - [76, 95] # Scarce
-                - [96, 100] # Diverse
-                - [null, null] # Bountiful
-                - [null, null] # Overrun
+starforged:
+  _ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    title: 'Ironsworn: Starforged Rulebook'
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
+  oracles:
+    planets:
+      _extends: starforged/collections/oracles/planets
+      collections:
+        grave:
+          _template: PlanetOracles
+          title:
+            canonical: Grave World
+            short: Grave
+          rendering:
+            images:
+              - img/planets/grave-01.webp
+              - img/planets/grave-02.webp
+          _source:
+            page: 310
+          summary: A once-thriving world—now a grim monument to a fallen civilization.
+          sample_names:
+            - Anubis
+            - Banshee
+            - Barrow
+            - Cairn
+            - Cerberus
+            - Charon
+            - Elysia
+            - Keen
+            - Kur
+            - Lament
+            - Mantus
+            - Morrigan
+            - Mourn
+            - Necropolis
+            - Orcus
+            - Osiris
+            - Requiem
+            - Stygia
+            - Tartarus
+            - Thrace
+          collections:
+            settlements:
+              title:
+                canonical: Settlements
+              contents:
+                terminus:
+                  title:
+                    canonical: Terminus
+                  table:
+                    - low: 1
+                      high: 80
+                      result: &Set.0 None
+                    - low: 81
+                      high: 90
+                      result: &Set.1 Orbital settlement
+                    - low: 91
+                      high: 95
+                      result: &Set.2 Planetside settlement
+                    - low: 96
+                      high: 98
+                      result: &Set.3 Multiple settlements
+                    - low: 99
+                      high: 100
+                      result: &Set.4 Settlements in conflict
+                outlands:
+                  title:
+                    canonical: Outlands
+                  table:
+                    - low: 1
+                      high: 90
+                      result: *Set.0
+                    - low: 91
+                      high: 97
+                      result: *Set.1
+                    - low: 98
+                      high: 100
+                      result: *Set.2
+                    - low: null
+                      high: null
+                      result: *Set.3
+                    - low: null
+                      high: null
+                      result: *Set.4
+                expanse:
+                  title:
+                    canonical: Expanse
+                  table:
+                    - low: 1
+                      high: 95
+                      result: *Set.0
+                    - low: 96
+                      high: 98
+                      result: *Set.1
+                    - low: 99
+                      high: 100
+                      result: *Set.2
+                    - low: null
+                      high: null
+                      result: *Set.3
+                    - low: null
+                      high: null
+                      result: *Set.4
+          contents:
+            atmosphere:
+              title:
+                canonical: Atmosphere
+              table:
+                - low: 1
+                  high: 10
+                  result: None / thin
+                - low: 11
+                  high: 45
+                  result: Toxic
+                - low: 46
+                  high: 70
+                  result: Corrosive
+                - low: 71
+                  high: 90
+                  result: Marginal
+                - low: 91
+                  high: 100
+                  result: Breathable
+                - low: null
+                  high: null
+                  result: Ideal
+            observed_from_space:
+              title:
+                canonical: Observed From Space
+              table:
+                - low: 1
+                  high: 11
+                  result: Broken moon
+                - low: 12
+                  high: 22
+                  result: Perpetual overcast
+                - low: 23
+                  high: 33
+                  result: Cratered surface
+                - low: 34
+                  high: 44
+                  result: Sky-breaching ruins
+                - low: 45
+                  high: 55
+                  result: Dry seabeds
+                - low: 56
+                  high: 66
+                  result: Vast wastelands
+                - low: 67
+                  high: 77
+                  result: Irradiated atmosphere
+                - low: 78
+                  high: 88
+                  result: Orbiting ship graveyard
+                - low: 89
+                  high: 98
+                  result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                  rolls: &DF.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                    - oracle: starforged/oracles/core/focus
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (orbital)
+            feature:
+              title:
+                canonical: Planetside Feature
+                short: Feature
+              table:
+                - low: 1
+                  high: 7
+                  result: Acid pools
+                - low: 8
+                  high: 14
+                  result: Ash dunes
+                - low: 15
+                  high: 21
+                  result: Corrosive rains
+                - low: 22
+                  high: 28
+                  result: Dead forests
+                - low: 29
+                  high: 35
+                  result: Fetid mudflats
+                - low: 36
+                  high: 42
+                  result: Mass graves
+                - low: 43
+                  high: 49
+                  result: Moldering bones
+                - low: 50
+                  high: 56
+                  result: Noxious fog
+                - low: 57
+                  high: 63
+                  result: Radioactive hotspots
+                - low: 64
+                  high: 70
+                  result: Ravaged cities
+                - low: 71
+                  high: 77
+                  result: Scarred battlefields
+                - low: 78
+                  high: 84
+                  result: Ship graveyards
+                - low: 85
+                  high: 91
+                  result: Whispers of the dead
+                - low: 92
+                  high: 98
+                  result: *DF.result
+                  rolls: *DF.rolls
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (planetside)
+            life:
+              title:
+                canonical: Life
+              table:
+                - low: 1
+                  high: 25
+                  result: None
+                - low: 26
+                  high: 75
+                  result: Extinct
+                - low: 76
+                  high: 95
+                  result: Scarce
+                - low: 96
+                  high: 100
+                  result: Diverse
+                - low: null
+                  high: null
+                  result: Bountiful
+                - low: null
+                  high: null
+                  result: Overrun

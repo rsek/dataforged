@@ -1,136 +1,241 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-collections:
-  planets:
-    title:
-      canonical: Planets
-    _source:
-      date: 2022-05-06
-    collections:
-      ocean:
-        _templateOracleSet: *template.category:Planet
-        _templateVars:
-          planetary_class: Ocean
-        title:
-          canonical: Ocean World
-        rendering:
-          images: *images:OceanWorld
-        _source:
-          page: 314
-        summary: A planet completely or almost entirely covered by a boundless ocean.
-        sample_names:
-          - Aegir
-          - Alon
-          - Clarion
-          - Darya
-          - Eldoris
-          - Horizon
-          - Hydra
-          - Kai
-          - Larimar
-          - Lotan
-          - Mira
-          - Navini
-          - Nerida
-          - Oceanus
-          - Pelagic
-          - Proteus
-          - Russalka
-          - Siren
-          - Thalassa
-          - Triton
-        collections:
-          settlements:
-            _templateOracleSet: *template.info:Planet.Settlements
-            contents:
-              terminus:
-                _templateOracleTable: *template.info:Planet.Settlements.Terminus
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 40] # None
-                    - [41, 55] # Orbital settlement
-                    - [56, 80] # Planetside settlement
-                    - [81, 92] # Multiple settlements
-                    - [93, 100] # Settlements in conflict
-              outlands:
-                _templateOracleTable: *template.info:Planet.Settlements.Outlands
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 65] # None
-                    - [66, 75] # Orbital settlement
-                    - [76, 92] # Planetside settlement
-                    - [93, 97] # Multiple settlements
-                    - [98, 100] # Settlements in conflict
-              expanse:
-                _templateOracleTable: *template.info:Planet.Settlements.Expanse
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 85] # None
-                    - [86, 90] # Orbital settlement
-                    - [91, 97] # Planetside settlement
-                    - [98, 99] # Multiple settlements
-                    - [100, 100] # Settlements in conflict
-        contents:
-          atmosphere:
-            _templateOracleTable: *template.info:Planet.Atmosphere
-            _templateTableRows:
-              content: *template.content:Planet.Atmosphere
-              rolls:
-                - [1, 5] # None / thin
-                - [6, 20] # Toxic
-                - [21, 25] # Corrosive
-                - [26, 60] # Marginal
-                - [61, 90] # Breathable
-                - [91, 100] # Ideal
-          observed_from_space:
-            _templateOracleTable: *template.info:Planet.ObservedFromSpace
-            _templateTableRows:
-              rolls: *template.rolls:Planet.ObservedFromSpace
-              content:
-                - Complex reef systems
-                - Emerging volcanoes
-                - Floating forests
-                - Global hurricanes
-                - Large moon and strong tides
-                - Scattered islands
-                - Semi-frozen oceans
-                - Unusual water color
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Orbital
-          planetside_feature:
-            _templateOracleTable: *template.info:Planet.PlanetsideFeature
-            _templateTableRows:
-              rolls: *template.rolls:Planet.PlanetsideFeature
-              content:
-                - Abyssal trenches
-                - Living islands
-                - Luminescent seas
-                - Roaming icebergs
-                - Shallow-water plains
-                - Subsurface volcanoes
-                - Titanic waves
-                - Undersea air pockets
-                - Undersea caves
-                - Undersea forests
-                - Unrelenting rainfall
-                - Violent currents
-                - Windborne waterspouts
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Planetside
-          life:
-            _templateOracleTable: *template.info:Planet.Life
-            _templateTableRows:
-              content: *template.content:Planet.Life
-              rolls:
-                - [1, 5] # None
-                - [6, 15] # Extinct
-                - [16, 30] # Scarce
-                - [31, 60] # Diverse
-                - [61, 90] # Bountiful
-                - [91, 100] # Overrun
+starforged:
+  _ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    title: 'Ironsworn: Starforged Rulebook'
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
+  oracles:
+    planets:
+      _extends: starforged/collections/oracles/planets
+      collections:
+        ocean:
+          _template: PlanetOracles
+          title:
+            canonical: Ocean World
+            short: Ocean
+          rendering:
+            images:
+              - img/planets/ocean-01.webp
+              - img/planets/ocean-02.webp
+          _source:
+            page: 314
+          summary: A planet completely or almost entirely covered by a boundless ocean.
+          sample_names:
+            - Aegir
+            - Alon
+            - Clarion
+            - Darya
+            - Eldoris
+            - Horizon
+            - Hydra
+            - Kai
+            - Larimar
+            - Lotan
+            - Mira
+            - Navini
+            - Nerida
+            - Oceanus
+            - Pelagic
+            - Proteus
+            - Russalka
+            - Siren
+            - Thalassa
+            - Triton
+          collections:
+            settlements:
+              title:
+                canonical: Settlements
+              contents:
+                terminus:
+                  title:
+                    canonical: Terminus
+                  table:
+                    - low: 1
+                      high: 40
+                      result: &Set.0 None
+                    - low: 41
+                      high: 55
+                      result: &Set.1 Orbital settlement
+                    - low: 56
+                      high: 80
+                      result: &Set.2 Planetside settlement
+                    - low: 81
+                      high: 92
+                      result: &Set.3 Multiple settlements
+                    - low: 93
+                      high: 100
+                      result: &Set.4 Settlements in conflict
+                outlands:
+                  title:
+                    canonical: Outlands
+                  table:
+                    - low: 1
+                      high: 65
+                      result: *Set.0
+                    - low: 66
+                      high: 75
+                      result: *Set.1
+                    - low: 76
+                      high: 92
+                      result: *Set.2
+                    - low: 93
+                      high: 97
+                      result: *Set.3
+                    - low: 98
+                      high: 100
+                      result: *Set.4
+                expanse:
+                  title:
+                    canonical: Expanse
+                  table:
+                    - low: 1
+                      high: 85
+                      result: *Set.0
+                    - low: 86
+                      high: 90
+                      result: *Set.1
+                    - low: 91
+                      high: 97
+                      result: *Set.2
+                    - low: 98
+                      high: 99
+                      result: *Set.3
+                    - low: 100
+                      high: 100
+                      result: *Set.4
+          contents:
+            atmosphere:
+              title:
+                canonical: Atmosphere
+              table:
+                - low: 1
+                  high: 5
+                  result: None / thin
+                - low: 6
+                  high: 20
+                  result: Toxic
+                - low: 21
+                  high: 25
+                  result: Corrosive
+                - low: 26
+                  high: 60
+                  result: Marginal
+                - low: 61
+                  high: 90
+                  result: Breathable
+                - low: 91
+                  high: 100
+                  result: Ideal
+            observed_from_space:
+              title:
+                canonical: Observed From Space
+              table:
+                - low: 1
+                  high: 11
+                  result: Complex reef systems
+                - low: 12
+                  high: 22
+                  result: Emerging volcanoes
+                - low: 23
+                  high: 33
+                  result: Floating forests
+                - low: 34
+                  high: 44
+                  result: Global hurricanes
+                - low: 45
+                  high: 55
+                  result: Large moon and strong tides
+                - low: 56
+                  high: 66
+                  result: Scattered islands
+                - low: 67
+                  high: 77
+                  result: Semi-frozen oceans
+                - low: 78
+                  high: 88
+                  result: Unusual water color
+                - low: 89
+                  high: 98
+                  result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                  rolls: &DF.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                    - oracle: starforged/oracles/core/focus
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (orbital)
+            feature:
+              title:
+                canonical: Planetside Feature
+                short: Feature
+              table:
+                - low: 1
+                  high: 7
+                  result: Abyssal trenches
+                - low: 8
+                  high: 14
+                  result: Living islands
+                - low: 15
+                  high: 21
+                  result: Luminescent seas
+                - low: 22
+                  high: 28
+                  result: Roaming icebergs
+                - low: 29
+                  high: 35
+                  result: Shallow-water plains
+                - low: 36
+                  high: 42
+                  result: Subsurface volcanoes
+                - low: 43
+                  high: 49
+                  result: Titanic waves
+                - low: 50
+                  high: 56
+                  result: Undersea air pockets
+                - low: 57
+                  high: 63
+                  result: Undersea caves
+                - low: 64
+                  high: 70
+                  result: Undersea forests
+                - low: 71
+                  high: 77
+                  result: Unrelenting rainfall
+                - low: 78
+                  high: 84
+                  result: Violent currents
+                - low: 85
+                  high: 91
+                  result: Windborne waterspouts
+                - low: 92
+                  high: 98
+                  result: *DF.result
+                  rolls: *DF.rolls
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (planetside)
+            life:
+              title:
+                canonical: Life
+              table:
+                - low: 1
+                  high: 5
+                  result: None
+                - low: 6
+                  high: 15
+                  result: Extinct
+                - low: 16
+                  high: 30
+                  result: Scarce
+                - low: 31
+                  high: 60
+                  result: Diverse
+                - low: 61
+                  high: 90
+                  result: Bountiful
+                - low: 91
+                  high: 100
+                  result: Overrun

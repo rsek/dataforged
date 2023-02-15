@@ -1,136 +1,241 @@
-source:
-  authors:
-    - Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by-nc-sa/4.0
-collections:
-  planets:
-    title:
-      canonical: Planets
-    _source:
-      date: 2022-05-06
-    collections:
-      tainted:
-        _templateOracleSet: *template.category:Planet
-        _templateVars:
-          planetary_class: Tainted
-        title:
-          canonical: Tainted World
-        rendering:
-          images: *images:TaintedWorld
-        _source:
-          page: 317
-        summary: A foul planet wracked by a poisonous climate and virulent growths.
-        sample_names:
-          - Achlys
-          - Animus
-          - Bane
-          - Blight
-          - Carrion
-          - Chitin
-          - Datura
-          - Dreck
-          - Erra
-          - Febris
-          - Malacia
-          - Miasma
-          - Morbus
-          - Pathosis
-          - Pestis
-          - Scourge
-          - Telium
-          - Timoris
-          - Verus
-          - Xanthous
-        collections:
-          settlements:
-            _templateOracleSet: *template.info:Planet.Settlements
-            contents:
-              terminus:
-                _templateOracleTable: *template.info:Planet.Settlements.Terminus
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 80] # None
-                    - [81, 90] # Orbital settlement
-                    - [91, 95] # Planetside settlement
-                    - [96, 98] # Multiple settlements
-                    - [99, 100] # Settlements in conflict
-              outlands:
-                _templateOracleTable: *template.info:Planet.Settlements.Outlands
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 90] # None
-                    - [91, 97] # Orbital settlement
-                    - [98, 100] # Planetside settlement
-                    - [null, null] # Multiple settlements
-                    - [null, null] # Settlements in conflict
-              expanse:
-                _templateOracleTable: *template.info:Planet.Settlements.Expanse
-                _templateTableRows:
-                  content: *template.content:Planet.Settlements
-                  rolls:
-                    - [1, 95] # None
-                    - [96, 98] # Orbital settlement
-                    - [99, 100] # Planetside settlement
-                    - [null, null] # Multiple settlements
-                    - [null, null] # Settlements in conflict
-        contents:
-          atmosphere:
-            _templateOracleTable: *template.info:Planet.Atmosphere
-            _templateTableRows:
-              content: *template.content:Planet.Atmosphere
-              rolls:
-                - [null, null] # None / thin
-                - [1, 65] # Toxic
-                - [66, 85] # Corrosive
-                - [86, 95] # Marginal
-                - [96, 100] # Breathable
-                - [null, null] # Ideal
-          observed_from_space:
-            _templateOracleTable: *template.info:Planet.ObservedFromSpace
-            _templateTableRows:
-              rolls: *template.rolls:Planet.ObservedFromSpace
-              content:
-                - Expansive fungal plains
-                - Stagnant cloud cover
-                - Fungal forests
-                - ["Thick, murky atmosphere"]
-                - ["Scabrous, infected terrain"]
-                - Toxic seas
-                - Sky-breaching fungus
-                - Sludge-filled river networks
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Orbital
-          planetside_feature:
-            _templateOracleTable: *template.info:Planet.PlanetsideFeature
-            _templateTableRows:
-              rolls: *template.rolls:Planet.PlanetsideFeature
-              content:
-                - Caustic gas storms
-                - ["Corrosive, low-lying fog"]
-                - Fungus-encrusted caves
-                - Gelatinous ponds
-                - Hallucinogenic toxins
-                - Layers of fast-growing lichen
-                - Moldering bones
-                - Mutated flora
-                - Poisonous gas vents
-                - Spore clouds
-                - Terrain marred by fleshy pustules
-                - Toxic rain
-                - Virulent fungal infestations
-                - *result:Descriptor+Focus
-                - *result:PrecursorVault.Planetside
-          life:
-            _templateOracleTable: *template.info:Planet.Life
-            _templateTableRows:
-              content: *template.content:Planet.Life
-              rolls:
-                - [null, null] # None
-                - [null, null] # Extinct
-                - [1, 10] # Scarce
-                - [11, 35] # Diverse
-                - [36, 65] # Bountiful
-                - [66, 100] # Overrun
+starforged:
+  _ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    title: 'Ironsworn: Starforged Rulebook'
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+    url: https://ironswornrpg.com
+  oracles:
+    planets:
+      _extends: starforged/collections/oracles/planets
+      collections:
+        tainted:
+          _template: PlanetOracles
+          title:
+            canonical: Tainted World
+            short: Tainted
+          rendering:
+            images:
+              - img/planets/tainted-01.webp
+              - img/planets/tainted-02.webp
+          _source:
+            page: 317
+          summary: A foul planet wracked by a poisonous climate and virulent growths.
+          sample_names:
+            - Achlys
+            - Animus
+            - Bane
+            - Blight
+            - Carrion
+            - Chitin
+            - Datura
+            - Dreck
+            - Erra
+            - Febris
+            - Malacia
+            - Miasma
+            - Morbus
+            - Pathosis
+            - Pestis
+            - Scourge
+            - Telium
+            - Timoris
+            - Verus
+            - Xanthous
+          collections:
+            settlements:
+              title:
+                canonical: Settlements
+              contents:
+                terminus:
+                  title:
+                    canonical: Terminus
+                  table:
+                    - low: 1
+                      high: 80
+                      result: &Set.0 None
+                    - low: 81
+                      high: 90
+                      result: &Set.1 Orbital settlement
+                    - low: 91
+                      high: 95
+                      result: &Set.2 Planetside settlement
+                    - low: 96
+                      high: 98
+                      result: &Set.3 Multiple settlements
+                    - low: 99
+                      high: 100
+                      result: &Set.4 Settlements in conflict
+                outlands:
+                  title:
+                    canonical: Outlands
+                  table:
+                    - low: 1
+                      high: 90
+                      result: *Set.0
+                    - low: 91
+                      high: 97
+                      result: *Set.1
+                    - low: 98
+                      high: 100
+                      result: *Set.2
+                    - low: null
+                      high: null
+                      result: *Set.3
+                    - low: null
+                      high: null
+                      result: *Set.4
+                expanse:
+                  title:
+                    canonical: Expanse
+                  table:
+                    - low: 1
+                      high: 95
+                      result: *Set.0
+                    - low: 96
+                      high: 98
+                      result: *Set.1
+                    - low: 99
+                      high: 100
+                      result: *Set.2
+                    - low: null
+                      high: null
+                      result: *Set.3
+                    - low: null
+                      high: null
+                      result: *Set.4
+          contents:
+            atmosphere:
+              title:
+                canonical: Atmosphere
+              table:
+                - low: null
+                  high: null
+                  result: None / thin
+                - low: 1
+                  high: 65
+                  result: Toxic
+                - low: 66
+                  high: 85
+                  result: Corrosive
+                - low: 86
+                  high: 95
+                  result: Marginal
+                - low: 96
+                  high: 100
+                  result: Breathable
+                - low: null
+                  high: null
+                  result: Ideal
+            observed_from_space:
+              title:
+                canonical: Observed From Space
+              table:
+                - low: 1
+                  high: 11
+                  result: Expansive fungal plains
+                - low: 12
+                  high: 22
+                  result: Stagnant cloud cover
+                - low: 23
+                  high: 33
+                  result: Fungal forests
+                - low: 34
+                  high: 44
+                  result: Thick, murky atmosphere
+                - low: 45
+                  high: 55
+                  result: Scabrous, infected terrain
+                - low: 56
+                  high: 66
+                  result: Toxic seas
+                - low: 67
+                  high: 77
+                  result: Sky-breaching fungus
+                - low: 78
+                  high: 88
+                  result: Sludge-filled river networks
+                - low: 89
+                  high: 98
+                  result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                  rolls: &DF.rolls
+                    - oracle: starforged/oracles/core/descriptor
+                    - oracle: starforged/oracles/core/focus
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (orbital)
+            feature:
+              title:
+                canonical: Planetside Feature
+                short: Feature
+              table:
+                - low: 1
+                  high: 7
+                  result: Caustic gas storms
+                - low: 8
+                  high: 14
+                  result: Corrosive, low-lying fog
+                - low: 15
+                  high: 21
+                  result: Fungus-encrusted caves
+                - low: 22
+                  high: 28
+                  result: Gelatinous ponds
+                - low: 29
+                  high: 35
+                  result: Hallucinogenic toxins
+                - low: 36
+                  high: 42
+                  result: Layers of fast-growing lichen
+                - low: 43
+                  high: 49
+                  result: Moldering bones
+                - low: 50
+                  high: 56
+                  result: Mutated flora
+                - low: 57
+                  high: 63
+                  result: Poisonous gas vents
+                - low: 64
+                  high: 70
+                  result: Spore clouds
+                - low: 71
+                  high: 77
+                  result: Terrain marred by fleshy pustules
+                - low: 78
+                  high: 84
+                  result: Toxic rain
+                - low: 85
+                  high: 91
+                  result: Virulent fungal infestations
+                - low: 92
+                  high: 98
+                  result: *DF.result
+                  rolls: *DF.rolls
+                - low: 99
+                  high: 100
+                  result: Precursor Vault (planetside)
+            life:
+              title:
+                canonical: Life
+              table:
+                - low: null
+                  high: null
+                  result: None
+                - low: null
+                  high: null
+                  result: Extinct
+                - low: 1
+                  high: 10
+                  result: Scarce
+                - low: 11
+                  high: 35
+                  result: Diverse
+                - low: 36
+                  high: 65
+                  result: Bountiful
+                - low: 66
+                  high: 100
+                  result: Overrun

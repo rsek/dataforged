@@ -118,7 +118,7 @@ starforged:
               title:
                 canonical: Lifebearing
               rendering:
-                column_of: starforged/oracles/planets/peril
+                style: embed_as_column
               usage:
                 requires: &attr:Life.Lifebearing
                   attributes:
@@ -243,7 +243,7 @@ starforged:
               title:
                 canonical: Lifeless
               rendering:
-                column_of: starforged/oracles/planets/peril
+                style: embed_as_column
               usage:
                 requires: &attr:Life.Lifeless
                   attributes:
@@ -295,15 +295,16 @@ starforged:
             columns:
               lifebearing:
                 content_type: range
-                content: starforged/oracles/planets/opportunity/lifebearing
+                table_key: lifebearing
                 label: Lifebearing
               lifeless:
                 content_type: range
-                content: starforged/oracles/planets/opportunity/lifeless
+                table_key: lifeless
                 label: Lifeless
               result:
-                content_type: string
-                content: starforged/oracles/planets/opportunity/lifebearing
+                content_type: result
+                table_key: lifebearing
+                label: Result
           content:
             part_of_speech: [fragment]
             tags: [opportunity]
@@ -317,7 +318,7 @@ starforged:
           contents:
             lifebearing:
               rendering:
-                column_of: starforged/oracles/planets/opportunity
+                style: embed_as_column
               title:
                 canonical: Lifebearing
               usage:
@@ -411,7 +412,7 @@ starforged:
                   suggestions: [*roll:Object]
             lifeless:
               rendering:
-                column_of: starforged/oracles/planets/opportunity
+                style: embed_as_column
               title:
                 canonical: Lifeless
               usage:

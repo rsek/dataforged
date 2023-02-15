@@ -14,7 +14,7 @@ export function collectionSchema<
 >(
 	contentsRef: string,
 	idRef: string,
-	mergeWith: Partial<TCollection> = {}
+	mergeWith: PartialSchema<TCollection> = {}
 ): Schema<TCollection> {
 	const CollectionBase: Schema<Types.Collection<any, string>> = {
 		type: 'object',

@@ -11,39 +11,39 @@ starforged:
     planets:
       _extends: starforged/collections/oracles/planets
       collections:
-        ice:
+        xx_planet_class:
           _template: PlanetOracles
           title:
-            canonical: Ice World
-            short: Ice
+            canonical: xxPlanetClass World
+            short: xxPlanetClass
           rendering:
             images:
-              - img/planets/ice-01.webp
-              - img/planets/ice-02.webp
+              - img/planets/xx_planet_class-01.webp
+              - img/planets/xx_planet_class-02.webp
           _source:
-            page: 311
-          summary: A rugged, frozen world—locked in an unending winter.
+            page: 0
+          summary: null
           sample_names:
-            - Beira
-            - Boreas
-            - Caradhras
-            - Cicero
-            - Demetria
-            - Enten
-            - Fissure
-            - Frost
-            - Gelida
-            - Jotunn
-            - Kanna
-            - Karn
-            - Kheimon
-            - Moroz
-            - Nix
-            - Olwen
-            - Osolok
-            - Taiga
-            - Thule
-            - Varnholme
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
+            - xxSampleName
           collections:
             settlements:
               title:
@@ -53,81 +53,81 @@ starforged:
                   title:
                     canonical: Terminus
                   table:
-                    - low: 1
-                      high: 50
+                    - low: 0
+                      high: 0
                       result: &Set.0 None
-                    - low: 51
-                      high: 60
+                    - low: 0
+                      high: 0
                       result: &Set.1 Orbital settlement
-                    - low: 61
-                      high: 80
+                    - low: 0
+                      high: 0
                       result: &Set.2 Planetside settlement
-                    - low: 81
-                      high: 92
+                    - low: 0
+                      high: 0
                       result: &Set.3 Multiple settlements
-                    - low: 93
-                      high: 100
+                    - low: 0
+                      high: 0
                       result: &Set.4 Settlements in conflict
                 outlands:
                   title:
                     canonical: Outlands
                   table:
-                    - low: 1
-                      high: 75
+                    - low: 0
+                      high: 0
                       result: *Set.0
-                    - low: 76
-                      high: 83
+                    - low: 0
+                      high: 0
                       result: *Set.1
-                    - low: 84
-                      high: 95
+                    - low: 0
+                      high: 0
                       result: *Set.2
-                    - low: 96
-                      high: 98
+                    - low: 0
+                      high: 0
                       result: *Set.3
-                    - low: 99
-                      high: 100
+                    - low: 0
+                      high: 0
                       result: *Set.4
                 expanse:
                   title:
                     canonical: Expanse
                   table:
-                    - low: 1
-                      high: 90
+                    - low: 0
+                      high: 0
                       result: *Set.0
-                    - low: 91
-                      high: 96
+                    - low: 0
+                      high: 0
                       result: *Set.1
-                    - low: 97
-                      high: 100
+                    - low: 0
+                      high: 0
                       result: *Set.2
-                    - low: null
-                      high: null
+                    - low: 0
+                      high: 0
                       result: *Set.3
-                    - low: null
-                      high: null
+                    - low: 0
+                      high: 0
                       result: *Set.4
           contents:
             atmosphere:
               title:
                 canonical: Atmosphere
               table:
-                - low: 1
-                  high: 15
+                - low: 0
+                  high: 0
                   result: None / thin
-                - low: 16
-                  high: 35
+                - low: 0
+                  high: 0
                   result: Toxic
-                - low: 36
-                  high: 40
+                - low: 0
+                  high: 0
                   result: Corrosive
-                - low: 41
-                  high: 70
+                - low: 0
+                  high: 0
                   result: Marginal
-                - low: 71
-                  high: 95
+                - low: 0
+                  high: 0
                   result: Breathable
-                - low: 96
-                  high: 100
+                - low: 0
+                  high: 0
                   result: Ideal
             observed_from_space:
               title:
@@ -135,28 +135,28 @@ starforged:
               table:
                 - low: 1
                   high: 11
-                  result: Feeble sunlight
+                  result: xxFromSpace
                 - low: 12
                   high: 22
-                  result: Supersized ice volcano
+                  result: xxFromSpace
                 - low: 23
                   high: 33
-                  result: Frozen oceans
+                  result: xxFromSpace
                 - low: 34
                   high: 44
-                  result: Vibrantly colored ice
+                  result: xxFromSpace
                 - low: 45
                   high: 55
-                  result: Rocky glacial islands
+                  result: xxFromSpace
                 - low: 56
                   high: 66
-                  result: World-spanning ice canyon
+                  result: xxFromSpace
                 - low: 67
                   high: 77
-                  result: Snowbound mountains
+                  result: xxFromSpace
                 - low: 78
                   high: 88
-                  result: Sky-breaching geysers
+                  result: xxFromSpace
                 - low: 89
                   high: 98
                   result: &DF.result '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
@@ -173,43 +173,43 @@ starforged:
               table:
                 - low: 1
                   high: 7
-                  result: Abyssal ice fissures
+                  result: xxFeature
                 - low: 8
                   high: 14
-                  result: Blinding snow storms
+                  result: xxFeature
                 - low: 15
                   high: 21
-                  result: Clusters of ice spikes
+                  result: xxFeature
                 - low: 22
                   high: 28
-                  result: Colossal ice caves
+                  result: xxFeature
                 - low: 29
                   high: 35
-                  result: Glistening ice spires
+                  result: xxFeature
                 - low: 36
                   high: 42
-                  result: Massive snow drifts
+                  result: xxFeature
                 - low: 43
                   high: 49
-                  result: Preserved carcasses
+                  result: xxFeature
                 - low: 50
                   high: 56
-                  result: Rocky islands amid icy wastes
+                  result: xxFeature
                 - low: 57
                   high: 63
-                  result: Shattered plains of pack ice
+                  result: xxFeature
                 - low: 64
                   high: 70
-                  result: Steaming hot springs
+                  result: xxFeature
                 - low: 71
                   high: 77
-                  result: Subsurface liquid oceans
+                  result: xxFeature
                 - low: 78
                   high: 84
-                  result: Vibrant auroras
+                  result: xxFeature
                 - low: 85
                   high: 91
-                  result: Wind-carved ice formations
+                  result: xxFeature
                 - low: 92
                   high: 98
                   result: *DF.result
@@ -221,21 +221,21 @@ starforged:
               title:
                 canonical: Life
               table:
-                - low: 1
-                  high: 20
+                - low: 0
+                  high: 0
                   result: None
-                - low: 21
-                  high: 40
+                - low: 0
+                  high: 0
                   result: Extinct
-                - low: 41
-                  high: 70
+                - low: 0
+                  high: 0
                   result: Scarce
-                - low: 71
-                  high: 90
+                - low: 0
+                  high: 0
                   result: Diverse
-                - low: 91
-                  high: 97
+                - low: 0
+                  high: 0
                   result: Bountiful
-                - low: 98
-                  high: 100
+                - low: 0
+                  high: 0
                   result: Overrun
