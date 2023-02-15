@@ -2,7 +2,7 @@
  * Regenerates schema for YAML input and writes it to file
  */
 
-import { Schema } from '@df-json-schema'
+import { Schema } from '@schema-json'
 import Ajv from 'ajv'
 import path from 'path'
 import addFormats from 'ajv-formats'
@@ -12,7 +12,12 @@ import { writeFile } from 'fs/promises'
 import logger from './logger'
 
 // eslint-disable-next-line new-cap
-const ajv = new Ajv({ removeAdditional: true, $data: true })
+const ajv = new Ajv({
+	removeAdditional: true,
+	strict: true,
+	verbose: true
+	// useDefaults: true
+})
 addFormats(ajv)
 
 ajv.addSchema(Schema.DataforgedInput, 'DataforgedInput')
@@ -45,7 +50,7 @@ getPrettierOptions(dataforgedSchemaPath)
 
 		const dataswornSchemaPath = path.join(
 			process.cwd(),
-			'./src/data-in/datasworn/schema-datasworn-input.json'
+			'src/data-in/datasworn/schema-datasworn-input.json'
 		)
 
 		logger.info('Writing Ironsworn-compatible input schema for Datasworn')

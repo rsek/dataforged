@@ -60,7 +60,7 @@ export type SuggestedOracleTables = OracleTableID[]
 export type EncounterStarforgedID = string
 export type SuggestedEncounters = EncounterStarforgedID[]
 /**
- * A relative URI pointing to an SVG icon.
+ * A relative URL pointing to an SVG icon.
  *
  * This interface was referenced by `DataforgedDataEntry`'s JSON-Schema
  * via the `definition` "Icon".
@@ -290,9 +290,9 @@ export type MarkdownParagraphs1 = string
  * via the `patternProperty` "^[a-z][a-z_]*[a-z]$".
  *
  * This interface was referenced by `DataforgedDataEntry`'s JSON-Schema
- * via the `definition` "SettingTruthStarforged".
+ * via the `definition` "SettingTruth".
  */
-export type SettingTruthStarforged = SettingTruth & {
+export type SettingTruth = SettingTruth & {
 	options?: OracleTableRow[]
 }
 /**
@@ -301,7 +301,7 @@ export type SettingTruthStarforged = SettingTruth & {
  */
 export type Id = string
 /**
- * A relative URI pointing to a WEBP image.
+ * A relative URL pointing to a WEBP image.
  *
  * This interface was referenced by `DataforgedDataEntry`'s JSON-Schema
  * via the `definition` "Image".
@@ -379,7 +379,7 @@ export interface Source {
 	 */
 	page?: number
 	/**
-	 * The URI where the source document is available.
+	 * The URL where the source document is available.
 	 */
 	url: string
 	authors: Authors
@@ -388,7 +388,7 @@ export interface Source {
 	 */
 	date: string
 	/**
-	 * An absolute URI pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
+	 * An absolute URL pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
 	 */
 	license: string | null
 }
@@ -442,7 +442,7 @@ export interface Source1 {
 	 */
 	page?: number
 	/**
-	 * The URI where the source document is available.
+	 * The URL where the source document is available.
 	 */
 	url: string
 	authors: Authors
@@ -451,7 +451,7 @@ export interface Source1 {
 	 */
 	date: string
 	/**
-	 * An absolute URI pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
+	 * An absolute URL pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
 	 */
 	license: string | null
 }
@@ -583,7 +583,7 @@ export interface SourcePartial {
 	 */
 	page?: number
 	/**
-	 * The URI where the source document is available.
+	 * The URL where the source document is available.
 	 */
 	uri?: string
 	authors?: Authors1
@@ -592,7 +592,7 @@ export interface SourcePartial {
 	 */
 	date?: string
 	/**
-	 * An absolute URI pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
+	 * An absolute URL pointing to the location where this element's license can be found. If it's "null", no license is provided -- use with caution.
 	 */
 	license?: string | null
 }
@@ -856,7 +856,7 @@ export interface EncounterVariantStarforged {
 	suggestions?: Suggestions
 }
 export interface SettingTruths {
-	[k: string]: SettingTruthStarforged
+	[k: string]: SettingTruth
 }
 /**
  * This interface was referenced by `DataforgedDataEntry`'s JSON-Schema

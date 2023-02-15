@@ -15,12 +15,12 @@ export const Rarity: Schema<Types.Rarity> = {
 	additionalProperties: false,
 	properties: {
 		_id: schemaRef<Types.RarityID>('RarityID'),
-		name: { $ref: '#/$defs/Label' },
+		name: { $ref: '#/definitions/Label' },
 		asset: {
 			description: 'The asset enhanced by this rarity.',
-			$ref: '#/$defs/AssetID'
+			$ref: '#/definitions/AssetID'
 		},
-		icon: { $ref: '#/$defs/Icon' },
+		icon: { $ref: '#/definitions/Icon' },
 		xp_cost: {
 			description: `From Ironsworn: Delve, p. 174:
 
@@ -33,8 +33,8 @@ export const Rarity: Schema<Types.Rarity> = {
 			maximum: 5,
 			default: 3
 		},
-		description: { $ref: '#/$defs/MarkdownParagraphs' },
-		source: { $ref: '#/$defs/Source' },
+		description: { $ref: '#/definitions/MarkdownParagraphs' },
+		source: schemaRef<Metadata.Source>('Source'),
 		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
 	}
 }

@@ -16,7 +16,7 @@
 
 // export function refToTypeDef(jsonSchema: { $ref: string }): { ref: string } {
 //   const jtdSchema = {
-//     ref: jsonSchema.$ref.replace('#/$defs/', ''),
+//     ref: jsonSchema.$ref.replace('#/definitions/', ''),
 //     metadata: {
 //       ..._.omit(jsonSchema, ['type'])
 //     }

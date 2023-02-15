@@ -2,6 +2,7 @@ import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata, type Encounters as Types } from '@base-types'
 import _ from 'lodash'
 import { DF_KEY, schemaRef } from './common'
+import { Abstract } from '@schema-json'
 
 export const EncounterNatureStarforged: Schema<Types.EncounterNatureStarforged> =
 	{
@@ -15,14 +16,22 @@ export const EncounterNatureClassic: Schema<Types.EncounterNatureClassic> = {
 
 export const EncounterClassicID: Schema<Types.EncounterClassicID> = {
 	type: 'string',
-	$comment: '{namespace}/encounters/{nature}/{encounter}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/.source
+	pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/.source,
+	examples: [
+		'ironsworn/encounters/firstborn/elf',
+		'ironsworn_delve/encounters/anomalies/glimmer'
+	]
 }
 
 export const EncounterStarforgedID: Schema<Types.EncounterStarforgedID> = {
 	type: 'string',
-	$comment: '{namespace}/encounters/{encounter}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){1}$/.source
+	pattern:
+		/^[a-z0-9][a-z0-9_]+\/encounters\/[a-z][a-z_]*[a-z](\/variants\/[a-z][a-z_]*[a-z])?$/
+			.source,
+	examples: [
+		'starforged/encounters/chiton',
+		'starforged/encounters/chiton/variants/chiton_drone_pack'
+	]
 }
 
 // FIXME: i should probably just make this game-specific across all things that use it.
@@ -33,7 +42,7 @@ export const EncounterID: Schema<Types.EncounterID> = {
 export const EncounterClassic: Schema<Types.EncounterClassic> = {
 	type: 'object',
 	description:
-		'An encounter entry similar to those in Chapter 5 of classic Ironsworn.',
+		'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.',
 	required: [
 		'name',
 		'nature',
@@ -47,28 +56,31 @@ export const EncounterClassic: Schema<Types.EncounterClassic> = {
 		'_id'
 	],
 	properties: {
-		name: { $ref: '#/$defs/Label' },
-		nature: { $ref: '#/$defs/EncounterNatureClassic' },
-		rank: { $ref: '#/$defs/ChallengeRank' },
+		name: { $ref: '#/definitions/Label' },
+		nature: { $ref: '#/definitions/EncounterNatureClassic' },
+		rank: { $ref: '#/definitions/ChallengeRank' },
 		features: {
 			type: 'array',
-			items: { $ref: '#/$defs/MarkdownPhrase' } as any
+			items: { $ref: '#/definitions/MarkdownPhrase' } as any
 		},
-		drives: { type: 'array', items: { $ref: '#/$defs/MarkdownPhrase' } as any },
+		drives: {
+			type: 'array',
+			items: { $ref: '#/definitions/MarkdownPhrase' } as any
+		},
 		tactics: {
 			type: 'array',
-			items: { $ref: '#/$defs/MarkdownPhrase' } as any
+			items: { $ref: '#/definitions/MarkdownPhrase' } as any
 		},
-		description: { $ref: '#/$defs/MarkdownParagraphs' },
+		description: { $ref: '#/definitions/MarkdownParagraphs' },
 		quest_starter: {
 			description:
 				'A localizable markdown string describing the quest starter associated with this item.',
-			$ref: '#/$defs/MarkdownParagraphs'
+			$ref: '#/definitions/MarkdownParagraphs'
 		},
-		your_truths: { $ref: '#/$defs/MarkdownSentences' },
-		source: { $ref: '#/$defs/Source' },
-		_id: { $ref: '#/$defs/EncounterClassicID' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
+		your_truths: { $ref: '#/definitions/MarkdownSentences' },
+		source: schemaRef<Metadata.Source>('Source'),
+		_id: { $ref: '#/definitions/EncounterClassicID' },
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
 	}
 }
 
@@ -91,8 +103,8 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
 	],
 	properties: {
 		name: EncounterClassic.properties?.name,
-		nature: { $ref: '#/$defs/EncounterNatureStarforged' },
-		summary: { $ref: '#/$defs/MarkdownSentences' },
+		nature: { $ref: '#/definitions/EncounterNatureStarforged' },
+		summary: { $ref: '#/definitions/MarkdownSentences' },
 		rank: EncounterClassic.properties?.rank,
 		features: EncounterClassic.properties?.features,
 		drives: EncounterClassic.properties?.drives,
@@ -102,14 +114,14 @@ export const EncounterStarforged: Schema<Types.EncounterStarforged> = {
 			type: 'object',
 			// additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/EncounterVariantStarforged' }
+				[DF_KEY]: { $ref: '#/definitions/EncounterVariantStarforged' }
 			}
 		} as any,
 		description: EncounterClassic.properties?.description,
 		quest_starter: EncounterClassic.properties?.quest_starter,
 		source: EncounterClassic.properties?.source,
-		_id: { $ref: '#/$defs/EncounterStarforgedID' },
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
+		_id: { $ref: '#/definitions/EncounterStarforgedID' },
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
 	} as any
 }
 
@@ -122,4 +134,24 @@ export const EncounterVariantStarforged: Schema<Types.EncounterVariantStarforged
 		additionalProperties: false,
 		required: SFVariantKeys.filter((item) => item !== 'suggestions') as any,
 		properties: _.pick(EncounterStarforged.properties, ...SFVariantKeys) as any
+	}
+
+export const EncounterCollectionClassic: Schema<Types.EncounterCollectionClassic> =
+	Abstract.collectionSchema<Types.EncounterCollectionClassic>(
+		'EncounterClassic',
+		'EncounterCollectionClassicID'
+	)
+
+export const EncounterCollectionExtensionClassic =
+	Abstract.collectionExtensionSchema(
+		'EncounterClassic',
+		'EncounterCollectionClassicID'
+	)
+
+export const EncounterCollectionClassicID: Schema<Types.EncounterCollectionID> =
+	{
+		type: 'string',
+		pattern:
+			/^[a-z0-9][a-z0-9_]+\/collections\/encounters(\/[a-z][a-z_]*[a-z]){1}$/
+				.source
 	}

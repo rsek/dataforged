@@ -1,4 +1,7 @@
-import { type Localize } from '@base-types'
+import { type Players, type Localize } from '@base-types'
+import { type ConditionMeterID } from 'base-types/players'
+
+export type AttributeID = string
 
 export interface CustomStat {
 	label: Localize.Label
@@ -14,6 +17,20 @@ interface AttributeBase {
 	attribute_type: string
 	label: Localize.Label
 	value: number | string | null
+}
+
+export type AttributeSelectType = 'reference' | 'string'
+
+export interface AttributeSelect extends AttributeBase {
+	options: Record<string, AttributeSelectOption>
+}
+
+export interface AttributeSelectOption {
+	label: Localize.Label
+}
+
+export interface AttributeSelectOptionReference extends AttributeSelectOption {
+	value_of: ConditionMeterID | Players.StatID
 }
 
 export type AttributeNumericType = 'clock' | 'condition_meter' | 'counter'

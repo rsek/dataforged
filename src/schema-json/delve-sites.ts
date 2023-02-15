@@ -3,15 +3,16 @@ import _ from 'lodash'
 import {
 	type Localize,
 	type Metadata,
-	type DelveSites,
 	type DelveSites as Types
 } from '@base-types'
 import { schemaRef } from './common'
+import { type JSONSchema7Object } from 'json-schema'
 
 export const DelveSiteID: Schema<Types.DelveSiteID> = {
 	type: 'string',
 	$comment: '{namespace}/delve_sites/{delveSite}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/delve_sites(\/[a-z][a-z_]*[a-z]){1}$/.source
+	pattern: /^[a-z0-9][a-z0-9_]+\/delve_sites(\/[a-z][a-z_]*[a-z]){1}$/.source,
+	examples: ['ironsworn_delve/delve_sites/alvas_rest']
 }
 
 export const DelveSiteCardType: Schema<Types.DelveSiteCardType> = {
@@ -19,199 +20,64 @@ export const DelveSiteCardType: Schema<Types.DelveSiteCardType> = {
 	enum: ['theme', 'domain']
 }
 
+function denizenRow(
+	low: number,
+	high: number,
+	frequency: Types.DelveSiteDenizenFrequency
+): JSONSchema7Object {
+	return {
+		type: 'object',
+		properties: {
+			frequency: {
+				const: frequency
+			},
+			low: {
+				const: low
+			},
+			high: {
+				const: high
+			}
+		}
+	}
+}
+
 export const DelveSite: Schema<Types.DelveSite> = {
 	type: 'object',
 	description: 'A delve site with a theme, domain, and denizen table.',
 	required: ['name', 'rank', 'theme', 'domain', 'denizens', 'source', '_id'],
 	properties: {
-		name: { $ref: '#/$defs/Label' },
-		rank: { $ref: '#/$defs/ChallengeRank' },
-		theme: { $ref: '#/$defs/DelveSiteThemeID' },
-		domain: { $ref: '#/$defs/DelveSiteDomainID' },
+		name: { $ref: '#/definitions/Label' },
+		rank: { $ref: '#/definitions/ChallengeRank' },
+		theme: { $ref: '#/definitions/DelveSiteThemeID' },
+		domain: { $ref: '#/definitions/DelveSiteDomainID' },
 		denizens: {
 			allOf: [
-				{ type: 'array', items: { $ref: '#/$defs/DelveSiteDenizen' } },
+				{ type: 'array', items: { $ref: '#/definitions/DelveSiteDenizen' } },
 				{
 					type: 'array',
 					minItems: 12,
 					maxItems: 12,
 					items: [
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'very_common'
-								},
-								low: {
-									const: 1
-								},
-								high: {
-									const: 27
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'common'
-								},
-								low: {
-									const: 28
-								},
-								high: {
-									const: 41
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'common'
-								},
-								low: {
-									const: 42
-								},
-								high: {
-									const: 55
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'common'
-								},
-								low: {
-									const: 56
-								},
-								high: {
-									const: 69
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'uncommon'
-								},
-								low: {
-									const: 70
-								},
-								high: {
-									const: 75
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'uncommon'
-								},
-								low: {
-									const: 76
-								},
-								high: {
-									const: 81
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'uncommon'
-								},
-								low: {
-									const: 82
-								},
-								high: {
-									const: 87
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'uncommon'
-								},
-								low: {
-									const: 88
-								},
-								high: {
-									const: 93
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'rare'
-								},
-								low: {
-									const: 94
-								},
-								high: {
-									const: 95
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'rare'
-								},
-								low: {
-									const: 96
-								},
-								high: {
-									const: 97
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'rare'
-								},
-								low: {
-									const: 98
-								},
-								high: {
-									const: 99
-								}
-							}
-						},
-						{
-							type: 'object',
-							properties: {
-								frequency: {
-									const: 'unforeseen'
-								},
-								low: {
-									const: 100
-								},
-								high: {
-									const: 100
-								}
-							}
-						}
+						denizenRow(1, 27, 'very_common'),
+						denizenRow(28, 41, 'common'),
+						denizenRow(42, 55, 'common'),
+						denizenRow(56, 69, 'common'),
+						denizenRow(70, 75, 'uncommon'),
+						denizenRow(76, 81, 'uncommon'),
+						denizenRow(82, 87, 'uncommon'),
+						denizenRow(88, 93, 'uncommon'),
+						denizenRow(94, 95, 'rare'),
+						denizenRow(96, 97, 'rare'),
+						denizenRow(98, 99, 'rare'),
+						denizenRow(100, 100, 'unforeseen')
 					]
 				}
 			]
 		} as any,
-		source: { $ref: '#/$defs/Source' },
-		_id: { $ref: '#/$defs/DelveSiteID' },
+		source: schemaRef<Metadata.Source>('Source'),
+		_id: { $ref: '#/definitions/DelveSiteID' },
 
-		suggestions: schemaRef<Metadata.Suggestions>('Suggestions') 
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
 	}
 }
 
@@ -225,9 +91,9 @@ export const DelveSiteDenizen: Schema<
 		encounter: {
 			description:
 				'The ID of the relevant encounter, or `null` if no encounter has been specified.',
-			oneOf: [{ $ref: '#/$defs/EncounterClassicID' }, { type: 'null' }]
+			oneOf: [{ $ref: '#/definitions/EncounterClassicID' }, { type: 'null' }]
 		} as any,
-		name: { $ref: '#/$defs/Label' },
+		name: { $ref: '#/definitions/Label' },
 		frequency: {
 			title: 'Frequency keyword',
 			type: 'string',
@@ -239,7 +105,7 @@ export const DelveSiteDenizen: Schema<
 }
 
 function staticFeatureDangerRow<
-	T extends DelveSites.FeatureOrDanger<number, number, string>
+	T extends Types.FeatureOrDanger<number, number, string>
 >(row: Omit<T, '_id'>): Schema<T> {
 	const emptyRow: any = {
 		type: 'object',
@@ -252,7 +118,7 @@ function staticFeatureDangerRow<
 		}
 	if (row.suggestions != null)
 		emptyRow.properties.suggestions = {
-			...schemaRef<Metadata.Suggestions>('Suggestions'),
+			...schemaRef<Metadata.SuggestionsBase>('Suggestions'),
 			default: row.suggestions
 		}
 
@@ -274,22 +140,22 @@ export const DelveSiteCard = {
 	],
 	properties: {
 		_id: { type: 'string' },
-		name: { $ref: '#/$defs/Label' },
-		card_type: { $ref: '#/$defs/DelveSiteCardType' },
-		icon: { $ref: '#/$defs/Icon' },
-		summary: { $ref: '#/$defs/MarkdownSentences' },
-		source: { $ref: '#/$defs/Source' },
-		description: { $ref: '#/$defs/MarkdownParagraphs' },
+		name: { $ref: '#/definitions/Label' },
+		card_type: { $ref: '#/definitions/DelveSiteCardType' },
+		icon: { $ref: '#/definitions/Icon' },
+		summary: { $ref: '#/definitions/MarkdownSentences' },
+		source: schemaRef<Metadata.Source>('Source'),
+		description: { $ref: '#/definitions/MarkdownParagraphs' },
 		features: {
 			type: 'array',
 			items: {
-				$ref: '#/$defs/OracleTableRow'
+				$ref: '#/definitions/OracleTableRow'
 			}
 		},
 		dangers: {
 			type: 'array',
 			items: {
-				$ref: '#/$defs/OracleTableRow'
+				$ref: '#/definitions/OracleTableRow'
 			}
 		}
 	}
@@ -305,10 +171,10 @@ export const DelveSiteTheme: Schema<Types.DelveSiteTheme> = {
 	type: 'object',
 	description: 'A delve site theme card.',
 	allOf: [
-		{ $ref: '#/$defs/DelveSiteCard' },
+		{ $ref: '#/definitions/DelveSiteCard' },
 		{
 			properties: {
-				_id: { $ref: '#/$defs/DelveSiteThemeID' },
+				_id: { $ref: '#/definitions/DelveSiteThemeID' },
 				card_type: { const: 'theme' },
 				features: {
 					type: 'array',
@@ -423,10 +289,10 @@ export const DelveSiteDomain: Schema<Types.DelveSiteDomain> = {
 	type: 'object',
 	description: 'A delve site domain card.',
 	allOf: [
-		{ $ref: '#/$defs/DelveSiteCard' },
+		{ $ref: '#/definitions/DelveSiteCard' },
 		{
 			properties: {
-				_id: { $ref: '#/$defs/DelveSiteDomainID' },
+				_id: { $ref: '#/definitions/DelveSiteDomainID' },
 				card_type: { const: 'domain' },
 				features: {
 					type: 'array',

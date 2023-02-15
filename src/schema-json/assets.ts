@@ -8,6 +8,7 @@ import {
 	type Attributes
 } from '@base-types'
 import { DF_KEY, schemaRef } from './common'
+import { Abstract } from '@schema-json'
 
 export const AssetID: Schema<Types.AssetID> = {
 	type: 'string',
@@ -88,10 +89,28 @@ export const AssetAbility: Schema<Types.AssetAbility> = {
 			type: 'object',
 			additionalProperties: false,
 			required: undefined as any,
-			nullable: true,
+			nullable: undefined as any,
 			patternProperties: {
 				[DF_KEY]: schemaRef<Moves.Move>('Move')
 			}
 		}
 	}
 }
+
+export const AssetTypeID: Schema<Types.AssetTypeID> = {
+	type: 'string',
+	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/assets(\/[a-z][a-z_]*[a-z]){1}$/
+		.source,
+	examples: [
+		'starforged/collections/assets/command_vehicle',
+		'ironsworn/collections/assets/companion'
+	]
+}
+
+export const AssetType: Schema<Types.AssetType> =
+	Abstract.collectionSchema<Types.AssetType>('Asset', 'AssetTypeID')
+
+export const AssetTypeExtension = Abstract.collectionExtensionSchema(
+	'Asset',
+	'AssetTypeID'
+)

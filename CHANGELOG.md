@@ -37,7 +37,7 @@
     * `Health` is now `health` (enum: `PlayerConditionMeter`)
     * `Journey Progress` is now `journey_progress`
 * names are now provided for Ironsworn ritual moves (so their IDs may have changed)
-* the URIs provided by `image` and `icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;) they're also lower cased, both to match with the new `$id`s and to be a little more predictable for use on the web
+* the URLs provided by `image` and `icons` are now relative to the root directory rather than pretending that the relative url is somehow useful ;) they're also lower cased, both to match with the new `$id`s and to be a little more predictable for use on the web
     * old: `../../img/vector/Oracles/Creature/Environment/Space.svg`
     * new: `icon/oracles/creature/environment/space.svg`
 
@@ -56,7 +56,7 @@
 * for `OracleSet` and `OracleTable`, `Category` and `Member of` are now replaced by a single array called `ancestors`, which contains the string IDs of every `OracleSet` from which the item descends
 
 ### Other API changes
-* `Source` now includes a `license` property, containing a URI pointing to the relevant license.
+* `Source` now includes a `license` property, containing a URL pointing to the relevant license.
 * everything that has a localizable string descendent (direct or otherwise) now has an `$id`, putting us one step closer to extracting complete localization data
 * `OracleBase` (and its descendants, `OracleSet` and `OracleTable`) may now have `summary` in addition to `description`, consistent with some other objects in dataforgeds. `summary` is for providing a brief summary of the article (a couple sentences tops), while `description` includes more detailed information (often multiple paragraphs).
 

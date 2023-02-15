@@ -1,5 +1,5 @@
 {
-	"$defs": {
+	"definitions": {
 		"Title": {
 			"properties": {
 				"standard": {
@@ -49,13 +49,13 @@
 				"url": {
 					"format": "url",
 					"type": "string",
-					"description": "The URI where the source document is available.",
+					"description": "The URL where the source document is available.",
 					"examples": ["https://ironswornrpg.com"]
 				},
 				"license": {
 					"format": "url",
 					"type": ["string", "null"],
-					"description": "An absolute URI pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+					"description": "An absolute URL pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
 					"examples": [
 						"https://creativecommons.org/licenses/by/4.0",
 						"https://creativecommons.org/licenses/by-nc-sa/4.0"
@@ -96,10 +96,10 @@
 		"Node": {
 			"properties": {
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				}
 			},
 			"type": "object",
@@ -108,7 +108,7 @@
 		"Collection": {
 			"properties": {
 				"title": {
-					"$ref": "#/$defs/Title"
+					"$ref": "#/definitions/Title"
 				},
 				"summary": {
 					"type": "string",
@@ -119,10 +119,10 @@
 					"description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				}
 			},
 			"type": "object",
@@ -138,10 +138,10 @@
 					"type": "boolean"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				}
 			},
 			"type": "object",
@@ -184,17 +184,17 @@
 				},
 				"abilities": {
 					"items": {
-						"$ref": "#/$defs/Array"
+						"$ref": "#/definitions/Array"
 					},
 					"type": "string",
 					"maxLength": 3,
 					"minLength": 3
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				}
 			},
 			"type": "object",
@@ -245,12 +245,12 @@
 				},
 				"rolls": {
 					"items": {
-						"$ref": "#/$defs/Array"
+						"$ref": "#/definitions/Array"
 					},
 					"type": "array"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				},
 				"embed_table": {
 					"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
@@ -277,7 +277,7 @@
 					"type": "string"
 				},
 				"title": {
-					"$ref": "#/$defs/Title"
+					"$ref": "#/definitions/Title"
 				},
 				"summary": {
 					"type": "string",
@@ -290,16 +290,16 @@
 				"match": {},
 				"table": {
 					"items": {
-						"$ref": "#/$defs/Array"
+						"$ref": "#/definitions/Array"
 					},
 					"type": "array"
 				},
 				"rendering": {},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				}
 			},
 			"type": "object",
@@ -356,13 +356,13 @@
 					"type": "string"
 				},
 				"source": {
-					"$ref": "#/$defs/Source"
+					"$ref": "#/definitions/Source"
 				},
 				"suggestions": {
-					"$ref": "#/$defs/Object"
+					"$ref": "#/definitions/Object"
 				},
 				"title": {
-					"$ref": "#/$defs/Title"
+					"$ref": "#/definitions/Title"
 				},
 				"summary": {
 					"type": "string",

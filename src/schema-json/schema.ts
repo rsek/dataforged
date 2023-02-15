@@ -4,7 +4,7 @@ import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata } from '@base-types'
 import { Source } from './metadata'
 import { type JSONSchema7 } from 'json-schema'
-import { Namespaces } from '@df-json-schema'
+import { Namespaces } from '@schema-json'
 
 export const DATASWORN_VERSION = '2.0.0'
 export const DATAFORGED_VERSION = '2.0.0'
@@ -21,6 +21,9 @@ export const SourcePartial: Schema<Partial<Metadata.Source>> = {
 	properties: Source.properties
 }
 
+const $schema = 'http://json-schema.org/schema'
+// const $schema = 'https://json-schema.org/draft/2019-09/schema'
+
 function toInputDefinitions(
 	defs: Record<string, JSONSchema7>
 ): Record<string, JSONSchema7> {
@@ -31,9 +34,11 @@ function toInputDefinitions(
 	const toMakeOptional = ['_id', 'source']
 	_.forEach(newDefs, (def) => {
 		if (def.required != null) {
-			if (def.required.includes('source') === true) {
+			if (def.required.includes('source')) {
 				if (def.properties == null) throw Error('No properties key found')
-				def.properties[SOURCE_PARTIAL_KEY] = { $ref: '#/$defs/SourcePartial' }
+				def.properties[SOURCE_PARTIAL_KEY] = {
+					$ref: '#/definitions/SourcePartial'
+				}
 			}
 			def.required = def.required.filter(
 				(str: string) => !toMakeOptional.includes(str)
@@ -44,11 +49,11 @@ function toInputDefinitions(
 }
 
 export const Dataforged: JSONSchema7 = {
-	$schema: 'http://json-schema.org/draft-07/schema',
+	$schema,
 	title: 'Dataforged',
 	description:
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
-	$defs: defsStarforged,
+	definitions: defsStarforged,
 	type: 'object',
 	additionalProperties: false,
 	patternProperties: {
@@ -57,24 +62,24 @@ export const Dataforged: JSONSchema7 = {
 }
 
 export const DataforgedInput: JSONSchema7 = {
-	$schema: 'http://json-schema.org/draft-07/schema',
+	$schema,
 	title: 'Dataforged data entry',
 	description:
 		'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
-	$defs: toInputDefinitions(defsStarforged),
+	definitions: toInputDefinitions(defsStarforged),
 	type: Dataforged.type,
 	additionalProperties: Dataforged.additionalProperties,
 	patternProperties: Dataforged.patternProperties
 }
 
 export const Datasworn: JSONSchema7 = {
-	$schema: 'http://json-schema.org/draft-07/schema',
+	$schema,
 	title: 'Datasworn',
 	description: Dataforged.description?.replace(
 		'Ironsworn: Starforged',
 		'Ironsworn'
 	),
-	$defs: defsClassic,
+	definitions: defsClassic,
 	type: 'object',
 	additionalProperties: Dataforged.additionalProperties,
 	patternProperties: {
@@ -83,10 +88,10 @@ export const Datasworn: JSONSchema7 = {
 }
 
 export const DataswornInput: JSONSchema7 = {
-	$schema: 'http://json-schema.org/draft-07/schema',
+	$schema,
 	title: DataforgedInput.title?.replace('Dataforged', 'Datasworn'),
 	description: DataforgedInput.description?.replace('Dataforged', 'Datasworn'),
-	$defs: toInputDefinitions(defsClassic),
+	definitions: toInputDefinitions(defsClassic),
 	type: Datasworn.type,
 	additionalProperties: Datasworn.additionalProperties,
 	patternProperties: Datasworn.patternProperties

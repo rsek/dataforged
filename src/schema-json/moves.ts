@@ -10,16 +10,33 @@ import {
 	type RulesetStarforged,
 	type Moves
 } from '@base-types'
-
-/// /
-/// COMMON
-/// /
+import { Abstract } from '@schema-json'
 
 export const MoveID: Schema<Types.MoveID> = {
 	type: 'string',
-	$comment: '{namespace}/moves/{moveCategory}/{move}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source
+	pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source,
+	examples: [
+		'ironsworn/moves/adventure/face_danger',
+		'starforged/moves/adventure/face_danger'
+	]
 }
+
+export const MoveCategoryID: Schema<Types.MoveCategoryID> = {
+	type: 'string',
+	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/moves(\/[a-z][a-z_]*[a-z]){1}$/
+		.source,
+	examples: [
+		'ironsworn/collections/moves/adventure',
+		'starforged/collections/moves/adventure'
+	]
+}
+
+export const MoveCategory: Schema<Types.MoveCategory> =
+	Abstract.collectionSchema<Types.MoveCategory>('Move', 'MoveCategoryID')
+export const MoveCategoryExtension = Abstract.collectionExtensionSchema(
+	'Move',
+	'MoveCategoryID'
+)
 
 export const RollableStatID: Schema<Types.RollableStatID> = {
 	oneOf: [
@@ -38,7 +55,10 @@ export const RollType: Schema<Types.RollType> = {
 
 export const RollMethod: Schema<Types.RollMethod> = {
 	type: 'string',
-	enum: ['any', 'inherit', 'highest', 'lowest', 'all']
+	enum: ['any', 'inherit', 'highest', 'lowest', 'all'],
+
+	description:
+		"`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks."
 }
 
 export const TriggerOption: Schema<Types.TriggerOption> = {
@@ -51,12 +71,20 @@ export const TriggerOption: Schema<Types.TriggerOption> = {
 		roll_type: schemaRef<Types.RollType>('RollType'),
 		method: {
 			default: 'any',
+			description:
+				'The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.',
 			oneOf: [
 				schemaRef<Types.RollMethod>('RollMethod'),
 				schemaRef<Types.MoveOutcomeType>('MoveOutcomeType')
 			]
 		},
-		using: { type: 'array', items: { type: 'string' } }
+		using: {
+			title: 'Roll using',
+			type: 'array',
+			items: { type: 'string' },
+			description:
+				'The stat(s) or progress track(s) that may be rolled with this move trigger option.'
+		}
 	},
 	oneOf: [
 		{
@@ -85,11 +113,34 @@ export const Trigger: Schema<Types.Trigger> = {
 	required: ['text'],
 	additionalProperties: false,
 	properties: {
-		text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
+		text: {
+			...schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
+			description:
+				'A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`.'
+		},
 		options: {
 			type: 'array',
 			nullable: true,
 			items: TriggerOption
+		},
+		by: {
+			title: 'Triggered by',
+			type: 'object',
+			description:
+				"Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
+			additionalProperties: false,
+			default: { player: true, ally: false },
+			required: ['player', 'ally'],
+			properties: {
+				player: {
+					type: 'boolean',
+					default: true
+				},
+				ally: {
+					type: 'boolean',
+					default: false
+				}
+			}
 		}
 	}
 }
@@ -111,7 +162,7 @@ export const Move: Schema<Types.Move> = {
 				'Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.',
 			type: 'boolean',
 			default: false,
-			nullable: true
+			nullable: undefined as any
 		},
 		attributes: {
 			type: 'object',
@@ -205,7 +256,7 @@ export const MoveOutcome: Schema<Types.MoveOutcome> = {
 
 export const MoveOutcomeMatchable: Schema<Types.MoveOutcomeMatchable> = {
 	type: 'object',
-	required: ['text'],
+	required: undefined as any, // handled by allOf members
 	allOf: [
 		schemaRef<Types.MoveOutcome>('MoveOutcome'),
 		{

@@ -181,12 +181,15 @@ interface NonConditionalKeywords {
 	[keyword: string]: any
 	$id?: string
 	$ref?: string
-	$defs?: Record<string, UncheckedJSONSchemaType<Known, true>>
+	definitions?: Record<string, UncheckedJSONSchemaType<Known, true>>
 	definitions?: Record<string, UncheckedJSONSchemaType<Known, true>>
 }
 
-type UncheckedJSONSchemaType<T, IsPartial extends boolean> = ( // these two unions allow arbitrary unions of types
-	| AnyOf<T, IsPartial>
+type UncheckedJSONSchemaType<
+	T,
+	IsPartial extends boolean
+> = // these two unions allow arbitrary unions of types
+(| AnyOf<T, IsPartial>
 	| OneOf<T, IsPartial>
 	| DefinitionPicker<T, IsPartial>
 	| SchemaPicker<T, IsPartial>

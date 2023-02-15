@@ -5,11 +5,15 @@ import _ from 'lodash'
 
 const NamespaceShared: JSONSchema7 = {
 	title: 'Namespace',
+	// description: TODO
 	type: 'object',
 	additionalProperties: false,
 	required: ['_ruleset', '_source'],
 	properties: {
-		_ruleset: {},
+		_ruleset: {
+			description:
+				'The ruleset (Starforged or Classic ironsworn) that these elements are for.'
+		},
 		_source: {
 			...(schemaRef<Metadata.Source>('Source') as JSONSchema7),
 			description:
@@ -20,7 +24,7 @@ const NamespaceShared: JSONSchema7 = {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/OracleCollection' }
+				[DF_KEY]: { $ref: '#/definitions/OracleCollection' }
 			}
 		},
 		moves: {
@@ -30,8 +34,8 @@ const NamespaceShared: JSONSchema7 = {
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						{ $ref: '#/$defs/MoveCategory' },
-						{ $ref: '#/$defs/MoveCategoryExtension' }
+						{ $ref: '#/definitions/MoveCategory' },
+						{ $ref: '#/definitions/MoveCategoryExtension' }
 					]
 				}
 			}
@@ -43,8 +47,8 @@ const NamespaceShared: JSONSchema7 = {
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						{ $ref: '#/$defs/AssetType' },
-						{ $ref: '#/$defs/AssetTypeExtension' }
+						{ $ref: '#/definitions/AssetType' },
+						{ $ref: '#/definitions/AssetTypeExtension' }
 					]
 				}
 			}
@@ -62,8 +66,8 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						{ $ref: '#/$defs/EncounterCollectionClassic' },
-						{ $ref: '#/$defs/EncounterCollectionExtensionClassic' }
+						{ $ref: '#/definitions/EncounterCollectionClassic' },
+						{ $ref: '#/definitions/EncounterCollectionExtensionClassic' }
 					]
 				}
 			}
@@ -73,7 +77,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/WorldTruthClassic' }
+				[DF_KEY]: { $ref: '#/definitions/WorldTruth' }
 			}
 		},
 		regions: {
@@ -81,7 +85,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/RegionEntry' }
+				[DF_KEY]: { $ref: '#/definitions/RegionEntry' }
 			}
 		},
 		site_themes: {
@@ -89,7 +93,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/DelveSiteTheme' }
+				[DF_KEY]: { $ref: '#/definitions/DelveSiteTheme' }
 			}
 		},
 		site_domains: {
@@ -97,7 +101,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/DelveSiteDomain' }
+				[DF_KEY]: { $ref: '#/definitions/DelveSiteDomain' }
 			}
 		},
 		delve_sites: {
@@ -105,7 +109,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/DelveSite' }
+				[DF_KEY]: { $ref: '#/definitions/DelveSite' }
 			}
 		},
 		rarities: {
@@ -113,7 +117,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/Rarity' }
+				[DF_KEY]: { $ref: '#/definitions/Rarity' }
 			}
 		}
 	}
@@ -127,7 +131,7 @@ export const NamespaceDataforged: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/EncounterStarforged' }
+				[DF_KEY]: { $ref: '#/definitions/EncounterStarforged' }
 			}
 		},
 		setting_truths: {
@@ -135,7 +139,7 @@ export const NamespaceDataforged: JSONSchema7 = _.merge({}, NamespaceShared, {
 			type: 'object',
 			additionalProperties: false,
 			patternProperties: {
-				[DF_KEY]: { $ref: '#/$defs/SettingTruthStarforged' }
+				[DF_KEY]: { $ref: '#/definitions/SettingTruth' }
 			}
 		}
 	}

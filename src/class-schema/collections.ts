@@ -6,11 +6,11 @@ import {
 import type * as Types from '@base-types'
 import { Metadata, Localize, Abstract, type Utils } from '@class-schema'
 import _ from 'lodash'
-import { DF_KEY } from 'json-schema/common'
+import { DF_KEY } from '@schema-json/common'
 
 export abstract class Collection<T>
 	extends Abstract.Node
-	implements Types.Collections.Collection<T>
+	implements Types.Abstract.Collection<T>
 {
 	@IsInstance(Metadata.Title)
 	title: Metadata.Title
@@ -27,7 +27,7 @@ export abstract class Collection<T>
 	description?: string | undefined
 
 	constructor(
-		data: Utils.YamlInput<Types.Collections.Collection<T>>,
+		data: Utils.YamlInput<Types.Abstract.Collection<T>>,
 		id: string,
 		parentSource: Types.Metadata.Source
 	) {

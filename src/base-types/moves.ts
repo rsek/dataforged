@@ -11,6 +11,10 @@ export type MoveID = string
 
 export type RollType = 'action_roll' | 'progress_roll'
 
+export type MoveCategoryID = string
+export interface MoveCategory
+	extends Abstract.Collection<Move<RollType>, MoveCategoryID> {}
+
 export interface Move<T extends RollType = RollType>
 	extends Abstract.Node<MoveID> {
 	name: Localize.Label
@@ -40,6 +44,12 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 export interface Trigger<T extends RollType = RollType> {
 	text: Localize.MarkdownPhrase
 	options?: Array<TriggerOption<T>>
+	by: TriggerBy
+}
+
+export interface TriggerBy {
+	player: boolean
+	ally: boolean
 }
 
 export type RollMethod = 'any' | 'all' | 'highest' | 'lowest' | 'inherit'

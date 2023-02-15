@@ -15,8 +15,8 @@ export type ISchemaConverters = Exclude<
 >
 
 const schema = {
-	$defs: validationMetadatasToSchemas({
-		refPointerPrefix: '#/$defs/'
+	definitions: validationMetadatasToSchemas({
+		refPointerPrefix: '#/definitions/'
 	})
 }
 

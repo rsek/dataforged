@@ -3,12 +3,16 @@ import type * as Types from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common'
 
+export const AttributeID: Schema<Types.Attributes.AttributeID> = {
+	type: 'string'
+}
+
 export const CustomStat: Schema<Types.Attributes.CustomStat> = {
 	type: 'object',
 	required: ['label', 'options'],
 	properties: {
 		label: {
-			$ref: '#/$defs/Label'
+			$ref: '#/definitions/Label'
 		},
 		options: {
 			title: 'Custom stat options',
@@ -57,9 +61,9 @@ export const InputPosition = {
 export const Attribute = {
 	oneOf: [
 		{
-			$ref: '#/$defs/AttributeText'
+			$ref: '#/definitions/AttributeText'
 		},
-		{ $ref: '#/$defs/AttributeNumeric' }
+		{ $ref: '#/definitions/AttributeNumeric' }
 	]
 }
 
@@ -88,63 +92,63 @@ export const AttributeText: Schema<Types.Attributes.AttributeText> = {
 		}
 	}
 }
-export const AttributePlayerStat = {
-	description:
-		'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeBase'
-		},
-		{
-			required: ['attribute_type', 'position', 'value', 'options'],
-			properties: {
-				attribute_type: {
-					const: 'player_stat'
-				},
-				position: {
-					default: 'card-top'
-				},
-				value: {
-					oneOf: [
-						{
-							type: 'null'
-						},
-						{
-							$ref: '#/$defs/PlayerStatID'
-						}
-					],
-					default: null
-				},
-				options: {
-					type: 'object',
-					patternProperties: {
-						[DF_KEY]: {
-							type: 'object',
-							properties: {
-								label: {
-									$ref: '#/$defs/Label'
-								},
-								value: {
-									$ref: '#/$defs/PlayerStatID'
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	]
-}
-export const AttributeSetter = {
-	propertyNames: {
-		$ref: '#/$defs/AttributeID'
-	},
-	patternProperties: {
-		'^.*$': {
-			$ref: '#/$defs/PlayerStatID'
-		}
-	}
-}
+// export const AttributePlayerStat = {
+// 	description:
+// 		'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
+// 	allOf: [
+// 		{
+// 			$ref: '#/definitions/AttributeBase'
+// 		},
+// 		{
+// 			required: ['attribute_type', 'position', 'value', 'options'],
+// 			properties: {
+// 				attribute_type: {
+// 					const: 'player_stat'
+// 				},
+// 				position: {
+// 					default: 'card-top'
+// 				},
+// 				value: {
+// 					oneOf: [
+// 						{
+// 							type: 'null'
+// 						},
+// 						{
+// 							$ref: '#/definitions/PlayerStatID'
+// 						}
+// 					],
+// 					default: null
+// 				},
+// 				options: {
+// 					type: 'object',
+// 					patternProperties: {
+// 						[DF_KEY]: {
+// 							type: 'object',
+// 							properties: {
+// 								label: {
+// 									$ref: '#/definitions/Label'
+// 								},
+// 								value: {
+// 									$ref: '#/definitions/PlayerStatID'
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	]
+// }
+// export const AttributeSetter = {
+// 	propertyNames: {
+// 		$ref: '#/definitions/AttributeID'
+// 	},
+// 	patternProperties: {
+// 		'^.*$': {
+// 			$ref: '#/definitions/PlayerStatID'
+// 		}
+// 	}
+// }
 
 export const ClockSegments: Schema<Types.Attributes.ClockSegments> = {
 	type: 'integer',
@@ -162,9 +166,9 @@ export const AttributeNumeric: Schema<Types.Attributes.AttributeNumeric> = {
 		label: schemaRef<Types.Localize.Label>('Label'),
 		min: { type: 'integer' },
 		value: {
-			type: 'integer',
-			maximum: { $data: '1/max' } as any,
-			minimum: { $data: '1/min' } as any
+			type: 'integer'
+			// maximum: { $data: '1/max' } as any,
+			// minimum: { $data: '1/min' } as any
 		},
 		max: { type: ['integer', 'null'] as any }
 	},
@@ -214,7 +218,7 @@ export const AttributeNumericOverride = {
 	required: ['_extends'],
 	properties: {
 		_extends: {
-			$ref: '#/$defs/AttributeID'
+			$ref: '#/definitions/AttributeID'
 		},
 		min: {
 			type: 'integer'
@@ -227,18 +231,18 @@ export const AttributeNumericOverride = {
 		}
 	}
 }
-export const AttributeImpact = {
-	allOf: [
-		{
-			$ref: '#/$defs/AttributeBase'
-		},
-		{
-			required: ['attribute_type'],
-			properties: {
-				attribute_type: {
-					const: 'impact'
-				}
-			}
-		}
-	]
-}
+// export const AttributeImpact = {
+// 	allOf: [
+// 		{
+// 			$ref: '#/definitions/AttributeBase'
+// 		},
+// 		{
+// 			required: ['attribute_type'],
+// 			properties: {
+// 				attribute_type: {
+// 					const: 'impact'
+// 				}
+// 			}
+// 		}
+// 	]
+// }

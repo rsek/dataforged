@@ -1,27 +1,30 @@
 import { type Abstract, type Localize, type Metadata } from '@base-types'
 
-export type ID = string
+export type TruthID = string
 
-interface SettingTruth extends Abstract.Node<ID> {
-	_id: ID
-	icon: Metadata.Icon
-	options: TruthOption[]
+interface TruthBase extends Abstract.Node<TruthID> {
+	_id: TruthID
+	name: string
+	options: TruthOptionBase[]
+	icon?: Metadata.Icon
 }
 
-export interface TruthStarforged extends SettingTruth {
-	options: TruthOptionStarforged[]
+export interface SettingTruth extends TruthBase {
+	options: SettingTruthOption[]
 }
 
-export interface TruthClassic extends SettingTruth {}
+export interface WorldTruth extends TruthBase {}
 
 export type TruthOptionID = string
-export interface TruthOption {
+export interface TruthOptionBase {
 	_id: TruthOptionID
 	description: Localize.MarkdownParagraphs | Localize.MarkdownParagraph
 	quest_starter: Localize.MarkdownParagraph
 }
 
-export interface TruthOptionStarforged extends TruthOption {
+export interface WorldTruthOption extends TruthOptionBase {}
+
+export interface SettingTruthOption extends TruthOptionBase {
 	summary: Localize.MarkdownSentences
 	description: Localize.MarkdownParagraphs
 }

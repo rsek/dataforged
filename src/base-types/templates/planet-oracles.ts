@@ -1,11 +1,10 @@
-import { type OracleCollection } from '@base-types/collections'
-import { type OracleTableRow, type OracleTable } from '@base-types/oracles'
+import { type Oracles } from '@base-types'
 import {
-	type DescriptorFocusRow,
-	type PrecursorVaultRow
-} from '@base-types/templates/common'
+	type PrecursorVaultRow,
+	type DescriptorFocusRow
+} from 'base-types/templates/common'
 
-export interface PlanetOracles extends OracleCollection {
+export interface PlanetOracles extends Oracles.OracleCollection {
 	collections: {
 		settlements: PlanetSettlementOracles
 	}
@@ -16,69 +15,69 @@ export interface PlanetOracles extends OracleCollection {
 		life: PlanetLifeTable
 	}
 }
-interface PlanetSettlementTable extends OracleTable {
+export interface PlanetSettlementTable extends Oracles.OracleTable {
 	table: [
-		OracleTableRow<any, any, 'None'>,
-		OracleTableRow<any, any, 'Orbital settlement'>,
-		OracleTableRow<any, any, 'Planetside settlement'>,
-		OracleTableRow<any, any, 'Multiple settlements'>,
-		OracleTableRow<any, any, 'Settlements in conflict'>
+		Oracles.OracleTableRow<any, any, 'None'>,
+		Oracles.OracleTableRow<any, any, 'Orbital settlement'>,
+		Oracles.OracleTableRow<any, any, 'Planetside settlement'>,
+		Oracles.OracleTableRow<any, any, 'Multiple settlements'>,
+		Oracles.OracleTableRow<any, any, 'Settlements in conflict'>
 	]
 }
-interface PlanetAtmosphereTable extends OracleTable {
+export interface PlanetAtmosphereTable extends Oracles.OracleTable {
 	table: [
-		OracleTableRow<any, any, 'None/thin'>,
-		OracleTableRow<any, any, 'Toxic'>,
-		OracleTableRow<any, any, 'Corrosive'>,
-		OracleTableRow<any, any, 'Marginal'>,
-		OracleTableRow<any, any, 'Breathable'>,
-		OracleTableRow<any, any, 'Ideal'>
+		Oracles.OracleTableRow<any, any, 'None/thin'>,
+		Oracles.OracleTableRow<any, any, 'Toxic'>,
+		Oracles.OracleTableRow<any, any, 'Corrosive'>,
+		Oracles.OracleTableRow<any, any, 'Marginal'>,
+		Oracles.OracleTableRow<any, any, 'Breathable'>,
+		Oracles.OracleTableRow<any, any, 'Ideal'>
 	]
 }
-interface PlanetObservedFromSpaceTable extends OracleTable {
+export interface PlanetObservedFromSpaceTable extends Oracles.OracleTable {
 	table: [
-		OracleTableRow<1, 11>,
-		OracleTableRow<12, 22>,
-		OracleTableRow<23, 33>,
-		OracleTableRow<34, 44>,
-		OracleTableRow<45, 55>,
-		OracleTableRow<56, 66>,
-		OracleTableRow<67, 77>,
-		OracleTableRow<78, 88>,
+		Oracles.OracleTableRow<1, 11>,
+		Oracles.OracleTableRow<12, 22>,
+		Oracles.OracleTableRow<23, 33>,
+		Oracles.OracleTableRow<34, 44>,
+		Oracles.OracleTableRow<45, 55>,
+		Oracles.OracleTableRow<56, 66>,
+		Oracles.OracleTableRow<67, 77>,
+		Oracles.OracleTableRow<78, 88>,
 		DescriptorFocusRow<89, 98>,
 		PrecursorVaultRow<99, 100, 'orbital'>
 	]
 }
-interface PlanetsideFeatureTable extends OracleTable {
+export interface PlanetsideFeatureTable extends Oracles.OracleTable {
 	table: [
-		OracleTableRow<1, 7>,
-		OracleTableRow<8, 14>,
-		OracleTableRow<15, 21>,
-		OracleTableRow<22, 28>,
-		OracleTableRow<29, 35>,
-		OracleTableRow<36, 42>,
-		OracleTableRow<43, 49>,
-		OracleTableRow<50, 56>,
-		OracleTableRow<57, 63>,
-		OracleTableRow<64, 70>,
-		OracleTableRow<71, 77>,
-		OracleTableRow<78, 84>,
-		OracleTableRow<85, 91>,
+		Oracles.OracleTableRow<1, 7>,
+		Oracles.OracleTableRow<8, 14>,
+		Oracles.OracleTableRow<15, 21>,
+		Oracles.OracleTableRow<22, 28>,
+		Oracles.OracleTableRow<29, 35>,
+		Oracles.OracleTableRow<36, 42>,
+		Oracles.OracleTableRow<43, 49>,
+		Oracles.OracleTableRow<50, 56>,
+		Oracles.OracleTableRow<57, 63>,
+		Oracles.OracleTableRow<64, 70>,
+		Oracles.OracleTableRow<71, 77>,
+		Oracles.OracleTableRow<78, 84>,
+		Oracles.OracleTableRow<85, 91>,
 		DescriptorFocusRow<92, 98>,
 		PrecursorVaultRow<99, 100, 'planetside'>
 	]
 }
-interface PlanetLifeTable extends OracleTable {
+export interface PlanetLifeTable extends Oracles.OracleTable {
 	table: [
-		OracleTableRow<any, any, 'None'>,
-		OracleTableRow<any, any, 'Extinct'>,
-		OracleTableRow<any, any, 'Scarce'>,
-		OracleTableRow<any, any, 'Diverse'>,
-		OracleTableRow<any, any, 'Bountiful'>,
-		OracleTableRow<any, any, 'Overrun'>
+		Oracles.OracleTableRow<any, any, 'None'>,
+		Oracles.OracleTableRow<any, any, 'Extinct'>,
+		Oracles.OracleTableRow<any, any, 'Scarce'>,
+		Oracles.OracleTableRow<any, any, 'Diverse'>,
+		Oracles.OracleTableRow<any, any, 'Bountiful'>,
+		Oracles.OracleTableRow<any, any, 'Overrun'>
 	]
 }
-interface PlanetSettlementOracles extends OracleCollection {
+export interface PlanetSettlementOracles extends Oracles.OracleCollection {
 	contents: {
 		terminus: PlanetSettlementTable
 		outlands: PlanetSettlementTable

@@ -2,13 +2,13 @@ import {
 	type Localize,
 	type Metadata,
 	type Utils,
-	type Abstract,
-	type Collections
+	type Abstract
 } from '@base-types'
 export type OracleTableID = string
 
 export interface OracleTable {
 	_id: OracleTableID
+	_template?: string
 	title: Metadata.Title
 	source: Metadata.Source
 	summary?: Localize.MarkdownSentences
@@ -31,7 +31,7 @@ export interface OracleRenderingBase {
 	 * Describes the rendering of this oracle as a standalone table.
 	 */
 	columns?: Record<string, OracleTableColumn>
-	style?: OracleTableStyle | Collections.OracleCollectionStyle | null
+	style?: OracleTableStyle | OracleCollectionStyle | null
 	color?: Metadata.Color
 }
 
@@ -84,11 +84,25 @@ export type OracleTableRollMethod =
 	| 'make_it_worse'
 
 export interface OracleTableRoll<
-	ID extends string = OracleTableID,
+	ID extends string | null = OracleTableID,
 	Times extends number | undefined = number | undefined,
 	Method extends OracleTableRollMethod = OracleTableRollMethod
 > {
 	oracle?: ID | null
 	times?: Times
 	method?: Method
+}
+
+export type OracleCollectionID = string
+export interface OracleCollection
+	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
+	rendering?: OracleCollectionRendering
+}
+
+export type OracleCollectionStyle = 'multi_table'
+
+export interface OracleCollectionRendering extends OracleRenderingBase {
+	color?: string
+	columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
+	style?: OracleCollectionStyle | null
 }

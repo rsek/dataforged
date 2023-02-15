@@ -73,18 +73,18 @@ export class Asset extends Abstract.Node implements Types.Assets.Asset {
 
 export class AssetType
 	extends Collections.Collection<Asset>
-	implements Types.Collections.AssetType
+	implements Types.Abstract.AssetType
 {
 	@Collections.IsRecord(Asset)
 	contents: Record<string, Asset>
 
 	constructor(
-		data: Utils.YamlInput<Types.Collections.AssetType>,
+		data: Utils.YamlInput<Types.Abstract.AssetType>,
 		id: string,
 		parentSource: Types.Metadata.Source
 	) {
 		super(
-			data as Utils.YamlInput<Types.Collections.Collection<Asset>>,
+			data as Utils.YamlInput<Types.Abstract.Collection<Asset>>,
 			id,
 			parentSource
 		)

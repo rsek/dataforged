@@ -183,7 +183,7 @@ export class Source implements Types.Source {
 
 	@IsUrl()
 	@JSONSchema({
-		description: 'The URI where the source document is available.',
+		description: 'The URL where the source document is available.',
 		examples: ['https://ironswornrpg.com']
 	})
 	uri!: string
@@ -192,7 +192,7 @@ export class Source implements Types.Source {
 	@JSONSchema({
 		type: ['string', 'null'],
 		description:
-			'An absolute URI pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
+			'An absolute URL pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
 		examples: [
 			'https://creativecommons.org/licenses/by/4.0',
 			'https://creativecommons.org/licenses/by-nc-sa/4.0'

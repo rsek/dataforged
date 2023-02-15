@@ -1,4 +1,10 @@
-import { type Abstract, type Localize, type Progress } from '@base-types'
+import {
+	type Encounters,
+	type Abstract,
+	type Localize,
+	type Progress
+} from '@base-types'
+import { type Collection } from 'base-types/abstract'
 
 // TODO
 export type EncounterClassicID = string
@@ -34,3 +40,7 @@ export interface EncounterStarforged extends Encounter {
 	nature: EncounterNatureStarforged
 	variants?: Record<string, EncounterVariantStarforged>
 }
+
+export type EncounterCollectionID = string
+export interface EncounterCollectionClassic
+	extends Collection<Encounters.EncounterClassic, EncounterCollectionID> {}

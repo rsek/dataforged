@@ -4,9 +4,8 @@ import { schemaRef } from './common'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {
 	type: 'string',
-	$comment: '{namespace}/regions/{region}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/regions(\/[a-z][a-z_]*[a-z]){1}$/.source
-	// TODO: pattern
+	pattern: /^[a-z0-9][a-z0-9_]+\/regions(\/[a-z][a-z_]*[a-z]){1}$/.source,
+	examples: ['ironsworn/regions/shattered_wastes']
 }
 export const RegionEntry: Schema<Types.RegionEntry> = {
 	type: 'object',
@@ -22,16 +21,16 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 		'_id'
 	],
 	properties: {
-		_id: { $ref: '#/$defs/RegionEntryID' },
-		name: { $ref: '#/$defs/Label' },
-		summary: { $ref: '#/$defs/MarkdownSentences' },
-		description: { $ref: '#/$defs/MarkdownParagraphs' },
+		_id: { $ref: '#/definitions/RegionEntryID' },
+		name: { $ref: '#/definitions/Label' },
+		summary: { $ref: '#/definitions/MarkdownSentences' },
+		description: { $ref: '#/definitions/MarkdownParagraphs' },
 		features: {
 			type: 'array',
-			items: { $ref: '#/$defs/MarkdownPhrase' } as any
+			items: { $ref: '#/definitions/MarkdownPhrase' } as any
 		},
-		quest_starter: { $ref: '#/$defs/MarkdownParagraph' },
-		source: { $ref: '#/$defs/Source' },
-		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions') 
+		quest_starter: { $ref: '#/definitions/MarkdownParagraph' },
+		source: schemaRef<Metadata.Source>('Source'),
+		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
 	}
 }

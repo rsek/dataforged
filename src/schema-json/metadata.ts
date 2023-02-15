@@ -28,20 +28,20 @@ export const Color: Schema<Types.Color> = {
 	type: 'string',
 	pattern: /^#([0-9A-f]{2}){3}$/.source,
 	description:
-		'A CSS hex color. Use it to provide thematic accents when rendering this item.'
+		'A CSS hexadecimal color. Use it to provide thematic accents when rendering this item.'
 }
 
 export const Icon: Schema<Types.Icon> = {
 	type: 'string',
 	format: 'url',
-	description: 'A relative URI pointing to an SVG icon.',
+	description: 'A relative URL pointing to an SVG icon.',
 	pattern: /^.+\.svg$/.source
 }
 
 export const Image: Schema<Types.Image> = {
 	type: 'string',
 	format: 'url',
-	description: 'A relative URI pointing to a WEBP image.',
+	description: 'A relative URL pointing to a WEBP image.',
 	pattern: /^.+\.webp$/.source
 }
 
@@ -70,7 +70,7 @@ export const Source: Schema<Types.Source> = {
 		} as any,
 		url: {
 			type: 'string',
-			description: 'The URI where the source document is available.',
+			description: 'The URL where the source document is available.',
 			examples: ['https://ironswornrpg.com']
 		},
 		authors: {
@@ -92,7 +92,7 @@ export const Source: Schema<Types.Source> = {
 		license: {
 			type: ['string', 'null'] as any,
 			description:
-				'An absolute URI pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
+				'An absolute URL pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
 			examples: [
 				'https://creativecommons.org/licenses/by/4.0',
 				'https://creativecommons.org/licenses/by-nc-sa/4.0'

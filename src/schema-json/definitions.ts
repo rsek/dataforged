@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import {
 	Assets,
-	Collections,
+	Abstract,
 	DelveSites,
 	Encounters,
 	// GameObjects,
@@ -12,14 +12,15 @@ import {
 	Players,
 	Rarities,
 	Regions,
-	Truths,
 	Progress,
 	RulesetClassic,
 	RulesetStarforged,
 	Attributes
-} from '@df-json-schema'
+} from '@schema-json'
 import { type JSONSchema7 } from 'json-schema'
 import type * as Types from '@base-types'
+import { OracleCollectionTemplate } from 'schema-json/templates'
+import { schemaRef } from 'schema-json/common'
 
 /**
  * Splits a camelcase title to something nicer
@@ -45,9 +46,9 @@ const defs: Record<string, JSONSchema7> = {
 	...Players,
 	...Encounters,
 	...Moves,
-	...Collections,
-	...Truths,
-	...Attributes
+	...Abstract,
+	...Attributes,
+	OracleCollectionTemplate
 }
 
 const defsStarforged = _({

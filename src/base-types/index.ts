@@ -4,7 +4,6 @@
 export * as Abstract from './abstract'
 export * as Assets from './assets'
 export * as Attributes from './attributes'
-export * as Collections from './collections'
 export * as DelveSites from './delve-sites'
 export * as Encounters from './encounters'
 export * as Localize from './localize'

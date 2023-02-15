@@ -9,6 +9,7 @@ import {
 
 export type DelveSiteID = string
 export interface DelveSite extends Abstract.Node<DelveSiteID> {
+	name: Localize.Label
 	rank: Progress.ChallengeRank
 	theme: DelveSiteThemeID
 	domain: DelveSiteCardID

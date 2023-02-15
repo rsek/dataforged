@@ -19,7 +19,7 @@ import {
 	type ValidationOptions
 } from 'class-validator'
 import { JSONSchema } from 'class-validator-jsonschema'
-import { DF_KEY } from 'json-schema/common'
+import { DF_KEY } from '@schema-json/common'
 
 export abstract class Range<
 	Low extends number | null = number | null,
@@ -148,7 +148,7 @@ export class OracleTable
 	constructor(
 		data: Utils.YamlInput<Types.Oracles.OracleTable>,
 		id: string,
-		collection: Types.Collections.OracleCollection
+		collection: Types.Abstract.OracleCollection
 	) {
 		super(data, id, collection.source)
 		this.title = new Metadata.Title(data.title)
@@ -241,7 +241,7 @@ export class OracleTableColumn implements Types.Oracles.OracleTableColumn {
 }
 
 export class OracleCollectionRendering
-	implements Types.Collections.OracleCollectionRendering
+	implements Types.Abstract.OracleCollectionRendering
 {
 	columns: Record<
 		string,
@@ -255,7 +255,7 @@ export class OracleCollectionRendering
 	@IsHexColor()
 	color?: string | undefined
 
-	constructor(data: Types.Collections.OracleCollectionRendering) {
+	constructor(data: Types.Abstract.OracleCollectionRendering) {
 		this.style = data.style ?? null
 		this.columns = data.columns
 		this.color = data.color
@@ -264,13 +264,13 @@ export class OracleCollectionRendering
 
 export class OracleCollection
 	extends Collections.Collection<Types.Oracles.OracleTable>
-	implements Types.Collections.OracleCollection
+	implements Types.Abstract.OracleCollection
 {
 	@IsRecord(OracleTable, new RegExp(DF_KEY))
 	contents: Record<string, Types.Oracles.OracleTable> = {}
 
 	@IsOptional()
-	rendering?: Types.Collections.OracleCollectionRendering | undefined
+	rendering?: Types.Abstract.OracleCollectionRendering | undefined
 
 	@IsOptional()
 	collections?: Record<string, OracleCollection> | undefined
@@ -279,8 +279,8 @@ export class OracleCollection
 	_id!: string
 
 	constructor(
-		data: Utils.YamlInput<Types.Collections.OracleCollection>,
-		id: Types.Collections.OracleCollectionID,
+		data: Utils.YamlInput<Types.Abstract.OracleCollection>,
+		id: Types.Abstract.OracleCollectionID,
 		parentSource: Types.Metadata.Source
 	) {
 		super(data, id, parentSource)
