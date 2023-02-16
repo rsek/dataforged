@@ -17,4 +17,4 @@ const logger = Winston.createLogger({
 	transports: [new Winston.transports.Console({})]
 })
 
-export default logger
+export { logger }

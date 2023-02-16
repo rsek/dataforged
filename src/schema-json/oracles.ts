@@ -222,6 +222,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 	type: 'object',
 	description: 'Represents a row from an oracle table.',
 	required: ['_id', 'low', 'high', 'result'],
+	additionalProperties: false,
 	properties: {
 		low: {
 			description: "The low end of this row's roll range",
@@ -241,6 +242,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			title: 'Result text',
 			...schemaRef<Types.Localize.MarkdownPhrase>('MarkdownPhrase')
 		},
+		icon: schemaRef<Types.Metadata.Icon>('Icon'),
 		summary: {
 			title: 'Summary text',
 			description:

@@ -1,7 +1,7 @@
 starforged:
   _ruleset: starforged
   _source:
-    date: 2022-05-06
+    date: "2022-05-06"
     authors:
       - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
@@ -32,57 +32,57 @@ starforged:
               high: 15
               result: "[⏵Desert World](starforged/collections/oracles/planets/desert)"
               # game_objects: *obj:Planet.Desert
-              images: *images:DesertWorld
+              # images: *images:DesertWorld
             - low: 16
               high: 30
               result: "[⏵Furnace World](starforged/collections/oracles/planets/furnace)"
               # game_objects: *obj:Planet.Furnace
-              images: *images:FurnaceWorld
+              # images: *images:FurnaceWorld
             - low: 31
               high: 35
               result: "[⏵Grave World](starforged/collections/oracles/planets/grave)"
               # game_objects: *obj:Planet.Grave
-              images: *images:GraveWorld
+              # images: *images:GraveWorld
             - low: 36
               high: 50
               result: "[⏵Ice World](starforged/collections/oracles/planets/ice)"
               # game_objects: *obj:Planet.Ice
-              images: *images:IceWorld
+              # images: *images:IceWorld
             - low: 51
               high: 65
               result: "[⏵Jovian World](starforged/collections/oracles/planets/jovian)"
               # game_objects: *obj:Planet.Jovian
-              images: *images:JovianWorld
+              # images: *images:JovianWorld
             - low: 66
               high: 70
               result: "[⏵Jungle World](starforged/collections/oracles/planets/jungle)"
               # game_objects: *obj:Planet.Jungle
-              images: *images:JungleWorld
+              # images: *images:JungleWorld
             - low: 71
               high: 75
               result: "[⏵Ocean World](starforged/collections/oracles/planets/ocean)"
               # game_objects: *obj:Planet.Ocean
-              images: *images:OceanWorld
+              # images: *images:OceanWorld
             - low: 76
               high: 90
               result: "[⏵Rocky World](starforged/collections/oracles/planets/rocky)"
               # game_objects: *obj:Planet.Rocky
-              images: *images:RockyWorld
+              # images: *images:RockyWorld
             - low: 91
               high: 92
               result: "[⏵Shattered World](starforged/collections/oracles/planets/shattered)"
               # game_objects: *obj:Planet.Shattered
-              images: *images:ShatteredWorld
+              # images: *images:ShatteredWorld
             - low: 93
               high: 98
               result: "[⏵Tainted World](starforged/collections/oracles/planets/tainted)"
               # game_objects: *obj:Planet.Tainted
-              images: *images:TaintedWorld
+              # images: *images:TaintedWorld
             - low: 99
               high: 100
               result: "[⏵Vital World](starforged/collections/oracles/planets/vital)"
               # game_objects: *obj:Planet.Vital
-              images: *images:VitalWorld
+              # images: *images:VitalWorld
       collections:
         peril:
           title:
@@ -103,14 +103,14 @@ starforged:
               result:
                 content_type: result
                 table_key: lifebearing
-          usage:
-            repeatable: true
-            requires:
-              attributes:
-                life: null
-          content:
-            part_of_speech: [fragment]
-            tags: [peril, event, present]
+          # usage:
+          #   repeatable: true
+          #   requires:
+          #     attributes:
+          #       life: null
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [peril, event, present]
           description: |-
             Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
           contents:
@@ -119,10 +119,10 @@ starforged:
                 canonical: Lifebearing
               rendering:
                 style: embed_as_column
-              usage:
-                requires: &attr:Life.Lifebearing
-                  attributes:
-                    life: [none, extinct]
+              # usage:
+              #   requires: &attr:Life.Lifebearing
+              #     attributes:
+              #       life: [none, extinct]
               table: &table:Planets.Peril
                 - low: 1
                   high: 3
@@ -244,10 +244,10 @@ starforged:
                 canonical: Lifeless
               rendering:
                 style: embed_as_column
-              usage:
-                requires: &attr:Life.Lifeless
-                  attributes:
-                    life: [none, extinct]
+              # usage:
+              #   requires: &attr:Life.Lifeless
+              #     attributes:
+              #       life: [none, extinct]
               _templateTableRows:
                 content: *table:Planets.Peril
                 rolls:
@@ -305,14 +305,14 @@ starforged:
                 content_type: result
                 table_key: lifebearing
                 label: Result
-          content:
-            part_of_speech: [fragment]
-            tags: [opportunity]
-          usage:
-            repeatable: true
-            requires:
-              attributes:
-                life: null
+          # content:
+          #   part_of_speech: [fragment]
+          #   tags: [opportunity]
+          # usage:
+          #   repeatable: true
+          #   requires:
+          #     attributes:
+          #       life: null
           description: |-
             Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
           contents:
@@ -321,8 +321,8 @@ starforged:
                 style: embed_as_column
               title:
                 canonical: Lifebearing
-              usage:
-                requires: *attr:Life.Lifebearing
+              # usage:
+              #   requires: *attr:Life.Lifebearing
               table: &table:Planets.Opportunity
                 - low: 1
                   high: 4
@@ -349,7 +349,7 @@ starforged:
                 - low: 25
                   high: 28
                   result: Abandoned camp or vehicle
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
                 - low: 29
                   high: 32
                   result: Advance warning of an environmental threat
@@ -377,18 +377,18 @@ starforged:
                 - low: 61
                   high: 64
                   result: Helpful resource is in ample supply
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
                 - low: 65
                   high: 68
                   result: Impressive vista offers comfort or inspiration
                 - low: 69
                   high: 72
                   result: Interesting artifact or device
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
                 - low: 73
                   high: 76
                   result: Interesting site offers opportunities for exploration
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
                 - low: 77
                   high: 80
                   result: Moment of fellowship or inner peace
@@ -405,11 +405,11 @@ starforged:
                 - low: 93
                   high: 96
                   result: "Refuge offers a place to hide, plan, or recover"
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
                 - low: 97
                   high: 100
                   result: Vantage point reveals the lay of the land
-                  suggestions: [*roll:Object]
+                  # suggestions: [*roll:Object]
             lifeless:
               rendering:
                 style: embed_as_column

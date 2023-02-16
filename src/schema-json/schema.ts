@@ -21,16 +21,16 @@ export const SourcePartial: Schema<Partial<Metadata.Source>> = {
 	properties: Source.properties
 }
 
-const $schema = 'http://json-schema.org/schema'
 // const $schema = 'https://json-schema.org/draft/2019-09/schema'
 
 function toInputDefinitions(
 	defs: Record<string, JSONSchema7>
 ): Record<string, JSONSchema7> {
-	const newDefs: Record<string, JSONSchema7> = {
+	// clone to avoid mutating the original
+	const newDefs: Record<string, JSONSchema7> = _.cloneDeep({
 		...defs,
 		SourcePartial: SourcePartial as JSONSchema7
-	}
+	})
 	const toMakeOptional = ['_id', 'source']
 	_.forEach(newDefs, (def) => {
 		if (def.required != null) {
@@ -49,7 +49,7 @@ function toInputDefinitions(
 }
 
 export const Dataforged: JSONSchema7 = {
-	$schema,
+	// $schema,
 	title: 'Dataforged',
 	description:
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
@@ -62,7 +62,7 @@ export const Dataforged: JSONSchema7 = {
 }
 
 export const DataforgedInput: JSONSchema7 = {
-	$schema,
+	// $schema,
 	title: 'Dataforged data entry',
 	description:
 		'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
@@ -73,7 +73,7 @@ export const DataforgedInput: JSONSchema7 = {
 }
 
 export const Datasworn: JSONSchema7 = {
-	$schema,
+	// $schema,
 	title: 'Datasworn',
 	description: Dataforged.description?.replace(
 		'Ironsworn: Starforged',
@@ -88,7 +88,7 @@ export const Datasworn: JSONSchema7 = {
 }
 
 export const DataswornInput: JSONSchema7 = {
-	$schema,
+	// $schema,
 	title: DataforgedInput.title?.replace('Dataforged', 'Datasworn'),
 	description: DataforgedInput.description?.replace('Dataforged', 'Datasworn'),
 	definitions: toInputDefinitions(defsClassic),

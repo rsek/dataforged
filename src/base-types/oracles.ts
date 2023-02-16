@@ -4,6 +4,7 @@ import {
 	type Utils,
 	type Abstract
 } from '@base-types'
+import { type Icon } from 'base-types/metadata'
 export type OracleTableID = string
 
 export interface OracleTable {
@@ -72,6 +73,7 @@ export interface OracleTableRow<
 	low: Low
 	high: High
 	result: Localize.MarkdownPhrase
+	icon?: Icon
 	summary?: Localize.MarkdownSentences
 	rolls?: OracleTableRoll[]
 	suggestions?: Metadata.SuggestionsBase

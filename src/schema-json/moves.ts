@@ -42,6 +42,7 @@ export const RollableStatID: Schema<Types.RollableStatID> = {
 	oneOf: [
 		schemaRef<Players.StatID>('StatID'),
 		schemaRef<Players.ConditionMeterID>('ConditionMeterID'),
+		schemaRef<string>('AttributeID'),
 		schemaRef<
 			RulesetClassic.ConditionMeterAlias | RulesetStarforged.ConditionMeterAlias
 		>('ConditionMeterAlias')

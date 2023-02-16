@@ -4,7 +4,11 @@ import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common'
 
 export const AttributeID: Schema<Types.Attributes.AttributeID> = {
-	type: 'string'
+	type: 'string',
+	// starforged/moves/connection/develop_your_relationship/attributes/challenge_rank
+	pattern:
+		/^[a-z0-9][a-z0-9_]+\/(moves|assets)(\/[a-z][a-z_]*[a-z]){2}\/attributes\/[a-z][a-z_]*[a-z]$/
+			.source
 }
 
 export const CustomStat: Schema<Types.Attributes.CustomStat> = {
