@@ -1,45 +1,46 @@
-import { type Players, type Localize } from '@base-types'
-import { type ConditionMeterID } from 'base-types/players'
+import { type Localize, type Moves } from '@base-types'
 
 export type AttributeID = string
 
-export interface CustomStat {
+export interface AttributeBase {
+	_id: string
 	label: Localize.Label
-	options: Record<string, CustomStatOption>
+	attribute_type: string
+	value: number | string | null
+	position: InputPosition
 }
 
-export interface CustomStatOption {
+export type NumberRangeAttributeType = 'clock' | 'condition_meter' | 'counter'
+
+export type SelectAttributeType = 'select_number' | 'select_reference'
+
+// TODO: require "position: no_render" on move attributes
+
+export interface SelectAttribute extends AttributeBase {
+	attribute_type: SelectAttributeType
+	value: string | number | null
+	options: Record<string, SelectAttributeOptionBase>
+}
+
+export interface SelectAttributeOptionBase {
 	label: Localize.Label
+	value: string | number
+}
+
+export interface SelectAttributeNumberOption extends SelectAttributeOptionBase {
 	value: number
 }
 
-interface AttributeBase {
-	attribute_type: string
-	label: Localize.Label
-	value: number | string | null
+export interface SelectAttributeReferenceOption
+	extends SelectAttributeOptionBase {
+	value: Moves.RollableStatID
 }
 
-export type AttributeSelectType = 'reference' | 'string'
-
-export interface AttributeSelect extends AttributeBase {
-	options: Record<string, AttributeSelectOption>
-}
-
-export interface AttributeSelectOption {
-	label: Localize.Label
-}
-
-export interface AttributeSelectOptionReference extends AttributeSelectOption {
-	value_of: ConditionMeterID | Players.StatID
-}
-
-export type AttributeNumericType = 'clock' | 'condition_meter' | 'counter'
-
-export interface AttributeNumeric extends AttributeBase {
-	attribute_type: AttributeNumericType
+export interface NumberRangeAttribute extends AttributeBase {
+	attribute_type: NumberRangeAttributeType
 	label: Localize.Label
 	min: 0
-	value: number
+	value: number | null
 	max: this['attribute_type'] extends 'clock'
 		? ClockSegments
 		: this['attribute_type'] extends 'condition_meter'
@@ -47,11 +48,16 @@ export interface AttributeNumeric extends AttributeBase {
 		: number | null
 }
 
+export type InputPosition =
+	| 'no_render'
+	| `card_${'bottom' | 'top'}`
+	| `ability_${0 | 1 | 2}_${'right' | 'left'}`
+
 export type ClockSegments = 4 | 6 | 8 | 10
 
-export interface AttributeText extends AttributeBase {
+export interface TextAttribute extends AttributeBase {
 	attribute_type: 'text'
 	value: string | null
 }
 
-export type Attribute = AttributeText | AttributeNumeric
+export type Attribute = TextAttribute | NumberRangeAttribute

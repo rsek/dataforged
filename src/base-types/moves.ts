@@ -6,6 +6,7 @@ import {
 	type Players,
 	type Attributes
 } from '@base-types'
+import { type ExtendMany } from 'base-types/abstract'
 
 export type MoveID = string
 
@@ -25,10 +26,14 @@ export interface Move<T extends RollType = RollType>
 	trigger: Trigger<T>
 }
 
+export interface MoveExtension extends ExtendMany<Move> {}
+
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
 export interface MoveOutcome {
 	text: Localize.MarkdownParagraph
+	count_as?: MoveOutcomeType
+	reroll?: MoveReroll
 }
 
 // TODO: would match outcomes make sense as ExtendOne?
@@ -47,11 +52,22 @@ export interface Trigger<T extends RollType = RollType> {
 	by: TriggerBy
 }
 
+export interface MoveReroll {
+	text?: Localize.MarkdownPhrase
+	method: MoveRerollMethod
+}
+
 export interface TriggerBy {
 	player: boolean
 	ally: boolean
 }
 
+export type MoveRerollMethod =
+	| 'any'
+	| 'all'
+	| 'challenge_die'
+	| 'challenge_dice'
+	| 'action_die'
 export type RollMethod = 'any' | 'all' | 'highest' | 'lowest' | 'inherit'
 
 export type ProgressType =

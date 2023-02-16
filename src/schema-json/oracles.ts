@@ -35,7 +35,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			description: `'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.`,
 			enum: ['result', 'summary', 'description', 'range']
 		},
-		label: { $ref: '#/definitions/Label' }
+		label: schemaRef<Types.Localize.Label>('Label')
 	},
 	oneOf: [
 		{
@@ -91,15 +91,15 @@ export const OracleCollectionColumn: Schema<
 	required: ['content_type', 'table_key'],
 	additionalProperties: false,
 	properties: {
-		...OracleTableColumn.properties,
+		...(OracleTableColumn.properties as any),
 		table_key: {
 			description:
 				"A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 			type: 'string',
 			pattern: DF_KEY
-		}
-		// color: schemaRef<Types.Metadata.Color>('Color')
-	} as any,
+		},
+		color: schemaRef<Types.Metadata.Color>('Color')
+	},
 	oneOf: OracleTableColumn.oneOf
 }
 
@@ -253,6 +253,12 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			],
 			nullable: undefined as any
 		},
+		description: {
+			...schemaRef<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			title: 'Extended description',
+			description:
+				'An extended description for this oracle table row. No canonical OracleTableRows use it, but some TruthOptions do.'
+		},
 		embed_table: {
 			...schemaRef<Types.Oracles.OracleTableID>('OracleTableID'),
 			description: 'A table to be rendered inside this table row.'
@@ -262,8 +268,53 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			items: schemaRef<Types.Oracles.OracleTableRoll>('OracleTableRoll'),
 			nullable: undefined as any
 		},
+		template: schemaRef<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 		suggestions: schemaRef<Types.Metadata.SuggestionsBase>('Suggestions'),
 		_id: schemaRef<Types.Oracles.OracleTableRowID>('OracleTableRowID')
+	},
+	oneOf: [
+		{
+			title: 'OracleTableRowStub',
+			properties: {
+				_id: { const: null },
+				low: { const: null },
+				high: { const: null }
+			}
+		},
+		{
+			properties: {
+				_id: { type: 'string' },
+				low: { type: 'integer' },
+				high: { type: 'integer' }
+			}
+		}
+	]
+}
+
+export const OracleRollTemplate: Schema<Types.Oracles.OracleRollTemplate> = {
+	type: 'object',
+	description: `Provides string templates that may be used in place of the static row text from \`OracleTableRow#result\`, \`OracleTableRow#summary\`, and \`OracleTableRow#description\`.
+
+These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{roll:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`,
+	properties: {
+		result: {
+			...schemaRef<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+			description:
+				'A string template that may be used in place of OracleTableRow#result.',
+			examples: [
+				'{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}'
+			]
+		},
+		summary: {
+			...schemaRef<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+			description:
+				'A string template that may be used in place of OracleTableRow#summary.'
+		},
+		description: {
+			...schemaRef<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			description:
+				'A string template that may be used in place of OracleTableRow#description.'
+		}
 	}
 }
 
@@ -290,6 +341,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 			...maybeTemplate,
 			properties: {
 				_template: { type: 'string' },
+				template:
+					schemaRef<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 				rendering: {
 					type: 'object',
 					description:

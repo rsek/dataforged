@@ -1,7 +1,7 @@
 starforged:
   _ruleset: starforged
   _source:
-    date: "2022-05-06"
+    date: 2022-05-06
     authors:
       - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
@@ -37,19 +37,23 @@ starforged:
                 - low: 1
                   high: 40
                   result: "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]"
-                  template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}" }
+                  template:
+                    result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}"
                 - low: 41
                   high: 55
                   result: "[[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]"
-                  template: {result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
+                  template:
+                    result: "{{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"
                 - low: 56
                   high: 70
                   result: "[[⏵Identity](starforged/oracles/factions/identity)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Affiliation](starforged/oracles/factions/affiliation)]"
-                  template: {result: "{{roll:starforged/oracles/factions/identity}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}"}
+                  template:
+                    result: "{{roll:starforged/oracles/factions/identity}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/affiliation}}"
                 - low: 71
                   high: 100
                   result: "[[⏵Affiliation](starforged/oracles/factions/affiliation)] *of the* [[⏵Legacy](starforged/oracles/factions/legacy)] [[⏵Identity](starforged/oracles/factions/identity)]"
-                  template: {result: "{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"}
+                  template:
+                    result: "{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"
             legacy:
               title:
                 canonical: Legacy
@@ -530,7 +534,7 @@ starforged:
             canonical: Dominion
           rendering:
             style: table
-            icon: icons/oracles/factions/dominion.svg
+            icon: icons/factions/dominion.svg
           _source:
             page: 341
           # usage:
@@ -699,7 +703,7 @@ starforged:
             canonical: Guild
           rendering:
             style: table
-            icon: icons/oracles/factions/guild.svg
+            icon: icons/factions/guild.svg
           _source:
             page: 341
           # usage:
@@ -775,7 +779,7 @@ starforged:
             canonical: Fringe Group
           rendering:
             style: table
-            icon: icons/oracles/factions/fringe_group.svg
+            icon: icons/factions/fringe_group.svg
           _source:
             page: 341
           # usage:

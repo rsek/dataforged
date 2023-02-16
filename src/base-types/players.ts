@@ -1,7 +1,6 @@
 import { type Localize } from '@base-types'
 
-export interface Player {}
-export interface Extend extends Partial<Player> {}
+export interface Extend extends Partial<PlayerCharacter> {}
 
 type StatName = 'edge' | 'heart' | 'iron' | 'shadow' | 'wits'
 export type StatID = `player/stats/${StatName}`

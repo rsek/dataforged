@@ -11,10 +11,17 @@ import { validator } from 'scripts/validator'
 async function readYAML(filePath: string) {
 	const data = await readFile(filePath, { encoding: 'utf-8' })
 	return YAML.load(data, {
-		// ensures that dates are serialized as strings rather than Date objects (which stops AJV from validating them)
+		// ensures that dates are serialized as strings rather than Date objects (which prevents AJV from validating them)
 		schema: YAML.JSON_SCHEMA
 	})
 }
+
+// const starforgedFilePath = path.join(
+// 	process.cwd(),
+// 	'src/data-in/dataforged/starforged'
+// )
+
+// fg(starforgedFilePath + '/**/*.yaml')
 
 const filePath = path.join(
 	process.cwd(),
@@ -24,6 +31,5 @@ const filePath = path.join(
 readYAML(filePath)
 	.then(async (inputData) => {
 		console.log(validator.validate('DataforgedInput', inputData))
-		console.log(validator.errors)
 	})
 	.catch(logger.error)

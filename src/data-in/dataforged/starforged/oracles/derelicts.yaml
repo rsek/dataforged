@@ -4,7 +4,7 @@ starforged:
     authors: [Shawn Tomkin]
     title: "Ironsworn: Starforged Rulebook"
     license: https://creativecommons.org/licenses/by/4.0
-    date: "2022-05-06"
+    date: 2022-05-06
     url: https://ironswornrpg.com
   oracles:
     derelicts:
@@ -122,46 +122,47 @@ starforged:
               #   requires:
               #     attributes:
               #       derelict_type: [starship]
-              table: &derelictZoneTable
-                - low: null
+              table:
+                - &ZoneRow.0
+                  low: null
                   high: null
                   result: "[⏵Access](starforged/collections/oracles/derelicts/access)"
                   icon: icons/derelicts/access.svg
                   # game_objects: *obj:DerelictZone.Access
                 - low: 1
                   high: 5
-                  result: "[⏵Community](starforged/collections/oracles/derelicts/community)"
-                  icon: icons/derelicts/community.svg
+                  result: &ZoneRow.1.result "[⏵Community](starforged/collections/oracles/derelicts/community)"
+                  icon: &ZoneRow.1.icon icons/derelicts/community.svg
                   # game_objects: *obj:DerelictZone.Community
                 - low: 6
                   high: 30
-                  result: "[⏵Engineering](starforged/collections/oracles/derelicts/engineering)"
-                  icon: icons/derelicts/engineering.svg
+                  result: &ZoneRow.2.result "[⏵Engineering](starforged/collections/oracles/derelicts/engineering)"
+                  icon: &ZoneRow.2.icon icons/derelicts/engineering.svg
                   # game_objects: *obj:DerelictZone.Engineering
                 - low: 31
                   high: 55
-                  result: "[⏵Living](starforged/collections/oracles/derelicts/living)"
-                  icon: icons/derelicts/living.svg
+                  result: &ZoneRow.3.result "[⏵Living](starforged/collections/oracles/derelicts/living)"
+                  icon: &ZoneRow.3.icon icons/derelicts/living.svg
                   # game_objects: *obj:DerelictZone.Living
                 - low: 56
                   high: 65
-                  result: "[⏵Medical](starforged/collections/oracles/derelicts/medical)"
-                  icon: icons/derelicts/medical.svg
+                  result: &ZoneRow.4.result "[⏵Medical](starforged/collections/oracles/derelicts/medical)"
+                  icon: &ZoneRow.4.icon icons/derelicts/medical.svg
                   # game_objects: *obj:DerelictZone.Medical
                 - low: 66
                   high: 85
-                  result: "[⏵Operations](starforged/collections/oracles/derelicts/operations)"
-                  icon: icons/derelicts/operations.svg
+                  result: &ZoneRow.5.result "[⏵Operations](starforged/collections/oracles/derelicts/operations)"
+                  icon: &ZoneRow.5.icon icons/derelicts/operations.svg
                   # game_objects: *obj:DerelictZone.Operations
                 - low: 86
                   high: 90
-                  result: "[⏵Production](starforged/collections/oracles/derelicts/production)"
-                  icon: icons/derelicts/production.svg
+                  result: &ZoneRow.6.result "[⏵Production](starforged/collections/oracles/derelicts/production)"
+                  icon: &ZoneRow.6.icon icons/derelicts/production.svg
                   # game_objects: *obj:DerelictZone.Production
                 - low: 91
                   high: 100
-                  result: "[⏵Research](starforged/collections/oracles/derelicts/research)"
-                  icon: icons/derelicts/research.svg
+                  result: &ZoneRow.7.result "[⏵Research](starforged/collections/oracles/derelicts/research)"
+                  icon: &ZoneRow.7.icon icons/derelicts/research.svg
                   # game_objects: *obj:DerelictZone.Research
             settlement:
               title:
@@ -172,17 +173,36 @@ starforged:
               #   requires:
               #     attributes:
               #       derelict_type: [settlement]
-              _templateTableRows:
-                content: *derelictZoneTable
-                rolls:
-                  - [null, null]
-                  - [1, 20]
-                  - [21, 30]
-                  - [31, 50]
-                  - [51, 60]
-                  - [61, 70]
-                  - [71, 90]
-                  - [91, 100]
+              table:
+                - *ZoneRow.0
+                - low: 1
+                  high: 20
+                  result: *ZoneRow.1.result
+                  icon: *ZoneRow.1.icon
+                - low: 21
+                  high: 30
+                  result: *ZoneRow.2.result
+                  icon: *ZoneRow.2.icon
+                - low: 31
+                  high: 50
+                  result: *ZoneRow.3.result
+                  icon: *ZoneRow.3.icon
+                - low: 51
+                  high: 60
+                  result: *ZoneRow.4.result
+                  icon: *ZoneRow.4.icon
+                - low: 61
+                  high: 70
+                  result: *ZoneRow.5.result
+                  icon: *ZoneRow.5.icon
+                - low: 71
+                  high: 90
+                  result: *ZoneRow.6.result
+                  icon: *ZoneRow.6.icon
+                - low: 91
+                  high: 100
+                  result: *ZoneRow.7.result
+                  icon: *ZoneRow.7.icon
       contents:
         location:
           _template: LocationOracle

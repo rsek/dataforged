@@ -148,7 +148,7 @@ sundered_isles:
               max: 4
               value: 2
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           abilities:
             - text: |-
                 You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost as -1 command. If you [Face Danger](starforged/moves/adventure/face_danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
@@ -327,7 +327,7 @@ sundered_isles:
                   max: 4
                   min: 0
                   value: 0
-                  position: ability-1-right
+                  position: ability_0_right
             - text: |-
                 When you make a move using a threat to call the Kraken as leverage, add +2.
               extend_moves:
@@ -389,7 +389,7 @@ sundered_isles:
                   outcomes:
                     strong_hit: &Cohort.3
                       reroll:
-                        dice: any
+                        method: any
                         text: You may reroll one die for each participating specialist.
                     weak_hit: *Cohort.3
                     miss: *Cohort.3
@@ -440,7 +440,7 @@ sundered_isles:
                     strong_hit: &Fleet_Commander.3
                       reroll:
                         text: You may reroll your action die if its value is less than your fleet’s power.
-                        dice: action_die
+                        method: action_die
                     weak_hit: *Fleet_Commander.3
                     miss: *Fleet_Commander.3
           attributes:
@@ -449,7 +449,7 @@ sundered_isles:
               max: 4
               value: 4
               min: 0
-              position: card-bottom
+              position: card_bottom
               attribute_type: condition_meter
               # conditions:
               #   - wrecked

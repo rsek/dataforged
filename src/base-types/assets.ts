@@ -5,6 +5,7 @@ import {
 	type Metadata,
 	type Attributes
 } from '@base-types'
+import { type Attribute } from 'base-types/attributes'
 
 // TODO: make these ruleset sensitive
 
@@ -30,8 +31,11 @@ export interface AssetAbility {
 	_id: string
 	name?: Localize.Label
 	text: Localize.MarkdownParagraph
+	enabled?: boolean
 	moves?: Record<string, Moves.Move>
 	attachments?: AssetAttachment
+	attributes?: Record<string, Attribute>
+	extend_moves?: Moves.MoveExtension[]
 }
 
 export interface AssetAttachment {

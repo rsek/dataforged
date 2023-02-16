@@ -1,9 +1,4 @@
-import {
-	type Localize,
-	type Metadata,
-	type Utils,
-	type Abstract
-} from '@base-types'
+import { type Localize, type Metadata, type Abstract } from '@base-types'
 import { type Icon } from 'base-types/metadata'
 export type OracleTableID = string
 
@@ -40,6 +35,7 @@ export type OracleCollectionColumn<
 	T extends OracleTableColumn = OracleTableColumn
 > = T & {
 	table_key: OracleTableID
+	color?: Metadata.Color
 }
 
 export interface OracleTableRendering extends OracleRenderingBase {
@@ -57,10 +53,8 @@ export interface OracleTableMatchBehavior {
 	text: Localize.MarkdownSentences
 }
 
-export interface OracleStringTemplate
-	extends Omit<Utils.PickByType<OracleTableRow, string>, NonLocaleStringKeys> {}
-
-type NonLocaleStringKeys = `_${string}` | 'embed_table'
+export interface OracleRollTemplate
+	extends Pick<Partial<OracleTableRow>, 'result' | 'summary' | 'description'> {}
 
 export type OracleTableRowID = string
 
@@ -75,9 +69,11 @@ export interface OracleTableRow<
 	result: Localize.MarkdownPhrase
 	icon?: Icon
 	summary?: Localize.MarkdownSentences
+	description?: Localize.MarkdownParagraphs
 	rolls?: OracleTableRoll[]
 	suggestions?: Metadata.SuggestionsBase
 	embed_table?: OracleTableRowID
+	template?: OracleRollTemplate
 }
 
 export type OracleTableRollMethod =
@@ -98,8 +94,9 @@ export interface OracleTableRoll<
 export type OracleCollectionID = string
 export interface OracleCollection
 	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
+	template?: OracleRollTemplate
 	rendering?: OracleCollectionRendering
-	sample_names?: string[]
+	sample_names?: Localize.Label[]
 }
 
 export type OracleCollectionStyle = 'multi_table'

@@ -3,7 +3,7 @@ Title: "Summary: Exploring Space"
 Source:
   Title: "Ironsworn: Starforged Rulebook"
   License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-  Date: "022322"
+  Date: 022322
   Page: 301
 ---
 

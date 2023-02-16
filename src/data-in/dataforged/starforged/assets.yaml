@@ -35,7 +35,7 @@ starforged:
             name: &InputTextName
               label: Name
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
             integrity:
               label: integrity
@@ -43,10 +43,10 @@ starforged:
               value: 5
               max: 5
               attribute_type: condition_meter
-              position: card-bottom
-              aliases:
-                - vehicle_integrity
-                - command_vehicle_integrity
+              position: card_bottom
+              # aliases:
+              #   - vehicle_integrity
+              #   - command_vehicle_integrity
               # conditions: [battered, cursed]
           abilities:
             - text: |-
@@ -79,6 +79,7 @@ starforged:
                     options:
                       - text: To your Starship
                         roll_type: action_roll
+                        method: any
                         using: [player/stats/heart]
                   outcomes:
                     weak_hit: &Starship.3
@@ -184,7 +185,7 @@ starforged:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # TODO: key for being interchangeable with supply?
           # states:
           #   - *Broken
@@ -208,7 +209,7 @@ starforged:
                     weak_hit: &Expanded_Hold.2
                       reroll:
                         text: You may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
-                        dice: all
+                        method: all
                     miss: *Expanded_Hold.2
             - text: |-
                 When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
@@ -396,7 +397,7 @@ starforged:
                     strong_hit:
                       text: Take +momentum equal to your vessel's integrity.
                       reroll: &reroll:any
-                        dice: any
+                        method: any
                         text: Reroll any dice.
                       match:
                         text: Mark progress, and take +momentum equal to your vessel's integrity.
@@ -424,7 +425,7 @@ starforged:
                   outcomes:
                     strong_hit: &Medbay.1
                       reroll: &reroll:action_die<integrity
-                        dice: action_die
+                        method: action_die
                         text: You may reroll your action die if its value is less than your vehicle's integrity.
                     weak_hit: *Medbay.1
                     miss: *Medbay.1
@@ -477,7 +478,7 @@ starforged:
               value: 5
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           # states:
           #   - *Broken
           abilities:
@@ -554,6 +555,7 @@ starforged:
                     options:
                       - text: By talking through a situation with the overseer AI
                         roll_type: action_roll
+                        method: any
                         using: [attached_asset_meter]
                   outcomes: *outcomes:+1_momentum.HIT
               enabled: true
@@ -574,6 +576,7 @@ starforged:
                   trigger:
                     options:
                       - text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
+                        method: any
                         roll_type: action_roll
                         using: [attached_asset_meter]
                   outcomes: *outcomes:+1_momentum.HIT
@@ -734,7 +737,7 @@ starforged:
                   outcomes: &outcomes:reroll_challenge_die_all
                     strong_hit: &outcome:reroll_challenge_die
                       reroll:
-                        dice: challenge_die
+                        method: challenge_die
                         text: You may reroll one challenge die.
                     weak_hit: *outcome:reroll_challenge_die
                     miss: *outcome:reroll_challenge_die
@@ -778,6 +781,7 @@ starforged:
                     options:
                       - text: Against an ambush
                         roll_type: action_roll
+                        method: any
                         using: [attached_asset_meter]
                   outcomes: &Sensor_Array.3
                     strong_hit: &Sensor_Array.3.Hit
@@ -792,6 +796,7 @@ starforged:
                     options:
                       - text: To detect a hidden threat
                         roll_type: action_roll
+                        method: any
                         using: [attached_asset_meter]
                   outcomes: *Sensor_Array.3
         shields:
@@ -838,6 +843,7 @@ starforged:
                   trigger:
                     options:
                       - text: By letting your shields take the blow
+                        method: any
                         roll_type: action_roll
                         using:
                           - starforged/assets/module/shields/attributes/shields
@@ -862,7 +868,7 @@ starforged:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         stealth_tech:
           name: Stealth Tech
           _source:
@@ -906,7 +912,7 @@ starforged:
                   outcomes: &reroll_action_die_all
                     strong_hit: &outcome:reroll_action_die
                       reroll:
-                        dice: action_die
+                        method: action_die
                     weak_hit: *outcome:reroll_action_die
                     miss: *outcome:reroll_action_die
             - text: |-
@@ -922,6 +928,7 @@ starforged:
                   trigger:
                     options:
                       - text: You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike true)
+                        method: any
                         roll_type: action_roll
                         using: [player/stats/shadow]
                   outcomes:
@@ -936,6 +943,7 @@ starforged:
                   trigger:
                     options:
                       - text: You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike hard)
+                        method: any
                         roll_type: action_roll
                         using: [player/stats/shadow]
                   outcomes:
@@ -1090,7 +1098,7 @@ starforged:
               min: 0
               value: 6
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1146,7 +1154,7 @@ starforged:
               min: 0
               value: 3
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1184,13 +1192,13 @@ starforged:
                       count_as: miss
             - text: |-
                 When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.
-              extend_player:
-                momentum:
-                  burn:
-                    - trigger:
-                        text: When you make a move while maneuvering your bike # implicit: 'and burn momentum to improve your result'
-                      effect:
-                        text: Roll your action die. On a 5 or 6, do not reset momentum.
+              # extend_player:
+              #   momentum:
+              #     burn:
+              #       - trigger:
+              #           text: When you make a move while maneuvering your bike # implicit: 'and burn momentum to improve your result'
+              #         effect:
+              #           text: Roll your action die. On a 5 or 6, do not reset momentum.
               # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
         rover:
           name: Rover
@@ -1204,7 +1212,7 @@ starforged:
               min: 0
               value: 5
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1245,6 +1253,7 @@ starforged:
                     options:
                       - text: By taking a hit or crashing through an obstacle
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/support_vehicle/rover/attributes/integrity
                   outcomes: *outcomes:+1_momentum.HIT
@@ -1256,7 +1265,7 @@ starforged:
             name: *InputTextName
             integrity:
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               label: integrity
               max: 4
               min: 0
@@ -1290,6 +1299,7 @@ starforged:
                     options:
                       - text: By maneuvering your pod through a hazardous or obstructed area
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/support_vehicle/service_pod/attributes/integrity
                   text: |-
@@ -1320,7 +1330,7 @@ starforged:
               min: 0
               value: 4
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1350,6 +1360,7 @@ starforged:
                     options:
                       - text: To your shuttle
                         roll_type: action_roll
+                        method: inherit
                   text: Add +1.
         skiff:
           name: Skiff
@@ -1363,7 +1374,7 @@ starforged:
               min: 0
               value: 4
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1376,6 +1387,7 @@ starforged:
                     options:
                       - text: Rely on the skiff's simple durability
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/support_vehicle/skiff/attributes/integrity
                   outcomes: *outcomes:+1_momentum.HIT
@@ -1390,6 +1402,7 @@ starforged:
                     options:
                       - text: By firing the skiff's cannon
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/support_vehicle/skiff/attributes/integrity
                   outcomes:
@@ -1412,7 +1425,7 @@ starforged:
               min: 0
               value: 4
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               # conditions: [battered]
           abilities:
             - text: |-
@@ -1424,6 +1437,7 @@ starforged:
                     options:
                       - text: In your snub fighter
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/support_vehicle/snub_fighter/attributes/integrity
                   outcomes: *outcomes:+2_momentum.HIT
@@ -1452,7 +1466,7 @@ starforged:
                   min: 0
                   value: 0
                   max: null
-                  position: ability-3-right
+                  position: ability_2_right
     path:
       _source:
         page: 56
@@ -1495,6 +1509,7 @@ starforged:
                   trigger:
                     options:
                       - text: By maneuvering your vehicle against a foe
+                        method: inherit
                         roll_type: action_roll
                   text: Add +1.
                   outcomes:
@@ -1509,6 +1524,7 @@ starforged:
                     options:
                       - text: While piloting a vehicle
                         roll_type: action_roll
+                        method: any
                         using:
                           - vehicle_integrity
                   outcomes:
@@ -1525,7 +1541,7 @@ starforged:
               min: 0
               value: 6
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           abilities:
             - text: &move:Asset.Archer |-
                 You carry 6 ammo. When you [Strike](starforged/moves/combat/strike) or [Clash](starforged/moves/combat/clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1). On a miss, [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).
@@ -1536,6 +1552,7 @@ starforged:
                     text: When you replenish your ammo by crafting projectiles...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Archer
                   outcomes:
@@ -1558,6 +1575,7 @@ starforged:
                   trigger:
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/archer/attributes/ammo
                         text: By unleashing a volley of bow shots
@@ -1659,7 +1677,7 @@ starforged:
                       text: Take +1 momentum or +1 spirit.
                       reroll: &reroll:action_die<spirit
                         text: You may reroll your action die if its value is less than your spirit.
-                        dice: action_die
+                        method: action_die
                     weak_hit:
                       reroll: *reroll:action_die<spirit
                     miss:
@@ -1713,12 +1731,12 @@ starforged:
             one:
               label: One
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
             two:
               label: Two
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           # states: # TODO: attach to specific abilities? hmm.
           #   - name: broken (augment 1)
@@ -1771,7 +1789,7 @@ starforged:
             ideology:
               label: Ideology
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           abilities:
             - text: |-
@@ -1829,7 +1847,7 @@ starforged:
                   outcomes:
                     strong_hit:
                       reroll: &reroll:challenge_die
-                        dice: challenge_die
+                        method: challenge_die
                         text: You may reroll one challenge die.
                       match:
                         text: Your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
@@ -1890,7 +1908,7 @@ starforged:
                 name:
                   label: Name
                   attribute_type: text
-                  position: ability-3-bottom
+                  position: ability_2_bottom
                   value: null
               # TODO: box input???
               extend_moves:
@@ -1900,6 +1918,7 @@ starforged:
                     options:
                       - text: By binding your promise to your iconic blade
                         roll_type: action_roll
+                        method: inherit
                   text: Add +1.
                   outcomes:
                     strong_hit: &Blademaster.3
@@ -2094,6 +2113,7 @@ starforged:
                     options:
                       - text: To an unbonded connection by completing a courier mission
                         roll_type: progress_roll
+                        method: inherit
                   text: Mark progress twice on the relationship.
 
             - text: |-
@@ -2105,6 +2125,7 @@ starforged:
                     options:
                       - text: During a courier mission
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/courier/attributes/safety
                   outcomes:
@@ -2117,7 +2138,7 @@ starforged:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         demolitionist:
           name: Demolitionist
           _source:
@@ -2142,6 +2163,7 @@ starforged:
                     options:
                       - text: To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device
                         roll_type: action_roll
+                        method: inherit
                   text: Add +1.
                   outcomes: *outcomes:+1_momentum.HIT
             - text: |-
@@ -2157,7 +2179,7 @@ starforged:
                   outcomes:
                     strong_hit: &outcome:reroll_challenge_dice
                       reroll: &reroll:challenge_dice
-                        dice: challenge_dice
+                        method: challenge_dice
                         text: Reroll any challenge dice.
                     weak_hit: *outcome:reroll_challenge_dice
                     miss: *outcome:reroll_challenge_dice
@@ -2170,11 +2192,11 @@ starforged:
               label: name
               attribute_type: text
               value: null
-              position: card-top
+              position: card_top
             linked_stat:
               label: Linked stat
-              attribute_type: player_stat
-              position: card-top
+              attribute_type: select_reference
+              position: card_top
               value: null
               options:
                 edge:
@@ -2205,6 +2227,7 @@ starforged:
                     options:
                       - text: By calling on your god, power, or entity for guidance or aid
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/devotant/attributes/linked_stat
                   outcomes:
@@ -2228,6 +2251,7 @@ starforged:
                     options:
                       - text: In service to your faith
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/devotant/attributes/linked_stat
                   outcomes:
@@ -2239,6 +2263,7 @@ starforged:
                   trigger:
                     options:
                       - text: On a divine quest (formidable or greater)
+                        method: inherit
                         roll_type: progress_roll
                   outcomes: &outcomes:bonds_2_ticks_on_hit
                     strong_hit: &outcome:bonds_2_ticks
@@ -2253,6 +2278,7 @@ starforged:
                     options:
                       - text: Through contemplation or sharing of your faith
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/devotant/attributes/linked_stat
                   outcomes:
@@ -2301,7 +2327,7 @@ starforged:
                       reroll:
                         text: |-
                           You may take a different tack. Envision this new approach, reroll all dice, and add +2. If you score a miss yet again, face a dire complication or blow to your reputation as you [Pay the Price](starforged/moves/fate/pay_the_price).
-                        dice: all
+                        method: all
             - text: |-
                 When you [Make a Connection](starforged/moves/connection/make_a_connection) or [Sojourn](starforged/moves/recover/sojourn), add +1. If you [Sojourn](starforged/moves/recover/sojourn) and score a strong hit with a match, you are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit.
               extend_moves:
@@ -2330,6 +2356,7 @@ starforged:
                     text: When you read the intent, emotions, or memories of a nearby being...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - player/stats/heart
                   text: *move:Asset.Empath
@@ -2362,6 +2389,7 @@ starforged:
                     options:
                       - text: To soothe a being's distress by creating an empathic bond
                         roll_type: action_roll
+                        method: any
                         using:
                           - player/condition_meters/spirit
                   outcomes:
@@ -2455,7 +2483,7 @@ starforged:
                       text: Take +2_momentum.
                       reroll: &reroll:challenge_die_10
                         text: If you roll a 10 on either challenge die, you may reroll that die.
-                        dice: challenge_die
+                        method: challenge_die
                     weak_hit: &outcome:reroll_challenge_die_10
                       reroll: *reroll:challenge_die_10
                     miss: *outcome:reroll_challenge_die_10
@@ -2474,6 +2502,7 @@ starforged:
                     text: When you rest and meditate to gather fiery energy...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - player/condition_meters/spirit
                   text: *move:Asset.Firebrand
@@ -2521,7 +2550,7 @@ starforged:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         fugitive:
           name: Fugitive
           _source:
@@ -2536,7 +2565,7 @@ starforged:
                   max: 4
                   value: 0
                   min: 0
-                  position: ability-1-right
+                  position: ability_0_right
               # TODO: consider some kind of clock event object/message?
               enabled: true
             - text: |-
@@ -2665,7 +2694,7 @@ starforged:
                 name:
                   label: Name
                   attribute_type: text
-                  position: ability-3-right
+                  position: ability_2_right
                   value: null
               extend_moves:
                 - _extends:
@@ -3011,6 +3040,9 @@ starforged:
                   attributes:
                     time_gap:
                       label: Time gap
+                      position: no_render
+                      attribute_type: select_number
+                      value: null
                       options:
                         minutes:
                           label: Minutes
@@ -3025,6 +3057,7 @@ starforged:
                     text: When you loop back to a linked moment in time...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/path/looper/moves/loop_back/attributes/time_gap
                   text: *move:Asset.Looper
@@ -3261,7 +3294,7 @@ starforged:
                   outcomes:
                     strong_hit: &Naturalist.2
                       reroll:
-                        dice: any
+                        method: any
                         text: You may reroll any dice, but must [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).
                     weak_hit: *Naturalist.2
                     miss: *Naturalist.2
@@ -3392,6 +3425,7 @@ starforged:
                     text: When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Outcast
                   outcomes:
@@ -3493,6 +3527,7 @@ starforged:
                   trigger:
                     options:
                       - text: To search out a new contact
+                        method: any
                         roll_type: action_roll
                         using: [player/stats/shadow]
                   outcomes:
@@ -3532,6 +3567,7 @@ starforged:
                     options:
                       - text: When you focus or meditate to [Gather Information](starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely)
                         roll_type: action_roll
+                        method: any
                         using: [player/condition_meters/spirit]
                   outcomes: *outcomes:+1_momentum.HIT
             - text: |-
@@ -3601,6 +3637,7 @@ starforged:
                     text: When you expand your veil to immerse your surroundings in darkness...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/shadow]
                   text: *move:Asset.Shade
                   outcomes:
@@ -3719,6 +3756,7 @@ starforged:
                     text: When you target a minor foe from a distance (outside of a fight)...
                     options:
                       - roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   text: *move:Asset.Sniper
                   outcomes:
@@ -3740,6 +3778,7 @@ starforged:
                     options:
                       - text: From a distance with time enough to line up your shot
                         roll_type: action_roll
+                        method: any
                         using: [player/stats/wits]
                   outcomes:
                     strong_hit: *outcome:mark_progress
@@ -3786,7 +3825,7 @@ starforged:
                     weak_hit:
                       reroll:
                         text: You can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).
-                        dice: all
+                        method: all
                     # TODO: outcome-specific reroll
             - text: |-
                 When you [Withstand Damage](starforged/moves/suffer/withstand_damage) and score a miss, you may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). Then, reroll all dice, add +wits instead of +integrity, and count a weak hit as a miss.
@@ -3796,7 +3835,7 @@ starforged:
                   outcomes:
                     miss:
                       reroll:
-                        dice: all
+                        method: all
                         text: You may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). Then, reroll all dice, add +wits instead of +integrity, and count a weak hit as a miss.
             - text: |-
                 When you [Face Danger](starforged/moves/adventure/face_danger) or [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by creating a computer program to perform a specific, complex function, add +2 and take +1 momentum on a hit. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
@@ -3829,6 +3868,7 @@ starforged:
                     options:
                       - roll_type: action_roll
                         using: [player/condition_meters/supply]
+                        method: any
                   outcomes:
                     strong_hit: &Trader.1
                       text: '[Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).'
@@ -3857,7 +3897,7 @@ starforged:
                     strong_hit:
                       text: Take +1 momentum or +1 supply.
                       reroll: &Trader.2
-                        dice: action_die
+                        method: action_die
                         text: Reroll your action die if its value is less than your supply.
                     weak_hit:
                       reroll: *Trader.2
@@ -3884,7 +3924,7 @@ starforged:
             last_of:
               label: Last of
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           abilities:
             - text: |-
@@ -3900,7 +3940,7 @@ starforged:
                         text: A surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
                       reroll: &Vestige.1.Reroll
                         text: Visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice.
-                        dice: any
+                        method: any
                     weak_hit: &Vestige.1
                       reroll: *Vestige.1.Reroll
                     miss: *Vestige.1
@@ -3924,7 +3964,7 @@ starforged:
                 relic:
                   label: Relic
                   attribute_type: text
-                  position: ability-3-bottom
+                  position: ability_2_bottom
                   value: null
               extend_moves:
                 - _extends: null
@@ -3936,7 +3976,7 @@ starforged:
                   outcomes:
                     miss:
                       reroll:
-                        dice: action_die
+                        method: action_die
                         # default text: "You may reroll your action die."
         veteran:
           name: Veteran
@@ -4098,6 +4138,7 @@ starforged:
                     options:
                       - text: By suiting up and gathering your gear for a perilous encounter or mission
                         roll_type: action_roll
+                        method: any
                         using:
                           - player/condition_meters/supply
                   outcomes: *outcomes:+2_momentum.HIT
@@ -4125,7 +4166,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 4
               min: 0
@@ -4142,6 +4183,7 @@ starforged:
                     options:
                       - text: While riding your banshee
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/banshee/attributes/health
               enabled: true
@@ -4179,7 +4221,7 @@ starforged:
                   outcomes:
                     strong_hit: &Banshee.3
                       reroll:
-                        dice: action_die
+                        method: action_die
                         text: If you roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die.
                     weak_hit: *Banshee.3
                     miss: *Banshee.3
@@ -4193,7 +4235,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 5
               min: 0
@@ -4230,6 +4272,7 @@ starforged:
                     options:
                       - text: Using the threat of violence while the bot brings its weapons to bear
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/combat_bot/attributes/health
                   outcomes:
@@ -4247,6 +4290,7 @@ starforged:
                     options:
                       - text: Once per fight, by using the combat bot to draw fire or create a diversion
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/combat_bot/attributes/health
                   outcomes:
@@ -4265,7 +4309,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 3
               min: 0
@@ -4298,7 +4342,7 @@ starforged:
                   outcomes:
                     strong_hit: &Glowcat.2
                       reroll:
-                        dice: action_die
+                        method: action_die
                         text: You may reroll your action die if its value is less than the glowcat’s health.
                     weak_hit: *Glowcat.2
                     miss: *Glowcat.2
@@ -4327,7 +4371,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 3
               min: 0
@@ -4365,7 +4409,7 @@ starforged:
                   outcomes:
                     strong_hit: &Protocol_Bot.3
                       reroll:
-                        dice: action_die
+                        method: action_die
                         text: If the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
                     weak_hit: *Protocol_Bot.3
                     miss: *Protocol_Bot.3
@@ -4379,7 +4423,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 5
               min: 0
@@ -4393,6 +4437,7 @@ starforged:
                   trigger:
                     options:
                       - text: By sending the rockhorn to directly attack a foe or smash an obstacle
+                        method: any
                         roll_type: action_roll
                         using:
                           - starforged/assets/companion/rockhorn/attributes/health
@@ -4406,8 +4451,9 @@ starforged:
                     options:
                       - text: For the rockhorn
                         roll_type: action_roll
-                        method: inherit
-                        # forcing it to inherit from a rockhorn health roll could potentially interfere with other asset abilities that alter the move's stat
+                        method: any
+                        using:
+                          - starforged/assets/companion/rockhorn/attributes/health
                   outcomes:
                     strong_hit:
                       match:
@@ -4428,7 +4474,7 @@ starforged:
                   outcomes:
                     miss:
                       reroll:
-                        dice: action_die
+                        method: action_die
                         text: You may reroll your action die if its value is less than the rockhorn’s health.
 
         sidekick:
@@ -4441,12 +4487,12 @@ starforged:
             expertise:
               label: Expertise
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 4
               min: 0
@@ -4466,7 +4512,7 @@ starforged:
                   outcomes:
                     strong_hit: &Sidekick.1
                       reroll:
-                        dice: action_die
+                        method: action_die
                         text: You may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
                     weak_hit: *Sidekick.1
                     miss: *Sidekick.1
@@ -4486,6 +4532,7 @@ starforged:
                   trigger:
                     options:
                       - text: Together with your sidekick
+                        method: inherit
                         roll_type: action_roll
                   text: Add +1.
             - text: |-
@@ -4499,6 +4546,7 @@ starforged:
                     options:
                       - text: Your sidekick acts to get you out of a tough spot
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/sidekick/attributes/health
                   outcomes: *outcomes:+1_momentum.HIT
@@ -4513,7 +4561,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 2
               min: 0
@@ -4557,7 +4605,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 3
               value: 3
@@ -4588,6 +4636,7 @@ starforged:
                     options:
                       - text: Once per expedition, by sending the survey bot to scout ahead
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/survey_bot/attributes/health
                   outcomes:
@@ -4606,6 +4655,7 @@ starforged:
                     options:
                       - text: Aided by the survey bot's sensors
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/survey_bot/attributes/health
                   outcomes: *outcomes:+1_momentum.HIT
@@ -4616,6 +4666,7 @@ starforged:
                     options:
                       - text: To detect a threat
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/survey_bot/attributes/health
                   outcomes: *outcomes:+1_momentum.HIT
@@ -4629,7 +4680,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 2
               min: 0
@@ -4655,7 +4706,7 @@ starforged:
                   outcomes:
                     strong_hit: &Symbiote.2
                       reroll:
-                        dice: any
+                        method: any
                         text: When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, [Endure Stress](starforged/moves/suffer/endure_stress) (-2).
                     weak_hit: *Symbiote.2
                     miss: *Symbiote.2
@@ -4677,7 +4728,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               max: 4
               value: 4
@@ -4693,6 +4744,7 @@ starforged:
                     options:
                       - text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/utility_bot/attributes/health
                   outcomes:
@@ -4717,7 +4769,7 @@ starforged:
                     miss:
                       reroll:
                         text: The bot reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).
-                        dice: any
+                        method: any
             - text: |-
                 When you [Check Your Gear](starforged/moves/adventure/check_your_gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
               extend_moves:
@@ -4727,6 +4779,7 @@ starforged:
                     options:
                       - text: To see if your utility bot has a specific tool or technique available
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/utility_bot/attributes/health
                   outcomes: *outcomes:+1_momentum.HIT
@@ -4741,7 +4794,7 @@ starforged:
             health:
               label: health
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
               aliases: [companion_health]
               min: 0
               max: 4
@@ -4767,6 +4820,7 @@ starforged:
                   trigger:
                     options:
                       - text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
+                        method: any
                         roll_type: action_roll
                         using:
                           - starforged/assets/companion/voidglider/attributes/health
@@ -4778,6 +4832,7 @@ starforged:
                     options:
                       - text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
                         roll_type: action_roll
+                        method: any
                         using:
                           - starforged/assets/companion/voidglider/attributes/health
                   outcomes: *outcomes:+1_momentum.HIT
@@ -4803,7 +4858,7 @@ starforged:
             bond_mate:
               label: Bond-mate
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           requirement: One time only, once you [Forge a Bond](starforged/moves/connection/forge_a_bond) with a special individual...
           abilities:
@@ -4944,7 +4999,7 @@ starforged:
             identifier:
               label: Identifier
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           requirement: Once you fill 5 boxes on your quests legacy track...
           abilities:
@@ -4980,7 +5035,7 @@ starforged:
                   max: 6
                   value: 0
                   min: 0
-                  position: ability-2-right
+                  position: ability_1_right
             - text: |-
                 Once per fight, when you [Gain Ground](starforged/moves/combat/gain_ground) through intimidation or command, reroll any dice and mark progress on a hit.
               extend_moves:
@@ -5098,6 +5153,7 @@ starforged:
                       - text: By studying a place where death left its mark
                         roll_type: action_roll
                         using: [player/stats/heart]
+                        method: any
                   outcomes:
                     strong_hit:
                       text: Take +1 momentum.
@@ -5127,7 +5183,7 @@ starforged:
                       text: Take +1 momentum.
                       reroll: &Survivor.1
                         text: You may [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice.
-                        dice: any
+                        method: any
                     weak_hit:
                       reroll: *Survivor.1
                     miss:
@@ -5200,6 +5256,7 @@ starforged:
                   trigger:
                     options:
                       - roll_type: action_roll
+                        method: any
                         using:
                           - player/stats/wits
                   outcomes: *outcomes:+1_momentum.HIT

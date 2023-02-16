@@ -11,24 +11,33 @@ import {
 	type Moves
 } from '@base-types'
 import { Abstract } from '@schema-json'
+import _ from 'lodash'
+import { Attribute } from 'base-types/attributes'
 
 export const MoveID: Schema<Types.MoveID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source,
-	examples: [
-		'ironsworn/moves/adventure/face_danger',
-		'starforged/moves/adventure/face_danger'
+	oneOf: [
+		{
+			title: 'Move ID',
+			type: 'string',
+			pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source,
+			examples: ['starforged/moves/adventure/face_danger']
+		},
+		{
+			title: 'Asset move ID',
+			type: 'string',
+			pattern:
+				/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/moves\/[a-z][a-z_]*[a-z]$/
+					.source,
+			examples: ['starforged/assets/module/grappler/moves/ready_grappler']
+		}
 	]
 }
 
 export const MoveCategoryID: Schema<Types.MoveCategoryID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/moves(\/[a-z][a-z_]*[a-z]){1}$/
-		.source,
-	examples: [
-		'ironsworn/collections/moves/adventure',
-		'starforged/collections/moves/adventure'
-	]
+	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/moves\/[a-z][a-z_]*[a-z]$/.source,
+	examples: ['starforged/collections/moves/adventure']
 }
 
 export const MoveCategory: Schema<Types.MoveCategory> =
@@ -38,11 +47,57 @@ export const MoveCategoryExtension = Abstract.collectionExtensionSchema(
 	'MoveCategoryID'
 )
 
+export const MoveOutcomeType: Schema<Types.MoveOutcomeType> = {
+	type: 'string',
+	enum: ['miss', 'weak_hit', 'strong_hit']
+}
+
+const MoveOutcome: Schema<Types.MoveOutcome> = {
+	type: 'object',
+	required: ['text'],
+	additionalProperties: false,
+	properties: {
+		text: schemaRef<Localize.MarkdownParagraph>('MarkdownParagraph'),
+		count_as: schemaRef<Types.MoveOutcomeType>('MoveOutcomeType'),
+		reroll: {
+			title: 'Move reroll',
+			type: 'object',
+			required: ['method'],
+			nullable: undefined as any,
+			properties: {
+				text: schemaRef<Localize.MarkdownPhrase>('MarkdownPhrase'),
+				method: {
+					title: 'Move reroll method',
+					type: 'string',
+					enum: ['any', 'all', 'challenge_die', 'challenge_dice', 'action_die']
+				}
+			}
+		}
+	}
+}
+
+const MoveOutcomeMatchable: Schema<Types.MoveOutcomeMatchable> = _.merge(
+	{} as Schema<Types.MoveOutcomeMatchable>,
+	MoveOutcome,
+	{ properties: { match: MoveOutcome } }
+)
+
+const MoveOutcomes: Schema<Types.MoveOutcomes> = {
+	title: 'Move outcomes',
+	type: 'object',
+	required: MoveOutcomeType.enum as Types.MoveOutcomeType[],
+	properties: {
+		miss: MoveOutcomeMatchable,
+		weak_hit: MoveOutcome,
+		strong_hit: MoveOutcomeMatchable
+	}
+}
+
 export const RollableStatID: Schema<Types.RollableStatID> = {
 	oneOf: [
 		schemaRef<Players.StatID>('StatID'),
 		schemaRef<Players.ConditionMeterID>('ConditionMeterID'),
-		schemaRef<string>('AttributeID'),
+		schemaRef<Attributes.AttributeID>('AttributeID'),
 		schemaRef<
 			RulesetClassic.ConditionMeterAlias | RulesetStarforged.ConditionMeterAlias
 		>('ConditionMeterAlias')
@@ -62,7 +117,7 @@ export const RollMethod: Schema<Types.RollMethod> = {
 		"`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks."
 }
 
-export const TriggerOption: Schema<Types.TriggerOption> = {
+const TriggerOption: Schema<Types.TriggerOption> = {
 	title: 'Trigger option',
 	type: 'object',
 	required: ['roll_type', 'method', 'using'],
@@ -109,7 +164,8 @@ export const TriggerOption: Schema<Types.TriggerOption> = {
 	]
 }
 
-export const Trigger: Schema<Types.Trigger> = {
+const Trigger: Schema<Types.Trigger> = {
+	title: 'Trigger',
 	type: 'object',
 	required: ['text'],
 	additionalProperties: false,
@@ -153,9 +209,9 @@ export const Move: Schema<Types.Move> = {
 	properties: {
 		_id: schemaRef<Moves.MoveID>('MoveID'),
 		name: schemaRef<Localize.Label>('Label'),
-		trigger: schemaRef<Types.Trigger>('Trigger'),
+		trigger: Trigger,
 		source: schemaRef<Metadata.Source>('Source'),
-		outcomes: schemaRef<Types.MoveOutcomes>('MoveOutcomes'),
+		outcomes: MoveOutcomes,
 		text: schemaRef<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
 		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions'),
 		progress_move: {
@@ -173,20 +229,6 @@ export const Move: Schema<Types.Move> = {
 			},
 			nullable: undefined as any
 		}
-		// asset: {
-		// 	description: 'The ID of the parent Asset of the move, if any.',
-		// 	...schemaRef<Assets.AssetID>('AssetID')
-		// },
-		// variant_of: {
-		// 	description: 'The ID of the move that this move is a variant of, if any.',
-		// 	...schemaRef<Types.MoveID>('MoveID')
-		// },
-		// optional: {
-		// 	description:
-		// 		'Whether or not the source material presents this rules item as optional.',
-		// 	default: false,
-		// 	type: 'boolean'
-		// },
 		// tags: {
 		// 	description:
 		// 		"Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
@@ -195,10 +237,6 @@ export const Move: Schema<Types.Move> = {
 		// 		type: 'string'
 		// 	}
 		// },
-		// category: {
-		// 	...schemaRef<Collections.MoveCategoryID>('MoveCategoryID'),
-		// 	description: "The ID of the move's category."
-		// }
 	},
 	oneOf: [
 		{
@@ -219,12 +257,8 @@ export const Move: Schema<Types.Move> = {
 			}
 		},
 		{
-			// not: {
-			// 	properties: {
-			// 		progress_move: { const: true }
-			// 	}
-			// },
 			properties: {
+				progress_move: { const: false },
 				trigger: {
 					type: 'object',
 					properties: {
@@ -242,39 +276,33 @@ export const Move: Schema<Types.Move> = {
 	]
 }
 
-export const MoveOutcomeType: Schema<Types.MoveOutcomeType> = {
-	type: 'string',
-	enum: ['miss', 'weak_hit', 'strong_hit']
-}
-
-export const MoveOutcome: Schema<Types.MoveOutcome> = {
+export const MoveExtension: Schema<Types.MoveExtension> = {
+	required: ['_extends'],
 	type: 'object',
-	required: ['text'],
 	properties: {
-		text: schemaRef<Localize.MarkdownParagraph>('MarkdownParagraph')
-	}
-}
-
-export const MoveOutcomeMatchable: Schema<Types.MoveOutcomeMatchable> = {
-	type: 'object',
-	required: undefined as any, // handled by allOf members
-	allOf: [
-		schemaRef<Types.MoveOutcome>('MoveOutcome'),
-		{
-			properties: {
-				match: schemaRef<Types.MoveOutcome>('MoveOutcome')
-			}
-		}
-	]
-}
-
-export const MoveOutcomes: Schema<Types.MoveOutcomes> = {
-	type: 'object',
-	required: MoveOutcomeType.enum as Types.MoveOutcomeType[],
-	properties: {
-		miss: schemaRef<Types.MoveOutcomeMatchable>('MoveOutcomeMatchable'),
-		weak_hit: schemaRef<Types.MoveOutcome>('MoveOutcome'),
-		strong_hit: schemaRef<Types.MoveOutcomeMatchable>('MoveOutcomeMatchable')
+		_id: schemaRef<string>('ID'),
+		_extends: {
+			type: ['array', 'null'],
+			items: schemaRef<Types.MoveID>('MoveID')
+		},
+		progress_move: Move.properties?.progress_move,
+		trigger: _(Trigger)
+			.omit('required')
+			.set(
+				'properties.options.items.required',
+				(Trigger.properties?.options as any).items.required.filter(
+					(item: string) => item !== 'using'
+				)
+			)
+			.value(),
+		text: Move.properties?.text,
+		outcomes: _.omit(
+			MoveOutcomes,
+			'required',
+			'properties.strong_hit.required',
+			'properties.weak_hit.required',
+			'properties.miss.required'
+		)
 	}
 }
 

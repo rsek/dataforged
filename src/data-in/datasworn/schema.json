@@ -193,11 +193,23 @@
 			"title": "Asset ability",
 			"type": "object",
 			"required": ["text"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/AssetAbilityID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"text": { "$ref": "#/definitions/MarkdownParagraph" },
 				"attachments": { "$ref": "#/definitions/AssetAttachment" },
+				"enabled": { "type": "boolean", "default": false },
+				"attributes": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Attribute" }
+					}
+				},
+				"extend_moves": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/MoveExtension" }
+				},
 				"moves": {
 					"type": "object",
 					"additionalProperties": false,
@@ -338,7 +350,8 @@
 					"description": "A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 					"type": "string",
 					"pattern": "^[a-z][a-z_]*[a-z]$"
-				}
+				},
+				"color": { "$ref": "#/definitions/Color" }
 			},
 			"oneOf": [
 				{
@@ -499,6 +512,11 @@
 						{ "type": "null" }
 					]
 				},
+				"description": {
+					"$ref": "#/definitions/MarkdownParagraphs",
+					"title": "Extended description",
+					"description": "An extended description for this oracle table row. No canonical OracleTableRows use it, but some TruthOptions do."
+				},
 				"embed_table": {
 					"$ref": "#/definitions/OracleTableID",
 					"description": "A table to be rendered inside this table row."
@@ -507,8 +525,48 @@
 					"type": "array",
 					"items": { "$ref": "#/definitions/OracleTableRoll" }
 				},
+				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"_id": { "$ref": "#/definitions/OracleTableRowID" }
+			},
+			"oneOf": [
+				{
+					"title": "OracleTableRowStub",
+					"properties": {
+						"_id": { "const": null },
+						"low": { "const": null },
+						"high": { "const": null }
+					}
+				},
+				{
+					"properties": {
+						"_id": { "type": "string" },
+						"low": { "type": "integer" },
+						"high": { "type": "integer" }
+					}
+				}
+			]
+		},
+		"OracleRollTemplate": {
+			"title": "Oracle roll template",
+			"type": "object",
+			"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\nThese strings are formatted in Markdown, but use a special syntax for their placeholders: `{{roll:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.",
+			"properties": {
+				"result": {
+					"$ref": "#/definitions/MarkdownPhrase",
+					"description": "A string template that may be used in place of OracleTableRow#result.",
+					"examples": [
+						"{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}"
+					]
+				},
+				"summary": {
+					"$ref": "#/definitions/MarkdownSentences",
+					"description": "A string template that may be used in place of OracleTableRow#summary."
+				},
+				"description": {
+					"$ref": "#/definitions/MarkdownParagraphs",
+					"description": "A string template that may be used in place of OracleTableRow#description."
+				}
 			}
 		},
 		"OracleCollection": {
@@ -530,6 +588,7 @@
 					}
 				},
 				"_template": { "type": "string" },
+				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"rendering": {
 					"type": "object",
 					"description": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
@@ -775,20 +834,26 @@
 		"MoveID": {
 			"title": "Move ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$",
-			"examples": [
-				"ironsworn/moves/adventure/face_danger",
-				"starforged/moves/adventure/face_danger"
+			"oneOf": [
+				{
+					"title": "Move ID",
+					"type": "string",
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$",
+					"examples": ["starforged/moves/adventure/face_danger"]
+				},
+				{
+					"title": "Asset move ID",
+					"type": "string",
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/moves\\/[a-z][a-z_]*[a-z]$",
+					"examples": ["starforged/assets/module/grappler/moves/ready_grappler"]
+				}
 			]
 		},
 		"MoveCategoryID": {
 			"title": "Move category ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves(\\/[a-z][a-z_]*[a-z]){1}$",
-			"examples": [
-				"ironsworn/collections/moves/adventure",
-				"starforged/collections/moves/adventure"
-			]
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves\\/[a-z][a-z_]*[a-z]$",
+			"examples": ["starforged/collections/moves/adventure"]
 		},
 		"MoveCategory": {
 			"title": "Move category",
@@ -831,6 +896,11 @@
 				}
 			}
 		},
+		"MoveOutcomeType": {
+			"title": "Move outcome type",
+			"type": "string",
+			"enum": ["miss", "weak_hit", "strong_hit"]
+		},
 		"RollableStatID": {
 			"title": "Rollable stat ID",
 			"oneOf": [
@@ -851,122 +921,6 @@
 			"enum": ["any", "inherit", "highest", "lowest", "all"],
 			"description": "`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks."
 		},
-		"TriggerOption": {
-			"title": "Trigger option",
-			"type": "object",
-			"required": ["roll_type", "method", "using"],
-			"additionalProperties": false,
-			"properties": {
-				"text": { "$ref": "#/definitions/MarkdownPhrase" },
-				"roll_type": { "$ref": "#/definitions/RollType" },
-				"method": {
-					"default": "any",
-					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
-					"oneOf": [
-						{ "$ref": "#/definitions/RollMethod" },
-						{ "$ref": "#/definitions/MoveOutcomeType" }
-					]
-				},
-				"using": {
-					"title": "Roll using",
-					"type": "array",
-					"items": { "type": "string" },
-					"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
-				}
-			},
-			"oneOf": [
-				{
-					"properties": {
-						"roll_type": { "const": "progress_roll" },
-						"using": {
-							"type": "array",
-							"items": { "$ref": "#/definitions/ProgressType" }
-						}
-					}
-				},
-				{
-					"properties": {
-						"roll_type": { "const": "action_roll" },
-						"using": {
-							"type": "array",
-							"items": { "$ref": "#/definitions/RollableStatID" }
-						}
-					}
-				}
-			]
-		},
-		"Trigger": {
-			"title": "Trigger",
-			"type": "object",
-			"required": ["text"],
-			"additionalProperties": false,
-			"properties": {
-				"text": {
-					"$ref": "#/definitions/MarkdownPhrase",
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`."
-				},
-				"options": {
-					"type": "array",
-					"nullable": true,
-					"items": {
-						"title": "Trigger option",
-						"type": "object",
-						"required": ["roll_type", "method", "using"],
-						"additionalProperties": false,
-						"properties": {
-							"text": { "$ref": "#/definitions/MarkdownPhrase" },
-							"roll_type": { "$ref": "#/definitions/RollType" },
-							"method": {
-								"default": "any",
-								"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
-								"oneOf": [
-									{ "$ref": "#/definitions/RollMethod" },
-									{ "$ref": "#/definitions/MoveOutcomeType" }
-								]
-							},
-							"using": {
-								"title": "Roll using",
-								"type": "array",
-								"items": { "type": "string" },
-								"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
-							}
-						},
-						"oneOf": [
-							{
-								"properties": {
-									"roll_type": { "const": "progress_roll" },
-									"using": {
-										"type": "array",
-										"items": { "$ref": "#/definitions/ProgressType" }
-									}
-								}
-							},
-							{
-								"properties": {
-									"roll_type": { "const": "action_roll" },
-									"using": {
-										"type": "array",
-										"items": { "$ref": "#/definitions/RollableStatID" }
-									}
-								}
-							}
-						]
-					}
-				},
-				"by": {
-					"title": "Triggered by",
-					"type": "object",
-					"description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
-					"additionalProperties": false,
-					"default": { "player": true, "ally": false },
-					"required": ["player", "ally"],
-					"properties": {
-						"player": { "type": "boolean", "default": true },
-						"ally": { "type": "boolean", "default": false }
-					}
-				}
-			}
-		},
 		"Move": {
 			"title": "Move",
 			"type": "object",
@@ -975,9 +929,226 @@
 			"properties": {
 				"_id": { "$ref": "#/definitions/MoveID" },
 				"name": { "$ref": "#/definitions/Label" },
-				"trigger": { "$ref": "#/definitions/Trigger" },
+				"trigger": {
+					"title": "Trigger",
+					"type": "object",
+					"required": ["text"],
+					"additionalProperties": false,
+					"properties": {
+						"text": {
+							"$ref": "#/definitions/MarkdownPhrase",
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`."
+						},
+						"options": {
+							"type": "array",
+							"nullable": true,
+							"items": {
+								"title": "Trigger option",
+								"type": "object",
+								"required": ["roll_type", "method"],
+								"additionalProperties": false,
+								"properties": {
+									"text": { "$ref": "#/definitions/MarkdownPhrase" },
+									"roll_type": { "$ref": "#/definitions/RollType" },
+									"method": {
+										"default": "any",
+										"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
+										"oneOf": [
+											{ "$ref": "#/definitions/RollMethod" },
+											{ "$ref": "#/definitions/MoveOutcomeType" }
+										]
+									},
+									"using": {
+										"title": "Roll using",
+										"type": "array",
+										"items": { "type": "string" },
+										"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
+									}
+								},
+								"oneOf": [
+									{
+										"properties": {
+											"roll_type": { "const": "progress_roll" },
+											"using": {
+												"type": "array",
+												"items": { "$ref": "#/definitions/ProgressType" }
+											}
+										}
+									},
+									{
+										"properties": {
+											"roll_type": { "const": "action_roll" },
+											"using": {
+												"type": "array",
+												"items": { "$ref": "#/definitions/RollableStatID" }
+											}
+										}
+									}
+								]
+							}
+						},
+						"by": {
+							"title": "Triggered by",
+							"type": "object",
+							"description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
+							"additionalProperties": false,
+							"default": { "player": true, "ally": false },
+							"required": ["player", "ally"],
+							"properties": {
+								"player": { "type": "boolean", "default": true },
+								"ally": { "type": "boolean", "default": false }
+							}
+						}
+					}
+				},
 				"source": { "$ref": "#/definitions/Source" },
-				"outcomes": { "$ref": "#/definitions/MoveOutcomes" },
+				"outcomes": {
+					"title": "Move outcomes",
+					"type": "object",
+					"required": ["miss", "weak_hit", "strong_hit"],
+					"properties": {
+						"miss": {
+							"type": "object",
+							"required": ["text"],
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								},
+								"match": {
+									"type": "object",
+									"required": ["text"],
+									"additionalProperties": false,
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+										"reroll": {
+											"title": "Move reroll",
+											"type": "object",
+											"required": ["method"],
+											"properties": {
+												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"method": {
+													"title": "Move reroll method",
+													"type": "string",
+													"enum": [
+														"any",
+														"all",
+														"challenge_die",
+														"challenge_dice",
+														"action_die"
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"weak_hit": {
+							"type": "object",
+							"required": ["text"],
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								}
+							}
+						},
+						"strong_hit": {
+							"type": "object",
+							"required": ["text"],
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								},
+								"match": {
+									"type": "object",
+									"required": ["text"],
+									"additionalProperties": false,
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+										"reroll": {
+											"title": "Move reroll",
+											"type": "object",
+											"required": ["method"],
+											"properties": {
+												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"method": {
+													"title": "Move reroll method",
+													"type": "string",
+													"enum": [
+														"any",
+														"all",
+														"challenge_die",
+														"challenge_dice",
+														"action_die"
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"progress_move": {
@@ -1013,6 +1184,7 @@
 				},
 				{
 					"properties": {
+						"progress_move": { "const": false },
 						"trigger": {
 							"type": "object",
 							"properties": {
@@ -1029,104 +1201,361 @@
 				}
 			]
 		},
-		"MoveOutcomeType": {
-			"title": "Move outcome type",
-			"type": "string",
-			"enum": ["miss", "weak_hit", "strong_hit"]
-		},
-		"MoveOutcome": {
-			"title": "Move outcome",
+		"MoveExtension": {
+			"title": "Move extension",
+			"required": ["_extends"],
 			"type": "object",
-			"required": ["text"],
-			"properties": { "text": { "$ref": "#/definitions/MarkdownParagraph" } }
-		},
-		"MoveOutcomeMatchable": {
-			"title": "Move outcome matchable",
-			"type": "object",
-			"allOf": [
-				{ "$ref": "#/definitions/MoveOutcome" },
-				{ "properties": { "match": { "$ref": "#/definitions/MoveOutcome" } } }
-			]
-		},
-		"MoveOutcomes": {
-			"title": "Move outcomes",
-			"type": "object",
-			"required": ["miss", "weak_hit", "strong_hit"],
 			"properties": {
-				"miss": { "$ref": "#/definitions/MoveOutcomeMatchable" },
-				"weak_hit": { "$ref": "#/definitions/MoveOutcome" },
-				"strong_hit": { "$ref": "#/definitions/MoveOutcomeMatchable" }
-			}
-		},
-		"CustomStat": {
-			"title": "Custom stat",
-			"type": "object",
-			"required": ["label", "options"],
-			"properties": {
-				"label": { "$ref": "#/definitions/Label" },
-				"options": {
-					"title": "Custom stat options",
+				"_id": { "$ref": "#/definitions/ID" },
+				"_extends": {
+					"type": ["array", "null"],
+					"items": { "$ref": "#/definitions/MoveID" }
+				},
+				"progress_move": {
+					"description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
+					"type": "boolean",
+					"default": false
+				},
+				"trigger": {
+					"title": "Trigger",
 					"type": "object",
-					"required": [],
-					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/CustomStatOption" }
+					"additionalProperties": false,
+					"properties": {
+						"text": {
+							"$ref": "#/definitions/MarkdownPhrase",
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`."
+						},
+						"options": {
+							"type": "array",
+							"nullable": true,
+							"items": {
+								"title": "Trigger option",
+								"type": "object",
+								"required": ["roll_type", "method"],
+								"additionalProperties": false,
+								"properties": {
+									"text": { "$ref": "#/definitions/MarkdownPhrase" },
+									"roll_type": { "$ref": "#/definitions/RollType" },
+									"method": {
+										"default": "any",
+										"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
+										"oneOf": [
+											{ "$ref": "#/definitions/RollMethod" },
+											{ "$ref": "#/definitions/MoveOutcomeType" }
+										]
+									},
+									"using": {
+										"title": "Roll using",
+										"type": "array",
+										"items": { "type": "string" },
+										"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
+									}
+								},
+								"oneOf": [
+									{
+										"properties": {
+											"roll_type": { "const": "progress_roll" },
+											"using": {
+												"type": "array",
+												"items": { "$ref": "#/definitions/ProgressType" }
+											}
+										}
+									},
+									{
+										"properties": {
+											"roll_type": { "const": "action_roll" },
+											"using": {
+												"type": "array",
+												"items": { "$ref": "#/definitions/RollableStatID" }
+											}
+										}
+									}
+								]
+							}
+						},
+						"by": {
+							"title": "Triggered by",
+							"type": "object",
+							"description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
+							"additionalProperties": false,
+							"default": { "player": true, "ally": false },
+							"required": ["player", "ally"],
+							"properties": {
+								"player": { "type": "boolean", "default": true },
+								"ally": { "type": "boolean", "default": false }
+							}
+						}
+					}
+				},
+				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"outcomes": {
+					"title": "Move outcomes",
+					"type": "object",
+					"properties": {
+						"miss": {
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								},
+								"match": {
+									"type": "object",
+									"required": ["text"],
+									"additionalProperties": false,
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+										"reroll": {
+											"title": "Move reroll",
+											"type": "object",
+											"required": ["method"],
+											"properties": {
+												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"method": {
+													"title": "Move reroll method",
+													"type": "string",
+													"enum": [
+														"any",
+														"all",
+														"challenge_die",
+														"challenge_dice",
+														"action_die"
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"weak_hit": {
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								}
+							}
+						},
+						"strong_hit": {
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+								"reroll": {
+									"title": "Move reroll",
+									"type": "object",
+									"required": ["method"],
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"method": {
+											"title": "Move reroll method",
+											"type": "string",
+											"enum": [
+												"any",
+												"all",
+												"challenge_die",
+												"challenge_dice",
+												"action_die"
+											]
+										}
+									}
+								},
+								"match": {
+									"type": "object",
+									"required": ["text"],
+									"additionalProperties": false,
+									"properties": {
+										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
+										"reroll": {
+											"title": "Move reroll",
+											"type": "object",
+											"required": ["method"],
+											"properties": {
+												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"method": {
+													"title": "Move reroll method",
+													"type": "string",
+													"enum": [
+														"any",
+														"all",
+														"challenge_die",
+														"challenge_dice",
+														"action_die"
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
-			},
-			"additionalProperties": false
+			}
 		},
+		"CustomStat": { "title": "Custom stat" },
 		"collectionSchema": { "title": "Collection schema" },
 		"collectionExtensionSchema": { "title": "Collection extension schema" },
 		"AttributeID": {
 			"title": "Attribute ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/(moves|assets)(\\/[a-z][a-z_]*[a-z]){2}\\/attributes\\/[a-z][a-z_]*[a-z]$"
-		},
-		"CustomStatOption": {
-			"title": "Custom stat option",
-			"type": "object",
-			"required": ["label", "value"],
-			"properties": {
-				"label": { "$ref": "#/definitions/Label" },
-				"value": {
-					"description": "The numeric value to be used as +stat when making an Action Roll.",
-					"type": "integer",
-					"minimum": 0
+			"oneOf": [
+				{
+					"title": "Move attribute ID",
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}\\/attributes\\/[a-z][a-z_]*[a-z]$"
+				},
+				{
+					"title": "Asset attribute ID",
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/attributes\\/[a-z][a-z_]*[a-z]$"
+				},
+				{
+					"title": "Asset move attribute ID",
+					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/moves\\/[a-z][a-z_]*[a-z]\\/attributes\\/[a-z][a-z_]*[a-z]$"
 				}
-			},
-			"additionalProperties": false
+			]
 		},
 		"InputPosition": {
 			"title": "Input position",
+			"default": "no_render",
 			"enum": [
-				"card-top",
-				"card-back",
-				"card-bottom",
-				"ability-1-right",
-				"ability-2-right",
-				"ability-3-right",
-				"ability-1-bottom",
-				"ability-2-bottom",
-				"ability-3-bottom"
+				"no_render",
+				"card_top",
+				"card_back",
+				"card_bottom",
+				"ability_0_right",
+				"ability_1_right",
+				"ability_2_right",
+				"ability_0_bottom",
+				"ability_1_bottom",
+				"ability_2_bottom"
 			],
 			"type": "string"
 		},
 		"Attribute": {
 			"title": "Attribute",
 			"oneOf": [
-				{ "$ref": "#/definitions/AttributeText" },
-				{ "$ref": "#/definitions/AttributeNumeric" }
+				{ "$ref": "#/definitions/TextAttribute" },
+				{ "$ref": "#/definitions/NumberRangeAttribute" },
+				{ "$ref": "#/definitions/SelectAttribute" }
 			]
 		},
-		"AttributeText": {
-			"title": "Attribute text",
+		"TextAttribute": {
+			"title": "Text attribute",
 			"type": "object",
-			"description": "A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
-			"required": ["attribute_type", "label", "value"],
+			"description": "A text attribute that accepts a player-provided string of text. Recommended HTML element: <input type='text'>",
+			"required": ["attribute_type", "label", "value", "position"],
 			"properties": {
+				"_id": { "$ref": "#/definitions/AttributeID" },
 				"label": { "$ref": "#/definitions/Label" },
 				"attribute_type": { "type": "string", "const": "text" },
+				"position": { "$ref": "#/definitions/InputPosition" },
 				"value": { "type": ["null", "string"], "default": null }
+			}
+		},
+		"SelectAttribute": {
+			"title": "Select attribute",
+			"type": "object",
+			"required": ["attribute_type", "label", "value", "position", "options"],
+			"properties": {
+				"_id": { "$ref": "#/definitions/AttributeID" },
+				"label": { "$ref": "#/definitions/Label" },
+				"attribute_type": { "$ref": "#/definitions/SelectAttributeType" },
+				"options": { "type": "object" },
+				"position": { "$ref": "#/definitions/InputPosition" },
+				"value": {
+					"anyOf": [
+						{ "type": ["string", "null"] },
+						{ "type": ["integer", "null"] }
+					]
+				}
+			},
+			"oneOf": [
+				{
+					"properties": {
+						"attribute_type": { "const": "select_number" },
+						"value": { "type": ["integer", "null"] },
+						"options": {
+							"type": "object",
+							"patternProperties": {
+								"^[a-z][a-z_]*[a-z]$": {
+									"$ref": "#/definitions/SelectAttributeNumberOption"
+								}
+							}
+						}
+					}
+				},
+				{
+					"properties": {
+						"attribute_type": { "const": "select_reference" },
+						"value": { "type": ["string", "null"] },
+						"options": {
+							"type": "object",
+							"patternProperties": {
+								"^[a-z][a-z_]*[a-z]$": {
+									"$ref": "#/definitions/SelectAttributeReferenceOption"
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"SelectAttributeNumberOption": {
+			"title": "Select attribute number option",
+			"required": ["label", "value"],
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/definitions/Label" },
+				"value": { "type": "integer" }
+			}
+		},
+		"SelectAttributeReferenceOption": {
+			"title": "Select attribute reference option",
+			"required": ["label", "value"],
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/definitions/Label" },
+				"value": { "$ref": "#/definitions/RollableStatID" }
 			}
 		},
 		"ClockSegments": {
@@ -1134,20 +1563,30 @@
 			"type": "integer",
 			"enum": [4, 6, 8, 10]
 		},
-		"AttributeNumeric": {
-			"title": "Attribute numeric",
+		"NumberRangeAttribute": {
+			"title": "Number range attribute",
 			"type": "object",
-			"required": ["attribute_type", "label", "min", "value", "max"],
+			"required": [
+				"attribute_type",
+				"label",
+				"min",
+				"value",
+				"max",
+				"position"
+			],
 			"additionalProperties": false,
 			"properties": {
-				"attribute_type": { "$ref": "#/definitions/AttributeNumericType" },
+				"_id": { "$ref": "#/definitions/AttributeID" },
+				"attribute_type": { "$ref": "#/definitions/NumberRangeAttributeType" },
 				"label": { "$ref": "#/definitions/Label" },
+				"position": { "$ref": "#/definitions/InputPosition" },
 				"min": { "type": "integer" },
 				"value": { "type": "integer" },
-				"max": { "type": ["integer", "null"] }
+				"max": { "type": ["integer", "null"], "nullable": true }
 			},
 			"oneOf": [
 				{
+					"title": "Number range attribute (clock)",
 					"type": "object",
 					"properties": {
 						"attribute_type": { "const": "clock", "type": "string" },
@@ -1164,6 +1603,7 @@
 					}
 				},
 				{
+					"title": "Number range attribute (condition meter)",
 					"type": "object",
 					"properties": {
 						"attribute_type": { "type": "string", "const": "condition_meter" },
@@ -1173,6 +1613,7 @@
 					}
 				},
 				{
+					"title": "Number range attribute (counter)",
 					"type": "object",
 					"properties": {
 						"attribute_type": { "type": "string", "const": "counter" },
@@ -1183,13 +1624,18 @@
 				}
 			]
 		},
-		"AttributeNumericType": {
-			"title": "Attribute numeric type",
+		"SelectAttributeType": {
+			"title": "Select attribute type",
+			"type": "string",
+			"enum": ["select_number", "select_reference"]
+		},
+		"NumberRangeAttributeType": {
+			"title": "Number range attribute type",
 			"type": "string",
 			"enum": ["condition_meter", "clock", "counter"]
 		},
-		"AttributeNumericOverride": {
-			"title": "Attribute numeric override",
+		"NumberRangeAttributeOverride": {
+			"title": "Number range attribute override",
 			"description": "Adjusts an existing numeric input, usually a condition meter",
 			"type": "object",
 			"additionalProperties": false,

@@ -31,14 +31,14 @@ ironsworn:
             name: &InputTextName
               label: Name
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
             health:
               label: health
               max: 4
               value: 4
               min: 0
-              position: card-bottom
+              position: card_bottom
               attribute_type: condition_meter
           requirement: Your cat takes down its prey.
           abilities:
@@ -99,7 +99,7 @@ ironsworn:
               min: 0
               value: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your spider uncovers secrets.
           abilities:
             - name: Discreet
@@ -166,7 +166,7 @@ ironsworn:
               min: 0
               value: 3
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your hawk can aid you while it is aloft.
           abilities:
             - name: Far-seeing
@@ -229,7 +229,7 @@ ironsworn:
               min: 0
               value: 5
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: You and your horse ride as one.
           abilities:
             - name: Swift
@@ -295,7 +295,7 @@ ironsworn:
               min: 0
               value: 4
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your hound is your steadfast companion.
           abilities:
             - name: Sharp
@@ -351,7 +351,7 @@ ironsworn:
               value: 4
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your friend stands by you.
           abilities:
             - name: Skilled
@@ -361,7 +361,7 @@ ironsworn:
                 expertise:
                   attribute_type: text
                   label: Expertise
-                  position: ability-1-bottom
+                  position: ability_0_bottom
                   value: null
               extend_moves:
                 - _extends: null
@@ -415,7 +415,7 @@ ironsworn:
               min: 0
               value: 5
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your mammoth walks a resolute path.
           abilities:
             - name: Lumbering
@@ -445,7 +445,7 @@ ironsworn:
               label: health
               max: 3
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your owl soars through the darkness.
           abilities:
             - name: Nocturnal
@@ -474,7 +474,7 @@ ironsworn:
               min: 0
               value: 2
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your raven heeds your call.
           abilities:
             - name: Sly
@@ -502,7 +502,7 @@ ironsworn:
               min: 0
               value: 5
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           requirement: Your wyvern won’t devour you. For now.
           abilities:
             - name: Insatiable
@@ -723,7 +723,7 @@ ironsworn:
               min: 0
               value: 4
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         dancer:
           _source:
             title: Ironsworn Assets Master Set
@@ -767,13 +767,13 @@ ironsworn:
             gods_name:
               label: God's name
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
             stat:
               label: stat
-              attribute_type: player_stat
+              attribute_type: select_reference
               value: null
-              position: card-top
+              position: card_top
               options:
                 edge:
                   label: Edge
@@ -824,7 +824,7 @@ ironsworn:
             title_lineage:
               label: Title/Lineage
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           abilities:
             - text: |-
@@ -869,7 +869,7 @@ ironsworn:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         herbalist:
           _source:
             title: Ironsworn Assets Master Set
@@ -995,9 +995,9 @@ ironsworn:
           attributes:
             material:
               label: Material
-              attribute_type: player_stat
+              attribute_type: select_reference
               value: null
-              position: card-top
+              position: card_top
               options:
                 thunderwood:
                   label: Thunderwood
@@ -1386,7 +1386,7 @@ ironsworn:
             specialty:
               label: Specialty
               attribute_type: text
-              position: card-top
+              position: card_top
               value: null
           abilities:
             - text: |-
@@ -1556,7 +1556,7 @@ ironsworn:
           attributes:
             equipped:
               attribute_type: impact
-              position: card-bottom
+              position: card_bottom
               label: Equipped
               sets_attributes:
                 equipment:
@@ -1815,7 +1815,7 @@ ironsworn:
               value: 3
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
         bind:
           _source:
             title: Ironsworn Assets Master Set
@@ -1962,7 +1962,7 @@ ironsworn:
               value: 0
               attribute_type: condition_meter
               min: 0
-              position: card-bottom
+              position: card_bottom
         keen:
           _source:
             title: Ironsworn Assets Master Set
@@ -2044,7 +2044,7 @@ ironsworn:
               value: 0
               min: 0
               attribute_type: condition_meter
-              position: card-bottom
+              position: card_bottom
           # https://game-icons.net/1x1/lorc/explosion-rays.html
           abilities:
             - text: &move:Asset.Lightbearer |-

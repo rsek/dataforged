@@ -1,101 +1,159 @@
-// import { type JSONSchema7 } from 'json-schema'
 import type * as Types from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DF_KEY, schemaRef } from './common'
 
 export const AttributeID: Schema<Types.Attributes.AttributeID> = {
 	type: 'string',
-	// starforged/moves/connection/develop_your_relationship/attributes/challenge_rank
-	pattern:
-		/^[a-z0-9][a-z0-9_]+\/(moves|assets)(\/[a-z][a-z_]*[a-z]){2}\/attributes\/[a-z][a-z_]*[a-z]$/
-			.source
-}
-
-export const CustomStat: Schema<Types.Attributes.CustomStat> = {
-	type: 'object',
-	required: ['label', 'options'],
-	properties: {
-		label: {
-			$ref: '#/definitions/Label'
-		},
-		options: {
-			title: 'Custom stat options',
-			type: 'object',
-			required: [],
-			patternProperties: {
-				[DF_KEY]:
-					schemaRef<Types.Attributes.CustomStatOption>('CustomStatOption')
-			}
-		}
-	},
-	additionalProperties: false
-}
-
-export const CustomStatOption: Schema<Types.Attributes.CustomStatOption> = {
-	title: 'Custom stat option',
-	type: 'object',
-	required: ['label', 'value'],
-	properties: {
-		label: schemaRef<Types.Localize.Label>('Label'),
-		value: {
-			description:
-				'The numeric value to be used as +stat when making an Action Roll.',
-			type: 'integer',
-			minimum: 0
-		}
-	},
-	additionalProperties: false
-}
-
-export const InputPosition = {
-	title: 'Input position',
-	enum: [
-		'card-top',
-		'card-back',
-		'card-bottom',
-		'ability-1-right',
-		'ability-2-right',
-		'ability-3-right',
-		'ability-1-bottom',
-		'ability-2-bottom',
-		'ability-3-bottom'
-	],
-	type: 'string'
-}
-export const Attribute = {
 	oneOf: [
 		{
-			$ref: '#/definitions/AttributeText'
+			title: 'Move attribute ID',
+			pattern:
+				/^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}\/attributes\/[a-z][a-z_]*[a-z]$/
+					.source
 		},
-		{ $ref: '#/definitions/AttributeNumeric' }
+		{
+			title: 'Asset attribute ID',
+			pattern:
+				/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/attributes\/[a-z][a-z_]*[a-z]$/
+					.source
+		},
+		{
+			title: 'Asset move attribute ID',
+			pattern:
+				/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/moves\/[a-z][a-z_]*[a-z]\/attributes\/[a-z][a-z_]*[a-z]$/
+					.source
+		}
 	]
 }
 
-export const AttributeText: Schema<Types.Attributes.AttributeText> = {
+export const InputPosition: Schema<Types.Attributes.InputPosition> = {
+	title: 'Input position',
+	default: 'no_render',
+	enum: [
+		'no_render',
+		'card_top',
+		'card_back',
+		'card_bottom',
+		'ability_0_right',
+		'ability_1_right',
+		'ability_2_right',
+		'ability_0_bottom',
+		'ability_1_bottom',
+		'ability_2_bottom'
+	],
+	type: 'string'
+}
+
+export const Attribute = {
+	oneOf: [
+		schemaRef<Types.Attributes.TextAttribute>('TextAttribute'),
+		schemaRef<Types.Attributes.NumberRangeAttribute>('NumberRangeAttribute'),
+		schemaRef<Types.Attributes.SelectAttribute>('SelectAttribute')
+	]
+}
+
+export const TextAttribute: Schema<Types.Attributes.TextAttribute> = {
 	type: 'object',
 	description:
-		"A text attribute that accepts a user-provided string value. Recommended HTML element: <input type='text'>",
-	required: [
-		'attribute_type',
-		'label',
-		'value'
-		// 'position',
-	],
+		"A text attribute that accepts a player-provided string of text. Recommended HTML element: <input type='text'>",
+	required: ['_id', 'attribute_type', 'label', 'value', 'position'],
 	properties: {
+		_id: schemaRef<string>('AttributeID'),
 		label: schemaRef<Types.Localize.Label>('Label'),
 		attribute_type: {
 			type: 'string',
 			const: 'text'
 		},
-		// position: {
-		// 	default: 'card-top'
-		// },
+		position: schemaRef<Types.Attributes.InputPosition>('InputPosition'),
 		value: {
 			type: ['null', 'string'] as any,
 			default: null
 		}
 	}
 }
+
+export const SelectAttribute: Schema<Types.Attributes.SelectAttribute> = {
+	type: 'object',
+	required: ['_id', 'attribute_type', 'label', 'value', 'position', 'options'],
+	properties: {
+		_id: schemaRef<string>('AttributeID'),
+		label: schemaRef<Types.Localize.Label>('Label'),
+		attribute_type: schemaRef<Types.Attributes.SelectAttributeType>(
+			'SelectAttributeType'
+		),
+		options: {
+			type: 'object'
+		} as any,
+		position: schemaRef<Types.Attributes.InputPosition>('InputPosition'),
+		value: {
+			anyOf: [
+				{
+					type: ['string', 'null']
+				},
+				{
+					type: ['integer', 'null']
+				}
+			]
+		} as any
+	},
+	oneOf: [
+		{
+			properties: {
+				attribute_type: { const: 'select_number' },
+				value: {
+					type: ['integer', 'null']
+				},
+				options: {
+					type: 'object',
+					patternProperties: {
+						[DF_KEY]: schemaRef<Types.Attributes.SelectAttributeNumberOption>(
+							'SelectAttributeNumberOption'
+						)
+					}
+				}
+			}
+		},
+		{
+			properties: {
+				attribute_type: { const: 'select_reference' },
+				value: {
+					type: ['string', 'null']
+				},
+				options: {
+					type: 'object',
+					patternProperties: {
+						[DF_KEY]:
+							schemaRef<Types.Attributes.SelectAttributeReferenceOption>(
+								'SelectAttributeReferenceOption'
+							)
+					}
+				}
+			}
+		}
+	]
+}
+
+export const SelectAttributeNumberOption: Schema<Types.Attributes.SelectAttributeNumberOption> =
+	{
+		required: ['label', 'value'],
+		type: 'object',
+		properties: {
+			label: schemaRef<string>('Label'),
+			value: {
+				type: 'integer'
+			}
+		}
+	}
+export const SelectAttributeReferenceOption: Schema<Types.Attributes.SelectAttributeReferenceOption> =
+	{
+		required: ['label', 'value'],
+		type: 'object',
+		properties: {
+			label: schemaRef<string>('Label'),
+			value: schemaRef<Types.Moves.RollableStatID>('RollableStatID')
+		}
+	}
+
 // export const AttributePlayerStat = {
 // 	description:
 // 		'An attribute with predefined options to pick a standard player character stat. Recommended HTML element: <select>',
@@ -159,71 +217,93 @@ export const ClockSegments: Schema<Types.Attributes.ClockSegments> = {
 	enum: [4, 6, 8, 10]
 }
 
-export const AttributeNumeric: Schema<Types.Attributes.AttributeNumeric> = {
-	type: 'object',
-	required: ['attribute_type', 'label', 'min', 'value', 'max'],
-	additionalProperties: false,
-	properties: {
-		attribute_type: schemaRef<Types.Attributes.AttributeNumericType>(
-			'AttributeNumericType'
-		),
-		label: schemaRef<Types.Localize.Label>('Label'),
-		min: { type: 'integer' },
-		value: {
-			type: 'integer'
-			// maximum: { $data: '1/max' } as any,
-			// minimum: { $data: '1/min' } as any
+export const NumberRangeAttribute: Schema<Types.Attributes.NumberRangeAttribute> =
+	{
+		type: 'object',
+		required: [
+			'_id',
+			'attribute_type',
+			'label',
+			'min',
+			'value',
+			'max',
+			'position'
+		],
+		additionalProperties: false,
+		properties: {
+			_id: schemaRef<Types.Attributes.AttributeID>('AttributeID'),
+			attribute_type: schemaRef<Types.Attributes.NumberRangeAttributeType>(
+				'NumberRangeAttributeType'
+			),
+			label: schemaRef<Types.Localize.Label>('Label'),
+			position: schemaRef<Types.Attributes.InputPosition>('InputPosition'),
+			min: { type: 'integer' },
+			value: {
+				type: 'integer'
+				// maximum: { $data: '1/max' } as any,
+				// minimum: { $data: '1/min' } as any
+			},
+			max: { type: ['integer', 'null'] as any, nullable: true as any }
 		},
-		max: { type: ['integer', 'null'] as any }
-	},
-	oneOf: [
-		{
-			type: 'object',
-			properties: {
-				attribute_type: { const: 'clock', type: 'string' },
-				min: { const: 0, type: 'integer' },
-				value: { default: 0, type: 'integer', title: 'Filled clock segments' },
-				max: {
-					...schemaRef<Types.Attributes.ClockSegments>('ClockSegments'),
-					title: 'Clock segments (total)'
+		oneOf: [
+			{
+				title: 'Number range attribute (clock)',
+				type: 'object',
+				properties: {
+					attribute_type: { const: 'clock', type: 'string' },
+					min: { const: 0, type: 'integer' },
+					value: {
+						default: 0,
+						type: 'integer',
+						title: 'Filled clock segments'
+					},
+					max: {
+						...schemaRef<Types.Attributes.ClockSegments>('ClockSegments'),
+						title: 'Clock segments (total)'
+					}
+				}
+			},
+			{
+				title: 'Number range attribute (condition meter)',
+				type: 'object',
+				properties: {
+					attribute_type: { type: 'string', const: 'condition_meter' },
+					min: { const: 0, type: 'integer' },
+					value: { default: 0, type: 'integer' },
+					max: { type: 'integer' }
+				}
+			},
+			{
+				title: 'Number range attribute (counter)',
+				type: 'object',
+				properties: {
+					attribute_type: { type: 'string', const: 'counter' },
+					min: { const: 0, type: 'integer' },
+					value: { default: 0, type: 'integer' },
+					max: { type: ['integer', 'null'], default: null }
 				}
 			}
-		},
-		{
-			type: 'object',
-			properties: {
-				attribute_type: { type: 'string', const: 'condition_meter' },
-				min: { const: 0, type: 'integer' },
-				value: { default: 0, type: 'integer' },
-				max: { type: 'integer' }
-			}
-		},
-		{
-			type: 'object',
-			properties: {
-				attribute_type: { type: 'string', const: 'counter' },
-				min: { const: 0, type: 'integer' },
-				value: { default: 0, type: 'integer' },
-				max: { type: ['integer', 'null'] as any, default: null }
-			}
-		}
-	]
-}
+		]
+	}
 
-export const AttributeNumericType: Schema<Types.Attributes.AttributeNumericType> =
+export const SelectAttributeType: Schema<Types.Attributes.SelectAttributeType> =
+	{
+		type: 'string',
+		enum: ['select_number', 'select_reference']
+	}
+
+export const NumberRangeAttributeType: Schema<Types.Attributes.NumberRangeAttributeType> =
 	{
 		type: 'string',
 		enum: ['condition_meter', 'clock', 'counter']
 	}
-export const AttributeNumericOverride = {
+export const NumberRangeAttributeOverride = {
 	description: 'Adjusts an existing numeric input, usually a condition meter',
 	type: 'object',
 	additionalProperties: false,
 	required: ['_extends'],
 	properties: {
-		_extends: {
-			$ref: '#/definitions/AttributeID'
-		},
+		_extends: schemaRef<string>('AttributeID'),
 		min: {
 			type: 'integer'
 		},

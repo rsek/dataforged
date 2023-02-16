@@ -80,11 +80,18 @@ export const AssetAbilityID: Schema<Types.AssetAbilityID> = {
 export const AssetAbility: Schema<Types.AssetAbility> = {
 	type: 'object',
 	required: ['_id', 'text'],
+	additionalProperties: false,
 	properties: {
 		_id: schemaRef<Types.AssetAbilityID>('AssetAbilityID'),
 		name: schemaRef<Localize.Label>('Label'),
 		text: schemaRef<Localize.MarkdownParagraph>('MarkdownParagraph'),
 		attachments: schemaRef<Types.AssetAttachment>('AssetAttachment'),
+		enabled: { type: 'boolean', default: false, nullable: undefined as any },
+		attributes: Asset.properties?.attributes,
+		extend_moves: {
+			type: 'array',
+			items: schemaRef<Moves.MoveExtension>('MoveExtension')
+		},
 		moves: {
 			type: 'object',
 			additionalProperties: false,

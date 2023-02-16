@@ -3,6 +3,7 @@
  */
 
 import type * as Types from '@base-types'
+import { type RecursivePartial } from 'utils'
 
 /**
  * A number range, for things shaped like rollable table rows. Type parameters are for for row-like objects that have a static range, such as delve features/dangers.
@@ -40,17 +41,23 @@ export interface Cyclopedia<IDType> extends Node<IDType> {
 }
 
 type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
-type MetaKeys = '_id' | 'source' | 'title' | 'rendering'
+type MetaKeys =
+	| '_id'
+	| 'source'
+	| 'title'
+	| 'rendering'
+	| 'name'
+	| 'suggestions'
 
 /**
  * Omits common metadata and localization keys.
  */
-export type OmitMetaAndLocale<T> = Omit<T, LocalizeKeys | MetaKeys>
+export type OmitMeta<T> = Omit<T, MetaKeys>
 
 /**
  * Extends a single rules element
  */
-export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
+export type ExtendOne<T extends Node = Node> = Partial<OmitMeta<T>> & {
 	_extends: T['_id']
 	_id: T['_id']
 }
@@ -59,8 +66,8 @@ export type ExtendOne<T extends Node = Node> = Partial<OmitMetaAndLocale<T>> & {
 /**
  * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
  */
-export type ExtendMany<T extends Node = Node> = Partial<
-	OmitMetaAndLocale<T>
+export type ExtendMany<T extends Node = Node> = RecursivePartial<
+	OmitMeta<T>
 > & { _extends: Array<T['_id']> | null; _id?: Types.Metadata.ID }
 
 export interface Collection<T, IDType = Types.Metadata.ID>
