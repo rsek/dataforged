@@ -1,50 +1,61 @@
-import { Gamespace } from "../json_out/index.js";
-import { JSONPath } from "jsonpath-plus";
-import _ from "lodash-es";
+import { Game } from "../schema";
+import _ from 'lodash-es';
 /**
  * Extracts statistics on Ironsworn game data.
- * @param param0
  */
-export function dataforgedStats(gamespace, { "Asset Types": assets, Encounters: encounters, "Move Categories": moves, "Oracle Categories": oracles, "Setting Truths": truths }) {
-    var _a;
-    const assetCount = _.sum(assets.map(item => item.Assets.length));
-    const moveCount = _.sum(moves.map(item => item.Moves.length));
-    return `${assetCount} assets comprising ${assets.length} types,
-    ${encounterStats(gamespace, encounters)},
-    ${moveCount} moves in ${moves.length} categories,
-    ${oracleStats(oracles)},
-    and ${(_a = truths === null || truths === void 0 ? void 0 : truths.length) !== null && _a !== void 0 ? _a : 0} setting truth categories.`;
+export function dataforgedStats(game, { asset_types, encounters, move_categories, oracle_sets, setting_truths }) {
+    return [
+        assetStats(asset_types),
+        encounterStats(game, encounters),
+        moveStats(move_categories),
+        truthStats(setting_truths),
+        oracleStats(oracle_sets)
+    ].join(',\n');
+}
+export function assetStats(asset_types) {
+    const types = Object.keys(asset_types);
+    const assets = _.flatMap(asset_types, (type) => Object.keys(type.assets));
+    return `${assets.length} assets comprising ${types.length} types`;
+}
+export function truthStats(setting_truths) {
+    return `${Object.keys(setting_truths).length ?? 0} setting truth categories`;
+}
+export function moveStats(move_categories) {
+    const categories = Object.keys(move_categories);
+    const moves = _.flatMap(move_categories, (category) => Object.keys(category.moves));
+    return `${categories.length} move categories containing ${moves.length} moves`;
 }
 /**
  * Creates a string of oracle stats for use in build messages.
  * @param oracles
  */
 export function oracleStats(oracles) {
-    const oracleTables = JSONPath({ path: "$..Oracles[*][Table]", json: oracles });
-    const oracleSubtables = JSONPath({ json: oracleTables, path: "$..Subtable" });
-    return `${oracleTables.length + oracleSubtables.length} oracle tables in ${oracles.length} categories`;
+    const tables = 0;
+    const sets = 0;
+    return `${tables} oracle tables in ${sets} sets`;
 }
 /**
  * Creates a string of encounter stats for use in build messages.
- * @param gamespace
+ * @param game
  * @param json
  */
-export function encounterStats(gamespace, json) {
-    var _a;
+export function encounterStats(game, json) {
     let text;
-    switch (gamespace) {
-        case Gamespace.Starforged:
+    switch (game) {
+        case Game.Starforged:
             {
-                const encounterCount = json.length;
-                const variantCount = (_a = _.sum(json.map(enc => { var _a; return (_a = enc.Variants) === null || _a === void 0 ? void 0 : _a.length; }))) !== null && _a !== void 0 ? _a : 0;
-                text = `${encounterCount} encounters (plus ${variantCount} encounter variants)`;
+                const encounterJson = json;
+                const encounters = Object.keys(encounterJson);
+                const variants = _.flatMap(encounterJson, (enc) => enc.variants);
+                text = `${encounters.length} encounters (plus ${variants.length} encounter variants)`;
             }
             break;
-        case Gamespace.Ironsworn:
+        case Game.Ironsworn:
             {
-                const natureCount = json.length;
-                const encounterCount = _.sum(json.map(enc => enc.Encounters.length));
-                text = `${encounterCount} encounters across ${natureCount} nature types`;
+                const encounterJson = json;
+                const natures = Object.keys(encounterJson);
+                const encounters = _.flatMap(encounterJson, (nature) => nature.encounters);
+                text = `${encounters.length} encounters across ${natures.length} nature types`;
             }
             break;
         default:

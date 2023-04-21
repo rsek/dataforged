@@ -1,19 +1,20 @@
-import type { ClockSegments } from "@json_out/index.js";
-import { ClockType } from "@json_out/index.js";
-import type { NumericOutcome } from "@utils/simulation/NumericOutcomes.js";
+import type { ClockSegments } from "@json_out";
+import { ClockType } from "@json_out";
+import type { AppliesMoveEffect } from "@utils/simulation/AppliesMoveEffect.js"; AppliesMoveEffect
+import type { IOutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
 import _ from "lodash-es";
 
 
-export interface IClock {
+export interface Clock extends AppliesMoveEffect {
   type: ClockType;
   segments: ClockSegments;
   filled: number;
-  applyResult(data: NumericOutcome): void;
+  applyResult(data: OutcomeEffectHash): void;
 }
 
-export abstract class Clock implements IClock {
-  applyResult(data: NumericOutcome): void {
-    this.filled += data.clock;
+export abstract class Clock implements Clock { Clock
+  applyResult(data: IOutcomeEffectHash): void {
+    this.filled += data.tickClock;
   }
   readonly segments: ClockSegments;
   readonly type: ClockType;

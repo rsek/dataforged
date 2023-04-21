@@ -1,6 +1,6 @@
 /**
  * NYI.
- * @alpha
+ * @public
  */
 declare enum Biome {
 }

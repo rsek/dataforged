@@ -1,16 +1,16 @@
 /**
  * Set by Oracles / Settlements / Authority
  *
- * @alpha
+ * @public
  */
 export var Authority;
 (function (Authority) {
-    Authority["NoneLawless"] = "None / lawless";
-    Authority["Ineffectual"] = "Ineffectual";
-    Authority["Tolerant"] = "Tolerant";
-    Authority["Fair"] = "Fair";
-    Authority["Unyielding"] = "Unyielding";
-    Authority["Corrupt"] = "Corrupt";
-    Authority["Oppressive"] = "Oppressive";
+    Authority["NoneLawless"] = "none_lawless";
+    Authority["Ineffectual"] = "ineffectual";
+    Authority["Tolerant"] = "tolerant";
+    Authority["Fair"] = "fair";
+    Authority["Unyielding"] = "unyielding";
+    Authority["Corrupt"] = "corrupt";
+    Authority["Oppressive"] = "oppressive";
 })(Authority || (Authority = {}));
 //# sourceMappingURL=Authority.js.map

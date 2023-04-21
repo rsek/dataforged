@@ -1,19 +1,19 @@
 /**
  * Set by Oracles / Factions / Fringe Group
- * @alpha
+ * @public
  */
 declare enum FringeGroup {
-    Cultists = "Cultists",
-    Exiles = "Exiles",
-    Gangsters = "Gangsters",
-    Hackers = "Hackers",
-    MonsterHunters = "Monster hunters",
-    Pirates = "Pirates",
-    Raiders = "Raiders",
-    Rebels = "Rebels",
-    RogueAI = "Rogue AI",
-    Scavengers = "Scavengers",
-    Smugglers = "Smugglers"
+    Cultists = "cultists",
+    Exiles = "exiles",
+    Gangsters = "gangsters",
+    Hackers = "hackers",
+    MonsterHunters = "monster_hunters",
+    Pirates = "pirates",
+    Raiders = "raiders",
+    Rebels = "rebels",
+    RogueAI = "rogue_ai",
+    Scavengers = "scavengers",
+    Smugglers = "smugglers"
 }
 export { FringeGroup };
 //# sourceMappingURL=FringeGroup.d.ts.map

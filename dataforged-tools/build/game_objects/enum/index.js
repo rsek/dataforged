@@ -25,4 +25,5 @@ export * from "./SettlementInitialContact.js";
 export * from "./StarshipInitialContact.js";
 export * from "./VaultZone.js";
 export * from "./Zone.js";
+export * from "./StarshipType.js";
 //# sourceMappingURL=index.js.map

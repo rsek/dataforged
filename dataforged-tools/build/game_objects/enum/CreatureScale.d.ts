@@ -1,16 +1,16 @@
 /**
  * Set by Oracles / Creatures / Scale/**
- * @alpha
+ * @public
  */
 export declare enum CreatureScale {
-    Minuscule = "Minuscule",
-    Tiny = "Tiny",
-    Small = "Small",
-    Medium = "Medium",
-    Large = "Large",
-    Huge = "Huge",
-    Titanic = "Titanic",
-    Colossal = "Colossal",
-    Vast = "Vast"
+    Minuscule = "minuscule",
+    Tiny = "tiny",
+    Small = "small",
+    Medium = "medium",
+    Large = "large",
+    Huge = "huge",
+    Titanic = "titanic",
+    Colossal = "colossal",
+    Vast = "vast"
 }
 //# sourceMappingURL=CreatureScale.d.ts.map

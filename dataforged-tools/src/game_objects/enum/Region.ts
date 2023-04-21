@@ -1,8 +1,8 @@
 /**
- * @alpha
+ * @public
  */
 export enum Region {
-  Terminus = "Terminus",
-  Outlands = "Outlands",
-  Expanse = "Expanse"
+  Terminus = 'terminus',
+  Outlands = 'outlands',
+  Expanse = 'expanse'
 }

@@ -1,14 +1,14 @@
-import type { PartialBy } from "./PartialBy.js";
-import type { PartialExcept } from "./PartialExcept.js";
+import type { PartialBy } from "./";
+import type { PartialExcept } from "./";
 /**
  * Make a stub of T where ReqK is required, OmitK is omitted, and all other keys are optional.
  * @public
  */
-export declare type StubExcept<T, ReqKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
+export declare type StubExcept<T, ReqKey extends string = '', OmitKey extends string = ''> = Omit<PartialExcept<T, ReqKey>, OmitKey>;
 /**
  * Make a stub of T where PartialKey is nullable, OmitK is omitted, and all other keys are required.
  *
  * @public
  */
-export declare type StubBy<T, PartialKey extends keyof any = "", OmitKey extends keyof any = ""> = Omit<PartialBy<T, PartialKey>, OmitKey>;
+export declare type StubBy<T, PartialKey extends string = '', OmitKey extends string = ''> = Omit<PartialBy<T, PartialKey>, OmitKey>;
 //# sourceMappingURL=Stub.d.ts.map

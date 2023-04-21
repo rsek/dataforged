@@ -1,0 +1,253 @@
+{
+  "type": "object",
+  "properties": {
+    "delve_rarities": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/YamlDelveRarity" },
+      "defaultProperties": [],
+      "title": "delve_rarities"
+    },
+    "_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      },
+      "defaultProperties": [],
+      "title": "_refs"
+    },
+    "_templates": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      },
+      "defaultProperties": [],
+      "title": "_templates"
+    },
+    "source": {
+      "$ref": "#/definitions/Source",
+      "description": "Information on this item's source.",
+      "title": "source"
+    }
+  },
+  "defaultProperties": [],
+  "additionalProperties": false,
+  "required": ["delve_rarities", "source"],
+  "definitions": {
+    "YamlDelveRarity": {
+      "title": "YamlDelveRarity",
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/YamlTitleCaseTitle",
+          "title": "title"
+        },
+        "description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "description"
+        },
+        "asset": {
+          "description": "The ID of the asset, to which this rarity applies its effects.",
+          "type": "string",
+          "title": "asset"
+        },
+        "xp_cost": {
+          "minimum": 3,
+          "maximum": 5,
+          "type": "integer",
+          "title": "xp_cost"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
+          "type": "string",
+          "title": "$id"
+        },
+        "display": {
+          "$ref": "#/definitions/Display",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "display"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "source": { "$ref": "#/definitions/YamlSource", "title": "source" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["asset", "description", "title", "xp_cost"]
+    },
+    "YamlTitleCaseTitle": {
+      "title": "YamlTitleCaseTitle",
+      "type": "object",
+      "properties": {
+        "canonical": {
+          "pattern": "^(?:([A-Z1-9][^\\s]*|by|of|in|a|an|and|the|\\((alternate version|by location|Scene Challenge)\\))\\s?)+$",
+          "type": "string",
+          "title": "canonical"
+        },
+        "$id": {
+          "description": "The item's unique string ID. Any object that contains a localizable user-facing string *must* have this key.",
+          "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+/title$",
+          "type": "string",
+          "title": "$id"
+        },
+        "short": {
+          "pattern": "^(?:([A-Z1-9][^\\s]*|by|of|in|a|an|and|the)\\s?)+$",
+          "type": "string",
+          "title": "short"
+        },
+        "standard": {
+          "pattern": "^(?:([A-Z1-9][^\\s]*|by|of|in|a|an|and|the|\\((alternate version|by location|Scene Challenge)\\))\\s?)+$",
+          "type": "string",
+          "title": "standard"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" },
+        "source": { "$ref": "#/definitions/YamlSource", "title": "source" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["canonical"]
+    },
+    "YamlSource": {
+      "title": "YamlSource",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "title": "title"
+        },
+        "authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": "['Shawn Tomkin']",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "authors"
+        },
+        "date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "date"
+        },
+        "page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "title": "page"
+        },
+        "uri": {
+          "description": "The URI where the source material is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "uri"
+        },
+        "license": {
+          "$ref": "#/definitions/License",
+          "description": "The URI pointing to the license which this content falls under.",
+          "title": "license"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "License": {
+      "title": "License",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    },
+    "Display": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "Display",
+      "$ref": "#/definitions/Display_1"
+    },
+    "Display_1": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "Display_1",
+      "type": "object",
+      "properties": {
+        "icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "icon"
+        },
+        "images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "images"
+        },
+        "color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "color"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    },
+    "Source": {
+      "description": "Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.",
+      "title": "Source",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string",
+          "title": "title"
+        },
+        "authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": "['Shawn Tomkin']",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "authors"
+        },
+        "date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "date"
+        },
+        "page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "title": "page"
+        },
+        "uri": {
+          "description": "The URI where the source material is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "uri"
+        },
+        "license": {
+          "$ref": "#/definitions/License_1",
+          "description": "The URI pointing to the license which this content falls under.",
+          "title": "license"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["authors", "license", "title"]
+    },
+    "License_1": {
+      "title": "License_1",
+      "enum": [
+        "None",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

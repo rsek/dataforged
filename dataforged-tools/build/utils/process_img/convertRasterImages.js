@@ -1,10 +1,10 @@
 import { getAllFiles } from "../io/getAllFiles.js";
-import pkg from "fs-extra";
+import pkg from 'fs-extra';
+import sharp from 'sharp';
+import { TypedRegEx } from 'typed-regex';
 const { ensureDirSync, readFileSync } = pkg;
-import sharp from "sharp";
-import { TypedRegEx } from "typed-regex";
 // eslint-disable-next-line no-useless-escape
-const filePattern = TypedRegEx("^(?<path>.+)/(?<name>[A-z\-0-9]+)\.(?<extension>.+?)$");
+const filePattern = TypedRegEx('^(?<path>.+)/(?<name>[A-z\-0-9]+)\.(?<extension>.+?)$');
 /**
  * For each file in the srcRoot directory, convert it to a webp file in the outRootWebP directory
  * @param srcRoot - The root directory of the source images.
@@ -15,7 +15,7 @@ export function convertRasterImages(srcRoot, outRootWebP) {
     srcFiles.forEach(file => {
         // console.log("in:", file);
         const pattern = filePattern.captures(file);
-        if (!pattern) {
+        if (pattern == null) {
             throw new Error(`Unable to match against pattern ${filePattern.toString()} ${file}`);
         }
         const input = readFileSync(file);

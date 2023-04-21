@@ -1,4 +1,4 @@
-import _ from "lodash-es";
+import _ from 'lodash-es';
 /**
  * Propagates an object to child objects; each child receives the propagated object, but if it has any specified properties for that object, they take precedence.
  * @param objToPropagate - The object that will be merged into the children.

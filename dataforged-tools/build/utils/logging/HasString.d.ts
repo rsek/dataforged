@@ -1,5 +1,5 @@
 interface HasString {
-    toString(): string;
+    toString: () => string;
 }
 export { HasString };
 //# sourceMappingURL=HasString.d.ts.map

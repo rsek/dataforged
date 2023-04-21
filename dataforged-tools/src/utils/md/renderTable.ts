@@ -1,34 +1,34 @@
-import { lengthOfLongest } from "@utils/md/longestLength.js";
-import { transpose2dArray } from "@utils/md/transpose2dArray.js";
-import _ from "lodash-es";
+import { lengthOfLongest } from '@utils/md/longestLength.js'
+import { transpose2dArray } from '@utils/md/transpose2dArray.js'
+import _ from 'lodash-es'
 
 /**
  * Renders an object array as a markdown table.
  */
-export function renderTable(rowDataArray: Record<string, string>[]) {
-  const tableBody = rowDataArray.map(row => Object.values(row));
-  const tableHeaderText = Object.keys(rowDataArray[0]);
-  let table = [ tableHeaderText, ...tableBody ];
+export function renderTable (rowDataArray: Array<Record<string, string>>) {
+  const tableBody = rowDataArray.map(row => Object.values(row))
+  const tableHeaderText = Object.keys(rowDataArray[0])
+  let table = [tableHeaderText, ...tableBody]
 
-  const columnWidths: number[] = transpose2dArray(table).map(col => lengthOfLongest(col));
+  const columnWidths: number[] = transpose2dArray(table).map(col => lengthOfLongest(col))
 
-  const colIsCentered = (transpose2dArray(tableBody) ).map(col => col.every(cell => cell.match(/^[^A-z]+$/) !== null));
+  const colIsCentered = (transpose2dArray(tableBody)).map(col => col.every(cell => cell.match(/^[^A-z]+$/) !== null))
 
-  table = table.map((row) => row.map((cell, colIndex) => cell.padEnd(columnWidths[colIndex], " ")));
+  table = table.map((row) => row.map((cell, colIndex) => cell.padEnd(columnWidths[colIndex], ' ')))
 
-  let rowStrings = table.map(row => row.join(" | "));
+  let rowStrings = table.map(row => row.join(' | '))
 
-  const headBorder = rowStrings[0].split("|").map((colContent, colIndex) => {
-    let border = _.repeat("-", colContent.length);
+  const headBorder = rowStrings[0].split('|').map((colContent, colIndex) => {
+    let border = _.repeat('-', colContent.length)
     if (colIsCentered[colIndex]) {
-      border = border.replaceAll(/^-(-+)-$/g, ":$1:");
+      border = border.replaceAll(/^-(-+)-$/g, ':$1:')
     }
-    return border;
+    return border
   })
-    .join("|");
-  rowStrings.splice(1, 0, headBorder);
-  rowStrings = rowStrings.map(row => row.trimEnd());
-  return rowStrings.join("\n");
+    .join('|')
+  rowStrings.splice(1, 0, headBorder)
+  rowStrings = rowStrings.map(row => row.trimEnd())
+  return rowStrings.join('\n')
 }
 
 // let oracleData = buildOracles();
@@ -36,4 +36,3 @@ export function renderTable(rowDataArray: Record<string, string>[]) {
 // // console.log("found oracle:", testOracle);
 // let extract = extractColumnData(testOracle);
 // console.log(renderTable(extract));
-

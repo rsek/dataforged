@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "parser": "@typescript-eslint/parser",
+  "extends": [ "standard-with-typescript" ],
+  "overrides": [{"files": ["src/**/*.ts"]}],
+  "root": true,
+  "ignorePatterns": [
+    "node_modules",
+    "img",
+    ".vscode",
+    ".github",
+    "data",
+    "dist",
+    "build",
+    "*.json",
+    "*.d.ts",
+    "src/utils"
+  ],
+  "parserOptions": {
+
+    "ecmaVersion": "latest",
+    "project": [ "./tsconfig.json" ]
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "lodash",
+    "import",
+    "eslint-plugin-tsdoc"
+  ],
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          ".*",
+          "./dist/*",
+          "dist/*",
+          "./build/*",
+          "build/*"
+        ],
+        "paths": [
+          {
+            "name": "lodash",
+            "message": "Use 'lodash-es' instead."
+          }
+        ]
+      }
+    ],
+    "tsdoc/syntax": "warn",
+    "tsdoc-escape-right-brace": [0],
+    "tsdoc-escape-left-brace": [0],
+    "tsdoc-malformed-inline-tag": [0],
+    "tsdoc-unnecessary-backslash": [0],
+    "@typescript-eslint/array-type": ["warn", {"default": "array"}],
+    "@typescript-eslint/no-empty-interface": [
+      0
+    ],
+    "@typescript-eslint/consistent-type-definitions": [ "warn", "interface" ],
+    "@typescript-eslint/consistent-type-imports": [ 1, { "prefer": "type-imports" } ]
+  }
+}

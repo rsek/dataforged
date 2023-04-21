@@ -1,0 +1,1185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "description": "Schema definitions used throughout dataforged.",
+  "definitions": {
+    "SnakeCase": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$",
+      "description": "A plain text string in snake_case. Usually this is an internal value for programmatic use only. They should *never* be localized."
+    },
+    "RollType": {
+      "type": "string",
+      "enum": [
+        "action_roll",
+        "progress_roll"
+      ]
+    },
+    "PlayerStat": {
+      "description": "A standard player character stat.",
+      "type": "string",
+      "enum": [
+        "edge",
+        "heart",
+        "iron",
+        "shadow",
+        "wits"
+      ]
+    },
+    "PlayerConditionMeter": {
+      "description": "A standard player character condition meter.",
+      "type": "string",
+      "enum": [
+        "health",
+        "spirit",
+        "supply"
+      ]
+    },
+    "GameObjectType": {
+      "type": "string",
+      "enum": [
+        "character",
+        "creature",
+        "derelict",
+        "derelict_zone",
+        "faction",
+        "planet",
+        "precursor_vault",
+        "settlement",
+        "starship"
+      ]
+    },
+    "ChallengeRank": {
+      "type": "integer",
+      "description": "A numeric challenge rank: 1 = troublesome; 2 = dangerous; 3 = formidable; 4 = extreme; 5 = epic.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ID": {
+      "type": "string",
+      "pattern": "^(starforged|ironsworn)/[0-9a-z_/-]+$",
+      "description": "An unique string ID"
+    },
+    "Localizable": {
+      "description": "A localizable string of plain text.",
+      "type": "string"
+    },
+    "LocalizableMarkdown": {
+      "description": "A localizable string formatted in markdown. This usually represents a direct excerpt from the source material.",
+      "type": "string"
+    },
+    "LocalizableTemplate": {
+      "$comment": "TODO"
+    },
+    "Title": {
+      "required": [
+        "_id",
+        "standard"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "canonical": {
+          "$ref": "#/definitions/Localizable"
+        },
+        "short": {
+          "$ref": "#/definitions/Localizable"
+        },
+        "standard": {
+          "$ref": "#/definitions/Localizable"
+        }
+      }
+    },
+    "Display": {
+      "description": "Contains data relevant to rendering the item.",
+      "properties": {
+        "icon": {
+          "description": "A URI pointing to a single SVG icon.",
+          "type": "string",
+          "format": "uri"
+        },
+        "images": {
+          "description": "An array of URIs pointing to one or more WEBP images.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "color": {
+          "description": "A CSS color associated with this item, for use as e.g. an accent color when rendering it.",
+          "type": "string",
+          "format": "color"
+        }
+      }
+    },
+    "Description": {
+      "$ref": "#/definitions/LocalizableMarkdown",
+      "description": "A user-facing markdown description of the item, consisting of one or more paragraphs."
+    },
+    "Summary": {
+      "description": "A user-facing markdown summary of the item. Summary is shorter than {@link HasDescription| Description}, when they're both present.",
+      "$ref": "#/definitions/LocalizableMarkdown"
+    },
+    "Source": {
+      "description": "Information on this item's source. For 'canonical' content, this is usually a book with a page number, but it might also be a link to a web site.",
+      "type": "object",
+      "required": [
+        "authors",
+        "license",
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "description": "The title of the source.\n\nFor 'canonical' content, use one of the enumerated `SourceTitle` strings.\n\nFor 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. \"Steelforged\", \"Ironsmith\").\n\nIf the source has no particular title (for instance, it's a single custom element in a VTT implementation), use \"Custom\".",
+          "type": "string"
+        },
+        "authors": {
+          "description": "The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.",
+          "default": [
+            "Shawn Tomkin"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "page": {
+          "description": "The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).",
+          "type": "integer",
+          "minimum": 1
+        },
+        "url": {
+          "description": "The URI where the source material is available.",
+          "type": "string",
+          "format": "uri"
+        },
+        "license": {
+          "description": "The URI pointing to the license which this content falls under.",
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "QuestStarter": {
+      "description": "A localizable markdown string describing the quest starter associated with this item.",
+      "$ref": "#/definitions/LocalizableMarkdown"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SnakeCase"
+      }
+    },
+    "GameObject": {
+      "description": "Describes a game object, with optional required parameters (for example, a specific Location result).",
+      "type": "object"
+    },
+    "Suggestions": {
+      "type": "object",
+      "description": "\"Non-canonical\" suggestions of related items. They might be convenient to present to the user, but in most implementations rolling them automatically is not recommended."
+    },
+    "CyclopediaEntry": {
+      "description": "Schema common to \"cyclopedia\" style pages, such as Regions (*Ironsworn* classic) and Encounters (*Ironsworn* classic and *Starforged*) ",
+      "required": [
+        "_id",
+        "display",
+        "description",
+        "source",
+        "title"
+      ],
+      "properties": {
+        "_id": {
+          "$ref": "#/definitions/ID"
+        },
+        "tags": {
+          "$ref": "#/definitions/Tags"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocalizableMarkdown"
+          }
+        },
+        "quest_starter": {
+          "$ref": "#/definitions/QuestStarter"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "title": {
+          "$ref": "#/definitions/Title"
+        }
+      }
+    },
+    "Encounter": {
+      "description": "Schema common to Encounter entries in *Ironsworn* and *Ironsworn: Starforged*.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CyclopediaEntry"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "nature": {
+              "type": "string"
+            },
+            "summary": {
+              "$ref": "#/definitions/Summary",
+              "examples": [
+                "Insectoid horde"
+              ]
+            },
+            "rank": {
+              "$ref": "#/definitions/ChallengeRank"
+            },
+            "drives": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizableMarkdown"
+              }
+            },
+            "tactics": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LocalizableMarkdown"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EncounterStarforged": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encounter"
+        },
+        {
+          "required": [
+            "summary",
+            "nature"
+          ],
+          "properties": {
+            "summary": {
+              "$ref": "#/definitions/Summary"
+            },
+            "nature": {
+              "title": "EncounterNatureStarforged",
+              "type": "string",
+              "enum": [
+                "creature",
+                "horror",
+                "human",
+                "machine",
+                "monster"
+              ]
+            },
+            "variants": {
+              "patternProperties": {
+                "^[a-z][a-z_]+[a-z]$": {
+                  "$ref": "#/definitions/Encounter"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "EncounterClassic": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Encounter"
+        },
+        {
+          "properties": {
+            "nature": {
+              "title": "EncounterNatureClassic",
+              "type": "string",
+              "enum": [
+                "Ironlander",
+                "firstborn",
+                "animal",
+                "beast",
+                "horror",
+                "anomaly"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "IronlandsRegion": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CyclopediaEntry"
+        },
+        {
+          "required": [
+            "description",
+            "features",
+            "quest_starter",
+            "summary",
+            "title"
+          ]
+        }
+      ]
+    },
+    "OracleSet": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "requires": {
+          "$comment": "TODO"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "usage": {
+          "$ref": "#/definitions/Source"
+        },
+        "sets": {
+          "patternProperties": {
+            "SNAKE_CASE": {
+              "$ref": "#/definitions/OracleSet"
+            }
+          }
+        },
+        "tables": {
+          "patternProperties": {
+            "SNAKE_CASE": {
+              "$ref": "#/definitions/OracleTable"
+            }
+          }
+        },
+        "summary": {
+          "$ref": "#/definitions/Summary"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "content": {
+          "$comment": "TODO"
+        },
+        "sample_names": {
+          "description": "A list of sample names for this category. Only used by Planets.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ancestors": {
+          "description": "An array containing the ID of every {@link OracleSet} ancestor of this item. The array is sorted from the most recent ancestor (e.g. one level up) to the most distant.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ID"
+          }
+        }
+      }
+    },
+    "OracleTableRow": {
+      "required": [
+        "result",
+        "floor",
+        "ceiling"
+      ],
+      "properties": {
+        "floor": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 100
+        },
+        "ceiling": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 100
+        },
+        "result": {
+          "description": "The primary result text for the row, annotated in Markdown.\nIn the book, this is frequently the only column aside from the roll column. Otherwise, it is the first column.\nSome tables label this column as something other than Result; see the parent (or grandparent) Oracle.Display for more information.",
+          "$ref": "#/definitions/LocalizableMarkdown"
+        },
+        "summary": {
+          "description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\nGenerally, `Summary` is longer than `Result`.\n\nSome tables label this column as something other than `Result`; see the parent (or grandparent) `Oracle.Display.Table` for more information.\n\n`null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/LocalizableMarkdown"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        }
+      }
+    },
+    "OracleTable": {
+      "type": "object",
+      "required": [
+        "title",
+        "table"
+      ],
+      "properties": {
+        "content": {
+          "title": "OracleContent",
+          "type": "object",
+          "description": "Metadata that describes an oracle's semantic or lexical content.",
+          "properties": {
+            "part_of_speech": {
+              "description": "The part of speech of this oracle.",
+              "type": "array",
+              "items": {
+                "enum": [
+                  "adjective",
+                  "common noun",
+                  "compound noun",
+                  "fragment",
+                  "name",
+                  "noun",
+                  "plural",
+                  "possessive case",
+                  "proper noun",
+                  "proper noun fragment",
+                  "sentences",
+                  "verb"
+                ],
+                "type": "string"
+              }
+            },
+            "tags": {
+              "description": "Any arbitrary string tags associated with this oracle.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "usage": {
+          "title": "OracleUsage",
+          "type": "object"
+        },
+        "requires": {
+          "title": "OracleRequirements",
+          "type": "object"
+        },
+        "display": {
+          "title": "OracleTableDisplay",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Display"
+            },
+            {
+              "properties": {
+                "columns": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/TableColumnRoll"
+                      },
+                      {
+                        "$ref": "#/definitions/TableColumnText"
+                      }
+                    ]
+                  }
+                },
+                "column_of": {
+                  "description": "If this oracle's `Table` should be rendered as a column of another table, it's indicated here.\n\nIf `undefined`, this table is rendered as a standalone table.\n\nIf this is set (and the rendering such 'embedded' columns is desired), then `Display.Table` may be safely ignored.",
+                  "type": "string"
+                },
+                "embed_in": {
+                  "description": "This table is displayed as embedded in a row of another table.",
+                  "type": "string"
+                },
+                "source": {
+                  "$ref": "#/definitions/Source"
+                }
+              }
+            }
+          ]
+        },
+        "table": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OracleTableRow"
+          }
+        },
+        "on_a_match": {
+          "title": "OracleMatchBehaviour",
+          "type": "object",
+          "properties": {
+            "_id": {
+              "$ref": "#/definitions/ID"
+            },
+            "text": {
+              "$ref": "#/definitions/LocalizableMarkdown"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "_id",
+            "text"
+          ]
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        }
+      }
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "requirement": {
+          "description": "An optional markdown string representing the requirement text that appears at the top of some asset cards.",
+          "$ref": "#/definitions/LocalizableMarkdown"
+        },
+        "inputs": {
+          "type": "object",
+          "patternProperties": {
+            "SNAKE_CASE": {
+              "anyOf": [
+                {
+                  "title": "InputClock",
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "description": "The user-facing text label of this item.",
+                      "type": "string",
+                      "title": "label"
+                    },
+                    "segments": {
+                      "description": "An integer representing the total number of segments in this Clock. *Ironsworn: Starforged* uses clocks with 4, 6, 8, and 10 segments.\n\n`Filled` should not exceed this number.",
+                      "title": "ClockSegments",
+                      "enum": [
+                        4,
+                        6,
+                        8,
+                        10
+                      ],
+                      "type": "integer"
+                    },
+                    "input_type": {
+                      "const": "clock"
+                    },
+                    "permanent": {
+                      "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+                      "const": false
+                    },
+                    "clock_type": {
+                      "$ref": "#/definitions/ClockType",
+                      "description": "Whether the clock is a Tension Clock or a Campaign Clock. For assets this doesn't really matter since they have their own specific trigger conditions, and can probably be ignored.",
+                      "enum": [
+                        "campaign",
+                        "tension"
+                      ],
+                      "type": "string"
+                    },
+                    "filled": {
+                      "description": "An integer representing how many filled segments this clock has. This is always 0 in Dataforged; it's included to make it easy to store clock states with the same interface.",
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "_id": {
+                      "pattern": "^(starforged|ironsworn)/assets/[a-z_]+/[a-z_]+/([1-3]/)?inputs/[a-z_]+$",
+                      "type": "string"
+                    },
+                    "display": {
+                      "$ref": "#/definitions/InputDisplay",
+                      "description": "Data relevant to this item's display/rendering.",
+                      "title": "display"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "clock_type",
+                    "filled",
+                    "input_type",
+                    "label",
+                    "permanent",
+                    "segments"
+                  ]
+                },
+                {
+                  "title": "InputNumber",
+                  "description": "An input with an integer value, similar to `<input type=\"number\">`;",
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/Input"
+                    },
+                    {
+                      "properties": {
+                        "permanent": {
+                          "const": false
+                        },
+                        "input_type": {
+                          "const": "number"
+                        },
+                        "max": {
+                          "description": "The maximum value for this number input. If it's \"null\", it has no maximum.",
+                          "type": [
+                            "null",
+                            "integer"
+                          ]
+                        },
+                        "min": {
+                          "type": "integer"
+                        },
+                        "value": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "InputSelect",
+                  "description": "An input where one option is selected from a list, similar to `<select>`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/Input"
+                    },
+                    {
+                      "properties": {
+                        "input_type": {
+                          "const": "select"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "InputText",
+                  "description": "A string input, similar to `<input type=\"text\">`;",
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/Input"
+                    },
+                    {
+                      "properties": {
+                        "input_type": {
+                          "const": "text"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "title": "AssetAbility",
+            "type": "object",
+            "properties": {
+              "moves": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Move"
+                }
+              },
+              "inputs": {
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/definitions/InputClock"
+                    },
+                    {
+                      "$ref": "#/definitions/InputNumber"
+                    },
+                    {
+                      "$ref": "#/definitions/InputSelect"
+                    },
+                    {
+                      "$ref": "#/definitions/InputText"
+                    }
+                  ]
+                }
+              },
+              "alter": {
+                "$ref": "#/definitions/Alter"
+              },
+              "label": {
+                "description": "Ironsworn companion assets provide labels for their abilities. Starforged asset abilities do not have labels.",
+                "$ref": "#/definitions/Localizable"
+              },
+              "text": {
+                "$ref": "#/definitions/LocalizableMarkdown"
+              },
+              "_id": {
+                "$ref": "#/definitions/ID"
+              },
+              "enabled": {
+                "description": "Whether the asset ability is enabled or not. In most cases, the first asset ability defaults to 'true' and the others to 'false'. If none of an asset's abilities are set to 'true', the player can pick which the ability they start with when purchasing the asset.",
+                "type": "boolean"
+              },
+              "source": {
+                "$ref": "#/definitions/Source"
+              }
+            }
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "condition_meter": {
+          "title": "ConditionMeter",
+          "label": {
+            "description": "The user-facing text label of this item.",
+            "pattern": "^[a-z].+$",
+            "type": "string"
+          },
+          "min": {
+            "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
+            "default": 0,
+            "type": "integer"
+          },
+          "max": {
+            "description": "The maximum value of the meter.",
+            "default": 5,
+            "type": "integer"
+          },
+          "rollable": {
+            "description": "Whether the meter value can be used in place of a stat in an action roll.",
+            "type": "boolean",
+            "default": true
+          },
+          "_id": {
+            "$ref": "#/definitions/ID"
+          },
+          "aliases": {
+            "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.using}. The array will include an appropriate alias if that is the case.",
+            "type": "array",
+            "items": {
+              "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
+              "enum": [
+                "attached_asset_meter",
+                "command_vehicle_integrity",
+                "companion_health",
+                "incidental_vehicle_integrity",
+                "support_vehicle_integrity",
+                "vehicle_integrity"
+              ],
+              "type": "string"
+            }
+          },
+          "value": {
+            "description": "The initial value of the meter.",
+            "type": "integer"
+          },
+          "source": {
+            "$ref": "#/definitions/Source"
+          }
+        },
+        "attachments": {
+          "description": "Details on what attachments (other assets) are accepted by this asset.",
+          "$ref": "#/definitions/AssetAttachment"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "animal_companion",
+              "beast_companion",
+              "biological_companion",
+              "deed",
+              "ironlander_companion",
+              "mechanical_companion"
+            ],
+            "type": "string"
+          }
+        },
+        "usage": {
+          "$ref": "#/definitions/AssetUsage",
+          "description": "Information on the asset's usage, such as whether its abilities are shared amongst the player characters."
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "abilities",
+        "title"
+      ]
+    },
+    "AssetType": {
+      "type": "object",
+      "properties": {
+        "assets": {
+          "type": "object",
+          "patternProperties": {
+            "SNAKE_CASE": {
+              "$ref": "#/definitions/Asset"
+            }
+          }
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "usage": {
+          "$ref": "#/definitions/AssetUsage"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "title": {
+          "$ref": "#/definitions/Title"
+        }
+      },
+      "required": [
+        "assets",
+        "description",
+        "title"
+      ]
+    },
+    "Input": {
+      "type": "object",
+      "description": "An input element of any type.",
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/Localizable"
+        },
+        "display": {
+          "title": "InputDisplay",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Display"
+            },
+            {
+              "properties": {
+                "position": {
+                  "title": "InputDisplayPosition",
+                  "enum": [
+                    "back",
+                    "bottom",
+                    "condition_meter",
+                    "right",
+                    "top"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "position"
+              ]
+            }
+          ]
+        },
+        "input_type": {
+          "title": "InputType",
+          "description": "The type of input represented by this object.",
+          "type": "string",
+          "enum": [
+            "text",
+            "select",
+            "number",
+            "clock",
+            "toggle"
+          ]
+        },
+        "permanent": {
+          "description": "Whether the input's value is expected to change over the course of a campaign. For example, name fields are typically `false`, while something like a clock or tally would be `true`.\n\nIt's a good idea to make everything editable regardless, but this property might inform whether your UI presents that functionality \"front and center\" or as a secondary interaction (via long press, right click, etc);",
+          "type": "boolean"
+        }
+      }
+    },
+    "Move": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/Title"
+        },
+        "trigger": {
+          "title": "MoveTrigger",
+          "type": "object",
+          "properties": {
+            "options": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "title": "MoveTriggerOptionAction",
+                    "type": "object",
+                    "properties": {
+                      "custom_stat": {
+                        "title": "CustomStat",
+                        "type": "object",
+                        "properties": {
+                          "options": {
+                            "type": "array",
+                            "items": {
+                              "title": "CustomStatOption",
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "description": "The user-facing text label of this item.",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "The numeric value to be used as +stat when making an Action Roll.",
+                                  "type": "integer"
+                                },
+                                "_id": {
+                                  "$ref": "#/definitions/ID"
+                                },
+                                "source": {
+                                  "$ref": "#/definitions/Source"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "label",
+                                "value"
+                              ]
+                            }
+                          },
+                          "label": {
+                            "description": "The user-facing text label of this item.",
+                            "type": "string"
+                          },
+                          "_id": {
+                            "$ref": "#/definitions/ID"
+                          },
+                          "source": {
+                            "$ref": "#/definitions/Source",
+                            "title": "source"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "label",
+                          "options"
+                        ]
+                      },
+                      "using": {
+                        "$ref": "#/definitions/Array",
+                        "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
+                      },
+                      "text": {
+                        "description": "The item's rules text as a markdown string.",
+                        "type": "string"
+                      },
+                      "_id": {
+                        "pattern": "^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger/options/[0-9]+$",
+                        "type": "string"
+                      },
+                      "method": {
+                        "$ref": "#/definitions/RollMethod"
+                      },
+                      "roll_type": {
+                        "const": "action_roll"
+                      },
+                      "source": {
+                        "$ref": "#/definitions/Source"
+                      }
+                    },
+                    "required": [
+                      "using"
+                    ]
+                  },
+                  {
+                    "title": "MoveTriggerOptionProgress",
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "description": "The item's rules text as a markdown string.",
+                        "type": "string"
+                      },
+                      "_id": {
+                        "pattern": "^(starforged|ironsworn)/(moves/[a-z_]+/[a-z_]+|assets/[a-z_]+/[a-z_]+/[1-3]/alter/moves/[0-9]+|moves/assets/[a-z_]+/[a-z_]+/[1-3]/[a-z_]+)/trigger/options/[0-9]+$",
+                        "type": "string"
+                      },
+                      "method": {
+                        "$ref": "#/definitions/RollMethod"
+                      },
+                      "using": {
+                        "$ref": "#/definitions/Array_1",
+                        "description": "The stat(s) or progress track(s) that may be rolled with this move trigger option.",
+                        "title": "using"
+                      },
+                      "roll_type": {
+                        "const": "progress_roll"
+                      },
+                      "source": {
+                        "$ref": "#/definitions/Source"
+                      }
+                    },
+                    "defaultProperties": [],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "text": {
+              "description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `Options`.",
+              "type": "string"
+            },
+            "ConditionMeter": {
+              "label": {
+                "description": "The user-facing text label of this item.",
+                "pattern": "^[a-z].+$",
+                "type": "string"
+              },
+              "min": {
+                "description": "The minimum value of the meter. Usually this is 0. Momentum is currently the only exception to this and goes as low as -6.",
+                "default": 0,
+                "type": "integer"
+              },
+              "max": {
+                "description": "The maximum value of the meter.",
+                "default": 5,
+                "type": "integer"
+              },
+              "rollable": {
+                "description": "Whether the meter value can be used in place of a stat in an action roll.",
+                "type": "boolean"
+              },
+              "_id": {
+                "$ref": "#/definitions/ID"
+              },
+              "aliases": {
+                "description": "Certain common types of asset meters, like companion health and vehicle integrity, are collectively referenced by {@link MoveTriggerOptionAction.using}. The array will include an appropriate alias if that is the case.",
+                "type": "array",
+                "items": {
+                  "description": "Names of non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.\nIf an asset condition meter can be used in this manner, the alias is included in its Aliases array.",
+                  "enum": [
+                    "attached_asset_meter",
+                    "command_vehicle_integrity",
+                    "companion_health",
+                    "incidental_vehicle_integrity",
+                    "support_vehicle_integrity",
+                    "vehicle_integrity"
+                  ],
+                  "type": "string"
+                }
+              },
+              "value": {
+                "description": "The initial value of the meter.",
+                "type": "integer"
+              },
+              "source": {
+                "$ref": "#/definitions/Source"
+              }
+            },
+            "by": {
+              "description": "Information on who can trigger this item. Used mainly by asset abilities, some of which can trigger from an Ally's move.\n\nIf unspecified, assume `Ally` is `false` and `Player` is `true`.",
+              "$ref": "#/definitions/MoveTriggerBy"
+            },
+            "source": {
+              "$ref": "#/definitions/Source"
+            }
+          },
+          "additionalProperties": false
+        },
+        "outcomes": {
+          "$ref": "#/definitions/Outcomes"
+        },
+        "text": {
+          "$ref": "#/definitions/LocalizableMarkdown"
+        },
+        "suggestions": {
+          "$ref": "#/definitions/Suggestions"
+        },
+        "asset": {
+          "description": "The ID of the parent Asset of the move, if any.",
+          "type": "string"
+        },
+        "progress_move": {
+          "description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
+          "type": "boolean"
+        },
+        "variant_of": {
+          "description": "The ID of the move that this move is a variant of, if any.",
+          "type": "string"
+        },
+        "oracles": {
+          "description": "The IDs of any oracles directly referenced by the move, or vice versa.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional": {
+          "description": "Whether or not the source material presents this rules item as optional.",
+          "default": false,
+          "type": "boolean"
+        },
+        "display": {
+          "$ref": "#/definitions/Display"
+        },
+        "tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "description": "The ID of the move's category.",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "title",
+        "trigger"
+      ]
+    },
+    "RollMethod": {
+      "description": "The stat(s) or progress track(s) that may be rolled with the parent move trigger option.",
+      "enum": [
+        "all",
+        "any",
+        "highest",
+        "inherit",
+        "lowest",
+        "strong_hit",
+        "weak_hit"
+      ],
+      "type": "string"
+    }
+  }
+}

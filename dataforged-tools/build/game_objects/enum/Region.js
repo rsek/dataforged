@@ -1,10 +1,10 @@
 /**
- * @alpha
+ * @public
  */
 export var Region;
 (function (Region) {
-    Region["Terminus"] = "Terminus";
-    Region["Outlands"] = "Outlands";
-    Region["Expanse"] = "Expanse";
+    Region["Terminus"] = "terminus";
+    Region["Outlands"] = "outlands";
+    Region["Expanse"] = "expanse";
 })(Region || (Region = {}));
 //# sourceMappingURL=Region.js.map

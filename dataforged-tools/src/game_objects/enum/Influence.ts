@@ -1,14 +1,14 @@
 /**
  * Set by Oracles / Factions / Influence
- * @alpha
+ * @public
  */
 enum Influence {
-  Forsaken = "Forsaken",
-  Isolated = "Isolated",
-  Localized = "Localized",
-  Established = "Established",
-  Notable = "Notable",
-  Dominant = "Dominant",
-  Inescapable = "Inescapable",
+  Forsaken = 'forsaken',
+  Isolated = 'isolated',
+  Localized = 'localized',
+  Established = 'established',
+  Notable = 'notable',
+  Dominant = 'dominant',
+  Inescapable = 'inescapable',
 }
-export { Influence };
+export { Influence }

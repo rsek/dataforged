@@ -1,15 +1,15 @@
 /**
  * Set by Oracles / Planets / * / Life
- * @alpha
+ * @public
  */
 var Life;
 (function (Life) {
-    Life["None"] = "None";
-    Life["Extinct"] = "Extinct";
-    Life["Scarce"] = "Scarce";
-    Life["Diverse"] = "Diverse";
-    Life["Bountiful"] = "Bountiful";
-    Life["Overrun"] = "Overrun";
+    Life["None"] = "none";
+    Life["Extinct"] = "extinct";
+    Life["Scarce"] = "scarce";
+    Life["Diverse"] = "diverse";
+    Life["Bountiful"] = "bountiful";
+    Life["Overrun"] = "overrun";
 })(Life || (Life = {}));
 export { Life };
 //# sourceMappingURL=Life.js.map

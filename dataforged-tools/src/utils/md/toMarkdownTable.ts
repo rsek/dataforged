@@ -1,7 +1,6 @@
 
-
-// import type { OracleCategory } from "@classes/index.js";
-// import type { Row } from "@classes/index.js";
+// import type { OracleCategory } from "@classes";
+// import type { Row } from "@classes";
 // import { renderOracleCategory } from "@utils/md/renderOracleCategory.js";
 // import _ from "lodash-es";
 // import fs from "fs";

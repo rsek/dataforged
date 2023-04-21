@@ -1,13 +1,13 @@
 /**
  * Set by Oracles / Planets / * / Life
- * @alpha
+ * @public
  */
 enum Life {
-  None = "None",
-  Extinct = "Extinct",
-  Scarce = "Scarce",
-  Diverse = "Diverse",
-  Bountiful = "Bountiful",
-  Overrun = "Overrun"
+  None = 'none',
+  Extinct = 'extinct',
+  Scarce = 'scarce',
+  Diverse = 'diverse',
+  Bountiful = 'bountiful',
+  Overrun = 'overrun'
 }
-export { Life };
+export { Life }

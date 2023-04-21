@@ -1,4 +1,4 @@
-import { MoveOutcome , RollType } from "@json_out/index.js";
+import { MoveOutcome, RollType } from "@json_out";
 import { Die } from "@utils/simulation/Die.js";
 import type { NumericOutcome, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
 import { MOMENTUM_MAX } from "@utils/simulation/PlayerCharacter.js";
@@ -15,11 +15,13 @@ export const ACTION_DIE_SIDES = 6;
  * @param challengeDie2 - The second challenge die.
  */
 export function resolveIronswornRoll(score: number, challengeDie1: Die, challengeDie2: Die ): MoveOutcome {
+  console.log("Resolving ironsworn roll:", ...arguments);
+
   const diceBeaten = [ challengeDie1, challengeDie2 ].filter(die => score > die.valueOf()).length;
   return diceBeaten;
 }
 
-export interface IIronswornRoll {
+export interface IronswornRoll {
   type: RollType;
   challengeDice: [Die, Die];
   score: number;
@@ -30,14 +32,14 @@ export interface IIronswornRoll {
 
 
 
-export abstract class IronswornRoll implements IIronswornRoll {
+export abstract class IronswornRoll implements IronswornRoll {
   readonly type: RollType;
   challengeDice: [Die, Die];
   private readonly _outcomesData: NumericOutcomes;
-  outcomeForScore(score: number) {
+  outcomeForScore(score: number): MoveOutcome {
     return resolveIronswornRoll(score, ...this.challengeDice);
   }
-  outcomeEffectForScore(score: number, isMatch: boolean) {
+  outcomeEffectForScore(score: number, isMatch: boolean): NumericOutcome<MoveOutcome> {
     const outcomeKey = MoveOutcome[this.outcomeForScore(score)] as keyof typeof MoveOutcome;
     let baseOutcome = _.cloneDeep(this._outcomesData[outcomeKey]);
     if (isMatch && baseOutcome.chooseOnMatch) {
@@ -45,7 +47,7 @@ export abstract class IronswornRoll implements IIronswornRoll {
     }
     return baseOutcome;
   }
-  get outcomeEffect() {
+  get outcomeEffect(): NumericOutcome<MoveOutcome> {
     return this.outcomeEffectForScore(this.score, this.isMatch);
   }
   toString(): string {
@@ -65,11 +67,11 @@ export abstract class IronswornRoll implements IIronswornRoll {
   }
 }
 
-export interface IProgressRoll extends IIronswornRoll {
+export interface ProgressRoll extends IronswornRoll {
   type: RollType.Progress;
 }
 
-export class ProgressRoll extends IronswornRoll implements IProgressRoll {
+export class ProgressRoll extends IronswornRoll implements ProgressRoll {
   readonly type = RollType.Progress;
   score: number;
   constructor({ score, outcomesData, challengeDie1, challengeDie2 }: { score: number; outcomesData: NumericOutcomes; challengeDie1?: number; challengeDie2?: number; }) {
@@ -80,14 +82,14 @@ export class ProgressRoll extends IronswornRoll implements IProgressRoll {
   }
 }
 
-export interface IActionRoll extends IIronswornRoll {
+export interface ActionRoll extends IronswornRoll {
   type: RollType.Action;
   actionDie: Die;
   stat: number;
   add: number;
 }
 
-export class ActionRoll extends IronswornRoll implements IActionRoll {
+export class ActionRoll extends IronswornRoll implements ActionRoll {
   readonly type = RollType.Action;
   actionDie: Die;
   stat: number;

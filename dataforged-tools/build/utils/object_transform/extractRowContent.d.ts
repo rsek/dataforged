@@ -1,8 +1,6 @@
-import type { IRowContentYaml, IRowYaml } from "../../yaml_in/index.js";
+import { YamlRowContentItem, YamlSimpleTableRow } from "../../schema";
 /**
- * Extracts the content of a Row array. In other words, it excludes the Floor and Ceiling numbers.
- * @param row - IRowYaml | IRowContentYaml
- * @returns A list of IRowContentYaml
+ * Extracts the content of a Row array. In other words, it excludes the Floor and Ceiling numbers.s
  */
-export declare function extractRowContent(row: IRowYaml | IRowContentYaml): IRowContentYaml;
+export declare function extractRowContent(row: YamlSimpleTableRow | YamlRowContentItem[]): YamlRowContentItem[];
 //# sourceMappingURL=extractRowContent.d.ts.map

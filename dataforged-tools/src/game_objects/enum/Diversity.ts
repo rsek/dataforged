@@ -1,6 +1,6 @@
 /**
  * Set by Oracles / Planets / Vital / Diversity
- * @alpha
+ * @public
  */
 enum Diversity {
   Simple = 2,
@@ -8,4 +8,4 @@ enum Diversity {
   Complex = 4,
   GardenWorld = 5
 }
-export { Diversity };
+export { Diversity }

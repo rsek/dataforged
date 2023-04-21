@@ -1,12 +1,12 @@
 /**
  * Set by Oracles / Creatures / Environment
- * @alpha
+ * @public
  */
 export declare enum Environment {
-    Space = "Space",
-    Interior = "Interior",
-    Land = "Land",
-    Liquid = "Liquid",
-    Air = "Air"
+    Space = "space",
+    Interior = "interior",
+    Land = "land",
+    Liquid = "liquid",
+    Air = "air"
 }
 //# sourceMappingURL=Environment.d.ts.map
