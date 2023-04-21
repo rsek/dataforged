@@ -1,6 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata, type Regions as Types } from '@base-types'
-import { schemaRef } from './common'
+import { refSchema } from './common'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {
 	type: 'string',
@@ -30,7 +30,7 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 			items: { $ref: '#/definitions/MarkdownPhrase' } as any
 		},
 		quest_starter: { $ref: '#/definitions/MarkdownParagraph' },
-		source: schemaRef<Metadata.Source>('Source'),
-		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
+		source: refSchema<Metadata.Source>('Source'),
+		suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
 	}
 }

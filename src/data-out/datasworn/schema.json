@@ -130,6 +130,16 @@
 			"type": "string",
 			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
 		},
+		"AssetOptionFieldID": {
+			"title": "Asset option field ID",
+			"type": "string",
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/options\\/[a-z][a-z_]*[a-z]$"
+		},
+		"AssetControlFieldID": {
+			"title": "Asset control field ID",
+			"type": "string",
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/controls\\/[a-z][a-z_]*[a-z]$"
+		},
 		"Asset": {
 			"title": "Asset",
 			"type": "object",
@@ -137,23 +147,60 @@
 			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/AssetID" },
-				"attributes": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Attribute" }
-					}
+				"shared": {
+					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
+					"type": "boolean"
 				},
 				"name": { "$ref": "#/definitions/Label" },
-				"source": { "$ref": "#/definitions/Source" },
-				"attachments": { "$ref": "#/definitions/AssetAttachment" },
+				"options": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"title": "Asset option field",
+							"type": "object",
+							"properties": {
+								"_id": { "$ref": "#/definitions/AssetOptionFieldID" }
+							},
+							"oneOf": [
+								{ "$ref": "#/definitions/TextField" },
+								{ "$ref": "#/definitions/ChoicesField" }
+							]
+						}
+					}
+				},
+				"controls": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"title": "Asset control field",
+							"type": "object",
+							"properties": {
+								"_id": { "$ref": "#/definitions/AssetControlFieldID" }
+							},
+							"oneOf": [
+								{ "$ref": "#/definitions/CheckboxField" },
+								{ "$ref": "#/definitions/ConditionMeterField" },
+								{ "$ref": "#/definitions/ToggleField" }
+							]
+						}
+					}
+				},
 				"requirement": { "$ref": "#/definitions/MarkdownPhrase" },
-				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"abilities": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
 					"items": { "$ref": "#/definitions/AssetAbility" }
-				}
+				},
+				"count_as_impact": {
+					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
+					"type": "boolean",
+					"default": false
+				},
+				"source": { "$ref": "#/definitions/Source" },
+				"attachments": { "$ref": "#/definitions/AssetAttachment" }
 			}
 		},
 		"AssetAttachment": {
@@ -186,7 +233,17 @@
 		"AssetAbilityID": {
 			"title": "Asset ability ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]$"
+		},
+		"AssetAbilityOptionFieldID": {
+			"title": "Asset ability option field ID",
+			"type": "string",
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]\\/options\\/[a-z][a-z_]*[a-z]$"
+		},
+		"AssetAbilityControlFieldID": {
+			"title": "Asset ability control field ID",
+			"type": "string",
+			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/abilities\\/[0-2]\\/controls\\/[a-z][a-z_]*[a-z]$"
 		},
 		"AssetAbility": {
 			"title": "Asset ability",
@@ -197,19 +254,45 @@
 				"_id": { "$ref": "#/definitions/AssetAbilityID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"text": { "$ref": "#/definitions/MarkdownParagraph" },
-				"attachments": { "$ref": "#/definitions/AssetAttachment" },
 				"enabled": { "type": "boolean", "default": false },
-				"attributes": {
+				"controls": {
 					"type": "object",
+					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Attribute" }
+						"^[a-z][a-z_]*[a-z]$": {
+							"oneOf": [
+								{ "$ref": "#/definitions/TextField" },
+								{ "$ref": "#/definitions/CounterField" },
+								{ "$ref": "#/definitions/ClockField" },
+								{ "$ref": "#/definitions/CheckboxField" }
+							]
+						}
 					}
 				},
+				"options": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"type": "object",
+							"allOf": [
+								{ "$ref": "#/definitions/TextField" },
+								{
+									"properties": {
+										"_id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" }
+									}
+								}
+							]
+						}
+					}
+				},
+				"extend_asset": { "$ref": "#/definitions/AssetExtension" },
 				"extend_moves": {
 					"type": "array",
 					"items": { "$ref": "#/definitions/MoveExtension" }
 				},
 				"moves": {
+					"description": "Unique moves added by this asset ability.",
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
@@ -231,6 +314,7 @@
 			"title": "Asset type",
 			"type": "object",
 			"required": ["_id", "title", "source", "contents"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/AssetTypeID" },
 				"title": { "$ref": "#/definitions/Title" },
@@ -238,12 +322,14 @@
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
-					"description": "The elements contained by this collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Asset" }
-					}
+					},
+					"description": "The elements contained by this collection."
 				}
 			}
 		},
@@ -252,18 +338,79 @@
 			"description": "Extends a collection with additional items.",
 			"type": "object",
 			"required": ["_extends", "_id"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/AssetTypeID" },
 				"_extends": {
-					"description": "The ID of the collection to be extended.",
-					"$ref": "#/definitions/AssetTypeID"
+					"$ref": "#/definitions/AssetTypeID",
+					"description": "The ID of the collection to be extended."
 				},
 				"contents": {
 					"type": "object",
-					"description": "Items to be added to the extended collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Asset" }
+					},
+					"description": "Items to be added to the extended collection."
+				}
+			}
+		},
+		"ToggleField": {
+			"title": "Toggle field",
+			"type": "object",
+			"required": ["_id", "label", "field_type", "choices"],
+			"properties": {
+				"_id": { "type": "string" },
+				"field_type": { "type": "string", "const": "toggle" },
+				"label": { "$ref": "#/definitions/Label" },
+				"choices": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"title": "Toggle field option",
+							"type": "object",
+							"required": ["label", "value"],
+							"properties": {
+								"label": { "$ref": "#/definitions/Label" },
+								"value": { "$ref": "#/definitions/AssetExtension" }
+							}
+						}
 					}
+				}
+			}
+		},
+		"AssetExtension": {
+			"title": "Asset extension",
+			"type": "object",
+			"properties": {
+				"controls": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"title": "Asset control field",
+							"type": "object",
+							"properties": {
+								"_id": { "$ref": "#/definitions/AssetControlFieldID" }
+							},
+							"oneOf": [
+								{ "$ref": "#/definitions/CheckboxField" },
+								{ "$ref": "#/definitions/ConditionMeterField" },
+								{ "$ref": "#/definitions/ToggleField" }
+							]
+						}
+					}
+				},
+				"count_as_impact": {
+					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
+					"type": "boolean",
+					"default": false
+				},
+				"attachments": { "$ref": "#/definitions/AssetAttachment" },
+				"shared": {
+					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
+					"type": "boolean"
 				}
 			}
 		},
@@ -570,6 +717,7 @@
 			"title": "Oracle collection",
 			"type": "object",
 			"required": ["_id", "title", "source", "contents"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/OracleCollectionID" },
 				"title": { "$ref": "#/definitions/Title" },
@@ -577,12 +725,14 @@
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
-					"description": "The elements contained by this collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/OracleTable" }
-					}
+					},
+					"description": "The elements contained by this collection."
 				},
 				"_template": { "type": "string" },
 				"template": { "$ref": "#/definitions/OracleRollTemplate" },
@@ -623,7 +773,6 @@
 					}
 				}
 			},
-			"additionalProperties": false,
 			"oneOf": [
 				{
 					"not": {
@@ -639,18 +788,20 @@
 			"description": "Extends a collection with additional items.",
 			"type": "object",
 			"required": ["_extends", "_id"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/OracleCollectionID" },
 				"_extends": {
-					"description": "The ID of the collection to be extended.",
-					"$ref": "#/definitions/OracleCollectionID"
+					"$ref": "#/definitions/OracleCollectionID",
+					"description": "The ID of the collection to be extended."
 				},
 				"contents": {
 					"type": "object",
-					"description": "Items to be added to the extended collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/OracleTable" }
-					}
+					},
+					"description": "Items to be added to the extended collection."
 				},
 				"collections": {
 					"type": "object",
@@ -786,6 +937,7 @@
 			"title": "Encounter collection (Classic)",
 			"type": "object",
 			"required": ["_id", "title", "source", "contents"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/EncounterCollectionClassicID" },
 				"title": { "$ref": "#/definitions/Title" },
@@ -793,12 +945,14 @@
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
-					"description": "The elements contained by this collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/EncounterClassic" }
-					}
+					},
+					"description": "The elements contained by this collection."
 				}
 			}
 		},
@@ -807,18 +961,20 @@
 			"description": "Extends a collection with additional items.",
 			"type": "object",
 			"required": ["_extends", "_id"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/EncounterCollectionClassicID" },
 				"_extends": {
-					"description": "The ID of the collection to be extended.",
-					"$ref": "#/definitions/EncounterCollectionClassicID"
+					"$ref": "#/definitions/EncounterCollectionClassicID",
+					"description": "The ID of the collection to be extended."
 				},
 				"contents": {
 					"type": "object",
-					"description": "Items to be added to the extended collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/EncounterClassic" }
-					}
+					},
+					"description": "Items to be added to the extended collection."
 				}
 			}
 		},
@@ -855,6 +1011,7 @@
 			"title": "Move category",
 			"type": "object",
 			"required": ["_id", "title", "source", "contents"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/MoveCategoryID" },
 				"title": { "$ref": "#/definitions/Title" },
@@ -862,12 +1019,14 @@
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
-					"description": "The elements contained by this collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
-					}
+					},
+					"description": "The elements contained by this collection."
 				}
 			}
 		},
@@ -876,18 +1035,20 @@
 			"description": "Extends a collection with additional items.",
 			"type": "object",
 			"required": ["_extends", "_id"],
+			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/MoveCategoryID" },
 				"_extends": {
-					"description": "The ID of the collection to be extended.",
-					"$ref": "#/definitions/MoveCategoryID"
+					"$ref": "#/definitions/MoveCategoryID",
+					"description": "The ID of the collection to be extended."
 				},
 				"contents": {
 					"type": "object",
-					"description": "Items to be added to the extended collection.",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
-					}
+					},
+					"description": "Items to be added to the extended collection."
 				}
 			}
 		},
@@ -901,7 +1062,10 @@
 			"oneOf": [
 				{ "$ref": "#/definitions/StatID" },
 				{ "$ref": "#/definitions/ConditionMeterID" },
-				{ "$ref": "#/definitions/AttributeID" },
+				{ "$ref": "#/definitions/AssetAbilityControlFieldID" },
+				{ "$ref": "#/definitions/AssetControlFieldID" },
+				{ "$ref": "#/definitions/AssetAbilityOptionFieldID" },
+				{ "$ref": "#/definitions/AssetOptionFieldID" },
 				{ "$ref": "#/definitions/ConditionMeterAlias" }
 			]
 		},
@@ -913,88 +1077,205 @@
 		"RollMethod": {
 			"title": "Roll method",
 			"type": "string",
-			"enum": ["any", "inherit", "highest", "lowest", "all"],
-			"description": "`any`: When rolling with this move trigger option, the user picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.\n\n`inherit`: This move trigger option has no roll method of its own, and must inherit its roll from another move trigger option. If the parent's `Using` is defined, the inherited roll must use one of those stats/progress tracks."
+			"enum": ["any", "highest", "lowest", "all"],
+			"description": "`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key."
+		},
+		"TriggerChoiceBase": {
+			"title": "Trigger choice",
+			"type": "object",
+			"description": "Properties common to trigger options for both action rolls and progress rolls.",
+			"properties": {
+				"label": { "$ref": "#/definitions/Label" },
+				"using": { "enum": ["progress", "custom", "stat"] },
+				"value": { "type": "integer" },
+				"ref": { "type": "string" }
+			}
+		},
+		"TriggerChoiceProgress": {
+			"title": "Trigger choice (progress roll)",
+			"type": "object",
+			"allOf": [
+				{ "$ref": "#/definitions/TriggerChoiceBase" },
+				{
+					"required": ["ref"],
+					"properties": {
+						"using": { "const": "progress" },
+						"ref": {
+							"$ref": "#/definitions/ProgressType",
+							"description": "The progress types that are valid for this trigger choice."
+						}
+					}
+				}
+			]
+		},
+		"TriggerChoiceAction": {
+			"title": "Trigger choice action",
+			"type": "object",
+			"allOf": [
+				{ "$ref": "#/definitions/TriggerChoiceBase" },
+				{
+					"oneOf": [
+						{
+							"description": "For action rolls that use standard player stats, player condition meters, and asset condition meters (which is most of them).",
+							"required": ["ref"],
+							"properties": {
+								"using": { "const": "stat" },
+								"ref": { "$ref": "#/definitions/RollableStatID" },
+								"value": {
+									"$comment": "Leave undefined for data entry. Best implemented as a getter."
+								}
+							}
+						},
+						{
+							"title": "Trigger choice (custom value)",
+							"description": "Defines a custom static value to be used in place of a stat for an action roll.",
+							"required": ["value"],
+							"properties": {
+								"using": { "const": "custom" },
+								"value": { "type": "integer" },
+								"ref": { "const": null }
+							}
+						}
+					]
+				}
+			]
 		},
 		"Move": {
 			"title": "Move",
 			"type": "object",
-			"required": ["_id", "text", "name", "trigger", "source"],
+			"required": ["_id", "name", "text", "trigger", "source"],
 			"additionalProperties": false,
 			"properties": {
 				"_id": { "$ref": "#/definitions/MoveID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"trigger": {
 					"title": "Trigger",
+					"description": "Describes a move's trigger conditions",
 					"type": "object",
 					"required": ["text"],
 					"additionalProperties": false,
 					"properties": {
 						"text": {
 							"$ref": "#/definitions/MarkdownPhrase",
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`."
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.",
+							"type": "string",
+							"pattern": "^.*\\.{3}$"
+						},
+						"roll_type": {
+							"description": "This is `null` if no action rolls or progress rolls are associated with this trigger.",
+							"default": null,
+							"oneOf": [{ "const": null }, { "$ref": "#/definitions/RollType" }]
 						},
 						"options": {
-							"type": "array",
-							"nullable": true,
-							"items": {
-								"title": "Trigger option",
-								"type": "object",
-								"required": ["roll_type", "method"],
-								"additionalProperties": false,
-								"properties": {
-									"text": { "$ref": "#/definitions/MarkdownPhrase" },
-									"roll_type": { "$ref": "#/definitions/RollType" },
-									"method": {
-										"default": "any",
-										"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
-										"oneOf": [
-											{ "$ref": "#/definitions/RollMethod" },
-											{ "$ref": "#/definitions/MoveOutcomeType" }
-										]
-									},
-									"using": {
-										"title": "Roll using",
-										"type": "array",
-										"items": { "type": "string" },
-										"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
-									}
-								},
-								"oneOf": [
-									{
-										"properties": {
-											"roll_type": { "const": "progress_roll" },
-											"using": {
-												"type": "array",
-												"items": { "$ref": "#/definitions/ProgressType" }
-											}
-										}
-									},
-									{
-										"properties": {
-											"roll_type": { "const": "action_roll" },
-											"using": {
-												"type": "array",
-												"items": { "$ref": "#/definitions/RollableStatID" }
-											}
-										}
-									}
-								]
+							"description": "Available options for triggering this move.",
+							"type": ["array", "null"],
+							"default": null
+						}
+					},
+					"oneOf": [
+						{
+							"title": "Trigger (no roll)",
+							"properties": {
+								"roll_type": { "const": null },
+								"options": { "const": null }
 							}
 						},
-						"by": {
-							"title": "Triggered by",
-							"type": "object",
-							"description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
-							"additionalProperties": false,
-							"default": { "player": true, "ally": false },
-							"required": ["player", "ally"],
+						{
+							"title": "Trigger (action roll)",
+							"required": ["options"],
 							"properties": {
-								"player": { "type": "boolean", "default": true },
-								"ally": { "type": "boolean", "default": false }
+								"roll_type": { "const": "action_roll" },
+								"options": {
+									"type": "array",
+									"items": {
+										"title": "Trigger option",
+										"type": "object",
+										"additionalProperties": false,
+										"properties": {
+											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"method": {
+												"default": "any",
+												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+												"oneOf": [
+													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" }
+												]
+											},
+											"choices": {
+												"title": "Trigger option choices",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"$ref": "#/definitions/TriggerChoiceAction"
+												},
+												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+											},
+											"by": {
+												"title": "Triggered by",
+												"type": "object",
+												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+												"additionalProperties": false,
+												"default": { "player": true, "ally": false },
+												"required": ["player", "ally"],
+												"properties": {
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						{
+							"title": "Trigger (progress move)",
+							"required": ["options"],
+							"properties": {
+								"roll_type": { "const": "progress_roll" },
+								"options": {
+									"title": "Trigger options (progress move)",
+									"type": "array",
+									"items": {
+										"title": "Trigger option (progress move)",
+										"type": "object",
+										"additionalProperties": false,
+										"properties": {
+											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"method": {
+												"default": "any",
+												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+												"oneOf": [
+													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" }
+												]
+											},
+											"choices": {
+												"title": "Trigger option choices",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"$ref": "#/definitions/TriggerChoiceProgress"
+												},
+												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+											},
+											"by": {
+												"title": "Triggered by",
+												"type": "object",
+												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+												"additionalProperties": false,
+												"default": { "player": true, "ally": false },
+												"required": ["player", "ally"],
+												"properties": {
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
+												}
+											}
+										}
+									}
+								}
 							}
 						}
-					}
+					]
 				},
 				"source": { "$ref": "#/definitions/Source" },
 				"outcomes": {
@@ -1145,141 +1426,148 @@
 					}
 				},
 				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
-				"suggestions": { "$ref": "#/definitions/Suggestions" },
-				"progress_move": {
-					"description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
-					"type": "boolean",
-					"default": false
-				},
-				"attributes": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Attribute" }
-					}
-				}
-			},
-			"oneOf": [
-				{
-					"properties": {
-						"progress_move": { "const": true },
-						"trigger": {
-							"type": "object",
-							"properties": {
-								"options": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": { "roll_type": { "const": "progress_roll" } }
-									}
-								}
-							}
-						}
-					}
-				},
-				{
-					"properties": {
-						"progress_move": { "const": false },
-						"trigger": {
-							"type": "object",
-							"properties": {
-								"options": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": { "roll_type": { "const": "action_roll" } }
-									}
-								}
-							}
-						}
-					}
-				}
-			]
+				"suggestions": { "$ref": "#/definitions/Suggestions" }
+			}
 		},
 		"MoveExtension": {
 			"title": "Move extension",
+			"description": "Upgrades or otherwise modifies one or more moves.",
 			"required": ["_extends"],
 			"type": "object",
 			"properties": {
 				"_id": { "$ref": "#/definitions/ID" },
 				"_extends": {
+					"description": "An array of Move IDs",
 					"type": ["array", "null"],
 					"items": { "$ref": "#/definitions/MoveID" }
 				},
-				"progress_move": {
-					"description": "Whether or not the move is a Progress Move. Progress moves roll two challenge dice against a progress score.",
-					"type": "boolean",
-					"default": false
-				},
 				"trigger": {
 					"title": "Trigger",
+					"description": "Describes a move's trigger conditions",
 					"type": "object",
 					"additionalProperties": false,
 					"properties": {
 						"text": {
 							"$ref": "#/definitions/MarkdownPhrase",
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary triggers (for specific stats or uses of an asset ability) are described in `options`."
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.",
+							"type": "string",
+							"pattern": "^.*\\.{3}$"
+						},
+						"roll_type": {
+							"description": "This is `null` if no action rolls or progress rolls are associated with this trigger.",
+							"default": null,
+							"oneOf": [{ "const": null }, { "$ref": "#/definitions/RollType" }]
 						},
 						"options": {
-							"type": "array",
-							"nullable": true,
-							"items": {
-								"title": "Trigger option",
-								"type": "object",
-								"required": ["roll_type", "method"],
-								"additionalProperties": false,
-								"properties": {
-									"text": { "$ref": "#/definitions/MarkdownPhrase" },
-									"roll_type": { "$ref": "#/definitions/RollType" },
-									"method": {
-										"default": "any",
-										"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.",
-										"oneOf": [
-											{ "$ref": "#/definitions/RollMethod" },
-											{ "$ref": "#/definitions/MoveOutcomeType" }
-										]
-									},
-									"using": {
-										"title": "Roll using",
-										"type": "array",
-										"items": { "type": "string" },
-										"description": "The stat(s) or progress track(s) that may be rolled with this move trigger option."
-									}
-								},
-								"oneOf": [
-									{
-										"properties": {
-											"roll_type": { "const": "progress_roll" },
-											"using": {
-												"type": "array",
-												"items": { "$ref": "#/definitions/ProgressType" }
-											}
-										}
-									},
-									{
-										"properties": {
-											"roll_type": { "const": "action_roll" },
-											"using": {
-												"type": "array",
-												"items": { "$ref": "#/definitions/RollableStatID" }
-											}
-										}
-									}
-								]
+							"description": "Available options for triggering this move.",
+							"type": ["array", "null"],
+							"default": null
+						}
+					},
+					"oneOf": [
+						{
+							"title": "Trigger (no roll)",
+							"properties": {
+								"roll_type": { "const": null },
+								"options": { "const": null }
 							}
 						},
-						"by": {
-							"title": "Triggered by",
-							"type": "object",
-							"description": "Information on who can trigger this item. Usually this is just the player, but some asset abilities can trigger from an Ally's move.",
-							"additionalProperties": false,
-							"default": { "player": true, "ally": false },
-							"required": ["player", "ally"],
+						{
+							"title": "Trigger (action roll)",
+							"required": ["options"],
 							"properties": {
-								"player": { "type": "boolean", "default": true },
-								"ally": { "type": "boolean", "default": false }
+								"roll_type": { "const": "action_roll" },
+								"options": {
+									"type": "array",
+									"items": {
+										"title": "Trigger option",
+										"type": "object",
+										"additionalProperties": false,
+										"properties": {
+											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"method": {
+												"default": "any",
+												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+												"oneOf": [
+													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" }
+												]
+											},
+											"choices": {
+												"title": "Trigger option choices",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"$ref": "#/definitions/TriggerChoiceAction"
+												},
+												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+											},
+											"by": {
+												"title": "Triggered by",
+												"type": "object",
+												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+												"additionalProperties": false,
+												"default": { "player": true, "ally": false },
+												"required": ["player", "ally"],
+												"properties": {
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						{
+							"title": "Trigger (progress move)",
+							"required": ["options"],
+							"properties": {
+								"roll_type": { "const": "progress_roll" },
+								"options": {
+									"title": "Trigger options (progress move)",
+									"type": "array",
+									"items": {
+										"title": "Trigger option (progress move)",
+										"type": "object",
+										"additionalProperties": false,
+										"properties": {
+											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"method": {
+												"default": "any",
+												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+												"oneOf": [
+													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" }
+												]
+											},
+											"choices": {
+												"title": "Trigger option choices",
+												"type": "array",
+												"items": {
+													"type": "object",
+													"$ref": "#/definitions/TriggerChoiceProgress"
+												},
+												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+											},
+											"by": {
+												"title": "Triggered by",
+												"type": "object",
+												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+												"additionalProperties": false,
+												"default": { "player": true, "ally": false },
+												"required": ["player", "ally"],
+												"properties": {
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
+												}
+											}
+										}
+									}
+								}
 							}
 						}
-					}
+					]
 				},
 				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"outcomes": {
@@ -1427,226 +1715,102 @@
 				}
 			}
 		},
-		"CustomStat": { "title": "Custom stat" },
 		"collectionSchema": { "title": "Collection schema" },
 		"collectionExtensionSchema": { "title": "Collection extension schema" },
-		"AttributeID": {
-			"title": "Attribute ID",
-			"type": "string",
-			"oneOf": [
-				{
-					"title": "Move attribute ID",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}\\/attributes\\/[a-z][a-z_]*[a-z]$"
-				},
-				{
-					"title": "Asset attribute ID",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/attributes\\/[a-z][a-z_]*[a-z]$"
-				},
-				{
-					"title": "Asset move attribute ID",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/moves\\/[a-z][a-z_]*[a-z]\\/attributes\\/[a-z][a-z_]*[a-z]$"
-				}
-			]
-		},
-		"InputPosition": {
-			"title": "Input position",
-			"default": "no_render",
-			"enum": [
-				"no_render",
-				"card_top",
-				"card_back",
-				"card_bottom",
-				"ability_0_right",
-				"ability_1_right",
-				"ability_2_right",
-				"ability_0_bottom",
-				"ability_1_bottom",
-				"ability_2_bottom"
-			],
-			"type": "string"
-		},
-		"Attribute": {
-			"title": "Attribute",
-			"oneOf": [
-				{ "$ref": "#/definitions/TextAttribute" },
-				{ "$ref": "#/definitions/NumberRangeAttribute" },
-				{ "$ref": "#/definitions/SelectAttribute" }
-			]
-		},
-		"TextAttribute": {
-			"title": "Text attribute",
+		"CheckboxField": {
+			"title": "Checkbox field",
 			"type": "object",
-			"description": "A text attribute that accepts a player-provided string of text. Recommended HTML element: <input type='text'>",
-			"required": ["_id", "attribute_type", "label", "value", "position"],
+			"required": ["_id", "field_type", "label"],
 			"properties": {
-				"_id": { "$ref": "#/definitions/AttributeID" },
+				"_id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
-				"attribute_type": { "type": "string", "const": "text" },
-				"position": { "$ref": "#/definitions/InputPosition" },
-				"value": { "type": ["null", "string"], "default": null }
+				"field_type": { "type": "string", "const": "checkbox" },
+				"value": { "type": ["boolean", "null"] }
 			}
 		},
-		"SelectAttribute": {
-			"title": "Select attribute",
+		"ClockField": {
+			"title": "Clock field",
 			"type": "object",
-			"required": [
-				"_id",
-				"attribute_type",
-				"label",
-				"value",
-				"position",
-				"options"
-			],
+			"required": ["_id", "field_type", "label", "min", "max", "value"],
 			"properties": {
-				"_id": { "$ref": "#/definitions/AttributeID" },
+				"_id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
-				"attribute_type": { "$ref": "#/definitions/SelectAttributeType" },
-				"options": { "type": "object" },
-				"position": { "$ref": "#/definitions/InputPosition" },
-				"value": {
-					"anyOf": [
-						{ "type": ["string", "null"] },
-						{ "type": ["integer", "null"] }
-					]
-				}
-			},
-			"oneOf": [
-				{
-					"properties": {
-						"attribute_type": { "const": "select_number" },
-						"value": { "type": ["integer", "null"] },
-						"options": {
-							"type": "object",
-							"patternProperties": {
-								"^[a-z][a-z_]*[a-z]$": {
-									"$ref": "#/definitions/SelectAttributeNumberOption"
-								}
-							}
-						}
-					}
-				},
-				{
-					"properties": {
-						"attribute_type": { "const": "select_reference" },
-						"value": { "type": ["string", "null"] },
-						"options": {
-							"type": "object",
-							"patternProperties": {
-								"^[a-z][a-z_]*[a-z]$": {
-									"$ref": "#/definitions/SelectAttributeReferenceOption"
-								}
-							}
-						}
-					}
-				}
-			]
-		},
-		"SelectAttributeNumberOption": {
-			"title": "Select attribute number option",
-			"required": ["label", "value"],
-			"type": "object",
-			"properties": {
-				"label": { "$ref": "#/definitions/Label" },
-				"value": { "type": "integer" }
+				"field_type": { "type": "string", "const": "clock" },
+				"value": { "type": "integer", "default": 0 },
+				"min": { "type": "integer", "const": 0 },
+				"max": { "type": "integer", "enum": [4, 6, 8, 10] }
 			}
 		},
-		"SelectAttributeReferenceOption": {
-			"title": "Select attribute reference option",
-			"required": ["label", "value"],
+		"ConditionMeterField": {
+			"title": "Condition meter field",
 			"type": "object",
+			"required": ["_id", "field_type", "label", "min", "max", "value"],
 			"properties": {
+				"_id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
-				"value": { "$ref": "#/definitions/RollableStatID" }
-			}
-		},
-		"ClockSegments": {
-			"title": "Clock segments",
-			"type": "integer",
-			"enum": [4, 6, 8, 10]
-		},
-		"NumberRangeAttribute": {
-			"title": "Number range attribute",
-			"type": "object",
-			"required": [
-				"_id",
-				"attribute_type",
-				"label",
-				"min",
-				"value",
-				"max",
-				"position"
-			],
-			"additionalProperties": false,
-			"properties": {
-				"_id": { "$ref": "#/definitions/AttributeID" },
-				"attribute_type": { "$ref": "#/definitions/NumberRangeAttributeType" },
-				"label": { "$ref": "#/definitions/Label" },
-				"position": { "$ref": "#/definitions/InputPosition" },
-				"min": { "type": "integer" },
+				"field_type": { "type": "string", "const": "condition_meter" },
 				"value": { "type": "integer" },
-				"max": { "type": ["integer", "null"], "nullable": true }
-			},
-			"oneOf": [
-				{
-					"title": "Number range attribute (clock)",
+				"min": { "type": "integer", "const": 0 },
+				"max": { "type": "integer" }
+			}
+		},
+		"CounterField": {
+			"title": "Counter field",
+			"type": "object",
+			"required": ["_id", "field_type", "label", "min", "max"],
+			"properties": {
+				"_id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "counter" },
+				"value": { "type": "integer", "default": 0 },
+				"min": { "type": "integer", "const": 0 },
+				"max": { "type": ["integer", "null"], "default": null }
+			}
+		},
+		"TextField": {
+			"title": "Text field",
+			"type": "object",
+			"required": ["_id", "field_type", "label"],
+			"properties": {
+				"_id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "text" },
+				"value": { "type": ["string", "null"] }
+			}
+		},
+		"ChoicesField": {
+			"title": "Choices field",
+			"type": "object",
+			"required": ["_id", "field_type", "label", "choices"],
+			"properties": {
+				"_id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "choices" },
+				"choices_type": { "enum": ["extend_asset", "number", "stat_id"] },
+				"choices": {
 					"type": "object",
-					"properties": {
-						"attribute_type": { "const": "clock", "type": "string" },
-						"min": { "const": 0, "type": "integer" },
-						"value": {
-							"default": 0,
-							"type": "integer",
-							"title": "Filled clock segments"
-						},
-						"max": {
-							"$ref": "#/definitions/ClockSegments",
-							"title": "Clock segments (total)"
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"type": "object",
+							"required": ["label"],
+							"properties": {
+								"label": { "$ref": "#/definitions/Label" },
+								"selected": { "type": "boolean" },
+								"value": {}
+							}
 						}
 					}
-				},
-				{
-					"title": "Number range attribute (condition meter)",
-					"type": "object",
-					"properties": {
-						"attribute_type": { "type": "string", "const": "condition_meter" },
-						"min": { "const": 0, "type": "integer" },
-						"value": { "default": 0, "type": "integer" },
-						"max": { "type": "integer" }
-					}
-				},
-				{
-					"title": "Number range attribute (counter)",
-					"type": "object",
-					"properties": {
-						"attribute_type": { "type": "string", "const": "counter" },
-						"min": { "const": 0, "type": "integer" },
-						"value": { "default": 0, "type": "integer" },
-						"max": { "type": ["integer", "null"], "default": null }
-					}
 				}
-			]
+			}
 		},
-		"SelectAttributeType": {
-			"title": "Select attribute type",
-			"type": "string",
-			"enum": ["select_number", "select_reference"]
-		},
-		"NumberRangeAttributeType": {
-			"title": "Number range attribute type",
-			"type": "string",
-			"enum": ["condition_meter", "clock", "counter"]
-		},
-		"NumberRangeAttributeOverride": {
-			"title": "Number range attribute override",
-			"description": "Adjusts an existing numeric input, usually a condition meter",
+		"StatIDChoice": {
+			"title": "Stat id choice",
 			"type": "object",
-			"additionalProperties": false,
-			"required": ["_extends"],
+			"required": ["label", "value"],
 			"properties": {
-				"_extends": { "$ref": "#/definitions/AttributeID" },
-				"min": { "type": "integer" },
-				"max": { "type": "integer" },
-				"value": { "type": "integer" }
+				"label": { "$ref": "#/definitions/Label" },
+				"value": { "$ref": "#/definitions/RollableStatID" },
+				"selected": { "type": "boolean", "default": false }
 			}
 		},
 		"OracleCollectionTemplate": {
@@ -3032,7 +3196,7 @@
 				"icon": { "$ref": "#/definitions/Icon" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"source": { "$ref": "#/definitions/Source" },
-				"options": {
+				"choices": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,

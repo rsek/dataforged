@@ -58,22 +58,25 @@ type DefinitionPicker<T, IsPartial extends boolean> = {
 		: never
 >
 
-export type SchemaPicker<T, IsPartial extends boolean> = (T extends number
-	? NumberSchema<IsPartial>
-	: T extends string
-	? StringSchema<IsPartial>
-	: T extends boolean
-	? BooleanSchema<IsPartial>
-	: T extends readonly [any, ...any[]]
-	? TupleSchema<IsPartial, T>
-	: T extends readonly any[]
-	? ArraySchema<IsPartial, T>
-	: T extends Record<string, any>
-	? ObjectSchema<IsPartial, T>
-	: T extends null
-	? NullSchema<IsPartial>
-	: never) &
-	ConditionalKeywords<T>
+export type SchemaPicker<T, IsPartial extends boolean = false> = Exclude<
+	(T extends number
+		? NumberSchema<IsPartial>
+		: T extends string
+		? StringSchema<IsPartial>
+		: T extends boolean
+		? BooleanSchema<IsPartial>
+		: T extends readonly [any, ...any[]]
+		? TupleSchema<IsPartial, T>
+		: T extends readonly any[]
+		? ArraySchema<IsPartial, T>
+		: T extends Record<string, any>
+		? ObjectSchema<IsPartial, T>
+		: T extends null
+		? NullSchema<IsPartial>
+		: never) &
+		ConditionalKeywords<T>,
+	undefined
+>
 
 type NumberSchema<IsPartial extends boolean> = {
 	type: JSONType<'number' | 'integer', IsPartial>

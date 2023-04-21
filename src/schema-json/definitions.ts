@@ -15,7 +15,7 @@ import {
 	Progress,
 	RulesetClassic,
 	RulesetStarforged,
-	Attributes
+	Inputs
 } from '@schema-json'
 import { type JSONSchema7 } from 'json-schema'
 import type * as Types from '@base-types'
@@ -49,7 +49,7 @@ const defs: Record<string, JSONSchema7> = {
 	...Encounters,
 	...Moves,
 	...Abstract,
-	...Attributes,
+	...Inputs,
 	OracleCollectionTemplate,
 	OracleTableTemplate
 }

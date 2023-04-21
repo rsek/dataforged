@@ -21,9 +21,9 @@ export type ConditionMeterAlias =
 	| 'incidental_vehicle_integrity'
 
 // const commandVehicleIntegrity =
-// 	/^[a-z0-9][a-z0-9_]+\/assets\/command_vehicle\/[a-z][a-z_]*[a-z]\/attributes\/integrity$/
+// 	/^[a-z0-9][a-z0-9_]+\/assets\/command_vehicle\/[a-z][a-z_]*[a-z]\/controls\/integrity$/
 // const supportVehicleIntegrity =
-// 	/^[a-z0-9][a-z0-9_]+\/assets\/support_vehicle\/[a-z][a-z_]*[a-z]\/attributes\/integrity$/
+// 	/^[a-z0-9][a-z0-9_]+\/assets\/support_vehicle\/[a-z][a-z_]*[a-z]\/controls\/integrity$/
 
 export interface Suggestions extends Metadata.SuggestionsBase {
 	encounters?: Encounters.EncounterStarforgedID[]

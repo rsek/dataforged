@@ -22,7 +22,6 @@ starforged:
       contents:
         begin_a_session:
           name: Begin a Session
-          progress_move: false
           trigger:
             text: When you begin a significant session or chapter of play...
           suggestions:
@@ -42,7 +41,6 @@ starforged:
             page: 141
         set_a_flag:
           name: Set a Flag
-          progress_move: false
           trigger:
             text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching...
           text: |-
@@ -53,7 +51,6 @@ starforged:
             page: 142
         change_your_fate:
           name: Change Your Fate
-          progress_move: false
           trigger:
             text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment...
           text: |-
@@ -68,7 +65,6 @@ starforged:
             page: 143
         take_a_break:
           name: Take a Break
-          progress_move: false
           trigger:
             text: When you resolve a progress move or complete an intense scenario...
           text: |-
@@ -80,7 +76,6 @@ starforged:
             page: 144
         end_a_session:
           name: End a Session
-          progress_move: false
           trigger:
             text: When you end a significant session or chapter of play...
           text: |-
@@ -114,25 +109,20 @@ starforged:
             text: When you attempt something risky or react to an imminent threat...
             options:
               - text: With speed, mobility, or agility
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: With resolve, command, or sociability
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: With strength, endurance, or aggression
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: With deception, stealth, or trickery
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: With expertise, focus, or observation
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -162,25 +152,20 @@ starforged:
             text: When you assess a situation, make preparations, or attempt to gain leverage...
             options:
               - text: With speed, mobility, or agility
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: With resolve, command, or sociability
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: With strength, endurance, aggression
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: With deception, stealth, or trickery
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: With expertise, focus, or observation
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -217,9 +202,8 @@ starforged:
           trigger:
             text: When you search for clues, conduct an investigation, analyze evidence, or do research...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/wits]
+              - choices:
+                  - ref: player/stats/wits
           text: |-
             **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -243,17 +227,14 @@ starforged:
             text: When you try to persuade someone or make them an offer...
             options:
               - text: Charm, pacify, encourage, or barter
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: Threaten or incite
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: Lie or swindle
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
           text: |-
             **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -277,7 +258,6 @@ starforged:
             page: 150
         aid_your_ally:
           name: Aid Your Ally
-          progress_move: false
           trigger:
             text: When you act in direct support of an ally...
           text: |-
@@ -291,9 +271,8 @@ starforged:
           trigger:
             text: When you check to see if you have a specific helpful item or resource...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/condition_meters/supply]
+              - choices:
+                  - ref: player/condition_meters/supply
           text: |-
             **When you check to see if you have a specific helpful item or resource**, roll +supply.
 
@@ -341,9 +320,8 @@ starforged:
           trigger:
             text: When you swear upon iron to complete a quest...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -363,7 +341,6 @@ starforged:
             page: 156
         reach_a_milestone:
           name: Reach a Milestone
-          progress_move: false
           trigger:
             text: When you make headway in your quest...
           text: |-
@@ -381,13 +358,11 @@ starforged:
             page: 157
         fulfill_your_vow:
           name: Fulfill Your Vow
-          progress_move: true
           trigger:
             text: When you reach the end of your quest...
             options:
-              - roll_type: progress_roll
-                method: any
-                using: [vow_progress]
+              - choices:
+                  - ref: vow_progress
           text: |-
             **When you reach the end of your quest**, roll the challenge dice and compare to your progress.
 
@@ -414,7 +389,6 @@ starforged:
             page: 158
         forsake_your_vow:
           name: Forsake Your Vow
-          progress_move: false
           trigger:
             text: When you renounce your quest, betray your promise, or the goal is lost to you...
           text: |-
@@ -453,9 +427,8 @@ starforged:
           trigger:
             text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -478,32 +451,21 @@ starforged:
             page: 163
         develop_your_relationship:
           name: Develop Your Relationship
-          attributes:
-            challenge_rank:
-              label: Challenge rank
-              options:
-                troublesome:
-                  label: Troublesome
-                  value: 1
-                dangerous:
-                  label: Dangerous
-                  value: 2
-                formidable:
-                  label: Formidable
-                  value: 3
-                extreme:
-                  label: Extreme
-                  value: 4
-                epic:
-                  label: Epic
-                  value: 5
           trigger:
             text: When you reinforce your relationship with a connection...
             options:
-              - roll_type: action_roll
-                method: any
-                using:
-                  - starforged/moves/connection/develop_your_relationship/attributes/challenge_rank
+              - text: If you already share a bond with the connection
+                choices:
+                  - label: Troublesome
+                    value: 1
+                  - label: Dangerous
+                    value: 2
+                  - label: Formidable
+                    value: 3
+                  - label: Extreme
+                    value: 4
+                  - label: Epic
+                    value: 5
           text: |-
             **When you reinforce your relationship with a connection** by doing any of the following...
 
@@ -534,9 +496,8 @@ starforged:
           trigger:
             text: When your relationship with a connection is tested through conflict, betrayal, or circumstance...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -568,10 +529,8 @@ starforged:
           trigger:
             text: When your relationship with a connection is ready to evolve...
             options:
-              - roll_type: progress_roll
-                method: any
-                using: [connection_progress]
-          progress_move: true
+              - choices:
+                  - ref: connection_progress
           text: |-
             **When your relationship with a connection is ready to evolve**, roll the challenge dice and compare to your progress.
 
@@ -626,17 +585,14 @@ starforged:
             text: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...
             options:
               - text: Move at speed
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: Keep under the radar
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: Stay vigilant
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -670,9 +626,8 @@ starforged:
           trigger:
             text: When you divert from an expedition to examine a notable location...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/wits]
+              - choices:
+                  - ref: player/stats/wits
           text: |-
             **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -708,9 +663,8 @@ starforged:
             page: 174
         make_a_discovery:
           name: Make a Discovery
-          progress_move: false
           trigger:
-            text: When your exploration of a waypoint uncovers something wondrous
+            text: When your exploration of a waypoint uncovers something wondrous...
           suggestions:
             oracles:
               - starforged/oracles/moves/make_a_discovery
@@ -722,7 +676,6 @@ starforged:
             page: 176
         confront_chaos:
           name: Confront Chaos
-          progress_move: false
           trigger:
             text: When your exploration of a waypoint uncovers something dreadful...
           suggestions:
@@ -741,10 +694,8 @@ starforged:
           trigger:
             text: When your expedition comes to an end...
             options:
-              - roll_type: progress_roll
-                method: any
-                using: [expedition_progress]
-          progress_move: true
+              - choices:
+                  - ref: expedition_progress
           text: |-
             **When your expedition comes to an end**, roll the challenge dice and compare to your progress.
 
@@ -774,9 +725,8 @@ starforged:
           trigger:
             text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/condition_meters/supply]
+              - choices:
+                  - ref: player/condition_meters/supply
           text: |-
             **When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site**, roll +supply.
 
@@ -815,6 +765,8 @@ starforged:
         url: https://ironswornrpg.com
         license: https://creativecommons.org/licenses/by/4.0
         date: 2022-10-01
+      summary: |-
+        When you face one or more foes in high-stakes, action-oriented conflict, use the **combat moves**. These moves encompass on-foot action and vehicle sorties—or both as part of the same challenge.
       description: |-
         The Forge is a perilous galaxy. Factions fight for control. Pirates hunt the spaceways. Raiders prey on vulnerable settlements. Dangerous creatures and chaotic terrors stalk the unwary. Dreaded foes and powerful forces will oppose your sworn quests. Eventually, you'll be forced to fight.
 
@@ -826,25 +778,20 @@ starforged:
             text: When you initiate combat or are forced into a fight...
             options:
               - text: On the move
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: Facing off against your foe
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: In the thick of it at close quarters
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: Preparing to act against an unaware foe
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: Caught in a trap or sizing up the situation
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -881,25 +828,20 @@ starforged:
             text: When you are in control and take action in a fight to reinforce your position or move toward an objective...
             options:
               - text: In pursuit, fleeing, or maneuvering
-                roll_type: action_roll
-                using: [player/stats/edge]
-                method: any
+                choices:
+                  - ref: player/stats/edge
               - text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
-                roll_type: action_roll
-                using: [player/stats/heart]
-                method: any
+                choices:
+                  - ref: player/stats/heart
               - text: Gaining leverage with force, powering through, or making a threat
-                roll_type: action_roll
-                using: [player/stats/iron]
-                method: any
+                choices:
+                  - ref: player/stats/iron
               - text: Hiding, preparing an ambush, or misdirecting
-                roll_type: action_roll
-                using: [player/stats/shadow]
-                method: any
+                choices:
+                  - ref: player/stats/shadow
               - text: Coordinating a plan, studying a situation, or cleverly gaining leverage
-                roll_type: action_roll
-                using: [player/stats/wits]
-                method: any
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -941,25 +883,20 @@ starforged:
             text: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...
             options:
               - text: In pursuit, fleeing, dodging, getting back into position, or taking cover
-                roll_type: action_roll
-                using: [player/stats/edge]
-                method: any
+                choices:
+                  - ref: player/stats/edge
               - text: Remaining stalwart against fear or temptation
-                roll_type: action_roll
-                using: [player/stats/heart]
-                method: any
+                choices:
+                  - ref: player/stats/heart
               - text: Blocking or diverting with force, or taking the hit
-                roll_type: action_roll
-                using: [player/stats/iron]
-                method: any
+                choices:
+                  - ref: player/stats/iron
               - text: Moving into hiding or creating a distraction
-                roll_type: action_roll
-                using: [player/stats/shadow]
-                method: any
+                choices:
+                  - ref: player/stats/shadow
               - text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
-                roll_type: action_roll
-                using: [player/stats/wits]
-                method: any
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -989,13 +926,11 @@ starforged:
             text: When you are in control and assault a foe at close quarters, or when you attack at a distance...
             options:
               - text: Assault a foe at close quarters
-                roll_type: action_roll
-                using: [player/stats/iron]
-                method: any
+                choices:
+                  - ref: player/stats/iron
               - text: Attack at a distance
-                roll_type: action_roll
-                using: [player/stats/edge]
-                method: any
+                choices:
+                  - ref: player/stats/edge
           text: |-
             **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -1019,13 +954,11 @@ starforged:
             text: When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...
             options:
               - text: Fight back against a foe at close quarters
-                roll_type: action_roll
-                using: [player/stats/iron]
-                method: any
+                choices:
+                  - ref: player/stats/iron
               - text: Exchange fire at a distance
-                roll_type: action_roll
-                using: [player/stats/edge]
-                method: any
+                choices:
+                  - ref: player/stats/edge
           text: |-
             **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -1048,13 +981,11 @@ starforged:
           trigger:
             text: When you seize an objective in a fight...
             options:
-              - roll_type: progress_roll
-                using: [combat_progress]
-                method: any
+              - choices:
+                  - ref: combat_progress
           suggestions:
             oracles:
               - starforged/oracles/moves/take_decisive_action
-          progress_move: true
           text: |-
             **When you seize an objective in a fight**, envision how you take decisive action. Then, roll the challenge dice and compare to your progress.
 
@@ -1081,7 +1012,6 @@ starforged:
             page: 194
         face_defeat:
           name: Face Defeat
-          progress_move: false
           trigger:
             text: When you abandon or are deprived of an objective...
           text: |-
@@ -1096,25 +1026,20 @@ starforged:
             text: When you fight a battle and it happens in a blur...
             options:
               - text: At range, or using your speed and the environment to your advantage
-                roll_type: action_roll
-                using: [player/stats/edge]
-                method: any
+                choices:
+                  - ref: player/stats/edge
               - text: Depending on your courage, leadership, or companions
-                roll_type: action_roll
-                using: [player/stats/heart]
-                method: any
+                choices:
+                  - ref: player/stats/heart
               - text: In close to overpower your foe
-                roll_type: action_roll
-                using: [player/stats/iron]
-                method: any
+                choices:
+                  - ref: player/stats/iron
               - text: Using trickery to befuddle your foe
-                roll_type: action_roll
-                using: [player/stats/shadow]
-                method: any
+                choices:
+                  - ref: player/stats/shadow
               - text: Using careful tactics to outsmart your foe
-                roll_type: action_roll
-                using: [player/stats/wits]
-                method: any
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -1156,9 +1081,8 @@ starforged:
       contents:
         lose_momentum:
           name: Lose Momentum
-          progress_move: false
           trigger:
-            text: When you are delayed or disadvantaged
+            text: When you are delayed or disadvantaged...
           text: |-
             **When you are delayed or disadvantaged**, suffer -1 momentum for a minor setback, -2 for a serious setback, or -3 for a major setback.
 
@@ -1173,11 +1097,10 @@ starforged:
           trigger:
             text: When you face physical injury, fatigue, or illness...
             options:
-              - roll_type: action_roll
-                method: highest
-                using:
-                  - player/stats/iron
-                  - player/condition_meters/health
+              - method: highest
+                choices:
+                  - ref: player/stats/iron
+                  - ref: player/condition_meters/health
           suggestions:
             oracles:
               - starforged/oracles/moves/endure_harm
@@ -1217,11 +1140,10 @@ starforged:
           trigger:
             text: When you face mental strain, shock, or despair...
             options:
-              - roll_type: action_roll
-                method: highest
-                using:
-                  - player/stats/heart
-                  - player/condition_meters/spirit
+              - method: highest
+                choices:
+                  - ref: player/stats/heart
+                  - ref: player/condition_meters/spirit
           suggestions:
             oracles:
               - starforged/oracles/moves/endure_stress
@@ -1261,9 +1183,8 @@ starforged:
           trigger:
             text: When your companion faces physical hardship...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [companion_health]
+              - choices:
+                  - ref: companion_health
           text: |-
             **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to any remaining harm.
 
@@ -1287,7 +1208,6 @@ starforged:
             page: 204
         sacrifice_resources:
           name: Sacrifice Resources
-          progress_move: false
           trigger:
             text: When you lose or consume resources...
           text: |-
@@ -1301,9 +1221,8 @@ starforged:
           trigger:
             text: When your vehicle faces a damaging situation or environment...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [vehicle_integrity]
+              - choices:
+                  - ref: vehicle_integrity
           suggestions:
             oracles:
               - starforged/oracles/moves/withstand_damage
@@ -1369,9 +1288,8 @@ starforged:
           trigger:
             text: When you spend time recovering within a community...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you spend time recovering within a community**, roll +heart.
 
@@ -1402,23 +1320,19 @@ starforged:
             text: When you receive medical care or provide treatment...
             options:
               - text: Receive treatment from someone (not an ally)
-                roll_type: action_roll
-                method: any
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: Mend your own wounds
-                roll_type: action_roll
                 method: lowest
-                using:
-                  - player/stats/iron
-                  - player/stats/wits
+                choices:
+                  - ref: player/stats/iron
+                  - ref: player/stats/wits
               - text: Obtain treatment for a companion
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: Provide care
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -1449,9 +1363,8 @@ starforged:
           trigger:
             text: When you socialize, share intimacy, or find a moment of peace...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -1478,21 +1391,17 @@ starforged:
             text: When you attempt to bolster your readiness...
             options:
               - text: Barter or make an appeal
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: Threaten or seize
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: Steal or swindle
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: Scavenge or craft
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -1534,13 +1443,11 @@ starforged:
             text: When you make repairs to your vehicles, modules, mechanical companions, or other devices...
             options:
               - text: Make your own repairs, or direct a companion to make repairs
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
               - text: Obtain repairs from someone (not an ally)
-                roll_type: action_roll
-                method: any
-                using: [player/condition_meters/supply]
+                choices:
+                  - ref: player/condition_meters/supply
           text: |-
             **When you make repairs to your vehicles, modules, mechanical companions, or other devices**, envision the situation and roll. If you...
 
@@ -1633,9 +1540,8 @@ starforged:
           trigger:
             text: When you are brought to the brink of death with a chance for recovery or redemption...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -1665,9 +1571,8 @@ starforged:
           trigger:
             text: When you are brought to the brink of desolation...
             options:
-              - roll_type: action_roll
-                method: any
-                using: [player/stats/heart]
+              - choices:
+                  - ref: player/stats/heart
           text: |-
             **When you are brought to the brink of desolation**, roll +heart.
 
@@ -1697,10 +1602,8 @@ starforged:
           trigger:
             text: When your command vehicle is destroyed or irrevocably lost...
             options:
-              - roll_type: progress_roll
-                method: any
-                using: [bonds_legacy]
-          progress_move: true
+              - choices:
+                  - ref: bonds_legacy
           text: |-
             **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
 
@@ -1753,7 +1656,6 @@ starforged:
       contents:
         earn_experience:
           name: Earn Experience
-          progress_move: false
           trigger:
             text: When you fill a box (four ticks) on any legacy track...
           text: |-
@@ -1764,7 +1666,6 @@ starforged:
             page: 224
         advance:
           name: Advance
-          progress_move: false
           trigger:
             text: When you develop your abilities, improve your resources, gain a reward, or boost your influence...
           text: |-
@@ -1782,13 +1683,11 @@ starforged:
           trigger:
             text: When you retire from your life as Ironsworn, or succumb to death or desolation...
             options:
-              - roll_type: progress_roll
-                method: all
-                using:
-                  - quests_legacy
-                  - bonds_legacy
-                  - discoveries_legacy
-          progress_move: true
+              - method: all
+                choices:
+                  - ref: quests_legacy
+                  - ref: bonds_legacy
+                  - ref: discoveries_legacy
           text: |-
             **When you retire from your life as Ironsworn, or succumb to death or desolation**, you may create a new character in your established setting. If you do, roll the challenge dice and compare to each of the former character's legacy tracks: quests, bonds, and discoveries (one roll per track).
 
@@ -1812,7 +1711,7 @@ starforged:
           outcomes:
             strong_hit:
               text: |-
-                choose_one:
+                Choose one:
 
                   * Follow their path: Take one path or companion asset from the former character (at no cost), including any marked abilities.
                   * Share a connection: Take one connection from the former character, including any accrued progress or bond benefits.
@@ -1824,14 +1723,14 @@ starforged:
                   * Rebuild a connection: Name one of the former character's connections, and envision how time or circumstances have changed them in a dramatic way. When you [Make a Connection](starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark two ticks on your bonds legacy track.
                   * Explore familiar ground: Name a location that was meaningful to the former character. When you first visit that place, envision how it has changed or is endangered. Then, mark two ticks on your discoveries legacy track.
 
-                or_a_miss_option:
+                Or a miss option:
 
                   * Deal with the aftermath: Envision how one of your former character's foes has gained power or influence.
                   * Switch loyalties: Envision how you begin in opposition to your former character's beliefs, goals, or allegiances.
                   * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
             weak_hit:
               text: |-
-                choose_one:
+                Choose one:
 
                   * See it through: Choose one of the former character's unfinished quests, and [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) (with an automatic strong hit) to see it done. You may immediately mark up to half their earned progress (round down) on this quest.
                   * Rebuild a connection: Name one of the former character's connections, and envision how time or circumstances have changed them in a dramatic way. When you [Make a Connection](starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark two ticks on your bonds legacy track.
@@ -1844,7 +1743,7 @@ starforged:
                   * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
             miss:
               text: |-
-                choose_one:
+                Choose one:
 
                   * Deal with the aftermath: Envision how one of your former character's foes has gained power or influence.
                   * Switch loyalties: Envision how you begin in opposition to your former character's beliefs, goals, or allegiances.
@@ -1869,7 +1768,6 @@ starforged:
       contents:
         ask_the_oracle:
           name: Ask the Oracle
-          progress_move: false
           trigger:
             text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events...
           suggestions:
@@ -1900,7 +1798,6 @@ starforged:
             page: 229
         pay_the_price:
           name: Pay the Price
-          progress_move: false
           trigger:
             text: When you suffer the outcome of an action...
           suggestions:
@@ -1938,7 +1835,6 @@ starforged:
       contents:
         begin_the_scene:
           name: Begin the Scene
-          progress_move: false
           trigger:
             text: When you face an extended or complex challenge...
           text: |-
@@ -1958,25 +1854,20 @@ starforged:
             text: When you attempt something risky or react to an imminent threat within a scene challenge...
             options:
               - text: With speed, mobility, or agility
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: With resolve, command, or sociability
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: With strength, endurance, or aggression
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: With deception, stealth, or trickery
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: With expertise, focus, or observation
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you attempt something risky or react to an imminent threat within a scene challenge**, envision your action and roll. If you act...
 
@@ -2011,25 +1902,20 @@ starforged:
             text: When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...
             options:
               - text: With speed, mobility, or agility
-                method: any
-                roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - ref: player/stats/edge
               - text: With resolve, command, or sociability
-                method: any
-                roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - ref: player/stats/heart
               - text: With strength, endurance, aggression
-                method: any
-                roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - ref: player/stats/iron
               - text: With deception, stealth, or trickery
-                method: any
-                roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - ref: player/stats/shadow
               - text: With expertise, focus, or observation
-                method: any
-                roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - ref: player/stats/wits
           text: |-
             **When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge**, envision your action and roll. If you act...
 
@@ -2064,13 +1950,11 @@ starforged:
             page: 240
         finish_the_scene:
           name: Finish the Scene
-          progress_move: true
           trigger:
             text: When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...
             options:
-              - roll_type: progress_roll
-                method: any
-                using: [scene_challenge_progress]
+              - choices:
+                  - ref: scene_challenge_progress
           text: |-
             **When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion**, roll the challenge dice and compare to your progress.
 

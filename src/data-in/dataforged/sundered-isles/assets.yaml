@@ -141,24 +141,20 @@ sundered_isles:
           name: Crew Commander
           _source:
             date: 2022-11-06
-          attributes:
-            command:
-              label: command
-              min: 0
-              max: 4
-              value: 2
-              attribute_type: condition_meter
-              position: card_bottom
           abilities:
             - text: |-
                 You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost as -1 command. If you [Face Danger](starforged/moves/adventure/face_danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
               # TODO figure out how to denote individual abilities/triggers invocable by any party member
               extend_moves:
+                - _extends:
+                    - starforged/moves/fate/pay_the_price
+                  text: You may instead suffer -1 command as the cost.
                 - _extends: null
                   trigger:
                     options:
                       - text: Leading or aided by your crew
-                        roll_type: action_roll
+                        method: null
+                        choices: null
                   text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
                   outcomes:
                     miss:
@@ -170,20 +166,18 @@ sundered_isles:
                   trigger:
                     options:
                       - text: As a test of your leadership
-                        roll_type: action_roll
-                        using:
-                          - sundered_isles/assets/path/crew_commander/attributes/command
+                        choices:
+                          - sundered_isles/assets/path/crew_commander/controls/command
               moves:
                 bolster_crew:
                   name: Bolster Crew
                   trigger:
-                    text: When you bolster your crew...
+                    text: When you bolster your crew by providing them with a significant reward or respite...
                     options:
-                      - roll_type: action_roll
-                        method: any
-                        using:
-                          - player/stats/heart
-                  text: To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
+                      method: any
+                      choices:
+                        - player/stats/heart
+                  text: When you bolster your crew by providing them with a significant reward or respite, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
                   outcomes:
                     strong_hit:
                       text: Take +4 command.
@@ -193,10 +187,10 @@ sundered_isles:
                       text: Take +2 command but envision a threat to your crew or leadership.
               enabled: true
             - text: Take +2 command; your max is now 6.
-              inputs:
-                command:
-                  _extends: sundered_isles/assets/path/crew_commander/inputs/command
-                  max: 6
+              extend_asset:
+                controls:
+                  command:
+                    max: 6
             - text: When your command is 0 and the situation desperate, you may [Compel](starforged/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
               extend_moves:
                 - _extends:
@@ -204,11 +198,19 @@ sundered_isles:
                   trigger:
                     options:
                       - text: When your command is 0 and the situation desperate
-                        roll_type: action_roll
+                        method: null
+                        choices: null
                   outcomes:
                     strong_hit: &Crew_Commander.3
                       text: Take +2 command.
                     weak_hit: *Crew_Commander.3
+          controls:
+            command:
+              label: command
+              min: 0
+              max: 4
+              value: 2
+              field_type: condition_meter
         cutthroat:
         deck_clearer:
         duelist:
@@ -314,16 +316,15 @@ sundered_isles:
                   trigger:
                     options:
                       - text: Summon the Kraken (and fill one segment of its clock)
-                        roll_type: progress_roll
-                        method: inherit
+                        method: null
                   text: |-
                     The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](starforged/moves/combat/take_decisive_action) with an automatic strong hit.
 
                     When the clock is filled, [Ask the Oracle](starforged/moves/fate/ask_the_oracle) (using the yes/no table) if the Kraken turns against you, making it *50/50*. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
-              attributes:
+              controls:
                 clock:
                   label: Krakendoom
-                  attribute_type: clock
+                  field_type: clock
                   max: 4
                   min: 0
                   value: 0
@@ -335,8 +336,7 @@ sundered_isles:
                   trigger:
                     options:
                       - text: Make a move using a threat to call the Kraken as leverage
-                        roll_type: action_roll
-                        method: inherit
+                        method: null
                   text: Add +2.
             - text: |-
                 One time only, when you Fulfill Your Vow (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.
@@ -346,8 +346,7 @@ sundered_isles:
                   trigger:
                     options:
                       - text: In service to the Kraken (formidable or greater, one time only)
-                        roll_type: progress_roll
-                        method: inherit
+                        method: null
                   outcomes:
                     strong_hit: &Kraken.3
                       text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
@@ -385,7 +384,6 @@ sundered_isles:
                   trigger:
                     options:
                       - text: By gathering your specialists to strategize or problem-solve
-                        roll_type: action_roll
                   outcomes:
                     strong_hit: &Cohort.3
                       reroll:
@@ -408,9 +406,8 @@ sundered_isles:
                   trigger:
                     options:
                       - text: As a fleetwide action to get in position, avoid a hazard, or fight
-                        roll_type: action_roll
-                        using:
-                          - sundered_isles/assets/deed/fleet_commander/attributes/power
+                        choices:
+                          - sundered_isles/assets/deed/fleet_commander/controls/power
                 - _extends:
                     - starforged/moves/fate/pay_the_price
                   text: If your fleet bears the cost, suffer -1 power.
@@ -423,9 +420,9 @@ sundered_isles:
                     miss: *Fleet_Commander.1
             - text: |-
                 Take +2 power and set your max power to 5.
-              attributes:
+              controls:
                 power:
-                  _extends: sundered_isles/assets/deed/fleet_commander/attributes/power
+                  _extends: sundered_isles/assets/deed/fleet_commander/controls/power
                   max: 5
             - text: |-
                 When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
@@ -435,7 +432,6 @@ sundered_isles:
                   trigger:
                     options:
                       - text: With your fleet
-                        roll_type: action_roll
                   outcomes:
                     strong_hit: &Fleet_Commander.3
                       reroll:
@@ -443,14 +439,14 @@ sundered_isles:
                         method: action_die
                     weak_hit: *Fleet_Commander.3
                     miss: *Fleet_Commander.3
-          attributes:
+          controls:
             power:
               label: power
               max: 4
               value: 4
               min: 0
               position: card_bottom
-              attribute_type: condition_meter
+              field_type: condition_meter
               # conditions:
               #   - wrecked
         undead:

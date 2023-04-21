@@ -28,7 +28,7 @@
 	"CodeRun.typescript": [
 		"ts-node -e --cwd --esm --swc --experimental-specifier-resolution node"
 	],
-	"yaml.format.enable": false,
+	"yaml.format.enable": true,
 	"yaml.schemas": {
 		"src/data-in/dataforged/schema.json": ["src/data-in/dataforged/**/*.yaml"],
 		"src/data-in/datasworn/schema.json": ["src/data-in/datasworn/**/*.yaml"],
@@ -41,5 +41,7 @@
 	"json.validate.enable": true,
 	"json.format.enable": false,
 	"yaml.completion": true,
-	"yaml.suggest.parentSkeletonSelectedFirst": true
+	"yaml.suggest.parentSkeletonSelectedFirst": true,
+	"yaml.style.flowMapping": "forbid",
+	"yaml.style.flowSequence": "forbid"
 }

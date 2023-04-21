@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY, schemaRef } from './common'
+import { dictionarySchema, refSchema } from './common'
 import {
 	type Localize,
 	type Metadata,
@@ -16,31 +16,26 @@ export function collectionSchema<
 	idRef: string,
 	mergeWith: PartialSchema<TCollection> = {}
 ): Schema<TCollection> {
-	const CollectionBase: Schema<Types.Collection<any, string>> = {
-		type: 'object',
+	type CollectionItemType = TCollection['contents'][string]
+	const CollectionBase: Schema<TCollection> = {
+		type: 'object' as any,
 		required: ['_id', 'title', 'source', 'contents'],
-		// additionalProperties: false,
+		additionalProperties: false,
 		properties: {
-			_id: { $ref: `#/definitions/${idRef}` } as any,
-			title: schemaRef<Metadata.Title>('Title'),
-			source: schemaRef<Metadata.Source>('Source'),
-			summary: schemaRef<Localize.MarkdownSentences>('MarkdownSentences'),
-			description: schemaRef<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
-			suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions'),
-			contents: {
-				type: 'object',
-				description: `The elements contained by this collection.`,
-				patternProperties: {
-					[DF_KEY]: { $ref: `#/definitions/${contentsRef}` }
-				}
-			}
-		} as any
-	} as any
-	return _.merge(
-		{},
-		CollectionBase,
-		mergeWith
-	) as unknown as Schema<TCollection>
+			_id: refSchema<string>(idRef),
+			title: refSchema<Metadata.Title>('Title'),
+			source: refSchema<Metadata.Source>('Source'),
+			summary: refSchema<Localize.MarkdownSentences>('MarkdownSentences'),
+			description: refSchema<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions'),
+			color: refSchema<Metadata.Color>('Color'),
+			contents: dictionarySchema<CollectionItemType>(
+				refSchema<CollectionItemType>(contentsRef),
+				{ description: `The elements contained by this collection.` }
+			)
+		}
+	} as unknown as Schema<TCollection>
+	return _.merge(CollectionBase, mergeWith) as unknown as Schema<TCollection>
 }
 
 export function collectionExtensionSchema<
@@ -50,25 +45,24 @@ export function collectionExtensionSchema<
 	idRef: string,
 	mergeWith: PartialSchema<TCollection> = {}
 ): Schema<ExtendOne<TCollection>> {
+	type CollectionItemType = TCollection['contents'][string]
 	const newSchema: Schema<ExtendOne<TCollection>> = {
 		description: 'Extends a collection with additional items.',
 		type: 'object',
 		required: ['_extends', '_id'],
+		additionalProperties: false,
 		properties: {
-			_id: { $ref: `#/definitions/${idRef}` },
+			_id: refSchema<string>(idRef),
 			_extends: {
-				description: 'The ID of the collection to be extended.',
-				$ref: `#/definitions/${idRef}`
+				...refSchema<string>(idRef),
+				description: 'The ID of the collection to be extended.'
 			},
-			contents: {
-				type: 'object',
-				description: `Items to be added to the extended collection.`,
-				patternProperties: {
-					[DF_KEY]: { $ref: `#/definitions/${contentsRef}` }
-				}
-			}
+			contents: dictionarySchema<CollectionItemType>(
+				refSchema<CollectionItemType>(contentsRef),
+				{ description: `Items to be added to the extended collection.` }
+			)
 		}
 	} as any
 
-	return _.merge({}, newSchema, mergeWith)
+	return _.merge(newSchema, mergeWith)
 }

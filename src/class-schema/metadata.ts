@@ -186,7 +186,7 @@ export class Source implements Types.Source {
 		description: 'The URL where the source document is available.',
 		examples: ['https://ironswornrpg.com']
 	})
-	uri!: string
+	url!: string
 
 	@IsUrl()
 	@JSONSchema({

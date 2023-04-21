@@ -1,4 +1,4 @@
-import { schemaRef } from './common'
+import { refSchema } from './common'
 import { type Metadata, type Rarities as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
@@ -14,7 +14,7 @@ export const Rarity: Schema<Types.Rarity> = {
 	required: ['_id', 'asset', 'description', 'name', 'source', 'xp_cost'],
 	additionalProperties: false,
 	properties: {
-		_id: schemaRef<Types.RarityID>('RarityID'),
+		_id: refSchema<Types.RarityID>('RarityID'),
 		name: { $ref: '#/definitions/Label' },
 		asset: {
 			description: 'The asset enhanced by this rarity.',
@@ -34,7 +34,7 @@ export const Rarity: Schema<Types.Rarity> = {
 			default: 3
 		},
 		description: { $ref: '#/definitions/MarkdownParagraphs' },
-		source: schemaRef<Metadata.Source>('Source'),
-		suggestions: schemaRef<Metadata.SuggestionsBase>('Suggestions')
+		source: refSchema<Metadata.Source>('Source'),
+		suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
 	}
 }

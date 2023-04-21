@@ -43,15 +43,18 @@ ironsworn_delve:
             options:
               - text: With haste
                 roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
                 method: any
               - text: With stealth or trickery
                 roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
                 method: any
               - text: With observation, intuition, or expertise
                 roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
                 method: any
           _source:
             page: 21
@@ -123,7 +126,8 @@ ironsworn_delve:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/condition_meters/supply]
+                choices:
+                  - player/condition_meters/supply
           _source:
             page: 38
           text: |-
@@ -150,7 +154,7 @@ ironsworn_delve:
             options:
               - roll_type: progress_roll
                 method: any
-                using:
+                choices:
                   - delve_progress
           progress_move: true
           text: |-
@@ -183,23 +187,28 @@ ironsworn_delve:
               - text: Find the fastest way out
                 method: any
                 roll_type: action_roll
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
               - text: Steel yourself against the horrors of this place
                 method: any
                 roll_type: action_roll
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: Fight your way out
                 method: any
                 roll_type: action_roll
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: Keep out of sight
                 method: any
                 roll_type: action_roll
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
               - text: Retrace your steps or locate an alternate path
                 method: any
                 roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 42
           text: |-

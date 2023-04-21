@@ -1,4 +1,4 @@
-import { schemaRef } from './common'
+import { refSchema } from './common'
 import { type Localize, type Metadata as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
@@ -18,9 +18,9 @@ export const Title: Schema<Types.Title> = {
 	required: ['canonical'],
 	additionalProperties: false,
 	properties: {
-		canonical: schemaRef<Localize.Label>('Label'),
-		standard: schemaRef<Localize.Label>('Label'),
-		short: schemaRef<Localize.Label>('Label')
+		canonical: refSchema<Localize.Label>('Label'),
+		standard: refSchema<Localize.Label>('Label'),
+		short: refSchema<Localize.Label>('Label')
 	}
 }
 

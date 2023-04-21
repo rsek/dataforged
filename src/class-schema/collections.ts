@@ -6,7 +6,6 @@ import {
 import type * as Types from '@base-types'
 import { Metadata, Localize, Abstract, type Utils } from '@class-schema'
 import _ from 'lodash'
-import { DF_KEY } from '@schema-json/common'
 
 export abstract class Collection<T>
 	extends Abstract.Node
@@ -48,6 +47,7 @@ export function IsRecord(
 	return JSONSchema((schema) =>
 		_.merge({}, schema, {
 			type: 'object',
+			$comment: "Deserialize as a 'dictionary'-like object.",
 			additionalProperties: false,
 			patternProperties: {
 				[pattern.source]: { $ref }

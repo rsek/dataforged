@@ -1,7 +1,7 @@
 import type * as Types from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
-import { schemaRef } from './common'
+import { refSchema } from './common'
 import { SuggestionsBase } from './ruleset-classic'
 
 export const ConditionMeterAlias: Schema<Types.RulesetStarforged.ConditionMeterAlias> =
@@ -43,7 +43,7 @@ export const Suggestions: Schema<Types.RulesetStarforged.Suggestions> = _.merge(
 			encounters: {
 				title: 'Suggested encounters',
 				type: 'array',
-				items: schemaRef<Types.Encounters.EncounterClassicID>(
+				items: refSchema<Types.Encounters.EncounterClassicID>(
 					'EncounterStarforgedID'
 				)
 			}
@@ -60,16 +60,16 @@ export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
 	type: 'object',
 	required: ['_id', 'name', 'source'],
 	properties: {
-		_id: schemaRef<Types.Truths.TruthID>('SettingTruthID'),
-		name: schemaRef<Types.Localize.Label>('Label'),
-		icon: schemaRef<Types.Metadata.Icon>('Icon'),
-		suggestions: schemaRef<Types.Metadata.SuggestionsBase>('Suggestions'),
-		source: schemaRef<Types.Metadata.Source>('Source'),
-		options: {
+		_id: refSchema<Types.Truths.TruthID>('SettingTruthID'),
+		name: refSchema<Types.Localize.Label>('Label'),
+		icon: refSchema<Types.Metadata.Icon>('Icon'),
+		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
+		source: refSchema<Types.Metadata.Source>('Source'),
+		choices: {
 			type: 'array',
 			maxItems: 3,
 			minItems: 3,
-			items: schemaRef<Types.Truths.SettingTruthOption>('SettingTruthOption')
+			items: refSchema<Types.Truths.SettingTruthOption>('SettingTruthOption')
 		}
 	}
 }
@@ -84,11 +84,11 @@ export const SettingTruthOption: Schema<Types.Truths.SettingTruthOption> = {
 	type: 'object',
 	required: ['_id', 'description', 'quest_starter'],
 	properties: {
-		_id: schemaRef<Types.Truths.TruthID>('SettingTruthOptionID'),
-		summary: schemaRef<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+		_id: refSchema<Types.Truths.TruthID>('SettingTruthOptionID'),
+		summary: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
 		description:
-			schemaRef<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
 		quest_starter:
-			schemaRef<Types.Localize.MarkdownParagraph>('MarkdownParagraph')
+			refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph')
 	}
 }

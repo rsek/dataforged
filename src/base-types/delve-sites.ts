@@ -8,7 +8,7 @@ import {
 } from '@base-types'
 
 export type DelveSiteID = string
-export interface DelveSite extends Abstract.Node<DelveSiteID> {
+export interface DelveSite extends Abstract.SourcedNode<DelveSiteID> {
 	name: Localize.Label
 	rank: Progress.ChallengeRank
 	theme: DelveSiteThemeID
@@ -52,7 +52,7 @@ export type DelveSiteDomainID = string
 type DelveSiteCardID = DelveSiteThemeID | DelveSiteDomainID
 export type DelveSiteCardType = 'theme' | 'domain'
 
-interface DelveCardBase extends Abstract.Node<DelveSiteCardID> {
+interface DelveCardBase extends Abstract.SourcedNode<DelveSiteCardID> {
 	icon?: Metadata.Icon
 	summary: Localize.MarkdownPhrase
 	description?: Localize.MarkdownSentences

@@ -1,4 +1,4 @@
-import { DF_KEY, schemaRef } from './common'
+import { DF_KEY, refSchema } from './common'
 import { type Metadata } from '@base-types'
 import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
@@ -15,7 +15,7 @@ const NamespaceShared: JSONSchema7 = {
 				'The ruleset (Starforged or Classic ironsworn) that these elements are for.'
 		},
 		_source: {
-			...(schemaRef<Metadata.Source>('Source') as JSONSchema7),
+			...(refSchema<Metadata.Source>('Source') as JSONSchema7),
 			description:
 				"Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
 		},

@@ -3,7 +3,6 @@
  */
 export * as Abstract from './abstract'
 export * as Assets from './assets'
-export * as Attributes from './attributes'
 export * as DelveSites from './delve-sites'
 export * as Encounters from './encounters'
 export * as Localize from './localize'
@@ -19,3 +18,4 @@ export * as RulesetClassic from './ruleset-classic'
 export * as RulesetStarforged from './ruleset-starforged'
 export * as Truths from './truths'
 export * as Utils from './utils'
+export * as Inputs from './inputs'

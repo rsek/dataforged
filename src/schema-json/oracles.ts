@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY, schemaRef } from './common'
+import { DF_KEY, refSchema } from './common'
 import type * as Types from '@base-types'
 import * as JsonSchema from '@schema-json'
 export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
@@ -35,7 +35,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			description: `'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.`,
 			enum: ['result', 'summary', 'description', 'range']
 		},
-		label: schemaRef<Types.Localize.Label>('Label')
+		label: refSchema<Types.Localize.Label>('Label')
 	},
 	oneOf: [
 		{
@@ -43,7 +43,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			properties: {
 				content_type: { const: 'range' },
 				label: {
-					...schemaRef<Types.Localize.Label>('Label'),
+					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Roll'
 					// tsType: 'Label'
 				}
@@ -54,7 +54,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			properties: {
 				content_type: { const: 'result' },
 				label: {
-					...schemaRef<Types.Localize.Label>('Label'),
+					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Result'
 					// tsType: 'Label'
 				}
@@ -65,7 +65,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			properties: {
 				content_type: { const: 'summary' },
 				label: {
-					...schemaRef<Types.Localize.Label>('Label'),
+					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Summary'
 					// tsType: 'Label'
 				}
@@ -76,7 +76,7 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 			properties: {
 				content_type: { const: 'description' },
 				label: {
-					...schemaRef<Types.Localize.Label>('Label'),
+					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Description'
 				}
 			}
@@ -98,7 +98,7 @@ export const OracleCollectionColumn: Schema<
 			type: 'string',
 			pattern: DF_KEY
 		},
-		color: schemaRef<Types.Metadata.Color>('Color')
+		color: refSchema<Types.Metadata.Color>('Color')
 	},
 	oneOf: OracleTableColumn.oneOf
 }
@@ -137,7 +137,7 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 				required: undefined as any,
 				patternProperties: {
 					[DF_KEY]:
-						schemaRef<Types.Oracles.OracleTableColumn>('OracleTableColumn')
+						refSchema<Types.Oracles.OracleTableColumn>('OracleTableColumn')
 				},
 				default: oracleTableRenderDefault.columns,
 				nullable: undefined as any
@@ -153,7 +153,7 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 		_id: { $ref: '#/definitions/OracleTableID' },
 		_template: { type: 'string', nullable: undefined as any },
 		title: { $ref: '#/definitions/Title' },
-		source: schemaRef<Types.Metadata.Source>('Source'),
+		source: refSchema<Types.Metadata.Source>('Source'),
 		summary: { $ref: '#/definitions/MarkdownSentences' },
 		description: { $ref: '#/definitions/MarkdownParagraphs' },
 		suggestions: { $ref: '#/definitions/Suggestions' },
@@ -168,7 +168,7 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 		},
 		table: {
 			type: 'array',
-			items: schemaRef<Types.Oracles.OracleTableRow>('OracleTableRow')
+			items: refSchema<Types.Oracles.OracleTableRow>('OracleTableRow')
 		}
 	}
 }
@@ -181,7 +181,7 @@ export const OracleTableRoll: Schema<Types.Oracles.OracleTableRoll> = {
 			default: null,
 			oneOf: [
 				{ type: 'null' },
-				schemaRef<Types.Oracles.OracleTableID>('OracleTableID')
+				refSchema<Types.Oracles.OracleTableID>('OracleTableID')
 			],
 			nullable: undefined as any
 		},
@@ -192,7 +192,7 @@ export const OracleTableRoll: Schema<Types.Oracles.OracleTableRoll> = {
 			default: 1,
 			nullable: undefined as any
 		},
-		method: schemaRef<Types.Oracles.OracleTableRollMethod>(
+		method: refSchema<Types.Oracles.OracleTableRollMethod>(
 			'OracleTableRollMethod'
 		)
 	}
@@ -240,37 +240,37 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		},
 		result: {
 			title: 'Result text',
-			...schemaRef<Types.Localize.MarkdownPhrase>('MarkdownPhrase')
+			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase')
 		},
-		icon: schemaRef<Types.Metadata.Icon>('Icon'),
+		icon: refSchema<Types.Metadata.Icon>('Icon'),
 		summary: {
 			title: 'Summary text',
 			description:
 				"A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
 			anyOf: [
-				schemaRef<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+				refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
 				{ type: 'null' }
 			],
 			nullable: undefined as any
 		},
 		description: {
-			...schemaRef<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			...refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
 			title: 'Extended description',
 			description:
 				'An extended description for this oracle table row. No canonical OracleTableRows use it, but some TruthOptions do.'
 		},
 		embed_table: {
-			...schemaRef<Types.Oracles.OracleTableID>('OracleTableID'),
+			...refSchema<Types.Oracles.OracleTableID>('OracleTableID'),
 			description: 'A table to be rendered inside this table row.'
 		},
 		rolls: {
 			type: 'array',
-			items: schemaRef<Types.Oracles.OracleTableRoll>('OracleTableRoll'),
+			items: refSchema<Types.Oracles.OracleTableRoll>('OracleTableRoll'),
 			nullable: undefined as any
 		},
-		template: schemaRef<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
-		suggestions: schemaRef<Types.Metadata.SuggestionsBase>('Suggestions'),
-		_id: schemaRef<Types.Oracles.OracleTableRowID>('OracleTableRowID')
+		template: refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
+		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
+		_id: refSchema<Types.Oracles.OracleTableRowID>('OracleTableRowID')
 	},
 	oneOf: [
 		{
@@ -298,7 +298,7 @@ export const OracleRollTemplate: Schema<Types.Oracles.OracleRollTemplate> = {
 These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{roll:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`,
 	properties: {
 		result: {
-			...schemaRef<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
 			description:
 				'A string template that may be used in place of OracleTableRow#result.',
 			examples: [
@@ -306,12 +306,12 @@ These strings are formatted in Markdown, but use a special syntax for their plac
 			]
 		},
 		summary: {
-			...schemaRef<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+			...refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
 			description:
 				'A string template that may be used in place of OracleTableRow#summary.'
 		},
 		description: {
-			...schemaRef<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			...refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
 			description:
 				'A string template that may be used in place of OracleTableRow#description.'
 		}
@@ -328,7 +328,7 @@ const maybeTemplate = {
 				}
 			}
 		},
-		schemaRef<any>('OracleCollectionTemplate')
+		refSchema<any>('OracleCollectionTemplate')
 	]
 }
 
@@ -342,13 +342,13 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 			properties: {
 				_template: { type: 'string' },
 				template:
-					schemaRef<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
+					refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 				rendering: {
 					type: 'object',
 					description:
 						'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
 					properties: {
-						icon: schemaRef<Types.Metadata.Icon>('Icon'),
+						icon: refSchema<Types.Metadata.Icon>('Icon'),
 						style: {
 							oneOf: [
 								{ enum: ['multi_table'], type: 'string' },
@@ -375,8 +375,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 					patternProperties: {
 						[DF_KEY]: {
 							oneOf: [
-								schemaRef<Types.Oracles.OracleCollection>(`OracleCollection`),
-								schemaRef<
+								refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
+								refSchema<
 									Types.Abstract.ExtendOne<Types.Oracles.OracleCollection>
 								>(`OracleCollectionExtension`)
 							]
@@ -402,8 +402,8 @@ export const OracleCollectionExtension: Schema<
 				patternProperties: {
 					[DF_KEY]: {
 						oneOf: [
-							schemaRef<Types.Oracles.OracleCollection>(`OracleCollection`),
-							schemaRef<
+							refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
+							refSchema<
 								Types.Abstract.ExtendOne<Types.Oracles.OracleCollection>
 							>(`OracleCollectionExtension`)
 						]

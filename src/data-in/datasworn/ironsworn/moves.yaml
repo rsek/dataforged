@@ -25,23 +25,28 @@ ironsworn:
               - text: With speed, agility, or precision
                 roll_type: action_roll
                 method: any
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
               - text: With charm, loyalty, or courage
                 roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: With aggressive action, forceful defense, strength, or endurance
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: With deception, stealth, or trickery
                 roll_type: action_roll
                 method: any
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
               - text: With expertise, insight, or observation
                 roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 60
           text: |-
@@ -84,23 +89,28 @@ ironsworn:
               - text: With speed, agility, or precision
                 roll_type: action_roll
                 method: any
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
               - text: With charm, loyalty, or courage
                 roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: With aggressive action, forceful defense, strength, or endurance
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: With deception, stealth, or trickery
                 roll_type: action_roll
                 method: any
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
               - text: With expertise, insight, or observation
                 roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 61
           text: |-
@@ -138,7 +148,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 62
           text: |-
@@ -162,12 +173,13 @@ ironsworn:
             text: When you treat an injury or ailment...
             options:
               - roll_type: action_roll
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
                 method: any
               - text: Mend your own wounds
                 roll_type: action_roll
                 method: lowest
-                using:
+                choices:
                   - player/stats/iron
                   - player/stats/wits
           _source:
@@ -194,7 +206,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 63
           text: |-
@@ -219,7 +232,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/condition_meters/supply]
+                choices:
+                  - player/condition_meters/supply
           _source:
             page: 64
           text: |-
@@ -262,9 +276,10 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
               # - roll_type: action_roll
-              #   method: inherit
+              #   method: null
               #   text: If you are setting off from a community with which you share a bond
               #   add: 1
           _source:
@@ -306,7 +321,7 @@ ironsworn:
             options:
               - roll_type: progress_roll
                 method: any
-                using:
+                choices:
                   - journey_progress
           _source:
             page: 68
@@ -339,15 +354,18 @@ ironsworn:
               - text: Charm, pacify, barter, or convince
                 roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: Threaten or incite
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: Lie or swindle
                 roll_type: action_roll
                 method: any
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
           _source:
             page: 69
           text: |-
@@ -379,7 +397,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 71
           text: |-
@@ -459,7 +478,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 73
           text: |-
@@ -511,7 +531,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 74
           text: |-
@@ -545,7 +566,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 75
           text: |-
@@ -590,7 +612,7 @@ ironsworn:
             options:
               - roll_type: progress_roll
                 method: any
-                using:
+                choices:
                   - bonds_progress
           progress_move: true
           text: |-
@@ -625,15 +647,18 @@ ironsworn:
               - text: Facing off against your foe
                 roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: Moving into position against an unaware foe, or striking without warning
                 roll_type: action_roll
                 method: any
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
               - text: Ambushed
                 roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 78
           text: |-
@@ -678,11 +703,13 @@ ironsworn:
               - text: In close quarters
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: At range
                 roll_type: action_roll
                 method: any
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
           _source:
             page: 78
           text: |-
@@ -708,11 +735,13 @@ ironsworn:
               - text: Fight with them in close quarters
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: Exchange a volley at range, or shoot at an advancing foe
                 roll_type: action_roll
                 method: any
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
           _source:
             page: 80
           text: |-
@@ -752,7 +781,7 @@ ironsworn:
             options:
               - roll_type: progress_roll
                 method: any
-                using:
+                choices:
                   - combat_progress
           _source:
             page: 82
@@ -797,23 +826,28 @@ ironsworn:
               - text: Fight at range, or using your speed and the terrain to your advantage
                 roll_type: action_roll
                 method: any
-                using: [player/stats/edge]
+                choices:
+                  - player/stats/edge
               - text: Fight depending on your courage, allies, or companions
                 roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
               - text: Fight in close to overpower your opponents
                 roll_type: action_roll
                 method: any
-                using: [player/stats/iron]
+                choices:
+                  - player/stats/iron
               - text: Fight using trickery to befuddle your opponents
                 roll_type: action_roll
                 method: any
-                using: [player/stats/shadow]
+                choices:
+                  - player/stats/shadow
               - text: Fight using careful tactics to outsmart your opponents
                 roll_type: action_roll
                 method: any
-                using: [player/stats/wits]
+                choices:
+                  - player/stats/wits
           _source:
             page: 84
           text: |-
@@ -856,7 +890,7 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: highest
-                using:
+                choices:
                   - player/stats/iron
                   - player/condition_meters/health
           _source:
@@ -896,7 +930,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 93
           text: |-
@@ -928,7 +963,7 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: highest
-                using:
+                choices:
                   - player/stats/heart
                   - companion_health
           _source:
@@ -963,7 +998,7 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: highest
-                using:
+                choices:
                   - player/stats/heart
                   - player/condition_meters/spirit
           _source:
@@ -1002,7 +1037,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 96
           text: |-
@@ -1063,7 +1099,8 @@ ironsworn:
             options:
               - roll_type: action_roll
                 method: any
-                using: [player/stats/heart]
+                choices:
+                  - player/stats/heart
           _source:
             page: 98
           text: |-
@@ -1112,7 +1149,7 @@ ironsworn:
             options:
               - roll_type: progress_roll
                 method: any
-                using:
+                choices:
                   - vow_progress
           progress_move: true
           text: |-

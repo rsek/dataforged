@@ -3,7 +3,7 @@ import type * as Types from '../base-types/index'
 import { Metadata } from '@class-schema'
 import { type YamlInput } from './utils'
 
-export abstract class Node implements Types.Abstract.Node {
+export abstract class Node implements Types.Abstract.SourcedNode {
 	// ID validation comes from descended classes
 	_id!: string
 
@@ -15,7 +15,7 @@ export abstract class Node implements Types.Abstract.Node {
 	suggestions?: Metadata.SuggestionsBase | undefined
 
 	constructor(
-		data: YamlInput<Types.Abstract.Node>,
+		data: YamlInput<Types.Abstract.SourcedNode>,
 		id: string,
 		parentSource: Types.Metadata.Source
 	) {

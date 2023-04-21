@@ -1,0 +1,182 @@
+devotant:
+  _source:
+    title: Ironsworn Assets Master Set
+    page: 6
+  name: Devotant
+  # https://game-icons.net/1x1/lorc/sundial.html
+  options: # "options" covers the stuff set on instantiation. a separate field, "controls", is used to manage stuff like clocks, toggles, condition meters, etc
+    gods_name:
+      label: God's name
+      field_type: text
+    stat:
+      label: Stat
+      field_type: select
+      option_type: reference # consider doing this as an array to support e.g. masked?
+      choices:
+        edge:
+          label: Edge
+          value: player/stats/edge
+        heart:
+          label: Heart
+          value: player/stats/heart
+        iron:
+          label: Iron
+          value: player/stats/iron
+        shadow:
+          label: Shadow
+          value: player/stats/shadow
+        wits:
+          label: Wits
+          value: player/stats/wits
+  abilities:
+    - text: |-
+        When you say your daily prayers, you may [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) by asking your god to grant a blessing. If you do, roll +your god’s stat. On a hit, take +2 momentum.
+      enabled: true
+      extend_moves:
+        - _extends:
+            - ironsworn/moves/quest/secure_an_advantage
+          trigger:
+            options:
+              - text: By asking your god to grant a blessing (when you say your daily prayers)
+                roll_type: action_roll
+                method: any
+                using:
+                  - ironsworn/assets/path/devotant/options/stat
+    - text: |-
+        When you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
+      extend_moves:
+        - _extends:
+            - ironsworn/moves/quest/swear_an_iron_vow
+          trigger:
+            options:
+              - text: To serve your god on a divine quest
+                roll_type: action_roll
+                method: any
+                using:
+                  - ironsworn/assets/path/devotant/options/stat
+    - text: |-
+        When you [Sojourn](ironsworn/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
+      extend_moves:
+        - _extends:
+            - ironsworn/moves/relationship/sojourn
+          trigger:
+            options:
+              - text: By sharing the word of your god
+                roll_type: action_roll
+                method: any
+                using:
+                  - ironsworn/assets/path/devotant/options/stat
+masked:
+  _source:
+    title: Ironsworn Assets Master Set
+    page: 8
+  name: Masked
+  # icon not on game-icons
+  requirement: Once you mark a bond with elves, and are gifted a mask of precious elderwood...
+  options:
+    material:
+      label: Material
+      field_type: select
+      option_type: reference
+      choices:
+        thunderwood:
+          label: Thunderwood
+          value: player/stats/edge
+          # value2: player/condition_meters/health
+        bloodwood:
+          label: Bloodwood
+          value: player/stats/iron
+          # value2: player/condition_meters/health
+        ghostwood:
+          label: Ghostwood
+          value: player/stats/shadow
+          # value2: player/condition_meters/spirit
+        whisperwood:
+          label: Whisperwood
+          value: player/stats/wits
+          # value2: player/condition_meters/spirit
+  abilities:
+    - text: |-
+        Choose your mask’s material.
+
+          * Thunderwood: Edge / Health
+          * Bloodwood: Iron / Health
+          * Ghostwood: Shadow / Spirit
+          * Whisperwood: Wits / Spirit
+
+        When you wear the mask and make a move which uses its stat, add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).
+      extend_moves:
+        - _extends: null
+          trigger:
+            options:
+              - roll_type: action_roll
+                text: While wearing the mask
+                method: inherit
+                using:
+                  - ironsworn/assets/path/masked/options/material
+    - text: |-
+        As above, and you may instead add +2 and suffer -2 (decide before rolling).
+    - text: |-
+        When you [Face Death](ironsworn/moves/suffer/face_death) or [Face Desolation](ironsworn/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).
+      extend_moves:
+        - _extends:
+            - ironsworn/moves/suffer/face_death
+            - ironsworn/moves/suffer/face_desolation
+          trigger:
+            options:
+              - roll_type: action_roll
+                text: While wearing the mask
+                method: any
+                using:
+                  - ironsworn/assets/path/masked/options/material
+looper:
+  name: Looper
+  _source:
+    title: 'Ironsworn: Starforged Assets'
+  abilities:
+    - text: |-
+        When you score a miss on a suffer move (not [Endure Stress](starforged/moves/suffer/endure_stress)), you may loop back a second or two. If you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
+      enabled: true
+      extend_moves:
+        - _extends:
+            - starforged/moves/suffer/endure_harm
+            - starforged/moves/suffer/companion_takes_a_hit
+            - starforged/moves/suffer/withstand_damage
+            # the other ones don't involve a roll, so they're omitted
+          outcomes:
+            miss:
+              text: You may loop back a second or two. If you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
+              reroll: *reroll:any
+              # TODO: possible to add cost option here?
+    - text: &move:Asset.Looper |-
+        When you create a link to the current point in time, note the value of condition meters for you and your allies. You can retain only one active link. If you later loop back to this moment, roll +the gap in time: +4 if minutes, +3 if hours, or +2 if days. You may not burn momentum on this roll. On a strong hit, return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values. On a weak hit, as above, but [Endure Stress](starforged/moves/suffer/endure_stress) (-2). On a miss, as with a strong hit, but you find the timeline corrupted; [Pay the Price](starforged/moves/fate/pay_the_price).
+      moves:
+        loop_back:
+          name: Loop Back
+          # Burn momentum: false
+          #TODO: add to IMove? Move usage?
+          custom_stat:
+            time_gap:
+              label: Time gap
+              choices:
+                minutes:
+                  label: Minutes
+                  value: 4
+                hours:
+                  label: Hours
+                  value: 3
+                days:
+                  label: Days
+                  value: 2
+          trigger:
+            text: When you loop back to a linked moment in time...
+            options:
+              - roll_type: action_roll
+                method: any
+                using:
+                  - label: Minutes
+                    value: 4
+                  - label: Hours
+                    value: 3
+                  - label: Days
+                    value: 2

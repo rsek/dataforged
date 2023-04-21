@@ -27,19 +27,10 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/delapouite/saber-toothed-cat-head.html
           # tags: [animal_companion]
-          attributes:
+          options:
             name: &InputTextName
               label: Name
-              attribute_type: text
-              position: card_top
-              value: null
-            health:
-              label: health
-              max: 4
-              value: 4
-              min: 0
-              position: card_bottom
-              attribute_type: condition_meter
+              field_type: text
           requirement: Your cat takes down its prey.
           abilities:
             - name: Eager
@@ -52,7 +43,9 @@ ironsworn:
                     options:
                       - text: When your cat chases down big game
                         roll_type: action_roll
-                        using: [player/stats/edge]
+                        method: any
+                        choices:
+                          - player/stats/edge
                   outcomes:
                     strong_hit:
                       text: Take +1 supply or +1 momentum.
@@ -67,7 +60,9 @@ ironsworn:
                     options:
                       - text: By sending your cat to attack
                         roll_type: action_roll
-                        using: [player/stats/edge]
+                        method: any
+                        choices:
+                          - player/stats/edge
                   outcomes: &outcomes:+2_momentum.HIT
                     strong_hit: &outcome:+2_momentum
                       text: Take +2 momentum.
@@ -76,13 +71,20 @@ ironsworn:
               text: |-
                 When you [Make Camp](ironsworn/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/make_camp]
+                - _extends:
+                    - ironsworn/moves/adventure/make_camp
                   text: Your cat is alert to trouble.
                   outcomes:
                     strong_hit: &Cave_Lion.3
                       text: If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
                     weak_hit: *Cave_Lion.3
-
+          controls:
+            health:
+              label: health
+              max: 4
+              value: 4
+              min: 0
+              field_type: condition_meter
         giant_spider:
           _source:
             title: Ironsworn Assets Master Set
@@ -91,15 +93,8 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/carl-olsen/spider-alt.html
           # tags: [beast_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 4
-              min: 0
-              value: 0
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your spider uncovers secrets.
           abilities:
             - name: Discreet
@@ -111,7 +106,8 @@ ironsworn:
                   trigger:
                     options:
                       - text: By sending your spider to scout a place
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
                   outcomes: &outcomes:+1_momentum.HIT
@@ -122,12 +118,14 @@ ironsworn:
               text: |-
                 You may [Face Danger](ironsworn/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](ironsworn/moves/adventure/gather_information) and reroll any dice.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/face_danger]
+                - _extends:
+                    - ironsworn/moves/adventure/face_danger
                   trigger:
                     options:
                       - text: By sending your spider to secretly study someone
-                        method: inherit
-                        using: [player/stats/shadow]
+                        method: null
+                        choices:
+                          - player/stats/shadow
                         roll_type: action_roll
                   outcomes:
                     strong_hit: &Giant_Spider.2
@@ -139,17 +137,26 @@ ironsworn:
               text: |-
                 When your spider sets a trap, add +1 as you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.
               extend_moves:
-                - _extends: [ironsworn/moves/combat/enter_the_fray]
+                - _extends:
+                    - ironsworn/moves/combat/enter_the_fray
                   trigger:
                     options:
                       - text: When your spider sets a trap
-                        method: inherit
-                        using: [player/stats/shadow]
+                        method: null
+                        choices:
+                          - player/stats/shadow
                         roll_type: action_roll
+                  text: Add +1.
                   outcomes:
                     strong_hit:
                       text: Also inflict 2 harm.
-
+          controls:
+            health:
+              label: health
+              max: 4
+              min: 0
+              value: 0
+              field_type: condition_meter
         hawk:
           _source:
             title: Ironsworn Assets Master Set
@@ -158,40 +165,45 @@ ironsworn:
           # icon not on game-icons
           # sub https://game-icons.net/1x1/lorc/hawk-emblem.html ?
           # tags: [animal_companion]
-          attributes:
+          options:
             name: *InputTextName
+          controls:
             health:
               label: health
               max: 3
               min: 0
               value: 3
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
           requirement: Your hawk can aid you while it is aloft.
           abilities:
             - name: Far-seeing
               text: |-
                 When you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), or when you [Resupply](ironsworn/moves/adventure/resupply) by hunting for small game, add +1.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/undertake_a_journey]
+                - _extends:
+                    - ironsworn/moves/adventure/undertake_a_journey
                   text: Add +1.
-                - _extends: [ironsworn/moves/adventure/resupply]
+                - _extends:
+                    - ironsworn/moves/adventure/resupply
                   trigger:
                     options:
                       - text: By hunting for small game
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
             - name: Fierce
               text: |-
                 When you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/secure_an_advantage]
+                - _extends:
+                    - ironsworn/moves/adventure/secure_an_advantage
                   trigger:
                     options:
                       - text: Using your hawk to harass and distract your foes
-                        using: [player/stats/edge]
-                        method: inherit
+                        choices:
+                          - player/stats/edge
+                        method: null
                         roll_type: action_roll
                   text: Add +1.
                   outcomes: *outcomes:+1_momentum.HIT
@@ -199,19 +211,23 @@ ironsworn:
               text: |-
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) +wits against an ambush, add +2.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/face_danger]
+                - _extends:
+                    - ironsworn/moves/adventure/face_danger
                   trigger:
                     options:
                       - text: To detect an approaching threat
                         roll_type: action_roll
-                        method: inherit
-                        using: [player/stats/wits]
+                        method: null
+                        choices:
+                          - player/stats/wits
                   text: Add +2.
-                - _extends: [ironsworn/moves/combat/enter_the_fray]
+                - _extends:
+                    - ironsworn/moves/combat/enter_the_fray
                   trigger:
                     options:
-                      - method: inherit
-                        using: [player/stats/wits] # no need for text, as 'ambushed' is already how +wits is described
+                      - method: null
+                        choices:
+                          - player/stats/wits # 'ambushed' is already how +wits is flavoured
                         roll_type: action_roll
                   text: Add +2.
         horse:
@@ -221,29 +237,25 @@ ironsworn:
           name: Horse
           # icon not on game-icons
           # tags: [animal_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: You and your horse ride as one.
           abilities:
             - name: Swift
               text: |-
                 When you [Face Danger](ironsworn/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), add +1.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/undertake_a_journey]
+                - _extends:
+                    - ironsworn/moves/adventure/undertake_a_journey
                   text: Add +1.
-                - _extends: [ironsworn/moves/adventure/face_danger]
+                - _extends:
+                    - ironsworn/moves/adventure/face_danger
                   trigger:
                     options:
                       - text: Using your horse’s speed and grace
-                        using: [player/stats/edge]
-                        method: inherit
+                        choices:
+                          - player/stats/edge
+                        method: null
                         roll_type: action_roll
                   text: Add +1.
             - name: Fearless
@@ -256,8 +268,9 @@ ironsworn:
                   trigger:
                     options:
                       - text: By charging into combat
-                        using: [player/stats/heart]
-                        method: inherit
+                        choices:
+                          - player/stats/heart
+                        method: null
                         roll_type: action_roll
                   text: Add +1.
                   outcomes: *outcomes:+1_momentum.HIT
@@ -271,14 +284,21 @@ ironsworn:
                   trigger:
                     options:
                       - text: At close range while mounted
-                        method: inherit
+                        method: null
                         roll_type: action_roll
+                        choices: null
                   text: Add +1.
                   outcomes: &outcomes:+1_harm.HIT
                     strong_hit: &outcome:+1_harm
                       text: Inflict +1 harm.
                     weak_hit: *outcome:+1_harm
-
+          controls:
+            health:
+              label: health
+              max: 5
+              min: 0
+              value: 5
+              field_type: condition_meter
         hound:
           _source:
             title: Ironsworn Assets Master Set
@@ -287,15 +307,8 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/hound.html
           # tags: [animal_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 4
-              min: 0
-              value: 4
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your hound is your steadfast companion.
           abilities:
             - name: Sharp
@@ -308,6 +321,8 @@ ironsworn:
                     options:
                       - text: Using your hound’s keen senses to track your quarry or investigate a scene
                         roll_type: action_roll
+                        method: null
+                        choices: null
                   text: Add +1.
                   outcomes: *outcomes:+1_momentum.HIT
             - name: Ferocious
@@ -320,7 +335,8 @@ ironsworn:
                   trigger:
                     options:
                       - text: Alongside your hound
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   outcomes:
                     strong_hit: &Hound.3
@@ -329,13 +345,22 @@ ironsworn:
             - name: Loyal
               text: When you [Endure Stress](ironsworn/moves/suffer/endure_stress) in the company of your hound, add +1.
               extend_moves:
-                - _extends: [ironsworn/moves/suffer/endure_stress]
+                - _extends:
+                    - ironsworn/moves/suffer/endure_stress
                   trigger:
                     options:
                       - text: In the company of your hound
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
+          controls:
+            health:
+              label: health
+              max: 4
+              min: 0
+              value: 4
+              field_type: condition_meter
         kindred:
           _source:
             title: Ironsworn Assets Master Set
@@ -343,32 +368,32 @@ ironsworn:
           name: Kindred
           # icon not on game-icons
           # tags: [ironlander_companion]
-          attributes:
+          options:
             name: *InputTextName
+          controls:
             health:
               label: health
               max: 4
               value: 4
               min: 0
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
           requirement: Your friend stands by you.
           abilities:
             - name: Skilled
               text: |-
                 When you make a move outside of combat aided by your companion’s expertise, add +1.
-              attributes:
+              controls:
                 expertise:
-                  attribute_type: text
+                  field_type: text
                   label: Expertise
-                  position: ability_0_bottom
                   value: null
               extend_moves:
                 - _extends: null
                   trigger:
                     options:
                       - text: When you make a move outside of combat aided by your companion’s expertise
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
             - name: Shield-Kin
@@ -381,7 +406,8 @@ ironsworn:
                   trigger:
                     options:
                       - text: Alongside your companion
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
                 - _extends:
@@ -389,16 +415,17 @@ ironsworn:
                   trigger:
                     options:
                       - text: Against an attack by standing together
-                        method: inherit
+                        method: null
+                        choices: null
                         roll_type: action_roll
                   text: Add +1.
             - name: Bonded
               text: |-
                 Once you mark a bond with your companion, add +1 when you [Face Desolation](ironsworn/moves/suffer/face_desolation) in their presence.
               extend_moves:
-                # TODO revisit later, consider removing or adding trigger info?
-                - _extends: [ironsworn/moves/suffer/face_desolation]
-                  text: Once you mark a bond with your companion, add +1 when you [Face Desolation](ironsworn/moves/suffer/face_desolation) in their presence.
+                - _extends:
+                    - ironsworn/moves/suffer/face_desolation
+                  text: Add +1 when you [Face Desolation](ironsworn/moves/suffer/face_desolation) in your companion's presence.
         mammoth:
           _source:
             title: Ironsworn Assets Master Set
@@ -407,28 +434,53 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/delapouite/mammoth.html
           # tags: [beast_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your mammoth walks a resolute path.
           abilities:
             - name: Lumbering
               text: |-
                 When your mammoth travels with you as you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey), you may add +2 but suffer -1 momentum (decide before rolling).
-              # todo: left off here. enh.
             - name: Beast of burden
               text: |-
                 When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.
-              # todo: alter move prop to target anything with a +supply trigger programmatically?
+              extend_moves:
+                # there isn't an exact way to do this, but it's pretty close
+                - _extends:
+                    - ironsworn/moves/adventure/make_camp
+                    - ironsworn_delve/moves/delve/check_your_gear
+                  progress_move: false
+                  trigger:
+                    options:
+                      - roll_type: action_roll
+                        choices:
+                          - ironsworn/assets/companion/mammoth/controls/health
             - name: Overpowering
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) or [Clash](ironsworn/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.
+              extend_moves:
+                - _extends:
+                    - ironsworn/moves/combat/strike
+                    - ironsworn/moves/combat/clash
+                  progress_move: false
+                  trigger:
+                    options:
+                      - text: by riding your mammoth against a pack of foes
+                        roll_type: action_roll
+                        choices: null
+                        method: null
+                  text: Add +1.
+                  outcomes:
+                    strong_hit: &HarmOnHit
+                      text: Inflict +1 harm on a hit.
+                    weak_hit: *HarmOnHit
+          controls:
+            health:
+              label: health
+              max: 5
+              min: 0
+              value: 5
+              field_type: condition_meter
         owl:
           _source:
             title: Ironsworn Assets Master Set
@@ -437,27 +489,27 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/caro-asercion/barn-owl.html
           # tags: [animal_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              min: 0
-              value: 3
-              label: health
-              max: 3
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your owl soars through the darkness.
           abilities:
             - name: Nocturnal
               text: |-
                 If you [Resupply](ironsworn/moves/adventure/resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](ironsworn/moves/combat/enter_the_fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.
+              # TODO: finish data entry. left off here.
             - name: Sage
               text: |-
                 When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).
             - name: Embodying
               text: |-
                 When you [Face Death](ironsworn/moves/suffer/face_death), take your owl’s health as +momentum before you roll.
-
+          controls:
+            health:
+              min: 0
+              value: 3
+              label: health
+              max: 3
+              field_type: condition_meter
         raven:
           _source:
             title: Ironsworn Assets Master Set
@@ -466,15 +518,8 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/raven.html
           # tags: [animal_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 2
-              min: 0
-              value: 2
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your raven heeds your call.
           abilities:
             - name: Sly
@@ -485,7 +530,13 @@ ironsworn:
             - name: Diligent
               text: |-
                 When your raven carries messages for you, you may [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage), [Gather Information](ironsworn/moves/adventure/gather_information), or [Compel](ironsworn/moves/relationship/compel) from a distance.
-
+          controls:
+            health:
+              label: health
+              max: 2
+              min: 0
+              value: 2
+              field_type: condition_meter
         young_wyvern:
           _source:
             title: Ironsworn Assets Master Set
@@ -494,15 +545,8 @@ ironsworn:
           # icon not on game-icons
           # sub? https://game-icons.net/1x1/lorc/wyvern.html
           # tags: [beast_companion]
-          attributes:
+          options:
             name: *InputTextName
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              attribute_type: condition_meter
-              position: card_bottom
           requirement: Your wyvern won’t devour you. For now.
           abilities:
             - name: Insatiable
@@ -515,13 +559,22 @@ ironsworn:
               text: |-
                 When you [Strike](ironsworn/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/combat/strike]
+                - _extends:
+                    - ironsworn/moves/combat/strike
                   trigger:
                     options:
                       - text: By commanding your wyvern to attack
                         roll_type: action_roll
-                        using: [player/stats/heart]
-
+                        method: any
+                        choices:
+                          - player/stats/heart
+          controls:
+            health:
+              label: health
+              max: 5
+              min: 0
+              value: 5
+              field_type: condition_meter
     path:
       title:
         canonical: Path assets
@@ -556,23 +609,28 @@ ironsworn:
                       - roll_type: action_roll
                         method: any
                         text: Elixir of deftness (edge)
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                       - roll_type: action_roll
                         method: any
                         text: Elixir of audacity (heart)
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                       - roll_type: action_roll
                         method: any
                         text: Elixir of vigor (iron)
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                       - roll_type: action_roll
                         method: any
                         text: Elixir of slyness (shadow)
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                       - roll_type: action_roll
                         method: any
                         text: Elixir of clarity (wits)
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Alchemist
                   outcomes:
                     strong_hit:
@@ -613,7 +671,7 @@ ironsworn:
             page: 4
           name: Banner-Sworn
           # icon not on game-icons
-          attributes:
+          options:
             name: *InputTextName
           requirement: Once you mark a bond with a leader or faction...
           abilities:
@@ -641,12 +699,14 @@ ironsworn:
             - text: |-
                 You have stared down death before: When you are at 0 health and [Endure Harm](ironsworn/moves/suffer/endure_harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/suffer/endure_harm]
+                - _extends:
+                    - ironsworn/moves/suffer/endure_harm
                   trigger:
                     options:
                       - text: When you are at 0 health
                         roll_type: action_roll
-                        using:
+                        method: any
+                        choices:
                           - player/stats/wits
                           - player/stats/heart
         blade_bound:
@@ -655,7 +715,7 @@ ironsworn:
             page: 4
           name: Blade-Bound
           # https://game-icons.net/1x1/lorc/rune-sword.html
-          attributes:
+          options:
             name: *InputTextName
           requirement: |-
             Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...
@@ -700,8 +760,9 @@ ironsworn:
                     options:
                       - text: By commanding your warband
                         roll_type: action_roll
-                        using:
-                          - ironsworn/assets/path/commander/attributes/strength
+                        method: any
+                        choices:
+                          - ironsworn/assets/path/commander/controls/strength
             - text: |-
                 You may dispatch scouts from your warband to [Gather Information](ironsworn/moves/adventure/gather_information) or [Resupply](ironsworn/moves/adventure/resupply); if you do, roll +strength.
               extend_moves:
@@ -712,18 +773,19 @@ ironsworn:
                     options:
                       - text: By dispatching scouts from your warband
                         roll_type: action_roll
-                        using:
-                          - ironsworn/assets/path/commander/attributes/strength
+                        method: any
+                        choices:
+                          - ironsworn/assets/path/commander/controls/strength
             - text: |-
                 Once you [Forge a Bond](ironsworn/moves/relationship/forge_a_bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
-          attributes:
+          controls:
             strength:
+              # TODO: conditional debility?
               label: strength
               max: 4
               min: 0
               value: 4
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
         dancer:
           _source:
             title: Ironsworn Assets Master Set
@@ -747,7 +809,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/edge]
+                        choices:
+                          - player/stats/edge
                   text: *move:Asset.Dancer
                   outcomes:
                     strong_hit:
@@ -763,18 +826,14 @@ ironsworn:
             page: 6
           name: Devotant
           # https://game-icons.net/1x1/lorc/sundial.html
-          attributes:
+          options:
             gods_name:
               label: God's name
-              attribute_type: text
-              position: card_top
-              value: null
+              field_type: text
             stat:
-              label: stat
-              attribute_type: select_reference
-              value: null
-              position: card_top
-              options:
+              label: Stat
+              field_type: choices
+              choices:
                 edge:
                   label: Edge
                   value: player/stats/edge
@@ -797,35 +856,37 @@ ironsworn:
             - text: |-
                 When you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
               extend_moves:
-                - _extends: [ironsworn/moves/quest/swear_an_iron_vow]
+                - _extends:
+                    - ironsworn/moves/quest/swear_an_iron_vow
                   trigger:
                     options:
                       - text: To serve your god on a divine quest
                         roll_type: action_roll
-                        using:
-                          - ironsworn/assets/path/devotant/attributes/stat
+                        method: any
+                        choices:
+                          - ironsworn/assets/path/devotant/options/stat
             - text: |-
                 When you [Sojourn](ironsworn/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/relationship/sojourn]
+                - _extends:
+                    - ironsworn/moves/relationship/sojourn
                   trigger:
                     options:
                       - text: By sharing the word of your god
                         roll_type: action_roll
-                        using:
-                          - ironsworn/assets/path/devotant/attributes/stat
+                        method: any
+                        choices:
+                          - ironsworn/assets/path/devotant/options/stat
         empowered:
           _source:
             title: Ironsworn Assets Master Set
             page: 6
           name: Empowered
           # https://game-icons.net/1x1/delapouite/crenel-crown.html
-          attributes:
+          options:
             title_lineage:
               label: Title/Lineage
-              attribute_type: text
-              position: card_top
-              value: null
+              field_type: text
           abilities:
             - text: |-
                 When you [Sojourn](ironsworn/moves/relationship/sojourn) and score a weak hit or miss, you may claim the rights of hospitality warranted by your title or lineage. If you do, roll all dice again and add +1. On a miss, you are refused, and your presumption causes significant new trouble.
@@ -844,6 +905,7 @@ ironsworn:
             - text: |-
                 When you [Face Death](ironsworn/moves/suffer/face_death) or [Face Desolation](ironsworn/moves/suffer/face_desolation) while your epic background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](ironsworn/moves/quest/reach_a_milestone) on the background vow.
               enabled: true
+              # TODO: conditional debility -- attribute?
             - text: |-
                 When you [Reach a Milestone](ironsworn/moves/quest/reach_a_milestone) on your background vow, take +2 momentum or +1 spirit.
             - text: |-
@@ -862,14 +924,13 @@ ironsworn:
                 When in a community or trading, you may suffer -1 wealth and take +2 supply.
             - text: |-
                 When you [Resupply](ironsworn/moves/adventure/resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.
-          attributes:
+          controls:
             wealth:
               label: wealth
               max: 5
               value: 0
               min: 0
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
         herbalist:
           _source:
             title: Ironsworn Assets Master Set
@@ -913,10 +974,13 @@ ironsworn:
             - text: |-
                 When you [Check Your Gear](ironsworn_delve/moves/delve/check_your_gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn_delve/moves/delve/check_your_gear]
+                - _extends:
+                    - ironsworn_delve/moves/delve/check_your_gear
                   trigger:
                     options:
-                      - using: [player/stats/wits]
+                      - choices:
+                          - player/stats/wits
+                        method: any
                         roll_type: action_roll
               enabled: true
             - text: |-
@@ -936,26 +1000,35 @@ ironsworn:
             - text: |-
                 When you [Gather Information](ironsworn/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/gather_information]
+                - _extends:
+                    - ironsworn/moves/adventure/gather_information
                   trigger:
                     options:
                       - roll_type: action_roll
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         text: Within an enemy area to discover their positions, plans, or methods
-                - _extends: [ironsworn/moves/adventure/secure_an_advantage]
+                - _extends:
+                    - ironsworn/moves/adventure/secure_an_advantage
                   trigger:
                     options:
                       - roll_type: action_roll
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         text: Within an enemy area area through observation
             - text: |-
                 When you [Resupply](ironsworn/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/resupply]
+                - _extends:
+                    - ironsworn/moves/adventure/resupply
                   trigger:
                     options:
                       - roll_type: action_roll
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         text: Within an enemy area by scavenging or looting
         lorekeeper:
           _source:
@@ -992,13 +1065,11 @@ ironsworn:
           name: Masked
           # icon not on game-icons
           requirement: Once you mark a bond with elves, and are gifted a mask of precious elderwood...
-          attributes:
+          options:
             material:
               label: Material
-              attribute_type: select_reference
-              value: null
-              position: card_top
-              options:
+              field_type: choices
+              choices:
                 thunderwood:
                   label: Thunderwood
                   value: player/stats/edge
@@ -1033,8 +1104,9 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         text: While wearing the mask
-                        using:
-                          - ironsworn/assets/path/masked/attributes/material_stat
+                        method: any
+                        choices:
+                          - ironsworn/assets/path/masked/options/material_stat
         oathbreaker:
           _source:
             title: Ironsworn Assets Master Set
@@ -1043,6 +1115,7 @@ ironsworn:
           # https://game-icons.net/1x1/lorc/shattered-sword.html
           # tags: [deed]
           requirement: Once you [Forsake Your Vow](ironsworn/moves/quest/forsake_your_vow)...
+          count_as_impact: true
           abilities:
             - text: |-
                 This asset counts as a debility. One time only, when you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow) to redeem yourself (extreme or greater), give that vow a special mark. When you [Reach a Milestone](ironsworn/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum.
@@ -1071,7 +1144,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Outcast
                   outcomes:
                     strong_hit:
@@ -1105,7 +1179,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/shadow]
+                        choices:
+                          - player/stats/shadow
                   text: *move:Asset.Pretender
                   outcomes:
                     strong_hit:
@@ -1118,11 +1193,14 @@ ironsworn:
             - text: |-
                 As above, and you may roll +shadow (instead of +heart) when you [Sojourn](ironsworn/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/relationship/sojourn]
+                - _extends:
+                    - ironsworn/moves/relationship/sojourn
                   trigger:
                     options:
                       - roll_type: action_roll
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         text: Under your false identity
               # todo: alter move
             - text: |-
@@ -1186,17 +1264,20 @@ ironsworn:
           requirement: Once you become corrupted...
           abilities:
             - text: |-
-                you_harden_your_heart: Reduce your heart stat by 1 and add up to +2 to shadow (to a maximum of +4).
+                You harden your heart: Reduce your heart stat by 1 and add up to +2 to shadow (to a maximum of +4).
             - text: |-
-                you_are_attuned_to_the_realms_of_shadow: When you perform a ritual, add +1.
+                You are attuned to the realms of shadow: When you perform a ritual, add +1.
             - text: |-
-                you_know_the_sly_ways_of_death: When you [Face Death](ironsworn/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
+                You know the sly ways of death: When you [Face Death](ironsworn/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
               extend_moves:
-                - _extends: [ironsworn/moves/suffer/face_death]
+                - _extends:
+                    - ironsworn/moves/suffer/face_death
                   trigger:
                     options:
                       - roll_type: action_roll
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
         sighted:
           _source:
             title: Ironsworn Assets Master Set
@@ -1272,11 +1353,14 @@ ironsworn:
             - text: |-
                 When you [Gather Information](ironsworn/moves/adventure/gather_information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/gather_information]
+                - _extends:
+                    - ironsworn/moves/adventure/gather_information
                   trigger:
                     options:
                       - text: By investigating a devious scheme
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         roll_type: action_roll
             - text: |-
                 When you [Forge a Bond](ironsworn/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.
@@ -1284,14 +1368,19 @@ ironsworn:
                   * Keep your secret: Roll +shadow (instead of +heart).
                   * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.
               extend_moves:
-                - _extends: [ironsworn/moves/relationship/forge_a_bond]
+                - _extends:
+                    - ironsworn/moves/relationship/forge_a_bond
                   trigger:
                     options:
                       - text: Keep your secret
-                        using: [player/stats/shadow]
+                        method: any
+                        choices:
+                          - player/stats/shadow
                         roll_type: action_roll
                       - text: Reveal the truth
-                        using: [player/stats/heart]
+                        method: any
+                        choices:
+                          - player/stats/heart
                         roll_type: action_roll
         veteran:
           _source:
@@ -1370,11 +1459,14 @@ ironsworn:
             - text: |-
                 When you [Make Camp](ironsworn/moves/adventure/make_camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.
               extend_moves:
-                - _extends: [ironsworn/moves/adventure/make_camp]
+                - _extends:
+                    - ironsworn/moves/adventure/make_camp
                   trigger:
                     options:
                       - text: In the woodlands
-                        using: [player/stats/wits]
+                        method: any
+                        choices:
+                          - player/stats/wits
                         roll_type: action_roll
         wright:
           _source:
@@ -1382,11 +1474,10 @@ ironsworn:
             page: 12
           name: Wright
           # https://game-icons.net/1x1/delapouite/3d-hammer.html
-          attributes:
+          options:
             specialty:
               label: Specialty
-              attribute_type: text
-              position: card_top
+              field_type: text
               value: null
           abilities:
             - text: |-
@@ -1530,7 +1621,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Fletcher
                   outcomes:
                     strong_hit:
@@ -1553,27 +1645,19 @@ ironsworn:
           name: Ironclad
           # icon not on game-icons
           requirement: If you wear armor...
-          attributes:
+          controls:
             equipped:
-              attribute_type: impact
-              position: card_bottom
+              field_type: toggle
               label: Equipped
-              sets_attributes:
-                equipment:
-                  attribute_type: string
-              options:
+              value: null
+              choices:
+                # TODO
                 lightly_armored:
                   label: Lightly armored
-                  set_attributes:
-                    equipment:
-                      attribute_type: string
-                      value: lightly_armored
+                  value: {}
                 geared_for_war:
                   label: Geared for war
-                  set_attributes:
-                    equipment:
-                      attribute_type: string
-                      value: geared_for_war
+                  value: {}
           abilities:
             - text: |-
                 When you equip or adjust your armor, choose one.
@@ -1596,10 +1680,50 @@ ironsworn:
             - text: |-
                 In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](ironsworn/moves/combat/strike) or [Clash](ironsworn/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.
               enabled: true
+              extend_moves:
+                - _extends:
+                    - ironsworn/moves/combat/strike
+                    - ironsworn/moves/combat/clash
+                  progress_move: false
+                  trigger:
+                    options:
+                      - roll_type: action_roll
+                        choices:
+                          - player/stats/edge
+                        method: any
+                        text: When you strike with a staff as a simple weapon
+                  text: Add +1.
+                  outcomes: *outcomes:+1_momentum.HIT
             - text: |-
                 When you [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.
+              extend_moves:
+                - _extends:
+                    - ironsworn/moves/adventure/secure_an_advantage
+                  progress_move: false
+                  trigger:
+                    options:
+                      - roll_type: action_roll
+                        choices:
+                          - player/stats/edge
+                        method: any
+                        text: Using your staff to disarm, trip, shove, or stun your foe
+                  text: Add +1.
+                  outcomes: *outcomes:+1_momentum.HIT
             - text: |-
                 When you [Undertake a Journey](ironsworn/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.
+              extend_moves:
+                - _extends:
+                    - ironsworn/moves/adventure/undertake_a_journey
+                  progress_move: false
+                  # TODO: make triggerable by ally
+                  trigger:
+                    options:
+                      - roll_type: action_roll
+                        method: any
+                  outcomes:
+                    strong_hit:
+                      text: The staff provides support and comfort in your travels; take +1 momentum.
+
         shield_bearer:
           _source:
             title: Ironsworn Assets Master Set
@@ -1679,7 +1803,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Sunderer
                   outcomes:
                     strong_hit:
@@ -1757,7 +1882,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Augur
                   outcomes:
                     strong_hit:
@@ -1788,7 +1914,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Awakening
                   outcomes:
                     strong_hit:
@@ -1801,21 +1928,19 @@ ironsworn:
                         However, if you roll a 1 on your action die when aided by your creation, you must [Face Danger](ironsworn/moves/adventure/face_danger) +heart to keep it from turning on you (as a formidable foe).
                     miss: *move:Generic.Miss
             - text: Your simulacrum has 6 health.
-              attributes:
-                health:
-                  _extends: ironsworn/assets/ritual/simulacrum/attributes/health
-                  max: 6
-                  value: 6
+              extend_asset:
+                controls:
+                  health:
+                    max: 6
               # fixme: alter move to include new text
             - *asset:Ritual.Ability.3
-          attributes:
+          controls:
             health:
               label: health
               max: 3
               value: 3
               min: 0
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
         bind:
           _source:
             title: Ironsworn Assets Master Set
@@ -1834,7 +1959,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Bind
                   outcomes:
                     strong_hit:
@@ -1867,7 +1993,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Communion
                   outcomes:
                     strong_hit:
@@ -1900,7 +2027,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Divination
                   outcomes:
                     strong_hit:
@@ -1937,7 +2065,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Invoke
                   outcomes:
                     strong_hit:
@@ -1955,14 +2084,13 @@ ironsworn:
                 You may [Compel](ironsworn/moves/relationship/compel) +essence (and suffer -1 essence) through a show of power.
             - text: |-
                 When you perform this ritual, add +1 and take +1 essence on a hit.
-          attributes:
+          controls:
             essence:
               label: essence
               max: 6
               value: 0
-              attribute_type: condition_meter
+              field_type: condition_meter
               min: 0
-              position: card_bottom
         keen:
           _source:
             title: Ironsworn Assets Master Set
@@ -1981,7 +2109,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Keen
                   outcomes:
                     strong_hit:
@@ -2006,6 +2135,7 @@ ironsworn:
             - text: &move:Asset.Leech |-
                 When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.
               enabled: true
+              # TODO: conditional debility
               moves:
                 draw_blood_rune:
                   name: Draw Blood Rune
@@ -2014,7 +2144,7 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using:
+                        choices:
                           - player/stats/iron
                   text: *move:Asset.Leech
                   outcomes:
@@ -2037,14 +2167,13 @@ ironsworn:
             title: Ironsworn Assets Master Set
             page: 16
           name: Lightbearer
-          attributes:
+          controls:
             light:
               label: light
               max: 6
               value: 0
               min: 0
-              attribute_type: condition_meter
-              position: card_bottom
+              field_type: condition_meter
           # https://game-icons.net/1x1/lorc/explosion-rays.html
           abilities:
             - text: &move:Asset.Lightbearer |-
@@ -2058,7 +2187,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Lightbearer
                   outcomes:
                     strong_hit:
@@ -2097,7 +2227,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/shadow]
+                        choices:
+                          - player/stats/shadow
                   text: *move:Asset.Scry
                   outcomes:
                     strong_hit:
@@ -2134,7 +2265,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/shadow]
+                        choices:
+                          - player/stats/shadow
                   text: *move:Asset.Shadow-Walk
                   outcomes:
                     strong_hit:
@@ -2167,7 +2299,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Sway
                   outcomes:
                     strong_hit:
@@ -2200,7 +2333,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Talisman
                   outcomes:
                     strong_hit:
@@ -2231,7 +2365,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Tether
                   outcomes:
                     strong_hit:
@@ -2264,7 +2399,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/heart]
+                        choices:
+                          - player/stats/heart
                   text: *move:Asset.Totem
                   outcomes:
                     strong_hit:
@@ -2298,7 +2434,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Visage
                   outcomes:
                     strong_hit:
@@ -2335,7 +2472,8 @@ ironsworn:
                     options:
                       - roll_type: action_roll
                         method: any
-                        using: [player/stats/wits]
+                        choices:
+                          - player/stats/wits
                   text: *move:Asset.Ward
                   outcomes:
                     strong_hit:

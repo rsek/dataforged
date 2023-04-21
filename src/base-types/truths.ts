@@ -2,15 +2,15 @@ import { type Abstract, type Localize, type Metadata } from '@base-types'
 
 export type TruthID = string
 
-interface TruthBase extends Abstract.Node<TruthID> {
+interface TruthBase extends Abstract.SourcedNode<TruthID> {
 	_id: TruthID
 	name: string
-	options: TruthOptionBase[]
+	choices: TruthOptionBase[]
 	icon?: Metadata.Icon
 }
 
 export interface SettingTruth extends TruthBase {
-	options: SettingTruthOption[]
+	choices: SettingTruthOption[]
 }
 
 export interface WorldTruth extends TruthBase {}
