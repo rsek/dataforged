@@ -1,0 +1,50 @@
+Fortified:
+  _templateCategory: *template.category:LocationTheme
+  _templateVars:
+    Location Theme: Fortified
+  Description: *description:Fortified
+  Source:
+    Page: 373
+  Oracles:
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Feature
+        content:
+          - Captives or prisoners
+          - Control area or terminal
+          - Empty or inactive area
+          - Enemy forces assembled for an event
+          - Enemy forces off-duty or at leisure
+          - Enemy forces on guard
+          - Enemy forces on patrol
+          - Enemy forces transporting supplies or equipment
+          - Enemy leader makes an inspection
+          - Prototype technology or equipment
+          - Robotic assistant or watchful AI
+          - Support personnel at work
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:LocationTheme.Peril
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Peril
+        content:
+          - Alarm is triggered
+          - Automated security or weapons target you
+          - Checkpoint or path with restricted access
+          - Enemies converge on this area
+          - Enemies reveal new capabilities or technology
+          - Enemies trick you or lure you into a trap
+          - Powerful enemy appears
+          - Problematic alliance or affiliation is revealed
+          - Revealed schemes of an enemy leader create new urgency
+          - Your plan is undone by an unexpected complication
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:LocationTheme.Opportunity
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Opportunity
+        content:
+          - Insight into the plans or methods of the enemy force
+          - Opening to get the drop on an enemy
+          - Opening to outmaneuver or escape enemies
+          - Potential collaborator or informant reveals themselves
+          - Access to useful equipment or weapons

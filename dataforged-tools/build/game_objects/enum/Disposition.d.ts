@@ -1,20 +1,20 @@
 /**
  * Set by Oracles / Characters / Disposition
- * @public
+ * @alpha
  */
 declare enum Disposition {
-    Cooperative = "cooperative",
-    Curious = "curious",
-    Demanding = "demanding",
-    Desperate = "desperate",
-    Friendly = "friendly",
-    Helpful = "helpful",
-    Hostile = "hostile",
-    Indifferent = "indifferent",
-    Suspicious = "suspicious",
-    Threatening = "threatening",
-    Unfriendly = "unfriendly",
-    Wanting = "wanting"
+    Cooperative = "Cooperative",
+    Curious = "Curious",
+    Demanding = "Demanding",
+    Desperate = "Desperate",
+    Friendly = "Friendly",
+    Helpful = "Helpful",
+    Hostile = "Hostile",
+    Indifferent = "Indifferent",
+    Suspicious = "Suspicious",
+    Threatening = "Threatening",
+    Unfriendly = "Unfriendly",
+    Wanting = "Wanting"
 }
 export { Disposition };
 //# sourceMappingURL=Disposition.d.ts.map

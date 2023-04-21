@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 /**
  * Recursively gets the path of all YAML files in a directory.
  *
@@ -10,13 +10,13 @@ import path from 'path';
 export function getAllFiles(dirPath, arrayOfFiles = []) {
     const files = fs.readdirSync(dirPath);
     files.forEach(function (file) {
-        if (fs.statSync(dirPath.toString() + '/' + file).isDirectory()) {
-            arrayOfFiles = getAllFiles(dirPath.toString() + '/' + file, arrayOfFiles);
+        if (fs.statSync(dirPath.toString() + "/" + file).isDirectory()) {
+            arrayOfFiles = getAllFiles(dirPath.toString() + "/" + file, arrayOfFiles);
         }
         else {
             arrayOfFiles.push(path.join(
             // use __dirname instead of "./" for absolute paths
-            './', dirPath.toString(), '/', file));
+            "./", dirPath.toString(), "/", file));
         }
     });
     return arrayOfFiles;

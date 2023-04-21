@@ -1,10 +1,10 @@
 /**
  * Set by oracle: Oracles / Derelicts / Type
- * @public
+ * @alpha
  */
 declare enum DerelictType {
-    Starship = "starship",
-    Settlement = "settlement"
+    Starship = "Starship",
+    Settlement = "Settlement"
 }
 export { DerelictType };
 //# sourceMappingURL=DerelictType.d.ts.map

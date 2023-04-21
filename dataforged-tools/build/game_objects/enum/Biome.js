@@ -1,6 +1,6 @@
 /**
  * NYI.
- * @public
+ * @alpha
  */
 var Biome;
 (function (Biome) {

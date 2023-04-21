@@ -3,12 +3,12 @@
  * @public
  */
 export enum LocationTheme {
-  Chaotic = 'chaotic',
-  Fortified = 'fortified',
-  Haunted = 'haunted',
-  Infested = 'infested',
-  Inhabited = 'inhabited',
-  Mechanical = 'mechanical',
-  Ruined = 'ruined',
-  Sacred = 'sacred'
+  Chaotic = "Chaotic",
+  Fortified = "Fortified",
+  Haunted = "Haunted",
+  Infested = "Infested",
+  Inhabited = "Inhabited",
+  Mechanical = "Mechanical",
+  Ruined = "Ruined",
+  Sacred = "Sacred"
 }

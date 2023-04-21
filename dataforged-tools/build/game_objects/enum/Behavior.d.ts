@@ -1,29 +1,29 @@
 /**
  * Set by Oracles / Creatures / Encountered Behavior
  *
- * @public
+ * @alpha
  */
 declare enum Behavior {
-    Ambusher = "ambusher",
-    Hibernator = "hibernator",
-    PackHunter = "pack_hunter",
-    ApexPredator = "apex_predator",
-    Hoarder = "hoarder",
-    Prey = "prey",
-    Builder = "builder",
-    Hunter = "hunter",
-    Protector = "protector",
-    Camouflager = "camouflager",
-    Lurer = "lurer",
-    Scavenger = "scavenger",
-    Forager = "forager",
-    Migratory = "migratory",
-    Tracker = "tracker",
-    Grazer = "grazer",
-    Mimic = "mimic",
-    Trapper = "trapper",
-    Herder = "herder",
-    Nester = "nester"
+    Ambusher = "Ambusher",
+    Hibernator = "Hibernator",
+    PackHunter = "Pack hunter",
+    ApexPredator = "Apex predator",
+    Hoarder = "Hoarder",
+    Prey = "Prey",
+    Builder = "Builder",
+    Hunter = "Hunter",
+    Protector = "Protector",
+    Camouflager = "Camouflager",
+    Lurer = "Lurer",
+    Scavenger = "Scavenger",
+    Forager = "Forager",
+    Migratory = "Migratory",
+    Tracker = "Tracker",
+    Grazer = "Grazer",
+    Mimic = "Mimic",
+    Trapper = "Trapper",
+    Herder = "Herder",
+    Nester = "Nester"
 }
 export { Behavior };
 //# sourceMappingURL=Behavior.d.ts.map

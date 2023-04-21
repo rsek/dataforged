@@ -1,9 +1,9 @@
 /**
  * Set by oracle: Oracles / Derelicts / Type
- * @public
+ * @alpha
  */
 enum DerelictType {
-  Starship = 'starship',
-  Settlement = 'settlement'
+  Starship = "Starship",
+  Settlement = "Settlement"
 }
-export { DerelictType }
+export { DerelictType };

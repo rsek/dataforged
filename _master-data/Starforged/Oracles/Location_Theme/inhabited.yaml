@@ -1,0 +1,50 @@
+Inhabited:
+  _templateCategory: *template.category:LocationTheme
+  _templateVars:
+    Location Theme: Inhabited
+  Description: *description:Inhabited
+  Source:
+    Page: 376
+  Oracles:
+    - _templateInfo: *template.info:LocationTheme.Feature
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Feature
+        content:
+          - Conspicuous patrols or surveillance
+          - Crews at work
+          - Display or monument honors a notable cultural event
+          - Emergency teams responding to an incident or crisis
+          - Families gathering or children playing
+          - "Festival, celebration, or observance"
+          - Fight breaks out
+          - Notable figure stands out from the crowd
+          - Protest or strike
+          - Unrepaired damage
+          - Unusually empty or quiet area
+          - Vendor or merchant hawking their wares
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:LocationTheme.Peril
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Peril
+        content:
+          - Announcement or notification brings harrowing news
+          - Arrival of a foe or rival
+          - Blockade or security cordon cuts off needed access
+          - Caught in the crossfire of a dispute
+          - Disturbing evidence of exploitive conditions
+          - Lured into danger
+          - "Signs of disease, infestation, or toxic environment"
+          - Signs of unrest or rebellion
+          - Signs that you are being watched or followed
+          - Unwanted attention from authority or enemies
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:LocationTheme.Opportunity
+      _templateTable:
+        rolls: *template.rolls:LocationTheme.Opportunity
+        content:
+          - Intriguing offer from an unexpected source
+          - Lively festival or gathering place provides a chance to socialize
+          - Local gossip proves interesting or helpful
+          - "Needed item, resource, or buyer is available"
+          - Old friend or connection resurfaces

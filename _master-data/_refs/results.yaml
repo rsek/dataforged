@@ -1,56 +1,56 @@
 Results:
   # composed results that are commonly used in rows
   Descriptor + Focus: &result:Descriptor+Focus
-    result: "[⏵Descriptor + Focus](starforged/oracles/core/descriptor)"
-    oracle_rolls:
-      - starforged/oracles/core/descriptor
-      - starforged/oracles/core/focus
+    Result: "[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)"
+    Oracle rolls:
+      - Starforged/Oracles/Core/Descriptor
+      - Starforged/Oracles/Core/Focus
   Action + Theme: &result:Action+Theme
-    result: "[⏵Action + Theme](starforged/oracles/core/action)"
-    oracle_rolls:
-      - starforged/oracles/core/action
-      - starforged/oracles/core/theme
+    Result: "[⏵Action + Theme](Starforged/Oracles/Core/Action)"
+    Oracle rolls:
+      - Starforged/Oracles/Core/Action
+      - Starforged/Oracles/Core/Theme
   Roll twice: &result:RollTwice
-    result: Roll twice
-    multiple_rolls:
-      amount: 2
-      allow_duplicates: false
+    Result: Roll twice
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: false
   Roll three times: &result:RollThreeTimes
-    result: Roll three times
-    multiple_rolls:
-      amount: 3
-      allow_duplicates: false
+    Result: Roll three times
+    Multiple rolls:
+      Amount: 3
+      Allow duplicates: false
   Roll twice (rep ok): &result:RollTwice.RepeatsOk
-    result: Roll twice
-    multiple_rolls:
-      amount: 2
-      allow_duplicates: true
+    Result: Roll twice
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: true
   Roll three times (rep ok): &result:RollThreeTimes.RepeatsOk
-    result: Roll three times
-    multiple_rolls:
-      amount: 3
-      allow_duplicates: true
+    Result: Roll three times
+    Multiple rolls:
+      Amount: 3
+      Allow duplicates: true
   Roll twice (make it worse): &result:RollTwice.MakeItWorse
-    multiple_rolls:
-      amount: 2
-      allow_duplicates: true
-      make_it_worse: true
+    Multiple rolls:
+      Amount: 2
+      Allow duplicates: true
+      Make it worse: true
   New zone: &result:NewZone
-    result: New zone
-    game_objects:
-      - object_type: derelict_zone
+    Result: New zone
+    Game objects:
+      - Object type: Derelict Zone
   New zone (via Access): &result:NewZoneViaAccess
-    result: New zone via [⏵Access](starforged/oracles/derelicts/access)
-    game_objects:
-      - object_type: derelict_zone
-        zone: Access
+    Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+    Game objects:
+      - Object type: Derelict Zone
+        Zone: Access
   Precursor Vault (orbital): &result:PrecursorVault.Orbital
-    result: "[⏵Precursor Vault (orbital)](starforged/oracles/vaults)"
-    game_objects:
-      - object_type: precursor_vault
-        location: orbital
+    Result: "[⏵Precursor Vault (orbital)](Starforged/Oracles/Vaults)"
+    Game objects:
+      - Object type: Precursor Vault
+        Location: Orbital
   Precursor Vault (planetside): &result:PrecursorVault.Planetside
-    result: "[⏵Precursor Vault (planetside)](starforged/oracles/vaults)"
-    game_objects:
-      - object_type: precursor_vault
-        location: planetside
+    Result: "[⏵Precursor Vault (planetside)](Starforged/Oracles/Vaults)"
+    Game objects:
+      - Object type: Precursor Vault
+        Location: Planetside

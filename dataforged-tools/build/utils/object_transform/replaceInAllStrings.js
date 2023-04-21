@@ -1,6 +1,5 @@
-import { buildLog } from "../logging/buildLog.js";
-import { JSONPath } from 'jsonpath-plus';
-import _ from 'lodash-es';
+import { JSONPath } from "jsonpath-plus";
+import _ from "lodash-es";
 /**
  * Recurses over an object and replaces a substring with another string.
  * @param object - The object to be searched and replaced. This function creates a copy and so does **not** mutate `obj`;
@@ -14,12 +13,11 @@ export function replaceInAllStrings(object, searchValue, replaceValue) {
     JSONPath({
         path: `$..*@string().[?(@.match("${(searchValue)}"))]`,
         json: jsonClone,
-        resultType: 'all',
+        resultType: "all",
         callback: ({ value, parent, parentProperty, path, pointer }) => {
             // console.log("found string:",value);
             // if (value.includes(searchValue)) {
-            buildLog(replaceInAllStrings, `Replacing in value at ${path}`);
-            parent[parentProperty] = value?.replaceAll(searchValue, replaceValue);
+            parent[parentProperty] = value.replaceAll(searchValue, replaceValue);
             // console.log("new string:", parent[parentProperty]);
             // }
         }

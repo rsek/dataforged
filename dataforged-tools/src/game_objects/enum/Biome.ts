@@ -1,8 +1,8 @@
 /**
  * NYI.
- * @public
+ * @alpha
  */
 enum Biome {
 }
 // TODO
-export { Biome }
+export { Biome };

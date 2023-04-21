@@ -1,11 +1,11 @@
 /**
  * Set by Oracles / Factions / Type
- * @public
+ * @alpha
  */
 enum FactionType {
-  FringeGroup = 'fringe_group',
-  Dominion = 'dominion',
-  Guild = 'guild'
+  FringeGroup = "Fringe Group",
+  Dominion = "Dominion",
+  Guild = "Guild"
 };
 
-export { FactionType }
+export { FactionType };

@@ -1,4 +1,4 @@
-import { Stat } from "@json_out";
+import { Stat } from "@json_out/index.js";
 import _ from "lodash-es";
 
 /**

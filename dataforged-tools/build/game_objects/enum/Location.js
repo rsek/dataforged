@@ -1,11 +1,11 @@
 /**
  * Set by Oracles / ** / Location
- * @public
+ * @alpha
  */
 export var Location;
 (function (Location) {
-    Location["Planetside"] = "planetside";
-    Location["Orbital"] = "orbital";
-    Location["DeepSpace"] = "deep_space";
+    Location["Planetside"] = "Planetside";
+    Location["Orbital"] = "Orbital";
+    Location["DeepSpace"] = "Deep Space";
 })(Location || (Location = {}));
 //# sourceMappingURL=Location.js.map

@@ -1,14 +1,14 @@
 /**
  * Set by Oracles / Planets / * / Life
- * @public
+ * @alpha
  */
 declare enum Life {
-    None = "none",
-    Extinct = "extinct",
-    Scarce = "scarce",
-    Diverse = "diverse",
-    Bountiful = "bountiful",
-    Overrun = "overrun"
+    None = "None",
+    Extinct = "Extinct",
+    Scarce = "Scarce",
+    Diverse = "Diverse",
+    Bountiful = "Bountiful",
+    Overrun = "Overrun"
 }
 export { Life };
 //# sourceMappingURL=Life.d.ts.map

@@ -1,9 +1,9 @@
 /**
- * @public
+ * @alpha
  */
 export declare enum Region {
-    Terminus = "terminus",
-    Outlands = "outlands",
-    Expanse = "expanse"
+    Terminus = "Terminus",
+    Outlands = "Outlands",
+    Expanse = "Expanse"
 }
 //# sourceMappingURL=Region.d.ts.map

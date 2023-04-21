@@ -1,15 +1,15 @@
 /**
  * Set by Oracles / Factions / Influence
- * @public
+ * @alpha
  */
 declare enum Influence {
-    Forsaken = "forsaken",
-    Isolated = "isolated",
-    Localized = "localized",
-    Established = "established",
-    Notable = "notable",
-    Dominant = "dominant",
-    Inescapable = "inescapable"
+    Forsaken = "Forsaken",
+    Isolated = "Isolated",
+    Localized = "Localized",
+    Established = "Established",
+    Notable = "Notable",
+    Dominant = "Dominant",
+    Inescapable = "Inescapable"
 }
 export { Influence };
 //# sourceMappingURL=Influence.d.ts.map

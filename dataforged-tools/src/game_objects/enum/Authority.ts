@@ -1,14 +1,14 @@
 /**
  * Set by Oracles / Settlements / Authority
  *
- * @public
+ * @alpha
  */
 export enum Authority {
-  NoneLawless = 'none_lawless',
-  Ineffectual = 'ineffectual',
-  Tolerant = 'tolerant',
-  Fair = 'fair',
-  Unyielding = 'unyielding',
-  Corrupt = 'corrupt',
-  Oppressive = 'oppressive'
+  NoneLawless = "None / lawless",
+  Ineffectual = "Ineffectual",
+  Tolerant = "Tolerant",
+  Fair = "Fair",
+  Unyielding = "Unyielding",
+  Corrupt = "Corrupt",
+  Oppressive = "Oppressive"
 }

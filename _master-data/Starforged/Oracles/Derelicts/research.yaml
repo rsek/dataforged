@@ -1,0 +1,64 @@
+Research:
+  _templateCategory: *template.category:Zone
+  _templateVars:
+    Zone: Research
+  Source:
+    Page: 359
+  Oracles:
+    - _templateInfo: *template.info:Zone.Area
+      _templateTable:
+        rolls: *template.rolls:Zone.Area
+        content:
+          - Clean room
+          - Cold storage
+          - Creature or animal pens
+          - Decontamination room
+          - Hazardous material storage
+          - Hydroponics or agriculture
+          - Isolation or containment
+          - Lab
+          - Library or records
+          - Secure vault
+          - *result:NewZone
+          - *result:NewZoneViaAccess
+    - _templateInfo: *template.info:Zone.Feature
+      _templateTable:
+        rolls: *template.rolls:Zone.Feature
+        content:
+          - Aquarium or tank
+          - Biological specimens
+          - Bones or fossils
+          - Broken equipment
+          - Cryptic research notes
+          - Hastily destroyed data
+          - Hazmat suits
+          - Inscrutable artifact
+          - Invasive plant growth
+          - Recorded research log
+          - Spilled chemicals
+          - *result:Descriptor+Focus
+    - _templateInfo: *template.info:Zone.Peril
+      _templateTable:
+        rolls: *template.rolls:Zone.Peril
+        content:
+          - Automated containment protocols are activated
+          - Biological infestation
+          - Dangerous specimen
+          - Disturbing outcome of a failed experiment
+          - Evidence of sinister experiments
+          - Fragile vault holds a dire threat
+          - Signs of broken containment
+          - Toxic environment
+          - Unstable technology
+          - *result:Action+Theme
+          - *result:RollTwice
+    - _templateInfo: *template.info:Zone.Opportunity
+      _templateTable:
+        rolls: *template.rolls:Zone.Opportunity
+        content:
+          - Helpful research data
+          - Records of a notable discovery
+          - Specialized research tools
+          - Unique prototype
+          - Useful navigational data
+

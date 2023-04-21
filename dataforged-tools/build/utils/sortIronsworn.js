@@ -1,10 +1,11 @@
-import { SourceTitle } from "../schema";
+import { SourceTitle } from "../json_out/index.js";
 const order = [
     SourceTitle.Starforged,
     SourceTitle.StarforgedAssets,
     SourceTitle.Ironsworn,
     SourceTitle.IronswornAssets,
-    SourceTitle.IronswornDelve
+    SourceTitle.IronswornDelve,
+    SourceTitle.IronswornBonusAssets
 ];
 /**
  * Sort comparison function for Ironsworn source data.
@@ -12,18 +13,18 @@ const order = [
  * @param source2 - The second source to compare
  */
 export function sortIronsworn(source1, source2) {
-    if (source1.title !== source2.title) {
-        return order.findIndex(src => src === source1.title) - order.findIndex(src => src === source2.title);
+    if (source1.Title !== source2.Title) {
+        return order.findIndex(src => src === source1.Title) - order.findIndex(src => src === source2.Title);
     }
-    else if (source1.page && source2.page) {
-        return source1.page - source2.page;
+    else if (source1.Page && source2.Page) {
+        return source1.Page - source2.Page;
     }
-    else if (source1.page || source2.page) {
+    else if (source1.Page || source2.Page) {
         // empty page vs specified page defaults to last
-        if (!source1.page) {
+        if (!source1.Page) {
             return 1;
         }
-        if (!source2.page) {
+        if (!source2.Page) {
             return -1;
         }
     }

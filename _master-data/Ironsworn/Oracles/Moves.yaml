@@ -1,0 +1,121 @@
+Name: Moves
+Source:
+  Title: Ironsworn Rulebook
+Oracles:
+  - Name: Endure Harm
+    Source:
+      Page: 91
+    # Move: Ironsworn/Moves/Suffer/Endure_Harm
+    Table:
+      - [1, 10, "The harm is mortal. [Face Death](Ironsworn/Moves/Suffer/Face_Death)."]
+      - [
+          11,
+          20,
+          "You are dying. You need to Heal within an hour or two, or [Face Death](Ironsworn/Moves/Suffer/Face_Death).",
+        ]
+      - [
+          21,
+          35,
+          "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](Ironsworn/Moves/Suffer/Face_Death).",
+        ]
+      - [
+          36,
+          50,
+          "You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).",
+        ]
+      - [51, 100, "You are battered but still standing."]
+  - Name: Endure Stress
+    Source:
+      Page: 93
+    # Move: Ironsworn/Moves/Suffer/Endure_Stress
+    Table:
+      - [1, 10, "You are overwhelmed. [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation)."]
+      - [
+          11,
+          25,
+          "You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).",
+        ]
+      - [
+          26,
+          50,
+          "You give in to a fear or compulsion, and act against your better instincts.",
+        ]
+      - [51, 100, "You persevere."]
+  - Name: Pay the Price
+    Source:
+      Page: 105
+    # Move: Ironsworn/Moves/Fate/Pay_the_Price
+    Table:
+      - [
+          1,
+          2,
+          "Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and make it happen.",
+        ]
+      - [
+          3,
+          5,
+          "A person or community you trusted loses faith in you, or acts against you.",
+        ]
+      - [6, 9, "A person or community you care about is exposed to danger."]
+      - [10, 16, "You are separated from something or someone."]
+      - [17, 23, "Your action has an unintended effect."]
+      - [24, 32, "Something of value is lost or destroyed."]
+      - [33, 41, "The current situation worsens."]
+      - [42, 50, "A new danger or foe is revealed."]
+      - [51, 59, "It causes a delay or puts you at a disadvantage."]
+      - [60, 68, "It is harmful."]
+      - [69, 76, "It is stressful."]
+      - [77, 85, "A surprising development complicates your quest."]
+      - [86, 90, "It wastes resources."]
+      - [91, 94, "It forces you to act against your best intentions."]
+      - [
+          95,
+          98,
+          "A friend, companion, or ally is put in harm’s way (or you are, if alone).",
+        ]
+      - [
+          99,
+          100,
+          "Roll twice more on this table. Both results occur. If they are the same result, make it worse.",
+          *result:RollTwice.MakeItWorse
+        ]
+  - Name: Ask the Oracle
+    Aliases: [Ask]
+    Source:
+      Page: 107
+    Oracles:
+      - Name: Almost Certain
+        Display:
+          Title: "Ask the Oracle: Almost Certain"
+        Aliases: ["90"]
+        Table:
+          - [1, 10, "No"]
+          - [11, 100, "Yes"]
+      - Name: Likely
+        Display:
+          Title: "Ask the Oracle: Likely"
+        Aliases: ["75"]
+        Table:
+          - [1, 25, "No"]
+          - [26, 100, "Yes"]
+      - Name: Fifty-fifty
+        Display:
+          Title: "Ask the Oracle: 50/50"
+        Aliases: ["50", "5050", "Fifty-fifty", "50/50", "50-50"]
+        Table:
+          - [1, 50, "No"]
+          - [51, 100, "Yes"]
+      - Name: Unlikely
+        Display:
+          Title: "Ask the Oracle: Unlikely"
+        Aliases: ["25"]
+        Table:
+          - [1, 75, "No"]
+          - [76, 100, "Yes"]
+      - Name: Small Chance
+        Display:
+          Title: "Ask the Oracle: Small Chance"
+        Aliases: ["10"]
+        Table:
+          - [1, 90, "No"]
+          - [91, 100, "Yes"]

@@ -1,14 +1,11 @@
-import type { ClockSegments } from "@json_out";
-import { ChallengeRank, MoveOutcome } from "@json_out";
+import { ChallengeRank, ClockSegments, MoveOutcome } from "@json_out/index.js";
 import { TensionClock } from "@utils/simulation/Clock.js";
 import { MAX_SCORE } from "@utils/simulation/IronswornRoll.js";
-import { FD_may20, finishTheScene, SaA_may20 } from "@utils/simulation/moveData.js";
 import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
-import type {  NumericOutcomes, OutcomeEffectHash } from "@utils/simulation/NumericOutcomes.js";
-import { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
-import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
+import type { NumericOutcome , NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
+import type { PlayerCharacter } from "@utils/simulation/PlayerCharacter.js";
 import { ProgressStrategy } from "@utils/simulation/ProgressStrategy.js";
-import { ProgressTrack } from "@utils/simulation/ProgressTrack.js";
+import { ProgressTrack, ProgressTrackType } from "@utils/simulation/Track.js";
 import _ from "lodash-es";
 
 export const sceneChallengePriorities: Record<ProgressStrategy, OutcomeEffectType[]> = {
@@ -33,26 +30,20 @@ export class SceneChallenge extends ProgressTrack  {
   // assigned by parent
   readonly type!: ProgressTrackType.SceneChallenge;
   clock: TensionClock;
-  constructor(rank: ChallengeRank, segments: ClockSegments, outcomes: NumericOutcomes=finishTheScene, ticks: number = 0, segmentsFilled: number = 0) {
-    super({
-      type: ProgressTrackType.SceneChallenge,
-      rank,
-      ticks,
-      outcomes
-    });
+  constructor(rank: ChallengeRank = ChallengeRank.Formidable, ticks: number = 0, segmentsFilled: number = 0, segments: ClockSegments = ClockSegments.Six) {
+    super(ProgressTrackType.SceneChallenge, rank, ticks);
     this.clock = new TensionClock(segments, segmentsFilled);
   }
   override toString(): string {
     return `${super.toString()} | Clock: ${this.clock.filled}/${this.clock.segments}`;
   }
-  override applyResult(data: OutcomeEffectHash) {
+  override applyResult(data: NumericOutcome<MoveOutcome>) {
     super.applyResult(data);
     this.clock.applyResult(data);
   }
-  run({ pc, FDResultsData, SaAResultsData, statFD = 2, statSaA=3, add = 0, log = false }: { pc: PlayerCharacter, FDResultsData: NumericOutcomes, SaAResultsData: NumericOutcomes, statFD?: number; statSaA?: number; add?: number; log?: boolean; }) {
+  run({ pc, strategy, FDResultsData, SaAResultsData, statFD = 2, statSaA=3, add = 0, log = false }: { pc: PlayerCharacter, strategy: ProgressStrategy, FDResultsData: NumericOutcomes, SaAResultsData: NumericOutcomes, statFD?: number; statSaA?: number; add?: number; log?: boolean; }) {
     if (log) {
       console.log(`Simulating a ${ChallengeRank[this.rank]} scene challenge with a ${this.clock.segments}-segment clock.`);
-      console.log(pc.toString());
     }
     const result = {
       actionRolls: 0,
@@ -62,20 +53,20 @@ export class SceneChallenge extends ProgressTrack  {
     while (this.clock.filled < this.clock.segments && this.score < MAX_SCORE) {
       let mvParams: Parameters<typeof pc.evaluateActionRoll>[0];
       const mvParamsFD: Parameters<typeof pc.evaluateActionRoll>[0] = {
-        outcomesData: FDResultsData,
+        resultsData: FDResultsData,
         stat: statFD,
         log,
         progressTrack: this,
         name: "Face Danger"
       };
       const mvParamsSaA: Parameters<typeof pc.evaluateActionRoll>[0] = {
-        outcomesData: SaAResultsData,
+        resultsData: SaAResultsData,
         stat: statSaA,
         log,
         progressTrack: this,
         name: "Secure an Advantage"
       };
-      switch (pc.strategy) {
+      switch (strategy) {
         case ProgressStrategy.Progress: {
           mvParams = mvParamsFD;
         }
@@ -104,15 +95,9 @@ export class SceneChallenge extends ProgressTrack  {
     const roll = this.roll();
     result.outcome = roll.outcome;
     if (log) {
-      console.log("Finish the Scene:", roll.toString());
+      console.log("End the Scene:", roll.toString());
       console.log(`Finished with a ${MoveOutcome[result.outcome]} after ${result.actionRolls} action rolls.`);
     }
     return result;
   }
 }
-
-const sc = new SceneChallenge(ChallengeRank.Dangerous,4);
-const pc = new PlayerCharacter({ strategy: ProgressStrategy.Progress });
-sc.run({
-  pc, FDResultsData: FD_may20, SaAResultsData: SaA_may20, log: true
-});

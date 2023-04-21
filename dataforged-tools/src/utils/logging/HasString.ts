@@ -1,3 +1,4 @@
 interface HasString {
-  toString: () => string
-} export { HasString }
+  toString(): string;
+}export { HasString };
+

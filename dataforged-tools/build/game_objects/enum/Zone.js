@@ -3,13 +3,13 @@
  */
 export var Zone;
 (function (Zone) {
-    Zone["Access"] = "access";
-    Zone["Community"] = "community";
-    Zone["Engineering"] = "engineering";
-    Zone["Living"] = "living";
-    Zone["Medical"] = "medical";
-    Zone["Operations"] = "operations";
-    Zone["Production"] = "production";
-    Zone["Research"] = "research";
+    Zone["Access"] = "Access";
+    Zone["Community"] = "Community";
+    Zone["Engineering"] = "Engineering";
+    Zone["Living"] = "Living";
+    Zone["Medical"] = "Medical";
+    Zone["Operations"] = "Operations";
+    Zone["Production"] = "Production";
+    Zone["Research"] = "Research";
 })(Zone || (Zone = {}));
 //# sourceMappingURL=Zone.js.map

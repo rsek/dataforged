@@ -1,6 +1,6 @@
-import type { CharacterRecord, CreatureRecord, DerelictRecord, DerelictSettlementRecord, DerelictStarshipRecord, DerelictZoneRecord, FactionDominionRecord, FactionFringeGroupRecord, FactionGuildRecord, FactionRecord, FleetRecord, PlanetRecord, PrecursorVaultRecord, SettlementRecord, StarshipRecord } from "./";
+import type { ICharacterRecord, ICreatureRecord, IDerelictRecord, IDerelictSettlementRecord, IDerelictStarshipRecord, IDerelictZoneRecord, IFactionDominionRecord, IFactionFringeGroupRecord, IFactionGuildRecord, IFactionRecord, IPlanetRecord, IPrecursorVaultRecord, ISettlementRecord, IStarshipRecord } from "./index.js";
 /**
- * @public
+ * @internal
  */
-export declare type GameObjectRecord = CharacterRecord | CreatureRecord | DerelictRecord | DerelictStarshipRecord | DerelictSettlementRecord | DerelictZoneRecord | FactionRecord | FactionGuildRecord | FactionFringeGroupRecord | FactionDominionRecord | PlanetRecord | PrecursorVaultRecord | SettlementRecord | StarshipRecord | FleetRecord;
+export declare type GameObjectRecord = ICharacterRecord | ICreatureRecord | IDerelictRecord | IDerelictStarshipRecord | IDerelictSettlementRecord | IDerelictZoneRecord | IFactionRecord | IFactionGuildRecord | IFactionFringeGroupRecord | IFactionDominionRecord | IPlanetRecord | IPrecursorVaultRecord | ISettlementRecord | IStarshipRecord;
 //# sourceMappingURL=GameObjectRecord.d.ts.map

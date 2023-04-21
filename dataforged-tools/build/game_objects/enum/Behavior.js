@@ -1,30 +1,30 @@
 /**
  * Set by Oracles / Creatures / Encountered Behavior
  *
- * @public
+ * @alpha
  */
 var Behavior;
 (function (Behavior) {
-    Behavior["Ambusher"] = "ambusher";
-    Behavior["Hibernator"] = "hibernator";
-    Behavior["PackHunter"] = "pack_hunter";
-    Behavior["ApexPredator"] = "apex_predator";
-    Behavior["Hoarder"] = "hoarder";
-    Behavior["Prey"] = "prey";
-    Behavior["Builder"] = "builder";
-    Behavior["Hunter"] = "hunter";
-    Behavior["Protector"] = "protector";
-    Behavior["Camouflager"] = "camouflager";
-    Behavior["Lurer"] = "lurer";
-    Behavior["Scavenger"] = "scavenger";
-    Behavior["Forager"] = "forager";
-    Behavior["Migratory"] = "migratory";
-    Behavior["Tracker"] = "tracker";
-    Behavior["Grazer"] = "grazer";
-    Behavior["Mimic"] = "mimic";
-    Behavior["Trapper"] = "trapper";
-    Behavior["Herder"] = "herder";
-    Behavior["Nester"] = "nester";
+    Behavior["Ambusher"] = "Ambusher";
+    Behavior["Hibernator"] = "Hibernator";
+    Behavior["PackHunter"] = "Pack hunter";
+    Behavior["ApexPredator"] = "Apex predator";
+    Behavior["Hoarder"] = "Hoarder";
+    Behavior["Prey"] = "Prey";
+    Behavior["Builder"] = "Builder";
+    Behavior["Hunter"] = "Hunter";
+    Behavior["Protector"] = "Protector";
+    Behavior["Camouflager"] = "Camouflager";
+    Behavior["Lurer"] = "Lurer";
+    Behavior["Scavenger"] = "Scavenger";
+    Behavior["Forager"] = "Forager";
+    Behavior["Migratory"] = "Migratory";
+    Behavior["Tracker"] = "Tracker";
+    Behavior["Grazer"] = "Grazer";
+    Behavior["Mimic"] = "Mimic";
+    Behavior["Trapper"] = "Trapper";
+    Behavior["Herder"] = "Herder";
+    Behavior["Nester"] = "Nester";
 })(Behavior || (Behavior = {}));
 export { Behavior };
 //# sourceMappingURL=Behavior.js.map

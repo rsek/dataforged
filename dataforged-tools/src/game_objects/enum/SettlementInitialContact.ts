@@ -1,16 +1,16 @@
 /**
- * @public
+ * @alpha
  */
 export enum SettlementInitialContact {
-  AskingForHelp = 'asking_for_help',
-  Captured = 'captured',
-  Derelict = 'derelict',
-  Destroyed = 'destroyed',
-  Hostile = 'hostile',
-  InBattle = 'in_battle',
-  NeutralAutomated = 'neutral_automated',
-  Uncooperative = 'uncooperative',
-  Unresponsive = 'unresponsive',
-  Wary = 'wary',
-  Welcoming = 'welcoming',
+  AskingForHelp = "Asking for help",
+  Captured = "Captured",
+  Derelict = "Derelict",
+  Destroyed = "Destroyed",
+  Hostile = "Hostile",
+  InBattle = "In battle",
+  NeutralAutomated = "Neutral / automated",
+  Uncooperative = "Uncooperative",
+  Unresponsive = "Unresponsive",
+  Wary = "Wary",
+  Welcoming = "Welcoming",
 }

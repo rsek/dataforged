@@ -1,9 +1,9 @@
 /**
  * Set by Oracles / ** / Location
- * @public
+ * @alpha
  */
 export enum Location {
-  Planetside = 'planetside',
-  Orbital = 'orbital',
-  DeepSpace = 'deep_space'
+  Planetside = "Planetside",
+  Orbital = "Orbital",
+  DeepSpace = "Deep Space"
 }

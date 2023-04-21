@@ -1,4 +1,4 @@
-import pkg from 'fs-extra';
+import pkg from "fs-extra";
 const { copySync } = pkg;
 /**
  * Copy all files from the srcRoot to the outRoot

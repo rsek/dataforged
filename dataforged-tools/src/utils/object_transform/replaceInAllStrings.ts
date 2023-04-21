@@ -1,13 +1,12 @@
-import { buildLog } from '@utils/logging/buildLog.js'
-import { JSONPath, JSONPathOptions } from 'jsonpath-plus'
-import _ from 'lodash-es'
+import { JSONPath } from "jsonpath-plus";
+import _ from "lodash-es";
 
 interface JpResult<T> {
-  'value': T
-  'parent': Record<number|string, T>,
-  'parentProperty': keyof this['parent']
-  'path': string
-  'pointer': string
+  "value": T,
+  "parent": Record<number|string, T>,
+  "parentProperty": keyof this["parent"],
+  "path": string,
+  "pointer": string,
 }
 
 /**
@@ -17,21 +16,20 @@ interface JpResult<T> {
  * @param replaceValue - The value to replace.
  * @returns A copy of the original JSON object with all strings replaced.
  */
-export function replaceInAllStrings<T extends JSONPathOptions['json']> (object: T, searchValue: string, replaceValue: string): T {
+export function replaceInAllStrings<T extends object>(object: T, searchValue: string, replaceValue: string): T {
   // console.log("args", arguments);
-  const jsonClone = _.cloneDeep(object)
+  const jsonClone = _.cloneDeep(object);
   JSONPath({
-    path: `$..*@string().[?(@.match("${(searchValue)}"))]`,
+    path:`$..*@string().[?(@.match("${(searchValue)}"))]`,
     json: jsonClone,
-    resultType: 'all',
+    resultType: "all",
     callback: ({ value, parent, parentProperty, path, pointer }: JpResult<string>) => {
       // console.log("found string:",value);
       // if (value.includes(searchValue)) {
-      buildLog(replaceInAllStrings, `Replacing in value at ${path}`)
-      parent[parentProperty] = value?.replaceAll(searchValue, replaceValue)
+      parent[parentProperty] = value.replaceAll(searchValue, replaceValue);
       // console.log("new string:", parent[parentProperty]);
       // }
     }
-  })
-  return jsonClone
+  });
+  return jsonClone;
 }

@@ -1,17 +1,14 @@
-import type { PlayerConditionMeter, Stat } from "@json_out";
-import { MoveOutcome, RollType } from "@json_out";
-import type { AppliesMoveEffect } from "@utils/simulation/AppliesMoveEffect.js"; AppliesMoveEffect
+import type { PlayerConditionMeter , Stat } from "@json_out/index.js";
+import { MoveOutcome , RollType } from "@json_out/index.js";
 import type { IIronswornRoll, IronswornRoll } from "@utils/simulation/IronswornRoll.js";
-import { ActionRoll, resolveIronswornRoll } from "@utils/simulation/IronswornRoll.js";
-import type { OutcomeEffectHash, NumericOutcome, NumericOutcomeChoice, NumericOutcomes } from "@utils/simulation/NumericOutcomes.js";
-import { OutcomeEffectHash, OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
-import { ProgressTrackType } from "@utils/simulation/progressConstants.js";
-import type { ProgressStrategy } from "@utils/simulation/ProgressStrategy.js";
-import type { ProgressTrack } from "@utils/simulation/ProgressTrack.js";
+import { ActionRoll , resolveIronswornRoll } from "@utils/simulation/IronswornRoll.js";
+import type { INumericOutcomes , NumericOutcome, NumericOutcomeChoice } from "@utils/simulation/NumericOutcomes.js";
+import { OutcomeEffectType } from "@utils/simulation/NumericOutcomes.js";
+import type { ProgressStrategy } from "@utils/simulation/ProgressStrategy";
 import { randomizeStats } from "@utils/simulation/randomizeStats.js";
 import { sceneChallengePriorities } from "@utils/simulation/SceneChallenge.js";
-import pkg from "colors";
-const { bold,strip,red, blue, green,yellow } = pkg;
+import type { IProgressTrack, ProgressTrack } from "@utils/simulation/Track.js";
+import { ProgressTrackType , Track } from "@utils/simulation/Track.js";
 import _ from "lodash-es";
 
 
@@ -27,12 +24,12 @@ export enum BurnStrategy {
   MaximizeProgress
 }
 
-export interface Stat {
-  Label: string;
+export interface IStat {
+  Name: string;
   Value: number;
 }
 
-export interface StatusEffects {
+export interface IPCEffects {
   /**
    * A bonus to be added to the next roll.
    */
@@ -44,13 +41,13 @@ export interface StatusEffects {
 }
 
 
-export interface PlayerCharacter {
+export interface IPlayerCharacter {
   name: string;
   momentum: number;
   impacts: string[];
   stats: Record<Stat,number>;
   meters: Record<PlayerConditionMeter,number>
-  status: StatusEffects
+  effects: IPCEffects
   strategy: ProgressStrategy
 }
 
@@ -62,7 +59,7 @@ export interface PlayerCharacter {
 // preset die
 // types/IDs of move to fire on?
 
-export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
+export class PlayerCharacter implements IPlayerCharacter {
   name: string;
   private _momentum: number;
   strategy: ProgressStrategy;
@@ -79,20 +76,7 @@ export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
     return MOMENTUM_MAX - this.impacts.length;
   }
   toString(): string {
-    const content = [
-      bold(this.name.toUpperCase()),
-      `${red(bold("Health"))} ${this.meters.Health}`,
-      `${blue(bold("Spirit"))} ${this.meters.Spirit}`,
-      `${green(bold("Supply"))} ${this.meters.Supply}`,
-      `${yellow(bold("Momentum"))} ${this.momentum > -1 ? "+" : ""}${this.momentum}`.padEnd(4)
-    ];
-    const border = content.map(item => strip(item).replaceAll(/./ig, "─"));
-    const tbl = [
-      "┌─"+border.join("─┬─")+"─┐",
-      "│ "+content.join(" │ ")+" │",
-      "└─"+border.join("─┴─")+"─┘",
-    ].join("\n");
-    return tbl.toString();
+    return `${this.name}: 🩸${this.meters.Health} ✨${this.meters.Spirit} 🎒${this.meters.Supply} 🌀${this.momentum > -1 ? "+" : ""}${this.momentum}`;
   }
   stats: Record<Stat, number>;
   meters: Record<PlayerConditionMeter, number>;
@@ -112,15 +96,14 @@ export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
     this._momentum = momentum;
     this.strategy = strategy;
   }
-  status: StatusEffects = { add: 0, inControl: false };
-  pickMoveChoice(outcomeEffect: NumericOutcome<MoveOutcome>, isMatch: boolean, progressTrackType: ProgressTrackType): OutcomeEffectHash {
+  effects: IPCEffects = { add: 0, inControl: false };
+  selectMoveChoice(outcomeEffect: NumericOutcome<MoveOutcome>, isMatch: boolean, progressTrack: ProgressTrack): NumericOutcomeChoice[] {
     const options = isMatch && outcomeEffect.chooseOnMatch ? outcomeEffect.chooseOnMatch : outcomeEffect.choose;
-    let results: NumericOutcomeChoice[];
     if (options.amount > options.from.length) {
       throw new Error("Not enough options to choose from");
     }
     let priorityData: OutcomeEffectType[];
-    switch (progressTrackType) {
+    switch (progressTrack.type) {
       case ProgressTrackType.SceneChallenge:
         priorityData = sceneChallengePriorities[this.strategy];
         break;
@@ -128,31 +111,32 @@ export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
         throw new Error("NYI");
     }
     if (options.amount === options.from.length) {
-      results=options.from;
+      return options.from;
     }
     let priorities = _.clone(priorityData);
     // exclude momentum if it's full
     if (this.momentum === this.momentumMax) {
       priorities = priorities.filter(item => item !== OutcomeEffectType.momentum);
     }
-    results = [];
+    const result: NumericOutcomeChoice[] = [];
 
-    while (results.length < options.amount) {
+    while (result.length < options.amount) {
       const choices = _.clone(options.from);
       for (let i = 0; i < priorities.length; i++) {
         const effect = priorities[i];
 
         if (choices.some(item => item[effect] > 0)) {
           const selection = _.pull(choices, _.minBy(choices, option => option[effect]))[0] as NumericOutcomeChoice;
-          results.concat(selection);
+          result.concat(selection);
           ;
         }
       }
     }
-    return new OutcomeEffectHash(...results);
+    return result;
+    // TODO: build to single object so its easier to compare for priorities?
+    // running that for every move seems like A Lot, though. hmm.
   }
-  canBurnMomentumOn(roll: IronswornRoll) {
-    console.log("Checking momentum burn availability");
+  canBurnMomentumOn(roll: IIronswornRoll) {
     if (roll.type !== RollType.Action) {
       return false;
     }
@@ -164,71 +148,66 @@ export class PlayerCharacter implements PlayerCharacter, AppliesMoveEffect {
   resetMomentum() {
     this._momentum = this.momentumReset;
   }
-  applyResult(data: OutcomeEffectHash) {
-    // const toApply=this.selectMoveChoice(roll.outcomeEffect,roll.isMatch,progressTrackType);
-    _.forEach(data, (value,key) => {
-      switch (key as OutcomeEffectType) {
-        case OutcomeEffectType.add:
-          this.status.add += value as number;
-          break;
-        case OutcomeEffectType.momentum:
-          this.momentum += value as number;
-          break;
-        case OutcomeEffectType.inControl:
-          this.status.inControl = value as boolean;
-          break;
-        default:
-          break;
-      }
+  applyResult(roll: IronswornRoll, progressTrack: ProgressTrack) {
+    const toApply= this.selectMoveChoice(roll.outcomeEffect,roll.isMatch,progressTrack);
+    toApply.forEach(effect => {
+      this.momentum += effect.momentum;
+      this.effects.add += effect.add;
     });
   }
-  decideMomentum(roll: IronswornRoll, alwaysBurnAt: number = this.momentumMax, progressTrack: ProgressTrack, log: boolean = false) {
-    log && console.log("Checking whether momentum can be burnt.");
+  decideMomentum(roll: IronswornRoll, alwaysBurnAt: number = this.momentumMax, progressTrack?: IProgressTrack | undefined, log: boolean = false) {
     let useMomentumFlag = false;
     if (this.canBurnMomentumOn(roll)) {
-      log && console.log("Momentum burn available.");
       if (alwaysBurnAt && this.momentum >= alwaysBurnAt) {
         useMomentumFlag = true;
       }
-      const rollWithMomentum = roll.outcomeEffectForScore(this.momentum,roll.isMatch);
-      const currentOutcome = this.pickMoveChoice(roll.outcomeEffect, roll.isMatch, progressTrack.type);
-      const momentumOutcome = this.pickMoveChoice(rollWithMomentum, roll.isMatch, progressTrack.type);
+      const currentResult = _.cloneDeep(roll.outcomeEffect);
+      const newResult = _.cloneDeep(roll.outcomeEffectForScore(this.momentum,roll.isMatch));
 
-
-      // could merge to a single object for easy checking.
-      // alternately, iterate over them and tabulate?
-      // that might be the best way to apply
-      if (currentOutcome.markProgress < momentumOutcome.markProgress) {
-        // if the new result marks more progress, burn to take it
-        useMomentumFlag = true;
-      }
-      if (progressTrack.clock) {
-        if ((currentOutcome.tickClock + progressTrack.clock.filled) >= progressTrack.clock.segments) {
-          // if the clock would be filled, use momentum since there's nothing to lose
+      if (progressTrack) {
+        // could merge to a single object for easy checking.
+        // alternately, iterate over them and tabulate?
+        // that might be the best way to apply
+        if (currentResult.markProgress < newResult.markProgress) {
+          // if the new result marks more progress, burn to take it
           useMomentumFlag = true;
         }
-        if (currentOutcome.tickClock > momentumOutcome.tickClock) {
-          // if the new result ticks fewer segments, burn to avoid
-          useMomentumFlag = true;
+        if (progressTrack.clock) {
+          if ((currentResult.clock + progressTrack.clock.filled) >= progressTrack.clock.segments) {
+            // if the clock would be filled, use momentum since there's nothing to lose
+            useMomentumFlag = true;
+          }
+          if (currentResult.clock > newResult.clock) {
+            // if the new result ticks fewer segments, burn to avoid
+            useMomentumFlag = true;
+          }
         }
       }
     }
     return useMomentumFlag;
   }
-  evaluateActionRoll({ outcomesData, stat, progressTrack, log = false, name = "Move" }: { outcomesData: NumericOutcomes; stat: number; progressTrack: ProgressTrack; log?: boolean; name?: string }) {
+  evaluateActionRoll({ resultsData, stat, progressTrack, log = false, name = "Move" }: { resultsData: INumericOutcomes; stat: number; progressTrack?: ProgressTrack; log?: boolean; name?: string }) {
     const roll = new ActionRoll({
-      stat, add: this.status.add.valueOf(), outcomesData
+      stat, add: this.effects.add.valueOf(), resultsData
     });
-    log &&  console.log(`${this.name} rolls ${name}. ${roll.toString()}`);
-    if (this.status.add > 0) {this.status.add = 0;}
+    if (log) {
+      let msg = `${this.name} rolls ${name}`;
+      if (roll.add) {
+        msg+= ` (adds: +${roll.add})`;
+      }
+      console.log(`${msg}. ${roll.toString()}`);
+    }
+    if (this.effects.add > 0) {this.effects.add = 0;}
     if (this.decideMomentum(roll, this.momentumMax, progressTrack, log)) {
       roll.burntMomentum = this.momentum.valueOf();
       this.resetMomentum();
-
-      log && console.log(`${this.name} burns ${this.momentum} momentum for a ${MoveOutcome[roll.outcome]}!`);
+      if (log){
+        console.log(`${this.name} burns ${this.momentum} momentum for a ${MoveOutcome[roll.outcome]}!`);
+      }
     }
-    const outcomeEffect = this.pickMoveChoice(roll.outcomeEffect, roll.isMatch, progressTrack.type);
-
-    [ this, progressTrack ].forEach(item => item.applyResult(outcomeEffect));
+    this.applyResult(roll.outcomeEffect);
+    if (progressTrack) {
+      progressTrack.applyResult(roll.outcomeEffect);
+    }
   }
 }

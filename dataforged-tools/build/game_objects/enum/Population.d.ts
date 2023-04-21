@@ -1,12 +1,12 @@
 /**
  * Set by Oracles / Settlements / Population
- * @public
+ * @alpha
  */
 export declare enum Population {
-    Few = "few",
-    Dozens = "dozens",
-    Hundreds = "hundreds",
-    Thousands = "thousands",
-    TensOfThousands = "tens_of_thousands"
+    Few = "Few",
+    Dozens = "Dozens",
+    Hundreds = "Hundreds",
+    Thousands = "Thousands",
+    TensOfThousands = "Tens of thousands"
 }
 //# sourceMappingURL=Population.d.ts.map

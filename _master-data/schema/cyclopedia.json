@@ -1,0 +1,163 @@
+{
+  "type": "object",
+  "properties": {
+    "Regions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/IIronswornRegionYaml" },
+      "title": "Regions"
+    }
+  },
+  "defaultProperties": [],
+  "additionalProperties": false,
+  "definitions": {
+    "IIronswornRegionYaml": {
+      "title": "IIronswornRegionYaml",
+      "type": "object",
+      "properties": {
+        "Source": {
+          "$ref": "#/definitions/ISource",
+          "description": "Information on this item's source.",
+          "title": "Source"
+        },
+        "Name": {
+          "description": "The item's internal name. Should be unique among its sibling elements, as this key is often used (along with the object's ancestors) to generate its $id.\n\nIf the item has Display.Title, that should be preferred for most user-facing labels.",
+          "type": "string",
+          "title": "Name"
+        },
+        "Display": {
+          "$ref": "#/definitions/IDisplay",
+          "description": "Data relevant to this item's display/rendering.",
+          "title": "Display"
+        },
+        "$id": {
+          "description": "The item's unique string ID.",
+          "pattern": "^Ironsworn/Regions/[A-z_-]$",
+          "type": "string",
+          "title": "$id"
+        },
+        "Tags": {
+          "description": "Arbitrary strings tags that describe optional metadata that doesn't fit in other properties.",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Tags"
+        },
+        "Description": {
+          "description": "A user-facing markdown description of the item, consisting of one or more paragraphs.",
+          "type": "string",
+          "title": "Description"
+        },
+        "Summary": {
+          "description": "A user-facing markdown summary of the item.",
+          "type": "string",
+          "title": "Summary"
+        },
+        "Quest Starter": {
+          "description": "A markdown string describing the quest starter associated with this item.",
+          "type": "string",
+          "title": "Quest Starter"
+        },
+        "Features": {
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Features"
+        },
+        "_idFragment": { "type": "string", "title": "_idFragment" }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": [
+        "Description",
+        "Features",
+        "Name",
+        "Quest Starter",
+        "Source",
+        "Summary"
+      ]
+    },
+    "ISource": {
+      "description": "Interface representing data on the game's source.",
+      "title": "ISource",
+      "type": "object",
+      "properties": {
+        "Title": {
+          "$ref": "#/definitions/SourceTitle",
+          "description": "The title of the source.",
+          "title": "Title"
+        },
+        "Date": {
+          "description": "The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.",
+          "pattern": "^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$",
+          "type": "string",
+          "title": "Date"
+        },
+        "Page": {
+          "description": "The page on which the item appears most prominently.",
+          "type": "integer",
+          "title": "Page"
+        },
+        "Url": {
+          "description": "The URL where the source is available.",
+          "pattern": "^https?://.*$",
+          "type": "string",
+          "title": "Url"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false,
+      "required": ["Title"]
+    },
+    "SourceTitle": {
+      "description": "Enumerates valid sourcebook titles.",
+      "title": "SourceTitle",
+      "enum": [
+        "Custom",
+        "Ironsworn Assets",
+        "Ironsworn Bonus Assets (July 2020)",
+        "Ironsworn Rulebook",
+        "Ironsworn: Delve",
+        "Ironsworn: Starforged Assets",
+        "Ironsworn: Starforged Rulebook",
+        "Sundered Isles Preview"
+      ],
+      "type": "string"
+    },
+    "IDisplay": {
+      "description": "Interface for data relevant to an item's display/rendering.",
+      "title": "IDisplay",
+      "$ref": "#/definitions/Partial<IDisplay>"
+    },
+    "Partial<IDisplay>": {
+      "title": "Partial<IDisplay>",
+      "type": "object",
+      "properties": {
+        "Icon": {
+          "description": "A URL pointing to a single SVG icon.",
+          "pattern": "^\\.\\./\\.\\./img/vector/[A-z-_0-9/]+\\.svg$",
+          "type": "string",
+          "title": "Icon"
+        },
+        "Images": {
+          "description": "An array of URLs pointing to one or more WEBP images.",
+          "pattern": "^\\.\\./\\.\\./img/raster/[A-z-_0-9/]+\\.webp$",
+          "type": "array",
+          "items": { "type": "string" },
+          "title": "Images"
+        },
+        "Color": {
+          "description": "A hex color associated with this item, for use as e.g. an accent color in its display.",
+          "pattern": "^#[A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9][A-f0-9]$",
+          "type": "string",
+          "title": "Color"
+        },
+        "Title": {
+          "description": "The title of this item as it appears printed in the rulebook. Intended for use as the item's header, label, etc.",
+          "type": "string",
+          "title": "Title"
+        }
+      },
+      "defaultProperties": [],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

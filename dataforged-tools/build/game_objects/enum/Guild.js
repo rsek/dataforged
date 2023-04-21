@@ -1,23 +1,23 @@
 /**
  * Set by Oracles / Factions / Guild
- * @public
+ * @alpha
  */
 var Guild;
 (function (Guild) {
-    Guild["Assassins"] = "assassins";
-    Guild["BountyHunters"] = "bounty_hunters";
-    Guild["Couriers"] = "couriers";
-    Guild["Courtesans"] = "courtesans";
-    Guild["Engineers"] = "engineers";
-    Guild["Healers"] = "healers";
-    Guild["Industrialists"] = "industrialists";
-    Guild["Mercenaries"] = "mercenaries";
-    Guild["Merchants"] = "merchants";
-    Guild["Mystics"] = "mystics";
-    Guild["Navigators"] = "navigators";
-    Guild["Peacekeepers"] = "peacekeepers";
-    Guild["Researchers"] = "researchers";
-    Guild["Spies"] = "spies";
+    Guild["Assassins"] = "Assassins";
+    Guild["BountyHunters"] = "Bounty Hunters";
+    Guild["Couriers"] = "Couriers";
+    Guild["Courtesans"] = "Courtesans";
+    Guild["Engineers"] = "Engineers";
+    Guild["Healers"] = "Healers";
+    Guild["Industrialists"] = "Industrialists";
+    Guild["Mercenaries"] = "Mercenaries";
+    Guild["Merchants"] = "Merchants";
+    Guild["Mystics"] = "Mystics";
+    Guild["Navigators"] = "Navigators";
+    Guild["Peacekeepers"] = "Peacekeepers";
+    Guild["Researchers"] = "Researchers";
+    Guild["Spies"] = "Spies";
 })(Guild || (Guild = {}));
 export { Guild };
 //# sourceMappingURL=Guild.js.map

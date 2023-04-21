@@ -1,13 +1,13 @@
 /**
  * Set by Oracles / Planets / * / Atmosphere
- * @public
+ * @alpha
  */
 enum Atmosphere {
-  NoneThin = 'none_thin',
-  Toxic = 'toxic',
-  Corrosive = 'corrosive',
-  Marginal = 'marginal',
-  Breathable = 'breathable',
-  Ideal = 'ideal'
+  NoneThin = "None / Thin",
+  Toxic = "Toxic",
+  Corrosive = "Corrosive",
+  Marginal = "Marginal",
+  Breathable = "Breathable",
+  Ideal = "Ideal"
 }
-export { Atmosphere }
+export { Atmosphere };

@@ -1,12 +1,12 @@
 /**
  * Set by Oracles / Factions / Type
- * @public
+ * @alpha
  */
 var FactionType;
 (function (FactionType) {
-    FactionType["FringeGroup"] = "fringe_group";
-    FactionType["Dominion"] = "dominion";
-    FactionType["Guild"] = "guild";
+    FactionType["FringeGroup"] = "Fringe Group";
+    FactionType["Dominion"] = "Dominion";
+    FactionType["Guild"] = "Guild";
 })(FactionType || (FactionType = {}));
 ;
 export { FactionType };

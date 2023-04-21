@@ -1,11 +1,11 @@
 /**
  * Set by Oracles / Settlements / Population
- * @public
+ * @alpha
  */
 export enum Population {
-  Few = 'few',
-  Dozens = 'dozens',
-  Hundreds = 'hundreds',
-  Thousands = 'thousands',
-  TensOfThousands = 'tens_of_thousands'
+  Few="Few",
+  Dozens="Dozens",
+  Hundreds="Hundreds",
+  Thousands="Thousands",
+  TensOfThousands="Tens of thousands"
 }

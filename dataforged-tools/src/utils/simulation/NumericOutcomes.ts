@@ -1,4 +1,4 @@
-import { MoveOutcome } from "@json_out";
+import { MoveOutcome } from "@json_out/index.js";
 import _ from "lodash-es";
 
 
@@ -10,32 +10,32 @@ export enum OutcomeEffectType {
   inControl = "inControl"
 }
 
-export interface NumericOutcome<T extends MoveOutcome> {
-  outcome?: T|undefined,
-  choose: NumericOutcomeParams
-  chooseOnMatch?: NumericOutcomeParams | undefined;
+export interface INumericOutcome<T extends MoveOutcome> {
+  outcome: T,
+  choose: INumericOutcomeParams
+  chooseOnMatch?: INumericOutcomeParams | undefined;
 }
 
-export interface NumericOutcomeParams {
+export interface INumericOutcomeParams {
     amount?: number | undefined;
-    from: NumericOutcomeChoice[];
+    from: Partial<INumericOutcomeChoice>[];
 }
 
-export class NumericOutcomeParams implements NumericOutcomeParams {
+export class NumericOutcomeParams implements INumericOutcomeParams {
   amount: number=1;
   from: NumericOutcomeChoice[];
-  constructor(outcome: MoveOutcome,{ amount=1, from }: NumericOutcomeParams) {
+  constructor(outcome: MoveOutcome,{ amount=1, from }: INumericOutcomeParams) {
     this.amount = amount;
     this.from = from.map(item => new NumericOutcomeChoice(outcome, item));
   }
 }
 
-export class NumericOutcome<T extends MoveOutcome> implements NumericOutcome<T> {
+export class NumericOutcome<T extends MoveOutcome> implements INumericOutcome<T> {
   name: string;
   outcome: T;
   choose: NumericOutcomeParams;
   chooseOnMatch?: NumericOutcomeParams | undefined;
-  constructor(moveName: string, outcome: T, { choose, chooseOnMatch }: NumericOutcome<T>) {
+  constructor(moveName: string, { outcome, choose, chooseOnMatch }: INumericOutcome<T>) {
     this.name = moveName;
     this.outcome = outcome;
     this.choose = new NumericOutcomeParams(outcome, choose);
@@ -45,7 +45,7 @@ export class NumericOutcome<T extends MoveOutcome> implements NumericOutcome<T> 
   }
 }
 
-export interface NumericOutcomeChoice {
+export interface INumericOutcomeChoice {
   [OutcomeEffectType.add]?: number;
   [OutcomeEffectType.tickClock]?: number;
   [OutcomeEffectType.markProgress]?: number;
@@ -62,7 +62,7 @@ export class NumericOutcomeChoice {
   [OutcomeEffectType.markProgress] = 0;
   [OutcomeEffectType.momentum] = 0;
   [OutcomeEffectType.inControl] = false;
-  constructor(outcome: MoveOutcome, { add=0, tickClock=0, markProgress=0, momentum=0, inControl=(outcome === MoveOutcome["Strong Hit"] ? true : false) }: NumericOutcomeChoice) {
+  constructor(outcome: MoveOutcome, { add=0, tickClock=0, markProgress=0, momentum=0, inControl=(outcome === MoveOutcome["Strong Hit"] ? true : false) }: INumericOutcomeChoice) {
     this[OutcomeEffectType.add] = add;
     this[OutcomeEffectType.tickClock] = tickClock;
     this[OutcomeEffectType.markProgress] = markProgress;
@@ -71,52 +71,19 @@ export class NumericOutcomeChoice {
   }
 }
 
-export interface NumericOutcomes extends Record<keyof typeof MoveOutcome, NumericOutcome<MoveOutcome>> { NumericOutcomes  NumericOutcomes  NumericOutcomes
+export interface INumericOutcomes extends Record<keyof typeof MoveOutcome, INumericOutcome<MoveOutcome>> {
   "Strong Hit": INumericOutcome<typeof MoveOutcome["Strong Hit"]>;
   "Weak Hit": INumericOutcome<typeof MoveOutcome["Weak Hit"]>;
   "Miss": INumericOutcome<typeof MoveOutcome.Miss>;
 }
 
-export class NumericOutcomes implements NumericOutcomes {
+export class NumericOutcomes implements INumericOutcomes {
   "Strong Hit": NumericOutcome<typeof MoveOutcome["Strong Hit"]>;
   "Weak Hit": NumericOutcome<typeof MoveOutcome["Weak Hit"]>;
   "Miss": NumericOutcome<typeof MoveOutcome.Miss>;
-  constructor(moveName: string, data: Omit<NumericOutcomes, "name">) {
-    this["Strong Hit"] = new NumericOutcome(moveName,MoveOutcome["Strong Hit"],data["Strong Hit"]);
-    this["Weak Hit"] = new NumericOutcome(moveName,MoveOutcome["Weak Hit"],data["Weak Hit"]);
-    this["Miss"] = new NumericOutcome(moveName,MoveOutcome["Miss"],data["Miss"]);
-  }
-}
-
-export interface OutcomeEffectHash extends Record<OutcomeEffectType, number|boolean> {
-  [OutcomeEffectType.add]: number;
-  [OutcomeEffectType.tickClock]: number;
-  [OutcomeEffectType.markProgress]: number;
-  [OutcomeEffectType.momentum]: number;
-  [OutcomeEffectType.inControl]: boolean;
-}
-
-export class OutcomeEffectHash implements OutcomeEffectHash {
-  [OutcomeEffectType.add]: number=0;
-  [OutcomeEffectType.tickClock]: number=0;
-  [OutcomeEffectType.markProgress]: number=0;
-  [OutcomeEffectType.momentum]: number=0;
-  [OutcomeEffectType.inControl]: boolean=false;
-  addEffect(...items: NumericOutcomeChoice[]) {
-    items.forEach(item => {
-      _.mergeWith<OutcomeEffectHash, NumericOutcomeChoice>(this, item, (value:number|boolean, srcValue: typeof value) => {
-        if (typeof value !== typeof srcValue) {
-          throw new Error("value and srcValue aren't the same primitive type!");
-        }
-        if (typeof value === "number" && typeof srcValue === "number") {
-          value += srcValue;
-        } else if (typeof value === "boolean" && typeof srcValue === "boolean") {
-          value = srcValue;
-        }
-      });
-    });
-  }
-  constructor(...items: NumericOutcomeChoice[]) {
-    this.addEffect(...items);
+  constructor(moveName: string, data: Omit<INumericOutcomes, "name">) {
+    this["Strong Hit"] = new NumericOutcome<typeof MoveOutcome["Strong Hit"]>(moveName, data["Strong Hit"]);
+    this["Weak Hit"] = new NumericOutcome<typeof MoveOutcome["Weak Hit"]>(moveName, data["Weak Hit"]);
+    this["Miss"] = new NumericOutcome<typeof MoveOutcome["Miss"]>(moveName, data["Miss"]);
   }
 }

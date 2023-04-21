@@ -1,11 +1,11 @@
 /**
  * Set by Oracles / Factions / Type
- * @public
+ * @alpha
  */
 declare enum FactionType {
-    FringeGroup = "fringe_group",
-    Dominion = "dominion",
-    Guild = "guild"
+    FringeGroup = "Fringe Group",
+    Dominion = "Dominion",
+    Guild = "Guild"
 }
 export { FactionType };
 //# sourceMappingURL=FactionType.d.ts.map

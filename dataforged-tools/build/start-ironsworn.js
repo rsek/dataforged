@@ -1,58 +1,41 @@
-import 'source-map-support/register.js';
-import { JSON_PATHS } from "./constants";
-import { Game } from "./schema";
-import { buildDataforged } from "./utils/builders/buildDataforged.js";
+import "source-map-support/register.js";
+import { JSON_PATHS } from "./constants/index.js";
+import { Gamespace } from "./json_out/index.js";
+import { buildDataforged } from "./utils/buildDataforged.js";
 import { writeJson } from "./utils/io/writeJSON.js";
-import _ from 'lodash-es';
-const data = buildDataforged(Game.Ironsworn);
+import _ from "lodash-es";
+const data = buildDataforged(Gamespace.Ironsworn);
 _.forEach(data, (value, key) => {
-    if (typeof value !== 'string' && typeof value !== 'undefined') {
-        let fileName = '';
+    if (typeof value !== "string" && typeof value !== "undefined") {
+        let fileName = "";
         switch (key) {
-            case 'asset_types': {
-                fileName = 'assets';
+            case "Asset Types": {
+                fileName = "assets";
                 break;
             }
-            case 'encounters': {
-                fileName = 'encounters';
+            case "Encounters": {
+                fileName = "encounters";
                 break;
             }
-            case 'oracle_sets': {
-                fileName = 'oracles';
+            case "Oracle Categories": {
+                fileName = "oracles";
                 break;
             }
-            case 'move_categories': {
-                fileName = 'moves';
+            case "Move Categories": {
+                fileName = "moves";
                 break;
             }
-            case 'setting_truths': {
-                fileName = 'truths';
-                break;
-            }
-            case 'delve_site_domains': {
-                fileName = 'delve-site-domains';
-                break;
-            }
-            case 'delve_site_themes': {
-                fileName = 'delve-site-themes';
-                break;
-            }
-            case 'ironlands_regions': {
-                fileName = 'regions';
+            case "Setting Truths": {
+                fileName = "truths";
                 break;
             }
             default:
                 throw new Error(`Unknown key in game data root object: ${key}`);
         }
-        JSON_PATHS.forEach(path => {
-            const newPath = path + `/ironsworn/${fileName}.json`;
-            // eslint-disable-next-line no-console
-            console.log(`[StartIronsworn] Writing json to ${newPath}`);
-            writeJson(newPath, value);
-        });
+        JSON_PATHS.forEach(path => writeJson(path + `/ironsworn/${fileName}.json`, value));
     }
 });
-JSON_PATHS.forEach(path => writeJson(path + '/ironsworn/datasworn.json', data));
+JSON_PATHS.forEach(path => writeJson(path + "/ironsworn/datasworn.json", data));
 // buildOracleMarkdown(data.oracles, MD_PATH);
 // buildMoveMarkdown(data.moves, MD_PATH);
 // const outRoot = "img";
