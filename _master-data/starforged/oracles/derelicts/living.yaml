@@ -1,0 +1,80 @@
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      living:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          zone: Living
+        title:
+          canonical: Living
+        source:
+          page: 355
+        tables:
+          area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Food storage
+                - Galley or kitchen
+                - Laundry
+                - Locker room or storage
+                - Mess hall or dining
+                - Observation lounge
+                - Quarters (communal)
+                - Quarters (individual)
+                - Restroom or showers
+                - Sleeping pods
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Abandoned pet
+                - Audible music
+                - Cherished personal item
+                - Failed barricade
+                - Half-eaten food
+                - Messages from loved ones
+                - Ransacked belongings
+                - Remains of the dead
+                - Scuttling vermin
+                - Shrine or altar
+                - Unusual art
+                - *result:Descriptor+Focus
+          peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Booby trap
+                - Distressing written message
+                - Disturbing evidence of exploitive living conditions
+                - Dreadful scene of death or violence
+                - Lured into danger by signs of life
+                - Recorded message reveals a threat or complication
+                - Sealed door or hatch blocks access
+                - Signs of unwelcome invaders
+                - Unsettling sound or disturbance
+                - *result:Action+Theme
+                - *result:RollTwice
+          opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Culturally significant object or artifact
+                - Hidden stash of valuable contraband
+                - Intact barricade or protected area
+                - Recorded message reveals helpful aspects of this site
+                - Useful personal gear

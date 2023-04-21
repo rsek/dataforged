@@ -1,0 +1,137 @@
+source:
+  authors:
+    - Shawn Tomkin
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0/
+oracle_sets:
+  planets:
+    title:
+      canonical: Planets
+    source:
+      date: "050622"
+    sets:
+      ice:
+        _templateOracleSet: *template.category:Planet
+        _templateVars:
+          planetary_class: Ice
+        title:
+          canonical: Ice World
+        display:
+          images: *images:IceWorld
+        source:
+          page: 311
+        summary: A rugged, frozen world—locked in an unending winter.
+        sample_names:
+          - Beira
+          - Boreas
+          - Caradhras
+          - Cicero
+          - Demetria
+          - Enten
+          - Fissure
+          - Frost
+          - Gelida
+          - Jotunn
+          - Kanna
+          - Karn
+          - Kheimon
+          - Moroz
+          - Nix
+          - Olwen
+          - Osolok
+          - Taiga
+          - Thule
+          - Varnholme
+        sets:
+          settlements:
+            _templateOracleSet: *template.info:Planet.Settlements
+            tables:
+              terminus:
+                _templateOracleTable: *template.info:Planet.Settlements.Terminus
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 50] # None
+                    - [51, 60] # Orbital settlement
+                    - [61, 80] # Planetside settlement
+                    - [81, 92] # Multiple settlements
+                    - [93, 100] # Settlements in conflict
+              outlands:
+                _templateOracleTable: *template.info:Planet.Settlements.Outlands
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 75] # None
+                    - [76, 83] # Orbital settlement
+                    - [84, 95] # Planetside settlement
+                    - [96, 98] # Multiple settlements
+                    - [99, 100] # Settlements in conflict
+              expanse:
+                _templateOracleTable: *template.info:Planet.Settlements.Expanse
+                _templateTableRows:
+                  content: *template.content:Planet.Settlements
+                  rolls:
+                    - [1, 90] # None
+                    - [91, 96] # Orbital settlement
+                    - [97, 100] # Planetside settlement
+                    - [null, null] # Multiple settlements
+                    - [null, null] # Settlements in conflict
+        tables:
+          atmosphere:
+            _templateOracleTable: *template.info:Planet.Atmosphere
+            _templateTableRows:
+              content: *template.content:Planet.Atmosphere
+              rolls:
+                - [1, 15] # None / thin
+                - [16, 35] # Toxic
+                - [36, 40] # Corrosive
+                - [41, 70] # Marginal
+                - [71, 95] # Breathable
+                - [96, 100] # Ideal
+
+          observed_from_space:
+            _templateOracleTable: *template.info:Planet.ObservedFromSpace
+            _templateTableRows:
+              rolls: *template.rolls:Planet.ObservedFromSpace
+              content:
+                - Feeble sunlight
+                - Supersized ice volcano
+                - Frozen oceans
+                - Vibrantly colored ice
+                - Rocky glacial islands
+                - World-spanning ice canyon
+                - Snowbound mountains
+                - Sky-breaching geysers
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Orbital
+          planetside_feature:
+            _templateOracleTable: *template.info:Planet.PlanetsideFeature
+            _templateTableRows:
+              rolls: *template.rolls:Planet.PlanetsideFeature
+              content:
+                - Abyssal ice fissures
+                - Blinding snow storms
+                - Clusters of ice spikes
+                - Colossal ice caves
+                - Glistening ice spires
+                - Massive snow drifts
+                - Preserved carcasses
+                - Rocky islands amid icy wastes
+                - Shattered plains of pack ice
+                - Steaming hot springs
+                - Subsurface liquid oceans
+                - Vibrant auroras
+                - Wind-carved ice formations
+                - *result:Descriptor+Focus
+                - *result:PrecursorVault.Planetside
+          life:
+            _templateOracleTable: *template.info:Planet.Life
+            _templateTableRows:
+              content: *template.content:Planet.Life
+              rolls:
+                - [1, 20] # None
+                - [21, 40] # Extinct
+                - [41, 70] # Scarce
+                - [71, 90] # Diverse
+                - [91, 97] # Bountiful
+                - [98, 100] # Overrun

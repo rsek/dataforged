@@ -1,0 +1,80 @@
+source:
+  authors: [Shawn Tomkin]
+  title: "Ironsworn: Starforged Rulebook"
+  license: https://creativecommons.org/licenses/by-sa/4.0/
+oracle_sets:
+  derelicts:
+    title:
+      canonical: Derelicts
+    source:
+      date: "050622"
+    sets:
+      engineering:
+        _templateOracleSet: *template.category:Zone
+        _templateVars:
+          zone: Engineering
+        title:
+          canonical: Engineering
+        source:
+          page: 354
+        tables:
+          area:
+            _templateOracleTable: *template.info:Zone.Area
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Area
+              content:
+                - Control room
+                - Engine room or power core
+                - Engineering offices
+                - Equipment storage
+                - Fuel or coolant tanks
+                - Life support
+                - Maintenance tube
+                - Vehicle bay or garage
+                - Water processing
+                - Workshop
+                - *result:NewZone
+                - *result:NewZoneViaAccess
+          feature:
+            _templateOracleTable: *template.info:Zone.Feature
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Feature
+              content:
+                - Cluttered workbench
+                - Control terminal
+                - Crane or lift
+                - Disassembled equipment
+                - Flickering status monitors
+                - Jury-rigged equipment
+                - Multilevel layout
+                - Pipes and valves
+                - Sharp ozone smell
+                - Unfinished project
+                - Utility bots
+                - *result:Descriptor+Focus
+          peril:
+            _templateOracleTable: *template.info:Zone.Peril
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Peril
+              content:
+                - Corrosive leak
+                - Erratic utility bots
+                - Failing equipment requires a specific part or skill
+                - Fire or energy surge
+                - Precarious or broken path
+                - Radioactive hotspot
+                - Sabotaged equipment
+                - Shrouded atmosphere conceals a lurking foe
+                - Unstable or failing power core
+                - *result:Action+Theme
+                - *result:RollTwice
+          opportunity:
+            _templateOracleTable: *template.info:Zone.Opportunity
+            _templateTableRows:
+              rolls: *template.rolls:Zone.Opportunity
+              content:
+                - Advanced or experimental equipment
+                - Chance to restore power or function
+                - Helpful plans or schematics
+                - Helpful utility bot
+                - Useful tool or device
