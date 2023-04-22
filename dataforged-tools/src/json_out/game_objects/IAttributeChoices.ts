@@ -1,4 +1,4 @@
-import type { AttributeKey, AttributeValue, IAttribute } from "@json_out/index.js";
+import type { AttributeKey } from "@json_out/index.js";
 /**
  * @public
  */

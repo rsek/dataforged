@@ -12,6 +12,7 @@ export class Source {
             throw Error("Unable to find title in source or ancestor source objects.");
         }
         this.Title = merged.Title;
+        this.Authors = merged.Authors ?? ["Shawn Tomkin"];
         this.Date = merged.Date;
         this.Page = merged.Page;
         this.Url = merged.Url;

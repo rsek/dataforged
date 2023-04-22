@@ -1825,17 +1825,15 @@ Move Categories:
     Moves:
       - Name: Begin the Scene
         Trigger:
-          Text: When you face an extended or complex challenge outside of a fight...
+          Text: When you face an extended or complex challenge...
         Text: |-
-          **When you face an extended or complex challenge outside of a fight**, name your objective and set its rank as formidable.
+          **When you face an extended or complex challenge**, name your objective and choose a rank as appropriate to the situation.
 
-          Then, envision the situation and choose the number of segments for the scene’s tension clock.
+            * You have a clear advantage: Troublesome
+            * You are ready to act: Dangerous
+            * You are unprepared or outmatched: Formidable
 
-            * You are severely disadvantaged: Four segments
-            * You are on equal footing: Six segments
-            * You have strong advantage: Eight segments
-
-          When the clock is full, you must [Finish the Scene](Starforged/Moves/Scene_Challenge/Finish_the_Scene).
+          Then, activate a 4-segment tension clock and [Face Danger](Starforged/Moves/Scene_Challenge/Face_Danger) or [Secure an Advantage](Starforged/Moves/Scene_Challenge/Secure_an_Advantage) to take action.
         Source:
           Page: 239
       - Name: Face Danger
@@ -1918,7 +1916,7 @@ Move Categories:
             * With deception, stealth, or trickery: Roll +shadow
             * With expertise, focus, or observation: Roll +wits
 
-          On a **strong hit**, take both. On a **strong hit with a match**, take both and mark mark progress. On a **weak hit**, choose one.
+          On a **hit**, you are successful. On a **strong hit**, take both. On a **strong hit with a match**, take both and mark progress. On a **weak hit**, choose one.
 
             * Take +2 momentum
             * Add +1 on your next move (not a progress move)
@@ -1926,12 +1924,12 @@ Move Categories:
           On a **miss**, you fail or your assumptions betray you. Fill a clock segment and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price). On a **miss with a match**, fill two segments and [Pay the Price](Starforged/Moves/Fate/Pay_the_Price).
         Outcomes:
           Strong Hit:
-            Text: Take +2 momentum and add +1 on your next move (not a progress move).
+            Text: You are successful. Take +2 momentum and add +1 on your next move (not a progress move).
             With a Match:
-              Text: Mark progress, take +2 momentum, and add +1 on your next move (not a progress move).
+              Text: You are successful. Mark progress, take +2 momentum, and add +1 on your next move (not a progress move).
           Weak Hit:
             Text: |-
-              Choose one.
+              You are successful. Choose one.
 
                 * Take +2 momentum
                 * Add +1 on your next move (not a progress move)

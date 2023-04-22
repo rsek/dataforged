@@ -16,7 +16,7 @@ export class MoveCategory implements IMoveCategory {
   Display: MoveCategoryDisplay;
   Optional: boolean;
   constructor(json: IMoveCategoryYaml, gamespace: Gamespace,...ancestorSourceJson: ISource[]) {
-    this.$id = `${gamespace}/Moves/${formatIdFragment(json.Name)}`;
+    this.$id = `${gamespace}/Moves/${formatIdFragment(json._idFragment??json.Name)}`;
     this.Name = json.Name;
     this.Description = json.Description;
     this.Source = new Source(json.Source, ...ancestorSourceJson);

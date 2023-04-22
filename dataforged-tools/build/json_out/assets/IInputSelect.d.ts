@@ -1,5 +1,4 @@
-import type { IInputSelectOption } from "../index.js";
-import type { IInput, InputType } from "../index.js";
+import type { IInput, IInputSelectOption, InputType } from "../index.js";
 /**
  * An input where the user selects a single option from a list of pre-set options.
  * Suggested rendering: a drop-down selection menu.

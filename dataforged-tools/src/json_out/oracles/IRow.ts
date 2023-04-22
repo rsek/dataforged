@@ -1,11 +1,12 @@
 import type { IAttribute, IHasDisplay, IHasGameObjects, IHasOracleContent, IHasRollTemplate, IHasSuggestions, IHasSummary, IMultipleRolls , IOracle } from "@json_out/index.js";
+import type { Nullable } from "@utils/types/Nullable.js";
 
 /**
  * Interface representing a single row in an oracle table.
  * @public
  */
 export interface IRow extends Partial<
-  IHasSummary &
+  Nullable<IHasSummary> &
   IHasRollTemplate &
   IHasSuggestions &
   IHasOracleContent &
@@ -41,7 +42,9 @@ export interface IRow extends Partial<
   /**
    * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
    *
-   * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
+   * Generally, `Summary` is longer than `Result`.
+   *
+   * Some tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.
    *
    * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
    * @nullable

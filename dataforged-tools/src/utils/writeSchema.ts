@@ -82,7 +82,8 @@ export function writeSchema(declarations: string, typeName: string, outFiles: st
     defaultProps: true,
     titles: true,
     ref: true,
-    aliasRef: true
+    aliasRef: true,
+    excludePrivate: true
   };
 
   // optionally pass ts compiler options

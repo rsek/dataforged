@@ -1,4 +1,4 @@
-import type { IHasId, IMove , IMoveOutcomes , IMoveTrigger } from "@json_out/index.js";
+import type { IMove , IMoveOutcomes , IMoveTrigger } from "@json_out/index.js";
 import type { IOutcomeInfo, MoveOutcome } from "@json_out/moves/IMoveOutcomeInfo.js";
 import type { PartialDeep, StubBy } from "@utils/index.js";
 

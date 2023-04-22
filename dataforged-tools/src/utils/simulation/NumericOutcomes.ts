@@ -11,14 +11,14 @@ export enum OutcomeEffectType {
 }
 
 export interface INumericOutcome<T extends MoveOutcome> {
-  outcome: T,
+  outcome?: T|undefined,
   choose: INumericOutcomeParams
   chooseOnMatch?: INumericOutcomeParams | undefined;
 }
 
 export interface INumericOutcomeParams {
     amount?: number | undefined;
-    from: Partial<INumericOutcomeChoice>[];
+    from: INumericOutcomeChoice[];
 }
 
 export class NumericOutcomeParams implements INumericOutcomeParams {
@@ -35,7 +35,7 @@ export class NumericOutcome<T extends MoveOutcome> implements INumericOutcome<T>
   outcome: T;
   choose: NumericOutcomeParams;
   chooseOnMatch?: NumericOutcomeParams | undefined;
-  constructor(moveName: string, { outcome, choose, chooseOnMatch }: INumericOutcome<T>) {
+  constructor(moveName: string, outcome: T, { choose, chooseOnMatch }: INumericOutcome<T>) {
     this.name = moveName;
     this.outcome = outcome;
     this.choose = new NumericOutcomeParams(outcome, choose);
@@ -82,8 +82,41 @@ export class NumericOutcomes implements INumericOutcomes {
   "Weak Hit": NumericOutcome<typeof MoveOutcome["Weak Hit"]>;
   "Miss": NumericOutcome<typeof MoveOutcome.Miss>;
   constructor(moveName: string, data: Omit<INumericOutcomes, "name">) {
-    this["Strong Hit"] = new NumericOutcome<typeof MoveOutcome["Strong Hit"]>(moveName, data["Strong Hit"]);
-    this["Weak Hit"] = new NumericOutcome<typeof MoveOutcome["Weak Hit"]>(moveName, data["Weak Hit"]);
-    this["Miss"] = new NumericOutcome<typeof MoveOutcome["Miss"]>(moveName, data["Miss"]);
+    this["Strong Hit"] = new NumericOutcome(moveName,MoveOutcome["Strong Hit"],data["Strong Hit"]);
+    this["Weak Hit"] = new NumericOutcome(moveName,MoveOutcome["Weak Hit"],data["Weak Hit"]);
+    this["Miss"] = new NumericOutcome(moveName,MoveOutcome["Miss"],data["Miss"]);
+  }
+}
+
+export interface IOutcomeEffectHash extends Record<OutcomeEffectType, number|boolean> {
+  [OutcomeEffectType.add]: number;
+  [OutcomeEffectType.tickClock]: number;
+  [OutcomeEffectType.markProgress]: number;
+  [OutcomeEffectType.momentum]: number;
+  [OutcomeEffectType.inControl]: boolean;
+}
+
+export class OutcomeEffectHash implements IOutcomeEffectHash {
+  [OutcomeEffectType.add]: number=0;
+  [OutcomeEffectType.tickClock]: number=0;
+  [OutcomeEffectType.markProgress]: number=0;
+  [OutcomeEffectType.momentum]: number=0;
+  [OutcomeEffectType.inControl]: boolean=false;
+  addEffect(...items: INumericOutcomeChoice[]) {
+    items.forEach(item => {
+      _.mergeWith<OutcomeEffectHash, INumericOutcomeChoice>(this, item, (value:number|boolean, srcValue: typeof value) => {
+        if (typeof value !== typeof srcValue) {
+          throw new Error("value and srcValue aren't the same primitive type!");
+        }
+        if (typeof value === "number" && typeof srcValue === "number") {
+          value += srcValue;
+        } else if (typeof value === "boolean" && typeof srcValue === "boolean") {
+          value = srcValue;
+        }
+      });
+    });
+  }
+  constructor(...items: INumericOutcomeChoice[]) {
+    this.addEffect(...items);
   }
 }

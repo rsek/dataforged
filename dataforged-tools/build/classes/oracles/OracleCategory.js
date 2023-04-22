@@ -8,19 +8,18 @@ import _ from "lodash-es";
  */
 export class OracleCategory extends SourceInheritor {
     constructor(json, gamespace, category, ...ancestorsJson) {
-        var _a, _b;
         // if (!is<IOracleCategoryData>(json)) {
         //   buildLog(this.constructor, "Json does not conform to type!");
         //   throw new Error();
         // }
-        super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, ..._.compact(ancestorsJson.map(item => item.Source)));
+        super(json.Source ?? {}, ..._.compact(ancestorsJson.map(item => item.Source)));
         this.$id = buildOracleId(gamespace, json, ...ancestorsJson);
         buildLog(this.constructor, `Building: ${this.$id}`);
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Description = json.Description;
-        this.Display = new OracleCategoryDisplay((_b = json.Display) !== null && _b !== void 0 ? _b : {}, this.Name);
-        this.Category = category !== null && category !== void 0 ? category : undefined;
+        this.Display = new OracleCategoryDisplay(json.Display ?? {}, this.Name);
+        this.Category = category ?? undefined;
         this["Sample Names"] = json["Sample Names"];
         if (json.Usage) {
             this.Usage = new OracleUsage(json.Usage);

@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "ignorePatterns": [
+    "node_modules",
+    "img",
+    ".vscode",
+    ".github",
+    "data",
+    "dist",
+    "build",
+    "*.json",
+    "*.d.ts",
+    "analysis",
+    "src/utils"
+
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "lodash",
+    "import",
+    "eslint-plugin-tsdoc"
+  ],
+  "env": {
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
+  ],
+  "rules": {
+    "tsdoc/syntax": "warn",
+    "@typescript-eslint/no-inferrable-types": [
+      0
+    ],
+    "import/extensions": [
+      1,
+      "ignorePackages",
+      {
+        "js": "always",
+        "mjs": "always",
+        "jsx": "always",
+        "ts": "always",
+        "tsx": "always"
+      }
+    ],
+    "import/no-default-export": [
+      1
+    ],
+    "import/no-duplicates": [
+      "error",
+      {
+        "considerQueryString": true
+      }
+    ],
+    "prefer-const": 1,
+    "object-curly-newline": [
+      1,
+      {
+        "ImportDeclaration": "never",
+        "ObjectExpression": {
+          "multiline": true,
+          "minProperties": 3,
+          "consistent": true
+        },
+        "ObjectPattern": {
+          "consistent": true
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 3,
+          "consistent": true
+        }
+      }
+    ],
+    "prefer-rest-params": [
+      0
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "lodash/prefer-lodash-method": [
+      0
+    ],
+    "lodash/import-scope": [
+      0
+    ],
+    "lodash/prop-shorthand": [
+      0
+    ],
+    "lodash/prefer-constant": [
+      0
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      0
+    ],
+    "@typescript-eslint/consistent-type-definitions": [
+      "warn",
+      "interface"
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      1,
+      {
+        "prefer": "type-imports"
+      }
+    ],
+    "camelcase": "off",
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "function",
+        "format": [
+          "camelCase"
+        ]
+      },
+      {
+        "selector": "variable",
+        "format": [
+          "UPPER_CASE",
+          "camelCase"
+        ],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "typeLike",
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ],
+    "block-scoped-var": "warn",
+    "curly": [
+      "warn",
+      "multi-line"
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "no-eval": [
+      "error"
+    ],
+    "no-extra-bind": "warn",
+    "no-fallthrough": [
+      "warn",
+      {
+        "commentPattern": ""
+      }
+    ],
+    "no-implied-eval": "warn",
+    "no-invalid-this": "warn",
+    "no-new": "warn",
+    "no-new-func": "warn",
+    "no-new-wrappers": "warn",
+    "no-redeclare": [
+      "warn",
+      {
+        "builtinGlobals": false
+      }
+    ],
+    "no-return-await": "warn",
+    "no-self-compare": "warn",
+    "prefer-promise-reject-errors": [
+      "warn",
+      {
+        "allowEmptyReject": false
+      }
+    ],
+    "array-bracket-spacing": [
+      "warn",
+      "always",
+      {
+        "singleValue": false,
+        "objectsInArrays": false,
+        "arraysInArrays": false
+      }
+    ],
+    "brace-style": [
+      "warn",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "new-parens": "warn",
+    "newline-per-chained-call": [
+      "warn",
+      {
+        "ignoreChainWithDepth": 2
+      }
+    ],
+    "no-array-constructor": "warn",
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "object-property-newline": [
+      "warn",
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ],
+    "padded-blocks": [
+      "warn",
+      "never"
+    ],
+    "prefer-object-spread": "warn",
+    "quote-props": [
+      "warn",
+      "as-needed"
+    ],
+    "require-jsdoc": "warn",
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      "error"
+    ],
+    "semi-spacing": [
+      "warn",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "external",
+          "builtin",
+          "internal",
+          "sibling",
+          "parent",
+          "index"
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "internal"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          ".*",
+          "./dist/*",
+          "dist/*",
+          "./build/*",
+          "build/*"
+        ],
+        "paths": [
+          {
+            "name": "lodash",
+            "message": "Use 'lodash-es' instead."
+          }
+        ]
+      }
+    ],
+    "no-console": [
+      "warn"
+    ],
+    "prefer-destructuring": [
+      "warn",
+      {
+        "VariableDeclarator": {
+          "array": false,
+          "object": true
+        },
+        "AssignmentExpression": {
+          "array": false,
+          "object": true
+        }
+      }
+    ]
+  }
+}

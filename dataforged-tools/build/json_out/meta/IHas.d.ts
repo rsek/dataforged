@@ -5,11 +5,10 @@ import type { IDisplay, IGameObject, IOracleContent, IRequirements, IRollTemplat
  */
 export interface IHasSummary {
     /**
-     * A user-facing markdown summary of the item.
+     * A user-facing markdown summary of the item. `Summary` is shorter than {@link IHasDescription | Description}.
      * @markdown
-     * @nullable
      */
-    Summary: string | null;
+    Summary: string;
 }
 /**
  * Interface for items with a user-facing markdown description, consisting of one or more paragraphs.

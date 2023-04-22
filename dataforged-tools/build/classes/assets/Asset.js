@@ -14,9 +14,8 @@ import _ from "lodash-es";
  */
 export class Asset extends SourceInheritor {
     constructor(json, gamespace, parent, rootSource) {
-        var _a, _b, _c, _d, _e, _f, _g;
         // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
-        super((_a = json.Source) !== null && _a !== void 0 ? _a : {}, rootSource);
+        super(json.Source ?? {}, rootSource);
         // console.log(this.Source);
         this["Asset Type"] = parent.$id;
         this.$id = `${this["Asset Type"]}/${json.Name}`.replaceAll(" ", "_");
@@ -24,9 +23,9 @@ export class Asset extends SourceInheritor {
         this.Name = json.Name;
         this.Aliases = json.Aliases;
         this.Display = new DisplayWithTitle({
-            Title: (_c = (_b = json.Display) === null || _b === void 0 ? void 0 : _b.Title) !== null && _c !== void 0 ? _c : this.Name,
-            Icon: (_d = json.Display) === null || _d === void 0 ? void 0 : _d.Icon,
-            Color: (_f = (_e = json.Display) === null || _e === void 0 ? void 0 : _e.Color) !== null && _f !== void 0 ? _f : parent.Display.Color
+            Title: json.Display?.Title ?? this.Name,
+            Icon: json.Display?.Icon,
+            Color: json.Display?.Color ?? parent.Display.Color
         });
         this.Usage = {
             Shared: ["Command Vehicle", "Support Vehicle", "Module"].includes(parent.Name) ? true : false
@@ -60,7 +59,7 @@ export class Asset extends SourceInheritor {
             });
         }
         if (json.States) {
-            this.States = (_g = json.States.map(state => new AssetState(state))) !== null && _g !== void 0 ? _g : undefined;
+            this.States = json.States.map(state => new AssetState(state)) ?? undefined;
         }
         this.Requirement = json.Requirement;
         this["Condition Meter"] = json["Condition Meter"] ? new ConditionMeter(json["Condition Meter"], this.$id + "/Condition_Meter", this["Asset Type"]) : undefined;

@@ -1,4 +1,4 @@
-import type { IDisplayWithTitle, ImageUrl, Raster, Vector } from "@json_out/index.js";
+import type { IDisplayWithTitle } from "@json_out/index.js";
 
 /**
  * @internal

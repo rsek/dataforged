@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
+
 import "source-map-support/register.js";
-import { IMG_PATH, JSON_PATHS, MASTER_PNG_PATH } from "@constants/index.js";
+import { JSON_PATHS } from "@constants/index.js";
 import { Gamespace } from "@json_out/index.js";
 import type { Starforged } from "@json_out/index.js";
 import { buildDataforged } from "@utils/buildDataforged.js";
-import { buildImages } from "@utils/buildImages.js";
 import { writeJson } from "@utils/io/writeJSON.js";
 import _ from "lodash-es";
 
@@ -37,7 +38,11 @@ _.forEach(data, (value, key) => {
       default:
         throw new Error(`Unknown key in game data root object: ${key}`);
     }
-    JSON_PATHS.forEach(path => writeJson(path + `/starforged/${fileName}.json`, value));
+    JSON_PATHS.forEach(path => {
+      const newPath = path + `/starforged/${fileName}.json`;
+      console.log(`[StartStarforged] Writing json to ${newPath}`);
+      writeJson(newPath, value);
+    });
   }
 });
 

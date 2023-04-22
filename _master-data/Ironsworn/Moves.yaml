@@ -1,5 +1,7 @@
 Name: Moves
 Source:
+  Authors:
+    - Shawn Tomkin
   Title: Ironsworn Rulebook
 Move Categories:
   - Name: Adventure
@@ -322,6 +324,17 @@ Move Categories:
           On a **weak hit**, as above, but they ask something of you in return. Envision what they want ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
 
           On a **miss**, they refuse or make a demand which costs you greatly. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: They’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), make that move now and add +1.
+
+          Weak Hit:
+            Text: |-
+              They’ll do what you want or share what they know... but they ask something of you in return. Envision what they want ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
+
+              Take +1 momentum. If you use this exchange to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), make that move now and add +1.
+          Miss:
+            Text: They refuse or make a demand which costs you greatly. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Sojourn
         Trigger:
           Text: When you spend time in a community seeking assistance...
@@ -353,6 +366,53 @@ Move Categories:
             * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you chose to help, [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) and add +1.
 
           On a **miss**, you find no help here. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              You and your allies may each choose two from within the categories below.
+
+              you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
+
+              **Clear a Condition**
+
+                * Mend: Clear a wounded debility and take +1 health.
+                * Hearten: Clear a shaken debility and take +1 spirit.
+                * Equip: Clear an unprepared debility and take +1 supply.
+
+              **Recover**
+
+                * Recuperate: Take +2 health for yourself and any companions.
+                * Consort: Take +2 spirit.
+                * Provision: Take +2 supply.
+                * Plan: Take +2 momentum.
+
+              **Provide Aid**
+
+                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you chose to help, [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) and add +1.
+          Weak Hit:
+            Text: |-
+              You and your allies may each choose one from within the categories below.
+
+              you and your allies may each focus on one of your chosen recover actions and roll +heart again. If you share a bond, add +1. On a **strong hit**, take +2 more for that action. On a **weak hit**, take +1 more. On a **miss**, it goes badly and you lose all benefits for that action.
+
+              **Clear a Condition**
+
+                * Mend: Clear a wounded debility and take +1 health.
+                * Hearten: Clear a shaken debility and take +1 spirit.
+                * Equip: Clear an unprepared debility and take +1 supply.
+
+              **Recover**
+
+                * Recuperate: Take +2 health for yourself and any companions.
+                * Consort: Take +2 spirit.
+                * Provision: Take +2 supply.
+                * Plan: Take +2 momentum.
+
+              **Provide Aid**
+
+                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you chose to help, [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) and add +1.
+          Miss:
+            Text: You find no help here. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Draw the Circle
         Trigger:
           Text: When you challenge someone to a formal duel, or accept a challenge...
@@ -375,6 +435,34 @@ Move Categories:
             * To the death: One way or another, this fight must end with death.
 
           On a **miss**, you begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Take +1 momentum. You may also choose up to two boasts and take +1 momentum for each.
+
+                * Grant first strike: Your foe has initiative.
+                * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.
+                * Hold no iron: Take no benefit of weapons; your harm is 1.
+                * Bloody yourself: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).
+                * To the death: One way or another, this fight must end with death.
+
+              Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
+          Weak Hit:
+            Text: |-
+              You may choose one boast in exchange for +1 momentum.
+
+                * Grant first strike: Your foe has initiative.
+                * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.
+                * Hold no iron: Take no benefit of weapons; your harm is 1.
+                * Bloody yourself: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (1 harm).
+                * To the death: One way or another, this fight must end with death.
+
+              Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
+          Miss:
+            Text: |-
+              You begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+
+              Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
       - Name: Forge a Bond
         Trigger:
           Text: When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...
@@ -394,6 +482,19 @@ Move Categories:
           On a **weak hit**, they ask something more of you first. Envision what it is ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)), and mark the bond. If you refuse or fail, [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
 
           On a **miss**, they reject you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Make note of the bond, mark a tick on your bond progress track, and choose one.
+
+                * Take +1 spirit.
+                * Take +2 momentum.
+          Weak Hit:
+            Text: |-
+              They ask something more of you first. Envision what it is ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)), and mark the bond. If you refuse or fail, [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+          Miss:
+            Text: |-
+              They reject you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Test Your Bond
         Trigger:
           Text: When your bond is tested through conflict, betrayal, or circumstance...
@@ -413,12 +514,26 @@ Move Categories:
           On a **weak hit**, your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)). If you refuse or fail, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
 
           On a **miss**, or if you have no interest in maintaining this relationship, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              This test has strengthened your bond. Choose one.
+
+                * Take +1 spirit.
+                * Take +2 momentum.
+          Weak Hit:
+            Text: |-
+              Your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and do it (or [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow)). If you refuse or fail, clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+          Miss:
+            Text: |-
+              Clear the bond and [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Aid Your Ally
         Source:
           Page: 76
         Trigger:
           Text: When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally...
         Text: When **you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
+        # TODO: forward to another move ID?
       - Name: Write Your Epilogue
         Source:
           Page: 77
@@ -426,10 +541,7 @@ Move Categories:
           Text: When you retire from your life as Ironsworn...
           Options:
             - Roll type: Progress roll
-              Method: All
               Using:
-                - Bonds
-                - Bonds
                 - Bonds
         Progress Move: true
         Text: |-
@@ -440,6 +552,13 @@ Move Categories:
           On a **weak hit**, your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
 
           On a **miss**, your fears are realized.
+        Outcomes:
+          Strong Hit:
+            Text: Things come to pass as you had hoped.
+          Weak Hit:
+            Text: Your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
+          Miss:
+            Text: Your fears are realized.
   - Name: Combat
     Source:
       Page: 78
@@ -484,40 +603,58 @@ Move Categories:
             * Prepare to act: Take initiative.
 
           On a **miss**, combat begins with you at a disadvantage. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
+        Outcomes:
+          Strong Hit:
+            Text: Take +2 momentum. You have initiative.
+          Weak Hit:
+            Text: |-
+              Choose one.
+
+                * Bolster your position: Take +2 momentum.
+                * Prepare to act: Take initiative.
+          Miss:
+            Text: Combat begins with you at a disadvantage. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Strike
         Trigger:
-          Text: "When you are in control and attack in close quarters, or when you attack at range..."
+          Text: When you have initiative and attack...
           Options:
-            - Text: Attack in close quarters
-              Roll type: Action roll
-              Using: [Edge]
-            - Text: Attack at range
+            - Text: In close quarters
               Roll type: Action roll
               Using: [Iron]
+            - Text: At range
+              Roll type: Action roll
+              Using: [Edge]
         Source:
           Page: 78
         Text: |-
-          When **you have initiative and attack in close quarters**, roll +iron. When you have initiative and attack at range, roll +edge.
+          When **you have initiative and attack in close quarters**, roll +iron. When **you have initiative and attack at range**, roll +edge.
 
           On a **strong hit**, inflict +1 harm. You retain initiative.
 
           On a **weak hit**, inflict your harm and lose initiative.
 
           On a **miss**, your attack fails and you must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
+        Outcomes:
+          Strong Hit:
+            Text: Inflict +1 harm. You retain initiative.
+          Weak Hit:
+            Text: Inflict your harm and lose initiative.
+          Miss:
+            Text: Your attack fails and you must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Clash
         Trigger:
-          Text: "When your foe has initiative and you fight with them in close quarters, or when you exchange a volley at range, or shoot at an advancing foe..."
+          Text: "When your foe has initiative and you..."
           Options:
-            - Text: When your foe has initiative and you fight with them in close quarters
-              Roll type: Action roll
-              Using: [Edge]
-            - Text: When you exchange a volley at range, or shoot at an advancing foe
+            - Text: Fight with them in close quarters
               Roll type: Action roll
               Using: [Iron]
+            - Text: Exchange a volley at range, or shoot at an advancing foe
+              Roll type: Action roll
+              Using: [Edge]
         Source:
           Page: 80
         Text: |-
-          When **your foe has initiative and you fight with them in close quarters**, roll +iron. When you exchange a volley at range, or shoot at an advancing foe, roll +edge.
+          When **your foe has initiative and you fight with them in close quarters**, roll +iron. When **you exchange a volley at range, or shoot at an advancing foe**, roll +edge.
 
           On a **strong hit**, inflict your harm and choose one. You have the initiative.
 
@@ -527,6 +664,17 @@ Move Categories:
           On a **weak hit**, inflict your harm, but then [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
 
           On a **miss**, you are outmatched and must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Inflict your harm and choose one. You have the initiative.
+
+                * You bolster your position: Take +1 momentum.
+                * You find an opening: Inflict +1 harm.
+          Weak Hit:
+            Text: Inflict your harm, but then [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
+          Miss:
+            Text: You are outmatched and must [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price). Your foe has initiative.
       - Name: Turn the Tide
         Trigger:
           Text: Once per fight, when you risk it all...
@@ -558,9 +706,26 @@ Move Categories:
             * Others won’t forget: You are marked for vengeance.
 
           On a **miss**, you have lost this fight. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: This foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
+          Weak Hit:
+            Text: |-
+              This foe is no longer in the fight... but you must also choose one.
+
+                * It’s worse than you thought: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm).
+                * You are overcome: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress).
+                * Your victory is short-lived: A new danger or foe appears, or an existing danger worsens.
+                * You suffer collateral damage: Something of value is lost or broken, or someone important must pay the cost.
+                * You’ll pay for it: An objective falls out of reach.
+                * Others won’t forget: You are marked for vengeance.
+
+              The foe is killed, out of action, flees, or surrenders as appropriate to the situation and your intent ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure).
+          Miss:
+            Text: You have lost this fight. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
       - Name: Battle
         Trigger:
-          Text: When you fight a battle, and it happens in a blur...
+          Text: When you fight a battle, and it happens in a blur, and you...
           Options:
             - Text: Fight at range, or using your speed and the terrain to your advantage
               Roll type: Action roll
@@ -593,6 +758,13 @@ Move Categories:
           On a **weak hit**, you achieve your objective, but not without cost. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
 
           On a **miss**, you are defeated and the objective is lost to you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+        Outcomes:
+          Strong Hit:
+            Text: You achieve your objective unconditionally. Take +2 momentum.
+          Weak Hit:
+            Text: You achieve your objective, but not without cost. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
+          Miss:
+            Text: You are defeated and the objective is lost to you. [Pay the Price](Ironsworn/Moves/Fate/Pay_the_Price).
   - Name: Suffer
     Source:
       Page: 90
@@ -631,6 +803,27 @@ Move Categories:
           21-35 | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](Ironsworn/Moves/Suffer/Face_Death).
           36-50 | You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).
           51-00 | You are battered but still standing.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Choose one.
+
+                * Shake it off: If your health is greater than 0, suffer -1 momentum in exchange for +1 health.
+                * Embrace the pain: Take +1 momentum.
+          Weak Hit:
+            Text: |-
+              You press on.
+          Miss:
+            Text: |-
+              Also suffer -1 momentum. If you are at 0 health, you must mark wounded or maimed (if currently unmarked) or roll on the following table.
+
+              Roll  | Result
+              ------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+              1-10  | The harm is mortal. [Face Death](Ironsworn/Moves/Suffer/Face_Death).
+              11-20 | You are dying. You need to Heal within an hour or two, or [Face Death](Ironsworn/Moves/Suffer/Face_Death).
+              21-35 | You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](Ironsworn/Moves/Suffer/Face_Death).
+              36-50 | You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).
+              51-00 | You are battered but still standing.
       - Name: Face Death
         Trigger:
           Text: When you are brought to the brink of death, and glimpse the world beyond...
@@ -650,9 +843,20 @@ Move Categories:
             * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
 
           On a **miss**, you are dead.
+        Outcomes:
+          Strong Hit:
+            Text: Death rejects you. You are cast back into the mortal world.
+          Weak Hit:
+            Text: |-
+              Choose one.
+
+                * You die, but not before making a noble sacrifice. Envision your final moments.
+                * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
+          Miss:
+            Text: You are dead.
       - Name: Companion Endure Harm
         Trigger:
-          Text: When your companion faces physical damage
+          Text: When your companion faces physical damage...
           Options:
             - Roll type: Action roll
               Method: Highest
@@ -669,6 +873,18 @@ Move Categories:
           On a **weak hit**, your companion is battered. If their health is 0, they cannot assist you until they gain at least +1 health.
 
           On a **miss**, also suffer -1 momentum. If your companion’s health is 0, they are gravely wounded and out of action. Without aid, they die in an hour or two. If you roll a miss with a 1 on your action die, and your companion’s health is 0, they are now dead. Take 1 experience for each marked ability on your companion asset, and remove it.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Your companion rallies. Give them +1 health.
+          Weak Hit:
+            Text: |-
+              Your companion is battered. If their health is 0, they cannot assist you until they gain at least +1 health.
+          Miss:
+            Text: |-
+              Also suffer -1 momentum. If your companion’s health is 0, they are gravely wounded and out of action. Without aid, they die in an hour or two.
+
+              If you roll a miss with a 1 on your action die, and your companion’s health is 0, they are now dead. Take 1 experience for each marked ability on your companion asset, and remove it.
       - Name: Endure Stress
         Oracles:
           - Ironsworn/Oracles/Moves/Endure_Stress
@@ -700,6 +916,25 @@ Move Categories:
           11-25 | You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).
           26-50 | You give in to a fear or compulsion, and act against your better instincts.
           51-00 | You persevere.
+        Outcomes:
+          Strong Hit:
+            Text: |-
+              Choose one.
+
+                * Shake it off: If your spirit is greater than 0, suffer -1 momentum in exchange for +1 spirit
+                * Embrace the darkness: Take +1 momentum
+          Weak Hit:
+            Text: You press on.
+          Miss:
+            Text: |-
+              Also suffer -1 momentum. If you are at 0 spirit, you must mark shaken or corrupted (if currently unmarked) or roll on the following table.
+
+              Roll  | Result
+              ------|------------------------------------------------------------------------------------
+              1-10  | You are overwhelmed.  [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation).
+              11-25 | You give up. [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow) (if possible, one relevant to your current crisis).
+              26-50 | You give in to a fear or compulsion, and act against your better instincts.
+              51-00 | You persevere.
       - Name: Face Desolation
         Trigger:
           Text: When you are brought to the brink of desolation...
@@ -719,6 +954,17 @@ Move Categories:
             * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
 
           On a **miss**, you succumb to despair or horror and are lost.
+        Outcomes:
+          Strong Hit:
+            Text: You resist and press on.
+          Weak Hit:
+            Text: |-
+              Choose one.
+
+                * Your spirit or sanity breaks, but not before you make a noble sacrifice. Envision your final moments.
+                * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
+          Miss:
+            Text: You succumb to despair or horror and are lost.
       - Name: Out of Supply
         Source:
           Page: 97
@@ -760,6 +1006,17 @@ Move Categories:
 
             * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.
             * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
+        Outcomes:
+          Strong Hit:
+            Text: You are emboldened and it is clear what you must do next ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Take +2 momentum.
+          Weak Hit:
+            Text: You are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
+          Miss:
+            Text: |-
+              You face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.
+
+                * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.
+                * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
       - Name: Reach a Milestone
         Source:
           Page: 100
@@ -794,6 +1051,17 @@ Move Categories:
 
             * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).
             * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
+        Outcomes:
+          Strong Hit:
+            Text: Your quest is complete. Mark experience (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5).
+          Weak Hit:
+            Text: There is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to set things right. If you do, add +1.
+          Miss:
+            Text: |-
+              Your quest is undone. Envision what happens ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and choose one.
+
+                * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).
+                * You give up: [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow).
       - Name: Forsake Your Vow
         Source:
           Page: 102
@@ -877,3 +1145,5 @@ Move Categories:
           50/50          | 51 or greater
           Unlikely       | 76 or greater
           Small Chance   | 91 or greater
+
+          On a match, an extreme result or twist has occurred.

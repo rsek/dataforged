@@ -1,4 +1,4 @@
-import type { IHasText , MoveOutcome } from "@json_out/index.js";
+import type { IHasText } from "@json_out/index.js";
 
 /**
  * @public

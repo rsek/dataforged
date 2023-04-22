@@ -5,11 +5,10 @@ import { MeterAlias } from "../../json_out/index.js";
  */
 export class ConditionMeter extends MeterBase {
     constructor(json, id, assetType) {
-        var _a;
         super(json, id);
         this.Min = 0;
         this.Conditions = [];
-        this["Value"] = (_a = json["Value"]) !== null && _a !== void 0 ? _a : json.Max;
+        this["Value"] = json["Value"] ?? json.Max;
         if (json.Conditions) {
             this.Conditions = json.Conditions;
         }

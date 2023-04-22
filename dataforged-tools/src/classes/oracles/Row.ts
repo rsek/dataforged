@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { AttributeSetter, GameObject , MultipleRolls, OracleContent, Suggestions } from "@classes/index.js";
 import type { GameObjectRecord } from "@game_objects/GameObjectRecord.js";
 import type { IDisplay, ImageUrl, IMultipleRolls, IOracle, IRollTemplate, IRow, Raster, Vector } from "@json_out/index.js";
@@ -122,8 +123,10 @@ export class Row implements IRow {
                   throw new Error("Row ID is null, but it has a Subtable.");
                 }
                 if (Array.isArray(value) && Array.isArray(value[0])) {
+                  console.log("Subtable found, building...");
                   this.Subtable = (value as IRowYaml[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
                 } else if (Array.isArray(value) && typeof value[0] === "object") {
+                  console.log("Prebuilt subtable found, generating IDs...");
                   this.Subtable = (value as IRow[]).map(rowData => new Row(`${this.$id as string}/Subtable`, rowData));
                 } else {
                   throw badJsonError(this.constructor, value, "expected IOracleTableRow[]");

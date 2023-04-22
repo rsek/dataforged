@@ -15,3 +15,4 @@ export * from "@json_out/oracles/IRollTemplate.js";
 export * from "@json_out/oracles/IRow.js";
 export * from "@json_out/oracles/ITableColumnBase.js";
 export * from "@json_out/oracles/ITextColumn.js";
+export * from "@json_out/oracles/RollableOracles.js";

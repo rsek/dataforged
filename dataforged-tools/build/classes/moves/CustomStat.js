@@ -4,11 +4,10 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  * @internal
  */
 export class CustomStat {
-    constructor(json, id) {
-        var _a;
-        this.$id = id;
+    constructor(json, parentId) {
+        this.$id = `${parentId}/${formatIdFragment("Custom stat")}`;
         this.Name = json.Name;
-        this.Options = (_a = json.Options) === null || _a === void 0 ? void 0 : _a.map(option => new CustomStatOption(option, `${id}/${formatIdFragment(option.Name)}`));
+        this.Options = json.Options?.map(option => new CustomStatOption(option, this.$id));
     }
 }
 //# sourceMappingURL=CustomStat.js.map

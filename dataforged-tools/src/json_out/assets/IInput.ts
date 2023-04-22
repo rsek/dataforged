@@ -1,5 +1,4 @@
-import type { ClockSegments } from "@json_out/index.js";
-import type { ClockType, IHasId , IHasName, InputType } from "@json_out/index.js";
+import type { ClockSegments , ClockType, IHasId , IHasName, InputType } from "@json_out/index.js";
 
 /**
  * A stub interface representing an input widget of any type.

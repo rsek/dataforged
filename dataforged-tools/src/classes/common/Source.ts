@@ -1,12 +1,13 @@
 
-import type { ISource , SourceTitle } from "@json_out/index.js";
+import type { ISource } from "@json_out/index.js";
 import _ from "lodash-es";
 
 /**
  * @internal
  */
 export class Source implements ISource {
-  Title: SourceTitle;
+  Title: ISource["Title"];
+  Authors: string[];
   Date?: string | undefined;
   Page?: number | undefined;
   Url?: string | undefined;
@@ -21,6 +22,7 @@ export class Source implements ISource {
       throw Error("Unable to find title in source or ancestor source objects.");
     }
     this.Title = merged.Title;
+    this.Authors = merged.Authors ?? ["Shawn Tomkin"];
     this.Date = merged.Date;
     this.Page = merged.Page;
     this.Url = merged.Url;

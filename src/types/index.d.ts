@@ -139,6 +139,11 @@ export declare enum ClockType {
 /**
  * @public
  */
+export declare type DelveCardType = "Theme" | "Domain";
+
+/**
+ * @public
+ */
 export declare enum EncounterNatureIronsworn {
     Ironlander = "Ironlander",
     Firstborn = "Firstborn",
@@ -569,72 +574,238 @@ export declare interface ICyclopediaEntry extends IHasName, IHasId, IHasDisplay,
 }
 
 /**
+ * Interface describing common characteristics of themes and domains from *Ironsworn: Delve*.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveTheme
+ * @see IDelveDomain
  * @public
  */
-export declare interface IDelve extends IHasName, IHasSource, IHasSummary, IHasDescription {
+export declare interface IDelveCard extends IHasName, IHasSource, IHasSummary, IHasDescription, IHasDisplay, IHasId {
+    /**
+     * @pattern ^Ironsworn/(Themes|Domains)/[A-z_-]+$
+     */
+    $id: string;
+    /**
+     * Indicates whether this is a site Theme or a site Domain.
+     */
+    Type: DelveCardType;
+    /**
+     * The summary text that appears immediately below the card's title. For best rendering, ensure that it fits on a single line.
+     * @markdown
+     */
+    Summary: string;
+    /**
+     * An extended description for this card that doesn't appear on the card itself. For 'canonical' Themes and Domains, these are presented on p. 84 - 93 of *Ironsworn: Delve*.
+     *
+     * Most are two paragraphs long, approximately 90 words (600 characters); the longest 'canonical' description clocks in at 98 words (619 characters). Allot space accordingly.
+     *
+     * @markdown
+     */
+    Description: string;
+    /**
+     * The Features contributed by this card. Effectively a 'partial' oracle table; combine with the features of another card to complete it.
+     */
     Features: IRow[];
+    /**
+     * The Dangers contributed by this card. Effectively a 'partial' oracle table; combine with the dangers of another card and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: IRow[];
 }
 
 /**
+ * Interface describing a delve site domain.
+ *
+ * The **domain** represents the physical characteristics of the site—the terrain or architecture you must traverse.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveTheme
  * @public
  */
-export declare interface IDelveDomain extends IDelve {
+export declare interface IDelveDomain extends IDelveCard {
+    /**
+     * @pattern ^Ironsworn/Domains/[A-z_-]+$
+     */
+    $id: string;
+    Type: "Domain";
+    /**
+     * The Features contributed by this Domain card. Effectively a 'partial' oracle table; combine with the features of a Theme card to complete it.
+     */
     Features: [
-    IDelveRow<21, 43>,
-    IDelveRow<44, 56>,
-    IDelveRow<57, 64>,
-    IDelveRow<65, 68>,
-    IDelveRow<69, 72>,
-    IDelveRow<73, 76>,
-    IDelveRow<77, 80>,
-    IDelveRow<81, 84>,
-    IDelveRow<85, 88>,
-    IDelveRow<89, 98>,
-    IDelveRow<99, 99>,
-    IDelveRow<100, 100>
+    IRow & {
+        Floor: 21;
+        Ceiling: 43;
+    },
+    IRow & {
+        Floor: 44;
+        Ceiling: 56;
+    },
+    IRow & {
+        Floor: 57;
+        Ceiling: 64;
+    },
+    IRow & {
+        Floor: 65;
+        Ceiling: 68;
+    },
+    IRow & {
+        Floor: 69;
+        Ceiling: 72;
+    },
+    IRow & {
+        Floor: 73;
+        Ceiling: 76;
+    },
+    IRow & {
+        Floor: 77;
+        Ceiling: 80;
+    },
+    IRow & {
+        Floor: 81;
+        Ceiling: 84;
+    },
+    IRow & {
+        Floor: 85;
+        Ceiling: 88;
+    },
+    IRow & {
+        Floor: 89;
+        Ceiling: 98;
+        Result: "Something unusual or unexpected";
+    },
+    IRow & {
+        Floor: 99;
+        Ceiling: 99;
+        Result: "You transition into a new theme";
+    },
+    IRow & {
+        Floor: 100;
+        Ceiling: 100;
+        Result: "You transition into a new domain";
+    }
     ];
+    /**
+     * The Dangers contributed by this Domain card. Effectively a 'partial' oracle table; combine with the dangers of Theme and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: [
-    IDelveRow<31, 33>,
-    IDelveRow<34, 36>,
-    IDelveRow<37, 39>,
-    IDelveRow<40, 42>,
-    IDelveRow<43, 45>
+    IRow & {
+        Floor: 31;
+        Ceiling: 33;
+    },
+    IRow & {
+        Floor: 34;
+        Ceiling: 36;
+    },
+    IRow & {
+        Floor: 37;
+        Ceiling: 39;
+    },
+    IRow & {
+        Floor: 40;
+        Ceiling: 42;
+    },
+    IRow & {
+        Floor: 43;
+        Ceiling: 45;
+    }
     ];
 }
 
 /**
+ * Interface describing a delve site theme.
+ *
+ * The **theme** represents the condition or state of the site, and indicates the kinds of denizens and threats you might find there.
+ *
+ * Together, the theme and domain help you visualize your exploration of the site, and provide oracle tables for features and dangers.
+ *
+ * @see IDelveDomain
  * @public
  */
-export declare interface IDelveRow<F extends number, C extends number> extends IRow {
-    Floor: F;
-    Ceiling: C;
-}
-
-/**
- * @public
- */
-export declare interface IDelveTheme extends IDelve {
+export declare interface IDelveTheme extends IDelveCard {
+    /**
+     * @pattern ^Ironsworn/Themes/[A-z_-]+$
+     */
+    $id: string;
+    Type: "Theme";
+    /**
+     * The Features contributed by this Theme card. Effectively a 'partial' oracle table; combine with the features of a Domain card to complete it.
+     */
     Features: [
-    IDelveRow<1, 4>,
-    IDelveRow<5, 8>,
-    IDelveRow<9, 12>,
-    IDelveRow<13, 16>,
-    IDelveRow<17, 20>
+    IRow & {
+        Floor: 1;
+        Ceiling: 4;
+    },
+    IRow & {
+        Floor: 5;
+        Ceiling: 8;
+    },
+    IRow & {
+        Floor: 9;
+        Ceiling: 12;
+    },
+    IRow & {
+        Floor: 13;
+        Ceiling: 16;
+    },
+    IRow & {
+        Floor: 17;
+        Ceiling: 20;
+    }
     ];
+    /**
+     * The Dangers contributed by this Theme card.  Effectively a 'partial' oracle table; combine with the dangers of Domain and the Reveal a Danger move oracle table to complete it.
+     */
     Dangers: [
-    IDelveRow<1, 5>,
-    IDelveRow<6, 10>,
-    IDelveRow<11, 12>,
-    IDelveRow<13, 14>,
-    IDelveRow<15, 16>,
-    IDelveRow<17, 18>,
-    IDelveRow<19, 20>,
-    IDelveRow<21, 22>,
-    IDelveRow<23, 24>,
-    IDelveRow<35, 26>,
-    IDelveRow<27, 28>,
-    IDelveRow<29, 30>
+    IRow & {
+        Floor: 1;
+        Ceiling: 5;
+    },
+    IRow & {
+        Floor: 6;
+        Ceiling: 10;
+    },
+    IRow & {
+        Floor: 11;
+        Ceiling: 12;
+    },
+    IRow & {
+        Floor: 13;
+        Ceiling: 14;
+    },
+    IRow & {
+        Floor: 15;
+        Ceiling: 16;
+    },
+    IRow & {
+        Floor: 17;
+        Ceiling: 18;
+    },
+    IRow & {
+        Floor: 19;
+        Ceiling: 20;
+    },
+    IRow & {
+        Floor: 21;
+        Ceiling: 22;
+    },
+    IRow & {
+        Floor: 23;
+        Ceiling: 24;
+    },
+    IRow & {
+        Floor: 25;
+        Ceiling: 26;
+    },
+    IRow & {
+        Floor: 27;
+        Ceiling: 28;
+    },
+    IRow & {
+        Floor: 29;
+        Ceiling: 30;
+    }
     ];
 }
 
@@ -986,11 +1157,10 @@ export declare interface IHasSuggestions {
  */
 export declare interface IHasSummary {
     /**
-     * A user-facing markdown summary of the item.
+     * A user-facing markdown summary of the item. `Summary` is shorter than {@link IHasDescription | Description}.
      * @markdown
-     * @nullable
      */
-    Summary: string | null;
+    Summary: string;
 }
 
 /**
@@ -1492,7 +1662,8 @@ export declare enum InputType {
 /**
  * Represents an oracle, which may have a Table or multiple child Oracles.
  *
- * The distinction between {@link IOracleCategory} and IOracles that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export declare interface IOracle extends IOracleBase {
@@ -1504,10 +1675,19 @@ export declare interface IOracle extends IOracleBase {
     Category: IOracleCategory["$id"];
     "Member of"?: IOracle["$id"] | undefined;
     "Table"?: IRow[] | undefined;
+
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
+ *
+ * If you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.
+ *
+ * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
 export declare interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName {
@@ -1516,10 +1696,6 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
      */
     Category?: IOracleCategory["$id"] | undefined;
-    /**
-     * Oracle objects contained by this object.
-     */
-    Oracles?: IOracle[] | undefined;
     /**
      * The ID of the most recent Oracle ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
@@ -1530,12 +1706,37 @@ export declare interface IOracleBase extends Partial<IHasAliases & IHasDescripti
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */
     Usage?: IOracleUsage | undefined;
+    /**
+     * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
+     *
+     * This key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all) {@link IOracle} objects.
+     */
+    Table?: IRow[] | undefined;
+    /**
+     * Oracle objects contained by this object.
+     *
+     * This key appears only on 'branch' nodes of the oracle hierarchy 'tree': {@link IOracleCategory}, and {@link IOracle} (when it contains multiple closely-related tables).
+     */
+    Oracles?: IOracle[] | undefined;
+    /**
+     * Subcategories contained by this oracle category.
+     *
+     * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
+     */
+    Categories?: IOracleCategory[] | undefined;
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     *
+     * This key appears only on {@link IOracle}s that have a `Table`.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 
 /**
- * Represents an oracle category: a grouping that can contain both Oracles and other Oracle categories, but doesn't have its own `Table` key.
+ * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
  *
- * The distinction between this and {@link IOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export declare interface IOracleCategory extends IOracleBase {
@@ -1548,13 +1749,10 @@ export declare interface IOracleCategory extends IOracleBase {
      */
     Category?: IOracleCategory["$id"] | undefined;
     /**
-     * Subcategories contained by this oracle category.
-     */
-    Categories?: IOracleCategory[] | undefined;
-    /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
+
 }
 
 /**
@@ -1570,6 +1768,16 @@ export declare interface IOracleContent {
      * Any arbitrary string tags associated with this oracle.
      */
     "Tags"?: string[] | undefined;
+}
+
+/**
+ * @public
+ */
+export declare interface IOracleMatch extends IHasId, IHasText {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+     */
+    $id: string;
 }
 
 /**
@@ -1692,7 +1900,7 @@ export declare const ironsworn: Ironsworn;
  * Interface representing a single row in an oracle table.
  * @public
  */
-export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
+export declare interface IRow extends Partial<Nullable<IHasSummary> & IHasRollTemplate & IHasSuggestions & IHasOracleContent & IHasGameObjects & IHasDisplay> {
     /**
      * The ID of this row.
      * @pattern ^(Ironsworn|Starforged)/Oracles(/[A-z_-]+)+/[1-9][0-9]*(-[1-9][0-9]*)?(/Subtable/[1-9][0-9]*(-[1-9][0-9]*)?)?$
@@ -1722,7 +1930,9 @@ export declare interface IRow extends Partial<IHasSummary & IHasRollTemplate & I
     /**
      * A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).
      *
-     * Some tables label this column as something other than Result; see the parent (or grandparent) `IOracle.Display.Table` for more information.
+     * Generally, `Summary` is longer than `Result`.
+     *
+     * Some tables label this column as something other than `Result`; see the parent (or grandparent) `IOracle.Display.Table` for more information.
      *
      * `null` is used in cases where an 'empty' `Summary` exists (example: Starship Type, p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT table roll output), however, `null` values can be safely omitted.
      * @nullable
@@ -1780,7 +1990,7 @@ export declare interface ISettingTruthOption extends IRow, IHasQuestStarter, IHa
      */
     $id: string;
     "Roll template"?: IRollTemplate | undefined;
-    Subtable?: ISettingTruthOptionSubtableRow[] | undefined;
+    Subtable?: IRow[] | undefined;
 }
 
 /**
@@ -1794,25 +2004,36 @@ export declare interface ISettingTruthOptionSubtableRow extends IRow {
 }
 
 /**
- * Interface representing data on the game's source.
+ * Interface representing data on this item's source. For 'canonical' content, this is usually a book with numbered pages, but it might also be a link to a web site.
  * @public
  */
 export declare interface ISource {
     /**
      * The title of the source.
+     *
+     * For 'canonical' content, use one of the enumerated `SourceTitle` strings.
+     *
+     * For 3rd-party content (including homebrew) that's been released as part of a titled document, use the title of that document (e.g. "Steelforged", "Ironsmith").
+     *
+     * If the source has no particular title (for instance, it's a single custom element in a VTT implementation), use "Custom".
      */
-    Title: SourceTitle;
+    Title: SourceTitle | string;
+    /**
+     * The author(s) of this item. For 'canonical' content, this one's usually pretty obvious 😉 However, it's included so that homebrew content can use the same interface/schema.
+     * @default ["Shawn Tomkin"]
+     */
+    Authors: string[];
     /**
      * The 6-number date string formatted as `MMDDYY`. Relevant only during Starforged development; it will be deprecated once the game is released.
      * @pattern ^(0[1-9]|1[0-2])([0-2][1-9]|3[0-1])([0-9][0-9])$
      */
     Date?: string | undefined;
     /**
-     * The page on which the item appears most prominently.
+     * The page on which the item appears most prominently in the source material (if it's in a format that uses page numbers).
      */
     Page?: number | undefined;
     /**
-     * The URL where the source is available.
+     * The URL where the source material is available.
      * @pattern ^https?://.*$
      */
     Url?: string | undefined;
@@ -1988,10 +2209,24 @@ export declare enum MoveCategoryName {
  * @public
  */
 export declare enum MoveOutcome {
-    "Miss" = 0,
+    Miss = 0,
     "Weak Hit" = 1,
     "Strong Hit" = 2
 }
+
+/**
+ * @public
+ */
+export declare type Nullable<T> = {
+    [P in keyof T]: T[P] | null;
+};
+
+/**
+ * @public
+ */
+export declare type NullableKey<T, K> = {
+    [P in keyof T]: P extends K ? T[P] | null : T[P];
+};
 
 /**
  * @public
@@ -2177,6 +2412,263 @@ export declare enum RerollType {
 }
 
 /**
+ * Enumerates the ID of every 'canonical' Starforged oracle that can be rolled directly. Provided to make it easy to type-check e.g. functions that accept an oracle ID as an argument.
+ * @public
+ */
+export declare enum RollableOraclesSF {
+    Character_Creation_Background_Assets = "Starforged/Oracles/Character_Creation/Background_Assets",
+    Character_Creation_Backstory_Prompts = "Starforged/Oracles/Character_Creation/Backstory_Prompts",
+    Character_Creation_Inciting_Incident = "Starforged/Oracles/Character_Creation/Inciting_Incident",
+    Character_Creation_Sector_Trouble = "Starforged/Oracles/Character_Creation/Sector_Trouble",
+    Character_Creation_Starship_History = "Starforged/Oracles/Character_Creation/Starship_History",
+    Character_Creation_Starship_Quirks = "Starforged/Oracles/Character_Creation/Starship_Quirks",
+    Characters_Disposition = "Starforged/Oracles/Characters/Disposition",
+    Characters_First_Look = "Starforged/Oracles/Characters/First_Look",
+    Characters_Goal = "Starforged/Oracles/Characters/Goal",
+    Characters_Name_Callsign = "Starforged/Oracles/Characters/Name/Callsign",
+    Characters_Name_Family_Name = "Starforged/Oracles/Characters/Name/Family_Name",
+    Characters_Name_Given_Name = "Starforged/Oracles/Characters/Name/Given_Name",
+    Characters_Revealed_Aspect = "Starforged/Oracles/Characters/Revealed_Aspect",
+    Characters_Role = "Starforged/Oracles/Characters/Role",
+    Core_Action = "Starforged/Oracles/Core/Action",
+    Core_Descriptor = "Starforged/Oracles/Core/Descriptor",
+    Core_Focus = "Starforged/Oracles/Core/Focus",
+    Core_Theme = "Starforged/Oracles/Core/Theme",
+    Creatures_Basic_Form_Air = "Starforged/Oracles/Creatures/Basic_Form/Air",
+    Creatures_Basic_Form_Interior = "Starforged/Oracles/Creatures/Basic_Form/Interior",
+    Creatures_Basic_Form_Land = "Starforged/Oracles/Creatures/Basic_Form/Land",
+    Creatures_Basic_Form_Liquid = "Starforged/Oracles/Creatures/Basic_Form/Liquid",
+    Creatures_Basic_Form_Space = "Starforged/Oracles/Creatures/Basic_Form/Space",
+    Creatures_Encountered_Behavior = "Starforged/Oracles/Creatures/Encountered_Behavior",
+    Creatures_Environment = "Starforged/Oracles/Creatures/Environment",
+    Creatures_First_Look = "Starforged/Oracles/Creatures/First_Look",
+    Creatures_Revealed_Aspect = "Starforged/Oracles/Creatures/Revealed_Aspect",
+    Creatures_Scale = "Starforged/Oracles/Creatures/Scale",
+    Creatures_Ultra_scale = "Starforged/Oracles/Creatures/Ultra-scale",
+    Derelicts_Access_Area = "Starforged/Oracles/Derelicts/Access/Area",
+    Derelicts_Access_Feature = "Starforged/Oracles/Derelicts/Access/Feature",
+    Derelicts_Access_Opportunity = "Starforged/Oracles/Derelicts/Access/Opportunity",
+    Derelicts_Access_Peril = "Starforged/Oracles/Derelicts/Access/Peril",
+    Derelicts_Community_Area = "Starforged/Oracles/Derelicts/Community/Area",
+    Derelicts_Community_Feature = "Starforged/Oracles/Derelicts/Community/Feature",
+    Derelicts_Community_Opportunity = "Starforged/Oracles/Derelicts/Community/Opportunity",
+    Derelicts_Community_Peril = "Starforged/Oracles/Derelicts/Community/Peril",
+    Derelicts_Condition = "Starforged/Oracles/Derelicts/Condition",
+    Derelicts_Engineering_Area = "Starforged/Oracles/Derelicts/Engineering/Area",
+    Derelicts_Engineering_Feature = "Starforged/Oracles/Derelicts/Engineering/Feature",
+    Derelicts_Engineering_Opportunity = "Starforged/Oracles/Derelicts/Engineering/Opportunity",
+    Derelicts_Engineering_Peril = "Starforged/Oracles/Derelicts/Engineering/Peril",
+    Derelicts_Inner_First_Look = "Starforged/Oracles/Derelicts/Inner_First_Look",
+    Derelicts_Living_Area = "Starforged/Oracles/Derelicts/Living/Area",
+    Derelicts_Living_Feature = "Starforged/Oracles/Derelicts/Living/Feature",
+    Derelicts_Living_Opportunity = "Starforged/Oracles/Derelicts/Living/Opportunity",
+    Derelicts_Living_Peril = "Starforged/Oracles/Derelicts/Living/Peril",
+    Derelicts_Location = "Starforged/Oracles/Derelicts/Location",
+    Derelicts_Medical_Area = "Starforged/Oracles/Derelicts/Medical/Area",
+    Derelicts_Medical_Feature = "Starforged/Oracles/Derelicts/Medical/Feature",
+    Derelicts_Medical_Opportunity = "Starforged/Oracles/Derelicts/Medical/Opportunity",
+    Derelicts_Medical_Peril = "Starforged/Oracles/Derelicts/Medical/Peril",
+    Derelicts_Operations_Area = "Starforged/Oracles/Derelicts/Operations/Area",
+    Derelicts_Operations_Feature = "Starforged/Oracles/Derelicts/Operations/Feature",
+    Derelicts_Operations_Opportunity = "Starforged/Oracles/Derelicts/Operations/Opportunity",
+    Derelicts_Operations_Peril = "Starforged/Oracles/Derelicts/Operations/Peril",
+    Derelicts_Outer_First_Look = "Starforged/Oracles/Derelicts/Outer_First_Look",
+    Derelicts_Production_Area = "Starforged/Oracles/Derelicts/Production/Area",
+    Derelicts_Production_Feature = "Starforged/Oracles/Derelicts/Production/Feature",
+    Derelicts_Production_Opportunity = "Starforged/Oracles/Derelicts/Production/Opportunity",
+    Derelicts_Production_Peril = "Starforged/Oracles/Derelicts/Production/Peril",
+    Derelicts_Research_Area = "Starforged/Oracles/Derelicts/Research/Area",
+    Derelicts_Research_Feature = "Starforged/Oracles/Derelicts/Research/Feature",
+    Derelicts_Research_Opportunity = "Starforged/Oracles/Derelicts/Research/Opportunity",
+    Derelicts_Research_Peril = "Starforged/Oracles/Derelicts/Research/Peril",
+    Derelicts_Type_Deep_Space = "Starforged/Oracles/Derelicts/Type/Deep_Space",
+    Derelicts_Type_Orbital = "Starforged/Oracles/Derelicts/Type/Orbital",
+    Derelicts_Type_Planetside = "Starforged/Oracles/Derelicts/Type/Planetside",
+    Derelicts_Zones_Settlement = "Starforged/Oracles/Derelicts/Zones/Settlement",
+    Derelicts_Zones_Starship = "Starforged/Oracles/Derelicts/Zones/Starship",
+    Factions_Affiliation = "Starforged/Oracles/Factions/Affiliation",
+    Factions_Dominion = "Starforged/Oracles/Factions/Dominion",
+    Factions_Fringe_Group = "Starforged/Oracles/Factions/Fringe_Group",
+    Factions_Guild = "Starforged/Oracles/Factions/Guild",
+    Factions_Identity = "Starforged/Oracles/Factions/Identity",
+    Factions_Influence = "Starforged/Oracles/Factions/Influence",
+    Factions_Leadership = "Starforged/Oracles/Factions/Leadership",
+    Factions_Legacy = "Starforged/Oracles/Factions/Legacy",
+    Factions_Name_Template = "Starforged/Oracles/Factions/Name_Template",
+    Factions_Projects = "Starforged/Oracles/Factions/Projects",
+    Factions_Quirks = "Starforged/Oracles/Factions/Quirks",
+    Factions_Relationships = "Starforged/Oracles/Factions/Relationships",
+    Factions_Rumors = "Starforged/Oracles/Factions/Rumors",
+    Factions_Type = "Starforged/Oracles/Factions/Type",
+    Location_Themes_Chaotic_Feature = "Starforged/Oracles/Location_Themes/Chaotic/Feature",
+    Location_Themes_Chaotic_Opportunity = "Starforged/Oracles/Location_Themes/Chaotic/Opportunity",
+    Location_Themes_Chaotic_Peril = "Starforged/Oracles/Location_Themes/Chaotic/Peril",
+    Location_Themes_Fortified_Feature = "Starforged/Oracles/Location_Themes/Fortified/Feature",
+    Location_Themes_Fortified_Opportunity = "Starforged/Oracles/Location_Themes/Fortified/Opportunity",
+    Location_Themes_Fortified_Peril = "Starforged/Oracles/Location_Themes/Fortified/Peril",
+    Location_Themes_Haunted_Feature = "Starforged/Oracles/Location_Themes/Haunted/Feature",
+    Location_Themes_Haunted_Opportunity = "Starforged/Oracles/Location_Themes/Haunted/Opportunity",
+    Location_Themes_Haunted_Peril = "Starforged/Oracles/Location_Themes/Haunted/Peril",
+    Location_Themes_Infested_Feature = "Starforged/Oracles/Location_Themes/Infested/Feature",
+    Location_Themes_Infested_Opportunity = "Starforged/Oracles/Location_Themes/Infested/Opportunity",
+    Location_Themes_Infested_Peril = "Starforged/Oracles/Location_Themes/Infested/Peril",
+    Location_Themes_Inhabited_Feature = "Starforged/Oracles/Location_Themes/Inhabited/Feature",
+    Location_Themes_Inhabited_Opportunity = "Starforged/Oracles/Location_Themes/Inhabited/Opportunity",
+    Location_Themes_Inhabited_Peril = "Starforged/Oracles/Location_Themes/Inhabited/Peril",
+    Location_Themes_Mechanical_Feature = "Starforged/Oracles/Location_Themes/Mechanical/Feature",
+    Location_Themes_Mechanical_Opportunity = "Starforged/Oracles/Location_Themes/Mechanical/Opportunity",
+    Location_Themes_Mechanical_Peril = "Starforged/Oracles/Location_Themes/Mechanical/Peril",
+    Location_Themes_Ruined_Feature = "Starforged/Oracles/Location_Themes/Ruined/Feature",
+    Location_Themes_Ruined_Opportunity = "Starforged/Oracles/Location_Themes/Ruined/Opportunity",
+    Location_Themes_Ruined_Peril = "Starforged/Oracles/Location_Themes/Ruined/Peril",
+    Location_Themes_Sacred_Feature = "Starforged/Oracles/Location_Themes/Sacred/Feature",
+    Location_Themes_Sacred_Opportunity = "Starforged/Oracles/Location_Themes/Sacred/Opportunity",
+    Location_Themes_Sacred_Peril = "Starforged/Oracles/Location_Themes/Sacred/Peril",
+    Location_Themes_Theme_Type = "Starforged/Oracles/Location_Themes/Theme_Type",
+    Misc_Anomaly_Effect = "Starforged/Oracles/Misc/Anomaly_Effect",
+    Misc_Combat_Action = "Starforged/Oracles/Misc/Combat_Action",
+    Misc_Story_Clue = "Starforged/Oracles/Misc/Story_Clue",
+    Misc_Story_Complication = "Starforged/Oracles/Misc/Story_Complication",
+    Moves_Ask_the_Oracle_Almost_Certain = "Starforged/Oracles/Moves/Ask_the_Oracle/Almost_Certain",
+    Moves_Ask_the_Oracle_Fifty_fifty = "Starforged/Oracles/Moves/Ask_the_Oracle/Fifty-fifty",
+    Moves_Ask_the_Oracle_Likely = "Starforged/Oracles/Moves/Ask_the_Oracle/Likely",
+    Moves_Ask_the_Oracle_Small_Chance = "Starforged/Oracles/Moves/Ask_the_Oracle/Small_Chance",
+    Moves_Ask_the_Oracle_Unlikely = "Starforged/Oracles/Moves/Ask_the_Oracle/Unlikely",
+    Moves_Begin_a_Session = "Starforged/Oracles/Moves/Begin_a_Session",
+    Moves_Confront_Chaos = "Starforged/Oracles/Moves/Confront_Chaos",
+    Moves_Endure_Harm = "Starforged/Oracles/Moves/Endure_Harm",
+    Moves_Endure_Stress = "Starforged/Oracles/Moves/Endure_Stress",
+    Moves_Make_a_Discovery = "Starforged/Oracles/Moves/Make_a_Discovery",
+    Moves_Pay_the_Price = "Starforged/Oracles/Moves/Pay_the_Price",
+    Moves_Take_Decisive_Action = "Starforged/Oracles/Moves/Take_Decisive_Action",
+    Moves_Withstand_Damage = "Starforged/Oracles/Moves/Withstand_Damage",
+    Planets_Class = "Starforged/Oracles/Planets/Class",
+    Planets_Desert_Atmosphere = "Starforged/Oracles/Planets/Desert/Atmosphere",
+    Planets_Desert_Feature = "Starforged/Oracles/Planets/Desert/Feature",
+    Planets_Desert_Life = "Starforged/Oracles/Planets/Desert/Life",
+    Planets_Desert_Observed_From_Space = "Starforged/Oracles/Planets/Desert/Observed_From_Space",
+    Planets_Desert_Settlements_Expanse = "Starforged/Oracles/Planets/Desert/Settlements/Expanse",
+    Planets_Desert_Settlements_Outlands = "Starforged/Oracles/Planets/Desert/Settlements/Outlands",
+    Planets_Desert_Settlements_Terminus = "Starforged/Oracles/Planets/Desert/Settlements/Terminus",
+    Planets_Furnace_Atmosphere = "Starforged/Oracles/Planets/Furnace/Atmosphere",
+    Planets_Furnace_Feature = "Starforged/Oracles/Planets/Furnace/Feature",
+    Planets_Furnace_Life = "Starforged/Oracles/Planets/Furnace/Life",
+    Planets_Furnace_Observed_From_Space = "Starforged/Oracles/Planets/Furnace/Observed_From_Space",
+    Planets_Furnace_Settlements_Expanse = "Starforged/Oracles/Planets/Furnace/Settlements/Expanse",
+    Planets_Furnace_Settlements_Outlands = "Starforged/Oracles/Planets/Furnace/Settlements/Outlands",
+    Planets_Furnace_Settlements_Terminus = "Starforged/Oracles/Planets/Furnace/Settlements/Terminus",
+    Planets_Grave_Atmosphere = "Starforged/Oracles/Planets/Grave/Atmosphere",
+    Planets_Grave_Feature = "Starforged/Oracles/Planets/Grave/Feature",
+    Planets_Grave_Life = "Starforged/Oracles/Planets/Grave/Life",
+    Planets_Grave_Observed_From_Space = "Starforged/Oracles/Planets/Grave/Observed_From_Space",
+    Planets_Grave_Settlements_Expanse = "Starforged/Oracles/Planets/Grave/Settlements/Expanse",
+    Planets_Grave_Settlements_Outlands = "Starforged/Oracles/Planets/Grave/Settlements/Outlands",
+    Planets_Grave_Settlements_Terminus = "Starforged/Oracles/Planets/Grave/Settlements/Terminus",
+    Planets_Ice_Atmosphere = "Starforged/Oracles/Planets/Ice/Atmosphere",
+    Planets_Ice_Feature = "Starforged/Oracles/Planets/Ice/Feature",
+    Planets_Ice_Life = "Starforged/Oracles/Planets/Ice/Life",
+    Planets_Ice_Observed_From_Space = "Starforged/Oracles/Planets/Ice/Observed_From_Space",
+    Planets_Ice_Settlements_Expanse = "Starforged/Oracles/Planets/Ice/Settlements/Expanse",
+    Planets_Ice_Settlements_Outlands = "Starforged/Oracles/Planets/Ice/Settlements/Outlands",
+    Planets_Ice_Settlements_Terminus = "Starforged/Oracles/Planets/Ice/Settlements/Terminus",
+    Planets_Jovian_Atmosphere = "Starforged/Oracles/Planets/Jovian/Atmosphere",
+    Planets_Jovian_Feature = "Starforged/Oracles/Planets/Jovian/Feature",
+    Planets_Jovian_Life = "Starforged/Oracles/Planets/Jovian/Life",
+    Planets_Jovian_Observed_From_Space = "Starforged/Oracles/Planets/Jovian/Observed_From_Space",
+    Planets_Jovian_Settlements_Expanse = "Starforged/Oracles/Planets/Jovian/Settlements/Expanse",
+    Planets_Jovian_Settlements_Outlands = "Starforged/Oracles/Planets/Jovian/Settlements/Outlands",
+    Planets_Jovian_Settlements_Terminus = "Starforged/Oracles/Planets/Jovian/Settlements/Terminus",
+    Planets_Jungle_Atmosphere = "Starforged/Oracles/Planets/Jungle/Atmosphere",
+    Planets_Jungle_Feature = "Starforged/Oracles/Planets/Jungle/Feature",
+    Planets_Jungle_Life = "Starforged/Oracles/Planets/Jungle/Life",
+    Planets_Jungle_Observed_From_Space = "Starforged/Oracles/Planets/Jungle/Observed_From_Space",
+    Planets_Jungle_Settlements_Expanse = "Starforged/Oracles/Planets/Jungle/Settlements/Expanse",
+    Planets_Jungle_Settlements_Outlands = "Starforged/Oracles/Planets/Jungle/Settlements/Outlands",
+    Planets_Jungle_Settlements_Terminus = "Starforged/Oracles/Planets/Jungle/Settlements/Terminus",
+    Planets_Ocean_Atmosphere = "Starforged/Oracles/Planets/Ocean/Atmosphere",
+    Planets_Ocean_Feature = "Starforged/Oracles/Planets/Ocean/Feature",
+    Planets_Ocean_Life = "Starforged/Oracles/Planets/Ocean/Life",
+    Planets_Ocean_Observed_From_Space = "Starforged/Oracles/Planets/Ocean/Observed_From_Space",
+    Planets_Ocean_Settlements_Expanse = "Starforged/Oracles/Planets/Ocean/Settlements/Expanse",
+    Planets_Ocean_Settlements_Outlands = "Starforged/Oracles/Planets/Ocean/Settlements/Outlands",
+    Planets_Ocean_Settlements_Terminus = "Starforged/Oracles/Planets/Ocean/Settlements/Terminus",
+    Planets_Opportunity_Lifebearing = "Starforged/Oracles/Planets/Opportunity/Lifebearing",
+    Planets_Opportunity_Lifeless = "Starforged/Oracles/Planets/Opportunity/Lifeless",
+    Planets_Peril_Lifebearing = "Starforged/Oracles/Planets/Peril/Lifebearing",
+    Planets_Peril_Lifeless = "Starforged/Oracles/Planets/Peril/Lifeless",
+    Planets_Rocky_Atmosphere = "Starforged/Oracles/Planets/Rocky/Atmosphere",
+    Planets_Rocky_Feature = "Starforged/Oracles/Planets/Rocky/Feature",
+    Planets_Rocky_Life = "Starforged/Oracles/Planets/Rocky/Life",
+    Planets_Rocky_Observed_From_Space = "Starforged/Oracles/Planets/Rocky/Observed_From_Space",
+    Planets_Rocky_Settlements_Expanse = "Starforged/Oracles/Planets/Rocky/Settlements/Expanse",
+    Planets_Rocky_Settlements_Outlands = "Starforged/Oracles/Planets/Rocky/Settlements/Outlands",
+    Planets_Rocky_Settlements_Terminus = "Starforged/Oracles/Planets/Rocky/Settlements/Terminus",
+    Planets_Shattered_Atmosphere = "Starforged/Oracles/Planets/Shattered/Atmosphere",
+    Planets_Shattered_Feature = "Starforged/Oracles/Planets/Shattered/Feature",
+    Planets_Shattered_Life = "Starforged/Oracles/Planets/Shattered/Life",
+    Planets_Shattered_Observed_From_Space = "Starforged/Oracles/Planets/Shattered/Observed_From_Space",
+    Planets_Shattered_Settlements_Expanse = "Starforged/Oracles/Planets/Shattered/Settlements/Expanse",
+    Planets_Shattered_Settlements_Outlands = "Starforged/Oracles/Planets/Shattered/Settlements/Outlands",
+    Planets_Shattered_Settlements_Terminus = "Starforged/Oracles/Planets/Shattered/Settlements/Terminus",
+    Planets_Tainted_Atmosphere = "Starforged/Oracles/Planets/Tainted/Atmosphere",
+    Planets_Tainted_Feature = "Starforged/Oracles/Planets/Tainted/Feature",
+    Planets_Tainted_Life = "Starforged/Oracles/Planets/Tainted/Life",
+    Planets_Tainted_Observed_From_Space = "Starforged/Oracles/Planets/Tainted/Observed_From_Space",
+    Planets_Tainted_Settlements_Expanse = "Starforged/Oracles/Planets/Tainted/Settlements/Expanse",
+    Planets_Tainted_Settlements_Outlands = "Starforged/Oracles/Planets/Tainted/Settlements/Outlands",
+    Planets_Tainted_Settlements_Terminus = "Starforged/Oracles/Planets/Tainted/Settlements/Terminus",
+    Planets_Vital_Atmosphere = "Starforged/Oracles/Planets/Vital/Atmosphere",
+    Planets_Vital_Biomes = "Starforged/Oracles/Planets/Vital/Biomes",
+    Planets_Vital_Diversity = "Starforged/Oracles/Planets/Vital/Diversity",
+    Planets_Vital_Feature = "Starforged/Oracles/Planets/Vital/Feature",
+    Planets_Vital_Life = "Starforged/Oracles/Planets/Vital/Life",
+    Planets_Vital_Observed_From_Space = "Starforged/Oracles/Planets/Vital/Observed_From_Space",
+    Planets_Vital_Settlements_Expanse = "Starforged/Oracles/Planets/Vital/Settlements/Expanse",
+    Planets_Vital_Settlements_Outlands = "Starforged/Oracles/Planets/Vital/Settlements/Outlands",
+    Planets_Vital_Settlements_Terminus = "Starforged/Oracles/Planets/Vital/Settlements/Terminus",
+    Settlements_Authority = "Starforged/Oracles/Settlements/Authority",
+    Settlements_First_Look = "Starforged/Oracles/Settlements/First_Look",
+    Settlements_Initial_Contact = "Starforged/Oracles/Settlements/Initial_Contact",
+    Settlements_Location = "Starforged/Oracles/Settlements/Location",
+    Settlements_Name = "Starforged/Oracles/Settlements/Name",
+    Settlements_Population_Expanse = "Starforged/Oracles/Settlements/Population/Expanse",
+    Settlements_Population_Outlands = "Starforged/Oracles/Settlements/Population/Outlands",
+    Settlements_Population_Terminus = "Starforged/Oracles/Settlements/Population/Terminus",
+    Settlements_Projects = "Starforged/Oracles/Settlements/Projects",
+    Settlements_Trouble = "Starforged/Oracles/Settlements/Trouble",
+    Space_Opportunity = "Starforged/Oracles/Space/Opportunity",
+    Space_Peril = "Starforged/Oracles/Space/Peril",
+    Space_Sector_Name_Prefix = "Starforged/Oracles/Space/Sector_Name/Prefix",
+    Space_Sector_Name_Suffix = "Starforged/Oracles/Space/Sector_Name/Suffix",
+    Space_Sighting_Expanse = "Starforged/Oracles/Space/Sighting/Expanse",
+    Space_Sighting_Outlands = "Starforged/Oracles/Space/Sighting/Outlands",
+    Space_Sighting_Terminus = "Starforged/Oracles/Space/Sighting/Terminus",
+    Space_Stellar_Object = "Starforged/Oracles/Space/Stellar_Object",
+    Starships_First_Look = "Starforged/Oracles/Starships/First_Look",
+    Starships_Fleet = "Starforged/Oracles/Starships/Fleet",
+    Starships_Initial_Contact = "Starforged/Oracles/Starships/Initial_Contact",
+    Starships_Mission_Expanse = "Starforged/Oracles/Starships/Mission/Expanse",
+    Starships_Mission_Outlands = "Starforged/Oracles/Starships/Mission/Outlands",
+    Starships_Mission_Terminus = "Starforged/Oracles/Starships/Mission/Terminus",
+    Starships_Name = "Starforged/Oracles/Starships/Name",
+    Starships_Type = "Starforged/Oracles/Starships/Type",
+    Vaults_Form = "Starforged/Oracles/Vaults/Form",
+    Vaults_Interior_Feature = "Starforged/Oracles/Vaults/Interior/Feature",
+    Vaults_Interior_First_Look = "Starforged/Oracles/Vaults/Interior/First_Look",
+    Vaults_Interior_Opportunity = "Starforged/Oracles/Vaults/Interior/Opportunity",
+    Vaults_Interior_Peril = "Starforged/Oracles/Vaults/Interior/Peril",
+    Vaults_Location = "Starforged/Oracles/Vaults/Location",
+    Vaults_Material = "Starforged/Oracles/Vaults/Material",
+    Vaults_Outer_First_Look = "Starforged/Oracles/Vaults/Outer_First_Look",
+    Vaults_Sanctum_Feature = "Starforged/Oracles/Vaults/Sanctum/Feature",
+    Vaults_Sanctum_Opportunity = "Starforged/Oracles/Vaults/Sanctum/Opportunity",
+    Vaults_Sanctum_Peril = "Starforged/Oracles/Vaults/Sanctum/Peril",
+    Vaults_Sanctum_Purpose = "Starforged/Oracles/Vaults/Sanctum/Purpose",
+    Vaults_Scale = "Starforged/Oracles/Vaults/Scale",
+    Vaults_Shape = "Starforged/Oracles/Vaults/Shape"
+}
+
+/**
  * Standard player character stats or condition meters that can be used as +stat in an action roll.
  * @public
  */
@@ -2271,7 +2763,9 @@ export declare enum SourceTitle {
  * @public
  */
 export declare enum SourceUrl {
-    IronswornRulebook = "https://shawn-tomkin.itch.io/ironsworn",
+    Starforged = "https://getstarforged.com",
+    StarforgedAssets = "https://getstarforged.com",
+    Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
     IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"

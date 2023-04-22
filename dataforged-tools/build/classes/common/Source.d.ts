@@ -1,9 +1,10 @@
-import type { ISource, SourceTitle } from "../../json_out/index.js";
+import type { ISource } from "../../json_out/index.js";
 /**
  * @internal
  */
 export declare class Source implements ISource {
-    Title: SourceTitle;
+    Title: ISource["Title"];
+    Authors: string[];
     Date?: string | undefined;
     Page?: number | undefined;
     Url?: string | undefined;

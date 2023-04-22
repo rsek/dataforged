@@ -15,6 +15,8 @@ export const ACTION_DIE_SIDES = 6;
  * @param challengeDie2 - The second challenge die.
  */
 export function resolveIronswornRoll(score: number, challengeDie1: Die, challengeDie2: Die ): MoveOutcome {
+  console.log("Resolving ironsworn roll:", ...arguments);
+
   const diceBeaten = [ challengeDie1, challengeDie2 ].filter(die => score > die.valueOf()).length;
   return diceBeaten;
 }
@@ -34,10 +36,10 @@ export abstract class IronswornRoll implements IIronswornRoll {
   readonly type: RollType;
   challengeDice: [Die, Die];
   private readonly _outcomesData: NumericOutcomes;
-  outcomeForScore(score: number) {
+  outcomeForScore(score: number): MoveOutcome {
     return resolveIronswornRoll(score, ...this.challengeDice);
   }
-  outcomeEffectForScore(score: number, isMatch: boolean) {
+  outcomeEffectForScore(score: number, isMatch: boolean): NumericOutcome<MoveOutcome> {
     const outcomeKey = MoveOutcome[this.outcomeForScore(score)] as keyof typeof MoveOutcome;
     let baseOutcome = _.cloneDeep(this._outcomesData[outcomeKey]);
     if (isMatch && baseOutcome.chooseOnMatch) {
@@ -45,7 +47,7 @@ export abstract class IronswornRoll implements IIronswornRoll {
     }
     return baseOutcome;
   }
-  get outcomeEffect() {
+  get outcomeEffect(): NumericOutcome<MoveOutcome> {
     return this.outcomeEffectForScore(this.score, this.isMatch);
   }
   toString(): string {

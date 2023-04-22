@@ -1,4 +1,4 @@
-import type { IHasId , IOutcomeInfo, MoveOutcome } from "@json_out/index.js";
+import type { IHasId , IOutcomeInfo } from "@json_out/index.js";
 
 /**
  * @public

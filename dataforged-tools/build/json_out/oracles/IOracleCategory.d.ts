@@ -1,8 +1,9 @@
 import type { IOracleBase } from "../index.js";
 /**
- * Represents an oracle category: a grouping that can contain both Oracles and other Oracle categories, but doesn't have its own `Table` key.
+ * Represents an oracle category: a grouping that can contain both {@link IOracle}s and other instances of {@link IOracleCategory}, but doesn't have its own `Table` key.
  *
- * The distinction between this and {@link IOracle}s that lack their own `Table` is a little arbitrary (and may be revised in the future).
+ * If you're looking for a way to crawl the oracle hierarchy in search of a specific ID, see {@link IOracleBase}.
+ *
  * @public
  */
 export interface IOracleCategory extends IOracleBase {
@@ -15,12 +16,12 @@ export interface IOracleCategory extends IOracleBase {
      */
     Category?: IOracleCategory["$id"] | undefined;
     /**
-     * Subcategories contained by this oracle category.
-     */
-    Categories?: IOracleCategory[] | undefined;
-    /**
      * A list of sample names for this category (only used by Planetary Class subcategories).
      */
     "Sample Names"?: string[] | undefined;
+    /**
+     * @internal
+     */
+    Table?: never;
 }
 //# sourceMappingURL=IOracleCategory.d.ts.map

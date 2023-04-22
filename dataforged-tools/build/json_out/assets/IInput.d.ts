@@ -1,5 +1,4 @@
-import type { ClockSegments } from "../index.js";
-import type { ClockType, IHasId, IHasName, InputType } from "../index.js";
+import type { ClockSegments, ClockType, IHasId, IHasName, InputType } from "../index.js";
 /**
  * A stub interface representing an input widget of any type.
  * @see {@link IInputNumber}, {@link IInputClock}, {@link IInputText}, {@link IInputSelect}

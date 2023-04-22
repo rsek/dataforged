@@ -5,16 +5,15 @@ import { Replacement, RollMethod, RollType } from "../../json_out/index.js";
  */
 export class MoveTriggerOption {
     constructor(json, parent, index) {
-        var _a, _b, _c;
         this.$id = `${parent.$id}/Options/${index + 1}`;
         this.Text = json.Text;
-        this["Roll type"] = (_a = json["Roll type"]) !== null && _a !== void 0 ? _a : RollType.Action;
-        this.Method = (_b = json.Method) !== null && _b !== void 0 ? _b : RollMethod.Any;
-        this.Using = (_c = json.Using) !== null && _c !== void 0 ? _c : [];
+        this["Roll type"] = json["Roll type"] ?? RollType.Action;
+        this.Method = json.Method ?? RollMethod.Any;
+        this.Using = json.Using ?? [];
         if (json["Custom stat"]) {
-            this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
+            this["Custom stat"] = new CustomStat(json["Custom stat"], this.$id);
             if (this.Using && this["Custom stat"]) {
-                this.Using = this.Using.map(item => { var _a; return (item) === Replacement.CustomStat ? (_a = this["Custom stat"]) === null || _a === void 0 ? void 0 : _a.$id : item; });
+                this.Using = this.Using.map(item => (item) === Replacement.CustomStat ? this["Custom stat"]?.$id : item);
             }
         }
     }

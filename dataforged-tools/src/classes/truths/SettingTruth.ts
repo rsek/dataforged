@@ -16,7 +16,7 @@ export class SettingTruth implements ISettingTruth {
   Display: DisplayWithTitle;
   Source: Source;
   constructor(json: ISettingTruthYaml, sourceJson: ISource, gamespace: Gamespace) {
-    this.$id = `${gamespace}/Setting_Truths/${formatIdFragment(json.Name)}`;
+    this.$id = `${gamespace}/Setting_Truths/${formatIdFragment(json._idFragment??json.Name)}`;
     buildLog(this.constructor,`Building: ${this.$id}`);
     this.Name = json.Name;
     this.Table = json.Table.map(row => new SettingTruthOption(this.$id, row));

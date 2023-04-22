@@ -9,6 +9,6 @@ export declare class MoveTrigger implements IMoveTrigger {
     "Options"?: (MoveTriggerOptionAction | MoveTriggerOptionProgress)[] | undefined;
     Text?: string | undefined;
     By?: IMoveTriggerBy | undefined;
-    constructor(json: IMoveTriggerYaml | IAlterMoveTriggerYaml, id: IMoveTrigger["$id"], parent: IAlterMove | IMove);
+    constructor(json: IMoveTriggerYaml | IAlterMoveTriggerYaml, parent: IAlterMove | IMove);
 }
 //# sourceMappingURL=MoveTrigger.d.ts.map

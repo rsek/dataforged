@@ -20,7 +20,7 @@ export abstract class MoveTriggerOption implements IMoveTriggerOptionBase {
     this.Method = json.Method ?? RollMethod.Any;
     this.Using = (json.Using as typeof this["Using"]) ?? [];
     if (json["Custom stat"]) {
-      this["Custom stat"] = new CustomStat(json["Custom stat"], `${this.$id}/Custom_stat`);
+      this["Custom stat"] = new CustomStat(json["Custom stat"], this.$id);
       if (this.Using && this["Custom stat"]) {
         this.Using = this.Using.map(item => (item ) === Replacement.CustomStat ? this["Custom stat"]?.$id : item) as typeof this["Using"];
       }

@@ -1,17 +1,21 @@
 {
   "name": "dataforged",
-  "version": "1.1.1",
-  "description": "Official Ironsworn: Starforged rules data in JSON, for use in community tools.",
+  "version": "1.5.0",
+  "description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
   "type": "commonjs",
   "exports": {
-    "import": "./dist/index-esm.mjs",
-    "require": "./dist/index.js"
+    ".": {
+      "import": "./dist/index-esm.mjs",
+      "require": "./dist/index.js"
+    }
   },
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "build-cjs": "tsc --project tsconfig-cjs.json",
     "build-esm": "tsc --project tsconfig-esm.json && mv ./dist/index-esm.js ./dist/index-esm.mjs",
-    "build": "yarn build-cjs && yarn build-esm"
+    "build": "yarn build-cjs && yarn build-esm",
+    "readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json",
+    "postversion": "yarn readme && git add README.md"
   },
   "files": [
     "dist",
@@ -31,16 +35,20 @@
     "starforged",
     "TTRPG"
   ],
-  "author": "rsek",
+  "author": {
+    "name": "rsek",
+    "email": "r.sekouri@gmail.com",
+    "url": "https://github.com/rsek"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/rsek/dataforged/issues"
   },
-  "homepage": "https://github.com/rsek/dataforged#readme",
-  "dependencies": {},
+  "homepage": "https://rsek.github.io/dataforged",
+  "readme": "https://rsek.github.io/dataforged",
   "devDependencies": {
-    "@types/node": "^17.0.25",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.7.0-dev.20220420"
+    "@types/node": "^18.0.3",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   }
 }

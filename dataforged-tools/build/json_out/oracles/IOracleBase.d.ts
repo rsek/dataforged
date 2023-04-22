@@ -1,6 +1,19 @@
-import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IOracle, IOracleCategory, IOracleUsage } from "../index.js";
+import type { IDisplayWithTitle, IHasAliases, IHasDescription, IHasDisplay, IHasId, IHasName, IHasOracleContent, IHasSource, IHasText, IOracle, IOracleCategory, IOracleUsage, IRow } from "../index.js";
+/**
+ * @public
+ */
+export interface IOracleMatch extends IHasId, IHasText {
+    /**
+     * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+((/[A-z_-]+)+)?/On_a_Match$
+     */
+    $id: string;
+}
 /**
  * Interface with elements common to various Oracle-related interfaces and classes.
+ *
+ * If you're trying to crawl the tree for a specific ID, I'd recommend using some flavour of JSONpath (I like `jsonpath-plus`) - it's purpose-made for this sort of nested data structure.
+ *
+ * But if for some reason you can't, you can use this interface to type both {@link IOracle} and {@link IOracleCategory} as you recurse the oracle hierarchy. Objects with `Categories` and `Oracles` are "branches", and objects with `Table` are "leaves".
  * @public
  */
 export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHasOracleContent>, IHasId, IHasDisplay, IHasSource, IHasName {
@@ -9,10 +22,6 @@ export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHa
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-/]+$
      */
     Category?: IOracleCategory["$id"] | undefined;
-    /**
-     * Oracle objects contained by this object.
-     */
-    Oracles?: IOracle[] | undefined;
     /**
      * The ID of the most recent Oracle ancestor of this item, if any.
      * @pattern ^(Ironsworn|Starforged)/Oracles/[A-z_-]+/[A-z_-]+$
@@ -23,5 +32,29 @@ export interface IOracleBase extends Partial<IHasAliases & IHasDescription & IHa
      * Information on the usage of this oracle: recommended number of rolls, etc.
      */
     Usage?: IOracleUsage | undefined;
+    /**
+     * Represents a single oracle table, where 'table' is defined as being something with a single roll range.
+     *
+     * This key appears only on 'leaf' nodes of the oracle hierarchy 'tree' - in other words, many (but not all) {@link IOracle} objects.
+     */
+    Table?: IRow[] | undefined;
+    /**
+     * Oracle objects contained by this object.
+     *
+     * This key appears only on 'branch' nodes of the oracle hierarchy 'tree': {@link IOracleCategory}, and {@link IOracle} (when it contains multiple closely-related tables).
+     */
+    Oracles?: IOracle[] | undefined;
+    /**
+     * Subcategories contained by this oracle category.
+     *
+     * This key appears only on {@link IOracleCategory}, and thus only on 'branch' nodes of the oracle hierarchy 'tree.
+     */
+    Categories?: IOracleCategory[] | undefined;
+    /**
+     * Describes the match behaviour of this oracle's table, if any, and provides a `Text` string describing it. Only appears on a handful of move oracles like Ask the Oracle and Advance a Threat.
+     *
+     * This key appears only on {@link IOracle}s that have a `Table`.
+     */
+    "On a Match"?: IOracleMatch | undefined;
 }
 //# sourceMappingURL=IOracleBase.d.ts.map

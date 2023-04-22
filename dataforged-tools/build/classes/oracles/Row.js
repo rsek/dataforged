@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { AttributeSetter, GameObject, MultipleRolls, OracleContent, Suggestions } from "../index.js";
 import { badJsonError } from "../../utils/logging/badJsonError.js";
 import _ from "lodash-es";
@@ -34,7 +35,6 @@ export class Row {
         }
         const rowContents = Array.isArray(rowData) ? rowData.slice(2) : [_.omit(rowData, ["Floor", "Ceiling"])];
         rowContents.forEach(item => {
-            var _a, _b;
             switch (typeof item) {
                 case "string": {
                     const str = item;
@@ -56,10 +56,10 @@ export class Row {
                         }
                         this.Display.Icon = str;
                     }
-                    else if (!this.Result || ((_a = this.Result) === null || _a === void 0 ? void 0 : _a.length) === 0) {
+                    else if (!this.Result || this.Result?.length === 0) {
                         this.Result = str;
                     }
-                    else if (!this.Summary || ((_b = this.Summary) === null || _b === void 0 ? void 0 : _b.length) === 0) {
+                    else if (!this.Summary || this.Summary?.length === 0) {
                         this.Summary = str;
                     }
                     else {
@@ -86,9 +86,11 @@ export class Row {
                                     throw new Error("Row ID is null, but it has a Subtable.");
                                 }
                                 if (Array.isArray(value) && Array.isArray(value[0])) {
+                                    console.log("Subtable found, building...");
                                     this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else if (Array.isArray(value) && typeof value[0] === "object") {
+                                    console.log("Prebuilt subtable found, generating IDs...");
                                     this.Subtable = value.map(rowData => new Row(`${this.$id}/Subtable`, rowData));
                                 }
                                 else {
@@ -115,7 +117,7 @@ export class Row {
                                     this["Game objects"] = [];
                                 }
                                 const gameObjData = value;
-                                gameObjData.forEach(item => { var _a; return (_a = this["Game objects"]) === null || _a === void 0 ? void 0 : _a.push(new GameObject(item)); });
+                                gameObjData.forEach(item => this["Game objects"]?.push(new GameObject(item)));
                                 break;
                             }
                             case "Suggestions": {
@@ -136,7 +138,7 @@ export class Row {
                                     this.Suggestions = newSuggestions;
                                 }
                                 else {
-                                    this.Suggestions = _.merge(Object.assign({}, this.Suggestions), Object.assign({}, newSuggestions));
+                                    this.Suggestions = _.merge({ ...this.Suggestions }, { ...newSuggestions });
                                 }
                                 // console.log("final suggestions object", this.Suggestions);
                                 break;
