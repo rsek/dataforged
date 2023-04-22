@@ -2754,7 +2754,6 @@ export declare enum SourceTitle {
     Ironsworn = "Ironsworn Rulebook",
     IronswornAssets = "Ironsworn Assets",
     IronswornDelve = "Ironsworn: Delve",
-    IronswornBonusAssets = "Ironsworn Bonus Assets (July 2020)",
     Custom = "Custom"
 }
 
@@ -2767,8 +2766,7 @@ export declare enum SourceUrl {
     StarforgedAssets = "https://getstarforged.com",
     Ironsworn = "https://shawn-tomkin.itch.io/ironsworn",
     IronswornAssets = "https://shawn-tomkin.itch.io/ironsworn",
-    IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve",
-    IronswornBonusAssets = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view"
+    IronswornDelve = "https://shawn-tomkin.itch.io/ironsworn-delve"
 }
 
 /**
