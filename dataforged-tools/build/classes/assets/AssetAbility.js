@@ -9,6 +9,15 @@ import _ from "lodash-es";
  * @internal
  */
 export class AssetAbility {
+    $id;
+    Name;
+    Text;
+    Moves;
+    Inputs;
+    "Alter Moves";
+    "Alter Properties";
+    "Alter Momentum";
+    Enabled;
     constructor(json, id, gamespace, parent) {
         this.$id = id;
         this.Name = json.Name;

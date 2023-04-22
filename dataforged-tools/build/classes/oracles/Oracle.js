@@ -10,6 +10,18 @@ import _ from "lodash-es";
  * @internal
  */
 export class Oracle extends SourceInheritor {
+    $id;
+    "Name";
+    Aliases;
+    "Member of";
+    Category;
+    Description;
+    Display;
+    Usage;
+    Content;
+    "On a Match";
+    Table;
+    Oracles;
     constructor(json, gamespace, category, memberOf, ...ancestorsJson
     // ancestors should be in ascending order
     ) {

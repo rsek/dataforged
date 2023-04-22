@@ -2,7 +2,7 @@ import { REFS_PATH } from "../../constants/index.js";
 import { loadYamlRefs } from "./loadYamlRefs.js";
 import { loadYamlTemplates } from "./loadYamlTemplates.js";
 import yaml from "js-yaml";
-import fs from "fs";
+import * as fs from "fs";
 /**
  * Concatenates YAML with reference objects.
  * @param referencePath - The path to the directory containing the reference files.

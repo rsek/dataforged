@@ -1,5 +1,5 @@
 import prettier from "prettier";
-import fs from "fs";
+import * as fs from "fs";
 /**
  * Writes a JSON object to a nicely formatted file.
  *

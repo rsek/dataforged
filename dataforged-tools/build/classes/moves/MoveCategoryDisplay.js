@@ -4,6 +4,8 @@ import { validateColor } from "../../utils/validateColor.js";
  * @internal
  */
 export class MoveCategoryDisplay {
+    Title;
+    Color;
     constructor(title, color) {
         this.Title = title;
         if (color && !validateColor(color)) {

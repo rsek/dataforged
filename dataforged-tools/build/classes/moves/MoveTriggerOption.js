@@ -4,6 +4,12 @@ import { Replacement, RollMethod, RollType } from "../../json_out/index.js";
  * @internal
  */
 export class MoveTriggerOption {
+    $id;
+    Text;
+    "Roll type";
+    Method;
+    Using;
+    "Custom stat";
     constructor(json, parent, index) {
         this.$id = `${parent.$id}/Options/${index + 1}`;
         this.Text = json.Text;

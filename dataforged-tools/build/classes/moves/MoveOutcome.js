@@ -2,6 +2,11 @@
  * @internal
  */
 export class OutcomeInfo {
+    $id;
+    Text;
+    Reroll;
+    "With a Match";
+    "In Control";
     constructor(json, id) {
         this.$id = id;
         this.Text = json.Text;

@@ -6,6 +6,13 @@ import _ from "lodash-es";
  * @internal
  */
 export class AssetType extends SourceInheritor {
+    $id;
+    Name;
+    Aliases;
+    Description;
+    Assets;
+    Display;
+    Usage;
     constructor(json, gamespace, rootSource) {
         super(json.Source ?? {}, rootSource);
         this.$id = `${gamespace}/Assets/${formatIdFragment(json.Name)}`;

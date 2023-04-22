@@ -3,6 +3,11 @@ import { TableDisplayInfo } from "../index.js";
  * @internal
  */
 export class DisplayOracle {
+    Title;
+    "Column of";
+    Table;
+    Images;
+    Icon;
     constructor(json, parentName, parentId) {
         this.Title = json.Title ?? parentName;
         this.Images = json.Images;

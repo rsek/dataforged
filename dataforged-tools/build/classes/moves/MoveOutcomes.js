@@ -4,6 +4,10 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  * @internal
  */
 export class MoveOutcomes {
+    $id;
+    "Strong Hit";
+    "Weak Hit";
+    "Miss";
     constructor(json, id) {
         this.$id = id;
         this["Strong Hit"] = new OutcomeInfo(json["Strong Hit"], `${this.$id}/Strong_Hit`);
@@ -15,6 +19,10 @@ export class MoveOutcomes {
  * @internal
  */
 export class AlterMoveOutcomes {
+    $id;
+    "Strong Hit";
+    "Weak Hit";
+    "Miss";
     constructor(json, id) {
         this.$id = id;
         const keys = ["Strong Hit", "Weak Hit", "Miss"];

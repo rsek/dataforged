@@ -3,6 +3,13 @@ import { Requirements, Suggestions } from "../index.js";
  * @internal
  */
 export class OracleUsage {
+    Initial;
+    "Max rolls";
+    Repeatable;
+    Suggestions;
+    Requires;
+    "Allow duplicates";
+    "Sets";
     constructor(json) {
         // if (!is<IOracleUsageData>(json)) {
         //   throw new Error();

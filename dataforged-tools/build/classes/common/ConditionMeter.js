@@ -4,10 +4,11 @@ import { MeterAlias } from "../../json_out/index.js";
  * @internal
  */
 export class ConditionMeter extends MeterBase {
+    Min = 0;
+    Conditions = [];
+    Aliases;
     constructor(json, id, assetType) {
         super(json, id);
-        this.Min = 0;
-        this.Conditions = [];
         this["Value"] = json["Value"] ?? json.Max;
         if (json.Conditions) {
             this.Conditions = json.Conditions;

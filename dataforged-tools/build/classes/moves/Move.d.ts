@@ -1,7 +1,7 @@
 import type { Asset, MoveCategory, Suggestions } from "../index.js";
 import { MoveOutcomes, MoveTrigger, SourceInheritor } from "../index.js";
 import type { Gamespace, IAssetAbility, IDisplayWithTitle, IMove, IMoveCategory, IOracle, ISource } from "../../json_out/index.js";
-import type { IMoveYaml } from "../../yaml_in/moves/IMoveYaml";
+import type { IMoveYaml } from "../../yaml_in/moves/index.js";
 /**
  * Object representing a Starforged move.
  * @internal

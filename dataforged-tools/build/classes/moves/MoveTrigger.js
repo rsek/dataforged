@@ -6,6 +6,10 @@ const progressMoves = ["Fulfill_Your_Vow", "Forge_a_Bond", "Finish_an_Expedition
  * @internal
  */
 export class MoveTrigger {
+    $id;
+    "Options";
+    Text;
+    By;
     constructor(json, parent) {
         this.$id = parent.$id + "/Trigger";
         this.Text = json.Text;

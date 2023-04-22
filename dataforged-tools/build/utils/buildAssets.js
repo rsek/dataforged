@@ -4,7 +4,7 @@ import { Gamespace } from "../json_out/index.js";
 import { buildLog } from "./logging/buildLog.js";
 import yaml from "js-yaml";
 import _ from "lodash-es";
-import fs from "fs";
+import * as fs from "fs";
 /**
  * Build and validate all asset objects from YAML.
  * @returns An array of Asset objects.

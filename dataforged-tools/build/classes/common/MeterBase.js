@@ -3,13 +3,16 @@
  * @internal
  */
 export class MeterBase {
+    $id;
+    Name;
+    Min = 0;
+    Max;
+    "Value" = 0;
     /**
      * @param json - the json object to build the counter from
      * @param id - the id of the Counter
      */
     constructor(json, id) {
-        this.Min = 0;
-        this["Value"] = 0;
         this.$id = id;
         this.Name = json.Name;
         this.Max = json.Max;

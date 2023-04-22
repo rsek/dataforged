@@ -5,6 +5,13 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  * @internal
  */
 export class MoveCategory {
+    $id;
+    Name;
+    Source;
+    Description;
+    Moves;
+    Display;
+    Optional;
     constructor(json, gamespace, ...ancestorSourceJson) {
         this.$id = `${gamespace}/Moves/${formatIdFragment(json._idFragment ?? json.Name)}`;
         this.Name = json.Name;

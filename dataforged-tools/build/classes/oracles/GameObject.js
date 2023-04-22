@@ -4,6 +4,9 @@ import _ from "lodash-es";
  * @internal
  */
 export class GameObject {
+    "Object type";
+    Requires;
+    "Inherit rolls";
     constructor(json) {
         // TODO: typechecking without recourse to making more goddamn enums
         // if (!(enumHas(ActorType, json["Object type"]) || enumHas(PlaceType, json["Object type"]))) {

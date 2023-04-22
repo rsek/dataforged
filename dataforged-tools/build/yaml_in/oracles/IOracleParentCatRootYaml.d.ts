@@ -1,5 +1,4 @@
-import type { IOracleCatRoot } from "./IOracleCatRoot";
-import type { IOracleParentCategoryData } from "./IOracleParentCategoryData";
+import type { IOracleParentCategoryData, IOracleCatRoot } from "./index.js";
 /**
  * @internal
  */

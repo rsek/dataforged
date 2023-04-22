@@ -7,6 +7,39 @@ import _ from "lodash-es";
  * @internal
  */
 export class Row {
+    $id;
+    Floor;
+    Ceiling;
+    /**
+     */
+    Result;
+    /**
+     */
+    Summary;
+    /**
+     */
+    "Oracle rolls";
+    /**
+     */
+    "Game objects";
+    /**
+     */
+    "Multiple rolls";
+    /**
+     */
+    Suggestions;
+    /**
+     */
+    Attributes;
+    /**
+     */
+    "Roll template";
+    /**
+     */
+    Display;
+    /**
+     */
+    Content;
     /**
      * Creates an instance of Row.
      */
@@ -184,5 +217,7 @@ export class Row {
             throw badJsonError(this.constructor, this, "Row doesn't have a result string");
         }
     }
+    Subtable;
+    length;
 }
 //# sourceMappingURL=Row.js.map

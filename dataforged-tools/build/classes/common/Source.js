@@ -3,6 +3,11 @@ import _ from "lodash-es";
  * @internal
  */
 export class Source {
+    Title;
+    Authors;
+    Date;
+    Page;
+    Url;
     constructor(json, ...ancestorSourceJson) {
         const sourceStack = _.cloneDeep([..._.compact(ancestorSourceJson)
                 .reverse(),

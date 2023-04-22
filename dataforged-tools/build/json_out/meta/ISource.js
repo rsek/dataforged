@@ -10,7 +10,6 @@ export var SourceTitle;
     SourceTitle["Ironsworn"] = "Ironsworn Rulebook";
     SourceTitle["IronswornAssets"] = "Ironsworn Assets";
     SourceTitle["IronswornDelve"] = "Ironsworn: Delve";
-    SourceTitle["IronswornBonusAssets"] = "Ironsworn Bonus Assets (July 2020)";
     SourceTitle["Custom"] = "Custom";
 })(SourceTitle || (SourceTitle = {}));
 /**
@@ -24,6 +23,5 @@ export var SourceUrl;
     SourceUrl["Ironsworn"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornAssets"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornDelve"] = "https://shawn-tomkin.itch.io/ironsworn-delve";
-    SourceUrl["IronswornBonusAssets"] = "https://drive.google.com/file/d/1bWyWxJzV_SVtyE_SeEGS4TMJ1ZBHfrdv/view";
 })(SourceUrl || (SourceUrl = {}));
 //# sourceMappingURL=ISource.js.map

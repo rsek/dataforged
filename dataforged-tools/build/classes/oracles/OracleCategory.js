@@ -7,6 +7,16 @@ import _ from "lodash-es";
  * @internal
  */
 export class OracleCategory extends SourceInheritor {
+    $id;
+    Name;
+    Aliases;
+    Category;
+    Description;
+    Display;
+    Usage;
+    Oracles;
+    Categories;
+    "Sample Names";
     constructor(json, gamespace, category, ...ancestorsJson) {
         // if (!is<IOracleCategoryData>(json)) {
         //   buildLog(this.constructor, "Json does not conform to type!");

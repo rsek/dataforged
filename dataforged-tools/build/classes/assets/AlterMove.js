@@ -5,6 +5,12 @@ import _ from "lodash-es";
  * @internal
  */
 export class AlterMove {
+    $id;
+    Moves;
+    Alters;
+    Trigger;
+    Text;
+    Outcomes;
     constructor(json, parent, index) {
         this.$id = `${parent.$id}/Alter_Moves/${index + 1}`;
         this.Alters = json.Alters;

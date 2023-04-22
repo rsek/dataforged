@@ -2,6 +2,7 @@
  * @internal
  */
 export class OracleTableRef {
+    $id;
     constructor(tableId) {
         this.$id = tableId;
         this.getTable = this.getTable.bind(this);

@@ -13,6 +13,18 @@ import _ from "lodash-es";
  * @internal
  */
 export class Asset extends SourceInheritor {
+    $id;
+    Name;
+    States;
+    Aliases;
+    "Asset Type";
+    Display;
+    Usage;
+    Attachments;
+    Requirement;
+    Inputs;
+    Abilities;
+    "Condition Meter";
     constructor(json, gamespace, parent, rootSource) {
         // uses RootSource as a starting point because category info has page numbers in the rulebook, rather than the asset pdf
         super(json.Source ?? {}, rootSource);

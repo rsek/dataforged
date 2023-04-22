@@ -7,6 +7,20 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  * @internal
  */
 export class Move extends SourceInheritor {
+    $id;
+    Name;
+    Optional;
+    Category;
+    Asset;
+    "Progress Move";
+    "Variant of";
+    Display;
+    Trigger;
+    Text;
+    Tags;
+    Oracles;
+    Suggestions;
+    Outcomes;
     constructor(json, parent, gamespace, ...sourceAncestors) {
         super(json.Source ?? {}, ...sourceAncestors);
         this.Category = json.Category ?? `${gamespace}/Moves/Assets`;

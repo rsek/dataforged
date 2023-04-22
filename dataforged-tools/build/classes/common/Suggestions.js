@@ -3,6 +3,11 @@ import { GameObject } from "../index.js";
  * @internal
  */
 export class Suggestions {
+    "Game objects";
+    "Oracle rolls";
+    "Assets";
+    "Moves";
+    "Encounters";
     constructor(data) {
         if (data["Game objects"]) {
             // console.info("[Suggestions] Game objects", JSON.stringify(data["Game objects"]));

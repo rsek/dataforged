@@ -7,7 +7,6 @@ const order: SourceTitle[] = [
   SourceTitle.Ironsworn,
   SourceTitle.IronswornAssets,
   SourceTitle.IronswornDelve,
-  SourceTitle.IronswornBonusAssets
 ];
 
 /**

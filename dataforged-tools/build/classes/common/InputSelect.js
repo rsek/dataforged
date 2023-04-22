@@ -6,6 +6,9 @@ import { formatIdFragment } from "../../utils/toIdFragment.js";
  * @internal
  */
 export class InputSelect extends Input {
+    Sets;
+    Options;
+    Adjustable;
     constructor(json, parent) {
         super(json, parent);
         if (json["Input Type"] !== InputType.Select) {
@@ -21,6 +24,9 @@ export class InputSelect extends Input {
  * @internal
  */
 export class InputSelectOption {
+    $id;
+    Name;
+    Set;
     constructor(json, parent) {
         this.$id = `${parent.$id}/Options/${formatIdFragment(json.Name)}`;
         this.Name = json.Name;
@@ -31,6 +37,10 @@ export class InputSelectOption {
  * @internal
  */
 export class InputSelectOptionSetter {
+    $id;
+    Key;
+    Type;
+    Value;
     constructor(json, parent) {
         this.$id = `${parent.$id}/${formatIdFragment(json.Key)}`;
         this.Type = json.Type;

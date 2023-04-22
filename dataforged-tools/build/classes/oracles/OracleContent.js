@@ -4,6 +4,8 @@
  * @internal
  */
 export class OracleContent {
+    "Part of speech";
+    "Tags";
     constructor(json) {
         // if (!(json["Part of speech"]||json["Tags"])) {
         //   throw badJsonError(this.constructor, json, "Expected IOracleContent");

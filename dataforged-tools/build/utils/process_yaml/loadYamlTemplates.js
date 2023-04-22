@@ -1,5 +1,5 @@
 import { REFS_PATH } from "../../constants/index.js";
-import fs from "fs";
+import * as fs from "fs";
 /**
  * It loads all the yaml files in the templates directory and joins them into a single string.
  * @param path - The path to the directory containing the YAML files.
