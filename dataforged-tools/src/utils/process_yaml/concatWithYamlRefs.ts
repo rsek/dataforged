@@ -3,7 +3,7 @@ import { loadYamlRefs } from "@utils/process_yaml/loadYamlRefs.js";
 import { loadYamlTemplates } from "@utils/process_yaml/loadYamlTemplates.js";
 import type { IYamlWithRef } from "@yaml_in/index.js";
 import yaml from "js-yaml";
-import fs from "fs";
+import * as fs from "fs";
 
 /**
  * Concatenates YAML with reference objects.

@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from "fs";
 
 const basePath = "./src/data";
 

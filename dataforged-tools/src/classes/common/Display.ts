@@ -18,10 +18,10 @@ export class Display implements IDisplay {
  * @internal
  */
 export class DisplayWithTitle extends Display implements IDisplayWithTitle {
-  Title!: string;
-  Icon?: string | undefined;
-  Images?: string[] | undefined;
-  Color?: string | undefined;
+  declare Title: string;
+  declare Icon?: string | undefined;
+  declare Images?: string[] | undefined;
+  declare Color?: string | undefined;
   constructor({ Title, Icon, Images, Color }: IDisplayWithTitle) {
     super({
       Title, Icon, Images, Color

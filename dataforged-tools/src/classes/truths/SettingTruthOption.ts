@@ -7,12 +7,12 @@ import type { ISettingTruthOptionYaml } from "@yaml_in/index.js";
  */
 export class SettingTruthOption extends Row implements ISettingTruthOption {
   $id: ISettingTruthOption["$id"];
-  Floor!: ISettingTruthOption["Floor"];
-  Ceiling!: ISettingTruthOption["Ceiling"];
+  declare Floor: ISettingTruthOption["Floor"];
+  declare Ceiling: ISettingTruthOption["Ceiling"];
   Result: string;
   Description: string;
   "Quest Starter": string;
-  Subtable?: Row[]  | undefined;
+  declare Subtable?: Row[]  | undefined;
   constructor(parentId: string, json: ISettingTruthOptionYaml) {
     super(parentId, json,);
 

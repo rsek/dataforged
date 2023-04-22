@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as fs from "fs";
 
 /**
  * It returns an array of all the yaml filepaths in the directory.

@@ -32,8 +32,8 @@ export abstract class MoveTriggerOption implements IMoveTriggerOptionBase {
  * @internal
  */
 export class MoveTriggerOptionAction extends MoveTriggerOption implements IMoveTriggerOptionAction {
-  "Roll type": RollType.Action;
-  Using!: RollableStat[];
+  declare "Roll type": RollType.Action;
+  declare Using: RollableStat[];
   constructor(json: IMoveTriggerOptionActionYaml, parent: IMoveTrigger, index: number) {
     super(json, parent, index);
   }
@@ -43,8 +43,8 @@ export class MoveTriggerOptionAction extends MoveTriggerOption implements IMoveT
  * @internal
  */
 export class MoveTriggerOptionProgress extends MoveTriggerOption implements IMoveTriggerOptionProgress {
-  "Roll type": RollType.Progress;
-  Using!: (ProgressTypeStarforged|ProgressTypeIronsworn)[];
+  declare "Roll type": RollType.Progress;
+  declare Using: (ProgressTypeStarforged|ProgressTypeIronsworn)[];
   constructor(json: IMoveTriggerOptionProgressYaml, parent: IMoveTrigger, index: number) {
     super(json, parent, index);
   }

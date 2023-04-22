@@ -25,7 +25,7 @@ export abstract class Input implements IInput {
  * @internal
  */
 export class InputNumber extends Input implements IInputNumber {
-  "Input Type": InputType.Number;
+  declare "Input Type": InputType.Number;
   Min: number;
   Max: number | null;
   readonly Step = 1;
@@ -45,7 +45,7 @@ export class InputNumber extends Input implements IInputNumber {
  */
 export class InputClock extends Input implements IInputClock {
   "Clock Type": ClockType = ClockType.Tension;
-  "Input Type": InputType.Clock;
+  declare "Input Type": InputType.Clock;
   Segments: ClockSegments;
   Filled: number;
   Adjustable: boolean;
@@ -62,7 +62,7 @@ export class InputClock extends Input implements IInputClock {
  * @internal
  */
 export class InputText extends Input implements IInputText {
-  "Input Type": InputType.Text;
+  declare "Input Type": InputType.Text;
   Adjustable: boolean;
   constructor(json: IInputTextYaml, parent: IAssetAbility|IAsset|Asset|AssetAbility) {
     super(json, parent);

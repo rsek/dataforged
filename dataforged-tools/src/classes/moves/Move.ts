@@ -5,7 +5,7 @@ import type { Gamespace , IAssetAbility, IDisplayWithTitle , IMove , IMoveCatego
 
 import { buildLog } from "@utils/logging/buildLog.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
-import type { IMoveYaml } from "@yaml_in/moves/IMoveYaml";
+import type { IMoveYaml } from "@yaml_in/moves/index.js";
 
 /**
  * Object representing a Starforged move.

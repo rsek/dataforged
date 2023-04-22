@@ -7,7 +7,7 @@ import { JSONPath } from "jsonpath-plus";
  * @returns The object that matches the id.
  */
 export function findById<T>(data: object, id: string): T {
-  return JSONPath<T>({ path:`$..[?(@.$id=="${id}")]`, json: data });
+  return JSONPath({ path:`$..[?(@.$id=="${id}")]`, json: data }) as unknown as T;
 }
 
 ///

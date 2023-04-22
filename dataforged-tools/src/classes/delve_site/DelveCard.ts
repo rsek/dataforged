@@ -1,8 +1,8 @@
 import type { DelveCardType, IDelveCard, IDelveDomain, IDelveTheme, IDisplay, IRow, ISource } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IDelveCardYaml, IDelveDomainYaml, IDelveThemeYaml } from "@yaml_in/index.js";
+import { DisplayWithTitle, Row, Source } from "index.js";
 import _ from "lodash-es";
-import { DisplayWithTitle, Row, Source } from "src/index.js";
 
 const domainFeaturesStatic: IRow[] = [
   {
@@ -64,8 +64,8 @@ abstract class DelveCard implements IDelveCard {
 
 export class DelveTheme extends DelveCard implements IDelveTheme {
   Type: "Theme" = "Theme";
-  Features!: IDelveTheme["Features"] & Row[];
-  Dangers!: IDelveTheme["Dangers"] & Row[];
+  declare Features: IDelveTheme["Features"] & Row[];
+  declare Dangers: IDelveTheme["Dangers"] & Row[];
   constructor(json: IDelveThemeYaml, parentSource: ISource) {
     super(json, parentSource);
   }
@@ -73,8 +73,8 @@ export class DelveTheme extends DelveCard implements IDelveTheme {
 
 export class DelveDomain extends DelveCard implements IDelveDomain {
   Type: "Domain" = "Domain";
-  Features!: IDelveDomain["Features"] & Row[];
-  Dangers!: IDelveDomain["Dangers"] & Row[];
+  declare Features: IDelveDomain["Features"] & Row[];
+  declare Dangers: IDelveDomain["Dangers"] & Row[];
   constructor(json: IDelveDomainYaml, parentSource: ISource) {
     super(json, parentSource);
   }

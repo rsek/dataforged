@@ -8,7 +8,7 @@ import type { IConditionMeterYaml } from "@yaml_in/index.js";
  * @internal
  */
 export class ConditionMeter extends MeterBase implements IConditionMeter {
-  "Value": number;
+  declare "Value": number;
   Min: 0 = 0;
   Conditions: MeterCondition[] = [];
   Aliases?: MeterAlias[] | undefined;

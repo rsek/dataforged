@@ -1,5 +1,5 @@
 import yaml from "js-yaml";
-import fs from "fs";
+import * as fs from "fs";
 
 /**
  * Write a nicely formatted YAML file from a JSON object

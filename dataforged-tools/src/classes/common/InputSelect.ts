@@ -10,7 +10,7 @@ import type { IInputSelectOptionSetterYaml, IInputSelectOptionYaml, IInputSelect
  * @internal
  */
 export class InputSelect extends Input implements IInputSelect {
-  "Input Type": InputType.Select;
+  declare "Input Type": InputType.Select;
   Sets: IInputSelectAttributeDefinition[];
   Options: IInputSelectOption[];
   Adjustable: boolean;

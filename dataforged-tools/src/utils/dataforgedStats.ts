@@ -23,8 +23,8 @@ export function dataforgedStats<G extends Gamespace>(gamespace: G, { "Asset Type
  * @param oracles
  */
 export function oracleStats(oracles: IOracleCategory[]) {
-  const oracleTables = JSONPath<Oracle[]>({ path: "$..Oracles[*][Table]", json: oracles });
-  const oracleSubtables = JSONPath<Row[]>({ json: oracleTables, path: "$..Subtable" });
+  const oracleTables = JSONPath({ path: "$..Oracles[*][Table]", json: oracles }) as Oracle[];
+  const oracleSubtables = JSONPath({ json: oracleTables, path: "$..Subtable" }) as Row[];
   return `${oracleTables.length + oracleSubtables.length} oracle tables in ${oracles.length} categories`;
 }
 

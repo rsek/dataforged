@@ -10,7 +10,7 @@ import { concatWithYamlRefs } from "@utils/process_yaml/concatWithYamlRefs.js";
 import { loadOracleData } from "@utils/process_yaml/loadOracleData.js";
 import { sortIronsworn } from "@utils/sortIronsworn.js";
 import type { IOracleCategoryYaml, IOracleYaml } from "@yaml_in/index.js";
-import type { IOracleCatRoot } from "@yaml_in/oracles/IOracleCatRoot";
+import type { IOracleCatRoot } from "@yaml_in/oracles/index.js";
 import type { IOracleParentCatRootYaml } from "@yaml_in/oracles/IOracleParentCatRootYaml.js";
 import FastGlob from "fast-glob";
 import { JSONPath } from "jsonpath-plus";

@@ -5,7 +5,7 @@ import { buildLog } from "@utils/logging/buildLog.js";
 import type { IAssetRootYaml } from "@yaml_in/index.js";
 import yaml from "js-yaml";
 import _ from "lodash-es";
-import fs from "fs";
+import * as fs from "fs";
 
 /**
  * Build and validate all asset objects from YAML.
