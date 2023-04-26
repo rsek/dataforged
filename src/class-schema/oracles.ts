@@ -79,7 +79,7 @@ export class OracleTableRow<
 	implements Types.Oracles.OracleTableRow<Low, High>
 {
 	@Metadata.IsOracleTableRowID()
-	_id: string
+	id: string
 
 	@Localize.IsMarkdownPhrase()
 	result: string
@@ -106,7 +106,7 @@ export class OracleTableRow<
 		rowIndex: number
 	) {
 		super({ low: data.low, high: data.high })
-		this._id = `${oracleTable._id}/${rowIndex}`
+		this.id = `${oracleTable.id}/${rowIndex}`
 		this.result = data.result
 		this.summary = data.summary
 		if (data.rolls != null)
@@ -120,10 +120,10 @@ export class OracleTable
 {
 	@Metadata.IsOracleTableID()
 	// handled by super
-	_id!: string
+	id!: string
 
-	@IsInstance(Metadata.Title)
-	title: Metadata.Title
+	title: string
+	canonical_name: string
 
 	@Localize.IsMarkdownSentences()
 	@IsOptional()
@@ -148,10 +148,11 @@ export class OracleTable
 	constructor(
 		data: Utils.YamlInput<Types.Oracles.OracleTable>,
 		id: string,
-		collection: Types.Abstract.OracleCollection
+		collection: Types.Oracles.OracleCollection
 	) {
 		super(data, id, collection.source)
-		this.title = new Metadata.Title(data.title)
+		this.title = data.title
+		this.canonical_name = data.canonical_name ?? data.title
 		this.summary = data.summary
 		this.description = data.description
 		if (data.match != null)
@@ -276,7 +277,7 @@ export class OracleCollection
 	collections?: Record<string, OracleCollection> | undefined
 
 	@Metadata.IsOracleCollectionID()
-	_id!: string
+	id!: string
 
 	constructor(
 		data: Utils.YamlInput<Types.Abstract.OracleCollection>,

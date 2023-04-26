@@ -20,12 +20,6 @@ export interface Source {
 	license: string | null
 }
 
-export interface Title {
-	canonical: Localize.Label
-	standard?: Localize.Label
-	short?: Localize.Label
-}
-
 /**
  * Stub interface for Suggestions.
  * @see {@link RulesetClassic.Suggestions}

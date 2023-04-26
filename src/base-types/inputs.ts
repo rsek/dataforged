@@ -2,77 +2,89 @@ import type * as Types from '@base-types'
 
 export type InputFieldID = string
 
-export interface InputField {
-	_id: InputFieldID
+export type InputFieldType =
+	| 'text'
+	| 'clock'
+	| 'condition_meter'
+	| 'counter'
+	| 'checkbox'
+	| 'toggle'
+	| ChoicesFieldType
+
+export type ChoicesFieldType =
+	| 'choices_stat_id'
+	| 'choices_number'
+	| 'choices_extend_asset'
+
+export interface InputFieldBase {
+	id: InputFieldID
 	label: Types.Localize.Label
-	field_type:
-		| 'text'
-		| 'choices'
-		| 'clock'
-		| 'condition_meter'
-		| 'counter'
-		| 'checkbox'
-		| 'toggle'
+	field_type: InputFieldType
 }
 
-export interface CheckboxField extends InputField {
+export interface CheckboxField extends InputFieldBase {
 	field_type: 'checkbox'
 	value: boolean | null
 }
 
-export interface NumberField extends InputField {
+export interface NumberFieldBase extends InputFieldBase {
 	field_type: 'clock' | 'condition_meter' | 'counter'
-	value: number | null
+	value: number
 	max: number | null
-	min: number | null
+	min: number
 }
 
-export interface ClockField extends NumberField, Types.Abstract.Clock {
+export interface ClockField extends NumberFieldBase, Types.Abstract.Clock {
 	field_type: 'clock'
-	value: Types.Abstract.Clock['value']
-	max: Types.Abstract.Clock['max']
-	min: Types.Abstract.Clock['min']
+	value: number
+	max: number
+	min: number
 }
-export interface ConditionMeterField extends NumberField, Types.Abstract.Meter {
+export interface ConditionMeterField
+	extends NumberFieldBase,
+		Types.Abstract.Meter {
 	field_type: 'condition_meter'
-	value: Types.Abstract.Meter['value']
-	max: Types.Abstract.Meter['max']
-	min: Types.Abstract.Meter['min']
+	value: number
+	max: number
+	min: number
 }
-export interface CounterField extends NumberField, Types.Abstract.Counter {
+export interface CounterField extends NumberFieldBase, Types.Abstract.Counter {
 	field_type: 'counter'
-	value: Types.Abstract.Counter['value']
-	max: Types.Abstract.Counter['max']
-	min: Types.Abstract.Counter['min']
+	value: number
+	max: number | null
+	min: number
 }
 
-export interface TextField extends InputField {
+export interface TextField extends InputFieldBase {
 	field_type: 'text'
 	value: string | null
 }
 
-export interface ChoicesField extends InputField, Types.Abstract.ChoicesBase {
-	field_type: 'choices'
-	choices_type: 'stat_id' | 'number' | 'extend_asset'
-	choices: Record<string, FieldChoiceBase>
+export interface ChoicesFieldBase<
+	TChoice extends FieldChoiceBase = FieldChoiceBase
+> extends InputFieldBase,
+		Types.Abstract.ChoicesBase<TChoice> {
+	field_type: ChoicesFieldType
 }
 
-export interface FieldChoiceBase extends Types.Abstract.ChoiceBase {
+export interface FieldChoiceBase<
+	TValue extends number | string | object = number | string | object
+> extends Types.Abstract.ChoiceBase<TValue> {
 	// other
-	value: any
 	selected?: boolean // default: false
 }
 
-export interface StatIDChoice extends FieldChoiceBase {
-	value: string
+export interface StatIDChoicesField
+	extends ChoicesFieldBase<FieldChoiceBase<string>> {
+	field_type: 'choices_stat_id'
 }
 
-export interface StaticNumberChoice extends FieldChoiceBase {
-	value: number
+export interface NumberChoicesField
+	extends ChoicesFieldBase<FieldChoiceBase<number>> {
+	field_type: 'choices_number'
 }
 
-export type NumberChoice = StatIDChoice
-
-export interface NumberChoicesField extends ChoicesField {
-	value_type: 'number'
+export interface AssetExtensionChoicesField
+	extends ChoicesFieldBase<FieldChoiceBase<Types.Assets.AssetExtension>> {
+	field_type: 'choices_extend_asset'
 }

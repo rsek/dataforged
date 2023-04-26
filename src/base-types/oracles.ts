@@ -3,9 +3,10 @@ import { type Icon } from 'base-types/metadata'
 export type OracleTableID = string
 
 export interface OracleTable {
-	_id: OracleTableID
-	_template?: string
-	title: Metadata.Title
+	id: OracleTableID
+	// _template?: string
+	title: string
+	canonical_name: string
 	source: Metadata.Source
 	summary?: Localize.MarkdownSentences
 	description?: Localize.MarkdownParagraphs
@@ -63,7 +64,7 @@ export interface OracleTableRow<
 	High extends number | null = number | null,
 	ID extends string = OracleTableRowID
 > extends Abstract.Range<Low, High> {
-	_id: ID
+	id: ID
 	low: Low
 	high: High
 	result: Localize.MarkdownPhrase
@@ -82,11 +83,10 @@ export type OracleTableRollMethod =
 	| 'make_it_worse'
 
 export interface OracleTableRoll<
-	ID extends string | null = OracleTableID,
 	Times extends number | undefined = number | undefined,
 	Method extends OracleTableRollMethod = OracleTableRollMethod
 > {
-	oracle?: ID | null
+	oracle: string
 	times?: Times
 	method?: Method
 }

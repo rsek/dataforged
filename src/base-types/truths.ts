@@ -3,7 +3,7 @@ import { type Abstract, type Localize, type Metadata } from '@base-types'
 export type TruthID = string
 
 interface TruthBase extends Abstract.SourcedNode<TruthID> {
-	_id: TruthID
+	id: TruthID
 	name: string
 	choices: TruthOptionBase[]
 	icon?: Metadata.Icon
@@ -17,7 +17,7 @@ export interface WorldTruth extends TruthBase {}
 
 export type TruthOptionID = string
 export interface TruthOptionBase {
-	_id: TruthOptionID
+	id: TruthOptionID
 	description: Localize.MarkdownParagraphs | Localize.MarkdownParagraph
 	quest_starter: Localize.MarkdownParagraph
 }

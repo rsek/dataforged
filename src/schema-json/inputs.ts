@@ -84,7 +84,7 @@ export const TextField: Schema<Types.Inputs.TextField> = {
 	}
 }
 
-export const ChoicesField: Schema<Types.Inputs.ChoicesField> = {
+export const ChoicesField: Schema<Types.Inputs.ChoicesFieldBase> = {
 	type: 'object',
 	required: ['_id', 'field_type', 'label', 'choices'],
 	properties: {

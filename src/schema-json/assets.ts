@@ -30,7 +30,7 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	},
 	oneOf: [
 		refSchema<Types.Inputs.TextField>('TextField'),
-		refSchema<Types.Inputs.ChoicesField>('ChoicesField')
+		refSchema<Types.Inputs.ChoicesFieldBase>('ChoicesField')
 	]
 }
 

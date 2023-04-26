@@ -5,10 +5,10 @@ import { type YamlInput } from './utils'
 
 export abstract class Node implements Types.Abstract.SourcedNode {
 	// ID validation comes from descended classes
-	_id!: string
+	id: string
 
 	@IsInstance(Metadata.Source)
-	source!: Metadata.Source
+	source: Metadata.Source
 
 	@IsOptional()
 	@IsInstance(Metadata.SuggestionsBase)
@@ -19,7 +19,7 @@ export abstract class Node implements Types.Abstract.SourcedNode {
 		id: string,
 		parentSource: Types.Metadata.Source
 	) {
-		this._id = id
+		this.id = id
 		this.source = new Metadata.Source(parentSource, data._source ?? {})
 	}
 }

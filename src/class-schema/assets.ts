@@ -12,7 +12,7 @@ import _ from 'lodash'
 
 export class AssetAbility implements Types.Assets.AssetAbility {
 	@Metadata.IsAssetAbilityID()
-	_id: string
+	id: string
 
 	@Localize.IsLabel()
 	@IsOptional()
@@ -29,21 +29,21 @@ export class AssetAbility implements Types.Assets.AssetAbility {
 		id: string,
 		source: Types.Metadata.Source
 	) {
-		this._id = id
+		this.id = id
 		this.name = data.name
 		this.text = data.text
 		if (data.moves != null)
 			this.moves = _.mapValues(
 				data.moves,
 				(move, moveKey) =>
-					new Moves.Move(move, `${this._id}/moves/${moveKey}`, source)
+					new Moves.Move(move, `${this.id}/moves/${moveKey}`, source)
 			)
 	}
 }
 
 export class Asset extends Abstract.Node implements Types.Assets.Asset {
 	@Metadata.IsAssetID()
-	_id!: string
+	id!: string
 
 	@Localize.IsLabel()
 	name: string
@@ -66,7 +66,7 @@ export class Asset extends Abstract.Node implements Types.Assets.Asset {
 		this.requirement = data.requirement
 		this.abilities = data.abilities.map(
 			(ability, index) =>
-				new AssetAbility(ability, `${this._id}/abilities/${index}`, this.source)
+				new AssetAbility(ability, `${this.id}/abilities/${index}`, this.source)
 		) as [AssetAbility, AssetAbility, AssetAbility]
 	}
 }
@@ -93,7 +93,7 @@ export class AssetType
 			(asset, assetKey) =>
 				new Asset(
 					asset,
-					`${this._id.replace('/collections/', '/')}/${assetKey}`,
+					`${this.id.replace('/collections/', '/')}/${assetKey}`,
 					this.source
 				)
 		)

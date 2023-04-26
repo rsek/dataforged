@@ -23,7 +23,7 @@ export function collectionSchema<
 		additionalProperties: false,
 		properties: {
 			_id: refSchema<string>(idRef),
-			title: refSchema<Metadata.Title>('Title'),
+			// title: refSchema<Metadata.Title>('Title'),
 			source: refSchema<Metadata.Source>('Source'),
 			summary: refSchema<Localize.MarkdownSentences>('MarkdownSentences'),
 			description: refSchema<Localize.MarkdownParagraphs>('MarkdownParagraphs'),

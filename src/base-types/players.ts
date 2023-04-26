@@ -18,7 +18,7 @@ export interface PlayerCharacter {
 }
 
 export interface PlayerAttribute extends NumberRangeBase {
-	_id: string
+	id: string
 	label: string
 	value: number
 	min: number
@@ -27,18 +27,18 @@ export interface PlayerAttribute extends NumberRangeBase {
 
 export interface Stat<TStatName extends string = StatName>
 	extends PlayerAttribute {
-	_id: StatID<TStatName>
+	id: StatID<TStatName>
 	label: TStatName
 }
 
 export interface ConditionMeter<TMeterName extends string = ConditionMeterName>
 	extends Meter,
 		PlayerAttribute {
-	_id: ConditionMeterID<TMeterName>
+	id: ConditionMeterID<TMeterName>
 	label: TMeterName
 }
 export interface MomentumMeter extends Meter, PlayerAttribute {
 	label: 'Momentum'
-	_id: 'player/momentum'
+	id: 'player/momentum'
 	reset: { value: number }
 }

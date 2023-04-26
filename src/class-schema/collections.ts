@@ -6,16 +6,17 @@ import {
 import type * as Types from '@base-types'
 import { Metadata, Localize, Abstract, type Utils } from '@class-schema'
 import _ from 'lodash'
+import { DF_KEY } from 'schema-json/common'
 
 export abstract class Collection<T>
 	extends Abstract.Node
 	implements Types.Abstract.Collection<T>
 {
-	@IsInstance(Metadata.Title)
-	title: Metadata.Title
+	title: string
+	canonical_name: string
 
 	// managed by descendant classes
-	contents!: Record<string, T>
+	abstract contents: Record<string, T>
 
 	@Localize.IsMarkdownSentences()
 	@IsOptional()
@@ -31,7 +32,8 @@ export abstract class Collection<T>
 		parentSource: Types.Metadata.Source
 	) {
 		super(data, id, parentSource)
-		this.title = new Metadata.Title(data.title)
+		this.title = data.title
+		this.canonical_name = data.canonical_name ?? data.title
 		this.summary = data.summary
 		this.description = data.description
 	}

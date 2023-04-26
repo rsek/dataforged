@@ -11,13 +11,16 @@ export type AssetControlFieldID = string
 
 export type AssetOptionField = (
 	| Types.Inputs.TextField
-	| Types.Inputs.ChoicesField
-) & { _id: AssetOptionFieldID }
+	| Types.Inputs.StatIDChoicesField
+	| Types.Inputs.NumberChoicesField
+	| Types.Inputs.AssetExtensionChoicesField
+) & { id: AssetOptionFieldID }
 export type AssetControlField = (
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.ConditionMeterField
+	| Types.Inputs.AssetExtensionChoicesField
 	| ToggleField
-) & { _id: AssetControlFieldID }
+) & { id: AssetControlFieldID }
 
 export interface Asset
 	extends Omit<Types.Abstract.SourcedNode<AssetID>, 'suggestions'> {
@@ -26,7 +29,7 @@ export interface Asset
 	// TODO: document - options are the stuff you generally set once when you buy the asset
 	options?: Record<string, AssetOptionField>
 	requirement?: Types.Localize.MarkdownPhrase
-	abilities: [AssetAbility, AssetAbility, AssetAbility]
+	abilities: AssetAbility[]
 	// TODO: document - controls are the stuff that changes throughout the life of an asset
 	// TODO: rename this -- "inputs"? "attributes"?
 	controls?: Record<string, AssetControlField>
@@ -50,19 +53,19 @@ export type AssetAbilityOptionFieldID = string
 export type AssetAbilityControlFieldID = string
 
 export type AssetAbilityOptionField = Types.Inputs.TextField & {
-	_id: AssetAbilityOptionFieldID
+	id: AssetAbilityOptionFieldID
 }
 
 export type AssetAbilityControlField = (
 	| Types.Inputs.ClockField
 	| Types.Inputs.CounterField
 	| Types.Inputs.CheckboxField
-) & { _id: AssetAbilityControlFieldID }
+) & { id: AssetAbilityControlFieldID }
 
 export interface AssetAbility extends Types.Abstract.Node<AssetAbilityID> {
 	name?: Types.Localize.Label
 	text: Types.Localize.MarkdownParagraph
-	enabled?: boolean
+	enabled: boolean
 	moves?: Record<string, Types.Moves.Move>
 	options?: Record<string, AssetAbilityOptionField>
 	controls?: Record<string, AssetAbilityControlField>
@@ -74,7 +77,7 @@ export interface AssetExtension
 	extends Omit<
 		AssetExtensionForeign,
 		// it's implicit that it applies to this asset specifically
-		'_extends' | '_id' | 'abilities' | 'requirement'
+		'_extends' | 'id' | 'abilities' | 'requirement'
 	> {}
 
 export interface AssetAttachment {
@@ -84,7 +87,7 @@ export interface AssetAttachment {
 
 // expected to be manipulated throughout the life of the asset
 export interface ToggleField
-	extends Types.Inputs.InputField,
+	extends Types.Inputs.InputFieldBase,
 		Types.Abstract.ChoicesBase {
 	field_type: 'toggle'
 }

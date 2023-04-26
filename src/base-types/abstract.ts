@@ -21,7 +21,7 @@ export interface Range<
  * A node significant enough to have its own ID.
  */
 export interface Node<IDType = Types.Metadata.ID> {
-	_id: IDType
+	id: IDType
 }
 
 /**
@@ -29,7 +29,7 @@ export interface Node<IDType = Types.Metadata.ID> {
  * @internal
  */
 export interface SourcedNode<IDType = Types.Metadata.ID> extends Node<IDType> {
-	_id: IDType
+	id: IDType
 	source: Types.Metadata.Source
 	suggestions?: Types.Metadata.SuggestionsBase
 }
@@ -48,13 +48,7 @@ export interface Cyclopedia<IDType> extends SourcedNode<IDType> {
 }
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
-type MetaKeys =
-	| '_id'
-	| 'source'
-	| 'title'
-	| 'rendering'
-	| 'name'
-	| 'suggestions'
+type MetaKeys = 'id' | 'source' | 'title' | 'rendering' | 'name' | 'suggestions'
 
 /**
  * Omits common metadata and localization keys.
@@ -65,8 +59,8 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
  * Extends a single rules element
  */
 export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	_extends: T['_id']
-	_id: T['_id']
+	_extends: T['id']
+	id: T['id']
 }
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?
@@ -74,16 +68,17 @@ export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
  * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
  */
 export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	_extends: Array<T['_id']> | null
-	_id?: Types.Metadata.ID
+	_extends: Array<T['id']> | null
+	id?: Types.Metadata.ID
 }
 
 export interface Collection<T, IDType = Types.Metadata.ID>
 	extends Types.Abstract.SourcedNode<IDType> {
-	title: Types.Metadata.Title
+	title: string
+	canonical_name: string
 	contents: Record<string, T>
 	color?: Types.Metadata.Color
-	summary?: Types.Localize.MarkdownSentences
+	summary: Types.Localize.MarkdownSentences
 	description?: Types.Localize.MarkdownParagraphs
 }
 
@@ -103,8 +98,8 @@ export interface NumberRangeBase {
 }
 
 export interface Clock extends NumberRangeBase {
-	min: 0
-	max: 4 | 6 | 8 | 10
+	// min: 0
+	// max: 4 | 6 | 8 | 10
 }
 
 export interface Meter extends NumberRangeBase {
@@ -113,20 +108,22 @@ export interface Meter extends NumberRangeBase {
 }
 
 export interface Counter extends NumberRangeBase {
-	min: 0
+	min: number
 	max: number | null
 }
 
 /**
  * Describes a set of choices.
  */
-export interface ChoicesBase {
+export interface ChoicesBase<TChoice extends ChoiceBase = ChoiceBase> {
 	label: Types.Localize.Label
-	choices: Record<string, ChoiceBase>
+	choices: Record<string, TChoice>
 }
 
-export interface ChoiceBase {
-	// choices_type: 'number' | 'stat_id' | `extend_${string}`
+export interface ChoiceBase<
+	TValue extends number | string | object = number | string | object
+> {
+	id: string
 	label: Types.Localize.Label
-	value: number | string | object
+	value: TValue
 }

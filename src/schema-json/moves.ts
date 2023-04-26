@@ -149,7 +149,7 @@ export const TriggerChoiceBase: PartialSchema<Types.TriggerChoiceBase> = {
 		label: refSchema<Localize.Label>('Label') as any,
 		using: { enum: ['progress', 'custom', 'stat'] } as any,
 		value: { type: 'integer', nullable: undefined as any },
-		ref: { type: 'string', nullable: undefined as any }
+		_ref: { type: 'string', nullable: undefined as any }
 	}
 }
 

@@ -7,7 +7,7 @@ import { IsBoolean, IsOptional } from 'class-validator'
 
 export class Move extends Abstract.Node implements Types.Moves.Move {
 	@Metadata.IsMoveID()
-	_id!: string
+	id!: string
 
 	source!: Metadata.Source
 	suggestions?: SuggestionsBase
