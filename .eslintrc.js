@@ -29,6 +29,7 @@ module.exports = {
 		ecmaVersion: 'latest'
 	},
 	rules: {
+		'@typescript-eslint/naming-convention': 'off',
 		'@typescript-eslint/consistent-type-assertions': 'off',
 		'tsdoc/syntax': 'error',
 		'@typescript-eslint/key-spacing': 'off',

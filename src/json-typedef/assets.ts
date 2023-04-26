@@ -39,19 +39,6 @@ export const Asset: JTDSchemaType<
 	}
 }
 
-export const AssetControlField: JTDSchemaType<
-	Types.Assets.AssetControlField,
-	{ ID: string; Label: string }
-> = {
-	discriminator: 'field_type',
-	mapping: {
-		condition_meter: UnionClockField,
-		checkbox: UnionCheckboxField,
-		// @ts-expect-error oh come ON. it can't be missing field_type, it's the discriminator!!!
-		choices_extend_asset: UnionAssetExtensionChoicesField
-	}
-}
-
 export const AssetAbility: JTDSchemaType<
 	Types.Assets.AssetAbility,
 	{
@@ -101,6 +88,10 @@ export const AssetOptionField: JTDSchemaType<
 		StatID: string
 	}
 > = {
+	metadata: {
+		description:
+			'Asset options are fields that are usually only set once, typically when the player purchases the asset. The most common examples are the "Name" fields on companion assets. A more complex example is the choice of stats on the Devotant asset.'
+	},
 	discriminator: 'field_type',
 	mapping: {
 		// @ts-expect-error computers were a mistake
@@ -110,6 +101,23 @@ export const AssetOptionField: JTDSchemaType<
 		// @ts-expect-error
 		choices_number: UnionNumberChoicesField,
 		// @ts-expect-error
+		choices_extend_asset: UnionAssetExtensionChoicesField
+	}
+}
+
+export const AssetControlField: JTDSchemaType<
+	Types.Assets.AssetControlField,
+	{ ID: string; Label: string }
+> = {
+	discriminator: 'field_type',
+	metadata: {
+		description:
+			"Asset controls are fields that are expected to change throughout the asset's lifespan. The most common example are the condition meters on certain assets. A more complex example is the distinct mechanical modes on Ironsworn's 'Armored'."
+	},
+	mapping: {
+		condition_meter: UnionClockField,
+		checkbox: UnionCheckboxField,
+		// @ts-expect-error oh come ON. it can't be missing field_type, it's the discriminator!!!
 		choices_extend_asset: UnionAssetExtensionChoicesField
 	}
 }

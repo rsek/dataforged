@@ -91,7 +91,7 @@ export const OracleCollectionColumn: Schema<
 	required: ['content_type', 'table_key'],
 	additionalProperties: false,
 	properties: {
-		...(OracleTableColumn.properties as any),
+		...OracleTableColumn.properties,
 		table_key: {
 			description:
 				"A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
@@ -152,7 +152,7 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	properties: {
 		_id: { $ref: '#/definitions/OracleTableID' },
 		_template: { type: 'string', nullable: undefined as any },
-		title: { $ref: '#/definitions/Title' },
+		name: { $ref: '#/definitions/Title' },
 		source: refSchema<Types.Metadata.Source>('Source'),
 		summary: { $ref: '#/definitions/MarkdownSentences' },
 		description: { $ref: '#/definitions/MarkdownParagraphs' },

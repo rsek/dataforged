@@ -62,8 +62,10 @@ export const UnionTextField: JTDSchemaType<
 > = {
 	properties: {
 		id: { ref: 'ID' },
-		label: { ref: 'Label' },
-		value: { type: 'string', nullable: true }
+		label: { ref: 'Label' }
+	},
+	optionalProperties: {
+		value: { type: 'string' }
 	}
 } as const
 

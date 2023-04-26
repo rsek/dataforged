@@ -57,7 +57,7 @@ export interface CounterField extends NumberFieldBase, Types.Abstract.Counter {
 
 export interface TextField extends InputFieldBase {
 	field_type: 'text'
-	value: string | null
+	value?: string | undefined
 }
 
 export interface ChoicesFieldBase<

@@ -9,21 +9,19 @@ export interface AssetType extends Types.Abstract.Collection<Asset> {}
 export type AssetOptionFieldID = string
 export type AssetControlFieldID = string
 
-export type AssetOptionField = (
+export type AssetOptionField =
 	| Types.Inputs.TextField
 	| Types.Inputs.StatIDChoicesField
 	| Types.Inputs.NumberChoicesField
 	| Types.Inputs.AssetExtensionChoicesField
-) & { id: AssetOptionFieldID }
-export type AssetControlField = (
+
+export type AssetControlField =
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.ConditionMeterField
 	| Types.Inputs.AssetExtensionChoicesField
-	| ToggleField
-) & { id: AssetControlFieldID }
-
 export interface Asset
 	extends Omit<Types.Abstract.SourcedNode<AssetID>, 'suggestions'> {
+	id: string
 	source: Types.Metadata.Source
 	name: Types.Localize.Label
 	// TODO: document - options are the stuff you generally set once when you buy the asset

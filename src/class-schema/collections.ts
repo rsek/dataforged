@@ -12,7 +12,7 @@ export abstract class Collection<T>
 	extends Abstract.Node
 	implements Types.Abstract.Collection<T>
 {
-	title: string
+	name: string
 	canonical_name: string
 
 	// managed by descendant classes
@@ -32,8 +32,8 @@ export abstract class Collection<T>
 		parentSource: Types.Metadata.Source
 	) {
 		super(data, id, parentSource)
-		this.title = data.title
-		this.canonical_name = data.canonical_name ?? data.title
+		this.name = data.name
+		this.canonical_name = data.canonical_name ?? data.name
 		this.summary = data.summary
 		this.description = data.description
 	}

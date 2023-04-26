@@ -5,7 +5,7 @@ export type OracleTableID = string
 export interface OracleTable {
 	id: OracleTableID
 	// _template?: string
-	title: string
+	name: string
 	canonical_name: string
 	source: Metadata.Source
 	summary?: Localize.MarkdownSentences

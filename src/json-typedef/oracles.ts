@@ -16,7 +16,7 @@ export const OracleTable: JTDSchemaType<
 > = {
 	properties: {
 		id: { ref: 'ID' },
-		title: { ref: 'Label' },
+		name: { ref: 'Label' },
 		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		table: { elements: { ref: 'OracleTableRow' } }
@@ -102,7 +102,7 @@ export const OracleCollection: JTDSchemaType<
 > = {
 	properties: {
 		id: { ref: 'ID' },
-		title: { ref: 'Label' },
+		name: { ref: 'Label' },
 		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		summary: { ref: 'MarkdownString' },

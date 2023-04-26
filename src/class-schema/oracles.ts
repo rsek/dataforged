@@ -122,7 +122,7 @@ export class OracleTable
 	// handled by super
 	id!: string
 
-	title: string
+	name: string
 	canonical_name: string
 
 	@Localize.IsMarkdownSentences()
@@ -151,8 +151,8 @@ export class OracleTable
 		collection: Types.Oracles.OracleCollection
 	) {
 		super(data, id, collection.source)
-		this.title = data.title
-		this.canonical_name = data.canonical_name ?? data.title
+		this.name = data.name
+		this.canonical_name = data.canonical_name ?? data.name
 		this.summary = data.summary
 		this.description = data.description
 		if (data.match != null)

@@ -1,5 +1,4 @@
 import type * as Types from '@base-types'
-import { StatID } from 'base-types/players'
 
 export type MoveID = string
 

@@ -23,7 +23,7 @@ export const MoveCategory: JTDSchemaType<
 > = {
 	properties: {
 		id: { ref: 'ID' },
-		title: { type: 'string' },
+		name: { type: 'string' },
 		canonical_name: { type: 'string' },
 		source: { ref: 'Source' },
 		color: { ref: 'Color' },
