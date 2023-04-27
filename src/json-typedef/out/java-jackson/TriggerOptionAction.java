@@ -18,7 +18,7 @@ public class TriggerOptionAction {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("choices")
-    private List<TriggerOptionChoiceAction> choices;
+    private List<TriggerOptionActionChoice> choices;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("text")
@@ -58,14 +58,14 @@ public class TriggerOptionAction {
     /**
      * Getter for choices.<p>
      */
-    public List<TriggerOptionChoiceAction> getChoices() {
+    public List<TriggerOptionActionChoice> getChoices() {
         return choices;
     }
 
     /**
      * Setter for choices.<p>
      */
-    public void setChoices(List<TriggerOptionChoiceAction> choices) {
+    public void setChoices(List<TriggerOptionActionChoice> choices) {
         this.choices = choices;
     }
 

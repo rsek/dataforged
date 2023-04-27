@@ -16,7 +16,7 @@ namespace Dataforged
 
         [JsonPropertyName("choices")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<TriggerOptionChoiceProgress> Choices { get; set; }
+        public IList<TriggerOptionProgressChoice> Choices { get; set; }
 
         [JsonPropertyName("text")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

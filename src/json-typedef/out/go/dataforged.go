@@ -1196,31 +1196,31 @@ type TriggerOptionAction struct {
 
 	By *TriggerBy `json:"by,omitempty"`
 
-	Choices []TriggerOptionChoiceAction `json:"choices,omitempty"`
+	Choices []TriggerOptionActionChoice `json:"choices,omitempty"`
 
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
-type TriggerOptionChoiceAction struct {
+type TriggerOptionActionChoice struct {
 	Using string
 
-	Custom TriggerOptionChoiceActionCustom
+	Custom TriggerOptionActionChoiceCustom
 
-	Stat TriggerOptionChoiceActionStat
+	Stat TriggerOptionActionChoiceStat
 }
 
-func (v TriggerOptionChoiceAction) MarshalJSON() ([]byte, error) {
+func (v TriggerOptionActionChoice) MarshalJSON() ([]byte, error) {
 	switch v.Using {
 	case "custom":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionChoiceActionCustom }{ v.Using, v.Custom })
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceCustom }{ v.Using, v.Custom })
 	case "stat":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionChoiceActionStat }{ v.Using, v.Stat })
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceStat }{ v.Using, v.Stat })
 	}
 
 	return nil, fmt.Errorf("bad Using value: %s", v.Using)
 }
 
-func (v *TriggerOptionChoiceAction) UnmarshalJSON(b []byte) error {
+func (v *TriggerOptionActionChoice) UnmarshalJSON(b []byte) error {
 	var t struct { T string `json:"using"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
@@ -1244,18 +1244,14 @@ func (v *TriggerOptionChoiceAction) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type TriggerOptionChoiceActionCustom struct {
+type TriggerOptionActionChoiceCustom struct {
 	Label Label `json:"label"`
 
 	Value int8 `json:"value"`
 }
 
-type TriggerOptionChoiceActionStat struct {
+type TriggerOptionActionChoiceStat struct {
 	Ref StatID `json:"ref"`
-}
-
-type TriggerOptionChoiceProgress struct {
-	Using ProgressType `json:"using"`
 }
 
 type TriggerOptionProgress struct {
@@ -1263,9 +1259,13 @@ type TriggerOptionProgress struct {
 
 	By *TriggerBy `json:"by,omitempty"`
 
-	Choices []TriggerOptionChoiceProgress `json:"choices,omitempty"`
+	Choices []TriggerOptionProgressChoice `json:"choices,omitempty"`
 
 	Text *MarkdownString `json:"text,omitempty"`
+}
+
+type TriggerOptionProgressChoice struct {
+	Using ProgressType `json:"using"`
 }
 
 // An absolute URL pointing to a web site.

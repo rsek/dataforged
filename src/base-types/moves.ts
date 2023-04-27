@@ -86,12 +86,12 @@ export type TriggerOptionChoice<T extends RollType = RollType> =
 	T extends 'progress_roll'
 		? T extends 'action_roll'
 			? // if it's a union, allow both types:
-			  | TriggerOptionChoiceProgress
-					| TriggerOptionChoiceStat
-					| TriggerOptionChoiceCustomValue
+			  | TriggerOptionProgressChoice
+					| TriggerOptionActionChoiceStat
+					| TriggerOptionActionChoiceCustom
 			: // otherwise, restrict types as appropriate:
-			  TriggerOptionChoiceProgress
-		: TriggerOptionChoiceStat | TriggerOptionChoiceCustomValue
+			  TriggerOptionProgressChoice
+		: TriggerOptionActionChoiceStat | TriggerOptionActionChoiceCustom
 
 export interface TriggerChoiceBase {
 	using: ProgressType | 'stat' | 'custom'
@@ -107,27 +107,27 @@ export type TriggerExtension<T extends Types.Moves.Trigger> = Omit<
 	options: Exclude<T['options'], undefined>
 }
 
-export interface TriggerOptionChoiceStat
+export interface TriggerOptionActionChoiceStat
 	extends Omit<TriggerChoiceBase, 'value' | 'label'> {
 	using: 'stat'
 	ref: string // RollableStatID
 }
 
-export interface TriggerOptionChoiceProgress
+export interface TriggerOptionProgressChoice
 	extends Omit<TriggerChoiceBase, 'label' | 'value' | 'ref'> {
 	using: ProgressType
 }
 
-export interface TriggerOptionChoiceCustomValue
+export interface TriggerOptionActionChoiceCustom
 	extends Omit<TriggerChoiceBase, 'ref'> {
 	using: 'custom'
 	label: Types.Localize.Label
 	value: number
 }
 
-export type TriggerOptionChoiceAction =
-	| TriggerOptionChoiceStat
-	| TriggerOptionChoiceCustomValue
+export type TriggerOptionActionChoice =
+	| TriggerOptionActionChoiceStat
+	| TriggerOptionActionChoiceCustom
 
 export interface TriggerOption<T extends RollType = RollType> {
 	text?: Types.Localize.MarkdownPhrase

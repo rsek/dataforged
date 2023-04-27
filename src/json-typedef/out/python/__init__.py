@@ -2336,7 +2336,7 @@ class TriggerExtensionProgressRoll(TriggerExtension):
 class TriggerOptionAction:
     method: 'Optional[MoveRollMethod]'
     by: 'Optional[TriggerBy]'
-    choices: 'Optional[List[TriggerOptionChoiceAction]]'
+    choices: 'Optional[List[TriggerOptionActionChoice]]'
     text: 'Optional[MarkdownString]'
 
     @classmethod
@@ -2344,7 +2344,7 @@ class TriggerOptionAction:
         return cls(
             _from_json_data(Optional[MoveRollMethod], data.get("method")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
-            _from_json_data(Optional[List[TriggerOptionChoiceAction]], data.get("choices")),
+            _from_json_data(Optional[List[TriggerOptionActionChoice]], data.get("choices")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
@@ -2360,14 +2360,14 @@ class TriggerOptionAction:
         return data
 
 @dataclass
-class TriggerOptionChoiceAction:
+class TriggerOptionActionChoice:
     using: 'str'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionChoiceAction':
-        variants: Dict[str, Type[TriggerOptionChoiceAction]] = {
-            "custom": TriggerOptionChoiceActionCustom,
-            "stat": TriggerOptionChoiceActionStat,
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoice':
+        variants: Dict[str, Type[TriggerOptionActionChoice]] = {
+            "custom": TriggerOptionActionChoiceCustom,
+            "stat": TriggerOptionActionChoiceStat,
         }
 
         return variants[data["using"]].from_json_data(data)
@@ -2376,12 +2376,12 @@ class TriggerOptionChoiceAction:
         pass
 
 @dataclass
-class TriggerOptionChoiceActionCustom(TriggerOptionChoiceAction):
+class TriggerOptionActionChoiceCustom(TriggerOptionActionChoice):
     label: 'Label'
     value: 'int'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionChoiceActionCustom':
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceCustom':
         return cls(
             "custom",
             _from_json_data(Label, data.get("label")),
@@ -2395,11 +2395,11 @@ class TriggerOptionChoiceActionCustom(TriggerOptionChoiceAction):
         return data
 
 @dataclass
-class TriggerOptionChoiceActionStat(TriggerOptionChoiceAction):
+class TriggerOptionActionChoiceStat(TriggerOptionActionChoice):
     ref: 'StatID'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionChoiceActionStat':
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceStat':
         return cls(
             "stat",
             _from_json_data(StatID, data.get("ref")),
@@ -2411,25 +2411,10 @@ class TriggerOptionChoiceActionStat(TriggerOptionChoiceAction):
         return data
 
 @dataclass
-class TriggerOptionChoiceProgress:
-    using: 'ProgressType'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionChoiceProgress':
-        return cls(
-            _from_json_data(ProgressType, data.get("using")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["using"] = _to_json_data(self.using)
-        return data
-
-@dataclass
 class TriggerOptionProgress:
     method: 'Optional[MoveRollMethod]'
     by: 'Optional[TriggerBy]'
-    choices: 'Optional[List[TriggerOptionChoiceProgress]]'
+    choices: 'Optional[List[TriggerOptionProgressChoice]]'
     text: 'Optional[MarkdownString]'
 
     @classmethod
@@ -2437,7 +2422,7 @@ class TriggerOptionProgress:
         return cls(
             _from_json_data(Optional[MoveRollMethod], data.get("method")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
-            _from_json_data(Optional[List[TriggerOptionChoiceProgress]], data.get("choices")),
+            _from_json_data(Optional[List[TriggerOptionProgressChoice]], data.get("choices")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
@@ -2450,6 +2435,21 @@ class TriggerOptionProgress:
              data["choices"] = _to_json_data(self.choices)
         if self.text is not None:
              data["text"] = _to_json_data(self.text)
+        return data
+
+@dataclass
+class TriggerOptionProgressChoice:
+    using: 'ProgressType'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionProgressChoice':
+        return cls(
+            _from_json_data(ProgressType, data.get("using")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["using"] = _to_json_data(self.using)
         return data
 
 @dataclass

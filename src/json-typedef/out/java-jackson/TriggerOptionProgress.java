@@ -18,7 +18,7 @@ public class TriggerOptionProgress {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("choices")
-    private List<TriggerOptionChoiceProgress> choices;
+    private List<TriggerOptionProgressChoice> choices;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("text")
@@ -58,14 +58,14 @@ public class TriggerOptionProgress {
     /**
      * Getter for choices.<p>
      */
-    public List<TriggerOptionChoiceProgress> getChoices() {
+    public List<TriggerOptionProgressChoice> getChoices() {
         return choices;
     }
 
     /**
      * Setter for choices.<p>
      */
-    public void setChoices(List<TriggerOptionChoiceProgress> choices) {
+    public void setChoices(List<TriggerOptionProgressChoice> choices) {
         this.choices = choices;
     }
 

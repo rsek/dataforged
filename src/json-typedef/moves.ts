@@ -125,7 +125,7 @@ export const TriggerOptionAction: JTDSchemaType<
 	Types.Moves.TriggerOption<'action_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerOptionChoiceAction: Types.Moves.TriggerOptionChoiceAction
+		TriggerOptionActionChoice: Types.Moves.TriggerOptionActionChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -135,12 +135,12 @@ export const TriggerOptionAction: JTDSchemaType<
 		text: { ref: 'MarkdownString' },
 
 		by: { ref: 'TriggerBy' },
-		choices: { elements: { ref: 'TriggerOptionChoiceAction' } }
+		choices: { elements: { ref: 'TriggerOptionActionChoice' } }
 	}
 }
 
-export const TriggerOptionChoiceAction: JTDSchemaType<
-	Types.Moves.TriggerOptionChoiceAction,
+export const TriggerOptionActionChoice: JTDSchemaType<
+	Types.Moves.TriggerOptionActionChoice,
 	{
 		StatID: string
 		Label: string
@@ -166,7 +166,7 @@ export const TriggerOptionProgress: JTDSchemaType<
 	Types.Moves.TriggerOption<'progress_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerOptionChoiceProgress: Types.Moves.TriggerOptionChoiceProgress
+		TriggerOptionProgressChoice: Types.Moves.TriggerOptionProgressChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -175,12 +175,12 @@ export const TriggerOptionProgress: JTDSchemaType<
 	optionalProperties: {
 		text: { ref: 'MarkdownString' },
 		by: { ref: 'TriggerBy' },
-		choices: { elements: { ref: 'TriggerOptionChoiceProgress' } }
+		choices: { elements: { ref: 'TriggerOptionProgressChoice' } }
 	}
 }
 
-export const TriggerOptionChoiceProgress: JTDSchemaType<
-	Types.Moves.TriggerOptionChoiceProgress,
+export const TriggerOptionProgressChoice: JTDSchemaType<
+	Types.Moves.TriggerOptionProgressChoice,
 	{ ProgressType: Types.Moves.ProgressType }
 > = {
 	properties: {

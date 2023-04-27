@@ -836,32 +836,32 @@ export interface TriggerExtensionProgressRoll {
 export interface TriggerOptionAction {
   method: (MoveRollMethod | null);
   by?: TriggerBy;
-  choices?: TriggerOptionChoiceAction[];
+  choices?: TriggerOptionActionChoice[];
   text?: MarkdownString;
 }
 
-export type TriggerOptionChoiceAction = TriggerOptionChoiceActionCustom | TriggerOptionChoiceActionStat;
+export type TriggerOptionActionChoice = TriggerOptionActionChoiceCustom | TriggerOptionActionChoiceStat;
 
-export interface TriggerOptionChoiceActionCustom {
+export interface TriggerOptionActionChoiceCustom {
   using: "custom";
   label: Label;
   value: number;
 }
 
-export interface TriggerOptionChoiceActionStat {
+export interface TriggerOptionActionChoiceStat {
   using: "stat";
   ref: StatId;
-}
-
-export interface TriggerOptionChoiceProgress {
-  using: ProgressType;
 }
 
 export interface TriggerOptionProgress {
   method: (MoveRollMethod | null);
   by?: TriggerBy;
-  choices?: TriggerOptionChoiceProgress[];
+  choices?: TriggerOptionProgressChoice[];
   text?: MarkdownString;
+}
+
+export interface TriggerOptionProgressChoice {
+  using: ProgressType;
 }
 
 /**

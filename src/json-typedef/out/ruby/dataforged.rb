@@ -2363,7 +2363,7 @@ module Dataforged
       out = TriggerOptionAction.new
       out.method = Dataforged::from_json_data(MoveRollMethod, data["method"])
       out.by = Dataforged::from_json_data(TriggerBy, data["by"])
-      out.choices = Dataforged::from_json_data(Array[TriggerOptionChoiceAction], data["choices"])
+      out.choices = Dataforged::from_json_data(Array[TriggerOptionActionChoice], data["choices"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out
     end
@@ -2378,23 +2378,23 @@ module Dataforged
     end
   end
 
-  class TriggerOptionChoiceAction
+  class TriggerOptionActionChoice
     attr_accessor :using
 
     def self.from_json_data(data)
       {
-        "custom" => TriggerOptionChoiceActionCustom,
-        "stat" => TriggerOptionChoiceActionStat,
+        "custom" => TriggerOptionActionChoiceCustom,
+        "stat" => TriggerOptionActionChoiceStat,
       }[data["using"]].from_json_data(data)
     end
   end
 
-  class TriggerOptionChoiceActionCustom < TriggerOptionChoiceAction
+  class TriggerOptionActionChoiceCustom < TriggerOptionActionChoice
     attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = TriggerOptionChoiceActionCustom.new
+      out = TriggerOptionActionChoiceCustom.new
       out.using = "custom"
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(Integer, data["value"])
@@ -2409,11 +2409,11 @@ module Dataforged
     end
   end
 
-  class TriggerOptionChoiceActionStat < TriggerOptionChoiceAction
+  class TriggerOptionActionChoiceStat < TriggerOptionActionChoice
     attr_accessor :ref
 
     def self.from_json_data(data)
-      out = TriggerOptionChoiceActionStat.new
+      out = TriggerOptionActionChoiceStat.new
       out.using = "stat"
       out.ref = Dataforged::from_json_data(StatID, data["ref"])
       out
@@ -2422,22 +2422,6 @@ module Dataforged
     def to_json_data
       data = { "using" => "stat" }
       data["ref"] = Dataforged::to_json_data(ref)
-      data
-    end
-  end
-
-  class TriggerOptionChoiceProgress
-    attr_accessor :using
-
-    def self.from_json_data(data)
-      out = TriggerOptionChoiceProgress.new
-      out.using = Dataforged::from_json_data(ProgressType, data["using"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["using"] = Dataforged::to_json_data(using)
       data
     end
   end
@@ -2452,7 +2436,7 @@ module Dataforged
       out = TriggerOptionProgress.new
       out.method = Dataforged::from_json_data(MoveRollMethod, data["method"])
       out.by = Dataforged::from_json_data(TriggerBy, data["by"])
-      out.choices = Dataforged::from_json_data(Array[TriggerOptionChoiceProgress], data["choices"])
+      out.choices = Dataforged::from_json_data(Array[TriggerOptionProgressChoice], data["choices"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out
     end
@@ -2463,6 +2447,22 @@ module Dataforged
       data["by"] = Dataforged::to_json_data(by) unless by.nil?
       data["choices"] = Dataforged::to_json_data(choices) unless choices.nil?
       data["text"] = Dataforged::to_json_data(text) unless text.nil?
+      data
+    end
+  end
+
+  class TriggerOptionProgressChoice
+    attr_accessor :using
+
+    def self.from_json_data(data)
+      out = TriggerOptionProgressChoice.new
+      out.using = Dataforged::from_json_data(ProgressType, data["using"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["using"] = Dataforged::to_json_data(using)
       data
     end
   end

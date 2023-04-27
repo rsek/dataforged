@@ -1528,7 +1528,7 @@ pub struct TriggerOptionAction {
 
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub choices: Option<Box<Vec<TriggerOptionChoiceAction>>>,
+    pub choices: Option<Box<Vec<TriggerOptionActionChoice>>>,
 
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1537,16 +1537,16 @@ pub struct TriggerOptionAction {
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "using")]
-pub enum TriggerOptionChoiceAction {
+pub enum TriggerOptionActionChoice {
     #[serde(rename = "custom")]
-    Custom(TriggerOptionChoiceActionCustom),
+    Custom(TriggerOptionActionChoiceCustom),
 
     #[serde(rename = "stat")]
-    Stat(TriggerOptionChoiceActionStat),
+    Stat(TriggerOptionActionChoiceStat),
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionChoiceActionCustom {
+pub struct TriggerOptionActionChoiceCustom {
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -1555,15 +1555,9 @@ pub struct TriggerOptionChoiceActionCustom {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionChoiceActionStat {
+pub struct TriggerOptionActionChoiceStat {
     #[serde(rename = "ref")]
     pub ref_: StatId,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct TriggerOptionChoiceProgress {
-    #[serde(rename = "using")]
-    pub using: ProgressType,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1577,11 +1571,17 @@ pub struct TriggerOptionProgress {
 
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub choices: Option<Box<Vec<TriggerOptionChoiceProgress>>>,
+    pub choices: Option<Box<Vec<TriggerOptionProgressChoice>>>,
 
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<Box<MarkdownString>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionProgressChoice {
+    #[serde(rename = "using")]
+    pub using: ProgressType,
 }
 
 /// An absolute URL pointing to a web site.
