@@ -31,7 +31,7 @@ function toInputDefinitions(
 		...defs,
 		SourcePartial: SourcePartial as JSONSchema7
 	})
-	const toMakeOptional = ['_id', 'source']
+	const toMakeOptional = ['id', 'source']
 	_.forEach(newDefs, (def) => {
 		if (def.required != null) {
 			if (def.required.includes('source')) {

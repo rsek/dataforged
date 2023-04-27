@@ -37,13 +37,21 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 	title: 'Asset control field',
 	type: 'object',
+	required: ['id'],
 	properties: {
-		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID')
+		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID'),
+		field_type: {
+			enum: ['checkbox', 'choices_extend_asset', 'condition_meter']
+		},
+		label: { type: { $ref: 'Label' } }
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
 		refSchema<Types.Inputs.ConditionMeterField>('ConditionMeterField'),
-		refSchema<Types.Assets.ToggleField>('ToggleField')
+		refSchema<Types.Inputs.AssetExtensionChoicesField>(
+			'AssetExtensionChoicesField'
+		)
+		// refSchema<Types.Assets.ToggleField>('ToggleField')
 	]
 }
 
@@ -152,9 +160,9 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID'),
-		name: { ...refSchema<Types.Localize.Label>('Label'), nullable: true },
+		name: { ...refSchema<Types.Localize.Label>('Label') },
 		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
-		enabled: { type: 'boolean', default: false, nullable: true },
+		enabled: { type: 'boolean', default: false },
 		controls: {
 			type: 'object',
 			required: undefined as any,

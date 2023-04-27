@@ -40,7 +40,7 @@ function denizenRow(
 export const DelveSite: Schema<Types.DelveSites.DelveSite> = {
 	type: 'object',
 	description: 'A delve site with a theme, domain, and denizen table.',
-	required: ['name', 'rank', 'theme', 'domain', 'denizens', 'source', '_id'],
+	required: ['name', 'rank', 'theme', 'domain', 'denizens', 'source', 'id'],
 	properties: {
 		name: refSchema<Types.Localize.Label>('Label'),
 		rank: refSchema<Types.Progress.ChallengeRank>('ChallengeRank'),
@@ -81,7 +81,7 @@ export const DelveSite: Schema<Types.DelveSites.DelveSite> = {
 			]
 		} as any,
 		source: refSchema<Types.Metadata.Source>('Source'),
-		_id: refSchema<Types.DelveSites.DelveSiteID>('DelveSiteID'),
+		id: refSchema<Types.DelveSites.DelveSiteID>('DelveSiteID'),
 
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions')
 	}
@@ -119,7 +119,7 @@ export const DelveSiteDenizen: Schema<
 
 function staticFeatureDangerRow<
 	T extends Types.DelveSites.FeatureOrDanger<number, number, string>
->(row: Omit<T, '_id'>): Schema<T> {
+>(row: Omit<T, 'id'>): Schema<T> {
 	const emptyRow: any = {
 		type: 'object',
 		properties: { low: { const: row.low }, high: { const: row.high } }
@@ -149,10 +149,10 @@ export const DelveSiteCard = {
 		'features',
 		'dangers',
 		'source',
-		'_id'
+		'id'
 	],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		name: refSchema<Types.Localize.Label>('Label'),
 		card_type:
 			refSchema<Types.DelveSites.DelveSiteCardType>('DelveSiteCardType'),
@@ -185,7 +185,7 @@ export const DelveSiteTheme: Schema<Types.DelveSites.DelveSiteTheme> = {
 		refSchema<any>('DelveSiteCard'),
 		{
 			properties: {
-				_id: refSchema<Types.DelveSites.DelveSiteThemeID>('DelveSiteThemeID'),
+				id: refSchema<Types.DelveSites.DelveSiteThemeID>('DelveSiteThemeID'),
 				card_type: { const: 'theme' },
 				features: {
 					type: 'array',
@@ -337,7 +337,7 @@ export const DelveSiteDomain: Schema<Types.DelveSites.DelveSiteDomain> = {
 		refSchema<any>('DelveSiteCard'),
 		{
 			properties: {
-				_id: refSchema<Types.DelveSites.DelveSiteDomainID>('DelveSiteDomainID'),
+				id: refSchema<Types.DelveSites.DelveSiteDomainID>('DelveSiteDomainID'),
 				card_type: { const: 'domain' },
 				features: {
 					type: 'array',

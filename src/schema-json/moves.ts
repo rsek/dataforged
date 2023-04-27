@@ -337,10 +337,10 @@ const Trigger: Schema<Types.Trigger> = {
 
 export const Move: Schema<Types.Move> = {
 	type: 'object',
-	required: ['_id', 'name', 'text', 'trigger', 'source'],
+	required: ['id', 'name', 'text', 'trigger', 'source'],
 	additionalProperties: false,
 	properties: {
-		_id: refSchema<Moves.MoveID>('MoveID'),
+		id: refSchema<Moves.MoveID>('MoveID'),
 		name: refSchema<Localize.Label>('Label'),
 		trigger: Trigger,
 		source: refSchema<Metadata.Source>('Source'),
@@ -366,7 +366,7 @@ export const MoveExtension: Schema<Types.MoveExtension> = {
 	required: ['_extends'],
 	type: 'object',
 	properties: {
-		_id: refSchema<string>('ID'),
+		id: refSchema<string>('ID'),
 		_extends: {
 			description: 'An array of Move IDs',
 			type: ['array', 'null'],

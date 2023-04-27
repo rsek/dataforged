@@ -19,10 +19,10 @@ export function collectionSchema<
 	type CollectionItemType = TCollection['contents'][string]
 	const CollectionBase: Schema<TCollection> = {
 		type: 'object' as any,
-		required: ['_id', 'title', 'source', 'contents'],
+		required: ['id', 'title', 'source', 'contents'],
 		additionalProperties: false,
 		properties: {
-			_id: refSchema<string>(idRef),
+			id: refSchema<string>(idRef),
 			// title: refSchema<Metadata.Title>('Title'),
 			source: refSchema<Metadata.Source>('Source'),
 			summary: refSchema<Localize.MarkdownSentences>('MarkdownSentences'),
@@ -49,10 +49,10 @@ export function collectionExtensionSchema<
 	const newSchema: Schema<ExtendOne<TCollection>> = {
 		description: 'Extends a collection with additional items.',
 		type: 'object',
-		required: ['_extends', '_id'],
+		required: ['_extends', 'id'],
 		additionalProperties: false,
 		properties: {
-			_id: refSchema<string>(idRef),
+			id: refSchema<string>(idRef),
 			_extends: {
 				...refSchema<string>(idRef),
 				description: 'The ID of the collection to be extended.'

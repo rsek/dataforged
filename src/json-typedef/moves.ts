@@ -14,11 +14,11 @@ export const MoveRerollMethod: JTDEnum<Types.Moves.MoveRerollMethod> = {
 	enum: ['any', 'all', 'challenge_dice', 'challenge_die', 'action_die'],
 	metadata: {
 		enumDescription: {
-			any: 'Reroll any dice',
+			any: 'Reroll any number of dice',
 			all: 'Reroll all dice',
 			action_die: 'Reroll the action die',
-			challenge_die: 'Reroll one challenge die',
-			challenge_dice: 'Reroll any challenge dice'
+			challenge_die: 'Reroll one of the challenge dice',
+			challenge_dice: 'Reroll any number of challenge dice'
 		}
 	}
 }
@@ -67,7 +67,7 @@ export const MoveCategory: JTDSchemaType<
 	}
 }
 
-export const MoveOutcomeType: JTDSchemaType<Types.Moves.MoveOutcomeType> = {
+export const MoveOutcomeType: JTDEnum<Types.Moves.MoveOutcomeType> = {
 	enum: ['miss', 'weak_hit', 'strong_hit'],
 	metadata: {
 		enumDescription: {
@@ -88,11 +88,21 @@ export const Trigger: JTDSchemaType<
 		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>
 	}
 > = {
+	metadata: {
+		description:
+			"Describes a move's trigger condition(s) and any rolls associated with them."
+	},
 	discriminator: 'roll_type',
 	mapping: {
 		action_roll: {
 			properties: {
-				text: { ref: 'MarkdownString' }
+				text: {
+					ref: 'MarkdownString',
+					metadata: {
+						description:
+							'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
+					}
+				}
 			},
 			optionalProperties: {
 				options: {
@@ -102,7 +112,13 @@ export const Trigger: JTDSchemaType<
 		},
 		progress_roll: {
 			properties: {
-				text: { ref: 'MarkdownString' }
+				text: {
+					ref: 'MarkdownString',
+					metadata: {
+						description:
+							'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
+					}
+				}
 			},
 			optionalProperties: {
 				options: {
@@ -132,8 +148,13 @@ export const TriggerOptionAction: JTDSchemaType<
 > = {
 	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
 	optionalProperties: {
-		text: { ref: 'MarkdownString' },
-
+		text: {
+			ref: 'MarkdownString',
+			metadata: {
+				description:
+					'Describes any additional trigger conditions for this trigger option'
+			}
+		},
 		by: { ref: 'TriggerBy' },
 		choices: { elements: { ref: 'TriggerOptionActionChoice' } }
 	}
@@ -173,7 +194,13 @@ export const TriggerOptionProgress: JTDSchemaType<
 > = {
 	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
 	optionalProperties: {
-		text: { ref: 'MarkdownString' },
+		text: {
+			ref: 'MarkdownString',
+			metadata: {
+				description:
+					'Describes any additional trigger conditions for this trigger option'
+			}
+		},
 		by: { ref: 'TriggerBy' },
 		choices: { elements: { ref: 'TriggerOptionProgressChoice' } }
 	}
@@ -205,8 +232,8 @@ export const ProgressType: JTDEnum<Types.Moves.ProgressType> = {
 	metadata: {
 		enumDescription: {
 			combat_progress: 'A combat progress track, started with Enter the Fray.',
-			vow_progress: 'A vow progress track, started with Swear an Iron Vow',
-			scene_challenge_progress: 'A scene challenge progress track',
+			vow_progress: 'A vow progress track, started with Swear an Iron Vow.',
+			scene_challenge_progress: 'A scene challenge progress track.',
 			expedition_progress:
 				'An expedition progress track, started with Undertake an Expedition (Starforged ruleset only)',
 			connection_progress:
@@ -261,7 +288,14 @@ export const MoveReroll: JTDSchemaType<
 	{ MoveRerollMethod: Types.Moves.MoveRerollMethod; MarkdownString: string }
 > = {
 	properties: { method: { ref: 'MoveRerollMethod' } },
-	optionalProperties: { text: { ref: 'MarkdownString' } }
+	optionalProperties: {
+		text: {
+			ref: 'MarkdownString',
+			metadata: {
+				description: 'Describes the trigger condition for the reroll, if any.'
+			}
+		}
+	}
 }
 
 export const MoveOutcomes: JTDSchemaType<
@@ -329,9 +363,13 @@ export const TriggerExtension: JTDSchemaType<
 		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>
 	}
 > = {
+	metadata: { description: 'Extends or upgrades an existing move trigger.' },
 	discriminator: 'roll_type',
 	mapping: {
 		action_roll: {
+			metadata: {
+				description: 'Extends or upgrades an existing action roll trigger.'
+			},
 			properties: {
 				options: {
 					elements: { ref: 'TriggerOptionAction' }
@@ -339,6 +377,9 @@ export const TriggerExtension: JTDSchemaType<
 			}
 		},
 		progress_roll: {
+			metadata: {
+				description: 'Extends or upgrades an existing action roll trigger.'
+			},
 			properties: {
 				options: {
 					elements: { ref: 'TriggerOptionProgress' }
@@ -355,6 +396,9 @@ export const MoveOutcomesExtension: JTDSchemaType<
 		MoveOutcomeMatchableExtension: PartialDeep<Types.Moves.MoveOutcomeMatchable>
 	}
 > = {
+	metadata: {
+		description: 'Extends or upgrades one or more outcomes of an existing move.'
+	},
 	optionalProperties: {
 		miss: { ref: 'MoveOutcomeMatchableExtension' },
 		weak_hit: { ref: 'MoveOutcomeExtension' },
@@ -371,6 +415,9 @@ export const MoveOutcomeExtension: JTDSchemaType<
 		MoveRerollMethod: Types.Moves.MoveRerollMethod
 	}
 > = {
+	metadata: {
+		description: 'Extends or upgrades an outcome from an existing move.'
+	},
 	optionalProperties: {
 		count_as: { ref: 'MoveOutcomeType' },
 		reroll: {
@@ -393,6 +440,9 @@ export const MoveOutcomeMatchableExtension: JTDSchemaType<
 		MoveOutcomeExtension: PartialDeep<Types.Moves.MoveOutcome>
 	}
 > = {
+	metadata: {
+		description: 'Extends or upgrades an outcome from an existing move.'
+	},
 	// @ts-ignore
 	optionalProperties: {
 		...MoveOutcomeExtension.optionalProperties,

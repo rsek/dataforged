@@ -62,7 +62,7 @@ export const EncounterClassic: Schema<Types.Encounters.EncounterClassic> = {
 		'description',
 		'quest_starter',
 		'source',
-		'_id'
+		'id'
 	],
 	properties: {
 		name: refSchema<Types.Localize.Label>('Label'),
@@ -92,7 +92,7 @@ export const EncounterClassic: Schema<Types.Encounters.EncounterClassic> = {
 		your_truths:
 			refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
 		source: refSchema<Types.Metadata.Source>('Source'),
-		_id: refSchema<Types.Encounters.EncounterClassicID>('EncounterClassicID'),
+		id: refSchema<Types.Encounters.EncounterClassicID>('EncounterClassicID'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions')
 	}
 }
@@ -113,7 +113,7 @@ export const EncounterStarforged: Schema<Types.Encounters.EncounterStarforged> =
 			'description',
 			'quest_starter',
 			'source',
-			'_id'
+			'id'
 		],
 		properties: {
 			name: EncounterClassic.properties?.name,
@@ -134,8 +134,8 @@ export const EncounterStarforged: Schema<Types.Encounters.EncounterStarforged> =
 			description: EncounterClassic.properties?.description,
 			quest_starter: EncounterClassic.properties?.quest_starter,
 			source: EncounterClassic.properties?.source,
-			_id: { $ref: '#/definitions/EncounterStarforgedID' },
-			suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
+			id: { $ref: '#/definitions/EncounterStarforgedID' },
+			suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions')
 		} as any
 	}
 

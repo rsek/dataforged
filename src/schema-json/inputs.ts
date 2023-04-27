@@ -8,7 +8,7 @@ import { type RollableStatID } from 'base-types/moves'
 // 	type: 'object',
 // 	properties: {
 // 		label: refSchema<Types.Localize.Label>('Label'),
-// 		_id: { type: 'string' },
+// 	  id: { type: 'string' },
 // 		field_type: {
 // 			enum: [
 // 				'checkbox',
@@ -25,9 +25,9 @@ import { type RollableStatID } from 'base-types/moves'
 
 export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label'],
+	required: ['id', 'field_type', 'label'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'checkbox' },
 		value: { type: ['boolean', 'null'] as any, nullable: undefined as any }
@@ -36,9 +36,9 @@ export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 
 export const ClockField: Schema<Types.Inputs.ClockField> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label', 'min', 'max', 'value'],
+	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'clock' },
 		value: { type: 'integer', default: 0 },
@@ -49,9 +49,9 @@ export const ClockField: Schema<Types.Inputs.ClockField> = {
 
 export const ConditionMeterField: Schema<Types.Inputs.ConditionMeterField> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label', 'min', 'max', 'value'],
+	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'condition_meter' },
 		value: { type: 'integer' },
@@ -62,9 +62,9 @@ export const ConditionMeterField: Schema<Types.Inputs.ConditionMeterField> = {
 
 export const CounterField: Schema<Types.Inputs.CounterField> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label', 'min', 'max'],
+	required: ['id', 'field_type', 'label', 'min', 'max'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'counter' },
 		value: { type: 'integer', default: 0 },
@@ -75,9 +75,9 @@ export const CounterField: Schema<Types.Inputs.CounterField> = {
 
 export const TextField: Schema<Types.Inputs.TextField> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label'],
+	required: ['id', 'field_type', 'label'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'text' },
 		value: { type: ['string', 'null'] as any, nullable: undefined as any }
@@ -86,9 +86,9 @@ export const TextField: Schema<Types.Inputs.TextField> = {
 
 export const ChoicesField: Schema<Types.Inputs.ChoicesFieldBase> = {
 	type: 'object',
-	required: ['_id', 'field_type', 'label', 'choices'],
+	required: ['id', 'field_type', 'label', 'choices'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'choices' },
 		choices_type: {

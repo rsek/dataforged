@@ -58,9 +58,9 @@ export const SettingTruthID: Schema<Types.Truths.TruthID> = {
 }
 export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
 	type: 'object',
-	required: ['_id', 'name', 'source'],
+	required: ['id', 'name', 'source'],
 	properties: {
-		_id: refSchema<Types.Truths.TruthID>('SettingTruthID'),
+		id: refSchema<Types.Truths.TruthID>('SettingTruthID'),
 		name: refSchema<Types.Localize.Label>('Label'),
 		icon: refSchema<Types.Metadata.Icon>('Icon'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
@@ -82,9 +82,9 @@ export const SettingTruthOptionID: Schema<Types.Truths.TruthID> = {
 }
 export const SettingTruthOption: Schema<Types.Truths.SettingTruthOption> = {
 	type: 'object',
-	required: ['_id', 'description', 'quest_starter'],
+	required: ['id', 'description', 'quest_starter'],
 	properties: {
-		_id: refSchema<Types.Truths.TruthID>('SettingTruthOptionID'),
+		id: refSchema<Types.Truths.TruthID>('SettingTruthOptionID'),
 		summary: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
 		description:
 			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),

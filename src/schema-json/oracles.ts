@@ -45,7 +45,6 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 				label: {
 					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Roll'
-					// tsType: 'Label'
 				}
 			}
 		},
@@ -56,7 +55,6 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 				label: {
 					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Result'
-					// tsType: 'Label'
 				}
 			}
 		},
@@ -67,7 +65,6 @@ export const OracleTableColumn: Schema<Types.Oracles.OracleTableColumn> = {
 				label: {
 					...refSchema<Types.Localize.Label>('Label'),
 					default: 'Summary'
-					// tsType: 'Label'
 				}
 			}
 		},
@@ -147,10 +144,10 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 
 export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	type: 'object',
-	required: ['_id', 'title', 'source', 'table'],
+	required: ['id', 'title', 'source', 'table'],
 	additionalProperties: false,
 	properties: {
-		_id: { $ref: '#/definitions/OracleTableID' },
+		id: { $ref: '#/definitions/OracleTableID' },
 		_template: { type: 'string', nullable: undefined as any },
 		name: { $ref: '#/definitions/Title' },
 		source: refSchema<Types.Metadata.Source>('Source'),
@@ -221,7 +218,7 @@ export const OracleTableRowID: Schema<Types.Oracles.OracleTableRowID> = {
 export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 	type: 'object',
 	description: 'Represents a row from an oracle table.',
-	required: ['_id', 'low', 'high', 'result'],
+	required: ['id', 'low', 'high', 'result'],
 	additionalProperties: false,
 	properties: {
 		low: {
@@ -270,20 +267,20 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		},
 		template: refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
-		_id: refSchema<Types.Oracles.OracleTableRowID>('OracleTableRowID')
+		id: refSchema<Types.Oracles.OracleTableRowID>('OracleTableRowID')
 	},
 	oneOf: [
 		{
 			title: 'OracleTableRowStub',
 			properties: {
-				_id: { const: null },
+				id: { const: null },
 				low: { const: null },
 				high: { const: null }
 			}
 		},
 		{
 			properties: {
-				_id: { type: 'string' },
+				id: { type: 'string' },
 				low: { type: 'integer' },
 				high: { type: 'integer' }
 			}
@@ -393,7 +390,7 @@ export const OracleCollectionExtension: Schema<
 	'OracleTable',
 	'OracleCollectionID',
 	{
-		required: ['_extends', '_id'],
+		required: ['_extends', 'id'],
 		...maybeTemplate,
 		properties: {
 			collections: {
