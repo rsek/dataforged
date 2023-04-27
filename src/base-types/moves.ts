@@ -131,7 +131,7 @@ export type TriggerOptionChoiceAction =
 
 export interface TriggerOption<T extends RollType = RollType> {
 	text?: Types.Localize.MarkdownPhrase
-	method?: MoveRollMethod | MoveOutcomeType
+	method: MoveRollMethod | null
 	by?: TriggerBy
 	choices?: this['method'] extends undefined
 		? undefined

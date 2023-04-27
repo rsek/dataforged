@@ -11,7 +11,11 @@ export const EncounterNatureClassic: JTDSchemaType<string> = {
 
 export const ChallengeRank: JTDSchemaType<number> = {
 	type: 'uint8',
-	metadata: {}
+	metadata: {
+		description:
+			'Challenge rank represented as a number from 1 (troublesome) to 5 (epic)',
+		typescriptType: '1 | 2 | 3 | 4 | 5'
+	}
 }
 
 export const EncounterVariantStarforged: JTDSchemaType<

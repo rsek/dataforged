@@ -5,6 +5,9 @@ package Dataforged;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
+ */
 public class ChallengeRank {
     @JsonValue
     private UnsignedByte value;

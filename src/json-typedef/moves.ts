@@ -23,7 +23,7 @@ export const MoveRerollMethod: JTDEnum<Types.Moves.MoveRerollMethod> = {
 	}
 }
 
-export const RollMethod: JTDEnum<Types.Moves.MoveRollMethod> = {
+export const MoveRollMethod: JTDEnum<Types.Moves.MoveRollMethod> = {
 	enum: ['any', 'highest', 'lowest', 'all', 'miss', 'strong_hit', 'weak_hit'],
 	metadata: {
 		enumDescription: {
@@ -82,7 +82,7 @@ export const Trigger: JTDSchemaType<
 	Types.Moves.Trigger<'action_roll'> | Types.Moves.Trigger<'progress_roll'>,
 	{
 		MarkdownString: string
-		RollMethod: Types.Moves.MoveRollMethod
+		MoveRollMethod: Types.Moves.MoveRollMethod
 		TriggerBy: Types.Moves.TriggerBy
 		TriggerOptionAction: Types.Moves.TriggerOption<'action_roll'>
 		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>
@@ -126,13 +126,14 @@ export const TriggerOptionAction: JTDSchemaType<
 	{
 		TriggerBy: Types.Moves.TriggerBy
 		TriggerOptionChoiceAction: Types.Moves.TriggerOptionChoiceAction
-		RollMethod: Types.Moves.MoveRollMethod
+		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
 > = {
+	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
 	optionalProperties: {
 		text: { ref: 'MarkdownString' },
-		method: { ref: 'RollMethod' },
+
 		by: { ref: 'TriggerBy' },
 		choices: { elements: { ref: 'TriggerOptionChoiceAction' } }
 	}
@@ -166,13 +167,13 @@ export const TriggerOptionProgress: JTDSchemaType<
 	{
 		TriggerBy: Types.Moves.TriggerBy
 		TriggerOptionChoiceProgress: Types.Moves.TriggerOptionChoiceProgress
-		RollMethod: Types.Moves.MoveRollMethod
+		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
 > = {
+	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
 	optionalProperties: {
 		text: { ref: 'MarkdownString' },
-		method: { ref: 'RollMethod' },
 		by: { ref: 'TriggerBy' },
 		choices: { elements: { ref: 'TriggerOptionChoiceProgress' } }
 	}

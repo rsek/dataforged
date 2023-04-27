@@ -7,6 +7,9 @@ namespace Dataforged
 {
     public class TriggerOptionProgress
     {
+        [JsonPropertyName("method")]
+        public MoveRollMethod? Method { get; set; }
+
         [JsonPropertyName("by")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public TriggerBy? By { get; set; }
@@ -14,10 +17,6 @@ namespace Dataforged
         [JsonPropertyName("choices")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<TriggerOptionChoiceProgress> Choices { get; set; }
-
-        [JsonPropertyName("method")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public RollMethod? Method { get; set; }
 
         [JsonPropertyName("text")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

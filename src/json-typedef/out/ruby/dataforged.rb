@@ -687,6 +687,7 @@ module Dataforged
     end
   end
 
+  # Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
   class ChallengeRank
     attr_accessor :value
 
@@ -1473,6 +1474,57 @@ module Dataforged
     end
   end
 
+  class MoveRollMethod
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    # When rolling with this move trigger option, *every* stat or progress track
+    # of the `using` key is rolled
+    ALL = new("all")
+
+    # When rolling with this move trigger option, the player picks which stat
+    # to use.
+    ANY = new("any")
+
+    # When rolling with this move trigger option, use the highest/best option
+    # from the `using` key.
+    HIGHEST = new("highest")
+
+    # When rolling with this move trigger option, use the lowest/worst option
+    # from the `using` key.
+    LOWEST = new("lowest")
+
+    # Take an automatic miss instead of rolling.
+    MISS = new("miss")
+
+    # Take an automatic strong hit instead of rolling.
+    STRONG_HIT = new("strong_hit")
+
+    # Take an automatic weak hit instead of rolling.
+    WEAK_HIT = new("weak_hit")
+
+    def self.from_json_data(data)
+      {
+        "all" => ALL,
+        "any" => ANY,
+        "highest" => HIGHEST,
+        "lowest" => LOWEST,
+        "miss" => MISS,
+        "strong_hit" => STRONG_HIT,
+        "weak_hit" => WEAK_HIT,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
   class OracleCollection
     attr_accessor :canonical_name
     attr_accessor :contents
@@ -2022,57 +2074,6 @@ module Dataforged
     end
   end
 
-  class RollMethod
-    attr_accessor :value
-
-    def initialize(value)
-      self.value = value
-    end
-
-    private_class_method :new
-
-    # When rolling with this move trigger option, *every* stat or progress track
-    # of the `using` key is rolled
-    ALL = new("all")
-
-    # When rolling with this move trigger option, the player picks which stat
-    # to use.
-    ANY = new("any")
-
-    # When rolling with this move trigger option, use the highest/best option
-    # from the `using` key.
-    HIGHEST = new("highest")
-
-    # When rolling with this move trigger option, use the lowest/worst option
-    # from the `using` key.
-    LOWEST = new("lowest")
-
-    # Take an automatic miss instead of rolling.
-    MISS = new("miss")
-
-    # Take an automatic strong hit instead of rolling.
-    STRONG_HIT = new("strong_hit")
-
-    # Take an automatic weak hit instead of rolling.
-    WEAK_HIT = new("weak_hit")
-
-    def self.from_json_data(data)
-      {
-        "all" => ALL,
-        "any" => ANY,
-        "highest" => HIGHEST,
-        "lowest" => LOWEST,
-        "miss" => MISS,
-        "strong_hit" => STRONG_HIT,
-        "weak_hit" => WEAK_HIT,
-      }[data]
-    end
-
-    def to_json_data
-      value
-    end
-  end
-
   class SettingTruth
     attr_accessor :id
     attr_accessor :name
@@ -2353,25 +2354,25 @@ module Dataforged
   end
 
   class TriggerOptionAction
+    attr_accessor :method
     attr_accessor :by
     attr_accessor :choices
-    attr_accessor :method
     attr_accessor :text
 
     def self.from_json_data(data)
       out = TriggerOptionAction.new
+      out.method = Dataforged::from_json_data(MoveRollMethod, data["method"])
       out.by = Dataforged::from_json_data(TriggerBy, data["by"])
       out.choices = Dataforged::from_json_data(Array[TriggerOptionChoiceAction], data["choices"])
-      out.method = Dataforged::from_json_data(RollMethod, data["method"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out
     end
 
     def to_json_data
       data = {}
+      data["method"] = Dataforged::to_json_data(method)
       data["by"] = Dataforged::to_json_data(by) unless by.nil?
       data["choices"] = Dataforged::to_json_data(choices) unless choices.nil?
-      data["method"] = Dataforged::to_json_data(method) unless method.nil?
       data["text"] = Dataforged::to_json_data(text) unless text.nil?
       data
     end
@@ -2442,25 +2443,25 @@ module Dataforged
   end
 
   class TriggerOptionProgress
+    attr_accessor :method
     attr_accessor :by
     attr_accessor :choices
-    attr_accessor :method
     attr_accessor :text
 
     def self.from_json_data(data)
       out = TriggerOptionProgress.new
+      out.method = Dataforged::from_json_data(MoveRollMethod, data["method"])
       out.by = Dataforged::from_json_data(TriggerBy, data["by"])
       out.choices = Dataforged::from_json_data(Array[TriggerOptionChoiceProgress], data["choices"])
-      out.method = Dataforged::from_json_data(RollMethod, data["method"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out
     end
 
     def to_json_data
       data = {}
+      data["method"] = Dataforged::to_json_data(method)
       data["by"] = Dataforged::to_json_data(by) unless by.nil?
       data["choices"] = Dataforged::to_json_data(choices) unless choices.nil?
-      data["method"] = Dataforged::to_json_data(method) unless method.nil?
       data["text"] = Dataforged::to_json_data(text) unless text.nil?
       data
     end

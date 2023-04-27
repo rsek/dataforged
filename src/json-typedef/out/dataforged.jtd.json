@@ -541,7 +541,10 @@
 				"card_type": {
 					"enum": [
 						"theme"
-					]
+					],
+					"metadata": {
+						"typescriptType": "'theme'"
+					}
 				},
 				"source": {
 					"ref": "Source"
@@ -552,11 +555,17 @@
 				"features": {
 					"elements": {
 						"ref": "FeatureOrDanger"
+					},
+					"metadata": {
+						"typescriptType": "[\n        FeatureOrDanger & {low: 1, high: 4},\n        FeatureOrDanger & {low: 5, high: 8},\n        FeatureOrDanger & {low: 9, high: 12},\n        FeatureOrDanger & {low: 13, high: 16},\n        FeatureOrDanger & {low: 17, high: 20}\n      ]"
 					}
 				},
 				"dangers": {
 					"elements": {
 						"ref": "FeatureOrDanger"
+					},
+					"metadata": {
+						"typescriptType": "[\n        FeatureOrDanger & {low: 1, high: 5},\n        FeatureOrDanger & {low: 6, high: 10},\n        FeatureOrDanger & {low: 11, high: 12},\n        FeatureOrDanger & {low: 13, high: 14},\n        FeatureOrDanger & {low: 15, high: 16},\n        FeatureOrDanger & {low: 17, high: 18},\n        FeatureOrDanger & {low: 19, high: 20},\n        FeatureOrDanger & {low: 21, high: 22},\n        FeatureOrDanger & {low: 23, high: 24},\n        FeatureOrDanger & {low: 25, high: 26},\n        FeatureOrDanger & {low: 27, high: 28},\n        FeatureOrDanger & {low: 29, high: 30}\n      ]"
 					}
 				}
 			},
@@ -583,7 +592,10 @@
 				"card_type": {
 					"enum": [
 						"domain"
-					]
+					],
+					"metadata": {
+						"typescriptType": "'domain'"
+					}
 				},
 				"source": {
 					"ref": "Source"
@@ -594,11 +606,17 @@
 				"features": {
 					"elements": {
 						"ref": "FeatureOrDanger"
+					},
+					"metadata": {
+						"typescriptType": "[\n          FeatureOrDanger & {low: 21, high: 43},\n          FeatureOrDanger & {low: 44, high: 56},\n          FeatureOrDanger & {low: 57, high: 64},\n          FeatureOrDanger & {low: 65, high: 68},\n          FeatureOrDanger & {low: 69, high: 72},\n          FeatureOrDanger & {low: 73, high: 76},\n          FeatureOrDanger & {low: 77, high: 80},\n          FeatureOrDanger & {low: 81, high: 84},\n          FeatureOrDanger & {low: 85, high: 88},\n          FeatureOrDanger & {low: 89, high: 98},\n          FeatureOrDanger & {low: 99, high: 99},\n          FeatureOrDanger & {low: 100, high: 100}\n        ]"
 					}
 				},
 				"dangers": {
 					"elements": {
 						"ref": "FeatureOrDanger"
+					},
+					"metadata": {
+						"typescriptType": "[\n      FeatureOrDanger & {low: 31, high: 33},\n      FeatureOrDanger & {low: 34, high: 36},\n      FeatureOrDanger & {low: 37, high: 39},\n      FeatureOrDanger & {low: 40, high: 42},\n      FeatureOrDanger & {low: 43, high: 45}\n    ]"
 					}
 				}
 			},
@@ -690,7 +708,10 @@
 		},
 		"ChallengeRank": {
 			"type": "uint8",
-			"metadata": {}
+			"metadata": {
+				"description": "Challenge rank represented as a number from 1 (troublesome) to 5 (epic)",
+				"typescriptType": "1 | 2 | 3 | 4 | 5"
+			}
 		},
 		"EncounterVariantStarforged": {
 			"properties": {
@@ -803,7 +824,7 @@
 				}
 			}
 		},
-		"RollMethod": {
+		"MoveRollMethod": {
 			"enum": [
 				"any",
 				"highest",
@@ -921,12 +942,15 @@
 			}
 		},
 		"TriggerOptionAction": {
+			"properties": {
+				"method": {
+					"ref": "MoveRollMethod",
+					"nullable": true
+				}
+			},
 			"optionalProperties": {
 				"text": {
 					"ref": "MarkdownString"
-				},
-				"method": {
-					"ref": "RollMethod"
 				},
 				"by": {
 					"ref": "TriggerBy"
@@ -961,12 +985,15 @@
 			}
 		},
 		"TriggerOptionProgress": {
+			"properties": {
+				"method": {
+					"ref": "MoveRollMethod",
+					"nullable": true
+				}
+			},
 			"optionalProperties": {
 				"text": {
 					"ref": "MarkdownString"
-				},
-				"method": {
-					"ref": "RollMethod"
 				},
 				"by": {
 					"ref": "TriggerBy"

@@ -9,6 +9,9 @@ import java.util.List;
 
 @JsonSerialize
 public class TriggerOptionProgress {
+    @JsonProperty("method")
+    private MoveRollMethod method;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("by")
     private TriggerBy by;
@@ -18,14 +21,24 @@ public class TriggerOptionProgress {
     private List<TriggerOptionChoiceProgress> choices;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("method")
-    private RollMethod method;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("text")
     private MarkdownString text;
 
     public TriggerOptionProgress() {
+    }
+
+    /**
+     * Getter for method.<p>
+     */
+    public MoveRollMethod getMethod() {
+        return method;
+    }
+
+    /**
+     * Setter for method.<p>
+     */
+    public void setMethod(MoveRollMethod method) {
+        this.method = method;
     }
 
     /**
@@ -54,20 +67,6 @@ public class TriggerOptionProgress {
      */
     public void setChoices(List<TriggerOptionChoiceProgress> choices) {
         this.choices = choices;
-    }
-
-    /**
-     * Getter for method.<p>
-     */
-    public RollMethod getMethod() {
-        return method;
-    }
-
-    /**
-     * Setter for method.<p>
-     */
-    public void setMethod(RollMethod method) {
-        this.method = method;
     }
 
     /**

@@ -14,7 +14,6 @@ import * as Truths from './truths'
 import * as fs from 'fs/promises'
 
 import * as JTD from 'jtd'
-import { ValueOf } from 'type-fest'
 
 const schema: JTD.Schema = {
 	definitions: {

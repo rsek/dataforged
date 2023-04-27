@@ -457,6 +457,7 @@ pub struct AssetOptionFieldText {
     pub value: Option<Box<String>>,
 }
 
+/// Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
 pub type ChallengeRank = u8;
 
 /// A valid CSS color.
@@ -947,6 +948,41 @@ pub enum MoveRerollMethod {
 }
 
 #[derive(Serialize, Deserialize)]
+pub enum MoveRollMethod {
+    /// When rolling with this move trigger option, *every* stat or progress
+    /// track of the `using` key is rolled
+    #[serde(rename = "all")]
+    All,
+
+    /// When rolling with this move trigger option, the player picks which stat
+    /// to use.
+    #[serde(rename = "any")]
+    Any,
+
+    /// When rolling with this move trigger option, use the highest/best option
+    /// from the `using` key.
+    #[serde(rename = "highest")]
+    Highest,
+
+    /// When rolling with this move trigger option, use the lowest/worst option
+    /// from the `using` key.
+    #[serde(rename = "lowest")]
+    Lowest,
+
+    /// Take an automatic miss instead of rolling.
+    #[serde(rename = "miss")]
+    Miss,
+
+    /// Take an automatic strong hit instead of rolling.
+    #[serde(rename = "strong_hit")]
+    StrongHit,
+
+    /// Take an automatic weak hit instead of rolling.
+    #[serde(rename = "weak_hit")]
+    WeakHit,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct OracleCollection {
     #[serde(rename = "canonical_name")]
     pub canonicalName: Label,
@@ -1327,41 +1363,6 @@ pub struct RegionEntry {
 pub type RegularExpression = String;
 
 #[derive(Serialize, Deserialize)]
-pub enum RollMethod {
-    /// When rolling with this move trigger option, *every* stat or progress
-    /// track of the `using` key is rolled
-    #[serde(rename = "all")]
-    All,
-
-    /// When rolling with this move trigger option, the player picks which stat
-    /// to use.
-    #[serde(rename = "any")]
-    Any,
-
-    /// When rolling with this move trigger option, use the highest/best option
-    /// from the `using` key.
-    #[serde(rename = "highest")]
-    Highest,
-
-    /// When rolling with this move trigger option, use the lowest/worst option
-    /// from the `using` key.
-    #[serde(rename = "lowest")]
-    Lowest,
-
-    /// Take an automatic miss instead of rolling.
-    #[serde(rename = "miss")]
-    Miss,
-
-    /// Take an automatic strong hit instead of rolling.
-    #[serde(rename = "strong_hit")]
-    StrongHit,
-
-    /// Take an automatic weak hit instead of rolling.
-    #[serde(rename = "weak_hit")]
-    WeakHit,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct SettingTruth {
     #[serde(rename = "id")]
     pub id: Id,
@@ -1518,6 +1519,9 @@ pub struct TriggerExtensionProgressRoll {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerOptionAction {
+    #[serde(rename = "method")]
+    pub method: Option<Box<MoveRollMethod>>,
+
     #[serde(rename = "by")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub by: Option<Box<TriggerBy>>,
@@ -1525,10 +1529,6 @@ pub struct TriggerOptionAction {
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub choices: Option<Box<Vec<TriggerOptionChoiceAction>>>,
-
-    #[serde(rename = "method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub method: Option<Box<RollMethod>>,
 
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1568,6 +1568,9 @@ pub struct TriggerOptionChoiceProgress {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerOptionProgress {
+    #[serde(rename = "method")]
+    pub method: Option<Box<MoveRollMethod>>,
+
     #[serde(rename = "by")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub by: Option<Box<TriggerBy>>,
@@ -1575,10 +1578,6 @@ pub struct TriggerOptionProgress {
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub choices: Option<Box<Vec<TriggerOptionChoiceProgress>>>,
-
-    #[serde(rename = "method")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub method: Option<Box<RollMethod>>,
 
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]

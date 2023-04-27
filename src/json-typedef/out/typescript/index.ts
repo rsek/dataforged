@@ -237,7 +237,10 @@ export interface AssetOptionFieldText {
   value?: string;
 }
 
-export type ChallengeRank = number;
+/**
+ * Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
+ */
+export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
 
 /**
  * A valid CSS color.
@@ -260,14 +263,29 @@ export interface DelveSiteDenizen {
   name?: Label;
 }
 
-export enum DelveSiteDomainCardType {
-  Domain = "domain",
-}
-
 export interface DelveSiteDomain {
-  card_type: DelveSiteDomainCardType;
-  dangers: FeatureOrDanger[];
-  features: FeatureOrDanger[];
+  card_type: 'domain';
+  dangers: [
+      FeatureOrDanger & {low: 31, high: 33},
+      FeatureOrDanger & {low: 34, high: 36},
+      FeatureOrDanger & {low: 37, high: 39},
+      FeatureOrDanger & {low: 40, high: 42},
+      FeatureOrDanger & {low: 43, high: 45}
+    ];
+  features: [
+          FeatureOrDanger & {low: 21, high: 43},
+          FeatureOrDanger & {low: 44, high: 56},
+          FeatureOrDanger & {low: 57, high: 64},
+          FeatureOrDanger & {low: 65, high: 68},
+          FeatureOrDanger & {low: 69, high: 72},
+          FeatureOrDanger & {low: 73, high: 76},
+          FeatureOrDanger & {low: 77, high: 80},
+          FeatureOrDanger & {low: 81, high: 84},
+          FeatureOrDanger & {low: 85, high: 88},
+          FeatureOrDanger & {low: 89, high: 98},
+          FeatureOrDanger & {low: 99, high: 99},
+          FeatureOrDanger & {low: 100, high: 100}
+        ];
   id: Id;
   name: Label;
   source: Source;
@@ -277,14 +295,29 @@ export interface DelveSiteDomain {
   suggestions?: Suggestions;
 }
 
-export enum DelveSiteThemeCardType {
-  Theme = "theme",
-}
-
 export interface DelveSiteTheme {
-  card_type: DelveSiteThemeCardType;
-  dangers: FeatureOrDanger[];
-  features: FeatureOrDanger[];
+  card_type: 'theme';
+  dangers: [
+        FeatureOrDanger & {low: 1, high: 5},
+        FeatureOrDanger & {low: 6, high: 10},
+        FeatureOrDanger & {low: 11, high: 12},
+        FeatureOrDanger & {low: 13, high: 14},
+        FeatureOrDanger & {low: 15, high: 16},
+        FeatureOrDanger & {low: 17, high: 18},
+        FeatureOrDanger & {low: 19, high: 20},
+        FeatureOrDanger & {low: 21, high: 22},
+        FeatureOrDanger & {low: 23, high: 24},
+        FeatureOrDanger & {low: 25, high: 26},
+        FeatureOrDanger & {low: 27, high: 28},
+        FeatureOrDanger & {low: 29, high: 30}
+      ];
+  features: [
+        FeatureOrDanger & {low: 1, high: 4},
+        FeatureOrDanger & {low: 5, high: 8},
+        FeatureOrDanger & {low: 9, high: 12},
+        FeatureOrDanger & {low: 13, high: 16},
+        FeatureOrDanger & {low: 17, high: 20}
+      ];
   id: Id;
   name: Label;
   source: Source;
@@ -479,6 +512,47 @@ export enum MoveRerollMethod {
   ChallengeDie = "challenge_die",
 }
 
+export enum MoveRollMethod {
+  /**
+   * When rolling with this move trigger option, *every* stat or progress track
+   * of the `using` key is rolled
+   */
+  All = "all",
+
+  /**
+   * When rolling with this move trigger option, the player picks which stat
+   * to use.
+   */
+  Any = "any",
+
+  /**
+   * When rolling with this move trigger option, use the highest/best option
+   * from the `using` key.
+   */
+  Highest = "highest",
+
+  /**
+   * When rolling with this move trigger option, use the lowest/worst option
+   * from the `using` key.
+   */
+  Lowest = "lowest",
+
+  /**
+   * Take an automatic miss instead of rolling.
+   */
+  Miss = "miss",
+
+  /**
+   * Take an automatic strong hit instead of rolling.
+   */
+  StrongHit = "strong_hit",
+
+  /**
+   * Take an automatic weak hit instead of rolling.
+   */
+  WeakHit = "weak_hit",
+}
+
 export interface OracleCollection {
   canonical_name: Label;
   contents: { [key: string]: OracleTable };
@@ -671,47 +745,6 @@ export interface RegionEntry {
 
 export type RegularExpression = string;
 
-export enum RollMethod {
-  /**
-   * When rolling with this move trigger option, *every* stat or progress track
-   * of the `using` key is rolled
-   */
-  All = "all",
-
-  /**
-   * When rolling with this move trigger option, the player picks which stat
-   * to use.
-   */
-  Any = "any",
-
-  /**
-   * When rolling with this move trigger option, use the highest/best option
-   * from the `using` key.
-   */
-  Highest = "highest",
-
-  /**
-   * When rolling with this move trigger option, use the lowest/worst option
-   * from the `using` key.
-   */
-  Lowest = "lowest",
-
-  /**
-   * Take an automatic miss instead of rolling.
-   */
-  Miss = "miss",
-
-  /**
-   * Take an automatic strong hit instead of rolling.
-   */
-  StrongHit = "strong_hit",
-
-  /**
-   * Take an automatic weak hit instead of rolling.
-   */
-  WeakHit = "weak_hit",
-}
-
 export interface SettingTruth {
   id: Id;
   name: Label;
@@ -801,9 +834,9 @@ export interface TriggerExtensionProgressRoll {
 }
 
 export interface TriggerOptionAction {
+  method: (MoveRollMethod | null);
   by?: TriggerBy;
   choices?: TriggerOptionChoiceAction[];
-  method?: RollMethod;
   text?: MarkdownString;
 }
 
@@ -825,9 +858,9 @@ export interface TriggerOptionChoiceProgress {
 }
 
 export interface TriggerOptionProgress {
+  method: (MoveRollMethod | null);
   by?: TriggerBy;
   choices?: TriggerOptionChoiceProgress[];
-  method?: RollMethod;
   text?: MarkdownString;
 }
 

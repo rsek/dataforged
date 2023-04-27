@@ -739,6 +739,10 @@ class AssetOptionFieldText(AssetOptionField):
 
 @dataclass
 class ChallengeRank:
+    """
+    Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
+    """
+
     value: 'int'
 
     @classmethod
@@ -1479,6 +1483,53 @@ class MoveRerollMethod(Enum):
     def to_json_data(self) -> Any:
         return self.value
 
+class MoveRollMethod(Enum):
+    ALL = "all"
+    """
+    When rolling with this move trigger option, *every* stat or progress track
+    of the `using` key is rolled
+    """
+
+    ANY = "any"
+    """
+    When rolling with this move trigger option, the player picks which stat
+    to use.
+    """
+
+    HIGHEST = "highest"
+    """
+    When rolling with this move trigger option, use the highest/best option from
+    the `using` key.
+    """
+
+    LOWEST = "lowest"
+    """
+    When rolling with this move trigger option, use the lowest/worst option from
+    the `using` key.
+    """
+
+    MISS = "miss"
+    """
+    Take an automatic miss instead of rolling.
+    """
+
+    STRONG_HIT = "strong_hit"
+    """
+    Take an automatic strong hit instead of rolling.
+    """
+
+    WEAK_HIT = "weak_hit"
+    """
+    Take an automatic weak hit instead of rolling.
+    """
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'MoveRollMethod':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
 @dataclass
 class OracleCollection:
     canonical_name: 'Label'
@@ -1990,53 +2041,6 @@ class RegularExpression:
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
 
-class RollMethod(Enum):
-    ALL = "all"
-    """
-    When rolling with this move trigger option, *every* stat or progress track
-    of the `using` key is rolled
-    """
-
-    ANY = "any"
-    """
-    When rolling with this move trigger option, the player picks which stat
-    to use.
-    """
-
-    HIGHEST = "highest"
-    """
-    When rolling with this move trigger option, use the highest/best option from
-    the `using` key.
-    """
-
-    LOWEST = "lowest"
-    """
-    When rolling with this move trigger option, use the lowest/worst option from
-    the `using` key.
-    """
-
-    MISS = "miss"
-    """
-    Take an automatic miss instead of rolling.
-    """
-
-    STRONG_HIT = "strong_hit"
-    """
-    Take an automatic strong hit instead of rolling.
-    """
-
-    WEAK_HIT = "weak_hit"
-    """
-    Take an automatic weak hit instead of rolling.
-    """
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'RollMethod':
-        return cls(data)
-
-    def to_json_data(self) -> Any:
-        return self.value
-
 @dataclass
 class SettingTruth:
     id: 'ID'
@@ -2330,28 +2334,27 @@ class TriggerExtensionProgressRoll(TriggerExtension):
 
 @dataclass
 class TriggerOptionAction:
+    method: 'Optional[MoveRollMethod]'
     by: 'Optional[TriggerBy]'
     choices: 'Optional[List[TriggerOptionChoiceAction]]'
-    method: 'Optional[RollMethod]'
     text: 'Optional[MarkdownString]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerOptionAction':
         return cls(
+            _from_json_data(Optional[MoveRollMethod], data.get("method")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[List[TriggerOptionChoiceAction]], data.get("choices")),
-            _from_json_data(Optional[RollMethod], data.get("method")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        data["method"] = _to_json_data(self.method)
         if self.by is not None:
              data["by"] = _to_json_data(self.by)
         if self.choices is not None:
              data["choices"] = _to_json_data(self.choices)
-        if self.method is not None:
-             data["method"] = _to_json_data(self.method)
         if self.text is not None:
              data["text"] = _to_json_data(self.text)
         return data
@@ -2424,28 +2427,27 @@ class TriggerOptionChoiceProgress:
 
 @dataclass
 class TriggerOptionProgress:
+    method: 'Optional[MoveRollMethod]'
     by: 'Optional[TriggerBy]'
     choices: 'Optional[List[TriggerOptionChoiceProgress]]'
-    method: 'Optional[RollMethod]'
     text: 'Optional[MarkdownString]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerOptionProgress':
         return cls(
+            _from_json_data(Optional[MoveRollMethod], data.get("method")),
             _from_json_data(Optional[TriggerBy], data.get("by")),
             _from_json_data(Optional[List[TriggerOptionChoiceProgress]], data.get("choices")),
-            _from_json_data(Optional[RollMethod], data.get("method")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        data["method"] = _to_json_data(self.method)
         if self.by is not None:
              data["by"] = _to_json_data(self.by)
         if self.choices is not None:
              data["choices"] = _to_json_data(self.choices)
-        if self.method is not None:
-             data["method"] = _to_json_data(self.method)
         if self.text is not None:
              data["text"] = _to_json_data(self.text)
         return data

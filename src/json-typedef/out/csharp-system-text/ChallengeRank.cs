@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
+    /// </summary>
     [JsonConverter(typeof(ChallengeRankJsonConverter))]
     public class ChallengeRank
     {

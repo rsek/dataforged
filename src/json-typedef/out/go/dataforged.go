@@ -423,6 +423,7 @@ type AssetOptionFieldText struct {
 	Value *string `json:"value,omitempty"`
 }
 
+// Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
 type ChallengeRank = uint8
 
 // A valid CSS color.
@@ -740,6 +741,35 @@ const (
 	MoveRerollMethodChallengeDie MoveRerollMethod = "challenge_die"
 )
 
+type MoveRollMethod string
+
+const (
+// When rolling with this move trigger option, *every* stat or progress track of
+// the `using` key is rolled
+	MoveRollMethodAll MoveRollMethod = "all"
+
+// When rolling with this move trigger option, the player picks which stat to
+// use.
+	MoveRollMethodAny MoveRollMethod = "any"
+
+// When rolling with this move trigger option, use the highest/best option from
+// the `using` key.
+	MoveRollMethodHighest MoveRollMethod = "highest"
+
+// When rolling with this move trigger option, use the lowest/worst option from
+// the `using` key.
+	MoveRollMethodLowest MoveRollMethod = "lowest"
+
+// Take an automatic miss instead of rolling.
+	MoveRollMethodMiss MoveRollMethod = "miss"
+
+// Take an automatic strong hit instead of rolling.
+	MoveRollMethodStrongHit MoveRollMethod = "strong_hit"
+
+// Take an automatic weak hit instead of rolling.
+	MoveRollMethodWeakHit MoveRollMethod = "weak_hit"
+)
+
 type OracleCollection struct {
 	CanonicalName Label `json:"canonical_name"`
 
@@ -985,35 +1015,6 @@ type RegionEntry struct {
 
 type RegularExpression = string
 
-type RollMethod string
-
-const (
-// When rolling with this move trigger option, *every* stat or progress track of
-// the `using` key is rolled
-	RollMethodAll RollMethod = "all"
-
-// When rolling with this move trigger option, the player picks which stat to
-// use.
-	RollMethodAny RollMethod = "any"
-
-// When rolling with this move trigger option, use the highest/best option from
-// the `using` key.
-	RollMethodHighest RollMethod = "highest"
-
-// When rolling with this move trigger option, use the lowest/worst option from
-// the `using` key.
-	RollMethodLowest RollMethod = "lowest"
-
-// Take an automatic miss instead of rolling.
-	RollMethodMiss RollMethod = "miss"
-
-// Take an automatic strong hit instead of rolling.
-	RollMethodStrongHit RollMethod = "strong_hit"
-
-// Take an automatic weak hit instead of rolling.
-	RollMethodWeakHit RollMethod = "weak_hit"
-)
-
 type SettingTruth struct {
 	ID ID `json:"id"`
 
@@ -1191,11 +1192,11 @@ type TriggerExtensionProgressRoll struct {
 }
 
 type TriggerOptionAction struct {
+	Method *MoveRollMethod `json:"method"`
+
 	By *TriggerBy `json:"by,omitempty"`
 
 	Choices []TriggerOptionChoiceAction `json:"choices,omitempty"`
-
-	Method *RollMethod `json:"method,omitempty"`
 
 	Text *MarkdownString `json:"text,omitempty"`
 }
@@ -1258,11 +1259,11 @@ type TriggerOptionChoiceProgress struct {
 }
 
 type TriggerOptionProgress struct {
+	Method *MoveRollMethod `json:"method"`
+
 	By *TriggerBy `json:"by,omitempty"`
 
 	Choices []TriggerOptionChoiceProgress `json:"choices,omitempty"`
-
-	Method *RollMethod `json:"method,omitempty"`
 
 	Text *MarkdownString `json:"text,omitempty"`
 }

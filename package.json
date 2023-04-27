@@ -10,6 +10,8 @@
 	},
 	"types": "./dist/types/index.d.ts",
 	"scripts": {
+		"build:types": "ts-node src/json-typedef/index.ts && npm run jtd",
+		"jtd": "jtd-codegen src/json-typedef/out/dataforged.jtd.json --csharp-system-text-namespace Dataforged --csharp-system-text-out src/json-typedef/out/csharp-system-text --go-package Dataforged --go-out src/json-typedef/out/go --java-jackson-package Dataforged --java-jackson-out src/json-typedef/out/java-jackson --typescript-out src/json-typedef/out/typescript --python-out src/json-typedef/out/python --ruby-module Dataforged --ruby-out src/json-typedef/out/ruby --rust-out src/json-typedef/out/rust",
 		"build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
 		"build:inputSchema": "node ./dist/scripts/build-input-schema.js",
 		"build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",
