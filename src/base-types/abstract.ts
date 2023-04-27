@@ -68,8 +68,8 @@ export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
  * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
  */
 export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	_extends: Array<T['id']> | null
-	id?: Types.Metadata.ID
+	_extends?: Array<T['id']>
+	id: Types.Metadata.ID
 }
 
 export interface Collection<T, IDType = Types.Metadata.ID>

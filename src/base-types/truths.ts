@@ -5,12 +5,12 @@ export type TruthID = string
 interface TruthBase extends Abstract.SourcedNode<TruthID> {
 	id: TruthID
 	name: string
-	choices: TruthOptionBase[]
+	options: TruthOptionBase[]
 	icon?: Metadata.Icon
 }
 
 export interface SettingTruth extends TruthBase {
-	choices: SettingTruthOption[]
+	options: SettingTruthOption[]
 }
 
 export interface WorldTruth extends TruthBase {}

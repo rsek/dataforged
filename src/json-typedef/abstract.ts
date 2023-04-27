@@ -24,14 +24,3 @@ export const StatChoice: JTDSchemaType<
 		value: { ref: 'ID' }
 	}
 }
-
-export const AssetExtensionChoice: JTDSchemaType<
-	ChoiceBase<Types.Assets.AssetExtension>,
-	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
-> = {
-	properties: {
-		id: { ref: 'ID' },
-		label: { ref: 'Label' },
-		value: { ref: 'AssetExtension' }
-	}
-}

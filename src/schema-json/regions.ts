@@ -18,10 +18,10 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 		'description',
 		'quest_starter',
 		'source',
-		'_id'
+		'id'
 	],
 	properties: {
-		_id: { $ref: '#/definitions/RegionEntryID' },
+		id: { $ref: '#/definitions/RegionEntryID' },
 		name: { $ref: '#/definitions/Label' },
 		summary: { $ref: '#/definitions/MarkdownSentences' },
 		description: { $ref: '#/definitions/MarkdownParagraphs' },

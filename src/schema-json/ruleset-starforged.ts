@@ -65,7 +65,7 @@ export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
 		icon: refSchema<Types.Metadata.Icon>('Icon'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
 		source: refSchema<Types.Metadata.Source>('Source'),
-		choices: {
+		options: {
 			type: 'array',
 			maxItems: 3,
 			minItems: 3,

@@ -92,20 +92,20 @@ export class Trigger<T extends RollType> implements Types.Moves.Trigger<T> {
 	text: string
 
 	@IsOptional()
-	options?: Types.Moves.TriggerChoice<T>[] | undefined
+	options?: Types.Moves.TriggerOptionChoice<T>[] | undefined
 
 	constructor(data: Types.Moves.Trigger<T>) {
 		this.text = data.text
 		if (data.options != null) {
 			this.options = data.options.map(
 				(option) => new TriggerOption<T>(option)
-			) as Types.Moves.TriggerChoice<T>[]
+			) as Types.Moves.TriggerOptionChoice<T>[]
 		}
 	}
 }
 
 export class TriggerOption<T extends RollType>
-	implements Types.Moves.TriggerChoice<T>
+	implements Types.Moves.TriggerOptionChoice<T>
 {
 	@Localize.IsMarkdownPhrase()
 	@IsOptional()
@@ -113,8 +113,8 @@ export class TriggerOption<T extends RollType>
 
 	method: RollMethod | MoveOutcomeType
 	roll_type: T
-	using: Types.Moves.TriggerChoice<T>[]
-	constructor(data: Types.Moves.TriggerChoice<T>) {
+	using: Types.Moves.TriggerOptionChoice<T>[]
+	constructor(data: Types.Moves.TriggerOptionChoice<T>) {
 		this.text = data.text
 		this.method = data.method as RollMethod | MoveOutcomeType
 		this.roll_type = data.roll_type

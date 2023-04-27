@@ -344,7 +344,7 @@ starforged:
                     strong_hit:
                       text: Take +1 momentum.
                       match: *outcome:+2_momentum
-        internal_refit:
+        internalrefit:
           name: Internal Refit
           shared: true
           _source:
@@ -368,7 +368,7 @@ starforged:
                     strong_hit: &Internal_Refit.1
                       text: You and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
                     weak_hit: *Internal_Refit.1
-            - text: &move:Asset.Internal_refit |-
+            - text: &move:Asset.Internalrefit |-
                 Your vessel is stocked with reserves. When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0, first roll +integrity instead of marking unprepared. On a strong hit, take +1 supply. Otherwise, mark unprepared.
               moves:
                 draw_reserves:
@@ -379,7 +379,7 @@ starforged:
                       method: any
                       choices:
                         - attached_asset_meter
-                  text: *move:Asset.Internal_refit
+                  text: *move:Asset.Internalrefit
                   outcomes:
                     strong_hit:
                       text: You don't need to mark unprepared. Take +1 supply.

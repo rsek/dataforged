@@ -11,10 +11,10 @@ export const RarityID: Schema<Types.RarityID> = {
 export const Rarity: Schema<Types.Rarity> = {
 	type: 'object',
 	description: 'A rarity, like those presented in Ironsworn: Delve.',
-	required: ['_id', 'asset', 'description', 'name', 'source', 'xp_cost'],
+	required: ['id', 'asset', 'description', 'name', 'source', 'xp_cost'],
 	additionalProperties: false,
 	properties: {
-		_id: refSchema<Types.RarityID>('RarityID'),
+		id: refSchema<Types.RarityID>('RarityID'),
 		name: { $ref: '#/definitions/Label' },
 		asset: {
 			description: 'The asset enhanced by this rarity.',

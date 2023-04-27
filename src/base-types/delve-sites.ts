@@ -6,6 +6,7 @@ import {
 	type Metadata,
 	type Abstract
 } from '@base-types'
+import { type Label } from 'base-types/localize'
 
 export type DelveSiteID = string
 export interface DelveSite extends Abstract.SourcedNode<DelveSiteID> {
@@ -42,7 +43,7 @@ export interface DelveSiteDenizen<
 	Frequency extends DelveSiteDenizenFrequency
 > extends Abstract.Range<Low, High> {
 	frequency: Frequency
-	encounter: Encounters.EncounterClassicID | null
+	encounter?: Encounters.EncounterClassicID
 	name?: Localize.Label
 }
 
@@ -53,6 +54,7 @@ type DelveSiteCardID = DelveSiteThemeID | DelveSiteDomainID
 export type DelveSiteCardType = 'theme' | 'domain'
 
 interface DelveCardBase extends Abstract.SourcedNode<DelveSiteCardID> {
+	name: Label
 	icon?: Metadata.Icon
 	summary: Localize.MarkdownPhrase
 	description?: Localize.MarkdownSentences

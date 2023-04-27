@@ -1,35 +1,25 @@
-// import { type JSONSchemaType as JsonSchema } from 'ajv'
-// // import { JTDSchemaType } from 'ajv/dist/core'
-// import _ from 'lodash'
+import { JTDSchemaType } from 'ajv/dist/core'
+import { clone, cloneDeep, merge } from 'lodash-es'
+import { RecursivePartial } from 'utils'
+import { Merge } from 'type-fest'
+import * as JTD from 'jtd'
 
-// export function stringToTypeDef(
-//   jsonSchema: JsonSchema<string>
-// ): JTDSchemaType<string> {
-//   const jtdSchema: JTDSchemaType<string> = {
-//     type: 'string',
-//     metadata: {
-//       ..._.omit(jsonSchema, ['type'])
-//     }
-//   }
-//   return jtdSchema
+export function extendJTDSchema<T>(
+	schema: JTDSchemaType<T>,
+	extension: RecursivePartial<JTDSchemaType<T>>
+) {
+	return merge(cloneDeep(schema), extension) as Merge<
+		typeof schema,
+		typeof extension
+	>
+}
+
+// export function partialJTDSchema<T extends object>(
+// 	schema: JTD.SchemaFormProperties & JTDSchemaType<T>
+// ): JTD.SchemaFormProperties & JTDSchemaType<Partial<T>> {
+// 	let newSchema = cloneDeep(schema)
+// 	if (!newSchema.optionalProperties) schema.properties = {}
+// 	merge(newSchema.properties, schema.properties ?? {})
+// 	delete newSchema.properties
+// 	return newSchema as JTD.SchemaFormProperties & JTDSchemaType<Partial<T>>
 // }
-
-// export function refToTypeDef(jsonSchema: { $ref: string }): { ref: string } {
-//   const jtdSchema = {
-//     ref: jsonSchema.$ref.replace('#/definitions/', ''),
-//     metadata: {
-//       ..._.omit(jsonSchema, ['type'])
-//     }
-//   }
-//   return jtdSchema
-// }
-
-// function to invert optional property logic
-
-// patternProperties => values: (w/o patterns, alas)
-
-// array => elements:, recurse to do types
-
-// how to handle enumeric enums? ugh
-
-// number -- infer int/uint based on min/max?

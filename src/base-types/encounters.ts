@@ -15,6 +15,8 @@ export type EncounterNatureStarforged = string
 export type EncounterNatureClassic = string
 
 interface EncounterLike {
+	id: string
+	name: string
 	rank: Progress.ChallengeRank
 	nature: string
 	description: Localize.MarkdownParagraph

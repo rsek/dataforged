@@ -84,14 +84,14 @@ export const WorldTruthID: Schema<Types.Truths.TruthID> = {
 }
 export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
 	type: 'object',
-	required: ['_id', 'name', 'source'],
+	required: ['id', 'name', 'source'],
 	properties: {
-		_id: refSchema<Types.Truths.TruthID>('WorldTruthID'),
+		id: refSchema<Types.Truths.TruthID>('WorldTruthID'),
 		name: refSchema<Types.Localize.Label>('Label'),
 		icon: refSchema<Types.Metadata.Icon>('Icon'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
 		source: refSchema<Types.Metadata.Source>('Source'),
-		choices: {
+		options: {
 			type: 'array',
 			minItems: 3,
 			maxItems: 3,
@@ -108,9 +108,9 @@ export const WorldTruthOptionID: Schema<Types.Truths.TruthID> = {
 }
 export const WorldTruthOption: Schema<Types.Truths.WorldTruthOption> = {
 	type: 'object',
-	required: ['_id', 'description', 'quest_starter'],
+	required: ['id', 'description', 'quest_starter'],
 	properties: {
-		_id: refSchema<Types.Truths.TruthID>('WorldTruthOptionID'),
+		id: refSchema<Types.Truths.TruthID>('WorldTruthOptionID'),
 		description:
 			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
 		quest_starter:

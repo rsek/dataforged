@@ -26,7 +26,7 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	title: 'Asset option field',
 	type: 'object',
 	properties: {
-		_id: refSchema<Types.Assets.AssetOptionFieldID>('AssetOptionFieldID')
+		id: refSchema<Types.Assets.AssetOptionFieldID>('AssetOptionFieldID')
 	},
 	oneOf: [
 		refSchema<Types.Inputs.TextField>('TextField'),
@@ -38,7 +38,7 @@ const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 	title: 'Asset control field',
 	type: 'object',
 	properties: {
-		_id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID')
+		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID')
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
@@ -49,10 +49,10 @@ const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 
 export const Asset: Omit<Schema<Types.Assets.Asset>, 'anyOf'> = {
 	type: 'object',
-	required: ['_id', 'name', 'source', 'abilities'],
+	required: ['id', 'name', 'source', 'abilities'],
 	additionalProperties: false,
 	properties: {
-		_id: refSchema<Types.Assets.AssetID>('AssetID'),
+		id: refSchema<Types.Assets.AssetID>('AssetID'),
 		shared: {
 			description:
 				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
@@ -86,15 +86,15 @@ export const AssetAttachment: Schema<Types.Assets.AssetAttachment> = {
 	description:
 		'Describes which assets can be attached to this asset. The "canonical" example for this are Starforged\'s Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.',
 	type: 'object',
-	required: ['patterns', 'max'],
+	required: ['patterns'],
 	properties: {
 		max: {
 			title: 'Maximum attached assets',
 			description:
-				"If there's no upper limit to the number of attached assets, this is `null`.",
-			type: ['integer', 'null'] as any,
+				"Omitted if there's no upper limit to the number of attached assets.",
+			type: 'integer',
 			minimum: 1,
-			default: null
+			nullable: true
 		},
 		patterns: {
 			title: 'Attached asset ID patterns',
@@ -130,7 +130,7 @@ const AssetAbilityOptionField: Schema<Types.Assets.AssetAbilityOptionField> = {
 		refSchema<Types.Inputs.TextField>('TextField'),
 		{
 			properties: {
-				_id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
+				id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
 					'AssetAbilityOptionFieldID'
 				)
 			}
@@ -148,13 +148,13 @@ export const AssetAbilityControlFieldID: Schema<Types.Assets.AssetAbilityControl
 
 export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 	type: 'object',
-	required: ['_id', 'text'],
+	required: ['id', 'text'],
 	additionalProperties: false,
 	properties: {
-		_id: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID'),
-		name: refSchema<Types.Localize.Label>('Label'),
+		id: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID'),
+		name: { ...refSchema<Types.Localize.Label>('Label'), nullable: true },
 		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
-		enabled: { type: 'boolean', default: false, nullable: undefined as any },
+		enabled: { type: 'boolean', default: false, nullable: true },
 		controls: {
 			type: 'object',
 			required: undefined as any,
@@ -214,8 +214,9 @@ export const AssetTypeExtension = Abstract.collectionExtensionSchema(
 const ToggleFieldOption: Schema<Types.Assets.ToggleFieldOption> = {
 	title: 'Toggle field option',
 	type: 'object',
-	required: ['label', 'value'],
+	required: ['id', 'label', 'value'],
 	properties: {
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		value: refSchema<Types.Assets.AssetExtension>('AssetExtension')
 	}
@@ -223,9 +224,9 @@ const ToggleFieldOption: Schema<Types.Assets.ToggleFieldOption> = {
 
 export const ToggleField: Schema<Types.Assets.ToggleField> = {
 	type: 'object',
-	required: ['_id', 'label', 'field_type', 'choices'],
+	required: ['id', 'label', 'field_type', 'choices'],
 	properties: {
-		_id: { type: 'string' },
+		id: { type: 'string' },
 		field_type: { type: 'string', const: 'toggle' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		choices: dictionarySchema<Types.Assets.ToggleFieldOption>(ToggleFieldOption)

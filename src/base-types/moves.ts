@@ -19,7 +19,11 @@ export interface Move<T extends RollType = RollType>
 	trigger: Trigger<T>
 }
 
-export interface MoveExtension extends Types.Abstract.ExtendMany<Move> {}
+export interface MoveExtension extends Types.Abstract.ExtendMany<Move> {
+	trigger:
+		| Types.Moves.TriggerExtension<Types.Moves.Trigger<'action_roll'>>
+		| Types.Moves.TriggerExtension<Types.Moves.Trigger<'progress_roll'>>
+}
 
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
@@ -39,10 +43,10 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 	strong_hit: MoveOutcomeMatchable
 }
 
-export interface Trigger<T extends RollType | null = RollType | null> {
+export interface Trigger<T extends RollType = RollType> {
 	text: Types.Localize.MarkdownPhrase
-	roll_type?: T | null
-	options?: T extends RollType ? Array<TriggerOption<T>> : null
+	roll_type: T
+	options?: Array<TriggerOption<T>>
 }
 
 export interface MoveReroll {
@@ -61,7 +65,12 @@ export type MoveRerollMethod =
 	| 'challenge_die'
 	| 'challenge_dice'
 	| 'action_die'
-export type RollMethod = 'any' | 'all' | 'highest' | 'lowest' | MoveOutcomeType
+export type MoveRollMethod =
+	| 'any'
+	| 'all'
+	| 'highest'
+	| 'lowest'
+	| MoveOutcomeType
 
 export type ProgressType =
 	| Types.RulesetStarforged.ProgressType
@@ -73,49 +82,58 @@ export type RollableStatID =
 	| Types.RulesetStarforged.ConditionMeterAlias
 	| Types.RulesetClassic.ConditionMeterAlias
 
-export type TriggerChoice<T extends RollType = RollType> =
+export type TriggerOptionChoice<T extends RollType = RollType> =
 	T extends 'progress_roll'
 		? T extends 'action_roll'
 			? // if it's a union, allow both types:
-			  TriggerChoiceProgress | TriggerChoiceStat | TriggerChoiceCustomValue
+			  | TriggerOptionChoiceProgress
+					| TriggerOptionChoiceStat
+					| TriggerOptionChoiceCustomValue
 			: // otherwise, restrict types as appropriate:
-			  TriggerChoiceProgress
-		: TriggerChoiceStat | TriggerChoiceCustomValue
+			  TriggerOptionChoiceProgress
+		: TriggerOptionChoiceStat | TriggerOptionChoiceCustomValue
 
 export interface TriggerChoiceBase {
-	using: 'progress' | 'stat' | 'custom'
+	using: ProgressType | 'stat' | 'custom'
 	label?: Types.Localize.Label
 	value?: number
-	_ref?: string | null
+	ref?: string | null
 }
 
-export interface TriggerChoiceStat
+export type TriggerExtension<T extends Types.Moves.Trigger> = Omit<
+	T,
+	'text'
+> & {
+	options: Exclude<T['options'], undefined>
+}
+
+export interface TriggerOptionChoiceStat
 	extends Omit<TriggerChoiceBase, 'value' | 'label'> {
 	using: 'stat'
-	_ref: string // RollableStatID
+	ref: string // RollableStatID
 }
 
-export interface TriggerChoiceProgress
-	extends Omit<TriggerChoiceBase, 'label' | 'value'> {
-	using: 'progress'
-	_ref: ProgressType
+export interface TriggerOptionChoiceProgress
+	extends Omit<TriggerChoiceBase, 'label' | 'value' | 'ref'> {
+	using: ProgressType
 }
 
-export interface TriggerChoiceCustomValue
-	extends Omit<TriggerChoiceBase, '_ref'> {
+export interface TriggerOptionChoiceCustomValue
+	extends Omit<TriggerChoiceBase, 'ref'> {
 	using: 'custom'
 	label: Types.Localize.Label
 	value: number
 }
 
-export type TriggerChoiceAction = TriggerChoiceStat | TriggerChoiceCustomValue
+export type TriggerOptionChoiceAction =
+	| TriggerOptionChoiceStat
+	| TriggerOptionChoiceCustomValue
 
 export interface TriggerOption<T extends RollType = RollType> {
 	text?: Types.Localize.MarkdownPhrase
-	method?: RollMethod | MoveOutcomeType
+	method?: MoveRollMethod | MoveOutcomeType
 	by?: TriggerBy
-	roll_type: T
 	choices?: this['method'] extends undefined
 		? undefined
-		: Array<TriggerChoice<T>>
+		: Array<TriggerOptionChoice<T>>
 }

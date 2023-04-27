@@ -1,4 +1,6 @@
 import type * as Types from '@base-types'
+import { type InputFieldBase } from 'base-types/inputs'
+import { type PartialDeep, type Simplify } from 'type-fest'
 
 export type AssetID = string
 
@@ -19,6 +21,16 @@ export type AssetControlField =
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.ConditionMeterField
 	| Types.Inputs.AssetExtensionChoicesField
+
+export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
+	Omit<T, 'id' | 'field_type' | 'label' | 'value'>
+>
+
+export type AssetControlFieldExtension = Simplify<
+	InputFieldExtension<Types.Inputs.ConditionMeterField>
+>
+// | Simplify<InputFieldExtension<Types.Inputs.AssetExtensionChoicesField>>
+
 export interface Asset
 	extends Omit<Types.Abstract.SourcedNode<AssetID>, 'suggestions'> {
 	id: string
@@ -39,7 +51,11 @@ export interface Asset
 }
 
 export interface AssetExtensionForeign
-	extends Types.Abstract.ExtendOne<Omit<Asset, 'options'>> {}
+	extends Types.Abstract.ExtendOne<
+		Omit<Asset, 'options' | 'abilities' | 'requirement' | 'shared' | 'controls'>
+	> {
+	controls?: Record<string, AssetControlFieldExtension>
+}
 
 export interface AssetsExtension extends Types.Abstract.ExtendMany<Asset> {
 	abilities?: never
@@ -80,7 +96,7 @@ export interface AssetExtension
 
 export interface AssetAttachment {
 	patterns: Array<RegExp['source']>
-	max: number | null
+	max?: number
 }
 
 // expected to be manipulated throughout the life of the asset

@@ -17,7 +17,7 @@ export interface Source {
 	authors: [string, ...string[]]
 	date: string
 	url: string
-	license: string | null
+	license: string
 }
 
 /**

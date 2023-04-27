@@ -112,7 +112,7 @@ export const RollType: Schema<Types.RollType> = {
 	enum: ['action_roll', 'progress_roll']
 }
 
-export const RollMethod: Schema<Types.RollMethod> = {
+export const RollMethod: Schema<Types.MoveRollMethod> = {
 	type: 'string',
 	enum: ['any', 'highest', 'lowest', 'all'],
 
@@ -149,35 +149,34 @@ export const TriggerChoiceBase: PartialSchema<Types.TriggerChoiceBase> = {
 		label: refSchema<Localize.Label>('Label') as any,
 		using: { enum: ['progress', 'custom', 'stat'] } as any,
 		value: { type: 'integer', nullable: undefined as any },
-		_ref: { type: 'string', nullable: undefined as any }
+		ref: { type: 'string', nullable: undefined as any }
 	}
 }
 
-export const TriggerChoiceProgress: Schema<Types.TriggerChoiceProgress> = _(
-	TriggerChoiceBase
-)
-	.omit('properties.using', 'properties.ref')
-	.merge({
-		title: 'Trigger choice (progress roll)',
-		description:
-			'A choice belonging to a progress trigger option (which belongs in turn to a progress move).',
-		required: ['ref'],
-		properties: {
-			using: { const: 'progress' },
-			ref: {
-				...refSchema<Types.ProgressType>('ProgressType'),
-				description:
-					'Identifies the type of progress track associated with this choice.'
-			},
-			value: {
-				$comment:
-					'Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value.'
+export const TriggerChoiceProgress: Schema<Types.TriggerOptionChoiceProgress> =
+	_(TriggerChoiceBase)
+		.omit('properties.using', 'properties.ref')
+		.merge({
+			title: 'Trigger choice (progress roll)',
+			description:
+				'A choice belonging to a progress trigger option (which belongs in turn to a progress move).',
+			required: ['ref'],
+			properties: {
+				using: { const: 'progress' },
+				ref: {
+					...refSchema<Types.ProgressType>('ProgressType'),
+					description:
+						'Identifies the type of progress track associated with this choice.'
+				},
+				value: {
+					$comment:
+						'Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value.'
+				}
 			}
-		}
-	})
-	.value()
+		})
+		.value()
 
-export const TriggerChoiceCustomValue: Schema<Types.TriggerChoiceCustomValue> =
+export const TriggerChoiceCustomValue: Schema<Types.TriggerOptionChoiceCustomValue> =
 	_(TriggerChoiceBase)
 		.omit('properties.using', 'properties.ref')
 		.merge({
@@ -199,7 +198,7 @@ export const TriggerChoiceCustomValue: Schema<Types.TriggerChoiceCustomValue> =
 		})
 		.value()
 
-export const TriggerChoiceStat: Schema<Types.TriggerChoiceStat> = _(
+export const TriggerChoiceStat: Schema<Types.TriggerOptionChoiceStat> = _(
 	TriggerChoiceBase
 )
 	.omit('properties.using', 'properties.ref')
@@ -221,7 +220,7 @@ export const TriggerChoiceStat: Schema<Types.TriggerChoiceStat> = _(
 	})
 	.value()
 
-export const TriggerChoiceAction: Schema<Types.TriggerChoiceAction> = {
+export const TriggerChoiceAction: Schema<Types.TriggerOptionChoiceAction> = {
 	oneOf: [refSchema('TriggerChoiceStat'), refSchema('TriggerChoiceCustomValue')]
 }
 
@@ -236,7 +235,7 @@ const TriggerOptionBase: PartialSchema<Types.TriggerOption> = {
 			description:
 				'The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.',
 			oneOf: [
-				refSchema<Types.RollMethod>('RollMethod'),
+				refSchema<Types.MoveRollMethod>('RollMethod'),
 				refSchema<Types.MoveOutcomeType>('MoveOutcomeType')
 			]
 		},
@@ -256,7 +255,7 @@ const TriggerOption = _.merge({}, TriggerOptionBase, {
 		method: { default: 'any' },
 		choices: {
 			type: 'array',
-			items: refSchema<Types.TriggerChoiceAction>('TriggerChoiceAction')
+			items: refSchema<Types.TriggerOptionChoiceAction>('TriggerChoiceAction')
 		}
 	}
 })
@@ -267,7 +266,9 @@ const TriggerOptionProgressRoll = _.merge({}, TriggerOptionBase, {
 		method: { default: 'any' },
 		choices: {
 			type: 'array',
-			items: refSchema<Types.TriggerChoiceProgress>('TriggerChoiceProgress')
+			items: refSchema<Types.TriggerOptionChoiceProgress>(
+				'TriggerChoiceProgress'
+			)
 		}
 	}
 })

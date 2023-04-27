@@ -295,14 +295,14 @@ export const OracleRollTemplate: Schema<Types.Oracles.OracleRollTemplate> = {
 	type: 'object',
 	description: `Provides string templates that may be used in place of the static row text from \`OracleTableRow#result\`, \`OracleTableRow#summary\`, and \`OracleTableRow#description\`.
 
-These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{roll:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`,
+These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{result:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`,
 	properties: {
 		result: {
 			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
 			description:
 				'A string template that may be used in place of OracleTableRow#result.',
 			examples: [
-				'{{roll:starforged/oracles/factions/affiliation}} of the {{roll:starforged/oracles/factions/legacy}} {{roll:starforged/oracles/factions/identity}}'
+				'{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
 			]
 		},
 		summary: {

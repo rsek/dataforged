@@ -45,7 +45,7 @@ export const OracleTableRow: JTDSchemaType<
 		ID: string
 		MarkdownString: string
 		OracleRollTemplate: Types.Oracles.OracleRollTemplate
-		ImageURL: string
+		SvgImageURL: string
 		OracleTableRoll: Types.Oracles.OracleTableRoll
 		Suggestions: Types.Metadata.SuggestionsBase
 	}
@@ -60,7 +60,7 @@ export const OracleTableRow: JTDSchemaType<
 		summary: { ref: 'MarkdownString' },
 		description: { ref: 'MarkdownString' },
 		template: { ref: 'OracleRollTemplate' },
-		icon: { ref: 'ImageURL' },
+		icon: { ref: 'SvgImageURL' },
 		rolls: { elements: { ref: 'OracleTableRoll' } },
 		embed_table: { ref: 'ID' },
 		suggestions: { ref: 'Suggestions' }
@@ -190,4 +190,25 @@ export const OracleRollTemplate: JTDSchemaType<
 		summary: { ref: 'TemplateString' },
 		description: { ref: 'TemplateString' }
 	}
+}
+
+export const OracleTableRendering: JTDSchemaType<
+	Types.Oracles.OracleTableRendering,
+	{
+		Color: string
+		OracleTableColumn: Types.Oracles.OracleTableColumn
+		OracleTableStyle: Types.Oracles.OracleTableStyle
+		SvgImageURL: string
+	}
+> = {
+	optionalProperties: {
+		color: { ref: 'Color' },
+		columns: { values: { ref: 'OracleTableColumn' } },
+		style: { ref: 'OracleTableStyle' },
+		icon: { ref: 'SvgImageURL' }
+	}
+}
+
+export const OracleTableStyle: JTDSchemaType<Types.Oracles.OracleTableStyle> = {
+	enum: ['embed_as_column', 'embed_in_row', 'table']
 }
