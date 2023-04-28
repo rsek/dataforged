@@ -1,8 +1,7 @@
 import type * as Types from '@base-types'
-import { DF_KEY, refSchema } from './common'
+import { dictionarySchema, refSchema } from './common'
 
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type RollableStatID } from 'base-types/moves'
 
 // export const InputField: Schema<Types.Inputs.InputField> = {
 // 	type: 'object',
@@ -30,7 +29,7 @@ export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'checkbox' },
-		value: { type: ['boolean', 'null'] as any, nullable: undefined as any }
+		value: { type: 'boolean', default: false }
 	}
 }
 
@@ -80,45 +79,90 @@ export const TextField: Schema<Types.Inputs.TextField> = {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'text' },
-		value: { type: ['string', 'null'] as any, nullable: undefined as any }
+		value: { type: 'string', nullable: true }
 	}
 }
 
-export const ChoicesField: Schema<Types.Inputs.ChoicesFieldBase> = {
+export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
+	required: ['id', 'label', 'field_type', 'choices'],
 	type: 'object',
-	required: ['id', 'field_type', 'label', 'choices'],
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
-		field_type: { type: 'string', const: 'choices' },
-		choices_type: {
-			type: undefined as any,
-			enum: ['extend_asset', 'number', 'stat_id']
-		},
-		choices: {
+		field_type: { type: 'string', const: 'select_stat' },
+		choices: dictionarySchema<Types.Inputs.SelectFieldStatChoice>({
+			required: ['label', 'value'],
 			type: 'object',
-			required: undefined as any,
-			patternProperties: {
-				[DF_KEY]: {
-					type: 'object',
-					required: ['label'],
-					properties: {
-						label: refSchema<Types.Localize.Label>('Label'),
-						selected: { type: 'boolean', nullable: undefined as any },
-						value: {} as any
-					}
+			properties: {
+				label: refSchema<Types.Localize.Label>('Label'),
+				selected: { type: 'boolean', nullable: true },
+				value: {
+					oneOf: [
+						refSchema<Types.Players.PlayerStat>('PlayerStat'),
+						refSchema<Types.Players.PlayerConditionMeter>(
+							'PlayerConditionMeter'
+						)
+					]
 				}
 			}
-		}
+		})
 	}
 }
 
-export const StatIDChoice: Schema<Types.Inputs.StatIDChoice> = {
+export const SelectFieldNumber: Schema<Types.Inputs.SelectFieldNumber> = {
+	required: ['id', 'label', 'field_type', 'choices'],
 	type: 'object',
-	required: ['label', 'value'],
 	properties: {
+		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
-		value: refSchema<RollableStatID>('RollableStatID'),
-		selected: { type: 'boolean', default: false, nullable: undefined as any }
+		field_type: { type: 'string', const: 'select_number' },
+		choices: dictionarySchema<Types.Inputs.SelectFieldNumberChoice>({
+			required: ['label', 'value'],
+			type: 'object',
+			properties: {
+				label: { type: 'string' },
+				selected: { type: 'boolean', nullable: true },
+				value: { type: 'integer' }
+			}
+		})
 	}
 }
+
+export const SelectFieldRef: Schema<Types.Inputs.SelectFieldRef> = {
+	required: ['id', 'label', 'field_type', 'choices'],
+	type: 'object',
+	properties: {
+		id: { type: 'string' },
+		label: refSchema<Types.Localize.Label>('Label'),
+		field_type: { type: 'string', const: 'select_ref' },
+		choices: dictionarySchema<Types.Inputs.SelectFieldRefChoice>({
+			required: ['label', 'value'],
+			type: 'object',
+			properties: {
+				label: { type: 'string' },
+				selected: { type: 'boolean', nullable: true },
+				value: { type: 'string' }
+			}
+		})
+	}
+}
+
+export const SelectFieldAssetExtension: Schema<Types.Inputs.SelectFieldAssetExtension> =
+	{
+		required: ['id', 'label', 'field_type', 'choices'],
+		type: 'object',
+		properties: {
+			id: { type: 'string' },
+			label: refSchema<Types.Localize.Label>('Label'),
+			field_type: { type: 'string', const: 'select_asset_extension' },
+			choices: dictionarySchema<Types.Inputs.SelectFieldAssetExtensionChoice>({
+				required: ['label', 'value'],
+				type: 'object',
+				properties: {
+					label: { type: 'string' },
+					selected: { type: 'boolean', nullable: true },
+					value: refSchema<Types.Assets.AssetExtension>('AssetExtension')
+				}
+			})
+		}
+	}

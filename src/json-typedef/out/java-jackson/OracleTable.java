@@ -13,7 +13,7 @@ public class OracleTable {
     private Label canonicalName;
 
     @JsonProperty("id")
-    private Id id;
+    private OracleTableId id;
 
     @JsonProperty("name")
     private Label name;
@@ -64,14 +64,14 @@ public class OracleTable {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public OracleTableId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(OracleTableId id) {
         this.id = id;
     }
 

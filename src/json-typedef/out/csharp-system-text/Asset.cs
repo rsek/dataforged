@@ -11,7 +11,7 @@ namespace Dataforged
         public IList<AssetAbility> Abilities { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public AssetId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

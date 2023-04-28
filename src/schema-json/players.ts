@@ -1,7 +1,19 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Players as Types } from '@base-types'
 
-export const StatID: Schema<Types.StatID> = {
+export const PlayerStat: Schema<Types.PlayerStat> = {
+	type: 'string',
+	description: 'A standard player character stat.',
+	enum: ['edge', 'heart', 'iron', 'shadow', 'wits']
+}
+
+export const PlayerConditionMeter: Schema<Types.PlayerConditionMeter> = {
+	type: 'string',
+	description: 'A standard player character condition meter.',
+	enum: ['health', 'spirit', 'supply']
+}
+
+export const PlayerStatID: Schema<Types.PlayerStatID> = {
 	type: 'string',
 	description: 'ID for a standard player character stat.',
 	enum: [
@@ -13,7 +25,7 @@ export const StatID: Schema<Types.StatID> = {
 	]
 }
 
-export const ConditionMeterID: Schema<Types.ConditionMeterID> = {
+export const PlayerConditionMeterID: Schema<Types.PlayerConditionMeterID> = {
 	type: 'string',
 	description: 'ID for a standard player character condition meter.',
 	enum: [

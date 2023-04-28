@@ -723,7 +723,7 @@ export interface MoveOutcome {
  */
 export interface MoveCategoryExtensionStarforged {
 	_id?: MoveCategoryID
-	_extends: MoveCategoryID2
+	extends: MoveCategoryID2
 	/**
 	 * Items to be added to the extended collection.
 	 */
@@ -802,7 +802,7 @@ export interface AssetAbilityStarforged {
  */
 export interface AssetTypeExtensionStarforged {
 	_id?: AssetTypeID
-	_extends: AssetTypeID1
+	extends: AssetTypeID1
 	/**
 	 * Items to be added to the extended collection.
 	 */
@@ -900,7 +900,7 @@ export interface TriggerBase {
  */
 export interface OracleCollectionExtension {
 	_id?: OracleCollectionID
-	_extends: OracleCollectionID1
+	extends: OracleCollectionID1
 	/**
 	 * Items to be added to the extended collection.
 	 */

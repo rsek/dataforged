@@ -1,10 +1,14 @@
 import type * as Types from '@base-types'
 import { JTDSchemaType } from 'ajv/dist/core'
+import { toJtdId } from 'json-typedef/utils'
+import * as JSONSchema from '@schema-json'
+
+export const OracleTableID = toJtdId(JSONSchema.Oracles.OracleTableID)
 
 export const OracleTable: JTDSchemaType<
 	Types.Oracles.OracleTable,
 	{
-		ID: string
+		OracleTableID: string
 		Label: string
 		Source: Types.Metadata.Source
 		OracleTableRow: Types.Oracles.OracleTableRow
@@ -15,7 +19,7 @@ export const OracleTable: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'OracleTableID' },
 		name: { ref: 'Label' },
 		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
@@ -39,10 +43,13 @@ export const OracleTableMatchBehavior: JTDSchemaType<
 	}
 }
 
+export const OracleTableRowID = toJtdId(JSONSchema.Oracles.OracleTableRowID)
+
 export const OracleTableRow: JTDSchemaType<
 	Types.Oracles.OracleTableRow,
 	{
-		ID: string
+		OracleTableRowID: string
+		OracleTableID: string
 		MarkdownString: string
 		OracleRollTemplate: Types.Oracles.OracleRollTemplate
 		SvgImageURL: string
@@ -51,7 +58,7 @@ export const OracleTableRow: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'OracleTableRowID' },
 		low: { type: 'uint8', nullable: true },
 		high: { type: 'uint8', nullable: true },
 		result: { ref: 'MarkdownString' }
@@ -62,7 +69,7 @@ export const OracleTableRow: JTDSchemaType<
 		template: { ref: 'OracleRollTemplate' },
 		icon: { ref: 'SvgImageURL' },
 		rolls: { elements: { ref: 'OracleTableRoll' } },
-		embed_table: { ref: 'ID' },
+		embed_table: { ref: 'OracleTableID' },
 		suggestions: { ref: 'Suggestions' }
 	}
 }
@@ -74,10 +81,13 @@ export const OracleTableRollMethod: JTDSchemaType<Types.Oracles.OracleTableRollM
 
 export const OracleTableRoll: JTDSchemaType<
 	Types.Oracles.OracleTableRoll,
-	{ ID: string; OracleTableRollMethod: Types.Oracles.OracleTableRollMethod }
+	{
+		OracleTableID: string
+		OracleTableRollMethod: Types.Oracles.OracleTableRollMethod
+	}
 > = {
 	properties: {
-		oracle: { ref: 'ID' }
+		oracle: { ref: 'OracleTableID' }
 	},
 	optionalProperties: {
 		times: { type: 'uint8' },
@@ -85,10 +95,12 @@ export const OracleTableRoll: JTDSchemaType<
 	}
 }
 
+export const OracleCollectionID = toJtdId(JSONSchema.Oracles.OracleCollectionID)
+
 export const OracleCollection: JTDSchemaType<
 	Types.Oracles.OracleCollection,
 	{
-		ID: string
+		OracleCollectionID: string
 		Source: Types.Metadata.Source
 		MarkdownString: string
 		Suggestions: Types.Metadata.SuggestionsBase
@@ -101,7 +113,7 @@ export const OracleCollection: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'OracleCollectionID' },
 		name: { ref: 'Label' },
 		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
@@ -183,7 +195,7 @@ export const OracleCollectionStyle: JTDSchemaType<Types.Oracles.OracleCollection
 
 export const OracleRollTemplate: JTDSchemaType<
 	Types.Oracles.OracleRollTemplate,
-	{ ID: string; TemplateString: string }
+	{ TemplateString: string }
 > = {
 	optionalProperties: {
 		result: { ref: 'TemplateString' },

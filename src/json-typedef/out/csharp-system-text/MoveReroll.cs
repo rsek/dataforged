@@ -9,6 +9,9 @@ namespace Dataforged
         [JsonPropertyName("method")]
         public MoveRerollMethod Method { get; set; }
 
+        /// <summary>
+        /// Describes the trigger condition for the reroll, if any.
+        /// </summary>
         [JsonPropertyName("text")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Text { get; set; }

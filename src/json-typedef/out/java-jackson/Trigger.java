@@ -5,6 +5,9 @@ package Dataforged;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+/**
+ * Describes a move's trigger condition(s) and any rolls associated with them.
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "roll_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "action_roll", value = TriggerActionRoll.class),

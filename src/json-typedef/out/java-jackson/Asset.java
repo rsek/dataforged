@@ -14,7 +14,7 @@ public class Asset {
     private List<AssetAbility> abilities;
 
     @JsonProperty("id")
-    private Id id;
+    private AssetId id;
 
     @JsonProperty("name")
     private Label name;
@@ -66,14 +66,14 @@ public class Asset {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public AssetId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(AssetId id) {
         this.id = id;
     }
 

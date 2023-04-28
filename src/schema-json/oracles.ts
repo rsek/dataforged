@@ -239,7 +239,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			title: 'Result text',
 			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase')
 		},
-		icon: refSchema<Types.Metadata.Icon>('Icon'),
+		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
 		summary: {
 			title: 'Summary text',
 			description:
@@ -345,7 +345,7 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 					description:
 						'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
 					properties: {
-						icon: refSchema<Types.Metadata.Icon>('Icon'),
+						icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
 						style: {
 							oneOf: [
 								{ enum: ['multi_table'], type: 'string' },
@@ -390,7 +390,7 @@ export const OracleCollectionExtension: Schema<
 	'OracleTable',
 	'OracleCollectionID',
 	{
-		required: ['_extends', 'id'],
+		required: ['extends', 'id'],
 		...maybeTemplate,
 		properties: {
 			collections: {

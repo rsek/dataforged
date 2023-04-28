@@ -59,12 +59,12 @@ namespace Dataforged
         QuestsLegacy,
 
         /// <summary>
-        /// A scene challenge progress track
+        /// A scene challenge progress track.
         /// </summary>
         SceneChallengeProgress,
 
         /// <summary>
-        /// A vow progress track, started with Swear an Iron Vow
+        /// A vow progress track, started with Swear an Iron Vow.
         /// </summary>
         VowProgress,
     }

@@ -1,14 +1,9 @@
-import {
-	type Localize,
-	type Assets,
-	type Moves,
-	type Oracles
-} from '@base-types'
+import { type Assets, type Moves, type Oracles } from '@base-types'
 
 export type Ruleset = 'classic' | 'starforged'
 export type ID = string
-export type Icon = string
-export type Image = string
+export type SvgImageUrl = string
+export type WebpImageURL = string
 export type Color = string
 
 export interface Source {

@@ -7,9 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public class AssetExtensionChoice {
-    @JsonProperty("id")
-    private Id id;
-
     @JsonProperty("label")
     private Label label;
 
@@ -17,20 +14,6 @@ public class AssetExtensionChoice {
     private AssetExtension value;
 
     public AssetExtensionChoice() {
-    }
-
-    /**
-     * Getter for id.<p>
-     */
-    public Id getId() {
-        return id;
-    }
-
-    /**
-     * Setter for id.<p>
-     */
-    public void setId(Id id) {
-        this.id = id;
     }
 
     /**

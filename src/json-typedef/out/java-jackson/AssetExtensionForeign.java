@@ -8,16 +8,16 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
 /**
- * Describes changes applied to an asset, usually by another asset. Assume that
- * unspecified/null properties are unchanged.
+ * Describes changes applied to an asset, usually by another asset. Unchanged
+ * properties are omitted.
  */
 @JsonSerialize
 public class AssetExtensionForeign {
-    @JsonProperty("_extends")
-    private Id extends_;
+    @JsonProperty("extends")
+    private AssetId extends_;
 
     @JsonProperty("id")
-    private Id id;
+    private AssetAbilityControlFieldId id;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("attachments")
@@ -37,28 +37,28 @@ public class AssetExtensionForeign {
     /**
      * Getter for extends_.<p>
      */
-    public Id getExtends_() {
+    public AssetId getExtends_() {
         return extends_;
     }
 
     /**
      * Setter for extends_.<p>
      */
-    public void setExtends_(Id extends_) {
+    public void setExtends_(AssetId extends_) {
         this.extends_ = extends_;
     }
 
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public AssetAbilityControlFieldId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(AssetAbilityControlFieldId id) {
         this.id = id;
     }
 

@@ -11,7 +11,7 @@ namespace Dataforged
         public byte? High { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public OracleTableRowId Id { get; set; }
 
         [JsonPropertyName("low")]
         public byte? Low { get; set; }
@@ -25,7 +25,7 @@ namespace Dataforged
 
         [JsonPropertyName("embed_table")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public Id? EmbedTable { get; set; }
+        public OracleTableId? EmbedTable { get; set; }
 
         [JsonPropertyName("icon")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

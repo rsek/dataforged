@@ -16,7 +16,7 @@ public class RegionEntry {
     private List<MarkdownString> features;
 
     @JsonProperty("id")
-    private Id id;
+    private RegionEntryId id;
 
     @JsonProperty("name")
     private Label name;
@@ -68,14 +68,14 @@ public class RegionEntry {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public RegionEntryId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(RegionEntryId id) {
         this.id = id;
     }
 

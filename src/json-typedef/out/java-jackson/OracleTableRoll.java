@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class OracleTableRoll {
     @JsonProperty("oracle")
-    private Id oracle;
+    private OracleTableId oracle;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("method")
@@ -25,14 +25,14 @@ public class OracleTableRoll {
     /**
      * Getter for oracle.<p>
      */
-    public Id getOracle() {
+    public OracleTableId getOracle() {
         return oracle;
     }
 
     /**
      * Setter for oracle.<p>
      */
-    public void setOracle(Id oracle) {
+    public void setOracle(OracleTableId oracle) {
         this.oracle = oracle;
     }
 

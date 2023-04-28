@@ -13,6 +13,7 @@ import {
 import { Abstract } from '@schema-json'
 import _ from 'lodash'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
+import { type MarkdownPhrase } from 'schema-json/localize'
 
 export const MoveID: Schema<Types.MoveID> = {
 	type: 'string',
@@ -63,7 +64,7 @@ const MoveOutcome: Schema<Types.MoveOutcome> = {
 			title: 'Move reroll',
 			type: 'object',
 			required: ['method'],
-			nullable: undefined as any,
+			nullable: true,
 			properties: {
 				text: refSchema<Localize.MarkdownPhrase>('MarkdownPhrase'),
 				method: {
@@ -95,8 +96,8 @@ const MoveOutcomes: Schema<Types.MoveOutcomes> = {
 
 export const RollableStatID: Schema<Types.RollableStatID> = {
 	oneOf: [
-		refSchema<Players.StatID>('StatID'),
-		refSchema<Players.ConditionMeterID>('ConditionMeterID'),
+		refSchema<Players.PlayerStatID>('StatID'),
+		refSchema<Players.PlayerConditionMeterID>('ConditionMeterID'),
 		refSchema<Assets.AssetAbilityControlFieldID>('AssetAbilityControlFieldID'),
 		refSchema<Assets.AssetControlFieldID>('AssetControlFieldID'),
 		refSchema<Assets.AssetAbilityOptionFieldID>('AssetAbilityOptionFieldID'),
@@ -107,12 +108,12 @@ export const RollableStatID: Schema<Types.RollableStatID> = {
 	]
 }
 
-export const RollType: Schema<Types.RollType> = {
+export const MoveRollType: Schema<Types.MoveRollType> = {
 	type: 'string',
 	enum: ['action_roll', 'progress_roll']
 }
 
-export const RollMethod: Schema<Types.MoveRollMethod> = {
+export const MoveRollMethod: Schema<Types.MoveRollMethod> = {
 	type: 'string',
 	enum: ['any', 'highest', 'lowest', 'all'],
 
@@ -153,7 +154,7 @@ export const TriggerChoiceBase: PartialSchema<Types.TriggerChoiceBase> = {
 	}
 }
 
-export const TriggerChoiceProgress: Schema<Types.TriggerOptionChoiceProgress> =
+export const TriggerOptionProgressChoice: Schema<Types.TriggerOptionProgressChoice> =
 	_(TriggerChoiceBase)
 		.omit('properties.using', 'properties.ref')
 		.merge({
@@ -176,7 +177,7 @@ export const TriggerChoiceProgress: Schema<Types.TriggerOptionChoiceProgress> =
 		})
 		.value()
 
-export const TriggerChoiceCustomValue: Schema<Types.TriggerOptionChoiceCustomValue> =
+export const TriggerOptionChoiceCustomValue: Schema<Types.TriggerOptionChoiceCustomValue> =
 	_(TriggerChoiceBase)
 		.omit('properties.using', 'properties.ref')
 		.merge({
@@ -198,7 +199,7 @@ export const TriggerChoiceCustomValue: Schema<Types.TriggerOptionChoiceCustomVal
 		})
 		.value()
 
-export const TriggerChoiceStat: Schema<Types.TriggerOptionChoiceStat> = _(
+export const TriggerOptionChoiceStat: Schema<Types.TriggerOptionChoiceStat> = _(
 	TriggerChoiceBase
 )
 	.omit('properties.using', 'properties.ref')
@@ -220,9 +221,13 @@ export const TriggerChoiceStat: Schema<Types.TriggerOptionChoiceStat> = _(
 	})
 	.value()
 
-export const TriggerChoiceAction: Schema<Types.TriggerOptionChoiceAction> = {
-	oneOf: [refSchema('TriggerChoiceStat'), refSchema('TriggerChoiceCustomValue')]
-}
+export const TriggerOptionActionChoice: Schema<Types.TriggerOptionActionChoice> =
+	{
+		oneOf: [
+			refSchema('TriggerChoiceStat'),
+			refSchema('TriggerChoiceCustomValue')
+		]
+	}
 
 const TriggerOptionBase: PartialSchema<Types.TriggerOption> = {
 	title: 'Trigger option',
@@ -235,7 +240,7 @@ const TriggerOptionBase: PartialSchema<Types.TriggerOption> = {
 			description:
 				'The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.',
 			oneOf: [
-				refSchema<Types.MoveRollMethod>('RollMethod'),
+				refSchema<Types.MoveRollMethod>('MoveRollMethod'),
 				refSchema<Types.MoveOutcomeType>('MoveOutcomeType')
 			]
 		},
@@ -250,23 +255,23 @@ const TriggerOptionBase: PartialSchema<Types.TriggerOption> = {
 	}
 }
 
-const TriggerOption = _.merge({}, TriggerOptionBase, {
+const TriggerOptionAction = _.merge({}, TriggerOptionBase, {
 	properties: {
 		method: { default: 'any' },
 		choices: {
 			type: 'array',
-			items: refSchema<Types.TriggerOptionChoiceAction>('TriggerChoiceAction')
+			items: refSchema<Types.TriggerOptionActionChoice>('TriggerChoiceAction')
 		}
 	}
 })
 
-const TriggerOptionProgressRoll = _.merge({}, TriggerOptionBase, {
+const TriggerOptionProgress = _.merge({}, TriggerOptionBase, {
 	title: 'Trigger option (progress move)',
 	properties: {
 		method: { default: 'any' },
 		choices: {
 			type: 'array',
-			items: refSchema<Types.TriggerOptionChoiceProgress>(
+			items: refSchema<Types.TriggerOptionProgressChoice>(
 				'TriggerChoiceProgress'
 			)
 		}
@@ -287,27 +292,14 @@ const Trigger: Schema<Types.Trigger> = {
 			type: 'string',
 			pattern: /^.*\.{3}$/.source
 		},
-		roll_type: {
-			description:
-				'This is `null` if no action rolls or progress rolls are associated with this trigger.',
-			default: null,
-			oneOf: [{ const: null }, refSchema<Types.RollType>('RollType')]
-		},
+		roll_type: refSchema<Types.MoveRollType>('MoveRollType'),
 		options: {
 			description: 'Available options for triggering this move.',
-			type: ['array', 'null'] as any,
-			nullable: undefined as any,
-			default: null
-		}
+			type: 'array',
+			nullable: true
+		} as any
 	},
 	oneOf: [
-		{
-			title: 'Trigger (no roll)',
-			properties: {
-				roll_type: { const: null },
-				options: { const: null }
-			}
-		},
 		{
 			title: 'Trigger (action roll)',
 			required: ['options'],
@@ -315,7 +307,7 @@ const Trigger: Schema<Types.Trigger> = {
 				roll_type: { const: 'action_roll' },
 				options: {
 					type: 'array',
-					items: TriggerOption
+					items: TriggerOptionAction
 				}
 			}
 		},
@@ -328,7 +320,7 @@ const Trigger: Schema<Types.Trigger> = {
 					title: 'Trigger options (progress move)',
 
 					type: 'array',
-					items: TriggerOptionProgressRoll
+					items: TriggerOptionProgress
 				}
 			}
 		}
@@ -358,22 +350,61 @@ export const Move: Schema<Types.Move> = {
 	}
 }
 
-export const MoveActionRollTriggerExtension: Schema<Partial<>> = {}
+// export const TriggerOptionAction: Schema<Types.TriggerOption<'action_roll'>> = {
+// 	required: ['method'],
+// 	properties: {
+// 		by: { ...refSchema<typeof TriggerBy>('TriggerBy'), nullable: true },
+// 		choices: {
+// 			type: 'array',
+// 			items: { type: 'object' }
+// 		},
+// 		method: { ...refSchema<typeof MoveRollMethod>('MoveRollMethod') },
+// 		text: { ...refSchema<typeof MarkdownPhrase>('MarkdownPhrase') }
+// 	}
+// }
+
+export const TriggerExtension: Schema<
+	| Types.TriggerExtension<'action_roll'>
+	| Types.TriggerExtension<'progress_roll'>
+> = {
+	required: ['options', 'roll_type'],
+	type: 'object',
+	properties: {
+		roll_type: refSchema<typeof MoveRollType>('MoveRollType'),
+		options: { type: 'array' } as any // handled by oneOf
+	},
+	oneOf: [
+		{
+			roll_type: { const: 'action_roll' },
+			options: {
+				type: 'array',
+				items: refSchema<typeof TriggerOptionAction>('TriggerOptionAction')
+			}
+		},
+		{
+			roll_type: { const: 'progress_roll' },
+			options: {
+				type: 'array',
+				items: refSchema<typeof TriggerOptionProgress>('TriggerOptionProgress')
+			}
+		}
+	]
+}
 
 export const MoveExtension: Schema<Types.MoveExtension> = {
 	title: 'Move extension',
 	description: 'Upgrades or otherwise modifies one or more moves.',
-	required: ['_extends'],
+	required: ['extends'],
 	type: 'object',
 	properties: {
-		id: refSchema<string>('ID'),
-		_extends: {
+		// id: refSchema<string>('ID'),
+		extends: {
 			description: 'An array of Move IDs',
-			type: ['array', 'null'],
+			type: 'array',
 			items: refSchema<Types.MoveID>('MoveID')
 		},
-		trigger: _.omit(Move.properties?.trigger, 'required'),
-		text: Move.properties?.text,
+		trigger: refSchema<typeof TriggerExtension>('TriggerExtension'),
+		text: Move.properties?.text as any,
 		outcomes: _.omit(
 			MoveOutcomes,
 			'required',

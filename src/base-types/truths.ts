@@ -6,7 +6,7 @@ interface TruthBase extends Abstract.SourcedNode<TruthID> {
 	id: TruthID
 	name: string
 	options: TruthOptionBase[]
-	icon?: Metadata.Icon
+	icon?: Metadata.SvgImageUrl
 }
 
 export interface SettingTruth extends TruthBase {

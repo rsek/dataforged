@@ -19,7 +19,7 @@ public class DelveSiteDomain {
     private List<FeatureOrDanger> features;
 
     @JsonProperty("id")
-    private Id id;
+    private DelveSiteDomainId id;
 
     @JsonProperty("name")
     private Label name;
@@ -90,14 +90,14 @@ public class DelveSiteDomain {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public DelveSiteDomainId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(DelveSiteDomainId id) {
         this.id = id;
     }
 

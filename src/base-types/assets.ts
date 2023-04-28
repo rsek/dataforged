@@ -13,14 +13,14 @@ export type AssetControlFieldID = string
 
 export type AssetOptionField =
 	| Types.Inputs.TextField
-	| Types.Inputs.StatIDChoicesField
-	| Types.Inputs.NumberChoicesField
-	| Types.Inputs.AssetExtensionChoicesField
+	| Types.Inputs.SelectFieldStat
+	| Types.Inputs.SelectFieldNumber
+	| Types.Inputs.SelectFieldAssetExtension
 
 export type AssetControlField =
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.ConditionMeterField
-	| Types.Inputs.AssetExtensionChoicesField
+	| Types.Inputs.SelectFieldAssetExtension
 
 export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
 	Omit<T, 'id' | 'field_type' | 'label' | 'value'>
@@ -29,25 +29,19 @@ export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
 export type AssetControlFieldExtension = Simplify<
 	InputFieldExtension<Types.Inputs.ConditionMeterField>
 >
-// | Simplify<InputFieldExtension<Types.Inputs.AssetExtensionChoicesField>>
 
 export interface Asset
 	extends Omit<Types.Abstract.SourcedNode<AssetID>, 'suggestions'> {
 	id: string
 	source: Types.Metadata.Source
 	name: Types.Localize.Label
-	// TODO: document - options are the stuff you generally set once when you buy the asset
 	options?: Record<string, AssetOptionField>
 	requirement?: Types.Localize.MarkdownPhrase
 	abilities: AssetAbility[]
-	// TODO: document - controls are the stuff that changes throughout the life of an asset
-	// TODO: rename this -- "inputs"? "attributes"?
 	controls?: Record<string, AssetControlField>
 	count_as_impact?: boolean
 	attachments?: AssetAttachment
 	shared?: boolean
-	// TODO: is there a good way to make the ID unique + regexable?
-	// condition_meter?: Attr
 }
 
 export interface AssetExtensionForeign
@@ -87,12 +81,13 @@ export interface AssetAbility extends Types.Abstract.Node<AssetAbilityID> {
 	extend_moves?: Types.Moves.MoveExtension[]
 }
 
-export interface AssetExtension
-	extends Omit<
+export type AssetExtension = Simplify<
+	Omit<
 		AssetExtensionForeign,
 		// it's implicit that it applies to this asset specifically
-		'_extends' | 'id' | 'abilities' | 'requirement'
-	> {}
+		'extends' | 'id' | 'abilities' | 'requirement'
+	>
+>
 
 export interface AssetAttachment {
 	patterns: Array<RegExp['source']>

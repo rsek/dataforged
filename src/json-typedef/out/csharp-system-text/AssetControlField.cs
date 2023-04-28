@@ -28,10 +28,10 @@ namespace Dataforged
             {
                 case "checkbox":
                     return JsonSerializer.Deserialize<AssetControlFieldCheckbox>(ref readerCopy, options);
-                case "choices_extend_asset":
-                    return JsonSerializer.Deserialize<AssetControlFieldChoicesExtendAsset>(ref readerCopy, options);
                 case "condition_meter":
                     return JsonSerializer.Deserialize<AssetControlFieldConditionMeter>(ref readerCopy, options);
+                case "select_asset_extension":
+                    return JsonSerializer.Deserialize<AssetControlFieldSelectAssetExtension>(ref readerCopy, options);
                 default:
                     throw new ArgumentException(String.Format("Bad FieldType value: {0}", tagValue));
             }

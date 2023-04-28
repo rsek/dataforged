@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Extends or upgrades an outcome from an existing move.
+    /// </summary>
     public class MoveOutcomeExtension
     {
         [JsonPropertyName("count_as")]

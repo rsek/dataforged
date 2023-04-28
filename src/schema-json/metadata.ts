@@ -1,5 +1,4 @@
-import { refSchema } from './common'
-import { type Localize, type Metadata as Types } from '@base-types'
+import { type Metadata as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const ID: Schema<Types.ID> = {
@@ -13,17 +12,6 @@ export const Ruleset: Schema<Types.Ruleset> = {
 	enum: ['classic', 'starforged']
 }
 
-export const Title: Schema<Types.Title> = {
-	type: 'object',
-	required: ['canonical'],
-	additionalProperties: false,
-	properties: {
-		canonical: refSchema<Localize.Label>('Label'),
-		standard: refSchema<Localize.Label>('Label'),
-		short: refSchema<Localize.Label>('Label')
-	}
-}
-
 export const Color: Schema<Types.Color> = {
 	type: 'string',
 	pattern: /^#([0-9A-f]{2}){3}$/.source,
@@ -31,14 +19,14 @@ export const Color: Schema<Types.Color> = {
 		'A CSS hexadecimal color. Use it to provide thematic accents when rendering this item.'
 }
 
-export const Icon: Schema<Types.Icon> = {
+export const Icon: Schema<Types.SvgImageUrl> = {
 	type: 'string',
 	format: 'url',
 	description: 'A relative URL pointing to an SVG icon.',
 	pattern: /^.+\.svg$/.source
 }
 
-export const Image: Schema<Types.Image> = {
+export const Image: Schema<Types.WebpImageURL> = {
 	type: 'string',
 	format: 'url',
 	description: 'A relative URL pointing to a WEBP image.',

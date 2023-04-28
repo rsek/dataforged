@@ -17,7 +17,7 @@ namespace Dataforged
         public IList<FeatureOrDanger> Features { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public DelveSiteDomainId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

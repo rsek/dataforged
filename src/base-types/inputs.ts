@@ -1,4 +1,5 @@
 import type * as Types from '@base-types'
+import { type Simplify } from 'type-fest'
 
 export type InputFieldID = string
 
@@ -12,9 +13,11 @@ export type InputFieldType =
 	| ChoicesFieldType
 
 export type ChoicesFieldType =
-	| 'choices_stat_id'
-	| 'choices_number'
-	| 'choices_extend_asset'
+	| 'select_stat'
+	| 'select_meter'
+	| 'select_ref'
+	| 'select_number'
+	| 'select_asset_extension'
 
 export interface InputFieldBase {
 	id: InputFieldID
@@ -60,31 +63,50 @@ export interface TextField extends InputFieldBase {
 	value?: string | undefined
 }
 
-export interface ChoicesFieldBase<
-	TChoice extends FieldChoiceBase = FieldChoiceBase
+export interface SelectFieldBase<
+	TField extends ChoicesFieldType = ChoicesFieldType,
+	TChoice extends Types.Abstract.ChoiceBase = Types.Abstract.ChoiceBase
 > extends InputFieldBase,
 		Types.Abstract.ChoicesBase<TChoice> {
-	field_type: ChoicesFieldType
+	field_type: TField
+	value?: this['choices'][string]['value']
 }
 
-export interface FieldChoiceBase<
+export interface SelectFieldChoiceBase<
 	TValue extends number | string | object = number | string | object
 > extends Types.Abstract.ChoiceBase<TValue> {
 	// other
 	selected?: boolean // default: false
 }
 
-export interface StatIDChoicesField
-	extends ChoicesFieldBase<FieldChoiceBase<string>> {
-	field_type: 'choices_stat_id'
-}
+export type SelectFieldStat = Simplify<
+	SelectFieldBase<
+		'select_stat',
+		SelectFieldStatChoice<Types.Players.PlayerStat>
+	>
+>
 
-export interface NumberChoicesField
-	extends ChoicesFieldBase<FieldChoiceBase<number>> {
-	field_type: 'choices_number'
-}
+export type SelectFieldStatChoice<
+	T extends Types.Players.PlayerStatLike = Types.Players.PlayerStatLike
+> = Simplify<SelectFieldChoiceBase<T>>
 
-export interface AssetExtensionChoicesField
-	extends ChoicesFieldBase<FieldChoiceBase<Types.Assets.AssetExtension>> {
-	field_type: 'choices_extend_asset'
-}
+export type SelectFieldNumber = Simplify<
+	SelectFieldBase<'select_number', SelectFieldNumberChoice>
+>
+
+export type SelectFieldNumberChoice = Simplify<SelectFieldChoiceBase<number>>
+
+export type SelectFieldRef = Simplify<
+	SelectFieldBase<'select_ref', SelectFieldRefChoice>
+>
+export type SelectFieldRefChoice = Simplify<
+	SelectFieldChoiceBase<Types.Metadata.ID>
+>
+
+export type SelectFieldAssetExtension = Simplify<
+	SelectFieldBase<'select_asset_extension', SelectFieldAssetExtensionChoice>
+>
+
+export type SelectFieldAssetExtensionChoice = Simplify<
+	SelectFieldChoiceBase<Types.Assets.AssetExtension>
+>

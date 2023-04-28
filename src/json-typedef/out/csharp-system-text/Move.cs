@@ -7,7 +7,7 @@ namespace Dataforged
     public class Move
     {
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public MoveId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

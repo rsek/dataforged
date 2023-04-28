@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class Rarity {
     @JsonProperty("asset")
-    private Id asset;
+    private AssetId asset;
 
     @JsonProperty("description")
     private MarkdownString description;
 
     @JsonProperty("id")
-    private Id id;
+    private RarityId id;
 
     @JsonProperty("name")
     private Label name;
@@ -40,14 +40,14 @@ public class Rarity {
     /**
      * Getter for asset.<p>
      */
-    public Id getAsset() {
+    public AssetId getAsset() {
         return asset;
     }
 
     /**
      * Setter for asset.<p>
      */
-    public void setAsset(Id asset) {
+    public void setAsset(AssetId asset) {
         this.asset = asset;
     }
 
@@ -68,14 +68,14 @@ public class Rarity {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public RarityId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(RarityId id) {
         this.id = id;
     }
 

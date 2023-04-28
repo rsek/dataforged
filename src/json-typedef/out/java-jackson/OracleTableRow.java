@@ -13,7 +13,7 @@ public class OracleTableRow {
     private UnsignedByte high;
 
     @JsonProperty("id")
-    private Id id;
+    private OracleTableRowId id;
 
     @JsonProperty("low")
     private UnsignedByte low;
@@ -27,7 +27,7 @@ public class OracleTableRow {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("embed_table")
-    private Id embedTable;
+    private OracleTableId embedTable;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("icon")
@@ -69,14 +69,14 @@ public class OracleTableRow {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public OracleTableRowId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(OracleTableRowId id) {
         this.id = id;
     }
 
@@ -125,14 +125,14 @@ public class OracleTableRow {
     /**
      * Getter for embedTable.<p>
      */
-    public Id getEmbedTable() {
+    public OracleTableId getEmbedTable() {
         return embedTable;
     }
 
     /**
      * Setter for embedTable.<p>
      */
-    public void setEmbedTable(Id embedTable) {
+    public void setEmbedTable(OracleTableId embedTable) {
         this.embedTable = embedTable;
     }
 

@@ -11,7 +11,7 @@ export type RarityID = string
 export interface Rarity extends Abstract.SourcedNode<RarityID> {
 	name: string
 	asset: Assets.AssetID
-	icon?: Metadata.Icon
+	icon?: Metadata.SvgImageUrl
 	xp_cost: number
 	description: Localize.MarkdownParagraphs
 }

@@ -10,6 +10,11 @@ namespace Dataforged
         [JsonPropertyName("roll_type")]
         public string RollType { get => "action_roll"; }
 
+        /// <summary>
+        /// Text describing the primary trigger condition of the move. Any
+        /// trigger options are assumed to meet this condition in addition to
+        /// their own trigger conditions.
+        /// </summary>
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 

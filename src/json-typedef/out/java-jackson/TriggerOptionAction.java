@@ -71,6 +71,7 @@ public class TriggerOptionAction {
 
     /**
      * Getter for text.<p>
+     * Describes any additional trigger conditions for this trigger option
      */
     public MarkdownString getText() {
         return text;
@@ -78,6 +79,7 @@ public class TriggerOptionAction {
 
     /**
      * Setter for text.<p>
+     * Describes any additional trigger conditions for this trigger option
      */
     public void setText(MarkdownString text) {
         this.text = text;

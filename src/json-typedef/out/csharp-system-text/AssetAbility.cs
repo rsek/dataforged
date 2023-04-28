@@ -11,7 +11,7 @@ namespace Dataforged
         public bool Enabled { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public AssetAbilityId Id { get; set; }
 
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }

@@ -2,16 +2,16 @@ import type * as Types from '@base-types'
 
 export type MoveID = string
 
-export type RollType = 'action_roll' | 'progress_roll'
+export type MoveRollType = 'action_roll' | 'progress_roll'
 
 export type MoveCategoryID = string
 export interface MoveCategory
-	extends Types.Abstract.Collection<Move<RollType>, MoveCategoryID> {
+	extends Types.Abstract.Collection<Move<MoveRollType>, MoveCategoryID> {
 	summary: string
 	color: string
 }
 
-export interface Move<T extends RollType = RollType>
+export interface Move<T extends MoveRollType = MoveRollType>
 	extends Types.Abstract.SourcedNode<MoveID> {
 	name: Types.Localize.Label
 	text: Types.Localize.MarkdownParagraphs
@@ -20,9 +20,10 @@ export interface Move<T extends RollType = RollType>
 }
 
 export interface MoveExtension extends Types.Abstract.ExtendMany<Move> {
+	extends: MoveID[] | null
 	trigger:
-		| Types.Moves.TriggerExtension<Types.Moves.Trigger<'action_roll'>>
-		| Types.Moves.TriggerExtension<Types.Moves.Trigger<'progress_roll'>>
+		| Types.Moves.TriggerExtension<'action_roll'>
+		| Types.Moves.TriggerExtension<'progress_roll'>
 }
 
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
@@ -43,7 +44,7 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 	strong_hit: MoveOutcomeMatchable
 }
 
-export interface Trigger<T extends RollType = RollType> {
+export interface Trigger<T extends MoveRollType = MoveRollType> {
 	text: Types.Localize.MarkdownPhrase
 	roll_type: T
 	options?: Array<TriggerOption<T>>
@@ -77,40 +78,46 @@ export type ProgressType =
 	| Types.RulesetClassic.ProgressType
 
 export type RollableStatID =
-	| Types.Players.StatID
-	| Types.Players.ConditionMeterID
+	| Types.Players.PlayerStatID
+	| Types.Players.PlayerConditionMeterID
 	| Types.RulesetStarforged.ConditionMeterAlias
 	| Types.RulesetClassic.ConditionMeterAlias
 
-export type TriggerOptionChoice<T extends RollType = RollType> =
+export type TriggerOptionChoice<T extends MoveRollType = MoveRollType> =
 	T extends 'progress_roll'
 		? T extends 'action_roll'
 			? // if it's a union, allow both types:
 			  | TriggerOptionProgressChoice
 					| TriggerOptionActionChoiceStat
-					| TriggerOptionActionChoiceCustom
+					| TriggerOptionActionChoiceCustomValue
 			: // otherwise, restrict types as appropriate:
 			  TriggerOptionProgressChoice
-		: TriggerOptionActionChoiceStat | TriggerOptionActionChoiceCustom
+		: TriggerOptionActionChoiceStat | TriggerOptionActionChoiceCustomValue
 
 export interface TriggerChoiceBase {
-	using: ProgressType | 'stat' | 'custom'
+	using: ProgressType | Types.Players.PlayerStatLike | 'custom_value' | 'ref'
 	label?: Types.Localize.Label
 	value?: number
 	ref?: string | null
 }
 
-export type TriggerExtension<T extends Types.Moves.Trigger> = Omit<
-	T,
+export type TriggerExtension<T extends MoveRollType> = Omit<
+	Types.Moves.Trigger<T>,
 	'text'
 > & {
-	options: Exclude<T['options'], undefined>
+	options: Exclude<Types.Moves.Trigger<T>['options'], undefined>
+}
+
+export interface TriggerOptionActionChoiceRef
+	extends Omit<TriggerChoiceBase, 'value'> {
+	using: 'ref'
+	label: Types.Localize.Label
+	ref: string
 }
 
 export interface TriggerOptionActionChoiceStat
-	extends Omit<TriggerChoiceBase, 'value' | 'label'> {
-	using: 'stat'
-	ref: string // RollableStatID
+	extends Omit<TriggerChoiceBase, 'label'> {
+	using: Types.Players.PlayerStatLike
 }
 
 export interface TriggerOptionProgressChoice
@@ -118,18 +125,19 @@ export interface TriggerOptionProgressChoice
 	using: ProgressType
 }
 
-export interface TriggerOptionActionChoiceCustom
+export interface TriggerOptionActionChoiceCustomValue
 	extends Omit<TriggerChoiceBase, 'ref'> {
-	using: 'custom'
+	using: 'custom_value'
 	label: Types.Localize.Label
 	value: number
 }
 
 export type TriggerOptionActionChoice =
 	| TriggerOptionActionChoiceStat
-	| TriggerOptionActionChoiceCustom
+	| TriggerOptionActionChoiceCustomValue
+	| TriggerOptionActionChoiceRef
 
-export interface TriggerOption<T extends RollType = RollType> {
+export interface TriggerOption<T extends MoveRollType = MoveRollType> {
 	text?: Types.Localize.MarkdownPhrase
 	method: MoveRollMethod | null
 	by?: TriggerBy

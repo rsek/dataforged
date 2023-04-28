@@ -10,7 +10,7 @@ import java.util.List;
 @JsonSerialize
 public class WorldTruth {
     @JsonProperty("id")
-    private Id id;
+    private WorldTruthId id;
 
     @JsonProperty("name")
     private Label name;
@@ -35,14 +35,14 @@ public class WorldTruth {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public WorldTruthId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(WorldTruthId id) {
         this.id = id;
     }
 

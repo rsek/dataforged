@@ -1,10 +1,15 @@
 import type * as Types from '@base-types'
 import { JTDSchemaType } from 'ajv/dist/core'
+import { toJtdId } from 'json-typedef/utils'
+import { RarityID as ID } from 'schema-json/rarities'
+
+export const RarityID = toJtdId(ID)
 
 export const Rarity: JTDSchemaType<
 	Types.Rarities.Rarity,
 	{
-		ID: string
+		RarityID: string
+		AssetID: string
 		MarkdownString: string
 		Label: string
 		Source: Types.Metadata.Source
@@ -13,9 +18,9 @@ export const Rarity: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'RarityID' },
 		name: { ref: 'Label' },
-		asset: { ref: 'ID' },
+		asset: { ref: 'AssetID' },
 		xp_cost: { type: 'uint8' },
 		description: { ref: 'MarkdownString' },
 		source: { ref: 'Source' }

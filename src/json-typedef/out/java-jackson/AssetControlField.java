@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "field_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "checkbox", value = AssetControlFieldCheckbox.class),
-    @JsonSubTypes.Type(name = "choices_extend_asset", value = AssetControlFieldChoicesExtendAsset.class),
     @JsonSubTypes.Type(name = "condition_meter", value = AssetControlFieldConditionMeter.class),
+    @JsonSubTypes.Type(name = "select_asset_extension", value = AssetControlFieldSelectAssetExtension.class),
 })
 public abstract class AssetControlField {
 }

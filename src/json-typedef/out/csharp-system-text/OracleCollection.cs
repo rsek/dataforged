@@ -14,7 +14,7 @@ namespace Dataforged
         public IDictionary<string, OracleTable> Contents { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public OracleCollectionId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

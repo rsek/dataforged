@@ -20,17 +20,17 @@ namespace Dataforged
         All,
 
         /// <summary>
-        /// Reroll any dice
+        /// Reroll any number of dice
         /// </summary>
         Any,
 
         /// <summary>
-        /// Reroll any challenge dice
+        /// Reroll any number of challenge dice
         /// </summary>
         ChallengeDice,
 
         /// <summary>
-        /// Reroll one challenge die
+        /// Reroll one of the challenge dice
         /// </summary>
         ChallengeDie,
     }

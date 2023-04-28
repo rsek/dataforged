@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class AssetOptionFieldText extends AssetOptionField {
     @JsonProperty("id")
-    private Id id;
+    private AssetAbilityOptionFieldId id;
 
     @JsonProperty("label")
     private Label label;
@@ -24,14 +24,14 @@ public class AssetOptionFieldText extends AssetOptionField {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public AssetAbilityOptionFieldId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(AssetAbilityOptionFieldId id) {
         this.id = id;
     }
 

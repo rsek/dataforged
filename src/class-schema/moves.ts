@@ -18,7 +18,7 @@ export class Move extends Abstract.Node implements Types.Moves.Move {
 	text: string
 
 	outcomes: MoveOutcomes
-	trigger: Trigger<RollType>
+	trigger: Trigger<MoveRollType>
 	constructor(
 		data: YamlInput<Types.Moves.Move>,
 		id: string,
@@ -28,8 +28,8 @@ export class Move extends Abstract.Node implements Types.Moves.Move {
 		this.progress_move = data.progress_move
 		this.text = data.text
 		type MoveType = this['progress_move'] extends true
-			? RollType.ProgressRoll
-			: RollType.ActionRoll
+			? MoveRollType.ProgressRoll
+			: MoveRollType.ActionRoll
 
 		this.trigger = new Trigger<MoveType>(
 			data.trigger as Types.Moves.Trigger<MoveType>
@@ -38,7 +38,7 @@ export class Move extends Abstract.Node implements Types.Moves.Move {
 	}
 }
 
-export enum RollType {
+export enum MoveRollType {
 	ActionRoll = 'action_roll',
 	ProgressRoll = 'progress_roll'
 }
@@ -87,7 +87,7 @@ export class MoveOutcomeMatchable
 	}
 }
 
-export class Trigger<T extends RollType> implements Types.Moves.Trigger<T> {
+export class Trigger<T extends MoveRollType> implements Types.Moves.Trigger<T> {
 	@Localize.IsMarkdownPhrase()
 	text: string
 
@@ -104,7 +104,7 @@ export class Trigger<T extends RollType> implements Types.Moves.Trigger<T> {
 	}
 }
 
-export class TriggerOption<T extends RollType>
+export class TriggerOption<T extends MoveRollType>
 	implements Types.Moves.TriggerOptionChoice<T>
 {
 	@Localize.IsMarkdownPhrase()

@@ -13,7 +13,7 @@ type Dataforged = interface{}
 type Asset struct {
 	Abilities []AssetAbility `json:"abilities"`
 
-	ID ID `json:"id"`
+	ID AssetID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -40,7 +40,7 @@ type Asset struct {
 type AssetAbility struct {
 	Enabled bool `json:"enabled"`
 
-	ID ID `json:"id"`
+	ID AssetAbilityID `json:"id"`
 
 	Text MarkdownString `json:"text"`
 
@@ -107,7 +107,7 @@ func (v *AssetAbilityControlField) UnmarshalJSON(b []byte) error {
 }
 
 type AssetAbilityControlFieldCheckbox struct {
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -115,7 +115,7 @@ type AssetAbilityControlFieldCheckbox struct {
 }
 
 type AssetAbilityControlFieldClock struct {
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -127,7 +127,7 @@ type AssetAbilityControlFieldClock struct {
 }
 
 type AssetAbilityControlFieldCounter struct {
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -137,6 +137,12 @@ type AssetAbilityControlFieldCounter struct {
 
 	Value int8 `json:"value"`
 }
+
+type AssetAbilityControlFieldID = string
+
+type AssetAbilityID = string
+
+type AssetAbilityOptionFieldID = string
 
 // Describes which assets can be attached to this asset. The "canonical" example
 // for this are Starforged's Module assets, which can be equipped by Command
@@ -160,19 +166,19 @@ type AssetControlField struct {
 
 	Checkbox AssetControlFieldCheckbox
 
-	ChoicesExtendAsset AssetControlFieldChoicesExtendAsset
-
 	ConditionMeter AssetControlFieldConditionMeter
+
+	SelectAssetExtension AssetControlFieldSelectAssetExtension
 }
 
 func (v AssetControlField) MarshalJSON() ([]byte, error) {
 	switch v.FieldType {
 	case "checkbox":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldCheckbox }{ v.FieldType, v.Checkbox })
-	case "choices_extend_asset":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldChoicesExtendAsset }{ v.FieldType, v.ChoicesExtendAsset })
 	case "condition_meter":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldConditionMeter }{ v.FieldType, v.ConditionMeter })
+	case "select_asset_extension":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldSelectAssetExtension }{ v.FieldType, v.SelectAssetExtension })
 	}
 
 	return nil, fmt.Errorf("bad FieldType value: %s", v.FieldType)
@@ -188,10 +194,10 @@ func (v *AssetControlField) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "checkbox":
 		err = json.Unmarshal(b, &v.Checkbox)
-	case "choices_extend_asset":
-		err = json.Unmarshal(b, &v.ChoicesExtendAsset)
 	case "condition_meter":
 		err = json.Unmarshal(b, &v.ConditionMeter)
+	case "select_asset_extension":
+		err = json.Unmarshal(b, &v.SelectAssetExtension)
 	default:
 		err = fmt.Errorf("bad FieldType value: %s", t.T)
 	}
@@ -205,33 +211,15 @@ func (v *AssetControlField) UnmarshalJSON(b []byte) error {
 }
 
 type AssetControlFieldCheckbox struct {
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
 	Value *bool `json:"value"`
 }
 
-type AssetControlFieldChoicesExtendAssetChoice struct {
-	ID ID `json:"id"`
-
-	Label Label `json:"label"`
-
-	Value AssetExtension `json:"value"`
-
-	Selected *bool `json:"selected,omitempty"`
-}
-
-type AssetControlFieldChoicesExtendAsset struct {
-	Choices map[string]AssetControlFieldChoicesExtendAssetChoice `json:"choices"`
-
-	ID ID `json:"id"`
-
-	Label Label `json:"label"`
-}
-
 type AssetControlFieldConditionMeter struct {
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -240,6 +228,24 @@ type AssetControlFieldConditionMeter struct {
 	Min int8 `json:"min"`
 
 	Value int8 `json:"value"`
+}
+
+type AssetControlFieldSelectAssetExtensionChoice struct {
+	Label Label `json:"label"`
+
+	Value AssetExtension `json:"value"`
+
+	Selected *bool `json:"selected,omitempty"`
+}
+
+type AssetControlFieldSelectAssetExtension struct {
+	Choices map[string]AssetControlFieldSelectAssetExtensionChoice `json:"choices"`
+
+	ID AssetAbilityControlFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *AssetExtension `json:"value,omitempty"`
 }
 
 type AssetExtensionAttachments struct {
@@ -254,8 +260,8 @@ type AssetExtensionControl struct {
 	Min *int8 `json:"min,omitempty"`
 }
 
-// Describes changes applied to an asset, usually by another asset. Assume that
-// unspecified/null properties are unchanged.
+// Describes changes applied to an asset by its own abilities or controls.
+// Unchanged properties are omitted.
 type AssetExtension struct {
 	Attachments *AssetExtensionAttachments `json:"attachments,omitempty"`
 
@@ -267,8 +273,6 @@ type AssetExtension struct {
 }
 
 type AssetExtensionChoice struct {
-	ID ID `json:"id"`
-
 	Label Label `json:"label"`
 
 	Value AssetExtension `json:"value"`
@@ -286,12 +290,12 @@ type AssetExtensionForeignControl struct {
 	Min *int8 `json:"min,omitempty"`
 }
 
-// Describes changes applied to an asset, usually by another asset. Assume that
-// unspecified/null properties are unchanged.
+// Describes changes applied to an asset, usually by another asset. Unchanged
+// properties are omitted.
 type AssetExtensionForeign struct {
-	Extends ID `json:"_extends"`
+	Extends AssetID `json:"extends"`
 
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Attachments *AssetExtensionForeignAttachments `json:"attachments,omitempty"`
 
@@ -302,6 +306,8 @@ type AssetExtensionForeign struct {
 	CountAsImpact *bool `json:"count_as_impact,omitempty"`
 }
 
+type AssetID = string
+
 // Asset options are fields that are usually only set once, typically when the
 // player purchases the asset. The most common examples are the "Name" fields
 // on companion assets. A more complex example is the choice of stats on the
@@ -309,23 +315,23 @@ type AssetExtensionForeign struct {
 type AssetOptionField struct {
 	FieldType string
 
-	ChoicesExtendAsset AssetOptionFieldChoicesExtendAsset
+	SelectAssetExtension AssetOptionFieldSelectAssetExtension
 
-	ChoicesNumber AssetOptionFieldChoicesNumber
+	SelectNumber AssetOptionFieldSelectNumber
 
-	ChoicesStatID AssetOptionFieldChoicesStatID
+	SelectStat AssetOptionFieldSelectStat
 
 	Text AssetOptionFieldText
 }
 
 func (v AssetOptionField) MarshalJSON() ([]byte, error) {
 	switch v.FieldType {
-	case "choices_extend_asset":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldChoicesExtendAsset }{ v.FieldType, v.ChoicesExtendAsset })
-	case "choices_number":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldChoicesNumber }{ v.FieldType, v.ChoicesNumber })
-	case "choices_stat_id":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldChoicesStatID }{ v.FieldType, v.ChoicesStatID })
+	case "select_asset_extension":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectAssetExtension }{ v.FieldType, v.SelectAssetExtension })
+	case "select_number":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectNumber }{ v.FieldType, v.SelectNumber })
+	case "select_stat":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectStat }{ v.FieldType, v.SelectStat })
 	case "text":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldText }{ v.FieldType, v.Text })
 	}
@@ -341,12 +347,12 @@ func (v *AssetOptionField) UnmarshalJSON(b []byte) error {
 
 	var err error
 	switch t.T {
-	case "choices_extend_asset":
-		err = json.Unmarshal(b, &v.ChoicesExtendAsset)
-	case "choices_number":
-		err = json.Unmarshal(b, &v.ChoicesNumber)
-	case "choices_stat_id":
-		err = json.Unmarshal(b, &v.ChoicesStatID)
+	case "select_asset_extension":
+		err = json.Unmarshal(b, &v.SelectAssetExtension)
+	case "select_number":
+		err = json.Unmarshal(b, &v.SelectNumber)
+	case "select_stat":
+		err = json.Unmarshal(b, &v.SelectStat)
 	case "text":
 		err = json.Unmarshal(b, &v.Text)
 	default:
@@ -361,9 +367,7 @@ func (v *AssetOptionField) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type AssetOptionFieldChoicesExtendAssetChoice struct {
-	ID ID `json:"id"`
-
+type AssetOptionFieldSelectAssetExtensionChoice struct {
 	Label Label `json:"label"`
 
 	Value AssetExtension `json:"value"`
@@ -371,17 +375,17 @@ type AssetOptionFieldChoicesExtendAssetChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
-type AssetOptionFieldChoicesExtendAsset struct {
-	Choices map[string]AssetOptionFieldChoicesExtendAssetChoice `json:"choices"`
+type AssetOptionFieldSelectAssetExtension struct {
+	Choices map[string]AssetOptionFieldSelectAssetExtensionChoice `json:"choices"`
 
-	ID ID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
+
+	Value *AssetExtension `json:"value,omitempty"`
 }
 
-type AssetOptionFieldChoicesNumberChoice struct {
-	ID ID `json:"id"`
-
+type AssetOptionFieldSelectNumberChoice struct {
 	Label Label `json:"label"`
 
 	Value int8 `json:"value"`
@@ -389,34 +393,36 @@ type AssetOptionFieldChoicesNumberChoice struct {
 	Selected *bool `json:"selected,omitempty"`
 }
 
-type AssetOptionFieldChoicesNumber struct {
-	Choices map[string]AssetOptionFieldChoicesNumberChoice `json:"choices"`
+type AssetOptionFieldSelectNumber struct {
+	Choices map[string]AssetOptionFieldSelectNumberChoice `json:"choices"`
 
-	ID ID `json:"id"`
+	ID AssetAbilityOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
+
+	Value *int8 `json:"value,omitempty"`
 }
 
-type AssetOptionFieldChoicesStatIDChoice struct {
-	ID ID `json:"id"`
-
+type AssetOptionFieldSelectStatChoice struct {
 	Label Label `json:"label"`
 
-	Value StatID `json:"value"`
+	Value PlayerStat `json:"value"`
 
 	Selected *bool `json:"selected,omitempty"`
 }
 
-type AssetOptionFieldChoicesStatID struct {
-	Choices map[string]AssetOptionFieldChoicesStatIDChoice `json:"choices"`
+type AssetOptionFieldSelectStat struct {
+	Choices map[string]AssetOptionFieldSelectStatChoice `json:"choices"`
 
-	ID ID `json:"id"`
+	ID AssetAbilityOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
+
+	Value *PlayerStat `json:"value,omitempty"`
 }
 
 type AssetOptionFieldText struct {
-	ID ID `json:"id"`
+	ID AssetAbilityOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -468,7 +474,7 @@ type DelveSiteDomain struct {
 
 	Features []FeatureOrDanger `json:"features"`
 
-	ID ID `json:"id"`
+	ID DelveSiteDomainID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -482,6 +488,8 @@ type DelveSiteDomain struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
+
+type DelveSiteDomainID = string
 
 type DelveSiteThemeCardType string
 
@@ -496,7 +504,7 @@ type DelveSiteTheme struct {
 
 	Features []FeatureOrDanger `json:"features"`
 
-	ID ID `json:"id"`
+	ID DelveSiteThemeID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -510,6 +518,8 @@ type DelveSiteTheme struct {
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
+
+type DelveSiteThemeID = string
 
 type EncounterNatureClassic = string
 
@@ -592,7 +602,7 @@ type Label = string
 type MarkdownString = string
 
 type Move struct {
-	ID ID `json:"id"`
+	ID MoveID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -614,7 +624,7 @@ type MoveCategory struct {
 
 	Contents map[string]Move `json:"contents"`
 
-	ID ID `json:"id"`
+	ID MoveCategoryID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -627,17 +637,19 @@ type MoveCategory struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+type MoveCategoryID = string
+
 type MoveExtension struct {
-	ID ID `json:"id"`
+	Extends []MoveID `json:"extends"`
 
 	Trigger TriggerExtension `json:"trigger"`
-
-	Extends []ID `json:"_extends,omitempty"`
 
 	Outcomes *MoveOutcomesExtension `json:"outcomes,omitempty"`
 
 	Text *MarkdownString `json:"text,omitempty"`
 }
+
+type MoveID = string
 
 type MoveOutcome struct {
 	Text MarkdownString `json:"text"`
@@ -653,6 +665,7 @@ type MoveOutcomeExtensionReroll struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// Extends or upgrades an outcome from an existing move.
 type MoveOutcomeExtension struct {
 	CountAs *MoveOutcomeType `json:"count_as,omitempty"`
 
@@ -677,6 +690,7 @@ type MoveOutcomeMatchableExtensionReroll struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// Extends or upgrades an outcome from an existing move.
 type MoveOutcomeMatchableExtension struct {
 	CountAs *MoveOutcomeType `json:"count_as,omitempty"`
 
@@ -708,6 +722,7 @@ type MoveOutcomes struct {
 	WeakHit MoveOutcome `json:"weak_hit"`
 }
 
+// Extends or upgrades one or more outcomes of an existing move.
 type MoveOutcomesExtension struct {
 	Miss *MoveOutcomeMatchableExtension `json:"miss,omitempty"`
 
@@ -719,6 +734,7 @@ type MoveOutcomesExtension struct {
 type MoveReroll struct {
 	Method MoveRerollMethod `json:"method"`
 
+	// Describes the trigger condition for the reroll, if any.
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
@@ -731,13 +747,13 @@ const (
 // Reroll all dice
 	MoveRerollMethodAll MoveRerollMethod = "all"
 
-// Reroll any dice
+// Reroll any number of dice
 	MoveRerollMethodAny MoveRerollMethod = "any"
 
-// Reroll any challenge dice
+// Reroll any number of challenge dice
 	MoveRerollMethodChallengeDice MoveRerollMethod = "challenge_dice"
 
-// Reroll one challenge die
+// Reroll one of the challenge dice
 	MoveRerollMethodChallengeDie MoveRerollMethod = "challenge_die"
 )
 
@@ -775,7 +791,7 @@ type OracleCollection struct {
 
 	Contents map[string]OracleTable `json:"contents"`
 
-	ID ID `json:"id"`
+	ID OracleCollectionID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -807,6 +823,8 @@ type OracleCollectionColumn struct {
 
 	Label *Label `json:"label,omitempty"`
 }
+
+type OracleCollectionID = string
 
 type OracleCollectionRendering struct {
 	Columns map[string]OracleCollectionColumn `json:"columns"`
@@ -845,7 +863,7 @@ type OracleRollTemplate struct {
 type OracleTable struct {
 	CanonicalName Label `json:"canonical_name"`
 
-	ID ID `json:"id"`
+	ID OracleTableID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -870,6 +888,8 @@ type OracleTableColumn struct {
 	Label *Label `json:"label,omitempty"`
 }
 
+type OracleTableID = string
+
 type OracleTableMatchBehavior struct {
 	Text MarkdownString `json:"text"`
 }
@@ -885,7 +905,7 @@ type OracleTableRendering struct {
 }
 
 type OracleTableRoll struct {
-	Oracle ID `json:"oracle"`
+	Oracle OracleTableID `json:"oracle"`
 
 	Method *OracleTableRollMethod `json:"method,omitempty"`
 
@@ -905,7 +925,7 @@ const (
 type OracleTableRow struct {
 	High *uint8 `json:"high"`
 
-	ID ID `json:"id"`
+	ID OracleTableRowID `json:"id"`
 
 	Low *uint8 `json:"low"`
 
@@ -913,7 +933,7 @@ type OracleTableRow struct {
 
 	Description *MarkdownString `json:"description,omitempty"`
 
-	EmbedTable *ID `json:"embed_table,omitempty"`
+	EmbedTable *OracleTableID `json:"embed_table,omitempty"`
 
 	Icon *SvgImageURL `json:"icon,omitempty"`
 
@@ -926,6 +946,8 @@ type OracleTableRow struct {
 	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
+type OracleTableRowID = string
+
 type OracleTableStyle string
 
 const (
@@ -934,6 +956,54 @@ const (
 	OracleTableStyleEmbedInRow OracleTableStyle = "embed_in_row"
 
 	OracleTableStyleTable OracleTableStyle = "table"
+)
+
+// A standard player stat, or a condition meter that can be used as a stat in an
+// action roll.
+type PlayerAttributeRollable string
+
+const (
+	PlayerAttributeRollableEdge PlayerAttributeRollable = "edge"
+
+	PlayerAttributeRollableHealth PlayerAttributeRollable = "health"
+
+	PlayerAttributeRollableHeart PlayerAttributeRollable = "heart"
+
+	PlayerAttributeRollableIron PlayerAttributeRollable = "iron"
+
+	PlayerAttributeRollableShadow PlayerAttributeRollable = "shadow"
+
+	PlayerAttributeRollableSpirit PlayerAttributeRollable = "spirit"
+
+	PlayerAttributeRollableSupply PlayerAttributeRollable = "supply"
+
+	PlayerAttributeRollableWits PlayerAttributeRollable = "wits"
+)
+
+// A standard player character condition meter.
+type PlayerConditionMeter string
+
+const (
+	PlayerConditionMeterHealth PlayerConditionMeter = "health"
+
+	PlayerConditionMeterSpirit PlayerConditionMeter = "spirit"
+
+	PlayerConditionMeterSupply PlayerConditionMeter = "supply"
+)
+
+// A standard player character stat.
+type PlayerStat string
+
+const (
+	PlayerStatEdge PlayerStat = "edge"
+
+	PlayerStatHeart PlayerStat = "heart"
+
+	PlayerStatIron PlayerStat = "iron"
+
+	PlayerStatShadow PlayerStat = "shadow"
+
+	PlayerStatWits PlayerStat = "wits"
 )
 
 type ProgressType string
@@ -970,19 +1040,19 @@ const (
 // A player's Quests legacy track (Starforged ruleset only)
 	ProgressTypeQuestsLegacy ProgressType = "quests_legacy"
 
-// A scene challenge progress track
+// A scene challenge progress track.
 	ProgressTypeSceneChallengeProgress ProgressType = "scene_challenge_progress"
 
-// A vow progress track, started with Swear an Iron Vow
+// A vow progress track, started with Swear an Iron Vow.
 	ProgressTypeVowProgress ProgressType = "vow_progress"
 )
 
 type Rarity struct {
-	Asset ID `json:"asset"`
+	Asset AssetID `json:"asset"`
 
 	Description MarkdownString `json:"description"`
 
-	ID ID `json:"id"`
+	ID RarityID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -995,12 +1065,14 @@ type Rarity struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+type RarityID = string
+
 type RegionEntry struct {
 	Description MarkdownString `json:"description"`
 
 	Features []MarkdownString `json:"features"`
 
-	ID ID `json:"id"`
+	ID RegionEntryID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1013,10 +1085,12 @@ type RegionEntry struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+type RegionEntryID = string
+
 type RegularExpression = string
 
 type SettingTruth struct {
-	ID ID `json:"id"`
+	ID SettingTruthID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1029,15 +1103,19 @@ type SettingTruth struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+type SettingTruthID = string
+
 type SettingTruthOption struct {
 	Description MarkdownString `json:"description"`
 
-	ID ID `json:"id"`
+	ID SettingTruthOptionID `json:"id"`
 
 	QuestStarter MarkdownString `json:"quest_starter"`
 
 	Summary MarkdownString `json:"summary"`
 }
+
+type SettingTruthOptionID = string
 
 type Source struct {
 	Authors []string `json:"authors"`
@@ -1059,11 +1137,11 @@ type Source struct {
 type StatID = string
 
 type Suggestions struct {
-	Assets []ID `json:"assets,omitempty"`
+	Assets []AssetID `json:"assets,omitempty"`
 
-	Moves []ID `json:"moves,omitempty"`
+	Moves []MoveID `json:"moves,omitempty"`
 
-	Oracles []ID `json:"oracles,omitempty"`
+	Oracles []OracleTableID `json:"oracles,omitempty"`
 }
 
 // A relative URL pointing to an SVG image.
@@ -1077,6 +1155,7 @@ type SvgImageURL = string
 // `{{result:starforged/oracles/core/action}}`
 type TemplateString = string
 
+// Describes a move's trigger condition(s) and any rolls associated with them.
 type Trigger struct {
 	RollType string
 
@@ -1121,12 +1200,18 @@ func (v *Trigger) UnmarshalJSON(b []byte) error {
 }
 
 type TriggerActionRoll struct {
+	// Text describing the primary trigger condition of the move. Any trigger
+	// options are assumed to meet this condition in addition to their own trigger
+	// conditions.
 	Text MarkdownString `json:"text"`
 
 	Options []TriggerOptionAction `json:"options,omitempty"`
 }
 
 type TriggerProgressRoll struct {
+	// Text describing the primary trigger condition of the move. Any trigger
+	// options are assumed to meet this condition in addition to their own trigger
+	// conditions.
 	Text MarkdownString `json:"text"`
 
 	Options []TriggerOptionProgress `json:"options,omitempty"`
@@ -1140,6 +1225,7 @@ type TriggerBy struct {
 	Player bool `json:"player"`
 }
 
+// Extends or upgrades an existing move trigger.
 type TriggerExtension struct {
 	RollType string
 
@@ -1183,10 +1269,12 @@ func (v *TriggerExtension) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// Extends or upgrades an existing action roll trigger.
 type TriggerExtensionActionRoll struct {
 	Options []TriggerOptionAction `json:"options"`
 }
 
+// Extends or upgrades an existing action roll trigger.
 type TriggerExtensionProgressRoll struct {
 	Options []TriggerOptionProgress `json:"options"`
 }
@@ -1198,23 +1286,56 @@ type TriggerOptionAction struct {
 
 	Choices []TriggerOptionActionChoice `json:"choices,omitempty"`
 
+	// Describes any additional trigger conditions for this trigger option
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
 type TriggerOptionActionChoice struct {
 	Using string
 
-	Custom TriggerOptionActionChoiceCustom
+	CustomValue TriggerOptionActionChoiceCustomValue
 
-	Stat TriggerOptionActionChoiceStat
+	Edge TriggerOptionActionChoiceEdge
+
+	Health TriggerOptionActionChoiceHealth
+
+	Heart TriggerOptionActionChoiceHeart
+
+	Iron TriggerOptionActionChoiceIron
+
+	Ref TriggerOptionActionChoiceRef
+
+	Shadow TriggerOptionActionChoiceShadow
+
+	Spirit TriggerOptionActionChoiceSpirit
+
+	Supply TriggerOptionActionChoiceSupply
+
+	Wits TriggerOptionActionChoiceWits
 }
 
 func (v TriggerOptionActionChoice) MarshalJSON() ([]byte, error) {
 	switch v.Using {
-	case "custom":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceCustom }{ v.Using, v.Custom })
-	case "stat":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceStat }{ v.Using, v.Stat })
+	case "custom_value":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceCustomValue }{ v.Using, v.CustomValue })
+	case "edge":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceEdge }{ v.Using, v.Edge })
+	case "health":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceHealth }{ v.Using, v.Health })
+	case "heart":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceHeart }{ v.Using, v.Heart })
+	case "iron":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceIron }{ v.Using, v.Iron })
+	case "ref":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceRef }{ v.Using, v.Ref })
+	case "shadow":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceShadow }{ v.Using, v.Shadow })
+	case "spirit":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceSpirit }{ v.Using, v.Spirit })
+	case "supply":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceSupply }{ v.Using, v.Supply })
+	case "wits":
+		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceWits }{ v.Using, v.Wits })
 	}
 
 	return nil, fmt.Errorf("bad Using value: %s", v.Using)
@@ -1228,10 +1349,26 @@ func (v *TriggerOptionActionChoice) UnmarshalJSON(b []byte) error {
 
 	var err error
 	switch t.T {
-	case "custom":
-		err = json.Unmarshal(b, &v.Custom)
-	case "stat":
-		err = json.Unmarshal(b, &v.Stat)
+	case "custom_value":
+		err = json.Unmarshal(b, &v.CustomValue)
+	case "edge":
+		err = json.Unmarshal(b, &v.Edge)
+	case "health":
+		err = json.Unmarshal(b, &v.Health)
+	case "heart":
+		err = json.Unmarshal(b, &v.Heart)
+	case "iron":
+		err = json.Unmarshal(b, &v.Iron)
+	case "ref":
+		err = json.Unmarshal(b, &v.Ref)
+	case "shadow":
+		err = json.Unmarshal(b, &v.Shadow)
+	case "spirit":
+		err = json.Unmarshal(b, &v.Spirit)
+	case "supply":
+		err = json.Unmarshal(b, &v.Supply)
+	case "wits":
+		err = json.Unmarshal(b, &v.Wits)
 	default:
 		err = fmt.Errorf("bad Using value: %s", t.T)
 	}
@@ -1244,14 +1381,40 @@ func (v *TriggerOptionActionChoice) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type TriggerOptionActionChoiceCustom struct {
+type TriggerOptionActionChoiceCustomValue struct {
 	Label Label `json:"label"`
 
 	Value int8 `json:"value"`
 }
 
-type TriggerOptionActionChoiceStat struct {
-	Ref StatID `json:"ref"`
+type TriggerOptionActionChoiceEdge struct {
+}
+
+type TriggerOptionActionChoiceHealth struct {
+}
+
+type TriggerOptionActionChoiceHeart struct {
+}
+
+type TriggerOptionActionChoiceIron struct {
+}
+
+type TriggerOptionActionChoiceRef struct {
+	Label Label `json:"label"`
+
+	Ref string `json:"ref"`
+}
+
+type TriggerOptionActionChoiceShadow struct {
+}
+
+type TriggerOptionActionChoiceSpirit struct {
+}
+
+type TriggerOptionActionChoiceSupply struct {
+}
+
+type TriggerOptionActionChoiceWits struct {
 }
 
 type TriggerOptionProgress struct {
@@ -1261,6 +1424,7 @@ type TriggerOptionProgress struct {
 
 	Choices []TriggerOptionProgressChoice `json:"choices,omitempty"`
 
+	// Describes any additional trigger conditions for this trigger option
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
@@ -1275,7 +1439,7 @@ type URL = string
 type WebpImageURL = string
 
 type WorldTruth struct {
-	ID ID `json:"id"`
+	ID WorldTruthID `json:"id"`
 
 	Name Label `json:"name"`
 
@@ -1288,10 +1452,14 @@ type WorldTruth struct {
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
+type WorldTruthID = string
+
 type WorldTruthOption struct {
 	Description MarkdownString `json:"description"`
 
-	ID ID `json:"id"`
+	ID WorldTruthOptionID `json:"id"`
 
 	QuestStarter MarkdownString `json:"quest_starter"`
 }
+
+type WorldTruthOptionID = string

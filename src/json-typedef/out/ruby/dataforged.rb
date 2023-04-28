@@ -41,7 +41,7 @@ module Dataforged
     def self.from_json_data(data)
       out = Asset.new
       out.abilities = Dataforged::from_json_data(Array[AssetAbility], data["abilities"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.attachments = Dataforged::from_json_data(AssetAttachment, data["attachments"])
@@ -83,7 +83,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbility.new
       out.enabled = Dataforged::from_json_data(TrueClass, data["enabled"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityID, data["id"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out.controls = Dataforged::from_json_data(Hash[String, AssetAbilityControlField], data["controls"])
       out.extend_asset = Dataforged::from_json_data(AssetExtension, data["extend_asset"])
@@ -129,7 +129,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCheckbox.new
       out.field_type = "checkbox"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(TrueClass, data["value"])
       out
@@ -154,7 +154,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldClock.new
       out.field_type = "clock"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -183,7 +183,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCounter.new
       out.field_type = "counter"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -199,6 +199,48 @@ module Dataforged
       data["min"] = Dataforged::to_json_data(min)
       data["value"] = Dataforged::to_json_data(value)
       data
+    end
+  end
+
+  class AssetAbilityControlFieldID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityControlFieldID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
+  class AssetAbilityID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
+  class AssetAbilityOptionFieldID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -239,8 +281,8 @@ module Dataforged
     def self.from_json_data(data)
       {
         "checkbox" => AssetControlFieldCheckbox,
-        "choices_extend_asset" => AssetControlFieldChoicesExtendAsset,
         "condition_meter" => AssetControlFieldConditionMeter,
+        "select_asset_extension" => AssetControlFieldSelectAssetExtension,
       }[data["field_type"]].from_json_data(data)
     end
   end
@@ -253,7 +295,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetControlFieldCheckbox.new
       out.field_type = "checkbox"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(TrueClass, data["value"])
       out
@@ -268,54 +310,6 @@ module Dataforged
     end
   end
 
-  class AssetControlFieldChoicesExtendAssetChoice
-    attr_accessor :id
-    attr_accessor :label
-    attr_accessor :value
-    attr_accessor :selected
-
-    def self.from_json_data(data)
-      out = AssetControlFieldChoicesExtendAssetChoice.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
-      out.label = Dataforged::from_json_data(Label, data["label"])
-      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
-      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["id"] = Dataforged::to_json_data(id)
-      data["label"] = Dataforged::to_json_data(label)
-      data["value"] = Dataforged::to_json_data(value)
-      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
-      data
-    end
-  end
-
-  class AssetControlFieldChoicesExtendAsset < AssetControlField
-    attr_accessor :choices
-    attr_accessor :id
-    attr_accessor :label
-
-    def self.from_json_data(data)
-      out = AssetControlFieldChoicesExtendAsset.new
-      out.field_type = "choices_extend_asset"
-      out.choices = Dataforged::from_json_data(Hash[String, AssetControlFieldChoicesExtendAssetChoice], data["choices"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
-      out.label = Dataforged::from_json_data(Label, data["label"])
-      out
-    end
-
-    def to_json_data
-      data = { "field_type" => "choices_extend_asset" }
-      data["choices"] = Dataforged::to_json_data(choices)
-      data["id"] = Dataforged::to_json_data(id)
-      data["label"] = Dataforged::to_json_data(label)
-      data
-    end
-  end
-
   class AssetControlFieldConditionMeter < AssetControlField
     attr_accessor :id
     attr_accessor :label
@@ -326,7 +320,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetControlFieldConditionMeter.new
       out.field_type = "condition_meter"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -341,6 +335,54 @@ module Dataforged
       data["max"] = Dataforged::to_json_data(max)
       data["min"] = Dataforged::to_json_data(min)
       data["value"] = Dataforged::to_json_data(value)
+      data
+    end
+  end
+
+  class AssetControlFieldSelectAssetExtensionChoice
+    attr_accessor :label
+    attr_accessor :value
+    attr_accessor :selected
+
+    def self.from_json_data(data)
+      out = AssetControlFieldSelectAssetExtensionChoice.new
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
+      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value)
+      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
+      data
+    end
+  end
+
+  class AssetControlFieldSelectAssetExtension < AssetControlField
+    attr_accessor :choices
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetControlFieldSelectAssetExtension.new
+      out.field_type = "select_asset_extension"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetControlFieldSelectAssetExtensionChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "field_type" => "select_asset_extension" }
+      data["choices"] = Dataforged::to_json_data(choices)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -383,8 +425,8 @@ module Dataforged
     end
   end
 
-  # Describes changes applied to an asset, usually by another asset. Assume that
-  # unspecified/null properties are unchanged.
+  # Describes changes applied to an asset by its own abilities or controls.
+  # Unchanged properties are omitted.
   class AssetExtension
     attr_accessor :attachments
 
@@ -411,13 +453,11 @@ module Dataforged
   end
 
   class AssetExtensionChoice
-    attr_accessor :id
     attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
       out = AssetExtensionChoice.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(AssetExtension, data["value"])
       out
@@ -425,7 +465,6 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value)
       data
@@ -470,8 +509,8 @@ module Dataforged
     end
   end
 
-  # Describes changes applied to an asset, usually by another asset. Assume that
-  # unspecified/null properties are unchanged.
+  # Describes changes applied to an asset, usually by another asset. Unchanged
+  # properties are omitted.
   class AssetExtensionForeign
     attr_accessor :extends
     attr_accessor :id
@@ -484,8 +523,8 @@ module Dataforged
 
     def self.from_json_data(data)
       out = AssetExtensionForeign.new
-      out.extends = Dataforged::from_json_data(ID, data["_extends"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.extends = Dataforged::from_json_data(AssetID, data["extends"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.attachments = Dataforged::from_json_data(AssetExtensionForeignAttachments, data["attachments"])
       out.controls = Dataforged::from_json_data(Hash[String, AssetExtensionForeignControl], data["controls"])
       out.count_as_impact = Dataforged::from_json_data(TrueClass, data["count_as_impact"])
@@ -494,12 +533,26 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["_extends"] = Dataforged::to_json_data(extends)
+      data["extends"] = Dataforged::to_json_data(extends)
       data["id"] = Dataforged::to_json_data(id)
       data["attachments"] = Dataforged::to_json_data(attachments) unless attachments.nil?
       data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
       data["count_as_impact"] = Dataforged::to_json_data(count_as_impact) unless count_as_impact.nil?
       data
+    end
+  end
+
+  class AssetID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -512,23 +565,21 @@ module Dataforged
 
     def self.from_json_data(data)
       {
-        "choices_extend_asset" => AssetOptionFieldChoicesExtendAsset,
-        "choices_number" => AssetOptionFieldChoicesNumber,
-        "choices_stat_id" => AssetOptionFieldChoicesStatID,
+        "select_asset_extension" => AssetOptionFieldSelectAssetExtension,
+        "select_number" => AssetOptionFieldSelectNumber,
+        "select_stat" => AssetOptionFieldSelectStat,
         "text" => AssetOptionFieldText,
       }[data["field_type"]].from_json_data(data)
     end
   end
 
-  class AssetOptionFieldChoicesExtendAssetChoice
-    attr_accessor :id
+  class AssetOptionFieldSelectAssetExtensionChoice
     attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesExtendAssetChoice.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectAssetExtensionChoice.new
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(AssetExtension, data["value"])
       out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
@@ -537,7 +588,6 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value)
       data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
@@ -545,38 +595,39 @@ module Dataforged
     end
   end
 
-  class AssetOptionFieldChoicesExtendAsset < AssetOptionField
+  class AssetOptionFieldSelectAssetExtension < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
     attr_accessor :label
+    attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesExtendAsset.new
-      out.field_type = "choices_extend_asset"
-      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldChoicesExtendAssetChoice], data["choices"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectAssetExtension.new
+      out.field_type = "select_asset_extension"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectAssetExtensionChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
       out
     end
 
     def to_json_data
-      data = { "field_type" => "choices_extend_asset" }
+      data = { "field_type" => "select_asset_extension" }
       data["choices"] = Dataforged::to_json_data(choices)
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
 
-  class AssetOptionFieldChoicesNumberChoice
-    attr_accessor :id
+  class AssetOptionFieldSelectNumberChoice
     attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesNumberChoice.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectNumberChoice.new
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(Integer, data["value"])
       out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
@@ -585,7 +636,6 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value)
       data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
@@ -593,47 +643,47 @@ module Dataforged
     end
   end
 
-  class AssetOptionFieldChoicesNumber < AssetOptionField
+  class AssetOptionFieldSelectNumber < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
     attr_accessor :label
+    attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesNumber.new
-      out.field_type = "choices_number"
-      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldChoicesNumberChoice], data["choices"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectNumber.new
+      out.field_type = "select_number"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectNumberChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(Integer, data["value"])
       out
     end
 
     def to_json_data
-      data = { "field_type" => "choices_number" }
+      data = { "field_type" => "select_number" }
       data["choices"] = Dataforged::to_json_data(choices)
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
 
-  class AssetOptionFieldChoicesStatIDChoice
-    attr_accessor :id
+  class AssetOptionFieldSelectStatChoice
     attr_accessor :label
     attr_accessor :value
     attr_accessor :selected
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesStatIDChoice.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectStatChoice.new
       out.label = Dataforged::from_json_data(Label, data["label"])
-      out.value = Dataforged::from_json_data(StatID, data["value"])
+      out.value = Dataforged::from_json_data(PlayerStat, data["value"])
       out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
       out
     end
 
     def to_json_data
       data = {}
-      data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value)
       data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
@@ -641,25 +691,28 @@ module Dataforged
     end
   end
 
-  class AssetOptionFieldChoicesStatID < AssetOptionField
+  class AssetOptionFieldSelectStat < AssetOptionField
     attr_accessor :choices
     attr_accessor :id
     attr_accessor :label
+    attr_accessor :value
 
     def self.from_json_data(data)
-      out = AssetOptionFieldChoicesStatID.new
-      out.field_type = "choices_stat_id"
-      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldChoicesStatIDChoice], data["choices"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out = AssetOptionFieldSelectStat.new
+      out.field_type = "select_stat"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectStatChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(PlayerStat, data["value"])
       out
     end
 
     def to_json_data
-      data = { "field_type" => "choices_stat_id" }
+      data = { "field_type" => "select_stat" }
       data["choices"] = Dataforged::to_json_data(choices)
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -672,7 +725,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetOptionFieldText.new
       out.field_type = "text"
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(String, data["value"])
       out
@@ -814,7 +867,7 @@ module Dataforged
       out.card_type = Dataforged::from_json_data(DelveSiteDomainCardType, data["card_type"])
       out.dangers = Dataforged::from_json_data(Array[FeatureOrDanger], data["dangers"])
       out.features = Dataforged::from_json_data(Array[FeatureOrDanger], data["features"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(DelveSiteDomainID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
@@ -837,6 +890,20 @@ module Dataforged
       data["icon"] = Dataforged::to_json_data(icon) unless icon.nil?
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
       data
+    end
+  end
+
+  class DelveSiteDomainID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = DelveSiteDomainID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -879,7 +946,7 @@ module Dataforged
       out.card_type = Dataforged::from_json_data(DelveSiteThemeCardType, data["card_type"])
       out.dangers = Dataforged::from_json_data(Array[FeatureOrDanger], data["dangers"])
       out.features = Dataforged::from_json_data(Array[FeatureOrDanger], data["features"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(DelveSiteThemeID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
@@ -902,6 +969,20 @@ module Dataforged
       data["icon"] = Dataforged::to_json_data(icon) unless icon.nil?
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
       data
+    end
+  end
+
+  class DelveSiteThemeID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = DelveSiteThemeID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -1118,7 +1199,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = Move.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(MoveID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.outcomes = Dataforged::from_json_data(MoveOutcomes, data["outcomes"])
       out.source = Dataforged::from_json_data(Source, data["source"])
@@ -1157,7 +1238,7 @@ module Dataforged
       out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.color = Dataforged::from_json_data(Color, data["color"])
       out.contents = Dataforged::from_json_data(Hash[String, Move], data["contents"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(MoveCategoryID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
@@ -1181,18 +1262,30 @@ module Dataforged
     end
   end
 
+  class MoveCategoryID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = MoveCategoryID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   class MoveExtension
-    attr_accessor :id
-    attr_accessor :trigger
     attr_accessor :extends
+    attr_accessor :trigger
     attr_accessor :outcomes
     attr_accessor :text
 
     def self.from_json_data(data)
       out = MoveExtension.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.extends = Dataforged::from_json_data(Array[MoveID], data["extends"])
       out.trigger = Dataforged::from_json_data(TriggerExtension, data["trigger"])
-      out.extends = Dataforged::from_json_data(Array[ID], data["_extends"])
       out.outcomes = Dataforged::from_json_data(MoveOutcomesExtension, data["outcomes"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out
@@ -1200,12 +1293,25 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["id"] = Dataforged::to_json_data(id)
+      data["extends"] = Dataforged::to_json_data(extends)
       data["trigger"] = Dataforged::to_json_data(trigger)
-      data["_extends"] = Dataforged::to_json_data(extends) unless extends.nil?
       data["outcomes"] = Dataforged::to_json_data(outcomes) unless outcomes.nil?
       data["text"] = Dataforged::to_json_data(text) unless text.nil?
       data
+    end
+  end
+
+  class MoveID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = MoveID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -1250,6 +1356,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades an outcome from an existing move.
   class MoveOutcomeExtension
     attr_accessor :count_as
     attr_accessor :reroll
@@ -1316,6 +1423,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades an outcome from an existing move.
   class MoveOutcomeMatchableExtension
     attr_accessor :count_as
     attr_accessor :match
@@ -1394,6 +1502,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades one or more outcomes of an existing move.
   class MoveOutcomesExtension
     attr_accessor :miss
     attr_accessor :strong_hit
@@ -1418,6 +1527,8 @@ module Dataforged
 
   class MoveReroll
     attr_accessor :method
+
+    # Describes the trigger condition for the reroll, if any.
     attr_accessor :text
 
     def self.from_json_data(data)
@@ -1450,13 +1561,13 @@ module Dataforged
     # Reroll all dice
     ALL = new("all")
 
-    # Reroll any dice
+    # Reroll any number of dice
     ANY = new("any")
 
-    # Reroll any challenge dice
+    # Reroll any number of challenge dice
     CHALLENGE_DICE = new("challenge_dice")
 
-    # Reroll one challenge die
+    # Reroll one of the challenge dice
     CHALLENGE_DIE = new("challenge_die")
 
     def self.from_json_data(data)
@@ -1544,7 +1655,7 @@ module Dataforged
       out = OracleCollection.new
       out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.contents = Dataforged::from_json_data(Hash[String, OracleTable], data["contents"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(OracleCollectionID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
@@ -1599,6 +1710,20 @@ module Dataforged
       data["color"] = Dataforged::to_json_data(color) unless color.nil?
       data["label"] = Dataforged::to_json_data(label) unless label.nil?
       data
+    end
+  end
+
+  class OracleCollectionID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = OracleCollectionID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -1711,7 +1836,7 @@ module Dataforged
     def self.from_json_data(data)
       out = OracleTable.new
       out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(OracleTableID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.table = Dataforged::from_json_data(Array[OracleTableRow], data["table"])
@@ -1755,6 +1880,20 @@ module Dataforged
       data["content_type"] = Dataforged::to_json_data(content_type)
       data["label"] = Dataforged::to_json_data(label) unless label.nil?
       data
+    end
+  end
+
+  class OracleTableID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = OracleTableID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -1806,7 +1945,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = OracleTableRoll.new
-      out.oracle = Dataforged::from_json_data(ID, data["oracle"])
+      out.oracle = Dataforged::from_json_data(OracleTableID, data["oracle"])
       out.method = Dataforged::from_json_data(OracleTableRollMethod, data["method"])
       out.times = Dataforged::from_json_data(Integer, data["times"])
       out
@@ -1863,11 +2002,11 @@ module Dataforged
     def self.from_json_data(data)
       out = OracleTableRow.new
       out.high = Dataforged::from_json_data(Integer, data["high"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(OracleTableRowID, data["id"])
       out.low = Dataforged::from_json_data(Integer, data["low"])
       out.result = Dataforged::from_json_data(MarkdownString, data["result"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
-      out.embed_table = Dataforged::from_json_data(ID, data["embed_table"])
+      out.embed_table = Dataforged::from_json_data(OracleTableID, data["embed_table"])
       out.icon = Dataforged::from_json_data(SvgImageURL, data["icon"])
       out.rolls = Dataforged::from_json_data(Array[OracleTableRoll], data["rolls"])
       out.suggestions = Dataforged::from_json_data(Suggestions, data["suggestions"])
@@ -1893,6 +2032,20 @@ module Dataforged
     end
   end
 
+  class OracleTableRowID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = OracleTableRowID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   class OracleTableStyle
     attr_accessor :value
 
@@ -1911,6 +2064,102 @@ module Dataforged
         "embed_as_column" => EMBED_AS_COLUMN,
         "embed_in_row" => EMBED_IN_ROW,
         "table" => TABLE,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # A standard player stat, or a condition meter that can be used as a stat in
+  # an action roll.
+  class PlayerAttributeRollable
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    EDGE = new("edge")
+    HEALTH = new("health")
+    HEART = new("heart")
+    IRON = new("iron")
+    SHADOW = new("shadow")
+    SPIRIT = new("spirit")
+    SUPPLY = new("supply")
+    WITS = new("wits")
+
+    def self.from_json_data(data)
+      {
+        "edge" => EDGE,
+        "health" => HEALTH,
+        "heart" => HEART,
+        "iron" => IRON,
+        "shadow" => SHADOW,
+        "spirit" => SPIRIT,
+        "supply" => SUPPLY,
+        "wits" => WITS,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # A standard player character condition meter.
+  class PlayerConditionMeter
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    HEALTH = new("health")
+    SPIRIT = new("spirit")
+    SUPPLY = new("supply")
+
+    def self.from_json_data(data)
+      {
+        "health" => HEALTH,
+        "spirit" => SPIRIT,
+        "supply" => SUPPLY,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  # A standard player character stat.
+  class PlayerStat
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    EDGE = new("edge")
+    HEART = new("heart")
+    IRON = new("iron")
+    SHADOW = new("shadow")
+    WITS = new("wits")
+
+    def self.from_json_data(data)
+      {
+        "edge" => EDGE,
+        "heart" => HEART,
+        "iron" => IRON,
+        "shadow" => SHADOW,
+        "wits" => WITS,
       }[data]
     end
 
@@ -1959,10 +2208,10 @@ module Dataforged
     # A player's Quests legacy track (Starforged ruleset only)
     QUESTS_LEGACY = new("quests_legacy")
 
-    # A scene challenge progress track
+    # A scene challenge progress track.
     SCENE_CHALLENGE_PROGRESS = new("scene_challenge_progress")
 
-    # A vow progress track, started with Swear an Iron Vow
+    # A vow progress track, started with Swear an Iron Vow.
     VOW_PROGRESS = new("vow_progress")
 
     def self.from_json_data(data)
@@ -1998,9 +2247,9 @@ module Dataforged
 
     def self.from_json_data(data)
       out = Rarity.new
-      out.asset = Dataforged::from_json_data(ID, data["asset"])
+      out.asset = Dataforged::from_json_data(AssetID, data["asset"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(RarityID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.xp_cost = Dataforged::from_json_data(Integer, data["xp_cost"])
@@ -2023,6 +2272,20 @@ module Dataforged
     end
   end
 
+  class RarityID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = RarityID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   class RegionEntry
     attr_accessor :description
     attr_accessor :features
@@ -2037,7 +2300,7 @@ module Dataforged
       out = RegionEntry.new
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
       out.features = Dataforged::from_json_data(Array[MarkdownString], data["features"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(RegionEntryID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.quest_starter = Dataforged::from_json_data(MarkdownString, data["quest_starter"])
       out.source = Dataforged::from_json_data(Source, data["source"])
@@ -2057,6 +2320,20 @@ module Dataforged
       data["summary"] = Dataforged::to_json_data(summary)
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
       data
+    end
+  end
+
+  class RegionEntryID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = RegionEntryID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -2084,7 +2361,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = SettingTruth.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(SettingTruthID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.options = Dataforged::from_json_data(Array[SettingTruthOption], data["options"])
       out.source = Dataforged::from_json_data(Source, data["source"])
@@ -2105,6 +2382,20 @@ module Dataforged
     end
   end
 
+  class SettingTruthID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = SettingTruthID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   class SettingTruthOption
     attr_accessor :description
     attr_accessor :id
@@ -2114,7 +2405,7 @@ module Dataforged
     def self.from_json_data(data)
       out = SettingTruthOption.new
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(SettingTruthOptionID, data["id"])
       out.quest_starter = Dataforged::from_json_data(MarkdownString, data["quest_starter"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
       out
@@ -2127,6 +2418,20 @@ module Dataforged
       data["quest_starter"] = Dataforged::to_json_data(quest_starter)
       data["summary"] = Dataforged::to_json_data(summary)
       data
+    end
+  end
+
+  class SettingTruthOptionID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = SettingTruthOptionID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -2185,9 +2490,9 @@ module Dataforged
 
     def self.from_json_data(data)
       out = Suggestions.new
-      out.assets = Dataforged::from_json_data(Array[ID], data["assets"])
-      out.moves = Dataforged::from_json_data(Array[ID], data["moves"])
-      out.oracles = Dataforged::from_json_data(Array[ID], data["oracles"])
+      out.assets = Dataforged::from_json_data(Array[AssetID], data["assets"])
+      out.moves = Dataforged::from_json_data(Array[MoveID], data["moves"])
+      out.oracles = Dataforged::from_json_data(Array[OracleTableID], data["oracles"])
       out
     end
 
@@ -2236,6 +2541,7 @@ module Dataforged
     end
   end
 
+  # Describes a move's trigger condition(s) and any rolls associated with them.
   class Trigger
     attr_accessor :roll_type
 
@@ -2308,6 +2614,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades an existing move trigger.
   class TriggerExtension
     attr_accessor :roll_type
 
@@ -2319,6 +2626,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades an existing action roll trigger.
   class TriggerExtensionActionRoll < TriggerExtension
     attr_accessor :options
 
@@ -2336,6 +2644,7 @@ module Dataforged
     end
   end
 
+  # Extends or upgrades an existing action roll trigger.
   class TriggerExtensionProgressRoll < TriggerExtension
     attr_accessor :options
 
@@ -2357,6 +2666,8 @@ module Dataforged
     attr_accessor :method
     attr_accessor :by
     attr_accessor :choices
+
+    # Describes any additional trigger conditions for this trigger option
     attr_accessor :text
 
     def self.from_json_data(data)
@@ -2383,45 +2694,168 @@ module Dataforged
 
     def self.from_json_data(data)
       {
-        "custom" => TriggerOptionActionChoiceCustom,
-        "stat" => TriggerOptionActionChoiceStat,
+        "custom_value" => TriggerOptionActionChoiceCustomValue,
+        "edge" => TriggerOptionActionChoiceEdge,
+        "health" => TriggerOptionActionChoiceHealth,
+        "heart" => TriggerOptionActionChoiceHeart,
+        "iron" => TriggerOptionActionChoiceIron,
+        "ref" => TriggerOptionActionChoiceRef,
+        "shadow" => TriggerOptionActionChoiceShadow,
+        "spirit" => TriggerOptionActionChoiceSpirit,
+        "supply" => TriggerOptionActionChoiceSupply,
+        "wits" => TriggerOptionActionChoiceWits,
       }[data["using"]].from_json_data(data)
     end
   end
 
-  class TriggerOptionActionChoiceCustom < TriggerOptionActionChoice
+  class TriggerOptionActionChoiceCustomValue < TriggerOptionActionChoice
     attr_accessor :label
     attr_accessor :value
 
     def self.from_json_data(data)
-      out = TriggerOptionActionChoiceCustom.new
-      out.using = "custom"
+      out = TriggerOptionActionChoiceCustomValue.new
+      out.using = "custom_value"
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(Integer, data["value"])
       out
     end
 
     def to_json_data
-      data = { "using" => "custom" }
+      data = { "using" => "custom_value" }
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value)
       data
     end
   end
 
-  class TriggerOptionActionChoiceStat < TriggerOptionActionChoice
-    attr_accessor :ref
+  class TriggerOptionActionChoiceEdge < TriggerOptionActionChoice
 
     def self.from_json_data(data)
-      out = TriggerOptionActionChoiceStat.new
-      out.using = "stat"
-      out.ref = Dataforged::from_json_data(StatID, data["ref"])
+      out = TriggerOptionActionChoiceEdge.new
+      out.using = "edge"
       out
     end
 
     def to_json_data
-      data = { "using" => "stat" }
+      data = { "using" => "edge" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceHealth < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceHealth.new
+      out.using = "health"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "health" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceHeart < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceHeart.new
+      out.using = "heart"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "heart" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceIron < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceIron.new
+      out.using = "iron"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "iron" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceRef < TriggerOptionActionChoice
+    attr_accessor :label
+    attr_accessor :ref
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceRef.new
+      out.using = "ref"
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.ref = Dataforged::from_json_data(String, data["ref"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "ref" }
+      data["label"] = Dataforged::to_json_data(label)
       data["ref"] = Dataforged::to_json_data(ref)
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceShadow < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceShadow.new
+      out.using = "shadow"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "shadow" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceSpirit < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceSpirit.new
+      out.using = "spirit"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "spirit" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceSupply < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceSupply.new
+      out.using = "supply"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "supply" }
+      data
+    end
+  end
+
+  class TriggerOptionActionChoiceWits < TriggerOptionActionChoice
+
+    def self.from_json_data(data)
+      out = TriggerOptionActionChoiceWits.new
+      out.using = "wits"
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "wits" }
       data
     end
   end
@@ -2430,6 +2864,8 @@ module Dataforged
     attr_accessor :method
     attr_accessor :by
     attr_accessor :choices
+
+    # Describes any additional trigger conditions for this trigger option
     attr_accessor :text
 
     def self.from_json_data(data)
@@ -2507,7 +2943,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = WorldTruth.new
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(WorldTruthID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.options = Dataforged::from_json_data(Array[WorldTruthOption], data["options"])
       out.source = Dataforged::from_json_data(Source, data["source"])
@@ -2528,6 +2964,20 @@ module Dataforged
     end
   end
 
+  class WorldTruthID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = WorldTruthID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   class WorldTruthOption
     attr_accessor :description
     attr_accessor :id
@@ -2536,7 +2986,7 @@ module Dataforged
     def self.from_json_data(data)
       out = WorldTruthOption.new
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
-      out.id = Dataforged::from_json_data(ID, data["id"])
+      out.id = Dataforged::from_json_data(WorldTruthOptionID, data["id"])
       out.quest_starter = Dataforged::from_json_data(MarkdownString, data["quest_starter"])
       out
     end
@@ -2547,6 +2997,20 @@ module Dataforged
       data["id"] = Dataforged::to_json_data(id)
       data["quest_starter"] = Dataforged::to_json_data(quest_starter)
       data
+    end
+  end
+
+  class WorldTruthOptionID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = WorldTruthOptionID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 

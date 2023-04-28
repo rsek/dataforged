@@ -10,7 +10,7 @@ namespace Dataforged
         public string FieldType { get => "checkbox"; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public AssetAbilityControlFieldId Id { get; set; }
 
         [JsonPropertyName("label")]
         public Label Label { get; set; }

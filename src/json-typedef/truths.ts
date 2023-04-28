@@ -1,11 +1,29 @@
 import type * as Types from '@base-types'
 import { type JTDSchemaType } from 'ajv/dist/core'
+import { toJtdId } from 'json-typedef/utils'
+import {
+	WorldTruthID as ClassicID,
+	WorldTruthOptionID as ClassicOptionID
+} from 'schema-json/ruleset-classic'
+
+import {
+	SettingTruthID as SfID,
+	SettingTruthOptionID as SfOptionID
+} from 'schema-json/ruleset-starforged'
+
+export const WorldTruthID = toJtdId(ClassicID)
+
+export const WorldTruthOptionID = toJtdId(ClassicOptionID)
+
+export const SettingTruthID = toJtdId(SfID)
+
+export const SettingTruthOptionID = toJtdId(SfOptionID)
 
 export const WorldTruth: JTDSchemaType<
 	Types.Truths.WorldTruth,
 	{
 		WorldTruthOption: Types.Truths.WorldTruthOption
-		ID: string
+		WorldTruthID: string
 		Label: string
 		Source: Types.Metadata.Source
 		SvgImageURL: string
@@ -13,7 +31,7 @@ export const WorldTruth: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'WorldTruthID' },
 		name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		options: { elements: { ref: 'WorldTruthOption' } }
@@ -27,14 +45,14 @@ export const WorldTruth: JTDSchemaType<
 export const WorldTruthOption: JTDSchemaType<
 	Types.Truths.WorldTruthOption,
 	{
-		ID: string
+		WorldTruthOptionID: string
 		Label: string
 		MarkdownString: string
 		Suggestions: Types.Metadata.SuggestionsBase
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'WorldTruthOptionID' },
 		description: { ref: 'MarkdownString' },
 		quest_starter: { ref: 'MarkdownString' }
 	}
@@ -43,7 +61,7 @@ export const WorldTruthOption: JTDSchemaType<
 export const SettingTruth: JTDSchemaType<
 	Types.Truths.SettingTruth,
 	{
-		ID: string
+		SettingTruthID: string
 		Label: string
 		Source: Types.Metadata.Source
 		SettingTruthOption: Types.Truths.SettingTruthOption
@@ -52,7 +70,7 @@ export const SettingTruth: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'SettingTruthID' },
 		name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		options: { elements: { ref: 'SettingTruthOption' } }
@@ -66,14 +84,14 @@ export const SettingTruth: JTDSchemaType<
 export const SettingTruthOption: JTDSchemaType<
 	Types.Truths.SettingTruthOption,
 	{
-		ID: string
+		SettingTruthOptionID: string
 		Label: string
 		MarkdownString: string
 		Suggestions: Types.Metadata.SuggestionsBase
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'SettingTruthOptionID' },
 		summary: { ref: 'MarkdownString' },
 		description: { ref: 'MarkdownString' },
 		quest_starter: { ref: 'MarkdownString' }

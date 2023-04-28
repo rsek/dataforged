@@ -6,16 +6,16 @@ using System.Text.Json.Serialization;
 namespace Dataforged
 {
     /// <summary>
-    /// Describes changes applied to an asset, usually by another asset. Assume
-    /// that unspecified/null properties are unchanged.
+    /// Describes changes applied to an asset, usually by another asset.
+    /// Unchanged properties are omitted.
     /// </summary>
     public class AssetExtensionForeign
     {
-        [JsonPropertyName("_extends")]
-        public Id Extends { get; set; }
+        [JsonPropertyName("extends")]
+        public AssetId Extends { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public AssetAbilityControlFieldId Id { get; set; }
 
         [JsonPropertyName("attachments")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

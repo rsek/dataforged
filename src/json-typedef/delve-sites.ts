@@ -1,10 +1,18 @@
 import type * as Types from '@base-types'
 import { type JTDSchemaType } from 'ajv/dist/core'
+import * as JSONSchema from '@schema-json'
+import { toJtdId } from 'json-typedef/utils'
+
+export const DelveSiteThemeID = toJtdId(JSONSchema.DelveSites.DelveSiteThemeID)
+
+export const DelveSiteDomainID = toJtdId(
+	JSONSchema.DelveSites.DelveSiteDomainID
+)
 
 export const DelveSiteTheme: JTDSchemaType<
 	Types.DelveSites.DelveSiteTheme,
 	{
-		ID: string
+		DelveSiteThemeID: string
 		Source: Types.Metadata.Source
 		MarkdownString: string
 		Label: string
@@ -14,7 +22,7 @@ export const DelveSiteTheme: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'DelveSiteThemeID' },
 		name: { ref: 'Label' },
 		card_type: {
 			enum: ['theme'],
@@ -68,7 +76,7 @@ export const DelveSiteTheme: JTDSchemaType<
 export const DelveSiteDomain: JTDSchemaType<
 	Types.DelveSites.DelveSiteDomain,
 	{
-		ID: string
+		DelveSiteDomainID: string
 		Source: Types.Metadata.Source
 		MarkdownString: string
 		Label: string
@@ -78,7 +86,7 @@ export const DelveSiteDomain: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'DelveSiteDomainID' },
 		name: { ref: 'Label' },
 		card_type: {
 			enum: ['domain'],

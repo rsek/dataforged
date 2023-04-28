@@ -33,7 +33,7 @@ devotant:
         When you say your daily prayers, you may [Secure an Advantage](ironsworn/moves/adventure/secure_an_advantage) by asking your god to grant a blessing. If you do, roll +your god’s stat. On a hit, take +2 momentum.
       enabled: true
       extend_moves:
-        - _extends:
+        - extends:
             - ironsworn/moves/quest/secure_an_advantage
           trigger:
             options:
@@ -45,7 +45,7 @@ devotant:
     - text: |-
         When you [Swear an Iron Vow](ironsworn/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](ironsworn/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
       extend_moves:
-        - _extends:
+        - extends:
             - ironsworn/moves/quest/swear_an_iron_vow
           trigger:
             options:
@@ -57,7 +57,7 @@ devotant:
     - text: |-
         When you [Sojourn](ironsworn/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
       extend_moves:
-        - _extends:
+        - extends:
             - ironsworn/moves/relationship/sojourn
           trigger:
             options:
@@ -106,7 +106,7 @@ masked:
 
         When you wear the mask and make a move which uses its stat, add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).
       extend_moves:
-        - _extends: null
+        - extends: null
           trigger:
             options:
               - roll_type: action_roll
@@ -119,7 +119,7 @@ masked:
     - text: |-
         When you [Face Death](ironsworn/moves/suffer/face_death) or [Face Desolation](ironsworn/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).
       extend_moves:
-        - _extends:
+        - extends:
             - ironsworn/moves/suffer/face_death
             - ironsworn/moves/suffer/face_desolation
           trigger:
@@ -138,7 +138,7 @@ looper:
         When you score a miss on a suffer move (not [Endure Stress](starforged/moves/suffer/endure_stress)), you may loop back a second or two. If you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
       enabled: true
       extend_moves:
-        - _extends:
+        - extends:
             - starforged/moves/suffer/endure_harm
             - starforged/moves/suffer/companion_takes_a_hit
             - starforged/moves/suffer/withstand_damage

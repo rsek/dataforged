@@ -8,7 +8,7 @@ namespace Dataforged
     public class WorldTruth
     {
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public WorldTruthId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

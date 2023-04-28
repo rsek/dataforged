@@ -9,7 +9,7 @@ sundered_isles:
     date: 2022-11-06
   assets:
     command_vehicle:
-      _extends: starforged/collections/assets/command_vehicle
+      extends: starforged/collections/assets/command_vehicle
       contents:
         sailing_ship:
           name: Sailing Ship
@@ -23,7 +23,7 @@ sundered_isles:
             - text: |-
                 You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
     support_vehicle:
-      _extends: starforged/collections/assets/support_vehicle
+      extends: starforged/collections/assets/support_vehicle
       contents:
         diving_bell:
           name: Diving Bell
@@ -50,7 +50,7 @@ sundered_isles:
           # integrity 4, battered
           # name
     module:
-      _extends: starforged/collections/assets/module
+      extends: starforged/collections/assets/module
       contents:
         armored_prow:
           name: Armored Prow
@@ -123,7 +123,7 @@ sundered_isles:
                   * Strike hard: Mark progress on a hit.
                 On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).
     path:
-      _extends: starforged/collections/assets/path
+      extends: starforged/collections/assets/path
       contents:
         cannoneer:
           name: Cannoneer
@@ -146,10 +146,10 @@ sundered_isles:
                 You have 2 command; your max is 4. When you or an ally make a move leading or aided by your crew, you may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost as -1 command. If you [Face Danger](starforged/moves/adventure/face_danger) as a test of your leadership, roll +command. To bolster your crew, provide a significant reward or respite; then, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
               # TODO figure out how to denote individual abilities/triggers invocable by any party member
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/fate/pay_the_price
                   text: You may instead suffer -1 command as the cost.
-                - _extends: null
+                - extends: null
                   trigger:
                     options:
                       - text: Leading or aided by your crew
@@ -161,7 +161,7 @@ sundered_isles:
                       text: You may (after rolling) suffer -1 command and improve a miss to a weak hit.
                     weak_hit:
                       text: You may (after rolling) suffer -1 command and improve a weak hit to a strong hit.
-                - _extends:
+                - extends:
                     - starforged/moves/adventure/face_danger
                   trigger:
                     options:
@@ -193,7 +193,7 @@ sundered_isles:
                     max: 6
             - text: When your command is 0 and the situation desperate, you may [Compel](starforged/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/adventure/compel
                   trigger:
                     options:
@@ -295,7 +295,7 @@ sundered_isles:
         windwright:
 
     companion:
-      _extends: starforged/collections/assets/companion
+      extends: starforged/collections/assets/companion
       contents:
         dolphin:
         dragon:
@@ -311,7 +311,7 @@ sundered_isles:
             - text: |-
                 When you summon the Kraken, fill one segment of a four-segment clock. The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, Take Decisive Action with an automatic strong hit. When the clock is filled, Ask the Oracle (using the yes/no table) if the Kraken turns against you, making it 50/50. On a yes, discard this asset; the Kraken is now an epic foe. On a no, clear one segment of the clock.
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/combat/take_decisive_action
                   trigger:
                     options:
@@ -332,7 +332,7 @@ sundered_isles:
             - text: |-
                 When you make a move using a threat to call the Kraken as leverage, add +2.
               extend_moves:
-                - _extends: null
+                - extends: null
                   trigger:
                     options:
                       - text: Make a move using a threat to call the Kraken as leverage
@@ -341,7 +341,7 @@ sundered_isles:
             - text: |-
                 One time only, when you Fulfill Your Vow (formidable or greater) in service to the Kraken and score a hit, choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/quest/fulfill_your_vow
                   trigger:
                     options:
@@ -352,7 +352,7 @@ sundered_isles:
                       text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
                     weak_hit: *Kraken.3
     deed:
-      _extends: starforged/collections/assets/deed
+      extends: starforged/collections/assets/deed
       contents:
         cohort:
           name: Cohort
@@ -365,12 +365,12 @@ sundered_isles:
               enabled: true
               alter:
                 moves:
-                  - _extends:
+                  - extends:
                       - starforged/moves/suffer/withstand_damage
                     outcomes:
                       miss:
                         text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
-                  - _extends:
+                  - extends:
                       - starforged/moves/fate/pay_the_price
                     text: *Cohort.1
             - text: |-
@@ -379,7 +379,7 @@ sundered_isles:
             - text: |-
                 When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/adventure/secure_an_advantage
                   trigger:
                     options:
@@ -402,16 +402,16 @@ sundered_isles:
                 Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](starforged/moves/fate/pay_the_price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](starforged/moves/recover/sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
               enabled: true
               extend_moves:
-                - _extends: null
+                - extends: null
                   trigger:
                     options:
                       - text: As a fleetwide action to get in position, avoid a hazard, or fight
                         choices:
                           - sundered_isles/assets/deed/fleet_commander/controls/power
-                - _extends:
+                - extends:
                     - starforged/moves/fate/pay_the_price
                   text: If your fleet bears the cost, suffer -1 power.
-                - _extends:
+                - extends:
                     - starforged/moves/recover/sojourn
                   outcomes:
                     strong_hit: &Fleet_Commander.1
@@ -422,12 +422,12 @@ sundered_isles:
                 Take +2 power and set your max power to 5.
               controls:
                 power:
-                  _extends: sundered_isles/assets/deed/fleet_commander/controls/power
+                  extends: sundered_isles/assets/deed/fleet_commander/controls/power
                   max: 5
             - text: |-
                 When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
               extend_moves:
-                - _extends:
+                - extends:
                     - starforged/moves/exploration/undertake_an_expedition
                   trigger:
                     options:

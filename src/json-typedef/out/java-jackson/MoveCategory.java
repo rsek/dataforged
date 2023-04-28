@@ -19,7 +19,7 @@ public class MoveCategory {
     private Map<String, Move> contents;
 
     @JsonProperty("id")
-    private Id id;
+    private MoveCategoryId id;
 
     @JsonProperty("name")
     private Label name;
@@ -86,14 +86,14 @@ public class MoveCategory {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public MoveCategoryId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(MoveCategoryId id) {
         this.id = id;
     }
 

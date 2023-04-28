@@ -7,7 +7,7 @@ namespace Dataforged
     public class OracleTableRoll
     {
         [JsonPropertyName("oracle")]
-        public Id Oracle { get; set; }
+        public OracleTableId Oracle { get; set; }
 
         [JsonPropertyName("method")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

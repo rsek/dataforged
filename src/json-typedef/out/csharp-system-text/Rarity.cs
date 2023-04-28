@@ -7,13 +7,13 @@ namespace Dataforged
     public class Rarity
     {
         [JsonPropertyName("asset")]
-        public Id Asset { get; set; }
+        public AssetId Asset { get; set; }
 
         [JsonPropertyName("description")]
         public MarkdownString Description { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public RarityId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

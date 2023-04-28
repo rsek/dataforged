@@ -6,6 +6,10 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Describes a move's trigger condition(s) and any rolls associated with
+    /// them.
+    /// </summary>
     [JsonConverter(typeof(TriggerJsonConverter))]
     public abstract class Trigger
     {

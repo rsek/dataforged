@@ -69,10 +69,14 @@ export const UnionTextField: JTDSchemaType<
 	}
 } as const
 
-/** field_type: 'choices_stat_id */
-export const UnionStatIDChoicesField: JTDSchemaType<
-	Omit<Types.Inputs.StatIDChoicesField, 'field_type'>,
-	{ ID: string; Label: string; StatID: string }
+/** field_type: 'select_stat */
+export const UnionSelectFieldStat: JTDSchemaType<
+	Omit<Types.Inputs.SelectFieldStat, 'field_type'>,
+	{
+		ID: string
+		Label: string
+		PlayerStat: Types.Players.PlayerStat
+	}
 > = {
 	properties: {
 		id: { ref: 'ID' },
@@ -80,21 +84,23 @@ export const UnionStatIDChoicesField: JTDSchemaType<
 		choices: {
 			values: {
 				properties: {
-					id: { ref: 'ID' },
 					label: { ref: 'Label' },
-					value: { ref: 'StatID' }
+					value: { ref: 'PlayerStat' }
 				},
 				optionalProperties: {
 					selected: { type: 'boolean' }
 				}
 			}
 		}
+	},
+	optionalProperties: {
+		value: { ref: 'PlayerStat' }
 	}
 }
 
-/** field_type: 'choices_number' */
-export const UnionNumberChoicesField: JTDSchemaType<
-	Omit<Types.Inputs.NumberChoicesField, 'field_type'>,
+/** field_type: 'select_number' */
+export const UnionChoicesFieldNumber: JTDSchemaType<
+	Omit<Types.Inputs.SelectFieldNumber, 'field_type'>,
 	{ ID: string; Label: string }
 > = {
 	properties: {
@@ -103,7 +109,6 @@ export const UnionNumberChoicesField: JTDSchemaType<
 		choices: {
 			values: {
 				properties: {
-					id: { ref: 'ID' },
 					label: { ref: 'Label' },
 					value: { type: 'int8' }
 				},
@@ -112,12 +117,15 @@ export const UnionNumberChoicesField: JTDSchemaType<
 				}
 			}
 		}
+	},
+	optionalProperties: {
+		value: { type: 'int8' }
 	}
 }
 
-/** field_type: 'choices_extend_asset' */
-export const UnionAssetExtensionChoicesField: JTDSchemaType<
-	Omit<Types.Inputs.AssetExtensionChoicesField, 'field_type'>,
+/** field_type: 'select_asset_extension' */
+export const UnionChoicesFieldAssetExtension: JTDSchemaType<
+	Omit<Types.Inputs.SelectFieldAssetExtension, 'field_type'>,
 	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
 > = {
 	properties: {
@@ -126,7 +134,6 @@ export const UnionAssetExtensionChoicesField: JTDSchemaType<
 		choices: {
 			values: {
 				properties: {
-					id: { ref: 'ID' },
 					label: { ref: 'Label' },
 					value: { ref: 'AssetExtension' }
 				},
@@ -135,5 +142,8 @@ export const UnionAssetExtensionChoicesField: JTDSchemaType<
 				}
 			}
 		}
+	},
+	optionalProperties: {
+		value: { ref: 'AssetExtension' }
 	}
 }

@@ -20,10 +20,26 @@ namespace Dataforged
 
             switch (tagValue)
             {
-                case "custom":
-                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceCustom>(ref readerCopy, options);
-                case "stat":
-                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceStat>(ref readerCopy, options);
+                case "custom_value":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceCustomValue>(ref readerCopy, options);
+                case "edge":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceEdge>(ref readerCopy, options);
+                case "health":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceHealth>(ref readerCopy, options);
+                case "heart":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceHeart>(ref readerCopy, options);
+                case "iron":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceIron>(ref readerCopy, options);
+                case "ref":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceRef>(ref readerCopy, options);
+                case "shadow":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceShadow>(ref readerCopy, options);
+                case "spirit":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceSpirit>(ref readerCopy, options);
+                case "supply":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceSupply>(ref readerCopy, options);
+                case "wits":
+                    return JsonSerializer.Deserialize<TriggerOptionActionChoiceWits>(ref readerCopy, options);
                 default:
                     throw new ArgumentException(String.Format("Bad Using value: {0}", tagValue));
             }

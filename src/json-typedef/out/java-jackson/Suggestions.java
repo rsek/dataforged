@@ -11,15 +11,15 @@ import java.util.List;
 public class Suggestions {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("assets")
-    private List<Id> assets;
+    private List<AssetId> assets;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("moves")
-    private List<Id> moves;
+    private List<MoveId> moves;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("oracles")
-    private List<Id> oracles;
+    private List<OracleTableId> oracles;
 
     public Suggestions() {
     }
@@ -27,42 +27,42 @@ public class Suggestions {
     /**
      * Getter for assets.<p>
      */
-    public List<Id> getAssets() {
+    public List<AssetId> getAssets() {
         return assets;
     }
 
     /**
      * Setter for assets.<p>
      */
-    public void setAssets(List<Id> assets) {
+    public void setAssets(List<AssetId> assets) {
         this.assets = assets;
     }
 
     /**
      * Getter for moves.<p>
      */
-    public List<Id> getMoves() {
+    public List<MoveId> getMoves() {
         return moves;
     }
 
     /**
      * Setter for moves.<p>
      */
-    public void setMoves(List<Id> moves) {
+    public void setMoves(List<MoveId> moves) {
         this.moves = moves;
     }
 
     /**
      * Getter for oracles.<p>
      */
-    public List<Id> getOracles() {
+    public List<OracleTableId> getOracles() {
         return oracles;
     }
 
     /**
      * Setter for oracles.<p>
      */
-    public void setOracles(List<Id> oracles) {
+    public void setOracles(List<OracleTableId> oracles) {
         this.oracles = oracles;
     }
 }

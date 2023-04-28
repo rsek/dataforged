@@ -6,9 +6,6 @@ namespace Dataforged
 {
     public class AssetExtensionChoice
     {
-        [JsonPropertyName("id")]
-        public Id Id { get; set; }
-
         [JsonPropertyName("label")]
         public Label Label { get; set; }
 

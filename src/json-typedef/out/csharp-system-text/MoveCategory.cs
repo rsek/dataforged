@@ -17,7 +17,7 @@ namespace Dataforged
         public IDictionary<string, Move> Contents { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public MoveCategoryId Id { get; set; }
 
         [JsonPropertyName("name")]
         public Label Name { get; set; }

@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Extends or upgrades one or more outcomes of an existing move.
+    /// </summary>
     public class MoveOutcomesExtension
     {
         [JsonPropertyName("miss")]

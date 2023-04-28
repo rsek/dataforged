@@ -17,7 +17,7 @@ public class OracleCollection {
     private Map<String, OracleTable> contents;
 
     @JsonProperty("id")
-    private Id id;
+    private OracleCollectionId id;
 
     @JsonProperty("name")
     private Label name;
@@ -90,14 +90,14 @@ public class OracleCollection {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public OracleCollectionId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(OracleCollectionId id) {
         this.id = id;
     }
 

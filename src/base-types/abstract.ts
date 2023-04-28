@@ -59,17 +59,17 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
  * Extends a single rules element
  */
 export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	_extends: T['id']
+	extends: T['id']
 	id: T['id']
 }
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?
 /**
- * Extends multiple rules elements. A null value for "_extends" represents an extension to all qualifying elements.
+ * Extends multiple rules elements. A null value for "extends" represents an extension to all qualifying elements.
  */
 export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	_extends?: Array<T['id']>
-	id: Types.Metadata.ID
+	extends: Array<T['id']> | null
+	// id: Types.Metadata.ID
 }
 
 export interface Collection<T, IDType = Types.Metadata.ID>
@@ -123,7 +123,7 @@ export interface ChoicesBase<TChoice extends ChoiceBase = ChoiceBase> {
 export interface ChoiceBase<
 	TValue extends number | string | object = number | string | object
 > {
-	id: string
+	// id: string
 	label: Types.Localize.Label
 	value: TValue
 }

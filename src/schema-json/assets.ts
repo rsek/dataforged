@@ -30,7 +30,7 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	},
 	oneOf: [
 		refSchema<Types.Inputs.TextField>('TextField'),
-		refSchema<Types.Inputs.ChoicesFieldBase>('ChoicesField')
+		refSchema<Types.Inputs.SelectFieldBase>('ChoicesField')
 	]
 }
 
@@ -41,15 +41,15 @@ const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 	properties: {
 		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID'),
 		field_type: {
-			enum: ['checkbox', 'choices_extend_asset', 'condition_meter']
+			enum: ['checkbox', 'select_asset_extension', 'condition_meter']
 		},
 		label: { type: { $ref: 'Label' } }
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
 		refSchema<Types.Inputs.ConditionMeterField>('ConditionMeterField'),
-		refSchema<Types.Inputs.AssetExtensionChoicesField>(
-			'AssetExtensionChoicesField'
+		refSchema<Types.Inputs.SelectFieldAssetExtension>(
+			'ChoicesFieldAssetExtension'
 		)
 		// refSchema<Types.Assets.ToggleField>('ToggleField')
 	]
@@ -160,7 +160,7 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID'),
-		name: { ...refSchema<Types.Localize.Label>('Label') },
+		name: { ...refSchema<Types.Localize.Label>('Label'), nullable: true },
 		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
 		enabled: { type: 'boolean', default: false },
 		controls: {
@@ -193,7 +193,7 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 			type: 'object',
 			additionalProperties: false,
 			required: undefined as any,
-			nullable: undefined as any,
+			nullable: true,
 			patternProperties: {
 				[DF_KEY]: refSchema<Types.Moves.Move>('Move')
 			}
@@ -244,9 +244,9 @@ export const ToggleField: Schema<Types.Assets.ToggleField> = {
 // export const AssetAbilityExtension: Schema<Types.Assets.AssetAbilityExtension> =
 // 	{
 // 		type: 'object',
-// 		required: ['_extends'],
+// 		required: ['extends'],
 // 		properties: {
-// 			_extends: {
+// 			extends: {
 // 				type: ['null', 'array'],
 // 				items: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID')
 // 			},

@@ -10,7 +10,7 @@ namespace Dataforged
         public MarkdownString Description { get; set; }
 
         [JsonPropertyName("id")]
-        public Id Id { get; set; }
+        public WorldTruthOptionId Id { get; set; }
 
         [JsonPropertyName("quest_starter")]
         public MarkdownString QuestStarter { get; set; }

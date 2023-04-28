@@ -21,6 +21,9 @@ public class TriggerProgressRoll extends Trigger {
 
     /**
      * Getter for text.<p>
+     * Text describing the primary trigger condition of the move. Any trigger
+     * options are assumed to meet this condition in addition to their own
+     * trigger conditions.
      */
     public MarkdownString getText() {
         return text;
@@ -28,6 +31,9 @@ public class TriggerProgressRoll extends Trigger {
 
     /**
      * Setter for text.<p>
+     * Text describing the primary trigger condition of the move. Any trigger
+     * options are assumed to meet this condition in addition to their own
+     * trigger conditions.
      */
     public void setText(MarkdownString text) {
         this.text = text;

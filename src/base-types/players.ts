@@ -3,17 +3,19 @@ import { type Meter, type NumberRangeBase } from 'base-types/abstract'
 
 export interface Extend extends Partial<PlayerCharacter> {}
 
-type StatName = 'edge' | 'heart' | 'iron' | 'shadow' | 'wits'
-export type StatID<TStatName extends string = StatName> =
+export type PlayerStat = 'edge' | 'heart' | 'iron' | 'shadow' | 'wits'
+export type PlayerStatID<TStatName extends string = PlayerStat> =
 	`player/stats/${TStatName}`
-type ConditionMeterName = 'health' | 'spirit' | 'supply'
-export type ConditionMeterID<
-	TConditionMeterName extends string = ConditionMeterName
+export type PlayerConditionMeter = 'health' | 'spirit' | 'supply'
+export type PlayerConditionMeterID<
+	TConditionMeterName extends string = PlayerConditionMeter
 > = `player/condition_meters/${TConditionMeterName}`
 
+export type PlayerStatLike = PlayerStat | PlayerConditionMeter
+
 export interface PlayerCharacter {
-	stats: Record<StatName, Stat>
-	condition_meters: Record<ConditionMeterName, ConditionMeter>
+	stats: Record<PlayerStat, PlayerStatInfo>
+	condition_meters: Record<PlayerConditionMeter, ConditionMeterInfo>
 	momentum: MomentumMeter
 }
 
@@ -25,16 +27,17 @@ export interface PlayerAttribute extends NumberRangeBase {
 	max: number
 }
 
-export interface Stat<TStatName extends string = StatName>
+export interface PlayerStatInfo<TStatName extends string = PlayerStat>
 	extends PlayerAttribute {
-	id: StatID<TStatName>
+	id: PlayerStatID<TStatName>
 	label: TStatName
 }
 
-export interface ConditionMeter<TMeterName extends string = ConditionMeterName>
-	extends Meter,
+export interface ConditionMeterInfo<
+	TMeterName extends string = PlayerConditionMeter
+> extends Meter,
 		PlayerAttribute {
-	id: ConditionMeterID<TMeterName>
+	id: PlayerConditionMeterID<TMeterName>
 	label: TMeterName
 }
 export interface MomentumMeter extends Meter, PlayerAttribute {

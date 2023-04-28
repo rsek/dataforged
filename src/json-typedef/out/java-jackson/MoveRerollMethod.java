@@ -18,19 +18,19 @@ public enum MoveRerollMethod {
     ALL,
 
     /**
-     * Reroll any dice
+     * Reroll any number of dice
      */
     @JsonProperty("any")
     ANY,
 
     /**
-     * Reroll any challenge dice
+     * Reroll any number of challenge dice
      */
     @JsonProperty("challenge_dice")
     CHALLENGE_DICE,
 
     /**
-     * Reroll one challenge die
+     * Reroll one of the challenge dice
      */
     @JsonProperty("challenge_die")
     CHALLENGE_DIE,

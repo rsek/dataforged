@@ -13,7 +13,7 @@ pub struct Asset {
     pub abilities: Vec<AssetAbility>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -57,7 +57,7 @@ pub struct AssetAbility {
     pub enabled: bool,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityId,
 
     #[serde(rename = "text")]
     pub text: MarkdownString,
@@ -103,7 +103,7 @@ pub enum AssetAbilityControlField {
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCheckbox {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -115,7 +115,7 @@ pub struct AssetAbilityControlFieldCheckbox {
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldClock {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -133,7 +133,7 @@ pub struct AssetAbilityControlFieldClock {
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCounter {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -147,6 +147,12 @@ pub struct AssetAbilityControlFieldCounter {
     #[serde(rename = "value")]
     pub value: i8,
 }
+
+pub type AssetAbilityControlFieldId = String;
+
+pub type AssetAbilityId = String;
+
+pub type AssetAbilityOptionFieldId = String;
 
 /// Describes which assets can be attached to this asset. The "canonical"
 /// example for this are Starforged's Module assets, which can be equipped by
@@ -175,17 +181,17 @@ pub enum AssetControlField {
     #[serde(rename = "checkbox")]
     Checkbox(AssetControlFieldCheckbox),
 
-    #[serde(rename = "choices_extend_asset")]
-    ChoicesExtendAsset(AssetControlFieldChoicesExtendAsset),
-
     #[serde(rename = "condition_meter")]
     ConditionMeter(AssetControlFieldConditionMeter),
+
+    #[serde(rename = "select_asset_extension")]
+    SelectAssetExtension(AssetControlFieldSelectAssetExtension),
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldCheckbox {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -195,37 +201,9 @@ pub struct AssetControlFieldCheckbox {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldChoicesExtendAssetChoice {
-    #[serde(rename = "id")]
-    pub id: Id,
-
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "value")]
-    pub value: AssetExtension,
-
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldChoicesExtendAsset {
-    #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetControlFieldChoicesExtendAssetChoice>,
-
-    #[serde(rename = "id")]
-    pub id: Id,
-
-    #[serde(rename = "label")]
-    pub label: Label,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldConditionMeter {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -238,6 +216,35 @@ pub struct AssetControlFieldConditionMeter {
 
     #[serde(rename = "value")]
     pub value: i8,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetControlFieldSelectAssetExtensionChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: AssetExtension,
+
+    #[serde(rename = "selected")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selected: Option<Box<bool>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetControlFieldSelectAssetExtension {
+    #[serde(rename = "choices")]
+    pub choices: HashMap<String, AssetControlFieldSelectAssetExtensionChoice>,
+
+    #[serde(rename = "id")]
+    pub id: AssetAbilityControlFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<AssetExtension>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -262,8 +269,8 @@ pub struct AssetExtensionControl {
     pub min: Option<Box<i8>>,
 }
 
-/// Describes changes applied to an asset, usually by another asset. Assume that
-/// unspecified/null properties are unchanged.
+/// Describes changes applied to an asset by its own abilities or controls.
+/// Unchanged properties are omitted.
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtension {
     #[serde(rename = "attachments")]
@@ -283,9 +290,6 @@ pub struct AssetExtension {
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionChoice {
-    #[serde(rename = "id")]
-    pub id: Id,
-
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -315,15 +319,15 @@ pub struct AssetExtensionForeignControl {
     pub min: Option<Box<i8>>,
 }
 
-/// Describes changes applied to an asset, usually by another asset. Assume that
-/// unspecified/null properties are unchanged.
+/// Describes changes applied to an asset, usually by another asset. Unchanged
+/// properties are omitted.
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionForeign {
-    #[serde(rename = "_extends")]
-    pub extends: Id,
+    #[serde(rename = "extends")]
+    pub extends: AssetId,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "attachments")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -340,6 +344,8 @@ pub struct AssetExtensionForeign {
     pub countAsImpact: Option<Box<bool>>,
 }
 
+pub type AssetId = String;
+
 /// Asset options are fields that are usually only set once, typically when the
 /// player purchases the asset. The most common examples are the "Name" fields
 /// on companion assets. A more complex example is the choice of stats on the
@@ -347,24 +353,21 @@ pub struct AssetExtensionForeign {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "field_type")]
 pub enum AssetOptionField {
-    #[serde(rename = "choices_extend_asset")]
-    ChoicesExtendAsset(AssetOptionFieldChoicesExtendAsset),
+    #[serde(rename = "select_asset_extension")]
+    SelectAssetExtension(AssetOptionFieldSelectAssetExtension),
 
-    #[serde(rename = "choices_number")]
-    ChoicesNumber(AssetOptionFieldChoicesNumber),
+    #[serde(rename = "select_number")]
+    SelectNumber(AssetOptionFieldSelectNumber),
 
-    #[serde(rename = "choices_stat_id")]
-    ChoicesStatId(AssetOptionFieldChoicesStatId),
+    #[serde(rename = "select_stat")]
+    SelectStat(AssetOptionFieldSelectStat),
 
     #[serde(rename = "text")]
     Text(AssetOptionFieldText),
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesExtendAssetChoice {
-    #[serde(rename = "id")]
-    pub id: Id,
-
+pub struct AssetOptionFieldSelectAssetExtensionChoice {
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -377,22 +380,23 @@ pub struct AssetOptionFieldChoicesExtendAssetChoice {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesExtendAsset {
+pub struct AssetOptionFieldSelectAssetExtension {
     #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldChoicesExtendAssetChoice>,
+    pub choices: HashMap<String, AssetOptionFieldSelectAssetExtensionChoice>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<AssetExtension>>,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesNumberChoice {
-    #[serde(rename = "id")]
-    pub id: Id,
-
+pub struct AssetOptionFieldSelectNumberChoice {
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -405,27 +409,28 @@ pub struct AssetOptionFieldChoicesNumberChoice {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesNumber {
+pub struct AssetOptionFieldSelectNumber {
     #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldChoicesNumberChoice>,
+    pub choices: HashMap<String, AssetOptionFieldSelectNumberChoice>,
 
     #[serde(rename = "id")]
-    pub id: Id,
-
-    #[serde(rename = "label")]
-    pub label: Label,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesStatIdChoice {
-    #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
 
     #[serde(rename = "value")]
-    pub value: StatId,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<i8>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetOptionFieldSelectStatChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: PlayerStat,
 
     #[serde(rename = "selected")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -433,21 +438,25 @@ pub struct AssetOptionFieldChoicesStatIdChoice {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldChoicesStatId {
+pub struct AssetOptionFieldSelectStat {
     #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldChoicesStatIdChoice>,
+    pub choices: HashMap<String, AssetOptionFieldSelectStatChoice>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<PlayerStat>>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldText {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: AssetAbilityOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -519,7 +528,7 @@ pub struct DelveSiteDomain {
     pub features: Vec<FeatureOrDanger>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: DelveSiteDomainId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -542,6 +551,8 @@ pub struct DelveSiteDomain {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 }
+
+pub type DelveSiteDomainId = String;
 
 #[derive(Serialize, Deserialize)]
 pub enum DelveSiteThemeCardType {
@@ -561,7 +572,7 @@ pub struct DelveSiteTheme {
     pub features: Vec<FeatureOrDanger>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: DelveSiteThemeId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -584,6 +595,8 @@ pub struct DelveSiteTheme {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
 }
+
+pub type DelveSiteThemeId = String;
 
 pub type EncounterNatureClassic = String;
 
@@ -709,7 +722,7 @@ pub type MarkdownString = String;
 #[derive(Serialize, Deserialize)]
 pub struct Move {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: MoveId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -743,7 +756,7 @@ pub struct MoveCategory {
     pub contents: HashMap<String, Move>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: MoveCategoryId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -763,17 +776,15 @@ pub struct MoveCategory {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+pub type MoveCategoryId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct MoveExtension {
-    #[serde(rename = "id")]
-    pub id: Id,
+    #[serde(rename = "extends")]
+    pub extends: Option<Box<Vec<MoveId>>>,
 
     #[serde(rename = "trigger")]
     pub trigger: TriggerExtension,
-
-    #[serde(rename = "_extends")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub extends: Option<Box<Vec<Id>>>,
 
     #[serde(rename = "outcomes")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -783,6 +794,8 @@ pub struct MoveExtension {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<Box<MarkdownString>>,
 }
+
+pub type MoveId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct MoveOutcome {
@@ -809,6 +822,7 @@ pub struct MoveOutcomeExtensionReroll {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// Extends or upgrades an outcome from an existing move.
 #[derive(Serialize, Deserialize)]
 pub struct MoveOutcomeExtension {
     #[serde(rename = "count_as")]
@@ -853,6 +867,7 @@ pub struct MoveOutcomeMatchableExtensionReroll {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// Extends or upgrades an outcome from an existing move.
 #[derive(Serialize, Deserialize)]
 pub struct MoveOutcomeMatchableExtension {
     #[serde(rename = "count_as")]
@@ -899,6 +914,7 @@ pub struct MoveOutcomes {
     pub weakHit: MoveOutcome,
 }
 
+/// Extends or upgrades one or more outcomes of an existing move.
 #[derive(Serialize, Deserialize)]
 pub struct MoveOutcomesExtension {
     #[serde(rename = "miss")]
@@ -919,6 +935,7 @@ pub struct MoveReroll {
     #[serde(rename = "method")]
     pub method: MoveRerollMethod,
 
+    /// Describes the trigger condition for the reroll, if any.
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<Box<MarkdownString>>,
@@ -934,15 +951,15 @@ pub enum MoveRerollMethod {
     #[serde(rename = "all")]
     All,
 
-    /// Reroll any dice
+    /// Reroll any number of dice
     #[serde(rename = "any")]
     Any,
 
-    /// Reroll any challenge dice
+    /// Reroll any number of challenge dice
     #[serde(rename = "challenge_dice")]
     ChallengeDice,
 
-    /// Reroll one challenge die
+    /// Reroll one of the challenge dice
     #[serde(rename = "challenge_die")]
     ChallengeDie,
 }
@@ -991,7 +1008,7 @@ pub struct OracleCollection {
     pub contents: HashMap<String, OracleTable>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: OracleCollectionId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1047,6 +1064,8 @@ pub struct OracleCollectionColumn {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub label: Option<Box<Label>>,
 }
+
+pub type OracleCollectionId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleCollectionRendering {
@@ -1104,7 +1123,7 @@ pub struct OracleTable {
     pub canonicalName: Label,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: OracleTableId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1146,6 +1165,8 @@ pub struct OracleTableColumn {
     pub label: Option<Box<Label>>,
 }
 
+pub type OracleTableId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableMatchBehavior {
     #[serde(rename = "text")]
@@ -1174,7 +1195,7 @@ pub struct OracleTableRendering {
 #[derive(Serialize, Deserialize)]
 pub struct OracleTableRoll {
     #[serde(rename = "oracle")]
-    pub oracle: Id,
+    pub oracle: OracleTableId,
 
     #[serde(rename = "method")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1203,7 +1224,7 @@ pub struct OracleTableRow {
     pub high: Option<Box<u8>>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: OracleTableRowId,
 
     #[serde(rename = "low")]
     pub low: Option<Box<u8>>,
@@ -1217,7 +1238,7 @@ pub struct OracleTableRow {
 
     #[serde(rename = "embed_table")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub embedTable: Option<Box<Id>>,
+    pub embedTable: Option<Box<OracleTableId>>,
 
     #[serde(rename = "icon")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1240,6 +1261,8 @@ pub struct OracleTableRow {
     pub template: Option<Box<OracleRollTemplate>>,
 }
 
+pub type OracleTableRowId = String;
+
 #[derive(Serialize, Deserialize)]
 pub enum OracleTableStyle {
     #[serde(rename = "embed_as_column")]
@@ -1250,6 +1273,67 @@ pub enum OracleTableStyle {
 
     #[serde(rename = "table")]
     Table,
+}
+
+/// A standard player stat, or a condition meter that can be used as a stat in
+/// an action roll.
+#[derive(Serialize, Deserialize)]
+pub enum PlayerAttributeRollable {
+    #[serde(rename = "edge")]
+    Edge,
+
+    #[serde(rename = "health")]
+    Health,
+
+    #[serde(rename = "heart")]
+    Heart,
+
+    #[serde(rename = "iron")]
+    Iron,
+
+    #[serde(rename = "shadow")]
+    Shadow,
+
+    #[serde(rename = "spirit")]
+    Spirit,
+
+    #[serde(rename = "supply")]
+    Supply,
+
+    #[serde(rename = "wits")]
+    Wits,
+}
+
+/// A standard player character condition meter.
+#[derive(Serialize, Deserialize)]
+pub enum PlayerConditionMeter {
+    #[serde(rename = "health")]
+    Health,
+
+    #[serde(rename = "spirit")]
+    Spirit,
+
+    #[serde(rename = "supply")]
+    Supply,
+}
+
+/// A standard player character stat.
+#[derive(Serialize, Deserialize)]
+pub enum PlayerStat {
+    #[serde(rename = "edge")]
+    Edge,
+
+    #[serde(rename = "heart")]
+    Heart,
+
+    #[serde(rename = "iron")]
+    Iron,
+
+    #[serde(rename = "shadow")]
+    Shadow,
+
+    #[serde(rename = "wits")]
+    Wits,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1294,11 +1378,11 @@ pub enum ProgressType {
     #[serde(rename = "quests_legacy")]
     QuestsLegacy,
 
-    /// A scene challenge progress track
+    /// A scene challenge progress track.
     #[serde(rename = "scene_challenge_progress")]
     SceneChallengeProgress,
 
-    /// A vow progress track, started with Swear an Iron Vow
+    /// A vow progress track, started with Swear an Iron Vow.
     #[serde(rename = "vow_progress")]
     VowProgress,
 }
@@ -1306,13 +1390,13 @@ pub enum ProgressType {
 #[derive(Serialize, Deserialize)]
 pub struct Rarity {
     #[serde(rename = "asset")]
-    pub asset: Id,
+    pub asset: AssetId,
 
     #[serde(rename = "description")]
     pub description: MarkdownString,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: RarityId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1332,6 +1416,8 @@ pub struct Rarity {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+pub type RarityId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct RegionEntry {
     #[serde(rename = "description")]
@@ -1341,7 +1427,7 @@ pub struct RegionEntry {
     pub features: Vec<MarkdownString>,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: RegionEntryId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1360,12 +1446,14 @@ pub struct RegionEntry {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+pub type RegionEntryId = String;
+
 pub type RegularExpression = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct SettingTruth {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: SettingTruthId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1385,13 +1473,15 @@ pub struct SettingTruth {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+pub type SettingTruthId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct SettingTruthOption {
     #[serde(rename = "description")]
     pub description: MarkdownString,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: SettingTruthOptionId,
 
     #[serde(rename = "quest_starter")]
     pub questStarter: MarkdownString,
@@ -1399,6 +1489,8 @@ pub struct SettingTruthOption {
     #[serde(rename = "summary")]
     pub summary: MarkdownString,
 }
+
+pub type SettingTruthOptionId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct Source {
@@ -1431,15 +1523,15 @@ pub type StatId = String;
 pub struct Suggestions {
     #[serde(rename = "assets")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub assets: Option<Box<Vec<Id>>>,
+    pub assets: Option<Box<Vec<AssetId>>>,
 
     #[serde(rename = "moves")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub moves: Option<Box<Vec<Id>>>,
+    pub moves: Option<Box<Vec<MoveId>>>,
 
     #[serde(rename = "oracles")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub oracles: Option<Box<Vec<Id>>>,
+    pub oracles: Option<Box<Vec<OracleTableId>>>,
 }
 
 /// A relative URL pointing to an SVG image.
@@ -1454,6 +1546,7 @@ pub type SvgImageUrl = String;
 /// `{{result:starforged/oracles/core/action}}`
 pub type TemplateString = String;
 
+/// Describes a move's trigger condition(s) and any rolls associated with them.
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "roll_type")]
 pub enum Trigger {
@@ -1466,6 +1559,9 @@ pub enum Trigger {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerActionRoll {
+    /// Text describing the primary trigger condition of the move. Any trigger
+    /// options are assumed to meet this condition in addition to their own
+    /// trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
@@ -1476,6 +1572,9 @@ pub struct TriggerActionRoll {
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerProgressRoll {
+    /// Text describing the primary trigger condition of the move. Any trigger
+    /// options are assumed to meet this condition in addition to their own
+    /// trigger conditions.
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
@@ -1495,6 +1594,7 @@ pub struct TriggerBy {
     pub player: bool,
 }
 
+/// Extends or upgrades an existing move trigger.
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "roll_type")]
 pub enum TriggerExtension {
@@ -1505,12 +1605,14 @@ pub enum TriggerExtension {
     ProgressRoll(TriggerExtensionProgressRoll),
 }
 
+/// Extends or upgrades an existing action roll trigger.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerExtensionActionRoll {
     #[serde(rename = "options")]
     pub options: Vec<TriggerOptionAction>,
 }
 
+/// Extends or upgrades an existing action roll trigger.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerExtensionProgressRoll {
     #[serde(rename = "options")]
@@ -1530,6 +1632,7 @@ pub struct TriggerOptionAction {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub choices: Option<Box<Vec<TriggerOptionActionChoice>>>,
 
+    /// Describes any additional trigger conditions for this trigger option
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<Box<MarkdownString>>,
@@ -1538,15 +1641,39 @@ pub struct TriggerOptionAction {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "using")]
 pub enum TriggerOptionActionChoice {
-    #[serde(rename = "custom")]
-    Custom(TriggerOptionActionChoiceCustom),
+    #[serde(rename = "custom_value")]
+    CustomValue(TriggerOptionActionChoiceCustomValue),
 
-    #[serde(rename = "stat")]
-    Stat(TriggerOptionActionChoiceStat),
+    #[serde(rename = "edge")]
+    Edge(TriggerOptionActionChoiceEdge),
+
+    #[serde(rename = "health")]
+    Health(TriggerOptionActionChoiceHealth),
+
+    #[serde(rename = "heart")]
+    Heart(TriggerOptionActionChoiceHeart),
+
+    #[serde(rename = "iron")]
+    Iron(TriggerOptionActionChoiceIron),
+
+    #[serde(rename = "ref")]
+    Ref(TriggerOptionActionChoiceRef),
+
+    #[serde(rename = "shadow")]
+    Shadow(TriggerOptionActionChoiceShadow),
+
+    #[serde(rename = "spirit")]
+    Spirit(TriggerOptionActionChoiceSpirit),
+
+    #[serde(rename = "supply")]
+    Supply(TriggerOptionActionChoiceSupply),
+
+    #[serde(rename = "wits")]
+    Wits(TriggerOptionActionChoiceWits),
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceCustom {
+pub struct TriggerOptionActionChoiceCustomValue {
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -1555,10 +1682,37 @@ pub struct TriggerOptionActionChoiceCustom {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceStat {
+pub struct TriggerOptionActionChoiceEdge {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceHealth {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceHeart {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceIron {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceRef {
+    #[serde(rename = "label")]
+    pub label: Label,
+
     #[serde(rename = "ref")]
-    pub ref_: StatId,
+    pub ref_: String,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceShadow {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceSpirit {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceSupply {}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerOptionActionChoiceWits {}
 
 #[derive(Serialize, Deserialize)]
 pub struct TriggerOptionProgress {
@@ -1573,6 +1727,7 @@ pub struct TriggerOptionProgress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub choices: Option<Box<Vec<TriggerOptionProgressChoice>>>,
 
+    /// Describes any additional trigger conditions for this trigger option
     #[serde(rename = "text")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub text: Option<Box<MarkdownString>>,
@@ -1593,7 +1748,7 @@ pub type WebpImageUrl = String;
 #[derive(Serialize, Deserialize)]
 pub struct WorldTruth {
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: WorldTruthId,
 
     #[serde(rename = "name")]
     pub name: Label,
@@ -1613,14 +1768,18 @@ pub struct WorldTruth {
     pub suggestions: Option<Box<Suggestions>>,
 }
 
+pub type WorldTruthId = String;
+
 #[derive(Serialize, Deserialize)]
 pub struct WorldTruthOption {
     #[serde(rename = "description")]
     pub description: MarkdownString,
 
     #[serde(rename = "id")]
-    pub id: Id,
+    pub id: WorldTruthOptionId,
 
     #[serde(rename = "quest_starter")]
     pub questStarter: MarkdownString,
 }
+
+pub type WorldTruthOptionId = String;

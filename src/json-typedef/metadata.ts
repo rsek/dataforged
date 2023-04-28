@@ -40,11 +40,11 @@ export const URL: JTDSchemaType<string> = {
 
 export const Suggestions: JTDSchemaType<
 	Types.Metadata.SuggestionsBase,
-	{ ID: string }
+	{ AssetID: string; MoveID: string; OracleTableID: string }
 > = {
 	optionalProperties: {
-		assets: { elements: { ref: 'ID' } },
-		moves: { elements: { ref: 'ID' } },
-		oracles: { elements: { ref: 'ID' } }
+		assets: { elements: { ref: 'AssetID' } },
+		moves: { elements: { ref: 'MoveID' } },
+		oracles: { elements: { ref: 'OracleTableID' } }
 	}
 }

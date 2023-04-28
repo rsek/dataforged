@@ -1,10 +1,14 @@
 import type * as Types from '@base-types'
 import { type JTDSchemaType } from 'ajv/dist/core'
+import { toJtdId } from 'json-typedef/utils'
+import * as JSONSchema from '@schema-json'
+
+export const RegionEntryID = toJtdId(JSONSchema.Regions.RegionEntryID)
 
 export const RegionEntry: JTDSchemaType<
 	Types.Regions.RegionEntry,
 	{
-		ID: string
+		RegionEntryID: string
 		Label: string
 		MarkdownString: string
 		Source: Types.Metadata.Source
@@ -12,7 +16,7 @@ export const RegionEntry: JTDSchemaType<
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'RegionEntryID' },
 		name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		summary: { ref: 'MarkdownString' },

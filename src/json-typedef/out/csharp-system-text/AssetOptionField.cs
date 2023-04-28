@@ -26,12 +26,12 @@ namespace Dataforged
 
             switch (tagValue)
             {
-                case "choices_extend_asset":
-                    return JsonSerializer.Deserialize<AssetOptionFieldChoicesExtendAsset>(ref readerCopy, options);
-                case "choices_number":
-                    return JsonSerializer.Deserialize<AssetOptionFieldChoicesNumber>(ref readerCopy, options);
-                case "choices_stat_id":
-                    return JsonSerializer.Deserialize<AssetOptionFieldChoicesStatId>(ref readerCopy, options);
+                case "select_asset_extension":
+                    return JsonSerializer.Deserialize<AssetOptionFieldSelectAssetExtension>(ref readerCopy, options);
+                case "select_number":
+                    return JsonSerializer.Deserialize<AssetOptionFieldSelectNumber>(ref readerCopy, options);
+                case "select_stat":
+                    return JsonSerializer.Deserialize<AssetOptionFieldSelectStat>(ref readerCopy, options);
                 case "text":
                     return JsonSerializer.Deserialize<AssetOptionFieldText>(ref readerCopy, options);
                 default:

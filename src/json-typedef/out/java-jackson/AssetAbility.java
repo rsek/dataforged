@@ -14,7 +14,7 @@ public class AssetAbility {
     private Boolean enabled;
 
     @JsonProperty("id")
-    private Id id;
+    private AssetAbilityId id;
 
     @JsonProperty("text")
     private MarkdownString text;
@@ -63,14 +63,14 @@ public class AssetAbility {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public AssetAbilityId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(AssetAbilityId id) {
         this.id = id;
     }
 

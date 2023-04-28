@@ -64,13 +64,13 @@ public enum ProgressType {
     QUESTS_LEGACY,
 
     /**
-     * A scene challenge progress track
+     * A scene challenge progress track.
      */
     @JsonProperty("scene_challenge_progress")
     SCENE_CHALLENGE_PROGRESS,
 
     /**
-     * A vow progress track, started with Swear an Iron Vow
+     * A vow progress track, started with Swear an Iron Vow.
      */
     @JsonProperty("vow_progress")
     VOW_PROGRESS,

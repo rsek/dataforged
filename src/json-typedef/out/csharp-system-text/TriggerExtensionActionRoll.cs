@@ -5,6 +5,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Extends or upgrades an existing action roll trigger.
+    /// </summary>
     public class TriggerExtensionActionRoll : TriggerExtension
     {
         [JsonPropertyName("roll_type")]

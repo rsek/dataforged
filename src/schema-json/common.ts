@@ -8,7 +8,7 @@ export const DF_KEY = /^[a-z][a-z_]*[a-z]$/.source
 export function refSchema<T>(defName: string) {
 	// ensures that the schema with the reference behaves
 	const schema = { $ref: `#/definitions/${defName}` }
-	return schema as Schema<T>
+	return schema as Schema<T> & { $ref: string }
 }
 
 type DictionaryOptions<TValue> = Omit<

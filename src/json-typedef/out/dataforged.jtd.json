@@ -66,26 +66,23 @@
 			"optionalProperties": {
 				"assets": {
 					"elements": {
-						"ref": "ID"
+						"ref": "AssetID"
 					}
 				},
 				"moves": {
 					"elements": {
-						"ref": "ID"
+						"ref": "MoveID"
 					}
 				},
 				"oracles": {
 					"elements": {
-						"ref": "ID"
+						"ref": "OracleTableID"
 					}
 				}
 			}
 		},
 		"AssetExtensionChoice": {
 			"properties": {
-				"id": {
-					"ref": "ID"
-				},
 				"label": {
 					"ref": "Label"
 				},
@@ -94,10 +91,16 @@
 				}
 			}
 		},
+		"AssetID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
+			}
+		},
 		"Asset": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "AssetID"
 				},
 				"name": {
 					"ref": "Label"
@@ -165,10 +168,16 @@
 				}
 			}
 		},
+		"AssetAbilityID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]$"
+			}
+		},
 		"AssetAbility": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "AssetAbilityID"
 				},
 				"text": {
 					"ref": "MarkdownString"
@@ -206,13 +215,19 @@
 				}
 			}
 		},
+		"AssetAbilityControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/abilities\\/[0-2]\\/controls\\/[a-z][a-z_]*[a-z]$"
+			}
+		},
 		"AssetAbilityControlField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -226,7 +241,7 @@
 				"clock": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -245,7 +260,7 @@
 				"counter": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -264,6 +279,12 @@
 				}
 			}
 		},
+		"AssetAbilityOptionFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]\\/options\\/[a-z][a-z_]*[a-z]$"
+			}
+		},
 		"AssetOptionField": {
 			"metadata": {
 				"description": "Asset options are fields that are usually only set once, typically when the player purchases the asset. The most common examples are the \"Name\" fields on companion assets. A more complex example is the choice of stats on the Devotant asset."
@@ -273,7 +294,7 @@
 				"text": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -285,10 +306,10 @@
 						}
 					}
 				},
-				"choices_stat_id": {
+				"select_stat": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -296,14 +317,11 @@
 						"choices": {
 							"values": {
 								"properties": {
-									"id": {
-										"ref": "ID"
-									},
 									"label": {
 										"ref": "Label"
 									},
 									"value": {
-										"ref": "StatID"
+										"ref": "PlayerStat"
 									}
 								},
 								"optionalProperties": {
@@ -313,12 +331,17 @@
 								}
 							}
 						}
+					},
+					"optionalProperties": {
+						"value": {
+							"ref": "PlayerStat"
+						}
 					}
 				},
-				"choices_number": {
+				"select_number": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -326,9 +349,6 @@
 						"choices": {
 							"values": {
 								"properties": {
-									"id": {
-										"ref": "ID"
-									},
 									"label": {
 										"ref": "Label"
 									},
@@ -343,12 +363,17 @@
 								}
 							}
 						}
+					},
+					"optionalProperties": {
+						"value": {
+							"type": "int8"
+						}
 					}
 				},
-				"choices_extend_asset": {
+				"select_asset_extension": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -356,9 +381,6 @@
 						"choices": {
 							"values": {
 								"properties": {
-									"id": {
-										"ref": "ID"
-									},
 									"label": {
 										"ref": "Label"
 									},
@@ -373,6 +395,11 @@
 								}
 							}
 						}
+					},
+					"optionalProperties": {
+						"value": {
+							"ref": "AssetExtension"
+						}
 					}
 				}
 			}
@@ -386,7 +413,7 @@
 				"condition_meter": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -405,7 +432,7 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -416,10 +443,10 @@
 						}
 					}
 				},
-				"choices_extend_asset": {
+				"select_asset_extension": {
 					"properties": {
 						"id": {
-							"ref": "ID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -427,9 +454,6 @@
 						"choices": {
 							"values": {
 								"properties": {
-									"id": {
-										"ref": "ID"
-									},
 									"label": {
 										"ref": "Label"
 									},
@@ -444,20 +468,25 @@
 								}
 							}
 						}
+					},
+					"optionalProperties": {
+						"value": {
+							"ref": "AssetExtension"
+						}
 					}
 				}
 			}
 		},
 		"AssetExtensionForeign": {
 			"metadata": {
-				"description": "Describes changes applied to an asset, usually by another asset. Assume that unspecified/null properties are unchanged."
+				"description": "Describes changes applied to an asset, usually by another asset. Unchanged properties are omitted."
 			},
 			"properties": {
-				"_extends": {
-					"ref": "ID"
+				"extends": {
+					"ref": "AssetID"
 				},
 				"id": {
-					"ref": "ID"
+					"ref": "AssetAbilityControlFieldID"
 				}
 			},
 			"optionalProperties": {
@@ -495,7 +524,7 @@
 		},
 		"AssetExtension": {
 			"metadata": {
-				"description": "Describes changes applied to an asset, usually by another asset. Assume that unspecified/null properties are unchanged."
+				"description": "Describes changes applied to an asset by its own abilities or controls. Unchanged properties are omitted."
 			},
 			"optionalProperties": {
 				"count_as_impact": {
@@ -530,10 +559,22 @@
 				}
 			}
 		},
+		"DelveSiteThemeID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/site_themes(\\/[a-z][a-z_]*[a-z]){1}$"
+			}
+		},
+		"DelveSiteDomainID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/site_domains(\\/[a-z][a-z_]*[a-z]){1}$"
+			}
+		},
 		"DelveSiteTheme": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "DelveSiteThemeID"
 				},
 				"name": {
 					"ref": "Label"
@@ -584,7 +625,7 @@
 		"DelveSiteDomain": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "DelveSiteDomainID"
 				},
 				"name": {
 					"ref": "Label"
@@ -785,6 +826,43 @@
 				}
 			}
 		},
+		"PlayerStat": {
+			"enum": [
+				"edge",
+				"heart",
+				"iron",
+				"shadow",
+				"wits"
+			],
+			"metadata": {
+				"description": "A standard player character stat."
+			}
+		},
+		"PlayerConditionMeter": {
+			"enum": [
+				"health",
+				"spirit",
+				"supply"
+			],
+			"metadata": {
+				"description": "A standard player character condition meter."
+			}
+		},
+		"PlayerAttributeRollable": {
+			"metadata": {
+				"description": "A standard player stat, or a condition meter that can be used as a stat in an action roll."
+			},
+			"enum": [
+				"edge",
+				"heart",
+				"iron",
+				"shadow",
+				"wits",
+				"health",
+				"spirit",
+				"supply"
+			]
+		},
 		"TemplateString": {
 			"metadata": {
 				"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\n      The custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n      ",
@@ -816,11 +894,11 @@
 			],
 			"metadata": {
 				"enumDescription": {
-					"any": "Reroll any dice",
+					"any": "Reroll any number of dice",
 					"all": "Reroll all dice",
 					"action_die": "Reroll the action die",
-					"challenge_die": "Reroll one challenge die",
-					"challenge_dice": "Reroll any challenge dice"
+					"challenge_die": "Reroll one of the challenge dice",
+					"challenge_dice": "Reroll any number of challenge dice"
 				}
 			}
 		},
@@ -846,10 +924,19 @@
 				}
 			}
 		},
+		"MoveCategoryID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves\\/[a-z][a-z_]*[a-z]$",
+				"examples": [
+					"starforged/collections/moves/adventure"
+				]
+			}
+		},
 		"MoveCategory": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "MoveCategoryID"
 				},
 				"name": {
 					"ref": "Label"
@@ -896,12 +983,18 @@
 			}
 		},
 		"Trigger": {
+			"metadata": {
+				"description": "Describes a move's trigger condition(s) and any rolls associated with them."
+			},
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
 					"properties": {
 						"text": {
-							"ref": "MarkdownString"
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions."
+							}
 						}
 					},
 					"optionalProperties": {
@@ -915,7 +1008,10 @@
 				"progress_roll": {
 					"properties": {
 						"text": {
-							"ref": "MarkdownString"
+							"ref": "MarkdownString",
+							"metadata": {
+								"description": "Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions."
+							}
 						}
 					},
 					"optionalProperties": {
@@ -950,7 +1046,10 @@
 			},
 			"optionalProperties": {
 				"text": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Describes any additional trigger conditions for this trigger option"
+					}
 				},
 				"by": {
 					"ref": "TriggerBy"
@@ -965,14 +1064,41 @@
 		"TriggerOptionActionChoice": {
 			"discriminator": "using",
 			"mapping": {
-				"stat": {
+				"edge": {
+					"properties": {}
+				},
+				"heart": {
+					"properties": {}
+				},
+				"iron": {
+					"properties": {}
+				},
+				"shadow": {
+					"properties": {}
+				},
+				"wits": {
+					"properties": {}
+				},
+				"health": {
+					"properties": {}
+				},
+				"spirit": {
+					"properties": {}
+				},
+				"supply": {
+					"properties": {}
+				},
+				"ref": {
 					"properties": {
+						"label": {
+							"ref": "Label"
+						},
 						"ref": {
-							"ref": "StatID"
+							"type": "string"
 						}
 					}
 				},
-				"custom": {
+				"custom_value": {
 					"properties": {
 						"label": {
 							"ref": "Label"
@@ -993,7 +1119,10 @@
 			},
 			"optionalProperties": {
 				"text": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Describes any additional trigger conditions for this trigger option"
+					}
 				},
 				"by": {
 					"ref": "TriggerBy"
@@ -1029,8 +1158,8 @@
 			"metadata": {
 				"enumDescription": {
 					"combat_progress": "A combat progress track, started with Enter the Fray.",
-					"vow_progress": "A vow progress track, started with Swear an Iron Vow",
-					"scene_challenge_progress": "A scene challenge progress track",
+					"vow_progress": "A vow progress track, started with Swear an Iron Vow.",
+					"scene_challenge_progress": "A scene challenge progress track.",
 					"expedition_progress": "An expedition progress track, started with Undertake an Expedition (Starforged ruleset only)",
 					"connection_progress": "A connection progress track, started with Make a Connection (Starforged ruleset only)",
 					"quests_legacy": "A player's Quests legacy track (Starforged ruleset only)",
@@ -1083,7 +1212,10 @@
 			},
 			"optionalProperties": {
 				"text": {
-					"ref": "MarkdownString"
+					"ref": "MarkdownString",
+					"metadata": {
+						"description": "Describes the trigger condition for the reroll, if any."
+					}
 				}
 			}
 		},
@@ -1100,10 +1232,14 @@
 				}
 			}
 		},
+		"MoveID": {
+			"type": "string",
+			"metadata": {}
+		},
 		"Move": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "MoveID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1129,19 +1265,17 @@
 		},
 		"MoveExtension": {
 			"properties": {
-				"id": {
-					"ref": "ID"
+				"extends": {
+					"elements": {
+						"ref": "MoveID"
+					},
+					"nullable": true
 				},
 				"trigger": {
 					"ref": "TriggerExtension"
 				}
 			},
 			"optionalProperties": {
-				"_extends": {
-					"elements": {
-						"ref": "ID"
-					}
-				},
 				"text": {
 					"ref": "MarkdownString"
 				},
@@ -1151,9 +1285,15 @@
 			}
 		},
 		"TriggerExtension": {
+			"metadata": {
+				"description": "Extends or upgrades an existing move trigger."
+			},
 			"discriminator": "roll_type",
 			"mapping": {
 				"action_roll": {
+					"metadata": {
+						"description": "Extends or upgrades an existing action roll trigger."
+					},
 					"properties": {
 						"options": {
 							"elements": {
@@ -1163,6 +1303,9 @@
 					}
 				},
 				"progress_roll": {
+					"metadata": {
+						"description": "Extends or upgrades an existing action roll trigger."
+					},
 					"properties": {
 						"options": {
 							"elements": {
@@ -1174,6 +1317,9 @@
 			}
 		},
 		"MoveOutcomesExtension": {
+			"metadata": {
+				"description": "Extends or upgrades one or more outcomes of an existing move."
+			},
 			"optionalProperties": {
 				"miss": {
 					"ref": "MoveOutcomeMatchableExtension"
@@ -1187,6 +1333,9 @@
 			}
 		},
 		"MoveOutcomeExtension": {
+			"metadata": {
+				"description": "Extends or upgrades an outcome from an existing move."
+			},
 			"optionalProperties": {
 				"count_as": {
 					"ref": "MoveOutcomeType"
@@ -1207,6 +1356,9 @@
 			}
 		},
 		"MoveOutcomeMatchableExtension": {
+			"metadata": {
+				"description": "Extends or upgrades an outcome from an existing move."
+			},
 			"optionalProperties": {
 				"count_as": {
 					"ref": "MoveOutcomeType"
@@ -1229,10 +1381,21 @@
 				}
 			}
 		},
+		"OracleTableID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+				"examples": [
+					"starforged/oracles/core/action",
+					"starforged/oracles/character/names/given",
+					"starforged/oracles/planets/furnace/settlements/terminus"
+				]
+			}
+		},
 		"OracleTable": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "OracleTableID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1274,10 +1437,19 @@
 				}
 			}
 		},
+		"OracleTableRowID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
+				"examples": [
+					"ironsworn/oracles/action_and_theme/action/1-1"
+				]
+			}
+		},
 		"OracleTableRow": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "OracleTableRowID"
 				},
 				"low": {
 					"type": "uint8",
@@ -1310,7 +1482,7 @@
 					}
 				},
 				"embed_table": {
-					"ref": "ID"
+					"ref": "OracleTableID"
 				},
 				"suggestions": {
 					"ref": "Suggestions"
@@ -1327,7 +1499,7 @@
 		"OracleTableRoll": {
 			"properties": {
 				"oracle": {
-					"ref": "ID"
+					"ref": "OracleTableID"
 				}
 			},
 			"optionalProperties": {
@@ -1339,10 +1511,21 @@
 				}
 			}
 		},
+		"OracleCollectionID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/oracles(\\/[a-z][a-z_]*[a-z]){1,3}$",
+				"examples": [
+					"starforged/collections/oracles/core",
+					"starforged/collections/oracles/character/names",
+					"starforged/collections/oracles/planets/furnace/settlements"
+				]
+			}
+		},
 		"OracleCollection": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "OracleCollectionID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1489,16 +1672,22 @@
 				"table"
 			]
 		},
+		"RarityID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/rarities(\\/[a-z][a-z_]*[a-z]){1}$"
+			}
+		},
 		"Rarity": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "RarityID"
 				},
 				"name": {
 					"ref": "Label"
 				},
 				"asset": {
-					"ref": "ID"
+					"ref": "AssetID"
 				},
 				"xp_cost": {
 					"type": "uint8"
@@ -1519,10 +1708,19 @@
 				}
 			}
 		},
+		"RegionEntryID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/regions(\\/[a-z][a-z_]*[a-z]){1}$",
+				"examples": [
+					"ironsworn/regions/shattered_wastes"
+				]
+			}
+		},
 		"RegionEntry": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "RegionEntryID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1551,10 +1749,46 @@
 				}
 			}
 		},
+		"WorldTruthID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]$",
+				"examples": [
+					"ironsworn/world_truths/iron"
+				]
+			}
+		},
+		"WorldTruthOptionID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]\\/[0-2]$",
+				"examples": [
+					"ironsworn/world_truths/iron/0"
+				]
+			}
+		},
+		"SettingTruthID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/setting_truths\\/[a-z][a-z_]*[a-z]$",
+				"examples": [
+					"starforged/setting_truths/exodus"
+				]
+			}
+		},
+		"SettingTruthOptionID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9][a-z0-9_]+\\/setting_truths\\/[a-z][a-z_]*[a-z]\\/[0-2]$",
+				"examples": [
+					"starforged/setting_truths/exodus/0"
+				]
+			}
+		},
 		"WorldTruth": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "WorldTruthID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1580,7 +1814,7 @@
 		"WorldTruthOption": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "WorldTruthOptionID"
 				},
 				"description": {
 					"ref": "MarkdownString"
@@ -1593,7 +1827,7 @@
 		"SettingTruth": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "SettingTruthID"
 				},
 				"name": {
 					"ref": "Label"
@@ -1619,7 +1853,7 @@
 		"SettingTruthOption": {
 			"properties": {
 				"id": {
-					"ref": "ID"
+					"ref": "SettingTruthOptionID"
 				},
 				"summary": {
 					"ref": "MarkdownString"

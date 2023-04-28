@@ -11,6 +11,8 @@ import * as Oracles from './oracles'
 import * as Rarities from './rarities'
 import * as Regions from './regions'
 import * as Truths from './truths'
+import * as Players from './player'
+
 import * as fs from 'fs/promises'
 
 import * as JTD from 'jtd'
@@ -22,6 +24,7 @@ const schema: JTD.Schema = {
 		...Assets,
 		...DelveSites,
 		...Encounters,
+		...Players,
 		// ...GameObjects,
 		...Localize,
 		...Moves,
@@ -52,12 +55,15 @@ referenceNames.forEach((name) => {
 
 if (!JTD.isSchema(schema)) throw Error()
 
-if (!JTD.isValidSchema(schema)) throw Error()
-
 const json = JSON.stringify(schema, undefined, '\t')
 const filePath = path.join(
 	process.cwd(),
 	'src/json-typedef/out/dataforged.jtd.json'
 )
 
-fs.writeFile(filePath, json)
+fs.writeFile(filePath, json).then(() => {
+	if (!JTD.isValidSchema(schema))
+		throw Error(
+			`Wrote to ${filePath}, but it\'s not a valid JSON Typedef schema`
+		)
+})

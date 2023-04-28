@@ -9,15 +9,11 @@ import java.util.List;
 
 @JsonSerialize
 public class MoveExtension {
-    @JsonProperty("id")
-    private Id id;
+    @JsonProperty("extends")
+    private List<MoveId> extends_;
 
     @JsonProperty("trigger")
     private TriggerExtension trigger;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("_extends")
-    private List<Id> extends_;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("outcomes")
@@ -31,17 +27,17 @@ public class MoveExtension {
     }
 
     /**
-     * Getter for id.<p>
+     * Getter for extends_.<p>
      */
-    public Id getId() {
-        return id;
+    public List<MoveId> getExtends_() {
+        return extends_;
     }
 
     /**
-     * Setter for id.<p>
+     * Setter for extends_.<p>
      */
-    public void setId(Id id) {
-        this.id = id;
+    public void setExtends_(List<MoveId> extends_) {
+        this.extends_ = extends_;
     }
 
     /**
@@ -56,20 +52,6 @@ public class MoveExtension {
      */
     public void setTrigger(TriggerExtension trigger) {
         this.trigger = trigger;
-    }
-
-    /**
-     * Getter for extends_.<p>
-     */
-    public List<Id> getExtends_() {
-        return extends_;
-    }
-
-    /**
-     * Setter for extends_.<p>
-     */
-    public void setExtends_(List<Id> extends_) {
-        this.extends_ = extends_;
     }
 
     /**

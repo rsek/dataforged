@@ -11,7 +11,7 @@ public class SettingTruthOption {
     private MarkdownString description;
 
     @JsonProperty("id")
-    private Id id;
+    private SettingTruthOptionId id;
 
     @JsonProperty("quest_starter")
     private MarkdownString questStarter;
@@ -39,14 +39,14 @@ public class SettingTruthOption {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public SettingTruthOptionId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(SettingTruthOptionId id) {
         this.id = id;
     }
 

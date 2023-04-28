@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// Extends or upgrades an existing move trigger.
+    /// </summary>
     [JsonConverter(typeof(TriggerExtensionJsonConverter))]
     public abstract class TriggerExtension
     {

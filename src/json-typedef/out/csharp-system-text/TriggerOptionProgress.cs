@@ -18,6 +18,9 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IList<TriggerOptionProgressChoice> Choices { get; set; }
 
+        /// <summary>
+        /// Describes any additional trigger conditions for this trigger option
+        /// </summary>
         [JsonPropertyName("text")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Text { get; set; }

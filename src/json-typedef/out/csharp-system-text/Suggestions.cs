@@ -9,14 +9,14 @@ namespace Dataforged
     {
         [JsonPropertyName("assets")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<Id> Assets { get; set; }
+        public IList<AssetId> Assets { get; set; }
 
         [JsonPropertyName("moves")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<Id> Moves { get; set; }
+        public IList<MoveId> Moves { get; set; }
 
         [JsonPropertyName("oracles")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<Id> Oracles { get; set; }
+        public IList<OracleTableId> Oracles { get; set; }
     }
 }

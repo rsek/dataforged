@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+/**
+ * Extends or upgrades one or more outcomes of an existing move.
+ */
 @JsonSerialize
 public class MoveOutcomesExtension {
     @JsonInclude(JsonInclude.Include.NON_NULL)

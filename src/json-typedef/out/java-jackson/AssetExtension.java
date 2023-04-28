@@ -8,8 +8,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 
 /**
- * Describes changes applied to an asset, usually by another asset. Assume that
- * unspecified/null properties are unchanged.
+ * Describes changes applied to an asset by its own abilities or controls.
+ * Unchanged properties are omitted.
  */
 @JsonSerialize
 public class AssetExtension {

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class Move {
     @JsonProperty("id")
-    private Id id;
+    private MoveId id;
 
     @JsonProperty("name")
     private Label name;
@@ -36,14 +36,14 @@ public class Move {
     /**
      * Getter for id.<p>
      */
-    public Id getId() {
+    public MoveId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(Id id) {
+    public void setId(MoveId id) {
         this.id = id;
     }
 

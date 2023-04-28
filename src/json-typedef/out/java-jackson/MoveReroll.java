@@ -34,6 +34,7 @@ public class MoveReroll {
 
     /**
      * Getter for text.<p>
+     * Describes the trigger condition for the reroll, if any.
      */
     public MarkdownString getText() {
         return text;
@@ -41,6 +42,7 @@ public class MoveReroll {
 
     /**
      * Setter for text.<p>
+     * Describes the trigger condition for the reroll, if any.
      */
     public void setText(MarkdownString text) {
         this.text = text;

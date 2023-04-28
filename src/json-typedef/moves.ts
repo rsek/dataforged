@@ -1,7 +1,9 @@
 import type * as Types from '@base-types'
 import { type JTDSchemaType } from 'ajv/dist/core'
+import { toJtdEnum, toJtdId } from 'json-typedef/utils'
 import * as JTD from 'jtd'
 import { PartialDeep, Simplify } from 'type-fest'
+import * as JSONSchema from '@schema-json'
 
 export type JTDEnum<T extends string> = JTD.SchemaFormEnum & {
 	enum: T[]
@@ -40,6 +42,8 @@ export const MoveRollMethod: JTDEnum<Types.Moves.MoveRollMethod> = {
 	}
 }
 
+export const MoveCategoryID = toJtdId(JSONSchema.Moves.MoveCategoryID)
+
 export const MoveCategory: JTDSchemaType<
 	Types.Moves.MoveCategory,
 	{
@@ -48,12 +52,12 @@ export const MoveCategory: JTDSchemaType<
 		Suggestions: Types.Metadata.SuggestionsBase
 		MarkdownString: string
 		Color: string
-		ID: string
+		MoveCategoryID: string
 		Label: string
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'MoveCategoryID' },
 		name: { ref: 'Label' },
 		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
@@ -163,18 +167,26 @@ export const TriggerOptionAction: JTDSchemaType<
 export const TriggerOptionActionChoice: JTDSchemaType<
 	Types.Moves.TriggerOptionActionChoice,
 	{
-		StatID: string
 		Label: string
 	}
 > = {
 	discriminator: 'using',
 	mapping: {
-		stat: {
+		edge: { properties: {} },
+		heart: { properties: {} },
+		iron: { properties: {} },
+		shadow: { properties: {} },
+		wits: { properties: {} },
+		health: { properties: {} },
+		spirit: { properties: {} },
+		supply: { properties: {} },
+		ref: {
 			properties: {
-				ref: { ref: 'StatID' }
+				label: { ref: 'Label' },
+				ref: { type: 'string' }
 			}
 		},
-		custom: {
+		custom_value: {
 			properties: {
 				label: { ref: 'Label' },
 				value: { type: 'int8' }
@@ -312,6 +324,8 @@ export const MoveOutcomes: JTDSchemaType<
 	}
 }
 
+export const MoveID = toJtdId(JSONSchema.Moves.MoveID)
+
 export const Move: JTDSchemaType<
 	Types.Moves.Move,
 	{
@@ -321,11 +335,11 @@ export const Move: JTDSchemaType<
 		Suggestions: Types.Metadata.SuggestionsBase
 		MarkdownString: string
 		Label: string
-		ID: string
+		MoveID: string
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		id: { ref: 'MoveID' },
 		name: { ref: 'Label' },
 		text: { ref: 'MarkdownString' },
 		outcomes: { ref: 'MoveOutcomes' },
@@ -338,26 +352,26 @@ export const Move: JTDSchemaType<
 export const MoveExtension: JTDSchemaType<
 	Types.Moves.MoveExtension,
 	{
-		ID: string
+		MoveExtensionID: string
+		MoveID: string
 		MarkdownString: string
 		MoveOutcomesExtension: PartialDeep<Types.Moves.MoveOutcomes>
-		TriggerExtension: Types.Moves.TriggerExtension<Types.Moves.Trigger>
+		TriggerExtension: Types.Moves.TriggerExtension<Types.Moves.MoveRollType>
 	}
 > = {
 	properties: {
-		id: { ref: 'ID' },
+		extends: { elements: { ref: 'MoveID' }, nullable: true },
 		trigger: { ref: 'TriggerExtension' }
 	},
 	optionalProperties: {
-		_extends: { elements: { ref: 'ID' } },
 		text: { ref: 'MarkdownString' },
 		outcomes: { ref: 'MoveOutcomesExtension' }
 	}
 }
 
 export const TriggerExtension: JTDSchemaType<
-	| Types.Moves.TriggerExtension<Types.Moves.Trigger<'action_roll'>>
-	| Types.Moves.TriggerExtension<Types.Moves.Trigger<'progress_roll'>>,
+	| Types.Moves.TriggerExtension<'action_roll'>
+	| Types.Moves.TriggerExtension<'progress_roll'>,
 	{
 		TriggerOptionAction: Types.Moves.TriggerOption<'action_roll'>
 		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>

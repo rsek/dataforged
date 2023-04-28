@@ -21,7 +21,7 @@ class Dataforged:
 @dataclass
 class Asset:
     abilities: 'List[AssetAbility]'
-    id: 'ID'
+    id: 'AssetID'
     name: 'Label'
     source: 'Source'
     attachments: 'Optional[AssetAttachment]'
@@ -46,7 +46,7 @@ class Asset:
     def from_json_data(cls, data: Any) -> 'Asset':
         return cls(
             _from_json_data(List[AssetAbility], data.get("abilities")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[AssetAttachment], data.get("attachments")),
@@ -80,7 +80,7 @@ class Asset:
 @dataclass
 class AssetAbility:
     enabled: 'bool'
-    id: 'ID'
+    id: 'AssetAbilityID'
     text: 'MarkdownString'
     controls: 'Optional[Dict[str, AssetAbilityControlField]]'
     extend_asset: 'Optional[AssetExtension]'
@@ -93,7 +93,7 @@ class AssetAbility:
     def from_json_data(cls, data: Any) -> 'AssetAbility':
         return cls(
             _from_json_data(bool, data.get("enabled")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityID, data.get("id")),
             _from_json_data(MarkdownString, data.get("text")),
             _from_json_data(Optional[Dict[str, AssetAbilityControlField]], data.get("controls")),
             _from_json_data(Optional[AssetExtension], data.get("extend_asset")),
@@ -141,7 +141,7 @@ class AssetAbilityControlField:
 
 @dataclass
 class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
-    id: 'ID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     value: 'Optional[bool]'
 
@@ -149,7 +149,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCheckbox':
         return cls(
             "checkbox",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[bool], data.get("value")),
         )
@@ -163,7 +163,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
-    id: 'ID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     max: 'int'
     min: 'int'
@@ -173,7 +173,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldClock':
         return cls(
             "clock",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
@@ -191,7 +191,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldCounter(AssetAbilityControlField):
-    id: 'ID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     max: 'Optional[int]'
     min: 'int'
@@ -201,7 +201,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCounter':
         return cls(
             "counter",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[int], data.get("max")),
             _from_json_data(int, data.get("min")),
@@ -216,6 +216,39 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
         data["min"] = _to_json_data(self.min)
         data["value"] = _to_json_data(self.value)
         return data
+
+@dataclass
+class AssetAbilityControlFieldID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class AssetAbilityID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class AssetAbilityOptionFieldID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class AssetAttachment:
@@ -267,8 +300,8 @@ class AssetControlField:
     def from_json_data(cls, data: Any) -> 'AssetControlField':
         variants: Dict[str, Type[AssetControlField]] = {
             "checkbox": AssetControlFieldCheckbox,
-            "choices_extend_asset": AssetControlFieldChoicesExtendAsset,
             "condition_meter": AssetControlFieldConditionMeter,
+            "select_asset_extension": AssetControlFieldSelectAssetExtension,
         }
 
         return variants[data["field_type"]].from_json_data(data)
@@ -278,7 +311,7 @@ class AssetControlField:
 
 @dataclass
 class AssetControlFieldCheckbox(AssetControlField):
-    id: 'ID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     value: 'Optional[bool]'
 
@@ -286,7 +319,7 @@ class AssetControlFieldCheckbox(AssetControlField):
     def from_json_data(cls, data: Any) -> 'AssetControlFieldCheckbox':
         return cls(
             "checkbox",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[bool], data.get("value")),
         )
@@ -299,55 +332,8 @@ class AssetControlFieldCheckbox(AssetControlField):
         return data
 
 @dataclass
-class AssetControlFieldChoicesExtendAssetChoice:
-    id: 'ID'
-    label: 'Label'
-    value: 'AssetExtension'
-    selected: 'Optional[bool]'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldChoicesExtendAssetChoice':
-        return cls(
-            _from_json_data(ID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
-            _from_json_data(AssetExtension, data.get("value")),
-            _from_json_data(Optional[bool], data.get("selected")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
-        data["label"] = _to_json_data(self.label)
-        data["value"] = _to_json_data(self.value)
-        if self.selected is not None:
-             data["selected"] = _to_json_data(self.selected)
-        return data
-
-@dataclass
-class AssetControlFieldChoicesExtendAsset(AssetControlField):
-    choices: 'Dict[str, AssetControlFieldChoicesExtendAssetChoice]'
-    id: 'ID'
-    label: 'Label'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldChoicesExtendAsset':
-        return cls(
-            "choices_extend_asset",
-            _from_json_data(Dict[str, AssetControlFieldChoicesExtendAssetChoice], data.get("choices")),
-            _from_json_data(ID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "field_type": "choices_extend_asset" }
-        data["choices"] = _to_json_data(self.choices)
-        data["id"] = _to_json_data(self.id)
-        data["label"] = _to_json_data(self.label)
-        return data
-
-@dataclass
 class AssetControlFieldConditionMeter(AssetControlField):
-    id: 'ID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     max: 'int'
     min: 'int'
@@ -357,7 +343,7 @@ class AssetControlFieldConditionMeter(AssetControlField):
     def from_json_data(cls, data: Any) -> 'AssetControlFieldConditionMeter':
         return cls(
             "condition_meter",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
@@ -371,6 +357,54 @@ class AssetControlFieldConditionMeter(AssetControlField):
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
         data["value"] = _to_json_data(self.value)
+        return data
+
+@dataclass
+class AssetControlFieldSelectAssetExtensionChoice:
+    label: 'Label'
+    value: 'AssetExtension'
+    selected: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectAssetExtensionChoice':
+        return cls(
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(AssetExtension, data.get("value")),
+            _from_json_data(Optional[bool], data.get("selected")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["label"] = _to_json_data(self.label)
+        data["value"] = _to_json_data(self.value)
+        if self.selected is not None:
+             data["selected"] = _to_json_data(self.selected)
+        return data
+
+@dataclass
+class AssetControlFieldSelectAssetExtension(AssetControlField):
+    choices: 'Dict[str, AssetControlFieldSelectAssetExtensionChoice]'
+    id: 'AssetAbilityControlFieldID'
+    label: 'Label'
+    value: 'Optional[AssetExtension]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldSelectAssetExtension':
+        return cls(
+            "select_asset_extension",
+            _from_json_data(Dict[str, AssetControlFieldSelectAssetExtensionChoice], data.get("choices")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[AssetExtension], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "field_type": "select_asset_extension" }
+        data["choices"] = _to_json_data(self.choices)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
@@ -416,8 +450,8 @@ class AssetExtensionControl:
 @dataclass
 class AssetExtension:
     """
-    Describes changes applied to an asset, usually by another asset. Assume that
-    unspecified/null properties are unchanged.
+    Describes changes applied to an asset by its own abilities or controls.
+    Unchanged properties are omitted.
     """
 
     attachments: 'Optional[AssetExtensionAttachments]'
@@ -449,21 +483,18 @@ class AssetExtension:
 
 @dataclass
 class AssetExtensionChoice:
-    id: 'ID'
     label: 'Label'
     value: 'AssetExtension'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionChoice':
         return cls(
-            _from_json_data(ID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(AssetExtension, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
@@ -511,12 +542,12 @@ class AssetExtensionForeignControl:
 @dataclass
 class AssetExtensionForeign:
     """
-    Describes changes applied to an asset, usually by another asset. Assume that
-    unspecified/null properties are unchanged.
+    Describes changes applied to an asset, usually by another asset. Unchanged
+    properties are omitted.
     """
 
-    extends: 'ID'
-    id: 'ID'
+    extends: 'AssetID'
+    id: 'AssetAbilityControlFieldID'
     attachments: 'Optional[AssetExtensionForeignAttachments]'
     controls: 'Optional[Dict[str, AssetExtensionForeignControl]]'
     """
@@ -529,8 +560,8 @@ class AssetExtensionForeign:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionForeign':
         return cls(
-            _from_json_data(ID, data.get("_extends")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetID, data.get("extends")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Optional[AssetExtensionForeignAttachments], data.get("attachments")),
             _from_json_data(Optional[Dict[str, AssetExtensionForeignControl]], data.get("controls")),
             _from_json_data(Optional[bool], data.get("count_as_impact")),
@@ -538,7 +569,7 @@ class AssetExtensionForeign:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["_extends"] = _to_json_data(self.extends)
+        data["extends"] = _to_json_data(self.extends)
         data["id"] = _to_json_data(self.id)
         if self.attachments is not None:
              data["attachments"] = _to_json_data(self.attachments)
@@ -547,6 +578,17 @@ class AssetExtensionForeign:
         if self.count_as_impact is not None:
              data["count_as_impact"] = _to_json_data(self.count_as_impact)
         return data
+
+@dataclass
+class AssetID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class AssetOptionField:
@@ -562,9 +604,9 @@ class AssetOptionField:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetOptionField':
         variants: Dict[str, Type[AssetOptionField]] = {
-            "choices_extend_asset": AssetOptionFieldChoicesExtendAsset,
-            "choices_number": AssetOptionFieldChoicesNumber,
-            "choices_stat_id": AssetOptionFieldChoicesStatID,
+            "select_asset_extension": AssetOptionFieldSelectAssetExtension,
+            "select_number": AssetOptionFieldSelectNumber,
+            "select_stat": AssetOptionFieldSelectStat,
             "text": AssetOptionFieldText,
         }
 
@@ -574,16 +616,14 @@ class AssetOptionField:
         pass
 
 @dataclass
-class AssetOptionFieldChoicesExtendAssetChoice:
-    id: 'ID'
+class AssetOptionFieldSelectAssetExtensionChoice:
     label: 'Label'
     value: 'AssetExtension'
     selected: 'Optional[bool]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesExtendAssetChoice':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectAssetExtensionChoice':
         return cls(
-            _from_json_data(ID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(AssetExtension, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
@@ -591,7 +631,6 @@ class AssetOptionFieldChoicesExtendAssetChoice:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -599,38 +638,40 @@ class AssetOptionFieldChoicesExtendAssetChoice:
         return data
 
 @dataclass
-class AssetOptionFieldChoicesExtendAsset(AssetOptionField):
-    choices: 'Dict[str, AssetOptionFieldChoicesExtendAssetChoice]'
-    id: 'ID'
+class AssetOptionFieldSelectAssetExtension(AssetOptionField):
+    choices: 'Dict[str, AssetOptionFieldSelectAssetExtensionChoice]'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
+    value: 'Optional[AssetExtension]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesExtendAsset':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectAssetExtension':
         return cls(
-            "choices_extend_asset",
-            _from_json_data(Dict[str, AssetOptionFieldChoicesExtendAssetChoice], data.get("choices")),
-            _from_json_data(ID, data.get("id")),
+            "select_asset_extension",
+            _from_json_data(Dict[str, AssetOptionFieldSelectAssetExtensionChoice], data.get("choices")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[AssetExtension], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "field_type": "choices_extend_asset" }
+        data = { "field_type": "select_asset_extension" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
-class AssetOptionFieldChoicesNumberChoice:
-    id: 'ID'
+class AssetOptionFieldSelectNumberChoice:
     label: 'Label'
     value: 'int'
     selected: 'Optional[bool]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesNumberChoice':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectNumberChoice':
         return cls(
-            _from_json_data(ID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
@@ -638,7 +679,6 @@ class AssetOptionFieldChoicesNumberChoice:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -646,46 +686,47 @@ class AssetOptionFieldChoicesNumberChoice:
         return data
 
 @dataclass
-class AssetOptionFieldChoicesNumber(AssetOptionField):
-    choices: 'Dict[str, AssetOptionFieldChoicesNumberChoice]'
-    id: 'ID'
+class AssetOptionFieldSelectNumber(AssetOptionField):
+    choices: 'Dict[str, AssetOptionFieldSelectNumberChoice]'
+    id: 'AssetAbilityOptionFieldID'
     label: 'Label'
+    value: 'Optional[int]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesNumber':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectNumber':
         return cls(
-            "choices_number",
-            _from_json_data(Dict[str, AssetOptionFieldChoicesNumberChoice], data.get("choices")),
-            _from_json_data(ID, data.get("id")),
+            "select_number",
+            _from_json_data(Dict[str, AssetOptionFieldSelectNumberChoice], data.get("choices")),
+            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[int], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "field_type": "choices_number" }
+        data = { "field_type": "select_number" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
-class AssetOptionFieldChoicesStatIDChoice:
-    id: 'ID'
+class AssetOptionFieldSelectStatChoice:
     label: 'Label'
-    value: 'StatID'
+    value: 'PlayerStat'
     selected: 'Optional[bool]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesStatIDChoice':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectStatChoice':
         return cls(
-            _from_json_data(ID, data.get("id")),
             _from_json_data(Label, data.get("label")),
-            _from_json_data(StatID, data.get("value")),
+            _from_json_data(PlayerStat, data.get("value")),
             _from_json_data(Optional[bool], data.get("selected")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         if self.selected is not None:
@@ -693,30 +734,34 @@ class AssetOptionFieldChoicesStatIDChoice:
         return data
 
 @dataclass
-class AssetOptionFieldChoicesStatID(AssetOptionField):
-    choices: 'Dict[str, AssetOptionFieldChoicesStatIDChoice]'
-    id: 'ID'
+class AssetOptionFieldSelectStat(AssetOptionField):
+    choices: 'Dict[str, AssetOptionFieldSelectStatChoice]'
+    id: 'AssetAbilityOptionFieldID'
     label: 'Label'
+    value: 'Optional[PlayerStat]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldChoicesStatID':
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectStat':
         return cls(
-            "choices_stat_id",
-            _from_json_data(Dict[str, AssetOptionFieldChoicesStatIDChoice], data.get("choices")),
-            _from_json_data(ID, data.get("id")),
+            "select_stat",
+            _from_json_data(Dict[str, AssetOptionFieldSelectStatChoice], data.get("choices")),
+            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[PlayerStat], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "field_type": "choices_stat_id" }
+        data = { "field_type": "select_stat" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
 class AssetOptionFieldText(AssetOptionField):
-    id: 'ID'
+    id: 'AssetAbilityOptionFieldID'
     label: 'Label'
     value: 'Optional[str]'
 
@@ -724,7 +769,7 @@ class AssetOptionFieldText(AssetOptionField):
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldText':
         return cls(
             "text",
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[str], data.get("value")),
         )
@@ -823,7 +868,7 @@ class DelveSiteDomain:
     card_type: 'DelveSiteDomainCardType'
     dangers: 'List[FeatureOrDanger]'
     features: 'List[FeatureOrDanger]'
-    id: 'ID'
+    id: 'DelveSiteDomainID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
@@ -837,7 +882,7 @@ class DelveSiteDomain:
             _from_json_data(DelveSiteDomainCardType, data.get("card_type")),
             _from_json_data(List[FeatureOrDanger], data.get("dangers")),
             _from_json_data(List[FeatureOrDanger], data.get("features")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(DelveSiteDomainID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
@@ -862,6 +907,17 @@ class DelveSiteDomain:
         if self.suggestions is not None:
              data["suggestions"] = _to_json_data(self.suggestions)
         return data
+
+@dataclass
+class DelveSiteDomainID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'DelveSiteDomainID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 class DelveSiteThemeCardType(Enum):
     THEME = "theme"
@@ -877,7 +933,7 @@ class DelveSiteTheme:
     card_type: 'DelveSiteThemeCardType'
     dangers: 'List[FeatureOrDanger]'
     features: 'List[FeatureOrDanger]'
-    id: 'ID'
+    id: 'DelveSiteThemeID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
@@ -891,7 +947,7 @@ class DelveSiteTheme:
             _from_json_data(DelveSiteThemeCardType, data.get("card_type")),
             _from_json_data(List[FeatureOrDanger], data.get("dangers")),
             _from_json_data(List[FeatureOrDanger], data.get("features")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(DelveSiteThemeID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
@@ -916,6 +972,17 @@ class DelveSiteTheme:
         if self.suggestions is not None:
              data["suggestions"] = _to_json_data(self.suggestions)
         return data
+
+@dataclass
+class DelveSiteThemeID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'DelveSiteThemeID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class EncounterNatureClassic:
@@ -1118,7 +1185,7 @@ class MarkdownString:
 
 @dataclass
 class Move:
-    id: 'ID'
+    id: 'MoveID'
     name: 'Label'
     outcomes: 'MoveOutcomes'
     source: 'Source'
@@ -1129,7 +1196,7 @@ class Move:
     @classmethod
     def from_json_data(cls, data: Any) -> 'Move':
         return cls(
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(MoveID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(MoveOutcomes, data.get("outcomes")),
             _from_json_data(Source, data.get("source")),
@@ -1155,7 +1222,7 @@ class MoveCategory:
     canonical_name: 'Label'
     color: 'Color'
     contents: 'Dict[str, Move]'
-    id: 'ID'
+    id: 'MoveCategoryID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
@@ -1168,7 +1235,7 @@ class MoveCategory:
             _from_json_data(Label, data.get("canonical_name")),
             _from_json_data(Color, data.get("color")),
             _from_json_data(Dict[str, Move], data.get("contents")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(MoveCategoryID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
@@ -1192,34 +1259,52 @@ class MoveCategory:
         return data
 
 @dataclass
+class MoveCategoryID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'MoveCategoryID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class MoveExtension:
-    id: 'ID'
+    extends: 'Optional[List[MoveID]]'
     trigger: 'TriggerExtension'
-    extends: 'Optional[List[ID]]'
     outcomes: 'Optional[MoveOutcomesExtension]'
     text: 'Optional[MarkdownString]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveExtension':
         return cls(
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(Optional[List[MoveID]], data.get("extends")),
             _from_json_data(TriggerExtension, data.get("trigger")),
-            _from_json_data(Optional[List[ID]], data.get("_extends")),
             _from_json_data(Optional[MoveOutcomesExtension], data.get("outcomes")),
             _from_json_data(Optional[MarkdownString], data.get("text")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["id"] = _to_json_data(self.id)
+        data["extends"] = _to_json_data(self.extends)
         data["trigger"] = _to_json_data(self.trigger)
-        if self.extends is not None:
-             data["_extends"] = _to_json_data(self.extends)
         if self.outcomes is not None:
              data["outcomes"] = _to_json_data(self.outcomes)
         if self.text is not None:
              data["text"] = _to_json_data(self.text)
         return data
+
+@dataclass
+class MoveID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'MoveID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class MoveOutcome:
@@ -1266,6 +1351,10 @@ class MoveOutcomeExtensionReroll:
 
 @dataclass
 class MoveOutcomeExtension:
+    """
+    Extends or upgrades an outcome from an existing move.
+    """
+
     count_as: 'Optional[MoveOutcomeType]'
     reroll: 'Optional[MoveOutcomeExtensionReroll]'
     text: 'Optional[MarkdownString]'
@@ -1337,6 +1426,10 @@ class MoveOutcomeMatchableExtensionReroll:
 
 @dataclass
 class MoveOutcomeMatchableExtension:
+    """
+    Extends or upgrades an outcome from an existing move.
+    """
+
     count_as: 'Optional[MoveOutcomeType]'
     match: 'Optional[MoveOutcomeExtension]'
     reroll: 'Optional[MoveOutcomeMatchableExtensionReroll]'
@@ -1409,6 +1502,10 @@ class MoveOutcomes:
 
 @dataclass
 class MoveOutcomesExtension:
+    """
+    Extends or upgrades one or more outcomes of an existing move.
+    """
+
     miss: 'Optional[MoveOutcomeMatchableExtension]'
     strong_hit: 'Optional[MoveOutcomeMatchableExtension]'
     weak_hit: 'Optional[MoveOutcomeExtension]'
@@ -1435,6 +1532,10 @@ class MoveOutcomesExtension:
 class MoveReroll:
     method: 'MoveRerollMethod'
     text: 'Optional[MarkdownString]'
+    """
+    Describes the trigger condition for the reroll, if any.
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveReroll':
@@ -1463,17 +1564,17 @@ class MoveRerollMethod(Enum):
 
     ANY = "any"
     """
-    Reroll any dice
+    Reroll any number of dice
     """
 
     CHALLENGE_DICE = "challenge_dice"
     """
-    Reroll any challenge dice
+    Reroll any number of challenge dice
     """
 
     CHALLENGE_DIE = "challenge_die"
     """
-    Reroll one challenge die
+    Reroll one of the challenge dice
     """
 
     @classmethod
@@ -1534,7 +1635,7 @@ class MoveRollMethod(Enum):
 class OracleCollection:
     canonical_name: 'Label'
     contents: 'Dict[str, OracleTable]'
-    id: 'ID'
+    id: 'OracleCollectionID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
@@ -1551,7 +1652,7 @@ class OracleCollection:
         return cls(
             _from_json_data(Label, data.get("canonical_name")),
             _from_json_data(Dict[str, OracleTable], data.get("contents")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(OracleCollectionID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
@@ -1613,6 +1714,17 @@ class OracleCollectionColumn:
         if self.label is not None:
              data["label"] = _to_json_data(self.label)
         return data
+
+@dataclass
+class OracleCollectionID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleCollectionID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class OracleCollectionRendering:
@@ -1685,7 +1797,7 @@ class OracleRollTemplate:
 @dataclass
 class OracleTable:
     canonical_name: 'Label'
-    id: 'ID'
+    id: 'OracleTableID'
     name: 'Label'
     source: 'Source'
     table: 'List[OracleTableRow]'
@@ -1699,7 +1811,7 @@ class OracleTable:
     def from_json_data(cls, data: Any) -> 'OracleTable':
         return cls(
             _from_json_data(Label, data.get("canonical_name")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(OracleTableID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(List[OracleTableRow], data.get("table")),
@@ -1749,6 +1861,17 @@ class OracleTableColumn:
         return data
 
 @dataclass
+class OracleTableID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class OracleTableMatchBehavior:
     text: 'MarkdownString'
 
@@ -1793,14 +1916,14 @@ class OracleTableRendering:
 
 @dataclass
 class OracleTableRoll:
-    oracle: 'ID'
+    oracle: 'OracleTableID'
     method: 'Optional[OracleTableRollMethod]'
     times: 'Optional[int]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableRoll':
         return cls(
-            _from_json_data(ID, data.get("oracle")),
+            _from_json_data(OracleTableID, data.get("oracle")),
             _from_json_data(Optional[OracleTableRollMethod], data.get("method")),
             _from_json_data(Optional[int], data.get("times")),
         )
@@ -1828,11 +1951,11 @@ class OracleTableRollMethod(Enum):
 @dataclass
 class OracleTableRow:
     high: 'Optional[int]'
-    id: 'ID'
+    id: 'OracleTableRowID'
     low: 'Optional[int]'
     result: 'MarkdownString'
     description: 'Optional[MarkdownString]'
-    embed_table: 'Optional[ID]'
+    embed_table: 'Optional[OracleTableID]'
     icon: 'Optional[SvgImageURL]'
     rolls: 'Optional[List[OracleTableRoll]]'
     suggestions: 'Optional[Suggestions]'
@@ -1843,11 +1966,11 @@ class OracleTableRow:
     def from_json_data(cls, data: Any) -> 'OracleTableRow':
         return cls(
             _from_json_data(Optional[int], data.get("high")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(OracleTableRowID, data.get("id")),
             _from_json_data(Optional[int], data.get("low")),
             _from_json_data(MarkdownString, data.get("result")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
-            _from_json_data(Optional[ID], data.get("embed_table")),
+            _from_json_data(Optional[OracleTableID], data.get("embed_table")),
             _from_json_data(Optional[SvgImageURL], data.get("icon")),
             _from_json_data(Optional[List[OracleTableRoll]], data.get("rolls")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
@@ -1877,12 +2000,76 @@ class OracleTableRow:
              data["template"] = _to_json_data(self.template)
         return data
 
+@dataclass
+class OracleTableRowID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'OracleTableRowID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
 class OracleTableStyle(Enum):
     EMBED_AS_COLUMN = "embed_as_column"
     EMBED_IN_ROW = "embed_in_row"
     TABLE = "table"
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTableStyle':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+class PlayerAttributeRollable(Enum):
+    """
+    A standard player stat, or a condition meter that can be used as a stat in
+    an action roll.
+    """
+
+    EDGE = "edge"
+    HEALTH = "health"
+    HEART = "heart"
+    IRON = "iron"
+    SHADOW = "shadow"
+    SPIRIT = "spirit"
+    SUPPLY = "supply"
+    WITS = "wits"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'PlayerAttributeRollable':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+class PlayerConditionMeter(Enum):
+    """
+    A standard player character condition meter.
+    """
+
+    HEALTH = "health"
+    SPIRIT = "spirit"
+    SUPPLY = "supply"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'PlayerConditionMeter':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+class PlayerStat(Enum):
+    """
+    A standard player character stat.
+    """
+
+    EDGE = "edge"
+    HEART = "heart"
+    IRON = "iron"
+    SHADOW = "shadow"
+    WITS = "wits"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'PlayerStat':
         return cls(data)
 
     def to_json_data(self) -> Any:
@@ -1940,12 +2127,12 @@ class ProgressType(Enum):
 
     SCENE_CHALLENGE_PROGRESS = "scene_challenge_progress"
     """
-    A scene challenge progress track
+    A scene challenge progress track.
     """
 
     VOW_PROGRESS = "vow_progress"
     """
-    A vow progress track, started with Swear an Iron Vow
+    A vow progress track, started with Swear an Iron Vow.
     """
 
     @classmethod
@@ -1957,9 +2144,9 @@ class ProgressType(Enum):
 
 @dataclass
 class Rarity:
-    asset: 'ID'
+    asset: 'AssetID'
     description: 'MarkdownString'
-    id: 'ID'
+    id: 'RarityID'
     name: 'Label'
     source: 'Source'
     xp_cost: 'int'
@@ -1969,9 +2156,9 @@ class Rarity:
     @classmethod
     def from_json_data(cls, data: Any) -> 'Rarity':
         return cls(
-            _from_json_data(ID, data.get("asset")),
+            _from_json_data(AssetID, data.get("asset")),
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(RarityID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(int, data.get("xp_cost")),
@@ -1994,10 +2181,21 @@ class Rarity:
         return data
 
 @dataclass
+class RarityID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RarityID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class RegionEntry:
     description: 'MarkdownString'
     features: 'List[MarkdownString]'
-    id: 'ID'
+    id: 'RegionEntryID'
     name: 'Label'
     quest_starter: 'MarkdownString'
     source: 'Source'
@@ -2009,7 +2207,7 @@ class RegionEntry:
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
             _from_json_data(List[MarkdownString], data.get("features")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(RegionEntryID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(MarkdownString, data.get("quest_starter")),
             _from_json_data(Source, data.get("source")),
@@ -2031,6 +2229,17 @@ class RegionEntry:
         return data
 
 @dataclass
+class RegionEntryID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'RegionEntryID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class RegularExpression:
     value: 'str'
 
@@ -2043,7 +2252,7 @@ class RegularExpression:
 
 @dataclass
 class SettingTruth:
-    id: 'ID'
+    id: 'SettingTruthID'
     name: 'Label'
     options: 'List[SettingTruthOption]'
     source: 'Source'
@@ -2053,7 +2262,7 @@ class SettingTruth:
     @classmethod
     def from_json_data(cls, data: Any) -> 'SettingTruth':
         return cls(
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(SettingTruthID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(List[SettingTruthOption], data.get("options")),
             _from_json_data(Source, data.get("source")),
@@ -2074,9 +2283,20 @@ class SettingTruth:
         return data
 
 @dataclass
+class SettingTruthID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SettingTruthID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class SettingTruthOption:
     description: 'MarkdownString'
-    id: 'ID'
+    id: 'SettingTruthOptionID'
     quest_starter: 'MarkdownString'
     summary: 'MarkdownString'
 
@@ -2084,7 +2304,7 @@ class SettingTruthOption:
     def from_json_data(cls, data: Any) -> 'SettingTruthOption':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(SettingTruthOptionID, data.get("id")),
             _from_json_data(MarkdownString, data.get("quest_starter")),
             _from_json_data(MarkdownString, data.get("summary")),
         )
@@ -2096,6 +2316,17 @@ class SettingTruthOption:
         data["quest_starter"] = _to_json_data(self.quest_starter)
         data["summary"] = _to_json_data(self.summary)
         return data
+
+@dataclass
+class SettingTruthOptionID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'SettingTruthOptionID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class Source:
@@ -2147,16 +2378,16 @@ class StatID:
 
 @dataclass
 class Suggestions:
-    assets: 'Optional[List[ID]]'
-    moves: 'Optional[List[ID]]'
-    oracles: 'Optional[List[ID]]'
+    assets: 'Optional[List[AssetID]]'
+    moves: 'Optional[List[MoveID]]'
+    oracles: 'Optional[List[OracleTableID]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'Suggestions':
         return cls(
-            _from_json_data(Optional[List[ID]], data.get("assets")),
-            _from_json_data(Optional[List[ID]], data.get("moves")),
-            _from_json_data(Optional[List[ID]], data.get("oracles")),
+            _from_json_data(Optional[List[AssetID]], data.get("assets")),
+            _from_json_data(Optional[List[MoveID]], data.get("moves")),
+            _from_json_data(Optional[List[OracleTableID]], data.get("oracles")),
         )
 
     def to_json_data(self) -> Any:
@@ -2207,6 +2438,10 @@ class TemplateString:
 
 @dataclass
 class Trigger:
+    """
+    Describes a move's trigger condition(s) and any rolls associated with them.
+    """
+
     roll_type: 'str'
 
     @classmethod
@@ -2224,6 +2459,12 @@ class Trigger:
 @dataclass
 class TriggerActionRoll(Trigger):
     text: 'MarkdownString'
+    """
+    Text describing the primary trigger condition of the move. Any trigger
+    options are assumed to meet this condition in addition to their own trigger
+    conditions.
+    """
+
     options: 'Optional[List[TriggerOptionAction]]'
 
     @classmethod
@@ -2244,6 +2485,12 @@ class TriggerActionRoll(Trigger):
 @dataclass
 class TriggerProgressRoll(Trigger):
     text: 'MarkdownString'
+    """
+    Text describing the primary trigger condition of the move. Any trigger
+    options are assumed to meet this condition in addition to their own trigger
+    conditions.
+    """
+
     options: 'Optional[List[TriggerOptionProgress]]'
 
     @classmethod
@@ -2286,6 +2533,10 @@ class TriggerBy:
 
 @dataclass
 class TriggerExtension:
+    """
+    Extends or upgrades an existing move trigger.
+    """
+
     roll_type: 'str'
 
     @classmethod
@@ -2302,6 +2553,10 @@ class TriggerExtension:
 
 @dataclass
 class TriggerExtensionActionRoll(TriggerExtension):
+    """
+    Extends or upgrades an existing action roll trigger.
+    """
+
     options: 'List[TriggerOptionAction]'
 
     @classmethod
@@ -2318,6 +2573,10 @@ class TriggerExtensionActionRoll(TriggerExtension):
 
 @dataclass
 class TriggerExtensionProgressRoll(TriggerExtension):
+    """
+    Extends or upgrades an existing action roll trigger.
+    """
+
     options: 'List[TriggerOptionProgress]'
 
     @classmethod
@@ -2338,6 +2597,10 @@ class TriggerOptionAction:
     by: 'Optional[TriggerBy]'
     choices: 'Optional[List[TriggerOptionActionChoice]]'
     text: 'Optional[MarkdownString]'
+    """
+    Describes any additional trigger conditions for this trigger option
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerOptionAction':
@@ -2366,8 +2629,16 @@ class TriggerOptionActionChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoice':
         variants: Dict[str, Type[TriggerOptionActionChoice]] = {
-            "custom": TriggerOptionActionChoiceCustom,
-            "stat": TriggerOptionActionChoiceStat,
+            "custom_value": TriggerOptionActionChoiceCustomValue,
+            "edge": TriggerOptionActionChoiceEdge,
+            "health": TriggerOptionActionChoiceHealth,
+            "heart": TriggerOptionActionChoiceHeart,
+            "iron": TriggerOptionActionChoiceIron,
+            "ref": TriggerOptionActionChoiceRef,
+            "shadow": TriggerOptionActionChoiceShadow,
+            "spirit": TriggerOptionActionChoiceSpirit,
+            "supply": TriggerOptionActionChoiceSupply,
+            "wits": TriggerOptionActionChoiceWits,
         }
 
         return variants[data["using"]].from_json_data(data)
@@ -2376,38 +2647,145 @@ class TriggerOptionActionChoice:
         pass
 
 @dataclass
-class TriggerOptionActionChoiceCustom(TriggerOptionActionChoice):
+class TriggerOptionActionChoiceCustomValue(TriggerOptionActionChoice):
     label: 'Label'
     value: 'int'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceCustom':
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceCustomValue':
         return cls(
-            "custom",
+            "custom_value",
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("value")),
         )
 
     def to_json_data(self) -> Any:
-        data = { "using": "custom" }
+        data = { "using": "custom_value" }
         data["label"] = _to_json_data(self.label)
         data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
-class TriggerOptionActionChoiceStat(TriggerOptionActionChoice):
-    ref: 'StatID'
+class TriggerOptionActionChoiceEdge(TriggerOptionActionChoice):
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceStat':
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceEdge':
         return cls(
-            "stat",
-            _from_json_data(StatID, data.get("ref")),
+            "edge",
         )
 
     def to_json_data(self) -> Any:
-        data = { "using": "stat" }
+        data = { "using": "edge" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceHealth(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceHealth':
+        return cls(
+            "health",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "health" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceHeart(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceHeart':
+        return cls(
+            "heart",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "heart" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceIron(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceIron':
+        return cls(
+            "iron",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "iron" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceRef(TriggerOptionActionChoice):
+    label: 'Label'
+    ref: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceRef':
+        return cls(
+            "ref",
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(str, data.get("ref")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "ref" }
+        data["label"] = _to_json_data(self.label)
         data["ref"] = _to_json_data(self.ref)
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceShadow(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceShadow':
+        return cls(
+            "shadow",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "shadow" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceSpirit(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceSpirit':
+        return cls(
+            "spirit",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "spirit" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceSupply(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceSupply':
+        return cls(
+            "supply",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "supply" }
+        return data
+
+@dataclass
+class TriggerOptionActionChoiceWits(TriggerOptionActionChoice):
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerOptionActionChoiceWits':
+        return cls(
+            "wits",
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "wits" }
         return data
 
 @dataclass
@@ -2416,6 +2794,10 @@ class TriggerOptionProgress:
     by: 'Optional[TriggerBy]'
     choices: 'Optional[List[TriggerOptionProgressChoice]]'
     text: 'Optional[MarkdownString]'
+    """
+    Describes any additional trigger conditions for this trigger option
+    """
+
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerOptionProgress':
@@ -2484,7 +2866,7 @@ class WebpImageURL:
 
 @dataclass
 class WorldTruth:
-    id: 'ID'
+    id: 'WorldTruthID'
     name: 'Label'
     options: 'List[WorldTruthOption]'
     source: 'Source'
@@ -2494,7 +2876,7 @@ class WorldTruth:
     @classmethod
     def from_json_data(cls, data: Any) -> 'WorldTruth':
         return cls(
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(WorldTruthID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(List[WorldTruthOption], data.get("options")),
             _from_json_data(Source, data.get("source")),
@@ -2515,16 +2897,27 @@ class WorldTruth:
         return data
 
 @dataclass
+class WorldTruthID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'WorldTruthID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class WorldTruthOption:
     description: 'MarkdownString'
-    id: 'ID'
+    id: 'WorldTruthOptionID'
     quest_starter: 'MarkdownString'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'WorldTruthOption':
         return cls(
             _from_json_data(MarkdownString, data.get("description")),
-            _from_json_data(ID, data.get("id")),
+            _from_json_data(WorldTruthOptionID, data.get("id")),
             _from_json_data(MarkdownString, data.get("quest_starter")),
         )
 
@@ -2534,6 +2927,17 @@ class WorldTruthOption:
         data["id"] = _to_json_data(self.id)
         data["quest_starter"] = _to_json_data(self.quest_starter)
         return data
+
+@dataclass
+class WorldTruthOptionID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'WorldTruthOptionID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 def _from_json_data(cls: Any, data: Any) -> Any:
     if data is None or cls in [bool, int, float, str, object] or cls is Any:

@@ -49,11 +49,11 @@ export function collectionExtensionSchema<
 	const newSchema: Schema<ExtendOne<TCollection>> = {
 		description: 'Extends a collection with additional items.',
 		type: 'object',
-		required: ['_extends', 'id'],
+		required: ['extends', 'id'],
 		additionalProperties: false,
 		properties: {
 			id: refSchema<string>(idRef),
-			_extends: {
+			extends: {
 				...refSchema<string>(idRef),
 				description: 'The ID of the collection to be extended.'
 			},
