@@ -1,21 +1,18 @@
 starforged:
   _ruleset: starforged
   _source:
-    authors: [Shawn Tomkin]
+    authors:
+      - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
     license: https://creativecommons.org/licenses/by/4.0
     url: https://ironswornrpg.com
     date: 2022-05-06
   oracles:
     space:
-      title:
-        canonical: Space Encounters
-        short: Space
+      name: Space Encounters
       collections:
         sighting:
-          title:
-            canonical: Space Sighting
-            short: Sighting
+          name: Space Sighting
           _source:
             page: 300
           rendering:
@@ -46,8 +43,7 @@ starforged:
           #   repeatable: true
           contents:
             terminus:
-              title:
-                canonical: Terminus
+              name: Terminus
               rendering:
                 style: embed_as_column
               # usage:
@@ -142,8 +138,7 @@ starforged:
                     - times: 3
                       method: keep_duplicates
             outlands:
-              title:
-                canonical: Outlands
+              name: Outlands
               rendering:
                 style: embed_as_column
               # usage:
@@ -212,8 +207,7 @@ starforged:
                 - *Sighting.19
                 - *Sighting.20
             expanse:
-              title:
-                canonical: Expanse
+              name: Expanse
               rendering:
                 style: embed_as_column
               # usage:
@@ -282,10 +276,11 @@ starforged:
                 - *Sighting.19
                 - *Sighting.20
         sector_name:
-          title:
-            canonical: Sector Name
+          name: Sector Name
           _source:
             page: 302
+          summary: To give a sector or region of space a random name, roll once for the first word and once for the second word.
+          description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
           rendering:
             columns:
               result:
@@ -304,11 +299,9 @@ starforged:
             result: "{{result:starforged/oracles/space/sector_name/prefix}} {{result:starforged/oracles/space/sector_name/suffix}}"
           contents:
             prefix:
-              title:
-                canonical: Prefix
+              name: Prefix
               rendering:
                 style: embed_as_column
-              description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
               # usage:
               #   initial: true
               suggestions:
@@ -490,8 +483,7 @@ starforged:
                   high: 100
                   result: Wasted
             suffix:
-              title:
-                canonical: Suffix
+              name: Suffix
               rendering:
                 style: embed_as_column
               description: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
@@ -656,8 +648,7 @@ starforged:
                   result: Zenith
       contents:
         stellar_object:
-          title:
-            canonical: Stellar Object
+          name: Stellar Object
           _source:
             page: 303
           # content:
@@ -706,9 +697,7 @@ starforged:
         peril:
           _source:
             page: 304
-          title:
-            canonical: Spaceborne Peril
-            short: Peril
+          name: Spaceborne Peril
           # usage:
           #   repeatable: true
           #   requires:
@@ -829,9 +818,7 @@ starforged:
         opportunity:
           _source:
             page: 305
-          title:
-            canonical: Spaceborne Opportunity
-            short: Opportunity
+          name: Spaceborne Opportunity
           # usage:
           #   repeatable: true
           #   requires:

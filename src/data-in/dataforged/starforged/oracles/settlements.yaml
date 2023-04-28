@@ -1,20 +1,18 @@
 starforged:
   _ruleset: starforged
   _source:
-    authors: [Shawn Tomkin]
+    authors:
+      - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
     license: https://creativecommons.org/licenses/by/4.0
     date: 2022-05-06
     url: https://ironswornrpg.com
   oracles:
     settlements:
-      title:
-        canonical: Settlements
-        short: Settlement
+      name: Settlements
       collections:
         population:
-          title:
-            canonical: Population
+          name: Population
           _source:
             page: 322
           # usage:
@@ -42,8 +40,7 @@ starforged:
                 label: Number
           contents:
             terminus:
-              title:
-                canonical: Terminus
+              name: Terminus
               rendering: &Pop.rendering
                 style: embed_as_column
               # usage:
@@ -72,8 +69,7 @@ starforged:
                   result: &Pop.4 Tens of thousands
                   # set_attributes: {population: [tens_of_thousands]}
             outlands:
-              title:
-                canonical: Outlands
+              name: Outlands
               rendering: *Pop.rendering
               # usage:
               #   requires:
@@ -96,8 +92,7 @@ starforged:
                   high: 100
                   result: *Pop.4
             expanse:
-              title:
-                canonical: Expanse
+              name: Expanse
               rendering: *Pop.rendering
               # usage:
               #   requires:
@@ -121,20 +116,24 @@ starforged:
                   result: *Pop.4
       contents:
         location:
-          title:
-            canonical: Location
-          _templateOracleTable: *template.info:Generic.Location
+          name: Location
+          # _templateOracleTable: *template.info:Generic.Location
           _source:
             page: 322
-          _templateTableRows:
-            content: *template.content:Generic.Location
-            rolls:
-              - [1, 40]
-              - [41, 75]
-              - [76, 100]
+          # _templateTableRows:
+          #   content: *template.content:Generic.Location
+          table:
+            - low: 1
+              high: 40
+              result: Planetside
+            - low: 41
+              high: 75
+              result: Orbital
+            - low: 76
+              high: 100
+              result: Deep Space
         first_look:
-          title:
-            canonical: First Look
+          name: First Look
           _source:
             page: 323
           # usage:
@@ -210,8 +209,7 @@ starforged:
               result: *result:Descriptor+Focus
 
         initial_contact:
-          title:
-            canonical: Initial Contact
+          name: Initial Contact
           _source:
             page: 323
           # usage:
@@ -266,8 +264,7 @@ starforged:
               # *inherit:Derelict.Settlement
 
         authority:
-          title:
-            canonical: Authority
+          name: Authority
           _source:
             page: 323
           # usage:
@@ -304,9 +301,7 @@ starforged:
               result: Oppressive
               # set_attributes: {authority: [oppressive]}
         projects:
-          title:
-            canonical: Settlement Projects
-            short: Projects
+          name: Settlement Projects
           _source:
             page: 324
           # content:
@@ -417,9 +412,7 @@ starforged:
               high: 100
               result: *result:Action+Theme
         trouble:
-          title:
-            canonical: Settlement Trouble
-            short: Trouble
+          name: Settlement Trouble
           _source:
             page: 324
           # usage:
@@ -552,9 +545,7 @@ starforged:
               high: 100
               result: *result:Action+Theme
         name:
-          title:
-            canonical: Settlement Name
-            short: Name
+          name: Settlement Name
           _source:
             page: 325
           description: |-
