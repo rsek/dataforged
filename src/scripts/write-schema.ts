@@ -29,5 +29,11 @@ for (const options of schemaOptions) {
 			)
 		})
 		.then(() => logger.info(options.messages.finish))
-		.catch(logger.error)
+		.catch(async (e) => {
+			logger.error(e)
+			await writeFile(
+				options.path,
+				JSON.stringify(options.schema, undefined, '\t')
+			)
+		})
 }

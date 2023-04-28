@@ -1,16 +1,15 @@
 starforged:
   _ruleset: starforged
   _source:
-    authors: [Shawn Tomkin]
+    authors:
+      - Shawn Tomkin
     title: 'Ironsworn: Starforged Rulebook'
     license: https://creativecommons.org/licenses/by/4.0
     date: 2022-05-06
     url: https://ironswornrpg.com
   oracles:
     location_themes:
-      title:
-        canonical: Location Themes
-        short: Location Theme
+      name: Location Themes
       _source:
         page: 370
       summary: Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.
@@ -28,9 +27,7 @@ starforged:
         When mixing-and-matching a theme with another set of tables, use the techniques described for an **oracle array** (page 384) to determine which oracle you reference for that question or phase of your exploration.
       contents:
         type:
-          title:
-            canonical: Theme Type
-            short: Type
+          name: Theme Type
           _source:
             page: 370
           # usage:
@@ -91,8 +88,7 @@ starforged:
       collections:
         chaotic:
           _template: LocationThemeOracles
-          title:
-            canonical: Chaotic
+          name: Chaotic
           _source:
             page: 372
           summary: *Chaotic.summary
@@ -101,8 +97,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: &Feature.summary Use this table to reveal a new aspect of the location.
               table:
                 - low: 1
@@ -151,8 +146,7 @@ starforged:
                     - oracle: starforged/oracles/core/focus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: &Peril.summary Use this table to help envision a complication or hazard.
               table:
                 - low: 1
@@ -201,8 +195,7 @@ starforged:
                     - times: 2
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: &Opportunity.summary Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
               table:
                 - low: 1
@@ -222,8 +215,7 @@ starforged:
                   result: Insight into the source or nature of the chaos
         fortified:
           _template: LocationThemeOracles
-          title:
-            canonical: Fortified
+          name: Fortified
           _source:
             page: 373
           summary: *Fortified.summary
@@ -232,8 +224,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -275,8 +266,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -313,8 +303,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -334,8 +323,7 @@ starforged:
                   result: Access to useful equipment or weapons
         haunted:
           _template: LocationThemeOracles
-          title:
-            canonical: Haunted
+          name: Haunted
           _source:
             page: 374
           summary: *Haunted.summary
@@ -344,8 +332,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -387,8 +374,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -425,8 +411,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -446,8 +431,7 @@ starforged:
                   result: Useful or interesting artifact or device
         infested:
           _template: LocationThemeOracles
-          title:
-            canonical: Infested
+          name: Infested
           _source:
             page: 375
           summary: *Infested.summary
@@ -456,8 +440,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -499,8 +482,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -537,8 +519,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -558,8 +539,7 @@ starforged:
                   result: Helpful resource or equipment
         inhabited:
           _template: LocationThemeOracles
-          title:
-            canonical: Inhabited
+          name: Inhabited
           _source:
             page: 376
           summary: *Inhabited.summary
@@ -568,8 +548,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -611,8 +590,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -649,8 +627,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -670,8 +647,7 @@ starforged:
                   result: Old friend or connection resurfaces
         mechanical:
           _template: LocationThemeOracles
-          title:
-            canonical: Mechanical
+          name: Mechanical
           _source:
             page: 377
           summary: *Mechanical.summary
@@ -680,8 +656,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -723,8 +698,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -761,8 +735,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -782,8 +755,7 @@ starforged:
                   result: Wondrous technology
         ruined:
           _template: LocationThemeOracles
-          title:
-            canonical: Ruined
+          name: Ruined
           _source:
             page: 378
           summary: *Ruined.summary
@@ -792,8 +764,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -835,8 +806,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -873,8 +843,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1
@@ -894,8 +863,7 @@ starforged:
                   result: Shortcut or passage through the destruction
         sacred:
           _template: LocationThemeOracles
-          title:
-            canonical: Sacred
+          name: Sacred
           _source:
             page: 379
           summary: *Sacred.summary
@@ -904,8 +872,7 @@ starforged:
           contents:
             feature:
               _template: LocationThemeFeatureOracle
-              title:
-                canonical: Feature
+              name: Feature
               summary: *Feature.summary
               table:
                 - low: 1
@@ -947,8 +914,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               _template: LocationThemePerilOracle
-              title:
-                canonical: Peril
+              name: Peril
               summary: *Peril.summary
               table:
                 - low: 1
@@ -985,8 +951,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               _template: LocationThemeOpportunityOracle
-              title:
-                canonical: Opportunity
+              name: Opportunity
               summary: *Opportunity.summary
               table:
                 - low: 1

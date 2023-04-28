@@ -1,10 +1,10 @@
 import _ from 'lodash'
-import { defsStarforged, defsClassic } from './definitions'
 import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata } from '@base-types'
 import { Source } from './metadata'
 import { type JSONSchema7 } from 'json-schema'
 import { Namespaces } from '@schema-json'
+import { getClassicDefs, getStarforgedDefs } from 'schema-json/definitions'
 
 export const DATASWORN_VERSION = '2.0.0'
 export const DATAFORGED_VERSION = '2.0.0'
@@ -21,6 +21,9 @@ export const SourcePartial: Schema<Partial<Metadata.Source>> = {
 	properties: Source.properties
 }
 
+const defsStarforged = getStarforgedDefs()
+const defsClassic = getClassicDefs()
+
 // const $schema = 'https://json-schema.org/draft/2019-09/schema'
 
 function toInputDefinitions(
@@ -31,7 +34,7 @@ function toInputDefinitions(
 		...defs,
 		SourcePartial: SourcePartial as JSONSchema7
 	})
-	const toMakeOptional = ['id', 'source']
+	const toMakeOptional = ['id', 'source', 'canonical_name']
 	_.forEach(newDefs, (def) => {
 		if (def.required != null) {
 			if (def.required.includes('source')) {

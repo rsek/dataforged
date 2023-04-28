@@ -1,24 +1,21 @@
 starforged:
   _ruleset: starforged
   _source:
-    authors: [Shawn Tomkin]
+    authors:
+      - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
     license: https://creativecommons.org/licenses/by/4.0
     date: 2022-05-06
     url: https://ironswornrpg.com
   oracles:
     derelicts:
-      title:
-        canonical: Derelicts
-        short: Derelict
+      name: Derelicts
       description: |-
         Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
       collections:
         type:
-          title:
-            canonical: Type (by location)
-            standard: Derelict Type (by location)
-            short: Type
+          name: Derelict Type (by location)
+          canonical_name: Type (by location)
           _source:
             page: 348
           # usage:
@@ -44,8 +41,7 @@ starforged:
                 label: Result
           contents:
             planetside:
-              title:
-                canonical: Planetside
+              name: Planetside
               rendering: &derelictTypeDisplay
                 style: embed_as_column
               # usage:
@@ -60,8 +56,7 @@ starforged:
                   result: Settlement
                   # *attr:DerelictType.Settlement
             orbital:
-              title:
-                canonical: Orbital
+              name: Orbital
               rendering: *derelictTypeDisplay
               # usage:
               #   requires: *attr:Location.Orbital
@@ -73,8 +68,7 @@ starforged:
                   high: 100
                   result: Settlement
             deep_space:
-              title:
-                canonical: Deep Space
+              name: Deep Space
               rendering:
                 style: embed_as_column
               # usage:
@@ -87,10 +81,7 @@ starforged:
                   high: 100
                   result: Settlement
         zones:
-          title:
-            canonical: Derelict Zones
-            short: Zones
-
+          name: Derelict Zones
           _source:
             page: 351
           rendering:
@@ -114,8 +105,7 @@ starforged:
           #       derelict_type: null
           contents:
             starship:
-              title:
-                canonical: Starship
+              name: Starship
               rendering:
                 style: embed_as_column
               # usage:
@@ -165,8 +155,7 @@ starforged:
                   icon: &ZoneRow.7.icon icons/derelicts/research.svg
                   # game_objects: *obj:DerelictZone.Research
             settlement:
-              title:
-                canonical: Settlement
+              name: Settlement
               rendering:
                 style: embed_as_column
               # usage:
@@ -206,8 +195,7 @@ starforged:
       contents:
         location:
           _template: LocationOracle
-          title:
-            canonical: Location
+          name: Location
           _source:
             page: 348
           table:
@@ -221,8 +209,7 @@ starforged:
               high: 100
               result: Terminus
         condition:
-          title:
-            canonical: Condition
+          name: Condition
           _source:
             page: 348
           # usage:
@@ -249,8 +236,7 @@ starforged:
               high: 100
               result: Impending destruction
         outer_first_look:
-          title:
-            canonical: Outer First Look
+          name: Outer First Look
           _source:
             page: 349
           # usage:
@@ -290,8 +276,7 @@ starforged:
               high: 100
               result: Time or reality distortions
         inner_first_look:
-          title:
-            canonical: Inner First Look
+          name: Inner First Look
           _source:
             page: 349
           # content:

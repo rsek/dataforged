@@ -14,17 +14,6 @@
 			"type": "string",
 			"enum": ["classic", "starforged"]
 		},
-		"Title": {
-			"title": "Title",
-			"type": "object",
-			"required": ["canonical"],
-			"additionalProperties": false,
-			"properties": {
-				"canonical": { "$ref": "#/definitions/Label" },
-				"standard": { "$ref": "#/definitions/Label" },
-				"short": { "$ref": "#/definitions/Label" }
-			}
-		},
 		"Color": {
 			"title": "Color",
 			"type": "string",
@@ -146,7 +135,7 @@
 			"required": ["name", "abilities"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/AssetID" },
+				"id": { "$ref": "#/definitions/AssetID" },
 				"shared": {
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 					"type": "boolean"
@@ -160,11 +149,11 @@
 							"title": "Asset option field",
 							"type": "object",
 							"properties": {
-								"_id": { "$ref": "#/definitions/AssetOptionFieldID" }
+								"id": { "$ref": "#/definitions/AssetOptionFieldID" }
 							},
 							"oneOf": [
 								{ "$ref": "#/definitions/TextField" },
-								{ "$ref": "#/definitions/ChoicesField" }
+								{ "$ref": "#/definitions/SelectFieldStat" }
 							]
 						}
 					}
@@ -176,13 +165,22 @@
 						"^[a-z][a-z_]*[a-z]$": {
 							"title": "Asset control field",
 							"type": "object",
+							"required": ["id"],
 							"properties": {
-								"_id": { "$ref": "#/definitions/AssetControlFieldID" }
+								"id": { "$ref": "#/definitions/AssetControlFieldID" },
+								"field_type": {
+									"enum": [
+										"checkbox",
+										"select_asset_extension",
+										"condition_meter"
+									]
+								},
+								"label": { "$ref": "#/definitions/Label" }
 							},
 							"oneOf": [
 								{ "$ref": "#/definitions/CheckboxField" },
 								{ "$ref": "#/definitions/ConditionMeterField" },
-								{ "$ref": "#/definitions/ToggleField" }
+								{ "$ref": "#/definitions/SelectFieldAssetExtension" }
 							]
 						}
 					}
@@ -197,7 +195,8 @@
 				"count_as_impact": {
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean",
-					"default": false
+					"default": false,
+					"nullable": true
 				},
 				"source": { "$ref": "#/definitions/Source" },
 				"attachments": { "$ref": "#/definitions/AssetAttachment" },
@@ -208,14 +207,14 @@
 			"title": "Asset attachment",
 			"description": "Describes which assets can be attached to this asset. The \"canonical\" example for this are Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 			"type": "object",
-			"required": ["patterns", "max"],
+			"required": ["patterns"],
 			"properties": {
 				"max": {
 					"title": "Maximum attached assets",
-					"description": "If there's no upper limit to the number of attached assets, this is `null`.",
-					"type": ["integer", "null"],
+					"description": "Omitted if there's no upper limit to the number of attached assets.",
+					"type": "integer",
 					"minimum": 1,
-					"default": null
+					"nullable": true
 				},
 				"patterns": {
 					"title": "Attached asset ID patterns",
@@ -252,8 +251,12 @@
 			"required": ["text"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/AssetAbilityID" },
-				"name": { "$ref": "#/definitions/Label" },
+				"id": { "$ref": "#/definitions/AssetAbilityID" },
+				"name": {
+					"$ref": "#/definitions/Label",
+					"type": "string",
+					"nullable": true
+				},
 				"text": { "$ref": "#/definitions/MarkdownParagraph" },
 				"enabled": { "type": "boolean", "default": false },
 				"controls": {
@@ -261,12 +264,7 @@
 					"additionalProperties": false,
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/TextField" },
-								{ "$ref": "#/definitions/CounterField" },
-								{ "$ref": "#/definitions/ClockField" },
-								{ "$ref": "#/definitions/CheckboxField" }
-							]
+							"oneOf": [{ "$ref": "#/definitions/TextField" }]
 						}
 					}
 				},
@@ -276,13 +274,15 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
 							"type": "object",
-							"allOf": [
+							"required": ["id", "label", "field_type"],
+							"properties": {
+								"id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" },
+								"label": { "$ref": "#/definitions/Label" },
+								"field_type": { "enum": ["text", "checkbox"], "type": "string" }
+							},
+							"oneOf": [
 								{ "$ref": "#/definitions/TextField" },
-								{
-									"properties": {
-										"_id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" }
-									}
-								}
+								{ "$ref": "#/definitions/CheckboxField" }
 							]
 						}
 					}
@@ -296,6 +296,7 @@
 					"description": "Unique moves added by this asset ability.",
 					"type": "object",
 					"additionalProperties": false,
+					"nullable": true,
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
 					}
@@ -314,11 +315,12 @@
 		"AssetType": {
 			"title": "Asset type",
 			"type": "object",
-			"required": ["title", "contents"],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/AssetTypeID" },
-				"title": { "$ref": "#/definitions/Title" },
+				"id": { "$ref": "#/definitions/AssetTypeID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -339,11 +341,11 @@
 			"title": "Asset type extension",
 			"description": "Extends a collection with additional items.",
 			"type": "object",
-			"required": ["_extends"],
+			"required": ["extends"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/AssetTypeID" },
-				"_extends": {
+				"id": { "$ref": "#/definitions/AssetTypeID" },
+				"extends": {
 					"$ref": "#/definitions/AssetTypeID",
 					"description": "The ID of the collection to be extended."
 				},
@@ -362,7 +364,7 @@
 			"type": "object",
 			"required": ["label", "field_type", "choices"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"field_type": { "type": "string", "const": "toggle" },
 				"label": { "$ref": "#/definitions/Label" },
 				"choices": {
@@ -372,8 +374,9 @@
 						"^[a-z][a-z_]*[a-z]$": {
 							"title": "Toggle field option",
 							"type": "object",
-							"required": ["label", "value"],
+							"required": ["id", "label", "value"],
 							"properties": {
+								"id": { "type": "string" },
 								"label": { "$ref": "#/definitions/Label" },
 								"value": { "$ref": "#/definitions/AssetExtension" }
 							}
@@ -393,13 +396,22 @@
 						"^[a-z][a-z_]*[a-z]$": {
 							"title": "Asset control field",
 							"type": "object",
+							"required": ["id"],
 							"properties": {
-								"_id": { "$ref": "#/definitions/AssetControlFieldID" }
+								"id": { "$ref": "#/definitions/AssetControlFieldID" },
+								"field_type": {
+									"enum": [
+										"checkbox",
+										"select_asset_extension",
+										"condition_meter"
+									]
+								},
+								"label": { "$ref": "#/definitions/Label" }
 							},
 							"oneOf": [
 								{ "$ref": "#/definitions/CheckboxField" },
 								{ "$ref": "#/definitions/ConditionMeterField" },
-								{ "$ref": "#/definitions/ToggleField" }
+								{ "$ref": "#/definitions/SelectFieldAssetExtension" }
 							]
 						}
 					}
@@ -407,7 +419,8 @@
 				"count_as_impact": {
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean",
-					"default": false
+					"default": false,
+					"nullable": true
 				},
 				"attachments": { "$ref": "#/definitions/AssetAttachment" },
 				"shared": {
@@ -566,12 +579,12 @@
 		"OracleTable": {
 			"title": "Oracle table",
 			"type": "object",
-			"required": ["title", "table"],
+			"required": ["name", "table"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/OracleTableID" },
-				"_template": { "type": "string" },
-				"title": { "$ref": "#/definitions/Title" },
+				"id": { "$ref": "#/definitions/OracleTableID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -674,20 +687,20 @@
 				},
 				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
-				"_id": { "$ref": "#/definitions/OracleTableRowID" }
+				"id": { "$ref": "#/definitions/OracleTableRowID" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableRowStub",
 					"properties": {
-						"_id": { "const": null },
+						"id": { "const": null },
 						"low": { "const": null },
 						"high": { "const": null }
 					}
 				},
 				{
 					"properties": {
-						"_id": { "type": "string" },
+						"id": { "type": "string" },
 						"low": { "type": "integer" },
 						"high": { "type": "integer" }
 					}
@@ -719,11 +732,12 @@
 		"OracleCollection": {
 			"title": "Oracle collection",
 			"type": "object",
-			"required": ["title", "contents"],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/OracleCollectionID" },
-				"title": { "$ref": "#/definitions/Title" },
+				"id": { "$ref": "#/definitions/OracleCollectionID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -791,11 +805,11 @@
 			"title": "Oracle collection extension",
 			"description": "Extends a collection with additional items.",
 			"type": "object",
-			"required": ["_extends"],
+			"required": ["extends"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/OracleCollectionID" },
-				"_extends": {
+				"id": { "$ref": "#/definitions/OracleCollectionID" },
+				"extends": {
 					"$ref": "#/definitions/OracleCollectionID",
 					"description": "The ID of the collection to be extended."
 				},
@@ -830,20 +844,20 @@
 				{ "$ref": "#/definitions/OracleCollectionTemplate" }
 			]
 		},
-		"StatID": {
-			"title": "Stat ID",
+		"PlayerStat": {
+			"title": "Player stat",
 			"type": "string",
-			"description": "ID for a standard player character stat.",
-			"enum": [
-				"player/stats/edge",
-				"player/stats/heart",
-				"player/stats/iron",
-				"player/stats/shadow",
-				"player/stats/wits"
-			]
+			"description": "A standard player character stat.",
+			"enum": ["edge", "heart", "iron", "shadow", "wits"]
 		},
-		"ConditionMeterID": {
-			"title": "Condition meter ID",
+		"PlayerConditionMeter": {
+			"title": "Player condition meter",
+			"type": "string",
+			"description": "A standard player character condition meter.",
+			"enum": ["health", "spirit", "supply"]
+		},
+		"PlayerConditionMeterID": {
+			"title": "Player condition meter ID",
 			"type": "string",
 			"description": "ID for a standard player character condition meter.",
 			"enum": [
@@ -941,7 +955,7 @@
 					"$ref": "#/definitions/MarkdownParagraphs"
 				},
 				"source": { "$ref": "#/definitions/Source" },
-				"_id": { "$ref": "#/definitions/EncounterStarforgedID" },
+				"id": { "$ref": "#/definitions/EncounterStarforgedID" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
@@ -986,11 +1000,12 @@
 		"MoveCategory": {
 			"title": "Move category",
 			"type": "object",
-			"required": ["title", "contents"],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/MoveCategoryID" },
-				"title": { "$ref": "#/definitions/Title" },
+				"id": { "$ref": "#/definitions/MoveCategoryID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -1011,11 +1026,11 @@
 			"title": "Move category extension",
 			"description": "Extends a collection with additional items.",
 			"type": "object",
-			"required": ["_extends"],
+			"required": ["extends"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/MoveCategoryID" },
-				"_extends": {
+				"id": { "$ref": "#/definitions/MoveCategoryID" },
+				"extends": {
 					"$ref": "#/definitions/MoveCategoryID",
 					"description": "The ID of the collection to be extended."
 				},
@@ -1034,88 +1049,146 @@
 			"type": "string",
 			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
-		"RollableStatID": {
-			"title": "Rollable stat ID",
-			"oneOf": [
-				{ "$ref": "#/definitions/StatID" },
-				{ "$ref": "#/definitions/ConditionMeterID" },
-				{ "$ref": "#/definitions/AssetAbilityControlFieldID" },
-				{ "$ref": "#/definitions/AssetControlFieldID" },
-				{ "$ref": "#/definitions/AssetAbilityOptionFieldID" },
-				{ "$ref": "#/definitions/AssetOptionFieldID" },
-				{ "$ref": "#/definitions/ConditionMeterAlias" }
-			]
-		},
-		"RollType": {
-			"title": "Roll type",
+		"MoveRollType": {
+			"title": "Move roll type",
 			"type": "string",
 			"enum": ["action_roll", "progress_roll"]
 		},
-		"RollMethod": {
-			"title": "Roll method",
+		"MoveRollMethod": {
+			"title": "Move roll method",
 			"type": "string",
 			"enum": ["any", "highest", "lowest", "all"],
 			"description": "`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key."
 		},
-		"TriggerChoiceBase": {
-			"title": "Trigger choice",
+		"TriggerRollOptionActionChoiceRef": {
+			"title": "Trigger roll option action choice ref",
+			"description": "An action roll that references a value provided by an asset",
 			"type": "object",
-			"description": "Properties common to trigger options for both action rolls and progress rolls.",
+			"required": ["ref", "using"],
 			"properties": {
-				"label": { "$ref": "#/definitions/Label" },
-				"using": { "enum": ["progress", "custom", "stat"] },
-				"value": { "type": "integer" },
-				"ref": { "type": "string" }
-			}
-		},
-		"TriggerChoiceProgress": {
-			"title": "Trigger choice (progress roll)",
-			"type": "object",
-			"allOf": [
-				{ "$ref": "#/definitions/TriggerChoiceBase" },
-				{
-					"required": ["ref"],
-					"properties": {
-						"using": { "const": "progress" },
-						"ref": {
-							"$ref": "#/definitions/ProgressType",
-							"description": "The progress types that are valid for this trigger choice."
-						}
-					}
-				}
-			]
-		},
-		"TriggerChoiceAction": {
-			"title": "Trigger choice action",
-			"type": "object",
-			"allOf": [
-				{ "$ref": "#/definitions/TriggerChoiceBase" },
-				{
+				"using": { "const": "ref", "type": "string" },
+				"ref": {
+					"description": "Identifies the stat whose value is to be referenced.",
 					"oneOf": [
-						{
-							"description": "For action rolls that use standard player stats, player condition meters, and asset condition meters (which is most of them).",
-							"required": ["ref"],
-							"properties": {
-								"using": { "const": "stat" },
-								"ref": { "$ref": "#/definitions/RollableStatID" },
-								"value": {
-									"$comment": "Leave undefined for data entry. Best implemented as a getter."
-								}
-							}
-						},
-						{
-							"title": "Trigger choice (custom value)",
-							"description": "Defines a custom static value to be used in place of a stat for an action roll.",
-							"required": ["value"],
-							"properties": {
-								"using": { "const": "custom" },
-								"value": { "type": "integer" },
-								"ref": { "const": null }
-							}
-						}
+						{ "$ref": "#/definitions/AssetControlFieldID" },
+						{ "$ref": "#/definitions/AssetOptionFieldID" },
+						{ "$ref": "#/definitions/ConditionMeterAlias" }
 					]
 				}
-			]
+			}
+		},
+		"TriggerRollOptionActionChoiceStat": {
+			"title": "Trigger roll option action choice stat",
+			"required": ["using"],
+			"type": "object",
+			"properties": {
+				"using": {
+					"oneOf": [
+						{ "$ref": "#/definitions/PlayerConditionMeter" },
+						{ "$ref": "#/definitions/PlayerStat" }
+					]
+				}
+			}
+		},
+		"TriggerRollOptionActionChoiceCustomValue": {
+			"title": "Trigger roll option action choice custom value",
+			"required": ["using", "label", "value"],
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/definitions/Label" },
+				"using": { "type": "string", "const": "custom_value" },
+				"value": { "type": "integer" }
+			}
+		},
+		"TriggerRollOptionAction": {
+			"title": "Trigger option",
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"text": { "$ref": "#/definitions/MarkdownPhrase" },
+				"method": {
+					"default": "any",
+					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+					"oneOf": [
+						{ "$ref": "#/definitions/MoveRollMethod" },
+						{ "$ref": "#/definitions/MoveOutcomeType" }
+					]
+				},
+				"choices": {
+					"title": "Trigger option choices",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"oneOf": [
+							{ "$ref": "#/definitions/TriggerRollOptionActionChoiceStat" },
+							{ "$ref": "#/definitions/TriggerRollOptionActionChoiceRef" },
+							{
+								"$ref": "#/definitions/TriggerRollOptionActionChoiceCustomValue"
+							}
+						]
+					},
+					"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+				},
+				"by": {
+					"title": "Triggered by",
+					"type": "object",
+					"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+					"additionalProperties": false,
+					"default": { "player": true, "ally": false },
+					"required": ["player", "ally"],
+					"properties": {
+						"player": { "type": "boolean", "default": true },
+						"ally": { "type": "boolean", "default": false }
+					}
+				}
+			}
+		},
+		"TriggerRollOptionProgress": {
+			"title": "Trigger option (progress move)",
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"text": { "$ref": "#/definitions/MarkdownPhrase" },
+				"method": {
+					"default": "any",
+					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
+					"oneOf": [
+						{ "$ref": "#/definitions/MoveRollMethod" },
+						{ "$ref": "#/definitions/MoveOutcomeType" }
+					]
+				},
+				"choices": {
+					"title": "Trigger option choices",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"title": "Trigger choice (progress roll)",
+						"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
+						"properties": {
+							"label": { "$ref": "#/definitions/Label" },
+							"value": {
+								"type": "integer",
+								"$comment": "Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value."
+							},
+							"using": { "$ref": "#/definitions/ProgressType" }
+						},
+						"required": ["using"]
+					},
+					"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
+				},
+				"by": {
+					"title": "Triggered by",
+					"type": "object",
+					"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
+					"additionalProperties": false,
+					"default": { "player": true, "ally": false },
+					"required": ["player", "ally"],
+					"properties": {
+						"player": { "type": "boolean", "default": true },
+						"ally": { "type": "boolean", "default": false }
+					}
+				}
+			}
 		},
 		"Move": {
 			"title": "Move",
@@ -1123,11 +1196,11 @@
 			"required": ["name", "text", "trigger"],
 			"additionalProperties": false,
 			"properties": {
-				"_id": { "$ref": "#/definitions/MoveID" },
+				"id": { "$ref": "#/definitions/MoveID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"trigger": {
 					"title": "Trigger",
-					"description": "Describes a move's trigger conditions",
+					"description": "Describes a move's trigger conditions.",
 					"type": "object",
 					"required": ["text"],
 					"additionalProperties": false,
@@ -1138,31 +1211,20 @@
 							"type": "string",
 							"pattern": "^.*\\.{3}$"
 						},
-						"roll_type": {
-							"description": "This is `null` if no action rolls or progress rolls are associated with this trigger.",
-							"default": null,
-							"oneOf": [{ "const": null }, { "$ref": "#/definitions/RollType" }]
-						},
-						"options": {
+						"roll_type": { "$ref": "#/definitions/MoveRollType" },
+						"roll_options": {
 							"description": "Available options for triggering this move.",
-							"type": ["array", "null"],
-							"default": null
+							"type": "array",
+							"nullable": true,
+							"items": { "type": "object" }
 						}
 					},
 					"oneOf": [
 						{
-							"title": "Trigger (no roll)",
-							"properties": {
-								"roll_type": { "const": null },
-								"options": { "const": null }
-							}
-						},
-						{
 							"title": "Trigger (action roll)",
-							"required": ["options"],
 							"properties": {
 								"roll_type": { "const": "action_roll" },
-								"options": {
+								"roll_options": {
 									"type": "array",
 									"items": {
 										"title": "Trigger option",
@@ -1174,7 +1236,7 @@
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
-													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveRollMethod" },
 													{ "$ref": "#/definitions/MoveOutcomeType" }
 												]
 											},
@@ -1183,7 +1245,17 @@
 												"type": "array",
 												"items": {
 													"type": "object",
-													"$ref": "#/definitions/TriggerChoiceAction"
+													"oneOf": [
+														{
+															"$ref": "#/definitions/TriggerRollOptionActionChoiceStat"
+														},
+														{
+															"$ref": "#/definitions/TriggerRollOptionActionChoiceRef"
+														},
+														{
+															"$ref": "#/definitions/TriggerRollOptionActionChoiceCustomValue"
+														}
+													]
 												},
 												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
 											},
@@ -1206,10 +1278,9 @@
 						},
 						{
 							"title": "Trigger (progress move)",
-							"required": ["options"],
 							"properties": {
 								"roll_type": { "const": "progress_roll" },
-								"options": {
+								"roll_options": {
 									"title": "Trigger options (progress move)",
 									"type": "array",
 									"items": {
@@ -1222,7 +1293,7 @@
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
-													{ "$ref": "#/definitions/RollMethod" },
+													{ "$ref": "#/definitions/MoveRollMethod" },
 													{ "$ref": "#/definitions/MoveOutcomeType" }
 												]
 											},
@@ -1231,7 +1302,17 @@
 												"type": "array",
 												"items": {
 													"type": "object",
-													"$ref": "#/definitions/TriggerChoiceProgress"
+													"title": "Trigger choice (progress roll)",
+													"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
+													"properties": {
+														"label": { "$ref": "#/definitions/Label" },
+														"value": {
+															"type": "integer",
+															"$comment": "Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value."
+														},
+														"using": { "$ref": "#/definitions/ProgressType" }
+													},
+													"required": ["using"]
 												},
 												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
 											},
@@ -1271,6 +1352,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1297,6 +1379,7 @@
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
+											"nullable": true,
 											"properties": {
 												"text": { "$ref": "#/definitions/MarkdownPhrase" },
 												"method": {
@@ -1327,6 +1410,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1355,6 +1439,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1381,6 +1466,7 @@
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
+											"nullable": true,
 											"properties": {
 												"text": { "$ref": "#/definitions/MarkdownPhrase" },
 												"method": {
@@ -1407,146 +1493,47 @@
 				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
+		"TriggerExtension": {
+			"title": "Trigger extension",
+			"required": ["roll_options", "roll_type"],
+			"type": "object",
+			"properties": {
+				"roll_type": { "$ref": "#/definitions/MoveRollType" },
+				"roll_options": { "type": "array" }
+			},
+			"oneOf": [
+				{
+					"properties": {
+						"roll_type": { "const": "action_roll" },
+						"roll_options": {
+							"type": "array",
+							"items": { "$ref": "#/definitions/TriggerRollOptionAction" }
+						}
+					}
+				},
+				{
+					"properties": {
+						"roll_type": { "const": "progress_roll" },
+						"roll_options": {
+							"type": "array",
+							"items": { "$ref": "#/definitions/TriggerRollOptionProgress" }
+						}
+					}
+				}
+			]
+		},
 		"MoveExtension": {
 			"title": "Move extension",
 			"description": "Upgrades or otherwise modifies one or more moves.",
-			"required": ["_extends"],
+			"required": ["extends"],
 			"type": "object",
 			"properties": {
-				"_id": { "$ref": "#/definitions/ID" },
-				"_extends": {
+				"extends": {
 					"description": "An array of Move IDs",
-					"type": ["array", "null"],
+					"type": "array",
 					"items": { "$ref": "#/definitions/MoveID" }
 				},
-				"trigger": {
-					"title": "Trigger",
-					"description": "Describes a move's trigger conditions",
-					"type": "object",
-					"additionalProperties": false,
-					"properties": {
-						"text": {
-							"$ref": "#/definitions/MarkdownPhrase",
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.",
-							"type": "string",
-							"pattern": "^.*\\.{3}$"
-						},
-						"roll_type": {
-							"description": "This is `null` if no action rolls or progress rolls are associated with this trigger.",
-							"default": null,
-							"oneOf": [{ "const": null }, { "$ref": "#/definitions/RollType" }]
-						},
-						"options": {
-							"description": "Available options for triggering this move.",
-							"type": ["array", "null"],
-							"default": null
-						}
-					},
-					"oneOf": [
-						{
-							"title": "Trigger (no roll)",
-							"properties": {
-								"roll_type": { "const": null },
-								"options": { "const": null }
-							}
-						},
-						{
-							"title": "Trigger (action roll)",
-							"required": ["options"],
-							"properties": {
-								"roll_type": { "const": "action_roll" },
-								"options": {
-									"type": "array",
-									"items": {
-										"title": "Trigger option",
-										"type": "object",
-										"additionalProperties": false,
-										"properties": {
-											"text": { "$ref": "#/definitions/MarkdownPhrase" },
-											"method": {
-												"default": "any",
-												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
-												"oneOf": [
-													{ "$ref": "#/definitions/RollMethod" },
-													{ "$ref": "#/definitions/MoveOutcomeType" }
-												]
-											},
-											"choices": {
-												"title": "Trigger option choices",
-												"type": "array",
-												"items": {
-													"type": "object",
-													"$ref": "#/definitions/TriggerChoiceAction"
-												},
-												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
-											},
-											"by": {
-												"title": "Triggered by",
-												"type": "object",
-												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
-												"additionalProperties": false,
-												"default": { "player": true, "ally": false },
-												"required": ["player", "ally"],
-												"properties": {
-													"player": { "type": "boolean", "default": true },
-													"ally": { "type": "boolean", "default": false }
-												}
-											}
-										}
-									}
-								}
-							}
-						},
-						{
-							"title": "Trigger (progress move)",
-							"required": ["options"],
-							"properties": {
-								"roll_type": { "const": "progress_roll" },
-								"options": {
-									"title": "Trigger options (progress move)",
-									"type": "array",
-									"items": {
-										"title": "Trigger option (progress move)",
-										"type": "object",
-										"additionalProperties": false,
-										"properties": {
-											"text": { "$ref": "#/definitions/MarkdownPhrase" },
-											"method": {
-												"default": "any",
-												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
-												"oneOf": [
-													{ "$ref": "#/definitions/RollMethod" },
-													{ "$ref": "#/definitions/MoveOutcomeType" }
-												]
-											},
-											"choices": {
-												"title": "Trigger option choices",
-												"type": "array",
-												"items": {
-													"type": "object",
-													"$ref": "#/definitions/TriggerChoiceProgress"
-												},
-												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
-											},
-											"by": {
-												"title": "Triggered by",
-												"type": "object",
-												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
-												"additionalProperties": false,
-												"default": { "player": true, "ally": false },
-												"required": ["player", "ally"],
-												"properties": {
-													"player": { "type": "boolean", "default": true },
-													"ally": { "type": "boolean", "default": false }
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
+				"trigger": { "$ref": "#/definitions/TriggerExtension" },
 				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"outcomes": {
 					"title": "Move outcomes",
@@ -1562,6 +1549,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1588,6 +1576,7 @@
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
+											"nullable": true,
 											"properties": {
 												"text": { "$ref": "#/definitions/MarkdownPhrase" },
 												"method": {
@@ -1617,6 +1606,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1644,6 +1634,7 @@
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
+									"nullable": true,
 									"properties": {
 										"text": { "$ref": "#/definitions/MarkdownPhrase" },
 										"method": {
@@ -1670,6 +1661,7 @@
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
+											"nullable": true,
 											"properties": {
 												"text": { "$ref": "#/definitions/MarkdownPhrase" },
 												"method": {
@@ -1700,10 +1692,10 @@
 			"type": "object",
 			"required": ["field_type", "label"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "checkbox" },
-				"value": { "type": ["boolean", "null"] }
+				"value": { "type": "boolean", "default": false }
 			}
 		},
 		"ClockField": {
@@ -1711,7 +1703,7 @@
 			"type": "object",
 			"required": ["field_type", "label", "min", "max", "value"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "clock" },
 				"value": { "type": "integer", "default": 0 },
@@ -1724,7 +1716,7 @@
 			"type": "object",
 			"required": ["field_type", "label", "min", "max", "value"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "condition_meter" },
 				"value": { "type": "integer" },
@@ -1737,7 +1729,7 @@
 			"type": "object",
 			"required": ["field_type", "label", "min", "max"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "counter" },
 				"value": { "type": "integer", "default": 0 },
@@ -1750,45 +1742,114 @@
 			"type": "object",
 			"required": ["field_type", "label"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "text" },
-				"value": { "type": ["string", "null"] }
+				"value": { "type": "string", "nullable": true }
 			}
 		},
-		"ChoicesField": {
-			"title": "Choices field",
+		"SelectFieldStat": {
+			"title": "Select field stat",
+			"required": ["label", "field_type", "choices"],
 			"type": "object",
-			"required": ["field_type", "label", "choices"],
 			"properties": {
-				"_id": { "type": "string" },
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
-				"field_type": { "type": "string", "const": "choices" },
-				"choices_type": { "enum": ["extend_asset", "number", "stat_id"] },
+				"field_type": { "type": "string", "const": "select_stat" },
+				"value": { "type": "string", "nullable": true },
 				"choices": {
 					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z][a-z_]*[a-z]$": {
+							"required": ["label", "value"],
 							"type": "object",
-							"required": ["label"],
 							"properties": {
 								"label": { "$ref": "#/definitions/Label" },
-								"selected": { "type": "boolean" },
-								"value": {}
+								"selected": { "type": "boolean", "nullable": true },
+								"value": { "$ref": "#/definitions/PlayerStat" }
 							}
 						}
 					}
 				}
 			}
 		},
-		"StatIDChoice": {
-			"title": "Stat id choice",
+		"SelectFieldNumber": {
+			"title": "Select field number",
+			"required": ["label", "field_type", "choices"],
 			"type": "object",
-			"required": ["label", "value"],
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
-				"value": { "$ref": "#/definitions/RollableStatID" },
-				"selected": { "type": "boolean", "default": false }
+				"field_type": { "type": "string", "const": "select_number" },
+				"value": { "type": "integer", "nullable": true },
+				"choices": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"required": ["label", "value"],
+							"type": "object",
+							"properties": {
+								"label": { "type": "string" },
+								"selected": { "type": "boolean", "nullable": true },
+								"value": { "type": "integer" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"SelectFieldRef": {
+			"title": "Select field ref",
+			"required": ["label", "field_type", "choices"],
+			"type": "object",
+			"properties": {
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "select_ref" },
+				"value": { "type": "string", "nullable": true },
+				"choices": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"required": ["label", "value"],
+							"type": "object",
+							"properties": {
+								"label": { "type": "string" },
+								"selected": { "type": "boolean", "nullable": true },
+								"value": { "type": "string" }
+							}
+						}
+					}
+				}
+			}
+		},
+		"SelectFieldAssetExtension": {
+			"title": "Select field asset extension",
+			"required": ["label", "field_type", "choices"],
+			"type": "object",
+			"properties": {
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "select_asset_extension" },
+				"value": { "type": "object", "nullable": true },
+				"choices": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*[a-z]$": {
+							"required": ["label", "value"],
+							"type": "object",
+							"properties": {
+								"label": { "type": "string" },
+								"selected": { "type": "boolean", "nullable": true },
+								"value": { "$ref": "#/definitions/AssetExtension" }
+							}
+						}
+					}
+				}
 			}
 		},
 		"OracleCollectionTemplate": {
@@ -1822,8 +1883,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 1 },
-														"high": { "type": "number", "const": 8 }
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 8 }
 													}
 												},
 												{
@@ -1831,8 +1892,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 9 },
-														"high": { "type": "number", "const": 16 }
+														"low": { "type": "integer", "const": 9 },
+														"high": { "type": "integer", "const": 16 }
 													}
 												},
 												{
@@ -1840,8 +1901,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 17 },
-														"high": { "type": "number", "const": 24 }
+														"low": { "type": "integer", "const": 17 },
+														"high": { "type": "integer", "const": 24 }
 													}
 												},
 												{
@@ -1849,8 +1910,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 25 },
-														"high": { "type": "number", "const": 32 }
+														"low": { "type": "integer", "const": 25 },
+														"high": { "type": "integer", "const": 32 }
 													}
 												},
 												{
@@ -1858,8 +1919,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 33 },
-														"high": { "type": "number", "const": 40 }
+														"low": { "type": "integer", "const": 33 },
+														"high": { "type": "integer", "const": 40 }
 													}
 												},
 												{
@@ -1867,8 +1928,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 41 },
-														"high": { "type": "number", "const": 48 }
+														"low": { "type": "integer", "const": 41 },
+														"high": { "type": "integer", "const": 48 }
 													}
 												},
 												{
@@ -1876,8 +1937,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 49 },
-														"high": { "type": "number", "const": 56 }
+														"low": { "type": "integer", "const": 49 },
+														"high": { "type": "integer", "const": 56 }
 													}
 												},
 												{
@@ -1885,8 +1946,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 57 },
-														"high": { "type": "number", "const": 64 }
+														"low": { "type": "integer", "const": 57 },
+														"high": { "type": "integer", "const": 64 }
 													}
 												},
 												{
@@ -1894,8 +1955,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 65 },
-														"high": { "type": "number", "const": 72 }
+														"low": { "type": "integer", "const": 65 },
+														"high": { "type": "integer", "const": 72 }
 													}
 												},
 												{
@@ -1903,8 +1964,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 73 },
-														"high": { "type": "number", "const": 80 }
+														"low": { "type": "integer", "const": 73 },
+														"high": { "type": "integer", "const": 80 }
 													}
 												},
 												{
@@ -1912,8 +1973,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 81 },
-														"high": { "type": "number", "const": 88 }
+														"low": { "type": "integer", "const": 81 },
+														"high": { "type": "integer", "const": 88 }
 													}
 												},
 												{
@@ -1921,8 +1982,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 89 },
-														"high": { "type": "number", "const": 96 }
+														"low": { "type": "integer", "const": 89 },
+														"high": { "type": "integer", "const": 96 }
 													}
 												},
 												{
@@ -1963,8 +2024,8 @@
 																}
 															]
 														},
-														"low": { "type": "number", "const": 97 },
-														"high": { "type": "number", "const": 100 }
+														"low": { "type": "integer", "const": 97 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -1994,8 +2055,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 1 },
-														"high": { "type": "number", "const": 9 }
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 9 }
 													}
 												},
 												{
@@ -2003,8 +2064,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 10 },
-														"high": { "type": "number", "const": 18 }
+														"low": { "type": "integer", "const": 10 },
+														"high": { "type": "integer", "const": 18 }
 													}
 												},
 												{
@@ -2012,8 +2073,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 19 },
-														"high": { "type": "number", "const": 27 }
+														"low": { "type": "integer", "const": 19 },
+														"high": { "type": "integer", "const": 27 }
 													}
 												},
 												{
@@ -2021,8 +2082,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 28 },
-														"high": { "type": "number", "const": 36 }
+														"low": { "type": "integer", "const": 28 },
+														"high": { "type": "integer", "const": 36 }
 													}
 												},
 												{
@@ -2030,8 +2091,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 37 },
-														"high": { "type": "number", "const": 45 }
+														"low": { "type": "integer", "const": 37 },
+														"high": { "type": "integer", "const": 45 }
 													}
 												},
 												{
@@ -2039,8 +2100,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 46 },
-														"high": { "type": "number", "const": 54 }
+														"low": { "type": "integer", "const": 46 },
+														"high": { "type": "integer", "const": 54 }
 													}
 												},
 												{
@@ -2048,8 +2109,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 55 },
-														"high": { "type": "number", "const": 63 }
+														"low": { "type": "integer", "const": 55 },
+														"high": { "type": "integer", "const": 63 }
 													}
 												},
 												{
@@ -2057,8 +2118,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 64 },
-														"high": { "type": "number", "const": 72 }
+														"low": { "type": "integer", "const": 64 },
+														"high": { "type": "integer", "const": 72 }
 													}
 												},
 												{
@@ -2066,8 +2127,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 73 },
-														"high": { "type": "number", "const": 81 }
+														"low": { "type": "integer", "const": 73 },
+														"high": { "type": "integer", "const": 81 }
 													}
 												},
 												{
@@ -2075,8 +2136,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 82 },
-														"high": { "type": "number", "const": 90 }
+														"low": { "type": "integer", "const": 82 },
+														"high": { "type": "integer", "const": 90 }
 													}
 												},
 												{
@@ -2117,8 +2178,8 @@
 																}
 															]
 														},
-														"low": { "type": "number", "const": 91 },
-														"high": { "type": "number", "const": 98 }
+														"low": { "type": "integer", "const": 91 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
@@ -2140,13 +2201,13 @@
 																	"required": ["times"],
 																	"properties": {
 																		"_template": { "type": "string" },
-																		"times": { "type": "number", "const": 2 }
+																		"times": { "type": "integer", "const": 2 }
 																	}
 																}
 															]
 														},
-														"low": { "type": "number", "const": 99 },
-														"high": { "type": "number", "const": 100 }
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -2176,8 +2237,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 1 },
-														"high": { "type": "number", "const": 20 }
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 20 }
 													}
 												},
 												{
@@ -2185,8 +2246,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 21 },
-														"high": { "type": "number", "const": 40 }
+														"low": { "type": "integer", "const": 21 },
+														"high": { "type": "integer", "const": 40 }
 													}
 												},
 												{
@@ -2194,8 +2255,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 41 },
-														"high": { "type": "number", "const": 60 }
+														"low": { "type": "integer", "const": 41 },
+														"high": { "type": "integer", "const": 60 }
 													}
 												},
 												{
@@ -2203,8 +2264,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 61 },
-														"high": { "type": "number", "const": 80 }
+														"low": { "type": "integer", "const": 61 },
+														"high": { "type": "integer", "const": 80 }
 													}
 												},
 												{
@@ -2212,8 +2273,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 81 },
-														"high": { "type": "number", "const": 100 }
+														"low": { "type": "integer", "const": 81 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -2244,20 +2305,10 @@
 								"_template": { "type": "string" },
 								"settlements": {
 									"type": "object",
-									"required": ["title", "contents"],
+									"required": ["name", "contents"],
 									"properties": {
 										"_template": { "type": "string" },
-										"title": {
-											"type": "object",
-											"required": ["canonical"],
-											"properties": {
-												"_template": { "type": "string" },
-												"canonical": {
-													"type": "string",
-													"const": "Settlements"
-												}
-											}
-										},
+										"name": { "type": "string", "const": "Settlements" },
 										"contents": {
 											"type": "object",
 											"required": ["terminus", "outlands", "expanse"],
@@ -2265,7 +2316,7 @@
 												"_template": { "type": "string" },
 												"terminus": {
 													"type": "object",
-													"required": ["table", "title"],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": { "type": "string" },
 														"table": {
@@ -2330,22 +2381,12 @@
 																}
 															]
 														},
-														"title": {
-															"type": "object",
-															"required": ["canonical"],
-															"properties": {
-																"_template": { "type": "string" },
-																"canonical": {
-																	"type": "string",
-																	"const": "Terminus"
-																}
-															}
-														}
+														"name": { "type": "string", "const": "Terminus" }
 													}
 												},
 												"outlands": {
 													"type": "object",
-													"required": ["table", "title"],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": { "type": "string" },
 														"table": {
@@ -2410,22 +2451,12 @@
 																}
 															]
 														},
-														"title": {
-															"type": "object",
-															"required": ["canonical"],
-															"properties": {
-																"_template": { "type": "string" },
-																"canonical": {
-																	"type": "string",
-																	"const": "Outlands"
-																}
-															}
-														}
+														"name": { "type": "string", "const": "Outlands" }
 													}
 												},
 												"expanse": {
 													"type": "object",
-													"required": ["table", "title"],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": { "type": "string" },
 														"table": {
@@ -2490,17 +2521,7 @@
 																}
 															]
 														},
-														"title": {
-															"type": "object",
-															"required": ["canonical"],
-															"properties": {
-																"_template": { "type": "string" },
-																"canonical": {
-																	"type": "string",
-																	"const": "Expanse"
-																}
-															}
-														}
+														"name": { "type": "string", "const": "Expanse" }
 													}
 												}
 											}
@@ -2521,17 +2542,10 @@
 								"_template": { "type": "string" },
 								"atmosphere": {
 									"type": "object",
-									"required": ["title", "table"],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": { "type": "string" },
-										"title": {
-											"type": "object",
-											"required": ["canonical"],
-											"properties": {
-												"_template": { "type": "string" },
-												"canonical": { "type": "string", "const": "Atmosphere" }
-											}
-										},
+										"name": { "type": "string", "const": "Atmosphere" },
 										"table": {
 											"type": "array",
 											"minItems": 6,
@@ -2597,19 +2611,12 @@
 								},
 								"observed_from_space": {
 									"type": "object",
-									"required": ["title", "table"],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": { "type": "string" },
-										"title": {
-											"type": "object",
-											"required": ["canonical"],
-											"properties": {
-												"_template": { "type": "string" },
-												"canonical": {
-													"type": "string",
-													"const": "Observed From Space"
-												}
-											}
+										"name": {
+											"type": "string",
+											"const": "Observed From Space"
 										},
 										"table": {
 											"type": "array",
@@ -2621,8 +2628,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 1 },
-														"high": { "type": "number", "const": 11 }
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 11 }
 													}
 												},
 												{
@@ -2630,8 +2637,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 12 },
-														"high": { "type": "number", "const": 22 }
+														"low": { "type": "integer", "const": 12 },
+														"high": { "type": "integer", "const": 22 }
 													}
 												},
 												{
@@ -2639,8 +2646,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 23 },
-														"high": { "type": "number", "const": 33 }
+														"low": { "type": "integer", "const": 23 },
+														"high": { "type": "integer", "const": 33 }
 													}
 												},
 												{
@@ -2648,8 +2655,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 34 },
-														"high": { "type": "number", "const": 44 }
+														"low": { "type": "integer", "const": 34 },
+														"high": { "type": "integer", "const": 44 }
 													}
 												},
 												{
@@ -2657,8 +2664,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 45 },
-														"high": { "type": "number", "const": 55 }
+														"low": { "type": "integer", "const": 45 },
+														"high": { "type": "integer", "const": 55 }
 													}
 												},
 												{
@@ -2666,8 +2673,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 56 },
-														"high": { "type": "number", "const": 66 }
+														"low": { "type": "integer", "const": 56 },
+														"high": { "type": "integer", "const": 66 }
 													}
 												},
 												{
@@ -2675,8 +2682,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 67 },
-														"high": { "type": "number", "const": 77 }
+														"low": { "type": "integer", "const": 67 },
+														"high": { "type": "integer", "const": 77 }
 													}
 												},
 												{
@@ -2684,8 +2691,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 78 },
-														"high": { "type": "number", "const": 88 }
+														"low": { "type": "integer", "const": 78 },
+														"high": { "type": "integer", "const": 88 }
 													}
 												},
 												{
@@ -2726,8 +2733,8 @@
 																}
 															]
 														},
-														"low": { "type": "number", "const": 89 },
-														"high": { "type": "number", "const": 98 }
+														"low": { "type": "integer", "const": 89 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
@@ -2735,8 +2742,8 @@
 													"required": ["low", "high", "result"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 99 },
-														"high": { "type": "number", "const": 100 },
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 },
 														"result": {
 															"type": "string",
 															"const": "Precursor Vault (orbital)"
@@ -2749,21 +2756,10 @@
 								},
 								"feature": {
 									"type": "object",
-									"required": ["title", "table"],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": { "type": "string" },
-										"title": {
-											"type": "object",
-											"required": ["canonical", "short"],
-											"properties": {
-												"_template": { "type": "string" },
-												"canonical": {
-													"type": "string",
-													"const": "Planetside Feature"
-												},
-												"short": { "type": "string", "const": "Feature" }
-											}
-										},
+										"name": { "type": "string", "const": "Planetside Feature" },
 										"table": {
 											"type": "array",
 											"minItems": 15,
@@ -2774,8 +2770,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 1 },
-														"high": { "type": "number", "const": 7 }
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 7 }
 													}
 												},
 												{
@@ -2783,8 +2779,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 8 },
-														"high": { "type": "number", "const": 14 }
+														"low": { "type": "integer", "const": 8 },
+														"high": { "type": "integer", "const": 14 }
 													}
 												},
 												{
@@ -2792,8 +2788,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 15 },
-														"high": { "type": "number", "const": 21 }
+														"low": { "type": "integer", "const": 15 },
+														"high": { "type": "integer", "const": 21 }
 													}
 												},
 												{
@@ -2801,8 +2797,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 22 },
-														"high": { "type": "number", "const": 28 }
+														"low": { "type": "integer", "const": 22 },
+														"high": { "type": "integer", "const": 28 }
 													}
 												},
 												{
@@ -2810,8 +2806,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 29 },
-														"high": { "type": "number", "const": 35 }
+														"low": { "type": "integer", "const": 29 },
+														"high": { "type": "integer", "const": 35 }
 													}
 												},
 												{
@@ -2819,8 +2815,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 36 },
-														"high": { "type": "number", "const": 42 }
+														"low": { "type": "integer", "const": 36 },
+														"high": { "type": "integer", "const": 42 }
 													}
 												},
 												{
@@ -2828,8 +2824,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 43 },
-														"high": { "type": "number", "const": 49 }
+														"low": { "type": "integer", "const": 43 },
+														"high": { "type": "integer", "const": 49 }
 													}
 												},
 												{
@@ -2837,8 +2833,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 50 },
-														"high": { "type": "number", "const": 56 }
+														"low": { "type": "integer", "const": 50 },
+														"high": { "type": "integer", "const": 56 }
 													}
 												},
 												{
@@ -2846,8 +2842,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 57 },
-														"high": { "type": "number", "const": 63 }
+														"low": { "type": "integer", "const": 57 },
+														"high": { "type": "integer", "const": 63 }
 													}
 												},
 												{
@@ -2855,8 +2851,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 64 },
-														"high": { "type": "number", "const": 70 }
+														"low": { "type": "integer", "const": 64 },
+														"high": { "type": "integer", "const": 70 }
 													}
 												},
 												{
@@ -2864,8 +2860,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 71 },
-														"high": { "type": "number", "const": 77 }
+														"low": { "type": "integer", "const": 71 },
+														"high": { "type": "integer", "const": 77 }
 													}
 												},
 												{
@@ -2873,8 +2869,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 78 },
-														"high": { "type": "number", "const": 84 }
+														"low": { "type": "integer", "const": 78 },
+														"high": { "type": "integer", "const": 84 }
 													}
 												},
 												{
@@ -2882,8 +2878,8 @@
 													"required": ["low", "high"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 85 },
-														"high": { "type": "number", "const": 91 }
+														"low": { "type": "integer", "const": 85 },
+														"high": { "type": "integer", "const": 91 }
 													}
 												},
 												{
@@ -2924,8 +2920,8 @@
 																}
 															]
 														},
-														"low": { "type": "number", "const": 92 },
-														"high": { "type": "number", "const": 98 }
+														"low": { "type": "integer", "const": 92 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
@@ -2933,8 +2929,8 @@
 													"required": ["low", "high", "result"],
 													"properties": {
 														"_template": { "type": "string" },
-														"low": { "type": "number", "const": 99 },
-														"high": { "type": "number", "const": 100 },
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 },
 														"result": {
 															"type": "string",
 															"const": "Precursor Vault (planetside)"
@@ -2947,17 +2943,10 @@
 								},
 								"life": {
 									"type": "object",
-									"required": ["title", "table"],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": { "type": "string" },
-										"title": {
-											"type": "object",
-											"required": ["canonical"],
-											"properties": {
-												"_template": { "type": "string" },
-												"canonical": { "type": "string", "const": "Life" }
-											}
-										},
+										"name": { "type": "string", "const": "Life" },
 										"table": {
 											"type": "array",
 											"minItems": 6,
@@ -3137,12 +3126,12 @@
 			"type": "object",
 			"required": ["name"],
 			"properties": {
-				"_id": { "$ref": "#/definitions/SettingTruthID" },
+				"id": { "$ref": "#/definitions/SettingTruthID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"icon": { "$ref": "#/definitions/Icon" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"source": { "$ref": "#/definitions/Source" },
-				"choices": {
+				"options": {
 					"type": "array",
 					"maxItems": 3,
 					"minItems": 3,
@@ -3162,7 +3151,7 @@
 			"type": "object",
 			"required": ["description", "quest_starter"],
 			"properties": {
-				"_id": { "$ref": "#/definitions/SettingTruthOptionID" },
+				"id": { "$ref": "#/definitions/SettingTruthOptionID" },
 				"summary": { "$ref": "#/definitions/MarkdownPhrase" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
 				"quest_starter": { "$ref": "#/definitions/MarkdownParagraph" }

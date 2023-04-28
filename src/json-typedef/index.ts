@@ -11,7 +11,7 @@ import * as Oracles from './oracles'
 import * as Rarities from './rarities'
 import * as Regions from './regions'
 import * as Truths from './truths'
-import * as Players from './player'
+import * as Players from './players'
 
 import * as fs from 'fs/promises'
 

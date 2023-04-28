@@ -3,6 +3,7 @@ import type * as Types from '@base-types'
 import { DF_KEY, dictionarySchema, refSchema } from './common'
 import { Abstract } from '@schema-json'
 import _ from 'lodash'
+import { type Simplify } from 'type-fest'
 
 export const AssetID: Schema<Types.Assets.AssetID> = {
 	type: 'string',
@@ -30,7 +31,7 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	},
 	oneOf: [
 		refSchema<Types.Inputs.TextField>('TextField'),
-		refSchema<Types.Inputs.SelectFieldBase>('ChoicesField')
+		refSchema<Types.Inputs.SelectFieldStat>('SelectFieldStat')
 	]
 }
 
@@ -43,19 +44,19 @@ const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 		field_type: {
 			enum: ['checkbox', 'select_asset_extension', 'condition_meter']
 		},
-		label: { type: { $ref: 'Label' } }
+		label: { $ref: '#/definitions/Label' }
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
 		refSchema<Types.Inputs.ConditionMeterField>('ConditionMeterField'),
 		refSchema<Types.Inputs.SelectFieldAssetExtension>(
-			'ChoicesFieldAssetExtension'
+			'SelectFieldAssetExtension'
 		)
 		// refSchema<Types.Assets.ToggleField>('ToggleField')
 	]
 }
 
-export const Asset: Omit<Schema<Types.Assets.Asset>, 'anyOf'> = {
+export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 	type: 'object',
 	required: ['id', 'name', 'source', 'abilities'],
 	additionalProperties: false,
@@ -64,8 +65,7 @@ export const Asset: Omit<Schema<Types.Assets.Asset>, 'anyOf'> = {
 		shared: {
 			description:
 				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-			type: 'boolean',
-			nullable: undefined as any
+			type: 'boolean'
 		},
 		name: refSchema<Types.Localize.Label>('Label'),
 		options: dictionarySchema<Types.Assets.AssetOptionField>(AssetOptionField),
@@ -83,7 +83,7 @@ export const Asset: Omit<Schema<Types.Assets.Asset>, 'anyOf'> = {
 				'If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).',
 			type: 'boolean',
 			default: false,
-			nullable: undefined as any
+			nullable: true
 		},
 		source: refSchema<Types.Metadata.Source>('Source'),
 		attachments: refSchema<Types.Assets.AssetAttachment>('AssetAttachment')
@@ -160,28 +160,42 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.Assets.AssetAbilityID>('AssetAbilityID'),
-		name: { ...refSchema<Types.Localize.Label>('Label'), nullable: true },
+		name: {
+			...refSchema<Types.Localize.Label>('Label'),
+			type: 'string',
+			nullable: true
+		},
 		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
 		enabled: { type: 'boolean', default: false },
 		controls: {
 			type: 'object',
-			required: undefined as any,
-			nullable: undefined as any,
 			additionalProperties: false,
 			patternProperties: {
 				[DF_KEY]: {
 					oneOf: [
-						refSchema<Types.Inputs.TextField>('TextField'),
-						refSchema<Types.Inputs.CounterField>('CounterField'),
-						refSchema<Types.Inputs.ClockField>('ClockField'),
-						refSchema<Types.Inputs.CheckboxField>('CheckboxField')
+						refSchema<Types.Inputs.TextField>('TextField')
+						// refSchema<Types.Inputs.CounterField>('CounterField'),
+						// refSchema<Types.Inputs.ClockField>('ClockField'),
+						// refSchema<Types.Inputs.CheckboxField>('CheckboxField')
 					]
 				}
 			}
 		},
-		options: dictionarySchema<Types.Assets.AssetAbilityOptionField>(
-			AssetAbilityOptionField
-		),
+		options: dictionarySchema<Types.Assets.AssetAbilityOptionField>({
+			type: 'object',
+			required: ['id', 'label', 'field_type'],
+			properties: {
+				id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
+					'AssetAbilityOptionFieldID'
+				),
+				label: { $ref: '#/definitions/Label' },
+				field_type: { enum: ['text', 'checkbox'], type: 'string' }
+			},
+			oneOf: [
+				refSchema<Types.Inputs.TextField>('TextField'),
+				refSchema<Types.Inputs.CheckboxField>('CheckboxField')
+			]
+		}),
 		extend_asset: refSchema<Types.Assets.AssetExtension>('AssetExtension'),
 		extend_moves: {
 			type: 'array',

@@ -9,21 +9,15 @@ starforged:
     url: https://ironswornrpg.com
   oracles:
     factions:
-      title:
-        canonical: Factions
-        short: Faction
+      name: Factions
       collections:
         name:
-          title:
-            canonical: Faction Name
-            short: Name
+          name: Faction Name
           _source:
             page: 344
           contents:
             template:
-              title:
-                canonical: Faction Name Template
-                short: Template
+              name: Faction Name Template
               _source:
                 page: 344
               # content:
@@ -55,8 +49,7 @@ starforged:
                   template:
                     result: "{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
             legacy:
-              title:
-                canonical: Legacy
+              name: Legacy
               # content:
               #   part_of_speech: [adjective, proper noun fragment]
               table:
@@ -211,8 +204,7 @@ starforged:
                   high: 100
                   result: Wandering
             affiliation:
-              title:
-                canonical: Affiliation
+              name: Affiliation
               _source:
                 page: 345
               # content:
@@ -295,8 +287,7 @@ starforged:
                   high: 100
                   result: Union
             identity:
-              title:
-                canonical: Identity
+              name: Identity
               _source:
                 page: 345
               # content:
@@ -454,9 +445,7 @@ starforged:
                   result: Wrights
       contents:
         type:
-          title:
-            canonical: Faction Type
-            short: Type
+          name: Faction Type
           _source:
             page: 340
           # usage:
@@ -487,8 +476,7 @@ starforged:
                 - oracle: starforged/oracles/factions/fringe_group
               # set_attributes: {faction_type: [fringe_group]}
         influence:
-          title:
-            canonical: Influence
+          name: Influence
           _source:
             page: 340
           # content:
@@ -530,8 +518,7 @@ starforged:
               summary: Pervasive influence across inhabited space
               # set_attributes: {influence: [inescapable]}
         dominion:
-          title:
-            canonical: Dominion
+          name: Dominion
           rendering:
             style: table
             icon: icons/factions/dominion.svg
@@ -644,9 +631,7 @@ starforged:
               result: Wealth
               # set_attributes: {dominion: [wealth]}
         leadership:
-          title:
-            canonical: "Dominion: Leadership"
-            short: Leadership
+          name: "Dominion: Leadership"
           _source:
             page: 341
           # usage:
@@ -699,8 +684,7 @@ starforged:
               result: Varied / decentralized
               # set_attributes: {leadership: [varied_decentralized]}
         guild:
-          title:
-            canonical: Guild
+          name: Guild
           rendering:
             style: table
             icon: icons/factions/guild.svg
@@ -775,8 +759,7 @@ starforged:
               high: 100
               result: *result:RollTwice
         fringe_group:
-          title:
-            canonical: Fringe Group
+          name: Fringe Group
           rendering:
             style: table
             icon: icons/factions/fringe_group.svg
@@ -838,9 +821,7 @@ starforged:
               high: 100
               result: *result:RollTwice
         projects:
-          title:
-            canonical: Faction Projects
-            short: Projects
+          name: Faction
           _source:
             page: 342
           # content:
@@ -951,9 +932,7 @@ starforged:
               high: 100
               result: *result:Action+Theme
         relationships:
-          title:
-            canonical: Faction Relationships
-            short: Relationships
+          name: Faction Relationships
           _source:
             page: 343
           # content:
@@ -1046,9 +1025,7 @@ starforged:
               high: 100
               result: *result:RollTwice
         quirks:
-          title:
-            canonical: Faction Quirks
-            short: Quirks
+          name: Faction Quirks
           _source:
             page: 346
           # content:
@@ -1159,9 +1136,7 @@ starforged:
               high: 100
               result: *result:Action+Theme
         rumors:
-          title:
-            canonical: Faction Rumors
-            short: Rumors
+          name: Faction Rumors
           _source:
             page: 347
           # content:
@@ -1169,7 +1144,7 @@ starforged:
           #   tags: [event, present]
           # usage:
           #   max_rolls: 2
-          description: |-
+          summary: |-
             Use this table when you are in a position to investigate a faction by uncovering secrets or fishing for gossip.
           table:
             - low: 1

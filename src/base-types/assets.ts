@@ -14,7 +14,7 @@ export type AssetControlFieldID = string
 export type AssetOptionField =
 	| Types.Inputs.TextField
 	| Types.Inputs.SelectFieldStat
-	| Types.Inputs.SelectFieldNumber
+	// | Types.Inputs.SelectFieldNumber
 	| Types.Inputs.SelectFieldAssetExtension
 
 export type AssetControlField =
@@ -60,7 +60,10 @@ export type AssetAbilityID = string
 export type AssetAbilityOptionFieldID = string
 export type AssetAbilityControlFieldID = string
 
-export type AssetAbilityOptionField = Types.Inputs.TextField & {
+export type AssetAbilityOptionField = (
+	| Types.Inputs.TextField
+	| Types.Inputs.CheckboxField
+) & {
 	id: AssetAbilityOptionFieldID
 }
 

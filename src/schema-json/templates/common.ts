@@ -19,7 +19,7 @@ export function toTemplateSchema<
 			// primitive value -- return as const
 			const schema = {
 				title,
-				type: typeof value,
+				type: typeof value === 'number' ? 'integer' : typeof value,
 				const: value
 			} as any as PartialSchema<T>
 			return schema
@@ -57,7 +57,10 @@ export function toTemplateSchema<
 					if (!_.isUndefined(schema.properties[defaultKey]))
 						throw new Error('Default provided for a constant value')
 					schema.properties.defaultKey = {
-						type: typeof defaultValue,
+						type:
+							typeof defaultValue === 'number'
+								? 'integer'
+								: typeof defaultValue,
 						default: defaultValue
 					}
 				}

@@ -9,14 +9,10 @@ starforged:
     license: https://creativecommons.org/licenses/by/4.0
   oracles:
     planets:
-      title:
-        canonical: Planets
-        short: Planet
+      name: Planets
       contents:
         class:
-          title:
-            canonical: Planetary Class
-            short: Class
+          name: Planetary Class
           _source:
             page: 306
           # usage:
@@ -85,9 +81,7 @@ starforged:
               # images: *images:VitalWorld
       collections:
         peril:
-          title:
-            canonical: Planetside Peril
-            short: Peril
+          name: Planetside Peril
           _source:
             page: 320
           rendering:
@@ -115,8 +109,7 @@ starforged:
             Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
           contents:
             lifebearing:
-              title:
-                canonical: Lifebearing
+              name: Lifebearing
               rendering:
                 style: embed_as_column
               # usage:
@@ -240,8 +233,7 @@ starforged:
                   high: 100
                   result: *result:RollTwice
             lifeless:
-              title:
-                canonical: Lifeless
+              name: Lifeless
               rendering:
                 style: embed_as_column
               # usage:
@@ -286,9 +278,7 @@ starforged:
                   - [96, 99]
                   - [100, 100]
         opportunity:
-          title:
-            canonical: Planetside Opportunity
-            short: Opportunity
+          name: Planetside Opportunity
           _source:
             page: 321
           rendering:
@@ -319,8 +309,7 @@ starforged:
             lifebearing:
               rendering:
                 style: embed_as_column
-              title:
-                canonical: Lifebearing
+              name: Lifebearing
               # usage:
               #   requires: *attr:Life.Lifebearing
               table: &table:Planets.Opportunity
@@ -413,38 +402,85 @@ starforged:
             lifeless:
               rendering:
                 style: embed_as_column
-              title:
-                canonical: Lifeless
+              name: Lifeless
               usage:
                 requires: *attr:Life.Lifeless
-              _templateTableRows:
-                content: *table:Planets.Opportunity
-                rolls:
-                  - [null, null]
-                  - [null, null]
-                  - [null, null]
-                  - [null, null]
-                  - [null, null]
-                  - [1, 5]
-                  - [6, 10]
-                  - [11, 15]
-                  - [16, 20]
-                  - [21, 25]
-                  - [26, 30]
-                  - [31, 35]
-                  - [36, 40]
-                  - [41, 45]
-                  - [46, 50]
-                  - [51, 55]
-                  - [56, 60]
-                  - [61, 65]
-                  - [66, 70]
-                  - [71, 75]
-                  - [76, 80]
-                  - [81, 85]
-                  - [86, 90]
-                  - [91, 95]
-                  - [96, 100]
+              table:
+                - low: null
+                  high: null
+                  result: Clue to a lifeform's nature or vulnerabilities
+                - low: null
+                  high: null
+                  result: Friendly interaction with a benign lifeform
+                - low: null
+                  high: null
+                  result: Hunting or foraging opportunities are plentiful
+                - low: null
+                  high: null
+                  result: Interesting or helpful aspect of benign creatures
+                - low: null
+                  high: null
+                  result: Interesting or helpful aspect of local plant life
+                - low: 1
+                  high: 5
+                  result: Encounter reveals unexpected benign lifeforms
+                - low: 6
+                  high: 10
+                  result: Abandoned camp or vehicle
+                - low: 11
+                  high: 15
+                  result: Advance warning of an environmental threat
+                - low: 16
+                  high: 20
+                  result: Clear path through otherwise perilous terrain
+                - low: 21
+                  high: 25
+                  result: Clue offers insight into a current quest or mystery
+                - low: 26
+                  high: 30
+                  result: Clue to the history or nature of this place
+                - low: 31
+                  high: 35
+                  result: Evidence that others have passed this way
+                - low: 36
+                  high: 40
+                  result: Foe reveals themselves or tips their hand
+                - low: 41
+                  high: 45
+                  result: Fortuitous change in the weather or atmosphere
+                - low: 46
+                  high: 50
+                  result: Friendly traveler crosses your path
+                - low: 51
+                  high: 55
+                  result: Helpful resource is in ample supply
+                - low: 56
+                  high: 60
+                  result: Impressive vista offers comfort or inspiration
+                - low: 61
+                  high: 65
+                  result: Interesting artifact or device
+                - low: 66
+                  high: 70
+                  result: Interesting site offers opportunities for exploration
+                - low: 71
+                  high: 75
+                  result: Moment of fellowship or inner peace
+                - low: 76
+                  high: 80
+                  result: "Opening to distract, escape, or avoid foes"
+                - low: 81
+                  high: 85
+                  result: Opening to get the drop on a foe
+                - low: 86
+                  high: 90
+                  result: Plea for help from a potential benefactor
+                - low: 91
+                  high: 95
+                  result: "Refuge offers a place to hide, plan, or recover"
+                - low: 96
+                  high: 100
+                  result: Vantage point reveals the lay of the land
 
 
 

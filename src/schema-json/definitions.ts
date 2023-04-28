@@ -54,32 +54,36 @@ const defs: Record<string, JSONSchema7> = {
 	OracleTableTemplate
 }
 
-const defsStarforged = _({
-	...defs,
-	...RulesetStarforged
-})
-	.mapValues((def: JSONSchema7, defKey: string) =>
-		niceTitle(def, defKey, 'starforged')
-	)
-	.omitBy((_, key) => key.includes('Classic'))
-	.value() as Record<string, JSONSchema7>
+function getStarforgedDefs() {
+	return _({
+		...defs,
+		...RulesetStarforged
+	})
+		.mapValues((def: JSONSchema7, defKey: string) =>
+			niceTitle(def, defKey, 'starforged')
+		)
+		.omitBy((_, key) => key.includes('Classic'))
+		.value() as Record<string, JSONSchema7>
+}
 
-const defsClassic = _({
-	...defs,
-	...RulesetClassic,
-	...Encounters,
-	...Regions,
-	...Rarities,
-	...DelveSites
-})
-	.mapValues((def: JSONSchema7, defKey: string) =>
-		niceTitle(def, defKey, 'classic')
-	)
-	.omitBy((_, key) => key.includes('Starforged'))
-	.value() as Record<string, JSONSchema7>
+function getClassicDefs() {
+	return _({
+		...defs,
+		...RulesetClassic,
+		...Encounters,
+		...Regions,
+		...Rarities,
+		...DelveSites
+	})
+		.mapValues((def: JSONSchema7, defKey: string) =>
+			niceTitle(def, defKey, 'classic')
+		)
+		.omitBy((_, key) => key.includes('Starforged'))
+		.value() as Record<string, JSONSchema7>
+}
 
-export type DefsClassic = typeof defsClassic
+export type DefsClassic = ReturnType<typeof getStarforgedDefs>
 
-export type DefsStarforged = typeof defsStarforged
+export type DefsStarforged = ReturnType<typeof getClassicDefs>
 
-export { defsStarforged, defsClassic }
+export { getStarforgedDefs, getClassicDefs }

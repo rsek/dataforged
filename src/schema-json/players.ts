@@ -13,7 +13,7 @@ export const PlayerConditionMeter: Schema<Types.PlayerConditionMeter> = {
 	enum: ['health', 'spirit', 'supply']
 }
 
-export const PlayerStatID: Schema<Types.PlayerStatID> = {
+const PlayerStatID: Schema<Types.PlayerStatID> = {
 	type: 'string',
 	description: 'ID for a standard player character stat.',
 	enum: [

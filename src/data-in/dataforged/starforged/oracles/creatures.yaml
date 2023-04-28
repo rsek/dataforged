@@ -9,15 +9,12 @@ starforged:
     license: https://creativecommons.org/licenses/by/4.0
   oracles:
     creatures:
-      title:
-        canonical: Creatures
-        short: Creature
+      name: Creatures
       summary: |-
         Roll for a [basic form](starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
       contents:
         environment:
-          title:
-            canonical: Environment
+          name: Environment
           # usage:
           #   initial: true
           _source:
@@ -53,8 +50,7 @@ starforged:
               icon: &icon.Air icons/creature/environment/air.svg
               # set_attributes: {environment: [air]}, rolls: [starforged/oracles/creatures/basic_form/air]
         scale:
-          title:
-            canonical: Scale
+          name: Scale
           _source:
             page: 336
           # usage:
@@ -92,8 +88,7 @@ starforged:
               rolls:
                 - oracle: starforged/oracles/creatures/ultra_scale
         ultra_scale:
-          title:
-            canonical: Ultra-scale
+          name: Ultra-scale
           _source:
             page: 336
           # content:
@@ -114,9 +109,7 @@ starforged:
               result: Vast (planet-sized)
               # set_attributes: {creature_scale: [vast]}
         creature_first_look:
-          title:
-            canonical: Creature First Look
-            short: First Look
+          name: Creature First Look
           _source:
             page: 338
           # usage:
@@ -279,8 +272,7 @@ starforged:
               high: 100
               result: Visible symbiote
         encountered_behavior:
-          title:
-            canonical: Encountered Behavior
+          name: Encountered Behavior
           _source:
             page: 338
           summary: |-
@@ -374,11 +366,11 @@ starforged:
               high: 100
               result: *result:RollTwice
         revealed_creature_aspect:
-          title:
-            canonical: Revealed Creature Aspect
-            short: Revealed Aspect
+          name: Revealed Creature Aspect
           _source:
             page: 339
+          summary: |-
+            Roll on this table as you interact with the creature to introduce new features or behaviors.
           description: |-
             Roll on this table as you interact with the creature to introduce new features or behaviors. Some results may contradict the established nature of a creature. For example, an amorphous creature that you envisioned as a mass of pure energy would not have typical physical features. If a result doesn’t fit, feel free to ignore, reroll, or adjust. Or envision how this contradiction signals a new understanding or unexpected transformation.
           # content:
@@ -538,9 +530,7 @@ starforged:
               result: Toxic spew
       collections:
         basic_form:
-          title:
-            short: Basic Form
-            canonical: Creature Basic Form
+          name: Creature Basic Form
           _source:
             page: 337
           # usage:
@@ -586,8 +576,7 @@ starforged:
             Roll for a basic form, and flesh out the creature’s appearance using the [First Look](starforged/oracles/creatures/first_look) table.
           contents:
             space:
-              title:
-                canonical: Space
+              name: Space
               rendering:
                 icon: *icon.Space
                 style: embed_as_column
@@ -670,8 +659,7 @@ starforged:
                   high: 100
                   result: *result:RollTwice
             interior:
-              title:
-                canonical: Interior
+              name: Interior
               rendering:
                 style: embed_as_column
                 color: *color.Interior
@@ -751,8 +739,7 @@ starforged:
                   icon: *BasicForm16.icon
                 - *BasicForm17
             land:
-              title:
-                canonical: Land
+              name: Land
               rendering:
                 style: embed_as_column
                 color: *color.Land
@@ -832,8 +819,7 @@ starforged:
                   icon: *BasicForm16.icon
                 - *BasicForm17
             liquid:
-              title:
-                canonical: Liquid
+              name: Liquid
               rendering:
                 style: embed_as_column
                 color: *color.Liquid
@@ -913,8 +899,7 @@ starforged:
                   icon: *BasicForm16.icon
                 - *BasicForm17
             air:
-              title:
-                canonical: Air
+              name: Air
               rendering:
                 style: embed_as_column
                 color: *color.Air

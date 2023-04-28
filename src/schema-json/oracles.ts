@@ -144,12 +144,13 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 
 export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	type: 'object',
-	required: ['id', 'title', 'source', 'table'],
+	required: ['id', 'name', 'canonical_name', 'source', 'table'],
 	additionalProperties: false,
 	properties: {
 		id: { $ref: '#/definitions/OracleTableID' },
-		_template: { type: 'string', nullable: undefined as any },
-		name: { $ref: '#/definitions/Title' },
+		// _template: { type: 'string', nullable: undefined as any },
+		name: { $ref: '#/definitions/Label' },
+		canonical_name: { $ref: '#/definitions/Label' },
 		source: refSchema<Types.Metadata.Source>('Source'),
 		summary: { $ref: '#/definitions/MarkdownSentences' },
 		description: { $ref: '#/definitions/MarkdownParagraphs' },

@@ -22,25 +22,25 @@ const planetSettlementOracleBase: RecursivePartial<TemplateTypes.PlanetSettlemen
 
 const planetSettlementOraclesBase: RecursivePartial<TemplateTypes.PlanetSettlementOracles> =
 	{
-		title: { canonical: 'Settlements' },
+		name: 'Settlements',
 		contents: {
 			terminus: {
 				...planetSettlementOracleBase,
-				title: { canonical: 'Terminus' }
+				name: 'Terminus'
 			},
 			outlands: {
 				...planetSettlementOracleBase,
-				title: { canonical: 'Outlands' }
+				name: 'Outlands'
 			},
 			expanse: {
 				...planetSettlementOracleBase,
-				title: { canonical: 'Expanse' }
+				name: 'Expanse'
 			}
 		}
 	}
 
 const atmosphereBase: RecursivePartial<TemplateTypes.PlanetAtmosphereTable> = {
-	title: { canonical: 'Atmosphere' },
+	name: 'Atmosphere',
 	table: [
 		{ result: 'None / thin' },
 		{ result: 'Toxic' },
@@ -53,7 +53,7 @@ const atmosphereBase: RecursivePartial<TemplateTypes.PlanetAtmosphereTable> = {
 
 const observedFromSpaceBase: RecursivePartial<TemplateTypes.PlanetObservedFromSpaceTable> =
 	{
-		title: { canonical: 'Observed From Space' },
+		name: 'Observed From Space',
 		table: [
 			{ low: 1, high: 11 },
 			{ low: 12, high: 22 },
@@ -70,7 +70,7 @@ const observedFromSpaceBase: RecursivePartial<TemplateTypes.PlanetObservedFromSp
 
 const planetsideFeatureBase: RecursivePartial<TemplateTypes.PlanetsideFeatureTable> =
 	{
-		title: { canonical: 'Planetside Feature', short: 'Feature' },
+		name: 'Planetside Feature',
 		table: [
 			{ low: 1, high: 7 },
 			{ low: 8, high: 14 },
@@ -95,7 +95,7 @@ const planetsideFeatureBase: RecursivePartial<TemplateTypes.PlanetsideFeatureTab
 	}
 
 const lifeBase: RecursivePartial<TemplateTypes.PlanetLifeTable> = {
-	title: { canonical: 'Life' },
+	name: 'Life',
 	table: [
 		{ result: 'None' },
 		{ result: 'Extinct' },

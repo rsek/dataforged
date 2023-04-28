@@ -88,8 +88,8 @@ export const Trigger: JTDSchemaType<
 		MarkdownString: string
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerOptionAction: Types.Moves.TriggerOption<'action_roll'>
-		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>
+		TriggerRollOptionAction: Types.Moves.TriggerRollOption<'action_roll'>
+		TriggerRollOptionProgress: Types.Moves.TriggerRollOption<'progress_roll'>
 	}
 > = {
 	metadata: {
@@ -109,8 +109,8 @@ export const Trigger: JTDSchemaType<
 				}
 			},
 			optionalProperties: {
-				options: {
-					elements: { ref: 'TriggerOptionAction' }
+				roll_options: {
+					elements: { ref: 'TriggerRollOptionAction' }
 				}
 			}
 		},
@@ -125,8 +125,8 @@ export const Trigger: JTDSchemaType<
 				}
 			},
 			optionalProperties: {
-				options: {
-					elements: { ref: 'TriggerOptionProgress' }
+				roll_options: {
+					elements: { ref: 'TriggerRollOptionProgress' }
 				}
 			}
 		}
@@ -141,11 +141,11 @@ export const TriggerBy: JTDSchemaType<Types.Moves.TriggerBy> = {
 	properties: { ally: { type: 'boolean' }, player: { type: 'boolean' } }
 }
 
-export const TriggerOptionAction: JTDSchemaType<
-	Types.Moves.TriggerOption<'action_roll'>,
+export const TriggerRollOptionAction: JTDSchemaType<
+	Types.Moves.TriggerRollOption<'action_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerOptionActionChoice: Types.Moves.TriggerOptionActionChoice
+		TriggerRollOptionActionChoice: Types.Moves.TriggerRollOptionActionChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -160,12 +160,12 @@ export const TriggerOptionAction: JTDSchemaType<
 			}
 		},
 		by: { ref: 'TriggerBy' },
-		choices: { elements: { ref: 'TriggerOptionActionChoice' } }
+		choices: { elements: { ref: 'TriggerRollOptionActionChoice' } }
 	}
 }
 
-export const TriggerOptionActionChoice: JTDSchemaType<
-	Types.Moves.TriggerOptionActionChoice,
+export const TriggerRollOptionActionChoice: JTDSchemaType<
+	Types.Moves.TriggerRollOptionActionChoice,
 	{
 		Label: string
 	}
@@ -182,7 +182,6 @@ export const TriggerOptionActionChoice: JTDSchemaType<
 		supply: { properties: {} },
 		ref: {
 			properties: {
-				label: { ref: 'Label' },
 				ref: { type: 'string' }
 			}
 		},
@@ -195,11 +194,11 @@ export const TriggerOptionActionChoice: JTDSchemaType<
 	}
 }
 
-export const TriggerOptionProgress: JTDSchemaType<
-	Types.Moves.TriggerOption<'progress_roll'>,
+export const TriggerRollOptionProgress: JTDSchemaType<
+	Types.Moves.TriggerRollOption<'progress_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerOptionProgressChoice: Types.Moves.TriggerOptionProgressChoice
+		TriggerRollOptionProgressChoice: Types.Moves.TriggerRollOptionProgressChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -214,12 +213,12 @@ export const TriggerOptionProgress: JTDSchemaType<
 			}
 		},
 		by: { ref: 'TriggerBy' },
-		choices: { elements: { ref: 'TriggerOptionProgressChoice' } }
+		choices: { elements: { ref: 'TriggerRollOptionProgressChoice' } }
 	}
 }
 
-export const TriggerOptionProgressChoice: JTDSchemaType<
-	Types.Moves.TriggerOptionProgressChoice,
+export const TriggerRollOptionProgressChoice: JTDSchemaType<
+	Types.Moves.TriggerRollOptionProgressChoice,
 	{ ProgressType: Types.Moves.ProgressType }
 > = {
 	properties: {
@@ -373,8 +372,8 @@ export const TriggerExtension: JTDSchemaType<
 	| Types.Moves.TriggerExtension<'action_roll'>
 	| Types.Moves.TriggerExtension<'progress_roll'>,
 	{
-		TriggerOptionAction: Types.Moves.TriggerOption<'action_roll'>
-		TriggerOptionProgress: Types.Moves.TriggerOption<'progress_roll'>
+		TriggerRollOptionAction: Types.Moves.TriggerRollOption<'action_roll'>
+		TriggerRollOptionProgress: Types.Moves.TriggerRollOption<'progress_roll'>
 	}
 > = {
 	metadata: { description: 'Extends or upgrades an existing move trigger.' },
@@ -385,8 +384,8 @@ export const TriggerExtension: JTDSchemaType<
 				description: 'Extends or upgrades an existing action roll trigger.'
 			},
 			properties: {
-				options: {
-					elements: { ref: 'TriggerOptionAction' }
+				roll_options: {
+					elements: { ref: 'TriggerRollOptionAction' }
 				}
 			}
 		},
@@ -395,8 +394,8 @@ export const TriggerExtension: JTDSchemaType<
 				description: 'Extends or upgrades an existing action roll trigger.'
 			},
 			properties: {
-				options: {
-					elements: { ref: 'TriggerOptionProgress' }
+				roll_options: {
+					elements: { ref: 'TriggerRollOptionProgress' }
 				}
 			}
 		}
