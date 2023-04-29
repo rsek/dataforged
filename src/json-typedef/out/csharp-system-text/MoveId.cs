@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace Dataforged
 {
+    /// <summary>
+    /// A move ID, for a standard move or a unique asset move
+    /// </summary>
     [JsonConverter(typeof(MoveIdJsonConverter))]
     public class MoveId
     {

@@ -265,9 +265,7 @@ type AssetAbilityOptionFieldID = string
 // for this are Starforged's Module assets, which can be equipped by Command
 // Vehicle assets. See p. 55 of Starforged for more info.
 type AssetAttachment struct {
-	// Regular expressions matching the IDs of assets that can be attached to this
-	// asset.
-	Patterns []RegularExpression `json:"patterns"`
+	Assets []AssetIdwildcard `json:"assets"`
 
 	// The maximum number of attached assets. Omitted if there's no upper limit to
 	// the number of attached assets.
@@ -370,9 +368,9 @@ type AssetControlFieldID = string
 type AssetControlFieldIdwildcard = string
 
 type AssetExtensionAttachments struct {
-	Max *uint8 `json:"max,omitempty"`
+	Assets []RegularExpression `json:"assets,omitempty"`
 
-	Patterns []RegularExpression `json:"patterns,omitempty"`
+	Max *uint8 `json:"max,omitempty"`
 }
 
 type AssetExtensionControl struct {
@@ -400,9 +398,9 @@ type AssetExtensionChoice struct {
 }
 
 type AssetExtensionForeignAttachments struct {
-	Max *uint8 `json:"max,omitempty"`
+	Assets []AssetIdwildcard `json:"assets,omitempty"`
 
-	Patterns []AssetIdwildcard `json:"patterns,omitempty"`
+	Max *uint8 `json:"max,omitempty"`
 }
 
 type AssetExtensionForeignControl struct {
@@ -739,6 +737,8 @@ type Move struct {
 
 	Trigger Trigger `json:"trigger"`
 
+	Oracles []OracleTableID `json:"oracles,omitempty"`
+
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
 }
 
@@ -774,6 +774,7 @@ type MoveExtension struct {
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
+// A move ID, for a standard move or a unique asset move
 type MoveID = string
 
 type MoveOutcome struct {
@@ -912,8 +913,6 @@ const (
 )
 
 type OracleCollection struct {
-	Contents map[string]OracleTable `json:"contents"`
-
 	ID OracleCollectionID `json:"id"`
 
 	Name Label `json:"name"`
@@ -928,15 +927,17 @@ type OracleCollection struct {
 
 	Color *Color `json:"color,omitempty"`
 
+	Contents map[string]OracleTable `json:"contents,omitempty"`
+
 	Description *MarkdownString `json:"description,omitempty"`
+
+	Extends *OracleCollectionID `json:"extends,omitempty"`
 
 	Rendering *OracleCollectionRendering `json:"rendering,omitempty"`
 
 	SampleNames []Label `json:"sample_names,omitempty"`
 
 	Suggestions *Suggestions `json:"suggestions,omitempty"`
-
-	Template *OracleRollTemplate `json:"template,omitempty"`
 }
 
 type OracleCollectionColumn struct {
@@ -1157,6 +1158,9 @@ const (
 // An expedition progress track, started with Undertake an Expedition
 // (Starforged ruleset only)
 	ProgressTypeExpeditionProgress ProgressType = "expedition_progress"
+
+// A player's failure track (see p. 59 of Ironsworn: Delve)
+	ProgressTypeFailureTrack ProgressType = "failure_track"
 
 // A journey progress track, started with Undertake a Journey (Ironsworn ruleset
 // only)
@@ -1418,6 +1422,8 @@ type TriggerRollOptionAction struct {
 type TriggerRollOptionActionChoice struct {
 	Using string
 
+	AttachedAssetRef TriggerRollOptionActionChoiceAttachedAssetRef
+
 	CustomValue TriggerRollOptionActionChoiceCustomValue
 
 	Edge TriggerRollOptionActionChoiceEdge
@@ -1441,6 +1447,8 @@ type TriggerRollOptionActionChoice struct {
 
 func (v TriggerRollOptionActionChoice) MarshalJSON() ([]byte, error) {
 	switch v.Using {
+	case "attached_asset_ref":
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceAttachedAssetRef }{ v.Using, v.AttachedAssetRef })
 	case "custom_value":
 		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceCustomValue }{ v.Using, v.CustomValue })
 	case "edge":
@@ -1474,6 +1482,8 @@ func (v *TriggerRollOptionActionChoice) UnmarshalJSON(b []byte) error {
 
 	var err error
 	switch t.T {
+	case "attached_asset_ref":
+		err = json.Unmarshal(b, &v.AttachedAssetRef)
 	case "custom_value":
 		err = json.Unmarshal(b, &v.CustomValue)
 	case "edge":
@@ -1504,6 +1514,10 @@ func (v *TriggerRollOptionActionChoice) UnmarshalJSON(b []byte) error {
 
 	v.Using = t.T
 	return nil
+}
+
+type TriggerRollOptionActionChoiceAttachedAssetRef struct {
+	Ref string `json:"ref"`
 }
 
 type TriggerRollOptionActionChoiceCustomValue struct {

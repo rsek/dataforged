@@ -7,12 +7,12 @@ namespace Dataforged
 {
     public class AssetExtensionForeignAttachments
     {
+        [JsonPropertyName("assets")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<AssetIdwildcard> Assets { get; set; }
+
         [JsonPropertyName("max")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public byte? Max { get; set; }
-
-        [JsonPropertyName("patterns")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<AssetIdwildcard> Patterns { get; set; }
     }
 }

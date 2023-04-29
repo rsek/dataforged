@@ -10,9 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class OracleCollection {
-    @JsonProperty("contents")
-    private Map<String, OracleTable> contents;
-
     @JsonProperty("id")
     private OracleCollectionId id;
 
@@ -38,8 +35,16 @@ public class OracleCollection {
     private Color color;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("contents")
+    private Map<String, OracleTable> contents;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
     private MarkdownString description;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("extends")
+    private OracleCollectionId extends_;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("rendering")
@@ -53,25 +58,7 @@ public class OracleCollection {
     @JsonProperty("suggestions")
     private Suggestions suggestions;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("template")
-    private OracleRollTemplate template;
-
     public OracleCollection() {
-    }
-
-    /**
-     * Getter for contents.<p>
-     */
-    public Map<String, OracleTable> getContents() {
-        return contents;
-    }
-
-    /**
-     * Setter for contents.<p>
-     */
-    public void setContents(Map<String, OracleTable> contents) {
-        this.contents = contents;
     }
 
     /**
@@ -173,6 +160,20 @@ public class OracleCollection {
     }
 
     /**
+     * Getter for contents.<p>
+     */
+    public Map<String, OracleTable> getContents() {
+        return contents;
+    }
+
+    /**
+     * Setter for contents.<p>
+     */
+    public void setContents(Map<String, OracleTable> contents) {
+        this.contents = contents;
+    }
+
+    /**
      * Getter for description.<p>
      */
     public MarkdownString getDescription() {
@@ -184,6 +185,20 @@ public class OracleCollection {
      */
     public void setDescription(MarkdownString description) {
         this.description = description;
+    }
+
+    /**
+     * Getter for extends_.<p>
+     */
+    public OracleCollectionId getExtends_() {
+        return extends_;
+    }
+
+    /**
+     * Setter for extends_.<p>
+     */
+    public void setExtends_(OracleCollectionId extends_) {
+        this.extends_ = extends_;
     }
 
     /**
@@ -226,19 +241,5 @@ public class OracleCollection {
      */
     public void setSuggestions(Suggestions suggestions) {
         this.suggestions = suggestions;
-    }
-
-    /**
-     * Getter for template.<p>
-     */
-    public OracleRollTemplate getTemplate() {
-        return template;
-    }
-
-    /**
-     * Setter for template.<p>
-     */
-    public void setTemplate(OracleRollTemplate template) {
-        this.template = template;
     }
 }

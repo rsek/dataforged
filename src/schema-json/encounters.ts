@@ -53,7 +53,6 @@ export const EncounterClassic: Schema<Types.Encounters.EncounterClassic> = {
 		'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.',
 	required: [
 		'name',
-		'nature',
 		'rank',
 		'features',
 		'drives',
@@ -65,9 +64,6 @@ export const EncounterClassic: Schema<Types.Encounters.EncounterClassic> = {
 	],
 	properties: {
 		name: refSchema<Types.Localize.Label>('Label'),
-		nature: refSchema<Types.Encounters.EncounterNatureClassic>(
-			'EncounterNatureClassic'
-		),
 		rank: refSchema<Types.Progress.ChallengeRank>('ChallengeRank'),
 		features: {
 			type: 'array',
@@ -155,12 +151,6 @@ export const EncounterCollectionClassic: Schema<Types.Encounters.EncounterCollec
 		),
 		'properties.member_label',
 		refSchema('Label')
-	)
-
-export const EncounterCollectionExtensionClassic =
-	Abstract.collectionExtensionSchema(
-		'EncounterClassic',
-		'EncounterCollectionClassicID'
 	)
 
 export const EncounterCollectionClassicID: Schema<Types.Encounters.EncounterCollectionID> =

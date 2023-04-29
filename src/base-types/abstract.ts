@@ -3,6 +3,7 @@
  */
 
 import type * as Types from '@base-types'
+import { type PartialBy } from 'class-schema/utils'
 import { type RecursivePartial } from 'utils'
 
 /**
@@ -83,7 +84,7 @@ export interface Collection<T, IDType = Types.Metadata.ID>
 }
 
 export interface RecursiveCollection<T, IDType = Types.Metadata.ID>
-	extends Collection<T, IDType> {
+	extends PartialBy<Collection<T, IDType>, 'contents'> {
 	collections?: Record<string, this>
 }
 

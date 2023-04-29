@@ -10,14 +10,28 @@ import java.util.List;
 @JsonSerialize
 public class AssetExtensionForeignAttachments {
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("assets")
+    private List<AssetIdwildcard> assets;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("max")
     private UnsignedByte max;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("patterns")
-    private List<AssetIdwildcard> patterns;
-
     public AssetExtensionForeignAttachments() {
+    }
+
+    /**
+     * Getter for assets.<p>
+     */
+    public List<AssetIdwildcard> getAssets() {
+        return assets;
+    }
+
+    /**
+     * Setter for assets.<p>
+     */
+    public void setAssets(List<AssetIdwildcard> assets) {
+        this.assets = assets;
     }
 
     /**
@@ -32,19 +46,5 @@ public class AssetExtensionForeignAttachments {
      */
     public void setMax(UnsignedByte max) {
         this.max = max;
-    }
-
-    /**
-     * Getter for patterns.<p>
-     */
-    public List<AssetIdwildcard> getPatterns() {
-        return patterns;
-    }
-
-    /**
-     * Setter for patterns.<p>
-     */
-    public void setPatterns(List<AssetIdwildcard> patterns) {
-        this.patterns = patterns;
     }
 }

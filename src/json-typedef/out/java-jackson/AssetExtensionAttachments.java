@@ -10,14 +10,28 @@ import java.util.List;
 @JsonSerialize
 public class AssetExtensionAttachments {
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("assets")
+    private List<RegularExpression> assets;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("max")
     private UnsignedByte max;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("patterns")
-    private List<RegularExpression> patterns;
-
     public AssetExtensionAttachments() {
+    }
+
+    /**
+     * Getter for assets.<p>
+     */
+    public List<RegularExpression> getAssets() {
+        return assets;
+    }
+
+    /**
+     * Setter for assets.<p>
+     */
+    public void setAssets(List<RegularExpression> assets) {
+        this.assets = assets;
     }
 
     /**
@@ -32,19 +46,5 @@ public class AssetExtensionAttachments {
      */
     public void setMax(UnsignedByte max) {
         this.max = max;
-    }
-
-    /**
-     * Getter for patterns.<p>
-     */
-    public List<RegularExpression> getPatterns() {
-        return patterns;
-    }
-
-    /**
-     * Setter for patterns.<p>
-     */
-    public void setPatterns(List<RegularExpression> patterns) {
-        this.patterns = patterns;
     }
 }

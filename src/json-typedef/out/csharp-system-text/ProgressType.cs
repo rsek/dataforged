@@ -48,6 +48,11 @@ namespace Dataforged
         ExpeditionProgress,
 
         /// <summary>
+        /// A player's failure track (see p. 59 of Ironsworn: Delve)
+        /// </summary>
+        FailureTrack,
+
+        /// <summary>
         /// A journey progress track, started with Undertake a Journey
         /// (Ironsworn ruleset only)
         /// </summary>
@@ -89,6 +94,8 @@ namespace Dataforged
                     return ProgressType.DiscoveriesLegacy;
                 case "expedition_progress":
                     return ProgressType.ExpeditionProgress;
+                case "failure_track":
+                    return ProgressType.FailureTrack;
                 case "journey_progress":
                     return ProgressType.JourneyProgress;
                 case "quests_legacy":
@@ -126,6 +133,9 @@ namespace Dataforged
                     return;
                 case ProgressType.ExpeditionProgress:
                     JsonSerializer.Serialize<string>(writer, "expedition_progress", options);
+                    return;
+                case ProgressType.FailureTrack:
+                    JsonSerializer.Serialize<string>(writer, "failure_track", options);
                     return;
                 case ProgressType.JourneyProgress:
                     JsonSerializer.Serialize<string>(writer, "journey_progress", options);

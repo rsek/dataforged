@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "using")
 @JsonSubTypes({
+    @JsonSubTypes.Type(name = "attached_asset_ref", value = TriggerRollOptionActionChoiceAttachedAssetRef.class),
     @JsonSubTypes.Type(name = "custom_value", value = TriggerRollOptionActionChoiceCustomValue.class),
     @JsonSubTypes.Type(name = "edge", value = TriggerRollOptionActionChoiceEdge.class),
     @JsonSubTypes.Type(name = "health", value = TriggerRollOptionActionChoiceHealth.class),

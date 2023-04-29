@@ -12,12 +12,8 @@ namespace Dataforged
     /// </summary>
     public class AssetAttachment
     {
-        /// <summary>
-        /// Regular expressions matching the IDs of assets that can be attached
-        /// to this asset.
-        /// </summary>
-        [JsonPropertyName("patterns")]
-        public IList<RegularExpression> Patterns { get; set; }
+        [JsonPropertyName("assets")]
+        public IList<AssetIdwildcard> Assets { get; set; }
 
         /// <summary>
         /// The maximum number of attached assets. Omitted if there's no upper

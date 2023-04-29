@@ -100,7 +100,7 @@
 		"AssetIDWildcard": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^(\\*|[a-z_]+)\\/assets\\/(\\*|[a-z_]+)\\/(\\*|[a-z_]+)$"
+				"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)$"
 			}
 		},
 		"Asset": {
@@ -130,13 +130,13 @@
 						"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
 					}
 				},
+				"attachments": {
+					"ref": "AssetAttachment"
+				},
 				"controls": {
 					"values": {
 						"ref": "AssetControlField"
 					}
-				},
-				"attachments": {
-					"ref": "AssetAttachment"
 				},
 				"options": {
 					"values": {
@@ -156,12 +156,12 @@
 				"description": "Describes which assets can be attached to this asset. The \"canonical\" example for this are Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
 			},
 			"properties": {
-				"patterns": {
+				"assets": {
 					"metadata": {
-						"description": "Regular expressions matching the IDs of assets that can be attached to this asset."
+						"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)$"
 					},
 					"elements": {
-						"ref": "RegularExpression"
+						"ref": "AssetIDWildcard"
 					}
 				}
 			},
@@ -541,7 +541,7 @@
 		"AssetControlFieldIDWildcard": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/(\\*|[a-z_]+)\\/(\\*|[a-z_]+)\\/controls\\/[a-z_]+$"
+				"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/controls\\/[a-z_]+$"
 			}
 		},
 		"AssetControlField": {
@@ -638,7 +638,7 @@
 						"max": {
 							"type": "uint8"
 						},
-						"patterns": {
+						"assets": {
 							"elements": {
 								"ref": "AssetIDWildcard"
 							}
@@ -675,7 +675,7 @@
 						"max": {
 							"type": "uint8"
 						},
-						"patterns": {
+						"assets": {
 							"elements": {
 								"ref": "RegularExpression"
 							}
@@ -1228,6 +1228,13 @@
 				"supply": {
 					"properties": {}
 				},
+				"attached_asset_ref": {
+					"properties": {
+						"ref": {
+							"type": "string"
+						}
+					}
+				},
 				"ref": {
 					"properties": {
 						"ref": {
@@ -1290,7 +1297,8 @@
 				"discoveries_legacy",
 				"journey_progress",
 				"delve_progress",
-				"bonds_progress"
+				"bonds_progress",
+				"failure_track"
 			],
 			"metadata": {
 				"enumDescription": {
@@ -1304,7 +1312,8 @@
 					"discoveries_legacy": "A player's Discoveries legacy track(Starforged ruleset only)",
 					"journey_progress": "A journey progress track, started with Undertake a Journey (Ironsworn ruleset only)",
 					"delve_progress": "A delve site progress track, started with Discover a Site (Ironsworn ruleset only)",
-					"bonds_progress": "A player's bonds progress track (Ironsworn ruleset only)"
+					"bonds_progress": "A player's bonds progress track (Ironsworn ruleset only)",
+					"failure_track": "A player's failure track (see p. 59 of Ironsworn: Delve)"
 				}
 			}
 		},
@@ -1371,7 +1380,14 @@
 		},
 		"MoveID": {
 			"type": "string",
-			"metadata": {}
+			"metadata": {
+				"description": "A move ID, for a standard move or a unique asset move",
+				"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$",
+				"examples": [
+					"starforged/moves/combat/strike",
+					"starforged/assets/module/grappler/moves/ready_grappler"
+				]
+			}
 		},
 		"Move": {
 			"properties": {
@@ -1397,6 +1413,11 @@
 			"optionalProperties": {
 				"suggestions": {
 					"ref": "Suggestions"
+				},
+				"oracles": {
+					"elements": {
+						"ref": "OracleTableID"
+					}
 				}
 			}
 		},
@@ -1579,7 +1600,7 @@
 			"metadata": {
 				"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
 				"examples": [
-					"ironsworn/oracles/action_and_theme/action/1-1"
+					"classic/oracles/action_and_theme/action/1-1"
 				]
 			}
 		},
@@ -1672,22 +1693,25 @@
 				},
 				"summary": {
 					"ref": "MarkdownString"
-				},
-				"contents": {
-					"values": {
-						"ref": "OracleTable"
-					}
 				}
 			},
 			"optionalProperties": {
 				"canonical_name": {
 					"ref": "Label"
 				},
+				"extends": {
+					"ref": "OracleCollectionID"
+				},
 				"description": {
 					"ref": "MarkdownString"
 				},
 				"suggestions": {
 					"ref": "Suggestions"
+				},
+				"contents": {
+					"values": {
+						"ref": "OracleTable"
+					}
 				},
 				"collections": {
 					"values": {
@@ -1704,9 +1728,6 @@
 					"elements": {
 						"ref": "Label"
 					}
-				},
-				"template": {
-					"ref": "OracleRollTemplate"
 				}
 			}
 		},
@@ -1850,7 +1871,7 @@
 			"metadata": {
 				"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
 				"examples": [
-					"ironsworn/regions/shattered_wastes"
+					"classic/regions/shattered_wastes"
 				]
 			}
 		},
@@ -1891,7 +1912,7 @@
 			"metadata": {
 				"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
 				"examples": [
-					"ironsworn/world_truths/iron"
+					"classic/world_truths/iron"
 				]
 			}
 		},
@@ -1900,14 +1921,14 @@
 			"metadata": {
 				"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
 				"examples": [
-					"ironsworn/world_truths/iron/0"
+					"classic/world_truths/iron/0"
 				]
 			}
 		},
 		"SettingTruthID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+$",
+				"pattern": "^[a-z0-9_]{3,}\\/[a-z_]+\\/setting_truths\\/[a-z_]+$",
 				"examples": [
 					"starforged/setting_truths/exodus"
 				]
@@ -1916,7 +1937,7 @@
 		"SettingTruthOptionID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+\\/[0-2]$",
+				"pattern": "^[a-z0-9_]{3,}\\/[a-z_]+\\/setting_truths\\/[a-z_]+\\/[0-2]$",
 				"examples": [
 					"starforged/setting_truths/exodus/0"
 				]

@@ -29,9 +29,11 @@ export function dictionarySchema<TValue>(
 		{
 			type: 'object',
 			$comment: 'Deserialize as a "dictionary"-like object.',
+
 			patternProperties: {
 				[DF_KEY]: schema
-			}
+			},
+			additionalProperties: false
 		},
 		options ?? {}
 	)

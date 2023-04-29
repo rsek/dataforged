@@ -5,6 +5,7 @@ package Dataforged;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.List;
 
 @JsonSerialize
 public class Move {
@@ -25,6 +26,10 @@ public class Move {
 
     @JsonProperty("trigger")
     private Trigger trigger;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("oracles")
+    private List<OracleTableId> oracles;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("suggestions")
@@ -115,6 +120,20 @@ public class Move {
      */
     public void setTrigger(Trigger trigger) {
         this.trigger = trigger;
+    }
+
+    /**
+     * Getter for oracles.<p>
+     */
+    public List<OracleTableId> getOracles() {
+        return oracles;
+    }
+
+    /**
+     * Setter for oracles.<p>
+     */
+    public void setOracles(List<OracleTableId> oracles) {
+        this.oracles = oracles;
     }
 
     /**
