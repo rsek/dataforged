@@ -21,11 +21,11 @@ export const OracleTable: JTDSchemaType<
 	properties: {
 		id: { ref: 'OracleTableID' },
 		name: { ref: 'Label' },
-		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		table: { elements: { ref: 'OracleTableRow' } }
 	},
 	optionalProperties: {
+		canonical_name: { ref: 'Label' },
 		summary: { ref: 'MarkdownString' },
 		description: { ref: 'MarkdownString' },
 		match: { ref: 'OracleTableMatchBehavior' },
@@ -115,12 +115,12 @@ export const OracleCollection: JTDSchemaType<
 	properties: {
 		id: { ref: 'OracleCollectionID' },
 		name: { ref: 'Label' },
-		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		summary: { ref: 'MarkdownString' },
 		contents: { values: { ref: 'OracleTable' } }
 	},
 	optionalProperties: {
+		canonical_name: { ref: 'Label' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' },
 		collections: { values: { ref: 'OracleCollection' } },

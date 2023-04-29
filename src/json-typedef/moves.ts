@@ -59,13 +59,13 @@ export const MoveCategory: JTDSchemaType<
 	properties: {
 		id: { ref: 'MoveCategoryID' },
 		name: { ref: 'Label' },
-		canonical_name: { ref: 'Label' },
 		source: { ref: 'Source' },
 		color: { ref: 'Color' },
 		summary: { ref: 'MarkdownString' },
 		contents: { values: { ref: 'Move' } }
 	},
 	optionalProperties: {
+		canonical_name: { ref: 'Label' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' }
 	}

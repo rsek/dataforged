@@ -7,9 +7,6 @@ namespace Dataforged
 {
     public class MoveCategory
     {
-        [JsonPropertyName("canonical_name")]
-        public Label CanonicalName { get; set; }
-
         [JsonPropertyName("color")]
         public Color Color { get; set; }
 
@@ -27,6 +24,10 @@ namespace Dataforged
 
         [JsonPropertyName("summary")]
         public MarkdownString Summary { get; set; }
+
+        [JsonPropertyName("canonical_name")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public Label? CanonicalName { get; set; }
 
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

@@ -1219,39 +1219,40 @@ class Move:
 
 @dataclass
 class MoveCategory:
-    canonical_name: 'Label'
     color: 'Color'
     contents: 'Dict[str, Move]'
     id: 'MoveCategoryID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
+    canonical_name: 'Optional[Label]'
     description: 'Optional[MarkdownString]'
     suggestions: 'Optional[Suggestions]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'MoveCategory':
         return cls(
-            _from_json_data(Label, data.get("canonical_name")),
             _from_json_data(Color, data.get("color")),
             _from_json_data(Dict[str, Move], data.get("contents")),
             _from_json_data(MoveCategoryID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
+            _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["canonical_name"] = _to_json_data(self.canonical_name)
         data["color"] = _to_json_data(self.color)
         data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         data["summary"] = _to_json_data(self.summary)
+        if self.canonical_name is not None:
+             data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.suggestions is not None:
@@ -1633,12 +1634,12 @@ class MoveRollMethod(Enum):
 
 @dataclass
 class OracleCollection:
-    canonical_name: 'Label'
     contents: 'Dict[str, OracleTable]'
     id: 'OracleCollectionID'
     name: 'Label'
     source: 'Source'
     summary: 'MarkdownString'
+    canonical_name: 'Optional[Label]'
     collections: 'Optional[Dict[str, OracleCollection]]'
     color: 'Optional[Color]'
     description: 'Optional[MarkdownString]'
@@ -1650,12 +1651,12 @@ class OracleCollection:
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollection':
         return cls(
-            _from_json_data(Label, data.get("canonical_name")),
             _from_json_data(Dict[str, OracleTable], data.get("contents")),
             _from_json_data(OracleCollectionID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("summary")),
+            _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[Dict[str, OracleCollection]], data.get("collections")),
             _from_json_data(Optional[Color], data.get("color")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
@@ -1667,12 +1668,13 @@ class OracleCollection:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["canonical_name"] = _to_json_data(self.canonical_name)
         data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         data["summary"] = _to_json_data(self.summary)
+        if self.canonical_name is not None:
+             data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.collections is not None:
              data["collections"] = _to_json_data(self.collections)
         if self.color is not None:
@@ -1796,11 +1798,11 @@ class OracleRollTemplate:
 
 @dataclass
 class OracleTable:
-    canonical_name: 'Label'
     id: 'OracleTableID'
     name: 'Label'
     source: 'Source'
     table: 'List[OracleTableRow]'
+    canonical_name: 'Optional[Label]'
     description: 'Optional[MarkdownString]'
     match: 'Optional[OracleTableMatchBehavior]'
     rendering: 'Optional[OracleTableRendering]'
@@ -1810,11 +1812,11 @@ class OracleTable:
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleTable':
         return cls(
-            _from_json_data(Label, data.get("canonical_name")),
             _from_json_data(OracleTableID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(List[OracleTableRow], data.get("table")),
+            _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
             _from_json_data(Optional[OracleTableMatchBehavior], data.get("match")),
             _from_json_data(Optional[OracleTableRendering], data.get("rendering")),
@@ -1824,11 +1826,12 @@ class OracleTable:
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["canonical_name"] = _to_json_data(self.canonical_name)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
         data["table"] = _to_json_data(self.table)
+        if self.canonical_name is not None:
+             data["canonical_name"] = _to_json_data(self.canonical_name)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
         if self.match is not None:

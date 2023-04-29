@@ -9,9 +9,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class MoveCategory {
-    @JsonProperty("canonical_name")
-    private Label canonicalName;
-
     @JsonProperty("color")
     private Color color;
 
@@ -31,6 +28,10 @@ public class MoveCategory {
     private MarkdownString summary;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("canonical_name")
+    private Label canonicalName;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
     private MarkdownString description;
 
@@ -39,20 +40,6 @@ public class MoveCategory {
     private Suggestions suggestions;
 
     public MoveCategory() {
-    }
-
-    /**
-     * Getter for canonicalName.<p>
-     */
-    public Label getCanonicalName() {
-        return canonicalName;
-    }
-
-    /**
-     * Setter for canonicalName.<p>
-     */
-    public void setCanonicalName(Label canonicalName) {
-        this.canonicalName = canonicalName;
     }
 
     /**
@@ -137,6 +124,20 @@ public class MoveCategory {
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;
+    }
+
+    /**
+     * Getter for canonicalName.<p>
+     */
+    public Label getCanonicalName() {
+        return canonicalName;
+    }
+
+    /**
+     * Setter for canonicalName.<p>
+     */
+    public void setCanonicalName(Label canonicalName) {
+        this.canonicalName = canonicalName;
     }
 
     /**

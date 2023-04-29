@@ -618,8 +618,6 @@ type Move struct {
 }
 
 type MoveCategory struct {
-	CanonicalName Label `json:"canonical_name"`
-
 	Color Color `json:"color"`
 
 	Contents map[string]Move `json:"contents"`
@@ -631,6 +629,8 @@ type MoveCategory struct {
 	Source Source `json:"source"`
 
 	Summary MarkdownString `json:"summary"`
+
+	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 
@@ -787,8 +787,6 @@ const (
 )
 
 type OracleCollection struct {
-	CanonicalName Label `json:"canonical_name"`
-
 	Contents map[string]OracleTable `json:"contents"`
 
 	ID OracleCollectionID `json:"id"`
@@ -798,6 +796,8 @@ type OracleCollection struct {
 	Source Source `json:"source"`
 
 	Summary MarkdownString `json:"summary"`
+
+	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Collections map[string]OracleCollection `json:"collections,omitempty"`
 
@@ -861,8 +861,6 @@ type OracleRollTemplate struct {
 }
 
 type OracleTable struct {
-	CanonicalName Label `json:"canonical_name"`
-
 	ID OracleTableID `json:"id"`
 
 	Name Label `json:"name"`
@@ -870,6 +868,8 @@ type OracleTable struct {
 	Source Source `json:"source"`
 
 	Table []OracleTableRow `json:"table"`
+
+	CanonicalName *Label `json:"canonical_name,omitempty"`
 
 	Description *MarkdownString `json:"description,omitempty"`
 

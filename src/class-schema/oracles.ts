@@ -123,7 +123,7 @@ export class OracleTable
 	id!: string
 
 	name: string
-	canonical_name: string
+	canonical_name?: string
 
 	@Localize.IsMarkdownSentences()
 	@IsOptional()

@@ -13,7 +13,7 @@ export abstract class Collection<T>
 	implements Types.Abstract.Collection<T>
 {
 	name: string
-	canonical_name: string
+	canonical_name?: string
 
 	// managed by descendant classes
 	abstract contents: Record<string, T>

@@ -746,9 +746,6 @@ pub struct Move {
 
 #[derive(Serialize, Deserialize)]
 pub struct MoveCategory {
-    #[serde(rename = "canonical_name")]
-    pub canonicalName: Label,
-
     #[serde(rename = "color")]
     pub color: Color,
 
@@ -766,6 +763,10 @@ pub struct MoveCategory {
 
     #[serde(rename = "summary")]
     pub summary: MarkdownString,
+
+    #[serde(rename = "canonical_name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub canonicalName: Option<Box<Label>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1001,9 +1002,6 @@ pub enum MoveRollMethod {
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleCollection {
-    #[serde(rename = "canonical_name")]
-    pub canonicalName: Label,
-
     #[serde(rename = "contents")]
     pub contents: HashMap<String, OracleTable>,
 
@@ -1018,6 +1016,10 @@ pub struct OracleCollection {
 
     #[serde(rename = "summary")]
     pub summary: MarkdownString,
+
+    #[serde(rename = "canonical_name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub canonicalName: Option<Box<Label>>,
 
     #[serde(rename = "collections")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1119,9 +1121,6 @@ pub struct OracleRollTemplate {
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleTable {
-    #[serde(rename = "canonical_name")]
-    pub canonicalName: Label,
-
     #[serde(rename = "id")]
     pub id: OracleTableId,
 
@@ -1133,6 +1132,10 @@ pub struct OracleTable {
 
     #[serde(rename = "table")]
     pub table: Vec<OracleTableRow>,
+
+    #[serde(rename = "canonical_name")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub canonicalName: Option<Box<Label>>,
 
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
