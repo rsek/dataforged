@@ -1223,25 +1223,25 @@ module Dataforged
   end
 
   class MoveCategory
-    attr_accessor :canonical_name
     attr_accessor :color
     attr_accessor :contents
     attr_accessor :id
     attr_accessor :name
     attr_accessor :source
     attr_accessor :summary
+    attr_accessor :canonical_name
     attr_accessor :description
     attr_accessor :suggestions
 
     def self.from_json_data(data)
       out = MoveCategory.new
-      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.color = Dataforged::from_json_data(Color, data["color"])
       out.contents = Dataforged::from_json_data(Hash[String, Move], data["contents"])
       out.id = Dataforged::from_json_data(MoveCategoryID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
+      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
       out.suggestions = Dataforged::from_json_data(Suggestions, data["suggestions"])
       out
@@ -1249,13 +1249,13 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["canonical_name"] = Dataforged::to_json_data(canonical_name)
       data["color"] = Dataforged::to_json_data(color)
       data["contents"] = Dataforged::to_json_data(contents)
       data["id"] = Dataforged::to_json_data(id)
       data["name"] = Dataforged::to_json_data(name)
       data["source"] = Dataforged::to_json_data(source)
       data["summary"] = Dataforged::to_json_data(summary)
+      data["canonical_name"] = Dataforged::to_json_data(canonical_name) unless canonical_name.nil?
       data["description"] = Dataforged::to_json_data(description) unless description.nil?
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
       data
@@ -1637,12 +1637,12 @@ module Dataforged
   end
 
   class OracleCollection
-    attr_accessor :canonical_name
     attr_accessor :contents
     attr_accessor :id
     attr_accessor :name
     attr_accessor :source
     attr_accessor :summary
+    attr_accessor :canonical_name
     attr_accessor :collections
     attr_accessor :color
     attr_accessor :description
@@ -1653,12 +1653,12 @@ module Dataforged
 
     def self.from_json_data(data)
       out = OracleCollection.new
-      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.contents = Dataforged::from_json_data(Hash[String, OracleTable], data["contents"])
       out.id = Dataforged::from_json_data(OracleCollectionID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.summary = Dataforged::from_json_data(MarkdownString, data["summary"])
+      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.collections = Dataforged::from_json_data(Hash[String, OracleCollection], data["collections"])
       out.color = Dataforged::from_json_data(Color, data["color"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
@@ -1671,12 +1671,12 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["canonical_name"] = Dataforged::to_json_data(canonical_name)
       data["contents"] = Dataforged::to_json_data(contents)
       data["id"] = Dataforged::to_json_data(id)
       data["name"] = Dataforged::to_json_data(name)
       data["source"] = Dataforged::to_json_data(source)
       data["summary"] = Dataforged::to_json_data(summary)
+      data["canonical_name"] = Dataforged::to_json_data(canonical_name) unless canonical_name.nil?
       data["collections"] = Dataforged::to_json_data(collections) unless collections.nil?
       data["color"] = Dataforged::to_json_data(color) unless color.nil?
       data["description"] = Dataforged::to_json_data(description) unless description.nil?
@@ -1822,11 +1822,11 @@ module Dataforged
   end
 
   class OracleTable
-    attr_accessor :canonical_name
     attr_accessor :id
     attr_accessor :name
     attr_accessor :source
     attr_accessor :table
+    attr_accessor :canonical_name
     attr_accessor :description
     attr_accessor :match
     attr_accessor :rendering
@@ -1835,11 +1835,11 @@ module Dataforged
 
     def self.from_json_data(data)
       out = OracleTable.new
-      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.id = Dataforged::from_json_data(OracleTableID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.table = Dataforged::from_json_data(Array[OracleTableRow], data["table"])
+      out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
       out.match = Dataforged::from_json_data(OracleTableMatchBehavior, data["match"])
       out.rendering = Dataforged::from_json_data(OracleTableRendering, data["rendering"])
@@ -1850,11 +1850,11 @@ module Dataforged
 
     def to_json_data
       data = {}
-      data["canonical_name"] = Dataforged::to_json_data(canonical_name)
       data["id"] = Dataforged::to_json_data(id)
       data["name"] = Dataforged::to_json_data(name)
       data["source"] = Dataforged::to_json_data(source)
       data["table"] = Dataforged::to_json_data(table)
+      data["canonical_name"] = Dataforged::to_json_data(canonical_name) unless canonical_name.nil?
       data["description"] = Dataforged::to_json_data(description) unless description.nil?
       data["match"] = Dataforged::to_json_data(match) unless match.nil?
       data["rendering"] = Dataforged::to_json_data(rendering) unless rendering.nil?

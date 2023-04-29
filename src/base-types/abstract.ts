@@ -75,7 +75,7 @@ export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
 export interface Collection<T, IDType = Types.Metadata.ID>
 	extends Types.Abstract.SourcedNode<IDType> {
 	name: string
-	canonical_name: string
+	canonical_name?: string
 	contents: Record<string, T>
 	color?: Types.Metadata.Color
 	summary: Types.Localize.MarkdownSentences

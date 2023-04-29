@@ -10,9 +10,6 @@ import java.util.Map;
 
 @JsonSerialize
 public class OracleCollection {
-    @JsonProperty("canonical_name")
-    private Label canonicalName;
-
     @JsonProperty("contents")
     private Map<String, OracleTable> contents;
 
@@ -27,6 +24,10 @@ public class OracleCollection {
 
     @JsonProperty("summary")
     private MarkdownString summary;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("canonical_name")
+    private Label canonicalName;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("collections")
@@ -57,20 +58,6 @@ public class OracleCollection {
     private OracleRollTemplate template;
 
     public OracleCollection() {
-    }
-
-    /**
-     * Getter for canonicalName.<p>
-     */
-    public Label getCanonicalName() {
-        return canonicalName;
-    }
-
-    /**
-     * Setter for canonicalName.<p>
-     */
-    public void setCanonicalName(Label canonicalName) {
-        this.canonicalName = canonicalName;
     }
 
     /**
@@ -141,6 +128,20 @@ public class OracleCollection {
      */
     public void setSummary(MarkdownString summary) {
         this.summary = summary;
+    }
+
+    /**
+     * Getter for canonicalName.<p>
+     */
+    public Label getCanonicalName() {
+        return canonicalName;
+    }
+
+    /**
+     * Setter for canonicalName.<p>
+     */
+    public void setCanonicalName(Label canonicalName) {
+        this.canonicalName = canonicalName;
     }
 
     /**

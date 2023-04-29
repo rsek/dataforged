@@ -9,9 +9,6 @@ import java.util.List;
 
 @JsonSerialize
 public class OracleTable {
-    @JsonProperty("canonical_name")
-    private Label canonicalName;
-
     @JsonProperty("id")
     private OracleTableId id;
 
@@ -23,6 +20,10 @@ public class OracleTable {
 
     @JsonProperty("table")
     private List<OracleTableRow> table;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("canonical_name")
+    private Label canonicalName;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("description")
@@ -45,20 +46,6 @@ public class OracleTable {
     private MarkdownString summary;
 
     public OracleTable() {
-    }
-
-    /**
-     * Getter for canonicalName.<p>
-     */
-    public Label getCanonicalName() {
-        return canonicalName;
-    }
-
-    /**
-     * Setter for canonicalName.<p>
-     */
-    public void setCanonicalName(Label canonicalName) {
-        this.canonicalName = canonicalName;
     }
 
     /**
@@ -115,6 +102,20 @@ public class OracleTable {
      */
     public void setTable(List<OracleTableRow> table) {
         this.table = table;
+    }
+
+    /**
+     * Getter for canonicalName.<p>
+     */
+    public Label getCanonicalName() {
+        return canonicalName;
+    }
+
+    /**
+     * Setter for canonicalName.<p>
+     */
+    public void setCanonicalName(Label canonicalName) {
+        this.canonicalName = canonicalName;
     }
 
     /**

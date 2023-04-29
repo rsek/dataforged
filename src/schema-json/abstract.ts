@@ -19,7 +19,7 @@ export function collectionSchema<
 	type CollectionItemType = TCollection['contents'][string]
 	const CollectionBase: Schema<TCollection> = {
 		type: 'object' as any,
-		required: ['id', 'name', 'canonical_name', 'source', 'contents'],
+		required: ['id', 'name', 'source', 'contents'],
 		additionalProperties: false,
 		properties: {
 			id: refSchema<string>(idRef),

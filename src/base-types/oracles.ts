@@ -6,7 +6,7 @@ export interface OracleTable {
 	id: OracleTableID
 	// _template?: string
 	name: string
-	canonical_name: string
+	canonical_name?: string
 	source: Metadata.Source
 	summary?: Localize.MarkdownSentences
 	description?: Localize.MarkdownParagraphs

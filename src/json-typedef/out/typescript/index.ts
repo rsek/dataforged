@@ -407,13 +407,13 @@ export interface Move {
 }
 
 export interface MoveCategory {
-  canonical_name: Label;
   color: Color;
   contents: { [key: string]: Move };
   id: MoveCategoryId;
   name: Label;
   source: Source;
   summary: MarkdownString;
+  canonical_name?: Label;
   description?: MarkdownString;
   suggestions?: Suggestions;
 }
@@ -581,12 +581,12 @@ export enum MoveRollMethod {
 }
 
 export interface OracleCollection {
-  canonical_name: Label;
   contents: { [key: string]: OracleTable };
   id: OracleCollectionId;
   name: Label;
   source: Source;
   summary: MarkdownString;
+  canonical_name?: Label;
   collections?: { [key: string]: OracleCollection };
   color?: Color;
   description?: MarkdownString;
@@ -629,11 +629,11 @@ export interface OracleRollTemplate {
 }
 
 export interface OracleTable {
-  canonical_name: Label;
   id: OracleTableId;
   name: Label;
   source: Source;
   table: OracleTableRow[];
+  canonical_name?: Label;
   description?: MarkdownString;
   match?: OracleTableMatchBehavior;
   rendering?: OracleTableRendering;
