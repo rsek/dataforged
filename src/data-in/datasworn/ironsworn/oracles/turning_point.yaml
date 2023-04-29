@@ -155,9 +155,10 @@ classic:
               result: 'You are wracked with sudden sickness.'
             - low: 97
               high: 100
-              result:
-                'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
-                # *reslt:RollTwice.MakeItWorse
+              result: 'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
+              rolls:
+                - times: 2
+                  method: make_it_worse
 
         major_plot_twist:
           canonical_name: 'Oracle 18: Major Plot Twist'
