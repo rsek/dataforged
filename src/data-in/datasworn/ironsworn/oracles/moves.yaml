@@ -10,20 +10,11 @@ classic:
   oracles:
     moves:
       name: Moves
-      _source:
-        authors:
-          - Shawn Tomkin
-        title: Ironsworn Rulebook
-        license: https://creativecommons.org/licenses/by/4.0
       collections:
         ask_the_oracle:
           name: Ask the Oracle
           _source:
             page: 107
-            authors:
-              - Shawn Tomkin
-            title: Ironsworn Rulebook
-            license: https://creativecommons.org/licenses/by/4.0
           contents:
             almost_certain:
               name: Almost Certain
@@ -166,6 +157,7 @@ classic:
               result: 'A friend, companion, or ally is put in harm’s way (or you are, if alone).'
             - low: 99
               high: 100
-              result:
-                'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
-                # *result:RollTwice.MakeItWorse
+              result: 'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
+              rolls:
+                - times: 2
+                  method: make_it_worse
