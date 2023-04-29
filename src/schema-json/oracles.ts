@@ -149,8 +149,8 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 		name: { $ref: '#/definitions/Label' },
 		canonical_name: { $ref: '#/definitions/Label' },
 		source: refSchema<Types.Metadata.Source>('Source'),
-		summary: { $ref: '#/definitions/MarkdownSentences' },
-		description: { $ref: '#/definitions/MarkdownParagraphs' },
+		summary: { $ref: '#/definitions/MarkdownString' },
+		description: { $ref: '#/definitions/MarkdownString' },
 		suggestions: { $ref: '#/definitions/Suggestions' },
 		rendering: { $ref: '#/definitions/OracleTableRendering' },
 		match: {
@@ -158,7 +158,7 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 			description: 'A handful of oracles have special behavior on a match.',
 			type: 'object',
 			required: ['text'],
-			properties: { text: { $ref: '#/definitions/MarkdownSentences' } },
+			properties: { text: { $ref: '#/definitions/MarkdownString' } },
 			nullable: undefined as any
 		},
 		table: {
@@ -232,11 +232,11 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		},
 		result: {
 			title: 'Result text',
-			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase')
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString')
 		},
 		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
 		summary: {
-			...refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			title: 'Summary text',
 			description:
 				"A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
@@ -244,7 +244,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			nullable: true
 		},
 		description: {
-			...refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			title: 'Extended description',
 			description:
 				'An extended description for this oracle table row. No canonical OracleTableRows use it, but some TruthOptions do.'
@@ -286,7 +286,7 @@ export const OracleRollTemplate: Schema<Types.Oracles.OracleRollTemplate> = {
 These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{result:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`,
 	properties: {
 		result: {
-			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			description:
 				'A string template that may be used in place of OracleTableRow#result.',
 			examples: [
@@ -294,12 +294,12 @@ These strings are formatted in Markdown, but use a special syntax for their plac
 			]
 		},
 		summary: {
-			...refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			description:
 				'A string template that may be used in place of OracleTableRow#summary.'
 		},
 		description: {
-			...refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			description:
 				'A string template that may be used in place of OracleTableRow#description.'
 		}
@@ -313,8 +313,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 		{
 			additionalProperties: false,
 			properties: {
-				template:
-					refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
+				// template:
+				// 	refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 				rendering: {
 					type: 'object',
 					description:

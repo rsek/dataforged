@@ -33,7 +33,7 @@ export const Rarity: Schema<Types.Rarity> = {
 			maximum: 5,
 			default: 3
 		},
-		description: { $ref: '#/definitions/MarkdownParagraphs' },
+		description: { $ref: '#/definitions/MarkdownString' },
 		source: refSchema<Metadata.Source>('Source'),
 		suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
 	}

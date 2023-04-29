@@ -15,7 +15,8 @@ export interface MoveCategory
 export interface Move<T extends MoveRollType = MoveRollType>
 	extends Types.Abstract.SourcedNode<MoveID> {
 	name: Types.Localize.Label
-	text: Types.Localize.MarkdownParagraphs
+	oracles?: Types.Oracles.OracleTableID[]
+	text: Types.Localize.MarkdownString
 	outcomes: MoveOutcomes
 	trigger: Trigger<T>
 }
@@ -30,7 +31,7 @@ export interface MoveExtension extends Types.Abstract.ExtendMany<Move> {
 export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
 
 export interface MoveOutcome {
-	text: Types.Localize.MarkdownParagraph
+	text: Types.Localize.MarkdownString
 	count_as?: MoveOutcomeType
 	reroll?: MoveReroll
 }
@@ -46,13 +47,13 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 }
 
 export interface Trigger<T extends MoveRollType = MoveRollType> {
-	text: Types.Localize.MarkdownPhrase
+	text: Types.Localize.MarkdownString
 	roll_type: T
 	roll_options?: T extends 'no_roll' ? never : Array<TriggerRollOption<T>>
 }
 
 export interface MoveReroll {
-	text?: Types.Localize.MarkdownPhrase
+	text?: Types.Localize.MarkdownString
 	method: MoveRerollMethod
 }
 
@@ -143,7 +144,7 @@ export interface TriggerRollOptionProgressChoice
 }
 
 export interface TriggerRollOption<T extends MoveRollType = MoveRollType> {
-	text?: Types.Localize.MarkdownPhrase
+	text?: Types.Localize.MarkdownString
 	method: MoveRollMethod | null
 	by?: TriggerBy
 	choices?: this['method'] extends undefined | null

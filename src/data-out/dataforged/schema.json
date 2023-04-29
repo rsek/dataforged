@@ -88,25 +88,10 @@
 			"type": "string",
 			"description": "A localized plain text name or label."
 		},
-		"MarkdownPhrase": {
-			"title": "Markdown phrase",
+		"MarkdownString": {
+			"title": "Markdown string",
 			"type": "string",
-			"description": "Localized markdown text, usually a phrase or single sentence."
-		},
-		"MarkdownSentences": {
-			"title": "Markdown sentences",
-			"type": "string",
-			"description": "Localized markdown text, usually a few sentences at most."
-		},
-		"MarkdownParagraph": {
-			"title": "Markdown paragraph",
-			"type": "string",
-			"description": "Localized markdown text, usually one paragraph. This may included ordered or unordered lists."
-		},
-		"MarkdownParagraphs": {
-			"title": "Markdown paragraphs",
-			"type": "string",
-			"description": "Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists."
+			"description": "Localized markdown text"
 		},
 		"ChallengeRank": {
 			"title": "Challenge rank",
@@ -205,7 +190,7 @@
 						"^[a-z_]+$": { "$ref": "#/definitions/AssetControlField" }
 					}
 				},
-				"requirement": { "$ref": "#/definitions/MarkdownPhrase" },
+				"requirement": { "$ref": "#/definitions/MarkdownString" },
 				"abilities": {
 					"type": "array",
 					"minItems": 3,
@@ -294,7 +279,7 @@
 					"type": "string",
 					"nullable": true
 				},
-				"text": { "$ref": "#/definitions/MarkdownParagraph" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"enabled": { "type": "boolean", "default": false },
 				"controls": {
 					"type": "object",
@@ -345,8 +330,8 @@
 				"canonical_name": { "$ref": "#/definitions/Label" },
 				"extends": { "$ref": "#/definitions/AssetTypeID" },
 				"source": { "$ref": "#/definitions/Source" },
-				"summary": { "$ref": "#/definitions/MarkdownSentences" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
@@ -585,8 +570,8 @@
 				"name": { "$ref": "#/definitions/Label" },
 				"canonical_name": { "$ref": "#/definitions/Label" },
 				"source": { "$ref": "#/definitions/Source" },
-				"summary": { "$ref": "#/definitions/MarkdownSentences" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"rendering": { "$ref": "#/definitions/OracleTableRendering" },
 				"match": {
@@ -594,9 +579,7 @@
 					"description": "A handful of oracles have special behavior on a match.",
 					"type": "object",
 					"required": ["text"],
-					"properties": {
-						"text": { "$ref": "#/definitions/MarkdownSentences" }
-					}
+					"properties": { "text": { "$ref": "#/definitions/MarkdownString" } }
 				},
 				"table": {
 					"type": "array",
@@ -659,18 +642,18 @@
 				},
 				"result": {
 					"title": "Result text",
-					"$ref": "#/definitions/MarkdownPhrase"
+					"$ref": "#/definitions/MarkdownString"
 				},
 				"icon": { "$ref": "#/definitions/Icon" },
 				"summary": {
-					"$ref": "#/definitions/MarkdownSentences",
+					"$ref": "#/definitions/MarkdownString",
 					"title": "Summary text",
 					"description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
 					"type": "string",
 					"nullable": true
 				},
 				"description": {
-					"$ref": "#/definitions/MarkdownParagraphs",
+					"$ref": "#/definitions/MarkdownString",
 					"title": "Extended description",
 					"description": "An extended description for this oracle table row. No canonical OracleTableRows use it, but some TruthOptions do."
 				},
@@ -706,18 +689,18 @@
 			"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\nThese strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.",
 			"properties": {
 				"result": {
-					"$ref": "#/definitions/MarkdownPhrase",
+					"$ref": "#/definitions/MarkdownString",
 					"description": "A string template that may be used in place of OracleTableRow#result.",
 					"examples": [
 						"{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
 					]
 				},
 				"summary": {
-					"$ref": "#/definitions/MarkdownSentences",
+					"$ref": "#/definitions/MarkdownString",
 					"description": "A string template that may be used in place of OracleTableRow#summary."
 				},
 				"description": {
-					"$ref": "#/definitions/MarkdownParagraphs",
+					"$ref": "#/definitions/MarkdownString",
 					"description": "A string template that may be used in place of OracleTableRow#description."
 				}
 			}
@@ -733,8 +716,8 @@
 				"canonical_name": { "$ref": "#/definitions/Label" },
 				"extends": { "$ref": "#/definitions/OracleCollectionID" },
 				"source": { "$ref": "#/definitions/Source" },
-				"summary": { "$ref": "#/definitions/MarkdownSentences" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
@@ -745,7 +728,6 @@
 					},
 					"description": "The elements contained by this collection."
 				},
-				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"rendering": {
 					"type": "object",
 					"description": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
@@ -864,19 +846,19 @@
 			"properties": {
 				"name": { "$ref": "#/definitions/Label" },
 				"nature": { "$ref": "#/definitions/EncounterNatureStarforged" },
-				"summary": { "$ref": "#/definitions/MarkdownSentences" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
 				"rank": { "$ref": "#/definitions/ChallengeRank" },
 				"features": {
 					"type": "array",
-					"items": { "$ref": "#/definitions/MarkdownPhrase" }
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
 				"drives": {
 					"type": "array",
-					"items": { "$ref": "#/definitions/MarkdownPhrase" }
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
 				"tactics": {
 					"type": "array",
-					"items": { "$ref": "#/definitions/MarkdownPhrase" }
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
 				"variants": {
 					"title": "Encounter variants",
@@ -885,10 +867,10 @@
 						"^[a-z_]+$": { "$ref": "#/definitions/EncounterVariantStarforged" }
 					}
 				},
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"quest_starter": {
 					"description": "A localizable markdown string describing the quest starter associated with this item.",
-					"$ref": "#/definitions/MarkdownParagraphs"
+					"$ref": "#/definitions/MarkdownString"
 				},
 				"source": { "$ref": "#/definitions/Source" },
 				"id": { "$ref": "#/definitions/EncounterStarforgedID" },
@@ -904,7 +886,7 @@
 				"name": { "$ref": "#/definitions/Label" },
 				"nature": { "$ref": "#/definitions/EncounterNatureStarforged" },
 				"rank": { "$ref": "#/definitions/ChallengeRank" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" }
 			}
 		},
@@ -942,8 +924,8 @@
 				"canonical_name": { "$ref": "#/definitions/Label" },
 				"extends": { "$ref": "#/definitions/MoveCategoryID" },
 				"source": { "$ref": "#/definitions/Source" },
-				"summary": { "$ref": "#/definitions/MarkdownSentences" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
 				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
@@ -1038,7 +1020,7 @@
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"text": { "$ref": "#/definitions/MarkdownPhrase" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"method": {
 					"default": "any",
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
@@ -1082,7 +1064,7 @@
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"text": { "$ref": "#/definitions/MarkdownPhrase" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"method": {
 					"default": "any",
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
@@ -1126,6 +1108,11 @@
 			"properties": {
 				"id": { "$ref": "#/definitions/MoveID" },
 				"name": { "$ref": "#/definitions/Label" },
+				"oracles": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/OracleTableID" },
+					"nullable": true
+				},
 				"trigger": {
 					"title": "Trigger",
 					"description": "Describes a move's trigger conditions.",
@@ -1133,7 +1120,7 @@
 					"required": ["text"],
 					"properties": {
 						"text": {
-							"$ref": "#/definitions/MarkdownPhrase",
+							"$ref": "#/definitions/MarkdownString",
 							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.",
 							"type": "string",
 							"pattern": "^.*\\.{3}$"
@@ -1164,7 +1151,7 @@
 										"type": "object",
 										"additionalProperties": false,
 										"properties": {
-											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"text": { "$ref": "#/definitions/MarkdownString" },
 											"method": {
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
@@ -1226,7 +1213,7 @@
 										"type": "object",
 										"additionalProperties": false,
 										"properties": {
-											"text": { "$ref": "#/definitions/MarkdownPhrase" },
+											"text": { "$ref": "#/definitions/MarkdownString" },
 											"method": {
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
@@ -1280,7 +1267,7 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1288,7 +1275,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1307,7 +1294,7 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
@@ -1315,7 +1302,7 @@
 											"required": ["method"],
 											"nullable": true,
 											"properties": {
-												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -1338,7 +1325,7 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1346,7 +1333,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1367,7 +1354,7 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1375,7 +1362,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1394,7 +1381,7 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
@@ -1402,7 +1389,7 @@
 											"required": ["method"],
 											"nullable": true,
 											"properties": {
-												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -1422,7 +1409,7 @@
 						}
 					}
 				},
-				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" }
 			}
 		},
@@ -1473,7 +1460,7 @@
 					"nullable": true
 				},
 				"trigger": { "$ref": "#/definitions/TriggerExtension" },
-				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"outcomes": {
 					"title": "Move outcomes",
 					"type": "object",
@@ -1482,7 +1469,7 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1490,7 +1477,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1509,7 +1496,7 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
@@ -1517,7 +1504,7 @@
 											"required": ["method"],
 											"nullable": true,
 											"properties": {
-												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -1539,7 +1526,7 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1547,7 +1534,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1567,7 +1554,7 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": { "$ref": "#/definitions/MarkdownParagraph" },
+								"text": { "$ref": "#/definitions/MarkdownString" },
 								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
@@ -1575,7 +1562,7 @@
 									"required": ["method"],
 									"nullable": true,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownPhrase" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1594,7 +1581,7 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": { "$ref": "#/definitions/MarkdownParagraph" },
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
@@ -1602,7 +1589,7 @@
 											"required": ["method"],
 											"nullable": true,
 											"properties": {
-												"text": { "$ref": "#/definitions/MarkdownPhrase" },
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -3083,9 +3070,9 @@
 			"required": ["id", "description", "quest_starter"],
 			"properties": {
 				"id": { "$ref": "#/definitions/SettingTruthOptionID" },
-				"summary": { "$ref": "#/definitions/MarkdownPhrase" },
-				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
-				"quest_starter": { "$ref": "#/definitions/MarkdownParagraph" }
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"quest_starter": { "$ref": "#/definitions/MarkdownString" }
 			}
 		}
 	},

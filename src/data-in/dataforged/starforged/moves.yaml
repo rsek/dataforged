@@ -24,9 +24,8 @@ starforged:
           name: Begin a Session
           trigger:
             text: When you begin a significant session or chapter of play...
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/begin_a_session
+          oracles:
+            - starforged/oracles/moves/begin_a_session
           text: |-
             **When you begin a significant session or chapter of play**, do all of the following.
 
@@ -198,9 +197,8 @@ starforged:
             page: 148
         gather_information:
           name: Gather Information
-          suggestions:
-            oracles: # TODO: figure out whether this is best left as an Oracle or a Suggestions item. it's called out in the text of the table, but not the move. still, it seems sensible.
-              - starforged/oracles/misc/story_clue
+          oracles: # TODO: figure out whether this is best left as an Oracle or a Suggestions item. it's called out in the text of the table, but not the move. still, it seems sensible.
+            - starforged/oracles/misc/story_clue
           trigger:
             text: When you search for clues, conduct an investigation, analyze evidence, or do research...
             roll_type: action_roll
@@ -682,9 +680,8 @@ starforged:
           name: Make a Discovery
           trigger:
             text: When your exploration of a waypoint uncovers something wondrous...
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/make_a_discovery
+          oracles:
+            - starforged/oracles/moves/make_a_discovery
           text: |-
             **When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.
 
@@ -695,9 +692,8 @@ starforged:
           name: Confront Chaos
           trigger:
             text: When your exploration of a waypoint uncovers something dreadful...
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/confront_chaos
+          oracles:
+            - starforged/oracles/moves/confront_chaos
           text: |-
             **When your exploration of a waypoint uncovers something dreadful**, decide the number of aspects: one, two, or three. Roll that number of times or choose that number of aspects on the table below. Then, envision how the encounter begins.
 
@@ -1006,9 +1002,8 @@ starforged:
             roll_options:
               - choices:
                   - using: combat_progress
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/take_decisive_action
+          oracles:
+            - starforged/oracles/moves/take_decisive_action
           text: |-
             **When you seize an objective in a fight**, envision how you take decisive action. Then, roll the challenge dice and compare to your progress.
 
@@ -1126,9 +1121,8 @@ starforged:
                 choices:
                   - using: iron
                   - using: health
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/endure_harm
+          oracles:
+            - starforged/oracles/moves/endure_harm
           text: |-
             **When you face physical injury, fatigue, or illness**, suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your health is 0, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to any remaining harm.
 
@@ -1170,9 +1164,8 @@ starforged:
                 choices:
                   - using: heart
                   - using: spirit
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/endure_stress
+          oracles:
+            - starforged/oracles/moves/endure_stress
           text: |-
             **When you face mental strain, shock, or despair**, suffer -1 spirit for minor stress, -2 for serious stress, or -3 for major stress. If your spirit is 0, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to any remaining stress.
 
@@ -1211,7 +1204,8 @@ starforged:
             roll_type: action_roll
             roll_options:
               - choices:
-                  - ref: companion_health
+                  - using: ref
+                    ref: '*/assets/companion/*/controls/health'
           text: |-
             **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to any remaining harm.
 
@@ -1250,10 +1244,10 @@ starforged:
             roll_type: action_roll
             roll_options:
               - choices:
-                  - ref: vehicle_integrity
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/withstand_damage
+                  - using: ref
+                    ref: '*/assets/*/*/controls/integrity'
+          oracles:
+            - starforged/oracles/moves/withstand_damage
           text: |-
             **When your vehicle faces a damaging situation or environment**, suffer -1 integrity for minor damage, -2 for serious damage, or -3 for major damage. If your integrity is 0, [Lose Momentum](starforged/moves/suffer/lose_momentum) equal to any remaining damage.
 
@@ -1800,13 +1794,12 @@ starforged:
           name: Ask the Oracle
           trigger:
             text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events...
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/ask_the_oracle/small_chance
-              - starforged/oracles/moves/ask_the_oracle/unlikely
-              - starforged/oracles/moves/ask_the_oracle/fifty_fifty
-              - starforged/oracles/moves/ask_the_oracle/likely
-              - starforged/oracles/moves/ask_the_oracle/almost_certain
+          oracles:
+            - starforged/oracles/moves/ask_the_oracle/small_chance
+            - starforged/oracles/moves/ask_the_oracle/unlikely
+            - starforged/oracles/moves/ask_the_oracle/fifty_fifty
+            - starforged/oracles/moves/ask_the_oracle/likely
+            - starforged/oracles/moves/ask_the_oracle/almost_certain
           text: |-
             **When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events**, you may...
 
@@ -1830,10 +1823,9 @@ starforged:
           name: Pay the Price
           trigger:
             text: When you suffer the outcome of an action...
-          suggestions:
-            oracles:
-              - starforged/oracles/moves/pay_the_price
-              - starforged/oracles/misc/story_complication
+          oracles:
+            - starforged/oracles/moves/pay_the_price
+            - starforged/oracles/misc/story_complication
           text: |-
             **When you suffer the outcome of an action**, choose one.
 

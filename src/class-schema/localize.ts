@@ -10,7 +10,7 @@ export function IsLabel() {
 	)
 }
 
-export function IsMarkdownPhrase() {
+export function IsMarkdownString() {
 	return JSONSchema((schema) =>
 		_.merge({}, schema, {
 			type: 'string',
@@ -20,7 +20,7 @@ export function IsMarkdownPhrase() {
 	)
 }
 
-export function IsMarkdownSentences() {
+export function IsMarkdownString() {
 	return JSONSchema((schema) =>
 		_.merge({}, schema, {
 			type: 'string',
@@ -29,7 +29,7 @@ export function IsMarkdownSentences() {
 	)
 }
 
-export function IsMarkdownParagraph() {
+export function IsMarkdownString() {
 	return JSONSchema((schema) =>
 		_.merge({}, schema, {
 			type: 'string',
@@ -39,7 +39,7 @@ export function IsMarkdownParagraph() {
 	)
 }
 
-export function IsMarkdownParagraphs() {
+export function IsMarkdownString() {
 	return JSONSchema((schema) =>
 		_.merge({}, schema, {
 			type: 'string',

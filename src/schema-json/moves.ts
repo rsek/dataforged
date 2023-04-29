@@ -60,7 +60,7 @@ const MoveOutcome: Schema<Types.MoveOutcome> = {
 	required: ['text'],
 	additionalProperties: false,
 	properties: {
-		text: refSchema<Localize.MarkdownParagraph>('MarkdownParagraph'),
+		text: refSchema<Localize.MarkdownString>('MarkdownString'),
 		count_as: refSchema<Types.MoveOutcomeType>('MoveOutcomeType'),
 		reroll: {
 			title: 'Move reroll',
@@ -68,7 +68,7 @@ const MoveOutcome: Schema<Types.MoveOutcome> = {
 			required: ['method'],
 			nullable: true,
 			properties: {
-				text: refSchema<Localize.MarkdownPhrase>('MarkdownPhrase'),
+				text: refSchema<Localize.MarkdownString>('MarkdownString'),
 				method: {
 					title: 'Move reroll method',
 					type: 'string',
@@ -146,7 +146,7 @@ const TriggerRollOptionBase: PartialSchema<Types.TriggerRollOption> = {
 	type: 'object',
 	additionalProperties: false,
 	properties: {
-		text: refSchema<Localize.MarkdownPhrase>('MarkdownPhrase'),
+		text: refSchema<Localize.MarkdownString>('MarkdownString'),
 		method: {
 			default: 'any',
 			description:
@@ -252,7 +252,7 @@ const Trigger: Schema<Types.Trigger> = {
 	required: ['text'],
 	properties: {
 		text: {
-			...refSchema<Localize.MarkdownPhrase>('MarkdownPhrase'),
+			...refSchema<Localize.MarkdownString>('MarkdownString'),
 			description:
 				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.',
 			type: 'string',
@@ -311,10 +311,15 @@ export const Move: Schema<Types.Move> = {
 	properties: {
 		id: refSchema<Moves.MoveID>('MoveID'),
 		name: refSchema<Localize.Label>('Label'),
+		oracles: {
+			type: 'array',
+			items: refSchema<string>('OracleTableID'),
+			nullable: true
+		},
 		trigger: Trigger,
 		source: refSchema<Metadata.Source>('Source'),
 		outcomes: MoveOutcomes,
-		text: refSchema<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+		text: refSchema<Localize.MarkdownString>('MarkdownString'),
 		suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
 		// tags: {
 		// 	description:
@@ -336,7 +341,7 @@ export const Move: Schema<Types.Move> = {
 // 			items: { type: 'object' }
 // 		},
 // 		method: { ...refSchema<Types.MoveRollMethod>('MoveRollMethod') },
-// 		text: { ...refSchema<Types.MarkdownPhrase>('MarkdownPhrase') }
+// 		text: { ...refSchema<Types.MarkdownString>('MarkdownString') }
 // 	}
 // }
 
@@ -393,7 +398,7 @@ export const MoveExtension: Schema<Types.MoveExtension> = {
 		},
 		trigger:
 			refSchema<Types.TriggerExtension<Types.MoveRollType>>('TriggerExtension'),
-		text: Move.properties?.text as any,
+		text: Move.properties?.text,
 		outcomes: _.omit(
 			MoveOutcomes,
 			'required',

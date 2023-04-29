@@ -42,7 +42,7 @@ export interface Asset
 	source: Types.Metadata.Source
 	name: Types.Localize.Label
 	options?: Record<string, AssetOptionField>
-	requirement?: Types.Localize.MarkdownPhrase
+	requirement?: Types.Localize.MarkdownString
 	abilities: AssetAbility[]
 	controls?: Record<string, AssetControlField>
 	count_as_impact?: boolean
@@ -78,7 +78,7 @@ export type AssetAbilityControlField = (
 
 export interface AssetAbility extends Types.Abstract.Node<AssetAbilityID> {
 	name?: Types.Localize.Label
-	text: Types.Localize.MarkdownParagraph
+	text: Types.Localize.MarkdownString
 	enabled: boolean
 	moves?: Record<string, Types.Moves.Move>
 	options?: Record<string, AssetAbilityOptionField>

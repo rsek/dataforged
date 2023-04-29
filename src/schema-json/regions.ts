@@ -23,13 +23,13 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 	properties: {
 		id: { $ref: '#/definitions/RegionEntryID' },
 		name: { $ref: '#/definitions/Label' },
-		summary: { $ref: '#/definitions/MarkdownSentences' },
-		description: { $ref: '#/definitions/MarkdownParagraphs' },
+		summary: { $ref: '#/definitions/MarkdownString' },
+		description: { $ref: '#/definitions/MarkdownString' },
 		features: {
 			type: 'array',
-			items: { $ref: '#/definitions/MarkdownPhrase' } as any
+			items: { $ref: '#/definitions/MarkdownString' } as any
 		},
-		quest_starter: { $ref: '#/definitions/MarkdownParagraph' },
+		quest_starter: { $ref: '#/definitions/MarkdownString' },
 		source: refSchema<Metadata.Source>('Source'),
 		suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions')
 	}

@@ -127,8 +127,8 @@ export const OracleCollection: JTDSchemaType<
 		collections: { values: { ref: 'OracleCollection' } },
 		rendering: { ref: 'OracleCollectionRendering' },
 		color: { ref: 'Color' },
-		sample_names: { elements: { ref: 'Label' } },
-		template: { ref: 'OracleRollTemplate' }
+		sample_names: { elements: { ref: 'Label' } }
+		// template: { ref: 'OracleRollTemplate' }
 	}
 }
 

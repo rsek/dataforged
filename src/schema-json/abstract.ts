@@ -27,8 +27,8 @@ export function collectionSchema<
 			canonical_name: refSchema<string>('Label'),
 			extends: refSchema<string>(idRef),
 			source: refSchema<Metadata.Source>('Source'),
-			summary: refSchema<Localize.MarkdownSentences>('MarkdownSentences'),
-			description: refSchema<Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+			summary: refSchema<Localize.MarkdownString>('MarkdownString'),
+			description: refSchema<Localize.MarkdownString>('MarkdownString'),
 			suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions'),
 			color: refSchema<Metadata.Color>('Color'),
 			contents: dictionarySchema<CollectionItemType>(

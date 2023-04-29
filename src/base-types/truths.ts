@@ -18,13 +18,13 @@ export interface WorldTruth extends TruthBase {}
 export type TruthOptionID = string
 export interface TruthOptionBase {
 	id: TruthOptionID
-	description: Localize.MarkdownParagraphs | Localize.MarkdownParagraph
-	quest_starter: Localize.MarkdownParagraph
+	description: Localize.MarkdownString | Localize.MarkdownString
+	quest_starter: Localize.MarkdownString
 }
 
 export interface WorldTruthOption extends TruthOptionBase {}
 
 export interface SettingTruthOption extends TruthOptionBase {
-	summary: Localize.MarkdownSentences
-	description: Localize.MarkdownParagraphs
+	summary: Localize.MarkdownString
+	description: Localize.MarkdownString
 }
