@@ -3,8 +3,8 @@ import { type Metadata } from '@base-types'
 import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
 
-const NamespaceShared: JSONSchema7 = {
-	title: 'Namespace',
+const SourcebookBase: JSONSchema7 = {
+	title: 'Sourcebook',
 	// description: TODO
 	type: 'object',
 	additionalProperties: false,
@@ -61,7 +61,8 @@ const NamespaceShared: JSONSchema7 = {
 	}
 }
 
-export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
+export const ClassicSourcebook: JSONSchema7 = _.merge({}, SourcebookBase, {
+	title: 'Sourcebook (Ironsworn classic)',
 	properties: {
 		ruleset: { const: 'classic' },
 		encounters: {
@@ -128,7 +129,8 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 	}
 })
 
-export const NamespaceDataforged: JSONSchema7 = _.merge({}, NamespaceShared, {
+export const NamespaceDataforged: JSONSchema7 = _.merge({}, SourcebookBase, {
+	title: 'Sourcebook (Ironsworn: Starforged)',
 	properties: {
 		ruleset: { const: 'starforged' },
 		encounters: {

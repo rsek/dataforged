@@ -3,7 +3,7 @@ import { type JSONSchemaType as Schema } from 'ajv'
 import { type Metadata } from '@base-types'
 import { Source } from './metadata'
 import { type JSONSchema7 } from 'json-schema'
-import { Namespaces } from '@schema-json'
+import { Sourcebooks } from '@schema-json'
 import { getClassicDefs, getStarforgedDefs } from 'schema-json/definitions'
 
 export const DATASWORN_VERSION = '2.0.0'
@@ -60,7 +60,7 @@ export const Dataforged: JSONSchema7 = {
 	type: 'object',
 	additionalProperties: false,
 	patternProperties: {
-		[NAMESPACE_KEY]: Namespaces.NamespaceDataforged
+		[NAMESPACE_KEY]: Sourcebooks.NamespaceDataforged
 	}
 }
 
@@ -86,7 +86,7 @@ export const Datasworn: JSONSchema7 = {
 	type: 'object',
 	additionalProperties: Dataforged.additionalProperties,
 	patternProperties: {
-		[NAMESPACE_KEY]: Namespaces.NamespaceDatasworn
+		[NAMESPACE_KEY]: Sourcebooks.ClassicSourcebook
 	}
 }
 
