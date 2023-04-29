@@ -121,6 +121,7 @@ export const OracleCollection: JTDSchemaType<
 	},
 	optionalProperties: {
 		canonical_name: { ref: 'Label' },
+		extends: { ref: 'OracleCollectionID' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' },
 		collections: { values: { ref: 'OracleCollection' } },

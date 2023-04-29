@@ -25,6 +25,7 @@ export function collectionSchema<
 			id: refSchema<string>(idRef),
 			name: refSchema<string>('Label'),
 			canonical_name: refSchema<string>('Label'),
+			extends: refSchema<string>(idRef),
 			source: refSchema<Metadata.Source>('Source'),
 			summary: refSchema<Localize.MarkdownSentences>('MarkdownSentences'),
 			description: refSchema<Localize.MarkdownParagraphs>('MarkdownParagraphs'),

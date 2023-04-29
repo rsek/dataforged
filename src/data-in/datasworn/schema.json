@@ -148,7 +148,6 @@
 			"title": "Asset option field",
 			"type": "object",
 			"required": [],
-			"additionalProperties": false,
 			"properties": { "id": { "$ref": "#/definitions/AssetOptionFieldID" } },
 			"oneOf": [
 				{ "$ref": "#/definitions/TextField" },
@@ -333,7 +332,7 @@
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets(\\/[a-z_]+){1}$",
 			"examples": [
 				"starforged/collections/assets/command_vehicle",
-				"ironsworn/collections/assets/companion"
+				"classic/collections/assets/companion"
 			]
 		},
 		"AssetType": {
@@ -345,6 +344,7 @@
 				"id": { "$ref": "#/definitions/AssetTypeID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/AssetTypeID" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -358,6 +358,8 @@
 					},
 					"description": "The elements contained by this collection."
 				},
+				"member_label": { "$ref": "#/definitions/Label" },
+				"$schema": { "type": "string", "format": "uri" },
 				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
@@ -380,7 +382,8 @@
 						"^[a-z_]+$": { "$ref": "#/definitions/Asset" }
 					},
 					"description": "Items to be added to the extended collection."
-				}
+				},
+				"$schema": { "type": "string", "format": "uri" }
 			}
 		},
 		"ToggleField": {
@@ -638,7 +641,7 @@
 			"title": "Oracle table row ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
-			"examples": ["ironsworn/oracles/action_and_theme/action/1-1"]
+			"examples": ["classic/oracles/action_and_theme/action/1-1"]
 		},
 		"OracleTableRow": {
 			"title": "Oracle table row",
@@ -733,6 +736,7 @@
 				"id": { "$ref": "#/definitions/OracleCollectionID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/OracleCollectionID" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -746,7 +750,6 @@
 					},
 					"description": "The elements contained by this collection."
 				},
-				"_template": { "type": "string" },
 				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"rendering": {
 					"type": "object",
@@ -773,71 +776,16 @@
 				},
 				"sample_names": { "type": "array", "items": { "type": "string" } },
 				"collections": {
-					"description": "OracleCollections contained by this OracleCollection.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/OracleCollection" },
-								{ "$ref": "#/definitions/OracleCollectionExtension" }
-							]
-						}
-					}
-				},
-				"_source": { "$ref": "#/definitions/SourcePartial" }
-			},
-			"oneOf": [
-				{
-					"not": {
-						"required": ["_template"],
-						"properties": { "_template": { "type": "string" } }
-					}
-				},
-				{ "$ref": "#/definitions/OracleCollectionTemplate" }
-			]
-		},
-		"OracleCollectionExtension": {
-			"title": "Oracle collection extension",
-			"description": "Extends a collection with additional items.",
-			"type": "object",
-			"required": ["extends"],
-			"additionalProperties": false,
-			"properties": {
-				"id": { "$ref": "#/definitions/OracleCollectionID" },
-				"extends": {
-					"$ref": "#/definitions/OracleCollectionID",
-					"description": "The ID of the collection to be extended."
-				},
-				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/definitions/OracleTable" }
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleCollection" }
 					},
-					"description": "Items to be added to the extended collection."
+					"description": "OracleCollections contained by this OracleCollection."
 				},
-				"collections": {
-					"type": "object",
-					"description": "Collections (and/or collection extensions) to be added to the extended collection.",
-					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/OracleCollection" },
-								{ "$ref": "#/definitions/OracleCollectionExtension" }
-							]
-						}
-					}
-				}
-			},
-			"oneOf": [
-				{
-					"not": {
-						"required": ["_template"],
-						"properties": { "_template": { "type": "string" } }
-					}
-				},
-				{ "$ref": "#/definitions/OracleCollectionTemplate" }
-			]
+				"$schema": { "type": "string", "format": "uri" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
+			}
 		},
 		"PlayerStat": {
 			"title": "Player stat",
@@ -878,8 +826,8 @@
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$",
 			"examples": [
-				"ironsworn/encounters/firstborn/elf",
-				"ironsworn_delve/encounters/anomalies/glimmer"
+				"classic/encounters/firstborn/elf",
+				"delve/encounters/anomalies/glimmer"
 			]
 		},
 		"EncounterID": {
@@ -889,8 +837,8 @@
 					"type": "string",
 					"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$",
 					"examples": [
-						"ironsworn/encounters/firstborn/elf",
-						"ironsworn_delve/encounters/anomalies/glimmer"
+						"classic/encounters/firstborn/elf",
+						"delve/encounters/anomalies/glimmer"
 					]
 				},
 				{
@@ -954,6 +902,7 @@
 				"id": { "$ref": "#/definitions/EncounterCollectionClassicID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/EncounterCollectionClassicID" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -967,6 +916,8 @@
 					},
 					"description": "The elements contained by this collection."
 				},
+				"member_label": { "$ref": "#/definitions/Label" },
+				"$schema": { "type": "string", "format": "uri" },
 				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
@@ -989,7 +940,8 @@
 						"^[a-z_]+$": { "$ref": "#/definitions/EncounterClassic" }
 					},
 					"description": "Items to be added to the extended collection."
-				}
+				},
+				"$schema": { "type": "string", "format": "uri" }
 			}
 		},
 		"EncounterCollectionClassicID": {
@@ -1029,6 +981,7 @@
 				"id": { "$ref": "#/definitions/MoveCategoryID" },
 				"name": { "$ref": "#/definitions/Label" },
 				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/MoveCategoryID" },
 				"source": { "$ref": "#/definitions/Source" },
 				"summary": { "$ref": "#/definitions/MarkdownSentences" },
 				"description": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -1042,6 +995,7 @@
 					},
 					"description": "The elements contained by this collection."
 				},
+				"$schema": { "type": "string", "format": "uri" },
 				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
@@ -1064,7 +1018,8 @@
 						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
 					},
 					"description": "Items to be added to the extended collection."
-				}
+				},
+				"$schema": { "type": "string", "format": "uri" }
 			}
 		},
 		"MoveOutcomeType": {
@@ -1554,6 +1509,7 @@
 			"description": "Upgrades or otherwise modifies one or more moves.",
 			"required": ["extends"],
 			"type": "object",
+			"additionalProperties": false,
 			"properties": {
 				"extends": {
 					"description": "Move IDs affected by this move extension",
@@ -3180,7 +3136,7 @@
 			"title": "World truth ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
-			"examples": ["ironsworn/world_truths/iron"]
+			"examples": ["classic/world_truths/iron"]
 		},
 		"WorldTruth": {
 			"title": "World truth",
@@ -3205,7 +3161,7 @@
 			"title": "World truth option ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
-			"examples": ["ironsworn/world_truths/iron/0"]
+			"examples": ["classic/world_truths/iron/0"]
 		},
 		"WorldTruthOption": {
 			"title": "World truth option",
@@ -3221,7 +3177,7 @@
 			"title": "Region entry ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
-			"examples": ["ironsworn/regions/shattered_wastes"]
+			"examples": ["classic/regions/shattered_wastes"]
 		},
 		"RegionEntry": {
 			"title": "Region entry",
@@ -3287,7 +3243,7 @@
 			"type": "string",
 			"$comment": "{namespace}/delve_sites/{delveSite}",
 			"pattern": "^[a-z0-9_]{3,}\\/delve_sites(\\/[a-z_]+){1}$",
-			"examples": ["ironsworn_delve/delve_sites/alvas_rest"]
+			"examples": ["delve/delve_sites/alvas_rest"]
 		},
 		"DelveSiteCardType": {
 			"title": "Delve site card type",
@@ -3719,10 +3675,10 @@
 											"$ref": "#/definitions/Suggestions",
 											"default": {
 												"oracles": [
-													"ironsworn/oracles/action_and_theme/action",
-													"ironsworn/oracles/action_and_theme/theme",
-													"ironsworn_delve/oracles/feature/aspect",
-													"ironsworn_delve/oracles/feature/focus"
+													"classic/oracles/action_and_theme/action",
+													"classic/oracles/action_and_theme/theme",
+													"delve/oracles/feature/aspect",
+													"delve/oracles/feature/focus"
 												]
 											}
 										}
@@ -3740,7 +3696,7 @@
 										"suggestions": {
 											"$ref": "#/definitions/Suggestions",
 											"default": {
-												"oracles": ["ironsworn_delve/oracles/site_nature/theme"]
+												"oracles": ["delve/oracles/site_nature/theme"]
 											}
 										}
 									}
@@ -3757,9 +3713,7 @@
 										"suggestions": {
 											"$ref": "#/definitions/Suggestions",
 											"default": {
-												"oracles": [
-													"ironsworn_delve/oracles/site_nature/domain"
-												]
+												"oracles": ["delve/oracles/site_nature/domain"]
 											}
 										}
 									}
@@ -3878,104 +3832,84 @@
 					"description": "Source information to be inherited by all eligible descendants. Descendant '_source' properties will override only the properties they specify; use the 'source' property if you'd prefer to replace the entire object."
 				},
 				"oracles": {
-					"title": "Oracles",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/OracleCollection" },
-								{ "$ref": "#/definitions/OracleCollectionExtension" }
-							]
-						}
-					}
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleCollection" }
+					},
+					"title": "Oracles"
 				},
 				"moves": {
-					"title": "Moves",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/MoveCategory" },
-								{ "$ref": "#/definitions/MoveCategoryExtension" }
-							]
-						}
-					}
+						"^[a-z_]+$": { "$ref": "#/definitions/MoveCategory" }
+					},
+					"title": "Moves"
 				},
 				"assets": {
-					"title": "Assets",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/AssetType" },
-								{ "$ref": "#/definitions/AssetTypeExtension" }
-							]
-						}
-					}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetType" }
+					},
+					"title": "Assets"
 				},
 				"encounters": {
-					"title": "Encounters",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"oneOf": [
-								{ "$ref": "#/definitions/EncounterCollectionClassic" },
-								{ "$ref": "#/definitions/EncounterCollectionExtensionClassic" }
-							]
-						}
-					}
+						"^[a-z_]+$": { "$ref": "#/definitions/EncounterCollectionClassic" }
+					},
+					"title": "Encounters"
 				},
 				"world_truths": {
-					"title": "World truths",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/WorldTruth" }
-					}
+					},
+					"title": "World truths"
 				},
 				"regions": {
-					"title": "Regions",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/RegionEntry" }
-					}
+					},
+					"title": "Regions"
 				},
 				"site_themes": {
-					"title": "Delve site themes",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteTheme" }
-					}
+					},
+					"title": "Delve site themes"
 				},
 				"site_domains": {
-					"title": "Delve site domains",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteDomain" }
-					}
+					},
+					"title": "Delve site domains"
 				},
 				"delve_sites": {
-					"title": "Delve sites",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/DelveSite" }
-					}
+					},
+					"title": "Delve sites"
 				},
 				"rarities": {
-					"title": "Rarities",
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/definitions/Rarity" }
-					}
+					},
+					"title": "Rarities"
 				}
 			}
 		}

@@ -26,8 +26,8 @@ export const EncounterClassicID: Schema<Types.Encounters.EncounterClassicID> = {
 	type: 'string',
 	pattern: /^[a-z0-9_]{3,}\/encounters(\/[a-z_]+){2}$/.source,
 	examples: [
-		'ironsworn/encounters/firstborn/elf',
-		'ironsworn_delve/encounters/anomalies/glimmer'
+		'classic/encounters/firstborn/elf',
+		'delve/encounters/anomalies/glimmer'
 	]
 }
 
@@ -150,9 +150,13 @@ export const EncounterVariantStarforged: Schema<Types.Encounters.EncounterVarian
 	}
 
 export const EncounterCollectionClassic: Schema<Types.Encounters.EncounterCollectionClassic> =
-	Abstract.collectionSchema<Types.Encounters.EncounterCollectionClassic>(
-		'EncounterClassic',
-		'EncounterCollectionClassicID'
+	_.set(
+		Abstract.collectionSchema<Types.Encounters.EncounterCollectionClassic>(
+			'EncounterClassic',
+			'EncounterCollectionClassicID'
+		),
+		'properties.member_label',
+		refSchema('Label')
 	)
 
 export const EncounterCollectionExtensionClassic =

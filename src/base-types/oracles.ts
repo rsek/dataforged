@@ -94,9 +94,11 @@ export interface OracleTableRoll<
 export type OracleCollectionID = string
 export interface OracleCollection
 	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
-	template?: OracleRollTemplate
+	extends?: OracleCollectionID
 	rendering?: OracleCollectionRendering
 	sample_names?: Localize.Label[]
+	collections?: Record<string, this>
+	template?: OracleRollTemplate
 }
 
 export type OracleCollectionStyle = 'multi_table'

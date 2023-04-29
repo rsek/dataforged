@@ -26,7 +26,7 @@ const defsClassic = getClassicDefs()
 
 // const $schema = 'https://json-schema.org/draft/2019-09/schema'
 
-function toInputDefinitions(
+function toDataEntryDefinitions(
 	defs: Record<string, JSONSchema7>
 ): Record<string, JSONSchema7> {
 	// clone to avoid mutating the original
@@ -36,6 +36,10 @@ function toInputDefinitions(
 	})
 	const toMakeOptional = ['id', 'source']
 	_.forEach(newDefs, (def) => {
+		if (Object.keys(def.properties ?? {}).includes('contents')) {
+			// add schema to collections for things like oracle templating
+			;(def.properties as any).$schema = { type: 'string', format: 'uri' }
+		}
 		if (def.required != null) {
 			if (def.required.includes('source')) {
 				if (def.properties == null) throw Error('No properties key found')
@@ -69,7 +73,7 @@ export const DataforgedInput: JSONSchema7 = {
 	title: 'Dataforged data entry',
 	description:
 		'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
-	definitions: toInputDefinitions(defsStarforged),
+	definitions: toDataEntryDefinitions(defsStarforged),
 	type: Dataforged.type,
 	additionalProperties: Dataforged.additionalProperties,
 	patternProperties: Dataforged.patternProperties
@@ -94,7 +98,7 @@ export const DataswornInput: JSONSchema7 = {
 	// $schema,
 	title: DataforgedInput.title?.replace('Dataforged', 'Datasworn'),
 	description: DataforgedInput.description?.replace('Dataforged', 'Datasworn'),
-	definitions: toInputDefinitions(defsClassic),
+	definitions: toDataEntryDefinitions(defsClassic),
 	type: Datasworn.type,
 	additionalProperties: Datasworn.additionalProperties,
 	patternProperties: Datasworn.patternProperties

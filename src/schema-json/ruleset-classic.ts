@@ -73,7 +73,7 @@ export const Suggestions = _.merge({}, SuggestionsBase, {
 export const WorldTruthID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
 	pattern: /^[a-z0-9_]{3,}\/world_truths\/[a-z_]+$/.source,
-	examples: ['ironsworn/world_truths/iron']
+	examples: ['classic/world_truths/iron']
 }
 export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
 	type: 'object',
@@ -96,7 +96,7 @@ export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
 export const WorldTruthOptionID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
 	pattern: /^[a-z0-9_]{3,}\/world_truths\/[a-z_]+\/[0-2]$/.source,
-	examples: ['ironsworn/world_truths/iron/0']
+	examples: ['classic/world_truths/iron/0']
 }
 export const WorldTruthOption: Schema<Types.Truths.WorldTruthOption> = {
 	type: 'object',

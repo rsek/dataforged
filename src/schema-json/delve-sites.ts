@@ -8,7 +8,7 @@ export const DelveSiteID: Schema<Types.DelveSites.DelveSiteID> = {
 	type: 'string',
 	$comment: '{namespace}/delve_sites/{delveSite}',
 	pattern: /^[a-z0-9_]{3,}\/delve_sites(\/[a-z_]+){1}$/.source,
-	examples: ['ironsworn_delve/delve_sites/alvas_rest']
+	examples: ['delve/delve_sites/alvas_rest']
 }
 
 export const DelveSiteCardType: Schema<Types.DelveSites.DelveSiteCardType> = {
@@ -415,10 +415,10 @@ export const DelveSiteDomain: Schema<Types.DelveSites.DelveSiteDomain> = {
 							result: 'Something unusual or unexpected',
 							suggestions: {
 								oracles: [
-									'ironsworn/oracles/action_and_theme/action',
-									'ironsworn/oracles/action_and_theme/theme',
-									'ironsworn_delve/oracles/feature/aspect',
-									'ironsworn_delve/oracles/feature/focus'
+									'classic/oracles/action_and_theme/action',
+									'classic/oracles/action_and_theme/theme',
+									'delve/oracles/feature/aspect',
+									'delve/oracles/feature/focus'
 								]
 							}
 						}),
@@ -429,7 +429,7 @@ export const DelveSiteDomain: Schema<Types.DelveSites.DelveSiteDomain> = {
 							high: 99,
 							result: 'You transition into a new theme',
 							suggestions: {
-								oracles: ['ironsworn_delve/oracles/site_nature/theme']
+								oracles: ['delve/oracles/site_nature/theme']
 							}
 						}),
 						staticFeatureDangerRow<
@@ -439,7 +439,7 @@ export const DelveSiteDomain: Schema<Types.DelveSites.DelveSiteDomain> = {
 							high: 100,
 							result: 'You transition into a new domain',
 							suggestions: {
-								oracles: ['ironsworn_delve/oracles/site_nature/domain']
+								oracles: ['delve/oracles/site_nature/domain']
 							}
 						})
 					]

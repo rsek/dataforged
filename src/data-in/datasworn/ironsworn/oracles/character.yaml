@@ -1,4 +1,4 @@
-ironsworn:
+classic:
   ruleset: classic
   _source:
     authors:
@@ -9,16 +9,13 @@ ironsworn:
     date: 2019-06-05
   oracles:
     character:
-      title:
-        canonical: Character
+      name: Character
       _source:
         page: 182
       contents:
         role:
-          title:
-            canonical: "Oracle 10: Character Role"
-            standard: Character Role
-            short: Role
+          canonical_name: "Oracle 10: Character Role"
+          name: Character Role
           description: Use this oracle to define the background for a character, or to generate a random encounter.
           _source:
             page: 182
@@ -114,12 +111,12 @@ ironsworn:
               high: 100
               result: Unusual role
               suggestions:
-                oracles: [ironsworn/oracles/action_and_theme/action, ironsworn/oracles/action_and_theme/theme]
+                oracles:
+                  - classic/oracles/action_and_theme/action
+                  - classic/oracles/action_and_theme/theme
         goal:
-          title:
-            short: Goal
-            canonical: "Oracle 11: Character Goal"
-            standard: Character Goal
+          canonical_name: "Oracle 11: Character Goal"
+          name: Character Goal
           description: Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.
           _source:
             page: 182
@@ -224,10 +221,8 @@ ironsworn:
               high: 100
               result: *result:RollTwice
         descriptor:
-          title:
-            short: Descriptor
-            canonical: "Oracle 12: Character Descriptor"
-            standard: Character Descriptor
+          name: Character Descriptor
+          canonical_name: "Oracle 12: Character Descriptor"
           description: Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.
           # usage:
           #   max_rolls: 3 # a bit arbitrary, but reasonable

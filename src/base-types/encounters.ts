@@ -45,4 +45,6 @@ export interface EncounterStarforged extends Encounter {
 
 export type EncounterCollectionID = string
 export interface EncounterCollectionClassic
-	extends Collection<Encounters.EncounterClassic, EncounterCollectionID> {}
+	extends Collection<Encounters.EncounterClassic, EncounterCollectionID> {
+	member_label?: Localize.Label
+}
