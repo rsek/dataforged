@@ -26,8 +26,7 @@ starforged:
             title: 'Ironsworn: Starforged Assets'
           attachments:
             patterns:
-              - ^[a-z0-9][a-z0-9_]+/assets/module/[a-z][a-z_]*[a-z]$
-            max: null
+              - "*/assets/module/*"
           options:
             name: # &InputTextName
               field_type: text
@@ -242,7 +241,7 @@ starforged:
                       - method: highest
                         choices:
                           - using: wits
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   text: *move:Asset.Grappler
                   outcomes:
                     strong_hit:
@@ -356,10 +355,9 @@ starforged:
                 - extends:
                     - starforged/moves/exploration/undertake_an_expedition
                   trigger:
-                    roll_type: progress_roll
+                    roll_type: action_roll
                     roll_options:
                       - method: null
-                        choices: null
                         text: On the first leg of your journey (dangerous or greater)
                   outcomes:
                     strong_hit: &Internal_Refit.1
@@ -374,9 +372,9 @@ starforged:
                     roll_type: action_roll
                     text: When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                     roll_options:
-                      method: any
-                      choices:
-                        - attached_asset_meter
+                      - method: any
+                        choices:
+                          - using: attached_asset_meter
                   text: *move:Asset.Internalrefit
                   outcomes:
                     strong_hit:
@@ -558,7 +556,7 @@ starforged:
                       - text: By talking through a situation with the overseer AI
                         method: any
                         choices:
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   outcomes: *outcomes:+1_momentum.HIT
               enabled: true
             - text: |-
@@ -581,7 +579,7 @@ starforged:
                       - text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
                         method: any
                         choices:
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   outcomes: *outcomes:+1_momentum.HIT
         reinforced_hull:
           name: Reinforced Hull
@@ -780,7 +778,7 @@ starforged:
                       - text: Against an ambush
                         method: any
                         choices:
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   outcomes: &Sensor_Array.3
                     strong_hit: &Sensor_Array.3.Hit
                       text: Take +1 momentum.
@@ -796,7 +794,7 @@ starforged:
                       - text: To detect a hidden threat
                         method: any
                         choices:
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   outcomes: *Sensor_Array.3
         shields:
           name: Shields
@@ -819,7 +817,7 @@ starforged:
                       - method: any
                         choices:
                           - using: wits
-                          - attached_asset_meter
+                          - using: attached_asset_meter
                   text: *move:Asset.Shields
                   outcomes:
                     strong_hit:
@@ -1245,8 +1243,7 @@ starforged:
                 attachments:
                   max: 1
                   patterns:
-                    - ^[a-z0-9][a-z0-9_]+\/assets\/module\/[a-z][a-z_]*[a-z]$
-
+                    - "*/assets/modules/*"
             - text: |-
                 When you [Face Danger](starforged/moves/adventure/face_danger) or [React Under Fire](starforged/moves/combat/react_under_fire) by taking a hit or crashing through an obstacle, you may roll +integrity. If you do, take +1 momentum on a hit.
               extend_moves:
@@ -1260,7 +1257,8 @@ starforged:
                       - text: By taking a hit or crashing through an obstacle
                         method: any
                         choices:
-                          - starforged/assets/support_vehicle/rover/controls/integrity
+                          - using: ref
+                            ref: starforged/assets/support_vehicle/rover/controls/integrity
                   outcomes: *outcomes:+1_momentum.HIT
         service_pod:
           name: Service Pod
@@ -1310,7 +1308,8 @@ starforged:
                       - text: By maneuvering your pod through a hazardous or obstructed area
                         method: any
                         choices:
-                          - starforged/assets/support_vehicle/service_pod/controls/integrity
+                          - using: ref
+                            ref: starforged/assets/support_vehicle/service_pod/controls/integrity
                   text: |-
                     Choose an approach and roll +integrity.
 
@@ -1405,7 +1404,8 @@ starforged:
                       - text: Rely on the skiff's simple durability
                         method: any
                         choices:
-                          - starforged/assets/support_vehicle/skiff/controls/integrity
+                          - using: ref
+                            ref: starforged/assets/support_vehicle/skiff/controls/integrity
                   outcomes: *outcomes:+1_momentum.HIT
               enabled: true
             - text: |-
@@ -1420,7 +1420,8 @@ starforged:
                       - text: By firing the skiff's cannon
                         method: any
                         choices:
-                          - starforged/assets/support_vehicle/skiff/controls/integrity
+                          - using: ref
+                            ref: starforged/assets/support_vehicle/skiff/controls/integrity
                   outcomes:
                     strong_hit:
                       text: Take +1 momentum.
@@ -1460,7 +1461,8 @@ starforged:
                       - text: In your snub fighter
                         method: any
                         choices:
-                          - starforged/assets/support_vehicle/snub_fighter/controls/integrity
+                          - using: ref
+                            ref: starforged/assets/support_vehicle/snub_fighter/controls/integrity
                   outcomes: *outcomes:+2_momentum.HIT
               enabled: true
             - text: |-
@@ -1486,7 +1488,6 @@ starforged:
                   min: 0
                   value: 0
                   max: null
-                  position: ability_2_right
     path:
       _source:
         page: 56
@@ -1541,7 +1542,8 @@ starforged:
                       - text: While piloting a vehicle
                         method: any
                         choices:
-                          - vehicle_integrity
+                          - using: ref
+                            ref: "*/assets/*/*/controls/integrity"
                   outcomes:
                     strong_hit: *outcome:+1_momentum
         archer:
@@ -2672,12 +2674,10 @@ starforged:
                     miss: *Gunner.2
             - text: |-
                 Give your favorite gun a name. When you [Clash](starforged/moves/combat/clash) with it, add +1. When you [Enter the Fray](starforged/moves/combat/enter_the_fray) or [Endure Stress](starforged/moves/suffer/endure_stress) while wielding it, add +1 and take +1 momentum on a hit.
-              controls:
+              options:
                 name:
                   label: Name
                   field_type: text
-                  position: ability_2_right
-                  value: null
               extend_moves:
                 - extends:
                     - starforged/moves/combat/clash
@@ -4696,8 +4696,6 @@ starforged:
           _source:
             title: 'Ironsworn: Starforged Assets'
           # tags: [mechanical_companion]
-
-
           options:
             name:
               field_type: text
@@ -4900,12 +4898,10 @@ starforged:
           name: Homesteader
           _source:
             title: 'Ironsworn: Starforged Assets'
-
           options:
             name:
               field_type: text
               label: Name
-          controls:
           requirement: Once you fill 4 boxes on your bonds legacy track...
           abilities:
             - text: |-

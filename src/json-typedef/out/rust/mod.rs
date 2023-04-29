@@ -84,7 +84,7 @@ pub struct AssetAbility {
 
     #[serde(rename = "options")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub options: Option<Box<HashMap<String, AssetOptionField>>>,
+    pub options: Option<Box<HashMap<String, AssetAbilityOptionField>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -103,7 +103,7 @@ pub enum AssetAbilityControlField {
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldCheckbox {
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -115,7 +115,7 @@ pub struct AssetAbilityControlFieldCheckbox {
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldClock {
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -151,6 +151,122 @@ pub struct AssetAbilityControlFieldCounter {
 pub type AssetAbilityControlFieldId = String;
 
 pub type AssetAbilityId = String;
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "field_type")]
+pub enum AssetAbilityOptionField {
+    #[serde(rename = "select_asset_extension")]
+    SelectAssetExtension(AssetAbilityOptionFieldSelectAssetExtension),
+
+    #[serde(rename = "select_number")]
+    SelectNumber(AssetAbilityOptionFieldSelectNumber),
+
+    #[serde(rename = "select_stat")]
+    SelectStat(AssetAbilityOptionFieldSelectStat),
+
+    #[serde(rename = "text")]
+    Text(AssetAbilityOptionFieldText),
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectAssetExtensionChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: AssetExtension,
+
+    #[serde(rename = "selected")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selected: Option<Box<bool>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectAssetExtension {
+    #[serde(rename = "choices")]
+    pub choices: HashMap<String, AssetAbilityOptionFieldSelectAssetExtensionChoice>,
+
+    #[serde(rename = "id")]
+    pub id: AssetControlFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<AssetExtension>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectNumberChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: i8,
+
+    #[serde(rename = "selected")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selected: Option<Box<bool>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectNumber {
+    #[serde(rename = "choices")]
+    pub choices: HashMap<String, AssetAbilityOptionFieldSelectNumberChoice>,
+
+    #[serde(rename = "id")]
+    pub id: AssetOptionFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<i8>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectStatChoice {
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    pub value: PlayerStat,
+
+    #[serde(rename = "selected")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub selected: Option<Box<bool>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldSelectStat {
+    #[serde(rename = "choices")]
+    pub choices: HashMap<String, AssetAbilityOptionFieldSelectStatChoice>,
+
+    #[serde(rename = "id")]
+    pub id: AssetOptionFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<PlayerStat>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetAbilityOptionFieldText {
+    #[serde(rename = "id")]
+    pub id: AssetOptionFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<String>>,
+}
 
 pub type AssetAbilityOptionFieldId = String;
 
@@ -191,7 +307,7 @@ pub enum AssetControlField {
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldCheckbox {
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -203,7 +319,7 @@ pub struct AssetControlFieldCheckbox {
 #[derive(Serialize, Deserialize)]
 pub struct AssetControlFieldConditionMeter {
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -237,7 +353,7 @@ pub struct AssetControlFieldSelectAssetExtension {
     pub choices: HashMap<String, AssetControlFieldSelectAssetExtensionChoice>,
 
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -246,6 +362,10 @@ pub struct AssetControlFieldSelectAssetExtension {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<Box<AssetExtension>>,
 }
+
+pub type AssetControlFieldId = String;
+
+pub type AssetControlFieldIdwildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionAttachments {
@@ -305,7 +425,7 @@ pub struct AssetExtensionForeignAttachments {
 
     #[serde(rename = "patterns")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub patterns: Option<Box<Vec<RegularExpression>>>,
+    pub patterns: Option<Box<Vec<AssetIdwildcard>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -324,7 +444,7 @@ pub struct AssetExtensionForeignControl {
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionForeign {
     #[serde(rename = "extends")]
-    pub extends: AssetId,
+    pub extends: AssetIdwildcard,
 
     #[serde(rename = "id")]
     pub id: AssetAbilityControlFieldId,
@@ -345,6 +465,8 @@ pub struct AssetExtensionForeign {
 }
 
 pub type AssetId = String;
+
+pub type AssetIdwildcard = String;
 
 /// Asset options are fields that are usually only set once, typically when the
 /// player purchases the asset. The most common examples are the "Name" fields
@@ -385,7 +507,7 @@ pub struct AssetOptionFieldSelectAssetExtension {
     pub choices: HashMap<String, AssetOptionFieldSelectAssetExtensionChoice>,
 
     #[serde(rename = "id")]
-    pub id: AssetAbilityControlFieldId,
+    pub id: AssetControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -414,7 +536,7 @@ pub struct AssetOptionFieldSelectNumber {
     pub choices: HashMap<String, AssetOptionFieldSelectNumberChoice>,
 
     #[serde(rename = "id")]
-    pub id: AssetAbilityOptionFieldId,
+    pub id: AssetOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -443,7 +565,7 @@ pub struct AssetOptionFieldSelectStat {
     pub choices: HashMap<String, AssetOptionFieldSelectStatChoice>,
 
     #[serde(rename = "id")]
-    pub id: AssetAbilityOptionFieldId,
+    pub id: AssetOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -456,7 +578,7 @@ pub struct AssetOptionFieldSelectStat {
 #[derive(Serialize, Deserialize)]
 pub struct AssetOptionFieldText {
     #[serde(rename = "id")]
-    pub id: AssetAbilityOptionFieldId,
+    pub id: AssetOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -465,6 +587,8 @@ pub struct AssetOptionFieldText {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<Box<String>>,
 }
+
+pub type AssetOptionFieldId = String;
 
 /// Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
 pub type ChallengeRank = u8;
@@ -1526,7 +1650,7 @@ pub type StatId = String;
 pub struct Suggestions {
     #[serde(rename = "assets")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub assets: Option<Box<Vec<AssetId>>>,
+    pub assets: Option<Box<Vec<AssetIdwildcard>>>,
 
     #[serde(rename = "moves")]
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -3,24 +3,28 @@ import { type InputFieldBase } from 'base-types/inputs'
 import { type PartialDeep, type Simplify } from 'type-fest'
 
 export type AssetID = string
+export type AssetIDWildcard = string
 
 export type AssetTypeID = string
 
 export interface AssetType extends Types.Abstract.Collection<Asset> {}
 
 export type AssetOptionFieldID = string
+export type AssetOptionFieldIDWildcard = string
+
 export type AssetControlFieldID = string
+export type AssetControlFieldIDWildcard = string
 
 export type AssetOptionField =
 	| Types.Inputs.TextField
 	| Types.Inputs.SelectFieldStat
 	// | Types.Inputs.SelectFieldNumber
-	| Types.Inputs.SelectFieldAssetExtension
+	| Types.Inputs.SelectFieldExtendAsset
 
 export type AssetControlField =
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.ConditionMeterField
-	| Types.Inputs.SelectFieldAssetExtension
+	| Types.Inputs.SelectFieldExtendAsset
 
 export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
 	Omit<T, 'id' | 'field_type' | 'label' | 'value'>
@@ -60,10 +64,7 @@ export type AssetAbilityID = string
 export type AssetAbilityOptionFieldID = string
 export type AssetAbilityControlFieldID = string
 
-export type AssetAbilityOptionField = (
-	| Types.Inputs.TextField
-	| Types.Inputs.CheckboxField
-) & {
+export type AssetAbilityOptionField = AssetOptionField & {
 	id: AssetAbilityOptionFieldID
 }
 
@@ -93,7 +94,7 @@ export type AssetExtension = Simplify<
 >
 
 export interface AssetAttachment {
-	patterns: Array<RegExp['source']>
+	assets: Array<RegExp['source']>
 	max?: number
 }
 

@@ -7,25 +7,45 @@ import { type Simplify } from 'type-fest'
 
 export const AssetID: Schema<Types.Assets.AssetID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}$/.source
+	pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}$/.source
+}
+
+export const AssetIDWildcard: Schema<Types.Assets.AssetIDWildcard> = {
+	type: 'string',
+	pattern: /^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)$/.source
 }
 
 export const AssetOptionFieldID: Schema<Types.Assets.AssetOptionFieldID> = {
 	type: 'string',
-	pattern:
-		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/options\/[a-z][a-z_]*[a-z]$/
-			.source
-}
-export const AssetControlFieldID: Schema<Types.Assets.AssetControlFieldID> = {
-	type: 'string',
-	pattern:
-		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/controls\/[a-z][a-z_]*[a-z]$/
-			.source
+	pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/options\/[a-z_]+$/.source
 }
 
-const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
+export const AssetOptionFieldIDWildcard: Schema<Types.Assets.AssetOptionFieldIDWildcard> =
+	{
+		type: 'string',
+		pattern:
+			/^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/options\/[a-z_]+$/
+				.source
+	}
+
+export const AssetControlFieldID: Schema<Types.Assets.AssetControlFieldID> = {
+	type: 'string',
+	pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/controls\/[a-z_]+$/.source
+}
+
+export const AssetControlFieldIDWildcard: Schema<Types.Assets.AssetControlFieldIDWildcard> =
+	{
+		type: 'string',
+		pattern:
+			/^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/controls\/[a-z_]+$/
+				.source
+	}
+
+export const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	title: 'Asset option field',
 	type: 'object',
+	required: ['id'],
+	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.Assets.AssetOptionFieldID>('AssetOptionFieldID')
 	},
@@ -35,26 +55,36 @@ const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	]
 }
 
-const AssetControlField: Schema<Types.Assets.AssetControlField> = {
+export const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 	title: 'Asset control field',
 	type: 'object',
 	required: ['id'],
 	properties: {
-		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID'),
-		field_type: {
-			enum: ['checkbox', 'select_asset_extension', 'condition_meter']
-		},
-		label: { $ref: '#/definitions/Label' }
+		id: refSchema<Types.Assets.AssetControlFieldID>('AssetControlFieldID')
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
 		refSchema<Types.Inputs.ConditionMeterField>('ConditionMeterField'),
-		refSchema<Types.Inputs.SelectFieldAssetExtension>(
-			'SelectFieldAssetExtension'
-		)
-		// refSchema<Types.Assets.ToggleField>('ToggleField')
+		refSchema<Types.Inputs.SelectFieldExtendAsset>('SelectFieldExtendAsset')
 	]
 }
+
+export const AssetControlFieldExtension: Schema<Types.Assets.AssetControlFieldExtension> =
+	{
+		title: 'Asset control field extension',
+		description:
+			'Override an existing asset control field. Currently, only extensions to asset condition meters are supported.',
+		type: 'object',
+		oneOf: [
+			{
+				additionalProperties: false,
+				properties: {
+					max: { type: 'integer', nullable: true },
+					min: { type: 'integer', nullable: true }
+				}
+			}
+		]
+	}
 
 export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 	type: 'object',
@@ -68,9 +98,12 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 			type: 'boolean'
 		},
 		name: refSchema<Types.Localize.Label>('Label'),
-		options: dictionarySchema<Types.Assets.AssetOptionField>(AssetOptionField),
-		controls:
-			dictionarySchema<Types.Assets.AssetControlField>(AssetControlField),
+		options: dictionarySchema<Types.Assets.AssetOptionField>(
+			refSchema<Types.Assets.AssetOptionField>('AssetOptionField')
+		),
+		controls: dictionarySchema<Types.Assets.AssetControlField>(
+			refSchema<Types.Assets.AssetControlField>('AssetControlField')
+		),
 		requirement: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
 		abilities: {
 			type: 'array',
@@ -94,7 +127,7 @@ export const AssetAttachment: Schema<Types.Assets.AssetAttachment> = {
 	description:
 		'Describes which assets can be attached to this asset. The "canonical" example for this are Starforged\'s Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.',
 	type: 'object',
-	required: ['patterns'],
+	required: ['assets'],
 	properties: {
 		max: {
 			title: 'Maximum attached assets',
@@ -104,55 +137,61 @@ export const AssetAttachment: Schema<Types.Assets.AssetAttachment> = {
 			minimum: 1,
 			nullable: true
 		},
-		patterns: {
-			title: 'Attached asset ID patterns',
+		assets: {
+			title: 'Attachable assets',
 			description:
-				'Regular expressions matching the IDs of assets that can be attached to this asset.',
+				'Asset IDs (which may be wildcards) that may be attached to this asset',
 			type: 'array',
-			items: {
-				type: 'string',
-				format: 'regex',
-				examples: [
-					/^[a-z0-9][a-z0-9_]+\/assets\/module\/[a-z][a-z_]*[a-z]$/.source
-				]
-			}
+			items: refSchema<string>('AssetIDWildcard')
 		}
 	}
 }
 
 export const AssetAbilityID: Schema<Types.Assets.AssetAbilityID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/[0-2]$/.source
+	pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]$/.source
 }
 
 export const AssetAbilityOptionFieldID: Schema<Types.Assets.AssetAbilityOptionFieldID> =
 	{
 		type: 'string',
-		pattern:
-			/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/[0-2]\/options\/[a-z][a-z_]*[a-z]$/
-				.source
+		pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]\/options\/[a-z_]+$/
+			.source
 	}
-const AssetAbilityOptionField: Schema<Types.Assets.AssetAbilityOptionField> = {
-	type: 'object',
-	allOf: [
-		refSchema<Types.Inputs.TextField>('TextField'),
-		{
-			properties: {
-				id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
-					'AssetAbilityOptionFieldID'
-				)
-			}
-		}
-	]
-} as any
+export const AssetAbilityOptionField: Schema<Types.Assets.AssetAbilityOptionField> =
+	{
+		type: 'object',
+		properties: {
+			id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
+				'AssetAbilityOptionFieldID'
+			)
+		},
+		oneOf: [
+			refSchema<Types.Inputs.TextField>('TextField'),
+			refSchema<Types.Inputs.CheckboxField>('CheckboxField')
+		]
+	} as any
 
 export const AssetAbilityControlFieldID: Schema<Types.Assets.AssetAbilityControlFieldID> =
 	{
 		type: 'string',
 		pattern:
-			/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/abilities\/[0-2]\/controls\/[a-z][a-z_]*[a-z]$/
+			/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/abilities\/[0-2]\/controls\/[a-z_]+$/
 				.source
 	}
+
+export const AssetAbilityControlField = {
+	type: 'object',
+	properties: {
+		id: refSchema<string>('AssetAbilityControlFieldID')
+	},
+	oneOf: [
+		refSchema<Types.Inputs.TextField>('TextField'),
+		refSchema<Types.Inputs.CounterField>('CounterField'),
+		refSchema<Types.Inputs.ClockField>('ClockField'),
+		refSchema<Types.Inputs.CheckboxField>('CheckboxField')
+	]
+}
 
 export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 	type: 'object',
@@ -167,58 +206,27 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 		},
 		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
 		enabled: { type: 'boolean', default: false },
-		controls: {
-			type: 'object',
-			additionalProperties: false,
-			patternProperties: {
-				[DF_KEY]: {
-					oneOf: [
-						refSchema<Types.Inputs.TextField>('TextField')
-						// refSchema<Types.Inputs.CounterField>('CounterField'),
-						// refSchema<Types.Inputs.ClockField>('ClockField'),
-						// refSchema<Types.Inputs.CheckboxField>('CheckboxField')
-					]
-				}
-			}
-		},
-		options: dictionarySchema<Types.Assets.AssetAbilityOptionField>({
-			type: 'object',
-			required: ['id', 'label', 'field_type'],
-			properties: {
-				id: refSchema<Types.Assets.AssetAbilityOptionFieldID>(
-					'AssetAbilityOptionFieldID'
-				),
-				label: { $ref: '#/definitions/Label' },
-				field_type: { enum: ['text', 'checkbox'], type: 'string' }
-			},
-			oneOf: [
-				refSchema<Types.Inputs.TextField>('TextField'),
-				refSchema<Types.Inputs.CheckboxField>('CheckboxField')
-			]
-		}),
+		controls: dictionarySchema<Types.Assets.AssetAbilityControlField>(
+			refSchema('AssetAbilityControlField')
+		),
+		options: dictionarySchema<Types.Assets.AssetAbilityOptionField>(
+			refSchema('AssetAbilityOptionField')
+		),
 		extend_asset: refSchema<Types.Assets.AssetExtension>('AssetExtension'),
 		extend_moves: {
 			type: 'array',
 			nullable: undefined as any,
 			items: refSchema<Types.Moves.MoveExtension>('MoveExtension')
 		},
-		moves: {
-			description: 'Unique moves added by this asset ability.',
-			type: 'object',
-			additionalProperties: false,
-			required: undefined as any,
-			nullable: true,
-			patternProperties: {
-				[DF_KEY]: refSchema<Types.Moves.Move>('Move')
-			}
-		}
+		moves: dictionarySchema(refSchema<Types.Moves.Move>('Move'), {
+			description: 'Unique moves added by this asset ability.'
+		})
 	}
 }
 
 export const AssetTypeID: Schema<Types.Assets.AssetTypeID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/assets(\/[a-z][a-z_]*[a-z]){1}$/
-		.source,
+	pattern: /^[a-z0-9_]{3,}\/collections\/assets(\/[a-z_]+){1}$/.source,
 	examples: [
 		'starforged/collections/assets/command_vehicle',
 		'ironsworn/collections/assets/companion'
@@ -271,8 +279,14 @@ export const ToggleField: Schema<Types.Assets.ToggleField> = {
 
 export const AssetExtension: Schema<Types.Assets.AssetExtension> = {
 	type: 'object',
-	properties: _(Asset.properties)
-		.pick('controls', 'count_as_impact', 'attachments', 'shared')
-		.omit(`controls.patternProperties.${DF_KEY}.required`)
-		.value()
+
+	properties: {
+		controls: dictionarySchema(
+			refSchema<Types.Assets.AssetControlFieldExtension>(
+				'AssetControlFieldExtension'
+			)
+		),
+		attachments: _.set(Asset.properties.attachments, 'required', undefined),
+		count_as_impact: Asset.properties.count_as_impact
+	}
 }

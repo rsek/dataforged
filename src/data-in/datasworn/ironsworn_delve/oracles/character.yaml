@@ -10,16 +10,14 @@ ironsworn_delve:
   oracles:
     character:
       extends: ironsworn/collections/oracles/character
-      title:
-        canonical: Character
+      name: Character
       summary: Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.
       _source:
         page: 213
       contents:
         activity:
-          title:
-            canonical: 'Character: Activity'
-            standard: Activity
+          name: Activity
+          canonical_name: 'Character: Activity'
           summary: To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](ironsworn_delve/oracles/feature/focus) oracle or [Theme](ironsworn/oracles/action_and_theme/theme) oracle.
           suggestions:
             oracles:
@@ -179,9 +177,8 @@ ironsworn_delve:
               high: 100
               result: Summoning
         disposition:
-          title:
-            canonical: 'Character: Disposition'
-            standard: Disposition
+          name: Disposition
+          canonical_name: 'Character: Disposition'
           summary: Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.
           # usage:
           #   initial: true

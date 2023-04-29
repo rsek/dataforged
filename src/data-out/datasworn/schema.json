@@ -7,7 +7,7 @@
 			"title": "Id",
 			"type": "string",
 			"$comment": "{namespace}/{element}/{*}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/(\\/[a-z][a-z_]*[a-z]){2,}$"
+			"pattern": "^[a-z0-9_]{3,}\\/(\\/[a-z_]+){2,}$"
 		},
 		"Ruleset": {
 			"title": "Ruleset",
@@ -117,17 +117,68 @@
 		"AssetID": {
 			"title": "Asset ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}$"
+		},
+		"AssetIDWildcard": {
+			"title": "Asset id wildcard",
+			"type": "string",
+			"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)$"
 		},
 		"AssetOptionFieldID": {
 			"title": "Asset option field ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/options\\/[a-z][a-z_]*[a-z]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/options\\/[a-z_]+$"
+		},
+		"AssetOptionFieldIDWildcard": {
+			"title": "Asset option field id wildcard",
+			"type": "string",
+			"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/options\\/[a-z_]+$"
 		},
 		"AssetControlFieldID": {
 			"title": "Asset control field ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/controls\\/[a-z][a-z_]*[a-z]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/controls\\/[a-z_]+$"
+		},
+		"AssetControlFieldIDWildcard": {
+			"title": "Asset control field id wildcard",
+			"type": "string",
+			"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/controls\\/[a-z_]+$"
+		},
+		"AssetOptionField": {
+			"title": "Asset option field",
+			"type": "object",
+			"required": ["id"],
+			"additionalProperties": false,
+			"properties": { "id": { "$ref": "#/definitions/AssetOptionFieldID" } },
+			"oneOf": [
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/SelectFieldStat" }
+			]
+		},
+		"AssetControlField": {
+			"title": "Asset control field",
+			"type": "object",
+			"required": ["id"],
+			"properties": { "id": { "$ref": "#/definitions/AssetControlFieldID" } },
+			"oneOf": [
+				{ "$ref": "#/definitions/CheckboxField" },
+				{ "$ref": "#/definitions/ConditionMeterField" },
+				{ "$ref": "#/definitions/SelectFieldExtendAsset" }
+			]
+		},
+		"AssetControlFieldExtension": {
+			"title": "Asset control field extension",
+			"description": "Override an existing asset control field. Currently, only extensions to asset condition meters are supported.",
+			"type": "object",
+			"oneOf": [
+				{
+					"additionalProperties": false,
+					"properties": {
+						"max": { "type": "integer", "nullable": true },
+						"min": { "type": "integer", "nullable": true }
+					}
+				}
+			]
 		},
 		"Asset": {
 			"title": "Asset",
@@ -145,44 +196,14 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"title": "Asset option field",
-							"type": "object",
-							"properties": {
-								"id": { "$ref": "#/definitions/AssetOptionFieldID" }
-							},
-							"oneOf": [
-								{ "$ref": "#/definitions/TextField" },
-								{ "$ref": "#/definitions/SelectFieldStat" }
-							]
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetOptionField" }
 					}
 				},
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"title": "Asset control field",
-							"type": "object",
-							"required": ["id"],
-							"properties": {
-								"id": { "$ref": "#/definitions/AssetControlFieldID" },
-								"field_type": {
-									"enum": [
-										"checkbox",
-										"select_asset_extension",
-										"condition_meter"
-									]
-								},
-								"label": { "$ref": "#/definitions/Label" }
-							},
-							"oneOf": [
-								{ "$ref": "#/definitions/CheckboxField" },
-								{ "$ref": "#/definitions/ConditionMeterField" },
-								{ "$ref": "#/definitions/SelectFieldAssetExtension" }
-							]
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetControlField" }
 					}
 				},
 				"requirement": { "$ref": "#/definitions/MarkdownPhrase" },
@@ -206,7 +227,7 @@
 			"title": "Asset attachment",
 			"description": "Describes which assets can be attached to this asset. The \"canonical\" example for this are Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 			"type": "object",
-			"required": ["patterns"],
+			"required": ["assets"],
 			"properties": {
 				"max": {
 					"title": "Maximum attached assets",
@@ -215,34 +236,52 @@
 					"minimum": 1,
 					"nullable": true
 				},
-				"patterns": {
-					"title": "Attached asset ID patterns",
-					"description": "Regular expressions matching the IDs of assets that can be attached to this asset.",
+				"assets": {
+					"title": "Attachable assets",
+					"description": "Asset IDs (which may be wildcards) that may be attached to this asset",
 					"type": "array",
-					"items": {
-						"type": "string",
-						"format": "regex",
-						"examples": [
-							"^[a-z0-9][a-z0-9_]+\\/assets\\/module\\/[a-z][a-z_]*[a-z]$"
-						]
-					}
+					"items": { "$ref": "#/definitions/AssetIDWildcard" }
 				}
 			}
 		},
 		"AssetAbilityID": {
 			"title": "Asset ability ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]$"
 		},
 		"AssetAbilityOptionFieldID": {
 			"title": "Asset ability option field ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]\\/options\\/[a-z][a-z_]*[a-z]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/options\\/[a-z_]+$"
+		},
+		"AssetAbilityOptionField": {
+			"title": "Asset ability option field",
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" }
+			},
+			"oneOf": [
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/CheckboxField" }
+			]
 		},
 		"AssetAbilityControlFieldID": {
 			"title": "Asset ability control field ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/abilities\\/[0-2]\\/controls\\/[a-z][a-z_]*[a-z]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/abilities\\/[0-2]\\/controls\\/[a-z_]+$"
+		},
+		"AssetAbilityControlField": {
+			"title": "Asset ability control field",
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/definitions/AssetAbilityControlFieldID" }
+			},
+			"oneOf": [
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/CounterField" },
+				{ "$ref": "#/definitions/ClockField" },
+				{ "$ref": "#/definitions/CheckboxField" }
+			]
 		},
 		"AssetAbility": {
 			"title": "Asset ability",
@@ -260,30 +299,16 @@
 				"enabled": { "type": "boolean", "default": false },
 				"controls": {
 					"type": "object",
-					"additionalProperties": false,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"oneOf": [{ "$ref": "#/definitions/TextField" }]
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetAbilityControlField" }
 					}
 				},
 				"options": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"type": "object",
-							"required": ["id", "label", "field_type"],
-							"properties": {
-								"id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" },
-								"label": { "$ref": "#/definitions/Label" },
-								"field_type": { "enum": ["text", "checkbox"], "type": "string" }
-							},
-							"oneOf": [
-								{ "$ref": "#/definitions/TextField" },
-								{ "$ref": "#/definitions/CheckboxField" }
-							]
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetAbilityOptionField" }
 					}
 				},
 				"extend_asset": { "$ref": "#/definitions/AssetExtension" },
@@ -292,20 +317,19 @@
 					"items": { "$ref": "#/definitions/MoveExtension" }
 				},
 				"moves": {
-					"description": "Unique moves added by this asset ability.",
 					"type": "object",
-					"additionalProperties": false,
-					"nullable": true,
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
-					}
+						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
+					},
+					"description": "Unique moves added by this asset ability."
 				}
 			}
 		},
 		"AssetTypeID": {
 			"title": "Asset type ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/assets(\\/[a-z][a-z_]*[a-z]){1}$",
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets(\\/[a-z_]+){1}$",
 			"examples": [
 				"starforged/collections/assets/command_vehicle",
 				"ironsworn/collections/assets/companion"
@@ -329,7 +353,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Asset" }
+						"^[a-z_]+$": { "$ref": "#/definitions/Asset" }
 					},
 					"description": "The elements contained by this collection."
 				}
@@ -351,7 +375,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Asset" }
+						"^[a-z_]+$": { "$ref": "#/definitions/Asset" }
 					},
 					"description": "Items to be added to the extended collection."
 				}
@@ -369,7 +393,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"title": "Toggle field option",
 							"type": "object",
 							"required": ["id", "label", "value"],
@@ -391,46 +415,22 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
-							"title": "Asset control field",
-							"type": "object",
-							"required": ["id"],
-							"properties": {
-								"id": { "$ref": "#/definitions/AssetControlFieldID" },
-								"field_type": {
-									"enum": [
-										"checkbox",
-										"select_asset_extension",
-										"condition_meter"
-									]
-								},
-								"label": { "$ref": "#/definitions/Label" }
-							},
-							"oneOf": [
-								{ "$ref": "#/definitions/CheckboxField" },
-								{ "$ref": "#/definitions/ConditionMeterField" },
-								{ "$ref": "#/definitions/SelectFieldAssetExtension" }
-							]
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetControlFieldExtension" }
 					}
 				},
+				"attachments": { "$ref": "#/definitions/AssetAttachment" },
 				"count_as_impact": {
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean",
 					"default": false,
 					"nullable": true
-				},
-				"attachments": { "$ref": "#/definitions/AssetAttachment" },
-				"shared": {
-					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-					"type": "boolean"
 				}
 			}
 		},
 		"OracleCollectionID": {
 			"title": "Oracle collection ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/oracles(\\/[a-z][a-z_]*[a-z]){1,3}$",
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/[a-z_]+){1,3}$",
 			"examples": [
 				"starforged/collections/oracles/core",
 				"starforged/collections/oracles/character/names",
@@ -441,7 +441,7 @@
 			"title": "Oracle table ID",
 			"type": "string",
 			"$comment": "{namespace}/oracles/{...collections}/{oracle}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}$",
 			"examples": [
 				"starforged/oracles/core/action",
 				"starforged/oracles/character/names/given",
@@ -507,7 +507,7 @@
 				"table_key": {
 					"description": "A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 					"type": "string",
-					"pattern": "^[a-z][a-z_]*[a-z]$"
+					"pattern": "^[a-z_]+$"
 				},
 				"color": { "$ref": "#/definitions/Color" }
 			},
@@ -565,7 +565,7 @@
 				"columns": {
 					"type": "object",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/OracleTableColumn" }
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleTableColumn" }
 					},
 					"default": {
 						"roll": { "content_type": "range", "label": "Roll" },
@@ -577,7 +577,7 @@
 		"OracleTable": {
 			"title": "Oracle table",
 			"type": "object",
-			"required": ["id", "name", "canonical_name", "source", "table"],
+			"required": ["id", "name", "source", "table"],
 			"additionalProperties": false,
 			"properties": {
 				"id": { "$ref": "#/definitions/OracleTableID" },
@@ -634,7 +634,7 @@
 		"OracleTableRowID": {
 			"title": "Oracle table row ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
+			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
 			"examples": ["ironsworn/oracles/action_and_theme/action/1-1"]
 		},
 		"OracleTableRow": {
@@ -662,12 +662,11 @@
 				},
 				"icon": { "$ref": "#/definitions/Icon" },
 				"summary": {
+					"$ref": "#/definitions/MarkdownSentences",
 					"title": "Summary text",
 					"description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-					"anyOf": [
-						{ "$ref": "#/definitions/MarkdownSentences" },
-						{ "type": "null" }
-					]
+					"type": "string",
+					"nullable": true
 				},
 				"description": {
 					"$ref": "#/definitions/MarkdownParagraphs",
@@ -680,7 +679,8 @@
 				},
 				"rolls": {
 					"type": "array",
-					"items": { "$ref": "#/definitions/OracleTableRoll" }
+					"items": { "$ref": "#/definitions/OracleTableRoll" },
+					"nullable": true
 				},
 				"template": { "$ref": "#/definitions/OracleRollTemplate" },
 				"suggestions": { "$ref": "#/definitions/Suggestions" },
@@ -689,15 +689,10 @@
 			"oneOf": [
 				{
 					"title": "OracleTableRowStub",
-					"properties": {
-						"id": { "const": null },
-						"low": { "const": null },
-						"high": { "const": null }
-					}
+					"properties": { "low": { "const": null }, "high": { "const": null } }
 				},
 				{
 					"properties": {
-						"id": { "type": "string" },
 						"low": { "type": "integer" },
 						"high": { "type": "integer" }
 					}
@@ -744,7 +739,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/OracleTable" }
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleTable" }
 					},
 					"description": "The elements contained by this collection."
 				},
@@ -765,7 +760,7 @@
 						"columns": {
 							"type": "object",
 							"patternProperties": {
-								"^[a-z][a-z_]*[a-z]$": {
+								"^[a-z_]+$": {
 									"description": "A column's default label is the title of the source table.",
 									"$ref": "#/definitions/OracleCollectionColumn"
 								}
@@ -778,7 +773,7 @@
 					"description": "OracleCollections contained by this OracleCollection.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/OracleCollection" },
 								{ "$ref": "#/definitions/OracleCollectionExtension" }
@@ -813,7 +808,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/OracleTable" }
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleTable" }
 					},
 					"description": "Items to be added to the extended collection."
 				},
@@ -821,7 +816,7 @@
 					"type": "object",
 					"description": "Collections (and/or collection extensions) to be added to the extended collection.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/OracleCollection" },
 								{ "$ref": "#/definitions/OracleCollectionExtension" }
@@ -877,7 +872,7 @@
 		"EncounterClassicID": {
 			"title": "Encounter (Classic) ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/encounters(\\/[a-z][a-z_]*[a-z]){2}$",
+			"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$",
 			"examples": [
 				"ironsworn/encounters/firstborn/elf",
 				"ironsworn_delve/encounters/anomalies/glimmer"
@@ -888,7 +883,7 @@
 			"oneOf": [
 				{
 					"type": "string",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/encounters(\\/[a-z][a-z_]*[a-z]){2}$",
+					"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$",
 					"examples": [
 						"ironsworn/encounters/firstborn/elf",
 						"ironsworn_delve/encounters/anomalies/glimmer"
@@ -896,7 +891,7 @@
 				},
 				{
 					"type": "string",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/encounters\\/[a-z][a-z_]*[a-z](\\/variants\\/[a-z][a-z_]*[a-z])?$",
+					"pattern": "^[a-z0-9_]{3,}\\/encounters\\/[a-z_]+(\\/variants\\/[a-z_]+)?$",
 					"examples": [
 						"starforged/encounters/chiton",
 						"starforged/encounters/chiton/variants/chiton_drone_pack"
@@ -965,7 +960,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/EncounterClassic" }
+						"^[a-z_]+$": { "$ref": "#/definitions/EncounterClassic" }
 					},
 					"description": "The elements contained by this collection."
 				}
@@ -987,7 +982,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/EncounterClassic" }
+						"^[a-z_]+$": { "$ref": "#/definitions/EncounterClassic" }
 					},
 					"description": "Items to be added to the extended collection."
 				}
@@ -996,30 +991,29 @@
 		"EncounterCollectionClassicID": {
 			"title": "Encounter collection (Classic) ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/encounters(\\/[a-z][a-z_]*[a-z]){1}$"
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/encounters(\\/[a-z_]+){1}$"
 		},
 		"MoveID": {
 			"title": "Move ID",
 			"type": "string",
-			"oneOf": [
-				{
-					"title": "Move ID",
-					"type": "string",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/moves(\\/[a-z][a-z_]*[a-z]){2}$",
-					"examples": ["starforged/moves/adventure/face_danger"]
-				},
-				{
-					"title": "Asset move ID",
-					"type": "string",
-					"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/moves\\/[a-z][a-z_]*[a-z]$",
-					"examples": ["starforged/assets/module/grappler/moves/ready_grappler"]
-				}
+			"description": "A move ID, for a standard move or a unique asset move",
+			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$",
+			"examples": [
+				"starforged/moves/combat/strike",
+				"starforged/assets/module/grappler/moves/ready_grappler"
 			]
+		},
+		"MoveIDWildcard": {
+			"title": "Move ID (with wildcard)",
+			"type": "string",
+			"description": "A move ID with wildcards",
+			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/moves\\/([a-z_]+|\\*))$",
+			"examples": ["*/moves/*/face_danger", "*/assets/ritual/*/moves/*"]
 		},
 		"MoveCategoryID": {
 			"title": "Move category ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves\\/[a-z][a-z_]*[a-z]$",
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$",
 			"examples": ["starforged/collections/moves/adventure"]
 		},
 		"MoveCategory": {
@@ -1040,7 +1034,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
+						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
 					},
 					"description": "The elements contained by this collection."
 				}
@@ -1062,7 +1056,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Move" }
+						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
 					},
 					"description": "Items to be added to the extended collection."
 				}
@@ -1094,9 +1088,8 @@
 				"ref": {
 					"description": "Identifies the stat whose value is to be referenced.",
 					"oneOf": [
-						{ "$ref": "#/definitions/AssetControlFieldID" },
-						{ "$ref": "#/definitions/AssetOptionFieldID" },
-						{ "$ref": "#/definitions/ConditionMeterAlias" }
+						{ "$ref": "#/definitions/AssetControlFieldIDWildcard" },
+						{ "$ref": "#/definitions/AssetOptionFieldIDWildcard" }
 					]
 				}
 			}
@@ -1135,7 +1128,8 @@
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 					"oneOf": [
 						{ "$ref": "#/definitions/MoveRollMethod" },
-						{ "$ref": "#/definitions/MoveOutcomeType" }
+						{ "$ref": "#/definitions/MoveOutcomeType" },
+						{ "type": "null" }
 					]
 				},
 				"choices": {
@@ -1178,7 +1172,8 @@
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 					"oneOf": [
 						{ "$ref": "#/definitions/MoveRollMethod" },
-						{ "$ref": "#/definitions/MoveOutcomeType" }
+						{ "$ref": "#/definitions/MoveOutcomeType" },
+						{ "type": "null" }
 					]
 				},
 				"choices": {
@@ -1188,15 +1183,8 @@
 						"type": "object",
 						"title": "Trigger choice (progress roll)",
 						"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
-						"properties": {
-							"label": { "$ref": "#/definitions/Label" },
-							"value": {
-								"type": "integer",
-								"$comment": "Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value."
-							},
-							"using": { "$ref": "#/definitions/ProgressType" }
-						},
-						"required": ["using"]
+						"required": ["using"],
+						"properties": { "using": { "$ref": "#/definitions/ProgressType" } }
 					},
 					"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
 				},
@@ -1227,7 +1215,6 @@
 					"description": "Describes a move's trigger conditions.",
 					"type": "object",
 					"required": ["text"],
-					"additionalProperties": false,
 					"properties": {
 						"text": {
 							"$ref": "#/definitions/MarkdownPhrase",
@@ -1235,20 +1222,26 @@
 							"type": "string",
 							"pattern": "^.*\\.{3}$"
 						},
-						"roll_type": { "$ref": "#/definitions/MoveRollType" },
-						"roll_options": {
-							"description": "Available options for triggering this move.",
-							"type": "array",
-							"nullable": true,
-							"items": { "type": "object" }
+						"roll_type": {
+							"$ref": "#/definitions/MoveRollType",
+							"default": "no_roll"
 						}
 					},
 					"oneOf": [
 						{
+							"additionalProperties": false,
+							"title": "Trigger (no roll)",
+							"properties": { "text": {}, "roll_type": { "const": "no_roll" } }
+						},
+						{
+							"additionalProperties": false,
 							"title": "Trigger (action roll)",
+							"required": ["roll_options", "roll_type"],
 							"properties": {
+								"text": {},
 								"roll_type": { "const": "action_roll" },
 								"roll_options": {
+									"description": "Action roll options for triggering this move.",
 									"type": "array",
 									"items": {
 										"title": "Trigger option",
@@ -1261,7 +1254,8 @@
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
 													{ "$ref": "#/definitions/MoveRollMethod" },
-													{ "$ref": "#/definitions/MoveOutcomeType" }
+													{ "$ref": "#/definitions/MoveOutcomeType" },
+													{ "type": "null" }
 												]
 											},
 											"choices": {
@@ -1301,11 +1295,15 @@
 							}
 						},
 						{
+							"additionalProperties": false,
 							"title": "Trigger (progress move)",
+							"required": ["roll_options", "roll_type"],
 							"properties": {
+								"text": {},
 								"roll_type": { "const": "progress_roll" },
 								"roll_options": {
 									"title": "Trigger options (progress move)",
+									"description": "Progress roll options for triggering this move.",
 									"type": "array",
 									"items": {
 										"title": "Trigger option (progress move)",
@@ -1318,7 +1316,8 @@
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
 													{ "$ref": "#/definitions/MoveRollMethod" },
-													{ "$ref": "#/definitions/MoveOutcomeType" }
+													{ "$ref": "#/definitions/MoveOutcomeType" },
+													{ "type": "null" }
 												]
 											},
 											"choices": {
@@ -1328,15 +1327,10 @@
 													"type": "object",
 													"title": "Trigger choice (progress roll)",
 													"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
+													"required": ["using"],
 													"properties": {
-														"label": { "$ref": "#/definitions/Label" },
-														"value": {
-															"type": "integer",
-															"$comment": "Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value."
-														},
 														"using": { "$ref": "#/definitions/ProgressType" }
-													},
-													"required": ["using"]
+													}
 												},
 												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
 											},
@@ -1518,10 +1512,14 @@
 		},
 		"TriggerExtension": {
 			"title": "Trigger extension",
-			"required": ["roll_options", "roll_type"],
 			"type": "object",
+			"additionalProperties": false,
+			"required": ["roll_type", "roll_options"],
 			"properties": {
-				"roll_type": { "$ref": "#/definitions/MoveRollType" },
+				"roll_type": {
+					"type": "string",
+					"enum": ["action_roll", "progress_roll"]
+				},
 				"roll_options": { "type": "array" }
 			},
 			"oneOf": [
@@ -1552,9 +1550,10 @@
 			"type": "object",
 			"properties": {
 				"extends": {
-					"description": "An array of Move IDs",
-					"type": "array",
-					"items": { "$ref": "#/definitions/MoveID" }
+					"description": "Move IDs affected by this move extension",
+					"type": ["array", "null"],
+					"items": { "$ref": "#/definitions/MoveID" },
+					"nullable": true
 				},
 				"trigger": { "$ref": "#/definitions/TriggerExtension" },
 				"text": { "$ref": "#/definitions/MarkdownParagraphs" },
@@ -1714,6 +1713,7 @@
 			"title": "Checkbox field",
 			"type": "object",
 			"required": ["id", "field_type", "label"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
@@ -1725,6 +1725,7 @@
 			"title": "Clock field",
 			"type": "object",
 			"required": ["id", "field_type", "label", "min", "max", "value"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
@@ -1738,12 +1739,13 @@
 			"title": "Condition meter field",
 			"type": "object",
 			"required": ["id", "field_type", "label", "min", "max", "value"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
 				"field_type": { "type": "string", "const": "condition_meter" },
 				"value": { "type": "integer" },
-				"min": { "type": "integer", "const": 0 },
+				"min": { "type": "integer", "default": 0 },
 				"max": { "type": "integer" }
 			}
 		},
@@ -1751,6 +1753,7 @@
 			"title": "Counter field",
 			"type": "object",
 			"required": ["id", "field_type", "label", "min", "max"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
@@ -1764,6 +1767,7 @@
 			"title": "Text field",
 			"type": "object",
 			"required": ["id", "field_type", "label"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
@@ -1773,8 +1777,9 @@
 		},
 		"SelectFieldStat": {
 			"title": "Select field stat",
-			"required": ["id", "label", "field_type", "choices"],
 			"type": "object",
+			"required": ["id", "label", "field_type", "choices"],
+			"additionalProperties": false,
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/definitions/Label" },
@@ -1784,7 +1789,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
@@ -1810,7 +1815,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
@@ -1836,7 +1841,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
@@ -1849,8 +1854,8 @@
 				}
 			}
 		},
-		"SelectFieldAssetExtension": {
-			"title": "Select field asset extension",
+		"SelectFieldExtendAsset": {
+			"title": "Select field extend asset",
 			"required": ["id", "label", "field_type", "choices"],
 			"type": "object",
 			"properties": {
@@ -1862,7 +1867,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
@@ -3079,12 +3084,6 @@
 				}
 			]
 		},
-		"ConditionMeterAlias": {
-			"title": "Condition meter alias",
-			"type": "string",
-			"description": "Tags used to group  non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.",
-			"enum": ["companion_health", "attached_asset_meter"]
-		},
 		"ProgressType": {
 			"title": "Progress type",
 			"type": "string",
@@ -3095,7 +3094,8 @@
 				"scene_challenge_progress",
 				"journey_progress",
 				"delve_progress",
-				"bonds_progress"
+				"bonds_progress",
+				"failure_track"
 			]
 		},
 		"SuggestionsBase": {
@@ -3107,7 +3107,7 @@
 				"assets": {
 					"title": "Suggested assets",
 					"type": "array",
-					"items": { "$ref": "#/definitions/AssetID" },
+					"items": { "$ref": "#/definitions/AssetIDWildcard" },
 					"nullable": true
 				},
 				"moves": {
@@ -3133,7 +3133,7 @@
 				"assets": {
 					"title": "Suggested assets",
 					"type": "array",
-					"items": { "$ref": "#/definitions/AssetID" },
+					"items": { "$ref": "#/definitions/AssetIDWildcard" },
 					"nullable": true
 				},
 				"moves": {
@@ -3173,7 +3173,7 @@
 		"WorldTruthID": {
 			"title": "World truth ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]$",
+			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
 			"examples": ["ironsworn/world_truths/iron"]
 		},
 		"WorldTruth": {
@@ -3197,7 +3197,7 @@
 		"WorldTruthOptionID": {
 			"title": "World truth option ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]\\/[0-2]$",
+			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
 			"examples": ["ironsworn/world_truths/iron/0"]
 		},
 		"WorldTruthOption": {
@@ -3213,7 +3213,7 @@
 		"RegionEntryID": {
 			"title": "Region entry ID",
 			"type": "string",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/regions(\\/[a-z][a-z_]*[a-z]){1}$",
+			"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
 			"examples": ["ironsworn/regions/shattered_wastes"]
 		},
 		"RegionEntry": {
@@ -3247,7 +3247,7 @@
 			"title": "Rarity ID",
 			"type": "string",
 			"$comment": "{namespace}/rarities/{rarity}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/rarities(\\/[a-z][a-z_]*[a-z]){1}$"
+			"pattern": "^[a-z0-9_]{3,}\\/rarities(\\/[a-z_]+){1}$"
 		},
 		"Rarity": {
 			"title": "Rarity",
@@ -3279,7 +3279,7 @@
 			"title": "Delve site ID",
 			"type": "string",
 			"$comment": "{namespace}/delve_sites/{delveSite}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/delve_sites(\\/[a-z][a-z_]*[a-z]){1}$",
+			"pattern": "^[a-z0-9_]{3,}\\/delve_sites(\\/[a-z_]+){1}$",
 			"examples": ["ironsworn_delve/delve_sites/alvas_rest"]
 		},
 		"DelveSiteCardType": {
@@ -3480,7 +3480,7 @@
 			"title": "Delve site theme ID",
 			"type": "string",
 			"$comment": "{namespace}/site_themes/{siteTheme}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/site_themes(\\/[a-z][a-z_]*[a-z]){1}$"
+			"pattern": "^[a-z0-9_]{3,}\\/site_themes(\\/[a-z_]+){1}$"
 		},
 		"DelveSiteTheme": {
 			"title": "Delve site theme",
@@ -3633,7 +3633,7 @@
 			"title": "Delve site domain ID",
 			"type": "string",
 			"$comment": "{namespace}/site_domains/{siteDomain}",
-			"pattern": "^[a-z0-9][a-z0-9_]+\\/site_domains(\\/[a-z][a-z_]*[a-z]){1}$"
+			"pattern": "^[a-z0-9_]{3,}\\/site_domains(\\/[a-z_]+){1}$"
 		},
 		"DelveSiteDomain": {
 			"title": "Delve site domain",
@@ -3823,7 +3823,7 @@
 	"type": "object",
 	"additionalProperties": false,
 	"patternProperties": {
-		"^[a-z0-9][a-z0-9_]+$": {
+		"^[a-z0-9_]{3,}$": {
 			"title": "Sourcebook (Ironsworn classic)",
 			"type": "object",
 			"additionalProperties": false,
@@ -3842,7 +3842,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/OracleCollection" },
 								{ "$ref": "#/definitions/OracleCollectionExtension" }
@@ -3855,7 +3855,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/MoveCategory" },
 								{ "$ref": "#/definitions/MoveCategoryExtension" }
@@ -3868,7 +3868,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/AssetType" },
 								{ "$ref": "#/definitions/AssetTypeExtension" }
@@ -3881,7 +3881,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": {
+						"^[a-z_]+$": {
 							"oneOf": [
 								{ "$ref": "#/definitions/EncounterCollectionClassic" },
 								{ "$ref": "#/definitions/EncounterCollectionExtensionClassic" }
@@ -3894,7 +3894,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/WorldTruth" }
+						"^[a-z_]+$": { "$ref": "#/definitions/WorldTruth" }
 					}
 				},
 				"regions": {
@@ -3902,7 +3902,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/RegionEntry" }
+						"^[a-z_]+$": { "$ref": "#/definitions/RegionEntry" }
 					}
 				},
 				"site_themes": {
@@ -3910,7 +3910,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/DelveSiteTheme" }
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteTheme" }
 					}
 				},
 				"site_domains": {
@@ -3918,7 +3918,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/DelveSiteDomain" }
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteDomain" }
 					}
 				},
 				"delve_sites": {
@@ -3926,7 +3926,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/DelveSite" }
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSite" }
 					}
 				},
 				"rarities": {
@@ -3934,7 +3934,7 @@
 					"type": "object",
 					"additionalProperties": false,
 					"patternProperties": {
-						"^[a-z][a-z_]*[a-z]$": { "$ref": "#/definitions/Rarity" }
+						"^[a-z_]+$": { "$ref": "#/definitions/Rarity" }
 					}
 				}
 			}

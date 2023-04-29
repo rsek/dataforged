@@ -125,7 +125,7 @@ export const UnionChoicesFieldNumber: JTDSchemaType<
 
 /** field_type: 'select_asset_extension' */
 export const UnionChoicesFieldAssetExtension: JTDSchemaType<
-	Omit<Types.Inputs.SelectFieldAssetExtension, 'field_type'>,
+	Omit<Types.Inputs.SelectFieldExtendAsset, 'field_type'>,
 	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
 > = {
 	properties: {

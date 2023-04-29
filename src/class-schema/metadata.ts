@@ -36,55 +36,46 @@ export function IsID(validationOptions?: ValidationOptions) {
 
 export function IsOracleTableRowID(validationOptions?: ValidationOptions) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/,
+		/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/,
 		validationOptions
 	)
 }
 export function IsOracleTableID(validationOptions?: ValidationOptions) {
-	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}$/,
-		validationOptions
-	)
+	return Matches(/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}$/, validationOptions)
 }
 
 export function IsOracleCollectionID(validationOptions?: ValidationOptions) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/collections\/oracles(\/[a-z][a-z_]*[a-z]){1,3}$/,
+		/^[a-z0-9_]{3,}\/collections\/oracles(\/[a-z_]+){1,3}$/,
 		validationOptions
 	)
 }
 
 export function IsAssetID(validationOptions?: ValidationOptions) {
-	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}$/,
-		validationOptions
-	)
+	return Matches(/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}$/, validationOptions)
 }
 
 export function IsAssetAbilityID(validationOptions?: ValidationOptions) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/[0-2]$/,
+		/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]$/,
 		validationOptions
 	)
 }
 
 export function IsAssetTypeID(validationOptions?: ValidationOptions) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/collections\/assets(\/[a-z][a-z_]*[a-z]){1}$/,
+		/^[a-z0-9_]{3,}\/collections\/assets(\/[a-z_]+){1}$/,
 		validationOptions
 	)
 }
 
 export function IsMoveID(validationOptions?: ValidationOptions) {
-	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/,
-		validationOptions
-	)
+	return Matches(/^[a-z0-9_]{3,}\/moves(\/[a-z_]+){2}$/, validationOptions)
 }
 
 export function IsMoveCategoryID(validationOptions?: ValidationOptions) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/collections\/moves(\/[a-z][a-z_]*[a-z]){1}$/,
+		/^[a-z0-9_]{3,}\/collections\/moves(\/[a-z_]+){1}$/,
 		validationOptions
 	)
 }
@@ -93,16 +84,13 @@ export function IsEncounterCollectionClassicID(
 	validationOptions?: ValidationOptions
 ) {
 	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/collections\/encounters(\/[a-z][a-z_]*[a-z]){1}$/,
+		/^[a-z0-9_]{3,}\/collections\/encounters(\/[a-z_]+){1}$/,
 		validationOptions
 	)
 }
 
 export function IsEncounterStarforgedID(validationOptions?: ValidationOptions) {
-	return Matches(
-		/^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/,
-		validationOptions
-	)
+	return Matches(/^[a-z0-9_]{3,}\/encounters(\/[a-z_]+){2}$/, validationOptions)
 }
 
 export function IsIcon(

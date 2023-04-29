@@ -13,6 +13,6 @@ namespace Dataforged
 
         [JsonPropertyName("patterns")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<RegularExpression> Patterns { get; set; }
+        public IList<AssetIdwildcard> Patterns { get; set; }
     }
 }

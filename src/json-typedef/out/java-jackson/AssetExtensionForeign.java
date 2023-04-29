@@ -14,7 +14,7 @@ import java.util.Map;
 @JsonSerialize
 public class AssetExtensionForeign {
     @JsonProperty("extends")
-    private AssetId extends_;
+    private AssetIdwildcard extends_;
 
     @JsonProperty("id")
     private AssetAbilityControlFieldId id;
@@ -37,14 +37,14 @@ public class AssetExtensionForeign {
     /**
      * Getter for extends_.<p>
      */
-    public AssetId getExtends_() {
+    public AssetIdwildcard getExtends_() {
         return extends_;
     }
 
     /**
      * Setter for extends_.<p>
      */
-    public void setExtends_(AssetId extends_) {
+    public void setExtends_(AssetIdwildcard extends_) {
         this.extends_ = extends_;
     }
 

@@ -9,9 +9,7 @@ ironsworn:
     date: 2019-06-05
   moves:
     adventure:
-      title:
-        canonical: Adventure moves
-        short: Adventure
+      name: Adventure moves
       _source:
         page: 60
       description: |-
@@ -21,32 +19,28 @@ ironsworn:
           name: Face Danger
           trigger:
             text: When you attempt something risky or react to an imminent threat...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: With speed, agility, or precision
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/edge
+                  - using: edge
               - text: With charm, loyalty, or courage
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
               - text: With aggressive action, forceful defense, strength, or endurance
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: With deception, stealth, or trickery
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/shadow
+                  - using: shadow
               - text: With expertise, insight, or observation
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 60
           text: |-
@@ -85,32 +79,28 @@ ironsworn:
           name: Secure an Advantage
           trigger:
             text: When you assess a situation, make preparations, or attempt to gain leverage...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: With speed, agility, or precision
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/edge
+                  - using: edge
               - text: With charm, loyalty, or courage
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
               - text: With aggressive action, forceful defense, strength, or endurance
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: With deception, stealth, or trickery
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/shadow
+                  - using: shadow
               - text: With expertise, insight, or observation
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 61
           text: |-
@@ -145,11 +135,11 @@ ironsworn:
           name: Gather Information
           trigger:
             text: When you search an area, ask questions, conduct an investigation, or follow a track...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 62
           text: |-
@@ -171,17 +161,16 @@ ironsworn:
           name: Heal
           trigger:
             text: When you treat an injury or ailment...
-            options:
-              - roll_type: action_roll
-                choices:
-                  - player/stats/wits
+            roll_type: action_roll
+            roll_options:
+              - choices:
+                  - using: wits
                 method: any
               - text: Mend your own wounds
-                roll_type: action_roll
                 method: lowest
                 choices:
-                  - player/stats/iron
-                  - player/stats/wits
+                  - using: iron
+                  - using: wits
           _source:
             page: 63
           text: |-
@@ -202,12 +191,12 @@ ironsworn:
         resupply:
           name: Resupply
           trigger:
+            roll_type: action_roll
             text: When you hunt, forage, or scavenge...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 63
           text: |-
@@ -229,11 +218,11 @@ ironsworn:
           name: Make Camp
           trigger:
             text: When you rest and recover for several hours in the wild...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/condition_meters/supply
+                  - using: supply
           _source:
             page: 64
           text: |-
@@ -273,13 +262,12 @@ ironsworn:
           name: Undertake a Journey
           trigger:
             text: When you travel across hazardous or unfamiliar lands...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/wits
-              # - roll_type: action_roll
-              #   method: null
+                  - using: wits
+              # - method: null
               #   text: If you are setting off from a community with which you share a bond
               #   add: 1
           _source:
@@ -318,14 +306,13 @@ ironsworn:
           name: Reach Your Destination
           trigger:
             text: When your journey comes to an end...
-            options:
-              - roll_type: progress_roll
-                method: any
+            roll_type: progress_roll
+            roll_options:
+              - method: any
                 choices:
-                  - journey_progress
+                  - using: journey_progress
           _source:
             page: 68
-          progress_move: true
           text: |-
             When **your journey comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
 
@@ -338,9 +325,7 @@ ironsworn:
 
             On a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic).
     relationship:
-      title:
-        canonical: Relationship moves
-        short: Relationship
+      name: Relationship moves
       _source:
         page: 69
       description: |-
@@ -350,22 +335,20 @@ ironsworn:
           name: Compel
           trigger:
             text: When you attempt to persuade someone to do something...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: Charm, pacify, barter, or convince
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
               - text: Threaten or incite
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: Lie or swindle
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/shadow
+                  - using: shadow
           _source:
             page: 69
           text: |-
@@ -394,11 +377,11 @@ ironsworn:
           name: Sojourn
           trigger:
             text: When you spend time in a community seeking assistance...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 71
           text: |-
@@ -475,11 +458,11 @@ ironsworn:
           name: Draw the Circle
           trigger:
             text: When you challenge someone to a formal duel, or accept a challenge...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 73
           text: |-
@@ -528,11 +511,11 @@ ironsworn:
           name: Forge a Bond
           trigger:
             text: When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 74
           text: |-
@@ -563,11 +546,11 @@ ironsworn:
           name: Test Your Bond
           trigger:
             text: When your bond is tested through conflict, betrayal, or circumstance...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 75
           text: |-
@@ -596,7 +579,6 @@ ironsworn:
                 Clear the bond and [Pay the Price](ironsworn/moves/fate/pay_the_price).
         aid_your_ally:
           name: Aid Your Ally
-          progress_move: false
           _source:
             page: 76
           trigger:
@@ -609,12 +591,11 @@ ironsworn:
             page: 77
           trigger:
             text: When you retire from your life as Ironsworn...
-            options:
-              - roll_type: progress_roll
-                method: any
+            roll_type: progress_roll
+            roll_options:
+              - method: any
                 choices:
-                  - bonds_progress
-          progress_move: true
+                  - using: bonds_progress
           text: |-
             When **you retire from your life as Ironsworn**, envision two things: What you hope for, and what you fear. Then, roll the challenge dice and compare to your bonds. Momentum is ignored on this roll.
 
@@ -631,9 +612,7 @@ ironsworn:
             miss:
               text: Your fears are realized.
     combat:
-      title:
-        canonical: Combat moves
-        short: Combat
+      name: Combat moves
       _source:
         page: 78
       description: |-
@@ -643,22 +622,20 @@ ironsworn:
           name: Enter the Fray
           trigger:
             text: When you enter into combat...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: Facing off against your foe
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
               - text: Moving into position against an unaware foe, or striking without warning
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/shadow
+                  - using: shadow
               - text: Ambushed
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 78
           text: |-
@@ -699,17 +676,16 @@ ironsworn:
           name: Strike
           trigger:
             text: When you have initiative and attack...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: In close quarters
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: At range
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/edge
+                  - using: edge
           _source:
             page: 78
           text: |-
@@ -731,17 +707,16 @@ ironsworn:
           name: Clash
           trigger:
             text: 'When your foe has initiative and you...'
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: Fight with them in close quarters
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: Exchange a volley at range, or shoot at an advancing foe
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/edge
+                  - using: edge
           _source:
             page: 80
           text: |-
@@ -768,7 +743,6 @@ ironsworn:
               text: You are outmatched and must [Pay the Price](ironsworn/moves/fate/pay_the_price). Your foe has initiative.
         turn_the_tide:
           name: Turn the Tide
-          progress_move: false
           trigger:
             text: Once per fight, when you risk it all...
           _source:
@@ -778,14 +752,13 @@ ironsworn:
           name: End the Fight
           trigger:
             text: When you make a move to take decisive action, and score a strong hit...
-            options:
-              - roll_type: progress_roll
-                method: any
+            roll_type: progress_roll
+            roll_options:
+              - method: any
                 choices:
-                  - combat_progress
+                  - using: combat_progress
           _source:
             page: 82
-          progress_move: true
           text: |-
             When **you make a move to take decisive action**, and score a strong hit, you may resolve the outcome of this fight. If you do, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
 
@@ -822,32 +795,28 @@ ironsworn:
           name: Battle
           trigger:
             text: When you fight a battle, and it happens in a blur, and you...
-            options:
+            roll_type: action_roll
+            roll_options:
               - text: Fight at range, or using your speed and the terrain to your advantage
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/edge
+                  - using: edge
               - text: Fight depending on your courage, allies, or companions
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
               - text: Fight in close to overpower your opponents
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/iron
+                  - using: iron
               - text: Fight using trickery to befuddle your opponents
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/shadow
+                  - using: shadow
               - text: Fight using careful tactics to outsmart your opponents
-                roll_type: action_roll
                 method: any
                 choices:
-                  - player/stats/wits
+                  - using: wits
           _source:
             page: 84
           text: |-
@@ -872,9 +841,7 @@ ironsworn:
             miss:
               text: You are defeated and the objective is lost to you. [Pay the Price](ironsworn/moves/fate/pay_the_price).
     suffer:
-      title:
-        canonical: Suffer moves
-        short: Suffer
+      name: Suffer moves
       _source:
         page: 90
       description: |-
@@ -887,12 +854,12 @@ ironsworn:
               - ironsworn/oracles/moves/endure_harm
           trigger:
             text: When you face physical damage...
-            options:
-              - roll_type: action_roll
-                method: highest
+            roll_type: action_roll
+            roll_options:
+              - method: highest
                 choices:
-                  - player/stats/iron
-                  - player/condition_meters/health
+                  - using: iron
+                  - using: health
           _source:
             page: 91
           text: |-
@@ -927,11 +894,11 @@ ironsworn:
           name: Face Death
           trigger:
             text: When you are brought to the brink of death, and glimpse the world beyond...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 93
           text: |-
@@ -960,12 +927,13 @@ ironsworn:
           name: Companion Endure Harm
           trigger:
             text: When your companion faces physical damage...
-            options:
-              - roll_type: action_roll
-                method: highest
+            roll_type: action_roll
+            roll_options:
+              - method: highest
                 choices:
-                  - player/stats/heart
-                  - companion_health
+                  - using: heart
+                  - using: ref
+                    ref: '*/assets/companion/*/controls/health'
           _source:
             page: 94
           text: |-
@@ -995,12 +963,12 @@ ironsworn:
               - ironsworn/oracles/moves/endure_stress
           trigger:
             text: When you face mental shock or despair...
-            options:
-              - roll_type: action_roll
-                method: highest
+            roll_type: action_roll
+            roll_options:
+              - method: highest
                 choices:
-                  - player/stats/heart
-                  - player/condition_meters/spirit
+                  - using: heart
+                  - using: spirit
           _source:
             page: 95
           text: |-
@@ -1034,11 +1002,11 @@ ironsworn:
           name: Face Desolation
           trigger:
             text: When you are brought to the brink of desolation...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 96
           text: |-
@@ -1065,7 +1033,6 @@ ironsworn:
               text: You succumb to despair or horror and are lost.
         out_of_supply:
           name: Out of Supply
-          progress_move: false
           _source:
             page: 97
           trigger:
@@ -1073,7 +1040,6 @@ ironsworn:
           text: When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances.
         face_a_setback:
           name: Face a Setback
-          progress_move: false
           _source:
             page: 97
           trigger:
@@ -1084,9 +1050,7 @@ ironsworn:
               * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.
               * Envision an event or discovery ([Ask the Oracle](ironsworn/moves/fate/ask_the_oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional -momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
     quest:
-      title:
-        canonical: Quest moves
-        short: Quest
+      name: Quest moves
       _source:
         page: 98
       description: |-
@@ -1096,11 +1060,11 @@ ironsworn:
           name: Swear an Iron Vow
           trigger:
             text: When you swear upon iron to complete a quest...
-            options:
-              - roll_type: action_roll
-                method: any
+            roll_type: action_roll
+            roll_options:
+              - method: any
                 choices:
-                  - player/stats/heart
+                  - using: heart
           _source:
             page: 98
           text: |-
@@ -1127,7 +1091,6 @@ ironsworn:
                   * You give up: [Forsake Your Vow](ironsworn/moves/quest/forsake_your_vow).
         reach_a_milestone:
           name: Reach a Milestone
-          progress_move: false
           _source:
             page: 100
           trigger:
@@ -1146,12 +1109,11 @@ ironsworn:
             page: 101
           trigger:
             text: When you achieve what you believe to be the fulfillment of your vow...
-            options:
-              - roll_type: progress_roll
-                method: any
+            roll_type: progress_roll
+            roll_options:
+              - method: any
                 choices:
-                  - vow_progress
-          progress_move: true
+                  - using: vow_progress
           text: |-
             When **you achieve what you believe to be the fulfillment of your vow**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
 
@@ -1176,7 +1138,6 @@ ironsworn:
                   * You give up: [Forsake Your Vow](ironsworn/moves/quest/forsake_your_vow).
         forsake_your_vow:
           name: Forsake Your Vow
-          progress_move: false
           _source:
             page: 102
           trigger:
@@ -1184,16 +1145,13 @@ ironsworn:
           text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](ironsworn/moves/suffer/endure_stress). You suffer -spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
         advance:
           name: Advance
-          progress_move: false
           _source:
             page: 103
           trigger:
             text: When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion...
           text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
     fate:
-      title:
-        canonical: Fate moves
-        short: Fate
+      name: Fate moves
       _source:
         page: 98
       description: |-
@@ -1208,7 +1166,6 @@ ironsworn:
       contents:
         pay_the_price:
           name: Pay the Price
-          progress_move: false
           suggestions:
             oracles:
               - ironsworn/oracles/moves/pay_the_price
@@ -1226,7 +1183,6 @@ ironsworn:
             {{table:ironsworn/oracles/moves/pay_the_price}}
         ask_the_oracle:
           name: Ask the Oracle
-          progress_move: false
           suggestions:
             oracles:
               - ironsworn/oracles/moves/ask_the_oracle/small_chance

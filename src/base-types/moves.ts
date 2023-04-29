@@ -1,8 +1,9 @@
 import type * as Types from '@base-types'
 
 export type MoveID = string
+export type MoveIDWildcard = string
 
-export type MoveRollType = 'action_roll' | 'progress_roll'
+export type MoveRollType = 'action_roll' | 'progress_roll' | 'no_roll'
 
 export type MoveCategoryID = string
 export interface MoveCategory
@@ -47,7 +48,7 @@ export interface MoveOutcomes extends Record<MoveOutcomeType, MoveOutcome> {
 export interface Trigger<T extends MoveRollType = MoveRollType> {
 	text: Types.Localize.MarkdownPhrase
 	roll_type: T
-	roll_options?: Array<TriggerRollOption<T>>
+	roll_options?: T extends 'no_roll' ? never : Array<TriggerRollOption<T>>
 }
 
 export interface MoveReroll {
@@ -80,28 +81,30 @@ export type ProgressType =
 export type RollableStatID =
 	| Types.Players.PlayerStatID
 	| Types.Players.PlayerConditionMeterID
-	| Types.RulesetStarforged.ConditionMeterAlias
-	| Types.RulesetClassic.ConditionMeterAlias
+// | Types.RulesetStarforged.ConditionMeterAlias
+// | Types.RulesetClassic.ConditionMeterAlias
 
 export type TriggerRollOptionChoice<T extends MoveRollType = MoveRollType> =
 	T extends 'progress_roll'
-		? T extends 'action_roll'
-			? // if it's a union, allow both types:
-			  | TriggerRollOptionProgressChoice
-					| TriggerRollOptionActionChoiceStat
-					| TriggerRollOptionActionChoiceCustomValue
-			: // otherwise, restrict types as appropriate:
-			  TriggerRollOptionProgressChoice
-		:
-				| TriggerRollOptionActionChoiceStat
-				| TriggerRollOptionActionChoiceCustomValue
+		? TriggerRollOptionProgressChoice
+		: T extends 'action_roll'
+		? TriggerRollOptionActionChoice
+		: never
 
 export interface TriggerRollOptionChoiceBase {
-	using: ProgressType | Types.Players.PlayerStatLike | 'custom_value' | 'ref'
-	label?: Types.Localize.Label
-	value?: number
-	ref?: string | null
+	using:
+		| ProgressType
+		| Types.Players.PlayerStatLike
+		| 'custom_value'
+		| 'ref'
+		| 'attached_asset_ref'
 }
+
+export type TriggerRollOptionActionChoice =
+	| TriggerRollOptionActionChoiceStat
+	| TriggerRollOptionActionChoiceRef
+	| TriggerRollOptionActionChoiceAttachedAssetRef
+	| TriggerRollOptionActionChoiceCustomValue
 
 export type TriggerExtension<T extends MoveRollType> = Omit<
 	Types.Moves.Trigger<T>,
@@ -110,40 +113,40 @@ export type TriggerExtension<T extends MoveRollType> = Omit<
 	roll_options: Exclude<Types.Moves.Trigger<T>['roll_options'], undefined>
 }
 
+export interface TriggerRollOptionActionChoiceAttachedAssetRef
+	extends TriggerRollOptionChoiceBase {
+	using: 'attached_asset_ref'
+	ref: string // TODO: asset control ID wildcard
+}
+
 export interface TriggerRollOptionActionChoiceRef
-	extends Omit<TriggerRollOptionChoiceBase, 'value' | 'label'> {
+	extends TriggerRollOptionChoiceBase {
 	using: 'ref'
-	// label: Types.Localize.Label
-	ref: string
+	ref: string // TODO: asset control ID wildcard
 }
 
 export interface TriggerRollOptionActionChoiceStat
-	extends Omit<TriggerRollOptionChoiceBase, 'label' | 'ref' | 'value'> {
+	extends TriggerRollOptionChoiceBase {
 	using: Types.Players.PlayerStatLike
 }
 
-export interface TriggerRollOptionProgressChoice
-	extends Omit<TriggerRollOptionChoiceBase, 'label' | 'value' | 'ref'> {
-	using: ProgressType
-}
-
 export interface TriggerRollOptionActionChoiceCustomValue
-	extends Omit<TriggerRollOptionChoiceBase, 'ref'> {
+	extends TriggerRollOptionChoiceBase {
 	using: 'custom_value'
 	label: Types.Localize.Label
 	value: number
 }
 
-export type TriggerRollOptionActionChoice =
-	| TriggerRollOptionActionChoiceStat
-	| TriggerRollOptionActionChoiceCustomValue
-	| TriggerRollOptionActionChoiceRef
+export interface TriggerRollOptionProgressChoice
+	extends TriggerRollOptionChoiceBase {
+	using: ProgressType
+}
 
 export interface TriggerRollOption<T extends MoveRollType = MoveRollType> {
 	text?: Types.Localize.MarkdownPhrase
 	method: MoveRollMethod | null
 	by?: TriggerBy
-	choices?: this['method'] extends undefined
+	choices?: this['method'] extends undefined | null
 		? undefined
 		: Array<TriggerRollOptionChoice<T>>
 }

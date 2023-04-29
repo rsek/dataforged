@@ -38,6 +38,6 @@ namespace Dataforged
 
         [JsonPropertyName("options")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IDictionary<string, AssetOptionField> Options { get; set; }
+        public IDictionary<string, AssetAbilityOptionField> Options { get; set; }
     }
 }

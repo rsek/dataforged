@@ -7,7 +7,7 @@ import { type JSONSchema7Object } from 'json-schema'
 export const DelveSiteID: Schema<Types.DelveSites.DelveSiteID> = {
 	type: 'string',
 	$comment: '{namespace}/delve_sites/{delveSite}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/delve_sites(\/[a-z][a-z_]*[a-z]){1}$/.source,
+	pattern: /^[a-z0-9_]{3,}\/delve_sites(\/[a-z_]+){1}$/.source,
 	examples: ['ironsworn_delve/delve_sites/alvas_rest']
 }
 
@@ -175,7 +175,7 @@ export const DelveSiteCard = {
 export const DelveSiteThemeID: Schema<Types.DelveSites.DelveSiteThemeID> = {
 	type: 'string',
 	$comment: '{namespace}/site_themes/{siteTheme}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/site_themes(\/[a-z][a-z_]*[a-z]){1}$/.source
+	pattern: /^[a-z0-9_]{3,}\/site_themes(\/[a-z_]+){1}$/.source
 }
 
 export const DelveSiteTheme: Schema<Types.DelveSites.DelveSiteTheme> = {
@@ -328,7 +328,7 @@ export const DelveSiteTheme: Schema<Types.DelveSites.DelveSiteTheme> = {
 export const DelveSiteDomainID: Schema<Types.DelveSites.DelveSiteDomainID> = {
 	type: 'string',
 	$comment: '{namespace}/site_domains/{siteDomain}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/site_domains(\/[a-z][a-z_]*[a-z]){1}$/.source
+	pattern: /^[a-z0-9_]{3,}\/site_domains(\/[a-z_]+){1}$/.source
 }
 export const DelveSiteDomain: Schema<Types.DelveSites.DelveSiteDomain> = {
 	type: 'object',

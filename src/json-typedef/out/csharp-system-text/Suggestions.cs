@@ -9,7 +9,7 @@ namespace Dataforged
     {
         [JsonPropertyName("assets")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<AssetId> Assets { get; set; }
+        public IList<AssetIdwildcard> Assets { get; set; }
 
         [JsonPropertyName("moves")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

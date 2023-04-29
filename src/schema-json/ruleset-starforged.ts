@@ -4,20 +4,20 @@ import _ from 'lodash'
 import { refSchema } from './common'
 import { SuggestionsBase } from './ruleset-classic'
 
-export const ConditionMeterAlias: Schema<Types.RulesetStarforged.ConditionMeterAlias> =
-	{
-		type: 'string',
-		description:
-			'Tags used to group non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.',
-		enum: [
-			'companion_health',
-			'attached_asset_meter',
-			'vehicle_integrity',
-			'command_vehicle_integrity',
-			'support_vehicle_integrity',
-			'incidental_vehicle_integrity'
-		]
-	}
+// export const ConditionMeterAlias: Schema<Types.RulesetStarforged.ConditionMeterAlias> =
+// 	{
+// 		type: 'string',
+// 		description:
+// 			'Tags used to group non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.',
+// 		enum: [
+// 			'companion_health',
+// 			'attached_asset_meter',
+// 			'vehicle_integrity',
+// 			'command_vehicle_integrity',
+// 			'support_vehicle_integrity',
+// 			'incidental_vehicle_integrity'
+// 		]
+// 	}
 
 export const ProgressType: Schema<Types.RulesetStarforged.ProgressType> = {
 	type: 'string',
@@ -53,7 +53,7 @@ export const Suggestions: Schema<Types.RulesetStarforged.Suggestions> = _.merge(
 
 export const SettingTruthID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/setting_truths\/[a-z][a-z_]*[a-z]$/.source,
+	pattern: /^[a-z0-9_]{3,}\/[a-z_]+\/setting_truths\/[a-z_]+$/.source,
 	examples: ['starforged/setting_truths/exodus']
 }
 export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
@@ -76,8 +76,7 @@ export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
 
 export const SettingTruthOptionID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/setting_truths\/[a-z][a-z_]*[a-z]\/[0-2]$/
-		.source,
+	pattern: /^[a-z0-9_]{3,}\/[a-z_]+\/setting_truths\/[a-z_]+\/[0-2]$/.source,
 	examples: ['starforged/setting_truths/exodus/0']
 }
 export const SettingTruthOption: Schema<Types.Truths.SettingTruthOption> = {

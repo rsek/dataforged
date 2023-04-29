@@ -41,7 +41,7 @@ public class AssetAbility {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("options")
-    private Map<String, AssetOptionField> options;
+    private Map<String, AssetAbilityOptionField> options;
 
     public AssetAbility() {
     }
@@ -161,14 +161,14 @@ public class AssetAbility {
     /**
      * Getter for options.<p>
      */
-    public Map<String, AssetOptionField> getOptions() {
+    public Map<String, AssetAbilityOptionField> getOptions() {
         return options;
     }
 
     /**
      * Setter for options.<p>
      */
-    public void setOptions(Map<String, AssetOptionField> options) {
+    public void setOptions(Map<String, AssetAbilityOptionField> options) {
         this.options = options;
     }
 }

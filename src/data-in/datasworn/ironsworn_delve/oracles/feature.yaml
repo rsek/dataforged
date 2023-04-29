@@ -9,20 +9,18 @@ ironsworn_delve:
       - Shawn Tomkin
   oracles:
     feature:
-      title:
-        canonical: Feature
+      name: Feature
       _source:
         page: 204
       summary: Use the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) oracles to answer questions or provide inspiration for a location or event within a site.
       description: |-
         Use the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) oracles to generate the details of a location or event within a site, or to answer questions about the site’s nature or history.
 
-        The basic function of these oracles is similar to the [Action](ironsworn/oracles/action) and [Theme](ironsworn/oracles/theme) oracles in Ironsworn Core. They are abstract word prompts you can interpret as appropriate to the current situation and setting. For example, you are traveling through a [Wild](ironsworn/themes/wild) [Tanglewood](ironsworn_delve/site_domains/tanglewood) and roll “Something unusual or unexpected” on the domain feature table. You then [Ask the Oracle](ironsworn/moves/fate/ask_the_oracle) what you discover using the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) tables. The oracle responds, “Depleted Environment.” Interpreting this answer, you envision coming upon an expanse of cleared forest. All that remains of this once thick woodland is rotted stumps. What happened here? Perhaps the answer lies ahead...
+        The basic function of these oracles is similar to the [Action](ironsworn/oracles/action) and [Theme](ironsworn/oracles/theme) oracles in Ironsworn Core. They are abstract word prompts you can interpret as appropriate to the current situation and setting. For example, you are traveling through a [Wild](ironsworn_delve/site_themes/wild) [Tanglewood](ironsworn_delve/site_domains/tanglewood) and roll “Something unusual or unexpected” on the domain feature table. You then [Ask the Oracle](ironsworn/moves/fate/ask_the_oracle) what you discover using the [Aspect](ironsworn_delve/oracles/feature/aspect) and [Focus](ironsworn_delve/oracles/feature/focus) tables. The oracle responds, “Depleted Environment.” Interpreting this answer, you envision coming upon an expanse of cleared forest. All that remains of this once thick woodland is rotted stumps. What happened here? Perhaps the answer lies ahead...
       contents:
         aspect:
-          title:
-            canonical: 'Feature: Aspect'
-            short: Aspect
+          name: Aspect
+          canonical_name: 'Feature: Aspect'
           suggestions:
             oracles:
               - ironsworn_delve/oracles/feature/focus
@@ -180,9 +178,8 @@ ironsworn_delve:
               high: 100
               result: Mystical
         focus:
-          title:
-            canonical: 'Feature: Focus'
-            short: Focus
+          name: Focus
+          canonical_name: 'Feature: Focus'
           suggestions:
             oracles:
               - ironsworn_delve/oracles/feature/aspect

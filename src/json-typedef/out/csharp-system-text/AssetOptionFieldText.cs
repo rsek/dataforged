@@ -10,7 +10,7 @@ namespace Dataforged
         public string FieldType { get => "text"; }
 
         [JsonPropertyName("id")]
-        public AssetAbilityOptionFieldId Id { get; set; }
+        public AssetOptionFieldId Id { get; set; }
 
         [JsonPropertyName("label")]
         public Label Label { get; set; }

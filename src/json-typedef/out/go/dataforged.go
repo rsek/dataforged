@@ -54,7 +54,7 @@ type AssetAbility struct {
 
 	Name *Label `json:"name,omitempty"`
 
-	Options map[string]AssetOptionField `json:"options,omitempty"`
+	Options map[string]AssetAbilityOptionField `json:"options,omitempty"`
 }
 
 type AssetAbilityControlField struct {
@@ -107,7 +107,7 @@ func (v *AssetAbilityControlField) UnmarshalJSON(b []byte) error {
 }
 
 type AssetAbilityControlFieldCheckbox struct {
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -115,7 +115,7 @@ type AssetAbilityControlFieldCheckbox struct {
 }
 
 type AssetAbilityControlFieldClock struct {
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -141,6 +141,123 @@ type AssetAbilityControlFieldCounter struct {
 type AssetAbilityControlFieldID = string
 
 type AssetAbilityID = string
+
+type AssetAbilityOptionField struct {
+	FieldType string
+
+	SelectAssetExtension AssetAbilityOptionFieldSelectAssetExtension
+
+	SelectNumber AssetAbilityOptionFieldSelectNumber
+
+	SelectStat AssetAbilityOptionFieldSelectStat
+
+	Text AssetAbilityOptionFieldText
+}
+
+func (v AssetAbilityOptionField) MarshalJSON() ([]byte, error) {
+	switch v.FieldType {
+	case "select_asset_extension":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetAbilityOptionFieldSelectAssetExtension }{ v.FieldType, v.SelectAssetExtension })
+	case "select_number":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetAbilityOptionFieldSelectNumber }{ v.FieldType, v.SelectNumber })
+	case "select_stat":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetAbilityOptionFieldSelectStat }{ v.FieldType, v.SelectStat })
+	case "text":
+		return json.Marshal(struct { T string `json:"field_type"`; AssetAbilityOptionFieldText }{ v.FieldType, v.Text })
+	}
+
+	return nil, fmt.Errorf("bad FieldType value: %s", v.FieldType)
+}
+
+func (v *AssetAbilityOptionField) UnmarshalJSON(b []byte) error {
+	var t struct { T string `json:"field_type"` }
+	if err := json.Unmarshal(b, &t); err != nil {
+		return err
+	}
+
+	var err error
+	switch t.T {
+	case "select_asset_extension":
+		err = json.Unmarshal(b, &v.SelectAssetExtension)
+	case "select_number":
+		err = json.Unmarshal(b, &v.SelectNumber)
+	case "select_stat":
+		err = json.Unmarshal(b, &v.SelectStat)
+	case "text":
+		err = json.Unmarshal(b, &v.Text)
+	default:
+		err = fmt.Errorf("bad FieldType value: %s", t.T)
+	}
+
+	if err != nil {
+		return err
+	}
+
+	v.FieldType = t.T
+	return nil
+}
+
+type AssetAbilityOptionFieldSelectAssetExtensionChoice struct {
+	Label Label `json:"label"`
+
+	Value AssetExtension `json:"value"`
+
+	Selected *bool `json:"selected,omitempty"`
+}
+
+type AssetAbilityOptionFieldSelectAssetExtension struct {
+	Choices map[string]AssetAbilityOptionFieldSelectAssetExtensionChoice `json:"choices"`
+
+	ID AssetControlFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *AssetExtension `json:"value,omitempty"`
+}
+
+type AssetAbilityOptionFieldSelectNumberChoice struct {
+	Label Label `json:"label"`
+
+	Value int8 `json:"value"`
+
+	Selected *bool `json:"selected,omitempty"`
+}
+
+type AssetAbilityOptionFieldSelectNumber struct {
+	Choices map[string]AssetAbilityOptionFieldSelectNumberChoice `json:"choices"`
+
+	ID AssetOptionFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *int8 `json:"value,omitempty"`
+}
+
+type AssetAbilityOptionFieldSelectStatChoice struct {
+	Label Label `json:"label"`
+
+	Value PlayerStat `json:"value"`
+
+	Selected *bool `json:"selected,omitempty"`
+}
+
+type AssetAbilityOptionFieldSelectStat struct {
+	Choices map[string]AssetAbilityOptionFieldSelectStatChoice `json:"choices"`
+
+	ID AssetOptionFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *PlayerStat `json:"value,omitempty"`
+}
+
+type AssetAbilityOptionFieldText struct {
+	ID AssetOptionFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *string `json:"value,omitempty"`
+}
 
 type AssetAbilityOptionFieldID = string
 
@@ -211,7 +328,7 @@ func (v *AssetControlField) UnmarshalJSON(b []byte) error {
 }
 
 type AssetControlFieldCheckbox struct {
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -219,7 +336,7 @@ type AssetControlFieldCheckbox struct {
 }
 
 type AssetControlFieldConditionMeter struct {
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -241,12 +358,16 @@ type AssetControlFieldSelectAssetExtensionChoice struct {
 type AssetControlFieldSelectAssetExtension struct {
 	Choices map[string]AssetControlFieldSelectAssetExtensionChoice `json:"choices"`
 
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
 	Value *AssetExtension `json:"value,omitempty"`
 }
+
+type AssetControlFieldID = string
+
+type AssetControlFieldIdwildcard = string
 
 type AssetExtensionAttachments struct {
 	Max *uint8 `json:"max,omitempty"`
@@ -281,7 +402,7 @@ type AssetExtensionChoice struct {
 type AssetExtensionForeignAttachments struct {
 	Max *uint8 `json:"max,omitempty"`
 
-	Patterns []RegularExpression `json:"patterns,omitempty"`
+	Patterns []AssetIdwildcard `json:"patterns,omitempty"`
 }
 
 type AssetExtensionForeignControl struct {
@@ -293,7 +414,7 @@ type AssetExtensionForeignControl struct {
 // Describes changes applied to an asset, usually by another asset. Unchanged
 // properties are omitted.
 type AssetExtensionForeign struct {
-	Extends AssetID `json:"extends"`
+	Extends AssetIdwildcard `json:"extends"`
 
 	ID AssetAbilityControlFieldID `json:"id"`
 
@@ -307,6 +428,8 @@ type AssetExtensionForeign struct {
 }
 
 type AssetID = string
+
+type AssetIdwildcard = string
 
 // Asset options are fields that are usually only set once, typically when the
 // player purchases the asset. The most common examples are the "Name" fields
@@ -378,7 +501,7 @@ type AssetOptionFieldSelectAssetExtensionChoice struct {
 type AssetOptionFieldSelectAssetExtension struct {
 	Choices map[string]AssetOptionFieldSelectAssetExtensionChoice `json:"choices"`
 
-	ID AssetAbilityControlFieldID `json:"id"`
+	ID AssetControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -396,7 +519,7 @@ type AssetOptionFieldSelectNumberChoice struct {
 type AssetOptionFieldSelectNumber struct {
 	Choices map[string]AssetOptionFieldSelectNumberChoice `json:"choices"`
 
-	ID AssetAbilityOptionFieldID `json:"id"`
+	ID AssetOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -414,7 +537,7 @@ type AssetOptionFieldSelectStatChoice struct {
 type AssetOptionFieldSelectStat struct {
 	Choices map[string]AssetOptionFieldSelectStatChoice `json:"choices"`
 
-	ID AssetAbilityOptionFieldID `json:"id"`
+	ID AssetOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -422,12 +545,14 @@ type AssetOptionFieldSelectStat struct {
 }
 
 type AssetOptionFieldText struct {
-	ID AssetAbilityOptionFieldID `json:"id"`
+	ID AssetOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
 	Value *string `json:"value,omitempty"`
 }
+
+type AssetOptionFieldID = string
 
 // Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
 type ChallengeRank = uint8
@@ -1137,7 +1262,7 @@ type Source struct {
 type StatID = string
 
 type Suggestions struct {
-	Assets []AssetID `json:"assets,omitempty"`
+	Assets []AssetIdwildcard `json:"assets,omitempty"`
 
 	Moves []MoveID `json:"moves,omitempty"`
 

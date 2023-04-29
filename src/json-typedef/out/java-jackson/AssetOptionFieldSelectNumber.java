@@ -13,7 +13,7 @@ public class AssetOptionFieldSelectNumber extends AssetOptionField {
     private Map<String, AssetOptionFieldSelectNumberChoice> choices;
 
     @JsonProperty("id")
-    private AssetAbilityOptionFieldId id;
+    private AssetOptionFieldId id;
 
     @JsonProperty("label")
     private Label label;
@@ -42,14 +42,14 @@ public class AssetOptionFieldSelectNumber extends AssetOptionField {
     /**
      * Getter for id.<p>
      */
-    public AssetAbilityOptionFieldId getId() {
+    public AssetOptionFieldId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(AssetAbilityOptionFieldId id) {
+    public void setId(AssetOptionFieldId id) {
         this.id = id;
     }
 

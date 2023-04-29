@@ -12,7 +12,7 @@ namespace Dataforged
     public class AssetExtensionForeign
     {
         [JsonPropertyName("extends")]
-        public AssetId Extends { get; set; }
+        public AssetIdwildcard Extends { get; set; }
 
         [JsonPropertyName("id")]
         public AssetAbilityControlFieldId Id { get; set; }
