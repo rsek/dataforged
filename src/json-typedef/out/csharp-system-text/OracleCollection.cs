@@ -7,9 +7,6 @@ namespace Dataforged
 {
     public class OracleCollection
     {
-        [JsonPropertyName("contents")]
-        public IDictionary<string, OracleTable> Contents { get; set; }
-
         [JsonPropertyName("id")]
         public OracleCollectionId Id { get; set; }
 
@@ -34,9 +31,17 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Color? Color { get; set; }
 
+        [JsonPropertyName("contents")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IDictionary<string, OracleTable> Contents { get; set; }
+
         [JsonPropertyName("description")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public MarkdownString? Description { get; set; }
+
+        [JsonPropertyName("extends")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public OracleCollectionId? Extends { get; set; }
 
         [JsonPropertyName("rendering")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
@@ -49,9 +54,5 @@ namespace Dataforged
         [JsonPropertyName("suggestions")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public Suggestions? Suggestions { get; set; }
-
-        [JsonPropertyName("template")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public OracleRollTemplate? Template { get; set; }
     }
 }

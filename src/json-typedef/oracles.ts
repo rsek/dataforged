@@ -116,14 +116,14 @@ export const OracleCollection: JTDSchemaType<
 		id: { ref: 'OracleCollectionID' },
 		name: { ref: 'Label' },
 		source: { ref: 'Source' },
-		summary: { ref: 'MarkdownString' },
-		contents: { values: { ref: 'OracleTable' } }
+		summary: { ref: 'MarkdownString' }
 	},
 	optionalProperties: {
 		canonical_name: { ref: 'Label' },
 		extends: { ref: 'OracleCollectionID' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' },
+		contents: { values: { ref: 'OracleTable' } },
 		collections: { values: { ref: 'OracleCollection' } },
 		rendering: { ref: 'OracleCollectionRendering' },
 		color: { ref: 'Color' },

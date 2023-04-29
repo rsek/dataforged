@@ -128,11 +128,7 @@ export type AssetAbilityOptionFieldId = string;
  * Vehicle assets. See p. 55 of Starforged for more info.
  */
 export interface AssetAttachment {
-  /**
-   * Regular expressions matching the IDs of assets that can be attached to
-   * this asset.
-   */
-  patterns: RegularExpression[];
+  assets: AssetIdwildcard[];
 
   /**
    * The maximum number of attached assets. Omitted if there's no upper limit to
@@ -184,8 +180,8 @@ export type AssetControlFieldId = string;
 export type AssetControlFieldIdwildcard = string;
 
 export interface AssetExtensionAttachments {
+  assets?: RegularExpression[];
   max?: number;
-  patterns?: RegularExpression[];
 }
 
 export interface AssetExtensionControl {
@@ -214,8 +210,8 @@ export interface AssetExtensionChoice {
 }
 
 export interface AssetExtensionForeignAttachments {
+  assets?: AssetIdwildcard[];
   max?: number;
-  patterns?: AssetIdwildcard[];
 }
 
 export interface AssetExtensionForeignControl {
@@ -462,6 +458,7 @@ export interface Move {
   source: Source;
   text: MarkdownString;
   trigger: Trigger;
+  oracles?: OracleTableId[];
   suggestions?: Suggestions;
 }
 
@@ -486,6 +483,9 @@ export interface MoveExtension {
   text?: MarkdownString;
 }
 
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
 export type MoveId = string;
 
 export interface MoveOutcome {
@@ -640,7 +640,6 @@ export enum MoveRollMethod {
 }
 
 export interface OracleCollection {
-  contents: { [key: string]: OracleTable };
   id: OracleCollectionId;
   name: Label;
   source: Source;
@@ -648,11 +647,12 @@ export interface OracleCollection {
   canonical_name?: Label;
   collections?: { [key: string]: OracleCollection };
   color?: Color;
+  contents?: { [key: string]: OracleTable };
   description?: MarkdownString;
+  extends?: OracleCollectionId;
   rendering?: OracleCollectionRendering;
   sample_names?: Label[];
   suggestions?: Suggestions;
-  template?: OracleRollTemplate;
 }
 
 export interface OracleCollectionColumn {
@@ -825,6 +825,11 @@ export enum ProgressType {
    * (Starforged ruleset only)
    */
   ExpeditionProgress = "expedition_progress",
+
+  /**
+   * A player's failure track (see p. 59 of Ironsworn: Delve)
+   */
+  FailureTrack = "failure_track",
 
   /**
    * A journey progress track, started with Undertake a Journey (Ironsworn
@@ -1003,7 +1008,12 @@ export interface TriggerRollOptionAction {
   text?: MarkdownString;
 }
 
-export type TriggerRollOptionActionChoice = TriggerRollOptionActionChoiceCustomValue | TriggerRollOptionActionChoiceEdge | TriggerRollOptionActionChoiceHealth | TriggerRollOptionActionChoiceHeart | TriggerRollOptionActionChoiceIron | TriggerRollOptionActionChoiceRef | TriggerRollOptionActionChoiceShadow | TriggerRollOptionActionChoiceSpirit | TriggerRollOptionActionChoiceSupply | TriggerRollOptionActionChoiceWits;
+export type TriggerRollOptionActionChoice = TriggerRollOptionActionChoiceAttachedAssetRef | TriggerRollOptionActionChoiceCustomValue | TriggerRollOptionActionChoiceEdge | TriggerRollOptionActionChoiceHealth | TriggerRollOptionActionChoiceHeart | TriggerRollOptionActionChoiceIron | TriggerRollOptionActionChoiceRef | TriggerRollOptionActionChoiceShadow | TriggerRollOptionActionChoiceSpirit | TriggerRollOptionActionChoiceSupply | TriggerRollOptionActionChoiceWits;
+
+export interface TriggerRollOptionActionChoiceAttachedAssetRef {
+  using: "attached_asset_ref";
+  ref: string;
+}
 
 export interface TriggerRollOptionActionChoiceCustomValue {
   using: "custom_value";

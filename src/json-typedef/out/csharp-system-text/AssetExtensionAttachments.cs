@@ -7,12 +7,12 @@ namespace Dataforged
 {
     public class AssetExtensionAttachments
     {
+        [JsonPropertyName("assets")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public IList<RegularExpression> Assets { get; set; }
+
         [JsonPropertyName("max")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public byte? Max { get; set; }
-
-        [JsonPropertyName("patterns")]
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<RegularExpression> Patterns { get; set; }
     }
 }

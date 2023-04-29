@@ -20,6 +20,8 @@ namespace Dataforged
 
             switch (tagValue)
             {
+                case "attached_asset_ref":
+                    return JsonSerializer.Deserialize<TriggerRollOptionActionChoiceAttachedAssetRef>(ref readerCopy, options);
                 case "custom_value":
                     return JsonSerializer.Deserialize<TriggerRollOptionActionChoiceCustomValue>(ref readerCopy, options);
                 case "edge":

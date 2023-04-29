@@ -14,8 +14,8 @@ import java.util.List;
  */
 @JsonSerialize
 public class AssetAttachment {
-    @JsonProperty("patterns")
-    private List<RegularExpression> patterns;
+    @JsonProperty("assets")
+    private List<AssetIdwildcard> assets;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("max")
@@ -25,21 +25,17 @@ public class AssetAttachment {
     }
 
     /**
-     * Getter for patterns.<p>
-     * Regular expressions matching the IDs of assets that can be attached to
-     * this asset.
+     * Getter for assets.<p>
      */
-    public List<RegularExpression> getPatterns() {
-        return patterns;
+    public List<AssetIdwildcard> getAssets() {
+        return assets;
     }
 
     /**
-     * Setter for patterns.<p>
-     * Regular expressions matching the IDs of assets that can be attached to
-     * this asset.
+     * Setter for assets.<p>
      */
-    public void setPatterns(List<RegularExpression> patterns) {
-        this.patterns = patterns;
+    public void setAssets(List<AssetIdwildcard> assets) {
+        this.assets = assets;
     }
 
     /**

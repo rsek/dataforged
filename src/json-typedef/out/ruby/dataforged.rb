@@ -428,9 +428,7 @@ module Dataforged
   # example for this are Starforged's Module assets, which can be equipped by
   # Command Vehicle assets. See p. 55 of Starforged for more info.
   class AssetAttachment
-    # Regular expressions matching the IDs of assets that can be attached to
-    # this asset.
-    attr_accessor :patterns
+    attr_accessor :assets
 
     # The maximum number of attached assets. Omitted if there's no upper limit
     # to the number of attached assets.
@@ -438,14 +436,14 @@ module Dataforged
 
     def self.from_json_data(data)
       out = AssetAttachment.new
-      out.patterns = Dataforged::from_json_data(Array[RegularExpression], data["patterns"])
+      out.assets = Dataforged::from_json_data(Array[AssetIdwildcard], data["assets"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out
     end
 
     def to_json_data
       data = {}
-      data["patterns"] = Dataforged::to_json_data(patterns)
+      data["assets"] = Dataforged::to_json_data(assets)
       data["max"] = Dataforged::to_json_data(max) unless max.nil?
       data
     end
@@ -596,20 +594,20 @@ module Dataforged
   end
 
   class AssetExtensionAttachments
+    attr_accessor :assets
     attr_accessor :max
-    attr_accessor :patterns
 
     def self.from_json_data(data)
       out = AssetExtensionAttachments.new
+      out.assets = Dataforged::from_json_data(Array[RegularExpression], data["assets"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
-      out.patterns = Dataforged::from_json_data(Array[RegularExpression], data["patterns"])
       out
     end
 
     def to_json_data
       data = {}
+      data["assets"] = Dataforged::to_json_data(assets) unless assets.nil?
       data["max"] = Dataforged::to_json_data(max) unless max.nil?
-      data["patterns"] = Dataforged::to_json_data(patterns) unless patterns.nil?
       data
     end
   end
@@ -680,20 +678,20 @@ module Dataforged
   end
 
   class AssetExtensionForeignAttachments
+    attr_accessor :assets
     attr_accessor :max
-    attr_accessor :patterns
 
     def self.from_json_data(data)
       out = AssetExtensionForeignAttachments.new
+      out.assets = Dataforged::from_json_data(Array[AssetIdwildcard], data["assets"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
-      out.patterns = Dataforged::from_json_data(Array[AssetIdwildcard], data["patterns"])
       out
     end
 
     def to_json_data
       data = {}
+      data["assets"] = Dataforged::to_json_data(assets) unless assets.nil?
       data["max"] = Dataforged::to_json_data(max) unless max.nil?
-      data["patterns"] = Dataforged::to_json_data(patterns) unless patterns.nil?
       data
     end
   end
@@ -1431,6 +1429,7 @@ module Dataforged
     attr_accessor :source
     attr_accessor :text
     attr_accessor :trigger
+    attr_accessor :oracles
     attr_accessor :suggestions
 
     def self.from_json_data(data)
@@ -1441,6 +1440,7 @@ module Dataforged
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.text = Dataforged::from_json_data(MarkdownString, data["text"])
       out.trigger = Dataforged::from_json_data(Trigger, data["trigger"])
+      out.oracles = Dataforged::from_json_data(Array[OracleTableID], data["oracles"])
       out.suggestions = Dataforged::from_json_data(Suggestions, data["suggestions"])
       out
     end
@@ -1453,6 +1453,7 @@ module Dataforged
       data["source"] = Dataforged::to_json_data(source)
       data["text"] = Dataforged::to_json_data(text)
       data["trigger"] = Dataforged::to_json_data(trigger)
+      data["oracles"] = Dataforged::to_json_data(oracles) unless oracles.nil?
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
       data
     end
@@ -1537,6 +1538,7 @@ module Dataforged
     end
   end
 
+  # A move ID, for a standard move or a unique asset move
   class MoveID
     attr_accessor :value
 
@@ -1873,7 +1875,6 @@ module Dataforged
   end
 
   class OracleCollection
-    attr_accessor :contents
     attr_accessor :id
     attr_accessor :name
     attr_accessor :source
@@ -1881,15 +1882,15 @@ module Dataforged
     attr_accessor :canonical_name
     attr_accessor :collections
     attr_accessor :color
+    attr_accessor :contents
     attr_accessor :description
+    attr_accessor :extends
     attr_accessor :rendering
     attr_accessor :sample_names
     attr_accessor :suggestions
-    attr_accessor :template
 
     def self.from_json_data(data)
       out = OracleCollection.new
-      out.contents = Dataforged::from_json_data(Hash[String, OracleTable], data["contents"])
       out.id = Dataforged::from_json_data(OracleCollectionID, data["id"])
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
@@ -1897,17 +1898,17 @@ module Dataforged
       out.canonical_name = Dataforged::from_json_data(Label, data["canonical_name"])
       out.collections = Dataforged::from_json_data(Hash[String, OracleCollection], data["collections"])
       out.color = Dataforged::from_json_data(Color, data["color"])
+      out.contents = Dataforged::from_json_data(Hash[String, OracleTable], data["contents"])
       out.description = Dataforged::from_json_data(MarkdownString, data["description"])
+      out.extends = Dataforged::from_json_data(OracleCollectionID, data["extends"])
       out.rendering = Dataforged::from_json_data(OracleCollectionRendering, data["rendering"])
       out.sample_names = Dataforged::from_json_data(Array[Label], data["sample_names"])
       out.suggestions = Dataforged::from_json_data(Suggestions, data["suggestions"])
-      out.template = Dataforged::from_json_data(OracleRollTemplate, data["template"])
       out
     end
 
     def to_json_data
       data = {}
-      data["contents"] = Dataforged::to_json_data(contents)
       data["id"] = Dataforged::to_json_data(id)
       data["name"] = Dataforged::to_json_data(name)
       data["source"] = Dataforged::to_json_data(source)
@@ -1915,11 +1916,12 @@ module Dataforged
       data["canonical_name"] = Dataforged::to_json_data(canonical_name) unless canonical_name.nil?
       data["collections"] = Dataforged::to_json_data(collections) unless collections.nil?
       data["color"] = Dataforged::to_json_data(color) unless color.nil?
+      data["contents"] = Dataforged::to_json_data(contents) unless contents.nil?
       data["description"] = Dataforged::to_json_data(description) unless description.nil?
+      data["extends"] = Dataforged::to_json_data(extends) unless extends.nil?
       data["rendering"] = Dataforged::to_json_data(rendering) unless rendering.nil?
       data["sample_names"] = Dataforged::to_json_data(sample_names) unless sample_names.nil?
       data["suggestions"] = Dataforged::to_json_data(suggestions) unless suggestions.nil?
-      data["template"] = Dataforged::to_json_data(template) unless template.nil?
       data
     end
   end
@@ -2437,6 +2439,9 @@ module Dataforged
     # (Starforged ruleset only)
     EXPEDITION_PROGRESS = new("expedition_progress")
 
+    # A player's failure track (see p. 59 of Ironsworn: Delve)
+    FAILURE_TRACK = new("failure_track")
+
     # A journey progress track, started with Undertake a Journey (Ironsworn
     # ruleset only)
     JOURNEY_PROGRESS = new("journey_progress")
@@ -2459,6 +2464,7 @@ module Dataforged
         "delve_progress" => DELVE_PROGRESS,
         "discoveries_legacy" => DISCOVERIES_LEGACY,
         "expedition_progress" => EXPEDITION_PROGRESS,
+        "failure_track" => FAILURE_TRACK,
         "journey_progress" => JOURNEY_PROGRESS,
         "quests_legacy" => QUESTS_LEGACY,
         "scene_challenge_progress" => SCENE_CHALLENGE_PROGRESS,
@@ -2930,6 +2936,7 @@ module Dataforged
 
     def self.from_json_data(data)
       {
+        "attached_asset_ref" => TriggerRollOptionActionChoiceAttachedAssetRef,
         "custom_value" => TriggerRollOptionActionChoiceCustomValue,
         "edge" => TriggerRollOptionActionChoiceEdge,
         "health" => TriggerRollOptionActionChoiceHealth,
@@ -2941,6 +2948,23 @@ module Dataforged
         "supply" => TriggerRollOptionActionChoiceSupply,
         "wits" => TriggerRollOptionActionChoiceWits,
       }[data["using"]].from_json_data(data)
+    end
+  end
+
+  class TriggerRollOptionActionChoiceAttachedAssetRef < TriggerRollOptionActionChoice
+    attr_accessor :ref
+
+    def self.from_json_data(data)
+      out = TriggerRollOptionActionChoiceAttachedAssetRef.new
+      out.using = "attached_asset_ref"
+      out.ref = Dataforged::from_json_data(String, data["ref"])
+      out
+    end
+
+    def to_json_data
+      data = { "using" => "attached_asset_ref" }
+      data["ref"] = Dataforged::to_json_data(ref)
+      data
     end
   end
 

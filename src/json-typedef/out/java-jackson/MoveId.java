@@ -5,6 +5,9 @@ package Dataforged;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
 public class MoveId {
     @JsonValue
     private String value;

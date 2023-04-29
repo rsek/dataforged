@@ -443,12 +443,7 @@ class AssetAttachment:
     Command Vehicle assets. See p. 55 of Starforged for more info.
     """
 
-    patterns: 'List[RegularExpression]'
-    """
-    Regular expressions matching the IDs of assets that can be attached to this
-    asset.
-    """
-
+    assets: 'List[AssetIdwildcard]'
     max: 'Optional[int]'
     """
     The maximum number of attached assets. Omitted if there's no upper limit to
@@ -459,13 +454,13 @@ class AssetAttachment:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAttachment':
         return cls(
-            _from_json_data(List[RegularExpression], data.get("patterns")),
+            _from_json_data(List[AssetIdwildcard], data.get("assets")),
             _from_json_data(Optional[int], data.get("max")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["patterns"] = _to_json_data(self.patterns)
+        data["assets"] = _to_json_data(self.assets)
         if self.max is not None:
              data["max"] = _to_json_data(self.max)
         return data
@@ -616,22 +611,22 @@ class AssetControlFieldIdwildcard:
 
 @dataclass
 class AssetExtensionAttachments:
+    assets: 'Optional[List[RegularExpression]]'
     max: 'Optional[int]'
-    patterns: 'Optional[List[RegularExpression]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionAttachments':
         return cls(
+            _from_json_data(Optional[List[RegularExpression]], data.get("assets")),
             _from_json_data(Optional[int], data.get("max")),
-            _from_json_data(Optional[List[RegularExpression]], data.get("patterns")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        if self.assets is not None:
+             data["assets"] = _to_json_data(self.assets)
         if self.max is not None:
              data["max"] = _to_json_data(self.max)
-        if self.patterns is not None:
-             data["patterns"] = _to_json_data(self.patterns)
         return data
 
 @dataclass
@@ -708,22 +703,22 @@ class AssetExtensionChoice:
 
 @dataclass
 class AssetExtensionForeignAttachments:
+    assets: 'Optional[List[AssetIdwildcard]]'
     max: 'Optional[int]'
-    patterns: 'Optional[List[AssetIdwildcard]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionForeignAttachments':
         return cls(
+            _from_json_data(Optional[List[AssetIdwildcard]], data.get("assets")),
             _from_json_data(Optional[int], data.get("max")),
-            _from_json_data(Optional[List[AssetIdwildcard]], data.get("patterns")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        if self.assets is not None:
+             data["assets"] = _to_json_data(self.assets)
         if self.max is not None:
              data["max"] = _to_json_data(self.max)
-        if self.patterns is not None:
-             data["patterns"] = _to_json_data(self.patterns)
         return data
 
 @dataclass
@@ -1420,6 +1415,7 @@ class Move:
     source: 'Source'
     text: 'MarkdownString'
     trigger: 'Trigger'
+    oracles: 'Optional[List[OracleTableID]]'
     suggestions: 'Optional[Suggestions]'
 
     @classmethod
@@ -1431,6 +1427,7 @@ class Move:
             _from_json_data(Source, data.get("source")),
             _from_json_data(MarkdownString, data.get("text")),
             _from_json_data(Trigger, data.get("trigger")),
+            _from_json_data(Optional[List[OracleTableID]], data.get("oracles")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
         )
 
@@ -1442,6 +1439,8 @@ class Move:
         data["source"] = _to_json_data(self.source)
         data["text"] = _to_json_data(self.text)
         data["trigger"] = _to_json_data(self.trigger)
+        if self.oracles is not None:
+             data["oracles"] = _to_json_data(self.oracles)
         if self.suggestions is not None:
              data["suggestions"] = _to_json_data(self.suggestions)
         return data
@@ -1527,6 +1526,10 @@ class MoveExtension:
 
 @dataclass
 class MoveID:
+    """
+    A move ID, for a standard move or a unique asset move
+    """
+
     value: 'str'
 
     @classmethod
@@ -1863,7 +1866,6 @@ class MoveRollMethod(Enum):
 
 @dataclass
 class OracleCollection:
-    contents: 'Dict[str, OracleTable]'
     id: 'OracleCollectionID'
     name: 'Label'
     source: 'Source'
@@ -1871,16 +1873,16 @@ class OracleCollection:
     canonical_name: 'Optional[Label]'
     collections: 'Optional[Dict[str, OracleCollection]]'
     color: 'Optional[Color]'
+    contents: 'Optional[Dict[str, OracleTable]]'
     description: 'Optional[MarkdownString]'
+    extends: 'Optional[OracleCollectionID]'
     rendering: 'Optional[OracleCollectionRendering]'
     sample_names: 'Optional[List[Label]]'
     suggestions: 'Optional[Suggestions]'
-    template: 'Optional[OracleRollTemplate]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'OracleCollection':
         return cls(
-            _from_json_data(Dict[str, OracleTable], data.get("contents")),
             _from_json_data(OracleCollectionID, data.get("id")),
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
@@ -1888,16 +1890,16 @@ class OracleCollection:
             _from_json_data(Optional[Label], data.get("canonical_name")),
             _from_json_data(Optional[Dict[str, OracleCollection]], data.get("collections")),
             _from_json_data(Optional[Color], data.get("color")),
+            _from_json_data(Optional[Dict[str, OracleTable]], data.get("contents")),
             _from_json_data(Optional[MarkdownString], data.get("description")),
+            _from_json_data(Optional[OracleCollectionID], data.get("extends")),
             _from_json_data(Optional[OracleCollectionRendering], data.get("rendering")),
             _from_json_data(Optional[List[Label]], data.get("sample_names")),
             _from_json_data(Optional[Suggestions], data.get("suggestions")),
-            _from_json_data(Optional[OracleRollTemplate], data.get("template")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
-        data["contents"] = _to_json_data(self.contents)
         data["id"] = _to_json_data(self.id)
         data["name"] = _to_json_data(self.name)
         data["source"] = _to_json_data(self.source)
@@ -1908,16 +1910,18 @@ class OracleCollection:
              data["collections"] = _to_json_data(self.collections)
         if self.color is not None:
              data["color"] = _to_json_data(self.color)
+        if self.contents is not None:
+             data["contents"] = _to_json_data(self.contents)
         if self.description is not None:
              data["description"] = _to_json_data(self.description)
+        if self.extends is not None:
+             data["extends"] = _to_json_data(self.extends)
         if self.rendering is not None:
              data["rendering"] = _to_json_data(self.rendering)
         if self.sample_names is not None:
              data["sample_names"] = _to_json_data(self.sample_names)
         if self.suggestions is not None:
              data["suggestions"] = _to_json_data(self.suggestions)
-        if self.template is not None:
-             data["template"] = _to_json_data(self.template)
         return data
 
 @dataclass
@@ -2344,6 +2348,11 @@ class ProgressType(Enum):
     """
     An expedition progress track, started with Undertake an Expedition
     (Starforged ruleset only)
+    """
+
+    FAILURE_TRACK = "failure_track"
+    """
+    A player's failure track (see p. 59 of Ironsworn: Delve)
     """
 
     JOURNEY_PROGRESS = "journey_progress"
@@ -2861,6 +2870,7 @@ class TriggerRollOptionActionChoice:
     @classmethod
     def from_json_data(cls, data: Any) -> 'TriggerRollOptionActionChoice':
         variants: Dict[str, Type[TriggerRollOptionActionChoice]] = {
+            "attached_asset_ref": TriggerRollOptionActionChoiceAttachedAssetRef,
             "custom_value": TriggerRollOptionActionChoiceCustomValue,
             "edge": TriggerRollOptionActionChoiceEdge,
             "health": TriggerRollOptionActionChoiceHealth,
@@ -2877,6 +2887,22 @@ class TriggerRollOptionActionChoice:
 
     def to_json_data(self) -> Any:
         pass
+
+@dataclass
+class TriggerRollOptionActionChoiceAttachedAssetRef(TriggerRollOptionActionChoice):
+    ref: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'TriggerRollOptionActionChoiceAttachedAssetRef':
+        return cls(
+            "attached_asset_ref",
+            _from_json_data(str, data.get("ref")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "using": "attached_asset_ref" }
+        data["ref"] = _to_json_data(self.ref)
+        return data
 
 @dataclass
 class TriggerRollOptionActionChoiceCustomValue(TriggerRollOptionActionChoice):

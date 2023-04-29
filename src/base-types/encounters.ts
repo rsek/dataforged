@@ -18,7 +18,6 @@ interface EncounterLike {
 	id: string
 	name: string
 	rank: Progress.ChallengeRank
-	nature: string
 	description: Localize.MarkdownString
 }
 interface Encounter extends EncounterLike, Abstract.Cyclopedia<string> {
@@ -33,7 +32,6 @@ export interface EncounterVariantStarforged extends EncounterLike {
 }
 
 export interface EncounterClassic extends Omit<Encounter, 'summary'> {
-	nature: EncounterNatureClassic
 	your_truths?: Localize.MarkdownString
 }
 

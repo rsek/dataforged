@@ -51,6 +51,12 @@ public enum ProgressType {
     EXPEDITION_PROGRESS,
 
     /**
+     * A player's failure track (see p. 59 of Ironsworn: Delve)
+     */
+    @JsonProperty("failure_track")
+    FAILURE_TRACK,
+
+    /**
      * A journey progress track, started with Undertake a Journey (Ironsworn
      * ruleset only)
      */

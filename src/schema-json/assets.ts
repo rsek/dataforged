@@ -238,11 +238,6 @@ export const AssetType: Schema<Types.Assets.AssetType> = _.set(
 	refSchema<string>('Label')
 )
 
-export const AssetTypeExtension = Abstract.collectionExtensionSchema(
-	'Asset',
-	'AssetTypeID'
-)
-
 const ToggleFieldOption: Schema<Types.Assets.ToggleFieldOption> = {
 	title: 'Toggle field option',
 	type: 'object',

@@ -275,10 +275,8 @@ pub type AssetAbilityOptionFieldId = String;
 /// Command Vehicle assets. See p. 55 of Starforged for more info.
 #[derive(Serialize, Deserialize)]
 pub struct AssetAttachment {
-    /// Regular expressions matching the IDs of assets that can be attached to
-    /// this asset.
-    #[serde(rename = "patterns")]
-    pub patterns: Vec<RegularExpression>,
+    #[serde(rename = "assets")]
+    pub assets: Vec<AssetIdwildcard>,
 
     /// The maximum number of attached assets. Omitted if there's no upper limit
     /// to the number of attached assets.
@@ -369,13 +367,13 @@ pub type AssetControlFieldIdwildcard = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionAttachments {
+    #[serde(rename = "assets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub assets: Option<Box<Vec<RegularExpression>>>,
+
     #[serde(rename = "max")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<Box<u8>>,
-
-    #[serde(rename = "patterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub patterns: Option<Box<Vec<RegularExpression>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -419,13 +417,13 @@ pub struct AssetExtensionChoice {
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetExtensionForeignAttachments {
+    #[serde(rename = "assets")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub assets: Option<Box<Vec<AssetIdwildcard>>>,
+
     #[serde(rename = "max")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<Box<u8>>,
-
-    #[serde(rename = "patterns")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub patterns: Option<Box<Vec<AssetIdwildcard>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -863,6 +861,10 @@ pub struct Move {
     #[serde(rename = "trigger")]
     pub trigger: Trigger,
 
+    #[serde(rename = "oracles")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub oracles: Option<Box<Vec<OracleTableId>>>,
+
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
@@ -920,6 +922,7 @@ pub struct MoveExtension {
     pub text: Option<Box<MarkdownString>>,
 }
 
+/// A move ID, for a standard move or a unique asset move
 pub type MoveId = String;
 
 #[derive(Serialize, Deserialize)]
@@ -1126,9 +1129,6 @@ pub enum MoveRollMethod {
 
 #[derive(Serialize, Deserialize)]
 pub struct OracleCollection {
-    #[serde(rename = "contents")]
-    pub contents: HashMap<String, OracleTable>,
-
     #[serde(rename = "id")]
     pub id: OracleCollectionId,
 
@@ -1153,9 +1153,17 @@ pub struct OracleCollection {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub color: Option<Box<Color>>,
 
+    #[serde(rename = "contents")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub contents: Option<Box<HashMap<String, OracleTable>>>,
+
     #[serde(rename = "description")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<Box<MarkdownString>>,
+
+    #[serde(rename = "extends")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub extends: Option<Box<OracleCollectionId>>,
 
     #[serde(rename = "rendering")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1168,10 +1176,6 @@ pub struct OracleCollection {
     #[serde(rename = "suggestions")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub suggestions: Option<Box<Suggestions>>,
-
-    #[serde(rename = "template")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub template: Option<Box<OracleRollTemplate>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1496,6 +1500,10 @@ pub enum ProgressType {
     #[serde(rename = "expedition_progress")]
     ExpeditionProgress,
 
+    /// A player's failure track (see p. 59 of Ironsworn: Delve)
+    #[serde(rename = "failure_track")]
+    FailureTrack,
+
     /// A journey progress track, started with Undertake a Journey (Ironsworn
     /// ruleset only)
     #[serde(rename = "journey_progress")]
@@ -1768,6 +1776,9 @@ pub struct TriggerRollOptionAction {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "using")]
 pub enum TriggerRollOptionActionChoice {
+    #[serde(rename = "attached_asset_ref")]
+    AttachedAssetRef(TriggerRollOptionActionChoiceAttachedAssetRef),
+
     #[serde(rename = "custom_value")]
     CustomValue(TriggerRollOptionActionChoiceCustomValue),
 
@@ -1797,6 +1808,12 @@ pub enum TriggerRollOptionActionChoice {
 
     #[serde(rename = "wits")]
     Wits(TriggerRollOptionActionChoiceWits),
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct TriggerRollOptionActionChoiceAttachedAssetRef {
+    #[serde(rename = "ref")]
+    pub ref_: String,
 }
 
 #[derive(Serialize, Deserialize)]

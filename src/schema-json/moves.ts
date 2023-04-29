@@ -45,10 +45,6 @@ export const MoveCategoryID: Schema<Types.MoveCategoryID> = {
 
 export const MoveCategory: Schema<Types.MoveCategory> =
 	Abstract.collectionSchema<Types.MoveCategory>('Move', 'MoveCategoryID')
-export const MoveCategoryExtension = Abstract.collectionExtensionSchema(
-	'Move',
-	'MoveCategoryID'
-)
 
 export const MoveOutcomeType: Schema<Types.MoveOutcomeType> = {
 	type: 'string',
