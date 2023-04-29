@@ -1,4 +1,4 @@
-ironsworn:
+classic:
   ruleset: classic
   _source:
     authors:
@@ -11,16 +11,14 @@ ironsworn:
     action_and_theme:
       _source:
         page: 174
-      title:
-        canonical: Action and Theme
+      name: Action and Theme
       contents:
         action:
-          title:
-            canonical: 'Oracle 1: Action'
-            standard: Action
+          canonical_name: 'Oracle 1: Action'
+          name: Action
           suggestions:
             oracles:
-              - ironsworn/oracles/action_and_theme/theme
+              - classic/oracles/action_and_theme/theme
           description: Use this table to inspire a discovery, event, character goal, or situation. A roll on this table can be combined with a Theme to provide an action and a subject. Then, interpret the result based on the context of the question and your current situation.
           _source:
             page: 174
@@ -326,14 +324,13 @@ ironsworn:
               high: 100
               result: Summon
         theme:
-          title:
-            canonical: 'Oracle 2: Theme'
-            standard: Theme
+          canonical_name: 'Oracle 2: Theme'
+          name: Theme
           _source:
             page: 175
           suggestions:
             oracles:
-              - ironsworn/oracles/action_and_theme/action
+              - classic/oracles/action_and_theme/action
           description: As with the Action oracle, this is an interpretative table which you can use to answer questions or generate new situations. Combined, the Action and Theme tables provide creative prompts suitable for most situations and questions. In fact, with some creative interpretations, it’s entirely possible to play with only these two tables.
           table:
             - low: 1

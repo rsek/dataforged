@@ -382,6 +382,7 @@ export const MoveExtension: Schema<Types.MoveExtension> = {
 	description: 'Upgrades or otherwise modifies one or more moves.',
 	required: ['extends'],
 	type: 'object',
+	additionalProperties: false,
 	properties: {
 		// id: refSchema<string>('ID'),
 		extends: {

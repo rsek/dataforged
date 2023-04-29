@@ -7,7 +7,9 @@ export type AssetIDWildcard = string
 
 export type AssetTypeID = string
 
-export interface AssetType extends Types.Abstract.Collection<Asset> {}
+export interface AssetType extends Types.Abstract.Collection<Asset> {
+	member_label?: string
+}
 
 export type AssetOptionFieldID = string
 export type AssetOptionFieldIDWildcard = string

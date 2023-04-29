@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY, refSchema } from './common'
+import { DF_KEY, dictionarySchema, refSchema } from './common'
 import type * as Types from '@base-types'
 import * as JsonSchema from '@schema-json'
 export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
@@ -146,7 +146,6 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	additionalProperties: false,
 	properties: {
 		id: { $ref: '#/definitions/OracleTableID' },
-		// _template: { type: 'string', nullable: undefined as any },
 		name: { $ref: '#/definitions/Label' },
 		canonical_name: { $ref: '#/definitions/Label' },
 		source: refSchema<Types.Metadata.Source>('Source'),
@@ -210,7 +209,7 @@ export const OracleTableRowID: Schema<Types.Oracles.OracleTableRowID> = {
 	type: 'string',
 	pattern: /^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/
 		.source,
-	examples: ['ironsworn/oracles/action_and_theme/action/1-1']
+	examples: ['classic/oracles/action_and_theme/action/1-1']
 }
 
 export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
@@ -307,29 +306,13 @@ These strings are formatted in Markdown, but use a special syntax for their plac
 	}
 }
 
-const maybeTemplate = {
-	oneOf: [
-		{
-			not: {
-				required: ['_template'],
-				properties: {
-					_template: { type: 'string' }
-				}
-			}
-		},
-		refSchema<any>('OracleCollectionTemplate')
-	]
-}
-
 export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 	JsonSchema.Abstract.collectionSchema<Types.Oracles.OracleCollection>(
 		'OracleTable',
 		'OracleCollectionID',
 		{
 			additionalProperties: false,
-			...maybeTemplate,
 			properties: {
-				_template: { type: 'string' },
 				template:
 					refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 				rendering: {
@@ -358,47 +341,39 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 					}
 				},
 				sample_names: { type: 'array', items: { type: 'string' } },
-				collections: {
-					description: 'OracleCollections contained by this OracleCollection.',
-					type: 'object',
-					patternProperties: {
-						[DF_KEY]: {
-							oneOf: [
-								refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
-								refSchema<
-									Types.Abstract.ExtendOne<Types.Oracles.OracleCollection>
-								>(`OracleCollectionExtension`)
-							]
-						}
+				collections: dictionarySchema(
+					refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
+					{
+						description: 'OracleCollections contained by this OracleCollection.'
 					}
-				}
+				)
 			}
 		}
 	)
 
-export const OracleCollectionExtension: Schema<
-	Types.Abstract.ExtendOne<Types.Oracles.OracleCollection>
-> = JsonSchema.Abstract.collectionExtensionSchema(
-	'OracleTable',
-	'OracleCollectionID',
-	{
-		required: ['extends', 'id'],
-		...maybeTemplate,
-		properties: {
-			collections: {
-				type: 'object',
-				description: `Collections (and/or collection extensions) to be added to the extended collection.`,
-				patternProperties: {
-					[DF_KEY]: {
-						oneOf: [
-							refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
-							refSchema<
-								Types.Abstract.ExtendOne<Types.Oracles.OracleCollection>
-							>(`OracleCollectionExtension`)
-						]
-					}
-				}
-			}
-		}
-	}
-)
+// export const OracleCollectionExtension: Schema<Types.Oracles.OracleCollectionExtension> =
+// 	JsonSchema.Abstract.collectionExtensionSchema(
+// 		'OracleTable',
+// 		'OracleCollectionID',
+// 		{
+// 			required: ['extends', 'id'],
+// 			...maybeTemplate,
+// 			properties: {
+// 				source: refSchema('Source'),
+// 				collections: {
+// 					type: 'object',
+// 					description: `Collections (and/or collection extensions) to be added to the extended collection.`,
+// 					patternProperties: {
+// 						[DF_KEY]: {
+// 							oneOf: [
+// 								refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
+// 								refSchema<Types.Oracles.OracleCollectionExtension>(
+// 									`OracleCollectionExtension`
+// 								)
+// 							]
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	)

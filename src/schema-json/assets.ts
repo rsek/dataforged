@@ -45,7 +45,6 @@ export const AssetOptionField: Schema<Types.Assets.AssetOptionField> = {
 	title: 'Asset option field',
 	type: 'object',
 	required: ['id'],
-	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.Assets.AssetOptionFieldID>('AssetOptionFieldID')
 	},
@@ -229,12 +228,15 @@ export const AssetTypeID: Schema<Types.Assets.AssetTypeID> = {
 	pattern: /^[a-z0-9_]{3,}\/collections\/assets(\/[a-z_]+){1}$/.source,
 	examples: [
 		'starforged/collections/assets/command_vehicle',
-		'ironsworn/collections/assets/companion'
+		'classic/collections/assets/companion'
 	]
 }
 
-export const AssetType: Schema<Types.Assets.AssetType> =
-	Abstract.collectionSchema<Types.Assets.AssetType>('Asset', 'AssetTypeID')
+export const AssetType: Schema<Types.Assets.AssetType> = _.set(
+	Abstract.collectionSchema<Types.Assets.AssetType>('Asset', 'AssetTypeID'),
+	'properties.member_label',
+	refSchema<string>('Label')
+)
 
 export const AssetTypeExtension = Abstract.collectionExtensionSchema(
 	'Asset',
