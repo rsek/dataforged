@@ -18,7 +18,7 @@ export class AssetAbility implements Types.Assets.AssetAbility {
 	@IsOptional()
 	name?: string | undefined
 
-	@Localize.IsMarkdownSentences()
+	@Localize.IsMarkdownString()
 	text: string
 
 	@Collections.IsRecord(Moves.Move)
@@ -48,7 +48,7 @@ export class Asset extends Abstract.Node implements Types.Assets.Asset {
 	@Localize.IsLabel()
 	name: string
 
-	@Localize.IsMarkdownPhrase()
+	@Localize.IsMarkdownString()
 	requirement?: string | undefined
 
 	@MinLength(3)

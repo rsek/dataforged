@@ -343,6 +343,7 @@ export const Move: JTDSchemaType<
 		MarkdownString: string
 		Label: string
 		MoveID: string
+		OracleID: string
 	}
 > = {
 	properties: {
@@ -353,7 +354,10 @@ export const Move: JTDSchemaType<
 		source: { ref: 'Source' },
 		trigger: { ref: 'Trigger' }
 	},
-	optionalProperties: { suggestions: { ref: 'Suggestions' } }
+	optionalProperties: {
+		suggestions: { ref: 'Suggestions' },
+		oracles: { elements: { ref: 'OracleID' } }
+	}
 }
 
 export const MoveExtension: JTDSchemaType<

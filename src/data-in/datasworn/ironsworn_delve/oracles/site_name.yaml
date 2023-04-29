@@ -539,6 +539,84 @@ delve:
             - low: 99
               high: 100
               result: Erisia
+        place:
+          name: Place
+          canonical_name: 'Site Name: Place'
+          _source:
+            page: 210
+          table:
+            - low: 1
+              high: 6
+              result: '[Barrow](delve/site_domains/barrow)'
+              rolls:
+                - oracle: &barrowTableID 'delve/oracles/site_name/place/barrow'
+              embed_table: *barrowTableID
+            - low: 7
+              high: 18
+              result: '[Cavern](delve/site_domains/cavern)'
+              rolls:
+                - oracle: &cavernTableID 'delve/oracles/site_name/place/cavern'
+              embed_table: *cavernTableID
+            - low: 19
+              high: 28
+              result: '[Frozen Cavern](delve/site_domains/frozen_cavern)'
+              rolls:
+                - oracle: &frozen_cavernTableID 'delve/oracles/site_name/place/frozen_cavern'
+              embed_table: *frozen_cavernTableID
+            - low: 29
+              high: 32
+              result: '[Icereach](delve/site_domains/icereach)'
+              rolls:
+                - oracle: &icereachTableID 'delve/oracles/site_name/place/icereach'
+              embed_table: *icereachTableID
+            - low: 33
+              high: 38
+              result: '[Mine](delve/site_domains/mine)'
+              rolls:
+                - oracle: &mineTableID 'delve/oracles/site_name/place/mine'
+              embed_table: *mineTableID
+            - low: 39
+              high: 48
+              result: '[Pass](delve/site_domains/pass)'
+              rolls:
+                - oracle: &passTableID 'delve/oracles/site_name/place/pass'
+              embed_table: *passTableID
+            - low: 49
+              high: 58
+              result: '[Ruin](delve/site_domains/ruin)'
+              rolls:
+                - oracle: &ruinTableID 'delve/oracles/site_name/place/ruin'
+              embed_table: *ruinTableID
+            - low: 59
+              high: 68
+              result: '[Sea Cave](delve/site_domains/sea_cave)'
+              rolls:
+                - oracle: &sea_caveTableID 'delve/oracles/site_name/place/sea_cave'
+              embed_table: *sea_caveTableID
+            - low: 69
+              high: 78
+              result: '[Shadowfen](delve/site_domains/shadowfen)'
+              rolls:
+                - oracle: &shadowfenTableID 'delve/oracles/site_name/place/shadowfen'
+              embed_table: *shadowfenTableID
+            - low: 79
+              high: 83
+              result: '[Stronghold](delve/site_domains/stronghold)'
+              rolls:
+                - oracle: &strongholdTableID 'delve/oracles/site_name/place/stronghold'
+              embed_table: *strongholdTableID
+            - low: 84
+              high: 95
+              result: '[Tanglewood](delve/site_domains/tanglewood)'
+              rolls:
+                - oracle: &tanglewoodTableID 'delve/oracles/site_name/place/tanglewood'
+              embed_table: *tanglewoodTableID
+            - low: 96
+              high: 100
+              result: '[Underkeep](delve/site_domains/underkeep)'
+              rolls:
+                - oracle: &underkeepTableID 'delve/oracles/site_name/place/underkeep'
+              embed_table: *underkeepTableID
       collections:
         place:
           canonical_name: 'Site Name: Place'
@@ -546,120 +624,6 @@ delve:
           _source:
             page: 210
           contents:
-            domain:
-              name: Place
-              canonical_name: 'Site Name: Place'
-              _source:
-                page: 210
-              table:
-                - low: 1
-                  high: 6
-                  result: Barrow
-                  rolls:
-                    - oracle: &barrowTableID 'delve/oracles/site_name/place/barrow'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/barrow'
-                  embed_table: *barrowTableID
-                - low: 7
-                  high: 18
-                  result: Cavern
-                  rolls:
-                    - oracle: &cavernTableID 'delve/oracles/site_name/place/cavern'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/cavern'
-                  embed_table: *cavernTableID
-                - low: 19
-                  high: 28
-                  result: Frozen Cavern
-                  rolls:
-                    - oracle: &frozen_cavernTableID 'delve/oracles/site_name/place/frozen_cavern'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/frozen_cavern'
-                  embed_table: *frozen_cavernTableID
-                - low: 29
-                  high: 32
-                  result: Icereach
-                  rolls:
-                    - oracle: &icereachTableID 'delve/oracles/site_name/place/icereach'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/icereach'
-                  embed_table: *icereachTableID
-                - low: 33
-                  high: 38
-                  result: Mine
-                  rolls:
-                    - oracle: &mineTableID 'delve/oracles/site_name/place/mine'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/mine'
-                  embed_table: *mineTableID
-                - low: 39
-                  high: 48
-                  result: Pass
-                  rolls:
-                    - oracle: &passTableID 'delve/oracles/site_name/place/pass'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/pass'
-                  embed_table: *passTableID
-                - low: 49
-                  high: 58
-                  result: Ruin
-                  rolls:
-                    - oracle: &ruinTableID 'delve/oracles/site_name/place/ruin'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/ruin'
-                  embed_table: *ruinTableID
-                - low: 59
-                  high: 68
-                  result: Sea Cave
-                  rolls:
-                    - oracle: &sea_caveTableID 'delve/oracles/site_name/place/sea_cave'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/sea_cave'
-                  embed_table: *sea_caveTableID
-                - low: 69
-                  high: 78
-                  result: Shadowfen
-                  rolls:
-                    - oracle: &shadowfenTableID 'delve/oracles/site_name/place/shadowfen'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/shadowfen'
-                  embed_table: *shadowfenTableID
-                - low: 79
-                  high: 83
-                  result: Stronghold
-                  rolls:
-                    - oracle: &strongholdTableID 'delve/oracles/site_name/place/stronghold'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/stronghold'
-                  embed_table: *strongholdTableID
-                - low: 84
-                  high: 95
-                  result: Tanglewood
-                  rolls:
-                    - oracle: &tanglewoodTableID 'delve/oracles/site_name/place/tanglewood'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/tanglewood'
-                  embed_table: *tanglewoodTableID
-                - low: 96
-                  high: 100
-                  result: Underkeep
-                  rolls:
-                    - oracle: &underkeepTableID 'delve/oracles/site_name/place/underkeep'
-                  suggestions:
-                    site_domains:
-                      - 'delve/site_domains/underkeep'
-                  embed_table: *underkeepTableID
             barrow:
               name: Barrow
               rendering:

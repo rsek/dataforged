@@ -18,10 +18,10 @@ export abstract class Collection<T>
 	// managed by descendant classes
 	abstract contents: Record<string, T>
 
-	@Localize.IsMarkdownSentences()
+	@Localize.IsMarkdownString()
 	summary: string
 
-	@Localize.IsMarkdownParagraphs()
+	@Localize.IsMarkdownString()
 	@IsOptional()
 	description?: string | undefined
 

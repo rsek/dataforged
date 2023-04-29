@@ -8,8 +8,8 @@ export interface OracleTable {
 	name: string
 	canonical_name?: string
 	source: Metadata.Source
-	summary?: Localize.MarkdownSentences
-	description?: Localize.MarkdownParagraphs
+	summary?: Localize.MarkdownString
+	description?: Localize.MarkdownString
 	match?: OracleTableMatchBehavior
 	table: OracleTableRow[]
 	rendering?: OracleTableRendering
@@ -51,7 +51,7 @@ export interface OracleTableColumn {
 }
 
 export interface OracleTableMatchBehavior {
-	text: Localize.MarkdownSentences
+	text: Localize.MarkdownString
 }
 
 export interface OracleRollTemplate
@@ -67,10 +67,10 @@ export interface OracleTableRow<
 	id: ID
 	low: Low
 	high: High
-	result: Localize.MarkdownPhrase
+	result: Localize.MarkdownString
 	icon?: SvgImageUrl
-	summary?: Localize.MarkdownSentences
-	description?: Localize.MarkdownParagraphs
+	summary?: Localize.MarkdownString
+	description?: Localize.MarkdownString
 	rolls?: OracleTableRoll[]
 	suggestions?: Metadata.SuggestionsBase
 	embed_table?: OracleTableRowID
@@ -98,7 +98,7 @@ export interface OracleCollection
 	rendering?: OracleCollectionRendering
 	sample_names?: Localize.Label[]
 	collections?: Record<string, this>
-	template?: OracleRollTemplate
+	// template?: OracleRollTemplate
 }
 
 export type OracleCollectionStyle = 'multi_table'

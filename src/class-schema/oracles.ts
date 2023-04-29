@@ -81,10 +81,10 @@ export class OracleTableRow<
 	@Metadata.IsOracleTableRowID()
 	id: string
 
-	@Localize.IsMarkdownPhrase()
+	@Localize.IsMarkdownString()
 	result: string
 
-	@Localize.IsMarkdownSentences()
+	@Localize.IsMarkdownString()
 	@IsOptional()
 	summary?: string | undefined
 
@@ -125,11 +125,11 @@ export class OracleTable
 	name: string
 	canonical_name?: string
 
-	@Localize.IsMarkdownSentences()
+	@Localize.IsMarkdownString()
 	@IsOptional()
 	summary?: string | undefined
 
-	@Localize.IsMarkdownParagraphs()
+	@Localize.IsMarkdownString()
 	@IsOptional()
 	description?: string | undefined
 
@@ -173,7 +173,7 @@ export class OracleTable
 export class OracleTableMatchBehavior
 	implements Types.Oracles.OracleTableMatchBehavior
 {
-	@Localize.IsMarkdownSentences()
+	@Localize.IsMarkdownString()
 	text: string
 
 	constructor(data: Types.Oracles.OracleTableMatchBehavior) {

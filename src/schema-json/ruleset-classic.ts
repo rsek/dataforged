@@ -103,9 +103,7 @@ export const WorldTruthOption: Schema<Types.Truths.WorldTruthOption> = {
 	required: ['id', 'description', 'quest_starter'],
 	properties: {
 		id: refSchema<Types.Truths.TruthID>('WorldTruthOptionID'),
-		description:
-			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
-		quest_starter:
-			refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph')
+		description: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
+		quest_starter: refSchema<Types.Localize.MarkdownString>('MarkdownString')
 	}
 }

@@ -19,12 +19,12 @@ interface EncounterLike {
 	name: string
 	rank: Progress.ChallengeRank
 	nature: string
-	description: Localize.MarkdownParagraph
+	description: Localize.MarkdownString
 }
 interface Encounter extends EncounterLike, Abstract.Cyclopedia<string> {
-	drives: Localize.MarkdownPhrase[]
-	tactics: Localize.MarkdownPhrase[]
-	quest_starter: Localize.MarkdownParagraph
+	drives: Localize.MarkdownString[]
+	tactics: Localize.MarkdownString[]
+	quest_starter: Localize.MarkdownString
 }
 // TODO: Might make more sense as an ExtendOne
 
@@ -34,11 +34,11 @@ export interface EncounterVariantStarforged extends EncounterLike {
 
 export interface EncounterClassic extends Omit<Encounter, 'summary'> {
 	nature: EncounterNatureClassic
-	your_truths?: Localize.MarkdownSentences
+	your_truths?: Localize.MarkdownString
 }
 
 export interface EncounterStarforged extends Encounter {
-	summary: Localize.MarkdownSentences
+	summary: Localize.MarkdownString
 	nature: EncounterNatureStarforged
 	variants?: Record<string, EncounterVariantStarforged>
 }

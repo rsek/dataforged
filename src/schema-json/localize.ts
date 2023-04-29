@@ -6,24 +6,7 @@ export const Label: Schema<Types.Label> = {
 	description: 'A localized plain text name or label.'
 }
 
-export const MarkdownPhrase: Schema<Types.MarkdownPhrase> = {
+export const MarkdownString: Schema<Types.MarkdownString> = {
 	type: 'string',
-	description: 'Localized markdown text, usually a phrase or single sentence.'
-}
-
-export const MarkdownSentences: Schema<Types.MarkdownSentences> = {
-	type: 'string',
-	description: 'Localized markdown text, usually a few sentences at most.'
-}
-
-export const MarkdownParagraph: Schema<Types.MarkdownParagraph> = {
-	type: 'string',
-	description:
-		'Localized markdown text, usually one paragraph. This may included ordered or unordered lists.'
-}
-
-export const MarkdownParagraphs: Schema<Types.MarkdownParagraphs> = {
-	type: 'string',
-	description:
-		'Localized markdown text, usually multiple paragraphs. This may include ordered or unordered lists.'
+	description: 'Localized markdown text'
 }

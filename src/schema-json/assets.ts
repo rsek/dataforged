@@ -103,7 +103,7 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 		controls: dictionarySchema<Types.Assets.AssetControlField>(
 			refSchema<Types.Assets.AssetControlField>('AssetControlField')
 		),
-		requirement: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+		requirement: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		abilities: {
 			type: 'array',
 			minItems: 3,
@@ -203,7 +203,7 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 			type: 'string',
 			nullable: true
 		},
-		text: refSchema<Types.Localize.MarkdownParagraph>('MarkdownParagraph'),
+		text: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		enabled: { type: 'boolean', default: false },
 		controls: dictionarySchema<Types.Assets.AssetAbilityControlField>(
 			refSchema('AssetAbilityControlField')

@@ -56,8 +56,8 @@ export type DelveSiteCardType = 'theme' | 'domain'
 interface DelveCardBase extends Abstract.SourcedNode<DelveSiteCardID> {
 	name: Label
 	icon?: Metadata.SvgImageUrl
-	summary: Localize.MarkdownPhrase
-	description?: Localize.MarkdownSentences
+	summary: Localize.MarkdownString
+	description?: Localize.MarkdownString
 	card_type: DelveSiteCardType
 	features: Array<FeatureOrDanger<number, number>>
 	dangers: Array<FeatureOrDanger<number, number>>
@@ -66,7 +66,7 @@ interface DelveCardBase extends Abstract.SourcedNode<DelveSiteCardID> {
 export interface FeatureOrDanger<
 	Low extends number,
 	High extends number,
-	Result extends string = Localize.MarkdownPhrase
+	Result extends string = Localize.MarkdownString
 > extends Oracles.OracleTableRow<Low, High, Result> {}
 
 export interface DelveSiteTheme extends DelveCardBase {

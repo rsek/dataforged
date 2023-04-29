@@ -14,7 +14,7 @@ export class Move extends Abstract.Node implements Types.Moves.Move {
 	@IsBoolean()
 	progress_move?: boolean | undefined
 
-	@Localize.IsMarkdownParagraphs()
+	@Localize.IsMarkdownString()
 	text: string
 
 	outcomes: MoveOutcomes
@@ -88,7 +88,7 @@ export class MoveOutcomeMatchable
 }
 
 export class Trigger<T extends MoveRollType> implements Types.Moves.Trigger<T> {
-	@Localize.IsMarkdownPhrase()
+	@Localize.IsMarkdownString()
 	text: string
 
 	@IsOptional()
@@ -107,7 +107,7 @@ export class Trigger<T extends MoveRollType> implements Types.Moves.Trigger<T> {
 export class TriggerRollOption<T extends MoveRollType>
 	implements Types.Moves.TriggerRollOptionChoice<T>
 {
-	@Localize.IsMarkdownPhrase()
+	@Localize.IsMarkdownString()
 	@IsOptional()
 	text?: string | undefined
 

@@ -41,10 +41,10 @@ export interface SourcedNode<IDType = Types.Metadata.ID> extends Node<IDType> {
 
 export interface Cyclopedia<IDType> extends SourcedNode<IDType> {
 	name: Types.Localize.Label
-	features: Types.Localize.MarkdownPhrase[]
-	summary: Types.Localize.MarkdownSentences
-	description: Types.Localize.MarkdownParagraphs
-	quest_starter?: Types.Localize.MarkdownParagraph
+	features: Types.Localize.MarkdownString[]
+	summary: Types.Localize.MarkdownString
+	description: Types.Localize.MarkdownString
+	quest_starter?: Types.Localize.MarkdownString
 }
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
@@ -78,8 +78,8 @@ export interface Collection<T, IDType = Types.Metadata.ID>
 	canonical_name?: string
 	contents: Record<string, T>
 	color?: Types.Metadata.Color
-	summary: Types.Localize.MarkdownSentences
-	description?: Types.Localize.MarkdownParagraphs
+	summary: Types.Localize.MarkdownString
+	description?: Types.Localize.MarkdownString
 }
 
 export interface RecursiveCollection<T, IDType = Types.Metadata.ID>

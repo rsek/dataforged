@@ -126,7 +126,7 @@ function staticFeatureDangerRow<
 	}
 	if (!_.isEmpty(row.result))
 		emptyRow.properties.result = {
-			...refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase'),
+			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			default: row.result
 		}
 	if (row.suggestions != null)
@@ -157,10 +157,9 @@ export const DelveSiteCard = {
 		card_type:
 			refSchema<Types.DelveSites.DelveSiteCardType>('DelveSiteCardType'),
 		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
-		summary: refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+		summary: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		source: refSchema<Types.Metadata.Source>('Source'),
-		description:
-			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+		description: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		features: {
 			type: 'array',
 			items: refSchema<Types.Oracles.OracleTableRow>('OracleTableRow')

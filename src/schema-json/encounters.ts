@@ -71,25 +71,23 @@ export const EncounterClassic: Schema<Types.Encounters.EncounterClassic> = {
 		rank: refSchema<Types.Progress.ChallengeRank>('ChallengeRank'),
 		features: {
 			type: 'array',
-			items: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase') as any
+			items: refSchema<Types.Localize.MarkdownString>('MarkdownString') as any
 		},
 		drives: {
 			type: 'array',
-			items: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase') as any
+			items: refSchema<Types.Localize.MarkdownString>('MarkdownString') as any
 		},
 		tactics: {
 			type: 'array',
-			items: refSchema<Types.Localize.MarkdownPhrase>('MarkdownPhrase') as any
+			items: refSchema<Types.Localize.MarkdownString>('MarkdownString') as any
 		},
-		description:
-			refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
+		description: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		quest_starter: {
 			description:
 				'A localizable markdown string describing the quest starter associated with this item.',
-			$ref: '#/definitions/MarkdownParagraphs'
+			$ref: '#/definitions/MarkdownString'
 		},
-		your_truths:
-			refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
+		your_truths: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		source: refSchema<Types.Metadata.Source>('Source'),
 		id: refSchema<Types.Encounters.EncounterClassicID>('EncounterClassicID'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions')
@@ -117,7 +115,7 @@ export const EncounterStarforged: Schema<Types.Encounters.EncounterStarforged> =
 		properties: {
 			name: EncounterClassic.properties?.name,
 			nature: { $ref: '#/definitions/EncounterNatureStarforged' },
-			summary: { $ref: '#/definitions/MarkdownSentences' },
+			summary: { $ref: '#/definitions/MarkdownString' },
 			rank: EncounterClassic.properties?.rank,
 			features: EncounterClassic.properties?.features,
 			drives: EncounterClassic.properties?.drives,

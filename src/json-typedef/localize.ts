@@ -31,18 +31,18 @@ export const MarkdownString: JTDSchemaType<string> = {
 	type: 'string'
 }
 
-// export const MarkdownPhrase: JTDSchemaType<Types.Localize.MarkdownPhrase> = {
+// export const MarkdownString: JTDSchemaType<Types.Localize.MarkdownString> = {
 // 	type: 'string'
 // }
-// export const MarkdownSentences: JTDSchemaType<Types.Localize.MarkdownSentences> =
+// export const MarkdownString: JTDSchemaType<Types.Localize.MarkdownString> =
 // 	{
 // 		type: 'string'
 // 	}
-// export const MarkdownParagraph: JTDSchemaType<Types.Localize.MarkdownParagraph> =
+// export const MarkdownString: JTDSchemaType<Types.Localize.MarkdownString> =
 // 	{
 // 		type: 'string'
 // 	}
-// export const MarkdownParagraphs: JTDSchemaType<Types.Localize.MarkdownParagraphs> =
+// export const MarkdownString: JTDSchemaType<Types.Localize.MarkdownString> =
 // 	{
 // 		type: 'string'
 // 	}
