@@ -4,9 +4,7 @@ import type * as Types from '@base-types'
 import * as JsonSchema from '@schema-json'
 export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
 	type: 'string',
-	pattern:
-		/^[a-z0-9][a-z0-9_]+\/collections\/oracles(\/[a-z][a-z_]*[a-z]){1,3}$/
-			.source,
+	pattern: /^[a-z0-9_]{3,}\/collections\/oracles(\/[a-z_]+){1,3}$/.source,
 	examples: [
 		'starforged/collections/oracles/core',
 		'starforged/collections/oracles/character/names',
@@ -17,7 +15,7 @@ export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
 export const OracleTableID: Schema<Types.Oracles.OracleTableID> = {
 	type: 'string',
 	$comment: '{namespace}/oracles/{...collections}/{oracle}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}$/.source,
+	pattern: /^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}$/.source,
 	examples: [
 		'starforged/oracles/core/action',
 		'starforged/oracles/character/names/given',
@@ -144,7 +142,7 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 
 export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	type: 'object',
-	required: ['id', 'name', 'canonical_name', 'source', 'table'],
+	required: ['id', 'name', 'source', 'table'],
 	additionalProperties: false,
 	properties: {
 		id: { $ref: '#/definitions/OracleTableID' },
@@ -210,9 +208,8 @@ export const OracleTableRollMethod: Schema<Types.Oracles.OracleTableRollMethod> 
 
 export const OracleTableRowID: Schema<Types.Oracles.OracleTableRowID> = {
 	type: 'string',
-	pattern:
-		/^[a-z0-9][a-z0-9_]+\/oracles(\/[a-z][a-z_]*[a-z]){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/
-			.source,
+	pattern: /^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/
+		.source,
 	examples: ['ironsworn/oracles/action_and_theme/action/1-1']
 }
 
@@ -226,15 +223,13 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			description: "The low end of this row's roll range",
 			minimum: 1,
 			maximum: 100,
-			type: ['integer', 'null'] as any,
-			nullable: undefined as any
+			type: ['integer', 'null'] as any
 		},
 		high: {
 			description: "The high end of this row's roll range",
 			minimum: 1,
 			maximum: 100,
-			type: ['integer', 'null'] as any,
-			nullable: undefined as any
+			type: ['integer', 'null'] as any
 		},
 		result: {
 			title: 'Result text',
@@ -242,14 +237,12 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		},
 		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
 		summary: {
+			...refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
 			title: 'Summary text',
 			description:
 				"A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-			anyOf: [
-				refSchema<Types.Localize.MarkdownSentences>('MarkdownSentences'),
-				{ type: 'null' }
-			],
-			nullable: undefined as any
+			type: 'string',
+			nullable: true
 		},
 		description: {
 			...refSchema<Types.Localize.MarkdownParagraphs>('MarkdownParagraphs'),
@@ -264,7 +257,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		rolls: {
 			type: 'array',
 			items: refSchema<Types.Oracles.OracleTableRoll>('OracleTableRoll'),
-			nullable: undefined as any
+			nullable: true
 		},
 		template: refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
@@ -274,14 +267,12 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 		{
 			title: 'OracleTableRowStub',
 			properties: {
-				id: { const: null },
 				low: { const: null },
 				high: { const: null }
 			}
 		},
 		{
 			properties: {
-				id: { type: 'string' },
 				low: { type: 'integer' },
 				high: { type: 'integer' }
 			}

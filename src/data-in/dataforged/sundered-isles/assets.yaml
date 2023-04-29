@@ -70,7 +70,7 @@ sundered_isles:
                 When you make a move +linked stat while aboard ship, and roll a miss with a match, you may reroll both challenge dice.
             - text: |-
                 When you must [Withstand Damage](starforged/moves/suffer/withstand_damage), you may (before or after rolling) mark the figurehead as broken, and ignore all damage.
-        harpoon_cannon:
+        # harpoon_cannon:
         ironclad:
           name: Ironclad
           _source:
@@ -151,10 +151,9 @@ sundered_isles:
                   text: You may instead suffer -1 command as the cost.
                 - extends: null
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: Leading or aided by your crew
-                        method: null
-                        choices: null
                   text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
                   outcomes:
                     miss:
@@ -164,19 +163,22 @@ sundered_isles:
                 - extends:
                     - starforged/moves/adventure/face_danger
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: As a test of your leadership
                         choices:
-                          - sundered_isles/assets/path/crew_commander/controls/command
+                          - using: ref
+                            ref: sundered_isles/assets/path/crew_commander/controls/command
               moves:
                 bolster_crew:
                   name: Bolster Crew
                   trigger:
+                    roll_type: action_roll
                     text: When you bolster your crew by providing them with a significant reward or respite...
-                    options:
-                      method: any
-                      choices:
-                        - player/stats/heart
+                    roll_options:
+                      - method: any
+                        choices:
+                          - using: heart
                   text: When you bolster your crew by providing them with a significant reward or respite, roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
                   outcomes:
                     strong_hit:
@@ -196,10 +198,9 @@ sundered_isles:
                 - extends:
                     - starforged/moves/adventure/compel
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: When your command is 0 and the situation desperate
-                        method: null
-                        choices: null
                   outcomes:
                     strong_hit: &Crew_Commander.3
                       text: Take +2 command.
@@ -211,8 +212,8 @@ sundered_isles:
               max: 4
               value: 2
               field_type: condition_meter
-        cutthroat:
-        deck_clearer:
+        # cutthroat:
+        # deck_clearer:
         duelist:
           name: Duelist
           _source:
@@ -224,9 +225,9 @@ sundered_isles:
                 Once per fight, when you Gain Ground in the midst of a duel by studying your opponents technique, reroll any dice. On a hit, envision what you learn and take +1 momentum.
             - text: |-
                 When you roll a miss with a match in a situation where your reputation is known, you may suffer the cost by envisioning a notable rival who challenges you to a duel. If you defeat them, mark two ticks on your quests legacy track. If you decline, mark one tick on your bonds legacy track but envision the fallout of this refusal.
-        harpooner:
-        musician:
-        musketeer:
+        # harpooner:
+        # musician:
+        # musketeer:
         necromancer:
           name: Necromancer
           _source:
@@ -252,7 +253,7 @@ sundered_isles:
                 Your dreaded pirate flag bears a meaningful and distinctive symbol. Envision it. Once per situation, when you hoist the flag to announce your identity or signal your intent, take +1 momentum and add +1 on your next move.
             - text: |-
                 You may spend 1 experience to [Sojourn](starforged/moves/recover/sojourn) in a community—even one allied against you— with an automatic strong hit. If you do, you and your allies take one extra recovery move.
-        pistoleer:
+        # pistoleer:
         seadog:
           name: Seaborn
           _source:
@@ -279,7 +280,7 @@ sundered_isles:
                   * You are upstaged by another’s entrance.
             - text: |-
                 When you Hearten while attending an exclusive social event, reroll any dice. On a strong hit, you and any allies in your company mark one tick on your bonds legacy track.
-        sorcerer:
+        # sorcerer:
         swashbuckler:
           name: Swashbuckler
           _source:
@@ -291,17 +292,17 @@ sundered_isles:
                 When you Enter the Fray in personal combat, or when an ongoing fight transitions to personal combat, you may envision up to three useful aspects of your surroundings. Take +1 momentum for each. Then, when you make a daring or unexpected move incorporating one of those aspects (once per aspect), add +2.
             - text: |-
                 When you [React Under Fire](starforged/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
-        urchin:
-        windwright:
+        # urchin:
+        # windwright:
 
     companion:
       extends: starforged/collections/assets/companion
       contents:
-        dolphin:
-        dragon:
-        jungle_cat:
-        monkey:
-        parrot:
+        # dolphin:
+        # dragon:
+        # jungle_cat:
+        # monkey:
+        # parrot:
         the_kraken:
           name: The Kraken
           _source:
@@ -314,7 +315,8 @@ sundered_isles:
                 - extends:
                     - starforged/moves/combat/take_decisive_action
                   trigger:
-                    options:
+                    roll_type: progress_roll
+                    roll_options:
                       - text: Summon the Kraken (and fill one segment of its clock)
                         method: null
                   text: |-
@@ -328,13 +330,13 @@ sundered_isles:
                   max: 4
                   min: 0
                   value: 0
-                  position: ability_0_right
             - text: |-
                 When you make a move using a threat to call the Kraken as leverage, add +2.
               extend_moves:
                 - extends: null
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: Make a move using a threat to call the Kraken as leverage
                         method: null
                   text: Add +2.
@@ -344,7 +346,8 @@ sundered_isles:
                 - extends:
                     - starforged/moves/quest/fulfill_your_vow
                   trigger:
-                    options:
+                    roll_type: progress_roll
+                    roll_options:
                       - text: In service to the Kraken (formidable or greater, one time only)
                         method: null
                   outcomes:
@@ -363,16 +366,15 @@ sundered_isles:
             - text: |-
                 You gain a specialist. The specialist is part of your crew, but is managed as a connection and provides benefits to you and your allies per their role. When you [Withstand Damage](starforged/moves/suffer/withstand_damage) and score a miss, or if you [Pay the Price](starforged/moves/fate/pay_the_price), you may suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
               enabled: true
-              alter:
-                moves:
-                  - extends:
-                      - starforged/moves/suffer/withstand_damage
-                    outcomes:
-                      miss:
-                        text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
-                  - extends:
-                      - starforged/moves/fate/pay_the_price
-                    text: *Cohort.1
+              extend_moves:
+                - extends:
+                    - starforged/moves/suffer/withstand_damage
+                  outcomes:
+                    miss:
+                      text: &Cohort.1 You may instead suffer the cost by noting the specialist as out of action. An out of action specialist provides no benefit. To restore a specialist to duty, resolve the situation as appropriate to the nature of the injury, trauma, or dispute.
+                - extends:
+                    - starforged/moves/fate/pay_the_price
+                  text: *Cohort.1
             - text: |-
                 You may gain additional specialists by spending 1 experience to add a connection to your crew as a specialist. Specialist bonuses may not be stacked for a single action.
             # TODO: alternate experience use
@@ -382,7 +384,8 @@ sundered_isles:
                 - extends:
                     - starforged/moves/adventure/secure_an_advantage
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: By gathering your specialists to strategize or problem-solve
                   outcomes:
                     strong_hit: &Cohort.3
@@ -391,7 +394,7 @@ sundered_isles:
                         text: You may reroll one die for each participating specialist.
                     weak_hit: *Cohort.3
                     miss: *Cohort.3
-        damned:
+        # damned:
         fleet_commander:
           name: Fleet Commander
           _source:
@@ -404,10 +407,12 @@ sundered_isles:
               extend_moves:
                 - extends: null
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: As a fleetwide action to get in position, avoid a hazard, or fight
                         choices:
-                          - sundered_isles/assets/deed/fleet_commander/controls/power
+                          - using: ref
+                            ref: sundered_isles/assets/deed/fleet_commander/controls/power
                 - extends:
                     - starforged/moves/fate/pay_the_price
                   text: If your fleet bears the cost, suffer -1 power.
@@ -420,17 +425,18 @@ sundered_isles:
                     miss: *Fleet_Commander.1
             - text: |-
                 Take +2 power and set your max power to 5.
-              controls:
-                power:
-                  extends: sundered_isles/assets/deed/fleet_commander/controls/power
-                  max: 5
+              extend_asset:
+                controls:
+                  power:
+                    max: 5
             - text: |-
                 When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
               extend_moves:
                 - extends:
                     - starforged/moves/exploration/undertake_an_expedition
                   trigger:
-                    options:
+                    roll_type: action_roll
+                    roll_options:
                       - text: With your fleet
                   outcomes:
                     strong_hit: &Fleet_Commander.3
@@ -445,7 +451,6 @@ sundered_isles:
               max: 4
               value: 4
               min: 0
-              position: card_bottom
               field_type: condition_meter
               # conditions:
               #   - wrecked

@@ -15,7 +15,7 @@ public class AssetExtensionForeignAttachments {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("patterns")
-    private List<RegularExpression> patterns;
+    private List<AssetIdwildcard> patterns;
 
     public AssetExtensionForeignAttachments() {
     }
@@ -37,14 +37,14 @@ public class AssetExtensionForeignAttachments {
     /**
      * Getter for patterns.<p>
      */
-    public List<RegularExpression> getPatterns() {
+    public List<AssetIdwildcard> getPatterns() {
         return patterns;
     }
 
     /**
      * Setter for patterns.<p>
      */
-    public void setPatterns(List<RegularExpression> patterns) {
+    public void setPatterns(List<AssetIdwildcard> patterns) {
         this.patterns = patterns;
     }
 }

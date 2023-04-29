@@ -4,7 +4,7 @@ import { type JSONSchemaType as Schema } from 'ajv'
 export const ID: Schema<Types.ID> = {
 	type: 'string',
 	$comment: '{namespace}/{element}/{*}',
-	pattern: /^[a-z0-9][a-z0-9_]+\/(\/[a-z][a-z_]*[a-z]){2,}$/.source
+	pattern: /^[a-z0-9_]{3,}\/(\/[a-z_]+){2,}$/.source
 }
 
 export const Ruleset: Schema<Types.Ruleset> = {

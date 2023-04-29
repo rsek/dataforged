@@ -19,8 +19,7 @@ export abstract class Collection<T>
 	abstract contents: Record<string, T>
 
 	@Localize.IsMarkdownSentences()
-	@IsOptional()
-	summary?: string | undefined
+	summary: string
 
 	@Localize.IsMarkdownParagraphs()
 	@IsOptional()

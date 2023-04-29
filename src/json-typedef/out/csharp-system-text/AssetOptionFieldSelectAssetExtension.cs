@@ -14,7 +14,7 @@ namespace Dataforged
         public IDictionary<string, AssetOptionFieldSelectAssetExtensionChoice> Choices { get; set; }
 
         [JsonPropertyName("id")]
-        public AssetAbilityControlFieldId Id { get; set; }
+        public AssetControlFieldId Id { get; set; }
 
         [JsonPropertyName("label")]
         public Label Label { get; set; }

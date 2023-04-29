@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize
 public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     @JsonProperty("id")
-    private AssetAbilityControlFieldId id;
+    private AssetControlFieldId id;
 
     @JsonProperty("label")
     private Label label;
@@ -28,14 +28,14 @@ public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     /**
      * Getter for id.<p>
      */
-    public AssetAbilityControlFieldId getId() {
+    public AssetControlFieldId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(AssetAbilityControlFieldId id) {
+    public void setId(AssetControlFieldId id) {
         this.id = id;
     }
 

@@ -66,7 +66,7 @@
 			"optionalProperties": {
 				"assets": {
 					"elements": {
-						"ref": "AssetID"
+						"ref": "AssetIDWildcard"
 					}
 				},
 				"moves": {
@@ -94,7 +94,13 @@
 		"AssetID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}$"
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}$"
+			}
+		},
+		"AssetIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|[a-z_]+)\\/assets\\/(\\*|[a-z_]+)\\/(\\*|[a-z_]+)$"
 			}
 		},
 		"Asset": {
@@ -171,7 +177,7 @@
 		"AssetAbilityID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]$"
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]$"
 			}
 		},
 		"AssetAbility": {
@@ -197,7 +203,7 @@
 				},
 				"options": {
 					"values": {
-						"ref": "AssetOptionField"
+						"ref": "AssetAbilityOptionField"
 					}
 				},
 				"moves": {
@@ -218,7 +224,7 @@
 		"AssetAbilityControlFieldID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/abilities\\/[0-2]\\/controls\\/[a-z][a-z_]*[a-z]$"
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/abilities\\/[0-2]\\/controls\\/[a-z_]+$"
 			}
 		},
 		"AssetAbilityControlField": {
@@ -227,7 +233,7 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -241,7 +247,7 @@
 				"clock": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -282,19 +288,16 @@
 		"AssetAbilityOptionFieldID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/assets(\\/[a-z][a-z_]*[a-z]){2}\\/[0-2]\\/options\\/[a-z][a-z_]*[a-z]$"
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/options\\/[a-z_]+$"
 			}
 		},
-		"AssetOptionField": {
-			"metadata": {
-				"description": "Asset options are fields that are usually only set once, typically when the player purchases the asset. The most common examples are the \"Name\" fields on companion assets. A more complex example is the choice of stats on the Devotant asset."
-			},
+		"AssetAbilityOptionField": {
 			"discriminator": "field_type",
 			"mapping": {
 				"text": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityOptionFieldID"
+							"ref": "AssetOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -309,7 +312,7 @@
 				"select_stat": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityOptionFieldID"
+							"ref": "AssetOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -341,7 +344,7 @@
 				"select_number": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityOptionFieldID"
+							"ref": "AssetOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -373,7 +376,7 @@
 				"select_asset_extension": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -404,6 +407,143 @@
 				}
 			}
 		},
+		"AssetOptionFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/options\\/[a-z_]+$"
+			}
+		},
+		"AssetOptionField": {
+			"metadata": {
+				"description": "Asset options are fields that are usually only set once, typically when the player purchases the asset. The most common examples are the \"Name\" fields on companion assets. A more complex example is the choice of stats on the Devotant asset."
+			},
+			"discriminator": "field_type",
+			"mapping": {
+				"text": {
+					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
+						"label": {
+							"ref": "Label"
+						}
+					},
+					"optionalProperties": {
+						"value": {
+							"type": "string"
+						}
+					}
+				},
+				"select_stat": {
+					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
+						"label": {
+							"ref": "Label"
+						},
+						"choices": {
+							"values": {
+								"properties": {
+									"label": {
+										"ref": "Label"
+									},
+									"value": {
+										"ref": "PlayerStat"
+									}
+								},
+								"optionalProperties": {
+									"selected": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					},
+					"optionalProperties": {
+						"value": {
+							"ref": "PlayerStat"
+						}
+					}
+				},
+				"select_number": {
+					"properties": {
+						"id": {
+							"ref": "AssetOptionFieldID"
+						},
+						"label": {
+							"ref": "Label"
+						},
+						"choices": {
+							"values": {
+								"properties": {
+									"label": {
+										"ref": "Label"
+									},
+									"value": {
+										"type": "int8"
+									}
+								},
+								"optionalProperties": {
+									"selected": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					},
+					"optionalProperties": {
+						"value": {
+							"type": "int8"
+						}
+					}
+				},
+				"select_asset_extension": {
+					"properties": {
+						"id": {
+							"ref": "AssetControlFieldID"
+						},
+						"label": {
+							"ref": "Label"
+						},
+						"choices": {
+							"values": {
+								"properties": {
+									"label": {
+										"ref": "Label"
+									},
+									"value": {
+										"ref": "AssetExtension"
+									}
+								},
+								"optionalProperties": {
+									"selected": {
+										"type": "boolean"
+									}
+								}
+							}
+						}
+					},
+					"optionalProperties": {
+						"value": {
+							"ref": "AssetExtension"
+						}
+					}
+				}
+			}
+		},
+		"AssetControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/controls\\/[a-z_]+$"
+			}
+		},
+		"AssetControlFieldIDWildcard": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/(\\*|[a-z_]+)\\/(\\*|[a-z_]+)\\/controls\\/[a-z_]+$"
+			}
+		},
 		"AssetControlField": {
 			"discriminator": "field_type",
 			"metadata": {
@@ -413,7 +553,7 @@
 				"condition_meter": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -432,7 +572,7 @@
 				"checkbox": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -446,7 +586,7 @@
 				"select_asset_extension": {
 					"properties": {
 						"id": {
-							"ref": "AssetAbilityControlFieldID"
+							"ref": "AssetControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -483,7 +623,7 @@
 			},
 			"properties": {
 				"extends": {
-					"ref": "AssetID"
+					"ref": "AssetIDWildcard"
 				},
 				"id": {
 					"ref": "AssetAbilityControlFieldID"
@@ -500,7 +640,7 @@
 						},
 						"patterns": {
 							"elements": {
-								"ref": "RegularExpression"
+								"ref": "AssetIDWildcard"
 							}
 						}
 					}
@@ -562,13 +702,13 @@
 		"DelveSiteThemeID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/site_themes(\\/[a-z][a-z_]*[a-z]){1}$"
+				"pattern": "^[a-z0-9_]{3,}\\/site_themes(\\/[a-z_]+){1}$"
 			}
 		},
 		"DelveSiteDomainID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/site_domains(\\/[a-z][a-z_]*[a-z]){1}$"
+				"pattern": "^[a-z0-9_]{3,}\\/site_domains(\\/[a-z_]+){1}$"
 			}
 		},
 		"DelveSiteTheme": {
@@ -927,7 +1067,7 @@
 		"MoveCategoryID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/moves\\/[a-z][a-z_]*[a-z]$",
+				"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$",
 				"examples": [
 					"starforged/collections/moves/adventure"
 				]
@@ -1381,7 +1521,7 @@
 		"OracleTableID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}$",
+				"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}$",
 				"examples": [
 					"starforged/oracles/core/action",
 					"starforged/oracles/character/names/given",
@@ -1437,7 +1577,7 @@
 		"OracleTableRowID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/oracles(\\/[a-z][a-z_]*[a-z]){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
+				"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
 				"examples": [
 					"ironsworn/oracles/action_and_theme/action/1-1"
 				]
@@ -1511,7 +1651,7 @@
 		"OracleCollectionID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/collections\\/oracles(\\/[a-z][a-z_]*[a-z]){1,3}$",
+				"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/[a-z_]+){1,3}$",
 				"examples": [
 					"starforged/collections/oracles/core",
 					"starforged/collections/oracles/character/names",
@@ -1672,7 +1812,7 @@
 		"RarityID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/rarities(\\/[a-z][a-z_]*[a-z]){1}$"
+				"pattern": "^[a-z0-9_]{3,}\\/rarities(\\/[a-z_]+){1}$"
 			}
 		},
 		"Rarity": {
@@ -1708,7 +1848,7 @@
 		"RegionEntryID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/regions(\\/[a-z][a-z_]*[a-z]){1}$",
+				"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
 				"examples": [
 					"ironsworn/regions/shattered_wastes"
 				]
@@ -1749,7 +1889,7 @@
 		"WorldTruthID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]$",
+				"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
 				"examples": [
 					"ironsworn/world_truths/iron"
 				]
@@ -1758,7 +1898,7 @@
 		"WorldTruthOptionID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/world_truths\\/[a-z][a-z_]*[a-z]\\/[0-2]$",
+				"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
 				"examples": [
 					"ironsworn/world_truths/iron/0"
 				]
@@ -1767,7 +1907,7 @@
 		"SettingTruthID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/setting_truths\\/[a-z][a-z_]*[a-z]$",
+				"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+$",
 				"examples": [
 					"starforged/setting_truths/exodus"
 				]
@@ -1776,7 +1916,7 @@
 		"SettingTruthOptionID": {
 			"type": "string",
 			"metadata": {
-				"pattern": "^[a-z0-9][a-z0-9_]+\\/setting_truths\\/[a-z][a-z_]*[a-z]\\/[0-2]$",
+				"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+\\/[0-2]$",
 				"examples": [
 					"starforged/setting_truths/exodus/0"
 				]

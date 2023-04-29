@@ -11,7 +11,7 @@ import java.util.List;
 public class Suggestions {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("assets")
-    private List<AssetId> assets;
+    private List<AssetIdwildcard> assets;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("moves")
@@ -27,14 +27,14 @@ public class Suggestions {
     /**
      * Getter for assets.<p>
      */
-    public List<AssetId> getAssets() {
+    public List<AssetIdwildcard> getAssets() {
         return assets;
     }
 
     /**
      * Setter for assets.<p>
      */
-    public void setAssets(List<AssetId> assets) {
+    public void setAssets(List<AssetIdwildcard> assets) {
         this.assets = assets;
     }
 

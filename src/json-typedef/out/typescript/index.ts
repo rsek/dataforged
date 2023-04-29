@@ -35,21 +35,21 @@ export interface AssetAbility {
   extend_moves?: MoveExtension[];
   moves?: { [key: string]: Move };
   name?: Label;
-  options?: { [key: string]: AssetOptionField };
+  options?: { [key: string]: AssetAbilityOptionField };
 }
 
 export type AssetAbilityControlField = AssetAbilityControlFieldCheckbox | AssetAbilityControlFieldClock | AssetAbilityControlFieldCounter;
 
 export interface AssetAbilityControlFieldCheckbox {
   field_type: "checkbox";
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   value: (boolean | null);
 }
 
 export interface AssetAbilityControlFieldClock {
   field_type: "clock";
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   max: number;
   min: number;
@@ -68,6 +68,57 @@ export interface AssetAbilityControlFieldCounter {
 export type AssetAbilityControlFieldId = string;
 
 export type AssetAbilityId = string;
+
+export type AssetAbilityOptionField = AssetAbilityOptionFieldSelectAssetExtension | AssetAbilityOptionFieldSelectNumber | AssetAbilityOptionFieldSelectStat | AssetAbilityOptionFieldText;
+
+export interface AssetAbilityOptionFieldSelectAssetExtensionChoice {
+  label: Label;
+  value: AssetExtension;
+  selected?: boolean;
+}
+
+export interface AssetAbilityOptionFieldSelectAssetExtension {
+  field_type: "select_asset_extension";
+  choices: { [key: string]: AssetAbilityOptionFieldSelectAssetExtensionChoice };
+  id: AssetControlFieldId;
+  label: Label;
+  value?: AssetExtension;
+}
+
+export interface AssetAbilityOptionFieldSelectNumberChoice {
+  label: Label;
+  value: number;
+  selected?: boolean;
+}
+
+export interface AssetAbilityOptionFieldSelectNumber {
+  field_type: "select_number";
+  choices: { [key: string]: AssetAbilityOptionFieldSelectNumberChoice };
+  id: AssetOptionFieldId;
+  label: Label;
+  value?: number;
+}
+
+export interface AssetAbilityOptionFieldSelectStatChoice {
+  label: Label;
+  value: PlayerStat;
+  selected?: boolean;
+}
+
+export interface AssetAbilityOptionFieldSelectStat {
+  field_type: "select_stat";
+  choices: { [key: string]: AssetAbilityOptionFieldSelectStatChoice };
+  id: AssetOptionFieldId;
+  label: Label;
+  value?: PlayerStat;
+}
+
+export interface AssetAbilityOptionFieldText {
+  field_type: "text";
+  id: AssetOptionFieldId;
+  label: Label;
+  value?: string;
+}
 
 export type AssetAbilityOptionFieldId = string;
 
@@ -100,14 +151,14 @@ export type AssetControlField = AssetControlFieldCheckbox | AssetControlFieldCon
 
 export interface AssetControlFieldCheckbox {
   field_type: "checkbox";
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   value: (boolean | null);
 }
 
 export interface AssetControlFieldConditionMeter {
   field_type: "condition_meter";
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   max: number;
   min: number;
@@ -123,10 +174,14 @@ export interface AssetControlFieldSelectAssetExtensionChoice {
 export interface AssetControlFieldSelectAssetExtension {
   field_type: "select_asset_extension";
   choices: { [key: string]: AssetControlFieldSelectAssetExtensionChoice };
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   value?: AssetExtension;
 }
+
+export type AssetControlFieldId = string;
+
+export type AssetControlFieldIdwildcard = string;
 
 export interface AssetExtensionAttachments {
   max?: number;
@@ -160,7 +215,7 @@ export interface AssetExtensionChoice {
 
 export interface AssetExtensionForeignAttachments {
   max?: number;
-  patterns?: RegularExpression[];
+  patterns?: AssetIdwildcard[];
 }
 
 export interface AssetExtensionForeignControl {
@@ -173,7 +228,7 @@ export interface AssetExtensionForeignControl {
  * properties are omitted.
  */
 export interface AssetExtensionForeign {
-  extends: AssetId;
+  extends: AssetIdwildcard;
   id: AssetAbilityControlFieldId;
   attachments?: AssetExtensionForeignAttachments;
 
@@ -186,6 +241,8 @@ export interface AssetExtensionForeign {
 }
 
 export type AssetId = string;
+
+export type AssetIdwildcard = string;
 
 /**
  * Asset options are fields that are usually only set once, typically when the
@@ -204,7 +261,7 @@ export interface AssetOptionFieldSelectAssetExtensionChoice {
 export interface AssetOptionFieldSelectAssetExtension {
   field_type: "select_asset_extension";
   choices: { [key: string]: AssetOptionFieldSelectAssetExtensionChoice };
-  id: AssetAbilityControlFieldId;
+  id: AssetControlFieldId;
   label: Label;
   value?: AssetExtension;
 }
@@ -218,7 +275,7 @@ export interface AssetOptionFieldSelectNumberChoice {
 export interface AssetOptionFieldSelectNumber {
   field_type: "select_number";
   choices: { [key: string]: AssetOptionFieldSelectNumberChoice };
-  id: AssetAbilityOptionFieldId;
+  id: AssetOptionFieldId;
   label: Label;
   value?: number;
 }
@@ -232,17 +289,19 @@ export interface AssetOptionFieldSelectStatChoice {
 export interface AssetOptionFieldSelectStat {
   field_type: "select_stat";
   choices: { [key: string]: AssetOptionFieldSelectStatChoice };
-  id: AssetAbilityOptionFieldId;
+  id: AssetOptionFieldId;
   label: Label;
   value?: PlayerStat;
 }
 
 export interface AssetOptionFieldText {
   field_type: "text";
-  id: AssetAbilityOptionFieldId;
+  id: AssetOptionFieldId;
   label: Label;
   value?: string;
 }
+
+export type AssetOptionFieldId = string;
 
 /**
  * Challenge rank represented as a number from 1 (troublesome) to 5 (epic)
@@ -854,7 +913,7 @@ export interface Source {
 export type StatId = string;
 
 export interface Suggestions {
-  assets?: AssetId[];
+  assets?: AssetIdwildcard[];
   moves?: MoveId[];
   oracles?: OracleTableId[];
 }

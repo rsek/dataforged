@@ -9,8 +9,7 @@ ironsworn_delve:
       - Shawn Tomkin
   oracles:
     moves:
-      title:
-        canonical: Moves
+      name: Moves
       collections:
         delve_the_depths:
           rendering:
@@ -28,16 +27,14 @@ ironsworn_delve:
                 table_key: edge
                 content_type: result
                 label: Weak Hit Result
-          title:
-            canonical: Delve the Depths
+          name: Delve the Depths
           # move: ironsworn_delve/moves/delve/delve_the_depths
           _source:
             page: 21
 
           contents:
             edge:
-              title:
-                canonical: Edge
+              name: Edge
               table:
                 - low: 1
                   high: 45
@@ -55,8 +52,7 @@ ironsworn_delve:
                   high: 100
                   result: &row:Delve_the_Depths_4 'Mark progress twice and [Reveal a Danger](ironsworn_delve/moves/delve/reveal_a_danger).'
             shadow:
-              title:
-                canonical: Shadow
+              name: Shadow
               table:
                 - low: 1
                   high: 30
@@ -74,8 +70,7 @@ ironsworn_delve:
                   high: 100
                   result: *row:Delve_the_Depths_4
             wits:
-              title:
-                canonical: Wits
+              name: Wits
               table:
                 - low: 1
                   high: 40
@@ -94,8 +89,7 @@ ironsworn_delve:
                   result: *row:Delve_the_Depths_4
       contents:
         find_an_opportunity:
-          title:
-            canonical: Find an Opportunity
+          name: Find an Opportunity
           # Move: ironsworn_delve/moves/delve/find_an_opportunity
           _source:
             page: 30
@@ -131,8 +125,7 @@ ironsworn_delve:
               high: 100
               result: 'You encounter a denizen in need of help.'
         reveal_a_danger:
-          title:
-            canonical: Reveal a Danger
+          name: Reveal a Danger
           _source:
             page: 34
           table:
@@ -174,9 +167,7 @@ ironsworn_delve:
               result: &Reveal_a_Danger_10 'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
               # *result:RollTwice.MakeItWorse
         reveal_a_danger_alt:
-          title:
-            canonical: Reveal a Danger (alternate version)
-            short: Reveal a Danger
+          name: Reveal a Danger (alternate version)
           _source:
             page: 68
           table:
@@ -212,8 +203,7 @@ ironsworn_delve:
               result: *Reveal_a_Danger_10
               # *result:RollTwice.MakeItWorse
         advance_a_threat:
-          title:
-            canonical: Advance a Threat
+          name: Advance a Threat
           match:
             text: |-
               On a match, this development also exposes a surprising aspect of the threat’s plan or nature.

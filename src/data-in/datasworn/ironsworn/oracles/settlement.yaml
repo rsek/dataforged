@@ -9,16 +9,13 @@ ironsworn:
     date: 2019-06-05
   oracles:
     settlement:
-      title:
-        canonical: Settlement
+      name: Settlement
       _source:
         page: 178
       contents:
         trouble:
-          title:
-            canonical: "Oracle 9: Settlement Trouble"
-            standard: Settlement Trouble
-            short: Trouble
+          name: Settlement Trouble
+          canonical_name: "Oracle 9: Settlement Trouble"
           summary: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
           _source:
             page: 181
@@ -163,17 +160,14 @@ ironsworn:
               result: *result:RollTwice
       collections:
         name:
-          title:
-            canonical: "Oracle 7: Settlement Name"
-            standard: Settlement Name
-            short: Name
+          name: Settlement Name
+          canonical_name: "Oracle 7: Settlement Name"
           _source:
             page: 178
           contents:
             landscape_feature:
-              title:
-                canonical: A feature of the landscape
-                standard: Landscape Feature
+              name: Landscape Feature
+              canonical_name: A feature of the landscape
               summary: &Landscape_Feature |-
                 "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
               table:
@@ -208,9 +202,8 @@ ironsworn:
                   high: 100
                   result: Three Rivers
             manmade_edifice:
-              title:
-                canonical: A manmade edifice
-                standard: Manmade Edifice
+              canonical_name: A manmade edifice
+              name: Manmade Edifice
               summary: &Manmade_Edifice |-
                 **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
               table:
@@ -245,9 +238,8 @@ ironsworn:
                   high: 100
                   result: Fallowfield
             creature:
-              title:
-                canonical: A creature
-                standard: Creature
+              canonical_name: A creature
+              name: Creature
               summary: &Creature |-
                 **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
               table:
@@ -282,9 +274,8 @@ ironsworn:
                   high: 100
                   result: Dragonshadow
             historical_event:
-              title:
-                canonical: A historical event
-                standard: Historical Event
+              canonical_name: A historical event
+              name: Historical Event
               summary: &Historical_Event |-
                 **A historical event.** What happened here? What place or practice commemorates this event?
               table:
@@ -319,9 +310,8 @@ ironsworn:
                   high: 100
                   result: Rockfall
             old_world_language:
-              title:
-                canonical: A word in an Old World language
-                standard: Old World Language
+              canonical_name: A word in an Old World language
+              name: Old World Language
               summary: &Old_World_Language |-
                 **A word in an Old World language.** What culture is represented by this word? What does it translate to?
               table:
@@ -356,9 +346,8 @@ ironsworn:
                   high: 100
                   result: Tiza
             environmental_aspect:
-              title:
-                canonical: A season or environmental aspect
-                standard: Environmental Aspect
+              canonical_name: A season or environmental aspect
+              name: Environmental Aspect
               summary: &Environmental_Aspect |-
                 **A season or environmental aspect.** What influence does the weather have on this settlement?
               table:
@@ -393,8 +382,7 @@ ironsworn:
                   high: 100
                   result: Summersong
             something_else:
-              title:
-                canonical: Something Else
+              name: Something Else
               table:
                 - low: 1
                   high: 10
@@ -427,10 +415,8 @@ ironsworn:
                   high: 100
                   result: A negative term (Forsaken)
         quick_name:
-          title:
-            canonical: "Oracle 8: Quick Settlement Name Generator"
-            standard: Quick Settlement Name Generator
-            short: Quick Name
+          canonical_name: "Oracle 8: Quick Settlement Name Generator"
+          name: Quick Settlement Name Generator
           summary: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
           rendering:
             columns:
@@ -452,8 +438,7 @@ ironsworn:
             page: 180
           contents:
             prefix:
-              title:
-                canonical: Prefix
+              name: Prefix
               rendering:
                 style: embed_as_column
               table:
@@ -558,8 +543,7 @@ ironsworn:
                   high: 100
                   result: Long
             suffix:
-              title:
-                canonical: Suffix
+              name: Suffix
               rendering:
                 style: embed_as_column
               table:
@@ -664,10 +648,7 @@ ironsworn:
                   high: 100
                   result: wick
             theme:
-              title:
-                canonical: Settlement Name
-                standard: Name Theme
-                short: Theme
+              name: Settlement Name
               table:
                 - low: 1
                   high: 15

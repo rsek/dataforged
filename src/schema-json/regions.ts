@@ -4,7 +4,7 @@ import { refSchema } from './common'
 
 export const RegionEntryID: Schema<Types.RegionEntryID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/regions(\/[a-z][a-z_]*[a-z]){1}$/.source,
+	pattern: /^[a-z0-9_]{3,}\/regions(\/[a-z_]+){1}$/.source,
 	examples: ['ironsworn/regions/shattered_wastes']
 }
 export const RegionEntry: Schema<Types.RegionEntry> = {

@@ -3,7 +3,7 @@ import { type JSONSchemaType as Schema } from 'schema-json/clean-types'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
 import _ from 'lodash'
 
-export const DF_KEY = /^[a-z][a-z_]*[a-z]$/.source
+export const DF_KEY = /^[a-z_]+$/.source
 
 export function refSchema<T>(defName: string) {
 	// ensures that the schema with the reference behaves

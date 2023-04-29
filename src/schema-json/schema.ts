@@ -11,7 +11,7 @@ export const DATAFORGED_VERSION = '2.0.0'
 
 // TODO: figure out if there's a sensible way to version the schema
 
-export const NAMESPACE_KEY = /^[a-z0-9][a-z0-9_]+$/.source
+export const NAMESPACE_KEY = /^[a-z0-9_]{3,}$/.source
 
 export const SOURCE_PARTIAL_KEY = '_source'
 export const SourcePartial: Schema<Partial<Metadata.Source>> = {

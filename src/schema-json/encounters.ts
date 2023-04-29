@@ -24,7 +24,7 @@ export const EncounterNatureClassic: Schema<Types.Encounters.EncounterNatureClas
 
 export const EncounterClassicID: Schema<Types.Encounters.EncounterClassicID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/encounters(\/[a-z][a-z_]*[a-z]){2}$/.source,
+	pattern: /^[a-z0-9_]{3,}\/encounters(\/[a-z_]+){2}$/.source,
 	examples: [
 		'ironsworn/encounters/firstborn/elf',
 		'ironsworn_delve/encounters/anomalies/glimmer'
@@ -34,9 +34,8 @@ export const EncounterClassicID: Schema<Types.Encounters.EncounterClassicID> = {
 export const EncounterStarforgedID: Schema<Types.Encounters.EncounterStarforgedID> =
 	{
 		type: 'string',
-		pattern:
-			/^[a-z0-9][a-z0-9_]+\/encounters\/[a-z][a-z_]*[a-z](\/variants\/[a-z][a-z_]*[a-z])?$/
-				.source,
+		pattern: /^[a-z0-9_]{3,}\/encounters\/[a-z_]+(\/variants\/[a-z_]+)?$/
+			.source,
 		examples: [
 			'starforged/encounters/chiton',
 			'starforged/encounters/chiton/variants/chiton_drone_pack'
@@ -165,7 +164,5 @@ export const EncounterCollectionExtensionClassic =
 export const EncounterCollectionClassicID: Schema<Types.Encounters.EncounterCollectionID> =
 	{
 		type: 'string',
-		pattern:
-			/^[a-z0-9][a-z0-9_]+\/collections\/encounters(\/[a-z][a-z_]*[a-z]){1}$/
-				.source
+		pattern: /^[a-z0-9_]{3,}\/collections\/encounters(\/[a-z_]+){1}$/.source
 	}

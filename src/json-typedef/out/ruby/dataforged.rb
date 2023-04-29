@@ -90,7 +90,7 @@ module Dataforged
       out.extend_moves = Dataforged::from_json_data(Array[MoveExtension], data["extend_moves"])
       out.moves = Dataforged::from_json_data(Hash[String, Move], data["moves"])
       out.name = Dataforged::from_json_data(Label, data["name"])
-      out.options = Dataforged::from_json_data(Hash[String, AssetOptionField], data["options"])
+      out.options = Dataforged::from_json_data(Hash[String, AssetAbilityOptionField], data["options"])
       out
     end
 
@@ -129,7 +129,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldCheckbox.new
       out.field_type = "checkbox"
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(TrueClass, data["value"])
       out
@@ -154,7 +154,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldClock.new
       out.field_type = "clock"
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -230,6 +230,186 @@ module Dataforged
     end
   end
 
+  class AssetAbilityOptionField
+    attr_accessor :field_type
+
+    def self.from_json_data(data)
+      {
+        "select_asset_extension" => AssetAbilityOptionFieldSelectAssetExtension,
+        "select_number" => AssetAbilityOptionFieldSelectNumber,
+        "select_stat" => AssetAbilityOptionFieldSelectStat,
+        "text" => AssetAbilityOptionFieldText,
+      }[data["field_type"]].from_json_data(data)
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectAssetExtensionChoice
+    attr_accessor :label
+    attr_accessor :value
+    attr_accessor :selected
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectAssetExtensionChoice.new
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
+      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value)
+      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectAssetExtension < AssetAbilityOptionField
+    attr_accessor :choices
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectAssetExtension.new
+      out.field_type = "select_asset_extension"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetAbilityOptionFieldSelectAssetExtensionChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(AssetExtension, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "field_type" => "select_asset_extension" }
+      data["choices"] = Dataforged::to_json_data(choices)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectNumberChoice
+    attr_accessor :label
+    attr_accessor :value
+    attr_accessor :selected
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectNumberChoice.new
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(Integer, data["value"])
+      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value)
+      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectNumber < AssetAbilityOptionField
+    attr_accessor :choices
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectNumber.new
+      out.field_type = "select_number"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetAbilityOptionFieldSelectNumberChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(Integer, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "field_type" => "select_number" }
+      data["choices"] = Dataforged::to_json_data(choices)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectStatChoice
+    attr_accessor :label
+    attr_accessor :value
+    attr_accessor :selected
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectStatChoice.new
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(PlayerStat, data["value"])
+      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value)
+      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldSelectStat < AssetAbilityOptionField
+    attr_accessor :choices
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldSelectStat.new
+      out.field_type = "select_stat"
+      out.choices = Dataforged::from_json_data(Hash[String, AssetAbilityOptionFieldSelectStatChoice], data["choices"])
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(PlayerStat, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "field_type" => "select_stat" }
+      data["choices"] = Dataforged::to_json_data(choices)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetAbilityOptionFieldText < AssetAbilityOptionField
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetAbilityOptionFieldText.new
+      out.field_type = "text"
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(String, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = { "field_type" => "text" }
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
   class AssetAbilityOptionFieldID
     attr_accessor :value
 
@@ -295,7 +475,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetControlFieldCheckbox.new
       out.field_type = "checkbox"
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(TrueClass, data["value"])
       out
@@ -320,7 +500,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetControlFieldConditionMeter.new
       out.field_type = "condition_meter"
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -371,7 +551,7 @@ module Dataforged
       out = AssetControlFieldSelectAssetExtension.new
       out.field_type = "select_asset_extension"
       out.choices = Dataforged::from_json_data(Hash[String, AssetControlFieldSelectAssetExtensionChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(AssetExtension, data["value"])
       out
@@ -384,6 +564,34 @@ module Dataforged
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
+    end
+  end
+
+  class AssetControlFieldID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetControlFieldID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
+  class AssetControlFieldIdwildcard
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetControlFieldIdwildcard.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -478,7 +686,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetExtensionForeignAttachments.new
       out.max = Dataforged::from_json_data(Integer, data["max"])
-      out.patterns = Dataforged::from_json_data(Array[RegularExpression], data["patterns"])
+      out.patterns = Dataforged::from_json_data(Array[AssetIdwildcard], data["patterns"])
       out
     end
 
@@ -523,7 +731,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = AssetExtensionForeign.new
-      out.extends = Dataforged::from_json_data(AssetID, data["extends"])
+      out.extends = Dataforged::from_json_data(AssetIdwildcard, data["extends"])
       out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.attachments = Dataforged::from_json_data(AssetExtensionForeignAttachments, data["attachments"])
       out.controls = Dataforged::from_json_data(Hash[String, AssetExtensionForeignControl], data["controls"])
@@ -547,6 +755,20 @@ module Dataforged
 
     def self.from_json_data(data)
       out = AssetID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
+  class AssetIdwildcard
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetIdwildcard.new
       out.value = Dataforged.from_json_data(String, data)
       out
     end
@@ -605,7 +827,7 @@ module Dataforged
       out = AssetOptionFieldSelectAssetExtension.new
       out.field_type = "select_asset_extension"
       out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectAssetExtensionChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(AssetExtension, data["value"])
       out
@@ -653,7 +875,7 @@ module Dataforged
       out = AssetOptionFieldSelectNumber.new
       out.field_type = "select_number"
       out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectNumberChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(Integer, data["value"])
       out
@@ -701,7 +923,7 @@ module Dataforged
       out = AssetOptionFieldSelectStat.new
       out.field_type = "select_stat"
       out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectStatChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(PlayerStat, data["value"])
       out
@@ -725,7 +947,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetOptionFieldText.new
       out.field_type = "text"
-      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(String, data["value"])
       out
@@ -737,6 +959,20 @@ module Dataforged
       data["label"] = Dataforged::to_json_data(label)
       data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
+    end
+  end
+
+  class AssetOptionFieldID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetOptionFieldID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
     end
   end
 
@@ -2490,7 +2726,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = Suggestions.new
-      out.assets = Dataforged::from_json_data(Array[AssetID], data["assets"])
+      out.assets = Dataforged::from_json_data(Array[AssetIdwildcard], data["assets"])
       out.moves = Dataforged::from_json_data(Array[MoveID], data["moves"])
       out.oracles = Dataforged::from_json_data(Array[OracleTableID], data["oracles"])
       out

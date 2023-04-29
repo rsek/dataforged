@@ -9,8 +9,7 @@ ironsworn_delve:
       - Shawn Tomkin
   oracles:
     site_name:
-      title:
-        canonical: Site Name
+      name: Site Name
       summary: Give a site a name or learn more about its characteristics and history.
       description: |-
         To generate a name for a site, first roll on the [Format](ironsworn_delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](ironsworn_delve/oracles/site_name/description), [Detail](ironsworn_delve/oracles/site_name/detail), [Namesake](ironsworn_delve/oracles/site_name/namesake), and [Place](ironsworn_delve/oracles/site_name/place) oracles.
@@ -30,9 +29,8 @@ ironsworn_delve:
         page: 206
       contents:
         format:
-          title:
-            canonical: 'Site Name: Format'
-            short: Format
+          name: Format
+          canonical_name: 'Site Name: Format'
           table:
             - low: 1
               high: 25
@@ -70,9 +68,8 @@ ironsworn_delve:
               template:
                 result: '{{result:ironsworn_delve/oracles/site_name/place/domain}} of {{result:ironsworn_delve/oracles/site_name/namesake}}'
         description:
-          title:
-            canonical: 'Site Name: Description'
-            short: Description
+          canonical_name: 'Site Name: Description'
+          name: Description
           _source:
             page: 207
           table:
@@ -227,9 +224,8 @@ ironsworn_delve:
               high: 100
               result: Ruined
         detail:
-          title:
-            canonical: 'Site Name: Detail'
-            short: Detail
+          canonical_name: 'Site Name: Detail'
+          name: Detail
           _source:
             page: 208
           table:
@@ -384,9 +380,8 @@ ironsworn_delve:
               high: 100
               result: Wrath
         namesake:
-          title:
-            canonical: 'Site Name: Namesake'
-            short: Namesake
+          canonical_name: 'Site Name: Namesake'
+          name: Namesake
           description: |-
             You may also use your preferred name randomizer to generate a Namesake for your site.
 
@@ -546,17 +541,14 @@ ironsworn_delve:
               result: Erisia
       collections:
         place:
-          title:
-            canonical: 'Site Name: Place'
-            short: Place
+          canonical_name: 'Site Name: Place'
+          name: Place
           _source:
             page: 210
           contents:
             domain:
-              title:
-                canonical: 'Site Name: Place'
-                standard: Place
-                short: Place
+              name: Place
+              canonical_name: 'Site Name: Place'
               _source:
                 page: 210
               table:
@@ -566,7 +558,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &barrowTableID 'ironsworn_delve/oracles/site_name/place/barrow'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/barrow']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/barrow'
                   embed_table: *barrowTableID
                 - low: 7
                   high: 18
@@ -574,7 +567,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &cavernTableID 'ironsworn_delve/oracles/site_name/place/cavern'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/cavern']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/cavern'
                   embed_table: *cavernTableID
                 - low: 19
                   high: 28
@@ -582,7 +576,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &frozen_cavernTableID 'ironsworn_delve/oracles/site_name/place/frozen_cavern'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/frozen_cavern']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/frozen_cavern'
                   embed_table: *frozen_cavernTableID
                 - low: 29
                   high: 32
@@ -590,7 +585,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &icereachTableID 'ironsworn_delve/oracles/site_name/place/icereach'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/icereach']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/icereach'
                   embed_table: *icereachTableID
                 - low: 33
                   high: 38
@@ -598,7 +594,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &mineTableID 'ironsworn_delve/oracles/site_name/place/mine'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/mine']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/mine'
                   embed_table: *mineTableID
                 - low: 39
                   high: 48
@@ -606,7 +603,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &passTableID 'ironsworn_delve/oracles/site_name/place/pass'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/pass']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/pass'
                   embed_table: *passTableID
                 - low: 49
                   high: 58
@@ -614,7 +612,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &ruinTableID 'ironsworn_delve/oracles/site_name/place/ruin'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/ruin']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/ruin'
                   embed_table: *ruinTableID
                 - low: 59
                   high: 68
@@ -622,7 +621,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &sea_caveTableID 'ironsworn_delve/oracles/site_name/place/sea_cave'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/sea_cave']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/sea_cave'
                   embed_table: *sea_caveTableID
                 - low: 69
                   high: 78
@@ -630,7 +630,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &shadowfenTableID 'ironsworn_delve/oracles/site_name/place/shadowfen'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/shadowfen']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/shadowfen'
                   embed_table: *shadowfenTableID
                 - low: 79
                   high: 83
@@ -638,7 +639,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &strongholdTableID 'ironsworn_delve/oracles/site_name/place/stronghold'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/stronghold']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/stronghold'
                   embed_table: *strongholdTableID
                 - low: 84
                   high: 95
@@ -646,7 +648,8 @@ ironsworn_delve:
                   rolls:
                     - oracle: &tanglewoodTableID 'ironsworn_delve/oracles/site_name/place/tanglewood'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/tanglewood']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/tanglewood'
                   embed_table: *tanglewoodTableID
                 - low: 96
                   high: 100
@@ -654,11 +657,11 @@ ironsworn_delve:
                   rolls:
                     - oracle: &underkeepTableID 'ironsworn_delve/oracles/site_name/place/underkeep'
                   suggestions:
-                    site_domains: ['ironsworn_delve/site_domains/underkeep']
+                    site_domains:
+                      - 'ironsworn_delve/site_domains/underkeep'
                   embed_table: *underkeepTableID
             barrow:
-              title:
-                canonical: Barrow
+              name: Barrow
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/1-6
@@ -684,8 +687,7 @@ ironsworn_delve:
                   high: 100
                   result: Barrow
             cavern:
-              title:
-                canonical: Cavern
+              name: Cavern
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/7-18
@@ -723,8 +725,7 @@ ironsworn_delve:
                   high: 100
                   result: Warren
             frozen_cavern:
-              title:
-                canonical: Frozen Cavern
+              name: Frozen Cavern
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/19-28
@@ -762,8 +763,7 @@ ironsworn_delve:
                   high: 100
                   result: Warren
             icereach:
-              title:
-                canonical: Icereach
+              name: Icereach
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/29-32
@@ -789,8 +789,7 @@ ironsworn_delve:
                   high: 100
                   result: Barrens
             mine:
-              title:
-                canonical: Mine
+              name: Mine
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/33-38
@@ -816,8 +815,7 @@ ironsworn_delve:
                   high: 100
                   result: Cut
             pass:
-              title:
-                canonical: Pass
+              name: Pass
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/39-48
@@ -855,8 +853,7 @@ ironsworn_delve:
                   high: 100
                   result: Ridge
             ruin:
-              title:
-                canonical: Ruin
+              name: Ruin
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/49-58
@@ -894,8 +891,7 @@ ironsworn_delve:
                   high: 100
                   result: Tower
             sea_cave:
-              title:
-                canonical: Sea Cave
+              name: Sea Cave
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/59-68
@@ -921,8 +917,7 @@ ironsworn_delve:
                   high: 100
                   result: Gouge
             shadowfen:
-              title:
-                canonical: Shadowfen
+              name: Shadowfen
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/69-78
@@ -960,8 +955,7 @@ ironsworn_delve:
                   high: 100
                   result: Wetlands
             stronghold:
-              title:
-                canonical: Stronghold
+              name: Stronghold
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/79-83
@@ -999,8 +993,7 @@ ironsworn_delve:
                   high: 100
                   result: Watch
             tanglewood:
-              title:
-                canonical: Tanglewood
+              name: Tanglewood
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/84-95
@@ -1032,8 +1025,7 @@ ironsworn_delve:
                   high: 100
                   result: Wood
             underkeep:
-              title:
-                canonical: Underkeep
+              name: Underkeep
               rendering:
                 style: embed_in_row
                 # embed_in: ironsworn_delve/oracles/site_name/place/domain/96-100

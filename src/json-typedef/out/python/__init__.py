@@ -87,7 +87,7 @@ class AssetAbility:
     extend_moves: 'Optional[List[MoveExtension]]'
     moves: 'Optional[Dict[str, Move]]'
     name: 'Optional[Label]'
-    options: 'Optional[Dict[str, AssetOptionField]]'
+    options: 'Optional[Dict[str, AssetAbilityOptionField]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbility':
@@ -100,7 +100,7 @@ class AssetAbility:
             _from_json_data(Optional[List[MoveExtension]], data.get("extend_moves")),
             _from_json_data(Optional[Dict[str, Move]], data.get("moves")),
             _from_json_data(Optional[Label], data.get("name")),
-            _from_json_data(Optional[Dict[str, AssetOptionField]], data.get("options")),
+            _from_json_data(Optional[Dict[str, AssetAbilityOptionField]], data.get("options")),
         )
 
     def to_json_data(self) -> Any:
@@ -141,7 +141,7 @@ class AssetAbilityControlField:
 
 @dataclass
 class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     value: 'Optional[bool]'
 
@@ -149,7 +149,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCheckbox':
         return cls(
             "checkbox",
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[bool], data.get("value")),
         )
@@ -163,7 +163,7 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
 
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     max: 'int'
     min: 'int'
@@ -173,7 +173,7 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldClock':
         return cls(
             "clock",
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
@@ -238,6 +238,191 @@ class AssetAbilityID:
 
     def to_json_data(self) -> Any:
         return _to_json_data(self.value)
+
+@dataclass
+class AssetAbilityOptionField:
+    field_type: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionField':
+        variants: Dict[str, Type[AssetAbilityOptionField]] = {
+            "select_asset_extension": AssetAbilityOptionFieldSelectAssetExtension,
+            "select_number": AssetAbilityOptionFieldSelectNumber,
+            "select_stat": AssetAbilityOptionFieldSelectStat,
+            "text": AssetAbilityOptionFieldText,
+        }
+
+        return variants[data["field_type"]].from_json_data(data)
+
+    def to_json_data(self) -> Any:
+        pass
+
+@dataclass
+class AssetAbilityOptionFieldSelectAssetExtensionChoice:
+    label: 'Label'
+    value: 'AssetExtension'
+    selected: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectAssetExtensionChoice':
+        return cls(
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(AssetExtension, data.get("value")),
+            _from_json_data(Optional[bool], data.get("selected")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["label"] = _to_json_data(self.label)
+        data["value"] = _to_json_data(self.value)
+        if self.selected is not None:
+             data["selected"] = _to_json_data(self.selected)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldSelectAssetExtension(AssetAbilityOptionField):
+    choices: 'Dict[str, AssetAbilityOptionFieldSelectAssetExtensionChoice]'
+    id: 'AssetControlFieldID'
+    label: 'Label'
+    value: 'Optional[AssetExtension]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectAssetExtension':
+        return cls(
+            "select_asset_extension",
+            _from_json_data(Dict[str, AssetAbilityOptionFieldSelectAssetExtensionChoice], data.get("choices")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[AssetExtension], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "field_type": "select_asset_extension" }
+        data["choices"] = _to_json_data(self.choices)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldSelectNumberChoice:
+    label: 'Label'
+    value: 'int'
+    selected: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectNumberChoice':
+        return cls(
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(int, data.get("value")),
+            _from_json_data(Optional[bool], data.get("selected")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["label"] = _to_json_data(self.label)
+        data["value"] = _to_json_data(self.value)
+        if self.selected is not None:
+             data["selected"] = _to_json_data(self.selected)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldSelectNumber(AssetAbilityOptionField):
+    choices: 'Dict[str, AssetAbilityOptionFieldSelectNumberChoice]'
+    id: 'AssetOptionFieldID'
+    label: 'Label'
+    value: 'Optional[int]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectNumber':
+        return cls(
+            "select_number",
+            _from_json_data(Dict[str, AssetAbilityOptionFieldSelectNumberChoice], data.get("choices")),
+            _from_json_data(AssetOptionFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[int], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "field_type": "select_number" }
+        data["choices"] = _to_json_data(self.choices)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldSelectStatChoice:
+    label: 'Label'
+    value: 'PlayerStat'
+    selected: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectStatChoice':
+        return cls(
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(PlayerStat, data.get("value")),
+            _from_json_data(Optional[bool], data.get("selected")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["label"] = _to_json_data(self.label)
+        data["value"] = _to_json_data(self.value)
+        if self.selected is not None:
+             data["selected"] = _to_json_data(self.selected)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldSelectStat(AssetAbilityOptionField):
+    choices: 'Dict[str, AssetAbilityOptionFieldSelectStatChoice]'
+    id: 'AssetOptionFieldID'
+    label: 'Label'
+    value: 'Optional[PlayerStat]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldSelectStat':
+        return cls(
+            "select_stat",
+            _from_json_data(Dict[str, AssetAbilityOptionFieldSelectStatChoice], data.get("choices")),
+            _from_json_data(AssetOptionFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[PlayerStat], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "field_type": "select_stat" }
+        data["choices"] = _to_json_data(self.choices)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+@dataclass
+class AssetAbilityOptionFieldText(AssetAbilityOptionField):
+    id: 'AssetOptionFieldID'
+    label: 'Label'
+    value: 'Optional[str]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetAbilityOptionFieldText':
+        return cls(
+            "text",
+            _from_json_data(AssetOptionFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[str], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data = { "field_type": "text" }
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
 
 @dataclass
 class AssetAbilityOptionFieldID:
@@ -311,7 +496,7 @@ class AssetControlField:
 
 @dataclass
 class AssetControlFieldCheckbox(AssetControlField):
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     value: 'Optional[bool]'
 
@@ -319,7 +504,7 @@ class AssetControlFieldCheckbox(AssetControlField):
     def from_json_data(cls, data: Any) -> 'AssetControlFieldCheckbox':
         return cls(
             "checkbox",
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[bool], data.get("value")),
         )
@@ -333,7 +518,7 @@ class AssetControlFieldCheckbox(AssetControlField):
 
 @dataclass
 class AssetControlFieldConditionMeter(AssetControlField):
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     max: 'int'
     min: 'int'
@@ -343,7 +528,7 @@ class AssetControlFieldConditionMeter(AssetControlField):
     def from_json_data(cls, data: Any) -> 'AssetControlFieldConditionMeter':
         return cls(
             "condition_meter",
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
@@ -384,7 +569,7 @@ class AssetControlFieldSelectAssetExtensionChoice:
 @dataclass
 class AssetControlFieldSelectAssetExtension(AssetControlField):
     choices: 'Dict[str, AssetControlFieldSelectAssetExtensionChoice]'
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     value: 'Optional[AssetExtension]'
 
@@ -393,7 +578,7 @@ class AssetControlFieldSelectAssetExtension(AssetControlField):
         return cls(
             "select_asset_extension",
             _from_json_data(Dict[str, AssetControlFieldSelectAssetExtensionChoice], data.get("choices")),
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[AssetExtension], data.get("value")),
         )
@@ -406,6 +591,28 @@ class AssetControlFieldSelectAssetExtension(AssetControlField):
         if self.value is not None:
              data["value"] = _to_json_data(self.value)
         return data
+
+@dataclass
+class AssetControlFieldID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class AssetControlFieldIdwildcard:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetControlFieldIdwildcard':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class AssetExtensionAttachments:
@@ -502,13 +709,13 @@ class AssetExtensionChoice:
 @dataclass
 class AssetExtensionForeignAttachments:
     max: 'Optional[int]'
-    patterns: 'Optional[List[RegularExpression]]'
+    patterns: 'Optional[List[AssetIdwildcard]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionForeignAttachments':
         return cls(
             _from_json_data(Optional[int], data.get("max")),
-            _from_json_data(Optional[List[RegularExpression]], data.get("patterns")),
+            _from_json_data(Optional[List[AssetIdwildcard]], data.get("patterns")),
         )
 
     def to_json_data(self) -> Any:
@@ -546,7 +753,7 @@ class AssetExtensionForeign:
     properties are omitted.
     """
 
-    extends: 'AssetID'
+    extends: 'AssetIdwildcard'
     id: 'AssetAbilityControlFieldID'
     attachments: 'Optional[AssetExtensionForeignAttachments]'
     controls: 'Optional[Dict[str, AssetExtensionForeignControl]]'
@@ -560,7 +767,7 @@ class AssetExtensionForeign:
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionForeign':
         return cls(
-            _from_json_data(AssetID, data.get("extends")),
+            _from_json_data(AssetIdwildcard, data.get("extends")),
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Optional[AssetExtensionForeignAttachments], data.get("attachments")),
             _from_json_data(Optional[Dict[str, AssetExtensionForeignControl]], data.get("controls")),
@@ -585,6 +792,17 @@ class AssetID:
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class AssetIdwildcard:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetIdwildcard':
         return cls(_from_json_data(str, data))
 
     def to_json_data(self) -> Any:
@@ -640,7 +858,7 @@ class AssetOptionFieldSelectAssetExtensionChoice:
 @dataclass
 class AssetOptionFieldSelectAssetExtension(AssetOptionField):
     choices: 'Dict[str, AssetOptionFieldSelectAssetExtensionChoice]'
-    id: 'AssetAbilityControlFieldID'
+    id: 'AssetControlFieldID'
     label: 'Label'
     value: 'Optional[AssetExtension]'
 
@@ -649,7 +867,7 @@ class AssetOptionFieldSelectAssetExtension(AssetOptionField):
         return cls(
             "select_asset_extension",
             _from_json_data(Dict[str, AssetOptionFieldSelectAssetExtensionChoice], data.get("choices")),
-            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
+            _from_json_data(AssetControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[AssetExtension], data.get("value")),
         )
@@ -688,7 +906,7 @@ class AssetOptionFieldSelectNumberChoice:
 @dataclass
 class AssetOptionFieldSelectNumber(AssetOptionField):
     choices: 'Dict[str, AssetOptionFieldSelectNumberChoice]'
-    id: 'AssetAbilityOptionFieldID'
+    id: 'AssetOptionFieldID'
     label: 'Label'
     value: 'Optional[int]'
 
@@ -697,7 +915,7 @@ class AssetOptionFieldSelectNumber(AssetOptionField):
         return cls(
             "select_number",
             _from_json_data(Dict[str, AssetOptionFieldSelectNumberChoice], data.get("choices")),
-            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
+            _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[int], data.get("value")),
         )
@@ -736,7 +954,7 @@ class AssetOptionFieldSelectStatChoice:
 @dataclass
 class AssetOptionFieldSelectStat(AssetOptionField):
     choices: 'Dict[str, AssetOptionFieldSelectStatChoice]'
-    id: 'AssetAbilityOptionFieldID'
+    id: 'AssetOptionFieldID'
     label: 'Label'
     value: 'Optional[PlayerStat]'
 
@@ -745,7 +963,7 @@ class AssetOptionFieldSelectStat(AssetOptionField):
         return cls(
             "select_stat",
             _from_json_data(Dict[str, AssetOptionFieldSelectStatChoice], data.get("choices")),
-            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
+            _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[PlayerStat], data.get("value")),
         )
@@ -761,7 +979,7 @@ class AssetOptionFieldSelectStat(AssetOptionField):
 
 @dataclass
 class AssetOptionFieldText(AssetOptionField):
-    id: 'AssetAbilityOptionFieldID'
+    id: 'AssetOptionFieldID'
     label: 'Label'
     value: 'Optional[str]'
 
@@ -769,7 +987,7 @@ class AssetOptionFieldText(AssetOptionField):
     def from_json_data(cls, data: Any) -> 'AssetOptionFieldText':
         return cls(
             "text",
-            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
+            _from_json_data(AssetOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[str], data.get("value")),
         )
@@ -781,6 +999,17 @@ class AssetOptionFieldText(AssetOptionField):
         if self.value is not None:
              data["value"] = _to_json_data(self.value)
         return data
+
+@dataclass
+class AssetOptionFieldID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetOptionFieldID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
 
 @dataclass
 class ChallengeRank:
@@ -2381,14 +2610,14 @@ class StatID:
 
 @dataclass
 class Suggestions:
-    assets: 'Optional[List[AssetID]]'
+    assets: 'Optional[List[AssetIdwildcard]]'
     moves: 'Optional[List[MoveID]]'
     oracles: 'Optional[List[OracleTableID]]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'Suggestions':
         return cls(
-            _from_json_data(Optional[List[AssetID]], data.get("assets")),
+            _from_json_data(Optional[List[AssetIdwildcard]], data.get("assets")),
             _from_json_data(Optional[List[MoveID]], data.get("moves")),
             _from_json_data(Optional[List[OracleTableID]], data.get("oracles")),
         )

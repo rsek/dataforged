@@ -10,7 +10,7 @@ import {
 	UnionSelectFieldStat,
 	UnionTextField
 } from 'json-typedef/inputs'
-import { toJtdId, setIdRef } from 'json-typedef/utils'
+import { toJtdId, setIdRef, getMetadata } from 'json-typedef/utils'
 import { set } from 'lodash'
 
 export const AssetExtensionChoice: JTDSchemaType<
@@ -24,6 +24,7 @@ export const AssetExtensionChoice: JTDSchemaType<
 }
 
 export const AssetID = toJtdId(JSONSchema.Assets.AssetID)
+export const AssetIDWildcard = toJtdId(JSONSchema.Assets.AssetIDWildcard)
 
 export const Asset: JTDSchemaType<
 	Types.Assets.Asset,
@@ -53,8 +54,8 @@ export const Asset: JTDSchemaType<
 					'If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).'
 			}
 		},
-		controls: { values: { ref: 'AssetControlField' } },
 		attachments: { ref: 'AssetAttachment' },
+		controls: { values: { ref: 'AssetControlField' } },
 		options: { values: { ref: 'AssetOptionField' } },
 		shared: {
 			type: 'boolean',
@@ -68,19 +69,13 @@ export const Asset: JTDSchemaType<
 
 export const AssetAttachment: JTDSchemaType<
 	Types.Assets.AssetAttachment,
-	{ RegularExpression: string }
+	{ AssetIDWildcard: string }
 > = {
-	metadata: {
-		description:
-			'Describes which assets can be attached to this asset. The "canonical" example for this are Starforged\'s Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.'
-	},
+	metadata: getMetadata(JSONSchema.Assets.AssetAttachment),
 	properties: {
-		patterns: {
-			metadata: {
-				description:
-					'Regular expressions matching the IDs of assets that can be attached to this asset.'
-			},
-			elements: { ref: 'RegularExpression' }
+		assets: {
+			metadata: getMetadata(JSONSchema.Assets.AssetIDWildcard),
+			elements: { ref: 'AssetIDWildcard' }
 		}
 	},
 	optionalProperties: {
@@ -103,7 +98,7 @@ export const AssetAbility: JTDSchemaType<
 		MarkdownString: string
 		Label: string
 		AssetAbilityControlField: Types.Assets.AssetAbilityControlField
-		AssetOptionField: Types.Assets.AssetOptionField
+		AssetAbilityOptionField: Types.Assets.AssetAbilityOptionField
 		Move: Types.Moves.Move
 		MoveExtension: Types.Moves.MoveExtension
 		AssetExtension: Types.Assets.AssetExtension
@@ -117,7 +112,7 @@ export const AssetAbility: JTDSchemaType<
 	optionalProperties: {
 		name: { ref: 'Label' },
 		controls: { values: { ref: 'AssetAbilityControlField' } },
-		options: { values: { ref: 'AssetOptionField' } },
+		options: { values: { ref: 'AssetAbilityOptionField' } },
 		moves: { values: { ref: 'Move' } },
 		extend_asset: { ref: 'AssetExtension' },
 		extend_moves: { elements: { ref: 'MoveExtension' } }
@@ -134,8 +129,11 @@ export const AssetAbilityControlField: JTDSchemaType<
 > = {
 	discriminator: 'field_type',
 	mapping: {
+		//@ts-expect-error
 		checkbox: setIdRef(UnionCheckboxField, 'AssetAbilityControlFieldID'),
+		//@ts-expect-error
 		clock: setIdRef(UnionClockField, 'AssetAbilityControlFieldID'),
+		//@ts-expect-error
 		counter: setIdRef(UnionCounterField, 'AssetAbilityControlFieldID')
 	}
 }
@@ -144,10 +142,38 @@ export const AssetAbilityOptionFieldID = toJtdId(
 	JSONSchema.Assets.AssetAbilityOptionFieldID
 )
 
+export const AssetAbilityOptionField: JTDSchemaType<
+	Types.Assets.AssetAbilityOptionField,
+	{ AssetAbilityOptionFieldID: string }
+> = {
+	discriminator: 'field_type',
+	mapping: {
+		// @ts-expect-error computers were a mistake
+		text: setIdRef(UnionTextField, 'AssetAbilityOptionFieldID'),
+		// @ts-expect-error
+		select_stat: setIdRef(UnionSelectFieldStat, 'AssetAbilityOptionFieldID'),
+		// @ts-expect-error
+		select_number: setIdRef(
+			// @ts-expect-error
+
+			UnionChoicesFieldNumber,
+			'AssetAbilityOptionFieldID'
+		),
+		// @ts-expect-error
+		select_asset_extension: setIdRef(
+			// @ts-expect-error
+			UnionChoicesFieldAssetExtension,
+			'AssetAbilityOptionFieldID'
+		)
+	}
+}
+
+export const AssetOptionFieldID = toJtdId(JSONSchema.Assets.AssetOptionFieldID)
+
 export const AssetOptionField: JTDSchemaType<
 	Types.Assets.AssetOptionField,
 	{
-		AssetAbilityOptionFieldID: string
+		AssetOptionFieldID: string
 		Label: string
 		AssetExtension: Types.Assets.AssetExtension
 		StatID: string
@@ -160,25 +186,31 @@ export const AssetOptionField: JTDSchemaType<
 	discriminator: 'field_type',
 	mapping: {
 		// @ts-expect-error computers were a mistake
-		text: setIdRef(UnionTextField, 'AssetAbilityOptionFieldID'),
+		text: setIdRef(UnionTextField, 'AssetOptionFieldID'),
 		// @ts-expect-error
-		select_stat: setIdRef(UnionSelectFieldStat, 'AssetAbilityOptionFieldID'),
+		select_stat: setIdRef(UnionSelectFieldStat, 'AssetOptionFieldID'),
 		// @ts-expect-error
-		select_number: setIdRef(
-			UnionChoicesFieldNumber,
-			'AssetAbilityOptionFieldID'
-		),
+		select_number: setIdRef(UnionChoicesFieldNumber, 'AssetOptionFieldID'),
 		// @ts-expect-error
 		select_asset_extension: setIdRef(
+			// @ts-expect-error
 			UnionChoicesFieldAssetExtension,
-			'AssetAbilityOptionFieldID'
+			'AssetOptionFieldID'
 		)
 	}
 }
 
+export const AssetControlFieldID = toJtdId(
+	JSONSchema.Assets.AssetControlFieldID
+)
+
+export const AssetControlFieldIDWildcard = toJtdId(
+	JSONSchema.Assets.AssetControlFieldIDWildcard
+)
+
 export const AssetControlField: JTDSchemaType<
 	Types.Assets.AssetControlField,
-	{ AssetAbilityControlFieldID: string; Label: string }
+	{ AssetControlFieldID: string; Label: string }
 > = {
 	discriminator: 'field_type',
 	metadata: {
@@ -189,18 +221,18 @@ export const AssetControlField: JTDSchemaType<
 		condition_meter: set(
 			UnionClockField,
 			'properties.id.ref',
-			'AssetAbilityControlFieldID'
+			'AssetControlFieldID'
 		),
 		checkbox: set(
 			UnionCheckboxField,
 			'properties.id.ref',
-			'AssetAbilityControlFieldID'
+			'AssetControlFieldID'
 		),
 		// @ts-expect-error oh come ON. it can't be missing field_type, it's the discriminator!!!
 		select_asset_extension: set(
 			UnionChoicesFieldAssetExtension,
 			'properties.id.ref',
-			'AssetAbilityControlFieldID'
+			'AssetControlFieldID'
 		)
 	}
 }
@@ -209,6 +241,8 @@ export const AssetExtensionForeign: JTDSchemaType<
 	Types.Assets.AssetExtensionForeign,
 	{
 		AssetID: string
+		AssetIDWildcard: string
+
 		AssetAbilityControlFieldID: string
 		RegularExpression: string
 	}
@@ -218,7 +252,7 @@ export const AssetExtensionForeign: JTDSchemaType<
 			'Describes changes applied to an asset, usually by another asset. Unchanged properties are omitted.'
 	},
 	properties: {
-		extends: { ref: 'AssetID' },
+		extends: { ref: 'AssetIDWildcard' },
 		id: { ref: 'AssetAbilityControlFieldID' }
 	},
 	optionalProperties: {
@@ -226,8 +260,8 @@ export const AssetExtensionForeign: JTDSchemaType<
 		attachments: {
 			optionalProperties: {
 				max: { type: 'uint8' },
-				patterns: {
-					elements: { ref: 'RegularExpression' }
+				assets: {
+					elements: { ref: 'AssetIDWildcard' }
 				}
 			}
 		},
@@ -260,7 +294,7 @@ export const AssetExtension: JTDSchemaType<
 		attachments: {
 			optionalProperties: {
 				max: { type: 'uint8' },
-				patterns: {
+				assets: {
 					elements: { ref: 'RegularExpression' }
 				}
 			}

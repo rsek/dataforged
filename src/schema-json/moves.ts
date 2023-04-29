@@ -16,27 +16,30 @@ import { type PlayerConditionMeter, type PlayerStat } from 'base-types/players'
 
 export const MoveID: Schema<Types.MoveID> = {
 	type: 'string',
-	oneOf: [
-		{
-			title: 'Move ID',
-			type: 'string',
-			pattern: /^[a-z0-9][a-z0-9_]+\/moves(\/[a-z][a-z_]*[a-z]){2}$/.source,
-			examples: ['starforged/moves/adventure/face_danger']
-		},
-		{
-			title: 'Asset move ID',
-			type: 'string',
-			pattern:
-				/^[a-z0-9][a-z0-9_]+\/assets(\/[a-z][a-z_]*[a-z]){2}\/moves\/[a-z][a-z_]*[a-z]$/
-					.source,
-			examples: ['starforged/assets/module/grappler/moves/ready_grappler']
-		}
+	title: 'Move ID',
+	description: 'A move ID, for a standard move or a unique asset move',
+	pattern:
+		/^[a-z0-9_]{3,}\/(moves\/[a-z_]+\/[a-z_]+|assets\/[a-z_]+\/[a-z_]+\/moves\/[a-z_]+)$/
+			.source,
+	examples: [
+		'starforged/moves/combat/strike',
+		'starforged/assets/module/grappler/moves/ready_grappler'
 	]
+}
+
+export const MoveIDWildcard: Schema<Types.MoveID> = {
+	type: 'string',
+	title: 'Move ID (with wildcard)',
+	description: 'A move ID with wildcards',
+	pattern:
+		/^([a-z0-9_]{3,}|\*)\/(moves\/([a-z_]+|\*)\/([a-z_]+|\*)|assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/moves\/([a-z_]+|\*))$/
+			.source,
+	examples: ['*/moves/*/face_danger', '*/assets/ritual/*/moves/*']
 }
 
 export const MoveCategoryID: Schema<Types.MoveCategoryID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/collections\/moves\/[a-z][a-z_]*[a-z]$/.source,
+	pattern: /^[a-z0-9_]{3,}\/collections\/moves\/[a-z_]+$/.source,
 	examples: ['starforged/collections/moves/adventure']
 }
 
@@ -126,36 +129,17 @@ const TriggerBy: Schema<Moves.TriggerBy> = {
 	}
 }
 
-const TriggerChoiceBase: PartialSchema<Types.TriggerRollOptionChoiceBase> = {
-	type: 'object',
-	title: 'Trigger choice',
-	description:
-		'Properties common to trigger options for both action rolls and progress rolls.',
-	properties: {
-		label: refSchema<Localize.Label>('Label') as any,
-		using: { enum: ['progress', 'custom', 'stat'] } as any,
-		value: { type: 'integer', nullable: undefined as any },
-		ref: { type: 'string', nullable: undefined as any }
-	}
-}
-
 const TriggerRollOptionProgressChoice: Schema<Types.TriggerRollOptionProgressChoice> =
-	_(TriggerChoiceBase)
-		.omit('properties.using', 'properties.ref')
-		.merge({
-			title: 'Trigger choice (progress roll)',
-			description:
-				'A choice belonging to a progress trigger option (which belongs in turn to a progress move).',
-			required: ['using'],
-			properties: {
-				using: refSchema<Types.ProgressType>('ProgressType'),
-				value: {
-					$comment:
-						'Omit this for data entry. Recommended implementation: a getter that returns the appropriate integer value.'
-				}
-			}
-		})
-		.value()
+	{
+		title: 'Trigger choice (progress roll)',
+		type: 'object',
+		description:
+			'A choice belonging to a progress trigger option (which belongs in turn to a progress move).',
+		required: ['using'],
+		properties: {
+			using: refSchema<Types.ProgressType>('ProgressType')
+		}
+	}
 
 const TriggerRollOptionBase: PartialSchema<Types.TriggerRollOption> = {
 	title: 'Trigger option',
@@ -169,7 +153,8 @@ const TriggerRollOptionBase: PartialSchema<Types.TriggerRollOption> = {
 				'The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.',
 			oneOf: [
 				refSchema<Types.MoveRollMethod>('MoveRollMethod'),
-				refSchema<Types.MoveOutcomeType>('MoveOutcomeType')
+				refSchema<Types.MoveOutcomeType>('MoveOutcomeType'),
+				{ type: 'null' }
 			]
 		},
 		choices: {
@@ -193,12 +178,16 @@ export const TriggerRollOptionActionChoiceRef: Schema<Types.TriggerRollOptionAct
 			ref: {
 				description: 'Identifies the stat whose value is to be referenced.',
 				oneOf: [
-					refSchema<Assets.AssetControlFieldID>('AssetControlFieldID'),
-					refSchema<Assets.AssetOptionFieldID>('AssetOptionFieldID'),
-					refSchema<
-						| RulesetClassic.ConditionMeterAlias
-						| RulesetStarforged.ConditionMeterAlias
-					>('ConditionMeterAlias')
+					refSchema<Assets.AssetControlFieldIDWildcard>(
+						'AssetControlFieldIDWildcard'
+					),
+					refSchema<Assets.AssetOptionFieldIDWildcard>(
+						'AssetOptionFieldIDWildcard'
+					)
+					// refSchema<
+					// 	| RulesetClassic.ConditionMeterAlias
+					// 	| RulesetStarforged.ConditionMeterAlias
+					// >('ConditionMeterAlias')
 				]
 			}
 		}
@@ -261,7 +250,6 @@ const Trigger: Schema<Types.Trigger> = {
 	description: "Describes a move's trigger conditions.",
 	type: 'object',
 	required: ['text'],
-	additionalProperties: false,
 	properties: {
 		text: {
 			...refSchema<Localize.MarkdownPhrase>('MarkdownPhrase'),
@@ -270,31 +258,44 @@ const Trigger: Schema<Types.Trigger> = {
 			type: 'string',
 			pattern: /^.*\.{3}$/.source
 		},
-		roll_type: refSchema<Types.MoveRollType>('MoveRollType'),
-		roll_options: {
-			description: 'Available options for triggering this move.',
-			type: 'array',
-			nullable: true,
-			items: { type: 'object' }
+		roll_type: {
+			...refSchema<Types.MoveRollType>('MoveRollType'),
+			default: 'no_roll'
 		}
 	},
 	oneOf: [
 		{
-			title: 'Trigger (action roll)',
+			additionalProperties: false,
+			title: 'Trigger (no roll)',
 			properties: {
+				text: {},
+				roll_type: { const: 'no_roll' }
+			}
+		},
+		{
+			additionalProperties: false,
+			title: 'Trigger (action roll)',
+			required: ['roll_options', 'roll_type'],
+			properties: {
+				text: {},
 				roll_type: { const: 'action_roll' },
 				roll_options: {
+					description: 'Action roll options for triggering this move.',
 					type: 'array',
 					items: TriggerRollOptionAction
 				}
 			}
 		},
 		{
+			additionalProperties: false,
 			title: 'Trigger (progress move)',
+			required: ['roll_options', 'roll_type'],
 			properties: {
+				text: {},
 				roll_type: { const: 'progress_roll' },
 				roll_options: {
 					title: 'Trigger options (progress move)',
+					description: 'Progress roll options for triggering this move.',
 					type: 'array',
 					items: TriggerRollOptionProgress
 				}
@@ -343,10 +344,11 @@ export const TriggerExtension: Schema<
 	| Types.TriggerExtension<'action_roll'>
 	| Types.TriggerExtension<'progress_roll'>
 > = {
-	required: ['roll_options', 'roll_type'],
 	type: 'object',
+	additionalProperties: false,
+	required: ['roll_type', 'roll_options'],
 	properties: {
-		roll_type: refSchema<Types.MoveRollType>('MoveRollType'),
+		roll_type: { type: 'string', enum: ['action_roll', 'progress_roll'] },
 		roll_options: { type: 'array' } as any // handled by oneOf
 	},
 	oneOf: [
@@ -383,9 +385,10 @@ export const MoveExtension: Schema<Types.MoveExtension> = {
 	properties: {
 		// id: refSchema<string>('ID'),
 		extends: {
-			description: 'An array of Move IDs',
-			type: 'array',
-			items: refSchema<Types.MoveID>('MoveID')
+			description: 'Move IDs affected by this move extension',
+			type: ['array', 'null'] as any,
+			items: refSchema<Types.MoveID>('MoveID'),
+			nullable: true
 		},
 		trigger:
 			refSchema<Types.TriggerExtension<Types.MoveRollType>>('TriggerExtension'),

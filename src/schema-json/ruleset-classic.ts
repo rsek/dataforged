@@ -3,14 +3,6 @@ import _ from 'lodash'
 import { refSchema } from './common'
 import type * as Types from '@base-types'
 
-export const ConditionMeterAlias: Schema<Types.RulesetClassic.ConditionMeterAlias> =
-	{
-		type: 'string',
-		description:
-			'Tags used to group  non-player condition meters (for e.g. companions and vehicles) that are referenced by moves and other assets.',
-		enum: ['companion_health', 'attached_asset_meter']
-	}
-
 export const ProgressType: Schema<Types.RulesetClassic.ProgressType> = {
 	type: 'string',
 	description:
@@ -21,7 +13,8 @@ export const ProgressType: Schema<Types.RulesetClassic.ProgressType> = {
 		'scene_challenge_progress',
 		'journey_progress',
 		'delve_progress',
-		'bonds_progress'
+		'bonds_progress',
+		'failure_track'
 	]
 }
 
@@ -33,7 +26,7 @@ export const SuggestionsBase: Schema<Types.Metadata.SuggestionsBase> = {
 		assets: {
 			title: 'Suggested assets',
 			type: 'array',
-			items: refSchema<Types.Assets.AssetID>('AssetID'),
+			items: refSchema<Types.Assets.AssetIDWildcard>('AssetIDWildcard'),
 			nullable: true
 		},
 		moves: {
@@ -79,7 +72,7 @@ export const Suggestions = _.merge({}, SuggestionsBase, {
 
 export const WorldTruthID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/world_truths\/[a-z][a-z_]*[a-z]$/.source,
+	pattern: /^[a-z0-9_]{3,}\/world_truths\/[a-z_]+$/.source,
 	examples: ['ironsworn/world_truths/iron']
 }
 export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
@@ -102,8 +95,7 @@ export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
 
 export const WorldTruthOptionID: Schema<Types.Truths.TruthID> = {
 	type: 'string',
-	pattern: /^[a-z0-9][a-z0-9_]+\/world_truths\/[a-z][a-z_]*[a-z]\/[0-2]$/
-		.source,
+	pattern: /^[a-z0-9_]{3,}\/world_truths\/[a-z_]+\/[0-2]$/.source,
 	examples: ['ironsworn/world_truths/iron/0']
 }
 export const WorldTruthOption: Schema<Types.Truths.WorldTruthOption> = {

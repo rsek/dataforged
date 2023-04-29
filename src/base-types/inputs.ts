@@ -103,10 +103,10 @@ export type SelectFieldRefChoice = Simplify<
 	SelectFieldChoiceBase<Types.Metadata.ID>
 >
 
-export type SelectFieldAssetExtension = Simplify<
-	SelectFieldBase<'select_asset_extension', SelectFieldAssetExtensionChoice>
+export type SelectFieldExtendAsset = Simplify<
+	SelectFieldBase<'select_asset_extension', SelectFieldExtendAssetChoice>
 >
 
-export type SelectFieldAssetExtensionChoice = Simplify<
+export type SelectFieldExtendAssetChoice = Simplify<
 	SelectFieldChoiceBase<Types.Assets.AssetExtension>
 >

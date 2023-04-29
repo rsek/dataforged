@@ -180,6 +180,11 @@ export const TriggerRollOptionActionChoice: JTDSchemaType<
 		health: { properties: {} },
 		spirit: { properties: {} },
 		supply: { properties: {} },
+		attached_asset_ref: {
+			properties: {
+				ref: { type: 'string' }
+			}
+		},
 		ref: {
 			properties: {
 				ref: { type: 'string' }
@@ -238,7 +243,8 @@ export const ProgressType: JTDEnum<Types.Moves.ProgressType> = {
 		'discoveries_legacy',
 		'journey_progress',
 		'delve_progress',
-		'bonds_progress'
+		'bonds_progress',
+		'failure_track'
 	],
 	metadata: {
 		enumDescription: {
@@ -257,7 +263,9 @@ export const ProgressType: JTDEnum<Types.Moves.ProgressType> = {
 				'A journey progress track, started with Undertake a Journey (Ironsworn ruleset only)',
 			delve_progress:
 				'A delve site progress track, started with Discover a Site (Ironsworn ruleset only)',
-			bonds_progress: "A player's bonds progress track (Ironsworn ruleset only)"
+			bonds_progress:
+				"A player's bonds progress track (Ironsworn ruleset only)",
+			failure_track: "A player's failure track (see p. 59 of Ironsworn: Delve)"
 		}
 	}
 }

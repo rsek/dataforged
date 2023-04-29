@@ -25,6 +25,7 @@ import { type JSONSchemaType as Schema } from 'ajv'
 export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 	type: 'object',
 	required: ['id', 'field_type', 'label'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
@@ -36,6 +37,7 @@ export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 export const ClockField: Schema<Types.Inputs.ClockField> = {
 	type: 'object',
 	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
@@ -49,12 +51,13 @@ export const ClockField: Schema<Types.Inputs.ClockField> = {
 export const ConditionMeterField: Schema<Types.Inputs.ConditionMeterField> = {
 	type: 'object',
 	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'condition_meter' },
 		value: { type: 'integer' },
-		min: { type: 'integer', const: 0 },
+		min: { type: 'integer', default: 0 },
 		max: { type: 'integer' }
 	}
 }
@@ -62,6 +65,7 @@ export const ConditionMeterField: Schema<Types.Inputs.ConditionMeterField> = {
 export const CounterField: Schema<Types.Inputs.CounterField> = {
 	type: 'object',
 	required: ['id', 'field_type', 'label', 'min', 'max'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
@@ -75,6 +79,7 @@ export const CounterField: Schema<Types.Inputs.CounterField> = {
 export const TextField: Schema<Types.Inputs.TextField> = {
 	type: 'object',
 	required: ['id', 'field_type', 'label'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
@@ -84,8 +89,9 @@ export const TextField: Schema<Types.Inputs.TextField> = {
 }
 
 export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
-	required: ['id', 'label', 'field_type', 'choices'],
 	type: 'object',
+	required: ['id', 'label', 'field_type', 'choices'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
@@ -143,7 +149,7 @@ export const SelectFieldRef: Schema<Types.Inputs.SelectFieldRef> = {
 	}
 }
 
-export const SelectFieldAssetExtension: Schema<Types.Inputs.SelectFieldAssetExtension> =
+export const SelectFieldExtendAsset: Schema<Types.Inputs.SelectFieldExtendAsset> =
 	{
 		required: ['id', 'label', 'field_type', 'choices'],
 		type: 'object',
@@ -152,7 +158,7 @@ export const SelectFieldAssetExtension: Schema<Types.Inputs.SelectFieldAssetExte
 			label: refSchema<Types.Localize.Label>('Label'),
 			field_type: { type: 'string', const: 'select_asset_extension' },
 			value: { type: 'object', nullable: true },
-			choices: dictionarySchema<Types.Inputs.SelectFieldAssetExtensionChoice>({
+			choices: dictionarySchema<Types.Inputs.SelectFieldExtendAssetChoice>({
 				required: ['label', 'value'],
 				type: 'object',
 				properties: {
