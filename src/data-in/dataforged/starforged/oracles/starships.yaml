@@ -1,21 +1,18 @@
 starforged:
   _ruleset: starforged
   _source:
-    authors: [Shawn Tomkin]
+    authors:
+      - Shawn Tomkin
     title: "Ironsworn: Starforged Rulebook"
     license: https://creativecommons.org/licenses/by/4.0
     date: 2022-05-06
     url: https://creativecommons.org/licenses/by/4.0
   oracles:
     starships:
-      title:
-        canonical: Starships
-        short: Starship
+      name: Starships
       collections:
         mission:
-          title:
-            canonical: Starship Mission
-            short: Mission
+          name: Starship Mission
           _source:
             page: 328
           rendering:
@@ -48,8 +45,7 @@ starforged:
           #       region: null
           contents:
             terminus:
-              title:
-                canonical: Terminus
+              name: Terminus
               rendering: &display:Mission
                 style: embed_as_column
                 columns:
@@ -174,8 +170,7 @@ starforged:
                   high: 100
                   result: *result:RollTwice
             outlands:
-              title:
-                canonical: Outlands
+              name: Outlands
               rendering: *display:Mission
               # usage:
               #   requires:
@@ -276,8 +271,7 @@ starforged:
                 - *Mission.31
 
             expanse:
-              title:
-                canonical: Expanse
+              name: Expanse
               rendering: *display:Mission
               # usage:
               #   requires:
@@ -378,9 +372,8 @@ starforged:
                 - *Mission.31
       contents:
         type:
-          title:
-            canonical: Type
-            standard: Starship Type
+          name: Starship Type
+          canonical_name: Type
           _source:
             page: 326
           # usage:
@@ -516,8 +509,7 @@ starforged:
               # *obj:Starship
             # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
         fleet:
-          title:
-            canonical: Fleet
+          name: Fleet
           _source:
             page: 326
           # content:
@@ -552,8 +544,7 @@ starforged:
               rolls:
                 - oracle: starforged/oracles/starships/mission
         initial_contact:
-          title:
-            canonical: Initial Contact
+          name: Initial Contact
           _source:
             page: 327
           # usage:
@@ -600,8 +591,7 @@ starforged:
               result: "[⏵Derelict](starforged/oracles/derelicts)"
               # *inherit:Derelict.Starship
         first_look:
-          title:
-            canonical: First Look
+          name: First Look
           _source:
             page: 327
           # usage:
@@ -678,9 +668,7 @@ starforged:
               high: 100
               result: *result:Descriptor+Focus
         starship_name:
-          title:
-            canonical: Starship Name
-            short: Name
+          name: Starship Name
           _source:
             page: 329
           summary: |-
