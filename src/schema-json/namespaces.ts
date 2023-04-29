@@ -8,9 +8,9 @@ const NamespaceShared: JSONSchema7 = {
 	// description: TODO
 	type: 'object',
 	additionalProperties: false,
-	required: ['_ruleset', '_source'],
+	required: ['ruleset', '_source'],
 	properties: {
-		_ruleset: {
+		ruleset: {
 			description:
 				'The ruleset (Starforged or Classic ironsworn) that these elements are for.'
 		},
@@ -63,7 +63,7 @@ const NamespaceShared: JSONSchema7 = {
 
 export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 	properties: {
-		_ruleset: { const: 'classic' },
+		ruleset: { const: 'classic' },
 		encounters: {
 			title: 'Encounters',
 			type: 'object',
@@ -130,7 +130,7 @@ export const NamespaceDatasworn: JSONSchema7 = _.merge({}, NamespaceShared, {
 
 export const NamespaceDataforged: JSONSchema7 = _.merge({}, NamespaceShared, {
 	properties: {
-		_ruleset: { const: 'starforged' },
+		ruleset: { const: 'starforged' },
 		encounters: {
 			title: 'Encounters',
 			type: 'object',

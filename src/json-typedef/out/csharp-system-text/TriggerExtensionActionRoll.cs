@@ -13,7 +13,7 @@ namespace Dataforged
         [JsonPropertyName("roll_type")]
         public string RollType { get => "action_roll"; }
 
-        [JsonPropertyName("options")]
-        public IList<TriggerOptionAction> Options { get; set; }
+        [JsonPropertyName("roll_options")]
+        public IList<TriggerRollOptionAction> RollOptions { get; set; }
     }
 }

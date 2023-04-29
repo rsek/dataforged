@@ -888,7 +888,7 @@ export interface TriggerActionRoll {
    * conditions.
    */
   text: MarkdownString;
-  options?: TriggerOptionAction[];
+  roll_options?: TriggerRollOptionAction[];
 }
 
 export interface TriggerProgressRoll {
@@ -900,7 +900,7 @@ export interface TriggerProgressRoll {
    * conditions.
    */
   text: MarkdownString;
-  options?: TriggerOptionProgress[];
+  roll_options?: TriggerRollOptionProgress[];
 }
 
 /**
@@ -922,7 +922,7 @@ export type TriggerExtension = TriggerExtensionActionRoll | TriggerExtensionProg
  */
 export interface TriggerExtensionActionRoll {
   roll_type: "action_roll";
-  options: TriggerOptionAction[];
+  roll_options: TriggerRollOptionAction[];
 }
 
 /**
@@ -930,13 +930,13 @@ export interface TriggerExtensionActionRoll {
  */
 export interface TriggerExtensionProgressRoll {
   roll_type: "progress_roll";
-  options: TriggerOptionProgress[];
+  roll_options: TriggerRollOptionProgress[];
 }
 
-export interface TriggerOptionAction {
+export interface TriggerRollOptionAction {
   method: (MoveRollMethod | null);
   by?: TriggerBy;
-  choices?: TriggerOptionActionChoice[];
+  choices?: TriggerRollOptionActionChoice[];
 
   /**
    * Describes any additional trigger conditions for this trigger option
@@ -944,56 +944,55 @@ export interface TriggerOptionAction {
   text?: MarkdownString;
 }
 
-export type TriggerOptionActionChoice = TriggerOptionActionChoiceCustomValue | TriggerOptionActionChoiceEdge | TriggerOptionActionChoiceHealth | TriggerOptionActionChoiceHeart | TriggerOptionActionChoiceIron | TriggerOptionActionChoiceRef | TriggerOptionActionChoiceShadow | TriggerOptionActionChoiceSpirit | TriggerOptionActionChoiceSupply | TriggerOptionActionChoiceWits;
+export type TriggerRollOptionActionChoice = TriggerRollOptionActionChoiceCustomValue | TriggerRollOptionActionChoiceEdge | TriggerRollOptionActionChoiceHealth | TriggerRollOptionActionChoiceHeart | TriggerRollOptionActionChoiceIron | TriggerRollOptionActionChoiceRef | TriggerRollOptionActionChoiceShadow | TriggerRollOptionActionChoiceSpirit | TriggerRollOptionActionChoiceSupply | TriggerRollOptionActionChoiceWits;
 
-export interface TriggerOptionActionChoiceCustomValue {
+export interface TriggerRollOptionActionChoiceCustomValue {
   using: "custom_value";
   label: Label;
   value: number;
 }
 
-export interface TriggerOptionActionChoiceEdge {
+export interface TriggerRollOptionActionChoiceEdge {
   using: "edge";
 }
 
-export interface TriggerOptionActionChoiceHealth {
+export interface TriggerRollOptionActionChoiceHealth {
   using: "health";
 }
 
-export interface TriggerOptionActionChoiceHeart {
+export interface TriggerRollOptionActionChoiceHeart {
   using: "heart";
 }
 
-export interface TriggerOptionActionChoiceIron {
+export interface TriggerRollOptionActionChoiceIron {
   using: "iron";
 }
 
-export interface TriggerOptionActionChoiceRef {
+export interface TriggerRollOptionActionChoiceRef {
   using: "ref";
-  label: Label;
   ref: string;
 }
 
-export interface TriggerOptionActionChoiceShadow {
+export interface TriggerRollOptionActionChoiceShadow {
   using: "shadow";
 }
 
-export interface TriggerOptionActionChoiceSpirit {
+export interface TriggerRollOptionActionChoiceSpirit {
   using: "spirit";
 }
 
-export interface TriggerOptionActionChoiceSupply {
+export interface TriggerRollOptionActionChoiceSupply {
   using: "supply";
 }
 
-export interface TriggerOptionActionChoiceWits {
+export interface TriggerRollOptionActionChoiceWits {
   using: "wits";
 }
 
-export interface TriggerOptionProgress {
+export interface TriggerRollOptionProgress {
   method: (MoveRollMethod | null);
   by?: TriggerBy;
-  choices?: TriggerOptionProgressChoice[];
+  choices?: TriggerRollOptionProgressChoice[];
 
   /**
    * Describes any additional trigger conditions for this trigger option
@@ -1001,7 +1000,7 @@ export interface TriggerOptionProgress {
   text?: MarkdownString;
 }
 
-export interface TriggerOptionProgressChoice {
+export interface TriggerRollOptionProgressChoice {
   using: ProgressType;
 }
 

@@ -18,8 +18,8 @@ namespace Dataforged
         [JsonPropertyName("text")]
         public MarkdownString Text { get; set; }
 
-        [JsonPropertyName("options")]
+        [JsonPropertyName("roll_options")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<TriggerOptionAction> Options { get; set; }
+        public IList<TriggerRollOptionAction> RollOptions { get; set; }
     }
 }

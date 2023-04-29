@@ -13,8 +13,8 @@ public class TriggerActionRoll extends Trigger {
     private MarkdownString text;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("options")
-    private List<TriggerOptionAction> options;
+    @JsonProperty("roll_options")
+    private List<TriggerRollOptionAction> rollOptions;
 
     public TriggerActionRoll() {
     }
@@ -40,16 +40,16 @@ public class TriggerActionRoll extends Trigger {
     }
 
     /**
-     * Getter for options.<p>
+     * Getter for rollOptions.<p>
      */
-    public List<TriggerOptionAction> getOptions() {
-        return options;
+    public List<TriggerRollOptionAction> getRollOptions() {
+        return rollOptions;
     }
 
     /**
-     * Setter for options.<p>
+     * Setter for rollOptions.<p>
      */
-    public void setOptions(List<TriggerOptionAction> options) {
-        this.options = options;
+    public void setRollOptions(List<TriggerRollOptionAction> rollOptions) {
+        this.rollOptions = rollOptions;
     }
 }

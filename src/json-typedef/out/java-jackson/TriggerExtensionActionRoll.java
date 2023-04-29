@@ -11,23 +11,23 @@ import java.util.List;
  */
 @JsonSerialize
 public class TriggerExtensionActionRoll extends TriggerExtension {
-    @JsonProperty("options")
-    private List<TriggerOptionAction> options;
+    @JsonProperty("roll_options")
+    private List<TriggerRollOptionAction> rollOptions;
 
     public TriggerExtensionActionRoll() {
     }
 
     /**
-     * Getter for options.<p>
+     * Getter for rollOptions.<p>
      */
-    public List<TriggerOptionAction> getOptions() {
-        return options;
+    public List<TriggerRollOptionAction> getRollOptions() {
+        return rollOptions;
     }
 
     /**
-     * Setter for options.<p>
+     * Setter for rollOptions.<p>
      */
-    public void setOptions(List<TriggerOptionAction> options) {
-        this.options = options;
+    public void setRollOptions(List<TriggerRollOptionAction> rollOptions) {
+        this.rollOptions = rollOptions;
     }
 }

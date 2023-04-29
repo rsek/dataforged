@@ -13,7 +13,7 @@ namespace Dataforged
         [JsonPropertyName("roll_type")]
         public string RollType { get => "progress_roll"; }
 
-        [JsonPropertyName("options")]
-        public IList<TriggerOptionProgress> Options { get; set; }
+        [JsonPropertyName("roll_options")]
+        public IList<TriggerRollOptionProgress> RollOptions { get; set; }
     }
 }

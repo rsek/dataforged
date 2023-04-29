@@ -1205,7 +1205,7 @@ type TriggerActionRoll struct {
 	// conditions.
 	Text MarkdownString `json:"text"`
 
-	Options []TriggerOptionAction `json:"options,omitempty"`
+	RollOptions []TriggerRollOptionAction `json:"roll_options,omitempty"`
 }
 
 type TriggerProgressRoll struct {
@@ -1214,7 +1214,7 @@ type TriggerProgressRoll struct {
 	// conditions.
 	Text MarkdownString `json:"text"`
 
-	Options []TriggerOptionProgress `json:"options,omitempty"`
+	RollOptions []TriggerRollOptionProgress `json:"roll_options,omitempty"`
 }
 
 // Information on who can trigger this trigger option. Usually this is just the
@@ -1271,77 +1271,77 @@ func (v *TriggerExtension) UnmarshalJSON(b []byte) error {
 
 // Extends or upgrades an existing action roll trigger.
 type TriggerExtensionActionRoll struct {
-	Options []TriggerOptionAction `json:"options"`
+	RollOptions []TriggerRollOptionAction `json:"roll_options"`
 }
 
 // Extends or upgrades an existing action roll trigger.
 type TriggerExtensionProgressRoll struct {
-	Options []TriggerOptionProgress `json:"options"`
+	RollOptions []TriggerRollOptionProgress `json:"roll_options"`
 }
 
-type TriggerOptionAction struct {
+type TriggerRollOptionAction struct {
 	Method *MoveRollMethod `json:"method"`
 
 	By *TriggerBy `json:"by,omitempty"`
 
-	Choices []TriggerOptionActionChoice `json:"choices,omitempty"`
+	Choices []TriggerRollOptionActionChoice `json:"choices,omitempty"`
 
 	// Describes any additional trigger conditions for this trigger option
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
-type TriggerOptionActionChoice struct {
+type TriggerRollOptionActionChoice struct {
 	Using string
 
-	CustomValue TriggerOptionActionChoiceCustomValue
+	CustomValue TriggerRollOptionActionChoiceCustomValue
 
-	Edge TriggerOptionActionChoiceEdge
+	Edge TriggerRollOptionActionChoiceEdge
 
-	Health TriggerOptionActionChoiceHealth
+	Health TriggerRollOptionActionChoiceHealth
 
-	Heart TriggerOptionActionChoiceHeart
+	Heart TriggerRollOptionActionChoiceHeart
 
-	Iron TriggerOptionActionChoiceIron
+	Iron TriggerRollOptionActionChoiceIron
 
-	Ref TriggerOptionActionChoiceRef
+	Ref TriggerRollOptionActionChoiceRef
 
-	Shadow TriggerOptionActionChoiceShadow
+	Shadow TriggerRollOptionActionChoiceShadow
 
-	Spirit TriggerOptionActionChoiceSpirit
+	Spirit TriggerRollOptionActionChoiceSpirit
 
-	Supply TriggerOptionActionChoiceSupply
+	Supply TriggerRollOptionActionChoiceSupply
 
-	Wits TriggerOptionActionChoiceWits
+	Wits TriggerRollOptionActionChoiceWits
 }
 
-func (v TriggerOptionActionChoice) MarshalJSON() ([]byte, error) {
+func (v TriggerRollOptionActionChoice) MarshalJSON() ([]byte, error) {
 	switch v.Using {
 	case "custom_value":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceCustomValue }{ v.Using, v.CustomValue })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceCustomValue }{ v.Using, v.CustomValue })
 	case "edge":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceEdge }{ v.Using, v.Edge })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceEdge }{ v.Using, v.Edge })
 	case "health":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceHealth }{ v.Using, v.Health })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceHealth }{ v.Using, v.Health })
 	case "heart":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceHeart }{ v.Using, v.Heart })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceHeart }{ v.Using, v.Heart })
 	case "iron":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceIron }{ v.Using, v.Iron })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceIron }{ v.Using, v.Iron })
 	case "ref":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceRef }{ v.Using, v.Ref })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceRef }{ v.Using, v.Ref })
 	case "shadow":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceShadow }{ v.Using, v.Shadow })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceShadow }{ v.Using, v.Shadow })
 	case "spirit":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceSpirit }{ v.Using, v.Spirit })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceSpirit }{ v.Using, v.Spirit })
 	case "supply":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceSupply }{ v.Using, v.Supply })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceSupply }{ v.Using, v.Supply })
 	case "wits":
-		return json.Marshal(struct { T string `json:"using"`; TriggerOptionActionChoiceWits }{ v.Using, v.Wits })
+		return json.Marshal(struct { T string `json:"using"`; TriggerRollOptionActionChoiceWits }{ v.Using, v.Wits })
 	}
 
 	return nil, fmt.Errorf("bad Using value: %s", v.Using)
 }
 
-func (v *TriggerOptionActionChoice) UnmarshalJSON(b []byte) error {
+func (v *TriggerRollOptionActionChoice) UnmarshalJSON(b []byte) error {
 	var t struct { T string `json:"using"` }
 	if err := json.Unmarshal(b, &t); err != nil {
 		return err
@@ -1381,54 +1381,52 @@ func (v *TriggerOptionActionChoice) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-type TriggerOptionActionChoiceCustomValue struct {
+type TriggerRollOptionActionChoiceCustomValue struct {
 	Label Label `json:"label"`
 
 	Value int8 `json:"value"`
 }
 
-type TriggerOptionActionChoiceEdge struct {
+type TriggerRollOptionActionChoiceEdge struct {
 }
 
-type TriggerOptionActionChoiceHealth struct {
+type TriggerRollOptionActionChoiceHealth struct {
 }
 
-type TriggerOptionActionChoiceHeart struct {
+type TriggerRollOptionActionChoiceHeart struct {
 }
 
-type TriggerOptionActionChoiceIron struct {
+type TriggerRollOptionActionChoiceIron struct {
 }
 
-type TriggerOptionActionChoiceRef struct {
-	Label Label `json:"label"`
-
+type TriggerRollOptionActionChoiceRef struct {
 	Ref string `json:"ref"`
 }
 
-type TriggerOptionActionChoiceShadow struct {
+type TriggerRollOptionActionChoiceShadow struct {
 }
 
-type TriggerOptionActionChoiceSpirit struct {
+type TriggerRollOptionActionChoiceSpirit struct {
 }
 
-type TriggerOptionActionChoiceSupply struct {
+type TriggerRollOptionActionChoiceSupply struct {
 }
 
-type TriggerOptionActionChoiceWits struct {
+type TriggerRollOptionActionChoiceWits struct {
 }
 
-type TriggerOptionProgress struct {
+type TriggerRollOptionProgress struct {
 	Method *MoveRollMethod `json:"method"`
 
 	By *TriggerBy `json:"by,omitempty"`
 
-	Choices []TriggerOptionProgressChoice `json:"choices,omitempty"`
+	Choices []TriggerRollOptionProgressChoice `json:"choices,omitempty"`
 
 	// Describes any additional trigger conditions for this trigger option
 	Text *MarkdownString `json:"text,omitempty"`
 }
 
-type TriggerOptionProgressChoice struct {
+type TriggerRollOptionProgressChoice struct {
 	Using ProgressType `json:"using"`
 }
 

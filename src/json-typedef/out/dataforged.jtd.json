@@ -998,9 +998,9 @@
 						}
 					},
 					"optionalProperties": {
-						"options": {
+						"roll_options": {
 							"elements": {
-								"ref": "TriggerOptionAction"
+								"ref": "TriggerRollOptionAction"
 							}
 						}
 					}
@@ -1015,9 +1015,9 @@
 						}
 					},
 					"optionalProperties": {
-						"options": {
+						"roll_options": {
 							"elements": {
-								"ref": "TriggerOptionProgress"
+								"ref": "TriggerRollOptionProgress"
 							}
 						}
 					}
@@ -1037,7 +1037,7 @@
 				}
 			}
 		},
-		"TriggerOptionAction": {
+		"TriggerRollOptionAction": {
 			"properties": {
 				"method": {
 					"ref": "MoveRollMethod",
@@ -1056,12 +1056,12 @@
 				},
 				"choices": {
 					"elements": {
-						"ref": "TriggerOptionActionChoice"
+						"ref": "TriggerRollOptionActionChoice"
 					}
 				}
 			}
 		},
-		"TriggerOptionActionChoice": {
+		"TriggerRollOptionActionChoice": {
 			"discriminator": "using",
 			"mapping": {
 				"edge": {
@@ -1090,9 +1090,6 @@
 				},
 				"ref": {
 					"properties": {
-						"label": {
-							"ref": "Label"
-						},
 						"ref": {
 							"type": "string"
 						}
@@ -1110,7 +1107,7 @@
 				}
 			}
 		},
-		"TriggerOptionProgress": {
+		"TriggerRollOptionProgress": {
 			"properties": {
 				"method": {
 					"ref": "MoveRollMethod",
@@ -1129,12 +1126,12 @@
 				},
 				"choices": {
 					"elements": {
-						"ref": "TriggerOptionProgressChoice"
+						"ref": "TriggerRollOptionProgressChoice"
 					}
 				}
 			}
 		},
-		"TriggerOptionProgressChoice": {
+		"TriggerRollOptionProgressChoice": {
 			"properties": {
 				"using": {
 					"ref": "ProgressType"
@@ -1295,9 +1292,9 @@
 						"description": "Extends or upgrades an existing action roll trigger."
 					},
 					"properties": {
-						"options": {
+						"roll_options": {
 							"elements": {
-								"ref": "TriggerOptionAction"
+								"ref": "TriggerRollOptionAction"
 							}
 						}
 					}
@@ -1307,9 +1304,9 @@
 						"description": "Extends or upgrades an existing action roll trigger."
 					},
 					"properties": {
-						"options": {
+						"roll_options": {
 							"elements": {
-								"ref": "TriggerOptionProgress"
+								"ref": "TriggerRollOptionProgress"
 							}
 						}
 					}

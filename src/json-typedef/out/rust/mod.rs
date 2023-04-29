@@ -1565,9 +1565,9 @@ pub struct TriggerActionRoll {
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
-    #[serde(rename = "options")]
+    #[serde(rename = "roll_options")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub options: Option<Box<Vec<TriggerOptionAction>>>,
+    pub rollOptions: Option<Box<Vec<TriggerRollOptionAction>>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1578,9 +1578,9 @@ pub struct TriggerProgressRoll {
     #[serde(rename = "text")]
     pub text: MarkdownString,
 
-    #[serde(rename = "options")]
+    #[serde(rename = "roll_options")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub options: Option<Box<Vec<TriggerOptionProgress>>>,
+    pub rollOptions: Option<Box<Vec<TriggerRollOptionProgress>>>,
 }
 
 /// Information on who can trigger this trigger option. Usually this is just the
@@ -1608,19 +1608,19 @@ pub enum TriggerExtension {
 /// Extends or upgrades an existing action roll trigger.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerExtensionActionRoll {
-    #[serde(rename = "options")]
-    pub options: Vec<TriggerOptionAction>,
+    #[serde(rename = "roll_options")]
+    pub rollOptions: Vec<TriggerRollOptionAction>,
 }
 
 /// Extends or upgrades an existing action roll trigger.
 #[derive(Serialize, Deserialize)]
 pub struct TriggerExtensionProgressRoll {
-    #[serde(rename = "options")]
-    pub options: Vec<TriggerOptionProgress>,
+    #[serde(rename = "roll_options")]
+    pub rollOptions: Vec<TriggerRollOptionProgress>,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionAction {
+pub struct TriggerRollOptionAction {
     #[serde(rename = "method")]
     pub method: Option<Box<MoveRollMethod>>,
 
@@ -1630,7 +1630,7 @@ pub struct TriggerOptionAction {
 
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub choices: Option<Box<Vec<TriggerOptionActionChoice>>>,
+    pub choices: Option<Box<Vec<TriggerRollOptionActionChoice>>>,
 
     /// Describes any additional trigger conditions for this trigger option
     #[serde(rename = "text")]
@@ -1640,40 +1640,40 @@ pub struct TriggerOptionAction {
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "using")]
-pub enum TriggerOptionActionChoice {
+pub enum TriggerRollOptionActionChoice {
     #[serde(rename = "custom_value")]
-    CustomValue(TriggerOptionActionChoiceCustomValue),
+    CustomValue(TriggerRollOptionActionChoiceCustomValue),
 
     #[serde(rename = "edge")]
-    Edge(TriggerOptionActionChoiceEdge),
+    Edge(TriggerRollOptionActionChoiceEdge),
 
     #[serde(rename = "health")]
-    Health(TriggerOptionActionChoiceHealth),
+    Health(TriggerRollOptionActionChoiceHealth),
 
     #[serde(rename = "heart")]
-    Heart(TriggerOptionActionChoiceHeart),
+    Heart(TriggerRollOptionActionChoiceHeart),
 
     #[serde(rename = "iron")]
-    Iron(TriggerOptionActionChoiceIron),
+    Iron(TriggerRollOptionActionChoiceIron),
 
     #[serde(rename = "ref")]
-    Ref(TriggerOptionActionChoiceRef),
+    Ref(TriggerRollOptionActionChoiceRef),
 
     #[serde(rename = "shadow")]
-    Shadow(TriggerOptionActionChoiceShadow),
+    Shadow(TriggerRollOptionActionChoiceShadow),
 
     #[serde(rename = "spirit")]
-    Spirit(TriggerOptionActionChoiceSpirit),
+    Spirit(TriggerRollOptionActionChoiceSpirit),
 
     #[serde(rename = "supply")]
-    Supply(TriggerOptionActionChoiceSupply),
+    Supply(TriggerRollOptionActionChoiceSupply),
 
     #[serde(rename = "wits")]
-    Wits(TriggerOptionActionChoiceWits),
+    Wits(TriggerRollOptionActionChoiceWits),
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceCustomValue {
+pub struct TriggerRollOptionActionChoiceCustomValue {
     #[serde(rename = "label")]
     pub label: Label,
 
@@ -1682,40 +1682,37 @@ pub struct TriggerOptionActionChoiceCustomValue {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceEdge {}
+pub struct TriggerRollOptionActionChoiceEdge {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceHealth {}
+pub struct TriggerRollOptionActionChoiceHealth {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceHeart {}
+pub struct TriggerRollOptionActionChoiceHeart {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceIron {}
+pub struct TriggerRollOptionActionChoiceIron {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceRef {
-    #[serde(rename = "label")]
-    pub label: Label,
-
+pub struct TriggerRollOptionActionChoiceRef {
     #[serde(rename = "ref")]
     pub ref_: String,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceShadow {}
+pub struct TriggerRollOptionActionChoiceShadow {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceSpirit {}
+pub struct TriggerRollOptionActionChoiceSpirit {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceSupply {}
+pub struct TriggerRollOptionActionChoiceSupply {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionActionChoiceWits {}
+pub struct TriggerRollOptionActionChoiceWits {}
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionProgress {
+pub struct TriggerRollOptionProgress {
     #[serde(rename = "method")]
     pub method: Option<Box<MoveRollMethod>>,
 
@@ -1725,7 +1722,7 @@ pub struct TriggerOptionProgress {
 
     #[serde(rename = "choices")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub choices: Option<Box<Vec<TriggerOptionProgressChoice>>>,
+    pub choices: Option<Box<Vec<TriggerRollOptionProgressChoice>>>,
 
     /// Describes any additional trigger conditions for this trigger option
     #[serde(rename = "text")]
@@ -1734,7 +1731,7 @@ pub struct TriggerOptionProgress {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TriggerOptionProgressChoice {
+pub struct TriggerRollOptionProgressChoice {
     #[serde(rename = "using")]
     pub using: ProgressType,
 }
