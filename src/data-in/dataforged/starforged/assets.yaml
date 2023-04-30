@@ -36,13 +36,19 @@ starforged:
             label: integrity
             min: 0
             value: 5
-            max:
-              5
+            max: 5
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
+              cursed:
+                label: Cursed
+                field_type: checkbox
 
-              # aliases:
-              #   - vehicle_integrity
-              #   - command_vehicle_integrity
-              # conditions: [battered, cursed]
+            # aliases:
+            #   - vehicle_integrity
+            #   - command_vehicle_integrity
+            # conditions: [battered, cursed]
           abilities:
             - text: |-
                 Your armed, multipurpose starship is suited for interstellar and atmospheric flight. It can comfortably transport several people, has space for cargo, and can carry and launch support vehicles. When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets.
@@ -175,10 +181,9 @@ starforged:
             label: cargo
             max: 3
             value: 0
-            min:
-              0
+            min: 0
 
-              # TODO: key for being interchangeable with supply?
+          # TODO: key for being interchangeable with supply?
           # states:
           #   - *Broken
           abilities:
@@ -1079,9 +1084,12 @@ starforged:
             label: integrity
             max: 6
             min: 0
-            value:
-              6
-              # conditions: [battered]
+            value: 6
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
+            # conditions: [battered]
           abilities:
             - text: |-
                 Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1).
@@ -1137,10 +1145,13 @@ starforged:
             label: integrity
             max: 3
             min: 0
-            value:
-              3
+            value: 3
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
 
-              # conditions: [battered]
+          # conditions: [battered]
           abilities:
             - text: |-
                 Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1199,9 +1210,12 @@ starforged:
             label: integrity
             max: 5
             min: 0
-            value:
-              5
-              # conditions: [battered]
+            value: 5
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
+          # conditions: [battered]
           abilities:
             - text: |-
                 Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) or [Set a Course](starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.
@@ -1259,9 +1273,12 @@ starforged:
             label: integrity
             max: 4
             min: 0
-            value:
-              4
-              # conditions: [battered]
+            value: 4
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
+          # conditions: [battered]
           abilities:
             - text: |-
                 Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1322,8 +1339,11 @@ starforged:
             label: integrity
             max: 4
             min: 0
-            value:
-              4
+            value: 4
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
 
               # conditions: [battered]
           abilities:
@@ -1369,6 +1389,10 @@ starforged:
             max: 4
             min: 0
             value: 4
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
 
             # conditions: [battered]
           abilities:
@@ -1425,6 +1449,10 @@ starforged:
             max: 4
             min: 0
             value: 4
+            controls:
+              battered:
+                label: Battered
+                field_type: checkbox
 
             # conditions: [battered]
           abilities:
@@ -4077,13 +4105,15 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
             # aliases:
             #   - companion_health
             max: 4
             min: 0
             value: 4
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) or [Set a Course](starforged/moves/exploration/set_a_course), you may roll +its health.
@@ -4148,13 +4178,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 5
             min: 0
             value: 5
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your combat bot companion fights at your side. When you [Strike](starforged/moves/combat/strike) aided by the bot, add +1; if you [Clash](starforged/moves/combat/clash), take +1 momentum on a hit.
@@ -4225,13 +4255,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 3
             min: 0
             value: 3
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
@@ -4287,13 +4317,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 3
             min: 0
             value: 3
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
@@ -4340,13 +4370,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 5
             min: 0
             value: 5
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
@@ -4410,13 +4440,13 @@ starforged:
               field_type: text
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 4
             min: 0
             value: 4
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -4480,13 +4510,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 2
             min: 0
             value: 2
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
@@ -4518,20 +4548,19 @@ starforged:
           _source:
             title: 'Ironsworn: Starforged Assets'
           # tags: [mechanical_companion]
-
           options:
             name:
               field_type: text
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 3
             value: 3
             min: 0
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your survey bot companion scans the path ahead. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) (+wits) overland or within a site, add +1.
@@ -4606,13 +4635,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             max: 2
             min: 0
             value: 2
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](starforged/moves/suffer/endure_harm) or [Companion Takes a Hit](starforged/moves/suffer/companion_takes_a_hit) move. To restore the symbiote's health, you must [Endure Stress](starforged/moves/suffer/endure_stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.
@@ -4658,7 +4687,10 @@ starforged:
             min: 0
             # aliases:
             #   - companion_health
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
@@ -4722,13 +4754,13 @@ starforged:
               label: Name
           condition_meter:
             label: health
-
-            # aliases:
-            #   - companion_health
             min: 0
             max: 4
             value: 4
-            # conditions: [out of action]
+            controls:
+              out_of_action:
+                label: Out of action
+                field_type: checkbox
           abilities:
             - text: |-
                 Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), add +1.

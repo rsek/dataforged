@@ -282,6 +282,7 @@ const Trigger: Schema<Types.Trigger> = {
 			additionalProperties: false,
 			title: 'Trigger (no roll)',
 			properties: {
+				text: { type: 'string' },
 				roll_type: { const: 'no_roll' }
 			}
 		},
@@ -290,6 +291,7 @@ const Trigger: Schema<Types.Trigger> = {
 			title: 'Trigger (action roll)',
 			required: ['roll_options', 'roll_type'],
 			properties: {
+				text: { type: 'string' },
 				roll_type: { const: 'action_roll' },
 				roll_options: {
 					description: 'Action roll options for triggering this move.',
@@ -303,6 +305,7 @@ const Trigger: Schema<Types.Trigger> = {
 			title: 'Trigger (progress move)',
 			required: ['roll_options', 'roll_type'],
 			properties: {
+				text: { type: 'string' },
 				roll_type: { const: 'progress_roll' },
 				roll_options: {
 					title: 'Trigger options (progress move)',
