@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "https://ironswornrpg.com/starforged.schema.json",
-	"title": "Dataforged",
-	"description": "Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.",
+	"$id": "https://ironswornrpg.com/starforged-input.schema.json",
+	"title": "Dataforged data entry",
+	"description": "Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.",
 	"definitions": {
 		"ID": {
 			"title": "Id",
@@ -173,9 +173,7 @@
 		"AssetOptionField": {
 			"title": "Asset option field",
 			"type": "object",
-			"required": [
-				"id"
-			],
+			"required": [],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/AssetOptionFieldID"
@@ -193,9 +191,7 @@
 		"AssetControlField": {
 			"title": "Asset control field",
 			"type": "object",
-			"required": [
-				"id"
-			],
+			"required": [],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/AssetControlFieldID"
@@ -214,9 +210,7 @@
 			"title": "Asset",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"abilities"
 			],
 			"additionalProperties": false,
@@ -280,6 +274,9 @@
 				"condition_meter": {
 					"$ref": "#/definitions/AssetConditionMeter",
 					"nullable": true
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -367,7 +364,6 @@
 			"title": "Asset ability",
 			"type": "object",
 			"required": [
-				"id",
 				"text"
 			],
 			"additionalProperties": false,
@@ -445,9 +441,7 @@
 			"title": "Asset type",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -492,6 +486,13 @@
 				},
 				"member_label": {
 					"$ref": "#/definitions/Label"
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -499,7 +500,6 @@
 			"title": "Asset condition meter",
 			"type": "object",
 			"required": [
-				"id",
 				"label",
 				"min",
 				"max"
@@ -540,7 +540,6 @@
 			"title": "Asset condition meter control field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -840,9 +839,7 @@
 			"title": "Oracle table",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"table"
 			],
 			"additionalProperties": false,
@@ -889,6 +886,9 @@
 					"items": {
 						"$ref": "#/definitions/OracleTableRow"
 					}
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -943,7 +943,6 @@
 			"type": "object",
 			"description": "Represents a row from an oracle table.",
 			"required": [
-				"id",
 				"low",
 				"high",
 				"result"
@@ -1058,9 +1057,7 @@
 			"title": "Oracle collection",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -1151,6 +1148,13 @@
 					},
 					"additionalProperties": false,
 					"description": "OracleCollections contained by this OracleCollection."
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -1241,9 +1245,7 @@
 				"drives",
 				"tactics",
 				"description",
-				"quest_starter",
-				"source",
-				"id"
+				"quest_starter"
 			],
 			"properties": {
 				"name": {
@@ -1300,6 +1302,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -1363,9 +1368,7 @@
 			"title": "Move category",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -1407,6 +1410,13 @@
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -1660,11 +1670,9 @@
 			"title": "Move",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
 				"text",
-				"trigger",
-				"source"
+				"trigger"
 			],
 			"additionalProperties": false,
 			"properties": {
@@ -2102,6 +2110,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -2381,7 +2392,6 @@
 			"title": "Checkbox field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -2408,7 +2418,6 @@
 			"title": "Clock field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label",
 				"min",
@@ -2450,7 +2459,6 @@
 			"title": "Counter field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label",
 				"min",
@@ -2490,7 +2498,6 @@
 			"title": "Text field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -2516,7 +2523,6 @@
 			"title": "Select field stat",
 			"type": "object",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -2567,7 +2573,6 @@
 		"SelectFieldRef": {
 			"title": "Select field ref",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -2619,7 +2624,6 @@
 		"SelectFieldExtendAsset": {
 			"title": "Select field extend asset",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -4855,9 +4859,7 @@
 			"title": "Setting truth",
 			"type": "object",
 			"required": [
-				"id",
-				"name",
-				"source"
+				"name"
 			],
 			"properties": {
 				"id": {
@@ -4882,6 +4884,9 @@
 					"items": {
 						"$ref": "#/definitions/SettingTruthOption"
 					}
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -4897,7 +4902,6 @@
 			"title": "Setting truth option",
 			"type": "object",
 			"required": [
-				"id",
 				"description",
 				"quest_starter"
 			],
@@ -4913,6 +4917,63 @@
 				},
 				"quest_starter": {
 					"$ref": "#/definitions/MarkdownString"
+				}
+			}
+		},
+		"SourcePartial": {
+			"description": "A source data stub that inherits data from ancestor elements during post-processing.",
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					]
+				},
+				"page": {
+					"description": "The page number on which this item appears most prominently, if applicable.",
+					"type": "integer",
+					"minimum": 1
+				},
+				"url": {
+					"type": "string",
+					"description": "The URL where the source document is available.",
+					"examples": [
+						"https://ironswornrpg.com"
+					]
+				},
+				"authors": {
+					"title": "Authors",
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "string",
+						"examples": [
+							"Shawn Tomkin"
+						]
+					}
+				},
+				"date": {
+					"type": "string",
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
+				},
+				"license": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "An absolute URL pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					]
 				}
 			}
 		}

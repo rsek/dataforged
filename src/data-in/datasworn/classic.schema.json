@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "https://ironswornrpg.com/starforged.schema.json",
-	"title": "Dataforged",
-	"description": "Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.",
+	"$id": "https://ironswornrpg.com/classic-input.schema.json",
+	"title": "Datasworn data entry",
+	"description": "Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.",
 	"definitions": {
 		"ID": {
 			"title": "Id",
@@ -173,9 +173,7 @@
 		"AssetOptionField": {
 			"title": "Asset option field",
 			"type": "object",
-			"required": [
-				"id"
-			],
+			"required": [],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/AssetOptionFieldID"
@@ -193,9 +191,7 @@
 		"AssetControlField": {
 			"title": "Asset control field",
 			"type": "object",
-			"required": [
-				"id"
-			],
+			"required": [],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/AssetControlFieldID"
@@ -214,9 +210,7 @@
 			"title": "Asset",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"abilities"
 			],
 			"additionalProperties": false,
@@ -280,6 +274,9 @@
 				"condition_meter": {
 					"$ref": "#/definitions/AssetConditionMeter",
 					"nullable": true
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -367,7 +364,6 @@
 			"title": "Asset ability",
 			"type": "object",
 			"required": [
-				"id",
 				"text"
 			],
 			"additionalProperties": false,
@@ -445,9 +441,7 @@
 			"title": "Asset type",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -492,6 +486,13 @@
 				},
 				"member_label": {
 					"$ref": "#/definitions/Label"
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -499,7 +500,6 @@
 			"title": "Asset condition meter",
 			"type": "object",
 			"required": [
-				"id",
 				"label",
 				"min",
 				"max"
@@ -540,7 +540,6 @@
 			"title": "Asset condition meter control field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -840,9 +839,7 @@
 			"title": "Oracle table",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"table"
 			],
 			"additionalProperties": false,
@@ -889,6 +886,9 @@
 					"items": {
 						"$ref": "#/definitions/OracleTableRow"
 					}
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -943,7 +943,6 @@
 			"type": "object",
 			"description": "Represents a row from an oracle table.",
 			"required": [
-				"id",
 				"low",
 				"high",
 				"result"
@@ -1058,9 +1057,7 @@
 			"title": "Oracle collection",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -1151,6 +1148,13 @@
 					},
 					"additionalProperties": false,
 					"description": "OracleCollections contained by this OracleCollection."
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -1186,25 +1190,25 @@
 				"player/condition_meters/supply"
 			]
 		},
-		"EncounterNatureStarforged": {
-			"title": "Encounter nature (Starforged)",
+		"EncounterNatureClassic": {
+			"title": "Encounter nature (Classic)",
 			"type": "string",
 			"examples": [
-				"creature",
+				"Ironlander",
+				"firstborn",
+				"animal",
+				"beast",
 				"horror",
-				"human",
-				"machine",
-				"monster",
-				"vehicle"
+				"anomaly"
 			]
 		},
-		"EncounterStarforgedID": {
-			"title": "Encounter (Starforged) ID",
+		"EncounterClassicID": {
+			"title": "Encounter (Classic) ID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/encounters\\/[a-z_]+(\\/variants\\/[a-z_]+)?$",
+			"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$",
 			"examples": [
-				"starforged/encounters/chiton",
-				"starforged/encounters/chiton/variants/chiton_drone_pack"
+				"classic/encounters/firstborn/elf",
+				"delve/encounters/anomalies/glimmer"
 			]
 		},
 		"EncounterID": {
@@ -1228,32 +1232,22 @@
 				}
 			]
 		},
-		"EncounterStarforged": {
-			"title": "Encounter (Starforged)",
+		"EncounterClassic": {
+			"title": "Encounter (Classic)",
 			"type": "object",
-			"description": "An encounter entry similar to those in Chapter 4 of Ironsworn: Starforged.",
+			"description": "An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
 			"required": [
 				"name",
-				"nature",
-				"summary",
 				"rank",
 				"features",
 				"drives",
 				"tactics",
 				"description",
-				"quest_starter",
-				"source",
-				"id"
+				"quest_starter"
 			],
 			"properties": {
 				"name": {
 					"$ref": "#/definitions/Label"
-				},
-				"nature": {
-					"$ref": "#/definitions/EncounterNatureStarforged"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
 				},
 				"rank": {
 					"$ref": "#/definitions/ChallengeRank"
@@ -1276,15 +1270,6 @@
 						"$ref": "#/definitions/MarkdownString"
 					}
 				},
-				"variants": {
-					"title": "Encounter variants",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/EncounterVariantStarforged"
-						}
-					}
-				},
 				"description": {
 					"$ref": "#/definitions/MarkdownString"
 				},
@@ -1292,44 +1277,86 @@
 					"description": "A localizable markdown string describing the quest starter associated with this item.",
 					"$ref": "#/definitions/MarkdownString"
 				},
+				"your_truths": {
+					"$ref": "#/definitions/MarkdownString"
+				},
 				"source": {
 					"$ref": "#/definitions/Source"
 				},
 				"id": {
-					"$ref": "#/definitions/EncounterStarforgedID"
+					"$ref": "#/definitions/EncounterClassicID"
 				},
 				"suggestions": {
 					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
-		"EncounterVariantStarforged": {
-			"title": "Encounter variant (Starforged)",
+		"EncounterCollectionClassic": {
+			"title": "Encounter collection (Classic)",
 			"type": "object",
-			"additionalProperties": false,
 			"required": [
 				"name",
-				"nature",
-				"rank",
-				"description"
+				"contents"
 			],
+			"additionalProperties": false,
 			"properties": {
+				"id": {
+					"$ref": "#/definitions/EncounterCollectionClassicID"
+				},
 				"name": {
 					"$ref": "#/definitions/Label"
 				},
-				"nature": {
-					"$ref": "#/definitions/EncounterNatureStarforged"
+				"canonical_name": {
+					"$ref": "#/definitions/Label"
 				},
-				"rank": {
-					"$ref": "#/definitions/ChallengeRank"
+				"extends": {
+					"$ref": "#/definitions/EncounterCollectionClassicID"
+				},
+				"source": {
+					"$ref": "#/definitions/Source"
+				},
+				"summary": {
+					"$ref": "#/definitions/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/definitions/MarkdownString"
 				},
 				"suggestions": {
 					"$ref": "#/definitions/Suggestions"
+				},
+				"color": {
+					"$ref": "#/definitions/Color"
+				},
+				"contents": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/EncounterClassic"
+						}
+					},
+					"additionalProperties": false,
+					"description": "The elements contained by this collection."
+				},
+				"member_label": {
+					"$ref": "#/definitions/Label"
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
+		},
+		"EncounterCollectionClassicID": {
+			"title": "Encounter collection (Classic) ID",
+			"type": "string",
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/encounters(\\/[a-z_]+){1}$"
 		},
 		"MoveID": {
 			"title": "Move ID",
@@ -1363,9 +1390,7 @@
 			"title": "Move category",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
-				"source",
 				"contents"
 			],
 			"additionalProperties": false,
@@ -1407,6 +1432,13 @@
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
+				},
+				"$schema": {
+					"type": "string",
+					"format": "uri"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -1660,11 +1692,9 @@
 			"title": "Move",
 			"type": "object",
 			"required": [
-				"id",
 				"name",
 				"text",
-				"trigger",
-				"source"
+				"trigger"
 			],
 			"additionalProperties": false,
 			"properties": {
@@ -2102,6 +2132,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
@@ -2381,7 +2414,6 @@
 			"title": "Checkbox field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -2408,7 +2440,6 @@
 			"title": "Clock field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label",
 				"min",
@@ -2450,7 +2481,6 @@
 			"title": "Counter field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label",
 				"min",
@@ -2490,7 +2520,6 @@
 			"title": "Text field",
 			"type": "object",
 			"required": [
-				"id",
 				"field_type",
 				"label"
 			],
@@ -2516,7 +2545,6 @@
 			"title": "Select field stat",
 			"type": "object",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -2567,7 +2595,6 @@
 		"SelectFieldRef": {
 			"title": "Select field ref",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -2619,7 +2646,6 @@
 		"SelectFieldExtendAsset": {
 			"title": "Select field extend asset",
 			"required": [
-				"id",
 				"label",
 				"field_type",
 				"choices"
@@ -4792,17 +4818,48 @@
 		"ProgressType": {
 			"title": "Progress type",
 			"type": "string",
-			"description": "Standard progress track types found in Ironsworn: Starforged.",
+			"description": "Standard progress track types found in Ironsworn or Ironsworn: Delve",
 			"enum": [
 				"combat_progress",
 				"vow_progress",
 				"scene_challenge_progress",
-				"expedition_progress",
-				"connection_progress",
-				"quests_legacy",
-				"bonds_legacy",
-				"discoveries_legacy"
+				"journey_progress",
+				"delve_progress",
+				"bonds_progress",
+				"failure_track"
 			]
+		},
+		"SuggestionsBase": {
+			"title": "Suggestions base",
+			"description": "Related items that can be presented as useful shortcuts.",
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"assets": {
+					"title": "Suggested assets",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AssetIDWildcard"
+					},
+					"nullable": true
+				},
+				"moves": {
+					"title": "Suggested moves",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MoveID"
+					},
+					"nullable": true
+				},
+				"oracles": {
+					"title": "Suggested oracle tables",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OracleTableID"
+					},
+					"nullable": true
+				}
+			}
 		},
 		"Suggestions": {
 			"title": "Suggestions",
@@ -4834,34 +4891,53 @@
 					},
 					"nullable": true
 				},
+				"regions": {
+					"title": "Suggested regions",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/RegionEntryID"
+					}
+				},
 				"encounters": {
 					"title": "Suggested encounters",
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/EncounterStarforgedID"
+						"$ref": "#/definitions/EncounterClassicID"
+					}
+				},
+				"site_themes": {
+					"title": "Suggested delve site themes",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DelveSiteThemeID"
+					}
+				},
+				"site_domains": {
+					"title": "Suggested delve site domains",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DelveSiteDomainID"
 					}
 				}
 			}
 		},
-		"SettingTruthID": {
-			"title": "Setting truth ID",
+		"WorldTruthID": {
+			"title": "World truth ID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/[a-z_]+\\/setting_truths\\/[a-z_]+$",
+			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
 			"examples": [
-				"starforged/setting_truths/exodus"
+				"classic/world_truths/iron"
 			]
 		},
-		"SettingTruth": {
-			"title": "Setting truth",
+		"WorldTruth": {
+			"title": "World truth",
 			"type": "object",
 			"required": [
-				"id",
-				"name",
-				"source"
+				"name"
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/definitions/SettingTruthID"
+					"$ref": "#/definitions/WorldTruthID"
 				},
 				"name": {
 					"$ref": "#/definitions/Label"
@@ -4877,33 +4953,69 @@
 				},
 				"options": {
 					"type": "array",
-					"maxItems": 3,
 					"minItems": 3,
+					"maxItems": 3,
 					"items": {
-						"$ref": "#/definitions/SettingTruthOption"
+						"$ref": "#/definitions/WorldTruthOption"
 					}
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
 				}
 			}
 		},
-		"SettingTruthOptionID": {
-			"title": "Setting truth option ID",
+		"WorldTruthOptionID": {
+			"title": "World truth option ID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/[a-z_]+\\/setting_truths\\/[a-z_]+\\/[0-2]$",
+			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
 			"examples": [
-				"starforged/setting_truths/exodus/0"
+				"classic/world_truths/iron/0"
 			]
 		},
-		"SettingTruthOption": {
-			"title": "Setting truth option",
+		"WorldTruthOption": {
+			"title": "World truth option",
 			"type": "object",
 			"required": [
-				"id",
 				"description",
 				"quest_starter"
 			],
 			"properties": {
 				"id": {
-					"$ref": "#/definitions/SettingTruthOptionID"
+					"$ref": "#/definitions/WorldTruthOptionID"
+				},
+				"description": {
+					"$ref": "#/definitions/MarkdownString"
+				},
+				"quest_starter": {
+					"$ref": "#/definitions/MarkdownString"
+				}
+			}
+		},
+		"RegionEntryID": {
+			"title": "Region entry ID",
+			"type": "string",
+			"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
+			"examples": [
+				"classic/regions/shattered_wastes"
+			]
+		},
+		"RegionEntry": {
+			"title": "Region entry",
+			"type": "object",
+			"description": "A region entry, like the Ironlands region entries found in classic Ironsworn.",
+			"required": [
+				"name",
+				"summary",
+				"features",
+				"description",
+				"quest_starter"
+			],
+			"properties": {
+				"id": {
+					"$ref": "#/definitions/RegionEntryID"
+				},
+				"name": {
+					"$ref": "#/definitions/Label"
 				},
 				"summary": {
 					"$ref": "#/definitions/MarkdownString"
@@ -4911,8 +5023,964 @@
 				"description": {
 					"$ref": "#/definitions/MarkdownString"
 				},
+				"features": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MarkdownString"
+					}
+				},
 				"quest_starter": {
 					"$ref": "#/definitions/MarkdownString"
+				},
+				"source": {
+					"$ref": "#/definitions/Source"
+				},
+				"suggestions": {
+					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
+				}
+			}
+		},
+		"RarityID": {
+			"title": "Rarity ID",
+			"type": "string",
+			"$comment": "{namespace}/rarities/{rarity}",
+			"pattern": "^[a-z0-9_]{3,}\\/rarities(\\/[a-z_]+){1}$"
+		},
+		"Rarity": {
+			"title": "Rarity",
+			"type": "object",
+			"description": "A rarity, like those presented in Ironsworn: Delve.",
+			"required": [
+				"asset",
+				"description",
+				"name",
+				"xp_cost"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"id": {
+					"$ref": "#/definitions/RarityID"
+				},
+				"name": {
+					"$ref": "#/definitions/Label"
+				},
+				"asset": {
+					"description": "The asset enhanced by this rarity.",
+					"$ref": "#/definitions/AssetID"
+				},
+				"icon": {
+					"$ref": "#/definitions/Icon"
+				},
+				"xp_cost": {
+					"description": "From Ironsworn: Delve, p. 174:\n\n    Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n    If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
+					"type": "integer",
+					"minimum": 3,
+					"maximum": 5,
+					"default": 3
+				},
+				"description": {
+					"$ref": "#/definitions/MarkdownString"
+				},
+				"source": {
+					"$ref": "#/definitions/Source"
+				},
+				"suggestions": {
+					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
+				}
+			}
+		},
+		"DelveSiteID": {
+			"title": "Delve site ID",
+			"type": "string",
+			"$comment": "{namespace}/delve_sites/{delveSite}",
+			"pattern": "^[a-z0-9_]{3,}\\/delve_sites(\\/[a-z_]+){1}$",
+			"examples": [
+				"delve/delve_sites/alvas_rest"
+			]
+		},
+		"DelveSiteCardType": {
+			"title": "Delve site card type",
+			"type": "string",
+			"enum": [
+				"theme",
+				"domain"
+			]
+		},
+		"DelveSite": {
+			"title": "Delve site",
+			"type": "object",
+			"description": "A delve site with a theme, domain, and denizen table.",
+			"required": [
+				"name",
+				"rank",
+				"theme",
+				"domain",
+				"denizens"
+			],
+			"properties": {
+				"name": {
+					"$ref": "#/definitions/Label"
+				},
+				"rank": {
+					"$ref": "#/definitions/ChallengeRank"
+				},
+				"theme": {
+					"$ref": "#/definitions/DelveSiteThemeID"
+				},
+				"domain": {
+					"$ref": "#/definitions/DelveSiteDomainID"
+				},
+				"denizens": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/DelveSiteDenizen"
+							}
+						},
+						{
+							"type": "array",
+							"minItems": 12,
+							"maxItems": 12,
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "very_common"
+										},
+										"low": {
+											"const": 1
+										},
+										"high": {
+											"const": 27
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "common"
+										},
+										"low": {
+											"const": 28
+										},
+										"high": {
+											"const": 41
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "common"
+										},
+										"low": {
+											"const": 42
+										},
+										"high": {
+											"const": 55
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "common"
+										},
+										"low": {
+											"const": 56
+										},
+										"high": {
+											"const": 69
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "uncommon"
+										},
+										"low": {
+											"const": 70
+										},
+										"high": {
+											"const": 75
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "uncommon"
+										},
+										"low": {
+											"const": 76
+										},
+										"high": {
+											"const": 81
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "uncommon"
+										},
+										"low": {
+											"const": 82
+										},
+										"high": {
+											"const": 87
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "uncommon"
+										},
+										"low": {
+											"const": 88
+										},
+										"high": {
+											"const": 93
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "rare"
+										},
+										"low": {
+											"const": 94
+										},
+										"high": {
+											"const": 95
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "rare"
+										},
+										"low": {
+											"const": 96
+										},
+										"high": {
+											"const": 97
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "rare"
+										},
+										"low": {
+											"const": 98
+										},
+										"high": {
+											"const": 99
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"frequency": {
+											"const": "unforeseen"
+										},
+										"low": {
+											"const": 100
+										},
+										"high": {
+											"const": 100
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"source": {
+					"$ref": "#/definitions/Source"
+				},
+				"id": {
+					"$ref": "#/definitions/DelveSiteID"
+				},
+				"suggestions": {
+					"$ref": "#/definitions/Suggestions"
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
+				}
+			}
+		},
+		"DelveSiteDenizen": {
+			"title": "Delve site denizen",
+			"type": "object",
+			"description": "A denizen entry in a delve site.",
+			"required": [
+				"encounter",
+				"frequency",
+				"low",
+				"high"
+			],
+			"properties": {
+				"encounter": {
+					"description": "The ID of the relevant encounter, or `null` if no encounter has been specified.",
+					"oneOf": [
+						{
+							"$ref": "#/definitions/EncounterClassicID"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"name": {
+					"$ref": "#/definitions/Label"
+				},
+				"frequency": {
+					"title": "Frequency keyword",
+					"type": "string",
+					"enum": [
+						"very_common",
+						"common",
+						"uncommon",
+						"rare",
+						"unforeseen"
+					]
+				},
+				"low": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 100
+				},
+				"high": {
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 100
+				}
+			}
+		},
+		"DelveSiteCard": {
+			"title": "Delve site card",
+			"description": "Schema shared by delve site themes and delve site domains.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"card_type",
+				"name",
+				"summary",
+				"features",
+				"dangers"
+			],
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"$ref": "#/definitions/Label"
+				},
+				"card_type": {
+					"$ref": "#/definitions/DelveSiteCardType"
+				},
+				"icon": {
+					"$ref": "#/definitions/Icon"
+				},
+				"summary": {
+					"$ref": "#/definitions/MarkdownString"
+				},
+				"source": {
+					"$ref": "#/definitions/Source"
+				},
+				"description": {
+					"$ref": "#/definitions/MarkdownString"
+				},
+				"features": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OracleTableRow"
+					}
+				},
+				"dangers": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/OracleTableRow"
+					}
+				},
+				"_source": {
+					"$ref": "#/definitions/SourcePartial"
+				}
+			}
+		},
+		"DelveSiteThemeID": {
+			"title": "Delve site theme ID",
+			"type": "string",
+			"$comment": "{namespace}/site_themes/{siteTheme}",
+			"pattern": "^[a-z0-9_]{3,}\\/site_themes(\\/[a-z_]+){1}$"
+		},
+		"DelveSiteTheme": {
+			"title": "Delve site theme",
+			"type": "object",
+			"description": "A delve site theme card.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/DelveSiteCard"
+				},
+				{
+					"properties": {
+						"id": {
+							"$ref": "#/definitions/DelveSiteThemeID"
+						},
+						"card_type": {
+							"const": "theme"
+						},
+						"features": {
+							"type": "array",
+							"minItems": 5,
+							"maxItems": 5,
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 1
+										},
+										"high": {
+											"const": 4
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 5
+										},
+										"high": {
+											"const": 8
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 9
+										},
+										"high": {
+											"const": 12
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 13
+										},
+										"high": {
+											"const": 16
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 17
+										},
+										"high": {
+											"const": 20
+										}
+									}
+								}
+							]
+						},
+						"dangers": {
+							"type": "array",
+							"minItems": 12,
+							"maxItems": 12,
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 1
+										},
+										"high": {
+											"const": 5
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 6
+										},
+										"high": {
+											"const": 10
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 11
+										},
+										"high": {
+											"const": 12
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 13
+										},
+										"high": {
+											"const": 14
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 15
+										},
+										"high": {
+											"const": 16
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 17
+										},
+										"high": {
+											"const": 18
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 19
+										},
+										"high": {
+											"const": 20
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 21
+										},
+										"high": {
+											"const": 22
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 23
+										},
+										"high": {
+											"const": 24
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 25
+										},
+										"high": {
+											"const": 26
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 27
+										},
+										"high": {
+											"const": 28
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 29
+										},
+										"high": {
+											"const": 30
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"DelveSiteDomainID": {
+			"title": "Delve site domain ID",
+			"type": "string",
+			"$comment": "{namespace}/site_domains/{siteDomain}",
+			"pattern": "^[a-z0-9_]{3,}\\/site_domains(\\/[a-z_]+){1}$"
+		},
+		"DelveSiteDomain": {
+			"title": "Delve site domain",
+			"type": "object",
+			"description": "A delve site domain card.",
+			"allOf": [
+				{
+					"$ref": "#/definitions/DelveSiteCard"
+				},
+				{
+					"properties": {
+						"id": {
+							"$ref": "#/definitions/DelveSiteDomainID"
+						},
+						"card_type": {
+							"const": "domain"
+						},
+						"features": {
+							"type": "array",
+							"minItems": 12,
+							"maxItems": 12,
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 21
+										},
+										"high": {
+											"const": 43
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 44
+										},
+										"high": {
+											"const": 56
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 57
+										},
+										"high": {
+											"const": 64
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 65
+										},
+										"high": {
+											"const": 68
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 69
+										},
+										"high": {
+											"const": 72
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 73
+										},
+										"high": {
+											"const": 76
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 77
+										},
+										"high": {
+											"const": 80
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 81
+										},
+										"high": {
+											"const": 84
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 85
+										},
+										"high": {
+											"const": 88
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 89
+										},
+										"high": {
+											"const": 98
+										},
+										"result": {
+											"$ref": "#/definitions/MarkdownString",
+											"default": "Something unusual or unexpected"
+										},
+										"suggestions": {
+											"$ref": "#/definitions/Suggestions",
+											"default": {
+												"oracles": [
+													"classic/oracles/action_and_theme/action",
+													"classic/oracles/action_and_theme/theme",
+													"delve/oracles/feature/aspect",
+													"delve/oracles/feature/focus"
+												]
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 99
+										},
+										"high": {
+											"const": 99
+										},
+										"result": {
+											"$ref": "#/definitions/MarkdownString",
+											"default": "You transition into a new theme"
+										},
+										"suggestions": {
+											"$ref": "#/definitions/Suggestions",
+											"default": {
+												"oracles": [
+													"delve/oracles/site_nature/theme"
+												]
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 100
+										},
+										"high": {
+											"const": 100
+										},
+										"result": {
+											"$ref": "#/definitions/MarkdownString",
+											"default": "You transition into a new domain"
+										},
+										"suggestions": {
+											"$ref": "#/definitions/Suggestions",
+											"default": {
+												"oracles": [
+													"delve/oracles/site_nature/domain"
+												]
+											}
+										}
+									}
+								}
+							]
+						},
+						"dangers": {
+							"type": "array",
+							"minItems": 5,
+							"maxItems": 5,
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 31
+										},
+										"high": {
+											"const": 33
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 34
+										},
+										"high": {
+											"const": 36
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 37
+										},
+										"high": {
+											"const": 39
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 40
+										},
+										"high": {
+											"const": 42
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": {
+											"const": 43
+										},
+										"high": {
+											"const": 45
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"SourcePartial": {
+			"description": "A source data stub that inherits data from ancestor elements during post-processing.",
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string",
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					]
+				},
+				"page": {
+					"description": "The page number on which this item appears most prominently, if applicable.",
+					"type": "integer",
+					"minimum": 1
+				},
+				"url": {
+					"type": "string",
+					"description": "The URL where the source document is available.",
+					"examples": [
+						"https://ironswornrpg.com"
+					]
+				},
+				"authors": {
+					"title": "Authors",
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "string",
+						"examples": [
+							"Shawn Tomkin"
+						]
+					}
+				},
+				"date": {
+					"type": "string",
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
+				},
+				"license": {
+					"type": [
+						"string",
+						"null"
+					],
+					"description": "An absolute URL pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					]
 				}
 			}
 		}
@@ -4926,7 +5994,7 @@
 	},
 	"patternProperties": {
 		"^[a-z0-9_]{3,}$": {
-			"title": "Sourcebook (Ironsworn: Starforged)",
+			"title": "Sourcebook (Ironsworn classic)",
 			"type": "object",
 			"additionalProperties": false,
 			"required": [
@@ -4936,7 +6004,7 @@
 			"properties": {
 				"ruleset": {
 					"description": "The ruleset (Starforged or Classic ironsworn) that these elements are for.",
-					"const": "starforged"
+					"const": "classic"
 				},
 				"_source": {
 					"$ref": "#/definitions/Source",
@@ -4980,22 +6048,77 @@
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": {
-							"$ref": "#/definitions/EncounterStarforged"
+							"$ref": "#/definitions/EncounterCollectionClassic"
 						}
 					},
 					"additionalProperties": false,
 					"title": "Encounters"
 				},
-				"setting_truths": {
+				"world_truths": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": {
-							"$ref": "#/definitions/SettingTruth"
+							"$ref": "#/definitions/WorldTruth"
 						}
 					},
 					"additionalProperties": false,
-					"title": "Setting truths"
+					"title": "World truths"
+				},
+				"regions": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/RegionEntry"
+						}
+					},
+					"additionalProperties": false,
+					"title": "Regions"
+				},
+				"site_themes": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/DelveSiteTheme"
+						}
+					},
+					"additionalProperties": false,
+					"title": "Delve site themes"
+				},
+				"site_domains": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/DelveSiteDomain"
+						}
+					},
+					"additionalProperties": false,
+					"title": "Delve site domains"
+				},
+				"delve_sites": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/DelveSite"
+						}
+					},
+					"additionalProperties": false,
+					"title": "Delve sites"
+				},
+				"rarities": {
+					"type": "object",
+					"$comment": "Deserialize as a \"dictionary\"-like object.",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/definitions/Rarity"
+						}
+					},
+					"additionalProperties": false,
+					"title": "Rarities"
 				}
 			}
 		}

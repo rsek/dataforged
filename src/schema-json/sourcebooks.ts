@@ -10,7 +10,6 @@ const SourcebookBase: JSONSchema7 = {
 	additionalProperties: false,
 	required: ['ruleset', '_source'],
 	properties: {
-		$schema: {},
 		ruleset: {
 			description:
 				'The ruleset (Starforged or Classic ironsworn) that these elements are for.'
@@ -58,7 +57,7 @@ export const ClassicSourcebook: JSONSchema7 = _.merge({}, SourcebookBase, {
 	}
 })
 
-export const NamespaceDataforged: JSONSchema7 = _.merge({}, SourcebookBase, {
+export const SourcebookDataforged: JSONSchema7 = _.merge({}, SourcebookBase, {
 	title: 'Sourcebook (Ironsworn: Starforged)',
 	properties: {
 		ruleset: { const: 'starforged' },

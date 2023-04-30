@@ -18,8 +18,7 @@ Planet: &template:Planet
   oracles:
     settlements:
       _templateOracleSet: &template.info:Planet.Settlements
-        title:
-          canonical: Settlements
+
         usage:
           initial: true
           requires: *attr:Region.Any
@@ -79,8 +78,7 @@ Planet: &template:Planet
   contents:
     atmosphere:
       _templateOracleTable: &template.info:Planet.Atmosphere
-        title:
-          canonical: Atmosphere
+
         content:
           part_of_speech: [adjective]
         usage:
@@ -95,8 +93,7 @@ Planet: &template:Planet
           - [Ideal, Attributes: {Atmosphere: Ideal}, Description: "This planet's atmosphere is ideally suited to human life. It's literally a breath of fresh air."]
     observed_from_space:
       _templateOracleTable: &template.info:Planet.ObservedFromSpace
-        title:
-          canonical: Observed From Space
+
         content:
           part_of_speech: [fragment]
         usage:
@@ -115,8 +112,7 @@ Planet: &template:Planet
           - [99, 100] # Precursor Vault (orbital)
     feature:
       _templateOracleTable: &template.info:Planet.PlanetsideFeature
-        title:
-          canonical: Planetside Feature
+
           short: Feature
         content:
           part_of_speech: [fragment]
@@ -141,8 +137,7 @@ Planet: &template:Planet
           - [99, 100] # Precursor Vault (planetside)
     life:
       _templateOracleTable: &template.info:Planet.Life
-        title:
-          canonical: Life
+
         usage:
         content:
           part_of_speech: [adjective]

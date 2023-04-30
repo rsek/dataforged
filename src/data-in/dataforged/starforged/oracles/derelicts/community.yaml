@@ -11,71 +11,59 @@ collections:
       date: 2022-05-06
     collections:
       community:
-        _templateOracleSet: *template.category:Zone
-        _templateVars:
-          zone: Community
-        title:
-          canonical: Community
+        name: Community
         _source:
           page: 353
         contents:
           area:
-            _templateOracleTable: *template.info:Zone.Area
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Area
-              content:
-                - Bar or club
-                - Classroom or education
-                - Concourse or hub
-                - Entertainment
-                - Gym or fitness
-                - Market or trade
-                - Park or garden
-                - Promenade or overlook
-                - Restaurant or dining
-                - Temple or chapel
-                - *result:NewZone
-                - *result:NewZoneViaAccess
+            name: Area
+            table:
+                - result: Bar or club
+                - result: Classroom or education
+                - result: Concourse or hub
+                - result: Entertainment
+                - result: Gym or fitness
+                - result: Market or trade
+                - result: Park or garden
+                - result: Promenade or overlook
+                - result: Restaurant or dining
+                - result: Temple or chapel
+                - result: *result:NewZone
+                - result: *result:NewZoneViaAccess
           feature:
-            _templateOracleTable: *template.info:Zone.Feature
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Feature
-              content:
-                - Ad-hoc memorials
-                - Art depicting historic event
-                - Artificial environment
-                - Automated announcements
-                - Barricaded area
-                - Gaming devices or interfaces
-                - Graffiti or vandalization
-                - Guard post or surveillance
-                - Mass grave or corpses
-                - Panoramic viewport
-                - Rubble or debris
-                - *result:Descriptor+Focus
+            name: Feature
+            table:
+                - result: Ad-hoc memorials
+                - result: Art depicting historic event
+                - result: Artificial environment
+                - result: Automated announcements
+                - result: Barricaded area
+                - result: Gaming devices or interfaces
+                - result: Graffiti or vandalization
+                - result: Guard post or surveillance
+                - result: Mass grave or corpses
+                - result: Panoramic viewport
+                - result: Rubble or debris
+                - result: *result:Descriptor+Focus
           peril:
-            _templateOracleTable: *template.info:Zone.Peril
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Peril
-              content:
-                - Biological infestation
-                - Breached or broken structure
-                - Distressing signs of mass violence or death
-                - Flooded environment
-                - Foe lurks within concealment
-                - Fragile structural integrity
-                - Haunting vision of life here before the fall
-                - Hazardous environmental change
-                - Heartbreaking memento of lost lives
-                - *result:Action+Theme
-                - *result:RollTwice
+            name: Peril
+            table:
+                - result: Biological infestation
+                - result: Breached or broken structure
+                - result: Distressing signs of mass violence or death
+                - result: Flooded environment
+                - result: Foe lurks within concealment
+                - result: Fragile structural integrity
+                - result: Haunting vision of life here before the fall
+                - result: Hazardous environmental change
+                - result: Heartbreaking memento of lost lives
+                - result: *result:Action+Theme
+                - result: *result:RollTwice
           opportunity:
-            _templateOracleTable: *template.info:Zone.Opportunity
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Opportunity
-              content:
-                - Culturally significant object or artifact
-                - Salvageable goods or resources
-                - Secure area offers a moment of peace
-                - Terminal with access to site details
-                - Valuable item
+            name: Opportunity
+            table:
+                - result: Culturally significant object or artifact
+                - result: Salvageable goods or resources
+                - result: Secure area offers a moment of peace
+                - result: Terminal with access to site details
+                - result: Valuable item

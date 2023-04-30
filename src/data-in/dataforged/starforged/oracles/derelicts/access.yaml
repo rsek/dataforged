@@ -1,6 +1,6 @@
+$schema: ./derelict-zone.schema.json
 starforged:
   ruleset: starforged
-
   _source:
     authors:
       - Shawn Tomkin
@@ -10,20 +10,15 @@ starforged:
     date: 2022-05-06
   oracles:
     derelicts:
-
-      $schema: ./schema-derelict-zone.json
       name: Derelicts
       collections:
         access:
-          _templateOracleSet: *template.category:Zone
-          _templateVars:
-            zone: Access
           name: Access
           _source:
             page: 352
           contents:
             area:
-              _templateOracleTable: *template.info:Zone.Area
+              name: Area
               table:
                 - low: 1
                   high: 50
@@ -50,7 +45,7 @@ starforged:
                   high: 100
                   result: Airlock or external
             feature:
-              _templateOracleTable: *template.info:Zone.Feature
+              name: Feature
               table:
                 - low: 1
                   high: 5
@@ -113,28 +108,24 @@ starforged:
                   high: 100
                   result: *result:Descriptor+Focus
             peril:
-              _templateOracleTable: *template.info:Zone.Peril
-              _templateTableRows:
-                rolls: *template.rolls:Zone.Peril
-                content:
-                  - Alarm or failsafe is triggered
-                  - Automated defenses
-                  - Blocked or sealed path
-                  - Dreadful scene of death or violence
-                  - Foe closes in
-                  - Gear is failing or broken
-                  - Hazardous environmental change
-                  - Path is trapped
-                  - Unsettling sound or disturbance
-                  - *result:Action+Theme
-                  - *result:RollTwice
+              name: Peril
+              table:
+                  - result: Alarm or failsafe is triggered
+                  - result: Automated defenses
+                  - result: Blocked or sealed path
+                  - result: Dreadful scene of death or violence
+                  - result: Foe closes in
+                  - result: Gear is failing or broken
+                  - result: Hazardous environmental change
+                  - result: Path is trapped
+                  - result: Unsettling sound or disturbance
+                  - result: *result:Action+Theme
+                  - result: *result:RollTwice
             opportunity:
-              _templateOracleTable: *template.info:Zone.Opportunity
-              _templateTableRows:
-                rolls: *template.rolls:Zone.Opportunity
-                content:
-                  - Directions, shortcut, or alternate path
-                  - Encounter with a friendly survivor, explorer, or denizen
-                  - Hopeful signs of life
-                  - Opening to outmaneuver or escape a threat or foe
-                  - Useful equipment
+              name: Opportunity
+              table:
+                  - result: Directions, shortcut, or alternate path
+                  - result: Encounter with a friendly survivor, explorer, or denizen
+                  - result: Hopeful signs of life
+                  - result: Opening to outmaneuver or escape a threat or foe
+                  - result: Useful equipment

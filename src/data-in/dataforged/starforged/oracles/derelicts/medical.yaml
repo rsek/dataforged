@@ -11,71 +11,60 @@ collections:
       date: 2022-05-06
     collections:
       medical:
-        _templateOracleSet: *template.category:Zone
-        _templateVars:
-          zone: Medical
-        title:
-          canonical: Medical
+        name: Medical
+
         _source:
           page: 356
         contents:
           area:
-            _templateOracleTable: *template.info:Zone.Area
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Area
-              content:
-                - Crematorium
-                - Emergency or triage
-                - Isolation or containment
-                - Medical lab
-                - Medical offices
-                - Morgue
-                - Operating room
-                - Pharmacy or drug locker
-                - Prosthetics workshop
-                - Ward or clinic
-                - *result:NewZone
-                - *result:NewZoneViaAccess
+            name: Area
+            table:
+                - result: Crematorium
+                - result: Emergency or triage
+                - result: Isolation or containment
+                - result: Medical lab
+                - result: Medical offices
+                - result: Morgue
+                - result: Operating room
+                - result: Pharmacy or drug locker
+                - result: Prosthetics workshop
+                - result: Ward or clinic
+                - result: *result:NewZone
+                - result: *result:NewZoneViaAccess
           feature:
-            _templateOracleTable: *template.info:Zone.Feature
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Feature
-              content:
-                - Autopsied corpse
-                - Biological specimens
-                - Blood spatter or pools
-                - Bloody medical supplies
-                - Broken prosthetics
-                - Corpse of a healer
-                - Dissected specimen
-                - Improvised overflow beds
-                - Medical monitors
-                - Medical records or scans
-                - Stacks of body bags
-                - *result:Descriptor+Focus
+            name: Feature
+            table:
+                - result: Autopsied corpse
+                - result: Biological specimens
+                - result: Blood spatter or pools
+                - result: Bloody medical supplies
+                - result: Broken prosthetics
+                - result: Corpse of a healer
+                - result: Dissected specimen
+                - result: Improvised overflow beds
+                - result: Medical monitors
+                - result: Medical records or scans
+                - result: Stacks of body bags
+                - result: *result:Descriptor+Focus
           peril:
-            _templateOracleTable: *template.info:Zone.Peril
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Peril
-              content:
-                - Disgusting sight / smell
-                - Disturbing evidence of medical misconduct
-                - Erratic medical bots
-                - Evidence of a virulent disease
-                - Malfunctioning medical equipment
-                - Repercussions of a medical experiment
-                - Restless dead
-                - Signs of a horrific death
-                - Signs of broken quarantine
-                - *result:Action+Theme
-                - *result:RollTwice
+            name: Peril
+            table:
+                - result: Disgusting sight / smell
+                - result: Disturbing evidence of medical misconduct
+                - result: Erratic medical bots
+                - result: Evidence of a virulent disease
+                - result: Malfunctioning medical equipment
+                - result: Repercussions of a medical experiment
+                - result: Restless dead
+                - result: Signs of a horrific death
+                - result: Signs of broken quarantine
+                - result: *result:Action+Theme
+                - result: *result:RollTwice
           opportunity:
-            _templateOracleTable: *template.info:Zone.Opportunity
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Opportunity
-              content:
-                - Cache of medicine
-                - Clues to a medical mystery
-                - Helpful medical bot
-                - Unusual or rare specimen
-                - Useful medical equipment
+            name: Opportunity
+            table:
+                - result: Cache of medicine
+                - result: Clues to a medical mystery
+                - result: Helpful medical bot
+                - result: Unusual or rare specimen
+                - result: Useful medical equipment
