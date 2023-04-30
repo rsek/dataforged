@@ -1,69 +1,151 @@
-source:
-  authors:
-		- Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-collections:
-  derelicts:
-    title:
-      canonical: Derelicts
-    _source:
-      date: 2022-05-06
-    collections:
-      community:
-        name: Community
-        _source:
-          page: 353
-        contents:
-          area:
-            name: Area
-            table:
-                - result: Bar or club
-                - result: Classroom or education
-                - result: Concourse or hub
-                - result: Entertainment
-                - result: Gym or fitness
-                - result: Market or trade
-                - result: Park or garden
-                - result: Promenade or overlook
-                - result: Restaurant or dining
-                - result: Temple or chapel
-                - result: *result:NewZone
-                - result: *result:NewZoneViaAccess
-          feature:
-            name: Feature
-            table:
-                - result: Ad-hoc memorials
-                - result: Art depicting historic event
-                - result: Artificial environment
-                - result: Automated announcements
-                - result: Barricaded area
-                - result: Gaming devices or interfaces
-                - result: Graffiti or vandalization
-                - result: Guard post or surveillance
-                - result: Mass grave or corpses
-                - result: Panoramic viewport
-                - result: Rubble or debris
-                - result: *result:Descriptor+Focus
-          peril:
-            name: Peril
-            table:
-                - result: Biological infestation
-                - result: Breached or broken structure
-                - result: Distressing signs of mass violence or death
-                - result: Flooded environment
-                - result: Foe lurks within concealment
-                - result: Fragile structural integrity
-                - result: Haunting vision of life here before the fall
-                - result: Hazardous environmental change
-                - result: Heartbreaking memento of lost lives
-                - result: *result:Action+Theme
-                - result: *result:RollTwice
-          opportunity:
-            name: Opportunity
-            table:
-                - result: Culturally significant object or artifact
-                - result: Salvageable goods or resources
-                - result: Secure area offers a moment of peace
-                - result: Terminal with access to site details
-                - result: Valuable item
+starforged:
+  ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    url: https://ironswornrpg.com
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+  oracles:
+    derelicts:
+      extends: starforged/collections/oracles/derelicts
+      name: Derelicts
+      collections:
+        community:
+          name: Community
+          _source:
+            page: 353
+          contents:
+            area:
+              name: Area
+              table:
+                - low: 1
+                  high: 8
+                  result: Bar or club
+                - low: 9
+                  high: 16
+                  result: Classroom or education
+                - low: 17
+                  high: 24
+                  result: Concourse or hub
+                - low: 25
+                  high: 32
+                  result: Entertainment
+                - low: 33
+                  high: 40
+                  result: Gym or fitness
+                - low: 41
+                  high: 48
+                  result: Market or trade
+                - low: 49
+                  high: 56
+                  result: Park or garden
+                - low: 57
+                  high: 64
+                  result: Promenade or overlook
+                - low: 65
+                  high: 72
+                  result: Restaurant or dining
+                - low: 73
+                  high: 80
+                  result: Temple or chapel
+                - low: 81
+                  high: 85
+                  result: *result:NewZone
+                - low: 86
+                  high: 100
+                  result: *result:NewZoneViaAccess
+            feature:
+              name: Feature
+              table:
+                - low: 1
+                  high: 8
+                  result: Ad-hoc memorials
+                - low: 9
+                  high: 16
+                  result: Art depicting historic event
+                - low: 17
+                  high: 24
+                  result: Artificial environment
+                - low: 25
+                  high: 32
+                  result: Automated announcements
+                - low: 33
+                  high: 40
+                  result: Barricaded area
+                - low: 41
+                  high: 48
+                  result: Gaming devices or interfaces
+                - low: 49
+                  high: 56
+                  result: Graffiti or vandalization
+                - low: 57
+                  high: 64
+                  result: Guard post or surveillance
+                - low: 65
+                  high: 72
+                  result: Mass grave or corpses
+                - low: 73
+                  high: 80
+                  result: Panoramic viewport
+                - low: 81
+                  high: 88
+                  result: Rubble or debris
+                - low: 89
+                  high: 100
+                  result: *result:Descriptor+Focus
+            peril:
+              name: Peril
+              table:
+                - low: 1
+                  high: 10
+                  result: Biological infestation
+                - low: 11
+                  high: 20
+                  result: Breached or broken structure
+                - low: 21
+                  high: 30
+                  result: Distressing signs of mass violence or death
+                - low: 31
+                  high: 40
+                  result: Flooded environment
+                - low: 41
+                  high: 50
+                  result: Foe lurks within concealment
+                - low: 51
+                  high: 60
+                  result: Fragile structural integrity
+                - low: 61
+                  high: 70
+                  result: Haunting vision of life here before the fall
+                - low: 71
+                  high: 80
+                  result: Hazardous environmental change
+                - low: 81
+                  high: 90
+                  result: Heartbreaking memento of lost lives
+                - low: 91
+                  high: 98
+                  result: *result:Action+Theme
+                - low: 99
+                  high: 100
+                  result: *result:RollTwice
+            opportunity:
+              name: Opportunity
+              table:
+                - low: 1
+                  high: 20
+                  result: Culturally significant object or artifact
+                - low: 21
+                  high: 40
+                  result: Salvageable goods or resources
+                - low: 41
+                  high: 60
+                  result: Secure area offers a moment of peace
+                - low: 61
+                  high: 80
+                  result: Terminal with access to site details
+                - low: 81
+                  high: 100
+                  result: Valuable item

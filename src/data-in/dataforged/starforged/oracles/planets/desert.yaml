@@ -10,14 +10,13 @@ starforged:
   oracles:
     planets:
       extends: starforged/collections/oracles/planets
+      name: Planets
       collections:
         desert:
-          _template: PlanetOracles
           name: Desert World
-          rendering:
-            images:
-              - images/planets/desert-01.webp
-              - images/planets/desert-02.webp
+          images:
+            - images/planets/desert-01.webp
+            - images/planets/desert-02.webp
           _source:
             page: 308
           summary: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
@@ -51,55 +50,55 @@ starforged:
                   table:
                     - low: 1
                       high: 50
-                      result: &Set.0 None
+                      result: &loc.0 None
                     - low: 51
                       high: 60
-                      result: &Set.1 Orbital settlement
+                      result: &loc.1 Orbital settlement
                     - low: 61
                       high: 80
-                      result: &Set.2 Planetside settlement
+                      result: &loc.2 Planetside settlement
                     - low: 81
                       high: 92
-                      result: &Set.3 Multiple settlements
+                      result: &loc.3 Multiple settlements
                     - low: 93
                       high: 100
-                      result: &Set.4 Settlements in conflict
+                      result: &loc.4 Settlements in conflict
                 outlands:
                   name: Outlands
                   table:
                     - low: 1
                       high: 75
-                      result: *Set.0
+                      result: *loc.0
                     - low: 76
                       high: 83
-                      result: *Set.1
+                      result: *loc.1
                     - low: 84
                       high: 95
-                      result: *Set.2
+                      result: *loc.2
                     - low: 96
                       high: 98
-                      result: *Set.3
+                      result: *loc.3
                     - low: 99
                       high: 100
-                      result: *Set.4
+                      result: *loc.4
                 expanse:
                   name: Expanse
                   table:
                     - low: 1
                       high: 90
-                      result: *Set.0
+                      result: *loc.0
                     - low: 91
                       high: 96
-                      result: *Set.1
+                      result: *loc.1
                     - low: 97
                       high: 100
-                      result: *Set.2
+                      result: *loc.2
                     - low: null
                       high: null
-                      result: *Set.3
+                      result: *loc.3
                     - low: null
                       high: null
-                      result: *Set.4
+                      result: *loc.4
           contents:
             atmosphere:
               name: Atmosphere

@@ -15,12 +15,12 @@ export const Rarity: Schema<Types.Rarity> = {
 	additionalProperties: false,
 	properties: {
 		id: refSchema<Types.RarityID>('RarityID'),
-		name: { $ref: '#/definitions/Label' },
+		name: refSchema<string>('Label'),
 		asset: {
 			description: 'The asset enhanced by this rarity.',
 			$ref: '#/definitions/AssetID'
 		},
-		icon: { $ref: '#/definitions/Icon' },
+		icon: refSchema<string>('SvgImageUrl'),
 		xp_cost: {
 			description: `From Ironsworn: Delve, p. 174:
 

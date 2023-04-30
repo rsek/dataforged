@@ -110,6 +110,7 @@ export const OracleCollection: JTDSchemaType<
 		Label: string
 		Color: string
 		OracleRollTemplate: Types.Oracles.OracleRollTemplate
+		WebpImageURL: string
 	}
 > = {
 	properties: {
@@ -123,6 +124,7 @@ export const OracleCollection: JTDSchemaType<
 		extends: { ref: 'OracleCollectionID' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' },
+		images: { elements: { ref: 'WebpImageURL' } },
 		contents: { values: { ref: 'OracleTable' } },
 		collections: { values: { ref: 'OracleCollection' } },
 		rendering: { ref: 'OracleCollectionRendering' },

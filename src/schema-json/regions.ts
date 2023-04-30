@@ -22,7 +22,7 @@ export const RegionEntry: Schema<Types.RegionEntry> = {
 	],
 	properties: {
 		id: { $ref: '#/definitions/RegionEntryID' },
-		name: { $ref: '#/definitions/Label' },
+		name: refSchema<string>('Label'),
 		summary: { $ref: '#/definitions/MarkdownString' },
 		description: { $ref: '#/definitions/MarkdownString' },
 		features: {

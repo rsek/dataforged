@@ -82,7 +82,11 @@ export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'select_stat' },
-		value: { type: 'string', nullable: true },
+		value: {
+			...refSchema<Types.Players.PlayerStat>('PlayerStat'),
+			type: 'string',
+			nullable: true
+		},
 		choices: dictionarySchema<Types.Inputs.SelectFieldStatChoice>({
 			required: ['label'],
 			type: 'object',
@@ -107,7 +111,7 @@ export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
 // 			required: ['label', 'value'],
 // 			type: 'object',
 // 			properties: {
-// 				label: { type: 'string' },
+// 				label: refSchema<Types.Localize.Label>('Label'),
 // 				selected: { type: 'boolean', nullable: true },
 // 				value: { type: 'integer' }
 // 			}
@@ -127,7 +131,7 @@ export const SelectFieldRef: Schema<Types.Inputs.SelectFieldRef> = {
 			required: ['label', 'value'],
 			type: 'object',
 			properties: {
-				label: { type: 'string' },
+				label: refSchema<Types.Localize.Label>('Label'),
 				selected: { type: 'boolean', nullable: true },
 				value: { type: 'string' }
 			}
@@ -148,7 +152,7 @@ export const SelectFieldExtendAsset: Schema<Types.Inputs.SelectFieldExtendAsset>
 				required: ['label', 'value'],
 				type: 'object',
 				properties: {
-					label: { type: 'string' },
+					label: refSchema<Types.Localize.Label>('Label'),
 					selected: { type: 'boolean', nullable: true },
 					value: refSchema<Types.Assets.AssetExtension>('AssetExtension')
 				}

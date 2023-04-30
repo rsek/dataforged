@@ -6,7 +6,7 @@ export const DF_SCHEMA_OUT = path.join(
 )
 export const DF_SCHEMA_IN = path.join(
 	process.cwd(),
-	'src/data-in/dataforged/starforged.schema.json'
+	'src/data-in/dataforged/starforged-input.schema.json'
 )
 export const DS_SCHEMA_OUT = path.join(
 	process.cwd(),
@@ -14,5 +14,5 @@ export const DS_SCHEMA_OUT = path.join(
 )
 export const DS_SCHEMA_IN = path.join(
 	process.cwd(),
-	'src/data-in/datasworn/classic.schema.json'
+	'src/data-in/datasworn/classic-input.schema.json'
 )

@@ -1,4 +1,3 @@
-$schema: ./derelict-zone.schema.json
 starforged:
   ruleset: starforged
   _source:
@@ -10,6 +9,7 @@ starforged:
     date: 2022-05-06
   oracles:
     derelicts:
+      extends: starforged/collections/oracles/derelicts
       name: Derelicts
       collections:
         access:
@@ -110,22 +110,54 @@ starforged:
             peril:
               name: Peril
               table:
-                  - result: Alarm or failsafe is triggered
-                  - result: Automated defenses
-                  - result: Blocked or sealed path
-                  - result: Dreadful scene of death or violence
-                  - result: Foe closes in
-                  - result: Gear is failing or broken
-                  - result: Hazardous environmental change
-                  - result: Path is trapped
-                  - result: Unsettling sound or disturbance
-                  - result: *result:Action+Theme
-                  - result: *result:RollTwice
+                - low: 1
+                  high: 10
+                  result: Alarm or failsafe is triggered
+                - low: 11
+                  high: 20
+                  result: Automated defenses
+                - low: 21
+                  high: 30
+                  result: Blocked or sealed path
+                - low: 31
+                  high: 40
+                  result: Dreadful scene of death or violence
+                - low: 41
+                  high: 50
+                  result: Foe closes in
+                - low: 51
+                  high: 60
+                  result: Gear is failing or broken
+                - low: 61
+                  high: 70
+                  result: Hazardous environmental change
+                - low: 71
+                  high: 80
+                  result: Path is trapped
+                - low: 81
+                  high: 90
+                  result: Unsettling sound or disturbance
+                - low: 91
+                  high: 98
+                  result: *result:Action+Theme
+                - low: 99
+                  high: 100
+                  result: *result:RollTwice
             opportunity:
               name: Opportunity
               table:
-                  - result: Directions, shortcut, or alternate path
-                  - result: Encounter with a friendly survivor, explorer, or denizen
-                  - result: Hopeful signs of life
-                  - result: Opening to outmaneuver or escape a threat or foe
-                  - result: Useful equipment
+                - low: 1
+                  high: 20
+                  result: Directions, shortcut, or alternate path
+                - low: 21
+                  high: 40
+                  result: Encounter with a friendly survivor, explorer, or denizen
+                - low: 41
+                  high: 60
+                  result: Hopeful signs of life
+                - low: 61
+                  high: 80
+                  result: Opening to outmaneuver or escape a threat or foe
+                - low: 81
+                  high: 100
+                  result: Useful equipment

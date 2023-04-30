@@ -10,16 +10,13 @@ starforged:
   oracles:
     planets:
       extends: starforged/collections/oracles/planets
+      name: Planets
       collections:
         vital:
-          _template: PlanetOracles
-          title:
-            canonical: Vital World
-            short: Vital
-          rendering:
-            images:
-              - images/planets/vital-01.webp
-              - images/planets/vital-02.webp
+          name: Vital World
+          images:
+            - images/planets/vital-01.webp
+            - images/planets/vital-02.webp
           _source:
             page: 318
           summary: This diverse, life-bearing planet might provide some small measure of hope.
@@ -46,12 +43,10 @@ starforged:
             - Valinor
           collections:
             settlements:
-              title:
-                canonical: Settlements
+              name: Settlements
               contents:
                 terminus:
-                  title:
-                    canonical: Terminus
+                  name: Terminus
                   table:
                     - low: 1
                       high: 20
@@ -69,8 +64,7 @@ starforged:
                       high: 100
                       result: &Set.4 Settlements in conflict
                 outlands:
-                  title:
-                    canonical: Outlands
+                  name: Outlands
                   table:
                     - low: 1
                       high: 50
@@ -88,8 +82,7 @@ starforged:
                       high: 100
                       result: *Set.4
                 expanse:
-                  title:
-                    canonical: Expanse
+                  name: Expanse
                   table:
                     - low: 1
                       high: 80
@@ -108,8 +101,7 @@ starforged:
                       result: *Set.4
           contents:
             atmosphere:
-              title:
-                canonical: Atmosphere
+              name: Atmosphere
               table:
                 - low: null
                   high: null
@@ -130,8 +122,7 @@ starforged:
                   high: 100
                   result: Ideal
             observed_from_space:
-              title:
-                canonical: Observed From Space
+              name: Observed From Space
               table:
                 - low: 1
                   high: 11
@@ -167,8 +158,7 @@ starforged:
                   high: 100
                   result: Precursor Vault (orbital)
             feature:
-              title:
-                canonical: Planetside Feature
+              name: Planetside Feature
               table:
                 - low: 1
                   high: 7
@@ -217,8 +207,7 @@ starforged:
                   high: 100
                   result: Precursor Vault (planetside)
             life:
-              title:
-                canonical: Life
+              name: Life
               table:
                 - low: null
                   high: null
@@ -239,8 +228,7 @@ starforged:
                   high: 100
                   result: Overrun
             diversity:
-              title:
-                canonical: Diversity
+              name: Diversity
               # content:
               #   part_of_speech: [adjective]
               description: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
@@ -270,8 +258,7 @@ starforged:
                     - times: 5
                       oracle: *biome
             biomes:
-              title:
-                canonical: Biomes
+              name: Biomes
               # content:
               #   part_of_speech: [noun, common noun]
               table:

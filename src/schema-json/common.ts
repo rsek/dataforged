@@ -3,7 +3,7 @@ import { type JSONSchemaType as Schema } from 'schema-json/clean-types'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
 import _ from 'lodash'
 
-/** Pattern for keys used in dictionary objects throughout Dataforged. They're fairly restrictive so that they can be used as ID elements. */
+/** Pattern for keys used in dictionary objects throughout Dataforged; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = /^[a-z_]+$/.source
 
 export function refSchema<T>(defName: string) {

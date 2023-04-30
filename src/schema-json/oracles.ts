@@ -98,19 +98,10 @@ export const OracleCollectionColumn: Schema<
 	oneOf: OracleTableColumn.oneOf
 }
 
-const oracleTableRenderDefault: Types.Oracles.OracleTableRendering = {
-	style: 'table',
-	columns: {
-		roll: { content_type: 'range', label: 'Roll' },
-		result: { content_type: 'result', label: 'Result' }
-	}
-}
-
 export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 	{
 		type: 'object',
 		additionalProperties: false,
-		default: oracleTableRenderDefault,
 		properties: {
 			style: {
 				type: 'string',
@@ -121,21 +112,25 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
         * table: A standard table, typically with a roll column and a result column.
         `,
 				enum: ['embed_as_column', 'embed_in_row', 'table'],
-				default: oracleTableRenderDefault.style,
-				nullable: undefined as any
+				default: 'table',
+				nullable: true
 			},
 
-			icon: { $ref: '#/definitions/Icon' },
-			color: { $ref: '#/definitions/Color' },
+			icon: refSchema<string>('SvgImageUrl'),
+			color: refSchema<string>('Color'),
 			columns: {
 				type: 'object',
-				required: undefined as any,
 				patternProperties: {
 					[DICT_KEY]:
 						refSchema<Types.Oracles.OracleTableColumn>('OracleTableColumn')
 				},
-				default: oracleTableRenderDefault.columns,
-				nullable: undefined as any
+				default: {
+					columns: {
+						roll: { content_type: 'range', label: 'Roll' },
+						result: { content_type: 'result', label: 'Result' }
+					}
+				},
+				nullable: true
 			}
 		}
 	}
@@ -145,21 +140,24 @@ export const OracleTable: Schema<Types.Oracles.OracleTable> = {
 	required: ['id', 'name', 'source', 'table'],
 	additionalProperties: false,
 	properties: {
-		id: { $ref: '#/definitions/OracleTableID' },
-		name: { $ref: '#/definitions/Label' },
-		canonical_name: { $ref: '#/definitions/Label' },
+		id: refSchema<string>('OracleTableID'),
+		name: refSchema<string>('Label'),
+		canonical_name: refSchema<string>('Label'),
 		source: refSchema<Types.Metadata.Source>('Source'),
-		summary: { $ref: '#/definitions/MarkdownString' },
-		description: { $ref: '#/definitions/MarkdownString' },
-		suggestions: { $ref: '#/definitions/Suggestions' },
-		rendering: { $ref: '#/definitions/OracleTableRendering' },
+		summary: refSchema<string>('MarkdownString'),
+		description: refSchema<string>('MarkdownString'),
+		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
+		rendering: refSchema<Types.Oracles.OracleTableRendering>(
+			'OracleTableRendering'
+		),
 		match: {
 			title: 'Oracle match behavior',
 			description: 'A handful of oracles have special behavior on a match.',
 			type: 'object',
 			required: ['text'],
-			properties: { text: { $ref: '#/definitions/MarkdownString' } },
-			nullable: undefined as any
+			additionalProperties: false,
+			properties: { text: refSchema<string>('MarkdownString') },
+			nullable: true
 		},
 		table: {
 			type: 'array',
@@ -178,14 +176,14 @@ export const OracleTableRoll: Schema<Types.Oracles.OracleTableRoll> = {
 				{ type: 'null' },
 				refSchema<Types.Oracles.OracleTableID>('OracleTableID')
 			],
-			nullable: undefined as any
+			nullable: true
 		},
 		times: {
 			description: 'The number of times to roll.',
 			type: 'integer',
 			minimum: 1,
 			default: 1,
-			nullable: undefined as any
+			nullable: true
 		},
 		method: refSchema<Types.Oracles.OracleTableRollMethod>(
 			'OracleTableRollMethod'
@@ -234,7 +232,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			title: 'Result text',
 			...refSchema<Types.Localize.MarkdownString>('MarkdownString')
 		},
-		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
+		icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
 		summary: {
 			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			title: 'Summary text',
@@ -311,16 +309,14 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 		'OracleTable',
 		'OracleCollectionID',
 		{
-			additionalProperties: false,
 			properties: {
-				// template:
-				// 	refSchema<Types.Oracles.OracleRollTemplate>('OracleRollTemplate'),
 				rendering: {
 					type: 'object',
 					description:
 						'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
+					additionalProperties: false,
 					properties: {
-						icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
+						icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
 						style: {
 							oneOf: [
 								{ enum: ['multi_table'], type: 'string' },
@@ -340,7 +336,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 						}
 					}
 				},
-				sample_names: { type: 'array', items: { type: 'string' } },
+				images: { type: 'array', items: refSchema<string>('WebpImageURL') },
+				sample_names: { type: 'array', items: refSchema<string>('Label') },
 				collections: dictionarySchema(
 					refSchema<Types.Oracles.OracleCollection>(`OracleCollection`),
 					{
@@ -348,7 +345,8 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 					}
 				)
 			}
-		}
+		},
+		true
 	)
 
 // export const OracleCollectionExtension: Schema<Types.Oracles.OracleCollectionExtension> =

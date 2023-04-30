@@ -1,70 +1,152 @@
-source:
-  authors:
-		- Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-collections:
-  derelicts:
-    title:
-      canonical: Derelicts
-    _source:
-      date: 2022-05-06
-    collections:
-      living:
-        name: Living
+starforged:
+  ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    url: https://ironswornrpg.com
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+  oracles:
+    derelicts:
+      extends: starforged/collections/oracles/derelicts
+      name: Derelicts
+      collections:
+        living:
+          name: Living
 
-        _source:
-          page: 355
-        contents:
-          area:
-            name: Area
-            table:
-                - result: Food storage
-                - result: Galley or kitchen
-                - result: Laundry
-                - result: Locker room or storage
-                - result: Mess hall or dining
-                - result: Observation lounge
-                - result: Quarters (communal)
-                - result: Quarters (individual)
-                - result: Restroom or showers
-                - result: Sleeping pods
-                - result: *result:NewZone
-                - result: *result:NewZoneViaAccess
-          feature:
-            name: Feature
-            table:
-                - result: Abandoned pet
-                - result: Audible music
-                - result: Cherished personal item
-                - result: Failed barricade
-                - result: Half-eaten food
-                - result: Messages from loved ones
-                - result: Ransacked belongings
-                - result: Remains of the dead
-                - result: Scuttling vermin
-                - result: Shrine or altar
-                - result: Unusual art
-                - result: *result:Descriptor+Focus
-          peril:
-            name: Peril
-            table:
-                - result: Booby trap
-                - result: Distressing written message
-                - result: Disturbing evidence of exploitive living conditions
-                - result: Dreadful scene of death or violence
-                - result: Lured into danger by signs of life
-                - result: Recorded message reveals a threat or complication
-                - result: Sealed door or hatch blocks access
-                - result: Signs of unwelcome invaders
-                - result: Unsettling sound or disturbance
-                - result: *result:Action+Theme
-                - result: *result:RollTwice
-          opportunity:
-            name: Opportunity
-            table:
-                - result: Culturally significant object or artifact
-                - result: Hidden stash of valuable contraband
-                - result: Intact barricade or protected area
-                - result: Recorded message reveals helpful aspects of this site
-                - result: Useful personal gear
+          _source:
+            page: 355
+          contents:
+            area:
+              name: Area
+              table:
+                - low: 1
+                  high: 8
+                  result: Food storage
+                - low: 9
+                  high: 16
+                  result: Galley or kitchen
+                - low: 17
+                  high: 24
+                  result: Laundry
+                - low: 25
+                  high: 32
+                  result: Locker room or storage
+                - low: 33
+                  high: 40
+                  result: Mess hall or dining
+                - low: 41
+                  high: 48
+                  result: Observation lounge
+                - low: 49
+                  high: 56
+                  result: Quarters (communal)
+                - low: 57
+                  high: 64
+                  result: Quarters (individual)
+                - low: 65
+                  high: 72
+                  result: Restroom or showers
+                - low: 73
+                  high: 80
+                  result: Sleeping pods
+                - low: 81
+                  high: 85
+                  result: *result:NewZone
+                - low: 86
+                  high: 100
+                  result: *result:NewZoneViaAccess
+            feature:
+              name: Feature
+              table:
+                - low: 1
+                  high: 8
+                  result: Abandoned pet
+                - low: 9
+                  high: 16
+                  result: Audible music
+                - low: 17
+                  high: 24
+                  result: Cherished personal item
+                - low: 25
+                  high: 32
+                  result: Failed barricade
+                - low: 33
+                  high: 40
+                  result: Half-eaten food
+                - low: 41
+                  high: 48
+                  result: Messages from loved ones
+                - low: 49
+                  high: 56
+                  result: Ransacked belongings
+                - low: 57
+                  high: 64
+                  result: Remains of the dead
+                - low: 65
+                  high: 72
+                  result: Scuttling vermin
+                - low: 73
+                  high: 80
+                  result: Shrine or altar
+                - low: 81
+                  high: 88
+                  result: Unusual art
+                - low: 89
+                  high: 100
+                  result: *result:Descriptor+Focus
+            peril:
+              name: Peril
+              table:
+                - low: 1
+                  high: 10
+                  result: Booby trap
+                - low: 11
+                  high: 20
+                  result: Distressing written message
+                - low: 21
+                  high: 30
+                  result: Disturbing evidence of exploitive living conditions
+                - low: 31
+                  high: 40
+                  result: Dreadful scene of death or violence
+                - low: 41
+                  high: 50
+                  result: Lured into danger by signs of life
+                - low: 51
+                  high: 60
+                  result: Recorded message reveals a threat or complication
+                - low: 61
+                  high: 70
+                  result: Sealed door or hatch blocks access
+                - low: 71
+                  high: 80
+                  result: Signs of unwelcome invaders
+                - low: 81
+                  high: 90
+                  result: Unsettling sound or disturbance
+                - low: 91
+                  high: 98
+                  result: *result:Action+Theme
+                - low: 99
+                  high: 100
+                  result: *result:RollTwice
+            opportunity:
+              name: Opportunity
+              table:
+                - low: 1
+                  high: 20
+                  result: Culturally significant object or artifact
+                - low: 21
+                  high: 40
+                  result: Hidden stash of valuable contraband
+                - low: 41
+                  high: 60
+                  result: Intact barricade or protected area
+                - low: 61
+                  high: 80
+                  result: Recorded message reveals helpful aspects of this site
+                - low: 81
+                  high: 100
+                  result: Useful personal gear

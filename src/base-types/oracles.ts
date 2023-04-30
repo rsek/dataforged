@@ -96,6 +96,7 @@ export interface OracleCollection
 	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
 	extends?: OracleCollectionID
 	rendering?: OracleCollectionRendering
+	images?: string[]
 	sample_names?: Localize.Label[]
 	collections?: Record<string, this>
 	// template?: OracleRollTemplate
