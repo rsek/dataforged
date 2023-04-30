@@ -116,7 +116,7 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 				nullable: true
 			},
 
-			icon: refSchema<string>('SvgImageUrl'),
+			icon: refSchema<string>('SvgImageURL'),
 			color: refSchema<string>('Color'),
 			columns: {
 				type: 'object',
@@ -232,7 +232,7 @@ export const OracleTableRow: Schema<Types.Oracles.OracleTableRow> = {
 			title: 'Result text',
 			...refSchema<Types.Localize.MarkdownString>('MarkdownString')
 		},
-		icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
+		icon: refSchema<Types.Metadata.SvgImageURL>('SvgImageURL'),
 		summary: {
 			...refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 			title: 'Summary text',
@@ -316,7 +316,7 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 						'Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.',
 					additionalProperties: false,
 					properties: {
-						icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
+						icon: refSchema<Types.Metadata.SvgImageURL>('SvgImageURL'),
 						style: {
 							oneOf: [
 								{ enum: ['multi_table'], type: 'string' },

@@ -196,7 +196,7 @@ export class OracleTableRendering
 {
 	@Metadata.IsIcon()
 	@IsOptional()
-	icon?: Types.Metadata.SvgImageUrl
+	icon?: Types.Metadata.SvgImageURL
 
 	@JSONSchema({
 		description: `The style used to render this table in the source material.

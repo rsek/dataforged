@@ -2,7 +2,7 @@ import { type Assets, type Moves, type Oracles } from '@base-types'
 
 export type Ruleset = 'classic' | 'starforged'
 export type ID = string
-export type SvgImageUrl = string
+export type SvgImageURL = string
 export type WebpImageURL = string
 export type Color = string
 

@@ -1,11 +1,11 @@
 import { type Metadata as Types } from '@base-types'
 import { type JSONSchemaType as Schema } from 'ajv'
 
-export const ID: Schema<Types.ID> = {
-	type: 'string',
-	$comment: '{namespace}/{element}/{*}',
-	pattern: /^[a-z0-9_]{3,}\/(\/[a-z_]+){2,}$/.source
-}
+// export const ID: Schema<Types.ID> = {
+// 	type: 'string',
+// 	$comment: '{namespace}/{element}/{*}',
+// 	pattern: /^[a-z0-9_]{3,}\/(\/[a-z_]+){2,}$/.source
+// }
 
 export const Ruleset: Schema<Types.Ruleset> = {
 	type: 'string',
@@ -19,7 +19,7 @@ export const Color: Schema<Types.Color> = {
 		'A CSS hexadecimal color. Use it to provide thematic accents when rendering this item.'
 }
 
-export const SvgImageUrl: Schema<Types.SvgImageUrl> = {
+export const SvgImageURL: Schema<Types.SvgImageURL> = {
 	type: 'string',
 	format: 'url',
 	description: 'A relative URL pointing to an SVG icon.',

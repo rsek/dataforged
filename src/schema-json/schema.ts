@@ -56,7 +56,8 @@ function toDataEntryDefinitions(
 }
 
 export const Dataforged: JSONSchema7 = {
-	// $schema,
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	$id: 'https://ironswornrpg.com/starforged.schema.json',
 	title: 'Dataforged',
 	description:
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
@@ -69,7 +70,8 @@ export const Dataforged: JSONSchema7 = {
 }
 
 export const DataforgedInput: JSONSchema7 = {
-	// $schema,
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	$id: 'https://ironswornrpg.com/starforged-input.schema.json',
 	title: 'Dataforged data entry',
 	description:
 		'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
@@ -80,7 +82,8 @@ export const DataforgedInput: JSONSchema7 = {
 }
 
 export const Datasworn: JSONSchema7 = {
-	// $schema,
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	$id: 'https://ironswornrpg.com/classic.schema.json',
 	title: 'Datasworn',
 	description: Dataforged.description?.replace(
 		'Ironsworn: Starforged',
@@ -95,7 +98,8 @@ export const Datasworn: JSONSchema7 = {
 }
 
 export const DataswornInput: JSONSchema7 = {
-	// $schema,
+	$schema: 'http://json-schema.org/draft-07/schema#',
+	$id: 'https://ironswornrpg.com/classic-input.schema.json',
 	title: DataforgedInput.title?.replace('Dataforged', 'Datasworn'),
 	description: DataforgedInput.description?.replace('Dataforged', 'Datasworn'),
 	definitions: toDataEntryDefinitions(defsClassic),

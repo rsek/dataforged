@@ -20,7 +20,7 @@ export const Rarity: Schema<Types.Rarity> = {
 			description: 'The asset enhanced by this rarity.',
 			$ref: '#/definitions/AssetID'
 		},
-		icon: refSchema<string>('SvgImageUrl'),
+		icon: refSchema<string>('SvgImageURL'),
 		xp_cost: {
 			description: `From Ironsworn: Delve, p. 174:
 

@@ -81,7 +81,7 @@ export const WorldTruth: Schema<Types.Truths.WorldTruth> = {
 	properties: {
 		id: refSchema<Types.Truths.TruthID>('WorldTruthID'),
 		name: refSchema<Types.Localize.Label>('Label'),
-		icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
+		icon: refSchema<Types.Metadata.SvgImageURL>('SvgImageURL'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
 		source: refSchema<Types.Metadata.Source>('Source'),
 		options: {
