@@ -54,8 +54,23 @@ const defs: Record<string, JSONSchema7> = {
 	OracleTableTemplate
 }
 
+function purgeKeys(obj: unknown, ...keys: string[]) {
+	if (Array.isArray(obj))
+		obj.forEach((item) => {
+			purgeKeys(item, ...keys)
+		})
+	if (typeof obj === 'object')
+		_.forEach(obj as any, (v, k) => {
+			if (keys.includes(k) && v != null) {
+				;(obj as any)[k] = undefined
+			}
+			if (v != null) v = purgeKeys(v, ...keys)
+		})
+	return obj
+}
+
 function getStarforgedDefs() {
-	return _({
+	const result = _({
 		...defs,
 		...RulesetStarforged
 	})
@@ -64,10 +79,15 @@ function getStarforgedDefs() {
 		)
 		.omitBy((_, key) => key.includes('Classic'))
 		.value() as Record<string, JSONSchema7>
+	// strip these manually because:
+	// 1) AJV demands that i put them in their schema (when they're unnecessary)
+	// 2) AJV then makes me jump thru hoops to validate them
+	// 3) they're not even part of the json schema spec!!!
+	return purgeKeys(result, 'nullable')
 }
 
 function getClassicDefs() {
-	return _({
+	const result = _({
 		...defs,
 		...RulesetClassic,
 		...Encounters,
@@ -80,6 +100,7 @@ function getClassicDefs() {
 		)
 		.omitBy((_, key) => key.includes('Starforged'))
 		.value() as Record<string, JSONSchema7>
+	return purgeKeys(result, 'nullable')
 }
 
 export type DefsClassic = ReturnType<typeof getStarforgedDefs>

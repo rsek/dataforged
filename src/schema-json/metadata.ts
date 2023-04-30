@@ -19,14 +19,14 @@ export const Color: Schema<Types.Color> = {
 		'A CSS hexadecimal color. Use it to provide thematic accents when rendering this item.'
 }
 
-export const Icon: Schema<Types.SvgImageUrl> = {
+export const SvgImageUrl: Schema<Types.SvgImageUrl> = {
 	type: 'string',
 	format: 'url',
 	description: 'A relative URL pointing to an SVG icon.',
 	pattern: /^.+\.svg$/.source
 }
 
-export const Image: Schema<Types.WebpImageURL> = {
+export const WebpImageURL: Schema<Types.WebpImageURL> = {
 	type: 'string',
 	format: 'url',
 	description: 'A relative URL pointing to a WEBP image.',

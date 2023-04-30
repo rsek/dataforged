@@ -208,7 +208,7 @@ export const TriggerRollOptionActionChoiceCustomValue: Schema<Types.TriggerRollO
 		required: ['using', 'label', 'value'],
 		type: 'object',
 		properties: {
-			label: { $ref: '#/definitions/Label' },
+			label: refSchema<string>('Label'),
 			using: { type: 'string', const: 'custom_value' },
 			value: { type: 'integer' }
 		}
@@ -229,6 +229,7 @@ export const TriggerRollOptionActionChoiceAttachedAssetRef: Schema<Types.Trigger
 	}
 
 export const TriggerRollOptionAction = _.merge({}, TriggerRollOptionBase, {
+	title: 'Roll option for action roll trigger',
 	properties: {
 		method: { default: 'any' },
 		choices: {
@@ -248,7 +249,7 @@ export const TriggerRollOptionAction = _.merge({}, TriggerRollOptionBase, {
 })
 
 export const TriggerRollOptionProgress = _.merge({}, TriggerRollOptionBase, {
-	title: 'Trigger option (progress move)',
+	title: 'Roll option for progress roll trigger',
 	properties: {
 		method: { default: 'any' },
 		choices: {
@@ -281,7 +282,6 @@ const Trigger: Schema<Types.Trigger> = {
 			additionalProperties: false,
 			title: 'Trigger (no roll)',
 			properties: {
-				text: {},
 				roll_type: { const: 'no_roll' }
 			}
 		},
@@ -290,7 +290,6 @@ const Trigger: Schema<Types.Trigger> = {
 			title: 'Trigger (action roll)',
 			required: ['roll_options', 'roll_type'],
 			properties: {
-				text: {},
 				roll_type: { const: 'action_roll' },
 				roll_options: {
 					description: 'Action roll options for triggering this move.',
@@ -304,7 +303,6 @@ const Trigger: Schema<Types.Trigger> = {
 			title: 'Trigger (progress move)',
 			required: ['roll_options', 'roll_type'],
 			properties: {
-				text: {},
 				roll_type: { const: 'progress_roll' },
 				roll_options: {
 					title: 'Trigger options (progress move)',

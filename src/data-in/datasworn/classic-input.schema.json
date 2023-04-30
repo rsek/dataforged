@@ -21,15 +21,15 @@
 			"pattern": "^#([0-9A-f]{2}){3}$",
 			"description": "A CSS hexadecimal color. Use it to provide thematic accents when rendering this item."
 		},
-		"Icon": {
-			"title": "Icon",
+		"SvgImageUrl": {
+			"title": "Svg image url",
 			"type": "string",
 			"format": "url",
 			"description": "A relative URL pointing to an SVG icon.",
 			"pattern": "^.+\\.svg$"
 		},
-		"Image": {
-			"title": "Image",
+		"WebpImageURL": {
+			"title": "Webp image url",
 			"type": "string",
 			"format": "url",
 			"description": "A relative URL pointing to a WEBP image.",
@@ -67,10 +67,7 @@
 					"title": "Authors",
 					"type": "array",
 					"minItems": 1,
-					"items": {
-						"type": "string",
-						"examples": ["Shawn Tomkin"]
-					}
+					"items": { "type": "string", "examples": ["Shawn Tomkin"] }
 				},
 				"date": {
 					"type": "string",
@@ -152,36 +149,20 @@
 			"title": "Asset option field",
 			"type": "object",
 			"required": [],
-			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetOptionFieldID"
-				}
-			},
+			"properties": { "id": { "$ref": "#/definitions/AssetOptionFieldID" } },
 			"oneOf": [
-				{
-					"$ref": "#/definitions/TextField"
-				},
-				{
-					"$ref": "#/definitions/SelectFieldStat"
-				}
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/SelectFieldStat" }
 			]
 		},
 		"AssetControlField": {
 			"title": "Asset control field",
 			"type": "object",
 			"required": [],
-			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetControlFieldID"
-				}
-			},
+			"properties": { "id": { "$ref": "#/definitions/AssetControlFieldID" } },
 			"oneOf": [
-				{
-					"$ref": "#/definitions/CheckboxField"
-				},
-				{
-					"$ref": "#/definitions/SelectFieldExtendAsset"
-				}
+				{ "$ref": "#/definitions/CheckboxField" },
+				{ "$ref": "#/definitions/SelectFieldExtendAsset" }
 			]
 		},
 		"Asset": {
@@ -190,69 +171,47 @@
 			"required": ["name", "abilities"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetID"
-				},
+				"id": { "$ref": "#/definitions/AssetID" },
 				"shared": {
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-					"type": "boolean",
-					"nullable": true
+					"type": "boolean"
 				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
+				"name": { "$ref": "#/definitions/Label" },
 				"options": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/AssetOptionField"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetOptionField" }
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				},
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/AssetControlField"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetControlField" }
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				},
-				"requirement": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"requirement": { "$ref": "#/definitions/MarkdownString" },
 				"abilities": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"$ref": "#/definitions/AssetAbility"
-					}
+					"items": { "$ref": "#/definitions/AssetAbility" }
 				},
 				"count_as_impact": {
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean",
-					"default": false,
-					"nullable": true
+					"default": false
 				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"attachments": {
-					"$ref": "#/definitions/AssetAttachment"
-				},
+				"source": { "$ref": "#/definitions/Source" },
+				"attachments": { "$ref": "#/definitions/AssetAttachment" },
 				"condition_meter": {
 					"$ref": "#/definitions/AssetConditionMeter",
-					"nullable": true
+					"type": "object"
 				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"AssetAttachment": {
@@ -265,16 +224,13 @@
 					"title": "Maximum attached assets",
 					"description": "Omitted if there's no upper limit to the number of attached assets.",
 					"type": "integer",
-					"minimum": 1,
-					"nullable": true
+					"minimum": 1
 				},
 				"assets": {
 					"title": "Attachable assets",
 					"description": "Asset IDs (which may be wildcards) that may be attached to this asset",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/AssetIDWildcard"
-					}
+					"items": { "$ref": "#/definitions/AssetIDWildcard" }
 				}
 			}
 		},
@@ -292,17 +248,11 @@
 			"title": "Asset ability option field",
 			"type": "object",
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetAbilityOptionFieldID"
-				}
+				"id": { "$ref": "#/definitions/AssetAbilityOptionFieldID" }
 			},
 			"oneOf": [
-				{
-					"$ref": "#/definitions/TextField"
-				},
-				{
-					"$ref": "#/definitions/CheckboxField"
-				}
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/CheckboxField" }
 			]
 		},
 		"AssetAbilityControlFieldID": {
@@ -314,23 +264,13 @@
 			"title": "Asset ability control field",
 			"type": "object",
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetAbilityControlFieldID"
-				}
+				"id": { "$ref": "#/definitions/AssetAbilityControlFieldID" }
 			},
 			"oneOf": [
-				{
-					"$ref": "#/definitions/TextField"
-				},
-				{
-					"$ref": "#/definitions/CounterField"
-				},
-				{
-					"$ref": "#/definitions/ClockField"
-				},
-				{
-					"$ref": "#/definitions/CheckboxField"
-				}
+				{ "$ref": "#/definitions/TextField" },
+				{ "$ref": "#/definitions/CounterField" },
+				{ "$ref": "#/definitions/ClockField" },
+				{ "$ref": "#/definitions/CheckboxField" }
 			]
 		},
 		"AssetAbility": {
@@ -339,63 +279,39 @@
 			"required": ["text"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetAbilityID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label",
-					"type": "string",
-					"nullable": true
-				},
-				"text": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"enabled": {
-					"type": "boolean",
-					"default": false
-				},
+				"id": { "$ref": "#/definitions/AssetAbilityID" },
+				"name": { "$ref": "#/definitions/Label", "type": "string" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
+				"enabled": { "type": "boolean", "default": false },
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/AssetAbilityControlField"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetAbilityControlField" }
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				},
 				"options": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/AssetAbilityOptionField"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetAbilityOptionField" }
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				},
-				"extend_asset": {
-					"$ref": "#/definitions/AssetExtension"
-				},
+				"extend_asset": { "$ref": "#/definitions/AssetExtension" },
 				"extend_moves": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MoveExtension"
-					}
+					"items": { "$ref": "#/definitions/MoveExtension" }
 				},
 				"moves": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/Move"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
 					},
 					"additionalProperties": false,
-					"description": "Unique moves added by this asset ability.",
-					"nullable": true
+					"description": "Unique moves added by this asset ability."
 				}
 			}
 		},
@@ -411,57 +327,30 @@
 		"AssetType": {
 			"title": "Asset type",
 			"type": "object",
-			"required": ["name", "contents"],
+			"required": ["name"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetTypeID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/definitions/Label"
-				},
-				"extends": {
-					"$ref": "#/definitions/AssetTypeID"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				},
+				"id": { "$ref": "#/definitions/AssetTypeID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/AssetTypeID" },
+				"source": { "$ref": "#/definitions/Source" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/Asset"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/Asset" }
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
 				},
-				"member_label": {
-					"$ref": "#/definitions/Label"
-				},
-				"$schema": {
-					"type": "string",
-					"format": "uri"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"member_label": { "$ref": "#/definitions/Label" },
+				"$schema": { "type": "string", "format": "uri" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"AssetConditionMeter": {
@@ -470,23 +359,11 @@
 			"required": ["label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"value": {
-					"type": "integer",
-					"nullable": true
-				},
-				"min": {
-					"type": "integer",
-					"default": 0
-				},
-				"max": {
-					"type": "integer"
-				},
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"value": { "type": "integer" },
+				"min": { "type": "integer", "default": 0 },
+				"max": { "type": "integer" },
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
@@ -495,8 +372,7 @@
 							"$ref": "#/definitions/AssetConditionMeterControlField"
 						}
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				}
 			}
 		},
@@ -506,21 +382,10 @@
 			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/AssetConditionMeterControlFieldID"
-				},
-				"field_type": {
-					"const": "checkbox",
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"value": {
-					"type": "boolean",
-					"default": false,
-					"nullable": true
-				}
+				"id": { "$ref": "#/definitions/AssetConditionMeterControlFieldID" },
+				"field_type": { "const": "checkbox", "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"value": { "type": "boolean", "default": false }
 			}
 		},
 		"AssetExtension": {
@@ -528,14 +393,11 @@
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"attachments": {
-					"$ref": "#/definitions/AssetAttachment"
-				},
+				"attachments": { "$ref": "#/definitions/AssetAttachment" },
 				"count_as_impact": {
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean",
-					"default": false,
-					"nullable": true
+					"default": false
 				},
 				"condition_meter": {
 					"$ref": "#/definitions/AssetConditionMeterExtension"
@@ -546,13 +408,8 @@
 			"title": "Asset condition meter extension",
 			"type": "object",
 			"properties": {
-				"min": {
-					"type": "integer",
-					"default": 0
-				},
-				"max": {
-					"type": "integer"
-				},
+				"min": { "type": "integer", "default": 0 },
+				"max": { "type": "integer" },
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
@@ -561,8 +418,7 @@
 							"$ref": "#/definitions/AssetConditionMeterControlField"
 						}
 					},
-					"additionalProperties": false,
-					"nullable": true
+					"additionalProperties": false
 				}
 			}
 		},
@@ -598,57 +454,35 @@
 					"description": "'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
 					"enum": ["result", "summary", "description", "range"]
 				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				}
+				"label": { "$ref": "#/definitions/Label" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableColumnRoll",
 					"properties": {
-						"content_type": {
-							"const": "range"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Roll"
-						}
+						"content_type": { "const": "range" },
+						"label": { "$ref": "#/definitions/Label", "default": "Roll" }
 					}
 				},
 				{
 					"title": "OracleTableColumnResult",
 					"properties": {
-						"content_type": {
-							"const": "result"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Result"
-						}
+						"content_type": { "const": "result" },
+						"label": { "$ref": "#/definitions/Label", "default": "Result" }
 					}
 				},
 				{
 					"title": "OracleTableColumnSummary",
 					"properties": {
-						"content_type": {
-							"const": "summary"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Summary"
-						}
+						"content_type": { "const": "summary" },
+						"label": { "$ref": "#/definitions/Label", "default": "Summary" }
 					}
 				},
 				{
 					"title": "OracleTableColumnDescription",
 					"properties": {
-						"content_type": {
-							"const": "description"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Description"
-						}
+						"content_type": { "const": "description" },
+						"label": { "$ref": "#/definitions/Label", "default": "Description" }
 					}
 				}
 			]
@@ -664,65 +498,41 @@
 					"description": "'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
 					"enum": ["result", "summary", "description", "range"]
 				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
+				"label": { "$ref": "#/definitions/Label" },
 				"table_key": {
 					"description": "A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 					"type": "string",
 					"pattern": "^[a-z_]+$"
 				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				}
+				"color": { "$ref": "#/definitions/Color" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableColumnRoll",
 					"properties": {
-						"content_type": {
-							"const": "range"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Roll"
-						}
+						"content_type": { "const": "range" },
+						"label": { "$ref": "#/definitions/Label", "default": "Roll" }
 					}
 				},
 				{
 					"title": "OracleTableColumnResult",
 					"properties": {
-						"content_type": {
-							"const": "result"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Result"
-						}
+						"content_type": { "const": "result" },
+						"label": { "$ref": "#/definitions/Label", "default": "Result" }
 					}
 				},
 				{
 					"title": "OracleTableColumnSummary",
 					"properties": {
-						"content_type": {
-							"const": "summary"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Summary"
-						}
+						"content_type": { "const": "summary" },
+						"label": { "$ref": "#/definitions/Label", "default": "Summary" }
 					}
 				},
 				{
 					"title": "OracleTableColumnDescription",
 					"properties": {
-						"content_type": {
-							"const": "description"
-						},
-						"label": {
-							"$ref": "#/definitions/Label",
-							"default": "Description"
-						}
+						"content_type": { "const": "description" },
+						"label": { "$ref": "#/definitions/Label", "default": "Description" }
 					}
 				}
 			]
@@ -731,19 +541,6 @@
 			"title": "Oracle table rendering",
 			"type": "object",
 			"additionalProperties": false,
-			"default": {
-				"style": "table",
-				"columns": {
-					"roll": {
-						"content_type": "range",
-						"label": "Roll"
-					},
-					"result": {
-						"content_type": "result",
-						"label": "Result"
-					}
-				}
-			},
 			"properties": {
 				"style": {
 					"type": "string",
@@ -751,27 +548,17 @@
 					"enum": ["embed_as_column", "embed_in_row", "table"],
 					"default": "table"
 				},
-				"icon": {
-					"$ref": "#/definitions/Icon"
-				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				},
+				"icon": { "$ref": "#/definitions/SvgImageUrl" },
+				"color": { "$ref": "#/definitions/Color" },
 				"columns": {
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/OracleTableColumn"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleTableColumn" }
 					},
 					"default": {
-						"roll": {
-							"content_type": "range",
-							"label": "Roll"
-						},
-						"result": {
-							"content_type": "result",
-							"label": "Result"
+						"columns": {
+							"roll": { "content_type": "range", "label": "Roll" },
+							"result": { "content_type": "result", "label": "Result" }
 						}
 					}
 				}
@@ -783,50 +570,27 @@
 			"required": ["name", "table"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/OracleTableID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/definitions/Label"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"rendering": {
-					"$ref": "#/definitions/OracleTableRendering"
-				},
+				"id": { "$ref": "#/definitions/OracleTableID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
+				"source": { "$ref": "#/definitions/Source" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"rendering": { "$ref": "#/definitions/OracleTableRendering" },
 				"match": {
 					"title": "Oracle match behavior",
 					"description": "A handful of oracles have special behavior on a match.",
 					"type": "object",
 					"required": ["text"],
-					"properties": {
-						"text": {
-							"$ref": "#/definitions/MarkdownString"
-						}
-					}
+					"additionalProperties": false,
+					"properties": { "text": { "$ref": "#/definitions/MarkdownString" } }
 				},
 				"table": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableRow"
-					}
+					"items": { "$ref": "#/definitions/OracleTableRow" }
 				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"OracleTableRoll": {
@@ -837,12 +601,8 @@
 				"oracle": {
 					"default": null,
 					"oneOf": [
-						{
-							"type": "null"
-						},
-						{
-							"$ref": "#/definitions/OracleTableID"
-						}
+						{ "type": "null" },
+						{ "$ref": "#/definitions/OracleTableID" }
 					]
 				},
 				"times": {
@@ -851,9 +611,7 @@
 					"minimum": 1,
 					"default": 1
 				},
-				"method": {
-					"$ref": "#/definitions/OracleTableRollMethod"
-				}
+				"method": { "$ref": "#/definitions/OracleTableRollMethod" }
 			}
 		},
 		"OracleTableRollMethod": {
@@ -892,15 +650,12 @@
 					"title": "Result text",
 					"$ref": "#/definitions/MarkdownString"
 				},
-				"icon": {
-					"$ref": "#/definitions/Icon"
-				},
+				"icon": { "$ref": "#/definitions/SvgImageUrl" },
 				"summary": {
 					"$ref": "#/definitions/MarkdownString",
 					"title": "Summary text",
 					"description": "A secondary markdown string that must be presented to the user for the implementation to be complete, but may benefit from progressive disclosure (such as a collapsible element, popover/tooltip, etc).\n\n`null` is used in cases where an 'empty' `OracleTableRow#summary` exists (example: Starship Type, Starforged rulebook p. 326). In the book, these table cells are rendered with the text `--` (and this is the recommended placeholder for tabular display). For display as a single result (e.g. VTT roll output), however, `null` values can be safely omitted.",
-					"type": "string",
-					"nullable": true
+					"type": "string"
 				},
 				"description": {
 					"$ref": "#/definitions/MarkdownString",
@@ -913,41 +668,21 @@
 				},
 				"rolls": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableRoll"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/OracleTableRoll" }
 				},
-				"template": {
-					"$ref": "#/definitions/OracleRollTemplate"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"id": {
-					"$ref": "#/definitions/OracleTableRowID"
-				}
+				"template": { "$ref": "#/definitions/OracleRollTemplate" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"id": { "$ref": "#/definitions/OracleTableRowID" }
 			},
 			"oneOf": [
 				{
 					"title": "OracleTableRowStub",
-					"properties": {
-						"low": {
-							"const": null
-						},
-						"high": {
-							"const": null
-						}
-					}
+					"properties": { "low": { "const": null }, "high": { "const": null } }
 				},
 				{
 					"properties": {
-						"low": {
-							"type": "integer"
-						},
-						"high": {
-							"type": "integer"
-						}
+						"low": { "type": "integer" },
+						"high": { "type": "integer" }
 					}
 				}
 			]
@@ -977,43 +712,23 @@
 		"OracleCollection": {
 			"title": "Oracle collection",
 			"type": "object",
-			"required": ["name", "contents"],
+			"required": ["name"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/OracleCollectionID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/definitions/Label"
-				},
-				"extends": {
-					"$ref": "#/definitions/OracleCollectionID"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				},
+				"id": { "$ref": "#/definitions/OracleCollectionID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/OracleCollectionID" },
+				"source": { "$ref": "#/definitions/Source" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/OracleTable"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleTable" }
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
@@ -1021,19 +736,13 @@
 				"rendering": {
 					"type": "object",
 					"description": "Some oracle collections are rendered as a single table in the source material. If so, parameters for rendering that table are included here.",
+					"additionalProperties": false,
 					"properties": {
-						"icon": {
-							"$ref": "#/definitions/Icon"
-						},
+						"icon": { "$ref": "#/definitions/SvgImageUrl" },
 						"style": {
 							"oneOf": [
-								{
-									"enum": ["multi_table"],
-									"type": "string"
-								},
-								{
-									"type": "null"
-								}
+								{ "enum": ["multi_table"], "type": "string" },
+								{ "type": "null" }
 							],
 							"default": null
 						},
@@ -1048,30 +757,25 @@
 						}
 					}
 				},
+				"images": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/WebpImageURL" }
+				},
 				"sample_names": {
 					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"items": { "$ref": "#/definitions/Label" }
 				},
 				"collections": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/OracleCollection"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleCollection" }
 					},
 					"additionalProperties": false,
 					"description": "OracleCollections contained by this OracleCollection."
 				},
-				"$schema": {
-					"type": "string",
-					"format": "uri"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"$schema": { "type": "string", "format": "uri" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"PlayerStat": {
@@ -1152,108 +856,59 @@
 				"quest_starter"
 			],
 			"properties": {
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"rank": {
-					"$ref": "#/definitions/ChallengeRank"
-				},
+				"name": { "$ref": "#/definitions/Label" },
+				"rank": { "$ref": "#/definitions/ChallengeRank" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MarkdownString"
-					}
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
 				"drives": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MarkdownString"
-					}
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
 				"tactics": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MarkdownString"
-					}
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"quest_starter": {
 					"description": "A localizable markdown string describing the quest starter associated with this item.",
 					"$ref": "#/definitions/MarkdownString"
 				},
-				"your_truths": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"id": {
-					"$ref": "#/definitions/EncounterClassicID"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"your_truths": { "$ref": "#/definitions/MarkdownString" },
+				"source": { "$ref": "#/definitions/Source" },
+				"id": { "$ref": "#/definitions/EncounterClassicID" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"EncounterCollectionClassic": {
 			"title": "Encounter collection (Classic)",
 			"type": "object",
-			"required": ["name", "contents"],
+			"required": ["name"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/EncounterCollectionClassicID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/definitions/Label"
-				},
-				"extends": {
-					"$ref": "#/definitions/EncounterCollectionClassicID"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				},
+				"id": { "$ref": "#/definitions/EncounterCollectionClassicID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/EncounterCollectionClassicID" },
+				"source": { "$ref": "#/definitions/Source" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/EncounterClassic"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/EncounterClassic" }
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
 				},
-				"member_label": {
-					"$ref": "#/definitions/Label"
-				},
-				"$schema": {
-					"type": "string",
-					"format": "uri"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"member_label": { "$ref": "#/definitions/Label" },
+				"$schema": { "type": "string", "format": "uri" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"EncounterCollectionClassicID": {
@@ -1287,54 +942,29 @@
 		"MoveCategory": {
 			"title": "Move category",
 			"type": "object",
-			"required": ["name", "contents"],
+			"required": ["name"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/MoveCategoryID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"canonical_name": {
-					"$ref": "#/definitions/Label"
-				},
-				"extends": {
-					"$ref": "#/definitions/MoveCategoryID"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"color": {
-					"$ref": "#/definitions/Color"
-				},
+				"id": { "$ref": "#/definitions/MoveCategoryID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"canonical_name": { "$ref": "#/definitions/Label" },
+				"extends": { "$ref": "#/definitions/MoveCategoryID" },
+				"source": { "$ref": "#/definitions/Source" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"color": { "$ref": "#/definitions/Color" },
 				"contents": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/Move"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/Move" }
 					},
 					"additionalProperties": false,
 					"description": "The elements contained by this collection."
 				},
-				"$schema": {
-					"type": "string",
-					"format": "uri"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"$schema": { "type": "string", "format": "uri" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"MoveOutcomeType": {
@@ -1359,19 +989,12 @@
 			"type": "object",
 			"required": ["ref", "using"],
 			"properties": {
-				"using": {
-					"const": "ref",
-					"type": "string"
-				},
+				"using": { "const": "ref", "type": "string" },
 				"ref": {
 					"description": "Identifies the stat whose value is to be referenced.",
 					"oneOf": [
-						{
-							"$ref": "#/definitions/AssetConditionMeterIDWildcard"
-						},
-						{
-							"$ref": "#/definitions/AssetOptionFieldIDWildcard"
-						}
+						{ "$ref": "#/definitions/AssetConditionMeterIDWildcard" },
+						{ "$ref": "#/definitions/AssetOptionFieldIDWildcard" }
 					]
 				}
 			}
@@ -1383,12 +1006,8 @@
 			"properties": {
 				"using": {
 					"oneOf": [
-						{
-							"$ref": "#/definitions/PlayerConditionMeter"
-						},
-						{
-							"$ref": "#/definitions/PlayerStat"
-						}
+						{ "$ref": "#/definitions/PlayerConditionMeter" },
+						{ "$ref": "#/definitions/PlayerStat" }
 					]
 				}
 			}
@@ -1398,16 +1017,9 @@
 			"required": ["using", "label", "value"],
 			"type": "object",
 			"properties": {
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"using": {
-					"type": "string",
-					"const": "custom_value"
-				},
-				"value": {
-					"type": "integer"
-				}
+				"label": { "$ref": "#/definitions/Label" },
+				"using": { "type": "string", "const": "custom_value" },
+				"value": { "type": "integer" }
 			}
 		},
 		"TriggerRollOptionActionChoiceAttachedAssetRef": {
@@ -1423,26 +1035,18 @@
 			}
 		},
 		"TriggerRollOptionAction": {
-			"title": "Trigger option",
+			"title": "Roll option for action roll trigger",
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"text": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"method": {
 					"default": "any",
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 					"oneOf": [
-						{
-							"$ref": "#/definitions/MoveRollMethod"
-						},
-						{
-							"$ref": "#/definitions/MoveOutcomeType"
-						},
-						{
-							"type": "null"
-						}
+						{ "$ref": "#/definitions/MoveRollMethod" },
+						{ "$ref": "#/definitions/MoveOutcomeType" },
+						{ "type": "null" }
 					]
 				},
 				"choices": {
@@ -1451,12 +1055,8 @@
 					"items": {
 						"type": "object",
 						"oneOf": [
-							{
-								"$ref": "#/definitions/TriggerRollOptionActionChoiceStat"
-							},
-							{
-								"$ref": "#/definitions/TriggerRollOptionActionChoiceRef"
-							},
+							{ "$ref": "#/definitions/TriggerRollOptionActionChoiceStat" },
+							{ "$ref": "#/definitions/TriggerRollOptionActionChoiceRef" },
 							{
 								"$ref": "#/definitions/TriggerRollOptionActionChoiceCustomValue"
 							},
@@ -1472,45 +1072,28 @@
 					"type": "object",
 					"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
 					"additionalProperties": false,
-					"default": {
-						"player": true,
-						"ally": false
-					},
+					"default": { "player": true, "ally": false },
 					"required": ["player", "ally"],
 					"properties": {
-						"player": {
-							"type": "boolean",
-							"default": true
-						},
-						"ally": {
-							"type": "boolean",
-							"default": false
-						}
+						"player": { "type": "boolean", "default": true },
+						"ally": { "type": "boolean", "default": false }
 					}
 				}
 			}
 		},
 		"TriggerRollOptionProgress": {
-			"title": "Trigger option (progress move)",
+			"title": "Roll option for progress roll trigger",
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"text": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"method": {
 					"default": "any",
 					"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 					"oneOf": [
-						{
-							"$ref": "#/definitions/MoveRollMethod"
-						},
-						{
-							"$ref": "#/definitions/MoveOutcomeType"
-						},
-						{
-							"type": "null"
-						}
+						{ "$ref": "#/definitions/MoveRollMethod" },
+						{ "$ref": "#/definitions/MoveOutcomeType" },
+						{ "type": "null" }
 					]
 				},
 				"choices": {
@@ -1521,11 +1104,7 @@
 						"title": "Trigger choice (progress roll)",
 						"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
 						"required": ["using"],
-						"properties": {
-							"using": {
-								"$ref": "#/definitions/ProgressType"
-							}
-						}
+						"properties": { "using": { "$ref": "#/definitions/ProgressType" } }
 					},
 					"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
 				},
@@ -1534,20 +1113,11 @@
 					"type": "object",
 					"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
 					"additionalProperties": false,
-					"default": {
-						"player": true,
-						"ally": false
-					},
+					"default": { "player": true, "ally": false },
 					"required": ["player", "ally"],
 					"properties": {
-						"player": {
-							"type": "boolean",
-							"default": true
-						},
-						"ally": {
-							"type": "boolean",
-							"default": false
-						}
+						"player": { "type": "boolean", "default": true },
+						"ally": { "type": "boolean", "default": false }
 					}
 				}
 			}
@@ -1558,18 +1128,11 @@
 			"required": ["name", "text", "trigger"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/MoveID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
+				"id": { "$ref": "#/definitions/MoveID" },
+				"name": { "$ref": "#/definitions/Label" },
 				"oracles": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/OracleTableID" }
 				},
 				"trigger": {
 					"title": "Trigger",
@@ -1592,46 +1155,30 @@
 						{
 							"additionalProperties": false,
 							"title": "Trigger (no roll)",
-							"properties": {
-								"text": {},
-								"roll_type": {
-									"const": "no_roll"
-								}
-							}
+							"properties": { "roll_type": { "const": "no_roll" } }
 						},
 						{
 							"additionalProperties": false,
 							"title": "Trigger (action roll)",
 							"required": ["roll_options", "roll_type"],
 							"properties": {
-								"text": {},
-								"roll_type": {
-									"const": "action_roll"
-								},
+								"roll_type": { "const": "action_roll" },
 								"roll_options": {
 									"description": "Action roll options for triggering this move.",
 									"type": "array",
 									"items": {
-										"title": "Trigger option",
+										"title": "Roll option for action roll trigger",
 										"type": "object",
 										"additionalProperties": false,
 										"properties": {
-											"text": {
-												"$ref": "#/definitions/MarkdownString"
-											},
+											"text": { "$ref": "#/definitions/MarkdownString" },
 											"method": {
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
-													{
-														"$ref": "#/definitions/MoveRollMethod"
-													},
-													{
-														"$ref": "#/definitions/MoveOutcomeType"
-													},
-													{
-														"type": "null"
-													}
+													{ "$ref": "#/definitions/MoveRollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" },
+													{ "type": "null" }
 												]
 											},
 											"choices": {
@@ -1661,20 +1208,11 @@
 												"type": "object",
 												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
 												"additionalProperties": false,
-												"default": {
-													"player": true,
-													"ally": false
-												},
+												"default": { "player": true, "ally": false },
 												"required": ["player", "ally"],
 												"properties": {
-													"player": {
-														"type": "boolean",
-														"default": true
-													},
-													"ally": {
-														"type": "boolean",
-														"default": false
-													}
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
 												}
 											}
 										}
@@ -1687,35 +1225,24 @@
 							"title": "Trigger (progress move)",
 							"required": ["roll_options", "roll_type"],
 							"properties": {
-								"text": {},
-								"roll_type": {
-									"const": "progress_roll"
-								},
+								"roll_type": { "const": "progress_roll" },
 								"roll_options": {
 									"title": "Trigger options (progress move)",
 									"description": "Progress roll options for triggering this move.",
 									"type": "array",
 									"items": {
-										"title": "Trigger option (progress move)",
+										"title": "Roll option for progress roll trigger",
 										"type": "object",
 										"additionalProperties": false,
 										"properties": {
-											"text": {
-												"$ref": "#/definitions/MarkdownString"
-											},
+											"text": { "$ref": "#/definitions/MarkdownString" },
 											"method": {
 												"default": "any",
 												"description": "The method this move trigger uses to select which stat(s) or progress track(s) are rolled. If this is a MoveOutcomeType, then it simply takes that result automatically rather than making a roll.\n\nIf this is `null`, this trigger option describes no rolls of its own, and should inherit the roll method of another trigger option the extended move.",
 												"oneOf": [
-													{
-														"$ref": "#/definitions/MoveRollMethod"
-													},
-													{
-														"$ref": "#/definitions/MoveOutcomeType"
-													},
-													{
-														"type": "null"
-													}
+													{ "$ref": "#/definitions/MoveRollMethod" },
+													{ "$ref": "#/definitions/MoveOutcomeType" },
+													{ "type": "null" }
 												]
 											},
 											"choices": {
@@ -1727,9 +1254,7 @@
 													"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
 													"required": ["using"],
 													"properties": {
-														"using": {
-															"$ref": "#/definitions/ProgressType"
-														}
+														"using": { "$ref": "#/definitions/ProgressType" }
 													}
 												},
 												"description": "The stat choices allowed by this trigger option.\n\nIf this is `null`, it should inherit the value of another trigger option for the extended move."
@@ -1739,20 +1264,11 @@
 												"type": "object",
 												"description": "Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
 												"additionalProperties": false,
-												"default": {
-													"player": true,
-													"ally": false
-												},
+												"default": { "player": true, "ally": false },
 												"required": ["player", "ally"],
 												"properties": {
-													"player": {
-														"type": "boolean",
-														"default": true
-													},
-													"ally": {
-														"type": "boolean",
-														"default": false
-													}
+													"player": { "type": "boolean", "default": true },
+													"ally": { "type": "boolean", "default": false }
 												}
 											}
 										}
@@ -1762,9 +1278,7 @@
 						}
 					]
 				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
+				"source": { "$ref": "#/definitions/Source" },
 				"outcomes": {
 					"title": "Move outcomes",
 					"type": "object",
@@ -1775,21 +1289,14 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1808,21 +1315,14 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
-										"count_as": {
-											"$ref": "#/definitions/MoveOutcomeType"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
-											"nullable": true,
 											"properties": {
-												"text": {
-													"$ref": "#/definitions/MarkdownString"
-												},
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -1845,21 +1345,14 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1880,21 +1373,14 @@
 							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -1913,21 +1399,14 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
-										"count_as": {
-											"$ref": "#/definitions/MoveOutcomeType"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
-											"nullable": true,
 											"properties": {
-												"text": {
-													"$ref": "#/definitions/MarkdownString"
-												},
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -1947,15 +1426,9 @@
 						}
 					}
 				},
-				"text": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"text": { "$ref": "#/definitions/MarkdownString" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"TriggerExtension": {
@@ -1968,34 +1441,24 @@
 					"type": "string",
 					"enum": ["action_roll", "progress_roll"]
 				},
-				"roll_options": {
-					"type": "array"
-				}
+				"roll_options": { "type": "array" }
 			},
 			"oneOf": [
 				{
 					"properties": {
-						"roll_type": {
-							"const": "action_roll"
-						},
+						"roll_type": { "const": "action_roll" },
 						"roll_options": {
 							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TriggerRollOptionAction"
-							}
+							"items": { "$ref": "#/definitions/TriggerRollOptionAction" }
 						}
 					}
 				},
 				{
 					"properties": {
-						"roll_type": {
-							"const": "progress_roll"
-						},
+						"roll_type": { "const": "progress_roll" },
 						"roll_options": {
 							"type": "array",
-							"items": {
-								"$ref": "#/definitions/TriggerRollOptionProgress"
-							}
+							"items": { "$ref": "#/definitions/TriggerRollOptionProgress" }
 						}
 					}
 				}
@@ -2011,17 +1474,10 @@
 				"extends": {
 					"description": "Move IDs affected by this move extension",
 					"type": ["array", "null"],
-					"items": {
-						"$ref": "#/definitions/MoveID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/MoveID" }
 				},
-				"trigger": {
-					"$ref": "#/definitions/TriggerExtension"
-				},
-				"text": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"trigger": { "$ref": "#/definitions/TriggerExtension" },
+				"text": { "$ref": "#/definitions/MarkdownString" },
 				"outcomes": {
 					"title": "Move outcomes",
 					"type": "object",
@@ -2030,21 +1486,14 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -2063,21 +1512,14 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
-										"count_as": {
-											"$ref": "#/definitions/MoveOutcomeType"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
-											"nullable": true,
 											"properties": {
-												"text": {
-													"$ref": "#/definitions/MarkdownString"
-												},
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -2099,21 +1541,14 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -2133,21 +1568,14 @@
 							"type": "object",
 							"additionalProperties": false,
 							"properties": {
-								"text": {
-									"$ref": "#/definitions/MarkdownString"
-								},
-								"count_as": {
-									"$ref": "#/definitions/MoveOutcomeType"
-								},
+								"text": { "$ref": "#/definitions/MarkdownString" },
+								"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
 									"required": ["method"],
-									"nullable": true,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
 										"method": {
 											"title": "Move reroll method",
 											"type": "string",
@@ -2166,21 +1594,14 @@
 									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
-										"text": {
-											"$ref": "#/definitions/MarkdownString"
-										},
-										"count_as": {
-											"$ref": "#/definitions/MoveOutcomeType"
-										},
+										"text": { "$ref": "#/definitions/MarkdownString" },
+										"count_as": { "$ref": "#/definitions/MoveOutcomeType" },
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
 											"required": ["method"],
-											"nullable": true,
 											"properties": {
-												"text": {
-													"$ref": "#/definitions/MarkdownString"
-												},
+												"text": { "$ref": "#/definitions/MarkdownString" },
 												"method": {
 													"title": "Move reroll method",
 													"type": "string",
@@ -2202,30 +1623,17 @@
 				}
 			}
 		},
-		"collectionSchema": {
-			"title": "Collection schema"
-		},
+		"collectionSchema": { "title": "Collection schema" },
 		"CheckboxField": {
 			"title": "Checkbox field",
 			"type": "object",
 			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "checkbox"
-				},
-				"value": {
-					"type": "boolean",
-					"default": false,
-					"nullable": true
-				}
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "checkbox" },
+				"value": { "type": "boolean", "default": false }
 			}
 		},
 		"ClockField": {
@@ -2234,29 +1642,12 @@
 			"required": ["field_type", "label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "clock"
-				},
-				"value": {
-					"type": "integer",
-					"default": 0,
-					"nullable": true
-				},
-				"min": {
-					"type": "integer",
-					"const": 0
-				},
-				"max": {
-					"type": "integer",
-					"enum": [4, 6, 8, 10]
-				}
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "clock" },
+				"value": { "type": "integer", "default": 0 },
+				"min": { "type": "integer", "const": 0 },
+				"max": { "type": "integer", "enum": [4, 6, 8, 10] }
 			}
 		},
 		"CounterField": {
@@ -2265,29 +1656,12 @@
 			"required": ["field_type", "label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "counter"
-				},
-				"value": {
-					"type": "integer",
-					"default": 0,
-					"nullable": true
-				},
-				"min": {
-					"type": "integer",
-					"const": 0
-				},
-				"max": {
-					"type": ["integer", "null"],
-					"default": null
-				}
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "counter" },
+				"value": { "type": "integer", "default": 0 },
+				"min": { "type": "integer", "const": 0 },
+				"max": { "type": ["integer", "null"], "default": null }
 			}
 		},
 		"TextField": {
@@ -2296,20 +1670,10 @@
 			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "text"
-				},
-				"value": {
-					"type": "string",
-					"nullable": true
-				}
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "text" },
+				"value": { "type": "string" }
 			}
 		},
 		"SelectFieldStat": {
@@ -2318,20 +1682,10 @@
 			"required": ["label", "field_type", "choices"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "select_stat"
-				},
-				"value": {
-					"type": "string",
-					"nullable": true
-				},
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "select_stat" },
+				"value": { "$ref": "#/definitions/PlayerStat", "type": "string" },
 				"choices": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
@@ -2340,16 +1694,9 @@
 							"required": ["label"],
 							"type": "object",
 							"properties": {
-								"label": {
-									"$ref": "#/definitions/Label"
-								},
-								"selected": {
-									"type": "boolean",
-									"nullable": true
-								},
-								"value": {
-									"$ref": "#/definitions/PlayerStat"
-								}
+								"label": { "$ref": "#/definitions/Label" },
+								"selected": { "type": "boolean" },
+								"value": { "$ref": "#/definitions/PlayerStat" }
 							}
 						}
 					},
@@ -2362,20 +1709,10 @@
 			"required": ["label", "field_type", "choices"],
 			"type": "object",
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "select_ref"
-				},
-				"value": {
-					"type": "string",
-					"nullable": true
-				},
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "select_ref" },
+				"value": { "type": "string" },
 				"choices": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
@@ -2384,16 +1721,9 @@
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
-								"label": {
-									"type": "string"
-								},
-								"selected": {
-									"type": "boolean",
-									"nullable": true
-								},
-								"value": {
-									"type": "string"
-								}
+								"label": { "$ref": "#/definitions/Label" },
+								"selected": { "type": "boolean" },
+								"value": { "type": "string" }
 							}
 						}
 					},
@@ -2406,20 +1736,10 @@
 			"required": ["label", "field_type", "choices"],
 			"type": "object",
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"label": {
-					"$ref": "#/definitions/Label"
-				},
-				"field_type": {
-					"type": "string",
-					"const": "select_asset_extension"
-				},
-				"value": {
-					"type": "object",
-					"nullable": true
-				},
+				"id": { "type": "string" },
+				"label": { "$ref": "#/definitions/Label" },
+				"field_type": { "type": "string", "const": "select_asset_extension" },
+				"value": { "type": "object" },
 				"choices": {
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
@@ -2428,16 +1748,9 @@
 							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
-								"label": {
-									"type": "string"
-								},
-								"selected": {
-									"type": "boolean",
-									"nullable": true
-								},
-								"value": {
-									"$ref": "#/definitions/AssetExtension"
-								}
+								"label": { "$ref": "#/definitions/Label" },
+								"selected": { "type": "boolean" },
+								"value": { "$ref": "#/definitions/AssetExtension" }
 							}
 						}
 					},
@@ -2453,10 +1766,7 @@
 					"type": "object",
 					"required": ["_template", "contents"],
 					"properties": {
-						"_template": {
-							"type": "string",
-							"const": "LocationThemeOracles"
-						},
+						"_template": { "type": "string", "const": "LocationThemeOracles" },
 						"contents": {
 							"type": "object",
 							"properties": {
@@ -2478,213 +1788,115 @@
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 1
-														},
-														"high": {
-															"type": "integer",
-															"const": 8
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 8 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 9
-														},
-														"high": {
-															"type": "integer",
-															"const": 16
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 9 },
+														"high": { "type": "integer", "const": 16 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 17
-														},
-														"high": {
-															"type": "integer",
-															"const": 24
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 17 },
+														"high": { "type": "integer", "const": 24 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 25
-														},
-														"high": {
-															"type": "integer",
-															"const": 32
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 25 },
+														"high": { "type": "integer", "const": 32 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 33
-														},
-														"high": {
-															"type": "integer",
-															"const": 40
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 33 },
+														"high": { "type": "integer", "const": 40 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 41
-														},
-														"high": {
-															"type": "integer",
-															"const": 48
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 41 },
+														"high": { "type": "integer", "const": 48 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 49
-														},
-														"high": {
-															"type": "integer",
-															"const": 56
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 49 },
+														"high": { "type": "integer", "const": 56 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 57
-														},
-														"high": {
-															"type": "integer",
-															"const": 64
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 57 },
+														"high": { "type": "integer", "const": 64 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 65
-														},
-														"high": {
-															"type": "integer",
-															"const": 72
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 65 },
+														"high": { "type": "integer", "const": 72 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 73
-														},
-														"high": {
-															"type": "integer",
-															"const": 80
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 73 },
+														"high": { "type": "integer", "const": 80 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 81
-														},
-														"high": {
-															"type": "integer",
-															"const": 88
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 81 },
+														"high": { "type": "integer", "const": 88 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 89
-														},
-														"high": {
-															"type": "integer",
-															"const": 96
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 89 },
+														"high": { "type": "integer", "const": 96 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result", "rolls", "low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)"
@@ -2698,9 +1910,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/descriptor"
@@ -2711,9 +1921,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/focus"
@@ -2722,14 +1930,8 @@
 																}
 															]
 														},
-														"low": {
-															"type": "integer",
-															"const": 97
-														},
-														"high": {
-															"type": "integer",
-															"const": 100
-														}
+														"low": { "type": "integer", "const": 97 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -2758,179 +1960,97 @@
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 1
-														},
-														"high": {
-															"type": "integer",
-															"const": 9
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 9 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 10
-														},
-														"high": {
-															"type": "integer",
-															"const": 18
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 10 },
+														"high": { "type": "integer", "const": 18 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 19
-														},
-														"high": {
-															"type": "integer",
-															"const": 27
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 19 },
+														"high": { "type": "integer", "const": 27 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 28
-														},
-														"high": {
-															"type": "integer",
-															"const": 36
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 28 },
+														"high": { "type": "integer", "const": 36 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 37
-														},
-														"high": {
-															"type": "integer",
-															"const": 45
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 37 },
+														"high": { "type": "integer", "const": 45 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 46
-														},
-														"high": {
-															"type": "integer",
-															"const": 54
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 46 },
+														"high": { "type": "integer", "const": 54 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 55
-														},
-														"high": {
-															"type": "integer",
-															"const": 63
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 55 },
+														"high": { "type": "integer", "const": 63 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 64
-														},
-														"high": {
-															"type": "integer",
-															"const": 72
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 64 },
+														"high": { "type": "integer", "const": 72 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 73
-														},
-														"high": {
-															"type": "integer",
-															"const": 81
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 73 },
+														"high": { "type": "integer", "const": 81 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 82
-														},
-														"high": {
-															"type": "integer",
-															"const": 90
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 82 },
+														"high": { "type": "integer", "const": 90 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result", "rolls", "low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "[⏵Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)"
@@ -2944,9 +2064,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/action"
@@ -2957,9 +2075,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/theme"
@@ -2968,23 +2084,15 @@
 																}
 															]
 														},
-														"low": {
-															"type": "integer",
-															"const": 91
-														},
-														"high": {
-															"type": "integer",
-															"const": 98
-														}
+														"low": { "type": "integer", "const": 91 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result", "rolls", "low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "Roll twice"
@@ -2998,25 +2106,14 @@
 																	"type": "object",
 																	"required": ["times"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
-																		"times": {
-																			"type": "integer",
-																			"const": 2
-																		}
+																		"_template": { "type": "string" },
+																		"times": { "type": "integer", "const": 2 }
 																	}
 																}
 															]
 														},
-														"low": {
-															"type": "integer",
-															"const": 99
-														},
-														"high": {
-															"type": "integer",
-															"const": 100
-														}
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -3045,85 +2142,45 @@
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 1
-														},
-														"high": {
-															"type": "integer",
-															"const": 20
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 20 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 21
-														},
-														"high": {
-															"type": "integer",
-															"const": 40
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 21 },
+														"high": { "type": "integer", "const": 40 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 41
-														},
-														"high": {
-															"type": "integer",
-															"const": 60
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 41 },
+														"high": { "type": "integer", "const": 60 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 61
-														},
-														"high": {
-															"type": "integer",
-															"const": 80
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 61 },
+														"high": { "type": "integer", "const": 80 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 81
-														},
-														"high": {
-															"type": "integer",
-															"const": 100
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 81 },
+														"high": { "type": "integer", "const": 100 }
 													}
 												}
 											]
@@ -3146,42 +2203,28 @@
 					"type": "object",
 					"required": ["sample_names", "collections", "contents"],
 					"properties": {
-						"_template": {
-							"type": "string",
-							"const": "PlanetOracles"
-						},
+						"_template": { "type": "string", "const": "PlanetOracles" },
 						"collections": {
 							"type": "object",
 							"required": ["settlements"],
 							"properties": {
-								"_template": {
-									"type": "string"
-								},
+								"_template": { "type": "string" },
 								"settlements": {
 									"type": "object",
 									"required": ["name", "contents"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string",
-											"const": "Settlements"
-										},
+										"_template": { "type": "string" },
+										"name": { "type": "string", "const": "Settlements" },
 										"contents": {
 											"type": "object",
 											"required": ["terminus", "outlands", "expanse"],
 											"properties": {
-												"_template": {
-													"type": "string"
-												},
+												"_template": { "type": "string" },
 												"terminus": {
 													"type": "object",
 													"required": ["table", "name"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"table": {
 															"type": "array",
 															"minItems": 5,
@@ -3191,9 +2234,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "None"
@@ -3204,9 +2245,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Orbital settlement"
@@ -3217,9 +2256,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Planetside settlement"
@@ -3230,9 +2267,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Multiple settlements"
@@ -3243,9 +2278,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Settlements in conflict"
@@ -3254,19 +2287,14 @@
 																}
 															]
 														},
-														"name": {
-															"type": "string",
-															"const": "Terminus"
-														}
+														"name": { "type": "string", "const": "Terminus" }
 													}
 												},
 												"outlands": {
 													"type": "object",
 													"required": ["table", "name"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"table": {
 															"type": "array",
 															"minItems": 5,
@@ -3276,9 +2304,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "None"
@@ -3289,9 +2315,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Orbital settlement"
@@ -3302,9 +2326,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Planetside settlement"
@@ -3315,9 +2337,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Multiple settlements"
@@ -3328,9 +2348,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Settlements in conflict"
@@ -3339,19 +2357,14 @@
 																}
 															]
 														},
-														"name": {
-															"type": "string",
-															"const": "Outlands"
-														}
+														"name": { "type": "string", "const": "Outlands" }
 													}
 												},
 												"expanse": {
 													"type": "object",
 													"required": ["table", "name"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"table": {
 															"type": "array",
 															"minItems": 5,
@@ -3361,9 +2374,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "None"
@@ -3374,9 +2385,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Orbital settlement"
@@ -3387,9 +2396,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Planetside settlement"
@@ -3400,9 +2407,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Multiple settlements"
@@ -3413,9 +2418,7 @@
 																	"type": "object",
 																	"required": ["result"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"result": {
 																			"type": "string",
 																			"const": "Settlements in conflict"
@@ -3424,10 +2427,7 @@
 																}
 															]
 														},
-														"name": {
-															"type": "string",
-															"const": "Expanse"
-														}
+														"name": { "type": "string", "const": "Expanse" }
 													}
 												}
 											}
@@ -3445,20 +2445,13 @@
 								"life"
 							],
 							"properties": {
-								"_template": {
-									"type": "string"
-								},
+								"_template": { "type": "string" },
 								"atmosphere": {
 									"type": "object",
 									"required": ["name", "table"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string",
-											"const": "Atmosphere"
-										},
+										"_template": { "type": "string" },
+										"name": { "type": "string", "const": "Atmosphere" },
 										"table": {
 											"type": "array",
 											"minItems": 6,
@@ -3468,9 +2461,7 @@
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "None / thin"
@@ -3481,48 +2472,31 @@
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Toxic"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Toxic" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Corrosive"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Corrosive" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Marginal"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Marginal" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "Breathable"
@@ -3533,13 +2507,8 @@
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Ideal"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Ideal" }
 													}
 												}
 											]
@@ -3550,9 +2519,7 @@
 									"type": "object",
 									"required": ["name", "table"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
+										"_template": { "type": "string" },
 										"name": {
 											"type": "string",
 											"const": "Observed From Space"
@@ -3566,145 +2533,79 @@
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 1
-														},
-														"high": {
-															"type": "integer",
-															"const": 11
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 11 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 12
-														},
-														"high": {
-															"type": "integer",
-															"const": 22
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 12 },
+														"high": { "type": "integer", "const": 22 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 23
-														},
-														"high": {
-															"type": "integer",
-															"const": 33
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 23 },
+														"high": { "type": "integer", "const": 33 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 34
-														},
-														"high": {
-															"type": "integer",
-															"const": 44
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 34 },
+														"high": { "type": "integer", "const": 44 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 45
-														},
-														"high": {
-															"type": "integer",
-															"const": 55
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 45 },
+														"high": { "type": "integer", "const": 55 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 56
-														},
-														"high": {
-															"type": "integer",
-															"const": 66
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 56 },
+														"high": { "type": "integer", "const": 66 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 67
-														},
-														"high": {
-															"type": "integer",
-															"const": 77
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 67 },
+														"high": { "type": "integer", "const": 77 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 78
-														},
-														"high": {
-															"type": "integer",
-															"const": 88
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 78 },
+														"high": { "type": "integer", "const": 88 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result", "rolls", "low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)"
@@ -3718,9 +2619,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/descriptor"
@@ -3731,9 +2630,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/focus"
@@ -3742,31 +2639,17 @@
 																}
 															]
 														},
-														"low": {
-															"type": "integer",
-															"const": 89
-														},
-														"high": {
-															"type": "integer",
-															"const": 98
-														}
+														"low": { "type": "integer", "const": 89 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high", "result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 99
-														},
-														"high": {
-															"type": "integer",
-															"const": 100
-														},
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 },
 														"result": {
 															"type": "string",
 															"const": "Precursor Vault (orbital)"
@@ -3781,13 +2664,8 @@
 									"type": "object",
 									"required": ["name", "table"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string",
-											"const": "Planetside Feature"
-										},
+										"_template": { "type": "string" },
+										"name": { "type": "string", "const": "Planetside Feature" },
 										"table": {
 											"type": "array",
 											"minItems": 15,
@@ -3797,230 +2675,124 @@
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 1
-														},
-														"high": {
-															"type": "integer",
-															"const": 7
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 1 },
+														"high": { "type": "integer", "const": 7 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 8
-														},
-														"high": {
-															"type": "integer",
-															"const": 14
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 8 },
+														"high": { "type": "integer", "const": 14 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 15
-														},
-														"high": {
-															"type": "integer",
-															"const": 21
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 15 },
+														"high": { "type": "integer", "const": 21 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 22
-														},
-														"high": {
-															"type": "integer",
-															"const": 28
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 22 },
+														"high": { "type": "integer", "const": 28 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 29
-														},
-														"high": {
-															"type": "integer",
-															"const": 35
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 29 },
+														"high": { "type": "integer", "const": 35 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 36
-														},
-														"high": {
-															"type": "integer",
-															"const": 42
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 36 },
+														"high": { "type": "integer", "const": 42 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 43
-														},
-														"high": {
-															"type": "integer",
-															"const": 49
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 43 },
+														"high": { "type": "integer", "const": 49 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 50
-														},
-														"high": {
-															"type": "integer",
-															"const": 56
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 50 },
+														"high": { "type": "integer", "const": 56 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 57
-														},
-														"high": {
-															"type": "integer",
-															"const": 63
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 57 },
+														"high": { "type": "integer", "const": 63 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 64
-														},
-														"high": {
-															"type": "integer",
-															"const": 70
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 64 },
+														"high": { "type": "integer", "const": 70 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 71
-														},
-														"high": {
-															"type": "integer",
-															"const": 77
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 71 },
+														"high": { "type": "integer", "const": 77 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 78
-														},
-														"high": {
-															"type": "integer",
-															"const": 84
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 78 },
+														"high": { "type": "integer", "const": 84 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 85
-														},
-														"high": {
-															"type": "integer",
-															"const": 91
-														}
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 85 },
+														"high": { "type": "integer", "const": 91 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result", "rolls", "low", "high"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
+														"_template": { "type": "string" },
 														"result": {
 															"type": "string",
 															"const": "[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)"
@@ -4034,9 +2806,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/descriptor"
@@ -4047,9 +2817,7 @@
 																	"type": "object",
 																	"required": ["oracle"],
 																	"properties": {
-																		"_template": {
-																			"type": "string"
-																		},
+																		"_template": { "type": "string" },
 																		"oracle": {
 																			"type": "string",
 																			"const": "starforged/oracles/core/focus"
@@ -4058,31 +2826,17 @@
 																}
 															]
 														},
-														"low": {
-															"type": "integer",
-															"const": 92
-														},
-														"high": {
-															"type": "integer",
-															"const": 98
-														}
+														"low": { "type": "integer", "const": 92 },
+														"high": { "type": "integer", "const": 98 }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["low", "high", "result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"low": {
-															"type": "integer",
-															"const": 99
-														},
-														"high": {
-															"type": "integer",
-															"const": 100
-														},
+														"_template": { "type": "string" },
+														"low": { "type": "integer", "const": 99 },
+														"high": { "type": "integer", "const": 100 },
 														"result": {
 															"type": "string",
 															"const": "Precursor Vault (planetside)"
@@ -4097,13 +2851,8 @@
 									"type": "object",
 									"required": ["name", "table"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"name": {
-											"type": "string",
-											"const": "Life"
-										},
+										"_template": { "type": "string" },
+										"name": { "type": "string", "const": "Life" },
 										"table": {
 											"type": "array",
 											"minItems": 6,
@@ -4113,78 +2862,48 @@
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "None"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "None" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Extinct"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Extinct" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Scarce"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Scarce" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Diverse"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Diverse" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Bountiful"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Bountiful" }
 													}
 												},
 												{
 													"type": "object",
 													"required": ["result"],
 													"properties": {
-														"_template": {
-															"type": "string"
-														},
-														"result": {
-															"type": "string",
-															"const": "Overrun"
-														}
+														"_template": { "type": "string" },
+														"result": { "type": "string", "const": "Overrun" }
 													}
 												}
 											]
@@ -4193,12 +2912,7 @@
 								}
 							}
 						},
-						"sample_names": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						}
+						"sample_names": { "type": "array", "items": { "type": "string" } }
 					}
 				}
 			]
@@ -4212,10 +2926,7 @@
 					"type": "object",
 					"required": ["table"],
 					"properties": {
-						"_template": {
-							"type": "string",
-							"const": "LocationOracle"
-						},
+						"_template": { "type": "string", "const": "LocationOracle" },
 						"table": {
 							"type": "array",
 							"minItems": 3,
@@ -4225,39 +2936,24 @@
 									"type": "object",
 									"required": ["result"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"result": {
-											"type": "string",
-											"const": "Planetside"
-										}
+										"_template": { "type": "string" },
+										"result": { "type": "string", "const": "Planetside" }
 									}
 								},
 								{
 									"type": "object",
 									"required": ["result"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"result": {
-											"type": "string",
-											"const": "Orbital"
-										}
+										"_template": { "type": "string" },
+										"result": { "type": "string", "const": "Orbital" }
 									}
 								},
 								{
 									"type": "object",
 									"required": ["result"],
 									"properties": {
-										"_template": {
-											"type": "string"
-										},
-										"result": {
-											"type": "string",
-											"const": "Deep Space"
-										}
+										"_template": { "type": "string" },
+										"result": { "type": "string", "const": "Deep Space" }
 									}
 								}
 							]
@@ -4289,26 +2985,17 @@
 				"assets": {
 					"title": "Suggested assets",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/AssetIDWildcard"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/AssetIDWildcard" }
 				},
 				"moves": {
 					"title": "Suggested moves",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MoveID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/MoveID" }
 				},
 				"oracles": {
 					"title": "Suggested oracle tables",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/OracleTableID" }
 				}
 			}
 		},
@@ -4321,54 +3008,37 @@
 				"assets": {
 					"title": "Suggested assets",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/AssetIDWildcard"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/AssetIDWildcard" }
 				},
 				"moves": {
 					"title": "Suggested moves",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MoveID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/MoveID" }
 				},
 				"oracles": {
 					"title": "Suggested oracle tables",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableID"
-					},
-					"nullable": true
+					"items": { "$ref": "#/definitions/OracleTableID" }
 				},
 				"regions": {
 					"title": "Suggested regions",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/RegionEntryID"
-					}
+					"items": { "$ref": "#/definitions/RegionEntryID" }
 				},
 				"encounters": {
 					"title": "Suggested encounters",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/EncounterClassicID"
-					}
+					"items": { "$ref": "#/definitions/EncounterClassicID" }
 				},
 				"site_themes": {
 					"title": "Suggested delve site themes",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/DelveSiteThemeID"
-					}
+					"items": { "$ref": "#/definitions/DelveSiteThemeID" }
 				},
 				"site_domains": {
 					"title": "Suggested delve site domains",
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/DelveSiteDomainID"
-					}
+					"items": { "$ref": "#/definitions/DelveSiteDomainID" }
 				}
 			}
 		},
@@ -4383,32 +3053,18 @@
 			"type": "object",
 			"required": ["name"],
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/WorldTruthID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"icon": {
-					"$ref": "#/definitions/Icon"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
+				"id": { "$ref": "#/definitions/WorldTruthID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"icon": { "$ref": "#/definitions/SvgImageUrl" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"source": { "$ref": "#/definitions/Source" },
 				"options": {
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"$ref": "#/definitions/WorldTruthOption"
-					}
+					"items": { "$ref": "#/definitions/WorldTruthOption" }
 				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"WorldTruthOptionID": {
@@ -4422,15 +3078,9 @@
 			"type": "object",
 			"required": ["description", "quest_starter"],
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/WorldTruthOptionID"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"quest_starter": {
-					"$ref": "#/definitions/MarkdownString"
-				}
+				"id": { "$ref": "#/definitions/WorldTruthOptionID" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"quest_starter": { "$ref": "#/definitions/MarkdownString" }
 			}
 		},
 		"RegionEntryID": {
@@ -4451,36 +3101,18 @@
 				"quest_starter"
 			],
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/RegionEntryID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"id": { "$ref": "#/definitions/RegionEntryID" },
+				"name": { "$ref": "#/definitions/Label" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/MarkdownString"
-					}
+					"items": { "$ref": "#/definitions/MarkdownString" }
 				},
-				"quest_starter": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"quest_starter": { "$ref": "#/definitions/MarkdownString" },
+				"source": { "$ref": "#/definitions/Source" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"RarityID": {
@@ -4496,19 +3128,13 @@
 			"required": ["asset", "description", "name", "xp_cost"],
 			"additionalProperties": false,
 			"properties": {
-				"id": {
-					"$ref": "#/definitions/RarityID"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
+				"id": { "$ref": "#/definitions/RarityID" },
+				"name": { "$ref": "#/definitions/Label" },
 				"asset": {
 					"description": "The asset enhanced by this rarity.",
 					"$ref": "#/definitions/AssetID"
 				},
-				"icon": {
-					"$ref": "#/definitions/Icon"
-				},
+				"icon": { "$ref": "#/definitions/SvgImageUrl" },
 				"xp_cost": {
 					"description": "From Ironsworn: Delve, p. 174:\n\n    Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n    If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 					"type": "integer",
@@ -4516,18 +3142,10 @@
 					"maximum": 5,
 					"default": 3
 				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"description": { "$ref": "#/definitions/MarkdownString" },
+				"source": { "$ref": "#/definitions/Source" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"DelveSiteID": {
@@ -4548,25 +3166,15 @@
 			"description": "A delve site with a theme, domain, and denizen table.",
 			"required": ["name", "rank", "theme", "domain", "denizens"],
 			"properties": {
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"rank": {
-					"$ref": "#/definitions/ChallengeRank"
-				},
-				"theme": {
-					"$ref": "#/definitions/DelveSiteThemeID"
-				},
-				"domain": {
-					"$ref": "#/definitions/DelveSiteDomainID"
-				},
+				"name": { "$ref": "#/definitions/Label" },
+				"rank": { "$ref": "#/definitions/ChallengeRank" },
+				"theme": { "$ref": "#/definitions/DelveSiteThemeID" },
+				"domain": { "$ref": "#/definitions/DelveSiteDomainID" },
 				"denizens": {
 					"allOf": [
 						{
 							"type": "array",
-							"items": {
-								"$ref": "#/definitions/DelveSiteDenizen"
-							}
+							"items": { "$ref": "#/definitions/DelveSiteDenizen" }
 						},
 						{
 							"type": "array",
@@ -4576,187 +3184,107 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "very_common"
-										},
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 27
-										}
+										"frequency": { "const": "very_common" },
+										"low": { "const": 1 },
+										"high": { "const": 27 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 28
-										},
-										"high": {
-											"const": 41
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 28 },
+										"high": { "const": 41 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 42
-										},
-										"high": {
-											"const": 55
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 42 },
+										"high": { "const": 55 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "common"
-										},
-										"low": {
-											"const": 56
-										},
-										"high": {
-											"const": 69
-										}
+										"frequency": { "const": "common" },
+										"low": { "const": 56 },
+										"high": { "const": 69 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 70
-										},
-										"high": {
-											"const": 75
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 70 },
+										"high": { "const": 75 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 76
-										},
-										"high": {
-											"const": 81
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 76 },
+										"high": { "const": 81 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 82
-										},
-										"high": {
-											"const": 87
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 82 },
+										"high": { "const": 87 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "uncommon"
-										},
-										"low": {
-											"const": 88
-										},
-										"high": {
-											"const": 93
-										}
+										"frequency": { "const": "uncommon" },
+										"low": { "const": 88 },
+										"high": { "const": 93 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 94
-										},
-										"high": {
-											"const": 95
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 94 },
+										"high": { "const": 95 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 96
-										},
-										"high": {
-											"const": 97
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 96 },
+										"high": { "const": 97 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "rare"
-										},
-										"low": {
-											"const": 98
-										},
-										"high": {
-											"const": 99
-										}
+										"frequency": { "const": "rare" },
+										"low": { "const": 98 },
+										"high": { "const": 99 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"const": "unforeseen"
-										},
-										"low": {
-											"const": 100
-										},
-										"high": {
-											"const": 100
-										}
+										"frequency": { "const": "unforeseen" },
+										"low": { "const": 100 },
+										"high": { "const": 100 }
 									}
 								}
 							]
 						}
 					]
 				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"id": {
-					"$ref": "#/definitions/DelveSiteID"
-				},
-				"suggestions": {
-					"$ref": "#/definitions/Suggestions"
-				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"source": { "$ref": "#/definitions/Source" },
+				"id": { "$ref": "#/definitions/DelveSiteID" },
+				"suggestions": { "$ref": "#/definitions/Suggestions" },
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"DelveSiteDenizen": {
@@ -4768,32 +3296,18 @@
 				"encounter": {
 					"description": "The ID of the relevant encounter, or `null` if no encounter has been specified.",
 					"oneOf": [
-						{
-							"$ref": "#/definitions/EncounterClassicID"
-						},
-						{
-							"type": "null"
-						}
+						{ "$ref": "#/definitions/EncounterClassicID" },
+						{ "type": "null" }
 					]
 				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
+				"name": { "$ref": "#/definitions/Label" },
 				"frequency": {
 					"title": "Frequency keyword",
 					"type": "string",
 					"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 				},
-				"low": {
-					"type": "integer",
-					"minimum": 1,
-					"maximum": 100
-				},
-				"high": {
-					"type": "integer",
-					"minimum": 1,
-					"maximum": 100
-				}
+				"low": { "type": "integer", "minimum": 1, "maximum": 100 },
+				"high": { "type": "integer", "minimum": 1, "maximum": 100 }
 			}
 		},
 		"DelveSiteCard": {
@@ -4803,42 +3317,22 @@
 			"additionalProperties": false,
 			"required": ["card_type", "name", "summary", "features", "dangers"],
 			"properties": {
-				"id": {
-					"type": "string"
-				},
-				"name": {
-					"$ref": "#/definitions/Label"
-				},
-				"card_type": {
-					"$ref": "#/definitions/DelveSiteCardType"
-				},
-				"icon": {
-					"$ref": "#/definitions/Icon"
-				},
-				"summary": {
-					"$ref": "#/definitions/MarkdownString"
-				},
-				"source": {
-					"$ref": "#/definitions/Source"
-				},
-				"description": {
-					"$ref": "#/definitions/MarkdownString"
-				},
+				"id": { "type": "string" },
+				"name": { "$ref": "#/definitions/Label" },
+				"card_type": { "$ref": "#/definitions/DelveSiteCardType" },
+				"icon": { "$ref": "#/definitions/SvgImageUrl" },
+				"summary": { "$ref": "#/definitions/MarkdownString" },
+				"source": { "$ref": "#/definitions/Source" },
+				"description": { "$ref": "#/definitions/MarkdownString" },
 				"features": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableRow"
-					}
+					"items": { "$ref": "#/definitions/OracleTableRow" }
 				},
 				"dangers": {
 					"type": "array",
-					"items": {
-						"$ref": "#/definitions/OracleTableRow"
-					}
+					"items": { "$ref": "#/definitions/OracleTableRow" }
 				},
-				"_source": {
-					"$ref": "#/definitions/SourcePartial"
-				}
+				"_source": { "$ref": "#/definitions/SourcePartial" }
 			}
 		},
 		"DelveSiteThemeID": {
@@ -4852,17 +3346,11 @@
 			"type": "object",
 			"description": "A delve site theme card.",
 			"allOf": [
-				{
-					"$ref": "#/definitions/DelveSiteCard"
-				},
+				{ "$ref": "#/definitions/DelveSiteCard" },
 				{
 					"properties": {
-						"id": {
-							"$ref": "#/definitions/DelveSiteThemeID"
-						},
-						"card_type": {
-							"const": "theme"
-						},
+						"id": { "$ref": "#/definitions/DelveSiteThemeID" },
+						"card_type": { "const": "theme" },
 						"features": {
 							"type": "array",
 							"minItems": 5,
@@ -4871,56 +3359,36 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 4
-										}
+										"low": { "const": 1 },
+										"high": { "const": 4 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 5
-										},
-										"high": {
-											"const": 8
-										}
+										"low": { "const": 5 },
+										"high": { "const": 8 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 9
-										},
-										"high": {
-											"const": 12
-										}
+										"low": { "const": 9 },
+										"high": { "const": 12 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 13
-										},
-										"high": {
-											"const": 16
-										}
+										"low": { "const": 13 },
+										"high": { "const": 16 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 17
-										},
-										"high": {
-											"const": 20
-										}
+										"low": { "const": 17 },
+										"high": { "const": 20 }
 									}
 								}
 							]
@@ -4933,133 +3401,85 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 1
-										},
-										"high": {
-											"const": 5
-										}
+										"low": { "const": 1 },
+										"high": { "const": 5 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 6
-										},
-										"high": {
-											"const": 10
-										}
+										"low": { "const": 6 },
+										"high": { "const": 10 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 11
-										},
-										"high": {
-											"const": 12
-										}
+										"low": { "const": 11 },
+										"high": { "const": 12 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 13
-										},
-										"high": {
-											"const": 14
-										}
+										"low": { "const": 13 },
+										"high": { "const": 14 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 15
-										},
-										"high": {
-											"const": 16
-										}
+										"low": { "const": 15 },
+										"high": { "const": 16 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 17
-										},
-										"high": {
-											"const": 18
-										}
+										"low": { "const": 17 },
+										"high": { "const": 18 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 19
-										},
-										"high": {
-											"const": 20
-										}
+										"low": { "const": 19 },
+										"high": { "const": 20 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 21
-										},
-										"high": {
-											"const": 22
-										}
+										"low": { "const": 21 },
+										"high": { "const": 22 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 23
-										},
-										"high": {
-											"const": 24
-										}
+										"low": { "const": 23 },
+										"high": { "const": 24 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 25
-										},
-										"high": {
-											"const": 26
-										}
+										"low": { "const": 25 },
+										"high": { "const": 26 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 27
-										},
-										"high": {
-											"const": 28
-										}
+										"low": { "const": 27 },
+										"high": { "const": 28 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 29
-										},
-										"high": {
-											"const": 30
-										}
+										"low": { "const": 29 },
+										"high": { "const": 30 }
 									}
 								}
 							]
@@ -5079,17 +3499,11 @@
 			"type": "object",
 			"description": "A delve site domain card.",
 			"allOf": [
-				{
-					"$ref": "#/definitions/DelveSiteCard"
-				},
+				{ "$ref": "#/definitions/DelveSiteCard" },
 				{
 					"properties": {
-						"id": {
-							"$ref": "#/definitions/DelveSiteDomainID"
-						},
-						"card_type": {
-							"const": "domain"
-						},
+						"id": { "$ref": "#/definitions/DelveSiteDomainID" },
+						"card_type": { "const": "domain" },
 						"features": {
 							"type": "array",
 							"minItems": 12,
@@ -5098,111 +3512,71 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 21
-										},
-										"high": {
-											"const": 43
-										}
+										"low": { "const": 21 },
+										"high": { "const": 43 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 44
-										},
-										"high": {
-											"const": 56
-										}
+										"low": { "const": 44 },
+										"high": { "const": 56 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 57
-										},
-										"high": {
-											"const": 64
-										}
+										"low": { "const": 57 },
+										"high": { "const": 64 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 65
-										},
-										"high": {
-											"const": 68
-										}
+										"low": { "const": 65 },
+										"high": { "const": 68 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 69
-										},
-										"high": {
-											"const": 72
-										}
+										"low": { "const": 69 },
+										"high": { "const": 72 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 73
-										},
-										"high": {
-											"const": 76
-										}
+										"low": { "const": 73 },
+										"high": { "const": 76 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 77
-										},
-										"high": {
-											"const": 80
-										}
+										"low": { "const": 77 },
+										"high": { "const": 80 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 81
-										},
-										"high": {
-											"const": 84
-										}
+										"low": { "const": 81 },
+										"high": { "const": 84 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 85
-										},
-										"high": {
-											"const": 88
-										}
+										"low": { "const": 85 },
+										"high": { "const": 88 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 89
-										},
-										"high": {
-											"const": 98
-										},
+										"low": { "const": 89 },
+										"high": { "const": 98 },
 										"result": {
 											"$ref": "#/definitions/MarkdownString",
 											"default": "Something unusual or unexpected"
@@ -5223,12 +3597,8 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 99
-										},
-										"high": {
-											"const": 99
-										},
+										"low": { "const": 99 },
+										"high": { "const": 99 },
 										"result": {
 											"$ref": "#/definitions/MarkdownString",
 											"default": "You transition into a new theme"
@@ -5244,12 +3614,8 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 100
-										},
-										"high": {
-											"const": 100
-										},
+										"low": { "const": 100 },
+										"high": { "const": 100 },
 										"result": {
 											"$ref": "#/definitions/MarkdownString",
 											"default": "You transition into a new domain"
@@ -5272,56 +3638,36 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 31
-										},
-										"high": {
-											"const": 33
-										}
+										"low": { "const": 31 },
+										"high": { "const": 33 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 34
-										},
-										"high": {
-											"const": 36
-										}
+										"low": { "const": 34 },
+										"high": { "const": 36 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 37
-										},
-										"high": {
-											"const": 39
-										}
+										"low": { "const": 37 },
+										"high": { "const": 39 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 40
-										},
-										"high": {
-											"const": 42
-										}
+										"low": { "const": 40 },
+										"high": { "const": 42 }
 									}
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": {
-											"const": 43
-										},
-										"high": {
-											"const": 45
-										}
+										"low": { "const": 43 },
+										"high": { "const": 45 }
 									}
 								}
 							]
@@ -5360,10 +3706,7 @@
 					"title": "Authors",
 					"type": "array",
 					"minItems": 1,
-					"items": {
-						"type": "string",
-						"examples": ["Shawn Tomkin"]
-					}
+					"items": { "type": "string", "examples": ["Shawn Tomkin"] }
 				},
 				"date": {
 					"type": "string",
@@ -5382,7 +3725,7 @@
 		}
 	},
 	"type": "object",
-	"additionalProperties": false,
+	"additionalProperties": { "enum": ["$schema"], "type": "string" },
 	"patternProperties": {
 		"^[a-z0-9_]{3,}$": {
 			"title": "Sourcebook (Ironsworn classic)",
@@ -5390,7 +3733,6 @@
 			"additionalProperties": false,
 			"required": ["ruleset", "_source"],
 			"properties": {
-				"$schema": {},
 				"ruleset": {
 					"description": "The ruleset (Starforged or Classic ironsworn) that these elements are for.",
 					"const": "classic"
@@ -5403,9 +3745,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/OracleCollection"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/OracleCollection" }
 					},
 					"additionalProperties": false,
 					"title": "Oracles"
@@ -5414,9 +3754,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/MoveCategory"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/MoveCategory" }
 					},
 					"additionalProperties": false,
 					"title": "Moves"
@@ -5425,9 +3763,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/AssetType"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/AssetType" }
 					},
 					"additionalProperties": false,
 					"title": "Assets"
@@ -5436,9 +3772,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/EncounterCollectionClassic"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/EncounterCollectionClassic" }
 					},
 					"additionalProperties": false,
 					"title": "Encounters"
@@ -5447,9 +3781,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/WorldTruth"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/WorldTruth" }
 					},
 					"additionalProperties": false,
 					"title": "World truths"
@@ -5458,9 +3790,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/RegionEntry"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/RegionEntry" }
 					},
 					"additionalProperties": false,
 					"title": "Regions"
@@ -5469,9 +3799,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/DelveSiteTheme"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteTheme" }
 					},
 					"additionalProperties": false,
 					"title": "Delve site themes"
@@ -5480,9 +3808,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/DelveSiteDomain"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSiteDomain" }
 					},
 					"additionalProperties": false,
 					"title": "Delve site domains"
@@ -5491,9 +3817,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/DelveSite"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/DelveSite" }
 					},
 					"additionalProperties": false,
 					"title": "Delve sites"
@@ -5502,9 +3826,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
-						"^[a-z_]+$": {
-							"$ref": "#/definitions/Rarity"
-						}
+						"^[a-z_]+$": { "$ref": "#/definitions/Rarity" }
 					},
 					"additionalProperties": false,
 					"title": "Rarities"

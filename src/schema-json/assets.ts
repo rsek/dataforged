@@ -132,6 +132,7 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 		attachments: refSchema<Types.Assets.AssetAttachment>('AssetAttachment'),
 		condition_meter: {
 			...refSchema<Types.Assets.AssetConditionMeter>('AssetConditionMeter'),
+			type: 'object',
 			nullable: true
 		}
 	}

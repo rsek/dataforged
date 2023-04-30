@@ -1,71 +1,152 @@
-source:
-  authors:
-		- Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-collections:
-  derelicts:
-    title:
-      canonical: Derelicts
-    _source:
-      date: 2022-05-06
-    collections:
-      research:
-        name: Research
-
-        _source:
-          page: 359
-        contents:
-          area:
-            name: Area
-            table:
-                - result: Clean room
-                - result: Cold storage
-                - result: Creature or animal pens
-                - result: Decontamination room
-                - result: Hazardous material storage
-                - result: Hydroponics or agriculture
-                - result: Isolation or containment
-                - result: Lab
-                - result: Library or records
-                - result: Secure vault
-                - result: *result:NewZone
-                - result: *result:NewZoneViaAccess
-          feature:
-            name: Feature
-            table:
-                - result: Aquarium or tank
-                - result: Biological specimens
-                - result: Bones or fossils
-                - result: Broken equipment
-                - result: Cryptic research notes
-                - result: Hastily destroyed data
-                - result: Hazmat suits
-                - result: Inscrutable artifact
-                - result: Invasive plant growth
-                - result: Recorded research log
-                - result: Spilled chemicals
-                - result: *result:Descriptor+Focus
-          peril:
-            name: Peril
-            table:
-                - result: Automated containment protocols are activated
-                - result: Biological infestation
-                - result: Dangerous specimen
-                - result: Disturbing outcome of a failed experiment
-                - result: Evidence of sinister experiments
-                - result: Fragile vault holds a dire threat
-                - result: Signs of broken containment
-                - result: Toxic environment
-                - result: Unstable technology
-                - result: *result:Action+Theme
-                - result: *result:RollTwice
-          opportunity:
-            name: Opportunity
-            table:
-                - result: Helpful research data
-                - result: Records of a notable discovery
-                - result: Specialized research tools
-                - result: Unique prototype
-                - result: Useful navigational data
+starforged:
+  ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    url: https://ironswornrpg.com
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+  oracles:
+    derelicts:
+      extends: starforged/collections/oracles/derelicts
+      name: Derelicts
+      collections:
+        research:
+          name: Research
+          _source:
+            page: 359
+          contents:
+            area:
+              name: Area
+              table:
+                - low: 1
+                  high: 8
+                  result: Clean room
+                - low: 9
+                  high: 16
+                  result: Cold storage
+                - low: 17
+                  high: 24
+                  result: Creature or animal pens
+                - low: 25
+                  high: 32
+                  result: Decontamination room
+                - low: 33
+                  high: 40
+                  result: Hazardous material storage
+                - low: 41
+                  high: 48
+                  result: Hydroponics or agriculture
+                - low: 49
+                  high: 56
+                  result: Isolation or containment
+                - low: 57
+                  high: 64
+                  result: Lab
+                - low: 65
+                  high: 72
+                  result: Library or records
+                - low: 73
+                  high: 80
+                  result: Secure vault
+                - low: 81
+                  high: 85
+                  result: *result:NewZone
+                - low: 86
+                  high: 100
+                  result: *result:NewZoneViaAccess
+            feature:
+              name: Feature
+              table:
+                - low: 1
+                  high: 8
+                  result: Aquarium or tank
+                - low: 9
+                  high: 16
+                  result: Biological specimens
+                - low: 17
+                  high: 24
+                  result: Bones or fossils
+                - low: 25
+                  high: 32
+                  result: Broken equipment
+                - low: 33
+                  high: 40
+                  result: Cryptic research notes
+                - low: 41
+                  high: 48
+                  result: Hastily destroyed data
+                - low: 49
+                  high: 56
+                  result: Hazmat suits
+                - low: 57
+                  high: 64
+                  result: Inscrutable artifact
+                - low: 65
+                  high: 72
+                  result: Invasive plant growth
+                - low: 73
+                  high: 80
+                  result: Recorded research log
+                - low: 81
+                  high: 88
+                  result: Spilled chemicals
+                - low: 89
+                  high: 100
+                  result: *result:Descriptor+Focus
+            peril:
+              name: Peril
+              table:
+                - low: 1
+                  high: 10
+                  result: Automated containment protocols are activated
+                - low: 11
+                  high: 20
+                  result: Biological infestation
+                - low: 21
+                  high: 30
+                  result: Dangerous specimen
+                - low: 31
+                  high: 40
+                  result: Disturbing outcome of a failed experiment
+                - low: 41
+                  high: 50
+                  result: Evidence of sinister experiments
+                - low: 51
+                  high: 60
+                  result: Fragile vault holds a dire threat
+                - low: 61
+                  high: 70
+                  result: Signs of broken containment
+                - low: 71
+                  high: 80
+                  result: Toxic environment
+                - low: 81
+                  high: 90
+                  result: Unstable technology
+                - low: 91
+                  high: 98
+                  result: *result:Action+Theme
+                - low: 99
+                  high: 100
+                  result: *result:RollTwice
+            opportunity:
+              name: Opportunity
+              table:
+                - low: 1
+                  high: 20
+                  result: Helpful research data
+                - low: 21
+                  high: 40
+                  result: Records of a notable discovery
+                - low: 41
+                  high: 60
+                  result: Specialized research tools
+                - low: 61
+                  high: 80
+                  result: Unique prototype
+                - low: 81
+                  high: 100
+                  result: Useful navigational data
 

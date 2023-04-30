@@ -1,70 +1,152 @@
-source:
-  authors:
-		- Shawn Tomkin
-  title: "Ironsworn: Starforged Rulebook"
-  license: https://creativecommons.org/licenses/by/4.0
-collections:
-  derelicts:
-    title:
-      canonical: Derelicts
-    _source:
-      date: 2022-05-06
-    collections:
-      medical:
-        name: Medical
+starforged:
+  ruleset: starforged
+  _source:
+    authors:
+      - Shawn Tomkin
+    url: https://ironswornrpg.com
+    title: "Ironsworn: Starforged Rulebook"
+    license: https://creativecommons.org/licenses/by/4.0
+    date: 2022-05-06
+  oracles:
+    derelicts:
+      extends: starforged/collections/oracles/derelicts
+      name: Derelicts
+      collections:
+        medical:
+          name: Medical
 
-        _source:
-          page: 356
-        contents:
-          area:
-            name: Area
-            table:
-                - result: Crematorium
-                - result: Emergency or triage
-                - result: Isolation or containment
-                - result: Medical lab
-                - result: Medical offices
-                - result: Morgue
-                - result: Operating room
-                - result: Pharmacy or drug locker
-                - result: Prosthetics workshop
-                - result: Ward or clinic
-                - result: *result:NewZone
-                - result: *result:NewZoneViaAccess
-          feature:
-            name: Feature
-            table:
-                - result: Autopsied corpse
-                - result: Biological specimens
-                - result: Blood spatter or pools
-                - result: Bloody medical supplies
-                - result: Broken prosthetics
-                - result: Corpse of a healer
-                - result: Dissected specimen
-                - result: Improvised overflow beds
-                - result: Medical monitors
-                - result: Medical records or scans
-                - result: Stacks of body bags
-                - result: *result:Descriptor+Focus
-          peril:
-            name: Peril
-            table:
-                - result: Disgusting sight / smell
-                - result: Disturbing evidence of medical misconduct
-                - result: Erratic medical bots
-                - result: Evidence of a virulent disease
-                - result: Malfunctioning medical equipment
-                - result: Repercussions of a medical experiment
-                - result: Restless dead
-                - result: Signs of a horrific death
-                - result: Signs of broken quarantine
-                - result: *result:Action+Theme
-                - result: *result:RollTwice
-          opportunity:
-            name: Opportunity
-            table:
-                - result: Cache of medicine
-                - result: Clues to a medical mystery
-                - result: Helpful medical bot
-                - result: Unusual or rare specimen
-                - result: Useful medical equipment
+          _source:
+            page: 356
+          contents:
+            area:
+              name: Area
+              table:
+                - low: 1
+                  high: 8
+                  result: Crematorium
+                - low: 9
+                  high: 16
+                  result: Emergency or triage
+                - low: 17
+                  high: 24
+                  result: Isolation or containment
+                - low: 25
+                  high: 32
+                  result: Medical lab
+                - low: 33
+                  high: 40
+                  result: Medical offices
+                - low: 41
+                  high: 48
+                  result: Morgue
+                - low: 49
+                  high: 56
+                  result: Operating room
+                - low: 57
+                  high: 64
+                  result: Pharmacy or drug locker
+                - low: 65
+                  high: 72
+                  result: Prosthetics workshop
+                - low: 73
+                  high: 80
+                  result: Ward or clinic
+                - low: 81
+                  high: 85
+                  result: *result:NewZone
+                - low: 86
+                  high: 100
+                  result: *result:NewZoneViaAccess
+            feature:
+              name: Feature
+              table:
+                - low: 1
+                  high: 8
+                  result: Autopsied corpse
+                - low: 9
+                  high: 16
+                  result: Biological specimens
+                - low: 17
+                  high: 24
+                  result: Blood spatter or pools
+                - low: 25
+                  high: 32
+                  result: Bloody medical supplies
+                - low: 33
+                  high: 40
+                  result: Broken prosthetics
+                - low: 41
+                  high: 48
+                  result: Corpse of a healer
+                - low: 49
+                  high: 56
+                  result: Dissected specimen
+                - low: 57
+                  high: 64
+                  result: Improvised overflow beds
+                - low: 65
+                  high: 72
+                  result: Medical monitors
+                - low: 73
+                  high: 80
+                  result: Medical records or scans
+                - low: 81
+                  high: 88
+                  result: Stacks of body bags
+                - low: 89
+                  high: 100
+                  result: *result:Descriptor+Focus
+            peril:
+              name: Peril
+              table:
+                - low: 1
+                  high: 10
+                  result: Disgusting sight / smell
+                - low: 11
+                  high: 20
+                  result: Disturbing evidence of medical misconduct
+                - low: 21
+                  high: 30
+                  result: Erratic medical bots
+                - low: 31
+                  high: 40
+                  result: Evidence of a virulent disease
+                - low: 41
+                  high: 50
+                  result: Malfunctioning medical equipment
+                - low: 51
+                  high: 60
+                  result: Repercussions of a medical experiment
+                - low: 61
+                  high: 70
+                  result: Restless dead
+                - low: 71
+                  high: 80
+                  result: Signs of a horrific death
+                - low: 81
+                  high: 90
+                  result: Signs of broken quarantine
+                - low: 91
+                  high: 98
+                  result: *result:Action+Theme
+                - low: 99
+                  high: 100
+                  result: *result:RollTwice
+            opportunity:
+              name: Opportunity
+              table:
+                - low: 1
+                  high: 20
+                  result: Cache of medicine
+                - low: 21
+                  high: 40
+                  result: Clues to a medical mystery
+                - low: 41
+                  high: 60
+                  result: Helpful medical bot
+                - low: 61
+                  high: 80
+                  result: Unusual or rare specimen
+                - low: 81
+                  high: 100
+                  result: Useful medical equipment

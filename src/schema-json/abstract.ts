@@ -41,7 +41,7 @@ export function collectionSchema<
 			)
 		}
 	} as unknown as Schema<TCollection>
-	if (!isRecursive) CollectionBase.required.push('contents')
+	// if (!isRecursive) CollectionBase.required.push('contents')
 	return _.merge(CollectionBase, mergeWith) as unknown as Schema<TCollection>
 }
 

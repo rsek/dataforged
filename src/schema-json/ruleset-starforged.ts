@@ -62,7 +62,7 @@ export const SettingTruth: Schema<Types.Truths.SettingTruth> = {
 	properties: {
 		id: refSchema<Types.Truths.TruthID>('SettingTruthID'),
 		name: refSchema<Types.Localize.Label>('Label'),
-		icon: refSchema<Types.Metadata.SvgImageUrl>('Icon'),
+		icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
 		suggestions: refSchema<Types.Metadata.SuggestionsBase>('Suggestions'),
 		source: refSchema<Types.Metadata.Source>('Source'),
 		options: {

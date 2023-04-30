@@ -7,11 +7,13 @@ import { logger } from 'scripts/logger'
 
 const validator = new Ajv({
 	removeAdditional: true,
-	strict: true,
+	strict: 'log',
+	strictSchema: 'log',
+	strictTypes: 'log',
 	verbose: true,
 	validateFormats: true,
+	useDefaults: 'empty',
 	logger
-	// useDefaults: true
 })
 
 addFormats(validator)
