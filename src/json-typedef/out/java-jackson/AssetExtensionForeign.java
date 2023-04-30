@@ -5,7 +5,6 @@ package Dataforged;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.util.Map;
 
 /**
  * Describes changes applied to an asset, usually by another asset. Unchanged
@@ -24,8 +23,8 @@ public class AssetExtensionForeign {
     private AssetExtensionForeignAttachments attachments;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("controls")
-    private Map<String, AssetExtensionForeignControl> controls;
+    @JsonProperty("condition_meter")
+    private AssetExtensionForeignConditionMeter conditionMeter;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("count_as_impact")
@@ -77,21 +76,17 @@ public class AssetExtensionForeign {
     }
 
     /**
-     * Getter for controls.<p>
-     * Use the same key as the original control. Currently, only condition
-     * meters may be extended in this way.
+     * Getter for conditionMeter.<p>
      */
-    public Map<String, AssetExtensionForeignControl> getControls() {
-        return controls;
+    public AssetExtensionForeignConditionMeter getConditionMeter() {
+        return conditionMeter;
     }
 
     /**
-     * Setter for controls.<p>
-     * Use the same key as the original control. Currently, only condition
-     * meters may be extended in this way.
+     * Setter for conditionMeter.<p>
      */
-    public void setControls(Map<String, AssetExtensionForeignControl> controls) {
-        this.controls = controls;
+    public void setConditionMeter(AssetExtensionForeignConditionMeter conditionMeter) {
+        this.conditionMeter = conditionMeter;
     }
 
     /**

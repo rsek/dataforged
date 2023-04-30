@@ -370,7 +370,7 @@ starforged:
           #     attributes:
           #       life: null
           description: |-
-            Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you Undertake an Expedition, or if you Explore a Waypoint and find an opportunity.
+            Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
           contents:
             lifebearing:
               rendering:
@@ -378,92 +378,92 @@ starforged:
               name: Lifebearing
               # usage:
               #   requires: *attr:Life.Lifebearing
-              table: &table:Planets.Opportunity
+              table:
                 - low: 1
                   high: 4
-                  result: Clue to a lifeform's nature or vulnerabilities
+                  result: &Opp.0 Clue to a lifeform's nature or vulnerabilities
                   # suggestions: [*obj:Creature]
                 - low: 5
                   high: 8
-                  result: Friendly interaction with a benign lifeform
+                  result: &Opp.1 Friendly interaction with a benign lifeform
                   # suggestions: [*obj:Creature]
                 - low: 9
                   high: 12
-                  result: Hunting or foraging opportunities are plentiful
+                  result: &Opp.2 Hunting or foraging opportunities are plentiful
                 - low: 13
                   high: 16
-                  result: Interesting or helpful aspect of benign creatures
+                  result: &Opp.3 Interesting or helpful aspect of benign creatures
                   # suggestions: [*obj:Creature]
                 - low: 17
                   high: 20
-                  result: Interesting or helpful aspect of local plant life
+                  result: &Opp.4 Interesting or helpful aspect of local plant life
                 - low: 21
                   high: 24
-                  result: Encounter reveals unexpected benign lifeforms
+                  result: &Opp.5 Encounter reveals unexpected benign lifeforms
                   # suggestions: [*obj:Creature]
                 - low: 25
                   high: 28
-                  result: Abandoned camp or vehicle
+                  result: &Opp.6 Abandoned camp or vehicle
                   # suggestions: [*roll:Object]
                 - low: 29
                   high: 32
-                  result: Advance warning of an environmental threat
+                  result: &Opp.7 Advance warning of an environmental threat
                 - low: 33
                   high: 36
-                  result: Clear path through otherwise perilous terrain
+                  result: &Opp.8 Clear path through otherwise perilous terrain
                 - low: 37
                   high: 40
-                  result: Clue offers insight into a current quest or mystery
+                  result: &Opp.9 Clue offers insight into a current quest or mystery
                 - low: 41
                   high: 44
-                  result: Clue to the history or nature of this place
+                  result: &Opp.10 Clue to the history or nature of this place
                 - low: 45
                   high: 48
-                  result: Evidence that others have passed this way
+                  result: &Opp.11 Evidence that others have passed this way
                 - low: 49
                   high: 52
-                  result: Foe reveals themselves or tips their hand
+                  result: &Opp.12 Foe reveals themselves or tips their hand
                 - low: 53
                   high: 56
-                  result: Fortuitous change in the weather or atmosphere
+                  result: &Opp.13 Fortuitous change in the weather or atmosphere
                 - low: 57
                   high: 60
-                  result: Friendly traveler crosses your path
+                  result: &Opp.14 Friendly traveler crosses your path
                 - low: 61
                   high: 64
-                  result: Helpful resource is in ample supply
+                  result: &Opp.15 Helpful resource is in ample supply
                   # suggestions: [*roll:Object]
                 - low: 65
                   high: 68
-                  result: Impressive vista offers comfort or inspiration
+                  result: &Opp.16 Impressive vista offers comfort or inspiration
                 - low: 69
                   high: 72
-                  result: Interesting artifact or device
+                  result: &Opp.17 Interesting artifact or device
                   # suggestions: [*roll:Object]
                 - low: 73
                   high: 76
-                  result: Interesting site offers opportunities for exploration
+                  result: &Opp.18 Interesting site offers opportunities for exploration
                   # suggestions: [*roll:Object]
                 - low: 77
                   high: 80
-                  result: Moment of fellowship or inner peace
+                  result: &Opp.19 Moment of fellowship or inner peace
                 - low: 81
                   high: 84
-                  result: "Opening to distract, escape, or avoid foes"
+                  result: &Opp.20 "Opening to distract, escape, or avoid foes"
                 - low: 85
                   high: 88
-                  result: Opening to get the drop on a foe
+                  result: &Opp.21 Opening to get the drop on a foe
                 - low: 89
                   high: 92
-                  result: Plea for help from a potential benefactor
+                  result: &Opp.22 Plea for help from a potential benefactor
                   # suggestions: [*obj:Npc]
                 - low: 93
                   high: 96
-                  result: "Refuge offers a place to hide, plan, or recover"
+                  result: &Opp.23 "Refuge offers a place to hide, plan, or recover"
                   # suggestions: [*roll:Object]
                 - low: 97
                   high: 100
-                  result: Vantage point reveals the lay of the land
+                  result: &Opp.24 Vantage point reveals the lay of the land
                   # suggestions: [*roll:Object]
             lifeless:
               rendering:
@@ -474,79 +474,79 @@ starforged:
               table:
                 - low: null
                   high: null
-                  result: Clue to a lifeform's nature or vulnerabilities
+                  result: *Opp.0
                 - low: null
                   high: null
-                  result: Friendly interaction with a benign lifeform
+                  result: *Opp.1
                 - low: null
                   high: null
-                  result: Hunting or foraging opportunities are plentiful
+                  result: *Opp.2
                 - low: null
                   high: null
-                  result: Interesting or helpful aspect of benign creatures
+                  result: *Opp.3
                 - low: null
                   high: null
-                  result: Interesting or helpful aspect of local plant life
+                  result: *Opp.4
                 - low: 1
                   high: 5
-                  result: Encounter reveals unexpected benign lifeforms
+                  result: *Opp.5
                 - low: 6
                   high: 10
-                  result: Abandoned camp or vehicle
+                  result: *Opp.6
                 - low: 11
                   high: 15
-                  result: Advance warning of an environmental threat
+                  result: *Opp.7
                 - low: 16
                   high: 20
-                  result: Clear path through otherwise perilous terrain
+                  result: *Opp.8
                 - low: 21
                   high: 25
-                  result: Clue offers insight into a current quest or mystery
+                  result: *Opp.9
                 - low: 26
                   high: 30
-                  result: Clue to the history or nature of this place
+                  result: *Opp.10
                 - low: 31
                   high: 35
-                  result: Evidence that others have passed this way
+                  result: *Opp.11
                 - low: 36
                   high: 40
-                  result: Foe reveals themselves or tips their hand
+                  result: *Opp.12
                 - low: 41
                   high: 45
-                  result: Fortuitous change in the weather or atmosphere
+                  result: *Opp.13
                 - low: 46
                   high: 50
-                  result: Friendly traveler crosses your path
+                  result: *Opp.14
                 - low: 51
                   high: 55
-                  result: Helpful resource is in ample supply
+                  result: *Opp.15
                 - low: 56
                   high: 60
-                  result: Impressive vista offers comfort or inspiration
+                  result: *Opp.16
                 - low: 61
                   high: 65
-                  result: Interesting artifact or device
+                  result: *Opp.17
                 - low: 66
                   high: 70
-                  result: Interesting site offers opportunities for exploration
+                  result: *Opp.18
                 - low: 71
                   high: 75
-                  result: Moment of fellowship or inner peace
+                  result: *Opp.19
                 - low: 76
                   high: 80
-                  result: "Opening to distract, escape, or avoid foes"
+                  result: *Opp.20
                 - low: 81
                   high: 85
-                  result: Opening to get the drop on a foe
+                  result: *Opp.21
                 - low: 86
                   high: 90
-                  result: Plea for help from a potential benefactor
+                  result: *Opp.22
                 - low: 91
                   high: 95
-                  result: "Refuge offers a place to hide, plan, or recover"
+                  result: *Opp.23
                 - low: 96
                   high: 100
-                  result: Vantage point reveals the lay of the land
+                  result: *Opp.24
 
 
 

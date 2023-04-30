@@ -27,6 +27,10 @@ public class Asset {
     private AssetAttachment attachments;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("condition_meter")
+    private AssetConditionMeter conditionMeter;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("controls")
     private Map<String, AssetControlField> controls;
 
@@ -117,6 +121,20 @@ public class Asset {
      */
     public void setAttachments(AssetAttachment attachments) {
         this.attachments = attachments;
+    }
+
+    /**
+     * Getter for conditionMeter.<p>
+     */
+    public AssetConditionMeter getConditionMeter() {
+        return conditionMeter;
+    }
+
+    /**
+     * Setter for conditionMeter.<p>
+     */
+    public void setConditionMeter(AssetConditionMeter conditionMeter) {
+        this.conditionMeter = conditionMeter;
     }
 
     /**

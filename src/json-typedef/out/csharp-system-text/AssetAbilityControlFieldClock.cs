@@ -10,7 +10,7 @@ namespace Dataforged
         public string FieldType { get => "clock"; }
 
         [JsonPropertyName("id")]
-        public AssetControlFieldId Id { get; set; }
+        public AssetAbilityControlFieldId Id { get; set; }
 
         [JsonPropertyName("label")]
         public Label Label { get; set; }
@@ -22,6 +22,7 @@ namespace Dataforged
         public sbyte Min { get; set; }
 
         [JsonPropertyName("value")]
-        public sbyte Value { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public sbyte? Value { get; set; }
     }
 }

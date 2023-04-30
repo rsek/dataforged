@@ -1,20 +1,6 @@
 import type * as Types from '@base-types'
 import { JTDSchemaType } from 'ajv/dist/core'
 
-/** field_type: 'condition_meter' */
-export const ConditionMeterFieldStub: JTDSchemaType<
-	Omit<Types.Inputs.ConditionMeterField, 'field_type'>,
-	{ ID: string; Label: string }
-> = {
-	properties: {
-		id: { ref: 'ID' },
-		label: { ref: 'Label' },
-		value: { type: 'int8' },
-		min: { type: 'int8' },
-		max: { type: 'int8' }
-	}
-} as const
-
 /** field_type: 'checkbox' */
 export const UnionCheckboxField: JTDSchemaType<
 	Omit<Types.Inputs.CheckboxField, 'field_type'>,
@@ -22,9 +8,9 @@ export const UnionCheckboxField: JTDSchemaType<
 > = {
 	properties: {
 		id: { ref: 'ID' },
-		label: { ref: 'Label' },
-		value: { type: 'boolean', nullable: true }
-	}
+		label: { ref: 'Label' }
+	},
+	optionalProperties: { value: { type: 'boolean' } }
 }
 
 /** field_type: 'clock' */
@@ -35,9 +21,11 @@ export const UnionClockField: JTDSchemaType<
 	properties: {
 		id: { ref: 'ID' },
 		label: { ref: 'Label' },
-		value: { type: 'int8' },
 		min: { type: 'int8' },
 		max: { type: 'int8' }
+	},
+	optionalProperties: {
+		value: { type: 'int8' }
 	}
 } as const
 
@@ -49,9 +37,11 @@ export const UnionCounterField: JTDSchemaType<
 	properties: {
 		id: { ref: 'ID' },
 		label: { ref: 'Label' },
-		value: { type: 'int8' },
 		min: { type: 'int8' },
 		max: { type: 'int8', nullable: true }
+	},
+	optionalProperties: {
+		value: { type: 'int8' }
 	}
 } as const
 

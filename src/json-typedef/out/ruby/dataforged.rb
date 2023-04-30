@@ -25,6 +25,7 @@ module Dataforged
     attr_accessor :name
     attr_accessor :source
     attr_accessor :attachments
+    attr_accessor :condition_meter
     attr_accessor :controls
 
     # If `true`, this asset counts as an impact (Starforged) or a debility
@@ -45,6 +46,7 @@ module Dataforged
       out.name = Dataforged::from_json_data(Label, data["name"])
       out.source = Dataforged::from_json_data(Source, data["source"])
       out.attachments = Dataforged::from_json_data(AssetAttachment, data["attachments"])
+      out.condition_meter = Dataforged::from_json_data(AssetConditionMeter, data["condition_meter"])
       out.controls = Dataforged::from_json_data(Hash[String, AssetControlField], data["controls"])
       out.count_as_impact = Dataforged::from_json_data(TrueClass, data["count_as_impact"])
       out.options = Dataforged::from_json_data(Hash[String, AssetOptionField], data["options"])
@@ -60,6 +62,7 @@ module Dataforged
       data["name"] = Dataforged::to_json_data(name)
       data["source"] = Dataforged::to_json_data(source)
       data["attachments"] = Dataforged::to_json_data(attachments) unless attachments.nil?
+      data["condition_meter"] = Dataforged::to_json_data(condition_meter) unless condition_meter.nil?
       data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
       data["count_as_impact"] = Dataforged::to_json_data(count_as_impact) unless count_as_impact.nil?
       data["options"] = Dataforged::to_json_data(options) unless options.nil?
@@ -139,7 +142,7 @@ module Dataforged
       data = { "field_type" => "checkbox" }
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
-      data["value"] = Dataforged::to_json_data(value)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -154,7 +157,7 @@ module Dataforged
     def self.from_json_data(data)
       out = AssetAbilityControlFieldClock.new
       out.field_type = "clock"
-      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
@@ -168,7 +171,7 @@ module Dataforged
       data["label"] = Dataforged::to_json_data(label)
       data["max"] = Dataforged::to_json_data(max)
       data["min"] = Dataforged::to_json_data(min)
-      data["value"] = Dataforged::to_json_data(value)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -197,7 +200,7 @@ module Dataforged
       data["label"] = Dataforged::to_json_data(label)
       data["max"] = Dataforged::to_json_data(max)
       data["min"] = Dataforged::to_json_data(min)
-      data["value"] = Dataforged::to_json_data(value)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -323,7 +326,7 @@ module Dataforged
       out = AssetAbilityOptionFieldSelectNumber.new
       out.field_type = "select_number"
       out.choices = Dataforged::from_json_data(Hash[String, AssetAbilityOptionFieldSelectNumberChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
+      out.id = Dataforged::from_json_data(AssetAbilityOptionFieldID, data["id"])
       out.label = Dataforged::from_json_data(Label, data["label"])
       out.value = Dataforged::from_json_data(Integer, data["value"])
       out
@@ -449,6 +452,159 @@ module Dataforged
     end
   end
 
+  class AssetConditionMeter
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :max
+    attr_accessor :min
+    attr_accessor :controls
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetConditionMeter.new
+      out.id = Dataforged::from_json_data(AssetConditionMeterID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.max = Dataforged::from_json_data(Integer, data["max"])
+      out.min = Dataforged::from_json_data(Integer, data["min"])
+      out.controls = Dataforged::from_json_data(Hash[String, AssetConditionMeterCheckbox], data["controls"])
+      out.value = Dataforged::from_json_data(Integer, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["max"] = Dataforged::to_json_data(max)
+      data["min"] = Dataforged::to_json_data(min)
+      data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetConditionMeterCheckboxFieldType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHECKBOX = new("checkbox")
+
+    def self.from_json_data(data)
+      {
+        "checkbox" => CHECKBOX,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  class AssetConditionMeterCheckbox
+    attr_accessor :field_type
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetConditionMeterCheckbox.new
+      out.field_type = Dataforged::from_json_data(AssetConditionMeterCheckboxFieldType, data["field_type"])
+      out.id = Dataforged::from_json_data(AssetConditionMeterControlFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(TrueClass, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["field_type"] = Dataforged::to_json_data(field_type)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetConditionMeterControlFieldFieldType
+    attr_accessor :value
+
+    def initialize(value)
+      self.value = value
+    end
+
+    private_class_method :new
+
+    CHECKBOX = new("checkbox")
+
+    def self.from_json_data(data)
+      {
+        "checkbox" => CHECKBOX,
+      }[data]
+    end
+
+    def to_json_data
+      value
+    end
+  end
+
+  class AssetConditionMeterControlField
+    attr_accessor :field_type
+    attr_accessor :id
+    attr_accessor :label
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetConditionMeterControlField.new
+      out.field_type = Dataforged::from_json_data(AssetConditionMeterControlFieldFieldType, data["field_type"])
+      out.id = Dataforged::from_json_data(AssetConditionMeterControlFieldID, data["id"])
+      out.label = Dataforged::from_json_data(Label, data["label"])
+      out.value = Dataforged::from_json_data(TrueClass, data["value"])
+      out
+    end
+
+    def to_json_data
+      data = {}
+      data["field_type"] = Dataforged::to_json_data(field_type)
+      data["id"] = Dataforged::to_json_data(id)
+      data["label"] = Dataforged::to_json_data(label)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
+      data
+    end
+  end
+
+  class AssetConditionMeterControlFieldID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetConditionMeterControlFieldID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
+  class AssetConditionMeterID
+    attr_accessor :value
+
+    def self.from_json_data(data)
+      out = AssetConditionMeterID.new
+      out.value = Dataforged.from_json_data(String, data)
+      out
+    end
+
+    def to_json_data
+      Dataforged.to_json_data(value)
+    end
+  end
+
   # Asset controls are fields that are expected to change throughout the
   # asset's lifespan. The most common example are the condition meters on
   # certain assets. A more complex example is the distinct mechanical modes on
@@ -459,7 +615,6 @@ module Dataforged
     def self.from_json_data(data)
       {
         "checkbox" => AssetControlFieldCheckbox,
-        "condition_meter" => AssetControlFieldConditionMeter,
         "select_asset_extension" => AssetControlFieldSelectAssetExtension,
       }[data["field_type"]].from_json_data(data)
     end
@@ -483,36 +638,7 @@ module Dataforged
       data = { "field_type" => "checkbox" }
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
-      data["value"] = Dataforged::to_json_data(value)
-      data
-    end
-  end
-
-  class AssetControlFieldConditionMeter < AssetControlField
-    attr_accessor :id
-    attr_accessor :label
-    attr_accessor :max
-    attr_accessor :min
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = AssetControlFieldConditionMeter.new
-      out.field_type = "condition_meter"
-      out.id = Dataforged::from_json_data(AssetControlFieldID, data["id"])
-      out.label = Dataforged::from_json_data(Label, data["label"])
-      out.max = Dataforged::from_json_data(Integer, data["max"])
-      out.min = Dataforged::from_json_data(Integer, data["min"])
-      out.value = Dataforged::from_json_data(Integer, data["value"])
-      out
-    end
-
-    def to_json_data
-      data = { "field_type" => "condition_meter" }
-      data["id"] = Dataforged::to_json_data(id)
-      data["label"] = Dataforged::to_json_data(label)
-      data["max"] = Dataforged::to_json_data(max)
-      data["min"] = Dataforged::to_json_data(min)
-      data["value"] = Dataforged::to_json_data(value)
+      data["value"] = Dataforged::to_json_data(value) unless value.nil?
       data
     end
   end
@@ -599,7 +725,7 @@ module Dataforged
 
     def self.from_json_data(data)
       out = AssetExtensionAttachments.new
-      out.assets = Dataforged::from_json_data(Array[RegularExpression], data["assets"])
+      out.assets = Dataforged::from_json_data(Array[AssetIdwildcard], data["assets"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out
     end
@@ -612,12 +738,14 @@ module Dataforged
     end
   end
 
-  class AssetExtensionControl
+  class AssetExtensionConditionMeter
+    attr_accessor :controls
     attr_accessor :max
     attr_accessor :min
 
     def self.from_json_data(data)
-      out = AssetExtensionControl.new
+      out = AssetExtensionConditionMeter.new
+      out.controls = Dataforged::from_json_data(Hash[String, AssetConditionMeterControlField], data["controls"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
       out
@@ -625,6 +753,7 @@ module Dataforged
 
     def to_json_data
       data = {}
+      data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
       data["max"] = Dataforged::to_json_data(max) unless max.nil?
       data["min"] = Dataforged::to_json_data(min) unless min.nil?
       data
@@ -635,16 +764,13 @@ module Dataforged
   # Unchanged properties are omitted.
   class AssetExtension
     attr_accessor :attachments
-
-    # Use the same key as the original control. Currently, only condition meters
-    # may be extended in this way.
-    attr_accessor :controls
+    attr_accessor :condition_meter
     attr_accessor :count_as_impact
 
     def self.from_json_data(data)
       out = AssetExtension.new
       out.attachments = Dataforged::from_json_data(AssetExtensionAttachments, data["attachments"])
-      out.controls = Dataforged::from_json_data(Hash[String, AssetExtensionControl], data["controls"])
+      out.condition_meter = Dataforged::from_json_data(AssetExtensionConditionMeter, data["condition_meter"])
       out.count_as_impact = Dataforged::from_json_data(TrueClass, data["count_as_impact"])
       out
     end
@@ -652,7 +778,7 @@ module Dataforged
     def to_json_data
       data = {}
       data["attachments"] = Dataforged::to_json_data(attachments) unless attachments.nil?
-      data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
+      data["condition_meter"] = Dataforged::to_json_data(condition_meter) unless condition_meter.nil?
       data["count_as_impact"] = Dataforged::to_json_data(count_as_impact) unless count_as_impact.nil?
       data
     end
@@ -696,12 +822,14 @@ module Dataforged
     end
   end
 
-  class AssetExtensionForeignControl
+  class AssetExtensionForeignConditionMeter
+    attr_accessor :controls
     attr_accessor :max
     attr_accessor :min
 
     def self.from_json_data(data)
-      out = AssetExtensionForeignControl.new
+      out = AssetExtensionForeignConditionMeter.new
+      out.controls = Dataforged::from_json_data(Hash[String, AssetConditionMeterControlField], data["controls"])
       out.max = Dataforged::from_json_data(Integer, data["max"])
       out.min = Dataforged::from_json_data(Integer, data["min"])
       out
@@ -709,6 +837,7 @@ module Dataforged
 
     def to_json_data
       data = {}
+      data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
       data["max"] = Dataforged::to_json_data(max) unless max.nil?
       data["min"] = Dataforged::to_json_data(min) unless min.nil?
       data
@@ -721,10 +850,7 @@ module Dataforged
     attr_accessor :extends
     attr_accessor :id
     attr_accessor :attachments
-
-    # Use the same key as the original control. Currently, only condition meters
-    # may be extended in this way.
-    attr_accessor :controls
+    attr_accessor :condition_meter
     attr_accessor :count_as_impact
 
     def self.from_json_data(data)
@@ -732,7 +858,7 @@ module Dataforged
       out.extends = Dataforged::from_json_data(AssetIdwildcard, data["extends"])
       out.id = Dataforged::from_json_data(AssetAbilityControlFieldID, data["id"])
       out.attachments = Dataforged::from_json_data(AssetExtensionForeignAttachments, data["attachments"])
-      out.controls = Dataforged::from_json_data(Hash[String, AssetExtensionForeignControl], data["controls"])
+      out.condition_meter = Dataforged::from_json_data(AssetExtensionForeignConditionMeter, data["condition_meter"])
       out.count_as_impact = Dataforged::from_json_data(TrueClass, data["count_as_impact"])
       out
     end
@@ -742,7 +868,7 @@ module Dataforged
       data["extends"] = Dataforged::to_json_data(extends)
       data["id"] = Dataforged::to_json_data(id)
       data["attachments"] = Dataforged::to_json_data(attachments) unless attachments.nil?
-      data["controls"] = Dataforged::to_json_data(controls) unless controls.nil?
+      data["condition_meter"] = Dataforged::to_json_data(condition_meter) unless condition_meter.nil?
       data["count_as_impact"] = Dataforged::to_json_data(count_as_impact) unless count_as_impact.nil?
       data
     end
@@ -786,7 +912,6 @@ module Dataforged
     def self.from_json_data(data)
       {
         "select_asset_extension" => AssetOptionFieldSelectAssetExtension,
-        "select_number" => AssetOptionFieldSelectNumber,
         "select_stat" => AssetOptionFieldSelectStat,
         "text" => AssetOptionFieldText,
       }[data["field_type"]].from_json_data(data)
@@ -833,54 +958,6 @@ module Dataforged
 
     def to_json_data
       data = { "field_type" => "select_asset_extension" }
-      data["choices"] = Dataforged::to_json_data(choices)
-      data["id"] = Dataforged::to_json_data(id)
-      data["label"] = Dataforged::to_json_data(label)
-      data["value"] = Dataforged::to_json_data(value) unless value.nil?
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectNumberChoice
-    attr_accessor :label
-    attr_accessor :value
-    attr_accessor :selected
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectNumberChoice.new
-      out.label = Dataforged::from_json_data(Label, data["label"])
-      out.value = Dataforged::from_json_data(Integer, data["value"])
-      out.selected = Dataforged::from_json_data(TrueClass, data["selected"])
-      out
-    end
-
-    def to_json_data
-      data = {}
-      data["label"] = Dataforged::to_json_data(label)
-      data["value"] = Dataforged::to_json_data(value)
-      data["selected"] = Dataforged::to_json_data(selected) unless selected.nil?
-      data
-    end
-  end
-
-  class AssetOptionFieldSelectNumber < AssetOptionField
-    attr_accessor :choices
-    attr_accessor :id
-    attr_accessor :label
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = AssetOptionFieldSelectNumber.new
-      out.field_type = "select_number"
-      out.choices = Dataforged::from_json_data(Hash[String, AssetOptionFieldSelectNumberChoice], data["choices"])
-      out.id = Dataforged::from_json_data(AssetOptionFieldID, data["id"])
-      out.label = Dataforged::from_json_data(Label, data["label"])
-      out.value = Dataforged::from_json_data(Integer, data["value"])
-      out
-    end
-
-    def to_json_data
-      data = { "field_type" => "select_number" }
       data["choices"] = Dataforged::to_json_data(choices)
       data["id"] = Dataforged::to_json_data(id)
       data["label"] = Dataforged::to_json_data(label)
@@ -2579,20 +2656,6 @@ module Dataforged
     end
   end
 
-  class RegularExpression
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = RegularExpression.new
-      out.value = Dataforged.from_json_data(String, data)
-      out
-    end
-
-    def to_json_data
-      Dataforged.to_json_data(value)
-    end
-  end
-
   class SettingTruth
     attr_accessor :id
     attr_accessor :name
@@ -2705,23 +2768,6 @@ module Dataforged
       data["url"] = Dataforged::to_json_data(url)
       data["page"] = Dataforged::to_json_data(page) unless page.nil?
       data
-    end
-  end
-
-  # A player stat (e.g. `player/stats/edge`), a player condition meter (e.g.
-  # `player/meters/health`), or an ID pointing to an asset option or asset
-  # control whose value is to be used.
-  class StatID
-    attr_accessor :value
-
-    def self.from_json_data(data)
-      out = StatID.new
-      out.value = Dataforged.from_json_data(String, data)
-      out
-    end
-
-    def to_json_data
-      Dataforged.to_json_data(value)
     end
   end
 

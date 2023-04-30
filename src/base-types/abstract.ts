@@ -94,7 +94,7 @@ export interface RecursiveCollection<T, IDType = Types.Metadata.ID>
 export interface NumberRangeBase {
 	label: Types.Localize.Label
 	min: number
-	value: number
+	value?: number
 	max: number | null
 }
 

@@ -10,6 +10,7 @@ const SourcebookBase: JSONSchema7 = {
 	additionalProperties: false,
 	required: ['ruleset', '_source'],
 	properties: {
+		$schema: {},
 		ruleset: {
 			description:
 				'The ruleset (Starforged or Classic ironsworn) that these elements are for.'

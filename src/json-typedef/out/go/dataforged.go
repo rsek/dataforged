@@ -21,6 +21,8 @@ type Asset struct {
 
 	Attachments *AssetAttachment `json:"attachments,omitempty"`
 
+	ConditionMeter *AssetConditionMeter `json:"condition_meter,omitempty"`
+
 	Controls map[string]AssetControlField `json:"controls,omitempty"`
 
 	// If `true`, this asset counts as an impact (Starforged) or a debility
@@ -111,11 +113,11 @@ type AssetAbilityControlFieldCheckbox struct {
 
 	Label Label `json:"label"`
 
-	Value *bool `json:"value"`
+	Value *bool `json:"value,omitempty"`
 }
 
 type AssetAbilityControlFieldClock struct {
-	ID AssetControlFieldID `json:"id"`
+	ID AssetAbilityControlFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -123,7 +125,7 @@ type AssetAbilityControlFieldClock struct {
 
 	Min int8 `json:"min"`
 
-	Value int8 `json:"value"`
+	Value *int8 `json:"value,omitempty"`
 }
 
 type AssetAbilityControlFieldCounter struct {
@@ -135,7 +137,7 @@ type AssetAbilityControlFieldCounter struct {
 
 	Min int8 `json:"min"`
 
-	Value int8 `json:"value"`
+	Value *int8 `json:"value,omitempty"`
 }
 
 type AssetAbilityControlFieldID = string
@@ -226,7 +228,7 @@ type AssetAbilityOptionFieldSelectNumberChoice struct {
 type AssetAbilityOptionFieldSelectNumber struct {
 	Choices map[string]AssetAbilityOptionFieldSelectNumberChoice `json:"choices"`
 
-	ID AssetOptionFieldID `json:"id"`
+	ID AssetAbilityOptionFieldID `json:"id"`
 
 	Label Label `json:"label"`
 
@@ -272,6 +274,56 @@ type AssetAttachment struct {
 	Max *uint8 `json:"max,omitempty"`
 }
 
+type AssetConditionMeter struct {
+	ID AssetConditionMeterID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Max int8 `json:"max"`
+
+	Min int8 `json:"min"`
+
+	Controls map[string]AssetConditionMeterCheckbox `json:"controls,omitempty"`
+
+	Value *int8 `json:"value,omitempty"`
+}
+
+type AssetConditionMeterCheckboxFieldType string
+
+const (
+	AssetConditionMeterCheckboxFieldTypeCheckbox AssetConditionMeterCheckboxFieldType = "checkbox"
+)
+
+type AssetConditionMeterCheckbox struct {
+	FieldType AssetConditionMeterCheckboxFieldType `json:"field_type"`
+
+	ID AssetConditionMeterControlFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *bool `json:"value,omitempty"`
+}
+
+type AssetConditionMeterControlFieldFieldType string
+
+const (
+	AssetConditionMeterControlFieldFieldTypeCheckbox AssetConditionMeterControlFieldFieldType = "checkbox"
+)
+
+type AssetConditionMeterControlField struct {
+	FieldType AssetConditionMeterControlFieldFieldType `json:"field_type"`
+
+	ID AssetConditionMeterControlFieldID `json:"id"`
+
+	Label Label `json:"label"`
+
+	Value *bool `json:"value,omitempty"`
+}
+
+type AssetConditionMeterControlFieldID = string
+
+type AssetConditionMeterID = string
+
 // Asset controls are fields that are expected to change throughout the asset's
 // lifespan. The most common example are the condition meters on certain assets.
 // A more complex example is the distinct mechanical modes on Ironsworn's
@@ -281,8 +333,6 @@ type AssetControlField struct {
 
 	Checkbox AssetControlFieldCheckbox
 
-	ConditionMeter AssetControlFieldConditionMeter
-
 	SelectAssetExtension AssetControlFieldSelectAssetExtension
 }
 
@@ -290,8 +340,6 @@ func (v AssetControlField) MarshalJSON() ([]byte, error) {
 	switch v.FieldType {
 	case "checkbox":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldCheckbox }{ v.FieldType, v.Checkbox })
-	case "condition_meter":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldConditionMeter }{ v.FieldType, v.ConditionMeter })
 	case "select_asset_extension":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetControlFieldSelectAssetExtension }{ v.FieldType, v.SelectAssetExtension })
 	}
@@ -309,8 +357,6 @@ func (v *AssetControlField) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "checkbox":
 		err = json.Unmarshal(b, &v.Checkbox)
-	case "condition_meter":
-		err = json.Unmarshal(b, &v.ConditionMeter)
 	case "select_asset_extension":
 		err = json.Unmarshal(b, &v.SelectAssetExtension)
 	default:
@@ -330,19 +376,7 @@ type AssetControlFieldCheckbox struct {
 
 	Label Label `json:"label"`
 
-	Value *bool `json:"value"`
-}
-
-type AssetControlFieldConditionMeter struct {
-	ID AssetControlFieldID `json:"id"`
-
-	Label Label `json:"label"`
-
-	Max int8 `json:"max"`
-
-	Min int8 `json:"min"`
-
-	Value int8 `json:"value"`
+	Value *bool `json:"value,omitempty"`
 }
 
 type AssetControlFieldSelectAssetExtensionChoice struct {
@@ -368,12 +402,14 @@ type AssetControlFieldID = string
 type AssetControlFieldIdwildcard = string
 
 type AssetExtensionAttachments struct {
-	Assets []RegularExpression `json:"assets,omitempty"`
+	Assets []AssetIdwildcard `json:"assets,omitempty"`
 
 	Max *uint8 `json:"max,omitempty"`
 }
 
-type AssetExtensionControl struct {
+type AssetExtensionConditionMeter struct {
+	Controls map[string]AssetConditionMeterControlField `json:"controls,omitempty"`
+
 	Max *int8 `json:"max,omitempty"`
 
 	Min *int8 `json:"min,omitempty"`
@@ -384,9 +420,7 @@ type AssetExtensionControl struct {
 type AssetExtension struct {
 	Attachments *AssetExtensionAttachments `json:"attachments,omitempty"`
 
-	// Use the same key as the original control. Currently, only condition meters
-	// may be extended in this way.
-	Controls map[string]AssetExtensionControl `json:"controls,omitempty"`
+	ConditionMeter *AssetExtensionConditionMeter `json:"condition_meter,omitempty"`
 
 	CountAsImpact *bool `json:"count_as_impact,omitempty"`
 }
@@ -403,7 +437,9 @@ type AssetExtensionForeignAttachments struct {
 	Max *uint8 `json:"max,omitempty"`
 }
 
-type AssetExtensionForeignControl struct {
+type AssetExtensionForeignConditionMeter struct {
+	Controls map[string]AssetConditionMeterControlField `json:"controls,omitempty"`
+
 	Max *int8 `json:"max,omitempty"`
 
 	Min *int8 `json:"min,omitempty"`
@@ -418,9 +454,7 @@ type AssetExtensionForeign struct {
 
 	Attachments *AssetExtensionForeignAttachments `json:"attachments,omitempty"`
 
-	// Use the same key as the original control. Currently, only condition meters
-	// may be extended in this way.
-	Controls map[string]AssetExtensionForeignControl `json:"controls,omitempty"`
+	ConditionMeter *AssetExtensionForeignConditionMeter `json:"condition_meter,omitempty"`
 
 	CountAsImpact *bool `json:"count_as_impact,omitempty"`
 }
@@ -438,8 +472,6 @@ type AssetOptionField struct {
 
 	SelectAssetExtension AssetOptionFieldSelectAssetExtension
 
-	SelectNumber AssetOptionFieldSelectNumber
-
 	SelectStat AssetOptionFieldSelectStat
 
 	Text AssetOptionFieldText
@@ -449,8 +481,6 @@ func (v AssetOptionField) MarshalJSON() ([]byte, error) {
 	switch v.FieldType {
 	case "select_asset_extension":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectAssetExtension }{ v.FieldType, v.SelectAssetExtension })
-	case "select_number":
-		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectNumber }{ v.FieldType, v.SelectNumber })
 	case "select_stat":
 		return json.Marshal(struct { T string `json:"field_type"`; AssetOptionFieldSelectStat }{ v.FieldType, v.SelectStat })
 	case "text":
@@ -470,8 +500,6 @@ func (v *AssetOptionField) UnmarshalJSON(b []byte) error {
 	switch t.T {
 	case "select_asset_extension":
 		err = json.Unmarshal(b, &v.SelectAssetExtension)
-	case "select_number":
-		err = json.Unmarshal(b, &v.SelectNumber)
 	case "select_stat":
 		err = json.Unmarshal(b, &v.SelectStat)
 	case "text":
@@ -504,24 +532,6 @@ type AssetOptionFieldSelectAssetExtension struct {
 	Label Label `json:"label"`
 
 	Value *AssetExtension `json:"value,omitempty"`
-}
-
-type AssetOptionFieldSelectNumberChoice struct {
-	Label Label `json:"label"`
-
-	Value int8 `json:"value"`
-
-	Selected *bool `json:"selected,omitempty"`
-}
-
-type AssetOptionFieldSelectNumber struct {
-	Choices map[string]AssetOptionFieldSelectNumberChoice `json:"choices"`
-
-	ID AssetOptionFieldID `json:"id"`
-
-	Label Label `json:"label"`
-
-	Value *int8 `json:"value,omitempty"`
 }
 
 type AssetOptionFieldSelectStatChoice struct {
@@ -1216,8 +1226,6 @@ type RegionEntry struct {
 
 type RegionEntryID = string
 
-type RegularExpression = string
-
 type SettingTruth struct {
 	ID SettingTruthID `json:"id"`
 
@@ -1259,11 +1267,6 @@ type Source struct {
 
 	Page *uint16 `json:"page,omitempty"`
 }
-
-// A player stat (e.g. `player/stats/edge`), a player condition meter (e.g.
-// `player/meters/health`), or an ID pointing to an asset option or asset
-// control whose value is to be used.
-type StatID = string
 
 type Suggestions struct {
 	Assets []AssetIdwildcard `json:"assets,omitempty"`

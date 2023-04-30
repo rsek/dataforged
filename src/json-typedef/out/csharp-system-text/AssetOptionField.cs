@@ -28,8 +28,6 @@ namespace Dataforged
             {
                 case "select_asset_extension":
                     return JsonSerializer.Deserialize<AssetOptionFieldSelectAssetExtension>(ref readerCopy, options);
-                case "select_number":
-                    return JsonSerializer.Deserialize<AssetOptionFieldSelectNumber>(ref readerCopy, options);
                 case "select_stat":
                     return JsonSerializer.Deserialize<AssetOptionFieldSelectStat>(ref readerCopy, options);
                 case "text":

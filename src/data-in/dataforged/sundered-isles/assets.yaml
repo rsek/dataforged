@@ -9,6 +9,7 @@ sundered_isles:
     date: 2022-11-06
   assets:
     command_vehicle:
+      name: Command vehicle assets
       extends: starforged/collections/assets/command_vehicle
       contents:
         sailing_ship:
@@ -23,6 +24,7 @@ sundered_isles:
             - text: |-
                 You may spend 2 experience to refit your flagship with a fully upgraded module for a specific need or mission. One refit may be retained at a time. If it is broken, discard it.
     support_vehicle:
+      name: Module assets
       extends: starforged/collections/assets/support_vehicle
       contents:
         diving_bell:
@@ -50,6 +52,7 @@ sundered_isles:
           # integrity 4, battered
           # name
     module:
+      name: Support vehicle assets
       extends: starforged/collections/assets/module
       contents:
         armored_prow:
@@ -123,6 +126,7 @@ sundered_isles:
                   * Strike hard: Mark progress on a hit.
                 On a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).
     path:
+      name: Path assets
       extends: starforged/collections/assets/path
       contents:
         cannoneer:
@@ -168,7 +172,7 @@ sundered_isles:
                       - text: As a test of your leadership
                         choices:
                           - using: ref
-                            ref: sundered_isles/assets/path/crew_commander/controls/command
+                            ref: sundered_isles/assets/path/crew_commander/condition_meter
               moves:
                 bolster_crew:
                   name: Bolster Crew
@@ -190,9 +194,8 @@ sundered_isles:
               enabled: true
             - text: Take +2 command; your max is now 6.
               extend_asset:
-                controls:
-                  command:
-                    max: 6
+                condition_meter:
+                  max: 6
             - text: When your command is 0 and the situation desperate, you may [Compel](starforged/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
               extend_moves:
                 - extends:
@@ -205,13 +208,11 @@ sundered_isles:
                     strong_hit: &Crew_Commander.3
                       text: Take +2 command.
                     weak_hit: *Crew_Commander.3
-          controls:
-            command:
-              label: command
-              min: 0
-              max: 4
-              value: 2
-              field_type: condition_meter
+          condition_meter:
+            label: command
+            min: 0
+            max: 4
+            value: 2
         # cutthroat:
         # deck_clearer:
         duelist:
@@ -294,8 +295,8 @@ sundered_isles:
                 When you [React Under Fire](starforged/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
         # urchin:
         # windwright:
-
     companion:
+      name: Companion assets
       extends: starforged/collections/assets/companion
       contents:
         # dolphin:
@@ -355,6 +356,7 @@ sundered_isles:
                       text: 'Choose one: clear all clock segments, or discard this asset and mark three boxes on your bonds legacy track.'
                     weak_hit: *Kraken.3
     deed:
+      name: Deed assets
       extends: starforged/collections/assets/deed
       contents:
         cohort:
@@ -412,7 +414,7 @@ sundered_isles:
                       - text: As a fleetwide action to get in position, avoid a hazard, or fight
                         choices:
                           - using: ref
-                            ref: sundered_isles/assets/deed/fleet_commander/controls/power
+                            ref: sundered_isles/assets/deed/fleet_commander/condition_meter
                 - extends:
                     - starforged/moves/fate/pay_the_price
                   text: If your fleet bears the cost, suffer -1 power.
@@ -426,9 +428,8 @@ sundered_isles:
             - text: |-
                 Take +2 power and set your max power to 5.
               extend_asset:
-                controls:
-                  power:
-                    max: 5
+                condition_meter:
+                  max: 5
             - text: |-
                 When you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
               extend_moves:
@@ -445,15 +446,13 @@ sundered_isles:
                         method: action_die
                     weak_hit: *Fleet_Commander.3
                     miss: *Fleet_Commander.3
-          controls:
-            power:
-              label: power
-              max: 4
-              value: 4
-              min: 0
-              field_type: condition_meter
-              # conditions:
-              #   - wrecked
+          condition_meter:
+            label: power
+            max: 4
+            value: 4
+            min: 0
+            # conditions:
+            #   - wrecked
         undead:
           name: Undead
           _source:

@@ -25,6 +25,10 @@ pub struct Asset {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attachments: Option<Box<AssetAttachment>>,
 
+    #[serde(rename = "condition_meter")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub conditionMeter: Option<Box<AssetConditionMeter>>,
+
     #[serde(rename = "controls")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub controls: Option<Box<HashMap<String, AssetControlField>>>,
@@ -109,13 +113,14 @@ pub struct AssetAbilityControlFieldCheckbox {
     pub label: Label,
 
     #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<Box<bool>>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AssetAbilityControlFieldClock {
     #[serde(rename = "id")]
-    pub id: AssetControlFieldId,
+    pub id: AssetAbilityControlFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -127,7 +132,8 @@ pub struct AssetAbilityControlFieldClock {
     pub min: i8,
 
     #[serde(rename = "value")]
-    pub value: i8,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<i8>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -145,7 +151,8 @@ pub struct AssetAbilityControlFieldCounter {
     pub min: i8,
 
     #[serde(rename = "value")]
-    pub value: i8,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<i8>>,
 }
 
 pub type AssetAbilityControlFieldId = String;
@@ -216,7 +223,7 @@ pub struct AssetAbilityOptionFieldSelectNumber {
     pub choices: HashMap<String, AssetAbilityOptionFieldSelectNumberChoice>,
 
     #[serde(rename = "id")]
-    pub id: AssetOptionFieldId,
+    pub id: AssetAbilityOptionFieldId,
 
     #[serde(rename = "label")]
     pub label: Label,
@@ -285,6 +292,77 @@ pub struct AssetAttachment {
     pub max: Option<Box<u8>>,
 }
 
+#[derive(Serialize, Deserialize)]
+pub struct AssetConditionMeter {
+    #[serde(rename = "id")]
+    pub id: AssetConditionMeterId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "max")]
+    pub max: i8,
+
+    #[serde(rename = "min")]
+    pub min: i8,
+
+    #[serde(rename = "controls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub controls: Option<Box<HashMap<String, AssetConditionMeterCheckbox>>>,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<i8>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetConditionMeterCheckboxFieldType {
+    #[serde(rename = "checkbox")]
+    Checkbox,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetConditionMeterCheckbox {
+    #[serde(rename = "field_type")]
+    pub fieldType: AssetConditionMeterCheckboxFieldType,
+
+    #[serde(rename = "id")]
+    pub id: AssetConditionMeterControlFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<bool>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub enum AssetConditionMeterControlFieldFieldType {
+    #[serde(rename = "checkbox")]
+    Checkbox,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct AssetConditionMeterControlField {
+    #[serde(rename = "field_type")]
+    pub fieldType: AssetConditionMeterControlFieldFieldType,
+
+    #[serde(rename = "id")]
+    pub id: AssetConditionMeterControlFieldId,
+
+    #[serde(rename = "label")]
+    pub label: Label,
+
+    #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub value: Option<Box<bool>>,
+}
+
+pub type AssetConditionMeterControlFieldId = String;
+
+pub type AssetConditionMeterId = String;
+
 /// Asset controls are fields that are expected to change throughout the
 /// asset's lifespan. The most common example are the condition meters on
 /// certain assets. A more complex example is the distinct mechanical modes on
@@ -294,9 +372,6 @@ pub struct AssetAttachment {
 pub enum AssetControlField {
     #[serde(rename = "checkbox")]
     Checkbox(AssetControlFieldCheckbox),
-
-    #[serde(rename = "condition_meter")]
-    ConditionMeter(AssetControlFieldConditionMeter),
 
     #[serde(rename = "select_asset_extension")]
     SelectAssetExtension(AssetControlFieldSelectAssetExtension),
@@ -311,25 +386,8 @@ pub struct AssetControlFieldCheckbox {
     pub label: Label,
 
     #[serde(rename = "value")]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<Box<bool>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AssetControlFieldConditionMeter {
-    #[serde(rename = "id")]
-    pub id: AssetControlFieldId,
-
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "max")]
-    pub max: i8,
-
-    #[serde(rename = "min")]
-    pub min: i8,
-
-    #[serde(rename = "value")]
-    pub value: i8,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -369,7 +427,7 @@ pub type AssetControlFieldIdwildcard = String;
 pub struct AssetExtensionAttachments {
     #[serde(rename = "assets")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub assets: Option<Box<Vec<RegularExpression>>>,
+    pub assets: Option<Box<Vec<AssetIdwildcard>>>,
 
     #[serde(rename = "max")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -377,7 +435,11 @@ pub struct AssetExtensionAttachments {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetExtensionControl {
+pub struct AssetExtensionConditionMeter {
+    #[serde(rename = "controls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub controls: Option<Box<HashMap<String, AssetConditionMeterControlField>>>,
+
     #[serde(rename = "max")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<Box<i8>>,
@@ -395,11 +457,9 @@ pub struct AssetExtension {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attachments: Option<Box<AssetExtensionAttachments>>,
 
-    /// Use the same key as the original control. Currently, only condition
-    /// meters may be extended in this way.
-    #[serde(rename = "controls")]
+    #[serde(rename = "condition_meter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub controls: Option<Box<HashMap<String, AssetExtensionControl>>>,
+    pub conditionMeter: Option<Box<AssetExtensionConditionMeter>>,
 
     #[serde(rename = "count_as_impact")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -427,7 +487,11 @@ pub struct AssetExtensionForeignAttachments {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct AssetExtensionForeignControl {
+pub struct AssetExtensionForeignConditionMeter {
+    #[serde(rename = "controls")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub controls: Option<Box<HashMap<String, AssetConditionMeterControlField>>>,
+
     #[serde(rename = "max")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub max: Option<Box<i8>>,
@@ -451,11 +515,9 @@ pub struct AssetExtensionForeign {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub attachments: Option<Box<AssetExtensionForeignAttachments>>,
 
-    /// Use the same key as the original control. Currently, only condition
-    /// meters may be extended in this way.
-    #[serde(rename = "controls")]
+    #[serde(rename = "condition_meter")]
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub controls: Option<Box<HashMap<String, AssetExtensionForeignControl>>>,
+    pub conditionMeter: Option<Box<AssetExtensionForeignConditionMeter>>,
 
     #[serde(rename = "count_as_impact")]
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -475,9 +537,6 @@ pub type AssetIdwildcard = String;
 pub enum AssetOptionField {
     #[serde(rename = "select_asset_extension")]
     SelectAssetExtension(AssetOptionFieldSelectAssetExtension),
-
-    #[serde(rename = "select_number")]
-    SelectNumber(AssetOptionFieldSelectNumber),
 
     #[serde(rename = "select_stat")]
     SelectStat(AssetOptionFieldSelectStat),
@@ -513,35 +572,6 @@ pub struct AssetOptionFieldSelectAssetExtension {
     #[serde(rename = "value")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub value: Option<Box<AssetExtension>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectNumberChoice {
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "value")]
-    pub value: i8,
-
-    #[serde(rename = "selected")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub selected: Option<Box<bool>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct AssetOptionFieldSelectNumber {
-    #[serde(rename = "choices")]
-    pub choices: HashMap<String, AssetOptionFieldSelectNumberChoice>,
-
-    #[serde(rename = "id")]
-    pub id: AssetOptionFieldId,
-
-    #[serde(rename = "label")]
-    pub label: Label,
-
-    #[serde(rename = "value")]
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub value: Option<Box<i8>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1583,8 +1613,6 @@ pub struct RegionEntry {
 
 pub type RegionEntryId = String;
 
-pub type RegularExpression = String;
-
 #[derive(Serialize, Deserialize)]
 pub struct SettingTruth {
     #[serde(rename = "id")]
@@ -1648,11 +1676,6 @@ pub struct Source {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub page: Option<Box<u16>>,
 }
-
-/// A player stat (e.g. `player/stats/edge`), a player condition meter (e.g.
-/// `player/meters/health`), or an ID pointing to an asset option or asset
-/// control whose value is to be used.
-pub type StatId = String;
 
 #[derive(Serialize, Deserialize)]
 pub struct Suggestions {

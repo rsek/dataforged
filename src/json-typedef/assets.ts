@@ -37,6 +37,7 @@ export const Asset: JTDSchemaType<
 		AssetControlField: Types.Assets.AssetControlField
 		AssetOptionField: Types.Assets.AssetOptionField
 		AssetAttachment: Types.Assets.AssetAttachment
+		AssetConditionMeter: Types.Assets.AssetConditionMeter
 	}
 > = {
 	properties: {
@@ -57,6 +58,7 @@ export const Asset: JTDSchemaType<
 		attachments: { ref: 'AssetAttachment' },
 		controls: { values: { ref: 'AssetControlField' } },
 		options: { values: { ref: 'AssetOptionField' } },
+		condition_meter: { ref: 'AssetConditionMeter' },
 		shared: {
 			type: 'boolean',
 			metadata: {
@@ -64,6 +66,46 @@ export const Asset: JTDSchemaType<
 					"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 			}
 		}
+	}
+}
+
+export const AssetConditionMeterID: JTDSchemaType<string> = { type: 'string' }
+
+export const AssetConditionMeter: JTDSchemaType<
+	Types.Assets.AssetConditionMeter,
+	{
+		Label: string
+		AssetConditionMeterID: string
+		AssetConditionMeterCheckbox: Types.Assets.AssetConditionMeterCheckbox
+	}
+> = {
+	properties: {
+		id: { ref: 'AssetConditionMeterID' },
+		label: { ref: 'Label' },
+		max: { type: 'int8' },
+		min: { type: 'int8' }
+	},
+	optionalProperties: {
+		value: { type: 'int8' },
+		controls: { values: { ref: 'AssetConditionMeterCheckbox' } }
+	}
+}
+
+export const AssetConditionMeterControlFieldID = toJtdId(
+	JSONSchema.Assets.AssetConditionMeterControlFieldID
+)
+
+export const AssetConditionMeterCheckbox: JTDSchemaType<
+	Types.Assets.AssetConditionMeterCheckbox,
+	{ AssetConditionMeterControlFieldID: string; Label: string }
+> = {
+	properties: {
+		field_type: { enum: ['checkbox'] },
+		id: { ref: 'AssetConditionMeterControlFieldID' },
+		label: { ref: 'Label' }
+	},
+	optionalProperties: {
+		value: { type: 'boolean' }
 	}
 }
 
@@ -176,7 +218,6 @@ export const AssetOptionField: JTDSchemaType<
 		AssetOptionFieldID: string
 		Label: string
 		AssetExtension: Types.Assets.AssetExtension
-		StatID: string
 	}
 > = {
 	metadata: {
@@ -189,8 +230,7 @@ export const AssetOptionField: JTDSchemaType<
 		text: setIdRef(UnionTextField, 'AssetOptionFieldID'),
 		// @ts-expect-error
 		select_stat: setIdRef(UnionSelectFieldStat, 'AssetOptionFieldID'),
-		// @ts-expect-error
-		select_number: setIdRef(UnionChoicesFieldNumber, 'AssetOptionFieldID'),
+		// select_number: setIdRef(UnionChoicesFieldNumber, 'AssetOptionFieldID'),
 		// @ts-expect-error
 		select_asset_extension: setIdRef(
 			// @ts-expect-error
@@ -218,17 +258,13 @@ export const AssetControlField: JTDSchemaType<
 			"Asset controls are fields that are expected to change throughout the asset's lifespan. The most common example are the condition meters on certain assets. A more complex example is the distinct mechanical modes on Ironsworn's 'Armored'."
 	},
 	mapping: {
-		condition_meter: set(
-			UnionClockField,
-			'properties.id.ref',
-			'AssetControlFieldID'
-		),
+		// @ts-expect-error oh come ON. it can't be missing field_type, it's the discriminator!!!
 		checkbox: set(
 			UnionCheckboxField,
 			'properties.id.ref',
 			'AssetControlFieldID'
 		),
-		// @ts-expect-error oh come ON. it can't be missing field_type, it's the discriminator!!!
+		// @ts-expect-error
 		select_asset_extension: set(
 			UnionChoicesFieldAssetExtension,
 			'properties.id.ref',
@@ -242,9 +278,9 @@ export const AssetExtensionForeign: JTDSchemaType<
 	{
 		AssetID: string
 		AssetIDWildcard: string
-
+		Label: string
 		AssetAbilityControlFieldID: string
-		RegularExpression: string
+		AssetConditionMeterControlField: Types.Assets.AssetConditionMeterControlField
 	}
 > = {
 	metadata: {
@@ -252,8 +288,8 @@ export const AssetExtensionForeign: JTDSchemaType<
 			'Describes changes applied to an asset, usually by another asset. Unchanged properties are omitted.'
 	},
 	properties: {
-		extends: { ref: 'AssetIDWildcard' },
-		id: { ref: 'AssetAbilityControlFieldID' }
+		id: { ref: 'AssetAbilityControlFieldID' },
+		extends: { ref: 'AssetIDWildcard' }
 	},
 	optionalProperties: {
 		count_as_impact: { type: 'boolean' },
@@ -265,24 +301,39 @@ export const AssetExtensionForeign: JTDSchemaType<
 				}
 			}
 		},
-		controls: {
-			metadata: {
-				description:
-					'Use the same key as the original control. Currently, only condition meters may be extended in this way.'
-			},
-			values: {
-				optionalProperties: {
-					max: { type: 'int8' },
-					min: { type: 'int8' }
+		condition_meter: {
+			optionalProperties: {
+				max: { type: 'int8' },
+				min: { type: 'int8' },
+				controls: {
+					values: { ref: 'AssetConditionMeterControlField' }
 				}
 			}
 		}
 	}
 }
 
+export const AssetConditionMeterControlField: JTDSchemaType<
+	Types.Assets.AssetConditionMeterControlField,
+	{ AssetConditionMeterControlFieldID: string; Label: string }
+> = {
+	properties: {
+		id: { ref: 'AssetConditionMeterControlFieldID' },
+		field_type: { enum: ['checkbox'] },
+		label: { ref: 'Label' }
+	},
+	optionalProperties: {
+		value: { type: 'boolean' }
+	}
+}
+
 export const AssetExtension: JTDSchemaType<
 	Types.Assets.AssetExtension,
-	{ RegularExpression: string }
+	{
+		AssetIDWildcard: string
+		Label: string
+		AssetConditionMeterControlField: Types.Assets.AssetConditionMeterControlField
+	}
 > = {
 	metadata: {
 		description:
@@ -295,19 +346,16 @@ export const AssetExtension: JTDSchemaType<
 			optionalProperties: {
 				max: { type: 'uint8' },
 				assets: {
-					elements: { ref: 'RegularExpression' }
+					elements: { ref: 'AssetIDWildcard' }
 				}
 			}
 		},
-		controls: {
-			metadata: {
-				description:
-					'Use the same key as the original control. Currently, only condition meters may be extended in this way.'
-			},
-			values: {
-				optionalProperties: {
-					max: { type: 'int8' },
-					min: { type: 'int8' }
+		condition_meter: {
+			optionalProperties: {
+				max: { type: 'int8' },
+				min: { type: 'int8' },
+				controls: {
+					values: { ref: 'AssetConditionMeterControlField' }
 				}
 			}
 		}

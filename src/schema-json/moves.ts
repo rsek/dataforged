@@ -174,8 +174,8 @@ export const TriggerRollOptionActionChoiceRef: Schema<Types.TriggerRollOptionAct
 			ref: {
 				description: 'Identifies the stat whose value is to be referenced.',
 				oneOf: [
-					refSchema<Assets.AssetControlFieldIDWildcard>(
-						'AssetControlFieldIDWildcard'
+					refSchema<Assets.AssetConditionMeterIDWildcard>(
+						'AssetConditionMeterIDWildcard'
 					),
 					refSchema<Assets.AssetOptionFieldIDWildcard>(
 						'AssetOptionFieldIDWildcard'
@@ -214,6 +214,20 @@ export const TriggerRollOptionActionChoiceCustomValue: Schema<Types.TriggerRollO
 		}
 	}
 
+export const TriggerRollOptionActionChoiceAttachedAssetRef: Schema<Types.TriggerRollOptionActionChoiceAttachedAssetRef> =
+	{
+		type: 'object',
+		required: ['using'],
+		properties: {
+			using: {
+				const: 'attached_asset_meter',
+				type: 'string',
+				description:
+					'Use the condition meter value of the asset that this asset is attached to.'
+			}
+		}
+	}
+
 export const TriggerRollOptionAction = _.merge({}, TriggerRollOptionBase, {
 	properties: {
 		method: { default: 'any' },
@@ -223,7 +237,10 @@ export const TriggerRollOptionAction = _.merge({}, TriggerRollOptionBase, {
 				oneOf: [
 					refSchema('TriggerRollOptionActionChoiceStat'),
 					refSchema('TriggerRollOptionActionChoiceRef'),
-					refSchema('TriggerRollOptionActionChoiceCustomValue')
+					refSchema('TriggerRollOptionActionChoiceCustomValue'),
+					refSchema<Types.TriggerRollOptionActionChoiceAttachedAssetRef>(
+						'TriggerRollOptionActionChoiceAttachedAssetRef'
+					)
 				]
 			}
 		}
@@ -250,7 +267,7 @@ const Trigger: Schema<Types.Trigger> = {
 		text: {
 			...refSchema<Localize.MarkdownString>('MarkdownString'),
 			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#Options.',
+				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.',
 			type: 'string',
 			pattern: /^.*\.{3}$/.source
 		},

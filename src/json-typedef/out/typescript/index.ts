@@ -8,6 +8,7 @@ export interface Asset {
   name: Label;
   source: Source;
   attachments?: AssetAttachment;
+  condition_meter?: AssetConditionMeter;
   controls?: { [key: string]: AssetControlField };
 
   /**
@@ -44,16 +45,16 @@ export interface AssetAbilityControlFieldCheckbox {
   field_type: "checkbox";
   id: AssetControlFieldId;
   label: Label;
-  value: (boolean | null);
+  value?: boolean;
 }
 
 export interface AssetAbilityControlFieldClock {
   field_type: "clock";
-  id: AssetControlFieldId;
+  id: AssetAbilityControlFieldId;
   label: Label;
   max: number;
   min: number;
-  value: number;
+  value?: number;
 }
 
 export interface AssetAbilityControlFieldCounter {
@@ -62,7 +63,7 @@ export interface AssetAbilityControlFieldCounter {
   label: Label;
   max: (number | null);
   min: number;
-  value: number;
+  value?: number;
 }
 
 export type AssetAbilityControlFieldId = string;
@@ -94,7 +95,7 @@ export interface AssetAbilityOptionFieldSelectNumberChoice {
 export interface AssetAbilityOptionFieldSelectNumber {
   field_type: "select_number";
   choices: { [key: string]: AssetAbilityOptionFieldSelectNumberChoice };
-  id: AssetOptionFieldId;
+  id: AssetAbilityOptionFieldId;
   label: Label;
   value?: number;
 }
@@ -137,28 +138,54 @@ export interface AssetAttachment {
   max?: number;
 }
 
+export interface AssetConditionMeter {
+  id: AssetConditionMeterId;
+  label: Label;
+  max: number;
+  min: number;
+  controls?: { [key: string]: AssetConditionMeterCheckbox };
+  value?: number;
+}
+
+export enum AssetConditionMeterCheckboxFieldType {
+  Checkbox = "checkbox",
+}
+
+export interface AssetConditionMeterCheckbox {
+  field_type: AssetConditionMeterCheckboxFieldType;
+  id: AssetConditionMeterControlFieldId;
+  label: Label;
+  value?: boolean;
+}
+
+export enum AssetConditionMeterControlFieldFieldType {
+  Checkbox = "checkbox",
+}
+
+export interface AssetConditionMeterControlField {
+  field_type: AssetConditionMeterControlFieldFieldType;
+  id: AssetConditionMeterControlFieldId;
+  label: Label;
+  value?: boolean;
+}
+
+export type AssetConditionMeterControlFieldId = string;
+
+export type AssetConditionMeterId = string;
+
 /**
  * Asset controls are fields that are expected to change throughout the asset's
  * lifespan. The most common example are the condition meters on certain assets.
  * A more complex example is the distinct mechanical modes on Ironsworn's
  * 'Armored'.
  */
-export type AssetControlField = AssetControlFieldCheckbox | AssetControlFieldConditionMeter | AssetControlFieldSelectAssetExtension;
+export type AssetControlField = AssetControlFieldCheckbox | AssetControlFieldSelectAssetExtension;
 
 export interface AssetControlFieldCheckbox {
   field_type: "checkbox";
   id: AssetControlFieldId;
   label: Label;
-  value: (boolean | null);
-}
-
-export interface AssetControlFieldConditionMeter {
-  field_type: "condition_meter";
-  id: AssetControlFieldId;
-  label: Label;
-  max: number;
-  min: number;
-  value: number;
+  value?: boolean;
 }
 
 export interface AssetControlFieldSelectAssetExtensionChoice {
@@ -180,11 +207,12 @@ export type AssetControlFieldId = string;
 export type AssetControlFieldIdwildcard = string;
 
 export interface AssetExtensionAttachments {
-  assets?: RegularExpression[];
+  assets?: AssetIdwildcard[];
   max?: number;
 }
 
-export interface AssetExtensionControl {
+export interface AssetExtensionConditionMeter {
+  controls?: { [key: string]: AssetConditionMeterControlField };
   max?: number;
   min?: number;
 }
@@ -195,12 +223,7 @@ export interface AssetExtensionControl {
  */
 export interface AssetExtension {
   attachments?: AssetExtensionAttachments;
-
-  /**
-   * Use the same key as the original control. Currently, only condition meters
-   * may be extended in this way.
-   */
-  controls?: { [key: string]: AssetExtensionControl };
+  condition_meter?: AssetExtensionConditionMeter;
   count_as_impact?: boolean;
 }
 
@@ -214,7 +237,8 @@ export interface AssetExtensionForeignAttachments {
   max?: number;
 }
 
-export interface AssetExtensionForeignControl {
+export interface AssetExtensionForeignConditionMeter {
+  controls?: { [key: string]: AssetConditionMeterControlField };
   max?: number;
   min?: number;
 }
@@ -227,12 +251,7 @@ export interface AssetExtensionForeign {
   extends: AssetIdwildcard;
   id: AssetAbilityControlFieldId;
   attachments?: AssetExtensionForeignAttachments;
-
-  /**
-   * Use the same key as the original control. Currently, only condition meters
-   * may be extended in this way.
-   */
-  controls?: { [key: string]: AssetExtensionForeignControl };
+  condition_meter?: AssetExtensionForeignConditionMeter;
   count_as_impact?: boolean;
 }
 
@@ -246,7 +265,7 @@ export type AssetIdwildcard = string;
  * on companion assets. A more complex example is the choice of stats on the
  * Devotant asset.
  */
-export type AssetOptionField = AssetOptionFieldSelectAssetExtension | AssetOptionFieldSelectNumber | AssetOptionFieldSelectStat | AssetOptionFieldText;
+export type AssetOptionField = AssetOptionFieldSelectAssetExtension | AssetOptionFieldSelectStat | AssetOptionFieldText;
 
 export interface AssetOptionFieldSelectAssetExtensionChoice {
   label: Label;
@@ -260,20 +279,6 @@ export interface AssetOptionFieldSelectAssetExtension {
   id: AssetControlFieldId;
   label: Label;
   value?: AssetExtension;
-}
-
-export interface AssetOptionFieldSelectNumberChoice {
-  label: Label;
-  value: number;
-  selected?: boolean;
-}
-
-export interface AssetOptionFieldSelectNumber {
-  field_type: "select_number";
-  choices: { [key: string]: AssetOptionFieldSelectNumberChoice };
-  id: AssetOptionFieldId;
-  label: Label;
-  value?: number;
 }
 
 export interface AssetOptionFieldSelectStatChoice {
@@ -879,8 +884,6 @@ export interface RegionEntry {
 
 export type RegionEntryId = string;
 
-export type RegularExpression = string;
-
 export interface SettingTruth {
   id: SettingTruthId;
   name: Label;
@@ -909,13 +912,6 @@ export interface Source {
   url: Url;
   page?: number;
 }
-
-/**
- * A player stat (e.g. `player/stats/edge`), a player condition meter (e.g.
- * `player/meters/health`), or an ID pointing to an asset option or asset
- * control whose value is to be used.
- */
-export type StatId = string;
 
 export interface Suggestions {
   assets?: AssetIdwildcard[];

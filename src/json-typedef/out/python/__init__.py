@@ -25,6 +25,7 @@ class Asset:
     name: 'Label'
     source: 'Source'
     attachments: 'Optional[AssetAttachment]'
+    condition_meter: 'Optional[AssetConditionMeter]'
     controls: 'Optional[Dict[str, AssetControlField]]'
     count_as_impact: 'Optional[bool]'
     """
@@ -50,6 +51,7 @@ class Asset:
             _from_json_data(Label, data.get("name")),
             _from_json_data(Source, data.get("source")),
             _from_json_data(Optional[AssetAttachment], data.get("attachments")),
+            _from_json_data(Optional[AssetConditionMeter], data.get("condition_meter")),
             _from_json_data(Optional[Dict[str, AssetControlField]], data.get("controls")),
             _from_json_data(Optional[bool], data.get("count_as_impact")),
             _from_json_data(Optional[Dict[str, AssetOptionField]], data.get("options")),
@@ -65,6 +67,8 @@ class Asset:
         data["source"] = _to_json_data(self.source)
         if self.attachments is not None:
              data["attachments"] = _to_json_data(self.attachments)
+        if self.condition_meter is not None:
+             data["condition_meter"] = _to_json_data(self.condition_meter)
         if self.controls is not None:
              data["controls"] = _to_json_data(self.controls)
         if self.count_as_impact is not None:
@@ -158,26 +162,27 @@ class AssetAbilityControlFieldCheckbox(AssetAbilityControlField):
         data = { "field_type": "checkbox" }
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
-        data["value"] = _to_json_data(self.value)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
 class AssetAbilityControlFieldClock(AssetAbilityControlField):
-    id: 'AssetControlFieldID'
+    id: 'AssetAbilityControlFieldID'
     label: 'Label'
     max: 'int'
     min: 'int'
-    value: 'int'
+    value: 'Optional[int]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldClock':
         return cls(
             "clock",
-            _from_json_data(AssetControlFieldID, data.get("id")),
+            _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(int, data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(int, data.get("value")),
+            _from_json_data(Optional[int], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -186,7 +191,8 @@ class AssetAbilityControlFieldClock(AssetAbilityControlField):
         data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["value"] = _to_json_data(self.value)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
@@ -195,7 +201,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
     label: 'Label'
     max: 'Optional[int]'
     min: 'int'
-    value: 'int'
+    value: 'Optional[int]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetAbilityControlFieldCounter':
@@ -205,7 +211,7 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[int], data.get("max")),
             _from_json_data(int, data.get("min")),
-            _from_json_data(int, data.get("value")),
+            _from_json_data(Optional[int], data.get("value")),
         )
 
     def to_json_data(self) -> Any:
@@ -214,7 +220,8 @@ class AssetAbilityControlFieldCounter(AssetAbilityControlField):
         data["label"] = _to_json_data(self.label)
         data["max"] = _to_json_data(self.max)
         data["min"] = _to_json_data(self.min)
-        data["value"] = _to_json_data(self.value)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
@@ -330,7 +337,7 @@ class AssetAbilityOptionFieldSelectNumberChoice:
 @dataclass
 class AssetAbilityOptionFieldSelectNumber(AssetAbilityOptionField):
     choices: 'Dict[str, AssetAbilityOptionFieldSelectNumberChoice]'
-    id: 'AssetOptionFieldID'
+    id: 'AssetAbilityOptionFieldID'
     label: 'Label'
     value: 'Optional[int]'
 
@@ -339,7 +346,7 @@ class AssetAbilityOptionFieldSelectNumber(AssetAbilityOptionField):
         return cls(
             "select_number",
             _from_json_data(Dict[str, AssetAbilityOptionFieldSelectNumberChoice], data.get("choices")),
-            _from_json_data(AssetOptionFieldID, data.get("id")),
+            _from_json_data(AssetAbilityOptionFieldID, data.get("id")),
             _from_json_data(Label, data.get("label")),
             _from_json_data(Optional[int], data.get("value")),
         )
@@ -466,6 +473,128 @@ class AssetAttachment:
         return data
 
 @dataclass
+class AssetConditionMeter:
+    id: 'AssetConditionMeterID'
+    label: 'Label'
+    max: 'int'
+    min: 'int'
+    controls: 'Optional[Dict[str, AssetConditionMeterCheckbox]]'
+    value: 'Optional[int]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeter':
+        return cls(
+            _from_json_data(AssetConditionMeterID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(int, data.get("max")),
+            _from_json_data(int, data.get("min")),
+            _from_json_data(Optional[Dict[str, AssetConditionMeterCheckbox]], data.get("controls")),
+            _from_json_data(Optional[int], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        data["max"] = _to_json_data(self.max)
+        data["min"] = _to_json_data(self.min)
+        if self.controls is not None:
+             data["controls"] = _to_json_data(self.controls)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+class AssetConditionMeterCheckboxFieldType(Enum):
+    CHECKBOX = "checkbox"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterCheckboxFieldType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class AssetConditionMeterCheckbox:
+    field_type: 'AssetConditionMeterCheckboxFieldType'
+    id: 'AssetConditionMeterControlFieldID'
+    label: 'Label'
+    value: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterCheckbox':
+        return cls(
+            _from_json_data(AssetConditionMeterCheckboxFieldType, data.get("field_type")),
+            _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[bool], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["field_type"] = _to_json_data(self.field_type)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+class AssetConditionMeterControlFieldFieldType(Enum):
+    CHECKBOX = "checkbox"
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterControlFieldFieldType':
+        return cls(data)
+
+    def to_json_data(self) -> Any:
+        return self.value
+
+@dataclass
+class AssetConditionMeterControlField:
+    field_type: 'AssetConditionMeterControlFieldFieldType'
+    id: 'AssetConditionMeterControlFieldID'
+    label: 'Label'
+    value: 'Optional[bool]'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterControlField':
+        return cls(
+            _from_json_data(AssetConditionMeterControlFieldFieldType, data.get("field_type")),
+            _from_json_data(AssetConditionMeterControlFieldID, data.get("id")),
+            _from_json_data(Label, data.get("label")),
+            _from_json_data(Optional[bool], data.get("value")),
+        )
+
+    def to_json_data(self) -> Any:
+        data: Dict[str, Any] = {}
+        data["field_type"] = _to_json_data(self.field_type)
+        data["id"] = _to_json_data(self.id)
+        data["label"] = _to_json_data(self.label)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
+        return data
+
+@dataclass
+class AssetConditionMeterControlFieldID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterControlFieldID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
+class AssetConditionMeterID:
+    value: 'str'
+
+    @classmethod
+    def from_json_data(cls, data: Any) -> 'AssetConditionMeterID':
+        return cls(_from_json_data(str, data))
+
+    def to_json_data(self) -> Any:
+        return _to_json_data(self.value)
+
+@dataclass
 class AssetControlField:
     """
     Asset controls are fields that are expected to change throughout the
@@ -480,7 +609,6 @@ class AssetControlField:
     def from_json_data(cls, data: Any) -> 'AssetControlField':
         variants: Dict[str, Type[AssetControlField]] = {
             "checkbox": AssetControlFieldCheckbox,
-            "condition_meter": AssetControlFieldConditionMeter,
             "select_asset_extension": AssetControlFieldSelectAssetExtension,
         }
 
@@ -508,35 +636,8 @@ class AssetControlFieldCheckbox(AssetControlField):
         data = { "field_type": "checkbox" }
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
-        data["value"] = _to_json_data(self.value)
-        return data
-
-@dataclass
-class AssetControlFieldConditionMeter(AssetControlField):
-    id: 'AssetControlFieldID'
-    label: 'Label'
-    max: 'int'
-    min: 'int'
-    value: 'int'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetControlFieldConditionMeter':
-        return cls(
-            "condition_meter",
-            _from_json_data(AssetControlFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
-            _from_json_data(int, data.get("max")),
-            _from_json_data(int, data.get("min")),
-            _from_json_data(int, data.get("value")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "field_type": "condition_meter" }
-        data["id"] = _to_json_data(self.id)
-        data["label"] = _to_json_data(self.label)
-        data["max"] = _to_json_data(self.max)
-        data["min"] = _to_json_data(self.min)
-        data["value"] = _to_json_data(self.value)
+        if self.value is not None:
+             data["value"] = _to_json_data(self.value)
         return data
 
 @dataclass
@@ -611,13 +712,13 @@ class AssetControlFieldIdwildcard:
 
 @dataclass
 class AssetExtensionAttachments:
-    assets: 'Optional[List[RegularExpression]]'
+    assets: 'Optional[List[AssetIdwildcard]]'
     max: 'Optional[int]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtensionAttachments':
         return cls(
-            _from_json_data(Optional[List[RegularExpression]], data.get("assets")),
+            _from_json_data(Optional[List[AssetIdwildcard]], data.get("assets")),
             _from_json_data(Optional[int], data.get("max")),
         )
 
@@ -630,19 +731,23 @@ class AssetExtensionAttachments:
         return data
 
 @dataclass
-class AssetExtensionControl:
+class AssetExtensionConditionMeter:
+    controls: 'Optional[Dict[str, AssetConditionMeterControlField]]'
     max: 'Optional[int]'
     min: 'Optional[int]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetExtensionControl':
+    def from_json_data(cls, data: Any) -> 'AssetExtensionConditionMeter':
         return cls(
+            _from_json_data(Optional[Dict[str, AssetConditionMeterControlField]], data.get("controls")),
             _from_json_data(Optional[int], data.get("max")),
             _from_json_data(Optional[int], data.get("min")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        if self.controls is not None:
+             data["controls"] = _to_json_data(self.controls)
         if self.max is not None:
              data["max"] = _to_json_data(self.max)
         if self.min is not None:
@@ -657,19 +762,14 @@ class AssetExtension:
     """
 
     attachments: 'Optional[AssetExtensionAttachments]'
-    controls: 'Optional[Dict[str, AssetExtensionControl]]'
-    """
-    Use the same key as the original control. Currently, only condition meters
-    may be extended in this way.
-    """
-
+    condition_meter: 'Optional[AssetExtensionConditionMeter]'
     count_as_impact: 'Optional[bool]'
 
     @classmethod
     def from_json_data(cls, data: Any) -> 'AssetExtension':
         return cls(
             _from_json_data(Optional[AssetExtensionAttachments], data.get("attachments")),
-            _from_json_data(Optional[Dict[str, AssetExtensionControl]], data.get("controls")),
+            _from_json_data(Optional[AssetExtensionConditionMeter], data.get("condition_meter")),
             _from_json_data(Optional[bool], data.get("count_as_impact")),
         )
 
@@ -677,8 +777,8 @@ class AssetExtension:
         data: Dict[str, Any] = {}
         if self.attachments is not None:
              data["attachments"] = _to_json_data(self.attachments)
-        if self.controls is not None:
-             data["controls"] = _to_json_data(self.controls)
+        if self.condition_meter is not None:
+             data["condition_meter"] = _to_json_data(self.condition_meter)
         if self.count_as_impact is not None:
              data["count_as_impact"] = _to_json_data(self.count_as_impact)
         return data
@@ -722,19 +822,23 @@ class AssetExtensionForeignAttachments:
         return data
 
 @dataclass
-class AssetExtensionForeignControl:
+class AssetExtensionForeignConditionMeter:
+    controls: 'Optional[Dict[str, AssetConditionMeterControlField]]'
     max: 'Optional[int]'
     min: 'Optional[int]'
 
     @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetExtensionForeignControl':
+    def from_json_data(cls, data: Any) -> 'AssetExtensionForeignConditionMeter':
         return cls(
+            _from_json_data(Optional[Dict[str, AssetConditionMeterControlField]], data.get("controls")),
             _from_json_data(Optional[int], data.get("max")),
             _from_json_data(Optional[int], data.get("min")),
         )
 
     def to_json_data(self) -> Any:
         data: Dict[str, Any] = {}
+        if self.controls is not None:
+             data["controls"] = _to_json_data(self.controls)
         if self.max is not None:
              data["max"] = _to_json_data(self.max)
         if self.min is not None:
@@ -751,12 +855,7 @@ class AssetExtensionForeign:
     extends: 'AssetIdwildcard'
     id: 'AssetAbilityControlFieldID'
     attachments: 'Optional[AssetExtensionForeignAttachments]'
-    controls: 'Optional[Dict[str, AssetExtensionForeignControl]]'
-    """
-    Use the same key as the original control. Currently, only condition meters
-    may be extended in this way.
-    """
-
+    condition_meter: 'Optional[AssetExtensionForeignConditionMeter]'
     count_as_impact: 'Optional[bool]'
 
     @classmethod
@@ -765,7 +864,7 @@ class AssetExtensionForeign:
             _from_json_data(AssetIdwildcard, data.get("extends")),
             _from_json_data(AssetAbilityControlFieldID, data.get("id")),
             _from_json_data(Optional[AssetExtensionForeignAttachments], data.get("attachments")),
-            _from_json_data(Optional[Dict[str, AssetExtensionForeignControl]], data.get("controls")),
+            _from_json_data(Optional[AssetExtensionForeignConditionMeter], data.get("condition_meter")),
             _from_json_data(Optional[bool], data.get("count_as_impact")),
         )
 
@@ -775,8 +874,8 @@ class AssetExtensionForeign:
         data["id"] = _to_json_data(self.id)
         if self.attachments is not None:
              data["attachments"] = _to_json_data(self.attachments)
-        if self.controls is not None:
-             data["controls"] = _to_json_data(self.controls)
+        if self.condition_meter is not None:
+             data["condition_meter"] = _to_json_data(self.condition_meter)
         if self.count_as_impact is not None:
              data["count_as_impact"] = _to_json_data(self.count_as_impact)
         return data
@@ -818,7 +917,6 @@ class AssetOptionField:
     def from_json_data(cls, data: Any) -> 'AssetOptionField':
         variants: Dict[str, Type[AssetOptionField]] = {
             "select_asset_extension": AssetOptionFieldSelectAssetExtension,
-            "select_number": AssetOptionFieldSelectNumber,
             "select_stat": AssetOptionFieldSelectStat,
             "text": AssetOptionFieldText,
         }
@@ -869,54 +967,6 @@ class AssetOptionFieldSelectAssetExtension(AssetOptionField):
 
     def to_json_data(self) -> Any:
         data = { "field_type": "select_asset_extension" }
-        data["choices"] = _to_json_data(self.choices)
-        data["id"] = _to_json_data(self.id)
-        data["label"] = _to_json_data(self.label)
-        if self.value is not None:
-             data["value"] = _to_json_data(self.value)
-        return data
-
-@dataclass
-class AssetOptionFieldSelectNumberChoice:
-    label: 'Label'
-    value: 'int'
-    selected: 'Optional[bool]'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectNumberChoice':
-        return cls(
-            _from_json_data(Label, data.get("label")),
-            _from_json_data(int, data.get("value")),
-            _from_json_data(Optional[bool], data.get("selected")),
-        )
-
-    def to_json_data(self) -> Any:
-        data: Dict[str, Any] = {}
-        data["label"] = _to_json_data(self.label)
-        data["value"] = _to_json_data(self.value)
-        if self.selected is not None:
-             data["selected"] = _to_json_data(self.selected)
-        return data
-
-@dataclass
-class AssetOptionFieldSelectNumber(AssetOptionField):
-    choices: 'Dict[str, AssetOptionFieldSelectNumberChoice]'
-    id: 'AssetOptionFieldID'
-    label: 'Label'
-    value: 'Optional[int]'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'AssetOptionFieldSelectNumber':
-        return cls(
-            "select_number",
-            _from_json_data(Dict[str, AssetOptionFieldSelectNumberChoice], data.get("choices")),
-            _from_json_data(AssetOptionFieldID, data.get("id")),
-            _from_json_data(Label, data.get("label")),
-            _from_json_data(Optional[int], data.get("value")),
-        )
-
-    def to_json_data(self) -> Any:
-        data = { "field_type": "select_number" }
         data["choices"] = _to_json_data(self.choices)
         data["id"] = _to_json_data(self.id)
         data["label"] = _to_json_data(self.label)
@@ -2481,17 +2531,6 @@ class RegionEntryID:
         return _to_json_data(self.value)
 
 @dataclass
-class RegularExpression:
-    value: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'RegularExpression':
-        return cls(_from_json_data(str, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
-
-@dataclass
 class SettingTruth:
     id: 'SettingTruthID'
     name: 'Label'
@@ -2599,23 +2638,6 @@ class Source:
         if self.page is not None:
              data["page"] = _to_json_data(self.page)
         return data
-
-@dataclass
-class StatID:
-    """
-    A player stat (e.g. `player/stats/edge`), a player condition meter (e.g.
-    `player/meters/health`), or an ID pointing to an asset option or asset
-    control whose value is to be used.
-    """
-
-    value: 'str'
-
-    @classmethod
-    def from_json_data(cls, data: Any) -> 'StatID':
-        return cls(_from_json_data(str, data))
-
-    def to_json_data(self) -> Any:
-        return _to_json_data(self.value)
 
 @dataclass
 class Suggestions:

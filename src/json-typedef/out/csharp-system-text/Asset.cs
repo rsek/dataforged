@@ -23,6 +23,10 @@ namespace Dataforged
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public AssetAttachment? Attachments { get; set; }
 
+        [JsonPropertyName("condition_meter")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public AssetConditionMeter? ConditionMeter { get; set; }
+
         [JsonPropertyName("controls")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public IDictionary<string, AssetControlField> Controls { get; set; }

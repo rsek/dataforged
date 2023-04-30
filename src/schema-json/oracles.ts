@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { DF_KEY, dictionarySchema, refSchema } from './common'
+import { DICT_KEY, dictionarySchema, refSchema } from './common'
 import type * as Types from '@base-types'
 import * as JsonSchema from '@schema-json'
 export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
@@ -91,7 +91,7 @@ export const OracleCollectionColumn: Schema<
 			description:
 				"A key from OracleCollection#contents, indicating which OracleTable's data is used in this column.",
 			type: 'string',
-			pattern: DF_KEY
+			pattern: DICT_KEY
 		},
 		color: refSchema<Types.Metadata.Color>('Color')
 	},
@@ -131,7 +131,7 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 				type: 'object',
 				required: undefined as any,
 				patternProperties: {
-					[DF_KEY]:
+					[DICT_KEY]:
 						refSchema<Types.Oracles.OracleTableColumn>('OracleTableColumn')
 				},
 				default: oracleTableRenderDefault.columns,
@@ -331,7 +331,7 @@ export const OracleCollection: Schema<Types.Oracles.OracleCollection> =
 						columns: {
 							type: 'object',
 							patternProperties: {
-								[DF_KEY]: {
+								[DICT_KEY]: {
 									description:
 										"A column's default label is the title of the source table.",
 									$ref: '#/definitions/OracleCollectionColumn'

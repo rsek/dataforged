@@ -6,7 +6,6 @@ export type InputFieldID = string
 export type InputFieldType =
 	| 'text'
 	| 'clock'
-	| 'condition_meter'
 	| 'counter'
 	| 'checkbox'
 	| 'toggle'
@@ -27,33 +26,26 @@ export interface InputFieldBase {
 
 export interface CheckboxField extends InputFieldBase {
 	field_type: 'checkbox'
-	value: boolean | null
+	value?: boolean
 }
 
 export interface NumberFieldBase extends InputFieldBase {
-	field_type: 'clock' | 'condition_meter' | 'counter'
-	value: number
+	field_type: 'clock' | 'counter'
+	value?: number
 	max: number | null
 	min: number
 }
 
 export interface ClockField extends NumberFieldBase, Types.Abstract.Clock {
 	field_type: 'clock'
-	value: number
+	value?: number
 	max: number
 	min: number
 }
-export interface ConditionMeterField
-	extends NumberFieldBase,
-		Types.Abstract.Meter {
-	field_type: 'condition_meter'
-	value: number
-	max: number
-	min: number
-}
+
 export interface CounterField extends NumberFieldBase, Types.Abstract.Counter {
 	field_type: 'counter'
-	value: number
+	value?: number
 	max: number | null
 	min: number
 }
@@ -90,10 +82,11 @@ export type SelectFieldStatChoice<
 	T extends Types.Players.PlayerStatLike = Types.Players.PlayerStatLike
 > = Simplify<SelectFieldChoiceBase<T>>
 
+/** @alpha */
 export type SelectFieldNumber = Simplify<
 	SelectFieldBase<'select_number', SelectFieldNumberChoice>
 >
-
+/** @alpha */
 export type SelectFieldNumberChoice = Simplify<SelectFieldChoiceBase<number>>
 
 export type SelectFieldRef = Simplify<

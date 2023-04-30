@@ -6,7 +6,7 @@ import {
 import type * as Types from '@base-types'
 import { Metadata, Localize, Abstract, type Utils } from '@class-schema'
 import _ from 'lodash'
-import { DF_KEY } from 'schema-json/common'
+import { DICT_KEY } from 'schema-json/common'
 
 export abstract class Collection<T>
 	extends Abstract.Node
@@ -40,7 +40,7 @@ export abstract class Collection<T>
 
 export function IsRecord(
 	type: any,
-	pattern: RegExp = new RegExp(DF_KEY),
+	pattern: RegExp = new RegExp(DICT_KEY),
 	validationOptions?: ValidationOptions
 ) {
 	const $ref = targetConstructorToSchema(type)

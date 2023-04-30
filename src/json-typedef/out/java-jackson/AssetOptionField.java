@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "field_type")
 @JsonSubTypes({
     @JsonSubTypes.Type(name = "select_asset_extension", value = AssetOptionFieldSelectAssetExtension.class),
-    @JsonSubTypes.Type(name = "select_number", value = AssetOptionFieldSelectNumber.class),
     @JsonSubTypes.Type(name = "select_stat", value = AssetOptionFieldSelectStat.class),
     @JsonSubTypes.Type(name = "text", value = AssetOptionFieldText.class),
 })

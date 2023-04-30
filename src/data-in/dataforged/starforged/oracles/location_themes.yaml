@@ -87,7 +87,7 @@ starforged:
               # set_attributes: {location_theme: [sacred]}
       collections:
         chaotic:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Chaotic
           _source:
             page: 372
@@ -96,7 +96,6 @@ starforged:
             icon: *Chaotic.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: &Feature.summary Use this table to reveal a new aspect of the location.
               table:
@@ -145,7 +144,6 @@ starforged:
                     - oracle: starforged/oracles/core/descriptor
                     - oracle: starforged/oracles/core/focus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: &Peril.summary Use this table to help envision a complication or hazard.
               table:
@@ -194,7 +192,6 @@ starforged:
                   rolls:
                     - times: 2
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: &Opportunity.summary Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
               table:
@@ -214,7 +211,7 @@ starforged:
                   high: 100
                   result: Insight into the source or nature of the chaos
         fortified:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Fortified
           _source:
             page: 373
@@ -223,7 +220,6 @@ starforged:
             icon: *Fortified.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -265,7 +261,6 @@ starforged:
                   result: Support personnel at work
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -302,7 +297,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -322,7 +316,7 @@ starforged:
                   high: 100
                   result: Access to useful equipment or weapons
         haunted:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Haunted
           _source:
             page: 374
@@ -331,7 +325,6 @@ starforged:
             icon: *Haunted.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -373,7 +366,6 @@ starforged:
                   result: Unnatural mists or darkness
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -410,7 +402,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -430,7 +421,7 @@ starforged:
                   high: 100
                   result: Useful or interesting artifact or device
         infested:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Infested
           _source:
             page: 375
@@ -439,7 +430,6 @@ starforged:
             icon: *Infested.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -481,7 +471,6 @@ starforged:
                   result: Trail or evidence of a creature's passage
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -518,7 +507,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -538,7 +526,7 @@ starforged:
                   high: 100
                   result: Helpful resource or equipment
         inhabited:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Inhabited
           _source:
             page: 376
@@ -547,7 +535,6 @@ starforged:
             icon: *Inhabited.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -589,7 +576,6 @@ starforged:
                   result: Vendor or merchant hawking their wares
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -626,7 +612,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -646,7 +631,7 @@ starforged:
                   high: 100
                   result: Old friend or connection resurfaces
         mechanical:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Mechanical
           _source:
             page: 377
@@ -655,7 +640,6 @@ starforged:
             icon: *Mechanical.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -697,7 +681,6 @@ starforged:
                   result: Power source for the machines
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -734,7 +717,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -754,7 +736,7 @@ starforged:
                   high: 100
                   result: Wondrous technology
         ruined:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Ruined
           _source:
             page: 378
@@ -763,7 +745,6 @@ starforged:
             icon: *Ruined.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -805,7 +786,6 @@ starforged:
                   result: Survivors or guardians dwell among the ruins
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -842,7 +822,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -862,7 +841,7 @@ starforged:
                   high: 100
                   result: Shortcut or passage through the destruction
         sacred:
-          _template: LocationThemeOracles
+          $schema: LocationThemeOracles
           name: Sacred
           _source:
             page: 379
@@ -871,7 +850,6 @@ starforged:
             icon: *Sacred.icon
           contents:
             feature:
-              _template: LocationThemeFeatureOracle
               name: Feature
               summary: *Feature.summary
               table:
@@ -913,7 +891,6 @@ starforged:
                   result: Tokens or motifs representing the faith's domain
                 - *Feature.DescriptorFocus
             peril:
-              _template: LocationThemePerilOracle
               name: Peril
               summary: *Peril.summary
               table:
@@ -950,7 +927,6 @@ starforged:
                 - *Peril.ActionTheme
                 - *Peril.RollTwice
             opportunity:
-              _template: LocationThemeOpportunityOracle
               name: Opportunity
               summary: *Opportunity.summary
               table:
@@ -971,12 +947,12 @@ starforged:
                   result: Interesting or valuable artifact or device
 
         # xxLocationTheme:
-        #   _template: LocationThemeOracles
+        #   $schema: LocationThemeOracles
         #   title:
         #     canonical: xxLocationTheme
         #   contents:
         #     feature:
-        #       _template: LocationThemeFeatureOracle
+        #       $schema: LocationThemeFeatureOracle
         #       title:
         #         canonical: Feature
         #       summary: *Feature.summary
@@ -1025,7 +1001,7 @@ starforged:
         #             - oracle: starforged/oracles/core/descriptor
         #             - oracle: starforged/oracles/core/focus
         #     peril:
-        #       _template: LocationThemePerilOracle
+        #       $schema: LocationThemePerilOracle
         #       title:
         #         canonical: Peril
         #       summary: *Peril.summary       #       table:
@@ -1073,7 +1049,7 @@ starforged:
         #             - times: 2
         #               method: no_duplicates
         #     opportunity:
-        #       _template: LocationThemeOpportunityOracle
+        #       $schema: LocationThemeOpportunityOracle
         #       title:
         #         canonical: Opportunity
         #       summary: *Opportunity.summary
