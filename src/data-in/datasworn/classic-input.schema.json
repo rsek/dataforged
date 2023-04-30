@@ -1,5 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://ironswornrpg.com/classic-input.schema.json",
 	"title": "Datasworn data entry",
 	"description": "Data entry schema for Datasworn, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.",
 	"definitions": {
@@ -12,10 +13,7 @@
 		"Ruleset": {
 			"title": "Ruleset",
 			"type": "string",
-			"enum": [
-				"classic",
-				"starforged"
-			]
+			"enum": ["classic", "starforged"]
 		},
 		"Color": {
 			"title": "Color",
@@ -41,13 +39,7 @@
 			"title": "Source",
 			"type": "object",
 			"description": "Metadata describing the source of this item's text content ",
-			"required": [
-				"title",
-				"url",
-				"authors",
-				"date",
-				"license"
-			],
+			"required": ["title", "url", "authors", "date", "license"],
 			"properties": {
 				"title": {
 					"type": "string",
@@ -69,9 +61,7 @@
 				"url": {
 					"type": "string",
 					"description": "The URL where the source document is available.",
-					"examples": [
-						"https://ironswornrpg.com"
-					]
+					"examples": ["https://ironswornrpg.com"]
 				},
 				"authors": {
 					"title": "Authors",
@@ -79,9 +69,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"examples": [
-							"Shawn Tomkin"
-						]
+						"examples": ["Shawn Tomkin"]
 					}
 				},
 				"date": {
@@ -90,10 +78,7 @@
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 				},
 				"license": {
-					"type": [
-						"string",
-						"null"
-					],
+					"type": ["string", "null"],
 					"description": "An absolute URL pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
 					"examples": [
 						"https://creativecommons.org/licenses/by/4.0",
@@ -116,13 +101,7 @@
 			"title": "Challenge rank",
 			"type": "integer",
 			"description": "Enumerates challenge ranks: 1=troublesome; 2=dangerous; 3=formidable; 4=extreme; 5=epic.",
-			"enum": [
-				1,
-				2,
-				3,
-				4,
-				5
-			]
+			"enum": [1, 2, 3, 4, 5]
 		},
 		"AssetID": {
 			"title": "Asset ID",
@@ -208,10 +187,7 @@
 		"Asset": {
 			"title": "Asset",
 			"type": "object",
-			"required": [
-				"name",
-				"abilities"
-			],
+			"required": ["name", "abilities"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -283,9 +259,7 @@
 			"title": "Asset attachment",
 			"description": "Describes which assets can be attached to this asset. The \"canonical\" example for this are Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 			"type": "object",
-			"required": [
-				"assets"
-			],
+			"required": ["assets"],
 			"properties": {
 				"max": {
 					"title": "Maximum attached assets",
@@ -362,9 +336,7 @@
 		"AssetAbility": {
 			"title": "Asset ability",
 			"type": "object",
-			"required": [
-				"text"
-			],
+			"required": ["text"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -439,10 +411,7 @@
 		"AssetType": {
 			"title": "Asset type",
 			"type": "object",
-			"required": [
-				"name",
-				"contents"
-			],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -498,11 +467,7 @@
 		"AssetConditionMeter": {
 			"title": "Asset condition meter",
 			"type": "object",
-			"required": [
-				"label",
-				"min",
-				"max"
-			],
+			"required": ["label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -538,10 +503,7 @@
 		"AssetConditionMeterControlField": {
 			"title": "Asset condition meter control field",
 			"type": "object",
-			"required": [
-				"field_type",
-				"label"
-			],
+			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -628,20 +590,13 @@
 		"OracleTableColumn": {
 			"title": "Oracle table column",
 			"type": "object",
-			"required": [
-				"content_type"
-			],
+			"required": ["content_type"],
 			"additionalProperties": false,
 			"properties": {
 				"content_type": {
 					"type": "string",
 					"description": "'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
-					"enum": [
-						"result",
-						"summary",
-						"description",
-						"range"
-					]
+					"enum": ["result", "summary", "description", "range"]
 				},
 				"label": {
 					"$ref": "#/definitions/Label"
@@ -701,21 +656,13 @@
 		"OracleCollectionColumn": {
 			"title": "Oracle collection column",
 			"type": "object",
-			"required": [
-				"content_type",
-				"table_key"
-			],
+			"required": ["content_type", "table_key"],
 			"additionalProperties": false,
 			"properties": {
 				"content_type": {
 					"type": "string",
 					"description": "'range' displays the number range: 'low' to 'high'.\n\n'result', 'summary', and 'description' display the string value from the OracleTableRow's corresponding key.",
-					"enum": [
-						"result",
-						"summary",
-						"description",
-						"range"
-					]
+					"enum": ["result", "summary", "description", "range"]
 				},
 				"label": {
 					"$ref": "#/definitions/Label"
@@ -801,11 +748,7 @@
 				"style": {
 					"type": "string",
 					"description": "The style used to render this table in the source material.\n\n        * embed_as_column: This table appears as a column of a table handled by its OracleCollection parent.\n        * embed_in_row: This table appears in its entirety within the row of another table. Canonical examples appear in the Ironsworn Rulebook and Ironsworn: Delve.\n        * table: A standard table, typically with a roll column and a result column.\n        ",
-					"enum": [
-						"embed_as_column",
-						"embed_in_row",
-						"table"
-					],
+					"enum": ["embed_as_column", "embed_in_row", "table"],
 					"default": "table"
 				},
 				"icon": {
@@ -837,10 +780,7 @@
 		"OracleTable": {
 			"title": "Oracle table",
 			"type": "object",
-			"required": [
-				"name",
-				"table"
-			],
+			"required": ["name", "table"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -871,9 +811,7 @@
 					"title": "Oracle match behavior",
 					"description": "A handful of oracles have special behavior on a match.",
 					"type": "object",
-					"required": [
-						"text"
-					],
+					"required": ["text"],
 					"properties": {
 						"text": {
 							"$ref": "#/definitions/MarkdownString"
@@ -922,49 +860,33 @@
 			"title": "Oracle table roll method",
 			"description": "\n  no_duplicates = Reroll duplicate OracleTableRows\n  allow_duplicates = Don't reroll duplicate OracleTableRows\n  make_it_worse = Don't reroll duplicate OracleTableRows; duplicates compound.\n  ",
 			"type": "string",
-			"enum": [
-				"no_duplicates",
-				"keep_duplicates",
-				"make_it_worse"
-			],
+			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"],
 			"default": "no_duplicates"
 		},
 		"OracleTableRowID": {
 			"title": "Oracle table row ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$",
-			"examples": [
-				"classic/oracles/action_and_theme/action/1-1"
-			]
+			"examples": ["classic/oracles/action_and_theme/action/1-1"]
 		},
 		"OracleTableRow": {
 			"title": "Oracle table row",
 			"type": "object",
 			"description": "Represents a row from an oracle table.",
-			"required": [
-				"low",
-				"high",
-				"result"
-			],
+			"required": ["low", "high", "result"],
 			"additionalProperties": false,
 			"properties": {
 				"low": {
 					"description": "The low end of this row's roll range",
 					"minimum": 1,
 					"maximum": 100,
-					"type": [
-						"integer",
-						"null"
-					]
+					"type": ["integer", "null"]
 				},
 				"high": {
 					"description": "The high end of this row's roll range",
 					"minimum": 1,
 					"maximum": 100,
-					"type": [
-						"integer",
-						"null"
-					]
+					"type": ["integer", "null"]
 				},
 				"result": {
 					"title": "Result text",
@@ -1055,10 +977,7 @@
 		"OracleCollection": {
 			"title": "Oracle collection",
 			"type": "object",
-			"required": [
-				"name",
-				"contents"
-			],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -1109,9 +1028,7 @@
 						"style": {
 							"oneOf": [
 								{
-									"enum": [
-										"multi_table"
-									],
+									"enum": ["multi_table"],
 									"type": "string"
 								},
 								{
@@ -1161,23 +1078,13 @@
 			"title": "Player stat",
 			"type": "string",
 			"description": "A standard player character stat.",
-			"enum": [
-				"edge",
-				"heart",
-				"iron",
-				"shadow",
-				"wits"
-			]
+			"enum": ["edge", "heart", "iron", "shadow", "wits"]
 		},
 		"PlayerConditionMeter": {
 			"title": "Player condition meter",
 			"type": "string",
 			"description": "A standard player character condition meter.",
-			"enum": [
-				"health",
-				"spirit",
-				"supply"
-			]
+			"enum": ["health", "spirit", "supply"]
 		},
 		"PlayerConditionMeterID": {
 			"title": "Player condition meter ID",
@@ -1296,10 +1203,7 @@
 		"EncounterCollectionClassic": {
 			"title": "Encounter collection (Classic)",
 			"type": "object",
-			"required": [
-				"name",
-				"contents"
-			],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -1372,26 +1276,18 @@
 			"type": "string",
 			"description": "A move ID with wildcards",
 			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/moves\\/([a-z_]+|\\*))$",
-			"examples": [
-				"*/moves/*/face_danger",
-				"*/assets/ritual/*/moves/*"
-			]
+			"examples": ["*/moves/*/face_danger", "*/assets/ritual/*/moves/*"]
 		},
 		"MoveCategoryID": {
 			"title": "Move category ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$",
-			"examples": [
-				"starforged/collections/moves/adventure"
-			]
+			"examples": ["starforged/collections/moves/adventure"]
 		},
 		"MoveCategory": {
 			"title": "Move category",
 			"type": "object",
-			"required": [
-				"name",
-				"contents"
-			],
+			"required": ["name", "contents"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -1444,39 +1340,24 @@
 		"MoveOutcomeType": {
 			"title": "Move outcome type",
 			"type": "string",
-			"enum": [
-				"miss",
-				"weak_hit",
-				"strong_hit"
-			]
+			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
 		"MoveRollType": {
 			"title": "Move roll type",
 			"type": "string",
-			"enum": [
-				"action_roll",
-				"progress_roll"
-			]
+			"enum": ["action_roll", "progress_roll"]
 		},
 		"MoveRollMethod": {
 			"title": "Move roll method",
 			"type": "string",
-			"enum": [
-				"any",
-				"highest",
-				"lowest",
-				"all"
-			],
+			"enum": ["any", "highest", "lowest", "all"],
 			"description": "`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key."
 		},
 		"TriggerRollOptionActionChoiceRef": {
 			"title": "Trigger roll option action choice ref",
 			"description": "An action roll that references a value provided by an asset",
 			"type": "object",
-			"required": [
-				"ref",
-				"using"
-			],
+			"required": ["ref", "using"],
 			"properties": {
 				"using": {
 					"const": "ref",
@@ -1497,9 +1378,7 @@
 		},
 		"TriggerRollOptionActionChoiceStat": {
 			"title": "Trigger roll option action choice stat",
-			"required": [
-				"using"
-			],
+			"required": ["using"],
 			"type": "object",
 			"properties": {
 				"using": {
@@ -1516,11 +1395,7 @@
 		},
 		"TriggerRollOptionActionChoiceCustomValue": {
 			"title": "Trigger roll option action choice custom value",
-			"required": [
-				"using",
-				"label",
-				"value"
-			],
+			"required": ["using", "label", "value"],
 			"type": "object",
 			"properties": {
 				"label": {
@@ -1538,9 +1413,7 @@
 		"TriggerRollOptionActionChoiceAttachedAssetRef": {
 			"title": "Trigger roll option action choice attached asset ref",
 			"type": "object",
-			"required": [
-				"using"
-			],
+			"required": ["using"],
 			"properties": {
 				"using": {
 					"const": "attached_asset_meter",
@@ -1603,10 +1476,7 @@
 						"player": true,
 						"ally": false
 					},
-					"required": [
-						"player",
-						"ally"
-					],
+					"required": ["player", "ally"],
 					"properties": {
 						"player": {
 							"type": "boolean",
@@ -1650,9 +1520,7 @@
 						"type": "object",
 						"title": "Trigger choice (progress roll)",
 						"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
-						"required": [
-							"using"
-						],
+						"required": ["using"],
 						"properties": {
 							"using": {
 								"$ref": "#/definitions/ProgressType"
@@ -1670,10 +1538,7 @@
 						"player": true,
 						"ally": false
 					},
-					"required": [
-						"player",
-						"ally"
-					],
+					"required": ["player", "ally"],
 					"properties": {
 						"player": {
 							"type": "boolean",
@@ -1690,11 +1555,7 @@
 		"Move": {
 			"title": "Move",
 			"type": "object",
-			"required": [
-				"name",
-				"text",
-				"trigger"
-			],
+			"required": ["name", "text", "trigger"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -1714,9 +1575,7 @@
 					"title": "Trigger",
 					"description": "Describes a move's trigger conditions.",
 					"type": "object",
-					"required": [
-						"text"
-					],
+					"required": ["text"],
 					"properties": {
 						"text": {
 							"$ref": "#/definitions/MarkdownString",
@@ -1743,10 +1602,7 @@
 						{
 							"additionalProperties": false,
 							"title": "Trigger (action roll)",
-							"required": [
-								"roll_options",
-								"roll_type"
-							],
+							"required": ["roll_options", "roll_type"],
 							"properties": {
 								"text": {},
 								"roll_type": {
@@ -1809,10 +1665,7 @@
 													"player": true,
 													"ally": false
 												},
-												"required": [
-													"player",
-													"ally"
-												],
+												"required": ["player", "ally"],
 												"properties": {
 													"player": {
 														"type": "boolean",
@@ -1832,10 +1685,7 @@
 						{
 							"additionalProperties": false,
 							"title": "Trigger (progress move)",
-							"required": [
-								"roll_options",
-								"roll_type"
-							],
+							"required": ["roll_options", "roll_type"],
 							"properties": {
 								"text": {},
 								"roll_type": {
@@ -1875,9 +1725,7 @@
 													"type": "object",
 													"title": "Trigger choice (progress roll)",
 													"description": "A choice belonging to a progress trigger option (which belongs in turn to a progress move).",
-													"required": [
-														"using"
-													],
+													"required": ["using"],
 													"properties": {
 														"using": {
 															"$ref": "#/definitions/ProgressType"
@@ -1895,10 +1743,7 @@
 													"player": true,
 													"ally": false
 												},
-												"required": [
-													"player",
-													"ally"
-												],
+												"required": ["player", "ally"],
 												"properties": {
 													"player": {
 														"type": "boolean",
@@ -1923,17 +1768,11 @@
 				"outcomes": {
 					"title": "Move outcomes",
 					"type": "object",
-					"required": [
-						"miss",
-						"weak_hit",
-						"strong_hit"
-					],
+					"required": ["miss", "weak_hit", "strong_hit"],
 					"properties": {
 						"miss": {
 							"type": "object",
-							"required": [
-								"text"
-							],
+							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
 								"text": {
@@ -1945,9 +1784,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -1968,9 +1805,7 @@
 								},
 								"match": {
 									"type": "object",
-									"required": [
-										"text"
-									],
+									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
 										"text": {
@@ -1982,9 +1817,7 @@
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
-											"required": [
-												"method"
-											],
+											"required": ["method"],
 											"nullable": true,
 											"properties": {
 												"text": {
@@ -2009,9 +1842,7 @@
 						},
 						"weak_hit": {
 							"type": "object",
-							"required": [
-								"text"
-							],
+							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
 								"text": {
@@ -2023,9 +1854,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -2048,9 +1877,7 @@
 						},
 						"strong_hit": {
 							"type": "object",
-							"required": [
-								"text"
-							],
+							"required": ["text"],
 							"additionalProperties": false,
 							"properties": {
 								"text": {
@@ -2062,9 +1889,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -2085,9 +1910,7 @@
 								},
 								"match": {
 									"type": "object",
-									"required": [
-										"text"
-									],
+									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
 										"text": {
@@ -2099,9 +1922,7 @@
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
-											"required": [
-												"method"
-											],
+											"required": ["method"],
 											"nullable": true,
 											"properties": {
 												"text": {
@@ -2141,17 +1962,11 @@
 			"title": "Trigger extension",
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"roll_type",
-				"roll_options"
-			],
+			"required": ["roll_type", "roll_options"],
 			"properties": {
 				"roll_type": {
 					"type": "string",
-					"enum": [
-						"action_roll",
-						"progress_roll"
-					]
+					"enum": ["action_roll", "progress_roll"]
 				},
 				"roll_options": {
 					"type": "array"
@@ -2189,18 +2004,13 @@
 		"MoveExtension": {
 			"title": "Move extension",
 			"description": "Upgrades or otherwise modifies one or more moves.",
-			"required": [
-				"extends"
-			],
+			"required": ["extends"],
 			"type": "object",
 			"additionalProperties": false,
 			"properties": {
 				"extends": {
 					"description": "Move IDs affected by this move extension",
-					"type": [
-						"array",
-						"null"
-					],
+					"type": ["array", "null"],
 					"items": {
 						"$ref": "#/definitions/MoveID"
 					},
@@ -2229,9 +2039,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -2252,9 +2060,7 @@
 								},
 								"match": {
 									"type": "object",
-									"required": [
-										"text"
-									],
+									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
 										"text": {
@@ -2266,9 +2072,7 @@
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
-											"required": [
-												"method"
-											],
+											"required": ["method"],
 											"nullable": true,
 											"properties": {
 												"text": {
@@ -2304,9 +2108,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -2340,9 +2142,7 @@
 								"reroll": {
 									"title": "Move reroll",
 									"type": "object",
-									"required": [
-										"method"
-									],
+									"required": ["method"],
 									"nullable": true,
 									"properties": {
 										"text": {
@@ -2363,9 +2163,7 @@
 								},
 								"match": {
 									"type": "object",
-									"required": [
-										"text"
-									],
+									"required": ["text"],
 									"additionalProperties": false,
 									"properties": {
 										"text": {
@@ -2377,9 +2175,7 @@
 										"reroll": {
 											"title": "Move reroll",
 											"type": "object",
-											"required": [
-												"method"
-											],
+											"required": ["method"],
 											"nullable": true,
 											"properties": {
 												"text": {
@@ -2412,10 +2208,7 @@
 		"CheckboxField": {
 			"title": "Checkbox field",
 			"type": "object",
-			"required": [
-				"field_type",
-				"label"
-			],
+			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -2438,12 +2231,7 @@
 		"ClockField": {
 			"title": "Clock field",
 			"type": "object",
-			"required": [
-				"field_type",
-				"label",
-				"min",
-				"max"
-			],
+			"required": ["field_type", "label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -2467,24 +2255,14 @@
 				},
 				"max": {
 					"type": "integer",
-					"enum": [
-						4,
-						6,
-						8,
-						10
-					]
+					"enum": [4, 6, 8, 10]
 				}
 			}
 		},
 		"CounterField": {
 			"title": "Counter field",
 			"type": "object",
-			"required": [
-				"field_type",
-				"label",
-				"min",
-				"max"
-			],
+			"required": ["field_type", "label", "min", "max"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -2507,10 +2285,7 @@
 					"const": 0
 				},
 				"max": {
-					"type": [
-						"integer",
-						"null"
-					],
+					"type": ["integer", "null"],
 					"default": null
 				}
 			}
@@ -2518,10 +2293,7 @@
 		"TextField": {
 			"title": "Text field",
 			"type": "object",
-			"required": [
-				"field_type",
-				"label"
-			],
+			"required": ["field_type", "label"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -2543,11 +2315,7 @@
 		"SelectFieldStat": {
 			"title": "Select field stat",
 			"type": "object",
-			"required": [
-				"label",
-				"field_type",
-				"choices"
-			],
+			"required": ["label", "field_type", "choices"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -2569,9 +2337,7 @@
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": {
-							"required": [
-								"label"
-							],
+							"required": ["label"],
 							"type": "object",
 							"properties": {
 								"label": {
@@ -2593,11 +2359,7 @@
 		},
 		"SelectFieldRef": {
 			"title": "Select field ref",
-			"required": [
-				"label",
-				"field_type",
-				"choices"
-			],
+			"required": ["label", "field_type", "choices"],
 			"type": "object",
 			"properties": {
 				"id": {
@@ -2619,10 +2381,7 @@
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": {
-							"required": [
-								"label",
-								"value"
-							],
+							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
 								"label": {
@@ -2644,11 +2403,7 @@
 		},
 		"SelectFieldExtendAsset": {
 			"title": "Select field extend asset",
-			"required": [
-				"label",
-				"field_type",
-				"choices"
-			],
+			"required": ["label", "field_type", "choices"],
 			"type": "object",
 			"properties": {
 				"id": {
@@ -2670,10 +2425,7 @@
 					"$comment": "Deserialize as a \"dictionary\"-like object.",
 					"patternProperties": {
 						"^[a-z_]+$": {
-							"required": [
-								"label",
-								"value"
-							],
+							"required": ["label", "value"],
 							"type": "object",
 							"properties": {
 								"label": {
@@ -2699,10 +2451,7 @@
 			"oneOf": [
 				{
 					"type": "object",
-					"required": [
-						"_template",
-						"contents"
-					],
+					"required": ["_template", "contents"],
 					"properties": {
 						"_template": {
 							"type": "string",
@@ -2714,9 +2463,7 @@
 								"feature": {
 									"title": "LocationThemeFeatureOracle",
 									"type": "object",
-									"required": [
-										"table"
-									],
+									"required": ["table"],
 									"properties": {
 										"_template": {
 											"type": "string",
@@ -2729,10 +2476,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2749,10 +2493,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2769,10 +2510,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2789,10 +2527,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2809,10 +2544,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2829,10 +2561,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2849,10 +2578,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2869,10 +2595,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2889,10 +2612,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2909,10 +2629,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2929,10 +2646,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2949,10 +2663,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2969,12 +2680,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result",
-														"rolls",
-														"low",
-														"high"
-													],
+													"required": ["result", "rolls", "low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -2990,9 +2696,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3005,9 +2709,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3041,9 +2743,7 @@
 								"peril": {
 									"title": "LocationThemePerilOracle",
 									"type": "object",
-									"required": [
-										"table"
-									],
+									"required": ["table"],
 									"properties": {
 										"_template": {
 											"type": "string",
@@ -3056,10 +2756,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3076,10 +2773,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3096,10 +2790,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3116,10 +2807,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3136,10 +2824,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3156,10 +2841,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3176,10 +2858,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3196,10 +2875,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3216,10 +2892,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3236,10 +2909,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3256,12 +2926,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result",
-														"rolls",
-														"low",
-														"high"
-													],
+													"required": ["result", "rolls", "low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3277,9 +2942,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3292,9 +2955,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3319,12 +2980,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result",
-														"rolls",
-														"low",
-														"high"
-													],
+													"required": ["result", "rolls", "low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3340,9 +2996,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"times"
-																	],
+																	"required": ["times"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3376,9 +3030,7 @@
 								"opportunity": {
 									"title": "LocationThemeOpportunityOracle",
 									"type": "object",
-									"required": [
-										"table"
-									],
+									"required": ["table"],
 									"properties": {
 										"_template": {
 											"type": "string",
@@ -3391,10 +3043,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3411,10 +3060,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3431,10 +3077,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3451,10 +3094,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3471,10 +3111,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3507,11 +3144,7 @@
 				{
 					"title": "PlanetOracles",
 					"type": "object",
-					"required": [
-						"sample_names",
-						"collections",
-						"contents"
-					],
+					"required": ["sample_names", "collections", "contents"],
 					"properties": {
 						"_template": {
 							"type": "string",
@@ -3519,19 +3152,14 @@
 						},
 						"collections": {
 							"type": "object",
-							"required": [
-								"settlements"
-							],
+							"required": ["settlements"],
 							"properties": {
 								"_template": {
 									"type": "string"
 								},
 								"settlements": {
 									"type": "object",
-									"required": [
-										"name",
-										"contents"
-									],
+									"required": ["name", "contents"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -3542,21 +3170,14 @@
 										},
 										"contents": {
 											"type": "object",
-											"required": [
-												"terminus",
-												"outlands",
-												"expanse"
-											],
+											"required": ["terminus", "outlands", "expanse"],
 											"properties": {
 												"_template": {
 													"type": "string"
 												},
 												"terminus": {
 													"type": "object",
-													"required": [
-														"table",
-														"name"
-													],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3568,9 +3189,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3583,9 +3202,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3598,9 +3215,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3613,9 +3228,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3628,9 +3241,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3651,10 +3262,7 @@
 												},
 												"outlands": {
 													"type": "object",
-													"required": [
-														"table",
-														"name"
-													],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3666,9 +3274,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3681,9 +3287,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3696,9 +3300,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3711,9 +3313,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3726,9 +3326,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3749,10 +3347,7 @@
 												},
 												"expanse": {
 													"type": "object",
-													"required": [
-														"table",
-														"name"
-													],
+													"required": ["table", "name"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3764,9 +3359,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3779,9 +3372,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3794,9 +3385,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3809,9 +3398,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3824,9 +3411,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"result"
-																	],
+																	"required": ["result"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -3865,10 +3450,7 @@
 								},
 								"atmosphere": {
 									"type": "object",
-									"required": [
-										"name",
-										"table"
-									],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -3884,9 +3466,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3899,9 +3479,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3914,9 +3492,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3929,9 +3505,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3944,9 +3518,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3959,9 +3531,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -3978,10 +3548,7 @@
 								},
 								"observed_from_space": {
 									"type": "object",
-									"required": [
-										"name",
-										"table"
-									],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -3997,10 +3564,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4017,10 +3581,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4037,10 +3598,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4057,10 +3615,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4077,10 +3632,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4097,10 +3649,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4117,10 +3666,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4137,10 +3683,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4157,12 +3700,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result",
-														"rolls",
-														"low",
-														"high"
-													],
+													"required": ["result", "rolls", "low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4178,9 +3716,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -4193,9 +3729,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -4220,11 +3754,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high",
-														"result"
-													],
+													"required": ["low", "high", "result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4249,10 +3779,7 @@
 								},
 								"feature": {
 									"type": "object",
-									"required": [
-										"name",
-										"table"
-									],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -4268,10 +3795,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4288,10 +3812,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4308,10 +3829,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4328,10 +3846,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4348,10 +3863,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4368,10 +3880,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4388,10 +3897,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4408,10 +3914,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4428,10 +3931,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4448,10 +3948,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4468,10 +3965,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4488,10 +3982,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4508,10 +3999,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high"
-													],
+													"required": ["low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4528,12 +4016,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result",
-														"rolls",
-														"low",
-														"high"
-													],
+													"required": ["result", "rolls", "low", "high"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4549,9 +4032,7 @@
 															"items": [
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -4564,9 +4045,7 @@
 																},
 																{
 																	"type": "object",
-																	"required": [
-																		"oracle"
-																	],
+																	"required": ["oracle"],
 																	"properties": {
 																		"_template": {
 																			"type": "string"
@@ -4591,11 +4070,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"low",
-														"high",
-														"result"
-													],
+													"required": ["low", "high", "result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4620,10 +4095,7 @@
 								},
 								"life": {
 									"type": "object",
-									"required": [
-										"name",
-										"table"
-									],
+									"required": ["name", "table"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -4639,9 +4111,7 @@
 											"items": [
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4654,9 +4124,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4669,9 +4137,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4684,9 +4150,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4699,9 +4163,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4714,9 +4176,7 @@
 												},
 												{
 													"type": "object",
-													"required": [
-														"result"
-													],
+													"required": ["result"],
 													"properties": {
 														"_template": {
 															"type": "string"
@@ -4750,9 +4210,7 @@
 				{
 					"title": "LocationOracle",
 					"type": "object",
-					"required": [
-						"table"
-					],
+					"required": ["table"],
 					"properties": {
 						"_template": {
 							"type": "string",
@@ -4765,9 +4223,7 @@
 							"items": [
 								{
 									"type": "object",
-									"required": [
-										"result"
-									],
+									"required": ["result"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -4780,9 +4236,7 @@
 								},
 								{
 									"type": "object",
-									"required": [
-										"result"
-									],
+									"required": ["result"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -4795,9 +4249,7 @@
 								},
 								{
 									"type": "object",
-									"required": [
-										"result"
-									],
+									"required": ["result"],
 									"properties": {
 										"_template": {
 											"type": "string"
@@ -4924,16 +4376,12 @@
 			"title": "World truth ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$",
-			"examples": [
-				"classic/world_truths/iron"
-			]
+			"examples": ["classic/world_truths/iron"]
 		},
 		"WorldTruth": {
 			"title": "World truth",
 			"type": "object",
-			"required": [
-				"name"
-			],
+			"required": ["name"],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/WorldTruthID"
@@ -4967,17 +4415,12 @@
 			"title": "World truth option ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$",
-			"examples": [
-				"classic/world_truths/iron/0"
-			]
+			"examples": ["classic/world_truths/iron/0"]
 		},
 		"WorldTruthOption": {
 			"title": "World truth option",
 			"type": "object",
-			"required": [
-				"description",
-				"quest_starter"
-			],
+			"required": ["description", "quest_starter"],
 			"properties": {
 				"id": {
 					"$ref": "#/definitions/WorldTruthOptionID"
@@ -4994,9 +4437,7 @@
 			"title": "Region entry ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/regions(\\/[a-z_]+){1}$",
-			"examples": [
-				"classic/regions/shattered_wastes"
-			]
+			"examples": ["classic/regions/shattered_wastes"]
 		},
 		"RegionEntry": {
 			"title": "Region entry",
@@ -5052,12 +4493,7 @@
 			"title": "Rarity",
 			"type": "object",
 			"description": "A rarity, like those presented in Ironsworn: Delve.",
-			"required": [
-				"asset",
-				"description",
-				"name",
-				"xp_cost"
-			],
+			"required": ["asset", "description", "name", "xp_cost"],
 			"additionalProperties": false,
 			"properties": {
 				"id": {
@@ -5099,29 +4535,18 @@
 			"type": "string",
 			"$comment": "{namespace}/delve_sites/{delveSite}",
 			"pattern": "^[a-z0-9_]{3,}\\/delve_sites(\\/[a-z_]+){1}$",
-			"examples": [
-				"delve/delve_sites/alvas_rest"
-			]
+			"examples": ["delve/delve_sites/alvas_rest"]
 		},
 		"DelveSiteCardType": {
 			"title": "Delve site card type",
 			"type": "string",
-			"enum": [
-				"theme",
-				"domain"
-			]
+			"enum": ["theme", "domain"]
 		},
 		"DelveSite": {
 			"title": "Delve site",
 			"type": "object",
 			"description": "A delve site with a theme, domain, and denizen table.",
-			"required": [
-				"name",
-				"rank",
-				"theme",
-				"domain",
-				"denizens"
-			],
+			"required": ["name", "rank", "theme", "domain", "denizens"],
 			"properties": {
 				"name": {
 					"$ref": "#/definitions/Label"
@@ -5338,12 +4763,7 @@
 			"title": "Delve site denizen",
 			"type": "object",
 			"description": "A denizen entry in a delve site.",
-			"required": [
-				"encounter",
-				"frequency",
-				"low",
-				"high"
-			],
+			"required": ["encounter", "frequency", "low", "high"],
 			"properties": {
 				"encounter": {
 					"description": "The ID of the relevant encounter, or `null` if no encounter has been specified.",
@@ -5362,13 +4782,7 @@
 				"frequency": {
 					"title": "Frequency keyword",
 					"type": "string",
-					"enum": [
-						"very_common",
-						"common",
-						"uncommon",
-						"rare",
-						"unforeseen"
-					]
+					"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 				},
 				"low": {
 					"type": "integer",
@@ -5387,13 +4801,7 @@
 			"description": "Schema shared by delve site themes and delve site domains.",
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"card_type",
-				"name",
-				"summary",
-				"features",
-				"dangers"
-			],
+			"required": ["card_type", "name", "summary", "features", "dangers"],
 			"properties": {
 				"id": {
 					"type": "string"
@@ -5828,9 +5236,7 @@
 										"suggestions": {
 											"$ref": "#/definitions/Suggestions",
 											"default": {
-												"oracles": [
-													"delve/oracles/site_nature/theme"
-												]
+												"oracles": ["delve/oracles/site_nature/theme"]
 											}
 										}
 									}
@@ -5851,9 +5257,7 @@
 										"suggestions": {
 											"$ref": "#/definitions/Suggestions",
 											"default": {
-												"oracles": [
-													"delve/oracles/site_nature/domain"
-												]
+												"oracles": ["delve/oracles/site_nature/domain"]
 											}
 										}
 									}
@@ -5950,9 +5354,7 @@
 				"url": {
 					"type": "string",
 					"description": "The URL where the source document is available.",
-					"examples": [
-						"https://ironswornrpg.com"
-					]
+					"examples": ["https://ironswornrpg.com"]
 				},
 				"authors": {
 					"title": "Authors",
@@ -5960,9 +5362,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "string",
-						"examples": [
-							"Shawn Tomkin"
-						]
+						"examples": ["Shawn Tomkin"]
 					}
 				},
 				"date": {
@@ -5971,10 +5371,7 @@
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 				},
 				"license": {
-					"type": [
-						"string",
-						"null"
-					],
+					"type": ["string", "null"],
 					"description": "An absolute URL pointing to the location where this element's license can be found. If it's \"null\", no license is provided -- use with caution.",
 					"examples": [
 						"https://creativecommons.org/licenses/by/4.0",
@@ -5991,10 +5388,7 @@
 			"title": "Sourcebook (Ironsworn classic)",
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"ruleset",
-				"_source"
-			],
+			"required": ["ruleset", "_source"],
 			"properties": {
 				"$schema": {},
 				"ruleset": {
