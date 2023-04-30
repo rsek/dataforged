@@ -1,5 +1,5 @@
 import { type Localize, type Metadata, type Abstract } from '@base-types'
-import { type SvgImageUrl } from 'base-types/metadata'
+import { type SvgImageURL } from 'base-types/metadata'
 export type OracleTableID = string
 
 export interface OracleTable {
@@ -40,7 +40,7 @@ export type OracleCollectionColumn<
 }
 
 export interface OracleTableRendering extends OracleRenderingBase {
-	icon?: Metadata.SvgImageUrl
+	icon?: Metadata.SvgImageURL
 	style?: OracleTableStyle
 	color?: Metadata.Color
 }
@@ -68,7 +68,7 @@ export interface OracleTableRow<
 	low: Low
 	high: High
 	result: Localize.MarkdownString
-	icon?: SvgImageUrl
+	icon?: SvgImageURL
 	summary?: Localize.MarkdownString
 	description?: Localize.MarkdownString
 	rolls?: OracleTableRoll[]

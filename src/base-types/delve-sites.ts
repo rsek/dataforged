@@ -55,7 +55,7 @@ export type DelveSiteCardType = 'theme' | 'domain'
 
 interface DelveCardBase extends Abstract.SourcedNode<DelveSiteCardID> {
 	name: Label
-	icon?: Metadata.SvgImageUrl
+	icon?: Metadata.SvgImageURL
 	summary: Localize.MarkdownString
 	description?: Localize.MarkdownString
 	card_type: DelveSiteCardType

@@ -19,10 +19,10 @@ import {
 } from '@schema-json'
 import { type JSONSchema7 } from 'json-schema'
 import type * as Types from '@base-types'
-import {
-	OracleCollectionTemplate,
-	OracleTableTemplate
-} from 'schema-json/templates'
+// import {
+// 	OracleCollectionTemplate,
+// 	OracleTableTemplate
+// } from 'schema-json/templates'
 
 /**
  * Splits a camelcase title to something nicer
@@ -49,9 +49,9 @@ const defs: Record<string, JSONSchema7> = {
 	...Encounters,
 	...Moves,
 	...Abstract,
-	...Inputs,
-	OracleCollectionTemplate,
-	OracleTableTemplate
+	...Inputs
+	// OracleCollectionTemplate,
+	// OracleTableTemplate
 }
 
 function purgeKeys(obj: unknown, ...keys: string[]) {

@@ -13,6 +13,7 @@ const validator = new Ajv({
 	verbose: true,
 	validateFormats: true,
 	useDefaults: 'empty',
+	passContext: true,
 	logger
 })
 

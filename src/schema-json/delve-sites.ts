@@ -156,7 +156,7 @@ export const DelveSiteCard = {
 		name: refSchema<Types.Localize.Label>('Label'),
 		card_type:
 			refSchema<Types.DelveSites.DelveSiteCardType>('DelveSiteCardType'),
-		icon: refSchema<Types.Metadata.SvgImageUrl>('SvgImageUrl'),
+		icon: refSchema<Types.Metadata.SvgImageURL>('SvgImageURL'),
 		summary: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		source: refSchema<Types.Metadata.Source>('Source'),
 		description: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
