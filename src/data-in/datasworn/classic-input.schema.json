@@ -1155,13 +1155,17 @@
 						{
 							"additionalProperties": false,
 							"title": "Trigger (no roll)",
-							"properties": { "roll_type": { "const": "no_roll" } }
+							"properties": {
+								"text": { "type": "string" },
+								"roll_type": { "const": "no_roll" }
+							}
 						},
 						{
 							"additionalProperties": false,
 							"title": "Trigger (action roll)",
 							"required": ["roll_options", "roll_type"],
 							"properties": {
+								"text": { "type": "string" },
 								"roll_type": { "const": "action_roll" },
 								"roll_options": {
 									"description": "Action roll options for triggering this move.",
@@ -1225,6 +1229,7 @@
 							"title": "Trigger (progress move)",
 							"required": ["roll_options", "roll_type"],
 							"properties": {
+								"text": { "type": "string" },
 								"roll_type": { "const": "progress_roll" },
 								"roll_options": {
 									"title": "Trigger options (progress move)",

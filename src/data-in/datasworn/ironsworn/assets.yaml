@@ -77,13 +77,11 @@ classic:
                     strong_hit: &Cave_Lion.3
                       text: If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
                     weak_hit: *Cave_Lion.3
-          controls:
-            health:
-              label: health
-              max: 4
-              value: 4
-              min: 0
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 4
+            value: 4
+            min: 0
         giant_spider:
           _source:
             title: Ironsworn Assets Master Set
@@ -149,13 +147,11 @@ classic:
                   outcomes:
                     strong_hit:
                       text: Also inflict 2 harm.
-          controls:
-            health:
-              label: health
-              max: 4
-              min: 0
-              value: 0
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 4
+            min: 0
+            value: 0
         hawk:
           _source:
             title: Ironsworn Assets Master Set
@@ -168,13 +164,11 @@ classic:
             name:
               label: Name
               field_type: text
-          controls:
-            health:
-              label: health
-              max: 3
-              min: 0
-              value: 3
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 3
+            min: 0
+            value: 3
           requirement: Your hawk can aid you while it is aloft.
           abilities:
             - name: Far-seeing
@@ -288,13 +282,11 @@ classic:
                     strong_hit: &outcome:+1_harm
                       text: Inflict +1 harm.
                     weak_hit: *outcome:+1_harm
-          controls:
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 5
+            min: 0
+            value: 5
         hound:
           _source:
             title: Ironsworn Assets Master Set
@@ -346,13 +338,11 @@ classic:
                     roll_options:
                       - text: In the company of your hound
                   text: Add +1.
-          controls:
-            health:
-              label: health
-              max: 4
-              min: 0
-              value: 4
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 4
+            min: 0
+            value: 4
         kindred:
           _source:
             title: Ironsworn Assets Master Set
@@ -364,13 +354,11 @@ classic:
             name:
               label: Name
               field_type: text
-          controls:
-            health:
-              label: health
-              max: 4
-              value: 4
-              min: 0
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 4
+            value: 4
+            min: 0
           requirement: Your friend stands by you.
           abilities:
             - name: Skilled
@@ -443,7 +431,7 @@ classic:
                     roll_options:
                       - choices:
                           - using: ref
-                            ref: classic/assets/companion/mammoth/controls/health
+                            ref: classic/assets/companion/mammoth/condition_meter
             - name: Overpowering
               text: |-
                 When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.
@@ -460,13 +448,11 @@ classic:
                     strong_hit: &HarmOnHit
                       text: Inflict +1 harm on a hit.
                     weak_hit: *HarmOnHit
-          controls:
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 5
+            min: 0
+            value: 5
         owl:
           _source:
             title: Ironsworn Assets Master Set
@@ -491,13 +477,11 @@ classic:
             - name: Embodying
               text: |-
                 When you [Face Death](classic/moves/suffer/face_death), take your owl’s health as +momentum before you roll.
-          controls:
-            health:
-              min: 0
-              value: 3
-              label: health
-              max: 3
-              field_type: condition_meter
+          condition_meter:
+            min: 0
+            value: 3
+            label: health
+            max: 3
         raven:
           _source:
             title: Ironsworn Assets Master Set
@@ -520,13 +504,11 @@ classic:
             - name: Diligent
               text: |-
                 When your raven carries messages for you, you may [Secure an Advantage](classic/moves/adventure/secure_an_advantage), [Gather Information](classic/moves/adventure/gather_information), or [Compel](classic/moves/relationship/compel) from a distance.
-          controls:
-            health:
-              label: health
-              max: 2
-              min: 0
-              value: 2
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 2
+            min: 0
+            value: 2
         young_wyvern:
           _source:
             title: Ironsworn Assets Master Set
@@ -559,13 +541,11 @@ classic:
                       - text: By commanding your wyvern to attack
                         choices:
                           - using: heart
-          controls:
-            health:
-              label: health
-              max: 5
-              min: 0
-              value: 5
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 5
+            min: 0
+            value: 5
     path:
       name: Path assets
       member_label: Path
@@ -753,7 +733,7 @@ classic:
                         method: any
                         choices:
                           - using: ref
-                            ref: classic/assets/path/commander/controls/strength
+                            ref: classic/assets/path/commander/condition_meter
             - text: |-
                 You may dispatch scouts from your warband to [Gather Information](classic/moves/adventure/gather_information) or [Resupply](classic/moves/adventure/resupply); if you do, roll +strength.
               extend_moves:
@@ -767,17 +747,15 @@ classic:
                         method: any
                         choices:
                           - using: ref
-                            ref: classic/assets/path/commander/controls/strength
+                            ref: classic/assets/path/commander/condition_meter
             - text: |-
                 Once you [Forge a Bond](classic/moves/relationship/forge_a_bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
-          controls:
-            strength:
-              # TODO: conditional debility?
-              label: strength
-              max: 4
-              min: 0
-              value: 4
-              field_type: condition_meter
+          condition_meter:
+            # TODO: conditional debility?
+            label: strength
+            max: 4
+            min: 0
+            value: 4
         dancer:
           _source:
             title: Ironsworn Assets Master Set
@@ -916,13 +894,11 @@ classic:
                 When in a community or trading, you may suffer -1 wealth and take +2 supply.
             - text: |-
                 When you [Resupply](classic/moves/adventure/resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.
-          controls:
-            wealth:
-              label: wealth
-              max: 5
-              value: 0
-              min: 0
-              field_type: condition_meter
+          condition_meter:
+            label: wealth
+            max: 5
+            value: 0
+            min: 0
         herbalist:
           _source:
             title: Ironsworn Assets Master Set
@@ -1914,18 +1890,16 @@ classic:
                     miss: *move:Generic.Miss
             - text: Your simulacrum has 6 health.
               extend_asset:
-                controls:
+                condition_meter:
                   health:
                     max: 6
               # fixme: alter move to include new text
             - *asset:Ritual.Ability.3
-          controls:
-            health:
-              label: health
-              max: 3
-              value: 3
-              min: 0
-              field_type: condition_meter
+          condition_meter:
+            label: health
+            max: 3
+            value: 3
+            min: 0
         bind:
           _source:
             title: Ironsworn Assets Master Set
@@ -2069,13 +2043,11 @@ classic:
                 You may [Compel](classic/moves/relationship/compel) +essence (and suffer -1 essence) through a show of power.
             - text: |-
                 When you perform this ritual, add +1 and take +1 essence on a hit.
-          controls:
-            essence:
-              label: essence
-              max: 6
-              value: 0
-              field_type: condition_meter
-              min: 0
+          condition_meter:
+            label: essence
+            max: 6
+            value: 0
+            min: 0
         keen:
           _source:
             title: Ironsworn Assets Master Set
@@ -2152,13 +2124,11 @@ classic:
             title: Ironsworn Assets Master Set
             page: 16
           name: Lightbearer
-          controls:
-            light:
-              label: light
-              max: 6
-              value: 0
-              min: 0
-              field_type: condition_meter
+          condition_meter:
+            label: light
+            max: 6
+            value: 0
+            min: 0
           # https://game-icons.net/1x1/lorc/explosion-rays.html
           abilities:
             - text: &move:Asset.Lightbearer |-
