@@ -11,7 +11,7 @@ import java.util.List;
 public class AssetExtensionAttachments {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("assets")
-    private List<RegularExpression> assets;
+    private List<AssetIdwildcard> assets;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("max")
@@ -23,14 +23,14 @@ public class AssetExtensionAttachments {
     /**
      * Getter for assets.<p>
      */
-    public List<RegularExpression> getAssets() {
+    public List<AssetIdwildcard> getAssets() {
         return assets;
     }
 
     /**
      * Setter for assets.<p>
      */
-    public void setAssets(List<RegularExpression> assets) {
+    public void setAssets(List<AssetIdwildcard> assets) {
         this.assets = assets;
     }
 

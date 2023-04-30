@@ -2,13 +2,14 @@
 
 package Dataforged;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize
 public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     @JsonProperty("id")
-    private AssetControlFieldId id;
+    private AssetAbilityControlFieldId id;
 
     @JsonProperty("label")
     private Label label;
@@ -19,6 +20,7 @@ public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     @JsonProperty("min")
     private Byte min;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("value")
     private Byte value;
 
@@ -28,14 +30,14 @@ public class AssetAbilityControlFieldClock extends AssetAbilityControlField {
     /**
      * Getter for id.<p>
      */
-    public AssetControlFieldId getId() {
+    public AssetAbilityControlFieldId getId() {
         return id;
     }
 
     /**
      * Setter for id.<p>
      */
-    public void setId(AssetControlFieldId id) {
+    public void setId(AssetAbilityControlFieldId id) {
         this.id = id;
     }
 

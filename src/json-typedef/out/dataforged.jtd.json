@@ -1,14 +1,5 @@
 {
 	"definitions": {
-		"RegularExpression": {
-			"type": "string"
-		},
-		"StatID": {
-			"type": "string",
-			"metadata": {
-				"description": "A player stat (e.g. `player/stats/edge`), a player condition meter (e.g. `player/meters/health`), or an ID pointing to an asset option or asset control whose value is to be used."
-			}
-		},
 		"Source": {
 			"properties": {
 				"authors": {
@@ -143,11 +134,69 @@
 						"ref": "AssetOptionField"
 					}
 				},
+				"condition_meter": {
+					"ref": "AssetConditionMeter"
+				},
 				"shared": {
 					"type": "boolean",
 					"metadata": {
 						"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 					}
+				}
+			}
+		},
+		"AssetConditionMeterID": {
+			"type": "string"
+		},
+		"AssetConditionMeter": {
+			"properties": {
+				"id": {
+					"ref": "AssetConditionMeterID"
+				},
+				"label": {
+					"ref": "Label"
+				},
+				"max": {
+					"type": "int8"
+				},
+				"min": {
+					"type": "int8"
+				}
+			},
+			"optionalProperties": {
+				"value": {
+					"type": "int8"
+				},
+				"controls": {
+					"values": {
+						"ref": "AssetConditionMeterCheckbox"
+					}
+				}
+			}
+		},
+		"AssetConditionMeterControlFieldID": {
+			"type": "string",
+			"metadata": {
+				"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter\\/controls\\/[a-z_]+$"
+			}
+		},
+		"AssetConditionMeterCheckbox": {
+			"properties": {
+				"field_type": {
+					"enum": [
+						"checkbox"
+					]
+				},
+				"id": {
+					"ref": "AssetConditionMeterControlFieldID"
+				},
+				"label": {
+					"ref": "Label"
+				}
+			},
+			"optionalProperties": {
+				"value": {
+					"type": "boolean"
 				}
 			}
 		},
@@ -237,28 +286,31 @@
 						},
 						"label": {
 							"ref": "Label"
-						},
+						}
+					},
+					"optionalProperties": {
 						"value": {
-							"type": "boolean",
-							"nullable": true
+							"type": "boolean"
 						}
 					}
 				},
 				"clock": {
 					"properties": {
 						"id": {
-							"ref": "AssetControlFieldID"
+							"ref": "AssetAbilityControlFieldID"
 						},
 						"label": {
 							"ref": "Label"
-						},
-						"value": {
-							"type": "int8"
 						},
 						"min": {
 							"type": "int8"
 						},
 						"max": {
+							"type": "int8"
+						}
+					},
+					"optionalProperties": {
+						"value": {
 							"type": "int8"
 						}
 					}
@@ -271,15 +323,17 @@
 						"label": {
 							"ref": "Label"
 						},
-						"value": {
-							"type": "int8"
-						},
 						"min": {
 							"type": "int8"
 						},
 						"max": {
 							"type": "int8",
 							"nullable": true
+						}
+					},
+					"optionalProperties": {
+						"value": {
+							"type": "int8"
 						}
 					}
 				}
@@ -344,7 +398,7 @@
 				"select_number": {
 					"properties": {
 						"id": {
-							"ref": "AssetOptionFieldID"
+							"ref": "AssetAbilityOptionFieldID"
 						},
 						"label": {
 							"ref": "Label"
@@ -466,38 +520,6 @@
 						}
 					}
 				},
-				"select_number": {
-					"properties": {
-						"id": {
-							"ref": "AssetOptionFieldID"
-						},
-						"label": {
-							"ref": "Label"
-						},
-						"choices": {
-							"values": {
-								"properties": {
-									"label": {
-										"ref": "Label"
-									},
-									"value": {
-										"type": "int8"
-									}
-								},
-								"optionalProperties": {
-									"selected": {
-										"type": "boolean"
-									}
-								}
-							}
-						}
-					},
-					"optionalProperties": {
-						"value": {
-							"type": "int8"
-						}
-					}
-				},
 				"select_asset_extension": {
 					"properties": {
 						"id": {
@@ -550,25 +572,6 @@
 				"description": "Asset controls are fields that are expected to change throughout the asset's lifespan. The most common example are the condition meters on certain assets. A more complex example is the distinct mechanical modes on Ironsworn's 'Armored'."
 			},
 			"mapping": {
-				"condition_meter": {
-					"properties": {
-						"id": {
-							"ref": "AssetControlFieldID"
-						},
-						"label": {
-							"ref": "Label"
-						},
-						"value": {
-							"type": "int8"
-						},
-						"min": {
-							"type": "int8"
-						},
-						"max": {
-							"type": "int8"
-						}
-					}
-				},
 				"checkbox": {
 					"properties": {
 						"id": {
@@ -576,10 +579,11 @@
 						},
 						"label": {
 							"ref": "Label"
-						},
+						}
+					},
+					"optionalProperties": {
 						"value": {
-							"type": "boolean",
-							"nullable": true
+							"type": "boolean"
 						}
 					}
 				},
@@ -622,11 +626,11 @@
 				"description": "Describes changes applied to an asset, usually by another asset. Unchanged properties are omitted."
 			},
 			"properties": {
-				"extends": {
-					"ref": "AssetIDWildcard"
-				},
 				"id": {
 					"ref": "AssetAbilityControlFieldID"
+				},
+				"extends": {
+					"ref": "AssetIDWildcard"
 				}
 			},
 			"optionalProperties": {
@@ -645,20 +649,40 @@
 						}
 					}
 				},
-				"controls": {
-					"metadata": {
-						"description": "Use the same key as the original control. Currently, only condition meters may be extended in this way."
-					},
-					"values": {
-						"optionalProperties": {
-							"max": {
-								"type": "int8"
-							},
-							"min": {
-								"type": "int8"
+				"condition_meter": {
+					"optionalProperties": {
+						"max": {
+							"type": "int8"
+						},
+						"min": {
+							"type": "int8"
+						},
+						"controls": {
+							"values": {
+								"ref": "AssetConditionMeterControlField"
 							}
 						}
 					}
+				}
+			}
+		},
+		"AssetConditionMeterControlField": {
+			"properties": {
+				"id": {
+					"ref": "AssetConditionMeterControlFieldID"
+				},
+				"field_type": {
+					"enum": [
+						"checkbox"
+					]
+				},
+				"label": {
+					"ref": "Label"
+				}
+			},
+			"optionalProperties": {
+				"value": {
+					"type": "boolean"
 				}
 			}
 		},
@@ -677,22 +701,22 @@
 						},
 						"assets": {
 							"elements": {
-								"ref": "RegularExpression"
+								"ref": "AssetIDWildcard"
 							}
 						}
 					}
 				},
-				"controls": {
-					"metadata": {
-						"description": "Use the same key as the original control. Currently, only condition meters may be extended in this way."
-					},
-					"values": {
-						"optionalProperties": {
-							"max": {
-								"type": "int8"
-							},
-							"min": {
-								"type": "int8"
+				"condition_meter": {
+					"optionalProperties": {
+						"max": {
+							"type": "int8"
+						},
+						"min": {
+							"type": "int8"
+						},
+						"controls": {
+							"values": {
+								"ref": "AssetConditionMeterControlField"
 							}
 						}
 					}

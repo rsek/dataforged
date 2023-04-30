@@ -98,7 +98,7 @@ export interface TriggerRollOptionChoiceBase {
 		| Types.Players.PlayerStatLike
 		| 'custom_value'
 		| 'ref'
-		| 'attached_asset_ref'
+		| 'attached_asset_meter'
 }
 
 export type TriggerRollOptionActionChoice =
@@ -116,8 +116,7 @@ export type TriggerExtension<T extends MoveRollType> = Omit<
 
 export interface TriggerRollOptionActionChoiceAttachedAssetRef
 	extends TriggerRollOptionChoiceBase {
-	using: 'attached_asset_ref'
-	ref: string // TODO: asset control ID wildcard
+	using: 'attached_asset_meter'
 }
 
 export interface TriggerRollOptionActionChoiceRef

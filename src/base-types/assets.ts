@@ -20,20 +20,14 @@ export type AssetControlFieldIDWildcard = string
 export type AssetOptionField =
 	| Types.Inputs.TextField
 	| Types.Inputs.SelectFieldStat
-	// | Types.Inputs.SelectFieldNumber
 	| Types.Inputs.SelectFieldExtendAsset
 
 export type AssetControlField =
 	| Types.Inputs.CheckboxField
-	| Types.Inputs.ConditionMeterField
 	| Types.Inputs.SelectFieldExtendAsset
 
 export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
 	Omit<T, 'id' | 'field_type' | 'label' | 'value'>
->
-
-export type AssetControlFieldExtension = Simplify<
-	InputFieldExtension<Types.Inputs.ConditionMeterField>
 >
 
 export interface Asset
@@ -45,21 +39,49 @@ export interface Asset
 	requirement?: Types.Localize.MarkdownString
 	abilities: AssetAbility[]
 	controls?: Record<string, AssetControlField>
+	condition_meter?: AssetConditionMeter
 	count_as_impact?: boolean
 	attachments?: AssetAttachment
 	shared?: boolean
 }
 
+export type AssetConditionMeter = Simplify<
+	Types.Abstract.Meter & {
+		id: string
+		controls?: Record<string, AssetConditionMeterControlField>
+	}
+>
+
+export type AssetConditionMeterCheckbox = Types.Inputs.CheckboxField
+
+export type AssetConditionMeterExtension = Partial<
+	Omit<AssetConditionMeter, 'label' | 'value' | 'id'>
+>
+
 export interface AssetExtensionForeign
 	extends Types.Abstract.ExtendOne<
-		Omit<Asset, 'options' | 'abilities' | 'requirement' | 'shared' | 'controls'>
+		Omit<
+			Asset,
+			| 'options'
+			| 'abilities'
+			| 'requirement'
+			| 'shared'
+			| 'controls'
+			| 'condition_meter'
+		>
 	> {
-	controls?: Record<string, AssetControlFieldExtension>
+	condition_meter?: AssetConditionMeterExtension
 }
 
 export interface AssetsExtension extends Types.Abstract.ExtendMany<Asset> {
 	abilities?: never
 }
+
+export type AssetConditionMeterID = string
+export type AssetConditionMeterIDWildcard = string
+export type AssetConditionMeterControlFieldID = string
+
+export type AssetConditionMeterControlField = AssetConditionMeterCheckbox
 
 export type AssetAbilityID = string
 

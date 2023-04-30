@@ -1,6 +1,5 @@
 import path from 'path'
 import * as Assets from './assets'
-import * as Common from './common'
 import * as DelveSites from './delve-sites'
 import * as Encounters from './encounters'
 // import * as GameObjects from './game-objects'
@@ -19,7 +18,6 @@ import * as JTD from 'jtd'
 
 const schema: JTD.Schema = {
 	definitions: {
-		...Common,
 		...Metadata,
 		...Assets,
 		...DelveSites,

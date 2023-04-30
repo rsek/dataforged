@@ -1,7 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import type * as Types from '@base-types'
 import _ from 'lodash'
-import { DF_KEY, refSchema } from './common'
+import { DICT_KEY, refSchema } from './common'
 import { Abstract } from '@schema-json'
 
 export const EncounterNatureStarforged: Schema<Types.Encounters.EncounterNatureStarforged> =
@@ -121,7 +121,7 @@ export const EncounterStarforged: Schema<Types.Encounters.EncounterStarforged> =
 				type: 'object',
 				// additionalProperties: false,
 				patternProperties: {
-					[DF_KEY]: { $ref: '#/definitions/EncounterVariantStarforged' }
+					[DICT_KEY]: { $ref: '#/definitions/EncounterVariantStarforged' }
 				}
 			} as any,
 			description: EncounterClassic.properties?.description,

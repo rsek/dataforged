@@ -30,35 +30,21 @@ export const CheckboxField: Schema<Types.Inputs.CheckboxField> = {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'checkbox' },
-		value: { type: 'boolean', default: false }
+		value: { type: 'boolean', default: false, nullable: true }
 	}
 }
 
 export const ClockField: Schema<Types.Inputs.ClockField> = {
 	type: 'object',
-	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
+	required: ['id', 'field_type', 'label', 'min', 'max'],
 	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'clock' },
-		value: { type: 'integer', default: 0 },
+		value: { type: 'integer', default: 0, nullable: true },
 		min: { type: 'integer', const: 0 },
 		max: { type: 'integer', enum: [4, 6, 8, 10] }
-	}
-}
-
-export const ConditionMeterField: Schema<Types.Inputs.ConditionMeterField> = {
-	type: 'object',
-	required: ['id', 'field_type', 'label', 'min', 'max', 'value'],
-	additionalProperties: false,
-	properties: {
-		id: { type: 'string' },
-		label: refSchema<Types.Localize.Label>('Label'),
-		field_type: { type: 'string', const: 'condition_meter' },
-		value: { type: 'integer' },
-		min: { type: 'integer', default: 0 },
-		max: { type: 'integer' }
 	}
 }
 
@@ -70,7 +56,7 @@ export const CounterField: Schema<Types.Inputs.CounterField> = {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
 		field_type: { type: 'string', const: 'counter' },
-		value: { type: 'integer', default: 0 },
+		value: { type: 'integer', default: 0, nullable: true },
 		min: { type: 'integer', const: 0 },
 		max: { type: ['integer', 'null'] as any, default: null }
 	}
@@ -98,7 +84,7 @@ export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
 		field_type: { type: 'string', const: 'select_stat' },
 		value: { type: 'string', nullable: true },
 		choices: dictionarySchema<Types.Inputs.SelectFieldStatChoice>({
-			required: ['label', 'value'],
+			required: ['label'],
 			type: 'object',
 			properties: {
 				label: refSchema<Types.Localize.Label>('Label'),
@@ -109,25 +95,25 @@ export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
 	}
 }
 
-export const SelectFieldNumber: Schema<Types.Inputs.SelectFieldNumber> = {
-	required: ['id', 'label', 'field_type', 'choices'],
-	type: 'object',
-	properties: {
-		id: { type: 'string' },
-		label: refSchema<Types.Localize.Label>('Label'),
-		field_type: { type: 'string', const: 'select_number' },
-		value: { type: 'integer', nullable: true },
-		choices: dictionarySchema<Types.Inputs.SelectFieldNumberChoice>({
-			required: ['label', 'value'],
-			type: 'object',
-			properties: {
-				label: { type: 'string' },
-				selected: { type: 'boolean', nullable: true },
-				value: { type: 'integer' }
-			}
-		})
-	}
-}
+// const SelectFieldNumber: Schema<Types.Inputs.SelectFieldNumber> = {
+// 	required: ['id', 'label', 'field_type', 'choices'],
+// 	type: 'object',
+// 	properties: {
+// 		id: { type: 'string' },
+// 		label: refSchema<Types.Localize.Label>('Label'),
+// 		field_type: { type: 'string', const: 'select_number' },
+// 		value: { type: 'integer', nullable: true },
+// 		choices: dictionarySchema<Types.Inputs.SelectFieldNumberChoice>({
+// 			required: ['label', 'value'],
+// 			type: 'object',
+// 			properties: {
+// 				label: { type: 'string' },
+// 				selected: { type: 'boolean', nullable: true },
+// 				value: { type: 'integer' }
+// 			}
+// 		})
+// 	}
+// }
 
 export const SelectFieldRef: Schema<Types.Inputs.SelectFieldRef> = {
 	required: ['id', 'label', 'field_type', 'choices'],

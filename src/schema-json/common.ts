@@ -3,7 +3,8 @@ import { type JSONSchemaType as Schema } from 'schema-json/clean-types'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
 import _ from 'lodash'
 
-export const DF_KEY = /^[a-z_]+$/.source
+/** Pattern for keys used in dictionary objects throughout Dataforged. They're fairly restrictive so that they can be used as ID elements. */
+export const DICT_KEY = /^[a-z_]+$/.source
 
 export function refSchema<T>(defName: string) {
 	// ensures that the schema with the reference behaves
@@ -31,7 +32,7 @@ export function dictionarySchema<TValue>(
 			$comment: 'Deserialize as a "dictionary"-like object.',
 
 			patternProperties: {
-				[DF_KEY]: schema
+				[DICT_KEY]: schema
 			},
 			additionalProperties: false
 		},

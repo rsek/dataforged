@@ -2,6 +2,7 @@
 
 package Dataforged;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -19,6 +20,7 @@ public class AssetAbilityControlFieldCounter extends AssetAbilityControlField {
     @JsonProperty("min")
     private Byte min;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("value")
     private Byte value;
 

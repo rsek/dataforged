@@ -2,6 +2,7 @@
 
 package Dataforged;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -13,6 +14,7 @@ public class AssetAbilityControlFieldCheckbox extends AssetAbilityControlField {
     @JsonProperty("label")
     private Label label;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("value")
     private Boolean value;
 

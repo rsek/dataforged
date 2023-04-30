@@ -9,7 +9,7 @@ namespace Dataforged
     {
         [JsonPropertyName("assets")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public IList<RegularExpression> Assets { get; set; }
+        public IList<AssetIdwildcard> Assets { get; set; }
 
         [JsonPropertyName("max")]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

@@ -16,6 +16,7 @@ namespace Dataforged
         public Label Label { get; set; }
 
         [JsonPropertyName("value")]
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         public bool? Value { get; set; }
     }
 }

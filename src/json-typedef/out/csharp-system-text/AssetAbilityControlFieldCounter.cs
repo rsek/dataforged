@@ -22,6 +22,7 @@ namespace Dataforged
         public sbyte Min { get; set; }
 
         [JsonPropertyName("value")]
-        public sbyte Value { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+        public sbyte? Value { get; set; }
     }
 }

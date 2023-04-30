@@ -1,6 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import type * as Types from '@base-types'
-import { DF_KEY, dictionarySchema, refSchema } from './common'
+import { dictionarySchema, refSchema } from './common'
 import { Abstract } from '@schema-json'
 import _ from 'lodash'
 import { type Simplify } from 'type-fest'
@@ -14,6 +14,28 @@ export const AssetIDWildcard: Schema<Types.Assets.AssetIDWildcard> = {
 	type: 'string',
 	pattern: /^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)$/.source
 }
+
+export const AssetConditionMeterID: Schema<Types.Assets.AssetConditionMeterID> =
+	{
+		type: 'string',
+		pattern: /^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/condition_meter$/.source
+	}
+
+export const AssetConditionMeterIDWildcard: Schema<Types.Assets.AssetConditionMeterIDWildcard> =
+	{
+		type: 'string',
+		pattern:
+			/^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/
+				.source
+	}
+
+export const AssetConditionMeterControlFieldID: Schema<Types.Assets.AssetConditionMeterControlFieldID> =
+	{
+		type: 'string',
+		pattern:
+			/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/condition_meter\/controls\/[a-z_]+$/
+				.source
+	}
 
 export const AssetOptionFieldID: Schema<Types.Assets.AssetOptionFieldID> = {
 	type: 'string',
@@ -63,27 +85,9 @@ export const AssetControlField: Schema<Types.Assets.AssetControlField> = {
 	},
 	oneOf: [
 		refSchema<Types.Inputs.CheckboxField>('CheckboxField'),
-		refSchema<Types.Inputs.ConditionMeterField>('ConditionMeterField'),
 		refSchema<Types.Inputs.SelectFieldExtendAsset>('SelectFieldExtendAsset')
 	]
 }
-
-export const AssetControlFieldExtension: Schema<Types.Assets.AssetControlFieldExtension> =
-	{
-		title: 'Asset control field extension',
-		description:
-			'Override an existing asset control field. Currently, only extensions to asset condition meters are supported.',
-		type: 'object',
-		oneOf: [
-			{
-				additionalProperties: false,
-				properties: {
-					max: { type: 'integer', nullable: true },
-					min: { type: 'integer', nullable: true }
-				}
-			}
-		]
-	}
 
 export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 	type: 'object',
@@ -94,15 +98,22 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 		shared: {
 			description:
 				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-			type: 'boolean'
+			type: 'boolean',
+			nullable: true
 		},
 		name: refSchema<Types.Localize.Label>('Label'),
-		options: dictionarySchema<Types.Assets.AssetOptionField>(
-			refSchema<Types.Assets.AssetOptionField>('AssetOptionField')
-		),
-		controls: dictionarySchema<Types.Assets.AssetControlField>(
-			refSchema<Types.Assets.AssetControlField>('AssetControlField')
-		),
+		options: {
+			...dictionarySchema<Types.Assets.AssetOptionField>(
+				refSchema<Types.Assets.AssetOptionField>('AssetOptionField')
+			),
+			nullable: true
+		},
+		controls: {
+			...dictionarySchema<Types.Assets.AssetControlField>(
+				refSchema<Types.Assets.AssetControlField>('AssetControlField')
+			),
+			nullable: true
+		},
 		requirement: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		abilities: {
 			type: 'array',
@@ -118,7 +129,11 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 			nullable: true
 		},
 		source: refSchema<Types.Metadata.Source>('Source'),
-		attachments: refSchema<Types.Assets.AssetAttachment>('AssetAttachment')
+		attachments: refSchema<Types.Assets.AssetAttachment>('AssetAttachment'),
+		condition_meter: {
+			...refSchema<Types.Assets.AssetConditionMeter>('AssetConditionMeter'),
+			nullable: true
+		}
 	}
 }
 
@@ -205,21 +220,30 @@ export const AssetAbility: Schema<Types.Assets.AssetAbility> = {
 		},
 		text: refSchema<Types.Localize.MarkdownString>('MarkdownString'),
 		enabled: { type: 'boolean', default: false },
-		controls: dictionarySchema<Types.Assets.AssetAbilityControlField>(
-			refSchema('AssetAbilityControlField')
-		),
-		options: dictionarySchema<Types.Assets.AssetAbilityOptionField>(
-			refSchema('AssetAbilityOptionField')
-		),
+		controls: {
+			...dictionarySchema<Types.Assets.AssetAbilityControlField>(
+				refSchema('AssetAbilityControlField')
+			),
+			nullable: true
+		},
+		options: {
+			...dictionarySchema<Types.Assets.AssetAbilityOptionField>(
+				refSchema('AssetAbilityOptionField')
+			),
+			nullable: true
+		},
 		extend_asset: refSchema<Types.Assets.AssetExtension>('AssetExtension'),
 		extend_moves: {
 			type: 'array',
 			nullable: undefined as any,
 			items: refSchema<Types.Moves.MoveExtension>('MoveExtension')
 		},
-		moves: dictionarySchema(refSchema<Types.Moves.Move>('Move'), {
-			description: 'Unique moves added by this asset ability.'
-		})
+		moves: {
+			...dictionarySchema(refSchema<Types.Moves.Move>('Move'), {
+				description: 'Unique moves added by this asset ability.'
+			}),
+			nullable: true
+		}
 	}
 }
 
@@ -238,27 +262,57 @@ export const AssetType: Schema<Types.Assets.AssetType> = _.set(
 	refSchema<string>('Label')
 )
 
-const ToggleFieldOption: Schema<Types.Assets.ToggleFieldOption> = {
-	title: 'Toggle field option',
+// const ToggleFieldOption: Schema<Types.Assets.ToggleFieldOption> = {
+// 	title: 'Toggle field option',
+// 	type: 'object',
+// 	required: ['id', 'label', 'value'],
+// 	properties: {
+// 		id: { type: 'string' },
+// 		label: refSchema<Types.Localize.Label>('Label'),
+// 		value: refSchema<Types.Assets.AssetExtension>('AssetExtension')
+// 	}
+// }
+
+export const AssetConditionMeter: Schema<Types.Assets.AssetConditionMeter> = {
 	type: 'object',
-	required: ['id', 'label', 'value'],
+	required: ['id', 'label', 'min', 'max'],
+	additionalProperties: false,
 	properties: {
 		id: { type: 'string' },
 		label: refSchema<Types.Localize.Label>('Label'),
-		value: refSchema<Types.Assets.AssetExtension>('AssetExtension')
+		value: { type: 'integer', nullable: true },
+		min: { type: 'integer', default: 0 },
+		max: { type: 'integer' },
+		controls: {
+			...dictionarySchema(refSchema('AssetConditionMeterControlField')),
+			nullable: true
+		}
 	}
 }
 
-export const ToggleField: Schema<Types.Assets.ToggleField> = {
-	type: 'object',
-	required: ['id', 'label', 'field_type', 'choices'],
-	properties: {
-		id: { type: 'string' },
-		field_type: { type: 'string', const: 'toggle' },
-		label: refSchema<Types.Localize.Label>('Label'),
-		choices: dictionarySchema<Types.Assets.ToggleFieldOption>(ToggleFieldOption)
+export const AssetConditionMeterControlField: Schema<Types.Assets.AssetConditionMeterControlField> =
+	{
+		type: 'object',
+		required: ['id', 'field_type', 'label'],
+		additionalProperties: false,
+		properties: {
+			id: refSchema<string>('AssetConditionMeterControlFieldID'),
+			field_type: { const: 'checkbox', type: 'string' },
+			label: refSchema<string>('Label'),
+			value: { type: 'boolean', default: false, nullable: true }
+		}
 	}
-}
+
+// const ToggleField: Schema<Types.Assets.ToggleField> = {
+// 	type: 'object',
+// 	required: ['id', 'label', 'field_type', 'choices'],
+// 	properties: {
+// 		id: { type: 'string' },
+// 		field_type: { type: 'string', const: 'toggle' },
+// 		label: refSchema<Types.Localize.Label>('Label'),
+// 		choices: dictionarySchema<Types.Assets.ToggleFieldOption>(ToggleFieldOption)
+// 	}
+// }
 
 // export const AssetAbilityExtension: Schema<Types.Assets.AssetAbilityExtension> =
 // 	{
@@ -274,16 +328,23 @@ export const ToggleField: Schema<Types.Assets.ToggleField> = {
 // 		}
 // 	}
 
-export const AssetExtension: Schema<Types.Assets.AssetExtension> = {
-	type: 'object',
+export const AssetExtension: Schema<Types.Assets.AssetExtension> = _(Asset)
+	.pick(
+		'type',
+		'additionalProperties',
+		'properties.attachments',
+		'properties.count_as_impact'
+	)
+	.omit('properties.attachments.required')
+	.set(
+		'properties.condition_meter',
+		refSchema<Types.Assets.AssetConditionMeterExtension>(
+			'AssetConditionMeterExtension'
+		)
+	)
+	.value()
 
-	properties: {
-		controls: dictionarySchema(
-			refSchema<Types.Assets.AssetControlFieldExtension>(
-				'AssetControlFieldExtension'
-			)
-		),
-		attachments: _.set(Asset.properties.attachments, 'required', undefined),
-		count_as_impact: Asset.properties.count_as_impact
-	}
-}
+export const AssetConditionMeterExtension: Schema<Types.Assets.AssetConditionMeterExtension> =
+	_(AssetConditionMeter)
+		.pick('type', 'properties.min', 'properties.max', 'properties.controls')
+		.value()
