@@ -11,72 +11,61 @@ collections:
       date: 2022-05-06
     collections:
       research:
-        _templateOracleSet: *template.category:Zone
-        _templateVars:
-          zone: Research
-        title:
-          canonical: Research
+        name: Research
+
         _source:
           page: 359
         contents:
           area:
-            _templateOracleTable: *template.info:Zone.Area
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Area
-              content:
-                - Clean room
-                - Cold storage
-                - Creature or animal pens
-                - Decontamination room
-                - Hazardous material storage
-                - Hydroponics or agriculture
-                - Isolation or containment
-                - Lab
-                - Library or records
-                - Secure vault
-                - *result:NewZone
-                - *result:NewZoneViaAccess
+            name: Area
+            table:
+                - result: Clean room
+                - result: Cold storage
+                - result: Creature or animal pens
+                - result: Decontamination room
+                - result: Hazardous material storage
+                - result: Hydroponics or agriculture
+                - result: Isolation or containment
+                - result: Lab
+                - result: Library or records
+                - result: Secure vault
+                - result: *result:NewZone
+                - result: *result:NewZoneViaAccess
           feature:
-            _templateOracleTable: *template.info:Zone.Feature
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Feature
-              content:
-                - Aquarium or tank
-                - Biological specimens
-                - Bones or fossils
-                - Broken equipment
-                - Cryptic research notes
-                - Hastily destroyed data
-                - Hazmat suits
-                - Inscrutable artifact
-                - Invasive plant growth
-                - Recorded research log
-                - Spilled chemicals
-                - *result:Descriptor+Focus
+            name: Feature
+            table:
+                - result: Aquarium or tank
+                - result: Biological specimens
+                - result: Bones or fossils
+                - result: Broken equipment
+                - result: Cryptic research notes
+                - result: Hastily destroyed data
+                - result: Hazmat suits
+                - result: Inscrutable artifact
+                - result: Invasive plant growth
+                - result: Recorded research log
+                - result: Spilled chemicals
+                - result: *result:Descriptor+Focus
           peril:
-            _templateOracleTable: *template.info:Zone.Peril
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Peril
-              content:
-                - Automated containment protocols are activated
-                - Biological infestation
-                - Dangerous specimen
-                - Disturbing outcome of a failed experiment
-                - Evidence of sinister experiments
-                - Fragile vault holds a dire threat
-                - Signs of broken containment
-                - Toxic environment
-                - Unstable technology
-                - *result:Action+Theme
-                - *result:RollTwice
+            name: Peril
+            table:
+                - result: Automated containment protocols are activated
+                - result: Biological infestation
+                - result: Dangerous specimen
+                - result: Disturbing outcome of a failed experiment
+                - result: Evidence of sinister experiments
+                - result: Fragile vault holds a dire threat
+                - result: Signs of broken containment
+                - result: Toxic environment
+                - result: Unstable technology
+                - result: *result:Action+Theme
+                - result: *result:RollTwice
           opportunity:
-            _templateOracleTable: *template.info:Zone.Opportunity
-            _templateTableRows:
-              rolls: *template.rolls:Zone.Opportunity
-              content:
-                - Helpful research data
-                - Records of a notable discovery
-                - Specialized research tools
-                - Unique prototype
-                - Useful navigational data
+            name: Opportunity
+            table:
+                - result: Helpful research data
+                - result: Records of a notable discovery
+                - result: Specialized research tools
+                - result: Unique prototype
+                - result: Useful navigational data
 

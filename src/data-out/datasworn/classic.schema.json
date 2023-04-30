@@ -5916,7 +5916,12 @@
 		}
 	},
 	"type": "object",
-	"additionalProperties": false,
+	"additionalProperties": {
+		"enum": [
+			"$schema"
+		],
+		"type": "string"
+	},
 	"patternProperties": {
 		"^[a-z0-9_]{3,}$": {
 			"title": "Sourcebook (Ironsworn classic)",
@@ -5927,7 +5932,6 @@
 				"_source"
 			],
 			"properties": {
-				"$schema": {},
 				"ruleset": {
 					"description": "The ruleset (Starforged or Classic ironsworn) that these elements are for.",
 					"const": "classic"

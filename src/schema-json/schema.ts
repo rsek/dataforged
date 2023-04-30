@@ -62,9 +62,9 @@ export const Dataforged: JSONSchema7 = {
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
 	definitions: defsStarforged,
 	type: 'object',
-	additionalProperties: false,
+	additionalProperties: { enum: ['$schema'], type: 'string' },
 	patternProperties: {
-		[NAMESPACE_KEY]: Sourcebooks.NamespaceDataforged
+		[NAMESPACE_KEY]: Sourcebooks.SourcebookDataforged
 	}
 }
 
