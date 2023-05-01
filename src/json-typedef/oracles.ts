@@ -128,7 +128,7 @@ export const OracleCollection: JTDSchemaType<
 		contents: { values: { ref: 'OracleTable' } },
 		collections: { values: { ref: 'OracleCollection' } },
 		rendering: { ref: 'OracleCollectionRendering' },
-		color: { ref: 'Color' },
+		color: { ref: 'CSSColor' },
 		sample_names: { elements: { ref: 'Label' } }
 		// template: { ref: 'OracleRollTemplate' }
 	}
@@ -148,7 +148,7 @@ export const OracleCollectionRendering: JTDSchemaType<
 		}
 	},
 	optionalProperties: {
-		color: { ref: 'Color' },
+		color: { ref: 'CSSColor' },
 		style: { ref: 'OracleCollectionStyle', nullable: true }
 	}
 }
@@ -166,7 +166,7 @@ export const OracleCollectionColumn: JTDSchemaType<
 		table_key: { type: 'string' }
 	},
 	optionalProperties: {
-		color: { ref: 'Color' },
+		color: { ref: 'CSSColor' },
 		label: { ref: 'Label' }
 	}
 }
@@ -217,7 +217,7 @@ export const OracleTableRendering: JTDSchemaType<
 	}
 > = {
 	optionalProperties: {
-		color: { ref: 'Color' },
+		color: { ref: 'CSSColor' },
 		columns: { values: { ref: 'OracleTableColumn' } },
 		style: { ref: 'OracleTableStyle' },
 		icon: { ref: 'SvgImageURL' }

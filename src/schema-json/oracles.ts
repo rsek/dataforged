@@ -93,7 +93,7 @@ export const OracleCollectionColumn: Schema<
 			type: 'string',
 			pattern: DICT_KEY
 		},
-		color: refSchema<Types.Metadata.Color>('Color')
+		color: refSchema<Types.Metadata.CSSColor>('CSSColor')
 	},
 	oneOf: OracleTableColumn.oneOf
 }
@@ -117,7 +117,7 @@ export const OracleTableRendering: Schema<Types.Oracles.OracleTableRendering> =
 			},
 
 			icon: refSchema<string>('SvgImageURL'),
-			color: refSchema<string>('Color'),
+			color: refSchema<string>('CSSColor'),
 			columns: {
 				type: 'object',
 				patternProperties: {

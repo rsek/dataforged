@@ -1,59 +1,71 @@
 /**
  * Abstract interfaces and utility types that are only used internally.
  */
-
-import type * as Types from '@base-types'
+import * as Types from '@base-types'
 import { type PartialBy } from 'class-schema/utils'
 import { type RecursivePartial } from 'utils'
+import {
+	type Static,
+	Type,
+	type TObject,
+	type TSchema
+} from '@sinclair/typebox'
+import { CSSColor, Source } from 'base-types/metadata'
+import { Label, MarkdownString } from 'base-types/localize'
+import { IntegerEnum } from 'base-types/utils'
+
+export const DICT_KEY = Type.RegEx(/^[a-z_]+$/)
 
 /**
- * A number range, for things shaped like rollable table rows. Type parameters are for for row-like objects that have a static range, such as delve features/dangers.
+ * A rollable number range for oracle table rows. Type parameters are for for row-like objects that have a static range, such as delve features/dangers.
  * @internal
  */
-export interface Range<
-	Low extends number | null = number | null,
-	High extends number | null = number | null
-> {
-	low: Low
-	high: High
-}
-
-/**
- * A node significant enough to have its own ID.
- */
-export interface Node<IDType = Types.Metadata.ID> {
-	id: IDType
-}
-
-/**
- * A node significant enough to have its own ID and source information. This usually means it's of some interest as a standalone object without other context, e.g. something that represents an asset or move.
- * @internal
- */
-export interface SourcedNode<IDType = Types.Metadata.ID> extends Node<IDType> {
-	id: IDType
-	source: Types.Metadata.Source
-	suggestions?: Types.Metadata.SuggestionsBase
-}
-
-// export interface Collectible<IDType = Types.Metadata.ID> extends Node<IDType> {
-// 	name: Types.Localize.Label
-// 	// collection?: string
+// export interface Range<
+// 	Low extends number | null = number | null,
+// 	High extends number | null = number | null
+// > {
+// 	low: Low
+// 	high: High
 // }
 
-export interface Cyclopedia<IDType> extends SourcedNode<IDType> {
-	name: Types.Localize.Label
-	features: Types.Localize.MarkdownString[]
-	summary: Types.Localize.MarkdownString
-	description: Types.Localize.MarkdownString
-	quest_starter?: Types.Localize.MarkdownString
-}
+export const Range = Type.Object(
+	{
+		low: Type.Union([Type.Integer({ minimum: 1, maximum: 100 }), Type.Null()]),
+		high: Type.Union([Type.Integer({ minimum: 1, maximum: 100 }), Type.Null()])
+	},
+	{ description: 'A rollable number range for oracle table rows.' }
+)
+
+export type Range = Static<typeof Range>
+
+export const SourcedNode = Type.Object({
+	source: Source,
+	suggestions: Type.Optional(Types.Metadata.SuggestionsBase)
+})
+
+export const Cyclopedia = Type.Composite([
+	SourcedNode,
+	Type.Object({
+		name: Label,
+		features: Type.Array(MarkdownString),
+		summary: MarkdownString,
+		description: MarkdownString,
+		quest_starter: Type.Optional(MarkdownString)
+	})
+])
+
+export type Cyclopedia = Static<typeof Cyclopedia>
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
-type MetaKeys = 'id' | 'source' | 'title' | 'rendering' | 'name' | 'suggestions'
+type MetaKeys = 'id' | 'source' | 'rendering' | 'name' | 'suggestions'
+
+const MetaKeys = ['id', 'source', 'rendering', 'name', 'suggestions'] as const
 
 /**
  * Omits common metadata and localization keys.
  */
+export const OmitMeta = <T extends TObject>(t: T) => Type.Omit(t, MetaKeys)
+
 export type OmitMeta<T> = Omit<T, MetaKeys>
 
 /**
@@ -61,7 +73,6 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
  */
 export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
 	extends: T['id']
-	id: T['id']
 }
 
 // TODO: could this include an optional regex key for extending all things that match a given ID?
@@ -70,61 +81,102 @@ export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
  */
 export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
 	extends: Array<T['id']> | null
-	// id: Types.Metadata.ID
 }
 
-export interface Collection<T, IDType = Types.Metadata.ID>
-	extends Types.Abstract.SourcedNode<IDType> {
+export interface Collection<T> extends Types.Abstract.SourcedNode {
 	name: string
 	canonical_name?: string
 	contents: Record<string, T>
-	color?: Types.Metadata.Color
+	color?: Types.Metadata.CSSColor
 	summary: Types.Localize.MarkdownString
 	description?: Types.Localize.MarkdownString
 }
 
-export interface RecursiveCollection<T, IDType = Types.Metadata.ID>
-	extends PartialBy<Collection<T, IDType>, 'contents'> {
-	collections?: Record<string, this>
+export const Collection = <T extends typeof SourcedNode>(t: T) =>
+	Type.Composite([
+		SourcedNode,
+		Type.Object({
+			name: Label,
+			// TODO: extends
+			canonical_name: Type.Optional(Label),
+			contents: Type.Optional(Type.Record(DICT_KEY, t)),
+			color: CSSColor
+		})
+	])
+
+export const RecursiveCollection = <T extends typeof SourcedNode>(
+	t: T,
+	defName: string
+) =>
+	Type.Composite([
+		Collection(t),
+		Type.Object({
+			collections: Type.Optional(
+				Type.Record(
+					DICT_KEY,
+					Type.Unsafe<RecursiveCollection<T>>({
+						$ref: `#/definitions/${defName}`
+					})
+				)
+			)
+		})
+	])
+
+export type RecursiveCollection<T> = PartialBy<Collection<T>, 'contents'> & {
+	collections?: Record<string, RecursiveCollection<T>>
 }
 
-/**
- * Describes an editable number range.
- */
-export interface NumberRangeBase {
-	label: Types.Localize.Label
-	min: number
-	value?: number
-	max: number | null
-}
+export const NumberRangeBase = Type.Object(
+	{
+		label: Types.Localize.Label,
+		min: Type.Integer(),
+		max: Type.Optional(Type.Integer()),
+		value: Type.Optional(Type.Integer())
+	},
+	{ description: 'Describes an editable number range.' }
+)
+export type NumberRangeBase = Static<typeof NumberRangeBase>
 
-export interface Clock extends NumberRangeBase {
-	// min: 0
-	// max: 4 | 6 | 8 | 10
-}
+export const Clock = Type.Composite([
+	NumberRangeBase,
+	Type.Object({ min: Type.Literal(0), max: IntegerEnum([4, 6, 8, 10]) })
+])
+export type Clock = Static<typeof Clock>
 
-export interface Meter extends NumberRangeBase {
-	min: number
-	max: number
-}
+export const Meter = Type.Composite([
+	NumberRangeBase,
+	Type.Object({
+		min: Type.Integer({ default: 0 }),
+		max: Type.Integer()
+	})
+])
+export type Meter = Static<typeof Meter>
 
-export interface Counter extends NumberRangeBase {
-	min: number
-	max: number | null
-}
+export const Counter = NumberRangeBase
+export type Counter = Static<typeof Counter>
+
+export const SelectOption = <T extends TSchema>(t: T) =>
+	Type.Object({ label: Types.Localize.Label, value: t })
+
+export const Select = <T extends TSchema>(t: T) =>
+	Type.Object({
+		label: Types.Localize.Label,
+		value: Type.Optional(t),
+		choices: Type.Record(DICT_KEY, t)
+	})
 
 /**
  * Describes a set of choices.
  */
-export interface ChoicesBase<TChoice extends ChoiceBase = ChoiceBase> {
+export interface Select<TChoice extends SelectOption = SelectOption> {
 	label: Types.Localize.Label
 	choices: Record<string, TChoice>
+	value?: SelectOption extends SelectOption<infer U> ? U : never
 }
 
-export interface ChoiceBase<
+export interface SelectOption<
 	TValue extends number | string | object = number | string | object
 > {
-	// id: string
 	label: Types.Localize.Label
 	value: TValue
 }

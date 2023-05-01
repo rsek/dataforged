@@ -1,6 +1,13 @@
-import { type Abstract, type Localize } from '@base-types'
+import { type Static, Type } from '@sinclair/typebox'
+import { Cyclopedia } from 'base-types/abstract'
+import { MarkdownString } from 'base-types/localize'
 
-export interface RegionEntry extends Abstract.Cyclopedia<RegionEntryID> {
-	quest_starter: Localize.MarkdownString
-}
-export type RegionEntryID = string
+export const RegionEntry = Type.Intersect([
+	Cyclopedia,
+	Type.Object({ quest_starter: MarkdownString })
+])
+
+export type RegionEntry = Static<typeof RegionEntry>
+
+export const RegionEntryID = Type.String()
+export type RegionEntryID = Static<typeof RegionEntryID>

@@ -51,7 +51,7 @@ export const MoveCategory: JTDSchemaType<
 		Source: Types.Metadata.Source
 		Suggestions: Types.Metadata.SuggestionsBase
 		MarkdownString: string
-		Color: string
+		CSSColor: string
 		MoveCategoryID: string
 		Label: string
 	}
@@ -60,7 +60,7 @@ export const MoveCategory: JTDSchemaType<
 		id: { ref: 'MoveCategoryID' },
 		name: { ref: 'Label' },
 		source: { ref: 'Source' },
-		color: { ref: 'Color' },
+		color: { ref: 'CSSColor' },
 		summary: { ref: 'MarkdownString' },
 		contents: { values: { ref: 'Move' } }
 	},

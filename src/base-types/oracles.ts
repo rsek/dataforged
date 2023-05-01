@@ -1,99 +1,150 @@
-import { type Localize, type Metadata, type Abstract } from '@base-types'
-import { type SvgImageURL } from 'base-types/metadata'
-export type OracleTableID = string
+import { Localize, Metadata, Abstract } from '@base-types'
+import { type Static, Type } from '@sinclair/typebox'
+import { SourcedNode } from 'base-types/abstract'
+import { TemplateString } from 'base-types/localize'
+import { StringEnum } from 'base-types/utils'
+import { DICT_KEY } from 'schema-json/common'
 
-export interface OracleTable {
-	id: OracleTableID
-	// _template?: string
-	name: string
-	canonical_name?: string
-	source: Metadata.Source
-	summary?: Localize.MarkdownString
-	description?: Localize.MarkdownString
-	match?: OracleTableMatchBehavior
-	table: OracleTableRow[]
-	rendering?: OracleTableRendering
-	suggestions?: Metadata.SuggestionsBase
-}
+export const OracleTableStyle = StringEnum([
+	'table',
+	'embed_in_row',
+	'embed_as_column'
+])
+export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-export type OracleTableStyle = 'table' | 'embed_in_row' | 'embed_as_column'
-export type OracleColumnContentType =
-	| 'range'
-	| 'result'
-	| 'summary'
-	| 'description'
+export const OracleTableRowID = Type.String()
+export type OracleTableRowID = Static<typeof OracleCollectionID>
 
-export interface OracleRenderingBase {
+export const OracleTableID = Type.String()
+export type OracleTableID = Static<typeof OracleTableID>
+
+export const OracleCollectionID = Type.String()
+export type OracleCollectionID = Static<typeof OracleCollectionID>
+
+export const OracleColumnContentType = StringEnum([
+	'range',
+	'result',
+	'summary',
+	'description'
+])
+export type OracleColumnContentType = Static<typeof OracleColumnContentType>
+
+export const OracleTableColumn = Type.Object({
+	label: Type.Optional(Localize.Label),
+	content_type: OracleColumnContentType
+})
+export type OracleTableColumn = Static<typeof OracleTableColumn>
+
+export const OracleCollectionColumn = Type.Composite([
+	OracleTableColumn,
+	Type.Object({
+		table_key: Type.String(),
+		color: Type.Optional(Metadata.CSSColor)
+	})
+])
+export type OracleCollectionColumn = Static<typeof OracleCollectionColumn>
+
+export const OracleTableRollMethod = StringEnum(
+	['no_duplicates', 'keep_duplicates', 'make_it_worse'],
+	{ default: 'no_duplicates' }
+)
+export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
+
+export const OracleTableMatchBehavior = Type.Object({
+	text: Localize.MarkdownString
+})
+export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
+
+export const OracleTableRoll = Type.Object({
+	oracle: OracleTableID,
+	times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
+	method: Type.Optional(OracleTableRollMethod)
+})
+export type OracleTableRoll = Static<typeof OracleTableRoll>
+
+export const OracleRollTemplate = Type.Object({
+	result: Type.Optional(TemplateString),
+	summary: Type.Optional(TemplateString),
+	description: Type.Optional(TemplateString)
+})
+export type OracleRollTemplate = Static<typeof OracleRollTemplate>
+
+export const OracleTableRow = Type.Composite([
+	Abstract.Range,
+	Type.Object({
+		id: OracleTableID,
+		result: Localize.MarkdownString,
+		icon: Type.Optional(Metadata.SvgImageURL),
+		summary: Type.Optional(Localize.MarkdownString),
+		description: Type.Optional(Localize.MarkdownString),
+		rolls: Type.Optional(Type.Array(OracleTableRoll)),
+		suggestions: Type.Optional(Metadata.SuggestionsBase),
+		embed_table: Type.Optional(OracleTableRowID),
+		template: Type.Optional(OracleRollTemplate)
+	})
+])
+export type OracleTableRow = Static<typeof OracleTableRow>
+
+export const OracleTableRendering = Type.Object({
+	icon: Type.Optional(Metadata.SvgImageURL),
+	style: Type.Optional(OracleTableStyle),
+	color: Type.Optional(Metadata.CSSColor)
+})
+export type OracleTableRendering = Static<typeof OracleTableRendering>
+
+export const OracleTable = Type.Composite([
+	SourcedNode,
+	Type.Object({
+		id: OracleTableID,
+		name: Localize.Label,
+		canonical_name: Type.Optional(Localize.Label),
+		source: Metadata.Source,
+		summary: Type.Optional(Localize.MarkdownString),
+		description: Type.Optional(Localize.MarkdownString),
+		match: Type.Optional(OracleTableMatchBehavior),
+		table: Type.Array(OracleTableRow),
+		rendering: Type.Optional(OracleTableRendering),
+		suggestions: Type.Optional(Metadata.SuggestionsBase)
+	})
+])
+export type OracleTable = Static<typeof OracleTable>
+
+interface OracleRenderingBase {
 	/**
 	 * Describes the rendering of this oracle as a standalone table.
 	 */
 	columns?: Record<string, OracleTableColumn>
-	style?: OracleTableStyle | OracleCollectionStyle | null
-	color?: Metadata.Color
+	style?: OracleTableStyle | OracleCollectionStyle
+	color?: Metadata.CSSColor
 }
 
-export type OracleCollectionColumn<
-	T extends OracleTableColumn = OracleTableColumn
-> = T & {
-	table_key: OracleTableID
-	color?: Metadata.Color
-}
+const OracleRenderingBase = Type.Object({
+	columns: Type.Optional(
+		Type.Record(Type.RegEx(new RegExp(DICT_KEY)), OracleTableColumn, {
+			description:
+				'Describes the rendering of this oracle as a standalone table.'
+		})
+	),
+	color: Type.Optional(Metadata.CSSColor)
+})
 
-export interface OracleTableRendering extends OracleRenderingBase {
-	icon?: Metadata.SvgImageURL
-	style?: OracleTableStyle
-	color?: Metadata.Color
-}
+export const OracleCollectionStyle = StringEnum(['multi_table'])
+export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
-export interface OracleTableColumn {
-	label?: Localize.Label
-	content_type: OracleColumnContentType
-}
+export const OracleCollectionRendering = Type.Composite([
+	OracleRenderingBase,
+	Type.Object({
+		columns: Type.Record(
+			Type.RegEx(new RegExp(DICT_KEY)),
+			OracleCollectionColumn
+		),
+		style: Type.Optional(OracleCollectionStyle)
+	})
+])
+export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-export interface OracleTableMatchBehavior {
-	text: Localize.MarkdownString
-}
-
-export interface OracleRollTemplate
-	extends Pick<Partial<OracleTableRow>, 'result' | 'summary' | 'description'> {}
-
-export type OracleTableRowID = string
-
-export interface OracleTableRow<
-	Low extends number | null = number | null,
-	High extends number | null = number | null,
-	ID extends string = OracleTableRowID
-> extends Abstract.Range<Low, High> {
-	id: ID
-	low: Low
-	high: High
-	result: Localize.MarkdownString
-	icon?: SvgImageURL
-	summary?: Localize.MarkdownString
-	description?: Localize.MarkdownString
-	rolls?: OracleTableRoll[]
-	suggestions?: Metadata.SuggestionsBase
-	embed_table?: OracleTableRowID
-	template?: OracleRollTemplate
-}
-
-export type OracleTableRollMethod =
-	| 'no_duplicates'
-	| 'keep_duplicates'
-	| 'make_it_worse'
-
-export interface OracleTableRoll<
-	Times extends number | undefined = number | undefined,
-	Method extends OracleTableRollMethod = OracleTableRollMethod
-> {
-	oracle: string
-	times?: Times
-	method?: Method
-}
-
-export type OracleCollectionID = string
 export interface OracleCollection
-	extends Abstract.RecursiveCollection<OracleTable, OracleCollectionID> {
+	extends Abstract.RecursiveCollection<OracleTable> {
 	extends?: OracleCollectionID
 	rendering?: OracleCollectionRendering
 	images?: string[]
@@ -102,10 +153,4 @@ export interface OracleCollection
 	// template?: OracleRollTemplate
 }
 
-export type OracleCollectionStyle = 'multi_table'
-
-export interface OracleCollectionRendering extends OracleRenderingBase {
-	color?: string
-	columns: Record<string, OracleCollectionColumn<OracleTableColumn>>
-	style?: OracleCollectionStyle | null
-}
+export const OracleCollection = Type

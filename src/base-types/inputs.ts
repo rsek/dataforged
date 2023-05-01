@@ -1,8 +1,6 @@
 import type * as Types from '@base-types'
 import { type Simplify } from 'type-fest'
 
-export type InputFieldID = string
-
 export type InputFieldType =
 	| 'text'
 	| 'clock'
@@ -19,7 +17,6 @@ export type ChoicesFieldType =
 	| 'select_asset_extension'
 
 export interface InputFieldBase {
-	id: InputFieldID
 	label: Types.Localize.Label
 	field_type: InputFieldType
 }
@@ -57,16 +54,16 @@ export interface TextField extends InputFieldBase {
 
 export interface SelectFieldBase<
 	TField extends ChoicesFieldType = ChoicesFieldType,
-	TChoice extends Types.Abstract.ChoiceBase = Types.Abstract.ChoiceBase
+	TChoice extends Types.Abstract.SelectOption = Types.Abstract.SelectOption
 > extends InputFieldBase,
-		Types.Abstract.ChoicesBase<TChoice> {
+		Types.Abstract.Select<TChoice> {
 	field_type: TField
 	value?: this['choices'][string]['value']
 }
 
 export interface SelectFieldChoiceBase<
 	TValue extends number | string | object = number | string | object
-> extends Types.Abstract.ChoiceBase<TValue> {
+> extends Types.Abstract.SelectOption<TValue> {
 	// other
 	selected?: boolean // default: false
 }

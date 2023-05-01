@@ -211,7 +211,7 @@ export class OracleTableRendering
 
 	@IsOptional()
 	@IsHexColor()
-	color?: Types.Metadata.Color
+	color?: Types.Metadata.CSSColor
 
 	constructor(data: Types.Oracles.OracleTableRendering) {
 		this.icon = data.icon

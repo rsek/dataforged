@@ -34,7 +34,7 @@ export function collectionSchema<
 			summary: refSchema<Localize.MarkdownString>('MarkdownString'),
 			description: refSchema<Localize.MarkdownString>('MarkdownString'),
 			suggestions: refSchema<Metadata.SuggestionsBase>('Suggestions'),
-			color: refSchema<Metadata.Color>('Color'),
+			color: refSchema<Metadata.CSSColor>('CSSColor'),
 			contents: dictionarySchema<CollectionItemType>(
 				refSchema<CollectionItemType>(contentsRef),
 				{ description: `The elements contained by this collection.` }

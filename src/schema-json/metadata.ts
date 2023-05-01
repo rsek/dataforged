@@ -12,7 +12,7 @@ export const Ruleset: Schema<Types.Ruleset> = {
 	enum: ['classic', 'starforged']
 }
 
-export const Color: Schema<Types.Color> = {
+export const Color: Schema<Types.CSSColor> = {
 	type: 'string',
 	pattern: /^#([0-9A-f]{2}){3}$/.source,
 	description:

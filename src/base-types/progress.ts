@@ -1,6 +1,13 @@
-export type ProgressTypeCommon =
-	| 'combat_progress'
-	| 'vow_progress'
-	| 'scene_challenge_progress'
+import { type Static, Type } from '@sinclair/typebox'
+import { IntegerEnum, StringEnum } from 'base-types/utils'
 
-export type ChallengeRank = 1 | 2 | 3 | 4 | 5
+export const ProgressTypeCommon = StringEnum([
+	'combat_progress',
+	'vow_progress',
+	'scene_challenge_progress'
+])
+
+export type ProgressTypeCommon = Static<typeof ProgressTypeCommon>
+
+export const ChallengeRank = IntegerEnum([1, 2, 3, 4, 5])
+export type ChallengeRank = Static<typeof ChallengeRank>

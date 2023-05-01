@@ -1,48 +1,58 @@
-import {
-	type Encounters,
-	type Abstract,
-	type Localize,
-	type Progress
-} from '@base-types'
-import { type Collection } from 'base-types/abstract'
+import { Abstract, Localize, Progress } from '@base-types'
+import { type Static, Type } from '@sinclair/typebox'
+import { DICT_KEY, Collection } from 'base-types/abstract'
+import { EncounterCollectionID } from 'base-types/id'
 
-// TODO
-export type EncounterClassicID = string
-export type EncounterStarforgedID = string
-export type EncounterID = EncounterClassicID | EncounterStarforgedID
+export const EncounterNatureStarforged = Type.String()
+export type EncounterNatureStarforged = Static<typeof EncounterNatureStarforged>
+export const EncounterNatureClassic = Type.String()
+export type EncounterNatureClassic = Static<typeof EncounterNatureClassic>
 
-export type EncounterNatureStarforged = string
-export type EncounterNatureClassic = string
-
-interface EncounterLike {
-	id: string
-	name: string
-	rank: Progress.ChallengeRank
+const EncounterLike = Type.Object({
+	name: Localize.Label,
+	rank: Progress.ChallengeRank,
 	description: Localize.MarkdownString
-}
-interface Encounter extends EncounterLike, Abstract.Cyclopedia<string> {
-	drives: Localize.MarkdownString[]
-	tactics: Localize.MarkdownString[]
-	quest_starter: Localize.MarkdownString
-}
-// TODO: Might make more sense as an ExtendOne
+})
 
-export interface EncounterVariantStarforged extends EncounterLike {
-	nature: EncounterNatureStarforged
-}
+const Encounter = Type.Composite([
+	Abstract.Cyclopedia,
+	EncounterLike,
+	Type.Object({
+		drives: Type.Array(Localize.MarkdownString),
+		tactics: Type.Array(Localize.MarkdownString),
+		quest_starter: Localize.MarkdownString
+	})
+])
 
-export interface EncounterClassic extends Omit<Encounter, 'summary'> {
-	your_truths?: Localize.MarkdownString
-}
+export const EncounterVariantStarforged = Type.Composite([
+	EncounterLike,
+	Type.Object({
+		nature: EncounterNatureStarforged
+	})
+])
 
-export interface EncounterStarforged extends Encounter {
-	summary: Localize.MarkdownString
-	nature: EncounterNatureStarforged
-	variants?: Record<string, EncounterVariantStarforged>
-}
+export type EncounterVariantStarforged = Static<
+	typeof EncounterVariantStarforged
+>
 
-export type EncounterCollectionID = string
-export interface EncounterCollectionClassic
-	extends Collection<Encounters.EncounterClassic, EncounterCollectionID> {
-	member_label?: Localize.Label
-}
+export const EncounterClassic = Type.Composite([
+	Encounter,
+	Type.Object({ your_truths: Type.Optional(Localize.MarkdownString) })
+])
+
+export const EncounterStarforged = Type.Composite([
+	Encounter,
+	Type.Object({
+		summary: Localize.MarkdownString,
+		nature: EncounterNatureStarforged,
+		variants: Type.Optional(Type.Record(DICT_KEY, EncounterVariantStarforged))
+	})
+])
+
+export const EncounterCollectionClassic = Type.Composite([
+	Collection(EncounterClassic),
+	Type.Object({
+		id: EncounterCollectionID,
+		member_label: Type.Optional(Localize.Label)
+	})
+])
