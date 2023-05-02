@@ -8,7 +8,6 @@ import {
 } from '@base-types'
 import { type Label } from 'base-types/localize'
 
-export type DelveSiteID = string
 export interface DelveSite extends Abstract.SourcedNode<DelveSiteID> {
 	name: Localize.Label
 	rank: Progress.ChallengeRank
@@ -46,9 +45,6 @@ export interface DelveSiteDenizen<
 	encounter?: Encounters.EncounterClassicID
 	name?: Localize.Label
 }
-
-export type DelveSiteThemeID = string
-export type DelveSiteDomainID = string
 
 type DelveSiteCardID = DelveSiteThemeID | DelveSiteDomainID
 export type DelveSiteCardType = 'theme' | 'domain'

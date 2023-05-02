@@ -1,12 +1,25 @@
 import { type Localize } from '@base-types'
 import { type Meter, type NumberRangeBase } from 'base-types/abstract'
+import { StringEnum } from 'base-types/utils'
+import { type Static, Type, TSchema } from '@sinclair/typebox'
 
 export interface Extend extends Partial<PlayerCharacter> {}
 
-export type PlayerStat = 'edge' | 'heart' | 'iron' | 'shadow' | 'wits'
+export const PlayerStat = StringEnum([
+	'edge',
+	'heart',
+	'iron',
+	'shadow',
+	'wits'
+])
+export type PlayerStat = Static<typeof PlayerStat>
+
 export type PlayerStatID<TStatName extends string = PlayerStat> =
 	`player/stats/${TStatName}`
-export type PlayerConditionMeter = 'health' | 'spirit' | 'supply'
+
+export const PlayerConditionMeter = StringEnum(['health', 'spirit', 'supply'])
+export type PlayerConditionMeter = Static<typeof PlayerConditionMeter>
+
 export type PlayerConditionMeterID<
 	TConditionMeterName extends string = PlayerConditionMeter
 > = `player/condition_meters/${TConditionMeterName}`

@@ -1,17 +1,15 @@
 import * as Types from '@base-types'
-import { type Static, Type } from '@sinclair/typebox'
+import { type Static, Type, TSchema } from '@sinclair/typebox'
 import { Collection, DICT_KEY } from 'base-types/abstract'
 import {
 	AssetID,
-	type AssetAbilityControlFieldID,
-	type AssetAbilityID,
-	type AssetAbilityOptionFieldID,
+	AssetAbilityControlFieldID,
+	AssetAbilityID,
+	AssetAbilityOptionFieldID,
 	AssetConditionMeterID,
 	AssetConditionMeterControlFieldID
 } from 'base-types/id'
-import { type InputFieldBase } from 'base-types/inputs'
 import { Label } from 'base-types/localize'
-import { type PartialDeep, type Simplify } from 'type-fest'
 
 export type AssetConditionMeterControlField = AssetConditionMeterCheckbox
 
@@ -24,9 +22,7 @@ export type AssetControlField =
 	| Types.Inputs.CheckboxField
 	| Types.Inputs.SelectFieldExtendAsset
 
-export type InputFieldExtension<T extends InputFieldBase> = PartialDeep<
-	Omit<T, 'id' | 'field_type' | 'label' | 'value'>
->
+export const AssetOptionField = Type.Composite([])
 
 export const Asset = Type.Composite([
 	Types.Abstract.SourcedNode,
@@ -89,41 +85,37 @@ export const AssetExtensionForeign = Type.Composite([
 	]),
 	Type.Object({ condition_meter: Type.Optional(AssetConditionMeterExtension) })
 ])
-
 export type AssetExtensionForeign = Static<typeof AssetExtensionForeign>
 
-export interface AssetsExtension extends Types.Abstract.ExtendMany<Asset> {
-	abilities?: never
-}
+export const AssetExtension = Type.Omit(AssetExtensionForeign, [
+	'extends',
+	'id',
+	'abilities',
+	'requirement'
+])
+export type AssetExtension = Static<typeof AssetExtension>
 
 export type AssetAbilityOptionField = AssetOptionField & {
 	id: AssetAbilityOptionFieldID
 }
-
 export type AssetAbilityControlField = (
 	| Types.Inputs.ClockField
 	| Types.Inputs.CounterField
 	| Types.Inputs.CheckboxField
 ) & { id: AssetAbilityControlFieldID }
 
-export interface AssetAbility extends Types.Abstract.Node {
-	name?: Types.Localize.Label
-	text: Types.Localize.MarkdownString
-	enabled: boolean
-	moves?: Record<string, Types.Moves.Move>
-	options?: Record<string, AssetAbilityOptionField>
-	controls?: Record<string, AssetAbilityControlField>
-	extend_asset?: AssetExtension
-	extend_moves?: Types.Moves.MoveExtension[]
-}
-
-export type AssetExtension = Simplify<
-	Omit<
-		AssetExtensionForeign,
-		// it's implicit that it applies to this asset specifically
-		'extends' | 'id' | 'abilities' | 'requirement'
-	>
->
+export const AssetAbility = Type.Object({
+	id: AssetAbilityID,
+	name: Type.Optional(Types.Localize.Label),
+	text: Types.Localize.MarkdownString,
+	enabled: Type.Boolean(),
+	moves: Type.Optional(Type.Record(DICT_KEY, Types.Moves.Move)),
+	options: Type.Optional(Type.Record(DICT_KEY, AssetAbilityOptionField)),
+	controls: Type.Optional(Type.Record(DICT_KEY, AssetAbilityControlField)),
+	extend_asset: Type.Optional(AssetExtension),
+	extend_moves: Type.Optional(Type.Array(Types.Moves.Extension))
+})
+export type AssetAbility = Static<typeof AssetAbility>
 
 export interface AssetAttachment {
 	assets: Array<RegExp['source']>

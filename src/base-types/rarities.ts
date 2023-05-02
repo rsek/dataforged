@@ -7,15 +7,14 @@ import {
 import { type Static, Type } from '@sinclair/typebox'
 import { SourcedNode } from 'base-types/abstract'
 import { AssetID } from 'base-types/assets'
+import { RarityID } from 'base-types/id'
 import { Label, MarkdownString } from 'base-types/localize'
 import { Asset } from 'schema-json/assets'
-
-export const RarityID = Type.String()
-export type RarityID = Static<typeof RarityID>
 
 export const Rarity = Type.Union([
 	SourcedNode,
 	Type.Object({
+		id: RarityID,
 		name: Label,
 		asset: AssetID,
 		icon: Metadata.SvgImageURL,

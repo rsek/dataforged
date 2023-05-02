@@ -12,15 +12,6 @@ export const OracleTableStyle = StringEnum([
 ])
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-export const OracleTableRowID = Type.String()
-export type OracleTableRowID = Static<typeof OracleCollectionID>
-
-export const OracleTableID = Type.String()
-export type OracleTableID = Static<typeof OracleTableID>
-
-export const OracleCollectionID = Type.String()
-export type OracleCollectionID = Static<typeof OracleCollectionID>
-
 export const OracleColumnContentType = StringEnum([
 	'range',
 	'result',

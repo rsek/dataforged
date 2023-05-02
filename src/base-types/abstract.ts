@@ -8,7 +8,8 @@ import {
 	type Static,
 	Type,
 	type TObject,
-	type TSchema
+	type TSchema,
+	type TString
 } from '@sinclair/typebox'
 import { CSSColor, Source } from 'base-types/metadata'
 import { Label, MarkdownString } from 'base-types/localize'
@@ -53,7 +54,6 @@ export const Cyclopedia = Type.Composite([
 		quest_starter: Type.Optional(MarkdownString)
 	})
 ])
-
 export type Cyclopedia = Static<typeof Cyclopedia>
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
@@ -65,17 +65,24 @@ const MetaKeys = ['id', 'source', 'rendering', 'name', 'suggestions'] as const
  * Omits common metadata and localization keys.
  */
 export const OmitMeta = <T extends TObject>(t: T) => Type.Omit(t, MetaKeys)
-
 export type OmitMeta<T> = Omit<T, MetaKeys>
+
+export const PartialDeep = <T extends TSchema>(t: T) => {
+
+}
 
 /**
  * Extends a single rules element
  */
-export type ExtendOne<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	extends: T['id']
-}
+export const ExtendOne = <T extends TObject<{ id: TString }>>(t: T) =>
+	Type.Composite([
+    OmitMeta(t),
+    Type.Object({ extends: t.properties.id })
+  ])
 
-// TODO: could this include an optional regex key for extending all things that match a given ID?
+
+export const ExtendMany = <T extends TObject<{id: TString}>>(t:T) => Type.Composite([OmitMeta(t), Type.])
+
 /**
  * Extends multiple rules elements. A null value for "extends" represents an extension to all qualifying elements.
  */
@@ -156,13 +163,21 @@ export const Counter = NumberRangeBase
 export type Counter = Static<typeof Counter>
 
 export const SelectOption = <T extends TSchema>(t: T) =>
-	Type.Object({ label: Types.Localize.Label, value: t })
+	Type.Object({
+		label: Types.Localize.Label,
+		value: t,
+		selected: Type.Optional(Type.Boolean())
+	})
 
+/**
+ *
+ * @param t
+ */
 export const Select = <T extends TSchema>(t: T) =>
 	Type.Object({
 		label: Types.Localize.Label,
 		value: Type.Optional(t),
-		choices: Type.Record(DICT_KEY, t)
+		choices: Type.Record(DICT_KEY, SelectOption(t))
 	})
 
 /**

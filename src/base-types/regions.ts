@@ -8,6 +8,3 @@ export const RegionEntry = Type.Intersect([
 ])
 
 export type RegionEntry = Static<typeof RegionEntry>
-
-export const RegionEntryID = Type.String()
-export type RegionEntryID = Static<typeof RegionEntryID>

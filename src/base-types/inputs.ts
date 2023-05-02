@@ -1,102 +1,86 @@
-import type * as Types from '@base-types'
+import * as Types from '@base-types'
 import { type Simplify } from 'type-fest'
+import { type Static, Type, TSchema } from '@sinclair/typebox'
+import { Label } from 'base-types/localize'
+import { StringEnum } from 'base-types/utils'
+import { Select, SelectOption } from 'base-types/abstract'
+import { AssetControlFieldIDWildcard } from 'base-types/id'
+import { AssetOptionFieldIDWildcard } from 'base-types/id'
 
-export type InputFieldType =
-	| 'text'
-	| 'clock'
-	| 'counter'
-	| 'checkbox'
-	| 'toggle'
-	| ChoicesFieldType
+const SelectFieldType = StringEnum([
+	'select_stat',
+	'select_meter',
+	'select_ref',
+	'select_number',
+	'select_asset_extension'
+])
+export type SelectFieldType = Static<typeof SelectFieldType>
 
-export type ChoicesFieldType =
-	| 'select_stat'
-	| 'select_meter'
-	| 'select_ref'
-	| 'select_number'
-	| 'select_asset_extension'
+const InputFieldType = Type.Union([
+	StringEnum(['text', 'clock', 'counter', 'checkbox', 'toggle']),
+	SelectFieldType
+])
+export type InputFieldType = Static<typeof InputFieldType>
 
-export interface InputFieldBase {
-	label: Types.Localize.Label
-	field_type: InputFieldType
-}
+const InputField = <T extends InputFieldType, V extends TSchema>(
+	fieldType: T,
+	value: V
+) =>
+	Type.Object({
+		label: Label,
+		field_type: Type.Literal(fieldType),
+		value: Type.Optional(value)
+	})
 
-export interface CheckboxField extends InputFieldBase {
-	field_type: 'checkbox'
-	value?: boolean
-}
+export const InputFieldExtension = <T extends ReturnType<typeof InputField>>(
+	t: T
+) => Type.Omit(t, ['field_type', 'label', 'value'])
 
-export interface NumberFieldBase extends InputFieldBase {
-	field_type: 'clock' | 'counter'
-	value?: number
-	max: number | null
-	min: number
-}
+export const CheckboxField = InputField(
+	'checkbox',
+	Type.Optional(Type.Boolean())
+)
+export type CheckboxField = Static<typeof CheckboxField>
 
-export interface ClockField extends NumberFieldBase, Types.Abstract.Clock {
-	field_type: 'clock'
-	value?: number
-	max: number
-	min: number
-}
+export const ClockField = Type.Composite([
+	InputField('clock', Type.Integer()),
+	Types.Abstract.Clock
+])
+export type ClockField = Static<typeof ClockField>
 
-export interface CounterField extends NumberFieldBase, Types.Abstract.Counter {
-	field_type: 'counter'
-	value?: number
-	max: number | null
-	min: number
-}
+export const CounterField = Type.Composite([
+	InputField('counter', Type.Integer()),
+	Types.Abstract.Counter
+])
+export type CounterField = Static<typeof CounterField>
 
-export interface TextField extends InputFieldBase {
-	field_type: 'text'
-	value?: string | undefined
-}
+export const TextField = InputField('text', Type.String())
+export type TextField = Static<typeof TextField>
 
-export interface SelectFieldBase<
-	TField extends ChoicesFieldType = ChoicesFieldType,
-	TChoice extends Types.Abstract.SelectOption = Types.Abstract.SelectOption
-> extends InputFieldBase,
-		Types.Abstract.Select<TChoice> {
-	field_type: TField
-	value?: this['choices'][string]['value']
-}
+/**
+ * @param fieldType The value of the `field_type` property
+ * @param value The schema for the `value` field of the selection choices
+ */
+export const SelectField = <T extends SelectFieldType, V extends TSchema>(
+	fieldType: T,
+	value: V
+) => Type.Composite([Select(value), InputField(fieldType, value)])
 
-export interface SelectFieldChoiceBase<
-	TValue extends number | string | object = number | string | object
-> extends Types.Abstract.SelectOption<TValue> {
-	// other
-	selected?: boolean // default: false
-}
+export const SelectFieldStat = SelectField(
+	'select_stat',
+	Types.Players.PlayerStat
+)
+export type SelectFieldStat = Static<typeof SelectFieldStat>
 
-export type SelectFieldStat = Simplify<
-	SelectFieldBase<
-		'select_stat',
-		SelectFieldStatChoice<Types.Players.PlayerStat>
-	>
->
+export const SelectFieldRef = SelectField(
+	'select_ref',
+	Type.Union([AssetControlFieldIDWildcard, AssetOptionFieldIDWildcard])
+)
+export type SelectFieldRef = Static<typeof SelectFieldRef>
 
-export type SelectFieldStatChoice<
-	T extends Types.Players.PlayerStatLike = Types.Players.PlayerStatLike
-> = Simplify<SelectFieldChoiceBase<T>>
+export const SelectFieldExtendAsset = SelectField(
+	'select_asset_extension',
+	Types.Assets.AssetExtensionForeign
+)
 
-/** @alpha */
-export type SelectFieldNumber = Simplify<
-	SelectFieldBase<'select_number', SelectFieldNumberChoice>
->
-/** @alpha */
-export type SelectFieldNumberChoice = Simplify<SelectFieldChoiceBase<number>>
-
-export type SelectFieldRef = Simplify<
-	SelectFieldBase<'select_ref', SelectFieldRefChoice>
->
-export type SelectFieldRefChoice = Simplify<
-	SelectFieldChoiceBase<Types.Metadata.ID>
->
-
-export type SelectFieldExtendAsset = Simplify<
-	SelectFieldBase<'select_asset_extension', SelectFieldExtendAssetChoice>
->
-
-export type SelectFieldExtendAssetChoice = Simplify<
-	SelectFieldChoiceBase<Types.Assets.AssetExtension>
->
+export type SelectFieldExtendAsset = Static<typeof SelectFieldExtendAsset>

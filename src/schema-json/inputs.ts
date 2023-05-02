@@ -99,26 +99,6 @@ export const SelectFieldStat: Schema<Types.Inputs.SelectFieldStat> = {
 	}
 }
 
-// const SelectFieldNumber: Schema<Types.Inputs.SelectFieldNumber> = {
-// 	required: ['id', 'label', 'field_type', 'choices'],
-// 	type: 'object',
-// 	properties: {
-// 		id: { type: 'string' },
-// 		label: refSchema<Types.Localize.Label>('Label'),
-// 		field_type: { type: 'string', const: 'select_number' },
-// 		value: { type: 'integer', nullable: true },
-// 		choices: dictionarySchema<Types.Inputs.SelectFieldNumberChoice>({
-// 			required: ['label', 'value'],
-// 			type: 'object',
-// 			properties: {
-// 				label: refSchema<Types.Localize.Label>('Label'),
-// 				selected: { type: 'boolean', nullable: true },
-// 				value: { type: 'integer' }
-// 			}
-// 		})
-// 	}
-// }
-
 export const SelectFieldRef: Schema<Types.Inputs.SelectFieldRef> = {
 	required: ['id', 'label', 'field_type', 'choices'],
 	type: 'object',

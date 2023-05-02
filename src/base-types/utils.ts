@@ -15,12 +15,22 @@ export function StringEnum<T extends string[]>(
 	values: [...T],
 	options: SchemaOptions = {}
 ) {
-	return Type.Unsafe<T[number]>({ ...options, type: 'string', enum: values })
+	const result = Type.Unsafe<T[number]>({
+		...options,
+		type: 'string',
+		enum: values
+	})
+	return result as typeof result & { enum: typeof values }
 }
 
 export function IntegerEnum<T extends number[]>(
 	values: [...T],
 	options: SchemaOptions = {}
 ) {
-	return Type.Unsafe<T[number]>({ ...options, type: 'integer', enum: values })
+	const result = Type.Unsafe<T[number]>({
+		...options,
+		type: 'integer',
+		enum: values
+	})
+	return result as typeof result & { enum: typeof values }
 }

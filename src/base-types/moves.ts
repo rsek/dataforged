@@ -1,39 +1,72 @@
 import type * as Types from '@base-types'
+import { type Static, Type, TSchema } from '@sinclair/typebox'
+import { MoveID, OracleTableID } from 'base-types/id'
+import { Label, MarkdownString } from 'base-types/localize'
+import { StringEnum } from 'base-types/utils'
 
-export type MoveID = string
-export type MoveIDWildcard = string
+export const MoveRerollMethod = StringEnum([
+	'any',
+	'all',
+	'challenge_die',
+	'challenge_dice',
+	'action_die'
+])
+export type MoveRerollMethod = Static<typeof MoveRerollMethod>
 
-export type MoveRollType = 'action_roll' | 'progress_roll' | 'no_roll'
+export const MoveOutcomeType = StringEnum(['miss', 'weak_hit', 'strong_hit'])
+export type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
-export type MoveCategoryID = string
-export interface MoveCategory
-	extends Types.Abstract.Collection<Move<MoveRollType>, MoveCategoryID> {
-	summary: string
-	color: string
-}
+export const MoveRollType = StringEnum([
+	'action_roll',
+	'progress_roll',
+	'no_roll'
+])
+export type MoveRollType = Static<typeof MoveRollType>
 
-export interface Move<T extends MoveRollType = MoveRollType>
-	extends Types.Abstract.SourcedNode<MoveID> {
-	name: Types.Localize.Label
-	oracles?: Types.Oracles.OracleTableID[]
-	text: Types.Localize.MarkdownString
-	outcomes: MoveOutcomes
-	trigger: Trigger<T>
-}
+export const MoveReroll = Type.Object({
+	text: Type.Optional(MarkdownString),
+	method: MoveRerollMethod
+})
+export type MoveReroll = Static<typeof MoveReroll>
+
+export const MoveOutcome = Type.Object({
+	text: MarkdownString,
+	count_as: Type.Optional(MoveOutcomeType),
+	reroll: Type.Optional(MoveReroll)
+})
+export type MoveOutcome = Static<typeof MoveOutcome>
+
+export const MoveOutcomeMatchable = Type.Composite([
+	MoveOutcome,
+	Type.Object({ match: Type.Optional(MoveOutcome) })
+])
+
+export const MoveOutcomes = Type.Object({
+	miss: MoveOutcomeMatchable,
+	weak_hit: MoveOutcome,
+	strong_hit: MoveOutcomeMatchable
+})
+
+export const Trigger = <T extends MoveRollType>(t: T) =>
+	Type.Object({ roll_type: Type.Literal(t) })
+
+export const Move = Type.Object({
+	id: MoveID,
+	name: Label,
+	oracles: Type.Optional(Type.Array(OracleTableID)),
+	text: MarkdownString,
+	outcomes: MoveOutcomes,
+	trigger: Type.Union(MoveRollType.enum.map((type) => Trigger(type)))
+})
+export type Move = Static<typeof Move>
+
+// export const MoveExtension =
 
 export interface MoveExtension extends Types.Abstract.ExtendMany<Move> {
 	extends: MoveID[] | null
 	trigger:
 		| Types.Moves.TriggerExtension<'action_roll'>
 		| Types.Moves.TriggerExtension<'progress_roll'>
-}
-
-export type MoveOutcomeType = 'miss' | 'weak_hit' | 'strong_hit'
-
-export interface MoveOutcome {
-	text: Types.Localize.MarkdownString
-	count_as?: MoveOutcomeType
-	reroll?: MoveReroll
 }
 
 // TODO: would match outcomes make sense as ExtendOne?
@@ -52,22 +85,17 @@ export interface Trigger<T extends MoveRollType = MoveRollType> {
 	roll_options?: T extends 'no_roll' ? never : Array<TriggerRollOption<T>>
 }
 
-export interface MoveReroll {
-	text?: Types.Localize.MarkdownString
-	method: MoveRerollMethod
-}
-
 export interface TriggerBy {
 	player: boolean
 	ally: boolean
 }
 
-export type MoveRerollMethod =
-	| 'any'
-	| 'all'
-	| 'challenge_die'
-	| 'challenge_dice'
-	| 'action_die'
+export interface MoveCategory
+	extends Types.Abstract.Collection<Move<MoveRollType>, MoveCategoryID> {
+	summary: string
+	color: string
+}
+
 export type MoveRollMethod =
 	| 'any'
 	| 'all'

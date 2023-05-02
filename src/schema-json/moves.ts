@@ -22,7 +22,7 @@ export const MoveID: Schema<Types.MoveID> = {
 		/^[a-z0-9_]{3,}\/(moves\/[a-z_]+\/[a-z_]+|assets\/[a-z_]+\/[a-z_]+\/moves\/[a-z_]+)$/
 			.source,
 	examples: [
-		'starforged/moves/combat/strike',
+		'classic/moves/combat/strike',
 		'starforged/assets/module/grappler/moves/ready_grappler'
 	]
 }

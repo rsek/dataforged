@@ -1,13 +1,8 @@
 import { Abstract } from '@base-types'
 import { type Static, Type } from '@sinclair/typebox'
+import { TruthID, TruthOptionID } from 'base-types/id'
 import { Label, MarkdownString } from 'base-types/localize'
 import { SvgImageURL } from 'base-types/metadata'
-
-export const TruthID = Type.String()
-export type TruthID = Static<typeof TruthID>
-
-export const TruthOptionID = Type.String()
-export type TruthOptionID = Static<typeof TruthOptionID>
 
 const TruthOptionBase = Type.Object({
 	id: TruthOptionID,

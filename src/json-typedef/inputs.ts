@@ -88,30 +88,30 @@ export const UnionSelectFieldStat: JTDSchemaType<
 	}
 }
 
-/** field_type: 'select_number' */
-export const UnionChoicesFieldNumber: JTDSchemaType<
-	Omit<Types.Inputs.SelectFieldNumber, 'field_type'>,
-	{ ID: string; Label: string }
-> = {
-	properties: {
-		id: { ref: 'ID' },
-		label: { ref: 'Label' },
-		choices: {
-			values: {
-				properties: {
-					label: { ref: 'Label' },
-					value: { type: 'int8' }
-				},
-				optionalProperties: {
-					selected: { type: 'boolean' }
-				}
-			}
-		}
-	},
-	optionalProperties: {
-		value: { type: 'int8' }
-	}
-}
+// /** field_type: 'select_number' */
+// export const UnionChoicesFieldNumber: JTDSchemaType<
+// 	Omit<Types.Inputs.SelectFieldNumber, 'field_type'>,
+// 	{ ID: string; Label: string }
+// > = {
+// 	properties: {
+// 		id: { ref: 'ID' },
+// 		label: { ref: 'Label' },
+// 		choices: {
+// 			values: {
+// 				properties: {
+// 					label: { ref: 'Label' },
+// 					value: { type: 'int8' }
+// 				},
+// 				optionalProperties: {
+// 					selected: { type: 'boolean' }
+// 				}
+// 			}
+// 		}
+// 	},
+// 	optionalProperties: {
+// 		value: { type: 'int8' }
+// 	}
+// }
 
 /** field_type: 'select_asset_extension' */
 export const UnionChoicesFieldAssetExtension: JTDSchemaType<
