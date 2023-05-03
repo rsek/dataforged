@@ -145,7 +145,7 @@ export const TriggerRollOptionAction: JTDSchemaType<
 	Types.Moves.TriggerRollOption<'action_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollOptionActionChoice: Types.Moves.TriggerRollOptionActionChoice
+		TriggerRollOptionActionChoice: Types.Moves.TriggerActionRollOptionChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -165,7 +165,7 @@ export const TriggerRollOptionAction: JTDSchemaType<
 }
 
 export const TriggerRollOptionActionChoice: JTDSchemaType<
-	Types.Moves.TriggerRollOptionActionChoice,
+	Types.Moves.TriggerActionRollOptionChoice,
 	{
 		Label: string
 	}
@@ -203,7 +203,7 @@ export const TriggerRollOptionProgress: JTDSchemaType<
 	Types.Moves.TriggerRollOption<'progress_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollOptionProgressChoice: Types.Moves.TriggerRollOptionProgressChoice
+		TriggerRollOptionProgressChoice: Types.Moves.TriggerProgressRollOptionChoice
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -223,7 +223,7 @@ export const TriggerRollOptionProgress: JTDSchemaType<
 }
 
 export const TriggerRollOptionProgressChoice: JTDSchemaType<
-	Types.Moves.TriggerRollOptionProgressChoice,
+	Types.Moves.TriggerProgressRollOptionChoice,
 	{ ProgressType: Types.Moves.ProgressType }
 > = {
 	properties: {

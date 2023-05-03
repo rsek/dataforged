@@ -1,11 +1,12 @@
 import * as Types from '@base-types'
-import { type Simplify } from 'type-fest'
-import { type Static, Type, TSchema } from '@sinclair/typebox'
+import { type Static, Type, type TSchema } from '@sinclair/typebox'
 import { Label } from 'base-types/localize'
 import { StringEnum } from 'base-types/utils'
-import { Select, SelectOption } from 'base-types/abstract'
-import { AssetControlFieldIDWildcard } from 'base-types/id'
-import { AssetOptionFieldIDWildcard } from 'base-types/id'
+import { Select } from 'base-types/abstract'
+import {
+	AssetControlFieldIDWildcard,
+	AssetOptionFieldIDWildcard
+} from 'base-types/id'
 
 const SelectFieldType = StringEnum([
 	'select_stat',
@@ -58,8 +59,8 @@ export const TextField = InputField('text', Type.String())
 export type TextField = Static<typeof TextField>
 
 /**
- * @param fieldType The value of the `field_type` property
- * @param value The schema for the `value` field of the selection choices
+ * @param fieldType - The value of the `field_type` property
+ * @param value - The schema for the `value` field of the selection choices
  */
 export const SelectField = <T extends SelectFieldType, V extends TSchema>(
 	fieldType: T,
@@ -77,10 +78,3 @@ export const SelectFieldRef = SelectField(
 	Type.Union([AssetControlFieldIDWildcard, AssetOptionFieldIDWildcard])
 )
 export type SelectFieldRef = Static<typeof SelectFieldRef>
-
-export const SelectFieldExtendAsset = SelectField(
-	'select_asset_extension',
-	Types.Assets.AssetExtensionForeign
-)
-
-export type SelectFieldExtendAsset = Static<typeof SelectFieldExtendAsset>

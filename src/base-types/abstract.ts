@@ -3,17 +3,17 @@
  */
 import * as Types from '@base-types'
 import { type PartialBy } from 'class-schema/utils'
-import { type RecursivePartial } from 'utils'
 import {
 	type Static,
 	Type,
 	type TObject,
 	type TSchema,
-	type TString
+	type TString,
+	type SchemaOptions
 } from '@sinclair/typebox'
 import { CSSColor, Source } from 'base-types/metadata'
 import { Label, MarkdownString } from 'base-types/localize'
-import { IntegerEnum } from 'base-types/utils'
+import { Dictionary, IntegerEnum } from 'base-types/utils'
 
 export const DICT_KEY = Type.RegEx(/^[a-z_]+$/)
 
@@ -40,9 +40,10 @@ export const Range = Type.Object(
 export type Range = Static<typeof Range>
 
 export const SourcedNode = Type.Object({
-	source: Source,
+	source: Type.Ref(Source),
 	suggestions: Type.Optional(Types.Metadata.SuggestionsBase)
 })
+export type SourcedNode = Static<typeof SourcedNode>
 
 export const Cyclopedia = Type.Composite([
 	SourcedNode,
@@ -67,69 +68,74 @@ const MetaKeys = ['id', 'source', 'rendering', 'name', 'suggestions'] as const
 export const OmitMeta = <T extends TObject>(t: T) => Type.Omit(t, MetaKeys)
 export type OmitMeta<T> = Omit<T, MetaKeys>
 
-export const PartialDeep = <T extends TSchema>(t: T) => {
-
-}
+export const PartialDeep = <T extends TSchema>(t: T) => {}
 
 /**
  * Extends a single rules element
  */
 export const ExtendOne = <T extends TObject<{ id: TString }>>(t: T) =>
 	Type.Composite([
-    OmitMeta(t),
-    Type.Object({ extends: t.properties.id })
-  ])
-
-
-export const ExtendMany = <T extends TObject<{id: TString}>>(t:T) => Type.Composite([OmitMeta(t), Type.])
-
-/**
- * Extends multiple rules elements. A null value for "extends" represents an extension to all qualifying elements.
- */
-export type ExtendMany<T extends Node> = RecursivePartial<OmitMeta<T>> & {
-	extends: Array<T['id']> | null
-}
-
-export interface Collection<T> extends Types.Abstract.SourcedNode {
-	name: string
-	canonical_name?: string
-	contents: Record<string, T>
-	color?: Types.Metadata.CSSColor
-	summary: Types.Localize.MarkdownString
-	description?: Types.Localize.MarkdownString
-}
-
-export const Collection = <T extends typeof SourcedNode>(t: T) =>
-	Type.Composite([
-		SourcedNode,
-		Type.Object({
-			name: Label,
-			// TODO: extends
-			canonical_name: Type.Optional(Label),
-			contents: Type.Optional(Type.Record(DICT_KEY, t)),
-			color: CSSColor
-		})
+		OmitMeta(t),
+		Type.Object({ extends: Type.Optional(t.properties.id) })
 	])
+export type ExtendOne<T extends TObject<{ id: TString }>> = Static<
+	ReturnType<typeof ExtendOne<T>>
+>
+
+export const ExtendMany = <T extends TObject<{ id: TString }>>(t: T) =>
+	Type.Composite([
+		OmitMeta(t),
+		Type.Object({ extends: Type.Optional(Type.Array(t.properties.id)) })
+	])
+export type ExtendMany<T extends TObject<{ id: TString }>> = Static<
+	ReturnType<typeof ExtendMany<T>>
+>
+export const Collection = <T extends typeof SourcedNode>(
+	memberSchema: T,
+	idPattern: TString,
+	options: SchemaOptions = {}
+) =>
+	Type.Composite(
+		[
+			SourcedNode,
+			Type.Object({
+				id: idPattern,
+				extends: Type.Optional(idPattern),
+				name: Label,
+				canonical_name: Type.Optional(Label),
+				color: Type.Optional(CSSColor),
+				summary: Types.Localize.MarkdownString,
+				description: Type.Optional(Types.Localize.MarkdownString),
+				contents: Type.Optional(Dictionary(memberSchema))
+			})
+		],
+		options
+	)
+
+export type Collection<T extends typeof SourcedNode> = Static<
+	ReturnType<typeof Collection<T>>
+>
 
 export const RecursiveCollection = <T extends typeof SourcedNode>(
-	t: T,
-	defName: string
+	memberSchema: T,
+	idPattern: TString,
+	refID: string,
+	options: SchemaOptions = {}
 ) =>
-	Type.Composite([
-		Collection(t),
-		Type.Object({
-			collections: Type.Optional(
-				Type.Record(
-					DICT_KEY,
-					Type.Unsafe<RecursiveCollection<T>>({
-						$ref: `#/definitions/${defName}`
-					})
-				)
-			)
-		})
-	])
+	Type.Composite(
+		[
+			Collection(memberSchema, idPattern),
+			Type.Object({
+				collections: Type.Optional(Dictionary(Type.Unsafe({ $ref: refID })))
+			})
+		],
+		{ ...options, $id: refID }
+	)
 
-export type RecursiveCollection<T> = PartialBy<Collection<T>, 'contents'> & {
+export type RecursiveCollection<T extends typeof SourcedNode> = PartialBy<
+	Collection<T>,
+	'contents'
+> & {
 	collections?: Record<string, RecursiveCollection<T>>
 }
 
@@ -169,10 +175,7 @@ export const SelectOption = <T extends TSchema>(t: T) =>
 		selected: Type.Optional(Type.Boolean())
 	})
 
-/**
- *
- * @param t
- */
+/** Represents a list of choices, similar in structure to the HTML `<select>` element */
 export const Select = <T extends TSchema>(t: T) =>
 	Type.Object({
 		label: Types.Localize.Label,

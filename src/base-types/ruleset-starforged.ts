@@ -1,25 +1,35 @@
-import { type Encounters, type Metadata, type Progress } from '@base-types'
+import { Type, type Static } from '@sinclair/typebox'
+import { EncounterStarforgedID } from 'base-types/id'
+import { SuggestionsBase } from 'base-types/metadata'
+import { ProgressTypeCommon } from 'base-types/progress'
+import { StringEnum } from 'base-types/utils'
 
-type LegacyType = 'quests' | 'bonds' | 'discoveries'
+export const ProgressTypeStarforged = StringEnum([
+	'expedition_progress',
+	'connection_progress'
+])
+export const LegacyType = StringEnum([
+	'quests_legacy',
+	'bonds_legacy',
+	'discoveries_legacy'
+])
+export type LegacyType = Static<typeof LegacyType>
 
-export type ProgressType =
-	| Progress.ProgressTypeCommon
-	| 'expedition_progress'
-	| 'connection_progress'
-	| `${LegacyType}_legacy`
+export const ProgressType = Type.Union(
+	[LegacyType, ProgressTypeCommon, ProgressTypeStarforged]
+	// { $id: 'ProgressType' }
+)
 
-// export type ConditionMeterAlias =
-// 	| RulesetClassic.ConditionMeterAliasCommon
-// 	| 'vehicle_integrity'
-// 	| 'command_vehicle_integrity'
-// 	| 'support_vehicle_integrity'
-// 	| 'incidental_vehicle_integrity'
+export type ProgressType = Static<typeof ProgressType>
 
-// const commandVehicleIntegrity =
-// 	/^[a-z0-9_]{3,}\/assets\/command_vehicle\/[a-z_]+\/controls\/integrity$/
-// const supportVehicleIntegrity =
-// 	/^[a-z0-9_]{3,}\/assets\/support_vehicle\/[a-z_]+\/controls\/integrity$/
+export const Suggestions = Type.Partial(
+	Type.Composite([
+		SuggestionsBase,
+		Type.Object({
+			encounters: Type.Array(EncounterStarforgedID)
+		})
+	])
+	// { $id: 'Suggestions' }
+)
 
-export interface Suggestions extends Metadata.SuggestionsBase {
-	encounters?: Encounters.EncounterStarforgedID[]
-}
+export type Suggestions = Static<typeof Suggestions>

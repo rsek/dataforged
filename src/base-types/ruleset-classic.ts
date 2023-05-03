@@ -1,32 +1,38 @@
+import { Type, type Static } from '@sinclair/typebox'
 import {
-	type DelveSites,
-	type Encounters,
-	type Regions,
-	type Metadata,
-	type Progress
-} from '@base-types'
+	DelveSiteDomainID,
+	DelveSiteThemeID,
+	EncounterClassicID,
+	RegionEntryID
+} from 'base-types/id'
+import { SuggestionsBase } from 'base-types/metadata'
+import { ProgressTypeCommon } from 'base-types/progress'
+import { StringEnum } from 'base-types/utils'
 
-export type ProgressType =
-	| Progress.ProgressTypeCommon
-	| 'journey_progress'
-	| 'delve_progress'
-	| 'bonds_progress'
-	| 'failure_track'
+export const ProgressTypeClassic = StringEnum([
+	'journey_progress',
+	'delve_progress',
+	'bonds_progress',
+	'failure_track'
+])
 
-// export type ConditionMeterAliasCommon =
-// 	| 'companion_health'
-// 	| 'attached_asset_meter'
+export const ProgressType = Type.Union(
+	[ProgressTypeCommon, ProgressTypeClassic]
+	// { $id: 'ProgressType' }
+)
+export type ProgressType = Static<typeof ProgressType>
 
-// const commandVehicleIntegrity =
-// 	/^[a-z0-9_]{3,}\/assets\/command_vehicle\/[a-z_]+\/controls\/integrity$/
-// const supportVehicleIntegrity =
-// 	/^[a-z0-9_]{3,}\/assets\/support_vehicle\/[a-z_]+\/controls\/integrity$/
+export const Suggestions = Type.Partial(
+	Type.Composite([
+		SuggestionsBase,
+		Type.Object({
+			site_domains: Type.Array(DelveSiteDomainID),
+			site_themes: Type.Array(DelveSiteThemeID),
+			encounters: Type.Array(EncounterClassicID),
+			regions: Type.Array(RegionEntryID)
+		})
+	])
+	// { $id: 'Suggestions' }
+)
 
-// export type ConditionMeterAlias = ConditionMeterAliasCommon
-
-export interface Suggestions extends Metadata.SuggestionsBase {
-	site_domains?: DelveSites.DelveSiteDomainID[]
-	site_themes?: DelveSites.DelveSiteThemeID[]
-	encounters?: Encounters.EncounterClassicID[]
-	regions?: Regions.RegionEntryID[]
-}
+export type Suggestions = Static<typeof Suggestions>

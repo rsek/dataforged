@@ -125,7 +125,7 @@ const TriggerBy: Schema<Moves.TriggerBy> = {
 	}
 }
 
-const TriggerRollOptionProgressChoice: Schema<Types.TriggerRollOptionProgressChoice> =
+const TriggerRollOptionProgressChoice: Schema<Types.TriggerProgressRollOptionChoice> =
 	{
 		title: 'Trigger choice (progress roll)',
 		type: 'object',

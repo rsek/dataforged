@@ -1,11 +1,15 @@
 import { Abstract } from '@base-types'
 import { type Static, Type } from '@sinclair/typebox'
-import { TruthID, TruthOptionID } from 'base-types/id'
+import {
+	SettingTruthID,
+	SettingTruthOptionID,
+	WorldTruthID,
+	WorldTruthOptionID
+} from 'base-types/id'
 import { Label, MarkdownString } from 'base-types/localize'
 import { SvgImageURL } from 'base-types/metadata'
 
 const TruthOptionBase = Type.Object({
-	id: TruthOptionID,
 	description: MarkdownString,
 	quest_starter: MarkdownString
 })
@@ -13,31 +17,57 @@ const TruthOptionBase = Type.Object({
 const TruthBase = Type.Composite([
 	Abstract.SourcedNode,
 	Type.Object({
-		id: TruthID,
 		name: Label,
 		options: Type.Array(TruthOptionBase),
 		icon: Type.Optional(SvgImageURL)
 	})
 ])
 
-export const SettingTruthOption = Type.Composite([
-	TruthOptionBase,
-	Type.Object({
-		summary: MarkdownString,
-		description: MarkdownString
-	})
-])
+export const SettingTruthOption = Type.Composite(
+	[
+		TruthOptionBase,
+		Type.Object({
+			id: SettingTruthOptionID,
+			summary: MarkdownString,
+			description: MarkdownString
+		})
+	],
+	{ $id: 'SettingTruthOption' }
+)
 
 export type SettingTruthOption = Static<typeof SettingTruthOption>
 
-export const SettingTruth = Type.Composite([
-	TruthBase,
-	Type.Object({ options: Type.Array(SettingTruthOption) })
-])
+export const SettingTruth = Type.Composite(
+	[
+		TruthBase,
+		Type.Object({
+			id: SettingTruthID,
+			options: Type.Array(SettingTruthOption)
+		})
+	],
+	{
+		$id: 'SettingTruth',
+		description: 'A setting truth category in the format used by Starforged.'
+	}
+)
 
 export type SettingTruth = Static<typeof SettingTruth>
 
-export const WorldTruth = TruthBase
+export const WorldTruth = Type.Composite([
+	TruthBase,
+	Type.Object(
+		{ id: WorldTruthID },
+		{
+			$id: 'WorldTruth',
+			description: 'A world truth category in the format used by Ironsworn.'
+		}
+	)
+])
 export type WorldTruth = Static<typeof WorldTruth>
-export const WorldTruthOption = TruthOptionBase
+
+export const WorldTruthOption = Type.Composite([
+	TruthOptionBase,
+	Type.Object({ id: WorldTruthOptionID }, { $id: 'WorldTruthOption' })
+])
+
 export type WorldTruthOption = Static<typeof WorldTruthOption>

@@ -21,14 +21,14 @@ export const Color: Schema<Types.CSSColor> = {
 
 export const SvgImageURL: Schema<Types.SvgImageURL> = {
 	type: 'string',
-	format: 'url',
+	format: 'uri',
 	description: 'A relative URL pointing to an SVG icon.',
 	pattern: /^.+\.svg$/.source
 }
 
 export const WebpImageURL: Schema<Types.WebpImageURL> = {
 	type: 'string',
-	format: 'url',
+	format: 'uri',
 	description: 'A relative URL pointing to a WEBP image.',
 	pattern: /^.+\.webp$/.source
 }
@@ -80,7 +80,7 @@ export const Source: Schema<Types.Source> = {
 		license: {
 			type: ['string', 'null'] as any,
 			description:
-				'An absolute URL pointing to the location where this element\'s license can be found. If it\'s "null", no license is provided -- use with caution.',
+				"An absolute URL pointing to the location where this element's license can be found.",
 			examples: [
 				'https://creativecommons.org/licenses/by/4.0',
 				'https://creativecommons.org/licenses/by-nc-sa/4.0'
