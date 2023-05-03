@@ -15,5 +15,5 @@ export var PartOfSpeechTag;
     PartOfSpeechTag["Sentences"] = "sentences";
     PartOfSpeechTag["CompoundNoun"] = "compound noun";
     PartOfSpeechTag["PossessiveCase"] = "possessive case";
-})(PartOfSpeechTag || (PartOfSpeechTag = {}));
+})(PartOfSpeechTag = PartOfSpeechTag || (PartOfSpeechTag = {}));
 //# sourceMappingURL=PartOfSpeechTag.js.map

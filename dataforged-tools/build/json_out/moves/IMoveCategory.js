@@ -15,5 +15,5 @@ export var MoveCategoryName;
     MoveCategoryName["Threshold"] = "Threshold";
     MoveCategoryName["Legacy"] = "Legacy";
     MoveCategoryName["Fate"] = "Fate";
-})(MoveCategoryName || (MoveCategoryName = {}));
+})(MoveCategoryName = MoveCategoryName || (MoveCategoryName = {}));
 //# sourceMappingURL=IMoveCategory.js.map

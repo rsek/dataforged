@@ -14,5 +14,5 @@ export var SettlementInitialContact;
     SettlementInitialContact["Unresponsive"] = "Unresponsive";
     SettlementInitialContact["Wary"] = "Wary";
     SettlementInitialContact["Welcoming"] = "Welcoming";
-})(SettlementInitialContact || (SettlementInitialContact = {}));
+})(SettlementInitialContact = SettlementInitialContact || (SettlementInitialContact = {}));
 //# sourceMappingURL=SettlementInitialContact.js.map

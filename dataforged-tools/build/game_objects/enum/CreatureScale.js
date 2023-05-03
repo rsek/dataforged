@@ -13,5 +13,5 @@ export var CreatureScale;
     CreatureScale["Titanic"] = "Titanic";
     CreatureScale["Colossal"] = "Colossal";
     CreatureScale["Vast"] = "Vast";
-})(CreatureScale || (CreatureScale = {}));
+})(CreatureScale = CreatureScale || (CreatureScale = {}));
 //# sourceMappingURL=CreatureScale.js.map

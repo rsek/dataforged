@@ -8,6 +8,6 @@ export var MeterType;
     MeterType["Spirit"] = "Spirit";
     MeterType["Supply"] = "Supply";
     MeterType["Momentum"] = "Momentum";
-})(MeterType || (MeterType = {}));
+})(MeterType = MeterType || (MeterType = {}));
 ;
 //# sourceMappingURL=MeterType.js.map

@@ -22,5 +22,5 @@ export var InputSelectOptionType;
      * A arbitrary pre-set number value.
      */
     InputSelectOptionType["Number"] = "Number";
-})(InputSelectOptionType || (InputSelectOptionType = {}));
+})(InputSelectOptionType = InputSelectOptionType || (InputSelectOptionType = {}));
 //# sourceMappingURL=IInputSelect.js.map

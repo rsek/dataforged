@@ -7,5 +7,5 @@ export var PlayerConditionMeter;
     PlayerConditionMeter["Health"] = "Health";
     PlayerConditionMeter["Spirit"] = "Spirit";
     PlayerConditionMeter["Supply"] = "Supply";
-})(PlayerConditionMeter || (PlayerConditionMeter = {}));
+})(PlayerConditionMeter = PlayerConditionMeter || (PlayerConditionMeter = {}));
 //# sourceMappingURL=IConditionMeter.js.map

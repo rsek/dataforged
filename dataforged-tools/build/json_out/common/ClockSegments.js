@@ -7,5 +7,5 @@ export var ClockSegments;
     ClockSegments[ClockSegments["Six"] = 6] = "Six";
     ClockSegments[ClockSegments["Eight"] = 8] = "Eight";
     ClockSegments[ClockSegments["Ten"] = 10] = "Ten";
-})(ClockSegments || (ClockSegments = {}));
+})(ClockSegments = ClockSegments || (ClockSegments = {}));
 //# sourceMappingURL=ClockSegments.js.map

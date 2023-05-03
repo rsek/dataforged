@@ -9,5 +9,5 @@ export var Stat;
     Stat["Iron"] = "Iron";
     Stat["Shadow"] = "Shadow";
     Stat["Wits"] = "Wits";
-})(Stat || (Stat = {}));
+})(Stat = Stat || (Stat = {}));
 //# sourceMappingURL=Stat.js.map

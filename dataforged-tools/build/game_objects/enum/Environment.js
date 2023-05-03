@@ -9,5 +9,5 @@ export var Environment;
     Environment["Land"] = "Land";
     Environment["Liquid"] = "Liquid";
     Environment["Air"] = "Air";
-})(Environment || (Environment = {}));
+})(Environment = Environment || (Environment = {}));
 //# sourceMappingURL=Environment.js.map

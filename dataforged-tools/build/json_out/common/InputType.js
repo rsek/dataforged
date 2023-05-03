@@ -19,5 +19,5 @@ export var InputType;
      * @see {@link IInputClock}
      */
     InputType["Clock"] = "Clock";
-})(InputType || (InputType = {}));
+})(InputType = InputType || (InputType = {}));
 //# sourceMappingURL=InputType.js.map

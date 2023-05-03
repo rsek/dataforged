@@ -1,5 +1,6 @@
 import { OutcomeInfo } from "../index.js";
 import { formatIdFragment } from "../../utils/toIdFragment.js";
+import { cloneDeep } from "lodash-es";
 /**
  * @internal
  */
@@ -28,7 +29,7 @@ export class AlterMoveOutcomes {
         const keys = ["Strong Hit", "Weak Hit", "Miss"];
         keys.forEach(outcome => {
             if (json[outcome]) {
-                this[outcome] = json[outcome];
+                this[outcome] = cloneDeep(json[outcome]);
                 this[outcome].$id = `${this.$id}/${formatIdFragment(outcome)}`;
                 if (this[outcome]?.["With a Match"]) {
                     this[outcome]["With a Match"].$id = this[outcome].$id + "/With_a_Match";

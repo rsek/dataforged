@@ -17,5 +17,5 @@ export var SettingTruthName;
     SettingTruthName["Lifeforms"] = "Lifeforms";
     SettingTruthName["Precursors"] = "Precursors";
     SettingTruthName["Horrors"] = "Horrors";
-})(SettingTruthName || (SettingTruthName = {}));
+})(SettingTruthName = SettingTruthName || (SettingTruthName = {}));
 //# sourceMappingURL=ISettingTruth.js.map

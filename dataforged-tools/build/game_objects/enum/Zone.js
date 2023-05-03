@@ -11,5 +11,5 @@ export var Zone;
     Zone["Operations"] = "Operations";
     Zone["Production"] = "Production";
     Zone["Research"] = "Research";
-})(Zone || (Zone = {}));
+})(Zone = Zone || (Zone = {}));
 //# sourceMappingURL=Zone.js.map

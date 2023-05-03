@@ -11,7 +11,7 @@ export var ProgressTypeStarforged;
     ProgressTypeStarforged["Quests"] = "Quests Legacy";
     ProgressTypeStarforged["Bonds"] = "Bonds Legacy";
     ProgressTypeStarforged["Discoveries"] = "Discoveries Legacy";
-})(ProgressTypeStarforged || (ProgressTypeStarforged = {}));
+})(ProgressTypeStarforged = ProgressTypeStarforged || (ProgressTypeStarforged = {}));
 /**
  * @public
  */
@@ -23,5 +23,5 @@ export var ProgressTypeIronsworn;
     ProgressTypeIronsworn["Delve"] = "Delve";
     ProgressTypeIronsworn["SceneChallenge"] = "Scene Challenge";
     ProgressTypeIronsworn["Bonds"] = "Bonds";
-})(ProgressTypeIronsworn || (ProgressTypeIronsworn = {}));
+})(ProgressTypeIronsworn = ProgressTypeIronsworn || (ProgressTypeIronsworn = {}));
 //# sourceMappingURL=ProgressType.js.map

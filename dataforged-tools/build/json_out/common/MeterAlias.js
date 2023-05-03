@@ -10,5 +10,5 @@ export var MeterAlias;
     MeterAlias["CommandVehicleIntegrity"] = "Command Vehicle Integrity";
     MeterAlias["SupportVehicleIntegrity"] = "Support Vehicle Integrity";
     MeterAlias["IncidentalVehicleIntegrity"] = "Incidental Vehicle Integrity";
-})(MeterAlias || (MeterAlias = {}));
+})(MeterAlias = MeterAlias || (MeterAlias = {}));
 //# sourceMappingURL=MeterAlias.js.map

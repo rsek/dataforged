@@ -5,5 +5,5 @@ export var VaultZone;
 (function (VaultZone) {
     VaultZone["Interior"] = "Interior";
     VaultZone["Sanctum"] = "Sanctum";
-})(VaultZone || (VaultZone = {}));
+})(VaultZone = VaultZone || (VaultZone = {}));
 //# sourceMappingURL=VaultZone.js.map

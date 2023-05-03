@@ -7,5 +7,5 @@ export var Location;
     Location["Planetside"] = "Planetside";
     Location["Orbital"] = "Orbital";
     Location["DeepSpace"] = "Deep Space";
-})(Location || (Location = {}));
+})(Location = Location || (Location = {}));
 //# sourceMappingURL=Location.js.map

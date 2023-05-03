@@ -15,5 +15,5 @@ export var StarshipInitialContact;
     StarshipInitialContact["Uncooperative"] = "Uncooperative";
     StarshipInitialContact["Unresponsive"] = "Unresponsive";
     StarshipInitialContact["Wary"] = "Wary";
-})(StarshipInitialContact || (StarshipInitialContact = {}));
+})(StarshipInitialContact = StarshipInitialContact || (StarshipInitialContact = {}));
 //# sourceMappingURL=StarshipInitialContact.js.map

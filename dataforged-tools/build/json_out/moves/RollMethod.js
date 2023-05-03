@@ -38,7 +38,7 @@ export var RollMethod;
      * The move trigger option results in an automatic weak hit - no roll required.
      */
     RollMethod["WeakHit"] = "Weak Hit";
-})(RollMethod || (RollMethod = {}));
+})(RollMethod = RollMethod || (RollMethod = {}));
 /**
  * @public
  */
@@ -47,5 +47,5 @@ export var RollType;
     RollType["Action"] = "Action roll";
     RollType["Progress"] = "Progress roll";
     // TODO: add 'Any'?
-})(RollType || (RollType = {}));
+})(RollType = RollType || (RollType = {}));
 //# sourceMappingURL=RollMethod.js.map

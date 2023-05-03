@@ -91,5 +91,5 @@ export var AttributeKey;
      * {@link Zone}
      */
     AttributeKey["Zone"] = "Zone";
-})(AttributeKey || (AttributeKey = {}));
+})(AttributeKey = AttributeKey || (AttributeKey = {}));
 //# sourceMappingURL=AttributeKey.js.map

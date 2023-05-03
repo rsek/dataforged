@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["analysis", "node_modules", "build", "img", "src/utils/simulation"],
+  "compilerOptions": {
+    "lib": [
+      "es2020",
+      "es2021",
+      "esnext"
+    ],
+    "target": "ESnext",
+    "strictNullChecks": true,
+    "module": "nodenext",
+    "resolveJsonModule": true,
+    "outDir": "build",
+    "baseUrl": "./src",
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@yaml_in/*": ["yaml_in/*"],
+			"@yaml_in": ["yaml_in/index", "../yaml_in/index"],
+      "@constants/*": ["constants/*"],
+			"@constants": ["constants/index", "../constants/index"],
+      "@game_objects/*": ["game_objects/*"],
+			"@game_objects": ["game_objects/index", "../constants/index"],
+      "@json_out/*": ["json_out/*"],
+      "@json_out": ["json_out/index", "../json_out/index"],
+			"@utils/*": ["utils/*"],
+      "@utils": ["utils/index", "../utils/index"],
+			"@classes/*": ["classes/*"],
+      "@classes": ["classes/index", "../classes/index"]
+		},
+    "plugins": [
+      {"transform": "typescript-transform-paths"},
+      {"transform": "typescript-transform-paths", "afterDeclarations": true}
+    ]
+  }
+}

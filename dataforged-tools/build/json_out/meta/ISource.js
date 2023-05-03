@@ -11,7 +11,7 @@ export var SourceTitle;
     SourceTitle["IronswornAssets"] = "Ironsworn Assets";
     SourceTitle["IronswornDelve"] = "Ironsworn: Delve";
     SourceTitle["Custom"] = "Custom";
-})(SourceTitle || (SourceTitle = {}));
+})(SourceTitle = SourceTitle || (SourceTitle = {}));
 /**
  * Enumerates valid source URLs.
  * @public
@@ -23,5 +23,5 @@ export var SourceUrl;
     SourceUrl["Ironsworn"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornAssets"] = "https://shawn-tomkin.itch.io/ironsworn";
     SourceUrl["IronswornDelve"] = "https://shawn-tomkin.itch.io/ironsworn-delve";
-})(SourceUrl || (SourceUrl = {}));
+})(SourceUrl = SourceUrl || (SourceUrl = {}));
 //# sourceMappingURL=ISource.js.map

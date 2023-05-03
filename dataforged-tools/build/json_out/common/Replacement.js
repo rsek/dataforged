@@ -24,5 +24,5 @@ export var Replacement;
      * Replace with the ID of the nearest select option value of the ConditionMeter type.
      */
     Replacement["AssetSelectMeter"] = "${{@ASSET_SELECT_METER}}";
-})(Replacement || (Replacement = {}));
+})(Replacement = Replacement || (Replacement = {}));
 //# sourceMappingURL=Replacement.js.map

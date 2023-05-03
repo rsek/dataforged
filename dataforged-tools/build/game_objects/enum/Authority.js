@@ -12,5 +12,5 @@ export var Authority;
     Authority["Unyielding"] = "Unyielding";
     Authority["Corrupt"] = "Corrupt";
     Authority["Oppressive"] = "Oppressive";
-})(Authority || (Authority = {}));
+})(Authority = Authority || (Authority = {}));
 //# sourceMappingURL=Authority.js.map

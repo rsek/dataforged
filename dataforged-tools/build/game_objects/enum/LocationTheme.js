@@ -12,5 +12,5 @@ export var LocationTheme;
     LocationTheme["Mechanical"] = "Mechanical";
     LocationTheme["Ruined"] = "Ruined";
     LocationTheme["Sacred"] = "Sacred";
-})(LocationTheme || (LocationTheme = {}));
+})(LocationTheme = LocationTheme || (LocationTheme = {}));
 //# sourceMappingURL=LocationTheme.js.map

@@ -21,5 +21,5 @@ export var MeterCondition;
     MeterCondition["OutOfAction"] = "Out of Action";
     /** Used by "Fleet Commander" asset */
     MeterCondition["Wrecked"] = "Wrecked";
-})(MeterCondition || (MeterCondition = {}));
+})(MeterCondition = MeterCondition || (MeterCondition = {}));
 //# sourceMappingURL=MeterCondition.js.map

@@ -15,5 +15,5 @@ export var PlanetaryClass;
     PlanetaryClass["Shattered"] = "Shattered";
     PlanetaryClass["Tainted"] = "Tainted";
     PlanetaryClass["Vital"] = "Vital";
-})(PlanetaryClass || (PlanetaryClass = {}));
+})(PlanetaryClass = PlanetaryClass || (PlanetaryClass = {}));
 //# sourceMappingURL=PlanetaryClass.js.map

@@ -9,5 +9,5 @@ export var AssetTypeName;
     AssetTypeName["Module"] = "Module";
     AssetTypeName["Path"] = "Path";
     AssetTypeName["SupportVehicle"] = "Support Vehicle";
-})(AssetTypeName || (AssetTypeName = {}));
+})(AssetTypeName = AssetTypeName || (AssetTypeName = {}));
 //# sourceMappingURL=AssetTypeName.js.map

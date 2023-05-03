@@ -9,5 +9,5 @@ export var Population;
     Population["Hundreds"] = "Hundreds";
     Population["Thousands"] = "Thousands";
     Population["TensOfThousands"] = "Tens of thousands";
-})(Population || (Population = {}));
+})(Population = Population || (Population = {}));
 //# sourceMappingURL=Population.js.map

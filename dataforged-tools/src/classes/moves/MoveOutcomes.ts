@@ -2,6 +2,7 @@ import { OutcomeInfo } from "@classes/index.js";
 import type { IAlterMoveOutcomes, IMoveOutcomes, IOutcomeInfo , MoveOutcome } from "@json_out/index.js";
 import { formatIdFragment } from "@utils/toIdFragment.js";
 import type { IAlterMoveOutcomesYaml, IMoveOutcomesYaml } from "@yaml_in/index.js";
+import { cloneDeep } from "lodash-es";
 
 /**
  * @internal
@@ -32,7 +33,7 @@ export class AlterMoveOutcomes implements IAlterMoveOutcomes {
     const keys = [ "Strong Hit", "Weak Hit", "Miss" ] as (keyof typeof MoveOutcome)[];
     keys.forEach(outcome => {
       if (json[outcome]) {
-        this[outcome] = json[outcome] as IOutcomeInfo & {"With a Match": IOutcomeInfo};
+        this[outcome] = cloneDeep(json[outcome]) as IOutcomeInfo & {"With a Match": IOutcomeInfo};
         (this[outcome] as IOutcomeInfo).$id = `${this.$id}/${formatIdFragment(outcome)}`;
         if (this[outcome]?.["With a Match"]) {
           (this[outcome] as IOutcomeInfo & {"With a Match": IOutcomeInfo})["With a Match"].$id = (this[outcome] as IOutcomeInfo).$id +"/With_a_Match";

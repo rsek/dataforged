@@ -10,8 +10,6 @@
     "$id": "Ironsworn/Assets/Companion",
     "Name": "Companion",
     "Description": "Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.\n\nCompanions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](Ironsworn/Moves/Suffer/Companion_Endure_Harm) move (page 94) to determine the outcome. See page 43 to learn more.",
-    "Display": { "Title": "Companions" },
-    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
@@ -20,42 +18,31 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Cave_Lion",
         "Name": "Cave Lion",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Cave Lion" },
         "Usage": { "Shared": false },
+        "Requirement": "Your cat takes down its prey.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your cat takes down its prey.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 4,
-          "$id": "Ironsworn/Assets/Companion/Cave_Lion/Condition_Meter",
-          "Name": "Health",
-          "Max": 4,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1",
             "Name": "Eager",
             "Text": "When your cat chases down big game, you may [Resupply](Ironsworn/Moves/Adventure/Resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -64,7 +51,8 @@
                       "Method": "Any",
                       "Using": ["Edge"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/1/Alter_Moves/1/Outcomes",
@@ -74,13 +62,13 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2",
             "Name": "Inescapable",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Strike](Ironsworn/Moves/Combat/Strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1",
@@ -90,7 +78,6 @@
                 ],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -99,13 +86,14 @@
                       "Method": "Any",
                       "Using": ["Edge"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Take +2 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/2/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Take +2 momentum.",
@@ -113,13 +101,13 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3",
             "Name": "Protective",
             "Text": "When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1",
@@ -129,7 +117,7 @@
                   "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Cave_Lion/Abilities/3/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
@@ -137,9 +125,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Cave_Lion/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 4,
+          "Value": 4,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -148,42 +146,31 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Giant_Spider",
         "Name": "Giant Spider",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Giant Spider" },
         "Usage": { "Shared": false },
+        "Requirement": "Your spider uncovers secrets.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your spider uncovers secrets.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 4,
-          "$id": "Ironsworn/Assets/Companion/Giant_Spider/Condition_Meter",
-          "Name": "Health",
-          "Max": 4,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1",
             "Name": "Discreet",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -192,14 +179,15 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1.",
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/1/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Take +1 momentum.",
@@ -207,20 +195,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2",
             "Name": "Soul-Piercing",
             "Text": "You may [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -229,13 +216,14 @@
                       "Method": "Inherit",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
-                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/2/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) and reroll any dice.",
@@ -243,20 +231,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3",
             "Name": "Ensnaring",
             "Text": "When your spider sets a trap, add +1 as you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +shadow. On a strong hit, also inflict 2 harm.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Combat/Enter_the_Fray"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -265,7 +252,8 @@
                       "Method": "Inherit",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Giant_Spider/Abilities/3/Alter_Moves/1/Outcomes",
@@ -275,9 +263,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Giant_Spider/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 4,
+          "Value": 4,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -286,35 +284,25 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Hawk",
         "Name": "Hawk",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Hawk" },
         "Usage": { "Shared": false },
+        "Requirement": "Your hawk can aid you while it is aloft.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Hawk/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your hawk can aid you while it is aloft.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 3,
-          "$id": "Ironsworn/Assets/Companion/Hawk/Condition_Meter",
-          "Name": "Health",
-          "Max": 3,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1",
             "Name": "Far-seeing",
             "Text": "When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), or when you [Resupply](Ironsworn/Moves/Adventure/Resupply) by hunting for small game, add +1.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/1",
@@ -326,7 +314,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/1/Alter_Moves/2/Trigger/Options/1",
@@ -335,24 +322,24 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2",
             "Name": "Fierce",
             "Text": "When you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -361,14 +348,15 @@
                       "Method": "Inherit",
                       "Using": ["Edge"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1.",
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/2/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Take +1 momentum.",
@@ -376,20 +364,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3",
             "Name": "Vigilant",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +wits to detect an approaching threat, or when you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) +wits against an ambush, add +2.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -398,7 +385,8 @@
                       "Method": "Inherit",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +2."
               },
@@ -407,7 +395,6 @@
                 "Moves": ["Ironsworn/Moves/Combat/Enter_the_Fray"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hawk/Abilities/3/Alter_Moves/2/Trigger/Options/1",
@@ -415,13 +402,24 @@
                       "Method": "Inherit",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +2."
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Hawk/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 3,
+          "Value": 3,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -430,35 +428,25 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Horse",
         "Name": "Horse",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Horse" },
         "Usage": { "Shared": false },
+        "Requirement": "You and your horse ride as one.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Horse/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "You and your horse ride as one.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 5,
-          "$id": "Ironsworn/Assets/Companion/Horse/Condition_Meter",
-          "Name": "Health",
-          "Max": 5,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1",
             "Name": "Swift",
             "Text": "When you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey), add +1.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/1",
@@ -470,7 +458,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Horse/Abilities/1/Alter_Moves/2/Trigger/Options/1",
@@ -479,17 +466,18 @@
                       "Method": "Inherit",
                       "Using": ["Edge"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2",
             "Name": "Fearless",
             "Text": "When you [Enter the Fray](Ironsworn/Moves/Combat/Enter_the_Fray) or [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1",
@@ -499,7 +487,6 @@
                 ],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -508,14 +495,15 @@
                       "Method": "Inherit",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1.",
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/2/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Take +1 momentum.",
@@ -523,13 +511,13 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3",
             "Name": "Mighty",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1",
@@ -539,7 +527,6 @@
                 ],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -548,14 +535,15 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1.",
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Inflict +1 harm.",
-                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Horse/Abilities/3/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Inflict +1 harm.",
@@ -563,9 +551,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Horse/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 5,
+          "Value": 5,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -574,42 +572,31 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Hound",
         "Name": "Hound",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Hound" },
         "Usage": { "Shared": false },
+        "Requirement": "Your hound is your steadfast companion.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Hound/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your hound is your steadfast companion.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 4,
-          "$id": "Ironsworn/Assets/Companion/Hound/Condition_Meter",
-          "Name": "Health",
-          "Max": 4,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1",
             "Name": "Sharp",
             "Text": "When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -618,14 +605,15 @@
                       "Method": "Any",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1.",
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/1/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Take +1 momentum.",
@@ -633,13 +621,13 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2",
             "Name": "Ferocious",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1",
@@ -649,7 +637,6 @@
                 ],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -658,13 +645,14 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Outcomes": {
                   "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes",
                   "Strong Hit": {
                     "Text": "Inflict +1 harm or take +1 momentum.",
-                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes/Weak_Hit"
+                    "$id": "Ironsworn/Assets/Companion/Hound/Abilities/2/Alter_Moves/1/Outcomes/Strong_Hit"
                   },
                   "Weak Hit": {
                     "Text": "Inflict +1 harm or take +1 momentum.",
@@ -672,20 +660,19 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3",
             "Name": "Loyal",
             "Text": "When you [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) in the company of your hound, add +1.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Suffer/Endure_Stress"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Hound/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -694,13 +681,24 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Hound/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 4,
+          "Value": 4,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -709,29 +707,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Kindred",
         "Name": "Kindred",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Kindred" },
         "Usage": { "Shared": false },
+        "Requirement": "Your friend stands by you.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Kindred/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your friend stands by you.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 4,
-          "$id": "Ironsworn/Assets/Companion/Kindred/Condition_Meter",
-          "Name": "Health",
-          "Max": 4,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1",
@@ -739,20 +728,18 @@
             "Text": "When you make a move outside of combat aided by your companion’s expertise, add +1.",
             "Inputs": [
               {
-                "Input Type": "Text",
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Inputs/Expertise",
                 "Name": "Expertise",
+                "Input Type": "Text",
                 "Adjustable": false
               }
             ],
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1",
                 "Moves": null,
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -761,17 +748,18 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2",
             "Name": "Shield-Kin",
             "Text": "When you [Clash](Ironsworn/Moves/Combat/Clash) or [Battle](Ironsworn/Moves/Combat/Battle) alongside your companion, or when you [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) against an attack by standing together, add +1.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1",
@@ -781,7 +769,6 @@
                 ],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -790,7 +777,8 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               },
@@ -799,7 +787,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/2/Alter_Moves/2/Trigger/Options/1",
@@ -808,26 +795,37 @@
                       "Method": "Inherit",
                       "Using": []
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 },
                 "Text": "Add +1."
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3",
             "Name": "Bonded",
             "Text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Kindred/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"],
                 "Text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) in their presence."
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Kindred/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 4,
+          "Value": 4,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -836,29 +834,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Mammoth",
         "Name": "Mammoth",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Mammoth" },
         "Usage": { "Shared": false },
+        "Requirement": "Your mammoth walks a resolute path.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Mammoth/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your mammoth walks a resolute path.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 5,
-          "$id": "Ironsworn/Assets/Companion/Mammoth/Condition_Meter",
-          "Name": "Health",
-          "Max": 5,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Mammoth/Abilities/1",
@@ -878,7 +867,16 @@
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Mammoth/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 5,
+          "Value": 5,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -887,29 +885,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Owl",
         "Name": "Owl",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Owl" },
         "Usage": { "Shared": false },
+        "Requirement": "Your owl soars through the darkness.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Owl/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your owl soars through the darkness.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 3,
-          "$id": "Ironsworn/Assets/Companion/Owl/Condition_Meter",
-          "Name": "Health",
-          "Max": 3,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Owl/Abilities/1",
@@ -929,7 +918,16 @@
             "Text": "When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), take your owl’s health as +momentum before you roll.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Owl/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 3,
+          "Value": 3,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -938,29 +936,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Raven",
         "Name": "Raven",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Raven" },
         "Usage": { "Shared": false },
+        "Requirement": "Your raven heeds your call.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Raven/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your raven heeds your call.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 2,
-          "$id": "Ironsworn/Assets/Companion/Raven/Condition_Meter",
-          "Name": "Health",
-          "Max": 2,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Raven/Abilities/1",
@@ -980,7 +969,16 @@
             "Text": "When your raven carries messages for you, you may [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), or [Compel](Ironsworn/Moves/Relationship/Compel) from a distance.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Raven/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 2,
+          "Value": 2,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       },
       {
         "Source": {
@@ -989,29 +987,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Companion",
         "$id": "Ironsworn/Assets/Companion/Young_Wyvern",
         "Name": "Young Wyvern",
+        "Asset Type": "Ironsworn/Assets/Companion",
         "Display": { "Title": "Young Wyvern" },
         "Usage": { "Shared": false },
+        "Requirement": "Your wyvern won’t devour you. For now.",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Your wyvern won’t devour you. For now.",
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 5,
-          "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Condition_Meter",
-          "Name": "Health",
-          "Max": 5,
-          "Conditions": [],
-          "Aliases": ["Companion Health"]
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/1",
@@ -1029,14 +1018,12 @@
             "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3",
             "Name": "Savage",
             "Text": "When you [Strike](Ironsworn/Moves/Combat/Strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Combat/Strike"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1045,14 +1032,27 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Companion/Young_Wyvern/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 5,
+          "Value": 5,
+          "Conditions": [],
+          "Aliases": ["Companion Health"]
+        }
       }
-    ]
+    ],
+    "Display": { "Title": "Companions" },
+    "Usage": { "Shared": false }
   },
   {
     "Source": {
@@ -1065,8 +1065,6 @@
     "$id": "Ironsworn/Assets/Path",
     "Name": "Path",
     "Description": "Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.",
-    "Display": { "Title": "Paths" },
-    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
@@ -1075,16 +1073,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Alchemist",
         "Name": "Alchemist",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Alchemist" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Alchemist/Abilities/1",
             "Text": "When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -1093,14 +1090,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir",
                 "Name": "Create Elixir",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Create Elixir" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir/Trigger",
-                  "Text": "When you create an elixir...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Path/Alchemist/Abilities/1/Create_Elixir/Trigger/Options/1",
@@ -1137,7 +1133,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you create an elixir..."
                 },
                 "Text": "When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.",
                 "Outcomes": {
@@ -1156,7 +1153,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Path/Alchemist/Abilities/2",
@@ -1177,9 +1175,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Animal_Kin",
         "Name": "Animal Kin",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Animal Kin" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1207,20 +1205,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Banner-Sworn",
         "Name": "Banner-Sworn",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Banner-Sworn" },
         "Usage": { "Shared": false },
+        "Requirement": "Once you mark a bond with a leader or faction...",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Banner-Sworn/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Once you mark a bond with a leader or faction...",
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Banner-Sworn/Abilities/1",
@@ -1246,9 +1244,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Battle-Scarred",
         "Name": "Battle-Scarred",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Battle-Scarred" },
         "Usage": { "Shared": false },
         "Requirement": "Once you become maimed...",
@@ -1266,14 +1264,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3",
             "Text": "You have stared down death before: When you are at 0 health and [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Suffer/Endure_Harm"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Battle-Scarred/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1282,10 +1278,12 @@
                       "Method": "Any",
                       "Using": ["Wits", "Heart"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -1296,20 +1294,20 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Blade-Bound",
         "Name": "Blade-Bound",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Blade-Bound" },
         "Usage": { "Shared": false },
+        "Requirement": "Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...",
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Blade-Bound/Inputs/Name",
             "Name": "Name",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
-        "Requirement": "Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...",
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Blade-Bound/Abilities/1",
@@ -1335,9 +1333,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Bonded",
         "Name": "Bonded",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Bonded" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1365,31 +1363,21 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Commander",
         "Name": "Commander",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Commander" },
         "Usage": { "Shared": false },
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 4,
-          "$id": "Ironsworn/Assets/Path/Commander/Condition_Meter",
-          "Name": "Strength",
-          "Max": 4,
-          "Conditions": []
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Commander/Abilities/1",
             "Text": "You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](Ironsworn/Moves/Adventure/Face_Danger), [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage), [Compel](Ironsworn/Moves/Relationship/Compel), or [Battle](Ironsworn/Moves/Combat/Battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) or [Sojourn](Ironsworn/Moves/Relationship/Sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.",
-            "Enabled": true,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Face_Danger"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -1400,7 +1388,8 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -1408,7 +1397,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/2/Trigger/Options/1",
@@ -1419,7 +1407,8 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -1427,7 +1416,6 @@
                 "Moves": ["Ironsworn/Moves/Relationship/Compel"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/3/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/3/Trigger/Options/1",
@@ -1438,7 +1426,8 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -1446,7 +1435,6 @@
                 "Moves": ["Ironsworn/Moves/Combat/Battle"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/4/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/1/Alter_Moves/4/Trigger/Options/1",
@@ -1457,22 +1445,22 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Path/Commander/Abilities/2",
             "Text": "You may dispatch scouts from your warband to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) or [Resupply](Ironsworn/Moves/Adventure/Resupply); if you do, roll +strength.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1483,7 +1471,8 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -1491,7 +1480,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Commander/Abilities/2/Alter_Moves/2/Trigger/Options/1",
@@ -1502,17 +1490,27 @@
                         "Ironsworn/Assets/Path/Commander/Condition_Meter"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Path/Commander/Abilities/3",
             "Text": "Once you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Path/Commander/Condition_Meter",
+          "Name": "Strength",
+          "Min": 0,
+          "Max": 4,
+          "Value": 4,
+          "Conditions": []
+        }
       },
       {
         "Source": {
@@ -1521,9 +1519,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Dancer",
         "Name": "Dancer",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Dancer" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1540,7 +1538,6 @@
           {
             "$id": "Ironsworn/Assets/Path/Dancer/Abilities/3",
             "Text": "When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.",
-            "Enabled": false,
             "Moves": [
               {
                 "Source": {
@@ -1549,14 +1546,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate",
                 "Name": "Commemorate",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Commemorate" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate/Trigger",
-                  "Text": "When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Path/Dancer/Abilities/3/Commemorate/Trigger/Options/1",
@@ -1564,7 +1560,8 @@
                       "Method": "Any",
                       "Using": ["Edge"]
                     }
-                  ]
+                  ],
+                  "Text": "When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event..."
                 },
                 "Text": "When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.",
                 "Outcomes": {
@@ -1583,7 +1580,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -1594,23 +1592,22 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Devotant",
         "Name": "Devotant",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Devotant" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Gods_Name",
             "Name": "God's Name",
+            "Input Type": "Text",
             "Adjustable": false
           },
           {
-            "Input Type": "Select",
             "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat",
             "Name": "Linked Stat",
-            "Adjustable": false,
+            "Input Type": "Select",
             "Sets": [{ "Key": "Stat", "Type": "Stat" }],
             "Options": [
               {
@@ -1619,8 +1616,8 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Edge/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Edge"
                   }
                 ]
@@ -1631,8 +1628,8 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Heart/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Heart"
                   }
                 ]
@@ -1643,8 +1640,8 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Iron/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Iron"
                   }
                 ]
@@ -1655,8 +1652,8 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Shadow/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Shadow"
                   }
                 ]
@@ -1667,13 +1664,14 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat/Options/Wits/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Wits"
                   }
                 ]
               }
-            ]
+            ],
+            "Adjustable": false
           }
         ],
         "Abilities": [
@@ -1685,14 +1683,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2",
             "Text": "When you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) and mark experience, take +1 experience.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Quest/Swear_an_Iron_Vow"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Devotant/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1703,22 +1699,22 @@
                         "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3",
             "Text": "When you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Relationship/Sojourn"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Devotant/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -1729,10 +1725,12 @@
                         "Ironsworn/Assets/Path/Devotant/Inputs/Linked_Stat"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -1743,16 +1741,16 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Empowered",
         "Name": "Empowered",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Empowered" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Empowered/Inputs/Title_Lineage",
             "Name": "Title/Lineage",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -1781,9 +1779,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Fated",
         "Name": "Fated",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Fated" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1811,19 +1809,11 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Fortune_Hunter",
         "Name": "Fortune Hunter",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Fortune Hunter" },
         "Usage": { "Shared": false },
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 0,
-          "$id": "Ironsworn/Assets/Path/Fortune_Hunter/Condition_Meter",
-          "Name": "Wealth",
-          "Max": 5,
-          "Conditions": []
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Fortune_Hunter/Abilities/1",
@@ -1840,7 +1830,15 @@
             "Text": "When you [Resupply](Ironsworn/Moves/Adventure/Resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Path/Fortune_Hunter/Condition_Meter",
+          "Name": "Wealth",
+          "Min": 0,
+          "Max": 5,
+          "Value": 0,
+          "Conditions": []
+        }
       },
       {
         "Source": {
@@ -1849,9 +1847,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Herbalist",
         "Name": "Herbalist",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Herbalist" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1879,9 +1877,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Honorbound",
         "Name": "Honorbound",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Honorbound" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1909,23 +1907,21 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Improviser",
         "Name": "Improviser",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Improviser" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1",
             "Text": "When you [Check Your Gear](Ironsworn/Moves/Delve/Check_Your_Gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.",
-            "Enabled": true,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Delve/Check_Your_Gear"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Improviser/Abilities/1/Alter_Moves/1/Trigger/Options/1",
@@ -1933,10 +1929,12 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Path/Improviser/Abilities/2",
@@ -1957,9 +1955,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Infiltrator",
         "Name": "Infiltrator",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Infiltrator" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -1971,14 +1969,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2",
             "Text": "When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -1987,7 +1983,8 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -1995,7 +1992,6 @@
                 "Moves": ["Ironsworn/Moves/Adventure/Secure_an_Advantage"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/2/Alter_Moves/2/Trigger/Options/1",
@@ -2004,22 +2000,22 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3",
             "Text": "When you [Resupply](Ironsworn/Moves/Adventure/Resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Resupply"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Infiltrator/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -2028,10 +2024,12 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -2042,9 +2040,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Lorekeeper",
         "Name": "Lorekeeper",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Lorekeeper" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2072,9 +2070,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Loyalist",
         "Name": "Loyalist",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Loyalist" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2102,17 +2100,17 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Masked",
         "Name": "Masked",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Masked" },
         "Usage": { "Shared": false },
+        "Requirement": "Once you mark a bond with elves, and are gifted a mask of precious elderwood...",
         "Inputs": [
           {
-            "Input Type": "Select",
             "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material",
             "Name": "Material",
-            "Adjustable": false,
+            "Input Type": "Select",
             "Sets": [
               { "Key": "Stat", "Type": "Stat" },
               { "Key": "Condition Meter", "Type": "Condition Meter" }
@@ -2124,14 +2122,14 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Edge"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Thunderwood/Condition_Meter",
-                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
+                    "Type": "Condition Meter",
                     "Value": "Health"
                   }
                 ]
@@ -2142,14 +2140,14 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Iron"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Bloodwood/Condition_Meter",
-                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
+                    "Type": "Condition Meter",
                     "Value": "Health"
                   }
                 ]
@@ -2160,14 +2158,14 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Shadow"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Ghostwood/Condition_Meter",
-                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
+                    "Type": "Condition Meter",
                     "Value": "Spirit"
                   }
                 ]
@@ -2178,22 +2176,22 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood/Stat",
-                    "Type": "Stat",
                     "Key": "Stat",
+                    "Type": "Stat",
                     "Value": "Wits"
                   },
                   {
                     "$id": "Ironsworn/Assets/Path/Masked/Inputs/Material/Options/Whisperwood/Condition_Meter",
-                    "Type": "Condition Meter",
                     "Key": "Condition Meter",
+                    "Type": "Condition Meter",
                     "Value": "Spirit"
                   }
                 ]
               }
-            ]
+            ],
+            "Adjustable": false
           }
         ],
-        "Requirement": "Once you mark a bond with elves, and are gifted a mask of precious elderwood...",
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Masked/Abilities/1",
@@ -2208,14 +2206,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Masked/Abilities/3",
             "Text": "When you [Face Death](Ironsworn/Moves/Suffer/Face_Death) or [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation) while wearing the mask, you may roll +its stat (instead of +heart).",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Death"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -2226,7 +2222,8 @@
                         "Ironsworn/Assets/Path/Masked/Inputs/Material/Stat"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               },
               {
@@ -2234,7 +2231,6 @@
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Desolation"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/2/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Masked/Abilities/3/Alter_Moves/2/Trigger/Options/1",
@@ -2245,10 +2241,12 @@
                         "Ironsworn/Assets/Path/Masked/Inputs/Material/Stat"
                       ]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -2259,9 +2257,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Oathbreaker",
         "Name": "Oathbreaker",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Oathbreaker" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Forsake Your Vow](Ironsworn/Moves/Quest/Forsake_Your_Vow)...",
@@ -2290,16 +2288,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Outcast",
         "Name": "Outcast",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Outcast" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Outcast/Abilities/1",
             "Text": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](Ironsworn/Moves/Suffer/Out_of_Supply).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -2308,14 +2305,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By",
                 "Name": "Scrape By",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Scrape By" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By/Trigger",
-                  "Text": "When your supply is reduced to 0...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Path/Outcast/Abilities/1/Scrape_By/Trigger/Options/1",
@@ -2323,7 +2319,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When your supply is reduced to 0..."
                 },
                 "Text": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](Ironsworn/Moves/Suffer/Out_of_Supply).",
                 "Outcomes": {
@@ -2342,7 +2339,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Path/Outcast/Abilities/2",
@@ -2363,16 +2361,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Pretender",
         "Name": "Pretender",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Pretender" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Path/Pretender/Abilities/1",
             "Text": "When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -2381,14 +2378,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity",
                 "Name": "Establish False Identity",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Establish False Identity" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity/Trigger",
-                  "Text": "When you establish a false identity...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Path/Pretender/Abilities/1/Establish_False_Identity/Trigger/Options/1",
@@ -2396,7 +2392,8 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "Text": "When you establish a false identity..."
                 },
                 "Text": "When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).",
                 "Outcomes": {
@@ -2415,19 +2412,18 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2",
             "Text": "As above, and you may roll +shadow (instead of +heart) when you [Sojourn](Ironsworn/Moves/Relationship/Sojourn) under your false identity. If you do, take +1 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Relationship/Sojourn"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Pretender/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -2436,10 +2432,12 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Path/Pretender/Abilities/3",
@@ -2455,9 +2453,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Revenant",
         "Name": "Revenant",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Revenant" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Face Death](Ironsworn/Moves/Suffer/Face_Death) and return to the world of the living...",
@@ -2486,9 +2484,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Rider",
         "Name": "Rider",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Rider" },
         "Usage": { "Shared": false },
         "Requirement": "If you are with your horse companion...",
@@ -2517,9 +2515,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Ritualist",
         "Name": "Ritualist",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Ritualist" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to an elder\nmystic, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...",
@@ -2548,9 +2546,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Shadow-Kin",
         "Name": "Shadow-Kin",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Shadow-Kin" },
         "Usage": { "Shared": false },
         "Requirement": "Once you become corrupted...",
@@ -2568,14 +2566,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3",
             "Text": "You know the sly ways of death: When you [Face Death](Ironsworn/Moves/Suffer/Face_Death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](Ironsworn/Moves/Quest/Swear_an_Iron_Vow). When you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) on that quest and and mark experience, take +2 experience.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Suffer/Face_Death"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Shadow-Kin/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -2583,10 +2579,12 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -2597,9 +2595,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Sighted",
         "Name": "Sighted",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Sighted" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2627,9 +2625,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Slayer",
         "Name": "Slayer",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Slayer" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2657,9 +2655,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Spirit-Bound",
         "Name": "Spirit-Bound",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Spirit-Bound" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2687,9 +2685,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Storyweaver",
         "Name": "Storyweaver",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Storyweaver" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2717,9 +2715,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Trickster",
         "Name": "Trickster",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Trickster" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2731,14 +2729,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2",
             "Text": "When you [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Gather_Information"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Trickster/Abilities/2/Alter_Moves/1/Trigger/Options/1",
@@ -2747,22 +2743,22 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3",
             "Text": "When you [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) for a relationship founded on a lie, choose one.\n\n  * Keep your secret: Roll +shadow (instead of +heart).\n  * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Relationship/Forge_a_Bond"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Trickster/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -2778,10 +2774,12 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -2792,9 +2790,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Veteran",
         "Name": "Veteran",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Veteran" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2822,9 +2820,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Waterborn",
         "Name": "Waterborn",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Waterborn" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2852,9 +2850,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wayfinder",
         "Name": "Wayfinder",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Wayfinder" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2882,9 +2880,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Weaponmaster",
         "Name": "Weaponmaster",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Weaponmaster" },
         "Usage": { "Shared": false },
         "Requirement": "Once you [Fulfill Your Vow](Ironsworn/Moves/Quest/Fulfill_Your_Vow) (formidable or greater) in service to a seasoned warrior, and [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond) to train with them...",
@@ -2913,9 +2911,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wildblood",
         "Name": "Wildblood",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Wildblood" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -2932,14 +2930,12 @@
           {
             "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3",
             "Text": "When you [Make Camp](Ironsworn/Moves/Adventure/Make_Camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.",
-            "Enabled": false,
             "Alter Moves": [
               {
                 "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3/Alter_Moves/1",
                 "Moves": ["Ironsworn/Moves/Adventure/Make_Camp"],
                 "Trigger": {
                   "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3/Alter_Moves/1/Trigger",
-                  "By": { "Player": true, "Ally": false },
                   "Options": [
                     {
                       "$id": "Ironsworn/Assets/Path/Wildblood/Abilities/3/Alter_Moves/1/Trigger/Options/1",
@@ -2948,10 +2944,12 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "By": { "Player": true, "Ally": false }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -2962,16 +2960,16 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Path",
         "$id": "Ironsworn/Assets/Path/Wright",
         "Name": "Wright",
+        "Asset Type": "Ironsworn/Assets/Path",
         "Display": { "Title": "Wright" },
         "Usage": { "Shared": false },
         "Inputs": [
           {
-            "Input Type": "Text",
             "$id": "Ironsworn/Assets/Path/Wright/Inputs/Specialty",
             "Name": "Specialty",
+            "Input Type": "Text",
             "Adjustable": false
           }
         ],
@@ -2993,7 +2991,9 @@
           }
         ]
       }
-    ]
+    ],
+    "Display": { "Title": "Paths" },
+    "Usage": { "Shared": false }
   },
   {
     "Source": {
@@ -3006,8 +3006,6 @@
     "$id": "Ironsworn/Assets/Combat_Talent",
     "Name": "Combat Talent",
     "Description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform combat moves (page 78). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
-    "Display": { "Title": "Combat Talents" },
-    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
@@ -3016,9 +3014,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Archer",
         "Name": "Archer",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Archer" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bow...",
@@ -3047,9 +3045,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Berserker",
         "Name": "Berserker",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Berserker" },
         "Usage": { "Shared": false },
         "Requirement": "If you are clad only in animal pelts...",
@@ -3078,9 +3076,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Brawler",
         "Name": "Brawler",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Brawler" },
         "Usage": { "Shared": false },
         "Requirement": "If you are unarmed or fighting with a non-deadly weapon...",
@@ -3109,9 +3107,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Cutthroat",
         "Name": "Cutthroat",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Cutthroat" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a dagger or knife...",
@@ -3140,9 +3138,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Duelist",
         "Name": "Duelist",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Duelist" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a bladed weapon in each hand...",
@@ -3171,9 +3169,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Fletcher",
         "Name": "Fletcher",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Fletcher" },
         "Usage": { "Shared": false },
         "Abilities": [
@@ -3190,7 +3188,6 @@
           {
             "$id": "Ironsworn/Assets/Combat_Talent/Fletcher/Abilities/3",
             "Text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
-            "Enabled": false,
             "Moves": [
               {
                 "Source": {
@@ -3199,14 +3196,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow",
                 "Name": "Craft Arrow",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Craft Arrow" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Trigger",
-                  "Text": "When you craft a single arrow designated for a specific foe",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Combat_Talent/Fletcher/Abilities/3/Craft_Arrow/Trigger/Options/1",
@@ -3214,7 +3210,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you craft a single arrow designated for a specific foe"
                 },
                 "Text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
                 "Outcomes": {
@@ -3233,7 +3230,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -3244,17 +3242,17 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Ironclad",
         "Name": "Ironclad",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Ironclad" },
         "Usage": { "Shared": false },
+        "Requirement": "If you wear armor...",
         "Inputs": [
           {
-            "Input Type": "Select",
             "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped",
             "Name": "Equipped",
-            "Adjustable": true,
+            "Input Type": "Select",
             "Sets": [{ "Key": "Armor", "Type": "String" }],
             "Options": [
               {
@@ -3263,8 +3261,8 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Lightly_armored/Armor",
-                    "Type": "String",
                     "Key": "Armor",
+                    "Type": "String",
                     "Value": "Lightly armored"
                   }
                 ]
@@ -3275,16 +3273,16 @@
                 "Set": [
                   {
                     "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Inputs/Equipped/Options/Geared_for_war/Armor",
-                    "Type": "String",
                     "Key": "Armor",
+                    "Type": "String",
                     "Value": "Geared for war"
                   }
                 ]
               }
-            ]
+            ],
+            "Adjustable": true
           }
         ],
-        "Requirement": "If you wear armor...",
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Combat_Talent/Ironclad/Abilities/1",
@@ -3310,9 +3308,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Long-Arm",
         "Name": "Long-Arm",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Long-Arm" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a staff...",
@@ -3341,9 +3339,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Shield-Bearer",
         "Name": "Shield-Bearer",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Shield-Bearer" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a shield...",
@@ -3372,9 +3370,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Skirmisher",
         "Name": "Skirmisher",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Skirmisher" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a spear...",
@@ -3403,9 +3401,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Slinger",
         "Name": "Slinger",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Slinger" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a sling...",
@@ -3434,9 +3432,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Sunderer",
         "Name": "Sunderer",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Sunderer" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield an axe...",
@@ -3454,7 +3452,6 @@
           {
             "$id": "Ironsworn/Assets/Combat_Talent/Sunderer/Abilities/3",
             "Text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
-            "Enabled": false,
             "Moves": [
               {
                 "Source": {
@@ -3463,14 +3460,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune",
                 "Name": "Carve Rune",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Carve Rune" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Trigger",
-                  "Text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Combat_Talent/Sunderer/Abilities/3/Carve_Rune/Trigger/Options/1",
@@ -3478,7 +3474,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe..."
                 },
                 "Text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
                 "Outcomes": {
@@ -3497,7 +3494,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": false
           }
         ]
       },
@@ -3508,9 +3506,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Swordmaster",
         "Name": "Swordmaster",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Swordmaster" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a sword...",
@@ -3539,9 +3537,9 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "$id": "Ironsworn/Assets/Combat_Talent/Thunder-Bringer",
         "Name": "Thunder-Bringer",
+        "Asset Type": "Ironsworn/Assets/Combat_Talent",
         "Display": { "Title": "Thunder-Bringer" },
         "Usage": { "Shared": false },
         "Requirement": "If you wield a mighty hammer...",
@@ -3563,7 +3561,9 @@
           }
         ]
       }
-    ]
+    ],
+    "Display": { "Title": "Combat Talents" },
+    "Usage": { "Shared": false }
   },
   {
     "Source": {
@@ -3576,8 +3576,6 @@
     "$id": "Ironsworn/Assets/Ritual",
     "Name": "Ritual",
     "Description": "Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.\n\nAll rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.",
-    "Display": { "Title": "Rituals" },
-    "Usage": { "Shared": false },
     "Assets": [
       {
         "Source": {
@@ -3586,16 +3584,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Augur",
         "Name": "Augur",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Augur" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Augur/Abilities/1",
             "Text": "When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3604,14 +3601,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur",
                 "Name": "Augur",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Augur" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur/Trigger",
-                  "Text": "When you summon a flock of crows and ask a single question...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Augur/Abilities/1/Augur/Trigger/Options/1",
@@ -3619,7 +3615,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you summon a flock of crows and ask a single question..."
                 },
                 "Text": "When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure), and take +1 momentum.",
                 "Outcomes": {
@@ -3638,7 +3635,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Augur/Abilities/2",
@@ -3659,24 +3657,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Awakening",
         "Name": "Awakening",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Awakening" },
         "Usage": { "Shared": false },
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 3,
-          "$id": "Ironsworn/Assets/Ritual/Awakening/Condition_Meter",
-          "Name": "Health",
-          "Max": 3,
-          "Conditions": []
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Awakening/Abilities/1",
             "Text": "When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3685,14 +3674,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening",
                 "Name": "Awakening",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Awakening" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Trigger",
-                  "Text": "When you create a simulacrum...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Awakening/Abilities/1/Awakening/Trigger/Options/1",
@@ -3700,7 +3688,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you create a simulacrum..."
                 },
                 "Text": "When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +heart to keep it from turning on you (as a formidable foe).",
                 "Outcomes": {
@@ -3719,20 +3708,29 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Awakening/Abilities/2",
             "Text": "Your simulacrum has 6 health.",
-            "Enabled": false,
-            "Alter Properties": { "Condition Meter": { "Max": 6, "Value": 6 } }
+            "Alter Properties": { "Condition Meter": { "Max": 6, "Value": 6 } },
+            "Enabled": false
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Awakening/Abilities/3",
             "Text": "When you perform this ritual, add +1 and take +1 momentum on a hit.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Ritual/Awakening/Condition_Meter",
+          "Name": "Health",
+          "Min": 0,
+          "Max": 3,
+          "Value": 3,
+          "Conditions": []
+        }
       },
       {
         "Source": {
@@ -3741,16 +3739,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Bind",
         "Name": "Bind",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Bind" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Bind/Abilities/1",
             "Text": "When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3759,14 +3756,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind",
                 "Name": "Bind",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Bind" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind/Trigger",
-                  "Text": "When you wear an animal pelt and dance in moonlight...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Bind/Abilities/1/Bind/Trigger/Options/1",
@@ -3774,7 +3770,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you wear an animal pelt and dance in moonlight..."
                 },
                 "Text": "When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
                 "Outcomes": {
@@ -3793,7 +3790,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Bind/Abilities/2",
@@ -3814,16 +3812,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Communion",
         "Name": "Communion",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Communion" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Communion/Abilities/1",
             "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3832,14 +3829,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion",
                 "Name": "Communion",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Communion" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Trigger",
-                  "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Communion/Abilities/1/Communion/Trigger/Options/1",
@@ -3847,7 +3843,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit..."
                 },
                 "Text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure) and [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
                 "Outcomes": {
@@ -3866,7 +3863,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Communion/Abilities/2",
@@ -3887,16 +3885,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Divination",
         "Name": "Divination",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Divination" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Divination/Abilities/1",
             "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3905,14 +3902,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination",
                 "Name": "Divination",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Divination" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Trigger",
-                  "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Divination/Abilities/1/Divination/Trigger/Options/1",
@@ -3920,7 +3916,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones..."
                 },
                 "Text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](Ironsworn/Moves/Adventure/Gather_Information), [Compel](Ironsworn/Moves/Relationship/Compel), or [Forge a Bond](Ironsworn/Moves/Relationship/Forge_a_Bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.",
                 "Outcomes": {
@@ -3939,7 +3936,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Divination/Abilities/2",
@@ -3960,24 +3958,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Invoke",
         "Name": "Invoke",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Invoke" },
         "Usage": { "Shared": false },
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 0,
-          "$id": "Ironsworn/Assets/Ritual/Invoke/Condition_Meter",
-          "Name": "Essence",
-          "Max": 6,
-          "Conditions": []
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Invoke/Abilities/1",
             "Text": "When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -3986,14 +3975,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke",
                 "Name": "Invoke",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Invoke" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke/Trigger",
-                  "Text": "When you consume the mystical essence of your surroundings...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Invoke/Abilities/1/Invoke/Trigger/Options/1",
@@ -4001,7 +3989,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you consume the mystical essence of your surroundings..."
                 },
                 "Text": "When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
                 "Outcomes": {
@@ -4020,7 +4009,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Invoke/Abilities/2",
@@ -4032,7 +4022,15 @@
             "Text": "When you perform this ritual, add +1 and take +1 essence on a hit.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Ritual/Invoke/Condition_Meter",
+          "Name": "Essence",
+          "Min": 0,
+          "Max": 6,
+          "Value": 0,
+          "Conditions": []
+        }
       },
       {
         "Source": {
@@ -4041,16 +4039,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Keen",
         "Name": "Keen",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Keen" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Keen/Abilities/1",
             "Text": "When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4059,14 +4056,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen",
                 "Name": "Keen",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Keen" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen/Trigger",
-                  "Text": "When you hold a weapon and sing a keen for those it has killed...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Keen/Abilities/1/Keen/Trigger/Options/1",
@@ -4074,7 +4070,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you hold a weapon and sing a keen for those it has killed..."
                 },
                 "Text": "When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](Ironsworn/Moves/Combat/Strike) or [Clash](Ironsworn/Moves/Combat/Clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
                 "Outcomes": {
@@ -4093,7 +4090,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Keen/Abilities/2",
@@ -4114,16 +4112,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Leech",
         "Name": "Leech",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Leech" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Leech/Abilities/1",
             "Text": "When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4132,14 +4129,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech",
                 "Name": "Leech",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Leech" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Trigger",
-                  "Text": "When you mark your hands or weapon with an intricate blood rune...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Leech/Abilities/1/Leech/Trigger/Options/1",
@@ -4147,7 +4143,8 @@
                       "Method": "Any",
                       "Using": ["Iron"]
                     }
-                  ]
+                  ],
+                  "Text": "When you mark your hands or weapon with an intricate blood rune..."
                 },
                 "Text": "When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.",
                 "Outcomes": {
@@ -4166,7 +4163,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Leech/Abilities/2",
@@ -4187,24 +4185,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Lightbearer",
         "Name": "Lightbearer",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Lightbearer" },
         "Usage": { "Shared": false },
-        "Condition Meter": {
-          "Min": 0,
-          "Value": 0,
-          "$id": "Ironsworn/Assets/Ritual/Lightbearer/Condition_Meter",
-          "Name": "Light",
-          "Max": 6,
-          "Conditions": []
-        },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Lightbearer/Abilities/1",
             "Text": "When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4213,14 +4202,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer",
                 "Name": "Lightbearer",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Lightbearer" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Trigger",
-                  "Text": "When you focus on a source of light and capture its essence...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Lightbearer/Abilities/1/Lightbearer/Trigger/Options/1",
@@ -4228,7 +4216,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you focus on a source of light and capture its essence..."
                 },
                 "Text": "When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.",
                 "Outcomes": {
@@ -4247,7 +4236,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Lightbearer/Abilities/2",
@@ -4259,7 +4249,15 @@
             "Text": "When you perform this ritual, add +1 and take +1 momentum on a hit.",
             "Enabled": false
           }
-        ]
+        ],
+        "Condition Meter": {
+          "$id": "Ironsworn/Assets/Ritual/Lightbearer/Condition_Meter",
+          "Name": "Light",
+          "Min": 0,
+          "Max": 6,
+          "Value": 0,
+          "Conditions": []
+        }
       },
       {
         "Source": {
@@ -4268,16 +4266,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Scry",
         "Name": "Scry",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Scry" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Scry/Abilities/1",
             "Text": "When you look into flames to study a remote person or location, roll +shadow. You or someone with you must have knowledge of the target. On a strong hit, you may [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) through observation using +shadow or +wits. On a weak hit, as above, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).\n  * Something precious: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).\n  * Provisions: Suffer -2 supply.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4286,14 +4283,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry",
                 "Name": "Scry",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Scry" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry/Trigger",
-                  "Text": "When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Scry/Abilities/1/Scry/Trigger/Options/1",
@@ -4301,7 +4297,8 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "Text": "When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)..."
                 },
                 "Text": "When you look into flames to study a remote person or location, roll +shadow. You or someone with you must have knowledge of the target. On a strong hit, you may [Gather Information](Ironsworn/Moves/Adventure/Gather_Information) through observation using +shadow or +wits. On a weak hit, as above, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).\n  * Something precious: [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).\n  * Provisions: Suffer -2 supply.",
                 "Outcomes": {
@@ -4320,7 +4317,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Scry/Abilities/2",
@@ -4341,16 +4339,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Shadow-Walk",
         "Name": "Shadow-Walk",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Shadow-Walk" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Shadow-Walk/Abilities/1",
             "Text": "When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4359,14 +4356,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk",
                 "Name": "Shadow-Walk",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Shadow-Walk" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Trigger",
-                  "Text": "When you cloak yourself with the gossamer veil of the shadow realms...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Shadow-Walk/Abilities/1/Shadow-Walk/Trigger/Options/1",
@@ -4374,7 +4370,8 @@
                       "Method": "Any",
                       "Using": ["Shadow"]
                     }
-                  ]
+                  ],
+                  "Text": "When you cloak yourself with the gossamer veil of the shadow realms..."
                 },
                 "Text": "When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](Ironsworn/Moves/Adventure/Face_Danger) to find your way.",
                 "Outcomes": {
@@ -4393,7 +4390,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Shadow-Walk/Abilities/2",
@@ -4414,16 +4412,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Sway",
         "Name": "Sway",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Sway" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Sway/Abilities/1",
             "Text": "When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you use this information or fulfill this need when you [Compel](Ironsworn/Moves/Relationship/Compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4432,14 +4429,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway",
                 "Name": "Sway",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Sway" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway/Trigger",
-                  "Text": "When you speak a person’s name three times to the wind...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Sway/Abilities/1/Sway/Trigger/Options/1",
@@ -4447,7 +4443,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you speak a person’s name three times to the wind..."
                 },
                 "Text": "When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle) if unsure). If you use this information or fulfill this need when you [Compel](Ironsworn/Moves/Relationship/Compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
                 "Outcomes": {
@@ -4466,7 +4463,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Sway/Abilities/2",
@@ -4487,16 +4485,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Talisman",
         "Name": "Talisman",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Talisman" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Talisman/Abilities/1",
             "Text": "When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4505,14 +4502,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman",
                 "Name": "Talisman",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Talisman" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Trigger",
-                  "Text": "When you fashion a charm that protects against a specific person or creature...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Talisman/Abilities/1/Talisman/Trigger/Options/1",
@@ -4520,7 +4516,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you fashion a charm that protects against a specific person or creature..."
                 },
                 "Text": "When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).",
                 "Outcomes": {
@@ -4539,7 +4536,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Talisman/Abilities/2",
@@ -4560,16 +4558,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Tether",
         "Name": "Tether",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Tether" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Tether/Abilities/1",
             "Text": "When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4578,14 +4575,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether",
                 "Name": "Tether",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Tether" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether/Trigger",
-                  "Text": "When you commune with the spirits of a place",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Tether/Abilities/1/Tether/Trigger/Options/1",
@@ -4593,7 +4589,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you commune with the spirits of a place"
                 },
                 "Text": "When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](Ironsworn/Moves/Adventure/Undertake_a_Journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](Ironsworn/Moves/Adventure/Reach_Your_Destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](Ironsworn/Moves/Suffer/Face_Desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (2 stress).",
                 "Outcomes": {
@@ -4612,7 +4609,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Tether/Abilities/2",
@@ -4633,16 +4631,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Totem",
         "Name": "Totem",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Totem" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Totem/Abilities/1",
             "Text": "When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4651,14 +4648,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem",
                 "Name": "Totem",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Totem" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Trigger",
-                  "Text": "When you hold a totem of your animal or beast companion and focus on it...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Totem/Abilities/1/Totem/Trigger/Options/1",
@@ -4666,7 +4662,8 @@
                       "Method": "Any",
                       "Using": ["Heart"]
                     }
-                  ]
+                  ],
+                  "Text": "When you hold a totem of your animal or beast companion and focus on it..."
                 },
                 "Text": "When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](Ironsworn/Moves/Suffer/Endure_Stress) (1 stress).",
                 "Outcomes": {
@@ -4685,7 +4682,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Totem/Abilities/2",
@@ -4706,16 +4704,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Visage",
         "Name": "Visage",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Visage" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Visage/Abilities/1",
             "Text": "When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4724,14 +4721,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage",
                 "Name": "Visage",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Visage" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Trigger",
-                  "Text": "When you paint yourself in blood and ash...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Visage/Abilities/1/Visage/Trigger/Options/1",
@@ -4739,7 +4735,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you paint yourself in blood and ash..."
                 },
                 "Text": "When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](Ironsworn/Moves/Adventure/Secure_an_Advantage) or [Compel](Ironsworn/Moves/Relationship/Compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](Ironsworn/Moves/Suffer/Endure_Harm) (2 harm).",
                 "Outcomes": {
@@ -4758,7 +4755,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Visage/Abilities/2",
@@ -4779,16 +4777,15 @@
           "Date": "060122",
           "Url": "https://shawn-tomkin.itch.io/ironsworn"
         },
-        "Asset Type": "Ironsworn/Assets/Ritual",
         "$id": "Ironsworn/Assets/Ritual/Ward",
         "Name": "Ward",
+        "Asset Type": "Ironsworn/Assets/Ritual",
         "Display": { "Title": "Ward" },
         "Usage": { "Shared": false },
         "Abilities": [
           {
             "$id": "Ironsworn/Assets/Ritual/Ward/Abilities/1",
             "Text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle)) to trap a foe within the boundary.",
-            "Enabled": true,
             "Moves": [
               {
                 "Source": {
@@ -4797,14 +4794,13 @@
                   "Date": "060122",
                   "Url": "https://shawn-tomkin.itch.io/ironsworn"
                 },
-                "Category": "Ironsworn/Moves/Assets",
                 "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward",
                 "Name": "Ward",
                 "Optional": false,
+                "Category": "Ironsworn/Moves/Assets",
                 "Display": { "Title": "Ward" },
                 "Trigger": {
                   "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward/Trigger",
-                  "Text": "When you walk a wide circle, sprinkling the ground with salt...",
                   "Options": [
                     {
                       "$id": "Ironsworn/Moves/Assets/Ritual/Ward/Abilities/1/Ward/Trigger/Options/1",
@@ -4812,7 +4808,8 @@
                       "Method": "Any",
                       "Using": ["Wits"]
                     }
-                  ]
+                  ],
+                  "Text": "When you walk a wide circle, sprinkling the ground with salt..."
                 },
                 "Text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](Ironsworn/Moves/Fate/Ask_the_Oracle)) to trap a foe within the boundary.",
                 "Outcomes": {
@@ -4831,7 +4828,8 @@
                   }
                 }
               }
-            ]
+            ],
+            "Enabled": true
           },
           {
             "$id": "Ironsworn/Assets/Ritual/Ward/Abilities/2",
@@ -4845,6 +4843,8 @@
           }
         ]
       }
-    ]
+    ],
+    "Display": { "Title": "Rituals" },
+    "Usage": { "Shared": false }
   }
 ]

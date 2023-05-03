@@ -12,5 +12,5 @@ export var GameObjectType;
     GameObjectType["Character"] = "Character";
     GameObjectType["Creature"] = "Creature";
     GameObjectType["Faction"] = "Faction";
-})(GameObjectType || (GameObjectType = {}));
+})(GameObjectType = GameObjectType || (GameObjectType = {}));
 //# sourceMappingURL=GameObjectType.js.map
