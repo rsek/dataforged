@@ -1,14 +1,31 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { AssetID, MoveID, OracleTableID } from 'base-types/id'
-import { StringEnum } from 'base-types/utils'
+import * as Utils from 'base-types/utils'
 
-export const Ruleset = StringEnum(['classic', 'starforged'])
+export const Ruleset = Utils.StringEnum(['classic', 'starforged'], {
+	$id: '#/$defs/Ruleset',
+	description: "The ruleset used for a sourcebook's rules content."
+})
 export type Ruleset = Static<typeof Ruleset>
-export const SvgImageURL = Type.String({ format: 'uri' })
+export const SvgImageURL = Type.String({
+	title: 'SVG Image URL',
+	$id: '#/$defs/SvgImageURL',
+	format: 'uri',
+	description: 'A relative URL pointing to a vector image in the SVG format.'
+})
 export type SvgImageURL = Static<typeof SvgImageURL>
-export const WebpImageURL = Type.String({ format: 'uri' })
+export const WebpImageURL = Type.String({
+	title: 'WEBP Image URL',
+	$id: '#/$defs/WebpImageURL',
+	format: 'uri',
+	description: 'A relative URL pointing to a raster image in the WEBP format.'
+})
 export type WebpImageURL = Static<typeof WebpImageURL>
-export const CSSColor = Type.String()
+export const CSSColor = Type.String({
+	title: 'CSS Color',
+	$id: '#/$defs/SvgImageURL',
+	description:
+		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'
+})
 export type CSSColor = Static<typeof CSSColor>
 
 export const Source = Type.Object(
@@ -24,14 +41,19 @@ export const Source = Type.Object(
 				'Sundered Isles'
 			]
 		}),
-		page: Type.Optional(Type.Integer({ minimum: 1 })),
+		page: Type.Optional(Type.Integer({ minimum: 1, title: 'Page number' })),
 		authors: Type.Array(
 			Type.Object(
 				{
 					name: Type.String({ examples: ['Shawn Tomkin'] }),
-					email: Type.Optional(Type.String({ format: 'email' }))
+					email: Type.Optional(
+						Type.String({
+							format: 'email',
+							description: 'An optional email contact for the author'
+						})
+					)
 				},
-				{ $id: 'Author', examples: [{ name: 'Shawn Tomkin' }] }
+				{ $id: '#/$defs/Author', examples: [{ name: 'Shawn Tomkin' }] }
 			),
 			{ minItems: 1 }
 		),
@@ -42,7 +64,7 @@ export const Source = Type.Object(
 		}),
 		url: Type.String({
 			format: 'uri',
-			description: 'The URL where the source document is available.',
+			description: 'An absolute URL where the source document is available.',
 			examples: ['https://ironswornrpg.com']
 		}),
 		license: Type.String({
@@ -57,15 +79,8 @@ export const Source = Type.Object(
 	},
 	{
 		description: 'Metadata describing the original source of this item',
-		$id: 'Source'
+		$id: '#/$defs/Source'
 	}
 )
 
 export type Source = Static<typeof Source>
-
-export const SuggestionsBase = Type.Object({
-	oracles: Type.Optional(Type.Array(OracleTableID)),
-	assets: Type.Optional(Type.Array(AssetID)),
-	moves: Type.Optional(Type.Array(MoveID))
-})
-export type SuggestionsBase = Static<typeof SuggestionsBase>

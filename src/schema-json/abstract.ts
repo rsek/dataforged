@@ -1,10 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { dictionarySchema, refSchema } from './common'
-import {
-	type Localize,
-	type Metadata,
-	type Abstract as Types
-} from '@base-types'
+import { type Localize, type Metadata, type Common as Types } from '@base-types'
 import _ from 'lodash'
 import { type PartialSchema } from 'schema-json/clean-types'
 

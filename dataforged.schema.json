@@ -1,0 +1,3161 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$defs": {
+		"OracleCollection": {
+			"$id": "#/$defs/OracleCollection",
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"type": "object",
+					"properties": {
+						"oracles": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/OracleTableID"
+							}
+						},
+						"assets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetID"
+							}
+						},
+						"moves": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveID"
+							}
+						}
+					}
+				},
+				"id": {
+					"examples": [
+						"starforged/collections/oracles/core",
+						"starforged/collections/oracles/character/names",
+						"starforged/collections/oracles/planets/furnace/settlements"
+					],
+					"$id": "#/$defs/OracleCollectionID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/[a-z_]+){1,3}$"
+				},
+				"extends": {
+					"examples": [
+						"starforged/collections/oracles/core",
+						"starforged/collections/oracles/character/names",
+						"starforged/collections/oracles/planets/furnace/settlements"
+					],
+					"$id": "#/$defs/OracleCollectionID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/[a-z_]+){1,3}$"
+				},
+				"name": {
+					"type": "string"
+				},
+				"canonical_name": {
+					"type": "string"
+				},
+				"color": {
+					"type": "string"
+				},
+				"summary": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"contents": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$id": "#/$defs/OracleTable",
+							"type": "object",
+							"properties": {
+								"source": {
+									"$ref": "#/$defs/Source"
+								},
+								"suggestions": {
+									"type": "object",
+									"properties": {
+										"oracles": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/OracleTableID"
+											}
+										},
+										"assets": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/AssetID"
+											}
+										},
+										"moves": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/MoveID"
+											}
+										}
+									}
+								},
+								"id": {
+									"examples": [
+										"starforged/oracles/core/action",
+										"starforged/oracles/character/names/given",
+										"starforged/oracles/planets/furnace/settlements/terminus"
+									],
+									"$id": "#/$defs/OracleTableID",
+									"type": "string",
+									"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}$"
+								},
+								"name": {
+									"type": "string"
+								},
+								"canonical_name": {
+									"type": "string"
+								},
+								"summary": {
+									"type": "string"
+								},
+								"description": {
+									"type": "string"
+								},
+								"match": {
+									"$id": "#/$defs/OracleTableMatchBehavior",
+									"type": "object",
+									"properties": {
+										"text": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"text"
+									]
+								},
+								"table": {
+									"type": "array",
+									"items": {
+										"$id": "#/$defs/OracleTableRow",
+										"type": "object",
+										"properties": {
+											"low": {
+												"anyOf": [
+													{
+														"minimum": 1,
+														"maximum": 100,
+														"type": "integer"
+													},
+													{
+														"type": "null"
+													}
+												]
+											},
+											"high": {
+												"anyOf": [
+													{
+														"minimum": 1,
+														"maximum": 100,
+														"type": "integer"
+													},
+													{
+														"type": "null"
+													}
+												]
+											},
+											"id": {
+												"examples": [
+													"classic/oracles/action_and_theme/action/1-1"
+												],
+												"$id": "#/$defs/OracleTableRowID",
+												"type": "string",
+												"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$"
+											},
+											"result": {
+												"type": "string"
+											},
+											"icon": {
+												"format": "uri",
+												"type": "string"
+											},
+											"summary": {
+												"type": "string"
+											},
+											"description": {
+												"type": "string"
+											},
+											"rolls": {
+												"type": "array",
+												"items": {
+													"$id": "#/$defs/OracleTableRoll",
+													"type": "object",
+													"properties": {
+														"oracle": {
+															"$ref": "#/$defs/OracleTableID"
+														},
+														"times": {
+															"minimum": 1,
+															"default": 1,
+															"type": "integer"
+														},
+														"method": {
+															"default": "no_duplicates",
+															"$id": "#/$defs/OracleTableRollMethod",
+															"type": "string",
+															"enum": [
+																"no_duplicates",
+																"keep_duplicates",
+																"make_it_worse"
+															]
+														}
+													},
+													"required": [
+														"oracle"
+													]
+												}
+											},
+											"suggestions": {
+												"type": "object",
+												"properties": {
+													"oracles": {
+														"type": "array",
+														"items": {
+															"$ref": "#/$defs/OracleTableID"
+														}
+													},
+													"assets": {
+														"type": "array",
+														"items": {
+															"$ref": "#/$defs/AssetID"
+														}
+													},
+													"moves": {
+														"type": "array",
+														"items": {
+															"$ref": "#/$defs/MoveID"
+														}
+													}
+												}
+											},
+											"embed_table": {
+												"$ref": "#/$defs/OracleTableID"
+											},
+											"template": {
+												"$id": "#/$defs/OracleRollTemplate",
+												"type": "object",
+												"properties": {
+													"result": {
+														"type": "string"
+													},
+													"summary": {
+														"type": "string"
+													},
+													"description": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"required": [
+											"low",
+											"high",
+											"id",
+											"result"
+										]
+									}
+								},
+								"rendering": {
+									"$id": "#/$defs/OracleTableRendering",
+									"type": "object",
+									"properties": {
+										"icon": {
+											"format": "uri",
+											"type": "string"
+										},
+										"style": {
+											"$id": "#/$defs/OracleTableStyle",
+											"type": "string",
+											"enum": [
+												"table",
+												"embed_in_row",
+												"embed_as_column"
+											]
+										},
+										"color": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"required": [
+								"source",
+								"id",
+								"name",
+								"table"
+							]
+						}
+					}
+				},
+				"collections": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$ref": "#/$defs/OracleCollection"
+						}
+					}
+				},
+				"rendering": {
+					"$id": "#/$defs/OracleCollectionRendering",
+					"type": "object",
+					"properties": {
+						"columns": {
+							"allOf": [
+								{
+									"description": "Describes the rendering of this oracle as a standalone table.",
+									"type": "object",
+									"patternProperties": {
+										"^[a-z_]+$": {
+											"$id": "#/$defs/OracleTableColumn",
+											"type": "object",
+											"properties": {
+												"label": {
+													"type": "string"
+												},
+												"content_type": {
+													"$id": "#/$defs/OracleColumnContentType",
+													"type": "string",
+													"enum": [
+														"range",
+														"result",
+														"summary",
+														"description"
+													]
+												}
+											},
+											"required": [
+												"content_type"
+											]
+										}
+									}
+								},
+								{
+									"type": "object",
+									"patternProperties": {
+										"^[a-z_]+$": {
+											"$id": "#/$defs/OracleCollectionColumn",
+											"type": "object",
+											"properties": {
+												"label": {
+													"type": "string"
+												},
+												"content_type": {
+													"$id": "#/$defs/OracleColumnContentType",
+													"type": "string",
+													"enum": [
+														"range",
+														"result",
+														"summary",
+														"description"
+													]
+												},
+												"table_key": {
+													"type": "string"
+												},
+												"color": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"content_type",
+												"table_key"
+											]
+										}
+									}
+								}
+							]
+						},
+						"color": {
+							"type": "string"
+						},
+						"style": {
+							"$id": "#/$defs/OracleCollectionStyle",
+							"type": "string",
+							"enum": [
+								"multi_table"
+							]
+						}
+					},
+					"required": [
+						"columns"
+					]
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"format": "uri",
+						"type": "string"
+					}
+				},
+				"sample_names": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [
+				"source",
+				"id",
+				"name",
+				"summary"
+			]
+		},
+		"MoveCategory": {
+			"$id": "#/$defs/MoveCategory",
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"type": "object",
+					"properties": {
+						"oracles": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/OracleTableID"
+							}
+						},
+						"assets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetID"
+							}
+						},
+						"moves": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveID"
+							}
+						}
+					}
+				},
+				"id": {
+					"examples": [
+						"starforged/collections/moves/adventure"
+					],
+					"$id": "#/$defs/MoveCategoryID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$"
+				},
+				"extends": {
+					"examples": [
+						"starforged/collections/moves/adventure"
+					],
+					"$id": "#/$defs/MoveCategoryID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$"
+				},
+				"name": {
+					"type": "string"
+				},
+				"canonical_name": {
+					"type": "string"
+				},
+				"summary": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"contents": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$id": "#/$defs/Move",
+							"type": "object",
+							"properties": {
+								"source": {
+									"$ref": "#/$defs/Source"
+								},
+								"suggestions": {
+									"type": "object",
+									"properties": {
+										"oracles": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/OracleTableID"
+											}
+										},
+										"assets": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/AssetID"
+											}
+										},
+										"moves": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/MoveID"
+											}
+										}
+									}
+								},
+								"id": {
+									"description": "A move ID, for a standard move or a unique asset move",
+									"examples": [
+										"classic/moves/combat/strike",
+										"starforged/assets/module/grappler/moves/ready_grappler"
+									],
+									"$id": "#/$defs/MoveID",
+									"type": "string",
+									"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$"
+								},
+								"name": {
+									"type": "string"
+								},
+								"trigger": {
+									"$id": "#/$defs/Trigger",
+									"anyOf": [
+										{
+											"$id": "#/$defs/TriggerActionRoll",
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												},
+												"roll_type": {
+													"const": "action_roll",
+													"type": "string"
+												},
+												"roll_options": {
+													"type": "array",
+													"items": {
+														"$id": "#/$defs/TriggerActionRollOption",
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															},
+															"method": {
+																"default": "any",
+																"anyOf": [
+																	{
+																		"$id": "#/$defs/MoveRollMethod",
+																		"type": "string",
+																		"enum": [
+																			"any",
+																			"all",
+																			"highest",
+																			"lowest"
+																		]
+																	},
+																	{
+																		"$id": "#/$defs/MoveOutcomeType",
+																		"type": "string",
+																		"enum": [
+																			"miss",
+																			"weak_hit",
+																			"strong_hit"
+																		]
+																	}
+																]
+															},
+															"by": {
+																"$id": "#/$defs/TriggerBy",
+																"type": "object",
+																"properties": {
+																	"type": {
+																		"type": "boolean"
+																	},
+																	"ally": {
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"type",
+																	"ally"
+																]
+															},
+															"roll_options": {
+																"type": "array",
+																"items": {
+																	"$id": "#/$defs/TriggerActionRollOptionChoice",
+																	"anyOf": [
+																		{
+																			"$id": "#/$defs/TriggerActionRollOptionChoiceStat",
+																			"type": "object",
+																			"properties": {
+																				"using": {
+																					"anyOf": [
+																						{
+																							"$id": "#/$defs/PlayerStat",
+																							"type": "string",
+																							"enum": [
+																								"edge",
+																								"heart",
+																								"iron",
+																								"shadow",
+																								"wits"
+																							]
+																						},
+																						{
+																							"$id": "#/$defs/PlayerConditionMeter",
+																							"type": "string",
+																							"enum": [
+																								"health",
+																								"spirit",
+																								"supply"
+																							]
+																						}
+																					]
+																				}
+																			},
+																			"required": [
+																				"using"
+																			]
+																		},
+																		{
+																			"$id": "#/$defs/TriggerActionRollOptionChoiceRef",
+																			"type": "object",
+																			"properties": {
+																				"using": {
+																					"const": "ref",
+																					"type": "string"
+																				},
+																				"ref": {
+																					"anyOf": [
+																						{
+																							"$ref": "#/$defs/AssetOptionFieldIDWildcard"
+																						},
+																						{
+																							"$ref": "#/$defs/AssetConditionMeterIDWildcard"
+																						}
+																					]
+																				}
+																			},
+																			"required": [
+																				"using",
+																				"ref"
+																			]
+																		},
+																		{
+																			"$ref": "TriggerActionRollOptionChoiceAttachedAssetRef",
+																			"type": "object",
+																			"properties": {
+																				"using": {
+																					"const": "attached_asset_meter",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"using"
+																			]
+																		},
+																		{
+																			"$id": "#/$defs/TriggerActionRollOptionChoiceCustomValue",
+																			"type": "object",
+																			"properties": {
+																				"using": {
+																					"const": "custom_value",
+																					"type": "string"
+																				},
+																				"label": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"minimum": 0,
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"using",
+																				"label",
+																				"value"
+																			]
+																		}
+																	]
+																}
+															}
+														},
+														"required": [
+															"method",
+															"roll_options"
+														]
+													}
+												}
+											},
+											"required": [
+												"text",
+												"roll_type",
+												"roll_options"
+											]
+										},
+										{
+											"$id": "#/$defs/TriggerProgressRoll",
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												},
+												"roll_type": {
+													"const": "progress_roll",
+													"type": "string"
+												},
+												"roll_options": {
+													"type": "array",
+													"items": {
+														"$id": "#/$defs/TriggerProgressRollOption",
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															},
+															"method": {
+																"default": "any",
+																"anyOf": [
+																	{
+																		"$id": "#/$defs/MoveRollMethod",
+																		"type": "string",
+																		"enum": [
+																			"any",
+																			"all",
+																			"highest",
+																			"lowest"
+																		]
+																	},
+																	{
+																		"$id": "#/$defs/MoveOutcomeType",
+																		"type": "string",
+																		"enum": [
+																			"miss",
+																			"weak_hit",
+																			"strong_hit"
+																		]
+																	}
+																]
+															},
+															"by": {
+																"$id": "#/$defs/TriggerBy",
+																"type": "object",
+																"properties": {
+																	"type": {
+																		"type": "boolean"
+																	},
+																	"ally": {
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"type",
+																	"ally"
+																]
+															},
+															"roll_options": {
+																"type": "array",
+																"items": {
+																	"$id": "#/$defs/TriggerProgressRollOptionChoice",
+																	"type": "object",
+																	"properties": {
+																		"using": {
+																			"anyOf": [
+																				{
+																					"$id": "#/$defs/ProgressType",
+																					"anyOf": [
+																						{
+																							"type": "string",
+																							"enum": [
+																								"quests_legacy",
+																								"bonds_legacy",
+																								"discoveries_legacy"
+																							]
+																						},
+																						{
+																							"type": "string",
+																							"enum": [
+																								"combat_progress",
+																								"vow_progress",
+																								"scene_challenge_progress"
+																							]
+																						},
+																						{
+																							"type": "string",
+																							"enum": [
+																								"expedition_progress",
+																								"connection_progress"
+																							]
+																						}
+																					]
+																				},
+																				{
+																					"$id": "#/$defs/ProgressType",
+																					"anyOf": [
+																						{
+																							"type": "string",
+																							"enum": [
+																								"combat_progress",
+																								"vow_progress",
+																								"scene_challenge_progress"
+																							]
+																						},
+																						{
+																							"type": "string",
+																							"enum": [
+																								"journey_progress",
+																								"delve_progress",
+																								"bonds_progress",
+																								"failure_track"
+																							]
+																						}
+																					]
+																				}
+																			]
+																		}
+																	},
+																	"required": [
+																		"using"
+																	]
+																}
+															}
+														},
+														"required": [
+															"method",
+															"roll_options"
+														]
+													}
+												}
+											},
+											"required": [
+												"text",
+												"roll_type",
+												"roll_options"
+											]
+										},
+										{
+											"$id": "#/$defs/TriggerNoRoll",
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												},
+												"roll_type": {
+													"const": "no_roll",
+													"type": "string"
+												},
+												"roll_options": {
+													"type": "array",
+													"items": {
+														"$id": "#/$defs/TriggerNoRollOption",
+														"type": "object",
+														"properties": {
+															"text": {
+																"type": "string"
+															},
+															"method": {
+																"default": "any",
+																"anyOf": [
+																	{
+																		"$id": "#/$defs/MoveRollMethod",
+																		"type": "string",
+																		"enum": [
+																			"any",
+																			"all",
+																			"highest",
+																			"lowest"
+																		]
+																	},
+																	{
+																		"$id": "#/$defs/MoveOutcomeType",
+																		"type": "string",
+																		"enum": [
+																			"miss",
+																			"weak_hit",
+																			"strong_hit"
+																		]
+																	}
+																]
+															},
+															"by": {
+																"$id": "#/$defs/TriggerBy",
+																"type": "object",
+																"properties": {
+																	"type": {
+																		"type": "boolean"
+																	},
+																	"ally": {
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"type",
+																	"ally"
+																]
+															}
+														},
+														"required": [
+															"method"
+														]
+													}
+												}
+											},
+											"required": [
+												"text",
+												"roll_type"
+											]
+										}
+									]
+								},
+								"text": {
+									"type": "string"
+								},
+								"outcomes": {
+									"$id": "#/$defs/MoveOutcomes",
+									"type": "object",
+									"properties": {
+										"miss": {
+											"$id": "#/$defs/MoveOutcomeMatchable",
+											"type": "object",
+											"properties": {
+												"text": {
+													"type": "string"
+												},
+												"count_as": {
+													"$id": "#/$defs/MoveOutcomeType",
+													"type": "string",
+													"enum": [
+														"miss",
+														"weak_hit",
+														"strong_hit"
+													]
+												},
+												"reroll": {
+													"type": "object",
+													"properties": {
+														"text": {
+															"type": "string"
+														},
+														"method": {
+															"$id": "#/$defs/MoveRerollMethod",
+															"type": "string",
+															"enum": [
+																"any",
+																"all",
+																"challenge_die",
+																"challenge_dice",
+																"action_die"
+															]
+														}
+													},
+													"required": [
+														"method"
+													]
+												},
+												"match": {
+													"$ref": "#/$defs/MoveOutcome"
+												}
+											},
+											"required": [
+												"text"
+											]
+										},
+										"weak_hit": {
+											"$ref": "#/$defs/MoveOutcome"
+										},
+										"strong_hit": {
+											"$ref": "#/$defs/MoveOutcomeMatchable"
+										}
+									},
+									"required": [
+										"miss",
+										"weak_hit",
+										"strong_hit"
+									]
+								},
+								"oracles": {
+									"type": "array",
+									"items": {
+										"$ref": "#/$defs/OracleTableID"
+									}
+								}
+							},
+							"required": [
+								"source",
+								"id",
+								"name",
+								"trigger",
+								"text",
+								"outcomes"
+							]
+						}
+					}
+				},
+				"color": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"source",
+				"id",
+				"name",
+				"summary",
+				"color"
+			]
+		},
+		"AssetType": {
+			"$id": "#/$defs/AssetType",
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"type": "object",
+					"properties": {
+						"oracles": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/OracleTableID"
+							}
+						},
+						"assets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetID"
+							}
+						},
+						"moves": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveID"
+							}
+						}
+					}
+				},
+				"id": {
+					"$id": "#/$defs/AssetTypeID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets\\/[a-z_]+$"
+				},
+				"extends": {
+					"$id": "#/$defs/AssetTypeID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets\\/[a-z_]+$"
+				},
+				"name": {
+					"type": "string"
+				},
+				"canonical_name": {
+					"type": "string"
+				},
+				"color": {
+					"type": "string"
+				},
+				"summary": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"contents": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$id": "T0",
+							"type": "object",
+							"properties": {
+								"id": {
+									"$id": "#/$defs/AssetID",
+									"type": "string",
+									"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}$"
+								},
+								"name": {
+									"type": "string"
+								},
+								"source": {
+									"description": "Metadata describing the original source of this item",
+									"$id": "#/$defs/Source",
+									"type": "object",
+									"properties": {
+										"title": {
+											"description": "The title of the source document.",
+											"examples": [
+												"Ironsworn Rulebook",
+												"Ironsworn Assets Master Set",
+												"Ironsworn: Delve",
+												"Ironsworn: Starforged Rulebook",
+												"Ironsworn: Starforged Assets",
+												"Sundered Isles"
+											],
+											"type": "string"
+										},
+										"page": {
+											"minimum": 1,
+											"type": "integer"
+										},
+										"authors": {
+											"minItems": 1,
+											"type": "array",
+											"items": {
+												"$id": "#/$defs/Author",
+												"examples": [
+													{
+														"name": "Shawn Tomkin"
+													}
+												],
+												"type": "object",
+												"properties": {
+													"name": {
+														"examples": [
+															"Shawn Tomkin"
+														],
+														"type": "string"
+													},
+													"email": {
+														"format": "email",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												]
+											}
+										},
+										"date": {
+											"format": "date",
+											"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+											"type": "string"
+										},
+										"url": {
+											"format": "uri",
+											"description": "The URL where the source document is available.",
+											"examples": [
+												"https://ironswornrpg.com"
+											],
+											"type": "string"
+										},
+										"license": {
+											"format": "uri",
+											"description": "An absolute URL pointing to the location where this element's license can be found.",
+											"examples": [
+												"https://creativecommons.org/licenses/by/4.0",
+												"https://creativecommons.org/licenses/by-nc-sa/4.0"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"title",
+										"authors",
+										"date",
+										"url",
+										"license"
+									]
+								},
+								"options": {
+									"type": "object",
+									"patternProperties": {
+										"^[a-z_]+$": {
+											"$id": "#/$defs/AssetOptionField",
+											"allOf": [
+												{
+													"anyOf": [
+														{
+															"type": "object",
+															"properties": {
+																"label": {
+																	"type": "string"
+																},
+																"field_type": {
+																	"const": "text",
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"label",
+																"field_type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"label": {
+																	"allOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"value": {
+																	"allOf": [
+																		{
+																			"$id": "#/$defs/PlayerStat",
+																			"type": "string",
+																			"enum": [
+																				"edge",
+																				"heart",
+																				"iron",
+																				"shadow",
+																				"wits"
+																			]
+																		},
+																		{
+																			"$id": "#/$defs/PlayerStat",
+																			"type": "string",
+																			"enum": [
+																				"edge",
+																				"heart",
+																				"iron",
+																				"shadow",
+																				"wits"
+																			]
+																		}
+																	]
+																},
+																"choices": {
+																	"type": "object",
+																	"patternProperties": {
+																		"^[a-z_]+$": {
+																			"type": "object",
+																			"properties": {
+																				"label": {
+																					"type": "string"
+																				},
+																				"value": {
+																					"$id": "#/$defs/PlayerStat",
+																					"type": "string",
+																					"enum": [
+																						"edge",
+																						"heart",
+																						"iron",
+																						"shadow",
+																						"wits"
+																					]
+																				},
+																				"selected": {
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"label",
+																				"value"
+																			]
+																		}
+																	}
+																},
+																"field_type": {
+																	"const": "select_stat",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"label",
+																"value",
+																"choices",
+																"field_type"
+															]
+														}
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"id": {
+															"$id": "#/$defs/AssetOptionFieldID",
+															"type": "string",
+															"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/options\\/[a-z_]+"
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											]
+										}
+									}
+								},
+								"controls": {
+									"type": "object",
+									"patternProperties": {
+										"^[a-z_]+$": {
+											"$id": "#/$defs/AssetControlField",
+											"type": "object",
+											"allOf": [
+												{
+													"type": "object",
+													"properties": {
+														"label": {
+															"type": "string"
+														},
+														"field_type": {
+															"const": "checkbox",
+															"type": "string"
+														},
+														"value": {
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"label",
+														"field_type"
+													]
+												},
+												{
+													"type": "object",
+													"properties": {
+														"id": {
+															"$id": "#/$defs/AssetControlFieldID",
+															"type": "string",
+															"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/controls\\/[a-z_]+$"
+														}
+													},
+													"required": [
+														"id"
+													]
+												}
+											]
+										}
+									}
+								},
+								"suggestions": {
+									"type": "object",
+									"properties": {
+										"oracles": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/OracleTableID"
+											}
+										},
+										"assets": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/AssetID"
+											}
+										},
+										"moves": {
+											"type": "array",
+											"items": {
+												"$ref": "#/$defs/MoveID"
+											}
+										}
+									}
+								},
+								"requirement": {
+									"type": "string"
+								},
+								"abilities": {
+									"minItems": 3,
+									"maxItems": 3,
+									"type": "array",
+									"items": {
+										"$id": "#/$defs/AssetAbility",
+										"type": "object",
+										"properties": {
+											"id": {
+												"$id": "#/$defs/AssetAbilityID",
+												"type": "string",
+												"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]$"
+											},
+											"name": {
+												"type": "string"
+											},
+											"text": {
+												"type": "string"
+											},
+											"enabled": {
+												"type": "boolean"
+											},
+											"moves": {
+												"type": "object",
+												"patternProperties": {
+													"^[a-z_]+$": {
+														"$id": "#/$defs/Move",
+														"type": "object",
+														"properties": {
+															"source": {
+																"$ref": "#/$defs/Source"
+															},
+															"suggestions": {
+																"type": "object",
+																"properties": {
+																	"oracles": {
+																		"type": "array",
+																		"items": {
+																			"$ref": "#/$defs/OracleTableID"
+																		}
+																	},
+																	"assets": {
+																		"type": "array",
+																		"items": {
+																			"$ref": "#/$defs/AssetID"
+																		}
+																	},
+																	"moves": {
+																		"type": "array",
+																		"items": {
+																			"$ref": "#/$defs/MoveID"
+																		}
+																	}
+																}
+															},
+															"id": {
+																"description": "A move ID, for a standard move or a unique asset move",
+																"examples": [
+																	"classic/moves/combat/strike",
+																	"starforged/assets/module/grappler/moves/ready_grappler"
+																],
+																"$id": "#/$defs/MoveID",
+																"type": "string",
+																"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$"
+															},
+															"name": {
+																"type": "string"
+															},
+															"trigger": {
+																"$id": "#/$defs/Trigger",
+																"anyOf": [
+																	{
+																		"$id": "#/$defs/TriggerActionRoll",
+																		"type": "object",
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"roll_type": {
+																				"const": "action_roll",
+																				"type": "string"
+																			},
+																			"roll_options": {
+																				"type": "array",
+																				"items": {
+																					"$id": "#/$defs/TriggerActionRollOption",
+																					"type": "object",
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"method": {
+																							"default": "any",
+																							"anyOf": [
+																								{
+																									"$id": "#/$defs/MoveRollMethod",
+																									"type": "string",
+																									"enum": [
+																										"any",
+																										"all",
+																										"highest",
+																										"lowest"
+																									]
+																								},
+																								{
+																									"$id": "#/$defs/MoveOutcomeType",
+																									"type": "string",
+																									"enum": [
+																										"miss",
+																										"weak_hit",
+																										"strong_hit"
+																									]
+																								}
+																							]
+																						},
+																						"by": {
+																							"$id": "#/$defs/TriggerBy",
+																							"type": "object",
+																							"properties": {
+																								"type": {
+																									"type": "boolean"
+																								},
+																								"ally": {
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"ally"
+																							]
+																						},
+																						"roll_options": {
+																							"type": "array",
+																							"items": {
+																								"$id": "#/$defs/TriggerActionRollOptionChoice",
+																								"anyOf": [
+																									{
+																										"$id": "#/$defs/TriggerActionRollOptionChoiceStat",
+																										"type": "object",
+																										"properties": {
+																											"using": {
+																												"anyOf": [
+																													{
+																														"$id": "#/$defs/PlayerStat",
+																														"type": "string",
+																														"enum": [
+																															"edge",
+																															"heart",
+																															"iron",
+																															"shadow",
+																															"wits"
+																														]
+																													},
+																													{
+																														"$id": "#/$defs/PlayerConditionMeter",
+																														"type": "string",
+																														"enum": [
+																															"health",
+																															"spirit",
+																															"supply"
+																														]
+																													}
+																												]
+																											}
+																										},
+																										"required": [
+																											"using"
+																										]
+																									},
+																									{
+																										"$id": "#/$defs/TriggerActionRollOptionChoiceRef",
+																										"type": "object",
+																										"properties": {
+																											"using": {
+																												"const": "ref",
+																												"type": "string"
+																											},
+																											"ref": {
+																												"anyOf": [
+																													{
+																														"$ref": "#/$defs/AssetOptionFieldIDWildcard"
+																													},
+																													{
+																														"$ref": "#/$defs/AssetConditionMeterIDWildcard"
+																													}
+																												]
+																											}
+																										},
+																										"required": [
+																											"using",
+																											"ref"
+																										]
+																									},
+																									{
+																										"$ref": "TriggerActionRollOptionChoiceAttachedAssetRef",
+																										"type": "object",
+																										"properties": {
+																											"using": {
+																												"const": "attached_asset_meter",
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"using"
+																										]
+																									},
+																									{
+																										"$id": "#/$defs/TriggerActionRollOptionChoiceCustomValue",
+																										"type": "object",
+																										"properties": {
+																											"using": {
+																												"const": "custom_value",
+																												"type": "string"
+																											},
+																											"label": {
+																												"type": "string"
+																											},
+																											"value": {
+																												"minimum": 0,
+																												"type": "integer"
+																											}
+																										},
+																										"required": [
+																											"using",
+																											"label",
+																											"value"
+																										]
+																									}
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"method",
+																						"roll_options"
+																					]
+																				}
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"roll_type",
+																			"roll_options"
+																		]
+																	},
+																	{
+																		"$id": "#/$defs/TriggerProgressRoll",
+																		"type": "object",
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"roll_type": {
+																				"const": "progress_roll",
+																				"type": "string"
+																			},
+																			"roll_options": {
+																				"type": "array",
+																				"items": {
+																					"$id": "#/$defs/TriggerProgressRollOption",
+																					"type": "object",
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"method": {
+																							"default": "any",
+																							"anyOf": [
+																								{
+																									"$id": "#/$defs/MoveRollMethod",
+																									"type": "string",
+																									"enum": [
+																										"any",
+																										"all",
+																										"highest",
+																										"lowest"
+																									]
+																								},
+																								{
+																									"$id": "#/$defs/MoveOutcomeType",
+																									"type": "string",
+																									"enum": [
+																										"miss",
+																										"weak_hit",
+																										"strong_hit"
+																									]
+																								}
+																							]
+																						},
+																						"by": {
+																							"$id": "#/$defs/TriggerBy",
+																							"type": "object",
+																							"properties": {
+																								"type": {
+																									"type": "boolean"
+																								},
+																								"ally": {
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"ally"
+																							]
+																						},
+																						"roll_options": {
+																							"type": "array",
+																							"items": {
+																								"$id": "#/$defs/TriggerProgressRollOptionChoice",
+																								"type": "object",
+																								"properties": {
+																									"using": {
+																										"anyOf": [
+																											{
+																												"$id": "#/$defs/ProgressType",
+																												"anyOf": [
+																													{
+																														"type": "string",
+																														"enum": [
+																															"quests_legacy",
+																															"bonds_legacy",
+																															"discoveries_legacy"
+																														]
+																													},
+																													{
+																														"type": "string",
+																														"enum": [
+																															"combat_progress",
+																															"vow_progress",
+																															"scene_challenge_progress"
+																														]
+																													},
+																													{
+																														"type": "string",
+																														"enum": [
+																															"expedition_progress",
+																															"connection_progress"
+																														]
+																													}
+																												]
+																											},
+																											{
+																												"$id": "#/$defs/ProgressType",
+																												"anyOf": [
+																													{
+																														"type": "string",
+																														"enum": [
+																															"combat_progress",
+																															"vow_progress",
+																															"scene_challenge_progress"
+																														]
+																													},
+																													{
+																														"type": "string",
+																														"enum": [
+																															"journey_progress",
+																															"delve_progress",
+																															"bonds_progress",
+																															"failure_track"
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								},
+																								"required": [
+																									"using"
+																								]
+																							}
+																						}
+																					},
+																					"required": [
+																						"method",
+																						"roll_options"
+																					]
+																				}
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"roll_type",
+																			"roll_options"
+																		]
+																	},
+																	{
+																		"$id": "#/$defs/TriggerNoRoll",
+																		"type": "object",
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"roll_type": {
+																				"const": "no_roll",
+																				"type": "string"
+																			},
+																			"roll_options": {
+																				"type": "array",
+																				"items": {
+																					"$id": "#/$defs/TriggerNoRollOption",
+																					"type": "object",
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"method": {
+																							"default": "any",
+																							"anyOf": [
+																								{
+																									"$id": "#/$defs/MoveRollMethod",
+																									"type": "string",
+																									"enum": [
+																										"any",
+																										"all",
+																										"highest",
+																										"lowest"
+																									]
+																								},
+																								{
+																									"$id": "#/$defs/MoveOutcomeType",
+																									"type": "string",
+																									"enum": [
+																										"miss",
+																										"weak_hit",
+																										"strong_hit"
+																									]
+																								}
+																							]
+																						},
+																						"by": {
+																							"$id": "#/$defs/TriggerBy",
+																							"type": "object",
+																							"properties": {
+																								"type": {
+																									"type": "boolean"
+																								},
+																								"ally": {
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"ally"
+																							]
+																						}
+																					},
+																					"required": [
+																						"method"
+																					]
+																				}
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"roll_type"
+																		]
+																	}
+																]
+															},
+															"text": {
+																"type": "string"
+															},
+															"outcomes": {
+																"$id": "#/$defs/MoveOutcomes",
+																"type": "object",
+																"properties": {
+																	"miss": {
+																		"$id": "#/$defs/MoveOutcomeMatchable",
+																		"type": "object",
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"count_as": {
+																				"$id": "#/$defs/MoveOutcomeType",
+																				"type": "string",
+																				"enum": [
+																					"miss",
+																					"weak_hit",
+																					"strong_hit"
+																				]
+																			},
+																			"reroll": {
+																				"type": "object",
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"method": {
+																						"$id": "#/$defs/MoveRerollMethod",
+																						"type": "string",
+																						"enum": [
+																							"any",
+																							"all",
+																							"challenge_die",
+																							"challenge_dice",
+																							"action_die"
+																						]
+																					}
+																				},
+																				"required": [
+																					"method"
+																				]
+																			},
+																			"match": {
+																				"$ref": "#/$defs/MoveOutcome"
+																			}
+																		},
+																		"required": [
+																			"text"
+																		]
+																	},
+																	"weak_hit": {
+																		"$ref": "#/$defs/MoveOutcome"
+																	},
+																	"strong_hit": {
+																		"$ref": "#/$defs/MoveOutcomeMatchable"
+																	}
+																},
+																"required": [
+																	"miss",
+																	"weak_hit",
+																	"strong_hit"
+																]
+															},
+															"oracles": {
+																"type": "array",
+																"items": {
+																	"$ref": "#/$defs/OracleTableID"
+																}
+															}
+														},
+														"required": [
+															"source",
+															"id",
+															"name",
+															"trigger",
+															"text",
+															"outcomes"
+														]
+													}
+												}
+											},
+											"options": {
+												"type": "object",
+												"patternProperties": {
+													"^[a-z_]+$": {
+														"type": "object",
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"label": {
+																		"type": "string"
+																	},
+																	"field_type": {
+																		"const": "text",
+																		"type": "string"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"label",
+																	"field_type"
+																]
+															},
+															{
+																"$id": "#/$defs/AssetAbilityOptionField",
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"$id": "#/$defs/AssetAbilityOptionFieldID",
+																		"type": "string",
+																		"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/options\\/[a-z_]+$"
+																	}
+																},
+																"required": [
+																	"id"
+																]
+															}
+														]
+													}
+												}
+											},
+											"controls": {
+												"type": "object",
+												"patternProperties": {
+													"^[a-z_]+$": {
+														"$id": "#/$defs/AssetAbilityControlField",
+														"allOf": [
+															{
+																"anyOf": [
+																	{
+																		"type": "object",
+																		"properties": {
+																			"label": {
+																				"allOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"field_type": {
+																				"const": "clock",
+																				"type": "string"
+																			},
+																			"value": {
+																				"allOf": [
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"type": "integer"
+																					}
+																				]
+																			},
+																			"min": {
+																				"allOf": [
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"const": 0,
+																						"type": "number"
+																					}
+																				]
+																			},
+																			"max": {
+																				"allOf": [
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"type": "integer",
+																						"enum": [
+																							4,
+																							6,
+																							8,
+																							10
+																						]
+																					}
+																				]
+																			}
+																		},
+																		"required": [
+																			"label",
+																			"field_type",
+																			"value",
+																			"min",
+																			"max"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"label": {
+																				"allOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"field_type": {
+																				"const": "counter",
+																				"type": "string"
+																			},
+																			"value": {
+																				"allOf": [
+																					{
+																						"type": "integer"
+																					},
+																					{
+																						"type": "integer"
+																					}
+																				]
+																			},
+																			"min": {
+																				"type": "integer"
+																			},
+																			"max": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"label",
+																			"field_type",
+																			"value",
+																			"min"
+																		]
+																	},
+																	{
+																		"type": "object",
+																		"properties": {
+																			"label": {
+																				"type": "string"
+																			},
+																			"field_type": {
+																				"const": "checkbox",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"label",
+																			"field_type"
+																		]
+																	}
+																]
+															},
+															{
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"$id": "#/$defs/AssetAbilityOptionFieldID",
+																		"type": "string",
+																		"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/controls\\/[a-z_]+$"
+																	}
+																},
+																"required": [
+																	"id"
+																]
+															}
+														]
+													}
+												}
+											},
+											"extend_asset": {
+												"allOf": [
+													{
+														"$ref": "T0"
+													},
+													{
+														"type": "object",
+														"properties": {
+															"condition_meter": {
+																"$id": "#/$defs/AssetConditionMeterExtension",
+																"type": "object",
+																"properties": {
+																	"min": {
+																		"allOf": [
+																			{
+																				"type": "integer"
+																			},
+																			{
+																				"default": 0,
+																				"type": "integer"
+																			}
+																		]
+																	},
+																	"max": {
+																		"allOf": [
+																			{
+																				"type": "integer"
+																			},
+																			{
+																				"type": "integer"
+																			}
+																		]
+																	},
+																	"controls": {
+																		"type": "object",
+																		"patternProperties": {
+																			"^[a-z_]+$": {
+																				"$id": "#/$defs/AssetConditionMeterControlField",
+																				"type": "object",
+																				"allOf": [
+																					{
+																						"type": "object",
+																						"properties": {
+																							"label": {
+																								"type": "string"
+																							},
+																							"field_type": {
+																								"const": "checkbox",
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"label",
+																							"field_type"
+																						]
+																					},
+																					{
+																						"type": "object",
+																						"properties": {
+																							"id": {
+																								"$id": "#/$defs/AssetConditionMeterControlFieldID",
+																								"type": "string",
+																								"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter\\/controls\\/[a-z_]+$"
+																							}
+																						},
+																						"required": [
+																							"id"
+																						]
+																					}
+																				]
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												]
+											},
+											"extend_moves": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"trigger": {
+															"$id": "#/$defs/Trigger",
+															"anyOf": [
+																{
+																	"$id": "#/$defs/TriggerActionRoll",
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"roll_type": {
+																			"const": "action_roll",
+																			"type": "string"
+																		},
+																		"roll_options": {
+																			"type": "array",
+																			"items": {
+																				"$id": "#/$defs/TriggerActionRollOption",
+																				"type": "object",
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"method": {
+																						"default": "any",
+																						"anyOf": [
+																							{
+																								"$id": "#/$defs/MoveRollMethod",
+																								"type": "string",
+																								"enum": [
+																									"any",
+																									"all",
+																									"highest",
+																									"lowest"
+																								]
+																							},
+																							{
+																								"$id": "#/$defs/MoveOutcomeType",
+																								"type": "string",
+																								"enum": [
+																									"miss",
+																									"weak_hit",
+																									"strong_hit"
+																								]
+																							}
+																						]
+																					},
+																					"by": {
+																						"$id": "#/$defs/TriggerBy",
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "boolean"
+																							},
+																							"ally": {
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"ally"
+																						]
+																					},
+																					"roll_options": {
+																						"type": "array",
+																						"items": {
+																							"$id": "#/$defs/TriggerActionRollOptionChoice",
+																							"anyOf": [
+																								{
+																									"$id": "#/$defs/TriggerActionRollOptionChoiceStat",
+																									"type": "object",
+																									"properties": {
+																										"using": {
+																											"anyOf": [
+																												{
+																													"$id": "#/$defs/PlayerStat",
+																													"type": "string",
+																													"enum": [
+																														"edge",
+																														"heart",
+																														"iron",
+																														"shadow",
+																														"wits"
+																													]
+																												},
+																												{
+																													"$id": "#/$defs/PlayerConditionMeter",
+																													"type": "string",
+																													"enum": [
+																														"health",
+																														"spirit",
+																														"supply"
+																													]
+																												}
+																											]
+																										}
+																									},
+																									"required": [
+																										"using"
+																									]
+																								},
+																								{
+																									"$id": "#/$defs/TriggerActionRollOptionChoiceRef",
+																									"type": "object",
+																									"properties": {
+																										"using": {
+																											"const": "ref",
+																											"type": "string"
+																										},
+																										"ref": {
+																											"anyOf": [
+																												{
+																													"$ref": "#/$defs/AssetOptionFieldIDWildcard"
+																												},
+																												{
+																													"$ref": "#/$defs/AssetConditionMeterIDWildcard"
+																												}
+																											]
+																										}
+																									},
+																									"required": [
+																										"using",
+																										"ref"
+																									]
+																								},
+																								{
+																									"$ref": "TriggerActionRollOptionChoiceAttachedAssetRef",
+																									"type": "object",
+																									"properties": {
+																										"using": {
+																											"const": "attached_asset_meter",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"using"
+																									]
+																								},
+																								{
+																									"$id": "#/$defs/TriggerActionRollOptionChoiceCustomValue",
+																									"type": "object",
+																									"properties": {
+																										"using": {
+																											"const": "custom_value",
+																											"type": "string"
+																										},
+																										"label": {
+																											"type": "string"
+																										},
+																										"value": {
+																											"minimum": 0,
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"using",
+																										"label",
+																										"value"
+																									]
+																								}
+																							]
+																						}
+																					}
+																				},
+																				"required": [
+																					"method",
+																					"roll_options"
+																				]
+																			}
+																		}
+																	},
+																	"required": [
+																		"text",
+																		"roll_type",
+																		"roll_options"
+																	]
+																},
+																{
+																	"$id": "#/$defs/TriggerProgressRoll",
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"roll_type": {
+																			"const": "progress_roll",
+																			"type": "string"
+																		},
+																		"roll_options": {
+																			"type": "array",
+																			"items": {
+																				"$id": "#/$defs/TriggerProgressRollOption",
+																				"type": "object",
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"method": {
+																						"default": "any",
+																						"anyOf": [
+																							{
+																								"$id": "#/$defs/MoveRollMethod",
+																								"type": "string",
+																								"enum": [
+																									"any",
+																									"all",
+																									"highest",
+																									"lowest"
+																								]
+																							},
+																							{
+																								"$id": "#/$defs/MoveOutcomeType",
+																								"type": "string",
+																								"enum": [
+																									"miss",
+																									"weak_hit",
+																									"strong_hit"
+																								]
+																							}
+																						]
+																					},
+																					"by": {
+																						"$id": "#/$defs/TriggerBy",
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "boolean"
+																							},
+																							"ally": {
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"ally"
+																						]
+																					},
+																					"roll_options": {
+																						"type": "array",
+																						"items": {
+																							"$id": "#/$defs/TriggerProgressRollOptionChoice",
+																							"type": "object",
+																							"properties": {
+																								"using": {
+																									"anyOf": [
+																										{
+																											"$id": "#/$defs/ProgressType",
+																											"anyOf": [
+																												{
+																													"type": "string",
+																													"enum": [
+																														"quests_legacy",
+																														"bonds_legacy",
+																														"discoveries_legacy"
+																													]
+																												},
+																												{
+																													"type": "string",
+																													"enum": [
+																														"combat_progress",
+																														"vow_progress",
+																														"scene_challenge_progress"
+																													]
+																												},
+																												{
+																													"type": "string",
+																													"enum": [
+																														"expedition_progress",
+																														"connection_progress"
+																													]
+																												}
+																											]
+																										},
+																										{
+																											"$id": "#/$defs/ProgressType",
+																											"anyOf": [
+																												{
+																													"type": "string",
+																													"enum": [
+																														"combat_progress",
+																														"vow_progress",
+																														"scene_challenge_progress"
+																													]
+																												},
+																												{
+																													"type": "string",
+																													"enum": [
+																														"journey_progress",
+																														"delve_progress",
+																														"bonds_progress",
+																														"failure_track"
+																													]
+																												}
+																											]
+																										}
+																									]
+																								}
+																							},
+																							"required": [
+																								"using"
+																							]
+																						}
+																					}
+																				},
+																				"required": [
+																					"method",
+																					"roll_options"
+																				]
+																			}
+																		}
+																	},
+																	"required": [
+																		"text",
+																		"roll_type",
+																		"roll_options"
+																	]
+																},
+																{
+																	"$id": "#/$defs/TriggerNoRoll",
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"roll_type": {
+																			"const": "no_roll",
+																			"type": "string"
+																		},
+																		"roll_options": {
+																			"type": "array",
+																			"items": {
+																				"$id": "#/$defs/TriggerNoRollOption",
+																				"type": "object",
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"method": {
+																						"default": "any",
+																						"anyOf": [
+																							{
+																								"$id": "#/$defs/MoveRollMethod",
+																								"type": "string",
+																								"enum": [
+																									"any",
+																									"all",
+																									"highest",
+																									"lowest"
+																								]
+																							},
+																							{
+																								"$id": "#/$defs/MoveOutcomeType",
+																								"type": "string",
+																								"enum": [
+																									"miss",
+																									"weak_hit",
+																									"strong_hit"
+																								]
+																							}
+																						]
+																					},
+																					"by": {
+																						"$id": "#/$defs/TriggerBy",
+																						"type": "object",
+																						"properties": {
+																							"type": {
+																								"type": "boolean"
+																							},
+																							"ally": {
+																								"type": "boolean"
+																							}
+																						},
+																						"required": [
+																							"type",
+																							"ally"
+																						]
+																					}
+																				},
+																				"required": [
+																					"method"
+																				]
+																			}
+																		}
+																	},
+																	"required": [
+																		"text",
+																		"roll_type"
+																	]
+																}
+															]
+														},
+														"text": {
+															"type": "string"
+														},
+														"outcomes": {
+															"$id": "#/$defs/MoveOutcomes",
+															"type": "object",
+															"properties": {
+																"miss": {
+																	"$id": "#/$defs/MoveOutcomeMatchable",
+																	"type": "object",
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"count_as": {
+																			"$id": "#/$defs/MoveOutcomeType",
+																			"type": "string",
+																			"enum": [
+																				"miss",
+																				"weak_hit",
+																				"strong_hit"
+																			]
+																		},
+																		"reroll": {
+																			"type": "object",
+																			"properties": {
+																				"text": {
+																					"type": "string"
+																				},
+																				"method": {
+																					"$id": "#/$defs/MoveRerollMethod",
+																					"type": "string",
+																					"enum": [
+																						"any",
+																						"all",
+																						"challenge_die",
+																						"challenge_dice",
+																						"action_die"
+																					]
+																				}
+																			},
+																			"required": [
+																				"method"
+																			]
+																		},
+																		"match": {
+																			"$ref": "#/$defs/MoveOutcome"
+																		}
+																	},
+																	"required": [
+																		"text"
+																	]
+																},
+																"weak_hit": {
+																	"$ref": "#/$defs/MoveOutcome"
+																},
+																"strong_hit": {
+																	"$ref": "#/$defs/MoveOutcomeMatchable"
+																}
+															},
+															"required": [
+																"miss",
+																"weak_hit",
+																"strong_hit"
+															]
+														},
+														"oracles": {
+															"type": "array",
+															"items": {
+																"$ref": "#/$defs/OracleTableID"
+															}
+														},
+														"extends": {
+															"type": "array",
+															"items": {
+																"description": "A move ID, for a standard move or a unique asset move",
+																"examples": [
+																	"classic/moves/combat/strike",
+																	"starforged/assets/module/grappler/moves/ready_grappler"
+																],
+																"$id": "#/$defs/MoveID",
+																"type": "string",
+																"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$"
+															}
+														}
+													},
+													"required": [
+														"trigger",
+														"text",
+														"outcomes"
+													]
+												}
+											}
+										},
+										"required": [
+											"id",
+											"text",
+											"enabled"
+										]
+									}
+								},
+								"condition_meter": {
+									"$id": "#/$defs/AssetConditionMeter",
+									"type": "object",
+									"properties": {
+										"label": {
+											"type": "string"
+										},
+										"min": {
+											"allOf": [
+												{
+													"type": "integer"
+												},
+												{
+													"default": 0,
+													"type": "integer"
+												}
+											]
+										},
+										"max": {
+											"allOf": [
+												{
+													"type": "integer"
+												},
+												{
+													"type": "integer"
+												}
+											]
+										},
+										"value": {
+											"type": "integer"
+										},
+										"id": {
+											"$id": "#/$defs/AssetConditionMeterID",
+											"type": "string",
+											"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter$"
+										},
+										"controls": {
+											"type": "object",
+											"patternProperties": {
+												"^[a-z_]+$": {
+													"$id": "#/$defs/AssetConditionMeterControlField",
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"label": {
+																	"type": "string"
+																},
+																"field_type": {
+																	"const": "checkbox",
+																	"type": "string"
+																},
+																"value": {
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"label",
+																"field_type"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"id": {
+																	"$id": "#/$defs/AssetConditionMeterControlFieldID",
+																	"type": "string",
+																	"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter\\/controls\\/[a-z_]+$"
+																}
+															},
+															"required": [
+																"id"
+															]
+														}
+													]
+												}
+											}
+										}
+									},
+									"required": [
+										"label",
+										"min",
+										"max",
+										"id"
+									]
+								},
+								"count_as_impact": {
+									"default": false,
+									"type": "boolean"
+								},
+								"attachments": {
+									"$id": "#/$defs/AssetAttachments",
+									"type": "object",
+									"properties": {
+										"assets": {
+											"type": "array",
+											"items": {
+												"$id": "#/$defs/AssetIDWildcard",
+												"type": "string",
+												"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)$"
+											}
+										},
+										"max": {
+											"minimum": 1,
+											"type": "integer"
+										}
+									},
+									"required": [
+										"assets"
+									]
+								},
+								"shared": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"id",
+								"name",
+								"source",
+								"abilities"
+							]
+						}
+					}
+				},
+				"member_label": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"source",
+				"id",
+				"name",
+				"summary"
+			]
+		},
+		"EncounterStarforged": {
+			"$id": "#/$defs/EncounterStarforged",
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"type": "object",
+					"properties": {
+						"oracles": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/OracleTableID"
+							}
+						},
+						"assets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetID"
+							}
+						},
+						"moves": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveID"
+							}
+						}
+					}
+				},
+				"name": {
+					"allOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"features": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"summary": {
+					"allOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"description": {
+					"allOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"quest_starter": {
+					"allOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
+				"rank": {
+					"$id": "#/$defs/ChallengeRank",
+					"type": "integer",
+					"enum": [
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				},
+				"drives": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tactics": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"id": {
+					"$id": "#/$defs/EncounterStarforgedID",
+					"examples": [
+						"starforged/encounters/chiton",
+						"starforged/encounters/chiton/variants/chiton_drone_pack"
+					],
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/encounters\\/[a-z_]+(\\/variants\\/[a-z_]+)?$"
+				},
+				"nature": {
+					"examples": [
+						"creature",
+						"horror",
+						"human",
+						"machine",
+						"monster",
+						"vehicle"
+					],
+					"type": "string"
+				},
+				"variants": {
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"$id": "#/$defs/EncounterVariantStarforged",
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"rank": {
+									"$id": "#/$defs/ChallengeRank",
+									"type": "integer",
+									"enum": [
+										1,
+										2,
+										3,
+										4,
+										5
+									]
+								},
+								"description": {
+									"type": "string"
+								},
+								"id": {
+									"$id": "#/$defs/EncounterStarforgedID",
+									"examples": [
+										"starforged/encounters/chiton",
+										"starforged/encounters/chiton/variants/chiton_drone_pack"
+									],
+									"type": "string",
+									"pattern": "^[a-z0-9_]{3,}\\/encounters\\/[a-z_]+(\\/variants\\/[a-z_]+)?$"
+								},
+								"nature": {
+									"examples": [
+										"creature",
+										"horror",
+										"human",
+										"machine",
+										"monster",
+										"vehicle"
+									],
+									"type": "string"
+								}
+							},
+							"required": [
+								"name",
+								"rank",
+								"description",
+								"id",
+								"nature"
+							]
+						}
+					}
+				}
+			},
+			"required": [
+				"source",
+				"name",
+				"features",
+				"summary",
+				"description",
+				"quest_starter",
+				"rank",
+				"drives",
+				"tactics",
+				"id",
+				"nature"
+			]
+		},
+		"SettingTruth": {
+			"$id": "#/$defs/SettingTruth",
+			"description": "A setting truth category in the format used by Starforged.",
+			"type": "object",
+			"properties": {
+				"source": {
+					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"type": "object",
+					"properties": {
+						"oracles": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/OracleTableID"
+							}
+						},
+						"assets": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetID"
+							}
+						},
+						"moves": {
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/MoveID"
+							}
+						}
+					}
+				},
+				"name": {
+					"type": "string"
+				},
+				"options": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"description": {
+										"type": "string"
+									},
+									"quest_starter": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"description",
+									"quest_starter"
+								]
+							}
+						},
+						{
+							"type": "array",
+							"items": {
+								"$id": "#/$defs/SettingTruthOption",
+								"type": "object",
+								"properties": {
+									"description": {
+										"allOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "string"
+											}
+										]
+									},
+									"quest_starter": {
+										"type": "string"
+									},
+									"id": {
+										"examples": [
+											"starforged/setting_truths/iron/0"
+										],
+										"$id": "#/$defs/SettingTruthOptionID",
+										"type": "string",
+										"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+\\/[0-2]$"
+									},
+									"summary": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"description",
+									"quest_starter",
+									"id",
+									"summary"
+								]
+							}
+						}
+					]
+				},
+				"icon": {
+					"format": "uri",
+					"type": "string"
+				},
+				"id": {
+					"examples": [
+						"starforged/setting_truths/iron"
+					],
+					"$id": "#/$defs/SettingTruthID",
+					"type": "string",
+					"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+$"
+				}
+			},
+			"required": [
+				"source",
+				"name",
+				"options",
+				"id"
+			]
+		}
+	},
+	"type": "object",
+	"properties": {
+		"ruleset": {
+			"const": "starforged",
+			"type": "string"
+		},
+		"source": {
+			"$ref": "#/$defs/Source"
+		},
+		"oracles": {
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": {
+					"$ref": "#/$defs/OracleCollection"
+				}
+			}
+		},
+		"moves": {
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": {
+					"$ref": "#/$defs/MoveCategory"
+				}
+			}
+		},
+		"assets": {
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": {
+					"$ref": "#/$defs/AssetType"
+				}
+			}
+		},
+		"encounters": {
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": {
+					"$ref": "#/$defs/EncounterStarforged"
+				}
+			}
+		},
+		"setting_truths": {
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": {
+					"$ref": "#/$defs/SettingTruth"
+				}
+			}
+		}
+	},
+	"required": [
+		"ruleset",
+		"source"
+	]
+}

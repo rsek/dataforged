@@ -1,34 +1,100 @@
 import {
-	type Regions,
-	type Metadata,
-	type DelveSites,
-	type Rarities,
-	type Encounters,
-	type Truths,
-	type Oracles,
-	type Moves,
-	type Assets
+	type TSchema,
+	Type,
+	type ObjectOptions,
+	type Static
+} from '@sinclair/typebox'
+import { Source } from 'base-types/metadata'
+import { Dictionary } from 'base-types/common'
+
+import {
+	Oracles,
+	Moves,
+	Assets,
+	Regions,
+	Encounters,
+	Rarities,
+	DelveSites,
+	Truths,
+	ID,
+	Metadata
 } from '@base-types'
 
-interface Sourcebook<T extends Metadata.Ruleset> {
-	// TODO: '_source' prop when in yaml format only
-	ruleset: T
-	_source: Metadata.Source
-	oracles?: Record<string, Oracles.OracleCollection>
-	moves?: Record<string, Moves.MoveCategory>
-	assets?: Record<string, Assets.AssetType>
+import { mapValues } from 'lodash'
+import { writeFileSync } from 'fs'
+
+function Sourcebook<T extends Metadata.Ruleset>(
+	ruleset: T,
+	contents: Record<string, TSchema>,
+	$defs: Record<string, TSchema>,
+	options: ObjectOptions = {}
+) {
+	return Type.Object(
+		{
+			ruleset: Type.Literal(ruleset),
+			source: Type.Ref(Source),
+			...mapValues(contents, (v) => Type.Optional(Dictionary(Type.Ref(v))))
+		},
+		{
+			$schema: 'http://json-schema.org/draft-07/schema',
+			...options,
+			$defs
+		}
+	)
 }
 
-export interface StarforgedSourcebook extends Sourcebook<'starforged'> {
-	encounters?: Record<string, Encounters.EncounterStarforged>
-	setting_truths?: Record<string, Truths.SettingTruth>
-}
-export interface ClassicSourcebook extends Sourcebook<'classic'> {
-	regions?: Record<string, Regions.RegionEntry>
-	encounters?: Record<string, Encounters.EncounterCollectionClassic>
-	rarities?: Record<string, Rarities.Rarity>
-	delve_sites?: Record<string, DelveSites.DelveSite>
-	site_themes?: Record<string, DelveSites.DelveSiteTheme>
-	site_domains?: Record<string, DelveSites.DelveSiteDomain>
-	world_truths?: Record<string, Truths.WorldTruth>
-}
+export const SourcebookClassic = Sourcebook(
+	'classic',
+	{
+		oracles: Oracles.OracleCollection,
+		moves: Moves.MoveCategory,
+		assets: Assets.AssetType,
+		regions: Regions.RegionEntry,
+		encounters: Encounters.EncounterCollectionClassic,
+		rarities: Rarities.Rarity,
+		delve_sites: DelveSites.DelveSite,
+		site_themes: DelveSites.DelveSiteTheme,
+		site_domains: DelveSites.DelveSiteDomain,
+		world_truths: Truths.WorldTruth
+	},
+	{
+		...Metadata,
+		...Oracles,
+		...Moves,
+		...Assets,
+		...Regions,
+		...Encounters,
+		...Rarities,
+		...DelveSites,
+		...Truths,
+		...ID
+	}
+)
+export type SourcebookClassic = Static<typeof SourcebookClassic>
+
+export const SourcebookStarforged = Sourcebook(
+	'starforged',
+	{
+		oracles: Oracles.OracleCollection,
+		moves: Moves.MoveCategory,
+		assets: Assets.AssetType,
+		encounters: Encounters.EncounterStarforged,
+		setting_truths: Truths.SettingTruth
+	},
+	{
+		...Metadata,
+		...Oracles,
+		...Moves,
+		...Assets,
+		...Encounters,
+		...Truths,
+		...ID
+	}
+)
+
+export type SourcebookStarforged = Static<typeof SourcebookStarforged>
+
+writeFileSync(
+	'./dataforged.schema.json',
+	JSON.stringify(SourcebookStarforged, undefined, '\t')
+)

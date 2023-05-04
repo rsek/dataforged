@@ -14,7 +14,7 @@ import { toJtdId, setIdRef, getMetadata } from 'json-typedef/utils'
 import { set } from 'lodash'
 
 export const AssetExtensionChoice: JTDSchemaType<
-	Types.Abstract.SelectOption<Types.Assets.AssetExtension>,
+	Types.Common.SelectOption<Types.Assets.AssetExtension>,
 	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
 > = {
 	properties: {

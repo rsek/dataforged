@@ -3,14 +3,14 @@ import { type Oracles, type Localize } from '@base-types'
 export type OracleRowAttribute = 'location' | 'region'
 
 export interface ObjectTemplate {
-	name: Localize.Label
+	name: Type.Ref(Localize.Label)
 	attributes: Record<string, ObjectTemplateAttribute>
 
 	// ability to extend another game object
 }
 
 export interface ObjectTemplateAttribute {
-	label: Localize.Label
+	label: Type.Ref(Localize.Label)
 	min: number
 	max: number
 	dependents?: ObjectTemplateAttribute[]

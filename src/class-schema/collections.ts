@@ -10,7 +10,7 @@ import { DICT_KEY } from 'schema-json/common'
 
 export abstract class Collection<T>
 	extends Abstract.Node
-	implements Types.Abstract.Collection<T>
+	implements Types.Common.Collection<T>
 {
 	name: string
 	canonical_name?: string
@@ -26,7 +26,7 @@ export abstract class Collection<T>
 	description?: string | undefined
 
 	constructor(
-		data: Utils.YamlInput<Types.Abstract.Collection<T>>,
+		data: Utils.YamlInput<Types.Common.Collection<T>>,
 		id: string,
 		parentSource: Types.Metadata.Source
 	) {

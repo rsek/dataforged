@@ -140,7 +140,7 @@ export const Asset: Simplify<Schema<Types.Assets.Asset>> = {
 
 export const AssetAttachment: Schema<Types.Assets.AssetAttachment> = {
 	description:
-		'Describes which assets can be attached to this asset. The "canonical" example for this are Starforged\'s Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.',
+		"Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 	type: 'object',
 	required: ['assets'],
 	properties: {

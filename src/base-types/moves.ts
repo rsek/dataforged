@@ -1,6 +1,6 @@
 import * as Types from '@base-types'
 import { type Static, Type, type ObjectOptions } from '@sinclair/typebox'
-import { Collection, SourcedNode } from 'base-types/abstract'
+import { Collection, SourcedNode, ExtendMany } from 'base-types/common'
 import {
 	AssetConditionMeterIDWildcard,
 	AssetOptionFieldIDWildcard,
@@ -10,43 +10,46 @@ import {
 } from 'base-types/id'
 import { Label, MarkdownString } from 'base-types/localize'
 import { PlayerConditionMeter, PlayerStat } from 'base-types/players'
+import { ProgressTypeCommon } from 'base-types/progress'
 import { StringEnum, RequireBy } from 'base-types/utils'
 
-const MoveRollMethod = StringEnum(['any', 'all', 'highest', 'lowest'], {
-	$id: 'MoveRollMethod'
+export const MoveRollMethod = StringEnum(['any', 'all', 'highest', 'lowest'], {
+	$id: '#/$defs/MoveRollMethod'
 })
 
-const MoveRerollMethod = StringEnum(
+export const MoveRerollMethod = StringEnum(
 	['any', 'all', 'challenge_die', 'challenge_dice', 'action_die'],
-	{ $id: 'MoveRerollMethod' }
+	{ $id: '#/$defs/MoveRerollMethod' }
 )
 export type MoveRerollMethod = Static<typeof MoveRerollMethod>
 
-const MoveOutcomeType = StringEnum(['miss', 'weak_hit', 'strong_hit'], {
-	$id: 'MoveOutcomeType'
+export const MoveOutcomeType = StringEnum(['miss', 'weak_hit', 'strong_hit'], {
+	$id: '#/$defs/MoveOutcomeType'
 })
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
-const MoveRollType = StringEnum(['action_roll', 'progress_roll', 'no_roll'], {
-	$id: 'MoveRollType'
-})
+export const MoveRollType = StringEnum(
+	['action_roll', 'progress_roll', 'no_roll'],
+	{
+		$id: '#/$defs/MoveRollType'
+	}
+)
 export type MoveRollType = Static<typeof MoveRollType>
 
-const TriggerBy = Type.Object(
+export const TriggerBy = Type.Object(
 	{
-		type: Type.Boolean(),
-		ally: Type.Boolean()
+		player: Type.Boolean({ default: true }),
+		ally: Type.Boolean({ default: false })
 	},
-	{ $id: 'TriggerBy' }
+	{
+		$id: '#/$defs/TriggerBy',
+		description:
+			"Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move."
+	}
 )
 export type TriggerBy = Static<typeof TriggerBy>
 
-export const ProgressType = Type.Union([
-	Types.RulesetStarforged.ProgressType,
-	Types.RulesetClassic.ProgressType
-])
-
-const TriggerActionRollOptionChoiceAttachedAssetRef = Type.Object(
+export const TriggerActionRollOptionChoiceAttachedAssetRef = Type.Object(
 	{
 		using: Type.Literal('attached_asset_meter')
 	},
@@ -57,38 +60,37 @@ export type TriggerActionRollOptionChoiceAttachedAssetRef = Static<
 	typeof TriggerActionRollOptionChoiceAttachedAssetRef
 >
 
-const TriggerActionRollOptionChoiceRef = Type.Object(
+export const TriggerActionRollOptionChoiceRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
-		ref: Type.Union(
-			[AssetOptionFieldIDWildcard, AssetConditionMeterIDWildcard].map((id) =>
-				Type.Ref(id)
-			)
-		)
+		ref: Type.Union([
+			Type.Ref(AssetOptionFieldIDWildcard),
+			Type.Ref(AssetConditionMeterIDWildcard)
+		])
 	},
-	{ $id: 'TriggerActionRollOptionChoiceRef' }
+	{ $id: '#/$defs/TriggerActionRollOptionChoiceRef' }
 )
 export type TriggerActionRollOptionChoiceRef = Static<
 	typeof TriggerActionRollOptionChoiceRef
 >
 
-const TriggerActionRollOptionChoiceStat = Type.Object(
+export const TriggerActionRollOptionChoiceStat = Type.Object(
 	{
-		using: Type.Union([PlayerStat, PlayerConditionMeter])
+		using: Type.Union([Type.Ref(PlayerStat), Type.Ref(PlayerConditionMeter)])
 	},
-	{ $id: 'TriggerActionRollOptionChoiceStat' }
+	{ $id: '#/$defs/TriggerActionRollOptionChoiceStat' }
 )
 export type TriggerActionRollOptionChoiceStat = Static<
 	typeof TriggerActionRollOptionChoiceStat
 >
 
-const TriggerActionRollOptionChoiceCustomValue = Type.Object(
+export const TriggerActionRollOptionChoiceCustomValue = Type.Object(
 	{
 		using: Type.Literal('custom_value'),
-		label: Label,
+		label: Type.Ref(Label),
 		value: Type.Integer({ minimum: 0 })
 	},
-	{ $id: 'TriggerActionRollOptionChoiceCustomValue' }
+	{ $id: '#/$defs/TriggerActionRollOptionChoiceCustomValue' }
 )
 export type TriggerRollOptionActionChoiceCustomValue = Static<
 	typeof TriggerActionRollOptionChoiceCustomValue
@@ -96,12 +98,12 @@ export type TriggerRollOptionActionChoiceCustomValue = Static<
 
 export const TriggerActionRollOptionChoice = Type.Union(
 	[
-		TriggerActionRollOptionChoiceStat,
-		TriggerActionRollOptionChoiceRef,
-		TriggerActionRollOptionChoiceAttachedAssetRef,
-		TriggerActionRollOptionChoiceCustomValue
+		Type.Ref(TriggerActionRollOptionChoiceStat),
+		Type.Ref(TriggerActionRollOptionChoiceRef),
+		Type.Ref(TriggerActionRollOptionChoiceAttachedAssetRef),
+		Type.Ref(TriggerActionRollOptionChoiceCustomValue)
 	],
-	{ $id: 'TriggerActionRollOptionChoice' }
+	{ $id: '#/$defs/TriggerActionRollOptionChoice' }
 )
 export type TriggerActionRollOptionChoice = Static<
 	typeof TriggerActionRollOptionChoice
@@ -109,109 +111,127 @@ export type TriggerActionRollOptionChoice = Static<
 
 export const TriggerProgressRollOptionChoice = Type.Object(
 	{
-		using: ProgressType
+		using: Type.Ref(ProgressTypeCommon)
 	},
-	{ $id: 'TriggerProgressRollOptionChoice' }
+	{ $id: '#/$defs/TriggerProgressRollOptionChoice' }
 )
 export type TriggerProgressRollOptionChoice = Static<
 	typeof TriggerProgressRollOptionChoice
 >
 
-const TriggerRollOptionBase = <T extends MoveRollType = MoveRollType>(
+function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 	t: T,
 	options: ObjectOptions = {}
-) =>
-	Type.Object(
+) {
+	return Type.Object(
 		{
-			text: Type.Optional(Types.Localize.MarkdownString),
-			method: Type.Union([MoveRollMethod, MoveOutcomeType], { default: 'any' }),
-			by: Type.Optional(TriggerBy)
+			text: Type.Optional(Type.Ref(Types.Localize.MarkdownString)),
+			method: Type.Union(
+				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
+				{ default: 'any' }
+			),
+			by: Type.Optional(Type.Ref(TriggerBy))
 		},
 		options
 	)
+}
 
-const TriggerActionRollOption = Type.Composite(
+export const TriggerActionRollOption = Type.Composite(
 	[
 		TriggerRollOptionBase('action_roll'),
-		Type.Object({ roll_options: Type.Array(TriggerActionRollOptionChoice) })
+		Type.Object({
+			roll_options: Type.Array(Type.Ref(TriggerActionRollOptionChoice))
+		})
 	],
-	{ $id: 'TriggerActionRollOption' }
+	{ $id: '#/$defs/TriggerActionRollOption' }
 )
-const TriggerProgressRollOption = Type.Composite(
+export const TriggerProgressRollOption = Type.Composite(
 	[
 		TriggerRollOptionBase('progress_roll'),
-		Type.Object({ roll_options: Type.Array(TriggerProgressRollOptionChoice) })
+		Type.Object({
+			roll_options: Type.Array(Type.Ref(TriggerProgressRollOptionChoice))
+		})
 	],
-	{ $id: 'TriggerProgressRollOption' }
+	{ $id: '#/$defs/TriggerProgressRollOption' }
 )
-const TriggerNoRollOption = TriggerRollOptionBase('no_roll', {
-	$id: 'TriggerNoRollOption'
+export const TriggerNoRollOption = TriggerRollOptionBase('no_roll', {
+	$id: '#/$defs/TriggerNoRollOption'
 })
 
-const TriggerBase = <T extends MoveRollType>(t: T) =>
-	Type.Object({
-		text: Types.Localize.MarkdownString,
+function TriggerBase<T extends MoveRollType>(t: T) {
+	return Type.Object({
+		text: Type.Ref(Types.Localize.MarkdownString),
 		roll_type: Type.Literal(t)
 	})
+}
 
-const TriggerActionRoll = Type.Composite(
+export const TriggerActionRoll = Type.Composite(
 	[
 		TriggerBase('action_roll'),
-		Type.Object({ roll_options: Type.Array(TriggerActionRollOption) })
+		Type.Object({ roll_options: Type.Array(Type.Ref(TriggerActionRollOption)) })
 	],
-	{ $id: 'TriggerActionRoll' }
+	{ $id: '#/$defs/TriggerActionRoll' }
 )
-const TriggerProgressRoll = Type.Composite(
+export const TriggerProgressRoll = Type.Composite(
 	[
 		TriggerBase('progress_roll'),
-		Type.Object({ roll_options: Type.Array(TriggerProgressRollOption) })
+		Type.Object({
+			roll_options: Type.Array(Type.Ref(TriggerProgressRollOption))
+		})
 	],
-	{ $id: 'TriggerProgressRoll' }
+	{ $id: '#/$defs/TriggerProgressRoll' }
 )
-const TriggerNoRoll = Type.Composite(
+export const TriggerNoRoll = Type.Composite(
 	[
 		TriggerBase('no_roll'),
 		Type.Object({
-			roll_options: Type.Optional(Type.Array(TriggerNoRollOption))
+			roll_options: Type.Optional(Type.Array(Type.Ref(TriggerNoRollOption)))
 		})
 	],
-	{ $id: 'TriggerNoRoll' }
+	{ $id: '#/$defs/TriggerNoRoll' }
 )
 
-const Trigger = Type.Union(
-	[TriggerActionRoll, TriggerProgressRoll, TriggerNoRoll],
-	{ $id: 'Trigger' }
+export const Trigger = Type.Union(
+	[
+		Type.Ref(TriggerActionRoll),
+		Type.Ref(TriggerProgressRoll),
+		Type.Ref(TriggerNoRoll)
+	],
+	{ $id: '#/$defs/Trigger' }
 )
 
-const MoveReroll = Type.Object({
-	text: Type.Optional(MarkdownString),
-	method: MoveRerollMethod
-})
+export const MoveReroll = Type.Object(
+	{
+		text: Type.Optional(Type.Ref(MarkdownString)),
+		method: Type.Ref(MoveRerollMethod)
+	},
+	{ $id: '#/$defs/MoveReroll' }
+)
 export type MoveReroll = Static<typeof MoveReroll>
 
-const MoveOutcome = Type.Object(
+export const MoveOutcome = Type.Object(
 	{
-		text: MarkdownString,
-		count_as: Type.Optional(MoveOutcomeType),
-		reroll: Type.Optional(MoveReroll)
+		text: Type.Ref(MarkdownString),
+		count_as: Type.Optional(Type.Ref(MoveOutcomeType)),
+		reroll: Type.Optional(Type.Ref(MoveReroll))
 	},
-	{ $id: 'MoveOutcome' }
+	{ $id: '#/$defs/MoveOutcome' }
 )
 export type MoveOutcome = Static<typeof MoveOutcome>
 
-const MoveOutcomeMatchable = Type.Composite(
+export const MoveOutcomeMatchable = Type.Composite(
 	[MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
-	{ $id: 'MoveOutcomeMatchable' }
+	{ $id: '#/$defs/MoveOutcomeMatchable' }
 )
 export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
 
-const MoveOutcomes = Type.Object(
+export const MoveOutcomes = Type.Object(
 	{
-		miss: MoveOutcomeMatchable,
+		miss: Type.Ref(MoveOutcomeMatchable),
 		weak_hit: Type.Ref(MoveOutcome),
 		strong_hit: Type.Ref(MoveOutcomeMatchable)
 	},
-	{ $id: 'MoveOutcomes' }
+	{ $id: '#/$defs/MoveOutcomes' }
 )
 export type MoveOutcomes = Static<typeof MoveOutcomes>
 
@@ -219,24 +239,24 @@ export const Move = Type.Composite(
 	[
 		SourcedNode,
 		Type.Object({
-			id: MoveID,
-			name: Label,
-			trigger: Trigger,
-			text: MarkdownString,
-			outcomes: MoveOutcomes,
+			id: Type.Ref(MoveID),
+			name: Type.Ref(Label),
+			trigger: Type.Ref(Trigger),
+			text: Type.Ref(MarkdownString),
+			outcomes: Type.Ref(MoveOutcomes),
 			oracles: Type.Optional(Type.Array(Type.Ref(OracleTableID)))
 		})
 	],
-	{ $id: 'Move' }
+	{ $id: '#/$defs/Move' }
 )
 export type Move = Static<typeof Move>
 
 export const MoveCategory = RequireBy(
 	Collection(Move, MoveCategoryID),
 	['color'],
-	{ $id: 'MoveCategory' }
+	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export const MoveExtension = Types.Abstract.ExtendMany(Move)
+export const MoveExtension = ExtendMany(Move, { $id: '#/$defs/MoveExtension' })
 export type MoveExtension = Static<typeof MoveExtension>

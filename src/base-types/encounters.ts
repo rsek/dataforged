@@ -1,25 +1,22 @@
-import { Abstract, Localize, Progress } from '@base-types'
 import { type Static, Type } from '@sinclair/typebox'
-import { DICT_KEY, Collection } from 'base-types/abstract'
-import {
-	EncounterClassicID,
-	EncounterCollectionID,
-	EncounterStarforgedID
-} from 'base-types/id'
+import * as Common from 'base-types/common'
+import * as Localize from 'base-types/localize'
+import * as Progress from 'base-types/progress'
+import * as ID from 'base-types/id'
 
-export const EncounterNatureStarforged = Type.String({ examples: [] })
+export const EncounterNatureStarforged = Type.String({
+	examples: ['creature', 'horror', 'human', 'machine', 'monster', 'vehicle']
+})
 export type EncounterNatureStarforged = Static<typeof EncounterNatureStarforged>
-export const EncounterNatureClassic = Type.String({ examples: [] })
-export type EncounterNatureClassic = Static<typeof EncounterNatureClassic>
 
 const EncounterLike = Type.Object({
-	name: Localize.Label,
+	name: Type.Ref(Localize.Label),
 	rank: Progress.ChallengeRank,
 	description: Localize.MarkdownString
 })
 
 const EncounterBase = Type.Composite([
-	Abstract.Cyclopedia,
+	Common.Cyclopedia,
 	EncounterLike,
 	Type.Object({
 		drives: Type.Array(Localize.MarkdownString),
@@ -32,11 +29,11 @@ export const EncounterVariantStarforged = Type.Composite(
 	[
 		EncounterLike,
 		Type.Object({
-			id: EncounterStarforgedID,
+			id: Type.Ref(ID.EncounterStarforgedID),
 			nature: EncounterNatureStarforged
 		})
 	],
-	{ $id: 'EncounterVariantStarforged' }
+	{ $id: '#/$defs/EncounterVariantStarforged' }
 )
 export type EncounterVariantStarforged = Static<
 	typeof EncounterVariantStarforged
@@ -46,35 +43,36 @@ export const EncounterClassic = Type.Composite(
 	[
 		EncounterBase,
 		Type.Object({
-			id: EncounterClassicID,
-			your_truths: Type.Optional(Localize.MarkdownString)
+			id: Type.Ref(ID.EncounterClassicID),
+			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString))
 		})
 	],
-	{ $id: 'EncounterClassic' }
+	{ $id: '#/$defs/EncounterClassic' }
 )
 
 export const EncounterStarforged = Type.Composite(
 	[
 		EncounterBase,
 		Type.Object({
-			id: EncounterStarforgedID,
+			id: Type.Ref(ID.EncounterStarforgedID),
 			summary: Localize.MarkdownString,
 			nature: EncounterNatureStarforged,
-			variants: Type.Optional(Type.Record(DICT_KEY, EncounterVariantStarforged))
+			variants: Type.Optional(Common.Dictionary(EncounterVariantStarforged))
 		})
 	],
-	{ $id: 'EncounterStarforged' }
+	{ $id: '#/$defs/EncounterStarforged' }
 )
+export type EncounterStarforged = Static<typeof EncounterStarforged>
 
 export const EncounterCollectionClassic = Type.Composite(
 	[
-		Collection(EncounterClassic, EncounterCollectionID),
+		Common.Collection(EncounterClassic, ID.EncounterCollectionID),
 		Type.Object({
-			id: EncounterCollectionID,
-			member_label: Type.Optional(Localize.Label)
+			id: Type.Ref(ID.EncounterCollectionID),
+			member_label: Type.Optional(Type.Ref(Localize.Label))
 		})
 	],
-	{ $id: 'EncounterCollectionClassic' }
+	{ $id: '#/$defs/EncounterCollectionClassic' }
 )
 export type EncounterCollectionClassic = Static<
 	typeof EncounterCollectionClassic

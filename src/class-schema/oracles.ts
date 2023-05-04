@@ -24,7 +24,7 @@ import { DF_KEY } from '@schema-json/common'
 export abstract class Range<
 	Low extends number | null = number | null,
 	High extends number | null = number | null
-> implements Types.Abstract.Range
+> implements Types.Common.Range
 {
 	@IsInt()
 	@Min(1)
@@ -36,7 +36,7 @@ export abstract class Range<
 	@Max(100)
 	high: High
 
-	constructor(data: Types.Abstract.Range<Low, High>) {
+	constructor(data: Types.Common.Range<Low, High>) {
 		this.low = data.low
 		this.high = data.high
 	}
@@ -242,7 +242,7 @@ export class OracleTableColumn implements Types.Oracles.OracleTableColumn {
 }
 
 export class OracleCollectionRendering
-	implements Types.Abstract.OracleCollectionRendering
+	implements Types.Common.OracleCollectionRendering
 {
 	columns: Record<
 		string,
@@ -256,7 +256,7 @@ export class OracleCollectionRendering
 	@IsHexColor()
 	color?: string | undefined
 
-	constructor(data: Types.Abstract.OracleCollectionRendering) {
+	constructor(data: Types.Common.OracleCollectionRendering) {
 		this.style = data.style ?? null
 		this.columns = data.columns
 		this.color = data.color
@@ -265,13 +265,13 @@ export class OracleCollectionRendering
 
 export class OracleCollection
 	extends Collections.Collection<Types.Oracles.OracleTable>
-	implements Types.Abstract.OracleCollection
+	implements Types.Common.OracleCollection
 {
 	@IsRecord(OracleTable, new RegExp(DF_KEY))
 	contents: Record<string, Types.Oracles.OracleTable> = {}
 
 	@IsOptional()
-	rendering?: Types.Abstract.OracleCollectionRendering | undefined
+	rendering?: Types.Common.OracleCollectionRendering | undefined
 
 	@IsOptional()
 	collections?: Record<string, OracleCollection> | undefined
@@ -280,8 +280,8 @@ export class OracleCollection
 	id!: string
 
 	constructor(
-		data: Utils.YamlInput<Types.Abstract.OracleCollection>,
-		id: Types.Abstract.OracleCollectionID,
+		data: Utils.YamlInput<Types.Common.OracleCollection>,
+		id: Types.Common.OracleCollectionID,
 		parentSource: Types.Metadata.Source
 	) {
 		super(data, id, parentSource)

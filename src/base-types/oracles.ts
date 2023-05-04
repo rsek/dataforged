@@ -1,6 +1,11 @@
-import { Localize, Metadata, Abstract } from '@base-types'
 import { type Static, Type } from '@sinclair/typebox'
-import { RecursiveCollection, SourcedNode } from 'base-types/abstract'
+import {
+	DICT_KEY,
+	Dictionary,
+	RecursiveCollection,
+	SourcedNode,
+	SuggestionsBase
+} from 'base-types/common'
 import {
 	OracleCollectionID,
 	OracleTableID,
@@ -9,7 +14,9 @@ import {
 import { TemplateString } from 'base-types/localize'
 import { WebpImageURL } from 'base-types/metadata'
 import { StringEnum } from 'base-types/utils'
-import { DICT_KEY } from 'schema-json/common'
+import * as Localize from 'base-types/localize'
+import * as Metadata from 'base-types/metadata'
+import * as Common from 'base-types/common'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -17,24 +24,15 @@ export const OracleRollTemplate = Type.Object(
 		summary: Type.Optional(TemplateString),
 		description: Type.Optional(TemplateString)
 	},
-	{ $id: 'OracleRollTemplate' }
+	{ $id: '#/$defs/OracleRollTemplate' }
 )
 export type OracleRollTemplate = Static<typeof OracleRollTemplate>
 
 export const OracleTableRollMethod = StringEnum(
 	['no_duplicates', 'keep_duplicates', 'make_it_worse'],
-	{ default: 'no_duplicates', $id: 'OracleTableRollMethod' }
+	{ default: 'no_duplicates', $id: '#/$defs/OracleTableRollMethod' }
 )
 export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
-
-export const OracleTableMatchBehavior = Type.Object(
-	{
-		text: Localize.MarkdownString
-	},
-	{ $id: 'OracleTableMatchBehavior' }
-)
-
-export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
 
 export const OracleTableRoll = Type.Object(
 	{
@@ -42,46 +40,55 @@ export const OracleTableRoll = Type.Object(
 		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
 		method: Type.Optional(OracleTableRollMethod)
 	},
-	{ $id: 'OracleTableRoll' }
+	{ $id: '#/$defs/OracleTableRoll' }
 )
 export type OracleTableRoll = Static<typeof OracleTableRoll>
+
 export const OracleTableRow = Type.Composite(
 	[
-		Abstract.Range,
+		Common.Range,
 		Type.Object({
-			id: OracleTableRowID,
-			result: Localize.MarkdownString,
-			icon: Type.Optional(Metadata.SvgImageURL),
-			summary: Type.Optional(Localize.MarkdownString),
-			description: Type.Optional(Localize.MarkdownString),
-			rolls: Type.Optional(Type.Array(OracleTableRoll)),
-			suggestions: Type.Optional(Metadata.SuggestionsBase),
+			id: Type.Ref(OracleTableRowID),
+			result: Type.Ref(Localize.MarkdownString),
+			icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
+			suggestions: Type.Optional(Type.Ref(SuggestionsBase)),
 			embed_table: Type.Optional(Type.Ref(OracleTableID)),
-			template: Type.Optional(OracleRollTemplate)
+			template: Type.Optional(Type.Ref(OracleRollTemplate))
 		})
 	],
-	{ $id: 'OracleTableRow' }
+	{ $id: '#/$defs/OracleTableRow' }
 )
-
 export type OracleTableRow = Static<typeof OracleTableRow>
+
+export const OracleTableMatchBehavior = Type.Object(
+	{
+		text: Type.Ref(Localize.MarkdownString)
+	},
+	{ $id: '#/$defs/OracleTableMatchBehavior' }
+)
+export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
+
 export const OracleTableStyle = StringEnum(
 	['table', 'embed_in_row', 'embed_as_column'],
-	{ $id: 'OracleTableStyle' }
+	{ $id: '#/$defs/OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
 export const OracleColumnContentType = StringEnum(
 	['range', 'result', 'summary', 'description'],
-	{ $id: 'OracleColumnContentType' }
+	{ $id: '#/$defs/OracleColumnContentType' }
 )
 export type OracleColumnContentType = Static<typeof OracleColumnContentType>
 
 export const OracleTableColumn = Type.Object(
 	{
-		label: Type.Optional(Localize.Label),
-		content_type: OracleColumnContentType
+		label: Type.Optional(Type.Ref(Localize.Label)),
+		content_type: Type.Ref(OracleColumnContentType)
 	},
-	{ $id: 'OracleTableColumn' }
+	{ $id: '#/$defs/OracleTableColumn' }
 )
 export type OracleTableColumn = Static<typeof OracleTableColumn>
 
@@ -89,21 +96,21 @@ export const OracleCollectionColumn = Type.Composite(
 	[
 		OracleTableColumn,
 		Type.Object({
-			table_key: Type.String(),
-			color: Type.Optional(Metadata.CSSColor)
+			table_key: DICT_KEY,
+			color: Type.Optional(Type.Ref(Metadata.CSSColor))
 		})
 	],
-	{ $id: 'OracleCollectionColumn' }
+	{ $id: '#/$defs/OracleCollectionColumn' }
 )
 export type OracleCollectionColumn = Static<typeof OracleCollectionColumn>
 
 export const OracleTableRendering = Type.Object(
 	{
-		icon: Type.Optional(Metadata.SvgImageURL),
-		style: Type.Optional(OracleTableStyle),
-		color: Type.Optional(Metadata.CSSColor)
+		icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+		style: Type.Optional(Type.Ref(OracleTableStyle)),
+		color: Type.Optional(Type.Ref(Metadata.CSSColor))
 	},
-	{ $id: 'OracleTableRendering' }
+	{ $id: '#/$defs/OracleTableRendering' }
 )
 export type OracleTableRendering = Static<typeof OracleTableRendering>
 
@@ -111,32 +118,32 @@ export const OracleTable = Type.Composite(
 	[
 		SourcedNode,
 		Type.Object({
-			id: OracleTableID,
-			name: Localize.Label,
-			canonical_name: Type.Optional(Localize.Label),
-			summary: Type.Optional(Localize.MarkdownString),
-			description: Type.Optional(Localize.MarkdownString),
-			match: Type.Optional(OracleTableMatchBehavior),
-			table: Type.Array(OracleTableRow),
-			rendering: Type.Optional(OracleTableRendering)
+			id: Type.Ref(OracleTableID),
+			name: Type.Ref(Localize.Label),
+			canonical_name: Type.Optional(Type.Ref(Localize.Label)),
+			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),
+			table: Type.Array(Type.Ref(OracleTableRow)),
+			rendering: Type.Optional(Type.Ref(OracleTableRendering))
 		})
 	],
-	{ $id: 'OracleTable' }
+	{ $id: '#/$defs/OracleTable' }
 )
 export type OracleTable = Static<typeof OracleTable>
 
 const OracleRenderingBase = Type.Object({
 	columns: Type.Optional(
-		Type.Record(Type.RegEx(new RegExp(DICT_KEY)), OracleTableColumn, {
+		Dictionary(Type.Ref(OracleTableColumn), {
 			description:
 				'Describes the rendering of this oracle as a standalone table.'
 		})
 	),
-	color: Type.Optional(Metadata.CSSColor)
+	color: Type.Optional(Type.Ref(Metadata.CSSColor))
 })
 
 export const OracleCollectionStyle = StringEnum(['multi_table'], {
-	$id: 'OracleCollectionStyle'
+	$id: '#/$defs/OracleCollectionStyle'
 })
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
 
@@ -144,25 +151,29 @@ export const OracleCollectionRendering = Type.Composite(
 	[
 		OracleRenderingBase,
 		Type.Object({
-			columns: Type.Record(
-				Type.RegEx(new RegExp(DICT_KEY)),
-				OracleCollectionColumn
-			),
-			style: Type.Optional(OracleCollectionStyle)
+			columns: Dictionary(Type.Ref(OracleCollectionColumn)),
+			style: Type.Optional(Type.Ref(OracleCollectionStyle))
 		})
 	],
-	{ $id: 'OracleCollectionRendering' }
+	{ $id: '#/$defs/OracleCollectionRendering' }
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-export const OracleCollection = Type.Composite([
-	RecursiveCollection(OracleTable, OracleCollectionID, 'OracleCollection'),
-	Type.Object({
-		rendering: Type.Optional(OracleCollectionRendering),
-		images: Type.Optional(Type.Array(WebpImageURL)),
-		sample_names: Type.Optional(Type.Array(Localize.Label))
-		// templates: Type.Optional(Type.Array(OracleRollTemplate))
-	})
-])
+export const OracleCollection = Type.Composite(
+	[
+		RecursiveCollection(
+			OracleTable,
+			OracleCollectionID,
+			'#/$defs/OracleCollection'
+		),
+		Type.Object({
+			rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
+			images: Type.Optional(Type.Array(Type.Ref(WebpImageURL))),
+			sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
+			// templates: Type.Optional(Type.Array(OracleRollTemplate))
+		})
+	],
+	{ $id: '#/$defs/OracleCollection' }
+)
 
 export type OracleCollection = Static<typeof OracleCollection>
