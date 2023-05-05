@@ -1,4 +1,4 @@
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 
 import { Abstract, Localize, Metadata } from '@class-schema'
 import { type SuggestionsBase } from 'class-schema/metadata'

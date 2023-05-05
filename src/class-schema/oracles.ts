@@ -1,4 +1,4 @@
-import * as Types from '@base-types'
+import * as Types from 'schema'
 import {
 	Abstract,
 	Collections,

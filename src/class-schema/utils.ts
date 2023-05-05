@@ -1,4 +1,4 @@
-import { type Metadata } from '@base-types'
+import { type Metadata } from 'schema'
 import { Matches, type ValidationOptions } from 'class-validator'
 import { DF_KEY } from '../json-schema/common'
 

@@ -1,7 +1,7 @@
 import { toJtdEnum } from 'json-typedef/utils'
 import * as JSONSchema from '@schema-json'
 import { JTDSchemaType } from 'ajv/dist/core'
-import * as Types from '@base-types'
+import * as Types from 'schema'
 
 export const PlayerStat = toJtdEnum(JSONSchema.Players.PlayerStat)
 

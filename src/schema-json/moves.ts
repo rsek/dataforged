@@ -8,7 +8,7 @@ import {
 	type RulesetStarforged,
 	type Moves,
 	type Assets
-} from '@base-types'
+} from 'schema'
 import { Abstract } from '@schema-json'
 import _ from 'lodash'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'

@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Localize as Types } from '@base-types'
+import { type Localize as Types } from 'schema'
 
 export const Label: Schema<Types.Label> = {
 	type: 'string',

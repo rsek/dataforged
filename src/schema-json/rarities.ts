@@ -1,5 +1,5 @@
 import { refSchema } from './common'
-import { type Metadata, type Rarities as Types } from '@base-types'
+import { type Metadata, type Rarities as Types } from 'schema'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const RarityID: Schema<Types.RarityID> = {

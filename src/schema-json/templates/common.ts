@@ -1,10 +1,10 @@
 import { type JSONSchemaType as Schema, type PartialSchema } from 'ajv'
-import { type OracleTableRow } from 'base-types/oracles'
+import { type OracleTableRow } from 'schema/oracles'
 import {
 	type RollTwiceRow,
 	type ActionThemeRow,
 	type DescriptorFocusRow
-} from 'base-types/templates/common'
+} from 'schema/templates/common'
 import _ from 'lodash'
 
 export function toTemplateSchema<

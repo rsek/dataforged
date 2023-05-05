@@ -1,0 +1,7 @@
+export * from 'schema/ruleset-classic/metadata'
+export * from 'schema/ruleset-classic/delve-sites'
+export * from 'schema/ruleset-classic/encounters'
+export * from 'schema/ruleset-classic/progress'
+export * from 'schema/ruleset-classic/rarities'
+export * from 'schema/ruleset-classic/regions'
+export * from 'schema/ruleset-classic/truths'

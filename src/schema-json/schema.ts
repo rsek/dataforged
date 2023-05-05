@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { type JSONSchemaType as Schema } from 'ajv'
-import { type Metadata } from '@base-types'
+import { type Metadata } from 'schema'
 import { Source } from './metadata'
 import { type JSONSchema7 } from 'json-schema'
 import { Sourcebooks } from '@schema-json'

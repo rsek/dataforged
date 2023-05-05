@@ -1,5 +1,5 @@
 import { IsInstance, IsOptional } from 'class-validator'
-import type * as Types from '../base-types/index'
+import type * as Types from '../schema/index'
 import { Metadata } from '@class-schema'
 import { type YamlInput } from './utils'
 

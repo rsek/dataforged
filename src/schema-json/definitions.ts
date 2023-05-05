@@ -18,7 +18,7 @@ import {
 	Inputs
 } from '@schema-json'
 import { type JSONSchema7 } from 'json-schema'
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 // import {
 // 	OracleCollectionTemplate,
 // 	OracleTableTemplate

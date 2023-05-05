@@ -1,6 +1,6 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import { DICT_KEY, dictionarySchema, refSchema } from './common'
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 import * as JsonSchema from '@schema-json'
 export const OracleCollectionID: Schema<Types.Oracles.OracleCollectionID> = {
 	type: 'string',

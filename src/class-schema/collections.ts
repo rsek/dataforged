@@ -3,7 +3,7 @@ import {
 	JSONSchema,
 	targetConstructorToSchema
 } from 'class-validator-jsonschema'
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 import { Metadata, Localize, Abstract, type Utils } from '@class-schema'
 import _ from 'lodash'
 import { DICT_KEY } from 'schema-json/common'

@@ -1,4 +1,4 @@
-import { type Metadata as Types } from '@base-types'
+import { type Metadata as Types } from 'schema'
 import {
 	IsEnum,
 	IsInt,

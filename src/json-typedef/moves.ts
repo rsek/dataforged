@@ -1,4 +1,4 @@
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 import { type JTDSchemaType } from 'ajv/dist/core'
 import { toJtdEnum, toJtdId } from 'json-typedef/utils'
 import * as JTD from 'jtd'

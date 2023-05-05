@@ -1,4 +1,4 @@
-import { type LocationThemeOracles as TemplateTypes } from 'base-types/templates'
+import { type LocationThemeOracles as TemplateTypes } from 'schema/templates'
 import { type PartialSchema } from 'ajv/dist/types/json-schema'
 import {
 	descriptorFocusRow,

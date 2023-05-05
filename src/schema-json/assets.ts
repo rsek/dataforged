@@ -1,5 +1,5 @@
 import { type JSONSchemaType as Schema } from 'ajv'
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 import { dictionarySchema, refSchema } from './common'
 import { Abstract } from '@schema-json'
 import _ from 'lodash'

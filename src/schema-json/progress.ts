@@ -1,4 +1,4 @@
-import { type Progress as Types } from '@base-types'
+import { type Progress as Types } from 'schema'
 import { type JSONSchemaType as Schema } from 'ajv'
 
 export const ChallengeRank: Schema<Types.ChallengeRank> = {

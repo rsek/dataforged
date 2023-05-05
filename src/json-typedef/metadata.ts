@@ -1,4 +1,4 @@
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 import { type JTDSchemaType } from 'ajv/dist/core'
 
 export const Source: JTDSchemaType<Types.Metadata.Source, { URL: string }> = {

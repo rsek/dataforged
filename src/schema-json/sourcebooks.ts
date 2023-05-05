@@ -1,5 +1,5 @@
 import { dictionarySchema, refSchema } from './common'
-import { type Metadata } from '@base-types'
+import { type Metadata } from 'schema'
 import { type JSONSchema7 } from 'json-schema'
 import _ from 'lodash'
 

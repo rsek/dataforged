@@ -1,5 +1,5 @@
-import { type PlanetOracles as TemplateTypes } from 'base-types/templates'
-import { type DescriptorFocusRow } from 'base-types/templates/common'
+import { type PlanetOracles as TemplateTypes } from 'schema/templates'
+import { type DescriptorFocusRow } from 'schema/templates/common'
 import _ from 'lodash'
 
 import { type PartialSchema } from 'schema-json/clean-types'

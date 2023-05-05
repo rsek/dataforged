@@ -1,7 +1,7 @@
 import { type JSONSchemaType as Schema } from 'ajv'
 import _ from 'lodash'
 import { refSchema } from './common'
-import type * as Types from '@base-types'
+import type * as Types from 'schema'
 
 export const ProgressType: Schema<Types.RulesetClassic.ProgressType> = {
 	type: 'string',
