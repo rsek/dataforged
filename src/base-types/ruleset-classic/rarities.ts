@@ -1,19 +1,16 @@
-import { Metadata } from '@base-types'
 import { type Static, Type } from '@sinclair/typebox'
-import { SourcedNode } from 'base-types/common'
-import { AssetID, RarityID } from 'base-types/id'
-import { Label, MarkdownString } from 'base-types/localize'
+import { Localize, ID, Metadata, Abstract } from 'base-types/common'
 
 export const Rarity = Type.Union(
 	[
-		SourcedNode,
+		Abstract.SourcedNode,
 		Type.Object({
-			id: Type.Ref(RarityID),
-			name: Type.Ref(Label),
-			asset: Type.Ref(AssetID),
+			id: Type.Ref(ID.RarityID),
+			name: Type.Ref(Localize.Label),
+			asset: Type.Ref(ID.AssetID),
 			icon: Type.Ref(Metadata.SvgImageURL),
 			xp_cost: Type.Integer({ minimum: 3, maximum: 5 }),
-			description: Type.Ref(MarkdownString)
+			description: Type.Ref(Localize.MarkdownString)
 		})
 	],
 	{

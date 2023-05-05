@@ -4,24 +4,16 @@ import {
 	type ObjectOptions,
 	type Static
 } from '@sinclair/typebox'
-import { Source } from 'base-types/metadata'
-import { Dictionary } from 'base-types/common'
-
-import {
-	Oracles,
-	Moves,
-	Assets,
-	Regions,
-	Encounters,
-	Rarities,
-	DelveSites,
-	Truths,
-	ID,
-	Metadata
-} from '@base-types'
 
 import { mapValues } from 'lodash'
 import { writeFileSync } from 'fs'
+import { Metadata, Abstract, ID, Localize, Enum } from 'base-types/common'
+import * as Oracles from 'base-types/oracles'
+import * as Moves from 'base-types/moves'
+import * as Assets from 'base-types/assets'
+
+import * as RulesetStarforged from 'base-types/ruleset-starforged'
+import * as RulesetClassic from 'base-types/ruleset-classic'
 
 function Sourcebook<T extends Metadata.Ruleset>(
 	ruleset: T,
@@ -32,8 +24,10 @@ function Sourcebook<T extends Metadata.Ruleset>(
 	return Type.Object(
 		{
 			ruleset: Type.Literal(ruleset),
-			source: Type.Ref(Source),
-			...mapValues(contents, (v) => Type.Optional(Dictionary(Type.Ref(v))))
+			source: Type.Ref(Metadata.Source),
+			...mapValues(contents, (v) =>
+				Type.Optional(Abstract.Dictionary(Type.Ref(v)))
+			)
 		},
 		{
 			$schema: 'http://json-schema.org/draft-07/schema',
@@ -49,25 +43,23 @@ export const SourcebookClassic = Sourcebook(
 		oracles: Oracles.OracleCollection,
 		moves: Moves.MoveCategory,
 		assets: Assets.AssetType,
-		regions: Regions.RegionEntry,
-		encounters: Encounters.EncounterCollectionClassic,
-		rarities: Rarities.Rarity,
-		delve_sites: DelveSites.DelveSite,
-		site_themes: DelveSites.DelveSiteTheme,
-		site_domains: DelveSites.DelveSiteDomain,
-		world_truths: Truths.WorldTruth
+		regions: RulesetClassic.RegionEntry,
+		encounters: RulesetClassic.EncounterCollectionClassic,
+		rarities: RulesetClassic.Rarity,
+		delve_sites: RulesetClassic.DelveSite,
+		site_themes: RulesetClassic.DelveSiteTheme,
+		site_domains: RulesetClassic.DelveSiteDomain,
+		world_truths: RulesetClassic.WorldTruth
 	},
 	{
+		...Localize,
+		...ID,
+		...Enum,
 		...Metadata,
 		...Oracles,
 		...Moves,
 		...Assets,
-		...Regions,
-		...Encounters,
-		...Rarities,
-		...DelveSites,
-		...Truths,
-		...ID
+		...RulesetClassic
 	}
 )
 export type SourcebookClassic = Static<typeof SourcebookClassic>
@@ -78,17 +70,18 @@ export const SourcebookStarforged = Sourcebook(
 		oracles: Oracles.OracleCollection,
 		moves: Moves.MoveCategory,
 		assets: Assets.AssetType,
-		encounters: Encounters.EncounterStarforged,
-		setting_truths: Truths.SettingTruth
+		encounters: RulesetStarforged.EncounterStarforged,
+		setting_truths: RulesetStarforged.SettingTruth
 	},
 	{
+		...Localize,
+		...ID,
+		...Enum,
 		...Metadata,
 		...Oracles,
 		...Moves,
 		...Assets,
-		...Encounters,
-		...Truths,
-		...ID
+		...RulesetStarforged
 	}
 )
 

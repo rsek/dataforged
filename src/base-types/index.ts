@@ -2,22 +2,11 @@
  * Types from which to derive JSON schemas and JSON typedefs.
  */
 
-export * as ID from './id'
-export * as Localize from './localize'
-export * as Metadata from './metadata'
-export * as Progress from './progress'
+export { ID, Localize, Progress, Enum } from 'base-types/common'
 
-export * as Players from './players'
-export * as Inputs from './inputs'
+export * as Moves from 'base-types/moves'
+export * as Assets from 'base-types/assets'
+export * as Oracles from 'base-types/oracles'
 
-export * as RulesetClassic from './ruleset-classic'
-export * as RulesetStarforged from './ruleset-starforged'
-
-export * as Encounters from './encounters'
-export * as Moves from './moves'
-export * as Oracles from './oracles'
-export * as DelveSites from './delve-sites'
-export * as Rarities from './rarities'
-export * as Regions from './regions'
-export * as Truths from './truths'
-export * as Assets from './assets'
+export * as RulesetClassic from './ruleset-classic/metadata'
+export * as RulesetStarforged from './ruleset-starforged/metadata'

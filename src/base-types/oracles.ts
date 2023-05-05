@@ -1,34 +1,17 @@
 import { type Static, Type } from '@sinclair/typebox'
-import {
-	DICT_KEY,
-	Dictionary,
-	RecursiveCollection,
-	SourcedNode,
-	SuggestionsBase
-} from 'base-types/common'
-import {
-	OracleCollectionID,
-	OracleTableID,
-	OracleTableRowID
-} from 'base-types/id'
-import { TemplateString } from 'base-types/localize'
-import { WebpImageURL } from 'base-types/metadata'
-import { StringEnum } from 'base-types/utils'
-import * as Localize from 'base-types/localize'
-import * as Metadata from 'base-types/metadata'
-import * as Common from 'base-types/common'
+import { ID, Localize, Utils, Metadata, Abstract } from 'base-types/common'
 
 export const OracleRollTemplate = Type.Object(
 	{
-		result: Type.Optional(TemplateString),
-		summary: Type.Optional(TemplateString),
-		description: Type.Optional(TemplateString)
+		result: Type.Optional(Type.Ref(Localize.TemplateString)),
+		summary: Type.Optional(Type.Ref(Localize.TemplateString)),
+		description: Type.Optional(Type.Ref(Localize.TemplateString))
 	},
 	{ $id: '#/$defs/OracleRollTemplate' }
 )
 export type OracleRollTemplate = Static<typeof OracleRollTemplate>
 
-export const OracleTableRollMethod = StringEnum(
+export const OracleTableRollMethod = Utils.StringEnum(
 	['no_duplicates', 'keep_duplicates', 'make_it_worse'],
 	{ default: 'no_duplicates', $id: '#/$defs/OracleTableRollMethod' }
 )
@@ -36,9 +19,9 @@ export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 
 export const OracleTableRoll = Type.Object(
 	{
-		oracle: Type.Ref(OracleTableID),
+		oracle: Type.Ref(ID.OracleTableID),
 		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
-		method: Type.Optional(OracleTableRollMethod)
+		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},
 	{ $id: '#/$defs/OracleTableRoll' }
 )
@@ -46,16 +29,16 @@ export type OracleTableRoll = Static<typeof OracleTableRoll>
 
 export const OracleTableRow = Type.Composite(
 	[
-		Common.Range,
+		Abstract.Range,
 		Type.Object({
-			id: Type.Ref(OracleTableRowID),
+			id: Type.Ref(ID.OracleTableRowID),
 			result: Type.Ref(Localize.MarkdownString),
 			icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
-			suggestions: Type.Optional(Type.Ref(SuggestionsBase)),
-			embed_table: Type.Optional(Type.Ref(OracleTableID)),
+			suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase)),
+			embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
 			template: Type.Optional(Type.Ref(OracleRollTemplate))
 		})
 	],
@@ -71,13 +54,13 @@ export const OracleTableMatchBehavior = Type.Object(
 )
 export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
 
-export const OracleTableStyle = StringEnum(
+export const OracleTableStyle = Utils.StringEnum(
 	['table', 'embed_in_row', 'embed_as_column'],
 	{ $id: '#/$defs/OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-export const OracleColumnContentType = StringEnum(
+export const OracleColumnContentType = Utils.StringEnum(
 	['range', 'result', 'summary', 'description'],
 	{ $id: '#/$defs/OracleColumnContentType' }
 )
@@ -96,7 +79,7 @@ export const OracleCollectionColumn = Type.Composite(
 	[
 		OracleTableColumn,
 		Type.Object({
-			table_key: DICT_KEY,
+			table_key: Abstract.DICT_KEY,
 			color: Type.Optional(Type.Ref(Metadata.CSSColor))
 		})
 	],
@@ -116,9 +99,9 @@ export type OracleTableRendering = Static<typeof OracleTableRendering>
 
 export const OracleTable = Type.Composite(
 	[
-		SourcedNode,
+		Abstract.SourcedNode,
 		Type.Object({
-			id: Type.Ref(OracleTableID),
+			id: Type.Ref(ID.OracleTableID),
 			name: Type.Ref(Localize.Label),
 			canonical_name: Type.Optional(Type.Ref(Localize.Label)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
@@ -134,7 +117,7 @@ export type OracleTable = Static<typeof OracleTable>
 
 const OracleRenderingBase = Type.Object({
 	columns: Type.Optional(
-		Dictionary(Type.Ref(OracleTableColumn), {
+		Abstract.Dictionary(Type.Ref(OracleTableColumn), {
 			description:
 				'Describes the rendering of this oracle as a standalone table.'
 		})
@@ -142,7 +125,7 @@ const OracleRenderingBase = Type.Object({
 	color: Type.Optional(Type.Ref(Metadata.CSSColor))
 })
 
-export const OracleCollectionStyle = StringEnum(['multi_table'], {
+export const OracleCollectionStyle = Utils.StringEnum(['multi_table'], {
 	$id: '#/$defs/OracleCollectionStyle'
 })
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>
@@ -151,7 +134,7 @@ export const OracleCollectionRendering = Type.Composite(
 	[
 		OracleRenderingBase,
 		Type.Object({
-			columns: Dictionary(Type.Ref(OracleCollectionColumn)),
+			columns: Abstract.Dictionary(Type.Ref(OracleCollectionColumn)),
 			style: Type.Optional(Type.Ref(OracleCollectionStyle))
 		})
 	],
@@ -161,14 +144,14 @@ export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
 export const OracleCollection = Type.Composite(
 	[
-		RecursiveCollection(
-			OracleTable,
-			OracleCollectionID,
+		Abstract.RecursiveCollection(
+			Type.Ref(OracleTable),
+			Type.Ref(ID.OracleCollectionID),
 			'#/$defs/OracleCollection'
 		),
 		Type.Object({
 			rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
-			images: Type.Optional(Type.Array(Type.Ref(WebpImageURL))),
+			images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageURL))),
 			sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
 			// templates: Type.Optional(Type.Array(OracleRollTemplate))
 		})

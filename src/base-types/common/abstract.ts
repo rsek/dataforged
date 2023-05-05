@@ -11,20 +11,9 @@ import {
 	type ObjectOptions,
 	type TRef
 } from '@sinclair/typebox'
-import * as Utils from 'base-types/utils'
-import * as Localize from 'base-types/localize'
-import * as Metadata from 'base-types/metadata'
-import * as ID from 'base-types/id'
-
-export const SuggestionsBase = Type.Object(
-	{
-		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
-		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
-		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID)))
-	},
-	{ $id: '#/$defs/Suggestions' }
-)
-export type SuggestionsBase = Static<typeof SuggestionsBase>
+import * as Utils from 'base-types/common/utils'
+import * as Localize from 'base-types/common/localize'
+import * as Metadata from 'base-types/common/metadata'
 
 export const DICT_KEY = Type.RegEx(/^[a-z_]+$/)
 
@@ -48,7 +37,7 @@ export type Range = Static<typeof Range>
 
 export const SourcedNode = Type.Object({
 	source: Type.Ref(Metadata.Source),
-	suggestions: Type.Optional(Type.Ref(SuggestionsBase))
+	suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase))
 })
 export type SourcedNode = Static<typeof SourcedNode>
 
@@ -107,9 +96,9 @@ export function ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 }
 export type ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>> =
 	Static<ReturnType<typeof ExtendMany<T>>>
-export function Collection<T extends typeof SourcedNode>(
+export function Collection<T extends TRef>(
 	memberSchema: T,
-	idPattern: TString,
+	idPattern: TRef<TString>,
 	options: SchemaOptions = {}
 ) {
 	return Type.Composite(
@@ -130,13 +119,13 @@ export function Collection<T extends typeof SourcedNode>(
 	)
 }
 
-export type Collection<T extends typeof SourcedNode> = Static<
+export type Collection<T extends TRef> = Static<
 	ReturnType<typeof Collection<T>>
 >
 
-export function RecursiveCollection<T extends typeof SourcedNode>(
+export function RecursiveCollection<T extends TRef>(
 	memberSchema: T,
-	idPattern: TString,
+	idPattern: TRef<TString>,
 	refID: string,
 	options: SchemaOptions = {}
 ) {
@@ -149,49 +138,6 @@ export function RecursiveCollection<T extends typeof SourcedNode>(
 		],
 		{ ...options, $id: refID }
 	)
-}
-
-export const NumberRangeBase = Type.Object({
-	label: Type.Ref(Localize.Label),
-	min: Type.Integer(),
-	max: Type.Optional(Type.Integer()),
-	value: Type.Optional(Type.Integer())
-})
-export type NumberRangeBase = Static<typeof NumberRangeBase>
-
-export const Clock = Type.Composite([
-	NumberRangeBase,
-	Type.Object({ min: Type.Literal(0), max: Utils.IntegerEnum([4, 6, 8, 10]) })
-])
-export type Clock = Static<typeof Clock>
-
-export const Meter = Type.Composite([
-	NumberRangeBase,
-	Type.Object({
-		min: Type.Integer({ default: 0 }),
-		max: Type.Integer()
-	})
-])
-export type Meter = Static<typeof Meter>
-
-export const Counter = NumberRangeBase
-export type Counter = Static<typeof Counter>
-
-export function SelectOption<T extends TSchema>(t: T) {
-	return Type.Object({
-		label: Type.Ref(Localize.Label),
-		value: t,
-		selected: Type.Optional(Type.Boolean())
-	})
-}
-
-/** Represents a list of choices, similar in structure to the HTML `<select>` element */
-export function Select<T extends TSchema>(t: T) {
-	return Type.Object({
-		label: Type.Ref(Localize.Label),
-		value: Type.Optional(t),
-		choices: Dictionary(SelectOption(t))
-	})
 }
 
 /**

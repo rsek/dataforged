@@ -8,7 +8,7 @@ export type Label = Static<typeof Label>
 
 export const MarkdownString = Type.String({
 	$id: '#/$defs/MarkdownString',
-	description: 'Localized markdown text'
+	description: 'Localized text, formatted in Markdown.'
 })
 export type MarkdownString = Static<typeof Label>
 

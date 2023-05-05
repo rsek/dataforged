@@ -1,34 +1,35 @@
-import * as Types from '@base-types'
 import { type Static, Type, type ObjectOptions } from '@sinclair/typebox'
-import { Collection, SourcedNode, ExtendMany } from 'base-types/common'
 import {
-	AssetConditionMeterIDWildcard,
-	AssetOptionFieldIDWildcard,
-	MoveCategoryID,
-	MoveID,
-	OracleTableID
-} from 'base-types/id'
-import { Label, MarkdownString } from 'base-types/localize'
-import { PlayerConditionMeter, PlayerStat } from 'base-types/players'
-import { ProgressTypeCommon } from 'base-types/progress'
-import { StringEnum, RequireBy } from 'base-types/utils'
+	ID,
+	Localize,
+	Utils,
+	Abstract,
+	Enum,
+	Progress
+} from 'base-types/common'
 
-export const MoveRollMethod = StringEnum(['any', 'all', 'highest', 'lowest'], {
-	$id: '#/$defs/MoveRollMethod'
-})
+export const MoveRollMethod = Utils.StringEnum(
+	['any', 'all', 'highest', 'lowest'],
+	{
+		$id: '#/$defs/MoveRollMethod'
+	}
+)
 
-export const MoveRerollMethod = StringEnum(
+export const MoveRerollMethod = Utils.StringEnum(
 	['any', 'all', 'challenge_die', 'challenge_dice', 'action_die'],
 	{ $id: '#/$defs/MoveRerollMethod' }
 )
 export type MoveRerollMethod = Static<typeof MoveRerollMethod>
 
-export const MoveOutcomeType = StringEnum(['miss', 'weak_hit', 'strong_hit'], {
-	$id: '#/$defs/MoveOutcomeType'
-})
+export const MoveOutcomeType = Utils.StringEnum(
+	['miss', 'weak_hit', 'strong_hit'],
+	{
+		$id: '#/$defs/MoveOutcomeType'
+	}
+)
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
-export const MoveRollType = StringEnum(
+export const MoveRollType = Utils.StringEnum(
 	['action_roll', 'progress_roll', 'no_roll'],
 	{
 		$id: '#/$defs/MoveRollType'
@@ -53,7 +54,7 @@ export const TriggerActionRollOptionChoiceAttachedAssetRef = Type.Object(
 	{
 		using: Type.Literal('attached_asset_meter')
 	},
-	{ $ref: 'TriggerActionRollOptionChoiceAttachedAssetRef' }
+	{ $id: '#/$defs/TriggerActionRollOptionChoiceAttachedAssetRef' }
 )
 
 export type TriggerActionRollOptionChoiceAttachedAssetRef = Static<
@@ -64,8 +65,8 @@ export const TriggerActionRollOptionChoiceRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
-			Type.Ref(AssetOptionFieldIDWildcard),
-			Type.Ref(AssetConditionMeterIDWildcard)
+			Type.Ref(ID.AssetOptionFieldIDWildcard),
+			Type.Ref(ID.AssetConditionMeterIDWildcard)
 		])
 	},
 	{ $id: '#/$defs/TriggerActionRollOptionChoiceRef' }
@@ -76,7 +77,10 @@ export type TriggerActionRollOptionChoiceRef = Static<
 
 export const TriggerActionRollOptionChoiceStat = Type.Object(
 	{
-		using: Type.Union([Type.Ref(PlayerStat), Type.Ref(PlayerConditionMeter)])
+		using: Type.Union([
+			Type.Ref(Enum.PlayerStat),
+			Type.Ref(Enum.PlayerConditionMeter)
+		])
 	},
 	{ $id: '#/$defs/TriggerActionRollOptionChoiceStat' }
 )
@@ -87,7 +91,7 @@ export type TriggerActionRollOptionChoiceStat = Static<
 export const TriggerActionRollOptionChoiceCustomValue = Type.Object(
 	{
 		using: Type.Literal('custom_value'),
-		label: Type.Ref(Label),
+		label: Type.Ref(Localize.Label),
 		value: Type.Integer({ minimum: 0 })
 	},
 	{ $id: '#/$defs/TriggerActionRollOptionChoiceCustomValue' }
@@ -111,7 +115,7 @@ export type TriggerActionRollOptionChoice = Static<
 
 export const TriggerProgressRollOptionChoice = Type.Object(
 	{
-		using: Type.Ref(ProgressTypeCommon)
+		using: Type.Ref(Progress.ProgressTypeCommon)
 	},
 	{ $id: '#/$defs/TriggerProgressRollOptionChoice' }
 )
@@ -125,7 +129,7 @@ function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 ) {
 	return Type.Object(
 		{
-			text: Type.Optional(Type.Ref(Types.Localize.MarkdownString)),
+			text: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			method: Type.Union(
 				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
 				{ default: 'any' }
@@ -160,7 +164,7 @@ export const TriggerNoRollOption = TriggerRollOptionBase('no_roll', {
 
 function TriggerBase<T extends MoveRollType>(t: T) {
 	return Type.Object({
-		text: Type.Ref(Types.Localize.MarkdownString),
+		text: Type.Ref(Localize.MarkdownString),
 		roll_type: Type.Literal(t)
 	})
 }
@@ -199,10 +203,11 @@ export const Trigger = Type.Union(
 	],
 	{ $id: '#/$defs/Trigger' }
 )
+export type Trigger = Static<typeof Trigger>
 
 export const MoveReroll = Type.Object(
 	{
-		text: Type.Optional(Type.Ref(MarkdownString)),
+		text: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		method: Type.Ref(MoveRerollMethod)
 	},
 	{ $id: '#/$defs/MoveReroll' }
@@ -211,7 +216,7 @@ export type MoveReroll = Static<typeof MoveReroll>
 
 export const MoveOutcome = Type.Object(
 	{
-		text: Type.Ref(MarkdownString),
+		text: Type.Ref(Localize.MarkdownString),
 		count_as: Type.Optional(Type.Ref(MoveOutcomeType)),
 		reroll: Type.Optional(Type.Ref(MoveReroll))
 	},
@@ -237,26 +242,28 @@ export type MoveOutcomes = Static<typeof MoveOutcomes>
 
 export const Move = Type.Composite(
 	[
-		SourcedNode,
+		Abstract.SourcedNode,
 		Type.Object({
-			id: Type.Ref(MoveID),
-			name: Type.Ref(Label),
+			id: Type.Ref(ID.MoveID),
+			name: Type.Ref(Localize.Label),
 			trigger: Type.Ref(Trigger),
-			text: Type.Ref(MarkdownString),
+			text: Type.Ref(Localize.MarkdownString),
 			outcomes: Type.Ref(MoveOutcomes),
-			oracles: Type.Optional(Type.Array(Type.Ref(OracleTableID)))
+			oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID)))
 		})
 	],
 	{ $id: '#/$defs/Move' }
 )
 export type Move = Static<typeof Move>
 
-export const MoveCategory = RequireBy(
-	Collection(Move, MoveCategoryID),
+export const MoveCategory = Utils.RequireBy(
+	Abstract.Collection(Type.Ref(Move), Type.Ref(ID.MoveCategoryID)),
 	['color'],
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export const MoveExtension = ExtendMany(Move, { $id: '#/$defs/MoveExtension' })
+export const MoveExtension = Abstract.ExtendMany(Move, {
+	$id: '#/$defs/MoveExtension'
+})
 export type MoveExtension = Static<typeof MoveExtension>

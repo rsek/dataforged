@@ -9,6 +9,24 @@ import {
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash'
 
+export function Squash<T extends TObject>(
+	schemas: T[],
+	options: ObjectOptions = {}
+) {
+	return Type.Composite(
+		[
+			schemas.reduceRight((previous, current) =>
+				// @ts-expect-error seems like it should work?
+				Type.Composite([
+					Type.Omit(previous, Object.keys((current as any).properties)),
+					current
+				])
+			)
+		],
+		options
+	) as TObject
+}
+
 export function StringEnum<T extends string[]>(
 	values: [...T],
 	options: SchemaOptions = {}

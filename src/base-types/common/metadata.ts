@@ -1,5 +1,16 @@
 import { type Static, Type } from '@sinclair/typebox'
-import * as Utils from 'base-types/utils'
+import * as ID from 'base-types/common/id'
+import * as Utils from 'base-types/common/utils'
+
+export const SuggestionsBase = Type.Object(
+	{
+		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
+		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
+		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID)))
+	},
+	{ $id: '#/$defs/Suggestions' }
+)
+export type SuggestionsBase = Static<typeof SuggestionsBase>
 
 export const Ruleset = Utils.StringEnum(['classic', 'starforged'], {
 	$id: '#/$defs/Ruleset',

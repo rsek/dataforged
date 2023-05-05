@@ -1,10 +1,12 @@
 import { type Static, Type } from '@sinclair/typebox'
-import * as ID from 'base-types/id'
-import { Label, MarkdownString } from 'base-types/localize'
-import { ChallengeRank } from 'base-types/progress'
-import { StringEnum } from 'base-types/utils'
-import { SvgImageURL } from 'base-types/metadata'
-import { SourcedNode } from 'base-types/common'
+import {
+	Utils,
+	ID,
+	Localize,
+	Enum,
+	Metadata,
+	Abstract
+} from 'base-types/common'
 import { OracleTableRow } from 'base-types/oracles'
 
 const StaticRowStub = (low: number, high: number, defaultResultText?: string) =>
@@ -17,7 +19,7 @@ const StaticRowStub = (low: number, high: number, defaultResultText?: string) =>
 				: Type.Undefined()
 	})
 
-export const DelveSiteDenizenFrequency = StringEnum(
+export const DelveSiteDenizenFrequency = Utils.StringEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
 	{ $id: '#/$defs/DelveSiteDenizenFrequency' }
 )
@@ -26,7 +28,7 @@ export type DelveSiteDenizenFrequency = Static<typeof DelveSiteDenizenFrequency>
 export const DelveSiteDenizen = Type.Object(
 	{
 		id: Type.Ref(ID.DelveSiteDenizenID),
-		name: Type.Optional(Type.Ref(Label)),
+		name: Type.Optional(Type.Ref(Localize.Label)),
 		low: Type.Integer({ minimum: 1, maximum: 100 }),
 		high: Type.Integer({ minimum: 1, maximum: 100 }),
 		encounter: Type.Optional(Type.Ref(ID.EncounterClassicID)),
@@ -47,12 +49,12 @@ const StaticDenizenRowStub = (
 
 export const DelveSite = Type.Composite(
 	[
-		SourcedNode,
+		Abstract.SourcedNode,
 		Type.Object({
 			id: Type.Ref(ID.DelveSiteID),
-			name: Type.Ref(Label),
-			icon: Type.Optional(SvgImageURL),
-			rank: Type.Ref(ChallengeRank),
+			name: Type.Ref(Localize.Label),
+			icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+			rank: Type.Ref(Enum.ChallengeRank),
 			theme: Type.Ref(ID.DelveSiteThemeID),
 			domain: Type.Ref(ID.DelveSiteDomainID),
 			extra_card: Type.Optional(
@@ -64,7 +66,7 @@ export const DelveSite = Type.Composite(
 					}
 				)
 			),
-			description: MarkdownString,
+			description: Localize.MarkdownString,
 			denizens: Type.Intersect([
 				Type.Array(DelveSiteDenizen),
 				Type.Tuple([
@@ -90,12 +92,12 @@ export const DelveSite = Type.Composite(
 export type DelveSite = Static<typeof DelveSite>
 
 const DelveSiteCard = Type.Composite([
-	SourcedNode,
+	Abstract.SourcedNode,
 	Type.Object({
-		name: Type.Ref(Label),
-		summary: MarkdownString,
-		description: Type.Optional(MarkdownString),
-		icon: Type.Optional(SvgImageURL)
+		name: Type.Ref(Localize.Label),
+		summary: Type.Ref(Localize.MarkdownString),
+		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		icon: Type.Optional(Type.Ref(Metadata.SvgImageURL))
 	})
 ])
 
@@ -110,7 +112,7 @@ export const DelveSiteTheme = Type.Composite(
 					Type.Composite(
 						[
 							Type.Omit(OracleTableRow, ['id']),
-							Type.Object({ id: ID.ThemeFeatureRowID })
+							Type.Object({ id: Type.Ref(ID.ThemeFeatureRowID) })
 						],
 						{ title: 'Site theme feature row' }
 					)
@@ -128,7 +130,7 @@ export const DelveSiteTheme = Type.Composite(
 					Type.Composite(
 						[
 							Type.Omit(OracleTableRow, ['id']),
-							Type.Object({ id: ID.ThemeDangerRowID })
+							Type.Object({ id: Type.Ref(ID.ThemeDangerRowID) })
 						],
 						{ title: 'Site theme danger row' }
 					)
@@ -165,7 +167,7 @@ export const DelveSiteDomain = Type.Composite(
 					Type.Composite(
 						[
 							Type.Omit(OracleTableRow, ['id']),
-							Type.Object({ id: ID.DomainFeatureRowID })
+							Type.Object({ id: Type.Ref(ID.DomainFeatureRowID) })
 						],
 						{ title: 'Site domain feature row' }
 					)
@@ -190,7 +192,7 @@ export const DelveSiteDomain = Type.Composite(
 					Type.Composite(
 						[
 							Type.Omit(OracleTableRow, ['id']),
-							Type.Object({ id: ID.DomainDangerRowID })
+							Type.Object({ id: Type.Ref(ID.DomainDangerRowID) })
 						],
 						{ title: 'Site domain danger row' }
 					)

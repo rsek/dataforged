@@ -1,9 +1,11 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Cyclopedia } from 'base-types/common'
-import { MarkdownString } from 'base-types/localize'
+import { Abstract, Localize } from 'base-types/common'
 
 export const RegionEntry = Type.Intersect(
-	[Cyclopedia, Type.Object({ quest_starter: MarkdownString })],
+	[
+		Abstract.Cyclopedia,
+		Type.Object({ quest_starter: Type.Ref(Localize.MarkdownString) })
+	],
 	{
 		$id: '#/$defs/RegionEntry',
 		description:
