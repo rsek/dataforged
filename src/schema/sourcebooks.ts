@@ -7,7 +7,7 @@ import {
 
 import { mapValues } from 'lodash'
 import { writeFileSync } from 'fs'
-import { Metadata, Abstract, ID, Localize, Enum } from 'schema/common'
+import { Metadata, Abstract } from 'schema/common'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
 import * as Assets from 'schema/assets'
@@ -15,10 +15,15 @@ import * as Assets from 'schema/assets'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
+export const SOURCE_PARTIAL_KEY = '_source'
+export const NAMESPACE_KEY = /^[a-z0-9_]{3,}$/
+
+export const DATASWORN_VERSION = '2.0.0'
+export const DATAFORGED_VERSION = '2.0.0'
+
 function Sourcebook<T extends Metadata.Ruleset>(
 	ruleset: T,
 	contents: Record<string, TSchema>,
-	$defs: Record<string, TSchema>,
 	options: ObjectOptions = {}
 ) {
 	return Type.Object(
@@ -29,11 +34,7 @@ function Sourcebook<T extends Metadata.Ruleset>(
 				Type.Optional(Abstract.Dictionary(Type.Ref(v)))
 			)
 		},
-		{
-			$schema: 'http://json-schema.org/draft-07/schema',
-			...options,
-			$defs
-		}
+		options
 	)
 }
 
@@ -52,14 +53,7 @@ export const SourcebookClassic = Sourcebook(
 		world_truths: RulesetClassic.WorldTruth
 	},
 	{
-		...Localize,
-		...ID,
-		...Enum,
-		...Metadata,
-		...Oracles,
-		...Moves,
-		...Assets,
-		...RulesetClassic
+		$id: '#/$defs/SourcebookClassic'
 	}
 )
 export type SourcebookClassic = Static<typeof SourcebookClassic>
@@ -74,14 +68,7 @@ export const SourcebookStarforged = Sourcebook(
 		setting_truths: RulesetStarforged.SettingTruth
 	},
 	{
-		...Localize,
-		...ID,
-		...Enum,
-		...Metadata,
-		...Oracles,
-		...Moves,
-		...Assets,
-		...RulesetStarforged
+		$id: '#/$defs/SourcebookStarforged'
 	}
 )
 

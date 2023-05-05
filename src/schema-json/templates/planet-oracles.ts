@@ -51,7 +51,7 @@ const atmosphereBase: RecursivePartial<TemplateTypes.PlanetAtmosphereTable> = {
 	]
 }
 
-const observedFromSpaceBase: RecursivePartial<TemplateTypes.PlanetObservedFromSpaceTable> =
+const observedFromSpaceBase: RecursivePartial<TemplateTypes.ObservedFromSpace> =
 	{
 		name: 'Observed From Space',
 		table: [

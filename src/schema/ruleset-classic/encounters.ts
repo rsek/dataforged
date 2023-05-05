@@ -10,7 +10,11 @@ export const EncounterClassic = Squash(
 			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString))
 		})
 	],
-	{ $id: '#/$defs/EncounterClassic' }
+	{
+		$id: '#/$defs/EncounterClassic',
+		description:
+			'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.'
+	}
 )
 
 export const EncounterCollectionClassic = Squash(

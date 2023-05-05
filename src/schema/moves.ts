@@ -4,7 +4,10 @@ import { ID, Localize, Utils, Abstract, Enum, Progress } from 'schema/common'
 export const MoveRollMethod = Utils.StringEnum(
 	['any', 'all', 'highest', 'lowest'],
 	{
-		$id: '#/$defs/MoveRollMethod'
+		$id: '#/$defs/MoveRollMethod',
+
+		description:
+			'`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.'
 	}
 )
 
@@ -122,7 +125,13 @@ function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 ) {
 	return Type.Object(
 		{
-			text: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			text: Type.Optional(
+				Type.Ref(Localize.MarkdownString, {
+					description:
+						'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.',
+					pattern: /^.*\.{3}$/
+				})
+			),
 			method: Type.Union(
 				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
 				{ default: 'any' }

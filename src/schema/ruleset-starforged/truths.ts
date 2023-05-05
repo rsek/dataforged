@@ -1,7 +1,8 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { Truths, ID, Localize } from 'schema/common'
+import { Squash } from 'schema/common/utils'
 
-export const SettingTruthOption = Type.Composite(
+export const SettingTruthOption = Squash(
 	[
 		Truths.TruthOptionBase,
 		Type.Object({
@@ -15,7 +16,7 @@ export const SettingTruthOption = Type.Composite(
 
 export type SettingTruthOption = Static<typeof SettingTruthOption>
 
-export const SettingTruth = Type.Composite(
+export const SettingTruth = Squash(
 	[
 		Truths.TruthBase,
 		Type.Object({

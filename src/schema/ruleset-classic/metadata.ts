@@ -1,8 +1,9 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { ID, Metadata } from 'schema/common'
+import { Squash } from 'schema/common/utils'
 
 export const Suggestions = Type.Partial(
-	Type.Composite([
+	Squash([
 		Metadata.SuggestionsBase,
 		Type.Object({
 			site_domains: Type.Array(Type.Ref(ID.DelveSiteDomainID)),

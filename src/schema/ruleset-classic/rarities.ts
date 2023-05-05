@@ -7,9 +7,19 @@ export const Rarity = Type.Union(
 		Type.Object({
 			id: Type.Ref(ID.RarityID),
 			name: Type.Ref(Localize.Label),
-			asset: Type.Ref(ID.AssetID),
+			asset: Type.Ref(ID.AssetID, {
+				description: 'The asset enhanced by this rarity.'
+			}),
 			icon: Type.Ref(Metadata.SvgImageURL),
-			xp_cost: Type.Integer({ minimum: 3, maximum: 5 }),
+			xp_cost: Type.Integer({
+				minimum: 3,
+				maximum: 5,
+				description: `From Ironsworn: Delve, p. 174:
+
+      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.
+
+      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.`
+			}),
 			description: Type.Ref(Localize.MarkdownString)
 		})
 	],

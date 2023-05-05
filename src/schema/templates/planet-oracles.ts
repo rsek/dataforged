@@ -1,86 +1,94 @@
-import { type Oracles } from 'schema'
-import {
-	type PrecursorVaultRow,
-	type DescriptorFocusRow
-} from 'schema/templates/common'
+import { Type } from '@sinclair/typebox'
+import * as Abstract from 'schema/common/abstract'
+import { PrecursorVaultRow, DescriptorFocusRow } from 'schema/templates/common'
 
-export interface PlanetOracles extends Oracles.OracleCollection {
-	collections: {
-		settlements: PlanetSettlementOracles
-	}
-	contents: {
-		atmosphere: PlanetAtmosphereTable
-		observed_from_space: PlanetObservedFromSpaceTable
-		feature: PlanetsideFeatureTable
-		life: PlanetLifeTable
-	}
-}
-export interface PlanetSettlementTable extends Oracles.OracleTable {
-	table: [
-		Oracles.OracleTableRow<any, any, 'None'>,
-		Oracles.OracleTableRow<any, any, 'Orbital settlement'>,
-		Oracles.OracleTableRow<any, any, 'Planetside settlement'>,
-		Oracles.OracleTableRow<any, any, 'Multiple settlements'>,
-		Oracles.OracleTableRow<any, any, 'Settlements in conflict'>
-	]
-}
-export interface PlanetAtmosphereTable extends Oracles.OracleTable {
-	table: [
-		Oracles.OracleTableRow<any, any, 'None/thin'>,
-		Oracles.OracleTableRow<any, any, 'Toxic'>,
-		Oracles.OracleTableRow<any, any, 'Corrosive'>,
-		Oracles.OracleTableRow<any, any, 'Marginal'>,
-		Oracles.OracleTableRow<any, any, 'Breathable'>,
-		Oracles.OracleTableRow<any, any, 'Ideal'>
-	]
-}
-export interface PlanetObservedFromSpaceTable extends Oracles.OracleTable {
-	table: [
-		Oracles.OracleTableRow<1, 11>,
-		Oracles.OracleTableRow<12, 22>,
-		Oracles.OracleTableRow<23, 33>,
-		Oracles.OracleTableRow<34, 44>,
-		Oracles.OracleTableRow<45, 55>,
-		Oracles.OracleTableRow<56, 66>,
-		Oracles.OracleTableRow<67, 77>,
-		Oracles.OracleTableRow<78, 88>,
-		DescriptorFocusRow<89, 98>,
-		PrecursorVaultRow<99, 100, 'orbital'>
-	]
-}
-export interface PlanetsideFeatureTable extends Oracles.OracleTable {
-	table: [
-		Oracles.OracleTableRow<1, 7>,
-		Oracles.OracleTableRow<8, 14>,
-		Oracles.OracleTableRow<15, 21>,
-		Oracles.OracleTableRow<22, 28>,
-		Oracles.OracleTableRow<29, 35>,
-		Oracles.OracleTableRow<36, 42>,
-		Oracles.OracleTableRow<43, 49>,
-		Oracles.OracleTableRow<50, 56>,
-		Oracles.OracleTableRow<57, 63>,
-		Oracles.OracleTableRow<64, 70>,
-		Oracles.OracleTableRow<71, 77>,
-		Oracles.OracleTableRow<78, 84>,
-		Oracles.OracleTableRow<85, 91>,
-		DescriptorFocusRow<92, 98>,
-		PrecursorVaultRow<99, 100, 'planetside'>
-	]
-}
-export interface PlanetLifeTable extends Oracles.OracleTable {
-	table: [
-		Oracles.OracleTableRow<any, any, 'None'>,
-		Oracles.OracleTableRow<any, any, 'Extinct'>,
-		Oracles.OracleTableRow<any, any, 'Scarce'>,
-		Oracles.OracleTableRow<any, any, 'Diverse'>,
-		Oracles.OracleTableRow<any, any, 'Bountiful'>,
-		Oracles.OracleTableRow<any, any, 'Overrun'>
-	]
-}
-export interface PlanetSettlementOracles extends Oracles.OracleCollection {
-	contents: {
-		terminus: PlanetSettlementTable
-		outlands: PlanetSettlementTable
-		expanse: PlanetSettlementTable
-	}
-}
+const Settlement = <T extends 'Terminus' | 'Outlands' | 'Expanse'>(region: T) =>
+	Type.Object({
+		name: Type.String({ default: region }),
+		table: Type.Tuple([
+			Abstract.StaticRowStub({ result: 'None' }),
+			Abstract.StaticRowStub({ result: 'Orbital settlement' }),
+			Abstract.StaticRowStub({ result: 'Planetside settlement' }),
+			Abstract.StaticRowStub({ result: 'Multiple settlements' }),
+			Abstract.StaticRowStub({ result: 'Settlements in conflict' })
+		])
+	})
+
+export const PlanetTemplate = Type.Object({
+	sample_names: Type.Array(Type.String()),
+	collections: Type.Object(
+		{
+			settlements: Type.Object({
+				name: Type.String({ default: 'Settlements' }),
+				contents: Type.Object({
+					terminus: Settlement('Terminus'),
+					outlands: Settlement('Outlands'),
+					expanse: Settlement('Expanse')
+				})
+			})
+		},
+		{ additionalProperties: true }
+	),
+	contents: Type.Object(
+		{
+			atmosphere: Type.Object({
+				name: Type.String({ default: 'Atmosphere' }),
+				table: Type.Tuple([
+					Abstract.StaticRowStub({ result: 'None/thin' }),
+					Abstract.StaticRowStub({ result: 'Toxic' }),
+					Abstract.StaticRowStub({ result: 'Corrosive' }),
+					Abstract.StaticRowStub({ result: 'Marginal' }),
+					Abstract.StaticRowStub({ result: 'Breathable' }),
+					Abstract.StaticRowStub({ result: 'Ideal' })
+				])
+			}),
+			observed_from_space: Type.Object({
+				name: Type.String({ default: 'Observed from space' }),
+				table: Type.Tuple([
+					Abstract.StaticRowStub({ low: 1, high: 11 }),
+					Abstract.StaticRowStub({ low: 12, high: 22 }),
+					Abstract.StaticRowStub({ low: 23, high: 33 }),
+					Abstract.StaticRowStub({ low: 34, high: 44 }),
+					Abstract.StaticRowStub({ low: 45, high: 55 }),
+					Abstract.StaticRowStub({ low: 56, high: 66 }),
+					Abstract.StaticRowStub({ low: 67, high: 77 }),
+					Abstract.StaticRowStub({ low: 78, high: 88 }),
+					DescriptorFocusRow({ low: 89, high: 98 }),
+					PrecursorVaultRow({ low: 99, high: 100 }, 'Orbital')
+				])
+			}),
+			feature: Type.Object({
+				name: Type.String({ default: 'Planetside Feature' }),
+				table: Type.Tuple([
+					Abstract.StaticRowStub({ low: 1, high: 7 }),
+					Abstract.StaticRowStub({ low: 8, high: 14 }),
+					Abstract.StaticRowStub({ low: 15, high: 21 }),
+					Abstract.StaticRowStub({ low: 22, high: 28 }),
+					Abstract.StaticRowStub({ low: 29, high: 35 }),
+					Abstract.StaticRowStub({ low: 36, high: 42 }),
+					Abstract.StaticRowStub({ low: 43, high: 49 }),
+					Abstract.StaticRowStub({ low: 50, high: 56 }),
+					Abstract.StaticRowStub({ low: 57, high: 63 }),
+					Abstract.StaticRowStub({ low: 64, high: 70 }),
+					Abstract.StaticRowStub({ low: 71, high: 77 }),
+					Abstract.StaticRowStub({ low: 78, high: 84 }),
+					Abstract.StaticRowStub({ low: 85, high: 91 }),
+					DescriptorFocusRow({ low: 92, high: 98 }),
+					PrecursorVaultRow({ low: 99, high: 100 }, 'Planetside')
+				])
+			}),
+			life: Type.Object({
+				name: Type.String({ default: 'Life' }),
+				table: Type.Tuple([
+					Abstract.StaticRowStub({ result: 'None' }),
+					Abstract.StaticRowStub({ result: 'Extinct' }),
+					Abstract.StaticRowStub({ result: 'Scarce' }),
+					Abstract.StaticRowStub({ result: 'Diverse' }),
+					Abstract.StaticRowStub({ result: 'Bountiful' }),
+					Abstract.StaticRowStub({ result: 'Overrun' })
+				])
+			})
+		},
+		{ additionalProperties: true }
+	)
+})

@@ -1,16 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Utils, ID, Localize, Enum, Metadata, Abstract } from 'schema/common'
+import { Squash } from 'schema/common/utils'
 import { OracleTableRow } from 'schema/oracles'
-
-const StaticRowStub = (low: number, high: number, defaultResultText?: string) =>
-	Type.Object({
-		low: Type.Literal(low),
-		high: Type.Literal(high),
-		result:
-			defaultResultText != null
-				? Type.String({ default: defaultResultText })
-				: Type.Undefined()
-	})
 
 export const DelveSiteDenizenFrequency = Utils.StringEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -24,7 +15,11 @@ export const DelveSiteDenizen = Type.Object(
 		name: Type.Optional(Type.Ref(Localize.Label)),
 		low: Type.Integer({ minimum: 1, maximum: 100 }),
 		high: Type.Integer({ minimum: 1, maximum: 100 }),
-		encounter: Type.Optional(Type.Ref(ID.EncounterClassicID)),
+		encounter: Type.Optional(
+			Type.Ref(ID.EncounterClassicID, {
+				description: 'The ID of the relevant encounter, if one is specified.'
+			})
+		),
 		frequency: DelveSiteDenizenFrequency
 	},
 	{ $id: '#/$defs/DelveSiteDenizen' }
@@ -35,8 +30,8 @@ const StaticDenizenRowStub = (
 	high: number,
 	frequency: DelveSiteDenizenFrequency
 ) =>
-	Type.Composite([
-		StaticRowStub(low, high),
+	Squash([
+		Abstract.StaticRowStub({ low, high }),
 		Type.Object({ frequency: Type.Literal(frequency) })
 	])
 
@@ -79,7 +74,10 @@ export const DelveSite = Type.Composite(
 			])
 		})
 	],
-	{ $id: '#/$defs/DelveSite' }
+	{
+		$id: '#/$defs/DelveSite',
+		description: 'A delve site with a theme, domain, and denizen table.'
+	}
 )
 
 export type DelveSite = Static<typeof DelveSite>
@@ -111,11 +109,11 @@ export const DelveSiteTheme = Type.Composite(
 					)
 				),
 				Type.Tuple([
-					StaticRowStub(1, 4),
-					StaticRowStub(5, 8),
-					StaticRowStub(9, 12),
-					StaticRowStub(13, 16),
-					StaticRowStub(17, 20)
+					Abstract.StaticRowStub({ low: 1, high: 4 }),
+					Abstract.StaticRowStub({ low: 5, high: 8 }),
+					Abstract.StaticRowStub({ low: 9, high: 12 }),
+					Abstract.StaticRowStub({ low: 13, high: 16 }),
+					Abstract.StaticRowStub({ low: 17, high: 20 })
 				])
 			]),
 			dangers: Type.Intersect([
@@ -129,18 +127,18 @@ export const DelveSiteTheme = Type.Composite(
 					)
 				),
 				Type.Tuple([
-					StaticRowStub(1, 5),
-					StaticRowStub(6, 10),
-					StaticRowStub(11, 12),
-					StaticRowStub(13, 14),
-					StaticRowStub(15, 16),
-					StaticRowStub(17, 18),
-					StaticRowStub(19, 20),
-					StaticRowStub(21, 22),
-					StaticRowStub(23, 24),
-					StaticRowStub(25, 26),
-					StaticRowStub(27, 28),
-					StaticRowStub(29, 30)
+					Abstract.StaticRowStub({ low: 1, high: 5 }),
+					Abstract.StaticRowStub({ low: 6, high: 10 }),
+					Abstract.StaticRowStub({ low: 11, high: 12 }),
+					Abstract.StaticRowStub({ low: 13, high: 14 }),
+					Abstract.StaticRowStub({ low: 15, high: 16 }),
+					Abstract.StaticRowStub({ low: 17, high: 18 }),
+					Abstract.StaticRowStub({ low: 19, high: 20 }),
+					Abstract.StaticRowStub({ low: 21, high: 22 }),
+					Abstract.StaticRowStub({ low: 23, high: 24 }),
+					Abstract.StaticRowStub({ low: 25, high: 26 }),
+					Abstract.StaticRowStub({ low: 27, high: 28 }),
+					Abstract.StaticRowStub({ low: 29, high: 30 })
 				])
 			])
 		})
@@ -166,18 +164,47 @@ export const DelveSiteDomain = Type.Composite(
 					)
 				),
 				Type.Tuple([
-					StaticRowStub(21, 43),
-					StaticRowStub(44, 56),
-					StaticRowStub(57, 64),
-					StaticRowStub(65, 68),
-					StaticRowStub(69, 72),
-					StaticRowStub(73, 76),
-					StaticRowStub(77, 80),
-					StaticRowStub(81, 84),
-					StaticRowStub(85, 88),
-					StaticRowStub(89, 98, 'Something unusual or unexpected'),
-					StaticRowStub(99, 99, 'You transition into a new theme'),
-					StaticRowStub(100, 100, 'You transition into a new domain')
+					Abstract.StaticRowStub({ low: 21, high: 43 }),
+					Abstract.StaticRowStub({ low: 44, high: 56 }),
+					Abstract.StaticRowStub({ low: 57, high: 64 }),
+					Abstract.StaticRowStub({ low: 65, high: 68 }),
+					Abstract.StaticRowStub({ low: 69, high: 72 }),
+					Abstract.StaticRowStub({ low: 73, high: 76 }),
+					Abstract.StaticRowStub({ low: 77, high: 80 }),
+					Abstract.StaticRowStub({ low: 81, high: 84 }),
+					Abstract.StaticRowStub({ low: 85, high: 88 }),
+					Abstract.StaticRowStub(
+						{ low: 89, high: 98 },
+						{
+							result: 'Something unusual or unexpected',
+							suggestions: {
+								oracles: [
+									// 'classic/oracles/action_and_theme/action',
+									// 'classic/oracles/action_and_theme/theme',
+									'delve/oracles/feature/aspect',
+									'delve/oracles/feature/focus'
+								]
+							}
+						}
+					),
+					Abstract.StaticRowStub(
+						{ low: 99, high: 99 },
+						{
+							result: 'You transition into a new theme',
+							suggestions: {
+								oracles: ['delve/oracles/site_nature/theme']
+							}
+						}
+					),
+					Abstract.StaticRowStub(
+						{ low: 100, high: 100 },
+						{
+							result: 'You transition into a new domain',
+							suggestions: {
+								oracles: ['delve/oracles/site_nature/domain']
+							}
+						}
+					)
 				])
 			]),
 			dangers: Type.Intersect([
@@ -191,11 +218,11 @@ export const DelveSiteDomain = Type.Composite(
 					)
 				),
 				Type.Tuple([
-					StaticRowStub(31, 33),
-					StaticRowStub(34, 36),
-					StaticRowStub(37, 39),
-					StaticRowStub(40, 42),
-					StaticRowStub(43, 45)
+					Abstract.StaticRowStub({ low: 31, high: 33 }),
+					Abstract.StaticRowStub({ low: 34, high: 36 }),
+					Abstract.StaticRowStub({ low: 37, high: 39 }),
+					Abstract.StaticRowStub({ low: 40, high: 42 }),
+					Abstract.StaticRowStub({ low: 43, high: 45 })
 				])
 			])
 		})

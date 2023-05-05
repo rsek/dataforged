@@ -87,6 +87,7 @@ export function DeepPartial<T extends TObject>(
 	}, {}) as TProperties
 	return Type.Object({ ...properties }, options)
 }
+/** Make the provided keys optional */
 export function PartialBy<T extends TObject>(
 	schema: T,
 	optionalKeys: Array<keyof Static<T>>,
@@ -100,7 +101,7 @@ export function PartialBy<T extends TObject>(
 		options
 	)
 }
-
+/** Make everything optional except for the provided keys  */
 export function PartialExcept<T extends TObject>(
 	schema: T,
 	requiredKeys: Array<keyof Static<T>>,
@@ -115,6 +116,7 @@ export function PartialExcept<T extends TObject>(
 	)
 }
 
+/** Make the provided keys required */
 export function RequireBy<T extends TObject>(
 	schema: T,
 	requiredKeys: Array<keyof Static<T>>,
@@ -128,7 +130,9 @@ export function RequireBy<T extends TObject>(
 		options
 	)
 }
+export type RequireBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 
+/** Make everything required except for the provided keys */
 export function RequireExcept<T extends TObject>(
 	schema: T,
 	nonRequiredKeys: Array<keyof Static<T>>,

@@ -1,96 +1,109 @@
+import { Type } from '@sinclair/typebox'
 import { type Oracles } from 'schema'
+import * as Abstract from 'schema/common/abstract'
 
-export interface RollTwiceRow<
-	Low extends number = number,
-	High extends number = number,
-	Method extends Oracles.OracleTableRollMethod = 'no_duplicates'
-> extends Oracles.OracleTableRow<Low, High> {
-	_template: 'RollTwiceRow'
-	result: 'Roll twice'
-	rolls: [Oracles.OracleTableRoll<string, 2, Method>]
-}
-
-export type LocationType = 'orbital' | 'planetside' | 'deep_space'
-
-export interface PrecursorVaultRow<
-	Low extends number,
-	High extends number,
-	Location extends LocationType
-> extends Oracles.OracleTableRow<Low, High> {
-	result: `Precursor Vault (${Location})`
+export function RollTwiceRow(
+	{ low, high }: { low: number; high: number },
+	method: Oracles.OracleTableRollMethod = 'no_duplicates'
+) {
+	return Abstract.StaticRowStub(
+		{ low, high, result: 'Roll twice' },
+		{
+			rolls: [{ method, times: 2 } as any]
+		}
+	)
 }
 
-export interface DescriptorFocusRow<
-	Low extends number = number,
-	High extends number = number
-> extends Oracles.OracleTableRow<Low, High> {
-	_template: 'DescriptorFocusRow'
-	result: '[⏵Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
-	rolls: [
-		{ oracle: 'starforged/oracles/core/descriptor' },
-		{ oracle: 'starforged/oracles/core/focus' }
-	]
+export function PrecursorVaultRow(
+	{ low, high }: { low: number; high: number },
+	location?: 'Deep Space' | 'Planetside' | 'Orbital'
+) {
+	let resultText = 'Precursor Vault'
+	if (location != null) resultText += ` (${location.toLowerCase()})`
+	const result = `[${resultText}](starforged/collections/oracles/vault)`
+	return Abstract.StaticRowStub({ low, high, result })
 }
 
-export interface ActionThemeRow<
-	Low extends number = number,
-	High extends number = number
-> extends Oracles.OracleTableRow<Low, High> {
-	_template: 'ActionThemeRow'
-	result: '[⏵Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
-	rolls: [
-		{ oracle: 'starforged/oracles/core/action' },
-		{ oracle: 'starforged/oracles/core/theme' }
-	]
+export function DescriptorFocusRow({
+	low,
+	high
+}: {
+	low: number
+	high: number
+}) {
+	return Abstract.StaticRowStub(
+		{
+			low,
+			high,
+			result:
+				'[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+		},
+		{
+			rolls: [
+				{ oracle: 'starforged/oracles/core/descriptor' },
+				{ oracle: 'starforged/oracles/core/focus' }
+			]
+		}
+	)
 }
 
-export interface OracleTable5 extends Oracles.OracleTable {
-	_template: string
-	table: [
-		Oracles.OracleTableRow<1, 20>,
-		Oracles.OracleTableRow<21, 40>,
-		Oracles.OracleTableRow<41, 60>,
-		Oracles.OracleTableRow<61, 80>,
-		Oracles.OracleTableRow<81, 100>
-	]
+export function ActionThemeRow({ low, high }: { low: number; high: number }) {
+	return Abstract.StaticRowStub(
+		{
+			low,
+			high,
+			result:
+				'[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+		},
+		{
+			rolls: [
+				{ oracle: 'starforged/oracles/core/action' },
+				{ oracle: 'starforged/oracles/core/theme' }
+			]
+		}
+	)
 }
-export interface OracleTable10 extends Oracles.OracleTable {
-	_template: string
-	table: [
-		Oracles.OracleTableRow<1, 10>,
-		Oracles.OracleTableRow<11, 20>,
-		Oracles.OracleTableRow<21, 30>,
-		Oracles.OracleTableRow<31, 40>,
-		Oracles.OracleTableRow<41, 50>,
-		Oracles.OracleTableRow<51, 60>,
-		Oracles.OracleTableRow<61, 70>,
-		Oracles.OracleTableRow<71, 80>,
-		Oracles.OracleTableRow<81, 90>,
-		Oracles.OracleTableRow<91, 100>
-	]
-}
-export interface OracleTable20 extends Oracles.OracleTable {
-	_template: string
-	table: [
-		Oracles.OracleTableRow<1, 5>,
-		Oracles.OracleTableRow<6, 10>,
-		Oracles.OracleTableRow<11, 15>,
-		Oracles.OracleTableRow<16, 20>,
-		Oracles.OracleTableRow<21, 25>,
-		Oracles.OracleTableRow<26, 30>,
-		Oracles.OracleTableRow<31, 35>,
-		Oracles.OracleTableRow<36, 40>,
-		Oracles.OracleTableRow<41, 45>,
-		Oracles.OracleTableRow<46, 50>,
-		Oracles.OracleTableRow<51, 55>,
-		Oracles.OracleTableRow<56, 60>,
-		Oracles.OracleTableRow<61, 65>,
-		Oracles.OracleTableRow<66, 70>,
-		Oracles.OracleTableRow<71, 75>,
-		Oracles.OracleTableRow<76, 80>,
-		Oracles.OracleTableRow<81, 85>,
-		Oracles.OracleTableRow<86, 90>,
-		Oracles.OracleTableRow<91, 95>,
-		Oracles.OracleTableRow<96, 100>
-	]
-}
+
+export const OracleTableRows5 = Type.Tuple([
+	Abstract.StaticRowStub({ low: 1, high: 20 }),
+	Abstract.StaticRowStub({ low: 21, high: 40 }),
+	Abstract.StaticRowStub({ low: 41, high: 60 }),
+	Abstract.StaticRowStub({ low: 61, high: 80 }),
+	Abstract.StaticRowStub({ low: 81, high: 100 })
+])
+
+export const OracleTableRows10 = Type.Tuple([
+	Abstract.StaticRowStub({ low: 1, high: 10 }),
+	Abstract.StaticRowStub({ low: 11, high: 20 }),
+	Abstract.StaticRowStub({ low: 21, high: 30 }),
+	Abstract.StaticRowStub({ low: 31, high: 40 }),
+	Abstract.StaticRowStub({ low: 41, high: 50 }),
+	Abstract.StaticRowStub({ low: 51, high: 60 }),
+	Abstract.StaticRowStub({ low: 61, high: 70 }),
+	Abstract.StaticRowStub({ low: 71, high: 80 }),
+	Abstract.StaticRowStub({ low: 81, high: 90 }),
+	Abstract.StaticRowStub({ low: 91, high: 100 })
+])
+
+export const OracleTableRows20 = Type.Tuple([
+	Abstract.StaticRowStub({ low: 1, high: 5 }),
+	Abstract.StaticRowStub({ low: 6, high: 10 }),
+	Abstract.StaticRowStub({ low: 11, high: 15 }),
+	Abstract.StaticRowStub({ low: 16, high: 20 }),
+	Abstract.StaticRowStub({ low: 21, high: 25 }),
+	Abstract.StaticRowStub({ low: 26, high: 30 }),
+	Abstract.StaticRowStub({ low: 31, high: 35 }),
+	Abstract.StaticRowStub({ low: 36, high: 40 }),
+	Abstract.StaticRowStub({ low: 41, high: 45 }),
+	Abstract.StaticRowStub({ low: 46, high: 50 }),
+	Abstract.StaticRowStub({ low: 51, high: 55 }),
+	Abstract.StaticRowStub({ low: 56, high: 60 }),
+	Abstract.StaticRowStub({ low: 61, high: 65 }),
+	Abstract.StaticRowStub({ low: 66, high: 70 }),
+	Abstract.StaticRowStub({ low: 71, high: 75 }),
+	Abstract.StaticRowStub({ low: 76, high: 80 }),
+	Abstract.StaticRowStub({ low: 81, high: 85 }),
+	Abstract.StaticRowStub({ low: 86, high: 90 }),
+	Abstract.StaticRowStub({ low: 91, high: 95 }),
+	Abstract.StaticRowStub({ low: 96, high: 100 })
+])

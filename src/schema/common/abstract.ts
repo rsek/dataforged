@@ -9,12 +9,18 @@ import {
 	type TString,
 	type SchemaOptions,
 	type ObjectOptions,
-	type TRef
+	type TRef,
+	type TBoolean,
+	type TNumber
 } from '@sinclair/typebox'
 import * as Utils from 'schema/common/utils'
 import * as Localize from 'schema/common/localize'
 import * as Metadata from 'schema/common/metadata'
+import type { OracleTableRow } from 'schema/oracles'
+import { mapValues } from 'lodash'
+import { type PartialDeep } from 'type-fest'
 
+/** Pattern for keys used in dictionary objects throughout Dataforged; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(/^[a-z_]+$/)
 
 export function Dictionary<T extends TSchema>(
@@ -35,6 +41,36 @@ export const Range = Type.Object({
 
 export type Range = Static<typeof Range>
 
+export function toDefaultsStub<T extends Static<TObject>>(object: T) {
+	return mapValues(object, (v) => Type.Any({ default: v }))
+}
+
+export function toLiteralsStub<
+	T extends Static<TObject<Record<string, TString | TNumber | TBoolean>>>
+>(object: T) {
+	return mapValues(object, (v) => Type.Literal(v))
+}
+
+/** Extracts all properties that can be rendered as Type.Literal with typebox */
+type CanBeLiteral<T> = {
+	[K in keyof T as Required<T>[K] extends boolean | number | string | null
+		? K
+		: never]: T[K]
+}
+
+export function StaticRowStub(
+	literals: Partial<CanBeLiteral<OracleTableRow>> & {
+		low?: number
+		high?: number
+	},
+	defaults: PartialDeep<OracleTableRow> = {}
+) {
+	const result = Type.Object({
+		...toLiteralsStub(literals),
+		...toDefaultsStub(defaults)
+	})
+	return result
+}
 export const SourcedNode = Type.Object({
 	source: Type.Ref(Metadata.Source),
 	suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase))

@@ -34,6 +34,10 @@ export const EncounterStarforged = Squash(
 			)
 		})
 	],
-	{ $id: '#/$defs/EncounterStarforged' }
+	{
+		$id: '#/$defs/EncounterStarforged',
+		description:
+			'An encounter entry similar to those in Chapter 4 of Ironsworn: Starforged.'
+	}
 )
 export type EncounterStarforged = Static<typeof EncounterStarforged>

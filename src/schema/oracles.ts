@@ -3,11 +3,34 @@ import { ID, Localize, Utils, Metadata, Abstract } from 'schema/common'
 
 export const OracleRollTemplate = Type.Object(
 	{
-		result: Type.Optional(Type.Ref(Localize.TemplateString)),
-		summary: Type.Optional(Type.Ref(Localize.TemplateString)),
-		description: Type.Optional(Type.Ref(Localize.TemplateString))
+		result: Type.Optional(
+			Type.Ref(Localize.TemplateString, {
+				description:
+					'A string template that may be used in place of OracleTableRow#result.',
+				examples: [
+					'{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
+				]
+			})
+		),
+		summary: Type.Optional(
+			Type.Ref(Localize.TemplateString, {
+				description:
+					'A string template that may be used in place of OracleTableRow#summary.'
+			})
+		),
+		description: Type.Optional(
+			Type.Ref(Localize.TemplateString, {
+				description:
+					'A string template that may be used in place of OracleTableRow#description.'
+			})
+		)
 	},
-	{ $id: '#/$defs/OracleRollTemplate' }
+	{
+		$id: '#/$defs/OracleRollTemplate',
+		description: `Provides string templates that may be used in place of the static row text from \`OracleTableRow#result\`, \`OracleTableRow#summary\`, and \`OracleTableRow#description\`.
+
+  These strings are formatted in Markdown, but use a special syntax for their placeholders: \`{{result:some_oracle_table_id}}\`. The placeholder should be replaced with the value of a rolled (or selected) \`OracleTableRow#result\` from the target oracle table ID.`
+	}
 )
 export type OracleRollTemplate = Static<typeof OracleRollTemplate>
 
@@ -83,7 +106,10 @@ export const OracleCollectionColumn = Type.Composite(
 			color: Type.Optional(Type.Ref(Metadata.CSSColor))
 		})
 	],
-	{ $id: '#/$defs/OracleCollectionColumn' }
+	{
+		$id: '#/$defs/OracleCollectionColumn',
+		description: "A column's default label is the title of the source table."
+	}
 )
 export type OracleCollectionColumn = Static<typeof OracleCollectionColumn>
 
