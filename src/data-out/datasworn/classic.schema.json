@@ -65,13 +65,15 @@
 		},
 		"AssetConditionMeterID": {
 			"$id": "#/$defs/AssetConditionMeterID",
+			"title": "Asset condition meter ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter$"
 		},
 		"AssetConditionMeterIDWildcard": {
 			"$id": "#/$defs/AssetConditionMeterIDWildcard",
+			"title": "Asset condition meter ID (wildcard)",
 			"type": "string",
-			"pattern": "^([a-z_]+|\\\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/condition_meter$"
+			"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/condition_meter$"
 		},
 		"AssetConditionMeterControlFieldID": {
 			"$id": "#/$defs/AssetConditionMeterControlFieldID",
@@ -451,7 +453,7 @@
 					"items": { "$ref": "#/$defs/Label" }
 				}
 			},
-			"required": ["source", "id", "name", "summary"]
+			"required": ["source", "id", "name"]
 		},
 		"MoveRollMethod": {
 			"$id": "#/$defs/MoveRollMethod",
@@ -499,8 +501,8 @@
 				"using": { "const": "ref", "type": "string" },
 				"ref": {
 					"anyOf": [
-						{ "$ref": "#/$defs/AssetOptionFieldIDWildcard" },
-						{ "$ref": "#/$defs/AssetConditionMeterIDWildcard" }
+						{ "$ref": "#/$defs/AssetConditionMeterIDWildcard" },
+						{ "$ref": "#/$defs/AssetOptionFieldIDWildcard" }
 					]
 				}
 			},
@@ -548,13 +550,7 @@
 			"$id": "#/$defs/TriggerActionRollOption",
 			"type": "object",
 			"properties": {
-				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
-					"allOf": [
-						{ "$ref": "#/$defs/MarkdownString" },
-						{ "pattern": "^.*\\.{3}$", "type": "string" }
-					]
-				},
+				"text": { "$ref": "#/$defs/MarkdownString" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -563,24 +559,18 @@
 					]
 				},
 				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
+				"choices": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollOptionChoice" }
 				}
 			},
-			"required": ["method", "roll_options"]
+			"required": ["method", "choices"]
 		},
 		"TriggerProgressRollOption": {
 			"$id": "#/$defs/TriggerProgressRollOption",
 			"type": "object",
 			"properties": {
-				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
-					"allOf": [
-						{ "$ref": "#/$defs/MarkdownString" },
-						{ "pattern": "^.*\\.{3}$", "type": "string" }
-					]
-				},
+				"text": { "$ref": "#/$defs/MarkdownString" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -589,24 +579,18 @@
 					]
 				},
 				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
+				"choices": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollOptionChoice" }
 				}
 			},
-			"required": ["method", "roll_options"]
+			"required": ["method", "choices"]
 		},
 		"TriggerNoRollOption": {
 			"$id": "#/$defs/TriggerNoRollOption",
 			"type": "object",
 			"properties": {
-				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
-					"allOf": [
-						{ "$ref": "#/$defs/MarkdownString" },
-						{ "pattern": "^.*\\.{3}$", "type": "string" }
-					]
-				},
+				"text": { "$ref": "#/$defs/MarkdownString" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -622,7 +606,10 @@
 			"$id": "#/$defs/TriggerActionRoll",
 			"type": "object",
 			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"roll_type": { "const": "action_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
@@ -635,7 +622,10 @@
 			"$id": "#/$defs/TriggerProgressRoll",
 			"type": "object",
 			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"roll_type": { "const": "progress_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
@@ -648,7 +638,10 @@
 			"$id": "#/$defs/TriggerNoRoll",
 			"type": "object",
 			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"roll_type": { "const": "no_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
@@ -721,7 +714,7 @@
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				}
 			},
-			"required": ["source", "id", "name", "trigger", "text", "outcomes"]
+			"required": ["source", "id", "name", "trigger", "text"]
 		},
 		"MoveCategory": {
 			"$id": "#/$defs/MoveCategory",
@@ -741,7 +734,7 @@
 				},
 				"color": { "$ref": "#/$defs/CSSColor" }
 			},
-			"required": ["source", "id", "name", "summary", "color"]
+			"required": ["source", "id", "name", "color"]
 		},
 		"MoveExtension": {
 			"$id": "#/$defs/MoveExtension",
@@ -756,7 +749,7 @@
 				},
 				"extends": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } }
 			},
-			"required": ["trigger", "text", "outcomes"]
+			"required": ["trigger", "text"]
 		},
 		"AssetConditionMeterControlField": {
 			"$id": "#/$defs/AssetConditionMeterControlField",
@@ -1084,7 +1077,7 @@
 				},
 				"member_label": { "$ref": "#/$defs/Label" }
 			},
-			"required": ["source", "id", "name", "summary"]
+			"required": ["source", "id", "name"]
 		},
 		"Suggestions": {
 			"type": "object",
@@ -1838,7 +1831,7 @@
 					}
 				}
 			},
-			"required": ["source", "id", "name", "summary"]
+			"required": ["source", "id", "name"]
 		},
 		"EncounterClassic": {
 			"$id": "#/$defs/EncounterClassic",
@@ -2061,6 +2054,63 @@
 				}
 			},
 			"required": ["title", "authors", "date", "url", "license"]
+		},
+		"SourceStub": {
+			"description": "A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.",
+			"$id": "#/$defs/SourceStub",
+			"type": "object",
+			"properties": {
+				"title": {
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					],
+					"type": "string"
+				},
+				"page": { "minimum": 1, "title": "Page number", "type": "integer" },
+				"authors": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"examples": [{ "name": "Shawn Tomkin" }],
+						"type": "object",
+						"properties": {
+							"name": { "examples": ["Shawn Tomkin"], "type": "string" },
+							"email": {
+								"format": "email",
+								"description": "An optional email contact for the author",
+								"type": "string"
+							}
+						},
+						"required": ["name"]
+					}
+				},
+				"date": {
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+					"type": "string"
+				},
+				"url": {
+					"format": "uri",
+					"description": "An absolute URL where the source document is available.",
+					"examples": ["https://ironswornrpg.com"],
+					"type": "string"
+				},
+				"license": {
+					"format": "uri",
+					"description": "An absolute URL pointing to the location where this element's license can be found.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					],
+					"type": "string"
+				}
+			}
 		}
 	},
 	"type": "object",

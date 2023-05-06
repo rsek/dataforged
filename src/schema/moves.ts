@@ -61,8 +61,8 @@ export const TriggerActionRollOptionChoiceRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
-			Type.Ref(ID.AssetOptionFieldIDWildcard),
-			Type.Ref(ID.AssetConditionMeterIDWildcard)
+			Type.Ref(ID.AssetConditionMeterIDWildcard),
+			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
 	},
 	{ $id: '#/$defs/TriggerActionRollOptionChoiceRef' }
@@ -125,20 +125,7 @@ function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 ) {
 	return Type.Object(
 		{
-			text: Type.Optional(
-				Type.Intersect(
-					[
-						Type.Ref(Localize.MarkdownString),
-						Type.String({
-							pattern: /^.*\.{3}$/.source
-						})
-					],
-					{
-						description:
-							'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.'
-					}
-				)
-			),
+			text: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			method: Type.Union(
 				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
 				{ default: 'any' }
@@ -153,7 +140,7 @@ export const TriggerActionRollOption = Type.Composite(
 	[
 		TriggerRollOptionBase('action_roll'),
 		Type.Object({
-			roll_options: Type.Array(Type.Ref(TriggerActionRollOptionChoice))
+			choices: Type.Array(Type.Ref(TriggerActionRollOptionChoice))
 		})
 	],
 	{ $id: '#/$defs/TriggerActionRollOption' }
@@ -162,7 +149,7 @@ export const TriggerProgressRollOption = Type.Composite(
 	[
 		TriggerRollOptionBase('progress_roll'),
 		Type.Object({
-			roll_options: Type.Array(Type.Ref(TriggerProgressRollOptionChoice))
+			choices: Type.Array(Type.Ref(TriggerProgressRollOptionChoice))
 		})
 	],
 	{ $id: '#/$defs/TriggerProgressRollOption' }
@@ -173,7 +160,10 @@ export const TriggerNoRollOption = TriggerRollOptionBase('no_roll', {
 
 function TriggerBase<T extends MoveRollType>(t: T) {
 	return Type.Object({
-		text: Type.Ref(Localize.MarkdownString),
+		text: Type.Ref(Localize.MarkdownString, {
+			description:
+				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.'
+		}),
 		roll_type: Type.Literal(t)
 	})
 }
@@ -257,7 +247,7 @@ export const Move = Type.Composite(
 			name: Type.Ref(Localize.Label),
 			trigger: Type.Ref(Trigger),
 			text: Type.Ref(Localize.MarkdownString),
-			outcomes: Type.Ref(MoveOutcomes),
+			outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
 			oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID)))
 		})
 	],

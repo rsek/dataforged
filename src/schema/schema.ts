@@ -1,5 +1,4 @@
-import { TypeGuard } from '@sinclair/typebox'
-import { type TSchema, Type } from '@sinclair/typebox'
+import { type TObject, TypeGuard, type TSchema, Type } from '@sinclair/typebox'
 import _ from 'lodash'
 import { Assets, Enum, ID, Localize, Moves, Oracles } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
@@ -27,7 +26,7 @@ function getDataEntryDefinitions(
 		...defs,
 		SourceStub: SourceStub as TSchema
 	})
-	for (let def of Object.values(newDefs)) {
+	for (let [key, def] of Object.entries(newDefs)) {
 		if (
 			TypeGuard.TOptional(def) ||
 			TypeGuard.TLiteral(def) ||
@@ -44,19 +43,23 @@ function getDataEntryDefinitions(
 
 		if (TypeGuard.TObject(def)) {
 			const objKeys = Object.keys(def.properties)
-			const optionalKeys = ['source', 'id'] // TODO: iterate over keys, checking if any children have defaults
+			const optionalKeys = ['source', 'id'] // TODO: check if any children have defaults
 
 			for (const key of objKeys) {
 				const value = def.properties[key]
 				if (value.default != null) optionalKeys.push(key)
 			}
 
-			def = Type.Composite([
-				PartialBy(def, optionalKeys),
-				Type.Object({
-					[SOURCE_PARTIAL_KEY]: Type.Optional(Type.Ref(SourceStub))
-				})
-			])
+			def = PartialBy(def, optionalKeys)
+			if (objKeys.includes('source'))
+				def = Type.Composite([
+					def as TObject,
+					Type.Object({
+						[SOURCE_PARTIAL_KEY]: Type.Optional(Type.Ref(SourceStub))
+					})
+				])
+
+			newDefs[key] = def
 		}
 	}
 

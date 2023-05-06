@@ -132,6 +132,7 @@ export function ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 }
 export type ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>> =
 	Static<ReturnType<typeof ExtendMany<T>>>
+
 export function Collection<T extends TRef>(
 	memberSchema: T,
 	idPattern: TRef<TString>,
@@ -146,7 +147,7 @@ export function Collection<T extends TRef>(
 				name: Type.Ref(Localize.Label),
 				canonical_name: Type.Optional(Type.Ref(Localize.Label)),
 				color: Type.Optional(Type.Ref(Metadata.CSSColor)),
-				summary: Type.Ref(Localize.MarkdownString),
+				summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 				description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 				contents: Type.Optional(Dictionary(memberSchema))
 			})

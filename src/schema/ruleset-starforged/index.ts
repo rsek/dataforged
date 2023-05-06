@@ -17,5 +17,6 @@ export {
 	SvgImageURL,
 	WebpImageURL,
 	CSSColor,
-	Source
+	Source,
+	SourceStub
 } from 'schema/common/metadata'

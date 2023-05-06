@@ -15,7 +15,6 @@ import * as Assets from 'schema/assets'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
-export const SOURCE_PARTIAL_KEY = '_source'
 export const NAMESPACE_KEY = /^[a-z0-9_]{3,}$/
 
 export const DATASWORN_VERSION = '2.0.0'

@@ -1,8 +1,8 @@
 starforged:
   ruleset: starforged
-  _source:
+  source:
     authors:
-      - Shawn Tomkin
+      - name: Shawn Tomkin
     title: 'Ironsworn: Starforged Rulebook'
     url: https://ironswornrpg.com
     license: https://creativecommons.org/licenses/by/4.0
@@ -23,6 +23,7 @@ starforged:
         begin_a_session:
           name: Begin a Session
           trigger:
+            roll_type: no_roll
             text: When you begin a significant session or chapter of play...
           oracles:
             - starforged/oracles/moves/begin_a_session
@@ -41,6 +42,7 @@ starforged:
         set_a_flag:
           name: Set a Flag
           trigger:
+            roll_type: no_roll
             text: When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching...
           text: |-
             **When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching**, that content is now flagged.
@@ -51,6 +53,7 @@ starforged:
         change_your_fate:
           name: Change Your Fate
           trigger:
+            roll_type: no_roll
             text: When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment...
           text: |-
             **When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment**, pause and identify what needs to be changed. Choose as many options as appropriate.
@@ -65,6 +68,7 @@ starforged:
         take_a_break:
           name: Take a Break
           trigger:
+            roll_type: no_roll
             text: When you resolve a progress move or complete an intense scenario...
           text: |-
             **When you resolve a progress move or complete an intense scenario**, take a few deep breaths and take some time to attend to the needs of your body. Reflect on what just happened and how it made you feel. Then, choose one.
@@ -76,6 +80,7 @@ starforged:
         end_a_session:
           name: End a Session
           trigger:
+            roll_type: no_roll
             text: When you end a significant session or chapter of play...
           text: |-
             **When you end a significant session or chapter of play**, reflect on the events of the game and identify any missed opportunities to mark progress.
@@ -91,12 +96,6 @@ starforged:
       color: &color:Adventure_Moves '#206087'
       _source:
         page: 146
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       summary: |-
         The **adventure moves** encompass broadly useful actions to overcome obstacles, reinforce your position, conduct investigations, influence others, and support your fellow protagonists.
       description: |-
@@ -261,6 +260,7 @@ starforged:
         aid_your_ally:
           name: Aid Your Ally
           trigger:
+            roll_type: no_roll
             text: When you act in direct support of an ally...
           text: |-
             **When you act in direct support of an ally**, envision how you aid them. Then, [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) or [Gain Ground](starforged/moves/combat/gain_ground) to take action. If you score a hit, they (instead of you) take the benefits of the move.
@@ -310,12 +310,6 @@ starforged:
         Make these **quest moves** when you swear vows, make progress on your quests, and resolve vows.
       _source:
         page: 154
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         swear_an_iron_vow:
           name: Swear an Iron Vow
@@ -345,6 +339,7 @@ starforged:
         reach_a_milestone:
           name: Reach a Milestone
           trigger:
+            roll_type: no_roll
             text: When you make headway in your quest...
           text: |-
             **When you make headway in your quest** by doing any of the following...
@@ -394,6 +389,7 @@ starforged:
         forsake_your_vow:
           name: Forsake Your Vow
           trigger:
+            roll_type: no_roll
             text: When you renounce your quest, betray your promise, or the goal is lost to you...
           text: |-
             **When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.
@@ -413,12 +409,6 @@ starforged:
       color: '#4A5791'
       _source:
         page: 162
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       summary: |-
         Make these **connection moves** when you introduce connections and as you build influence or understanding with them.
       description: |-
@@ -585,12 +575,6 @@ starforged:
         Will you survive these expeditions? What will they cost you? What wonders and horrors will you face? Use the **exploration moves** to find out.
       _source:
         page: 168
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         undertake_an_expedition:
           name: Undertake an Expedition
@@ -679,6 +663,7 @@ starforged:
         make_a_discovery:
           name: Make a Discovery
           trigger:
+            roll_type: no_roll
             text: When your exploration of a waypoint uncovers something wondrous...
           oracles:
             - starforged/oracles/moves/make_a_discovery
@@ -691,6 +676,7 @@ starforged:
         confront_chaos:
           name: Confront Chaos
           trigger:
+            roll_type: no_roll
             text: When your exploration of a waypoint uncovers something dreadful...
           oracles:
             - starforged/oracles/moves/confront_chaos
@@ -772,12 +758,6 @@ starforged:
       color: '#818992'
       _source:
         page: 182
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       summary: |-
         When you face one or more foes in high-stakes, action-oriented conflict, use the **combat moves**. These moves encompass on-foot action and vehicle sorties—or both as part of the same challenge.
       description: |-
@@ -1031,6 +1011,7 @@ starforged:
         face_defeat:
           name: Face Defeat
           trigger:
+            roll_type: no_roll
             text: When you abandon or are deprived of an objective...
           text: |-
             **When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](starforged/moves/fate/pay_the_price).
@@ -1091,16 +1072,11 @@ starforged:
         When you bear the brunt of a failed action or make a concession, the suffer moves help resolve the cost. These moves are typically made when you must [Pay the Price](starforged/moves/fate/pay_the_price) and face a hardship that directly impacts your well-being and readiness, or as prompted by a move or asset.
       _source:
         page: 198
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         lose_momentum:
           name: Lose Momentum
           trigger:
+            roll_type: no_roll
             text: When you are delayed or disadvantaged...
           text: |-
             **When you are delayed or disadvantaged**, suffer -1 momentum for a minor setback, -2 for a serious setback, or -3 for a major setback.
@@ -1230,6 +1206,7 @@ starforged:
         sacrifice_resources:
           name: Sacrifice Resources
           trigger:
+            roll_type: no_roll
             text: When you lose or consume resources...
           text: |-
             **When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.
@@ -1299,12 +1276,6 @@ starforged:
         Make these **recover moves** when you attempt to rest, recover, or refit.
       _source:
         page: 208
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         sojourn:
           name: Sojourn
@@ -1548,18 +1519,14 @@ starforged:
     threshold:
       name: Threshold moves
       color: '#1D1D1B'
+      summary: |-
+        Despite your best efforts to overcome the perils of the Forge, calamitous events may bring you to the precipice of life and death, redemption and desolation, perseverance and destruction.
       description: |-
         Despite your best efforts to overcome the perils of the Forge, calamitous events may bring you to the precipice of life and death, redemption and desolation, perseverance and destruction.
 
         In these moments you face your greatest tests. What will become of you when all seems lost? Will you see your character undone, or find yourself on a path of renewed purpose? Make these **threshold moves** to find out.
       _source:
         page: 216
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         face_death:
           name: Face Death
@@ -1670,12 +1637,8 @@ starforged:
       color: '#4F5A69'
       _source:
         page: 222
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
+      summary: |-
+        Make these **legacy moves** to gain and spend experience, and when you face a final test to learn how your accomplishments and failures will echo through time.
       description:
         The three **legacy tracks**—quests, bonds, and discoveries—are a special type of progress track to show the evolution of your character. As you fulfill vows, build relationships, and explore the Forge, you'll mark progress on these tracks and gain experience. This experience is then spent on character assets to represent your character's growing skills, influence, and resources.
 
@@ -1684,6 +1647,7 @@ starforged:
         earn_experience:
           name: Earn Experience
           trigger:
+            roll_type: no_roll
             text: When you fill a box (four ticks) on any legacy track...
           text: |-
             **When you fill a box (four ticks) on any legacy track**, take 2 experience. This experience may be spent when you [Advance](starforged/moves/legacy/advance).
@@ -1694,6 +1658,7 @@ starforged:
         advance:
           name: Advance
           trigger:
+            roll_type: no_roll
             text: When you develop your abilities, improve your resources, gain a reward, or boost your influence...
           text: |-
             **When you develop your abilities, improve your resources, gain a reward, or boost your influence**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.
@@ -1781,20 +1746,17 @@ starforged:
     fate:
       name: Fate moves
       color: '#8F477B'
+      summary: |-
+        In solo and co-op play, the **fate moves** mediate the result of other moves or serve as inspirational prompts for your story.
       description: |-
         In solo and co-op play, the **fate moves** mediate the result of other moves or serve as inspirational prompts for your story. When you face the uncertain outcome of a move, want to know what happens next, or have a question about people, places, and events, these moves help reveal the answer.
       _source:
         page: 228
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         ask_the_oracle:
           name: Ask the Oracle
           trigger:
+            roll_type: no_roll
             text: When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events...
           oracles:
             - starforged/oracles/moves/ask_the_oracle/small_chance
@@ -1824,6 +1786,7 @@ starforged:
         pay_the_price:
           name: Pay the Price
           trigger:
+            roll_type: no_roll
             text: When you suffer the outcome of an action...
           oracles:
             - starforged/oracles/moves/pay_the_price
@@ -1842,22 +1805,19 @@ starforged:
       name: Scene challenge moves
       # NB: strictly speaking, these aren't a formal category of moves, but given their status as optional rules, grouping them together is practical
       color: *color:Adventure_Moves # these don't have an accent color in the rules guide, but since they overlap with the Adventure category this is a reasonable stopgap.
+      summary: |-
+        A **scene challenge** is an optional structured approach for resolving an extended non-combat scene against a threat or other characters, particularly when a time limit or looming danger adds extra urgency.
       description: |-
         A **scene challenge** is an optional structured approach for resolving an extended non-combat scene against a threat or other characters, particularly when a time limit or looming danger adds extra urgency.
 
         Examples of a scene challenge include disarming a timed explosive, hacking a system while evading digital countermeasures, participating in a formal debate before a council, or competing in a hoverbike race.
       _source:
         page: 239
-        authors:
-          - Shawn Tomkin
-        title: 'Ironsworn: Starforged Rulebook'
-        url: https://ironswornrpg.com
-        license: https://creativecommons.org/licenses/by/4.0
-        date: 2022-10-01
       contents:
         begin_the_scene:
           name: Begin the Scene
           trigger:
+            roll_type: no_roll
             text: When you face an extended or complex challenge...
           text: |-
             **When you face an extended or complex challenge**, name your objective and choose a rank as appropriate to the situation.

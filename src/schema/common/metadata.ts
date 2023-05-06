@@ -99,7 +99,7 @@ export type Source = Static<typeof Source>
 export const SourceStub = Type.Partial(Source, {
 	description:
 		'A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.',
-	$id: '#/definitions/SourceStub'
+	$id: '#/$defs/SourceStub'
 })
 
 export type SourceStub = Static<typeof SourceStub>

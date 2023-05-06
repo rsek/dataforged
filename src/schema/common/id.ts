@@ -80,12 +80,15 @@ export type AssetControlFieldIDWildcard = Static<
 
 export const AssetConditionMeterID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/condition_meter$/,
-	{ $id: '#/$defs/AssetConditionMeterID' }
+	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
 )
 export type AssetConditionMeterID = Static<typeof AssetConditionMeterID>
 export const AssetConditionMeterIDWildcard = Type.RegEx(
-	/^([a-z_]+|\\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
-	{ $id: '#/$defs/AssetConditionMeterIDWildcard' }
+	/^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
+	{
+		$id: '#/$defs/AssetConditionMeterIDWildcard',
+		title: 'Asset condition meter ID (wildcard)'
+	}
 )
 export type AssetConditionMeterIDWildcard = Static<
 	typeof AssetConditionMeterIDWildcard
