@@ -12,7 +12,7 @@ classic:
       name: Adventure moves
       _source:
         page: 60
-      description: |-
+      summary: |-
         Adventure moves are used as you travel the Ironlands, investigate situations, and deal with threats.
       contents:
         face_danger:
@@ -328,7 +328,7 @@ classic:
       name: Relationship moves
       _source:
         page: 69
-      description: |-
+      summary: |-
         Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.
       contents:
         compel:
@@ -582,6 +582,7 @@ classic:
           _source:
             page: 76
           trigger:
+            roll_type: no_roll
             text: When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally...
           text: When **you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
           # TODO: forward to another move ID?
@@ -615,7 +616,7 @@ classic:
       name: Combat moves
       _source:
         page: 78
-      description: |-
+      summary: |-
         When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.
       contents:
         enter_the_fray:
@@ -744,6 +745,7 @@ classic:
         turn_the_tide:
           name: Turn the Tide
           trigger:
+            roll_type: no_roll
             text: Once per fight, when you risk it all...
           _source:
             page: 81
@@ -844,7 +846,7 @@ classic:
       name: Suffer moves
       _source:
         page: 90
-      description: |-
+      summary: |-
         These moves are made as a result of a perilous event or bad outcome on other moves. They represent what happens to you, and how you hold up against the trauma.
       contents:
         endure_harm:
@@ -1034,6 +1036,7 @@ classic:
           _source:
             page: 97
           trigger:
+            roll_type: no_roll
             text: When your supply is exhausted (reduced to 0)...
           text: When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances.
         face_a_setback:
@@ -1041,6 +1044,7 @@ classic:
           _source:
             page: 97
           trigger:
+            roll_type: no_roll
             text: When your momentum is at its minimum (-6), and you suffer additional -momentum...
           text: |-
             When **your momentum is at its minimum** (-6), and you suffer additional -momentum, choose one.
@@ -1051,7 +1055,7 @@ classic:
       name: Quest moves
       _source:
         page: 98
-      description: |-
+      summary: |-
         Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.
       contents:
         swear_an_iron_vow:
@@ -1092,6 +1096,7 @@ classic:
           _source:
             page: 100
           trigger:
+            roll_type: no_roll
             text: When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item...
           text: |-
             When **you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item**, you may mark progress.
@@ -1139,6 +1144,7 @@ classic:
           _source:
             page: 102
           trigger:
+            roll_type: no_roll
             text: When you renounce your quest, betray your promise, or the goal is lost to you...
           text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](classic/moves/suffer/endure_stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
         advance:
@@ -1146,12 +1152,14 @@ classic:
           _source:
             page: 103
           trigger:
+            roll_type: no_roll
             text: When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion...
           text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
     fate:
       name: Fate moves
       _source:
         page: 98
+      summary: When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.
       description: |-
         In solo and co-op play, the fate moves mediate the result of other moves or serve as inspirational prompts for your story. When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.
 
@@ -1169,6 +1177,7 @@ classic:
           _source:
             page: 105
           trigger:
+            roll_type: no_roll
             text: When you suffer the outcome of a move...
           text: |-
             When **you suffer the outcome of a move**, choose one.
@@ -1189,6 +1198,7 @@ classic:
           _source:
             page: 107
           trigger:
+            roll_type: no_roll
             text: When you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events...
           text: |-
             When **you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events**, you may...

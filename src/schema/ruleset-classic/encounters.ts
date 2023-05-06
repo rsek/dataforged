@@ -25,7 +25,8 @@ export const EncounterCollectionClassic = Squash(
 		),
 		Type.Object({
 			id: Type.Ref(ID.EncounterCollectionID),
-			member_label: Type.Optional(Type.Ref(Localize.Label))
+			member_label: Type.Optional(Type.Ref(Localize.Label)),
+			summary: Type.Optional(Type.Ref(Localize.MarkdownString))
 		})
 	],
 	{ $id: '#/$defs/EncounterCollectionClassic' }
