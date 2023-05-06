@@ -42,7 +42,12 @@ export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 
 export const OracleTableRoll = Type.Object(
 	{
-		oracle: Type.Ref(ID.OracleTableID),
+		oracle: Type.Optional(
+			Type.Ref(ID.OracleTableID, {
+				description:
+					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
+			})
+		),
 		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
 		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},
@@ -65,7 +70,7 @@ export const OracleTableRow = Type.Composite(
 			template: Type.Optional(Type.Ref(OracleRollTemplate))
 		})
 	],
-	{ $id: '#/$defs/OracleTableRow' }
+	{ $id: '#/$defs/OracleTableRow', title: 'Row' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
 
@@ -73,7 +78,7 @@ export const OracleTableMatchBehavior = Type.Object(
 	{
 		text: Type.Ref(Localize.MarkdownString)
 	},
-	{ $id: '#/$defs/OracleTableMatchBehavior' }
+	{ $id: '#/$defs/OracleTableMatchBehavior', title: 'Match behavior' }
 )
 export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
 
@@ -137,7 +142,7 @@ export const OracleTable = Type.Composite(
 			rendering: Type.Optional(Type.Ref(OracleTableRendering))
 		})
 	],
-	{ $id: '#/$defs/OracleTable' }
+	{ $id: '#/$defs/OracleTable', title: 'Oracle table' }
 )
 export type OracleTable = Static<typeof OracleTable>
 
@@ -182,7 +187,7 @@ export const OracleCollection = Type.Composite(
 			// templates: Type.Optional(Type.Array(OracleRollTemplate))
 		})
 	],
-	{ $id: '#/$defs/OracleCollection' }
+	{ $id: '#/$defs/OracleCollection', title: 'Oracle collection' }
 )
 
 export type OracleCollection = Static<typeof OracleCollection>

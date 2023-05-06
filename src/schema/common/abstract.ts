@@ -120,12 +120,13 @@ export type ExtendOne<T extends TObject<{ id: TString | TRef<TString> }>> =
 
 export function ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 	t: T,
+	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
 ) {
 	return Type.Composite(
 		[
-			OmitMeta(t),
-			Type.Object({ extends: Type.Optional(Type.Array(t.properties.id)) })
+			Utils.DeepPartial(OmitMeta(t)),
+			Type.Object({ extends: Type.Optional(Type.Array(extendIds)) })
 		],
 		options
 	)
@@ -193,11 +194,15 @@ export function NodeExtendSelf<
  * Note that `id` is always omitted.
  */
 export function NodeExtendForeign<
-	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
+	T extends TObject<{
+		id: TString | TRef<TString>
+		source?: TObject
+		name?: TString
+	}>
 >(
 	t: T,
 	omitKeys: Array<keyof Static<T>> = [],
-	extendsIDType: TString = t.properties.id,
+	extendsIDType: TString | TRef<TString> = t.properties.id,
 	options: SchemaOptions = {}
 ) {
 	return Type.Composite(

@@ -1,5 +1,7 @@
 import { type Static, Type, type ObjectOptions } from '@sinclair/typebox'
 import { ID, Localize, Utils, Abstract, Enum, Progress } from 'schema/common'
+import { MoveIDWildcard } from 'schema/common/id'
+import { PartialBy, PartialExcept } from 'schema/common/utils'
 
 export const MoveRollMethod = Utils.StringEnum(
 	['any', 'all', 'highest', 'lowest'],
@@ -162,10 +164,16 @@ function TriggerBase<T extends MoveRollType>(t: T) {
 	return Type.Object({
 		text: Type.Ref(Localize.MarkdownString, {
 			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.'
+				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.',
+			type: 'string',
+			pattern: /.*\.{3}/.source
 		}),
 		roll_type: Type.Literal(t)
 	})
+}
+
+function TriggerExtensionBase<T extends MoveRollType>(t: T) {
+	return Type.Omit(TriggerBase(t), ['text'])
 }
 
 export const TriggerActionRoll = Type.Composite(
@@ -175,6 +183,7 @@ export const TriggerActionRoll = Type.Composite(
 	],
 	{ $id: '#/$defs/TriggerActionRoll' }
 )
+
 export const TriggerProgressRoll = Type.Composite(
 	[
 		TriggerBase('progress_roll'),
@@ -255,14 +264,84 @@ export const Move = Type.Composite(
 )
 export type Move = Static<typeof Move>
 
-export const MoveCategory = Utils.RequireBy(
-	Abstract.Collection(Type.Ref(Move), Type.Ref(ID.MoveCategoryID)),
-	['color'],
+export const MoveCategory = Abstract.Collection(
+	Type.Ref(Move),
+	Type.Ref(ID.MoveCategoryID),
+
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export const MoveExtension = Abstract.ExtendMany(Move, {
-	$id: '#/$defs/MoveExtension'
+export const TriggerActionRollOptionExtension = PartialExcept(
+	TriggerActionRollOption,
+	['text'],
+	{ $id: '#/$defs/TriggerActionRollOptionExtension' }
+)
+
+export const TriggerActionRollExtension = Type.Composite(
+	[
+		TriggerExtensionBase('action_roll'),
+		Type.Object({
+			roll_options: Type.Array(Type.Ref(TriggerActionRollOptionExtension))
+		})
+	],
+	{ $id: '#/$defs/TriggerActionRollExtension' }
+)
+
+export const TriggerProgressRollOptionExtension = PartialExcept(
+	TriggerProgressRollOption,
+	['text'],
+	{ $id: '#/$defs/TriggerProgressRollOptionExtension' }
+)
+
+export const TriggerProgressRollExtension = Type.Composite(
+	[
+		TriggerExtensionBase('progress_roll'),
+		Type.Object({
+			roll_options: Type.Array(Type.Ref(TriggerProgressRollOptionExtension))
+		})
+	],
+	{ $id: '#/$defs/TriggerProgressRollExtension' }
+)
+
+export const TriggerExtension = Type.Union(
+	[
+		Type.Ref(TriggerActionRollExtension),
+		Type.Ref(TriggerProgressRollExtension)
+	],
+	{ $id: '#/$defs/TriggerExtension' }
+)
+
+export const MoveOutcomeExtension = Type.Partial(MoveOutcome, {
+	$id: '#/$defs/MoveOutcomeExtension'
 })
+export const MoveOutcomeMatchableExtension = Type.Partial(
+	MoveOutcomeMatchable,
+	{ $id: '#/$defs/MoveOutcomeMatchableExtension' }
+)
+
+export const MoveOutcomesExtension = Type.Object(
+	{
+		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableExtension)),
+		weak_hit: Type.Optional(Type.Ref(MoveOutcomeExtension)),
+		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableExtension))
+	},
+	{
+		$id: '#/$defs/MoveOutcomesExtension'
+	}
+)
+
+export const MoveExtension = Abstract.ExtendMany(
+	Type.Composite([
+		Type.Omit(Move, ['trigger', 'outcomes']),
+		Type.Object({
+			trigger: Type.Optional(Type.Ref(TriggerExtension)),
+			outcomes: Type.Optional(Type.Ref(MoveOutcomesExtension))
+		})
+	]),
+	Type.Ref(MoveIDWildcard),
+	{
+		$id: '#/$defs/MoveExtension'
+	}
+)
 export type MoveExtension = Static<typeof MoveExtension>
