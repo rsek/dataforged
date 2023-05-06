@@ -3,7 +3,7 @@ starforged:
   source:
     authors:
       - name: Shawn Tomkin
-    title: "Ironsworn: Starforged Rulebook"
+    title: 'Ironsworn: Starforged Rulebook'
     license: https://creativecommons.org/licenses/by/4.0
     date: 2022-05-06
     url: https://ironswornrpg.com
@@ -202,11 +202,14 @@ starforged:
               result: Toxic or polluted habitat
             - low: 88
               high: 90
-              result: "Within or near [Precursor Vault](starforged/collections/oracles/vaults)"
+              result: 'Within or near [Precursor Vault](starforged/collections/oracles/vaults)'
               # suggestions: [*obj:Vault]
             - low: 91
               high: 100
-              result: *result:Descriptor+Focus
+              result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                - oracle: starforged/oracles/core/focus
 
         initial_contact:
           name: Initial Contact
@@ -260,7 +263,7 @@ starforged:
               # set_attributes: {initial_contact: [destroyed]}
             - low: 96
               high: 100
-              result: "[Derelict](starforged/collections/oracles/derelicts)"
+              result: '[Derelict](starforged/collections/oracles/derelicts)'
               # *inherit:Derelict.Settlement
 
         authority:
@@ -410,7 +413,10 @@ starforged:
               result: Warfare
             - low: 96
               high: 100
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
         trouble:
           name: Settlement Trouble
           _source:
@@ -543,7 +549,10 @@ starforged:
               # suggestions: [*obj:Creature]
             - low: 91
               high: 100
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
         name:
           name: Settlement Name
           _source:
@@ -556,7 +565,7 @@ starforged:
           #   part_of_speech: [proper noun]
           #   tags: [name]
           table:
-          # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
+            # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
             - low: 1
               high: 1
               result: Aegis
@@ -897,6 +906,3 @@ starforged:
             - low: 100
               high: 100
               result: Wreck
-
-
-

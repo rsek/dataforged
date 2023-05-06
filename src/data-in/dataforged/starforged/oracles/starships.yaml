@@ -503,8 +503,9 @@ starforged:
               result: Ships in conflict (roll twice)
               rolls:
                 - oracle: starforged/oracles/starships/type
-              # *obj:Starship
-            # the above isn't formatted as a roll twice object because it's essentially calling for the generation of a whole-ass starship!
+                  method: keep_duplicates
+                  times: 2
+            # TODO: format the above as a 2nd roll of this table + a game object hint
         fleet:
           name: Fleet
           _source:

@@ -5,7 +5,7 @@ starforged:
     page: 380
     authors:
       - name: Shawn Tomkin
-    title: "Ironsworn: Starforged Rulebook"
+    title: 'Ironsworn: Starforged Rulebook'
     url: https://ironswornrpg.com
     license: https://creativecommons.org/licenses/by/4.0
   oracles:
@@ -35,7 +35,7 @@ starforged:
               result: Debt or promise comes due
             - low: 11
               high: 14
-              result: "Enemy reveals unexpected powers, abilities, or influence"
+              result: 'Enemy reveals unexpected powers, abilities, or influence'
             - low: 15
               high: 17
               result: Enemy reveals their true agenda or nature
@@ -114,7 +114,9 @@ starforged:
               # suggestions: [*roll:Event]
             - low: 96
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         story_clue:
           name: Story Clue
           _source:
@@ -126,97 +128,100 @@ starforged:
           table:
             - low: 1
               high: 3
-              result: "Affirms a previously understood fact or clue"
+              result: 'Affirms a previously understood fact or clue'
             - low: 4
               high: 6
-              result: "Connects to a known rumor or scandal"
+              result: 'Connects to a known rumor or scandal'
             - low: 7
               high: 9
-              result: "Connects to a previously unrelated mystery or quest"
+              result: 'Connects to a previously unrelated mystery or quest'
             - low: 10
               high: 12
-              result: "Connects to your own expertise or interests"
+              result: 'Connects to your own expertise or interests'
             - low: 13
               high: 15
-              result: "Contradicts a previously understood fact or clue"
+              result: 'Contradicts a previously understood fact or clue'
             - low: 16
               high: 18
-              result: "Evokes a personal memory"
+              result: 'Evokes a personal memory'
             - low: 19
               high: 21
-              result: "Evokes a remarkable anomaly or phenomenon"
+              result: 'Evokes a remarkable anomaly or phenomenon'
             - low: 22
               high: 24
-              result: "Evokes a vision or prophecy"
+              result: 'Evokes a vision or prophecy'
             - low: 25
               high: 27
-              result: "Involves a cultural touchstone"
+              result: 'Involves a cultural touchstone'
             - low: 28
               high: 30
-              result: "Involves a hidden or mysterious faction"
+              result: 'Involves a hidden or mysterious faction'
             - low: 31
               high: 33
-              result: "Involves a hidden or mysterious person"
+              result: 'Involves a hidden or mysterious person'
             - low: 34
               high: 36
-              result: "Involves a key or means of access"
+              result: 'Involves a key or means of access'
             - low: 37
               high: 39
-              result: "Involves a machine or technology"
+              result: 'Involves a machine or technology'
             - low: 40
               high: 42
-              result: "Involves a non-human being or creature"
+              result: 'Involves a non-human being or creature'
             - low: 43
               high: 45
-              result: "Involves a notable faction"
+              result: 'Involves a notable faction'
             - low: 46
               high: 48
-              result: "Involves a notable person"
+              result: 'Involves a notable person'
             - low: 49
               high: 51
-              result: "Involves a person or faction from your background"
+              result: 'Involves a person or faction from your background'
             - low: 52
               high: 54
-              result: "Involves a personal item"
+              result: 'Involves a personal item'
             - low: 55
               high: 57
-              result: "Involves an enemy or rival"
+              result: 'Involves an enemy or rival'
             - low: 58
               high: 60
-              result: "Involves an organism or biological evidence"
+              result: 'Involves an organism or biological evidence'
             - low: 61
               high: 63
-              result: "Involves an unusual ability or power"
+              result: 'Involves an unusual ability or power'
             - low: 64
               high: 66
-              result: "Involves someone you trust"
+              result: 'Involves someone you trust'
             - low: 67
               high: 69
-              result: "Involves something rare, expensive, or precious"
+              result: 'Involves something rare, expensive, or precious'
             - low: 70
               high: 72
-              result: "Leads to a distant or unfamiliar place"
+              result: 'Leads to a distant or unfamiliar place'
             - low: 73
               high: 75
-              result: "Leads to a hidden or forgotten place"
+              result: 'Leads to a hidden or forgotten place'
             - low: 76
               high: 78
-              result: "Leads to a nearby or familiar place"
+              result: 'Leads to a nearby or familiar place'
             - low: 79
               high: 81
-              result: "Leads to a notable or central place"
+              result: 'Leads to a notable or central place'
             - low: 82
               high: 84
-              result: "Suggests a history of similar incidents"
+              result: 'Suggests a history of similar incidents'
             - low: 85
               high: 87
-              result: "Suggests a looming event or deadline"
+              result: 'Suggests a looming event or deadline'
             - low: 88
               high: 90
-              result: "Suggests an imposter or forgery"
+              result: 'Suggests an imposter or forgery'
             - low: 91
               high: 100
-              result: *result:Descriptor+Focus
+              result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                - oracle: starforged/oracles/core/focus
         anomaly_effect:
           name: Anomaly Effect
           _source:
@@ -325,7 +330,9 @@ starforged:
               result: Triggers an impending catastrophic explosion
             - low: 97
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         combat_action:
           name: Combat Action
           _source:
@@ -353,7 +360,7 @@ starforged:
               result: Coordinate with allies
             - low: 16
               high: 18
-              result: "Corner, trap, or entangle"
+              result: 'Corner, trap, or entangle'
             - low: 19
               high: 21
               result: Counter or reflect an attack
@@ -371,7 +378,7 @@ starforged:
               result: Hide or sneak
             - low: 34
               high: 36
-              result: "Intimidate, taunt, or frighten"
+              result: 'Intimidate, taunt, or frighten'
             - low: 37
               high: 39
               result: Leverage the advantage of a weapon or ability
@@ -401,7 +408,7 @@ starforged:
               result: Move in close or grapple
             - low: 64
               high: 66
-              result: "Nullify a system, device, or weapon"
+              result: 'Nullify a system, device, or weapon'
             - low: 67
               high: 69
               result: Overrun a position
@@ -434,6 +441,6 @@ starforged:
               result: Weaken defenses
             - low: 97
               high: 100
-              result: *result:RollTwice
-
-
+              result: Roll twice
+              rolls:
+                - times: 2

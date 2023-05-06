@@ -281,11 +281,13 @@
 		"OracleTableRoll": {
 			"type": "object",
 			"properties": {
-				"oracle": { "$ref": "#/$defs/OracleTableID" },
+				"oracle": {
+					"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.",
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"method": { "$ref": "#/$defs/OracleTableRollMethod" },
 				"times": { "minimum": 1, "default": 1, "type": "integer" }
-			},
-			"required": ["oracle"]
+			}
 		},
 		"OracleTableRow": {
 			"type": "object",
@@ -585,6 +587,8 @@
 			"properties": {
 				"text": {
 					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"roll_type": { "const": "action_roll", "type": "string" },
@@ -600,6 +604,8 @@
 			"properties": {
 				"text": {
 					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"roll_type": { "const": "progress_roll", "type": "string" },
@@ -615,6 +621,8 @@
 			"properties": {
 				"text": {
 					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"roll_type": { "const": "no_roll", "type": "string" },
@@ -694,54 +702,134 @@
 				"extends": { "$ref": "#/$defs/MoveCategoryID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"type": "object",
 					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Move" } }
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
 				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/MoveCategoryID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
-			"required": ["name", "color"]
+			"required": ["name"]
+		},
+		"TriggerActionRollOptionExtension": {
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"choices": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollOptionChoice" }
+				},
+				"method": {
+					"default": "any",
+					"anyOf": [
+						{ "$ref": "#/$defs/MoveRollMethod" },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
+					]
+				}
+			}
+		},
+		"TriggerActionRollExtension": {
+			"type": "object",
+			"properties": {
+				"roll_type": { "const": "action_roll", "type": "string" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollOptionExtension" }
+				}
+			},
+			"required": ["roll_type", "roll_options"]
+		},
+		"TriggerProgressRollOptionExtension": {
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"choices": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerProgressRollOptionChoice" }
+				},
+				"method": {
+					"default": "any",
+					"anyOf": [
+						{ "$ref": "#/$defs/MoveRollMethod" },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
+					]
+				}
+			}
+		},
+		"TriggerProgressRollExtension": {
+			"type": "object",
+			"properties": {
+				"roll_type": { "const": "progress_roll", "type": "string" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerProgressRollOptionExtension" }
+				}
+			},
+			"required": ["roll_type", "roll_options"]
+		},
+		"TriggerExtension": {
+			"$id": "#/$defs/TriggerExtension",
+			"anyOf": [
+				{ "$ref": "#/$defs/TriggerActionRollExtension" },
+				{ "$ref": "#/$defs/TriggerProgressRollExtension" }
+			]
+		},
+		"MoveOutcomeExtension": {
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" }
+			}
+		},
+		"MoveOutcomeMatchableExtension": {
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" },
+				"match": { "$ref": "#/$defs/MoveOutcome" }
+			}
+		},
+		"MoveOutcomesExtension": {
+			"type": "object",
+			"properties": {
+				"miss": { "$ref": "#/$defs/MoveOutcomeMatchableExtension" },
+				"weak_hit": { "$ref": "#/$defs/MoveOutcomeExtension" },
+				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchableExtension" }
+			}
 		},
 		"MoveExtension": {
 			"type": "object",
 			"properties": {
-				"trigger": { "$ref": "#/$defs/Trigger" },
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
 				"oracles": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"extends": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } }
-			},
-			"required": ["trigger", "text"]
+				"trigger": { "$ref": "#/$defs/TriggerExtension" },
+				"outcomes": { "$ref": "#/$defs/MoveOutcomesExtension" },
+				"extends": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MoveIDWildcard" }
+				}
+			}
 		},
 		"AssetConditionMeterControlField": {
-			"$id": "#/$defs/AssetConditionMeterControlField",
 			"type": "object",
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "checkbox", "type": "string" },
-						"value": { "default": false, "type": "boolean" }
-					},
-					"required": ["label", "field_type"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/AssetConditionMeterControlFieldID" }
-					},
-					"required": ["id"]
-				}
-			]
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "checkbox", "type": "string" },
+				"value": { "default": false, "type": "boolean" },
+				"id": { "$ref": "#/$defs/AssetConditionMeterControlFieldID" }
+			},
+			"required": ["label", "field_type"]
 		},
 		"AssetConditionMeter": {
 			"type": "object",
@@ -772,70 +860,38 @@
 			}
 		},
 		"AssetOptionField": {
-			"$id": "#/$defs/AssetOptionField",
-			"allOf": [
-				{
+			"type": "object",
+			"properties": {
+				"field_type": {
 					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"label": { "$ref": "#/$defs/Label" },
-								"field_type": { "const": "text", "type": "string" },
-								"value": { "type": "string" }
-							},
-							"required": ["label", "field_type"]
-						},
-						{
-							"type": "object",
-							"properties": {
-								"field_type": { "const": "select_stat", "type": "string" },
-								"label": { "$ref": "#/$defs/Label" },
-								"value": { "$ref": "#/$defs/PlayerStat" },
-								"choices": {
-									"type": "object",
-									"patternProperties": {
-										"^[a-z_]+$": {
-											"type": "object",
-											"properties": {
-												"label": { "$ref": "#/$defs/Label" },
-												"value": { "$ref": "#/$defs/PlayerStat" },
-												"selected": { "type": "boolean" }
-											},
-											"required": ["label", "value"]
-										}
-									}
-								}
-							},
-							"required": ["field_type", "label", "choices"]
-						}
+						{ "const": "select_stat", "type": "string" },
+						{ "const": "text", "type": "string" }
 					]
 				},
-				{
-					"type": "object",
-					"properties": { "id": { "$ref": "#/$defs/AssetOptionFieldID" } },
-					"required": ["id"]
+				"label": {
+					"anyOf": [{ "$ref": "#/$defs/Label" }, { "$ref": "#/$defs/Label" }]
+				},
+				"value": {
+					"anyOf": [{ "$ref": "#/$defs/PlayerStat" }, { "type": "string" }]
+				},
+				"id": {
+					"allOf": [
+						{ "anyOf": [{ "not": {} }, { "not": {} }] },
+						{ "$ref": "#/$defs/AssetOptionFieldID" }
+					]
 				}
-			]
+			},
+			"required": ["field_type", "label"]
 		},
 		"AssetControlField": {
-			"$id": "#/$defs/AssetControlField",
 			"type": "object",
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "checkbox", "type": "string" },
-						"value": { "default": false, "type": "boolean" }
-					},
-					"required": ["label", "field_type"]
-				},
-				{
-					"type": "object",
-					"properties": { "id": { "$ref": "#/$defs/AssetControlFieldID" } },
-					"required": ["id"]
-				}
-			]
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "checkbox", "type": "string" },
+				"value": { "default": false, "type": "boolean" },
+				"id": { "$ref": "#/$defs/AssetControlFieldID" }
+			},
+			"required": ["label", "field_type"]
 		},
 		"AssetAttachment": {
 			"type": "object",
@@ -895,73 +951,47 @@
 			"required": ["name", "abilities"]
 		},
 		"AssetAbilityOptionField": {
-			"$id": "#/$defs/AssetAbilityOptionField",
 			"type": "object",
-			"allOf": [
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "text", "type": "string" },
-						"value": { "type": "string" }
-					},
-					"required": ["label", "field_type"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/AssetAbilityOptionFieldID" }
-					},
-					"required": ["id"]
-				}
-			]
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "text", "type": "string" },
+				"value": { "type": "string" },
+				"id": { "$ref": "#/$defs/AssetAbilityOptionFieldID" }
+			},
+			"required": ["label", "field_type"]
 		},
 		"AssetAbilityControlField": {
-			"$id": "#/$defs/AssetAbilityControlField",
-			"allOf": [
-				{
+			"type": "object",
+			"properties": {
+				"label": {
 					"anyOf": [
-						{
-							"type": "object",
-							"properties": {
-								"min": { "const": 0, "type": "number" },
-								"max": { "type": "integer", "enum": [4, 6, 8, 10] },
-								"label": { "$ref": "#/$defs/Label" },
-								"field_type": { "const": "clock", "type": "string" },
-								"value": { "default": 0, "type": "integer" }
-							},
-							"required": ["min", "max", "label", "field_type"]
-						},
-						{
-							"type": "object",
-							"properties": {
-								"min": { "type": "integer" },
-								"max": { "type": "integer" },
-								"label": { "$ref": "#/$defs/Label" },
-								"field_type": { "const": "counter", "type": "string" },
-								"value": { "default": 0, "type": "integer" }
-							},
-							"required": ["min", "label", "field_type"]
-						},
-						{
-							"type": "object",
-							"properties": {
-								"label": { "$ref": "#/$defs/Label" },
-								"field_type": { "const": "checkbox", "type": "string" },
-								"value": { "default": false, "type": "boolean" }
-							},
-							"required": ["label", "field_type"]
-						}
+						{ "$ref": "#/$defs/Label" },
+						{ "$ref": "#/$defs/Label" },
+						{ "$ref": "#/$defs/Label" }
 					]
 				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
-					},
-					"required": ["id"]
+				"field_type": {
+					"anyOf": [
+						{ "const": "clock", "type": "string" },
+						{ "const": "counter", "type": "string" },
+						{ "const": "checkbox", "type": "string" }
+					]
+				},
+				"value": {
+					"anyOf": [
+						{ "default": 0, "type": "integer" },
+						{ "default": 0, "type": "integer" },
+						{ "default": false, "type": "boolean" }
+					]
+				},
+				"id": {
+					"allOf": [
+						{ "anyOf": [{ "not": {} }, { "not": {} }, { "not": {} }] },
+						{ "$ref": "#/$defs/AssetAbilityControlFieldID" }
+					]
 				}
-			]
+			},
+			"required": ["label", "field_type"]
 		},
 		"AssetAbility": {
 			"type": "object",

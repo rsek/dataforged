@@ -3,7 +3,7 @@ starforged:
   source:
     authors:
       - name: Shawn Tomkin
-    title: "Ironsworn: Starforged Rulebook"
+    title: 'Ironsworn: Starforged Rulebook'
     license: https://creativecommons.org/licenses/by/4.0
     url: https://ironswornrpg.com
     date: 2022-05-06
@@ -53,36 +53,36 @@ starforged:
               table:
                 - low: 1
                   high: 15
-                  result: &Sighting.0.result "[Stellar Object](starforged/oracles/space/stellar_object)"
+                  result: &Sighting.0.result '[Stellar Object](starforged/oracles/space/stellar_object)'
                   rolls:
                     - oracle: starforged/oracles/space/stellar_object
                 - low: 16
                   high: 35
-                  result: &Sighting.1.result "[Planet](starforged/collections/oracles/planets)"
+                  result: &Sighting.1.result '[Planet](starforged/collections/oracles/planets)'
                   # game_objects: [*obj:Planet]
                 - low: 36
                   high: 40
-                  result: &Sighting.2.result "[Settlement](starforged/collections/oracles/settlements)"
+                  result: &Sighting.2.result '[Settlement](starforged/collections/oracles/settlements)'
                   # game_objects: [*obj:Settlement]
                 - low: 41
                   high: 47
-                  result: &Sighting.3.result "[Starship](starforged/collections/oracles/starships)"
+                  result: &Sighting.3.result '[Starship](starforged/collections/oracles/starships)'
                   # game_objects: [*obj:Starship]
                 - low: 48
                   high: 51
-                  result: &Sighting.4.result "[Derelict](starforged/collections/oracles/derelicts)"
+                  result: &Sighting.4.result '[Derelict](starforged/collections/oracles/derelicts)'
                   # game_objects: [*obj:Derelict]
                 - low: 52
                   high: 53
-                  result: &Sighting.5.result "[Precursor Vault](starforged/collections/oracles/vaults)"
+                  result: &Sighting.5.result '[Precursor Vault](starforged/collections/oracles/vaults)'
                   # game_objects: [*obj:Vault]
                 - low: 54
                   high: 55
-                  result: &Sighting.6.result "[Creature](starforged/collections/oracles/creatures)"
+                  result: &Sighting.6.result '[Creature](starforged/collections/oracles/creatures)'
                   # game_objects: [*obj:Creature]
                 - low: 56
                   high: 60
-                  result: &Sighting.7.result "[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)"
+                  result: &Sighting.7.result '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
                   rolls: &Sighting.7.rolls
                     - oracle: starforged/oracles/core/descriptor
                       times: 1
@@ -92,19 +92,19 @@ starforged:
                       method: no_duplicates
                 - low: 61
                   high: 65
-                  result: &Sighting.8.result "Debris field: Mineral asteroids"
+                  result: &Sighting.8.result 'Debris field: Mineral asteroids'
                 - low: 66
                   high: 68
-                  result: &Sighting.9.result "Debris field: Frozen asteroids"
+                  result: &Sighting.9.result 'Debris field: Frozen asteroids'
                 - low: 69
                   high: 70
-                  result: &Sighting.10.result "Debris field: Crystalline asteroids"
+                  result: &Sighting.10.result 'Debris field: Crystalline asteroids'
                 - low: 71
                   high: 72
-                  result: &Sighting.11.result "Debris field: Creature boneyard"
+                  result: &Sighting.11.result 'Debris field: Creature boneyard'
                 - low: 73
                   high: 74
-                  result: &Sighting.12.result "Debris field: Metallic wreckage"
+                  result: &Sighting.12.result 'Debris field: Metallic wreckage'
                 - low: 75
                   high: 76
                   result: &Sighting.13.result Large rogue asteroid
@@ -805,16 +805,21 @@ starforged:
               result: Troubling visions or apparitions
             - low: 91
               high: 93
-              result: "True nature of a cargo, occupant, or passenger is revealed"
+              result: 'True nature of a cargo, occupant, or passenger is revealed'
             - low: 94
               high: 96
               result: Unsettling sounds or disturbances
             - low: 97
               high: 99
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
             - low: 100
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         opportunity:
           _source:
             page: 305
@@ -901,7 +906,7 @@ starforged:
               result: Probe or beacon with useful data
             - low: 85
               high: 88
-              result: "Refuge offers a place to hide, plan, or recover"
+              result: 'Refuge offers a place to hide, plan, or recover'
             - low: 89
               high: 92
               result: Sensors pinpoint a lurking foe
@@ -911,4 +916,3 @@ starforged:
             - low: 97
               high: 100
               result: Vehicle or equipment performs beyond expectations
-

@@ -87,7 +87,6 @@ starforged:
               # set_attributes: {location_theme: [sacred]}
       collections:
         chaotic:
-          $schema: LocationThemeOracles
           name: Chaotic
           _source:
             page: 372
@@ -210,7 +209,6 @@ starforged:
                   high: 100
                   result: Insight into the source or nature of the chaos
         fortified:
-          $schema: LocationThemeOracles
           name: Fortified
           _source:
             page: 373
@@ -314,7 +312,6 @@ starforged:
                   high: 100
                   result: Access to useful equipment or weapons
         haunted:
-          $schema: LocationThemeOracles
           name: Haunted
           _source:
             page: 374
@@ -418,7 +415,6 @@ starforged:
                   high: 100
                   result: Useful or interesting artifact or device
         infested:
-          $schema: LocationThemeOracles
           name: Infested
           _source:
             page: 375
@@ -522,7 +518,6 @@ starforged:
                   high: 100
                   result: Helpful resource or equipment
         inhabited:
-          $schema: LocationThemeOracles
           name: Inhabited
           _source:
             page: 376
@@ -626,7 +621,6 @@ starforged:
                   high: 100
                   result: Old friend or connection resurfaces
         mechanical:
-          $schema: LocationThemeOracles
           name: Mechanical
           _source:
             page: 377
@@ -730,7 +724,6 @@ starforged:
                   high: 100
                   result: Wondrous technology
         ruined:
-          $schema: LocationThemeOracles
           name: Ruined
           _source:
             page: 378
@@ -834,7 +827,6 @@ starforged:
                   high: 100
                   result: Shortcut or passage through the destruction
         sacred:
-          $schema: LocationThemeOracles
           name: Sacred
           _source:
             page: 379
@@ -937,127 +929,3 @@ starforged:
                 - low: 81
                   high: 100
                   result: Interesting or valuable artifact or device
-
-        # xxLocationTheme:
-        #   $schema: LocationThemeOracles
-        #   title:
-        #     canonical: xxLocationTheme
-        #   contents:
-        #     feature:
-        #       $schema: LocationThemeFeatureOracle
-        #       title:
-        #         canonical: Feature
-        #       summary: *Feature.summary
-        #       table:
-        #         - low: 1
-        #           high: 8
-        #           result: xxFEATURE
-        #         - low: 9
-        #           high: 16
-        #           result: xxFEATURE
-        #         - low: 17
-        #           high: 24
-        #           result: xxFEATURE
-        #         - low: 25
-        #           high: 32
-        #           result: xxFEATURE
-        #         - low: 33
-        #           high: 40
-        #           result: xxFEATURE
-        #         - low: 41
-        #           high: 48
-        #           result: xxFEATURE
-        #         - low: 49
-        #           high: 56
-        #           result: xxFEATURE
-        #         - low: 57
-        #           high: 64
-        #           result: xxFEATURE
-        #         - low: 65
-        #           high: 72
-        #           result: xxFEATURE
-        #         - low: 73
-        #           high: 80
-        #           result: xxFEATURE
-        #         - low: 81
-        #           high: 88
-        #           result: xxFEATURE
-        #         - low: 89
-        #           high: 96
-        #           result: xxFEATURE
-        #         - low: 97
-        #           high: 100
-        #           result: |-
-        #             [Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)
-        #           rolls:
-        #             - oracle: starforged/oracles/core/descriptor
-        #             - oracle: starforged/oracles/core/focus
-        #     peril:
-        #       $schema: LocationThemePerilOracle
-        #       title:
-        #         canonical: Peril
-        #       summary: *Peril.summary       #       table:
-        #         - low: 1
-        #           high: 9
-        #           result: xxPERIL
-        #         - low: 10
-        #           high: 18
-        #           result: xxPERIL
-        #         - low: 19
-        #           high: 27
-        #           result: xxPERIL
-        #         - low: 28
-        #           high: 36
-        #           result: xxPERIL
-        #         - low: 37
-        #           high: 45
-        #           result: xxPERIL
-        #         - low: 46
-        #           high: 54
-        #           result: xxPERIL
-        #         - low: 55
-        #           high: 63
-        #           result: xxPERIL
-        #         - low: 64
-        #           high: 72
-        #           result: xxPERIL
-        #         - low: 73
-        #           high: 81
-        #           result: xxPERIL
-        #         - low: 82
-        #           high: 90
-        #           result: xxPERIL
-        #         - low: 91
-        #           high: 98
-        #           result: |-
-        #             [Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)
-        #           rolls:
-        #             - oracle: starforged/oracles/core/action
-        #             - oracle: starforged/oracles/core/theme
-        #         - low: 99
-        #           high: 100
-        #           result: Roll twice
-        #           rolls:
-        #             - times: 2
-        #               method: no_duplicates
-        #     opportunity:
-        #       $schema: LocationThemeOpportunityOracle
-        #       title:
-        #         canonical: Opportunity
-        #       summary: *Opportunity.summary
-        #       table:
-        #         - low: 1
-        #           high: 20
-        #           result: xxOPPORTUNITY
-        #         - low: 21
-        #           high: 40
-        #           result: xxOPPORTUNITY
-        #         - low: 41
-        #           high: 60
-        #           result: xxOPPORTUNITY
-        #         - low: 61
-        #           high: 80
-        #           result: xxOPPORTUNITY
-        #         - low: 81
-        #           high: 100
-        #           result: xxOPPORTUNITY

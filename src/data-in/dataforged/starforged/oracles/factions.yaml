@@ -4,7 +4,7 @@ starforged:
     date: 2022-05-06
     authors:
       - name: Shawn Tomkin
-    title: "Ironsworn: Starforged Rulebook"
+    title: 'Ironsworn: Starforged Rulebook'
     license: https://creativecommons.org/licenses/by/4.0
     url: https://ironswornrpg.com
   oracles:
@@ -30,24 +30,24 @@ starforged:
               table:
                 - low: 1
                   high: 40
-                  result: "[[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]"
+                  result: '[[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]'
                   template:
-                    result: "{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}"
+                    result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
                 - low: 41
                   high: 55
-                  result: "[[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]"
+                  result: '[[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]'
                   template:
-                    result: "{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
+                    result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
                 - low: 56
                   high: 70
-                  result: "[[Identity](starforged/oracles/factions/identity)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]"
+                  result: '[[Identity](starforged/oracles/factions/identity)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]'
                   template:
-                    result: "{{result:starforged/oracles/factions/identity}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}"
+                    result: '{{result:starforged/oracles/factions/identity}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
                 - low: 71
                   high: 100
-                  result: "[[Affiliation](starforged/oracles/factions/affiliation)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]"
+                  result: '[[Affiliation](starforged/oracles/factions/affiliation)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]'
                   template:
-                    result: "{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
+                    result: '{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
             legacy:
               name: Legacy
               # content:
@@ -455,23 +455,23 @@ starforged:
           table:
             - low: 1
               high: 40
-              result: "[Dominion](starforged/oracles/factions/dominion)"
-              summary: "Governing power"
+              result: '[Dominion](starforged/oracles/factions/dominion)'
+              summary: 'Governing power'
               rolls:
                 - oracle: starforged/oracles/factions/dominion
                 - oracle: starforged/oracles/factions/leadership
               # set_attributes: {faction_type: [dominion]}
             - low: 41
               high: 70
-              result: "[Guild](starforged/oracles/factions/guild)"
-              summary: "Organization of specialists"
+              result: '[Guild](starforged/oracles/factions/guild)'
+              summary: 'Organization of specialists'
               rolls:
                 - oracle: starforged/oracles/factions/guild
               # set_attributes: {faction_type: [guild]}
             - low: 71
               high: 100
-              result: "[Fringe Group](starforged/oracles/factions/fringe_group)"
-              summary: "Band of outlaws, outcasts, or rogues"
+              result: '[Fringe Group](starforged/oracles/factions/fringe_group)'
+              summary: 'Band of outlaws, outcasts, or rogues'
               rolls:
                 - oracle: starforged/oracles/factions/fringe_group
               # set_attributes: {faction_type: [fringe_group]}
@@ -631,7 +631,7 @@ starforged:
               result: Wealth
               # set_attributes: {dominion: [wealth]}
         leadership:
-          name: "Dominion: Leadership"
+          name: 'Dominion: Leadership'
           _source:
             page: 341
           # usage:
@@ -757,7 +757,9 @@ starforged:
               # set_attributes: {guild: [spies]}
             - low: 91
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         fringe_group:
           name: Fringe Group
           rendering:
@@ -819,7 +821,9 @@ starforged:
               # set_attributes: {fringe_group: [smugglers]}
             - low: 96
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         projects:
           name: Faction
           _source:
@@ -930,7 +934,10 @@ starforged:
               result: Usurp leadership within a rival faction
             - low: 97
               high: 100
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
         relationships:
           name: Faction Relationships
           _source:
@@ -1023,7 +1030,9 @@ starforged:
               result: Warring with
             - low: 97
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         quirks:
           name: Faction Quirks
           _source:
@@ -1134,7 +1143,10 @@ starforged:
               result: Work or environment causes mutations
             - low: 97
               high: 100
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
         rumors:
           name: Faction Rumors
           _source:
@@ -1245,4 +1257,7 @@ starforged:
               result: Vulnerable to attack or aggression
             - low: 97
               high: 100
-              result: *result:Action+Theme
+              result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme

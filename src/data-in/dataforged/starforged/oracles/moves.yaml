@@ -4,7 +4,7 @@ starforged:
     date: 2022-05-06
     authors:
       - name: Shawn Tomkin
-    title: "Ironsworn: Starforged Rulebook"
+    title: 'Ironsworn: Starforged Rulebook'
     url: https://ironswornrpg.com
     license: https://creativecommons.org/licenses/by/4.0
   oracles:
@@ -24,10 +24,10 @@ starforged:
               table:
                 - low: 1
                   high: 90
-                  result: "Yes"
+                  result: 'Yes'
                 - low: 91
                   high: 100
-                  result: "No"
+                  result: 'No'
             likely:
               name: Likely
               match: *AtO.Match
@@ -35,10 +35,10 @@ starforged:
               table:
                 - low: 1
                   high: 75
-                  result: "Yes"
+                  result: 'Yes'
                 - low: 76
                   high: 100
-                  result: "No"
+                  result: 'No'
             fifty_fifty:
               name: 50/50
               match: *AtO.Match
@@ -46,10 +46,10 @@ starforged:
               table:
                 - low: 1
                   high: 50
-                  result: "Yes"
+                  result: 'Yes'
                 - low: 51
                   high: 100
-                  result: "No"
+                  result: 'No'
             unlikely:
               match: *AtO.Match
               name: Unlikely
@@ -57,10 +57,10 @@ starforged:
               table:
                 - low: 1
                   high: 25
-                  result: "Yes"
+                  result: 'Yes'
                 - low: 26
                   high: 100
-                  result: "No"
+                  result: 'No'
             small_chance:
               match: *AtO.Match
               name: Small Chance
@@ -68,10 +68,10 @@ starforged:
               table:
                 - low: 1
                   high: 10
-                  result: "Yes"
+                  result: 'Yes'
                 - low: 11
                   high: 100
-                  result: "No"
+                  result: 'No'
       contents:
         begin_a_session:
           name: Begin a Session
@@ -82,38 +82,38 @@ starforged:
           table:
             - low: 1
               high: 10
-              result: "Flashback reveals an aspect of your background or nature"
+              result: 'Flashback reveals an aspect of your background or nature'
               # suggestions: [*roll:Event]
             - low: 11
               high: 20
-              result: "Flashback reveals an aspect of another character, place, or faction"
+              result: 'Flashback reveals an aspect of another character, place, or faction'
               # suggestions: [*roll:Event, *obj:Faction]
             - low: 21
               high: 30
-              result: "Influential character or faction is introduced or given new detail"
+              result: 'Influential character or faction is introduced or given new detail'
               # suggestions: [*obj:Npc, *obj:Faction]
             - low: 31
               high: 40
-              result: "Seemingly unrelated situations are shown to be connected"
+              result: 'Seemingly unrelated situations are shown to be connected'
             - low: 41
               high: 50
-              result: "External factors create new danger, urgency, or importance for a quest"
+              result: 'External factors create new danger, urgency, or importance for a quest'
               # suggestions: [*roll:Event]
             - low: 51
               high: 60
-              result: "Important character is put in danger or suffers a misadventure"
+              result: 'Important character is put in danger or suffers a misadventure'
             - low: 61
               high: 70
-              result: "Key location is made unsafe or becomes mired in conflict"
+              result: 'Key location is made unsafe or becomes mired in conflict'
             - low: 71
               high: 80
-              result: "Unexpected return of an enemy or threat"
+              result: 'Unexpected return of an enemy or threat'
             - low: 81
               high: 90
-              result: "Peril lies ahead or lurks just out of view"
+              result: 'Peril lies ahead or lurks just out of view'
             - low: 91
               high: 100
-              result: "Unforeseen aid is on the way or within reach"
+              result: 'Unforeseen aid is on the way or within reach'
         make_a_discovery:
           name: Make a Discovery
           _source:
@@ -204,7 +204,9 @@ starforged:
               # suggestions: [*roll:Event]
             - low: 91
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
         confront_chaos:
           name: Confront Chaos
           _source:
@@ -298,22 +300,22 @@ starforged:
           table:
             - low: 1
               high: 40
-              result: "It’s worse than you thought: Make a suffer move (-2)"
+              result: 'It’s worse than you thought: Make a suffer move (-2)'
             - low: 41
               high: 52
-              result: "Victory is short-lived: A new peril or foe appears"
+              result: 'Victory is short-lived: A new peril or foe appears'
             - low: 53
               high: 64
-              result: "You face collateral damage: Something is lost, damaged, or broken"
+              result: 'You face collateral damage: Something is lost, damaged, or broken'
             - low: 65
               high: 76
-              result: "Others pay the price: Someone else suffers the cost"
+              result: 'Others pay the price: Someone else suffers the cost'
             - low: 77
               high: 88
-              result: "Others won’t forget: You are marked for vengeance"
+              result: 'Others won’t forget: You are marked for vengeance'
             - low: 89
               high: 100
-              result: "It gets complicated: The true nature of a foe or objective is revealed"
+              result: 'It gets complicated: The true nature of a foe or objective is revealed'
         endure_harm:
           name: Endure Harm
           _source:
@@ -323,16 +325,16 @@ starforged:
           table:
             - low: 1
               high: 10
-              result: "You suffer mortal harm. [Face Death](starforged/moves/threshold/face_death)."
+              result: 'You suffer mortal harm. [Face Death](starforged/moves/threshold/face_death).'
             - low: 11
               high: 20
-              result: "You are dying. Within an hour or two, you must [Heal](starforged/moves/recover/heal) and raise your health above 0, or [Face Death](starforged/moves/threshold/face_death)."
+              result: 'You are dying. Within an hour or two, you must [Heal](starforged/moves/recover/heal) and raise your health above 0, or [Face Death](starforged/moves/threshold/face_death).'
             - low: 21
               high: 35
-              result: "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](starforged/moves/threshold/face_death)."
+              result: 'You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](starforged/moves/threshold/face_death).'
             - low: 36
               high: 50
-              result: "You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move)."
+              result: 'You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move).'
             - low: 51
               high: 100
               result: You are still standing.
@@ -345,13 +347,13 @@ starforged:
           table:
             - low: 1
               high: 10
-              result: "You are overwhelmed. [Face Desolation](starforged/moves/threshold/face_desolation)."
+              result: 'You are overwhelmed. [Face Desolation](starforged/moves/threshold/face_desolation).'
             - low: 11
               high: 25
-              result: "You give up. [Forsake Your Vow](starforged/moves/quest/forsake_your_vow)."
+              result: 'You give up. [Forsake Your Vow](starforged/moves/quest/forsake_your_vow).'
             - low: 26
               high: 50
-              result: "You give in to fear or compulsion, and act against your better instincts."
+              result: 'You give in to fear or compulsion, and act against your better instincts.'
             - low: 51
               high: 100
               result: You persevere.
@@ -364,28 +366,28 @@ starforged:
           table:
             - low: 1
               high: 10
-              result: "Immediate catastrophic destruction. All aboard must [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death), as appropriate."
+              result: 'Immediate catastrophic destruction. All aboard must [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death), as appropriate.'
             - low: 11
               high: 25
-              result: "Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death) as appropriate."
+              result: 'Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](starforged/moves/suffer/endure_harm) or [Face Death](starforged/moves/threshold/face_death) as appropriate.'
             - low: 26
               high: 40
-              result: "Destruction is imminent, but can be averted if you [Repair](starforged/moves/recover/repair) your vehicle and raise its integrity above 0. If you fail, see 11-25."
+              result: 'Destruction is imminent, but can be averted if you [Repair](starforged/moves/recover/repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.'
             - low: 41
               high: 55
-              result: "You cannot [Repair](starforged/moves/recover/repair) this vehicle until you [Resupply](starforged/moves/recover/resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25."
+              result: 'You cannot [Repair](starforged/moves/recover/repair) this vehicle until you [Resupply](starforged/moves/recover/resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.'
             - low: 56
               high: 70
-              result: "The vehicle is crippled or out of your control. To get it back in action, you must [Repair](starforged/moves/recover/repair) and raise its integrity above 0."
+              result: 'The vehicle is crippled or out of your control. To get it back in action, you must [Repair](starforged/moves/recover/repair) and raise its integrity above 0.'
             - low: 71
               high: 85
               result: "It's a rough ride. All aboard must make the [Endure Harm](starforged/moves/suffer/endure_harm), [Endure Stress](starforged/moves/suffer/endure_stress), or [Companion Takes a Hit](starforged/moves/suffer/companion_takes_a_hit) move, suffering a serious (-2) cost."
             - low: 86
               high: 95
-              result: "You’ve lost fuel, energy, or cargo. [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-2)."
+              result: 'You’ve lost fuel, energy, or cargo. [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-2).'
             - low: 96
               high: 100
-              result: "Against all odds, the vehicle holds together."
+              result: 'Against all odds, the vehicle holds together.'
         pay_the_price:
           name: Pay the Price
           _source:
@@ -431,7 +433,7 @@ starforged:
               result: A new enemy is revealed
             - low: 51
               high: 56
-              result: "A friend, companion, or ally is in harm’s way (or you are, if alone)"
+              result: 'A friend, companion, or ally is in harm’s way (or you are, if alone)'
             - low: 57
               high: 62
               result: Your equipment or vehicle malfunctions
@@ -452,4 +454,6 @@ starforged:
               result: You are delayed or put at a disadvantage
             - low: 96
               high: 100
-              result: *result:RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
