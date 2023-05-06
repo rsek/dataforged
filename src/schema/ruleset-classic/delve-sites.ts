@@ -20,10 +20,11 @@ export const DelveSiteDenizen = Type.Object(
 				description: 'The ID of the relevant encounter, if one is specified.'
 			})
 		),
-		frequency: DelveSiteDenizenFrequency
+		frequency: Type.Ref(DelveSiteDenizenFrequency)
 	},
 	{ $id: '#/$defs/DelveSiteDenizen' }
 )
+export type DelveSiteDenizen = Static<typeof DelveSiteDenizen>
 
 const StaticDenizenRowStub = (
 	low: number,
@@ -54,9 +55,9 @@ export const DelveSite = Type.Composite(
 					}
 				)
 			),
-			description: Localize.MarkdownString,
+			description: Type.Ref(Localize.MarkdownString),
 			denizens: Type.Intersect([
-				Type.Array(DelveSiteDenizen),
+				Type.Array(Type.Ref(DelveSiteDenizen)),
 				Type.Tuple([
 					StaticDenizenRowStub(1, 27, 'very_common'),
 					StaticDenizenRowStub(28, 41, 'common'),

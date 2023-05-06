@@ -2,6 +2,7 @@ import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import { schemaOptions } from 'scripts/options'
 import { logger } from 'scripts/logger'
+import { writeFileSync } from 'fs'
 
 // Initialize AJV
 
@@ -20,6 +21,7 @@ const validator = new Ajv({
 addFormats(validator)
 
 for (const options of schemaOptions) {
+	writeFileSync(options.path, JSON.stringify(options.schema, undefined, '\t'))
 	validator.addSchema(options.schema, options.name)
 }
 

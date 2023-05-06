@@ -111,7 +111,7 @@ export const AssetAbilityOptionFieldID = Type.RegEx(
 export type AssetAbilityOptionFieldID = Static<typeof AssetAbilityOptionFieldID>
 export const AssetAbilityControlFieldID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]\/controls\/[a-z_]+$/,
-	{ $id: '#/$defs/AssetAbilityOptionFieldID' }
+	{ $id: '#/$defs/AssetAbilityControlFieldID' }
 )
 export type AssetAbilityControlFieldID = Static<
 	typeof AssetAbilityControlFieldID

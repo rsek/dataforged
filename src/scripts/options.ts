@@ -1,4 +1,4 @@
-import { Schema } from '@schema-json'
+import { Schema } from 'schema'
 import { type JSONSchema7 } from 'json-schema'
 import * as Paths from './paths'
 
@@ -11,8 +11,6 @@ interface SchemaOptions {
 		finish: string
 	}
 }
-
-const $schema = 'http://json-schema.org/draft-07/schema#'
 
 const schemaOptions: SchemaOptions[] = [
 	{

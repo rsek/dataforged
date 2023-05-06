@@ -33,7 +33,7 @@ export const WebpImageURL = Type.String({
 export type WebpImageURL = Static<typeof WebpImageURL>
 export const CSSColor = Type.String({
 	title: 'CSS Color',
-	$id: '#/$defs/SvgImageURL',
+	$id: '#/$defs/CSSColor',
 	description:
 		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'
 })
@@ -64,7 +64,7 @@ export const Source = Type.Object(
 						})
 					)
 				},
-				{ $id: '#/$defs/Author', examples: [{ name: 'Shawn Tomkin' }] }
+				{ examples: [{ name: 'Shawn Tomkin' }] }
 			),
 			{ minItems: 1 }
 		),
@@ -95,3 +95,11 @@ export const Source = Type.Object(
 )
 
 export type Source = Static<typeof Source>
+
+export const SourceStub = Type.Partial(Source, {
+	description:
+		'A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.',
+	$id: '#/definitions/SourceStub'
+})
+
+export type SourceStub = Static<typeof SourceStub>

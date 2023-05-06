@@ -102,15 +102,15 @@ export const Asset = Type.Object(
 		id: Type.Ref(ID.AssetID),
 		name: Type.Ref(Localize.Label),
 		source: Type.Ref(Metadata.Source),
-		options: Type.Optional(Abstract.Dictionary(AssetOptionField)),
-		controls: Type.Optional(Abstract.Dictionary(AssetControlField)),
+		options: Type.Optional(Abstract.Dictionary(Type.Ref(AssetOptionField))),
+		controls: Type.Optional(Abstract.Dictionary(Type.Ref(AssetControlField))),
 		suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase)),
 		requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
 			minItems: 3,
 			maxItems: 3
 		}),
-		condition_meter: Type.Optional(AssetConditionMeter),
+		condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
 		count_as_impact: Type.Optional(
 			Type.Boolean({
 				default: false,
@@ -156,7 +156,7 @@ export const AssetAbility = Type.Object(
 		text: Type.Ref(Localize.MarkdownString),
 		enabled: Type.Boolean({ default: false }),
 		moves: Type.Optional(
-			Abstract.Dictionary(Moves.Move, {
+			Abstract.Dictionary(Type.Ref(Moves.Move), {
 				description: 'Unique moves added by this asset ability.'
 			})
 		),

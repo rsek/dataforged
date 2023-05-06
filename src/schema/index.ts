@@ -10,3 +10,5 @@ export * as Oracles from 'schema/oracles'
 
 export * as RulesetClassic from './ruleset-classic/metadata'
 export * as RulesetStarforged from './ruleset-starforged/metadata'
+
+export * as Schema from './schema'

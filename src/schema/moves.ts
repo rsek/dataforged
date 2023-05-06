@@ -126,11 +126,18 @@ function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 	return Type.Object(
 		{
 			text: Type.Optional(
-				Type.Ref(Localize.MarkdownString, {
-					description:
-						'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.',
-					pattern: /^.*\.{3}$/
-				})
+				Type.Intersect(
+					[
+						Type.Ref(Localize.MarkdownString),
+						Type.String({
+							pattern: /^.*\.{3}$/.source
+						})
+					],
+					{
+						description:
+							'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.'
+					}
+				)
 			),
 			method: Type.Union(
 				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
