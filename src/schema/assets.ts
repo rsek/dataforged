@@ -17,16 +17,14 @@ export const AssetConditionMeterControlField = Type.Composite(
 	}
 )
 
-export const AssetConditionMeter = Type.Composite(
-	[
-		Inputs.Meter,
-		Type.Object({
-			id: Type.Ref(ID.AssetConditionMeterID),
-			controls: Type.Optional(
-				Dictionary(Type.Ref(AssetConditionMeterControlField))
-			)
-		})
-	],
+export const AssetConditionMeter = Type.Object(
+	{
+		...Inputs.Meter.properties,
+		id: Type.Ref(ID.AssetConditionMeterID),
+		controls: Type.Optional(
+			Dictionary(Type.Ref(AssetConditionMeterControlField))
+		)
+	},
 	{ $id: '#/$defs/AssetConditionMeter', title: 'Asset condition meter' }
 )
 
@@ -35,27 +33,19 @@ export const AssetConditionMeterExtension = Type.Partial(
 	{ $id: '#/$defs/AssetConditionMeterExtension' }
 )
 
-export const AssetOptionField = PartialBy(
-	Type.Composite([
-		Type.Union([Inputs.SelectFieldStat, Inputs.TextField]),
-		Type.Object({ id: Type.Ref(ID.AssetOptionFieldID) })
-	]),
-	['value'],
-	{
-		title: 'Asset option field',
-		$id: '#/$defs/AssetOptionField'
-	}
+export const AssetOptionField = Type.Union(
+	[Inputs.SelectFieldStat, Inputs.TextField].map((input) =>
+		input({ id: Type.Ref(ID.AssetOptionFieldID) })
+	),
+	{ $id: '#/$defs/AssetOptionField', title: 'Asset option field' }
 )
 
-export const AssetControlField = Type.Composite(
+export const AssetControlField = Type.Union(
 	[
-		Type.Union([
-			Inputs.CheckboxField
-			// TODO: selectFieldExtendAsset. for e.g. Ironclad
-		]),
-		Type.Object({ id: Type.Ref(ID.AssetControlFieldID) })
-	],
-	{ $id: '#/$defs/AssetControlField' }
+		Inputs.CheckboxField
+		// TODO: selectFieldExtendAsset. for e.g. Ironclad
+	].map((input) => input({ id: Type.Ref(ID.AssetControlFieldID) })),
+	{ $id: '#/$defs/AssetControlField', title: 'Asset control field' }
 )
 
 function AssetExtendSelf<T extends TObject>(
@@ -133,24 +123,22 @@ export const Asset = Type.Object(
 
 export type Asset = Static<typeof Asset>
 
-export const AssetAbilityOptionField = Type.Composite(
-	[
-		Type.Union([Inputs.TextField]),
-		Type.Object({ id: Type.Ref(ID.AssetAbilityOptionFieldID) })
-	],
+export const AssetAbilityOptionField = Type.Union(
+	[Inputs.TextField].map((input) =>
+		input({ id: Type.Ref(ID.AssetAbilityOptionFieldID) })
+	),
 	{
 		$id: '#/$defs/AssetAbilityOptionField',
 		title: 'Asset ability option field'
 	}
 )
+
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 
-export const AssetAbilityControlField = PartialBy(
-	Type.Composite([
-		Type.Union([Inputs.ClockField, Inputs.CounterField, Inputs.CheckboxField]),
-		Type.Object({ id: Type.Ref(ID.AssetAbilityControlFieldID) })
-	]),
-	['value'],
+export const AssetAbilityControlField = Type.Union(
+	[Inputs.ClockField, Inputs.CounterField, Inputs.CheckboxField].map((input) =>
+		input({ id: Type.Ref(ID.AssetAbilityControlFieldID) })
+	),
 	{
 		$id: '#/$defs/AssetAbilityControlField',
 		title: 'Asset ability control field'
@@ -182,13 +170,12 @@ export const AssetAbility = Type.Object(
 )
 export type AssetAbility = Static<typeof AssetAbility>
 
-export const AssetType = Type.Composite(
-	[
-		Abstract.Collection(Type.Ref(Asset), Type.Ref(ID.AssetTypeID)),
-		Type.Object({
-			member_label: Type.Optional(Type.Ref(Localize.Label))
-		})
-	],
+export const AssetType = Abstract.Collection(
+	Type.Ref(Asset),
+	Type.Ref(ID.AssetTypeID),
+	{
+		member_label: Type.Optional(Type.Ref(Localize.Label))
+	},
 	{ $id: '#/$defs/AssetType' }
 )
 export type AssetType = Static<typeof AssetType>

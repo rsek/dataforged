@@ -128,20 +128,15 @@ export const OracleTableRendering = Type.Object(
 )
 export type OracleTableRendering = Static<typeof OracleTableRendering>
 
-export const OracleTable = Type.Composite(
-	[
-		Abstract.SourcedNode,
-		Type.Object({
-			id: Type.Ref(ID.OracleTableID),
-			name: Type.Ref(Localize.Label),
-			canonical_name: Type.Optional(Type.Ref(Localize.Label)),
-			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),
-			table: Type.Array(Type.Ref(OracleTableRow)),
-			rendering: Type.Optional(Type.Ref(OracleTableRendering))
-		})
-	],
+export const OracleTable = Abstract.SourcedNode(
+	{
+		id: Type.Ref(ID.OracleTableID),
+		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),
+		table: Type.Array(Type.Ref(OracleTableRow)),
+		rendering: Type.Optional(Type.Ref(OracleTableRendering))
+	},
 	{ $id: '#/$defs/OracleTable', title: 'Oracle table' }
 )
 export type OracleTable = Static<typeof OracleTable>

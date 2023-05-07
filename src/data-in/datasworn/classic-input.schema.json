@@ -363,9 +363,9 @@
 		"OracleTable": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"match": { "$ref": "#/$defs/OracleTableMatchBehavior" },
@@ -392,12 +392,14 @@
 					"allOf": [
 						{
 							"description": "Describes the rendering of this oracle as a standalone table.",
+							"$comment": "Deserialize as a dictionary object.",
 							"type": "object",
 							"patternProperties": {
 								"^[a-z_]+$": { "$ref": "#/$defs/OracleTableColumn" }
 							}
 						},
 						{
+							"$comment": "Deserialize as a dictionary object.",
 							"type": "object",
 							"patternProperties": {
 								"^[a-z_]+$": { "$ref": "#/$defs/OracleCollectionColumn" }
@@ -413,20 +415,22 @@
 		"OracleCollection": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"extends": { "$ref": "#/$defs/OracleCollectionID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"extends": { "$ref": "#/$defs/OracleCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/OracleTable" }
 					}
 				},
 				"collections": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
@@ -680,7 +684,6 @@
 		"Move": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
 				"trigger": { "$ref": "#/$defs/Trigger" },
 				"text": { "$ref": "#/$defs/MarkdownString" },
@@ -689,8 +692,9 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/MoveID" },
+				"source": { "$ref": "#/$defs/Source" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "trigger", "text"]
@@ -698,14 +702,15 @@
 		"MoveCategory": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"extends": { "$ref": "#/$defs/MoveCategoryID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"extends": { "$ref": "#/$defs/MoveCategoryID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Move" } }
 				},
@@ -821,21 +826,13 @@
 				}
 			}
 		},
-		"AssetConditionMeterControlField": {
-			"type": "object",
-			"properties": {
-				"label": { "$ref": "#/$defs/Label" },
-				"field_type": { "const": "checkbox", "type": "string" },
-				"value": { "default": false, "type": "boolean" },
-				"id": { "$ref": "#/$defs/AssetConditionMeterControlFieldID" }
-			},
-			"required": ["label", "field_type"]
-		},
+		"AssetConditionMeterControlField": { "type": "object", "properties": {} },
 		"AssetConditionMeter": {
 			"type": "object",
 			"properties": {
 				"max": { "type": "integer" },
 				"controls": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetConditionMeterControlField" }
@@ -851,6 +848,7 @@
 			"properties": {
 				"max": { "type": "integer" },
 				"controls": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetConditionMeterControlField" }
@@ -860,28 +858,45 @@
 			}
 		},
 		"AssetOptionField": {
-			"type": "object",
-			"properties": {
-				"field_type": {
-					"anyOf": [
-						{ "const": "select_stat", "type": "string" },
-						{ "const": "text", "type": "string" }
-					]
+			"$id": "#/$defs/AssetOptionField",
+			"title": "Asset option field",
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"label": { "$ref": "#/$defs/Label" },
+						"field_type": { "const": "select_stat", "type": "string" },
+						"value": { "$ref": "#/$defs/PlayerStat" },
+						"choices": {
+							"$comment": "Deserialize as a dictionary object.",
+							"type": "object",
+							"patternProperties": {
+								"^[a-z_]+$": {
+									"type": "object",
+									"properties": {
+										"label": { "$ref": "#/$defs/Label" },
+										"value": { "$ref": "#/$defs/PlayerStat" },
+										"selected": { "type": "boolean" }
+									},
+									"required": ["label", "value"]
+								}
+							}
+						},
+						"id": { "$ref": "#/$defs/AssetOptionFieldID" }
+					},
+					"required": ["label", "field_type", "choices", "id"]
 				},
-				"label": {
-					"anyOf": [{ "$ref": "#/$defs/Label" }, { "$ref": "#/$defs/Label" }]
-				},
-				"value": {
-					"anyOf": [{ "$ref": "#/$defs/PlayerStat" }, { "type": "string" }]
-				},
-				"id": {
-					"allOf": [
-						{ "anyOf": [{ "not": {} }, { "not": {} }] },
-						{ "$ref": "#/$defs/AssetOptionFieldID" }
-					]
+				{
+					"type": "object",
+					"properties": {
+						"label": { "$ref": "#/$defs/Label" },
+						"field_type": { "const": "text", "type": "string" },
+						"value": { "type": "string" },
+						"id": { "$ref": "#/$defs/AssetOptionFieldID" }
+					},
+					"required": ["label", "field_type", "id"]
 				}
-			},
-			"required": ["field_type", "label"]
+			]
 		},
 		"AssetControlField": {
 			"type": "object",
@@ -914,12 +929,14 @@
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"options": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetOptionField" }
 					}
 				},
 				"controls": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetControlField" }
@@ -961,37 +978,44 @@
 			"required": ["label", "field_type"]
 		},
 		"AssetAbilityControlField": {
-			"type": "object",
-			"properties": {
-				"label": {
-					"anyOf": [
-						{ "$ref": "#/$defs/Label" },
-						{ "$ref": "#/$defs/Label" },
-						{ "$ref": "#/$defs/Label" }
-					]
+			"$id": "#/$defs/AssetAbilityControlField",
+			"title": "Asset ability control field",
+			"anyOf": [
+				{
+					"type": "object",
+					"properties": {
+						"label": { "$ref": "#/$defs/Label" },
+						"field_type": { "const": "clock", "type": "string" },
+						"value": { "default": 0, "type": "integer" },
+						"min": { "const": 0, "type": "number" },
+						"max": { "type": "integer", "enum": [4, 6, 8, 10] },
+						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
+					},
+					"required": ["label", "field_type", "min", "max", "id"]
 				},
-				"field_type": {
-					"anyOf": [
-						{ "const": "clock", "type": "string" },
-						{ "const": "counter", "type": "string" },
-						{ "const": "checkbox", "type": "string" }
-					]
+				{
+					"type": "object",
+					"properties": {
+						"label": { "$ref": "#/$defs/Label" },
+						"field_type": { "const": "counter", "type": "string" },
+						"value": { "default": 0, "type": "integer" },
+						"min": { "type": "integer" },
+						"max": { "type": "integer" },
+						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
+					},
+					"required": ["label", "field_type", "min", "id"]
 				},
-				"value": {
-					"anyOf": [
-						{ "default": 0, "type": "integer" },
-						{ "default": 0, "type": "integer" },
-						{ "default": false, "type": "boolean" }
-					]
-				},
-				"id": {
-					"allOf": [
-						{ "anyOf": [{ "not": {} }, { "not": {} }, { "not": {} }] },
-						{ "$ref": "#/$defs/AssetAbilityControlFieldID" }
-					]
+				{
+					"type": "object",
+					"properties": {
+						"label": { "$ref": "#/$defs/Label" },
+						"field_type": { "const": "checkbox", "type": "string" },
+						"value": { "default": false, "type": "boolean" },
+						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
+					},
+					"required": ["label", "field_type", "id"]
 				}
-			},
-			"required": ["label", "field_type"]
+			]
 		},
 		"AssetAbility": {
 			"type": "object",
@@ -1000,16 +1024,19 @@
 				"text": { "$ref": "#/$defs/MarkdownString" },
 				"moves": {
 					"description": "Unique moves added by this asset ability.",
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Move" } }
 				},
 				"options": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetAbilityOptionField" }
 					}
 				},
 				"controls": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/AssetAbilityControlField" }
@@ -1056,14 +1083,15 @@
 		"AssetType": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"extends": { "$ref": "#/$defs/AssetTypeID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"extends": { "$ref": "#/$defs/AssetTypeID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Asset" } }
 				},
@@ -1077,6 +1105,12 @@
 		"Suggestions": {
 			"type": "object",
 			"properties": {
+				"oracles": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
+				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
 				"site_domains": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/DelveSiteDomainID" }
@@ -1092,20 +1126,15 @@
 				"regions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/RegionEntryID" }
-				},
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
-				},
-				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
-				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } }
+				}
 			}
 		},
 		"DelveSite": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"theme": { "$ref": "#/$defs/DelveSiteThemeID" },
@@ -1130,110 +1159,110 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "very_common", "type": "string" },
 										"low": { "const": 1, "type": "number" },
-										"high": { "const": 27, "type": "number" }
+										"high": { "const": 27, "type": "number" },
+										"frequency": { "const": "very_common", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "common", "type": "string" },
 										"low": { "const": 28, "type": "number" },
-										"high": { "const": 41, "type": "number" }
+										"high": { "const": 41, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "common", "type": "string" },
 										"low": { "const": 42, "type": "number" },
-										"high": { "const": 55, "type": "number" }
+										"high": { "const": 55, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "common", "type": "string" },
 										"low": { "const": 56, "type": "number" },
-										"high": { "const": 69, "type": "number" }
+										"high": { "const": 69, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "uncommon", "type": "string" },
 										"low": { "const": 70, "type": "number" },
-										"high": { "const": 75, "type": "number" }
+										"high": { "const": 75, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "uncommon", "type": "string" },
 										"low": { "const": 76, "type": "number" },
-										"high": { "const": 81, "type": "number" }
+										"high": { "const": 81, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "uncommon", "type": "string" },
 										"low": { "const": 82, "type": "number" },
-										"high": { "const": 87, "type": "number" }
+										"high": { "const": 87, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "uncommon", "type": "string" },
 										"low": { "const": 88, "type": "number" },
-										"high": { "const": 93, "type": "number" }
+										"high": { "const": 93, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "rare", "type": "string" },
 										"low": { "const": 94, "type": "number" },
-										"high": { "const": 95, "type": "number" }
+										"high": { "const": 95, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "rare", "type": "string" },
 										"low": { "const": 96, "type": "number" },
-										"high": { "const": 97, "type": "number" }
+										"high": { "const": 97, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "rare", "type": "string" },
 										"low": { "const": 98, "type": "number" },
-										"high": { "const": 99, "type": "number" }
+										"high": { "const": 99, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"frequency": { "const": "unforeseen", "type": "string" },
 										"low": { "const": 100, "type": "number" },
-										"high": { "const": 100, "type": "number" }
+										"high": { "const": 100, "type": "number" },
+										"frequency": { "const": "unforeseen", "type": "string" }
 									},
-									"required": ["frequency", "low", "high"]
+									"required": ["low", "high", "frequency"]
 								}
 							],
 							"additionalItems": false,
@@ -1271,8 +1300,9 @@
 		"DelveSiteDomain": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
@@ -1535,8 +1565,9 @@
 		"DelveSiteTheme": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
@@ -1778,20 +1809,21 @@
 		"EncounterCollectionClassic": {
 			"type": "object",
 			"properties": {
-				"member_label": { "$ref": "#/$defs/Label" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"extends": { "$ref": "#/$defs/EncounterCollectionID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"extends": { "$ref": "#/$defs/EncounterCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z_]+$": { "$ref": "#/$defs/EncounterClassic" }
 					}
 				},
+				"member_label": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/EncounterCollectionID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
@@ -1801,7 +1833,17 @@
 		"EncounterClassic": {
 			"type": "object",
 			"properties": {
-				"your_truths": { "$ref": "#/$defs/MarkdownString" },
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"features": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"drives": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
@@ -1810,28 +1852,20 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
 				},
-				"rank": { "$ref": "#/$defs/ChallengeRank" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"name": { "$ref": "#/$defs/Label" },
-				"features": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"id": { "$ref": "#/$defs/EncounterClassicID" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" },
 				"source": { "$ref": "#/$defs/Source" },
+				"id": { "$ref": "#/$defs/EncounterClassicID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
-				"drives",
-				"tactics",
-				"rank",
 				"name",
 				"features",
 				"summary",
-				"description"
+				"description",
+				"quest_starter",
+				"rank",
+				"drives",
+				"tactics"
 			]
 		},
 		"ProgressType": {
@@ -1848,61 +1882,41 @@
 			]
 		},
 		"Rarity": {
-			"$id": "#/$defs/Rarity",
-			"description": "A rarity, as described in Ironsworn: Delve.",
-			"anyOf": [
-				{
-					"type": "object",
-					"properties": {
-						"source": { "$ref": "#/$defs/Source" },
-						"suggestions": { "$ref": "#/$defs/Suggestions" }
-					},
-					"required": ["source"]
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"asset": {
+					"description": "The asset enhanced by this rarity.",
+					"$ref": "#/$defs/AssetID"
 				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/RarityID" },
-						"name": { "$ref": "#/$defs/Label" },
-						"asset": {
-							"description": "The asset enhanced by this rarity.",
-							"$ref": "#/$defs/AssetID"
-						},
-						"icon": { "$ref": "#/$defs/SvgImageURL" },
-						"xp_cost": {
-							"minimum": 3,
-							"maximum": 5,
-							"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
-							"type": "integer"
-						},
-						"description": { "$ref": "#/$defs/MarkdownString" }
-					},
-					"required": ["id", "name", "asset", "icon", "xp_cost", "description"]
-				}
-			]
+				"icon": { "$ref": "#/$defs/SvgImageURL" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"source": { "$ref": "#/$defs/Source" },
+				"id": { "$ref": "#/$defs/RarityID" },
+				"xp_cost": {
+					"minimum": 3,
+					"maximum": 5,
+					"default": 3,
+					"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
+					"type": "integer"
+				},
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name", "asset", "icon", "description"]
 		},
 		"RegionEntry": {
 			"type": "object",
-			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"name": { "$ref": "#/$defs/Label" },
-				"features": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"source": { "$ref": "#/$defs/Source" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
-			},
-			"required": ["name", "features", "summary", "description"]
+			"properties": { "quest_starter": { "$ref": "#/$defs/MarkdownString" } },
+			"required": ["quest_starter"]
 		},
 		"WorldTruth": {
 			"type": "object",
 			"properties": {
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"options": {
 					"type": "array",
 					"items": {
@@ -1915,8 +1929,8 @@
 					}
 				},
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
-				"id": { "$ref": "#/$defs/WorldTruthID" },
 				"source": { "$ref": "#/$defs/Source" },
+				"id": { "$ref": "#/$defs/WorldTruthID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "options"]
@@ -2075,59 +2089,7 @@
 			"type": "object",
 			"properties": {
 				"ruleset": { "const": "classic", "type": "string" },
-				"source": { "$ref": "#/$defs/Source" },
-				"oracles": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
-					}
-				},
-				"moves": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/MoveCategory" }
-					}
-				},
-				"assets": {
-					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/AssetType" } }
-				},
-				"regions": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/RegionEntry" }
-					}
-				},
-				"encounters": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/EncounterCollectionClassic" }
-					}
-				},
-				"rarities": {
-					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Rarity" } }
-				},
-				"delve_sites": {
-					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/DelveSite" } }
-				},
-				"site_themes": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/DelveSiteTheme" }
-					}
-				},
-				"site_domains": {
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/DelveSiteDomain" }
-					}
-				},
-				"world_truths": {
-					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/WorldTruth" } }
-				}
+				"source": { "$ref": "#/$defs/Source" }
 			},
 			"required": ["ruleset", "source"]
 		}

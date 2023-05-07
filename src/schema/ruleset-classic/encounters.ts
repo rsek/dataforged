@@ -17,18 +17,14 @@ export const EncounterClassic = Squash(
 	}
 )
 
-export const EncounterCollectionClassic = Squash(
-	[
-		Abstract.Collection(
-			Type.Ref(EncounterClassic),
-			Type.Ref(ID.EncounterCollectionID)
-		),
-		Type.Object({
-			id: Type.Ref(ID.EncounterCollectionID),
-			member_label: Type.Optional(Type.Ref(Localize.Label)),
-			summary: Type.Optional(Type.Ref(Localize.MarkdownString))
-		})
-	],
+export const EncounterCollectionClassic = Abstract.Collection(
+	Type.Ref(EncounterClassic),
+	Type.Ref(ID.EncounterCollectionID),
+	{
+		id: Type.Ref(ID.EncounterCollectionID),
+		member_label: Type.Optional(Type.Ref(Localize.Label)),
+		summary: Type.Optional(Type.Ref(Localize.MarkdownString))
+	},
 	{ $id: '#/$defs/EncounterCollectionClassic' }
 )
 export type EncounterCollectionClassic = Static<

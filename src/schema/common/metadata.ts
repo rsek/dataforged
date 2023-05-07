@@ -2,6 +2,7 @@ import { type Static, Type } from '@sinclair/typebox'
 import * as ID from 'schema/common/id'
 import * as Utils from 'schema/common/utils'
 
+/** A base for ruleset-specific suggestions objects; not directly included in the schema, but serves as a standin until the schema is composed */
 export const SuggestionsBase = Type.Object(
 	{
 		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),

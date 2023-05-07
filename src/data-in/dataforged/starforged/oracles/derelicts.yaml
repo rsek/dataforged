@@ -43,11 +43,12 @@ starforged:
           contents:
             planetside:
               name: Planetside
+              icon: icon/oracles/location/planetside.svg
               rendering: &derelictTypeDisplay
                 style: embed_as_column
               # usage:
               #   requires: *attr:Location.Planetside
-              table: &derelictTypeTable
+              table:
                 - low: 1
                   high: 25
                   result: Starship
@@ -58,6 +59,7 @@ starforged:
                   # *attr:DerelictType.Settlement
             orbital:
               name: Orbital
+              icon: icon/oracles/location/orbital.svg
               rendering: *derelictTypeDisplay
               # usage:
               #   requires: *attr:Location.Orbital
@@ -70,6 +72,7 @@ starforged:
                   result: Settlement
             deep_space:
               name: Deep Space
+              icon: icon/oracles/location/deep_space.svg
               rendering:
                 style: embed_as_column
               # usage:
@@ -202,12 +205,24 @@ starforged:
             - low: 1
               high: 40
               result: Planetside
+              icon: icon/oracles/location/planetside.svg
+              suggestions:
+                oracles:
+                  - starforged/oracles/derelicts/type/planetside
             - low: 41
               high: 60
               result: Orbital
+              icon: icon/oracles/location/orbital.svg
+              suggestions:
+                oracles:
+                  - starforged/oracles/derelicts/type/orbital
             - low: 61
               high: 100
-              result: Terminus
+              result: Deep Space
+              icon: icon/oracles/location/deep_space.svg
+              suggestions:
+                oracles:
+                  - starforged/oracles/derelicts/type/deep_space
         condition:
           name: Condition
           _source:

@@ -40,16 +40,16 @@ function Sourcebook<T extends Metadata.Ruleset>(
 export const SourcebookClassic = Sourcebook(
 	'classic',
 	{
-		oracles: Oracles.OracleCollection,
-		moves: Moves.MoveCategory,
-		assets: Assets.AssetType,
-		regions: RulesetClassic.RegionEntry,
-		encounters: RulesetClassic.EncounterCollectionClassic,
-		rarities: RulesetClassic.Rarity,
-		delve_sites: RulesetClassic.DelveSite,
-		site_themes: RulesetClassic.DelveSiteTheme,
-		site_domains: RulesetClassic.DelveSiteDomain,
-		world_truths: RulesetClassic.WorldTruth
+		// oracles: Oracles.OracleCollection,
+		// moves: Moves.MoveCategory,
+		// assets: Assets.AssetType,
+		// regions: RulesetClassic.RegionEntry,
+		// encounters: RulesetClassic.EncounterCollectionClassic,
+		// rarities: RulesetClassic.Rarity,
+		// delve_sites: RulesetClassic.DelveSite,
+		// site_themes: RulesetClassic.DelveSiteTheme,
+		// site_domains: RulesetClassic.DelveSiteDomain,
+		// world_truths: RulesetClassic.WorldTruth
 	},
 	{
 		$id: '#/$defs/SourcebookClassic'

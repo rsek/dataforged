@@ -11,7 +11,8 @@ import {
 	type ObjectOptions,
 	type TRef,
 	type TBoolean,
-	type TNumber
+	type TNumber,
+	type TProperties
 } from '@sinclair/typebox'
 import * as Utils from 'schema/common/utils'
 import * as Localize from 'schema/common/localize'
@@ -27,7 +28,10 @@ export function Dictionary<T extends TSchema>(
 	t: T,
 	options: ObjectOptions = {}
 ) {
-	return Type.Record(DICT_KEY, t, options)
+	return Type.Record(DICT_KEY, t, {
+		...options,
+		$comment: 'Deserialize as a dictionary object.'
+	})
 }
 
 /**
@@ -71,23 +75,48 @@ export function StaticRowStub(
 	})
 	return result
 }
-export const SourcedNode = Type.Object({
+
+const sourcedNodeBaseProps = {
+	name: Type.Ref(Localize.Label),
+	canonical_name: Type.Optional(Type.Ref(Localize.Label)),
 	source: Type.Ref(Metadata.Source),
 	suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase))
-})
-export type SourcedNode = Static<typeof SourcedNode>
+}
 
-export const Cyclopedia = Type.Composite([
-	SourcedNode,
-	Type.Object({
-		name: Type.Ref(Localize.Label),
-		features: Type.Array(Type.Ref(Localize.MarkdownString)),
-		summary: Type.Ref(Localize.MarkdownString),
-		description: Type.Ref(Localize.MarkdownString),
-		quest_starter: Type.Optional(Type.Ref(Localize.MarkdownString))
-	})
-])
-export type Cyclopedia = Static<typeof Cyclopedia>
+export function SourcedNode<T extends TProperties>(
+	properties: T,
+	options: ObjectOptions = {}
+) {
+	return Type.Object<typeof sourcedNodeBaseProps & T>(
+		{
+			...sourcedNodeBaseProps,
+			...properties
+		},
+		options
+	)
+}
+export type SourcedNode<T extends TProperties> = Static<
+	ReturnType<typeof SourcedNode<T>>
+>
+
+export function Cyclopedia<T extends TProperties>(
+	properties: T,
+	options: ObjectOptions = {}
+) {
+	return SourcedNode(
+		{
+			features: Type.Array(Type.Ref(Localize.MarkdownString)),
+			summary: Type.Ref(Localize.MarkdownString),
+			description: Type.Ref(Localize.MarkdownString),
+			quest_starter: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			...properties
+		},
+		options
+	)
+}
+export type Cyclopedia<T extends TProperties> = Static<
+	ReturnType<typeof Cyclopedia<T>>
+>
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
 type MetaKeys = 'id' | 'source' | 'rendering' | 'name' | 'suggestions'
@@ -137,22 +166,19 @@ export type ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>> =
 export function Collection<T extends TRef>(
 	memberSchema: T,
 	idPattern: TRef<TString>,
+	properties: TProperties = {},
 	options: SchemaOptions = {}
 ) {
-	return Type.Composite(
-		[
-			SourcedNode,
-			Type.Object({
-				id: idPattern,
-				extends: Type.Optional(idPattern),
-				name: Type.Ref(Localize.Label),
-				canonical_name: Type.Optional(Type.Ref(Localize.Label)),
-				color: Type.Optional(Type.Ref(Metadata.CSSColor)),
-				summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-				description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-				contents: Type.Optional(Dictionary(memberSchema))
-			})
-		],
+	return SourcedNode(
+		{
+			id: idPattern,
+			extends: Type.Optional(idPattern),
+			color: Type.Optional(Type.Ref(Metadata.CSSColor)),
+			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			contents: Type.Optional(Dictionary(memberSchema)),
+			...properties
+		},
 		options
 	)
 }
@@ -165,15 +191,16 @@ export function RecursiveCollection<T extends TRef>(
 	memberSchema: T,
 	idPattern: TRef<TString>,
 	refID: string,
+	properties: TProperties = {},
 	options: SchemaOptions = {}
 ) {
-	return Type.Composite(
-		[
-			Collection(memberSchema, idPattern),
-			Type.Object({
-				collections: Type.Optional(Dictionary(Type.Unsafe({ $ref: refID })))
-			})
-		],
+	return Collection(
+		memberSchema,
+		idPattern,
+		{
+			...properties,
+			collections: Type.Optional(Dictionary(Type.Unsafe({ $ref: refID })))
+		},
 		{ ...options, $id: refID }
 	)
 }

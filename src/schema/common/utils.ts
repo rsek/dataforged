@@ -13,18 +13,12 @@ export function Squash<T extends TObject>(
 	schemas: T[],
 	options: ObjectOptions = {}
 ) {
-	return Type.Composite(
-		[
-			schemas.reduceRight((previous, current) =>
-				// @ts-expect-error seems like it should work?
-				Type.Composite([
-					Type.Omit(previous, Object.keys((current as any).properties)),
-					current
-				])
-			)
-		],
+	return Type.Object(
+		schemas
+			.map((schema) => schema.properties)
+			.reduce((prevProps, currentProps) => ({ ...prevProps, ...currentProps })),
 		options
-	) as TObject
+	)
 }
 
 export function StringEnum<T extends string[]>(

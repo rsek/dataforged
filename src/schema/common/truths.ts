@@ -8,11 +8,7 @@ export const TruthOptionBase = Type.Object({
 	quest_starter: Type.Ref(Localize.MarkdownString)
 })
 
-export const TruthBase = Type.Composite([
-	Abstract.SourcedNode,
-	Type.Object({
-		name: Type.Ref(Localize.Label),
-		options: Type.Array(TruthOptionBase),
-		icon: Type.Optional(Type.Ref(Metadata.SvgImageURL))
-	})
-])
+export const TruthBase = Abstract.SourcedNode({
+	options: Type.Array(TruthOptionBase),
+	icon: Type.Optional(Type.Ref(Metadata.SvgImageURL))
+})

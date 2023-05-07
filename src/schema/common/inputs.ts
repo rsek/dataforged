@@ -1,4 +1,9 @@
-import { type Static, Type, type TSchema } from '@sinclair/typebox'
+import {
+	type Static,
+	Type,
+	type TSchema,
+	type TProperties
+} from '@sinclair/typebox'
 import * as Utils from 'schema/common/utils'
 import * as Localize from 'schema/common/localize'
 import * as ID from 'schema/common/id'
@@ -77,26 +82,40 @@ export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
 	return Type.Omit(t, ['field_type', 'label', 'value'])
 }
 
-export const CheckboxField = InputField(
-	'checkbox',
-	Type.Optional(Type.Boolean({ default: false }))
-)
-export type CheckboxField = Static<typeof CheckboxField>
+export const CheckboxField = <T extends TProperties>(props: T) =>
+	InputField('checkbox', Type.Optional(Type.Boolean({ default: false })), props)
 
-export const ClockField = Utils.Squash([
-	InputField('clock', Type.Integer({ default: 0 })),
-	Clock
-])
-export type ClockField = Static<typeof ClockField>
+export type CheckboxField<T extends TProperties> = Static<
+	ReturnType<typeof CheckboxField<T>>
+>
 
-export const CounterField = Utils.Squash([
-	InputField('counter', Type.Integer({ default: 0 })),
-	Counter
-])
-export type CounterField = Static<typeof CounterField>
+export const ClockField = <T extends TProperties>(props: T) =>
+	InputField('clock', Type.Integer({ default: 0 }), {
+		...Clock.properties,
+		...props
+	})
 
-export const TextField = InputField('text', Type.String())
-export type TextField = Static<typeof TextField>
+export type ClockField<T extends TProperties> = Static<
+	ReturnType<typeof ClockField<T>>
+>
+
+export const CounterField = <T extends TProperties>(props: T) =>
+	Utils.Squash([
+		InputField('counter', Type.Integer({ default: 0 }), {
+			...Counter.properties,
+			...props
+		})
+	])
+export type CounterField<T extends TProperties> = Static<
+	ReturnType<typeof CounterField<T>>
+>
+
+export const TextField = <T extends TProperties>(props: T) =>
+	InputField('text', Type.String(), props)
+
+export type TextField<T extends TProperties> = Static<
+	ReturnType<typeof TextField<T>>
+>
 
 /**
  * @param fieldType - The value of the `field_type` property
@@ -104,22 +123,30 @@ export type TextField = Static<typeof TextField>
  */
 export function SelectField<T extends SelectFieldType, V extends TSchema>(
 	fieldType: T,
-	value: V
+	value: V,
+	properties: TProperties
 ) {
-	return Utils.Squash([Select(value), InputField(fieldType, value)])
+	return InputField(fieldType, value, {
+		...Select(value).properties,
+		...properties
+	})
 }
 
-export const SelectFieldStat = SelectField(
-	'select_stat',
-	Type.Ref(Enum.PlayerStat)
-)
-export type SelectFieldStat = Static<typeof SelectFieldStat>
+export const SelectFieldStat = <T extends TProperties>(props: T) =>
+	SelectField('select_stat', Type.Ref(Enum.PlayerStat), props)
+export type SelectFieldStat<T extends TProperties> = Static<
+	ReturnType<typeof SelectFieldStat<T>>
+>
 
-export const SelectFieldRef = SelectField(
-	'select_ref',
-	Type.Union([
-		Type.Ref(ID.AssetControlFieldIDWildcard),
-		Type.Ref(ID.AssetOptionFieldIDWildcard)
-	])
-)
-export type SelectFieldRef = Static<typeof SelectFieldRef>
+export const SelectFieldRef = <T extends TProperties>(props: T) =>
+	SelectField(
+		'select_ref',
+		Type.Union([
+			Type.Ref(ID.AssetControlFieldIDWildcard),
+			Type.Ref(ID.AssetOptionFieldIDWildcard)
+		]),
+		props
+	)
+export type SelectFieldRef<T extends TProperties> = Static<
+	ReturnType<typeof SelectFieldRef<T>>
+>

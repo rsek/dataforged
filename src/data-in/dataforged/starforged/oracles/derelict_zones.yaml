@@ -20,6 +20,8 @@ starforged:
           contents:
             area:
               name: Area
+              description: &Area.Description |-
+                Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
               table:
                 - low: 1
                   high: 50
@@ -47,6 +49,8 @@ starforged:
                   result: Airlock or external
             feature:
               name: Feature
+              summary: &Feature.Summary |-
+                Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
               table:
                 - low: 1
                   high: 5
@@ -113,6 +117,8 @@ starforged:
                     - oracle: starforged/oracles/core/focus
             peril:
               name: Peril
+              summary: |-
+                Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
               table:
                 - low: 1
                   high: 10
@@ -156,6 +162,8 @@ starforged:
                     - times: 2
             opportunity:
               name: Opportunity
+              summary: &Opportunity.Summary |-
+                Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
               table:
                 - low: 1
                   high: 20
@@ -180,6 +188,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -221,6 +230,7 @@ starforged:
                   result: New zone via [Access](starforged/collections/oracles/derelicts/access)
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -264,6 +274,7 @@ starforged:
                     - oracle: starforged/oracles/core/focus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -296,6 +307,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -320,6 +332,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -355,6 +368,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -392,6 +406,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -424,6 +439,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -448,6 +464,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -483,6 +500,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -520,6 +538,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -552,6 +571,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -576,6 +596,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -611,6 +632,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -648,6 +670,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -680,6 +703,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -704,6 +728,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -739,6 +764,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -776,6 +802,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -808,6 +835,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -832,6 +860,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -867,6 +896,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -904,6 +934,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -936,6 +967,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20
@@ -960,6 +992,7 @@ starforged:
           contents:
             area:
               name: Area
+              description: *Area.Description
               table:
                 - low: 1
                   high: 8
@@ -995,6 +1028,7 @@ starforged:
                 - *Area.NewZoneViaAccess
             feature:
               name: Feature
+              summary: *Feature.Summary
               table:
                 - low: 1
                   high: 8
@@ -1032,6 +1066,7 @@ starforged:
                 - *Feature.DescriptorFocus
             peril:
               name: Peril
+              summary: *Peril.Summary
               table:
                 - low: 1
                   high: 10
@@ -1064,6 +1099,7 @@ starforged:
                 - *Peril.RollTwice
             opportunity:
               name: Opportunity
+              summary: *Opportunity.Summary
               table:
                 - low: 1
                   high: 20

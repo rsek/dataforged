@@ -1,5 +1,13 @@
 import { type Static, Type, type ObjectOptions } from '@sinclair/typebox'
-import { ID, Localize, Utils, Abstract, Enum, Progress } from 'schema/common'
+import {
+	ID,
+	Localize,
+	Utils,
+	Abstract,
+	Enum,
+	Progress,
+	Metadata
+} from 'schema/common'
 import { MoveIDWildcard } from 'schema/common/id'
 import { PartialBy, PartialExcept } from 'schema/common/utils'
 
@@ -248,18 +256,17 @@ export const MoveOutcomes = Type.Object(
 )
 export type MoveOutcomes = Static<typeof MoveOutcomes>
 
-export const Move = Type.Composite(
-	[
-		Abstract.SourcedNode,
-		Type.Object({
-			id: Type.Ref(ID.MoveID),
-			name: Type.Ref(Localize.Label),
-			trigger: Type.Ref(Trigger),
-			text: Type.Ref(Localize.MarkdownString),
-			outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
-			oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID)))
-		})
-	],
+export const Move = Type.Object(
+	{
+		id: Type.Ref(ID.MoveID),
+		name: Type.Ref(Localize.Label),
+		source: Type.Ref(Metadata.Source),
+		trigger: Type.Ref(Trigger),
+		text: Type.Ref(Localize.MarkdownString),
+		outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
+		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
+		suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase))
+	},
 	{ $id: '#/$defs/Move' }
 )
 export type Move = Static<typeof Move>
@@ -267,7 +274,7 @@ export type Move = Static<typeof Move>
 export const MoveCategory = Abstract.Collection(
 	Type.Ref(Move),
 	Type.Ref(ID.MoveCategoryID),
-
+	{},
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
