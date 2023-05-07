@@ -1,14 +1,11 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Abstract, Localize } from 'schema/common'
-import { Squash } from 'schema/common/utils'
 
-export const RegionEntry = Squash(
-	[
-		Abstract.Cyclopedia,
-		Type.Object({ quest_starter: Type.Ref(Localize.MarkdownString) })
-	],
+export const RegionEntry = Abstract.Cyclopedia(
+	{ quest_starter: Type.Ref(Localize.MarkdownString) },
 	{
 		$id: '#/$defs/RegionEntry',
+		title: 'Region entry',
 		description:
 			'A region entry, like the Ironlands region entries found in classic Ironsworn.'
 	}

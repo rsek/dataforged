@@ -1,17 +1,15 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { ID, Localize, Abstract, Encounters } from 'schema/common'
-import { Squash } from 'schema/common/utils'
 
-export const EncounterClassic = Squash(
-	[
-		Encounters.EncounterBase,
-		Type.Object({
-			id: Type.Ref(ID.EncounterClassicID),
-			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString))
-		})
-	],
+export const EncounterClassic = Type.Object(
+	{
+		...Type.Omit(Encounters.EncounterBase, ['summary']).properties,
+		id: Type.Ref(ID.EncounterClassicID),
+		your_truths: Type.Optional(Type.Ref(Localize.MarkdownString))
+	},
 	{
 		$id: '#/$defs/EncounterClassic',
+		title: 'Encounter (classic)',
 		description:
 			'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.'
 	}

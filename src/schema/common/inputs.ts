@@ -2,7 +2,7 @@ import {
 	type Static,
 	Type,
 	type TSchema,
-	type TProperties
+	type ObjectOptions
 } from '@sinclair/typebox'
 import * as Utils from 'schema/common/utils'
 import * as Localize from 'schema/common/localize'
@@ -66,14 +66,19 @@ export type InputFieldType = Static<typeof InputFieldType>
 function InputField<T extends InputFieldType, V extends TSchema>(
 	fieldType: T,
 	value: V,
-	otherProperties: Record<string, TSchema> = {}
+	otherProperties: Record<string, TSchema> = {},
+	options: ObjectOptions = {}
 ) {
-	return Type.Object({
-		label: Type.Ref(Localize.Label),
-		field_type: Type.Literal(fieldType),
-		value: Type.Optional(value),
-		...otherProperties
-	})
+	return Type.Object(
+		{
+			id: Type.String(),
+			label: Type.Ref(Localize.Label),
+			field_type: Type.Literal(fieldType),
+			value: Type.Optional(value),
+			...otherProperties
+		},
+		{ ...options }
+	)
 }
 
 export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
@@ -82,40 +87,43 @@ export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
 	return Type.Omit(t, ['field_type', 'label', 'value'])
 }
 
-export const CheckboxField = <T extends TProperties>(props: T) =>
-	InputField('checkbox', Type.Optional(Type.Boolean({ default: false })), props)
+export const CheckboxField = InputField(
+	'checkbox',
+	Type.Optional(Type.Boolean({ default: false })),
+	{},
+	{ $id: '#/$defs/CheckboxField' }
+)
 
-export type CheckboxField<T extends TProperties> = Static<
-	ReturnType<typeof CheckboxField<T>>
->
+export type CheckboxField = Static<typeof CheckboxField>
 
-export const ClockField = <T extends TProperties>(props: T) =>
-	InputField('clock', Type.Integer({ default: 0 }), {
-		...Clock.properties,
-		...props
-	})
+export const ClockField = InputField(
+	'clock',
+	Type.Integer({ default: 0 }),
+	Clock.properties,
+	{
+		$id: '#/$defs/ClockField'
+	}
+)
 
-export type ClockField<T extends TProperties> = Static<
-	ReturnType<typeof ClockField<T>>
->
+export type ClockField = Static<typeof ClockField>
 
-export const CounterField = <T extends TProperties>(props: T) =>
-	Utils.Squash([
-		InputField('counter', Type.Integer({ default: 0 }), {
-			...Counter.properties,
-			...props
-		})
-	])
-export type CounterField<T extends TProperties> = Static<
-	ReturnType<typeof CounterField<T>>
->
+export const CounterField = InputField(
+	'counter',
+	Type.Integer({ default: 0 }),
+	Counter.properties,
+	{ $id: '#/$defs/CounterField' }
+)
 
-export const TextField = <T extends TProperties>(props: T) =>
-	InputField('text', Type.String(), props)
+export type CounterField = Static<typeof CounterField>
 
-export type TextField<T extends TProperties> = Static<
-	ReturnType<typeof TextField<T>>
->
+export const TextField = InputField(
+	'text',
+	Type.String(),
+	{},
+	{ $id: '#/$defs/TextField' }
+)
+
+export type TextField = Static<typeof TextField>
 
 /**
  * @param fieldType - The value of the `field_type` property
@@ -124,29 +132,40 @@ export type TextField<T extends TProperties> = Static<
 export function SelectField<T extends SelectFieldType, V extends TSchema>(
 	fieldType: T,
 	value: V,
-	properties: TProperties
+	options: ObjectOptions = {}
 ) {
-	return InputField(fieldType, value, {
-		...Select(value).properties,
-		...properties
-	})
+	return InputField(
+		fieldType,
+		value,
+		{
+			...Select(value).properties
+		},
+		options
+	)
 }
 
-export const SelectFieldStat = <T extends TProperties>(props: T) =>
-	SelectField('select_stat', Type.Ref(Enum.PlayerStat), props)
-export type SelectFieldStat<T extends TProperties> = Static<
-	ReturnType<typeof SelectFieldStat<T>>
->
+export const SelectFieldStat = SelectField(
+	'select_stat',
+	Type.Union([Type.Ref(Enum.PlayerStat), Type.Ref(Enum.PlayerConditionMeter)]),
+	{
+		$id: '#/$defs/SelectFieldStat',
+		title: 'Select field (player stat)',
+		description: 'Select a standard player stat or condition meter.'
+	}
+)
+export type SelectFieldStat = Static<typeof SelectFieldStat>
 
-export const SelectFieldRef = <T extends TProperties>(props: T) =>
-	SelectField(
-		'select_ref',
-		Type.Union([
-			Type.Ref(ID.AssetControlFieldIDWildcard),
-			Type.Ref(ID.AssetOptionFieldIDWildcard)
-		]),
-		props
-	)
-export type SelectFieldRef<T extends TProperties> = Static<
-	ReturnType<typeof SelectFieldRef<T>>
->
+export const SelectFieldRef = SelectField(
+	'select_ref',
+	Type.Union([
+		Type.Ref(ID.AssetControlFieldIDWildcard),
+		Type.Ref(ID.AssetOptionFieldIDWildcard)
+	]),
+	{
+		$id: '#/$defs/SelectFieldRef',
+		title: 'Select field (reference)',
+		description:
+			'Select a pointer to the value of an asset control or option field.'
+	}
+)
+export type SelectFieldRef = Static<typeof SelectFieldRef>

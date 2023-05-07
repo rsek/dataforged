@@ -1,5 +1,5 @@
 import { type TObject, TypeGuard, type TSchema, Type } from '@sinclair/typebox'
-import _ from 'lodash'
+import _, { mapValues } from 'lodash'
 import { Assets, Enum, ID, Localize, Moves, Oracles } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'

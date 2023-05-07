@@ -1,20 +1,41 @@
-import { type Static, Type, type TObject } from '@sinclair/typebox'
+import {
+	type Static,
+	Type,
+	type TObject,
+	type TString
+} from '@sinclair/typebox'
+import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
-import { PartialBy } from 'schema/common/utils'
+import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'
 
-export const AssetConditionMeterControlField = Type.Composite(
-	[
-		Type.Union([Inputs.CheckboxField]),
-		Type.Object({
-			id: Type.Ref(ID.AssetConditionMeterControlFieldID)
-		})
-	],
-	{
-		$id: '#/$defs/AssetConditionMeterControlField',
-		title: 'Asset condition meter control field'
-	}
+function AssetField<TFieldID extends TString, TFieldType extends TObject>(
+	name: string,
+	fieldDFID: TString,
+	fieldTypes: TFieldType[]
+) {
+	return Type.Unsafe<
+		Static<
+			TFieldType & {
+				id: TFieldID
+			}
+		>
+	>({
+		type: 'object',
+		$id: `#/$defs/${pascalCase(name)}`,
+		title: startCase(name),
+		anyOf: fieldTypes.map((field) => Type.Ref(field)),
+		properties: {
+			id: Type.Ref(fieldDFID)
+		}
+	})
+}
+
+export const AssetConditionMeterControlField = AssetField(
+	'AssetConditionMeterControlField',
+	ID.AssetConditionMeterControlFieldID,
+	[Inputs.CheckboxField]
 )
 
 export const AssetConditionMeter = Type.Object(
@@ -33,19 +54,17 @@ export const AssetConditionMeterExtension = Type.Partial(
 	{ $id: '#/$defs/AssetConditionMeterExtension' }
 )
 
-export const AssetOptionField = Type.Union(
-	[Inputs.SelectFieldStat, Inputs.TextField].map((input) =>
-		input({ id: Type.Ref(ID.AssetOptionFieldID) })
-	),
-	{ $id: '#/$defs/AssetOptionField', title: 'Asset option field' }
+export const AssetOptionField = AssetField(
+	'AssetOptionField',
+	ID.AssetOptionFieldID,
+	[Inputs.SelectFieldStat, Inputs.TextField]
 )
 
-export const AssetControlField = Type.Union(
-	[
-		Inputs.CheckboxField
-		// TODO: selectFieldExtendAsset. for e.g. Ironclad
-	].map((input) => input({ id: Type.Ref(ID.AssetControlFieldID) })),
-	{ $id: '#/$defs/AssetControlField', title: 'Asset control field' }
+// TODO: selectFieldExtendAsset. for e.g. Ironclad
+export const AssetControlField = AssetField(
+	'AssetControlField',
+	ID.AssetControlFieldID,
+	[Inputs.CheckboxField]
 )
 
 function AssetExtendSelf<T extends TObject>(
@@ -123,27 +142,20 @@ export const Asset = Type.Object(
 
 export type Asset = Static<typeof Asset>
 
-export const AssetAbilityOptionField = Type.Union(
-	[Inputs.TextField].map((input) =>
-		input({ id: Type.Ref(ID.AssetAbilityOptionFieldID) })
-	),
-	{
-		$id: '#/$defs/AssetAbilityOptionField',
-		title: 'Asset ability option field'
-	}
+export const AssetAbilityOptionField = AssetField(
+	'AssetAbilityOptionField',
+	ID.AssetAbilityOptionFieldID,
+	[Inputs.TextField]
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 
-export const AssetAbilityControlField = Type.Union(
-	[Inputs.ClockField, Inputs.CounterField, Inputs.CheckboxField].map((input) =>
-		input({ id: Type.Ref(ID.AssetAbilityControlFieldID) })
-	),
-	{
-		$id: '#/$defs/AssetAbilityControlField',
-		title: 'Asset ability control field'
-	}
+export const AssetAbilityControlField = AssetField(
+	'AssetAbilityControlField',
+	ID.AssetAbilityControlFieldID,
+	[Inputs.ClockField, Inputs.CounterField, Inputs.CheckboxField]
 )
+
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
 
 export const AssetAbility = Type.Object(
@@ -179,3 +191,12 @@ export const AssetType = Abstract.Collection(
 	{ $id: '#/$defs/AssetType' }
 )
 export type AssetType = Static<typeof AssetType>
+
+export {
+	CheckboxField,
+	ClockField,
+	CounterField,
+	TextField,
+	SelectFieldStat,
+	SelectFieldRef
+} from 'schema/common/inputs'

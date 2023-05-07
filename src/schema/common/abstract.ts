@@ -183,9 +183,10 @@ export function Collection<T extends TRef>(
 	)
 }
 
-export type Collection<T extends TRef> = Static<
-	ReturnType<typeof Collection<T>>
->
+export type Collection<T> = Omit<
+	Static<ReturnType<typeof Collection<TRef>>>,
+	'contents'
+> & { contents?: Record<string, T> }
 
 export function RecursiveCollection<T extends TRef>(
 	memberSchema: T,
@@ -203,6 +204,10 @@ export function RecursiveCollection<T extends TRef>(
 		},
 		{ ...options, $id: refID }
 	)
+}
+
+export type RecursiveCollection<T> = Collection<T> & {
+	collections?: Record<string, RecursiveCollection<T>>
 }
 
 /**

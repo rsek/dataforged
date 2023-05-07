@@ -5,7 +5,6 @@
 	"description": "Data entry schema for Datasworn, which provides templates, fallbacks/default values for many undefined keys, and other conveniences like source inheritance. It must be processed into the standard Datasworn format.",
 	"$defs": {
 		"EncounterClassicID": {
-			"$id": "#/$defs/EncounterClassicID",
 			"examples": [
 				"classic/encounters/firstborn/elf",
 				"delve/encounters/anomalies/glimmer"
@@ -14,7 +13,6 @@
 			"pattern": "^[a-z0-9_]{3,}\\/encounters(\\/[a-z_]+){2}$"
 		},
 		"EncounterStarforgedID": {
-			"$id": "#/$defs/EncounterStarforgedID",
 			"examples": [
 				"starforged/encounters/chiton",
 				"starforged/encounters/chiton/variants/chiton_drone_pack"
@@ -23,119 +21,97 @@
 			"pattern": "^[a-z0-9_]{3,}\\/encounters\\/[a-z_]+(\\/variants\\/[a-z_]+)?$"
 		},
 		"EncounterCollectionID": {
-			"$id": "#/$defs/EncounterCollectionID",
 			"examples": ["classic/collections/encounters/firstborn"],
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/encounters\\/[a-z_]+$"
 		},
 		"AssetID": {
-			"$id": "#/$defs/AssetID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}$"
 		},
 		"AssetIDWildcard": {
-			"$id": "#/$defs/AssetIDWildcard",
 			"type": "string",
 			"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)$"
 		},
 		"AssetTypeID": {
-			"$id": "#/$defs/AssetTypeID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets\\/[a-z_]+$"
 		},
 		"AssetOptionFieldID": {
-			"$id": "#/$defs/AssetOptionFieldID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/options\\/[a-z_]+"
 		},
 		"AssetOptionFieldIDWildcard": {
-			"$id": "#/$defs/AssetOptionFieldIDWildcard",
 			"type": "string",
 			"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/options\\/[a-z_]+$"
 		},
 		"AssetControlFieldID": {
-			"$id": "#/$defs/AssetControlFieldID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/controls\\/[a-z_]+$"
 		},
 		"AssetControlFieldIDWildcard": {
-			"$id": "#/$defs/AssetControlFieldIDWildcard",
 			"type": "string",
 			"pattern": "^(\\*|[a-z0-9_]{3,})\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/controls\\/[a-z_]+$"
 		},
 		"AssetConditionMeterID": {
-			"$id": "#/$defs/AssetConditionMeterID",
 			"title": "Asset condition meter ID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter$"
 		},
 		"AssetConditionMeterIDWildcard": {
-			"$id": "#/$defs/AssetConditionMeterIDWildcard",
 			"title": "Asset condition meter ID (wildcard)",
 			"type": "string",
 			"pattern": "^([a-z_]+|\\*)\\/assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/condition_meter$"
 		},
 		"AssetConditionMeterControlFieldID": {
-			"$id": "#/$defs/AssetConditionMeterControlFieldID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/condition_meter\\/controls\\/[a-z_]+$"
 		},
 		"AssetAbilityID": {
-			"$id": "#/$defs/AssetAbilityID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]$"
 		},
 		"AssetAbilityOptionFieldID": {
-			"$id": "#/$defs/AssetAbilityOptionFieldID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/options\\/[a-z_]+$"
 		},
 		"AssetAbilityControlFieldID": {
-			"$id": "#/$defs/AssetAbilityControlFieldID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/controls\\/[a-z_]+$"
 		},
 		"DelveSiteID": {
 			"examples": ["delve/delve_sites/alvas_rest"],
-			"$id": "#/$defs/DelveSiteID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/[a-z_]+$"
 		},
 		"DelveSiteDenizenID": {
 			"examples": ["delve/delve_sites/alvas_rest/denizens/1-27"],
-			"$id": "#/$defs/DelveSiteDenizenID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/[a-z_]+$\\/denizens\\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)"
 		},
 		"DelveSiteThemeID": {
-			"$id": "#/$defs/DelveSiteThemeID",
 			"examples": ["delve/site_themes/hallowed"],
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_themes\\/[a-z_]+$"
 		},
 		"ThemeFeatureRowID": {
-			"$id": "#/$defs/ThemeFeatureRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_themes\\/[a-z_]+\\/features\\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$"
 		},
 		"ThemeDangerRowID": {
-			"$id": "#/$defs/ThemeDangerRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_themes\\/[a-z_]+\\/dangers\\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$"
 		},
 		"DelveSiteDomainID": {
-			"$id": "#/$defs/DelveSiteDomainID",
 			"examples": ["delve/site_domains/shadowfen"],
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/[a-z_]+$"
 		},
 		"DomainFeatureRowID": {
-			"$id": "#/$defs/DomainFeatureRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/[a-z_]+\\/features\\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$"
 		},
 		"DomainDangerRowID": {
-			"$id": "#/$defs/DomainDangerRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/[a-z_]+\\/dangers\\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$"
 		},
@@ -145,7 +121,6 @@
 				"classic/moves/combat/strike",
 				"starforged/assets/module/grappler/moves/ready_grappler"
 			],
-			"$id": "#/$defs/MoveID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$"
 		},
@@ -153,19 +128,16 @@
 			"title": "Move ID (with wildcard)",
 			"description": "A move ID with wildcards",
 			"examples": ["*/moves/*/face_danger", "*/assets/ritual/*/moves/*"],
-			"$id": "#/$defs/MoveIDWildcard",
 			"type": "string",
 			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/moves\\/([a-z_]+|\\*))$"
 		},
 		"MoveCategoryID": {
 			"examples": ["starforged/collections/moves/adventure"],
-			"$id": "#/$defs/MoveCategoryID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/[a-z_]+$"
 		},
 		"OracleTableRowID": {
 			"examples": ["classic/oracles/action_and_theme/action/1-1"],
-			"$id": "#/$defs/OracleTableRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}\\/[0-9]{1,3}-[0-9]{1,3}$"
 		},
@@ -175,7 +147,6 @@
 				"starforged/oracles/character/names/given",
 				"starforged/oracles/planets/furnace/settlements/terminus"
 			],
-			"$id": "#/$defs/OracleTableID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/[a-z_]+){2,4}$"
 		},
@@ -185,69 +156,57 @@
 				"starforged/collections/oracles/character/names",
 				"starforged/collections/oracles/planets/furnace/settlements"
 			],
-			"$id": "#/$defs/OracleCollectionID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/[a-z_]+){1,3}$"
 		},
 		"RarityID": {
 			"examples": ["classic/rarities/ayethins_journal"],
-			"$id": "#/$defs/RarityID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/rarities\\/[a-z_]+$"
 		},
 		"RegionEntryID": {
 			"examples": ["classic/regions/shattered_wastes"],
-			"$id": "#/$defs/RegionEntryID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/regions\\/[a-z_]+$"
 		},
 		"WorldTruthID": {
 			"examples": ["classic/world_truths/iron"],
-			"$id": "#/$defs/WorldTruthID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+$"
 		},
 		"WorldTruthOptionID": {
 			"examples": ["classic/world_truths/iron/0"],
-			"$id": "#/$defs/WorldTruthOptionID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/world_truths\\/[a-z_]+\\/[0-2]$"
 		},
 		"SettingTruthID": {
 			"examples": ["starforged/setting_truths/iron"],
-			"$id": "#/$defs/SettingTruthID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+$"
 		},
 		"SettingTruthOptionID": {
 			"examples": ["starforged/setting_truths/iron/0"],
-			"$id": "#/$defs/SettingTruthOptionID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+\\/[0-2]$"
 		},
 		"Label": {
-			"$id": "#/$defs/Label",
 			"description": "A localized plain text name or label.",
 			"type": "string"
 		},
 		"MarkdownString": {
-			"$id": "#/$defs/MarkdownString",
 			"description": "Localized text, formatted in Markdown.",
 			"type": "string"
 		},
-		"TemplateString": { "$id": "#/$defs/TemplateString", "type": "string" },
+		"TemplateString": { "type": "string" },
 		"PlayerStat": {
-			"$id": "#/$defs/PlayerStat",
 			"type": "string",
 			"enum": ["edge", "heart", "iron", "shadow", "wits"]
 		},
 		"PlayerConditionMeter": {
-			"$id": "#/$defs/PlayerConditionMeter",
 			"type": "string",
 			"enum": ["health", "spirit", "supply"]
 		},
 		"ChallengeRank": {
-			"$id": "#/$defs/ChallengeRank",
 			"description": "Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic",
 			"type": "integer",
 			"enum": [1, 2, 3, 4, 5]
@@ -274,7 +233,6 @@
 		},
 		"OracleTableRollMethod": {
 			"default": "no_duplicates",
-			"$id": "#/$defs/OracleTableRollMethod",
 			"type": "string",
 			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"]
 		},
@@ -325,12 +283,10 @@
 			"required": ["text"]
 		},
 		"OracleTableStyle": {
-			"$id": "#/$defs/OracleTableStyle",
 			"type": "string",
 			"enum": ["table", "embed_in_row", "embed_as_column"]
 		},
 		"OracleColumnContentType": {
-			"$id": "#/$defs/OracleColumnContentType",
 			"type": "string",
 			"enum": ["range", "result", "summary", "description"]
 		},
@@ -380,11 +336,7 @@
 			},
 			"required": ["name", "table"]
 		},
-		"OracleCollectionStyle": {
-			"$id": "#/$defs/OracleCollectionStyle",
-			"type": "string",
-			"enum": ["multi_table"]
-		},
+		"OracleCollectionStyle": { "type": "string", "enum": ["multi_table"] },
 		"OracleCollectionRendering": {
 			"type": "object",
 			"properties": {
@@ -452,23 +404,19 @@
 			"required": ["name"]
 		},
 		"MoveRollMethod": {
-			"$id": "#/$defs/MoveRollMethod",
 			"description": "`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.",
 			"type": "string",
 			"enum": ["any", "all", "highest", "lowest"]
 		},
 		"MoveRerollMethod": {
-			"$id": "#/$defs/MoveRerollMethod",
 			"type": "string",
 			"enum": ["any", "all", "challenge_die", "challenge_dice", "action_die"]
 		},
 		"MoveOutcomeType": {
-			"$id": "#/$defs/MoveOutcomeType",
 			"type": "string",
 			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
 		"MoveRollType": {
-			"$id": "#/$defs/MoveRollType",
 			"type": "string",
 			"enum": ["action_roll", "progress_roll", "no_roll"]
 		},
@@ -521,7 +469,6 @@
 			"required": ["using", "label", "value"]
 		},
 		"TriggerActionRollOptionChoice": {
-			"$id": "#/$defs/TriggerActionRollOptionChoice",
 			"anyOf": [
 				{ "$ref": "#/$defs/TriggerActionRollOptionChoiceStat" },
 				{ "$ref": "#/$defs/TriggerActionRollOptionChoiceRef" },
@@ -638,7 +585,6 @@
 			"required": ["text", "roll_type"]
 		},
 		"Trigger": {
-			"$id": "#/$defs/Trigger",
 			"anyOf": [
 				{ "$ref": "#/$defs/TriggerActionRoll" },
 				{ "$ref": "#/$defs/TriggerProgressRoll" },
@@ -779,7 +725,6 @@
 			"required": ["roll_type", "roll_options"]
 		},
 		"TriggerExtension": {
-			"$id": "#/$defs/TriggerExtension",
 			"anyOf": [
 				{ "$ref": "#/$defs/TriggerActionRollExtension" },
 				{ "$ref": "#/$defs/TriggerProgressRollExtension" }
@@ -826,7 +771,14 @@
 				}
 			}
 		},
-		"AssetConditionMeterControlField": { "type": "object", "properties": {} },
+		"AssetConditionMeterControlField": {
+			"type": "object",
+			"title": "Asset Condition Meter Control Field",
+			"anyOf": [{ "$ref": "#/$defs/CheckboxField" }],
+			"properties": {
+				"id": { "$ref": "#/$defs/AssetConditionMeterControlFieldID" }
+			}
+		},
 		"AssetConditionMeter": {
 			"type": "object",
 			"properties": {
@@ -858,55 +810,19 @@
 			}
 		},
 		"AssetOptionField": {
-			"$id": "#/$defs/AssetOptionField",
-			"title": "Asset option field",
+			"type": "object",
+			"title": "Asset Option Field",
 			"anyOf": [
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "select_stat", "type": "string" },
-						"value": { "$ref": "#/$defs/PlayerStat" },
-						"choices": {
-							"$comment": "Deserialize as a dictionary object.",
-							"type": "object",
-							"patternProperties": {
-								"^[a-z_]+$": {
-									"type": "object",
-									"properties": {
-										"label": { "$ref": "#/$defs/Label" },
-										"value": { "$ref": "#/$defs/PlayerStat" },
-										"selected": { "type": "boolean" }
-									},
-									"required": ["label", "value"]
-								}
-							}
-						},
-						"id": { "$ref": "#/$defs/AssetOptionFieldID" }
-					},
-					"required": ["label", "field_type", "choices", "id"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "text", "type": "string" },
-						"value": { "type": "string" },
-						"id": { "$ref": "#/$defs/AssetOptionFieldID" }
-					},
-					"required": ["label", "field_type", "id"]
-				}
-			]
+				{ "$ref": "#/$defs/SelectFieldStat" },
+				{ "$ref": "#/$defs/TextField" }
+			],
+			"properties": { "id": { "$ref": "#/$defs/AssetOptionFieldID" } }
 		},
 		"AssetControlField": {
 			"type": "object",
-			"properties": {
-				"label": { "$ref": "#/$defs/Label" },
-				"field_type": { "const": "checkbox", "type": "string" },
-				"value": { "default": false, "type": "boolean" },
-				"id": { "$ref": "#/$defs/AssetControlFieldID" }
-			},
-			"required": ["label", "field_type"]
+			"title": "Asset Control Field",
+			"anyOf": [{ "$ref": "#/$defs/CheckboxField" }],
+			"properties": { "id": { "$ref": "#/$defs/AssetControlFieldID" } }
 		},
 		"AssetAttachment": {
 			"type": "object",
@@ -969,53 +885,19 @@
 		},
 		"AssetAbilityOptionField": {
 			"type": "object",
-			"properties": {
-				"label": { "$ref": "#/$defs/Label" },
-				"field_type": { "const": "text", "type": "string" },
-				"value": { "type": "string" },
-				"id": { "$ref": "#/$defs/AssetAbilityOptionFieldID" }
-			},
-			"required": ["label", "field_type"]
+			"title": "Asset Ability Option Field",
+			"anyOf": [{ "$ref": "#/$defs/TextField" }],
+			"properties": { "id": { "$ref": "#/$defs/AssetAbilityOptionFieldID" } }
 		},
 		"AssetAbilityControlField": {
-			"$id": "#/$defs/AssetAbilityControlField",
-			"title": "Asset ability control field",
+			"type": "object",
+			"title": "Asset Ability Control Field",
 			"anyOf": [
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "clock", "type": "string" },
-						"value": { "default": 0, "type": "integer" },
-						"min": { "const": 0, "type": "number" },
-						"max": { "type": "integer", "enum": [4, 6, 8, 10] },
-						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
-					},
-					"required": ["label", "field_type", "min", "max", "id"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "counter", "type": "string" },
-						"value": { "default": 0, "type": "integer" },
-						"min": { "type": "integer" },
-						"max": { "type": "integer" },
-						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
-					},
-					"required": ["label", "field_type", "min", "id"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"label": { "$ref": "#/$defs/Label" },
-						"field_type": { "const": "checkbox", "type": "string" },
-						"value": { "default": false, "type": "boolean" },
-						"id": { "$ref": "#/$defs/AssetAbilityControlFieldID" }
-					},
-					"required": ["label", "field_type", "id"]
-				}
-			]
+				{ "$ref": "#/$defs/ClockField" },
+				{ "$ref": "#/$defs/CounterField" },
+				{ "$ref": "#/$defs/CheckboxField" }
+			],
+			"properties": { "id": { "$ref": "#/$defs/AssetAbilityControlFieldID" } }
 		},
 		"AssetAbility": {
 			"type": "object",
@@ -1102,6 +984,120 @@
 			},
 			"required": ["name"]
 		},
+		"CheckboxField": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "checkbox", "type": "string" },
+				"id": { "type": "string" },
+				"value": { "default": false, "type": "boolean" }
+			},
+			"required": ["label", "field_type"]
+		},
+		"ClockField": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "clock", "type": "string" },
+				"min": { "const": 0, "type": "number" },
+				"max": { "type": "integer", "enum": [4, 6, 8, 10] },
+				"id": { "type": "string" },
+				"value": { "default": 0, "type": "integer" }
+			},
+			"required": ["label", "field_type", "min", "max"]
+		},
+		"CounterField": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "counter", "type": "string" },
+				"min": { "type": "integer" },
+				"max": { "type": "integer" },
+				"id": { "type": "string" },
+				"value": { "default": 0, "type": "integer" }
+			},
+			"required": ["label", "field_type", "min"]
+		},
+		"TextField": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "text", "type": "string" },
+				"value": { "type": "string" },
+				"id": { "type": "string" }
+			},
+			"required": ["label", "field_type"]
+		},
+		"SelectFieldStat": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "select_stat", "type": "string" },
+				"value": {
+					"anyOf": [
+						{ "$ref": "#/$defs/PlayerStat" },
+						{ "$ref": "#/$defs/PlayerConditionMeter" }
+					]
+				},
+				"choices": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"type": "object",
+							"properties": {
+								"label": { "$ref": "#/$defs/Label" },
+								"value": {
+									"anyOf": [
+										{ "$ref": "#/$defs/PlayerStat" },
+										{ "$ref": "#/$defs/PlayerConditionMeter" }
+									]
+								},
+								"selected": { "type": "boolean" }
+							},
+							"required": ["label", "value"]
+						}
+					}
+				},
+				"id": { "type": "string" }
+			},
+			"required": ["label", "field_type", "choices"]
+		},
+		"SelectFieldRef": {
+			"type": "object",
+			"properties": {
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "select_ref", "type": "string" },
+				"value": {
+					"anyOf": [
+						{ "$ref": "#/$defs/AssetControlFieldIDWildcard" },
+						{ "$ref": "#/$defs/AssetOptionFieldIDWildcard" }
+					]
+				},
+				"choices": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": {
+							"type": "object",
+							"properties": {
+								"label": { "$ref": "#/$defs/Label" },
+								"value": {
+									"anyOf": [
+										{ "$ref": "#/$defs/AssetControlFieldIDWildcard" },
+										{ "$ref": "#/$defs/AssetOptionFieldIDWildcard" }
+									]
+								},
+								"selected": { "type": "boolean" }
+							},
+							"required": ["label", "value"]
+						}
+					}
+				},
+				"id": { "type": "string" }
+			},
+			"required": ["label", "field_type", "choices"]
+		},
 		"Suggestions": {
 			"type": "object",
 			"properties": {
@@ -1127,7 +1123,8 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/RegionEntryID" }
 				}
-			}
+			},
+			"required": ["site_domains", "site_themes", "encounters", "regions"]
 		},
 		"DelveSite": {
 			"type": "object",
@@ -1293,7 +1290,6 @@
 			"required": ["low", "high", "frequency"]
 		},
 		"DelveSiteDenizenFrequency": {
-			"$id": "#/$defs/DelveSiteDenizenFrequency",
 			"type": "string",
 			"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 		},
@@ -1840,7 +1836,6 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
 				},
-				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
@@ -1860,7 +1855,6 @@
 			"required": [
 				"name",
 				"features",
-				"summary",
 				"description",
 				"quest_starter",
 				"rank",
@@ -1869,7 +1863,6 @@
 			]
 		},
 		"ProgressType": {
-			"$id": "#/$defs/ProgressType",
 			"type": "string",
 			"enum": [
 				"combat_progress",
@@ -1908,8 +1901,27 @@
 		},
 		"RegionEntry": {
 			"type": "object",
-			"properties": { "quest_starter": { "$ref": "#/$defs/MarkdownString" } },
-			"required": ["quest_starter"]
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"features": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"source": { "$ref": "#/$defs/Source" },
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": [
+				"name",
+				"features",
+				"summary",
+				"description",
+				"quest_starter"
+			]
 		},
 		"WorldTruth": {
 			"type": "object",
@@ -1945,28 +1957,24 @@
 			"required": ["description", "quest_starter"]
 		},
 		"Ruleset": {
-			"$id": "#/$defs/Ruleset",
 			"description": "The ruleset used for a sourcebook's rules content.",
 			"type": "string",
 			"enum": ["classic", "starforged"]
 		},
 		"SvgImageURL": {
 			"title": "SVG Image URL",
-			"$id": "#/$defs/SvgImageURL",
 			"format": "uri",
 			"description": "A relative URL pointing to a vector image in the SVG format.",
 			"type": "string"
 		},
 		"WebpImageURL": {
 			"title": "WEBP Image URL",
-			"$id": "#/$defs/WebpImageURL",
 			"format": "uri",
 			"description": "A relative URL pointing to a raster image in the WEBP format.",
 			"type": "string"
 		},
 		"CSSColor": {
 			"title": "CSS Color",
-			"$id": "#/$defs/CSSColor",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value",
 			"type": "string"
 		},
@@ -2085,11 +2093,73 @@
 	"type": "object",
 	"patternProperties": {
 		"^[a-z0-9_]{3,}$": {
-			"$id": "#/$defs/SourcebookClassic",
+			"title": "Sourcebook (classic)",
 			"type": "object",
 			"properties": {
 				"ruleset": { "const": "classic", "type": "string" },
-				"source": { "$ref": "#/$defs/Source" }
+				"source": { "$ref": "#/$defs/Source" },
+				"oracles": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
+					}
+				},
+				"moves": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/MoveCategory" }
+					}
+				},
+				"assets": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/AssetType" } }
+				},
+				"regions": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/RegionEntry" }
+					}
+				},
+				"encounters": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/EncounterCollectionClassic" }
+					}
+				},
+				"rarities": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Rarity" } }
+				},
+				"delve_sites": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/DelveSite" } }
+				},
+				"site_themes": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/DelveSiteTheme" }
+					}
+				},
+				"site_domains": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z_]+$": { "$ref": "#/$defs/DelveSiteDomain" }
+					}
+				},
+				"world_truths": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/WorldTruth" } }
+				}
 			},
 			"required": ["ruleset", "source"]
 		}
