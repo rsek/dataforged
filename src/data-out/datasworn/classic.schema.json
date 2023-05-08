@@ -249,7 +249,6 @@
 			}
 		},
 		"OracleTableRow": {
-			"title": "Row",
 			"type": "object",
 			"properties": {
 				"low": {
@@ -1961,7 +1960,8 @@
 				},
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" }
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"id": { "$ref": "#/$defs/RegionEntryID" }
 			},
 			"required": [
 				"name",
@@ -1969,7 +1969,8 @@
 				"features",
 				"summary",
 				"description",
-				"quest_starter"
+				"quest_starter",
+				"id"
 			]
 		},
 		"WorldTruth": {
@@ -1983,14 +1984,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"options": {
 					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"description": { "$ref": "#/$defs/MarkdownString" },
-							"quest_starter": { "$ref": "#/$defs/MarkdownString" }
-						},
-						"required": ["description", "quest_starter"]
-					}
+					"items": { "$ref": "#/$defs/WorldTruthOption" }
 				},
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
 				"id": { "$ref": "#/$defs/WorldTruthID" }

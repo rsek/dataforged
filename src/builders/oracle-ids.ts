@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es'
+import { cloneDeep } from 'lodash'
 import { type Source } from 'schema'
 import { type RecursiveCollection } from 'schema/common/abstract'
 

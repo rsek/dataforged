@@ -257,13 +257,13 @@ export interface OracleTable {
   summary?: MarkdownString;
   description?: MarkdownString;
   match?: MatchBehavior;
-  table: Row[];
+  table: OracleTableRow[];
   rendering?: OracleTableRendering;
 }
 export interface MatchBehavior {
   text: MarkdownString;
 }
-export interface Row {
+export interface OracleTableRow {
   low: number | null;
   high: number | null;
   id: OracleTableRowID;

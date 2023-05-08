@@ -1913,6 +1913,7 @@
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
 				"source": { "$ref": "#/$defs/Source" },
+				"id": { "$ref": "#/$defs/RegionEntryID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
@@ -1931,14 +1932,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"options": {
 					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"description": { "$ref": "#/$defs/MarkdownString" },
-							"quest_starter": { "$ref": "#/$defs/MarkdownString" }
-						},
-						"required": ["description", "quest_starter"]
-					}
+					"items": { "$ref": "#/$defs/WorldTruthOption" }
 				},
 				"icon": { "$ref": "#/$defs/SvgImageURL" },
 				"source": { "$ref": "#/$defs/Source" },

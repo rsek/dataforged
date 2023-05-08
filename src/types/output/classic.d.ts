@@ -159,6 +159,7 @@ export type ThemeFeatureRowID = string;
 export type ThemeDangerRowID = string;
 export type DomainFeatureRowID = string;
 export type DomainDangerRowID = string;
+export type WorldTruthOptionID = string;
 export type WorldTruthID = string;
 
 /**
@@ -292,13 +293,13 @@ export interface OracleTable {
   summary?: MarkdownString;
   description?: MarkdownString;
   match?: MatchBehavior;
-  table: Row[];
+  table: OracleTableRow[];
   rendering?: OracleTableRendering;
 }
 export interface MatchBehavior {
   text: MarkdownString;
 }
-export interface Row {
+export interface OracleTableRow {
   low: number | null;
   high: number | null;
   id: OracleTableRowID;
@@ -690,6 +691,7 @@ export interface RegionEntry {
   summary: MarkdownString;
   description: MarkdownString;
   quest_starter: MarkdownString;
+  id: RegionEntryID;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1100,10 +1102,12 @@ export interface WorldTruth {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  options: {
-    description: MarkdownString;
-    quest_starter: MarkdownString;
-  }[];
+  options: WorldTruthOption[];
   icon?: SVGImageURL;
   id: WorldTruthID;
+}
+export interface WorldTruthOption {
+  description: MarkdownString;
+  quest_starter: MarkdownString;
+  id: WorldTruthOptionID;
 }

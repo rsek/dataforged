@@ -30,6 +30,7 @@ const filePath = path.join(
 
 readYAML(filePath)
 	.then(async (inputData) => {
-		console.log(validator.validate('DataforgedInput', inputData))
+		validator.validate('DataforgedInput', inputData)
+		console.log(JSON.stringify(inputData, undefined, '\t'))
 	})
 	.catch(logger.error)

@@ -14,6 +14,7 @@ import * as Assets from 'schema/assets'
 
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
+import { DICT_KEY } from 'schema/common/abstract'
 
 export const NAMESPACE_KEY = /^[a-z0-9_]{3,}$/
 
@@ -27,6 +28,7 @@ function Sourcebook<T extends Metadata.Ruleset>(
 ) {
 	return Type.Object(
 		{
+			// id: DICT_KEY,
 			ruleset: Type.Literal(ruleset),
 			source: Type.Ref(Metadata.Source),
 			...mapValues(contents, (v) =>

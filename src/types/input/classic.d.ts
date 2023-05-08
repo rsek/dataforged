@@ -160,6 +160,7 @@ export type ThemeFeatureRowID = string;
 export type ThemeDangerRowID = string;
 export type DomainFeatureRowID = string;
 export type DomainDangerRowID = string;
+export type WorldTruthOptionID = string;
 export type WorldTruthID = string;
 
 /**
@@ -714,6 +715,7 @@ export interface RegionEntry {
   description: MarkdownString;
   quest_starter: MarkdownString;
   source?: Source;
+  id?: RegionEntryID;
   _source?: SourceStub;
 }
 /**
@@ -1122,12 +1124,14 @@ export interface WorldTruth {
   name: Label;
   canonical_name?: Label;
   suggestions?: Suggestions;
-  options: {
-    description: MarkdownString;
-    quest_starter: MarkdownString;
-  }[];
+  options: WorldTruthOption[];
   icon?: SVGImageURL;
   source?: Source;
   id?: WorldTruthID;
   _source?: SourceStub;
+}
+export interface WorldTruthOption {
+  description: MarkdownString;
+  quest_starter: MarkdownString;
+  id?: WorldTruthOptionID;
 }

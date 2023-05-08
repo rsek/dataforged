@@ -1,8 +1,14 @@
 import { type Static, Type } from '@sinclair/typebox'
+import { Source } from 'schema'
 import { Abstract, Localize } from 'schema/common'
+import { RegionEntryID } from 'schema/common/id'
 
 export const RegionEntry = Abstract.Cyclopedia(
-	{ quest_starter: Type.Ref(Localize.MarkdownString) },
+	{
+		id: Type.Ref(RegionEntryID),
+		source: Type.Ref(Source),
+		quest_starter: Type.Ref(Localize.MarkdownString)
+	},
 	{
 		$id: '#/$defs/RegionEntry',
 		title: 'Region entry',

@@ -70,7 +70,7 @@ export const OracleTableRow = Type.Composite(
 			template: Type.Optional(Type.Ref(OracleRollTemplate))
 		})
 	],
-	{ $id: '#/$defs/OracleTableRow', title: 'Row' }
+	{ $id: '#/$defs/OracleTableRow' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>
 
