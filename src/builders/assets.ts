@@ -4,7 +4,7 @@ import {
 	type SourceHaver,
 	sourcedTransformer,
 	collectionTransformer
-} from './Transformer'
+} from './transformer'
 
 export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 	options: function (

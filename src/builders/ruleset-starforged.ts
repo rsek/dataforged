@@ -6,7 +6,7 @@ import {
 	transform,
 	sourcedTransformer,
 	type SourceHaver
-} from './Transformer'
+} from './transformer'
 
 export const EncounterStarforged = sourcedTransformer<
 	In.EncounterStarforged,

@@ -4,7 +4,7 @@ import {
 	type SourceHaver,
 	collectionTransformer,
 	sourcedTransformer
-} from './Transformer'
+} from './transformer'
 
 export const Move = sourcedTransformer<In.Move, Out.Move>({
 	trigger: function (

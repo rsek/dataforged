@@ -6,7 +6,7 @@ import {
 	type Transformer,
 	type SourceHaver,
 	transform
-} from './Transformer'
+} from './transformer'
 
 export const EncounterClassic = sourcedTransformer<
 	In.EncounterClassic,

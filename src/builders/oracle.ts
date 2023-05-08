@@ -4,7 +4,7 @@ import {
 	sourcedTransformer,
 	type SourceHaver,
 	type Transformer
-} from 'builders/Transformer'
+} from 'builders/transformer'
 import { mapValues } from 'lodash'
 import type * as SchemaIn from 'types/input/starforged'
 import type * as SchemaOut from 'types/output/starforged'
