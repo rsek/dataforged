@@ -10,5 +10,5 @@ export const TruthOptionBase = Type.Object({
 
 export const TruthBase = Abstract.SourcedNode({
 	options: Type.Array(TruthOptionBase),
-	icon: Type.Optional(Type.Ref(Metadata.SvgImageURL))
+	icon: Type.Optional(Type.Ref(Metadata.SVGImageURL))
 })

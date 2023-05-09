@@ -1,0 +1,415 @@
+id: delve
+ruleset: classic
+source:
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - name: Shawn Tomkin
+oracles:
+  threat:
+    name: Threat
+    summary: In support of the optional threat mechanics, use these oracles to introduce a threat and determine its actions within your world.
+    description: |-
+      These oracles support the optional threat mechanics detailed in Chapter 6.
+
+      You can use the [Category](delve/oracles/threat/category) oracle above to randomly select a broad type of threat for your campaign. If you are told to roll twice, take both results and decide how these two threats act together or represent a more complex situation. For example, choosing both a [Malignant Plague](delve/oracles/threat/malignant_plague) and [Zealous Cult](delve/oracles/threat/zealous_cult) might signify an evil sect which has unleashed a sickness upon the Ironlands in service to some dark god.
+
+      For additional detail, use other oracles as appropriate. For example, you can look to the [Action](classic/oracles/action_and_theme/action) and [Theme](classic/oracles/action_and_theme/theme) oracles (Ironsworn Core, page 174) or [Character Goal](classic/oracles/character/goal) oracle (Ironsworn Core, page 182) to define the motivations of a [Scheming Leader](delve/oracles/threat/scheming_leader).
+
+      Once you’ve introduced a threat, consider how it endangers something or someone important to you, and [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) to see its goal undone.
+
+      Then, as you [Advance a Threat](delve/moves/threat/advance_a_threat), you can roll on the oracle table for your specific threat to generate an action, approach, or complication. Interpret the oracle’s answer as appropriate to the nature of the threat and the current situation.
+
+      If you aren’t using the threat mechanics within your campaign, you can use still these oracles to inspire details for enemies, troubles, and complications.
+    _source:
+      page: 220
+    contents:
+      category:
+        name: Category
+        canonical_name: 'Threat: Category'
+        table:
+          - low: 1
+            high: 10
+            result: Burgeoning Conflict
+            suggestions:
+              oracles:
+                - delve/oracles/threat/burgeoning_conflict
+          - low: 11
+            high: 20
+            result: Cursed Site
+            suggestions:
+              oracles:
+                - delve/oracles/threat/cursed_site
+          - low: 21
+            high: 30
+            result: Environmental Calamity
+            suggestions:
+              oracles:
+                - delve/oracles/threat/environmental_calamity
+          - low: 31
+            high: 40
+            result: Malignant Plague
+            suggestions:
+              oracles:
+                - delve/oracles/threat/malignant_plague
+          - low: 41
+            high: 50
+            result: Rampaging Creature
+            suggestions:
+              oracles:
+                - delve/oracles/threat/rampaging_creature
+          - low: 51
+            high: 60
+            result: Ravaging Horde
+            suggestions:
+              oracles:
+                - delve/oracles/threat/ravaging_horde
+          - low: 61
+            high: 70
+            result: Scheming Leader
+            suggestions:
+              oracles:
+                - delve/oracles/threat/scheming_leader
+          - low: 71
+            high: 80
+            result: Power-Hungry Mystic
+            suggestions:
+              oracles:
+                - delve/oracles/threat/power_hungry_mystic
+          - low: 81
+            high: 90
+            result: Zealous Cult
+            suggestions:
+              oracles:
+                - delve/oracles/threat/zealous_cult
+          - low: 91
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+      burgeoning_conflict:
+        name: Burgeoning Conflict
+        canonical_name: 'Threat: Burgeoning Conflict'
+        _source:
+          page: 221
+        table:
+          - low: 1
+            high: 10
+            result: 'Allow warmongers to gain influence'
+          - low: 11
+            high: 20
+            result: 'Break a treaty'
+          - low: 21
+            high: 30
+            result: 'Force a hasty decision'
+          - low: 31
+            high: 40
+            result: 'Deepen suspicions'
+          - low: 41
+            high: 50
+            result: 'Trigger a confrontation'
+          - low: 51
+            high: 60
+            result: 'Subvert a potential accord'
+          - low: 61
+            high: 70
+            result: 'Isolate the antagonists'
+          - low: 71
+            high: 80
+            result: 'Draw new battle lines'
+          - low: 81
+            high: 90
+            result: 'Reveal an unexpected aspect of the dispute'
+          - low: 91
+            high: 100
+            result: 'Introduce a new person or faction to complicate the situation'
+      cursed_site:
+        name: Cursed Site
+        canonical_name: 'Threat: Cursed Site'
+        _source:
+          page: 221
+        table:
+          - low: 1
+            high: 10
+            result: 'Unleash a creature or being'
+          - low: 11
+            high: 20
+            result: 'Lure the unwary into its depths'
+          - low: 21
+            high: 30
+            result: 'Offer promises of power'
+          - low: 31
+            high: 40
+            result: 'Reveal a new aspect of its cursed history'
+          - low: 41
+            high: 50
+            result: 'Expand its malignancy to surrounding lands'
+          - low: 51
+            high: 60
+            result: 'Leave its mark on an inhabitant or visitor'
+          - low: 61
+            high: 70
+            result: 'Reveal hidden depths'
+          - low: 71
+            high: 80
+            result: 'Ensnare an important person or object'
+          - low: 81
+            high: 90
+            result: 'Corrupt the environment'
+          - low: 91
+            high: 100
+            result: 'Transform its nature'
+      environmental_calamity:
+        name: Environmental Calamity
+        canonical_name: 'Threat: Environmental Calamity'
+        _source:
+          page: 221
+        table:
+          - low: 1
+            high: 10
+            result: 'Devastate a place'
+          - low: 11
+            high: 20
+            result: 'Block a path'
+          - low: 21
+            high: 30
+            result: 'Threaten a community with imminent destruction'
+          - low: 31
+            high: 40
+            result: 'Manifest unexpected effects'
+          - low: 41
+            high: 50
+            result: 'Expand in scope or intensity'
+          - low: 51
+            high: 60
+            result: 'Allow someone to take advantage'
+          - low: 61
+            high: 70
+            result: 'Deprive of resources'
+          - low: 71
+            high: 80
+            result: 'Isolate an important person or community'
+          - low: 81
+            high: 90
+            result: 'Force refugees into hostile lands'
+          - low: 91
+            high: 100
+            result: 'Disrupt natural ecosystems'
+      malignant_plague:
+        name: Malignant Plague
+        canonical_name: 'Threat: Malignant Plague'
+        _source:
+          page: 222
+        table:
+          - low: 1
+            high: 10
+            result: 'Manifest new symptoms or effects'
+          - low: 11
+            high: 20
+            result: 'Infect someone important'
+          - low: 21
+            high: 30
+            result: 'Expand to new territory or communities'
+          - low: 31
+            high: 40
+            result: 'Allow someone to take advantage'
+          - low: 41
+            high: 50
+            result: 'Allow someone to take the blame'
+          - low: 51
+            high: 60
+            result: 'Create panic or disorder'
+          - low: 61
+            high: 70
+            result: 'Force a horrible decision'
+          - low: 71
+            high: 80
+            result: 'Lure into complacency'
+          - low: 81
+            high: 90
+            result: 'Reveal the root of the sickness'
+          - low: 91
+            high: 100
+            result: 'Undermine a potential cure'
+      rampaging_creature:
+        name: Rampaging Creature
+        canonical_name: 'Threat: Rampaging Creature'
+        _source:
+          page: 222
+        table:
+          - low: 1
+            high: 10
+            result: 'Reveal a new aspect of its nature or abilities'
+          - low: 11
+            high: 20
+            result: 'Expand its territory'
+          - low: 21
+            high: 30
+            result: 'Make a sudden and brutal attack'
+          - low: 31
+            high: 40
+            result: 'Control or influence lesser creatures'
+          - low: 41
+            high: 50
+            result: 'Create confusion or strife'
+          - low: 51
+            high: 60
+            result: 'Leave foreboding signs'
+          - low: 61
+            high: 70
+            result: 'Lure the unwary'
+          - low: 71
+            high: 80
+            result: 'Imperil an event'
+          - low: 81
+            high: 90
+            result: 'Assert control over a location'
+          - low: 91
+            high: 100
+            result: 'Threaten resources'
+      ravaging_horde:
+        name: Ravaging Horde
+        canonical_name: 'Threat: Ravaging Horde'
+        _source:
+          page: 222
+        table:
+          - low: 1
+            high: 10
+            result: 'Overrun defenses'
+          - low: 11
+            high: 20
+            result: 'Gather resources'
+          - low: 21
+            high: 30
+            result: 'Attack a location'
+          - low: 31
+            high: 40
+            result: 'Expand forces'
+          - low: 41
+            high: 50
+            result: 'Appoint or reveal a leader'
+          - low: 51
+            high: 60
+            result: 'Send forth a champion'
+          - low: 61
+            high: 70
+            result: 'Create a diversion'
+          - low: 71
+            high: 80
+            result: 'Undermine an opposing force from within'
+          - low: 81
+            high: 90
+            result: 'Cut off supplies or reinforcements'
+          - low: 91
+            high: 100
+            result: 'Employ a new weapon'
+      scheming_leader:
+        name: Scheming Leader
+        canonical_name: 'Threat: Scheming Leader'
+        _source:
+          page: 223
+        table:
+          - low: 1
+            high: 10
+            result: 'Defeat an enemy'
+          - low: 11
+            high: 20
+            result: 'Form a new alliance'
+          - low: 21
+            high: 30
+            result: 'Usurp or undermine another leader'
+          - low: 31
+            high: 40
+            result: 'Force the loyalty of a community or important person'
+          - low: 41
+            high: 50
+            result: 'Enact a new law or tradition'
+          - low: 51
+            high: 60
+            result: 'Rescind an old law or tradition'
+          - low: 61
+            high: 70
+            result: 'Reveal a true intention'
+          - low: 71
+            high: 80
+            result: 'Unravel an existing alliance'
+          - low: 81
+            high: 90
+            result: 'Incite conflict'
+          - low: 91
+            high: 100
+            result: 'Use an unexpected capability or asset'
+      power_hungry_mystic:
+        name: Power-Hungry Mystic
+        canonical_name: 'Threat: Power-Hungry Mystic'
+        _source:
+          page: 223
+        table:
+          - low: 1
+            high: 10
+            result: 'Gain hidden knowledge'
+          - low: 11
+            high: 20
+            result: 'Assault an enemy with magic'
+          - low: 21
+            high: 30
+            result: 'Despoil a place through magic'
+          - low: 31
+            high: 40
+            result: 'Forge a bond with ancient forces'
+          - low: 41
+            high: 50
+            result: 'Create magical wards or protections'
+          - low: 51
+            high: 60
+            result: 'Obtain a powerful artifact'
+          - low: 61
+            high: 70
+            result: 'Tempt with power or secrets'
+          - low: 71
+            high: 80
+            result: 'Recruit a follower or ally'
+          - low: 81
+            high: 90
+            result: 'Sacrifice something in exchange for greater power'
+          - low: 91
+            high: 100
+            result: 'Use magic to trick or deceive'
+      zealous_cult:
+        name: Zealous Cult
+        canonical_name: 'Threat: Zealous Cult'
+        _source:
+          page: 223
+        table:
+          - low: 1
+            high: 10
+            result: 'Overtake a faction or community'
+          - low: 11
+            high: 20
+            result: 'Unlock secrets to greater power'
+          - low: 21
+            high: 30
+            result: 'Establish false credibility'
+          - low: 31
+            high: 40
+            result: 'Appoint or reveal a leader'
+          - low: 41
+            high: 50
+            result: 'Lure new members or establish alliances'
+          - low: 51
+            high: 60
+            result: 'Subvert opposition through devious schemes'
+          - low: 61
+            high: 70
+            result: 'Attack opposition directly'
+          - low: 71
+            high: 80
+            result: 'Spread the word of its doctrine'
+          - low: 81
+            high: 90
+            result: 'Reveal a dire prophecy'
+          - low: 91
+            high: 100
+            result: 'Reveal its true nature or goal'

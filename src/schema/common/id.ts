@@ -145,13 +145,13 @@ export const DelveSiteThemeID = Type.RegEx(
 export type DelveSiteThemeID = Opaque<Static<typeof DelveSiteThemeID>>
 
 export const ThemeFeatureRowID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/features\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
+	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/features\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/ThemeFeatureRowID' }
 )
 export type ThemeFeatureRowID = Opaque<Static<typeof ThemeFeatureRowID>>
 
 export const ThemeDangerRowID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/dangers\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
+	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/dangers\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/ThemeDangerRowID' }
 )
 export type ThemeDangerRowID = Opaque<Static<typeof ThemeDangerRowID>>
@@ -166,13 +166,13 @@ export const DelveSiteDomainID = Type.RegEx(
 export type DelveSiteDomainID = Opaque<Static<typeof DelveSiteDomainID>>
 
 export const DomainFeatureRowID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/features\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
+	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/features\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/DomainFeatureRowID' }
 )
 export type DomainFeatureRowID = Opaque<Static<typeof DomainFeatureRowID>>
 
 export const DomainDangerRowID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/dangers\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
+	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/dangers\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/DomainDangerRowID' }
 )
 export type DomainDangerRowID = Opaque<Static<typeof DomainDangerRowID>>
@@ -213,9 +213,14 @@ export const MoveCategoryID = Type.RegEx(
 export type MoveCategoryID = Opaque<Static<typeof MoveCategoryID>>
 
 export const OracleTableRowID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/,
+	/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/([1-9][0-9]*-[1-9][0-9]*)|(0|[1-9][0-9]*)$/,
 	{
-		examples: ['classic/oracles/action_and_theme/action/1-1'],
+		examples: [
+			'classic/oracles/action_and_theme/action/1-1',
+			'starforged/oracles/derelicts/zones/starship/0'
+		],
+		description:
+			"Normally, rows will end with two numbers separated by a dash, representing their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
 		$id: '#/$defs/OracleTableRowID'
 	}
 )

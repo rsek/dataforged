@@ -18,20 +18,18 @@ export const Ruleset = Utils.StringEnum(['classic', 'starforged'], {
 	description: "The ruleset used for a sourcebook's rules content."
 })
 export type Ruleset = Static<typeof Ruleset>
-export const SvgImageURL = Type.String({
-	title: 'SVG Image URL',
-	$id: '#/$defs/SvgImageURL',
-	format: 'uri',
+export const SVGImageURL = Type.String({
+	$id: '#/$defs/SVGImageURL',
+	format: 'uri-reference',
 	description: 'A relative URL pointing to a vector image in the SVG format.'
 })
-export type SvgImageURL = Static<typeof SvgImageURL>
-export const WebpImageURL = Type.String({
-	title: 'WEBP Image URL',
-	$id: '#/$defs/WebpImageURL',
-	format: 'uri',
+export type SVGImageURL = Static<typeof SVGImageURL>
+export const WEBPImageURL = Type.String({
+	$id: '#/$defs/WEBPImageURL',
+	format: 'uri-reference',
 	description: 'A relative URL pointing to a raster image in the WEBP format.'
 })
-export type WebpImageURL = Static<typeof WebpImageURL>
+export type WEBPImageURL = Static<typeof WEBPImageURL>
 export const CSSColor = Type.String({
 	title: 'CSS Color',
 	$id: '#/$defs/CSSColor',

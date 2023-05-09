@@ -1,0 +1,1028 @@
+id: delve
+ruleset: classic
+source:
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - name: Shawn Tomkin
+oracles:
+  site_name:
+    name: Site Name
+    summary: Give a site a name or learn more about its characteristics and history.
+    description: |-
+      To generate a name for a site, first roll on the [Format](delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](delve/oracles/site_name/description), [Detail](delve/oracles/site_name/detail), [Namesake](delve/oracles/site_name/namesake), and [Place](delve/oracles/site_name/place) oracles.
+
+      If the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.
+
+      If you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) oracles inform your selection of a theme.
+
+      The site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.
+
+      Even without giving a site a name, you can use the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.
+
+      For example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](classic/moves/fate/ask_the_oracle), using the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”
+
+      Interpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.
+    _source:
+      page: 206
+    contents:
+      format:
+        name: Format
+        canonical_name: 'Site Name: Format'
+        table:
+          - low: 1
+            high: 25
+            result: '[Description] [Place]'
+            template:
+              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place/domain}}'
+          - low: 26
+            high: 50
+            result: '[Place] of [Detail]'
+            template:
+              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/detail}}'
+          - low: 51
+            high: 70
+            result: '[Place] of [Description] [Detail]'
+            template:
+              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}'
+          - low: 71
+            high: 80
+            result: "[Place] of [Namesake's] [Detail]"
+            template:
+              result: "{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
+          - low: 81
+            high: 85
+            result: "[Namesake's] [Place]"
+            template:
+              result: "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place/domain}}"
+          - low: 86
+            high: 95
+            result: '[Description] [Place] of [Namesake]'
+            template:
+              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'
+          - low: 96
+            high: 100
+            result: '[Place] of [Namesake]'
+            template:
+              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'
+      description:
+        canonical_name: 'Site Name: Description'
+        name: Description
+        _source:
+          page: 207
+        table:
+          - low: 1
+            high: 2
+            result: Deep
+          - low: 3
+            high: 4
+            result: Tainted
+          - low: 5
+            high: 6
+            result: Grey
+          - low: 7
+            high: 8
+            result: Forgotten
+          - low: 9
+            high: 10
+            result: Flooded
+          - low: 11
+            high: 12
+            result: Forbidden
+          - low: 13
+            high: 14
+            result: Barren
+          - low: 15
+            high: 16
+            result: Lost
+          - low: 17
+            high: 18
+            result: Cursed
+          - low: 19
+            high: 20
+            result: Fell
+          - low: 21
+            high: 22
+            result: Sunken
+          - low: 23
+            high: 24
+            result: Nightmare
+          - low: 25
+            high: 26
+            result: Infernal
+          - low: 27
+            high: 28
+            result: Dark
+          - low: 29
+            high: 30
+            result: Bloodstained
+          - low: 31
+            high: 32
+            result: Haunted
+          - low: 33
+            high: 34
+            result: White
+          - low: 35
+            high: 36
+            result: Shrouded
+          - low: 37
+            high: 38
+            result: Wasted
+          - low: 39
+            high: 40
+            result: Grim
+          - low: 41
+            high: 42
+            result: Endless
+          - low: 43
+            high: 44
+            result: Crumbling
+          - low: 45
+            high: 46
+            result: Undying
+          - low: 47
+            high: 48
+            result: Bloodied
+          - low: 49
+            high: 50
+            result: Forsaken
+          - low: 51
+            high: 52
+            result: Silent
+          - low: 53
+            high: 54
+            result: Blighted
+          - low: 55
+            high: 56
+            result: Iron
+          - low: 57
+            high: 58
+            result: Frozen
+          - low: 59
+            high: 60
+            result: Abyssal
+          - low: 61
+            high: 62
+            result: Crimson
+          - low: 63
+            high: 64
+            result: Silver
+          - low: 65
+            high: 66
+            result: Desecrated
+          - low: 67
+            high: 68
+            result: Ashen
+          - low: 69
+            high: 70
+            result: Elder
+          - low: 71
+            high: 72
+            result: Scorched
+          - low: 73
+            high: 74
+            result: Unknown
+          - low: 75
+            high: 76
+            result: Scarred
+          - low: 77
+            high: 78
+            result: Broken
+          - low: 79
+            high: 80
+            result: Chaotic
+          - low: 81
+            high: 82
+            result: Black
+          - low: 83
+            high: 84
+            result: Hidden
+          - low: 85
+            high: 86
+            result: Sundered
+          - low: 87
+            high: 88
+            result: Shattered
+          - low: 89
+            high: 90
+            result: Dreaded
+          - low: 91
+            high: 92
+            result: Secret
+          - low: 93
+            high: 94
+            result: High
+          - low: 95
+            high: 96
+            result: Sacred
+          - low: 97
+            high: 98
+            result: Fallen
+          - low: 99
+            high: 100
+            result: Ruined
+      detail:
+        canonical_name: 'Site Name: Detail'
+        name: Detail
+        _source:
+          page: 208
+        table:
+          - low: 1
+            high: 2
+            result: Blight
+          - low: 3
+            high: 4
+            result: Strife
+          - low: 5
+            high: 6
+            result: Nightfall
+          - low: 7
+            high: 8
+            result: Fury
+          - low: 9
+            high: 10
+            result: Terror
+          - low: 11
+            high: 12
+            result: Truth
+          - low: 13
+            high: 14
+            result: Spring
+          - low: 15
+            high: 16
+            result: Sanctuary
+          - low: 17
+            high: 18
+            result: Bone
+          - low: 19
+            high: 20
+            result: Specters
+          - low: 21
+            high: 22
+            result: Daybreak
+          - low: 23
+            high: 24
+            result: Doom
+          - low: 25
+            high: 26
+            result: Treachery
+          - low: 27
+            high: 28
+            result: Blood
+          - low: 29
+            high: 30
+            result: War
+          - low: 31
+            high: 32
+            result: Torment
+          - low: 33
+            high: 34
+            result: Iron
+          - low: 35
+            high: 36
+            result: Silence
+          - low: 37
+            high: 38
+            result: Mist
+          - low: 39
+            high: 40
+            result: Isolation
+          - low: 41
+            high: 42
+            result: Runes
+          - low: 43
+            high: 44
+            result: Rot
+          - low: 45
+            high: 46
+            result: Corruption
+          - low: 47
+            high: 48
+            result: Prophecy
+          - low: 49
+            high: 50
+            result: Fate
+          - low: 51
+            high: 52
+            result: Twilight
+          - low: 53
+            high: 54
+            result: Power
+          - low: 55
+            high: 56
+            result: Darkness
+          - low: 57
+            high: 58
+            result: Gloom
+          - low: 59
+            high: 60
+            result: Storms
+          - low: 61
+            high: 62
+            result: Hope
+          - low: 63
+            high: 64
+            result: Lament
+          - low: 65
+            high: 66
+            result: Frost
+          - low: 67
+            high: 68
+            result: Souls
+          - low: 69
+            high: 70
+            result: Winter
+          - low: 71
+            high: 72
+            result: Sadness
+          - low: 73
+            high: 74
+            result: Desolation
+          - low: 75
+            high: 76
+            result: Bane
+          - low: 77
+            high: 78
+            result: Lies
+          - low: 79
+            high: 80
+            result: Ash
+          - low: 81
+            high: 82
+            result: Banishment
+          - low: 83
+            high: 84
+            result: Shadow
+          - low: 85
+            high: 86
+            result: Madness
+          - low: 87
+            high: 88
+            result: Stone
+          - low: 89
+            high: 90
+            result: Secrets
+          - low: 91
+            high: 92
+            result: Despair
+          - low: 93
+            high: 94
+            result: Blades
+          - low: 95
+            high: 96
+            result: Dread
+          - low: 97
+            high: 98
+            result: Light
+          - low: 99
+            high: 100
+            result: Wrath
+      namesake:
+        canonical_name: 'Site Name: Namesake'
+        name: Namesake
+        description: |-
+          You may also use your preferred name randomizer to generate a Namesake for your site.
+
+          If you want to add details for the Namesake, use the [Character oracles](classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
+        _source:
+          page: 209
+        table:
+          - low: 1
+            high: 2
+            result: Breckon
+          - low: 3
+            high: 4
+            result: Issara
+          - low: 5
+            high: 6
+            result: Milenna
+          - low: 7
+            high: 8
+            result: Thorval
+          - low: 9
+            high: 10
+            result: Khulan
+          - low: 11
+            high: 12
+            result: Aurvang
+          - low: 13
+            high: 14
+            result: Kalida
+          - low: 15
+            high: 16
+            result: Keeara
+          - low: 17
+            high: 18
+            result: Andor
+          - low: 19
+            high: 20
+            result: Zakaria
+          - low: 21
+            high: 22
+            result: Willa
+          - low: 23
+            high: 24
+            result: Etana
+          - low: 25
+            high: 26
+            result: Valgard
+          - low: 27
+            high: 28
+            result: Kenrick
+          - low: 29
+            high: 30
+            result: Wyland
+          - low: 31
+            high: 32
+            result: Sidura
+          - low: 33
+            high: 34
+            result: Svala
+          - low: 35
+            high: 36
+            result: Kajir
+          - low: 37
+            high: 38
+            result: Saiven
+          - low: 39
+            high: 40
+            result: Callwen
+          - low: 41
+            high: 42
+            result: Zhan
+          - low: 43
+            high: 44
+            result: Solana
+          - low: 45
+            high: 46
+            result: Ildar
+          - low: 47
+            high: 48
+            result: Keelan
+          - low: 49
+            high: 50
+            result: Thrain
+          - low: 51
+            high: 52
+            result: Kynan
+          - low: 53
+            high: 54
+            result: Jadina
+          - low: 55
+            high: 56
+            result: Radek
+          - low: 57
+            high: 58
+            result: Wulan
+          - low: 59
+            high: 60
+            result: Garion
+          - low: 61
+            high: 62
+            result: Eysa
+          - low: 63
+            high: 64
+            result: Kolor
+          - low: 65
+            high: 66
+            result: Katarra
+          - low: 67
+            high: 68
+            result: Dain
+          - low: 69
+            high: 70
+            result: Farina
+          - low: 71
+            high: 72
+            result: Yala
+          - low: 73
+            high: 74
+            result: Kodroth
+          - low: 75
+            high: 76
+            result: Morien
+          - low: 77
+            high: 78
+            result: Akida
+          - low: 79
+            high: 80
+            result: Haldorr
+          - low: 81
+            high: 82
+            result: Nyrad
+          - low: 83
+            high: 84
+            result: Edda
+          - low: 85
+            high: 86
+            result: Jorund
+          - low: 87
+            high: 88
+            result: Morraine
+          - low: 89
+            high: 90
+            result: Lindar
+          - low: 91
+            high: 92
+            result: Sithra
+          - low: 93
+            high: 94
+            result: Torgan
+          - low: 95
+            high: 96
+            result: Arnorr
+          - low: 97
+            high: 98
+            result: Thyri
+          - low: 99
+            high: 100
+            result: Erisia
+      place:
+        name: Place
+        canonical_name: 'Site Name: Place'
+        _source:
+          page: 210
+        table:
+          - low: 1
+            high: 6
+            result: '[Barrow](delve/site_domains/barrow)'
+            rolls:
+              - oracle: &barrowTableID 'delve/oracles/site_name/place/barrow'
+            embed_table: *barrowTableID
+          - low: 7
+            high: 18
+            result: '[Cavern](delve/site_domains/cavern)'
+            rolls:
+              - oracle: &cavernTableID 'delve/oracles/site_name/place/cavern'
+            embed_table: *cavernTableID
+          - low: 19
+            high: 28
+            result: '[Frozen Cavern](delve/site_domains/frozen_cavern)'
+            rolls:
+              - oracle: &frozen_cavernTableID 'delve/oracles/site_name/place/frozen_cavern'
+            embed_table: *frozen_cavernTableID
+          - low: 29
+            high: 32
+            result: '[Icereach](delve/site_domains/icereach)'
+            rolls:
+              - oracle: &icereachTableID 'delve/oracles/site_name/place/icereach'
+            embed_table: *icereachTableID
+          - low: 33
+            high: 38
+            result: '[Mine](delve/site_domains/mine)'
+            rolls:
+              - oracle: &mineTableID 'delve/oracles/site_name/place/mine'
+            embed_table: *mineTableID
+          - low: 39
+            high: 48
+            result: '[Pass](delve/site_domains/pass)'
+            rolls:
+              - oracle: &passTableID 'delve/oracles/site_name/place/pass'
+            embed_table: *passTableID
+          - low: 49
+            high: 58
+            result: '[Ruin](delve/site_domains/ruin)'
+            rolls:
+              - oracle: &ruinTableID 'delve/oracles/site_name/place/ruin'
+            embed_table: *ruinTableID
+          - low: 59
+            high: 68
+            result: '[Sea Cave](delve/site_domains/sea_cave)'
+            rolls:
+              - oracle: &sea_caveTableID 'delve/oracles/site_name/place/sea_cave'
+            embed_table: *sea_caveTableID
+          - low: 69
+            high: 78
+            result: '[Shadowfen](delve/site_domains/shadowfen)'
+            rolls:
+              - oracle: &shadowfenTableID 'delve/oracles/site_name/place/shadowfen'
+            embed_table: *shadowfenTableID
+          - low: 79
+            high: 83
+            result: '[Stronghold](delve/site_domains/stronghold)'
+            rolls:
+              - oracle: &strongholdTableID 'delve/oracles/site_name/place/stronghold'
+            embed_table: *strongholdTableID
+          - low: 84
+            high: 95
+            result: '[Tanglewood](delve/site_domains/tanglewood)'
+            rolls:
+              - oracle: &tanglewoodTableID 'delve/oracles/site_name/place/tanglewood'
+            embed_table: *tanglewoodTableID
+          - low: 96
+            high: 100
+            result: '[Underkeep](delve/site_domains/underkeep)'
+            rolls:
+              - oracle: &underkeepTableID 'delve/oracles/site_name/place/underkeep'
+            embed_table: *underkeepTableID
+    collections:
+      place:
+        canonical_name: 'Site Name: Place'
+        name: Place
+        _source:
+          page: 210
+        contents:
+          barrow:
+            name: Barrow
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/1-6
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 16
+                result: Sepulcher
+              - low: 50
+                high: 66
+                result: Mound
+              - low: 17
+                high: 32
+                result: Grave
+              - low: 67
+                high: 83
+                result: Tomb
+              - low: 33
+                high: 49
+                result: Crypt
+              - low: 84
+                high: 100
+                result: Barrow
+          cavern:
+            name: Cavern
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/7-18
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 10
+                result: Abyss
+              - low: 11
+                high: 20
+                result: Caverns
+              - low: 21
+                high: 30
+                result: Caves
+              - low: 31
+                high: 40
+                result: Chasm
+              - low: 41
+                high: 50
+                result: Depths
+              - low: 51
+                high: 60
+                result: Hollow
+              - low: 61
+                high: 70
+                result: Lair
+              - low: 71
+                high: 80
+                result: Rift
+              - low: 81
+                high: 90
+                result: Tunnels
+              - low: 91
+                high: 100
+                result: Warren
+          frozen_cavern:
+            name: Frozen Cavern
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/19-28
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 10
+                result: Abyss
+              - low: 11
+                high: 20
+                result: Caverns
+              - low: 21
+                high: 30
+                result: Caves
+              - low: 31
+                high: 40
+                result: Chasm
+              - low: 41
+                high: 50
+                result: Depths
+              - low: 51
+                high: 60
+                result: Hollow
+              - low: 61
+                high: 70
+                result: Lair
+              - low: 71
+                high: 80
+                result: Rift
+              - low: 81
+                high: 90
+                result: Tunnels
+              - low: 91
+                high: 100
+                result: Warren
+          icereach:
+            name: Icereach
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/29-32
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 16
+                result: Icemark
+              - low: 17
+                high: 32
+                result: Wintertide
+              - low: 33
+                high: 49
+                result: Reach
+              - low: 50
+                high: 66
+                result: Waste
+              - low: 67
+                high: 83
+                result: Expanse
+              - low: 84
+                high: 100
+                result: Barrens
+          mine:
+            name: Mine
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/33-38
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 16
+                result: Lode
+              - low: 17
+                high: 32
+                result: Dig
+              - low: 33
+                high: 49
+                result: Forge
+              - low: 50
+                high: 66
+                result: Mine
+              - low: 67
+                high: 83
+                result: Tunnels
+              - low: 84
+                high: 100
+                result: Cut
+          pass:
+            name: Pass
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/39-48
+            _source:
+              page: 210
+            table:
+              - low: 1
+                high: 10
+                result: Cliffs
+              - low: 11
+                high: 20
+                result: Crag
+              - low: 21
+                high: 30
+                result: Cut
+              - low: 31
+                high: 40
+                result: Gap
+              - low: 41
+                high: 50
+                result: Gorge
+              - low: 51
+                high: 60
+                result: Heights
+              - low: 61
+                high: 70
+                result: Highlands
+              - low: 71
+                high: 80
+                result: Pass
+              - low: 81
+                high: 90
+                result: Reach
+              - low: 91
+                high: 100
+                result: Ridge
+          ruin:
+            name: Ruin
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/49-58
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 10
+                result: Citadel
+              - low: 11
+                high: 20
+                result: Enclave
+              - low: 21
+                high: 30
+                result: Fortress
+              - low: 31
+                high: 40
+                result: Hall
+              - low: 41
+                high: 50
+                result: Keep
+              - low: 51
+                high: 60
+                result: Sanctuary
+              - low: 61
+                high: 70
+                result: Sanctum
+              - low: 71
+                high: 80
+                result: Spire
+              - low: 81
+                high: 90
+                result: Temple
+              - low: 91
+                high: 100
+                result: Tower
+          sea_cave:
+            name: Sea Cave
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/59-68
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 16
+                result: Caves
+              - low: 17
+                high: 32
+                result: Channel
+              - low: 33
+                high: 49
+                result: Cove
+              - low: 50
+                high: 66
+                result: Hollow
+              - low: 67
+                high: 83
+                result: Pools
+              - low: 84
+                high: 100
+                result: Gouge
+          shadowfen:
+            name: Shadowfen
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/69-78
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 10
+                result: Bog
+              - low: 11
+                high: 20
+                result: Fen
+              - low: 21
+                high: 30
+                result: Lowland
+              - low: 31
+                high: 40
+                result: Marsh
+              - low: 41
+                high: 50
+                result: Mire
+              - low: 51
+                high: 60
+                result: Morass
+              - low: 61
+                high: 70
+                result: Quagmire
+              - low: 71
+                high: 80
+                result: Floodlands
+              - low: 81
+                high: 90
+                result: Slough
+              - low: 91
+                high: 100
+                result: Wetlands
+          stronghold:
+            name: Stronghold
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/79-83
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 10
+                result: Bastion
+              - low: 11
+                high: 20
+                result: Citadel
+              - low: 21
+                high: 30
+                result: Fortress
+              - low: 31
+                high: 40
+                result: Garrison
+              - low: 41
+                high: 50
+                result: Haven
+              - low: 51
+                high: 60
+                result: Keep
+              - low: 61
+                high: 70
+                result: Outpost
+              - low: 71
+                high: 80
+                result: Refuge
+              - low: 81
+                high: 90
+                result: Sanctuary
+              - low: 91
+                high: 100
+                result: Watch
+          tanglewood:
+            name: Tanglewood
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/84-95
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 11
+                result: Weald
+              - low: 12
+                high: 23
+                result: Tangle
+              - low: 24
+                high: 35
+                result: Bramble
+              - low: 36
+                high: 48
+                result: Briar
+              - low: 49
+                high: 61
+                result: Thicket
+              - low: 62
+                high: 74
+                result: Forest
+              - low: 75
+                high: 87
+                result: Wilds
+              - low: 88
+                high: 100
+                result: Wood
+          underkeep:
+            name: Underkeep
+            rendering:
+              style: embed_in_row
+              # embed_in: delve/oracles/site_name/place/domain/96-100
+            _source:
+              page: 211
+            table:
+              - low: 1
+                high: 10
+                result: Catacomb
+              - low: 11
+                high: 20
+                result: Chambers
+              - low: 21
+                high: 30
+                result: Den
+              - low: 31
+                high: 40
+                result: Hall
+              - low: 41
+                high: 50
+                result: Labyrinth
+              - low: 51
+                high: 60
+                result: Maze
+              - low: 61
+                high: 70
+                result: Pit
+              - low: 71
+                high: 80
+                result: Sanctum
+              - low: 81
+                high: 90
+                result: Underkeep
+              - low: 91
+                high: 100
+                result: Vault

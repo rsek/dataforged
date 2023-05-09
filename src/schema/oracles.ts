@@ -61,7 +61,7 @@ export const OracleTableRow = Type.Composite(
 		Type.Object({
 			id: Type.Ref(ID.OracleTableRowID),
 			result: Type.Ref(Localize.MarkdownString),
-			icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+			icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
@@ -120,7 +120,7 @@ export type OracleCollectionColumn = Static<typeof OracleCollectionColumn>
 
 export const OracleTableRendering = Type.Object(
 	{
-		icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		style: Type.Optional(Type.Ref(OracleTableStyle)),
 		color: Type.Optional(Type.Ref(Metadata.CSSColor))
 	},
@@ -177,7 +177,7 @@ export const OracleCollection = Type.Composite(
 		),
 		Type.Object({
 			rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
-			images: Type.Optional(Type.Array(Type.Ref(Metadata.WebpImageURL))),
+			images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
 			sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
 			// templates: Type.Optional(Type.Array(OracleRollTemplate))
 		})

@@ -1,0 +1,533 @@
+id: classic
+ruleset: classic
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2019-06-05
+oracles:
+  character:
+    name: Character
+    _source:
+      page: 182
+    contents:
+      role:
+        name: Character Role
+        canonical_name: 'Oracle 10: Character Role'
+        description: Use this oracle to define the background for a character, or to generate a random encounter.
+        _source:
+          page: 182
+        table:
+          - low: 1
+            high: 2
+            result: Criminal
+          - low: 3
+            high: 4
+            result: Healer
+          - low: 5
+            high: 6
+            result: Bandit
+          - low: 7
+            high: 9
+            result: Guide
+          - low: 10
+            high: 12
+            result: Performer
+          - low: 13
+            high: 15
+            result: Miner
+          - low: 16
+            high: 18
+            result: Mercenary
+          - low: 19
+            high: 21
+            result: Outcast
+          - low: 22
+            high: 24
+            result: Vagrant
+          - low: 25
+            high: 27
+            result: Forester
+          - low: 28
+            high: 30
+            result: Traveler
+          - low: 31
+            high: 33
+            result: Mystic
+          - low: 34
+            high: 36
+            result: Priest
+          - low: 37
+            high: 39
+            result: Sailor
+          - low: 40
+            high: 42
+            result: Pilgrim
+          - low: 43
+            high: 45
+            result: Thief
+          - low: 46
+            high: 48
+            result: Adventurer
+          - low: 49
+            high: 51
+            result: Forager
+          - low: 52
+            high: 54
+            result: Leader
+          - low: 55
+            high: 58
+            result: Guard
+          - low: 59
+            high: 62
+            result: Artisan
+          - low: 63
+            high: 66
+            result: Scout
+          - low: 67
+            high: 70
+            result: Herder
+          - low: 71
+            high: 74
+            result: Fisher
+          - low: 75
+            high: 79
+            result: Warrior
+          - low: 80
+            high: 84
+            result: Hunter
+          - low: 85
+            high: 89
+            result: Raider
+          - low: 90
+            high: 94
+            result: Trader
+          - low: 95
+            high: 99
+            result: Farmer
+          - low: 100
+            high: 100
+            result: Unusual role
+            suggestions:
+              oracles:
+                - classic/oracles/action_and_theme/action
+                - classic/oracles/action_and_theme/theme
+      goal:
+        name: Character Goal
+        canonical_name: 'Oracle 11: Character Goal'
+        description: Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.
+        _source:
+          page: 182
+        table:
+          - low: 1
+            high: 3
+            result: Obtain an object
+          - low: 4
+            high: 6
+            result: Make an agreement
+          - low: 7
+            high: 9
+            result: Build a relationship
+          - low: 10
+            high: 12
+            result: Undermine a relationship
+          - low: 13
+            high: 15
+            result: Seek a truth
+          - low: 16
+            high: 18
+            result: Pay a debt
+          - low: 19
+            high: 21
+            result: Refute a falsehood
+          - low: 22
+            high: 24
+            result: Harm a rival
+          - low: 25
+            high: 27
+            result: Cure an ill
+          - low: 28
+            high: 30
+            result: Find a person
+          - low: 31
+            high: 33
+            result: Find a home
+          - low: 34
+            high: 36
+            result: Seize power
+          - low: 37
+            high: 39
+            result: Restore a relationship
+          - low: 40
+            high: 42
+            result: Create an item
+          - low: 43
+            high: 45
+            result: Travel to a place
+          - low: 46
+            high: 48
+            result: Secure provisions
+          - low: 49
+            high: 51
+            result: Rebel against power
+          - low: 52
+            high: 54
+            result: Collect a debt
+          - low: 55
+            high: 57
+            result: Protect a secret
+          - low: 58
+            high: 60
+            result: Spread faith
+          - low: 61
+            high: 63
+            result: Enrich themselves
+          - low: 64
+            high: 66
+            result: Protect a person
+          - low: 67
+            high: 69
+            result: Protect the status quo
+          - low: 70
+            high: 72
+            result: Advance status
+          - low: 73
+            high: 75
+            result: Defend a place
+          - low: 76
+            high: 78
+            result: Avenge a wrong
+          - low: 79
+            high: 81
+            result: Fulfill a duty
+          - low: 82
+            high: 84
+            result: Gain knowledge
+          - low: 85
+            high: 87
+            result: Prove worthiness
+          - low: 88
+            high: 90
+            result: Find redemption
+          - low: 91
+            high: 92
+            result: Escape from something
+          - low: 93
+            high: 95
+            result: Resolve a dispute
+          - low: 96
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+      descriptor:
+        name: Character Descriptor
+        canonical_name: 'Oracle 12: Character Descriptor'
+        description: Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.
+        # usage:
+        #   max_rolls: 3 # a bit arbitrary, but reasonable
+        _source:
+          page: 183
+        table:
+          - low: 1
+            high: 1
+            result: Stoic
+          - low: 2
+            high: 2
+            result: Attractive
+          - low: 3
+            high: 3
+            result: Passive
+          - low: 4
+            high: 4
+            result: Aloof
+          - low: 5
+            high: 5
+            result: Affectionate
+          - low: 6
+            high: 6
+            result: Generous
+          - low: 7
+            high: 7
+            result: Smug
+          - low: 8
+            high: 8
+            result: Armed
+          - low: 9
+            high: 9
+            result: Clever
+          - low: 10
+            high: 10
+            result: Brave
+          - low: 11
+            high: 11
+            result: Ugly
+          - low: 12
+            high: 12
+            result: Sociable
+          - low: 13
+            high: 13
+            result: Doomed
+          - low: 14
+            high: 14
+            result: Connected
+          - low: 15
+            high: 15
+            result: Bold
+          - low: 16
+            high: 16
+            result: Jealous
+          - low: 17
+            high: 17
+            result: Angry
+          - low: 18
+            high: 18
+            result: Active
+          - low: 19
+            high: 19
+            result: Suspicious
+          - low: 20
+            high: 20
+            result: Hostile
+          - low: 21
+            high: 21
+            result: Hardhearted
+          - low: 22
+            high: 22
+            result: Successful
+          - low: 23
+            high: 23
+            result: Talented
+          - low: 24
+            high: 24
+            result: Experienced
+          - low: 25
+            high: 25
+            result: Deceitful
+          - low: 26
+            high: 26
+            result: Ambitious
+          - low: 27
+            high: 27
+            result: Aggressive
+          - low: 28
+            high: 28
+            result: Conceited
+          - low: 29
+            high: 29
+            result: Proud
+          - low: 30
+            high: 30
+            result: Stern
+          - low: 31
+            high: 31
+            result: Dependent
+          - low: 32
+            high: 32
+            result: Wary
+          - low: 33
+            high: 33
+            result: Strong
+          - low: 34
+            high: 34
+            result: Insightful
+          - low: 35
+            high: 35
+            result: Dangerous
+          - low: 36
+            high: 36
+            result: Quirky
+          - low: 37
+            high: 37
+            result: Cheery
+          - low: 38
+            high: 38
+            result: Disfigured
+          - low: 39
+            high: 39
+            result: Intolerant
+          - low: 40
+            high: 40
+            result: Skilled
+          - low: 41
+            high: 41
+            result: Stingy
+          - low: 42
+            high: 42
+            result: Timid
+          - low: 43
+            high: 43
+            result: Insensitive
+          - low: 44
+            high: 44
+            result: Wild
+          - low: 45
+            high: 45
+            result: Bitter
+          - low: 46
+            high: 46
+            result: Cunning
+          - low: 47
+            high: 47
+            result: Remorseful
+          - low: 48
+            high: 48
+            result: Kind
+          - low: 49
+            high: 49
+            result: Charming
+          - low: 50
+            high: 50
+            result: Oblivious
+          - low: 51
+            high: 51
+            result: Critical
+          - low: 52
+            high: 52
+            result: Cautious
+          - low: 53
+            high: 53
+            result: Resourceful
+          - low: 54
+            high: 54
+            result: Weary
+          - low: 55
+            high: 55
+            result: Wounded
+          - low: 56
+            high: 56
+            result: Anxious
+          - low: 57
+            high: 57
+            result: Powerful
+          - low: 58
+            high: 58
+            result: Athletic
+          - low: 59
+            high: 59
+            result: Driven
+          - low: 60
+            high: 60
+            result: Cruel
+          - low: 61
+            high: 61
+            result: Quiet
+          - low: 62
+            high: 62
+            result: Honest
+          - low: 63
+            high: 63
+            result: Infamous
+          - low: 64
+            high: 64
+            result: Dying
+          - low: 65
+            high: 65
+            result: Reclusive
+          - low: 66
+            high: 66
+            result: Artistic
+          - low: 67
+            high: 67
+            result: Disabled
+          - low: 68
+            high: 68
+            result: Confused
+          - low: 69
+            high: 69
+            result: Manipulative
+          - low: 70
+            high: 70
+            result: Relaxed
+          - low: 71
+            high: 71
+            result: Stealthy
+          - low: 72
+            high: 72
+            result: Confident
+          - low: 73
+            high: 73
+            result: Weak
+          - low: 74
+            high: 74
+            result: Friendly
+          - low: 75
+            high: 75
+            result: Wise
+          - low: 76
+            high: 76
+            result: Influential
+          - low: 77
+            high: 77
+            result: Young
+          - low: 78
+            high: 78
+            result: Adventurous
+          - low: 79
+            high: 79
+            result: Oppressed
+          - low: 80
+            high: 80
+            result: Vengeful
+          - low: 81
+            high: 81
+            result: Cooperative
+          - low: 82
+            high: 82
+            result: Armored
+          - low: 83
+            high: 83
+            result: Apathetic
+          - low: 84
+            high: 84
+            result: Determined
+          - low: 85
+            high: 85
+            result: Loyal
+          - low: 86
+            high: 86
+            result: Sick
+          - low: 87
+            high: 87
+            result: Religious
+          - low: 88
+            high: 88
+            result: Selfish
+          - low: 89
+            high: 89
+            result: Old
+          - low: 90
+            high: 90
+            result: Fervent
+          - low: 91
+            high: 91
+            result: Violent
+          - low: 92
+            high: 92
+            result: Agreeable
+          - low: 93
+            high: 93
+            result: Hot-tempered
+          - low: 94
+            high: 94
+            result: Stubborn
+          - low: 95
+            high: 95
+            result: Incompetent
+          - low: 96
+            high: 96
+            result: Greedy
+          - low: 97
+            high: 97
+            result: Cowardly
+          - low: 98
+            high: 98
+            result: Obsessed
+          - low: 99
+            high: 99
+            result: Careless
+          - low: 100
+            high: 100
+            result: Ironsworn

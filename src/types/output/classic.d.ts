@@ -29,6 +29,11 @@ export type CSSColor = string;
  * Localized text, formatted in Markdown.
  */
 export type MarkdownString = string;
+/**
+ * Normally, rows will end with two numbers separated by a dash, representing their dice range.
+ *
+ * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
+ */
 export type OracleTableRowID = string;
 /**
  * A relative URL pointing to a vector image in the SVG format.
@@ -741,7 +746,7 @@ export interface Rarity {
   suggestions?: Suggestions;
   id: RarityID;
   asset: AssetID1;
-  icon: SVGImageURL;
+  icon?: SVGImageURL;
   /**
    * From Ironsworn: Delve, p. 174:
    *
@@ -859,7 +864,7 @@ export interface DelveSiteTheme {
   icon?: SVGImageURL;
   id: DelveSiteThemeID;
   card_type: "theme";
-  features: SiteThemeFeatureRow[] &
+  features: DelveSiteThemeFeatureRow[] &
     [
       {
         low: 1;
@@ -882,7 +887,7 @@ export interface DelveSiteTheme {
         high: 20;
       }
     ];
-  dangers: SiteThemeDangerRow[] &
+  dangers: DelveSiteThemeDangerRow[] &
     [
       {
         low: 1;
@@ -934,7 +939,7 @@ export interface DelveSiteTheme {
       }
     ];
 }
-export interface SiteThemeFeatureRow {
+export interface DelveSiteThemeFeatureRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -947,7 +952,7 @@ export interface SiteThemeFeatureRow {
   template?: OracleRollTemplate;
   id: ThemeFeatureRowID;
 }
-export interface SiteThemeDangerRow {
+export interface DelveSiteThemeDangerRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -974,7 +979,7 @@ export interface DelveSiteDomain {
   icon?: SVGImageURL;
   id: DelveSiteDomainID;
   card_type: "domain";
-  features: SiteDomainFeatureRow[] &
+  features: DelveSiteDomainFeatureRow[] &
     [
       {
         low: 21;
@@ -1037,7 +1042,7 @@ export interface DelveSiteDomain {
         };
       }
     ];
-  dangers: SiteDomainDangerRow[] &
+  dangers: DelveSiteDomainDangerRow[] &
     [
       {
         low: 31;
@@ -1061,7 +1066,7 @@ export interface DelveSiteDomain {
       }
     ];
 }
-export interface SiteDomainFeatureRow {
+export interface DelveSiteDomainFeatureRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -1074,7 +1079,7 @@ export interface SiteDomainFeatureRow {
   template?: OracleRollTemplate;
   id: DomainFeatureRowID;
 }
-export interface SiteDomainDangerRow {
+export interface DelveSiteDomainDangerRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;

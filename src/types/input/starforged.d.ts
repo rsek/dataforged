@@ -47,6 +47,11 @@ export type TemplateString1 = string;
  * A string template that may be used in place of OracleTableRow#description.
  */
 export type TemplateString2 = string;
+/**
+ * Normally, rows will end with two numbers separated by a dash, representing their dice range.
+ *
+ * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
+ */
 export type OracleTableRowID = string;
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
 export type PageNumber1 = number;

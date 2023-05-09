@@ -1,5 +1,5 @@
 import { type TObject, TypeGuard, type TSchema, Type } from '@sinclair/typebox'
-import _ from 'lodash'
+import _, { cloneDeep } from 'lodash'
 import { Assets, Enum, ID, Localize, Moves, Oracles } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
@@ -66,7 +66,7 @@ function getDataEntryDefinitions(
 		}
 	}
 
-	return newDefs
+	return cloneDeep(newDefs)
 }
 
 export const Dataforged = SourcebookStarforged({
@@ -92,7 +92,7 @@ export const DataforgedInput = SourcebookStarforged({
 	title: `Dataforged v${DATAFORGED_VERSION} (data entry)`,
 	description:
 		'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
-	$defs: getDataEntryDefinitions(Dataforged.$defs)
+	$defs: getDataEntryDefinitions(cloneDeep(Dataforged.$defs))
 })
 
 export const Datasworn = SourcebookClassic({
@@ -118,5 +118,5 @@ export const DataswornInput = SourcebookClassic({
 	title: `Datasworn v${DATASWORN_VERSION} (data entry)`,
 	description:
 		'Data entry schema for Datasworn, which provides templates, fallbacks/default values for many undefined keys, and other conveniences like source inheritance. It must be processed into the standard Datasworn format.',
-	$defs: getDataEntryDefinitions(Datasworn.$defs)
+	$defs: getDataEntryDefinitions(cloneDeep(Datasworn.$defs))
 })

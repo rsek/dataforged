@@ -107,7 +107,7 @@ export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
 
 export const CheckboxField = InputField(
 	'checkbox',
-	Type.Optional(Type.Boolean({ default: false })),
+	Type.Boolean({ default: false }),
 	{},
 	{ $id: '#/$defs/CheckboxField' }
 )

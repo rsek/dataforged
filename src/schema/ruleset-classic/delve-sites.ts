@@ -44,7 +44,7 @@ const StaticDenizenRowStub = (
 export const DelveSite = Abstract.SourcedNode(
 	{
 		id: Type.Ref(ID.DelveSiteID),
-		icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		rank: Type.Ref(Enum.ChallengeRank),
 		theme: Type.Ref(ID.DelveSiteThemeID),
 		domain: Type.Ref(ID.DelveSiteDomainID),
@@ -89,26 +89,34 @@ const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
 		{
 			summary: Type.Ref(Localize.MarkdownString),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			icon: Type.Optional(Type.Ref(Metadata.SvgImageURL)),
+			icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 			...properties
 		},
 		options
 	)
 
+export const DelveSiteThemeFeatureRow = Type.Composite(
+	[
+		Type.Omit(OracleTableRow, ['id']),
+		Type.Object({ id: Type.Ref(ID.ThemeFeatureRowID) })
+	],
+	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
+)
+export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
+export const DelveSiteThemeDangerRow = Type.Composite(
+	[
+		Type.Omit(OracleTableRow, ['id']),
+		Type.Object({ id: Type.Ref(ID.ThemeDangerRowID) })
+	],
+	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
+)
+export type DelveSiteThemeDangerRow = Static<typeof DelveSiteThemeDangerRow>
 export const DelveSiteTheme = DelveSiteCard(
 	{
 		id: Type.Ref(ID.DelveSiteThemeID),
 		card_type: Type.Literal('theme'),
 		features: Type.Intersect([
-			Type.Array(
-				Type.Composite(
-					[
-						Type.Omit(OracleTableRow, ['id']),
-						Type.Object({ id: Type.Ref(ID.ThemeFeatureRowID) })
-					],
-					{ title: 'Site theme feature row' }
-				)
-			),
+			Type.Array(Type.Ref(DelveSiteThemeFeatureRow)),
 			Type.Tuple([
 				Abstract.StaticRowStub({ low: 1, high: 4 }),
 				Abstract.StaticRowStub({ low: 5, high: 8 }),
@@ -118,15 +126,7 @@ export const DelveSiteTheme = DelveSiteCard(
 			])
 		]),
 		dangers: Type.Intersect([
-			Type.Array(
-				Type.Composite(
-					[
-						Type.Omit(OracleTableRow, ['id']),
-						Type.Object({ id: Type.Ref(ID.ThemeDangerRowID) })
-					],
-					{ title: 'Site theme danger row' }
-				)
-			),
+			Type.Array(Type.Ref(DelveSiteThemeDangerRow)),
 			Type.Tuple([
 				Abstract.StaticRowStub({ low: 1, high: 5 }),
 				Abstract.StaticRowStub({ low: 6, high: 10 }),
@@ -147,20 +147,28 @@ export const DelveSiteTheme = DelveSiteCard(
 )
 export type DelveSiteTheme = Static<typeof DelveSiteTheme>
 
+export const DelveSiteDomainFeatureRow = Type.Composite(
+	[
+		Type.Omit(OracleTableRow, ['id']),
+		Type.Object({ id: Type.Ref(ID.DomainFeatureRowID) })
+	],
+	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
+)
+export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
+export const DelveSiteDomainDangerRow = Type.Composite(
+	[
+		Type.Omit(OracleTableRow, ['id']),
+		Type.Object({ id: Type.Ref(ID.DomainDangerRowID) })
+	],
+	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
+)
+export type DelveSiteDomainDangerRow = Static<typeof DelveSiteDomainDangerRow>
 export const DelveSiteDomain = DelveSiteCard(
 	{
 		id: Type.Ref(ID.DelveSiteDomainID),
 		card_type: Type.Literal('domain'),
 		features: Type.Intersect([
-			Type.Array(
-				Type.Composite(
-					[
-						Type.Omit(OracleTableRow, ['id']),
-						Type.Object({ id: Type.Ref(ID.DomainFeatureRowID) })
-					],
-					{ title: 'Site domain feature row' }
-				)
-			),
+			Type.Array(Type.Ref(DelveSiteDomainFeatureRow)),
 			Type.Tuple([
 				Abstract.StaticRowStub({ low: 21, high: 43 }),
 				Abstract.StaticRowStub({ low: 44, high: 56 }),
@@ -206,15 +214,7 @@ export const DelveSiteDomain = DelveSiteCard(
 			])
 		]),
 		dangers: Type.Intersect([
-			Type.Array(
-				Type.Composite(
-					[
-						Type.Omit(OracleTableRow, ['id']),
-						Type.Object({ id: Type.Ref(ID.DomainDangerRowID) })
-					],
-					{ title: 'Site domain danger row' }
-				)
-			),
+			Type.Array(Type.Ref(DelveSiteDomainDangerRow)),
 			Type.Tuple([
 				Abstract.StaticRowStub({ low: 31, high: 33 }),
 				Abstract.StaticRowStub({ low: 34, high: 36 }),

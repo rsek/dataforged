@@ -1,35 +1,34 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 
-import * as StarforgedInput from 'data-in/dataforged/starforged-input.schema.json'
-import * as Starforged from 'data-out/dataforged/starforged.schema.json'
-import * as ClassicInput from 'data-in/datasworn/classic-input.schema.json'
-import * as Classic from 'data-out/datasworn/classic.schema.json'
+import * as StarforgedInput from 'data-in/starforged-input.schema.json'
+import * as Starforged from 'data-out/starforged.schema.json'
+import * as ClassicInput from 'data-in/classic-input.schema.json'
+import * as Classic from 'data-out/classic.schema.json'
 
-import { writeFileSync } from 'fs'
+import fs from 'fs-extra'
 import fastGlob from 'fast-glob'
 import YAML from 'js-yaml'
 import { transform } from 'builders/transformer'
 
 import type * as In from 'types/input'
 
-// logger.info(JSON.stringify(encData, undefined, '\t'))
-import { readFile, writeFile } from 'fs/promises'
 import { SourcebookClassic, SourcebookStarforged } from 'builders/sourcebook'
-import { capitalize, forEach, merge } from 'lodash'
+import { capitalize, forEach, merge, pick, set } from 'lodash'
 import { type Out } from 'types'
 import path from 'path'
-import { type ValueOf } from 'type-fest'
 import { log } from 'scripts/logger'
+import { type Ruleset } from 'schema/ruleset-starforged'
 
-export const YAML_DIR = 'src/data-in'
-export const OUT_DIR = 'src/data-out'
+export const DIR_IN = 'src/data-in'
+export const DIR_OUT = 'src/data-out'
 export const ajv = new Ajv({
 	removeAdditional: true,
-	// useDefaults: true,
-	strictSchema: false,
+	useDefaults: true,
+	strictSchema: 'log',
 	verbose: true,
-	logger: log
+	logger: log,
+	coerceTypes: true
 })
 
 addFormats(ajv)
@@ -52,9 +51,10 @@ type SourcebookOut =
 
 async function buildFile(filePath: string) {
 	log.info(`Building from ${filePath}`)
-	const data = YAML.load(await readFile(filePath, { encoding: 'utf8' }), {
+	const data = YAML.load(await fs.readFile(filePath, { encoding: 'utf8' }), {
 		// ensures that dates are serialized as strings rather than Date objects (which prevents AJV from validating them)
-		schema: YAML.JSON_SCHEMA
+		schema: YAML.JSON_SCHEMA,
+		filename: filePath
 	}) as SourcebookIn
 
 	let transformer
@@ -71,52 +71,73 @@ async function buildFile(filePath: string) {
 	}
 
 	const schemaIn = `${capitalize(data.ruleset)}Input`
-	const schemaOut = capitalize(data.ruleset)
 
 	if (!ajv.validate(schemaIn, data)) {
+		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
 		throw new Error(
 			`YAML data in ${filePath} doesn't match the ${schemaIn} schema`
 		)
 	}
 
-	const result = transform<SourcebookIn, SourcebookOut>(
+	const out = transform<SourcebookIn, SourcebookOut>(
 		data,
 		data.id,
 		data,
 		transformer as any
 	)
 
-	if (!ajv.validate(schemaOut, result)) {
-		writeFileSync(
-			'src/data-out/dataforged/error-out.json',
-			JSON.stringify(result, undefined, '\t')
+	const schemaOut = capitalize(data.ruleset)
+	if (!ajv.validate(schemaOut, out)) {
+		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
+		const errorPath = `src/data-out/${data.ruleset}/error-out.json`
+		fs.writeFile(errorPath, JSON.stringify(out, undefined, '\t'), log.error)
+		throw new Error(
+			`Transformed data doesn't match the ${schemaOut} schema. Dumping invalid JSON to: ${errorPath}`
 		)
-		throw new Error(`Transformed data doesn't match the ${schemaOut} schema`)
 	}
-	return result
+	return out
 }
 
-const sourcebook = new Map<string, ValueOf<SourcebookOut>>()
+async function buildSourcebook(ruleset: Ruleset, id: string) {
+	const sourcebook: Record<string, unknown> = {}
 
-fastGlob(`${YAML_DIR}/dataforged/starforged/**/*.yaml`)
-	.then(async (filePaths) => {
-		log.info(`Found ${filePaths.length} YAML files`)
-		// TODO: by ID
-		for await (const filePath of filePaths) {
-			const data = await buildFile(filePath)
-			log.info(filePath)
-			forEach(data, (v, k) => {
-				if (sourcebook.has(k)) sourcebook.set(k, merge(sourcebook.get(k), v))
-				else sourcebook.set(k, v)
-			})
-		}
-		for await (const [k, v] of sourcebook) {
-			await writeFile(
-				path.join(OUT_DIR, 'dataforged', `${k}.json`),
-				JSON.stringify(v, undefined, '\t')
+	const rootIn = path.join(DIR_IN, ruleset, id)
+	const rootOut = path.join(DIR_OUT, ruleset, id)
+
+	const filePaths = await fastGlob(`${rootIn}/**/*.yaml`)
+
+	// TODO: flush the out dir
+
+	log.info(`Found ${filePaths.length} YAML files in ${rootIn}`)
+
+	for await (const filePath of filePaths) {
+		const data = await buildFile(filePath)
+
+		if (data.ruleset !== ruleset)
+			throw new Error(`Expected ruleset "${ruleset}" but got "${data.ruleset}"`)
+		if (data.id !== id)
+			throw new Error(
+				`Expected sourcebook with ID "${id}" but got "${data.id as string}"`
 			)
-		}
-	})
-	.catch((e) => {
-		log.info(e)
-	})
+
+		merge(sourcebook, data)
+	}
+	const metadataKeys = ['source', 'id', 'ruleset']
+
+	const sourcebookMetadata = set(
+		pick(sourcebook, metadataKeys),
+		'source.page',
+		undefined
+	)
+	// exclude metadata keys
+	for await (const [k, v] of Object.entries(sourcebook)) {
+		if (metadataKeys.includes(k)) continue
+		const dataOut = { ...sourcebookMetadata, [k]: v }
+		const outPath = path.join(rootOut, `${k}.json`)
+		log.info(`Writing data to ${outPath}`)
+		await fs.ensureFile(outPath)
+		await fs.writeFile(outPath, JSON.stringify(dataOut, undefined, '\t'))
+	}
+}
+
+buildSourcebook('starforged', 'starforged').catch((e) => log.info(e))

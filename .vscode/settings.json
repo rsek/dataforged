@@ -27,19 +27,17 @@
 	},
 	"yaml.format.enable": true,
 	"yaml.schemas": {
-		"src/data-in/dataforged/starforged-input.schema.json": [
-			"src/data-in/dataforged/**/*.yaml"
+		"src/data-in/starforged-input.schema.json": [
+			"src/data-in/starforged/**/*.yaml"
 		],
-		"src/data-in/datasworn/classic-input.schema.json": [
-			"src/data-in/datasworn/**/*.yaml"
-		]
+		"src/data-in/classic-input.schema.json": ["src/data-in/classic/**/*.yaml"]
 	},
 	"yaml.completion": true,
 	"yaml.suggest.parentSkeletonSelectedFirst": true,
 	"yaml.style.flowMapping": "forbid",
 	"yaml.style.flowSequence": "forbid",
 	"yaml.disableAdditionalProperties": false,
-	"yaml.disableDefaultProperties": true,
+	"yaml.disableDefaultProperties": false,
 	"yaml.format.singleQuote": true,
 
 	"editor.foldingImportsByDefault": true,
@@ -47,12 +45,12 @@
 	"json.format.enable": false,
 	"json.schemas": [
 		{
-			"fileMatch": ["src/data-out/dataforged/**/*.json"],
-			"url": "./src/data-out/dataforged/starforged.schema.json"
+			"fileMatch": ["./src/data-out/starforged/*/*.json"],
+			"url": "./src/data-out/starforged.schema.json"
 		},
 		{
-			"fileMatch": ["src/data-out/datasworn/**/*.json"],
-			"url": "./src/data-out/datasworn/classic.schema.json"
+			"fileMatch": ["./src/data-out/classic/*/*.json"],
+			"url": "./src/data-out/classic.schema.json"
 		}
 	]
 }

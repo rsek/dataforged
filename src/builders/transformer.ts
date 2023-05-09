@@ -1,4 +1,4 @@
-import { cloneDeep, forEach, mapValues, merge } from 'lodash'
+import { cloneDeep, forEach, mapValues, merge, set } from 'lodash'
 import { type Source } from 'schema'
 import { type Collection } from 'schema/common/abstract'
 import { type SetOptional } from 'type-fest'
@@ -41,6 +41,7 @@ export function sourcedTransformer<
 					'Data has no Source object of its own, and no parent to inherit from'
 				)
 			const result = merge(cloneDeep(parent.source), data._source ?? {})
+			data._source = undefined
 			return result
 		},
 		...partialTransformer
@@ -79,7 +80,9 @@ export function collectionTransformer<
 			if (data.source != null) return data.source as Out.Source
 			if (parent == null)
 				throw new Error(`No inheritable source data for ${key}`)
-			return merge(cloneDeep(parent.source), data._source ?? {})
+			const result = merge(cloneDeep(parent.source), data._source ?? {})
+			data._source = undefined
+			return result
 		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
 			if (parent.id.includes('/collections/')) return `${parent.id}/${key}`
@@ -152,8 +155,10 @@ export function transform<
 		if (!initialKeys.includes(k as any)) {
 			// @ts-expect-error bind and iterate over remaining keys
 			result[k] = transform.bind(result)(data, key, parent)
+			// @ts-expect-error fff
+			result[k] = set(result[k] as any, '_source', undefined)
 		}
 	})
 
-	return result as TOut
+	return set(result, '_source', undefined) as TOut
 }

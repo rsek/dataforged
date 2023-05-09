@@ -1,16 +1,11 @@
 # TODO
 
-## v2 preview
-* [ ] generate some python and c# types with Quicktype
-* [ ] finish move schema
-* [ ] finish asset schema
-
-
 ## v2
-* [ ] investigate using dependentRequired? https://json-schema.org/understanding-json-schema/reference/conditionals.html
-* [ ] investigate JSON typedef for cleaner typing?
-* [ ] game object templates?
-* [ ] oracle attributes?
+* [ ] markdown rendering? (for e.g. tables?)
+* [ ] markdown validation
+  * [ ] hook in id validation
+  * [ ] handle custom syntax
+* [ ] ID validation (*after* generating all the IDs)
 
-## Optional
-* [ ] re-implement some of the meta
+## nice to have
+* [ ] color validation w/ custom format

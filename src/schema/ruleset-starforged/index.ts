@@ -14,8 +14,8 @@ export { ProgressType } from 'schema/ruleset-starforged/progress'
 
 export {
 	Ruleset,
-	SvgImageURL,
-	WebpImageURL,
+	SVGImageURL,
+	WEBPImageURL,
 	CSSColor,
 	Source,
 	SourceStub

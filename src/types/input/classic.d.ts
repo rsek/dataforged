@@ -50,6 +50,11 @@ export type TemplateString1 = string;
  * A string template that may be used in place of OracleTableRow#description.
  */
 export type TemplateString2 = string;
+/**
+ * Normally, rows will end with two numbers separated by a dash, representing their dice range.
+ *
+ * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
+ */
 export type OracleTableRowID = string;
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
 export type PageNumber1 = number;
@@ -762,7 +767,7 @@ export interface Rarity {
   canonical_name?: Label;
   suggestions?: Suggestions;
   asset: AssetID1;
-  icon: SVGImageURL;
+  icon?: SVGImageURL;
   description: MarkdownString;
   source?: Source;
   id?: RarityID;
@@ -880,7 +885,7 @@ export interface DelveSiteTheme {
   description?: MarkdownString;
   icon?: SVGImageURL;
   card_type: "theme";
-  features: SiteThemeFeatureRow[] &
+  features: DelveSiteThemeFeatureRow[] &
     [
       {
         low: 1;
@@ -903,7 +908,7 @@ export interface DelveSiteTheme {
         high: 20;
       }
     ];
-  dangers: SiteThemeDangerRow[] &
+  dangers: DelveSiteThemeDangerRow[] &
     [
       {
         low: 1;
@@ -958,7 +963,7 @@ export interface DelveSiteTheme {
   id?: DelveSiteThemeID;
   _source?: SourceStub;
 }
-export interface SiteThemeFeatureRow {
+export interface DelveSiteThemeFeatureRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -969,9 +974,9 @@ export interface SiteThemeFeatureRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
-  id: ThemeFeatureRowID;
+  id?: ThemeFeatureRowID;
 }
-export interface SiteThemeDangerRow {
+export interface DelveSiteThemeDangerRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -982,7 +987,7 @@ export interface SiteThemeDangerRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
-  id: ThemeDangerRowID;
+  id?: ThemeDangerRowID;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -996,7 +1001,7 @@ export interface DelveSiteDomain {
   description?: MarkdownString;
   icon?: SVGImageURL;
   card_type: "domain";
-  features: SiteDomainFeatureRow[] &
+  features: DelveSiteDomainFeatureRow[] &
     [
       {
         low: 21;
@@ -1059,7 +1064,7 @@ export interface DelveSiteDomain {
         };
       }
     ];
-  dangers: SiteDomainDangerRow[] &
+  dangers: DelveSiteDomainDangerRow[] &
     [
       {
         low: 31;
@@ -1086,7 +1091,7 @@ export interface DelveSiteDomain {
   id?: DelveSiteDomainID;
   _source?: SourceStub;
 }
-export interface SiteDomainFeatureRow {
+export interface DelveSiteDomainFeatureRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -1097,9 +1102,9 @@ export interface SiteDomainFeatureRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
-  id: DomainFeatureRowID;
+  id?: DomainFeatureRowID;
 }
-export interface SiteDomainDangerRow {
+export interface DelveSiteDomainDangerRow {
   low: number | null;
   high: number | null;
   result: MarkdownString;
@@ -1110,7 +1115,7 @@ export interface SiteDomainDangerRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
-  id: DomainDangerRowID;
+  id?: DomainDangerRowID;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition

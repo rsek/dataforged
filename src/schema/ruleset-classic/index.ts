@@ -4,7 +4,11 @@ export {
 	DelveSiteDenizen,
 	DelveSiteDenizenFrequency,
 	DelveSiteDomain,
-	DelveSiteTheme
+	DelveSiteDomainDangerRow,
+	DelveSiteDomainFeatureRow,
+	DelveSiteTheme,
+	DelveSiteThemeDangerRow,
+	DelveSiteThemeFeatureRow
 } from 'schema/ruleset-classic/delve-sites'
 export {
 	EncounterCollectionClassic,
@@ -17,8 +21,8 @@ export { WorldTruth, WorldTruthOption } from 'schema/ruleset-classic/truths'
 
 export {
 	Ruleset,
-	SvgImageURL,
-	WebpImageURL,
+	SVGImageURL,
+	WEBPImageURL,
 	CSSColor,
 	Source,
 	SourceStub

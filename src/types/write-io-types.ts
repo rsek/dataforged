@@ -5,10 +5,10 @@ import { startCase } from 'lodash'
 import path from 'path'
 
 const filePaths = [
-	'src/data-out/datasworn/classic.schema.json',
-	'src/data-out/dataforged/starforged.schema.json',
-	'src/data-in/datasworn/classic-input.schema.json',
-	'src/data-in/dataforged/starforged-input.schema.json'
+	'src/data-out/classic.schema.json',
+	'src/data-out/starforged.schema.json',
+	'src/data-in/classic-input.schema.json',
+	'src/data-in/starforged-input.schema.json'
 ]
 
 filePaths.forEach((filePath) => {

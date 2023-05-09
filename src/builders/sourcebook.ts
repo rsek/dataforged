@@ -57,7 +57,12 @@ export const SourcebookStarforged = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.encounters, (v, k) =>
-			transform(v, k, data, EncounterStarforged)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/encounters` },
+				EncounterStarforged
+			)
 		)
 	},
 	setting_truths: function (
@@ -67,7 +72,12 @@ export const SourcebookStarforged = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.setting_truths, (v, k) =>
-			transform(v, k, data, SettingTruth)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/setting_truths` },
+				SettingTruth
+			)
 		)
 	}
 })
@@ -103,7 +113,14 @@ export const SourcebookClassic = sourcedTransformer<
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.regions, (v, k) => transform(v, k, data, RegionEntry))
+		return mapValues(data.regions, (v, k) =>
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/regions` },
+				RegionEntry
+			)
+		)
 	},
 	rarities: function (
 		this: SourceHaver,
@@ -111,7 +128,14 @@ export const SourcebookClassic = sourcedTransformer<
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.rarities, (v, k) => transform(v, k, data, Rarity))
+		return mapValues(data.rarities, (v, k) =>
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/rarities` },
+				Rarity
+			)
+		)
 	},
 	delve_sites: function (
 		this: SourceHaver,
@@ -120,7 +144,12 @@ export const SourcebookClassic = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.delve_sites, (v, k) =>
-			transform(v, k, data, DelveSite)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/delve_sites` },
+				DelveSite
+			)
 		)
 	},
 	site_themes: function (
@@ -130,7 +159,12 @@ export const SourcebookClassic = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.site_themes, (v, k) =>
-			transform(v, k, data, DelveSiteTheme)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/site_themes` },
+				DelveSiteTheme
+			)
 		)
 	},
 	site_domains: function (
@@ -140,7 +174,12 @@ export const SourcebookClassic = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.site_domains, (v, k) =>
-			transform(v, k, data, DelveSiteDomain)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/site_domains` },
+				DelveSiteDomain
+			)
 		)
 	},
 	world_truths: function (
@@ -150,7 +189,12 @@ export const SourcebookClassic = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.world_truths, (v, k) =>
-			transform(v, k, data, WorldTruth)
+			transform(
+				v,
+				k,
+				{ source: data.source, id: `${data.id as string}/world_truths` },
+				WorldTruth
+			)
 		)
 	}
 })
