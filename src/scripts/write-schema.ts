@@ -5,7 +5,7 @@
 import prettier from 'prettier'
 import _ from 'lodash'
 import { writeFile } from 'fs/promises'
-import { logger } from './logger'
+import { log } from './logger'
 import { schemaOptions } from 'scripts/options'
 import { validator } from 'scripts/validator'
 
@@ -17,7 +17,7 @@ async function getPrettierOptions(filepath: string): Promise<prettier.Options> {
 }
 
 for (const options of schemaOptions) {
-	logger.info(options.messages.start)
+	log.info(options.messages.start)
 	getPrettierOptions(options.path)
 		.then(async (prettierOptions) => {
 			await writeFile(
@@ -28,9 +28,9 @@ for (const options of schemaOptions) {
 				)
 			)
 		})
-		.then(() => logger.info(options.messages.finish))
+		.then(() => log.info(options.messages.finish))
 		.catch(async (e) => {
-			logger.error(e)
+			log.error(e)
 			await writeFile(
 				options.path,
 				JSON.stringify(options.schema, undefined, '\t')

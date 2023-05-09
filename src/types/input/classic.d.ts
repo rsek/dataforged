@@ -166,14 +166,8 @@ export type WorldTruthID = string;
 /**
  * Data entry schema for Datasworn, which provides templates, fallbacks/default values for many undefined keys, and other conveniences like source inheritance. It must be processed into the standard Datasworn format.
  */
-export interface DataswornV200DevDataEntry {
-  [k: string]: SourcebookClassic;
-}
-/**
- * This interface was referenced by `DataswornV200DevDataEntry`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z0-9_]{3,}$".
- */
 export interface SourcebookClassic {
+  id: string;
   ruleset: "classic";
   source: Source;
   oracles?: {
@@ -274,10 +268,10 @@ export interface Suggestions {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
-  site_domains: DelveSiteDomainID[];
-  site_themes: DelveSiteThemeID[];
-  encounters: EncounterClassicID[];
-  regions: RegionEntryID[];
+  site_domains?: DelveSiteDomainID[];
+  site_themes?: DelveSiteThemeID[];
+  encounters?: EncounterClassicID[];
+  regions?: RegionEntryID[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -629,7 +623,7 @@ export interface ClockField {
 export interface CounterField {
   label: Label;
   field_type: "counter";
-  min: number;
+  min: 0;
   max?: number;
   id?: string;
   value?: number;
@@ -696,6 +690,8 @@ export interface MoveOutcomeExtension {
 }
 export interface AssetConditionMeter {
   max: number;
+  value?: number;
+  label: Label;
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };

@@ -1,401 +1,401 @@
-starforged:
-  ruleset: starforged
-  source:
-    authors:
-      - name: Shawn Tomkin
-    title: 'Ironsworn: Starforged Rulebook'
-    license: https://creativecommons.org/licenses/by/4.0
-    date: 2022-05-06
-    url: https://ironswornrpg.com
-  oracles:
-    derelicts:
-      name: Derelicts
-      summary: Derelicts are the forsaken relics of human endeavors.
-      description: |-
-        Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
-      collections:
-        type:
-          name: Derelict Type (by location)
-          canonical_name: Type (by location)
-          _source:
-            page: 348
-          # usage:
-          #   initial: true
-          #   requires: *attr:Location.Any
-          rendering:
-            columns:
-              planetside:
-                content_type: range
-                table_key: planetside
-                label: Planetside
-              orbital:
-                content_type: range
-                table_key: orbital
-                label: Orbital
-              deep_space:
-                content_type: range
-                table_key: deep_space
-                label: Deep Space
-              result:
-                content_type: result
-                table_key: planetside
-                label: Result
-          contents:
+id: starforged
+ruleset: starforged
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  url: https://ironswornrpg.com
+oracles:
+  derelicts:
+    name: Derelicts
+    summary: Derelicts are the forsaken relics of human endeavors.
+    description: |-
+      Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the Starship or Settlement oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
+    collections:
+      type:
+        name: Derelict Type (by location)
+        canonical_name: Type (by location)
+        _source:
+          page: 348
+        # usage:
+        #   initial: true
+        #   requires: *attr:Location.Any
+        rendering:
+          columns:
             planetside:
-              name: Planetside
-              icon: icon/oracles/location/planetside.svg
-              rendering: &derelictTypeDisplay
-                style: embed_as_column
-              # usage:
-              #   requires: *attr:Location.Planetside
-              table:
-                - low: 1
-                  high: 25
-                  result: Starship
-                  # *attr:DerelictType.Starship
-                - low: 26
-                  high: 100
-                  result: Settlement
-                  # *attr:DerelictType.Settlement
+              content_type: range
+              table_key: planetside
+              label: Planetside
             orbital:
-              name: Orbital
-              icon: icon/oracles/location/orbital.svg
-              rendering: *derelictTypeDisplay
-              # usage:
-              #   requires: *attr:Location.Orbital
-              table:
-                - low: 1
-                  high: 40
-                  result: Starship
-                - low: 41
-                  high: 100
-                  result: Settlement
+              content_type: range
+              table_key: orbital
+              label: Orbital
             deep_space:
-              name: Deep Space
-              icon: icon/oracles/location/deep_space.svg
-              rendering:
-                style: embed_as_column
-              # usage:
-              #   requires: *attr:Location.DeepSpace
-              table:
-                - low: 1
-                  high: 75
-                  result: Starship
-                - low: 76
-                  high: 100
-                  result: Settlement
-        zones:
-          name: Derelict Zones
-          _source:
-            page: 351
-          rendering:
-            columns:
-              starship:
-                content_type: range
-                table_key: starship
-                label: Starship
-              settlement:
-                content_type: range
-                table_key: settlement
-                label: Settlement
-              result:
-                content_type: result
-                table_key: starship
-                label: Result
-          # usage:
-          #   repeatable: true
-          #   requires:
-          #     attributes:
-          #       derelict_type: null
-          contents:
+              content_type: range
+              table_key: deep_space
+              label: Deep Space
+            result:
+              content_type: result
+              table_key: planetside
+              label: Result
+        contents:
+          planetside:
+            name: Planetside
+            icon: icon/oracles/location/planetside.svg
+            rendering: &derelictTypeDisplay
+              style: embed_as_column
+            # usage:
+            #   requires: *attr:Location.Planetside
+            table:
+              - low: 1
+                high: 25
+                result: Starship
+                # *attr:DerelictType.Starship
+              - low: 26
+                high: 100
+                result: Settlement
+                # *attr:DerelictType.Settlement
+          orbital:
+            name: Orbital
+            icon: icon/oracles/location/orbital.svg
+            rendering: *derelictTypeDisplay
+            # usage:
+            #   requires: *attr:Location.Orbital
+            table:
+              - low: 1
+                high: 40
+                result: Starship
+              - low: 41
+                high: 100
+                result: Settlement
+          deep_space:
+            name: Deep Space
+            icon: icon/oracles/location/deep_space.svg
+            rendering:
+              style: embed_as_column
+            # usage:
+            #   requires: *attr:Location.DeepSpace
+            table:
+              - low: 1
+                high: 75
+                result: Starship
+              - low: 76
+                high: 100
+                result: Settlement
+      zones:
+        name: Derelict Zones
+        _source:
+          page: 351
+        rendering:
+          columns:
             starship:
-              name: Starship
-              rendering:
-                style: embed_as_column
-              # usage:
-              #   requires:
-              #     attributes:
-              #       derelict_type: [starship]
-              table:
-                - &ZoneRow.0
-                  low: null
-                  high: null
-                  result: '[Access](starforged/collections/oracles/derelicts/access)'
-                  icon: icons/derelicts/access.svg
-                  # game_objects: *obj:DerelictZone.Access
-                - low: 1
-                  high: 5
-                  result: &ZoneRow.1.result '[Community](starforged/collections/oracles/derelicts/community)'
-                  icon: &ZoneRow.1.icon icons/derelicts/community.svg
-                  # game_objects: *obj:DerelictZone.Community
-                - low: 6
-                  high: 30
-                  result: &ZoneRow.2.result '[Engineering](starforged/collections/oracles/derelicts/engineering)'
-                  icon: &ZoneRow.2.icon icons/derelicts/engineering.svg
-                  # game_objects: *obj:DerelictZone.Engineering
-                - low: 31
-                  high: 55
-                  result: &ZoneRow.3.result '[Living](starforged/collections/oracles/derelicts/living)'
-                  icon: &ZoneRow.3.icon icons/derelicts/living.svg
-                  # game_objects: *obj:DerelictZone.Living
-                - low: 56
-                  high: 65
-                  result: &ZoneRow.4.result '[Medical](starforged/collections/oracles/derelicts/medical)'
-                  icon: &ZoneRow.4.icon icons/derelicts/medical.svg
-                  # game_objects: *obj:DerelictZone.Medical
-                - low: 66
-                  high: 85
-                  result: &ZoneRow.5.result '[Operations](starforged/collections/oracles/derelicts/operations)'
-                  icon: &ZoneRow.5.icon icons/derelicts/operations.svg
-                  # game_objects: *obj:DerelictZone.Operations
-                - low: 86
-                  high: 90
-                  result: &ZoneRow.6.result '[Production](starforged/collections/oracles/derelicts/production)'
-                  icon: &ZoneRow.6.icon icons/derelicts/production.svg
-                  # game_objects: *obj:DerelictZone.Production
-                - low: 91
-                  high: 100
-                  result: &ZoneRow.7.result '[Research](starforged/collections/oracles/derelicts/research)'
-                  icon: &ZoneRow.7.icon icons/derelicts/research.svg
-                  # game_objects: *obj:DerelictZone.Research
+              content_type: range
+              table_key: starship
+              label: Starship
             settlement:
-              name: Settlement
-              rendering:
-                style: embed_as_column
-              # usage:
-              #   requires:
-              #     attributes:
-              #       derelict_type: [settlement]
-              table:
-                - *ZoneRow.0
-                - low: 1
-                  high: 20
-                  result: *ZoneRow.1.result
-                  icon: *ZoneRow.1.icon
-                - low: 21
-                  high: 30
-                  result: *ZoneRow.2.result
-                  icon: *ZoneRow.2.icon
-                - low: 31
-                  high: 50
-                  result: *ZoneRow.3.result
-                  icon: *ZoneRow.3.icon
-                - low: 51
-                  high: 60
-                  result: *ZoneRow.4.result
-                  icon: *ZoneRow.4.icon
-                - low: 61
-                  high: 70
-                  result: *ZoneRow.5.result
-                  icon: *ZoneRow.5.icon
-                - low: 71
-                  high: 90
-                  result: *ZoneRow.6.result
-                  icon: *ZoneRow.6.icon
-                - low: 91
-                  high: 100
-                  result: *ZoneRow.7.result
-                  icon: *ZoneRow.7.icon
-      contents:
-        location:
-          name: Location
-          _source:
-            page: 348
-          table:
-            - low: 1
-              high: 40
-              result: Planetside
-              icon: icon/oracles/location/planetside.svg
-              suggestions:
-                oracles:
-                  - starforged/oracles/derelicts/type/planetside
-            - low: 41
-              high: 60
-              result: Orbital
-              icon: icon/oracles/location/orbital.svg
-              suggestions:
-                oracles:
-                  - starforged/oracles/derelicts/type/orbital
-            - low: 61
-              high: 100
-              result: Deep Space
-              icon: icon/oracles/location/deep_space.svg
-              suggestions:
-                oracles:
-                  - starforged/oracles/derelicts/type/deep_space
-        condition:
-          name: Condition
-          _source:
-            page: 348
-          # usage:
-          #   initial: true
-          # content:
-          #   part_of_speech: [fragment]
-          table:
-            - low: 1
-              high: 10
-              result: Functional
-            - low: 11
-              high: 30
-              result: Limited power
-            - low: 31
-              high: 60
-              result: Cold and dark
-            - low: 61
-              high: 90
-              result: Damaged or breached
-            - low: 91
-              high: 98
-              result: Heavily damaged
-            - low: 99
-              high: 100
-              result: Impending destruction
-        outer_first_look:
-          name: Outer First Look
-          _source:
-            page: 349
-          # usage:
-          #   initial: true
-          # content:
-          #   part_of_speech: [fragment]
-          #   tags: [first look]
-          table:
-            - low: 1
-              high: 15
-              result: Blocked access
-            - low: 16
-              high: 30
-              result: Corpses
-            - low: 31
-              high: 45
-              result: Hazardous readings
-            - low: 46
-              high: 50
-              result: Mutated structure
-            - low: 51
-              high: 60
-              result: Odd orientation
-            - low: 61
-              high: 65
-              result: Overgrown or entangled
-            - low: 66
-              high: 80
-              result: Sending a signal or message
-            - low: 81
-              high: 85
-              result: Signs that others are here
-            - low: 86
-              high: 95
-              result: Stripped exterior
-            - low: 96
-              high: 100
-              result: Time or reality distortions
-        inner_first_look:
-          name: Inner First Look
-          _source:
-            page: 349
-          # content:
-          #   part_of_speech: [fragment]
-          #   tags: [first look]
-          # usage:
-          #   max_rolls: 2
-          table:
-            - low: 1
-              high: 3
-              result: Abnormal gravity
-            - low: 4
-              high: 6
-              result: Active bots
-            - low: 7
-              high: 9
-              result: Archaic equipment
-            - low: 10
-              high: 12
-              result: Automated announcements
-            - low: 13
-              high: 15
-              result: Biological infestation
-            - low: 16
-              high: 18
-              result: Charred surfaces
-            - low: 19
-              high: 21
-              result: Claw marks
-            - low: 22
-              high: 24
-              result: Cluttered with debris
-            - low: 25
-              high: 27
-              result: Corroded surfaces
-            - low: 28
-              high: 30
-              result: Cramped spaces
-            - low: 31
-              high: 33
-              result: Creaking hull
-            - low: 34
-              high: 36
-              result: Esoteric writing or symbols
-            - low: 37
-              high: 39
-              result: Evidence of new inhabitants
-            - low: 40
-              high: 42
-              result: Exposed wiring or conduits
-            - low: 43
-              high: 45
-              result: Flashing strobe lights
-            - low: 46
-              high: 48
-              result: Fluctuating power
-            - low: 49
-              high: 51
-              result: Haunting visions of the dead
-            - low: 52
-              high: 54
-              result: Hazardous temperature
-            - low: 55
-              high: 57
-              result: Heavy steam or moisture
-            - low: 58
-              high: 60
-              result: Littered with corpses
-            - low: 61
-              high: 63
-              result: Nesting or feeding creatures
-            - low: 64
-              high: 66
-              result: Ornate furnishings
-            - low: 67
-              high: 69
-              result: Scarred by gunfire
-            - low: 70
-              high: 72
-              result: Sealed against intruders
-            - low: 73
-              high: 75
-              result: Signs of looting or scavenging
-            - low: 76
-              high: 78
-              result: Smell of decay
-            - low: 79
-              high: 81
-              result: Splattered with blood
-            - low: 82
-              high: 84
-              result: Temporal distortions
-            - low: 85
-              high: 87
-              result: Thick haze or smoke
-            - low: 88
-              high: 90
-              result: Unstable energy surges
-            - low: 91
-              high: 93
-              result: Watchful AI
-            - low: 94
-              high: 100
-              result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
-              rolls:
-                - oracle: starforged/oracles/core/descriptor
-                - oracle: starforged/oracles/core/focus
+              content_type: range
+              table_key: settlement
+              label: Settlement
+            result:
+              content_type: result
+              table_key: starship
+              label: Result
+        # usage:
+        #   repeatable: true
+        #   requires:
+        #     attributes:
+        #       derelict_type: null
+        contents:
+          starship:
+            name: Starship
+            rendering:
+              style: embed_as_column
+            # usage:
+            #   requires:
+            #     attributes:
+            #       derelict_type: [starship]
+            table:
+              - &ZoneRow.0
+                low: null
+                high: null
+                result: '[Access](starforged/collections/oracles/derelicts/access)'
+                icon: icons/derelicts/access.svg
+                # game_objects: *obj:DerelictZone.Access
+              - low: 1
+                high: 5
+                result: &ZoneRow.1.result '[Community](starforged/collections/oracles/derelicts/community)'
+                icon: &ZoneRow.1.icon icons/derelicts/community.svg
+                # game_objects: *obj:DerelictZone.Community
+              - low: 6
+                high: 30
+                result: &ZoneRow.2.result '[Engineering](starforged/collections/oracles/derelicts/engineering)'
+                icon: &ZoneRow.2.icon icons/derelicts/engineering.svg
+                # game_objects: *obj:DerelictZone.Engineering
+              - low: 31
+                high: 55
+                result: &ZoneRow.3.result '[Living](starforged/collections/oracles/derelicts/living)'
+                icon: &ZoneRow.3.icon icons/derelicts/living.svg
+                # game_objects: *obj:DerelictZone.Living
+              - low: 56
+                high: 65
+                result: &ZoneRow.4.result '[Medical](starforged/collections/oracles/derelicts/medical)'
+                icon: &ZoneRow.4.icon icons/derelicts/medical.svg
+                # game_objects: *obj:DerelictZone.Medical
+              - low: 66
+                high: 85
+                result: &ZoneRow.5.result '[Operations](starforged/collections/oracles/derelicts/operations)'
+                icon: &ZoneRow.5.icon icons/derelicts/operations.svg
+                # game_objects: *obj:DerelictZone.Operations
+              - low: 86
+                high: 90
+                result: &ZoneRow.6.result '[Production](starforged/collections/oracles/derelicts/production)'
+                icon: &ZoneRow.6.icon icons/derelicts/production.svg
+                # game_objects: *obj:DerelictZone.Production
+              - low: 91
+                high: 100
+                result: &ZoneRow.7.result '[Research](starforged/collections/oracles/derelicts/research)'
+                icon: &ZoneRow.7.icon icons/derelicts/research.svg
+                # game_objects: *obj:DerelictZone.Research
+          settlement:
+            name: Settlement
+            rendering:
+              style: embed_as_column
+            # usage:
+            #   requires:
+            #     attributes:
+            #       derelict_type: [settlement]
+            table:
+              - *ZoneRow.0
+              - low: 1
+                high: 20
+                result: *ZoneRow.1.result
+                icon: *ZoneRow.1.icon
+              - low: 21
+                high: 30
+                result: *ZoneRow.2.result
+                icon: *ZoneRow.2.icon
+              - low: 31
+                high: 50
+                result: *ZoneRow.3.result
+                icon: *ZoneRow.3.icon
+              - low: 51
+                high: 60
+                result: *ZoneRow.4.result
+                icon: *ZoneRow.4.icon
+              - low: 61
+                high: 70
+                result: *ZoneRow.5.result
+                icon: *ZoneRow.5.icon
+              - low: 71
+                high: 90
+                result: *ZoneRow.6.result
+                icon: *ZoneRow.6.icon
+              - low: 91
+                high: 100
+                result: *ZoneRow.7.result
+                icon: *ZoneRow.7.icon
+    contents:
+      location:
+        name: Location
+        _source:
+          page: 348
+        table:
+          - low: 1
+            high: 40
+            result: Planetside
+            icon: icon/oracles/location/planetside.svg
+            suggestions:
+              oracles:
+                - starforged/oracles/derelicts/type/planetside
+          - low: 41
+            high: 60
+            result: Orbital
+            icon: icon/oracles/location/orbital.svg
+            suggestions:
+              oracles:
+                - starforged/oracles/derelicts/type/orbital
+          - low: 61
+            high: 100
+            result: Deep Space
+            icon: icon/oracles/location/deep_space.svg
+            suggestions:
+              oracles:
+                - starforged/oracles/derelicts/type/deep_space
+      condition:
+        name: Condition
+        _source:
+          page: 348
+        # usage:
+        #   initial: true
+        # content:
+        #   part_of_speech: [fragment]
+        table:
+          - low: 1
+            high: 10
+            result: Functional
+          - low: 11
+            high: 30
+            result: Limited power
+          - low: 31
+            high: 60
+            result: Cold and dark
+          - low: 61
+            high: 90
+            result: Damaged or breached
+          - low: 91
+            high: 98
+            result: Heavily damaged
+          - low: 99
+            high: 100
+            result: Impending destruction
+      outer_first_look:
+        name: Outer First Look
+        _source:
+          page: 349
+        # usage:
+        #   initial: true
+        # content:
+        #   part_of_speech: [fragment]
+        #   tags: [first look]
+        table:
+          - low: 1
+            high: 15
+            result: Blocked access
+          - low: 16
+            high: 30
+            result: Corpses
+          - low: 31
+            high: 45
+            result: Hazardous readings
+          - low: 46
+            high: 50
+            result: Mutated structure
+          - low: 51
+            high: 60
+            result: Odd orientation
+          - low: 61
+            high: 65
+            result: Overgrown or entangled
+          - low: 66
+            high: 80
+            result: Sending a signal or message
+          - low: 81
+            high: 85
+            result: Signs that others are here
+          - low: 86
+            high: 95
+            result: Stripped exterior
+          - low: 96
+            high: 100
+            result: Time or reality distortions
+      inner_first_look:
+        name: Inner First Look
+        _source:
+          page: 349
+        # content:
+        #   part_of_speech: [fragment]
+        #   tags: [first look]
+        # usage:
+        #   max_rolls: 2
+        table:
+          - low: 1
+            high: 3
+            result: Abnormal gravity
+          - low: 4
+            high: 6
+            result: Active bots
+          - low: 7
+            high: 9
+            result: Archaic equipment
+          - low: 10
+            high: 12
+            result: Automated announcements
+          - low: 13
+            high: 15
+            result: Biological infestation
+          - low: 16
+            high: 18
+            result: Charred surfaces
+          - low: 19
+            high: 21
+            result: Claw marks
+          - low: 22
+            high: 24
+            result: Cluttered with debris
+          - low: 25
+            high: 27
+            result: Corroded surfaces
+          - low: 28
+            high: 30
+            result: Cramped spaces
+          - low: 31
+            high: 33
+            result: Creaking hull
+          - low: 34
+            high: 36
+            result: Esoteric writing or symbols
+          - low: 37
+            high: 39
+            result: Evidence of new inhabitants
+          - low: 40
+            high: 42
+            result: Exposed wiring or conduits
+          - low: 43
+            high: 45
+            result: Flashing strobe lights
+          - low: 46
+            high: 48
+            result: Fluctuating power
+          - low: 49
+            high: 51
+            result: Haunting visions of the dead
+          - low: 52
+            high: 54
+            result: Hazardous temperature
+          - low: 55
+            high: 57
+            result: Heavy steam or moisture
+          - low: 58
+            high: 60
+            result: Littered with corpses
+          - low: 61
+            high: 63
+            result: Nesting or feeding creatures
+          - low: 64
+            high: 66
+            result: Ornate furnishings
+          - low: 67
+            high: 69
+            result: Scarred by gunfire
+          - low: 70
+            high: 72
+            result: Sealed against intruders
+          - low: 73
+            high: 75
+            result: Signs of looting or scavenging
+          - low: 76
+            high: 78
+            result: Smell of decay
+          - low: 79
+            high: 81
+            result: Splattered with blood
+          - low: 82
+            high: 84
+            result: Temporal distortions
+          - low: 85
+            high: 87
+            result: Thick haze or smoke
+          - low: 88
+            high: 90
+            result: Unstable energy surges
+          - low: 91
+            high: 93
+            result: Watchful AI
+          - low: 94
+            high: 100
+            result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+            rolls:
+              - oracle: starforged/oracles/core/descriptor
+              - oracle: starforged/oracles/core/focus

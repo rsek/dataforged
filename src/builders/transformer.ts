@@ -1,31 +1,47 @@
 import { cloneDeep, forEach, mapValues, merge } from 'lodash'
 import { type Source } from 'schema'
 import { type Collection } from 'schema/common/abstract'
-import { type DeepPartial } from 'schema/common/utils'
-import { type SetOptional, type ConditionalExcept } from 'type-fest'
-
-import type * as In from 'types/input/starforged'
+import { type SetOptional } from 'type-fest'
 import type * as Out from 'types/output/starforged'
+
+type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
+	Partial<T>
 
 export function sourcedTransformer<
 	TIn extends Partial<SourceHaver> & { _source?: Partial<Source> },
 	TOut extends SourceHaver,
-	TParent extends SourceHaver = SourceHaver
->(partialTransformer: Omit<Transformer<TIn, TOut, TParent>, 'source' | 'id'>) {
+	TParent extends SourceHaver | null = SourceHaver
+>(
+	partialTransformer: PartialKeys<
+		Transformer<TIn, TOut, TParent>,
+		'id' | 'source'
+	>
+) {
 	return {
 		id: function (
 			data: TIn,
 			key: string | number,
-			parent: SourceHaver
+			parent: SourceHaver | null
 		): string {
+			if (data.id != null) return data.id
+			if (parent == null)
+				throw new Error(
+					'Data has no ID of its own, and no parent to generate its own ID from'
+				)
 			return parent.id.replace('/collections/', '/') + `/${key}`
 		},
 		source: function (
 			data: TIn,
 			key: string | number,
-			parent: SourceHaver
+			parent: SourceHaver | null
 		): Out.Source {
-			return merge(cloneDeep(parent.source), data.source ?? data._source ?? {})
+			if (data.source != null) return data.source
+			if (parent == null)
+				throw new Error(
+					'Data has no Source object of its own, and no parent to inherit from'
+				)
+			const result = merge(cloneDeep(parent.source), data._source ?? {})
+			return result
 		},
 		...partialTransformer
 	} as Transformer<TIn, TOut, TParent>
@@ -61,6 +77,8 @@ export function collectionTransformer<
 			parent: TParent
 		): Out.Source {
 			if (data.source != null) return data.source as Out.Source
+			if (parent == null)
+				throw new Error(`No inheritable source data for ${key}`)
 			return merge(cloneDeep(parent.source), data._source ?? {})
 		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
@@ -85,7 +103,7 @@ export function collectionTransformer<
 export type Transformer<
 	TIn extends object,
 	TOut extends object,
-	TParent extends SourceHaver = SourceHaver
+	TParent extends SourceHaver | null = SourceHaver
 > = {
 	[K in keyof Required<TOut> as K extends keyof TIn
 		? K extends InitialKeys
@@ -118,6 +136,8 @@ export function transform<
 	parent: TParent,
 	transformer: Transformer<TIn, TOut, TParent>
 ): TOut {
+	// console.log('running transform on key', key)
+
 	const result = cloneDeep(data) as Partial<TOut>
 
 	const initialKeys: InitialKeys[] = ['id', 'source']

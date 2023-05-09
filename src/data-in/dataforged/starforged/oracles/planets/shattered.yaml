@@ -1,229 +1,229 @@
-starforged:
-  ruleset: starforged
-  source:
-    authors:
-      - name: Shawn Tomkin
-    title: 'Ironsworn: Starforged Rulebook'
-    license: https://creativecommons.org/licenses/by/4.0
-    date: 2022-05-06
-    url: https://ironswornrpg.com
-  oracles:
-    planets:
-      extends: starforged/collections/oracles/planets
-      name: Planets
-      collections:
-        shattered:
-          name: Shattered World
-          images:
-            - images/planets/shattered-01.webp
-            - images/planets/shattered-02.webp
-          _source:
-            page: 316
-          summary: A planet sundered by cataclysmic destruction.
-          sample_names:
-            - Cavus
-            - Chrysalis
-            - Fragment
-            - Havoc
-            - Keres
-            - Lux
-            - Nemain
-            - Praxis
-            - Riven
-            - Schism
-            - Shell
-            - Slag
-            - Sliver
-            - Sunder
-            - Torment
-            - Vestige
-            - Vigrid
-            - Vortex
-            - Wrath
-            - Zix
-          collections:
-            settlements:
-              name: Settlements
-              contents:
-                terminus:
-                  name: Terminus
-                  table:
-                    - low: 1
-                      high: 70
-                      result: &Set.0 None
-                    - low: 71
-                      high: 90
-                      result: &Set.1 Orbital settlement
-                    - low: 91
-                      high: 95
-                      result: &Set.2 Planetside settlement
-                    - low: 96
-                      high: 98
-                      result: &Set.3 Multiple settlements
-                    - low: 99
-                      high: 100
-                      result: &Set.4 Settlements in conflict
-                outlands:
-                  name: Outlands
-                  table:
-                    - low: 1
-                      high: 85
-                      result: *Set.0
-                    - low: 86
-                      high: 96
-                      result: *Set.1
-                    - low: 97
-                      high: 99
-                      result: *Set.2
-                    - low: 100
-                      high: 100
-                      result: *Set.3
-                    - low: null
-                      high: null
-                      result: *Set.4
-                expanse:
-                  name: Expanse
-                  table:
-                    - low: 1
-                      high: 95
-                      result: *Set.0
-                    - low: 96
-                      high: 99
-                      result: *Set.1
-                    - low: 100
-                      high: 100
-                      result: *Set.2
-                    - low: null
-                      high: null
-                      result: *Set.3
-                    - low: null
-                      high: null
-                      result: *Set.4
-          contents:
-            atmosphere:
-              name: Atmosphere
-              table:
-                - low: 1
-                  high: 93
-                  result: None / thin
-                - low: 94
-                  high: 95
-                  result: Toxic
-                - low: 96
-                  high: 97
-                  result: Corrosive
-                - low: 98
-                  high: 99
-                  result: Marginal
-                - low: 100
-                  high: 100
-                  result: Breathable
-                - low: null
-                  high: null
-                  result: Ideal
-            observed_from_space:
-              name: Observed From Space
-              table:
-                - low: 1
-                  high: 11
-                  result: Demolished space fleet
-                - low: 12
-                  high: 22
-                  result: Preserved planetary fragment
-                - low: 23
-                  high: 33
-                  result: Dense ring system
-                - low: 34
-                  high: 44
-                  result: Swirling debris field
-                - low: 45
-                  high: 55
-                  result: Fiery planetary core
-                - low: 56
-                  high: 66
-                  result: Unbroken moon
-                - low: 67
-                  high: 77
-                  result: Geomagnetic storms
-                - low: 78
-                  high: 88
-                  result: Intense solar radiation
-                - low: 89
-                  high: 98
-                  result: &DF.result '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
-                  rolls: &DF.rolls
-                    - oracle: starforged/oracles/core/descriptor
-                    - oracle: starforged/oracles/core/focus
-                - low: 99
-                  high: 100
-                  result: Precursor Vault (orbital)
-            feature:
-              name: Planetside Feature
-              table:
-                - low: 1
-                  high: 7
-                  result: Broken cities
-                - low: 8
-                  high: 14
-                  result: Colliding fragments
-                - low: 15
-                  high: 21
-                  result: Energy storms
-                - low: 22
-                  high: 28
-                  result: Exposed caverns
-                - low: 29
-                  high: 35
-                  result: Fluctuating gravity
-                - low: 36
-                  high: 42
-                  result: Magnetic disturbances
-                - low: 43
-                  high: 49
-                  result: Molten fissures
-                - low: 50
-                  high: 56
-                  result: Phantom visions of the past
-                - low: 57
-                  high: 63
-                  result: Pocket atmosphere
-                - low: 64
-                  high: 70
-                  result: Residual energy storms
-                - low: 71
-                  high: 77
-                  result: Swirling corrosive gases
-                - low: 78
-                  high: 84
-                  result: Unstable and fracturing terrain
-                - low: 85
-                  high: 91
-                  result: Venting magma
-                - low: 92
-                  high: 98
-                  result: *DF.result
-                  rolls: *DF.rolls
-                - low: 99
-                  high: 100
-                  result: Precursor Vault (planetside)
-            life:
-              name: Life
-              table:
-                - low: 1
-                  high: 30
-                  result: None
-                - low: 31
-                  high: 85
-                  result: Extinct
-                - low: 86
-                  high: 95
-                  result: Scarce
-                - low: 96
-                  high: 100
-                  result: Diverse
-                - low: null
-                  high: null
-                  result: Bountiful
-                - low: null
-                  high: null
-                  result: Overrun
+id: starforged
+ruleset: starforged
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  url: https://ironswornrpg.com
+oracles:
+  planets:
+    extends: starforged/collections/oracles/planets
+    name: Planets
+    collections:
+      shattered:
+        name: Shattered World
+        images:
+          - images/planets/shattered-01.webp
+          - images/planets/shattered-02.webp
+        _source:
+          page: 316
+        summary: A planet sundered by cataclysmic destruction.
+        sample_names:
+          - Cavus
+          - Chrysalis
+          - Fragment
+          - Havoc
+          - Keres
+          - Lux
+          - Nemain
+          - Praxis
+          - Riven
+          - Schism
+          - Shell
+          - Slag
+          - Sliver
+          - Sunder
+          - Torment
+          - Vestige
+          - Vigrid
+          - Vortex
+          - Wrath
+          - Zix
+        collections:
+          settlements:
+            name: Settlements
+            contents:
+              terminus:
+                name: Terminus
+                table:
+                  - low: 1
+                    high: 70
+                    result: &Set.0 None
+                  - low: 71
+                    high: 90
+                    result: &Set.1 Orbital settlement
+                  - low: 91
+                    high: 95
+                    result: &Set.2 Planetside settlement
+                  - low: 96
+                    high: 98
+                    result: &Set.3 Multiple settlements
+                  - low: 99
+                    high: 100
+                    result: &Set.4 Settlements in conflict
+              outlands:
+                name: Outlands
+                table:
+                  - low: 1
+                    high: 85
+                    result: *Set.0
+                  - low: 86
+                    high: 96
+                    result: *Set.1
+                  - low: 97
+                    high: 99
+                    result: *Set.2
+                  - low: 100
+                    high: 100
+                    result: *Set.3
+                  - low: null
+                    high: null
+                    result: *Set.4
+              expanse:
+                name: Expanse
+                table:
+                  - low: 1
+                    high: 95
+                    result: *Set.0
+                  - low: 96
+                    high: 99
+                    result: *Set.1
+                  - low: 100
+                    high: 100
+                    result: *Set.2
+                  - low: null
+                    high: null
+                    result: *Set.3
+                  - low: null
+                    high: null
+                    result: *Set.4
+        contents:
+          atmosphere:
+            name: Atmosphere
+            table:
+              - low: 1
+                high: 93
+                result: None / thin
+              - low: 94
+                high: 95
+                result: Toxic
+              - low: 96
+                high: 97
+                result: Corrosive
+              - low: 98
+                high: 99
+                result: Marginal
+              - low: 100
+                high: 100
+                result: Breathable
+              - low: null
+                high: null
+                result: Ideal
+          observed_from_space:
+            name: Observed From Space
+            table:
+              - low: 1
+                high: 11
+                result: Demolished space fleet
+              - low: 12
+                high: 22
+                result: Preserved planetary fragment
+              - low: 23
+                high: 33
+                result: Dense ring system
+              - low: 34
+                high: 44
+                result: Swirling debris field
+              - low: 45
+                high: 55
+                result: Fiery planetary core
+              - low: 56
+                high: 66
+                result: Unbroken moon
+              - low: 67
+                high: 77
+                result: Geomagnetic storms
+              - low: 78
+                high: 88
+                result: Intense solar radiation
+              - low: 89
+                high: 98
+                result: &DF.result '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                rolls: &DF.rolls
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+              - low: 99
+                high: 100
+                result: Precursor Vault (orbital)
+          feature:
+            name: Planetside Feature
+            table:
+              - low: 1
+                high: 7
+                result: Broken cities
+              - low: 8
+                high: 14
+                result: Colliding fragments
+              - low: 15
+                high: 21
+                result: Energy storms
+              - low: 22
+                high: 28
+                result: Exposed caverns
+              - low: 29
+                high: 35
+                result: Fluctuating gravity
+              - low: 36
+                high: 42
+                result: Magnetic disturbances
+              - low: 43
+                high: 49
+                result: Molten fissures
+              - low: 50
+                high: 56
+                result: Phantom visions of the past
+              - low: 57
+                high: 63
+                result: Pocket atmosphere
+              - low: 64
+                high: 70
+                result: Residual energy storms
+              - low: 71
+                high: 77
+                result: Swirling corrosive gases
+              - low: 78
+                high: 84
+                result: Unstable and fracturing terrain
+              - low: 85
+                high: 91
+                result: Venting magma
+              - low: 92
+                high: 98
+                result: *DF.result
+                rolls: *DF.rolls
+              - low: 99
+                high: 100
+                result: Precursor Vault (planetside)
+          life:
+            name: Life
+            table:
+              - low: 1
+                high: 30
+                result: None
+              - low: 31
+                high: 85
+                result: Extinct
+              - low: 86
+                high: 95
+                result: Scarce
+              - low: 96
+                high: 100
+                result: Diverse
+              - low: null
+                high: null
+                result: Bountiful
+              - low: null
+                high: null
+                result: Overrun

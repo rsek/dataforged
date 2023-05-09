@@ -1,7 +1,7 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
 import { schemaOptions } from 'scripts/options'
-import { logger } from 'scripts/logger'
+import { log } from 'scripts/logger'
 import { writeFileSync } from 'fs'
 
 // Initialize AJV
@@ -15,7 +15,7 @@ const validator = new Ajv({
 	validateFormats: true,
 	useDefaults: 'empty',
 	passContext: true,
-	logger
+	logger: log
 })
 
 addFormats(validator)

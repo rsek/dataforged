@@ -32,12 +32,6 @@
 		],
 		"src/data-in/datasworn/classic-input.schema.json": [
 			"src/data-in/datasworn/**/*.yaml"
-		],
-		"src/data-out/dataforged/starforged.schema.json": [
-			"src/data-out/dataforged/**/*.json"
-		],
-		"src/data-out/datasworn/classic.schema.json": [
-			"src/data-out/datasworn/**/*.json"
 		]
 	},
 	"yaml.completion": true,
@@ -50,5 +44,15 @@
 
 	"editor.foldingImportsByDefault": true,
 	"json.validate.enable": true,
-	"json.format.enable": false
+	"json.format.enable": false,
+	"json.schemas": [
+		{
+			"fileMatch": ["src/data-out/dataforged/**/*.json"],
+			"url": "./src/data-out/dataforged/starforged.schema.json"
+		},
+		{
+			"fileMatch": ["src/data-out/datasworn/**/*.json"],
+			"url": "./src/data-out/datasworn/classic.schema.json"
+		}
+	]
 }

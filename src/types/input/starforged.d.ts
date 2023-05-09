@@ -148,14 +148,8 @@ export type SettingTruthID = string;
 /**
  * Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.
  */
-export interface DataforgedV200DevDataEntry {
-  [k: string]: SourcebookStarforged;
-}
-/**
- * This interface was referenced by `DataforgedV200DevDataEntry`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z0-9_]{3,}$".
- */
 export interface SourcebookStarforged {
+  id: string;
   ruleset: "starforged";
   source: Source;
   oracles?: {
@@ -593,7 +587,7 @@ export interface ClockField {
 export interface CounterField {
   label: Label;
   field_type: "counter";
-  min: number;
+  min: 0;
   max?: number;
   id?: string;
   value?: number;
@@ -660,6 +654,8 @@ export interface MoveOutcomeExtension {
 }
 export interface AssetConditionMeter {
   max: number;
+  value?: number;
+  label: Label;
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };

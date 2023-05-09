@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises'
 import * as YAML from 'js-yaml'
 import path from 'path'
-import { logger } from 'scripts/logger'
+import { log } from 'scripts/logger'
 import { validator } from 'scripts/validator'
 
 /**
@@ -33,4 +33,4 @@ readYAML(filePath)
 		validator.validate('DataforgedInput', inputData)
 		console.log(JSON.stringify(inputData, undefined, '\t'))
 	})
-	.catch(logger.error)
+	.catch(log.error)

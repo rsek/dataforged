@@ -1,4 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
+import { type Opaque } from 'type-fest'
 
 export const EncounterClassicID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/encounters(\/[a-z_]+){2}$/,
@@ -10,7 +11,7 @@ export const EncounterClassicID = Type.RegEx(
 		]
 	}
 )
-export type EncounterClassicID = Static<typeof EncounterClassicID>
+export type EncounterClassicID = Opaque<Static<typeof EncounterClassicID>>
 
 export const EncounterStarforgedID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/encounters\/[a-z_]+(\/variants\/[a-z_]+)?$/,
@@ -22,7 +23,7 @@ export const EncounterStarforgedID = Type.RegEx(
 		]
 	}
 )
-export type EncounterStarforgedID = Static<typeof EncounterStarforgedID>
+export type EncounterStarforgedID = Opaque<Static<typeof EncounterStarforgedID>>
 
 export type EncounterID = EncounterClassicID | EncounterStarforgedID
 
@@ -33,28 +34,28 @@ export const EncounterCollectionID = Type.RegEx(
 		examples: ['classic/collections/encounters/firstborn']
 	}
 )
-export type EncounterCollectionID = Static<typeof EncounterCollectionID>
+export type EncounterCollectionID = Opaque<Static<typeof EncounterCollectionID>>
 
 export const AssetID = Type.RegEx(/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}$/, {
 	$id: '#/$defs/AssetID'
 })
-export type AssetID = Static<typeof AssetID>
+export type AssetID = Opaque<Static<typeof AssetID>>
 export const AssetIDWildcard = Type.RegEx(
 	/^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)$/,
 	{ $id: '#/$defs/AssetIDWildcard' }
 )
-export type AssetIDWildcard = Static<typeof AssetIDWildcard>
+export type AssetIDWildcard = Opaque<Static<typeof AssetIDWildcard>>
 export const AssetTypeID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/collections\/assets\/[a-z_]+$/,
 	{ $id: '#/$defs/AssetTypeID' }
 )
-export type AssetTypeID = Static<typeof AssetTypeID>
+export type AssetTypeID = Opaque<Static<typeof AssetTypeID>>
 
 export const AssetOptionFieldID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/options\/[a-z_]+/,
 	{ $id: '#/$defs/AssetOptionFieldID' }
 )
-export type AssetOptionFieldID = Static<typeof AssetOptionFieldID>
+export type AssetOptionFieldID = Opaque<Static<typeof AssetOptionFieldID>>
 
 export const AssetOptionFieldIDWildcard = Type.RegEx(
 	/^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/options\/[a-z_]+$/,
@@ -68,7 +69,7 @@ export const AssetControlFieldID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/controls\/[a-z_]+$/,
 	{ $id: '#/$defs/AssetControlFieldID' }
 )
-export type AssetControlFieldID = Static<typeof AssetControlFieldID>
+export type AssetControlFieldID = Opaque<Static<typeof AssetControlFieldID>>
 
 export const AssetControlFieldIDWildcard = Type.RegEx(
 	/^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/controls\/[a-z_]+$/,
@@ -82,7 +83,7 @@ export const AssetConditionMeterID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/condition_meter$/,
 	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
 )
-export type AssetConditionMeterID = Static<typeof AssetConditionMeterID>
+export type AssetConditionMeterID = Opaque<Static<typeof AssetConditionMeterID>>
 export const AssetConditionMeterIDWildcard = Type.RegEx(
 	/^([a-z_]+|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
 	{
@@ -102,18 +103,20 @@ export type AssetConditionMeterControlFieldID = Static<
 >
 
 export const AssetAbilityID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]$/,
+	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/abilities\/[0-2]$/,
 	{ $id: '#/$defs/AssetAbilityID' }
 )
-export type AssetAbilityID = Static<typeof AssetAbilityID>
+export type AssetAbilityID = Opaque<Static<typeof AssetAbilityID>>
 
 export const AssetAbilityOptionFieldID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]\/options\/[a-z_]+$/,
+	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/abilities\/[0-2]\/options\/[a-z_]+$/,
 	{ $id: '#/$defs/AssetAbilityOptionFieldID' }
 )
-export type AssetAbilityOptionFieldID = Static<typeof AssetAbilityOptionFieldID>
+export type AssetAbilityOptionFieldID = Opaque<
+	Static<typeof AssetAbilityOptionFieldID>
+>
 export const AssetAbilityControlFieldID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/[0-2]\/controls\/[a-z_]+$/,
+	/^[a-z0-9_]{3,}\/assets(\/[a-z_]+){2}\/abilities\/[0-2]\/controls\/[a-z_]+$/,
 	{ $id: '#/$defs/AssetAbilityControlFieldID' }
 )
 export type AssetAbilityControlFieldID = Static<
@@ -124,7 +127,7 @@ export const DelveSiteID = Type.RegEx(/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$/, {
 	examples: ['delve/delve_sites/alvas_rest'],
 	$id: '#/$defs/DelveSiteID'
 })
-export type DelveSiteID = Static<typeof DelveSiteID>
+export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
 
 export const DelveSiteDenizenID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$\/denizens\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)/,
@@ -133,25 +136,25 @@ export const DelveSiteDenizenID = Type.RegEx(
 		$id: '#/$defs/DelveSiteDenizenID'
 	}
 )
-export type DelveSiteDenizenID = Static<typeof DelveSiteID>
+export type DelveSiteDenizenID = Opaque<Static<typeof DelveSiteID>>
 
 export const DelveSiteThemeID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+$/,
 	{ $id: '#/$defs/DelveSiteThemeID', examples: ['delve/site_themes/hallowed'] }
 )
-export type DelveSiteThemeID = Static<typeof DelveSiteThemeID>
+export type DelveSiteThemeID = Opaque<Static<typeof DelveSiteThemeID>>
 
 export const ThemeFeatureRowID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/features\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
 	{ $id: '#/$defs/ThemeFeatureRowID' }
 )
-export type ThemeFeatureRowID = Static<typeof ThemeFeatureRowID>
+export type ThemeFeatureRowID = Opaque<Static<typeof ThemeFeatureRowID>>
 
 export const ThemeDangerRowID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_themes\/[a-z_]+\/dangers\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
 	{ $id: '#/$defs/ThemeDangerRowID' }
 )
-export type ThemeDangerRowID = Static<typeof ThemeDangerRowID>
+export type ThemeDangerRowID = Opaque<Static<typeof ThemeDangerRowID>>
 
 export const DelveSiteDomainID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+$/,
@@ -160,42 +163,45 @@ export const DelveSiteDomainID = Type.RegEx(
 		examples: ['delve/site_domains/shadowfen']
 	}
 )
-export type DelveSiteDomainID = Static<typeof DelveSiteDomainID>
+export type DelveSiteDomainID = Opaque<Static<typeof DelveSiteDomainID>>
 
 export const DomainFeatureRowID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/features\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
 	{ $id: '#/$defs/DomainFeatureRowID' }
 )
-export type DomainFeatureRowID = Static<typeof DomainFeatureRowID>
+export type DomainFeatureRowID = Opaque<Static<typeof DomainFeatureRowID>>
 
 export const DomainDangerRowID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/site_domains\/[a-z_]+\/dangers\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)$/,
 	{ $id: '#/$defs/DomainDangerRowID' }
 )
-export type DomainDangerRowID = Static<typeof DomainDangerRowID>
+export type DomainDangerRowID = Opaque<Static<typeof DomainDangerRowID>>
 
 export const MoveID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/(moves\/[a-z_]+\/[a-z_]+|assets\/[a-z_]+\/[a-z_]+\/moves\/[a-z_]+)$/,
+	/^[a-z0-9_]{3,}\/(moves\/[a-z_]+\/[a-z_]+|assets\/[a-z_]+\/[a-z_]+\/abilities\/[0-2]\/moves\/[a-z_]+)$/,
 	{
 		description: 'A move ID, for a standard move or a unique asset move',
 		examples: [
 			'classic/moves/combat/strike',
-			'starforged/assets/module/grappler/moves/ready_grappler'
+			'starforged/assets/module/grappler/abilities/0/moves/ready_grappler'
 		],
 		$id: '#/$defs/MoveID'
 	}
 )
-export type MoveID = Static<typeof MoveID>
+export type MoveID = Opaque<Static<typeof MoveID>>
 export const MoveIDWildcard = Type.RegEx(
-	/^([a-z0-9_]{3,}|\*)\/(moves\/([a-z_]+|\*)\/([a-z_]+|\*)|assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/moves\/([a-z_]+|\*))$/,
+	/^([a-z0-9_]{3,}|\*)\/(moves\/([a-z_]+|\*)\/([a-z_]+|\*)|assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/abilities\/([0-2]|\*)\/moves\/([a-z_]+|\*))$/,
 	{
 		title: 'Move ID (with wildcard)',
 		description: 'A move ID with wildcards',
-		examples: ['*/moves/*/face_danger', '*/assets/ritual/*/moves/*'],
+		examples: [
+			'*/moves/*/face_danger',
+			'*/assets/ritual/*/abilities/*/moves/*'
+		],
 		$id: '#/$defs/MoveIDWildcard'
 	}
 )
-export type MoveIDWildcard = Static<typeof MoveIDWildcard>
+export type MoveIDWildcard = Opaque<Static<typeof MoveIDWildcard>>
 
 export const MoveCategoryID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/collections\/moves\/[a-z_]+$/,
@@ -204,7 +210,7 @@ export const MoveCategoryID = Type.RegEx(
 		$id: '#/$defs/MoveCategoryID'
 	}
 )
-export type MoveCategoryID = Static<typeof MoveCategoryID>
+export type MoveCategoryID = Opaque<Static<typeof MoveCategoryID>>
 
 export const OracleTableRowID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}\/[0-9]{1,3}-[0-9]{1,3}$/,
@@ -213,7 +219,7 @@ export const OracleTableRowID = Type.RegEx(
 		$id: '#/$defs/OracleTableRowID'
 	}
 )
-export type OracleTableRowID = Static<typeof OracleCollectionID>
+export type OracleTableRowID = Opaque<Static<typeof OracleCollectionID>>
 
 export const OracleTableID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/oracles(\/[a-z_]+){2,4}$/,
@@ -226,7 +232,7 @@ export const OracleTableID = Type.RegEx(
 		$id: '#/$defs/OracleTableID'
 	}
 )
-export type OracleTableID = Static<typeof OracleTableID>
+export type OracleTableID = Opaque<Static<typeof OracleTableID>>
 
 export const OracleCollectionID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/collections\/oracles(\/[a-z_]+){1,3}$/,
@@ -239,25 +245,25 @@ export const OracleCollectionID = Type.RegEx(
 		$id: '#/$defs/OracleCollectionID'
 	}
 )
-export type OracleCollectionID = Static<typeof OracleCollectionID>
+export type OracleCollectionID = Opaque<Static<typeof OracleCollectionID>>
 
 export const RarityID = Type.RegEx(/^[a-z0-9_]{3,}\/rarities\/[a-z_]+$/, {
 	examples: ['classic/rarities/ayethins_journal'],
 	$id: '#/$defs/RarityID'
 })
-export type RarityID = Static<typeof RarityID>
+export type RarityID = Opaque<Static<typeof RarityID>>
 
 export const RegionEntryID = Type.RegEx(/^[a-z0-9_]{3,}\/regions\/[a-z_]+$/, {
 	examples: ['classic/regions/shattered_wastes'],
 	$id: '#/$defs/RegionEntryID'
 })
-export type RegionEntryID = Static<typeof RegionEntryID>
+export type RegionEntryID = Opaque<Static<typeof RegionEntryID>>
 
 export const WorldTruthID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/world_truths\/[a-z_]+$/,
 	{ examples: ['classic/world_truths/iron'], $id: '#/$defs/WorldTruthID' }
 )
-export type WorldTruthID = Static<typeof WorldTruthID>
+export type WorldTruthID = Opaque<Static<typeof WorldTruthID>>
 
 export const WorldTruthOptionID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/world_truths\/[a-z_]+\/[0-2]$/,
@@ -266,7 +272,7 @@ export const WorldTruthOptionID = Type.RegEx(
 		$id: '#/$defs/WorldTruthOptionID'
 	}
 )
-export type WorldTruthOptionID = Static<typeof WorldTruthOptionID>
+export type WorldTruthOptionID = Opaque<Static<typeof WorldTruthOptionID>>
 
 export const SettingTruthID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/setting_truths\/[a-z_]+$/,
@@ -275,7 +281,7 @@ export const SettingTruthID = Type.RegEx(
 		$id: '#/$defs/SettingTruthID'
 	}
 )
-export type SettingTruthID = Static<typeof SettingTruthID>
+export type SettingTruthID = Opaque<Static<typeof SettingTruthID>>
 
 export const SettingTruthOptionID = Type.RegEx(
 	/^[a-z0-9_]{3,}\/setting_truths\/[a-z_]+\/[0-2]$/,
@@ -284,4 +290,4 @@ export const SettingTruthOptionID = Type.RegEx(
 		$id: '#/$defs/SettingTruthOptionID'
 	}
 )
-export type SettingTruthOptionID = Static<typeof SettingTruthOptionID>
+export type SettingTruthOptionID = Opaque<Static<typeof SettingTruthOptionID>>

@@ -4,10 +4,10 @@ import { ID, Metadata } from 'schema/common'
 export const Suggestions = Type.Object(
 	{
 		...Metadata.SuggestionsBase.properties,
-		site_domains: Type.Array(Type.Ref(ID.DelveSiteDomainID)),
-		site_themes: Type.Array(Type.Ref(ID.DelveSiteThemeID)),
-		encounters: Type.Array(Type.Ref(ID.EncounterClassicID)),
-		regions: Type.Array(Type.Ref(ID.RegionEntryID))
+		site_domains: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteDomainID))),
+		site_themes: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteThemeID))),
+		encounters: Type.Optional(Type.Array(Type.Ref(ID.EncounterClassicID))),
+		regions: Type.Optional(Type.Array(Type.Ref(ID.RegionEntryID)))
 	},
 	{ $id: '#/$defs/Suggestions' }
 )

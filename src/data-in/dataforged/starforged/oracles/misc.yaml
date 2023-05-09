@@ -1,446 +1,446 @@
-starforged:
-  ruleset: starforged
-  source:
-    date: 2022-05-06
-    page: 380
-    authors:
-      - name: Shawn Tomkin
-    title: 'Ironsworn: Starforged Rulebook'
-    url: https://ironswornrpg.com
-    license: https://creativecommons.org/licenses/by/4.0
-  oracles:
-    misc:
-      name: Miscellaneous Oracles
-      contents:
-        story_complication:
-          name: Story Complication
-          _source:
-            page: 380
-          # content:
-          #   part_of_speech: [fragment]
-          #   tags: [peril, event, present]
-          description: |-
-            This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the [Pay the Price](starforged/moves/fate/pay_the_price) table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.
-          table:
-            - low: 1
-              high: 4
-              result: Crucial equipment or device fails
-              # suggestions: [*roll:Object]
-            - low: 5
-              high: 7
-              result: Crucial equipment or device is sabotaged
-              # suggestions: [*roll:Object]
-            - low: 8
-              high: 10
-              result: Debt or promise comes due
-            - low: 11
-              high: 14
-              result: 'Enemy reveals unexpected powers, abilities, or influence'
-            - low: 15
-              high: 17
-              result: Enemy reveals their true agenda or nature
-            - low: 18
-              high: 20
-              result: Enemy unexpectedly benefits from your actions
-            - low: 21
-              high: 23
-              result: Key location is made inaccessible
-            - low: 24
-              high: 26
-              result: Key location is threatened or made unsafe
-            - low: 27
-              high: 29
-              result: Natural disaster is imminent
-            - low: 30
-              high: 33
-              result: Needed item or resource is unavailable
-            - low: 34
-              high: 36
-              result: Object of a quest is not what you assumed
-            - low: 37
-              high: 39
-              result: Old enemy resurfaces
-            - low: 40
-              high: 42
-              result: Simultaneous problems force a hard choice
-            - low: 43
-              high: 45
-              result: Someone important betrays your trust
-            - low: 46
-              high: 48
-              result: Someone important is threatened or endangered
-            - low: 49
-              high: 51
-              result: Someone important reveals their problematic secret or history
-            - low: 52
-              high: 54
-              result: Something important goes missing
-            - low: 55
-              high: 57
-              result: Technology or device is shown to have unexpected effects
-            - low: 58
-              high: 61
-              result: Time pressure suddenly increases
-            - low: 62
-              high: 65
-              result: Trap is sprung
-            - low: 66
-              high: 68
-              result: True agenda of a connection or patron is revealed
-            - low: 69
-              high: 72
-              result: Trusted information is shown to be false
-              # suggestions: [*roll:Event]
-            - low: 73
-              high: 76
-              result: Two seemingly unrelated problems are shown to be connected
-              # suggestions: [*roll:Event]
-            - low: 77
-              high: 80
-              result: Undermined by self-doubt or vulnerabilities
-            - low: 81
-              high: 84
-              result: Unexpected enemies appear
-            - low: 85
-              high: 88
-              result: Urgent message distracts you from your quest
-              # suggestions: [*roll:Event]
-            - low: 89
-              high: 92
-              result: You are tracked or followed
-            - low: 93
-              high: 95
-              result: You were diverted from the true crisis
-              # suggestions: [*roll:Event]
-            - low: 96
-              high: 100
-              result: Roll twice
-              rolls:
-                - times: 2
-        story_clue:
-          name: Story Clue
-          _source:
-            page: 381
-          # usage:
-          #   max_rolls: 2
-          description: |-
-            When you [Gather Information](starforged/moves/adventure/gather_information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](starforged/moves/adventure/gather_information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
-          table:
-            - low: 1
-              high: 3
-              result: 'Affirms a previously understood fact or clue'
-            - low: 4
-              high: 6
-              result: 'Connects to a known rumor or scandal'
-            - low: 7
-              high: 9
-              result: 'Connects to a previously unrelated mystery or quest'
-            - low: 10
-              high: 12
-              result: 'Connects to your own expertise or interests'
-            - low: 13
-              high: 15
-              result: 'Contradicts a previously understood fact or clue'
-            - low: 16
-              high: 18
-              result: 'Evokes a personal memory'
-            - low: 19
-              high: 21
-              result: 'Evokes a remarkable anomaly or phenomenon'
-            - low: 22
-              high: 24
-              result: 'Evokes a vision or prophecy'
-            - low: 25
-              high: 27
-              result: 'Involves a cultural touchstone'
-            - low: 28
-              high: 30
-              result: 'Involves a hidden or mysterious faction'
-            - low: 31
-              high: 33
-              result: 'Involves a hidden or mysterious person'
-            - low: 34
-              high: 36
-              result: 'Involves a key or means of access'
-            - low: 37
-              high: 39
-              result: 'Involves a machine or technology'
-            - low: 40
-              high: 42
-              result: 'Involves a non-human being or creature'
-            - low: 43
-              high: 45
-              result: 'Involves a notable faction'
-            - low: 46
-              high: 48
-              result: 'Involves a notable person'
-            - low: 49
-              high: 51
-              result: 'Involves a person or faction from your background'
-            - low: 52
-              high: 54
-              result: 'Involves a personal item'
-            - low: 55
-              high: 57
-              result: 'Involves an enemy or rival'
-            - low: 58
-              high: 60
-              result: 'Involves an organism or biological evidence'
-            - low: 61
-              high: 63
-              result: 'Involves an unusual ability or power'
-            - low: 64
-              high: 66
-              result: 'Involves someone you trust'
-            - low: 67
-              high: 69
-              result: 'Involves something rare, expensive, or precious'
-            - low: 70
-              high: 72
-              result: 'Leads to a distant or unfamiliar place'
-            - low: 73
-              high: 75
-              result: 'Leads to a hidden or forgotten place'
-            - low: 76
-              high: 78
-              result: 'Leads to a nearby or familiar place'
-            - low: 79
-              high: 81
-              result: 'Leads to a notable or central place'
-            - low: 82
-              high: 84
-              result: 'Suggests a history of similar incidents'
-            - low: 85
-              high: 87
-              result: 'Suggests a looming event or deadline'
-            - low: 88
-              high: 90
-              result: 'Suggests an imposter or forgery'
-            - low: 91
-              high: 100
-              result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
-              rolls:
-                - oracle: starforged/oracles/core/descriptor
-                - oracle: starforged/oracles/core/focus
-        anomaly_effect:
-          name: Anomaly Effect
-          _source:
-            page: 382
-          # content:
-          #   part_of_speech: [fragment]
-          #   tags: [peril, event, present]
-          description: |-
-            Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may have devastating implications, so use it only in rare and dramatic moments.
-          table:
-            - low: 1
-              high: 3
-              result: Alters or focuses gravity
-            - low: 4
-              high: 6
-              result: Alters or reshapes nonliving matter
-            - low: 7
-              high: 9
-              result: Alters surrounding air or atmosphere
-            - low: 10
-              high: 12
-              result: Alters surrounding ecosystems
-            - low: 13
-              high: 15
-              result: Awakens the dead
-            - low: 16
-              high: 18
-              result: Causes distressing visions or nightmares
-            - low: 19
-              high: 21
-              result: Causes rapid biological growth or infestation
-            - low: 22
-              high: 24
-              result: Causes sickness or weakness
-            - low: 25
-              high: 27
-              result: Corrupts living matter
-            - low: 28
-              high: 30
-              result: Corrupts or infects devices or computers
-            - low: 31
-              high: 33
-              result: Creates manifestations or illusions
-            - low: 34
-              high: 36
-              result: Decays or weakens surrounding terrain or structures
-            - low: 37
-              high: 39
-              result: Drains energy from equipment or devices
-            - low: 40
-              high: 42
-              result: Emits forceful or destructive energy
-            - low: 43
-              high: 45
-              result: Emits radiation
-            - low: 46
-              high: 48
-              result: Generates a barrier or ward
-            - low: 49
-              high: 51
-              result: Generates intense lights and sounds
-            - low: 52
-              high: 54
-              result: Generates tendrils of energy that slither or grasp
-            - low: 55
-              high: 57
-              result: Harvests or destroys living matter
-            - low: 58
-              high: 60
-              result: Harvests or destroys nonliving matter
-            - low: 61
-              high: 63
-              result: Nullifies or destroys equipment or devices
-            - low: 64
-              high: 66
-              result: Opens a path to another location
-            - low: 67
-              high: 69
-              result: Replicates living matter
-            - low: 70
-              high: 72
-              result: Replicates nonliving matter
-            - low: 73
-              high: 75
-              result: Reveals glimpses of the distant past
-            - low: 76
-              high: 78
-              result: Reveals glimpses of the far future
-            - low: 79
-              high: 81
-              result: Reverses time by a few moments or minutes
-            - low: 82
-              high: 84
-              result: Slows or stops time
-            - low: 85
-              high: 87
-              result: Summons or manifests an ancient being or intelligence
-            - low: 88
-              high: 90
-              result: Summons or manifests creatures
-            - low: 91
-              high: 93
-              result: Transports to another location
-            - low: 94
-              high: 96
-              result: Triggers an impending catastrophic explosion
-            - low: 97
-              high: 100
-              result: Roll twice
-              rolls:
-                - times: 2
-        combat_action:
-          name: Combat Action
-          _source:
-            page: 383
-          # content:
-          #   part_of_speech: [fragment]
-          #   tags: [peril, event, present]
-          description: |-
-            Use this oracle to help inspire an action for a foe in a fight. When you’re not sure what an enemy does next, particularly when they have you in a bad spot, roll on this table and interpret the result as appropriate to the nature of the enemy and your objective.
-          table:
-            - low: 1
-              high: 3
-              result: Block a path or cut off an objective
-            - low: 4
-              high: 6
-              result: Cause reckless damage
-            - low: 7
-              high: 9
-              result: Change weapons or tactics
-            - low: 10
-              high: 12
-              result: Compel a surrender or concession
-            - low: 13
-              high: 15
-              result: Coordinate with allies
-            - low: 16
-              high: 18
-              result: 'Corner, trap, or entangle'
-            - low: 19
-              high: 21
-              result: Counter or reflect an attack
-            - low: 22
-              high: 24
-              result: Create a distraction
-            - low: 25
-              high: 27
-              result: Destroy something or render it useless
-            - low: 28
-              high: 30
-              result: Fall back or stand off
-            - low: 31
-              high: 33
-              result: Hide or sneak
-            - low: 34
-              high: 36
-              result: 'Intimidate, taunt, or frighten'
-            - low: 37
-              high: 39
-              result: Leverage the advantage of a weapon or ability
-            - low: 40
-              high: 42
-              result: Leverage the terrain or surroundings
-            - low: 43
-              high: 45
-              result: Lure into a vulnerable position
-            - low: 46
-              high: 48
-              result: Make a cautious or probing attack
-            - low: 49
-              high: 51
-              result: Make a ferocious or powerful attack
-            - low: 52
-              high: 54
-              result: Make a precise or careful attack
-            - low: 55
-              high: 57
-              result: Make a sacrificial attack
-            - low: 58
-              high: 60
-              result: Make an indirect attack
-            - low: 61
-              high: 63
-              result: Move in close or grapple
-            - low: 64
-              high: 66
-              result: 'Nullify a system, device, or weapon'
-            - low: 67
-              high: 69
-              result: Overrun a position
-            - low: 70
-              high: 72
-              result: Perform a feint or trick
-            - low: 73
-              high: 75
-              result: Press an advantage
-            - low: 76
-              high: 78
-              result: Provoke a careless response
-            - low: 79
-              high: 81
-              result: Ready a decisive action
-            - low: 82
-              high: 84
-              result: Shift the fight to a new area
-            - low: 85
-              high: 87
-              result: Summon aid or reinforcements
-            - low: 88
-              high: 90
-              result: Take cover or bolster defenses
-            - low: 91
-              high: 93
-              result: Use an unexpected weapon or ability
-            - low: 94
-              high: 96
-              result: Weaken defenses
-            - low: 97
-              high: 100
-              result: Roll twice
-              rolls:
-                - times: 2
+id: starforged
+ruleset: starforged
+source:
+  date: 2022-05-06
+  page: 380
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  url: https://ironswornrpg.com
+  license: https://creativecommons.org/licenses/by/4.0
+oracles:
+  misc:
+    name: Miscellaneous Oracles
+    contents:
+      story_complication:
+        name: Story Complication
+        _source:
+          page: 380
+        # content:
+        #   part_of_speech: [fragment]
+        #   tags: [peril, event, present]
+        description: |-
+          This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the [Pay the Price](starforged/moves/fate/pay_the_price) table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.
+        table:
+          - low: 1
+            high: 4
+            result: Crucial equipment or device fails
+            # suggestions: [*roll:Object]
+          - low: 5
+            high: 7
+            result: Crucial equipment or device is sabotaged
+            # suggestions: [*roll:Object]
+          - low: 8
+            high: 10
+            result: Debt or promise comes due
+          - low: 11
+            high: 14
+            result: 'Enemy reveals unexpected powers, abilities, or influence'
+          - low: 15
+            high: 17
+            result: Enemy reveals their true agenda or nature
+          - low: 18
+            high: 20
+            result: Enemy unexpectedly benefits from your actions
+          - low: 21
+            high: 23
+            result: Key location is made inaccessible
+          - low: 24
+            high: 26
+            result: Key location is threatened or made unsafe
+          - low: 27
+            high: 29
+            result: Natural disaster is imminent
+          - low: 30
+            high: 33
+            result: Needed item or resource is unavailable
+          - low: 34
+            high: 36
+            result: Object of a quest is not what you assumed
+          - low: 37
+            high: 39
+            result: Old enemy resurfaces
+          - low: 40
+            high: 42
+            result: Simultaneous problems force a hard choice
+          - low: 43
+            high: 45
+            result: Someone important betrays your trust
+          - low: 46
+            high: 48
+            result: Someone important is threatened or endangered
+          - low: 49
+            high: 51
+            result: Someone important reveals their problematic secret or history
+          - low: 52
+            high: 54
+            result: Something important goes missing
+          - low: 55
+            high: 57
+            result: Technology or device is shown to have unexpected effects
+          - low: 58
+            high: 61
+            result: Time pressure suddenly increases
+          - low: 62
+            high: 65
+            result: Trap is sprung
+          - low: 66
+            high: 68
+            result: True agenda of a connection or patron is revealed
+          - low: 69
+            high: 72
+            result: Trusted information is shown to be false
+            # suggestions: [*roll:Event]
+          - low: 73
+            high: 76
+            result: Two seemingly unrelated problems are shown to be connected
+            # suggestions: [*roll:Event]
+          - low: 77
+            high: 80
+            result: Undermined by self-doubt or vulnerabilities
+          - low: 81
+            high: 84
+            result: Unexpected enemies appear
+          - low: 85
+            high: 88
+            result: Urgent message distracts you from your quest
+            # suggestions: [*roll:Event]
+          - low: 89
+            high: 92
+            result: You are tracked or followed
+          - low: 93
+            high: 95
+            result: You were diverted from the true crisis
+            # suggestions: [*roll:Event]
+          - low: 96
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+      story_clue:
+        name: Story Clue
+        _source:
+          page: 381
+        # usage:
+        #   max_rolls: 2
+        description: |-
+          When you [Gather Information](starforged/moves/adventure/gather_information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](starforged/moves/adventure/gather_information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.
+        table:
+          - low: 1
+            high: 3
+            result: 'Affirms a previously understood fact or clue'
+          - low: 4
+            high: 6
+            result: 'Connects to a known rumor or scandal'
+          - low: 7
+            high: 9
+            result: 'Connects to a previously unrelated mystery or quest'
+          - low: 10
+            high: 12
+            result: 'Connects to your own expertise or interests'
+          - low: 13
+            high: 15
+            result: 'Contradicts a previously understood fact or clue'
+          - low: 16
+            high: 18
+            result: 'Evokes a personal memory'
+          - low: 19
+            high: 21
+            result: 'Evokes a remarkable anomaly or phenomenon'
+          - low: 22
+            high: 24
+            result: 'Evokes a vision or prophecy'
+          - low: 25
+            high: 27
+            result: 'Involves a cultural touchstone'
+          - low: 28
+            high: 30
+            result: 'Involves a hidden or mysterious faction'
+          - low: 31
+            high: 33
+            result: 'Involves a hidden or mysterious person'
+          - low: 34
+            high: 36
+            result: 'Involves a key or means of access'
+          - low: 37
+            high: 39
+            result: 'Involves a machine or technology'
+          - low: 40
+            high: 42
+            result: 'Involves a non-human being or creature'
+          - low: 43
+            high: 45
+            result: 'Involves a notable faction'
+          - low: 46
+            high: 48
+            result: 'Involves a notable person'
+          - low: 49
+            high: 51
+            result: 'Involves a person or faction from your background'
+          - low: 52
+            high: 54
+            result: 'Involves a personal item'
+          - low: 55
+            high: 57
+            result: 'Involves an enemy or rival'
+          - low: 58
+            high: 60
+            result: 'Involves an organism or biological evidence'
+          - low: 61
+            high: 63
+            result: 'Involves an unusual ability or power'
+          - low: 64
+            high: 66
+            result: 'Involves someone you trust'
+          - low: 67
+            high: 69
+            result: 'Involves something rare, expensive, or precious'
+          - low: 70
+            high: 72
+            result: 'Leads to a distant or unfamiliar place'
+          - low: 73
+            high: 75
+            result: 'Leads to a hidden or forgotten place'
+          - low: 76
+            high: 78
+            result: 'Leads to a nearby or familiar place'
+          - low: 79
+            high: 81
+            result: 'Leads to a notable or central place'
+          - low: 82
+            high: 84
+            result: 'Suggests a history of similar incidents'
+          - low: 85
+            high: 87
+            result: 'Suggests a looming event or deadline'
+          - low: 88
+            high: 90
+            result: 'Suggests an imposter or forgery'
+          - low: 91
+            high: 100
+            result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+            rolls:
+              - oracle: starforged/oracles/core/descriptor
+              - oracle: starforged/oracles/core/focus
+      anomaly_effect:
+        name: Anomaly Effect
+        _source:
+          page: 382
+        # content:
+        #   part_of_speech: [fragment]
+        #   tags: [peril, event, present]
+        description: |-
+          Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may have devastating implications, so use it only in rare and dramatic moments.
+        table:
+          - low: 1
+            high: 3
+            result: Alters or focuses gravity
+          - low: 4
+            high: 6
+            result: Alters or reshapes nonliving matter
+          - low: 7
+            high: 9
+            result: Alters surrounding air or atmosphere
+          - low: 10
+            high: 12
+            result: Alters surrounding ecosystems
+          - low: 13
+            high: 15
+            result: Awakens the dead
+          - low: 16
+            high: 18
+            result: Causes distressing visions or nightmares
+          - low: 19
+            high: 21
+            result: Causes rapid biological growth or infestation
+          - low: 22
+            high: 24
+            result: Causes sickness or weakness
+          - low: 25
+            high: 27
+            result: Corrupts living matter
+          - low: 28
+            high: 30
+            result: Corrupts or infects devices or computers
+          - low: 31
+            high: 33
+            result: Creates manifestations or illusions
+          - low: 34
+            high: 36
+            result: Decays or weakens surrounding terrain or structures
+          - low: 37
+            high: 39
+            result: Drains energy from equipment or devices
+          - low: 40
+            high: 42
+            result: Emits forceful or destructive energy
+          - low: 43
+            high: 45
+            result: Emits radiation
+          - low: 46
+            high: 48
+            result: Generates a barrier or ward
+          - low: 49
+            high: 51
+            result: Generates intense lights and sounds
+          - low: 52
+            high: 54
+            result: Generates tendrils of energy that slither or grasp
+          - low: 55
+            high: 57
+            result: Harvests or destroys living matter
+          - low: 58
+            high: 60
+            result: Harvests or destroys nonliving matter
+          - low: 61
+            high: 63
+            result: Nullifies or destroys equipment or devices
+          - low: 64
+            high: 66
+            result: Opens a path to another location
+          - low: 67
+            high: 69
+            result: Replicates living matter
+          - low: 70
+            high: 72
+            result: Replicates nonliving matter
+          - low: 73
+            high: 75
+            result: Reveals glimpses of the distant past
+          - low: 76
+            high: 78
+            result: Reveals glimpses of the far future
+          - low: 79
+            high: 81
+            result: Reverses time by a few moments or minutes
+          - low: 82
+            high: 84
+            result: Slows or stops time
+          - low: 85
+            high: 87
+            result: Summons or manifests an ancient being or intelligence
+          - low: 88
+            high: 90
+            result: Summons or manifests creatures
+          - low: 91
+            high: 93
+            result: Transports to another location
+          - low: 94
+            high: 96
+            result: Triggers an impending catastrophic explosion
+          - low: 97
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+      combat_action:
+        name: Combat Action
+        _source:
+          page: 383
+        # content:
+        #   part_of_speech: [fragment]
+        #   tags: [peril, event, present]
+        description: |-
+          Use this oracle to help inspire an action for a foe in a fight. When you’re not sure what an enemy does next, particularly when they have you in a bad spot, roll on this table and interpret the result as appropriate to the nature of the enemy and your objective.
+        table:
+          - low: 1
+            high: 3
+            result: Block a path or cut off an objective
+          - low: 4
+            high: 6
+            result: Cause reckless damage
+          - low: 7
+            high: 9
+            result: Change weapons or tactics
+          - low: 10
+            high: 12
+            result: Compel a surrender or concession
+          - low: 13
+            high: 15
+            result: Coordinate with allies
+          - low: 16
+            high: 18
+            result: 'Corner, trap, or entangle'
+          - low: 19
+            high: 21
+            result: Counter or reflect an attack
+          - low: 22
+            high: 24
+            result: Create a distraction
+          - low: 25
+            high: 27
+            result: Destroy something or render it useless
+          - low: 28
+            high: 30
+            result: Fall back or stand off
+          - low: 31
+            high: 33
+            result: Hide or sneak
+          - low: 34
+            high: 36
+            result: 'Intimidate, taunt, or frighten'
+          - low: 37
+            high: 39
+            result: Leverage the advantage of a weapon or ability
+          - low: 40
+            high: 42
+            result: Leverage the terrain or surroundings
+          - low: 43
+            high: 45
+            result: Lure into a vulnerable position
+          - low: 46
+            high: 48
+            result: Make a cautious or probing attack
+          - low: 49
+            high: 51
+            result: Make a ferocious or powerful attack
+          - low: 52
+            high: 54
+            result: Make a precise or careful attack
+          - low: 55
+            high: 57
+            result: Make a sacrificial attack
+          - low: 58
+            high: 60
+            result: Make an indirect attack
+          - low: 61
+            high: 63
+            result: Move in close or grapple
+          - low: 64
+            high: 66
+            result: 'Nullify a system, device, or weapon'
+          - low: 67
+            high: 69
+            result: Overrun a position
+          - low: 70
+            high: 72
+            result: Perform a feint or trick
+          - low: 73
+            high: 75
+            result: Press an advantage
+          - low: 76
+            high: 78
+            result: Provoke a careless response
+          - low: 79
+            high: 81
+            result: Ready a decisive action
+          - low: 82
+            high: 84
+            result: Shift the fight to a new area
+          - low: 85
+            high: 87
+            result: Summon aid or reinforcements
+          - low: 88
+            high: 90
+            result: Take cover or bolster defenses
+          - low: 91
+            high: 93
+            result: Use an unexpected weapon or ability
+          - low: 94
+            high: 96
+            result: Weaken defenses
+          - low: 97
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2

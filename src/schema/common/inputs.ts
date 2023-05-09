@@ -19,25 +19,32 @@ export function Select<T extends TSchema>(t: T) {
 	})
 }
 
-export const NumberRange = (
+const NumberRange = (
 	min: TSchema = Type.Integer(),
-	max: TSchema = Type.Optional(Type.Integer())
+	max: TSchema = Type.Optional(Type.Integer()),
+	value: TSchema = Type.Optional(Type.Integer())
 ) =>
 	Type.Object({
 		min,
-		max
+		max,
+		value
 	})
 
-export const Clock = NumberRange(
+const Clock = NumberRange(
 	Type.Literal(0),
-	Utils.IntegerEnum([4, 6, 8, 10])
+	Utils.IntegerEnum([4, 6, 8, 10]),
+	Type.Optional(Type.Integer({ default: 0 }))
 )
 export type Clock = Static<typeof Clock>
 
 export const Meter = NumberRange(Type.Integer({ default: 0 }), Type.Integer())
 export type Meter = Static<typeof Meter>
 
-export const Counter = NumberRange()
+const Counter = NumberRange(
+	Type.Literal(0),
+	Type.Optional(Type.Integer()),
+	Type.Optional(Type.Integer({ default: 0 }))
+)
 export type Counter = Static<typeof Counter>
 
 export function SelectOption<T extends TSchema>(t: T) {
@@ -46,6 +53,11 @@ export function SelectOption<T extends TSchema>(t: T) {
 		value: t,
 		selected: Type.Optional(Type.Boolean())
 	})
+}
+export interface SelectOption<T> {
+	label: string
+	value: T
+	selected?: boolean
 }
 
 export const SelectFieldType = Utils.StringEnum([
@@ -79,6 +91,12 @@ function InputField<T extends InputFieldType, V extends TSchema>(
 		},
 		{ ...options }
 	)
+}
+export interface InputField<T extends InputFieldType, V> {
+	id: string
+	label: string
+	field_type: T
+	value?: V
 }
 
 export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
@@ -142,6 +160,9 @@ export function SelectField<T extends SelectFieldType, V extends TSchema>(
 		},
 		options
 	)
+}
+export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
+	options: Record<string, SelectOption<T>>
 }
 
 export const SelectFieldStat = SelectField(

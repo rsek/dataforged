@@ -69,15 +69,15 @@
 		},
 		"AssetAbilityID": {
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/abilities\\/[0-2]$"
 		},
 		"AssetAbilityOptionFieldID": {
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/options\\/[a-z_]+$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/abilities\\/[0-2]\\/options\\/[a-z_]+$"
 		},
 		"AssetAbilityControlFieldID": {
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/[0-2]\\/controls\\/[a-z_]+$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets(\\/[a-z_]+){2}\\/abilities\\/[0-2]\\/controls\\/[a-z_]+$"
 		},
 		"DelveSiteID": {
 			"examples": ["delve/delve_sites/alvas_rest"],
@@ -119,17 +119,20 @@
 			"description": "A move ID, for a standard move or a unique asset move",
 			"examples": [
 				"classic/moves/combat/strike",
-				"starforged/assets/module/grappler/moves/ready_grappler"
+				"starforged/assets/module/grappler/abilities/0/moves/ready_grappler"
 			],
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/moves\\/[a-z_]+)$"
+			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z_]+\\/[a-z_]+|assets\\/[a-z_]+\\/[a-z_]+\\/abilities\\/[0-2]\\/moves\\/[a-z_]+)$"
 		},
 		"MoveIDWildcard": {
 			"title": "Move ID (with wildcard)",
 			"description": "A move ID with wildcards",
-			"examples": ["*/moves/*/face_danger", "*/assets/ritual/*/moves/*"],
+			"examples": [
+				"*/moves/*/face_danger",
+				"*/assets/ritual/*/abilities/*/moves/*"
+			],
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/moves\\/([a-z_]+|\\*))$"
+			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/abilities\\/([0-2]|\\*)\\/moves\\/([a-z_]+|\\*))$"
 		},
 		"MoveCategoryID": {
 			"examples": ["starforged/collections/moves/adventure"],
@@ -783,6 +786,8 @@
 			"type": "object",
 			"properties": {
 				"max": { "type": "integer" },
+				"value": { "type": "integer" },
+				"label": { "$ref": "#/$defs/Label" },
 				"controls": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -793,7 +798,7 @@
 				"min": { "default": 0, "type": "integer" },
 				"id": { "$ref": "#/$defs/AssetConditionMeterID" }
 			},
-			"required": ["max"]
+			"required": ["max", "label"]
 		},
 		"AssetConditionMeterExtension": {
 			"type": "object",
@@ -1011,7 +1016,7 @@
 			"properties": {
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "counter", "type": "string" },
-				"min": { "type": "integer" },
+				"min": { "const": 0, "type": "number" },
 				"max": { "type": "integer" },
 				"id": { "type": "string" },
 				"value": { "default": 0, "type": "integer" }
@@ -1356,48 +1361,39 @@
 		}
 	},
 	"type": "object",
-	"patternProperties": {
-		"^[a-z0-9_]{3,}$": {
-			"title": "Sourcebook (Starforged)",
+	"properties": {
+		"id": { "type": "string", "pattern": "^[a-z0-9_]{3,}$" },
+		"ruleset": { "const": "starforged", "type": "string" },
+		"source": { "$ref": "#/$defs/Source" },
+		"oracles": {
+			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"properties": {
-				"ruleset": { "const": "starforged", "type": "string" },
-				"source": { "$ref": "#/$defs/Source" },
-				"oracles": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
-					}
-				},
-				"moves": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/MoveCategory" }
-					}
-				},
-				"assets": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/AssetType" } }
-				},
-				"encounters": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/EncounterStarforged" }
-					}
-				},
-				"setting_truths": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/SettingTruth" }
-					}
-				}
-			},
-			"required": ["ruleset", "source"]
+			"patternProperties": {
+				"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
+			}
+		},
+		"moves": {
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/MoveCategory" } }
+		},
+		"assets": {
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/AssetType" } }
+		},
+		"encounters": {
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-z_]+$": { "$ref": "#/$defs/EncounterStarforged" }
+			}
+		},
+		"setting_truths": {
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/SettingTruth" } }
 		}
-	}
+	},
+	"required": ["id", "ruleset", "source"]
 }

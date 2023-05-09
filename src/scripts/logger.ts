@@ -8,7 +8,7 @@ const logFormat = printf(
 		`${timestamp as string} [${label as string}] ${level}: ${message as string}`
 )
 
-const logger = Winston.createLogger({
+const log = Winston.createLogger({
 	format: combine(
 		label({ label: 'Dataforged' }),
 		timestamp({ format: 'hh:mm:ss.SSS' }),
@@ -17,4 +17,4 @@ const logger = Winston.createLogger({
 	transports: [new Winston.transports.Console({})]
 })
 
-export { logger }
+export { log }

@@ -165,14 +165,8 @@ export type WorldTruthID = string;
 /**
  * Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.
  */
-export interface DataswornV200Dev {
-  [k: string]: SourcebookClassic;
-}
-/**
- * This interface was referenced by `DataswornV200Dev`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z0-9_]{3,}$".
- */
 export interface SourcebookClassic {
+  id: string;
   ruleset: "classic";
   source: Source;
   oracles?: {
@@ -275,10 +269,10 @@ export interface Suggestions {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
-  site_domains: DelveSiteDomainID[];
-  site_themes: DelveSiteThemeID[];
-  encounters: EncounterClassicID[];
-  regions: RegionEntryID[];
+  site_domains?: DelveSiteDomainID[];
+  site_themes?: DelveSiteThemeID[];
+  encounters?: EncounterClassicID[];
+  regions?: RegionEntryID[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -602,7 +596,7 @@ export interface CounterField {
   label: Label;
   field_type: "counter";
   value?: number;
-  min: number;
+  min: 0;
   max?: number;
 }
 /**
@@ -671,7 +665,9 @@ export interface MoveOutcomeExtension {
 export interface AssetConditionMeter1 {
   min: number;
   max: number;
+  value?: number;
   id: AssetConditionMeterID;
+  label: Label;
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };

@@ -7,6 +7,7 @@ import {
 import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
+import { Label } from 'schema/common/localize'
 import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'
 
@@ -42,6 +43,7 @@ export const AssetConditionMeter = Type.Object(
 	{
 		...Inputs.Meter.properties,
 		id: Type.Ref(ID.AssetConditionMeterID),
+		label: Type.Ref(Label),
 		controls: Type.Optional(
 			Dictionary(Type.Ref(AssetConditionMeterControlField))
 		)

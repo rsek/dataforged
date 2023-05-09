@@ -2,11 +2,13 @@ import {
 	type TSchema,
 	Type,
 	type ObjectOptions,
-	type Static
+	type TOptional,
+	type TRecord,
+	type TString,
+	type TRef
 } from '@sinclair/typebox'
 
 import { mapValues } from 'lodash'
-import { writeFileSync } from 'fs'
 import { Metadata, Abstract } from 'schema/common'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
@@ -14,68 +16,65 @@ import * as Assets from 'schema/assets'
 
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
-import { DICT_KEY } from 'schema/common/abstract'
 
-export const NAMESPACE_KEY = /^[a-z0-9_]{3,}$/
+export const SOURCEBOOK_KEY = Type.RegEx(/^[a-z0-9_]{3,}$/)
 
-export const DATASWORN_VERSION = '2.0.0'
-export const DATAFORGED_VERSION = '2.0.0'
-
-function Sourcebook<T extends Metadata.Ruleset>(
+function Sourcebook<T extends Metadata.Ruleset, K extends string>(
 	ruleset: T,
-	contents: Record<string, TSchema>,
+	contents: Record<K, TSchema>,
 	options: ObjectOptions = {}
 ) {
-	return Type.Object(
+	const sourcebookEntries = mapValues(contents, (v) =>
+		Type.Optional(Abstract.Dictionary(Type.Ref(v)))
+	) as {
+		[x in keyof typeof contents]: TOptional<
+			TRecord<TString, TRef<(typeof contents)[x]>>
+		>
+	}
+	const meta = {
+		id: SOURCEBOOK_KEY,
+		ruleset: Type.Literal(ruleset),
+		source: Type.Ref(Metadata.Source)
+	}
+	const result = Type.Object(
 		{
-			// id: DICT_KEY,
-			ruleset: Type.Literal(ruleset),
-			source: Type.Ref(Metadata.Source),
-			...mapValues(contents, (v) =>
-				Type.Optional(Abstract.Dictionary(Type.Ref(v)))
-			)
+			...meta,
+			...sourcebookEntries
+		} as typeof sourcebookEntries & typeof meta,
+		options
+	)
+	return result
+}
+
+export function SourcebookClassic(options: ObjectOptions) {
+	return Sourcebook(
+		'classic',
+		{
+			oracles: Oracles.OracleCollection,
+			moves: Moves.MoveCategory,
+			assets: Assets.AssetType,
+			regions: RulesetClassic.RegionEntry,
+			encounters: RulesetClassic.EncounterCollectionClassic,
+			rarities: RulesetClassic.Rarity,
+			delve_sites: RulesetClassic.DelveSite,
+			site_themes: RulesetClassic.DelveSiteTheme,
+			site_domains: RulesetClassic.DelveSiteDomain,
+			world_truths: RulesetClassic.WorldTruth
 		},
 		options
 	)
 }
 
-export const SourcebookClassic = Sourcebook(
-	'classic',
-	{
-		oracles: Oracles.OracleCollection,
-		moves: Moves.MoveCategory,
-		assets: Assets.AssetType,
-		regions: RulesetClassic.RegionEntry,
-		encounters: RulesetClassic.EncounterCollectionClassic,
-		rarities: RulesetClassic.Rarity,
-		delve_sites: RulesetClassic.DelveSite,
-		site_themes: RulesetClassic.DelveSiteTheme,
-		site_domains: RulesetClassic.DelveSiteDomain,
-		world_truths: RulesetClassic.WorldTruth
-	},
-	{
-		title: 'Sourcebook (classic)'
-	}
-)
-export type SourcebookClassic = Static<typeof SourcebookClassic>
-
-export const SourcebookStarforged = Sourcebook(
-	'starforged',
-	{
-		oracles: Oracles.OracleCollection,
-		moves: Moves.MoveCategory,
-		assets: Assets.AssetType,
-		encounters: RulesetStarforged.EncounterStarforged,
-		setting_truths: RulesetStarforged.SettingTruth
-	},
-	{
-		title: 'Sourcebook (Starforged)'
-	}
-)
-
-export type SourcebookStarforged = Static<typeof SourcebookStarforged>
-
-writeFileSync(
-	'./dataforged.schema.json',
-	JSON.stringify(SourcebookStarforged, undefined, '\t')
-)
+export function SourcebookStarforged(options: ObjectOptions) {
+	return Sourcebook(
+		'starforged',
+		{
+			oracles: Oracles.OracleCollection,
+			moves: Moves.MoveCategory,
+			assets: Assets.AssetType,
+			encounters: RulesetStarforged.EncounterStarforged,
+			setting_truths: RulesetStarforged.SettingTruth
+		},
+		options
+	)
+}

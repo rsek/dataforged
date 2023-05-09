@@ -147,14 +147,8 @@ export type SettingTruthID = string;
 /**
  * Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.
  */
-export interface DataforgedV200Dev {
-  [k: string]: SourcebookStarforged;
-}
-/**
- * This interface was referenced by `DataforgedV200Dev`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z0-9_]{3,}$".
- */
 export interface SourcebookStarforged {
+  id: string;
   ruleset: "starforged";
   source: Source;
   oracles?: {
@@ -566,7 +560,7 @@ export interface CounterField {
   label: Label;
   field_type: "counter";
   value?: number;
-  min: number;
+  min: 0;
   max?: number;
 }
 /**
@@ -635,7 +629,9 @@ export interface MoveOutcomeExtension {
 export interface AssetConditionMeter1 {
   min: number;
   max: number;
+  value?: number;
   id: AssetConditionMeterID;
+  label: Label;
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
