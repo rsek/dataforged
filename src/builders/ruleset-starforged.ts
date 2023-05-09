@@ -7,6 +7,7 @@ import {
 	sourcedTransformer,
 	type SourceHaver
 } from './transformer'
+import { trackID } from 'builders/id-tracker'
 
 export const EncounterStarforged = sourcedTransformer<
 	In.EncounterStarforged,
@@ -44,7 +45,7 @@ export const SettingTruthOption: Transformer<
 		key: string | number,
 		parent: SourceHaver
 	): string {
-		return `${parent.id}/${key}`
+		return trackID(`${parent.id}/${key}`)
 	}
 }
 

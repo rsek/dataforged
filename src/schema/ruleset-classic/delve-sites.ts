@@ -84,6 +84,9 @@ export const DelveSite = Abstract.SourcedNode(
 
 export type DelveSite = Static<typeof DelveSite>
 
+export type DelveSiteCardType = 'theme' | 'domain'
+export type DelveSiteCardRowType = 'feature' | 'danger'
+
 const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
 	Abstract.SourcedNode(
 		{

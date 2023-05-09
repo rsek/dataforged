@@ -130,7 +130,7 @@ export const DelveSiteID = Type.RegEx(/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$/, {
 export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
 
 export const DelveSiteDenizenID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$\/denizens\/(0|[1-9][0-9]+)-(0|[1-9][0-9]+)/,
+	/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$\/denizens\/[1-9][0-9]*-[1-9][0-9]*/,
 	{
 		examples: ['delve/delve_sites/alvas_rest/denizens/1-27'],
 		$id: '#/$defs/DelveSiteDenizenID'
@@ -220,7 +220,7 @@ export const OracleTableRowID = Type.RegEx(
 			'starforged/oracles/derelicts/zones/starship/0'
 		],
 		description:
-			"Normally, rows will end with two numbers separated by a dash, representing their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
+			"Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
 		$id: '#/$defs/OracleTableRowID'
 	}
 )

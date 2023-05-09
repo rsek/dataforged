@@ -1,4 +1,5 @@
-import { cloneDeep, forEach, mapValues, merge, set } from 'lodash'
+import { trackID } from 'builders/id-tracker'
+import { cloneDeep, forEach, mapValues, merge } from 'lodash'
 import { type Source } from 'schema'
 import { type Collection } from 'schema/common/abstract'
 import { type SetOptional } from 'type-fest'
@@ -23,12 +24,14 @@ export function sourcedTransformer<
 			key: string | number,
 			parent: SourceHaver | null
 		): string {
-			if (data.id != null) return data.id
+			if (data.id != null) return trackID(data.id)
+
 			if (parent == null)
 				throw new Error(
 					'Data has no ID of its own, and no parent to generate its own ID from'
 				)
-			return parent.id.replace('/collections/', '/') + `/${key}`
+
+			return trackID(parent.id.replace('/collections/', '/') + `/${key}`)
 		},
 		source: function (
 			data: TIn,
@@ -41,7 +44,8 @@ export function sourcedTransformer<
 					'Data has no Source object of its own, and no parent to inherit from'
 				)
 			const result = merge(cloneDeep(parent.source), data._source ?? {})
-			data._source = undefined
+			delete data._source
+			delete (result as any)._source
 			return result
 		},
 		...partialTransformer
@@ -81,12 +85,15 @@ export function collectionTransformer<
 			if (parent == null)
 				throw new Error(`No inheritable source data for ${key}`)
 			const result = merge(cloneDeep(parent.source), data._source ?? {})
-			data._source = undefined
+			delete data._source
+			delete (result as any)._source
 			return result
 		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
-			if (parent.id.includes('/collections/')) return `${parent.id}/${key}`
-			return `${parent.id}/collections/${collectionKey}/${key}`
+			if (parent.id.includes('/collections/'))
+				return trackID(`${parent.id}/${key}`)
+
+			return trackID(`${parent.id}/collections/${collectionKey}/${key}`)
 		},
 		contents: function (
 			this: SourceHaver,
@@ -155,10 +162,10 @@ export function transform<
 		if (!initialKeys.includes(k as any)) {
 			// @ts-expect-error bind and iterate over remaining keys
 			result[k] = transform.bind(result)(data, key, parent)
-			// @ts-expect-error fff
-			result[k] = set(result[k] as any, '_source', undefined)
 		}
 	})
+	// @ts-expect-error rm internal source prop
+	delete result._source
 
-	return set(result, '_source', undefined) as TOut
+	return result as TOut
 }

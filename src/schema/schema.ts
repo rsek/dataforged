@@ -75,7 +75,7 @@ export const Dataforged = SourcebookStarforged({
 	title: `Dataforged v${DATAFORGED_VERSION}`,
 	description:
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
-	$defs: {
+	$defs: cloneDeep({
 		...ID,
 		...Localize,
 		...Enum,
@@ -83,7 +83,7 @@ export const Dataforged = SourcebookStarforged({
 		...Moves,
 		...Assets,
 		...RulesetStarforged
-	}
+	})
 })
 
 export const DataforgedInput = SourcebookStarforged({
@@ -101,7 +101,7 @@ export const Datasworn = SourcebookClassic({
 	title: `Datasworn v${DATASWORN_VERSION}`,
 	description:
 		'Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
-	$defs: {
+	$defs: cloneDeep({
 		...ID,
 		...Localize,
 		...Enum,
@@ -109,7 +109,7 @@ export const Datasworn = SourcebookClassic({
 		...Moves,
 		...Assets,
 		...RulesetClassic
-	}
+	})
 })
 
 export const DataswornInput = SourcebookClassic({

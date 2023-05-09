@@ -26,12 +26,6 @@
 		"source.fixAll.eslint": true
 	},
 	"yaml.format.enable": true,
-	"yaml.schemas": {
-		"src/data-in/starforged-input.schema.json": [
-			"src/data-in/starforged/**/*.yaml"
-		],
-		"src/data-in/classic-input.schema.json": ["src/data-in/classic/**/*.yaml"]
-	},
 	"yaml.completion": true,
 	"yaml.suggest.parentSkeletonSelectedFirst": true,
 	"yaml.style.flowMapping": "forbid",
@@ -42,15 +36,23 @@
 
 	"editor.foldingImportsByDefault": true,
 	"json.validate.enable": true,
-	"json.format.enable": false,
+	"yaml.schemas": {
+		"./src/data-in/starforged-input.schema.json": [
+			"./src/data-in/starforged/**/*.yaml"
+		],
+		"./src/data-in/classic-input.schema.json": [
+			"./src/data-in/classic/**/*.yaml"
+		]
+	},
 	"json.schemas": [
 		{
-			"fileMatch": ["./src/data-out/starforged/*/*.json"],
-			"url": "./src/data-out/starforged.schema.json"
+			"url": "./src/data-out/classic.schema.json",
+			"fileMatch": ["./src/data-out/classic/*/*.json"]
 		},
 		{
-			"fileMatch": ["./src/data-out/classic/*/*.json"],
-			"url": "./src/data-out/classic.schema.json"
+			"url": "./src/data-out/starforged.schema.json",
+			"fileMatch": ["./src/data-out/starforged/*/*.json"]
 		}
-	]
+	],
+	"json.format.enable": false
 }

@@ -60,7 +60,7 @@ export const SourcebookStarforged = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/encounters` },
+				{ source: data.source, id: `${data.id}/encounters` },
 				EncounterStarforged
 			)
 		)
@@ -75,7 +75,7 @@ export const SourcebookStarforged = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/setting_truths` },
+				{ source: data.source, id: `${data.id}/setting_truths` },
 				SettingTruth
 			)
 		)
@@ -117,7 +117,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/regions` },
+				{ source: data.source, id: `${data.id}/regions` },
 				RegionEntry
 			)
 		)
@@ -132,7 +132,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/rarities` },
+				{ source: data.source, id: `${data.id}/rarities` },
 				Rarity
 			)
 		)
@@ -147,7 +147,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/delve_sites` },
+				{ source: data.source, id: `${data.id}/delve_sites` },
 				DelveSite
 			)
 		)
@@ -162,7 +162,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/site_themes` },
+				{ source: data.source, id: `${data.id}/site_themes` },
 				DelveSiteTheme
 			)
 		)
@@ -177,7 +177,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/site_domains` },
+				{ source: data.source, id: `${data.id}/site_domains` },
 				DelveSiteDomain
 			)
 		)
@@ -192,7 +192,7 @@ export const SourcebookClassic = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id as string}/world_truths` },
+				{ source: data.source, id: `${data.id}/world_truths` },
 				WorldTruth
 			)
 		)

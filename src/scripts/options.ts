@@ -19,7 +19,7 @@ function cleanSchema(schema: JSONSchema7) {
 	if (data.$defs == null) throw new Error('Schema is missing $defs')
 
 	data.$defs = mapValues(data.$defs, (value) => {
-		delete value.$id
+		delete (value as any).$id
 		return value
 	})
 

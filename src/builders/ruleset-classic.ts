@@ -7,6 +7,12 @@ import {
 	type SourceHaver,
 	transform
 } from './transformer'
+import { trackID } from 'builders/id-tracker'
+import {
+	type DelveSiteCardRowType,
+	type DelveSiteCardType
+} from 'schema/ruleset-classic/delve-sites'
+import { cloneDeep } from 'lodash'
 
 export const EncounterClassic = sourcedTransformer<
 	In.EncounterClassic,
@@ -18,14 +24,102 @@ export const EncounterCollectionClassic = collectionTransformer<
 	Out.EncounterCollectionClassic
 >('encounters', EncounterClassic, {})
 
+type FeatureOrDangerData =
+	| In.DelveSiteThemeDangerRow
+	| In.DelveSiteThemeFeatureRow
+	| In.DelveSiteDomainDangerRow
+	| In.DelveSiteDomainFeatureRow
+
+type FeatureOrDanger =
+	| Out.DelveSiteThemeDangerRow
+	| Out.DelveSiteThemeFeatureRow
+	| Out.DelveSiteDomainDangerRow
+	| Out.DelveSiteDomainFeatureRow
+
+interface FeatureOrDangerMap
+	extends Record<
+		DelveSiteCardType,
+		Record<DelveSiteCardRowType, FeatureOrDanger>
+	> {
+	theme: {
+		feature: Out.DelveSiteThemeFeatureRow
+		danger: Out.DelveSiteThemeDangerRow
+	}
+	domain: {
+		feature: Out.DelveSiteDomainFeatureRow
+		danger: Out.DelveSiteDomainDangerRow
+	}
+}
+
+function featureOrDanger<TCard extends keyof FeatureOrDangerMap>(
+	data: FeatureOrDangerData,
+	rowType: keyof FeatureOrDangerMap[TCard],
+	parentID: string
+) {
+	if (!(typeof data.low === 'number' && typeof data.high === 'number'))
+		throw new Error(
+			`Expected numeric low and high for delve card feature/danger row: ${JSON.stringify(
+				data
+			)}`
+		)
+	const id = trackID(
+		`${parentID}/${rowType as string}s/${data.low}-${data.high}`
+	)
+	const result = cloneDeep(data) as FeatureOrDangerMap[TCard][typeof rowType]
+	result.id = id
+	return result
+}
+
 export const DelveSiteTheme = sourcedTransformer<
 	In.DelveSiteTheme,
 	Out.DelveSiteTheme
->({})
+>({
+	features: function (
+		this: SourceHaver,
+		data: In.DelveSiteTheme,
+		key: string | number,
+		parent: SourceHaver
+	) {
+		return data.features.map((row) =>
+			featureOrDanger(row, 'feature', this.id)
+		) as Out.DelveSiteTheme['features']
+	},
+	dangers: function (
+		this: SourceHaver,
+		data: In.DelveSiteTheme,
+		key: string | number,
+		parent: SourceHaver
+	) {
+		return data.dangers.map((row) =>
+			featureOrDanger(row, 'danger', this.id)
+		) as Out.DelveSiteTheme['dangers']
+	}
+})
 export const DelveSiteDomain = sourcedTransformer<
 	In.DelveSiteDomain,
 	Out.DelveSiteDomain
->({})
+>({
+	features: function (
+		this: SourceHaver,
+		data: In.DelveSiteDomain,
+		key: string | number,
+		parent: SourceHaver
+	) {
+		return data.features.map((row) =>
+			featureOrDanger(row, 'feature', this.id)
+		) as Out.DelveSiteDomain['features']
+	},
+	dangers: function (
+		this: SourceHaver,
+		data: In.DelveSiteDomain,
+		key: string | number,
+		parent: SourceHaver
+	) {
+		return data.dangers.map((row) =>
+			featureOrDanger(row, 'danger', this.id)
+		) as Out.DelveSiteDomain['dangers']
+	}
+})
 
 export const DelveSite = sourcedTransformer<In.DelveSite, Out.DelveSite>({
 	denizens(data, key, parent) {
@@ -44,7 +138,7 @@ export const DelveSiteDenizen: Transformer<
 		key: string | number,
 		parent: SourceHaver
 	): string {
-		return `${parent.id}/denizens/${data.low}-${data.high}`
+		return trackID(`${parent.id}/denizens/${data.low}-${data.high}`)
 	}
 }
 
@@ -63,7 +157,7 @@ export const WorldTruthOption: Transformer<
 		key: string | number,
 		parent: SourceHaver
 	): string {
-		return `${parent.id}/${key}`
+		return trackID(`${parent.id}/${key}`)
 	}
 }
 export const WorldTruth = sourcedTransformer<In.WorldTruth, Out.WorldTruth>({

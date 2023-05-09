@@ -9,6 +9,7 @@ import {
 } from './transformer'
 import { cloneDeep, mapValues } from 'lodash'
 import { Move } from 'builders/moves'
+import { trackID } from 'builders/id-tracker'
 
 export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 	options: function (
@@ -58,7 +59,7 @@ export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 		meter.id = `${this.id}/condition_meter`
 		if (meter.controls != null) {
 			meter.controls = mapValues(meter.controls, (field, fieldKey) => {
-				field.id = `${meter.id as string}/controls/${fieldKey}`
+				field.id = trackID(`${meter.id as string}/controls/${fieldKey}`)
 				return field
 			})
 		}
@@ -72,7 +73,7 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 		key: string | number,
 		parent: SourceHaver
 	): string {
-		return `${parent.id}/abilities/${key}`
+		return trackID(`${parent.id}/abilities/${key}`)
 	},
 	moves: function (
 		this: SourceHaver,

@@ -1,3 +1,4 @@
+import { trackID } from 'builders/id-tracker'
 import {
 	transform,
 	collectionTransformer,
@@ -16,7 +17,9 @@ export const OracleTableRow: Transformer<
 	id(data: SchemaIn.OracleTableRow, key: string | number, parent: SourceHaver) {
 		// if the row has a valid range, use that instead of the index
 		if (data.high != null && data.low != null) key = `${data.low}-${data.high}`
-		return `${parent.id}/${key}`
+		const id = `${parent.id}/${key}`
+
+		return trackID(id)
 	}
 }
 

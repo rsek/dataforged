@@ -27,7 +27,7 @@ export type CSSColor = string;
  */
 export type MarkdownString = string;
 /**
- * Normally, rows will end with two numbers separated by a dash, representing their dice range.
+ * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
  *
  * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
  */

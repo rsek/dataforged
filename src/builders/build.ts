@@ -23,12 +23,15 @@ import { type Ruleset } from 'schema/ruleset-starforged'
 export const DIR_IN = 'src/data-in'
 export const DIR_OUT = 'src/data-out'
 export const ajv = new Ajv({
-	removeAdditional: true,
+	// remove properties not defined in the schema object.
+	removeAdditional: 'failing',
+	// assign defaults from the schema to the validated data properties.
 	useDefaults: true,
+	// change data type, when possible, to match the type(s) in the schema.
+	coerceTypes: true,
 	strictSchema: 'log',
 	verbose: true,
-	logger: log,
-	coerceTypes: true
+	logger: log
 })
 
 addFormats(ajv)
@@ -117,7 +120,7 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 			throw new Error(`Expected ruleset "${ruleset}" but got "${data.ruleset}"`)
 		if (data.id !== id)
 			throw new Error(
-				`Expected sourcebook with ID "${id}" but got "${data.id as string}"`
+				`Expected sourcebook with ID "${id}" but got "${data.id}"`
 			)
 
 		merge(sourcebook, data)
@@ -140,4 +143,9 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 	}
 }
 
+// TODO: invert the logic for this so that it infers from directory structure
+
 buildSourcebook('starforged', 'starforged').catch((e) => log.info(e))
+
+buildSourcebook('classic', 'classic').catch((e) => log.info(e))
+buildSourcebook('classic', 'delve').catch((e) => log.info(e))
