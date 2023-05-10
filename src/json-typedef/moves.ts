@@ -1,9 +1,9 @@
-import type * as Types from 'schema'
+import * as Types from 'schema'
 import { type JTDSchemaType } from 'ajv/dist/core'
 import { toJtdEnum, toJtdId } from 'json-typedef/utils'
 import * as JTD from 'jtd'
 import { PartialDeep, Simplify } from 'type-fest'
-import * as JSONSchema from '@schema-json'
+import { SuggestionsBase } from 'schema/common/metadata'
 
 export type JTDEnum<T extends string> = JTD.SchemaFormEnum & {
 	enum: T[]
@@ -25,7 +25,9 @@ export const MoveRerollMethod: JTDEnum<Types.Moves.MoveRerollMethod> = {
 	}
 }
 
-export const MoveRollMethod: JTDEnum<Types.Moves.MoveRollMethod> = {
+export const MoveRollMethod: JTDEnum<
+	Types.Moves.MoveRollMethod | Types.Moves.MoveOutcomeType
+> = {
 	enum: ['any', 'highest', 'lowest', 'all', 'miss', 'strong_hit', 'weak_hit'],
 	metadata: {
 		enumDescription: {
@@ -59,12 +61,12 @@ export const MoveCategory: JTDSchemaType<
 	properties: {
 		id: { ref: 'MoveCategoryID' },
 		name: { ref: 'Label' },
-		source: { ref: 'Source' },
-		color: { ref: 'CSSColor' },
-		summary: { ref: 'MarkdownString' },
-		contents: { values: { ref: 'Move' } }
+		source: { ref: 'Source' }
 	},
 	optionalProperties: {
+		contents: { values: { ref: 'Move' } },
+		summary: { ref: 'MarkdownString' },
+		color: { ref: 'CSSColor' },
 		canonical_name: { ref: 'Label' },
 		description: { ref: 'MarkdownString' },
 		suggestions: { ref: 'Suggestions' }
@@ -82,55 +84,95 @@ export const MoveOutcomeType: JTDEnum<Types.Moves.MoveOutcomeType> = {
 	}
 }
 
+export const TriggerActionRoll: JTDSchemaType<
+	Types.Moves.TriggerActionRoll,
+	{
+		TriggerActionRollCondition: Types.Moves.TriggerActionRollCondition
+	}
+> = {
+	properties: {
+		conditions: { elements: { ref: 'TriggerActionRollCondition' } },
+		text: { type: 'string' }
+	}
+}
+
+export const TriggerProgressRoll: JTDSchemaType<
+	Types.Moves.TriggerProgressRoll,
+	{
+		TriggerProgressRollCondition: Types.Moves.TriggerProgressRollCondition
+	}
+> = {
+	properties: {
+		conditions: { elements: { ref: 'TriggerProgressRollCondition' } },
+		text: { type: 'string' }
+	}
+}
+export const TriggerNoRoll: JTDSchemaType<
+	Types.Moves.TriggerNoRoll,
+	{
+		TriggerNoRollCondition: Types.Moves.TriggerNoRollCondition
+	}
+> = {
+	properties: {
+		text: { type: 'string' }
+	},
+	optionalProperties: {
+		conditions: { elements: { ref: 'TriggerNoRollCondition' } }
+	}
+}
+
 export const Trigger: JTDSchemaType<
-	Types.Moves.Trigger<'action_roll'> | Types.Moves.Trigger<'progress_roll'>,
+	| Types.Moves.TriggerActionRoll
+	| Types.Moves.TriggerProgressRoll
+	| Types.Moves.TriggerNoRoll,
 	{
 		MarkdownString: string
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollConditionAction: Types.Moves.TriggerRollCondition<'action_roll'>
-		TriggerRollConditionProgress: Types.Moves.TriggerRollCondition<'progress_roll'>
+		TriggerActionRollConditionOption: Types.Moves.TriggerActionRollConditionOption
+		TriggerProgressRollConditionOption: Types.Moves.TriggerProgressRollConditionOption
 	}
 > = {
 	metadata: {
 		description:
 			"Describes a move's trigger condition(s) and any rolls associated with them."
-	},
-	discriminator: 'move_type',
-	mapping: {
-		action_roll: {
-			properties: {
-				text: {
-					ref: 'MarkdownString',
-					metadata: {
-						description:
-							'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
-					}
-				}
-			},
-			optionalProperties: {
-				conditions: {
-					elements: { ref: 'TriggerRollConditionAction' }
-				}
-			}
-		},
-		progress_roll: {
-			properties: {
-				text: {
-					ref: 'MarkdownString',
-					metadata: {
-						description:
-							'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
-					}
-				}
-			},
-			optionalProperties: {
-				conditions: {
-					elements: { ref: 'TriggerRollConditionProgress' }
-				}
-			}
-		}
 	}
+
+	// mapping: {
+	// 	action_roll: {
+	// 		properties: {
+	// 			text: {
+	// 				ref: 'MarkdownString',
+	// 				metadata: {
+	// 					description:
+	// 						'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
+	// 				}
+	// 			}
+	// 		},
+	// 		optionalProperties: {
+	// 			conditions: {
+	// 				elements: { ref: 'TriggerRollConditionAction' }
+	// 			}
+	// 		}
+	// 	},
+	// 	progress_roll: {
+	// 		properties: {
+	// 			text: {
+	// 				ref: 'MarkdownString',
+	// 				metadata: {
+	// 					description:
+	// 						'Text describing the primary trigger condition of the move. Any trigger options are assumed to meet this condition in addition to their own trigger conditions.'
+	// 				}
+	// 			}
+	// 		},
+	// 		optionalProperties: {
+	// 			conditions: {
+	// 				elements: { ref: 'TriggerRollConditionProgress' }
+	// 			}
+	// 		}
+	// 	},
+	//   no_roll: {}
+	// }
 }
 
 export const TriggerBy: JTDSchemaType<Types.Moves.TriggerBy> = {
@@ -141,30 +183,36 @@ export const TriggerBy: JTDSchemaType<Types.Moves.TriggerBy> = {
 	properties: { ally: { type: 'boolean' }, player: { type: 'boolean' } }
 }
 
-export const TriggerRollConditionAction: JTDSchemaType<
-	Types.Moves.TriggerRollCondition<'action_roll'>,
+export const TriggerActionRollCondition: JTDSchemaType<
+	Types.Moves.TriggerActionRollCondition,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollConditionActionChoice: Types.Moves.TriggerActionRollConditionOption
+		TriggerActionRollConditionOption: Types.Moves.TriggerActionRollConditionOption
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
 > = {
-	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
-	optionalProperties: {
-		text: {
-			ref: 'MarkdownString',
-			metadata: {
-				description:
-					'Describes any additional trigger conditions for this trigger option'
-			}
+	properties: {
+		method: {
+			enum: [
+				'all',
+				'any',
+				'highest',
+				'lowest',
+				'miss',
+				'weak_hit',
+				'strong_hit'
+			]
 		},
+		roll_options: { elements: { ref: 'TriggerActionRollConditionOption' } }
+	},
+	optionalProperties: {
 		by: { ref: 'TriggerBy' },
-		conditions: { elements: { ref: 'TriggerRollConditionActionChoice' } }
+		text: { ref: 'MarkdownString' }
 	}
 }
 
-export const TriggerRollConditionActionChoice: JTDSchemaType<
+export const TriggerActionRollConditionOption: JTDSchemaType<
 	Types.Moves.TriggerActionRollConditionOption,
 	{
 		Label: string
@@ -172,19 +220,15 @@ export const TriggerRollConditionActionChoice: JTDSchemaType<
 > = {
 	discriminator: 'using',
 	mapping: {
-		edge: { properties: {} },
-		heart: { properties: {} },
-		iron: { properties: {} },
-		shadow: { properties: {} },
-		wits: { properties: {} },
-		health: { properties: {} },
-		spirit: { properties: {} },
-		supply: { properties: {} },
-		attached_asset_ref: {
-			properties: {
-				ref: { type: 'string' }
-			}
-		},
+		edge: { properties: {} } as never,
+		heart: { properties: {} } as never,
+		iron: { properties: {} } as never,
+		shadow: { properties: {} } as never,
+		wits: { properties: {} } as never,
+		health: { properties: {} } as never,
+		spirit: { properties: {} } as never,
+		supply: { properties: {} } as never,
+		attached_asset_meter: { properties: {} } as never,
 		ref: {
 			properties: {
 				ref: { type: 'string' }
@@ -199,26 +243,22 @@ export const TriggerRollConditionActionChoice: JTDSchemaType<
 	}
 }
 
-export const TriggerRollConditionProgress: JTDSchemaType<
-	Types.Moves.TriggerRollCondition<'progress_roll'>,
+export const TriggerProgressRollCondition: JTDSchemaType<
+	Types.Moves.TriggerProgressRollCondition,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollConditionProgressChoice: Types.Moves.TriggerProgressRollConditionOption
+		TriggerProgressRollConditionOption: Types.Moves.TriggerProgressRollConditionOption
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
 > = {
-	properties: { method: { ref: 'MoveRollMethod', nullable: true } },
+	properties: {
+		method: { ref: 'MarkdownString' },
+		roll_options: { elements: { ref: 'TriggerProgressRollConditionOption' } }
+	},
 	optionalProperties: {
-		text: {
-			ref: 'MarkdownString',
-			metadata: {
-				description:
-					'Describes any additional trigger conditions for this trigger option'
-			}
-		},
 		by: { ref: 'TriggerBy' },
-		conditions: { elements: { ref: 'TriggerRollConditionProgressChoice' } }
+		text: { ref: 'MarkdownString' }
 	}
 }
 
@@ -331,86 +371,161 @@ export const MoveOutcomes: JTDSchemaType<
 	}
 }
 
-export const MoveID = toJtdId(JSONSchema.Moves.MoveID)
+export const MoveID = toJtdId(Types.ID.MoveID)
 
 export const Move: JTDSchemaType<
-	Types.Moves.Move,
+	| Types.Moves.MoveProgressRoll
+	| Types.Moves.MoveActionRoll
+	| Types.Moves.MoveNoRoll,
 	{
 		MoveOutcomes: Types.Moves.MoveOutcomes
-		Source: Types.Metadata.Source
-		Trigger: Types.Moves.Trigger
-		Suggestions: Types.Metadata.SuggestionsBase
+		Source: Types.Source
+		TriggerActionRoll: Types.Moves.TriggerActionRoll
+		TriggerProgressRoll: Types.Moves.TriggerProgressRoll
+		TriggerNoRoll: Types.Moves.TriggerNoRoll
+		Suggestions: SuggestionsBase
 		MarkdownString: string
 		Label: string
 		MoveID: string
 		OracleTableID: string
 	}
 > = {
-	properties: {
-		id: { ref: 'MoveID' },
-		name: { ref: 'Label' },
-		text: { ref: 'MarkdownString' },
-		outcomes: { ref: 'MoveOutcomes' },
-		source: { ref: 'Source' },
-		trigger: { ref: 'Trigger' }
-	},
-	optionalProperties: {
-		suggestions: { ref: 'Suggestions' },
-		oracles: { elements: { ref: 'OracleTableID' } }
+	discriminator: 'move_type',
+	mapping: {
+		action_roll: {
+			properties: {
+				id: { ref: 'MoveID' },
+				name: { ref: 'Label' },
+				source: { ref: 'Source' },
+				outcomes: { ref: 'MoveOutcomes' },
+				text: { ref: 'MarkdownString' },
+				trigger: { ref: 'TriggerActionRoll' }
+			},
+			optionalProperties: {
+				oracles: { elements: { ref: 'OracleTableID' } },
+				suggestions: { ref: 'Suggestions' }
+			}
+		},
+		progress_roll: {
+			properties: {
+				id: { ref: 'MoveID' },
+				name: { ref: 'Label' },
+				source: { ref: 'Source' },
+				outcomes: { ref: 'MoveOutcomes' },
+				text: { ref: 'MarkdownString' },
+				trigger: { ref: 'TriggerProgressRoll' }
+			},
+			optionalProperties: {
+				oracles: { elements: { ref: 'OracleTableID' } },
+				suggestions: { ref: 'Suggestions' }
+			}
+		},
+		no_roll: {
+			properties: {
+				id: { ref: 'MoveID' },
+				name: { ref: 'Label' },
+				source: { ref: 'Source' },
+				text: { ref: 'MarkdownString' },
+				trigger: { ref: 'TriggerNoRoll' }
+			},
+			optionalProperties: {
+				oracles: { elements: { ref: 'OracleTableID' } },
+				suggestions: { ref: 'Suggestions' }
+			}
+		}
 	}
 }
 
 export const MoveExtension: JTDSchemaType<
 	Types.Moves.MoveExtension,
 	{
-		MoveExtensionID: string
+		MoveIDWildcard: string
 		MoveID: string
+		OracleID: string
 		MarkdownString: string
-		MoveOutcomesExtension: PartialDeep<Types.Moves.MoveOutcomes>
-		TriggerExtension: Types.Moves.TriggerExtension<Types.Moves.MoveRollType>
+		MoveOutcomesExtension: Types.Moves.MoveOutcomesExtension
+		TriggerActionRollExtension: Types.Moves.TriggerActionRollExtension
+		TriggerProgressRollExtension: Types.Moves.TriggerProgressRollExtension
+		TriggerNoRollExtension: Types.Moves.TriggerNoRollExtension
+		Suggestions: SuggestionsBase
 	}
 > = {
-	properties: {
-		extends: { elements: { ref: 'MoveID' }, nullable: true },
-		trigger: { ref: 'TriggerExtension' }
-	},
-	optionalProperties: {
-		text: { ref: 'MarkdownString' },
-		outcomes: { ref: 'MoveOutcomesExtension' }
-	}
-}
-
-export const TriggerExtension: JTDSchemaType<
-	| Types.Moves.TriggerExtension<'action_roll'>
-	| Types.Moves.TriggerExtension<'progress_roll'>,
-	{
-		TriggerRollConditionAction: Types.Moves.TriggerRollCondition<'action_roll'>
-		TriggerRollConditionProgress: Types.Moves.TriggerRollCondition<'progress_roll'>
-	}
-> = {
-	metadata: { description: 'Extends or upgrades an existing move trigger.' },
 	discriminator: 'move_type',
 	mapping: {
 		action_roll: {
-			metadata: {
-				description: 'Extends or upgrades an existing action roll trigger.'
-			},
 			properties: {
-				conditions: {
-					elements: { ref: 'TriggerRollConditionAction' }
+				trigger: {
+					ref: 'TriggerActionRollExtension'
 				}
+			},
+			optionalProperties: {
+				extends: { elements: { ref: 'MoveIDWildcard' } },
+				oracles: { elements: { ref: 'OracleID' } },
+				suggestions: { ref: 'Suggestions' },
+				text: { ref: 'MarkdownString' },
+				outcomes: { ref: 'MoveOutcomesExtension' }
 			}
 		},
 		progress_roll: {
-			metadata: {
-				description: 'Extends or upgrades an existing action roll trigger.'
-			},
 			properties: {
-				conditions: {
-					elements: { ref: 'TriggerRollConditionProgress' }
+				trigger: {
+					ref: 'TriggerProgressRollExtension'
 				}
+			},
+			optionalProperties: {
+				extends: { elements: { ref: 'MoveIDWildcard' } },
+				oracles: { elements: { ref: 'OracleID' } },
+				suggestions: { ref: 'Suggestions' },
+				text: { ref: 'MarkdownString' },
+				outcomes: { ref: 'MoveOutcomesExtension' }
+			}
+		},
+		no_roll: {
+			properties: {
+				trigger: {
+					ref: 'TriggerNoRollExtension'
+				}
+			},
+			optionalProperties: {
+				extends: { elements: { ref: 'MoveIDWildcard' } },
+				oracles: { elements: { ref: 'OracleID' } },
+				suggestions: { ref: 'Suggestions' },
+				text: { ref: 'MarkdownString' }
 			}
 		}
+	}
+}
+
+export const TriggerActionRollExtension: JTDSchemaType<
+	Types.Moves.TriggerActionRollExtension,
+	{
+		TriggerActionRollConditionExtension: Types.Moves.TriggerActionRollConditionExtension
+	}
+> = {
+	properties: {
+		conditions: { elements: { ref: 'TriggerActionRollConditionExtension' } }
+	}
+}
+
+export const TriggerProgressRollExtension: JTDSchemaType<
+	Types.Moves.TriggerProgressRollExtension,
+	{
+		TriggerProgressRollConditionExtension: Types.Moves.TriggerProgressRollConditionExtension
+	}
+> = {
+	properties: {
+		conditions: { elements: { ref: 'TriggerProgressRollConditionExtension' } }
+	}
+}
+
+export const TriggerNoRollExtension: JTDSchemaType<
+	Types.Moves.TriggerNoRollExtension,
+	{
+		TriggerNoRollCondition: Types.Moves.TriggerNoRollCondition
+	}
+> = {
+	properties: {
+		conditions: { elements: { ref: 'TriggerNoRollCondition' } }
 	}
 }
 
