@@ -14,11 +14,13 @@ import { transform } from 'builders/transformer'
 import type * as In from 'types/input'
 
 import { SourcebookClassic, SourcebookStarforged } from 'builders/sourcebook'
-import { capitalize, forEach, merge, pick, set } from 'lodash'
+import { capitalize, forEach, merge, pick, omit } from 'lodash'
 import { type Out } from 'types'
 import path from 'path'
 import { log } from 'scripts/logger'
 import { type Ruleset } from 'schema/ruleset-starforged'
+import { getPrettierOptions } from 'scripts/getPrettierOptions'
+import * as Prettier from 'prettier'
 
 export const DIR_IN = 'src/data-in'
 export const DIR_OUT = 'src/data-out'
@@ -140,21 +142,27 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 	}
 	const metadataKeys = ['source', 'id', 'ruleset']
 
-	const sourcebookMetadata = set(
-		pick(sourcebook, metadataKeys),
-		'source.page',
-		undefined
+	const sourcebookMetadata = omit(pick(sourcebook, metadataKeys), 'source.page')
+
+	const prettierOptions = await getPrettierOptions(
+		path.join(rootOut, 'any.json')
 	)
 
 	// exclude metadata keys
 	for await (const [k, v] of Object.entries(sourcebook)) {
 		if (metadataKeys.includes(k)) continue
 		if (Object.keys(v).length === 0) continue
-		const dataOut = { ...sourcebookMetadata, [k]: v }
+
+		const dataOut = Prettier.format(
+			JSON.stringify({ ...sourcebookMetadata, [k]: v }, undefined, '\t'),
+			prettierOptions
+		)
+
 		const outPath = path.join(rootOut, `${k}.json`)
+
 		log.info(`Writing data to ${outPath}`)
 		await fs.ensureFile(outPath)
-		await fs.writeFile(outPath, JSON.stringify(dataOut, undefined, '\t'))
+		await fs.writeFile(outPath, dataOut)
 	}
 }
 

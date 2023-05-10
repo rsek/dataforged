@@ -23,9 +23,7 @@
 					"name": "Starship",
 					"shared": true,
 					"attachments": {
-						"assets": [
-							"*/assets/module/*"
-						]
+						"assets": ["*/assets/module/*"]
 					},
 					"options": {
 						"name": {
@@ -61,9 +59,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/legacy/advance"
-									],
+									"extends": ["starforged/moves/legacy/advance"],
 									"text": "When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets."
 								}
 							],
@@ -102,9 +98,7 @@
 							"text": "When you [Withstand Damage](starforged/moves/suffer/withstand_damage), you may roll +heart. If you do, [Endure Stress](starforged/moves/suffer/endure_stress) (-1) on a weak hit or miss.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -208,9 +202,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray), choose one (before rolling).\n\n  * Maneuver: Add +1 and take +1 momentum on a strong hit.\n  * Boost: Take +2 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -228,9 +220,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -466,9 +456,7 @@
 							"text": "When you [Take Decisive Action](starforged/moves/combat/take_decisive_action) by firing the grappler, you may reroll one challenge die.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -519,9 +507,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -540,9 +526,7 @@
 							"text": "Once per fight, when you [Clash](starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire, add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -704,9 +688,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -770,9 +752,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/heal"
-									],
+									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -810,9 +790,7 @@
 							"text": "When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so), you have a shot at making things right. If you [Heal](starforged/moves/recover/heal) and score a strong hit, clear the impact (in addition to the other benefits of the move). Then, envision the scar that now serves as a reminder of the incident.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/heal"
-									],
+									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -877,9 +855,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -972,9 +948,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/resupply"
-									],
+									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1000,9 +974,7 @@
 							"text": "When you have at least 1 ammo and [Gain Ground](starforged/moves/combat/gain_ground) by locking a missile on target, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1030,9 +1002,7 @@
 							"text": "When you have at least 3 ammo and [Take Decisive Action](starforged/moves/combat/take_decisive_action) by unleashing all of your missiles, roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -1115,9 +1085,7 @@
 							"text": "When you [Withstand Damage](starforged/moves/suffer/withstand_damage) and roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"outcomes": {
 										"miss": {
 											"text": "If you roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result."
@@ -1188,9 +1156,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1214,9 +1180,7 @@
 							"text": "Your reinforced hull is given a fierce and distinctive color or design. When you arrive at a place where your reputation is a factor, take +1 momentum. When you [Enter the Fray](starforged/moves/combat/enter_the_fray) against a foe who knows your reputation, take +momentum equal to your vehicle’s integrity on a strong hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1240,9 +1204,7 @@
 							"text": "When you [React Under Fire](starforged/moves/combat/react_under_fire) by letting your reinforced hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](starforged/moves/fate/pay_the_price) by marking this module as broken.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/react_under_fire"
-									],
+									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1370,9 +1332,7 @@
 							"text": "When you [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to undertake a long-term research project (extreme or greater), reroll any dice. When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your lab, [Face Danger](starforged/moves/adventure/face_danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) and score a hit, also mark one box on your discoveries legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1432,9 +1392,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -1551,9 +1509,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1581,9 +1537,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) against an ambush, or [Face Danger](starforged/moves/adventure/face_danger) to detect a hidden threat, you may roll +integrity. If you do, reroll any dice and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1743,9 +1697,7 @@
 							"text": "You may [React Under Fire](starforged/moves/combat/react_under_fire) by letting your shields take the blow. If you do, roll +shields and take +2 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/react_under_fire"
-									],
+									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1778,9 +1730,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1844,9 +1794,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1913,9 +1861,7 @@
 							"text": "When you are poised to [Strike](starforged/moves/combat/strike) from hiding, you may roll +shadow. If you do, choose one (before rolling).\n\n  * Strike true: Reroll any dice.\n  * Strike hard: Mark progress on a hit.\n\nOn a strong hit with a match, you also remain totally undetected; take +2 momentum and add +1 on your next [Strike](starforged/moves/combat/strike).",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -1955,9 +1901,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -2013,9 +1957,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/repair"
-									],
+									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -2041,9 +1983,7 @@
 							"text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](starforged/moves/fate/ask_the_oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](starforged/moves/recover/repair) and bring it back to full working order, the vehicle is battered with 0 integrity.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"outcomes": {
 										"miss": {
 											"text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](starforged/moves/fate/ask_the_oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](starforged/moves/recover/repair) and bring it back to full working order, the vehicle is battered with 0 integrity."
@@ -2119,9 +2059,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/repair"
-									],
+									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -2178,9 +2116,7 @@
 							"text": "When you [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, [Face Danger](starforged/moves/adventure/face_danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) and score a hit, mark one extra box on your quests legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -2242,9 +2178,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -2404,9 +2338,7 @@
 							"text": "When you [Withstand Damage](starforged/moves/suffer/withstand_damage), you may reroll one challenge die.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -2656,9 +2588,7 @@
 							"extend_asset": {
 								"attachments": {
 									"max": 1,
-									"assets": [
-										"*/assets/modules/*"
-									]
+									"assets": ["*/assets/modules/*"]
 								},
 								"count_as_impact": false
 							},
@@ -2904,9 +2834,7 @@
 							"text": "Your shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](starforged/moves/suffer/withstand_damage), add +1.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3090,9 +3018,7 @@
 							"text": "Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](starforged/moves/combat/enter_the_fray), you may roll +integrity; if you do, take +2 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3241,9 +3167,7 @@
 							"text": "When you [Gain Ground](starforged/moves/combat/gain_ground) by maneuvering your vehicle against a foe, add +1. If you score a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set aside the action die or note its value. If you or an ally [Strike](starforged/moves/combat/strike) using the vehicle’s weapons, preset your action die with that value. This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle’s position.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3268,9 +3192,7 @@
 							"text": "When you must [Endure Stress](starforged/moves/suffer/endure_stress) while piloting a vehicle, you may roll +integrity. If you do, take +1 momentum on a strong hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_stress"
-									],
+									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3376,9 +3298,7 @@
 							"text": "You may [Enter the Fray](starforged/moves/combat/enter_the_fray) by unleashing a volley of bow shots. If you do, roll +ammo and suffer -1 ammo. On a hit, mark progress.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3498,9 +3418,7 @@
 							"text": "When you must [Endure Harm](starforged/moves/suffer/endure_harm), you may instead let your armor take the hit. If you do, roll your action die. On a 4 or greater, ignore the harm. On a 1-3, ignore the harm but your armor is now broken; you must [Repair](starforged/moves/recover/repair) and spend 5 repair points to bring it back to working condition.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_harm"
-									],
+									"extends": ["starforged/moves/suffer/endure_harm"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3771,9 +3689,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3813,9 +3729,7 @@
 							"text": "When you or an ally [Sojourn](starforged/moves/recover/sojourn) and score a strong hit with a match, you may envision meeting someone of the same ideology. If you [Make a Connection](starforged/moves/connection/make_a_connection) with them and score a hit, mark 1 tick on your bonds legacy track. When you [Forge a Bond](starforged/moves/connection/forge_a_bond) with anyone of your ideology, make the legacy reward one rank higher (1 extra box if already epic).",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3837,9 +3751,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/connection/forge_a_bond"
-									],
+									"extends": ["starforged/moves/connection/forge_a_bond"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3956,9 +3868,7 @@
 							"text": "If you [Gain Ground](starforged/moves/combat/gain_ground) by moving into close quarters against your foe, choose your approach.\n\n  * Charge: Roll +heart, and mark progress on a hit.\n  * Evade: Roll +edge, and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -3983,9 +3893,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4032,9 +3940,7 @@
 							},
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4082,9 +3988,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4102,9 +4006,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4130,9 +4032,7 @@
 							"text": "When you [Gather Information](starforged/moves/adventure/gather_information) related to a bounty, add +1. On a match, you reveal a surprising or sinister aspect of the contract; envision what you discover, and choose one.\n\n  * Forge ahead: Mark progress on the quest. If you scored a strong hit with a match, also take +2 momentum.\n  * Change loyalties: [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) and mark 2 ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4164,9 +4064,7 @@
 							"text": "When you [Take Decisive Action](starforged/moves/combat/take_decisive_action) in a fight against a bounty target or their agents, you may reroll one challenge die.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4226,9 +4124,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4255,9 +4151,7 @@
 							"text": "When you [Clash](starforged/moves/combat/clash) in close quarters, you may draw on your momentum to gain advantage. If you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2) and choose one (before rolling).\n\n  * Aggressive: Count a weak hit as a strong hit.\n  * Defensive: Count a miss as a weak hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4275,9 +4169,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4302,9 +4194,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) already positioned in close quarters against your foe, mark progress on a hit. On a strong hit with a match, your initial assault leaves them stunned; also take +2 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4354,9 +4244,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4403,9 +4291,7 @@
 							"text": "When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) to an unbonded connection by completing a courier mission, mark progress twice on the relationship.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4425,9 +4311,7 @@
 							"text": "When you [Sojourn](starforged/moves/recover/sojourn) during a courier mission, you may roll +safety. On a strong hit, take +1 safety or +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4529,9 +4413,7 @@
 							"text": "When your momentum is at its max, you may reset momentum (before rolling) to trigger an explosive device as you [Take Decisive Action](starforged/moves/combat/take_decisive_action). If you do, reroll any challenge dice.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4663,9 +4545,7 @@
 							"text": "When you [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) in service to your faith, roll +linked stat and take +2 momentum or +2 spirit on a hit. When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) on a divine quest (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4691,9 +4571,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4720,9 +4598,7 @@
 							"text": "When you [Hearten](starforged/moves/recover/hearten) through contemplation or sharing of your faith, you may roll +linked stat. If you do, take +1 spirit or +1 momentum on a strong hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/hearten"
-									],
+									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4772,9 +4648,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -4792,9 +4666,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -4854,9 +4726,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/connection/sojourn"
-									],
+									"extends": ["starforged/moves/connection/sojourn"],
 									"outcomes": {
 										"strong_hit": {
 											"match": {
@@ -5107,9 +4977,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -5258,9 +5126,7 @@
 							"text": "When you [Endure Harm](starforged/moves/suffer/endure_harm) and score a strong hit with a match, you may instead ignore the harm and take +fire equal to the amount of harm faced (+1, +2, or +3).",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_harm"
-									],
+									"extends": ["starforged/moves/suffer/endure_harm"],
 									"outcomes": {
 										"strong_hit": {
 											"match": {
@@ -5419,9 +5285,7 @@
 							"text": "When you [Gather Information](starforged/moves/adventure/gather_information) by studying or disassembling a machine or device, reroll any dice. On a match, you reveal an unexpected function, capability, or danger; mark 1 tick on your discoveries legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5517,9 +5381,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5540,9 +5402,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5568,9 +5428,7 @@
 							"text": "When you [Take Decisive Action](starforged/moves/combat/take_decisive_action) by emptying your gun (decide before rolling), you may [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1) and reroll one challenge die. If the fight continues or you are caught up another fight, [Check Your Gear](starforged/moves/adventure/check_your_gear) to see if you have more ammo on-hand.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -5619,9 +5477,7 @@
 							},
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5686,9 +5542,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5839,9 +5693,7 @@
 							"text": "When you [Face Death](starforged/moves/threshold/face_death) guided by the spirit, add +1. On a strong hit, envision what you learn from them or about them, and mark 2 ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/threshold/face_death"
-									],
+									"extends": ["starforged/moves/threshold/face_death"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5891,9 +5743,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/heal"
-									],
+									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5906,9 +5756,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/heal"
-									],
+									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -5935,9 +5783,7 @@
 							"text": "When you [Gather Information](starforged/moves/adventure/gather_information) by studying medical evidence or biological remains, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also reveal an unexpected medical anomaly; mark 1 tick on your discoveries legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6055,9 +5901,7 @@
 							"text": "When you [Check Your Gear](starforged/moves/adventure/check_your_gear) for a device with a specific function to aid in infiltration, espionage, or sabotage, add +1. On a hit, reroll any dice the first time you make a move aided by the device.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/check_your_gear"
-									],
+									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6196,9 +6040,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) (+heart) by coordinating with your team as they wade into the fight, make your move before your allies act. On a strong hit, all allies may take an automatic strong hit. On a strong hit with a match, also mark progress on any objectives in this fight.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6384,9 +6226,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6421,9 +6261,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -6622,9 +6460,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6656,9 +6492,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -6684,9 +6518,7 @@
 							"text": "When you [Make a Connection](starforged/moves/connection/make_a_connection) by searching out or making contact with someone in need of your services, add +1 and take +1 momentum on a hit. On a strong hit with a match, this mission pits you against an unresolved aspect of your past or a hated foe; mark 2 ticks on your quests legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/connection/make_a_connection"
-									],
+									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6717,9 +6549,7 @@
 							"text": "When you [Check Your Gear](starforged/moves/adventure/check_your_gear) in the midst of a fight, or [Resupply](starforged/moves/recover/resupply) by looting the field of battle in the aftermath of a fight, add +2.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/check_your_gear"
-									],
+									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6732,9 +6562,7 @@
 									"text": "Add +2."
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/resupply"
-									],
+									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6846,9 +6674,7 @@
 							"text": "You are skilled at planetside survival. When you [Resupply](starforged/moves/recover/resupply) to scavenge resources in a life-bearing natural environment, take +1 supply on a hit. When you [Face Danger](starforged/moves/adventure/face_danger) against an environmental threat, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/resupply"
-									],
+									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -6919,9 +6745,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/exploration/set_a_course"
-									],
+									"extends": ["starforged/moves/exploration/set_a_course"],
 									"text": "Choose one.\n\n  * Follow the fastest path: Take +2 momentum on a strong hit.\n  * Follow the safest path: Add +1",
 									"outcomes": {
 										"strong_hit": {
@@ -6986,9 +6810,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7068,9 +6890,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/hearten"
-									],
+									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7158,9 +6978,7 @@
 							"text": "When you or an ally [Sojourn](starforged/moves/recover/sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you [Make a Connection](starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7209,9 +7027,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7272,9 +7088,7 @@
 							"text": "When you [Check Your Gear](starforged/moves/adventure/check_your_gear), roll +wits or +supply (whichever is highest) and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/check_your_gear"
-									],
+									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7353,9 +7167,7 @@
 							"text": "When you [Make a Connection](starforged/moves/connection/make_a_connection) to search out a new contact, you may roll +shadow. If you do, reroll any dice on a miss and envision how your reputation or underworld contacts lead you to a disreputable connection.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/connection/make_a_connection"
-									],
+									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7423,9 +7235,7 @@
 							"text": "When you focus or meditate to [Gather Information](starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely), roll +spirit and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7487,9 +7297,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7683,9 +7491,7 @@
 							"text": "When you [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) (formidable or greater) to slay an inhuman foe in service to a community, reroll any dice. When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7717,9 +7523,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -7746,9 +7550,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) with an objective to slay an inhuman foe, take +2 momentum. If you choose to face the creature on its own terms as you begin the fight, envision the crucial weapon, protection, or aid you set aside, and set the objective one rank higher. If you [Take Decisive Action](starforged/moves/combat/take_decisive_action) after making this sacrifice and score a strong hit, take a trophy of your victory and mark 2 ticks on your quests legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7798,9 +7600,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7846,9 +7646,7 @@
 							"text": "When you [Make a Connection](starforged/moves/connection/make_a_connection) with a potential informant, you may (instead of rolling) take an automatic weak hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/connection/make_a_connection"
-									],
+									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7936,9 +7734,7 @@
 							"text": "When you [Strike](starforged/moves/combat/strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a strong hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -7988,9 +7784,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/adventure/gain_ground"
-									],
+									"extends": ["starforged/moves/adventure/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8061,9 +7855,7 @@
 							"text": "When you [Withstand Damage](starforged/moves/suffer/withstand_damage) and score a miss, you may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). Then, reroll all dice, add +wits instead of +integrity, and count a weak hit as a miss.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/withstand_damage"
-									],
+									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"outcomes": {
 										"miss": {
 											"reroll": {
@@ -8168,9 +7960,7 @@
 							"text": "When you [Make a Connection](starforged/moves/connection/make_a_connection) with a merchant or supplier, add +1. When you [Resupply](starforged/moves/recover/resupply) by bartering with them, reroll your action die if its value is less than your supply. On a strong hit, take +1 momentum or +1 supply.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/connection/make_a_connection"
-									],
+									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8183,9 +7973,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/resupply"
-									],
+									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8225,9 +8013,7 @@
 							"text": "When you or an ally [Sojourn](starforged/moves/recover/sojourn) and score a strong hit with a match, you have a chance to secure a unique item or valuable payload. Envision the nature of the opportunity and the obstacle you must overcome to acquire it. If you are successful, mark 2 ticks on your quests legacy track. One time only, you may use this acquisition to gain an automatic strong hit on any move where your resources are a factor.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/make_a_connection"
-									],
+									"extends": ["starforged/moves/recover/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8406,9 +8192,7 @@
 							"text": "When you [Make a Connection](starforged/moves/connection/make_a_connection), add +1. If you roll a match, you have a history.\n\n  * On a strong hit with a match, you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](starforged/moves/connection/develop_your_relationship) now.\n  * On a miss with a match, you once fought against them, and they hold a grudge.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/connection/make_a_connection"
-									],
+									"extends": ["starforged/moves/connection/make_a_connection"],
 									"text": "Add +1.",
 									"outcomes": {
 										"strong_hit": {
@@ -8503,9 +8287,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/hearten"
-									],
+									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8576,9 +8358,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8599,9 +8379,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8619,9 +8397,7 @@
 							"text": "When you [Strike](starforged/moves/combat/strike) using a personal weapon which has limited ammo or a single-use mode, add +1 and mark progress on a hit. Then, [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1). If you score a strong hit on this attack and immediately [Take Decisive Action](starforged/moves/combat/take_decisive_action), you may retain the value of one challenge die from your [Strike](starforged/moves/combat/strike) action instead of rolling that die.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8895,9 +8671,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/strike"
-									],
+									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8910,9 +8684,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -8977,9 +8749,7 @@
 							"text": "Once per fight, when you [React Under Fire](starforged/moves/combat/react_under_fire) by using the bot to draw fire or create a diversion, roll +its health. On a strong hit, mark progress. On a weak hit, face the cost as normal, but then you are in control.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/react_under_fire"
-									],
+									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9076,9 +8846,7 @@
 							"text": "When you [Compel](starforged/moves/adventure/compel), the glowcat’s reactions will help guide your approach; you may reroll your action die if its value is less than the glowcat’s health.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/compel"
-									],
+									"extends": ["starforged/moves/adventure/compel"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9117,9 +8885,7 @@
 							"text": "When you [Endure Stress](starforged/moves/suffer/endure_stress) in the company of the glowcat, add +1. On a strong hit with a match, take +momentum equal to their health.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_stress"
-									],
+									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9321,9 +9087,7 @@
 							"text": "When you make the [Companion Takes a Hit](starforged/moves/suffer/companion_takes_a_hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/companion_takes_a_hit"
-									],
+									"extends": ["starforged/moves/suffer/companion_takes_a_hit"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9463,9 +9227,7 @@
 							"text": "When you [Enter the Fray](starforged/moves/combat/enter_the_fray) with the support of your sidekick, take +2 momentum on a hit. When you [Clash](starforged/moves/combat/clash) together, add +1.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/enter_the_fray"
-									],
+									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9485,9 +9247,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/combat/clash"
-									],
+									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -9981,9 +9741,7 @@
 							"text": "When you [Repair](starforged/moves/recover/repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/repair"
-									],
+									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10011,9 +9769,7 @@
 							"text": "When you [Check Your Gear](starforged/moves/adventure/check_your_gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/check_your_gear"
-									],
+									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10214,9 +9970,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10249,9 +10003,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/hearten"
-									],
+									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10326,9 +10078,7 @@
 							"text": "When you [Set a Course](starforged/moves/exploration/set_a_course) back to your bond-mate's location, add +heart. On a strong hit with a match, envision a special reunion and mark two ticks on your bonds legacy track.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/exploration/set_a_course"
-									],
+									"extends": ["starforged/moves/exploration/set_a_course"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10401,9 +10151,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10438,9 +10186,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -10466,9 +10212,7 @@
 							"text": "When you [Sojourn](starforged/moves/recover/sojourn) in your home, choose one.\n\n  * Don't linger: Take an automatic weak hit\n  * Stay a bit: Add +1 and take +1 momentum on a hit",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10489,9 +10233,7 @@
 									}
 								},
 								{
-									"extends": [
-										"starforged/moves/recover/sojourn"
-									],
+									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10511,9 +10253,7 @@
 							"text": "When you [Set a Course](starforged/moves/exploration/set_a_course) for home, you may reroll your action die if its value is less than your spirit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/exploration/set_a_course"
-									],
+									"extends": ["starforged/moves/exploration/set_a_course"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10637,9 +10377,7 @@
 							"text": "Once per fight, when you [Gain Ground](starforged/moves/combat/gain_ground) through intimidation or command, reroll any dice and mark progress on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/gain_ground"
-									],
+									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10702,9 +10440,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/swear_an_iron_vow"
-									],
+									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10717,9 +10453,7 @@
 									"text": "Give this vow a special mark. When you [Reach a Milestone](starforged/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum. If you [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact."
 								},
 								{
-									"extends": [
-										"starforged/moves/quest/forsake_your_vow"
-									],
+									"extends": ["starforged/moves/quest/forsake_your_vow"],
 									"text": "If you [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact."
 								}
 							],
@@ -10761,9 +10495,7 @@
 							"text": "When you [Fulfill Your Vow](starforged/moves/quest/fulfill_your_vow) on the marked quest and score a hit, you find redemption and automatically gain this ability at no cost. You may then improve one of your stats by +1 and discard this asset. Once the asset is discarded, you may not take it again.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/quest/fulfill_your_vow"
-									],
+									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -10855,9 +10587,7 @@
 							"text": "When you [Take Decisive Action](starforged/moves/combat/take_decisive_action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](starforged/moves/suffer/endure_stress) (-2).",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/combat/take_decisive_action"
-									],
+									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
 										"roll_options": [
@@ -10887,9 +10617,7 @@
 							"text": "When you [Gather Information](starforged/moves/adventure/gather_information) by studying a place where death left its mark, you may roll +heart. If you do, take +1 momentum on a hit. On a strong hit with a match, you experience a detailed vision or insightful revelation of what occurred here; take +1 momentum more.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/adventure/gather_information"
-									],
+									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -10945,9 +10673,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_stress"
-									],
+									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [
@@ -11095,9 +10821,7 @@
 							"text": "When you [Endure Stress](starforged/moves/suffer/endure_stress), you may roll +wits. If you do, take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
-										"starforged/moves/suffer/endure_stress"
-									],
+									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
 										"roll_options": [

@@ -3,18 +3,11 @@
  */
 
 import prettier from 'prettier'
-import _ from 'lodash'
 import { writeFile } from 'fs/promises'
 import { log } from './logger'
 import { schemaOptions } from 'scripts/options'
 import { validator } from 'scripts/validator'
-
-async function getPrettierOptions(filepath: string): Promise<prettier.Options> {
-	const defaultConfig = (await prettier.resolveConfig(filepath)) ?? {}
-	const jsonOverrides: prettier.Options = { filepath, parser: 'json' }
-	const prettierOptions = _.merge({}, defaultConfig, jsonOverrides)
-	return prettierOptions
-}
+import { getPrettierOptions } from './getPrettierOptions'
 
 for (const options of schemaOptions) {
 	log.info(options.messages.start)
