@@ -102,18 +102,31 @@ async function buildFile(filePath: string) {
 }
 
 async function buildSourcebook(ruleset: Ruleset, id: string) {
-	const sourcebook: Record<string, unknown> = {}
+	const sourcebook: Record<string, Record<string, unknown>> = {}
 
 	const rootIn = path.join(DIR_IN, ruleset, id)
 	const rootOut = path.join(DIR_OUT, ruleset, id)
+	const globIn = `${rootIn}/**/*.yaml`
+	const globOut = `${rootOut}/**/*.json`
+	const oldFiles = fastGlob(globOut)
 
-	const filePaths = await fastGlob(`${rootIn}/**/*.yaml`)
+	const yamlFiles = await fastGlob(globIn)
 
-	// TODO: flush the out dir
+	if (yamlFiles.length === 0)
+		throw new Error(
+			`Could not find any YAML files with the glob ${rootIn}/**/*.yaml`
+		)
 
-	log.info(`Found ${filePaths.length} YAML files in ${rootIn}`)
+	log.info(`Found ${yamlFiles.length} YAML files in ${rootIn}`)
 
-	for await (const filePath of filePaths) {
+	if ((await oldFiles).length > 0) {
+		log.info(`Deleting ${(await oldFiles).length} old JSON files`)
+		// flush old files from outdir
+		for await (const filePath of await oldFiles) {
+			await fs.unlink(filePath)
+		}
+	}
+	for await (const filePath of yamlFiles) {
 		const data = await buildFile(filePath)
 
 		if (data.ruleset !== ruleset)
@@ -132,9 +145,11 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 		'source.page',
 		undefined
 	)
+
 	// exclude metadata keys
 	for await (const [k, v] of Object.entries(sourcebook)) {
 		if (metadataKeys.includes(k)) continue
+		if (Object.keys(v).length === 0) continue
 		const dataOut = { ...sourcebookMetadata, [k]: v }
 		const outPath = path.join(rootOut, `${k}.json`)
 		log.info(`Writing data to ${outPath}`)

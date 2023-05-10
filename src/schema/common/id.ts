@@ -130,7 +130,7 @@ export const DelveSiteID = Type.RegEx(/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$/, {
 export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
 
 export const DelveSiteDenizenID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+$\/denizens\/[1-9][0-9]*-[1-9][0-9]*/,
+	/^[a-z0-9_]{3,}\/delve_sites\/[a-z_]+\/denizens\/[1-9][0-9]*-[1-9][0-9]*/,
 	{
 		examples: ['delve/delve_sites/alvas_rest/denizens/1-27'],
 		$id: '#/$defs/DelveSiteDenizenID'
