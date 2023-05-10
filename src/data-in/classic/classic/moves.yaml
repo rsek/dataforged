@@ -17,9 +17,9 @@ moves:
     contents:
       face_danger:
         name: Face Danger
+        move_type: action_roll
         trigger:
           text: When you attempt something risky or react to an imminent threat...
-          roll_type: action_roll
           roll_options:
             - text: With speed, agility, or precision
               method: any
@@ -77,9 +77,9 @@ moves:
             text: You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](classic/moves/fate/pay_the_price).
       secure_an_advantage:
         name: Secure an Advantage
+        move_type: action_roll
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage...
-          roll_type: action_roll
           roll_options:
             - text: With speed, agility, or precision
               method: any
@@ -133,9 +133,9 @@ moves:
             text: You fail or your assumptions betray you. [Pay the Price](classic/moves/fate/pay_the_price).
       gather_information:
         name: Gather Information
+        move_type: action_roll
         trigger:
           text: When you search an area, ask questions, conduct an investigation, or follow a track...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -159,9 +159,9 @@ moves:
             text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](classic/moves/fate/pay_the_price).
       heal:
         name: Heal
+        move_type: action_roll
         trigger:
           text: When you treat an injury or ailment...
-          roll_type: action_roll
           roll_options:
             - choices:
                 - using: wits
@@ -190,8 +190,8 @@ moves:
             text: Your aid is ineffective. [Pay the Price](classic/moves/fate/pay_the_price).
       resupply:
         name: Resupply
+        move_type: action_roll
         trigger:
-          roll_type: action_roll
           text: When you hunt, forage, or scavenge...
           roll_options:
             - method: any
@@ -216,9 +216,9 @@ moves:
             text: You find nothing helpful. [Pay the Price](classic/moves/fate/pay_the_price).
       make_camp:
         name: Make Camp
+        move_type: action_roll
         trigger:
           text: When you rest and recover for several hours in the wild...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -260,9 +260,9 @@ moves:
             text: You take no comfort. [Pay the Price](classic/moves/fate/pay_the_price).
       undertake_a_journey:
         name: Undertake a Journey
+        move_type: action_roll
         trigger:
           text: When you travel across hazardous or unfamiliar lands...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -304,9 +304,9 @@ moves:
             text: You are waylaid by a perilous event. [Pay the Price](classic/moves/fate/pay_the_price).
       reach_your_destination:
         name: Reach Your Destination
+        move_type: progress_roll
         trigger:
           text: When your journey comes to an end...
-          roll_type: progress_roll
           roll_options:
             - method: any
               choices:
@@ -333,9 +333,9 @@ moves:
     contents:
       compel:
         name: Compel
+        move_type: action_roll
         trigger:
           text: When you attempt to persuade someone to do something...
-          roll_type: action_roll
           roll_options:
             - text: Charm, pacify, barter, or convince
               method: any
@@ -375,9 +375,9 @@ moves:
             text: They refuse or make a demand which costs you greatly. [Pay the Price](classic/moves/fate/pay_the_price).
       sojourn:
         name: Sojourn
+        move_type: action_roll
         trigger:
           text: When you spend time in a community seeking assistance...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -456,9 +456,9 @@ moves:
             text: You find no help here. [Pay the Price](classic/moves/fate/pay_the_price).
       draw_the_circle:
         name: Draw the Circle
+        move_type: action_roll
         trigger:
           text: When you challenge someone to a formal duel, or accept a challenge...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -509,9 +509,9 @@ moves:
               Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
       forge_a_bond:
         name: Forge a Bond
+        move_type: action_roll
         trigger:
           text: When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -544,9 +544,9 @@ moves:
               They reject you. [Pay the Price](classic/moves/fate/pay_the_price).
       test_your_bond:
         name: Test Your Bond
+        move_type: action_roll
         trigger:
           text: When your bond is tested through conflict, betrayal, or circumstance...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -581,8 +581,8 @@ moves:
         name: Aid Your Ally
         _source:
           page: 76
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally...
         text: When **you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
         # TODO: forward to another move ID?
@@ -590,9 +590,9 @@ moves:
         name: Write Your Epilogue
         _source:
           page: 77
+        move_type: progress_roll
         trigger:
           text: When you retire from your life as Ironsworn...
-          roll_type: progress_roll
           roll_options:
             - method: any
               choices:
@@ -621,9 +621,9 @@ moves:
     contents:
       enter_the_fray:
         name: Enter the Fray
+        move_type: action_roll
         trigger:
           text: When you enter into combat...
-          roll_type: action_roll
           roll_options:
             - text: Facing off against your foe
               method: any
@@ -675,9 +675,9 @@ moves:
             text: Combat begins with you at a disadvantage. [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
       strike:
         name: Strike
+        move_type: action_roll
         trigger:
           text: When you have initiative and attack...
-          roll_type: action_roll
           roll_options:
             - text: In close quarters
               method: any
@@ -706,9 +706,9 @@ moves:
             text: Your attack fails and you must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
       clash:
         name: Clash
+        move_type: action_roll
         trigger:
           text: 'When your foe has initiative and you...'
-          roll_type: action_roll
           roll_options:
             - text: Fight with them in close quarters
               method: any
@@ -744,17 +744,17 @@ moves:
             text: You are outmatched and must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
       turn_the_tide:
         name: Turn the Tide
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: Once per fight, when you risk it all...
         _source:
           page: 81
         text: Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](classic/moves/fate/pay_the_price).
       end_the_fight:
         name: End the Fight
+        move_type: progress_roll
         trigger:
           text: When you make a move to take decisive action, and score a strong hit...
-          roll_type: progress_roll
           roll_options:
             - method: any
               choices:
@@ -795,9 +795,9 @@ moves:
             text: You have lost this fight. [Pay the Price](classic/moves/fate/pay_the_price).
       battle:
         name: Battle
+        move_type: action_roll
         trigger:
           text: When you fight a battle, and it happens in a blur, and you...
-          roll_type: action_roll
           roll_options:
             - text: Fight at range, or using your speed and the terrain to your advantage
               method: any
@@ -853,9 +853,9 @@ moves:
         name: Endure Harm
         oracles:
           - classic/oracles/moves/endure_harm
+        move_type: action_roll
         trigger:
           text: When you face physical damage...
-          roll_type: action_roll
           roll_options:
             - method: highest
               choices:
@@ -893,9 +893,9 @@ moves:
               {{table:classic/oracles/moves/endure_harm}}
       face_death:
         name: Face Death
+        move_type: action_roll
         trigger:
           text: When you are brought to the brink of death, and glimpse the world beyond...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -926,9 +926,9 @@ moves:
             text: You are dead.
       companion_endure_harm:
         name: Companion Endure Harm
+        move_type: action_roll
         trigger:
           text: When your companion faces physical damage...
-          roll_type: action_roll
           roll_options:
             - method: highest
               choices:
@@ -961,9 +961,9 @@ moves:
         name: Endure Stress
         oracles:
           - classic/oracles/moves/endure_stress
+        move_type: action_roll
         trigger:
           text: When you face mental shock or despair...
-          roll_type: action_roll
           roll_options:
             - method: highest
               choices:
@@ -1000,9 +1000,9 @@ moves:
               {{table:classic/oracles/moves/endure_stress}}
       face_desolation:
         name: Face Desolation
+        move_type: action_roll
         trigger:
           text: When you are brought to the brink of desolation...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -1035,16 +1035,16 @@ moves:
         name: Out of Supply
         _source:
           page: 97
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When your supply is exhausted (reduced to 0)...
         text: When **your supply is exhausted** (reduced to 0), mark unprepared. If you suffer additional -supply while unprepared, you must exchange each additional -supply for any combination of -health, -spirit or -momentum as appropriate to the circumstances.
       face_a_setback:
         name: Face a Setback
+        move_type: no_roll
         _source:
           page: 97
         trigger:
-          roll_type: no_roll
           text: When your momentum is at its minimum (-6), and you suffer additional -momentum...
         text: |-
           When **your momentum is at its minimum** (-6), and you suffer additional -momentum, choose one.
@@ -1060,9 +1060,9 @@ moves:
     contents:
       swear_an_iron_vow:
         name: Swear an Iron Vow
+        move_type: action_roll
         trigger:
           text: When you swear upon iron to complete a quest...
-          roll_type: action_roll
           roll_options:
             - method: any
               choices:
@@ -1093,10 +1093,10 @@ moves:
                 * You give up: [Forsake Your Vow](classic/moves/quest/forsake_your_vow).
       reach_a_milestone:
         name: Reach a Milestone
+        move_type: no_roll
         _source:
           page: 100
         trigger:
-          roll_type: no_roll
           text: When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item...
         text: |-
           When **you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item**, you may mark progress.
@@ -1110,9 +1110,9 @@ moves:
         name: Fulfill Your Vow
         _source:
           page: 101
+        move_type: progress_roll
         trigger:
           text: When you achieve what you believe to be the fulfillment of your vow...
-          roll_type: progress_roll
           roll_options:
             - method: any
               choices:
@@ -1143,16 +1143,16 @@ moves:
         name: Forsake Your Vow
         _source:
           page: 102
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When you renounce your quest, betray your promise, or the goal is lost to you...
         text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](classic/moves/suffer/endure_stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
       advance:
         name: Advance
         _source:
           page: 103
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion...
         text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
   fate:
@@ -1176,8 +1176,8 @@ moves:
           - classic/oracles/moves/pay_the_price
         _source:
           page: 105
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When you suffer the outcome of a move...
         text: |-
           When **you suffer the outcome of a move**, choose one.
@@ -1197,8 +1197,8 @@ moves:
           - classic/oracles/moves/ask_the_oracle/almost_certain
         _source:
           page: 107
+        move_type: no_roll
         trigger:
-          roll_type: no_roll
           text: When you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events...
         text: |-
           When **you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events**, you may...

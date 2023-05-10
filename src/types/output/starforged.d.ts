@@ -61,48 +61,12 @@ export type OracleCollectionStyle = "multi_table";
  */
 export type WEBPImageURL = string;
 export type MoveCategoryID = string;
-export type Trigger = TriggerActionRoll | TriggerProgressRoll | TriggerNoRoll;
+export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
 /**
  * Localized text, formatted in Markdown.
  */
 export type MarkdownString1 = string;
-/**
- * `any`: When rolling with this move trigger option, the player picks which stat to use.
- *
- * `all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.
- *
- * `highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.
- *
- * `lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.
- */
-export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-export type TriggerActionRollOptionChoice =
-  | TriggerActionRollOptionChoiceStat
-  | TriggerActionRollOptionChoiceRef
-  | TriggerActionRollOptionChoiceAttachedAssetRef
-  | TriggerActionRollOptionChoiceCustomValue;
-export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
-export type PlayerConditionMeter = "health" | "spirit" | "supply";
-export type AssetConditionMeterIDWildcard = string;
-export type AssetOptionFieldIDWildcard = string;
-/**
- * Localized text, formatted in Markdown.
- */
-export type MarkdownString2 = string;
-export type ProgressType =
-  | "quests_legacy"
-  | "bonds_legacy"
-  | "discoveries_legacy"
-  | "combat_progress"
-  | "vow_progress"
-  | "scene_challenge_progress"
-  | "expedition_progress"
-  | "connection_progress";
-/**
- * Localized text, formatted in Markdown.
- */
-export type MarkdownString3 = string;
 export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
 export type AssetTypeID = string;
 /**
@@ -110,6 +74,8 @@ export type AssetTypeID = string;
  * via the `patternProperty` "^[a-z_]+$".
  */
 export type AssetOptionField = SelectFieldPlayerStat | TextField;
+export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
+export type PlayerConditionMeter = "health" | "spirit" | "supply";
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z_]+$".
@@ -135,7 +101,34 @@ export type AssetIDWildcard = string;
  * via the `patternProperty` "^[a-z_]+$".
  */
 export type AssetConditionMeterControlField = CheckboxField;
+export type MoveRollType1 = "action_roll" | "progress_roll" | "no_roll";
 export type TriggerExtension = TriggerActionRollExtension | TriggerProgressRollExtension;
+/**
+ * `any`: When rolling with this move trigger option, the player picks which stat to use.
+ *
+ * `all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.
+ *
+ * `highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.
+ *
+ * `lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.
+ */
+export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
+export type TriggerActionRollOptionChoice =
+  | TriggerActionRollOptionChoiceStat
+  | TriggerActionRollOptionChoiceRef
+  | TriggerActionRollOptionChoiceAttachedAssetRef
+  | TriggerActionRollOptionChoiceCustomValue;
+export type AssetConditionMeterIDWildcard = string;
+export type AssetOptionFieldIDWildcard = string;
+export type ProgressType =
+  | "quests_legacy"
+  | "bonds_legacy"
+  | "discoveries_legacy"
+  | "combat_progress"
+  | "vow_progress"
+  | "scene_challenge_progress"
+  | "expedition_progress"
+  | "connection_progress";
 /**
  * A move ID with wildcards
  */
@@ -352,69 +345,15 @@ export interface MoveCategory {
 export interface Move {
   id: MoveID;
   name: Label;
-  source: Source;
-  trigger: Trigger;
+  move_type: MoveRollType;
+  trigger: {
+    text: MarkdownString1;
+  };
   text: MarkdownString;
   outcomes?: MoveOutcomes;
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
-}
-export interface TriggerActionRoll {
-  text: MarkdownString1;
-  roll_type: "action_roll";
-  roll_options: TriggerActionRollOption[];
-}
-export interface TriggerActionRollOption {
-  text?: MarkdownString;
-  method: MoveRollMethod | MoveOutcomeType;
-  by?: TriggerBy;
-  choices: TriggerActionRollOptionChoice[];
-}
-/**
- * Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.
- */
-export interface TriggerBy {
-  player: boolean;
-  ally: boolean;
-}
-export interface TriggerActionRollOptionChoiceStat {
-  using: PlayerStat | PlayerConditionMeter;
-}
-export interface TriggerActionRollOptionChoiceRef {
-  using: "ref";
-  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
-}
-export interface TriggerActionRollOptionChoiceAttachedAssetRef {
-  using: "attached_asset_meter";
-}
-export interface TriggerActionRollOptionChoiceCustomValue {
-  using: "custom_value";
-  label: Label;
-  value: number;
-}
-export interface TriggerProgressRoll {
-  text: MarkdownString2;
-  roll_type: "progress_roll";
-  roll_options: TriggerProgressRollOption[];
-}
-export interface TriggerProgressRollOption {
-  text?: MarkdownString;
-  method: MoveRollMethod | MoveOutcomeType;
-  by?: TriggerBy;
-  choices: TriggerProgressRollOptionChoice[];
-}
-export interface TriggerProgressRollOptionChoice {
-  using: ProgressType;
-}
-export interface TriggerNoRoll {
-  text: MarkdownString3;
-  roll_type: "no_roll";
-  roll_options?: TriggerNoRollOption[];
-}
-export interface TriggerNoRollOption {
-  text?: MarkdownString;
-  method: MoveRollMethod | MoveOutcomeType;
-  by?: TriggerBy;
+  source: Source;
 }
 export interface MoveOutcomes {
   miss: MoveOutcomeMatchable;
@@ -591,12 +530,12 @@ export interface AssetConditionMeter {
 export interface MoveExtension {
   text?: MarkdownString;
   oracles?: OracleTableID[];
+  move_type?: MoveRollType1;
   trigger?: TriggerExtension;
   outcomes?: MoveOutcomesExtension;
   extends?: MoveIDWithWildcard[];
 }
 export interface TriggerActionRollExtension {
-  roll_type: "action_roll";
   roll_options: TriggerActionRollOptionExtension[];
 }
 export interface TriggerActionRollOptionExtension {
@@ -605,8 +544,29 @@ export interface TriggerActionRollOptionExtension {
   by?: TriggerBy;
   choices?: TriggerActionRollOptionChoice[];
 }
+/**
+ * Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move.
+ */
+export interface TriggerBy {
+  player: boolean;
+  ally: boolean;
+}
+export interface TriggerActionRollOptionChoiceStat {
+  using: PlayerStat | PlayerConditionMeter;
+}
+export interface TriggerActionRollOptionChoiceRef {
+  using: "ref";
+  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+}
+export interface TriggerActionRollOptionChoiceAttachedAssetRef {
+  using: "attached_asset_meter";
+}
+export interface TriggerActionRollOptionChoiceCustomValue {
+  using: "custom_value";
+  label: Label;
+  value: number;
+}
 export interface TriggerProgressRollExtension {
-  roll_type: "progress_roll";
   roll_options: TriggerProgressRollOptionExtension[];
 }
 export interface TriggerProgressRollOptionExtension {
@@ -614,6 +574,9 @@ export interface TriggerProgressRollOptionExtension {
   method?: MoveRollMethod | MoveOutcomeType;
   by?: TriggerBy;
   choices?: TriggerProgressRollOptionChoice[];
+}
+export interface TriggerProgressRollOptionChoice {
+  using: ProgressType;
 }
 export interface MoveOutcomesExtension {
   miss?: MoveOutcomeMatchableExtension;

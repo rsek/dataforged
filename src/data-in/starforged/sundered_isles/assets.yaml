@@ -153,8 +153,8 @@ assets:
               - extends:
                   - starforged/moves/fate/pay_the_price
                 text: You may instead suffer -1 command as the cost.
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: Leading or aided by your crew
                 text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
@@ -165,8 +165,8 @@ assets:
                     text: You may (after rolling) suffer -1 command and improve a weak hit to a strong hit.
               - extends:
                   - starforged/moves/adventure/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: As a test of your leadership
                       choices:
@@ -175,8 +175,8 @@ assets:
             moves:
               bolster_crew:
                 name: Bolster Crew
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you bolster your crew by providing them with a significant reward or respite...
                   roll_options:
                     - method: any
@@ -199,8 +199,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/compel
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When your command is 0 and the situation desperate
                 outcomes:
@@ -314,8 +314,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: Summon the Kraken (and fill one segment of its clock)
                 text: |-
@@ -332,8 +332,8 @@ assets:
           - text: |-
               When you make a move using a threat to call the Kraken as leverage, add +2.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: Make a move using a threat to call the Kraken as leverage
                 text: Add +2.
@@ -342,8 +342,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: In service to the Kraken (formidable or greater, one time only)
                 outcomes:
@@ -380,8 +380,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By gathering your specialists to strategize or problem-solve
                 outcomes:
@@ -402,8 +402,8 @@ assets:
               Your fleet has a starting and max power of 4. When you make a move as a fleetwide action to get in position, avoid a hazard, or fight, roll +power. If you [Pay the Price](starforged/moves/fate/pay_the_price) and your fleet bears the cost, suffer -1 power. At 0 power, mark the fleet as wrecked. To refit the fleet, [Sojourn](starforged/moves/recover/sojourn) and forego an automatic strong hit on a recover move to take +2 power; if the fleet is wrecked, first spend 2 experience to clear that status.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: As a fleetwide action to get in position, avoid a hazard, or fight
                       choices:
@@ -429,8 +429,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With your fleet
                 outcomes:

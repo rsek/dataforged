@@ -530,14 +530,7 @@
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"method": {
-					"default": "any",
-					"anyOf": [
-						{ "$ref": "#/$defs/MoveRollMethod" },
-						{ "$ref": "#/$defs/MoveOutcomeType" }
-					]
-				}
+				"by": { "$ref": "#/$defs/TriggerBy" }
 			}
 		},
 		"TriggerActionRoll": {
@@ -549,13 +542,12 @@
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_type": { "const": "action_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollOption" }
 				}
 			},
-			"required": ["text", "roll_type", "roll_options"]
+			"required": ["text", "roll_options"]
 		},
 		"TriggerProgressRoll": {
 			"type": "object",
@@ -566,13 +558,12 @@
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_type": { "const": "progress_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollOption" }
 				}
 			},
-			"required": ["text", "roll_type", "roll_options"]
+			"required": ["text", "roll_options"]
 		},
 		"TriggerNoRoll": {
 			"type": "object",
@@ -583,13 +574,12 @@
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_type": { "const": "no_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerNoRollOption" }
 				}
 			},
-			"required": ["text", "roll_type"]
+			"required": ["text"]
 		},
 		"Trigger": {
 			"anyOf": [
@@ -638,7 +628,18 @@
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
-				"trigger": { "$ref": "#/$defs/Trigger" },
+				"trigger": {
+					"type": "object",
+					"properties": {
+						"text": {
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+							"type": "string",
+							"pattern": ".*\\.{3}",
+							"$ref": "#/$defs/MarkdownString"
+						}
+					},
+					"required": ["text"]
+				},
 				"text": { "$ref": "#/$defs/MarkdownString" },
 				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
 				"oracles": {
@@ -647,6 +648,7 @@
 				},
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/MoveID" },
+				"move_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" },
 				"source": { "$ref": "#/$defs/Source" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
@@ -694,13 +696,12 @@
 		"TriggerActionRollExtension": {
 			"type": "object",
 			"properties": {
-				"roll_type": { "const": "action_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollOptionExtension" }
 				}
 			},
-			"required": ["roll_type", "roll_options"]
+			"required": ["roll_options"]
 		},
 		"TriggerProgressRollOptionExtension": {
 			"type": "object",
@@ -723,13 +724,12 @@
 		"TriggerProgressRollExtension": {
 			"type": "object",
 			"properties": {
-				"roll_type": { "const": "progress_roll", "type": "string" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollOptionExtension" }
 				}
 			},
-			"required": ["roll_type", "roll_options"]
+			"required": ["roll_options"]
 		},
 		"TriggerExtension": {
 			"anyOf": [
@@ -770,6 +770,7 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
+				"move_type": { "$ref": "#/$defs/MoveRollType" },
 				"trigger": { "$ref": "#/$defs/TriggerExtension" },
 				"outcomes": { "$ref": "#/$defs/MoveOutcomesExtension" },
 				"extends": {

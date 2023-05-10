@@ -65,54 +65,21 @@ export type OracleCollectionStyle = "multi_table";
  */
 export type WEBPImageURL = string;
 export type MoveCategoryID = string;
-export type Trigger = TriggerActionRoll | TriggerProgressRoll | TriggerNoRoll;
 /**
  * Localized text, formatted in Markdown.
  */
 export type MarkdownString1 = string;
-export type TriggerActionRollOptionChoice =
-  | TriggerActionRollOptionChoiceStat
-  | TriggerActionRollOptionChoiceRef
-  | TriggerActionRollOptionChoiceAttachedAssetRef
-  | TriggerActionRollOptionChoiceCustomValue;
-export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
-export type PlayerConditionMeter = "health" | "spirit" | "supply";
-export type AssetConditionMeterIDWildcard = string;
-export type AssetOptionFieldIDWildcard = string;
-/**
- * `any`: When rolling with this move trigger option, the player picks which stat to use.
- *
- * `all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.
- *
- * `highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.
- *
- * `lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.
- */
-export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-/**
- * Localized text, formatted in Markdown.
- */
-export type MarkdownString2 = string;
-export type ProgressType =
-  | "combat_progress"
-  | "vow_progress"
-  | "scene_challenge_progress"
-  | "journey_progress"
-  | "delve_progress"
-  | "bonds_progress"
-  | "failure_track";
-/**
- * Localized text, formatted in Markdown.
- */
-export type MarkdownString3 = string;
 export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
+export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
 export type AssetTypeID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z_]+$".
  */
 export type AssetOptionField = SelectFieldStat | TextField;
+export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
+export type PlayerConditionMeter = "health" | "spirit" | "supply";
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z_]+$".
@@ -137,7 +104,33 @@ export type AssetIDWildcard = string;
  * via the `patternProperty` "^[a-z_]+$".
  */
 export type AssetConditionMeterControlField = CheckboxField;
+export type MoveRollType1 = "action_roll" | "progress_roll" | "no_roll";
 export type TriggerExtension = TriggerActionRollExtension | TriggerProgressRollExtension;
+export type TriggerActionRollOptionChoice =
+  | TriggerActionRollOptionChoiceStat
+  | TriggerActionRollOptionChoiceRef
+  | TriggerActionRollOptionChoiceAttachedAssetRef
+  | TriggerActionRollOptionChoiceCustomValue;
+export type AssetConditionMeterIDWildcard = string;
+export type AssetOptionFieldIDWildcard = string;
+/**
+ * `any`: When rolling with this move trigger option, the player picks which stat to use.
+ *
+ * `all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.
+ *
+ * `highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.
+ *
+ * `lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.
+ */
+export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
+export type ProgressType =
+  | "combat_progress"
+  | "vow_progress"
+  | "scene_challenge_progress"
+  | "journey_progress"
+  | "delve_progress"
+  | "bonds_progress"
+  | "failure_track";
 /**
  * A move ID with wildcards
  */
@@ -419,68 +412,17 @@ export interface MoveCategory {
  */
 export interface Move {
   name: Label;
-  trigger: Trigger;
+  trigger: {
+    text: MarkdownString1;
+  };
   text: MarkdownString;
   outcomes?: MoveOutcomes;
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
   id?: MoveID;
+  move_type?: MoveRollType;
   source?: Source;
   _source?: SourceStub;
-}
-export interface TriggerActionRoll {
-  text: MarkdownString1;
-  roll_type: "action_roll";
-  roll_options: TriggerActionRollOption[];
-}
-export interface TriggerActionRollOption {
-  text?: MarkdownString;
-  by?: TriggerBy;
-  choices: TriggerActionRollOptionChoice[];
-  method?: MoveRollMethod | MoveOutcomeType;
-}
-export interface TriggerBy {
-  player?: boolean;
-  ally?: boolean;
-}
-export interface TriggerActionRollOptionChoiceStat {
-  using: PlayerStat | PlayerConditionMeter;
-}
-export interface TriggerActionRollOptionChoiceRef {
-  using: "ref";
-  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
-}
-export interface TriggerActionRollOptionChoiceAttachedAssetRef {
-  using: "attached_asset_meter";
-}
-export interface TriggerActionRollOptionChoiceCustomValue {
-  using: "custom_value";
-  label: Label;
-  value: number;
-}
-export interface TriggerProgressRoll {
-  text: MarkdownString2;
-  roll_type: "progress_roll";
-  roll_options: TriggerProgressRollOption[];
-}
-export interface TriggerProgressRollOption {
-  text?: MarkdownString;
-  by?: TriggerBy;
-  choices: TriggerProgressRollOptionChoice[];
-  method?: MoveRollMethod | MoveOutcomeType;
-}
-export interface TriggerProgressRollOptionChoice {
-  using: ProgressType;
-}
-export interface TriggerNoRoll {
-  text: MarkdownString3;
-  roll_type: "no_roll";
-  roll_options?: TriggerNoRollOption[];
-}
-export interface TriggerNoRollOption {
-  text?: MarkdownString;
-  by?: TriggerBy;
-  method?: MoveRollMethod | MoveOutcomeType;
 }
 export interface MoveOutcomes {
   miss: MoveOutcomeMatchable;
@@ -653,12 +595,12 @@ export interface AssetConditionMeterExtension {
 export interface MoveExtension {
   text?: MarkdownString;
   oracles?: OracleTableID[];
+  move_type?: MoveRollType1;
   trigger?: TriggerExtension;
   outcomes?: MoveOutcomesExtension;
   extends?: MoveIDWithWildcard[];
 }
 export interface TriggerActionRollExtension {
-  roll_type: "action_roll";
   roll_options: TriggerActionRollOptionExtension[];
 }
 export interface TriggerActionRollOptionExtension {
@@ -667,8 +609,26 @@ export interface TriggerActionRollOptionExtension {
   choices?: TriggerActionRollOptionChoice[];
   method?: MoveRollMethod | MoveOutcomeType;
 }
+export interface TriggerBy {
+  player?: boolean;
+  ally?: boolean;
+}
+export interface TriggerActionRollOptionChoiceStat {
+  using: PlayerStat | PlayerConditionMeter;
+}
+export interface TriggerActionRollOptionChoiceRef {
+  using: "ref";
+  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+}
+export interface TriggerActionRollOptionChoiceAttachedAssetRef {
+  using: "attached_asset_meter";
+}
+export interface TriggerActionRollOptionChoiceCustomValue {
+  using: "custom_value";
+  label: Label;
+  value: number;
+}
 export interface TriggerProgressRollExtension {
-  roll_type: "progress_roll";
   roll_options: TriggerProgressRollOptionExtension[];
 }
 export interface TriggerProgressRollOptionExtension {
@@ -676,6 +636,9 @@ export interface TriggerProgressRollOptionExtension {
   by?: TriggerBy;
   choices?: TriggerProgressRollOptionChoice[];
   method?: MoveRollMethod | MoveOutcomeType;
+}
+export interface TriggerProgressRollOptionChoice {
+  using: ProgressType;
 }
 export interface MoveOutcomesExtension {
   miss?: MoveOutcomeMatchableExtension;

@@ -21,8 +21,8 @@
 			"contents": {
 				"begin_a_session": {
 					"name": "Begin a Session",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you begin a significant session or chapter of play..."
 					},
 					"oracles": [
@@ -45,8 +45,8 @@
 				},
 				"set_a_flag": {
 					"name": "Set a Flag",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching..."
 					},
 					"text": "**When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching**, that content is now flagged.\n\nWhen you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](starforged/moves/session/change_your_fate).",
@@ -66,8 +66,8 @@
 				},
 				"change_your_fate": {
 					"name": "Change Your Fate",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment..."
 					},
 					"text": "**When you encounter flagged content, reject an oracle, resist a consequence, or otherwise need to shift your circumstances within the game for your comfort or enjoyment**, pause and identify what needs to be changed. Choose as many options as appropriate.\n\n  * **Reframe:** This didn’t happen the way you first thought. Envision the moment from another perspective in a way that diminishes or changes the content.\n  * **Refocus:** This is not the most important thing happening right now. Envision how the spotlight shifts to change the focus.\n  * **Replace:** This happens but with a small adjustment. Switch out an element and envision how this new detail changes the scenario.\n  * **Redirect:** Adjust the trajectory to involve a helping hand. Envision how another person or party becomes involved.\n  * **Reshape:** The situation changes completely. Envision what happened instead.",
@@ -87,8 +87,8 @@
 				},
 				"take_a_break": {
 					"name": "Take a Break",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you resolve a progress move or complete an intense scenario..."
 					},
 					"text": "**When you resolve a progress move or complete an intense scenario**, take a few deep breaths and take some time to attend to the needs of your body. Reflect on what just happened and how it made you feel. Then, choose one.\n\n  * Move on: Continue the session. You or an ally may add +1 on the next move (not a progress move), bolstered by your reflection and past experiences.\n  * Stop for now: [End a Session](starforged/moves/session/end_a_session).",
@@ -108,8 +108,8 @@
 				},
 				"end_a_session": {
 					"name": "End a Session",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you end a significant session or chapter of play..."
 					},
 					"text": "**When you end a significant session or chapter of play**, reflect on the events of the game and identify any missed opportunities to mark progress.\n\n  * If you strengthened your ties to a connection, [Develop Your Relationship](starforged/moves/connection/develop_your_relationship).\n  * If you moved forward on a quest, [Reach a Milestone](starforged/moves/quest/reach_a_milestone).\n\nIf there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum.",
@@ -150,9 +150,9 @@
 			"contents": {
 				"face_danger": {
 					"name": "Face Danger",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you attempt something risky or react to an imminent threat...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "With speed, mobility, or agility",
@@ -160,8 +160,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With resolve, command, or sociability",
@@ -169,8 +168,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With strength, endurance, or aggression",
@@ -178,8 +176,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With deception, stealth, or trickery",
@@ -187,8 +184,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With expertise, focus, or observation",
@@ -196,8 +192,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -229,9 +224,9 @@
 				},
 				"secure_an_advantage": {
 					"name": "Secure an Advantage",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you assess a situation, make preparations, or attempt to gain leverage...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "With speed, mobility, or agility",
@@ -239,8 +234,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With resolve, command, or sociability",
@@ -248,8 +242,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With strength, endurance, aggression",
@@ -257,8 +250,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With deception, stealth, or trickery",
@@ -266,8 +258,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With expertise, focus, or observation",
@@ -275,8 +266,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -311,17 +301,16 @@
 					"oracles": [
 						"starforged/oracles/misc/story_clue"
 					],
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you search for clues, conduct an investigation, analyze evidence, or do research...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -353,9 +342,9 @@
 				},
 				"compel": {
 					"name": "Compel",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you try to persuade someone or make them an offer...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Charm, pacify, encourage, or barter",
@@ -363,8 +352,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Threaten or incite",
@@ -372,8 +360,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Lie or swindle",
@@ -381,8 +368,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -414,8 +400,8 @@
 				},
 				"aid_your_ally": {
 					"name": "Aid Your Ally",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you act in direct support of an ally..."
 					},
 					"text": "**When you act in direct support of an ally**, envision how you aid them. Then, [Secure an Advantage](starforged/moves/adventure/secure_an_advantage) or [Gain Ground](starforged/moves/combat/gain_ground) to take action. If you score a hit, they (instead of you) take the benefits of the move.\n\nIf you [Gain Ground](starforged/moves/combat/gain_ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot.",
@@ -435,17 +421,16 @@
 				},
 				"check_your_gear": {
 					"name": "Check Your Gear",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you check to see if you have a specific helpful item or resource...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "supply"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -498,17 +483,16 @@
 			"contents": {
 				"swear_an_iron_vow": {
 					"name": "Swear an Iron Vow",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you swear upon iron to complete a quest...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -540,8 +524,8 @@
 				},
 				"reach_a_milestone": {
 					"name": "Reach a Milestone",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you make headway in your quest..."
 					},
 					"text": "**When you make headway in your quest** by doing any of the following...\n\n  * overcoming a critical obstacle\n  * gaining meaningful insight\n  * completing a perilous expedition\n  * acquiring a crucial item or resource\n  * earning vital support\n  * defeating a notable foe\n\n...you may mark progress per the rank of the vow.",
@@ -561,17 +545,16 @@
 				},
 				"fulfill_your_vow": {
 					"name": "Fulfill Your Vow",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When you reach the end of your quest...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "vow_progress"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -603,8 +586,8 @@
 				},
 				"forsake_your_vow": {
 					"name": "Forsake Your Vow",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you renounce your quest, betray your promise, or the goal is lost to you..."
 					},
 					"text": "**When you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow.\n\nThen, envision the impact of this failure and choose one or more as appropriate to the nature of the vow. Any allies who shared this vow may also envision a cost.\n\n  * You are demoralized or dispirited: [Endure Stress](starforged/moves/suffer/endure_stress).\n  * A connection loses faith: [Test Your Relationship](starforged/moves/connection/test_your_relationship) when you next interact.\n  * You must abandon a path or resource: Discard an asset.\n  * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.\n  * Someone else takes advantage: Envision how an enemy gains power.\n  * Your reputation suffers: Envision how this failure marks you.",
@@ -645,17 +628,16 @@
 			"contents": {
 				"make_a_connection": {
 					"name": "Make a Connection",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -687,9 +669,9 @@
 				},
 				"develop_your_relationship": {
 					"name": "Develop Your Relationship",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you reinforce your relationship with a connection...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "If you already share a bond with the connection",
@@ -719,8 +701,7 @@
 										"using": "custom_value",
 										"value": 5
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -755,17 +736,16 @@
 				},
 				"test_your_relationship": {
 					"name": "Test Your Relationship",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When your relationship with a connection is tested through conflict, betrayal, or circumstance...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -797,17 +777,16 @@
 				},
 				"forge_a_bond": {
 					"name": "Forge a Bond",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When your relationship with a connection is ready to evolve...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "connection_progress"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -860,9 +839,9 @@
 			"contents": {
 				"undertake_an_expedition": {
 					"name": "Undertake an Expedition",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Move at speed",
@@ -870,8 +849,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Keep under the radar",
@@ -879,8 +857,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Stay vigilant",
@@ -888,8 +865,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -921,17 +897,16 @@
 				},
 				"explore_a_waypoint": {
 					"name": "Explore a Waypoint",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you divert from an expedition to examine a notable location...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -969,8 +944,8 @@
 				},
 				"make_a_discovery": {
 					"name": "Make a Discovery",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When your exploration of a waypoint uncovers something wondrous..."
 					},
 					"oracles": [
@@ -993,8 +968,8 @@
 				},
 				"confront_chaos": {
 					"name": "Confront Chaos",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When your exploration of a waypoint uncovers something dreadful..."
 					},
 					"oracles": [
@@ -1017,17 +992,16 @@
 				},
 				"finish_an_expedition": {
 					"name": "Finish an Expedition",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When your expedition comes to an end...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "expedition_progress"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1059,17 +1033,16 @@
 				},
 				"set_a_course": {
 					"name": "Set a Course",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "supply"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1122,9 +1095,9 @@
 			"contents": {
 				"enter_the_fray": {
 					"name": "Enter the Fray",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you initiate combat or are forced into a fight...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "On the move",
@@ -1132,8 +1105,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Facing off against your foe",
@@ -1141,8 +1113,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "In the thick of it at close quarters",
@@ -1150,8 +1121,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Preparing to act against an unaware foe",
@@ -1159,8 +1129,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Caught in a trap or sizing up the situation",
@@ -1168,8 +1137,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1201,9 +1169,9 @@
 				},
 				"gain_ground": {
 					"name": "Gain Ground",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are in control and take action in a fight to reinforce your position or move toward an objective...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "In pursuit, fleeing, or maneuvering",
@@ -1211,8 +1179,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "By charging boldly into action, coming to the aid of others, negotiating, or commanding",
@@ -1220,8 +1187,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Gaining leverage with force, powering through, or making a threat",
@@ -1229,8 +1195,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Hiding, preparing an ambush, or misdirecting",
@@ -1238,8 +1203,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Coordinating a plan, studying a situation, or cleverly gaining leverage",
@@ -1247,8 +1211,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1280,9 +1243,9 @@
 				},
 				"react_under_fire": {
 					"name": "React Under Fire",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "In pursuit, fleeing, dodging, getting back into position, or taking cover",
@@ -1290,8 +1253,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Remaining stalwart against fear or temptation",
@@ -1299,8 +1261,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Blocking or diverting with force, or taking the hit",
@@ -1308,8 +1269,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Moving into hiding or creating a distraction",
@@ -1317,8 +1277,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Changing the plan, finding a way out, or cleverly bypassing an obstacle",
@@ -1326,8 +1285,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1359,9 +1317,9 @@
 				},
 				"strike": {
 					"name": "Strike",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are in control and assault a foe at close quarters, or when you attack at a distance...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Assault a foe at close quarters",
@@ -1369,8 +1327,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Attack at a distance",
@@ -1378,8 +1335,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1411,9 +1367,9 @@
 				},
 				"clash": {
 					"name": "Clash",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Fight back against a foe at close quarters",
@@ -1421,8 +1377,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Exchange fire at a distance",
@@ -1430,8 +1385,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1463,17 +1417,16 @@
 				},
 				"take_decisive_action": {
 					"name": "Take Decisive Action",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When you seize an objective in a fight...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "combat_progress"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1508,8 +1461,8 @@
 				},
 				"face_defeat": {
 					"name": "Face Defeat",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you abandon or are deprived of an objective..."
 					},
 					"text": "**When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](starforged/moves/fate/pay_the_price).\n\nIf the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.",
@@ -1529,9 +1482,9 @@
 				},
 				"battle": {
 					"name": "Battle",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you fight a battle and it happens in a blur...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "At range, or using your speed and the environment to your advantage",
@@ -1539,8 +1492,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Depending on your courage, leadership, or companions",
@@ -1548,8 +1500,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "In close to overpower your foe",
@@ -1557,8 +1508,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Using trickery to befuddle your foe",
@@ -1566,8 +1516,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Using careful tactics to outsmart your foe",
@@ -1575,8 +1524,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1629,8 +1577,8 @@
 			"contents": {
 				"lose_momentum": {
 					"name": "Lose Momentum",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you are delayed or disadvantaged..."
 					},
 					"text": "**When you are delayed or disadvantaged**, suffer -1 momentum for a minor setback, -2 for a serious setback, or -3 for a major setback.\n\nWhen your momentum is at its minimum (-6) and you must suffer -momentum, choose one.\n\n  * Envision how the price is paid and apply the cost to a different suffer move.\n  * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick.",
@@ -1650,9 +1598,9 @@
 				},
 				"endure_harm": {
 					"name": "Endure Harm",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you face physical injury, fatigue, or illness...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"method": "highest",
@@ -1698,9 +1646,9 @@
 				},
 				"endure_stress": {
 					"name": "Endure Stress",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you face mental strain, shock, or despair...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"method": "highest",
@@ -1746,9 +1694,9 @@
 				},
 				"companion_takes_a_hit": {
 					"name": "Companion Takes a Hit",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When your companion faces physical hardship...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
@@ -1756,8 +1704,7 @@
 										"using": "ref",
 										"ref": "*/assets/companion/*/condition_meter"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1792,8 +1739,8 @@
 				},
 				"sacrifice_resources": {
 					"name": "Sacrifice Resources",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you lose or consume resources..."
 					},
 					"text": "**When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.\n\nIf your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.",
@@ -1813,9 +1760,9 @@
 				},
 				"withstand_damage": {
 					"name": "Withstand Damage",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When your vehicle faces a damaging situation or environment...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
@@ -1827,8 +1774,7 @@
 										"using": "ref",
 										"ref": "*/assets/support_vehicle/*/condition_meter"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1884,17 +1830,16 @@
 			"contents": {
 				"sojourn": {
 					"name": "Sojourn",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you spend time recovering within a community...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1926,9 +1871,9 @@
 				},
 				"heal": {
 					"name": "Heal",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you receive medical care or provide treatment...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Receive treatment from someone (not an ally)",
@@ -1936,8 +1881,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Mend your own wounds",
@@ -1957,8 +1901,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Provide care",
@@ -1966,8 +1909,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -1999,17 +1941,16 @@
 				},
 				"hearten": {
 					"name": "Hearten",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you socialize, share intimacy, or find a moment of peace...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2041,9 +1982,9 @@
 				},
 				"resupply": {
 					"name": "Resupply",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you attempt to bolster your readiness...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Barter or make an appeal",
@@ -2051,8 +1992,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Threaten or seize",
@@ -2060,8 +2000,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Steal or swindle",
@@ -2069,8 +2008,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Scavenge or craft",
@@ -2078,8 +2016,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2111,9 +2048,9 @@
 				},
 				"repair": {
 					"name": "Repair",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you make repairs to your vehicles, modules, mechanical companions, or other devices...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "Make your own repairs, or direct a companion to make repairs",
@@ -2121,8 +2058,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "Obtain repairs from someone (not an ally)",
@@ -2130,8 +2066,7 @@
 									{
 										"using": "supply"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2184,17 +2119,16 @@
 			"contents": {
 				"face_death": {
 					"name": "Face Death",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are brought to the brink of death with a chance for recovery or redemption...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2226,17 +2160,16 @@
 				},
 				"face_desolation": {
 					"name": "Face Desolation",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you are brought to the brink of desolation...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2268,17 +2201,16 @@
 				},
 				"overcome_destruction": {
 					"name": "Overcome Destruction",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When your command vehicle is destroyed or irrevocably lost...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"choices": [
 									{
 										"using": "bonds_legacy"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2331,8 +2263,8 @@
 			"contents": {
 				"earn_experience": {
 					"name": "Earn Experience",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you fill a box (four ticks) on any legacy track..."
 					},
 					"text": "**When you fill a box (four ticks) on any legacy track**, take 2 experience. This experience may be spent when you [Advance](starforged/moves/legacy/advance).\n\nOnce you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.",
@@ -2352,8 +2284,8 @@
 				},
 				"advance": {
 					"name": "Advance",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you develop your abilities, improve your resources, gain a reward, or boost your influence..."
 					},
 					"text": "**When you develop your abilities, improve your resources, gain a reward, or boost your influence**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset. Choose from the following categories as appropriate to your focus and opportunities.\n\n  * Module: Upgrade your command vehicle\n  * Support Vehicle: Acquire or improve a secondary vehicle\n  * Path: Bolster your personal capabilities or follow a new calling\n  * Companion: Gain or improve a trusted helper\n  * Deed: Learn from your experiences or build a legacy",
@@ -2373,9 +2305,9 @@
 				},
 				"continue_a_legacy": {
 					"name": "Continue a Legacy",
+					"move_type": "progress_roll",
 					"trigger": {
 						"text": "When you retire from your life as Ironsworn, or succumb to death or desolation...",
-						"roll_type": "progress_roll",
 						"roll_options": [
 							{
 								"method": "all",
@@ -2442,8 +2374,8 @@
 			"contents": {
 				"ask_the_oracle": {
 					"name": "Ask the Oracle",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you seek to resolve questions, reveal details, discover locations, determine how other characters respond, or trigger encounters or events..."
 					},
 					"oracles": [
@@ -2470,8 +2402,8 @@
 				},
 				"pay_the_price": {
 					"name": "Pay the Price",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you suffer the outcome of an action..."
 					},
 					"oracles": [
@@ -2516,8 +2448,8 @@
 			"contents": {
 				"begin_the_scene": {
 					"name": "Begin the Scene",
+					"move_type": "no_roll",
 					"trigger": {
-						"roll_type": "no_roll",
 						"text": "When you face an extended or complex challenge..."
 					},
 					"text": "**When you face an extended or complex challenge**, name your objective and choose a rank as appropriate to the situation.\n\n  * You have a clear advantage: Troublesome\n  * You are ready to act: Dangerous\n  * You are unprepared or outmatched: Formidable\n\nThen, activate a 4-segment tension clock and [Face Danger](starforged/moves/scene_challenge/face_danger) or [Secure an Advantage](starforged/moves/scene_challenge/secure_an_advantage) to take action.",
@@ -2537,9 +2469,9 @@
 				},
 				"face_danger": {
 					"name": "Face Danger (Scene Challenge)",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you attempt something risky or react to an imminent threat within a scene challenge...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "With speed, mobility, or agility",
@@ -2547,8 +2479,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With resolve, command, or sociability",
@@ -2556,8 +2487,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With strength, endurance, or aggression",
@@ -2565,8 +2495,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With deception, stealth, or trickery",
@@ -2574,8 +2503,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With expertise, focus, or observation",
@@ -2583,8 +2511,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2622,9 +2549,9 @@
 				},
 				"secure_an_advantage": {
 					"name": "Secure an Advantage (Scene Challenge)",
+					"move_type": "action_roll",
 					"trigger": {
 						"text": "When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...",
-						"roll_type": "action_roll",
 						"roll_options": [
 							{
 								"text": "With speed, mobility, or agility",
@@ -2632,8 +2559,7 @@
 									{
 										"using": "edge"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With resolve, command, or sociability",
@@ -2641,8 +2567,7 @@
 									{
 										"using": "heart"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With strength, endurance, aggression",
@@ -2650,8 +2575,7 @@
 									{
 										"using": "iron"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With deception, stealth, or trickery",
@@ -2659,8 +2583,7 @@
 									{
 										"using": "shadow"
 									}
-								],
-								"method": "any"
+								]
 							},
 							{
 								"text": "With expertise, focus, or observation",
@@ -2668,8 +2591,7 @@
 									{
 										"using": "wits"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},
@@ -2707,8 +2629,8 @@
 				},
 				"finish_the_scene": {
 					"name": "Finish the Scene",
+					"move_type": "progress_roll",
 					"trigger": {
-						"roll_type": "progress_roll",
 						"text": "When the scene challenge tension clock or progress track is filled, or when events lead to the scene’s conclusion...",
 						"roll_options": [
 							{
@@ -2716,8 +2638,7 @@
 									{
 										"using": "scene_challenge_progress"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},

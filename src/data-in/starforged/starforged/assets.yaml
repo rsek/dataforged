@@ -61,8 +61,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/finish_an_expedition
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: In your starship (dangerous or greater)
                 outcomes:
@@ -74,8 +74,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/withstand_damage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To your Starship
                       method: any
@@ -118,8 +118,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your vehicle
                       choices:
@@ -137,8 +137,8 @@ assets:
               # TODO: split this trigger
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your vehicle (and you choose to maneuver)
                 text: Add +1.
@@ -147,8 +147,8 @@ assets:
                     text: Take +1 momentum.
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your vehicle (and you choose to boost)
                 outcomes: &outcomes:+2_momentum.HIT
@@ -158,8 +158,8 @@ assets:
           - text: |-
               When you make a desperate move to pursue a foe, escape a threat, or get in range, you may push your engines to their limit. If you do (decide after rolling), reroll any dice and count a weak hit as a strong hit. Then, [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)
                 outcomes:
@@ -191,8 +191,8 @@ assets:
           - text: |-
               When you score a miss or weak hit as you make a move to barter or negotiate, and you have at least 1 cargo, you may sweeten the pot. If you do, reroll all dice and add +cargo. Then, suffer -1 cargo.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: You make a move to barter or negotiate, and you have at least 1 cargo
                 outcomes:
@@ -204,8 +204,8 @@ assets:
           - text: |-
               When you make a move to outrun a threat and have at least 1 cargo, you may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move to outrun a threat and have at least 1 cargo
                 text: |-
@@ -225,8 +225,8 @@ assets:
             moves:
               ready_grappler:
                 name: Ready Grappler
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you take a minute or so to ready the grappler...
                   roll_options:
                     - method: highest
@@ -262,8 +262,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: By firing the grappler
                 outcomes:
@@ -288,8 +288,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you aim your cannons and use them to [Strike](starforged/moves/combat/strike)
                 text: |-
@@ -302,8 +302,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Once per fight, when you [Clash](starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire
                 text: Add +1, count a weak hit as a strong hit, and mark progress on a hit. On a miss, you must suffer a dire outcome.
@@ -322,8 +322,8 @@ assets:
                   - starforged/moves/adventure/compel
                   - starforged/moves/combat/enter_the_fray
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By bringing your cannons to bear and sending a promise of violence to your foe over communication channels
                 text: Add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
@@ -345,8 +345,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: On the first leg of your journey (dangerous or greater)
                 outcomes:
@@ -358,8 +358,8 @@ assets:
             moves:
               draw_reserves:
                 name: Draw Reserves
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                   roll_options:
                     - method: any
@@ -377,8 +377,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To oppose an invader within your vessel
                 outcomes:
@@ -406,8 +406,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/heal
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you use your medbay to [Heal](starforged/moves/recover/heal) yourself or another patient
                 outcomes:
@@ -422,8 +422,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/heal
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so)
                       by:
@@ -438,8 +438,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By performing a risky medical procedure
                 outcomes: &Medbay.3
@@ -450,8 +450,8 @@ assets:
                   miss: *outcome:reroll_any
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Through an autopsy or medical examination
                 outcomes: *Medbay.3
@@ -476,8 +476,8 @@ assets:
               - extends:
                   - starforged/moves/combat/strike
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With a missile attack
                 text: Suffer -1 ammo.
@@ -487,8 +487,8 @@ assets:
                   weak_hit: *Missile_Array.1
               - extends:
                   - starforged/moves/recover/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In a place where your missiles can be replenished
                 outcomes:
@@ -500,8 +500,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By locking a missile on target
                 text: Add +1.
@@ -513,8 +513,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: When you have at least 3 ammo and [Take Decisive Action](starforged/moves/combat/take_decisive_action) by unleashing all of your missiles
                 text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
@@ -537,8 +537,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By talking through a situation with the overseer AI
                       method: any
@@ -560,8 +560,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
                       method: any
@@ -582,8 +582,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/withstand_damage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To your vehicle with a Reinforced Hull
                 text: Add +1.
@@ -599,8 +599,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Against a foe who knows your reputation
                 outcomes:
@@ -611,8 +611,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By letting your reinforced hull take the hit
                 text: Add +1.
@@ -640,8 +640,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Through careful analysis or experimentation (in your research lab)
                 text: Add +1.
@@ -652,8 +652,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To isolate or secure a hazardous specimen
                 outcomes: &outcomes:reroll_any.ALL
@@ -665,8 +665,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To undertake a long-term research project (extreme or greater)
                 text: When you obtain crucial samples, equipment, or data, mark progress on the quest and take +2 momentum.
@@ -675,8 +675,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you devote extended time to the long-term research project (extreme or greater) in your lab
                 text: Add +1.
@@ -689,8 +689,8 @@ assets:
                     text: Mark progress.
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: To undertake a long-term research project (extreme or greater)
                 outcomes:
@@ -711,8 +711,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your vehicle
                       choices:
@@ -733,16 +733,16 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)
                 # Set dice:
@@ -758,8 +758,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Against an ambush
                       method: any
@@ -774,8 +774,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To detect a hidden threat
                       method: any
@@ -796,8 +796,8 @@ assets:
             moves:
               raise_shields:
                 name: Raise Shields
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you raise your shields...
                   roll_options:
                     - method: any
@@ -826,8 +826,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By letting your shields take the blow
                       method: any
@@ -840,8 +840,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your vehicle
                 outcomes:
@@ -864,15 +864,15 @@ assets:
               Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move against a specific foe or threat to avoid detection (in your vehicle)
                 text: Add +1.
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By ambushing an unaware foe (in your vehicle)
                 text: Add +1.
@@ -884,8 +884,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you travel stealthily (in your vehicle)
                       choices:
@@ -906,8 +906,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike true)
                       method: any
@@ -922,8 +922,8 @@ assets:
                   miss: *outcome:reroll_any
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike hard)
                       method: any
@@ -949,8 +949,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/repair
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you [Repair](starforged/moves/recover/repair) a battered support vehicle
                 outcomes:
@@ -968,8 +968,8 @@ assets:
           - text: |-
               When you make a move to launch from or land on your command vehicle in a perilous situation or environment, reroll any dice and take +1 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move to launch from or land on your command vehicle in a perilous situation or environment
                 outcomes:
@@ -992,16 +992,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/repair
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In the field (with your workshop)
                 text: Add +1.
           - text: |-
               When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine, you may reroll your action die if its value is less than your vehicle's integrity.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine
                 outcomes:
@@ -1015,8 +1015,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: &Workshop.Vow To undertake a long-term engineering project (extreme or greater)
                 outcomes:
@@ -1029,16 +1029,16 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you devote extended time to your long-term engineering project (extreme or greater) in your workshop
                 text: Add +1.
                 outcomes: *outcomes:mark_progress.HIT_twice_on_match
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: *Workshop.Vow
                 outcomes:
@@ -1081,8 +1081,8 @@ assets:
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1).
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a forceful, damaging, or resistant move in your Exosuit
                 outcomes:
@@ -1093,8 +1093,8 @@ assets:
           - text: |-
               Your exosuit is equipped with thrusters. You can maneuver in zero-g, make thrust-assisted leaps, and drop to a surface from altitude. When you burn fuel to overcome a critical obstacle (decide after rolling), you may reroll any dice. If you do, [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1).
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude
                 outcomes:
@@ -1108,8 +1108,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/withstand_damage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To your Exosuit
                 outcomes: *outcomes:reroll_challenge_die_all
@@ -1140,8 +1140,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: On your hoverbike
                       choices:
@@ -1155,8 +1155,8 @@ assets:
           - text: |-
               When you fire the bike's afterburner and make a move to perform a risky maneuver, you may add +integrity and take +2 momentum on a strong hit. If you do, count a weak hit as a miss.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you fire your hoverbike's afterburner and make a move to perform a risky maneuver
                 text: You may add +integrity.
@@ -1202,15 +1202,15 @@ assets:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
                   - starforged/moves/exploration/set_a_course
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your rover
                 text: Add +1.
               - extends:
                   - starforged/moves/exploration/finish_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your rover
                 outcomes: *outcomes:reroll_challenge_die_all
@@ -1228,8 +1228,8 @@ assets:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By taking a hit or crashing through an obstacle
                       method: any
@@ -1262,8 +1262,8 @@ assets:
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move using the pod’s manipulator arms to perform a delicate or forceful task
                 text: Add +1.
@@ -1279,8 +1279,8 @@ assets:
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/gain_ground
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By maneuvering your pod through a hazardous or obstructed area
                       method: any
@@ -1295,8 +1295,8 @@ assets:
           - text: |-
               When you make a move while controlling the pod and push its capabilities to the limit, you may take an automatic strong hit. If you do, [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move while controlling the pod and push its capabilities to the limit
                 text: You may take an automatic strong hit. If you do, [Withstand Damage](starforged/moves/suffer/withstand_damage) (-2).
@@ -1334,8 +1334,8 @@ assets:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To navigate through hazardous skies, avoid obstacles, or evade an attack
                 text: Add +1.
@@ -1345,8 +1345,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/withstand_damage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To your shuttle
                 text: Add +1.
@@ -1378,8 +1378,8 @@ assets:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
                   - starforged/moves/exploration/set_a_course
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Rely on the skiff's simple durability
                       method: any
@@ -1394,8 +1394,8 @@ assets:
               - extends:
                   - starforged/moves/combat/strike
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By firing the skiff's cannon
                       method: any
@@ -1437,8 +1437,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your snub fighter
                       method: any
@@ -1453,8 +1453,8 @@ assets:
               - extends:
                   - starforged/moves/combat/strike
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your snub fighter
                 text: Add +1.
@@ -1494,8 +1494,8 @@ assets:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By guiding your vehicle through a hazard or out of harm’s way
                 text: Add +1.
@@ -1505,8 +1505,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By maneuvering your vehicle against a foe
                 text: Add +1.
@@ -1518,8 +1518,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While piloting a vehicle
                       method: any
@@ -1545,8 +1545,8 @@ assets:
             moves:
               craft_projectiles:
                 name: Craft Projectiles
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you replenish your ammo by crafting projectiles...
                   roll_options:
                     - method: any
@@ -1570,8 +1570,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1590,8 +1590,8 @@ assets:
               - # Cost:
                 #   - resource: ${{@ASSET_METER}}
                 #     value: 1 # TODO: value should probably be an array of valid values
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter
                 # TODO: preset action die
@@ -1618,8 +1618,8 @@ assets:
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/react_under_fire
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While putting trust in your armor’s strength against physical attacks or impact
                 text: You may put trust in your armor’s strength. If you do, preset your action die to 4.
@@ -1648,8 +1648,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/endure_harm
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By letting your armor take the hit
               # TODO: something to handle arbitrary rolls like this
@@ -1662,8 +1662,8 @@ assets:
               When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location, you may reroll your action die if its value is less than your spirit. On a strong hit, take +1 momentum or +1 spirit.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location
                 outcomes:
@@ -1683,8 +1683,8 @@ assets:
                   - starforged/moves/adventure/gather_information
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying the aesthetics of a being or culture
                 text: Add +2.
@@ -1693,8 +1693,8 @@ assets:
             moves:
               commemorate:
                 name: Commemorate
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you create or perform a significant artistic work as a public memorial or tribute...
                   roll_options:
                     - method: any
@@ -1738,8 +1738,8 @@ assets:
               You are equipped with an advanced prosthetic, implant, or mechanical enhancement. When you make a move directly aided by the augment, envision how it gives you exceptional capabilities and add +1. On a strong hit with a match, your augment exceeds expectations; take +2 momentum. On a miss with a match, the augment is broken; you must [Repair](starforged/moves/recover/repair) and spend 3 repair points to bring it back to working condition.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move directly aided by your augment
                 text: Envision how your augment gives you exceptional capabilities and add +1.
@@ -1783,8 +1783,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In service to your bound clan, faction, or creed
                     # TODO: some kind of string templating, like "In service to ${{ideology}}"
@@ -1802,8 +1802,8 @@ assets:
               - extends:
                   - starforged/moves/recover/sojourn
                 # TODO: flag for things that apply to Ally moves
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - by:
                         player: true
@@ -1815,8 +1815,8 @@ assets:
                 # TODO: consider including the make a connection bit? or is that too conditional to bother with?
               - extends:
                   - starforged/moves/connection/forge_a_bond
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With anyone of your ideology
                 outcomes:
@@ -1827,8 +1827,8 @@ assets:
           - text: |-
               When you make a progress move in direct service to your ideology, you may reroll one challenge die. If you score a strong hit with a match, your reputation grows among those who share your ideology; mark 1 tick on your bonds legacy track.
             extend_moves:
-              - trigger:
-                  roll_type: progress_roll
+              - move_type: progress_roll
+                trigger:
                   roll_options:
                     - text: When you make a progress move in direct service to your ideology
                 outcomes:
@@ -1854,8 +1854,8 @@ assets:
               - extends:
                   - starforged/moves/combat/clash
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you wield a bladed weapon in close quarters
                 outcomes:
@@ -1870,8 +1870,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By moving into close quarters against your foe (and choosing to charge)
                       choices:
@@ -1881,8 +1881,8 @@ assets:
                   weak_hit: *outcome:mark_progress
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By moving into close quarters against your foe (and choosing to evade)
                       choices:
@@ -1903,8 +1903,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By binding your promise to your iconic blade
                 text: Add +1.
@@ -1923,8 +1923,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you take a bounty contract and [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to see it done
                 text: Add +1.
@@ -1933,8 +1933,8 @@ assets:
                     text: You’ve got a solid lead and may mark progress on the quest.
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: On a hunt
                 outcomes:
@@ -1950,8 +1950,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Related to a bounty
                 text: Add +1.
@@ -1975,8 +1975,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: In a fight against a bounty target or their agents
                 outcomes: *outcomes:reroll_challenge_die_all
@@ -1992,8 +1992,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)
                 text: Add +1.
@@ -2009,8 +2009,8 @@ assets:
                 # Cost: &Brawler.2.Cost
                 #   - move: starforged/moves/suffer/lose_momentum
                 #     value: 2
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Aggressively
                 text: '[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).'
@@ -2020,8 +2020,8 @@ assets:
               - extends:
                   - starforged/moves/combat/clash
                 # Cost: *Brawler.2.Cost
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Defensively
                 text: '[Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).'
@@ -2033,8 +2033,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Already positioned in close quarters against your foe
                 outcomes:
@@ -2054,8 +2054,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To transport and protect something precious
                 text: &set_safety When you [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to transport and protect something precious, set its safety to 5.
@@ -2088,8 +2088,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: To an unbonded connection by completing a courier mission
                 text: Mark progress twice on the relationship.
@@ -2099,8 +2099,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: During a courier mission
                       method: any
@@ -2125,16 +2125,16 @@ assets:
               When you make a move to attack, destroy, or sabotage by deploying or triggering an explosive device, choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To attack, destroy, or sabotage by deploying or triggering an explosive device
                 text: 'Choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.'
           - text: |-
               When you make a move to craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device, add +1 and take +1 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device
                 text: Add +1.
@@ -2144,8 +2144,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device
                 outcomes:
@@ -2191,8 +2191,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By calling on your god, power, or entity for guidance or aid
                       method: any
@@ -2216,8 +2216,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In service to your faith
                       method: any
@@ -2230,8 +2230,8 @@ assets:
                   weak_hit: *Devotant.2.1
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: On a divine quest (formidable or greater)
                 outcomes: &outcomes:bonds_2_ticks_on_hit
@@ -2243,8 +2243,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/hearten
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Through contemplation or sharing of your faith
                       method: any
@@ -2265,8 +2265,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To resolve a dispute, negotiate an agreement, or gather support
                 text: Add +1.
@@ -2275,16 +2275,16 @@ assets:
                     text: Mark progress on the quest.
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: On a diplomatic mission (formidable or greater)
                 outcomes: *outcomes:bonds_2_ticks_on_hit
           - text: |-
               When you make a move to defuse, reason, or negotiate, add +1. On a miss, you may take a different tack. Envision this new approach, reroll all dice, and add +2. If you score a miss yet again, face a dire complication or blow to your reputation as you [Pay the Price](starforged/moves/fate/pay_the_price).
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To defuse, reason, or negotiate
                 text: Add +1.
@@ -2318,8 +2318,8 @@ assets:
             moves:
               read_heart:
                 name: Read Heart
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you read the intent, emotions, or memories of a nearby being...
                   roll_options:
                     - method: any
@@ -2351,8 +2351,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To soothe a being's distress by creating an empathic bond
                       method: any
@@ -2392,8 +2392,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying a newfound place from a safe position
                 text: Add +1.
@@ -2415,8 +2415,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: On your background vow
                       method: strong_hit
@@ -2428,8 +2428,8 @@ assets:
               - extends:
                   - starforged/moves/threshold/face_death
                   - starforged/moves/threshold/face_desolation
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While your background vow is unfulfilled
                       method: strong_hit
@@ -2437,8 +2437,8 @@ assets:
           - text: |-
               When you make any progress move directly related to your background vow, and roll a 10 on either challenge die, you may reroll that die. On a strong hit, take +2 momentum.
             extend_moves:
-              - trigger:
-                  roll_type: progress_roll
+              - move_type: progress_roll
+                trigger:
                   roll_options:
                     - text: When you make any progress move directly related to your background vow
                 outcomes:
@@ -2461,8 +2461,8 @@ assets:
             moves:
               gather_energy:
                 name: Gather Energy
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you rest and meditate to gather fiery energy...
                   roll_options:
                     - method: any
@@ -2500,8 +2500,8 @@ assets:
               - extends:
                   - starforged/moves/combat/gain_ground
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you have at least +3 fire and unleash hell
                       method: strong_hit
@@ -2532,8 +2532,8 @@ assets:
           - text: |-
               When you make a move by hiding, concealing your identity, or fleeing from a pursuer, add +1 and take +1 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By hiding, concealing your identity, or fleeing from a pursuer
                 text: Add +1.
@@ -2547,7 +2547,7 @@ assets:
             #     trigger:
             #       options:
             #         - text: By clearing your name or defeating the power or authority who marked you as a fugitive (extreme or greater)
-            #           roll_type: progress_roll
+            #           move_type: progress_roll
             #           method: null
 
       gearhead:
@@ -2559,8 +2559,8 @@ assets:
               When you make a move to craft, repair, repurpose, or modify equipment or technology, add +1 and take +1 momentum on a hit.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To craft, repair, repurpose, or modify equipment or technology
                 text: Add +1.
@@ -2570,8 +2570,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying or disassembling a machine or device
                 outcomes:
@@ -2587,8 +2587,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role
                 outcomes:
@@ -2611,8 +2611,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down
                       # FIXME: phrase less awkwardly - ditto the one below
@@ -2620,8 +2620,8 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt
                 outcomes: *outcomes:mark_progress.HIT
@@ -2630,8 +2630,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: By emptying your gun as you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1)
                 outcomes:
@@ -2649,16 +2649,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With your favorite gun
                 text: Add +1.
               - extends:
                   - starforged/moves/combat/enter_the_fray
                   - starforged/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While wielding your favorite gun
                 text: Add +1.
@@ -2675,8 +2675,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By facing off against your foe
                       choices:
@@ -2697,8 +2697,8 @@ assets:
               - extends:
                   - starforged/moves/combat/gain_ground
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By moving into cover
                 text: Add +1.
@@ -2711,8 +2711,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/compel
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With the threat of violence by holding someone at gunpoint
                 text: Add +1.
@@ -2726,8 +2726,8 @@ assets:
               You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also [Endure Stress](starforged/moves/suffer/endure_stress) (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move to call upon the insight of the spirit that haunts you
                 text: Add +1.
@@ -2742,8 +2742,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/threshold/face_death
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Guided by the spirit that haunts you
                 text: Add +1.
@@ -2773,15 +2773,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/heal
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Give medical care to yourself
                 text: Add +1.
               - extends:
                   - starforged/moves/recover/heal
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Give medical care to another character
                 text: Add +1.
@@ -2794,8 +2794,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying medical evidence or biological remains
                 text: Add +1.
@@ -2817,8 +2817,8 @@ assets:
               When you make a move to break into a secure site, infiltrate a protected area, or hack or manipulate a secure system, add +1 and take +1 momentum on a hit. On a strong hit with a match, access is easier than expected; take another +1 momentum.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system
                 text: Add +1.
@@ -2836,8 +2836,8 @@ assets:
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To establish a false identity
                 text: Add +1.
@@ -2853,8 +2853,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: For a device with a specific function to aid in infiltration, espionage, or sabotage
                 text: Add +1.
@@ -2871,8 +2871,8 @@ assets:
               You wield kinetic powers. By focusing, you may remotely push, pull, lift, or constrict objects and beings that are about your size or smaller. When you are in a risky situation and draw on your powers to make a move, add +2 and [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you are in a risky situation and draw on your kinetic powers to make a move
                 text: Add +2 and [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).
@@ -2884,8 +2884,8 @@ assets:
               When your momentum is at its max, you may attempt great kinetic feats, such as manipulating large objects and creating destructive bursts of concussive force. To do so, reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
             # TODO: flag for requiring max momentum?
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: Your momentum is at its max, and you attempt great kinetic feats (such as manipulating large objects and creating destructive bursts of concussive force)
                       method: strong_hit
@@ -2905,8 +2905,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning
                 text: Add +1.
@@ -2918,8 +2918,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By coordinating with your team as they wade into the fight
                 text: Make your move before your allies act.
@@ -2931,8 +2931,8 @@ assets:
           - text: |-
               When you make a move to influence someone (not an ally) through leadership, add +1 and take +1 momentum on a hit. On a strong hit with a match, your command galvanizes them into unexpected action. Take another +1 momentum, and mark 1 tick on your bonds legacy track.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To influence someone (not an ally) through leadership
                 text: Add +1.
@@ -2968,8 +2968,8 @@ assets:
                 name: Loop Back
                 # Burn momentum: false
                 #TODO: add to IMove? Move usage?
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you loop back to a linked moment in time...
                   roll_options:
                     - method: any
@@ -3015,8 +3015,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: &Lore_Hunter.Quest To recover valuable knowledge or an extraordinary relic (formidable or greater)
                 outcomes:
@@ -3031,8 +3031,8 @@ assets:
 
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: *Lore_Hunter.Quest
                 outcomes:
@@ -3042,8 +3042,8 @@ assets:
           - text: |-
               When you make a move to conduct extended research or study, reroll any challenge dice. On a match, you piece together an extraordinary or harrowing new theory; envision the nature of this revelation and mark 1 tick on your discoveries legacy track.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To conduct extended research or study
                 outcomes:
@@ -3059,8 +3059,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you recall esoteric knowledge
                 text: Add +1.
@@ -3078,8 +3078,8 @@ assets:
             enabled: true
             extend_moves:
               - extends: *aid_your_ally_moves
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally)
                 text: Add +1 (in addition to the benefits taken by your ally).
@@ -3102,8 +3102,8 @@ assets:
               When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
             # TODO: implement "by ally" flag interface
             extend_moves:
-              - trigger:
-                  roll_type: progress_roll
+              - move_type: progress_roll
+                trigger:
                   roll_options:
                     - text: When you stand with your ally as they make a progress move
                       by:
@@ -3121,15 +3121,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To wage war or defend others from war in exchange for payment or promises
                 outcomes: *outcomes:reroll_any.ALL
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: To wage war or defend others from war in exchange for payment or promises
                 outcomes:
@@ -3141,8 +3141,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By searching out or making contact with someone in need of your services
                 text: Add +1.
@@ -3157,15 +3157,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In the midst of a fight
                 text: Add +2.
               - extends:
                   - starforged/moves/recover/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By looting the field of battle in the aftermath of a fight
                 text: Add +2.
@@ -3182,8 +3182,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using your knowledge of lifeforms or planetside ecosystems
                 text: Add +1.
@@ -3196,8 +3196,8 @@ assets:
           - text: |-
               When you make a move by taking a risky action to pacify, avoid, or outwit a creature (decide before rolling), you may reroll any dice, but must [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2).
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By taking a risky action to pacify, avoid, or outwit a creature
                 outcomes:
@@ -3212,8 +3212,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To scavenge resources in a life-bearing natural environment
                 outcomes:
@@ -3223,8 +3223,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Against an environmental threat
                 text: Add +1.
@@ -3261,8 +3261,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By charting the way forward
                 text: Add +1.
@@ -3270,16 +3270,16 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To find a path around a hazard
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: About a location by studying your charts
                 text: Add +1.
@@ -3289,8 +3289,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - by:
                         player: true
@@ -3311,8 +3311,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/hearten
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In isolation, attempting find solace in fond memories or a hopeful wish.
                 outcomes:
@@ -3326,8 +3326,8 @@ assets:
             moves:
               scrape_by:
                 name: Scrape By
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                   roll_options:
                     - method: any
@@ -3346,8 +3346,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - by:
                         player: true
@@ -3367,8 +3367,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By scavenging a wreck, ruin, or abandoned site
                 text: Add +1.
@@ -3384,8 +3384,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To cobble together an ad hoc tool, device, or weapon
                 text: Envision what you intend to create.
@@ -3398,8 +3398,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: highest
                       choices:
@@ -3415,8 +3415,8 @@ assets:
               When you make a move by lying, bluffing, stealing, or cheating, add +2. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By lying, bluffing, stealing, or cheating
                 text: Add +2.
@@ -3429,8 +3429,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To search out a new contact
                       method: any
@@ -3469,8 +3469,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you focus or meditate to [Gather Information](starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely)
                       method: any
@@ -3482,8 +3482,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Within a site
                       by:
@@ -3496,8 +3496,8 @@ assets:
                   miss: *Seer.3.Match
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - by:
                         player: true
@@ -3512,8 +3512,8 @@ assets:
               Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you are veiled and make a move to ambush, hide, or sneak (not in darkness)
                 # Preset:
@@ -3523,8 +3523,8 @@ assets:
                 outcomes: &Shade.1
                   miss:
                     text: In addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you are veiled and make a move to ambush, hide, or sneak (in darkness)
                 # Preset:
@@ -3537,8 +3537,8 @@ assets:
             moves:
               shroud_in_darkness:
                 name: Shroud in Darkness
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you expand your veil to immerse your surroundings in darkness...
                   roll_options:
                     - method: any
@@ -3564,8 +3564,8 @@ assets:
               When you make a move to investigate, track, or stalk an inhuman foe, add +1 and take +1 momentum on a hit.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To investigate, track, or stalk an inhuman foe
                 text: Add +1.
@@ -3575,15 +3575,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: &Slayer.Vow To slay an inhuman foe in service to a community (formidable or greater)
                 outcomes: *outcomes:reroll_any.ALL
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: *Slayer.Vow
                 outcomes: *outcomes:bonds_2_ticks_on_hit
@@ -3592,8 +3592,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With an objective to slay an inhuman foe
                 outcomes:
@@ -3613,16 +3613,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To solve a murder, disappearance, theft, or other mystery (no greater than formidable)
                 text: *Sleuth.1
           - text: |-
               When you make a move to avoid detection as you put a person or place under surveillance, add +1 and take +1 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To avoid detection as you put a person or place under surveillance
                 text: Add +1.
@@ -3632,8 +3632,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With a potential informant
                       method: weak_hit
@@ -3649,8 +3649,8 @@ assets:
             moves:
               snipe_minor_foe:
                 name: Snipe Minor Foe
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   text: When you target a minor foe from a distance (outside of a fight)...
                   roll_options:
                     - method: any
@@ -3672,8 +3672,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: From a distance with time enough to line up your shot
                       method: any
@@ -3687,8 +3687,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying a distant situation through your rifle scope
                 text: &Sniper.3 You may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1, -2, or -3) and add that amount.
@@ -3696,8 +3696,8 @@ assets:
                   strong_hit: *outcome:+1_momentum
               - extends:
                   - starforged/moves/adventure/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By taking careful aim
                 text: *Sniper.3
@@ -3711,8 +3711,8 @@ assets:
               When you make a move to configure, optimize, hack, or disrupt an electronic system, add +1. On a weak hit, you can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To configure, optimize, hack, or disrupt an electronic system
                 text: Add +1.
@@ -3738,8 +3738,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By creating a computer program to perform a specific, complex function
                 text: Add +2.
@@ -3758,8 +3758,8 @@ assets:
               - extends:
                   - starforged/moves/recover/sojourn
                   - starforged/moves/adventure/compel
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: supply
@@ -3775,15 +3775,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With a merchant or supplier
                 text: Add +1.
               - extends:
                   - starforged/moves/recover/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By bartering with a merchant or supplier connection
                 outcomes:
@@ -3801,8 +3801,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - by:
                         player: true
@@ -3844,8 +3844,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/adventure/compel
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Through a tale, performance, or ceremony
                 text: Envision what you reveal of your heritage. Then, add +1.
@@ -3858,8 +3858,8 @@ assets:
                 field_type: text
                 # position: ability_2_bottom
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move directly aided by the relic
                 outcomes:
@@ -3910,8 +3910,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By recounting or recalling a hard-won lesson from your battlefield experiences
                 text: Envision the memory and add +1.
@@ -3942,15 +3942,15 @@ assets:
               - extends:
                   - starforged/moves/recover/sojourn
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Within a spacebound community
                 text: Add +1.
               - extends:
                   - starforged/moves/recover/hearten
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Within a spacebound community
                 outcomes:
@@ -3959,8 +3959,8 @@ assets:
           - text: |-
               When you make a move to perform an agile physical maneuver (such as leaping or evading) in a low gravity environment, add +1 and take +1 momentum on a hit. On a strong hit with a match, you build speed or put yourself in perfect position; take another +1 momentum.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment
                 text: Add +1.
@@ -3980,16 +3980,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In personal combat
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By switching weapons or changing tactics in personal combat (once per fight)
                       method: strong_hit
@@ -3998,8 +3998,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using a personal weapon which has limited ammo or a single-use mode
                 text: Add +1.
@@ -4016,8 +4016,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By suiting up and gathering your gear for a perilous encounter or mission
                       method: any
@@ -4064,8 +4064,8 @@ assets:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
                   - starforged/moves/exploration/set_a_course
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While riding your banshee
                       method: any
@@ -4076,8 +4076,8 @@ assets:
           - text: |-
               When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: To detect a threat or avoid a fight (while astride your banshee)
                 text: Add +1.
@@ -4097,8 +4097,8 @@ assets:
                   - starforged/moves/combat/strike
                   - starforged/moves/combat/clash
                   - starforged/moves/combat/battle
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When aided by your banshee
                 outcomes:
@@ -4134,15 +4134,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Aided by your combat bot
                 text: Add +1.
               - extends:
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Aided by your combat bot
                 outcomes: *outcomes:+1_momentum.HIT
@@ -4152,8 +4152,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/compel
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using the threat of violence while the bot brings its weapons to bear
                       method: any
@@ -4171,8 +4171,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Once per fight, by using the combat bot to draw fire or create a diversion
                       method: any
@@ -4212,8 +4212,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying your glowcat’s reactions in a charged interaction
                 text: Add +your glowcat's health.
@@ -4222,8 +4222,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/compel
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When your glowcat’s reactions help guide your approach
                 outcomes:
@@ -4238,8 +4238,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In the company of the glowcat
                 text: Add +1.
@@ -4271,8 +4271,8 @@ assets:
               Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you are aided by the bot as you make a move in a formal social interaction
                 text: Add +1.
@@ -4287,8 +4287,8 @@ assets:
           - text: |-
               If you make a move in a charged interaction and the value of your action die is less than the bot's health, you may reroll it as the bot interjects with their commentary or advice.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: In a charged interaction
                 outcomes:
@@ -4321,8 +4321,8 @@ assets:
           - text: |-
               Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By sending the rockhorn to directly attack a foe or smash an obstacle
                       method: any
@@ -4335,8 +4335,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/companion_takes_a_hit
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: For the rockhorn
                       method: any
@@ -4391,8 +4391,8 @@ assets:
               Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: Directly aided by your sidekick's expertise (outside of a fight)
                 outcomes:
@@ -4407,15 +4407,15 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With the support of your sidekick
                 outcomes: *outcomes:+2_momentum.HIT
               - extends:
                   - starforged/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Together with your sidekick
                 text: Add +1.
@@ -4426,8 +4426,8 @@ assets:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
                   - starforged/moves/combat/react_under_fire
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Your sidekick acts to get you out of a tough spot
                       method: any
@@ -4460,8 +4460,8 @@ assets:
               Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)
                 text: Add +your sprite's health.
@@ -4472,8 +4472,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By remotely observing a situation from your sprite's perspective
                 text: Add +your sprite's health.
@@ -4505,8 +4505,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Overland or within a site (assisted by your survey bot)
                       choices:
@@ -4518,8 +4518,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Once per expedition, by sending the survey bot to scout ahead
                       method: any
@@ -4538,8 +4538,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/explore_a_waypoint
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Aided by the survey bot's sensors
                       method: any
@@ -4550,8 +4550,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/face_danger
                   - starforged/moves/scene_challenge/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To detect a threat
                       method: any
@@ -4584,8 +4584,8 @@ assets:
             enabled: true
             # TODO: move to restore symbiote health?
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: Make an aggressive move while giving yourself to the symbiote's power
                 text: Add +your symbiote's health. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.
@@ -4630,8 +4630,8 @@ assets:
               Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
             enabled: true
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
                       method: any
@@ -4649,8 +4649,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/repair
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Aided by the bot
                 text: Add +1.
@@ -4665,8 +4665,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To see if your utility bot has a specific tool or technique available
                       method: any
@@ -4701,16 +4701,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/undertake_an_expedition
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: On a spaceborne journey as your voidglider helps guide the way
                 text: Add +1.
           - text: |-
               The voidglider is harnessed and trained as a mount, and can be ridden for short-range spacebound transport. When you are riding the voidglider and make a move to detect or evade a threat by relying on its instincts, roll +its health.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
                       method: any
@@ -4720,8 +4720,8 @@ assets:
           - text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
                       method: any
@@ -4757,8 +4757,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: At your bond-mate's home
                 outcomes: &Bonded.1
@@ -4769,16 +4769,16 @@ assets:
                   miss: *outcome:reroll_any
               - extends:
                   - starforged/moves/recover/hearten
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your bond-mate's presence
                 outcomes: *Bonded.1
               - extends:
                   - starforged/moves/connection/test_your_relationship
                   - starforged/moves/connection/develop_your_relationship
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: With your bond-mate
                 outcomes: *Bonded.1
@@ -4787,8 +4787,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/set_a_course
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Back to your bond-mate's location
                 text: Add +heart.
@@ -4819,8 +4819,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In service to your home (formidable or greater)
                 text: Add +1.
@@ -4832,8 +4832,8 @@ assets:
                   miss: *outcome:reroll_any
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: In service to your home (formidable or greater)
                 outcomes: *outcomes:bonds_2_ticks_on_hit
@@ -4845,16 +4845,16 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your home (and you don't linger)
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
               - extends:
                   - starforged/moves/recover/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In your home (and you stay a bit)
                       method: weak_hit
@@ -4864,8 +4864,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/exploration/set_a_course
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: For home
                 outcomes:
@@ -4890,8 +4890,8 @@ assets:
               - extends:
                   - starforged/moves/adventure/compel
                   - starforged/moves/connection/make_a_connection
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Among those who would know your reputation
                 text: Add +1.
@@ -4919,8 +4919,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/gain_ground
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Through intimidation or command (once per fight)
                 outcomes:
@@ -4943,8 +4943,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To redeem yourself (extreme or greater, one time only)
                 text: Give this vow a special mark. When you [Reach a Milestone](starforged/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum. If you [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact.
@@ -4958,8 +4958,8 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                   - starforged/moves/adventure/compel
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By reaffirming your commitment to your marked vow
                 text: Add +1.
@@ -4969,8 +4969,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/quest/fulfill_your_vow
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: On your marked quest
                 outcomes:
@@ -4992,8 +4992,8 @@ assets:
               - extends:
                   - starforged/moves/suffer/endure_harm
                   - starforged/moves/threshold/face_death
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you are at 0 health
                 text: Add +1.
@@ -5007,8 +5007,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/combat/take_decisive_action
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   roll_options:
                     - text: By bringing death to a foe
                 outcomes:
@@ -5021,8 +5021,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By studying a place where death left its mark
                       choices:
@@ -5046,8 +5046,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you are haunted by past experiences
                 text: You may [Lose Momentum](starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice.
@@ -5086,8 +5086,8 @@ assets:
             moves:
               seek_safe_haven:
                 name: Seek Safe Haven
+                move_type: progress_roll
                 trigger:
-                  roll_type: progress_roll
                   text: When you seek a safe location in a remote environment...
                   roll_options:
                     - method: any
@@ -5111,8 +5111,8 @@ assets:
           - text: |-
               When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - choices:
                         - using: wits
@@ -5125,8 +5125,8 @@ assets:
             extend_moves:
               - extends:
                   - starforged/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:

@@ -38,8 +38,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When your cat chases down big game
                       method: any
@@ -55,8 +55,8 @@ assets:
               - extends:
                   - classic/moves/combat/enter_the_fray
                   - classic/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By sending your cat to attack
                       method: any
@@ -102,8 +102,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By sending your spider to scout a place
                 text: Add +1.
@@ -117,8 +117,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By sending your spider to secretly study someone
                       choices:
@@ -135,8 +135,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When your spider sets a trap
                       choices:
@@ -178,8 +178,8 @@ assets:
                 text: Add +1.
               - extends:
                   - classic/moves/adventure/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By hunting for small game
                 text: Add +1.
@@ -189,8 +189,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using your hawk to harass and distract your foes
                       choices:
@@ -203,8 +203,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To detect an approaching threat
                       choices:
@@ -212,8 +212,8 @@ assets:
                 text: Add +2.
               - extends:
                   - classic/moves/combat/enter_the_fray
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: wits # 'ambushed' is already how +wits is flavoured
@@ -240,8 +240,8 @@ assets:
                 text: Add +1.
               - extends:
                   - classic/moves/adventure/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using your horse’s speed and grace
                       choices:
@@ -254,8 +254,8 @@ assets:
               - extends:
                   - classic/moves/combat/enter_the_fray
                   - classic/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By charging into combat
                       choices:
@@ -269,8 +269,8 @@ assets:
               - extends:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: At close range while mounted
                 text: Add +1.
@@ -303,8 +303,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Using your hound’s keen senses to track your quarry or investigate a scene
                 text: Add +1.
@@ -316,8 +316,8 @@ assets:
               - extends:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Alongside your hound
                 outcomes:
@@ -329,8 +329,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/suffer/endure_stress
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In the company of your hound
                 text: Add +1.
@@ -365,8 +365,8 @@ assets:
                 field_type: text
                 label: Expertise
             extend_moves:
-              - trigger:
-                  roll_type: action_roll
+              - move_type: action_roll
+                trigger:
                   roll_options:
                     - text: When you make a move outside of combat aided by your companion’s expertise
                 text: Add +1.
@@ -377,15 +377,15 @@ assets:
               - extends:
                   - classic/moves/combat/clash
                   - classic/moves/combat/battle
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Alongside your companion
                 text: Add +1.
               - extends:
                   - classic/moves/adventure/face_danger
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Against an attack by standing together
                 text: Add +1.
@@ -421,8 +421,8 @@ assets:
               - extends:
                   - classic/moves/adventure/make_camp
                   - delve/moves/delve/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: ref
@@ -434,8 +434,8 @@ assets:
               - extends:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: by riding your mammoth against a pack of foes
                 text: Add +1.
@@ -530,8 +530,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/combat/strike
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By commanding your wyvern to attack
                       choices:
@@ -569,9 +569,9 @@ assets:
             moves:
               create_elixir:
                 name: Create Elixir
+                move_type: action_roll
                 trigger:
                   text: When you create an elixir...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       text: Elixir of deftness (edge)
@@ -665,8 +665,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/suffer/endure_harm
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: When you are at 0 health
                       choices:
@@ -721,8 +721,8 @@ assets:
                   - classic/moves/adventure/secure_an_advantage
                   - classic/moves/relationship/compel
                   - classic/moves/combat/battle
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By commanding your warband
                       method: any
@@ -735,8 +735,8 @@ assets:
               - extends:
                   - classic/moves/adventure/gather_information
                   - classic/moves/adventure/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By dispatching scouts from your warband
                       method: any
@@ -769,9 +769,9 @@ assets:
             moves:
               commemorate:
                 name: Commemorate
+                move_type: action_roll
                 trigger:
                   text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -823,8 +823,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/quest/swear_an_iron_vow
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: To serve your god on a divine quest
                       choices:
@@ -835,8 +835,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/relationship/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By sharing the word of your god
                       choices:
@@ -939,8 +939,8 @@ assets:
             extend_moves:
               - extends:
                   - delve/moves/delve/check_your_gear
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: wits
@@ -965,8 +965,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -974,8 +974,8 @@ assets:
                       text: Within an enemy area to discover their positions, plans, or methods
               - extends:
                   - classic/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -986,8 +986,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/resupply
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1063,8 +1063,8 @@ assets:
               - extends:
                   - classic/moves/suffer/face_death
                   - classic/moves/suffer/face_desolation
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: While wearing the mask
                       method: any
@@ -1103,9 +1103,9 @@ assets:
                 name: Scrape By
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/outcast
+                move_type: action_roll
                 trigger:
                   text: When your supply is reduced to 0...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1138,9 +1138,9 @@ assets:
                 name: Establish False Identity
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/pretender
+                move_type: action_roll
                 trigger:
                   text: When you establish a false identity...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1159,8 +1159,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/relationship/sojourn
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1236,8 +1236,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/suffer/face_death
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1319,8 +1319,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/gather_information
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: By investigating a devious scheme
                       method: any
@@ -1334,8 +1334,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/relationship/forge_a_bond
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: Keep your secret
                       method: any
@@ -1424,8 +1424,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/make_camp
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - text: In the woodlands
                       method: any
@@ -1577,9 +1577,9 @@ assets:
             moves:
               craft_arrow:
                 name: Craft Arrow
+                move_type: action_roll
                 trigger:
                   text: When you craft a single arrow designated for a specific foe...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1644,8 +1644,8 @@ assets:
               - extends:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: edge
@@ -1658,8 +1658,8 @@ assets:
             extend_moves:
               - extends:
                   - classic/moves/adventure/secure_an_advantage
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - choices:
                         - using: edge
@@ -1673,8 +1673,8 @@ assets:
               - extends:
                   - classic/moves/adventure/undertake_a_journey
                 # TODO: make triggerable by ally
+                move_type: action_roll
                 trigger:
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                 outcomes:
@@ -1755,9 +1755,9 @@ assets:
             moves:
               carve_rune:
                 name: Carve Rune
+                move_type: action_roll
                 trigger:
                   text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1833,9 +1833,9 @@ assets:
             moves:
               augur:
                 name: Augur
+                move_type: action_roll
                 trigger:
                   text: When you summon a flock of crows and ask a single question...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1865,9 +1865,9 @@ assets:
             moves:
               awaken_simulacrum:
                 name: Awaken Simulacrum
+                move_type: action_roll
                 trigger:
                   text: When you create a simulacrum...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1908,9 +1908,9 @@ assets:
             moves:
               bind:
                 name: Bind
+                move_type: action_roll
                 trigger:
                   text: When you wear an animal pelt and dance in moonlight...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1942,9 +1942,9 @@ assets:
             moves:
               commune:
                 name: Commune
+                move_type: action_roll
                 trigger:
                   text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -1976,9 +1976,9 @@ assets:
             moves:
               cast_runes:
                 name: Cast Runes
+                move_type: action_roll
                 trigger:
                   text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2014,9 +2014,9 @@ assets:
             moves:
               invoke_essence:
                 name: Invoke Essence
+                move_type: action_roll
                 trigger:
                   text: When you consume the mystical essence of your surroundings...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2056,9 +2056,9 @@ assets:
             moves:
               keen:
                 name: Keen
+                move_type: action_roll
                 trigger:
                   text: When you hold a weapon and sing a keen for those it has killed...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2091,9 +2091,9 @@ assets:
             moves:
               draw_blood_rune:
                 name: Draw Blood Rune
+                move_type: action_roll
                 trigger:
                   text: When you mark your hands or weapon with an intricate blood rune...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2132,9 +2132,9 @@ assets:
             moves:
               capture_light:
                 name: Capture Light
+                move_type: action_roll
                 trigger:
                   text: When you focus on a source of light and capture its essence...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2172,9 +2172,9 @@ assets:
             moves:
               scry:
                 name: Scry
+                move_type: action_roll
                 trigger:
                   text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2210,9 +2210,9 @@ assets:
             moves:
               walk_in_shadow:
                 name: Walk in Shadow
+                move_type: action_roll
                 trigger:
                   text: When you cloak yourself with the gossamer veil of the shadow realms...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2244,9 +2244,9 @@ assets:
             moves:
               sway:
                 name: Sway
+                move_type: action_roll
                 trigger:
                   text: When you speak a person’s name three times to the wind...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2278,9 +2278,9 @@ assets:
             moves:
               fashion_talisman:
                 name: Fashion Talisman
+                move_type: action_roll
                 trigger:
                   text: When you fashion a charm that protects against a specific person or creature...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2310,9 +2310,9 @@ assets:
             moves:
               tether:
                 name: Tether
+                move_type: action_roll
                 trigger:
                   text: When you commune with the spirits of a place...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2344,9 +2344,9 @@ assets:
             moves:
               bind_beast:
                 name: Bind Beast
+                move_type: action_roll
                 trigger:
                   text: When you hold a totem of your animal or beast companion and focus on it...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2379,9 +2379,9 @@ assets:
             moves:
               paint_visage:
                 name: Paint Visage
+                move_type: action_roll
                 trigger:
                   text: When you paint yourself in blood and ash...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:
@@ -2417,9 +2417,9 @@ assets:
             moves:
               ward:
                 name: Ward
+                move_type: action_roll
                 trigger:
                   text: When you walk a wide circle, sprinkling the ground with salt...
-                  roll_type: action_roll
                   roll_options:
                     - method: any
                       choices:

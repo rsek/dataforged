@@ -96,7 +96,7 @@ export const Trigger: JTDSchemaType<
 		description:
 			"Describes a move's trigger condition(s) and any rolls associated with them."
 	},
-	discriminator: 'roll_type',
+	discriminator: 'move_type',
 	mapping: {
 		action_roll: {
 			properties: {
@@ -389,7 +389,7 @@ export const TriggerExtension: JTDSchemaType<
 	}
 > = {
 	metadata: { description: 'Extends or upgrades an existing move trigger.' },
-	discriminator: 'roll_type',
+	discriminator: 'move_type',
 	mapping: {
 		action_roll: {
 			metadata: {
