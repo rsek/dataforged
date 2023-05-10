@@ -271,7 +271,7 @@ export const WorldTruthID = Type.RegEx(
 export type WorldTruthID = Opaque<Static<typeof WorldTruthID>>
 
 export const WorldTruthOptionID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/world_truths\/[a-z_]+\/[0-2]$/,
+	/^[a-z0-9_]{3,}\/world_truths\/[a-z_]+\/(0|[1-9][0-9]*)$/,
 	{
 		examples: ['classic/world_truths/iron/0'],
 		$id: '#/$defs/WorldTruthOptionID'
@@ -289,7 +289,7 @@ export const SettingTruthID = Type.RegEx(
 export type SettingTruthID = Opaque<Static<typeof SettingTruthID>>
 
 export const SettingTruthOptionID = Type.RegEx(
-	/^[a-z0-9_]{3,}\/setting_truths\/[a-z_]+\/[0-2]$/,
+	/^[a-z0-9_]{3,}\/setting_truths\/[a-z_]+\/(0|[1-9][0-9]*)$/,
 	{
 		examples: ['starforged/setting_truths/iron/0'],
 		$id: '#/$defs/SettingTruthOptionID'
