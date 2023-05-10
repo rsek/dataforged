@@ -439,14 +439,14 @@
 			},
 			"required": ["player", "ally"]
 		},
-		"TriggerActionRollConditionChoiceAttachedAssetRef": {
+		"TriggerActionRollConditionOptionAttachedAssetRef": {
 			"type": "object",
 			"properties": {
 				"using": { "const": "attached_asset_meter", "type": "string" }
 			},
 			"required": ["using"]
 		},
-		"TriggerActionRollConditionChoiceRef": {
+		"TriggerActionRollConditionOptionRef": {
 			"type": "object",
 			"properties": {
 				"using": { "const": "ref", "type": "string" },
@@ -459,7 +459,7 @@
 			},
 			"required": ["using", "ref"]
 		},
-		"TriggerActionRollConditionChoiceStat": {
+		"TriggerActionRollConditionOptionStat": {
 			"type": "object",
 			"properties": {
 				"using": {
@@ -471,7 +471,7 @@
 			},
 			"required": ["using"]
 		},
-		"TriggerActionRollConditionChoiceCustomValue": {
+		"TriggerActionRollConditionOptionCustomValue": {
 			"type": "object",
 			"properties": {
 				"using": { "const": "custom_value", "type": "string" },
@@ -480,15 +480,15 @@
 			},
 			"required": ["using", "label", "value"]
 		},
-		"TriggerActionRollConditionChoice": {
+		"TriggerActionRollConditionOption": {
 			"anyOf": [
-				{ "$ref": "#/$defs/TriggerActionRollConditionChoiceStat" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionChoiceRef" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionChoiceAttachedAssetRef" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionChoiceCustomValue" }
+				{ "$ref": "#/$defs/TriggerActionRollConditionOptionStat" },
+				{ "$ref": "#/$defs/TriggerActionRollConditionOptionRef" },
+				{ "$ref": "#/$defs/TriggerActionRollConditionOptionAttachedAssetRef" },
+				{ "$ref": "#/$defs/TriggerActionRollConditionOptionCustomValue" }
 			]
 		},
-		"TriggerProgressRollConditionChoice": {
+		"TriggerProgressRollConditionOption": {
 			"type": "object",
 			"properties": { "using": { "$ref": "#/$defs/ProgressType" } },
 			"required": ["using"]
@@ -507,7 +507,7 @@
 				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionChoice" }
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			},
 			"required": ["method", "roll_options"]
@@ -526,7 +526,7 @@
 				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionChoice" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			},
 			"required": ["method", "roll_options"]
@@ -693,7 +693,7 @@
 				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionChoice" }
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			}
 		},
@@ -721,7 +721,7 @@
 				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionChoice" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			}
 		},

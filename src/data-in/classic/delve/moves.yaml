@@ -40,15 +40,15 @@ moves:
           text: When you traverse an area within a perilous site...
           conditions:
             - text: With haste
-              choices:
+              roll_options:
                 - using: edge
               method: any
             - text: With stealth or trickery
-              choices:
+              roll_options:
                 - using: shadow
               method: any
             - text: With observation, intuition, or expertise
-              choices:
+              roll_options:
                 - using: wits
               method: any
         _source:
@@ -116,7 +116,7 @@ moves:
           text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: supply
         _source:
           page: 38
@@ -144,7 +144,7 @@ moves:
           text: When your exploration of a site comes to an end...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: delve_progress
         text: |-
           When **your exploration of a site comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
@@ -176,23 +176,23 @@ moves:
           conditions:
             - text: Find the fastest way out
               method: any
-              choices:
+              roll_options:
                 - using: edge
             - text: Steel yourself against the horrors of this place
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: Fight your way out
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: Keep out of sight
               method: any
-              choices:
+              roll_options:
                 - using: shadow
             - text: Retrace your steps or locate an alternate path
               method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 42
@@ -277,7 +277,7 @@ moves:
         trigger:
           text: When you spend time reflecting on your hardships and missteps...
           conditions:
-            - choices:
+            - roll_options:
                 - using: failure_track
         text: |-
           When **you spend time reflecting on your hardships and missteps**, and your failure track is +6 or greater, roll your challenge dice and compare to your progress. Momentum is ignored on this roll.

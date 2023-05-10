@@ -145,7 +145,7 @@ export const TriggerRollConditionAction: JTDSchemaType<
 	Types.Moves.TriggerRollCondition<'action_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollConditionActionChoice: Types.Moves.TriggerActionRollConditionChoice
+		TriggerRollConditionActionChoice: Types.Moves.TriggerActionRollConditionOption
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -165,7 +165,7 @@ export const TriggerRollConditionAction: JTDSchemaType<
 }
 
 export const TriggerRollConditionActionChoice: JTDSchemaType<
-	Types.Moves.TriggerActionRollConditionChoice,
+	Types.Moves.TriggerActionRollConditionOption,
 	{
 		Label: string
 	}
@@ -203,7 +203,7 @@ export const TriggerRollConditionProgress: JTDSchemaType<
 	Types.Moves.TriggerRollCondition<'progress_roll'>,
 	{
 		TriggerBy: Types.Moves.TriggerBy
-		TriggerRollConditionProgressChoice: Types.Moves.TriggerProgressRollConditionChoice
+		TriggerRollConditionProgressChoice: Types.Moves.TriggerProgressRollConditionOption
 		MoveRollMethod: Types.Moves.MoveRollMethod
 		MarkdownString: string
 	}
@@ -223,7 +223,7 @@ export const TriggerRollConditionProgress: JTDSchemaType<
 }
 
 export const TriggerRollConditionProgressChoice: JTDSchemaType<
-	Types.Moves.TriggerProgressRollConditionChoice,
+	Types.Moves.TriggerProgressRollConditionOption,
 	{ ProgressType: Types.Moves.ProgressType }
 > = {
 	properties: {

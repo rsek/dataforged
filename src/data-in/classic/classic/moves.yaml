@@ -23,23 +23,23 @@ moves:
           conditions:
             - text: With speed, agility, or precision
               method: any
-              choices:
+              roll_options:
                 - using: edge
             - text: With charm, loyalty, or courage
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: With deception, stealth, or trickery
               method: any
-              choices:
+              roll_options:
                 - using: shadow
             - text: With expertise, insight, or observation
               method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 60
@@ -83,23 +83,23 @@ moves:
           conditions:
             - text: With speed, agility, or precision
               method: any
-              choices:
+              roll_options:
                 - using: edge
             - text: With charm, loyalty, or courage
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: With deception, stealth, or trickery
               method: any
-              choices:
+              roll_options:
                 - using: shadow
             - text: With expertise, insight, or observation
               method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 61
@@ -138,7 +138,7 @@ moves:
           text: When you search an area, ask questions, conduct an investigation, or follow a track...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 62
@@ -163,12 +163,12 @@ moves:
         trigger:
           text: When you treat an injury or ailment...
           conditions:
-            - choices:
+            - roll_options:
                 - using: wits
               method: any
             - text: Mend your own wounds
               method: lowest
-              choices:
+              roll_options:
                 - using: iron
                 - using: wits
         _source:
@@ -195,7 +195,7 @@ moves:
           text: When you hunt, forage, or scavenge...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 63
@@ -221,7 +221,7 @@ moves:
           text: When you rest and recover for several hours in the wild...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: supply
         _source:
           page: 64
@@ -265,7 +265,7 @@ moves:
           text: When you travel across hazardous or unfamiliar lands...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: wits
             # - method: null
             #   text: If you are setting off from a community with which you share a bond
@@ -309,7 +309,7 @@ moves:
           text: When your journey comes to an end...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: journey_progress
         _source:
           page: 68
@@ -339,15 +339,15 @@ moves:
           conditions:
             - text: Charm, pacify, barter, or convince
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: Threaten or incite
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: Lie or swindle
               method: any
-              choices:
+              roll_options:
                 - using: shadow
         _source:
           page: 69
@@ -380,7 +380,7 @@ moves:
           text: When you spend time in a community seeking assistance...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 71
@@ -461,7 +461,7 @@ moves:
           text: When you challenge someone to a formal duel, or accept a challenge...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 73
@@ -514,7 +514,7 @@ moves:
           text: When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 74
@@ -549,7 +549,7 @@ moves:
           text: When your bond is tested through conflict, betrayal, or circumstance...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 75
@@ -595,7 +595,7 @@ moves:
           text: When you retire from your life as Ironsworn...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: bonds_progress
         text: |-
           When **you retire from your life as Ironsworn**, envision two things: What you hope for, and what you fear. Then, roll the challenge dice and compare to your bonds. Momentum is ignored on this roll.
@@ -627,15 +627,15 @@ moves:
           conditions:
             - text: Facing off against your foe
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: Moving into position against an unaware foe, or striking without warning
               method: any
-              choices:
+              roll_options:
                 - using: shadow
             - text: Ambushed
               method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 78
@@ -681,11 +681,11 @@ moves:
           conditions:
             - text: In close quarters
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: At range
               method: any
-              choices:
+              roll_options:
                 - using: edge
         _source:
           page: 78
@@ -712,11 +712,11 @@ moves:
           conditions:
             - text: Fight with them in close quarters
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: Exchange a volley at range, or shoot at an advancing foe
               method: any
-              choices:
+              roll_options:
                 - using: edge
         _source:
           page: 80
@@ -757,7 +757,7 @@ moves:
           text: When you make a move to take decisive action, and score a strong hit...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: combat_progress
         _source:
           page: 82
@@ -801,23 +801,23 @@ moves:
           conditions:
             - text: Fight at range, or using your speed and the terrain to your advantage
               method: any
-              choices:
+              roll_options:
                 - using: edge
             - text: Fight depending on your courage, allies, or companions
               method: any
-              choices:
+              roll_options:
                 - using: heart
             - text: Fight in close to overpower your opponents
               method: any
-              choices:
+              roll_options:
                 - using: iron
             - text: Fight using trickery to befuddle your opponents
               method: any
-              choices:
+              roll_options:
                 - using: shadow
             - text: Fight using careful tactics to outsmart your opponents
               method: any
-              choices:
+              roll_options:
                 - using: wits
         _source:
           page: 84
@@ -858,7 +858,7 @@ moves:
           text: When you face physical damage...
           conditions:
             - method: highest
-              choices:
+              roll_options:
                 - using: iron
                 - using: health
         _source:
@@ -898,7 +898,7 @@ moves:
           text: When you are brought to the brink of death, and glimpse the world beyond...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 93
@@ -931,7 +931,7 @@ moves:
           text: When your companion faces physical damage...
           conditions:
             - method: highest
-              choices:
+              roll_options:
                 - using: heart
                 - using: ref
                   ref: '*/assets/companion/*/condition_meter'
@@ -966,7 +966,7 @@ moves:
           text: When you face mental shock or despair...
           conditions:
             - method: highest
-              choices:
+              roll_options:
                 - using: heart
                 - using: spirit
         _source:
@@ -1005,7 +1005,7 @@ moves:
           text: When you are brought to the brink of desolation...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 96
@@ -1065,7 +1065,7 @@ moves:
           text: When you swear upon iron to complete a quest...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: heart
         _source:
           page: 98
@@ -1115,7 +1115,7 @@ moves:
           text: When you achieve what you believe to be the fulfillment of your vow...
           conditions:
             - method: any
-              choices:
+              roll_options:
                 - using: vow_progress
         text: |-
           When **you achieve what you believe to be the fulfillment of your vow**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.

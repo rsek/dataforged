@@ -43,7 +43,7 @@ assets:
                   conditions:
                     - text: When your cat chases down big game
                       method: any
-                      choices:
+                      roll_options:
                         - using: edge
                 outcomes:
                   strong_hit:
@@ -60,7 +60,7 @@ assets:
                   conditions:
                     - text: By sending your cat to attack
                       method: any
-                      choices:
+                      roll_options:
                         - using: edge
                 outcomes: &outcomes:+2_momentum.HIT
                   strong_hit: &outcome:+2_momentum
@@ -121,7 +121,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By sending your spider to secretly study someone
-                      choices:
+                      roll_options:
                         - using: shadow
                 outcomes:
                   strong_hit: &Giant_Spider.2
@@ -139,7 +139,7 @@ assets:
                 trigger:
                   conditions:
                     - text: When your spider sets a trap
-                      choices:
+                      roll_options:
                         - using: shadow
                 text: Add +1.
                 outcomes:
@@ -193,7 +193,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Using your hawk to harass and distract your foes
-                      choices:
+                      roll_options:
                         - using: edge
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
@@ -207,7 +207,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To detect an approaching threat
-                      choices:
+                      roll_options:
                         - using: wits
                 text: Add +2.
               - extends:
@@ -215,7 +215,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   conditions:
-                    - choices:
+                    - roll_options:
                         - using: wits # 'ambushed' is already how +wits is flavoured
                 text: Add +2.
       horse:
@@ -244,7 +244,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Using your horse’s speed and grace
-                      choices:
+                      roll_options:
                         - using: edge
                 text: Add +1.
           - name: Fearless
@@ -258,7 +258,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By charging into combat
-                      choices:
+                      roll_options:
                         - using: heart
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
@@ -424,7 +424,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   conditions:
-                    - choices:
+                    - roll_options:
                         - using: ref
                           ref: classic/assets/companion/mammoth/condition_meter
           - name: Overpowering
@@ -534,7 +534,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By commanding your wyvern to attack
-                      choices:
+                      roll_options:
                         - using: heart
         condition_meter:
           label: health
@@ -575,23 +575,23 @@ assets:
                   conditions:
                     - method: any
                       text: Elixir of deftness (edge)
-                      choices:
+                      roll_options:
                         - using: wits
                     - method: any
                       text: Elixir of audacity (heart)
-                      choices:
+                      roll_options:
                         - using: wits
                     - method: any
                       text: Elixir of vigor (iron)
-                      choices:
+                      roll_options:
                         - using: wits
                     - method: any
                       text: Elixir of slyness (shadow)
-                      choices:
+                      roll_options:
                         - using: wits
                     - method: any
                       text: Elixir of clarity (wits)
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Alchemist
                 outcomes:
@@ -669,7 +669,7 @@ assets:
                 trigger:
                   conditions:
                     - text: When you are at 0 health
-                      choices:
+                      roll_options:
                         - using: wits
                         - using: heart
       blade_bound:
@@ -726,7 +726,7 @@ assets:
                   conditions:
                     - text: By commanding your warband
                       method: any
-                      choices:
+                      roll_options:
                         - using: ref
                           ref: classic/assets/path/commander/condition_meter
           - text: |-
@@ -740,7 +740,7 @@ assets:
                   conditions:
                     - text: By dispatching scouts from your warband
                       method: any
-                      choices:
+                      roll_options:
                         - using: ref
                           ref: classic/assets/path/commander/condition_meter
           - text: |-
@@ -774,7 +774,7 @@ assets:
                   text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: edge
                 text: *move:Asset.Dancer
                 outcomes:
@@ -827,7 +827,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To serve your god on a divine quest
-                      choices:
+                      roll_options:
                         - using: ref
                           ref: classic/assets/path/devotant/options/stat
           - text: |-
@@ -839,7 +839,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By sharing the word of your god
-                      choices:
+                      roll_options:
                         - using: ref
                           ref: classic/assets/path/devotant/options/stat
       empowered:
@@ -942,7 +942,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   conditions:
-                    - choices:
+                    - roll_options:
                         - using: wits
                       method: any
             enabled: true
@@ -969,7 +969,7 @@ assets:
                 trigger:
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                       text: Within an enemy area to discover their positions, plans, or methods
               - extends:
@@ -978,7 +978,7 @@ assets:
                 trigger:
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                       text: Within an enemy area area through observation
           - text: |-
@@ -990,7 +990,7 @@ assets:
                 trigger:
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                       text: Within an enemy area by scavenging or looting
       lorekeeper:
@@ -1068,7 +1068,7 @@ assets:
                   conditions:
                     - text: While wearing the mask
                       method: any
-                      choices:
+                      roll_options:
                         - using: ref
                           ref: classic/assets/path/masked/options/material_stat
       oathbreaker:
@@ -1108,7 +1108,7 @@ assets:
                   text: When your supply is reduced to 0...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Outcast
                 outcomes:
@@ -1143,7 +1143,7 @@ assets:
                   text: When you establish a false identity...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                 text: *move:Asset.Pretender
                 outcomes:
@@ -1163,7 +1163,7 @@ assets:
                 trigger:
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                       text: Under your false identity
             # todo: alter move
@@ -1240,7 +1240,7 @@ assets:
                 trigger:
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
       sighted:
         _source:
@@ -1324,7 +1324,7 @@ assets:
                   conditions:
                     - text: By investigating a devious scheme
                       method: any
-                      choices:
+                      roll_options:
                         - using: shadow
           - text: |-
               When you [Forge a Bond](classic/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.
@@ -1339,11 +1339,11 @@ assets:
                   conditions:
                     - text: Keep your secret
                       method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                     - text: Reveal the truth
                       method: any
-                      choices:
+                      roll_options:
                         - using: heart
       veteran:
         _source:
@@ -1429,7 +1429,7 @@ assets:
                   conditions:
                     - text: In the woodlands
                       method: any
-                      choices:
+                      roll_options:
                         - using: wits
       wright:
         _source:
@@ -1582,7 +1582,7 @@ assets:
                   text: When you craft a single arrow designated for a specific foe...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Fletcher
                 outcomes:
@@ -1647,7 +1647,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   conditions:
-                    - choices:
+                    - roll_options:
                         - using: edge
                       method: any
                       text: When you strike with a staff as a simple weapon
@@ -1661,7 +1661,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   conditions:
-                    - choices:
+                    - roll_options:
                         - using: edge
                       method: any
                       text: Using your staff to disarm, trip, shove, or stun your foe
@@ -1760,7 +1760,7 @@ assets:
                   text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Sunderer
                 outcomes:
@@ -1838,7 +1838,7 @@ assets:
                   text: When you summon a flock of crows and ask a single question...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Augur
                 outcomes:
@@ -1870,7 +1870,7 @@ assets:
                   text: When you create a simulacrum...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Awakening
                 outcomes:
@@ -1913,7 +1913,7 @@ assets:
                   text: When you wear an animal pelt and dance in moonlight...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Bind
                 outcomes:
@@ -1947,7 +1947,7 @@ assets:
                   text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Communion
                 outcomes:
@@ -1981,7 +1981,7 @@ assets:
                   text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Divination
                 outcomes:
@@ -2019,7 +2019,7 @@ assets:
                   text: When you consume the mystical essence of your surroundings...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Invoke
                 outcomes:
@@ -2061,7 +2061,7 @@ assets:
                   text: When you hold a weapon and sing a keen for those it has killed...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Keen
                 outcomes:
@@ -2096,7 +2096,7 @@ assets:
                   text: When you mark your hands or weapon with an intricate blood rune...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: iron
                 text: *move:Asset.Leech
                 outcomes:
@@ -2137,7 +2137,7 @@ assets:
                   text: When you focus on a source of light and capture its essence...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Lightbearer
                 outcomes:
@@ -2177,7 +2177,7 @@ assets:
                   text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                 text: *move:Asset.Scry
                 outcomes:
@@ -2215,7 +2215,7 @@ assets:
                   text: When you cloak yourself with the gossamer veil of the shadow realms...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: shadow
                 text: *move:Asset.Shadow-Walk
                 outcomes:
@@ -2249,7 +2249,7 @@ assets:
                   text: When you speak a person’s name three times to the wind...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Sway
                 outcomes:
@@ -2283,7 +2283,7 @@ assets:
                   text: When you fashion a charm that protects against a specific person or creature...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Talisman
                 outcomes:
@@ -2315,7 +2315,7 @@ assets:
                   text: When you commune with the spirits of a place...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Tether
                 outcomes:
@@ -2349,7 +2349,7 @@ assets:
                   text: When you hold a totem of your animal or beast companion and focus on it...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: heart
                 text: *move:Asset.Totem
                 outcomes:
@@ -2384,7 +2384,7 @@ assets:
                   text: When you paint yourself in blood and ash...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Visage
                 outcomes:
@@ -2422,7 +2422,7 @@ assets:
                   text: When you walk a wide circle, sprinkling the ground with salt...
                   conditions:
                     - method: any
-                      choices:
+                      roll_options:
                         - using: wits
                 text: *move:Asset.Ward
                 outcomes:
