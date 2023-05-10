@@ -542,44 +542,44 @@
 			"type": "object",
 			"properties": {
 				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
 					"type": "string",
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_options": {
+				"conditions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollOption" }
 				}
 			},
-			"required": ["text", "roll_options"]
+			"required": ["text", "conditions"]
 		},
 		"TriggerProgressRoll": {
 			"type": "object",
 			"properties": {
 				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
 					"type": "string",
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_options": {
+				"conditions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollOption" }
 				}
 			},
-			"required": ["text", "roll_options"]
+			"required": ["text", "conditions"]
 		},
 		"TriggerNoRoll": {
 			"type": "object",
 			"properties": {
 				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
 					"type": "string",
 					"pattern": ".*\\.{3}",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"roll_options": {
+				"conditions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerNoRollOption" }
 				}
@@ -640,7 +640,7 @@
 					"type": "object",
 					"properties": {
 						"text": {
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#roll_options.",
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
 							"type": "string",
 							"pattern": ".*\\.{3}",
 							"$ref": "#/$defs/MarkdownString"
@@ -700,12 +700,12 @@
 		"TriggerActionRollExtension": {
 			"type": "object",
 			"properties": {
-				"roll_options": {
+				"conditions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollOptionExtension" }
 				}
 			},
-			"required": ["roll_options"]
+			"required": ["conditions"]
 		},
 		"TriggerProgressRollOptionExtension": {
 			"type": "object",
@@ -728,18 +728,22 @@
 		"TriggerProgressRollExtension": {
 			"type": "object",
 			"properties": {
-				"roll_options": {
+				"conditions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollOptionExtension" }
 				}
 			},
-			"required": ["roll_options"]
+			"required": ["conditions"]
 		},
-		"TriggerExtension": {
-			"anyOf": [
-				{ "$ref": "#/$defs/TriggerActionRollExtension" },
-				{ "$ref": "#/$defs/TriggerProgressRollExtension" }
-			]
+		"TriggerNoRollExtension": {
+			"type": "object",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerNoRollOption" }
+				}
+			},
+			"required": ["conditions"]
 		},
 		"MoveOutcomeExtension": {
 			"type": "object",
@@ -774,14 +778,18 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"move_type": { "$ref": "#/$defs/MoveRollType" },
-				"trigger": { "$ref": "#/$defs/TriggerExtension" },
-				"outcomes": { "$ref": "#/$defs/MoveOutcomesExtension" },
 				"extends": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
-				}
-			}
+				},
+				"trigger": {},
+				"move_type": {
+					"default": "action_roll",
+					"$ref": "#/$defs/MoveRollType"
+				},
+				"outcomes": { "$ref": "#/$defs/MoveOutcomesExtension" }
+			},
+			"required": ["move_type"]
 		},
 		"AssetConditionMeterControlField": {
 			"type": "object",

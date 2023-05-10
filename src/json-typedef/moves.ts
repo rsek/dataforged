@@ -109,7 +109,7 @@ export const Trigger: JTDSchemaType<
 				}
 			},
 			optionalProperties: {
-				roll_options: {
+				conditions: {
 					elements: { ref: 'TriggerRollOptionAction' }
 				}
 			}
@@ -125,7 +125,7 @@ export const Trigger: JTDSchemaType<
 				}
 			},
 			optionalProperties: {
-				roll_options: {
+				conditions: {
 					elements: { ref: 'TriggerRollOptionProgress' }
 				}
 			}
@@ -396,7 +396,7 @@ export const TriggerExtension: JTDSchemaType<
 				description: 'Extends or upgrades an existing action roll trigger.'
 			},
 			properties: {
-				roll_options: {
+				conditions: {
 					elements: { ref: 'TriggerRollOptionAction' }
 				}
 			}
@@ -406,7 +406,7 @@ export const TriggerExtension: JTDSchemaType<
 				description: 'Extends or upgrades an existing action roll trigger.'
 			},
 			properties: {
-				roll_options: {
+				conditions: {
 					elements: { ref: 'TriggerRollOptionProgress' }
 				}
 			}

@@ -38,7 +38,7 @@ moves:
         move_type: action_roll
         trigger:
           text: When you traverse an area within a perilous site...
-          roll_options:
+          conditions:
             - text: With haste
               choices:
                 - using: edge
@@ -114,7 +114,7 @@ moves:
         move_type: action_roll
         trigger:
           text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
-          roll_options:
+          conditions:
             - method: any
               choices:
                 - using: supply
@@ -142,7 +142,7 @@ moves:
         move_type: progress_roll
         trigger:
           text: When your exploration of a site comes to an end...
-          roll_options:
+          conditions:
             - method: any
               choices:
                 - using: delve_progress
@@ -173,7 +173,7 @@ moves:
         move_type: action_roll
         trigger:
           text: When you flee or withdraw from a site...
-          roll_options:
+          conditions:
             - text: Find the fastest way out
               method: any
               choices:
@@ -276,7 +276,7 @@ moves:
         move_type: progress_roll
         trigger:
           text: When you spend time reflecting on your hardships and missteps...
-          roll_options:
+          conditions:
             - choices:
                 - using: failure_track
         text: |-

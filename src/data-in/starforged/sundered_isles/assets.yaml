@@ -155,7 +155,7 @@ assets:
                 text: You may instead suffer -1 command as the cost.
               - move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: Leading or aided by your crew
                 text: You may (after rolling) suffer -1 command and improve a miss to a weak hit, or a weak hit to a strong hit.
                 outcomes:
@@ -167,7 +167,7 @@ assets:
                   - starforged/moves/adventure/face_danger
                 move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: As a test of your leadership
                       choices:
                         - using: ref
@@ -178,7 +178,7 @@ assets:
                 move_type: action_roll
                 trigger:
                   text: When you bolster your crew by providing them with a significant reward or respite...
-                  roll_options:
+                  conditions:
                     - method: any
                       choices:
                         - using: heart
@@ -201,7 +201,7 @@ assets:
                   - starforged/moves/adventure/compel
                 move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: When your command is 0 and the situation desperate
                 outcomes:
                   strong_hit: &Crew_Commander.3
@@ -316,7 +316,7 @@ assets:
                   - starforged/moves/combat/take_decisive_action
                 move_type: progress_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: Summon the Kraken (and fill one segment of its clock)
                 text: |-
                   The Kraken will heed a single command to destroy or overcome any foe or obstacle. If you are in a fight, [Take Decisive Action](starforged/moves/combat/take_decisive_action) with an automatic strong hit.
@@ -334,7 +334,7 @@ assets:
             extend_moves:
               - move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: Make a move using a threat to call the Kraken as leverage
                 text: Add +2.
           - text: |-
@@ -344,7 +344,7 @@ assets:
                   - starforged/moves/quest/fulfill_your_vow
                 move_type: progress_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: In service to the Kraken (formidable or greater, one time only)
                 outcomes:
                   strong_hit: &Kraken.3
@@ -382,7 +382,7 @@ assets:
                   - starforged/moves/adventure/secure_an_advantage
                 move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: By gathering your specialists to strategize or problem-solve
                 outcomes:
                   strong_hit: &Cohort.3
@@ -404,7 +404,7 @@ assets:
             extend_moves:
               - move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: As a fleetwide action to get in position, avoid a hazard, or fight
                       choices:
                         - using: ref
@@ -431,7 +431,7 @@ assets:
                   - starforged/moves/exploration/undertake_an_expedition
                 move_type: action_roll
                 trigger:
-                  roll_options:
+                  conditions:
                     - text: With your fleet
                 outcomes:
                   strong_hit: &Fleet_Commander.3

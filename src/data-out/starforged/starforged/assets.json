@@ -60,7 +60,8 @@
 							"extend_moves": [
 								{
 									"extends": ["starforged/moves/legacy/advance"],
-									"text": "When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets."
+									"text": "When you [Advance](starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets.",
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/command_vehicle/starship/abilities/0"
@@ -74,10 +75,9 @@
 									],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your starship (dangerous or greater)",
-												"method": "any"
+												"text": "In your starship (dangerous or greater)"
 											}
 										]
 									},
@@ -101,7 +101,7 @@
 									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To your Starship",
 												"method": "any",
@@ -177,15 +177,14 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "In your vehicle",
 												"choices": [
 													{
 														"using": "edge"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -205,10 +204,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to maneuver)",
-												"method": "any"
+												"text": "In your vehicle (and you choose to maneuver)"
 											}
 										]
 									},
@@ -223,10 +221,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to boost)",
-												"method": "any"
+												"text": "In your vehicle (and you choose to boost)"
 											}
 										]
 									},
@@ -249,10 +246,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)",
-												"method": "any"
+												"text": "When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)"
 											}
 										]
 									},
@@ -310,10 +306,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "You make a move to barter or negotiate, and you have at least 1 cargo",
-												"method": "any"
+												"text": "You make a move to barter or negotiate, and you have at least 1 cargo"
 											}
 										]
 									},
@@ -342,10 +337,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move to outrun a threat and have at least 1 cargo",
-												"method": "any"
+												"text": "When you make a move to outrun a threat and have at least 1 cargo"
 											}
 										]
 									},
@@ -392,7 +386,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you take a minute or so to ready the grappler...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "highest",
 												"choices": [
@@ -446,7 +440,8 @@
 										"strong_hit": {
 											"text": "You may [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -459,10 +454,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By firing the grappler",
-												"method": "any"
+												"text": "By firing the grappler"
 											}
 										]
 									},
@@ -510,10 +504,9 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you aim your cannons and use them to [Strike](starforged/moves/combat/strike)",
-												"method": "any"
+												"text": "When you aim your cannons and use them to [Strike](starforged/moves/combat/strike)"
 											}
 										]
 									},
@@ -529,10 +522,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Once per fight, when you [Clash](starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire",
-												"method": "any"
+												"text": "Once per fight, when you [Clash](starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire"
 											}
 										]
 									},
@@ -565,10 +557,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels",
-												"method": "any"
+												"text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels"
 											}
 										]
 									},
@@ -616,10 +607,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On the first leg of your journey (dangerous or greater)",
-												"method": "any"
+												"text": "On the first leg of your journey (dangerous or greater)"
 											}
 										]
 									},
@@ -643,7 +633,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -691,10 +681,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To oppose an invader within your vessel",
-												"method": "any"
+												"text": "To oppose an invader within your vessel"
 											}
 										]
 									},
@@ -755,10 +744,9 @@
 									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you use your medbay to [Heal](starforged/moves/recover/heal) yourself or another patient",
-												"method": "any"
+												"text": "When you use your medbay to [Heal](starforged/moves/recover/heal) yourself or another patient"
 											}
 										]
 									},
@@ -793,14 +781,13 @@
 									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "When you or an ally mark the permanently harmed impact and are brought to the medbay without delay (less than an hour or so)",
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -824,10 +811,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By performing a risky medical procedure",
-												"method": "any"
+												"text": "By performing a risky medical procedure"
 											}
 										]
 									},
@@ -858,10 +844,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Through an autopsy or medical examination",
-												"method": "any"
+												"text": "Through an autopsy or medical examination"
 											}
 										]
 									},
@@ -930,10 +915,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With a missile attack",
-												"method": "any"
+												"text": "With a missile attack"
 											}
 										]
 									},
@@ -951,10 +935,9 @@
 									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In a place where your missiles can be replenished",
-												"method": "any"
+												"text": "In a place where your missiles can be replenished"
 											}
 										]
 									},
@@ -977,10 +960,9 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By locking a missile on target",
-												"method": "any"
+												"text": "By locking a missile on target"
 											}
 										]
 									},
@@ -1005,10 +987,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you have at least 3 ammo and [Take Decisive Action](starforged/moves/combat/take_decisive_action) by unleashing all of your missiles",
-												"method": "any"
+												"text": "When you have at least 3 ammo and [Take Decisive Action](starforged/moves/combat/take_decisive_action) by unleashing all of your missiles"
 											}
 										]
 									},
@@ -1056,7 +1037,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By talking through a situation with the overseer AI",
 												"method": "any",
@@ -1090,7 +1071,8 @@
 										"miss": {
 											"text": "If you roll on the miss table, the overseer will do what it can to help. Roll twice on the table and choose either result."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -1106,7 +1088,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation",
 												"method": "any",
@@ -1159,10 +1141,9 @@
 									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To your vehicle with a Reinforced Hull",
-												"method": "any"
+												"text": "To your vehicle with a Reinforced Hull"
 											}
 										]
 									},
@@ -1183,10 +1164,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Against a foe who knows your reputation",
-												"method": "any"
+												"text": "Against a foe who knows your reputation"
 											}
 										]
 									},
@@ -1207,10 +1187,9 @@
 									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By letting your reinforced hull take the hit",
-												"method": "any"
+												"text": "By letting your reinforced hull take the hit"
 											}
 										]
 									},
@@ -1266,10 +1245,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Through careful analysis or experimentation (in your research lab)",
-												"method": "any"
+												"text": "Through careful analysis or experimentation (in your research lab)"
 											}
 										]
 									},
@@ -1296,10 +1274,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To isolate or secure a hazardous specimen",
-												"method": "any"
+												"text": "To isolate or secure a hazardous specimen"
 											}
 										]
 									},
@@ -1335,10 +1312,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To undertake a long-term research project (extreme or greater)",
-												"method": "any"
+												"text": "To undertake a long-term research project (extreme or greater)"
 											}
 										]
 									},
@@ -1371,10 +1347,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you devote extended time to the long-term research project (extreme or greater) in your lab",
-												"method": "any"
+												"text": "When you devote extended time to the long-term research project (extreme or greater) in your lab"
 											}
 										]
 									},
@@ -1395,10 +1370,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To undertake a long-term research project (extreme or greater)",
-												"method": "any"
+												"text": "To undertake a long-term research project (extreme or greater)"
 											}
 										]
 									},
@@ -1445,15 +1419,14 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "In your vehicle",
 												"choices": [
 													{
 														"using": "wits"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -1491,10 +1464,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)",
-												"method": "any"
+												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)"
 											}
 										]
 									},
@@ -1512,10 +1484,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)",
-												"method": "any"
+												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)"
 											}
 										]
 									},
@@ -1540,7 +1511,7 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Against an ambush",
 												"method": "any",
@@ -1582,7 +1553,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To detect a hidden threat",
 												"method": "any",
@@ -1650,7 +1621,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you raise your shields...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -1700,7 +1671,7 @@
 									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By letting your shields take the blow",
 												"method": "any",
@@ -1733,10 +1704,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your vehicle",
-												"method": "any"
+												"text": "In your vehicle"
 											}
 										]
 									},
@@ -1784,10 +1754,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move against a specific foe or threat to avoid detection (in your vehicle)",
-												"method": "any"
+												"text": "When you make a move against a specific foe or threat to avoid detection (in your vehicle)"
 											}
 										]
 									},
@@ -1797,10 +1766,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By ambushing an unaware foe (in your vehicle)",
-												"method": "any"
+												"text": "By ambushing an unaware foe (in your vehicle)"
 											}
 										]
 									},
@@ -1823,15 +1791,14 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "When you travel stealthily (in your vehicle)",
 												"choices": [
 													{
 														"using": "shadow"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -1864,7 +1831,7 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike true)",
 												"method": "any",
@@ -1904,7 +1871,7 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "You are poised to [Strike](starforged/moves/combat/strike) from hiding (and choose to strike hard)",
 												"method": "any",
@@ -1960,10 +1927,9 @@
 									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you [Repair](starforged/moves/recover/repair) a battered support vehicle",
-												"method": "any"
+												"text": "When you [Repair](starforged/moves/recover/repair) a battered support vehicle"
 											}
 										]
 									},
@@ -1988,7 +1954,8 @@
 										"miss": {
 											"text": "When a support vehicle is destroyed, and you are able to retrieve its wreckage, you may [Ask the Oracle](starforged/moves/fate/ask_the_oracle) using the yes/no table if something can be salvaged from the mess. Make it 50/50. On a yes, spend 1 experience to restore the support vehicle asset with all previously marked abilities. Until you [Repair](starforged/moves/recover/repair) and bring it back to full working order, the vehicle is battered with 0 integrity."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -2000,10 +1967,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment",
-												"method": "any"
+												"text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment"
 											}
 										]
 									},
@@ -2062,10 +2028,9 @@
 									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In the field (with your workshop)",
-												"method": "any"
+												"text": "In the field (with your workshop)"
 											}
 										]
 									},
@@ -2080,10 +2045,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine",
-												"method": "any"
+												"text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine"
 											}
 										]
 									},
@@ -2119,10 +2083,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To undertake a long-term engineering project (extreme or greater)",
-												"method": "any"
+												"text": "To undertake a long-term engineering project (extreme or greater)"
 											}
 										]
 									},
@@ -2157,10 +2120,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop",
-												"method": "any"
+												"text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop"
 											}
 										]
 									},
@@ -2181,10 +2143,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To undertake a long-term engineering project (extreme or greater)",
-												"method": "any"
+												"text": "To undertake a long-term engineering project (extreme or greater)"
 											}
 										]
 									},
@@ -2271,10 +2232,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a forceful, damaging, or resistant move in your Exosuit",
-												"method": "any"
+												"text": "When you make a forceful, damaging, or resistant move in your Exosuit"
 											}
 										]
 									},
@@ -2299,10 +2259,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude",
-												"method": "any"
+												"text": "You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude"
 											}
 										]
 									},
@@ -2341,10 +2300,9 @@
 									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To your Exosuit",
-												"method": "any"
+												"text": "To your Exosuit"
 											}
 										]
 									},
@@ -2425,15 +2383,14 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "On your hoverbike",
 												"choices": [
 													{
 														"using": "edge"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -2458,10 +2415,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver",
-												"method": "any"
+												"text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver"
 											}
 										]
 									},
@@ -2537,10 +2493,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your rover",
-												"method": "any"
+												"text": "In your rover"
 											}
 										]
 									},
@@ -2552,10 +2507,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your rover",
-												"method": "any"
+												"text": "In your rover"
 											}
 										]
 									},
@@ -2606,7 +2560,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By taking a hit or crashing through an obstacle",
 												"method": "any",
@@ -2681,10 +2635,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move using the pod’s manipulator arms to perform a delicate or forceful task",
-												"method": "any"
+												"text": "When you make a move using the pod’s manipulator arms to perform a delicate or forceful task"
 											}
 										]
 									},
@@ -2713,7 +2666,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By maneuvering your pod through a hazardous or obstructed area",
 												"method": "any",
@@ -2738,10 +2691,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move while controlling the pod and push its capabilities to the limit",
-												"method": "any"
+												"text": "When you make a move while controlling the pod and push its capabilities to the limit"
 											}
 										]
 									},
@@ -2809,10 +2761,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To navigate through hazardous skies, avoid obstacles, or evade an attack",
-												"method": "any"
+												"text": "To navigate through hazardous skies, avoid obstacles, or evade an attack"
 											}
 										]
 									},
@@ -2837,10 +2788,9 @@
 									"extends": ["starforged/moves/suffer/withstand_damage"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To your shuttle",
-												"method": "any"
+												"text": "To your shuttle"
 											}
 										]
 									},
@@ -2902,7 +2852,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Rely on the skiff's simple durability",
 												"method": "any",
@@ -2938,7 +2888,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By firing the skiff's cannon",
 												"method": "any",
@@ -3021,7 +2971,7 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "In your snub fighter",
 												"method": "any",
@@ -3057,10 +3007,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your snub fighter",
-												"method": "any"
+												"text": "In your snub fighter"
 											}
 										]
 									},
@@ -3143,10 +3092,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By guiding your vehicle through a hazard or out of harm’s way",
-												"method": "any"
+												"text": "By guiding your vehicle through a hazard or out of harm’s way"
 											}
 										]
 									},
@@ -3170,10 +3118,9 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By maneuvering your vehicle against a foe",
-												"method": "any"
+												"text": "By maneuvering your vehicle against a foe"
 											}
 										]
 									},
@@ -3195,7 +3142,7 @@
 									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "While piloting a vehicle",
 												"method": "any",
@@ -3253,7 +3200,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you replenish your ammo by crafting projectiles...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -3301,7 +3248,7 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -3336,10 +3283,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter",
-												"method": "any"
+												"text": "Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter"
 											}
 										]
 									},
@@ -3390,10 +3336,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "While putting trust in your armor’s strength against physical attacks or impact",
-												"method": "any"
+												"text": "While putting trust in your armor’s strength against physical attacks or impact"
 											}
 										]
 									},
@@ -3421,10 +3366,9 @@
 									"extends": ["starforged/moves/suffer/endure_harm"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By letting your armor take the hit",
-												"method": "any"
+												"text": "By letting your armor take the hit"
 											}
 										]
 									}
@@ -3459,10 +3403,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location",
-												"method": "any"
+												"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location"
 											}
 										]
 									},
@@ -3502,10 +3445,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying the aesthetics of a being or culture",
-												"method": "any"
+												"text": "By studying the aesthetics of a being or culture"
 											}
 										]
 									},
@@ -3523,7 +3465,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you create or perform a significant artistic work as a public memorial or tribute...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"text": "Roll +the stat which best represents the work’s nature",
@@ -3615,10 +3557,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move directly aided by your augment",
-												"method": "any"
+												"text": "When you make a move directly aided by your augment"
 											}
 										]
 									},
@@ -3652,7 +3593,8 @@
 										"starforged/moves/suffer/endure_harm",
 										"starforged/moves/threshold/face_death"
 									],
-									"text": "You may instead mark an augment as broken. [Repair](starforged/moves/recover/repair) it as detailed in the augmented asset."
+									"text": "You may instead mark an augment as broken. [Repair](starforged/moves/recover/repair) it as detailed in the augmented asset.",
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -3692,10 +3634,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In service to your bound clan, faction, or creed",
-												"method": "any"
+												"text": "In service to your bound clan, faction, or creed"
 											}
 										]
 									},
@@ -3732,13 +3673,12 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -3754,10 +3694,9 @@
 									"extends": ["starforged/moves/connection/forge_a_bond"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With anyone of your ideology",
-												"method": "any"
+												"text": "With anyone of your ideology"
 											}
 										]
 									},
@@ -3780,10 +3719,9 @@
 								{
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a progress move in direct service to your ideology",
-												"method": "any"
+												"text": "When you make a progress move in direct service to your ideology"
 											}
 										]
 									},
@@ -3846,10 +3784,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you wield a bladed weapon in close quarters",
-												"method": "any"
+												"text": "When you wield a bladed weapon in close quarters"
 											}
 										]
 									},
@@ -3871,15 +3808,14 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By moving into close quarters against your foe (and choosing to charge)",
 												"choices": [
 													{
 														"using": "heart"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -3896,15 +3832,14 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By moving into close quarters against your foe (and choosing to evade)",
 												"choices": [
 													{
 														"using": "edge"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -3943,10 +3878,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By binding your promise to your iconic blade",
-												"method": "any"
+												"text": "By binding your promise to your iconic blade"
 											}
 										]
 									},
@@ -3991,10 +3925,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you take a bounty contract and [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to see it done",
-												"method": "any"
+												"text": "When you take a bounty contract and [Swear an Iron Vow](starforged/moves/quest/swear_an_iron_vow) to see it done"
 											}
 										]
 									},
@@ -4009,10 +3942,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On a hunt",
-												"method": "any"
+												"text": "On a hunt"
 											}
 										]
 									},
@@ -4035,10 +3967,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Related to a bounty",
-												"method": "any"
+												"text": "Related to a bounty"
 											}
 										]
 									},
@@ -4067,10 +3998,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In a fight against a bounty target or their agents",
-												"method": "any"
+												"text": "In a fight against a bounty target or their agents"
 											}
 										]
 									},
@@ -4127,10 +4057,9 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)",
-												"method": "any"
+												"text": "By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)"
 											}
 										]
 									},
@@ -4154,10 +4083,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Aggressively",
-												"method": "any"
+												"text": "Aggressively"
 											}
 										]
 									},
@@ -4172,10 +4100,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Defensively",
-												"method": "any"
+												"text": "Defensively"
 											}
 										]
 									},
@@ -4197,10 +4124,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Already positioned in close quarters against your foe",
-												"method": "any"
+												"text": "Already positioned in close quarters against your foe"
 											}
 										]
 									},
@@ -4247,10 +4173,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To transport and protect something precious",
-												"method": "any"
+												"text": "To transport and protect something precious"
 											}
 										]
 									},
@@ -4282,7 +4207,8 @@
 												"text": "You must suffer -2 safety as the cost.\n\nWhen safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/path/courier/abilities/0"
@@ -4294,10 +4220,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To an unbonded connection by completing a courier mission",
-												"method": "any"
+												"text": "To an unbonded connection by completing a courier mission"
 											}
 										]
 									},
@@ -4314,7 +4239,7 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "During a courier mission",
 												"method": "any",
@@ -4370,10 +4295,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To attack, destroy, or sabotage by deploying or triggering an explosive device",
-												"method": "any"
+												"text": "To attack, destroy, or sabotage by deploying or triggering an explosive device"
 											}
 										]
 									},
@@ -4388,10 +4312,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device",
-												"method": "any"
+												"text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device"
 											}
 										]
 									},
@@ -4416,10 +4339,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device",
-												"method": "any"
+												"text": "When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device"
 											}
 										]
 									},
@@ -4513,7 +4435,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By calling on your god, power, or entity for guidance or aid",
 												"method": "any",
@@ -4548,7 +4470,7 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "In service to your faith",
 												"method": "any",
@@ -4574,10 +4496,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On a divine quest (formidable or greater)",
-												"method": "any"
+												"text": "On a divine quest (formidable or greater)"
 											}
 										]
 									},
@@ -4601,7 +4522,7 @@
 									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Through contemplation or sharing of your faith",
 												"method": "any",
@@ -4651,10 +4572,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To resolve a dispute, negotiate an agreement, or gather support",
-												"method": "any"
+												"text": "To resolve a dispute, negotiate an agreement, or gather support"
 											}
 										]
 									},
@@ -4669,10 +4589,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On a diplomatic mission (formidable or greater)",
-												"method": "any"
+												"text": "On a diplomatic mission (formidable or greater)"
 											}
 										]
 									},
@@ -4694,10 +4613,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To defuse, reason, or negotiate",
-												"method": "any"
+												"text": "To defuse, reason, or negotiate"
 											}
 										]
 									},
@@ -4723,7 +4641,8 @@
 										"starforged/moves/connection/make_a_connection",
 										"starforged/moves/connection/sojourn"
 									],
-									"text": "Add +1."
+									"text": "Add +1.",
+									"move_type": "action_roll"
 								},
 								{
 									"extends": ["starforged/moves/connection/sojourn"],
@@ -4733,7 +4652,8 @@
 												"text": "You are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -4767,7 +4687,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you read the intent, emotions, or memories of a nearby being...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -4821,7 +4741,8 @@
 										"weak_hit": {
 											"text": "You may subtly influence their attitude or actions, such as making a hostile being hesitate. Take another +1 momentum. If in a fight, mark progress."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -4837,7 +4758,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To soothe a being's distress by creating an empathic bond",
 												"method": "any",
@@ -4896,7 +4817,8 @@
 										"weak_hit": {
 											"text": "Take +1 momentum."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								},
 								{
 									"extends": [
@@ -4909,7 +4831,8 @@
 										"weak_hit": {
 											"text": "Mark 1 extra tick on your discoveries legacy track."
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/path/explorer/abilities/0"
@@ -4929,10 +4852,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying a newfound place from a safe position",
-												"method": "any"
+												"text": "By studying a newfound place from a safe position"
 											}
 										]
 									},
@@ -4980,7 +4902,7 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "On your background vow",
 												"method": "strong_hit"
@@ -5002,7 +4924,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "While your background vow is unfulfilled",
 												"method": "strong_hit"
@@ -5021,10 +4943,9 @@
 								{
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make any progress move directly related to your background vow",
-												"method": "any"
+												"text": "When you make any progress move directly related to your background vow"
 											}
 										]
 									},
@@ -5082,7 +5003,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you rest and meditate to gather fiery energy...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -5133,7 +5054,8 @@
 												"text": "You may instead ignore the harm and take +fire equal to the amount of harm faced (+1, +2, or +3)."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -5149,7 +5071,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "When you have at least +3 fire and unleash hell",
 												"method": "strong_hit"
@@ -5209,10 +5131,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By hiding, concealing your identity, or fleeing from a pursuer",
-												"method": "any"
+												"text": "By hiding, concealing your identity, or fleeing from a pursuer"
 											}
 										]
 									},
@@ -5261,10 +5182,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To craft, repair, repurpose, or modify equipment or technology",
-												"method": "any"
+												"text": "To craft, repair, repurpose, or modify equipment or technology"
 											}
 										]
 									},
@@ -5288,10 +5208,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying or disassembling a machine or device",
-												"method": "any"
+												"text": "By studying or disassembling a machine or device"
 											}
 										]
 									},
@@ -5336,10 +5255,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role",
-												"method": "any"
+												"text": "By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role"
 											}
 										]
 									},
@@ -5384,10 +5302,9 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down",
-												"method": "any"
+												"text": "If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down"
 											}
 										]
 									},
@@ -5405,10 +5322,9 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt",
-												"method": "any"
+												"text": "If you [Strike](starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt"
 											}
 										]
 									},
@@ -5431,10 +5347,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By emptying your gun as you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1)",
-												"method": "any"
+												"text": "By emptying your gun as you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) (-1)"
 											}
 										]
 									},
@@ -5480,10 +5395,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With your favorite gun",
-												"method": "any"
+												"text": "With your favorite gun"
 											}
 										]
 									},
@@ -5496,10 +5410,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "While wielding your favorite gun",
-												"method": "any"
+												"text": "While wielding your favorite gun"
 											}
 										]
 									},
@@ -5545,15 +5458,14 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By facing off against your foe",
 												"choices": [
 													{
 														"using": "heart"
 													}
-												],
-												"method": "any"
+												]
 											},
 											{
 												"text": "By preparing to act without tipping off your foe",
@@ -5561,8 +5473,7 @@
 													{
 														"using": "shadow"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -5592,10 +5503,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By moving into cover",
-												"method": "any"
+												"text": "By moving into cover"
 											}
 										]
 									},
@@ -5620,10 +5530,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With the threat of violence by holding someone at gunpoint",
-												"method": "any"
+												"text": "With the threat of violence by holding someone at gunpoint"
 											}
 										]
 									},
@@ -5667,10 +5576,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move to call upon the insight of the spirit that haunts you",
-												"method": "any"
+												"text": "When you make a move to call upon the insight of the spirit that haunts you"
 											}
 										]
 									},
@@ -5696,10 +5604,9 @@
 									"extends": ["starforged/moves/threshold/face_death"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Guided by the spirit that haunts you",
-												"method": "any"
+												"text": "Guided by the spirit that haunts you"
 											}
 										]
 									},
@@ -5746,10 +5653,9 @@
 									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Give medical care to yourself",
-												"method": "any"
+												"text": "Give medical care to yourself"
 											}
 										]
 									},
@@ -5759,10 +5665,9 @@
 									"extends": ["starforged/moves/recover/heal"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Give medical care to another character",
-												"method": "any"
+												"text": "Give medical care to another character"
 											}
 										]
 									},
@@ -5786,10 +5691,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying medical evidence or biological remains",
-												"method": "any"
+												"text": "By studying medical evidence or biological remains"
 											}
 										]
 									},
@@ -5841,10 +5745,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system",
-												"method": "any"
+												"text": "To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system"
 											}
 										]
 									},
@@ -5876,10 +5779,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To establish a false identity",
-												"method": "any"
+												"text": "To establish a false identity"
 											}
 										]
 									},
@@ -5904,10 +5806,9 @@
 									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "For a device with a specific function to aid in infiltration, espionage, or sabotage",
-												"method": "any"
+												"text": "For a device with a specific function to aid in infiltration, espionage, or sabotage"
 											}
 										]
 									},
@@ -5951,10 +5852,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are in a risky situation and draw on your kinetic powers to make a move",
-												"method": "any"
+												"text": "When you are in a risky situation and draw on your kinetic powers to make a move"
 											}
 										]
 									},
@@ -5974,7 +5874,7 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Your momentum is at its max, and you attempt great kinetic feats (such as manipulating large objects and creating destructive bursts of concussive force)",
 												"method": "strong_hit"
@@ -6019,10 +5919,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning",
-												"method": "any"
+												"text": "When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning"
 											}
 										]
 									},
@@ -6043,10 +5942,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By coordinating with your team as they wade into the fight",
-												"method": "any"
+												"text": "By coordinating with your team as they wade into the fight"
 											}
 										]
 									},
@@ -6070,10 +5968,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To influence someone (not an ally) through leadership",
-												"method": "any"
+												"text": "To influence someone (not an ally) through leadership"
 											}
 										]
 									},
@@ -6131,7 +6028,8 @@
 												"text": "Reroll any dice."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/path/looper/abilities/0"
@@ -6144,7 +6042,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you loop back to a linked moment in time...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -6229,10 +6127,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
-												"method": "any"
+												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)"
 											}
 										]
 									},
@@ -6264,10 +6161,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
-												"method": "any"
+												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)"
 											}
 										]
 									},
@@ -6289,10 +6185,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To conduct extended research or study",
-												"method": "any"
+												"text": "To conduct extended research or study"
 											}
 										]
 									},
@@ -6332,10 +6227,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you recall esoteric knowledge",
-												"method": "any"
+												"text": "When you recall esoteric knowledge"
 											}
 										]
 									},
@@ -6385,10 +6279,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally)",
-												"method": "any"
+												"text": "When you [Aid Your Ally](starforged/moves/adventure/aid_your_ally)"
 											}
 										]
 									},
@@ -6419,14 +6312,13 @@
 								{
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "When you stand with your ally as they make a progress move",
 												"by": {
 													"ally": true,
 													"player": false
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -6463,10 +6355,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To wage war or defend others from war in exchange for payment or promises",
-												"method": "any"
+												"text": "To wage war or defend others from war in exchange for payment or promises"
 											}
 										]
 									},
@@ -6495,10 +6386,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To wage war or defend others from war in exchange for payment or promises",
-												"method": "any"
+												"text": "To wage war or defend others from war in exchange for payment or promises"
 											}
 										]
 									},
@@ -6521,10 +6411,9 @@
 									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By searching out or making contact with someone in need of your services",
-												"method": "any"
+												"text": "By searching out or making contact with someone in need of your services"
 											}
 										]
 									},
@@ -6552,10 +6441,9 @@
 									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In the midst of a fight",
-												"method": "any"
+												"text": "In the midst of a fight"
 											}
 										]
 									},
@@ -6565,10 +6453,9 @@
 									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By looting the field of battle in the aftermath of a fight",
-												"method": "any"
+												"text": "By looting the field of battle in the aftermath of a fight"
 											}
 										]
 									},
@@ -6609,10 +6496,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Using your knowledge of lifeforms or planetside ecosystems",
-												"method": "any"
+												"text": "Using your knowledge of lifeforms or planetside ecosystems"
 											}
 										]
 									},
@@ -6638,10 +6524,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By taking a risky action to pacify, avoid, or outwit a creature",
-												"method": "any"
+												"text": "By taking a risky action to pacify, avoid, or outwit a creature"
 											}
 										]
 									},
@@ -6677,10 +6562,9 @@
 									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To scavenge resources in a life-bearing natural environment",
-												"method": "any"
+												"text": "To scavenge resources in a life-bearing natural environment"
 											}
 										]
 									},
@@ -6700,10 +6584,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Against an environmental threat",
-												"method": "any"
+												"text": "Against an environmental threat"
 											}
 										]
 									},
@@ -6753,7 +6636,8 @@
 												"text": "You charted a new path during the journey; mark 1 tick on your discoveries legacy track."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/path/navigator/abilities/0"
@@ -6768,10 +6652,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By charting the way forward",
-												"method": "any"
+												"text": "By charting the way forward"
 											}
 										]
 									},
@@ -6792,10 +6675,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To find a path around a hazard",
-												"method": "any"
+												"text": "To find a path around a hazard"
 											}
 										]
 									},
@@ -6813,10 +6695,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "About a location by studying your charts",
-												"method": "any"
+												"text": "About a location by studying your charts"
 											}
 										]
 									},
@@ -6843,13 +6724,12 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -6893,10 +6773,9 @@
 									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In isolation, attempting find solace in fond memories or a hopeful wish.",
-												"method": "any"
+												"text": "In isolation, attempting find solace in fond memories or a hopeful wish."
 											}
 										]
 									},
@@ -6933,7 +6812,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -6981,13 +6860,12 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -7030,10 +6908,9 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By scavenging a wreck, ruin, or abandoned site",
-												"method": "any"
+												"text": "By scavenging a wreck, ruin, or abandoned site"
 											}
 										]
 									},
@@ -7063,10 +6940,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To cobble together an ad hoc tool, device, or weapon",
-												"method": "any"
+												"text": "To cobble together an ad hoc tool, device, or weapon"
 											}
 										]
 									},
@@ -7091,7 +6967,7 @@
 									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "highest",
 												"choices": [
@@ -7144,10 +7020,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By lying, bluffing, stealing, or cheating",
-												"method": "any"
+												"text": "By lying, bluffing, stealing, or cheating"
 											}
 										]
 									},
@@ -7170,7 +7045,7 @@
 									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To search out a new contact",
 												"method": "any",
@@ -7238,7 +7113,7 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "When you focus or meditate to [Gather Information](starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely)",
 												"method": "any",
@@ -7272,14 +7147,13 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Within a site",
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -7300,13 +7174,12 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -7353,10 +7226,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are veiled and make a move to ambush, hide, or sneak (not in darkness)",
-												"method": "any"
+												"text": "When you are veiled and make a move to ambush, hide, or sneak (not in darkness)"
 											}
 										]
 									},
@@ -7370,10 +7242,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are veiled and make a move to ambush, hide, or sneak (in darkness)",
-												"method": "any"
+												"text": "When you are veiled and make a move to ambush, hide, or sneak (in darkness)"
 											}
 										]
 									},
@@ -7395,7 +7266,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you expand your veil to immerse your surroundings in darkness...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -7467,10 +7338,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To investigate, track, or stalk an inhuman foe",
-												"method": "any"
+												"text": "To investigate, track, or stalk an inhuman foe"
 											}
 										]
 									},
@@ -7494,10 +7364,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
-												"method": "any"
+												"text": "To slay an inhuman foe in service to a community (formidable or greater)"
 											}
 										]
 									},
@@ -7526,10 +7395,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
-												"method": "any"
+												"text": "To slay an inhuman foe in service to a community (formidable or greater)"
 											}
 										]
 									},
@@ -7553,10 +7421,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With an objective to slay an inhuman foe",
-												"method": "any"
+												"text": "With an objective to slay an inhuman foe"
 											}
 										]
 									},
@@ -7603,10 +7470,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To solve a murder, disappearance, theft, or other mystery (no greater than formidable)",
-												"method": "any"
+												"text": "To solve a murder, disappearance, theft, or other mystery (no greater than formidable)"
 											}
 										]
 									},
@@ -7621,10 +7487,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To avoid detection as you put a person or place under surveillance",
-												"method": "any"
+												"text": "To avoid detection as you put a person or place under surveillance"
 											}
 										]
 									},
@@ -7649,7 +7514,7 @@
 									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "With a potential informant",
 												"method": "weak_hit"
@@ -7690,7 +7555,7 @@
 									"move_type": "action_roll",
 									"trigger": {
 										"text": "When you target a minor foe from a distance (outside of a fight)...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -7737,7 +7602,7 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "From a distance with time enough to line up your shot",
 												"method": "any",
@@ -7769,10 +7634,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying a distant situation through your rifle scope",
-												"method": "any"
+												"text": "By studying a distant situation through your rifle scope"
 											}
 										]
 									},
@@ -7787,10 +7651,9 @@
 									"extends": ["starforged/moves/adventure/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By taking careful aim",
-												"method": "any"
+												"text": "By taking careful aim"
 											}
 										]
 									},
@@ -7831,10 +7694,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To configure, optimize, hack, or disrupt an electronic system",
-												"method": "any"
+												"text": "To configure, optimize, hack, or disrupt an electronic system"
 											}
 										]
 									},
@@ -7863,7 +7725,8 @@
 												"text": "You may attempt to reroute power or reboot critical systems. If you do, first [Lose Momentum](starforged/moves/suffer/lose_momentum) (-2). Then, reroll all dice, add +wits instead of +integrity, and count a weak hit as a miss."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -7879,10 +7742,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By creating a computer program to perform a specific, complex function",
-												"method": "any"
+												"text": "By creating a computer program to perform a specific, complex function"
 											}
 										]
 									},
@@ -7929,7 +7791,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"choices": [
 													{
@@ -7963,10 +7825,9 @@
 									"extends": ["starforged/moves/connection/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With a merchant or supplier",
-												"method": "any"
+												"text": "With a merchant or supplier"
 											}
 										]
 									},
@@ -7976,10 +7837,9 @@
 									"extends": ["starforged/moves/recover/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By bartering with a merchant or supplier connection",
-												"method": "any"
+												"text": "By bartering with a merchant or supplier connection"
 											}
 										]
 									},
@@ -8016,13 +7876,12 @@
 									"extends": ["starforged/moves/recover/make_a_connection"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"by": {
 													"player": true,
 													"ally": true
-												},
-												"method": "any"
+												}
 											}
 										]
 									},
@@ -8095,7 +7954,8 @@
 												"method": "any"
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/path/vestige/abilities/0"
@@ -8111,10 +7971,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Through a tale, performance, or ceremony",
-												"method": "any"
+												"text": "Through a tale, performance, or ceremony"
 											}
 										]
 									},
@@ -8145,10 +8004,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you make a move directly aided by the relic",
-												"method": "any"
+												"text": "When you make a move directly aided by the relic"
 											}
 										]
 									},
@@ -8205,7 +8063,8 @@
 												"text": "You have a history: You once fought against them, and they hold a grudge."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -8222,10 +8081,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By recounting or recalling a hard-won lesson from your battlefield experiences",
-												"method": "any"
+												"text": "By recounting or recalling a hard-won lesson from your battlefield experiences"
 											}
 										]
 									},
@@ -8277,10 +8135,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Within a spacebound community",
-												"method": "any"
+												"text": "Within a spacebound community"
 											}
 										]
 									},
@@ -8290,10 +8147,9 @@
 									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Within a spacebound community",
-												"method": "any"
+												"text": "Within a spacebound community"
 											}
 										]
 									},
@@ -8313,10 +8169,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment",
-												"method": "any"
+												"text": "To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment"
 											}
 										]
 									},
@@ -8361,10 +8216,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In personal combat",
-												"method": "any"
+												"text": "In personal combat"
 											}
 										]
 									},
@@ -8382,7 +8236,7 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By switching weapons or changing tactics in personal combat (once per fight)",
 												"method": "strong_hit"
@@ -8400,10 +8254,9 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Using a personal weapon which has limited ammo or a single-use mode",
-												"method": "any"
+												"text": "Using a personal weapon which has limited ammo or a single-use mode"
 											}
 										]
 									},
@@ -8434,7 +8287,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By suiting up and gathering your gear for a perilous encounter or mission",
 												"method": "any",
@@ -8531,7 +8384,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "While riding your banshee",
 												"method": "any",
@@ -8555,10 +8408,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To detect a threat or avoid a fight (while astride your banshee)",
-												"method": "any"
+												"text": "To detect a threat or avoid a fight (while astride your banshee)"
 											}
 										]
 									},
@@ -8593,10 +8445,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When aided by your banshee",
-												"method": "any"
+												"text": "When aided by your banshee"
 											}
 										]
 									},
@@ -8674,10 +8525,9 @@
 									"extends": ["starforged/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Aided by your combat bot",
-												"method": "any"
+												"text": "Aided by your combat bot"
 											}
 										]
 									},
@@ -8687,10 +8537,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Aided by your combat bot",
-												"method": "any"
+												"text": "Aided by your combat bot"
 											}
 										]
 									},
@@ -8716,7 +8565,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Using the threat of violence while the bot brings its weapons to bear",
 												"method": "any",
@@ -8752,7 +8601,7 @@
 									"extends": ["starforged/moves/combat/react_under_fire"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Once per fight, by using the combat bot to draw fire or create a diversion",
 												"method": "any",
@@ -8830,10 +8679,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By studying your glowcat’s reactions in a charged interaction",
-												"method": "any"
+												"text": "By studying your glowcat’s reactions in a charged interaction"
 											}
 										]
 									},
@@ -8849,10 +8697,9 @@
 									"extends": ["starforged/moves/adventure/compel"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When your glowcat’s reactions help guide your approach",
-												"method": "any"
+												"text": "When your glowcat’s reactions help guide your approach"
 											}
 										]
 									},
@@ -8888,10 +8735,9 @@
 									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In the company of the glowcat",
-												"method": "any"
+												"text": "In the company of the glowcat"
 											}
 										]
 									},
@@ -8956,10 +8802,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are aided by the bot as you make a move in a formal social interaction",
-												"method": "any"
+												"text": "When you are aided by the bot as you make a move in a formal social interaction"
 											}
 										]
 									},
@@ -8986,10 +8831,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In a charged interaction",
-												"method": "any"
+												"text": "In a charged interaction"
 											}
 										]
 									},
@@ -9065,7 +8909,7 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By sending the rockhorn to directly attack a foe or smash an obstacle",
 												"method": "any",
@@ -9090,7 +8934,7 @@
 									"extends": ["starforged/moves/suffer/companion_takes_a_hit"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "For the rockhorn",
 												"method": "any",
@@ -9133,7 +8977,8 @@
 												"text": "You may reroll your action die if its value is less than the rockhorn’s health."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -9192,10 +9037,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Directly aided by your sidekick's expertise (outside of a fight)",
-												"method": "any"
+												"text": "Directly aided by your sidekick's expertise (outside of a fight)"
 											}
 										]
 									},
@@ -9230,10 +9074,9 @@
 									"extends": ["starforged/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With the support of your sidekick",
-												"method": "any"
+												"text": "With the support of your sidekick"
 											}
 										]
 									},
@@ -9250,10 +9093,9 @@
 									"extends": ["starforged/moves/combat/clash"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Together with your sidekick",
-												"method": "any"
+												"text": "Together with your sidekick"
 											}
 										]
 									},
@@ -9274,7 +9116,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Your sidekick acts to get you out of a tough spot",
 												"method": "any",
@@ -9348,10 +9190,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)",
-												"method": "any"
+												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)"
 											}
 										]
 									},
@@ -9371,10 +9212,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By remotely observing a situation from your sprite's perspective",
-												"method": "any"
+												"text": "By remotely observing a situation from your sprite's perspective"
 											}
 										]
 									},
@@ -9440,15 +9280,14 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Overland or within a site (assisted by your survey bot)",
 												"choices": [
 													{
 														"using": "wits"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -9467,7 +9306,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Once per expedition, by sending the survey bot to scout ahead",
 												"method": "any",
@@ -9505,7 +9344,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "Aided by the survey bot's sensors",
 												"method": "any",
@@ -9534,7 +9373,7 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To detect a threat",
 												"method": "any",
@@ -9608,10 +9447,9 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Make an aggressive move while giving yourself to the symbiote's power",
-												"method": "any"
+												"text": "Make an aggressive move while giving yourself to the symbiote's power"
 											}
 										]
 									},
@@ -9643,7 +9481,8 @@
 												"text": "When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, [Endure Stress](starforged/moves/suffer/endure_stress) (-2)."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -9709,7 +9548,7 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device",
 												"method": "any",
@@ -9744,10 +9583,9 @@
 									"extends": ["starforged/moves/recover/repair"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Aided by the bot",
-												"method": "any"
+												"text": "Aided by the bot"
 											}
 										]
 									},
@@ -9772,7 +9610,7 @@
 									"extends": ["starforged/moves/adventure/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "To see if your utility bot has a specific tool or technique available",
 												"method": "any",
@@ -9849,10 +9687,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On a spaceborne journey as your voidglider helps guide the way",
-												"method": "any"
+												"text": "On a spaceborne journey as your voidglider helps guide the way"
 											}
 										]
 									},
@@ -9867,7 +9704,7 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts",
 												"method": "any",
@@ -9891,7 +9728,7 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "You make a move by signaling the voidglider to distract or attack a spaceborne foe",
 												"method": "any",
@@ -9973,10 +9810,9 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "At your bond-mate's home",
-												"method": "any"
+												"text": "At your bond-mate's home"
 											}
 										]
 									},
@@ -10006,10 +9842,9 @@
 									"extends": ["starforged/moves/recover/hearten"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your bond-mate's presence",
-												"method": "any"
+												"text": "In your bond-mate's presence"
 											}
 										]
 									},
@@ -10042,10 +9877,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "With your bond-mate",
-												"method": "any"
+												"text": "With your bond-mate"
 											}
 										]
 									},
@@ -10081,10 +9915,9 @@
 									"extends": ["starforged/moves/exploration/set_a_course"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Back to your bond-mate's location",
-												"method": "any"
+												"text": "Back to your bond-mate's location"
 											}
 										]
 									},
@@ -10113,7 +9946,8 @@
 												"text": "Reroll any dice."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -10154,10 +9988,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In service to your home (formidable or greater)",
-												"method": "any"
+												"text": "In service to your home (formidable or greater)"
 											}
 										]
 									},
@@ -10189,10 +10022,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In service to your home (formidable or greater)",
-												"method": "any"
+												"text": "In service to your home (formidable or greater)"
 											}
 										]
 									},
@@ -10215,10 +10047,9 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "In your home (and you don't linger)",
-												"method": "any"
+												"text": "In your home (and you don't linger)"
 											}
 										]
 									},
@@ -10236,7 +10067,7 @@
 									"extends": ["starforged/moves/recover/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "In your home (and you stay a bit)",
 												"method": "weak_hit"
@@ -10256,10 +10087,9 @@
 									"extends": ["starforged/moves/exploration/set_a_course"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "For home",
-												"method": "any"
+												"text": "For home"
 											}
 										]
 									},
@@ -10326,10 +10156,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Among those who would know your reputation",
-												"method": "any"
+												"text": "Among those who would know your reputation"
 											}
 										]
 									},
@@ -10357,7 +10186,8 @@
 												"text": "Reroll any dice."
 											}
 										}
-									}
+									},
+									"move_type": "action_roll"
 								}
 							],
 							"controls": {
@@ -10380,10 +10210,9 @@
 									"extends": ["starforged/moves/combat/gain_ground"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "Through intimidation or command (once per fight)",
-												"method": "any"
+												"text": "Through intimidation or command (once per fight)"
 											}
 										]
 									},
@@ -10443,10 +10272,9 @@
 									"extends": ["starforged/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "To redeem yourself (extreme or greater, one time only)",
-												"method": "any"
+												"text": "To redeem yourself (extreme or greater, one time only)"
 											}
 										]
 									},
@@ -10454,7 +10282,8 @@
 								},
 								{
 									"extends": ["starforged/moves/quest/forsake_your_vow"],
-									"text": "If you [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact."
+									"text": "If you [Forsake Your Vow](starforged/moves/quest/forsake_your_vow) on the quest, discard this asset and retain the impact.",
+									"move_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/deed/oathbreaker/abilities/0"
@@ -10470,10 +10299,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By reaffirming your commitment to your marked vow",
-												"method": "any"
+												"text": "By reaffirming your commitment to your marked vow"
 											}
 										]
 									},
@@ -10498,10 +10326,9 @@
 									"extends": ["starforged/moves/quest/fulfill_your_vow"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "On your marked quest",
-												"method": "any"
+												"text": "On your marked quest"
 											}
 										]
 									},
@@ -10551,10 +10378,9 @@
 									],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are at 0 health",
-												"method": "any"
+												"text": "When you are at 0 health"
 											}
 										]
 									},
@@ -10590,10 +10416,9 @@
 									"extends": ["starforged/moves/combat/take_decisive_action"],
 									"move_type": "progress_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "By bringing death to a foe",
-												"method": "any"
+												"text": "By bringing death to a foe"
 											}
 										]
 									},
@@ -10620,7 +10445,7 @@
 									"extends": ["starforged/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"text": "By studying a place where death left its mark",
 												"choices": [
@@ -10676,10 +10501,9 @@
 									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
-												"text": "When you are haunted by past experiences",
-												"method": "any"
+												"text": "When you are haunted by past experiences"
 											}
 										]
 									},
@@ -10748,7 +10572,7 @@
 									"move_type": "progress_roll",
 									"trigger": {
 										"text": "When you seek a safe location in a remote environment...",
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [
@@ -10794,14 +10618,13 @@
 								{
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"choices": [
 													{
 														"using": "wits"
 													}
-												],
-												"method": "any"
+												]
 											}
 										]
 									},
@@ -10824,7 +10647,7 @@
 									"extends": ["starforged/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
-										"roll_options": [
+										"conditions": [
 											{
 												"method": "any",
 												"choices": [

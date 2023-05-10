@@ -960,7 +960,7 @@ export interface TriggerActionRoll {
 	 * conditions.
 	 */
 	text: MarkdownString
-	roll_options?: TriggerRollOptionAction[]
+	conditions?: TriggerRollOptionAction[]
 }
 
 export interface TriggerProgressRoll {
@@ -972,7 +972,7 @@ export interface TriggerProgressRoll {
 	 * conditions.
 	 */
 	text: MarkdownString
-	roll_options?: TriggerRollOptionProgress[]
+	conditions?: TriggerRollOptionProgress[]
 }
 
 /**
@@ -996,7 +996,7 @@ export type TriggerExtension =
  */
 export interface TriggerExtensionActionRoll {
 	move_type: 'action_roll'
-	roll_options: TriggerRollOptionAction[]
+	conditions: TriggerRollOptionAction[]
 }
 
 /**
@@ -1004,7 +1004,7 @@ export interface TriggerExtensionActionRoll {
  */
 export interface TriggerExtensionProgressRoll {
 	move_type: 'progress_roll'
-	roll_options: TriggerRollOptionProgress[]
+	conditions: TriggerRollOptionProgress[]
 }
 
 export interface TriggerRollOptionAction {
