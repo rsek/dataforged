@@ -15,6 +15,7 @@ import * as Players from './players'
 import * as fs from 'fs/promises'
 
 import * as JTD from 'jtd'
+import { log } from 'scripts/logger'
 
 const schema: JTD.Schema = {
 	definitions: {
@@ -48,7 +49,7 @@ function crawlForRefs(schema: Record<string, unknown>) {
 crawlForRefs(schema as Record<string, unknown>)
 
 referenceNames.forEach((name) => {
-	if (!definitionNames.has(name)) console.log(`Missing definition for`, name)
+	if (!definitionNames.has(name)) log.info(`Missing definition for`, name)
 })
 
 if (!JTD.isSchema(schema)) throw Error()

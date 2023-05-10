@@ -35,7 +35,6 @@
 	"yaml.format.singleQuote": true,
 
 	"editor.foldingImportsByDefault": true,
-	"json.validate.enable": true,
 	"yaml.schemas": {
 		"src/data-in/classic-input.schema.json": ["src/data-in/classic/**/*.yaml"],
 		"src/data-in/starforged-input.schema.json": [
@@ -45,12 +44,13 @@
 	"json.schemas": [
 		{
 			"url": "./src/data-out/classic.schema.json",
-			"fileMatch": ["./src/data-out/classic/*/*.json"]
+			"fileMatch": ["src/data-out/classic/**/*.json"]
 		},
 		{
 			"url": "./src/data-out/starforged.schema.json",
-			"fileMatch": ["./src/data-out/starforged/*/*.json"]
+			"fileMatch": ["src/data-out/starforged/**/*.json"]
 		}
 	],
+	"json.validate.enable": true,
 	"json.format.enable": false
 }

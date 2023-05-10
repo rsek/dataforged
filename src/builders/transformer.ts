@@ -146,8 +146,6 @@ export function transform<
 	parent: TParent,
 	transformer: Transformer<TIn, TOut, TParent>
 ): TOut {
-	// console.log('running transform on key', key)
-
 	const result = cloneDeep(data) as Partial<TOut>
 
 	const initialKeys: InitialKeys[] = ['id', 'source']
