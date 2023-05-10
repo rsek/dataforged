@@ -24,7 +24,7 @@ export const MoveRollMethod = Utils.StringEnum(
 		$id: '#/$defs/MoveRollMethod',
 
 		description:
-			'`any`: When rolling with this move trigger option, the player picks which stat to use.\n\n`all`: When rolling with this move trigger option, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger option, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger option, use the lowest/worst option from the `using` key.'
+			'`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.'
 	}
 )
 
@@ -58,23 +58,23 @@ export const TriggerBy = Type.Object(
 	{
 		$id: '#/$defs/TriggerBy',
 		description:
-			"Information on who can trigger this trigger option. Usually this is just the player, but some asset abilities can trigger from an ally's move."
+			"Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move."
 	}
 )
 export type TriggerBy = Static<typeof TriggerBy>
 
-export const TriggerActionRollOptionChoiceAttachedAssetRef = Type.Object(
+export const TriggerActionRollConditionChoiceAttachedAssetRef = Type.Object(
 	{
 		using: Type.Literal('attached_asset_meter')
 	},
-	{ $id: '#/$defs/TriggerActionRollOptionChoiceAttachedAssetRef' }
+	{ $id: '#/$defs/TriggerActionRollConditionChoiceAttachedAssetRef' }
 )
 
-export type TriggerActionRollOptionChoiceAttachedAssetRef = Static<
-	typeof TriggerActionRollOptionChoiceAttachedAssetRef
+export type TriggerActionRollConditionChoiceAttachedAssetRef = Static<
+	typeof TriggerActionRollConditionChoiceAttachedAssetRef
 >
 
-export const TriggerActionRollOptionChoiceRef = Type.Object(
+export const TriggerActionRollConditionChoiceRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
@@ -82,61 +82,61 @@ export const TriggerActionRollOptionChoiceRef = Type.Object(
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
 	},
-	{ $id: '#/$defs/TriggerActionRollOptionChoiceRef' }
+	{ $id: '#/$defs/TriggerActionRollConditionChoiceRef' }
 )
-export type TriggerActionRollOptionChoiceRef = Static<
-	typeof TriggerActionRollOptionChoiceRef
+export type TriggerActionRollConditionChoiceRef = Static<
+	typeof TriggerActionRollConditionChoiceRef
 >
 
-export const TriggerActionRollOptionChoiceStat = Type.Object(
+export const TriggerActionRollConditionChoiceStat = Type.Object(
 	{
 		using: Type.Union([
 			Type.Ref(Enum.PlayerStat),
 			Type.Ref(Enum.PlayerConditionMeter)
 		])
 	},
-	{ $id: '#/$defs/TriggerActionRollOptionChoiceStat' }
+	{ $id: '#/$defs/TriggerActionRollConditionChoiceStat' }
 )
-export type TriggerActionRollOptionChoiceStat = Static<
-	typeof TriggerActionRollOptionChoiceStat
+export type TriggerActionRollConditionChoiceStat = Static<
+	typeof TriggerActionRollConditionChoiceStat
 >
 
-export const TriggerActionRollOptionChoiceCustomValue = Type.Object(
+export const TriggerActionRollConditionChoiceCustomValue = Type.Object(
 	{
 		using: Type.Literal('custom_value'),
 		label: Type.Ref(Localize.Label),
 		value: Type.Integer({ minimum: 0 })
 	},
-	{ $id: '#/$defs/TriggerActionRollOptionChoiceCustomValue' }
+	{ $id: '#/$defs/TriggerActionRollConditionChoiceCustomValue' }
 )
-export type TriggerRollOptionActionChoiceCustomValue = Static<
-	typeof TriggerActionRollOptionChoiceCustomValue
+export type TriggerRollConditionActionChoiceCustomValue = Static<
+	typeof TriggerActionRollConditionChoiceCustomValue
 >
 
-export const TriggerActionRollOptionChoice = Type.Union(
+export const TriggerActionRollConditionChoice = Type.Union(
 	[
-		Type.Ref(TriggerActionRollOptionChoiceStat),
-		Type.Ref(TriggerActionRollOptionChoiceRef),
-		Type.Ref(TriggerActionRollOptionChoiceAttachedAssetRef),
-		Type.Ref(TriggerActionRollOptionChoiceCustomValue)
+		Type.Ref(TriggerActionRollConditionChoiceStat),
+		Type.Ref(TriggerActionRollConditionChoiceRef),
+		Type.Ref(TriggerActionRollConditionChoiceAttachedAssetRef),
+		Type.Ref(TriggerActionRollConditionChoiceCustomValue)
 	],
-	{ $id: '#/$defs/TriggerActionRollOptionChoice' }
+	{ $id: '#/$defs/TriggerActionRollConditionChoice' }
 )
-export type TriggerActionRollOptionChoice = Static<
-	typeof TriggerActionRollOptionChoice
+export type TriggerActionRollConditionChoice = Static<
+	typeof TriggerActionRollConditionChoice
 >
 
-export const TriggerProgressRollOptionChoice = Type.Object(
+export const TriggerProgressRollConditionChoice = Type.Object(
 	{
 		using: Type.Ref(Progress.ProgressTypeCommon)
 	},
-	{ $id: '#/$defs/TriggerProgressRollOptionChoice' }
+	{ $id: '#/$defs/TriggerProgressRollConditionChoice' }
 )
-export type TriggerProgressRollOptionChoice = Static<
-	typeof TriggerProgressRollOptionChoice
+export type TriggerProgressRollConditionChoice = Static<
+	typeof TriggerProgressRollConditionChoice
 >
 
-function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
+function TriggerRollConditionBase<T extends MoveRollType = MoveRollType>(
 	t: T,
 	options: ObjectOptions = {}
 ) {
@@ -153,29 +153,29 @@ function TriggerRollOptionBase<T extends MoveRollType = MoveRollType>(
 	)
 }
 
-export const TriggerActionRollOption = Type.Composite(
+export const TriggerActionRollCondition = Type.Composite(
 	[
-		TriggerRollOptionBase('action_roll'),
+		TriggerRollConditionBase('action_roll'),
 		Type.Object({
-			choices: Type.Array(Type.Ref(TriggerActionRollOptionChoice))
+			roll_options: Type.Array(Type.Ref(TriggerActionRollConditionChoice))
 		})
 	],
-	{ $id: '#/$defs/TriggerActionRollOption' }
+	{ $id: '#/$defs/TriggerActionRollCondition' }
 )
-export const TriggerProgressRollOption = Type.Composite(
+export const TriggerProgressRollCondition = Type.Composite(
 	[
-		TriggerRollOptionBase('progress_roll'),
+		TriggerRollConditionBase('progress_roll'),
 		Type.Object({
-			choices: Type.Array(Type.Ref(TriggerProgressRollOptionChoice))
+			roll_options: Type.Array(Type.Ref(TriggerProgressRollConditionChoice))
 		})
 	],
-	{ $id: '#/$defs/TriggerProgressRollOption' }
+	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
-export const TriggerNoRollOption = Type.Omit(
-	TriggerRollOptionBase('no_roll'),
+export const TriggerNoRollCondition = Type.Omit(
+	TriggerRollConditionBase('no_roll'),
 	['method'],
 	{
-		$id: '#/$defs/TriggerNoRollOption'
+		$id: '#/$defs/TriggerNoRollCondition'
 	}
 )
 
@@ -197,7 +197,9 @@ function TriggerExtensionBase() {
 export const TriggerActionRoll = Type.Composite(
 	[
 		TriggerBase(),
-		Type.Object({ conditions: Type.Array(Type.Ref(TriggerActionRollOption)) })
+		Type.Object({
+			conditions: Type.Array(Type.Ref(TriggerActionRollCondition))
+		})
 	],
 	{ $id: '#/$defs/TriggerActionRoll' }
 )
@@ -206,7 +208,7 @@ export const TriggerProgressRoll = Type.Composite(
 	[
 		TriggerBase(),
 		Type.Object({
-			conditions: Type.Array(Type.Ref(TriggerProgressRollOption))
+			conditions: Type.Array(Type.Ref(TriggerProgressRollCondition))
 		})
 	],
 	{ $id: '#/$defs/TriggerProgressRoll' }
@@ -215,7 +217,7 @@ export const TriggerNoRoll = Type.Composite(
 	[
 		TriggerBase(),
 		Type.Object({
-			conditions: Type.Optional(Type.Array(Type.Ref(TriggerNoRollOption)))
+			conditions: Type.Optional(Type.Array(Type.Ref(TriggerNoRollCondition)))
 		})
 	],
 	{ $id: '#/$defs/TriggerNoRoll' }
@@ -328,40 +330,40 @@ export const MoveCategory = Abstract.Collection(
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export const TriggerActionRollOptionExtension = PartialExcept(
-	TriggerActionRollOption,
+export const TriggerActionRollConditionExtension = PartialExcept(
+	TriggerActionRollCondition,
 	['text'],
-	{ $id: '#/$defs/TriggerActionRollOptionExtension' }
+	{ $id: '#/$defs/TriggerActionRollConditionExtension' }
 )
-type TriggerActionRollOptionExtension = Static<
-	typeof TriggerActionRollOptionExtension
+type TriggerActionRollConditionExtension = Static<
+	typeof TriggerActionRollConditionExtension
 >
 
 export const TriggerActionRollExtension = Type.Composite(
 	[
 		TriggerExtensionBase(),
 		Type.Object({
-			conditions: Type.Array(Type.Ref(TriggerActionRollOptionExtension))
+			conditions: Type.Array(Type.Ref(TriggerActionRollConditionExtension))
 		})
 	],
 	{ $id: '#/$defs/TriggerActionRollExtension' }
 )
 type TriggerActionRollExtension = Static<typeof TriggerActionRollExtension>
 
-export const TriggerProgressRollOptionExtension = PartialExcept(
-	TriggerProgressRollOption,
+export const TriggerProgressRollConditionExtension = PartialExcept(
+	TriggerProgressRollCondition,
 	['text'],
-	{ $id: '#/$defs/TriggerProgressRollOptionExtension' }
+	{ $id: '#/$defs/TriggerProgressRollConditionExtension' }
 )
-type TriggerProgressRollOptionExtension = Static<
-	typeof TriggerProgressRollOptionExtension
+type TriggerProgressRollConditionExtension = Static<
+	typeof TriggerProgressRollConditionExtension
 >
 
 export const TriggerProgressRollExtension = Type.Composite(
 	[
 		TriggerExtensionBase(),
 		Type.Object({
-			conditions: Type.Array(Type.Ref(TriggerProgressRollOptionExtension))
+			conditions: Type.Array(Type.Ref(TriggerProgressRollConditionExtension))
 		})
 	],
 	{ $id: '#/$defs/TriggerProgressRollExtension' }
@@ -371,7 +373,7 @@ type TriggerProgressRollExtension = Static<typeof TriggerProgressRollExtension>
 export const TriggerNoRollExtension = Type.Composite([
 	TriggerExtensionBase(),
 	Type.Object({
-		conditions: Type.Array(Type.Ref(TriggerNoRollOption))
+		conditions: Type.Array(Type.Ref(TriggerNoRollCondition))
 	})
 ])
 type TriggerNoRollExtension = Static<typeof TriggerNoRollExtension>
