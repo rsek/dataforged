@@ -129,9 +129,17 @@ export const OracleTableRendering = Type.Object(
 )
 export type OracleTableRendering = Static<typeof OracleTableRendering>
 
+export const DiceNotation = Type.RegEx(
+	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
+	{
+		$id: '#/$defs/DiceNotation'
+	}
+)
+
 export const OracleTable = Abstract.SourcedNode(
 	{
 		id: Type.Ref(ID.OracleTableID),
+		roll: Type.Ref(DiceNotation, { default: '1d100' }),
 		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),

@@ -550,6 +550,10 @@
 				"color": { "$ref": "#/$defs/CSSColor" }
 			}
 		},
+		"DiceNotation": {
+			"type": "string",
+			"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?"
+		},
 		"OracleTable": {
 			"type": "object",
 			"properties": {
@@ -566,6 +570,7 @@
 				"rendering": { "$ref": "#/$defs/OracleTableRendering" },
 				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/OracleTableID" },
+				"roll": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "table"]

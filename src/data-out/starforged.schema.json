@@ -555,6 +555,10 @@
 				"color": { "$ref": "#/$defs/CSSColor" }
 			}
 		},
+		"DiceNotation": {
+			"type": "string",
+			"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?"
+		},
 		"OracleTable": {
 			"title": "Oracle table",
 			"type": "object",
@@ -564,6 +568,7 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/OracleTableID" },
+				"roll": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"match": { "$ref": "#/$defs/OracleTableMatchBehavior" },
@@ -573,7 +578,7 @@
 				},
 				"rendering": { "$ref": "#/$defs/OracleTableRendering" }
 			},
-			"required": ["name", "source", "id", "table"]
+			"required": ["name", "source", "id", "roll", "table"]
 		},
 		"OracleCollectionStyle": { "enum": ["multi_table"] },
 		"OracleCollectionRendering": {

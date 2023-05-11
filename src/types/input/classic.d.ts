@@ -61,6 +61,7 @@ export type TemplateString2 = string;
  */
 export type OracleTableRowID = string;
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
+export type DiceNotation = string;
 export type PageNumber1 = number;
 export type OracleColumnContentType = "range" | "result" | "summary" | "description";
 export type OracleCollectionStyle = "multi_table";
@@ -272,6 +273,7 @@ export interface OracleTable {
   rendering?: OracleTableRendering;
   source?: Source;
   id?: OracleTableID;
+  roll?: DiceNotation;
   _source?: SourceStub;
 }
 export interface OracleTableMatchBehavior {

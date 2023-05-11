@@ -33,6 +33,7 @@ export type CSSColor = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString = string;
+export type DiceNotation = string;
 /**
  * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
  *
@@ -268,6 +269,7 @@ export interface OracleTable {
   source: Source;
   suggestions?: Suggestions;
   id: OracleTableID;
+  roll: DiceNotation;
   summary?: MarkdownString;
   description?: MarkdownString;
   match?: MatchBehavior;
