@@ -14,6 +14,7 @@ export const EncounterClassic = Type.Object(
 			'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.'
 	}
 )
+export type EncounterClassic = Static<typeof EncounterClassic>
 
 export const EncounterCollectionClassic = Abstract.Collection(
 	Type.Ref(EncounterClassic),

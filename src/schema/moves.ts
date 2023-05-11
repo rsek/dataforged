@@ -1,48 +1,30 @@
-import {
-	type Static,
-	Type,
-	type ObjectOptions,
-	type TSchema
-} from '@sinclair/typebox'
-import {
-	ID,
-	Localize,
-	Utils,
-	Abstract,
-	Enum,
-	Progress,
-	Metadata
-} from 'schema/common'
+import { type Static, Type, type TSchema, JsonEnum } from 'typebox'
+import { ID, Localize, Abstract, Enum, Metadata } from 'schema/common'
 import { MoveIDWildcard } from 'schema/common/id'
 import { PartialExcept } from 'schema/common/utils'
 import { type Simplify } from 'type-fest'
+import { ProgressType } from 'schema/enum'
 
-export const MoveRollMethod = Utils.StringEnum(
-	['any', 'all', 'highest', 'lowest'],
-	{
-		$id: '#/$defs/MoveRollMethod',
+export const MoveRollMethod = JsonEnum(['any', 'all', 'highest', 'lowest'], {
+	$id: '#/$defs/MoveRollMethod',
 
-		description:
-			'`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.'
-	}
-)
+	description:
+		'`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.'
+})
 export type MoveRollMethod = Static<typeof MoveRollMethod>
 
-export const MoveRerollMethod = Utils.StringEnum(
+export const MoveRerollMethod = JsonEnum(
 	['any', 'all', 'challenge_die', 'challenge_dice', 'action_die'],
 	{ $id: '#/$defs/MoveRerollMethod' }
 )
 export type MoveRerollMethod = Static<typeof MoveRerollMethod>
 
-export const MoveOutcomeType = Utils.StringEnum(
-	['miss', 'weak_hit', 'strong_hit'],
-	{
-		$id: '#/$defs/MoveOutcomeType'
-	}
-)
+export const MoveOutcomeType = JsonEnum(['miss', 'weak_hit', 'strong_hit'], {
+	$id: '#/$defs/MoveOutcomeType'
+})
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
-export const MoveRollType = Utils.StringEnum(
+export const MoveRollType = JsonEnum(
 	['action_roll', 'progress_roll', 'no_roll'],
 	{
 		$id: '#/$defs/MoveRollType'
@@ -128,7 +110,7 @@ export type TriggerActionRollConditionOption = Static<
 
 export const TriggerProgressRollConditionOption = Type.Object(
 	{
-		using: Type.Ref(Progress.ProgressTypeCommon)
+		using: Type.Ref(ProgressType)
 	},
 	{ $id: '#/$defs/TriggerProgressRollConditionOption' }
 )
@@ -136,26 +118,17 @@ export type TriggerProgressRollConditionOption = Static<
 	typeof TriggerProgressRollConditionOption
 >
 
-function TriggerRollConditionBase<T extends MoveRollType = MoveRollType>(
-	t: T,
-	options: ObjectOptions = {}
-) {
-	return Type.Object(
-		{
-			text: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			method: Type.Union(
-				[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
-				{ default: 'any' }
-			),
-			by: Type.Optional(Type.Ref(TriggerBy))
-		},
-		options
-	)
-}
+const TriggerRollConditionBase = Type.Object({
+	text: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	method: Type.Union([Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)], {
+		default: 'any'
+	}),
+	by: Type.Optional(Type.Ref(TriggerBy))
+})
 
 export const TriggerActionRollCondition = Type.Composite(
 	[
-		TriggerRollConditionBase('action_roll'),
+		TriggerRollConditionBase,
 		Type.Object({
 			roll_options: Type.Array(Type.Ref(TriggerActionRollConditionOption))
 		})
@@ -168,7 +141,7 @@ export type TriggerActionRollCondition = Static<
 
 export const TriggerProgressRollCondition = Type.Composite(
 	[
-		TriggerRollConditionBase('progress_roll'),
+		TriggerRollConditionBase,
 		Type.Object({
 			roll_options: Type.Array(Type.Ref(TriggerProgressRollConditionOption))
 		})
@@ -179,7 +152,7 @@ export type TriggerProgressRollCondition = Static<
 	typeof TriggerProgressRollCondition
 >
 export const TriggerNoRollCondition = Type.Omit(
-	TriggerRollConditionBase('no_roll'),
+	TriggerRollConditionBase,
 	['method'],
 	{
 		$id: '#/$defs/TriggerNoRollCondition'
@@ -187,24 +160,20 @@ export const TriggerNoRollCondition = Type.Omit(
 )
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
-function TriggerBase() {
-	return Type.Object({
-		text: Type.Ref(Localize.MarkdownString, {
-			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
-			type: 'string',
-			pattern: /.*\.{3}/.source
-		})
+const TriggerBase = Type.Object({
+	text: Type.Ref(Localize.MarkdownString, {
+		description:
+			'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
+		type: 'string',
+		pattern: /.*\.{3}/.source
 	})
-}
+})
 
-function TriggerExtensionBase() {
-	return Type.Omit(TriggerBase(), ['text'])
-}
+const TriggerExtensionBase = Type.Omit(TriggerBase, ['text'])
 
 export const TriggerActionRoll = Type.Composite(
 	[
-		TriggerBase(),
+		TriggerBase,
 		Type.Object({
 			conditions: Type.Array(Type.Ref(TriggerActionRollCondition))
 		})
@@ -215,7 +184,7 @@ export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 
 export const TriggerProgressRoll = Type.Composite(
 	[
-		TriggerBase(),
+		TriggerBase,
 		Type.Object({
 			conditions: Type.Array(Type.Ref(TriggerProgressRollCondition))
 		})
@@ -226,7 +195,7 @@ export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
 export const TriggerNoRoll = Type.Composite(
 	[
-		TriggerBase(),
+		TriggerBase,
 		Type.Object({
 			conditions: Type.Optional(Type.Array(Type.Ref(TriggerNoRollCondition)))
 		})
@@ -285,7 +254,7 @@ const MoveBase = Type.Object({
 	text: Type.Ref(Localize.MarkdownString),
 	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
 	oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
-	suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase)),
+	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 	source: Type.Ref(Metadata.Source)
 })
 
@@ -343,7 +312,7 @@ export type TriggerActionRollConditionExtension = Static<
 
 export const TriggerActionRollExtension = Type.Composite(
 	[
-		TriggerExtensionBase(),
+		TriggerExtensionBase,
 		Type.Object({
 			conditions: Type.Array(Type.Ref(TriggerActionRollConditionExtension))
 		})
@@ -365,7 +334,7 @@ export type TriggerProgressRollConditionExtension = Static<
 
 export const TriggerProgressRollExtension = Type.Composite(
 	[
-		TriggerExtensionBase(),
+		TriggerExtensionBase,
 		Type.Object({
 			conditions: Type.Array(Type.Ref(TriggerProgressRollConditionExtension))
 		})
@@ -377,7 +346,7 @@ export type TriggerProgressRollExtension = Static<
 >
 
 export const TriggerNoRollExtension = Type.Composite([
-	TriggerExtensionBase(),
+	TriggerExtensionBase,
 	Type.Object({
 		conditions: Type.Array(Type.Ref(TriggerNoRollCondition))
 	})

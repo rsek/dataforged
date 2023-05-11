@@ -3,8 +3,6 @@ import { JTDSchemaType } from 'ajv/dist/core'
 import { toJtdId } from 'json-typedef/utils'
 import { RarityID as ID } from 'schema-json/rarities'
 
-export const RarityID = toJtdId(ID)
-
 export const Rarity: JTDSchemaType<
 	Types.Rarities.Rarity,
 	{
@@ -14,7 +12,7 @@ export const Rarity: JTDSchemaType<
 		Label: string
 		Source: Types.Metadata.Source
 		SvgImageURL: string
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 	}
 > = {
 	properties: {

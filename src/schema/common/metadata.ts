@@ -1,19 +1,9 @@
 import { type Static, Type } from '@sinclair/typebox'
-import * as ID from 'schema/common/id'
-import * as Utils from 'schema/common/utils'
+import { JsonEnum } from 'typebox'
 
-/** A base for ruleset-specific suggestions objects; not directly included in the schema, but serves as a standin until the schema is composed */
-export const SuggestionsBase = Type.Object(
-	{
-		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
-		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
-		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID)))
-	},
-	{ $id: '#/$defs/Suggestions' }
-)
-export type SuggestionsBase = Static<typeof SuggestionsBase>
+import { ID } from 'schema/common'
 
-export const Ruleset = Utils.StringEnum(['classic', 'starforged'], {
+export const Ruleset = JsonEnum(['classic', 'starforged'], {
 	$id: '#/$defs/Ruleset',
 	description: "The ruleset used for a sourcebook's rules content."
 })
@@ -102,3 +92,36 @@ export const SourceStub = Type.Partial(Source, {
 })
 
 export type SourceStub = Static<typeof SourceStub>
+
+export const SuggestionsClassic = Type.Object(
+	{
+		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
+		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
+		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
+		site_domains: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteDomainID))),
+		site_themes: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteThemeID))),
+		encounters: Type.Optional(Type.Array(Type.Ref(ID.EncounterClassicID))),
+		regions: Type.Optional(Type.Array(Type.Ref(ID.RegionEntryID)))
+	},
+	{ $id: '#/$defs/SuggestionsClassic' }
+)
+
+export type SuggestionsClassic = Static<typeof SuggestionsClassic>
+
+export const SuggestionsStarforged = Type.Object(
+	{
+		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
+		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
+		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
+		encounters: Type.Optional(Type.Array(Type.Ref(ID.EncounterStarforgedID)))
+	},
+	{ $id: '#/$defs/SuggestionsStarforged' }
+)
+export type SuggestionsStarforged = Static<typeof SuggestionsStarforged>
+
+export const Suggestions = Type.Union(
+	[Type.Ref(SuggestionsClassic), Type.Ref(SuggestionsStarforged)],
+	{ $id: '#/$defs/Suggestions' }
+)
+
+export type Suggestions = Static<typeof Suggestions>

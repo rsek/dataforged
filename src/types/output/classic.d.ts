@@ -10,6 +10,7 @@ export type PageNumber = number;
  * A localized plain text name or label.
  */
 export type Label = string;
+export type Suggestions = SuggestionsClassic | SuggestionsStarforged;
 export type OracleTableID = string;
 export type AssetID = string;
 /**
@@ -20,6 +21,7 @@ export type DelveSiteDomainID = string;
 export type DelveSiteThemeID = string;
 export type EncounterClassicID = string;
 export type RegionEntryID = string;
+export type EncounterStarforgedID = string;
 export type OracleCollectionID = string;
 /**
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
@@ -78,34 +80,34 @@ export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice
 export type AssetTypeID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetOptionField = SelectFieldPlayerStat | TextField;
 export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
 export type PlayerConditionMeter = "health" | "spirit" | "supply";
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetControlField = CheckboxField;
 export type AssetAbilityID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetAbilityOptionField = TextField;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
 export type AssetIDWildcard = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetConditionMeterControlField = CheckboxField;
 /**
@@ -219,7 +221,7 @@ export interface Source {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleCollection {
   name: Label;
@@ -241,7 +243,7 @@ export interface OracleCollection {
   images?: WEBPImageURL[];
   sample_names?: Label[];
 }
-export interface Suggestions {
+export interface SuggestionsClassic {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
@@ -250,9 +252,15 @@ export interface Suggestions {
   encounters?: EncounterClassicID[];
   regions?: RegionEntryID[];
 }
+export interface SuggestionsStarforged {
+  oracles?: OracleTableID[];
+  assets?: AssetID[];
+  moves?: MoveID[];
+  encounters?: EncounterStarforgedID[];
+}
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleTable {
   name: Label;
@@ -313,7 +321,7 @@ export interface OracleCollectionRendering {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleTableColumn {
   label?: Label;
@@ -323,7 +331,7 @@ export interface OracleTableColumn {
  * A column's default label is the title of the source table.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleCollectionColumn {
   label?: Label;
@@ -333,7 +341,7 @@ export interface OracleCollectionColumn {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface MoveCategory {
   name: Label;
@@ -351,10 +359,10 @@ export interface MoveCategory {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface Move {
   id: MoveID;
@@ -391,7 +399,7 @@ export interface MoveOutcome {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface AssetType {
   name: Label;
@@ -410,7 +418,7 @@ export interface AssetType {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface Asset {
   id: AssetID;
@@ -451,7 +459,7 @@ export interface SelectFieldPlayerStat {
   choices: {
     /**
      * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^[a-z_]+$".
+     * via the `patternProperty` "^[a-z][a-z_]*$".
      */
     [k: string]: {
       label: Label;
@@ -547,23 +555,7 @@ export interface MoveExtension {
   extends?: MoveIDWithWildcard[];
   trigger?: unknown;
   move_type: MoveRollType1;
-  outcomes?: MoveOutcomesExtension;
-}
-export interface MoveOutcomesExtension {
-  miss?: MoveOutcomeMatchableExtension;
-  weak_hit?: MoveOutcomeExtension;
-  strong_hit?: MoveOutcomeMatchableExtension;
-}
-export interface MoveOutcomeMatchableExtension {
-  text?: MarkdownString;
-  count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
-  match?: MoveOutcome;
-}
-export interface MoveOutcomeExtension {
-  text?: MarkdownString;
-  count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
+  outcomes?: unknown;
 }
 export interface AssetConditionMeter1 {
   min: number;
@@ -579,7 +571,7 @@ export interface AssetConditionMeter1 {
  * A region entry, like the Ironlands region entries found in classic Ironsworn.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface RegionEntry {
   name: Label;
@@ -594,7 +586,7 @@ export interface RegionEntry {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface EncounterCollectionClassic {
   name: Label;
@@ -615,7 +607,7 @@ export interface EncounterCollectionClassic {
  * An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface EncounterClassic {
   name: Label;
@@ -635,7 +627,7 @@ export interface EncounterClassic {
  * A rarity, as described in Ironsworn: Delve.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface Rarity {
   name: Label;
@@ -659,7 +651,7 @@ export interface Rarity {
  * A delve site with a theme, domain, and denizen table.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface DelveSite {
   name: Label;
@@ -750,7 +742,7 @@ export interface DelveSiteDenizen {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface DelveSiteTheme {
   name: Label;
@@ -865,7 +857,7 @@ export interface DelveSiteThemeDangerRow {
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface DelveSiteDomain {
   name: Label;
@@ -994,7 +986,7 @@ export interface DelveSiteDomainDangerRow {
  * A world truth category in the format used by Ironsworn.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z_]+$".
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface WorldTruth {
   name: Label;

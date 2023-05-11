@@ -1,24 +1,24 @@
-import { type Static } from '@sinclair/typebox'
-import { Utils, Progress } from 'schema/common'
+import { Type, type Static } from '@sinclair/typebox'
+import { JsonEnum } from 'typebox'
 
-const ProgressTypeStarforged = Utils.StringEnum([
-	'expedition_progress',
-	'connection_progress'
-])
-const LegacyType = Utils.StringEnum([
-	'quests_legacy',
-	'bonds_legacy',
-	'discoveries_legacy'
-])
-export type LegacyType = Static<typeof LegacyType>
+export const LegacyTypeStarforged = JsonEnum(
+	['quests_legacy', 'bonds_legacy', 'discoveries_legacy'],
+	{ $id: '#/$defs/LegacyTypeStarforged' }
+)
+export type LegacyTypeStarforged = Static<typeof LegacyTypeStarforged>
 
-export const ProgressType = Utils.StringEnum(
+export const ProgressTypeStarforged = Type.Union(
 	[
-		...LegacyType.enum,
-		...Progress.ProgressTypeCommon.enum,
-		...ProgressTypeStarforged.enum
+		Type.Ref(LegacyTypeStarforged),
+		JsonEnum([
+			'combat_progress',
+			'vow_progress',
+			'scene_challenge_progress',
+			'expedition_progress',
+			'connection_progress'
+		])
 	],
-	{ $id: '#/$defs/ProgressType' }
+	{ $id: '#/$defs/ProgressTypeStarforged' }
 )
 
-export type ProgressType = Static<typeof ProgressType>
+export type ProgressTypeStarforged = Static<typeof ProgressTypeStarforged>

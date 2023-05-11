@@ -1,5 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { ID, Localize, Utils, Metadata, Abstract } from 'schema/common'
+import { ID, Localize, Metadata, Abstract } from 'schema/common'
+import { JsonEnum } from 'typebox'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -34,7 +35,7 @@ export const OracleRollTemplate = Type.Object(
 )
 export type OracleRollTemplate = Static<typeof OracleRollTemplate>
 
-export const OracleTableRollMethod = Utils.StringEnum(
+export const OracleTableRollMethod = JsonEnum(
 	['no_duplicates', 'keep_duplicates', 'make_it_worse'],
 	{ default: 'no_duplicates', $id: '#/$defs/OracleTableRollMethod' }
 )
@@ -65,7 +66,7 @@ export const OracleTableRow = Type.Composite(
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
-			suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase)),
+			suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 			embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
 			template: Type.Optional(Type.Ref(OracleRollTemplate))
 		})
@@ -82,13 +83,13 @@ export const OracleTableMatchBehavior = Type.Object(
 )
 export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
 
-export const OracleTableStyle = Utils.StringEnum(
+export const OracleTableStyle = JsonEnum(
 	['table', 'embed_in_row', 'embed_as_column'],
 	{ $id: '#/$defs/OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>
 
-export const OracleColumnContentType = Utils.StringEnum(
+export const OracleColumnContentType = JsonEnum(
 	['range', 'result', 'summary', 'description'],
 	{ $id: '#/$defs/OracleColumnContentType' }
 )
@@ -151,7 +152,7 @@ const OracleRenderingBase = Type.Object({
 	color: Type.Optional(Type.Ref(Metadata.CSSColor))
 })
 
-export const OracleCollectionStyle = Utils.StringEnum(['multi_table'], {
+export const OracleCollectionStyle = JsonEnum(['multi_table'], {
 	$id: '#/$defs/OracleCollectionStyle'
 })
 export type OracleCollectionStyle = Static<typeof OracleCollectionStyle>

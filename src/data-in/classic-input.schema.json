@@ -196,6 +196,184 @@
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/setting_truths\\/[a-z_]+\\/(0|[1-9][0-9]*)$"
 		},
+		"Ruleset": {
+			"description": "The ruleset used for a sourcebook's rules content.",
+			"enum": ["classic", "starforged"]
+		},
+		"SVGImageURL": {
+			"format": "uri-reference",
+			"description": "A relative URL pointing to a vector image in the SVG format.",
+			"type": "string"
+		},
+		"WEBPImageURL": {
+			"format": "uri-reference",
+			"description": "A relative URL pointing to a raster image in the WEBP format.",
+			"type": "string"
+		},
+		"CSSColor": {
+			"title": "CSS Color",
+			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value",
+			"type": "string"
+		},
+		"Source": {
+			"type": "object",
+			"properties": {
+				"title": {
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					],
+					"type": "string"
+				},
+				"page": { "minimum": 1, "title": "Page number", "type": "integer" },
+				"authors": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"examples": [{ "name": "Shawn Tomkin" }],
+						"type": "object",
+						"properties": {
+							"name": { "examples": ["Shawn Tomkin"], "type": "string" },
+							"email": {
+								"format": "email",
+								"description": "An optional email contact for the author",
+								"type": "string"
+							}
+						},
+						"required": ["name"]
+					}
+				},
+				"date": {
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+					"type": "string"
+				},
+				"url": {
+					"format": "uri",
+					"description": "An absolute URL where the source document is available.",
+					"examples": ["https://ironswornrpg.com"],
+					"type": "string"
+				},
+				"license": {
+					"format": "uri",
+					"description": "An absolute URL pointing to the location where this element's license can be found.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					],
+					"type": "string"
+				}
+			},
+			"required": ["title", "authors", "date", "url", "license"]
+		},
+		"SourceStub": {
+			"type": "object",
+			"properties": {
+				"title": {
+					"description": "The title of the source document.",
+					"examples": [
+						"Ironsworn Rulebook",
+						"Ironsworn Assets Master Set",
+						"Ironsworn: Delve",
+						"Ironsworn: Starforged Rulebook",
+						"Ironsworn: Starforged Assets",
+						"Sundered Isles"
+					],
+					"type": "string"
+				},
+				"page": { "minimum": 1, "title": "Page number", "type": "integer" },
+				"authors": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"examples": [{ "name": "Shawn Tomkin" }],
+						"type": "object",
+						"properties": {
+							"name": { "examples": ["Shawn Tomkin"], "type": "string" },
+							"email": {
+								"format": "email",
+								"description": "An optional email contact for the author",
+								"type": "string"
+							}
+						},
+						"required": ["name"]
+					}
+				},
+				"date": {
+					"format": "date",
+					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
+					"type": "string"
+				},
+				"url": {
+					"format": "uri",
+					"description": "An absolute URL where the source document is available.",
+					"examples": ["https://ironswornrpg.com"],
+					"type": "string"
+				},
+				"license": {
+					"format": "uri",
+					"description": "An absolute URL pointing to the location where this element's license can be found.",
+					"examples": [
+						"https://creativecommons.org/licenses/by/4.0",
+						"https://creativecommons.org/licenses/by-nc-sa/4.0"
+					],
+					"type": "string"
+				}
+			}
+		},
+		"SuggestionsClassic": {
+			"type": "object",
+			"properties": {
+				"oracles": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
+				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
+				"site_domains": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/DelveSiteDomainID" }
+				},
+				"site_themes": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/DelveSiteThemeID" }
+				},
+				"encounters": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/EncounterClassicID" }
+				},
+				"regions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/RegionEntryID" }
+				}
+			}
+		},
+		"SuggestionsStarforged": {
+			"type": "object",
+			"properties": {
+				"oracles": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
+				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
+				"encounters": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/EncounterStarforgedID" }
+				}
+			}
+		},
+		"Suggestions": {
+			"anyOf": [
+				{ "$ref": "#/$defs/SuggestionsClassic" },
+				{ "$ref": "#/$defs/SuggestionsStarforged" }
+			]
+		},
 		"Label": {
 			"description": "A localized plain text name or label.",
 			"type": "string"
@@ -205,18 +383,70 @@
 			"type": "string"
 		},
 		"TemplateString": { "type": "string" },
-		"PlayerStat": {
-			"type": "string",
-			"enum": ["edge", "heart", "iron", "shadow", "wits"]
-		},
-		"PlayerConditionMeter": {
-			"type": "string",
-			"enum": ["health", "spirit", "supply"]
+		"ProgressType": {
+			"oneOf": [
+				{
+					"$id": "#/$defs/ProgressTypeClassic",
+					"enum": [
+						"combat_progress",
+						"vow_progress",
+						"scene_challenge_progress",
+						"journey_progress",
+						"delve_progress",
+						"bonds_progress",
+						"failure_track"
+					]
+				},
+				{
+					"$id": "#/$defs/ProgressTypeStarforged",
+					"anyOf": [
+						{ "$ref": "#/$defs/LegacyTypeStarforged" },
+						{
+							"enum": [
+								"combat_progress",
+								"vow_progress",
+								"scene_challenge_progress",
+								"expedition_progress",
+								"connection_progress"
+							]
+						}
+					]
+				}
+			]
 		},
 		"ChallengeRank": {
 			"description": "Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic",
-			"type": "integer",
 			"enum": [1, 2, 3, 4, 5]
+		},
+		"PlayerConditionMeter": { "enum": ["health", "spirit", "supply"] },
+		"PlayerStat": { "enum": ["edge", "heart", "iron", "shadow", "wits"] },
+		"ProgressTypeClassic": {
+			"enum": [
+				"combat_progress",
+				"vow_progress",
+				"scene_challenge_progress",
+				"journey_progress",
+				"delve_progress",
+				"bonds_progress",
+				"failure_track"
+			]
+		},
+		"LegacyTypeStarforged": {
+			"enum": ["quests_legacy", "bonds_legacy", "discoveries_legacy"]
+		},
+		"ProgressTypeStarforged": {
+			"anyOf": [
+				{ "$ref": "#/$defs/LegacyTypeStarforged" },
+				{
+					"enum": [
+						"combat_progress",
+						"vow_progress",
+						"scene_challenge_progress",
+						"expedition_progress",
+						"connection_progress"
+					]
+				}
+			]
 		},
 		"OracleRollTemplate": {
 			"type": "object",
@@ -240,7 +470,6 @@
 		},
 		"OracleTableRollMethod": {
 			"default": "no_duplicates",
-			"type": "string",
 			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"]
 		},
 		"OracleTableRoll": {
@@ -290,11 +519,9 @@
 			"required": ["text"]
 		},
 		"OracleTableStyle": {
-			"type": "string",
 			"enum": ["table", "embed_in_row", "embed_as_column"]
 		},
 		"OracleColumnContentType": {
-			"type": "string",
 			"enum": ["range", "result", "summary", "description"]
 		},
 		"OracleTableColumn": {
@@ -310,7 +537,7 @@
 			"properties": {
 				"label": { "$ref": "#/$defs/Label" },
 				"content_type": { "$ref": "#/$defs/OracleColumnContentType" },
-				"table_key": { "type": "string", "pattern": "^[a-z_]+$" },
+				"table_key": { "type": "string", "pattern": "^[a-z][a-z_]*$" },
 				"color": { "$ref": "#/$defs/CSSColor" }
 			},
 			"required": ["content_type", "table_key"]
@@ -343,7 +570,7 @@
 			},
 			"required": ["name", "table"]
 		},
-		"OracleCollectionStyle": { "type": "string", "enum": ["multi_table"] },
+		"OracleCollectionStyle": { "enum": ["multi_table"] },
 		"OracleCollectionRendering": {
 			"type": "object",
 			"properties": {
@@ -354,14 +581,14 @@
 							"$comment": "Deserialize as a dictionary object.",
 							"type": "object",
 							"patternProperties": {
-								"^[a-z_]+$": { "$ref": "#/$defs/OracleTableColumn" }
+								"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleTableColumn" }
 							}
 						},
 						{
 							"$comment": "Deserialize as a dictionary object.",
 							"type": "object",
 							"patternProperties": {
-								"^[a-z_]+$": { "$ref": "#/$defs/OracleCollectionColumn" }
+								"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollectionColumn" }
 							}
 						}
 					]
@@ -385,14 +612,14 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/OracleTable" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleTable" }
 					}
 				},
 				"collections": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollection" }
 					}
 				},
 				"rendering": { "$ref": "#/$defs/OracleCollectionRendering" },
@@ -412,21 +639,13 @@
 		},
 		"MoveRollMethod": {
 			"description": "`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.",
-			"type": "string",
 			"enum": ["any", "all", "highest", "lowest"]
 		},
 		"MoveRerollMethod": {
-			"type": "string",
 			"enum": ["any", "all", "challenge_die", "challenge_dice", "action_die"]
 		},
-		"MoveOutcomeType": {
-			"type": "string",
-			"enum": ["miss", "weak_hit", "strong_hit"]
-		},
-		"MoveRollType": {
-			"type": "string",
-			"enum": ["action_roll", "progress_roll", "no_roll"]
-		},
+		"MoveOutcomeType": { "enum": ["miss", "weak_hit", "strong_hit"] },
+		"MoveRollType": { "enum": ["action_roll", "progress_roll", "no_roll"] },
 		"TriggerBy": {
 			"type": "object",
 			"properties": {
@@ -581,13 +800,6 @@
 			},
 			"required": ["text"]
 		},
-		"Trigger": {
-			"anyOf": [
-				{ "$ref": "#/$defs/TriggerActionRoll" },
-				{ "$ref": "#/$defs/TriggerProgressRoll" },
-				{ "$ref": "#/$defs/TriggerNoRoll" }
-			]
-		},
 		"MoveReroll": {
 			"type": "object",
 			"properties": {
@@ -667,7 +879,7 @@
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Move" } }
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
 				},
 				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/MoveCategoryID" },
@@ -779,7 +991,7 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				},
 				"trigger": {},
-				"outcomes": { "$ref": "#/$defs/MoveOutcomesExtension" },
+				"outcomes": {},
 				"move_type": {
 					"default": "action_roll",
 					"$ref": "#/$defs/MoveRollType"
@@ -804,7 +1016,9 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetConditionMeterControlField" }
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/AssetConditionMeterControlField"
+						}
 					}
 				},
 				"min": { "default": 0, "type": "integer" },
@@ -820,7 +1034,9 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetConditionMeterControlField" }
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/AssetConditionMeterControlField"
+						}
 					}
 				},
 				"min": { "default": 0, "type": "integer" }
@@ -865,14 +1081,14 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetOptionField" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetOptionField" }
 					}
 				},
 				"controls": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetControlField" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetControlField" }
 					}
 				},
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
@@ -925,20 +1141,20 @@
 					"description": "Unique moves added by this asset ability.",
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Move" } }
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
 				},
 				"options": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetAbilityOptionField" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetAbilityOptionField" }
 					}
 				},
 				"controls": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/AssetAbilityControlField" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetAbilityControlField" }
 					}
 				},
 				"extend_asset": {
@@ -992,7 +1208,7 @@
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
-					"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Asset" } }
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Asset" } }
 				},
 				"member_label": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
@@ -1017,7 +1233,7 @@
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "clock", "type": "string" },
 				"min": { "const": 0, "type": "number" },
-				"max": { "type": "integer", "enum": [4, 6, 8, 10] },
+				"max": { "enum": [4, 6, 8, 10] },
 				"id": { "type": "string" },
 				"value": { "default": 0, "type": "integer" }
 			},
@@ -1060,7 +1276,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": {
+						"^[a-z][a-z_]*$": {
 							"type": "object",
 							"properties": {
 								"label": { "$ref": "#/$defs/Label" },
@@ -1095,7 +1311,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": {
+						"^[a-z][a-z_]*$": {
 							"type": "object",
 							"properties": {
 								"label": { "$ref": "#/$defs/Label" },
@@ -1114,33 +1330,6 @@
 				"id": { "type": "string" }
 			},
 			"required": ["label", "field_type", "choices"]
-		},
-		"Suggestions": {
-			"type": "object",
-			"properties": {
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
-				},
-				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
-				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
-				"site_domains": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/DelveSiteDomainID" }
-				},
-				"site_themes": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/DelveSiteThemeID" }
-				},
-				"encounters": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/EncounterClassicID" }
-				},
-				"regions": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/RegionEntryID" }
-				}
-			}
 		},
 		"DelveSite": {
 			"type": "object",
@@ -1306,7 +1495,6 @@
 			"required": ["low", "high", "frequency"]
 		},
 		"DelveSiteDenizenFrequency": {
-			"type": "string",
 			"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 		},
 		"DelveSiteDomain": {
@@ -1832,7 +2020,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
-						"^[a-z_]+$": { "$ref": "#/$defs/EncounterClassic" }
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterClassic" }
 					}
 				},
 				"member_label": { "$ref": "#/$defs/Label" },
@@ -1876,18 +2064,6 @@
 				"rank",
 				"drives",
 				"tactics"
-			]
-		},
-		"ProgressType": {
-			"type": "string",
-			"enum": [
-				"combat_progress",
-				"vow_progress",
-				"scene_challenge_progress",
-				"journey_progress",
-				"delve_progress",
-				"bonds_progress",
-				"failure_track"
 			]
 		},
 		"Rarity": {
@@ -1965,137 +2141,6 @@
 				"id": { "$ref": "#/$defs/WorldTruthOptionID" }
 			},
 			"required": ["description", "quest_starter"]
-		},
-		"Ruleset": {
-			"description": "The ruleset used for a sourcebook's rules content.",
-			"type": "string",
-			"enum": ["classic", "starforged"]
-		},
-		"SVGImageURL": {
-			"format": "uri-reference",
-			"description": "A relative URL pointing to a vector image in the SVG format.",
-			"type": "string"
-		},
-		"WEBPImageURL": {
-			"format": "uri-reference",
-			"description": "A relative URL pointing to a raster image in the WEBP format.",
-			"type": "string"
-		},
-		"CSSColor": {
-			"title": "CSS Color",
-			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value",
-			"type": "string"
-		},
-		"Source": {
-			"type": "object",
-			"properties": {
-				"title": {
-					"description": "The title of the source document.",
-					"examples": [
-						"Ironsworn Rulebook",
-						"Ironsworn Assets Master Set",
-						"Ironsworn: Delve",
-						"Ironsworn: Starforged Rulebook",
-						"Ironsworn: Starforged Assets",
-						"Sundered Isles"
-					],
-					"type": "string"
-				},
-				"page": { "minimum": 1, "title": "Page number", "type": "integer" },
-				"authors": {
-					"minItems": 1,
-					"type": "array",
-					"items": {
-						"examples": [{ "name": "Shawn Tomkin" }],
-						"type": "object",
-						"properties": {
-							"name": { "examples": ["Shawn Tomkin"], "type": "string" },
-							"email": {
-								"format": "email",
-								"description": "An optional email contact for the author",
-								"type": "string"
-							}
-						},
-						"required": ["name"]
-					}
-				},
-				"date": {
-					"format": "date",
-					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
-					"type": "string"
-				},
-				"url": {
-					"format": "uri",
-					"description": "An absolute URL where the source document is available.",
-					"examples": ["https://ironswornrpg.com"],
-					"type": "string"
-				},
-				"license": {
-					"format": "uri",
-					"description": "An absolute URL pointing to the location where this element's license can be found.",
-					"examples": [
-						"https://creativecommons.org/licenses/by/4.0",
-						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"type": "string"
-				}
-			},
-			"required": ["title", "authors", "date", "url", "license"]
-		},
-		"SourceStub": {
-			"type": "object",
-			"properties": {
-				"title": {
-					"description": "The title of the source document.",
-					"examples": [
-						"Ironsworn Rulebook",
-						"Ironsworn Assets Master Set",
-						"Ironsworn: Delve",
-						"Ironsworn: Starforged Rulebook",
-						"Ironsworn: Starforged Assets",
-						"Sundered Isles"
-					],
-					"type": "string"
-				},
-				"page": { "minimum": 1, "title": "Page number", "type": "integer" },
-				"authors": {
-					"minItems": 1,
-					"type": "array",
-					"items": {
-						"examples": [{ "name": "Shawn Tomkin" }],
-						"type": "object",
-						"properties": {
-							"name": { "examples": ["Shawn Tomkin"], "type": "string" },
-							"email": {
-								"format": "email",
-								"description": "An optional email contact for the author",
-								"type": "string"
-							}
-						},
-						"required": ["name"]
-					}
-				},
-				"date": {
-					"format": "date",
-					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
-					"type": "string"
-				},
-				"url": {
-					"format": "uri",
-					"description": "An absolute URL where the source document is available.",
-					"examples": ["https://ironswornrpg.com"],
-					"type": "string"
-				},
-				"license": {
-					"format": "uri",
-					"description": "An absolute URL pointing to the location where this element's license can be found.",
-					"examples": [
-						"https://creativecommons.org/licenses/by/4.0",
-						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"type": "string"
-				}
-			}
 		}
 	},
 	"type": "object",
@@ -2107,57 +2152,65 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z_]+$": { "$ref": "#/$defs/OracleCollection" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollection" }
 			}
 		},
 		"moves": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/MoveCategory" } }
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/MoveCategory" }
+			}
 		},
 		"assets": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/AssetType" } }
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
 		"regions": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/RegionEntry" } }
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/RegionEntry" }
+			}
 		},
 		"encounters": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z_]+$": { "$ref": "#/$defs/EncounterCollectionClassic" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterCollectionClassic" }
 			}
 		},
 		"rarities": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/Rarity" } }
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Rarity" } }
 		},
 		"delve_sites": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/DelveSite" } }
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSite" } }
 		},
 		"site_themes": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/DelveSiteTheme" } }
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSiteTheme" }
+			}
 		},
 		"site_domains": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z_]+$": { "$ref": "#/$defs/DelveSiteDomain" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSiteDomain" }
 			}
 		},
 		"world_truths": {
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": { "^[a-z_]+$": { "$ref": "#/$defs/WorldTruth" } }
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/WorldTruth" }
+			}
 		}
 	},
 	"required": ["id", "ruleset", "source"]

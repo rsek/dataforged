@@ -1,7 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Source } from 'schema'
 import { Abstract, Localize } from 'schema/common'
 import { RegionEntryID } from 'schema/common/id'
+import { Source } from 'schema/common/metadata'
 
 export const RegionEntry = Abstract.Cyclopedia(
 	{

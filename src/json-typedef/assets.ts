@@ -10,7 +10,7 @@ import {
 	UnionSelectFieldStat,
 	UnionTextField
 } from 'json-typedef/inputs'
-import { toJtdId, setIdRef, getMetadata } from 'json-typedef/utils'
+import { setIdRef, getMetadata } from 'json-typedef/utils'
 import { set } from 'lodash'
 
 export const AssetExtensionChoice: JTDSchemaType<
@@ -22,9 +22,6 @@ export const AssetExtensionChoice: JTDSchemaType<
 		value: { ref: 'AssetExtension' }
 	}
 }
-
-export const AssetID = toJtdId(JSONSchema.Assets.AssetID)
-export const AssetIDWildcard = toJtdId(JSONSchema.Assets.AssetIDWildcard)
 
 export const Asset: JTDSchemaType<
 	Types.Assets.Asset,
@@ -91,10 +88,6 @@ export const AssetConditionMeter: JTDSchemaType<
 	}
 }
 
-export const AssetConditionMeterControlFieldID = toJtdId(
-	JSONSchema.Assets.AssetConditionMeterControlFieldID
-)
-
 export const AssetConditionMeterCheckbox: JTDSchemaType<
 	Types.Assets.AssetConditionMeterCheckbox,
 	{ AssetConditionMeterControlFieldID: string; Label: string }
@@ -131,8 +124,6 @@ export const AssetAttachment: JTDSchemaType<
 	}
 }
 
-export const AssetAbilityID = toJtdId(JSONSchema.Assets.AssetAbilityID)
-
 export const AssetAbility: JTDSchemaType<
 	Types.Assets.AssetAbility,
 	{
@@ -161,10 +152,6 @@ export const AssetAbility: JTDSchemaType<
 	}
 }
 
-export const AssetAbilityControlFieldID = toJtdId(
-	JSONSchema.Assets.AssetAbilityControlFieldID
-)
-
 export const AssetAbilityControlField: JTDSchemaType<
 	Types.Assets.AssetAbilityControlField,
 	{ AssetAbilityControlFieldID: string; Label: string }
@@ -179,10 +166,6 @@ export const AssetAbilityControlField: JTDSchemaType<
 		counter: setIdRef(UnionCounterField, 'AssetAbilityControlFieldID')
 	}
 }
-
-export const AssetAbilityOptionFieldID = toJtdId(
-	JSONSchema.Assets.AssetAbilityOptionFieldID
-)
 
 export const AssetAbilityOptionField: JTDSchemaType<
 	Types.Assets.AssetAbilityOptionField,
@@ -209,8 +192,6 @@ export const AssetAbilityOptionField: JTDSchemaType<
 		)
 	}
 }
-
-export const AssetOptionFieldID = toJtdId(JSONSchema.Assets.AssetOptionFieldID)
 
 export const AssetOptionField: JTDSchemaType<
 	Types.Assets.AssetOptionField,
@@ -239,14 +220,6 @@ export const AssetOptionField: JTDSchemaType<
 		)
 	}
 }
-
-export const AssetControlFieldID = toJtdId(
-	JSONSchema.Assets.AssetControlFieldID
-)
-
-export const AssetControlFieldIDWildcard = toJtdId(
-	JSONSchema.Assets.AssetControlFieldIDWildcard
-)
 
 export const AssetControlField: JTDSchemaType<
 	Types.Assets.AssetControlField,

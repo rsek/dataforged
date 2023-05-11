@@ -4,11 +4,11 @@ import {
 	type TSchema,
 	type ObjectOptions
 } from '@sinclair/typebox'
-import * as Utils from 'schema/common/utils'
 import * as Localize from 'schema/common/localize'
 import * as ID from 'schema/common/id'
 import * as Enum from 'schema/common/enum'
 import * as Abstract from 'schema/common/abstract'
+import { JsonEnum } from 'typebox'
 
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
 export function Select<T extends TSchema>(t: T) {
@@ -32,7 +32,7 @@ const NumberRange = (
 
 const Clock = NumberRange(
 	Type.Literal(0),
-	Utils.IntegerEnum([4, 6, 8, 10]),
+	JsonEnum([4, 6, 8, 10]),
 	Type.Optional(Type.Integer({ default: 0 }))
 )
 export type Clock = Static<typeof Clock>
@@ -60,7 +60,7 @@ export interface SelectOption<T> {
 	selected?: boolean
 }
 
-export const SelectFieldType = Utils.StringEnum([
+export const SelectFieldType = JsonEnum([
 	'select_stat',
 	'select_meter',
 	'select_ref',
@@ -70,7 +70,7 @@ export const SelectFieldType = Utils.StringEnum([
 export type SelectFieldType = Static<typeof SelectFieldType>
 
 export const InputFieldType = Type.Union([
-	Utils.StringEnum(['text', 'clock', 'counter', 'checkbox', 'toggle']),
+	JsonEnum(['text', 'clock', 'counter', 'checkbox', 'toggle']),
 	SelectFieldType
 ])
 export type InputFieldType = Static<typeof InputFieldType>

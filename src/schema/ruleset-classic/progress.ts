@@ -1,16 +1,16 @@
 import { type Static } from '@sinclair/typebox'
-import { Utils, Progress } from 'schema/common'
-import { StringEnum } from 'schema/common/utils'
+import { JsonEnum } from 'typebox'
 
-const ProgressTypeClassic = Utils.StringEnum([
-	'journey_progress',
-	'delve_progress',
-	'bonds_progress',
-	'failure_track'
-])
-
-export const ProgressType = StringEnum(
-	[...Progress.ProgressTypeCommon.enum, ...ProgressTypeClassic.enum],
-	{ $id: '#/$defs/ProgressType' }
+export const ProgressTypeClassic = JsonEnum(
+	[
+		'combat_progress',
+		'vow_progress',
+		'scene_challenge_progress',
+		'journey_progress',
+		'delve_progress',
+		'bonds_progress',
+		'failure_track'
+	],
+	{ $id: '#/$defs/ProgressTypeClassic' }
 )
-export type ProgressType = Static<typeof ProgressType>
+export type ProgressTypeClassic = Static<typeof ProgressTypeClassic>

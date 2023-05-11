@@ -1,6 +1,6 @@
 import { type TObject, TypeGuard, type TSchema, Type } from '@sinclair/typebox'
 import _, { cloneDeep } from 'lodash'
-import { Assets, Enum, ID, Localize, Moves, Oracles } from 'schema'
+import { Assets, Enum, ID, Localize, Moves, Oracles, Metadata } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
@@ -77,6 +77,7 @@ export const Dataforged = SourcebookStarforged({
 		'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
 	$defs: cloneDeep({
 		...ID,
+		...Metadata,
 		...Localize,
 		...Enum,
 		...Oracles,
@@ -103,6 +104,7 @@ export const Datasworn = SourcebookClassic({
 		'Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
 	$defs: cloneDeep({
 		...ID,
+		...Metadata,
 		...Localize,
 		...Enum,
 		...Oracles,

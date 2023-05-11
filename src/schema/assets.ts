@@ -117,7 +117,7 @@ export const Asset = Type.Object(
 		source: Type.Ref(Metadata.Source),
 		options: Type.Optional(Abstract.Dictionary(Type.Ref(AssetOptionField))),
 		controls: Type.Optional(Abstract.Dictionary(Type.Ref(AssetControlField))),
-		suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase)),
+		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 		requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
 			minItems: 3,

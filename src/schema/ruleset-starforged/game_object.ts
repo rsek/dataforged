@@ -1,9 +1,9 @@
 import { Type } from '@sinclair/typebox'
-import * as Utils from 'schema/common/utils'
+import { JsonEnum } from 'typebox'
 
 export const GameObject = Type.Object(
 	{
-		type: Utils.StringEnum(
+		type: JsonEnum(
 			[
 				'character',
 				'creature',

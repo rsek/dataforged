@@ -45,7 +45,7 @@ export const EncounterStarforged: JTDSchemaType<
 		ChallengeRank: number
 		ID: string
 		Source: Types.Metadata.Source
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 		EncounterVariantStarforged: Types.Encounters.EncounterVariantStarforged
 	}
 > = {

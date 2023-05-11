@@ -1,4 +1,3 @@
-export { Suggestions } from 'schema/ruleset-classic/metadata'
 export {
 	DelveSite,
 	DelveSiteDenizen,
@@ -14,16 +13,6 @@ export {
 	EncounterCollectionClassic,
 	EncounterClassic
 } from 'schema/ruleset-classic/encounters'
-export { ProgressType } from 'schema/ruleset-classic/progress'
 export { Rarity } from 'schema/ruleset-classic/rarities'
 export { RegionEntry } from 'schema/ruleset-classic/regions'
 export { WorldTruth, WorldTruthOption } from 'schema/ruleset-classic/truths'
-
-export {
-	Ruleset,
-	SVGImageURL,
-	WEBPImageURL,
-	CSSColor,
-	Source,
-	SourceStub
-} from 'schema/common/metadata'

@@ -4,11 +4,12 @@ import {
 	type ObjectOptions,
 	type TProperties
 } from '@sinclair/typebox'
-import { Utils, ID, Localize, Enum, Metadata, Abstract } from 'schema/common'
+import { ID, Localize, Enum, Metadata, Abstract } from 'schema/common'
 import { Squash } from 'schema/common/utils'
 import { OracleTableRow } from 'schema/oracles'
+import { JsonEnum } from 'typebox'
 
-export const DelveSiteDenizenFrequency = Utils.StringEnum(
+export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
 	{ $id: '#/$defs/DelveSiteDenizenFrequency' }
 )

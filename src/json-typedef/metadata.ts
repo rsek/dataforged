@@ -39,7 +39,7 @@ export const URL: JTDSchemaType<string> = {
 }
 
 export const Suggestions: JTDSchemaType<
-	Types.Metadata.SuggestionsBase,
+	Types.Metadata.Suggestions,
 	{ AssetIDWildcard: string; MoveID: string; OracleTableID: string }
 > = {
 	optionalProperties: {

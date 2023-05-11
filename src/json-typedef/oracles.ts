@@ -3,8 +3,6 @@ import { JTDSchemaType } from 'ajv/dist/core'
 import { toJtdId } from 'json-typedef/utils'
 import * as JSONSchema from '@schema-json'
 
-export const OracleTableID = toJtdId(JSONSchema.Oracles.OracleTableID)
-
 export const OracleTable: JTDSchemaType<
 	Types.Oracles.OracleTable,
 	{
@@ -14,7 +12,7 @@ export const OracleTable: JTDSchemaType<
 		OracleTableRow: Types.Oracles.OracleTableRow
 		MarkdownString: string
 		OracleTableMatchBehavior: Types.Oracles.OracleTableMatchBehavior
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 		OracleTableRendering: Types.Oracles.OracleTableRendering
 	}
 > = {
@@ -43,8 +41,6 @@ export const OracleTableMatchBehavior: JTDSchemaType<
 	}
 }
 
-export const OracleTableRowID = toJtdId(JSONSchema.Oracles.OracleTableRowID)
-
 export const OracleTableRow: JTDSchemaType<
 	Types.Oracles.OracleTableRow,
 	{
@@ -54,7 +50,7 @@ export const OracleTableRow: JTDSchemaType<
 		OracleRollTemplate: Types.Oracles.OracleRollTemplate
 		SvgImageURL: string
 		OracleTableRoll: Types.Oracles.OracleTableRoll
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 	}
 > = {
 	properties: {
@@ -95,15 +91,13 @@ export const OracleTableRoll: JTDSchemaType<
 	}
 }
 
-export const OracleCollectionID = toJtdId(JSONSchema.Oracles.OracleCollectionID)
-
 export const OracleCollection: JTDSchemaType<
 	Types.Oracles.OracleCollection,
 	{
 		OracleCollectionID: string
 		Source: Types.Metadata.Source
 		MarkdownString: string
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 		OracleTable: Types.Oracles.OracleTable
 		OracleCollection: Types.Oracles.OracleCollection
 		OracleCollectionRendering: Types.Oracles.OracleCollectionRendering

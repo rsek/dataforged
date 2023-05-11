@@ -1,9 +1,8 @@
 import * as Types from 'schema'
 import { type JTDSchemaType } from 'ajv/dist/core'
-import { toJtdEnum, toJtdId } from 'json-typedef/utils'
 import * as JTD from 'jtd'
 import { PartialDeep, Simplify } from 'type-fest'
-import { SuggestionsBase } from 'schema/common/metadata'
+import { Suggestions } from 'schema/common/metadata'
 
 export type JTDEnum<T extends string> = JTD.SchemaFormEnum & {
 	enum: T[]
@@ -44,14 +43,12 @@ export const MoveRollMethod: JTDEnum<
 	}
 }
 
-export const MoveCategoryID = toJtdId(JSONSchema.Moves.MoveCategoryID)
-
 export const MoveCategory: JTDSchemaType<
 	Types.Moves.MoveCategory,
 	{
 		Move: Types.Moves.Move
 		Source: Types.Metadata.Source
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 		MarkdownString: string
 		CSSColor: string
 		MoveCategoryID: string
@@ -371,8 +368,6 @@ export const MoveOutcomes: JTDSchemaType<
 	}
 }
 
-export const MoveID = toJtdId(Types.ID.MoveID)
-
 export const Move: JTDSchemaType<
 	| Types.Moves.MoveProgressRoll
 	| Types.Moves.MoveActionRoll
@@ -383,7 +378,7 @@ export const Move: JTDSchemaType<
 		TriggerActionRoll: Types.Moves.TriggerActionRoll
 		TriggerProgressRoll: Types.Moves.TriggerProgressRoll
 		TriggerNoRoll: Types.Moves.TriggerNoRoll
-		Suggestions: SuggestionsBase
+		Suggestions: Suggestions
 		MarkdownString: string
 		Label: string
 		MoveID: string
@@ -447,7 +442,7 @@ export const MoveExtension: JTDSchemaType<
 		TriggerActionRollExtension: Types.Moves.TriggerActionRollExtension
 		TriggerProgressRollExtension: Types.Moves.TriggerProgressRollExtension
 		TriggerNoRollExtension: Types.Moves.TriggerNoRollExtension
-		Suggestions: SuggestionsBase
+		Suggestions: Suggestions
 	}
 > = {
 	discriminator: 'move_type',

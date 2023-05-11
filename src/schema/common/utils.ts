@@ -5,7 +5,8 @@ import {
 	type TUnsafe,
 	type ObjectOptions,
 	Type,
-	type SchemaOptions
+	type SchemaOptions,
+	TUnion
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash'
 
@@ -19,30 +20,6 @@ export function Squash<T extends TObject>(
 			.reduce((prevProps, currentProps) => ({ ...prevProps, ...currentProps })),
 		options
 	)
-}
-
-export function StringEnum<T extends string[]>(
-	values: [...T],
-	options: SchemaOptions = {}
-) {
-	const result = Type.Unsafe<T[number]>({
-		...options,
-		type: 'string',
-		enum: values
-	})
-	return result as typeof result & { enum: typeof values }
-}
-
-export function IntegerEnum<T extends number[]>(
-	values: [...T],
-	options: SchemaOptions = {}
-) {
-	const result = Type.Unsafe<T[number]>({
-		...options,
-		type: 'integer',
-		enum: values
-	})
-	return result as typeof result & { enum: typeof values }
 }
 
 export type ExtractKeysOfValueType<ObjectType, ValueType> = {

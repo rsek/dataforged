@@ -3,8 +3,6 @@ import { type JTDSchemaType } from 'ajv/dist/core'
 import { toJtdId } from 'json-typedef/utils'
 import * as JSONSchema from '@schema-json'
 
-export const RegionEntryID = toJtdId(JSONSchema.Regions.RegionEntryID)
-
 export const RegionEntry: JTDSchemaType<
 	Types.Regions.RegionEntry,
 	{
@@ -12,7 +10,7 @@ export const RegionEntry: JTDSchemaType<
 		Label: string
 		MarkdownString: string
 		Source: Types.Metadata.Source
-		Suggestions: Types.Metadata.SuggestionsBase
+		Suggestions: Types.Metadata.Suggestions
 	}
 > = {
 	properties: {

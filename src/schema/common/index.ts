@@ -5,7 +5,6 @@ export * as ID from 'schema/common/id'
 export * as Metadata from 'schema/common/metadata'
 
 export * as Enum from 'schema/common/enum'
-export * as Progress from 'schema/common/progress'
 export * as Abstract from 'schema/common/abstract'
 
 // after progress

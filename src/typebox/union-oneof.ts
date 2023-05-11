@@ -4,8 +4,10 @@ import {
 	type SchemaOptions,
 	type Static
 } from '@sinclair/typebox'
-import { Custom } from '@sinclair/typebox/custom'
+import { TypeSystem } from '@sinclair/typebox/system'
 import { Value } from '@sinclair/typebox/value'
+
+TypeSystem.Type('UnionOneOf', UnionOneOfCheck)
 
 function UnionOneOfCheck(schema: UnionOneOf<TSchema[]>, value: unknown) {
 	return (
@@ -28,6 +30,5 @@ export function UnionOneOf<T extends TSchema[]>(
 	oneOf: [...T],
 	options: SchemaOptions = {}
 ) {
-	if (!Custom.Has('UnionOneOf')) Custom.Set('UnionOneOf', UnionOneOfCheck)
 	return { ...options, [Kind]: 'UnionOneOf', oneOf } as UnionOneOf<T>
 }

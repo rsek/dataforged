@@ -22,13 +22,13 @@ import { mapValues } from 'lodash'
 import { type PartialDeep } from 'type-fest'
 
 /** Pattern for keys used in dictionary objects throughout Dataforged; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
-export const DICT_KEY = Type.RegEx(/^[a-z_]+$/)
+export const DICT_KEY = Type.RegEx(/^[a-z][a-z_]*$/)
 
 export function Dictionary<T extends TSchema>(
-	t: T,
+	valuesSchema: T,
 	options: ObjectOptions = {}
 ) {
-	return Type.Record(DICT_KEY, t, {
+	return Type.Record(DICT_KEY, valuesSchema, {
 		...options,
 		$comment: 'Deserialize as a dictionary object.'
 	})
@@ -80,7 +80,7 @@ const sourcedNodeBaseProps = {
 	name: Type.Ref(Localize.Label),
 	canonical_name: Type.Optional(Type.Ref(Localize.Label)),
 	source: Type.Ref(Metadata.Source),
-	suggestions: Type.Optional(Type.Ref(Metadata.SuggestionsBase))
+	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions))
 }
 
 export function SourcedNode<T extends TProperties>(
