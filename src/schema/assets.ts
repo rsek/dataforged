@@ -7,6 +7,7 @@ import {
 import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
+import { AssetID } from 'schema/common/id'
 import { Label } from 'schema/common/localize'
 import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'
@@ -115,6 +116,8 @@ export const Asset = Type.Object(
 		id: Type.Ref(ID.AssetID),
 		name: Type.Ref(Localize.Label),
 		source: Type.Ref(Metadata.Source),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+		color: Type.Optional(Type.Ref(Metadata.CSSColor)),
 		options: Type.Optional(Abstract.Dictionary(Type.Ref(AssetOptionField))),
 		controls: Type.Optional(Abstract.Dictionary(Type.Ref(AssetControlField))),
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
@@ -177,7 +180,7 @@ export const AssetAbility = Type.Object(
 		extend_asset: Type.Optional(AssetExtendSelf(Asset as any, ['abilities'])),
 		extend_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveExtension)))
 	},
-	{ $id: '#/$defs/AssetAbility', title: 'Asset ability' }
+	{ $id: '#/$defs/AssetAbility' }
 )
 export type AssetAbility = Static<typeof AssetAbility>
 
@@ -190,6 +193,41 @@ export const AssetType = Abstract.Collection(
 	{ $id: '#/$defs/AssetType' }
 )
 export type AssetType = Static<typeof AssetType>
+
+const AssetTypeExtension = Type.Composite(
+	[
+		Type.Object({
+			type: Type.Literal('extension')
+		})
+	],
+	{ $id: '#/$defs/AssetTypeExtension' }
+)
+export type AssetTypeExtension = Static<typeof AssetTypeExtension>
+
+const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
+	$id: '#/$defs/AssetImportAbility'
+})
+
+const AssetImport = Type.Composite(
+	[
+		Type.Object({
+			type: Type.Literal('import'),
+			import: Type.Ref(AssetID),
+			abilities: Type.Optional(
+				Type.Tuple([
+					Type.Ref(AssetImportAbility),
+					Type.Ref(AssetImportAbility),
+					Type.Ref(AssetImportAbility)
+				])
+			)
+			// this *could* be a yaml-only situation that builds out the final asset in question. but it'd have to be deferred until the asset it depends on is built
+			// OTOH: is the use case of "clone an existing asset" better handled with a GUI?
+		}),
+		Type.Omit(Type.Partial(Asset), ['abilities', 'id'])
+	],
+	{ $id: '#/$defs/AssetImport' }
+)
+export type AssetImport = Static<typeof AssetImport>
 
 export {
 	CheckboxField,

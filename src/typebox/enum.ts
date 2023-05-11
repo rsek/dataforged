@@ -5,11 +5,11 @@ import { isJsonValue } from './isJsonValue'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 
-function JsonEnumCheck(schema: JsonEnum<JsonValue[]>, value: unknown) {
+export function JsonEnumCheck(schema: JsonEnum<JsonValue[]>, value: unknown) {
 	return schema.enum.every(isJsonValue)
 }
 
-export interface JsonEnum<T extends JsonValue[]> extends TSchema {
+export interface JsonEnum<T extends JsonValue[] = JsonValue[]> extends TSchema {
 	[Kind]: 'JsonEnum'
 	static: { [K in keyof T]: T[K] }[number]
 	enum: T

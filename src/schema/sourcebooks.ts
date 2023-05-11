@@ -8,7 +8,7 @@ import {
 	type TRef
 } from '@sinclair/typebox'
 
-import { mapValues } from 'lodash'
+import { mapValues, pick } from 'lodash'
 import { Metadata, Abstract } from 'schema/common'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
@@ -22,10 +22,13 @@ export const SOURCEBOOK_KEY = Type.RegEx(/^[a-z0-9_]{3,}$/)
 function Sourcebook<T extends Metadata.Ruleset, K extends string>(
 	ruleset: T,
 	contents: Record<K, TSchema>,
+	metadata: Record<keyof typeof contents, ObjectOptions>,
 	options: ObjectOptions = {}
 ) {
-	const sourcebookEntries = mapValues(contents, (v) =>
-		Type.Optional(Abstract.Dictionary(Type.Ref(v)))
+	const sourcebookEntries = mapValues(contents, (v, k) =>
+		Type.Optional(
+			Abstract.Dictionary(Type.Ref(v), metadata[k as keyof typeof contents])
+		)
 	) as {
 		[x in keyof typeof contents]: TOptional<
 			TRecord<TString, TRef<(typeof contents)[x]>>
@@ -46,6 +49,47 @@ function Sourcebook<T extends Metadata.Ruleset, K extends string>(
 	return result
 }
 
+const SourcebookInfoClassic = {
+	oracles: {
+		description:
+			'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
+	},
+	assets: {
+		description:
+			'A dictionary object containing asset types, which contain assets.'
+	},
+	moves: {
+		description:
+			'A dictionary object containing move categories, which contain moves.'
+	},
+	site_domains: {
+		description: 'A dictionary object containing delve site domains.'
+	},
+	site_themes: {
+		description: 'A dictionary object containing delve site themes.'
+	},
+	encounters: {
+		description:
+			'A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. "Ironlander", "horror".'
+	},
+	regions: {
+		description:
+			'A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.'
+	},
+	rarities: {
+		description:
+			'A dictionary object containing rarities, like those presented in Ironsworn: Delve.'
+	},
+	delve_sites: {
+		description:
+			'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
+	},
+	world_truths: {
+		description:
+			'A dictionary object of world truth categories, like those presented in classic Ironsworn.'
+	}
+}
+
 export function SourcebookClassic(options: ObjectOptions) {
 	return Sourcebook(
 		'classic',
@@ -61,6 +105,7 @@ export function SourcebookClassic(options: ObjectOptions) {
 			site_domains: RulesetClassic.DelveSiteDomain,
 			world_truths: RulesetClassic.WorldTruth
 		},
+		SourcebookInfoClassic,
 		options
 	)
 }
@@ -74,6 +119,17 @@ export function SourcebookStarforged(options: ObjectOptions) {
 			assets: Assets.AssetType,
 			encounters: RulesetStarforged.EncounterStarforged,
 			setting_truths: RulesetStarforged.SettingTruth
+		},
+		{
+			...pick(SourcebookInfoClassic, ['oracles', 'moves', 'assets']),
+			encounters: {
+				description:
+					'A dictionary object containing Starforged-style encounter entries.'
+			},
+			setting_truths: {
+				description:
+					'A dictionary object containing Starforged-style setting truths.'
+			}
 		},
 		options
 	)

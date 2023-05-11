@@ -18,12 +18,12 @@
 			"summary": "As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.",
 			"contents": {
 				"discover_a_site": {
+					"move_type": "no_roll",
 					"name": "Discover a Site",
 					"trigger": {
 						"text": "When you resolve to enter a perilous site in pursuit of an objective..."
 					},
 					"text": "When **you resolve to enter a perilous site in pursuit of an objective**, choose the theme and domain which best represent its nature ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and give it a rank.\n\n  * Troublesome site: 3 progress per area.\n  * Dangerous site: 2 progress per area.\n  * Formidable site: 1 progress per area.\n  * Extreme site: 2 ticks per area.\n  * Epic site: 1 tick per area.\n\nIf you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.\n\nThen, [Delve the Depths](delve/moves/delve/delve_the_depths) to explore this place.",
-					"move_type": "no_roll",
 					"id": "delve/moves/delve/discover_a_site",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -106,12 +106,12 @@
 				},
 				"find_an_opportunity": {
 					"name": "Find an Opportunity",
+					"move_type": "no_roll",
 					"trigger": {
 						"text": "When you encounter a helpful situation or feature within a site..."
 					},
 					"oracles": ["delve/oracles/moves/find_an_opportunity"],
 					"text": "When **you encounter a helpful situation or feature within a site**, roll on the following table. If you are making this move as a result of a strong hit on [Delve the Depths](delve/moves/delve/delve_the_depths), you may pick or envision an opportunity instead of rolling.\n\nThen, choose one.\n\n  * Gain insight or prepare: Take +1 momentum.\n  * Take action now: You and any allies may make a move (not a progress move) which directly leverages the opportunity. When you do, add +1 and take +1 momentum on a hit.\n\n{{table:delve/oracles/moves/find_an_opportunity}}",
-					"move_type": "no_roll",
 					"id": "delve/moves/delve/find_an_opportunity",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -128,12 +128,12 @@
 				},
 				"reveal_a_danger": {
 					"name": "Reveal a Danger",
+					"move_type": "no_roll",
 					"trigger": {
 						"text": "When you encounter a risky situation within a site..."
 					},
 					"oracles": ["delve/oracles/moves/reveal_a_danger"],
 					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger}}",
-					"move_type": "no_roll",
 					"id": "delve/moves/delve/reveal_a_danger",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -312,13 +312,13 @@
 					}
 				},
 				"reveal_a_danger_alt": {
+					"move_type": "no_roll",
 					"name": "Reveal a Danger (alternate version)",
 					"oracles": ["delve/oracles/moves/reveal_a_danger_alt"],
 					"trigger": {
 						"text": "When you encounter a risky situation within a site..."
 					},
 					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger_alt}}",
-					"move_type": "no_roll",
 					"id": "delve/moves/delve/reveal_a_danger_alt",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -353,12 +353,12 @@
 			"description": "Failure is a key part of your journey within the Ironlands. If you’d like to make those failures a more influential aspect of your character’s evolution—while taking a bit of the sting out of rolling a miss—use these optional mechanics.",
 			"contents": {
 				"mark_your_failure": {
+					"move_type": "no_roll",
 					"name": "Mark Your Failure",
 					"trigger": {
 						"text": "When you make a move and score a miss..."
 					},
 					"text": "When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks.",
-					"move_type": "no_roll",
 					"id": "delve/moves/failure/mark_your_failure",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -384,7 +384,8 @@
 									{
 										"using": "failure_track"
 									}
-								]
+								],
+								"method": "any"
 							}
 						]
 					},
@@ -435,13 +436,13 @@
 			"description": "The world does not wait for you. As you undertake journeys to distant locations, explore perilous places, and spend time recovering from your adventures, the forces which oppose you will advance their own agenda. When you suffer setbacks, those forces will take advantage of your failure to gain new ground.\n\n**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
 			"contents": {
 				"advance_a_threat": {
+					"move_type": "no_roll",
 					"name": "Advance a Threat",
 					"oracles": ["delve/oracles/moves/advance_a_threat"],
 					"trigger": {
 						"text": "When you give ground to a threat through inaction, failure, or delay..."
 					},
 					"text": "When **you give ground to a threat through inaction, failure, or delay**, roll on the table below and envision how the change manifests in your world ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).\n\n{{table:delve/oracles/moves/advance_a_threat}}\n\nOn a match, this development also exposes a surprising aspect of the threat’s plan or nature.\n\nIf **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](classic/moves/quest/forsake_your_vow).",
-					"move_type": "no_roll",
 					"id": "delve/moves/threat/advance_a_threat",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -458,11 +459,11 @@
 				},
 				"take_a_hiatus": {
 					"name": "Take a Hiatus",
+					"move_type": "no_roll",
 					"trigger": {
 						"text": "When you spend an extended time recovering in a safe place while a threat is active..."
 					},
 					"text": "When **you spend an extended time recovering in a safe place while a threat is active**, do any of the following.\n\n  * Clear any marked conditions.\n  * Set your health, spirit, supply, and companion health to their maximum values.\n  * Set your momentum to its reset value.\n\nThen, for each active threat, [Advance a Threat](delve/moves/legacy/advance_a_threat).",
-					"move_type": "no_roll",
 					"id": "delve/moves/threat/take_a_hiatus",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -497,12 +498,12 @@
 			"description": "History is often chronicled through objects of power. Wars and accords, struggles and triumphs, love and hate, sacrifice and death—these legacies can imbue objects with cultural importance and supernatural gifts.\n\nIn **Ironsworn**, these items are called *rarities*. They may be handed down through generations, lost or hidden away in the depths of perilous sites, coveted by powerful forces, or forgotten and discarded. When you obtain a rarity through the course of your story, you gain a subtle but lasting impact on your character and their abilities.",
 			"contents": {
 				"wield_a_rarity": {
+					"move_type": "no_roll",
 					"name": "Wield a Rarity",
 					"trigger": {
 						"text": "When you make a move aided by an augmented asset..."
 					},
 					"text": "When **you make a move aided by an augmented asset**, roll your rarity die in place of your action die.\n\nOn **any result** with 6 showing on the rarity die, the power of the rarity manifests in a dramatic and obvious way. You score an automatic **strong hit** and take +1 momentum.\n\nOn a **hit** with 5 showing on the rarity die, the power of the rarity manifests in a subtle way. Take +1 momentum.\n\nOn a **miss** with 1 showing on the rarity die, the rarity’s power fails or works against you.",
-					"move_type": "no_roll",
 					"id": "delve/moves/rarity/wield_a_rarity",
 					"source": {
 						"title": "Ironsworn: Delve",

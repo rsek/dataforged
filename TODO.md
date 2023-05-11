@@ -1,9 +1,12 @@
 # TODO
 
 ## v2 RC
+* [ ] some kind of data version on the source object?
 * [ ] discriminated unions for extension collections. Extension type features:
   * [ ] clone items from another collection (w/ wildcard)
   * [ ] clone and extend items from another collection
+* [ ] assets inherit color from type
+* [x] typebox-based discriminated union
 * [x] rm extends from canonical oracle collections
 * [x] "roll" key for oracles
 * [x] unify into a single schema (probably a union)

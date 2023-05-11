@@ -1,50 +1,15 @@
-import type * as Types from 'schema'
-import { type JTDSchemaType } from 'ajv/dist/core'
+import { Metadata } from 'schema'
+import { toJtdForm } from 'json-typedef/utils'
+import { mapValues, merge, omitBy } from 'lodash'
+import { Squash } from 'schema/common/utils'
 
-export const Source: JTDSchemaType<Types.Metadata.Source, { URL: string }> = {
-	properties: {
-		authors: { elements: { type: 'string' } },
-		date: { type: 'timestamp' },
-		license: { ref: 'URL' },
-		title: { type: 'string' },
-		url: { ref: 'URL' }
-	},
-	optionalProperties: {
-		page: { type: 'uint16' }
-	}
-}
+const jtd = mapValues(
+	omitBy(Metadata, (v, k) => k.startsWith('Suggestions') || k === 'SourceStub'),
+	(v, k) => toJtdForm(v as any)
+)
 
-export const ID: JTDSchemaType<string> = {
-	type: 'string'
-}
+const Suggestions = toJtdForm(
+	Squash([Metadata.SuggestionsStarforged, Metadata.SuggestionsClassic]) as any
+)
 
-export const Color: JTDSchemaType<string> = {
-	metadata: { description: 'A valid CSS color.' },
-	type: 'string'
-}
-
-export const SvgImageURL: JTDSchemaType<string> = {
-	metadata: { description: 'A relative URL pointing to an SVG image.' },
-	type: 'string'
-}
-
-export const WebpImageURL: JTDSchemaType<string> = {
-	metadata: { description: 'A relative URL pointing to a WEBP image.' },
-	type: 'string'
-}
-
-export const URL: JTDSchemaType<string> = {
-	metadata: { description: 'An absolute URL pointing to a web site.' },
-	type: 'string'
-}
-
-export const Suggestions: JTDSchemaType<
-	Types.Metadata.Suggestions,
-	{ AssetIDWildcard: string; MoveID: string; OracleTableID: string }
-> = {
-	optionalProperties: {
-		assets: { elements: { ref: 'AssetIDWildcard' } },
-		moves: { elements: { ref: 'MoveID' } },
-		oracles: { elements: { ref: 'OracleTableID' } }
-	}
-}
+export default { ...jtd, Suggestions }

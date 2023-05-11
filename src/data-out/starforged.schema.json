@@ -384,36 +384,14 @@
 			"description": "Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.",
 			"type": "string"
 		},
-		"TemplateString": { "type": "string" },
+		"TemplateString": {
+			"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\nThe custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n",
+			"type": "string"
+		},
 		"ProgressType": {
-			"oneOf": [
-				{
-					"$id": "#/$defs/ProgressTypeClassic",
-					"enum": [
-						"combat_progress",
-						"vow_progress",
-						"scene_challenge_progress",
-						"journey_progress",
-						"delve_progress",
-						"bonds_progress",
-						"failure_track"
-					]
-				},
-				{
-					"$id": "#/$defs/ProgressTypeStarforged",
-					"anyOf": [
-						{ "$ref": "#/$defs/LegacyTypeStarforged" },
-						{
-							"enum": [
-								"combat_progress",
-								"vow_progress",
-								"scene_challenge_progress",
-								"expedition_progress",
-								"connection_progress"
-							]
-						}
-					]
-				}
+			"anyOf": [
+				{ "$ref": "#/$defs/ProgressTypeClassic" },
+				{ "$ref": "#/$defs/ProgressTypeStarforged" }
 			]
 		},
 		"ChallengeRank": {
@@ -490,19 +468,17 @@
 		"OracleTableRow": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/OracleTableRowID" },
 				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
-				"id": { "$ref": "#/$defs/OracleTableRowID" },
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -515,7 +491,7 @@
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" }
 			},
-			"required": ["low", "high", "id", "result"]
+			"required": ["id", "low", "high", "result"]
 		},
 		"OracleTableMatchBehavior": {
 			"title": "Match behavior",
@@ -850,34 +826,145 @@
 			"required": ["miss", "weak_hit", "strong_hit"]
 		},
 		"Move": {
-			"additionalProperties": false,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
-				"name": { "$ref": "#/$defs/Label" },
-				"move_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" },
-				"trigger": {
+				"move_type": {
+					"default": "no_roll",
+					"enum": ["action_roll", "progress_roll", "no_roll"]
+				}
+			},
+			"required": ["move_type"],
+			"oneOf": [
+				{
 					"type": "object",
 					"properties": {
-						"text": {
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-							"type": "string",
-							"pattern": ".*\\.{3}",
-							"$ref": "#/$defs/MarkdownString"
-						}
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerNoRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "no_roll", "type": "string" }
 					},
-					"required": ["text"]
+					"required": ["id", "name", "trigger", "text", "source", "move_type"]
 				},
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerActionRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "action_roll", "type": "string" }
+					},
+					"required": [
+						"id",
+						"name",
+						"trigger",
+						"text",
+						"outcomes",
+						"source",
+						"move_type"
+					]
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" }
-			},
-			"required": ["id", "name", "move_type", "trigger", "text", "source"]
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerProgressRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "progress_roll", "type": "string" }
+					},
+					"required": [
+						"id",
+						"name",
+						"trigger",
+						"text",
+						"outcomes",
+						"source",
+						"move_type"
+					]
+				}
+			],
+			"additionalProperties": true
 		},
 		"MoveCategory": {
 			"type": "object",
@@ -1096,6 +1183,8 @@
 				"id": { "$ref": "#/$defs/AssetID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"color": { "$ref": "#/$defs/CSSColor" },
 				"options": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -1157,7 +1246,6 @@
 			"properties": { "id": { "$ref": "#/$defs/AssetAbilityControlFieldID" } }
 		},
 		"AssetAbility": {
-			"title": "Asset ability",
 			"type": "object",
 			"properties": {
 				"id": { "$ref": "#/$defs/AssetAbilityID" },
@@ -1190,6 +1278,8 @@
 						{
 							"type": "object",
 							"properties": {
+								"icon": { "$ref": "#/$defs/SVGImageURL" },
+								"color": { "$ref": "#/$defs/CSSColor" },
 								"suggestions": { "$ref": "#/$defs/Suggestions" },
 								"count_as_impact": {
 									"default": false,
@@ -1464,6 +1554,7 @@
 		"ruleset": { "const": "starforged", "type": "string" },
 		"source": { "$ref": "#/$defs/Source" },
 		"oracles": {
+			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -1471,6 +1562,7 @@
 			}
 		},
 		"moves": {
+			"description": "A dictionary object containing move categories, which contain moves.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -1478,11 +1570,13 @@
 			}
 		},
 		"assets": {
+			"description": "A dictionary object containing asset types, which contain assets.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
 		"encounters": {
+			"description": "A dictionary object containing Starforged-style encounter entries.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -1490,6 +1584,7 @@
 			}
 		},
 		"setting_truths": {
+			"description": "A dictionary object containing Starforged-style setting truths.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {

@@ -16,6 +16,7 @@ moves:
       As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.
     contents:
       discover_a_site:
+        move_type: no_roll
         name: Discover a Site
         _source:
           page: 19
@@ -84,6 +85,7 @@ moves:
         name: Find an Opportunity
         _source:
           page: 30
+        move_type: no_roll
         trigger:
           text: When you encounter a helpful situation or feature within a site...
         oracles:
@@ -99,6 +101,7 @@ moves:
           {{table:delve/oracles/moves/find_an_opportunity}}
       reveal_a_danger:
         name: Reveal a Danger
+        move_type: no_roll
         _source:
           page: 34
         trigger:
@@ -235,6 +238,7 @@ moves:
             text: |-
               A dire threat or imposing obstacle stands in your way. [Reveal a Danger](delve/moves/delve/reveal_a_danger). If you survive, you may make your escape.
       reveal_a_danger_alt:
+        move_type: no_roll
         name: Reveal a Danger (alternate version)
         oracles:
           - delve/oracles/moves/reveal_a_danger_alt
@@ -261,6 +265,7 @@ moves:
       date: 2020-02-13
     contents:
       mark_your_failure:
+        move_type: no_roll
         name: Mark Your Failure
         # optional: true
         _source:
@@ -324,6 +329,7 @@ moves:
       **Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.
     contents:
       advance_a_threat:
+        move_type: no_roll
         name: Advance a Threat
         # optional: true
         _source:
@@ -343,6 +349,7 @@ moves:
       take_a_hiatus:
         name: Take a Hiatus
         # optional: true
+        move_type: no_roll
         _source:
           page: 158
         trigger:
@@ -371,6 +378,7 @@ moves:
     # optional: true
     contents:
       wield_a_rarity:
+        move_type: no_roll # FIXME: not the most intuitive label. could this be done better?
         name: Wield a Rarity
         # optional: true
         _source:

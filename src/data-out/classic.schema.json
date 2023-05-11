@@ -384,36 +384,14 @@
 			"description": "Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.",
 			"type": "string"
 		},
-		"TemplateString": { "type": "string" },
+		"TemplateString": {
+			"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\nThe custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n",
+			"type": "string"
+		},
 		"ProgressType": {
-			"oneOf": [
-				{
-					"$id": "#/$defs/ProgressTypeClassic",
-					"enum": [
-						"combat_progress",
-						"vow_progress",
-						"scene_challenge_progress",
-						"journey_progress",
-						"delve_progress",
-						"bonds_progress",
-						"failure_track"
-					]
-				},
-				{
-					"$id": "#/$defs/ProgressTypeStarforged",
-					"anyOf": [
-						{ "$ref": "#/$defs/LegacyTypeStarforged" },
-						{
-							"enum": [
-								"combat_progress",
-								"vow_progress",
-								"scene_challenge_progress",
-								"expedition_progress",
-								"connection_progress"
-							]
-						}
-					]
-				}
+			"anyOf": [
+				{ "$ref": "#/$defs/ProgressTypeClassic" },
+				{ "$ref": "#/$defs/ProgressTypeStarforged" }
 			]
 		},
 		"ChallengeRank": {
@@ -490,19 +468,17 @@
 		"OracleTableRow": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/OracleTableRowID" },
 				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
-				"id": { "$ref": "#/$defs/OracleTableRowID" },
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -515,7 +491,7 @@
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" }
 			},
-			"required": ["low", "high", "id", "result"]
+			"required": ["id", "low", "high", "result"]
 		},
 		"OracleTableMatchBehavior": {
 			"title": "Match behavior",
@@ -850,34 +826,145 @@
 			"required": ["miss", "weak_hit", "strong_hit"]
 		},
 		"Move": {
-			"additionalProperties": false,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
-				"name": { "$ref": "#/$defs/Label" },
-				"move_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" },
-				"trigger": {
+				"move_type": {
+					"default": "no_roll",
+					"enum": ["action_roll", "progress_roll", "no_roll"]
+				}
+			},
+			"required": ["move_type"],
+			"oneOf": [
+				{
 					"type": "object",
 					"properties": {
-						"text": {
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-							"type": "string",
-							"pattern": ".*\\.{3}",
-							"$ref": "#/$defs/MarkdownString"
-						}
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerNoRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "no_roll", "type": "string" }
 					},
-					"required": ["text"]
+					"required": ["id", "name", "trigger", "text", "source", "move_type"]
 				},
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerActionRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "action_roll", "type": "string" }
+					},
+					"required": [
+						"id",
+						"name",
+						"trigger",
+						"text",
+						"outcomes",
+						"source",
+						"move_type"
+					]
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" }
-			},
-			"required": ["id", "name", "move_type", "trigger", "text", "source"]
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerProgressRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "progress_roll", "type": "string" }
+					},
+					"required": [
+						"id",
+						"name",
+						"trigger",
+						"text",
+						"outcomes",
+						"source",
+						"move_type"
+					]
+				}
+			],
+			"additionalProperties": true
 		},
 		"MoveCategory": {
 			"type": "object",
@@ -1096,6 +1183,8 @@
 				"id": { "$ref": "#/$defs/AssetID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"color": { "$ref": "#/$defs/CSSColor" },
 				"options": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -1157,7 +1246,6 @@
 			"properties": { "id": { "$ref": "#/$defs/AssetAbilityControlFieldID" } }
 		},
 		"AssetAbility": {
-			"title": "Asset ability",
 			"type": "object",
 			"properties": {
 				"id": { "$ref": "#/$defs/AssetAbilityID" },
@@ -1190,6 +1278,8 @@
 						{
 							"type": "object",
 							"properties": {
+								"icon": { "$ref": "#/$defs/SVGImageURL" },
+								"color": { "$ref": "#/$defs/CSSColor" },
 								"suggestions": { "$ref": "#/$defs/Suggestions" },
 								"count_as_impact": {
 									"default": false,
@@ -1751,18 +1841,6 @@
 		"DelveSiteDomainDangerRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1774,25 +1852,15 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/DomainDangerRowID" }
+				"id": { "$ref": "#/$defs/DomainDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result", "id"]
+			"required": ["result", "id", "low", "high"]
 		},
 		"DelveSiteDomainFeatureRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1804,9 +1872,11 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/DomainFeatureRowID" }
+				"id": { "$ref": "#/$defs/DomainFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result", "id"]
+			"required": ["result", "id", "low", "high"]
 		},
 		"DelveSiteTheme": {
 			"title": "Delve site theme",
@@ -2003,18 +2073,6 @@
 		"DelveSiteThemeDangerRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -2026,25 +2084,15 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/ThemeDangerRowID" }
+				"id": { "$ref": "#/$defs/ThemeDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result", "id"]
+			"required": ["result", "id", "low", "high"]
 		},
 		"DelveSiteThemeFeatureRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -2056,9 +2104,11 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/ThemeFeatureRowID" }
+				"id": { "$ref": "#/$defs/ThemeFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result", "id"]
+			"required": ["result", "id", "low", "high"]
 		},
 		"EncounterCollectionClassic": {
 			"type": "object",
@@ -2210,6 +2260,7 @@
 		"ruleset": { "const": "classic", "type": "string" },
 		"source": { "$ref": "#/$defs/Source" },
 		"oracles": {
+			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2217,6 +2268,7 @@
 			}
 		},
 		"moves": {
+			"description": "A dictionary object containing move categories, which contain moves.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2224,11 +2276,13 @@
 			}
 		},
 		"assets": {
+			"description": "A dictionary object containing asset types, which contain assets.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
 		"regions": {
+			"description": "A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2236,6 +2290,7 @@
 			}
 		},
 		"encounters": {
+			"description": "A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. \"Ironlander\", \"horror\".",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2243,16 +2298,19 @@
 			}
 		},
 		"rarities": {
+			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Rarity" } }
 		},
 		"delve_sites": {
+			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSite" } }
 		},
 		"site_themes": {
+			"description": "A dictionary object containing delve site themes.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2260,6 +2318,7 @@
 			}
 		},
 		"site_domains": {
+			"description": "A dictionary object containing delve site domains.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2267,6 +2326,7 @@
 			}
 		},
 		"world_truths": {
+			"description": "A dictionary object of world truth categories, like those presented in classic Ironsworn.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {

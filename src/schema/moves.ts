@@ -1,9 +1,10 @@
 import { type Static, Type, type TSchema, JsonEnum } from 'typebox'
 import { ID, Localize, Abstract, Enum, Metadata } from 'schema/common'
 import { MoveIDWildcard } from 'schema/common/id'
-import { PartialExcept } from 'schema/common/utils'
+import { PartialExcept, Squash } from 'schema/common/utils'
 import { type Simplify } from 'type-fest'
 import { ProgressType } from 'schema/enum'
+import { TaggedUnion } from 'typebox/tagged-union'
 
 export const MoveRollMethod = JsonEnum(['any', 'all', 'highest', 'lowest'], {
 	$id: '#/$defs/MoveRollMethod',
@@ -281,16 +282,28 @@ const MoveProgressRollStub = Type.Object({
 })
 export type MoveProgressRoll = Static<typeof MoveProgressRollStub> & MoveBase
 
-export const Move = Type.Composite(
-	[
-		MoveBase,
-		Type.Unsafe<Move>({
-			type: 'object',
-			oneOf: [MoveNoRollStub, MoveActionRollStub, MoveProgressRollStub]
-		}) as any
-	],
-	{ $id: '#/$defs/Move', additionalProperties: false }
+export const Move = TaggedUnion(
+	[MoveNoRollStub, MoveActionRollStub, MoveProgressRollStub].map((schema) =>
+		Type.Composite([Type.Omit(MoveBase, ['move_type']), schema])
+	),
+	'move_type',
+	JsonEnum<['action_roll', 'progress_roll', 'no_roll']>(
+		['action_roll', 'progress_roll', 'no_roll'],
+		{ default: 'no_roll' }
+	),
+	{ $id: '#/$defs/Move' }
 )
+
+// export const Move = Type.Composite(
+// 	[
+// 		MoveBase,
+// 		Type.Unsafe<Move>({
+// 			type: 'object',
+// 			oneOf: [MoveNoRollStub, MoveActionRollStub, MoveProgressRollStub]
+// 		}) as any
+// 	],
+// 	{ $id: '#/$defs/Move', additionalProperties: false }
+// )
 export type Move = MoveProgressRoll | MoveActionRoll | MoveNoRoll
 
 export const MoveCategory = Abstract.Collection(

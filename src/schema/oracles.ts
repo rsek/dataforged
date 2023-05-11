@@ -1,6 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID, Localize, Metadata, Abstract } from 'schema/common'
 import { JsonEnum } from 'typebox'
+import { Nullable } from 'typebox/nullable'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -56,21 +57,43 @@ export const OracleTableRoll = Type.Object(
 )
 export type OracleTableRoll = Static<typeof OracleTableRoll>
 
-export const OracleTableRow = Type.Composite(
-	[
-		Abstract.Range,
-		Type.Object({
-			id: Type.Ref(ID.OracleTableRowID),
-			result: Type.Ref(Localize.MarkdownString),
-			icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
-			suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-			embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
-			template: Type.Optional(Type.Ref(OracleRollTemplate))
-		})
-	],
+export const OracleTableRow = Type.Object(
+	{
+		id: Type.Ref(ID.OracleTableRowID),
+		low: Type.Unsafe<number | null>({
+			type: ['integer', 'null'],
+			default: null,
+			// nullable: true,
+			description:
+				'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
+		}),
+		high: Type.Unsafe<number | null>({
+			type: ['integer', 'null'],
+			default: null,
+			// nullable: true,
+			description:
+				'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
+		}),
+		// low: Type.Union([Type.Integer(), Type.Null()], {
+		// 	default: null,
+		// 	description:
+		// 		'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
+		// }),
+
+		// high: Type.Union([Type.Integer(), Type.Null()], {
+		// 	default: null,
+		// 	description:
+		// 		'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
+		// }),
+		result: Type.Ref(Localize.MarkdownString),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
+		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
+		embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
+		template: Type.Optional(Type.Ref(OracleRollTemplate))
+	},
 	{ $id: '#/$defs/OracleTableRow' }
 )
 export type OracleTableRow = Static<typeof OracleTableRow>

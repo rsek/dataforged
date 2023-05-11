@@ -363,7 +363,7 @@ assets:
                   text: When you [Sacrifice Resources](starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                   conditions:
                     - method: any
-                      roll_options:ions:
+                      roll_options:
                         - using: attached_asset_meter
                 text: *move:Asset.Internalrefit
                 outcomes:
@@ -1383,7 +1383,7 @@ assets:
                   conditions:
                     - text: Rely on the skiff's simple durability
                       method: any
-                      roll_options:ions:
+                      roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/skiff/condition_meter
                 outcomes: *outcomes:+1_momentum.HIT

@@ -1,7 +1,7 @@
 import type * as Types from 'schema'
 import { type JTDSchemaType } from 'ajv/dist/core'
 import * as JSONSchema from '@schema-json'
-import { toJtdId } from 'json-typedef/utils'
+import { toJtdString } from 'json-typedef/utils'
 
 export const DelveSiteTheme: JTDSchemaType<
 	Types.DelveSites.DelveSiteTheme,
@@ -10,7 +10,7 @@ export const DelveSiteTheme: JTDSchemaType<
 		Source: Types.Metadata.Source
 		MarkdownString: string
 		Label: string
-		SvgImageURL: string
+		SVGImageURL: string
 		FeatureOrDanger: Types.DelveSites.FeatureOrDanger<number, number>
 		Suggestions: Types.Metadata.Suggestions
 	}
@@ -37,7 +37,7 @@ export const DelveSiteTheme: JTDSchemaType<
 	},
 	optionalProperties: {
 		description: { ref: 'MarkdownString' },
-		icon: { ref: 'SvgImageURL' },
+		icon: { ref: 'SVGImageURL' },
 		suggestions: { ref: 'Suggestions' }
 	}
 }
@@ -49,7 +49,7 @@ export const DelveSiteDomain: JTDSchemaType<
 		Source: Types.Metadata.Source
 		MarkdownString: string
 		Label: string
-		SvgImageURL: string
+		SVGImageURL: string
 		FeatureOrDanger: Types.DelveSites.FeatureOrDanger<number, number>
 		Suggestions: Types.Metadata.Suggestions
 	}
@@ -77,7 +77,7 @@ export const DelveSiteDomain: JTDSchemaType<
 	},
 	optionalProperties: {
 		description: { ref: 'MarkdownString' },
-		icon: { ref: 'SvgImageURL' },
+		icon: { ref: 'SVGImageURL' },
 		suggestions: { ref: 'Suggestions' }
 	}
 }
@@ -88,7 +88,7 @@ export const FeatureOrDanger: JTDSchemaType<
 		ID: string
 		MarkdownString: string
 		OracleRollTemplate: Types.Oracles.OracleRollTemplate
-		SvgImageURL: string
+		SVGImageURL: string
 		OracleTableRoll: Types.Oracles.OracleTableRoll
 		Suggestions: Types.Metadata.Suggestions
 	}
@@ -103,7 +103,7 @@ export const FeatureOrDanger: JTDSchemaType<
 		summary: { ref: 'MarkdownString' },
 		description: { ref: 'MarkdownString' },
 		template: { ref: 'OracleRollTemplate' },
-		icon: { ref: 'SvgImageURL' },
+		icon: { ref: 'SVGImageURL' },
 		rolls: { elements: { ref: 'OracleTableRoll' } },
 		embed_table: { ref: 'ID' },
 		suggestions: { ref: 'Suggestions' }

@@ -1,11 +1,11 @@
-import { toJtdStringEnum } from 'json-typedef/utils'
+import { toJtdEnum } from 'json-typedef/utils'
 import * as JSONSchema from '@schema-json'
 import { JTDSchemaType } from 'ajv/dist/core'
 import * as Types from 'schema'
 
-export const PlayerStat = toJtdStringEnum(JSONSchema.Players.PlayerStat)
+export const PlayerStat = toJtdEnum(JSONSchema.Players.PlayerStat)
 
-export const PlayerConditionMeter = toJtdStringEnum(
+export const PlayerConditionMeter = toJtdEnum(
 	JSONSchema.Players.PlayerConditionMeter
 )
 

@@ -13,5 +13,11 @@ export const MarkdownString = Type.String({
 })
 export type MarkdownString = Static<typeof Label>
 
-export const TemplateString = Type.String({ $id: '#/$defs/TemplateString' })
+export const TemplateString = Type.String({
+	$id: '#/$defs/TemplateString',
+	description: `A rich text string in Markdown with replaced values from oracle roll results.
+
+The custom syntax \`{{some_row_key:some_oracle_table_id}}\` should be replaced by the \`some_row_key\` string of a rolled oracle table. This is usually the \`result\` key, for example \`{{result:starforged/oracles/core/action}}\`
+`
+})
 export type TemplateString = Static<typeof TemplateString>

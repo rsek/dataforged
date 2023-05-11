@@ -69,23 +69,129 @@ export type OracleCollectionStyle = "multi_table";
  */
 export type WEBPImageURL = string;
 export type MoveCategoryID = string;
-export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export type Move =
+  | {
+      id: MoveID;
+      name: Label;
+      trigger: {
+        text: MarkdownString1;
+      } & TriggerNoRoll;
+      text: MarkdownString;
+      outcomes?: MoveOutcomes;
+      oracles?: OracleTableID[];
+      suggestions?: Suggestions;
+      source: Source;
+      move_type: "no_roll";
+    }
+  | {
+      id: MoveID;
+      name: Label;
+      trigger: {
+        text: MarkdownString3;
+      } & TriggerActionRoll;
+      text: MarkdownString;
+      outcomes: MoveOutcomes;
+      oracles?: OracleTableID[];
+      suggestions?: Suggestions;
+      source: Source;
+      move_type: "action_roll";
+    }
+  | {
+      id: MoveID;
+      name: Label;
+      trigger: {
+        text: MarkdownString5;
+      } & TriggerProgressRoll;
+      text: MarkdownString;
+      outcomes: MoveOutcomes;
+      oracles?: OracleTableID[];
+      suggestions?: Suggestions;
+      source: Source;
+      move_type: "progress_roll";
+    };
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString1 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString2 = string;
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString3 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString4 = string;
+/**
+ * `any`: When rolling with this move trigger condition, the player picks which stat to use.
+ *
+ * `all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.
+ *
+ * `highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.
+ *
+ * `lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.
+ */
+export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
+export type TriggerActionRollConditionOption =
+  | TriggerActionRollConditionOptionStat
+  | TriggerActionRollConditionOptionRef
+  | TriggerActionRollConditionOptionAttachedAssetRef
+  | TriggerActionRollConditionOptionCustomValue;
+export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
+export type PlayerConditionMeter = "health" | "spirit" | "supply";
+export type AssetConditionMeterIDWildcard = string;
+export type AssetOptionFieldIDWildcard = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString5 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString6 = string;
+export type ProgressType = ProgressTypeClassic | ProgressTypeStarforged;
+export type ProgressTypeClassic =
+  | "combat_progress"
+  | "vow_progress"
+  | "scene_challenge_progress"
+  | "journey_progress"
+  | "delve_progress"
+  | "bonds_progress"
+  | "failure_track";
+export type ProgressTypeStarforged =
+  | LegacyTypeStarforged
+  | ("combat_progress" | "vow_progress" | "scene_challenge_progress" | "expedition_progress" | "connection_progress");
+export type LegacyTypeStarforged = "quests_legacy" | "bonds_legacy" | "discoveries_legacy";
 export type AssetTypeID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetOptionField = SelectFieldPlayerStat | TextField;
-export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
-export type PlayerConditionMeter = "health" | "spirit" | "supply";
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -115,7 +221,7 @@ export type AssetConditionMeterControlField = CheckboxField;
  * A move ID with wildcards
  */
 export type MoveIDWithWildcard = string;
-export type MoveRollType1 = "action_roll" | "progress_roll" | "no_roll";
+export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
 export type AssetConditionMeterID = string;
 /**
  * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
@@ -132,18 +238,33 @@ export interface SourcebookStarforged {
   id: string;
   ruleset: "starforged";
   source: Source;
+  /**
+   * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
+   */
   oracles?: {
     [k: string]: OracleCollection;
   };
+  /**
+   * A dictionary object containing move categories, which contain moves.
+   */
   moves?: {
     [k: string]: MoveCategory;
   };
+  /**
+   * A dictionary object containing asset types, which contain assets.
+   */
   assets?: {
     [k: string]: AssetType;
   };
+  /**
+   * A dictionary object containing Starforged-style encounter entries.
+   */
   encounters?: {
     [k: string]: EncounterStarforged;
   };
+  /**
+   * A dictionary object containing Starforged-style setting truths.
+   */
   setting_truths?: {
     [k: string]: SettingTruth;
   };
@@ -249,9 +370,15 @@ export interface MatchBehavior {
   text: MarkdownString;
 }
 export interface OracleTableRow {
-  low: number | null;
-  high: number | null;
   id: OracleTableRowID;
+  /**
+   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  low: number | null;
+  /**
+   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  high: number | null;
   result: MarkdownString;
   icon?: SVGImageURL;
   summary?: MarkdownString;
@@ -328,25 +455,20 @@ export interface MoveCategory {
     [k: string]: Move;
   };
 }
+export interface TriggerNoRoll {
+  text: MarkdownString2;
+  conditions?: TriggerNoRollCondition[];
+}
+export interface TriggerNoRollCondition {
+  text?: MarkdownString;
+  by?: TriggerBy;
+}
 /**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
+ * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
  */
-export interface Move {
-  id: MoveID;
-  name: Label;
-  move_type: MoveRollType;
-  trigger: {
-    text: MarkdownString1;
-  };
-  text: MarkdownString;
-  outcomes?: MoveOutcomes;
-  oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
+export interface TriggerBy {
+  player: boolean;
+  ally: boolean;
 }
 export interface MoveOutcomes {
   miss: MoveOutcomeMatchable;
@@ -367,6 +489,44 @@ export interface MoveOutcome {
   text: MarkdownString;
   count_as?: MoveOutcomeType;
   reroll?: MoveReroll;
+}
+export interface TriggerActionRoll {
+  text: MarkdownString4;
+  conditions: TriggerActionRollCondition[];
+}
+export interface TriggerActionRollCondition {
+  text?: MarkdownString;
+  method: MoveRollMethod | MoveOutcomeType;
+  by?: TriggerBy;
+  roll_options: TriggerActionRollConditionOption[];
+}
+export interface TriggerActionRollConditionOptionStat {
+  using: PlayerStat | PlayerConditionMeter;
+}
+export interface TriggerActionRollConditionOptionRef {
+  using: "ref";
+  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+}
+export interface TriggerActionRollConditionOptionAttachedAssetRef {
+  using: "attached_asset_meter";
+}
+export interface TriggerActionRollConditionOptionCustomValue {
+  using: "custom_value";
+  label: Label;
+  value: number;
+}
+export interface TriggerProgressRoll {
+  text: MarkdownString6;
+  conditions: TriggerProgressRollCondition[];
+}
+export interface TriggerProgressRollCondition {
+  text?: MarkdownString;
+  method: MoveRollMethod | MoveOutcomeType;
+  by?: TriggerBy;
+  roll_options: TriggerProgressRollConditionOption[];
+}
+export interface TriggerProgressRollConditionOption {
+  using: ProgressType;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -395,6 +555,8 @@ export interface Asset {
   id: AssetID;
   name: Label;
   source: Source;
+  icon?: SVGImageURL;
+  color?: CSSColor;
   options?: {
     [k: string]: AssetOptionField;
   };
@@ -469,6 +631,8 @@ export interface AssetAbility {
     [k: string]: AssetAbilityControlField;
   };
   extend_asset?: {
+    icon?: SVGImageURL;
+    color?: CSSColor;
     suggestions?: Suggestions;
     /**
      * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
@@ -525,7 +689,7 @@ export interface MoveExtension {
   oracles?: OracleTableID[];
   extends?: MoveIDWithWildcard[];
   trigger?: unknown;
-  move_type: MoveRollType1;
+  move_type: MoveRollType;
   outcomes?: unknown;
 }
 export interface AssetConditionMeter1 {

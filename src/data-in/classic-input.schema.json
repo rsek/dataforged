@@ -216,6 +216,7 @@
 			"type": "string"
 		},
 		"Source": {
+			"description": "Metadata describing the original source of this item",
 			"type": "object",
 			"properties": {
 				"title": {
@@ -272,6 +273,7 @@
 			"required": ["title", "authors", "date", "url", "license"]
 		},
 		"SourceStub": {
+			"description": "A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.",
 			"type": "object",
 			"properties": {
 				"title": {
@@ -382,36 +384,14 @@
 			"description": "Localized text, formatted in Markdown.\n\nIt uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.",
 			"type": "string"
 		},
-		"TemplateString": { "type": "string" },
+		"TemplateString": {
+			"description": "A rich text string in Markdown with replaced values from oracle roll results.\n\nThe custom syntax `{{some_row_key:some_oracle_table_id}}` should be replaced by the `some_row_key` string of a rolled oracle table. This is usually the `result` key, for example `{{result:starforged/oracles/core/action}}`\n",
+			"type": "string"
+		},
 		"ProgressType": {
-			"oneOf": [
-				{
-					"$id": "#/$defs/ProgressTypeClassic",
-					"enum": [
-						"combat_progress",
-						"vow_progress",
-						"scene_challenge_progress",
-						"journey_progress",
-						"delve_progress",
-						"bonds_progress",
-						"failure_track"
-					]
-				},
-				{
-					"$id": "#/$defs/ProgressTypeStarforged",
-					"anyOf": [
-						{ "$ref": "#/$defs/LegacyTypeStarforged" },
-						{
-							"enum": [
-								"combat_progress",
-								"vow_progress",
-								"scene_challenge_progress",
-								"expedition_progress",
-								"connection_progress"
-							]
-						}
-					]
-				}
+			"anyOf": [
+				{ "$ref": "#/$defs/ProgressTypeClassic" },
+				{ "$ref": "#/$defs/ProgressTypeStarforged" }
 			]
 		},
 		"ChallengeRank": {
@@ -449,6 +429,7 @@
 			]
 		},
 		"OracleRollTemplate": {
+			"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.",
 			"type": "object",
 			"properties": {
 				"result": {
@@ -479,24 +460,24 @@
 					"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.",
 					"$ref": "#/$defs/OracleTableID"
 				},
-				"method": { "$ref": "#/$defs/OracleTableRollMethod" },
-				"times": { "minimum": 1, "default": 1, "type": "integer" }
-			}
+				"times": { "minimum": 1, "default": 1, "type": "integer" },
+				"method": { "$ref": "#/$defs/OracleTableRollMethod" }
+			},
+			"required": []
 		},
 		"OracleTableRow": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/OracleTableRowID" },
 				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
+					"type": ["integer", "null"],
+					"default": null,
+					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
@@ -508,12 +489,12 @@
 				},
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
-				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/OracleTableRowID" }
+				"template": { "$ref": "#/$defs/OracleRollTemplate" }
 			},
 			"required": ["low", "high", "result"]
 		},
 		"OracleTableMatchBehavior": {
+			"title": "Match behavior",
 			"type": "object",
 			"properties": { "text": { "$ref": "#/$defs/MarkdownString" } },
 			"required": ["text"]
@@ -533,6 +514,7 @@
 			"required": ["content_type"]
 		},
 		"OracleCollectionColumn": {
+			"description": "A column's default label is the title of the source table.",
 			"type": "object",
 			"properties": {
 				"label": { "$ref": "#/$defs/Label" },
@@ -555,11 +537,15 @@
 			"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?"
 		},
 		"OracleTable": {
+			"title": "Oracle table",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/OracleTableID" },
+				"roll": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"match": { "$ref": "#/$defs/OracleTableMatchBehavior" },
@@ -568,9 +554,6 @@
 					"items": { "$ref": "#/$defs/OracleTableRow" }
 				},
 				"rendering": { "$ref": "#/$defs/OracleTableRendering" },
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/OracleTableID" },
-				"roll": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "table"]
@@ -604,11 +587,14 @@
 			"required": ["columns"]
 		},
 		"OracleCollection": {
+			"title": "Oracle collection",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/OracleCollectionID" },
 				"extends": { "$ref": "#/$defs/OracleCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -636,8 +622,6 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/Label" }
 				},
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/OracleCollectionID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"]
@@ -652,11 +636,13 @@
 		"MoveOutcomeType": { "enum": ["miss", "weak_hit", "strong_hit"] },
 		"MoveRollType": { "enum": ["action_roll", "progress_roll", "no_roll"] },
 		"TriggerBy": {
+			"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
 			"type": "object",
 			"properties": {
 				"player": { "default": true, "type": "boolean" },
 				"ally": { "default": false, "type": "boolean" }
-			}
+			},
+			"required": []
 		},
 		"TriggerActionRollConditionOptionAttachedAssetRef": {
 			"type": "object",
@@ -716,17 +702,17 @@
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
-				},
 				"method": {
 					"default": "any",
 					"anyOf": [
 						{ "$ref": "#/$defs/MoveRollMethod" },
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
+				},
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			},
 			"required": ["roll_options"]
@@ -735,17 +721,17 @@
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
-				},
 				"method": {
 					"default": "any",
 					"anyOf": [
 						{ "$ref": "#/$defs/MoveRollMethod" },
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
+				},
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			},
 			"required": ["roll_options"]
@@ -844,39 +830,139 @@
 		"Move": {
 			"type": "object",
 			"properties": {
-				"name": { "$ref": "#/$defs/Label" },
-				"trigger": {
+				"move_type": {
+					"default": "no_roll",
+					"enum": ["action_roll", "progress_roll", "no_roll"]
+				}
+			},
+			"required": [],
+			"oneOf": [
+				{
 					"type": "object",
 					"properties": {
-						"text": {
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-							"type": "string",
-							"pattern": ".*\\.{3}",
-							"$ref": "#/$defs/MarkdownString"
-						}
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerNoRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "no_roll", "type": "string" },
+						"_source": { "$ref": "#/$defs/SourceStub" }
 					},
-					"required": ["text"]
+					"required": ["name", "trigger", "text", "move_type"]
 				},
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerActionRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "action_roll", "type": "string" },
+						"_source": { "$ref": "#/$defs/SourceStub" }
+					},
+					"required": ["name", "trigger", "text", "outcomes", "move_type"]
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"id": { "$ref": "#/$defs/MoveID" },
-				"move_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" },
-				"source": { "$ref": "#/$defs/Source" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
-			},
-			"required": ["name", "trigger", "text"]
+				{
+					"type": "object",
+					"properties": {
+						"id": { "$ref": "#/$defs/MoveID" },
+						"name": { "$ref": "#/$defs/Label" },
+						"trigger": {
+							"allOf": [
+								{
+									"type": "object",
+									"properties": {
+										"text": {
+											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+											"type": "string",
+											"pattern": ".*\\.{3}",
+											"$ref": "#/$defs/MarkdownString"
+										}
+									},
+									"required": ["text"]
+								},
+								{ "$ref": "#/$defs/TriggerProgressRoll" }
+							]
+						},
+						"text": { "$ref": "#/$defs/MarkdownString" },
+						"outcomes": {
+							"allOf": [
+								{ "$ref": "#/$defs/MoveOutcomes" },
+								{ "$ref": "#/$defs/MoveOutcomes" }
+							]
+						},
+						"oracles": {
+							"type": "array",
+							"items": { "$ref": "#/$defs/OracleTableID" }
+						},
+						"suggestions": { "$ref": "#/$defs/Suggestions" },
+						"source": { "$ref": "#/$defs/Source" },
+						"move_type": { "const": "progress_roll", "type": "string" },
+						"_source": { "$ref": "#/$defs/SourceStub" }
+					},
+					"required": ["name", "trigger", "text", "outcomes", "move_type"]
+				}
+			],
+			"additionalProperties": true
 		},
 		"MoveCategory": {
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveCategoryID" },
 				"extends": { "$ref": "#/$defs/MoveCategoryID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -886,8 +972,6 @@
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
 				},
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/MoveCategoryID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"]
@@ -896,17 +980,17 @@
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
-				},
 				"method": {
 					"default": "any",
 					"anyOf": [
 						{ "$ref": "#/$defs/MoveRollMethod" },
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
+				},
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			}
 		},
@@ -924,17 +1008,17 @@
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
-				},
 				"method": {
 					"default": "any",
 					"anyOf": [
 						{ "$ref": "#/$defs/MoveRollMethod" },
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
+				},
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			}
 		},
@@ -996,12 +1080,13 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				},
 				"trigger": {},
-				"outcomes": {},
 				"move_type": {
 					"default": "action_roll",
 					"$ref": "#/$defs/MoveRollType"
-				}
-			}
+				},
+				"outcomes": {}
+			},
+			"required": []
 		},
 		"AssetConditionMeterControlField": {
 			"type": "object",
@@ -1012,10 +1097,13 @@
 			}
 		},
 		"AssetConditionMeter": {
+			"title": "Asset condition meter",
 			"type": "object",
 			"properties": {
+				"min": { "default": 0, "type": "integer" },
 				"max": { "type": "integer" },
 				"value": { "type": "integer" },
+				"id": { "$ref": "#/$defs/AssetConditionMeterID" },
 				"label": { "$ref": "#/$defs/Label" },
 				"controls": {
 					"$comment": "Deserialize as a dictionary object.",
@@ -1025,15 +1113,15 @@
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
-				},
-				"min": { "default": 0, "type": "integer" },
-				"id": { "$ref": "#/$defs/AssetConditionMeterID" }
+				}
 			},
 			"required": ["max", "label"]
 		},
 		"AssetConditionMeterExtension": {
+			"title": "Asset condition meter",
 			"type": "object",
 			"properties": {
+				"min": { "default": 0, "type": "integer" },
 				"max": { "type": "integer" },
 				"controls": {
 					"$comment": "Deserialize as a dictionary object.",
@@ -1043,8 +1131,7 @@
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
-				},
-				"min": { "default": 0, "type": "integer" }
+				}
 			}
 		},
 		"AssetOptionField": {
@@ -1063,6 +1150,7 @@
 			"properties": { "id": { "$ref": "#/$defs/AssetControlFieldID" } }
 		},
 		"AssetAttachment": {
+			"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 			"type": "object",
 			"properties": {
 				"assets": {
@@ -1079,9 +1167,14 @@
 			"required": ["assets"]
 		},
 		"Asset": {
+			"title": "Asset",
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/AssetID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"color": { "$ref": "#/$defs/CSSColor" },
 				"options": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -1105,14 +1198,12 @@
 					"items": { "$ref": "#/$defs/AssetAbility" }
 				},
 				"condition_meter": { "$ref": "#/$defs/AssetConditionMeter" },
-				"attachments": { "$ref": "#/$defs/AssetAttachment" },
-				"id": { "$ref": "#/$defs/AssetID" },
-				"source": { "$ref": "#/$defs/Source" },
 				"count_as_impact": {
 					"default": false,
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
 					"type": "boolean"
 				},
+				"attachments": { "$ref": "#/$defs/AssetAttachment" },
 				"shared": {
 					"default": false,
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
@@ -1141,8 +1232,10 @@
 		"AssetAbility": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/AssetAbilityID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"text": { "$ref": "#/$defs/MarkdownString" },
+				"enabled": { "default": false, "type": "boolean" },
 				"moves": {
 					"description": "Unique moves added by this asset ability.",
 					"$comment": "Deserialize as a dictionary object.",
@@ -1169,6 +1262,8 @@
 						{
 							"type": "object",
 							"properties": {
+								"icon": { "$ref": "#/$defs/SVGImageURL" },
+								"color": { "$ref": "#/$defs/CSSColor" },
 								"suggestions": { "$ref": "#/$defs/Suggestions" },
 								"count_as_impact": {
 									"default": false,
@@ -1196,9 +1291,7 @@
 				"extend_moves": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveExtension" }
-				},
-				"id": { "$ref": "#/$defs/AssetAbilityID" },
-				"enabled": { "default": false, "type": "boolean" }
+				}
 			},
 			"required": ["text"]
 		},
@@ -1207,7 +1300,9 @@
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/AssetTypeID" },
 				"extends": { "$ref": "#/$defs/AssetTypeID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1218,8 +1313,6 @@
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Asset" } }
 				},
 				"member_label": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/AssetTypeID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"]
@@ -1227,9 +1320,9 @@
 		"CheckboxField": {
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "checkbox", "type": "string" },
-				"id": { "type": "string" },
 				"value": { "default": false, "type": "boolean" }
 			},
 			"required": ["label", "field_type"]
@@ -1237,40 +1330,43 @@
 		"ClockField": {
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "clock", "type": "string" },
+				"value": { "default": 0, "type": "integer" },
 				"min": { "const": 0, "type": "number" },
-				"max": { "enum": [4, 6, 8, 10] },
-				"id": { "type": "string" },
-				"value": { "default": 0, "type": "integer" }
+				"max": { "enum": [4, 6, 8, 10] }
 			},
 			"required": ["label", "field_type", "min", "max"]
 		},
 		"CounterField": {
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "counter", "type": "string" },
+				"value": { "default": 0, "type": "integer" },
 				"min": { "const": 0, "type": "number" },
-				"max": { "type": "integer" },
-				"id": { "type": "string" },
-				"value": { "default": 0, "type": "integer" }
+				"max": { "type": "integer" }
 			},
 			"required": ["label", "field_type", "min"]
 		},
 		"TextField": {
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "text", "type": "string" },
-				"value": { "type": "string" },
-				"id": { "type": "string" }
+				"value": { "type": "string" }
 			},
 			"required": ["label", "field_type"]
 		},
 		"SelectFieldStat": {
+			"title": "Select field (player stat)",
+			"description": "Select a standard player stat or condition meter.",
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "select_stat", "type": "string" },
 				"value": {
@@ -1298,14 +1394,16 @@
 							"required": ["label", "value"]
 						}
 					}
-				},
-				"id": { "type": "string" }
+				}
 			},
 			"required": ["label", "field_type", "choices"]
 		},
 		"SelectFieldRef": {
+			"title": "Select field (reference)",
+			"description": "Select a pointer to the value of an asset control or option field.",
 			"type": "object",
 			"properties": {
+				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "select_ref", "type": "string" },
 				"value": {
@@ -1333,17 +1431,19 @@
 							"required": ["label", "value"]
 						}
 					}
-				},
-				"id": { "type": "string" }
+				}
 			},
 			"required": ["label", "field_type", "choices"]
 		},
 		"DelveSite": {
+			"description": "A delve site with a theme, domain, and denizen table.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/DelveSiteID" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"theme": { "$ref": "#/$defs/DelveSiteThemeID" },
@@ -1480,8 +1580,6 @@
 						}
 					]
 				},
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/DelveSiteID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "rank", "theme", "domain", "description", "denizens"]
@@ -1489,6 +1587,7 @@
 		"DelveSiteDenizen": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/DelveSiteDenizenID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"low": { "minimum": 1, "maximum": 100, "type": "integer" },
 				"high": { "minimum": 1, "maximum": 100, "type": "integer" },
@@ -1496,8 +1595,7 @@
 					"description": "The ID of the relevant encounter, if one is specified.",
 					"$ref": "#/$defs/EncounterClassicID"
 				},
-				"frequency": { "$ref": "#/$defs/DelveSiteDenizenFrequency" },
-				"id": { "$ref": "#/$defs/DelveSiteDenizenID" }
+				"frequency": { "$ref": "#/$defs/DelveSiteDenizenFrequency" }
 			},
 			"required": ["low", "high", "frequency"]
 		},
@@ -1505,14 +1603,17 @@
 			"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"]
 		},
 		"DelveSiteDomain": {
+			"title": "Delve site domain",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"id": { "$ref": "#/$defs/DelveSiteDomainID" },
 				"card_type": { "const": "domain", "type": "string" },
 				"features": {
 					"allOf": [
@@ -1610,7 +1711,7 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["low", "high"]
 								},
 								{
 									"type": "object",
@@ -1624,7 +1725,7 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["low", "high"]
 								},
 								{
 									"type": "object",
@@ -1638,7 +1739,7 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["low", "high"]
 								}
 							],
 							"additionalItems": false,
@@ -1703,8 +1804,6 @@
 						}
 					]
 				},
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/DelveSiteDomainID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "summary", "card_type", "features", "dangers"]
@@ -1712,18 +1811,6 @@
 		"DelveSiteDomainDangerRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1735,25 +1822,15 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/DomainDangerRowID" }
+				"id": { "$ref": "#/$defs/DomainDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result"]
+			"required": ["result", "low", "high"]
 		},
 		"DelveSiteDomainFeatureRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1765,19 +1842,24 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/DomainFeatureRowID" }
+				"id": { "$ref": "#/$defs/DomainFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result"]
+			"required": ["result", "low", "high"]
 		},
 		"DelveSiteTheme": {
+			"title": "Delve site theme",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"id": { "$ref": "#/$defs/DelveSiteThemeID" },
 				"card_type": { "const": "theme", "type": "string" },
 				"features": {
 					"allOf": [
@@ -1947,8 +2029,6 @@
 						}
 					]
 				},
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/DelveSiteThemeID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "summary", "card_type", "features", "dangers"]
@@ -1956,18 +2036,6 @@
 		"DelveSiteThemeDangerRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -1979,25 +2047,15 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/ThemeDangerRowID" }
+				"id": { "$ref": "#/$defs/ThemeDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result"]
+			"required": ["result", "low", "high"]
 		},
 		"DelveSiteThemeFeatureRow": {
 			"type": "object",
 			"properties": {
-				"low": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
-				"high": {
-					"anyOf": [
-						{ "minimum": 1, "maximum": 100, "type": "integer" },
-						{ "type": "null" }
-					]
-				},
 				"result": { "$ref": "#/$defs/MarkdownString" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -2009,16 +2067,20 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
-				"id": { "$ref": "#/$defs/ThemeFeatureRowID" }
+				"id": { "$ref": "#/$defs/ThemeFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
 			},
-			"required": ["low", "high", "result"]
+			"required": ["result", "low", "high"]
 		},
 		"EncounterCollectionClassic": {
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/EncounterCollectionID" },
 				"extends": { "$ref": "#/$defs/EncounterCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
@@ -2031,17 +2093,18 @@
 					}
 				},
 				"member_label": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/EncounterCollectionID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"]
 		},
 		"EncounterClassic": {
+			"title": "Encounter (classic)",
+			"description": "An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"features": {
 					"type": "array",
@@ -2058,9 +2121,8 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
 				},
-				"your_truths": { "$ref": "#/$defs/MarkdownString" },
-				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/EncounterClassicID" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
@@ -2074,19 +2136,19 @@
 			]
 		},
 		"Rarity": {
+			"description": "A rarity, as described in Ironsworn: Delve.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/RarityID" },
 				"asset": {
 					"description": "The asset enhanced by this rarity.",
 					"$ref": "#/$defs/AssetID"
 				},
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"source": { "$ref": "#/$defs/Source" },
-				"id": { "$ref": "#/$defs/RarityID" },
 				"xp_cost": {
 					"minimum": 3,
 					"maximum": 5,
@@ -2094,15 +2156,19 @@
 					"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 					"type": "integer"
 				},
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "asset", "description"]
 		},
 		"RegionEntry": {
+			"title": "Region entry",
+			"description": "A region entry, like the Ironlands region entries found in classic Ironsworn.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"features": {
 					"type": "array",
@@ -2111,7 +2177,6 @@
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/RegionEntryID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
@@ -2124,23 +2189,26 @@
 			]
 		},
 		"WorldTruth": {
+			"title": "World truth",
+			"description": "A world truth category in the format used by Ironsworn.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
 				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/WorldTruthOption" }
 				},
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
-				"source": { "$ref": "#/$defs/Source" },
 				"id": { "$ref": "#/$defs/WorldTruthID" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "options"]
 		},
 		"WorldTruthOption": {
+			"title": "World truth option",
 			"type": "object",
 			"properties": {
 				"description": { "$ref": "#/$defs/MarkdownString" },
@@ -2156,6 +2224,7 @@
 		"ruleset": { "const": "classic", "type": "string" },
 		"source": { "$ref": "#/$defs/Source" },
 		"oracles": {
+			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2163,6 +2232,7 @@
 			}
 		},
 		"moves": {
+			"description": "A dictionary object containing move categories, which contain moves.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2170,11 +2240,13 @@
 			}
 		},
 		"assets": {
+			"description": "A dictionary object containing asset types, which contain assets.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
 		"regions": {
+			"description": "A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2182,6 +2254,7 @@
 			}
 		},
 		"encounters": {
+			"description": "A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. \"Ironlander\", \"horror\".",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2189,16 +2262,19 @@
 			}
 		},
 		"rarities": {
+			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Rarity" } }
 		},
 		"delve_sites": {
+			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSite" } }
 		},
 		"site_themes": {
+			"description": "A dictionary object containing delve site themes.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2206,6 +2282,7 @@
 			}
 		},
 		"site_domains": {
+			"description": "A dictionary object containing delve site domains.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
@@ -2213,12 +2290,14 @@
 			}
 		},
 		"world_truths": {
+			"description": "A dictionary object of world truth categories, like those presented in classic Ironsworn.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
 				"^[a-z][a-z_]*$": { "$ref": "#/$defs/WorldTruth" }
 			}
-		}
+		},
+		"_source": { "$ref": "#/$defs/SourceStub" }
 	},
-	"required": ["id", "ruleset", "source"]
+	"required": ["ruleset"]
 }

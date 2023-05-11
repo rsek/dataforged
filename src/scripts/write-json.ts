@@ -18,9 +18,9 @@ import { capitalize, forEach, merge, pick, omit } from 'lodash'
 import { type Out } from 'types'
 import path from 'path'
 import { log } from 'scripts/logger'
-import { type Ruleset } from 'schema/ruleset-starforged'
 import { getPrettierOptions } from 'scripts/getPrettierOptions'
 import * as Prettier from 'prettier'
+import { type Ruleset } from 'schema/common/metadata'
 
 export const DIR_IN = 'src/data-in'
 export const DIR_OUT = 'src/data-out'
@@ -29,8 +29,6 @@ export const ajv = new Ajv({
 	removeAdditional: 'failing',
 	// assign defaults from the schema to the validated data properties.
 	useDefaults: true,
-	// change data type, when possible, to match the type(s) in the schema.
-	coerceTypes: true,
 	strictSchema: 'log',
 	verbose: true,
 	logger: log

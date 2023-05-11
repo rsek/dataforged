@@ -101,16 +101,24 @@ const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
 
 export const DelveSiteThemeFeatureRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id']),
-		Type.Object({ id: Type.Ref(ID.ThemeFeatureRowID) })
+		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Object({
+			id: Type.Ref(ID.ThemeFeatureRowID),
+			low: Type.Integer(),
+			high: Type.Integer()
+		})
 	],
 	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
 )
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 export const DelveSiteThemeDangerRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id']),
-		Type.Object({ id: Type.Ref(ID.ThemeDangerRowID) })
+		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Object({
+			id: Type.Ref(ID.ThemeDangerRowID),
+			low: Type.Integer(),
+			high: Type.Integer()
+		})
 	],
 	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
 )
@@ -153,16 +161,24 @@ export type DelveSiteTheme = Static<typeof DelveSiteTheme>
 
 export const DelveSiteDomainFeatureRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id']),
-		Type.Object({ id: Type.Ref(ID.DomainFeatureRowID) })
+		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Object({
+			id: Type.Ref(ID.DomainFeatureRowID),
+			low: Type.Integer(),
+			high: Type.Integer()
+		})
 	],
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
 )
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id']),
-		Type.Object({ id: Type.Ref(ID.DomainDangerRowID) })
+		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Object({
+			id: Type.Ref(ID.DomainDangerRowID),
+			low: Type.Integer(),
+			high: Type.Integer()
+		})
 	],
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
 )

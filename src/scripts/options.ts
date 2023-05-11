@@ -3,10 +3,11 @@ import { type JSONSchema7 } from 'json-schema'
 import * as Paths from './paths'
 import { TypeBuilder } from '@sinclair/typebox'
 import { mapValues } from 'lodash'
+import { type JSONSchema } from 'json-schema-library'
 
 interface SchemaOptions {
 	name: string
-	schema: JSONSchema7
+	schema: JSONSchema
 	path: string
 	messages: {
 		start: string
@@ -14,22 +15,10 @@ interface SchemaOptions {
 	}
 }
 
-function cleanSchema(schema: JSONSchema7) {
-	const data = JSON.parse(JSON.stringify(schema)) as JSONSchema7
-	if (data.$defs == null) throw new Error('Schema is missing $defs')
-
-	data.$defs = mapValues(data.$defs, (value) => {
-		delete (value as any).$id
-		return value
-	})
-
-	return data
-}
-
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Dataforged',
-		schema: cleanSchema(Schema.Dataforged),
+		schema: Schema.Dataforged,
 		path: Paths.DF_SCHEMA_OUT,
 		messages: {
 			start: 'Writing Starforged-compatible schema for Dataforged',
@@ -38,7 +27,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataforgedInput',
-		schema: cleanSchema(Schema.DataforgedInput),
+		schema: Schema.DataforgedInput.getSchema(),
 		path: Paths.DF_SCHEMA_IN,
 		messages: {
 			start: 'Writing Starforged-compatible schema for Dataforged YAML input',
@@ -47,7 +36,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'Datasworn',
-		schema: cleanSchema(Schema.Datasworn),
+		schema: Schema.Datasworn,
 		path: Paths.DS_SCHEMA_OUT,
 		messages: {
 			start: 'Writing Ironsworn-compatible schema for Datasworn',
@@ -56,7 +45,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornInput',
-		schema: cleanSchema(Schema.DataswornInput),
+		schema: Schema.DataswornInput.getSchema(),
 		path: Paths.DS_SCHEMA_IN,
 		messages: {
 			start: 'Writing Ironsworn-compatible schema for Datasworn YAML input',
