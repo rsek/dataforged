@@ -1106,15 +1106,16 @@
 				},
 				"condition_meter": { "$ref": "#/$defs/AssetConditionMeter" },
 				"attachments": { "$ref": "#/$defs/AssetAttachment" },
-				"shared": {
-					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-					"type": "boolean"
-				},
 				"id": { "$ref": "#/$defs/AssetID" },
 				"source": { "$ref": "#/$defs/Source" },
 				"count_as_impact": {
 					"default": false,
 					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
+					"type": "boolean"
+				},
+				"shared": {
+					"default": false,
+					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 					"type": "boolean"
 				},
 				"_source": { "$ref": "#/$defs/SourceStub" }
@@ -1176,6 +1177,7 @@
 								},
 								"attachments": { "$ref": "#/$defs/AssetAttachment" },
 								"shared": {
+									"default": false,
 									"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 									"type": "boolean"
 								}

@@ -484,7 +484,8 @@
 				},
 				"times": { "minimum": 1, "default": 1, "type": "integer" },
 				"method": { "$ref": "#/$defs/OracleTableRollMethod" }
-			}
+			},
+			"required": ["times"]
 		},
 		"OracleTableRow": {
 			"type": "object",
@@ -1125,11 +1126,19 @@
 				},
 				"attachments": { "$ref": "#/$defs/AssetAttachment" },
 				"shared": {
+					"default": false,
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 					"type": "boolean"
 				}
 			},
-			"required": ["id", "name", "source", "abilities"]
+			"required": [
+				"id",
+				"name",
+				"source",
+				"abilities",
+				"count_as_impact",
+				"shared"
+			]
 		},
 		"AssetAbilityOptionField": {
 			"type": "object",
@@ -1189,6 +1198,7 @@
 								},
 								"attachments": { "$ref": "#/$defs/AssetAttachment" },
 								"shared": {
+									"default": false,
 									"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 									"type": "boolean"
 								}
@@ -1252,7 +1262,7 @@
 				"min": { "const": 0, "type": "number" },
 				"max": { "enum": [4, 6, 8, 10] }
 			},
-			"required": ["id", "label", "field_type", "min", "max"]
+			"required": ["id", "label", "field_type", "value", "min", "max"]
 		},
 		"CounterField": {
 			"type": "object",
@@ -1264,7 +1274,7 @@
 				"min": { "const": 0, "type": "number" },
 				"max": { "type": "integer" }
 			},
-			"required": ["id", "label", "field_type", "min"]
+			"required": ["id", "label", "field_type", "value", "min"]
 		},
 		"TextField": {
 			"type": "object",

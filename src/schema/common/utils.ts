@@ -5,8 +5,7 @@ import {
 	type TUnsafe,
 	type ObjectOptions,
 	Type,
-	type SchemaOptions,
-	TUnion
+	type SchemaOptions
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash'
 
@@ -53,7 +52,7 @@ export function DeepPartial<T extends TObject>(
 	const properties = Object.keys(schema.properties).reduce((acc, key) => {
 		const property = schema.properties[key]
 		const mapped =
-			property.type === 'object' ? DeepPartial(property as TObject) : property
+			property.Kind === 'Object' ? DeepPartial(property as TObject) : property
 		return { ...acc, [key]: Type.Optional(mapped) }
 	}, {}) as TProperties
 	return Type.Object({ ...properties }, options)

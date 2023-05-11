@@ -124,20 +124,17 @@ export const Asset = Type.Object(
 			maxItems: 3
 		}),
 		condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
-		count_as_impact: Type.Optional(
-			Type.Boolean({
-				default: false,
-				description:
-					'If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).'
-			})
-		),
+		count_as_impact: Type.Boolean({
+			default: false,
+			description:
+				'If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).'
+		}),
 		attachments: Type.Optional(Type.Ref(AssetAttachment)),
-		shared: Type.Optional(
-			Type.Boolean({
-				description:
-					"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
-			})
-		)
+		shared: Type.Boolean({
+			default: false,
+			description:
+				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
+		})
 	},
 	{ $id: '#/$defs/Asset', title: 'Asset' }
 )

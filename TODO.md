@@ -1,7 +1,9 @@
 # TODO
 
 ## v2 RC
-* [ ] discriminated unions for extension collections
+* [ ] discriminated unions for extension collections. Extension type features:
+  * [ ] clone items from another collection (w/ wildcard)
+  * [ ] clone and extend items from another collection
 * [x] rm extends from canonical oracle collections
 * [x] "roll" key for oracles
 * [x] unify into a single schema (probably a union)

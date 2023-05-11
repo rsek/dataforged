@@ -442,16 +442,16 @@ export interface Asset {
   abilities: [AssetAbility, AssetAbility, AssetAbility];
   condition_meter?: AssetConditionMeter;
   attachments?: AssetAttachment;
-  /**
-   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-   */
-  shared?: boolean;
   id?: AssetID;
   source?: Source;
   /**
    * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
    */
   count_as_impact?: boolean;
+  /**
+   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
+   */
+  shared?: boolean;
   _source?: SourceStub;
 }
 export interface SelectFieldStat {

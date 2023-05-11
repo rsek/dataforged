@@ -49,7 +49,7 @@ export const OracleTableRoll = Type.Object(
 					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
 			})
 		),
-		times: Type.Optional(Type.Integer({ minimum: 1, default: 1 })),
+		times: Type.Integer({ minimum: 1, default: 1 }),
 		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},
 	{ $id: '#/$defs/OracleTableRoll' }

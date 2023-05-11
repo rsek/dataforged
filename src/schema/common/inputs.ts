@@ -33,7 +33,7 @@ const NumberRange = (
 const Clock = NumberRange(
 	Type.Literal(0),
 	JsonEnum([4, 6, 8, 10]),
-	Type.Optional(Type.Integer({ default: 0 }))
+	Type.Integer({ default: 0 })
 )
 export type Clock = Static<typeof Clock>
 
@@ -43,7 +43,7 @@ export type Meter = Static<typeof Meter>
 const Counter = NumberRange(
 	Type.Literal(0),
 	Type.Optional(Type.Integer()),
-	Type.Optional(Type.Integer({ default: 0 }))
+	Type.Integer({ default: 0 })
 )
 export type Counter = Static<typeof Counter>
 

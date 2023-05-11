@@ -263,7 +263,7 @@ export interface OracleTableRow {
 }
 export interface OracleTableRoll {
   oracle?: OracleTableID1;
-  times?: number;
+  times: number;
   method?: OracleTableRollMethod;
 }
 /**
@@ -412,12 +412,12 @@ export interface Asset {
   /**
    * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
    */
-  count_as_impact?: boolean;
+  count_as_impact: boolean;
   attachments?: AssetAttachment;
   /**
    * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
    */
-  shared?: boolean;
+  shared: boolean;
 }
 /**
  * Select a standard player stat or condition meter.
@@ -488,7 +488,7 @@ export interface ClockField {
   id: string;
   label: Label;
   field_type: "clock";
-  value?: number;
+  value: number;
   min: 0;
   max: 4 | 6 | 8 | 10;
 }
@@ -496,7 +496,7 @@ export interface CounterField {
   id: string;
   label: Label;
   field_type: "counter";
-  value?: number;
+  value: number;
   min: 0;
   max?: number;
 }
