@@ -3,13 +3,20 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { type TObject, TypeGuard, type TSchema, Type } from '@sinclair/typebox'
-import _, { cloneDeep, mapValues, omit, set } from 'lodash'
+import { type TSchema, Type } from '@sinclair/typebox'
+import { mapValues, omit, set } from 'lodash'
 import { SourceStub } from 'schema/common/metadata'
-import { PartialBy } from 'schema/common/utils'
-import { SOURCE_PARTIAL_KEY } from './build-schema'
 import { type JSONSchema7 } from 'json-schema'
-import { Draft07 } from 'json-schema-library'
+import { type Draft07 } from 'json-schema-library'
+
+export function prepareInputSchema(draft: Draft07) {
+	draft.eachSchema((schema) => {
+		schema = setOptional(schema, 'id')
+		schema = setOptionalWhenDefault(schema)
+		schema = addSourceCascade(schema)
+	})
+	return draft
+}
 
 export function cleanSchema(schema: JSONSchema7) {
 	const data = JSON.parse(JSON.stringify(schema)) as JSONSchema7

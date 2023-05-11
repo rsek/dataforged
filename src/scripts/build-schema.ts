@@ -4,13 +4,7 @@ import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
 import { SourcebookClassic, SourcebookStarforged } from 'schema/sourcebooks'
-import {
-	addSourceCascade,
-	cleanSchema,
-	setOptional,
-	// getDataEntryDefinitions,
-	setOptionalWhenDefault
-} from './transform-schema'
+import { cleanSchema, prepareInputSchema } from './transform-schema'
 import { Draft07 } from 'json-schema-library'
 
 export const DATASWORN_VERSION = '2.0.0-dev'
@@ -85,15 +79,5 @@ export const DataswornInput = prepareInputSchema(
 		})
 	)
 )
-
-function prepareInputSchema(draft: Draft07) {
-	draft.eachSchema((schema) => {
-		// console.log('CURRENT SCHEMA', schema)
-		schema = setOptional(schema, 'id')
-		schema = setOptionalWhenDefault(schema)
-		schema = addSourceCascade(schema)
-	})
-	return draft
-}
 
 // console.log(JSON.stringify(DataswornInput.getSchema(), undefined, '\t'))
