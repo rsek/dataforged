@@ -7,7 +7,7 @@ import { writeFile } from 'fs/promises'
 import { log } from './logger'
 import { schemaOptions } from 'scripts/options'
 import { validator } from 'scripts/validator'
-import { getPrettierOptions } from './getPrettierOptions'
+import { getPrettierOptions } from './prettier'
 
 for (const options of schemaOptions) {
 	log.info(options.messages.start)

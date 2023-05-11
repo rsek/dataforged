@@ -18,7 +18,7 @@ import { capitalize, forEach, merge, pick, omit } from 'lodash'
 import { type Out } from 'types'
 import path from 'path'
 import { log } from 'scripts/logger'
-import { getPrettierOptions } from 'scripts/getPrettierOptions'
+import { getPrettierOptions } from 'scripts/prettier'
 import * as Prettier from 'prettier'
 import { type Ruleset } from 'schema/common/metadata'
 
