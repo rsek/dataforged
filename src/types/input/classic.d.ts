@@ -358,8 +358,10 @@ export interface Source {
   url: string;
   /**
    * An absolute URL pointing to the location where this element's license can be found.
+   *
+   * A `null` here means that the content provides *no* license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
    */
-  license: string;
+  license: string | null;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -499,8 +501,10 @@ export interface SourceStub {
   url?: string;
   /**
    * An absolute URL pointing to the location where this element's license can be found.
+   *
+   * A `null` here means that the content provides *no* license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
    */
-  license?: string;
+  license?: string | null;
 }
 export interface OracleCollectionRendering {
   columns: {

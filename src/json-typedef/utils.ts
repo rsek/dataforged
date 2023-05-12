@@ -44,7 +44,7 @@ export function getMetadata<T extends TAnySchema>(schema: T) {
 		'minItems',
 		'maxItems'
 	)
-	if (Object.keys(metadata).length === 0) return undefined
+	if (Object.keys(metadata)?.length === 0) return undefined
 	return metadata
 }
 

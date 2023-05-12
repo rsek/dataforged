@@ -67,15 +67,22 @@ export const Source = Type.Object(
 			description: 'An absolute URL where the source document is available.',
 			examples: ['https://ironswornrpg.com']
 		}),
-		license: Type.String({
-			format: 'uri',
-			description:
-				"An absolute URL pointing to the location where this element's license can be found.",
-			examples: [
-				'https://creativecommons.org/licenses/by/4.0',
-				'https://creativecommons.org/licenses/by-nc-sa/4.0'
-			]
-		})
+		license: Type.Union(
+			[
+				Type.String({
+					format: 'uri'
+				}),
+				Type.Null()
+			],
+			{
+				description:
+					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here means that the content provides *no* license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.",
+				examples: [
+					'https://creativecommons.org/licenses/by/4.0',
+					'https://creativecommons.org/licenses/by-nc-sa/4.0'
+				]
+			}
+		)
 	},
 	{
 		description: 'Metadata describing the original source of this item',

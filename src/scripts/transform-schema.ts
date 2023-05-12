@@ -7,15 +7,28 @@ import { type TSchema, Type } from '@sinclair/typebox'
 import { mapValues, omit, set } from 'lodash'
 import { SourceStub } from 'schema/common/metadata'
 import { type JSONSchema7 } from 'json-schema'
-import { type Draft07 } from 'json-schema-library'
+import { Draft07 } from 'json-schema-library'
 
-export function prepareInputSchema(draft: Draft07) {
-	draft.eachSchema((schema) => {
-		schema = setOptional(schema, 'id')
-		schema = setOptionalWhenDefault(schema)
-		schema = addSourceCascade(schema)
+export function prepareSchema(schema: JSONSchema7) {
+	const draft = new Draft07(schema)
+	draft.eachSchema((subschema) => {
+		if (subschema.$id && !subschema.title && !subschema.ref) {
+			subschema.title = subschema.$id.replace('#/$defs/', '')
+		}
+
+		subschema = omitProperties(subschema, '$id')
 	})
-	return draft
+	return draft.getSchema() as JSONSchema7
+}
+
+export function prepareInputSchema(schema: JSONSchema7) {
+	const draft = new Draft07(schema)
+	draft.eachSchema((subschema) => {
+		subschema = setOptional(subschema, 'id')
+		subschema = setOptionalWhenDefault(subschema)
+		subschema = addSourceCascade(subschema)
+	})
+	return draft.getSchema() as JSONSchema7
 }
 
 export function cleanSchema(schema: JSONSchema7) {
@@ -63,7 +76,7 @@ export function setOptionalWhenDefault(schema: JSONSchema7) {
 		keysWithDefaults.push(key)
 	}
 	// no defaultable properties found: no changes required
-	if (keysWithDefaults.length === 0) return schema
+	// if (keysWithDefaults?.length === 0) return schema
 
 	schema = setOptional(schema, ...keysWithDefaults)
 	return schema
@@ -73,6 +86,7 @@ export function setOptionalWhenDefault(schema: JSONSchema7) {
  * Omits properties from an object schema.
  */
 export function omitProperties(schema: JSONSchema7, ...keys: string[]) {
+	if (schema.properties == null) return schema
 	schema = setOptional(schema, ...keys)
 	schema.properties = omit(schema.properties, ...keys)
 	return schema

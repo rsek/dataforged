@@ -1,7 +1,7 @@
 import Winston from 'winston'
 import { type TransformableInfo } from 'logform'
 
-const { combine, timestamp, label, printf } = Winston.format
+const { combine, timestamp, label, printf, colorize } = Winston.format
 
 const logFormat = printf(
 	({ level, message, label, timestamp }: TransformableInfo) =>
@@ -13,7 +13,12 @@ const log = Winston.createLogger({
 		label({ label: 'Dataforged' }),
 		timestamp({ format: 'hh:mm:ss.SSS' }),
 		logFormat
+		// colorize({
+		// 	level: true,
+		// 	colors: { warn: 'purple', info: 'blue', error: 'red' }
+		// })
 	),
+
 	transports: [new Winston.transports.Console({})]
 })
 

@@ -39,7 +39,8 @@ module.exports = {
 			'error',
 			{ prefer: 'type-imports', fixStyle: 'inline-type-imports' }
 		],
-		'@typescript-eslint/explicit-function-return-type': 'off'
+		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/strict-boolean-expressions': 'off'
 	},
 	overrides: [
 		{
