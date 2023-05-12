@@ -162,7 +162,7 @@ export const DiceNotation = Type.RegEx(
 export const OracleTable = Abstract.SourcedNode(
 	{
 		id: Type.Ref(ID.OracleTableID),
-		roll: Type.Ref(DiceNotation, { default: '1d100' }),
+		dice: Type.Ref(DiceNotation, { default: '1d100' }),
 		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),

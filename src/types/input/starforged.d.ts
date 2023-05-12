@@ -313,7 +313,7 @@ export interface Source {
   /**
    * An absolute URL pointing to the location where this element's license can be found.
    *
-   * A `null` here means that the content provides *no* license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
+   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
    */
   license: string | null;
 }
@@ -367,7 +367,7 @@ export interface OracleTable {
   source?: Source;
   suggestions?: Suggestions;
   id?: OracleTableID;
-  roll?: DiceNotation;
+  dice?: DiceNotation;
   summary?: MarkdownString;
   description?: MarkdownString;
   match?: MatchBehavior;
@@ -456,7 +456,7 @@ export interface SourceStub {
   /**
    * An absolute URL pointing to the location where this element's license can be found.
    *
-   * A `null` here means that the content provides *no* license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
+   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.
    */
   license?: string | null;
 }
