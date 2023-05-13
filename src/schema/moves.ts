@@ -170,7 +170,7 @@ const TriggerBase = Type.Object({
 	})
 })
 
-const TriggerExtensionBase = Type.Omit(TriggerBase, ['text'])
+const TriggerAugmentBase = Type.Omit(TriggerBase, ['text'])
 
 export const TriggerActionRoll = Type.Composite(
 	[
@@ -314,108 +314,103 @@ export const MoveCategory = Abstract.Collection(
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export const TriggerActionRollConditionExtension = PartialExcept(
+export const TriggerActionRollConditionAugment = PartialExcept(
 	TriggerActionRollCondition,
 	['text'],
-	{ $id: '#/$defs/TriggerActionRollConditionExtension' }
+	{ $id: '#/$defs/TriggerActionRollConditionAugment' }
 )
-export type TriggerActionRollConditionExtension = Static<
-	typeof TriggerActionRollConditionExtension
+export type TriggerActionRollConditionAugment = Static<
+	typeof TriggerActionRollConditionAugment
 >
 
-export const TriggerActionRollExtension = Type.Composite(
+export const TriggerActionRollAugment = Type.Composite(
 	[
-		TriggerExtensionBase,
+		TriggerAugmentBase,
 		Type.Object({
-			conditions: Type.Array(Type.Ref(TriggerActionRollConditionExtension))
+			conditions: Type.Array(Type.Ref(TriggerActionRollConditionAugment))
 		})
 	],
-	{ $id: '#/$defs/TriggerActionRollExtension' }
+	{ $id: '#/$defs/TriggerActionRollAugment' }
 )
-export type TriggerActionRollExtension = Static<
-	typeof TriggerActionRollExtension
->
+export type TriggerActionRollAugment = Static<typeof TriggerActionRollAugment>
 
-export const TriggerProgressRollConditionExtension = PartialExcept(
+export const TriggerProgressRollConditionAugment = PartialExcept(
 	TriggerProgressRollCondition,
 	['text'],
-	{ $id: '#/$defs/TriggerProgressRollConditionExtension' }
+	{ $id: '#/$defs/TriggerProgressRollConditionAugment' }
 )
-export type TriggerProgressRollConditionExtension = Static<
-	typeof TriggerProgressRollConditionExtension
+export type TriggerProgressRollConditionAugment = Static<
+	typeof TriggerProgressRollConditionAugment
 >
 
-export const TriggerProgressRollExtension = Type.Composite(
+export const TriggerProgressRollAugment = Type.Composite(
 	[
-		TriggerExtensionBase,
+		TriggerAugmentBase,
 		Type.Object({
-			conditions: Type.Array(Type.Ref(TriggerProgressRollConditionExtension))
+			conditions: Type.Array(Type.Ref(TriggerProgressRollConditionAugment))
 		})
 	],
-	{ $id: '#/$defs/TriggerProgressRollExtension' }
+	{ $id: '#/$defs/TriggerProgressRollAugment' }
 )
-export type TriggerProgressRollExtension = Static<
-	typeof TriggerProgressRollExtension
+export type TriggerProgressRollAugment = Static<
+	typeof TriggerProgressRollAugment
 >
 
-export const TriggerNoRollExtension = Type.Composite([
-	TriggerExtensionBase,
+export const TriggerNoRollAugment = Type.Composite([
+	TriggerAugmentBase,
 	Type.Object({
 		conditions: Type.Array(Type.Ref(TriggerNoRollCondition))
 	})
 ])
-export type TriggerNoRollExtension = Static<typeof TriggerNoRollExtension>
+export type TriggerNoRollAugment = Static<typeof TriggerNoRollAugment>
 
-export const MoveOutcomeExtension = Type.Partial(MoveOutcome, {
-	$id: '#/$defs/MoveOutcomeExtension'
+export const MoveOutcomeAugment = Type.Partial(MoveOutcome, {
+	$id: '#/$defs/MoveOutcomeAugment'
 })
-export const MoveOutcomeMatchableExtension = Type.Partial(
-	MoveOutcomeMatchable,
-	{ $id: '#/$defs/MoveOutcomeMatchableExtension' }
-)
+export const MoveOutcomeMatchableAugment = Type.Partial(MoveOutcomeMatchable, {
+	$id: '#/$defs/MoveOutcomeMatchableAugment'
+})
 
-export const MoveOutcomesExtension = Type.Object(
+export const MoveOutcomesAugment = Type.Object(
 	{
-		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableExtension)),
-		weak_hit: Type.Optional(Type.Ref(MoveOutcomeExtension)),
-		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableExtension))
+		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment)),
+		weak_hit: Type.Optional(Type.Ref(MoveOutcomeAugment)),
+		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment))
 	},
 	{
-		$id: '#/$defs/MoveOutcomesExtension'
+		$id: '#/$defs/MoveOutcomesAugment'
 	}
 )
-export type MoveOutcomesExtension = Static<typeof MoveOutcomesExtension>
+export type MoveOutcomesAugment = Static<typeof MoveOutcomesAugment>
 
-const MoveActionRollExtensionStub = Type.Composite([
+const MoveActionRollAugmentStub = Type.Composite([
 	Type.Pick(MoveActionRollStub, ['move_type']),
 	Type.Object({
-		trigger: TriggerActionRollExtension,
-		outcomes: Type.Optional(Type.Ref(MoveOutcomesExtension))
+		trigger: TriggerActionRollAugment,
+		outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
 	})
 ])
-type MoveActionRollExtensionStub = Static<typeof MoveActionRollExtensionStub>
+type MoveActionRollAugmentStub = Static<typeof MoveActionRollAugmentStub>
 
-const MoveProgressRollExtensionStub = Type.Composite([
+const MoveProgressRollAugmentStub = Type.Composite([
 	Type.Pick(MoveProgressRollStub, ['move_type']),
 	Type.Object({
-		trigger: TriggerProgressRollExtension,
-		outcomes: Type.Optional(Type.Ref(MoveOutcomesExtension))
+		trigger: TriggerProgressRollAugment,
+		outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
 	})
 ])
-type MoveProgressRollExtensionStub = Static<
-	typeof MoveProgressRollExtensionStub
->
+type MoveProgressRollAugmentStub = Static<typeof MoveProgressRollAugmentStub>
 
-const MoveNoRollExtensionStub = Type.Composite([
+const MoveNoRollAugmentStub = Type.Composite([
 	Type.Pick(MoveNoRollStub, ['move_type']),
-	Type.Object({ trigger: TriggerNoRollExtension })
+	Type.Object({ trigger: TriggerNoRollAugment })
 ])
-type MoveNoRollExtensionStub = Static<typeof MoveNoRollExtensionStub>
+type MoveNoRollAugmentStub = Static<typeof MoveNoRollAugmentStub>
 
-export const MoveExtension = Type.Composite(
+export const MoveAugment = Type.Composite(
 	[
 		Type.Partial(
-			Abstract.ExtendMany(
+			Abstract.AugmentMany(
 				Type.Pick(MoveBase, ['id', 'oracles', 'suggestions', 'text']),
 				Type.Ref(MoveIDWildcard)
 			)
@@ -431,33 +426,33 @@ export const MoveExtension = Type.Composite(
 			outcomes: Type.Optional(Type.Any())
 		}),
 		Type.Unsafe<
-			| MoveActionRollExtensionStub
-			| MoveProgressRollExtensionStub
-			| MoveNoRollExtensionStub
+			| MoveActionRollAugmentStub
+			| MoveProgressRollAugmentStub
+			| MoveNoRollAugmentStub
 		>({
 			type: 'object',
 			oneOf: [
-				MoveActionRollExtensionStub,
-				MoveProgressRollExtensionStub,
-				MoveNoRollExtensionStub
+				MoveActionRollAugmentStub,
+				MoveProgressRollAugmentStub,
+				MoveNoRollAugmentStub
 			]
 		}) as any
 		// union of type specific move
 	],
 	{
-		$id: '#/$defs/MoveExtension'
+		$id: '#/$defs/MoveAugment'
 	}
 )
 
-type MoveExtensionStub = Simplify<
+type MoveAugmentStub = Simplify<
 	Partial<Pick<Move, 'move_type' | 'text' | 'oracles' | 'suggestions'>> & {
-		extends?: MoveIDWildcard[]
+		augments?: MoveIDWildcard[]
 	}
 >
 
-export type MoveExtension = MoveExtensionStub &
+export type MoveAugment = MoveAugmentStub &
 	(
-		| MoveActionRollExtensionStub
-		| MoveProgressRollExtensionStub
-		| MoveNoRollExtensionStub
+		| MoveActionRollAugmentStub
+		| MoveProgressRollAugmentStub
+		| MoveNoRollAugmentStub
 	)

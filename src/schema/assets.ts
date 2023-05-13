@@ -52,9 +52,9 @@ export const AssetConditionMeter = Type.Object(
 	{ $id: '#/$defs/AssetConditionMeter', title: 'Asset condition meter' }
 )
 
-export const AssetConditionMeterExtension = Type.Partial(
+export const AssetConditionMeterAugment = Type.Partial(
 	Type.Omit(AssetConditionMeter, ['label', 'value', 'id']),
-	{ $id: '#/$defs/AssetConditionMeterExtension' }
+	{ $id: '#/$defs/AssetConditionMeterAugment' }
 )
 
 export const AssetOptionField = AssetField(
@@ -63,14 +63,14 @@ export const AssetOptionField = AssetField(
 	[Inputs.SelectFieldStat, Inputs.TextField]
 )
 
-// TODO: selectFieldExtendAsset. for e.g. Ironclad
+// TODO: selectFieldAugmentAsset. for e.g. Ironclad
 export const AssetControlField = AssetField(
 	'AssetControlField',
 	ID.AssetControlFieldID,
 	[Inputs.CheckboxField]
 )
 
-function AssetExtendSelf<T extends TObject>(
+function AssetAugmentSelf<T extends TObject>(
 	tAsset: T,
 	omitKeys: Array<keyof Static<TObject>> = []
 ) {
@@ -81,11 +81,11 @@ function AssetExtendSelf<T extends TObject>(
 		'controls' // most are just concerned with altering a condition meter or sth
 	]
 	if (omitKeys.includes('condition_meter'))
-		return Abstract.NodeExtendSelf(tAsset as any, omitKeys)
+		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys)
 	return Type.Intersect([
-		Abstract.NodeExtendSelf(tAsset as any, [...omitKeys, 'condition_meter']),
+		Abstract.NodeAugmentSelf(tAsset as any, [...omitKeys, 'condition_meter']),
 		Type.Object({
-			condition_meter: Type.Optional(Type.Ref(AssetConditionMeterExtension))
+			condition_meter: Type.Optional(Type.Ref(AssetConditionMeterAugment))
 		})
 	])
 }
@@ -177,8 +177,8 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		extend_asset: Type.Optional(AssetExtendSelf(Asset as any, ['abilities'])),
-		extend_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveExtension)))
+		extend_asset: Type.Optional(AssetAugmentSelf(Asset as any, ['abilities'])),
+		extend_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveAugment)))
 	},
 	{ $id: '#/$defs/AssetAbility' }
 )
@@ -194,15 +194,15 @@ export const AssetType = Abstract.Collection(
 )
 export type AssetType = Static<typeof AssetType>
 
-const AssetTypeExtension = Type.Composite(
+const AssetTypeAugment = Type.Composite(
 	[
 		Type.Object({
 			type: Type.Literal('extension')
 		})
 	],
-	{ $id: '#/$defs/AssetTypeExtension' }
+	{ $id: '#/$defs/AssetTypeAugment' }
 )
-export type AssetTypeExtension = Static<typeof AssetTypeExtension>
+export type AssetTypeAugment = Static<typeof AssetTypeAugment>
 
 const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
 	$id: '#/$defs/AssetImportAbility'

@@ -114,9 +114,9 @@ export const UnionSelectFieldStat: JTDSchemaType<
 // }
 
 /** field_type: 'select_asset_extension' */
-export const UnionChoicesFieldAssetExtension: JTDSchemaType<
-	Omit<Types.Inputs.SelectFieldExtendAsset, 'field_type'>,
-	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
+export const UnionChoicesFieldAssetAugment: JTDSchemaType<
+	Omit<Types.Inputs.SelectFieldAsset, 'field_type'>,
+	{ ID: string; Label: string; AssetAugment: Types.Assets.AssetAugment }
 > = {
 	properties: {
 		id: { ref: 'ID' },
@@ -125,7 +125,7 @@ export const UnionChoicesFieldAssetExtension: JTDSchemaType<
 			values: {
 				properties: {
 					label: { ref: 'Label' },
-					value: { ref: 'AssetExtension' }
+					value: { ref: 'AssetAugment' }
 				},
 				optionalProperties: {
 					selected: { type: 'boolean' }
@@ -134,6 +134,6 @@ export const UnionChoicesFieldAssetExtension: JTDSchemaType<
 		}
 	},
 	optionalProperties: {
-		value: { ref: 'AssetExtension' }
+		value: { ref: 'AssetAugment' }
 	}
 }

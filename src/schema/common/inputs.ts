@@ -99,7 +99,7 @@ export interface InputField<T extends InputFieldType, V> {
 	value?: V
 }
 
-export function InputFieldExtension<T extends ReturnType<typeof InputField>>(
+export function InputFieldAugment<T extends ReturnType<typeof InputField>>(
 	t: T
 ) {
 	return Type.Omit(t, ['field_type', 'label', 'value'])

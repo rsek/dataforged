@@ -134,20 +134,20 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
 export function PartialDeep<T extends TSchema>(t: T) {}
 
 /**
- * Extends a single rules element
+ * s a single rules element
  */
-export function ExtendOne<T extends TObject<{ id: TString | TRef<TString> }>>(
+export function AugmentOne<T extends TObject<{ id: TString | TRef<TString> }>>(
 	t: T
 ) {
 	return Type.Composite([
 		OmitMeta(t),
-		Type.Object({ extends: Type.Optional(t.properties.id) })
+		Type.Object({ augments: Type.Optional(t.properties.id) })
 	])
 }
-export type ExtendOne<T extends TObject<{ id: TString | TRef<TString> }>> =
-	Static<ReturnType<typeof ExtendOne<T>>>
+export type AugmentOne<T extends TObject<{ id: TString | TRef<TString> }>> =
+	Static<ReturnType<typeof AugmentOne<T>>>
 
-export function ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>>(
+export function AugmentMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 	t: T,
 	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
@@ -155,13 +155,13 @@ export function ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 	return Type.Composite(
 		[
 			Utils.DeepPartial(OmitMeta(t)),
-			Type.Object({ extends: Type.Optional(Type.Array(extendIds)) })
+			Type.Object({ augments: Type.Optional(Type.Array(extendIds)) })
 		],
 		options
 	)
 }
-export type ExtendMany<T extends TObject<{ id: TString | TRef<TString> }>> =
-	Static<ReturnType<typeof ExtendMany<T>>>
+export type AugmentMany<T extends TObject<{ id: TString | TRef<TString> }>> =
+	Static<ReturnType<typeof AugmentMany<T>>>
 
 export function Collection<T extends TRef>(
 	memberSchema: T,
@@ -172,7 +172,7 @@ export function Collection<T extends TRef>(
 	return SourcedNode(
 		{
 			id: idPattern,
-			extends: Type.Optional(idPattern),
+			augments: Type.Optional(idPattern),
 			color: Type.Optional(Type.Ref(Metadata.CSSColor)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),
@@ -213,7 +213,7 @@ export type RecursiveCollection<T> = Collection<T> & {
 /**
  * Note that `id` and `source` are always omitted.
  */
-export function NodeExtendSelf<
+export function NodeAugmentSelf<
 	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
 >(t: T, omitKeys: Array<keyof Static<T>> = [], options: SchemaOptions = {}) {
 	return Utils.DeepPartial(
@@ -225,7 +225,7 @@ export function NodeExtendSelf<
 /**
  * Note that `id` is always omitted.
  */
-export function NodeExtendForeign<
+export function NodeAugmentForeign<
 	T extends TObject<{
 		id: TString | TRef<TString>
 		source?: TObject
@@ -242,7 +242,7 @@ export function NodeExtendForeign<
 			Utils.DeepPartial(
 				Type.Omit(t, [...omitKeys, 'id', 'source', 'name'])
 			) as TObject,
-			Type.Object({ extends: Type.Optional(Type.Array(extendsIDType)) })
+			Type.Object({ augments: Type.Optional(Type.Array(extendsIDType)) })
 		],
 		options
 	)

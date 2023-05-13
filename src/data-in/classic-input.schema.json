@@ -732,7 +732,7 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/OracleCollectionID" },
-				"extends": { "$ref": "#/$defs/OracleCollectionID" },
+				"augments": { "$ref": "#/$defs/OracleCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
@@ -1149,7 +1149,7 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/MoveCategoryID" },
-				"extends": { "$ref": "#/$defs/MoveCategoryID" },
+				"augments": { "$ref": "#/$defs/MoveCategoryID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
@@ -1163,8 +1163,8 @@
 			"required": ["name"],
 			"title": "MoveCategory"
 		},
-		"TriggerActionRollConditionExtension": {
-			"$id": "#/$defs/TriggerActionRollConditionExtension",
+		"TriggerActionRollConditionAugment": {
+			"$id": "#/$defs/TriggerActionRollConditionAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
@@ -1181,22 +1181,22 @@
 					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			},
-			"title": "TriggerActionRollConditionExtension"
+			"title": "TriggerActionRollConditionAugment"
 		},
-		"TriggerActionRollExtension": {
-			"$id": "#/$defs/TriggerActionRollExtension",
+		"TriggerActionRollAugment": {
+			"$id": "#/$defs/TriggerActionRollAugment",
 			"type": "object",
 			"properties": {
 				"conditions": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionExtension" }
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionAugment" }
 				}
 			},
 			"required": ["conditions"],
-			"title": "TriggerActionRollExtension"
+			"title": "TriggerActionRollAugment"
 		},
-		"TriggerProgressRollConditionExtension": {
-			"$id": "#/$defs/TriggerProgressRollConditionExtension",
+		"TriggerProgressRollConditionAugment": {
+			"$id": "#/$defs/TriggerProgressRollConditionAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
@@ -1213,21 +1213,21 @@
 					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			},
-			"title": "TriggerProgressRollConditionExtension"
+			"title": "TriggerProgressRollConditionAugment"
 		},
-		"TriggerProgressRollExtension": {
-			"$id": "#/$defs/TriggerProgressRollExtension",
+		"TriggerProgressRollAugment": {
+			"$id": "#/$defs/TriggerProgressRollAugment",
 			"type": "object",
 			"properties": {
 				"conditions": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionExtension" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionAugment" }
 				}
 			},
 			"required": ["conditions"],
-			"title": "TriggerProgressRollExtension"
+			"title": "TriggerProgressRollAugment"
 		},
-		"TriggerNoRollExtension": {
+		"TriggerNoRollAugment": {
 			"type": "object",
 			"properties": {
 				"conditions": {
@@ -1237,18 +1237,18 @@
 			},
 			"required": ["conditions"]
 		},
-		"MoveOutcomeExtension": {
-			"$id": "#/$defs/MoveOutcomeExtension",
+		"MoveOutcomeAugment": {
+			"$id": "#/$defs/MoveOutcomeAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
 				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
 				"reroll": { "$ref": "#/$defs/MoveReroll" }
 			},
-			"title": "MoveOutcomeExtension"
+			"title": "MoveOutcomeAugment"
 		},
-		"MoveOutcomeMatchableExtension": {
-			"$id": "#/$defs/MoveOutcomeMatchableExtension",
+		"MoveOutcomeMatchableAugment": {
+			"$id": "#/$defs/MoveOutcomeMatchableAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
@@ -1256,20 +1256,20 @@
 				"reroll": { "$ref": "#/$defs/MoveReroll" },
 				"match": { "$ref": "#/$defs/MoveOutcome" }
 			},
-			"title": "MoveOutcomeMatchableExtension"
+			"title": "MoveOutcomeMatchableAugment"
 		},
-		"MoveOutcomesExtension": {
-			"$id": "#/$defs/MoveOutcomesExtension",
+		"MoveOutcomesAugment": {
+			"$id": "#/$defs/MoveOutcomesAugment",
 			"type": "object",
 			"properties": {
-				"miss": { "$ref": "#/$defs/MoveOutcomeMatchableExtension" },
-				"weak_hit": { "$ref": "#/$defs/MoveOutcomeExtension" },
-				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchableExtension" }
+				"miss": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" },
+				"weak_hit": { "$ref": "#/$defs/MoveOutcomeAugment" },
+				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" }
 			},
-			"title": "MoveOutcomesExtension"
+			"title": "MoveOutcomesAugment"
 		},
-		"MoveExtension": {
-			"$id": "#/$defs/MoveExtension",
+		"MoveAugment": {
+			"$id": "#/$defs/MoveAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
@@ -1277,7 +1277,7 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"extends": {
+				"augments": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				},
@@ -1289,7 +1289,7 @@
 				"outcomes": {}
 			},
 			"required": [],
-			"title": "MoveExtension"
+			"title": "MoveAugment"
 		},
 		"AssetConditionMeterControlField": {
 			"type": "object",
@@ -1322,8 +1322,8 @@
 			},
 			"required": ["max", "label"]
 		},
-		"AssetConditionMeterExtension": {
-			"$id": "#/$defs/AssetConditionMeterExtension",
+		"AssetConditionMeterAugment": {
+			"$id": "#/$defs/AssetConditionMeterAugment",
 			"title": "Asset condition meter",
 			"type": "object",
 			"properties": {
@@ -1496,7 +1496,7 @@
 							"type": "object",
 							"properties": {
 								"condition_meter": {
-									"$ref": "#/$defs/AssetConditionMeterExtension"
+									"$ref": "#/$defs/AssetConditionMeterAugment"
 								}
 							}
 						}
@@ -1504,7 +1504,7 @@
 				},
 				"extend_moves": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/MoveExtension" }
+					"items": { "$ref": "#/$defs/MoveAugment" }
 				}
 			},
 			"required": ["text"],
@@ -1519,7 +1519,7 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/AssetTypeID" },
-				"extends": { "$ref": "#/$defs/AssetTypeID" },
+				"augments": { "$ref": "#/$defs/AssetTypeID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
@@ -2332,7 +2332,7 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/EncounterCollectionID" },
-				"extends": { "$ref": "#/$defs/EncounterCollectionID" },
+				"augments": { "$ref": "#/$defs/EncounterCollectionID" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },

@@ -431,17 +431,17 @@ export const Move: JTDSchemaType<
 	}
 }
 
-export const MoveExtension: JTDSchemaType<
-	Types.Moves.MoveExtension,
+export const MoveAugment: JTDSchemaType<
+	Types.Moves.MoveAugment,
 	{
 		MoveIDWildcard: string
 		MoveID: string
 		OracleID: string
 		MarkdownString: string
-		MoveOutcomesExtension: Types.Moves.MoveOutcomesExtension
-		TriggerActionRollExtension: Types.Moves.TriggerActionRollExtension
-		TriggerProgressRollExtension: Types.Moves.TriggerProgressRollExtension
-		TriggerNoRollExtension: Types.Moves.TriggerNoRollExtension
+		MoveOutcomesAugment: Types.Moves.MoveOutcomesAugment
+		TriggerActionRollAugment: Types.Moves.TriggerActionRollAugment
+		TriggerProgressRollAugment: Types.Moves.TriggerProgressRollAugment
+		TriggerNoRollAugment: Types.Moves.TriggerNoRollAugment
 		Suggestions: Suggestions
 	}
 > = {
@@ -450,39 +450,39 @@ export const MoveExtension: JTDSchemaType<
 		action_roll: {
 			properties: {
 				trigger: {
-					ref: 'TriggerActionRollExtension'
+					ref: 'TriggerActionRollAugment'
 				}
 			},
 			optionalProperties: {
-				extends: { elements: { ref: 'MoveIDWildcard' } },
+				augments: { elements: { ref: 'MoveIDWildcard' } },
 				oracles: { elements: { ref: 'OracleID' } },
 				suggestions: { ref: 'Suggestions' },
 				text: { ref: 'MarkdownString' },
-				outcomes: { ref: 'MoveOutcomesExtension' }
+				outcomes: { ref: 'MoveOutcomesAugment' }
 			}
 		},
 		progress_roll: {
 			properties: {
 				trigger: {
-					ref: 'TriggerProgressRollExtension'
+					ref: 'TriggerProgressRollAugment'
 				}
 			},
 			optionalProperties: {
-				extends: { elements: { ref: 'MoveIDWildcard' } },
+				augments: { elements: { ref: 'MoveIDWildcard' } },
 				oracles: { elements: { ref: 'OracleID' } },
 				suggestions: { ref: 'Suggestions' },
 				text: { ref: 'MarkdownString' },
-				outcomes: { ref: 'MoveOutcomesExtension' }
+				outcomes: { ref: 'MoveOutcomesAugment' }
 			}
 		},
 		no_roll: {
 			properties: {
 				trigger: {
-					ref: 'TriggerNoRollExtension'
+					ref: 'TriggerNoRollAugment'
 				}
 			},
 			optionalProperties: {
-				extends: { elements: { ref: 'MoveIDWildcard' } },
+				augments: { elements: { ref: 'MoveIDWildcard' } },
 				oracles: { elements: { ref: 'OracleID' } },
 				suggestions: { ref: 'Suggestions' },
 				text: { ref: 'MarkdownString' }
@@ -491,30 +491,30 @@ export const MoveExtension: JTDSchemaType<
 	}
 }
 
-export const TriggerActionRollExtension: JTDSchemaType<
-	Types.Moves.TriggerActionRollExtension,
+export const TriggerActionRollAugment: JTDSchemaType<
+	Types.Moves.TriggerActionRollAugment,
 	{
-		TriggerActionRollConditionExtension: Types.Moves.TriggerActionRollConditionExtension
+		TriggerActionRollConditionAugment: Types.Moves.TriggerActionRollConditionAugment
 	}
 > = {
 	properties: {
-		conditions: { elements: { ref: 'TriggerActionRollConditionExtension' } }
+		conditions: { elements: { ref: 'TriggerActionRollConditionAugment' } }
 	}
 }
 
-export const TriggerProgressRollExtension: JTDSchemaType<
-	Types.Moves.TriggerProgressRollExtension,
+export const TriggerProgressRollAugment: JTDSchemaType<
+	Types.Moves.TriggerProgressRollAugment,
 	{
-		TriggerProgressRollConditionExtension: Types.Moves.TriggerProgressRollConditionExtension
+		TriggerProgressRollConditionAugment: Types.Moves.TriggerProgressRollConditionAugment
 	}
 > = {
 	properties: {
-		conditions: { elements: { ref: 'TriggerProgressRollConditionExtension' } }
+		conditions: { elements: { ref: 'TriggerProgressRollConditionAugment' } }
 	}
 }
 
-export const TriggerNoRollExtension: JTDSchemaType<
-	Types.Moves.TriggerNoRollExtension,
+export const TriggerNoRollAugment: JTDSchemaType<
+	Types.Moves.TriggerNoRollAugment,
 	{
 		TriggerNoRollCondition: Types.Moves.TriggerNoRollCondition
 	}
@@ -524,24 +524,24 @@ export const TriggerNoRollExtension: JTDSchemaType<
 	}
 }
 
-export const MoveOutcomesExtension: JTDSchemaType<
+export const MoveOutcomesAugment: JTDSchemaType<
 	PartialDeep<Types.Moves.MoveOutcomes>,
 	{
-		MoveOutcomeExtension: PartialDeep<Types.Moves.MoveOutcome>
-		MoveOutcomeMatchableExtension: PartialDeep<Types.Moves.MoveOutcomeMatchable>
+		MoveOutcomeAugment: PartialDeep<Types.Moves.MoveOutcome>
+		MoveOutcomeMatchableAugment: PartialDeep<Types.Moves.MoveOutcomeMatchable>
 	}
 > = {
 	metadata: {
-		description: 'Extends or upgrades one or more outcomes of an existing move.'
+		description: 's or upgrades one or more outcomes of an existing move.'
 	},
 	optionalProperties: {
-		miss: { ref: 'MoveOutcomeMatchableExtension' },
-		weak_hit: { ref: 'MoveOutcomeExtension' },
-		strong_hit: { ref: 'MoveOutcomeMatchableExtension' }
+		miss: { ref: 'MoveOutcomeMatchableAugment' },
+		weak_hit: { ref: 'MoveOutcomeAugment' },
+		strong_hit: { ref: 'MoveOutcomeMatchableAugment' }
 	}
 }
 
-export const MoveOutcomeExtension: JTDSchemaType<
+export const MoveOutcomeAugment: JTDSchemaType<
 	PartialDeep<Types.Moves.MoveOutcome>,
 	{
 		MoveOutcomeType: Types.Moves.MoveOutcomeType
@@ -551,7 +551,7 @@ export const MoveOutcomeExtension: JTDSchemaType<
 	}
 > = {
 	metadata: {
-		description: 'Extends or upgrades an outcome from an existing move.'
+		description: 's or upgrades an outcome from an existing move.'
 	},
 	optionalProperties: {
 		count_as: { ref: 'MoveOutcomeType' },
@@ -565,22 +565,22 @@ export const MoveOutcomeExtension: JTDSchemaType<
 	}
 }
 
-export const MoveOutcomeMatchableExtension: JTDSchemaType<
+export const MoveOutcomeMatchableAugment: JTDSchemaType<
 	PartialDeep<Types.Moves.MoveOutcomeMatchable>,
 	{
 		MoveOutcomeType: Types.Moves.MoveOutcomeType
 		MoveReroll: Types.Moves.MoveReroll
 		MarkdownString: string
 		MoveRerollMethod: Types.Moves.MoveRerollMethod
-		MoveOutcomeExtension: PartialDeep<Types.Moves.MoveOutcome>
+		MoveOutcomeAugment: PartialDeep<Types.Moves.MoveOutcome>
 	}
 > = {
 	metadata: {
-		description: 'Extends or upgrades an outcome from an existing move.'
+		description: 's or upgrades an outcome from an existing move.'
 	},
 	// @ts-ignore
 	optionalProperties: {
-		...MoveOutcomeExtension.optionalProperties,
-		match: { ref: 'MoveOutcomeExtension' }
+		...MoveOutcomeAugment.optionalProperties,
+		match: { ref: 'MoveOutcomeAugment' }
 	}
 }

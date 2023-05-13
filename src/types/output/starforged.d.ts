@@ -322,7 +322,7 @@ export interface OracleCollection {
   source: Source;
   suggestions?: Suggestions;
   id: OracleCollectionID;
-  extends?: OracleCollectionID;
+  augments?: OracleCollectionID;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -449,7 +449,7 @@ export interface MoveCategory {
   source: Source;
   suggestions?: Suggestions;
   id: MoveCategoryID;
-  extends?: MoveCategoryID;
+  augments?: MoveCategoryID;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -540,7 +540,7 @@ export interface AssetType {
   source: Source;
   suggestions?: Suggestions;
   id: AssetTypeID;
-  extends?: AssetTypeID;
+  augments?: AssetTypeID;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -648,7 +648,7 @@ export interface AssetAbility {
   } & {
     condition_meter?: AssetConditionMeter;
   };
-  extend_moves?: MoveExtension[];
+  extend_moves?: MoveAugment[];
 }
 export interface ClockField {
   id: string;
@@ -686,10 +686,10 @@ export interface AssetConditionMeter {
     [k: string]: AssetConditionMeterControlField;
   };
 }
-export interface MoveExtension {
+export interface MoveAugment {
   text?: MarkdownString;
   oracles?: OracleTableID[];
-  extends?: MoveIDWithWildcard[];
+  augments?: MoveIDWithWildcard[];
   trigger?: unknown;
   move_type: MoveRollType;
   outcomes?: unknown;

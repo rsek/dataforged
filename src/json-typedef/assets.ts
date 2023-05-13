@@ -3,7 +3,7 @@ import * as JSONSchema from '@schema-json'
 import { JTDSchemaType } from 'ajv/dist/core'
 import {
 	UnionCheckboxField,
-	UnionChoicesFieldAssetExtension,
+	UnionChoicesFieldAssetAugment,
 	UnionClockField,
 	UnionCounterField,
 	UnionChoicesFieldNumber,
@@ -13,13 +13,13 @@ import {
 import { setIdRef, getMetadata } from 'json-typedef/utils'
 import { set } from 'lodash'
 
-export const AssetExtensionChoice: JTDSchemaType<
-	Types.Common.SelectOption<Types.Assets.AssetExtension>,
-	{ ID: string; Label: string; AssetExtension: Types.Assets.AssetExtension }
+export const AssetAugmentChoice: JTDSchemaType<
+	Types.Common.SelectOption<Types.Assets.AssetAugment>,
+	{ ID: string; Label: string; AssetAugment: Types.Assets.AssetAugment }
 > = {
 	properties: {
 		label: { ref: 'Label' },
-		value: { ref: 'AssetExtension' }
+		value: { ref: 'AssetAugment' }
 	}
 }
 
@@ -133,8 +133,8 @@ export const AssetAbility: JTDSchemaType<
 		AssetAbilityControlField: Types.Assets.AssetAbilityControlField
 		AssetAbilityOptionField: Types.Assets.AssetAbilityOptionField
 		Move: Types.Moves.Move
-		MoveExtension: Types.Moves.MoveExtension
-		AssetExtension: Types.Assets.AssetExtension
+		MoveAugment: Types.Moves.MoveAugment
+		AssetAugment: Types.Assets.AssetAugment
 	}
 > = {
 	properties: {
@@ -147,8 +147,8 @@ export const AssetAbility: JTDSchemaType<
 		controls: { values: { ref: 'AssetAbilityControlField' } },
 		options: { values: { ref: 'AssetAbilityOptionField' } },
 		moves: { values: { ref: 'Move' } },
-		extend_asset: { ref: 'AssetExtension' },
-		extend_moves: { elements: { ref: 'MoveExtension' } }
+		extend_asset: { ref: 'AssetAugment' },
+		extend_moves: { elements: { ref: 'MoveAugment' } }
 	}
 }
 
@@ -187,7 +187,7 @@ export const AssetAbilityOptionField: JTDSchemaType<
 		// @ts-expect-error
 		select_asset_extension: setIdRef(
 			// @ts-expect-error
-			UnionChoicesFieldAssetExtension,
+			UnionChoicesFieldAssetAugment,
 			'AssetAbilityOptionFieldID'
 		)
 	}
@@ -198,7 +198,7 @@ export const AssetOptionField: JTDSchemaType<
 	{
 		AssetOptionFieldID: string
 		Label: string
-		AssetExtension: Types.Assets.AssetExtension
+		AssetAugment: Types.Assets.AssetAugment
 	}
 > = {
 	metadata: {
@@ -215,7 +215,7 @@ export const AssetOptionField: JTDSchemaType<
 		// @ts-expect-error
 		select_asset_extension: setIdRef(
 			// @ts-expect-error
-			UnionChoicesFieldAssetExtension,
+			UnionChoicesFieldAssetAugment,
 			'AssetOptionFieldID'
 		)
 	}
@@ -239,15 +239,15 @@ export const AssetControlField: JTDSchemaType<
 		),
 		// @ts-expect-error
 		select_asset_extension: set(
-			UnionChoicesFieldAssetExtension,
+			UnionChoicesFieldAssetAugment,
 			'properties.id.ref',
 			'AssetControlFieldID'
 		)
 	}
 }
 
-export const AssetExtensionForeign: JTDSchemaType<
-	Types.Assets.AssetExtensionForeign,
+export const AssetAugmentForeign: JTDSchemaType<
+	Types.Assets.AssetAugmentForeign,
 	{
 		AssetID: string
 		AssetIDWildcard: string
@@ -262,7 +262,7 @@ export const AssetExtensionForeign: JTDSchemaType<
 	},
 	properties: {
 		id: { ref: 'AssetAbilityControlFieldID' },
-		extends: { ref: 'AssetIDWildcard' }
+		augments: { ref: 'AssetIDWildcard' }
 	},
 	optionalProperties: {
 		count_as_impact: { type: 'boolean' },
@@ -300,8 +300,8 @@ export const AssetConditionMeterControlField: JTDSchemaType<
 	}
 }
 
-export const AssetExtension: JTDSchemaType<
-	Types.Assets.AssetExtension,
+export const AssetAugment: JTDSchemaType<
+	Types.Assets.AssetAugment,
 	{
 		AssetIDWildcard: string
 		Label: string

@@ -32,8 +32,8 @@ export interface AssetAbility {
 	id: AssetAbilityId
 	text: MarkdownString
 	controls?: { [key: string]: AssetAbilityControlField }
-	extend_asset?: AssetExtension
-	extend_moves?: MoveExtension[]
+	extend_asset?: AssetAugment
+	extend_moves?: MoveAugment[]
 	moves?: { [key: string]: Move }
 	name?: Label
 	options?: { [key: string]: AssetAbilityOptionField }
@@ -74,23 +74,23 @@ export type AssetAbilityControlFieldId = string
 export type AssetAbilityId = string
 
 export type AssetAbilityOptionField =
-	| AssetAbilityOptionFieldSelectAssetExtension
+	| AssetAbilityOptionFieldSelectAssetAugment
 	| AssetAbilityOptionFieldSelectNumber
 	| AssetAbilityOptionFieldSelectStat
 	| AssetAbilityOptionFieldText
 
-export interface AssetAbilityOptionFieldSelectAssetExtensionChoice {
+export interface AssetAbilityOptionFieldSelectAssetAugmentChoice {
 	label: Label
-	value: AssetExtension
+	value: AssetAugment
 	selected?: boolean
 }
 
-export interface AssetAbilityOptionFieldSelectAssetExtension {
+export interface AssetAbilityOptionFieldSelectAssetAugment {
 	field_type: 'select_asset_extension'
-	choices: { [key: string]: AssetAbilityOptionFieldSelectAssetExtensionChoice }
+	choices: { [key: string]: AssetAbilityOptionFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label
-	value?: AssetExtension
+	value?: AssetAugment
 }
 
 export interface AssetAbilityOptionFieldSelectNumberChoice {
@@ -188,7 +188,7 @@ export type AssetConditionMeterId = string
  */
 export type AssetControlField =
 	| AssetControlFieldCheckbox
-	| AssetControlFieldSelectAssetExtension
+	| AssetControlFieldSelectAssetAugment
 
 export interface AssetControlFieldCheckbox {
 	field_type: 'checkbox'
@@ -197,30 +197,30 @@ export interface AssetControlFieldCheckbox {
 	value?: boolean
 }
 
-export interface AssetControlFieldSelectAssetExtensionChoice {
+export interface AssetControlFieldSelectAssetAugmentChoice {
 	label: Label
-	value: AssetExtension
+	value: AssetAugment
 	selected?: boolean
 }
 
-export interface AssetControlFieldSelectAssetExtension {
+export interface AssetControlFieldSelectAssetAugment {
 	field_type: 'select_asset_extension'
-	choices: { [key: string]: AssetControlFieldSelectAssetExtensionChoice }
+	choices: { [key: string]: AssetControlFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label
-	value?: AssetExtension
+	value?: AssetAugment
 }
 
 export type AssetControlFieldId = string
 
 export type AssetControlFieldIdwildcard = string
 
-export interface AssetExtensionAttachments {
+export interface AssetAugmentAttachments {
 	assets?: AssetIdwildcard[]
 	max?: number
 }
 
-export interface AssetExtensionConditionMeter {
+export interface AssetAugmentConditionMeter {
 	controls?: { [key: string]: AssetConditionMeterControlField }
 	max?: number
 	min?: number
@@ -230,23 +230,23 @@ export interface AssetExtensionConditionMeter {
  * Describes changes applied to an asset by its own abilities or controls.
  * Unchanged properties are omitted.
  */
-export interface AssetExtension {
-	attachments?: AssetExtensionAttachments
-	condition_meter?: AssetExtensionConditionMeter
+export interface AssetAugment {
+	attachments?: AssetAugmentAttachments
+	condition_meter?: AssetAugmentConditionMeter
 	count_as_impact?: boolean
 }
 
-export interface AssetExtensionChoice {
+export interface AssetAugmentChoice {
 	label: Label
-	value: AssetExtension
+	value: AssetAugment
 }
 
-export interface AssetExtensionForeignAttachments {
+export interface AssetAugmentForeignAttachments {
 	assets?: AssetIdwildcard[]
 	max?: number
 }
 
-export interface AssetExtensionForeignConditionMeter {
+export interface AssetAugmentForeignConditionMeter {
 	controls?: { [key: string]: AssetConditionMeterControlField }
 	max?: number
 	min?: number
@@ -256,11 +256,11 @@ export interface AssetExtensionForeignConditionMeter {
  * Describes changes applied to an asset, usually by another asset. Unchanged
  * properties are omitted.
  */
-export interface AssetExtensionForeign {
-	extends: AssetIdwildcard
+export interface AssetAugmentForeign {
+	augments: AssetIdwildcard
 	id: AssetAbilityControlFieldId
-	attachments?: AssetExtensionForeignAttachments
-	condition_meter?: AssetExtensionForeignConditionMeter
+	attachments?: AssetAugmentForeignAttachments
+	condition_meter?: AssetAugmentForeignConditionMeter
 	count_as_impact?: boolean
 }
 
@@ -275,22 +275,22 @@ export type AssetIdwildcard = string
  * Devotant asset.
  */
 export type AssetOptionField =
-	| AssetOptionFieldSelectAssetExtension
+	| AssetOptionFieldSelectAssetAugment
 	| AssetOptionFieldSelectStat
 	| AssetOptionFieldText
 
-export interface AssetOptionFieldSelectAssetExtensionChoice {
+export interface AssetOptionFieldSelectAssetAugmentChoice {
 	label: Label
-	value: AssetExtension
+	value: AssetAugment
 	selected?: boolean
 }
 
-export interface AssetOptionFieldSelectAssetExtension {
+export interface AssetOptionFieldSelectAssetAugment {
 	field_type: 'select_asset_extension'
-	choices: { [key: string]: AssetOptionFieldSelectAssetExtensionChoice }
+	choices: { [key: string]: AssetOptionFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label
-	value?: AssetExtension
+	value?: AssetAugment
 }
 
 export interface AssetOptionFieldSelectStatChoice {
@@ -493,10 +493,10 @@ export interface MoveCategory {
 
 export type MoveCategoryId = string
 
-export interface MoveExtension {
-	extends: MoveId[] | null
-	trigger: TriggerExtension
-	outcomes?: MoveOutcomesExtension
+export interface MoveAugment {
+	augments: MoveId[] | null
+	trigger: TriggerAugment
+	outcomes?: MoveOutcomesAugment
 	text?: MarkdownString
 }
 
@@ -511,17 +511,17 @@ export interface MoveOutcome {
 	reroll?: MoveReroll
 }
 
-export interface MoveOutcomeExtensionReroll {
+export interface MoveOutcomeAugmentReroll {
 	method?: MoveRerollMethod
 	text?: MarkdownString
 }
 
 /**
- * Extends or upgrades an outcome from an existing move.
+ * s or upgrades an outcome from an existing move.
  */
-export interface MoveOutcomeExtension {
+export interface MoveOutcomeAugment {
 	count_as?: MoveOutcomeType
-	reroll?: MoveOutcomeExtensionReroll
+	reroll?: MoveOutcomeAugmentReroll
 	text?: MarkdownString
 }
 
@@ -532,18 +532,18 @@ export interface MoveOutcomeMatchable {
 	reroll?: MoveReroll
 }
 
-export interface MoveOutcomeMatchableExtensionReroll {
+export interface MoveOutcomeMatchableAugmentReroll {
 	method?: MoveRerollMethod
 	text?: MarkdownString
 }
 
 /**
- * Extends or upgrades an outcome from an existing move.
+ * s or upgrades an outcome from an existing move.
  */
-export interface MoveOutcomeMatchableExtension {
+export interface MoveOutcomeMatchableAugment {
 	count_as?: MoveOutcomeType
-	match?: MoveOutcomeExtension
-	reroll?: MoveOutcomeMatchableExtensionReroll
+	match?: MoveOutcomeAugment
+	reroll?: MoveOutcomeMatchableAugmentReroll
 	text?: MarkdownString
 }
 
@@ -571,12 +571,12 @@ export interface MoveOutcomes {
 }
 
 /**
- * Extends or upgrades one or more outcomes of an existing move.
+ * s or upgrades one or more outcomes of an existing move.
  */
-export interface MoveOutcomesExtension {
-	miss?: MoveOutcomeMatchableExtension
-	strong_hit?: MoveOutcomeMatchableExtension
-	weak_hit?: MoveOutcomeExtension
+export interface MoveOutcomesAugment {
+	miss?: MoveOutcomeMatchableAugment
+	strong_hit?: MoveOutcomeMatchableAugment
+	weak_hit?: MoveOutcomeAugment
 }
 
 export interface MoveReroll {
@@ -666,7 +666,7 @@ export interface OracleCollection {
 	color?: Color
 	contents?: { [key: string]: OracleTable }
 	description?: MarkdownString
-	extends?: OracleCollectionId
+	augments?: OracleCollectionId
 	rendering?: OracleCollectionRendering
 	sample_names?: Label[]
 	suggestions?: Suggestions
@@ -985,24 +985,24 @@ export interface TriggerBy {
 }
 
 /**
- * Extends or upgrades an existing move trigger.
+ * s or upgrades an existing move trigger.
  */
-export type TriggerExtension =
-	| TriggerExtensionActionRoll
-	| TriggerExtensionProgressRoll
+export type TriggerAugment =
+	| TriggerAugmentActionRoll
+	| TriggerAugmentProgressRoll
 
 /**
- * Extends or upgrades an existing action roll trigger.
+ * s or upgrades an existing action roll trigger.
  */
-export interface TriggerExtensionActionRoll {
+export interface TriggerAugmentActionRoll {
 	move_type: 'action_roll'
 	conditions: TriggerRollConditionAction[]
 }
 
 /**
- * Extends or upgrades an existing action roll trigger.
+ * s or upgrades an existing action roll trigger.
  */
-export interface TriggerExtensionProgressRoll {
+export interface TriggerAugmentProgressRoll {
 	move_type: 'progress_roll'
 	conditions: TriggerRollConditionProgress[]
 }

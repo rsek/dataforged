@@ -14,8 +14,7 @@
 	"ruleset": "classic",
 	"assets": {
 		"companion": {
-			"name": "Companion assets",
-			"member_label": "Companion",
+			"name": "Companion",
 			"description": "Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.\n\nCompanions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](classic/moves/suffer/companion_endure_harm) move to determine the outcome. See page 43 to learn more.",
 			"contents": {
 				"cave_lion": {
@@ -34,7 +33,7 @@
 							"text": "When your cat chases down big game, you may [Resupply](classic/moves/adventure/resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/resupply"],
+									"augments": ["classic/moves/adventure/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -64,7 +63,7 @@
 							"text": "When you [Enter the Fray](classic/moves/combat/enter_the_fray) or [Strike](classic/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/enter_the_fray",
 										"classic/moves/combat/strike"
 									],
@@ -100,7 +99,7 @@
 							"text": "When you [Make Camp](classic/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/make_camp"],
+									"augments": ["classic/moves/adventure/make_camp"],
 									"text": "Your cat is alert to trouble.",
 									"outcomes": {
 										"strong_hit": {
@@ -156,7 +155,7 @@
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/secure_an_advantage"],
+									"augments": ["classic/moves/adventure/secure_an_advantage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -184,7 +183,7 @@
 							"text": "You may [Face Danger](classic/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](classic/moves/adventure/gather_information) and reroll any dice.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/face_danger"],
+									"augments": ["classic/moves/adventure/face_danger"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -216,7 +215,7 @@
 							"text": "When your spider sets a trap, add +1 as you [Enter the Fray](classic/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/combat/enter_the_fray"],
+									"augments": ["classic/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -288,12 +287,12 @@
 							"text": "When you [Undertake a Journey](classic/moves/adventure/undertake_a_journey), or when you [Resupply](classic/moves/adventure/resupply) by hunting for small game, add +1.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/undertake_a_journey"],
+									"augments": ["classic/moves/adventure/undertake_a_journey"],
 									"text": "Add +1.",
 									"move_type": "action_roll"
 								},
 								{
-									"extends": ["classic/moves/adventure/resupply"],
+									"augments": ["classic/moves/adventure/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -313,7 +312,7 @@
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/secure_an_advantage"],
+									"augments": ["classic/moves/adventure/secure_an_advantage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -346,7 +345,7 @@
 							"text": "When you [Face Danger](classic/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](classic/moves/combat/enter_the_fray) +wits against an ambush, add +2.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/face_danger"],
+									"augments": ["classic/moves/adventure/face_danger"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -363,7 +362,7 @@
 									"text": "Add +2."
 								},
 								{
-									"extends": ["classic/moves/combat/enter_the_fray"],
+									"augments": ["classic/moves/combat/enter_the_fray"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -415,12 +414,12 @@
 							"text": "When you [Face Danger](classic/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](classic/moves/adventure/undertake_a_journey), add +1.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/undertake_a_journey"],
+									"augments": ["classic/moves/adventure/undertake_a_journey"],
 									"text": "Add +1.",
 									"move_type": "action_roll"
 								},
 								{
-									"extends": ["classic/moves/adventure/face_danger"],
+									"augments": ["classic/moves/adventure/face_danger"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -445,7 +444,7 @@
 							"text": "When you [Enter the Fray](classic/moves/combat/enter_the_fray) or [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/enter_the_fray",
 										"classic/moves/adventure/secure_an_advantage"
 									],
@@ -481,7 +480,7 @@
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -547,7 +546,7 @@
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/gather_information"],
+									"augments": ["classic/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -575,7 +574,7 @@
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -605,7 +604,7 @@
 							"text": "When you [Endure Stress](classic/moves/suffer/endure_stress) in the company of your hound, add +1.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/suffer/endure_stress"],
+									"augments": ["classic/moves/suffer/endure_stress"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -693,7 +692,7 @@
 							"text": "When you [Clash](classic/moves/combat/clash) or [Battle](classic/moves/combat/battle) alongside your companion, or when you [Face Danger](classic/moves/adventure/face_danger) against an attack by standing together, add +1.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/clash",
 										"classic/moves/combat/battle"
 									],
@@ -708,7 +707,7 @@
 									"text": "Add +1."
 								},
 								{
-									"extends": ["classic/moves/adventure/face_danger"],
+									"augments": ["classic/moves/adventure/face_danger"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -728,7 +727,7 @@
 							"text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](classic/moves/suffer/face_desolation) in their presence.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/suffer/face_desolation"],
+									"augments": ["classic/moves/suffer/face_desolation"],
 									"text": "Add +1 when you [Face Desolation](classic/moves/suffer/face_desolation) in your companion's presence.",
 									"move_type": "action_roll"
 								}
@@ -775,7 +774,7 @@
 							"text": "When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/adventure/make_camp",
 										"delve/moves/delve/check_your_gear"
 									],
@@ -802,7 +801,7 @@
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -986,7 +985,7 @@
 							"text": "When you [Strike](classic/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/combat/strike"],
+									"augments": ["classic/moves/combat/strike"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1045,8 +1044,7 @@
 			}
 		},
 		"path": {
-			"name": "Path assets",
-			"member_label": "Path",
+			"name": "Path",
 			"summary": "Paths represent your background, interests, training, and skills.",
 			"description": "Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.",
 			"contents": {
@@ -1262,7 +1260,7 @@
 							"text": "You have stared down death before: When you are at 0 health and [Endure Harm](classic/moves/suffer/endure_harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/suffer/endure_harm"],
+									"augments": ["classic/moves/suffer/endure_harm"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1387,7 +1385,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/adventure/face_danger",
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/relationship/compel",
@@ -1416,7 +1414,7 @@
 							"text": "You may dispatch scouts from your warband to [Gather Information](classic/moves/adventure/gather_information) or [Resupply](classic/moves/adventure/resupply); if you do, roll +strength.",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/adventure/gather_information",
 										"classic/moves/adventure/resupply"
 									],
@@ -1594,7 +1592,7 @@
 							"text": "When you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/quest/swear_an_iron_vow"],
+									"augments": ["classic/moves/quest/swear_an_iron_vow"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1618,7 +1616,7 @@
 							"text": "When you [Sojourn](classic/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/relationship/sojourn"],
+									"augments": ["classic/moves/relationship/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1851,7 +1849,7 @@
 							"text": "When you [Check Your Gear](delve/moves/delve/check_your_gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["delve/moves/delve/check_your_gear"],
+									"augments": ["delve/moves/delve/check_your_gear"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1909,7 +1907,7 @@
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/gather_information"],
+									"augments": ["classic/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1926,7 +1924,7 @@
 									}
 								},
 								{
-									"extends": ["classic/moves/adventure/secure_an_advantage"],
+									"augments": ["classic/moves/adventure/secure_an_advantage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -1950,7 +1948,7 @@
 							"text": "When you [Resupply](classic/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/resupply"],
+									"augments": ["classic/moves/adventure/resupply"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2100,7 +2098,7 @@
 							"text": "When you [Face Death](classic/moves/suffer/face_death) or [Face Desolation](classic/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).",
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/suffer/face_death",
 										"classic/moves/suffer/face_desolation"
 									],
@@ -2312,7 +2310,7 @@
 							"text": "As above, and you may roll +shadow (instead of +heart) when you [Sojourn](classic/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/relationship/sojourn"],
+									"augments": ["classic/moves/relationship/sojourn"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2480,7 +2478,7 @@
 							"text": "You know the sly ways of death: When you [Face Death](classic/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/suffer/face_death"],
+									"augments": ["classic/moves/suffer/face_death"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2668,7 +2666,7 @@
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/gather_information"],
+									"augments": ["classic/moves/adventure/gather_information"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2692,7 +2690,7 @@
 							"text": "When you [Forge a Bond](classic/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.\n\n  * Keep your secret: Roll +shadow (instead of +heart).\n  * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/relationship/forge_a_bond"],
+									"augments": ["classic/moves/relationship/forge_a_bond"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2896,7 +2894,7 @@
 							"text": "When you [Make Camp](classic/moves/adventure/make_camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/make_camp"],
+									"augments": ["classic/moves/adventure/make_camp"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -2991,8 +2989,7 @@
 			}
 		},
 		"combat_talent": {
-			"member_label": "Combat talent",
-			"name": "Combat talent assets",
+			"name": "Combat talent",
 			"description": "*Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](classic/collections/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.\n\nCombat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.",
 			"contents": {
 				"archer": {
@@ -3299,7 +3296,7 @@
 							"enabled": true,
 							"extend_moves": [
 								{
-									"extends": [
+									"augments": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -3334,7 +3331,7 @@
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/secure_an_advantage"],
+									"augments": ["classic/moves/adventure/secure_an_advantage"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -3367,7 +3364,7 @@
 							"text": "When you [Undertake a Journey](classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.",
 							"extend_moves": [
 								{
-									"extends": ["classic/moves/adventure/undertake_a_journey"],
+									"augments": ["classic/moves/adventure/undertake_a_journey"],
 									"move_type": "action_roll",
 									"trigger": {
 										"conditions": [
@@ -3679,8 +3676,7 @@
 			}
 		},
 		"ritual": {
-			"member_label": "Ritual",
-			"name": "Ritual assets",
+			"name": "Ritual",
 			"description": "Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.\n\nAll rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.",
 			"contents": {
 				"augur": {

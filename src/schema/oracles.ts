@@ -173,6 +173,15 @@ export const OracleTable = Abstract.SourcedNode(
 )
 export type OracleTable = Static<typeof OracleTable>
 
+// export const OracleTableStub = Type.Composite([
+//   Type.Object({
+
+//   }),
+// 	Type.Partial(Type.Omit(OracleTable, ['id']))
+// ],
+//   {}
+// )
+
 const OracleRenderingBase = Type.Object({
 	columns: Type.Optional(
 		Abstract.Dictionary(Type.Ref(OracleTableColumn), {

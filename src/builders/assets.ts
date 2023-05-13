@@ -136,7 +136,7 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
-	): Out.MoveExtension[] | undefined {
+	): Out.MoveAugment[] | undefined {
 		return data.extend_moves as any
 	}
 }
