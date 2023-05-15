@@ -1,5 +1,6 @@
-Starforged/Oracles/Settlements/Location:
-  Dice: "1d300"
+Starsmith/Oracles/Settlements/Location:
+  _replace: Starforged/Oracles/Settlements/Location
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 40
@@ -28,8 +29,9 @@ Starforged/Oracles/Settlements/Location:
     - Floor: 276
       Ceiling: 300
       Result: Exoplanet
-Starforged/Oracles/Settlements/First_Look:
-  Dice: "1d300"
+Starsmith/Oracles/Settlements/First_Look:
+  _replace: Starforged/Oracles/Settlements/First_Look
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 4
@@ -90,10 +92,13 @@ Starforged/Oracles/Settlements/First_Look:
       Result: Toxic or polluted habitat
     - Floor: 88
       Ceiling: 90
-      Result: Within or near ▶Precursor Vault
+      Result: 'Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)'
     - Floor: 91
       Ceiling: 100
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 101
       Ceiling: 104
       Result: Mix of cultural architecture
@@ -153,10 +158,13 @@ Starforged/Oracles/Settlements/First_Look:
       Result: Vibrant or verdant habitat
     - Floor: 188
       Ceiling: 190
-      Result: Within or near ▶Precursor Vault
+      Result: 'Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)'
     - Floor: 191
       Ceiling: 200
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 201
       Ceiling: 204
       Result: Rounded or curved architecture
@@ -216,12 +224,16 @@ Starforged/Oracles/Settlements/First_Look:
       Result: Stertile or pristine habitat
     - Floor: 288
       Ceiling: 290
-      Result: Within or near ▶Precursor Vault
+      Result: 'Within or near [⏵Precursor Vault](Starforged/Oracles/Vaults)'
     - Floor: 291
       Ceiling: 300
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Settlements/Initial_Contact:
-  Dice: "1d300"
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Settlements/Initial_Contact:
+  _replace: Starforged/Oracles/Settlements/Initial_Contact
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 20
@@ -255,7 +267,7 @@ Starforged/Oracles/Settlements/Initial_Contact:
       Result: Destroyed
     - Floor: 96
       Ceiling: 100
-      Result: ▶Derelict
+      Result: '[⏵Derelict](Starforged/Oracles/Derelicts)'
     - Floor: 101
       Ceiling: 120
       Result: Helpful
@@ -288,7 +300,7 @@ Starforged/Oracles/Settlements/Initial_Contact:
       Result: Completely shielded
     - Floor: 196
       Ceiling: 200
-      Result: ▶Derelict
+      Result: '[⏵Derelict](Starforged/Oracles/Derelicts)'
     - Floor: 201
       Ceiling: 220
       Result: Informative
@@ -321,9 +333,10 @@ Starforged/Oracles/Settlements/Initial_Contact:
       Result: Attacks on sight
     - Floor: 296
       Ceiling: 300
-      Result: ▶Derelict
-Starforged/Oracles/Settlements/Authority:
-  Dice: "1d300"
+      Result: '[⏵Derelict](Starforged/Oracles/Derelicts)'
+Starsmith/Oracles/Settlements/Authority:
+  _replace: Starforged/Oracles/Settlements/Authority
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 15
@@ -388,8 +401,9 @@ Starforged/Oracles/Settlements/Authority:
     - Floor: 286
       Ceiling: 300
       Result: Takes advantage
-Starforged/Oracles/Settlements/Projects:
-  Dice: "1d300"
+Starsmith/Oracles/Settlements/Projects:
+  _replace: Starforged/Oracles/Settlements/Projects
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -489,7 +503,10 @@ Starforged/Oracles/Settlements/Projects:
       Result: Warfare
     - Floor: 96
       Ceiling: 100
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 101
       Ceiling: 105
       Result: Air supply
@@ -588,7 +605,10 @@ Starforged/Oracles/Settlements/Projects:
       Result: Security
     - Floor: 196
       Ceiling: 200
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 201
       Ceiling: 205
       Result: Water supply
@@ -624,7 +644,7 @@ Starforged/Oracles/Settlements/Projects:
       Result: Emergency planning
     - Floor: 232
       Ceiling: 233
-      Result: "Territory withdrawal"
+      Result: 'Territory withdrawal'
     - Floor: 234
       Ceiling: 237
       Result: Resource surveying
@@ -687,9 +707,13 @@ Starforged/Oracles/Settlements/Projects:
       Result: Alliance building
     - Floor: 296
       Ceiling: 300
-      Result: ▶Action + Theme
-Starforged/Oracles/Settlements/Trouble:
-  Dice: "1d300"
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+Starsmith/Oracles/Settlements/Trouble:
+  _replace: Starforged/Oracles/Settlements/Trouble
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -792,7 +816,10 @@ Starforged/Oracles/Settlements/Trouble:
       Result: Vulnerable lifeforms
     - Floor: 91
       Ceiling: 100
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 101
       Ceiling: 103
       Result: Personal rivalry
@@ -894,7 +921,10 @@ Starforged/Oracles/Settlements/Trouble:
       Result: Vulnerable supply line
     - Floor: 191
       Ceiling: 200
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 201
       Ceiling: 203
       Result: Rival settlement
@@ -996,9 +1026,13 @@ Starforged/Oracles/Settlements/Trouble:
       Result: Vulnerable people group
     - Floor: 291
       Ceiling: 300
-      Result: ▶Action + Theme
-Starforged/Oracles/Settlements/Name:
-  Dice: "1d300"
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+Starsmith/Oracles/Settlements/Name:
+  _replace: Starforged/Oracles/Settlements/Name
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 1

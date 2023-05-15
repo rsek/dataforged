@@ -1,30 +1,32 @@
-Starforged/Oracles/Districts/Zones:
+Starsmith/Oracles/Districts/Zones:
+  _insert: Starforged/Oracles/Districts/Zones
   Name: Zones
   Dice: 1d100
   Table:
     - Floor: 1
       Ceiling: 20
-      Result: ▶Community
+      Result: '[⏵Community](Starforged/Oracles/Districts/Community)'
     - Floor: 21
       Ceiling: 30
-      Result: ▶Engineering
+      Result: '[⏵Engineering](Starforged/Oracles/Districts/Engineering)'
     - Floor: 31
       Ceiling: 55
-      Result: ▶Living
+      Result: '[⏵Living](Starforged/Oracles/Districts/Living)'
     - Floor: 56
       Ceiling: 65
-      Result: ▶Medical
+      Result: '[⏵Medical](Starforged/Oracles/Districts/Medical)'
     - Floor: 66
       Ceiling: 75
-      Result: ▶Operations
+      Result: '[⏵Operations](Starforged/Oracles/Districts/Operations)'
     - Floor: 76
       Ceiling: 90
-      Result: ▶Production
+      Result: '[⏵Production](Starforged/Oracles/Districts/Production)'
     - Floor: 91
       Ceiling: 100
-      Result: ▶Research
+      Result: '[⏵Research](Starforged/Oracles/Districts/Research)'
 
-Starforged/Oracles/Districts/Access/Area:
+Starsmith/Oracles/Districts/Access/Area:
+  _insert: Starforged/Oracles/Districts/Access/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -64,7 +66,8 @@ Starforged/Oracles/Districts/Access/Area:
     - Floor: 96
       Ceiling: 100
       Result: Stairs or escalator
-Starforged/Oracles/Districts/Access/Feature:
+Starsmith/Oracles/Districts/Access/Feature:
+  _insert: Starforged/Oracles/Districts/Access/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -103,8 +106,12 @@ Starforged/Oracles/Districts/Access/Feature:
       Result: Windows or viewports
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Access/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Access/Peril:
+  _insert: Starforged/Oracles/Districts/Access/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -137,11 +144,17 @@ Starforged/Oracles/Districts/Access/Peril:
       Result: Unsettling sound or disturbance
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Access/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Access/Opportunity:
+  _insert: Starforged/Oracles/Districts/Access/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -161,7 +174,8 @@ Starforged/Oracles/Districts/Access/Opportunity:
       Ceiling: 100
       Result: Transportation secured
 
-Starforged/Oracles/Districts/Community/Area:
+Starsmith/Oracles/Districts/Community/Area:
+  _insert: Starforged/Oracles/Districts/Community/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -200,8 +214,9 @@ Starforged/Oracles/Districts/Community/Area:
       Result: Temple or chapel
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Community/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Community/Feature:
+  _insert: Starforged/Oracles/Districts/Community/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -240,8 +255,12 @@ Starforged/Oracles/Districts/Community/Feature:
       Result: Significant ceremony
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Community/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Community/Peril:
+  _insert: Starforged/Oracles/Districts/Community/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -274,11 +293,17 @@ Starforged/Oracles/Districts/Community/Peril:
       Result: Temptation towards a vice
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Community/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Community/Opportunity:
+  _insert: Starforged/Oracles/Districts/Community/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -298,7 +323,8 @@ Starforged/Oracles/Districts/Community/Opportunity:
       Ceiling: 100
       Result: Welcoming community offers a moment of peace
 
-Starforged/Oracles/Districts/Engineering/Area:
+Starsmith/Oracles/Districts/Engineering/Area:
+  _insert: Starforged/Oracles/Districts/Engineering/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -337,8 +363,9 @@ Starforged/Oracles/Districts/Engineering/Area:
       Result: Workshop
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Engineering/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Engineering/Feature:
+  _insert: Starforged/Oracles/Districts/Engineering/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -377,8 +404,12 @@ Starforged/Oracles/Districts/Engineering/Feature:
       Result: Utility bots
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Engineering/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Engineering/Peril:
+  _insert: Starforged/Oracles/Districts/Engineering/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -411,11 +442,17 @@ Starforged/Oracles/Districts/Engineering/Peril:
       Result: Worksite accident
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Engineering/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Engineering/Opportunity:
+  _insert: Starforged/Oracles/Districts/Engineering/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -435,7 +472,8 @@ Starforged/Oracles/Districts/Engineering/Opportunity:
       Ceiling: 100
       Result: Helpful utility bot
 
-Starforged/Oracles/Districts/Living/Area:
+Starsmith/Oracles/Districts/Living/Area:
+  _insert: Starforged/Oracles/Districts/Living/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -474,8 +512,9 @@ Starforged/Oracles/Districts/Living/Area:
       Result: Waste disposal
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Living/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Living/Feature:
+  _insert: Starforged/Oracles/Districts/Living/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -514,8 +553,12 @@ Starforged/Oracles/Districts/Living/Feature:
       Result: Work shift change over
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Living/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Living/Peril:
+  _insert: Starforged/Oracles/Districts/Living/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -548,11 +591,17 @@ Starforged/Oracles/Districts/Living/Peril:
       Result: Shunned as an outsider
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Living/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Living/Opportunity:
+  _insert: Starforged/Oracles/Districts/Living/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -572,7 +621,8 @@ Starforged/Oracles/Districts/Living/Opportunity:
       Ceiling: 100
       Result: Useful personal gear
 
-Starforged/Oracles/Districts/Medical/Area:
+Starsmith/Oracles/Districts/Medical/Area:
+  _insert: Starforged/Oracles/Districts/Medical/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -611,8 +661,9 @@ Starforged/Oracles/Districts/Medical/Area:
       Result: Therapy ward or clinic
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Medical/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Medical/Feature:
+  _insert: Starforged/Oracles/Districts/Medical/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -651,8 +702,12 @@ Starforged/Oracles/Districts/Medical/Feature:
       Result: Sirens and flashing lights
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Medical/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Medical/Peril:
+  _insert: Starforged/Oracles/Districts/Medical/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -685,11 +740,17 @@ Starforged/Oracles/Districts/Medical/Peril:
       Result: Victims of a tragic accident
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Medical/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Medical/Opportunity:
+  _insert: Starforged/Oracles/Districts/Medical/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -709,7 +770,8 @@ Starforged/Oracles/Districts/Medical/Opportunity:
       Ceiling: 100
       Result: Well-connected patient seeks more data
 
-Starforged/Oracles/Districts/Operations/Area:
+Starsmith/Oracles/Districts/Operations/Area:
+  _insert: Starforged/Oracles/Districts/Operations/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -748,8 +810,9 @@ Starforged/Oracles/Districts/Operations/Area:
       Result: Security headquarters
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Operations/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Operations/Feature:
+  _insert: Starforged/Oracles/Districts/Operations/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -788,8 +851,12 @@ Starforged/Oracles/Districts/Operations/Feature:
       Result: Video surveillance monitors
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Operations/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Operations/Peril:
+  _insert: Starforged/Oracles/Districts/Operations/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -822,11 +889,17 @@ Starforged/Oracles/Districts/Operations/Peril:
       Result: Targeted by law enforcement
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Operations/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Operations/Opportunity:
+  _insert: Starforged/Oracles/Districts/Operations/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -846,7 +919,8 @@ Starforged/Oracles/Districts/Operations/Opportunity:
       Ceiling: 100
       Result: Secret makes its way to light
 
-Starforged/Oracles/Districts/Production/Area:
+Starsmith/Oracles/Districts/Production/Area:
+  _insert: Starforged/Oracles/Districts/Production/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -885,8 +959,9 @@ Starforged/Oracles/Districts/Production/Area:
       Result: Warehouse
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Production/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Production/Feature:
+  _insert: Starforged/Oracles/Districts/Production/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -925,8 +1000,12 @@ Starforged/Oracles/Districts/Production/Feature:
       Result: Tools and equipment
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Production/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Production/Peril:
+  _insert: Starforged/Oracles/Districts/Production/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -959,11 +1038,17 @@ Starforged/Oracles/Districts/Production/Peril:
       Result: Smuggling outfit at work
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Production/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Production/Opportunity:
+  _insert: Starforged/Oracles/Districts/Production/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -983,7 +1068,8 @@ Starforged/Oracles/Districts/Production/Opportunity:
       Ceiling: 100
       Result: Upgrade components or plans
 
-Starforged/Oracles/Districts/Research/Area:
+Starsmith/Oracles/Districts/Research/Area:
+  _insert: Starforged/Oracles/Districts/Research/Area
   Name: Area
   Dice: 1d100
   Table:
@@ -1022,8 +1108,9 @@ Starforged/Oracles/Districts/Research/Area:
       Result: Zoology or xenobiology
     - Floor: 89
       Ceiling: 100
-      Result: New zone via ▶Access
-Starforged/Oracles/Districts/Research/Feature:
+      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
+Starsmith/Oracles/Districts/Research/Feature:
+  _insert: Starforged/Oracles/Districts/Research/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -1062,8 +1149,12 @@ Starforged/Oracles/Districts/Research/Feature:
       Result: Strict access protocols
     - Floor: 89
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Districts/Research/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Districts/Research/Peril:
+  _insert: Starforged/Oracles/Districts/Research/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -1096,11 +1187,17 @@ Starforged/Oracles/Districts/Research/Peril:
       Result: Unstable technology
     - Floor: 91
       Ceiling: 98
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Districts/Research/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Districts/Research/Opportunity:
+  _insert: Starforged/Oracles/Districts/Research/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:

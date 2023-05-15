@@ -1,35 +1,65 @@
-Starforged/Oracles/Factions/Type:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Type:
+  _replace: Starforged/Oracles/Factions/Type
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 40
-      Result: ▶Dominion - Governing power
+      Result: '[⏵Dominion](Starforged/Oracles/Factions/Dominion)'
+      Summary: Governing power
+      'Oracle rolls':
+        - 'Starforged/Oracles/Factions/Dominion'
+        - 'Starforged/Oracles/Factions/Leadership'
     - Floor: 41
       Ceiling: 70
-      Result: ▶Guild - Organization of specialists
+      Result: '[⏵Guild](Starforged/Oracles/Factions/Guild)'
+      Summary: Organization of specialists
+      Oracle rolls:
+        - Starforged/Oracles/Factions/Guild
     - Floor: 71
       Ceiling: 100
-      Result: ▶Fringe Group - Band of outlaws, outcasts, or rogues
+      Result: '[⏵Fringe Group](Starforged/Oracles/Factions/Fringe_Group)'
+      Summary: Band of outlaws, outcasts, or rogues
+      Oracle rolls:
+        - Starforged/Oracles/Factions/Fringe_Group
     - Floor: 101
       Ceiling: 140
-      Result: ▶Corporation - Influential business that rules economically
+      Result: '[⏵Corporation](Starsmith/Oracles/Factions/Corporation_Field)'
+      Summary: Influential business that rules economically
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/Corporation_Field
     - Floor: 141
       Ceiling: 170
-      Result: ▶Military - Military outfit exerting power
+      Result: '[⏵Military](Starsmith/Oracles/Factions/Military_Specialty)'
+      Summary: Military outfit exerting power
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/Military_Specialty
     - Floor: 171
       Ceiling: 200
-      Result: ▶Religious - Sect of mainline believers
+      Result: '[⏵Religious](Starsmith/Oracles/Factions/Religious_Role)'
+      Summary: Sect of mainline believers
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/Religious_Role
     - Floor: 201
       Ceiling: 240
-      Result: ▶Research Group - Wealthy scientists developing influence
+      Result: '[⏵Research Group](Starsmith/Oracles/Factions/Research_Field_of_Study)'
+      Summary: Wealthy scientists developing influence
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/Research_Field_of_Study
     - Floor: 241
       Ceiling: 270
-      Result: ▶Data Harvesters - Keepers of knowledge
+      Result: '[⏵Data Harvesters](Starsmith/Oracles/Factions/Data_Harvesters_Role)'
+      Summary: Keepers of knowledge
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/Data_Harvesters_Role
     - Floor: 271
       Ceiling: 300
-      Result: ▶AI Hive - Independent, self-governing AI
-Starforged/Oracles/Factions/Dominion:
-  Dice: "1d300"
+      Result: '[⏵AI Hive](Starsmith/Oracles/Factions/AI_Hive_Prime_Directive)'
+      Summary: Independent, self-governing AI
+      Oracle rolls:
+        - Starsmith/Oracles/Factions/AI_Hive_Prime_Directive
+Starsmith/Oracles/Factions/Dominion:
+  _replace: Starforged/Oracles/Factions/Dominion
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -247,8 +277,9 @@ Starforged/Oracles/Factions/Dominion:
     - Floor: 297
       Ceiling: 300
       Result: Truth
-Starforged/Oracles/Factions/Leadership:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Leadership:
+  _replace: Starforged/Oracles/Factions/Leadership
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -340,8 +371,9 @@ Starforged/Oracles/Factions/Leadership:
     - Floor: 296
       Ceiling: 300
       Result: Unknown intelligence
-Starforged/Oracles/Factions/Guild:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Guild:
+  _replace: Starforged/Oracles/Factions/Guild
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -388,6 +420,8 @@ Starforged/Oracles/Factions/Guild:
     - Floor: 91
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 105
       Result: Agriculturists
@@ -433,6 +467,8 @@ Starforged/Oracles/Factions/Guild:
     - Floor: 191
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 205
       Result: Animal husbandry
@@ -478,8 +514,11 @@ Starforged/Oracles/Factions/Guild:
     - Floor: 291
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Factions/Fringe_Group:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Fringe_Group:
+  _replace: Starforged/Oracles/Factions/Fringe_Group
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -517,6 +556,8 @@ Starforged/Oracles/Factions/Fringe_Group:
     - Floor: 96
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 105
       Result: Alien believers
@@ -553,6 +594,8 @@ Starforged/Oracles/Factions/Fringe_Group:
     - Floor: 196
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 205
       Result: Augmented
@@ -589,8 +632,11 @@ Starforged/Oracles/Factions/Fringe_Group:
     - Floor: 296
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Factions/Projects:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Projects:
+  _replace: Starforged/Oracles/Factions/Projects
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -690,7 +736,10 @@ Starforged/Oracles/Factions/Projects:
       Result: Usurp leadership within a rival faction
     - Floor: 97
       Ceiling: 100
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 101
       Ceiling: 103
       Result: Blackmail an asset to prevent them going rogue
@@ -789,7 +838,10 @@ Starforged/Oracles/Factions/Projects:
       Result: Win a landmark court case or judgment
     - Floor: 197
       Ceiling: 200
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 201
       Ceiling: 203
       Result: Bog down a rival with frivolous charges
@@ -888,9 +940,13 @@ Starforged/Oracles/Factions/Projects:
       Result: Withdraw operations from a location or sector
     - Floor: 297
       Ceiling: 300
-      Result: ▶Action + Theme
-Starforged/Oracles/Factions/Relationships:
-  Dice: "1d300"
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+Starsmith/Oracles/Factions/Relationships:
+  _replace: Starforged/Oracles/Factions/Relationships
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 4
@@ -976,6 +1032,8 @@ Starforged/Oracles/Factions/Relationships:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 104
       Result: Acquired sensitive information from
@@ -1060,6 +1118,8 @@ Starforged/Oracles/Factions/Relationships:
     - Floor: 197
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 204
       Result: Acts sycophantic towards
@@ -1144,8 +1204,11 @@ Starforged/Oracles/Factions/Relationships:
     - Floor: 297
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Factions/Legacy:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Legacy:
+  _replace: Starforged/Oracles/Factions/Legacy
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 2
@@ -1597,8 +1660,9 @@ Starforged/Oracles/Factions/Legacy:
     - Floor: 299
       Ceiling: 300
       Result: Zealous
-Starforged/Oracles/Factions/Affiliation:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Affiliation:
+  _replace: Starforged/Oracles/Factions/Affiliation
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 4
@@ -1825,8 +1889,9 @@ Starforged/Oracles/Factions/Affiliation:
     - Floor: 297
       Ceiling: 300
       Result: Weave
-Starforged/Oracles/Factions/Identity:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Identity:
+  _replace: Starforged/Oracles/Factions/Identity
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 2
@@ -2278,8 +2343,9 @@ Starforged/Oracles/Factions/Identity:
     - Floor: 299
       Ceiling: 300
       Result: Vipers
-Starforged/Oracles/Factions/Quirks:
-  Dice: "1d300"
+Starsmith/Oracles/Factions/Quirks:
+  _replace: Starforged/Oracles/Factions/Quirks
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -2379,7 +2445,10 @@ Starforged/Oracles/Factions/Quirks:
       Result: Work or environment causes mutations
     - Floor: 97
       Ceiling: 100
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 101
       Ceiling: 103
       Result: Amalgamation of languages used
@@ -2478,7 +2547,10 @@ Starforged/Oracles/Factions/Quirks:
       Result: Work or environment causes disease
     - Floor: 197
       Ceiling: 200
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 201
       Ceiling: 203
       Result: Accepted subfactions identified by dress and appearance
@@ -2577,9 +2649,13 @@ Starforged/Oracles/Factions/Quirks:
       Result: Work or environment borders space-time schism
     - Floor: 297
       Ceiling: 300
-      Result: ▶Action + Theme
-Starforged/Oracles/Factions/Rumors:
-  Dice: "1d300"
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+Starsmith/Oracles/Factions/Rumors:
+  _replace: Starforged/Oracles/Factions/Rumors
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -2679,16 +2755,19 @@ Starforged/Oracles/Factions/Rumors:
       Result: Vulnerable to attack or aggression
     - Floor: 97
       Ceiling: 100
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 101
       Ceiling: 103
       Result: Asked to ally with both sides of feuding factions
     - Floor: 104
       Ceiling: 106
-      Result: "Being played by another power"
+      Result: 'Being played by another power'
     - Floor: 107
       Ceiling: 109
-      Result: "Bribing local lawmakers"
+      Result: 'Bribing local lawmakers'
     - Floor: 110
       Ceiling: 112
       Result: Building a secret base of operations
@@ -2697,13 +2776,13 @@ Starforged/Oracles/Factions/Rumors:
       Result: Cannot fund or withstand a sustained conflict
     - Floor: 116
       Ceiling: 118
-      Result: "Defenses are consolidating in one area"
+      Result: 'Defenses are consolidating in one area'
     - Floor: 119
       Ceiling: 121
-      Result: "Developing dangerous technology"
+      Result: 'Developing dangerous technology'
     - Floor: 122
       Ceiling: 124
-      Result: "Digital systems have back door access"
+      Result: 'Digital systems have back door access'
     - Floor: 125
       Ceiling: 127
       Result: Extorted by another leader or faction
@@ -2712,7 +2791,7 @@ Starforged/Oracles/Factions/Rumors:
       Result: Funding illegal or unethical experiments
     - Floor: 131
       Ceiling: 133
-      Result: "Gathering evidence against dangerous criminal"
+      Result: 'Gathering evidence against dangerous criminal'
     - Floor: 134
       Ceiling: 136
       Result: Impending calamity or disaster
@@ -2724,22 +2803,22 @@ Starforged/Oracles/Factions/Rumors:
       Result: Interest in membership is dwindling
     - Floor: 143
       Ceiling: 145
-      Result: "Key agent is interested in flipping sides"
+      Result: 'Key agent is interested in flipping sides'
     - Floor: 146
       Ceiling: 148
-      Result: "Leader is looking for a way out"
+      Result: 'Leader is looking for a way out'
     - Floor: 149
       Ceiling: 151
       Result: Leaders squabbling amongst themselves
     - Floor: 152
       Ceiling: 154
-      Result: "Losing face by publicly supporting unpopular faction"
+      Result: 'Losing face by publicly supporting unpopular faction'
     - Floor: 155
       Ceiling: 157
       Result: Lost a powerful artifact
     - Floor: 158
       Ceiling: 160
-      Result: "Lost a valuable asset"
+      Result: 'Lost a valuable asset'
     - Floor: 161
       Ceiling: 163
       Result: Manipulating supply of a valuable commodity
@@ -2775,10 +2854,13 @@ Starforged/Oracles/Factions/Rumors:
       Result: Wants to shift their focus to a new purpose
     - Floor: 194
       Ceiling: 196
-      Result: "Wielding a dangerous power"
+      Result: 'Wielding a dangerous power'
     - Floor: 197
       Ceiling: 200
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 201
       Ceiling: 203
       Result: Accidentally pulled a third party into their feud
@@ -2787,7 +2869,7 @@ Starforged/Oracles/Factions/Rumors:
       Result: Afraid to address the real problem
     - Floor: 207
       Ceiling: 209
-      Result: "Bribing local law enforcement"
+      Result: 'Bribing local law enforcement'
     - Floor: 210
       Ceiling: 212
       Result: Broke a powerful artifact and need it fixed
@@ -2877,11 +2959,14 @@ Starforged/Oracles/Factions/Rumors:
       Result: Working with corrupt law enforcement to crack down
     - Floor: 297
       Ceiling: 300
-      Result: ▶Action + Theme
-Starforged/Oracles/Factions/Corporation_Field:
-  Name: Corporation Field
-  Parent: Factions
-  Dice: "1d100"
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+Starsmith/Oracles/Factions/Corporation_Field:
+  _insert: Starforged/Oracles/Factions/Corporation_Field
+  Name: 'Corporation: Field'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 8
@@ -2922,10 +3007,12 @@ Starforged/Oracles/Factions/Corporation_Field:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Factions/Military_Specialty:
-  Name: Military Specialty
-  Parent: Factions
-  Dice: "1d100"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Military_Specialty:
+  _insert: Starforged/Oracles/Factions/Military_Specialty
+  Name: 'Military: Specialty'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 8
@@ -2966,10 +3053,12 @@ Starforged/Oracles/Factions/Military_Specialty:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Factions/Religious_Role:
-  Name: Religious Role
-  Parent: Factions
-  Dice: "1d100"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Religious_Role:
+  _insert: Starforged/Oracles/Factions/Religious_Role
+  Name: 'Religious: Role'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 8
@@ -3010,10 +3099,12 @@ Starforged/Oracles/Factions/Religious_Role:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Factions/Research_Field_of_Study:
-  Name: Research Field of Study
-  Parent: Factions
-  Dice: "1d100"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Research_Field_of_Study:
+  _insert: Starforged/Oracles/Factions/Research_Field_of_Study
+  Name: 'Research: Field of Study'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 2
@@ -3141,10 +3232,12 @@ Starforged/Oracles/Factions/Research_Field_of_Study:
     - Floor: 96
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Factions/AI_Hive_Prime_Directive:
-  Name: AI Hive Prime Directive
-  Parent: Factions
-  Dice: "1d100"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/AI_Hive_Prime_Directive:
+  _insert: Starforged/Oracles/Factions/AI_Hive_Prime_Directive
+  Name: 'AI Hive: Prime Directive'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 8
@@ -3185,10 +3278,12 @@ Starforged/Oracles/Factions/AI_Hive_Prime_Directive:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Factions/Data_Harvesters_Role:
-  Name: Data Harvesters Role
-  Parent: Factions
-  Dice: "1d100"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Factions/Data_Harvesters_Role:
+  _insert: Starforged/Oracles/Factions/Data_Harvesters_Role
+  Name: 'Data Harvesters: Role'
+  Dice: '1d100'
   Table:
     - Floor: 1
       Ceiling: 8
@@ -3229,3 +3324,5 @@ Starforged/Oracles/Factions/Data_Harvesters_Role:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2

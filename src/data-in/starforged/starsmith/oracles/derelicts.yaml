@@ -1,4 +1,5 @@
-Starforged/Oracles/Derelicts/Outer_First_Look:
+Starsmith/Oracles/Derelicts/Outer_First_Look:
+  _replace: Starforged/Oracles/Derelicts/Outer_First_Look
   Dice: 1d300
   Table:
     - Floor: 1
@@ -91,7 +92,8 @@ Starforged/Oracles/Derelicts/Outer_First_Look:
     - Floor: 296
       Ceiling: 300
       Result: Affected by local stellar phenomenon
-Starforged/Oracles/Derelicts/Inner_First_Look:
+Starsmith/Oracles/Derelicts/Inner_First_Look:
+  _replace: Starforged/Oracles/Derelicts/Inner_First_Look
   Dice: 1d300
   Table:
     - Floor: 1
@@ -189,7 +191,10 @@ Starforged/Oracles/Derelicts/Inner_First_Look:
       Result: Watchful AI
     - Floor: 94
       Ceiling: 100
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 101
       Ceiling: 103
       Result: Abnormal atmosphere
@@ -285,7 +290,10 @@ Starforged/Oracles/Derelicts/Inner_First_Look:
       Result: Trails of ooze
     - Floor: 194
       Ceiling: 200
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 201
       Ceiling: 203
       Result: Abnormal structure material
@@ -381,12 +389,14 @@ Starforged/Oracles/Derelicts/Inner_First_Look:
       Result: Wide-open spaces
     - Floor: 294
       Ceiling: 300
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Derelicts/Location_and_Type:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Derelicts/Location_and_Type:
+  _insert: Starforged/Oracles/Derelicts/Location_and_Type
   Name: Location and Type
-  Category: Derelicts
-  Filename: Derelicts_Location_and_Type
-  Dice: "100"
+  Dice: 1d100
   Table:
     - Floor: 1
       Ceiling: 10

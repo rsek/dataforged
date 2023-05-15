@@ -1,5 +1,6 @@
-Starforged/Oracles/Misc/Story_Complication:
-  Dice: "1d300"
+Starsmith/Oracles/Misc/Story_Complication:
+  _replace: Starforged/Oracles/Misc/Story_Complication
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 4
@@ -88,6 +89,8 @@ Starforged/Oracles/Misc/Story_Complication:
     - Floor: 96
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 104
       Result: A secret or unsavory past event from your life is revealed
@@ -175,6 +178,8 @@ Starforged/Oracles/Misc/Story_Complication:
     - Floor: 196
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 204
       Result: Calling in a favor comes up short
@@ -262,8 +267,11 @@ Starforged/Oracles/Misc/Story_Complication:
     - Floor: 296
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Misc/Story_Clue:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Misc/Story_Clue:
+  _replace: Starforged/Oracles/Misc/Story_Clue
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -357,7 +365,10 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Suggests an impostor or forgery
     - Floor: 91
       Ceiling: 100
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 101
       Ceiling: 103
       Result: Brings to light a prior altercation involving a connected leader
@@ -366,7 +377,8 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Brings to light a prior altercation involving a recently missing item
     - Floor: 107
       Ceiling: 109
-      Result: Brings to light a prior altercation involving a site or artifact of
+      Result:
+        Brings to light a prior altercation involving a site or artifact of
         power
     - Floor: 110
       Ceiling: 112
@@ -418,11 +430,13 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Reveals a change in power or authority involving a recently missing item
     - Floor: 158
       Ceiling: 160
-      Result: Reveals a change in power or authority involving a site or artifact of
+      Result:
+        Reveals a change in power or authority involving a site or artifact of
         power
     - Floor: 161
       Ceiling: 163
-      Result: Reveals a change in power or authority involving the primary victim or
+      Result:
+        Reveals a change in power or authority involving the primary victim or
         their friend/family
     - Floor: 164
       Ceiling: 166
@@ -432,11 +446,13 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Reveals an emotional or material loss involving a recently missing item
     - Floor: 170
       Ceiling: 172
-      Result: Reveals an emotional or material loss involving a site or artifact of
+      Result:
+        Reveals an emotional or material loss involving a site or artifact of
         power
     - Floor: 173
       Ceiling: 175
-      Result: Reveals an emotional or material loss involving the primary victim or
+      Result:
+        Reveals an emotional or material loss involving the primary victim or
         their friend/family
     - Floor: 176
       Ceiling: 178
@@ -455,7 +471,10 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Uncovers a damaging secret involving a tool used nefariously
     - Floor: 191
       Ceiling: 200
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 201
       Ceiling: 203
       Result: Brings to light a prior altercation involving a primary suspect
@@ -519,7 +538,8 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Reveals a change in power or authority involving a tool used neferiously
     - Floor: 261
       Ceiling: 263
-      Result: Reveals a change in power or authority that occurred at a connected
+      Result:
+        Reveals a change in power or authority that occurred at a connected
         location
     - Floor: 264
       Ceiling: 266
@@ -552,9 +572,13 @@ Starforged/Oracles/Misc/Story_Clue:
       Result: Uncovers a new rumor or scandal
     - Floor: 291
       Ceiling: 300
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Misc/Combat_Action:
-  Dice: "1d300"
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Misc/Combat_Action:
+  _replace: Starforged/Oracles/Misc/Combat_Action
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -655,6 +679,8 @@ Starforged/Oracles/Misc/Combat_Action:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 103
       Result: Aid another
@@ -754,6 +780,8 @@ Starforged/Oracles/Misc/Combat_Action:
     - Floor: 197
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 203
       Result: Alter the terrain or surroundings
@@ -853,8 +881,11 @@ Starforged/Oracles/Misc/Combat_Action:
     - Floor: 297
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Misc/Anomaly_Effect:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Misc/Anomaly_Effect:
+  _replace: Starforged/Oracles/Misc/Anomaly_Effect
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -955,6 +986,8 @@ Starforged/Oracles/Misc/Anomaly_Effect:
     - Floor: 97
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 103
       Result: Allows the spirits of the dead to speak
@@ -1054,6 +1087,8 @@ Starforged/Oracles/Misc/Anomaly_Effect:
     - Floor: 197
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 203
       Result: Alters celestial movements
@@ -1153,9 +1188,12 @@ Starforged/Oracles/Misc/Anomaly_Effect:
     - Floor: 297
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Misc/Item:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Misc/Item:
+  _insert: Starforged/Oracles/Misc/Item
   Name: Item of Narrative Significance
-  Dice: "1d300"
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 1

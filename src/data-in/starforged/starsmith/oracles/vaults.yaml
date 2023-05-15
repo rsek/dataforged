@@ -1,5 +1,6 @@
-Starforged/Oracles/Vaults/Form:
-  Dice: "1d300"
+Starsmith/Oracles/Vaults/Form:
+  _replace: Starforged/Oracles/Vaults/Form
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 35
@@ -46,8 +47,9 @@ Starforged/Oracles/Vaults/Form:
     - Floor: 296
       Ceiling: 300
       Result: Incomprehensible
-Starforged/Oracles/Vaults/Shape:
-  Dice: "1d300"
+Starsmith/Oracles/Vaults/Shape:
+  _replace: Starforged/Oracles/Vaults/Shape
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 15
@@ -97,6 +99,8 @@ Starforged/Oracles/Vaults/Shape:
     - Floor: 86
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 115
       Result: Rotating wheel
@@ -145,6 +149,8 @@ Starforged/Oracles/Vaults/Shape:
     - Floor: 186
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 215
       Result: Asteroidal
@@ -193,8 +199,11 @@ Starforged/Oracles/Vaults/Shape:
     - Floor: 286
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Vaults/Material:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Vaults/Material:
+  _replace: Starforged/Oracles/Vaults/Material
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 30
@@ -226,6 +235,8 @@ Starforged/Oracles/Vaults/Material:
     - Floor: 91
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 130
       Result: Metallic (grooved)
@@ -256,6 +267,8 @@ Starforged/Oracles/Vaults/Material:
     - Floor: 191
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 230
       Result: Metallic (jagged)
@@ -286,8 +299,11 @@ Starforged/Oracles/Vaults/Material:
     - Floor: 291
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Vaults/First_Look:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Vaults/First_Look:
+  _replace: Starforged/Oracles/Vaults/First_Look
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -378,7 +394,10 @@ Starforged/Oracles/Vaults/First_Look:
       Result: Surrounded by destruction
     - Floor: 96
       Ceiling: 100
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 101
       Ceiling: 103
       Result: Artificial gravity
@@ -468,7 +487,10 @@ Starforged/Oracles/Vaults/First_Look:
       Result: Teleporting to new locations
     - Floor: 196
       Ceiling: 200
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 201
       Ceiling: 203
       Result: Aura of cognition suppression or memory wiping
@@ -558,9 +580,13 @@ Starforged/Oracles/Vaults/First_Look:
       Result: Warning signs left by previous explorers
     - Floor: 296
       Ceiling: 300
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Vaults/Interior/First_Look:
-  Dice: "1d300"
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Vaults/Interior/First_Look:
+  _replace: Starforged/Oracles/Vaults/Interior/First_Look
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -657,7 +683,10 @@ Starforged/Oracles/Vaults/Interior/First_Look:
       Result: Wet or humid
     - Floor: 94
       Ceiling: 100
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 101
       Ceiling: 103
       Result: Arcing electrical sparks
@@ -753,7 +782,10 @@ Starforged/Oracles/Vaults/Interior/First_Look:
       Result: Whirring or clicking sound
     - Floor: 194
       Ceiling: 200
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 201
       Ceiling: 203
       Result: Augmented reality environment
@@ -849,9 +881,13 @@ Starforged/Oracles/Vaults/Interior/First_Look:
       Result: Variable environment attuned to different biologies
     - Floor: 294
       Ceiling: 300
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Vaults/Sanctum/Purpose:
-  Dice: "1d300"
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Vaults/Sanctum/Purpose:
+  _replace: Starforged/Oracles/Vaults/Sanctum/Purpose
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -936,10 +972,15 @@ Starforged/Oracles/Vaults/Sanctum/Purpose:
       Result: Worship of a god or being
     - Floor: 91
       Ceiling: 95
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 96
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 103
       Result: Augmenting of lifeforms
@@ -1023,10 +1064,15 @@ Starforged/Oracles/Vaults/Sanctum/Purpose:
       Result: Veneration of a leader
     - Floor: 191
       Ceiling: 195
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 196
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 203
       Result: Breeding dangerous creatures
@@ -1110,12 +1156,18 @@ Starforged/Oracles/Vaults/Sanctum/Purpose:
       Result: Territorial expansion or conquest
     - Floor: 291
       Ceiling: 295
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 296
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Vaults/Interior/Feature:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Vaults/Interior/Feature:
+  _replace: Starforged/Oracles/Vaults/Interior/Feature
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 3
@@ -1215,10 +1267,13 @@ Starforged/Oracles/Vaults/Interior/Feature:
       Result: Vertical shaft
     - Floor: 86
       Ceiling: 90
-      Result: Transition into the ▶Sanctum
+      Result: Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)
     - Floor: 91
       Ceiling: 95
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 96
       Ceiling: 100
       Result: Roll Twice
@@ -1320,10 +1375,13 @@ Starforged/Oracles/Vaults/Interior/Feature:
       Result: Violent shaking
     - Floor: 186
       Ceiling: 190
-      Result: Transition into the ▶Sanctum
+      Result: Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)
     - Floor: 191
       Ceiling: 195
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 196
       Ceiling: 200
       Result: Roll Twice
@@ -1425,15 +1483,19 @@ Starforged/Oracles/Vaults/Interior/Feature:
       Result: Trash compactor
     - Floor: 286
       Ceiling: 290
-      Result: Transition into the ▶Sanctum
+      Result: Transition into the [⏵Sanctum](Starforged/Oracles/Vaults/Sanctum)
     - Floor: 291
       Ceiling: 295
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 296
       Ceiling: 300
       Result: Roll Twice
-Starforged/Oracles/Vaults/Interior/Peril:
-  Dice: "1d300"
+Starsmith/Oracles/Vaults/Interior/Peril:
+  _replace: Starforged/Oracles/Vaults/Interior/Peril
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -1494,10 +1556,15 @@ Starforged/Oracles/Vaults/Interior/Peril:
       Result: Unnerving sound or sensation
     - Floor: 96
       Ceiling: 99
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 100
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 105
       Result: Betrayed by false sensor readings
@@ -1557,10 +1624,15 @@ Starforged/Oracles/Vaults/Interior/Peril:
       Result: Valuable data being erased or degraded
     - Floor: 196
       Ceiling: 199
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 200
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 205
       Result: Adhesive or difficult terrain
@@ -1620,12 +1692,18 @@ Starforged/Oracles/Vaults/Interior/Peril:
       Result: Sterilizing agents released
     - Floor: 296
       Ceiling: 299
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 300
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Vaults/Interior/Opportunity:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Vaults/Interior/Opportunity:
+  _replace: Starforged/Oracles/Vaults/Interior/Opportunity
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 10
@@ -1717,8 +1795,9 @@ Starforged/Oracles/Vaults/Interior/Opportunity:
     - Floor: 291
       Ceiling: 300
       Result: Usable computer interface
-Starforged/Oracles/Vaults/Sanctum/Feature:
-  Dice: "1d300"
+Starsmith/Oracles/Vaults/Sanctum/Feature:
+  _replace: Starforged/Oracles/Vaults/Sanctum/Feature
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 2
@@ -1821,7 +1900,10 @@ Starforged/Oracles/Vaults/Sanctum/Feature:
       Result: Whispering voices speak to you
     - Floor: 91
       Ceiling: 95
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 96
       Ceiling: 100
       Result: Roll Twice
@@ -1926,7 +2008,10 @@ Starforged/Oracles/Vaults/Sanctum/Feature:
       Result: Visions of this place in possible futures
     - Floor: 191
       Ceiling: 195
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 196
       Ceiling: 200
       Result: Roll Twice
@@ -2031,12 +2116,16 @@ Starforged/Oracles/Vaults/Sanctum/Feature:
       Result: Visions of a connected vault or network
     - Floor: 291
       Ceiling: 295
-      Result: ▶Descriptor + Focus
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
     - Floor: 296
       Ceiling: 300
       Result: Roll Twice
-Starforged/Oracles/Vaults/Sanctum/Peril:
-  Dice: "1d300"
+Starsmith/Oracles/Vaults/Sanctum/Peril:
+  _replace: Starforged/Oracles/Vaults/Sanctum/Peril
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 5
@@ -2097,10 +2186,15 @@ Starforged/Oracles/Vaults/Sanctum/Peril:
       Result: You are marked by physical corruption or mutation
     - Floor: 96
       Ceiling: 99
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 100
       Ceiling: 100
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 101
       Ceiling: 105
       Result: Assaulted by the spirits of those who came before
@@ -2160,10 +2254,15 @@ Starforged/Oracles/Vaults/Sanctum/Peril:
       Result: You are marked by spiritual corruption
     - Floor: 196
       Ceiling: 199
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 200
       Ceiling: 200
       Result: Roll twice
+      Multiple rolls:
+        Amount: 2
     - Floor: 201
       Ceiling: 205
       Result: Adaptive systems respond to confound you
@@ -2223,12 +2322,18 @@ Starforged/Oracles/Vaults/Sanctum/Peril:
       Result: Thrust into a most dangerous game
     - Floor: 296
       Ceiling: 299
-      Result: ▶Action + Theme
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
     - Floor: 300
       Ceiling: 300
       Result: Roll twice
-Starforged/Oracles/Vaults/Sanctum/Opportunity:
-  Dice: "1d300"
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Vaults/Sanctum/Opportunity:
+  _replace: Starforged/Oracles/Vaults/Sanctum/Opportunity
+  Dice: 1d300
   Table:
     - Floor: 1
       Ceiling: 10

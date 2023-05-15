@@ -1,79 +1,81 @@
-Starforged/Oracles/Location_Themes/Type:
+Starsmith/Oracles/Location_Themes/Type:
+  _replace: Starforged/Oracles/Location_Themes/Type
   Dice: 1d200
   Table:
     - Floor: 1
       Ceiling: 15
-      Result: ▶Chaotic
+      Result: '[⏵Chaotic](Starforged/Oracles/Location_Themes/Chaotic)'
       Summary: Reality is corrupted or warped in this place.
     - Floor: 16
       Ceiling: 25
-      Result: ▶Fortified
+      Result: '[⏵Fortified](Starforged/Oracles/Location_Themes/Fortified)'
       Summary: Enemies defend this place against intruders.
     - Floor: 26
       Ceiling: 35
-      Result: ▶Haunted
+      Result: '[⏵Haunted](Starforged/Oracles/Location_Themes/Haunted)'
       Summary: Restless spirits are bound in this place.
     - Floor: 36
       Ceiling: 50
-      Result: ▶Infested
+      Result: '[⏵Infested](Starforged/Oracles/Location_Themes/Infested)'
       Summary: Foul creatures have overrun this place.
     - Floor: 51
       Ceiling: 60
-      Result: ▶Inhabited
+      Result: '[⏵Inhabited](Starforged/Oracles/Location_Themes/Inhabited)'
       Summary: People have built a community in this place.
     - Floor: 61
       Ceiling: 75
-      Result: ▶Mechanical
+      Result: '[⏵Mechanical](Starforged/Oracles/Location_Themes/Mechanical)'
       Summary: Machines and technology hold sway in this place.
     - Floor: 76
       Ceiling: 90
-      Result: ▶Ruined
+      Result: '[⏵Ruined](Starforged/Oracles/Location_Themes/Ruined)'
       Summary: Time, disaster, or war have ravaged this place.
     - Floor: 91
       Ceiling: 100
-      Result: ▶Sacred
+      Result: '[⏵Sacred](Starforged/Oracles/Location_Themes/Sacred)'
       Summary: Worshipers glorify strange powers in this place.
     - Floor: 101
       Ceiling: 110
-      Result: ▶Arid
+      Result: '[⏵Arid](Starsmith/Oracles/Location_Themes/Arid)'
       Summary: Wind and heat cover this place in a thick blanket.
     - Floor: 111
       Ceiling: 120
-      Result: ▶Chronal
+      Result: '[⏵Chronal](Starsmith/Oracles/Location_Themes/Chronal)'
       Summary: Time flits back and forth in this place.
     - Floor: 121
       Ceiling: 130
-      Result: ▶Floating
+      Result: '[⏵Floating](Starsmith/Oracles/Location_Themes/Floating)'
       Summary: Pockets of stable ground dance on gravity waves in this place.
     - Floor: 131
       Ceiling: 140
-      Result: ▶Flooded
+      Result: '[⏵Flooded](Starsmith/Oracles/Location_Themes/Flooded)'
       Summary: Murky waters or thick vapors have overtaken this place.
     - Floor: 141
       Ceiling: 150
-      Result: ▶Frozen
+      Result: '[⏵Frozen](Starsmith/Oracles/Location_Themes/Frozen)'
       Summary: Winter holds a permanent grip in this place.
     - Floor: 151
       Ceiling: 160
-      Result: ▶Inferno
+      Result: '[⏵Inferno](Starsmith/Oracles/Location_Themes/Inferno)'
       Summary: Flame and noxious gases fill this place.
     - Floor: 161
       Ceiling: 170
-      Result: ▶Lifeform
+      Result: '[⏵Lifeform](Starsmith/Oracles/Location_Themes/Lifeform)'
       Summary: Inside a living creature, microscopic or colossal.
     - Floor: 171
       Ceiling: 180
-      Result: ▶Mystical
+      Result: '[⏵Mystical](Starsmith/Oracles/Location_Themes/Mystical)'
       Summary: Arcane energies permeate this place.
     - Floor: 181
       Ceiling: 190
-      Result: ▶Overgrown
+      Result: '[⏵Overgrown](Starsmith/Oracles/Location_Themes/Overgrown)'
       Summary: Thriving ecosystems abound in this place.
     - Floor: 191
       Ceiling: 200
-      Result: ▶War Zone
+      Result: '[⏵War Zone](Starsmith/Oracles/Location_Themes/War_Zone)'
       Summary: Combatants trade fire tensely in this place.
-Starforged/Oracles/Location_Themes/Arid/Feature:
+Starsmith/Oracles/Location_Themes/Arid/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Arid/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -113,10 +115,15 @@ Starforged/Oracles/Location_Themes/Arid/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Unending stretch of cracked, flat ground
-    - Floor: 97
+    - &DescriptorFocus
+      Floor: 97
       Ceiling: 100
-      Result: ▶Descriptor + Focus
-Starforged/Oracles/Location_Themes/Arid/Peril:
+      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Descriptor
+        - Starforged/Oracles/Core/Focus
+Starsmith/Oracles/Location_Themes/Arid/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Arid/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -150,11 +157,21 @@ Starforged/Oracles/Location_Themes/Arid/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Whirlpool of sand pulls you down
-    - Floor: 91
-    - Floor: 99
+    - &ActionTheme
+      Floor: 91
+      Ceiling: 98
+      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
+      Oracle rolls:
+        - Starforged/Oracles/Core/Action
+        - Starforged/Oracles/Core/Theme
+    - &RollTwice
+      Floor: 99
       Ceiling: 100
       Result: Roll twice
-Starforged/Oracles/Location_Themes/Arid/Opportunity:
+      Multiple rolls:
+        Amount: 2
+Starsmith/Oracles/Location_Themes/Arid/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Arid/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -173,7 +190,8 @@ Starforged/Oracles/Location_Themes/Arid/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Opening to bypass the most difficult terrain
-Starforged/Oracles/Location_Themes/Chronal/Feature:
+Starsmith/Oracles/Location_Themes/Chronal/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Chronal/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -213,8 +231,9 @@ Starforged/Oracles/Location_Themes/Chronal/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Visions of parallel universes
-    - Floor
-Starforged/Oracles/Location_Themes/Chronal/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Chronal/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Chronal/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -248,11 +267,10 @@ Starforged/Oracles/Location_Themes/Chronal/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Shunted forward in time
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Chronal/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Chronal/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Chronal/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -271,7 +289,8 @@ Starforged/Oracles/Location_Themes/Chronal/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Yawning portal through spacetime
-Starforged/Oracles/Location_Themes/Inferno/Feature:
+Starsmith/Oracles/Location_Themes/Inferno/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Inferno/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -311,8 +330,9 @@ Starforged/Oracles/Location_Themes/Inferno/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Vents spewing steaming gases
-    - Floor
-Starforged/Oracles/Location_Themes/Inferno/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Inferno/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Inferno/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -346,11 +366,10 @@ Starforged/Oracles/Location_Themes/Inferno/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Violent tremors
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Inferno/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Inferno/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Inferno/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -369,7 +388,8 @@ Starforged/Oracles/Location_Themes/Inferno/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Rare minerals naturally refined by the heat
-Starforged/Oracles/Location_Themes/Floating/Feature:
+Starsmith/Oracles/Location_Themes/Floating/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Floating/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -409,8 +429,9 @@ Starforged/Oracles/Location_Themes/Floating/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Zipline or tube transport connecting areas
-    - Floor
-Starforged/Oracles/Location_Themes/Floating/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Floating/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Floating/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -444,11 +465,10 @@ Starforged/Oracles/Location_Themes/Floating/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Wide gulf of open air
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Floating/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Floating/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Floating/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -467,7 +487,8 @@ Starforged/Oracles/Location_Themes/Floating/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Three-dimensional battlefied hampers your foes
-Starforged/Oracles/Location_Themes/Flooded/Feature:
+Starsmith/Oracles/Location_Themes/Flooded/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Flooded/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -507,8 +528,9 @@ Starforged/Oracles/Location_Themes/Flooded/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Water bursting through cracked barrier
-    - Floor
-Starforged/Oracles/Location_Themes/Flooded/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Flooded/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Flooded/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -542,11 +564,10 @@ Starforged/Oracles/Location_Themes/Flooded/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Waterfall into the darkness
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Flooded/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Flooded/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Flooded/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -565,7 +586,8 @@ Starforged/Oracles/Location_Themes/Flooded/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Submerged vehicle intact
-Starforged/Oracles/Location_Themes/Frozen/Feature:
+Starsmith/Oracles/Location_Themes/Frozen/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Frozen/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -605,8 +627,9 @@ Starforged/Oracles/Location_Themes/Frozen/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Tiny rivulets of melt water
-    - Floor
-Starforged/Oracles/Location_Themes/Frozen/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Frozen/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Frozen/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -640,11 +663,10 @@ Starforged/Oracles/Location_Themes/Frozen/Peril:
     - Floor: 82
       Ceiling: 90
       Result: White-out conditions
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Frozen/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Frozen/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Frozen/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -663,7 +685,8 @@ Starforged/Oracles/Location_Themes/Frozen/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Thin wall of ice offers a shortcut
-Starforged/Oracles/Location_Themes/Lifeform/Feature:
+Starsmith/Oracles/Location_Themes/Lifeform/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Lifeform/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -703,8 +726,9 @@ Starforged/Oracles/Location_Themes/Lifeform/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Winding nutrient passageways
-    - Floor
-Starforged/Oracles/Location_Themes/Lifeform/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Lifeform/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Lifeform/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -738,11 +762,10 @@ Starforged/Oracles/Location_Themes/Lifeform/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Virulent disease
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Lifeform/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Lifeform/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Lifeform/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -761,7 +784,8 @@ Starforged/Oracles/Location_Themes/Lifeform/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Rare scientific observation
-Starforged/Oracles/Location_Themes/Mystical/Feature:
+Starsmith/Oracles/Location_Themes/Mystical/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Mystical/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -801,8 +825,9 @@ Starforged/Oracles/Location_Themes/Mystical/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Strange specimens magically caged
-    - Floor
-Starforged/Oracles/Location_Themes/Mystical/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Mystical/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Mystical/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -836,11 +861,10 @@ Starforged/Oracles/Location_Themes/Mystical/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Trapped by mystic energies
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Mystical/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Mystical/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Mystical/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -859,7 +883,8 @@ Starforged/Oracles/Location_Themes/Mystical/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Valuable notes on mystic powers
-Starforged/Oracles/Location_Themes/Overgrown/Feature:
+Starsmith/Oracles/Location_Themes/Overgrown/Feature:
+  _insert: Starforged/Oracles/Location_Themes/Overgrown/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -899,8 +924,9 @@ Starforged/Oracles/Location_Themes/Overgrown/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Well-traveled game trail
-    - Floor
-Starforged/Oracles/Location_Themes/Overgrown/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/Overgrown/Peril:
+  _insert: Starforged/Oracles/Location_Themes/Overgrown/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -934,11 +960,10 @@ Starforged/Oracles/Location_Themes/Overgrown/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Swarms of parasitic lifeforms
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/Overgrown/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/Overgrown/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/Overgrown/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
@@ -957,7 +982,8 @@ Starforged/Oracles/Location_Themes/Overgrown/Opportunity:
     - Floor: 81
       Ceiling: 100
       Result: Opening to connect with a helpful lifeform
-Starforged/Oracles/Location_Themes/War_Zone/Feature:
+Starsmith/Oracles/Location_Themes/War_Zone/Feature:
+  _insert: Starforged/Oracles/Location_Themes/War_Zone/Feature
   Name: Feature
   Dice: 1d100
   Table:
@@ -997,8 +1023,9 @@ Starforged/Oracles/Location_Themes/War_Zone/Feature:
     - Floor: 89
       Ceiling: 96
       Result: Wounded troops hunkering down
-    - Floor
-Starforged/Oracles/Location_Themes/War_Zone/Peril:
+    - *DescriptorFocus
+Starsmith/Oracles/Location_Themes/War_Zone/Peril:
+  _insert: Starforged/Oracles/Location_Themes/War_Zone/Peril
   Name: Peril
   Dice: 1d100
   Table:
@@ -1032,11 +1059,10 @@ Starforged/Oracles/Location_Themes/War_Zone/Peril:
     - Floor: 82
       Ceiling: 90
       Result: Shrapnel or collateral damage
-    - Floor: 91
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-Starforged/Oracles/Location_Themes/War_Zone/Opportunity:
+    - *ActionTheme
+    - *RollTwice
+Starsmith/Oracles/Location_Themes/War_Zone/Opportunity:
+  _insert: Starforged/Oracles/Location_Themes/War_Zone/Opportunity
   Name: Opportunity
   Dice: 1d100
   Table:
