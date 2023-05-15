@@ -147,8 +147,8 @@ export const AssetAbility: JTDSchemaType<
 		controls: { values: { ref: 'AssetAbilityControlField' } },
 		options: { values: { ref: 'AssetAbilityOptionField' } },
 		moves: { values: { ref: 'Move' } },
-		extend_asset: { ref: 'AssetAugment' },
-		extend_moves: { elements: { ref: 'MoveAugment' } }
+		augment_asset: { ref: 'AssetAugment' },
+		augment_moves: { elements: { ref: 'MoveAugment' } }
 	}
 }
 

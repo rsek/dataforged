@@ -24,6 +24,18 @@ export type RegionEntryID = string;
 export type EncounterStarforgedID = string;
 export type OracleCollectionID = string;
 /**
+ * Indicates that this collection's content should be inserted into another collection.
+ */
+export type OracleCollectionID1 = string;
+/**
+ * The collection imported by this collection.
+ */
+export type OracleCollectionID2 = string;
+/**
+ * Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/** /location' represents any starforged table with the "location" key.
+ */
+export type OracleTableIDWildcard = string;
+/**
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
 export type CSSColor = string;
@@ -70,6 +82,18 @@ export type OracleCollectionStyle = "multi_table";
  */
 export type WEBPImageURL = string;
 export type MoveCategoryID = string;
+/**
+ * Indicates that this collection's content should be inserted into another collection.
+ */
+export type MoveCategoryID1 = string;
+/**
+ * The collection imported by this collection.
+ */
+export type MoveCategoryID2 = string;
+/**
+ * A move ID with wildcards
+ */
+export type MoveIDWithWildcard = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -192,6 +216,15 @@ export type ProgressTypeStarforged =
 export type LegacyTypeStarforged = "quests_legacy" | "bonds_legacy" | "discoveries_legacy";
 export type AssetTypeID = string;
 /**
+ * Indicates that this collection's content should be inserted into another collection.
+ */
+export type AssetTypeID1 = string;
+/**
+ * The collection imported by this collection.
+ */
+export type AssetTypeID2 = string;
+export type AssetIDWildcard = string;
+/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
@@ -212,7 +245,6 @@ export type AssetAbilityOptionField = TextField;
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
-export type AssetIDWildcard = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -221,13 +253,18 @@ export type AssetIDWildcard = string;
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetConditionMeterControlField = CheckboxField;
-/**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard = string;
 export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
 export type AssetConditionMeterID = string;
 export type EncounterCollectionID = string;
+/**
+ * Indicates that this collection's content should be inserted into another collection.
+ */
+export type EncounterCollectionID1 = string;
+/**
+ * The collection imported by this collection.
+ */
+export type EncounterCollectionID2 = string;
+export type EncounterClassicIDWildcard = string;
 /**
  * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
  */
@@ -373,7 +410,17 @@ export interface OracleCollection {
   source?: Source;
   suggestions?: Suggestions;
   id?: OracleCollectionID;
-  augments?: OracleCollectionID;
+  augments?: OracleCollectionID1;
+  /**
+   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
+   */
+  imports?: {
+    from: OracleCollectionID2;
+    /**
+     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
+     */
+    include: null | OracleTableIDWildcard[];
+  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -545,7 +592,17 @@ export interface MoveCategory {
   source?: Source;
   suggestions?: Suggestions;
   id?: MoveCategoryID;
-  augments?: MoveCategoryID;
+  augments?: MoveCategoryID1;
+  /**
+   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
+   */
+  imports?: {
+    from: MoveCategoryID2;
+    /**
+     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
+     */
+    include: null | MoveIDWithWildcard[];
+  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -637,7 +694,17 @@ export interface AssetType {
   source?: Source;
   suggestions?: Suggestions;
   id?: AssetTypeID;
-  augments?: AssetTypeID;
+  augments?: AssetTypeID1;
+  /**
+   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
+   */
+  imports?: {
+    from: AssetTypeID2;
+    /**
+     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
+     */
+    include: null | AssetIDWildcard[];
+  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -731,7 +798,7 @@ export interface AssetAbility {
   controls?: {
     [k: string]: AssetAbilityControlField;
   };
-  extend_asset?: {
+  augment_asset?: {
     icon?: SVGImageURL;
     color?: CSSColor;
     suggestions?: Suggestions;
@@ -747,7 +814,7 @@ export interface AssetAbility {
   } & {
     condition_meter?: AssetConditionMeter;
   };
-  extend_moves?: MoveAugment[];
+  augment_moves?: MoveAugment[];
 }
 export interface ClockField {
   id?: string;
@@ -831,7 +898,17 @@ export interface EncounterCollectionClassic {
   source?: Source;
   suggestions?: Suggestions;
   id?: EncounterCollectionID;
-  augments?: EncounterCollectionID;
+  augments?: EncounterCollectionID1;
+  /**
+   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
+   */
+  imports?: {
+    from: EncounterCollectionID2;
+    /**
+     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
+     */
+    include: null | EncounterClassicIDWildcard[];
+  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;

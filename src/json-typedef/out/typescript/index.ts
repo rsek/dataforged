@@ -32,8 +32,8 @@ export interface AssetAbility {
 	id: AssetAbilityId
 	text: MarkdownString
 	controls?: { [key: string]: AssetAbilityControlField }
-	extend_asset?: AssetAugment
-	extend_moves?: MoveAugment[]
+	augment_asset?: AssetAugment
+	augment_moves?: MoveAugment[]
 	moves?: { [key: string]: Move }
 	name?: Label
 	options?: { [key: string]: AssetAbilityOptionField }

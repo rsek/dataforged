@@ -1,3 +1,7 @@
+import * as ID from 'schema/common/id'
+
+console.log(Object.values(ID))
+
 export * as Utils from 'schema/common/utils'
 export * as Localize from 'schema/common/localize'
 export * as ID from 'schema/common/id'

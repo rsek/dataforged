@@ -18,13 +18,27 @@ const ajv = new Ajv({
 	.addKeyword({
 		keyword: 'releaseStage',
 		metaSchema: {
-			enum: ['alpha', 'beta', 'release'],
+			description:
+				"Indicates the release status of this schema.  Non-'release' schema may be stripped from the output.",
+			enum: ['unstable', 'experimental', 'release'],
 			default: 'release'
 		}
 	})
 	.addKeyword({
-		keyword: 'localized',
+		keyword: 'i18n',
+		type: 'string',
 		metaSchema: {
+			description:
+				'Indicates that a string value is localizable, and should be included with internationalization (A.K.A. i18n) data.',
+			type: 'boolean',
+			default: false
+		}
+	})
+	.addKeyword({
+		keyword: 'macro',
+		metaSchema: {
+			description:
+				'Indicates that this schema is used for compiling data, but is not included in the final data output.',
 			type: 'boolean',
 			default: false
 		}

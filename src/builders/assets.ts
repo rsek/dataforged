@@ -117,7 +117,7 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 			return field as Out.AssetAbilityControlField
 		})
 	},
-	extend_asset: function (
+	augment_asset: function (
 		this: SourceHaver,
 		data: In.AssetAbility,
 		key: string | number,
@@ -129,15 +129,15 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 				attachments?: Out.AssetAttachment | undefined
 				shared?: boolean | undefined
 		  } & { condition_meter?: Out.AssetConditionMeter | undefined } {
-		return data.extend_asset as any
+		return data.augment_asset as any
 	},
-	extend_moves: function (
+	augment_moves: function (
 		this: SourceHaver,
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
 	): Out.MoveAugment[] | undefined {
-		return data.extend_moves as any
+		return data.augment_moves as any
 	}
 }
 

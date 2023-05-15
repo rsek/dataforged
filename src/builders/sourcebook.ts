@@ -60,7 +60,7 @@ export const SourcebookStarforged = sourcedTransformer<
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id}/encounters` },
+				{ source: data.source, id: `${data.id as string}/encounters` },
 				EncounterStarforged
 			)
 		)

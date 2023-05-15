@@ -177,8 +177,8 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		extend_asset: Type.Optional(AssetAugmentSelf(Asset as any, ['abilities'])),
-		extend_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveAugment)))
+		augment_asset: Type.Optional(AssetAugmentSelf(Asset as any, ['abilities'])),
+		augment_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveAugment)))
 	},
 	{ $id: '#/$defs/AssetAbility' }
 )
