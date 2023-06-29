@@ -1,1218 +1,1248 @@
-Starsmith/Oracles/Districts/Zones:
-  _insert: Starforged/Oracles/Districts/Zones
-  Name: Zones
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: '[⏵Community](Starforged/Oracles/Districts/Community)'
-    - Floor: 21
-      Ceiling: 30
-      Result: '[⏵Engineering](Starforged/Oracles/Districts/Engineering)'
-    - Floor: 31
-      Ceiling: 55
-      Result: '[⏵Living](Starforged/Oracles/Districts/Living)'
-    - Floor: 56
-      Ceiling: 65
-      Result: '[⏵Medical](Starforged/Oracles/Districts/Medical)'
-    - Floor: 66
-      Ceiling: 75
-      Result: '[⏵Operations](Starforged/Oracles/Districts/Operations)'
-    - Floor: 76
-      Ceiling: 90
-      Result: '[⏵Production](Starforged/Oracles/Districts/Production)'
-    - Floor: 91
-      Ceiling: 100
-      Result: '[⏵Research](Starforged/Oracles/Districts/Research)'
-
-Starsmith/Oracles/Districts/Access/Area:
-  _insert: Starforged/Oracles/Districts/Access/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Corridor or walkway
-    - Floor: 21
-      Ceiling: 40
-      Result: Roadway or back alley
-    - Floor: 41
-      Ceiling: 50
-      Result: Hub or intersection
-    - Floor: 51
-      Ceiling: 60
-      Result: Transport tube or tunnel
-    - Floor: 61
-      Ceiling: 65
-      Result: Airlock or external
-    - Floor: 66
-      Ceiling: 70
-      Result: Catwalk or bridge
-    - Floor: 71
-      Ceiling: 75
-      Result: Gated or locked entryway
-    - Floor: 76
-      Ceiling: 80
-      Result: Lift or elevator
-    - Floor: 81
-      Ceiling: 85
-      Result: Personal transport
-    - Floor: 86
-      Ceiling: 90
-      Result: Security checkpoint
-    - Floor: 91
-      Ceiling: 95
-      Result: Shuttle pod
-    - Floor: 96
-      Ceiling: 100
-      Result: Stairs or escalator
-Starsmith/Oracles/Districts/Access/Feature:
-  _insert: Starforged/Oracles/Districts/Access/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Bright street lights
-    - Floor: 9
-      Ceiling: 16
-      Result: Congested traffic
-    - Floor: 17
-      Ceiling: 24
-      Result: Crowded spaces
-    - Floor: 25
-      Ceiling: 32
-      Result: Flashing advertisements
-    - Floor: 33
-      Ceiling: 40
-      Result: Neon signs
-    - Floor: 41
-      Ceiling: 48
-      Result: Patrolling bots
-    - Floor: 49
-      Ceiling: 56
-      Result: Street vendors
-    - Floor: 57
-      Ceiling: 64
-      Result: Trampled belongings
-    - Floor: 65
-      Ceiling: 72
-      Result: Transit map
-    - Floor: 73
-      Ceiling: 80
-      Result: Twists and turns
-    - Floor: 81
-      Ceiling: 88
-      Result: Windows or viewports
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Access/Peril:
-  _insert: Starforged/Oracles/Districts/Access/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Alarm or failsafe triggered
-    - Floor: 11
-      Ceiling: 20
-      Result: Automated system failure
-    - Floor: 21
-      Ceiling: 30
-      Result: Being followed
-    - Floor: 31
-      Ceiling: 40
-      Result: Blocked or sealed path
-    - Floor: 41
-      Ceiling: 50
-      Result: Broken infrastructure
-    - Floor: 51
-      Ceiling: 60
-      Result: Construction delays
-    - Floor: 61
-      Ceiling: 70
-      Result: Lost or pickpocketed item
-    - Floor: 71
-      Ceiling: 80
-      Result: Took the wrong turn
-    - Floor: 81
-      Ceiling: 90
-      Result: Unsettling sound or disturbance
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Access/Opportunity:
-  _insert: Starforged/Oracles/Districts/Access/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Directions, shortcut, or alternate path
-    - Floor: 21
-      Ceiling: 40
-      Result: Guide for hire
-    - Floor: 41
-      Ceiling: 60
-      Result: Opening to outmaneuver or escape a threat or foe
-    - Floor: 61
-      Ceiling: 80
-      Result: Public data access
-    - Floor: 81
-      Ceiling: 100
-      Result: Transportation secured
-
-Starsmith/Oracles/Districts/Community/Area:
-  _insert: Starforged/Oracles/Districts/Community/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Bar or club
-    - Floor: 9
-      Ceiling: 16
-      Result: Classroom or education
-    - Floor: 17
-      Ceiling: 24
-      Result: Entertainment
-    - Floor: 25
-      Ceiling: 32
-      Result: Gym or fitness
-    - Floor: 33
-      Ceiling: 40
-      Result: Market or trade shop
-    - Floor: 41
-      Ceiling: 48
-      Result: Park or garden
-    - Floor: 49
-      Ceiling: 56
-      Result: Promenade or hub
-    - Floor: 57
-      Ceiling: 64
-      Result: Restaurant or dining
-    - Floor: 65
-      Ceiling: 72
-      Result: Specialty shop
-    - Floor: 73
-      Ceiling: 80
-      Result: Tech shop
-    - Floor: 81
-      Ceiling: 88
-      Result: Temple or chapel
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Community/Feature:
-  _insert: Starforged/Oracles/Districts/Community/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Community event
-    - Floor: 9
-      Ceiling: 16
-      Result: Flashing wanted signs
-    - Floor: 17
-      Ceiling: 24
-      Result: Graffiti of secret symbols
-    - Floor: 25
-      Ceiling: 32
-      Result: High security presence
-    - Floor: 33
-      Ceiling: 40
-      Result: Interactive environment
-    - Floor: 41
-      Ceiling: 48
-      Result: Local celebrity
-    - Floor: 49
-      Ceiling: 56
-      Result: Maintenance crew at work
-    - Floor: 57
-      Ceiling: 64
-      Result: Novel tech advertisement
-    - Floor: 65
-      Ceiling: 72
-      Result: Ongoing construction
-    - Floor: 73
-      Ceiling: 80
-      Result: Political rally or protest
-    - Floor: 81
-      Ceiling: 88
-      Result: Significant ceremony
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Community/Peril:
-  _insert: Starforged/Oracles/Districts/Community/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Child lost in the crowd
-    - Floor: 11
-      Ceiling: 20
-      Result: Goons extorting a business
-    - Floor: 21
-      Ceiling: 30
-      Result: Lockdown or quarantine instituted
-    - Floor: 31
-      Ceiling: 40
-      Result: Lost in the shuffle
-    - Floor: 41
-      Ceiling: 50
-      Result: Outbreak of violence
-    - Floor: 51
-      Ceiling: 60
-      Result: Prowling pickpocket
-    - Floor: 61
-      Ceiling: 70
-      Result: Security or structural malfunction
-    - Floor: 71
-      Ceiling: 80
-      Result: Tech dampeners hinder / harm equipment
-    - Floor: 81
-      Ceiling: 90
-      Result: Temptation towards a vice
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Community/Opportunity:
-  _insert: Starforged/Oracles/Districts/Community/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Available goods or resources
-    - Floor: 21
-      Ceiling: 40
-      Result: Fortuitous gossip
-    - Floor: 41
-      Ceiling: 60
-      Result: Terminal with access to site details
-    - Floor: 61
-      Ceiling: 80
-      Result: The right person for the job
-    - Floor: 81
-      Ceiling: 100
-      Result: Welcoming community offers a moment of peace
-
-Starsmith/Oracles/Districts/Engineering/Area:
-  _insert: Starforged/Oracles/Districts/Engineering/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Control room
-    - Floor: 9
-      Ceiling: 16
-      Result: Engine room / power core
-    - Floor: 17
-      Ceiling: 24
-      Result: Engineering offices
-    - Floor: 25
-      Ceiling: 32
-      Result: Equipment storage
-    - Floor: 33
-      Ceiling: 40
-      Result: Fuel or coolant tanks
-    - Floor: 41
-      Ceiling: 48
-      Result: Life support
-    - Floor: 49
-      Ceiling: 56
-      Result: Maintenance tube
-    - Floor: 57
-      Ceiling: 64
-      Result: Refuse recycling
-    - Floor: 65
-      Ceiling: 72
-      Result: Vehicle bay or garage
-    - Floor: 73
-      Ceiling: 80
-      Result: Water processing
-    - Floor: 81
-      Ceiling: 88
-      Result: Workshop
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Engineering/Feature:
-  _insert: Starforged/Oracles/Districts/Engineering/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Containers of fluid or fuel
-    - Floor: 9
-      Ceiling: 16
-      Result: Control terminal
-    - Floor: 17
-      Ceiling: 24
-      Result: Crane or lift
-    - Floor: 25
-      Ceiling: 32
-      Result: Disassembled equipment
-    - Floor: 33
-      Ceiling: 40
-      Result: Flickering status monitors
-    - Floor: 41
-      Ceiling: 48
-      Result: Multi-level layout
-    - Floor: 49
-      Ceiling: 56
-      Result: Pipes and valves
-    - Floor: 57
-      Ceiling: 64
-      Result: Supervisors with clipboards
-    - Floor: 65
-      Ceiling: 72
-      Result: Unusual equipment
-    - Floor: 73
-      Ceiling: 80
-      Result: Upgrade in progress
-    - Floor: 81
-      Ceiling: 88
-      Result: Utility bots
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Engineering/Peril:
-  _insert: Starforged/Oracles/Districts/Engineering/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Corrosive leak
-    - Floor: 11
-      Ceiling: 20
-      Result: Environmental controls gone haywire
-    - Floor: 21
-      Ceiling: 30
-      Result: Erratic utility bots
-    - Floor: 31
-      Ceiling: 40
-      Result: Failing equipment requires a specific part or skill
-    - Floor: 41
-      Ceiling: 50
-      Result: Fire or energy surge
-    - Floor: 51
-      Ceiling: 60
-      Result: Gremlin in the system
-    - Floor: 61
-      Ceiling: 70
-      Result: Power core failing
-    - Floor: 71
-      Ceiling: 80
-      Result: Radioactive hotspot
-    - Floor: 81
-      Ceiling: 90
-      Result: Worksite accident
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Engineering/Opportunity:
-  _insert: Starforged/Oracles/Districts/Engineering/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access granted to advanced or experimental equipment
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to a specialized tool or device
-    - Floor: 41
-      Ceiling: 60
-      Result: Expert engineer willing to talk shop
-    - Floor: 61
-      Ceiling: 80
-      Result: Helpful plans or schematics
-    - Floor: 81
-      Ceiling: 100
-      Result: Helpful utility bot
-
-Starsmith/Oracles/Districts/Living/Area:
-  _insert: Starforged/Oracles/Districts/Living/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Communal quarters
-    - Floor: 9
-      Ceiling: 16
-      Result: Cramped apartments
-    - Floor: 17
-      Ceiling: 24
-      Result: Family quarters
-    - Floor: 25
-      Ceiling: 32
-      Result: Laundry
-    - Floor: 33
-      Ceiling: 40
-      Result: Locker room or storage
-    - Floor: 41
-      Ceiling: 48
-      Result: Luxury homes
-    - Floor: 49
-      Ceiling: 56
-      Result: Mess hall or dining
-    - Floor: 57
-      Ceiling: 64
-      Result: Public restroom or showers
-    - Floor: 65
-      Ceiling: 72
-      Result: Roomy residences
-    - Floor: 73
-      Ceiling: 80
-      Result: Tent city
-    - Floor: 81
-      Ceiling: 88
-      Result: Waste disposal
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Living/Feature:
-  _insert: Starforged/Oracles/Districts/Living/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Abandoned pet
-    - Floor: 9
-      Ceiling: 16
-      Result: Bio-locked doorways
-    - Floor: 17
-      Ceiling: 24
-      Result: Bulletin board of messages
-    - Floor: 25
-      Ceiling: 32
-      Result: Children at play
-    - Floor: 33
-      Ceiling: 40
-      Result: Communal transport
-    - Floor: 41
-      Ceiling: 48
-      Result: Homes with a view
-    - Floor: 49
-      Ceiling: 56
-      Result: Misplaced belongings
-    - Floor: 57
-      Ceiling: 64
-      Result: Ration dispenser
-    - Floor: 65
-      Ceiling: 72
-      Result: Security patrol
-    - Floor: 73
-      Ceiling: 80
-      Result: Unusual art
-    - Floor: 81
-      Ceiling: 88
-      Result: Work shift change over
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Living/Peril:
-  _insert: Starforged/Oracles/Districts/Living/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Contaminated water supply
-    - Floor: 11
-      Ceiling: 20
-      Result: Domestic dispute
-    - Floor: 21
-      Ceiling: 30
-      Result: Exploitative living conditions
-    - Floor: 31
-      Ceiling: 40
-      Result: Illegal substance dealer
-    - Floor: 41
-      Ceiling: 50
-      Result: Inadvertent trespass
-    - Floor: 51
-      Ceiling: 60
-      Result: Infectious vermin
-    - Floor: 61
-      Ceiling: 70
-      Result: Nosy neighbor draws unwanted attention
-    - Floor: 71
-      Ceiling: 80
-      Result: Parent looking for a lost child
-    - Floor: 81
-      Ceiling: 90
-      Result: Shunned as an outsider
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Living/Opportunity:
-  _insert: Starforged/Oracles/Districts/Living/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Eager youth willing to help
-    - Floor: 21
-      Ceiling: 40
-      Result: Elderly wisdom passed on
-    - Floor: 41
-      Ceiling: 60
-      Result: Hidden stash of valuable contraband
-    - Floor: 61
-      Ceiling: 80
-      Result: Offer of shelter and respite
-    - Floor: 81
-      Ceiling: 100
-      Result: Useful personal gear
-
-Starsmith/Oracles/Districts/Medical/Area:
-  _insert: Starforged/Oracles/Districts/Medical/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Crematorium / morgue
-    - Floor: 9
-      Ceiling: 16
-      Result: Emergency response unit
-    - Floor: 17
-      Ceiling: 24
-      Result: Hospital
-    - Floor: 25
-      Ceiling: 32
-      Result: Isolation or containment
-    - Floor: 33
-      Ceiling: 40
-      Result: Medical laboratory
-    - Floor: 41
-      Ceiling: 48
-      Result: Medical offices
-    - Floor: 49
-      Ceiling: 56
-      Result: Pharmacy or drug dispenser
-    - Floor: 57
-      Ceiling: 64
-      Result: Prosthetics workshop
-    - Floor: 65
-      Ceiling: 72
-      Result: Surgical suite
-    - Floor: 73
-      Ceiling: 80
-      Result: Urgent care or triage
-    - Floor: 81
-      Ceiling: 88
-      Result: Therapy ward or clinic
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Medical/Feature:
-  _insert: Starforged/Oracles/Districts/Medical/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Decontamination checkpoint
-    - Floor: 9
-      Ceiling: 16
-      Result: Emergency landing site
-    - Floor: 17
-      Ceiling: 24
-      Result: Family visiting patients
-    - Floor: 25
-      Ceiling: 32
-      Result: Hermetically sealed zone
-    - Floor: 33
-      Ceiling: 40
-      Result: Holographic assistants
-    - Floor: 41
-      Ceiling: 48
-      Result: Medical equipment
-    - Floor: 49
-      Ceiling: 56
-      Result: Medical records or scans
-    - Floor: 57
-      Ceiling: 64
-      Result: Medical trainees learning
-    - Floor: 65
-      Ceiling: 72
-      Result: Medical vehicle
-    - Floor: 73
-      Ceiling: 80
-      Result: Patients in line
-    - Floor: 81
-      Ceiling: 88
-      Result: Sirens and flashing lights
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Medical/Peril:
-  _insert: Starforged/Oracles/Districts/Medical/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Biohazardous material
-    - Floor: 11
-      Ceiling: 20
-      Result: Evidence of malpractice
-    - Floor: 21
-      Ceiling: 30
-      Result: Falsely marked as a patient
-    - Floor: 31
-      Ceiling: 40
-      Result: Lack of critical medical supplies
-    - Floor: 41
-      Ceiling: 50
-      Result: Malfunctioning medical bots
-    - Floor: 51
-      Ceiling: 60
-      Result: Signs of broken quarantine or virulent disease
-    - Floor: 61
-      Ceiling: 70
-      Result: Threat targets the most vulnerable
-    - Floor: 71
-      Ceiling: 80
-      Result: Traumatizing flashback
-    - Floor: 81
-      Ceiling: 90
-      Result: Victims of a tragic accident
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Medical/Opportunity:
-  _insert: Starforged/Oracles/Districts/Medical/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to quality medical care
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to rare specimen or data
-    - Floor: 41
-      Ceiling: 60
-      Result: Chance to prove your character
-    - Floor: 61
-      Ceiling: 80
-      Result: Clues to a medical mystery
-    - Floor: 81
-      Ceiling: 100
-      Result: Well-connected patient seeks more data
-
-Starsmith/Oracles/Districts/Operations/Area:
-  _insert: Starforged/Oracles/Districts/Operations/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Administrative offices
-    - Floor: 9
-      Ceiling: 16
-      Result: Armory
-    - Floor: 17
-      Ceiling: 24
-      Result: Central computer core
-    - Floor: 25
-      Ceiling: 32
-      Result: Comms center
-    - Floor: 33
-      Ceiling: 40
-      Result: Environmental control
-    - Floor: 41
-      Ceiling: 48
-      Result: Food distribution
-    - Floor: 49
-      Ceiling: 56
-      Result: Governmental seat
-    - Floor: 57
-      Ceiling: 64
-      Result: Landing bay or hangar
-    - Floor: 65
-      Ceiling: 72
-      Result: Mass transit hub
-    - Floor: 73
-      Ceiling: 80
-      Result: Prison complex
-    - Floor: 81
-      Ceiling: 88
-      Result: Security headquarters
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Operations/Feature:
-  _insert: Starforged/Oracles/Districts/Operations/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Automated warning
-    - Floor: 9
-      Ceiling: 16
-      Result: Control terminal
-    - Floor: 17
-      Ceiling: 24
-      Result: EV suit storage
-    - Floor: 25
-      Ceiling: 32
-      Result: Intricate control panels
-    - Floor: 33
-      Ceiling: 40
-      Result: Map of the site
-    - Floor: 41
-      Ceiling: 48
-      Result: News media frenzy
-    - Floor: 49
-      Ceiling: 56
-      Result: Political propaganda
-    - Floor: 57
-      Ceiling: 64
-      Result: Security checkpoint
-    - Floor: 65
-      Ceiling: 72
-      Result: Sophisticated sensors
-    - Floor: 73
-      Ceiling: 80
-      Result: Symbolic statue or art
-    - Floor: 81
-      Ceiling: 88
-      Result: Video surveillance monitors
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Operations/Peril:
-  _insert: Starforged/Oracles/Districts/Operations/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Broken procedures cause red tape
-    - Floor: 11
-      Ceiling: 20
-      Result: Coded message or puzzling security device
-    - Floor: 21
-      Ceiling: 30
-      Result: Displays reveal a new threat elsewhere in this site
-    - Floor: 31
-      Ceiling: 40
-      Result: Disruption to transportation
-    - Floor: 41
-      Ceiling: 50
-      Result: Garnering unwanted attention
-    - Floor: 51
-      Ceiling: 60
-      Result: Implicated in legal dispute
-    - Floor: 61
-      Ceiling: 70
-      Result: Inadvertently created rival
-    - Floor: 71
-      Ceiling: 80
-      Result: Sensors indicate the arrival of an external threat
-    - Floor: 81
-      Ceiling: 90
-      Result: Targeted by law enforcement
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Operations/Opportunity:
-  _insert: Starforged/Oracles/Districts/Operations/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access granted to helpful area
-    - Floor: 21
-      Ceiling: 40
-      Result: Beneficial surveillance footage
-    - Floor: 41
-      Ceiling: 60
-      Result: Investigator seeking collaboration
-    - Floor: 61
-      Ceiling: 80
-      Result: Protocols slow down a rival or threat
-    - Floor: 81
-      Ceiling: 100
-      Result: Secret makes its way to light
-
-Starsmith/Oracles/Districts/Production/Area:
-  _insert: Starforged/Oracles/Districts/Production/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Agricultural center
-    - Floor: 9
-      Ceiling: 16
-      Result: Automated factory
-    - Floor: 17
-      Ceiling: 24
-      Result: Construction company
-    - Floor: 25
-      Ceiling: 32
-      Result: Infrastructure complex
-    - Floor: 33
-      Ceiling: 40
-      Result: Livestock breeding
-    - Floor: 41
-      Ceiling: 48
-      Result: Mining headquarters
-    - Floor: 49
-      Ceiling: 56
-      Result: Processing or refinement plant
-    - Floor: 57
-      Ceiling: 64
-      Result: Scrapyard
-    - Floor: 65
-      Ceiling: 72
-      Result: Shipping hub
-    - Floor: 73
-      Ceiling: 80
-      Result: Shipyard
-    - Floor: 81
-      Ceiling: 88
-      Result: Warehouse
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Production/Feature:
-  _insert: Starforged/Oracles/Districts/Production/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Cargo lifts
-    - Floor: 9
-      Ceiling: 16
-      Result: Control panels
-    - Floor: 17
-      Ceiling: 24
-      Result: Elevated walkways
-    - Floor: 25
-      Ceiling: 32
-      Result: Environment suits
-    - Floor: 33
-      Ceiling: 40
-      Result: Immense machinery
-    - Floor: 41
-      Ceiling: 48
-      Result: Inventory data
-    - Floor: 49
-      Ceiling: 56
-      Result: Large transports
-    - Floor: 57
-      Ceiling: 64
-      Result: Loading dock
-    - Floor: 65
-      Ceiling: 72
-      Result: Machine maintenance
-    - Floor: 73
-      Ceiling: 80
-      Result: Storage containers
-    - Floor: 81
-      Ceiling: 88
-      Result: Tools and equipment
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Production/Peril:
-  _insert: Starforged/Oracles/Districts/Production/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Dangerous machinery
-    - Floor: 11
-      Ceiling: 20
-      Result: Disruption to the supply chain
-    - Floor: 21
-      Ceiling: 30
-      Result: Disturbing evidence of exploited labor
-    - Floor: 31
-      Ceiling: 40
-      Result: Hazardous materials
-    - Floor: 41
-      Ceiling: 50
-      Result: Impending industrial disaster
-    - Floor: 51
-      Ceiling: 60
-      Result: Industrial espionage
-    - Floor: 61
-      Ceiling: 70
-      Result: Livestock on the loose
-    - Floor: 71
-      Ceiling: 80
-      Result: Malfunctioning automation
-    - Floor: 81
-      Ceiling: 90
-      Result: Smuggling outfit at work
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Production/Opportunity:
-  _insert: Starforged/Oracles/Districts/Production/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to specialized producer
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to useful equipment
-    - Floor: 41
-      Ceiling: 60
-      Result: Salvageable materials
-    - Floor: 61
-      Ceiling: 80
-      Result: Supplier willing to help with restocking
-    - Floor: 81
-      Ceiling: 100
-      Result: Upgrade components or plans
-
-Starsmith/Oracles/Districts/Research/Area:
-  _insert: Starforged/Oracles/Districts/Research/Area
-  Name: Area
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Agricultural enhancement
-    - Floor: 9
-      Ceiling: 16
-      Result: Armament or defense
-    - Floor: 17
-      Ceiling: 24
-      Result: Astronomy or starships
-    - Floor: 25
-      Ceiling: 32
-      Result: Chemistry or physics
-    - Floor: 33
-      Ceiling: 40
-      Result: Computer or AI
-    - Floor: 41
-      Ceiling: 48
-      Result: Cybernetics or augments
-    - Floor: 49
-      Ceiling: 56
-      Result: Genetics or biology
-    - Floor: 57
-      Ceiling: 64
-      Result: Historical records
-    - Floor: 65
-      Ceiling: 72
-      Result: Material or mechanical
-    - Floor: 73
-      Ceiling: 80
-      Result: University system
-    - Floor: 81
-      Ceiling: 88
-      Result: Zoology or xenobiology
-    - Floor: 89
-      Ceiling: 100
-      Result: New zone via [⏵Access](Starforged/Oracles/Derelicts/Access)
-Starsmith/Oracles/Districts/Research/Feature:
-  _insert: Starforged/Oracles/Districts/Research/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Aquarium or tank
-    - Floor: 9
-      Ceiling: 16
-      Result: Biological specimens
-    - Floor: 17
-      Ceiling: 24
-      Result: Cages or pens
-    - Floor: 25
-      Ceiling: 32
-      Result: Database
-    - Floor: 33
-      Ceiling: 40
-      Result: Decontamination room
-    - Floor: 41
-      Ceiling: 48
-      Result: Hazardous material storage
-    - Floor: 49
-      Ceiling: 56
-      Result: Hydroponics bay
-    - Floor: 57
-      Ceiling: 64
-      Result: Secretive Laboratory
-    - Floor: 65
-      Ceiling: 72
-      Result: Specialized equipment
-    - Floor: 73
-      Ceiling: 80
-      Result: Storage area
-    - Floor: 81
-      Ceiling: 88
-      Result: Strict access protocols
-    - Floor: 89
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Districts/Research/Peril:
-  _insert: Starforged/Oracles/Districts/Research/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 10
-      Result: Accusations of espionage
-    - Floor: 11
-      Ceiling: 20
-      Result: Automated containment protocols
-    - Floor: 21
-      Ceiling: 30
-      Result: Dangerous specimen
-    - Floor: 31
-      Ceiling: 40
-      Result: Discovery used for ill
-    - Floor: 41
-      Ceiling: 50
-      Result: Disturbing outcome of a failed experiment
-    - Floor: 51
-      Ceiling: 60
-      Result: Evidence of sinister experiments
-    - Floor: 61
-      Ceiling: 70
-      Result: Forced NDA or limited access
-    - Floor: 71
-      Ceiling: 80
-      Result: Legal infraction
-    - Floor: 81
-      Ceiling: 90
-      Result: Unstable technology
-    - Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Districts/Research/Opportunity:
-  _insert: Starforged/Oracles/Districts/Research/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to specialized research tools
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to unique prototype
-    - Floor: 41
-      Ceiling: 60
-      Result: Helpful researcher or data
-    - Floor: 61
-      Ceiling: 80
-      Result: Insight to a potential solution
-    - Floor: 81
-      Ceiling: 100
-      Result: Investment or collaborative opportunity
+id: starsmith
+ruleset: starforged
+source:
+  authors:
+    - name: Eric Bright
+  date: '2023-03-19'
+  title: Starsmith
+  license: https://creativecommons.org/licenses/by/4.0/
+  url: https://playeveryrole.com/
+oracles:
+  districts:
+    name: Districts
+    contents:
+      zones:
+        _insert: starforged/oracles/districts/zones
+        name: Zones
+        dice: 1d100
+        table:
+          - low: 1
+            high: 20
+            result: '[Community](starforged/oracles/districts/community)'
+          - low: 21
+            high: 30
+            result: '[Engineering](starforged/oracles/districts/engineering)'
+          - low: 31
+            high: 55
+            result: '[Living](starforged/oracles/districts/living)'
+          - low: 56
+            high: 65
+            result: '[Medical](starforged/oracles/districts/medical)'
+          - low: 66
+            high: 75
+            result: '[Operations](starforged/oracles/districts/operations)'
+          - low: 76
+            high: 90
+            result: '[Production](starforged/oracles/districts/production)'
+          - low: 91
+            high: 100
+            result: '[Research](starforged/oracles/districts/research)'
+    collections:
+      access:
+        name: Access
+        contents:
+          area:
+            _insert: starforged/oracles/districts/access/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Corridor or walkway
+              - low: 21
+                high: 40
+                result: Roadway or back alley
+              - low: 41
+                high: 50
+                result: Hub or intersection
+              - low: 51
+                high: 60
+                result: Transport tube or tunnel
+              - low: 61
+                high: 65
+                result: Airlock or external
+              - low: 66
+                high: 70
+                result: Catwalk or bridge
+              - low: 71
+                high: 75
+                result: Gated or locked entryway
+              - low: 76
+                high: 80
+                result: Lift or elevator
+              - low: 81
+                high: 85
+                result: Personal transport
+              - low: 86
+                high: 90
+                result: Security checkpoint
+              - low: 91
+                high: 95
+                result: Shuttle pod
+              - low: 96
+                high: 100
+                result: Stairs or escalator
+          feature:
+            _insert: starforged/oracles/districts/access/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Bright street lights
+              - low: 9
+                high: 16
+                result: Congested traffic
+              - low: 17
+                high: 24
+                result: Crowded spaces
+              - low: 25
+                high: 32
+                result: Flashing advertisements
+              - low: 33
+                high: 40
+                result: Neon signs
+              - low: 41
+                high: 48
+                result: Patrolling bots
+              - low: 49
+                high: 56
+                result: Street vendors
+              - low: 57
+                high: 64
+                result: Trampled belongings
+              - low: 65
+                high: 72
+                result: Transit map
+              - low: 73
+                high: 80
+                result: Twists and turns
+              - low: 81
+                high: 88
+                result: Windows or viewports
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/access/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Alarm or failsafe triggered
+              - low: 11
+                high: 20
+                result: Automated system failure
+              - low: 21
+                high: 30
+                result: Being followed
+              - low: 31
+                high: 40
+                result: Blocked or sealed path
+              - low: 41
+                high: 50
+                result: Broken infrastructure
+              - low: 51
+                high: 60
+                result: Construction delays
+              - low: 61
+                high: 70
+                result: Lost or pickpocketed item
+              - low: 71
+                high: 80
+                result: Took the wrong turn
+              - low: 81
+                high: 90
+                result: Unsettling sound or disturbance
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/access/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Directions, shortcut, or alternate path
+              - low: 21
+                high: 40
+                result: Guide for hire
+              - low: 41
+                high: 60
+                result: Opening to outmaneuver or escape a threat or foe
+              - low: 61
+                high: 80
+                result: Public data access
+              - low: 81
+                high: 100
+                result: Transportation secured
+      community:
+        name: Community
+        contents:
+          area:
+            _insert: starforged/oracles/districts/community/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Bar or club
+              - low: 9
+                high: 16
+                result: Classroom or education
+              - low: 17
+                high: 24
+                result: Entertainment
+              - low: 25
+                high: 32
+                result: Gym or fitness
+              - low: 33
+                high: 40
+                result: Market or trade shop
+              - low: 41
+                high: 48
+                result: Park or garden
+              - low: 49
+                high: 56
+                result: Promenade or hub
+              - low: 57
+                high: 64
+                result: Restaurant or dining
+              - low: 65
+                high: 72
+                result: Specialty shop
+              - low: 73
+                high: 80
+                result: Tech shop
+              - low: 81
+                high: 88
+                result: Temple or chapel
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/community/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Community event
+              - low: 9
+                high: 16
+                result: Flashing wanted signs
+              - low: 17
+                high: 24
+                result: Graffiti of secret symbols
+              - low: 25
+                high: 32
+                result: High security presence
+              - low: 33
+                high: 40
+                result: Interactive environment
+              - low: 41
+                high: 48
+                result: Local celebrity
+              - low: 49
+                high: 56
+                result: Maintenance crew at work
+              - low: 57
+                high: 64
+                result: Novel tech advertisement
+              - low: 65
+                high: 72
+                result: Ongoing construction
+              - low: 73
+                high: 80
+                result: Political rally or protest
+              - low: 81
+                high: 88
+                result: Significant ceremony
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/community/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Child lost in the crowd
+              - low: 11
+                high: 20
+                result: Goons extorting a business
+              - low: 21
+                high: 30
+                result: Lockdown or quarantine instituted
+              - low: 31
+                high: 40
+                result: Lost in the shuffle
+              - low: 41
+                high: 50
+                result: Outbreak of violence
+              - low: 51
+                high: 60
+                result: Prowling pickpocket
+              - low: 61
+                high: 70
+                result: Security or structural malfunction
+              - low: 71
+                high: 80
+                result: Tech dampeners hinder / harm equipment
+              - low: 81
+                high: 90
+                result: Temptation towards a vice
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/community/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Available goods or resources
+              - low: 21
+                high: 40
+                result: Fortuitous gossip
+              - low: 41
+                high: 60
+                result: Terminal with access to site details
+              - low: 61
+                high: 80
+                result: The right person for the job
+              - low: 81
+                high: 100
+                result: Welcoming community offers a moment of peace
+      engineering:
+        name: Engineering
+        contents:
+          area:
+            _insert: starforged/oracles/districts/engineering/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Control room
+              - low: 9
+                high: 16
+                result: Engine room / power core
+              - low: 17
+                high: 24
+                result: Engineering offices
+              - low: 25
+                high: 32
+                result: Equipment storage
+              - low: 33
+                high: 40
+                result: Fuel or coolant tanks
+              - low: 41
+                high: 48
+                result: Life support
+              - low: 49
+                high: 56
+                result: Maintenance tube
+              - low: 57
+                high: 64
+                result: Refuse recycling
+              - low: 65
+                high: 72
+                result: Vehicle bay or garage
+              - low: 73
+                high: 80
+                result: Water processing
+              - low: 81
+                high: 88
+                result: Workshop
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/engineering/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Containers of fluid or fuel
+              - low: 9
+                high: 16
+                result: Control terminal
+              - low: 17
+                high: 24
+                result: Crane or lift
+              - low: 25
+                high: 32
+                result: Disassembled equipment
+              - low: 33
+                high: 40
+                result: Flickering status monitors
+              - low: 41
+                high: 48
+                result: Multi-level layout
+              - low: 49
+                high: 56
+                result: Pipes and valves
+              - low: 57
+                high: 64
+                result: Supervisors with clipboards
+              - low: 65
+                high: 72
+                result: Unusual equipment
+              - low: 73
+                high: 80
+                result: Upgrade in progress
+              - low: 81
+                high: 88
+                result: Utility bots
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/engineering/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Corrosive leak
+              - low: 11
+                high: 20
+                result: Environmental controls gone haywire
+              - low: 21
+                high: 30
+                result: Erratic utility bots
+              - low: 31
+                high: 40
+                result: Failing equipment requires a specific part or skill
+              - low: 41
+                high: 50
+                result: Fire or energy surge
+              - low: 51
+                high: 60
+                result: Gremlin in the system
+              - low: 61
+                high: 70
+                result: Power core failing
+              - low: 71
+                high: 80
+                result: Radioactive hotspot
+              - low: 81
+                high: 90
+                result: Worksite accident
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/engineering/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access granted to advanced or experimental equipment
+              - low: 21
+                high: 40
+                result: Access to a specialized tool or device
+              - low: 41
+                high: 60
+                result: Expert engineer willing to talk shop
+              - low: 61
+                high: 80
+                result: Helpful plans or schematics
+              - low: 81
+                high: 100
+                result: Helpful utility bot
+      living:
+        name: Living
+        contents:
+          area:
+            _insert: starforged/oracles/districts/living/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Communal quarters
+              - low: 9
+                high: 16
+                result: Cramped apartments
+              - low: 17
+                high: 24
+                result: Family quarters
+              - low: 25
+                high: 32
+                result: Laundry
+              - low: 33
+                high: 40
+                result: Locker room or storage
+              - low: 41
+                high: 48
+                result: Luxury homes
+              - low: 49
+                high: 56
+                result: Mess hall or dining
+              - low: 57
+                high: 64
+                result: Public restroom or showers
+              - low: 65
+                high: 72
+                result: Roomy residences
+              - low: 73
+                high: 80
+                result: Tent city
+              - low: 81
+                high: 88
+                result: Waste disposal
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/living/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Abandoned pet
+              - low: 9
+                high: 16
+                result: Bio-locked doorways
+              - low: 17
+                high: 24
+                result: Bulletin board of messages
+              - low: 25
+                high: 32
+                result: Children at play
+              - low: 33
+                high: 40
+                result: Communal transport
+              - low: 41
+                high: 48
+                result: Homes with a view
+              - low: 49
+                high: 56
+                result: Misplaced belongings
+              - low: 57
+                high: 64
+                result: Ration dispenser
+              - low: 65
+                high: 72
+                result: Security patrol
+              - low: 73
+                high: 80
+                result: Unusual art
+              - low: 81
+                high: 88
+                result: Work shift change over
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/living/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Contaminated water supply
+              - low: 11
+                high: 20
+                result: Domestic dispute
+              - low: 21
+                high: 30
+                result: Exploitative living conditions
+              - low: 31
+                high: 40
+                result: Illegal substance dealer
+              - low: 41
+                high: 50
+                result: Inadvertent trespass
+              - low: 51
+                high: 60
+                result: Infectious vermin
+              - low: 61
+                high: 70
+                result: Nosy neighbor draws unwanted attention
+              - low: 71
+                high: 80
+                result: Parent looking for a lost child
+              - low: 81
+                high: 90
+                result: Shunned as an outsider
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/living/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Eager youth willing to help
+              - low: 21
+                high: 40
+                result: Elderly wisdom passed on
+              - low: 41
+                high: 60
+                result: Hidden stash of valuable contraband
+              - low: 61
+                high: 80
+                result: Offer of shelter and respite
+              - low: 81
+                high: 100
+                result: Useful personal gear
+      medical:
+        name: Medical
+        contents:
+          area:
+            _insert: starforged/oracles/districts/medical/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Crematorium / morgue
+              - low: 9
+                high: 16
+                result: Emergency response unit
+              - low: 17
+                high: 24
+                result: Hospital
+              - low: 25
+                high: 32
+                result: Isolation or containment
+              - low: 33
+                high: 40
+                result: Medical laboratory
+              - low: 41
+                high: 48
+                result: Medical offices
+              - low: 49
+                high: 56
+                result: Pharmacy or drug dispenser
+              - low: 57
+                high: 64
+                result: Prosthetics workshop
+              - low: 65
+                high: 72
+                result: Surgical suite
+              - low: 73
+                high: 80
+                result: Urgent care or triage
+              - low: 81
+                high: 88
+                result: Therapy ward or clinic
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/medical/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Decontamination checkpoint
+              - low: 9
+                high: 16
+                result: Emergency landing site
+              - low: 17
+                high: 24
+                result: Family visiting patients
+              - low: 25
+                high: 32
+                result: Hermetically sealed zone
+              - low: 33
+                high: 40
+                result: Holographic assistants
+              - low: 41
+                high: 48
+                result: Medical equipment
+              - low: 49
+                high: 56
+                result: Medical records or scans
+              - low: 57
+                high: 64
+                result: Medical trainees learning
+              - low: 65
+                high: 72
+                result: Medical vehicle
+              - low: 73
+                high: 80
+                result: Patients in line
+              - low: 81
+                high: 88
+                result: Sirens and flashing lights
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/medical/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Biohazardous material
+              - low: 11
+                high: 20
+                result: Evidence of malpractice
+              - low: 21
+                high: 30
+                result: Falsely marked as a patient
+              - low: 31
+                high: 40
+                result: Lack of critical medical supplies
+              - low: 41
+                high: 50
+                result: Malfunctioning medical bots
+              - low: 51
+                high: 60
+                result: Signs of broken quarantine or virulent disease
+              - low: 61
+                high: 70
+                result: Threat targets the most vulnerable
+              - low: 71
+                high: 80
+                result: Traumatizing flashback
+              - low: 81
+                high: 90
+                result: Victims of a tragic accident
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/medical/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to quality medical care
+              - low: 21
+                high: 40
+                result: Access to rare specimen or data
+              - low: 41
+                high: 60
+                result: Chance to prove your character
+              - low: 61
+                high: 80
+                result: Clues to a medical mystery
+              - low: 81
+                high: 100
+                result: Well-connected patient seeks more data
+      operations:
+        name: Operations
+        contents:
+          area:
+            _insert: starforged/oracles/districts/operations/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Administrative offices
+              - low: 9
+                high: 16
+                result: Armory
+              - low: 17
+                high: 24
+                result: Central computer core
+              - low: 25
+                high: 32
+                result: Comms center
+              - low: 33
+                high: 40
+                result: Environmental control
+              - low: 41
+                high: 48
+                result: Food distribution
+              - low: 49
+                high: 56
+                result: Governmental seat
+              - low: 57
+                high: 64
+                result: Landing bay or hangar
+              - low: 65
+                high: 72
+                result: Mass transit hub
+              - low: 73
+                high: 80
+                result: Prison complex
+              - low: 81
+                high: 88
+                result: Security headquarters
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/operations/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Automated warning
+              - low: 9
+                high: 16
+                result: Control terminal
+              - low: 17
+                high: 24
+                result: EV suit storage
+              - low: 25
+                high: 32
+                result: Intricate control panels
+              - low: 33
+                high: 40
+                result: Map of the site
+              - low: 41
+                high: 48
+                result: News media frenzy
+              - low: 49
+                high: 56
+                result: Political propaganda
+              - low: 57
+                high: 64
+                result: Security checkpoint
+              - low: 65
+                high: 72
+                result: Sophisticated sensors
+              - low: 73
+                high: 80
+                result: Symbolic statue or art
+              - low: 81
+                high: 88
+                result: Video surveillance monitors
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/operations/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Broken procedures cause red tape
+              - low: 11
+                high: 20
+                result: Coded message or puzzling security device
+              - low: 21
+                high: 30
+                result: Displays reveal a new threat elsewhere in this site
+              - low: 31
+                high: 40
+                result: Disruption to transportation
+              - low: 41
+                high: 50
+                result: Garnering unwanted attention
+              - low: 51
+                high: 60
+                result: Implicated in legal dispute
+              - low: 61
+                high: 70
+                result: Inadvertently created rival
+              - low: 71
+                high: 80
+                result: Sensors indicate the arrival of an external threat
+              - low: 81
+                high: 90
+                result: Targeted by law enforcement
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/operations/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access granted to helpful area
+              - low: 21
+                high: 40
+                result: Beneficial surveillance footage
+              - low: 41
+                high: 60
+                result: Investigator seeking collaboration
+              - low: 61
+                high: 80
+                result: Protocols slow down a rival or threat
+              - low: 81
+                high: 100
+                result: Secret makes its way to light
+      production:
+        name: Production
+        contents:
+          area:
+            _insert: starforged/oracles/districts/production/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Agricultural center
+              - low: 9
+                high: 16
+                result: Automated factory
+              - low: 17
+                high: 24
+                result: Construction company
+              - low: 25
+                high: 32
+                result: Infrastructure complex
+              - low: 33
+                high: 40
+                result: Livestock breeding
+              - low: 41
+                high: 48
+                result: Mining headquarters
+              - low: 49
+                high: 56
+                result: Processing or refinement plant
+              - low: 57
+                high: 64
+                result: Scrapyard
+              - low: 65
+                high: 72
+                result: Shipping hub
+              - low: 73
+                high: 80
+                result: Shipyard
+              - low: 81
+                high: 88
+                result: Warehouse
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/production/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Cargo lifts
+              - low: 9
+                high: 16
+                result: Control panels
+              - low: 17
+                high: 24
+                result: Elevated walkways
+              - low: 25
+                high: 32
+                result: Environment suits
+              - low: 33
+                high: 40
+                result: Immense machinery
+              - low: 41
+                high: 48
+                result: Inventory data
+              - low: 49
+                high: 56
+                result: Large transports
+              - low: 57
+                high: 64
+                result: Loading dock
+              - low: 65
+                high: 72
+                result: Machine maintenance
+              - low: 73
+                high: 80
+                result: Storage containers
+              - low: 81
+                high: 88
+                result: Tools and equipment
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/production/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Dangerous machinery
+              - low: 11
+                high: 20
+                result: Disruption to the supply chain
+              - low: 21
+                high: 30
+                result: Disturbing evidence of exploited labor
+              - low: 31
+                high: 40
+                result: Hazardous materials
+              - low: 41
+                high: 50
+                result: Impending industrial disaster
+              - low: 51
+                high: 60
+                result: Industrial espionage
+              - low: 61
+                high: 70
+                result: Livestock on the loose
+              - low: 71
+                high: 80
+                result: Malfunctioning automation
+              - low: 81
+                high: 90
+                result: Smuggling outfit at work
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/production/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to specialized producer
+              - low: 21
+                high: 40
+                result: Access to useful equipment
+              - low: 41
+                high: 60
+                result: Salvageable materials
+              - low: 61
+                high: 80
+                result: Supplier willing to help with restocking
+              - low: 81
+                high: 100
+                result: Upgrade components or plans
+      research:
+        name: Research
+        contents:
+          area:
+            _insert: starforged/oracles/districts/research/area
+            name: Area
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Agricultural enhancement
+              - low: 9
+                high: 16
+                result: Armament or defense
+              - low: 17
+                high: 24
+                result: Astronomy or starships
+              - low: 25
+                high: 32
+                result: Chemistry or physics
+              - low: 33
+                high: 40
+                result: Computer or AI
+              - low: 41
+                high: 48
+                result: Cybernetics or augments
+              - low: 49
+                high: 56
+                result: Genetics or biology
+              - low: 57
+                high: 64
+                result: Historical records
+              - low: 65
+                high: 72
+                result: Material or mechanical
+              - low: 73
+                high: 80
+                result: University system
+              - low: 81
+                high: 88
+                result: Zoology or xenobiology
+              - low: 89
+                high: 100
+                result: New zone via [Access](starforged/oracles/derelicts/access)
+          feature:
+            _insert: starforged/oracles/districts/research/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Aquarium or tank
+              - low: 9
+                high: 16
+                result: Biological specimens
+              - low: 17
+                high: 24
+                result: Cages or pens
+              - low: 25
+                high: 32
+                result: Database
+              - low: 33
+                high: 40
+                result: Decontamination room
+              - low: 41
+                high: 48
+                result: Hazardous material storage
+              - low: 49
+                high: 56
+                result: Hydroponics bay
+              - low: 57
+                high: 64
+                result: Secretive Laboratory
+              - low: 65
+                high: 72
+                result: Specialized equipment
+              - low: 73
+                high: 80
+                result: Storage area
+              - low: 81
+                high: 88
+                result: Strict access protocols
+              - low: 89
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/districts/research/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 10
+                result: Accusations of espionage
+              - low: 11
+                high: 20
+                result: Automated containment protocols
+              - low: 21
+                high: 30
+                result: Dangerous specimen
+              - low: 31
+                high: 40
+                result: Discovery used for ill
+              - low: 41
+                high: 50
+                result: Disturbing outcome of a failed experiment
+              - low: 51
+                high: 60
+                result: Evidence of sinister experiments
+              - low: 61
+                high: 70
+                result: Forced NDA or limited access
+              - low: 71
+                high: 80
+                result: Legal infraction
+              - low: 81
+                high: 90
+                result: Unstable technology
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/districts/research/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to specialized research tools
+              - low: 21
+                high: 40
+                result: Access to unique prototype
+              - low: 41
+                high: 60
+                result: Helpful researcher or data
+              - low: 61
+                high: 80
+                result: Insight to a potential solution
+              - low: 81
+                high: 100
+                result: Investment or collaborative opportunity

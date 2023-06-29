@@ -1,1083 +1,1250 @@
-Starsmith/Oracles/Location_Themes/Type:
-  _replace: Starforged/Oracles/Location_Themes/Type
-  Dice: 1d200
-  Table:
-    - Floor: 1
-      Ceiling: 15
-      Result: '[⏵Chaotic](Starforged/Oracles/Location_Themes/Chaotic)'
-      Summary: Reality is corrupted or warped in this place.
-    - Floor: 16
-      Ceiling: 25
-      Result: '[⏵Fortified](Starforged/Oracles/Location_Themes/Fortified)'
-      Summary: Enemies defend this place against intruders.
-    - Floor: 26
-      Ceiling: 35
-      Result: '[⏵Haunted](Starforged/Oracles/Location_Themes/Haunted)'
-      Summary: Restless spirits are bound in this place.
-    - Floor: 36
-      Ceiling: 50
-      Result: '[⏵Infested](Starforged/Oracles/Location_Themes/Infested)'
-      Summary: Foul creatures have overrun this place.
-    - Floor: 51
-      Ceiling: 60
-      Result: '[⏵Inhabited](Starforged/Oracles/Location_Themes/Inhabited)'
-      Summary: People have built a community in this place.
-    - Floor: 61
-      Ceiling: 75
-      Result: '[⏵Mechanical](Starforged/Oracles/Location_Themes/Mechanical)'
-      Summary: Machines and technology hold sway in this place.
-    - Floor: 76
-      Ceiling: 90
-      Result: '[⏵Ruined](Starforged/Oracles/Location_Themes/Ruined)'
-      Summary: Time, disaster, or war have ravaged this place.
-    - Floor: 91
-      Ceiling: 100
-      Result: '[⏵Sacred](Starforged/Oracles/Location_Themes/Sacred)'
-      Summary: Worshipers glorify strange powers in this place.
-    - Floor: 101
-      Ceiling: 110
-      Result: '[⏵Arid](Starsmith/Oracles/Location_Themes/Arid)'
-      Summary: Wind and heat cover this place in a thick blanket.
-    - Floor: 111
-      Ceiling: 120
-      Result: '[⏵Chronal](Starsmith/Oracles/Location_Themes/Chronal)'
-      Summary: Time flits back and forth in this place.
-    - Floor: 121
-      Ceiling: 130
-      Result: '[⏵Floating](Starsmith/Oracles/Location_Themes/Floating)'
-      Summary: Pockets of stable ground dance on gravity waves in this place.
-    - Floor: 131
-      Ceiling: 140
-      Result: '[⏵Flooded](Starsmith/Oracles/Location_Themes/Flooded)'
-      Summary: Murky waters or thick vapors have overtaken this place.
-    - Floor: 141
-      Ceiling: 150
-      Result: '[⏵Frozen](Starsmith/Oracles/Location_Themes/Frozen)'
-      Summary: Winter holds a permanent grip in this place.
-    - Floor: 151
-      Ceiling: 160
-      Result: '[⏵Inferno](Starsmith/Oracles/Location_Themes/Inferno)'
-      Summary: Flame and noxious gases fill this place.
-    - Floor: 161
-      Ceiling: 170
-      Result: '[⏵Lifeform](Starsmith/Oracles/Location_Themes/Lifeform)'
-      Summary: Inside a living creature, microscopic or colossal.
-    - Floor: 171
-      Ceiling: 180
-      Result: '[⏵Mystical](Starsmith/Oracles/Location_Themes/Mystical)'
-      Summary: Arcane energies permeate this place.
-    - Floor: 181
-      Ceiling: 190
-      Result: '[⏵Overgrown](Starsmith/Oracles/Location_Themes/Overgrown)'
-      Summary: Thriving ecosystems abound in this place.
-    - Floor: 191
-      Ceiling: 200
-      Result: '[⏵War Zone](Starsmith/Oracles/Location_Themes/War_Zone)'
-      Summary: Combatants trade fire tensely in this place.
-Starsmith/Oracles/Location_Themes/Arid/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Arid/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Dried wadi awaiting the rainy season
-    - Floor: 9
-      Ceiling: 16
-      Result: Intricate rock formation sculpted by the wind
-    - Floor: 17
-      Ceiling: 24
-      Result: Large sinkhole of swirling sand
-    - Floor: 25
-      Ceiling: 32
-      Result: Light-bending waves of heat or cold
-    - Floor: 33
-      Ceiling: 40
-      Result: Mazelike passageways through canyons
-    - Floor: 41
-      Ceiling: 48
-      Result: Mountainous dunes of sand
-    - Floor: 49
-      Ceiling: 56
-      Result: Natural bridge or arch of stone
-    - Floor: 57
-      Ceiling: 64
-      Result: Remains of a long dead colossal beast
-    - Floor: 65
-      Ceiling: 72
-      Result: Rocks worn smooth over time
-    - Floor: 73
-      Ceiling: 80
-      Result: Row upon row of hoodoos
-    - Floor: 81
-      Ceiling: 88
-      Result: Tiny dunes rippling like waves
-    - Floor: 89
-      Ceiling: 96
-      Result: Unending stretch of cracked, flat ground
-    - &DescriptorFocus
-      Floor: 97
-      Ceiling: 100
-      Result: '[⏵Descriptor + Focus](Starforged/Oracles/Core/Descriptor)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Descriptor
-        - Starforged/Oracles/Core/Focus
-Starsmith/Oracles/Location_Themes/Arid/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Arid/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Billowing sandstorm chokes the air
-    - Floor: 10
-      Ceiling: 18
-      Result: Extreme temperatures
-    - Floor: 19
-      Ceiling: 27
-      Result: Foe hidden beneath the sand reveals itself
-    - Floor: 28
-      Ceiling: 36
-      Result: Grit-filled equipment malfunctions
-    - Floor: 37
-      Ceiling: 45
-      Result: Having no place to hide attracts unwanted attention
-    - Floor: 46
-      Ceiling: 54
-      Result: Hurricane force winds
-    - Floor: 55
-      Ceiling: 63
-      Result: Lack of shelter from the elements
-    - Floor: 64
-      Ceiling: 72
-      Result: Lost without landmarks to guide you
-    - Floor: 73
-      Ceiling: 81
-      Result: Rain storm brings flash floods
-    - Floor: 82
-      Ceiling: 90
-      Result: Whirlpool of sand pulls you down
-    - &ActionTheme
-      Floor: 91
-      Ceiling: 98
-      Result: '[⏵Action + Theme](Starforged/Oracles/Core/Action)'
-      Oracle rolls:
-        - Starforged/Oracles/Core/Action
-        - Starforged/Oracles/Core/Theme
-    - &RollTwice
-      Floor: 99
-      Ceiling: 100
-      Result: Roll twice
-      Multiple rolls:
-        Amount: 2
-Starsmith/Oracles/Location_Themes/Arid/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Arid/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Blowing sands reveal rare resource deposit
-    - Floor: 21
-      Ceiling: 40
-      Result: Cave entrance offers shelter
-    - Floor: 41
-      Ceiling: 60
-      Result: Evidence of previous explorers offers a clue
-    - Floor: 61
-      Ceiling: 80
-      Result: Oasis offers respite
-    - Floor: 81
-      Ceiling: 100
-      Result: Opening to bypass the most difficult terrain
-Starsmith/Oracles/Location_Themes/Chronal/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Chronal/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Ambient lifeforms feeding off chronal energy
-    - Floor: 9
-      Ceiling: 16
-      Result: Artifact or natural occurrence acting as a focal point
-    - Floor: 17
-      Ceiling: 24
-      Result: Beings, objects, or events stuck in a short time loop
-    - Floor: 25
-      Ceiling: 32
-      Result: Conflicting visions of future events
-    - Floor: 33
-      Ceiling: 40
-      Result: Glimpses of past events
-    - Floor: 41
-      Ceiling: 48
-      Result: Glowing spacetime rifts emanating chronal energy
-    - Floor: 49
-      Ceiling: 56
-      Result: Incongruent trappings of different time periods
-    - Floor: 57
-      Ceiling: 64
-      Result: Instantaneous changes to layout or aesthetics of equipment
-    - Floor: 65
-      Ceiling: 72
-      Result: Rapid movements become slowed
-    - Floor: 73
-      Ceiling: 80
-      Result: Shifting landscapes
-    - Floor: 81
-      Ceiling: 88
-      Result: Slow movements become rapid
-    - Floor: 89
-      Ceiling: 96
-      Result: Visions of parallel universes
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Chronal/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Chronal/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Caught in a time paradox
-    - Floor: 10
-      Ceiling: 18
-      Result: Changes in timeline slip from memory
-    - Floor: 19
-      Ceiling: 27
-      Result: Chronal energies build to a tipping point
-    - Floor: 28
-      Ceiling: 36
-      Result: Equipment yields faulty or conflicting readings
-    - Floor: 37
-      Ceiling: 45
-      Result: Foe from the future uses future knowledge against you
-    - Floor: 46
-      Ceiling: 54
-      Result: Meeting another version of yourself threatens reality
-    - Floor: 55
-      Ceiling: 63
-      Result: Rapid growth or rebirth of environment
-    - Floor: 64
-      Ceiling: 72
-      Result: Rapid time decay of environment
-    - Floor: 73
-      Ceiling: 81
-      Result: Shunted backward in time
-    - Floor: 82
-      Ceiling: 90
-      Result: Shunted forward in time
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Chronal/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Chronal/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Butterfly point offers a dangerous gamble
-    - Floor: 21
-      Ceiling: 40
-      Result: Contact with a helpful ally outside your time
-    - Floor: 41
-      Ceiling: 60
-      Result: Future visions allow an option to avoid hardship
-    - Floor: 61
-      Ceiling: 80
-      Result: Insight into a past event offers a new perspective
-    - Floor: 81
-      Ceiling: 100
-      Result: Yawning portal through spacetime
-Starsmith/Oracles/Location_Themes/Inferno/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Inferno/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Ash-covered terrain
-    - Floor: 9
-      Ceiling: 16
-      Result: Geysers of lava
-    - Floor: 17
-      Ceiling: 24
-      Result: Giant rock columns or boulders
-    - Floor: 25
-      Ceiling: 32
-      Result: Heat-induced electromagnetic field
-    - Floor: 33
-      Ceiling: 40
-      Result: Islands floating on lava
-    - Floor: 41
-      Ceiling: 48
-      Result: Maze of lava tubes
-    - Floor: 49
-      Ceiling: 56
-      Result: Mineral deposits fused together
-    - Floor: 57
-      Ceiling: 64
-      Result: Obscuring soot and smoke
-    - Floor: 65
-      Ceiling: 72
-      Result: Rivulets of lava or liquid flame
-    - Floor: 73
-      Ceiling: 80
-      Result: Slowly cooling sections of lava
-    - Floor: 81
-      Ceiling: 88
-      Result: Stable islands separated by lava
-    - Floor: 89
-      Ceiling: 96
-      Result: Vents spewing steaming gases
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Inferno/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Inferno/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Ash, soot, and smoke hide dangers
-    - Floor: 10
-      Ceiling: 18
-      Result: Explosive eruption
-    - Floor: 19
-      Ceiling: 27
-      Result: Foe uses heat to its advantage
-    - Floor: 28
-      Ceiling: 36
-      Result: Gaping pit of lava
-    - Floor: 37
-      Ceiling: 45
-      Result: Heat, lava, or plasma threatens a crucial location
-    - Floor: 46
-      Ceiling: 54
-      Result: Noxious fumes
-    - Floor: 55
-      Ceiling: 63
-      Result: Overpowering heat
-    - Floor: 64
-      Ceiling: 72
-      Result: Razor-sharp rocks hardened by heat and pressure
-    - Floor: 73
-      Ceiling: 81
-      Result: Rising lava levels
-    - Floor: 82
-      Ceiling: 90
-      Result: Violent tremors
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Inferno/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Inferno/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Ancient complex that used the heat as a power source
-    - Floor: 21
-      Ceiling: 40
-      Result: Chance to observe a scientific curiosity
-    - Floor: 41
-      Ceiling: 60
-      Result: Opening to circumvent the most dangerous zones
-    - Floor: 61
-      Ceiling: 80
-      Result: Opening to harness the energy here
-    - Floor: 81
-      Ceiling: 100
-      Result: Rare minerals naturally refined by the heat
-Starsmith/Oracles/Location_Themes/Floating/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Floating/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Areas of variable gravity
-    - Floor: 9
-      Ceiling: 16
-      Result: Bridge connecting islands or platforms
-    - Floor: 17
-      Ceiling: 24
-      Result: Central control hub
-    - Floor: 25
-      Ceiling: 32
-      Result: Dust shower from above
-    - Floor: 33
-      Ceiling: 40
-      Result: Generator or other energy powering the islands
-    - Floor: 41
-      Ceiling: 48
-      Result: Low gravity area allows large leaps
-    - Floor: 49
-      Ceiling: 56
-      Result: Rhythmic movements and rotations
-    - Floor: 57
-      Ceiling: 64
-      Result: Signs of eyrie-like nests
-    - Floor: 65
-      Ceiling: 72
-      Result: Slowly spinning sections of land or platforms
-    - Floor: 73
-      Ceiling: 80
-      Result: Staircase of floating sections
-    - Floor: 81
-      Ceiling: 88
-      Result: Tethers of iron or energy
-    - Floor: 89
-      Ceiling: 96
-      Result: Zipline or tube transport connecting areas
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Floating/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Floating/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Airborne foe moves to attack
-    - Floor: 10
-      Ceiling: 18
-      Result: Crumbling islands beneath your feet
-    - Floor: 19
-      Ceiling: 27
-      Result: Dramatic shift in orientation
-    - Floor: 28
-      Ceiling: 36
-      Result: Failure of forces keeping everything aloft
-    - Floor: 37
-      Ceiling: 45
-      Result: Guard rail, ladder, or natural barrier gives way
-    - Floor: 46
-      Ceiling: 54
-      Result: Hail-like rain of earth from above
-    - Floor: 55
-      Ceiling: 63
-      Result: Precarious ledge
-    - Floor: 64
-      Ceiling: 72
-      Result: Spinning forces of inertia threaten balance
-    - Floor: 73
-      Ceiling: 81
-      Result: Sudden shift in gravity or gravity's direction
-    - Floor: 82
-      Ceiling: 90
-      Result: Wide gulf of open air
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Floating/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Floating/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to a rare resource
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to useful equipment
-    - Floor: 41
-      Ceiling: 60
-      Result: Changes in gravity hamper your foes
-    - Floor: 61
-      Ceiling: 80
-      Result: Landscape allows access to significant location
-    - Floor: 81
-      Ceiling: 100
-      Result: Three-dimensional battlefied hampers your foes
-Starsmith/Oracles/Location_Themes/Flooded/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Flooded/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Deep and murky waters
-    - Floor: 9
-      Ceiling: 16
-      Result: Flotsam and jetsam
-    - Floor: 17
-      Ceiling: 24
-      Result: Pockets of thin-membraned atmosphere
-    - Floor: 25
-      Ceiling: 32
-      Result: Prolific mold, slime, or fungus
-    - Floor: 33
-      Ceiling: 40
-      Result: Signs of what once was here
-    - Floor: 41
-      Ceiling: 48
-      Result: Small patches of dry ground
-    - Floor: 49
-      Ceiling: 56
-      Result: Strong currents
-    - Floor: 57
-      Ceiling: 64
-      Result: Submerged structure or formation
-    - Floor: 65
-      Ceiling: 72
-      Result: Thick spray and vapors
-    - Floor: 73
-      Ceiling: 80
-      Result: Underwater tunnels of unknown distance
-    - Floor: 81
-      Ceiling: 88
-      Result: Unseen obstacles just beneath the surface
-    - Floor: 89
-      Ceiling: 96
-      Result: Water bursting through cracked barrier
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Flooded/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Flooded/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Eroding passageways
-    - Floor: 10
-      Ceiling: 18
-      Result: Large, swift moving debris
-    - Floor: 19
-      Ceiling: 27
-      Result: Lifeforms stirring in the deep
-    - Floor: 28
-      Ceiling: 36
-      Result: Perilous chemical spill
-    - Floor: 37
-      Ceiling: 45
-      Result: Rising tides
-    - Floor: 46
-      Ceiling: 54
-      Result: Spreading biological contaminants
-    - Floor: 55
-      Ceiling: 63
-      Result: Swift undertow
-    - Floor: 64
-      Ceiling: 72
-      Result: Thundering rapids
-    - Floor: 73
-      Ceiling: 81
-      Result: Vortex pulling you down
-    - Floor: 82
-      Ceiling: 90
-      Result: Waterfall into the darkness
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Flooded/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Flooded/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Draining water reveals a secret or clue
-    - Floor: 21
-      Ceiling: 40
-      Result: Erosion opens a shortcut or safer passage
-    - Floor: 41
-      Ceiling: 60
-      Result: Opening for foes to be washed away
-    - Floor: 61
-      Ceiling: 80
-      Result: Salvageable equipment
-    - Floor: 81
-      Ceiling: 100
-      Result: Submerged vehicle intact
-Starsmith/Oracles/Location_Themes/Frozen/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Frozen/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Abandoned equipment frozen solid
-    - Floor: 9
-      Ceiling: 16
-      Result: Frozen river or lake
-    - Floor: 17
-      Ceiling: 24
-      Result: Frozen waterfalls
-    - Floor: 25
-      Ceiling: 32
-      Result: Huge snow drifts
-    - Floor: 33
-      Ceiling: 40
-      Result: Intricate crystalline structures of ice
-    - Floor: 41
-      Ceiling: 48
-      Result: Layers of ice coating surfaces
-    - Floor: 49
-      Ceiling: 56
-      Result: Lifeform of a different age encased in ice
-    - Floor: 57
-      Ceiling: 64
-      Result: Movement or lights beneath the ice
-    - Floor: 65
-      Ceiling: 72
-      Result: Multi-colored layers of ice
-    - Floor: 73
-      Ceiling: 80
-      Result: Slick surfaces
-    - Floor: 81
-      Ceiling: 88
-      Result: Sparkling icicles
-    - Floor: 89
-      Ceiling: 96
-      Result: Tiny rivulets of melt water
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Frozen/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Frozen/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Avalanche
-    - Floor: 10
-      Ceiling: 18
-      Result: Deceptively deep snow
-    - Floor: 19
-      Ceiling: 27
-      Result: Falling icicles or hail
-    - Floor: 28
-      Ceiling: 36
-      Result: Freezing rain quickly coats all in ice
-    - Floor: 37
-      Ceiling: 45
-      Result: Frozen equipment malfunctions
-    - Floor: 46
-      Ceiling: 54
-      Result: Frozen to a surface
-    - Floor: 55
-      Ceiling: 63
-      Result: Path blocked by wall of ice
-    - Floor: 64
-      Ceiling: 72
-      Result: Subzero temperatures
-    - Floor: 73
-      Ceiling: 81
-      Result: Unexpected heat melts key support structure
-    - Floor: 82
-      Ceiling: 90
-      Result: White-out conditions
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Frozen/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Frozen/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Condensed ice crystal acts as temporary power booster
-    - Floor: 21
-      Ceiling: 40
-      Result: Evidence of prior explorers preserved in ice
-    - Floor: 41
-      Ceiling: 60
-      Result: Nearly enclosed space offers a moment of relative warmth
-    - Floor: 61
-      Ceiling: 80
-      Result: Rare specimen preserved in ice
-    - Floor: 81
-      Ceiling: 100
-      Result: Thin wall of ice offers a shortcut
-Starsmith/Oracles/Location_Themes/Lifeform/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Lifeform/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Bundles of nerve fibers
-    - Floor: 9
-      Ceiling: 16
-      Result: Decaying or dying cells
-    - Floor: 17
-      Ceiling: 24
-      Result: Dilating openings
-    - Floor: 25
-      Ceiling: 32
-      Result: Large bending joints
-    - Floor: 33
-      Ceiling: 40
-      Result: Protruding bones
-    - Floor: 41
-      Ceiling: 48
-      Result: Rivers of blood
-    - Floor: 49
-      Ceiling: 56
-      Result: Sacs of fluid
-    - Floor: 57
-      Ceiling: 64
-      Result: Strange growths or nodules
-    - Floor: 65
-      Ceiling: 72
-      Result: Symbiotic lifeforms at work
-    - Floor: 73
-      Ceiling: 80
-      Result: Tendons or connective tissues
-    - Floor: 81
-      Ceiling: 88
-      Result: Undulating halls
-    - Floor: 89
-      Ceiling: 96
-      Result: Winding nutrient passageways
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Lifeform/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Lifeform/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Acidic digestive juices
-    - Floor: 10
-      Ceiling: 18
-      Result: Biological contaminants
-    - Floor: 19
-      Ceiling: 27
-      Result: Caught in the waste stream
-    - Floor: 28
-      Ceiling: 36
-      Result: Contracting muscles
-    - Floor: 37
-      Ceiling: 45
-      Result: Defense mechanisms target you as invasive
-    - Floor: 46
-      Ceiling: 54
-      Result: Lack of atmosphere
-    - Floor: 55
-      Ceiling: 63
-      Result: Rising bodily fluids
-    - Floor: 64
-      Ceiling: 72
-      Result: Surges of rapid expellant
-    - Floor: 73
-      Ceiling: 81
-      Result: Symbiotic lifeforms attack
-    - Floor: 82
-      Ceiling: 90
-      Result: Virulent disease
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Lifeform/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Lifeform/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to rare biological resource
-    - Floor: 21
-      Ceiling: 40
-      Result: Genetic clue or evidence
-    - Floor: 41
-      Ceiling: 60
-      Result: Opening to heal or benefit the lifeform
-    - Floor: 61
-      Ceiling: 80
-      Result: Opening to influence the lifeform to your benefit
-    - Floor: 81
-      Ceiling: 100
-      Result: Rare scientific observation
-Starsmith/Oracles/Location_Themes/Mystical/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Mystical/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Accoutrements of ceremony
-    - Floor: 9
-      Ceiling: 16
-      Result: Animated cleaning tools or equipment
-    - Floor: 17
-      Ceiling: 24
-      Result: Arcane symbols, runes, or sigils
-    - Floor: 25
-      Ceiling: 32
-      Result: Chamber of mystical rituals
-    - Floor: 33
-      Ceiling: 40
-      Result: Ethereal sounds and lights
-    - Floor: 41
-      Ceiling: 48
-      Result: Foci or conduits of mystic energy
-    - Floor: 49
-      Ceiling: 56
-      Result: Ley line of great pulsing power
-    - Floor: 57
-      Ceiling: 64
-      Result: Library or database of indecipherable texts
-    - Floor: 65
-      Ceiling: 72
-      Result: Lifeforms anthropomorphized as servants
-    - Floor: 73
-      Ceiling: 80
-      Result: Lifeforms warped by magic
-    - Floor: 81
-      Ceiling: 88
-      Result: Magic-infused technology
-    - Floor: 89
-      Ceiling: 96
-      Result: Strange specimens magically caged
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Mystical/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Mystical/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Arcane knowledge in the wrong hands
-    - Floor: 10
-      Ceiling: 18
-      Result: Important equipment malfunctions
-    - Floor: 19
-      Ceiling: 27
-      Result: Lost in the illusions
-    - Floor: 28
-      Ceiling: 36
-      Result: Magically locked areas
-    - Floor: 37
-      Ceiling: 45
-      Result: Mystic energies growing unbounded
-    - Floor: 46
-      Ceiling: 54
-      Result: Relic or artifact with a frightening cost
-    - Floor: 55
-      Ceiling: 63
-      Result: Surges of wild magic
-    - Floor: 64
-      Ceiling: 72
-      Result: Technological interfaces only respond to magic
-    - Floor: 73
-      Ceiling: 81
-      Result: Temptations to unlease a darker force
-    - Floor: 82
-      Ceiling: 90
-      Result: Trapped by mystic energies
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Mystical/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Mystical/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Ability to tap into a ley line's power
-    - Floor: 21
-      Ceiling: 40
-      Result: Artifact of arcane might or significance
-    - Floor: 41
-      Ceiling: 60
-      Result: Helpful magical device or lifeform
-    - Floor: 61
-      Ceiling: 80
-      Result: Regenerative empowerment
-    - Floor: 81
-      Ceiling: 100
-      Result: Valuable notes on mystic powers
-Starsmith/Oracles/Location_Themes/Overgrown/Feature:
-  _insert: Starforged/Oracles/Location_Themes/Overgrown/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Cacophony of calls and shrieks
-    - Floor: 9
-      Ceiling: 16
-      Result: Caracass picked clean
-    - Floor: 17
-      Ceiling: 24
-      Result: Colonies of insects or tiny lifeforms
-    - Floor: 25
-      Ceiling: 32
-      Result: Evidence of a failed hunting expedition
-    - Floor: 33
-      Ceiling: 40
-      Result: Huge footprints in the ground
-    - Floor: 41
-      Ceiling: 48
-      Result: Larger than life plants
-    - Floor: 49
-      Ceiling: 56
-      Result: Lifeforms lounging after a feast or kill
-    - Floor: 57
-      Ceiling: 64
-      Result: Site of a large attack or skirmish
-    - Floor: 65
-      Ceiling: 72
-      Result: Sticky sap coating surfaces
-    - Floor: 73
-      Ceiling: 80
-      Result: Structures or formations covered in thick vines
-    - Floor: 81
-      Ceiling: 88
-      Result: Traveling herds of herbivores
-    - Floor: 89
-      Ceiling: 96
-      Result: Well-traveled game trail
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/Overgrown/Peril:
-  _insert: Starforged/Oracles/Location_Themes/Overgrown/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Aggressive and armored lifeforms
-    - Floor: 10
-      Ceiling: 18
-      Result: Apex predator on the prowl
-    - Floor: 19
-      Ceiling: 27
-      Result: Evidence of exploitation of lifeforms
-    - Floor: 28
-      Ceiling: 36
-      Result: Horned lifeforms bellowing before a charge
-    - Floor: 37
-      Ceiling: 45
-      Result: Lifeform stalks from the shadows
-    - Floor: 46
-      Ceiling: 54
-      Result: Pack of predators on the hunt
-    - Floor: 55
-      Ceiling: 63
-      Result: Poisonous plant life or venomous lifeforms
-    - Floor: 64
-      Ceiling: 72
-      Result: Protective parent lifeform attacks
-    - Floor: 73
-      Ceiling: 81
-      Result: Spiked or razor-edged plants blocking the path
-    - Floor: 82
-      Ceiling: 90
-      Result: Swarms of parasitic lifeforms
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/Overgrown/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/Overgrown/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Access to area untouched for ages
-    - Floor: 21
-      Ceiling: 40
-      Result: Access to rare biological specimen
-    - Floor: 41
-      Ceiling: 60
-      Result: Lost artifact found
-    - Floor: 61
-      Ceiling: 80
-      Result: Opening to avoid a conflict with lifeforms
-    - Floor: 81
-      Ceiling: 100
-      Result: Opening to connect with a helpful lifeform
-Starsmith/Oracles/Location_Themes/War_Zone/Feature:
-  _insert: Starforged/Oracles/Location_Themes/War_Zone/Feature
-  Name: Feature
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 8
-      Result: Battle standard or beacon buoy
-    - Floor: 9
-      Ceiling: 16
-      Result: Combatants fleeing the battle
-    - Floor: 17
-      Ceiling: 24
-      Result: Command ship or center
-    - Floor: 25
-      Ceiling: 32
-      Result: Damaged engines of war now abandoned
-    - Floor: 33
-      Ceiling: 40
-      Result: Debris and wrecked terrain
-    - Floor: 41
-      Ceiling: 48
-      Result: Fallen combatants
-    - Floor: 49
-      Ceiling: 56
-      Result: Nervous units held in reserve
-    - Floor: 57
-      Ceiling: 64
-      Result: Officer barking orders to a squad
-    - Floor: 65
-      Ceiling: 72
-      Result: Perimeter guards on patrol
-    - Floor: 73
-      Ceiling: 80
-      Result: Scout observing enemy movements
-    - Floor: 81
-      Ceiling: 88
-      Result: Vehicular wreckage
-    - Floor: 89
-      Ceiling: 96
-      Result: Wounded troops hunkering down
-    - *DescriptorFocus
-Starsmith/Oracles/Location_Themes/War_Zone/Peril:
-  _insert: Starforged/Oracles/Location_Themes/War_Zone/Peril
-  Name: Peril
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 9
-      Result: Ambushed by a lurking foe
-    - Floor: 10
-      Ceiling: 18
-      Result: Automated suppressing fire
-    - Floor: 19
-      Ceiling: 27
-      Result: Battlefield tech is triggered
-    - Floor: 28
-      Ceiling: 36
-      Result: Caught in the crossfire
-    - Floor: 37
-      Ceiling: 45
-      Result: Enemy sniper pins you down
-    - Floor: 46
-      Ceiling: 54
-      Result: Explosive change in the battlefield
-    - Floor: 55
-      Ceiling: 63
-      Result: Lost in the chaos or debris
-    - Floor: 64
-      Ceiling: 72
-      Result: Mistaken for the enemy
-    - Floor: 73
-      Ceiling: 81
-      Result: Opportunistic looters take notice
-    - Floor: 82
-      Ceiling: 90
-      Result: Shrapnel or collateral damage
-    - *ActionTheme
-    - *RollTwice
-Starsmith/Oracles/Location_Themes/War_Zone/Opportunity:
-  _insert: Starforged/Oracles/Location_Themes/War_Zone/Opportunity
-  Name: Opportunity
-  Dice: 1d100
-  Table:
-    - Floor: 1
-      Ceiling: 20
-      Result: Helping a combatant in need may yield an ally
-    - Floor: 21
-      Ceiling: 40
-      Result: Insight into the nature of the conflict
-    - Floor: 41
-      Ceiling: 60
-      Result: Opening to avoid the fiercest section of battle
-    - Floor: 61
-      Ceiling: 80
-      Result: Opening to bring the immediate conflict to a close
-    - Floor: 81
-      Ceiling: 100
-      Result: Salvageable equipment or weapons
+id: starsmith
+ruleset: starforged
+source:
+  authors:
+    - name: Eric Bright
+  date: '2023-03-19'
+  title: Starsmith
+  license: https://creativecommons.org/licenses/by/4.0/
+  url: https://playeveryrole.com/
+oracles:
+  location_themes:
+    name: Location Themes
+    contents:
+      type:
+        _replace: starforged/oracles/location_themes/type
+        dice: 1d200
+        table:
+          - low: 1
+            high: 15
+            result: '[Chaotic](starforged/oracles/location_themes/chaotic)'
+            summary: Reality is corrupted or warped in this place.
+          - low: 16
+            high: 25
+            result: '[Fortified](starforged/oracles/location_themes/fortified)'
+            summary: Enemies defend this place against intruders.
+          - low: 26
+            high: 35
+            result: '[Haunted](starforged/oracles/location_themes/haunted)'
+            summary: Restless spirits are bound in this place.
+          - low: 36
+            high: 50
+            result: '[Infested](starforged/oracles/location_themes/infested)'
+            summary: Foul creatures have overrun this place.
+          - low: 51
+            high: 60
+            result: '[Inhabited](starforged/oracles/location_themes/inhabited)'
+            summary: People have built a community in this place.
+          - low: 61
+            high: 75
+            result: '[Mechanical](starforged/oracles/location_themes/mechanical)'
+            summary: Machines and technology hold sway in this place.
+          - low: 76
+            high: 90
+            result: '[Ruined](starforged/oracles/location_themes/ruined)'
+            summary: Time, disaster, or war have ravaged this place.
+          - low: 91
+            high: 100
+            result: '[Sacred](starforged/oracles/location_themes/sacred)'
+            summary: Worshipers glorify strange powers in this place.
+          - low: 101
+            high: 110
+            result: '[Arid](starsmith/oracles/location_themes/arid)'
+            summary: Wind and heat cover this place in a thick blanket.
+          - low: 111
+            high: 120
+            result: '[Chronal](starsmith/oracles/location_themes/chronal)'
+            summary: Time flits back and forth in this place.
+          - low: 121
+            high: 130
+            result: '[Floating](starsmith/oracles/location_themes/floating)'
+            summary: Pockets of stable ground dance on gravity waves in this place.
+          - low: 131
+            high: 140
+            result: '[Flooded](starsmith/oracles/location_themes/flooded)'
+            summary: Murky waters or thick vapors have overtaken this place.
+          - low: 141
+            high: 150
+            result: '[Frozen](starsmith/oracles/location_themes/frozen)'
+            summary: Winter holds a permanent grip in this place.
+          - low: 151
+            high: 160
+            result: '[Inferno](starsmith/oracles/location_themes/inferno)'
+            summary: Flame and noxious gases fill this place.
+          - low: 161
+            high: 170
+            result: '[Lifeform](starsmith/oracles/location_themes/lifeform)'
+            summary: Inside a living creature, microscopic or colossal.
+          - low: 171
+            high: 180
+            result: '[Mystical](starsmith/oracles/location_themes/mystical)'
+            summary: Arcane energies permeate this place.
+          - low: 181
+            high: 190
+            result: '[Overgrown](starsmith/oracles/location_themes/overgrown)'
+            summary: Thriving ecosystems abound in this place.
+          - low: 191
+            high: 200
+            result: '[War Zone](starsmith/oracles/location_themes/war_zone)'
+            summary: Combatants trade fire tensely in this place.
+    collections:
+      arid:
+        name: Arid
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/arid/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Dried wadi awaiting the rainy season
+              - low: 9
+                high: 16
+                result: Intricate rock formation sculpted by the wind
+              - low: 17
+                high: 24
+                result: Large sinkhole of swirling sand
+              - low: 25
+                high: 32
+                result: Light-bending waves of heat or cold
+              - low: 33
+                high: 40
+                result: Mazelike passageways through canyons
+              - low: 41
+                high: 48
+                result: Mountainous dunes of sand
+              - low: 49
+                high: 56
+                result: Natural bridge or arch of stone
+              - low: 57
+                high: 64
+                result: Remains of a long dead colossal beast
+              - low: 65
+                high: 72
+                result: Rocks worn smooth over time
+              - low: 73
+                high: 80
+                result: Row upon row of hoodoos
+              - low: 81
+                high: 88
+                result: Tiny dunes rippling like waves
+              - low: 89
+                high: 96
+                result: Unending stretch of cracked, flat ground
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/arid/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Billowing sandstorm chokes the air
+              - low: 10
+                high: 18
+                result: Extreme temperatures
+              - low: 19
+                high: 27
+                result: Foe hidden beneath the sand reveals itself
+              - low: 28
+                high: 36
+                result: Grit-filled equipment malfunctions
+              - low: 37
+                high: 45
+                result: Having no place to hide attracts unwanted attention
+              - low: 46
+                high: 54
+                result: Hurricane force winds
+              - low: 55
+                high: 63
+                result: Lack of shelter from the elements
+              - low: 64
+                high: 72
+                result: Lost without landmarks to guide you
+              - low: 73
+                high: 81
+                result: Rain storm brings flash floods
+              - low: 82
+                high: 90
+                result: Whirlpool of sand pulls you down
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/arid/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Blowing sands reveal rare resource deposit
+              - low: 21
+                high: 40
+                result: Cave entrance offers shelter
+              - low: 41
+                high: 60
+                result: Evidence of previous explorers offers a clue
+              - low: 61
+                high: 80
+                result: Oasis offers respite
+              - low: 81
+                high: 100
+                result: Opening to bypass the most difficult terrain
+      chronal:
+        name: Chronal
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/chronal/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Ambient lifeforms feeding off chronal energy
+              - low: 9
+                high: 16
+                result: Artifact or natural occurrence acting as a focal point
+              - low: 17
+                high: 24
+                result: Beings, objects, or events stuck in a short time loop
+              - low: 25
+                high: 32
+                result: Conflicting visions of future events
+              - low: 33
+                high: 40
+                result: Glimpses of past events
+              - low: 41
+                high: 48
+                result: Glowing spacetime rifts emanating chronal energy
+              - low: 49
+                high: 56
+                result: Incongruent trappings of different time periods
+              - low: 57
+                high: 64
+                result: Instantaneous changes to layout or aesthetics of equipment
+              - low: 65
+                high: 72
+                result: Rapid movements become slowed
+              - low: 73
+                high: 80
+                result: Shifting landscapes
+              - low: 81
+                high: 88
+                result: Slow movements become rapid
+              - low: 89
+                high: 96
+                result: Visions of parallel universes
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/chronal/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Caught in a time paradox
+              - low: 10
+                high: 18
+                result: Changes in timeline slip from memory
+              - low: 19
+                high: 27
+                result: Chronal energies build to a tipping point
+              - low: 28
+                high: 36
+                result: Equipment yields faulty or conflicting readings
+              - low: 37
+                high: 45
+                result: Foe from the future uses future knowledge against you
+              - low: 46
+                high: 54
+                result: Meeting another version of yourself threatens reality
+              - low: 55
+                high: 63
+                result: Rapid growth or rebirth of environment
+              - low: 64
+                high: 72
+                result: Rapid time decay of environment
+              - low: 73
+                high: 81
+                result: Shunted backward in time
+              - low: 82
+                high: 90
+                result: Shunted forward in time
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/chronal/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Butterfly point offers a dangerous gamble
+              - low: 21
+                high: 40
+                result: Contact with a helpful ally outside your time
+              - low: 41
+                high: 60
+                result: Future visions allow an option to avoid hardship
+              - low: 61
+                high: 80
+                result: Insight into a past event offers a new perspective
+              - low: 81
+                high: 100
+                result: Yawning portal through spacetime
+      inferno:
+        name: Inferno
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/inferno/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Ash-covered terrain
+              - low: 9
+                high: 16
+                result: Geysers of lava
+              - low: 17
+                high: 24
+                result: Giant rock columns or boulders
+              - low: 25
+                high: 32
+                result: Heat-induced electromagnetic field
+              - low: 33
+                high: 40
+                result: Islands floating on lava
+              - low: 41
+                high: 48
+                result: Maze of lava tubes
+              - low: 49
+                high: 56
+                result: Mineral deposits fused together
+              - low: 57
+                high: 64
+                result: Obscuring soot and smoke
+              - low: 65
+                high: 72
+                result: Rivulets of lava or liquid flame
+              - low: 73
+                high: 80
+                result: Slowly cooling sections of lava
+              - low: 81
+                high: 88
+                result: Stable islands separated by lava
+              - low: 89
+                high: 96
+                result: Vents spewing steaming gases
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/inferno/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Ash, soot, and smoke hide dangers
+              - low: 10
+                high: 18
+                result: Explosive eruption
+              - low: 19
+                high: 27
+                result: Foe uses heat to its advantage
+              - low: 28
+                high: 36
+                result: Gaping pit of lava
+              - low: 37
+                high: 45
+                result: Heat, lava, or plasma threatens a crucial location
+              - low: 46
+                high: 54
+                result: Noxious fumes
+              - low: 55
+                high: 63
+                result: Overpowering heat
+              - low: 64
+                high: 72
+                result: Razor-sharp rocks hardened by heat and pressure
+              - low: 73
+                high: 81
+                result: Rising lava levels
+              - low: 82
+                high: 90
+                result: Violent tremors
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/inferno/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Ancient complex that used the heat as a power source
+              - low: 21
+                high: 40
+                result: Chance to observe a scientific curiosity
+              - low: 41
+                high: 60
+                result: Opening to circumvent the most dangerous zones
+              - low: 61
+                high: 80
+                result: Opening to harness the energy here
+              - low: 81
+                high: 100
+                result: Rare minerals naturally refined by the heat
+      floating:
+        name: Floating
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/floating/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Areas of variable gravity
+              - low: 9
+                high: 16
+                result: Bridge connecting islands or platforms
+              - low: 17
+                high: 24
+                result: Central control hub
+              - low: 25
+                high: 32
+                result: Dust shower from above
+              - low: 33
+                high: 40
+                result: Generator or other energy powering the islands
+              - low: 41
+                high: 48
+                result: Low gravity area allows large leaps
+              - low: 49
+                high: 56
+                result: Rhythmic movements and rotations
+              - low: 57
+                high: 64
+                result: Signs of eyrie-like nests
+              - low: 65
+                high: 72
+                result: Slowly spinning sections of land or platforms
+              - low: 73
+                high: 80
+                result: Staircase of floating sections
+              - low: 81
+                high: 88
+                result: Tethers of iron or energy
+              - low: 89
+                high: 96
+                result: Zipline or tube transport connecting areas
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/floating/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Airborne foe moves to attack
+              - low: 10
+                high: 18
+                result: Crumbling islands beneath your feet
+              - low: 19
+                high: 27
+                result: Dramatic shift in orientation
+              - low: 28
+                high: 36
+                result: Failure of forces keeping everything aloft
+              - low: 37
+                high: 45
+                result: Guard rail, ladder, or natural barrier gives way
+              - low: 46
+                high: 54
+                result: Hail-like rain of earth from above
+              - low: 55
+                high: 63
+                result: Precarious ledge
+              - low: 64
+                high: 72
+                result: Spinning forces of inertia threaten balance
+              - low: 73
+                high: 81
+                result: Sudden shift in gravity or gravity's direction
+              - low: 82
+                high: 90
+                result: Wide gulf of open air
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/floating/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to a rare resource
+              - low: 21
+                high: 40
+                result: Access to useful equipment
+              - low: 41
+                high: 60
+                result: Changes in gravity hamper your foes
+              - low: 61
+                high: 80
+                result: Landscape allows access to significant location
+              - low: 81
+                high: 100
+                result: Three-dimensional battlefied hampers your foes
+      flooded:
+        name: Flooded
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/flooded/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Deep and murky waters
+              - low: 9
+                high: 16
+                result: Flotsam and jetsam
+              - low: 17
+                high: 24
+                result: Pockets of thin-membraned atmosphere
+              - low: 25
+                high: 32
+                result: Prolific mold, slime, or fungus
+              - low: 33
+                high: 40
+                result: Signs of what once was here
+              - low: 41
+                high: 48
+                result: Small patches of dry ground
+              - low: 49
+                high: 56
+                result: Strong currents
+              - low: 57
+                high: 64
+                result: Submerged structure or formation
+              - low: 65
+                high: 72
+                result: Thick spray and vapors
+              - low: 73
+                high: 80
+                result: Underwater tunnels of unknown distance
+              - low: 81
+                high: 88
+                result: Unseen obstacles just beneath the surface
+              - low: 89
+                high: 96
+                result: Water bursting through cracked barrier
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/flooded/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Eroding passageways
+              - low: 10
+                high: 18
+                result: Large, swift moving debris
+              - low: 19
+                high: 27
+                result: Lifeforms stirring in the deep
+              - low: 28
+                high: 36
+                result: Perilous chemical spill
+              - low: 37
+                high: 45
+                result: Rising tides
+              - low: 46
+                high: 54
+                result: Spreading biological contaminants
+              - low: 55
+                high: 63
+                result: Swift undertow
+              - low: 64
+                high: 72
+                result: Thundering rapids
+              - low: 73
+                high: 81
+                result: Vortex pulling you down
+              - low: 82
+                high: 90
+                result: Waterfall into the darkness
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/flooded/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Draining water reveals a secret or clue
+              - low: 21
+                high: 40
+                result: Erosion opens a shortcut or safer passage
+              - low: 41
+                high: 60
+                result: Opening for foes to be washed away
+              - low: 61
+                high: 80
+                result: Salvageable equipment
+              - low: 81
+                high: 100
+                result: Submerged vehicle intact
+      frozen:
+        name: Frozen
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/frozen/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Abandoned equipment frozen solid
+              - low: 9
+                high: 16
+                result: Frozen river or lake
+              - low: 17
+                high: 24
+                result: Frozen waterfalls
+              - low: 25
+                high: 32
+                result: Huge snow drifts
+              - low: 33
+                high: 40
+                result: Intricate crystalline structures of ice
+              - low: 41
+                high: 48
+                result: Layers of ice coating surfaces
+              - low: 49
+                high: 56
+                result: Lifeform of a different age encased in ice
+              - low: 57
+                high: 64
+                result: Movement or lights beneath the ice
+              - low: 65
+                high: 72
+                result: Multi-colored layers of ice
+              - low: 73
+                high: 80
+                result: Slick surfaces
+              - low: 81
+                high: 88
+                result: Sparkling icicles
+              - low: 89
+                high: 96
+                result: Tiny rivulets of melt water
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/frozen/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Avalanche
+              - low: 10
+                high: 18
+                result: Deceptively deep snow
+              - low: 19
+                high: 27
+                result: Falling icicles or hail
+              - low: 28
+                high: 36
+                result: Freezing rain quickly coats all in ice
+              - low: 37
+                high: 45
+                result: Frozen equipment malfunctions
+              - low: 46
+                high: 54
+                result: Frozen to a surface
+              - low: 55
+                high: 63
+                result: Path blocked by wall of ice
+              - low: 64
+                high: 72
+                result: Subzero temperatures
+              - low: 73
+                high: 81
+                result: Unexpected heat melts key support structure
+              - low: 82
+                high: 90
+                result: White-out conditions
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/frozen/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Condensed ice crystal acts as temporary power booster
+              - low: 21
+                high: 40
+                result: Evidence of prior explorers preserved in ice
+              - low: 41
+                high: 60
+                result: Nearly enclosed space offers a moment of relative warmth
+              - low: 61
+                high: 80
+                result: Rare specimen preserved in ice
+              - low: 81
+                high: 100
+                result: Thin wall of ice offers a shortcut
+      lifeform:
+        name: Lifeform
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/lifeform/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Bundles of nerve fibers
+              - low: 9
+                high: 16
+                result: Decaying or dying cells
+              - low: 17
+                high: 24
+                result: Dilating openings
+              - low: 25
+                high: 32
+                result: Large bending joints
+              - low: 33
+                high: 40
+                result: Protruding bones
+              - low: 41
+                high: 48
+                result: Rivers of blood
+              - low: 49
+                high: 56
+                result: Sacs of fluid
+              - low: 57
+                high: 64
+                result: Strange growths or nodules
+              - low: 65
+                high: 72
+                result: Symbiotic lifeforms at work
+              - low: 73
+                high: 80
+                result: Tendons or connective tissues
+              - low: 81
+                high: 88
+                result: Undulating halls
+              - low: 89
+                high: 96
+                result: Winding nutrient passageways
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/lifeform/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Acidic digestive juices
+              - low: 10
+                high: 18
+                result: Biological contaminants
+              - low: 19
+                high: 27
+                result: Caught in the waste stream
+              - low: 28
+                high: 36
+                result: Contracting muscles
+              - low: 37
+                high: 45
+                result: Defense mechanisms target you as invasive
+              - low: 46
+                high: 54
+                result: Lack of atmosphere
+              - low: 55
+                high: 63
+                result: Rising bodily fluids
+              - low: 64
+                high: 72
+                result: Surges of rapid expellant
+              - low: 73
+                high: 81
+                result: Symbiotic lifeforms attack
+              - low: 82
+                high: 90
+                result: Virulent disease
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/lifeform/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to rare biological resource
+              - low: 21
+                high: 40
+                result: Genetic clue or evidence
+              - low: 41
+                high: 60
+                result: Opening to heal or benefit the lifeform
+              - low: 61
+                high: 80
+                result: Opening to influence the lifeform to your benefit
+              - low: 81
+                high: 100
+                result: Rare scientific observation
+      mystical:
+        name: Mystical
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/mystical/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Accoutrements of ceremony
+              - low: 9
+                high: 16
+                result: Animated cleaning tools or equipment
+              - low: 17
+                high: 24
+                result: Arcane symbols, runes, or sigils
+              - low: 25
+                high: 32
+                result: Chamber of mystical rituals
+              - low: 33
+                high: 40
+                result: Ethereal sounds and lights
+              - low: 41
+                high: 48
+                result: Foci or conduits of mystic energy
+              - low: 49
+                high: 56
+                result: Ley line of great pulsing power
+              - low: 57
+                high: 64
+                result: Library or database of indecipherable texts
+              - low: 65
+                high: 72
+                result: Lifeforms anthropomorphized as servants
+              - low: 73
+                high: 80
+                result: Lifeforms warped by magic
+              - low: 81
+                high: 88
+                result: Magic-infused technology
+              - low: 89
+                high: 96
+                result: Strange specimens magically caged
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/mystical/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Arcane knowledge in the wrong hands
+              - low: 10
+                high: 18
+                result: Important equipment malfunctions
+              - low: 19
+                high: 27
+                result: Lost in the illusions
+              - low: 28
+                high: 36
+                result: Magically locked areas
+              - low: 37
+                high: 45
+                result: Mystic energies growing unbounded
+              - low: 46
+                high: 54
+                result: Relic or artifact with a frightening cost
+              - low: 55
+                high: 63
+                result: Surges of wild magic
+              - low: 64
+                high: 72
+                result: Technological interfaces only respond to magic
+              - low: 73
+                high: 81
+                result: Temptations to unlease a darker force
+              - low: 82
+                high: 90
+                result: Trapped by mystic energies
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/mystical/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Ability to tap into a ley line's power
+              - low: 21
+                high: 40
+                result: Artifact of arcane might or significance
+              - low: 41
+                high: 60
+                result: Helpful magical device or lifeform
+              - low: 61
+                high: 80
+                result: Regenerative empowerment
+              - low: 81
+                high: 100
+                result: Valuable notes on mystic powers
+      overgrown:
+        name: Overgrown
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/overgrown/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Cacophony of calls and shrieks
+              - low: 9
+                high: 16
+                result: Caracass picked clean
+              - low: 17
+                high: 24
+                result: Colonies of insects or tiny lifeforms
+              - low: 25
+                high: 32
+                result: Evidence of a failed hunting expedition
+              - low: 33
+                high: 40
+                result: Huge footprints in the ground
+              - low: 41
+                high: 48
+                result: Larger than life plants
+              - low: 49
+                high: 56
+                result: Lifeforms lounging after a feast or kill
+              - low: 57
+                high: 64
+                result: Site of a large attack or skirmish
+              - low: 65
+                high: 72
+                result: Sticky sap coating surfaces
+              - low: 73
+                high: 80
+                result: Structures or formations covered in thick vines
+              - low: 81
+                high: 88
+                result: Traveling herds of herbivores
+              - low: 89
+                high: 96
+                result: Well-traveled game trail
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/overgrown/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Aggressive and armored lifeforms
+              - low: 10
+                high: 18
+                result: Apex predator on the prowl
+              - low: 19
+                high: 27
+                result: Evidence of exploitation of lifeforms
+              - low: 28
+                high: 36
+                result: Horned lifeforms bellowing before a charge
+              - low: 37
+                high: 45
+                result: Lifeform stalks from the shadows
+              - low: 46
+                high: 54
+                result: Pack of predators on the hunt
+              - low: 55
+                high: 63
+                result: Poisonous plant life or venomous lifeforms
+              - low: 64
+                high: 72
+                result: Protective parent lifeform attacks
+              - low: 73
+                high: 81
+                result: Spiked or razor-edged plants blocking the path
+              - low: 82
+                high: 90
+                result: Swarms of parasitic lifeforms
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/overgrown/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Access to area untouched for ages
+              - low: 21
+                high: 40
+                result: Access to rare biological specimen
+              - low: 41
+                high: 60
+                result: Lost artifact found
+              - low: 61
+                high: 80
+                result: Opening to avoid a conflict with lifeforms
+              - low: 81
+                high: 100
+                result: Opening to connect with a helpful lifeform
+      war_zone:
+        name: War Zone
+        contents:
+          feature:
+            _insert: starforged/oracles/location_themes/war_zone/feature
+            name: Feature
+            dice: 1d100
+            table:
+              - low: 1
+                high: 8
+                result: Battle standard or beacon buoy
+              - low: 9
+                high: 16
+                result: Combatants fleeing the battle
+              - low: 17
+                high: 24
+                result: Command ship or center
+              - low: 25
+                high: 32
+                result: Damaged engines of war now abandoned
+              - low: 33
+                high: 40
+                result: Debris and wrecked terrain
+              - low: 41
+                high: 48
+                result: Fallen combatants
+              - low: 49
+                high: 56
+                result: Nervous units held in reserve
+              - low: 57
+                high: 64
+                result: Officer barking orders to a squad
+              - low: 65
+                high: 72
+                result: Perimeter guards on patrol
+              - low: 73
+                high: 80
+                result: Scout observing enemy movements
+              - low: 81
+                high: 88
+                result: Vehicular wreckage
+              - low: 89
+                high: 96
+                result: Wounded troops hunkering down
+              - low: 97
+                high: 100
+                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+                rolls:
+                  - oracle: starforged/oracles/core/descriptor
+                  - oracle: starforged/oracles/core/focus
+          peril:
+            _insert: starforged/oracles/location_themes/war_zone/peril
+            name: Peril
+            dice: 1d100
+            table:
+              - low: 1
+                high: 9
+                result: Ambushed by a lurking foe
+              - low: 10
+                high: 18
+                result: Automated suppressing fire
+              - low: 19
+                high: 27
+                result: Battlefield tech is triggered
+              - low: 28
+                high: 36
+                result: Caught in the crossfire
+              - low: 37
+                high: 45
+                result: Enemy sniper pins you down
+              - low: 46
+                high: 54
+                result: Explosive change in the battlefield
+              - low: 55
+                high: 63
+                result: Lost in the chaos or debris
+              - low: 64
+                high: 72
+                result: Mistaken for the enemy
+              - low: 73
+                high: 81
+                result: Opportunistic looters take notice
+              - low: 82
+                high: 90
+                result: Shrapnel or collateral damage
+              - low: 91
+                high: 98
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 99
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          opportunity:
+            _insert: starforged/oracles/location_themes/war_zone/opportunity
+            name: Opportunity
+            dice: 1d100
+            table:
+              - low: 1
+                high: 20
+                result: Helping a combatant in need may yield an ally
+              - low: 21
+                high: 40
+                result: Insight into the nature of the conflict
+              - low: 41
+                high: 60
+                result: Opening to avoid the fiercest section of battle
+              - low: 61
+                high: 80
+                result: Opening to bring the immediate conflict to a close
+              - low: 81
+                high: 100
+                result: Salvageable equipment or weapons
