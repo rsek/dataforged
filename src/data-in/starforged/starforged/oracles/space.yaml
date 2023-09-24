@@ -85,11 +85,9 @@ oracles:
                 result: &Sighting.7.result '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
                 rolls: &Sighting.7.rolls
                   - oracle: starforged/oracles/core/descriptor
-                    times: 1
-                    method: no_duplicates
+                    auto: true
                   - oracle: starforged/oracles/core/focus
-                    times: 1
-                    method: no_duplicates
+                    auto: true
               - low: 61
                 high: 65
                 result: &Sighting.8.result 'Debris field: Mineral asteroids'
@@ -129,6 +127,7 @@ oracles:
                 result: Roll twice
                 rolls:
                   - times: 2
+                    auto: true
                     method: keep_duplicates
               - &Sighting.20
                 low: 99
@@ -136,6 +135,7 @@ oracles:
                 result: Roll three times
                 rolls:
                   - times: 3
+                    auto: true
                     method: keep_duplicates
           outlands:
             name: Outlands
@@ -814,12 +814,15 @@ oracles:
             result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
             rolls:
               - oracle: starforged/oracles/core/action
+                auto: true
               - oracle: starforged/oracles/core/theme
+                auto: true
           - low: 100
             high: 100
             result: Roll twice
             rolls:
               - times: 2
+                auto: true
       opportunity:
         _source:
           page: 305

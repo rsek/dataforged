@@ -50,6 +50,13 @@ export const OracleTableRoll = Type.Object(
 					'The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.'
 			})
 		),
+		auto: Type.Optional(
+			Type.Boolean({
+				default: false,
+				description:
+					'The rulebook explicitly cautions *against* rolling all details in once in most cases, so performing any secondary rolls automatically is not recommended in most cases. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it\'s false.'
+			})
+		),
 		times: Type.Integer({ minimum: 1, default: 1 }),
 		method: Type.Optional(Type.Ref(OracleTableRollMethod))
 	},

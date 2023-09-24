@@ -167,13 +167,16 @@ oracles:
                 result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
+                    auto: true
                   - oracle: starforged/oracles/core/theme
+                    auto: true
               - &Mission.31
                 low: 91
                 high: 100
                 result: Roll twice
                 rolls:
                   - times: 2
+                    auto: true
           outlands:
             name: Outlands
             rendering: *display:Mission
@@ -672,7 +675,9 @@ oracles:
             result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
             rolls:
               - oracle: starforged/oracles/core/descriptor
+                auto: true
               - oracle: starforged/oracles/core/focus
+                auto: true
       starship_name:
         name: Starship Name
         _source:

@@ -737,6 +737,7 @@ export interface OracleTableRendering {
 
 export interface OracleTableRoll {
 	oracle: OracleTableId
+	auto?: boolean
 	method?: OracleTableRollMethod
 	times?: number
 }

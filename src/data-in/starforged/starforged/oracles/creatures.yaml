@@ -28,27 +28,37 @@ oracles:
             high: 5
             result: Space
             icon: &icon.Space icons/creature/environment/space.svg
-            # set_attributes: {environment: [space]}, rolls: [starforged/oracles/creatures/basic_form/space]
+            # set_attributes: {environment: [space]}
+            rolls:
+              - oracle: starforged/oracles/creatures/basic_form/space
           - low: 6
             high: 15
             result: Interior
             icon: &icon.Interior icons/creature/environment/interior.svg
-            # set_attributes: {environment: [interior]}, rolls: [starforged/oracles/creatures/basic_form/interior]
+            # set_attributes: {environment: [interior]}
+            rolls:
+              - oracle: starforged/oracles/creatures/basic_form/interior
           - low: 16
             high: 55
             result: Land
             icon: &icon.Land icons/creature/environment/land.svg
-            # set_attributes: {environment: [land]}, rolls: [starforged/oracles/creatures/basic_form/land]
+            # set_attributes: {environment: [land]}
+            rolls:
+              - oracle: starforged/oracles/creatures/basic_form/land
           - low: 56
             high: 80
             result: Liquid
             icon: &icon.Liquid icons/creature/environment/liquid.svg
-            # set_attributes: {environment: [liquid]}, rolls: [starforged/oracles/creatures/basic_form/liquid]
+            # set_attributes: {environment: [liquid]}
+            rolls:
+              - oracle: starforged/oracles/creatures/basic_form/liquid
           - low: 81
             high: 100
             result: Air
             icon: &icon.Air icons/creature/environment/air.svg
-            # set_attributes: {environment: [air]}, rolls: [starforged/oracles/creatures/basic_form/air]
+            # set_attributes: {environment: [air]}
+            rolls:
+              - oracle: starforged/oracles/creatures/basic_form/air
       scale:
         name: Scale
         _source:
@@ -87,6 +97,7 @@ oracles:
             result: '[Ultra-scale](starforged/oracles/creatures/ultra_scale)'
             rolls:
               - oracle: starforged/oracles/creatures/ultra_scale
+                auto: true
       ultra_scale:
         name: Ultra-scale
         _source:
@@ -367,6 +378,7 @@ oracles:
             result: Roll twice
             rolls:
               - times: 2
+                auto: true
       revealed_creature_aspect:
         name: Revealed Creature Aspect
         _source:
@@ -662,6 +674,7 @@ oracles:
                 result: Roll twice
                 rolls:
                   - times: 2
+                    auto: true
           interior:
             name: Interior
             rendering:
