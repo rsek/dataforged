@@ -598,6 +598,11 @@
 					"description": "The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.",
 					"$ref": "#/$defs/OracleTableID"
 				},
+				"auto": {
+					"default": false,
+					"description": "The rulebook explicitly cautions *against* rolling all details in once in most cases, so performing any secondary rolls automatically is not recommended in most cases. That said, some oracle results only provide useful information once a secondary roll occurs, such as \"Action + Theme\". If this value is omitted, assume it's false.",
+					"type": "boolean"
+				},
 				"times": { "minimum": 1, "default": 1, "type": "integer" },
 				"method": { "$ref": "#/$defs/OracleTableRollMethod" }
 			},
