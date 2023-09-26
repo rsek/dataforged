@@ -17,7 +17,11 @@ fs.copySync(
 fs.copySync('src/types/output/starforged.d.ts', 'dist/types.d.ts')
 
 // copy images
-fs.copySync('src/images', 'dist/images')
+fs.copySync(
+	'src/data-in/starforged/starforged/images',
+	'dist/starforged/images'
+)
+fs.copySync('src/data-in/starforged/starforged/icons', 'dist/starforged/icons')
 
 // copy map of legacy IDs
 fs.copySync('src/legacy_id_map.json', 'dist/legacy_id_map.json')
