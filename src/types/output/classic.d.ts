@@ -676,9 +676,15 @@ export interface Asset {
   source: Source;
   icon?: SVGImageURL;
   color?: CSSColor;
+  /**
+   * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "Name" field on on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
+   */
   options?: {
     [k: string]: AssetOptionField;
   };
+  /**
+   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
+   */
   controls?: {
     [k: string]: AssetControlField;
   };
@@ -799,6 +805,9 @@ export interface AssetAttachment {
 export interface AssetConditionMeter {
   min?: number;
   max?: number;
+  /**
+   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
+   */
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
@@ -817,6 +826,9 @@ export interface AssetConditionMeter1 {
   value?: number;
   id: AssetConditionMeterID;
   label: Label;
+  /**
+   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
+   */
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };

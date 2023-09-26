@@ -16,7 +16,7 @@
 		"build:schema": "ts-node ./src/scripts/write-schema.ts",
 		"build:io-types": "ts-node ./src/types/write-io-types.ts",
 		"build:json": "ts-node ./src/scripts/write-json.ts",
-		"update": "npm run build:schema && npm run build:io-types && npm run build:json",
+		"update": "npm run build:schema && npm run build:io-types && npm run build:json && ts-node ./src/scripts/build-dist.ts",
 		"build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",
 		"readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
 	},

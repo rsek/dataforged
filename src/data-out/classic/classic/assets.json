@@ -3257,16 +3257,86 @@
 					"abilities": [
 						{
 							"text": "When you equip or adjust your armor, choose one.\n\n  * Lightly armored: When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.\n  * Geared for war: Mark encumbered. When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.",
+							"augment_moves": [
+								{
+									"augments": ["classic/moves/suffer/endure_harm"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a fight while you are lightly armored"
+											}
+										]
+									},
+									"text": "Add +1.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Take +1 momentum."
+										},
+										"weak_hit": {
+											"text": "Take +1 momentum."
+										}
+									},
+									"move_type": "action_roll"
+								},
+								{
+									"augments": ["classic/moves/suffer/endure_harm"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a fight while you are geared for war"
+											}
+										]
+									},
+									"text": "Add +2.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Take +1 momentum."
+										},
+										"weak_hit": {
+											"text": "Take +1 momentum."
+										}
+									},
+									"move_type": "action_roll"
+								}
+							],
 							"enabled": true,
 							"id": "classic/assets/combat_talent/ironclad/abilities/0"
 						},
 						{
 							"text": "When you [Clash](classic/moves/combat/clash) while you are geared for war, add +1.",
+							"augment_moves": [
+								{
+									"augments": ["classic/moves/combat/clash"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "While you are geared for war"
+											}
+										]
+									},
+									"text": "Add +1.",
+									"move_type": "action_roll"
+								}
+							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/ironclad/abilities/1"
 						},
 						{
 							"text": "When you [Compel](classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.",
+							"augment_moves": [
+								{
+									"augments": ["classic/moves/relationship/compel"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In a situation where strength of arms is a factor"
+											}
+										]
+									},
+									"text": "Add +2.",
+									"move_type": "action_roll"
+								}
+							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/ironclad/abilities/2"
 						}
@@ -4978,7 +5048,7 @@
 					"name": "Ward",
 					"abilities": [
 						{
-							"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/moves/fate/ask_the_oracle)) to trap a foe within the boundary.",
+							"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary.",
 							"enabled": true,
 							"moves": {
 								"ward": {
@@ -4997,13 +5067,13 @@
 											}
 										]
 									},
-									"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/moves/fate/ask_the_oracle)) to trap a foe within the boundary.",
+									"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary.",
 									"outcomes": {
 										"strong_hit": {
-											"text": "Choose two.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/moves/fate/ask_the_oracle)) to trap a foe within the boundary."
+											"text": "Choose two.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
 										},
 										"weak_hit": {
-											"text": "Choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/moves/fate/ask_the_oracle)) to trap a foe within the boundary."
+											"text": "Choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
 										},
 										"miss": {
 											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](classic/moves/fate/pay_the_price)."
@@ -5027,7 +5097,7 @@
 							"id": "classic/assets/ritual/ward/abilities/0"
 						},
 						{
-							"text": "As above, and improve the effect of your ward (+2 momentum, +2 harm, and ‘almost certain’).",
+							"text": "As above, and improve the effect of your ward (+2 momentum, +2 harm, and [‘almost certain’](classic/oracles/moves/ask_the_oracle/almost_certain)).",
 							"enabled": false,
 							"id": "classic/assets/ritual/ward/abilities/1"
 						},
