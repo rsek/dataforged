@@ -86,7 +86,7 @@ export interface AssetAbilityOptionFieldSelectAssetAugmentChoice {
 }
 
 export interface AssetAbilityOptionFieldSelectAssetAugment {
-	field_type: 'select_asset_extension'
+	field_type: 'select_asset_augment'
 	choices: { [key: string]: AssetAbilityOptionFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label
@@ -204,7 +204,7 @@ export interface AssetControlFieldSelectAssetAugmentChoice {
 }
 
 export interface AssetControlFieldSelectAssetAugment {
-	field_type: 'select_asset_extension'
+	field_type: 'select_asset_augment'
 	choices: { [key: string]: AssetControlFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label
@@ -286,7 +286,7 @@ export interface AssetOptionFieldSelectAssetAugmentChoice {
 }
 
 export interface AssetOptionFieldSelectAssetAugment {
-	field_type: 'select_asset_extension'
+	field_type: 'select_asset_augment'
 	choices: { [key: string]: AssetOptionFieldSelectAssetAugmentChoice }
 	id: AssetControlFieldId
 	label: Label

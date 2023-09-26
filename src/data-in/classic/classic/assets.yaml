@@ -1603,12 +1603,12 @@ assets:
         name: Ironclad
         # icon not on game-icons
         requirement: If you wear armor...
+        # TODO
         # controls:
         #   equipped:
-        #     field_type: toggle
+        #     field_type: select_state
         #     label: Equipped
         #     choices:
-        #       # TODO
         #       lightly_armored:
         #         label: Lightly armored
         #         value: {}
@@ -1621,11 +1621,41 @@ assets:
 
                 * Lightly armored: When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.
                 * Geared for war: Mark encumbered. When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.
+            augment_moves:
+              - augments:
+                  - classic/moves/suffer/endure_harm
+                trigger:
+                  conditions:
+                    - text: In a fight while you are geared for war
+                text: Add +2.
+                outcomes: *outcomes:+1_momentum.HIT
+              - augments:
+                  - classic/moves/suffer/endure_harm
+                trigger:
+                  conditions:
+                    - text: In a fight while you are lightly armored
+                text: Add +1.
+                outcomes: *outcomes:+1_momentum.HIT
+
             enabled: true
           - text: |-
               When you [Clash](classic/moves/combat/clash) while you are geared for war, add +1.
+            augment_moves:
+              - augments:
+                  - classic/moves/combat/clash
+                trigger:
+                  conditions:
+                    - text: While you are geared for war
+                text: Add +1.
           - text: |-
               When you [Compel](classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.
+            augment_moves:
+              - augments:
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: In a situation where strength of arms is a factor
+                text: Add +2.
       long_arm:
         _source:
           title: Ironsworn Assets Master Set

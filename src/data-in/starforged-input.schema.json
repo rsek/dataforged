@@ -1391,6 +1391,7 @@
 				"id": { "$ref": "#/$defs/AssetConditionMeterID" },
 				"label": { "$ref": "#/$defs/Label" },
 				"controls": {
+					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
@@ -1410,6 +1411,7 @@
 				"min": { "default": 0, "type": "integer" },
 				"max": { "type": "integer" },
 				"controls": {
+					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
@@ -1467,6 +1469,7 @@
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"color": { "$ref": "#/$defs/CSSColor" },
 				"options": {
+					"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"Name\" field on on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
@@ -1474,6 +1477,7 @@
 					}
 				},
 				"controls": {
+					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {

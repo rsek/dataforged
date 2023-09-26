@@ -185,7 +185,7 @@ export const AssetAbilityOptionField: JTDSchemaType<
 			'AssetAbilityOptionFieldID'
 		),
 		// @ts-expect-error
-		select_asset_extension: setIdRef(
+		select_asset_augment: setIdRef(
 			// @ts-expect-error
 			UnionChoicesFieldAssetAugment,
 			'AssetAbilityOptionFieldID'
@@ -213,7 +213,7 @@ export const AssetOptionField: JTDSchemaType<
 		select_stat: setIdRef(UnionSelectFieldStat, 'AssetOptionFieldID'),
 		// select_number: setIdRef(UnionChoicesFieldNumber, 'AssetOptionFieldID'),
 		// @ts-expect-error
-		select_asset_extension: setIdRef(
+		select_asset_augment: setIdRef(
 			// @ts-expect-error
 			UnionChoicesFieldAssetAugment,
 			'AssetOptionFieldID'
@@ -238,7 +238,7 @@ export const AssetControlField: JTDSchemaType<
 			'AssetControlFieldID'
 		),
 		// @ts-expect-error
-		select_asset_extension: set(
+		select_asset_augment: set(
 			UnionChoicesFieldAssetAugment,
 			'properties.id.ref',
 			'AssetControlFieldID'

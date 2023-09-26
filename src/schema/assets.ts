@@ -8,6 +8,7 @@ import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
 import { AssetID } from 'schema/common/id'
+import { SelectField } from 'schema/common/inputs'
 import { Label } from 'schema/common/localize'
 import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'
@@ -46,7 +47,10 @@ export const AssetConditionMeter = Type.Object(
 		id: Type.Ref(ID.AssetConditionMeterID),
 		label: Type.Ref(Label),
 		controls: Type.Optional(
-			Dictionary(Type.Ref(AssetConditionMeterControlField))
+			Dictionary(Type.Ref(AssetConditionMeterControlField), {
+				description:
+					'Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
+			})
 		)
 	},
 	{ $id: '#/$defs/AssetConditionMeter', title: 'Asset condition meter' }
@@ -78,7 +82,7 @@ function AssetAugmentSelf<T extends TObject>(
 		...omitKeys,
 		'requirement',
 		'options',
-		'controls' // most are just concerned with altering a condition meter or sth
+		'controls' // in practice, i don't think anyone's setting a control in order to create a temporary control
 	]
 	if (omitKeys.includes('condition_meter'))
 		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys)
@@ -118,8 +122,18 @@ export const Asset = Type.Object(
 		source: Type.Ref(Metadata.Source),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		color: Type.Optional(Type.Ref(Metadata.CSSColor)),
-		options: Type.Optional(Abstract.Dictionary(Type.Ref(AssetOptionField))),
-		controls: Type.Optional(Abstract.Dictionary(Type.Ref(AssetControlField))),
+		options: Type.Optional(
+			Abstract.Dictionary(Type.Ref(AssetOptionField), {
+				description:
+					'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "Name" field on on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+			})
+		),
+		controls: Type.Optional(
+			Abstract.Dictionary(Type.Ref(AssetControlField), {
+				description:
+					'Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
+			})
+		),
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 		requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
@@ -155,7 +169,12 @@ export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 export const AssetAbilityControlField = AssetField(
 	'AssetAbilityControlField',
 	ID.AssetAbilityControlFieldID,
-	[Inputs.ClockField, Inputs.CounterField, Inputs.CheckboxField]
+	[
+		Inputs.ClockField,
+		Inputs.CounterField,
+		Inputs.CheckboxField
+		// Inputs.SelectAssetAugment(AssetAugmentSelf(Asset, []) as TObject)
+	]
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -177,7 +196,7 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		augment_asset: Type.Optional(AssetAugmentSelf(Asset as any, ['abilities'])),
+		augment_asset: Type.Optional(AssetAugmentSelf(Asset, ['abilities'])),
 		augment_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveAugment)))
 	},
 	{ $id: '#/$defs/AssetAbility' }
@@ -237,3 +256,14 @@ export {
 	SelectFieldStat,
 	SelectFieldRef
 } from 'schema/common/inputs'
+
+// what about a general purpose asset ability switch?
+// e.g. when [state], use this asset ability data.
+
+// not sure modelling 'forced' impacts is worth it, tbh
+
+// field_type: select_state
+// the value for each select_state option is a partial of the asset ability data: {augment_moves, augment_asset} are the only permitted properties.
+//
+
+// alternate approach: some feature of augments, like requires_state: some_state_id?

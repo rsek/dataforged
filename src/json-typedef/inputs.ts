@@ -113,7 +113,7 @@ export const UnionSelectFieldStat: JTDSchemaType<
 // 	}
 // }
 
-/** field_type: 'select_asset_extension' */
+/** field_type: 'select_asset_augment' */
 export const UnionChoicesFieldAssetAugment: JTDSchemaType<
 	Omit<Types.Inputs.SelectFieldAsset, 'field_type'>,
 	{ ID: string; Label: string; AssetAugment: Types.Assets.AssetAugment }

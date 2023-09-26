@@ -2,7 +2,8 @@ import {
 	type Static,
 	Type,
 	type TSchema,
-	type ObjectOptions
+	type ObjectOptions,
+	type TObject
 } from '@sinclair/typebox'
 import * as Localize from 'schema/common/localize'
 import * as ID from 'schema/common/id'
@@ -65,7 +66,7 @@ export const SelectFieldType = JsonEnum([
 	'select_meter',
 	'select_ref',
 	'select_number',
-	'select_asset_extension'
+	'select_asset_augment'
 ])
 export type SelectFieldType = Static<typeof SelectFieldType>
 
@@ -190,3 +191,5 @@ export const SelectFieldRef = SelectField(
 	}
 )
 export type SelectFieldRef = Static<typeof SelectFieldRef>
+
+// select asset augment requires too much recursion. so what's the best way to model e.g. Ironclad?
