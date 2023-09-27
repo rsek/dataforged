@@ -4,8 +4,9 @@ export * as ID from 'schema/common/id'
 // req Utils, ID
 export * as Metadata from 'schema/common/metadata'
 
-export * as Enum from 'schema/common/enum'
+export * as Progress from 'schema/common/progress'
 export * as Abstract from 'schema/common/abstract'
+export * as Player from 'schema/common/player'
 
 // after progress
 export * as Encounters from 'schema/common/encounters'

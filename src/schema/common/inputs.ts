@@ -2,12 +2,11 @@ import {
 	type Static,
 	Type,
 	type TSchema,
-	type ObjectOptions,
-	type TObject
+	type ObjectOptions
 } from '@sinclair/typebox'
 import * as Localize from 'schema/common/localize'
 import * as ID from 'schema/common/id'
-import * as Enum from 'schema/common/enum'
+import * as PlayerStat from './player'
 import * as Abstract from 'schema/common/abstract'
 import { JsonEnum } from 'typebox'
 
@@ -168,7 +167,10 @@ export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
 
 export const SelectFieldStat = SelectField(
 	'select_stat',
-	Type.Union([Type.Ref(Enum.PlayerStat), Type.Ref(Enum.PlayerConditionMeter)]),
+	Type.Union([
+		Type.Ref(PlayerStat.PlayerStat),
+		Type.Ref(PlayerStat.PlayerConditionMeter)
+	]),
 	{
 		$id: '#/$defs/SelectFieldStat',
 		title: 'Select field (player stat)',

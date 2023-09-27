@@ -119,7 +119,7 @@ export type Move =
       trigger: {
         text: MarkdownString3;
       } & TriggerNoRoll;
-      text: MarkdownString;
+      text: MarkdownString5;
       outcomes?: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -133,9 +133,9 @@ export type Move =
       id: MoveID;
       name: Label;
       trigger: {
-        text: MarkdownString5;
+        text: MarkdownString6;
       } & TriggerActionRoll;
-      text: MarkdownString;
+      text: MarkdownString8;
       outcomes: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -149,9 +149,9 @@ export type Move =
       id: MoveID;
       name: Label;
       trigger: {
-        text: MarkdownString7;
+        text: MarkdownString9;
       } & TriggerProgressRoll;
-      text: MarkdownString;
+      text: MarkdownString11;
       outcomes: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -173,6 +173,12 @@ export type MarkdownString3 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString4 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString5 = string;
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
 /**
@@ -180,13 +186,13 @@ export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString5 = string;
+export type MarkdownString6 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString6 = string;
+export type MarkdownString7 = string;
 /**
  * `any`: When rolling with this move trigger condition, the player picks which stat to use.
  *
@@ -202,8 +208,15 @@ export type TriggerActionRollConditionOption =
   | TriggerActionRollConditionOptionRef
   | TriggerActionRollConditionOptionAttachedAssetRef
   | TriggerActionRollConditionOptionCustomValue;
-export type PlayerStat = "edge" | "heart" | "iron" | "shadow" | "wits";
-export type PlayerConditionMeter = "health" | "spirit" | "supply";
+/**
+ * A basic player character stat. The canonical options are `edge`, `heart`, `iron`, `shadow`, and `wits`.
+ */
+export type PlayerStat = string;
+/**
+ * A basic, rollable player character resource. The canonical options are `health`, `spirit`, and `supply`.
+ */
+export type PlayerConditionMeter = string;
+export type AssetConditionMeterID = string;
 export type AssetConditionMeterIDWildcard = string;
 export type AssetOptionFieldIDWildcard = string;
 /**
@@ -211,26 +224,40 @@ export type AssetOptionFieldIDWildcard = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString7 = string;
+export type MarkdownString8 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString8 = string;
-export type ProgressType = ProgressTypeClassic | ProgressTypeStarforged;
-export type ProgressTypeClassic =
-  | "combat_progress"
-  | "vow_progress"
-  | "scene_challenge_progress"
-  | "journey_progress"
-  | "delve_progress"
-  | "bonds_progress"
-  | "failure_track";
-export type ProgressTypeStarforged =
-  | LegacyTypeStarforged
-  | ("combat_progress" | "vow_progress" | "scene_challenge_progress" | "expedition_progress" | "connection_progress");
-export type LegacyTypeStarforged = "quests_legacy" | "bonds_legacy" | "discoveries_legacy";
+export type MarkdownString9 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString10 = string;
+/**
+ * 'Canonical' content uses some standardized values.
+ *
+ * Most progress rolls use the `progress_track` type, which describes any standard, temporary progress track that's created and resolved by moves.
+ *
+ * Other values used for special, permanent progress tracks:
+ *
+ *   * `bonds_track`, described in the Ironsworn Rulebook
+ *   * `failure_track`, described in Ironsworn: Delve
+ *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
+ *
+ * Custom values should only be used describe new kinds of permanent progress track.
+ *
+ */
+export type ProgressType = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString11 = string;
 export type AssetTypeID = string;
 /**
  * Indicates that this collection's content should be inserted into another collection.
@@ -270,8 +297,13 @@ export type AssetAbilityControlField = ClockField | CounterField | CheckboxField
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetConditionMeterControlField = CheckboxField;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString12 = string;
 export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
-export type AssetConditionMeterID = string;
 export type EncounterCollectionID = string;
 /**
  * Indicates that this collection's content should be inserted into another collection.
@@ -604,6 +636,11 @@ export interface TriggerBy {
   player: boolean;
   ally: boolean;
 }
+/**
+ * Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ */
 export interface MoveOutcomes {
   miss: MoveOutcomeMatchable;
   weak_hit: MoveOutcome;
@@ -625,7 +662,7 @@ export interface MoveOutcome {
   reroll?: MoveReroll;
 }
 export interface TriggerActionRoll {
-  text: MarkdownString6;
+  text: MarkdownString7;
   conditions: TriggerActionRollCondition[];
 }
 export interface TriggerActionRollCondition {
@@ -639,7 +676,7 @@ export interface TriggerActionRollConditionOptionStat {
 }
 export interface TriggerActionRollConditionOptionRef {
   using: "ref";
-  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+  ref: AssetConditionMeterID | AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
 }
 export interface TriggerActionRollConditionOptionAttachedAssetRef {
   using: "attached_asset_meter";
@@ -650,7 +687,7 @@ export interface TriggerActionRollConditionOptionCustomValue {
   value: number;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString8;
+  text: MarkdownString10;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
@@ -849,7 +886,7 @@ export interface AssetConditionMeter {
   };
 }
 export interface MoveAugment {
-  text?: MarkdownString;
+  text?: MarkdownString12;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */

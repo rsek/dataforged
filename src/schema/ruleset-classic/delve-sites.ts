@@ -4,7 +4,7 @@ import {
 	type ObjectOptions,
 	type TProperties
 } from '@sinclair/typebox'
-import { ID, Localize, Enum, Metadata, Abstract } from 'schema/common'
+import { ID, Localize, Progress, Metadata, Abstract } from 'schema/common'
 import { OracleTableID } from 'schema/common/id'
 import { Squash } from 'schema/common/utils'
 import { OracleTableRow } from 'schema/oracles'
@@ -47,7 +47,7 @@ export const DelveSite = Abstract.SourcedNode(
 	{
 		id: Type.Ref(ID.DelveSiteID),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-		rank: Type.Ref(Enum.ChallengeRank),
+		rank: Type.Ref(Progress.ChallengeRank),
 		theme: Type.Ref(ID.DelveSiteThemeID),
 		domain: Type.Ref(ID.DelveSiteDomainID),
 		extra_card: Type.Optional(

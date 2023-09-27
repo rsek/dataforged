@@ -1,7 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID, Localize, Metadata, Abstract } from 'schema/common'
 import { JsonEnum } from 'typebox'
-import { Nullable } from 'typebox/nullable'
 
 export const OracleRollTemplate = Type.Object(
 	{

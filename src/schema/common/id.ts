@@ -6,6 +6,7 @@ import {
 } from '@sinclair/typebox'
 import { cloneDeep, escape, escapeRegExp } from 'lodash'
 import { join } from 'path'
+import { SNAKE_CASE } from 'schema/regex'
 import { SOURCEBOOK_KEY } from 'schema/sourcebooks'
 import { type Opaque } from 'type-fest'
 
@@ -16,7 +17,7 @@ class ID {
 	static readonly WILDCARD_MULTI = escapeRegExp('**')
 	static readonly RANGE = /([1-9][0-9]*)-([1-9][0-9]*)/.source
 	static readonly INDEX = /(0|[1-9][0-9]*)/.source
-	static readonly KEY = /([a-z][a-z_]*)/.source
+	static readonly KEY = SNAKE_CASE.source
 	static readonly KEY_WILDCARD = new RegExp(`(${this.KEY}|${this.WILDCARD})`)
 		.source
 

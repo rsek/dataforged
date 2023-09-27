@@ -1,9 +1,15 @@
 import { type Static, Type, type TSchema, JsonEnum } from 'typebox'
-import { ID, Localize, Abstract, Enum, Metadata } from 'schema/common'
+import {
+	ID,
+	Localize,
+	Abstract,
+	Progress,
+	Metadata,
+	Player
+} from 'schema/common'
 import { MoveIDWildcard } from 'schema/common/id'
-import { PartialExcept, Squash } from 'schema/common/utils'
+import { PartialExcept } from 'schema/common/utils'
 import { type Simplify } from 'type-fest'
-import { ProgressType } from 'schema/enum'
 import { TaggedUnion } from 'typebox/tagged-union'
 
 export const MoveRollMethod = JsonEnum(['any', 'all', 'highest', 'lowest'], {
@@ -61,6 +67,7 @@ export const TriggerActionRollConditionOptionRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
+			Type.Ref(ID.AssetConditionMeterID),
 			Type.Ref(ID.AssetConditionMeterIDWildcard),
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
@@ -74,8 +81,8 @@ export type TriggerActionRollConditionOptionRef = Static<
 export const TriggerActionRollConditionOptionStat = Type.Object(
 	{
 		using: Type.Union([
-			Type.Ref(Enum.PlayerStat),
-			Type.Ref(Enum.PlayerConditionMeter)
+			Type.Ref(Player.PlayerStat),
+			Type.Ref(Player.PlayerConditionMeter)
 		])
 	},
 	{ $id: '#/$defs/TriggerActionRollConditionOptionStat' }
@@ -111,7 +118,7 @@ export type TriggerActionRollConditionOption = Static<
 
 export const TriggerProgressRollConditionOption = Type.Object(
 	{
-		using: Type.Ref(ProgressType)
+		using: Type.Ref(Progress.ProgressType)
 	},
 	{ $id: '#/$defs/TriggerProgressRollConditionOption' }
 )
@@ -236,7 +243,12 @@ export const MoveOutcomes = Type.Object(
 		weak_hit: Type.Ref(MoveOutcome),
 		strong_hit: Type.Ref(MoveOutcomeMatchable)
 	},
-	{ $id: '#/$defs/MoveOutcomes' }
+	{
+		$id: '#/$defs/MoveOutcomes',
+		description: `Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+
+  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.`
+	}
 )
 export type MoveOutcomes = Static<typeof MoveOutcomes>
 
@@ -252,7 +264,9 @@ const MoveBase = Type.Object({
 			pattern: /.*\.{3}/.source
 		})
 	}),
-	text: Type.Ref(Localize.MarkdownString),
+	text: Type.Ref(Localize.MarkdownString, {
+		description: 'The complete rules text of the move.'
+	}),
 	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
 	oracles: Type.Optional(
 		Type.Array(Type.Ref(ID.OracleTableID), {

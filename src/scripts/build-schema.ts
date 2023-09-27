@@ -1,10 +1,11 @@
 import { cloneDeep } from 'lodash'
-import { Assets, Enum, ID, Localize, Moves, Oracles, Metadata } from 'schema'
+import { Assets, ID, Localize, Moves, Oracles, Metadata } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
 import { SourcebookClassic, SourcebookStarforged } from 'schema/sourcebooks'
 import { prepareInputSchema, prepareSchema } from './transform-schema'
+import { Player, Progress } from 'schema/common'
 
 export const DATASWORN_VERSION = '2.0.0-dev'
 export const DATAFORGED_VERSION = '2.0.0-dev'
@@ -24,10 +25,11 @@ export const Dataforged = prepareSchema(
 			...ID,
 			...Metadata,
 			...Localize,
-			...Enum,
+			...Progress,
 			...Oracles,
 			...Moves,
 			...Assets,
+			...Player,
 			...RulesetStarforged
 		})
 	})
@@ -55,10 +57,11 @@ export const Datasworn = prepareSchema(
 			...ID,
 			...Metadata,
 			...Localize,
-			...Enum,
+			...Progress,
 			...Oracles,
 			...Moves,
 			...Assets,
+			...Player,
 			...RulesetClassic
 		})
 	})
