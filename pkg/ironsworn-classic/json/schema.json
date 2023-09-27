@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "https://ironswornrpg.com/starforged.schema.json",
-	"title": "Dataforged v2.0.0-dev",
-	"description": "Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.",
+	"$id": "https://ironswornrpg.com/classic.schema.json",
+	"title": "Datasworn v2.0.0-dev",
+	"description": "Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
 	"$defs": {
 		"EncounterClassicID": {
 			"$id": "#/$defs/EncounterClassicID",
@@ -1802,22 +1802,807 @@
 			},
 			"required": ["id", "label", "field_type", "choices"]
 		},
-		"EncounterNatureStarforged": {
-			"examples": [
-				"creature",
-				"horror",
-				"human",
-				"machine",
-				"monster",
-				"vehicle"
+		"DelveSite": {
+			"$id": "#/$defs/DelveSite",
+			"description": "A delve site with a theme, domain, and denizen table.",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/DelveSiteID" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"theme": { "$ref": "#/$defs/DelveSiteThemeID" },
+				"domain": { "$ref": "#/$defs/DelveSiteDomainID" },
+				"extra_card": {
+					"description": "An additional theme or domain card for use with optional rules in Ironsworn: Delve.",
+					"anyOf": [
+						{ "$ref": "#/$defs/DelveSiteThemeID" },
+						{ "$ref": "#/$defs/DelveSiteDomainID" }
+					]
+				},
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"denizens": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": { "$ref": "#/$defs/DelveSiteDenizen" }
+						},
+						{
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 1, "type": "number" },
+										"high": { "const": 27, "type": "number" },
+										"frequency": { "const": "very_common", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 28, "type": "number" },
+										"high": { "const": 41, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 42, "type": "number" },
+										"high": { "const": 55, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 56, "type": "number" },
+										"high": { "const": 69, "type": "number" },
+										"frequency": { "const": "common", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 70, "type": "number" },
+										"high": { "const": 75, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 76, "type": "number" },
+										"high": { "const": 81, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 82, "type": "number" },
+										"high": { "const": 87, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 88, "type": "number" },
+										"high": { "const": 93, "type": "number" },
+										"frequency": { "const": "uncommon", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 94, "type": "number" },
+										"high": { "const": 95, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 96, "type": "number" },
+										"high": { "const": 97, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 98, "type": "number" },
+										"high": { "const": 99, "type": "number" },
+										"frequency": { "const": "rare", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 100, "type": "number" },
+										"high": { "const": 100, "type": "number" },
+										"frequency": { "const": "unforeseen", "type": "string" }
+									},
+									"required": ["low", "high", "frequency"]
+								}
+							],
+							"additionalItems": false,
+							"minItems": 12,
+							"maxItems": 12
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"id",
+				"rank",
+				"theme",
+				"domain",
+				"description",
+				"denizens"
 			],
-			"$id": "#/$defs/EncounterNatureStarforged",
-			"type": "string",
-			"title": "EncounterNatureStarforged"
+			"title": "DelveSite"
 		},
-		"EncounterStarforged": {
-			"$id": "#/$defs/EncounterStarforged",
-			"description": "An encounter entry similar to those in Chapter 4 of Ironsworn: Starforged.",
+		"DelveSiteDenizen": {
+			"$id": "#/$defs/DelveSiteDenizen",
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/$defs/DelveSiteDenizenID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"low": { "minimum": 1, "maximum": 100, "type": "integer" },
+				"high": { "minimum": 1, "maximum": 100, "type": "integer" },
+				"encounter": {
+					"description": "The ID of the relevant encounter, if one is specified.",
+					"$ref": "#/$defs/EncounterClassicID"
+				},
+				"frequency": { "$ref": "#/$defs/DelveSiteDenizenFrequency" }
+			},
+			"required": ["id", "low", "high", "frequency"],
+			"title": "DelveSiteDenizen"
+		},
+		"DelveSiteDenizenFrequency": {
+			"$id": "#/$defs/DelveSiteDenizenFrequency",
+			"enum": ["very_common", "common", "uncommon", "rare", "unforeseen"],
+			"title": "DelveSiteDenizenFrequency"
+		},
+		"DelveSiteDomain": {
+			"$id": "#/$defs/DelveSiteDomain",
+			"title": "Delve site domain",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"id": { "$ref": "#/$defs/DelveSiteDomainID" },
+				"card_type": { "const": "domain", "type": "string" },
+				"name_oracle": {
+					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.",
+					"$ref": "#/$defs/OracleTableID"
+				},
+				"features": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": { "$ref": "#/$defs/DelveSiteDomainFeatureRow" }
+						},
+						{
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 21, "type": "number" },
+										"high": { "const": 43, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 44, "type": "number" },
+										"high": { "const": 56, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 57, "type": "number" },
+										"high": { "const": 64, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 65, "type": "number" },
+										"high": { "const": 68, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 69, "type": "number" },
+										"high": { "const": 72, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 73, "type": "number" },
+										"high": { "const": 76, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 77, "type": "number" },
+										"high": { "const": 80, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 81, "type": "number" },
+										"high": { "const": 84, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 85, "type": "number" },
+										"high": { "const": 88, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 89, "type": "number" },
+										"high": { "const": 98, "type": "number" },
+										"result": { "default": "Something unusual or unexpected" },
+										"suggestions": {
+											"default": {
+												"oracles": [
+													"delve/oracles/feature/aspect",
+													"delve/oracles/feature/focus"
+												]
+											}
+										}
+									},
+									"required": ["low", "high", "result", "suggestions"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 99, "type": "number" },
+										"high": { "const": 99, "type": "number" },
+										"result": { "default": "You transition into a new theme" },
+										"suggestions": {
+											"default": {
+												"oracles": ["delve/oracles/site_nature/theme"]
+											}
+										}
+									},
+									"required": ["low", "high", "result", "suggestions"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 100, "type": "number" },
+										"high": { "const": 100, "type": "number" },
+										"result": { "default": "You transition into a new domain" },
+										"suggestions": {
+											"default": {
+												"oracles": ["delve/oracles/site_nature/domain"]
+											}
+										}
+									},
+									"required": ["low", "high", "result", "suggestions"]
+								}
+							],
+							"additionalItems": false,
+							"minItems": 12,
+							"maxItems": 12
+						}
+					]
+				},
+				"dangers": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": { "$ref": "#/$defs/DelveSiteDomainDangerRow" }
+						},
+						{
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 31, "type": "number" },
+										"high": { "const": 33, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 34, "type": "number" },
+										"high": { "const": 36, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 37, "type": "number" },
+										"high": { "const": 39, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 40, "type": "number" },
+										"high": { "const": 42, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 43, "type": "number" },
+										"high": { "const": 45, "type": "number" }
+									},
+									"required": ["low", "high"]
+								}
+							],
+							"additionalItems": false,
+							"minItems": 5,
+							"maxItems": 5
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"summary",
+				"id",
+				"card_type",
+				"features",
+				"dangers"
+			]
+		},
+		"DelveSiteDomainDangerRow": {
+			"$id": "#/$defs/DelveSiteDomainDangerRow",
+			"type": "object",
+			"properties": {
+				"result": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"rolls": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableRoll" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"embed_table": { "$ref": "#/$defs/OracleTableID" },
+				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"id": { "$ref": "#/$defs/DomainDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
+			},
+			"required": ["result", "id", "low", "high"],
+			"title": "DelveSiteDomainDangerRow"
+		},
+		"DelveSiteDomainFeatureRow": {
+			"$id": "#/$defs/DelveSiteDomainFeatureRow",
+			"type": "object",
+			"properties": {
+				"result": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"rolls": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableRoll" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"embed_table": { "$ref": "#/$defs/OracleTableID" },
+				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"id": { "$ref": "#/$defs/DomainFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
+			},
+			"required": ["result", "id", "low", "high"],
+			"title": "DelveSiteDomainFeatureRow"
+		},
+		"DelveSiteTheme": {
+			"$id": "#/$defs/DelveSiteTheme",
+			"title": "Delve site theme",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"id": { "$ref": "#/$defs/DelveSiteThemeID" },
+				"card_type": { "const": "theme", "type": "string" },
+				"features": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": { "$ref": "#/$defs/DelveSiteThemeFeatureRow" }
+						},
+						{
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 1, "type": "number" },
+										"high": { "const": 4, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 5, "type": "number" },
+										"high": { "const": 8, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 9, "type": "number" },
+										"high": { "const": 12, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 13, "type": "number" },
+										"high": { "const": 16, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 17, "type": "number" },
+										"high": { "const": 20, "type": "number" }
+									},
+									"required": ["low", "high"]
+								}
+							],
+							"additionalItems": false,
+							"minItems": 5,
+							"maxItems": 5
+						}
+					]
+				},
+				"dangers": {
+					"allOf": [
+						{
+							"type": "array",
+							"items": { "$ref": "#/$defs/DelveSiteThemeDangerRow" }
+						},
+						{
+							"type": "array",
+							"items": [
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 1, "type": "number" },
+										"high": { "const": 5, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 6, "type": "number" },
+										"high": { "const": 10, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 11, "type": "number" },
+										"high": { "const": 12, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 13, "type": "number" },
+										"high": { "const": 14, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 15, "type": "number" },
+										"high": { "const": 16, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 17, "type": "number" },
+										"high": { "const": 18, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 19, "type": "number" },
+										"high": { "const": 20, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 21, "type": "number" },
+										"high": { "const": 22, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 23, "type": "number" },
+										"high": { "const": 24, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 25, "type": "number" },
+										"high": { "const": 26, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 27, "type": "number" },
+										"high": { "const": 28, "type": "number" }
+									},
+									"required": ["low", "high"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"low": { "const": 29, "type": "number" },
+										"high": { "const": 30, "type": "number" }
+									},
+									"required": ["low", "high"]
+								}
+							],
+							"additionalItems": false,
+							"minItems": 12,
+							"maxItems": 12
+						}
+					]
+				}
+			},
+			"required": [
+				"name",
+				"source",
+				"summary",
+				"id",
+				"card_type",
+				"features",
+				"dangers"
+			]
+		},
+		"DelveSiteThemeDangerRow": {
+			"$id": "#/$defs/DelveSiteThemeDangerRow",
+			"type": "object",
+			"properties": {
+				"result": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"rolls": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableRoll" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"embed_table": { "$ref": "#/$defs/OracleTableID" },
+				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"id": { "$ref": "#/$defs/ThemeDangerRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
+			},
+			"required": ["result", "id", "low", "high"],
+			"title": "DelveSiteThemeDangerRow"
+		},
+		"DelveSiteThemeFeatureRow": {
+			"$id": "#/$defs/DelveSiteThemeFeatureRow",
+			"type": "object",
+			"properties": {
+				"result": { "$ref": "#/$defs/MarkdownString" },
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"rolls": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableRoll" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"embed_table": { "$ref": "#/$defs/OracleTableID" },
+				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"id": { "$ref": "#/$defs/ThemeFeatureRowID" },
+				"low": { "type": "integer" },
+				"high": { "type": "integer" }
+			},
+			"required": ["result", "id", "low", "high"],
+			"title": "DelveSiteThemeFeatureRow"
+		},
+		"EncounterCollectionClassic": {
+			"$id": "#/$defs/EncounterCollectionClassic",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/EncounterCollectionID" },
+				"augments": {
+					"$ref": "#/$defs/EncounterCollectionID",
+					"description": "Indicates that this collection's content should be inserted into another collection."
+				},
+				"imports": {
+					"macro": true,
+					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
+					"type": "object",
+					"properties": {
+						"from": {
+							"$ref": "#/$defs/EncounterCollectionID",
+							"description": "The collection imported by this collection."
+						},
+						"include": {
+							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
+							"anyOf": [
+								{ "type": "null" },
+								{
+									"type": "array",
+									"items": { "$ref": "#/$defs/EncounterClassicIDWildcard" }
+								}
+							]
+						}
+					},
+					"required": ["from", "include"]
+				},
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterClassic" }
+					}
+				},
+				"member_label": { "$ref": "#/$defs/Label" }
+			},
+			"required": ["name", "source", "id"],
+			"title": "EncounterCollectionClassic"
+		},
+		"EncounterClassic": {
+			"$id": "#/$defs/EncounterClassic",
+			"title": "Encounter (classic)",
+			"description": "An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"features": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"drives": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"tactics": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"id": { "$ref": "#/$defs/EncounterClassicID" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" }
+			},
+			"required": [
+				"name",
+				"source",
+				"features",
+				"description",
+				"quest_starter",
+				"rank",
+				"drives",
+				"tactics",
+				"id"
+			]
+		},
+		"Rarity": {
+			"$id": "#/$defs/Rarity",
+			"description": "A rarity, as described in Ironsworn: Delve.",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/RarityID" },
+				"asset": {
+					"description": "The asset enhanced by this rarity.",
+					"$ref": "#/$defs/AssetID"
+				},
+				"icon": { "$ref": "#/$defs/SVGImageURL" },
+				"xp_cost": {
+					"minimum": 3,
+					"maximum": 5,
+					"default": 3,
+					"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
+					"type": "integer"
+				},
+				"description": { "$ref": "#/$defs/MarkdownString" }
+			},
+			"required": ["name", "source", "id", "asset", "xp_cost", "description"],
+			"title": "Rarity"
+		},
+		"RegionEntry": {
+			"$id": "#/$defs/RegionEntry",
+			"title": "Region entry",
+			"description": "A region entry, like the Ironlands region entries found in classic Ironsworn.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
@@ -1831,24 +2616,7 @@
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"rank": { "$ref": "#/$defs/ChallengeRank" },
-				"drives": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"tactics": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"id": { "$ref": "#/$defs/EncounterStarforgedID" },
-				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" },
-				"variants": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterVariantStarforged" }
-					}
-				}
+				"id": { "$ref": "#/$defs/RegionEntryID" }
 			},
 			"required": [
 				"name",
@@ -1857,30 +2625,13 @@
 				"summary",
 				"description",
 				"quest_starter",
-				"rank",
-				"drives",
-				"tactics",
-				"id",
-				"nature"
-			],
-			"title": "EncounterStarforged"
+				"id"
+			]
 		},
-		"EncounterVariantStarforged": {
-			"$id": "#/$defs/EncounterVariantStarforged",
-			"type": "object",
-			"properties": {
-				"name": { "$ref": "#/$defs/Label" },
-				"rank": { "$ref": "#/$defs/ChallengeRank" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"id": { "$ref": "#/$defs/EncounterStarforgedID" },
-				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" }
-			},
-			"required": ["name", "rank", "description", "id", "nature"],
-			"title": "EncounterVariantStarforged"
-		},
-		"SettingTruth": {
-			"$id": "#/$defs/SettingTruth",
-			"description": "A setting truth category in the format used by Starforged.",
+		"WorldTruth": {
+			"$id": "#/$defs/WorldTruth",
+			"title": "World truth",
+			"description": "A world truth category in the format used by Ironsworn.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
@@ -1889,31 +2640,29 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/SettingTruthOption" }
+					"items": { "$ref": "#/$defs/WorldTruthOption" }
 				},
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
-				"id": { "$ref": "#/$defs/SettingTruthID" }
+				"id": { "$ref": "#/$defs/WorldTruthID" }
 			},
-			"required": ["name", "source", "options", "id"],
-			"title": "SettingTruth"
+			"required": ["name", "source", "options", "id"]
 		},
-		"SettingTruthOption": {
-			"$id": "#/$defs/SettingTruthOption",
+		"WorldTruthOption": {
+			"title": "World truth option",
+			"$id": "#/$defs/WorldTruthOption",
 			"type": "object",
 			"properties": {
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"id": { "$ref": "#/$defs/SettingTruthOptionID" },
-				"summary": { "$ref": "#/$defs/MarkdownString" }
+				"id": { "$ref": "#/$defs/WorldTruthOptionID" }
 			},
-			"required": ["description", "quest_starter", "id", "summary"],
-			"title": "SettingTruthOption"
+			"required": ["description", "quest_starter", "id"]
 		}
 	},
 	"type": "object",
 	"properties": {
 		"id": { "type": "string", "pattern": "^[a-z0-9_]{3,}$" },
-		"ruleset": { "const": "starforged", "type": "string" },
+		"ruleset": { "const": "classic", "type": "string" },
 		"source": { "$ref": "#/$defs/Source" },
 		"oracles": {
 			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
@@ -1937,20 +2686,56 @@
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
-		"encounters": {
-			"description": "A dictionary object containing Starforged-style encounter entries.",
+		"regions": {
+			"description": "A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterStarforged" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/RegionEntry" }
 			}
 		},
-		"setting_truths": {
-			"description": "A dictionary object containing Starforged-style setting truths.",
+		"encounters": {
+			"description": "A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. \"Ironlander\", \"horror\".",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": { "$ref": "#/$defs/SettingTruth" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterCollectionClassic" }
+			}
+		},
+		"rarities": {
+			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Rarity" } }
+		},
+		"delve_sites": {
+			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSite" } }
+		},
+		"site_themes": {
+			"description": "A dictionary object containing delve site themes.",
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSiteTheme" }
+			}
+		},
+		"site_domains": {
+			"description": "A dictionary object containing delve site domains.",
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/DelveSiteDomain" }
+			}
+		},
+		"world_truths": {
+			"description": "A dictionary object of world truth categories, like those presented in classic Ironsworn.",
+			"$comment": "Deserialize as a dictionary object.",
+			"type": "object",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/WorldTruth" }
 			}
 		}
 	},
