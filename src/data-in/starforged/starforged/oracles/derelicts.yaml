@@ -88,6 +88,7 @@ oracles:
         name: Derelict Zones
         _source:
           page: 351
+        summary: &Zones.Summary If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.
         rendering:
           columns:
             starship:
@@ -110,6 +111,7 @@ oracles:
         contents:
           starship:
             name: Starship
+            summary: *Zones.Summary
             rendering:
               style: embed_as_column
             # usage:
@@ -160,6 +162,7 @@ oracles:
                 # game_objects: *obj:DerelictZone.Research
           settlement:
             name: Settlement
+            summary: *Zones.Summary
             rendering:
               style: embed_as_column
             # usage:
@@ -254,6 +257,7 @@ oracles:
         name: Outer First Look
         _source:
           page: 349
+        summary: Use these First Look tables for your initial survey of the derelict.
         # usage:
         #   initial: true
         # content:
@@ -292,6 +296,7 @@ oracles:
             result: Time or reality distortions
       inner_first_look:
         name: Inner First Look
+        summary: Use these First Look tables for your initial survey of the derelict's interior.
         _source:
           page: 349
         # content:

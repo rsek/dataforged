@@ -47,6 +47,18 @@ export type CSSColor = string;
 export type MarkdownString = string;
 export type DiceNotation = string;
 /**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString1 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString2 = string;
+/**
  * Normally, rows will end with two numbers separated by a dash, indicating their dice range.
  *
  * Rows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.
@@ -105,7 +117,7 @@ export type Move =
       id: MoveID;
       name: Label;
       trigger: {
-        text: MarkdownString1;
+        text: MarkdownString3;
       } & TriggerNoRoll;
       text: MarkdownString;
       outcomes?: MoveOutcomes;
@@ -121,7 +133,7 @@ export type Move =
       id: MoveID;
       name: Label;
       trigger: {
-        text: MarkdownString3;
+        text: MarkdownString5;
       } & TriggerActionRoll;
       text: MarkdownString;
       outcomes: MoveOutcomes;
@@ -137,7 +149,7 @@ export type Move =
       id: MoveID;
       name: Label;
       trigger: {
-        text: MarkdownString5;
+        text: MarkdownString7;
       } & TriggerProgressRoll;
       text: MarkdownString;
       outcomes: MoveOutcomes;
@@ -154,20 +166,6 @@ export type Move =
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString1 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString2 = string;
-export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
 export type MarkdownString3 = string;
 /**
  * Localized text, formatted in Markdown.
@@ -175,6 +173,20 @@ export type MarkdownString3 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString4 = string;
+export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
+export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString5 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString6 = string;
 /**
  * `any`: When rolling with this move trigger condition, the player picks which stat to use.
  *
@@ -199,13 +211,13 @@ export type AssetOptionFieldIDWildcard = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString5 = string;
+export type MarkdownString7 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString6 = string;
+export type MarkdownString8 = string;
 export type ProgressType = ProgressTypeClassic | ProgressTypeStarforged;
 export type ProgressTypeClassic =
   | "combat_progress"
@@ -464,8 +476,8 @@ export interface OracleTable {
   suggestions?: Suggestions;
   id: OracleTableID;
   dice: DiceNotation;
-  summary?: MarkdownString;
-  description?: MarkdownString;
+  summary?: MarkdownString1;
+  description?: MarkdownString2;
   match?: MatchBehavior;
   table: OracleTableRow[];
   rendering?: OracleTableRendering;
@@ -574,7 +586,7 @@ export interface MoveCategory {
   };
 }
 export interface TriggerNoRoll {
-  text: MarkdownString2;
+  text: MarkdownString4;
   conditions?: TriggerNoRollCondition[];
 }
 export interface TriggerNoRollCondition {
@@ -609,7 +621,7 @@ export interface MoveOutcome {
   reroll?: MoveReroll;
 }
 export interface TriggerActionRoll {
-  text: MarkdownString4;
+  text: MarkdownString6;
   conditions: TriggerActionRollCondition[];
 }
 export interface TriggerActionRollCondition {
@@ -634,7 +646,7 @@ export interface TriggerActionRollConditionOptionCustomValue {
   value: number;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString6;
+  text: MarkdownString8;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {

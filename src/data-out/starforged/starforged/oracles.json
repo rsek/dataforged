@@ -194,7 +194,7 @@
 				},
 				"backstory_prompts": {
 					"name": "Backstory Prompts",
-					"description": "For some backstory inspiration, roll or pick from the table below. Then, take a moment to elaborate on the suggestion. Or just leave it a bit vague and mysterious for now; you can flesh it out in play.",
+					"summary": "For some backstory inspiration, roll or pick from the table below. Then, take a moment to elaborate on the suggestion. Or just leave it a bit vague and mysterious for now; you can flesh it out in play.",
 					"table": [
 						{
 							"low": 1,
@@ -304,7 +304,7 @@
 				},
 				"starship_history": {
 					"name": "Starship History",
-					"description": "Envision how you obtained or earned this ship. You can come up with your own origin, or roll or pick from the table below. If you use a result from the table, take a moment to consider and elaborate on the suggestion.",
+					"summary": "Envision how you obtained or earned this ship. You can come up with your own origin, or roll or pick from the table below. If you use a result from the table, take a moment to consider and elaborate on the suggestion.",
 					"table": [
 						{
 							"low": 1,
@@ -396,7 +396,7 @@
 				},
 				"starship_quirks": {
 					"name": "Starship Quirks",
-					"description": "Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.",
+					"summary": "Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.",
 					"table": [
 						{
 							"low": 1,
@@ -828,11 +828,11 @@
 		},
 		"characters": {
 			"name": "Characters",
-			"description": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](starforged/oracles/characters/first_look) and [Initial Disposition](starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.",
+			"summary": "Don’t try to build a fully formed understanding character when you first encounter them; instead, focus on what your character learns or perceives as a first impression using oracles such as [First Look](starforged/oracles/characters/first_look) and [Initial Disposition](starforged/oracles/characters/initial_disposition). Then envision or generate additional details over time.",
 			"collections": {
 				"name": {
 					"name": "Character Name",
-					"description": "Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.",
+					"summary": "Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.",
 					"rendering": {
 						"style": "multi_table",
 						"columns": {
@@ -858,7 +858,7 @@
 					"contents": {
 						"given": {
 							"name": "Given Name",
-							"description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
+							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
 								"oracles": [
 									"starforged/oracles/characters/name/callsign",
@@ -1487,7 +1487,7 @@
 						},
 						"callsign": {
 							"name": "Callsign",
-							"description": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
+							"summary": "Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.",
 							"suggestions": {
 								"oracles": [
 									"starforged/oracles/characters/name/given_name",
@@ -1783,7 +1783,7 @@
 								{
 									"low": 48,
 									"high": 48,
-									"result": "Ironclad",
+									"result": "Irodescriptionnclad",
 									"id": "starforged/oracles/characters/name/callsign/48-48"
 								},
 								{
@@ -2116,7 +2116,7 @@
 						},
 						"family_name": {
 							"name": "Family Name",
-							"description": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
+							"summary": "Given and family names can be used independently as standalone names. In many cases you can reverse the order.",
 							"suggestions": {
 								"oracles": [
 									"starforged/oracles/characters/name/given_name",
@@ -3708,7 +3708,7 @@
 				},
 				"revealed_aspect": {
 					"name": "Revealed Character Aspect",
-					"description": "As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.",
+					"summary": "As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.",
 					"table": [
 						{
 							"low": 1,
@@ -8846,6 +8846,7 @@
 				},
 				"zones": {
 					"name": "Derelict Zones",
+					"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 					"rendering": {
 						"columns": {
 							"starship": {
@@ -8868,6 +8869,7 @@
 					"contents": {
 						"starship": {
 							"name": "Starship",
+							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"rendering": {
 								"style": "embed_as_column"
 							},
@@ -8946,6 +8948,7 @@
 						},
 						"settlement": {
 							"name": "Settlement",
+							"summary": "If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.",
 							"rendering": {
 								"style": "embed_as_column"
 							},
@@ -9043,7 +9046,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -9436,7 +9439,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -9805,7 +9808,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -10174,7 +10177,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -10543,7 +10546,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -10912,7 +10915,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -11281,7 +11284,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -11650,7 +11653,7 @@
 					"contents": {
 						"area": {
 							"name": "Area",
-							"description": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
+							"summary": "Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.",
 							"table": [
 								{
 									"low": 1,
@@ -12121,6 +12124,7 @@
 				},
 				"outer_first_look": {
 					"name": "Outer First Look",
+					"summary": "Use these First Look tables for your initial survey of the derelict.",
 					"table": [
 						{
 							"low": 1,
@@ -12200,6 +12204,7 @@
 				},
 				"inner_first_look": {
 					"name": "Inner First Look",
+					"summary": "Use these First Look tables for your initial survey of the derelict's interior.",
 					"table": [
 						{
 							"low": 1,
@@ -17250,7 +17255,7 @@
 			"contents": {
 				"story_complication": {
 					"name": "Story Complication",
-					"description": "This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the [Pay the Price](starforged/moves/fate/pay_the_price) table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.",
+					"summary": "This oracle will introduce narrative turns, troubles, and revelations. It can be used as an alternative to the [Pay the Price](starforged/moves/fate/pay_the_price) table when you encounter a negative outcome at a crucial moment. In particular, you might use this table after rolling matched 10s on the challenge dice.",
 					"table": [
 						{
 							"low": 1,
@@ -17450,7 +17455,7 @@
 				},
 				"story_clue": {
 					"name": "Story Clue",
-					"description": "When you [Gather Information](starforged/moves/adventure/gather_information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](starforged/moves/adventure/gather_information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.",
+					"summary": "When you [Gather Information](starforged/moves/adventure/gather_information) to investigate a mystery, you might uncover clues in the form of messages, rumors, eyewitness reports, data, or physical evidence. You can use this oracle to help reveal what this evidence connects to or implicates. Then, use the outcome of the [Gather Information](starforged/moves/adventure/gather_information) roll—strong hit, weak hit, or miss—to guide whether the clue brings clarity or complications.",
 					"table": [
 						{
 							"low": 1,
@@ -17668,7 +17673,7 @@
 				},
 				"anomaly_effect": {
 					"name": "Anomaly Effect",
-					"description": "Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may have devastating implications, so use it only in rare and dramatic moments.",
+					"summary": "Meddling with alien artifacts or forbidden magic may put you at the mercy of chaos. Use this table to resolve the effects of ancient tech, rituals, or other strange forces. Results on this table may have devastating implications, so use it only in rare and dramatic moments.",
 					"table": [
 						{
 							"low": 1,
@@ -17892,7 +17897,7 @@
 				},
 				"combat_action": {
 					"name": "Combat Action",
-					"description": "Use this oracle to help inspire an action for a foe in a fight. When you’re not sure what an enemy does next, particularly when they have you in a bad spot, roll on this table and interpret the result as appropriate to the nature of the enemy and your objective.",
+					"summary": "Use this oracle to help inspire an action for a foe in a fight. When you’re not sure what an enemy does next, particularly when they have you in a bad spot, roll on this table and interpret the result as appropriate to the nature of the enemy and your objective.",
 					"table": [
 						{
 							"low": 1,
@@ -19102,7 +19107,7 @@
 					"suggestions": {
 						"oracles": ["starforged/oracles/core/descriptor"]
 					},
-					"description": "This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.",
+					"summary": "This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.",
 					"table": [
 						{
 							"low": 1,
@@ -19208,7 +19213,7 @@
 							}
 						}
 					},
-					"description": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
+					"summary": "Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.",
 					"contents": {
 						"lifebearing": {
 							"name": "Lifebearing",
@@ -19734,7 +19739,7 @@
 							}
 						}
 					},
-					"description": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.",
+					"summary": "Choose or roll on this table when you want inspiration for a beneficial encounter or event on a planetside journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.",
 					"contents": {
 						"lifebearing": {
 							"rendering": {
@@ -25956,7 +25961,7 @@
 						},
 						"diversity": {
 							"name": "Diversity",
-							"description": "To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.",
+							"summary": "To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.",
 							"table": [
 								{
 									"low": 1,
@@ -26742,7 +26747,7 @@
 				},
 				"projects": {
 					"name": "Settlement Projects",
-					"description": "Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.",
+					"summary": "Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.",
 					"table": [
 						{
 							"low": 1,
@@ -26972,7 +26977,7 @@
 				},
 				"trouble": {
 					"name": "Settlement Trouble",
-					"description": "Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.",
+					"summary": "Check the Settlement Trouble table when it’s appropriate for your character to know or uncover these details. The Settlement Trouble table provides a broad description of the site’s most dramatic current issue.",
 					"table": [
 						{
 							"low": 1,
@@ -27208,7 +27213,7 @@
 				},
 				"name": {
 					"name": "Settlement Name",
-					"description": "Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.",
+					"summary": "Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.",
 					"table": [
 						{
 							"low": 1,
@@ -28767,7 +28772,7 @@
 							"rendering": {
 								"style": "embed_as_column"
 							},
-							"description": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
+							"summary": "To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.",
 							"suggestions": {
 								"oracles": ["starforged/oracles/space/sector_name/prefix"]
 							},
@@ -29107,7 +29112,7 @@
 			"contents": {
 				"stellar_object": {
 					"name": "Stellar Object",
-					"description": "Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.",
+					"summary": "Use the Stellar Object oracle to learn more about the primary star at a location. This is mostly to help you visualize your surroundings, but the strange or hazardous nature of some rare stars can incite new adventures.",
 					"table": [
 						{
 							"low": 1,
@@ -29205,7 +29210,7 @@
 				},
 				"peril": {
 					"name": "Spaceborne Peril",
-					"description": "Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.",
+					"summary": "Choose or roll on this table when you want inspiration for a trouble during spaceborne exploration or on an interstellar expedition.",
 					"table": [
 						{
 							"low": 1,
@@ -31575,7 +31580,7 @@
 		},
 		"vaults": {
 			"name": "Precursor Vaults",
-			"description": "When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.",
+			"summary": "When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.",
 			"contents": {
 				"location": {
 					"name": "Location",
@@ -32136,7 +32141,7 @@
 			"collections": {
 				"interior": {
 					"name": "Interior",
-					"description": "If you enter the site, check the [Inner First Look](starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.",
+					"summary": "If you enter the site, check the [Inner First Look](starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.",
 					"icon": "icons/vaults/interior.svg",
 					"contents": {
 						"first_look": {
@@ -32871,12 +32876,12 @@
 				},
 				"sanctum": {
 					"name": "Sanctum",
-					"description": "As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.",
+					"summary": "As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.",
 					"icon": "icons/vaults/sanctum.svg",
 					"contents": {
 						"purpose": {
 							"name": "Vault Purpose",
-							"description": "Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.",
+							"summary": "Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.",
 							"table": [
 								{
 									"low": 1,

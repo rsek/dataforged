@@ -170,8 +170,18 @@ export const OracleTable = Abstract.SourcedNode(
 	{
 		id: Type.Ref(ID.OracleTableID),
 		dice: Type.Ref(DiceNotation, { default: '1d100' }),
-		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		summary: Type.Optional(
+			Type.Ref(Localize.MarkdownString, {
+				description:
+					'A brief summary of the oracle table\'s intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.'
+			})
+		),
+		description: Type.Optional(
+			Type.Ref(Localize.MarkdownString, {
+				description:
+					'A longer description of the oracle table\'s intended usage, which might include multiple paragraphs. If it\'s only a couple sentences, use the "summary" key instead.'
+			})
+		),
 		match: Type.Optional(Type.Ref(OracleTableMatchBehavior)),
 		table: Type.Array(Type.Ref(OracleTableRow)),
 		rendering: Type.Optional(Type.Ref(OracleTableRendering))

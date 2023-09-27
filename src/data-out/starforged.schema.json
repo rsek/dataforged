@@ -706,8 +706,14 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/OracleTableID" },
 				"dice": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
+				"summary": {
+					"description": "A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"description": {
+					"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the \"summary\" key instead.",
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"match": { "$ref": "#/$defs/OracleTableMatchBehavior" },
 				"table": {
 					"type": "array",
