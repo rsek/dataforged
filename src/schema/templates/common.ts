@@ -20,7 +20,7 @@ export function PrecursorVaultRow(
 ) {
 	let resultText = 'Precursor Vault'
 	if (location != null) resultText += ` (${location.toLowerCase()})`
-	const result = `[${resultText}](starforged/collections/oracles/vault)`
+	const result = `[${resultText}](id:starforged/collections/oracles/vault)`
 	return Abstract.StaticRowStub({ low, high, result })
 }
 
@@ -36,7 +36,7 @@ export function DescriptorFocusRow({
 			low,
 			high,
 			result:
-				'[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+				'[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
 		},
 		{
 			rolls: [
@@ -53,7 +53,7 @@ export function ActionThemeRow({ low, high }: { low: number; high: number }) {
 			low,
 			high,
 			result:
-				'[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+				'[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
 		},
 		{
 			rolls: [

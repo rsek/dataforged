@@ -20,7 +20,7 @@ oracles:
           area:
             name: Area
             summary: &Area.Summary |-
-              Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
+              Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
             table:
               - low: 1
                 high: 50
@@ -110,7 +110,7 @@ oracles:
                 result: Wrecked passage or debris
               - low: 96
                 high: 100
-                result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls:
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
@@ -151,7 +151,7 @@ oracles:
               - &Peril.ActionTheme
                 low: 91
                 high: 98
-                result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
@@ -167,7 +167,7 @@ oracles:
           opportunity:
             name: Opportunity
             summary: &Opportunity.summary |-
-              Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
+              Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
             table:
               - low: 1
                 high: 20
@@ -231,7 +231,7 @@ oracles:
               - &Area.NewZoneViaAccess
                 low: 86
                 high: 100
-                result: New zone via [Access](starforged/collections/oracles/derelicts/access)
+                result: New zone via [Access](id:starforged/collections/oracles/derelicts/access)
           feature:
             name: Feature
             summary: *Feature.summary
@@ -272,7 +272,7 @@ oracles:
               - &Feature.DescriptorFocus
                 low: 89
                 high: 100
-                result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls:
                   - oracle: starforged/oracles/core/descriptor
                     auto: true

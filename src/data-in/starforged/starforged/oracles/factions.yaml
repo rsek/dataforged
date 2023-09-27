@@ -30,22 +30,22 @@ oracles:
             table:
               - low: 1
                 high: 40
-                result: '[[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]'
+                result: '[[Legacy](id:starforged/oracles/factions/legacy)] [[Affiliation](id:starforged/oracles/factions/affiliation)]'
                 template:
                   result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
               - low: 41
                 high: 55
-                result: '[[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]'
+                result: '[[Legacy](id:starforged/oracles/factions/legacy)] [[Identity](id:starforged/oracles/factions/identity)]'
                 template:
                   result: '{{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
               - low: 56
                 high: 70
-                result: '[[Identity](starforged/oracles/factions/identity)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Affiliation](starforged/oracles/factions/affiliation)]'
+                result: '[[Identity](id:starforged/oracles/factions/identity)] *of the* [[Legacy](id:starforged/oracles/factions/legacy)] [[Affiliation](id:starforged/oracles/factions/affiliation)]'
                 template:
                   result: '{{result:starforged/oracles/factions/identity}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/affiliation}}'
               - low: 71
                 high: 100
-                result: '[[Affiliation](starforged/oracles/factions/affiliation)] *of the* [[Legacy](starforged/oracles/factions/legacy)] [[Identity](starforged/oracles/factions/identity)]'
+                result: '[[Affiliation](id:starforged/oracles/factions/affiliation)] *of the* [[Legacy](id:starforged/oracles/factions/legacy)] [[Identity](id:starforged/oracles/factions/identity)]'
                 template:
                   result: '{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
           legacy:
@@ -455,7 +455,7 @@ oracles:
         table:
           - low: 1
             high: 40
-            result: '[Dominion](starforged/oracles/factions/dominion)'
+            result: '[Dominion](id:starforged/oracles/factions/dominion)'
             summary: 'Governing power'
             rolls:
               - oracle: starforged/oracles/factions/dominion
@@ -463,14 +463,14 @@ oracles:
             # set_attributes: {faction_type: [dominion]}
           - low: 41
             high: 70
-            result: '[Guild](starforged/oracles/factions/guild)'
+            result: '[Guild](id:starforged/oracles/factions/guild)'
             summary: 'Organization of specialists'
             rolls:
               - oracle: starforged/oracles/factions/guild
             # set_attributes: {faction_type: [guild]}
           - low: 71
             high: 100
-            result: '[Fringe Group](starforged/oracles/factions/fringe_group)'
+            result: '[Fringe Group](id:starforged/oracles/factions/fringe_group)'
             summary: 'Band of outlaws, outcasts, or rogues'
             rolls:
               - oracle: starforged/oracles/factions/fringe_group
@@ -936,7 +936,7 @@ oracles:
             result: Usurp leadership within a rival faction
           - low: 97
             high: 100
-            result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
             rolls:
               - oracle: starforged/oracles/core/action
                 auto: true
@@ -1148,7 +1148,7 @@ oracles:
             result: Work or environment causes mutations
           - low: 97
             high: 100
-            result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
             rolls:
               - oracle: starforged/oracles/core/action
                 auto: true
@@ -1264,7 +1264,7 @@ oracles:
             result: Vulnerable to attack or aggression
           - low: 97
             high: 100
-            result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
             rolls:
               - oracle: starforged/oracles/core/action
                 auto: true

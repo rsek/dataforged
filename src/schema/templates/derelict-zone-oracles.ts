@@ -13,7 +13,7 @@ export const DerelictZoneTemplate = Type.Object({
 			name: Type.String({ default: 'Area' }),
 			summary: Type.String({
 				default:
-					'Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.'
+					'Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.'
 			}),
 			table: Type.Tuple([
 				Abstract.StaticRowStub({ low: 1, high: 8 }),
@@ -34,7 +34,7 @@ export const DerelictZoneTemplate = Type.Object({
 					},
 					{
 						result:
-							'New zone via [Access](starforged/collections/oracles/derelicts/access)'
+							'New zone via [Access](id:starforged/collections/oracles/derelicts/access)'
 					}
 				)
 			])
@@ -84,7 +84,7 @@ export const DerelictZoneTemplate = Type.Object({
 			name: Type.String({ default: 'Opportunity' }),
 			summary: Type.String({
 				default:
-					'Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.'
+					'Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) and find an opportunity.'
 			}),
 			table: OracleTableRows5
 		})

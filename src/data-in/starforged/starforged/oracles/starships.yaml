@@ -164,7 +164,7 @@ oracles:
               - &Mission.30
                 low: 86
                 high: 90
-                result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
@@ -494,7 +494,7 @@ oracles:
           - low: 68
             high: 82
             result: Multipurpose
-            summary: '[Starship Mission](starforged/oracles/starships/mission)'
+            summary: '[Starship Mission](id:starforged/oracles/starships/mission)'
             rolls:
               - oracle: starforged/oracles/starships/mission
               # set_attributes: {starship_type: [multipurpose]}]
@@ -503,7 +503,7 @@ oracles:
             result: Unusual or unknown
           - low: 85
             high: 94
-            result: '[Fleet](starforged/oracles/starships/fleet)'
+            result: '[Fleet](id:starforged/oracles/starships/fleet)'
             rolls:
               - oracle: starforged/oracles/starships/fleet
           - low: 95
@@ -546,7 +546,7 @@ oracles:
             result: Transport and escorts
           - low: 91
             high: 100
-            result: '[Starship Mission](starforged/oracles/starships/mission)'
+            result: '[Starship Mission](id:starforged/oracles/starships/mission)'
             rolls:
               - oracle: starforged/oracles/starships/mission
       initial_contact:
@@ -594,7 +594,7 @@ oracles:
             result: Destroyed
           - low: 96
             high: 100
-            result: '[Derelict](starforged/collections/oracles/derelicts)'
+            result: '[Derelict](id:starforged/collections/oracles/derelicts)'
             # *inherit:Derelict.Starship
       first_look:
         name: First Look
@@ -672,7 +672,7 @@ oracles:
             result: Towing or linked
           - low: 95
             high: 100
-            result: '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+            result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
             rolls:
               - oracle: starforged/oracles/core/descriptor
                 auto: true

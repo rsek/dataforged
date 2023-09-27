@@ -34,7 +34,7 @@ oracles:
         # content:
         #   part_of_speech: [fragment]
         summary: |-
-          Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
+          Use the Space Sightings oracle to introduce a location or encounter on a spaceborne expedition. For example, roll on this table when you [Ask the Oracle](id:starforged/moves/fate/ask_the_oracle) to envision the primary feature of a waypoint as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition). Check your result by referencing the column for your current location: Terminus, Outlands, or Expanse.
         # usage:
         #   allow_duplicates: true
         #   requires:
@@ -53,36 +53,36 @@ oracles:
             table:
               - low: 1
                 high: 15
-                result: &Sighting.0.result '[Stellar Object](starforged/oracles/space/stellar_object)'
+                result: &Sighting.0.result '[Stellar Object](id:starforged/oracles/space/stellar_object)'
                 rolls:
                   - oracle: starforged/oracles/space/stellar_object
               - low: 16
                 high: 35
-                result: &Sighting.1.result '[Planet](starforged/collections/oracles/planets)'
+                result: &Sighting.1.result '[Planet](id:starforged/collections/oracles/planets)'
                 # game_objects: [*obj:Planet]
               - low: 36
                 high: 40
-                result: &Sighting.2.result '[Settlement](starforged/collections/oracles/settlements)'
+                result: &Sighting.2.result '[Settlement](id:starforged/collections/oracles/settlements)'
                 # game_objects: [*obj:Settlement]
               - low: 41
                 high: 47
-                result: &Sighting.3.result '[Starship](starforged/collections/oracles/starships)'
+                result: &Sighting.3.result '[Starship](id:starforged/collections/oracles/starships)'
                 # game_objects: [*obj:Starship]
               - low: 48
                 high: 51
-                result: &Sighting.4.result '[Derelict](starforged/collections/oracles/derelicts)'
+                result: &Sighting.4.result '[Derelict](id:starforged/collections/oracles/derelicts)'
                 # game_objects: [*obj:Derelict]
               - low: 52
                 high: 53
-                result: &Sighting.5.result '[Precursor Vault](starforged/collections/oracles/vaults)'
+                result: &Sighting.5.result '[Precursor Vault](id:starforged/collections/oracles/vaults)'
                 # game_objects: [*obj:Vault]
               - low: 54
                 high: 55
-                result: &Sighting.6.result '[Creature](starforged/collections/oracles/creatures)'
+                result: &Sighting.6.result '[Creature](id:starforged/collections/oracles/creatures)'
                 # game_objects: [*obj:Creature]
               - low: 56
                 high: 60
-                result: &Sighting.7.result '[Descriptor](starforged/oracles/core/descriptor) + [Focus](starforged/oracles/core/focus)'
+                result: &Sighting.7.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls: &Sighting.7.rolls
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
@@ -811,7 +811,7 @@ oracles:
             result: Unsettling sounds or disturbances
           - low: 97
             high: 99
-            result: '[Action](starforged/oracles/core/action) + [Theme](starforged/oracles/core/theme)'
+            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
             rolls:
               - oracle: starforged/oracles/core/action
                 auto: true
@@ -835,7 +835,7 @@ oracles:
         # content:
         #   part_of_speech: [fragment]
         #   tags: [opportunity]
-        summary: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
+        summary: Choose or roll on this table when you want inspiration for a beneficial encounter or event on a spaceborne journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
         table:
           - low: 1
             high: 4

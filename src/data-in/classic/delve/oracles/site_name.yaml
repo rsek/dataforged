@@ -12,17 +12,17 @@ oracles:
     name: Site Name
     summary: Give a site a name or learn more about its characteristics and history.
     description: |-
-      To generate a name for a site, first roll on the [Format](delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](delve/oracles/site_name/description), [Detail](delve/oracles/site_name/detail), [Namesake](delve/oracles/site_name/namesake), and [Place](delve/oracles/site_name/place) oracles.
+      To generate a name for a site, first roll on the [Format](id:delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](id:delve/oracles/site_name/description), [Detail](id:delve/oracles/site_name/detail), [Namesake](id:delve/oracles/site_name/namesake), and [Place](id:delve/oracles/site_name/place) oracles.
 
       If the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.
 
-      If you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) oracles inform your selection of a theme.
+      If you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](id:delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles inform your selection of a theme.
 
       The site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.
 
-      Even without giving a site a name, you can use the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.
+      Even without giving a site a name, you can use the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.
 
-      For example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](classic/moves/fate/ask_the_oracle), using the [Description](delve/oracles/site_name/description) and [Detail](delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”
+      For example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), using the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”
 
       Interpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.
     _source:
@@ -407,7 +407,7 @@ oracles:
         canonical_name: 'Site Name: Namesake'
         name: Namesake
         summary: |-
-          You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
+          You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
         _source:
           page: 209
         table:
@@ -569,84 +569,84 @@ oracles:
         table:
           - low: 1
             high: 6
-            result: '[Barrow](delve/site_domains/barrow)'
+            result: '[Barrow](id:delve/site_domains/barrow)'
             rolls:
               - oracle: &barrowTableID 'delve/oracles/site_name/place/barrow'
                 auto: true
             embed_table: *barrowTableID
           - low: 7
             high: 18
-            result: '[Cavern](delve/site_domains/cavern)'
+            result: '[Cavern](id:delve/site_domains/cavern)'
             rolls:
               - oracle: &cavernTableID 'delve/oracles/site_name/place/cavern'
                 auto: true
             embed_table: *cavernTableID
           - low: 19
             high: 28
-            result: '[Frozen Cavern](delve/site_domains/frozen_cavern)'
+            result: '[Frozen Cavern](id:delve/site_domains/frozen_cavern)'
             rolls:
               - oracle: &frozen_cavernTableID 'delve/oracles/site_name/place/frozen_cavern'
                 auto: true
             embed_table: *frozen_cavernTableID
           - low: 29
             high: 32
-            result: '[Icereach](delve/site_domains/icereach)'
+            result: '[Icereach](id:delve/site_domains/icereach)'
             rolls:
               - oracle: &icereachTableID 'delve/oracles/site_name/place/icereach'
                 auto: true
             embed_table: *icereachTableID
           - low: 33
             high: 38
-            result: '[Mine](delve/site_domains/mine)'
+            result: '[Mine](id:delve/site_domains/mine)'
             rolls:
               - oracle: &mineTableID 'delve/oracles/site_name/place/mine'
                 auto: true
             embed_table: *mineTableID
           - low: 39
             high: 48
-            result: '[Pass](delve/site_domains/pass)'
+            result: '[Pass](id:delve/site_domains/pass)'
             rolls:
               - oracle: &passTableID 'delve/oracles/site_name/place/pass'
                 auto: true
             embed_table: *passTableID
           - low: 49
             high: 58
-            result: '[Ruin](delve/site_domains/ruin)'
+            result: '[Ruin](id:delve/site_domains/ruin)'
             rolls:
               - oracle: &ruinTableID 'delve/oracles/site_name/place/ruin'
                 auto: true
             embed_table: *ruinTableID
           - low: 59
             high: 68
-            result: '[Sea Cave](delve/site_domains/sea_cave)'
+            result: '[Sea Cave](id:delve/site_domains/sea_cave)'
             rolls:
               - oracle: &sea_caveTableID 'delve/oracles/site_name/place/sea_cave'
                 auto: true
             embed_table: *sea_caveTableID
           - low: 69
             high: 78
-            result: '[Shadowfen](delve/site_domains/shadowfen)'
+            result: '[Shadowfen](id:delve/site_domains/shadowfen)'
             rolls:
               - oracle: &shadowfenTableID 'delve/oracles/site_name/place/shadowfen'
                 auto: true
             embed_table: *shadowfenTableID
           - low: 79
             high: 83
-            result: '[Stronghold](delve/site_domains/stronghold)'
+            result: '[Stronghold](id:delve/site_domains/stronghold)'
             rolls:
               - oracle: &strongholdTableID 'delve/oracles/site_name/place/stronghold'
                 auto: true
             embed_table: *strongholdTableID
           - low: 84
             high: 95
-            result: '[Tanglewood](delve/site_domains/tanglewood)'
+            result: '[Tanglewood](id:delve/site_domains/tanglewood)'
             rolls:
               - oracle: &tanglewoodTableID 'delve/oracles/site_name/place/tanglewood'
                 auto: true
             embed_table: *tanglewoodTableID
           - low: 96
             high: 100
-            result: '[Underkeep](delve/site_domains/underkeep)'
+            result: '[Underkeep](id:delve/site_domains/underkeep)'
             rolls:
               - oracle: &underkeepTableID 'delve/oracles/site_name/place/underkeep'
                 auto: true

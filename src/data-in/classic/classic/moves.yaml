@@ -57,11 +57,11 @@ moves:
           On a **weak hit**, you succeed, but face a troublesome cost. Choose one.
 
             * You are delayed, lose advantage, or face a new danger: Suffer -1 momentum.
-            * You are tired or hurt: [Endure Harm](classic/moves/suffer/endure_harm) (1 harm).
-            * You are dispirited or afraid: [Endure Stress](classic/moves/suffer/endure_stress) (1 stress).
+            * You are tired or hurt: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
+            * You are dispirited or afraid: [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).
             * You sacrifice resources: Suffer -1 supply.
 
-          On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: You are successful. Take +1 momentum.
@@ -70,11 +70,11 @@ moves:
               You succeed, but face a troublesome cost. Choose one.
 
                 * You are delayed, lose advantage, or face a new danger: Suffer -1 momentum.
-                * You are tired or hurt: [Endure Harm](classic/moves/suffer/endure_harm) (1 harm).
-                * You are dispirited or afraid: [Endure Stress](classic/moves/suffer/endure_stress) (1 stress).
+                * You are tired or hurt: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
+                * You are dispirited or afraid: [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).
                 * You sacrifice resources: Suffer -1 supply.
           miss:
-            text: You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price).
       secure_an_advantage:
         name: Secure an Advantage
         move_type: action_roll
@@ -119,7 +119,7 @@ moves:
 
           On a **weak hit**, your advantage is short-lived. Take +1 momentum.
 
-          On a **miss**, you fail or your assumptions betray you. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you fail or your assumptions betray you. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
@@ -130,7 +130,7 @@ moves:
           weak_hit:
             text: Your advantage is short-lived. Take +1 momentum.
           miss:
-            text: You fail or your assumptions betray you. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You fail or your assumptions betray you. [Pay the Price](id:classic/moves/fate/pay_the_price).
       gather_information:
         name: Gather Information
         move_type: action_roll
@@ -145,18 +145,18 @@ moves:
         text: |-
           When **you search an area, ask questions, conduct an investigation, or follow a track**, roll +wits. If you act within a community or ask questions of a person with whom you share a bond, add +1.
 
-          On a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and take +2 momentum.
+          On a **strong hit**, you discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +2 momentum.
 
-          On a **weak hit**, the information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
+          On a **weak hit**, the information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
 
-          On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
-            text: You discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and take +2 momentum.
+            text: You discover something helpful and specific. The path you must follow or action you must take to make progress is made clear. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +2 momentum.
           weak_hit:
-            text: The information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
+            text: The information complicates your quest or introduces a new danger. Envision what you discover ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
           miss:
-            text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](id:classic/moves/fate/pay_the_price).
       heal:
         name: Heal
         move_type: action_roll
@@ -180,14 +180,14 @@ moves:
 
           On a **weak hit**, as above, but you must suffer -1 supply or -1 momentum (your choice).
 
-          On a **miss**, your aid is ineffective. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, your aid is ineffective. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: Your care is helpful. If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health.
           weak_hit:
             text: Your care is helpful, but you must suffer -1 supply or -1 momentum (your choice). If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health.
           miss:
-            text: Your aid is ineffective. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: Your aid is ineffective. [Pay the Price](id:classic/moves/fate/pay_the_price).
       resupply:
         name: Resupply
         move_type: action_roll
@@ -206,14 +206,14 @@ moves:
 
           On a **weak hit**, take up to +2 supply, but suffer -1 momentum for each.
 
-          On a **miss**, you find nothing helpful. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you find nothing helpful. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: You bolster your resources. Take +2 supply.
           weak_hit:
             text: Take up to +2 supply, but suffer -1 momentum for each.
           miss:
-            text: You find nothing helpful. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You find nothing helpful. [Pay the Price](id:classic/moves/fate/pay_the_price).
       make_camp:
         name: Make Camp
         move_type: action_roll
@@ -234,9 +234,9 @@ moves:
             * Partake: Suffer -1 supply and take +1 health for you and any companions.
             * Relax: Take +1 spirit.
             * Focus: Take +1 momentum.
-            * Prepare: When you break camp, add +1 if you [Undertake a Journey](classic/moves/adventure/undertake_a_journey).
+            * Prepare: When you break camp, add +1 if you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey).
 
-          On a **miss**, you take no comfort. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you take no comfort. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
@@ -246,7 +246,7 @@ moves:
                 * Partake: Suffer -1 supply and take +1 health for you and any companions.
                 * Relax: Take +1 spirit.
                 * Focus: Take +1 momentum.
-                * Prepare: When you break camp, add +1 if you [Undertake a Journey](classic/moves/adventure/undertake_a_journey).
+                * Prepare: When you break camp, add +1 if you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey).
           weak_hit:
             text: |-
               You and your allies may each choose one.
@@ -255,9 +255,9 @@ moves:
                 * Partake: Suffer -1 supply and take +1 health for you and any companions.
                 * Relax: Take +1 spirit.
                 * Focus: Take +1 momentum.
-                * Prepare: When you break camp, add +1 if you [Undertake a Journey](classic/moves/adventure/undertake_a_journey).
+                * Prepare: When you break camp, add +1 if you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey).
           miss:
-            text: You take no comfort. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You take no comfort. [Pay the Price](id:classic/moves/fate/pay_the_price).
       undertake_a_journey:
         name: Undertake a Journey
         move_type: action_roll
@@ -283,25 +283,25 @@ moves:
 
           Then, for each segment of your journey, roll +wits. If you are setting off from a community with which you share a bond, add +1 to your initial roll.
 
-          On a **strong hit**, you reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Then, choose one.
+          On a **strong hit**, you reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Then, choose one.
 
             * You make good use of your resources: Mark progress.
             * You move at speed: Mark progress and take +1 momentum, but suffer -1 supply.
 
           On a **weak hit**, you reach a waypoint and mark progress, but suffer -1 supply.
 
-          On a **miss**, you are waylaid by a perilous event. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you are waylaid by a perilous event. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
-              You reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Then, choose one.
+              You reach a waypoint. If the waypoint is unknown to you, envision it ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Then, choose one.
 
                 * You make good use of your resources: Mark progress.
                 * You move at speed: Mark progress and take +1 momentum, but suffer -1 supply.
           weak_hit:
             text: You reach a waypoint and mark progress, but suffer -1 supply.
           miss:
-            text: You are waylaid by a perilous event. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You are waylaid by a perilous event. [Pay the Price](id:classic/moves/fate/pay_the_price).
       reach_your_destination:
         name: Reach Your Destination
         move_type: progress_roll
@@ -321,14 +321,14 @@ moves:
             * Make another move now (not a progress move), and add +1.
             * Take +1 momentum.
 
-          On a **weak hit**, you arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+          On a **weak hit**, you arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
 
           On a **miss**, you have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic).
         outcomes:
           miss:
             text: You have gone hopelessly astray, your objective is lost to you, or you were misled about your destination. If your journey continues, clear all but one filled progress, and raise the journey’s rank by one (if not already epic).
           weak_hit:
-            text: You arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+            text: You arrive but face an unforeseen hazard or complication. Envision what you find ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
           strong_hit:
             text: |-
               The situation at your destination favors you. Choose one.
@@ -369,21 +369,21 @@ moves:
             * Threaten or incite: Roll +iron.
             * Lie or swindle: Roll +shadow.
 
-          On a **strong hit**, they’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](classic/moves/adventure/gather_information), make that move now and add +1.
+          On a **strong hit**, they’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](id:classic/moves/adventure/gather_information), make that move now and add +1.
 
-          On a **weak hit**, as above, but they ask something of you in return. Envision what they want ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+          On a **weak hit**, as above, but they ask something of you in return. Envision what they want ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
 
-          On a **miss**, they refuse or make a demand which costs you greatly. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, they refuse or make a demand which costs you greatly. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
-            text: They’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](classic/moves/adventure/gather_information), make that move now and add +1.
+            text: They’ll do what you want or share what they know. Take +1 momentum. If you use this exchange to [Gather Information](id:classic/moves/adventure/gather_information), make that move now and add +1.
           weak_hit:
             text: |-
-              They’ll do what you want or share what they know... but they ask something of you in return. Envision what they want ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+              They’ll do what you want or share what they know... but they ask something of you in return. Envision what they want ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
 
-              Take +1 momentum. If you use this exchange to [Gather Information](classic/moves/adventure/gather_information), make that move now and add +1.
+              Take +1 momentum. If you use this exchange to [Gather Information](id:classic/moves/adventure/gather_information), make that move now and add +1.
           miss:
-            text: They refuse or make a demand which costs you greatly. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: They refuse or make a demand which costs you greatly. [Pay the Price](id:classic/moves/fate/pay_the_price).
       sojourn:
         name: Sojourn
         move_type: action_roll
@@ -415,9 +415,9 @@ moves:
 
           **Provide Aid**
 
-            * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) and add +1.
+            * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) and add +1.
 
-          On a **miss**, you find no help here. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you find no help here. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
@@ -440,7 +440,7 @@ moves:
 
               **Provide Aid**
 
-                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) and add +1.
+                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) and add +1.
           weak_hit:
             text: |-
               You and your allies may each choose one from within the categories below.
@@ -462,9 +462,9 @@ moves:
 
               **Provide Aid**
 
-                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) and add +1.
+                * Take a quest: Envision what this community needs, or what trouble it is facing ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you chose to help, [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) and add +1.
           miss:
-            text: You find no help here. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You find no help here. [Pay the Price](id:classic/moves/fate/pay_the_price).
       draw_the_circle:
         name: Draw the Circle
         move_type: action_roll
@@ -486,10 +486,10 @@ moves:
             * Grant first strike: Your foe has initiative.
             * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.
             * Hold no iron: Take no benefit of weapons; your harm is 1.
-            * Bloody yourself: [Endure Harm](classic/moves/suffer/endure_harm) (1 harm).
+            * Bloody yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
             * To the death: One way or another, this fight must end with death.
 
-          On a **miss**, you begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](classic/moves/fate/pay_the_price). Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
+          On a **miss**, you begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](id:classic/moves/fate/pay_the_price). Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
         outcomes:
           strong_hit:
             text: |-
@@ -498,7 +498,7 @@ moves:
                 * Grant first strike: Your foe has initiative.
                 * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.
                 * Hold no iron: Take no benefit of weapons; your harm is 1.
-                * Bloody yourself: [Endure Harm](classic/moves/suffer/endure_harm) (1 harm).
+                * Bloody yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
                 * To the death: One way or another, this fight must end with death.
 
               Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
@@ -509,13 +509,13 @@ moves:
                 * Grant first strike: Your foe has initiative.
                 * Bare yourself: Take no benefit of armor or shield; your foe’s harm is +1.
                 * Hold no iron: Take no benefit of weapons; your harm is 1.
-                * Bloody yourself: [Endure Harm](classic/moves/suffer/endure_harm) (1 harm).
+                * Bloody yourself: [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm).
                 * To the death: One way or another, this fight must end with death.
 
               Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
           miss:
             text: |-
-              You begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](classic/moves/fate/pay_the_price).
+              You begin the duel at a disadvantage. Your foe has initiative. [Pay the Price](id:classic/moves/fate/pay_the_price).
 
               Then, make moves to resolve the fight. If you are the victor, you may make a lawful demand, and your opponent must comply or forfeit their honor and standing. If you refuse the challenge, surrender, or are defeated, they make a demand of you.
       forge_a_bond:
@@ -530,16 +530,16 @@ moves:
         _source:
           page: 74
         text: |-
-          When **you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause**, you can attempt to create a bond. When you do, roll +heart. If you make this move after you successfully [Fulfill Your Vow](classic/moves/quest/fulfill_your_vow) to their benefit, you may reroll any dice.
+          When **you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause**, you can attempt to create a bond. When you do, roll +heart. If you make this move after you successfully [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) to their benefit, you may reroll any dice.
 
           On a **strong hit**, make note of the bond, mark a tick on your bond progress track, and choose one.
 
             * Take +1 spirit.
             * Take +2 momentum.
 
-          On a **weak hit**, they ask something more of you first. Envision what it is ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), do it (or [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow)), and mark the bond. If you refuse or fail, [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **weak hit**, they ask something more of you first. Envision what it is ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), do it (or [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow)), and mark the bond. If you refuse or fail, [Pay the Price](id:classic/moves/fate/pay_the_price).
 
-          On a **miss**, they reject you. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, they reject you. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
@@ -549,10 +549,10 @@ moves:
                 * Take +2 momentum.
           weak_hit:
             text: |-
-              They ask something more of you first. Envision what it is ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), do it (or [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow)), and mark the bond. If you refuse or fail, [Pay the Price](classic/moves/fate/pay_the_price).
+              They ask something more of you first. Envision what it is ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), do it (or [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow)), and mark the bond. If you refuse or fail, [Pay the Price](id:classic/moves/fate/pay_the_price).
           miss:
             text: |-
-              They reject you. [Pay the Price](classic/moves/fate/pay_the_price).
+              They reject you. [Pay the Price](id:classic/moves/fate/pay_the_price).
       test_your_bond:
         name: Test Your Bond
         move_type: action_roll
@@ -572,9 +572,9 @@ moves:
             * Take +1 spirit.
             * Take +2 momentum.
 
-          On a **weak hit**, your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and do it (or [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow)). If you refuse or fail, clear the bond and [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **weak hit**, your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and do it (or [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow)). If you refuse or fail, clear the bond and [Pay the Price](id:classic/moves/fate/pay_the_price).
 
-          On a **miss**, or if you have no interest in maintaining this relationship, clear the bond and [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, or if you have no interest in maintaining this relationship, clear the bond and [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: |-
@@ -584,18 +584,18 @@ moves:
                 * Take +2 momentum.
           weak_hit:
             text: |-
-              Your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and do it (or [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow)). If you refuse or fail, clear the bond and [Pay the Price](classic/moves/fate/pay_the_price).
+              Your bond is fragile and you must prove your loyalty. Envision what they ask of you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and do it (or [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow)). If you refuse or fail, clear the bond and [Pay the Price](id:classic/moves/fate/pay_the_price).
           miss:
             text: |-
-              Clear the bond and [Pay the Price](classic/moves/fate/pay_the_price).
+              Clear the bond and [Pay the Price](id:classic/moves/fate/pay_the_price).
       aid_your_ally:
         name: Aid Your Ally
         _source:
           page: 76
         move_type: no_roll
         trigger:
-          text: When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally...
-        text: When **you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
+          text: When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) in direct support of an ally...
+        text: When **you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) in direct support of an ally**, and score a hit, they (instead of you) can take the benefits of the move. If you are in combat and score a strong hit, you and your ally have initiative.
         # TODO: forward to another move ID?
       write_your_epilogue:
         name: Write Your Epilogue
@@ -613,14 +613,14 @@ moves:
 
           On a **strong hit**, things come to pass as you hoped.
 
-          On a **weak hit**, your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+          On a **weak hit**, your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
 
           On a **miss**, your fears are realized.
         outcomes:
           strong_hit:
             text: Things come to pass as you had hoped.
           weak_hit:
-            text: Your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+            text: Your life takes an unexpected turn, but not necessarily for the worse. You find yourself spending your days with someone or in a place you did not foresee. Envision it ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
           miss:
             text: Your fears are realized.
   combat:
@@ -672,7 +672,7 @@ moves:
             * Bolster your position: Take +2 momentum.
             * Prepare to act: Take initiative.
 
-          On a **miss**, combat begins with you at a disadvantage. [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+          On a **miss**, combat begins with you at a disadvantage. [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
         outcomes:
           strong_hit:
             text: Take +2 momentum. You have initiative.
@@ -683,7 +683,7 @@ moves:
                 * Bolster your position: Take +2 momentum.
                 * Prepare to act: Take initiative.
           miss:
-            text: Combat begins with you at a disadvantage. [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+            text: Combat begins with you at a disadvantage. [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
       strike:
         name: Strike
         move_type: action_roll
@@ -707,14 +707,14 @@ moves:
 
           On a **weak hit**, inflict your harm and lose initiative.
 
-          On a **miss**, your attack fails and you must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+          On a **miss**, your attack fails and you must [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
         outcomes:
           strong_hit:
             text: Inflict +1 harm. You retain initiative.
           weak_hit:
             text: Inflict your harm and lose initiative.
           miss:
-            text: Your attack fails and you must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+            text: Your attack fails and you must [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
       clash:
         name: Clash
         move_type: action_roll
@@ -739,9 +739,9 @@ moves:
             * You bolster your position: Take +1 momentum.
             * You find an opening: Inflict +1 harm.
 
-          On a **weak hit**, inflict your harm, but then [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+          On a **weak hit**, inflict your harm, but then [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
 
-          On a **miss**, you are outmatched and must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+          On a **miss**, you are outmatched and must [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
         outcomes:
           strong_hit:
             text: |-
@@ -750,9 +750,9 @@ moves:
                 * You bolster your position: Take +1 momentum.
                 * You find an opening: Inflict +1 harm.
           weak_hit:
-            text: Inflict your harm, but then [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+            text: Inflict your harm, but then [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
           miss:
-            text: You are outmatched and must [Pay the Price](classic/moves/fate/pay_the_price). Your foe has initiative.
+            text: You are outmatched and must [Pay the Price](id:classic/moves/fate/pay_the_price). Your foe has initiative.
       turn_the_tide:
         name: Turn the Tide
         move_type: no_roll
@@ -760,7 +760,7 @@ moves:
           text: Once per fight, when you risk it all...
         _source:
           page: 81
-        text: Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](classic/moves/fate/pay_the_price).
+        text: Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](id:classic/moves/fate/pay_the_price).
       end_the_fight:
         name: End the Fight
         move_type: progress_roll
@@ -775,35 +775,35 @@ moves:
         text: |-
           When **you make a move to take decisive action**, and score a strong hit, you may resolve the outcome of this fight. If you do, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
 
-          On a **strong hit**, this foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+          On a **strong hit**, this foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
 
           On a **weak hit**, as above, but you must also choose one.
 
-            * It’s worse than you thought: [Endure Harm](classic/moves/suffer/endure_harm).
-            * You are overcome: [Endure Stress](classic/moves/suffer/endure_stress).
+            * It’s worse than you thought: [Endure Harm](id:classic/moves/suffer/endure_harm).
+            * You are overcome: [Endure Stress](id:classic/moves/suffer/endure_stress).
             * Your victory is short-lived: A new danger or foe appears, or an existing danger worsens.
             * You suffer collateral damage: Something of value is lost or broken, or someone important must pay the cost.
             * You’ll pay for it: An objective falls out of reach.
             * Others won’t forget: You are marked for vengeance.
 
-          On a **miss**, you have lost this fight. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you have lost this fight. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
-            text: This foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+            text: This foe is no longer in the fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
           weak_hit:
             text: |-
               This foe is no longer in the fight... but you must also choose one.
 
-                * It’s worse than you thought: [Endure Harm](classic/moves/suffer/endure_harm).
-                * You are overcome: [Endure Stress](classic/moves/suffer/endure_stress).
+                * It’s worse than you thought: [Endure Harm](id:classic/moves/suffer/endure_harm).
+                * You are overcome: [Endure Stress](id:classic/moves/suffer/endure_stress).
                 * Your victory is short-lived: A new danger or foe appears, or an existing danger worsens.
                 * You suffer collateral damage: Something of value is lost or broken, or someone important must pay the cost.
                 * You’ll pay for it: An objective falls out of reach.
                 * Others won’t forget: You are marked for vengeance.
 
-              The foe is killed, out of action, flees, or surrenders as appropriate to the situation and your intent ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure).
+              The foe is killed, out of action, flees, or surrenders as appropriate to the situation and your intent ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).
           miss:
-            text: You have lost this fight. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You have lost this fight. [Pay the Price](id:classic/moves/fate/pay_the_price).
       battle:
         name: Battle
         move_type: action_roll
@@ -843,16 +843,16 @@ moves:
 
           On a **strong hit**, you achieve your objective unconditionally. Take +2 momentum.
 
-          On a **weak hit**, you achieve your objective, but not without cost. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **weak hit**, you achieve your objective, but not without cost. [Pay the Price](id:classic/moves/fate/pay_the_price).
 
-          On a **miss**, you are defeated and the objective is lost to you. [Pay the Price](classic/moves/fate/pay_the_price).
+          On a **miss**, you are defeated and the objective is lost to you. [Pay the Price](id:classic/moves/fate/pay_the_price).
         outcomes:
           strong_hit:
             text: You achieve your objective unconditionally. Take +2 momentum.
           weak_hit:
-            text: You achieve your objective, but not without cost. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You achieve your objective, but not without cost. [Pay the Price](id:classic/moves/fate/pay_the_price).
           miss:
-            text: You are defeated and the objective is lost to you. [Pay the Price](classic/moves/fate/pay_the_price).
+            text: You are defeated and the objective is lost to you. [Pay the Price](id:classic/moves/fate/pay_the_price).
   suffer:
     name: Suffer moves
     _source:
@@ -921,7 +921,7 @@ moves:
           On a **weak hit**, choose one.
 
             * You die, but not before making a noble sacrifice. Envision your final moments.
-            * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
+            * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
 
           On a **miss**, you are dead.
         outcomes:
@@ -932,7 +932,7 @@ moves:
               Choose one.
 
                 * You die, but not before making a noble sacrifice. Envision your final moments.
-                * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
+                * Death desires something of you in exchange for your life. Envision what it wants ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to complete that quest. If you fail to score a hit when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing the quest.
           miss:
             text: You are dead.
       companion_endure_harm:
@@ -1028,7 +1028,7 @@ moves:
           On a **weak hit**, choose one.
 
             * Your spirit or sanity breaks, but not before you make a noble sacrifice. Envision your final moments.
-            * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
+            * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
 
           On a **miss**, you succumb to despair or horror and are lost.
         outcomes:
@@ -1039,7 +1039,7 @@ moves:
               Choose one.
 
                 * Your spirit or sanity breaks, but not before you make a noble sacrifice. Envision your final moments.
-                * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
+                * You see a vision of a dreaded event coming to pass. Envision that dark future ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) (formidable or extreme) to prevent it. If you fail to score a hit when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow), or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest.
           miss:
             text: You succumb to despair or horror and are lost.
       out_of_supply:
@@ -1061,7 +1061,7 @@ moves:
           When **your momentum is at its minimum** (-6), and you suffer additional -momentum, choose one.
 
             * Exchange each additional -momentum for any combination of -health, -spirit, or -supply as appropriate to the circumstances.
-            * Envision an event or discovery ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
+            * Envision an event or discovery ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
   quest:
     name: Quest moves
     _source:
@@ -1083,25 +1083,25 @@ moves:
         text: |-
           When **you swear upon iron to complete a quest**, write your vow and give the quest a rank. Then, roll +heart. If you make this vow to a person or community with whom you share a bond, add +1.
 
-          On a **strong hit**, you are emboldened and it is clear what you must do next ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Take +2 momentum.
+          On a **strong hit**, you are emboldened and it is clear what you must do next ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Take +2 momentum.
 
           On a **weak hit**, you are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
 
-          On a **miss**, you face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and choose one.
+          On a **miss**, you face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and choose one.
 
             * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.
-            * You give up: [Forsake Your Vow](classic/moves/quest/forsake_your_vow).
+            * You give up: [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).
         outcomes:
           strong_hit:
-            text: You are emboldened and it is clear what you must do next ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Take +2 momentum.
+            text: You are emboldened and it is clear what you must do next ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Take +2 momentum.
           weak_hit:
             text: You are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
           miss:
             text: |-
-              You face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and choose one.
+              You face a significant obstacle before you can begin your quest. Envision what stands in your way ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and choose one.
 
                 * You press on: Suffer -2 momentum, and do what you must to overcome this obstacle.
-                * You give up: [Forsake Your Vow](classic/moves/quest/forsake_your_vow).
+                * You give up: [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).
       reach_a_milestone:
         name: Reach a Milestone
         move_type: no_roll
@@ -1133,23 +1133,23 @@ moves:
 
           On a **strong hit**, your quest is complete. Mark experience (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5).
 
-          On a **weak hit**, there is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) to set things right. If you do, add +1.
+          On a **weak hit**, there is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to set things right. If you do, add +1.
 
-          On a **miss**, your quest is undone. Envision what happens ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and choose one.
+          On a **miss**, your quest is undone. Envision what happens ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and choose one.
 
             * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).
-            * You give up: [Forsake Your Vow](classic/moves/quest/forsake_your_vow).
+            * You give up: [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).
         outcomes:
           strong_hit:
             text: Your quest is complete. Mark experience (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5).
           weak_hit:
-            text: There is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) to set things right. If you do, add +1.
+            text: There is more to be done or you realize the truth of your quest. Envision what you discover ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). Then, mark experience (troublesome=0; dangerous=1; formidable=2; extreme=3; epic=4). You may [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to set things right. If you do, add +1.
           miss:
             text: |-
-              Your quest is undone. Envision what happens ([Ask the Oracle](classic/moves/fate/ask_the_oracle) if unsure), and choose one.
+              Your quest is undone. Envision what happens ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and choose one.
 
                 * You recommit: Clear all but one filled progress, and raise the quest’s rank by one (if not already epic).
-                * You give up: [Forsake Your Vow](classic/moves/quest/forsake_your_vow).
+                * You give up: [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).
       forsake_your_vow:
         name: Forsake Your Vow
         _source:
@@ -1157,7 +1157,7 @@ moves:
         move_type: no_roll
         trigger:
           text: When you renounce your quest, betray your promise, or the goal is lost to you...
-        text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](classic/moves/suffer/endure_stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
+        text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](id:classic/moves/suffer/endure_stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
       advance:
         name: Advance
         _source:
@@ -1194,7 +1194,7 @@ moves:
           When **you suffer the outcome of a move**, choose one.
 
             * Make the most obvious negative outcome happen.
-            * Envision two negative outcomes. Rate one as ‘likely’, and [Ask the Oracle](classic/moves/fate/ask_the_oracle) using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.
+            * Envision two negative outcomes. Rate one as ‘likely’, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) using the yes/no table. On a ‘yes’, make that outcome happen. Otherwise, make it the other.
             * Roll on the following table. If you have difficulty interpreting the result to fit the current situation, roll again.
 
           {{table:classic/oracles/moves/pay_the_price}}
