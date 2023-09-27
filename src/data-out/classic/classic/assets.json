@@ -31,87 +31,18 @@
 						{
 							"name": "Eager",
 							"text": "When your cat chases down big game, you may [Resupply](classic/moves/adventure/resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/resupply"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When your cat chases down big game",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												]
-											}
-										]
-									},
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 supply or +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/cave_lion/abilities/0"
 						},
 						{
 							"name": "Inescapable",
 							"text": "When you [Enter the Fray](classic/moves/combat/enter_the_fray) or [Strike](classic/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/enter_the_fray",
-										"classic/moves/combat/strike"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sending your cat to attack",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												]
-											}
-										]
-									},
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +2 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +2 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/cave_lion/abilities/1"
 						},
 						{
 							"name": "Protective",
 							"text": "When you [Make Camp](classic/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/make_camp"],
-									"text": "Your cat is alert to trouble.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum."
-										}
-									},
-									"move_type": "action_roll"
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/cave_lion/abilities/2"
 						}
@@ -153,90 +84,18 @@
 						{
 							"name": "Discreet",
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sending your spider to scout a place"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/giant_spider/abilities/0"
 						},
 						{
 							"name": "Soul-Piercing",
 							"text": "You may [Face Danger](classic/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](classic/moves/adventure/gather_information) and reroll any dice.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/face_danger"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sending your spider to secretly study someone",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												]
-											}
-										]
-									},
-									"outcomes": {
-										"strong_hit": {
-											"text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](classic/moves/adventure/gather_information) and reroll any dice."
-										},
-										"weak_hit": {
-											"text": "The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](classic/moves/adventure/gather_information) and reroll any dice."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/giant_spider/abilities/1"
 						},
 						{
 							"name": "Ensnaring",
 							"text": "When your spider sets a trap, add +1 as you [Enter the Fray](classic/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/combat/enter_the_fray"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When your spider sets a trap",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Also inflict 2 harm."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/giant_spider/abilities/2"
 						}
@@ -245,7 +104,7 @@
 						"label": "health",
 						"max": 4,
 						"min": 0,
-						"value": 0,
+						"value": 4,
 						"id": "classic/assets/companion/giant_spider/condition_meter"
 					},
 					"count_as_impact": false,
@@ -285,99 +144,18 @@
 						{
 							"name": "Far-seeing",
 							"text": "When you [Undertake a Journey](classic/moves/adventure/undertake_a_journey), or when you [Resupply](classic/moves/adventure/resupply) by hunting for small game, add +1.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/undertake_a_journey"],
-									"text": "Add +1.",
-									"move_type": "action_roll"
-								},
-								{
-									"augments": ["classic/moves/adventure/resupply"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By hunting for small game"
-											}
-										]
-									},
-									"text": "Add +1."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hawk/abilities/0"
 						},
 						{
 							"name": "Fierce",
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Using your hawk to harass and distract your foes",
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hawk/abilities/1"
 						},
 						{
 							"name": "Vigilant",
 							"text": "When you [Face Danger](classic/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](classic/moves/combat/enter_the_fray) +wits against an ambush, add +2.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/face_danger"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To detect an approaching threat",
-												"roll_options": [
-													{
-														"using": "wits"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +2."
-								},
-								{
-									"augments": ["classic/moves/combat/enter_the_fray"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"roll_options": [
-													{
-														"using": "wits"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +2."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hawk/abilities/2"
 						}
@@ -412,97 +190,18 @@
 						{
 							"name": "Swift",
 							"text": "When you [Face Danger](classic/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](classic/moves/adventure/undertake_a_journey), add +1.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/undertake_a_journey"],
-									"text": "Add +1.",
-									"move_type": "action_roll"
-								},
-								{
-									"augments": ["classic/moves/adventure/face_danger"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Using your horse’s speed and grace",
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +1."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/horse/abilities/0"
 						},
 						{
 							"name": "Fearless",
 							"text": "When you [Enter the Fray](classic/moves/combat/enter_the_fray) or [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/enter_the_fray",
-										"classic/moves/adventure/secure_an_advantage"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By charging into combat",
-												"roll_options": [
-													{
-														"using": "heart"
-													}
-												]
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/horse/abilities/1"
 						},
 						{
 							"name": "Mighty",
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "At close range while mounted"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Inflict +1 harm."
-										},
-										"weak_hit": {
-											"text": "Inflict +1 harm."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/horse/abilities/2"
 						}
@@ -544,78 +243,18 @@
 						{
 							"name": "Sharp",
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/gather_information"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Using your hound’s keen senses to track your quarry or investigate a scene"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hound/abilities/0"
 						},
 						{
 							"name": "Ferocious",
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Alongside your hound"
-											}
-										]
-									},
-									"outcomes": {
-										"strong_hit": {
-											"text": "Inflict +1 harm or take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Inflict +1 harm or take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hound/abilities/1"
 						},
 						{
 							"name": "Loyal",
 							"text": "When you [Endure Stress](classic/moves/suffer/endure_stress) in the company of your hound, add +1.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/suffer/endure_stress"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In the company of your hound"
-											}
-										]
-									},
-									"text": "Add +1."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/hound/abilities/2"
 						}
@@ -671,67 +310,18 @@
 									"id": "classic/assets/companion/kindred/abilities/0/options/expertise"
 								}
 							},
-							"augment_moves": [
-								{
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you make a move outside of combat aided by your companion’s expertise"
-											}
-										]
-									},
-									"text": "Add +1."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/kindred/abilities/0"
 						},
 						{
 							"name": "Shield-Kin",
 							"text": "When you [Clash](classic/moves/combat/clash) or [Battle](classic/moves/combat/battle) alongside your companion, or when you [Face Danger](classic/moves/adventure/face_danger) against an attack by standing together, add +1.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/clash",
-										"classic/moves/combat/battle"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Alongside your companion"
-											}
-										]
-									},
-									"text": "Add +1."
-								},
-								{
-									"augments": ["classic/moves/adventure/face_danger"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Against an attack by standing together"
-											}
-										]
-									},
-									"text": "Add +1."
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/kindred/abilities/1"
 						},
 						{
 							"name": "Bonded",
 							"text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](classic/moves/suffer/face_desolation) in their presence.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/suffer/face_desolation"],
-									"text": "Add +1 when you [Face Desolation](classic/moves/suffer/face_desolation) in your companion's presence.",
-									"move_type": "action_roll"
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/kindred/abilities/2"
 						}
@@ -772,58 +362,12 @@
 						{
 							"name": "Beast of burden",
 							"text": "When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/adventure/make_camp",
-										"delve/moves/delve/check_your_gear"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/companion/mammoth/condition_meter"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/mammoth/abilities/1"
 						},
 						{
 							"name": "Overpowering",
 							"text": "When you [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "by riding your mammoth against a pack of foes"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Inflict +1 harm on a hit."
-										},
-										"weak_hit": {
-											"text": "Inflict +1 harm on a hit."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/mammoth/abilities/2"
 						}
@@ -983,24 +527,6 @@
 						{
 							"name": "Savage",
 							"text": "When you [Strike](classic/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/combat/strike"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By commanding your wyvern to attack",
-												"roll_options": [
-													{
-														"using": "heart"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/companion/young_wyvern/abilities/2"
 						}
@@ -1258,27 +784,6 @@
 						},
 						{
 							"text": "You have stared down death before: When you are at 0 health and [Endure Harm](classic/moves/suffer/endure_harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/suffer/endure_harm"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you are at 0 health",
-												"roll_options": [
-													{
-														"using": "wits"
-													},
-													{
-														"using": "heart"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/battle_scarred/abilities/2"
 						}
@@ -1383,58 +888,10 @@
 						{
 							"text": "You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](classic/moves/adventure/face_danger), [Secure an Advantage](classic/moves/adventure/secure_an_advantage), [Compel](classic/moves/relationship/compel), or [Battle](classic/moves/combat/battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](classic/moves/adventure/make_camp) or [Sojourn](classic/moves/relationship/sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.",
 							"enabled": true,
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/adventure/face_danger",
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel",
-										"classic/moves/combat/battle"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By commanding your warband",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/path/commander/condition_meter"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"id": "classic/assets/path/commander/abilities/0"
 						},
 						{
 							"text": "You may dispatch scouts from your warband to [Gather Information](classic/moves/adventure/gather_information) or [Resupply](classic/moves/adventure/resupply); if you do, roll +strength.",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/adventure/gather_information",
-										"classic/moves/adventure/resupply"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By dispatching scouts from your warband",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/path/commander/condition_meter"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/commander/abilities/1"
 						},
@@ -1590,49 +1047,11 @@
 						},
 						{
 							"text": "When you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "To serve your god on a divine quest",
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/path/devotant/options/stat"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/devotant/abilities/1"
 						},
 						{
 							"text": "When you [Sojourn](classic/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/relationship/sojourn"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By sharing the word of your god",
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/path/devotant/options/stat"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/devotant/abilities/2"
 						}
@@ -1847,24 +1266,6 @@
 					"abilities": [
 						{
 							"text": "When you [Check Your Gear](delve/moves/delve/check_your_gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["delve/moves/delve/check_your_gear"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"roll_options": [
-													{
-														"using": "wits"
-													}
-												],
-												"method": "any"
-											}
-										]
-									}
-								}
-							],
 							"enabled": true,
 							"id": "classic/assets/path/improviser/abilities/0"
 						},
@@ -1905,66 +1306,11 @@
 						},
 						{
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/gather_information"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												],
-												"text": "Within an enemy area to discover their positions, plans, or methods"
-											}
-										]
-									}
-								},
-								{
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												],
-												"text": "Within an enemy area area through observation"
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/infiltrator/abilities/1"
 						},
 						{
 							"text": "When you [Resupply](classic/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/resupply"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												],
-												"text": "Within an enemy area by scavenging or looting"
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/infiltrator/abilities/2"
 						}
@@ -2096,29 +1442,6 @@
 						},
 						{
 							"text": "When you [Face Death](classic/moves/suffer/face_death) or [Face Desolation](classic/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).",
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/suffer/face_death",
-										"classic/moves/suffer/face_desolation"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "While wearing the mask",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "ref",
-														"ref": "classic/assets/path/masked/options/material_stat"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/masked/abilities/2"
 						}
@@ -2308,25 +1631,6 @@
 						},
 						{
 							"text": "As above, and you may roll +shadow (instead of +heart) when you [Sojourn](classic/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/relationship/sojourn"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												],
-												"text": "Under your false identity"
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/pretender/abilities/1"
 						},
@@ -2476,24 +1780,6 @@
 						},
 						{
 							"text": "You know the sly ways of death: When you [Face Death](classic/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/suffer/face_death"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/shadow_kin/abilities/2"
 						}
@@ -2664,58 +1950,11 @@
 						},
 						{
 							"text": "When you [Gather Information](classic/moves/adventure/gather_information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/gather_information"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "By investigating a devious scheme",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/trickster/abilities/1"
 						},
 						{
 							"text": "When you [Forge a Bond](classic/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.\n\n  * Keep your secret: Roll +shadow (instead of +heart).\n  * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/relationship/forge_a_bond"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "Keep your secret",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "shadow"
-													}
-												]
-											},
-											{
-												"text": "Reveal the truth",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "heart"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/trickster/abilities/2"
 						}
@@ -2892,25 +2131,6 @@
 						},
 						{
 							"text": "When you [Make Camp](classic/moves/adventure/make_camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/make_camp"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In the woodlands",
-												"method": "any",
-												"roll_options": [
-													{
-														"using": "wits"
-													}
-												]
-											}
-										]
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/path/wildblood/abilities/2"
 						}
@@ -3257,86 +2477,16 @@
 					"abilities": [
 						{
 							"text": "When you equip or adjust your armor, choose one.\n\n  * Lightly armored: When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.\n  * Geared for war: Mark encumbered. When you [Endure Harm](classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/suffer/endure_harm"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a fight while you are lightly armored"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									},
-									"move_type": "action_roll"
-								},
-								{
-									"augments": ["classic/moves/suffer/endure_harm"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a fight while you are geared for war"
-											}
-										]
-									},
-									"text": "Add +2.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									},
-									"move_type": "action_roll"
-								}
-							],
 							"enabled": true,
 							"id": "classic/assets/combat_talent/ironclad/abilities/0"
 						},
 						{
 							"text": "When you [Clash](classic/moves/combat/clash) while you are geared for war, add +1.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/combat/clash"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "While you are geared for war"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"move_type": "action_roll"
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/ironclad/abilities/1"
 						},
 						{
 							"text": "When you [Compel](classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/relationship/compel"],
-									"trigger": {
-										"conditions": [
-											{
-												"text": "In a situation where strength of arms is a factor"
-											}
-										]
-									},
-									"text": "Add +2.",
-									"move_type": "action_roll"
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/ironclad/abilities/2"
 						}
@@ -3364,92 +2514,15 @@
 						{
 							"text": "In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](classic/moves/combat/strike) or [Clash](classic/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.",
 							"enabled": true,
-							"augment_moves": [
-								{
-									"augments": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												],
-												"method": "any",
-												"text": "When you strike with a staff as a simple weapon"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"id": "classic/assets/combat_talent/long_arm/abilities/0"
 						},
 						{
 							"text": "When you [Secure an Advantage](classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"roll_options": [
-													{
-														"using": "edge"
-													}
-												],
-												"method": "any",
-												"text": "Using your staff to disarm, trip, shove, or stun your foe"
-											}
-										]
-									},
-									"text": "Add +1.",
-									"outcomes": {
-										"strong_hit": {
-											"text": "Take +1 momentum."
-										},
-										"weak_hit": {
-											"text": "Take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/long_arm/abilities/1"
 						},
 						{
 							"text": "When you [Undertake a Journey](classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.",
-							"augment_moves": [
-								{
-									"augments": ["classic/moves/adventure/undertake_a_journey"],
-									"move_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"method": "any"
-											}
-										]
-									},
-									"outcomes": {
-										"strong_hit": {
-											"text": "The staff provides support and comfort in your travels; take +1 momentum."
-										}
-									}
-								}
-							],
 							"enabled": false,
 							"id": "classic/assets/combat_talent/long_arm/abilities/2"
 						}
@@ -3882,16 +2955,6 @@
 						},
 						{
 							"text": "Your simulacrum has 6 health.",
-							"augment_asset": {
-								"condition_meter": {
-									"health": {
-										"max": 6
-									},
-									"min": 0
-								},
-								"count_as_impact": false,
-								"shared": false
-							},
 							"enabled": false,
 							"id": "classic/assets/ritual/awakening/abilities/1"
 						},

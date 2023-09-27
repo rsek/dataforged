@@ -53,7 +53,12 @@ export const AssetConditionMeter = Type.Object(
 			})
 		)
 	},
-	{ $id: '#/$defs/AssetConditionMeter', title: 'Asset condition meter' }
+	{
+		$id: '#/$defs/AssetConditionMeter',
+		title: 'Asset condition meter',
+		description:
+			'Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".\n\nThe asset condition meter is always rendered at the bottom of the card.'
+	}
 )
 
 export const AssetConditionMeterAugment = Type.Partial(
@@ -129,7 +134,7 @@ export const Asset = Type.Object(
 		options: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetOptionField), {
 				description:
-					'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "Name" field on on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+					'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
 			})
 		),
 		controls: Type.Optional(
@@ -209,7 +214,8 @@ export const AssetAbility = Type.Object(
 		),
 		augment_moves: Type.Optional(
 			Type.Array(Type.Ref(Moves.MoveAugment), {
-				description: 'Describes augmentations made to moves.',
+				description:
+					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions are met.',
 				releaseStage: 'experimental'
 			})
 		)

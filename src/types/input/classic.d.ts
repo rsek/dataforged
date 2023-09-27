@@ -110,6 +110,9 @@ export type Move =
       } & TriggerNoRoll;
       text: MarkdownString;
       outcomes?: MoveOutcomes;
+      /**
+       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+       */
       oracles?: OracleTableID[];
       suggestions?: Suggestions;
       source?: Source;
@@ -124,6 +127,9 @@ export type Move =
       } & TriggerActionRoll;
       text: MarkdownString;
       outcomes: MoveOutcomes;
+      /**
+       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+       */
       oracles?: OracleTableID[];
       suggestions?: Suggestions;
       source?: Source;
@@ -138,6 +144,9 @@ export type Move =
       } & TriggerProgressRoll;
       text: MarkdownString;
       outcomes: MoveOutcomes;
+      /**
+       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+       */
       oracles?: OracleTableID[];
       suggestions?: Suggestions;
       source?: Source;
@@ -729,7 +738,7 @@ export interface Asset {
   icon?: SVGImageURL;
   color?: CSSColor;
   /**
-   * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "Name" field on on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
+   * Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.
    */
   options?: {
     [k: string]: AssetOptionField;
@@ -828,7 +837,7 @@ export interface AssetAbility {
     condition_meter?: AssetConditionMeter;
   };
   /**
-   * Describes augmentations made to moves.
+   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions are met.
    */
   augment_moves?: MoveAugment[];
 }
@@ -861,6 +870,11 @@ export interface AssetAttachment {
    */
   max?: number;
 }
+/**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * The asset condition meter is always rendered at the bottom of the card.
+ */
 export interface AssetConditionMeter {
   min?: number;
   max?: number;
@@ -873,12 +887,20 @@ export interface AssetConditionMeter {
 }
 export interface MoveAugment {
   text?: MarkdownString;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
   oracles?: OracleTableID[];
   augments?: MoveIDWithWildcard[];
   trigger?: unknown;
   move_type?: MoveRollType;
   outcomes?: unknown;
 }
+/**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * The asset condition meter is always rendered at the bottom of the card.
+ */
 export interface AssetConditionMeter1 {
   min?: number;
   max: number;

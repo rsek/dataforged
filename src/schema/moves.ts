@@ -254,7 +254,12 @@ const MoveBase = Type.Object({
 	}),
 	text: Type.Ref(Localize.MarkdownString),
 	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
-	oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
+	oracles: Type.Optional(
+		Type.Array(Type.Ref(ID.OracleTableID), {
+			description:
+				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+		})
+	),
 	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 	source: Type.Ref(Metadata.Source)
 })

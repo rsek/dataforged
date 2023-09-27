@@ -133,13 +133,21 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 		path.join(rootOut, 'any.json')
 	)
 
+	// exclude certain keys which are still in development
+	// FIXME there's probably a more elegant way to do this by looking at the json schema's releaseFlag
+	const experimentalKeys = ['augment_asset', 'augment_moves']
+
 	// exclude metadata keys
 	for await (const [k, v] of Object.entries(sourcebook)) {
 		if (metadataKeys.includes(k)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue
 
 		const dataOut = Prettier.format(
-			JSON.stringify({ ...sourcebookMetadata, [k]: v }, undefined, '\t'),
+			JSON.stringify(
+				{ ...sourcebookMetadata, [k]: v },
+				(key, value) => (experimentalKeys.includes(key) ? undefined : value),
+				'\t'
+			),
 			prettierOptions
 		)
 
