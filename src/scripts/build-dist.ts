@@ -45,7 +45,6 @@ fs.copySync(
 	}
 )
 
-// copy images
 // delve pkg: json only
 fs.emptyDirSync('pkg/ironsworn-delve/json')
 fs.copySync('src/data-out/classic/delve', 'pkg/ironsworn-delve/json')
