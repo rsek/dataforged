@@ -2,7 +2,8 @@ import {
 	type Static,
 	Type,
 	type TObject,
-	type TString
+	type TString,
+	type ObjectOptions
 } from '@sinclair/typebox'
 import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
@@ -75,7 +76,8 @@ export const AssetControlField = AssetField(
 
 function AssetAugmentSelf<T extends TObject>(
 	tAsset: T,
-	omitKeys: Array<keyof Static<TObject>> = []
+	omitKeys: Array<keyof Static<TObject>> = [],
+	options: ObjectOptions = {}
 ) {
 	omitKeys = [
 		...omitKeys,
@@ -84,13 +86,16 @@ function AssetAugmentSelf<T extends TObject>(
 		'controls' // in practice, i don't think anyone's setting a control in order to create a temporary control
 	]
 	if (omitKeys.includes('condition_meter'))
-		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys)
-	return Type.Intersect([
-		Abstract.NodeAugmentSelf(tAsset as any, [...omitKeys, 'condition_meter']),
-		Type.Object({
-			condition_meter: Type.Optional(Type.Ref(AssetConditionMeterAugment))
-		})
-	])
+		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys, options)
+	return Type.Intersect(
+		[
+			Abstract.NodeAugmentSelf(tAsset as any, [...omitKeys, 'condition_meter']),
+			Type.Object({
+				condition_meter: Type.Optional(Type.Ref(AssetConditionMeterAugment))
+			})
+		],
+		options
+	)
 }
 
 export const AssetAttachment = Type.Object(
@@ -195,8 +200,19 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		augment_asset: Type.Optional(AssetAugmentSelf(Asset, ['abilities'])),
-		augment_moves: Type.Optional(Type.Array(Type.Ref(Moves.MoveAugment)))
+		augment_asset: Type.Optional(
+			AssetAugmentSelf(Asset, ['abilities'], {
+				description:
+					'Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
+				releaseStage: 'experimental'
+			})
+		),
+		augment_moves: Type.Optional(
+			Type.Array(Type.Ref(Moves.MoveAugment), {
+				description: 'Describes augmentations made to moves.',
+				releaseStage: 'experimental'
+			})
+		)
 	},
 	{ $id: '#/$defs/AssetAbility' }
 )

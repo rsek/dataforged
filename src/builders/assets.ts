@@ -57,6 +57,7 @@ export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 		if (data.condition_meter == null) return undefined
 		const meter = cloneDeep(data.condition_meter)
 		meter.id = `${this.id}/condition_meter`
+		if (typeof meter.value !== 'number') meter.value = meter.max
 		if (meter.controls != null) {
 			meter.controls = mapValues(meter.controls, (field, fieldKey) => {
 				field.id = trackID(`${meter.id as string}/controls/${fieldKey}`)

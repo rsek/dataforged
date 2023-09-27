@@ -1571,6 +1571,8 @@
 					}
 				},
 				"augment_asset": {
+					"description": "Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
+					"releaseStage": "experimental",
 					"type": "object",
 					"allOf": [
 						{
@@ -1603,6 +1605,8 @@
 					]
 				},
 				"augment_moves": {
+					"description": "Describes augmentations made to moves.",
+					"releaseStage": "experimental",
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveAugment" }
 				}

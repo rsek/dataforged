@@ -700,6 +700,9 @@ export interface AssetAbility {
   controls?: {
     [k: string]: AssetAbilityControlField;
   };
+  /**
+   * Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
+   */
   augment_asset?: {
     icon?: SVGImageURL;
     color?: CSSColor;
@@ -716,6 +719,9 @@ export interface AssetAbility {
   } & {
     condition_meter?: AssetConditionMeter;
   };
+  /**
+   * Describes augmentations made to moves.
+   */
   augment_moves?: MoveAugment[];
 }
 export interface ClockField {
