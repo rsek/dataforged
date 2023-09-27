@@ -296,7 +296,7 @@ export type AssetAbilityControlField = ClockField | CounterField | CheckboxField
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetConditionMeterControlField = CheckboxField;
+export type AssetConditionMeterControlField = AssetCheckboxField;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -884,6 +884,20 @@ export interface AssetConditionMeter {
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
+}
+export interface AssetCheckboxField {
+  id: string;
+  label: Label;
+  field_type: "checkbox";
+  value?: boolean;
+  /**
+   * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?
+   */
+  is_impact: boolean;
+  /**
+   * Does this field disable the asset when checked?
+   */
+  disables_asset: boolean;
 }
 export interface MoveAugment {
   text?: MarkdownString12;

@@ -1359,11 +1359,33 @@
 			"required": [],
 			"title": "MoveAugment"
 		},
+		"AssetCheckboxField": {
+			"$id": "#/$defs/AssetCheckboxField",
+			"type": "object",
+			"properties": {
+				"id": { "type": "string" },
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "checkbox", "type": "string" },
+				"value": { "default": false, "type": "boolean" },
+				"is_impact": {
+					"default": false,
+					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?",
+					"type": "boolean"
+				},
+				"disables_asset": {
+					"default": false,
+					"description": "Does this field disable the asset when checked?",
+					"type": "boolean"
+				}
+			},
+			"required": ["label", "field_type"],
+			"title": "AssetCheckboxField"
+		},
 		"AssetConditionMeterControlField": {
 			"type": "object",
 			"$id": "#/$defs/AssetConditionMeterControlField",
 			"title": "Asset Condition Meter Control Field",
-			"anyOf": [{ "$ref": "#/$defs/CheckboxField" }],
+			"anyOf": [{ "$ref": "#/$defs/AssetCheckboxField" }],
 			"properties": {
 				"id": { "$ref": "#/$defs/AssetConditionMeterControlFieldID" }
 			}

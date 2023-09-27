@@ -35,10 +35,30 @@ function AssetField<TFieldID extends TString, TFieldType extends TObject>(
 	})
 }
 
+export const AssetCheckboxField = Type.Composite(
+	[
+		Inputs.CheckboxField,
+		Type.Object({
+			is_impact: Type.Boolean({
+				default: false,
+				description:
+					'Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?'
+			}),
+			disables_asset: Type.Boolean({
+				default: false,
+				description: 'Does this field disable the asset when checked?'
+			})
+		})
+	],
+	{
+		$id: '#/$defs/AssetCheckboxField'
+	}
+)
+
 export const AssetConditionMeterControlField = AssetField(
 	'AssetConditionMeterControlField',
 	ID.AssetConditionMeterControlFieldID,
-	[Inputs.CheckboxField]
+	[AssetCheckboxField]
 )
 
 export const AssetConditionMeter = Type.Object(
