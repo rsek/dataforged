@@ -304,6 +304,10 @@ export type EncounterClassicID1 = string;
 export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
 export type ThemeFeatureRowID = string;
 export type ThemeDangerRowID = string;
+/**
+ * An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.
+ */
+export type OracleTableID2 = string;
 export type DomainFeatureRowID = string;
 export type DomainDangerRowID = string;
 export type WorldTruthOptionID = string;
@@ -1244,6 +1248,7 @@ export interface DelveSiteDomain {
   icon?: SVGImageURL;
   id?: DelveSiteDomainID;
   card_type: "domain";
+  name_oracle?: OracleTableID2;
   features: DelveSiteDomainFeatureRow[] &
     [
       {

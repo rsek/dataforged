@@ -1981,6 +1981,10 @@
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"id": { "$ref": "#/$defs/DelveSiteDomainID" },
 				"card_type": { "const": "domain", "type": "string" },
+				"name_oracle": {
+					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.",
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"features": {
 					"allOf": [
 						{

@@ -5,6 +5,7 @@ import {
 	type TProperties
 } from '@sinclair/typebox'
 import { ID, Localize, Enum, Metadata, Abstract } from 'schema/common'
+import { OracleTableID } from 'schema/common/id'
 import { Squash } from 'schema/common/utils'
 import { OracleTableRow } from 'schema/oracles'
 import { JsonEnum } from 'typebox'
@@ -187,6 +188,12 @@ export const DelveSiteDomain = DelveSiteCard(
 	{
 		id: Type.Ref(ID.DelveSiteDomainID),
 		card_type: Type.Literal('domain'),
+		name_oracle: Type.Optional(
+			Type.Ref(ID.OracleTableID, {
+				description:
+					'An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites.'
+			})
+		),
 		features: Type.Intersect([
 			Type.Array(Type.Ref(DelveSiteDomainFeatureRow)),
 			Type.Tuple([

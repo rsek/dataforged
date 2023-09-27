@@ -36,37 +36,61 @@ oracles:
             high: 25
             result: '[Description] [Place]'
             template:
-              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place/domain}}'
+              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}'
+            rolls:
+              - oracle: delve/oracles/site_name/description
+              - oracle: delve/oracles/site_name/place
           - low: 26
             high: 50
             result: '[Place] of [Detail]'
             template:
-              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/detail}}'
+              result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}'
+            rolls:
+              - oracle: delve/oracles/site_name/place
+              - oracle: delve/oracles/site_name/detail
           - low: 51
             high: 70
             result: '[Place] of [Description] [Detail]'
             template:
-              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}'
+              result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}'
+            rolls:
+              - oracle: delve/oracles/site_name/place
+              - oracle: delve/oracles/site_name/description
+              - oracle: delve/oracles/site_name/detail
           - low: 71
             high: 80
             result: "[Place] of [Namesake's] [Detail]"
             template:
-              result: "{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
+              result: "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
+            rolls:
+              - oracle: delve/oracles/site_name/place
+              - oracle: delve/oracles/site_name/namesake
+              - oracle: delve/oracles/site_name/detail
           - low: 81
             high: 85
             result: "[Namesake's] [Place]"
             template:
-              result: "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place/domain}}"
+              result: "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
+            rolls:
+              - oracle: delve/oracles/site_name/namesake
+              - oracle: delve/oracles/site_name/place
           - low: 86
             high: 95
             result: '[Description] [Place] of [Namesake]'
             template:
-              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'
+              result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'
+            rolls:
+              - oracle: delve/oracles/site_name/description
+              - oracle: delve/oracles/site_name/place
+              - oracle: delve/oracles/site_name/namesake
           - low: 96
             high: 100
             result: '[Place] of [Namesake]'
             template:
-              result: '{{result:delve/oracles/site_name/place/domain}} of {{result:delve/oracles/site_name/namesake}}'
+              result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'
+            rolls:
+              - oracle: delve/oracles/site_name/place
+              - oracle: delve/oracles/site_name/namesake
       description:
         canonical_name: 'Site Name: Description'
         name: Description
@@ -638,7 +662,7 @@ oracles:
             name: Barrow
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/1-6
+              embed_in: delve/oracles/site_name/place/1-6
             _source:
               page: 210
             table:
@@ -664,7 +688,7 @@ oracles:
             name: Cavern
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/7-18
+              embed_in: delve/oracles/site_name/place/7-18
             _source:
               page: 210
             table:
@@ -702,7 +726,7 @@ oracles:
             name: Frozen Cavern
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/19-28
+              embed_in: delve/oracles/site_name/place/19-28
             _source:
               page: 210
             table:
@@ -740,7 +764,7 @@ oracles:
             name: Icereach
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/29-32
+              embed_in: delve/oracles/site_name/place/29-32
             _source:
               page: 210
             table:
@@ -766,7 +790,7 @@ oracles:
             name: Mine
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/33-38
+              embed_in: delve/oracles/site_name/place/33-38
             _source:
               page: 210
             table:
@@ -792,7 +816,7 @@ oracles:
             name: Pass
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/39-48
+              embed_in: delve/oracles/site_name/place/39-48
             _source:
               page: 210
             table:
@@ -830,7 +854,7 @@ oracles:
             name: Ruin
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/49-58
+              embed_in: delve/oracles/site_name/place/49-58
             _source:
               page: 211
             table:
@@ -868,7 +892,7 @@ oracles:
             name: Sea Cave
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/59-68
+              embed_in: delve/oracles/site_name/place/59-68
             _source:
               page: 211
             table:
@@ -894,7 +918,7 @@ oracles:
             name: Shadowfen
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/69-78
+              embed_in: delve/oracles/site_name/place/69-78
             _source:
               page: 211
             table:
@@ -932,7 +956,7 @@ oracles:
             name: Stronghold
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/79-83
+              embed_in: delve/oracles/site_name/place/79-83
             _source:
               page: 211
             table:
@@ -970,7 +994,7 @@ oracles:
             name: Tanglewood
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/84-95
+              embed_in: delve/oracles/site_name/place/84-95
             _source:
               page: 211
             table:
@@ -1002,7 +1026,7 @@ oracles:
             name: Underkeep
             rendering:
               style: embed_in_row
-              # embed_in: delve/oracles/site_name/place/domain/96-100
+              embed_in: delve/oracles/site_name/place/96-100
             _source:
               page: 211
             table:
