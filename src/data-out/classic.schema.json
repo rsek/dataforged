@@ -723,7 +723,6 @@
 		},
 		"OracleCollection": {
 			"$id": "#/$defs/OracleCollection",
-			"title": "Oracle collection",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
@@ -767,13 +766,6 @@
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleTable" }
 					}
 				},
-				"collections": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollection" }
-					}
-				},
 				"rendering": { "$ref": "#/$defs/OracleCollectionRendering" },
 				"images": {
 					"type": "array",
@@ -782,9 +774,17 @@
 				"sample_names": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/Label" }
+				},
+				"collections": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollection" }
+					}
 				}
 			},
-			"required": ["name", "source", "id"]
+			"required": ["name", "source", "id"],
+			"title": "OracleCollection"
 		},
 		"MoveRollMethod": {
 			"$id": "#/$defs/MoveRollMethod",

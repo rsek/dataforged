@@ -43,6 +43,14 @@ const ajv = new Ajv({
 			default: false
 		}
 	})
+	.addKeyword({
+		keyword: 'tsType',
+		metaSchema: {
+			description:
+				"Overrides the type that's generated from the schema. See https://github.com/bcherny/json-schema-to-typescript",
+			type: 'string'
+		}
+	})
 	.addFormat('markdown', true)
 
 addFormats(ajv)

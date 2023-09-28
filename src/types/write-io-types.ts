@@ -34,7 +34,9 @@ filePaths.forEach((filePath) => {
 	schema.title = `Sourcebook (${startCase(namespace)})`
 
 	void compile(schema as any, startCase(namespace), {
-		additionalProperties: false
+		additionalProperties: false,
+		unreachableDefinitions: false,
+		$refOptions: { resolve: { external: false, file: false, http: false } }
 	}).then((ts) => {
 		writeFileSync(
 			`src/types/${

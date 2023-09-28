@@ -225,21 +225,17 @@ export const OracleCollectionRendering = Type.Composite(
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-export const OracleCollection = Type.Composite(
-	[
-		Abstract.RecursiveCollection(
-			Type.Ref(OracleTable),
-			Type.Ref(ID.OracleCollectionID),
-			'#/$defs/OracleCollection'
-		),
-		Type.Object({
-			rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
-			images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
-			sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
-			// templates: Type.Optional(Type.Array(OracleRollTemplate))
-		})
-	],
-	{ $id: '#/$defs/OracleCollection', title: 'Oracle collection' }
+export const OracleCollection = Abstract.RecursiveCollection(
+	Type.Ref(OracleTable),
+	Type.Ref(ID.OracleCollectionID),
+	'#/$defs/OracleCollection',
+	{
+		rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
+		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
+		sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
+		// templates: Type.Optional(Type.Array(OracleRollTemplate))
+	},
+	{ title: 'Oracle collection' }
 )
 
 export type OracleCollection = Static<typeof OracleCollection>

@@ -231,20 +231,23 @@ export function RecursiveCollection<T extends TRef>(
 	properties: TProperties = {},
 	options: SchemaOptions = {}
 ) {
-	return Collection(
-		memberSchema,
-		idPattern,
-		{
-			...properties,
-			collections: Type.Optional(Dictionary(Type.Unsafe({ $ref: refID })))
-		},
-		{ ...options, $id: refID }
+	return Type.Recursive(
+		(thisType) =>
+			Type.Composite([
+				Collection(memberSchema, idPattern, properties, options),
+				Type.Object({
+					collections: Type.Optional(Dictionary(thisType))
+				})
+			]),
+		{ $id: refID }
 	)
 }
 
-export type RecursiveCollection<T> = Collection<T> & {
-	collections?: Record<string, RecursiveCollection<T>>
-}
+export type RecursiveCollection<T> = ReturnType<
+	typeof RecursiveCollection<
+		ReturnType<typeof Type.Ref<TSchema & { static: T }>>
+	>
+>
 
 /**
  * Note that `id` and `source` are always omitted.

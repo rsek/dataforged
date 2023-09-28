@@ -500,12 +500,12 @@ export interface OracleCollection {
   contents?: {
     [k: string]: OracleTable;
   };
-  collections?: {
-    [k: string]: OracleCollection;
-  };
   rendering?: OracleCollectionRendering;
   images?: WEBPImageURL[];
   sample_names?: Label[];
+  collections?: {
+    [k: string]: OracleCollection;
+  };
   _source?: SourceStub;
 }
 export interface SuggestionsClassic {
