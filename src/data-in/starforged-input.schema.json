@@ -1366,20 +1366,45 @@
 				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "checkbox", "type": "string" },
-				"value": { "default": false, "type": "boolean" },
+				"value": {
+					"default": false,
+					"description": "`true` means the box is checked.",
+					"type": "boolean"
+				},
 				"is_impact": {
 					"default": false,
-					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?",
+					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
 					"type": "boolean"
 				},
 				"disables_asset": {
 					"default": false,
-					"description": "Does this field disable the asset when checked?",
+					"description": "Does this field disable the asset when its value is set to `true`?",
 					"type": "boolean"
 				}
 			},
 			"required": ["label", "field_type"],
 			"title": "AssetCheckboxField"
+		},
+		"AssetCardFlipField": {
+			"$id": "#/$defs/AssetCardFlipField",
+			"type": "object",
+			"properties": {
+				"id": { "type": "string" },
+				"label": { "$ref": "#/$defs/Label" },
+				"field_type": { "const": "card_flip", "type": "string" },
+				"value": {
+					"default": false,
+					"description": "`true` means the card has been flipped over.",
+					"type": "boolean"
+				},
+				"disables_asset": {
+					"default": false,
+					"description": "Does this field disable the asset when its value is set to `true`?",
+					"type": "boolean"
+				}
+			},
+			"required": ["label", "field_type"],
+			"title": "AssetCardFlipField"
 		},
 		"AssetConditionMeterControlField": {
 			"type": "object",
@@ -1448,7 +1473,10 @@
 			"type": "object",
 			"$id": "#/$defs/AssetControlField",
 			"title": "Asset Control Field",
-			"anyOf": [{ "$ref": "#/$defs/CheckboxField" }],
+			"anyOf": [
+				{ "$ref": "#/$defs/CheckboxField" },
+				{ "$ref": "#/$defs/AssetCardFlipField" }
+			],
 			"properties": { "id": { "$ref": "#/$defs/AssetControlFieldID" } }
 		},
 		"AssetAttachment": {
@@ -1661,12 +1689,17 @@
 		},
 		"CheckboxField": {
 			"$id": "#/$defs/CheckboxField",
+			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
 			"type": "object",
 			"properties": {
 				"id": { "type": "string" },
 				"label": { "$ref": "#/$defs/Label" },
 				"field_type": { "const": "checkbox", "type": "string" },
-				"value": { "default": false, "type": "boolean" }
+				"value": {
+					"default": false,
+					"description": "`true` means the box is checked.",
+					"type": "boolean"
+				}
 			},
 			"required": ["label", "field_type"],
 			"title": "CheckboxField"

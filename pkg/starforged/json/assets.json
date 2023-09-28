@@ -39,7 +39,7 @@
 						"max": 5,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -47,7 +47,7 @@
 								"id": "starforged/assets/command_vehicle/starship/condition_meter/controls/battered"
 							},
 							"cursed": {
-								"label": "Cursed",
+								"label": "cursed",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -112,6 +112,15 @@
 				"engine_upgrade": {
 					"name": "Engine Upgrade",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/engine_upgrade/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.",
@@ -147,6 +156,15 @@
 				"expanded_hold": {
 					"name": "Expanded Hold",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/expanded_hold/controls/broken"
+						}
+					},
 					"condition_meter": {
 						"label": "cargo",
 						"max": 3,
@@ -189,6 +207,15 @@
 				"grappler": {
 					"name": "Grappler",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/grappler/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). On a miss, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.",
@@ -271,6 +298,15 @@
 				"heavy_cannons": {
 					"name": "Heavy Cannons",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/heavy_cannons/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike), choose one.\n\n  * Strafing run: Add +1 and take +1 momentum on a hit.\n  * Focus fire: Mark progress on a hit, but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).",
@@ -306,6 +342,15 @@
 				"internal_refit": {
 					"name": "Internal Refit",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/internal_refit/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.",
@@ -385,6 +430,15 @@
 				"medbay": {
 					"name": "Medbay",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/medbay/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.",
@@ -427,6 +481,15 @@
 						"min": 0,
 						"id": "starforged/assets/module/missile_array/condition_meter"
 					},
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/missile_array/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your missile array is armed with 5 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](id:starforged/moves/recover/resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.",
@@ -462,6 +525,15 @@
 				"overseer": {
 					"name": "Overseer",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/overseer/controls/broken"
+						}
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -504,6 +576,15 @@
 				"reinforced_hull": {
 					"name": "Reinforced Hull",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/reinforced_hull/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your vehicle is clad in iron. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.",
@@ -539,6 +620,15 @@
 				"research_lab": {
 					"name": "Research Lab",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/research_lab/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "When you use your lab to [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.",
@@ -574,6 +664,15 @@
 				"sensor_array": {
 					"name": "Sensor Array",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/sensor_array/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits), you may reroll one challenge die.",
@@ -609,6 +708,15 @@
 				"shields": {
 					"name": "Shields",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/shields/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.",
@@ -698,6 +806,15 @@
 				"stealth_tech": {
 					"name": "Stealth Tech",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/stealth_tech/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.",
@@ -733,6 +850,15 @@
 				"vehicle_bay": {
 					"name": "Vehicle Bay",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/vehicle_bay/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle, spend 1 repair point (instead of 2).",
@@ -768,6 +894,15 @@
 				"workshop": {
 					"name": "Workshop",
 					"shared": true,
+					"controls": {
+						"broken": {
+							"label": "broken",
+							"field_type": "card_flip",
+							"disables_asset": true,
+							"value": false,
+							"id": "starforged/assets/module/workshop/controls/broken"
+						}
+					},
 					"abilities": [
 						{
 							"text": "When you [Repair](id:starforged/moves/recover/repair) in the field, add +1.",
@@ -837,7 +972,7 @@
 						"value": 6,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -896,7 +1031,7 @@
 						"value": 3,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -955,7 +1090,7 @@
 						"value": 5,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -1014,7 +1149,7 @@
 						"value": 4,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -1073,7 +1208,7 @@
 						"value": 4,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -1132,7 +1267,7 @@
 						"value": 4,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,
@@ -1191,7 +1326,7 @@
 						"value": 4,
 						"controls": {
 							"battered": {
-								"label": "Battered",
+								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
 								"value": false,

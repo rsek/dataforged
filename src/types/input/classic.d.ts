@@ -281,7 +281,7 @@ export type AssetOptionField = SelectFieldPlayerStat | TextField;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetControlField = CheckboxField;
+export type AssetControlField = CheckboxField | AssetCardFlipField;
 export type AssetAbilityID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -847,11 +847,30 @@ export interface TextField {
   field_type: "text";
   value?: string;
 }
+/**
+ * This input represents a checkbox field. It is considered checked when its value is set to `true`.
+ */
 export interface CheckboxField {
   id?: string;
   label: Label;
   field_type: "checkbox";
+  /**
+   * `true` means the box is checked.
+   */
   value?: boolean;
+}
+export interface AssetCardFlipField {
+  id?: string;
+  label: Label;
+  field_type: "card_flip";
+  /**
+   * `true` means the card has been flipped over.
+   */
+  value?: boolean;
+  /**
+   * Does this field disable the asset when its value is set to `true`?
+   */
+  disables_asset?: boolean;
 }
 export interface AssetAbility {
   id?: AssetAbilityID;
@@ -942,13 +961,16 @@ export interface AssetCheckboxField {
   id?: string;
   label: Label;
   field_type: "checkbox";
+  /**
+   * `true` means the box is checked.
+   */
   value?: boolean;
   /**
-   * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?
+   * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
    */
   is_impact?: boolean;
   /**
-   * Does this field disable the asset when checked?
+   * Does this field disable the asset when its value is set to `true`?
    */
   disables_asset?: boolean;
 }

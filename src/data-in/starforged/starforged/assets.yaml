@@ -28,7 +28,7 @@ assets:
           assets:
             - '*/assets/module/*'
         options:
-          name:
+          name: &TextField.Name
             field_type: text
             label: Name
         condition_meter:
@@ -38,17 +38,13 @@ assets:
           max: 5
           controls:
             battered: &Vehicle.Battered
-              label: Battered
+              label: battered
               field_type: checkbox
               is_impact: true
             cursed:
-              label: Cursed
+              label: cursed
               field_type: checkbox
               is_impact: true
-          # aliases:
-          #   - vehicle_integrity
-          #   - command_vehicle_integrity
-          # conditions: [battered, cursed]
         abilities:
           - text: |-
               Your armed, multipurpose starship is suited for interstellar and atmospheric flight. It can comfortably transport several people, has space for cargo, and can carry and launch support vehicles. When you [Advance](id:starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets.
@@ -105,13 +101,11 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - &Broken
-        #     label: broken
-        #     enabled: false
-        #     disables_asset: true
-        #     permanent: false
-        #     impact: false
+        controls:
+          broken: &Module.Broken
+            label: broken
+            field_type: card_flip
+            disables_asset: true
         abilities:
           - text: |-
               Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
@@ -173,6 +167,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
+        controls:
+          broken: *Module.Broken
         condition_meter:
           label: cargo
           max: 3
@@ -217,8 +213,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: &move:Asset.Grappler |-
               Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). On a miss, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
@@ -277,8 +273,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike), choose one.
@@ -337,8 +333,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
@@ -398,8 +394,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
@@ -466,7 +462,8 @@ assets:
           max: 5
           value: 5
           min: 0
-
+        controls:
+          broken: *Module.Broken
         # states:
         #   - *Broken
         abilities:
@@ -524,12 +521,10 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         abilities:
           - text: |-
               Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gain Ground](id:starforged/moves/combat/gain_ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
@@ -574,8 +569,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               Your vehicle is clad in iron. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.
@@ -630,8 +625,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               When you use your lab to [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
@@ -703,8 +698,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits), you may reroll one challenge die.
@@ -788,8 +783,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: &move:Asset.Shields |-
               When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
@@ -858,8 +853,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
@@ -941,8 +936,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle, spend 1 repair point (instead of 2).
@@ -984,8 +979,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-        # states:
-        #   - *Broken
+        controls:
+          broken: *Module.Broken
         abilities:
           - text: |-
               When you [Repair](id:starforged/moves/recover/repair) in the field, add +1.
@@ -1063,9 +1058,7 @@ assets:
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 6
@@ -1073,7 +1066,6 @@ assets:
           value: 6
           controls:
             battered: *Vehicle.Battered
-          # conditions: [battered]
         abilities:
           - text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
@@ -1117,9 +1109,7 @@ assets:
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 3
@@ -1127,8 +1117,6 @@ assets:
           value: 3
           controls:
             battered: *Vehicle.Battered
-
-        # conditions: [battered]
         abilities:
           - text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1187,7 +1175,6 @@ assets:
           value: 5
           controls:
             battered: *Vehicle.Battered
-        # conditions: [battered]
         abilities:
           - text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.
@@ -1238,9 +1225,7 @@ assets:
           title: 'Ironsworn: Starforged Assets'
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 4
@@ -1248,7 +1233,6 @@ assets:
           value: 4
           controls:
             battered: *Vehicle.Battered
-        # conditions: [battered]
         abilities:
           - text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1300,9 +1284,7 @@ assets:
           title: 'Ironsworn: Starforged Assets'
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 4
@@ -1310,8 +1292,6 @@ assets:
           value: 4
           controls:
             battered: *Vehicle.Battered
-
-            # conditions: [battered]
         abilities:
           - text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
@@ -1345,11 +1325,8 @@ assets:
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
-
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 4
@@ -1357,8 +1334,6 @@ assets:
           value: 4
           controls:
             battered: *Vehicle.Battered
-
-          # conditions: [battered]
         abilities:
           - text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
@@ -1405,9 +1380,7 @@ assets:
           title: 'Ironsworn: Starforged Assets'
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: integrity
           max: 4
@@ -1415,8 +1388,6 @@ assets:
           value: 4
           controls:
             battered: *Vehicle.Battered
-
-          # conditions: [battered]
         abilities:
           - text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray), you may roll +integrity; if you do, take +2 momentum on a hit.
@@ -4027,9 +3998,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           # aliases:
@@ -4100,9 +4069,7 @@ assets:
         # tags: [mechanical_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 5
@@ -4175,9 +4142,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 3
@@ -4235,9 +4200,7 @@ assets:
         # tags: [mechanical_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 3
@@ -4284,9 +4247,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 5
@@ -4418,9 +4379,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 2
@@ -4459,9 +4418,7 @@ assets:
           title: 'Ironsworn: Starforged Assets'
         # tags: [mechanical_companion]
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 3
@@ -4537,9 +4494,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 2
@@ -4580,9 +4535,7 @@ assets:
           title: 'Ironsworn: Starforged Assets'
         # tags: [mechanical_companion]
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           max: 4
@@ -4649,9 +4602,7 @@ assets:
         # tags: [biological_companion]
 
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         condition_meter:
           label: health
           min: 0
@@ -4772,9 +4723,7 @@ assets:
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
-          name:
-            field_type: text
-            label: Name
+          name: *TextField.Name
         requirement: Once you fill 4 boxes on your bonds legacy track...
         abilities:
           - text: |-

@@ -70,7 +70,7 @@ export const SelectFieldType = JsonEnum([
 export type SelectFieldType = Static<typeof SelectFieldType>
 
 export const InputFieldType = Type.Union([
-	JsonEnum(['text', 'clock', 'counter', 'checkbox', 'toggle']),
+	JsonEnum(['text', 'clock', 'counter', 'checkbox', 'toggle', 'card_flip']),
 	SelectFieldType
 ])
 export type InputFieldType = Static<typeof InputFieldType>
@@ -107,12 +107,36 @@ export function InputFieldAugment<T extends ReturnType<typeof InputField>>(
 
 export const CheckboxField = InputField(
 	'checkbox',
-	Type.Boolean({ default: false }),
+	Type.Boolean({
+		default: false,
+		description: '`true` means the box is checked.'
+	}),
 	{},
-	{ $id: '#/$defs/CheckboxField' }
+	{
+		$id: '#/$defs/CheckboxField',
+		description:
+			'This input represents a checkbox field. It is considered checked when its value is set to `true`.'
+	}
 )
 
 export type CheckboxField = Static<typeof CheckboxField>
+
+export const CardFlipField = InputField(
+	'card_flip',
+	Type.Boolean({
+		default: false,
+		description: '`true` means the card has been flipped over.'
+	}),
+	{},
+	{
+		$id: '#/$defs/CardFlipField',
+		description: `This type of input isn't a *field* in the traditional sense. When its value is set to \`true\` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.
+
+    Otherwise, it behaves similarly to a CheckboxField.
+    `
+	}
+)
+export type CardFlipField = Static<typeof CardFlipField>
 
 export const ClockField = InputField(
 	'clock',

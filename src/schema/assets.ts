@@ -35,23 +35,39 @@ function AssetField<TFieldID extends TString, TFieldType extends TObject>(
 	})
 }
 
+const isImpact = Type.Boolean({
+	default: false,
+	description:
+		'Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?'
+})
+const disablesAsset = Type.Boolean({
+	default: false,
+	description:
+		'Does this field disable the asset when its value is set to `true`?'
+})
+
 export const AssetCheckboxField = Type.Composite(
 	[
 		Inputs.CheckboxField,
 		Type.Object({
-			is_impact: Type.Boolean({
-				default: false,
-				description:
-					'Does this field count as an impact (Starforged) or debility (Ironsworn classic) when checked?'
-			}),
-			disables_asset: Type.Boolean({
-				default: false,
-				description: 'Does this field disable the asset when checked?'
-			})
+			is_impact: isImpact,
+			disables_asset: disablesAsset
 		})
 	],
 	{
 		$id: '#/$defs/AssetCheckboxField'
+	}
+)
+
+export const AssetCardFlipField = Type.Composite(
+	[
+		Inputs.CardFlipField,
+		Type.Object({
+			disables_asset: disablesAsset
+		})
+	],
+	{
+		$id: '#/$defs/AssetCardFlipField'
 	}
 )
 
@@ -96,7 +112,7 @@ export const AssetOptionField = AssetField(
 export const AssetControlField = AssetField(
 	'AssetControlField',
 	ID.AssetControlFieldID,
-	[Inputs.CheckboxField]
+	[Inputs.CheckboxField, AssetCardFlipField]
 )
 
 function AssetAugmentSelf<T extends TObject>(
