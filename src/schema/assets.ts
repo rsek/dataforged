@@ -8,7 +8,7 @@ import {
 import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
-import { AssetID } from 'schema/common/id'
+import { AssetID, MoveIDWildcard } from 'schema/common/id'
 import { Label } from 'schema/common/localize'
 import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'
@@ -82,6 +82,52 @@ export const AssetConditionMeter = Type.Object(
 		...Inputs.Meter.properties,
 		id: Type.Ref(ID.AssetConditionMeterID),
 		label: Type.Ref(Label),
+		moves: Type.Optional(
+			Type.Object(
+				{
+					suffer: Type.Optional(
+						Type.Ref(ID.MoveID, {
+							description:
+								"The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
+							examples: [
+								'classic/moves/suffer/companion_endure_harm',
+								'starforged/moves/suffer/companion_takes_a_hit',
+								'starforged/moves/suffer/withstand_damage'
+							]
+						})
+					),
+					recover: Type.Optional(
+						Type.Ref(ID.MoveID, {
+							description:
+								'The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.',
+							examples: [
+								'classic/moves/adventure/heal',
+								'starforged/moves/recover/heal',
+								'starforged/moves/recover/repair'
+							]
+						})
+					)
+				},
+				{
+					description:
+						'Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.',
+					examples: [
+						{
+							suffer: 'classic/moves/suffer/endure_companion_harm',
+							recover: 'classic/moves/adventure/heal'
+						},
+						{
+							suffer: 'starforged/moves/suffer/companion_takes_a_hit',
+							recover: 'starforged/moves/recover/heal'
+						},
+						{
+							suffer: 'starforged/moves/suffer/withstand_damage',
+							recover: 'starforged/moves/recover/repair'
+						}
+					]
+				}
+			)
+		),
 		controls: Type.Optional(
 			Dictionary(Type.Ref(AssetConditionMeterControlField), {
 				description:

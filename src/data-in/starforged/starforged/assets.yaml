@@ -36,6 +36,9 @@ assets:
           min: 0
           value: 5
           max: 5
+          moves: &Vehicle.Moves
+            suffer: starforged/moves/suffer/withstand_damage
+            recover: starforged/moves/recover/repair
           controls:
             battered: &Vehicle.Battered
               label: battered
@@ -1064,8 +1067,9 @@ assets:
           max: 6
           min: 0
           value: 6
-          controls:
+          controls: &SupportVehicle.Controls
             battered: *Vehicle.Battered
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
@@ -1115,8 +1119,8 @@ assets:
           max: 3
           min: 0
           value: 3
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1173,8 +1177,8 @@ assets:
           max: 5
           min: 0
           value: 5
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.
@@ -1231,8 +1235,8 @@ assets:
           max: 4
           min: 0
           value: 4
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1290,8 +1294,8 @@ assets:
           max: 4
           min: 0
           value: 4
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
@@ -1332,8 +1336,8 @@ assets:
           max: 4
           min: 0
           value: 4
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
@@ -1386,8 +1390,8 @@ assets:
           max: 4
           min: 0
           value: 4
-          controls:
-            battered: *Vehicle.Battered
+          controls: *SupportVehicle.Controls
+          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray), you may roll +integrity; if you do, take +2 momentum on a hit.
@@ -4006,6 +4010,9 @@ assets:
           max: 4
           min: 0
           value: 4
+          moves: &CompanionBiological.Moves
+            suffer: &Companion.SufferMove starforged/moves/suffer/companion_takes_a_hit
+            recover: starforged/moves/recover/heal
           controls:
             out_of_action: &Companion.OutOfAction
               label: Out of action
@@ -4075,6 +4082,9 @@ assets:
           max: 5
           min: 0
           value: 5
+          moves: &CompanionMechanical.Moves
+            suffer: *Companion.SufferMove
+            recover: starforged/moves/recover/repair
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4148,6 +4158,7 @@ assets:
           max: 3
           min: 0
           value: 3
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4206,6 +4217,7 @@ assets:
           max: 3
           min: 0
           value: 3
+          moves: *CompanionMechanical.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4253,6 +4265,7 @@ assets:
           max: 5
           min: 0
           value: 5
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4320,6 +4333,7 @@ assets:
           max: 4
           min: 0
           value: 4
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4385,6 +4399,7 @@ assets:
           max: 2
           min: 0
           value: 2
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4424,6 +4439,7 @@ assets:
           max: 3
           value: 3
           min: 0
+          moves: *CompanionMechanical.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4500,6 +4516,7 @@ assets:
           max: 2
           min: 0
           value: 2
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4541,8 +4558,7 @@ assets:
           max: 4
           value: 4
           min: 0
-          # aliases:
-          #   - companion_health
+          moves: *CompanionMechanical.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:
@@ -4608,6 +4624,7 @@ assets:
           min: 0
           max: 4
           value: 4
+          moves: *CompanionBiological.Moves
           controls:
             out_of_action: *Companion.OutOfAction
         abilities:

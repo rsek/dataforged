@@ -294,6 +294,14 @@ export type AssetAbilityOptionField = TextField;
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
 /**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID1 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID2 = string;
+/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  *
@@ -308,6 +316,14 @@ export type AssetConditionMeterControlField = AssetCheckboxField;
  */
 export type MarkdownString12 = string;
 export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID3 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID4 = string;
 export type EncounterCollectionID = string;
 /**
  * Indicates that this collection's content should be inserted into another collection.
@@ -951,6 +967,13 @@ export interface AssetConditionMeter {
   min?: number;
   max?: number;
   /**
+   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
+   */
+  moves?: {
+    suffer?: MoveID1;
+    recover?: MoveID2;
+  };
+  /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */
   controls?: {
@@ -996,6 +1019,13 @@ export interface AssetConditionMeter1 {
   value?: number;
   id?: AssetConditionMeterID;
   label: Label;
+  /**
+   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
+   */
+  moves?: {
+    suffer?: MoveID3;
+    recover?: MoveID4;
+  };
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */

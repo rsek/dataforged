@@ -81,6 +81,9 @@ assets:
           max: 4
           value: 4
           min: 0
+          moves: &CompanionHealth.Moves
+            suffer: classic/moves/suffer/companion_endure_harm
+            recover: classic/moves/adventure/heal
       giant_spider:
         _source:
           title: Ironsworn Assets Master Set
@@ -149,6 +152,7 @@ assets:
           max: 4
           min: 0
           value: 4
+          moves: *CompanionHealth.Moves
       hawk:
         _source:
           title: Ironsworn Assets Master Set
@@ -166,6 +170,7 @@ assets:
           max: 3
           min: 0
           value: 3
+          moves: *CompanionHealth.Moves
         requirement: Your hawk can aid you while it is aloft.
         abilities:
           - name: Far-seeing
@@ -282,6 +287,7 @@ assets:
           max: 5
           min: 0
           value: 5
+          moves: *CompanionHealth.Moves
       hound:
         _source:
           title: Ironsworn Assets Master Set
@@ -338,6 +344,7 @@ assets:
           max: 4
           min: 0
           value: 4
+          moves: *CompanionHealth.Moves
       kindred:
         _source:
           title: Ironsworn Assets Master Set
@@ -354,6 +361,7 @@ assets:
           max: 4
           value: 4
           min: 0
+          moves: *CompanionHealth.Moves
         requirement: Your friend stands by you.
         abilities:
           - name: Skilled
@@ -447,6 +455,7 @@ assets:
           max: 5
           min: 0
           value: 5
+          moves: *CompanionHealth.Moves
       owl:
         _source:
           title: Ironsworn Assets Master Set
@@ -476,6 +485,7 @@ assets:
           value: 3
           label: health
           max: 3
+          moves: *CompanionHealth.Moves
       raven:
         _source:
           title: Ironsworn Assets Master Set
@@ -503,6 +513,7 @@ assets:
           max: 2
           min: 0
           value: 2
+          moves: *CompanionHealth.Moves
       young_wyvern:
         _source:
           title: Ironsworn Assets Master Set
@@ -540,6 +551,7 @@ assets:
           max: 5
           min: 0
           value: 5
+          moves: *CompanionHealth.Moves
   path:
     name: Path
     _source:
@@ -727,6 +739,14 @@ assets:
                       roll_options:
                         - using: ref
                           ref: classic/assets/path/commander/condition_meter
+              - augments:
+                  - classic/moves/adventure/make_camp
+                  - classic/moves/relationship/sojourn
+                move_type: action_roll
+                outcomes:
+                  strong_hit: &CommanderStrength.Recover
+                    text: Take +1 strength.
+                  weak_hit: *CommanderStrength.Recover
           - text: |-
               You may dispatch scouts from your warband to [Gather Information](id:classic/moves/adventure/gather_information) or [Resupply](id:classic/moves/adventure/resupply); if you do, roll +strength.
             augment_moves:
@@ -749,6 +769,8 @@ assets:
           max: 4
           min: 0
           value: 4
+          moves:
+            recover: classic/moves/adventure/make_camp
       dancer:
         _source:
           title: Ironsworn Assets Master Set

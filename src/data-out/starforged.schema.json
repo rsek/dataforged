@@ -1436,6 +1436,44 @@
 				"value": { "type": "integer" },
 				"id": { "$ref": "#/$defs/AssetConditionMeterID" },
 				"label": { "$ref": "#/$defs/Label" },
+				"moves": {
+					"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.",
+					"examples": [
+						{
+							"suffer": "classic/moves/suffer/endure_companion_harm",
+							"recover": "classic/moves/adventure/heal"
+						},
+						{
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
+						},
+						{
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						}
+					],
+					"type": "object",
+					"properties": {
+						"suffer": {
+							"description": "The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
+							"examples": [
+								"classic/moves/suffer/companion_endure_harm",
+								"starforged/moves/suffer/companion_takes_a_hit",
+								"starforged/moves/suffer/withstand_damage"
+							],
+							"$ref": "#/$defs/MoveID"
+						},
+						"recover": {
+							"description": "The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.",
+							"examples": [
+								"classic/moves/adventure/heal",
+								"starforged/moves/recover/heal",
+								"starforged/moves/recover/repair"
+							],
+							"$ref": "#/$defs/MoveID"
+						}
+					}
+				},
 				"controls": {
 					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
@@ -1457,6 +1495,44 @@
 			"properties": {
 				"min": { "default": 0, "type": "integer" },
 				"max": { "type": "integer" },
+				"moves": {
+					"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.",
+					"examples": [
+						{
+							"suffer": "classic/moves/suffer/endure_companion_harm",
+							"recover": "classic/moves/adventure/heal"
+						},
+						{
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
+						},
+						{
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						}
+					],
+					"type": "object",
+					"properties": {
+						"suffer": {
+							"description": "The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
+							"examples": [
+								"classic/moves/suffer/companion_endure_harm",
+								"starforged/moves/suffer/companion_takes_a_hit",
+								"starforged/moves/suffer/withstand_damage"
+							],
+							"$ref": "#/$defs/MoveID"
+						},
+						"recover": {
+							"description": "The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.",
+							"examples": [
+								"classic/moves/adventure/heal",
+								"starforged/moves/recover/heal",
+								"starforged/moves/recover/repair"
+							],
+							"$ref": "#/$defs/MoveID"
+						}
+					}
+				},
 				"controls": {
 					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
