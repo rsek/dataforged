@@ -1579,7 +1579,17 @@
 				"id": { "$ref": "#/$defs/AssetID" },
 				"name": { "$ref": "#/$defs/Label" },
 				"asset_type": {
-					"description": "A category label for this asset. This is the surtitle above the asset's name on the card.",
+					"description": "A localized category label for this asset. This is the surtitle above the asset's name on the card.",
+					"examples": [
+						"Combat Talent",
+						"Command Vehicle",
+						"Companion",
+						"Deed",
+						"Module",
+						"Path",
+						"Ritual",
+						"Support Vehicle"
+					],
 					"$ref": "#/$defs/Label"
 				},
 				"source": { "$ref": "#/$defs/Source" },
@@ -1687,7 +1697,17 @@
 							"type": "object",
 							"properties": {
 								"asset_type": {
-									"description": "A category label for this asset. This is the surtitle above the asset's name on the card.",
+									"description": "A localized category label for this asset. This is the surtitle above the asset's name on the card.",
+									"examples": [
+										"Combat Talent",
+										"Command Vehicle",
+										"Companion",
+										"Deed",
+										"Module",
+										"Path",
+										"Ritual",
+										"Support Vehicle"
+									],
 									"$ref": "#/$defs/Label"
 								},
 								"icon": { "$ref": "#/$defs/SVGImageURL" },
@@ -1925,7 +1945,7 @@
 		},
 		"EncounterNatureStarforged": {
 			"$id": "#/$defs/EncounterNatureStarforged",
-			"description": "A category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.",
+			"description": "A localized category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.",
 			"examples": [
 				"Creature",
 				"Horror",

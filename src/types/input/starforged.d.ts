@@ -333,7 +333,7 @@ export type MoveID3 = string;
  */
 export type MoveID4 = string;
 /**
- * A category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.
+ * A localized category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.
  */
 export type EncounterNatureStarforged = string;
 /**
