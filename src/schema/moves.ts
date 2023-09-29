@@ -260,8 +260,8 @@ const MoveBase = Type.Object({
 		text: Type.Ref(Localize.MarkdownString, {
 			description:
 				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
-			type: 'string',
-			pattern: /.*\.{3}/.source
+			type: 'string'
+			// pattern: /.*\.{3}/.source
 		})
 	}),
 	text: Type.Ref(Localize.MarkdownString, {
