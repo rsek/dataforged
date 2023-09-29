@@ -109,7 +109,7 @@ export const CheckboxField = InputField(
 	'checkbox',
 	Type.Boolean({
 		default: false,
-		description: '`true` means the box is checked.'
+		description: 'Is the box checked?'
 	}),
 	{},
 	{
@@ -125,7 +125,7 @@ export const CardFlipField = InputField(
 	'card_flip',
 	Type.Boolean({
 		default: false,
-		description: '`true` means the card has been flipped over.'
+		description: 'Is the card flipped over?'
 	}),
 	{},
 	{

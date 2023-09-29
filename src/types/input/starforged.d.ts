@@ -849,7 +849,7 @@ export interface CheckboxField {
   label: Label;
   field_type: "checkbox";
   /**
-   * `true` means the box is checked.
+   * Is the box checked?
    */
   value?: boolean;
 }
@@ -858,7 +858,7 @@ export interface AssetCardFlipField {
   label: Label;
   field_type: "card_flip";
   /**
-   * `true` means the card has been flipped over.
+   * Is the card flipped over?
    */
   value?: boolean;
   /**
@@ -964,7 +964,7 @@ export interface AssetCheckboxField {
   label: Label;
   field_type: "checkbox";
   /**
-   * `true` means the box is checked.
+   * Is the box checked?
    */
   value?: boolean;
   /**
