@@ -16,8 +16,8 @@ export const EncounterClassic = Type.Object(
 				'Beasts',
 				'Horror',
 				'Anomaly'
-			],
-			i18n: true
+			]
+			// i18n: true
 		})
 	},
 	{

@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { SNAKE_CASE } from 'schema/regex'
+import { SNAKE_CASE } from 'schema/common/regex'
 
 // export const PlayerStat = JsonEnum(
 // 	['edge', 'heart', 'iron', 'shadow', 'wits'],

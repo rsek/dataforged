@@ -6,7 +6,7 @@ import {
 } from '@sinclair/typebox'
 import { cloneDeep, escape, escapeRegExp } from 'lodash'
 import { join } from 'path'
-import { SNAKE_CASE } from 'schema/regex'
+import { SNAKE_CASE } from 'schema/common/regex'
 import { SOURCEBOOK_KEY } from 'schema/sourcebooks'
 import { type Opaque } from 'type-fest'
 

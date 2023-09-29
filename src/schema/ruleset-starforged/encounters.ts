@@ -5,8 +5,8 @@ export const EncounterNatureStarforged = Type.String({
 	$id: '#/$defs/EncounterNatureStarforged',
 	description:
 		'A localized category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.',
-	examples: ['Creature', 'Horror', 'Human', 'Machine', 'Monster', 'Vehicle'],
-	i18n: true
+	examples: ['Creature', 'Horror', 'Human', 'Machine', 'Monster', 'Vehicle']
+	// i18n: true
 })
 export type EncounterNatureStarforged = Static<typeof EncounterNatureStarforged>
 

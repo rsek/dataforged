@@ -20,9 +20,7 @@ import * as Metadata from 'schema/common/metadata'
 import type { OracleTableRow } from 'schema/oracles'
 import { mapValues } from 'lodash'
 import { type PartialDeep } from 'type-fest'
-
-export const REGEX_SOURCEBOOK_KEY = /[a-z0-9_]{3,}/
-export const REGEX_DICT_KEY = /[a-z][a-z_]*/
+import { REGEX_DICT_KEY } from 'schema/common/regex'
 
 /** Pattern for keys used in dictionary objects throughout Dataforged; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))

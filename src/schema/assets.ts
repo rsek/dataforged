@@ -213,7 +213,17 @@ export const Asset = Type.Object(
 		asset_type: Type.Ref(Localize.Label, {
 			description:
 				"A localized category label for this asset. This is the surtitle above the asset's name on the card.",
-			i18n: true
+			examples: [
+				'Combat Talent',
+				'Command Vehicle',
+				'Companion',
+				'Deed',
+				'Module',
+				'Path',
+				'Ritual',
+				'Support Vehicle'
+			]
+			// i18n: true
 		}),
 		source: Type.Ref(Metadata.Source),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
