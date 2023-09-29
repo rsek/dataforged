@@ -33,16 +33,13 @@ filePaths.forEach((filePath) => {
 	// set title so it infers a nicer type name
 	schema.title = `Sourcebook (${startCase(namespace)})`
 
+	const typeDeclarationPath = `src/types/${
+		filePath.includes('-input') ? 'input' : 'output'
+	}/${namespace}.d.ts`
+
 	void compile(schema as any, startCase(namespace), {
-		additionalProperties: false,
-		unreachableDefinitions: false,
-		$refOptions: { resolve: { external: false, file: false, http: false } }
+		additionalProperties: false
 	}).then((ts) => {
-		writeFileSync(
-			`src/types/${
-				filePath.includes('-input') ? 'input' : 'output'
-			}/${namespace}.d.ts`,
-			ts
-		)
+		writeFileSync(typeDeclarationPath, ts)
 	})
 })
