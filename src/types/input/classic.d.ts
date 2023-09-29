@@ -24,7 +24,7 @@ export type RegionEntryID = string;
 export type EncounterStarforgedID = string;
 export type OracleCollectionID = string;
 /**
- * Indicates that this collection's content should be inserted into another collection.
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type OracleCollectionID1 = string;
 /**
@@ -95,7 +95,7 @@ export type OracleCollectionStyle = "multi_table";
 export type WEBPImageURL = string;
 export type MoveCategoryID = string;
 /**
- * Indicates that this collection's content should be inserted into another collection.
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type MoveCategoryID1 = string;
 /**
@@ -121,7 +121,6 @@ export type Move =
         text: MarkdownString3;
       } & TriggerNoRoll;
       text: MarkdownString5;
-      outcomes?: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
        */
@@ -129,6 +128,7 @@ export type Move =
       suggestions?: Suggestions;
       source?: Source;
       move_type: "no_roll";
+      outcomes?: null;
       _source?: SourceStub;
     }
   | {
@@ -138,7 +138,6 @@ export type Move =
         text: MarkdownString6;
       } & TriggerActionRoll;
       text: MarkdownString8;
-      outcomes: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
        */
@@ -146,6 +145,7 @@ export type Move =
       suggestions?: Suggestions;
       source?: Source;
       move_type: "action_roll";
+      outcomes: MoveOutcomes;
       _source?: SourceStub;
     }
   | {
@@ -155,7 +155,6 @@ export type Move =
         text: MarkdownString9;
       } & TriggerProgressRoll;
       text: MarkdownString11;
-      outcomes: MoveOutcomes;
       /**
        * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
        */
@@ -163,6 +162,7 @@ export type Move =
       suggestions?: Suggestions;
       source?: Source;
       move_type: "progress_roll";
+      outcomes: MoveOutcomes;
       _source?: SourceStub;
     };
 /**
@@ -183,8 +183,6 @@ export type MarkdownString4 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString5 = string;
-export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -207,6 +205,7 @@ export type MarkdownString7 = string;
  * `lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.
  */
 export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
+export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 export type TriggerActionRollConditionOption =
   | TriggerActionRollConditionOptionStat
   | TriggerActionRollConditionOptionRef
@@ -229,6 +228,7 @@ export type AssetOptionFieldIDWildcard = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString8 = string;
+export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -264,7 +264,7 @@ export type ProgressType = string;
 export type MarkdownString11 = string;
 export type AssetTypeID = string;
 /**
- * Indicates that this collection's content should be inserted into another collection.
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type AssetTypeID1 = string;
 /**
@@ -326,7 +326,7 @@ export type MoveID3 = string;
 export type MoveID4 = string;
 export type EncounterCollectionID = string;
 /**
- * Indicates that this collection's content should be inserted into another collection.
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type EncounterCollectionID1 = string;
 /**
@@ -483,7 +483,7 @@ export interface OracleCollection {
   source?: Source;
   suggestions?: Suggestions;
   id?: OracleCollectionID;
-  augments?: OracleCollectionID1;
+  extends?: OracleCollectionID1;
   /**
    * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
    */
@@ -669,7 +669,7 @@ export interface MoveCategory {
   source?: Source;
   suggestions?: Suggestions;
   id?: MoveCategoryID;
-  augments?: MoveCategoryID1;
+  extends?: MoveCategoryID1;
   /**
    * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
    */
@@ -703,31 +703,6 @@ export interface TriggerBy {
   player?: boolean;
   ally?: boolean;
 }
-/**
- * Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
- *
- *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
- */
-export interface MoveOutcomes {
-  miss: MoveOutcomeMatchable;
-  weak_hit: MoveOutcome;
-  strong_hit: MoveOutcomeMatchable;
-}
-export interface MoveOutcomeMatchable {
-  text: MarkdownString;
-  count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
-  match?: MoveOutcome;
-}
-export interface MoveReroll {
-  text?: MarkdownString;
-  method: MoveRerollMethod;
-}
-export interface MoveOutcome {
-  text: MarkdownString;
-  count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
-}
 export interface TriggerActionRoll {
   text: MarkdownString7;
   conditions: TriggerActionRollCondition[];
@@ -753,6 +728,31 @@ export interface TriggerActionRollConditionOptionCustomValue {
   label: Label;
   value: number;
 }
+/**
+ * Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ *
+ *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
+ */
+export interface MoveOutcomes {
+  miss: MoveOutcomeMatchable;
+  weak_hit: MoveOutcome;
+  strong_hit: MoveOutcomeMatchable;
+}
+export interface MoveOutcomeMatchable {
+  text: MarkdownString;
+  count_as?: MoveOutcomeType;
+  reroll?: MoveReroll;
+  match?: MoveOutcome;
+}
+export interface MoveReroll {
+  text?: MarkdownString;
+  method: MoveRerollMethod;
+}
+export interface MoveOutcome {
+  text: MarkdownString;
+  count_as?: MoveOutcomeType;
+  reroll?: MoveReroll;
+}
 export interface TriggerProgressRoll {
   text: MarkdownString10;
   conditions: TriggerProgressRollCondition[];
@@ -776,7 +776,7 @@ export interface AssetType {
   source?: Source;
   suggestions?: Suggestions;
   id?: AssetTypeID;
-  augments?: AssetTypeID1;
+  extends?: AssetTypeID1;
   /**
    * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
    */
@@ -1061,7 +1061,7 @@ export interface EncounterCollectionClassic {
   source?: Source;
   suggestions?: Suggestions;
   id?: EncounterCollectionID;
-  augments?: EncounterCollectionID1;
+  extends?: EncounterCollectionID1;
   /**
    * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
    */

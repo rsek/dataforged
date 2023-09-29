@@ -175,10 +175,10 @@ export function Collection<T extends TRef>(
 	return SourcedNode(
 		{
 			id: idPattern,
-			augments: Type.Optional({
+			extends: Type.Optional({
 				...idPattern,
 				description:
-					"Indicates that this collection's content should be inserted into another collection."
+					"Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 			}),
 			imports: Type.Optional(
 				Type.Object(

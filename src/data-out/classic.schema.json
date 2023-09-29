@@ -730,9 +730,9 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/OracleCollectionID" },
-				"augments": {
+				"extends": {
 					"$ref": "#/$defs/OracleCollectionID",
-					"description": "Indicates that this collection's content should be inserted into another collection."
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
 				"imports": {
 					"macro": true,
@@ -1070,7 +1070,6 @@
 							"description": "The complete rules text of the move.",
 							"$ref": "#/$defs/MarkdownString"
 						},
-						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
 						"oracles": {
 							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
 							"type": "array",
@@ -1078,7 +1077,8 @@
 						},
 						"suggestions": { "$ref": "#/$defs/Suggestions" },
 						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "no_roll", "type": "string" }
+						"move_type": { "const": "no_roll", "type": "string" },
+						"outcomes": { "type": "null" }
 					},
 					"required": ["id", "name", "trigger", "text", "source", "move_type"]
 				},
@@ -1107,12 +1107,6 @@
 							"description": "The complete rules text of the move.",
 							"$ref": "#/$defs/MarkdownString"
 						},
-						"outcomes": {
-							"allOf": [
-								{ "$ref": "#/$defs/MoveOutcomes" },
-								{ "$ref": "#/$defs/MoveOutcomes" }
-							]
-						},
 						"oracles": {
 							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
 							"type": "array",
@@ -1120,16 +1114,17 @@
 						},
 						"suggestions": { "$ref": "#/$defs/Suggestions" },
 						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "action_roll", "type": "string" }
+						"move_type": { "const": "action_roll", "type": "string" },
+						"outcomes": { "$ref": "#/$defs/MoveOutcomes" }
 					},
 					"required": [
 						"id",
 						"name",
 						"trigger",
 						"text",
-						"outcomes",
 						"source",
-						"move_type"
+						"move_type",
+						"outcomes"
 					]
 				},
 				{
@@ -1157,12 +1152,6 @@
 							"description": "The complete rules text of the move.",
 							"$ref": "#/$defs/MarkdownString"
 						},
-						"outcomes": {
-							"allOf": [
-								{ "$ref": "#/$defs/MoveOutcomes" },
-								{ "$ref": "#/$defs/MoveOutcomes" }
-							]
-						},
 						"oracles": {
 							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
 							"type": "array",
@@ -1170,16 +1159,17 @@
 						},
 						"suggestions": { "$ref": "#/$defs/Suggestions" },
 						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "progress_roll", "type": "string" }
+						"move_type": { "const": "progress_roll", "type": "string" },
+						"outcomes": { "$ref": "#/$defs/MoveOutcomes" }
 					},
 					"required": [
 						"id",
 						"name",
 						"trigger",
 						"text",
-						"outcomes",
 						"source",
-						"move_type"
+						"move_type",
+						"outcomes"
 					]
 				}
 			],
@@ -1196,9 +1186,9 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/MoveCategoryID" },
-				"augments": {
+				"extends": {
 					"$ref": "#/$defs/MoveCategoryID",
-					"description": "Indicates that this collection's content should be inserted into another collection."
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
 				"imports": {
 					"macro": true,
@@ -1736,9 +1726,9 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/AssetTypeID" },
-				"augments": {
+				"extends": {
 					"$ref": "#/$defs/AssetTypeID",
-					"description": "Indicates that this collection's content should be inserted into another collection."
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
 				"imports": {
 					"macro": true,
@@ -2613,9 +2603,9 @@
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/EncounterCollectionID" },
-				"augments": {
+				"extends": {
 					"$ref": "#/$defs/EncounterCollectionID",
-					"description": "Indicates that this collection's content should be inserted into another collection."
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
 				"imports": {
 					"macro": true,

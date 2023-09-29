@@ -261,13 +261,12 @@ const MoveBase = Type.Object({
 			description:
 				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
 			type: 'string'
-			// pattern: /.*\.{3}/.source
 		})
 	}),
 	text: Type.Ref(Localize.MarkdownString, {
 		description: 'The complete rules text of the move.'
 	}),
-	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
+	// outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
 	oracles: Type.Optional(
 		Type.Array(Type.Ref(ID.OracleTableID), {
 			description:
@@ -280,25 +279,34 @@ const MoveBase = Type.Object({
 
 type MoveBase = Static<typeof MoveBase>
 
-const MoveNoRollStub = Type.Object({
-	move_type: Type.Literal('no_roll'),
-	trigger: Type.Ref(TriggerNoRoll),
-	outcomes: Type.Never()
-})
+const MoveNoRollStub = Type.Object(
+	{
+		move_type: Type.Literal('no_roll'),
+		trigger: Type.Ref(TriggerNoRoll),
+		outcomes: Type.Optional(Type.Null())
+	},
+	{ title: 'Move (no roll)' }
+)
 export type MoveNoRoll = Static<typeof MoveNoRollStub> & MoveBase
 
-const MoveActionRollStub = Type.Object({
-	move_type: Type.Literal('action_roll'),
-	trigger: Type.Ref(TriggerActionRoll),
-	outcomes: Type.Ref(MoveOutcomes)
-})
+const MoveActionRollStub = Type.Object(
+	{
+		move_type: Type.Literal('action_roll'),
+		trigger: Type.Ref(TriggerActionRoll),
+		outcomes: Type.Ref(MoveOutcomes)
+	},
+	{ title: 'Move (action roll)' }
+)
 export type MoveActionRoll = Static<typeof MoveActionRollStub> & MoveBase
 
-const MoveProgressRollStub = Type.Object({
-	move_type: Type.Literal('progress_roll'),
-	trigger: Type.Ref(TriggerProgressRoll),
-	outcomes: Type.Ref(MoveOutcomes)
-})
+const MoveProgressRollStub = Type.Object(
+	{
+		move_type: Type.Literal('progress_roll'),
+		trigger: Type.Ref(TriggerProgressRoll),
+		outcomes: Type.Ref(MoveOutcomes)
+	},
+	{ title: 'Move (progress roll)' }
+)
 export type MoveProgressRoll = Static<typeof MoveProgressRollStub> & MoveBase
 
 export const Move = TaggedUnion(
@@ -310,19 +318,9 @@ export const Move = TaggedUnion(
 		['action_roll', 'progress_roll', 'no_roll'],
 		{ default: 'no_roll' }
 	),
-	{ $id: '#/$defs/Move' }
+	{ $id: '#/$defs/Move', title: 'Move' }
 )
 
-// export const Move = Type.Composite(
-// 	[
-// 		MoveBase,
-// 		Type.Unsafe<Move>({
-// 			type: 'object',
-// 			oneOf: [MoveNoRollStub, MoveActionRollStub, MoveProgressRollStub]
-// 		}) as any
-// 	],
-// 	{ $id: '#/$defs/Move', additionalProperties: false }
-// )
 export type Move = MoveProgressRoll | MoveActionRoll | MoveNoRoll
 
 export const MoveCategory = Abstract.Collection(
