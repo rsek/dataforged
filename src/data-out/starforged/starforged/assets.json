@@ -14,13 +14,14 @@
 	"ruleset": "starforged",
 	"assets": {
 		"command_vehicle": {
-			"name": "Command vehicle",
+			"name": "Command Vehicle Assets",
 			"color": "#9aa3ad",
 			"summary": "This is your interstellar spacecraft.",
 			"description": "The **command vehicle** is your interstellar STARSHIP. It is a default asset for your character, taken when you begin your campaign. If you are playing with others, this is a shared asset; each of you may use the STARSHIP's abilities while aboard the craft.\n\nThe command vehicle has an integrity meter and starts at 5 integrity. When your STARSHIP takes a hit, make the [Withstand Damage](id:starforged/moves/suffer/withstand_damage) move to see what happens.",
 			"contents": {
 				"starship": {
 					"name": "Starship",
+					"asset_type": "Command Vehicle",
 					"shared": true,
 					"attachments": {
 						"assets": ["*/assets/module/*"]
@@ -109,11 +110,12 @@
 			}
 		},
 		"module": {
-			"name": "Module",
+			"name": "Module Assets",
 			"color": "#7f5a90",
 			"description": "**Modules** are linked to your STARSHIP and offer additional options and advantages when aboard that vehicle.\n\nThese assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).\n\nWhen you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](id:starforged/moves/recover/repair) it.",
 			"contents": {
 				"engine_upgrade": {
+					"asset_type": "Module",
 					"name": "Engine Upgrade",
 					"shared": true,
 					"controls": {
@@ -158,6 +160,7 @@
 					}
 				},
 				"expanded_hold": {
+					"asset_type": "Module",
 					"name": "Expanded Hold",
 					"shared": true,
 					"controls": {
@@ -209,6 +212,7 @@
 					}
 				},
 				"grappler": {
+					"asset_type": "Module",
 					"name": "Grappler",
 					"shared": true,
 					"controls": {
@@ -300,6 +304,7 @@
 					}
 				},
 				"heavy_cannons": {
+					"asset_type": "Module",
 					"name": "Heavy Cannons",
 					"shared": true,
 					"controls": {
@@ -344,6 +349,7 @@
 					}
 				},
 				"internal_refit": {
+					"asset_type": "Module",
 					"name": "Internal Refit",
 					"shared": true,
 					"controls": {
@@ -432,6 +438,7 @@
 					}
 				},
 				"medbay": {
+					"asset_type": "Module",
 					"name": "Medbay",
 					"shared": true,
 					"controls": {
@@ -476,6 +483,7 @@
 					}
 				},
 				"missile_array": {
+					"asset_type": "Module",
 					"name": "Missile Array",
 					"shared": true,
 					"condition_meter": {
@@ -527,6 +535,7 @@
 					}
 				},
 				"overseer": {
+					"asset_type": "Module",
 					"name": "Overseer",
 					"shared": true,
 					"controls": {
@@ -578,6 +587,7 @@
 					}
 				},
 				"reinforced_hull": {
+					"asset_type": "Module",
 					"name": "Reinforced Hull",
 					"shared": true,
 					"controls": {
@@ -622,6 +632,7 @@
 					}
 				},
 				"research_lab": {
+					"asset_type": "Module",
 					"name": "Research Lab",
 					"shared": true,
 					"controls": {
@@ -666,6 +677,7 @@
 					}
 				},
 				"sensor_array": {
+					"asset_type": "Module",
 					"name": "Sensor Array",
 					"shared": true,
 					"controls": {
@@ -710,6 +722,7 @@
 					}
 				},
 				"shields": {
+					"asset_type": "Module",
 					"name": "Shields",
 					"shared": true,
 					"controls": {
@@ -808,6 +821,7 @@
 					}
 				},
 				"stealth_tech": {
+					"asset_type": "Module",
 					"name": "Stealth Tech",
 					"shared": true,
 					"controls": {
@@ -852,6 +866,7 @@
 					}
 				},
 				"vehicle_bay": {
+					"asset_type": "Module",
 					"name": "Vehicle Bay",
 					"shared": true,
 					"controls": {
@@ -896,6 +911,7 @@
 					}
 				},
 				"workshop": {
+					"asset_type": "Module",
 					"name": "Workshop",
 					"shared": true,
 					"controls": {
@@ -955,13 +971,14 @@
 			}
 		},
 		"support_vehicle": {
-			"name": "Support vehicle",
+			"name": "Support Vehicle Assets",
 			"color": "#495790",
 			"description": "**Support vehicles** complement your command vehicle for planetside or short-range operations. If you are playing with others, one of you might serve as the pilot or owner of a support vehicle, but anyone on board can use its abilities as appropriate to the situation.\n\nAs with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) to see how it fares.",
 			"contents": {
 				"exosuit": {
 					"name": "Exosuit",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1025,6 +1042,7 @@
 				"hoverbike": {
 					"name": "Hoverbike",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1088,6 +1106,7 @@
 				"rover": {
 					"name": "Rover",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"label": "Name",
@@ -1151,6 +1170,7 @@
 				"service_pod": {
 					"name": "Service Pod",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1214,6 +1234,7 @@
 				"shuttle": {
 					"name": "Shuttle",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1277,6 +1298,7 @@
 				"skiff": {
 					"name": "Skiff",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1340,6 +1362,7 @@
 				"snub_fighter": {
 					"name": "Snub Fighter",
 					"shared": true,
+					"asset_type": "Support Vehicle",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1425,11 +1448,12 @@
 			}
 		},
 		"path": {
-			"name": "Path",
+			"name": "Path Assets",
 			"color": "#3f7faa",
 			"description": "**Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.\n\nSome paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.",
 			"contents": {
 				"ace": {
+					"asset_type": "Path",
 					"name": "Ace",
 					"abilities": [
 						{
@@ -1465,6 +1489,7 @@
 					}
 				},
 				"archer": {
+					"asset_type": "Path",
 					"name": "Archer",
 					"requirement": "If you wield a power bow...",
 					"condition_meter": {
@@ -1552,6 +1577,7 @@
 					}
 				},
 				"armored": {
+					"asset_type": "Path",
 					"name": "Armored",
 					"requirement": "If you wear your finely crafted set of personal armor...",
 					"abilities": [
@@ -1588,6 +1614,7 @@
 					}
 				},
 				"artist": {
+					"asset_type": "Path",
 					"name": "Artist",
 					"abilities": [
 						{
@@ -1680,6 +1707,7 @@
 					}
 				},
 				"augmented": {
+					"asset_type": "Path",
 					"name": "Augmented",
 					"options": {
 						"one": {
@@ -1727,6 +1755,7 @@
 					}
 				},
 				"bannersworn": {
+					"asset_type": "Path",
 					"name": "Bannersworn",
 					"options": {
 						"ideology": {
@@ -1769,6 +1798,7 @@
 					}
 				},
 				"blademaster": {
+					"asset_type": "Path",
 					"name": "Blademaster",
 					"requirement": "If you wield a bladed weapon...",
 					"abilities": [
@@ -1820,6 +1850,7 @@
 					}
 				},
 				"bounty_hunter": {
+					"asset_type": "Path",
 					"name": "Bounty Hunter",
 					"abilities": [
 						{
@@ -1855,6 +1886,7 @@
 					}
 				},
 				"brawler": {
+					"asset_type": "Path",
 					"name": "Brawler",
 					"requirement": "If you fight unarmed or with a close quarters weapon...",
 					"abilities": [
@@ -1891,6 +1923,7 @@
 					}
 				},
 				"courier": {
+					"asset_type": "Path",
 					"name": "Courier",
 					"abilities": [
 						{
@@ -1933,6 +1966,7 @@
 					}
 				},
 				"demolitionist": {
+					"asset_type": "Path",
 					"name": "Demolitionist",
 					"abilities": [
 						{
@@ -1968,6 +2002,7 @@
 					}
 				},
 				"devotant": {
+					"asset_type": "Path",
 					"name": "Devotant",
 					"options": {
 						"name": {
@@ -2037,6 +2072,7 @@
 					}
 				},
 				"diplomat": {
+					"asset_type": "Path",
 					"name": "Diplomat",
 					"abilities": [
 						{
@@ -2072,6 +2108,7 @@
 					}
 				},
 				"empath": {
+					"asset_type": "Path",
 					"name": "Empath",
 					"abilities": [
 						{
@@ -2151,6 +2188,7 @@
 					}
 				},
 				"explorer": {
+					"asset_type": "Path",
 					"name": "Explorer",
 					"abilities": [
 						{
@@ -2186,6 +2224,7 @@
 					}
 				},
 				"fated": {
+					"asset_type": "Path",
 					"name": "Fated",
 					"abilities": [
 						{
@@ -2221,6 +2260,7 @@
 					}
 				},
 				"firebrand": {
+					"asset_type": "Path",
 					"name": "Firebrand",
 					"abilities": [
 						{
@@ -2307,6 +2347,7 @@
 					}
 				},
 				"fugitive": {
+					"asset_type": "Path",
 					"name": "Fugitive",
 					"abilities": [
 						{
@@ -2352,6 +2393,7 @@
 					}
 				},
 				"gearhead": {
+					"asset_type": "Path",
 					"name": "Gearhead",
 					"abilities": [
 						{
@@ -2387,6 +2429,7 @@
 					}
 				},
 				"gunner": {
+					"asset_type": "Path",
 					"name": "Gunner",
 					"requirement": "If you wield a heavy ranged personal weapon...",
 					"abilities": [
@@ -2430,6 +2473,7 @@
 					}
 				},
 				"gunslinger": {
+					"asset_type": "Path",
 					"name": "Gunslinger",
 					"requirement": "If you wield a pistol...",
 					"abilities": [
@@ -2466,6 +2510,7 @@
 					}
 				},
 				"haunted": {
+					"asset_type": "Path",
 					"name": "Haunted",
 					"abilities": [
 						{
@@ -2501,6 +2546,7 @@
 					}
 				},
 				"healer": {
+					"asset_type": "Path",
 					"name": "Healer",
 					"abilities": [
 						{
@@ -2536,6 +2582,7 @@
 					}
 				},
 				"infiltrator": {
+					"asset_type": "Path",
 					"name": "Infiltrator",
 					"abilities": [
 						{
@@ -2571,6 +2618,7 @@
 					}
 				},
 				"kinetic": {
+					"asset_type": "Path",
 					"name": "Kinetic",
 					"abilities": [
 						{
@@ -2606,6 +2654,7 @@
 					}
 				},
 				"leader": {
+					"asset_type": "Path",
 					"name": "Leader",
 					"abilities": [
 						{
@@ -2641,6 +2690,7 @@
 					}
 				},
 				"looper": {
+					"asset_type": "Path",
 					"name": "Looper",
 					"abilities": [
 						{
@@ -2732,6 +2782,7 @@
 					}
 				},
 				"lore_hunter": {
+					"asset_type": "Path",
 					"name": "Lore Hunter",
 					"abilities": [
 						{
@@ -2767,6 +2818,7 @@
 					}
 				},
 				"loyalist": {
+					"asset_type": "Path",
 					"name": "Loyalist",
 					"abilities": [
 						{
@@ -2802,6 +2854,7 @@
 					}
 				},
 				"mercenary": {
+					"asset_type": "Path",
 					"name": "Mercenary",
 					"abilities": [
 						{
@@ -2837,6 +2890,7 @@
 					}
 				},
 				"naturalist": {
+					"asset_type": "Path",
 					"name": "Naturalist",
 					"abilities": [
 						{
@@ -2872,6 +2926,7 @@
 					}
 				},
 				"navigator": {
+					"asset_type": "Path",
 					"name": "Navigator",
 					"abilities": [
 						{
@@ -2907,6 +2962,7 @@
 					}
 				},
 				"outcast": {
+					"asset_type": "Path",
 					"name": "Outcast",
 					"abilities": [
 						{
@@ -2986,6 +3042,7 @@
 					}
 				},
 				"scavenger": {
+					"asset_type": "Path",
 					"name": "Scavenger",
 					"abilities": [
 						{
@@ -3021,6 +3078,7 @@
 					}
 				},
 				"scoundrel": {
+					"asset_type": "Path",
 					"name": "Scoundrel",
 					"abilities": [
 						{
@@ -3056,6 +3114,7 @@
 					}
 				},
 				"seer": {
+					"asset_type": "Path",
 					"name": "Seer",
 					"abilities": [
 						{
@@ -3091,6 +3150,7 @@
 					}
 				},
 				"shade": {
+					"asset_type": "Path",
 					"name": "Shade",
 					"abilities": [
 						{
@@ -3170,6 +3230,7 @@
 					}
 				},
 				"slayer": {
+					"asset_type": "Path",
 					"name": "Slayer",
 					"abilities": [
 						{
@@ -3205,6 +3266,7 @@
 					}
 				},
 				"sleuth": {
+					"asset_type": "Path",
 					"name": "Sleuth",
 					"abilities": [
 						{
@@ -3240,6 +3302,7 @@
 					}
 				},
 				"sniper": {
+					"asset_type": "Path",
 					"name": "Sniper",
 					"requirement": "If you wield a rifle...",
 					"abilities": [
@@ -3320,6 +3383,7 @@
 					}
 				},
 				"tech": {
+					"asset_type": "Path",
 					"name": "Tech",
 					"abilities": [
 						{
@@ -3355,6 +3419,7 @@
 					}
 				},
 				"trader": {
+					"asset_type": "Path",
 					"name": "Trader",
 					"abilities": [
 						{
@@ -3390,6 +3455,7 @@
 					}
 				},
 				"vestige": {
+					"asset_type": "Path",
 					"name": "Vestige",
 					"options": {
 						"last_of": {
@@ -3439,6 +3505,7 @@
 					}
 				},
 				"veteran": {
+					"asset_type": "Path",
 					"name": "Veteran",
 					"abilities": [
 						{
@@ -3474,6 +3541,7 @@
 					}
 				},
 				"voidborn": {
+					"asset_type": "Path",
 					"name": "Voidborn",
 					"abilities": [
 						{
@@ -3509,6 +3577,7 @@
 					}
 				},
 				"weapon_master": {
+					"asset_type": "Path",
 					"name": "Weapon Master",
 					"abilities": [
 						{
@@ -3559,11 +3628,12 @@
 			}
 		},
 		"companion": {
-			"name": "Companion",
+			"name": "Companion Assets",
 			"color": "#3d8b8a",
 			"description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
 			"contents": {
 				"banshee": {
+					"asset_type": "Companion",
 					"name": "Banshee",
 					"options": {
 						"name": {
@@ -3627,6 +3697,7 @@
 					}
 				},
 				"combat_bot": {
+					"asset_type": "Companion",
 					"name": "Combat Bot",
 					"options": {
 						"name": {
@@ -3690,6 +3761,7 @@
 					}
 				},
 				"glowcat": {
+					"asset_type": "Companion",
 					"name": "Glowcat",
 					"options": {
 						"name": {
@@ -3753,6 +3825,7 @@
 					}
 				},
 				"protocol_bot": {
+					"asset_type": "Companion",
 					"name": "Protocol Bot",
 					"options": {
 						"name": {
@@ -3816,6 +3889,7 @@
 					}
 				},
 				"rockhorn": {
+					"asset_type": "Companion",
 					"name": "Rockhorn",
 					"options": {
 						"name": {
@@ -3879,6 +3953,7 @@
 					}
 				},
 				"sidekick": {
+					"asset_type": "Companion",
 					"name": "Sidekick",
 					"options": {
 						"name": {
@@ -3947,6 +4022,7 @@
 					}
 				},
 				"sprite": {
+					"asset_type": "Companion",
 					"name": "Sprite",
 					"options": {
 						"name": {
@@ -4010,6 +4086,7 @@
 					}
 				},
 				"survey_bot": {
+					"asset_type": "Companion",
 					"name": "Survey Bot",
 					"options": {
 						"name": {
@@ -4073,6 +4150,7 @@
 					}
 				},
 				"symbiote": {
+					"asset_type": "Companion",
 					"name": "Symbiote",
 					"options": {
 						"name": {
@@ -4136,6 +4214,7 @@
 					}
 				},
 				"utility_bot": {
+					"asset_type": "Companion",
 					"name": "Utility Bot",
 					"options": {
 						"name": {
@@ -4199,6 +4278,7 @@
 					}
 				},
 				"voidglider": {
+					"asset_type": "Companion",
 					"name": "Voidglider",
 					"options": {
 						"name": {
@@ -4277,11 +4357,12 @@
 			}
 		},
 		"deed": {
-			"name": "Deed",
+			"name": "Deed Assets",
 			"color": "#40834f",
 			"description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
 			"contents": {
 				"bonded": {
+					"asset_type": "Deed",
 					"name": "Bonded",
 					"options": {
 						"bond_mate": {
@@ -4325,6 +4406,7 @@
 					}
 				},
 				"homesteader": {
+					"asset_type": "Deed",
 					"name": "Homesteader",
 					"options": {
 						"name": {
@@ -4368,6 +4450,7 @@
 					}
 				},
 				"marked": {
+					"asset_type": "Deed",
 					"name": "Marked",
 					"options": {
 						"identifier": {
@@ -4421,6 +4504,7 @@
 					}
 				},
 				"oathbreaker": {
+					"asset_type": "Deed",
 					"name": "Oathbreaker",
 					"requirement": "Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...",
 					"count_as_impact": true,
@@ -4457,6 +4541,7 @@
 					}
 				},
 				"revenant": {
+					"asset_type": "Deed",
 					"name": "Revenant",
 					"requirement": "Once you [Face Death](id:starforged/moves/threshold/face_death)...",
 					"abilities": [
@@ -4493,6 +4578,7 @@
 					}
 				},
 				"survivor": {
+					"asset_type": "Deed",
 					"name": "Survivor",
 					"requirement": "Once you mark traumatized or permanently harmed...",
 					"abilities": [
@@ -4529,6 +4615,7 @@
 					}
 				},
 				"vanguard": {
+					"asset_type": "Deed",
 					"name": "Vanguard",
 					"requirement": "Once you fill 6 boxes on your discoveries legacy track...",
 					"abilities": [

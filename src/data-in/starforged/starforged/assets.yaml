@@ -11,7 +11,7 @@ assets:
   command_vehicle:
     _source:
       page: 55
-    name: Command vehicle
+    name: Command Vehicle Assets
     color: '#9aa3ad'
     summary: This is your interstellar spacecraft.
     description: |-
@@ -21,6 +21,7 @@ assets:
     contents:
       starship:
         name: Starship
+        asset_type: Command Vehicle
         shared: true
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -89,7 +90,7 @@ assets:
   module:
     _source:
       page: 55
-    name: Module
+    name: Module Assets
     color: '#7f5a90'
     # Summary: Enhanced features or capabilities of your STARSHIP. As with the ship itself, these are shared assets; a module’s abilities can benefit other player characters if it’s reasonable for them to make use of it.
     description: |-
@@ -100,6 +101,7 @@ assets:
       When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](id:starforged/moves/recover/repair) it.
     contents:
       engine_upgrade:
+        asset_type: Module
         name: Engine Upgrade
         shared: true
         _source:
@@ -166,6 +168,7 @@ assets:
                   weak_hit: *Engine_Upgrade.2
                   miss: *Engine_Upgrade.2
       expanded_hold:
+        asset_type: Module
         name: Expanded Hold
         shared: true
         _source:
@@ -212,6 +215,7 @@ assets:
                   You may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
                 outcomes: *outcomes:+2_momentum.HIT
       grappler:
+        asset_type: Module
         name: Grappler
         shared: true
         _source:
@@ -272,6 +276,7 @@ assets:
                   weak_hit: *Grappler.3
                   miss: *Grappler.3
       heavy_cannons:
+        asset_type: Module
         name: Heavy Cannons
         shared: true
         _source:
@@ -332,6 +337,7 @@ assets:
                     text: Take +1 momentum.
                     match: *outcome:+2_momentum
       internal_refit:
+        asset_type: Module
         name: Internal Refit
         shared: true
         _source:
@@ -393,6 +399,7 @@ assets:
                     reroll: *reroll:any
                   miss: *outcome:reroll_any
       medbay:
+        asset_type: Module
         name: Medbay
         shared: true
         _source:
@@ -456,6 +463,7 @@ assets:
                     - text: Through an autopsy or medical examination
                 outcomes: *Medbay.3
       missile_array:
+        asset_type: Module
         name: Missile Array
         shared: true
         _source:
@@ -520,6 +528,7 @@ assets:
                     - text: When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles
                 text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
       overseer:
+        asset_type: Module
         name: Overseer
         shared: true
         _source:
@@ -568,6 +577,7 @@ assets:
                         - using: attached_asset_meter
                 outcomes: *outcomes:+1_momentum.HIT
       reinforced_hull:
+        asset_type: Module
         name: Reinforced Hull
         shared: true
         _source:
@@ -624,6 +634,7 @@ assets:
                   miss:
                     text: '[Pay the Price](id:starforged/moves/fate/pay_the_price) by marking this component as broken.'
       research_lab:
+        asset_type: Module
         name: Research Lab
         shared: true
         _source:
@@ -697,6 +708,7 @@ assets:
                     text: Mark one extra box on your discoveries legacy track.
                   weak_hit: *outcome:mark_discoveries_box
       sensor_array:
+        asset_type: Module
         name: Sensor Array
         shared: true
         _source:
@@ -782,6 +794,7 @@ assets:
                         - using: attached_asset_meter
                 outcomes: *Sensor_Array.3
       shields:
+        asset_type: Module
         name: Shields
         shared: true
         _source:
@@ -852,6 +865,7 @@ assets:
           value: 0
           min: 0
       stealth_tech:
+        asset_type: Module
         name: Stealth Tech
         shared: true
         _source:
@@ -935,6 +949,7 @@ assets:
                       text: Mark progress. You also remain totally undetected; take +2 momentum and add +1 on your next [Strike](id:starforged/moves/combat/strike).
                   weak_hit: *outcome:mark_progress
       vehicle_bay:
+        asset_type: Module
         name: Vehicle Bay
         shared: true
         _source:
@@ -978,6 +993,7 @@ assets:
                   weak_hit: *Vehicle_Bay.3.Hit
                   miss: *outcome:reroll_any
       workshop:
+        asset_type: Module
         name: Workshop
         shared: true
         _source:
@@ -1047,7 +1063,7 @@ assets:
   support_vehicle:
     _source:
       page: 56
-    name: Support vehicle
+    name: Support Vehicle Assets
     color: '#495790'
     # Summary: Secondary vehicles that your starship can carry and launch. If you are playing with others, these are a shared asset with abilities available to any character aboard that vehicle. The person who selects a support vehicle might typically serve as the pilot or manage the asset.
     description: |-
@@ -1058,6 +1074,7 @@ assets:
       exosuit:
         name: Exosuit
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
@@ -1110,6 +1127,7 @@ assets:
       hoverbike:
         name: Hoverbike
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
@@ -1166,6 +1184,7 @@ assets:
       rover:
         name: Rover
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
@@ -1225,6 +1244,7 @@ assets:
       service_pod:
         name: Service Pod
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
 
@@ -1284,6 +1304,7 @@ assets:
       shuttle:
         name: Shuttle
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
 
@@ -1327,6 +1348,7 @@ assets:
       skiff:
         name: Skiff
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
         options:
@@ -1380,6 +1402,7 @@ assets:
       snub_fighter:
         name: Snub Fighter
         shared: true
+        asset_type: Support Vehicle
         _source:
           title: 'Ironsworn: Starforged Assets'
 
@@ -1433,7 +1456,7 @@ assets:
   path:
     _source:
       page: 56
-    name: Path
+    name: Path Assets
     color: '#3f7faa'
     # Summary: Background aspects, careers, interests, training, and skills.
     description: |-
@@ -1442,6 +1465,7 @@ assets:
       Some paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.
     contents:
       ace:
+        asset_type: Path
         name: Ace
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1489,6 +1513,7 @@ assets:
                 outcomes:
                   strong_hit: *outcome:+1_momentum
       archer:
+        asset_type: Path
         name: Archer
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1564,6 +1589,7 @@ assets:
                     text: Envision the effects of the projectile and take +1 momentum.
                   weak_hit: *Archer.3
       armored:
+        asset_type: Path
         name: Armored
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1614,6 +1640,7 @@ assets:
                     - text: By letting your armor take the hit
               # TODO: something to handle arbitrary rolls like this
       artist:
+        asset_type: Path
         name: Artist
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1677,6 +1704,7 @@ assets:
                     text: |-
                       The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](id:starforged/moves/fate/pay_the_price).
       augmented:
+        asset_type: Path
         name: Augmented
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1729,6 +1757,7 @@ assets:
                   - starforged/moves/threshold/face_death
                 text: You may instead mark an augment as broken. [Repair](id:starforged/moves/recover/repair) it as detailed in the augmented asset.
       bannersworn:
+        asset_type: Path
         name: Bannersworn
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1802,6 +1831,7 @@ assets:
                     reroll: *reroll:challenge_die
                   miss: *outcome:reroll_challenge_die
       blademaster:
+        asset_type: Path
         name: Blademaster
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1873,6 +1903,7 @@ assets:
                     text: Fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
                   weak_hit: *Blademaster.3
       bounty_hunter:
+        asset_type: Path
         name: Bounty Hunter
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -1941,6 +1972,7 @@ assets:
                     - text: In a fight against a bounty target or their agents
                 outcomes: *outcomes:reroll_challenge_die_all
       brawler:
+        asset_type: Path
         name: Brawler
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2004,6 +2036,7 @@ assets:
                       text: Your initial assault leaves them stunned; mark progress and take +2 momentum.
                   weak_hit: *outcome:mark_progress
       courier:
+        asset_type: Path
         name: Courier
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2077,6 +2110,7 @@ assets:
           min: 0
 
       demolitionist:
+        asset_type: Path
         name: Demolitionist
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2116,6 +2150,7 @@ assets:
                   weak_hit: *outcome:reroll_challenge_dice
                   miss: *outcome:reroll_challenge_dice
       devotant:
+        asset_type: Path
         name: Devotant
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2215,6 +2250,7 @@ assets:
                   strong_hit:
                     text: Take +1 spirit or +1 momentum.
       diplomat:
+        asset_type: Path
         name: Diplomat
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2268,6 +2304,7 @@ assets:
                     match:
                       text: You are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit.
       empath:
+        asset_type: Path
         name: Empath
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2323,6 +2360,7 @@ assets:
                     text: Take +1 momentum. If they are an ally, also give them +2 spirit.
                   weak_hit: *Empath.3
       explorer:
+        asset_type: Path
         name: Explorer
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2364,6 +2402,7 @@ assets:
                       text: Take +2 momentum and envision an unusual aspect of the site.
                   weak_hit: *outcome:+1_momentum
       fated:
+        asset_type: Path
         name: Fated
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2411,6 +2450,7 @@ assets:
                     reroll: *reroll:challenge_die_10
                   miss: *outcome:reroll_challenge_die_10
       firebrand:
+        asset_type: Path
         name: Firebrand
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2473,6 +2513,7 @@ assets:
           min: 0
 
       fugitive:
+        asset_type: Path
         name: Fugitive
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2511,6 +2552,7 @@ assets:
             #           method: null
 
       gearhead:
+        asset_type: Path
         name: Gearhead
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2557,6 +2599,7 @@ assets:
                   weak_hit: *Gearhead.3
               # TODO: separate move extension for device use?
       gunner:
+        asset_type: Path
         name: Gunner
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2624,6 +2667,7 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       gunslinger:
+        asset_type: Path
         name: Gunslinger
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2678,6 +2722,7 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       haunted:
+        asset_type: Path
         name: Haunted
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2723,6 +2768,7 @@ assets:
             #     augment_moves:
             #       - outcomes: *outcomes:+1_momentum.HIT
       healer:
+        asset_type: Path
         name: Healer
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2769,6 +2815,7 @@ assets:
               Once every day or so, when you are in a safe place with plenty of time on your hands, you may [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, roll only your action die. On a 1-4, automatically give +1 health to everyone whose health is greater than 0. On a 5-6, make it +2.
             # TODO: style as move?
       infiltrator:
+        asset_type: Path
         name: Infiltrator
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2823,6 +2870,7 @@ assets:
                     text: Reroll any dice the first time you make a move aided by the device.
                   weak_hit: *Infiltrator.3
       kinetic:
+        asset_type: Path
         name: Kinetic
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2851,6 +2899,7 @@ assets:
                       method: strong_hit
                 text: Reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
       leader:
+        asset_type: Path
         name: Leader
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2903,6 +2952,7 @@ assets:
                       text: Your command galvanizes them into unexpected action. Take +2 momentum, and mark 1 tick on your bonds legacy track.
                   weak_hit: *outcome:+1_momentum
       looper:
+        asset_type: Path
         name: Looper
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -2965,6 +3015,7 @@ assets:
             # TODO: this is a weird one! is there a non-silly way to apply this to every action die reroll from an asset ability?
             # what about "Alters: null"? is there a way to make it explicit that it's only supposed to be added to those?
       lore_hunter:
+        asset_type: Path
         name: Lore Hunter
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3029,6 +3080,7 @@ assets:
                     text: Envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
                   weak_hit: *Lore_Hunter.2
       loyalist:
+        asset_type: Path
         name: Loyalist
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3071,6 +3123,7 @@ assets:
                         player: false
                 text: Envision how you support your ally. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
       mercenary:
+        asset_type: Path
         name: Mercenary
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3130,6 +3183,7 @@ assets:
                     - text: By looting the field of battle in the aftermath of a fight
                 text: Add +2.
       naturalist:
+        asset_type: Path
         name: Naturalist
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3190,6 +3244,7 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       navigator:
+        asset_type: Path
         name: Navigator
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3261,6 +3316,7 @@ assets:
                   miss:
                     text: *Navigator.3
       outcast:
+        asset_type: Path
         name: Outcast
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3317,6 +3373,7 @@ assets:
                     match:
                       text: You may envision encountering someone who knows or understands you. If you [Make a Connection](id:starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
       scavenger:
+        asset_type: Path
         name: Scavenger
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3367,6 +3424,7 @@ assets:
                         - using: supply
                 outcomes: *outcomes:+1_momentum.HIT
       scoundrel:
+        asset_type: Path
         name: Scoundrel
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3416,6 +3474,7 @@ assets:
 
             # TODO: momentum burn trigger
       seer:
+        asset_type: Path
         name: Seer
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3464,6 +3523,7 @@ assets:
                         ally: true
                 outcomes: *Seer.3
       shade:
+        asset_type: Path
         name: Shade
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3516,6 +3576,7 @@ assets:
               When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
             # TODO: non move trigger?
       slayer:
+        asset_type: Path
         name: Slayer
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3562,6 +3623,7 @@ assets:
                   weak_hit: *Slayer.3.text
                   miss: *Slayer.3.text
       sleuth:
+        asset_type: Path
         name: Sleuth
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3598,6 +3660,7 @@ assets:
                     - text: With a potential informant
                       method: weak_hit
       sniper:
+        asset_type: Path
         name: Sniper
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3663,6 +3726,7 @@ assets:
                 text: *Sniper.3
                 outcomes: *Sniper.3.Outcomes
       tech:
+        asset_type: Path
         name: Tech
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3708,6 +3772,7 @@ assets:
                     text: Take +1 momentum. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
                   weak_hit: *Tech.3
       trader:
+        asset_type: Path
         name: Trader
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3772,6 +3837,7 @@ assets:
                     match:
                       text: You have a chance to secure a unique item or valuable payload. Envision the nature of the opportunity and the obstacle you must overcome to acquire it. If you are successful, mark 2 ticks on your quests legacy track. One time only, you may use this acquisition to gain an automatic strong hit on any move where your resources are a factor.
       vestige:
+        asset_type: Path
         name: Vestige
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3828,6 +3894,7 @@ assets:
                       method: action_die
                       # default text: "You may reroll your action die."
       veteran:
+        asset_type: Path
         name: Veteran
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3877,6 +3944,7 @@ assets:
                 text: Envision the memory and add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       voidborn:
+        asset_type: Path
         name: Voidborn
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3930,6 +3998,7 @@ assets:
                     match:
                       text: You build speed or put yourself in perfect position; take +2 momentum.
       weapon_master:
+        asset_type: Path
         name: Weapon Master
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -3987,7 +4056,7 @@ assets:
   companion:
     _source:
       page: 57
-    name: Companion
+    name: Companion Assets
     color: '#3d8b8a'
     # Summary: NPC helpers, including alien creatures and robots.
     description: |-
@@ -3996,6 +4065,7 @@ assets:
       Companions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.
     contents:
       banshee:
+        asset_type: Companion
         name: Banshee
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4070,6 +4140,7 @@ assets:
                   weak_hit: *Banshee.3
                   miss: *Banshee.3
       combat_bot:
+        asset_type: Companion
         name: Combat Bot
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4146,6 +4217,7 @@ assets:
                     # TODO: add "in control" override property to interface
                     # in_control: true
       glowcat:
+        asset_type: Companion
         name: Glowcat
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4205,6 +4277,7 @@ assets:
                     match:
                       text: Take +momentum equal to the glowcat's health.
       protocol_bot:
+        asset_type: Companion
         name: Protocol Bot
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4253,6 +4326,7 @@ assets:
                   weak_hit: *Protocol_Bot.3
                   miss: *Protocol_Bot.3
       rockhorn:
+        asset_type: Companion
         name: Rockhorn
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4317,6 +4391,7 @@ assets:
                       text: You may reroll your action die if its value is less than the rockhorn’s health.
 
       sidekick:
+        asset_type: Companion
         name: Sidekick
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4387,6 +4462,7 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
 
       sprite:
+        asset_type: Companion
         name: Sprite
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4428,6 +4504,7 @@ assets:
               With a moment's rest, the sprite can mend its form and return automatically to max health.
 
       survey_bot:
+        asset_type: Companion
         name: Survey Bot
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4504,6 +4581,7 @@ assets:
                           ref: starforged/assets/companion/survey_bot/condition_meter
                 outcomes: *outcomes:+1_momentum.HIT
       symbiote:
+        asset_type: Companion
         name: Symbiote
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4547,6 +4625,7 @@ assets:
                 max: 3
 
       utility_bot:
+        asset_type: Companion
         name: Utility Bot
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4612,6 +4691,7 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
 
       voidglider:
+        asset_type: Companion
         name: Voidglider
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4665,7 +4745,7 @@ assets:
   deed:
     _source:
       page: 57
-    name: Deed
+    name: Deed Assets
     color: '#40834f'
     # Summary: Represent the notable achievement and situations of your story, and how those events change your character.
     description: |-
@@ -4674,6 +4754,7 @@ assets:
       Deeds have a requirement listed at the top of the card, phrased as “Once you \[blank\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.
     contents:
       bonded:
+        asset_type: Deed
         name: Bonded
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4736,6 +4817,7 @@ assets:
                     text: You may cling to thoughts of your bond-mate for support. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or traumatized. If both debilities are already marked, [Face Desolation](id:starforged/moves/threshold/face_desolation).
                     reroll: *reroll:any
       homesteader:
+        asset_type: Deed
         name: Homesteader
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4804,6 +4886,7 @@ assets:
                   weak_hit: *Homesteader.3
                   miss: *Homesteader.3
       marked:
+        asset_type: Deed
         name: Marked
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4860,6 +4943,7 @@ assets:
                   weak_hit: *Marked.3
                   miss: *outcome:reroll_any
       oathbreaker:
+        asset_type: Deed
         name: Oathbreaker
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4910,6 +4994,7 @@ assets:
                   miss: # this is intentional, so that relevant reminder text is passed to the PC on a miss
                     text: *Oathbreaker.1
       revenant:
+        asset_type: Deed
         name: Revenant
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -4965,6 +5050,7 @@ assets:
                       text: You experience a detailed vision or insightful revelation of what occurred here. Take +2 momentum.
                   weak_hit: *outcome:+1_momentum
       survivor:
+        asset_type: Deed
         name: Survivor
         _source:
           title: 'Ironsworn: Starforged Assets'
@@ -5005,6 +5091,7 @@ assets:
               You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset.
             # TODO: modify impacts interface?
       vanguard:
+        asset_type: Deed
         name: Vanguard
         _source:
           title: 'Ironsworn: Starforged Assets'

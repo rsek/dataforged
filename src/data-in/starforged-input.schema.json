@@ -1568,6 +1568,10 @@
 			"properties": {
 				"id": { "$ref": "#/$defs/AssetID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"asset_type": {
+					"description": "A category label for this asset. This is the surtitle above the asset's name on the card.",
+					"$ref": "#/$defs/Label"
+				},
 				"source": { "$ref": "#/$defs/Source" },
 				"icon": { "$ref": "#/$defs/SVGImageURL" },
 				"color": { "$ref": "#/$defs/CSSColor" },
@@ -1609,7 +1613,7 @@
 				},
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
-			"required": ["name", "abilities"]
+			"required": ["name", "asset_type", "abilities"]
 		},
 		"AssetAbilityOptionField": {
 			"type": "object",
@@ -1665,6 +1669,10 @@
 						{
 							"type": "object",
 							"properties": {
+								"asset_type": {
+									"description": "A category label for this asset. This is the surtitle above the asset's name on the card.",
+									"$ref": "#/$defs/Label"
+								},
 								"icon": { "$ref": "#/$defs/SVGImageURL" },
 								"color": { "$ref": "#/$defs/CSSColor" },
 								"suggestions": { "$ref": "#/$defs/Suggestions" },

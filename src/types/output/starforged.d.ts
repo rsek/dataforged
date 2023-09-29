@@ -269,6 +269,10 @@ export type AssetTypeID1 = string;
 export type AssetTypeID2 = string;
 export type AssetIDWildcard = string;
 /**
+ * A localized plain text name or label.
+ */
+export type Label1 = string;
+/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
@@ -289,6 +293,10 @@ export type AssetAbilityOptionField = TextField;
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
+/**
+ * A localized plain text name or label.
+ */
+export type Label2 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -695,6 +703,7 @@ export interface AssetType {
 export interface Asset {
   id: AssetID;
   name: Label;
+  asset_type: Label1;
   source: Source;
   icon?: SVGImageURL;
   color?: CSSColor;
@@ -800,6 +809,7 @@ export interface AssetAbility {
    * Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
    */
   augment_asset?: {
+    asset_type?: Label2;
     icon?: SVGImageURL;
     color?: CSSColor;
     suggestions?: Suggestions;

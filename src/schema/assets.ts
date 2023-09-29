@@ -210,6 +210,10 @@ export const Asset = Type.Object(
 	{
 		id: Type.Ref(ID.AssetID),
 		name: Type.Ref(Localize.Label),
+		asset_type: Type.Ref(Localize.Label, {
+			description:
+				"A category label for this asset. This is the surtitle above the asset's name on the card."
+		}),
 		source: Type.Ref(Metadata.Source),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		color: Type.Optional(Type.Ref(Metadata.CSSColor)),

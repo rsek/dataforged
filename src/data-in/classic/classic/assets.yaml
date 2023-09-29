@@ -9,7 +9,7 @@ source:
   url: https://ironswornrpg.com
 assets:
   companion:
-    name: Companion
+    name: Companion Assets
     _source:
       page: 39
     description: |-
@@ -18,6 +18,7 @@ assets:
       Companions utilize a health track and may suffer harm as a result of one of your moves. When your companion takes damage, make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move to determine the outcome. See page 43 to learn more.
     contents:
       cave_lion:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -85,6 +86,7 @@ assets:
             suffer: classic/moves/suffer/companion_endure_harm
             recover: classic/moves/adventure/heal
       giant_spider:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -154,6 +156,7 @@ assets:
           value: 4
           moves: *CompanionHealth.Moves
       hawk:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -223,6 +226,7 @@ assets:
                         - using: wits # 'ambushed' is already how +wits is flavoured
                 text: Add +2.
       horse:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -289,6 +293,7 @@ assets:
           value: 5
           moves: *CompanionHealth.Moves
       hound:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -346,6 +351,7 @@ assets:
           value: 4
           moves: *CompanionHealth.Moves
       kindred:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -404,6 +410,7 @@ assets:
                   - classic/moves/suffer/face_desolation
                 text: Add +1 when you [Face Desolation](id:classic/moves/suffer/face_desolation) in your companion's presence.
       mammoth:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -457,6 +464,7 @@ assets:
           value: 5
           moves: *CompanionHealth.Moves
       owl:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -487,6 +495,7 @@ assets:
           max: 3
           moves: *CompanionHealth.Moves
       raven:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 2
@@ -515,6 +524,7 @@ assets:
           value: 2
           moves: *CompanionHealth.Moves
       young_wyvern:
+        asset_type: Companion
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -553,7 +563,7 @@ assets:
           value: 5
           moves: *CompanionHealth.Moves
   path:
-    name: Path
+    name: Path Assets
     _source:
       title: Ironsworn Rulebook
       authors:
@@ -567,6 +577,7 @@ assets:
       Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.
     contents:
       alchemist:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -621,6 +632,7 @@ assets:
           - text: |-
               When you prepare an elixir, add +1 and take +1 momentum on a hit.
       animal_kin:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -638,6 +650,7 @@ assets:
           - text: |-
               Once per fight, when you leverage your animal or beast companion to make a move, reroll any dice. On a hit, take +1 momentum.
       banner_sworn:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -657,6 +670,7 @@ assets:
           - text: |-
               When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset.
       battle_scarred:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -683,6 +697,7 @@ assets:
                         - using: wits
                         - using: heart
       blade_bound:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -702,6 +717,7 @@ assets:
           - text: |-
               When you [Strike](id:classic/moves/combat/strike) with your kin-blade to inflict savage harm (decide before rolling), add +1 and inflict +2 harm on a hit. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
       bonded:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -716,6 +732,7 @@ assets:
           - text: |-
               When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-kin for courage or encouragement. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or corrupted. If both debilities are already marked, [Face Desolation](id:classic/moves/suffer/face_desolation).
       commander:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -772,6 +789,7 @@ assets:
           moves:
             recover: classic/moves/adventure/make_camp
       dancer:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 4
@@ -806,6 +824,7 @@ assets:
                       You take +1 momentum or +1 spirit, but your allies are unmoved.
                   miss: *move:Generic.Miss
       devotant:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -863,6 +882,7 @@ assets:
                         - using: ref
                           ref: classic/assets/path/devotant/options/stat
       empowered:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -881,6 +901,7 @@ assets:
           - text: |-
               When you forgo your title or lineage and [Forge a Bond](id:classic/moves/relationship/forge_a_bond) as an equal, or when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve someone of a lower station, add +1 and take +1 momentum or +1 spirit on a hit.
       fated:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -896,6 +917,7 @@ assets:
           - text: |-
               For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow), your fate is at hand. Envision your final sacrifice and reroll any dice.
       fortune_hunter:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -915,6 +937,7 @@ assets:
           value: 0
           min: 0
       herbalist:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -934,6 +957,7 @@ assets:
           - text: |-
               When you [Make Camp](id:classic/moves/adventure/make_camp) and choose the option to partake, you can create a restorative meal. If you do, you and your companions take +1 health. Any allies who choose to partake also take +1 health, and do not suffer -supply.
       honorbound:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -948,6 +972,7 @@ assets:
           - text: |-
               When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a miss, you may reroll one challenge die. If you score a miss again, reduce your maximum spirit by 1. You may recover this lost spirit when you next [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a strong hit.
       improviser:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -971,6 +996,7 @@ assets:
           - text: |-
               When you throw caution to the wind and make an impulsive move in a risky situation, you may add +2. If you do, take +1 momentum on a strong hit, but count a weak hit as a miss.
       infiltrator:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -1014,6 +1040,7 @@ assets:
                         - using: shadow
                       text: Within an enemy area by scavenging or looting
       lorekeeper:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 6
@@ -1028,6 +1055,7 @@ assets:
           - text: |-
               One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](id:classic/moves/suffer/face_desolation) (ignoring momentum).
       loyalist:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1042,6 +1070,7 @@ assets:
           - text: |-
               When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
       masked:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1092,6 +1121,7 @@ assets:
                         - using: ref
                           ref: classic/assets/path/masked/options/material_stat
       oathbreaker:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1109,6 +1139,7 @@ assets:
           - text: |-
               When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on your marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.
       outcast:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1143,6 +1174,7 @@ assets:
           - text: |-
               When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination) and score a strong hit, you recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
       pretender:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1190,6 +1222,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by revealing your true identity in a dramatic moment, reroll any dice.
       revenant:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1206,6 +1239,7 @@ assets:
           - text: |-
               When you bring death to your foe to [End the Fight](id:classic/moves/combat/end_the_fight), you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
       rider:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1221,6 +1255,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +wits by sizing up a perilous situation from the saddle, you are one with your horse’s instincts. Add +1 and take +1 momentum on a hit.
       ritualist:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1239,6 +1274,7 @@ assets:
           - text: |-
               When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 fewer experience.
       shadow_kin:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 8
@@ -1263,6 +1299,7 @@ assets:
                       roll_options:
                         - using: shadow
       sighted:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1277,6 +1314,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by studying someone or something in a charged situation, add +1 and take +1 momentum on a hit. When you also pierce the veil to explore deeper truths (decide before rolling), you may reroll any dice. If you do, count a weak hit as a miss.
       slayer:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1294,6 +1332,7 @@ assets:
                 * Power a ritual: When you or an ally make a ritual move, reroll any dice (one time only).
                 * Prove your worth: When you [Sojourn](id:classic/moves/relationship/sojourn), reroll any dice (one time only).
       spirit_bound:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1311,6 +1350,7 @@ assets:
                 * Let them go: Take 2 experience for each marked ability and discard this asset.
                 * Deepen your connection: Add +1 more when you leverage this asset.
       storyweaver:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1325,6 +1365,7 @@ assets:
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn) within a community with which you share a bond, add +2 (instead of +1).
       trickster:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1366,6 +1407,7 @@ assets:
                       roll_options:
                         - using: heart
       veteran:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1380,6 +1422,7 @@ assets:
           - text: |-
               When you [Resupply](id:classic/moves/adventure/resupply) by looting the dead on a field of battle, add +1 and take +1 momentum on a hit.
       waterborn:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1398,6 +1441,7 @@ assets:
           - text: |-
               When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) aboard a boat or ship, reroll any dice.
       wayfinder:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1412,6 +1456,7 @@ assets:
           - text: |-
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to safely guide someone on a perilous journey, you may reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
       weaponmaster:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 10
@@ -1428,6 +1473,7 @@ assets:
           - text: |-
               When you [Turn the Tide](id:classic/moves/combat/turn_the_tide) with a sudden change of weapon or technique, and your next move is a [Strike](id:classic/moves/combat/strike), add +1 and inflict +2 harm on a strong hit.
       wildblood:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1452,6 +1498,7 @@ assets:
                       roll_options:
                         - using: wits
       wright:
+        asset_type: Path
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1470,7 +1517,7 @@ assets:
           - text: |-
               When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you [Compel](id:classic/moves/relationship/compel), [Forge a Bond](id:classic/moves/relationship/forge_a_bond), or [Test Your Bond](id:classic/moves/relationship/test_your_bond).
   combat_talent:
-    name: Combat talent
+    name: Combat Talent Assets
     _source:
       title: Ironsworn Rulebook
       authors:
@@ -1485,6 +1532,7 @@ assets:
       Combat talent assets typically require you to wield a specific weapon, as noted in the asset text. For example, if you are a **Shield-Bearer** and don’t have a shield at the ready, you can’t use the asset’s abilities.
     contents:
       archer:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1504,6 +1552,7 @@ assets:
           - text: |-
               When you [Resupply](id:classic/moves/adventure/resupply) by hunting, add +1 and take +1 momentum on a hit.
       berserker:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1524,6 +1573,7 @@ assets:
           - text: |-
               When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.
       brawler:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1539,6 +1589,7 @@ assets:
           - text: |-
               When you [Face Danger](id:classic/moves/adventure/face_danger) or [Clash](id:classic/moves/combat/clash) against a brawling attack, add +1 and take +1 momentum on a hit.
       cutthroat:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1558,6 +1609,7 @@ assets:
           - text: |-
               Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.
       duelist:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1576,6 +1628,7 @@ assets:
                 * Add +2.
                 * Take +2 momentum on a hit.
       fletcher:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1619,6 +1672,7 @@ assets:
                         * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).
                   miss: *move:Generic.Miss
       ironclad:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 12
@@ -1678,6 +1732,7 @@ assets:
                     - text: In a situation where strength of arms is a factor
                 text: Add +2.
       long_arm:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1730,6 +1785,7 @@ assets:
                     text: The staff provides support and comfort in your travels; take +1 momentum.
 
       shield_bearer:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1746,6 +1802,7 @@ assets:
           - text: |-
               When forced to [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.
       skirmisher:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1765,6 +1822,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.
       slinger:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1783,6 +1841,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.
       sunderer:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1821,6 +1880,7 @@ assets:
                       Inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash).
                   miss: *move:Generic.Miss
       swordmaster:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1837,6 +1897,7 @@ assets:
           - text: |-
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm) in exchange for an additional +1 momentum on a hit.
       thunder_bringer:
+        asset_type: Combat Talent
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1852,7 +1913,7 @@ assets:
           - text: |-
               When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), you may [Strike](id:classic/moves/combat/strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.
   ritual:
-    name: Ritual
+    name: Ritual Assets
     _source:
       title: Ironsworn Rulebook
       authors:
@@ -1867,6 +1928,7 @@ assets:
       All rituals utilize a move as their default marked ability. You must make this move and the associated action roll to trigger the effect. Any secondary abilities you gain by upgrading the asset are dependent on performing the ritual described as the default ability.
     contents:
       augur:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1900,6 +1962,7 @@ assets:
             text: |-
               When you perform this ritual, add +1 and take +1 momentum on a hit.
       awakening:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 14
@@ -1942,6 +2005,7 @@ assets:
           value: 3
           min: 0
       bind:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -1976,6 +2040,7 @@ assets:
               As above, and you may instead perform this ritual wearing the pelt of a beast. If you do, name the related stat and add +2 (instead of +1).
           - *asset:Ritual.Ability.3
       communion:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2010,6 +2075,7 @@ assets:
               As above, and you may also commune with the long-dead.
           - *asset:Ritual.Ability.3
       divination:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2048,6 +2114,7 @@ assets:
               As above, and your divination can also reveal information about the subject’s future.
           - *asset:Ritual.Ability.3
       invoke:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2090,6 +2157,7 @@ assets:
           value: 0
           min: 0
       keen:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2124,6 +2192,7 @@ assets:
               As above, and the wielder may also (one time only) add +1 and take +2 momentum on a hit when they [Draw the Circle](id:classic/moves/relationship/draw_the_circle), [Enter the Fray](id:classic/moves/combat/enter_the_fray), or [Battle](id:classic/moves/combat/battle).
           - *asset:Ritual.Ability.3
       leech:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2161,6 +2230,7 @@ assets:
               As above, and you may also touch an ally or companion and let them take any remaining points as +health or +momentum.
           - *asset:Ritual.Ability.3
       lightbearer:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2202,6 +2272,7 @@ assets:
               You may use your light to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against a dark-dwelling foe. Choose the amount of light to unleash, and roll +light (instead of +iron or +edge). Suffer -light equal to that amount. On a hit, your harm is 1+your unleashed light.
           - *asset:Ritual.Ability.3
       scry:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2244,6 +2315,7 @@ assets:
               As above, and you may instead study a past event.
           - *asset:Ritual.Ability.3
       shadow_walk:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 16
@@ -2278,6 +2350,7 @@ assets:
               As above, and you may also travel along the hidden paths of the shadow realms to [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) using +shadow (instead of +wits). If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress) and mark progress twice on a strong hit.
           - *asset:Ritual.Ability.3
       sway:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
@@ -2312,6 +2385,7 @@ assets:
               As above, and if you score a strong hit when you [Compel](id:classic/moves/relationship/compel), you may also reroll any dice (one time only) when you [Gather Information](id:classic/moves/adventure/gather_information) from this person.
           - *asset:Ritual.Ability.3
       talisman:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
@@ -2344,6 +2418,7 @@ assets:
               As above, and you may instead fashion a charm which aids the wearer against all supernatural threats, such as mystic rituals or horrors.
           - *asset:Ritual.Ability.3
       tether:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
@@ -2378,6 +2453,7 @@ assets:
               As above, and you may also reroll any dice when you [Sojourn](id:classic/moves/relationship/sojourn) in the tethered place.
           - *asset:Ritual.Ability.3
       totem:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
@@ -2412,6 +2488,7 @@ assets:
               As above, and you may also perceive the world through your companion’s senses while you make moves aided by them (even when you are apart).
           - *asset:Ritual.Ability.3
       visage:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
@@ -2447,6 +2524,7 @@ assets:
               As above, and you may also add +1 when you [Strike](id:classic/moves/combat/strike), [Clash](id:classic/moves/combat/clash), or [Battle](id:classic/moves/combat/battle).
           - *asset:Ritual.Ability.3
       ward:
+        asset_type: Ritual
         _source:
           title: Ironsworn Assets Master Set
           page: 18
