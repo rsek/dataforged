@@ -8,7 +8,7 @@ export const EncounterClassic = Type.Object(
 		your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		nature: Type.Ref(Localize.Label, {
 			description:
-				"A category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
+				"A localized category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
 			examples: [
 				'Ironlander',
 				'Firstborn',
@@ -16,7 +16,8 @@ export const EncounterClassic = Type.Object(
 				'Beasts',
 				'Horror',
 				'Anomaly'
-			]
+			],
+			i18n: true
 		})
 	},
 	{
