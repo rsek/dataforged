@@ -5,7 +5,19 @@ export const EncounterClassic = Type.Object(
 	{
 		...Type.Omit(Encounters.EncounterBase, ['summary']).properties,
 		id: Type.Ref(ID.EncounterClassicID),
-		your_truths: Type.Optional(Type.Ref(Localize.MarkdownString))
+		your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		nature: Type.Ref(Localize.Label, {
+			description:
+				"A category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
+			examples: [
+				'Ironlander',
+				'Firstborn',
+				'Animal',
+				'Beasts',
+				'Horror',
+				'Anomaly'
+			]
+		})
 	},
 	{
 		$id: '#/$defs/EncounterClassic',
@@ -21,7 +33,6 @@ export const EncounterCollectionClassic = Abstract.Collection(
 	Type.Ref(ID.EncounterCollectionID),
 	{
 		id: Type.Ref(ID.EncounterCollectionID),
-		member_label: Type.Optional(Type.Ref(Localize.Label)),
 		summary: Type.Optional(Type.Ref(Localize.MarkdownString))
 	},
 	{ $id: '#/$defs/EncounterCollectionClassic' }

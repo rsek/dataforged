@@ -335,6 +335,10 @@ export type EncounterCollectionID1 = string;
 export type EncounterCollectionID2 = string;
 export type EncounterClassicIDWildcard = string;
 /**
+ * A localized plain text name or label.
+ */
+export type Label1 = string;
+/**
  * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
@@ -1078,7 +1082,6 @@ export interface EncounterCollectionClassic {
   contents?: {
     [k: string]: EncounterClassic;
   };
-  member_label?: Label;
   _source?: SourceStub;
 }
 /**
@@ -1095,6 +1098,7 @@ export interface EncounterClassic {
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
+  nature: Label1;
   rank: ChallengeRank;
   drives: MarkdownString[];
   tactics: MarkdownString[];

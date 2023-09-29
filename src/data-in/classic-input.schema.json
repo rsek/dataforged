@@ -2609,7 +2609,6 @@
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterClassic" }
 					}
 				},
-				"member_label": { "$ref": "#/$defs/Label" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
@@ -2631,6 +2630,18 @@
 				},
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"nature": {
+					"description": "A category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
+					"examples": [
+						"Ironlander",
+						"Firstborn",
+						"Animal",
+						"Beasts",
+						"Horror",
+						"Anomaly"
+					],
+					"$ref": "#/$defs/Label"
+				},
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"drives": {
 					"type": "array",
@@ -2649,6 +2660,7 @@
 				"features",
 				"description",
 				"quest_starter",
+				"nature",
 				"rank",
 				"drives",
 				"tactics"

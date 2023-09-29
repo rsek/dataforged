@@ -5,6 +5,7 @@ import { Progress } from 'schema/common'
 
 export const EncounterLike = Type.Object({
 	name: Type.Ref(Localize.Label),
+	nature: Type.Ref(Localize.Label),
 	rank: Type.Ref(Progress.ChallengeRank),
 	description: Type.Ref(Localize.MarkdownString)
 })

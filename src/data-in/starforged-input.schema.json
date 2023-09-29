@@ -1900,15 +1900,16 @@
 			"title": "PlayerConditionMeter"
 		},
 		"EncounterNatureStarforged": {
-			"examples": [
-				"creature",
-				"horror",
-				"human",
-				"machine",
-				"monster",
-				"vehicle"
-			],
 			"$id": "#/$defs/EncounterNatureStarforged",
+			"description": "A category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.",
+			"examples": [
+				"Creature",
+				"Horror",
+				"Human",
+				"Machine",
+				"Monster",
+				"Vehicle"
+			],
 			"type": "string",
 			"title": "EncounterNatureStarforged"
 		},
@@ -1928,6 +1929,7 @@
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" },
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"drives": {
 					"type": "array",
@@ -1938,7 +1940,6 @@
 					"items": { "$ref": "#/$defs/MarkdownString" }
 				},
 				"id": { "$ref": "#/$defs/EncounterStarforgedID" },
-				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" },
 				"variants": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -1954,10 +1955,10 @@
 				"summary",
 				"description",
 				"quest_starter",
+				"nature",
 				"rank",
 				"drives",
-				"tactics",
-				"nature"
+				"tactics"
 			],
 			"title": "EncounterStarforged"
 		},
@@ -1966,12 +1967,12 @@
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
+				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" },
 				"rank": { "$ref": "#/$defs/ChallengeRank" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
-				"id": { "$ref": "#/$defs/EncounterStarforgedID" },
-				"nature": { "$ref": "#/$defs/EncounterNatureStarforged" }
+				"id": { "$ref": "#/$defs/EncounterStarforgedID" }
 			},
-			"required": ["name", "rank", "description", "nature"],
+			"required": ["name", "nature", "rank", "description"],
 			"title": "EncounterVariantStarforged"
 		},
 		"SettingTruth": {

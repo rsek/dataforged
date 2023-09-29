@@ -2,8 +2,10 @@ import { Type, type Static } from '@sinclair/typebox'
 import { Abstract, Encounters, ID, Localize } from 'schema/common'
 
 export const EncounterNatureStarforged = Type.String({
-	examples: ['creature', 'horror', 'human', 'machine', 'monster', 'vehicle'],
-	$id: '#/$defs/EncounterNatureStarforged'
+	$id: '#/$defs/EncounterNatureStarforged',
+	description:
+		'A category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.',
+	examples: ['Creature', 'Horror', 'Human', 'Machine', 'Monster', 'Vehicle']
 })
 export type EncounterNatureStarforged = Static<typeof EncounterNatureStarforged>
 

@@ -8,7 +8,7 @@ import {
 import { startCase } from 'lodash'
 import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
 import { Dictionary } from 'schema/common/abstract'
-import { AssetID, MoveIDWildcard } from 'schema/common/id'
+import { AssetID } from 'schema/common/id'
 import { Label } from 'schema/common/localize'
 import { pascalCase } from 'schema/common/utils'
 import * as Moves from 'schema/moves'

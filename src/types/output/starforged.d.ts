@@ -321,10 +321,13 @@ export type MoveID3 = string;
  */
 export type MoveID4 = string;
 /**
+ * A category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.
+ */
+export type EncounterNatureStarforged = string;
+/**
  * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
-export type EncounterNatureStarforged = string;
 export type SettingTruthOptionID = string;
 export type SettingTruthID = string;
 
@@ -936,11 +939,11 @@ export interface EncounterStarforged {
   summary: MarkdownString;
   description: MarkdownString;
   quest_starter: MarkdownString;
+  nature: EncounterNatureStarforged;
   rank: ChallengeRank;
   drives: MarkdownString[];
   tactics: MarkdownString[];
   id: EncounterStarforgedID;
-  nature: EncounterNatureStarforged;
   variants?: {
     [k: string]: EncounterVariantStarforged;
   };
@@ -951,10 +954,10 @@ export interface EncounterStarforged {
  */
 export interface EncounterVariantStarforged {
   name: Label;
+  nature: EncounterNatureStarforged;
   rank: ChallengeRank;
   description: MarkdownString;
   id: EncounterStarforgedID;
-  nature: EncounterNatureStarforged;
 }
 /**
  * A setting truth category in the format used by Starforged.
