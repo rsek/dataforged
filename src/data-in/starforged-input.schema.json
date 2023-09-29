@@ -674,6 +674,10 @@
 					"description": "A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead.",
 					"$ref": "#/$defs/MarkdownString"
 				},
+				"replaces": {
+					"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.",
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"description": {
 					"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the \"summary\" key instead.",
 					"$ref": "#/$defs/MarkdownString"
@@ -766,6 +770,10 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleTable" }
 					}
+				},
+				"replaces": {
+					"description": "Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.",
+					"$ref": "#/$defs/OracleCollectionID"
 				},
 				"rendering": { "$ref": "#/$defs/OracleCollectionRendering" },
 				"images": {
@@ -1052,6 +1060,10 @@
 					"properties": {
 						"id": { "$ref": "#/$defs/MoveID" },
 						"name": { "$ref": "#/$defs/Label" },
+						"replaces": {
+							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+							"$ref": "#/$defs/MoveID"
+						},
 						"trigger": {
 							"allOf": [
 								{
@@ -1090,6 +1102,10 @@
 					"properties": {
 						"id": { "$ref": "#/$defs/MoveID" },
 						"name": { "$ref": "#/$defs/Label" },
+						"replaces": {
+							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+							"$ref": "#/$defs/MoveID"
+						},
 						"trigger": {
 							"allOf": [
 								{
@@ -1128,6 +1144,10 @@
 					"properties": {
 						"id": { "$ref": "#/$defs/MoveID" },
 						"name": { "$ref": "#/$defs/Label" },
+						"replaces": {
+							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+							"$ref": "#/$defs/MoveID"
+						},
 						"trigger": {
 							"allOf": [
 								{

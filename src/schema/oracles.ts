@@ -175,6 +175,12 @@ export const OracleTable = Abstract.SourcedNode(
 					'A brief summary of the oracle table\'s intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the "description" key instead.'
 			})
 		),
+		replaces: Type.Optional(
+			Type.Ref(ID.OracleTableID, {
+				description:
+					'Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.'
+			})
+		),
 		description: Type.Optional(
 			Type.Ref(Localize.MarkdownString, {
 				description:
@@ -230,6 +236,12 @@ export const OracleCollection = Abstract.RecursiveCollection(
 	Type.Ref(ID.OracleCollectionID),
 	'#/$defs/OracleCollection',
 	{
+		replaces: Type.Optional(
+			Type.Ref(ID.OracleCollectionID, {
+				description:
+					'Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
+			})
+		),
 		rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
 		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
 		sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))

@@ -256,6 +256,12 @@ const MoveBase = Type.Object({
 	id: Type.Ref(ID.MoveID),
 	name: Type.Ref(Localize.Label),
 	move_type: Type.Ref(MoveRollType, { default: 'no_roll' }),
+	replaces: Type.Optional(
+		Type.Ref(ID.MoveID, {
+			description:
+				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
+		})
+	),
 	trigger: Type.Object({
 		text: Type.Ref(Localize.MarkdownString, {
 			description:

@@ -16,7 +16,7 @@ import * as Assets from 'schema/assets'
 
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
-import { REGEX_SOURCEBOOK_KEY } from 'schema/common/abstract'
+import { REGEX_SOURCEBOOK_KEY } from 'schema/common/regex'
 
 export const SOURCEBOOK_KEY = Type.RegEx(
 	new RegExp(`^${REGEX_SOURCEBOOK_KEY.source}$`)

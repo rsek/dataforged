@@ -53,6 +53,10 @@ export type DiceNotation = string;
  */
 export type MarkdownString1 = string;
 /**
+ * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
+ */
+export type OracleTableID1 = string;
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
@@ -71,7 +75,7 @@ export type SVGImageURL = string;
 /**
  * The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.
  */
-export type OracleTableID1 = string;
+export type OracleTableID2 = string;
 export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
  * A string template that may be used in place of OracleTableRow#result.
@@ -86,6 +90,10 @@ export type TemplateString1 = string;
  */
 export type TemplateString2 = string;
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
+/**
+ * Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type OracleCollectionID3 = string;
 export type OracleColumnContentType = "range" | "result" | "summary" | "description";
 export type OracleCollectionStyle = "multi_table";
 /**
@@ -116,6 +124,7 @@ export type Move =
   | {
       id: MoveID;
       name: Label;
+      replaces?: MoveID1;
       trigger: {
         text: MarkdownString3;
       } & TriggerNoRoll;
@@ -132,6 +141,7 @@ export type Move =
   | {
       id: MoveID;
       name: Label;
+      replaces?: MoveID2;
       trigger: {
         text: MarkdownString6;
       } & TriggerActionRoll;
@@ -148,6 +158,7 @@ export type Move =
   | {
       id: MoveID;
       name: Label;
+      replaces?: MoveID3;
       trigger: {
         text: MarkdownString9;
       } & TriggerProgressRoll;
@@ -161,6 +172,10 @@ export type Move =
       move_type: "progress_roll";
       outcomes: MoveOutcomes;
     };
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID1 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -179,6 +194,10 @@ export type MarkdownString4 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString5 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID2 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -225,6 +244,10 @@ export type AssetOptionFieldIDWildcard = string;
  */
 export type MarkdownString8 = string;
 export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID3 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -300,11 +323,11 @@ export type Label2 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID1 = string;
+export type MoveID4 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID2 = string;
+export type MoveID5 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -323,11 +346,11 @@ export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID3 = string;
+export type MoveID6 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID4 = string;
+export type MoveID7 = string;
 /**
  * A localized category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.
  */
@@ -447,6 +470,7 @@ export interface OracleCollection {
   contents?: {
     [k: string]: OracleTable;
   };
+  replaces?: OracleCollectionID3;
   rendering?: OracleCollectionRendering;
   images?: WEBPImageURL[];
   sample_names?: Label[];
@@ -481,6 +505,7 @@ export interface OracleTable {
   id: OracleTableID;
   dice: DiceNotation;
   summary?: MarkdownString1;
+  replaces?: OracleTableID1;
   description?: MarkdownString2;
   match?: MatchBehavior;
   table: OracleTableRow[];
@@ -509,7 +534,7 @@ export interface OracleTableRow {
   template?: OracleRollTemplate;
 }
 export interface OracleTableRoll {
-  oracle?: OracleTableID1;
+  oracle?: OracleTableID2;
   /**
    * The rulebook explicitly cautions *against* rolling all details at once, so rolling every referenced oracle automatically is not recommended. That said, some oracle results only provide useful information once a secondary roll occurs, such as "Action + Theme". If this value is omitted, assume it's false.
    */
@@ -871,8 +896,8 @@ export interface AssetConditionMeter {
    * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
    */
   moves?: {
-    suffer?: MoveID1;
-    recover?: MoveID2;
+    suffer?: MoveID4;
+    recover?: MoveID5;
   };
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
@@ -924,8 +949,8 @@ export interface AssetConditionMeter1 {
    * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
    */
   moves?: {
-    suffer?: MoveID3;
-    recover?: MoveID4;
+    suffer?: MoveID6;
+    recover?: MoveID7;
   };
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
