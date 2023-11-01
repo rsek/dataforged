@@ -558,12 +558,18 @@
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
-				"rank": { "$ref": "#/$defs/ChallengeRank" },
-				"nature": { "$ref": "#/$defs/NpcNature" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"features": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
 				"summary": { "$ref": "#/$defs/MarkdownString" },
 				"description": { "$ref": "#/$defs/MarkdownString" },
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/NpcID" },
-				"source": { "$ref": "#/$defs/Source" },
 				"drives": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
@@ -572,26 +578,27 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/MarkdownString" }
 				},
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"your_truths": { "$ref": "#/$defs/MarkdownString" },
 				"variants": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": {
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/NpcVariant" }
 					}
-				}
+				},
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"nature": { "$ref": "#/$defs/NpcNature" }
 			},
 			"required": [
 				"name",
-				"rank",
-				"nature",
-				"description",
-				"id",
 				"source",
+				"features",
+				"description",
+				"quest_starter",
+				"id",
 				"drives",
 				"tactics",
-				"quest_starter"
+				"rank",
+				"nature"
 			],
 			"title": "Npc"
 		},

@@ -1,5 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { Abstract, ID, Localize, Metadata, Progress } from 'schema/common'
+import { PartialBy, Squash } from 'schema/common/utils'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:
@@ -32,7 +33,9 @@ const NpcLike = Type.Object({
 	description: Type.Ref(Localize.MarkdownString)
 })
 
-export const NpcVariant = Type.Composite(
+type NpcLike = Static<typeof NpcLike>
+
+export const NpcVariant = Squash(
 	[
 		NpcLike,
 		Type.Object({
@@ -45,18 +48,17 @@ export const NpcVariant = Type.Composite(
 )
 export type NpcVariant = Static<typeof NpcVariant>
 
-export const Npc = Type.Composite(
+export const Npc = Squash(
 	[
-		NpcLike,
-		Type.Object({
+		Abstract.Cyclopedia({
 			id: Type.Ref(ID.NpcID),
-			source: Type.Ref(Metadata.Source),
+			features: Type.Array(Type.Ref(Localize.MarkdownString)),
 			drives: Type.Array(Type.Ref(Localize.MarkdownString)),
 			tactics: Type.Array(Type.Ref(Localize.MarkdownString)),
 			quest_starter: Type.Ref(Localize.MarkdownString),
-			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			variants: Type.Optional(Abstract.Dictionary(Type.Ref(NpcVariant)))
-		})
+		}),
+		NpcLike
 	],
 	{
 		$id: '#/$defs/Npc',

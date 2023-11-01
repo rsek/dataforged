@@ -1103,19 +1103,22 @@ export interface NpcCollection {
  */
 export interface Npc {
   name: Label;
-  rank: ChallengeRank;
-  nature: NpcNature;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  features: MarkdownString[];
   summary?: MarkdownString;
   description: MarkdownString;
-  id: NpcID;
-  source: Source;
-  drives: MarkdownString[];
-  tactics: MarkdownString[];
   quest_starter: MarkdownString;
   your_truths?: MarkdownString;
+  id: NpcID;
+  drives: MarkdownString[];
+  tactics: MarkdownString[];
   variants?: {
     [k: string]: NpcVariant;
   };
+  rank: ChallengeRank;
+  nature: NpcNature;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition

@@ -107,9 +107,10 @@ export function Cyclopedia<T extends TProperties>(
 	return SourcedNode(
 		{
 			features: Type.Array(Type.Ref(Localize.MarkdownString)),
-			summary: Type.Ref(Localize.MarkdownString),
+			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Ref(Localize.MarkdownString),
 			quest_starter: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			...properties
 		},
 		options

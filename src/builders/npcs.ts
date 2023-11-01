@@ -26,8 +26,6 @@ export const Npc = sourcedTransformer<In.Npc, Out.Npc>({
 		key,
 		parent
 	): Record<string, Out.NpcVariant> | undefined {
-		console.log(this.id)
-
 		if (data.variants == null) return undefined
 
 		return mapValues(data.variants, (variant, key) =>
