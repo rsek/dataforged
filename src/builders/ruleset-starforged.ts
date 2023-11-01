@@ -1,4 +1,3 @@
-import { mapValues } from 'lodash'
 import type * as In from 'types/input/starforged'
 import type * as Out from 'types/output/starforged'
 import {
@@ -8,33 +7,6 @@ import {
 	type SourceHaver
 } from './transformer'
 import { trackID } from 'builders/id-tracker'
-
-export const EncounterStarforged = sourcedTransformer<
-	In.EncounterStarforged,
-	Out.EncounterStarforged
->({
-	variants: function (
-		this,
-		data,
-		key,
-		parent
-	): Record<string, Out.EncounterVariantStarforged> | undefined {
-		if (data.variants == null) return undefined
-
-		return mapValues(data.variants, (v, k) =>
-			transform(v, k, this, EncounterVariantStarforged)
-		)
-	}
-})
-
-export const EncounterVariantStarforged: Transformer<
-	In.EncounterVariantStarforged,
-	Out.EncounterVariantStarforged
-> = {
-	id(data, key, parent) {
-		return `${parent.id}/variants/${key}`
-	}
-}
 
 export const SettingTruthOption: Transformer<
 	In.SettingTruthOption,
