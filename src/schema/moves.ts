@@ -22,14 +22,12 @@ export const Move = Type.Unsafe<Move>({
 	properties: {
 		roll_type: { default: 'no_roll', $ref: '#/$defs/MoveRollType' }
 	},
-	// FIXME
 	oneOf: [
 		{ $ref: '#/$defs/MoveNoRoll' },
 		{ $ref: '#/$defs/MoveActionRoll' },
 		{ $ref: '#/$defs/MoveProgressRoll' },
 		{ $ref: '#/$defs/MoveSpecialTrack' }
 	],
-
 	$id: '#/$defs/Move',
 	title: 'Move',
 	required: ['roll_type']
