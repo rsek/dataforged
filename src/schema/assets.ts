@@ -16,7 +16,8 @@ import * as Moves from 'schema/moves'
 function AssetField<TFieldID extends TString, TFieldType extends TObject>(
 	name: string,
 	fieldDFID: TString,
-	fieldTypes: TFieldType[]
+	fieldTypes: TFieldType[],
+	options: ObjectOptions = {}
 ) {
 	return Type.Unsafe<
 		Static<
@@ -31,7 +32,8 @@ function AssetField<TFieldID extends TString, TFieldType extends TObject>(
 		anyOf: fieldTypes.map((field) => Type.Ref(field)),
 		properties: {
 			id: Type.Ref(fieldDFID)
-		}
+		},
+		...options
 	})
 }
 
@@ -67,6 +69,7 @@ export const AssetCardFlipField = Type.Composite(
 		})
 	],
 	{
+		description: Inputs.CardFlipField.description,
 		$id: '#/$defs/AssetCardFlipField'
 	}
 )
@@ -144,7 +147,7 @@ export const AssetConditionMeter = Type.Object(
 )
 
 export const AssetConditionMeterAugment = Type.Partial(
-	Type.Omit(AssetConditionMeter, ['label', 'value', 'id']),
+	Type.Omit(AssetConditionMeter, ['label', 'value', 'id', 'moves']),
 	{ $id: '#/$defs/AssetConditionMeterAugment' }
 )
 
@@ -168,12 +171,19 @@ function AssetAugmentSelf<T extends TObject>(
 ) {
 	omitKeys = [
 		...omitKeys,
+		// metadata & cosmetic keys
+		'asset_type',
+		'icon',
+		'color',
+		'suggestions',
 		'requirement',
-		'options',
-		'controls' // in practice, i don't think anyone's setting a control in order to create a temporary control
+
+		'options', // options are set when you take the asset, so it doesn't make sense to add them here
+		'controls' // using a control to create another control is silly
 	]
 	if (omitKeys.includes('condition_meter'))
 		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys, options)
+	// condition meters need special handling -- they have their own augment schema
 	return Type.Intersect(
 		[
 			Abstract.NodeAugmentSelf(tAsset as any, [...omitKeys, 'condition_meter']),
@@ -312,7 +322,7 @@ export const AssetAbility = Type.Object(
 		augment_moves: Type.Optional(
 			Type.Array(Type.Ref(Moves.MoveAugment), {
 				description:
-					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions are met.',
+					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.',
 				releaseStage: 'experimental'
 			})
 		)
@@ -331,15 +341,15 @@ export const AssetType = Abstract.Collection(
 )
 export type AssetType = Static<typeof AssetType>
 
-const AssetTypeAugment = Type.Composite(
-	[
-		Type.Object({
-			type: Type.Literal('extension')
-		})
-	],
-	{ $id: '#/$defs/AssetTypeAugment' }
-)
-export type AssetTypeAugment = Static<typeof AssetTypeAugment>
+// const AssetTypeAugment = Type.Composite(
+// 	[
+// 		Type.Object({
+// 			type: Type.Literal('extension')
+// 		})
+// 	],
+// 	{ $id: '#/$defs/AssetTypeAugment' }
+// )
+// export type AssetTypeAugment = Static<typeof AssetTypeAugment>
 
 const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
 	$id: '#/$defs/AssetImportAbility'

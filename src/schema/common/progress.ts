@@ -9,30 +9,23 @@ export const ChallengeRank = JsonEnum([1, 2, 3, 4, 5], {
 })
 export type ChallengeRank = Static<typeof ChallengeRank>
 
-export const ProgressType = Type.String({
-	$id: '#/$defs/ProgressType',
+export const SpecialTrackType = Type.String({
+	$id: '#/$defs/SpecialTrackType',
 	pattern: SNAKE_CASE.source,
-	default: 'progress_track',
 	examples: [
-		'progress_track',
 		'bonds_track',
 		'failure_track',
 		'quests_legacy',
 		'bonds_legacy',
 		'discoveries_legacy'
 	],
-	description: `'Canonical' content uses some standardized values.
-
-Most progress rolls use the \`progress_track\` type, which describes any standard, temporary progress track that's created and resolved by moves.
-
-Other values used for special, permanent progress tracks:
-
+	description: `Special, ruleset-specific progress tracks.
+'Canonical' examples:
   * \`bonds_track\`, described in the Ironsworn Rulebook
   * \`failure_track\`, described in Ironsworn: Delve
   * \`quests_legacy\`, \`bonds_legacy\`, and \`discoveries_legacy\`, described Ironsworn: Starforged
 
-Custom values should only be used describe new kinds of permanent progress track.
 `
 })
 
-export type ProgressType = Static<typeof ProgressType>
+export type SpecialTrackType = Static<typeof SpecialTrackType>

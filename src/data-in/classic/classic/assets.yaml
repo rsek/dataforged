@@ -38,7 +38,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/resupply
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: When your cat chases down big game
@@ -55,7 +55,7 @@ assets:
               - augments:
                   - classic/moves/combat/enter_the_fray
                   - classic/moves/combat/strike
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By sending your cat to attack
@@ -72,6 +72,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/make_camp
+                roll_type: action_roll
                 text: Your cat is alert to trouble.
                 outcomes:
                   strong_hit: &Cave_Lion.3
@@ -106,7 +107,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/secure_an_advantage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By sending your spider to scout a place
@@ -121,7 +122,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/face_danger
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By sending your spider to secretly study someone
@@ -139,7 +140,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/combat/enter_the_fray
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: When your spider sets a trap
@@ -182,10 +183,11 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/undertake_a_journey
+                roll_type: action_roll
                 text: Add +1.
               - augments:
                   - classic/moves/adventure/resupply
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By hunting for small game
@@ -196,7 +198,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/secure_an_advantage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Using your hawk to harass and distract your foes
@@ -210,7 +212,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/face_danger
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: To detect an approaching threat
@@ -219,7 +221,7 @@ assets:
                 text: Add +2.
               - augments:
                   - classic/moves/combat/enter_the_fray
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - roll_options:
@@ -245,10 +247,11 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/undertake_a_journey
+                roll_type: action_roll
                 text: Add +1.
               - augments:
                   - classic/moves/adventure/face_danger
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Using your horse’s speed and grace
@@ -262,7 +265,7 @@ assets:
               - augments:
                   - classic/moves/combat/enter_the_fray
                   - classic/moves/adventure/secure_an_advantage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By charging into combat
@@ -277,7 +280,7 @@ assets:
               - augments:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: At close range while mounted
@@ -313,7 +316,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/gather_information
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Using your hound’s keen senses to track your quarry or investigate a scene
@@ -326,7 +329,7 @@ assets:
               - augments:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Alongside your hound
@@ -339,7 +342,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/suffer/endure_stress
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: In the company of your hound
@@ -378,7 +381,7 @@ assets:
                 field_type: text
                 label: Expertise
             augment_moves:
-              - move_type: action_roll
+              - roll_type: action_roll
                 trigger:
                   conditions:
                     - text: When you make a move outside of combat aided by your companion’s expertise
@@ -390,14 +393,14 @@ assets:
               - augments:
                   - classic/moves/combat/clash
                   - classic/moves/combat/battle
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Alongside your companion
                 text: Add +1.
               - augments:
                   - classic/moves/adventure/face_danger
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Against an attack by standing together
@@ -408,6 +411,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/suffer/face_desolation
+                roll_type: action_roll
                 text: Add +1 when you [Face Desolation](id:classic/moves/suffer/face_desolation) in your companion's presence.
       mammoth:
         asset_type: Companion
@@ -435,7 +439,7 @@ assets:
               - augments:
                   - classic/moves/adventure/make_camp
                   - delve/moves/delve/check_your_gear
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - roll_options:
@@ -448,7 +452,7 @@ assets:
               - augments:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: by riding your mammoth against a pack of foes
@@ -550,7 +554,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/combat/strike
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By commanding your wyvern to attack
@@ -590,7 +594,7 @@ assets:
             moves:
               create_elixir:
                 name: Create Elixir
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you create an elixir...
                   conditions:
@@ -689,7 +693,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/suffer/endure_harm
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: When you are at 0 health
@@ -748,7 +752,7 @@ assets:
                   - classic/moves/adventure/secure_an_advantage
                   - classic/moves/relationship/compel
                   - classic/moves/combat/battle
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By commanding your warband
@@ -759,7 +763,7 @@ assets:
               - augments:
                   - classic/moves/adventure/make_camp
                   - classic/moves/relationship/sojourn
-                move_type: action_roll
+                roll_type: action_roll
                 outcomes:
                   strong_hit: &CommanderStrength.Recover
                     text: Take +1 strength.
@@ -770,7 +774,7 @@ assets:
               - augments:
                   - classic/moves/adventure/gather_information
                   - classic/moves/adventure/resupply
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By dispatching scouts from your warband
@@ -807,7 +811,7 @@ assets:
             moves:
               commemorate:
                 name: Commemorate
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
                   conditions:
@@ -862,7 +866,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/quest/swear_an_iron_vow
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: To serve your god on a divine quest
@@ -874,7 +878,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/relationship/sojourn
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By sharing the word of your god
@@ -984,7 +988,7 @@ assets:
             augment_moves:
               - augments:
                   - delve/moves/delve/check_your_gear
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - roll_options:
@@ -1011,7 +1015,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/gather_information
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1020,7 +1024,7 @@ assets:
                       text: Within an enemy area to discover their positions, plans, or methods
               - augments:
                   - classic/moves/adventure/secure_an_advantage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1032,7 +1036,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/resupply
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1112,7 +1116,7 @@ assets:
               - augments:
                   - classic/moves/suffer/face_death
                   - classic/moves/suffer/face_desolation
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: While wearing the mask
@@ -1154,7 +1158,7 @@ assets:
                 name: Scrape By
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/outcast
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When your supply is reduced to 0...
                   conditions:
@@ -1190,7 +1194,7 @@ assets:
                 name: Establish False Identity
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/pretender
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you establish a false identity...
                   conditions:
@@ -1211,7 +1215,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/relationship/sojourn
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1292,7 +1296,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/suffer/face_death
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1380,7 +1384,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/gather_information
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By investigating a devious scheme
@@ -1395,7 +1399,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/relationship/forge_a_bond
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Keep your secret
@@ -1490,7 +1494,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/make_camp
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: In the woodlands
@@ -1649,7 +1653,7 @@ assets:
             moves:
               craft_arrow:
                 name: Craft Arrow
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you craft a single arrow designated for a specific foe...
                   conditions:
@@ -1700,6 +1704,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/suffer/endure_harm
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: In a fight while you are lightly armored
@@ -1707,6 +1712,7 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
               - augments:
                   - classic/moves/suffer/endure_harm
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: In a fight while you are geared for war
@@ -1718,6 +1724,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/combat/clash
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: While you are geared for war
@@ -1727,6 +1734,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/relationship/compel
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: In a situation where strength of arms is a factor
@@ -1747,7 +1755,7 @@ assets:
               - augments:
                   - classic/moves/combat/strike
                   - classic/moves/combat/clash
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - roll_options:
@@ -1761,7 +1769,7 @@ assets:
             augment_moves:
               - augments:
                   - classic/moves/adventure/secure_an_advantage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - roll_options:
@@ -1776,7 +1784,7 @@ assets:
               - augments:
                   - classic/moves/adventure/undertake_a_journey
                 # TODO: make triggerable by ally
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   conditions:
                     - method: any
@@ -1862,7 +1870,7 @@ assets:
             moves:
               carve_rune:
                 name: Carve Rune
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
                   conditions:
@@ -1942,7 +1950,7 @@ assets:
             moves:
               augur:
                 name: Augur
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you summon a flock of crows and ask a single question...
                   conditions:
@@ -1975,7 +1983,7 @@ assets:
             moves:
               awaken_simulacrum:
                 name: Awaken Simulacrum
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you create a simulacrum...
                   conditions:
@@ -2018,7 +2026,7 @@ assets:
             moves:
               bind:
                 name: Bind
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you wear an animal pelt and dance in moonlight...
                   conditions:
@@ -2053,7 +2061,7 @@ assets:
             moves:
               commune:
                 name: Commune
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
                   conditions:
@@ -2088,7 +2096,7 @@ assets:
             moves:
               cast_runes:
                 name: Cast Runes
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
                   conditions:
@@ -2127,7 +2135,7 @@ assets:
             moves:
               invoke_essence:
                 name: Invoke Essence
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you consume the mystical essence of your surroundings...
                   conditions:
@@ -2170,7 +2178,7 @@ assets:
             moves:
               keen:
                 name: Keen
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you hold a weapon and sing a keen for those it has killed...
                   conditions:
@@ -2206,7 +2214,7 @@ assets:
             moves:
               draw_blood_rune:
                 name: Draw Blood Rune
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you mark your hands or weapon with an intricate blood rune...
                   conditions:
@@ -2248,7 +2256,7 @@ assets:
             moves:
               capture_light:
                 name: Capture Light
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you focus on a source of light and capture its essence...
                   conditions:
@@ -2289,7 +2297,7 @@ assets:
             moves:
               scry:
                 name: Scry
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
                   conditions:
@@ -2328,7 +2336,7 @@ assets:
             moves:
               walk_in_shadow:
                 name: Walk in Shadow
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you cloak yourself with the gossamer veil of the shadow realms...
                   conditions:
@@ -2363,7 +2371,7 @@ assets:
             moves:
               sway:
                 name: Sway
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you speak a person’s name three times to the wind...
                   conditions:
@@ -2398,7 +2406,7 @@ assets:
             moves:
               fashion_talisman:
                 name: Fashion Talisman
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you fashion a charm that protects against a specific person or creature...
                   conditions:
@@ -2431,7 +2439,7 @@ assets:
             moves:
               tether:
                 name: Tether
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you commune with the spirits of a place...
                   conditions:
@@ -2466,7 +2474,7 @@ assets:
             moves:
               bind_beast:
                 name: Bind Beast
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you hold a totem of your animal or beast companion and focus on it...
                   conditions:
@@ -2502,7 +2510,7 @@ assets:
             moves:
               paint_visage:
                 name: Paint Visage
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you paint yourself in blood and ash...
                   conditions:
@@ -2541,7 +2549,7 @@ assets:
             moves:
               ward:
                 name: Ward
-                move_type: action_roll
+                roll_type: action_roll
                 trigger:
                   text: When you walk a wide circle, sprinkling the ground with salt...
                   conditions:

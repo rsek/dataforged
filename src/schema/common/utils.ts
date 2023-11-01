@@ -1,11 +1,13 @@
 import {
+	Type,
+	TypeGuard,
+	type ObjectOptions,
+	type SchemaOptions,
 	type Static,
+	type TAnySchema,
 	type TObject,
 	type TProperties,
-	type TUnsafe,
-	type ObjectOptions,
-	Type,
-	type SchemaOptions
+	type TUnsafe
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash'
 
@@ -44,18 +46,23 @@ export type DeepPartial<T extends Record<any, any>> = {
 	[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
 }
 
-export function DeepPartial<T extends TObject>(
+export function DeepPartial<T extends TAnySchema>(
 	schema: T,
 	options: SchemaOptions = {}
-): TUnsafe<DeepPartial<Static<T>>> {
+) {
 	if (schema.properties == null) return schema
+
 	const properties = Object.keys(schema.properties).reduce((acc, key) => {
-		const property = schema.properties[key]
-		const mapped =
-			property.Kind === 'Object' ? DeepPartial(property as TObject) : property
+		const propertySchema = schema.properties[key]
+		const mapped = TypeGuard.TObject(propertySchema)
+			? DeepPartial(propertySchema)
+			: propertySchema
 		return { ...acc, [key]: Type.Optional(mapped) }
 	}, {}) as TProperties
-	return Type.Object({ ...properties }, options)
+
+	return Type.Object<typeof properties>({ ...properties }, options) as TUnsafe<
+		DeepPartial<Static<T>>
+	>
 }
 /** Make the provided keys optional */
 export function PartialBy<T extends TObject>(

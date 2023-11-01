@@ -8,12 +8,12 @@ export const EncounterClassic = Type.Object(
 		your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		nature: Type.Ref(Localize.Label, {
 			description:
-				"A localized category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
+				"A localized category label describing the nature of this NPC. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
 			examples: [
 				'Ironlander',
 				'Firstborn',
 				'Animal',
-				'Beasts',
+				'Beast',
 				'Horror',
 				'Anomaly'
 			]
@@ -24,7 +24,7 @@ export const EncounterClassic = Type.Object(
 		$id: '#/$defs/EncounterClassic',
 		title: 'Encounter (classic)',
 		description:
-			'An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.'
+			'An NPC entry, similar to those in Chapter 5 of the Ironsworn Rulebook.'
 	}
 )
 export type EncounterClassic = Static<typeof EncounterClassic>

@@ -121,61 +121,7 @@ export type MoveIDWithWildcard = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type Move =
-  | {
-      id?: MoveID;
-      name: Label;
-      replaces?: MoveID1;
-      trigger: {
-        text: MarkdownString3;
-      } & TriggerNoRoll;
-      text: MarkdownString5;
-      /**
-       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-       */
-      oracles?: OracleTableID[];
-      suggestions?: Suggestions;
-      source?: Source;
-      move_type: "no_roll";
-      outcomes?: null;
-      _source?: SourceStub;
-    }
-  | {
-      id?: MoveID;
-      name: Label;
-      replaces?: MoveID2;
-      trigger: {
-        text: MarkdownString6;
-      } & TriggerActionRoll;
-      text: MarkdownString8;
-      /**
-       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-       */
-      oracles?: OracleTableID[];
-      suggestions?: Suggestions;
-      source?: Source;
-      move_type: "action_roll";
-      outcomes: MoveOutcomes;
-      _source?: SourceStub;
-    }
-  | {
-      id?: MoveID;
-      name: Label;
-      replaces?: MoveID3;
-      trigger: {
-        text: MarkdownString9;
-      } & TriggerProgressRoll;
-      text: MarkdownString11;
-      /**
-       * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-       */
-      oracles?: OracleTableID[];
-      suggestions?: Suggestions;
-      source?: Source;
-      move_type: "progress_roll";
-      outcomes: MoveOutcomes;
-      _source?: SourceStub;
-    };
+export type Move = MoveNoRoll | MoveActionRoll | MoveProgressRoll | MoveSpecialTrack;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -265,26 +211,47 @@ export type MarkdownString9 = string;
  */
 export type MarkdownString10 = string;
 /**
- * 'Canonical' content uses some standardized values.
- *
- * Most progress rolls use the `progress_track` type, which describes any standard, temporary progress track that's created and resolved by moves.
- *
- * Other values used for special, permanent progress tracks:
- *
+ * Special, ruleset-specific progress tracks.
+ * 'Canonical' examples:
  *   * `bonds_track`, described in the Ironsworn Rulebook
  *   * `failure_track`, described in Ironsworn: Delve
  *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
  *
- * Custom values should only be used describe new kinds of permanent progress track.
  *
  */
-export type ProgressType = string;
+export type SpecialTrackType = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString11 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label1 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID4 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString12 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString13 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString14 = string;
 export type AssetTypeID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -298,7 +265,7 @@ export type AssetIDWildcard = string;
 /**
  * A localized plain text name or label.
  */
-export type Label1 = string;
+export type Label2 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -321,18 +288,6 @@ export type AssetAbilityOptionField = TextField;
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
 /**
- * A localized plain text name or label.
- */
-export type Label2 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID4 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID5 = string;
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  *
@@ -340,21 +295,39 @@ export type MoveID5 = string;
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetConditionMeterControlField = AssetCheckboxField;
+export type MoveAugment = MoveNoRollAugment | MoveActionRollAugment | MoveProgressRollAugment | MoveSpecialTrackAugment;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString12 = string;
-export type MoveRollType = "action_roll" | "progress_roll" | "no_roll";
+export type MarkdownString15 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString16 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString17 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString18 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID5 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID6 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID7 = string;
 /**
  * A localized category label describing the nature of this encounter. See the table on p. 258 of Starforged for examples.
  */
@@ -665,6 +638,23 @@ export interface MoveCategory {
   };
   _source?: SourceStub;
 }
+export interface MoveNoRoll {
+  id?: MoveID;
+  name: Label;
+  replaces?: MoveID1;
+  trigger: {
+    text: MarkdownString3;
+  } & TriggerNoRoll;
+  text: MarkdownString5;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  suggestions?: Suggestions;
+  source?: Source;
+  roll_type: "no_roll";
+  _source?: SourceStub;
+}
 export interface TriggerNoRoll {
   text: MarkdownString4;
   conditions?: TriggerNoRollCondition[];
@@ -680,14 +670,32 @@ export interface TriggerBy {
   player?: boolean;
   ally?: boolean;
 }
+export interface MoveActionRoll {
+  id?: MoveID;
+  name: Label;
+  replaces?: MoveID2;
+  trigger: {
+    text: MarkdownString6;
+  } & TriggerActionRoll;
+  text: MarkdownString8;
+  outcomes: MoveOutcomes;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  suggestions?: Suggestions;
+  source?: Source;
+  roll_type: "action_roll";
+  _source?: SourceStub;
+}
 export interface TriggerActionRoll {
   text: MarkdownString7;
   conditions: TriggerActionRollCondition[];
 }
 export interface TriggerActionRollCondition {
   text?: MarkdownString;
-  method?: MoveRollMethod | MoveOutcomeType;
   by?: TriggerBy;
+  method?: MoveRollMethod | MoveOutcomeType;
   roll_options: TriggerActionRollConditionOption[];
 }
 export interface TriggerActionRollConditionOptionStat {
@@ -706,7 +714,7 @@ export interface TriggerActionRollConditionOptionCustomValue {
   value: number;
 }
 /**
- * Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
+ * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
  *
  *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
  */
@@ -730,18 +738,68 @@ export interface MoveOutcome {
   count_as?: MoveOutcomeType;
   reroll?: MoveReroll;
 }
+export interface MoveProgressRoll {
+  id?: MoveID;
+  name: Label;
+  replaces?: MoveID3;
+  trigger: {
+    text: MarkdownString9;
+  } & TriggerProgressRoll;
+  text: MarkdownString11;
+  outcomes: MoveOutcomes;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  suggestions?: Suggestions;
+  source?: Source;
+  roll_type: "progress_roll";
+  track_label: Label1;
+  _source?: SourceStub;
+}
 export interface TriggerProgressRoll {
   text: MarkdownString10;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
   text?: MarkdownString;
-  method?: MoveRollMethod | MoveOutcomeType;
   by?: TriggerBy;
+  method?: MoveRollMethod | MoveOutcomeType;
   roll_options: TriggerProgressRollConditionOption[];
 }
 export interface TriggerProgressRollConditionOption {
-  using: ProgressType;
+  using: SpecialTrackType;
+}
+export interface MoveSpecialTrack {
+  id?: MoveID;
+  name: Label;
+  replaces?: MoveID4;
+  trigger: {
+    text: MarkdownString12;
+  } & TriggerSpecialTrack;
+  text: MarkdownString14;
+  outcomes: MoveOutcomes;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  suggestions?: Suggestions;
+  source?: Source;
+  roll_type: "special_track";
+  _source?: SourceStub;
+}
+export interface TriggerSpecialTrack {
+  text: MarkdownString13;
+  conditions: TriggerSpecialTrackCondition[];
+}
+export interface TriggerSpecialTrackCondition {
+  text?: MarkdownString;
+  by?: TriggerBy;
+  method?: MoveRollMethod | MoveOutcomeType;
+  roll_options: TriggerSpecialTrackConditionOption[];
+}
+export interface TriggerSpecialTrackConditionOption {
+  using: SpecialTrackType;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -780,7 +838,7 @@ export interface AssetType {
 export interface Asset {
   id?: AssetID;
   name: Label;
-  asset_type: Label1;
+  asset_type: Label2;
   source?: Source;
   icon?: SVGImageURL;
   color?: CSSColor;
@@ -853,6 +911,12 @@ export interface CheckboxField {
    */
   value?: boolean;
 }
+/**
+ * This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.
+ *
+ *     Otherwise, it behaves similarly to a CheckboxField.
+ *
+ */
 export interface AssetCardFlipField {
   id?: string;
   label: Label;
@@ -887,10 +951,6 @@ export interface AssetAbility {
    * Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
    */
   augment_asset?: {
-    asset_type?: Label2;
-    icon?: SVGImageURL;
-    color?: CSSColor;
-    suggestions?: Suggestions;
     /**
      * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
      */
@@ -904,7 +964,7 @@ export interface AssetAbility {
     condition_meter?: AssetConditionMeter;
   };
   /**
-   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions are met.
+   * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
   augment_moves?: MoveAugment[];
 }
@@ -946,13 +1006,6 @@ export interface AssetConditionMeter {
   min?: number;
   max?: number;
   /**
-   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
-   */
-  moves?: {
-    suffer?: MoveID4;
-    recover?: MoveID5;
-  };
-  /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */
   controls?: {
@@ -976,16 +1029,58 @@ export interface AssetCheckboxField {
    */
   disables_asset?: boolean;
 }
-export interface MoveAugment {
-  text?: MarkdownString12;
+export interface MoveNoRollAugment {
+  text?: MarkdownString15;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
+  roll_type?: "no_roll";
   augments?: MoveIDWithWildcard[];
-  trigger?: unknown;
-  move_type?: MoveRollType;
-  outcomes?: unknown;
+  outcomes?: MoveOutcomesAugment;
+}
+export interface MoveOutcomesAugment {
+  miss?: MoveOutcomeMatchableAugment;
+  weak_hit?: MoveOutcomeAugment;
+  strong_hit?: MoveOutcomeMatchableAugment;
+}
+export interface MoveOutcomeMatchableAugment {
+  text?: MarkdownString;
+  count_as?: MoveOutcomeType;
+  reroll?: MoveReroll;
+  match?: MoveOutcome;
+}
+export interface MoveOutcomeAugment {
+  text?: MarkdownString;
+  count_as?: MoveOutcomeType;
+  reroll?: MoveReroll;
+}
+export interface MoveActionRollAugment {
+  text?: MarkdownString16;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  roll_type: "action_roll";
+  augments?: MoveIDWithWildcard[];
+}
+export interface MoveProgressRollAugment {
+  text?: MarkdownString17;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  roll_type: "progress_roll";
+  augments?: MoveIDWithWildcard[];
+}
+export interface MoveSpecialTrackAugment {
+  text?: MarkdownString18;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  roll_type: "special_track";
+  augments?: MoveIDWithWildcard[];
 }
 /**
  * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
@@ -1002,8 +1097,8 @@ export interface AssetConditionMeter1 {
    * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
    */
   moves?: {
-    suffer?: MoveID6;
-    recover?: MoveID7;
+    suffer?: MoveID5;
+    recover?: MoveID6;
   };
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.

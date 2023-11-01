@@ -132,8 +132,6 @@ export function OmitMeta<T extends TObject>(t: T) {
 }
 export type OmitMeta<T> = Omit<T, MetaKeys>
 
-export function PartialDeep<T extends TSchema>(t: T) {}
-
 /**
  * s a single rules element
  */
@@ -155,7 +153,7 @@ export function AugmentMany<T extends TObject<{ id: TString | TRef<TString> }>>(
 ) {
 	return Type.Composite(
 		[
-			Utils.DeepPartial(OmitMeta(t)),
+			Utils.DeepPartial(OmitMeta(t)) as any,
 			Type.Object({ augments: Type.Optional(Type.Array(extendIds)) })
 		],
 		options

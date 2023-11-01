@@ -509,21 +509,19 @@
 			"enum": [1, 2, 3, 4, 5],
 			"title": "ChallengeRank"
 		},
-		"ProgressType": {
-			"$id": "#/$defs/ProgressType",
+		"SpecialTrackType": {
+			"$id": "#/$defs/SpecialTrackType",
 			"pattern": "([a-z][a-z_]*)",
-			"default": "progress_track",
 			"examples": [
-				"progress_track",
 				"bonds_track",
 				"failure_track",
 				"quests_legacy",
 				"bonds_legacy",
 				"discoveries_legacy"
 			],
-			"description": "'Canonical' content uses some standardized values.\n\nMost progress rolls use the `progress_track` type, which describes any standard, temporary progress track that's created and resolved by moves.\n\nOther values used for special, permanent progress tracks:\n\n  * `bonds_track`, described in the Ironsworn Rulebook\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\nCustom values should only be used describe new kinds of permanent progress track.\n",
+			"description": "Special, ruleset-specific progress tracks.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
 			"type": "string",
-			"title": "ProgressType"
+			"title": "SpecialTrackType"
 		},
 		"OracleRollTemplate": {
 			"$id": "#/$defs/OracleRollTemplate",
@@ -796,6 +794,93 @@
 			"required": ["name"],
 			"title": "OracleCollection"
 		},
+		"Move": {
+			"type": "object",
+			"properties": {
+				"roll_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" }
+			},
+			"oneOf": [
+				{ "$ref": "#/$defs/MoveNoRoll" },
+				{ "$ref": "#/$defs/MoveActionRoll" },
+				{ "$ref": "#/$defs/MoveProgressRoll" },
+				{ "$ref": "#/$defs/MoveSpecialTrack" }
+			],
+			"$id": "#/$defs/Move",
+			"title": "Move",
+			"required": []
+		},
+		"MoveAugment": {
+			"type": "object",
+			"properties": {
+				"roll_type": {
+					"default": "action_roll",
+					"$ref": "#/$defs/MoveRollType"
+				}
+			},
+			"oneOf": [
+				{ "$ref": "#/$defs/MoveNoRollAugment" },
+				{ "$ref": "#/$defs/MoveActionRollAugment" },
+				{ "$ref": "#/$defs/MoveProgressRollAugment" },
+				{ "$ref": "#/$defs/MoveSpecialTrackAugment" }
+			],
+			"$id": "#/$defs/MoveAugment",
+			"title": "Move Augment",
+			"required": []
+		},
+		"MoveCategory": {
+			"$id": "#/$defs/MoveCategory",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveCategoryID" },
+				"extends": {
+					"$ref": "#/$defs/MoveCategoryID",
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+				},
+				"imports": {
+					"macro": true,
+					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
+					"type": "object",
+					"properties": {
+						"from": {
+							"$ref": "#/$defs/MoveCategoryID",
+							"description": "The collection imported by this collection."
+						},
+						"include": {
+							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
+							"anyOf": [
+								{ "type": "null" },
+								{
+									"type": "array",
+									"items": { "$ref": "#/$defs/MoveIDWildcard" }
+								}
+							]
+						}
+					},
+					"required": ["from", "include"]
+				},
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
+				},
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name"],
+			"title": "MoveCategory"
+		},
+		"MoveRollType": {
+			"$id": "#/$defs/MoveRollType",
+			"description": "\n    no_roll: A move that makes no rolls.\n    action_roll: A move that makes an action roll.\n    progress_roll: A progress move that rolls on a standard progress track associated with this specific move.\n    special_track: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).\n    ",
+			"enum": ["no_roll", "action_roll", "progress_roll", "special_track"],
+			"title": "MoveRollType"
+		},
 		"MoveRollMethod": {
 			"$id": "#/$defs/MoveRollMethod",
 			"description": "`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.",
@@ -812,11 +897,6 @@
 			"enum": ["miss", "weak_hit", "strong_hit"],
 			"title": "MoveOutcomeType"
 		},
-		"MoveRollType": {
-			"$id": "#/$defs/MoveRollType",
-			"enum": ["action_roll", "progress_roll", "no_roll"],
-			"title": "MoveRollType"
-		},
 		"TriggerBy": {
 			"$id": "#/$defs/TriggerBy",
 			"description": "Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.",
@@ -827,6 +907,131 @@
 			},
 			"required": [],
 			"title": "TriggerBy"
+		},
+		"TriggerBase": {
+			"type": "object",
+			"properties": {
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
+					"$ref": "#/$defs/MarkdownString"
+				}
+			},
+			"required": ["text"]
+		},
+		"MoveReroll": {
+			"$id": "#/$defs/MoveReroll",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"method": { "$ref": "#/$defs/MoveRerollMethod" }
+			},
+			"required": ["method"],
+			"title": "MoveReroll"
+		},
+		"MoveOutcome": {
+			"$id": "#/$defs/MoveOutcome",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" }
+			},
+			"required": ["text"],
+			"title": "MoveOutcome"
+		},
+		"MoveOutcomeMatchable": {
+			"$id": "#/$defs/MoveOutcomeMatchable",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" },
+				"match": { "$ref": "#/$defs/MoveOutcome" }
+			},
+			"required": ["text"],
+			"title": "MoveOutcomeMatchable"
+		},
+		"MoveOutcomes": {
+			"$id": "#/$defs/MoveOutcomes",
+			"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.",
+			"type": "object",
+			"properties": {
+				"miss": { "$ref": "#/$defs/MoveOutcomeMatchable" },
+				"weak_hit": { "$ref": "#/$defs/MoveOutcome" },
+				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchable" }
+			},
+			"required": ["miss", "weak_hit", "strong_hit"],
+			"title": "MoveOutcomes"
+		},
+		"MoveBase": {
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/$defs/MoveID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"roll_type": { "default": "no_roll", "$ref": "#/$defs/MoveRollType" },
+				"replaces": {
+					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+					"$ref": "#/$defs/MoveID"
+				},
+				"trigger": {
+					"type": "object",
+					"properties": {
+						"text": {
+							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+							"type": "string",
+							"$ref": "#/$defs/MarkdownString"
+						}
+					},
+					"required": ["text"]
+				},
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"source": { "$ref": "#/$defs/Source" },
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name", "trigger", "text"]
+		},
+		"MoveOutcomeAugment": {
+			"$id": "#/$defs/MoveOutcomeAugment",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" }
+			},
+			"title": "MoveOutcomeAugment"
+		},
+		"MoveOutcomeMatchableAugment": {
+			"$id": "#/$defs/MoveOutcomeMatchableAugment",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
+				"reroll": { "$ref": "#/$defs/MoveReroll" },
+				"match": { "$ref": "#/$defs/MoveOutcome" }
+			},
+			"title": "MoveOutcomeMatchableAugment"
+		},
+		"MoveOutcomesAugment": {
+			"$id": "#/$defs/MoveOutcomesAugment",
+			"type": "object",
+			"properties": {
+				"miss": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" },
+				"weak_hit": { "$ref": "#/$defs/MoveOutcomeAugment" },
+				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" }
+			},
+			"title": "MoveOutcomesAugment"
 		},
 		"TriggerActionRollConditionOptionAttachedAssetRef": {
 			"$id": "#/$defs/TriggerActionRollConditionOptionAttachedAssetRef",
@@ -888,18 +1093,12 @@
 			],
 			"title": "TriggerActionRollConditionOption"
 		},
-		"TriggerProgressRollConditionOption": {
-			"$id": "#/$defs/TriggerProgressRollConditionOption",
-			"type": "object",
-			"properties": { "using": { "$ref": "#/$defs/ProgressType" } },
-			"required": ["using"],
-			"title": "TriggerProgressRollConditionOption"
-		},
 		"TriggerActionRollCondition": {
 			"$id": "#/$defs/TriggerActionRollCondition",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -907,7 +1106,6 @@
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
 				},
-				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
@@ -915,36 +1113,6 @@
 			},
 			"required": ["roll_options"],
 			"title": "TriggerActionRollCondition"
-		},
-		"TriggerProgressRollCondition": {
-			"$id": "#/$defs/TriggerProgressRollCondition",
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"method": {
-					"default": "any",
-					"anyOf": [
-						{ "$ref": "#/$defs/MoveRollMethod" },
-						{ "$ref": "#/$defs/MoveOutcomeType" }
-					]
-				},
-				"by": { "$ref": "#/$defs/TriggerBy" },
-				"roll_options": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
-				}
-			},
-			"required": ["roll_options"],
-			"title": "TriggerProgressRollCondition"
-		},
-		"TriggerNoRollCondition": {
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"by": { "$ref": "#/$defs/TriggerBy" }
-			},
-			"$id": "#/$defs/TriggerNoRollCondition",
-			"title": "TriggerNoRollCondition"
 		},
 		"TriggerActionRoll": {
 			"$id": "#/$defs/TriggerActionRoll",
@@ -964,23 +1132,93 @@
 			"required": ["text", "conditions"],
 			"title": "TriggerActionRoll"
 		},
-		"TriggerProgressRoll": {
-			"$id": "#/$defs/TriggerProgressRoll",
+		"MoveActionRoll": {
 			"type": "object",
 			"properties": {
+				"id": { "$ref": "#/$defs/MoveID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"replaces": {
+					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+					"$ref": "#/$defs/MoveID"
+				},
+				"trigger": {
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"text": {
+									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+									"type": "string",
+									"$ref": "#/$defs/MarkdownString"
+								}
+							},
+							"required": ["text"]
+						},
+						{ "$ref": "#/$defs/TriggerActionRoll" }
+					]
+				},
 				"text": {
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-					"type": "string",
-					"pattern": ".*\\.{3}",
+					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"conditions": {
+				"outcomes": {
+					"allOf": [
+						{ "$ref": "#/$defs/MoveOutcomes" },
+						{ "$ref": "#/$defs/MoveOutcomes" }
+					]
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollCondition" }
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"source": { "$ref": "#/$defs/Source" },
+				"roll_type": { "const": "action_roll", "type": "string" },
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
+		},
+		"TriggerActionRollConditionAugment": {
+			"$id": "#/$defs/TriggerActionRollConditionAugment",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"method": {
+					"default": "any",
+					"anyOf": [
+						{ "$ref": "#/$defs/MoveRollMethod" },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
+					]
+				},
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
 				}
 			},
-			"required": ["text", "conditions"],
-			"title": "TriggerProgressRoll"
+			"title": "TriggerActionRollConditionAugment"
+		},
+		"TriggerActionRollAugment": {
+			"$id": "#/$defs/TriggerActionRollAugment",
+			"type": "object",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerActionRollCondition" }
+				}
+			},
+			"required": ["conditions"],
+			"title": "TriggerActionRollAugment"
+		},
+		"TriggerNoRollCondition": {
+			"$id": "#/$defs/TriggerNoRollCondition",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" }
+			},
+			"title": "TriggerNoRollCondition"
 		},
 		"TriggerNoRoll": {
 			"$id": "#/$defs/TriggerNoRoll",
@@ -1000,245 +1238,113 @@
 			"required": ["text"],
 			"title": "TriggerNoRoll"
 		},
-		"MoveReroll": {
-			"$id": "#/$defs/MoveReroll",
+		"MoveNoRoll": {
 			"type": "object",
 			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"method": { "$ref": "#/$defs/MoveRerollMethod" }
-			},
-			"required": ["method"],
-			"title": "MoveReroll"
-		},
-		"MoveOutcome": {
-			"$id": "#/$defs/MoveOutcome",
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
-				"reroll": { "$ref": "#/$defs/MoveReroll" }
-			},
-			"required": ["text"],
-			"title": "MoveOutcome"
-		},
-		"MoveOutcomeMatchable": {
-			"$id": "#/$defs/MoveOutcomeMatchable",
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
-				"reroll": { "$ref": "#/$defs/MoveReroll" },
-				"match": { "$ref": "#/$defs/MoveOutcome" }
-			},
-			"required": ["text"],
-			"title": "MoveOutcomeMatchable"
-		},
-		"MoveOutcomes": {
-			"$id": "#/$defs/MoveOutcomes",
-			"description": "Describes the effect of each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.",
-			"type": "object",
-			"properties": {
-				"miss": { "$ref": "#/$defs/MoveOutcomeMatchable" },
-				"weak_hit": { "$ref": "#/$defs/MoveOutcome" },
-				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchable" }
-			},
-			"required": ["miss", "weak_hit", "strong_hit"],
-			"title": "MoveOutcomes"
-		},
-		"Move": {
-			"type": "object",
-			"properties": {
-				"move_type": {
-					"default": "no_roll",
-					"enum": ["action_roll", "progress_roll", "no_roll"]
-				}
-			},
-			"required": [],
-			"oneOf": [
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/MoveID" },
-						"name": { "$ref": "#/$defs/Label" },
-						"replaces": {
-							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
-							"$ref": "#/$defs/MoveID"
-						},
-						"trigger": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"text": {
-											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-											"type": "string",
-											"$ref": "#/$defs/MarkdownString"
-										}
-									},
-									"required": ["text"]
-								},
-								{ "$ref": "#/$defs/TriggerNoRoll" }
-							]
-						},
-						"text": {
-							"description": "The complete rules text of the move.",
-							"$ref": "#/$defs/MarkdownString"
-						},
-						"oracles": {
-							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
-							"type": "array",
-							"items": { "$ref": "#/$defs/OracleTableID" }
-						},
-						"suggestions": { "$ref": "#/$defs/Suggestions" },
-						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "no_roll", "type": "string" },
-						"outcomes": { "type": "null" },
-						"_source": { "$ref": "#/$defs/SourceStub" }
-					},
-					"required": ["name", "trigger", "text", "move_type"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/MoveID" },
-						"name": { "$ref": "#/$defs/Label" },
-						"replaces": {
-							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
-							"$ref": "#/$defs/MoveID"
-						},
-						"trigger": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"text": {
-											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-											"type": "string",
-											"$ref": "#/$defs/MarkdownString"
-										}
-									},
-									"required": ["text"]
-								},
-								{ "$ref": "#/$defs/TriggerActionRoll" }
-							]
-						},
-						"text": {
-							"description": "The complete rules text of the move.",
-							"$ref": "#/$defs/MarkdownString"
-						},
-						"oracles": {
-							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
-							"type": "array",
-							"items": { "$ref": "#/$defs/OracleTableID" }
-						},
-						"suggestions": { "$ref": "#/$defs/Suggestions" },
-						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "action_roll", "type": "string" },
-						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
-						"_source": { "$ref": "#/$defs/SourceStub" }
-					},
-					"required": ["name", "trigger", "text", "move_type", "outcomes"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"id": { "$ref": "#/$defs/MoveID" },
-						"name": { "$ref": "#/$defs/Label" },
-						"replaces": {
-							"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
-							"$ref": "#/$defs/MoveID"
-						},
-						"trigger": {
-							"allOf": [
-								{
-									"type": "object",
-									"properties": {
-										"text": {
-											"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-											"type": "string",
-											"$ref": "#/$defs/MarkdownString"
-										}
-									},
-									"required": ["text"]
-								},
-								{ "$ref": "#/$defs/TriggerProgressRoll" }
-							]
-						},
-						"text": {
-							"description": "The complete rules text of the move.",
-							"$ref": "#/$defs/MarkdownString"
-						},
-						"oracles": {
-							"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
-							"type": "array",
-							"items": { "$ref": "#/$defs/OracleTableID" }
-						},
-						"suggestions": { "$ref": "#/$defs/Suggestions" },
-						"source": { "$ref": "#/$defs/Source" },
-						"move_type": { "const": "progress_roll", "type": "string" },
-						"outcomes": { "$ref": "#/$defs/MoveOutcomes" },
-						"_source": { "$ref": "#/$defs/SourceStub" }
-					},
-					"required": ["name", "trigger", "text", "move_type", "outcomes"]
-				}
-			],
-			"additionalProperties": true,
-			"$id": "#/$defs/Move",
-			"title": "Move"
-		},
-		"MoveCategory": {
-			"$id": "#/$defs/MoveCategory",
-			"type": "object",
-			"properties": {
+				"id": { "$ref": "#/$defs/MoveID" },
 				"name": { "$ref": "#/$defs/Label" },
-				"canonical_name": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"id": { "$ref": "#/$defs/MoveCategoryID" },
-				"extends": {
-					"$ref": "#/$defs/MoveCategoryID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+				"replaces": {
+					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+					"$ref": "#/$defs/MoveID"
 				},
-				"imports": {
-					"macro": true,
-					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
-					"type": "object",
-					"properties": {
-						"from": {
-							"$ref": "#/$defs/MoveCategoryID",
-							"description": "The collection imported by this collection."
-						},
-						"include": {
-							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
-							"anyOf": [
-								{ "type": "null" },
-								{
-									"type": "array",
-									"items": { "$ref": "#/$defs/MoveIDWildcard" }
+				"trigger": {
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"text": {
+									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+									"type": "string",
+									"$ref": "#/$defs/MarkdownString"
 								}
-							]
-						}
-					},
-					"required": ["from", "include"]
+							},
+							"required": ["text"]
+						},
+						{ "$ref": "#/$defs/TriggerNoRoll" }
+					]
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"contents": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
 				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"source": { "$ref": "#/$defs/Source" },
+				"roll_type": { "const": "no_roll", "type": "string" },
 				"_source": { "$ref": "#/$defs/SourceStub" }
 			},
-			"required": ["name"],
-			"title": "MoveCategory"
+			"required": ["name", "trigger", "text", "roll_type"]
 		},
-		"TriggerActionRollConditionAugment": {
-			"$id": "#/$defs/TriggerActionRollConditionAugment",
+		"TriggerNoRollAugment": {
+			"$id": "#/$defs/TriggerNoRollAugment",
+			"type": "object",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerNoRollCondition" }
+				}
+			},
+			"title": "TriggerNoRollAugment"
+		},
+		"MoveNoRollAugment": {
+			"$id": "#/$defs/MoveNoRollAugment",
+			"type": "object",
+			"properties": {
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"roll_type": { "const": "no_roll", "type": "string" },
+				"augments": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MoveIDWildcard" }
+				},
+				"outcomes": { "$ref": "#/$defs/MoveOutcomesAugment" }
+			},
+			"title": "MoveNoRollAugment"
+		},
+		"MoveActionRollAugment": {
+			"type": "object",
+			"properties": {
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"roll_type": { "const": "action_roll", "type": "string" },
+				"augments": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MoveIDWildcard" }
+				}
+			},
+			"required": ["roll_type"]
+		},
+		"TriggerProgressRollConditionOption": {
+			"$id": "#/$defs/TriggerProgressRollConditionOption",
+			"type": "object",
+			"properties": { "using": { "$ref": "#/$defs/SpecialTrackType" } },
+			"required": ["using"],
+			"title": "TriggerProgressRollConditionOption"
+		},
+		"TriggerProgressRollCondition": {
+			"$id": "#/$defs/TriggerProgressRollCondition",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -1246,31 +1352,102 @@
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
 				},
-				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionOption" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
 				}
 			},
-			"title": "TriggerActionRollConditionAugment"
+			"required": ["roll_options"],
+			"title": "TriggerProgressRollCondition"
 		},
-		"TriggerActionRollAugment": {
-			"$id": "#/$defs/TriggerActionRollAugment",
+		"TriggerProgressRoll": {
+			"$id": "#/$defs/TriggerProgressRoll",
 			"type": "object",
 			"properties": {
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"conditions": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerActionRollConditionAugment" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollCondition" }
 				}
 			},
-			"required": ["conditions"],
-			"title": "TriggerActionRollAugment"
+			"required": ["text", "conditions"],
+			"title": "TriggerProgressRoll"
+		},
+		"MoveProgressRoll": {
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/$defs/MoveID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"replaces": {
+					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+					"$ref": "#/$defs/MoveID"
+				},
+				"trigger": {
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"text": {
+									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+									"type": "string",
+									"$ref": "#/$defs/MarkdownString"
+								}
+							},
+							"required": ["text"]
+						},
+						{ "$ref": "#/$defs/TriggerProgressRoll" }
+					]
+				},
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"outcomes": {
+					"allOf": [
+						{ "$ref": "#/$defs/MoveOutcomes" },
+						{ "$ref": "#/$defs/MoveOutcomes" }
+					]
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"source": { "$ref": "#/$defs/Source" },
+				"roll_type": { "const": "progress_roll", "type": "string" },
+				"track_label": {
+					"description": "A category label to use with progress tracks associated with this move.",
+					"examples": [
+						"combat track",
+						"scene challenge track",
+						"vow track",
+						"delve track"
+					],
+					"$ref": "#/$defs/Label"
+				},
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": [
+				"name",
+				"trigger",
+				"text",
+				"outcomes",
+				"roll_type",
+				"track_label"
+			]
 		},
 		"TriggerProgressRollConditionAugment": {
 			"$id": "#/$defs/TriggerProgressRollConditionAugment",
 			"type": "object",
 			"properties": {
 				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
 				"method": {
 					"default": "any",
 					"anyOf": [
@@ -1278,7 +1455,6 @@
 						{ "$ref": "#/$defs/MoveOutcomeType" }
 					]
 				},
-				"by": { "$ref": "#/$defs/TriggerBy" },
 				"roll_options": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/TriggerProgressRollConditionOption" }
@@ -1292,55 +1468,13 @@
 			"properties": {
 				"conditions": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerProgressRollConditionAugment" }
+					"items": { "$ref": "#/$defs/TriggerProgressRollCondition" }
 				}
 			},
 			"required": ["conditions"],
 			"title": "TriggerProgressRollAugment"
 		},
-		"TriggerNoRollAugment": {
-			"type": "object",
-			"properties": {
-				"conditions": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/TriggerNoRollCondition" }
-				}
-			},
-			"required": ["conditions"]
-		},
-		"MoveOutcomeAugment": {
-			"$id": "#/$defs/MoveOutcomeAugment",
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
-				"reroll": { "$ref": "#/$defs/MoveReroll" }
-			},
-			"title": "MoveOutcomeAugment"
-		},
-		"MoveOutcomeMatchableAugment": {
-			"$id": "#/$defs/MoveOutcomeMatchableAugment",
-			"type": "object",
-			"properties": {
-				"text": { "$ref": "#/$defs/MarkdownString" },
-				"count_as": { "$ref": "#/$defs/MoveOutcomeType" },
-				"reroll": { "$ref": "#/$defs/MoveReroll" },
-				"match": { "$ref": "#/$defs/MoveOutcome" }
-			},
-			"title": "MoveOutcomeMatchableAugment"
-		},
-		"MoveOutcomesAugment": {
-			"$id": "#/$defs/MoveOutcomesAugment",
-			"type": "object",
-			"properties": {
-				"miss": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" },
-				"weak_hit": { "$ref": "#/$defs/MoveOutcomeAugment" },
-				"strong_hit": { "$ref": "#/$defs/MoveOutcomeMatchableAugment" }
-			},
-			"title": "MoveOutcomesAugment"
-		},
-		"MoveAugment": {
-			"$id": "#/$defs/MoveAugment",
+		"MoveProgressRollAugment": {
 			"type": "object",
 			"properties": {
 				"text": {
@@ -1352,19 +1486,158 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
+				"roll_type": { "const": "progress_roll", "type": "string" },
 				"augments": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
-				},
-				"trigger": {},
-				"move_type": {
-					"default": "action_roll",
-					"$ref": "#/$defs/MoveRollType"
-				},
-				"outcomes": {}
+				}
 			},
-			"required": [],
-			"title": "MoveAugment"
+			"required": ["roll_type"]
+		},
+		"TriggerSpecialTrackConditionOption": {
+			"$id": "#/$defs/TriggerSpecialTrackConditionOption",
+			"type": "object",
+			"properties": { "using": { "$ref": "#/$defs/SpecialTrackType" } },
+			"required": ["using"],
+			"title": "TriggerSpecialTrackConditionOption"
+		},
+		"TriggerSpecialTrackCondition": {
+			"$id": "#/$defs/TriggerSpecialTrackCondition",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"method": {
+					"default": "any",
+					"anyOf": [
+						{ "$ref": "#/$defs/MoveRollMethod" },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
+					]
+				},
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerSpecialTrackConditionOption" }
+				}
+			},
+			"required": ["roll_options"],
+			"title": "TriggerSpecialTrackCondition"
+		},
+		"TriggerSpecialTrack": {
+			"$id": "#/$defs/TriggerSpecialTrack",
+			"type": "object",
+			"properties": {
+				"text": {
+					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+					"type": "string",
+					"pattern": ".*\\.{3}",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"conditions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerSpecialTrackCondition" }
+				}
+			},
+			"required": ["text", "conditions"],
+			"title": "TriggerSpecialTrack"
+		},
+		"MoveSpecialTrack": {
+			"type": "object",
+			"properties": {
+				"id": { "$ref": "#/$defs/MoveID" },
+				"name": { "$ref": "#/$defs/Label" },
+				"replaces": {
+					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
+					"$ref": "#/$defs/MoveID"
+				},
+				"trigger": {
+					"allOf": [
+						{
+							"type": "object",
+							"properties": {
+								"text": {
+									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
+									"type": "string",
+									"$ref": "#/$defs/MarkdownString"
+								}
+							},
+							"required": ["text"]
+						},
+						{ "$ref": "#/$defs/TriggerSpecialTrack" }
+					]
+				},
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"outcomes": {
+					"allOf": [
+						{ "$ref": "#/$defs/MoveOutcomes" },
+						{ "$ref": "#/$defs/MoveOutcomes" }
+					]
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"source": { "$ref": "#/$defs/Source" },
+				"roll_type": { "const": "special_track", "type": "string" },
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
+		},
+		"TriggerSpecialTrackConditionAugment": {
+			"$id": "#/$defs/TriggerSpecialTrackConditionAugment",
+			"type": "object",
+			"properties": {
+				"text": { "$ref": "#/$defs/MarkdownString" },
+				"by": { "$ref": "#/$defs/TriggerBy" },
+				"method": {
+					"default": "any",
+					"anyOf": [
+						{ "$ref": "#/$defs/MoveRollMethod" },
+						{ "$ref": "#/$defs/MoveOutcomeType" }
+					]
+				},
+				"roll_options": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerSpecialTrackConditionOption" }
+				}
+			},
+			"title": "TriggerSpecialTrackConditionAugment"
+		},
+		"TriggerSpecialTrackAugment": {
+			"$id": "#/$defs/TriggerSpecialTrackAugment",
+			"type": "object",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/TriggerSpecialTrackCondition" }
+				}
+			},
+			"required": ["conditions"],
+			"title": "TriggerSpecialTrackAugment"
+		},
+		"MoveSpecialTrackAugment": {
+			"type": "object",
+			"properties": {
+				"text": {
+					"description": "The complete rules text of the move.",
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"oracles": {
+					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
+					"type": "array",
+					"items": { "$ref": "#/$defs/OracleTableID" }
+				},
+				"roll_type": { "const": "special_track", "type": "string" },
+				"augments": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MoveIDWildcard" }
+				}
+			},
+			"required": ["roll_type"]
 		},
 		"AssetCheckboxField": {
 			"$id": "#/$defs/AssetCheckboxField",
@@ -1393,6 +1666,7 @@
 			"title": "AssetCheckboxField"
 		},
 		"AssetCardFlipField": {
+			"description": "This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.\n\n    Otherwise, it behaves similarly to a CheckboxField.\n    ",
 			"$id": "#/$defs/AssetCardFlipField",
 			"type": "object",
 			"properties": {
@@ -1492,44 +1766,6 @@
 			"properties": {
 				"min": { "default": 0, "type": "integer" },
 				"max": { "type": "integer" },
-				"moves": {
-					"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.",
-					"examples": [
-						{
-							"suffer": "classic/moves/suffer/endure_companion_harm",
-							"recover": "classic/moves/adventure/heal"
-						},
-						{
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
-						{
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
-						}
-					],
-					"type": "object",
-					"properties": {
-						"suffer": {
-							"description": "The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
-							"examples": [
-								"classic/moves/suffer/companion_endure_harm",
-								"starforged/moves/suffer/companion_takes_a_hit",
-								"starforged/moves/suffer/withstand_damage"
-							],
-							"$ref": "#/$defs/MoveID"
-						},
-						"recover": {
-							"description": "The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.",
-							"examples": [
-								"classic/moves/adventure/heal",
-								"starforged/moves/recover/heal",
-								"starforged/moves/recover/repair"
-							],
-							"$ref": "#/$defs/MoveID"
-						}
-					}
-				},
 				"controls": {
 					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"$comment": "Deserialize as a dictionary object.",
@@ -1699,23 +1935,6 @@
 						{
 							"type": "object",
 							"properties": {
-								"asset_type": {
-									"description": "A localized category label for this asset. This is the surtitle above the asset's name on the card.",
-									"examples": [
-										"Combat Talent",
-										"Command Vehicle",
-										"Companion",
-										"Deed",
-										"Module",
-										"Path",
-										"Ritual",
-										"Support Vehicle"
-									],
-									"$ref": "#/$defs/Label"
-								},
-								"icon": { "$ref": "#/$defs/SVGImageURL" },
-								"color": { "$ref": "#/$defs/CSSColor" },
-								"suggestions": { "$ref": "#/$defs/Suggestions" },
 								"count_as_impact": {
 									"default": false,
 									"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
@@ -1740,7 +1959,7 @@
 					]
 				},
 				"augment_moves": {
-					"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions are met.",
+					"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.",
 					"releaseStage": "experimental",
 					"type": "array",
 					"items": { "$ref": "#/$defs/MoveAugment" }
@@ -2665,7 +2884,7 @@
 		"EncounterClassic": {
 			"$id": "#/$defs/EncounterClassic",
 			"title": "Encounter (classic)",
-			"description": "An encounter entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
+			"description": "An NPC entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },
@@ -2679,12 +2898,12 @@
 				"description": { "$ref": "#/$defs/MarkdownString" },
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
 				"nature": {
-					"description": "A localized category label describing the nature of this encounter. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
+					"description": "A localized category label describing the nature of this NPC. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
 					"examples": [
 						"Ironlander",
 						"Firstborn",
 						"Animal",
-						"Beasts",
+						"Beast",
 						"Horror",
 						"Anomaly"
 					],

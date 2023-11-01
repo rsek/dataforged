@@ -16,7 +16,7 @@ moves:
       As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.
     contents:
       discover_a_site:
-        move_type: no_roll
+        roll_type: no_roll
         name: Discover a Site
         _source:
           page: 19
@@ -36,7 +36,7 @@ moves:
           Then, [Delve the Depths](id:delve/moves/delve/delve_the_depths) to explore this place.
       delve_the_depths:
         name: Delve the Depths
-        move_type: action_roll
+        roll_type: action_roll
         trigger:
           text: When you traverse an area within a perilous site...
           conditions:
@@ -85,7 +85,7 @@ moves:
         name: Find an Opportunity
         _source:
           page: 30
-        move_type: no_roll
+        roll_type: no_roll
         trigger:
           text: When you encounter a helpful situation or feature within a site...
         oracles:
@@ -101,7 +101,7 @@ moves:
           {{table:delve/oracles/moves/find_an_opportunity}}
       reveal_a_danger:
         name: Reveal a Danger
-        move_type: no_roll
+        roll_type: no_roll
         _source:
           page: 34
         trigger:
@@ -114,7 +114,7 @@ moves:
           {{table:delve/oracles/moves/reveal_a_danger}}
       check_your_gear:
         name: Check Your Gear
-        move_type: action_roll
+        roll_type: action_roll
         trigger:
           text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
           conditions:
@@ -142,7 +142,8 @@ moves:
         name: Locate Your Objective
         _source:
           page: 40
-        move_type: progress_roll
+        roll_type: progress_roll
+        track_label: delve track
         trigger:
           text: When your exploration of a site comes to an end...
           conditions:
@@ -173,7 +174,7 @@ moves:
             text: Your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic).
       escape_the_depths:
         name: Escape the Depths
-        move_type: action_roll
+        roll_type: action_roll
         trigger:
           text: When you flee or withdraw from a site...
           conditions:
@@ -238,7 +239,7 @@ moves:
             text: |-
               A dire threat or imposing obstacle stands in your way. [Reveal a Danger](id:delve/moves/delve/reveal_a_danger). If you survive, you may make your escape.
       reveal_a_danger_alt:
-        move_type: no_roll
+        roll_type: no_roll
         name: Reveal a Danger (alternate version)
         replaces: delve/moves/delve/reveal_a_danger
         oracles:
@@ -266,7 +267,7 @@ moves:
       date: 2020-02-13
     contents:
       mark_your_failure:
-        move_type: no_roll
+        roll_type: no_roll
         name: Mark Your Failure
         # optional: true
         _source:
@@ -279,7 +280,7 @@ moves:
         # optional: true
         _source:
           page: 59
-        move_type: progress_roll
+        roll_type: special_track
         trigger:
           text: When you spend time reflecting on your hardships and missteps...
           conditions:
@@ -330,7 +331,7 @@ moves:
       **Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.
     contents:
       advance_a_threat:
-        move_type: no_roll
+        roll_type: no_roll
         name: Advance a Threat
         # optional: true
         _source:
@@ -350,7 +351,7 @@ moves:
       take_a_hiatus:
         name: Take a Hiatus
         # optional: true
-        move_type: no_roll
+        roll_type: no_roll
         _source:
           page: 158
         trigger:
@@ -379,7 +380,7 @@ moves:
     # optional: true
     contents:
       wield_a_rarity:
-        move_type: no_roll # FIXME: not the most intuitive label. could this be done better?
+        roll_type: no_roll # FIXME: not the most intuitive label. could this be done better?
         name: Wield a Rarity
         # optional: true
         _source:

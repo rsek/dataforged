@@ -18,7 +18,7 @@
 			"summary": "As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.",
 			"contents": {
 				"discover_a_site": {
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"name": "Discover a Site",
 					"trigger": {
 						"text": "When you resolve to enter a perilous site in pursuit of an objective..."
@@ -40,7 +40,7 @@
 				},
 				"delve_the_depths": {
 					"name": "Delve the Depths",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you traverse an area within a perilous site...",
 						"conditions": [
@@ -106,7 +106,7 @@
 				},
 				"find_an_opportunity": {
 					"name": "Find an Opportunity",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you encounter a helpful situation or feature within a site..."
 					},
@@ -128,7 +128,7 @@
 				},
 				"reveal_a_danger": {
 					"name": "Reveal a Danger",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you encounter a risky situation within a site..."
 					},
@@ -150,7 +150,7 @@
 				},
 				"check_your_gear": {
 					"name": "Check Your Gear",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you check to see if you have a specific helpful item, and you have at least +1 supply...",
 						"conditions": [
@@ -192,7 +192,8 @@
 				},
 				"locate_your_objective": {
 					"name": "Locate Your Objective",
-					"move_type": "progress_roll",
+					"roll_type": "progress_roll",
+					"track_label": "delve track",
 					"trigger": {
 						"text": "When your exploration of a site comes to an end...",
 						"conditions": [
@@ -234,7 +235,7 @@
 				},
 				"escape_the_depths": {
 					"name": "Escape the Depths",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you flee or withdraw from a site...",
 						"conditions": [
@@ -312,7 +313,7 @@
 					}
 				},
 				"reveal_a_danger_alt": {
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"name": "Reveal a Danger (alternate version)",
 					"replaces": "delve/moves/delve/reveal_a_danger",
 					"oracles": ["delve/oracles/moves/reveal_a_danger_alt"],
@@ -354,7 +355,7 @@
 			"description": "Failure is a key part of your journey within the Ironlands. If you’d like to make those failures a more influential aspect of your character’s evolution—while taking a bit of the sting out of rolling a miss—use these optional mechanics.",
 			"contents": {
 				"mark_your_failure": {
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"name": "Mark Your Failure",
 					"trigger": {
 						"text": "When you make a move and score a miss..."
@@ -376,7 +377,7 @@
 				},
 				"learn_from_your_failures": {
 					"name": "Learn From Your Failures",
-					"move_type": "progress_roll",
+					"roll_type": "special_track",
 					"trigger": {
 						"text": "When you spend time reflecting on your hardships and missteps...",
 						"conditions": [
@@ -437,7 +438,7 @@
 			"description": "The world does not wait for you. As you undertake journeys to distant locations, explore perilous places, and spend time recovering from your adventures, the forces which oppose you will advance their own agenda. When you suffer setbacks, those forces will take advantage of your failure to gain new ground.\n\n**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
 			"contents": {
 				"advance_a_threat": {
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"name": "Advance a Threat",
 					"oracles": ["delve/oracles/moves/advance_a_threat"],
 					"trigger": {
@@ -460,7 +461,7 @@
 				},
 				"take_a_hiatus": {
 					"name": "Take a Hiatus",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you spend an extended time recovering in a safe place while a threat is active..."
 					},
@@ -499,7 +500,7 @@
 			"description": "History is often chronicled through objects of power. Wars and accords, struggles and triumphs, love and hate, sacrifice and death—these legacies can imbue objects with cultural importance and supernatural gifts.\n\nIn **Ironsworn**, these items are called *rarities*. They may be handed down through generations, lost or hidden away in the depths of perilous sites, coveted by powerful forces, or forgotten and discarded. When you obtain a rarity through the course of your story, you gain a subtle but lasting impact on your character and their abilities.",
 			"contents": {
 				"wield_a_rarity": {
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"name": "Wield a Rarity",
 					"trigger": {
 						"text": "When you make a move aided by an augmented asset..."

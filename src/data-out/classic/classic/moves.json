@@ -19,7 +19,7 @@
 			"contents": {
 				"face_danger": {
 					"name": "Face Danger",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you attempt something risky or react to an imminent threat...",
 						"conditions": [
@@ -98,7 +98,7 @@
 				},
 				"secure_an_advantage": {
 					"name": "Secure an Advantage",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you assess a situation, make preparations, or attempt to gain leverage...",
 						"conditions": [
@@ -177,7 +177,7 @@
 				},
 				"gather_information": {
 					"name": "Gather Information",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you search an area, ask questions, conduct an investigation, or follow a track...",
 						"conditions": [
@@ -219,7 +219,7 @@
 				},
 				"heal": {
 					"name": "Heal",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you treat an injury or ailment...",
 						"conditions": [
@@ -273,7 +273,7 @@
 				},
 				"resupply": {
 					"name": "Resupply",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you hunt, forage, or scavenge...",
 						"conditions": [
@@ -315,7 +315,7 @@
 				},
 				"make_camp": {
 					"name": "Make Camp",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you rest and recover for several hours in the wild...",
 						"conditions": [
@@ -357,7 +357,7 @@
 				},
 				"undertake_a_journey": {
 					"name": "Undertake a Journey",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you travel across hazardous or unfamiliar lands...",
 						"conditions": [
@@ -399,7 +399,8 @@
 				},
 				"reach_your_destination": {
 					"name": "Reach Your Destination",
-					"move_type": "progress_roll",
+					"roll_type": "progress_roll",
+					"track_label": "journey track",
 					"trigger": {
 						"text": "When your journey comes to an end...",
 						"conditions": [
@@ -460,7 +461,7 @@
 			"contents": {
 				"compel": {
 					"name": "Compel",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you attempt to persuade someone to do something...",
 						"conditions": [
@@ -521,7 +522,7 @@
 				},
 				"sojourn": {
 					"name": "Sojourn",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you spend time in a community seeking assistance...",
 						"conditions": [
@@ -563,7 +564,7 @@
 				},
 				"draw_the_circle": {
 					"name": "Draw the Circle",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you challenge someone to a formal duel, or accept a challenge...",
 						"conditions": [
@@ -605,7 +606,7 @@
 				},
 				"forge_a_bond": {
 					"name": "Forge a Bond",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause...",
 						"conditions": [
@@ -647,7 +648,7 @@
 				},
 				"test_your_bond": {
 					"name": "Test Your Bond",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When your bond is tested through conflict, betrayal, or circumstance...",
 						"conditions": [
@@ -689,7 +690,7 @@
 				},
 				"aid_your_ally": {
 					"name": "Aid Your Ally",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) in direct support of an ally..."
 					},
@@ -710,7 +711,7 @@
 				},
 				"write_your_epilogue": {
 					"name": "Write Your Epilogue",
-					"move_type": "progress_roll",
+					"roll_type": "special_track",
 					"trigger": {
 						"text": "When you retire from your life as Ironsworn...",
 						"conditions": [
@@ -771,7 +772,7 @@
 			"contents": {
 				"enter_the_fray": {
 					"name": "Enter the Fray",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you enter into combat...",
 						"conditions": [
@@ -832,7 +833,7 @@
 				},
 				"strike": {
 					"name": "Strike",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you have initiative and attack...",
 						"conditions": [
@@ -884,7 +885,7 @@
 				},
 				"clash": {
 					"name": "Clash",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When your foe has initiative and you...",
 						"conditions": [
@@ -936,7 +937,7 @@
 				},
 				"turn_the_tide": {
 					"name": "Turn the Tide",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "Once per fight, when you risk it all..."
 					},
@@ -957,7 +958,8 @@
 				},
 				"end_the_fight": {
 					"name": "End the Fight",
-					"move_type": "progress_roll",
+					"roll_type": "progress_roll",
+					"track_label": "combat track",
 					"trigger": {
 						"text": "When you make a move to take decisive action, and score a strong hit...",
 						"conditions": [
@@ -999,7 +1001,7 @@
 				},
 				"battle": {
 					"name": "Battle",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you fight a battle, and it happens in a blur, and you...",
 						"conditions": [
@@ -1098,7 +1100,7 @@
 				"endure_harm": {
 					"name": "Endure Harm",
 					"oracles": ["classic/oracles/moves/endure_harm"],
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you face physical damage...",
 						"conditions": [
@@ -1143,7 +1145,7 @@
 				},
 				"face_death": {
 					"name": "Face Death",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you are brought to the brink of death, and glimpse the world beyond...",
 						"conditions": [
@@ -1185,7 +1187,7 @@
 				},
 				"companion_endure_harm": {
 					"name": "Companion Endure Harm",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When your companion faces physical damage...",
 						"conditions": [
@@ -1232,7 +1234,7 @@
 				"endure_stress": {
 					"name": "Endure Stress",
 					"oracles": ["classic/oracles/moves/endure_stress"],
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you face mental shock or despair...",
 						"conditions": [
@@ -1277,7 +1279,7 @@
 				},
 				"face_desolation": {
 					"name": "Face Desolation",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you are brought to the brink of desolation...",
 						"conditions": [
@@ -1319,7 +1321,7 @@
 				},
 				"out_of_supply": {
 					"name": "Out of Supply",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When your supply is exhausted (reduced to 0)..."
 					},
@@ -1340,7 +1342,7 @@
 				},
 				"face_a_setback": {
 					"name": "Face a Setback",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When your momentum is at its minimum (-6), and you suffer additional -momentum..."
 					},
@@ -1380,7 +1382,7 @@
 			"contents": {
 				"swear_an_iron_vow": {
 					"name": "Swear an Iron Vow",
-					"move_type": "action_roll",
+					"roll_type": "action_roll",
 					"trigger": {
 						"text": "When you swear upon iron to complete a quest...",
 						"conditions": [
@@ -1422,7 +1424,7 @@
 				},
 				"reach_a_milestone": {
 					"name": "Reach a Milestone",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item..."
 					},
@@ -1443,7 +1445,8 @@
 				},
 				"fulfill_your_vow": {
 					"name": "Fulfill Your Vow",
-					"move_type": "progress_roll",
+					"roll_type": "progress_roll",
+					"track_label": "vow track",
 					"trigger": {
 						"text": "When you achieve what you believe to be the fulfillment of your vow...",
 						"conditions": [
@@ -1485,7 +1488,7 @@
 				},
 				"forsake_your_vow": {
 					"name": "Forsake Your Vow",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you renounce your quest, betray your promise, or the goal is lost to you..."
 					},
@@ -1506,7 +1509,7 @@
 				},
 				"advance": {
 					"name": "Advance",
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion..."
 					},
@@ -1548,7 +1551,7 @@
 				"pay_the_price": {
 					"name": "Pay the Price",
 					"oracles": ["classic/oracles/moves/pay_the_price"],
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you suffer the outcome of a move..."
 					},
@@ -1576,7 +1579,7 @@
 						"classic/oracles/moves/ask_the_oracle/likely",
 						"classic/oracles/moves/ask_the_oracle/almost_certain"
 					],
-					"move_type": "no_roll",
+					"roll_type": "no_roll",
 					"trigger": {
 						"text": "When you seek to resolve questions, discover details in the world, determine how other characters respond, or trigger encounters or events..."
 					},
