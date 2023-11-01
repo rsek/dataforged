@@ -19,9 +19,9 @@ export const SpecialTrackType = Type.String({
 		'bonds_legacy',
 		'discoveries_legacy'
 	],
-	description: `Special, ruleset-specific progress tracks.
+	description: `Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
 'Canonical' examples:
-  * \`bonds_track\`, described in the Ironsworn Rulebook
+  * \`bonds_track\`, described in the Ironsworn Rulebook. For the Starforged legacy track, use \`bonds_legacy\` instead.
   * \`failure_track\`, described in Ironsworn: Delve
   * \`quests_legacy\`, \`bonds_legacy\`, and \`discoveries_legacy\`, described Ironsworn: Starforged
 

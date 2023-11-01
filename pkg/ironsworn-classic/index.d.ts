@@ -19,9 +19,8 @@ export type AssetID = string;
 export type MoveID = string;
 export type DelveSiteDomainID = string;
 export type DelveSiteThemeID = string;
-export type EncounterClassicID = string;
+export type NpcID = string;
 export type RegionEntryID = string;
-export type EncounterStarforgedID = string;
 export type OracleCollectionID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -176,11 +175,11 @@ export type TriggerActionRollConditionOption =
   | TriggerActionRollConditionOptionAttachedAssetRef
   | TriggerActionRollConditionOptionCustomValue;
 /**
- * A basic player character stat. The canonical options are `edge`, `heart`, `iron`, `shadow`, and `wits`.
+ * A basic player character stat.
  */
 export type PlayerStat = string;
 /**
- * A basic, rollable player character resource. The canonical options are `health`, `spirit`, and `supply`.
+ * A basic, rollable player character resource.
  */
 export type PlayerConditionMeter = string;
 export type AssetConditionMeterID = string;
@@ -210,9 +209,9 @@ export type MarkdownString9 = string;
  */
 export type MarkdownString10 = string;
 /**
- * Special, ruleset-specific progress tracks.
+ * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
- *   * `bonds_track`, described in the Ironsworn Rulebook
+ *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
  *   * `failure_track`, described in Ironsworn: Delve
  *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
  *
@@ -327,24 +326,29 @@ export type MoveID5 = string;
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID6 = string;
-export type EncounterCollectionID = string;
+export type NpcCollectionID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
-export type EncounterCollectionID1 = string;
+export type NpcCollectionID1 = string;
 /**
  * The collection imported by this collection.
  */
-export type EncounterCollectionID2 = string;
-export type EncounterClassicIDWildcard = string;
-/**
- * A localized plain text name or label.
- */
-export type Label3 = string;
+export type NpcCollectionID2 = string;
+export type NpcIDWildcard = string;
 /**
  * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
+/**
+ * A localized category label describing the nature of this NPC.
+ *
+ * In Ironsworn classic, this is probably the singular form of the parent collection's name.
+ *
+ * For Starforged, see the table on p. 258 for examples.
+ */
+export type NpcNature = string;
+export type NpcVariantID = string;
 export type RarityID = string;
 /**
  * The asset enhanced by this rarity.
@@ -353,9 +357,9 @@ export type AssetID1 = string;
 export type DelveSiteID = string;
 export type DelveSiteDenizenID = string;
 /**
- * The ID of the relevant encounter, if one is specified.
+ * The ID of the relevant NPC entry, if one is specified.
  */
-export type EncounterClassicID1 = string;
+export type NpcID1 = string;
 export type DelveSiteDenizenFrequency = "very_common" | "common" | "uncommon" | "rare" | "unforeseen";
 export type ThemeFeatureRowID = string;
 export type ThemeDangerRowID = string;
@@ -400,10 +404,10 @@ export interface SourcebookClassic {
     [k: string]: RegionEntry;
   };
   /**
-   * A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. "Ironlander", "horror".
+   * A dictionary object containing NPC collections, which contain NPCs.
    */
-  encounters?: {
-    [k: string]: EncounterCollectionClassic;
+  npcs?: {
+    [k: string]: NpcCollection;
   };
   /**
    * A dictionary object containing rarities, like those presented in Ironsworn: Delve.
@@ -520,14 +524,14 @@ export interface SuggestionsClassic {
   moves?: MoveID[];
   site_domains?: DelveSiteDomainID[];
   site_themes?: DelveSiteThemeID[];
-  encounters?: EncounterClassicID[];
+  npcs?: NpcID[];
   regions?: RegionEntryID[];
 }
 export interface SuggestionsStarforged {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
-  encounters?: EncounterStarforgedID[];
+  npcs?: NpcID[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1134,50 +1138,63 @@ export interface RegionEntry {
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export interface EncounterCollectionClassic {
+export interface NpcCollection {
   name: Label;
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: EncounterCollectionID;
-  extends?: EncounterCollectionID1;
+  id: NpcCollectionID;
+  extends?: NpcCollectionID1;
   /**
    * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
    */
   imports?: {
-    from: EncounterCollectionID2;
+    from: NpcCollectionID2;
     /**
      * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
      */
-    include: null | EncounterClassicIDWildcard[];
+    include: null | NpcIDWildcard[];
   };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
-    [k: string]: EncounterClassic;
+    [k: string]: Npc;
   };
 }
 /**
- * An NPC entry, similar to those in Chapter 5 of the Ironsworn Rulebook.
+ * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export interface EncounterClassic {
+export interface Npc {
   name: Label;
-  canonical_name?: Label;
-  source: Source;
-  suggestions?: Suggestions;
-  features: MarkdownString[];
-  description: MarkdownString;
-  quest_starter: MarkdownString;
-  nature: Label3;
   rank: ChallengeRank;
+  nature: NpcNature;
+  summary?: MarkdownString;
+  description: MarkdownString;
+  id: NpcID;
+  source: Source;
   drives: MarkdownString[];
   tactics: MarkdownString[];
-  id: EncounterClassicID;
+  quest_starter: MarkdownString;
   your_truths?: MarkdownString;
+  variants?: {
+    [k: string]: NpcVariant;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface NpcVariant {
+  name: Label;
+  rank: ChallengeRank;
+  nature: NpcNature;
+  summary?: MarkdownString;
+  description: MarkdownString;
+  id: NpcVariantID;
 }
 /**
  * A rarity, as described in Ironsworn: Delve.
@@ -1293,7 +1310,7 @@ export interface DelveSiteDenizen {
   name?: Label;
   low: number;
   high: number;
-  encounter?: EncounterClassicID1;
+  npc?: NpcID1;
   frequency: DelveSiteDenizenFrequency;
 }
 /**

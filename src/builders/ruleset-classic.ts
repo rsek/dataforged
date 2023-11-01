@@ -2,7 +2,6 @@ import type * as In from 'types/input/classic'
 import type * as Out from 'types/output/classic'
 import {
 	sourcedTransformer,
-	collectionTransformer,
 	type Transformer,
 	type SourceHaver,
 	transform
@@ -13,16 +12,6 @@ import {
 	type DelveSiteCardType
 } from 'schema/ruleset-classic/delve-sites'
 import { cloneDeep } from 'lodash'
-
-export const EncounterClassic = sourcedTransformer<
-	In.EncounterClassic,
-	Out.EncounterClassic
->({})
-
-export const EncounterCollectionClassic = collectionTransformer<
-	In.EncounterCollectionClassic,
-	Out.EncounterCollectionClassic
->('encounters', EncounterClassic, {})
 
 type FeatureOrDangerData =
 	| In.DelveSiteThemeDangerRow

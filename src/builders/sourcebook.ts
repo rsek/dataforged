@@ -5,19 +5,19 @@ import type { SourcebookClassic as OutSourcebookClassic } from 'types/output/cla
 
 import { sourcedTransformer, type SourceHaver, transform } from './transformer'
 import { mapValues, pick } from 'lodash'
-import { OracleCollection } from 'builders/oracle'
+import { OracleCollection } from 'builders/oracles'
 import { AssetType } from 'builders/assets'
 import { MoveCategory } from 'builders/moves'
-import { EncounterStarforged, SettingTruth } from 'builders/ruleset-starforged'
+import { SettingTruth } from 'builders/ruleset-starforged'
 import {
 	DelveSite,
 	DelveSiteDomain,
 	DelveSiteTheme,
-	EncounterCollectionClassic,
 	Rarity,
 	RegionEntry,
 	WorldTruth
 } from 'builders/ruleset-classic'
+import { NpcCollection } from 'builders/npcs'
 
 export const SourcebookStarforged = sourcedTransformer<
 	InSourcebookStarforged,
@@ -50,20 +50,13 @@ export const SourcebookStarforged = sourcedTransformer<
 	) {
 		return mapValues(data.moves, (v, k) => transform(v, k, data, MoveCategory))
 	},
-	encounters: function (
+	npcs: function (
 		this: SourceHaver,
 		data: InSourcebookStarforged,
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.encounters, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id as string}/encounters` },
-				EncounterStarforged
-			)
-		)
+		return mapValues(data.npcs, (v, k) => transform(v, k, data, NpcCollection))
 	},
 	setting_truths: function (
 		this: SourceHaver,
@@ -97,15 +90,13 @@ export const SourcebookClassic = sourcedTransformer<
 		>,
 		'assets' | 'moves' | 'oracles'
 	>),
-	encounters: function (
+	npcs: function (
 		this: SourceHaver,
 		data: InSourcebookClassic,
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.encounters, (v, k) =>
-			transform(v, k, data, EncounterCollectionClassic)
-		)
+		return mapValues(data.npcs, (v, k) => transform(v, k, data, NpcCollection))
 	},
 	regions: function (
 		this: SourceHaver,

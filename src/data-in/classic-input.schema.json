@@ -4,38 +4,40 @@
 	"title": "Datasworn v2.0.0-dev (data entry)",
 	"description": "Data entry schema for Datasworn, which provides templates, fallbacks/default values for many undefined keys, and other conveniences like source inheritance. It must be processed into the standard Datasworn format.",
 	"$defs": {
-		"EncounterClassicID": {
-			"$id": "#/$defs/EncounterClassicID",
+		"NpcID": {
+			"$id": "#/$defs/NpcID",
 			"examples": [
-				"classic/encounters/firstborn/elf",
-				"delve/encounters/anomalies/glimmer"
+				"classic/npcs/firstborn/elf",
+				"starforged/npcs/sample_npcs/chiton"
 			],
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/encounters\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$",
-			"title": "EncounterClassicID"
+			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$",
+			"title": "NpcID"
 		},
-		"EncounterClassicIDWildcard": {
-			"$id": "#/$defs/EncounterClassicIDWildcard",
+		"NpcIDWildcard": {
+			"$id": "#/$defs/NpcIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/encounters(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$",
-			"title": "EncounterClassicIDWildcard"
+			"pattern": "^([a-z0-9_]{3,}|\\*)\\/npcs(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$",
+			"title": "NpcIDWildcard"
 		},
-		"EncounterCollectionID": {
-			"$id": "#/$defs/EncounterCollectionID",
-			"examples": ["classic/collections/encounters/firstborn"],
-			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/encounters\\/([a-z][a-z_]*)$",
-			"title": "EncounterCollectionID"
-		},
-		"EncounterStarforgedID": {
-			"$id": "#/$defs/EncounterStarforgedID",
+		"NpcCollectionID": {
+			"$id": "#/$defs/NpcCollectionID",
 			"examples": [
-				"starforged/encounters/chiton",
-				"starforged/encounters/chiton/variants/chiton_drone_pack"
+				"classic/collections/npcs/firstborn",
+				"starforged/collections/npcs/sample_npcs"
 			],
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/encounters\\/([a-z][a-z_]*)(\\/variants\\/([a-z][a-z_]*))?$",
-			"title": "EncounterStarforgedID"
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/npcs\\/([a-z][a-z_]*)$",
+			"title": "NpcCollectionID"
+		},
+		"NpcVariantID": {
+			"$id": "#/$defs/NpcVariantID",
+			"examples": [
+				"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
+			],
+			"type": "string",
+			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$",
+			"title": "NpcVariantID"
 		},
 		"AssetID": {
 			"$id": "#/$defs/AssetID",
@@ -443,10 +445,7 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/DelveSiteThemeID" }
 				},
-				"encounters": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/EncounterClassicID" }
-				},
+				"npcs": { "type": "array", "items": { "$ref": "#/$defs/NpcID" } },
 				"regions": {
 					"type": "array",
 					"items": { "$ref": "#/$defs/RegionEntryID" }
@@ -464,10 +463,7 @@
 				},
 				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
 				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
-				"encounters": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/EncounterStarforgedID" }
-				}
+				"npcs": { "type": "array", "items": { "$ref": "#/$defs/NpcID" } }
 			},
 			"title": "SuggestionsStarforged"
 		},
@@ -519,9 +515,132 @@
 				"bonds_legacy",
 				"discoveries_legacy"
 			],
-			"description": "Special, ruleset-specific progress tracks.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
+			"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
 			"type": "string",
 			"title": "SpecialTrackType"
+		},
+		"NpcNature": {
+			"description": "A localized category label describing the nature of this NPC.\n\nIn Ironsworn classic, this is probably the singular form of the parent collection's name.\n\nFor Starforged, see the table on p. 258 for examples.",
+			"examples": [
+				"Ironlander",
+				"Firstborn",
+				"Animal",
+				"Beast",
+				"Horror",
+				"Anomaly",
+				"Creature",
+				"Human",
+				"Machine",
+				"Monster",
+				"Vehicle"
+			],
+			"$id": "#/$defs/NpcNature",
+			"$ref": "#/$defs/Label",
+			"title": "NpcNature"
+		},
+		"NpcVariant": {
+			"$id": "#/$defs/NpcVariant",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"nature": { "$ref": "#/$defs/NpcNature" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"id": { "$ref": "#/$defs/NpcVariantID" }
+			},
+			"required": ["name", "rank", "nature", "description"],
+			"title": "NpcVariant"
+		},
+		"Npc": {
+			"$id": "#/$defs/Npc",
+			"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"rank": { "$ref": "#/$defs/ChallengeRank" },
+				"nature": { "$ref": "#/$defs/NpcNature" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"id": { "$ref": "#/$defs/NpcID" },
+				"source": { "$ref": "#/$defs/Source" },
+				"drives": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"tactics": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" },
+				"variants": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/NpcVariant" }
+					}
+				},
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": [
+				"name",
+				"rank",
+				"nature",
+				"description",
+				"drives",
+				"tactics",
+				"quest_starter"
+			],
+			"title": "Npc"
+		},
+		"NpcCollection": {
+			"$id": "#/$defs/NpcCollection",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/NpcCollectionID" },
+				"extends": {
+					"$ref": "#/$defs/NpcCollectionID",
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+				},
+				"imports": {
+					"macro": true,
+					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
+					"type": "object",
+					"properties": {
+						"from": {
+							"$ref": "#/$defs/NpcCollectionID",
+							"description": "The collection imported by this collection."
+						},
+						"include": {
+							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
+							"anyOf": [
+								{ "type": "null" },
+								{
+									"type": "array",
+									"items": { "$ref": "#/$defs/NpcIDWildcard" }
+								}
+							]
+						}
+					},
+					"required": ["from", "include"]
+				},
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Npc" } }
+				},
+				"_source": { "$ref": "#/$defs/SourceStub" }
+			},
+			"required": ["name"],
+			"title": "NpcCollection"
 		},
 		"OracleRollTemplate": {
 			"$id": "#/$defs/OracleRollTemplate",
@@ -2154,7 +2273,7 @@
 			"examples": ["edge", "heart", "iron", "shadow", "wits"],
 			"pattern": "([a-z][a-z_]*)",
 			"$id": "#/$defs/PlayerStat",
-			"description": "A basic player character stat. The canonical options are `edge`, `heart`, `iron`, `shadow`, and `wits`.",
+			"description": "A basic player character stat.",
 			"type": "string",
 			"title": "PlayerStat"
 		},
@@ -2162,7 +2281,7 @@
 			"$id": "#/$defs/PlayerConditionMeter",
 			"pattern": "([a-z][a-z_]*)",
 			"examples": ["health", "spirit", "supply"],
-			"description": "A basic, rollable player character resource. The canonical options are `health`, `spirit`, and `supply`.",
+			"description": "A basic, rollable player character resource.",
 			"type": "string",
 			"title": "PlayerConditionMeter"
 		},
@@ -2332,9 +2451,9 @@
 				"name": { "$ref": "#/$defs/Label" },
 				"low": { "minimum": 1, "maximum": 100, "type": "integer" },
 				"high": { "minimum": 1, "maximum": 100, "type": "integer" },
-				"encounter": {
-					"description": "The ID of the relevant encounter, if one is specified.",
-					"$ref": "#/$defs/EncounterClassicID"
+				"npc": {
+					"description": "The ID of the relevant NPC entry, if one is specified.",
+					"$ref": "#/$defs/NpcID"
 				},
 				"frequency": { "$ref": "#/$defs/DelveSiteDenizenFrequency" }
 			},
@@ -2831,108 +2950,6 @@
 			"required": ["result", "low", "high"],
 			"title": "DelveSiteThemeFeatureRow"
 		},
-		"EncounterCollectionClassic": {
-			"$id": "#/$defs/EncounterCollectionClassic",
-			"type": "object",
-			"properties": {
-				"name": { "$ref": "#/$defs/Label" },
-				"canonical_name": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"id": { "$ref": "#/$defs/EncounterCollectionID" },
-				"extends": {
-					"$ref": "#/$defs/EncounterCollectionID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
-				},
-				"imports": {
-					"macro": true,
-					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
-					"type": "object",
-					"properties": {
-						"from": {
-							"$ref": "#/$defs/EncounterCollectionID",
-							"description": "The collection imported by this collection."
-						},
-						"include": {
-							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
-							"anyOf": [
-								{ "type": "null" },
-								{
-									"type": "array",
-									"items": { "$ref": "#/$defs/EncounterClassicIDWildcard" }
-								}
-							]
-						}
-					},
-					"required": ["from", "include"]
-				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"contents": {
-					"$comment": "Deserialize as a dictionary object.",
-					"type": "object",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterClassic" }
-					}
-				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
-			},
-			"required": ["name"],
-			"title": "EncounterCollectionClassic"
-		},
-		"EncounterClassic": {
-			"$id": "#/$defs/EncounterClassic",
-			"title": "Encounter (classic)",
-			"description": "An NPC entry, similar to those in Chapter 5 of the Ironsworn Rulebook.",
-			"type": "object",
-			"properties": {
-				"name": { "$ref": "#/$defs/Label" },
-				"canonical_name": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"features": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"nature": {
-					"description": "A localized category label describing the nature of this NPC. In Ironsworn classic, this is probably the singular form of the parent collection's name.",
-					"examples": [
-						"Ironlander",
-						"Firstborn",
-						"Animal",
-						"Beast",
-						"Horror",
-						"Anomaly"
-					],
-					"$ref": "#/$defs/Label"
-				},
-				"rank": { "$ref": "#/$defs/ChallengeRank" },
-				"drives": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"tactics": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"id": { "$ref": "#/$defs/EncounterClassicID" },
-				"your_truths": { "$ref": "#/$defs/MarkdownString" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
-			},
-			"required": [
-				"name",
-				"features",
-				"description",
-				"quest_starter",
-				"nature",
-				"rank",
-				"drives",
-				"tactics"
-			]
-		},
 		"Rarity": {
 			"$id": "#/$defs/Rarity",
 			"description": "A rarity, as described in Ironsworn: Delve.",
@@ -3056,12 +3073,12 @@
 				"^[a-z][a-z_]*$": { "$ref": "#/$defs/RegionEntry" }
 			}
 		},
-		"encounters": {
-			"description": "A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. \"Ironlander\", \"horror\".",
+		"npcs": {
+			"description": "A dictionary object containing NPC collections, which contain NPCs.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": { "$ref": "#/$defs/EncounterCollectionClassic" }
+				"^[a-z][a-z_]*$": { "$ref": "#/$defs/NpcCollection" }
 			}
 		},
 		"rarities": {

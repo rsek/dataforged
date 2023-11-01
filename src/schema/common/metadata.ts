@@ -108,7 +108,7 @@ export const SuggestionsClassic = Type.Object(
 		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
 		site_domains: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteDomainID))),
 		site_themes: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteThemeID))),
-		encounters: Type.Optional(Type.Array(Type.Ref(ID.EncounterClassicID))),
+		npcs: Type.Optional(Type.Array(Type.Ref(ID.NpcID))),
 		regions: Type.Optional(Type.Array(Type.Ref(ID.RegionEntryID)))
 	},
 	{ $id: '#/$defs/SuggestionsClassic' }
@@ -121,7 +121,7 @@ export const SuggestionsStarforged = Type.Object(
 		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
 		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
 		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
-		encounters: Type.Optional(Type.Array(Type.Ref(ID.EncounterStarforgedID)))
+		npcs: Type.Optional(Type.Array(Type.Ref(ID.NpcID)))
 	},
 	{ $id: '#/$defs/SuggestionsStarforged' }
 )

@@ -10,8 +10,7 @@ export const PlayerStat = Type.String({
 	examples: ['edge', 'heart', 'iron', 'shadow', 'wits'],
 	pattern: SNAKE_CASE.source,
 	$id: '#/$defs/PlayerStat',
-	description:
-		'A basic player character stat. The canonical options are `edge`, `heart`, `iron`, `shadow`, and `wits`.'
+	description: 'A basic player character stat.'
 })
 export type PlayerStat = Static<typeof PlayerStat>
 // export const PlayerConditionMeter = JsonEnum(['health', 'spirit', 'supply'], {
@@ -22,7 +21,6 @@ export const PlayerConditionMeter = Type.String({
 	$id: '#/$defs/PlayerConditionMeter',
 	pattern: SNAKE_CASE.source,
 	examples: ['health', 'spirit', 'supply'],
-	description:
-		'A basic, rollable player character resource. The canonical options are `health`, `spirit`, and `supply`.'
+	description: 'A basic, rollable player character resource.'
 })
 export type PlayerConditionMeter = Static<typeof PlayerConditionMeter>

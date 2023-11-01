@@ -5,7 +5,6 @@ import {
 	type TProperties
 } from '@sinclair/typebox'
 import { ID, Localize, Progress, Metadata, Abstract } from 'schema/common'
-import { OracleTableID } from 'schema/common/id'
 import { Squash } from 'schema/common/utils'
 import { OracleTableRow } from 'schema/oracles'
 import { JsonEnum } from 'typebox'
@@ -22,9 +21,9 @@ export const DelveSiteDenizen = Type.Object(
 		name: Type.Optional(Type.Ref(Localize.Label)),
 		low: Type.Integer({ minimum: 1, maximum: 100 }),
 		high: Type.Integer({ minimum: 1, maximum: 100 }),
-		encounter: Type.Optional(
-			Type.Ref(ID.EncounterClassicID, {
-				description: 'The ID of the relevant encounter, if one is specified.'
+		npc: Type.Optional(
+			Type.Ref(ID.NpcID, {
+				description: 'The ID of the relevant NPC entry, if one is specified.'
 			})
 		),
 		frequency: Type.Ref(DelveSiteDenizenFrequency)

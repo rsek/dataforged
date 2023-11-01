@@ -1,13 +1,11 @@
 import {
-	type Static,
 	Type,
 	type SchemaOptions,
+	type Static,
 	type TString
 } from '@sinclair/typebox'
-import { cloneDeep, escape, escapeRegExp } from 'lodash'
-import { join } from 'path'
+import { cloneDeep, escapeRegExp } from 'lodash'
 import { SNAKE_CASE } from 'schema/common/regex'
-import { SOURCEBOOK_KEY } from 'schema/sourcebooks'
 import { type Opaque } from 'type-fest'
 
 /** Composes regular expressions for Dataforged IDs */
@@ -212,48 +210,35 @@ function CollectionIDWildcard(type: string, recursive = false) {
 	// )
 }
 
-export const EncounterClassicID = ID.forCollectedNode('encounters').toSchema({
-	$id: '#/$defs/EncounterClassicID',
+export const NpcID = Type.RegEx(NodeID('npcs'), {
+	$id: '#/$defs/NpcID',
+	examples: ['classic/npcs/firstborn/elf', 'starforged/npcs/sample_npcs/chiton']
+})
+
+export type NpcID = Opaque<Static<typeof NpcID>>
+
+export const NpcIDWildcard = Type.RegEx(CollectionIDWildcard('npcs'), {
+	$id: '#/$defs/NpcIDWildcard'
+})
+export type NpcIDWildcard = Opaque<Static<typeof NpcIDWildcard>>
+
+export const NpcCollectionID = Type.RegEx(CollectionID('npcs', false), {
+	$id: '#/$defs/NpcCollectionID',
 	examples: [
-		'classic/encounters/firstborn/elf',
-		'delve/encounters/anomalies/glimmer'
+		'classic/collections/npcs/firstborn',
+		'starforged/collections/npcs/sample_npcs'
 	]
 })
-export type EncounterClassicID = Opaque<Static<typeof EncounterClassicID>>
+export type NpcCollectionID = Opaque<Static<typeof NpcCollectionID>>
 
-export const EncounterClassicIDWildcard = Type.RegEx(
-	CollectionIDWildcard('encounters'),
-	{ $id: '#/$defs/EncounterClassicIDWildcard' }
-)
-export type EncounterClassicIDWildcard = Opaque<
-	Static<typeof EncounterClassicIDWildcard>
->
-
-export const EncounterCollectionID = Type.RegEx(CollectionID('encounters'), {
-	$id: '#/$defs/EncounterCollectionID',
-	examples: ['classic/collections/encounters/firstborn']
-})
-export type EncounterCollectionID = Opaque<Static<typeof EncounterCollectionID>>
-
-export const EncounterStarforgedID = Type.RegEx(
-	joinPatterns(
-		FRAGMENT_SOURCEBOOK_KEY,
-		JOINER,
-		'encounters',
-		KEY,
-		new RegExp(`(${JOINER}variants${JOINER}${ID.KEY})?`)
-	),
+export const NpcVariantID = Type.RegEx(
+	joinPatterns(NodeID('npcs'), `${JOINER}variants${JOINER}${ID.KEY}`),
 	{
-		$id: '#/$defs/EncounterStarforgedID',
-		examples: [
-			'starforged/encounters/chiton',
-			'starforged/encounters/chiton/variants/chiton_drone_pack'
-		]
+		$id: '#/$defs/NpcVariantID',
+		examples: ['starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack']
 	}
 )
-export type EncounterStarforgedID = Opaque<Static<typeof EncounterStarforgedID>>
-
-export type EncounterID = EncounterClassicID | EncounterStarforgedID
+export type NpcVariantID = Opaque<Static<typeof NpcVariantID>>
 
 export const AssetID = Type.RegEx(NodeID('assets'), {
 	$id: '#/$defs/AssetID'

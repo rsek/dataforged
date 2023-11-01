@@ -1,5 +1,5 @@
 import { Abstract, ID } from 'schema/common'
-import { Type, type Static, TUnsafe } from 'typebox'
+import { Type, type Static } from 'typebox'
 import {
 	type MoveActionRoll,
 	type MoveActionRollAugment,

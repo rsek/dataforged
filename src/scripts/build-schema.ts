@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash'
-import { Assets, ID, Localize, Moves, Oracles, Metadata } from 'schema'
+import { Assets, ID, Localize, Moves, Oracles, Npcs, Metadata } from 'schema'
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
 
@@ -26,6 +26,7 @@ export const Dataforged = prepareSchema(
 			...Metadata,
 			...Localize,
 			...Progress,
+			...Npcs,
 			...Oracles,
 			...Moves,
 			...Assets,
@@ -58,6 +59,7 @@ export const Datasworn = prepareSchema(
 			...Metadata,
 			...Localize,
 			...Progress,
+			...Npcs,
 			...Oracles,
 			...Moves,
 			...Assets,

@@ -13,6 +13,7 @@ import { Metadata, Abstract } from 'schema/common'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
 import * as Assets from 'schema/assets'
+import * as Npcs from 'schema/npcs'
 
 import * as RulesetStarforged from 'schema/ruleset-starforged'
 import * as RulesetClassic from 'schema/ruleset-classic'
@@ -71,9 +72,9 @@ const SourcebookInfoClassic = {
 	site_themes: {
 		description: 'A dictionary object containing delve site themes.'
 	},
-	encounters: {
+	npcs: {
 		description:
-			'A dictionary object containing Ironsworn classic-style encounters, grouped according to their nature (e.g. "Ironlander", "horror".'
+			'A dictionary object containing NPC collections, which contain NPCs.'
 	},
 	regions: {
 		description:
@@ -101,7 +102,7 @@ export function SourcebookClassic(options: ObjectOptions) {
 			moves: Moves.MoveCategory,
 			assets: Assets.AssetType,
 			regions: RulesetClassic.RegionEntry,
-			encounters: RulesetClassic.EncounterCollectionClassic,
+			npcs: Npcs.NpcCollection,
 			rarities: RulesetClassic.Rarity,
 			delve_sites: RulesetClassic.DelveSite,
 			site_themes: RulesetClassic.DelveSiteTheme,
@@ -120,15 +121,11 @@ export function SourcebookStarforged(options: ObjectOptions) {
 			oracles: Oracles.OracleCollection,
 			moves: Moves.MoveCategory,
 			assets: Assets.AssetType,
-			encounters: RulesetStarforged.EncounterStarforged,
+			npcs: Npcs.NpcCollection,
 			setting_truths: RulesetStarforged.SettingTruth
 		},
 		{
-			...pick(SourcebookInfoClassic, ['oracles', 'moves', 'assets']),
-			encounters: {
-				description:
-					'A dictionary object containing Starforged-style encounter entries.'
-			},
+			...pick(SourcebookInfoClassic, ['oracles', 'moves', 'assets', 'npcs']),
 			setting_truths: {
 				description:
 					'A dictionary object containing Starforged-style setting truths.'

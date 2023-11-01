@@ -12,5 +12,4 @@ export * as Player from 'schema/common/player'
 export * as Progress from 'schema/common/progress'
 
 // after progress
-export * as Encounters from 'schema/common/encounters'
 export * as Truths from 'schema/common/truths'
