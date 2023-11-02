@@ -250,12 +250,31 @@
 			"pattern": "^[a-z0-9_]{3,}\\/rarities\\/([a-z][a-z_]*)$",
 			"title": "RarityID"
 		},
-		"RegionEntryID": {
-			"examples": ["classic/regions/shattered_wastes"],
-			"$id": "#/$defs/RegionEntryID",
+		"AtlasEntryID": {
+			"examples": ["classic/atlas/ironlands/hinterlands"],
+			"$id": "#/$defs/AtlasEntryID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/regions\\/([a-z][a-z_]*)$",
-			"title": "RegionEntryID"
+			"pattern": "^[a-z0-9_]{3,}\\/atlas(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$",
+			"title": "AtlasEntryID"
+		},
+		"AtlasEntryIDWildcard": {
+			"$id": "#/$defs/AtlasEntryIDWildcard",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$",
+			"title": "AtlasEntryIDWildcard"
+		},
+		"AtlasID": {
+			"examples": ["classic/collections/atlas/ironlands"],
+			"$id": "#/$defs/AtlasID",
+			"type": "string",
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/atlas(\\/([a-z][a-z_]*)){1,3}$",
+			"title": "AtlasID"
+		},
+		"AtlasIDWildcard": {
+			"$id": "#/$defs/AtlasIDWildcard",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$",
+			"title": "AtlasIDWildcard"
 		},
 		"WorldTruthID": {
 			"examples": ["classic/world_truths/iron"],
@@ -427,8 +446,8 @@
 			"macro": true,
 			"title": "SourceStub"
 		},
-		"SuggestionsClassic": {
-			"$id": "#/$defs/SuggestionsClassic",
+		"Suggestions": {
+			"$id": "#/$defs/Suggestions",
 			"type": "object",
 			"properties": {
 				"oracles": {
@@ -446,33 +465,11 @@
 					"items": { "$ref": "#/$defs/DelveSiteThemeID" }
 				},
 				"npcs": { "type": "array", "items": { "$ref": "#/$defs/NpcID" } },
-				"regions": {
+				"atlas": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/RegionEntryID" }
+					"items": { "$ref": "#/$defs/AtlasEntryID" }
 				}
 			},
-			"title": "SuggestionsClassic"
-		},
-		"SuggestionsStarforged": {
-			"$id": "#/$defs/SuggestionsStarforged",
-			"type": "object",
-			"properties": {
-				"oracles": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/OracleTableID" }
-				},
-				"assets": { "type": "array", "items": { "$ref": "#/$defs/AssetID" } },
-				"moves": { "type": "array", "items": { "$ref": "#/$defs/MoveID" } },
-				"npcs": { "type": "array", "items": { "$ref": "#/$defs/NpcID" } }
-			},
-			"title": "SuggestionsStarforged"
-		},
-		"Suggestions": {
-			"$id": "#/$defs/Suggestions",
-			"anyOf": [
-				{ "$ref": "#/$defs/SuggestionsClassic" },
-				{ "$ref": "#/$defs/SuggestionsStarforged" }
-			],
 			"title": "Suggestions"
 		},
 		"Label": {
@@ -2292,6 +2289,89 @@
 			},
 			"required": ["id", "label", "field_type", "choices"]
 		},
+		"AtlasEntry": {
+			"$id": "#/$defs/AtlasEntry",
+			"title": "Atlas entry",
+			"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn.",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"features": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/MarkdownString" }
+				},
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
+				"your_truths": { "$ref": "#/$defs/MarkdownString" },
+				"id": { "$ref": "#/$defs/AtlasEntryID" }
+			},
+			"required": [
+				"name",
+				"source",
+				"features",
+				"description",
+				"quest_starter",
+				"id"
+			]
+		},
+		"Atlas": {
+			"$id": "#/$defs/Atlas",
+			"type": "object",
+			"properties": {
+				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/AtlasID" },
+				"extends": {
+					"$ref": "#/$defs/AtlasID",
+					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+				},
+				"imports": {
+					"macro": true,
+					"description": "Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.",
+					"type": "object",
+					"properties": {
+						"from": {
+							"$ref": "#/$defs/AtlasID",
+							"description": "The collection imported by this collection."
+						},
+						"include": {
+							"description": "IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.",
+							"anyOf": [
+								{ "type": "null" },
+								{
+									"type": "array",
+									"items": { "$ref": "#/$defs/AtlasEntryIDWildcard" }
+								}
+							]
+						}
+					},
+					"required": ["from", "include"]
+				},
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
+				"contents": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": { "$ref": "#/$defs/AtlasEntry" }
+					}
+				},
+				"collections": {
+					"$comment": "Deserialize as a dictionary object.",
+					"type": "object",
+					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Atlas" } }
+				}
+			},
+			"required": ["name", "source", "id"],
+			"title": "Atlas"
+		},
 		"PlayerStat": {
 			"examples": ["edge", "heart", "iron", "shadow", "wits"],
 			"pattern": "([a-z][a-z_]*)",
@@ -3015,35 +3095,6 @@
 			"required": ["name", "source", "id", "asset", "xp_cost", "description"],
 			"title": "Rarity"
 		},
-		"RegionEntry": {
-			"$id": "#/$defs/RegionEntry",
-			"title": "Region entry",
-			"description": "A region entry, like the Ironlands region entries found in classic Ironsworn.",
-			"type": "object",
-			"properties": {
-				"name": { "$ref": "#/$defs/Label" },
-				"canonical_name": { "$ref": "#/$defs/Label" },
-				"source": { "$ref": "#/$defs/Source" },
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"features": {
-					"type": "array",
-					"items": { "$ref": "#/$defs/MarkdownString" }
-				},
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
-				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
-				"your_truths": { "$ref": "#/$defs/MarkdownString" },
-				"id": { "$ref": "#/$defs/RegionEntryID" }
-			},
-			"required": [
-				"name",
-				"source",
-				"features",
-				"description",
-				"quest_starter",
-				"id"
-			]
-		},
 		"WorldTruth": {
 			"$id": "#/$defs/WorldTruth",
 			"title": "World truth",
@@ -3102,13 +3153,11 @@
 			"type": "object",
 			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/AssetType" } }
 		},
-		"regions": {
-			"description": "A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.",
+		"atlas": {
+			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
 			"$comment": "Deserialize as a dictionary object.",
 			"type": "object",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": { "$ref": "#/$defs/RegionEntry" }
-			}
+			"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Atlas" } }
 		},
 		"npcs": {
 			"description": "A dictionary object containing NPC collections, which contain NPCs.",

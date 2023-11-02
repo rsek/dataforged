@@ -55,7 +55,6 @@ export const Npc = Squash(
 			features: Type.Array(Type.Ref(Localize.MarkdownString)),
 			drives: Type.Array(Type.Ref(Localize.MarkdownString)),
 			tactics: Type.Array(Type.Ref(Localize.MarkdownString)),
-			quest_starter: Type.Ref(Localize.MarkdownString),
 			variants: Type.Optional(Abstract.Dictionary(Type.Ref(NpcVariant)))
 		}),
 		NpcLike

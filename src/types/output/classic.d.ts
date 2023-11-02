@@ -10,7 +10,6 @@ export type PageNumber = number;
  * A localized plain text name or label.
  */
 export type Label = string;
-export type Suggestions = SuggestionsClassic | SuggestionsStarforged;
 export type OracleTableID = string;
 export type AssetID = string;
 /**
@@ -20,7 +19,7 @@ export type MoveID = string;
 export type DelveSiteDomainID = string;
 export type DelveSiteThemeID = string;
 export type NpcID = string;
-export type RegionEntryID = string;
+export type AtlasEntryID = string;
 export type OracleCollectionID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -326,6 +325,16 @@ export type MoveID5 = string;
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID6 = string;
+export type AtlasID = string;
+/**
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ */
+export type AtlasID1 = string;
+/**
+ * The collection imported by this collection.
+ */
+export type AtlasID2 = string;
+export type AtlasEntryIDWildcard = string;
 export type NpcCollectionID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -398,10 +407,10 @@ export interface SourcebookClassic {
     [k: string]: AssetType;
   };
   /**
-   * A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.
+   * A dictionary object containing atlas collections, which contain atlas entries.
    */
-  regions?: {
-    [k: string]: RegionEntry;
+  atlas?: {
+    [k: string]: Atlas;
   };
   /**
    * A dictionary object containing NPC collections, which contain NPCs.
@@ -518,20 +527,14 @@ export interface OracleCollection {
     [k: string]: OracleCollection;
   };
 }
-export interface SuggestionsClassic {
+export interface Suggestions {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
   site_domains?: DelveSiteDomainID[];
   site_themes?: DelveSiteThemeID[];
   npcs?: NpcID[];
-  regions?: RegionEntryID[];
-}
-export interface SuggestionsStarforged {
-  oracles?: OracleTableID[];
-  assets?: AssetID[];
-  moves?: MoveID[];
-  npcs?: NpcID[];
+  atlas?: AtlasEntryID[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1118,12 +1121,43 @@ export interface AssetConditionMeter1 {
   };
 }
 /**
- * A region entry, like the Ironlands region entries found in classic Ironsworn.
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface Atlas {
+  name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: AtlasID;
+  extends?: AtlasID1;
+  /**
+   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
+   */
+  imports?: {
+    from: AtlasID2;
+    /**
+     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
+     */
+    include: null | AtlasEntryIDWildcard[];
+  };
+  color?: CSSColor;
+  summary?: MarkdownString;
+  description?: MarkdownString;
+  contents?: {
+    [k: string]: AtlasEntry;
+  };
+  collections?: {
+    [k: string]: Atlas;
+  };
+}
+/**
+ * An atlas entry, like the Ironlands region entries found in classic Ironsworn.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export interface RegionEntry {
+export interface AtlasEntry {
   name: Label;
   canonical_name?: Label;
   source: Source;
@@ -1133,7 +1167,7 @@ export interface RegionEntry {
   description: MarkdownString;
   quest_starter: MarkdownString;
   your_truths?: MarkdownString;
-  id: RegionEntryID;
+  id: AtlasEntryID;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition

@@ -1,7 +1,10 @@
 import { trackID } from 'builders/id-tracker'
 import { cloneDeep, forEach, mapValues, merge } from 'lodash'
-import { type Source } from 'schema'
-import { type Collection } from 'schema/common/abstract'
+import {
+	type RecursiveCollection,
+	type Collection
+} from 'schema/common/abstract'
+import { type Source } from 'schema/common/metadata'
 import { type SetOptional } from 'type-fest'
 import type * as Out from 'types/output/starforged'
 
@@ -45,7 +48,7 @@ export function sourcedTransformer<
 				)
 			const result = merge(cloneDeep(parent.source), data._source ?? {})
 			delete data._source
-			delete (result as any)._source
+			delete result._source
 			return result
 		},
 		...partialTransformer
@@ -73,9 +76,10 @@ export function collectionTransformer<
 	partialTransformer: Omit<
 		Transformer<TIn, TOut, TParent>,
 		'source' | 'id' | 'contents'
-	>
+	>,
+	isRecursive = false
 ) {
-	return {
+	let result = {
 		source: function (
 			data: TIn,
 			key: string | number,
@@ -86,14 +90,22 @@ export function collectionTransformer<
 				throw new Error(`No inheritable source data for ${key}`)
 			const result = merge(cloneDeep(parent.source), data._source ?? {})
 			delete data._source
-			delete (result as any)._source
+			delete result._source
 			return result
 		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
-			if (parent.id.includes('/collections/'))
-				return trackID(`${parent.id}/${key}`)
+			const baseId = parent.id.replace('/collections/', '/')
+			const [namespace, _cKey, ...tail] = baseId.split('/')
 
-			return trackID(`${parent.id}/collections/${collectionKey}/${key}`)
+			const parts = [
+				namespace,
+				'collections',
+				collectionKey,
+				...tail,
+				key.toString()
+			]
+
+			return parts.join('/')
 		},
 		contents: function (
 			this: SourceHaver,
@@ -108,6 +120,63 @@ export function collectionTransformer<
 		},
 		...partialTransformer
 	} as Transformer<TIn, TOut>
+
+	if (isRecursive && !('collections' in result))
+		result = {
+			...result,
+			collections: function (
+				this: SourceHaver,
+				data: TIn,
+				key: string | number,
+				parent: TParent
+			) {}
+		}
+
+	return result
+}
+
+export function recursiveCollectionTransformer<
+	TIn extends YamlData<RecursiveCollection<any>>,
+	TOut extends RecursiveCollection<any>,
+	TItemTransformer extends Transformer<
+		Collected<TIn>,
+		Collected<TOut>
+	> = Transformer<Collected<TIn>, Collected<TOut>>,
+	TParent extends SourceHaver = SourceHaver
+>(
+	collectionKey: string,
+	itemTransformer: TItemTransformer,
+	partialTransformer: Omit<
+		Transformer<TIn, TOut, TParent>,
+		'source' | 'id' | 'contents'
+	>
+) {
+	const result = collectionTransformer<TIn, TOut, TParent>(
+		collectionKey,
+		itemTransformer,
+		{
+			...partialTransformer,
+			collections: function (
+				this: SourceHaver,
+				data: TIn
+			): Record<string, TOut> | undefined {
+				if (data.collections == null) return undefined
+				return mapValues(data.collections, (v, k) =>
+					transform(
+						v,
+						k,
+						this,
+						recursiveCollectionTransformer(
+							collectionKey,
+							itemTransformer,
+							partialTransformer
+						) as any
+					)
+				) as any
+			}
+		}
+	)
+	return result
 }
 
 export type Transformer<

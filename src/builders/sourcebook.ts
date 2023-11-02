@@ -14,10 +14,10 @@ import {
 	DelveSiteDomain,
 	DelveSiteTheme,
 	Rarity,
-	RegionEntry,
 	WorldTruth
 } from 'builders/ruleset-classic'
 import { NpcCollection } from 'builders/npcs'
+import { Atlas, AtlasEntry } from 'builders/atlas'
 
 export const SourcebookStarforged = sourcedTransformer<
 	InSourcebookStarforged,
@@ -98,20 +98,13 @@ export const SourcebookClassic = sourcedTransformer<
 	) {
 		return mapValues(data.npcs, (v, k) => transform(v, k, data, NpcCollection))
 	},
-	regions: function (
+	atlas: function (
 		this: SourceHaver,
 		data: InSourcebookClassic,
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.regions, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/regions` },
-				RegionEntry
-			)
-		)
+		return mapValues(data.atlas, (v, k) => transform(v, k, data, Atlas))
 	},
 	rarities: function (
 		this: SourceHaver,

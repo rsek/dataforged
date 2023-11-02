@@ -101,7 +101,7 @@ export const SourceStub = Type.Partial(Source, {
 
 export type SourceStub = Static<typeof SourceStub>
 
-export const SuggestionsClassic = Type.Object(
+export const Suggestions = Type.Object(
 	{
 		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
 		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
@@ -109,26 +109,8 @@ export const SuggestionsClassic = Type.Object(
 		site_domains: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteDomainID))),
 		site_themes: Type.Optional(Type.Array(Type.Ref(ID.DelveSiteThemeID))),
 		npcs: Type.Optional(Type.Array(Type.Ref(ID.NpcID))),
-		regions: Type.Optional(Type.Array(Type.Ref(ID.RegionEntryID)))
+		atlas: Type.Optional(Type.Array(Type.Ref(ID.AtlasEntryID)))
 	},
-	{ $id: '#/$defs/SuggestionsClassic' }
-)
-
-export type SuggestionsClassic = Static<typeof SuggestionsClassic>
-
-export const SuggestionsStarforged = Type.Object(
-	{
-		oracles: Type.Optional(Type.Array(Type.Ref(ID.OracleTableID))),
-		assets: Type.Optional(Type.Array(Type.Ref(ID.AssetID))),
-		moves: Type.Optional(Type.Array(Type.Ref(ID.MoveID))),
-		npcs: Type.Optional(Type.Array(Type.Ref(ID.NpcID)))
-	},
-	{ $id: '#/$defs/SuggestionsStarforged' }
-)
-export type SuggestionsStarforged = Static<typeof SuggestionsStarforged>
-
-export const Suggestions = Type.Union(
-	[Type.Ref(SuggestionsClassic), Type.Ref(SuggestionsStarforged)],
 	{ $id: '#/$defs/Suggestions' }
 )
 

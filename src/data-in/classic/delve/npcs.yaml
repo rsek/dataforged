@@ -7,10 +7,10 @@ source:
   title: 'Ironsworn: Delve'
   date: 2020-02-13
   url: https://ironswornrpg.com
-encounters:
+npcs:
   ironlanders:
     name: Ironlanders
-    extends: classic/collections/encounters/ironlanders
+    extends: classic/collections/npcs/ironlanders
     contents:
       husk:
         name: Husk
@@ -86,7 +86,7 @@ encounters:
           You have lost someone to an emerging sect which seeks to unleash a forgotten power or entity. They dwell within a [Hallowed](id:delve/site_themes/hallowed) [Underkeep](id:delve/site_domains/underkeep). What is the nature of their belief? Will you attempt to save this person from their faith, or see them destroyed along with it?
   firstborn:
     name: Firstborn
-    extends: classic/collections/encounters/firstborn
+    extends: classic/collections/npcs/firstborn
     contents:
       atanya:
         name: Atanya
@@ -111,7 +111,7 @@ encounters:
         #   - wild
         #   - sentient
         description: |-
-          These people of the sea dwell among the [Barrier Islands](id:classic/regions/barrier_islands), along the [Ragged Coast](id:classic/regions/ragged_coast), and amid the frozen landscapes of the far north. Some live in isolated villages clinging to rugged shores, or as nomads among the icereaches. Others spend their lives aboard finely-crafted vessels called drift-homes. These ships find safe anchorage during the cruelest depths of winter, and return to the sea in calmer months.
+          These people of the sea dwell among the [Barrier Islands](id:classic/atlas/ironlands/barrier_islands), along the [Ragged Coast](id:classic/atlas/ironlands/ragged_coast), and amid the frozen landscapes of the far north. Some live in isolated villages clinging to rugged shores, or as nomads among the icereaches. Others spend their lives aboard finely-crafted vessels called drift-homes. These ships find safe anchorage during the cruelest depths of winter, and return to the sea in calmer months.
 
           The atanya are a diverse people, but most are well-suited to a life amid the northern climes. They are strong, hardy, and long-lived. Their height and stout forms give them an imposing physical presence, but they are generally good-natured. They have an unnatural sense of the coming weather and an innate understanding of the sea. Some say they once lived in the depths of the ocean, but were cursed by a forsaken god and banished to the world above.
         quest_starter: |-
@@ -144,14 +144,14 @@ encounters:
         description: |-
           These semiaquatic beings dwell within coastal waters, sea caves, and saltwater marshes. They are fierce protectors of their realm, driven by a zealous devotion to their gods. Their eyes are large and glossy black. They have hunched forms and long limbs, and move with deadly grace in watery environments. Their language is a cacophony of clicks, low grunts, and whistles.
 
-          They war against the [atanya](id:delve/encounters/firstborn/atanya) clans, rarely interact with other firstborn, and are openly hostile to Ironlanders. They emerge from their sunken lairs to swarm over ships or coastal settlements, dragging their victims into the depths. As night falls, the people of seaside villages light their torches, ward their gates, and keep an eye to the waters.
+          They war against the [atanya](id:delve/npcs/firstborn/atanya) clans, rarely interact with other firstborn, and are openly hostile to Ironlanders. They emerge from their sunken lairs to swarm over ships or coastal settlements, dragging their victims into the depths. As night falls, the people of seaside villages light their torches, ward their gates, and keep an eye to the waters.
         quest_starter: |-
           Sailors speak in hushed tones of a large merrow, its skin translucent white, wielding a wicked stone blade. It strikes out from a hidden [Fortified](id:delve/site_themes/fortified) [Sea Cave](id:delve/site_domains/sea_cave) to raid indiscriminately. This merrow and its clan take no prisoners, instead performing bloodletting rituals aboard the ships they attack. What is the origin of this leader? What is the purpose of these violent rituals?
         your_truth: |-
           The merrow worship one god above all others. What form does it take? What does it demand of its supplicants?
   animals:
     name: Animals
-    extends: classic/collections/encounters/animals
+    extends: classic/collections/npcs/animals
     contents:
       bladewing:
         name: Bladewing
@@ -237,7 +237,7 @@ encounters:
         #   - wild
         #   - squatter
         description: |-
-          Cave lions are sleek, powerful creatures who dwell primarily in the [Hinterlands](id:classic/regions/hinterlands) and [Tempest Hills](id:classic/regions/tempest_hills). They lair in caverns and other hidden places, emerging to hunt prey such as deer, boar, and rodents. They are typically solitary creatures, but have been seen working together to bring down larger quarry. Even a [mammoth](id:classic/encounters/beasts/mammoth) is no match for a determined pack of cave lions.
+          Cave lions are sleek, powerful creatures who dwell primarily in the [Hinterlands](id:classic/atlas/ironlands/hinterlands) and [Tempest Hills](id:classic/atlas/ironlands/tempest_hills). They lair in caverns and other hidden places, emerging to hunt prey such as deer, boar, and rodents. They are typically solitary creatures, but have been seen working together to bring down larger quarry. Even a [mammoth](id:classic/npcs/beasts/mammoth) is no match for a determined pack of cave lions.
         quest_starter: |-
           A large cave lion kills livestock in outlying Ironlander steadings, and attacked a farmer. It hunts well beyond its usual territory, and is said to lair in a [Wild](id:delve/site_themes/wild) [Cavern](id:delve/site_domains/cavern). What has driven this beast from its hunting grounds?
       deep_rat:
@@ -331,7 +331,7 @@ encounters:
 
           Packs of shroud crabs are known to work in tandem to bring down large prey. Some report seeing mighty elk engulfed by these voracious creatures. On occasion, the body of a missing Ironlander is found with their flesh picked clean to the bones.
         quest_starter: |-
-          A vengeful [husk](id:delve/encounters/ironlanders/husk) curses a seaside settlement and summons a horde of shroud crabs to overrun the place in a flood of clattering legs and snapping claws. The husk dwells within an [Infested](id:delve/site_themes/infested) [Sea Cave](id:delve/site_domains/sea_cave), protected by other shroud crabs. There, she prepares an even more horrible show of her power—one which will threaten villages up and down the [Ragged Coast](id:classic/regions/ragged_coast).
+          A vengeful [husk](id:delve/npcs/ironlanders/husk) curses a seaside settlement and summons a horde of shroud crabs to overrun the place in a flood of clattering legs and snapping claws. The husk dwells within an [Infested](id:delve/site_themes/infested) [Sea Cave](id:delve/site_domains/sea_cave), protected by other shroud crabs. There, she prepares an even more horrible show of her power—one which will threaten villages up and down the [Ragged Coast](id:classic/atlas/ironlands/ragged_coast).
       trog:
         name: Trog
         nature: Animal
@@ -366,7 +366,7 @@ encounters:
           Some insist that following a trog tunnel into the depths of the earth will eventually lead you to a vast cavern as expansive as the overlands. Is there any truth to this? What secret people or culture lives within this hidden realm?
   beasts:
     name: Beasts
-    extends: classic/collections/encounters/beasts
+    extends: classic/collections/npcs/beasts
     contents:
       chitter:
         name: Chitter
@@ -460,7 +460,7 @@ encounters:
         quest_starter: |-
           Your animal companion is stricken with the Iron Blight. The disease is in its early stages, but time is your enemy. Locals say the origin of the blight lies within a [Corrupted](id:delve/site_themes/corrupted) [Tanglewood](id:delve/site_domains/tanglewood). What will you do to stop the relentless progression of the iron corruption?
         your_truth: |-
-          A sect of [zealots](id:delve/encounters/ironlanders/zealot) believe the Iron Blight is a divine manifestation. What god do they worship? What purpose do they believe the disease fulfills, and how to they intend to hasten the will of their god?
+          A sect of [zealots](id:delve/npcs/ironlanders/zealot) believe the Iron Blight is a divine manifestation. What god do they worship? What purpose do they believe the disease fulfills, and how to they intend to hasten the will of their god?
       kraken:
         name: Kraken
         nature: Beast
@@ -518,7 +518,7 @@ encounters:
         description: |-
           What we call the nightspawn are mutated beasts which take a variety of forms. Some are animal-like, or combine the characteristics of different creatures. Others are bizarre aberrations seemingly born of chaos. A few even possess twisted mockeries of human features.
 
-          They are rare beasts, but dwell in every region and environment of the Ironlands, from the dark waters of the [Ragged Coast](id:classic/regions/ragged_coast) to the icy plains of the [Shattered Wastes](id:classic/regions/shattered_wastes). Often, they protect ancient ruins, forgotten relics, and other secrets. They watch and wait, and show no mercy to those who trespass in their domain.
+          They are rare beasts, but dwell in every region and environment of the Ironlands, from the dark waters of the [Ragged Coast](id:classic/atlas/ironlands/ragged_coast) to the icy plains of the [Shattered Wastes](id:classic/atlas/ironlands/shattered_wastes). Often, they protect ancient ruins, forgotten relics, and other secrets. They watch and wait, and show no mercy to those who trespass in their domain.
 
           We do not know the origin of the nightspawn. They are enigmatic creatures, rarely emerging from their dark lairs except during the long nights of winter. Is it the latent magic of these lands which gives them life? Have they passed through the veil from some other realm? Perhaps some questions are best left unanswered.
         quest_starter: |-
@@ -547,11 +547,11 @@ encounters:
         #   - arctic
         #   - wild
         description: |-
-          In the language of the [atanya](id:delve/encounters/firstborn/atanya), rhaskar means “white death.” This mighty beast dwells within northern waters and amid frozen icereaches. It hunts along shorelines, lurks beneath ice, or tracks the frigid wastes in search of prey. Some rhaskar have even been known to attack ships in coastal waters. It is a highly territorial creature, and does not abide trespassers within its domain.
+          In the language of the [atanya](id:delve/npcs/firstborn/atanya), rhaskar means “white death.” This mighty beast dwells within northern waters and amid frozen icereaches. It hunts along shorelines, lurks beneath ice, or tracks the frigid wastes in search of prey. Some rhaskar have even been known to attack ships in coastal waters. It is a highly territorial creature, and does not abide trespassers within its domain.
 
           With its mane of dorsal fur and long, angular head, the rhaskar looks like a fusion of shark and bear—and embodies the strength and cunning of both. It is the uncaring ferocity of these cold northern realms given form.
         quest_starter: |-
-          Settlements and ships along the northern expanse of the [Ragged Coast](id:classic/regions/ragged_coast) face repeated attacks from a large rhaskar. The creature appears amidst a fierce snowstorm, makes it savage assault, and fades back into the blizzard like a ghost. It seems to act out of a pure compulsion to cause terror and inflict violence rather than any need for food. A hunter tracked it to a [Wild](id:delve/site_themes/wild) [Frozen Cavern](id:delve/site_domains/frozen_cavern). But they heeded the warning of a pile of bones at the entrance and refused to enter that place.
+          Settlements and ships along the northern expanse of the [Ragged Coast](id:classic/atlas/ironlands/ragged_coast) face repeated attacks from a large rhaskar. The creature appears amidst a fierce snowstorm, makes it savage assault, and fades back into the blizzard like a ghost. It seems to act out of a pure compulsion to cause terror and inflict violence rather than any need for food. A hunter tracked it to a [Wild](id:delve/site_themes/wild) [Frozen Cavern](id:delve/site_domains/frozen_cavern). But they heeded the warning of a pile of bones at the entrance and refused to enter that place.
       wyrm:
         name: Wyrm
         nature: Beast
@@ -580,12 +580,12 @@ encounters:
 
           Fiercely territorial, a wyrm is sure to attack any who stray into their domain. It can sense movement through vibration, and its golden eyes can pierce the thickest darkness.
         quest_starter: |-
-          Last year, a huge white wyrm destroyed several mining camps in the [Veiled Mountains](id:classic/regions/veiled_mountains). Winter has passed, but Ironlander miners are refusing to return to those camps without assurance that the wyrm is dead. Its lair is in an [Ancient](id:delve/site_themes/ancient) [Frozen Cavern](id:delve/site_domains/frozen_cavern) deep within the mountains.
+          Last year, a huge white wyrm destroyed several mining camps in the [Veiled Mountains](id:classic/atlas/ironlands/veiled_mountains). Winter has passed, but Ironlander miners are refusing to return to those camps without assurance that the wyrm is dead. Its lair is in an [Ancient](id:delve/site_themes/ancient) [Frozen Cavern](id:delve/site_domains/frozen_cavern) deep within the mountains.
         your_truth: |-
           Tales tell of the World-Eater, the mother of all wyrms, and the great hero who battled her to save an Old World kingdom. Many claim to have relics from that great battle, or to be descended from that hero. But there is only one true legacy which survives today. What is it, and what clans or factions seek to control it?
   horrors:
     name: Horrors
-    extends: classic/collections/encounters/horrors
+    extends: classic/collections/npcs/horrors
     contents:
       blighthound:
         name: Blighthound
@@ -643,7 +643,7 @@ encounters:
         #   - sentient
         #   - undead
         description: |-
-          Long ago, before we arrived on the shores of the Ironlands, other people lived here. Some of those folk dwelled in what we now call the [Flooded Lands](id:classic/regions/flooded_lands), and laid their kin to rest in the vast peat bogs of that place.
+          Long ago, before we arrived on the shores of the Ironlands, other people lived here. Some of those folk dwelled in what we now call the [Flooded Lands](id:classic/atlas/ironlands/flooded_lands), and laid their kin to rest in the vast peat bogs of that place.
 
           A few of those dead do not rest, and rise as bog rots. They are horrible creatures, with preserved flesh stained and withered like old leather. Their eyes are black pits, and their mouths hang open in a perpetual, silent scream.
 
@@ -651,7 +651,7 @@ encounters:
         quest_starter: |-
           In a [Corrupted](id:delve/site_themes/corrupted) [Shadowfen](id:delve/site_domains/shadowfen), a great battle once took place. Hundreds died amid the morass. Their mummified corpses lie buried in mud and peat, but many do not rest easily. What secret or artifact is said to lie with them? Why are you sworn to seek it out?
         your_truth: |-
-          Ironlanders in the [Flooded Lands](id:classic/regions/flooded_lands) enact a particular burial practice to ensure their kin do not someday rise as a bog rot from that baneful soil. What is it?
+          Ironlanders in the [Flooded Lands](id:classic/atlas/ironlands/flooded_lands) enact a particular burial practice to ensure their kin do not someday rise as a bog rot from that baneful soil. What is it?
       bonehorde:
         name: Bonehorde
         nature: Horror
@@ -784,7 +784,7 @@ encounters:
         description: |-
           A blood thorn is a malignant, carnivorous plant. It seizes its victims with long, creeping tendrils. Then, it leeches their life through hollow thorns, eventually bleeding them dry.
 
-          Blood thorns appear in woodland areas throughout the Ironlands. They are especially common in the [Deep Wilds](id:classic/regions/deep_wilds), where they often encircle [elf](id:classic/encounters/firstborn/elf) villages. Some suspect they are cultivated by the elves, or share a symbiotic relationship with them.
+          Blood thorns appear in woodland areas throughout the Ironlands. They are especially common in the [Deep Wilds](id:classic/atlas/ironlands/deep_wilds), where they often encircle [elf](id:classic/npcs/firstborn/elf) villages. Some suspect they are cultivated by the elves, or share a symbiotic relationship with them.
         quest_starter: |-
           Ironlanders attempted to found a settlement at the heart of a [Wild](id:delve/site_themes/wild) [Tanglewood](id:delve/site_domains/tanglewood) a decade ago. That place is now abandoned and infested by blood thorns. Why did the settlers try to create a home in such an untamed place? What object or information do you seek there?
         your_truth: |-
@@ -890,7 +890,7 @@ encounters:
 
           If trapped within a gloom, let your conviction and courage be your light. Against hopelessness, find hope. Against despair, find peace of mind. Against terror, find faith. In the darkness, it is not the gloom that is your enemy. It is yourself.
         quest_starter: |-
-          [Zealots](id:delve/encounters/ironlanders/zealot) nurture a gloom within a [Hallowed](id:delve/site_themes/hallowed) [Underkeep](id:delve/site_domains/underkeep). They believe this anomaly offers true enlightenment, and seek a means to unleash it on the Ironlands. Who is the leader of this sect?
+          [Zealots](id:delve/npcs/ironlanders/zealot) nurture a gloom within a [Hallowed](id:delve/site_themes/hallowed) [Underkeep](id:delve/site_domains/underkeep). They believe this anomaly offers true enlightenment, and seek a means to unleash it on the Ironlands. Who is the leader of this sect?
         your_truth: |-
           Is there a benevolent counterpart to a gloom—one which offers light and hope instead of darkness and despair? Is this the cure for someone who suffers the aftermath of a gloom’s visions? What is it called, and where can it be found?
       maelstrom:
@@ -952,6 +952,6 @@ encounters:
 
           A tempest’s true nature is a mystery. Is it intelligent, or just a force of nature? Those who survive an encounter sometimes report hearing hushed voices and seeing strange forms within the whirlwind. Some few tell tales of the eye of the storm, where the colds and wind abate, and where relief from certain death is offered—for a price.
         quest_starter: |-
-          In the [Havens](id:classic/regions/havens), a massive, swirling tempest has appeared. It is expanding with grim purpose. A settlement was destroyed, and others are threatened. At the heart of the storm lies an [Ancient](id:delve/site_themes/ancient) [Ruin](id:delve/site_domains/ruin). What force powers this tempest? Can it be stopped, or will it someday cover all the Ironlands in its cold wrath?
+          In the [Havens](id:classic/atlas/ironlands/havens), a massive, swirling tempest has appeared. It is expanding with grim purpose. A settlement was destroyed, and others are threatened. At the heart of the storm lies an [Ancient](id:delve/site_themes/ancient) [Ruin](id:delve/site_domains/ruin). What force powers this tempest? Can it be stopped, or will it someday cover all the Ironlands in its cold wrath?
         your_truth: |-
           Are there Ironlanders in your world who can foretell or influence the weather? If so, what are they called? What signs do they look for as a portent of a coming tempest?

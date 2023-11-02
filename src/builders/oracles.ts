@@ -4,7 +4,8 @@ import {
 	collectionTransformer,
 	sourcedTransformer,
 	type SourceHaver,
-	type Transformer
+	type Transformer,
+	recursiveCollectionTransformer
 } from 'builders/transformer'
 import { mapValues } from 'lodash'
 import type * as SchemaIn from 'types/input/starforged'
@@ -37,19 +38,8 @@ export const OracleTable = sourcedTransformer<
 	}
 })
 
-export const OracleCollection = collectionTransformer<
+export const OracleCollection = recursiveCollectionTransformer<
 	SchemaIn.OracleCollection,
-	SchemaOut.OracleCollection
->('oracles', OracleTable, {
-	collections: function (
-		this: SourceHaver,
-		data: SchemaIn.OracleCollection,
-		key: string | number,
-		parent: SourceHaver
-	): Record<string, SchemaOut.OracleCollection> | undefined {
-		if (data.collections == null) return undefined
-		return mapValues(data.collections, (v, k) =>
-			transform(v, k, this, OracleCollection)
-		)
-	}
-})
+	SchemaOut.OracleCollection,
+	typeof OracleTable
+>('oracles', OracleTable, {})

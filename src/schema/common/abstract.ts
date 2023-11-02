@@ -109,7 +109,7 @@ export function Cyclopedia<T extends TProperties>(
 			features: Type.Array(Type.Ref(Localize.MarkdownString)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Ref(Localize.MarkdownString),
-			quest_starter: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			quest_starter: Type.Ref(Localize.MarkdownString),
 			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			...properties
 		},
@@ -240,11 +240,9 @@ export function RecursiveCollection<T extends TRef>(
 	)
 }
 
-export type RecursiveCollection<T> = ReturnType<
-	typeof RecursiveCollection<
-		ReturnType<typeof Type.Ref<TSchema & { static: T }>>
-	>
->
+export type RecursiveCollection<T> = Collection<T> & {
+	collections?: Record<string, RecursiveCollection<T>>
+}
 
 /**
  * Note that `id` and `source` are always omitted.

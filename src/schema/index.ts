@@ -7,5 +7,6 @@ export * as Moves from 'schema/moves'
 export * as Assets from 'schema/assets'
 export * as Oracles from 'schema/oracles'
 export * as Npcs from 'schema/npcs'
+export * as Atlas from 'schema/atlas'
 
 export * as Schema from '../scripts/build-schema'

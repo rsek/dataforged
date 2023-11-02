@@ -133,10 +133,6 @@ export const DelveSiteDenizen: Transformer<
 
 export const Rarity = sourcedTransformer<In.Rarity, Out.Rarity>({})
 
-export const RegionEntry = sourcedTransformer<In.RegionEntry, Out.RegionEntry>(
-	{}
-)
-
 export const WorldTruthOption: Transformer<
 	In.WorldTruth['options'][number],
 	Out.WorldTruth['options'][number]

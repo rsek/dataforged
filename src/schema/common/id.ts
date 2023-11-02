@@ -528,15 +528,26 @@ export const RarityID = Type.RegEx(
 )
 export type RarityID = Opaque<Static<typeof RarityID>>
 
-export const RegionEntryID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'regions', KEY),
-	// /^[a-z0-9_]{3,}\/regions\/[a-z][a-z_]*$/,
-	{
-		examples: ['classic/regions/shattered_wastes'],
-		$id: '#/$defs/RegionEntryID'
-	}
-)
-export type RegionEntryID = Opaque<Static<typeof RegionEntryID>>
+export const AtlasEntryID = Type.RegEx(NodeID('atlas', true), {
+	examples: ['classic/atlas/ironlands/hinterlands'],
+	$id: '#/$defs/AtlasEntryID'
+})
+export type AtlasEntryID = Opaque<Static<typeof AtlasEntryID>>
+
+export const AtlasEntryIDWildcard = Type.RegEx(NodeIDWildcard('atlas', true), {
+	$id: '#/$defs/AtlasEntryIDWildcard'
+})
+export type AtlasEntryIDWildcard = Opaque<Static<typeof AtlasEntryIDWildcard>>
+
+export const AtlasID = Type.RegEx(CollectionID('atlas', true), {
+	examples: ['classic/collections/atlas/ironlands'],
+	$id: '#/$defs/AtlasID'
+})
+export type AtlasID = Opaque<Static<typeof AtlasID>>
+
+export const AtlasIDWildcard = Type.RegEx(CollectionIDWildcard('atlas', true), {
+	$id: '#/$defs/AtlasIDWildcard'
+})
 
 export const WorldTruthID = Type.RegEx(
 	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'world_truths', KEY),

@@ -10,7 +10,6 @@ export type PageNumber = number;
  * A localized plain text name or label.
  */
 export type Label = string;
-export type Suggestions = SuggestionsClassic | SuggestionsStarforged;
 export type OracleTableID = string;
 export type AssetID = string;
 /**
@@ -20,7 +19,7 @@ export type MoveID = string;
 export type DelveSiteDomainID = string;
 export type DelveSiteThemeID = string;
 export type NpcID = string;
-export type RegionEntryID = string;
+export type AtlasEntryID = string;
 export type OracleCollectionID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -471,20 +470,14 @@ export interface OracleCollection {
   };
   _source?: SourceStub;
 }
-export interface SuggestionsClassic {
+export interface Suggestions {
   oracles?: OracleTableID[];
   assets?: AssetID[];
   moves?: MoveID[];
   site_domains?: DelveSiteDomainID[];
   site_themes?: DelveSiteThemeID[];
   npcs?: NpcID[];
-  regions?: RegionEntryID[];
-}
-export interface SuggestionsStarforged {
-  oracles?: OracleTableID[];
-  assets?: AssetID[];
-  moves?: MoveID[];
-  npcs?: NpcID[];
+  atlas?: AtlasEntryID[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition

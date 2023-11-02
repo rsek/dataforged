@@ -10,6 +10,7 @@ import {
 
 import { mapValues, pick } from 'lodash'
 import { Metadata, Abstract } from 'schema/common'
+import * as Atlas from 'schema/atlas'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
 import * as Assets from 'schema/assets'
@@ -76,9 +77,9 @@ const SourcebookInfoClassic = {
 		description:
 			'A dictionary object containing NPC collections, which contain NPCs.'
 	},
-	regions: {
+	atlas: {
 		description:
-			'A dictionary object containing region entries, like those used to describe the Ironlands in classic Ironsworn.'
+			'A dictionary object containing atlas collections, which contain atlas entries.'
 	},
 	rarities: {
 		description:
@@ -101,7 +102,7 @@ export function SourcebookClassic(options: ObjectOptions) {
 			oracles: Oracles.OracleCollection,
 			moves: Moves.MoveCategory,
 			assets: Assets.AssetType,
-			regions: RulesetClassic.RegionEntry,
+			atlas: Atlas.Atlas,
 			npcs: Npcs.NpcCollection,
 			rarities: RulesetClassic.Rarity,
 			delve_sites: RulesetClassic.DelveSite,
