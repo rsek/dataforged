@@ -17,7 +17,7 @@ import {
 	WorldTruth
 } from 'builders/ruleset-classic'
 import { NpcCollection } from 'builders/npcs'
-import { Atlas, AtlasEntry } from 'builders/atlas'
+import { Atlas } from 'builders/atlas'
 
 export const SourcebookStarforged = sourcedTransformer<
 	InSourcebookStarforged,
@@ -58,17 +58,17 @@ export const SourcebookStarforged = sourcedTransformer<
 	) {
 		return mapValues(data.npcs, (v, k) => transform(v, k, data, NpcCollection))
 	},
-	setting_truths: function (
+	truths: function (
 		this: SourceHaver,
 		data: InSourcebookStarforged,
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.setting_truths, (v, k) =>
+		return mapValues(data.truths, (v, k) =>
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id}/setting_truths` },
+				{ source: data.source, id: `${data.id}/truths` },
 				SettingTruth
 			)
 		)
@@ -166,17 +166,17 @@ export const SourcebookClassic = sourcedTransformer<
 			)
 		)
 	},
-	world_truths: function (
+	truths: function (
 		this: SourceHaver,
 		data: InSourcebookClassic,
 		key: string | number,
 		parent: null
 	) {
-		return mapValues(data.world_truths, (v, k) =>
+		return mapValues(data.truths, (v, k) =>
 			transform(
 				v,
 				k,
-				{ source: data.source, id: `${data.id}/world_truths` },
+				{ source: data.source, id: `${data.id}/truths` },
 				WorldTruth
 			)
 		)

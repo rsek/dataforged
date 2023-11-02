@@ -550,28 +550,28 @@ export const AtlasIDWildcard = Type.RegEx(CollectionIDWildcard('atlas', true), {
 })
 
 export const WorldTruthID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'world_truths', KEY),
+	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'truths', KEY),
 
-	// /^[a-z0-9_]{3,}\/world_truths\/[a-z][a-z_]*$/,
-	{ examples: ['classic/world_truths/iron'], $id: '#/$defs/WorldTruthID' }
+	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*$/,
+	{ examples: ['classic/truths/iron'], $id: '#/$defs/WorldTruthID' }
 )
 export type WorldTruthID = Opaque<Static<typeof WorldTruthID>>
 
 export const WorldTruthOptionID = Type.RegEx(
 	joinPatterns(WorldTruthID.pattern as string, INDEX),
-	// /^[a-z0-9_]{3,}\/world_truths\/[a-z][a-z_]*\/(0|[1-9][0-9]*)$/,
+	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*\/(0|[1-9][0-9]*)$/,
 	{
-		examples: ['classic/world_truths/iron/0'],
+		examples: ['classic/truths/iron/0'],
 		$id: '#/$defs/WorldTruthOptionID'
 	}
 )
 export type WorldTruthOptionID = Opaque<Static<typeof WorldTruthOptionID>>
 
 export const SettingTruthID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'setting_truths', KEY),
-	// /^[a-z0-9_]{3,}\/setting_truths\/[a-z][a-z_]*$/,
+	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'truths', KEY),
+	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*$/,
 	{
-		examples: ['starforged/setting_truths/iron'],
+		examples: ['starforged/truths/iron'],
 		$id: '#/$defs/SettingTruthID'
 	}
 )
@@ -579,9 +579,9 @@ export type SettingTruthID = Opaque<Static<typeof SettingTruthID>>
 
 export const SettingTruthOptionID = Type.RegEx(
 	joinPatterns(SettingTruthID.pattern as string, INDEX),
-	// /^[a-z0-9_]{3,}\/setting_truths\/[a-z][a-z_]*\/(0|[1-9][0-9]*)$/,
+	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*\/(0|[1-9][0-9]*)$/,
 	{
-		examples: ['starforged/setting_truths/iron/0'],
+		examples: ['starforged/truths/iron/0'],
 		$id: '#/$defs/SettingTruthOptionID'
 	}
 )

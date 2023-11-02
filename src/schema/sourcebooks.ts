@@ -89,7 +89,7 @@ const SourcebookInfoClassic = {
 		description:
 			'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
 	},
-	world_truths: {
+	truths: {
 		description:
 			'A dictionary object of world truth categories, like those presented in classic Ironsworn.'
 	}
@@ -108,7 +108,7 @@ export function SourcebookClassic(options: ObjectOptions) {
 			delve_sites: RulesetClassic.DelveSite,
 			site_themes: RulesetClassic.DelveSiteTheme,
 			site_domains: RulesetClassic.DelveSiteDomain,
-			world_truths: RulesetClassic.WorldTruth
+			truths: RulesetClassic.WorldTruth
 		},
 		SourcebookInfoClassic,
 		options
@@ -123,11 +123,11 @@ export function SourcebookStarforged(options: ObjectOptions) {
 			moves: Moves.MoveCategory,
 			assets: Assets.AssetType,
 			npcs: Npcs.NpcCollection,
-			setting_truths: RulesetStarforged.SettingTruth
+			truths: RulesetStarforged.SettingTruth
 		},
 		{
 			...pick(SourcebookInfoClassic, ['oracles', 'moves', 'assets', 'npcs']),
-			setting_truths: {
+			truths: {
 				description:
 					'A dictionary object containing Starforged-style setting truths.'
 			}

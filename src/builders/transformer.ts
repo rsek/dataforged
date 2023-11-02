@@ -105,7 +105,7 @@ export function collectionTransformer<
 				key.toString()
 			]
 
-			return parts.join('/')
+			return trackID(parts.join('/'))
 		},
 		contents: function (
 			this: SourceHaver,
