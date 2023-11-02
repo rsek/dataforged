@@ -1,13 +1,11 @@
 import { trackID } from 'builders/id-tracker'
 import {
 	transform,
-	collectionTransformer,
 	sourcedTransformer,
 	type SourceHaver,
 	type Transformer,
 	recursiveCollectionTransformer
 } from 'builders/transformer'
-import { mapValues } from 'lodash'
 import type * as SchemaIn from 'types/input/starforged'
 import type * as SchemaOut from 'types/output/starforged'
 
