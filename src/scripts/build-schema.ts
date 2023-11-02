@@ -7,10 +7,11 @@ import {
 	Moves,
 	Oracles,
 	Npcs,
-	Metadata
+	Metadata,
+	Truths,
+	Rarities,
+	DelveSites
 } from 'schema'
-import * as RulesetStarforged from 'schema/ruleset-starforged'
-import * as RulesetClassic from 'schema/ruleset-classic'
 
 import { SourcebookClassic, SourcebookStarforged } from 'schema/sourcebooks'
 import { prepareInputSchema, prepareSchema } from './transform-schema'
@@ -39,9 +40,9 @@ export const Dataforged = prepareSchema(
 			...Oracles,
 			...Moves,
 			...Assets,
+			...Truths,
 			...Atlas,
-			...Player,
-			...RulesetStarforged
+			...Player
 		})
 	})
 )
@@ -73,9 +74,11 @@ export const Datasworn = prepareSchema(
 			...Oracles,
 			...Moves,
 			...Assets,
+			...Truths,
 			...Atlas,
 			...Player,
-			...RulesetClassic
+			...Rarities,
+			...DelveSites
 		})
 	})
 )

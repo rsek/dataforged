@@ -1,6 +1,6 @@
 import { Localize, Progress } from 'schema/common'
 import { PartialExcept } from 'schema/common/utils'
-import { MoveOutcomesAugment } from './common'
+import { MoveOutcomesAugment, toTriggerConditionAugment } from './common'
 import { Type, type Static } from 'typebox'
 import {
 	MoveOutcomes,
@@ -38,36 +38,35 @@ export const TriggerProgressRoll = composeTrigger(
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-const MoveProgressRollStub = Type.Object(
-	{
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'progress_roll'>>('progress_roll'),
-		// is_progress_move: Type.Literal(true, { default: true }),
-		track_label: Type.Ref(Localize.Label, {
-			description:
-				'A category label to use with progress tracks associated with this move.',
-			examples: [
-				'combat track',
-				'scene challenge track',
-				'vow track',
-				'delve track'
-			]
-		}),
-		trigger: Type.Ref(TriggerProgressRoll),
-		outcomes: Type.Ref(MoveOutcomes)
-	},
-	{ title: 'Progress Move' }
+export const MoveProgressRoll = composeMoveType(
+	Type.Object(
+		{
+			roll_type:
+				Type.Literal<Extract<MoveRollType, 'progress_roll'>>('progress_roll'),
+			// is_progress_move: Type.Literal(true, { default: true }),
+			track_label: Type.Ref(Localize.Label, {
+				description:
+					'A category label to use with progress tracks that are resolved by this move.',
+				examples: [
+					'combat track',
+					'scene challenge track',
+					'vow track',
+					'delve track'
+				]
+			}),
+			trigger: Type.Ref(TriggerProgressRoll),
+			outcomes: Type.Ref(MoveOutcomes)
+		},
+		{ title: 'Progress Move' }
+	)
 )
-
-export const MoveProgressRoll = composeMoveType(MoveProgressRollStub)
 
 export type MoveProgressRoll = Static<typeof MoveProgressRoll>
 
 // AUGMENTS
 
-export const TriggerProgressRollConditionAugment = PartialExcept(
+export const TriggerProgressRollConditionAugment = toTriggerConditionAugment(
 	TriggerProgressRollCondition,
-	['text'],
 	{ $id: '#/$defs/TriggerProgressRollConditionAugment' }
 )
 export type TriggerProgressRollConditionAugment = Static<
@@ -75,7 +74,7 @@ export type TriggerProgressRollConditionAugment = Static<
 >
 
 export const TriggerProgressRollAugment = toTriggerAugment(
-	TriggerProgressRoll,
+	Type.Ref(TriggerProgressRollConditionAugment),
 	{
 		$id: '#/$defs/TriggerProgressRollAugment'
 	}
@@ -109,30 +108,34 @@ export const TriggerSpecialTrackCondition = composeTriggerRollCondition(
 	TriggerSpecialTrackConditionOption,
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
+export type TriggerSpecialTrackCondition = Static<
+	typeof TriggerSpecialTrackCondition
+>
 
 export const TriggerSpecialTrack = composeTrigger(
 	TriggerSpecialTrackCondition,
 	{ $id: '#/$defs/TriggerSpecialTrack' }
 )
 
-const MoveSpecialTrackStub = Type.Object(
-	{
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'special_track'>>('special_track'),
-		// is_progress_move: Type.Literal(true, { default: true }),
-		trigger: Type.Ref(TriggerSpecialTrack),
-		outcomes: Type.Ref(MoveOutcomes)
-	},
-	{ title: 'Progress Move (special track roll)' }
-)
+export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 
-export const MoveSpecialTrack = composeMoveType(MoveSpecialTrackStub)
+export const MoveSpecialTrack = composeMoveType(
+	Type.Object(
+		{
+			roll_type:
+				Type.Literal<Extract<MoveRollType, 'special_track'>>('special_track'),
+			// is_progress_move: Type.Literal(true, { default: true }),
+			trigger: Type.Ref(TriggerSpecialTrack),
+			outcomes: Type.Ref(MoveOutcomes)
+		},
+		{ title: 'Progress Move (special track roll)' }
+	)
+)
 
 export type MoveSpecialTrack = Static<typeof MoveSpecialTrack>
 
-export const TriggerSpecialTrackConditionAugment = PartialExcept(
+export const TriggerSpecialTrackConditionAugment = toTriggerConditionAugment(
 	TriggerSpecialTrackCondition,
-	['text'],
 	{ $id: '#/$defs/TriggerSpecialTrackConditionAugment' }
 )
 export type TriggerSpecialTrackConditionAugment = Static<
@@ -140,7 +143,7 @@ export type TriggerSpecialTrackConditionAugment = Static<
 >
 
 export const TriggerSpecialTrackAugment = toTriggerAugment(
-	TriggerSpecialTrack,
+	Type.Ref(TriggerSpecialTrackConditionAugment),
 	{
 		$id: '#/$defs/TriggerSpecialTrackAugment'
 	}

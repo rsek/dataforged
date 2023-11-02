@@ -47,6 +47,12 @@ export const DelveSite = Abstract.SourcedNode(
 		id: Type.Ref(ID.DelveSiteID),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
 		rank: Type.Ref(Progress.ChallengeRank),
+		region: Type.Optional(
+			Type.Ref(ID.AtlasEntryID, {
+				description:
+					'The ID of an atlas entry representing the region in which this delve site is located.'
+			})
+		),
 		theme: Type.Ref(ID.DelveSiteThemeID),
 		domain: Type.Ref(ID.DelveSiteDomainID),
 		extra_card: Type.Optional(
@@ -54,7 +60,7 @@ export const DelveSite = Abstract.SourcedNode(
 				[Type.Ref(ID.DelveSiteThemeID), Type.Ref(ID.DelveSiteDomainID)],
 				{
 					description:
-						'An additional theme or domain card for use with optional rules in Ironsworn: Delve.'
+						'An additional theme or domain card, for use with optional rules in Ironsworn: Delve.'
 				}
 			)
 		),

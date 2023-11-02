@@ -4,11 +4,11 @@ import {
 	type ObjectOptions,
 	type Static,
 	type TAnySchema,
-	type TObject,
-	TString
+	type TObject
 } from '@sinclair/typebox'
 import { Abstract, ID, Localize, Metadata } from 'schema/common'
 import { MoveIDWildcard } from 'schema/common/id'
+import { PartialExcept, Squash } from 'schema/common/utils'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
@@ -71,7 +71,12 @@ export function composeTriggerRollCondition(
 	schemaOptions: ObjectOptions = {}
 ) {
 	const properties = {
-		text: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		text: Type.Optional(
+			Type.Ref(Localize.MarkdownString, {
+				description:
+					'A markdown string of any trigger text specific to this trigger condition.'
+			})
+		),
 		by: Type.Optional(Type.Ref(TriggerBy))
 	}
 
@@ -83,7 +88,9 @@ export function composeTriggerRollCondition(
 			default: 'any'
 		}
 	)
-	const roll_options = Type.Array(Type.Ref(optionSchema))
+	const roll_options = Type.Array(Type.Ref(optionSchema), {
+		description: 'The options available when rolling with this trigger.'
+	})
 
 	return Type.Object({ ...properties, method, roll_options }, schemaOptions)
 }
@@ -91,7 +98,7 @@ export function composeTriggerRollCondition(
 export const TriggerBase = Type.Object({
 	text: Type.Ref(Localize.MarkdownString, {
 		description:
-			'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
+			'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.',
 		type: 'string',
 		pattern: /.*\.{3}/.source
 	})
@@ -106,11 +113,13 @@ export function composeTrigger(
 		{
 			text: Type.Ref(Localize.MarkdownString, {
 				description:
-					'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
+					'A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.',
 				type: 'string',
 				pattern: /.*\.{3}/.source
 			}),
-			conditions: Type.Array(Type.Ref(rollConditionSchema), conditionsOptions)
+			conditions: Type.Array(Type.Ref(rollConditionSchema), {
+				...conditionsOptions
+			})
 		},
 		options
 	)
@@ -190,13 +199,28 @@ export const MoveBase = Type.Object({
 
 export type MoveBase = Static<typeof MoveBase>
 
-export function composeMoveType<T extends TObject>(schema: T) {
-	return Type.Composite([Type.Omit(MoveBase, ['roll_type']), schema])
+export function composeMoveType<T extends TObject>(schema: T, options = {}) {
+	return Type.Composite([Type.Omit(MoveBase, ['roll_type']), schema], options)
 }
 
-export function toTriggerAugment(schema: TObject, options: ObjectOptions) {
-	return Type.Pick(schema, ['conditions'], options)
+export function toTriggerAugment(
+	conditionSchema: TAnySchema,
+	options: ObjectOptions
+) {
+	return Type.Object(
+		{
+			conditions: Type.Array(conditionSchema)
+		},
+		options
+	)
 }
+export function toTriggerConditionAugment(
+	conditionSchema: TObject,
+	options: ObjectOptions
+) {
+	return PartialExcept(conditionSchema, ['text'], options)
+}
+
 export type SchemaOf<T> = TAnySchema & { static: T }
 
 type AnyMoveSchema =
@@ -213,30 +237,42 @@ export function toMoveAugment<
 	triggerAugmentSchema: TAugment,
 	options: ObjectOptions = {}
 ) {
-	const requiredProps = Type.Pick(moveSchema, ['roll_type', 'id'])
+	const toSquash: TObject[] = []
 
-	const optionalProps = Type.Pick(moveSchema, [
-		'oracles',
-		'suggestions',
-		'text'
-	])
+	// FIXME: revisit whether augments should include text (because the asset ability text *does* already exist)
+	// toSquash.push(Type.Pick(moveSchema, ['text']))
 
-	const combined = Type.Composite([optionalProps, requiredProps])
+	toSquash.push(Type.Pick(moveSchema, ['roll_type', 'id']))
 
-	const augmentMany = Abstract.AugmentMany(combined, Type.Ref(MoveIDWildcard))
+	toSquash.push(
+		Type.Object({
+			trigger: Type.Optional(triggerAugmentSchema)
+		})
+	)
+
+	const combined = Squash(toSquash)
+
+	const augmentMany = Abstract.AugmentMany(
+		combined,
+		Type.Ref(MoveIDWildcard),
+		options
+	)
 
 	augmentMany.required = [...(augmentMany.required ?? []), 'roll_type']
 
-	if ('outcomes' in moveSchema.properties) return augmentMany
+	// FIXME: revisit whether augments should include outcome-specific stuff
+	// if ('outcomes' in moveSchema.properties)
+	// 	return Squash(
+	// 		[
+	// 			augmentMany,
+	// 			Type.Object({
+	// 				outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
+	// 			})
+	// 		],
+	// 		options
+	// 	)
 
-	return Type.Composite(
-		[
-			augmentMany,
-
-			Type.Object({ outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment)) })
-		],
-		options
-	)
+	return augmentMany
 }
 
 export const MoveOutcomeAugment = Type.Partial(MoveOutcome, {

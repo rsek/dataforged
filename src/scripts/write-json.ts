@@ -135,7 +135,7 @@ async function buildSourcebook(ruleset: Ruleset, id: string) {
 
 	// exclude certain keys which are still in development
 	// FIXME there's probably a more elegant way to do this by looking at the json schema's releaseFlag
-	const experimentalKeys = ['augment_asset', 'augment_moves']
+	const experimentalKeys = ['augment_asset']
 
 	// exclude metadata keys
 	for await (const [k, v] of Object.entries(sourcebook)) {

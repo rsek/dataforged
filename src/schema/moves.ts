@@ -44,12 +44,19 @@ export const MoveAugment = Type.Unsafe<MoveAugment>({
 	properties: {
 		roll_type: {
 			default: 'action_roll',
-			$ref: '#/$defs/MoveRollType'
+			$ref: '#/$defs/MoveRollType',
+			description: 'The roll type that this '
+		},
+		augments: {
+			type: 'array',
+			items: { $ref: '#/$defs/MoveIDWildcard' },
+			description:
+				'Move IDs (which may be wildcarded) altered by this object. An undefined/null value indicates that *any* move can be altered by this augment, so long as it fulfills the roll type, trigger conditions, and so on.'
 		}
 	},
 	oneOf: [
-		{ $ref: '#/$defs/MoveNoRollAugment' },
 		{ $ref: '#/$defs/MoveActionRollAugment' },
+		{ $ref: '#/$defs/MoveNoRollAugment' },
 		{ $ref: '#/$defs/MoveProgressRollAugment' },
 		{ $ref: '#/$defs/MoveSpecialTrackAugment' }
 	],

@@ -7,7 +7,7 @@ import {
 	type Transformer,
 	transform
 } from './transformer'
-import { cloneDeep, mapValues } from 'lodash'
+import { cloneDeep, mapValues, omit } from 'lodash'
 import { Move } from 'builders/moves'
 import { trackID } from 'builders/id-tracker'
 
@@ -138,7 +138,11 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 		key: string | number,
 		parent: SourceHaver
 	): Out.MoveAugment[] | undefined {
-		return data.augment_moves as any
+		if (data.augment_moves == null) return undefined
+
+		return data.augment_moves?.map((moveAugment) =>
+			omit(moveAugment, ['text', 'outcomes'])
+		) as any
 	}
 }
 

@@ -10,7 +10,7 @@ import { trackID } from 'builders/id-tracker'
 import {
 	type DelveSiteCardRowType,
 	type DelveSiteCardType
-} from 'schema/ruleset-classic/delve-sites'
+} from 'schema/delve-sites'
 import { cloneDeep } from 'lodash'
 
 type FeatureOrDangerData =
@@ -132,23 +132,3 @@ export const DelveSiteDenizen: Transformer<
 }
 
 export const Rarity = sourcedTransformer<In.Rarity, Out.Rarity>({})
-
-export const WorldTruthOption: Transformer<
-	In.WorldTruth['options'][number],
-	Out.WorldTruth['options'][number]
-> = {
-	id: function (
-		data: In.WorldTruthOption,
-		key: string | number,
-		parent: SourceHaver
-	): string {
-		return trackID(`${parent.id}/${key}`)
-	}
-}
-export const WorldTruth = sourcedTransformer<In.WorldTruth, Out.WorldTruth>({
-	options(this, data, key, parent) {
-		return data.options.map((option, i) =>
-			transform(option, i, this, WorldTruthOption)
-		)
-	}
-})

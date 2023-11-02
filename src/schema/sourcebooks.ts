@@ -10,14 +10,15 @@ import {
 
 import { mapValues, pick } from 'lodash'
 import { Metadata, Abstract } from 'schema/common'
+import * as Truths from 'schema/truths'
 import * as Atlas from 'schema/atlas'
 import * as Oracles from 'schema/oracles'
 import * as Moves from 'schema/moves'
 import * as Assets from 'schema/assets'
 import * as Npcs from 'schema/npcs'
+import * as Rarities from 'schema/rarities'
+import * as DelveSites from 'schema/delve-sites'
 
-import * as RulesetStarforged from 'schema/ruleset-starforged'
-import * as RulesetClassic from 'schema/ruleset-classic'
 import { REGEX_SOURCEBOOK_KEY } from 'schema/common/regex'
 
 export const SOURCEBOOK_KEY = Type.RegEx(
@@ -90,8 +91,7 @@ const SourcebookInfoClassic = {
 			'A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve'
 	},
 	truths: {
-		description:
-			'A dictionary object of world truth categories, like those presented in classic Ironsworn.'
+		description: 'A dictionary object of truth categories.'
 	}
 }
 
@@ -104,11 +104,11 @@ export function SourcebookClassic(options: ObjectOptions) {
 			assets: Assets.AssetType,
 			atlas: Atlas.Atlas,
 			npcs: Npcs.NpcCollection,
-			rarities: RulesetClassic.Rarity,
-			delve_sites: RulesetClassic.DelveSite,
-			site_themes: RulesetClassic.DelveSiteTheme,
-			site_domains: RulesetClassic.DelveSiteDomain,
-			truths: RulesetClassic.WorldTruth
+			rarities: Rarities.Rarity,
+			delve_sites: DelveSites.DelveSite,
+			site_themes: DelveSites.DelveSiteTheme,
+			site_domains: DelveSites.DelveSiteDomain,
+			truths: Truths.Truth
 		},
 		SourcebookInfoClassic,
 		options
@@ -123,14 +123,16 @@ export function SourcebookStarforged(options: ObjectOptions) {
 			moves: Moves.MoveCategory,
 			assets: Assets.AssetType,
 			npcs: Npcs.NpcCollection,
-			truths: RulesetStarforged.SettingTruth
+			truths: Truths.Truth
 		},
 		{
-			...pick(SourcebookInfoClassic, ['oracles', 'moves', 'assets', 'npcs']),
-			truths: {
-				description:
-					'A dictionary object containing Starforged-style setting truths.'
-			}
+			...pick(SourcebookInfoClassic, [
+				'oracles',
+				'moves',
+				'assets',
+				'npcs',
+				'truths'
+			])
 		},
 		options
 	)

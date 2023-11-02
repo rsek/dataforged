@@ -10,6 +10,3 @@ export * as Metadata from 'schema/common/metadata'
 
 export * as Player from 'schema/common/player'
 export * as Progress from 'schema/common/progress'
-
-// after progress
-export * as Truths from 'schema/common/truths'

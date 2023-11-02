@@ -8,14 +8,13 @@ import { mapValues, pick } from 'lodash'
 import { OracleCollection } from 'builders/oracles'
 import { AssetType } from 'builders/assets'
 import { MoveCategory } from 'builders/moves'
-import { SettingTruth } from 'builders/ruleset-starforged'
 import {
 	DelveSite,
 	DelveSiteDomain,
 	DelveSiteTheme,
-	Rarity,
-	WorldTruth
+	Rarity
 } from 'builders/ruleset-classic'
+import { Truth } from './truths'
 import { NpcCollection } from 'builders/npcs'
 import { Atlas } from 'builders/atlas'
 
@@ -65,12 +64,7 @@ export const SourcebookStarforged = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.truths, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/truths` },
-				SettingTruth
-			)
+			transform(v, k, { source: data.source, id: `${data.id}/truths` }, Truth)
 		)
 	}
 })
@@ -83,12 +77,13 @@ export const SourcebookClassic = sourcedTransformer<
 	...(pick(SourcebookStarforged, [
 		'assets',
 		'moves',
-		'oracles'
+		'oracles',
+		'truths'
 	]) as unknown as Pick<
 		ReturnType<
 			typeof sourcedTransformer<InSourcebookClassic, OutSourcebookClassic, null>
 		>,
-		'assets' | 'moves' | 'oracles'
+		'assets' | 'moves' | 'oracles' | 'truths'
 	>),
 	npcs: function (
 		this: SourceHaver,
@@ -173,12 +168,7 @@ export const SourcebookClassic = sourcedTransformer<
 		parent: null
 	) {
 		return mapValues(data.truths, (v, k) =>
-			transform(
-				v,
-				k,
-				{ source: data.source, id: `${data.id}/truths` },
-				WorldTruth
-			)
+			transform(v, k, { source: data.source, id: `${data.id}/truths` }, Truth)
 		)
 	}
 })

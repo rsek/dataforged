@@ -62,10 +62,11 @@ assets:
                       method: any
                       roll_options:
                         - using: edge
-                outcomes: &outcomes:+2_momentum.HIT
-                  strong_hit: &outcome:+2_momentum
+                outcomes: &take_2_momentum_on_hit
+                  strong_hit:
                     text: Take +2 momentum.
-                  weak_hit: *outcome:+2_momentum
+                  weak_hit:
+                    text: Take +2 momentum.
           - name: Protective
             text: |-
               When you [Make Camp](id:classic/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
@@ -112,10 +113,11 @@ assets:
                   conditions:
                     - text: By sending your spider to scout a place
                 text: Add +1.
-                outcomes: &outcomes:+1_momentum.HIT
-                  strong_hit: &outcome:+1_momentum
+                outcomes: &take_1_momentum_on_hit
+                  strong_hit: &take_1_momentum
                     text: Take +1 momentum.
-                  weak_hit: *outcome:+1_momentum
+                  weak_hit:
+                    text: Take +1 momentum.
           - name: Soul-Piercing
             text: |-
               You may [Face Danger](id:classic/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](id:classic/moves/adventure/gather_information) and reroll any dice.
@@ -205,7 +207,7 @@ assets:
                       roll_options:
                         - using: edge
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
           - name: Vigilant
             text: |-
               When you [Face Danger](id:classic/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush, add +2.
@@ -272,7 +274,7 @@ assets:
                       roll_options:
                         - using: heart
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
           - name: Mighty
             text: |-
               When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.
@@ -285,10 +287,10 @@ assets:
                   conditions:
                     - text: At close range while mounted
                 text: Add +1.
-                outcomes: &outcomes:+1_harm.HIT
-                  strong_hit: &outcome:+1_harm
+                outcomes: &inflict_1_harm_on_hit
+                  strong_hit: &inflict_1_harm
                     text: Inflict +1 harm.
-                  weak_hit: *outcome:+1_harm
+                  weak_hit: *inflict_1_harm
         condition_meter:
           label: health
           max: 5
@@ -321,7 +323,7 @@ assets:
                   conditions:
                     - text: Using your hound’s keen senses to track your quarry or investigate a scene
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
           - name: Ferocious
             text: |-
               When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.
@@ -485,13 +487,45 @@ assets:
           - name: Nocturnal
             text: |-
               If you [Resupply](id:classic/moves/adventure/resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.
-            # TODO: finish data entry. left off here.
+            augment_moves:
+              - augments:
+                  - classic/moves/adventure/resupply
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: at night by sending your owl to hunt
+                outcomes: *take_2_momentum_on_hit
+              - augments:
+                  - classic/moves/combat/enter_the_fray
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: against an ambush in darkness
+                      roll_options:
+                        - using: wits
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
+
           - name: Sage
             text: |-
               When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - '*/assets/ritual/*/abilities/*/moves/*'
+                trigger:
+                  conditions:
+                    - text: leverage your owl's secret knowledge to perform a ritual
+                text: Add +1 or take +1 momentum on a hit (decide before rolling).
+
           - name: Embodying
             text: |-
               When you [Face Death](id:classic/moves/suffer/face_death), take your owl’s health as +momentum before you roll.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/face_death
+                text: Take your owl’s health as +momentum before you roll.
         condition_meter:
           min: 0
           value: 3
@@ -516,11 +550,39 @@ assets:
           - name: Sly
             text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: using your raven to perform trickery (such as creating a distraction or stealing a small object)
+                      roll_options:
+                        - using: shadow
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - name: Knowing
             text: When you [Face Death](id:classic/moves/suffer/face_death), add +2 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/face_death
+                text: Add +2.
+                outcomes: *take_1_momentum_on_hit
           - name: Diligent
             text: |-
               When your raven carries messages for you, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), [Gather Information](id:classic/moves/adventure/gather_information), or [Compel](id:classic/moves/relationship/compel) from a distance.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/gather_information
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: your raven carries messages for you
+                text: You may make this move from a distance.
         condition_meter:
           label: health
           max: 2
@@ -545,9 +607,27 @@ assets:
           - name: Insatiable
             text: |-
               When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a hit, you may suffer -1 supply in exchange for +2 momentum.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/undertake_a_journey
+                outcomes:
+                  strong_hit:
+                    text: &Wyvern.0.Hit You may suffer -1 supply in exchange for +2 momentum.
+                  weak_hit:
+                    text: *Wyvern.0.Hit
           - name: Indomitable
             text: |-
               When you make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move for your wyvern, add +2 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/companion_endure_harm
+                trigger:
+                  conditions:
+                    - text: for your wyvern
+                text: Add +2.
+                outcomes: *take_1_momentum_on_hit
           - name: Savage
             text: |-
               When you [Strike](id:classic/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.
@@ -578,7 +658,7 @@ assets:
       url: https://ironswornrpg.com
     summary: Paths represent your background, interests, training, and skills.
     description: |-
-      Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a **Ritualist** would likely have a different outlook than a **Veteran**. Choosing both those paths can reflect an evolution of your character or an interesting background.
+      Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a [Ritualist](id:classic/assets/path/ritualist) would likely have a different outlook than a [Veteran](id:classic/assets/path/veteran). Choosing both those paths can reflect an evolution of your character or an interesting background.
     contents:
       alchemist:
         asset_type: Path
@@ -588,7 +668,7 @@ assets:
         name: Alchemist
         # https://game-icons.net/1x1/lorc/round-bottom-flask.html
         abilities:
-          - text: &move:Asset.Alchemist |-
+          - text: &move.text |-
               When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.
             enabled: true
             moves:
@@ -618,7 +698,7 @@ assets:
                       text: Elixir of clarity (wits)
                       roll_options:
                         - using: wits
-                text: *move:Asset.Alchemist
+                text: *move.text
                 outcomes:
                   strong_hit:
                     text: |-
@@ -633,8 +713,19 @@ assets:
                       You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price).
           - text: |-
               As above, and you may choose two effects for a single dose, or create two doses of the same effect.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/assets/path/alchemist/abilities/0/moves/create_elixir
+                text: You may choose two effects for a single dose, or create two doses of the same effect.
           - text: |-
               When you prepare an elixir, add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/assets/path/alchemist/abilities/0/moves/create_elixir
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
       animal_kin:
         asset_type: Path
         _source:
@@ -649,10 +740,40 @@ assets:
             # SF might leverage this as well
             # maybe a Tags element?
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: to pacify, calm, control, aid, or fend off an animal (or an animal or beast companion)
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               You may add or upgrade an animal or beast companion asset for 1 fewer experience. Once you mark all their abilities, you may [Forge a Bond](id:classic/moves/relationship/forge_a_bond) with them and take an automatic strong hit. When you do, mark a bond twice and take 1 experience.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/forge_a_bond
+                trigger:
+                  conditions:
+                    - text: after you mark all the abilities of an animal or beast companion asset
+                      method: strong_hit
+                text: Mark a bond twice and take 1 experience.
           - text: |-
               Once per fight, when you leverage your animal or beast companion to make a move, reroll any dice. On a hit, take +1 momentum.
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: once per fight, when you leverage your animal or beast companion to make a move
+                outcomes:
+                  strong_hit: &AnimalKin.2.HIT
+                    text: Take +1 momentum.
+                    reroll:
+                      method: any
+                  weak_hit: *AnimalKin.2.HIT
+                  miss:
+                    reroll:
+                      method: any
       banner_sworn:
         asset_type: Path
         _source:
@@ -669,10 +790,48 @@ assets:
           - text: |-
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve your leader or faction on a mission, you may reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/quest/swear_an_iron_vow
+                outcomes: &outcomes:reroll_any
+                  strong_hit: &outcome:reroll_any
+                    reroll:
+                      method: any
+                  weak_hit: *outcome:reroll_any
+                  miss: *outcome:reroll_any
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                trigger:
+                  conditions:
+                    - text: to serve your leader or faction on a mission
+                  text: If you mark experience, take +1 experience.
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn) or [Make Camp](id:classic/moves/adventure/make_camp) in the company of your banner-kin, add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/sojourn
+                  - classic/moves/adventure/make_camp
+                trigger:
+                  conditions:
+                    - text: in the company of your banner-kin
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/combat/enter_the_fray
+                trigger:
+                  conditions:
+                    - text: bearing your banner
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
+            # TODO: augment momentum burn
+
       battle_scarred:
         asset_type: Path
         _source:
@@ -700,6 +859,7 @@ assets:
                       roll_options:
                         - using: wits
                         - using: heart
+                outcomes: *take_1_momentum_on_hit
       blade_bound:
         asset_type: Path
         _source:
@@ -716,10 +876,48 @@ assets:
         abilities:
           - text: |-
               When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Draw the Circle](id:classic/moves/relationship/draw_the_circle) while wielding your kin-blade, add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/combat/enter_the_fray
+                  - classic/moves/relationship/draw_the_circle
+                trigger:
+                  conditions:
+                    - text: while wielding your kin-blade
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Gather Information](id:classic/moves/adventure/gather_information) by listening to the whispers of your kin-blade, add +1 and take +2 momentum on a hit. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - text: by listening to the whispers of your kin-blade
+                text: Add +1.
+                outcomes:
+                  strong_hit: &Kinblade.1.Hit
+                    text: Take +2 momentum. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+                  weak_hit: *Kinblade.1.Hit
+                  miss:
+                    text: '[Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).'
           - text: |-
               When you [Strike](id:classic/moves/combat/strike) with your kin-blade to inflict savage harm (decide before rolling), add +1 and inflict +2 harm on a hit. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/combat/strike
+                trigger:
+                  conditions:
+                    - text: with your kin-blade to inflict savage harm (decide before rolling)
+                text: Add +1.
+                outcomes:
+                  strong_hit: &Kinblade.2.Hit
+                    text: Inflict +2 harm. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+                  weak_hit: *Kinblade.2.Hit
+                  miss:
+                    text: '[Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).'
       bonded:
         asset_type: Path
         _source:
@@ -731,10 +929,24 @@ assets:
           - text: |-
               When you make a move which gives you an add for sharing a bond, add +1 more.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: you make a move which gives you an add for sharing a bond
+                text: Add +1 more.
           - text: |-
               When you completely fill a box on your bonds progress track, envision what your relationships have taught you. Then, take 1 experience and +2 momentum.
-          - text: |-
+            # FIXME: augment special track???
+          - text: &Bonded.2.text |-
               When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-kin for courage or encouragement. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or corrupted. If both debilities are already marked, [Face Desolation](id:classic/moves/suffer/face_desolation).
+            augment_moves:
+              - roll_type: action_roll
+                outcomes:
+                  miss:
+                    reroll:
+                      method: any
+                      text: *Bonded.2.text
       commander:
         asset_type: Path
         _source:
@@ -785,7 +997,8 @@ assets:
           - text: |-
               Once you [Forge a Bond](id:classic/moves/relationship/forge_a_bond) with your warband, take +1 momentum on a hit when you leverage a warband ability.
         condition_meter:
-          # TODO: conditional debility?
+          # FIXME: conditional debility?
+          # this *could* be a new feature of the condition meter object
           label: strength
           max: 4
           min: 0
@@ -804,10 +1017,45 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge by dancing for an audience, add +1 and take +2 momentum on a hit. On a strong hit, also add +2 (one time only) if you make a move to interact with someone in the audience.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: by dancing for an audience
+                      roll_options:
+                        - using: edge
+                text: Add +1.
+                outcomes:
+                  strong_hit:
+                    text: Take +2 momentum. Add +2 (one time only) if you make a move to interact with someone in the audience.
+                  weak_hit:
+                    text: Take +2 momentum.
           - text: |-
               When you [Face Danger](id:classic/moves/adventure/face_danger) +edge in a fight by nimbly avoiding your foe’s attacks, add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: in a fight by nimbly avoiding your foe’s attacks
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: &move:Asset.Dancer |-
               When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.
+            augment_moves:
+              - roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - by:
+                        player: true
+                        ally: true
+                outcomes:
+                  strong_hit: &DancerProgressMoveHint
+                    text: When you or an ally make a progress move and score a hit, you may [perform a dance to commemorate the event](id:classic/assets/path/dancer/abilities/2/moves/commemorate).
+                  weak_hit: *DancerProgressMoveHint
             moves:
               commemorate:
                 name: Commemorate
@@ -861,6 +1109,17 @@ assets:
           - text: |-
               When you say your daily prayers, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by asking your god to grant a blessing. If you do, roll +your god’s stat. On a hit, take +2 momentum.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: by asking your god to grant a blessing when you say your daily prayers
+                      roll_options:
+                        - using: ref
+                          ref: classic/assets/path/devotant/options/stat
+                outcomes: *take_2_momentum_on_hit
           - text: |-
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
             augment_moves:
@@ -869,10 +1128,19 @@ assets:
                 roll_type: action_roll
                 trigger:
                   conditions:
-                    - text: To serve your god on a divine quest
+                    - text: to serve your god on a divine quest
                       roll_options:
                         - using: ref
                           ref: classic/assets/path/devotant/options/stat
+                outcomes: *outcomes:reroll_any
+              - augments:
+                  - classic/moves/quest/fulfill_your_vow
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - text: to serve your god on a divine quest
+                text: If you mark experience, take +1 experience.
+
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.
             augment_moves:
@@ -885,6 +1153,7 @@ assets:
                       roll_options:
                         - using: ref
                           ref: classic/assets/path/devotant/options/stat
+                outcomes: *take_1_momentum_on_hit
       empowered:
         asset_type: Path
         _source:
@@ -900,10 +1169,49 @@ assets:
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn) and score a weak hit or miss, you may claim the rights of hospitality warranted by your title or lineage. If you do, roll all dice again and add +1. On a miss, you are refused, and your presumption causes significant new trouble.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/sojourn
+                outcomes:
+                  weak_hit: &Empowered0
+                    reroll:
+                      text: You may claim the rights of hospitality warranted by your title or lineage. If you do, roll all dice again and add +1. On a miss, you are refused, and your presumption causes significant new trouble.
+                      method: all
+                  miss: *Empowered0
           - text: |-
               When you exert your title or lineage to [Compel](id:classic/moves/relationship/compel), add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: When you exert your title or lineage
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you forgo your title or lineage and [Forge a Bond](id:classic/moves/relationship/forge_a_bond) as an equal, or when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve someone of a lower station, add +1 and take +1 momentum or +1 spirit on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/forge_a_bond
+                trigger:
+                  conditions:
+                    - text: as an equal, foregoing your title or lineage
+                text: Add +1.
+                outcomes: &outcomes.1_momentum_spirit.HIT
+                  strong_hit: &momentum_spirit
+                    text: Take +1 momentum or +1 spirit.
+                  weak_hit: *momentum_spirit
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/quest/swear_an_iron_vow
+                trigger:
+                  conditions:
+                    - text: to serve someone of a lower station
+                text: Add +1.
+                outcomes: *outcomes.1_momentum_spirit.HIT
       fated:
         asset_type: Path
         _source:
@@ -915,11 +1223,44 @@ assets:
           - text: |-
               When you [Face Death](id:classic/moves/suffer/face_death) or [Face Desolation](id:classic/moves/suffer/face_desolation) while your epic background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the background vow.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/face_death
+                  - classic/moves/suffer/face_desolation
+                trigger:
+                  conditions:
+                    - text: while your epic background vow is unfulfilled
+                      method: strong_hit
+                text: It is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the background vow.
             # TODO: conditional debility -- attribute?
           - text: |-
               When you [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on your background vow, take +2 momentum or +1 spirit.
+            augment_moves:
+              - roll_type: no_roll
+                augments:
+                  - classic/moves/quest/reach_a_milestone
+                trigger:
+                  conditions:
+                    - text: on your background vow
+                text: Take +2 momentum or +1 spirit.
           - text: |-
               For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow), your fate is at hand. Envision your final sacrifice and reroll any dice.
+            augment_moves:
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                trigger:
+                  conditions:
+                    - text: on your background vow
+                text: Your fate is at hand. Envision your final sacrifice and reroll any dice.
+                outcomes:
+                  strong_hit: &Fated.Outcome
+                    reroll:
+                      text: Your fate is at hand. Envision your final sacrifice and reroll any dice.
+                      method: any
+                  weak_hit: *Fated.Outcome
+                  miss: *Fated.Outcome
       fortune_hunter:
         asset_type: Path
         _source:
@@ -931,10 +1272,41 @@ assets:
           - text: |-
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to someone under the promise of payment, add +1 and give the quest a special mark. When you successfully [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) to them, take +wealth equal to the rank of the quest. If you leverage wealth when making a move where resources are a factor, add +wealth and suffer -1 wealth.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/quest/swear_an_iron_vow
+                trigger:
+                  conditions:
+                    - text: to someone under the promise of payment
+                text: Add +1 and give the quest a special mark.
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                trigger:
+                  conditions:
+                    - text: to someone under the promise of payment
+                text: When you successfully [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) to to someone under the promise of payment, take +wealth equal to the rank of the quest
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: you leverage wealth when making a move where resources are a factor
+                text: Add +wealth and suffer -1 wealth.
           - text: |-
               When in a community or trading, you may suffer -1 wealth and take +2 supply.
           - text: |-
               When you [Resupply](id:classic/moves/adventure/resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/resupply
+                trigger:
+                  conditions:
+                    - text: by scavenging or looting
+                outcomes:
+                  strong_hit:
+                    match:
+                      text: You may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.
         condition_meter:
           label: wealth
           max: 5
@@ -956,10 +1328,50 @@ assets:
                 * Add +2.
                 * On a hit, take or give an additional +1 health.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/heal
+                trigger:
+                  conditions:
+                    - text: using herbal remedies, and you have at least +1 supply
+                text: Add +2.
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/heal
+                trigger:
+                  conditions:
+                    - text: using herbal remedies, and you have at least +1 supply
+                outcomes:
+                  strong_hit: &Herbalist.0
+                    text: Take or give an additional +1 health.
+                  weak_hit: *Herbalist.0
+
           - text: |-
               When you [Heal](id:classic/moves/adventure/heal) a companion, ally, or other character, and score a hit, take +1 spirit or +1 momentum.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/heal
+                trigger:
+                  conditions:
+                    - text: a companion, ally, or other character
+                outcomes: *outcomes.1_momentum_spirit.HIT
           - text: |-
               When you [Make Camp](id:classic/moves/adventure/make_camp) and choose the option to partake, you can create a restorative meal. If you do, you and your companions take +1 health. Any allies who choose to partake also take +1 health, and do not suffer -supply.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/make_camp
+                trigger:
+                  conditions:
+                    - by:
+                        player: true
+                        ally: true
+                outcomes:
+                  strong_hit: &outcome:Herbalist.2
+                    text: If you choose the option to partake, you can create a restorative meal. If you do, you and your companions take +1 health. Any allies who choose to partake also take +1 health, and do not suffer -supply.
+                  weak_hit: *outcome:Herbalist.2
       honorbound:
         asset_type: Path
         _source:
@@ -971,10 +1383,41 @@ assets:
           - text: |-
               When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), envision how your vows give you strength in this moment. Then, when you make your move, add +2 (instead of +1) and take +1 momentum on a hit.
             enabled: true
+            augment_moves:
+              - roll_type: no_roll
+                augments:
+                  - classic/moves/combat/turn_the_tide
+                text: Envision how your vows give you strength in this moment. Then, when you make your move, add +2 (instead of +1) and take +1 momentum on a hit.
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by telling a hard truth, add +1 and take +1 momentum on a hit. On a weak hit or miss, envision how this truth complicates your current situation.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: by telling a hard truth
+                text: Add +1.
+                outcomes:
+                  strong_hit:
+                    text: Take +1 momentum.
+                  weak_hit:
+                    text: Take +1 momentum, and envision how this truth complicates your current situation.
+                  miss:
+                    text: Envision how this truth complicates your current situation.
           - text: |-
               When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a miss, you may reroll one challenge die. If you score a miss again, reduce your maximum spirit by 1. You may recover this lost spirit when you next [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a strong hit.
+            augment_moves:
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                outcomes:
+                  miss:
+                    reroll:
+                      method: challenge_die
+                      text: You may reroll 1 challenge die. If you score a miss again, reduce your maximum spirit by 1. You may recover this lost spirit when you next [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a strong hit.
+
       improviser:
         asset_type: Path
         _source:
@@ -994,11 +1437,33 @@ assets:
                     - roll_options:
                         - using: wits
                       method: any
+                text: Envision how you make do with a clever solution.
+                outcomes: *take_1_momentum_on_hit
             enabled: true
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) by cobbling together an ad hoc tool or apparatus, add +1 and take +1 momentum on a hit. After rolling, you may also suffer -1 supply and add +1 more.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: by cobbling together an ad hoc tool or apparatus
+                text: Add +1. After rolling, you may also suffer -1 supply and add +1 more.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you throw caution to the wind and make an impulsive move in a risky situation, you may add +2. If you do, take +1 momentum on a strong hit, but count a weak hit as a miss.
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: when you throw caution to the wind and make an impulsive move in a risky situation
+                text: Add +2.
+                outcomes:
+                  strong_hit: *take_1_momentum
+                  weak_hit:
+                    count_as: miss
       infiltrator:
         asset_type: Path
         _source:
@@ -1010,6 +1475,13 @@ assets:
           - text: |-
               When you make a move to breach, traverse, or hide within an area held by an enemy, add +1 and take +1 momentum on a hit.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: to breach, traverse, or hide within an area held by an enemy
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Gather Information](id:classic/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.
             augment_moves:
@@ -1022,6 +1494,7 @@ assets:
                       roll_options:
                         - using: shadow
                       text: Within an enemy area to discover their positions, plans, or methods
+                outcomes: *take_1_momentum_on_hit
               - augments:
                   - classic/moves/adventure/secure_an_advantage
                 roll_type: action_roll
@@ -1031,6 +1504,7 @@ assets:
                       roll_options:
                         - using: shadow
                       text: Within an enemy area area through observation
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Resupply](id:classic/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.
             augment_moves:
@@ -1043,6 +1517,10 @@ assets:
                       roll_options:
                         - using: shadow
                       text: Within an enemy area by scavenging or looting
+                outcomes:
+                  strong_hit: &momentum_supply
+                    text: Take +1 momentum or +1 supply.
+                  weak_hit: *momentum_supply
       lorekeeper:
         asset_type: Path
         _source:
@@ -1054,8 +1532,54 @@ assets:
           - text: |-
               You are the bearer of a mystical archive. When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Gather Information](id:classic/moves/adventure/gather_information) using lore recalled from your studies, add +1. If you have a few hours to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - text: using lore recalled from your studies
+                text: Add +1.
+                outcomes: &Lorekeeper.0.outcomes
+                  strong_hit: &Lorekeeper.0.outcome
+                    text: Envision the obscure but helpful knowledge you put to use ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.
+                  weak_hit: *Lorekeeper.0.outcome
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - text: using lore recalled from your studies, and you have a few hours to search the archive
+                text: Add +2.
+                outcomes: *Lorekeeper.0.outcomes
           - text: |-
               When you learn of a site or object holding lost knowledge, and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to recover it for the archive, reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/quest/swear_an_iron_vow
+                trigger:
+                  conditions:
+                    - text: &objective to recover a site or object's lost knowledge for the archive
+                outcomes:
+                  strong_hit:
+                    reroll:
+                      method: any
+                  weak_hit:
+                    reroll:
+                      method: any
+                  miss:
+                    reroll:
+                      method: any
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                trigger:
+                  conditions:
+                    - text: *objective
+                  text: If you mark experience, take +1 experience.
           - text: |-
               One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](id:classic/moves/suffer/face_desolation) (ignoring momentum).
       loyalist:
@@ -1069,10 +1593,40 @@ assets:
           - text: |-
               When you [Aid Your Ally](id:classic/moves/adventure/aid_your_ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally.
             enabled: true
+            augment_moves:
+              - roll_type: no_roll
+                augments:
+                  - classic/moves/adventure/aid_your_ally
+                text: Add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally.
           - text: |-
               When an ally makes the [Endure Stress](id:classic/moves/suffer/endure_stress) move in your company, they add +1 and you take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/endure_stress
+                trigger:
+                  conditions:
+                    - by:
+                        player: false
+                        ally: true
+                      text: When an ally makes the [Endure Stress](id:classic/moves/suffer/endure_stress) move in your company
+                text: The ally adds +1.
+                outcomes:
+                  strong_hit:
+                    text: You take +1 mometum.
+                  weak_hit:
+                    text: You take +1 mometum.
           - text: |-
               When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
+            augment_moves:
+              - roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - by:
+                        player: false
+                        ally: true
+                      text: when you stand with your ally as they make a progress move
+                text: Envision how you support your ally. ss move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
       masked:
         asset_type: Path
         _source:
@@ -1108,8 +1662,26 @@ assets:
                 * Whisperwood: Wits / Spirit
 
               When you wear the mask and make a move which uses its stat, add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: when you wear your elderwood mask
+                      roll_options:
+                        - using: ref
+                          ref: classic/assets/path/masked/options/material
+                text: Add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).
           - text: |-
               As above, and you may instead add +2 and suffer -2 (decide before rolling).
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: when you wear your elderwood mask
+                      roll_options:
+                        - using: ref
+                          ref: classic/assets/path/masked/options/material
+                text: Add +2. If you roll a 1 on your action die, suffer -2 to the associated track (in addition to any other outcome of the move).
           - text: |-
               When you [Face Death](id:classic/moves/suffer/face_death) or [Face Desolation](id:classic/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).
             augment_moves:
@@ -1123,7 +1695,7 @@ assets:
                       method: any
                       roll_options:
                         - using: ref
-                          ref: classic/assets/path/masked/options/material_stat
+                          ref: classic/assets/path/masked/options/material
       oathbreaker:
         asset_type: Path
         _source:
@@ -1138,10 +1710,39 @@ assets:
           - text: |-
               This asset counts as a debility. One time only, when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to redeem yourself (extreme or greater), give that vow a special mark. When you [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/quest/swear_an_iron_vow
+                trigger:
+                  conditions:
+                    - text: &objective one time only, to redeem yourself (extreme or greater)
+                text: Give the vow a special mark. When you [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum.
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                  - classic/moves/relationship/compel
+                trigger:
+                  conditions:
+                    - text: by reaffirming your commitment to your marked vow
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on your marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.
+            augment_moves:
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/quest/fulfill_your_vow
+                trigger:
+                  conditions:
+                    - text: *objective
+                outcomes:
+                  strong_hit: &on_hit
+                    text: you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.
+                  weak_hit: *on_hit
       outcast:
         asset_type: Path
         _source:
@@ -1153,6 +1754,11 @@ assets:
           - text: &move:Asset.Outcast |-
               When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](id:classic/moves/suffer/out_of_supply).
             enabled: true
+            augment_moves:
+              - roll_type: no_roll
+                augments:
+                  - classic/moves/suffer/out_of_supply
+                text: See [Scrape By](id:classic/assets/path/outcast/abilities/0/moves/scrape_by).
             moves:
               scrape_by:
                 name: Scrape By
@@ -1175,8 +1781,26 @@ assets:
                     text: You are [Out of Supply](id:classic/moves/suffer/out_of_supply).
           - text: |-
               When you [Sojourn](id:classic/moves/relationship/sojourn), you may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/relationship/sojourn
+                outcomes:
+                  strong_hit: &outcome
+                    reroll:
+                      text: You may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit.
+                      method: any
+                  weak_hit: *outcome
+                  miss: *outcome
           - text: |-
               When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination) and score a strong hit, you recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
+            augment_moves:
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/adventure/reach_your_destination
+                outcomes:
+                  strong_hit:
+                    text: You recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
       pretender:
         asset_type: Path
         _source:
@@ -1222,9 +1846,26 @@ assets:
                       roll_options:
                         - using: shadow
                       text: Under your false identity
-            # todo: alter move
+              - roll_type: action_roll
+                augments:
+                  - classic/assets/path/pretender/abilities/0/moves/establish_false_identity
+                text: You may roll +shadow (instead of +heart) when you [Sojourn](id:classic/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by revealing your true identity in a dramatic moment, reroll any dice.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: by revealing your true identity in a dramatic moment
+                outcomes:
+                  strong_hit: &outcome
+                    reroll:
+                      text: Reroll any dice.
+                      method: any
+                  weak_hit: *outcome
+                  miss: *outcome
       revenant:
         asset_type: Path
         _source:
@@ -1238,10 +1879,34 @@ assets:
           - text: |-
               When you are at 0 health, and [Endure Harm](id:classic/moves/suffer/endure_harm) or [Face Death](id:classic/moves/suffer/face_death), add +1. If you then burn momentum to improve your result, envision what bond or vow binds you to this world, and take +2 momentum after you reset.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/suffer/endure_harm
+                  - classic/moves/suffer/face_death
+                trigger:
+                  conditions:
+                    - text: when you are at 0 health
+                text: Add +1. If you then burn momentum to improve your result, envision what bond or vow binds you to this world, and take +2 momentum after you reset.
+
           - text: |-
               When you make a move to investigate, oppose, or interact with a horror, spirit, or other undead being, add +1.
+            augment_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: to investigate, oppose, or interact with a horror, spirit, or other undead being
+                text: Add +1.
           - text: |-
               When you bring death to your foe to [End the Fight](id:classic/moves/combat/end_the_fight), you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
+            augment_moves:
+              - roll_type: progress_roll
+                augments:
+                  - classic/moves/combat/end_the_fight
+                trigger:
+                  conditions:
+                    - text: When you bring death to your foe to [End the Fight](id:classic/moves/combat/end_the_fight)
+                text: you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
       rider:
         asset_type: Path
         _source:
@@ -1254,10 +1919,44 @@ assets:
           - text: |-
               When you [Heal](id:classic/moves/adventure/heal) your horse, or when you [Face Danger](id:classic/moves/adventure/face_danger) to calm or encourage it, add +1 and take +1 momentum on a hit.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/heal
+                trigger:
+                  conditions:
+                    - text: your horse
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/face_danger
+                trigger:
+                  conditions:
+                    - text: to calm our encourage your horse
+                text: Add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), you may push your horse harder and add +1 (after rolling). If you do, make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move (1 harm).
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/undertake_a_journey
+                text: You may push your horse harder and add +1 (after rolling). If you do, make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move (1 harm).
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +wits by sizing up a perilous situation from the saddle, you are one with your horse’s instincts. Add +1 and take +1 momentum on a hit.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: by sizing up a perilous situation from the saddle
+                      roll_options:
+                        - using: edge
+                text: You are one with your horse’s instincts. Add +1.
+                outcomes: *take_1_momentum_on_hit
+
       ritualist:
         asset_type: Path
         _source:
@@ -1267,14 +1966,27 @@ assets:
         # https://game-icons.net/1x1/lorc/divided-spiral.html
         # tags: [deed]
         requirement: |-
-          Once you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) (formidable or greater) in service to an elder
-          mystic, and [Forge a Bond](id:classic/moves/relationship/forge_a_bond) to train with them...
+          Once you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) (formidable or greater) in service to an elder mystic, and [Forge a Bond](id:classic/moves/relationship/forge_a_bond) to train with them...
         abilities:
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) to ready yourself for a ritual, envision how you prepare. Then, add +1 and take +1 momentum on a hit.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/secure_an_advantage
+                trigger:
+                  conditions:
+                    - text: to ready yourself for a ritual
+                text: Envision how you prepare. Then, add +1.
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you perform a ritual, you may suffer -1 supply and add +1 (decide before rolling).
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - '*/assets/ritual/*/abilities/*/moves/*'
+                text: You may suffer -1 supply and add +1 (decide before rolling)
           - text: |-
               When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 fewer experience.
       shadow_kin:
@@ -1291,6 +2003,11 @@ assets:
               You harden your heart: Reduce your heart stat by 1 and add up to +2 to shadow (to a maximum of +4).
           - text: |-
               You are attuned to the realms of shadow: When you perform a ritual, add +1.
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - '*/assets/ritual/*/abilities/*/moves/*'
+                text: Add +1.
           - text: |-
               You know the sly ways of death: When you [Face Death](id:classic/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
             augment_moves:
@@ -1302,6 +2019,12 @@ assets:
                     - method: any
                       roll_options:
                         - using: shadow
+                outcomes:
+                  weak_hit:
+                    text: If you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
+              # - roll_type: action_roll
+              #   augments:
+              #     - classic/moves/quest/fulfill_your_vow
       sighted:
         asset_type: Path
         _source:
@@ -1313,6 +2036,16 @@ assets:
           - text: |-
               When you [Face Danger](id:classic/moves/adventure/face_danger) or [Gather Information](id:classic/moves/adventure/gather_information) to identify or detect mystic forces, add +1 and take +1 momentum on a hit.
             enabled: true
+            augment_moves:
+              - roll_type: action_roll
+                augments:
+                  - classic/moves/adventure/face_danger
+                  - classic/moves/adventure/gather_information
+                trigger:
+                  conditions:
+                    - text: to identify or detect mystic forces
+                text: Add +1 and take +1 momentum on a hit.
+            # left off data entry here
           - text: |-
               When you [Compel](id:classic/moves/relationship/compel), [Forge a Bond](id:classic/moves/relationship/forge_a_bond), or [Test Your Bond](id:classic/moves/relationship/test_your_bond) with a fellow mystic or mystical being, add +1 and take +1 momentum on a hit.
           - text: |-
@@ -1709,7 +2442,7 @@ assets:
                   conditions:
                     - text: In a fight while you are lightly armored
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
               - augments:
                   - classic/moves/suffer/endure_harm
                 roll_type: action_roll
@@ -1717,7 +2450,7 @@ assets:
                   conditions:
                     - text: In a fight while you are geared for war
                 text: Add +2.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
             enabled: true
           - text: |-
               When you [Clash](id:classic/moves/combat/clash) while you are geared for war, add +1.
@@ -1763,7 +2496,7 @@ assets:
                       method: any
                       text: When you strike with a staff as a simple weapon
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.
             augment_moves:
@@ -1777,7 +2510,7 @@ assets:
                       method: any
                       text: Using your staff to disarm, trip, shove, or stun your foe
                 text: Add +1.
-                outcomes: *outcomes:+1_momentum.HIT
+                outcomes: *take_1_momentum_on_hit
           - text: |-
               When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.
             augment_moves:

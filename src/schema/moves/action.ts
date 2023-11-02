@@ -8,7 +8,8 @@ import {
 	composeTriggerRollCondition,
 	toTriggerAugment,
 	type MoveRollType,
-	toMoveAugment
+	toMoveAugment,
+	toTriggerConditionAugment
 } from './common'
 
 export const TriggerActionRollConditionOptionAttachedAssetRef = Type.Object(
@@ -62,13 +63,15 @@ export type TriggerActionRollConditionOptionCustomValue = Static<
 	typeof TriggerActionRollConditionOptionCustomValue
 >
 
+const triggerActionRollConditionOptionSubtypes = [
+	TriggerActionRollConditionOptionStat,
+	TriggerActionRollConditionOptionRef,
+	TriggerActionRollConditionOptionAttachedAssetRef,
+	TriggerActionRollConditionOptionCustomValue
+]
+
 export const TriggerActionRollConditionOption = Type.Union(
-	[
-		Type.Ref(TriggerActionRollConditionOptionStat),
-		Type.Ref(TriggerActionRollConditionOptionRef),
-		Type.Ref(TriggerActionRollConditionOptionAttachedAssetRef),
-		Type.Ref(TriggerActionRollConditionOptionCustomValue)
-	],
+	triggerActionRollConditionOptionSubtypes.map((option) => Type.Ref(option)),
 	{ $id: '#/$defs/TriggerActionRollConditionOption' }
 )
 export type TriggerActionRollConditionOption = Static<
@@ -88,34 +91,36 @@ export const TriggerActionRoll = composeTrigger(TriggerActionRollCondition, {
 })
 export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 
-const MoveActionRollStub = Type.Object(
-	{
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'action_roll'>>('action_roll'),
-		// is_progress_move: Type.Literal(false, { default: false }),
-		trigger: Type.Ref(TriggerActionRoll),
-		outcomes: Type.Ref(MoveOutcomes)
-	},
-	{ title: 'Move (action roll)' }
+export const MoveActionRoll = composeMoveType(
+	Type.Object(
+		{
+			roll_type:
+				Type.Literal<Extract<MoveRollType, 'action_roll'>>('action_roll'),
+			// is_progress_move: Type.Literal(false, { default: false }),
+			trigger: Type.Ref(TriggerActionRoll),
+			outcomes: Type.Ref(MoveOutcomes)
+		},
+		{ title: 'Move (action roll)' }
+	)
 )
 
-export const MoveActionRoll = composeMoveType(MoveActionRollStub)
-
 export type MoveActionRoll = Static<typeof MoveActionRoll>
+
+export const TriggerActionRollConditionAugment = toTriggerConditionAugment(
+	TriggerActionRollCondition,
+	{ $id: '#/$defs/TriggerActionRollConditionAugment' }
+)
 
 export type TriggerActionRollConditionAugment = Static<
 	typeof TriggerActionRollConditionAugment
 >
 
-export const TriggerActionRollConditionAugment = PartialExcept(
-	TriggerActionRollCondition,
-	['text'],
-	{ $id: '#/$defs/TriggerActionRollConditionAugment' }
+export const TriggerActionRollAugment = toTriggerAugment(
+	Type.Ref(TriggerActionRollConditionAugment),
+	{
+		$id: '#/$defs/TriggerActionRollAugment'
+	}
 )
-
-export const TriggerActionRollAugment = toTriggerAugment(TriggerActionRoll, {
-	$id: '#/$defs/TriggerActionRollAugment'
-})
 export type TriggerActionRollAugment = Static<typeof TriggerActionRollAugment>
 
 // TRIGGER: NO ROLL
@@ -124,6 +129,14 @@ export const TriggerNoRollCondition = composeTriggerRollCondition(undefined, {
 	$id: '#/$defs/TriggerNoRollCondition'
 })
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
+
+export const TriggerNoRollConditionAugment = toTriggerConditionAugment(
+	TriggerNoRollCondition,
+	{ $id: '#/$defs/TriggerNoRollConditionAugment' }
+)
+export type TriggerNoRollConditionAugment = Static<
+	typeof TriggerNoRollConditionAugment
+>
 
 export const TriggerNoRoll = PartialBy(
 	composeTrigger(TriggerNoRollCondition),
@@ -135,23 +148,27 @@ export const TriggerNoRoll = PartialBy(
 
 export type TriggerNoRoll = Static<typeof TriggerNoRoll>
 
-const MoveNoRollStub = Type.Object(
-	{
-		roll_type: Type.Literal<Extract<MoveRollType, 'no_roll'>>('no_roll'),
-		// is_progress_move: Type.Literal(false, { default: false }),
-		trigger: Type.Ref(TriggerNoRoll)
-	},
-	{ title: 'Move (no roll)' }
+export const MoveNoRoll = Type.Omit(
+	composeMoveType(
+		Type.Object(
+			{
+				roll_type: Type.Literal<Extract<MoveRollType, 'no_roll'>>('no_roll'),
+				// is_progress_move: Type.Literal(false, { default: false }),
+				trigger: Type.Ref(TriggerNoRoll)
+			},
+			{ title: 'Move (no roll)' }
+		)
+	),
+	['outcomes']
 )
-
-export const MoveNoRoll = Type.Omit(composeMoveType(MoveNoRollStub), [
-	'outcomes'
-])
 export type MoveNoRoll = Static<typeof MoveNoRoll>
 
-export const TriggerNoRollAugment = toTriggerAugment(TriggerNoRoll, {
-	$id: '#/$defs/TriggerNoRollAugment'
-})
+export const TriggerNoRollAugment = toTriggerAugment(
+	Type.Ref(TriggerNoRollConditionAugment),
+	{
+		$id: '#/$defs/TriggerNoRollAugment'
+	}
+)
 export type TriggerNoRollAugment = Static<typeof TriggerNoRollAugment>
 
 export const MoveNoRollAugment = toMoveAugment(
