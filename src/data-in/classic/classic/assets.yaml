@@ -44,7 +44,7 @@ assets:
                     - text: When your cat chases down big game
                       method: any
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 outcomes:
                   strong_hit:
                     text: Take +1 supply or +1 momentum.
@@ -61,7 +61,7 @@ assets:
                     - text: By sending your cat to attack
                       method: any
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 outcomes: &take_2_momentum_on_hit
                   strong_hit:
                     text: Take +2 momentum.
@@ -129,7 +129,7 @@ assets:
                   conditions:
                     - text: By sending your spider to secretly study someone
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes:
                   strong_hit: &Giant_Spider.2
                     text: The spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](id:classic/moves/adventure/gather_information) and reroll any dice.
@@ -147,7 +147,7 @@ assets:
                   conditions:
                     - text: When your spider sets a trap
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: Add +1.
                 outcomes:
                   strong_hit:
@@ -205,7 +205,7 @@ assets:
                   conditions:
                     - text: Using your hawk to harass and distract your foes
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 text: Add +1.
                 outcomes: *take_1_momentum_on_hit
           - name: Vigilant
@@ -219,7 +219,7 @@ assets:
                   conditions:
                     - text: To detect an approaching threat
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: Add +2.
               - augments:
                   - classic/moves/combat/enter_the_fray
@@ -227,7 +227,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: wits # 'ambushed' is already how +wits is flavoured
+                        - stat: wits # 'ambushed' is already how +wits is flavoured
                 text: Add +2.
       horse:
         asset_type: Companion
@@ -258,7 +258,7 @@ assets:
                   conditions:
                     - text: Using your horse’s speed and grace
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 text: Add +1.
           - name: Fearless
             text: |-
@@ -272,7 +272,7 @@ assets:
                   conditions:
                     - text: By charging into combat
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: Add +1.
                 outcomes: *take_1_momentum_on_hit
           - name: Mighty
@@ -502,7 +502,7 @@ assets:
                   conditions:
                     - text: against an ambush in darkness
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: Add +1.
                 outcomes: *take_1_momentum_on_hit
 
@@ -559,7 +559,7 @@ assets:
                   conditions:
                     - text: using your raven to perform trickery (such as creating a distraction or stealing a small object)
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: Add +1.
                 outcomes: *take_1_momentum_on_hit
           - name: Knowing
@@ -639,7 +639,7 @@ assets:
                   conditions:
                     - text: By commanding your wyvern to attack
                       roll_options:
-                        - using: heart
+                        - stat: heart
         condition_meter:
           label: health
           max: 5
@@ -681,23 +681,23 @@ assets:
                     - method: any
                       text: Elixir of deftness (edge)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                     - method: any
                       text: Elixir of audacity (heart)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                     - method: any
                       text: Elixir of vigor (iron)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                     - method: any
                       text: Elixir of slyness (shadow)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                     - method: any
                       text: Elixir of clarity (wits)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move.text
                 outcomes:
                   strong_hit:
@@ -857,8 +857,8 @@ assets:
                   conditions:
                     - text: When you are at 0 health
                       roll_options:
-                        - using: wits
-                        - using: heart
+                        - stat: wits
+                        - stat: heart
                 outcomes: *take_1_momentum_on_hit
       blade_bound:
         asset_type: Path
@@ -1025,7 +1025,7 @@ assets:
                   conditions:
                     - text: by dancing for an audience
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 text: Add +1.
                 outcomes:
                   strong_hit:
@@ -1065,7 +1065,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 text: *move:Asset.Dancer
                 outcomes:
                   strong_hit:
@@ -1435,7 +1435,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: wits
+                        - stat: wits
                       method: any
                 text: Envision how you make do with a clever solution.
                 outcomes: *take_1_momentum_on_hit
@@ -1492,7 +1492,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                       text: Within an enemy area to discover their positions, plans, or methods
                 outcomes: *take_1_momentum_on_hit
               - augments:
@@ -1502,7 +1502,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                       text: Within an enemy area area through observation
                 outcomes: *take_1_momentum_on_hit
           - text: |-
@@ -1515,7 +1515,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                       text: Within an enemy area by scavenging or looting
                 outcomes:
                   strong_hit: &momentum_supply
@@ -1770,7 +1770,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Outcast
                 outcomes:
                   strong_hit:
@@ -1824,7 +1824,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: *move:Asset.Pretender
                 outcomes:
                   strong_hit:
@@ -1844,7 +1844,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                       text: Under your false identity
               - roll_type: action_roll
                 augments:
@@ -1953,7 +1953,7 @@ assets:
                   conditions:
                     - text: by sizing up a perilous situation from the saddle
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 text: You are one with your horse’s instincts. Add +1.
                 outcomes: *take_1_momentum_on_hit
 
@@ -2018,7 +2018,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes:
                   weak_hit:
                     text: If you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.
@@ -2123,7 +2123,7 @@ assets:
                     - text: By investigating a devious scheme
                       method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
           - text: |-
               When you [Forge a Bond](id:classic/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.
 
@@ -2138,11 +2138,11 @@ assets:
                     - text: Keep your secret
                       method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                     - text: Reveal the truth
                       method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
       veteran:
         asset_type: Path
         _source:
@@ -2233,7 +2233,7 @@ assets:
                     - text: In the woodlands
                       method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
       wright:
         asset_type: Path
         _source:
@@ -2392,7 +2392,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Fletcher
                 outcomes:
                   strong_hit:
@@ -2492,7 +2492,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: edge
+                        - stat: edge
                       method: any
                       text: When you strike with a staff as a simple weapon
                 text: Add +1.
@@ -2506,7 +2506,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: edge
+                        - stat: edge
                       method: any
                       text: Using your staff to disarm, trip, shove, or stun your foe
                 text: Add +1.
@@ -2609,7 +2609,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Sunderer
                 outcomes:
                   strong_hit:
@@ -2689,7 +2689,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Augur
                 outcomes:
                   strong_hit:
@@ -2722,7 +2722,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Awakening
                 outcomes:
                   strong_hit:
@@ -2765,7 +2765,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Bind
                 outcomes:
                   strong_hit:
@@ -2800,7 +2800,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Communion
                 outcomes:
                   strong_hit:
@@ -2835,7 +2835,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Divination
                 outcomes:
                   strong_hit:
@@ -2874,7 +2874,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Invoke
                 outcomes:
                   strong_hit:
@@ -2917,7 +2917,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Keen
                 outcomes:
                   strong_hit:
@@ -2953,7 +2953,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: iron
+                        - stat: iron
                 text: *move:Asset.Leech
                 outcomes:
                   strong_hit:
@@ -2995,7 +2995,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Lightbearer
                 outcomes:
                   strong_hit:
@@ -3036,7 +3036,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: *move:Asset.Scry
                 outcomes:
                   strong_hit:
@@ -3075,7 +3075,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: *move:Asset.Shadow-Walk
                 outcomes:
                   strong_hit:
@@ -3110,7 +3110,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Sway
                 outcomes:
                   strong_hit:
@@ -3145,7 +3145,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Talisman
                 outcomes:
                   strong_hit:
@@ -3178,7 +3178,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Tether
                 outcomes:
                   strong_hit:
@@ -3213,7 +3213,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Totem
                 outcomes:
                   strong_hit:
@@ -3249,7 +3249,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Visage
                 outcomes:
                   strong_hit:
@@ -3288,7 +3288,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Ward
                 outcomes:
                   strong_hit:

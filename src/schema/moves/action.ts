@@ -1,6 +1,6 @@
 import { ID, Localize, Player } from 'schema/common'
 import { PartialBy, PartialExcept } from 'schema/common/utils'
-import { Type, type Static } from 'typebox'
+import { Type, type Static, JsonEnum } from 'typebox'
 import {
 	MoveOutcomes,
 	composeMoveType,
@@ -40,7 +40,8 @@ export type TriggerActionRollConditionOptionRef = Static<
 
 export const TriggerActionRollConditionOptionStat = Type.Object(
 	{
-		using: Type.Union([
+		using: Type.Literal('stat', { default: 'stat' }),
+		stat: Type.Union([
 			Type.Ref(Player.PlayerStat),
 			Type.Ref(Player.PlayerConditionMeter)
 		])
@@ -70,8 +71,22 @@ const triggerActionRollConditionOptionSubtypes = [
 	TriggerActionRollConditionOptionCustomValue
 ]
 
-export const TriggerActionRollConditionOption = Type.Union(
-	triggerActionRollConditionOptionSubtypes.map((option) => Type.Ref(option)),
+export const TriggerActionRollConditionOption = Type.Intersect(
+	[
+		Type.Object({
+			using: JsonEnum(
+				triggerActionRollConditionOptionSubtypes.map(
+					(opt) => opt.properties.using.const
+				),
+				{
+					default: 'stat'
+				}
+			)
+		}),
+		Type.Union(
+			triggerActionRollConditionOptionSubtypes.map((option) => Type.Ref(option))
+		)
+	],
 	{ $id: '#/$defs/TriggerActionRollConditionOption' }
 )
 export type TriggerActionRollConditionOption = Static<

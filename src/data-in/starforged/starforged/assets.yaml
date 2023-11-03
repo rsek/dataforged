@@ -82,7 +82,7 @@ assets:
                     - text: To your Starship
                       method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 outcomes:
                   weak_hit: &Starship.3
                     text: '[Endure Stress](id:starforged/moves/suffer/endure_stress) (-1).'
@@ -123,7 +123,7 @@ assets:
                   conditions:
                     - text: In your vehicle
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 outcomes:
                   strong_hit:
                     text: Take +1 momentum; if you get a 6 on your action die, take +2 momentum instead of +1.
@@ -235,7 +235,7 @@ assets:
                   conditions:
                     - method: highest
                       roll_options:
-                        - using: wits
+                        - stat: wits
                         - using: attached_asset_meter
                 text: *move:Asset.Grappler
                 outcomes:
@@ -729,7 +729,7 @@ assets:
                   conditions:
                     - text: In your vehicle
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 outcomes: &outcomes:reroll_challenge_die_all
                   strong_hit: &outcome:reroll_challenge_die
                     reroll:
@@ -816,7 +816,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                         - using: attached_asset_meter
                 text: *move:Asset.Shields
                 outcomes:
@@ -904,7 +904,7 @@ assets:
                   conditions:
                     - text: When you travel stealthily (in your vehicle)
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes: &reroll_action_die_all
                   strong_hit: &outcome:reroll_action_die
                     reroll:
@@ -927,7 +927,7 @@ assets:
                     - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike true)
                       method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes:
                   strong_hit:
                     reroll: *reroll:any
@@ -943,7 +943,7 @@ assets:
                     - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike hard)
                       method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes:
                   strong_hit:
                     text: Mark progress.
@@ -1154,7 +1154,7 @@ assets:
                   conditions:
                     - text: On your hoverbike
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 outcomes:
                   strong_hit:
                     text: Take +1 momentum.
@@ -1539,7 +1539,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Archer
                 outcomes:
                   strong_hit:
@@ -1690,11 +1690,11 @@ assets:
                     - method: any
                       text: Roll +the stat which best represents the work’s nature
                       roll_options:
-                        - using: edge
-                        - using: heart
-                        - using: iron
-                        - using: shadow
-                        - using: wits
+                        - stat: edge
+                        - stat: heart
+                        - stat: iron
+                        - stat: shadow
+                        - stat: wits
                 text: *move:Asset.Artist
                 outcomes:
                   strong_hit:
@@ -1869,7 +1869,7 @@ assets:
                   conditions:
                     - text: By moving into close quarters against your foe (and choosing to charge)
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 outcomes: &outcomes:mark_progress.HIT
                   strong_hit: *outcome:mark_progress
                   weak_hit: *outcome:mark_progress
@@ -1880,7 +1880,7 @@ assets:
                   conditions:
                     - text: By moving into close quarters against your foe (and choosing to evade)
                       roll_options:
-                        - using: edge
+                        - stat: edge
                 outcomes: *outcomes:+1_momentum.HIT
           - text: |-
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
@@ -2328,7 +2328,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: heart
+                        - stat: heart
                 text: *move:Asset.Empath
                 outcomes:
                   strong_hit:
@@ -2362,7 +2362,7 @@ assets:
                     - text: To soothe a being's distress by creating an empathic bond
                       method: any
                       roll_options:
-                        - using: spirit
+                        - stat: spirit
                 outcomes:
                   strong_hit: &Empath.3
                     text: Take +1 momentum. If they are an ally, also give them +2 spirit.
@@ -2477,7 +2477,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: spirit
+                        - stat: spirit
                 text: *move:Asset.Firebrand
                 outcomes:
                   strong_hit:
@@ -2695,10 +2695,10 @@ assets:
                   conditions:
                     - text: By facing off against your foe
                       roll_options:
-                        - using: heart
+                        - stat: heart
                     - text: By preparing to act without tipping off your foe
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: Add +1.
                 outcomes:
                   strong_hit:
@@ -3361,7 +3361,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Outcast
                 outcomes:
                   strong_hit:
@@ -3433,8 +3433,8 @@ assets:
                   conditions:
                     - method: highest
                       roll_options:
-                        - using: wits
-                        - using: supply
+                        - stat: wits
+                        - stat: supply
                 outcomes: *outcomes:+1_momentum.HIT
       scoundrel:
         asset_type: Path
@@ -3466,7 +3466,7 @@ assets:
                     - text: To search out a new contact
                       method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 outcomes:
                   strong_hit: &Scoundrel.2.Hit
                     text: &Scoundrel.2 Envision how your reputation or underworld contacts lead you to a disreputable connection.
@@ -3507,7 +3507,7 @@ assets:
                     - text: When you focus or meditate to [Gather Information](id:starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely)
                       method: any
                       roll_options:
-                        - using: spirit
+                        - stat: spirit
                 outcomes: *outcomes:+1_momentum.HIT
           - text: |-
               When you or an ally roll a match as you [Sojourn](id:starforged/moves/recover/sojourn) in a community or [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) within a site, you may envision gaining sudden and unbidden insight about the location. If you do, take +2 momentum.
@@ -3576,7 +3576,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: shadow
+                        - stat: shadow
                 text: *move:Asset.Shade
                 outcomes:
                   strong_hit:
@@ -3691,7 +3691,7 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: *move:Asset.Sniper
                 outcomes:
                   strong_hit:
@@ -3714,7 +3714,7 @@ assets:
                     - text: From a distance with time enough to line up your shot
                       method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 outcomes:
                   strong_hit: *outcome:mark_progress
           - text: |-
@@ -3801,7 +3801,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: supply
+                        - stat: supply
                       method: any
                 outcomes:
                   strong_hit: &Trader.1
@@ -4067,7 +4067,7 @@ assets:
                     - text: By suiting up and gathering your gear for a perilous encounter or mission
                       method: any
                       roll_options:
-                        - using: supply
+                        - stat: supply
                 outcomes: *outcomes:+2_momentum.HIT
   companion:
     _source:
@@ -4548,7 +4548,7 @@ assets:
                   conditions:
                     - text: Overland or within a site (assisted by your survey bot)
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 text: Add +1.
           - text: |-
               Once per expedition, when you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by sending the bot to scout ahead, roll +its health. On a hit, also mark progress on the expedition. On a strong hit with a match, the bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.
@@ -5062,7 +5062,7 @@ assets:
                   conditions:
                     - text: By studying a place where death left its mark
                       roll_options:
-                        - using: heart
+                        - stat: heart
                       method: any
                 outcomes:
                   strong_hit:
@@ -5153,7 +5153,7 @@ assets:
                 trigger:
                   conditions:
                     - roll_options:
-                        - using: wits
+                        - stat: wits
                 outcomes:
                   strong_hit:
                     match:
@@ -5168,5 +5168,5 @@ assets:
                   conditions:
                     - method: any
                       roll_options:
-                        - using: wits
+                        - stat: wits
                 outcomes: *outcomes:+1_momentum.HIT

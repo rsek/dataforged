@@ -180,11 +180,14 @@ export type MarkdownString9 = string;
  */
 export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-export type TriggerActionRollConditionOption =
+export type TriggerActionRollConditionOption = {
+  using: "stat" | "ref" | "attached_asset_meter" | "custom_value";
+} & (
   | TriggerActionRollConditionOptionStat
   | TriggerActionRollConditionOptionRef
   | TriggerActionRollConditionOptionAttachedAssetRef
-  | TriggerActionRollConditionOptionCustomValue;
+  | TriggerActionRollConditionOptionCustomValue
+);
 /**
  * A basic player character stat.
  */
@@ -747,7 +750,8 @@ export interface TriggerActionRollCondition {
   roll_options: TriggerActionRollConditionOption[];
 }
 export interface TriggerActionRollConditionOptionStat {
-  using: PlayerStat | PlayerConditionMeter;
+  using: "stat";
+  stat: PlayerStat | PlayerConditionMeter;
 }
 export interface TriggerActionRollConditionOptionRef {
   using: "ref";

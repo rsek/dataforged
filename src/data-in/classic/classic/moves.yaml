@@ -24,23 +24,23 @@ moves:
             - text: With speed, agility, or precision
               method: any
               roll_options:
-                - using: edge
+                - stat: edge
             - text: With charm, loyalty, or courage
               method: any
               roll_options:
-                - using: heart
+                - stat: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: With deception, stealth, or trickery
               method: any
               roll_options:
-                - using: shadow
+                - stat: shadow
             - text: With expertise, insight, or observation
               method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 60
         text: |-
@@ -84,23 +84,23 @@ moves:
             - text: With speed, agility, or precision
               method: any
               roll_options:
-                - using: edge
+                - stat: edge
             - text: With charm, loyalty, or courage
               method: any
               roll_options:
-                - using: heart
+                - stat: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: With deception, stealth, or trickery
               method: any
               roll_options:
-                - using: shadow
+                - stat: shadow
             - text: With expertise, insight, or observation
               method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 61
         text: |-
@@ -139,7 +139,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 62
         text: |-
@@ -164,13 +164,13 @@ moves:
           text: When you treat an injury or ailment...
           conditions:
             - roll_options:
-                - using: wits
+                - stat: wits
               method: any
             - text: Mend your own wounds
               method: lowest
               roll_options:
-                - using: iron
-                - using: wits
+                - stat: iron
+                - stat: wits
         _source:
           page: 63
         text: |-
@@ -196,7 +196,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 63
         text: |-
@@ -222,7 +222,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: supply
+                - stat: supply
         _source:
           page: 64
         text: |-
@@ -266,7 +266,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: wits
+                - stat: wits
             # - method: null
             #   text: If you are setting off from a community with which you share a bond
             #   add: 1
@@ -352,15 +352,15 @@ moves:
             - text: Charm, pacify, barter, or convince
               method: any
               roll_options:
-                - using: heart
+                - stat: heart
             - text: Threaten or incite
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: Lie or swindle
               method: any
               roll_options:
-                - using: shadow
+                - stat: shadow
         _source:
           page: 69
         text: |-
@@ -393,7 +393,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 71
         text: |-
@@ -474,7 +474,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 73
         text: |-
@@ -527,7 +527,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 74
         text: |-
@@ -562,7 +562,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 75
         text: |-
@@ -640,15 +640,15 @@ moves:
             - text: Facing off against your foe
               method: any
               roll_options:
-                - using: heart
+                - stat: heart
             - text: Moving into position against an unaware foe, or striking without warning
               method: any
               roll_options:
-                - using: shadow
+                - stat: shadow
             - text: Ambushed
               method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 78
         text: |-
@@ -694,11 +694,11 @@ moves:
             - text: In close quarters
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: At range
               method: any
               roll_options:
-                - using: edge
+                - stat: edge
         _source:
           page: 78
         text: |-
@@ -725,11 +725,11 @@ moves:
             - text: Fight with them in close quarters
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: Exchange a volley at range, or shoot at an advancing foe
               method: any
               roll_options:
-                - using: edge
+                - stat: edge
         _source:
           page: 80
         text: |-
@@ -815,23 +815,23 @@ moves:
             - text: Fight at range, or using your speed and the terrain to your advantage
               method: any
               roll_options:
-                - using: edge
+                - stat: edge
             - text: Fight depending on your courage, allies, or companions
               method: any
               roll_options:
-                - using: heart
+                - stat: heart
             - text: Fight in close to overpower your opponents
               method: any
               roll_options:
-                - using: iron
+                - stat: iron
             - text: Fight using trickery to befuddle your opponents
               method: any
               roll_options:
-                - using: shadow
+                - stat: shadow
             - text: Fight using careful tactics to outsmart your opponents
               method: any
               roll_options:
-                - using: wits
+                - stat: wits
         _source:
           page: 84
         text: |-
@@ -872,8 +872,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - using: iron
-                - using: health
+                - stat: iron
+                - stat: health
         _source:
           page: 91
         text: |-
@@ -912,7 +912,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 93
         text: |-
@@ -945,7 +945,7 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - using: heart
+                - stat: heart
                 - using: ref
                   ref: '*/assets/companion/*/condition_meter'
         _source:
@@ -980,8 +980,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - using: heart
-                - using: spirit
+                - stat: heart
+                - stat: spirit
         _source:
           page: 95
         text: |-
@@ -1019,7 +1019,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 96
         text: |-
@@ -1079,7 +1079,7 @@ moves:
           conditions:
             - method: any
               roll_options:
-                - using: heart
+                - stat: heart
         _source:
           page: 98
         text: |-

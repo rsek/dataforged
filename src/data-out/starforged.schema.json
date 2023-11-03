@@ -762,6 +762,7 @@
 		},
 		"DiceNotation": {
 			"$id": "#/$defs/DiceNotation",
+			"examples": ["1d100", "1d6+2"],
 			"type": "string",
 			"pattern": "([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?",
 			"title": "DiceNotation"
@@ -1173,14 +1174,15 @@
 			"$id": "#/$defs/TriggerActionRollConditionOptionStat",
 			"type": "object",
 			"properties": {
-				"using": {
+				"using": { "default": "stat", "const": "stat", "type": "string" },
+				"stat": {
 					"anyOf": [
 						{ "$ref": "#/$defs/PlayerStat" },
 						{ "$ref": "#/$defs/PlayerConditionMeter" }
 					]
 				}
 			},
-			"required": ["using"],
+			"required": ["using", "stat"],
 			"title": "TriggerActionRollConditionOptionStat"
 		},
 		"TriggerActionRollConditionOptionCustomValue": {
@@ -1196,11 +1198,27 @@
 		},
 		"TriggerActionRollConditionOption": {
 			"$id": "#/$defs/TriggerActionRollConditionOption",
-			"anyOf": [
-				{ "$ref": "#/$defs/TriggerActionRollConditionOptionStat" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionOptionRef" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionOptionAttachedAssetRef" },
-				{ "$ref": "#/$defs/TriggerActionRollConditionOptionCustomValue" }
+			"allOf": [
+				{
+					"type": "object",
+					"properties": {
+						"using": {
+							"default": "stat",
+							"enum": ["stat", "ref", "attached_asset_meter", "custom_value"]
+						}
+					},
+					"required": ["using"]
+				},
+				{
+					"anyOf": [
+						{ "$ref": "#/$defs/TriggerActionRollConditionOptionStat" },
+						{ "$ref": "#/$defs/TriggerActionRollConditionOptionRef" },
+						{
+							"$ref": "#/$defs/TriggerActionRollConditionOptionAttachedAssetRef"
+						},
+						{ "$ref": "#/$defs/TriggerActionRollConditionOptionCustomValue" }
+					]
+				}
 			],
 			"title": "TriggerActionRollConditionOption"
 		},
@@ -1880,6 +1898,7 @@
 				"label": { "$ref": "#/$defs/Label" },
 				"moves": {
 					"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.",
+					"releaseStage": "unstable",
 					"examples": [
 						{
 							"suffer": "classic/moves/suffer/endure_companion_harm",
@@ -2107,7 +2126,7 @@
 				},
 				"augment_asset": {
 					"description": "Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
-					"releaseStage": "experimental",
+					"releaseStage": "unstable",
 					"type": "object",
 					"allOf": [
 						{
@@ -2362,6 +2381,7 @@
 			"$id": "#/$defs/AtlasEntry",
 			"title": "Atlas entry",
 			"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn.",
+			"releaseStage": "experimental",
 			"type": "object",
 			"properties": {
 				"name": { "$ref": "#/$defs/Label" },

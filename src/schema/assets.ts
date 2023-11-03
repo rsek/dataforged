@@ -114,6 +114,7 @@ export const AssetConditionMeter = Type.Object(
 				{
 					description:
 						'Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.',
+					releaseStage: 'unstable',
 					examples: [
 						{
 							suffer: 'classic/moves/suffer/endure_companion_harm',
@@ -316,7 +317,7 @@ export const AssetAbility = Type.Object(
 			AssetAugmentSelf(Asset, ['abilities'], {
 				description:
 					'Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
-				releaseStage: 'experimental'
+				releaseStage: 'unstable'
 			})
 		),
 		augment_moves: Type.Optional(
