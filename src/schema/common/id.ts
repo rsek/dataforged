@@ -8,7 +8,7 @@ import { cloneDeep, escapeRegExp } from 'lodash'
 import { SNAKE_CASE } from 'schema/common/regex'
 import { type Opaque } from 'type-fest'
 
-/** Composes regular expressions for Dataforged IDs */
+/** Composes regular expressions for Datasworn IDs */
 class ID {
 	static readonly JOINER = escapeRegExp('/')
 	static readonly WILDCARD = escapeRegExp('*')

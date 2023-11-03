@@ -10,7 +10,7 @@ const logFormat = printf(
 
 const log = Winston.createLogger({
 	format: combine(
-		label({ label: 'Dataforged' }),
+		label({ label: 'Datasworn' }),
 		timestamp({ format: 'hh:mm:ss.SSS' }),
 		logFormat
 		// colorize({

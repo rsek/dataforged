@@ -8,16 +8,8 @@ import {
 	type TRef
 } from '@sinclair/typebox'
 
-import { mapValues, pick } from 'lodash'
+import { mapValues } from 'lodash'
 import { Metadata, Abstract } from 'schema/common'
-import * as Truths from 'schema/truths'
-import * as Atlas from 'schema/atlas'
-import * as Oracles from 'schema/oracles'
-import * as Moves from 'schema/moves'
-import * as Assets from 'schema/assets'
-import * as Npcs from 'schema/npcs'
-import * as Rarities from 'schema/rarities'
-import * as DelveSites from 'schema/delve-sites'
 
 import { REGEX_SOURCEBOOK_KEY } from 'schema/common/regex'
 
@@ -25,8 +17,7 @@ export const SOURCEBOOK_KEY = Type.RegEx(
 	new RegExp(`^${REGEX_SOURCEBOOK_KEY.source}$`)
 )
 
-function Sourcebook<T extends Metadata.Ruleset, K extends string>(
-	ruleset: T,
+export function Sourcebook<K extends string>(
 	contents: Record<K, TSchema>,
 	metadata: Record<keyof typeof contents, ObjectOptions>,
 	options: ObjectOptions = {}
@@ -42,7 +33,6 @@ function Sourcebook<T extends Metadata.Ruleset, K extends string>(
 	}
 	const meta = {
 		id: SOURCEBOOK_KEY,
-		ruleset: Type.Literal(ruleset),
 		source: Type.Ref(Metadata.Source)
 	}
 	const result = Type.Object(
@@ -55,7 +45,8 @@ function Sourcebook<T extends Metadata.Ruleset, K extends string>(
 	return result
 }
 
-const SourcebookInfoClassic = {
+// FIXME: this should probably be done with schema builders instead
+export const SourcebookInfo = {
 	oracles: {
 		description:
 			'A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.'
@@ -93,47 +84,4 @@ const SourcebookInfoClassic = {
 	truths: {
 		description: 'A dictionary object of truth categories.'
 	}
-}
-
-export function SourcebookClassic(options: ObjectOptions) {
-	return Sourcebook(
-		'classic',
-		{
-			oracles: Oracles.OracleCollection,
-			moves: Moves.MoveCategory,
-			assets: Assets.AssetType,
-			atlas: Atlas.Atlas,
-			npcs: Npcs.NpcCollection,
-			rarities: Rarities.Rarity,
-			delve_sites: DelveSites.DelveSite,
-			site_themes: DelveSites.DelveSiteTheme,
-			site_domains: DelveSites.DelveSiteDomain,
-			truths: Truths.Truth
-		},
-		SourcebookInfoClassic,
-		options
-	)
-}
-
-export function SourcebookStarforged(options: ObjectOptions) {
-	return Sourcebook(
-		'starforged',
-		{
-			oracles: Oracles.OracleCollection,
-			moves: Moves.MoveCategory,
-			assets: Assets.AssetType,
-			npcs: Npcs.NpcCollection,
-			truths: Truths.Truth
-		},
-		{
-			...pick(SourcebookInfoClassic, [
-				'oracles',
-				'moves',
-				'assets',
-				'npcs',
-				'truths'
-			])
-		},
-		options
-	)
 }

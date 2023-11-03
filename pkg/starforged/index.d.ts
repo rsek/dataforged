@@ -26,14 +26,6 @@ export type OracleCollectionID = string;
  */
 export type OracleCollectionID1 = string;
 /**
- * The collection imported by this collection.
- */
-export type OracleCollectionID2 = string;
-/**
- * Oracle table wildcards can also use '**' to represent any number of collection levels in the oracle tree. For example, 'starforged/oracles/** /location' represents any starforged table with the "location" key.
- */
-export type OracleTableIDWildcard = string;
-/**
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
 export type CSSColor = string;
@@ -74,6 +66,13 @@ export type SVGImageURL = string;
  * The ID of the oracle table to be rolled. If omitted, it defaults to the ID of this oracle table.
  */
 export type OracleTableID2 = string;
+/**
+ * Special roll instructions to use when rolling multiple times on a single oracle table.
+ *
+ *   * `no_duplicates`: Duplicates should be re-rolled.
+ *   * `keep_duplicates`: Duplicates should be kept.
+ *   * `make_it_worse`: Duplicates should be kept, and they compound to make things worse.
+ */
 export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
  * A string template that may be used in place of OracleTableRow#result.
@@ -87,11 +86,16 @@ export type TemplateString1 = string;
  * A string template that may be used in place of OracleTableRow#description.
  */
 export type TemplateString2 = string;
+/**
+ *   * `table`: Render as a standalone table.
+ *   * `embed_in_row`: Render as a table, within a row in another table.
+ *   * `embed_as_column`: Render as a single column of a table.
+ */
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
 /**
  * Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
-export type OracleCollectionID3 = string;
+export type OracleCollectionID2 = string;
 export type OracleColumnContentType = "range" | "result" | "summary" | "description";
 export type OracleCollectionStyle = "multi_table";
 /**
@@ -103,14 +107,6 @@ export type MoveCategoryID = string;
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type MoveCategoryID1 = string;
-/**
- * The collection imported by this collection.
- */
-export type MoveCategoryID2 = string;
-/**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -170,15 +166,16 @@ export type MarkdownString8 = string;
  */
 export type MarkdownString9 = string;
 /**
- * `any`: When rolling with this move trigger condition, the player picks which stat to use.
- *
- * `all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.
- *
- * `highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.
- *
- * `lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.
+ *   * `any`: The player chooses which roll option to use.
+ *   * `highest`: Use the roll option with the highest stat value.
+ *   * `lowest`: Use the roll option with the lowest stat value.
  */
-export type MoveRollMethod = "any" | "all" | "highest" | "lowest";
+export type ActionRollMethod = "any" | "highest" | "lowest";
+/**
+ *   * `miss`: The score doesn't beat either challenge die.
+ *   * `weak_hit`: The score is greater than one challenge die.
+ *   * `strong_hit`: The score is greater than both challenge dice.
+ */
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 export type TriggerActionRollConditionOption = {
   using: "stat" | "ref" | "attached_asset_meter" | "custom_value";
@@ -205,7 +202,6 @@ export type AssetOptionFieldIDWildcard = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString10 = string;
-export type MoveRerollMethod = "any" | "all" | "challenge_die" | "challenge_dice" | "action_die";
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -229,15 +225,9 @@ export type MarkdownString12 = string;
  */
 export type MarkdownString13 = string;
 /**
- * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
- * 'Canonical' examples:
- *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
- *   * `failure_track`, described in Ironsworn: Delve
- *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
- *
- *
+ *   * `any`: The player chooses which roll option to use.
  */
-export type SpecialTrackType = string;
+export type ProgressRollMethod = "any";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -271,6 +261,21 @@ export type MarkdownString16 = string;
  */
 export type MarkdownString17 = string;
 /**
+ *   * `any`: The player chooses which roll option to use.
+ *   * `all`: Use *every* roll option at once.
+ */
+export type SpecialTrackRollMethod = "any" | "all";
+/**
+ * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
+ * 'Canonical' examples:
+ *   * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.
+ *   * `failure_track`, described in Ironsworn: Delve
+ *   * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged
+ *
+ *
+ */
+export type SpecialTrackType = string;
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
@@ -281,11 +286,6 @@ export type AssetTypeID = string;
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type AssetTypeID1 = string;
-/**
- * The collection imported by this collection.
- */
-export type AssetTypeID2 = string;
-export type AssetIDWildcard = string;
 /**
  * A localized plain text name or label.
  */
@@ -311,6 +311,7 @@ export type AssetAbilityOptionField = TextField;
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
+export type AssetIDWildcard = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -326,6 +327,10 @@ export type MoveAugment = MoveActionRollAugment | MoveNoRollAugment | MoveProgre
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString19 = string;
+/**
+ * A move ID with wildcards
+ */
+export type MoveIDWithWildcard = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -358,12 +363,13 @@ export type NpcCollectionID = string;
  */
 export type NpcCollectionID1 = string;
 /**
- * The collection imported by this collection.
- */
-export type NpcCollectionID2 = string;
-export type NpcIDWildcard = string;
-/**
- * Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic
+ * Challenge rank, represented as an integer:
+ *
+ *   * `1`: Troublesome
+ *   * `2`: Dangerous
+ *   * `3`: Formidable
+ *   * `4`: Extreme
+ *   * `5`: Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
 /**
@@ -470,23 +476,13 @@ export interface OracleCollection {
   suggestions?: Suggestions;
   id: OracleCollectionID;
   extends?: OracleCollectionID1;
-  /**
-   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
-   */
-  imports?: {
-    from: OracleCollectionID2;
-    /**
-     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
-     */
-    include: null | OracleTableIDWildcard[];
-  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
     [k: string]: OracleTable;
   };
-  replaces?: OracleCollectionID3;
+  replaces?: OracleCollectionID2;
   rendering?: OracleCollectionRendering;
   images?: WEBPImageURL[];
   sample_names?: Label[];
@@ -607,16 +603,6 @@ export interface MoveCategory {
   suggestions?: Suggestions;
   id: MoveCategoryID;
   extends?: MoveCategoryID1;
-  /**
-   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
-   */
-  imports?: {
-    from: MoveCategoryID2;
-    /**
-     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
-     */
-    include: null | MoveIDWithWildcard[];
-  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -679,7 +665,10 @@ export interface TriggerActionRoll {
 export interface TriggerActionRollCondition {
   text?: MarkdownString9;
   by?: TriggerBy;
-  method: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method: ActionRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
@@ -714,17 +703,11 @@ export interface MoveOutcomes {
 export interface MoveOutcomeMatchable {
   text: MarkdownString;
   count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
   match?: MoveOutcome;
-}
-export interface MoveReroll {
-  text?: MarkdownString;
-  method: MoveRerollMethod;
 }
 export interface MoveOutcome {
   text: MarkdownString;
   count_as?: MoveOutcomeType;
-  reroll?: MoveReroll;
 }
 export interface MoveProgressRoll {
   id: MoveID;
@@ -751,14 +734,17 @@ export interface TriggerProgressRoll {
 export interface TriggerProgressRollCondition {
   text?: MarkdownString13;
   by?: TriggerBy;
-  method: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method: ProgressRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
   roll_options: TriggerProgressRollConditionOption[];
 }
 export interface TriggerProgressRollConditionOption {
-  using: SpecialTrackType;
+  using: "progress_track";
 }
 export interface MoveSpecialTrack {
   id: MoveID;
@@ -784,7 +770,10 @@ export interface TriggerSpecialTrack {
 export interface TriggerSpecialTrackCondition {
   text?: MarkdownString17;
   by?: TriggerBy;
-  method: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method: SpecialTrackRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
@@ -804,16 +793,6 @@ export interface AssetType {
   suggestions?: Suggestions;
   id: AssetTypeID;
   extends?: AssetTypeID1;
-  /**
-   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
-   */
-  imports?: {
-    from: AssetTypeID2;
-    /**
-     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
-     */
-    include: null | AssetIDWildcard[];
-  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -1029,7 +1008,10 @@ export interface MoveActionRollAugment {
 export interface TriggerActionRollConditionAugment {
   text?: MarkdownString19;
   by?: TriggerBy;
-  method?: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method?: ActionRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1056,7 +1038,10 @@ export interface MoveProgressRollAugment {
 export interface TriggerProgressRollConditionAugment {
   text?: MarkdownString21;
   by?: TriggerBy;
-  method?: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method?: ProgressRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1069,10 +1054,16 @@ export interface MoveSpecialTrackAugment {
   };
   augments?: MoveIDWithWildcard[];
 }
+/**
+ * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
+ */
 export interface TriggerSpecialTrackConditionAugment {
   text?: MarkdownString22;
   by?: TriggerBy;
-  method?: MoveRollMethod | MoveOutcomeType;
+  /**
+   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   */
+  method?: SpecialTrackRollMethod | MoveOutcomeType;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1114,16 +1105,6 @@ export interface NpcCollection {
   suggestions?: Suggestions;
   id: NpcCollectionID;
   extends?: NpcCollectionID1;
-  /**
-   * Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides.
-   */
-  imports?: {
-    from: NpcCollectionID2;
-    /**
-     * IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.
-     */
-    include: null | NpcIDWildcard[];
-  };
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;

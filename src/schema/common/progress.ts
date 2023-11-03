@@ -1,12 +1,20 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { SNAKE_CASE } from 'schema/common/regex'
-import { JsonEnum } from 'typebox'
+import { JsonEnumFromRecord } from 'typebox'
 
-export const ChallengeRank = JsonEnum([1, 2, 3, 4, 5], {
-	$id: '#/$defs/ChallengeRank',
-	description:
-		'Challenge rank, represented as a number: 1 = Troublesome, 2 = Dangerous, 3 = Formidable, 4 = Extreme, 5 = Epic'
-})
+export const ChallengeRank = JsonEnumFromRecord(
+	{
+		1: 'Troublesome',
+		2: 'Dangerous',
+		3: 'Formidable',
+		4: 'Extreme',
+		5: 'Epic'
+	},
+	{
+		$id: '#/$defs/ChallengeRank',
+		description: 'Challenge rank, represented as an integer:'
+	}
+)
 export type ChallengeRank = Static<typeof ChallengeRank>
 
 export const SpecialTrackType = Type.String({

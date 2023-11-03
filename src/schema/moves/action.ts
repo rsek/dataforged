@@ -9,7 +9,9 @@ import {
 	toTriggerAugment,
 	type MoveRollType,
 	toMoveAugment,
-	toTriggerConditionAugment
+	toTriggerConditionAugment,
+	ActionRollMethod,
+	MoveOutcomeType
 } from './common'
 
 export const TriggerActionRollConditionOptionAttachedAssetRef = Type.Object(
@@ -95,6 +97,11 @@ export type TriggerActionRollConditionOption = Static<
 
 export const TriggerActionRollCondition = composeTriggerRollCondition(
 	TriggerActionRollConditionOption,
+	Type.Union([Type.Ref(ActionRollMethod), Type.Ref(MoveOutcomeType)], {
+		default: 'any',
+		description:
+			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+	}),
 	{ $id: '#/$defs/TriggerActionRollCondition' }
 )
 export type TriggerActionRollCondition = Static<
@@ -115,7 +122,10 @@ export const MoveActionRoll = composeMoveType(
 			trigger: Type.Ref(TriggerActionRoll),
 			outcomes: Type.Ref(MoveOutcomes)
 		},
-		{ title: 'Move (action roll)' }
+		{
+			title: 'Move (action roll)',
+			description: 'A move that makes an action roll.'
+		}
 	)
 )
 
@@ -140,9 +150,13 @@ export type TriggerActionRollAugment = Static<typeof TriggerActionRollAugment>
 
 // TRIGGER: NO ROLL
 
-export const TriggerNoRollCondition = composeTriggerRollCondition(undefined, {
-	$id: '#/$defs/TriggerNoRollCondition'
-})
+export const TriggerNoRollCondition = composeTriggerRollCondition(
+	undefined,
+	undefined,
+	{
+		$id: '#/$defs/TriggerNoRollCondition'
+	}
+)
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
 export const TriggerNoRollConditionAugment = toTriggerConditionAugment(
@@ -171,7 +185,10 @@ export const MoveNoRoll = Type.Omit(
 				// is_progress_move: Type.Literal(false, { default: false }),
 				trigger: Type.Ref(TriggerNoRoll)
 			},
-			{ title: 'Move (no roll)' }
+			{
+				title: 'Move (no roll)',
+				no_roll: 'A move that makes no action rolls or progress rolls.'
+			}
 		)
 	),
 	['outcomes']

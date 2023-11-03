@@ -1,5 +1,5 @@
 /**
- * Utilities for transforming the primary Dataforged schema into a schema for raw data entry.
+ * Utilities for transforming the primary Datasworn schema into a schema for raw data entry.
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */

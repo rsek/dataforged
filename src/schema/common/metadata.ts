@@ -76,7 +76,7 @@ export const Source = Type.Object(
 			],
 			{
 				description:
-					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Dataforged's build process skips unlicensed content by default.",
+					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
 				examples: [
 					'https://creativecommons.org/licenses/by/4.0',
 					'https://creativecommons.org/licenses/by-nc-sa/4.0'

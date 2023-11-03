@@ -1,20 +1,20 @@
 import { Localize, Progress } from 'schema/common'
-import { PartialExcept } from 'schema/common/utils'
-import { MoveOutcomesAugment, toTriggerConditionAugment } from './common'
-import { Type, type Static } from 'typebox'
+import { Type, type Static, JsonEnumFromRecord } from 'typebox'
 import {
 	MoveOutcomes,
 	composeMoveType,
 	composeTrigger,
 	composeTriggerRollCondition,
+	toMoveAugment,
 	toTriggerAugment,
+	toTriggerConditionAugment,
 	type MoveRollType,
-	toMoveAugment
+	MoveOutcomeType
 } from './common'
 
 export const TriggerProgressRollConditionOption = Type.Object(
 	{
-		using: Type.Ref(Progress.SpecialTrackType)
+		using: Type.Literal('progress_track')
 	},
 	{ $id: '#/$defs/TriggerProgressRollConditionOption' }
 )
@@ -22,8 +22,21 @@ export type TriggerProgressRollConditionOption = Static<
 	typeof TriggerProgressRollConditionOption
 >
 
+export const ProgressRollMethod = JsonEnumFromRecord(
+	{
+		any: 'The player chooses which roll option to use.'
+	},
+	{ $id: '#/$defs/ProgressRollMethod' }
+)
+export type ProgressRollMethod = Static<typeof ProgressRollMethod>
+
 export const TriggerProgressRollCondition = composeTriggerRollCondition(
 	TriggerProgressRollConditionOption,
+	Type.Union([Type.Ref(ProgressRollMethod), Type.Ref(MoveOutcomeType)], {
+		default: 'any',
+		description:
+			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+	}),
 	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
 
@@ -46,18 +59,25 @@ export const MoveProgressRoll = composeMoveType(
 			// is_progress_move: Type.Literal(true, { default: true }),
 			track_label: Type.Ref(Localize.Label, {
 				description:
-					'A category label to use with progress tracks that are resolved by this move.',
+					'A category label for progress tracks associated with this move.',
 				examples: [
-					'combat track',
-					'scene challenge track',
-					'vow track',
-					'delve track'
+					'Vow',
+					'Journey',
+					'Combat',
+					'Scene Challenge',
+					'Expedition',
+					'Connection',
+					'Delve'
 				]
 			}),
 			trigger: Type.Ref(TriggerProgressRoll),
 			outcomes: Type.Ref(MoveOutcomes)
 		},
-		{ title: 'Progress Move' }
+		{
+			title: 'Progress Move',
+			description:
+				'A progress move that rolls on a standard progress track type (defined by the move object).'
+		}
 	)
 )
 
@@ -104,8 +124,23 @@ export type TriggerSpecialTrackConditionOption = Static<
 	typeof TriggerSpecialTrackConditionOption
 >
 
+export const SpecialTrackRollMethod = JsonEnumFromRecord(
+	{
+		any: 'The player chooses which roll option to use.',
+		all: 'Use *every* roll option at once.'
+	},
+	{ $id: '#/$defs/SpecialTrackRollMethod' }
+)
+
+export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
+
 export const TriggerSpecialTrackCondition = composeTriggerRollCondition(
 	TriggerSpecialTrackConditionOption,
+	Type.Union([Type.Ref(SpecialTrackRollMethod), Type.Ref(MoveOutcomeType)], {
+		default: 'any',
+		description:
+			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+	}),
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
 export type TriggerSpecialTrackCondition = Static<
@@ -136,7 +171,11 @@ export type MoveSpecialTrack = Static<typeof MoveSpecialTrack>
 
 export const TriggerSpecialTrackConditionAugment = toTriggerConditionAugment(
 	TriggerSpecialTrackCondition,
-	{ $id: '#/$defs/TriggerSpecialTrackConditionAugment' }
+	{
+		$id: '#/$defs/TriggerSpecialTrackConditionAugment',
+		description:
+			'A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).'
+	}
 )
 export type TriggerSpecialTrackConditionAugment = Static<
 	typeof TriggerSpecialTrackConditionAugment

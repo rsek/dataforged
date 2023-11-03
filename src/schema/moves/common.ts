@@ -15,40 +15,44 @@ import {
 	type MoveProgressRoll,
 	type MoveSpecialTrack
 } from 'schema/moves'
-import { JsonEnum } from 'typebox'
+import { JsonEnumFromRecord } from 'typebox'
 
 // ENUMS
-export const MoveRollType = JsonEnum(
-	['no_roll', 'action_roll', 'progress_roll', 'special_track'],
+
+export const MoveRollType = JsonEnumFromRecord(
 	{
-		$id: '#/$defs/MoveRollType',
-		description: `
-    no_roll: A move that makes no rolls.
-    action_roll: A move that makes an action roll.
-    progress_roll: A progress move that rolls on a standard progress track associated with this specific move.
-    special_track: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
-    `
-	}
+		no_roll: 'A move that makes no action rolls or progress rolls.',
+		action_roll: 'A move that makes an action roll.',
+		progress_roll:
+			'A progress move that rolls on a standard progress track type (defined by this move).',
+		special_track:
+			'A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).'
+	},
+	{ $id: '#/$defs/MoveRollType' }
 )
+
 export type MoveRollType = Static<typeof MoveRollType>
 
-export const MoveRollMethod = JsonEnum(['any', 'all', 'highest', 'lowest'], {
-	$id: '#/$defs/MoveRollMethod',
-
-	description:
-		'`any`: When rolling with this move trigger condition, the player picks which stat to use.\n\n`all`: When rolling with this move trigger condition, *every* stat or progress track of the `using` key is rolled.\n\n`highest`: When rolling with this move trigger condition, use the highest/best option from the `using` key.\n\n`lowest`: When rolling with this move trigger condition, use the lowest/worst option from the `using` key.'
-})
-export type MoveRollMethod = Static<typeof MoveRollMethod>
-
-export const MoveRerollMethod = JsonEnum(
-	['any', 'all', 'challenge_die', 'challenge_dice', 'action_die'],
-	{ $id: '#/$defs/MoveRerollMethod' }
+export const ActionRollMethod = JsonEnumFromRecord(
+	{
+		any: 'The player chooses which roll option to use.',
+		highest: 'Use the roll option with the highest stat value.',
+		lowest: 'Use the roll option with the lowest stat value.'
+	},
+	{ $id: '#/$defs/ActionRollMethod' }
 )
-export type MoveRerollMethod = Static<typeof MoveRerollMethod>
+export type ActionRollMethod = Static<typeof ActionRollMethod>
 
-export const MoveOutcomeType = JsonEnum(['miss', 'weak_hit', 'strong_hit'], {
-	$id: '#/$defs/MoveOutcomeType'
-})
+export const MoveOutcomeType = JsonEnumFromRecord(
+	{
+		miss: "The score doesn't beat either challenge die.",
+		weak_hit: 'The score is greater than one challenge die.',
+		strong_hit: 'The score is greater than both challenge dice.'
+	},
+	{
+		$id: '#/$defs/MoveOutcomeType'
+	}
+)
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
 
 // BASE TYPES
@@ -68,6 +72,7 @@ export type TriggerBy = Static<typeof TriggerBy>
 
 export function composeTriggerRollCondition(
 	optionSchema: TAnySchema | undefined,
+	method: TAnySchema | undefined,
 	schemaOptions: ObjectOptions = {}
 ) {
 	const properties = {
@@ -82,12 +87,6 @@ export function composeTriggerRollCondition(
 
 	if (optionSchema == null) return Type.Object(properties, schemaOptions)
 
-	const method = Type.Union(
-		[Type.Ref(MoveRollMethod), Type.Ref(MoveOutcomeType)],
-		{
-			default: 'any'
-		}
-	)
 	const roll_options = Type.Array(Type.Ref(optionSchema), {
 		description: 'The options available when rolling with this trigger.'
 	})
@@ -125,20 +124,20 @@ export function composeTrigger(
 	)
 }
 
-export const MoveReroll = Type.Object(
-	{
-		text: Type.Optional(Type.Ref(Localize.MarkdownString)),
-		method: Type.Ref(MoveRerollMethod)
-	},
-	{ $id: '#/$defs/MoveReroll' }
-)
-export type MoveReroll = Static<typeof MoveReroll>
+// export const MoveReroll = Type.Object(
+// 	{
+// 		text: Type.Optional(Type.Ref(Localize.MarkdownString)),
+// 		method: Type.Ref(MoveRerollMethod)
+// 	},
+// 	{ $id: '#/$defs/MoveReroll' }
+// )
+// export type MoveReroll = Static<typeof MoveReroll>
 
 export const MoveOutcome = Type.Object(
 	{
 		text: Type.Ref(Localize.MarkdownString),
-		count_as: Type.Optional(Type.Ref(MoveOutcomeType)),
-		reroll: Type.Optional(Type.Ref(MoveReroll))
+		count_as: Type.Optional(Type.Ref(MoveOutcomeType))
+		// reroll: Type.Optional(Type.Ref(MoveReroll))
 	},
 	{ $id: '#/$defs/MoveOutcome' }
 )
@@ -275,21 +274,21 @@ export function toMoveAugment<
 	return augmentMany
 }
 
-export const MoveOutcomeAugment = Type.Partial(MoveOutcome, {
-	$id: '#/$defs/MoveOutcomeAugment'
-})
-export const MoveOutcomeMatchableAugment = Type.Partial(MoveOutcomeMatchable, {
-	$id: '#/$defs/MoveOutcomeMatchableAugment'
-})
+// export const MoveOutcomeAugment = Type.Partial(MoveOutcome, {
+// 	$id: '#/$defs/MoveOutcomeAugment'
+// })
+// export const MoveOutcomeMatchableAugment = Type.Partial(MoveOutcomeMatchable, {
+// 	$id: '#/$defs/MoveOutcomeMatchableAugment'
+// })
 
-export const MoveOutcomesAugment = Type.Object(
-	{
-		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment)),
-		weak_hit: Type.Optional(Type.Ref(MoveOutcomeAugment)),
-		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment))
-	},
-	{
-		$id: '#/$defs/MoveOutcomesAugment'
-	}
-)
-export type MoveOutcomesAugment = Static<typeof MoveOutcomesAugment>
+// export const MoveOutcomesAugment = Type.Object(
+// 	{
+// 		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment)),
+// 		weak_hit: Type.Optional(Type.Ref(MoveOutcomeAugment)),
+// 		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment))
+// 	},
+// 	{
+// 		$id: '#/$defs/MoveOutcomesAugment'
+// 	}
+// )
+// export type MoveOutcomesAugment = Static<typeof MoveOutcomesAugment>

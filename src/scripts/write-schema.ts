@@ -14,7 +14,7 @@ import { type JSONSchema7 } from 'json-schema'
 interface SchemaOptions {
 	name: string
 	schema: JSONSchema7
-	path: string
+	paths: string[]
 	messages: {
 		writeStart: string
 		writeFinish: string
@@ -23,40 +23,20 @@ interface SchemaOptions {
 
 const schemaOptions: SchemaOptions[] = [
 	{
-		name: 'Dataforged',
-		schema: Schema.Dataforged,
-		path: Paths.DF_SCHEMA_OUT,
-		messages: {
-			writeStart: 'Writing Starforged-compatible schema for Dataforged',
-			writeFinish: 'Finished writing schema for Dataforged'
-		}
-	},
-	{
-		name: 'DataforgedInput',
-		schema: Schema.DataforgedInput,
-		path: Paths.DF_SCHEMA_IN,
-		messages: {
-			writeStart:
-				'Writing Starforged-compatible schema for Dataforged YAML input',
-			writeFinish: 'Finished writing schema for Dataforged YAML input'
-		}
-	},
-	{
 		name: 'Datasworn',
 		schema: Schema.Datasworn,
-		path: Paths.DS_SCHEMA_OUT,
+		paths: [Paths.DS_SCHEMA_OUT, Paths.DF_SCHEMA_OUT],
 		messages: {
-			writeStart: 'Writing Ironsworn-compatible schema for Datasworn',
+			writeStart: 'Writing schema for Datasworn',
 			writeFinish: 'Finished writing schema for Datasworn'
 		}
 	},
 	{
 		name: 'DataswornInput',
 		schema: Schema.DataswornInput,
-		path: Paths.DS_SCHEMA_IN,
+		paths: [Paths.DS_SCHEMA_IN, Paths.DF_SCHEMA_IN],
 		messages: {
-			writeStart:
-				'Writing Ironsworn-compatible schema for Datasworn YAML input',
+			writeStart: 'Writing schema for Datasworn YAML input',
 			writeFinish: 'Finished writing schema for Datasworn YAML input'
 		}
 	}
@@ -64,23 +44,23 @@ const schemaOptions: SchemaOptions[] = [
 
 for (const options of schemaOptions) {
 	ajv.addSchema(options.schema, options.name)
-	getPrettierOptions(options.path)
+	// FIXME this could probably stand to be more precise
+	getPrettierOptions(options.paths[0])
 		.then(async (prettierOptions) => {
 			log.info(options.messages.writeStart)
-			await writeFile(
-				options.path,
-				prettier.format(
-					JSON.stringify(ajv.getSchema(options.name)?.schema),
-					prettierOptions
+			for (const path of options.paths)
+				await writeFile(
+					path,
+					prettier.format(
+						JSON.stringify(ajv.getSchema(options.name)?.schema),
+						prettierOptions
+					)
 				)
-			)
 		})
 		.then(() => log.info(options.messages.writeFinish))
 		.catch(async (e) => {
 			log.error(e)
-			await writeFile(
-				options.path,
-				JSON.stringify(options.schema, undefined, '\t')
-			)
+			for (const path of options.paths)
+				await writeFile(path, JSON.stringify(options.schema, undefined, '\t'))
 		})
 }

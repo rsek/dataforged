@@ -22,7 +22,7 @@ import { mapValues } from 'lodash'
 import { type PartialDeep } from 'type-fest'
 import { REGEX_DICT_KEY } from 'schema/common/regex'
 
-/** Pattern for keys used in dictionary objects throughout Dataforged; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
+/** Pattern for keys used in dictionary objects throughout Datasworn; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))
 
 export function Dictionary<T extends TSchema>(
@@ -177,35 +177,36 @@ export function Collection<T extends TRef>(
 				description:
 					"Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 			}),
-			imports: Type.Optional(
-				Type.Object(
-					{
-						from: {
-							...idPattern,
-							description: 'The collection imported by this collection.'
-						},
-						include: Type.Union(
-							[
-								Type.Null(),
-								Type.Array(
-									Type.Unsafe<string>({
-										$ref: memberSchema.$ref + 'IDWildcard'
-									})
-								)
-							],
-							{
-								description:
-									'IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.'
-							}
-						)
-					},
-					{
-						macro: true,
-						description:
-							"Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides."
-					}
-				)
-			),
+			// FIXME: Revisist whether this is necessary
+			// imports: Type.Optional(
+			// 	Type.Object(
+			// 		{
+			// 			from: {
+			// 				...idPattern,
+			// 				description: 'The collection imported by this collection.'
+			// 			},
+			// 			include: Type.Union(
+			// 				[
+			// 					Type.Null(),
+			// 					Type.Array(
+			// 						Type.Unsafe<string>({
+			// 							$ref: memberSchema.$ref + 'IDWildcard'
+			// 						})
+			// 					)
+			// 				],
+			// 				{
+			// 					description:
+			// 						'IDs (which may be wildcarded) for the items to import, or `null` if the entire collection should be imported.'
+			// 				}
+			// 			)
+			// 		},
+			// 		{
+			// 			macro: true,
+			// 			description:
+			// 				"Collection borrows content from another collection. The target collection should be cloned, and this collection's values then merged to the clone as overrides."
+			// 		}
+			// 	)
+			// ),
 			color: Type.Optional(Type.Ref(Metadata.CSSColor)),
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Optional(Type.Ref(Localize.MarkdownString)),

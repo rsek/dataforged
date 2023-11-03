@@ -10,7 +10,7 @@ import { transform } from 'builders/transformer'
 
 import type * as In from 'types/input'
 
-import { SourcebookClassic, SourcebookStarforged } from 'builders/sourcebook'
+import { SourcebookClassic } from 'builders/sourcebook'
 import { capitalize, forEach, merge, pick, omit } from 'lodash'
 import { type Out } from 'types'
 import path from 'path'
@@ -33,13 +33,9 @@ forEach(
 	}
 )
 
-type SourcebookIn =
-	| In.Classic.SourcebookClassic
-	| In.Starforged.SourcebookStarforged
+type SourcebookIn = In.Classic.SourcebookClassic
 
-type SourcebookOut =
-	| Out.Classic.SourcebookClassic
-	| Out.Starforged.SourcebookStarforged
+type SourcebookOut = Out.Classic.SourcebookClassic
 
 async function buildFile(filePath: string) {
 	log.info(`Building from ${filePath}`)
@@ -49,18 +45,7 @@ async function buildFile(filePath: string) {
 		filename: filePath
 	}) as SourcebookIn
 
-	let transformer
-
-	switch (data.ruleset) {
-		case 'classic':
-			transformer = SourcebookClassic
-			break
-		case 'starforged':
-			transformer = SourcebookStarforged
-			break
-		default:
-			throw new Error(`Data has an invalid 'ruleset' key`)
-	}
+	const transformer = SourcebookClassic
 
 	const schemaIn = `${capitalize(data.ruleset)}Input`
 

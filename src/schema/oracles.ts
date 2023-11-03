@@ -1,6 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID, Localize, Metadata, Abstract } from 'schema/common'
-import { JsonEnum } from 'typebox'
+import { JsonEnum, JsonEnumFromRecord } from 'typebox'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -35,10 +35,21 @@ export const OracleRollTemplate = Type.Object(
 )
 export type OracleRollTemplate = Static<typeof OracleRollTemplate>
 
-export const OracleTableRollMethod = JsonEnum(
-	['no_duplicates', 'keep_duplicates', 'make_it_worse'],
-	{ default: 'no_duplicates', $id: '#/$defs/OracleTableRollMethod' }
+export const OracleTableRollMethod = JsonEnumFromRecord(
+	{
+		no_duplicates: 'Duplicates should be re-rolled.',
+		keep_duplicates: 'Duplicates should be kept.',
+		make_it_worse:
+			'Duplicates should be kept, and they compound to make things worse.'
+	},
+	{
+		default: 'no_duplicates',
+		$id: '#/$defs/OracleTableRollMethod',
+		description:
+			'Special roll instructions to use when rolling multiple times on a single oracle table.'
+	}
 )
+
 export type OracleTableRollMethod = Static<typeof OracleTableRollMethod>
 
 export const OracleTableRoll = Type.Object(
@@ -112,8 +123,12 @@ export const OracleTableMatchBehavior = Type.Object(
 )
 export type OracleTableMatchBehavior = Static<typeof OracleTableMatchBehavior>
 
-export const OracleTableStyle = JsonEnum(
-	['table', 'embed_in_row', 'embed_as_column'],
+export const OracleTableStyle = JsonEnumFromRecord(
+	{
+		table: 'Render as a standalone table.',
+		embed_in_row: 'Render as a table, within a row in another table.',
+		embed_as_column: 'Render as a single column of a table.'
+	},
 	{ $id: '#/$defs/OracleTableStyle' }
 )
 export type OracleTableStyle = Static<typeof OracleTableStyle>

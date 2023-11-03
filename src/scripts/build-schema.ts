@@ -13,58 +13,39 @@ import {
 	DelveSites
 } from 'schema'
 
-import { SourcebookClassic, SourcebookStarforged } from 'schema/sourcebooks'
+import { Sourcebook, SourcebookInfo } from 'schema/sourcebooks'
 import { prepareInputSchema, prepareSchema } from './transform-schema'
 import { Player, Progress } from 'schema/common'
 
 export const DATASWORN_VERSION = '2.0.0-dev'
-export const DATAFORGED_VERSION = '2.0.0-dev'
 
 export const $schema = 'http://json-schema.org/draft-07/schema#'
 
 export const SOURCE_PARTIAL_KEY = '_source'
 
-export const Dataforged = prepareSchema(
-	SourcebookStarforged({
-		$schema,
-		$id: 'https://ironswornrpg.com/starforged.schema.json',
-		title: `Dataforged v${DATAFORGED_VERSION}`,
-		description:
-			'Describes game rules elements compatible with the Ironsworn: Starforged tabletop role-playing game by Shawn Tomkin.',
-		$defs: cloneDeep({
-			...ID,
-			...Metadata,
-			...Localize,
-			...Progress,
-			...Npcs,
-			...Oracles,
-			...Moves,
-			...Assets,
-			...Truths,
-			...Atlas,
-			...Player
-		})
-	})
-)
+const contents = {
+	moves: Moves.MoveCategory,
+	assets: Assets.AssetType,
+	oracles: Oracles.OracleCollection,
+	npcs: Npcs.NpcCollection,
+	truths: Truths.Truth,
+	atlas: Atlas.Atlas
+}
 
-export const DataforgedInput = prepareInputSchema(
-	SourcebookStarforged({
-		$schema,
-		$id: 'https://ironswornrpg.com/starforged-input.schema.json',
-		title: `Dataforged v${DATAFORGED_VERSION} (data entry)`,
-		description:
-			'Data entry schema for Dataforged, which provides templates and other conveniences like source inheritance. It must be processed into the standard Dataforged format.',
-		$defs: cloneDeep(Dataforged.$defs)
-	})
-)
+const contentsDelve = {
+	rarities: Rarities.Rarity,
+	delve_sites: DelveSites.DelveSite,
+	site_themes: DelveSites.DelveSiteTheme,
+	site_domains: DelveSites.DelveSiteDomain
+}
 
 export const Datasworn = prepareSchema(
-	SourcebookClassic({
+	Sourcebook(cloneDeep({ ...contents, ...contentsDelve }), SourcebookInfo, {
 		$schema,
-		$id: 'https://ironswornrpg.com/classic.schema.json',
+		$id: 'https://ironswornrpg.com/datasworn.schema.json',
 		title: `Datasworn v${DATASWORN_VERSION}`,
 		description:
-			'Describes game rules elements compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
+			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
 		$defs: cloneDeep({
 			...ID,
 			...Metadata,
@@ -83,15 +64,51 @@ export const Datasworn = prepareSchema(
 	})
 )
 
+// TODO try to build this. does it work?
+const DataswornDelve = prepareSchema(
+	Sourcebook<keyof typeof contentsDelve>(
+		cloneDeep(contentsDelve),
+		SourcebookInfo,
+		{
+			$schema: Datasworn.$id as string,
+			$id: 'https://ironswornrpg.com/datasworn-delve.schema.json',
+			title: `Ironsworn: Delve for Datasworn v${DATASWORN_VERSION}`,
+			description:
+				'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
+			$defs: cloneDeep({
+				...ID,
+				...Rarities,
+				...DelveSites
+			})
+		}
+	)
+)
+
 export const DataswornInput = prepareInputSchema(
-	SourcebookClassic({
+	Sourcebook(cloneDeep({ ...contents, ...contentsDelve }), SourcebookInfo, {
 		$schema,
-		$id: 'https://ironswornrpg.com/classic-input.schema.json',
+		$id: 'https://ironswornrpg.com/datasworn-input.schema.json',
 		title: `Datasworn v${DATASWORN_VERSION} (data entry)`,
 		description:
-			'Data entry schema for Datasworn, which provides templates, fallbacks/default values for many undefined keys, and other conveniences like source inheritance. It must be processed into the standard Datasworn format.',
+			'Data entry schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin. The data entry schema provides templates and other conveniences like source inheritance; the input then requires additional processing to match the full Datasworn schema.',
 		$defs: cloneDeep(Datasworn.$defs)
 	})
+)
+
+// TODO try to build this. does it work?
+const DataswornDelveInput = prepareSchema(
+	Sourcebook<keyof typeof contentsDelve>(
+		cloneDeep(contentsDelve),
+		SourcebookInfo,
+		{
+			$schema: DataswornDelve.$id as string,
+			$id: 'https://ironswornrpg.com/datasworn-delve-input.schema.json',
+			title: `Ironsworn: Delve for Datasworn v${DATASWORN_VERSION} (data entry)`,
+			description:
+				'Data entry schema for Datasworn, which describes game rules compatible with the Ironsworn tabletop roleplaying game by Shawn Tomkin. The data entry schema provides templates and other conveniences like source inheritance; the input then requires additional processing to match the full Datasworn schema.',
+			$defs: cloneDeep(DataswornDelve.$defs)
+		}
+	)
 )
 
 // console.log(JSON.stringify(DataswornInput.getSchema(), undefined, '\t'))
