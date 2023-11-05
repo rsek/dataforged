@@ -3,44 +3,55 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { type TSchema, Type } from '@sinclair/typebox'
-import { mapValues, omit, set } from 'lodash'
-import { SourceStub } from 'schema/common/metadata'
+import { Type, type TSchema } from '@sinclair/typebox'
 import { type JSONSchema7 } from 'json-schema'
 import { Draft07 } from 'json-schema-library'
+import { cloneDeep, omit, set } from 'lodash-es'
+import { SourceStub } from 'schema/common/metadata.js'
 
-export function prepareSchema(schema: JSONSchema7) {
-	const draft = new Draft07(schema)
-	draft.eachSchema((subschema) => {
-		if (subschema.$id && !subschema.title && !subschema.ref) {
-			subschema.title = subschema.$id.replace('#/$defs/', '')
-		}
+const schemaRefHead = '#/$defs/'
 
-		subschema = omitProperties(subschema, '$id')
+export type SchemaDefs = Record<string, JSONSchema7>
+
+export function prepareSchema(root: TSchema, $defs: SchemaDefs) {
+	const draft = new Draft07({
+		...root,
+		$defs
 	})
-	return draft.getSchema() as JSONSchema7
+	draft.eachSchema(prepareSchemaDef)
+	return draft
 }
 
-export function prepareInputSchema(schema: JSONSchema7) {
-	const draft = new Draft07(schema)
-	draft.eachSchema((subschema) => {
-		subschema = setOptional(subschema, 'id')
-		subschema = setOptionalWhenDefault(subschema)
-		subschema = addSourceCascade(subschema)
+export function prepareInputSchema(schema: Draft07, overrides = {}) {
+	const inputSchema = new Draft07({
+		...cloneDeep(schema.getSchema()),
+		...overrides
 	})
-	return draft.getSchema() as JSONSchema7
+
+	inputSchema.eachSchema(prepareInputSchemaDef)
+
+	return inputSchema
 }
 
-export function cleanSchema(schema: JSONSchema7) {
-	const data = JSON.parse(JSON.stringify(schema)) as JSONSchema7
-	if (data.$defs == null) throw new Error('Schema is missing $defs')
+/** Mutates schema */
+function prepareSchemaDef(schema: JSONSchema7) {
+	if (schema.$id && !schema.title && !schema.$ref)
+		schema.title = schema.$id.replace(schemaRefHead, '')
 
-	data.$defs = mapValues(data.$defs, (value) => {
-		delete (value as any).$id
-		return value
-	})
+	// these are redundant once TypeBox is done with them, excluding the root schema ID
+	if (!(schema.$id as string)?.startsWith('http'))
+		schema = omitProperties(schema, '$id')
 
-	return data
+	return schema
+}
+
+/** Mutates schema */
+// TODO: could this be rewritten with typebox?
+function prepareInputSchemaDef(schema: JSONSchema7) {
+	schema = setOptional(schema, 'id')
+	schema = setOptionalWhenDefault(schema)
+	schema = addSourceCascade(schema)
+	return schema
 }
 
 // TODO: add something that sets visibility
@@ -48,7 +59,7 @@ export function cleanSchema(schema: JSONSchema7) {
 /**
  * Adjust an object schema to make the provided properties optional.
  */
-export function setOptional(schema: JSONSchema7, ...keys: string[]) {
+function setOptional(schema: JSONSchema7, ...keys: string[]) {
 	if (Array.isArray(schema.required))
 		schema.required = schema.required.filter((k) => !keys.includes(k))
 
@@ -60,7 +71,7 @@ export function setOptional(schema: JSONSchema7, ...keys: string[]) {
  *
  * Mutates the original schema.
  */
-export function setOptionalWhenDefault(schema: JSONSchema7) {
+function setOptionalWhenDefault(schema: JSONSchema7) {
 	if (
 		schema?.type !== 'object' ||
 		schema.properties == null ||
@@ -85,7 +96,7 @@ export function setOptionalWhenDefault(schema: JSONSchema7) {
 /**
  * Omits properties from an object schema.
  */
-export function omitProperties(schema: JSONSchema7, ...keys: string[]) {
+function omitProperties(schema: JSONSchema7, ...keys: string[]) {
 	if (schema.properties == null) return schema
 	schema = setOptional(schema, ...keys)
 	schema.properties = omit(schema.properties, ...keys)
@@ -97,7 +108,7 @@ export function omitProperties(schema: JSONSchema7, ...keys: string[]) {
  *
  * Mutates the original schema.
  */
-export function addSourceCascade(schema: JSONSchema7) {
+function addSourceCascade(schema: JSONSchema7) {
 	const SOURCE_KEY = 'source'
 	const SOURCE_STUB_KEY = '_source'
 
@@ -146,8 +157,6 @@ export function recurseObjectSchema(
 	}
 	return schema
 }
-
-export function toDataEntrySchema(defs: Record<string, TSchema>) {}
 
 // export function getDataEntryDefinitions(
 // 	defs: Record<string, TSchema>

@@ -4,8 +4,8 @@ import {
 	type Static,
 	type TString
 } from '@sinclair/typebox'
-import { cloneDeep, escapeRegExp } from 'lodash'
-import { SNAKE_CASE } from 'schema/common/regex'
+import { cloneDeep, escapeRegExp } from 'lodash-es'
+import { SNAKE_CASE } from 'schema/common/regex.js'
 import { type Opaque } from 'type-fest'
 
 /** Composes regular expressions for Datasworn IDs */

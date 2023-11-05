@@ -4,9 +4,9 @@ import {
 	type ObjectOptions,
 	type TProperties
 } from '@sinclair/typebox'
-import { ID, Localize, Progress, Metadata, Abstract } from 'schema/common'
-import { Squash } from 'schema/common/utils'
-import { OracleTableRow } from 'schema/oracles'
+import { ID, Localize, Progress, Metadata, Abstract } from './common/index.js'
+import { Squash } from './common/utils.js'
+import { OracleTableRow } from './oracles.js'
 import { JsonEnum } from 'typebox'
 
 export const DelveSiteDenizenFrequency = JsonEnum(

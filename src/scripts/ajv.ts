@@ -1,6 +1,6 @@
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
-import { log } from 'scripts/logger'
+import { log } from './logger.js'
 
 // Initialize AJV
 

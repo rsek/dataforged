@@ -1,0 +1,229 @@
+id: starforged
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  url: https://ironswornrpg.com
+oracles:
+  planets:
+    name: Planets
+    collections:
+      jungle:
+        name: Jungle World
+        images:
+          - images/planets/jungle-01.webp
+          - images/planets/jungle-02.webp
+        _source:
+          page: 313
+        summary: A humid, rain-soaked planet that keeps its secrets under a thick canopy of vegetation.
+        sample_names:
+          - Acacia
+          - Aster
+          - Beryl
+          - Celadon
+          - Ceres
+          - Damu
+          - Dryad
+          - Flora
+          - Iridum
+          - Iris
+          - Kishar
+          - Penumbra
+          - Roris
+          - Sylva
+          - Tangle
+          - Thorn
+          - Venom
+          - Verdure
+          - Veris
+          - Viridian
+        collections:
+          settlements:
+            name: Settlements
+            contents:
+              terminus:
+                name: Terminus
+                table:
+                  - low: 1
+                    high: 40
+                    result: &Set.0 None
+                  - low: 41
+                    high: 55
+                    result: &Set.1 Orbital settlement
+                  - low: 56
+                    high: 80
+                    result: &Set.2 Planetside settlement
+                  - low: 81
+                    high: 92
+                    result: &Set.3 Multiple settlements
+                  - low: 93
+                    high: 100
+                    result: &Set.4 Settlements in conflict
+              outlands:
+                name: Outlands
+                table:
+                  - low: 1
+                    high: 65
+                    result: *Set.0
+                  - low: 66
+                    high: 75
+                    result: *Set.1
+                  - low: 76
+                    high: 92
+                    result: *Set.2
+                  - low: 93
+                    high: 97
+                    result: *Set.3
+                  - low: 98
+                    high: 100
+                    result: *Set.4
+              expanse:
+                name: Expanse
+                table:
+                  - low: 1
+                    high: 85
+                    result: *Set.0
+                  - low: 86
+                    high: 90
+                    result: *Set.1
+                  - low: 91
+                    high: 97
+                    result: *Set.2
+                  - low: 98
+                    high: 99
+                    result: *Set.3
+                  - low: 100
+                    high: 100
+                    result: *Set.4
+        contents:
+          atmosphere:
+            name: Atmosphere
+            table:
+              - low: null
+                high: null
+                result: None / thin
+              - low: 1
+                high: 25
+                result: Toxic
+              - low: 26
+                high: 30
+                result: Corrosive
+              - low: 31
+                high: 60
+                result: Marginal
+              - low: 61
+                high: 90
+                result: Breathable
+              - low: 91
+                high: 100
+                result: Ideal
+          observed_from_space:
+            name: Observed From Space
+            table:
+              - low: 1
+                high: 11
+                result: Cloud-breaching trees
+              - low: 12
+                high: 22
+                result: Towering mountains
+              - low: 23
+                high: 33
+                result: Expansive rivers or wetlands
+              - low: 34
+                high: 44
+                result: Unbroken canopy
+              - low: 45
+                high: 55
+                result: Inland seas
+              - low: 56
+                high: 66
+                result: Unusual vegetation color
+              - low: 67
+                high: 77
+                result: Massive canyons
+              - low: 78
+                high: 88
+                result: Persistent cloud cover
+              - low: 89
+                high: 98
+                result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                rolls: &DF.rolls
+                  - oracle: starforged/oracles/core/descriptor
+                    auto: true
+                  - oracle: starforged/oracles/core/focus
+                    auto: true
+              - low: 99
+                high: 100
+                result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
+          feature:
+            name: Planetside Feature
+            table:
+              - low: 1
+                high: 7
+                result: Bioluminescent flora
+              - low: 8
+                high: 14
+                result: Deep river gorges
+              - low: 15
+                high: 21
+                result: Extensive exposed root systems
+              - low: 22
+                high: 28
+                result: Immense tiered waterfalls
+              - low: 29
+                high: 35
+                result: Languid rivers
+              - low: 36
+                high: 42
+                result: Low-lying fog
+              - low: 43
+                high: 49
+                result: Plunging sinkholes
+              - low: 50
+                high: 56
+                result: Scarred clearings
+              - low: 57
+                high: 63
+                result: Sinking quagmires
+              - low: 64
+                high: 70
+                result: Surging rivers
+              - low: 71
+                high: 77
+                result: Torrential rainstorms
+              - low: 78
+                high: 84
+                result: Violent electrical storms
+              - low: 85
+                high: 91
+                result: Waterlogged caves
+              - low: 92
+                high: 98
+                result: *DF.result
+                rolls: *DF.rolls
+              - low: 99
+                high: 100
+                result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
+          life:
+            name: Life
+            table:
+              - low: null
+                high: null
+                result: None
+              - low: null
+                high: null
+                result: Extinct
+              - low: 1
+                high: 5
+                result: Scarce
+              - low: 6
+                high: 35
+                result: Diverse
+              - low: 36
+                high: 75
+                result: Bountiful
+              - low: 76
+                high: 100
+                result: Overrun

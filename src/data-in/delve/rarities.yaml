@@ -1,0 +1,622 @@
+id: delve
+source:
+  title: 'Ironsworn: Delve'
+  authors:
+    - name: Shawn Tomkin
+  url: https://ironswornrpg.com
+  license: https://creativecommons.org/licenses/by-nc-sa/4.0
+  date: 2020-02-13
+rarities:
+  ayethins_journal:
+    name: Ayethin’s Journal
+    asset: classic/assets/path/alchemist
+    _source:
+      page: 182
+    # icon: https://game-icons.net/1x1/lorc/papers.html
+    xp_cost: 5
+    description: |-
+      This ancient tome was originally written by a legendary alchemist. In its curiously well-preserved pages, inscribed in an ink of unnatural intensity, are formulas for alchemical concoctions. New recipes occasionally appear unbidden, although the total number of pages never changes.
+  black_fang:
+    name: Black Fang
+    asset: classic/assets/path/animal_kin
+    _source:
+      page: 182
+    # icon: https://game-icons.net/1x1/lorc/saber-tooth.html
+    xp_cost: 3
+    description: |-
+      This large tooth of uncertain origin resonates with the power and mystery of the untamed world. When you hold or wear the fang, your eyes take on a slight golden hue, and you feel the call of those wild places.
+  resolute_banner:
+    name: Resolute Banner
+    asset: classic/assets/path/banner_sworn
+    _source:
+      page: 182
+    # icon: https://game-icons.net/1x1/delapouite/knight-banner.html
+    # but with the cross element removed
+    xp_cost: 4
+    description: |-
+      First borne by the surviving members of a warband who stood firm against an enemy onslaught, this banner is scarred by generations of war. When you carry it into battle against an overwhelming foe, you might hear the song of former bearers, or catch glimpses of their spectral presence fighting alongside you.
+  cairn_stone_of_the_sundered:
+    name: Cairn Stone of the Sundered
+    asset: classic/assets/path/battle_scarred
+    _source:
+      page: 182
+    # icon: https://game-icons.net/1x1/lorc/rock.html
+    xp_cost: 3
+    description: |-
+      The Sundered, an Ironlands warband, was formed of those who suffered the traumas of battle—but whose fighting spirit remained. Khinara the Half-Handed, a shrewd leader outcast from her former band, brought these misfits together to forge a new path. Their final and most renowned battle was to stand against an overwhelming force of varou at the Siege of Winterhill. Nearly all the Sundered fell in that long day of fighting, but not before saving many Ironlanders from the varou horde.
+
+      Khinara and her handful of remaining comrades left the battleground that day and have not been seen since. A simple cairn marked the sacrifice and courage of the Sundered, from which only this small stone remains.
+  bracer_of_the_first_blood:
+    name: Bracer of the First Blood
+    asset: classic/assets/path/blade_bound
+    _source:
+      page: 183
+    # icon: https://game-icons.net/1x1/delapouite/bracer.html
+    xp_cost: 4
+    description: |-
+      This simple leather bracer was worn generations ago by the first person killed by your kin-blade. At that time, it was a simple weapon wielded by your ancestor. With their dying breath, the blade’s victim cursed your ancestor to an afterlife of iron servitude, binding them forever to the weapon.
+
+      The bracer is weathered and marred by faded blood stains. When worn on your blade-arm, you feel a stronger connection to your ancestor within the iron. But there is another presence here, and you sense its long-simmering thirst for revenge.
+  waterskin_of_fellowship:
+    name: Waterskin of Fellowship
+    asset: classic/assets/path/bonded
+    _source:
+      page: 183
+    # icon: https://game-icons.net/1x1/delapouite/magic-potion.html
+    xp_cost: 3
+    description: |-
+      Ages ago, this waterskin, filled with wine, was passed among the fighters of a warband on the night before a fateful battle. They drunk heartily, sang hopeful tunes, and swore promises to one another. None would be left behind, they vowed. All would fall or stand together.
+
+      By the dawn, all lie dead. But their loyalty and companionship infused this waterskin with the purity of those vows. Anything it contains—water, wine, or mead—is made sweeter and more refreshing. When you bear the skin, your own nature might change subtly, and others may view you more favorably.
+  scarves_of_the_northern_lights:
+    name: Scarves of the Northern Lights
+    asset: classic/assets/path/dancer
+    _source:
+      page: 183
+    # icon: null
+    xp_cost: 3
+    description: |-
+      These lengths of fabric, bound together with silvery thread, are enchanted with the alluring but dangerous essence of the hyperborean realms.
+
+      When you dance with the scarves, your movements seem to blur and shimmer, becoming almost ethereal. The fabric casts wavering, prismatic auras into the air. Their beguiling nature is otherworldly.
+  founders_reliquary:
+    name: Founder’s Reliquary
+    asset: classic/assets/path/devotant
+    _source:
+      page: 184
+    # icon: https://game-icons.net/1x1/delapouite/covered-jar.html
+    xp_cost: 3
+    description: |-
+      This urn of brassy metal, etched with strange and captivating iconography, contains the ashes and bone fragments of an ancient devotant, the founder of your faith. While carrying this reliquary, you might catch whispers and chants on the wind; echoes of ancient oration.
+  sigil_of_the_broken_circlet:
+    name: Sigil of the Broken Circlet
+    asset: classic/assets/path/empowered
+    _source:
+      page: 184
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This sigil of simple worked iron bears a gemstone that once adorned a noble circlet. Within its facets, you might glimpse the faces of an ancient ruler whose reign ended with the sundering of their circlet of power. When you bear this sigil, you embody some measure of this ruler’s former authority.
+  coin_of_favor:
+    name: Coin of Favor
+    asset: classic/assets/path/fortune_hunter
+    _source:
+      page: 184
+    # icon: https://game-icons.net/1x1/lorc/crown-coin.html
+    # modified
+    xp_cost: 4
+    description: |-
+      This battered copper coin, emblazoned with the emblem of a forgotten people, appears mundane at first glance—a worthless trinket. But when spun on a surface, flipped into the air, or rolled across knuckles, the coin hums with a strange and discordant tone. Those who understand the coin’s song may find themselves on a path of good fortune.
+  silverstone_pestle:
+    name: Silverstone Pestle
+    asset: classic/assets/path/herbalist
+    _source:
+      page: 184
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This obsidian pestle is streaked with shimmering silver. The rounded end is unworn and unstained even after centuries of use. When ground against a mortar, violet smoke wafts from the ingredients, occasionally forming vaguely humanoid figures and bestial shapes. The phantasms are gone to the wind almost as soon as they appear.
+  unbreakable_torc:
+    name: Unbreakable Torc
+    asset: classic/assets/path/honorbound
+    _source:
+      page: 185
+    # icon: https://game-icons.net/1x1/cathelineau/torc.html
+    xp_cost: 3
+    description: |-
+      Once clasped to your arm, this simple iron bracelet binds itself closed. It cannot be removed, except by lopping off your hand at the wrist. When you stay true to your word, it is said to grant good fortune. But when you tell a lie or forsake an oath, it tightens painfully, like a snake coiling around its prey.
+  blackguards_baldric:
+    name: Blackguard’s Baldric
+    asset: classic/assets/path/improviser
+    _source:
+      page: 185
+    # icon: https://game-icons.net/1x1/lucasms/belt.html
+    xp_cost: 4
+    description: |-
+      An infamous scoundrel wore a wide belt laden with pouches and buckles, from which he drew wondrous implements to aid in his devious work. After his death, the baldric disappeared, but occasionally finds its way into the hands of the clever and the cunning. It’s said that in times of need, one might find their salvation within the many pouches and pockets of the belt.
+  basilisk_cloak:
+    name: Basilisk Cloak
+    asset: classic/assets/path/infiltrator
+    _source:
+      page: 185
+    # icon: null
+    xp_cost: 5
+    description: |-
+      This leathery cloak and cowl, yellow-brown in hue, is stitched from the hide of a basilisk. When draped over the shoulders, the cloak allows the wearer to embody the stealthy nature of those beasts of the southern marshlands.
+  horn_of_the_mammoth:
+    name: Horn of the Mammoth
+    asset: classic/assets/path/loyalist
+    _source:
+      page: 185
+    # icon: https://game-icons.net/1x1/lorc/hunting-horn.html
+    # modified
+    xp_cost: 3
+    description: |-
+      This sweeping signal horn, carved from the tusk of a mammoth, is etched with inscrutable runes. When blown, the horn emits the thunderous bellow of a mammoth.
+
+      Through the years, keepers of this mighty horn have rallied allies and summoned aid to their friends. Today, it is imbued with the loyalty and sacrifices of those bearers.
+  progenitor_shard:
+    name: Progenitor Shard
+    asset: classic/assets/path/masked
+    _source:
+      page: 186
+    # icon: https://game-icons.net/1x1/lorc/beech.html
+    xp_cost: 5
+    description: |-
+      The Progenitor Shard appears as a mundane piece of petrified wood. However, it is a fragment of what the elves call the source tree—the long dead entity from which all other elder trees originate. When pressed to the forehead of an elven mask, the shard sets itself into a hollow and glimmers with ancient power. Then, the mask makes a dramatic change to its features, such as sprouting wooden horns or antlers. A mask with the Progenitor Shard may even display new awareness and intelligence, reacting to others through subtle changes of its once-inert expression.
+  sundered_sword:
+    name: Sundered Sword
+    asset: classic/assets/path/oathbreaker
+    _source:
+      page: 186
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This remnant of an ancient sword consists only of a hilt, bound in decaying leather, and a stunted piece of broken blade. When it was whole, the weapon was wielded by a queen’s guard. That warrior failed in his oath to protect his queen when she was assassinated by a usurper. In honor of his fallen liege, he undertook a new years-long quest that toppled kingdoms and remade the world. At the end of it, he shattered his sword and made no more vows. What’s left of the blade is said to hold an essence of the resolve that set the warrior on his path of retribution.
+  mark_of_the_exile:
+    name: Mark of the Exile
+    asset: classic/assets/path/outcast
+    _source:
+      page: 186
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This mark is branded or tattooed onto the flesh of outcasts. It is the sigil of an Old World leader, betrayed by their own kin, who was stripped of their name and banished to the wilderness. They eventually returned to undo the schemes of those who cast them out. But even after they were welcomed back into their community, they chose to disappear again into the wilds—committed to their new life in exile.
+
+      Now the sigil, inscribed or branded as part of lengthy ceremony, marks the forsaken or misunderstood among the Ironlanders and gives them the strength to carry on. Only a few still hold the knowledge of the ritual which sets this mark upon your flesh.
+  tattoo_of_many_faces:
+    name: Tattoo of Many Faces
+    asset: classic/assets/path/pretender
+    _source:
+      page: 187
+    # icon: https://game-icons.net/1x1/lorc/spiked-halo.html
+    xp_cost: 5
+    description: |-
+      This elaborate tattoo, drawn with blood-infused ink, depicts a face that seems to change subtly each time you look at it. The mystic known as the Gray Lady, who was alive in the Old World and may outlive those not yet born in this new land, grants this mark to those she finds worthy. If you seek to escape your former life by adopting new identities, the cunning magic of this tattoo may aid you in your path.
+  shroud_of_retribution:
+    name: Shroud of Retribution
+    asset: classic/assets/path/revenant
+    _source:
+      page: 187
+    # icon: https://game-icons.net/1x1/delapouite/rolled-cloth.html
+    xp_cost: 3
+    description: |-
+      This fragment of woolen cloth is etched with words in a long-forgotten language. It is said to be a piece of the burial shroud of a great warrior who defied death to join her war-kin in one final battle. Those who have seen beyond the veil of our world will feel a kinship to the enduring spirits that lurk within the shroud.
+  horsemaster_helm:
+    name: Horsemaster Helm
+    asset: classic/assets/path/rider
+    _source:
+      page: 187
+    # icon: https://game-icons.net/1x1/lorc/crested-helmet.html
+    xp_cost: 4
+    description: |-
+      This helmet with a crest of horsehair was worn by Delkash the Horseborn, a legendary leader who commanded a mighty warband of mounted warriors on the eastern plains of the Old World. She and her band were renowned for their skill in riding and the almost spiritual connection they shared with their horses.
+  book_of_the_cipher:
+    name: Book of the Cipher
+    asset: classic/assets/path/ritualist
+    _source:
+      page: 187
+    # icon: https://game-icons.net/1x1/delapouite/secret-book.html
+    xp_cost: 3
+    description: |-
+      This unassuming tome is plainly bound in leather and clasped in iron. For most folk, the pages within appear blank. For those with the gift of magic, those pages are filled with the writings and illustrations of generations of ritualists. The content is a mix of tempting secrets, indecipherable scrawls, and deranged ramblings. It is a life’s work to draw meaning from it, but even the presence of the book can bring you closer to the powers of the mystic realms.
+  barrow_clasp:
+    name: Barrow Clasp
+    asset: classic/assets/path/shadow_kin
+    _source:
+      page: 188
+    # icon: https://game-icons.net/1x1/delapouite/skeletal-hand.html
+    xp_cost: 3
+    description: |-
+      This horrid cloak clasp is fashioned from several interlocking finger bones. It was once worn by Balrick the Bone-Tender, who gathered the bones from crypts across the Old World and believed they whispered of forbidden lore.
+
+      When you wear the Barrow Clasp, you are marked as someone who has suffered the futility of life, who walks in shadow and embraces the power and secrets of realms beyond our own. For you, the that dark knowledge is not a corruption or a curse. It is a gift.
+  seeing_stone:
+    name: Seeing Stone
+    asset: classic/assets/path/sighted
+    _source:
+      page: 188
+    # icon: null
+    xp_cost: 4
+    description: |-
+      Once owned by a mystic who succumbed to a dark path and became a husk, this glassy stone of volcanic rock is marred by a single hole through its center. Those who carry the Seeing Stone are said to gain clarity and an understanding of mystic forces. Looking through the stone may inspire revelations, but it can also reveal darkness and terrors beyond our understanding. Some secrets are best left unknown.
+  slayers_medallion:
+    name: Slayer’s Medallion
+    asset: classic/assets/path/slayer
+    _source:
+      page: 188
+    # icon: https://game-icons.net/1x1/lorc/shining-claw.html
+    xp_cost: 3
+    description: |-
+      This pendant, fashioned of silver in the shape of a claw, was forged for the famed beast slayer Kodroth in honor of his tenth kill. Unfortunately, Kodroth was devoured on his eleventh hunt, and the medallion sat for a time in the gut of a wyvern. After an unceremonious reintroduction to the world, the Slayer’s Medallion was retrieved and handed from one ill-fated hunter to the next.
+
+      The silver, now gouged by teeth and claw and pitted by digestive juices, is said to hold the hard lessons of every failed bowshot, every clumsy spear thrust, every weakened shield-arm. Perhaps these mistakes will not be your own.
+  mirror_of_the_eidolon:
+    name: Mirror of the Eidolon
+    asset: classic/assets/path/spirit_bound
+    _source:
+      page: 189
+    # icon: null
+    # possibly derived from https://game-icons.net/1x1/lorc/broken-tablet.html ?
+    xp_cost: 3
+    description: |-
+      Long ago, in the southlands of the Old World, a rich merchant believed he was haunted by the spirit of his beloved dead wife. But the signs of her presence were subtle. The smell of her perfume. An occasional chill. A barely-heard whisper. He longed to see her again, so he gathered the greatest artisans and mystics of the land to create a solution. Years later, they delivered a grand, gold-rimmed mirror that—they said—would reveal worlds and beings beyond the veil. The hopeful merchant had the mirror placed in his chambers and sent his staff away. A day later, a servant returned to find the merchant vanished and the mirror shattered.
+
+      This piece of broken glass, the edges smoothed by time, the surface darkened and tarnished, is all that remains of that ancient mirror. Carrying it with you strengthens the thread between you and those that dwell in the realms between life and death.
+  goldwhyns_denouement:
+    name: Goldwhyn’s Denouement
+    asset: classic/assets/path/storyweaver
+    _source:
+      page: 189
+    # icon: null
+    xp_cost: 4
+    description: |-
+      This ornate scroll tube is decorated with delicate silver and gold filigree. It is reputed to contain a single sheet of parchment once belonging to Goldwhyn the Bard, an ancient storyweaver who delighted the most royal of courts and the lowliest of mead halls with tales of adventure and sacrifice. As he lie in his death bed, Goldwhyn wrote one final tale and ordered it sealed away in this scroll tube. It has not been unsealed since, and doing so is said to bring the foulest of luck. Nevertheless, those who carry Goldwhyn’s Denouement are favored with the gift of story and fellowship.
+  opal_of_whispers:
+    name: Opal of Whispers
+    asset: classic/assets/path/trickster
+    _source:
+      page: 189
+    # icon: https://game-icons.net/1x1/lorc/vibrating-ball.html
+    xp_cost: 4
+    description: |-
+      This large opal is said to have been enchanted by a cunning mystic who sought to gain influence in court. The gem offers subtle suggestions to help guide conversations or reveal schemes. It is often set within an earring, where its whispers are better heard.
+  helm_of_the_unbroken:
+    name: Helm of the Unbroken
+    asset: classic/assets/path/veteran
+    _source:
+      page: 190
+    # icon: null
+    xp_cost: 3
+    description: |-
+      The famed warrior Brenna stood against a hundred foes or more before she fell, buying her brothers and sisters in arms the time they needed to retreat through the mountain pass. With blade, axe, and spear, she fought fiercely, her back against the sheer cliffs. Brenna the Unbroken, they call her in songs in the decades since. Her helm is battered and dented, tarnished and stained, but remains whole.
+
+      Brenna’s strength, resolve, and sacrifice remain imbued in the iron, the enduring legacy of a noble end.
+  leviathans_lament:
+    name: Leviathan’s Lament
+    asset: classic/assets/path/waterborn
+    _source:
+      page: 190
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This pendant, fashioned from the tip of a leviathan’s tooth, is engraved with a depiction of the fateful end of that creature. Pierced by the Abyssal Harpoon, an ancient weapon of unnatural sharpness, the leviathan is shown making a final leap above the waves in its death throes. If you stare at the pendant, you might find the scene revealed in extra clarity. The waves splash and surge, and you can see the mouth of the leviathan opening in a final, defiant roar.
+
+      When you wear this pendant—whether to honor the passing of this great beast, or as a warning to others of its kind—you are connected to the spirits of the water. If you are lucky, those spirits will favor you with fair winds and calm seas.
+  bough_of_the_surest_path:
+    name: Bough of the Surest Path
+    asset: classic/assets/path/wayfinder
+    _source:
+      page: 190
+    # icon: null
+    # possibly derived from https://game-icons.net/1x1/delapouite/wood-stick.html
+    xp_cost: 4
+    description: |-
+      This simple wooden rod, carved from an Old World rowan tree, can help guide travelers to their destination. It is marked with dozens of tiny notches representing successful journeys, and is said to have been used in finding the Ironlands during our escape from the Old World.
+
+      When you hold the Bough to the horizon, you feel the magnetic pull of the proper course. However, this object sometimes has its own opinions on where you should head, and may lead you to unexpected destinations.
+  whetstone_of_the_bear:
+    name: Whetstone of the Bear
+    asset: classic/assets/path/weaponmaster
+    _source:
+      page: 191
+    # icon: null
+    xp_cost: 3
+    description: |-
+      This simple whetstone is engraved with a single mark—the bear claw motif of a legendary warrior renowned for their prowess in the fighting arenas of the Old World. This stone was passed from them through successive generations of fighters, and has honed the edge of countless weapons.
+
+      Each faint score upon the Whetstone of the Bear is suffused with the courage, skill, and tenacity of the warriors who left that mark. When you use the whetstone, you may hear distant echoes of long-ago battles; when you carry it, you bear the legacy of those brave champions.
+  vignette_of_the_weald:
+    name: Vignette of the Weald
+    asset: classic/assets/path/wildblood
+    _source:
+      page: 191
+    # icon: null
+    xp_cost: 4
+    description: |-
+      This small elderwood carving depicts an intricate scene of trees, birds, and woodland animals. Looking at it for a time seems to reveal new or transformed details. A live tree grows where once stood a stump. Eyes look out from the shadows of a hollow, then disappear. A nesting bird takes flight.
+
+      When you carry this unusual piece of art, you feel kinship with the natural world and a deeper understanding of those wild places. The vignette may even reveal clues which lead you on the proper path through untracked lands and keep you safe from threats.
+  artisans_gloves:
+    name: Artisan’s Gloves
+    asset: classic/assets/path/wright
+    _source:
+      page: 191
+    # icon: https://game-icons.net/1x1/delapouite/gloves.html
+    xp_cost: 3
+    description: |-
+      Once worn by a wright who built the first ship to land on the shore of the Ironlands, these hide gloves, sturdy yet flexible and reinforced with iron studs, allow for great dexterity while also protecting a worker’s hands. The strength, skill, and resilience of dozens of wrights over many decades is worn into the leather.
+  farsight_quiver:
+    name: Farsight Quiver
+    asset: classic/assets/combat_talent/archer
+    _source:
+      page: 192
+    # icon: https://game-icons.net/1x1/lorc/arrow-flights.html
+    xp_cost: 4
+    description: |-
+      This quiver is fashioned from tanned leather, and carved with elaborate, spiraling runes. Despite its age, the leather is as supple as a newly crafted object. Arrows held within are said to be given extra sharpness and accuracy, and the bearer’s sight made more keen. On occasion, an arrow retrieved from the quiver will blossom with a cold blue flame as it flies unerringly to its target.
+  mantle_of_many_beasts:
+    name: Mantle of Many Beasts
+    asset: classic/assets/combat_talent/berserker
+    _source:
+      page: 192
+    # icon: https://game-icons.net/1x1/lorc/triple-claws.html
+    xp_cost: 5
+    description: |-
+      This stitched mantle is a patchwork of different pelts—some recognizable, some less so. When you wear the mantle, the ferocity and resilience of these animals and beasts is with you. Your foes may even look upon you and catch the briefest glimpses of these creatures upon your own form, like phantasms seen in the afterglow of a lightning strike.
+  iron_fist:
+    name: Iron Fist
+    asset: classic/assets/combat_talent/brawler
+    _source:
+      page: 192
+    # icon: https://game-icons.net/1x1/lorc/fist.html
+    xp_cost: 5
+    description: |-
+      This band of ridged iron is inscribed with runes and subtly thrums with ancient energy. It fits perfectly in your palm and encircles your closed fist. When wielded in a fight, the crude but effective weapon adds unnatural weight and power to your attacks.
+  dagger_of_the_blooded:
+    name: Dagger of the Blooded
+    asset: classic/assets/combat_talent/cutthroat
+    _source:
+      page: 192
+    # icon: https://game-icons.net/1x1/lorc/dripping-blade.html
+    xp_cost: 3
+    description: |-
+      When you wield this wickedly curved dagger with deadly intent, it almost seems to guide your hand. You can feel its hunger through the leather-wrapped hilt. But the blood it draws can never be completely wiped away. Over time, these stains have darkened the blade nearly to blackness.
+  iron_dyad:
+    name: Iron Dyad
+    asset: classic/assets/combat_talent/duelist
+    _source:
+      page: 193
+    # icon: null
+    xp_cost: 3
+    description: |-
+      The greatsword of a fallen warrior was melted down and reforged into this exquisite pair of blades. Each piece in the Iron Dyad is a formidable weapon in its own right, light and well balanced, with a keen edge. Throughout history, these masterworks have been kept apart. Now, reunited in your hands, they whirl in a perfect, synchronous dance, dealing death with grim efficiency.
+  raptors_talon:
+    name: Raptor’s Talon
+    asset: classic/assets/combat_talent/fletcher
+    _source:
+      page: 193
+    # icon: null
+    xp_cost: 4
+    description: |-
+      The wooden hilt of this delicate knife is carved in the form of a diving hawk. When used to fashion arrow shafts or trim fletchings, the blade imparts the speed and deadliness of that majestic creature to the arrow itself. When the arrow flies true, you may even hear it accompanied by the cry of a hawk.
+  starfall_hauberk:
+    name: Starfall Hauberk
+    asset: classic/assets/combat_talent/ironclad
+    _source:
+      page: 193
+    # icon: null
+    xp_cost: 5
+    description: |-
+      This chain shirt is fashioned from rings of black iron, a starforged metal notoriously difficult to work in such delicate forms. It is as strong and resistant as the sturdiest shield. The glimmering black chain is beautiful to behold—like a clear night sky strung with iridescent stars.
+
+      When you wear the armor, you are connected to the eternal void beyond our own world. At night, the stars call to you with an alluring song.
+  rovers_staff:
+    name: Rover’s Staff
+    asset: classic/assets/combat_talent/long_arm
+    _source:
+      page: 193
+    # icon: null
+    # derived from https://game-icons.net/1x1/delapouite/bo.html
+    xp_cost: 5
+    description: |-
+      Some in the Ironlands speak of a figure known as the Rover, who wandered from settlement to settlement and was said to bring divine fortune. The figure dressed simply, came and went without fanfare or frivolity, and carried a gnarled staff of yew adorned with trinkets and etched with symbols of the firstborn. This staff, worn to a polished shine from decades of use, now fits in your own hand as if designed for it.
+  heart_of_the_aegis:
+    name: Heart of the Aegis
+    asset: classic/assets/combat_talent/shield_bearer
+    _source:
+      page: 194
+    # icon: null
+    xp_cost: 4
+    description: |-
+      This metal boss, affixed to the center of uncounted shields over years and generations, shines as bright as the day it was forged. It is said to strengthen both the shield and its wielder—and endures beyond both. Looking into the boss by firelight may reveal fragmentary reflections of battle and sacrifice.
+  dragons_bite:
+    name: Dragon’s Bite
+    asset: classic/assets/combat_talent/skirmisher
+    _source:
+      page: 194
+    # icon: null
+    xp_cost: 4
+    description: |-
+      The name of the warrior who wielded Dragon’s Bite, who felled dragons of old, is lost to time. But the spear, its tip heated in the flames of dragons and quenched in their blood, is legend. The haft of this weapon is simple and mundane, unadorned. The spear’s point is formed with a layer of cold iron around a core of strange black metal. Some say the dark center is fashioned from the fossilized heart of mother dragon, the once-queen of dragonkind.
+  giant_bane:
+    name: Giant Bane
+    asset: classic/assets/combat_talent/slinger
+    _source:
+      page: 194
+    # icon: https://game-icons.net/1x1/lorc/striking-balls.html
+    xp_cost: 4
+    description: |-
+      Before the passing of the giants in the Old World, one of their clan terrorized a highland village. For months the people suffered the torment of the giant, until a brave villager felled him with this sling.
+
+      Today, untold years later, the leather is still supple, and the weapon imparts the stones unnatural force and precision. The large pouch can hold multiple stones, enabling a skilled slinger to bombard a foe with a flurry of lethal projectiles.
+  warbringer:
+    name: Warbringer
+    asset: classic/assets/combat_talent/sunderer
+    _source:
+      page: 194
+    # icon: null
+    xp_cost: 4
+    description: |-
+      A clan of raiders once terrorized vast swathes of the Old World. The greatest of them was said to wield a wicked axe he called Warbringer. It was forged of the pillaged iron of defeated foes. Following the marauder’s death, the axe passed from one hand to the next—over years and across kingdoms—as if seeking someone worthy of its savage power.
+  honing_sheath:
+    name: Honing Sheath
+    asset: classic/assets/combat_talent/swordmaster
+    _source:
+      page: 195
+    # icon: null
+    # possibly derived from https://game-icons.net/1x1/lorc/all-for-one.html
+    xp_cost: 4
+    description: |-
+      “May your wits nor your iron never dull,” the runes read, running the length of this worn, dark leather scabbard. Any blade drawn from it hums a harmonious tone, its edge as sharp as the day it was forged.
+  hammer_of_reckoning:
+    name: Hammer of Reckoning
+    asset: classic/assets/combat_talent/thunder_bringer
+    _source:
+      page: 195
+    # icon: null
+    # possibly derived from https://game-icons.net/1x1/delapouite/thor-hammer.html
+    xp_cost: 4
+    description: |-
+      The simple and brutal form of this great iron hammer belies the legend of its making. Said to have been crafted by the giant smiths of old, the Hammer of Reckoning was a gift bestowed upon an ancient people of the Ironlands. Forged during a great storm, and imbued with the essence of that violent tempest, it is a superbly balanced and destructive weapon. Its mightiest blows are sometimes accompanied by a distant peal of thunder.
+  crows_patron:
+    name: Crow’s Patron
+    asset: classic/assets/ritual/augur
+    _source:
+      page: 196
+    # icon: https://game-icons.net/1x1/lorc/feather.html
+    xp_cost: 3
+    description: |-
+      This unusually large crow feather is adorned with beads and brightly colored string. When you wear or hold the feather and perform the ritual to summon crows, the messages they carry are made more understandable. However, crows are still tricksters, and liable to bring unwelcome news.
+  breath_of_life:
+    name: Breath of Life
+    asset: classic/assets/ritual/awakening
+    _source:
+      page: 196
+    # icon: https://game-icons.net/1x1/lorc/bottle-vapors.html
+    xp_cost: 4
+    description: |-
+      This clay decanter once belonged to an ancient mystic who dabbled in the secrets of life and death. Wracked with disease, facing his own mortality, he vowed he would endure. He inscribed the decanter with runes of power, and breathed his dying words into it. In that moment, clinging to the mortal world like a drowning man struggling to stay above the surface, his fear and anger infused the decanter with an unending breath.
+
+      When you release the stopper to aid the creation of your simulacrum, those last words sometimes escape as whispered curses.
+  moonshadow_ring:
+    name: Moonshadow Ring
+    asset: classic/assets/ritual/bind
+    _source:
+      page: 196
+    # icon: https://game-icons.net/1x1/lorc/moon.html
+    xp_cost: 5
+    description: |-
+      This ring of polished wood is engraved with intertwining branches. Set in its center is a lustrous white stone. When the wearer performs the bind ceremony, the stone catches the light of the moon and flares with an unnatural glow. This light casts faint shadows of animals and beasts which dance in rhythm with the ritualist’s steps.
+  incense_of_beckoning:
+    name: Incense of Beckoning
+    asset: classic/assets/ritual/communion
+    _source:
+      page: 196
+    # icon: null
+    # derived from https://game-icons.net/1x1/lorc/incense.html
+    xp_cost: 3
+    description: |-
+      When lit, this stick of incense emits a green-yellow smoke which smells faintly of wet earth and moldering things. The swirling incense eases the passage of spirits to our world, and helps bind them to the ritualist’s summoning circle.
+  riddlestone:
+    name: Riddlestone
+    asset: classic/assets/ritual/divination
+    _source:
+      page: 197
+    # icon: https://game-icons.net/1x1/lorc/rune-stone.html
+    xp_cost: 3
+    description: |-
+      Carved from a snow-white chunk of alabaster, this runestone of uncertain origin reveals a new inscription each time it is thrown.
+
+      The stone makes some secrets obvious, and teases others through implication. For a particularly dire or surprising reading, it may even show a different surface or texture. For example, you might throw it in its usual alabaster form, and see it land as pitted black pumice. Divining the meaning of this trickery is not always easy—the riddlestone is a notoriously fickle tool.
+  invokers_lodestone:
+    name: Invoker’s Lodestone
+    asset: classic/assets/ritual/invoke
+    _source:
+      page: 197
+    # icon: null
+    # derived from https://game-icons.net/1x1/lorc/stone-spear.html
+    xp_cost: 5
+    description: |-
+      This arrow-shaped, palm-sized stone seems completely unremarkable. But when you hold it at arm’s length and focus on the weave of power around you, the lodestone can guide you to richer sources of mystic energy. Once those essences are absorbed, the stone shines with a subdued radiance.
+  ravens_song:
+    name: Raven’s Song
+    asset: classic/assets/ritual/keen
+    _source:
+      page: 197
+    # icon: null
+    xp_cost: 5
+    description: |-
+      This large raven skull is etched with ornate symbols, and dark gems are set into its eye sockets. It is said the spirit of the raven carries the words of your keen to those who dwell in the world beyond death. As you sing, strange shadows writhe within the smoky glass of the gems, and a layer of frost spreads over the skull.
+  wolfs_feast:
+    name: Wolf’s Feast
+    asset: classic/assets/ritual/leech
+    _source:
+      page: 197
+    # icon: https://game-icons.net/1x1/lorc/wolf-head.html
+    xp_cost: 3
+    description: |-
+      This iron brooch bears an ornate and grisly depiction of a large wolf feeding on a fallen deer. Though the carved motif is worn and lusterless with age, the pin itself glimmers like fresh-forged metal and is as sharp as the finest dagger.
+  daybreak_stone:
+    name: Daybreak Stone
+    asset: classic/assets/ritual/lightbearer
+    _source:
+      page: 198
+    # icon: null
+    xp_cost: 4
+    description: |-
+      In its mundane form, this fist-sized rough-hewn crystal is lusterless and opaque. Once used to capture the essence of light, however, it glows with a purity and brilliance which banishes any aspect of darkness.
+  beholders_dust:
+    name: Beholder’s Dust
+    asset: classic/assets/ritual/scry
+    _source:
+      page: 198
+    # icon: https://game-icons.net/1x1/lorc/celebration-fire.html
+    xp_cost: 3
+    description: |-
+      This simple leather pouch brims with ash and bits of bone—the cremated remains of a powerful seer. When cast into a fire, the ash erupts in brilliantly colored sparks and flames. The sounds and visions within the fire are then made more vibrant.
+
+      Curiously, the Beholder’s Dust is never fully consumed by the flames. Each time you return to the pouch, you will find the supply of ash replenished.
+  ring_of_secret_paths:
+    name: Ring of Secret Paths
+    asset: classic/assets/ritual/shadow_walk
+    _source:
+      page: 198
+    # icon: https://game-icons.net/1x1/delapouite/ring.html
+    xp_cost: 4
+    description: |-
+      The plainness of this gold ring belies the nature of its creation. It was forged in the dark fires of the shadow realm, and is forever connected to the veiled paths beyond our own world. Those who wear the ring are but one step from those hidden lands, but must be cautious not to let the will of the ring subvert their own.
+  chime_of_secrets:
+    name: Chime of Secrets
+    asset: classic/assets/ritual/sway
+    _source:
+      page: 198
+    # icon: https://game-icons.net/1x1/lorc/wind-slap.html
+    xp_cost: 3
+    description: |-
+      These small brass tubes hang from a stave of elder wood. When raised to the wind, they ring with a melody which is at first discordant. But then, if the spirits of the wind choose to reveal their secrets, the melody harmonizes and amplifies their words.
+  beads_of_many_domains:
+    name: Beads of Many Domains
+    asset: classic/assets/ritual/talisman
+    _source:
+      page: 199
+    # icon:
+    # from https://game-icons.net/1x1/delapouite/prayer-beads.html
+    xp_cost: 4
+    description: |-
+      Rune-marked beads of vibrant hues adorn a simple corded chain. The colors and materials of each bead represent a different aspect of the natural and unnatural worlds, and glimmer faintly in dark places.
+
+      When you remove a bead from the chain and add it to a charm, you feel the protection bolstered. Beads sometimes appear or disappear from the chain of their accord, but the particular bead you need for a talisman is generally at hand.
+  wayfarers_promise:
+    name: Wayfarer’s Promise
+    asset: classic/assets/ritual/tether
+    _source:
+      page: 199
+    # icon: null
+    xp_cost: 4
+    description: |-
+      Before setting off on a perilous voyage, a sailor gifted his husband a piece of string—cut from the thread he used to tie back his hair. “Even when it seems we are apart,” he told him, “we are connected. This will guide me back home. Back to you.”
+
+      But his ship did not return. Weeks passed. Then months. All hope seemed lost. One night, as the mourning husband held the string tight in a closed fist, there came a knock at the door. It was the sailor, with no memory of what brought him there.
+
+      Centuries later, these twin strings—passed into legend and now returned—are held in a simple wooden box. When you carry it, you are reminded of the importance of a place and the people there, and it helps set you on the path home.

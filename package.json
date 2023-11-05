@@ -2,7 +2,7 @@
 	"name": "dataforged-tools",
 	"version": "2.0.0-2",
 	"description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
-	"type": "commonjs",
+	"type": "module",
 	"exports": {
 		".": {
 			"import": "./dist/index.js"
@@ -77,7 +77,6 @@
 		"json-schema-library": "^7.4.7",
 		"json-schema-to-typescript": "^13.1.1",
 		"jtd": "^0.1.1",
-		"lodash": "^4.17.21",
 		"prettier": "^2.8.4",
 		"prettier-config-standard": "^5.0.0",
 		"ts-node": "^10.9.1",
@@ -87,6 +86,7 @@
 		"winston": "^3.8.2"
 	},
 	"dependencies": {
-		"@sinclair/typebox-codegen": "^0.8.11"
+		"@sinclair/typebox-codegen": "^0.8.11",
+		"lodash-es": "^4.17.21"
 	}
 }

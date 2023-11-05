@@ -1,0 +1,341 @@
+id: rsek
+source:
+  authors:
+    - name: rsek
+      email: r.sekouri@gmail.com
+  license: null
+  title: Themes & Domains by rsek
+  url: https://perchance.org/rsek-delve-themes-domains
+  date: 2022-07-05
+site_domains:
+  dreamscape:
+    name: Dreamscape
+    icon: icons/site_domains/dreamscape.svg
+    card_type: domain
+    summary: A place where dream-logic supplants natural law.
+    features:
+      - low: 21
+        high: 43
+        result: 'Metaphoric feature: walled heart, etc.'
+      - low: 44
+        high: 56
+        result: Salient locales in patchwork/fragments
+      - low: 57
+        high: 64
+        result: Recent memory
+      - low: 65
+        high: 68
+        result: Formative memory
+      - low: 69
+        high: 72
+        result: Lost or repressed memory
+      - low: 73
+        high: 76
+        result: '"Happy place" or dearest wish fulfilled'
+      - low: 77
+        high: 80
+        result: Personal hell or worst fears realized
+      - low: 81
+        high: 84
+        result: Embodiment of trait/ideal/principle
+      - low: 85
+        high: 88
+        result: You find an earlier feature changed
+      - &Feature.unusual
+        low: 89
+        high: 98
+        result: Something unusual or unexpected
+        suggestions:
+          oracles:
+            - delve/oracles/feature/aspect
+            - delve/oracles/feature/focus
+      - &Feature.newTheme
+        result: You transition into a new theme
+        low: 99
+        high: 99
+        suggestions:
+          oracles:
+            - delve/oracles/site_nature/theme
+      - &Feature.newDomain
+        low: 100
+        high: 100
+        result: You transition into a new domain
+        suggestions:
+          oracles:
+            - delve/oracles/site_nature/domain
+    dangers:
+      - low: 31
+        high: 33
+        result: Time variance complicates real world
+      - low: 34
+        high: 36
+        result: Space and distance obey no law
+      - low: 37
+        high: 39
+        result: Personal demons turn on you
+      - low: 40
+        high: 42
+        result: Subconscious defends against intruder
+      - low: 43
+        high: 45
+        result: Denizen intrudes in dreamscape
+  infrastructure:
+    name: Infrastructure
+    icon: icons/site_domains/infrastructure.svg
+    card_type: domain
+    summary: The substrate of public life or private enterprise.
+    features:
+      - low: 21
+        high: 43
+        result: Dank tunnels or passages
+      - low: 44
+        high: 56
+        result: Junction, vault, or chamber
+      - low: 57
+        high: 64
+        result: Ladder or stairway
+      - low: 65
+        high: 68
+        result: Graffiti or signage
+      - low: 69
+        high: 72
+        result: Light filters in from above or outside
+      - low: 73
+        high: 76
+        result: Storage or control room
+      - low: 77
+        high: 80
+        result: Derelict, damaged, or forgotten area
+      - low: 81
+        high: 84
+        result: Pipes, conduits, or conveyance
+      - low: 85
+        high: 88
+        result: Signs of habitation or labor
+      - *Feature.unusual
+      - *Feature.newTheme
+      - *Feature.newDomain
+    dangers:
+      - low: 31
+        high: 33
+        result: Denizen guards or maintains site
+      - low: 34
+        high: 36
+        result: Denizen uses site to pass unseen
+      - low: 37
+        high: 39
+        result: Vermin or dangerous flora thrive
+      - low: 40
+        high: 42
+        result: Path is unstable or cramped
+      - low: 43
+        high: 45
+        result: Area contaminated or hazardous
+  plains:
+    name: Plains
+    icon: icons/site_domains/plains.svg
+    card_type: domain
+    summary: A grassland, steppe, or other open country.
+    features:
+      - low: 21
+        high: 43
+        result: Open plains
+      - low: 44
+        high: 56
+        result: Low, rolling hills
+      - low: 57
+        high: 64
+        result: Heath, shrubland, or stand of trees
+      - low: 65
+        high: 68
+        result: Waterway
+      - low: 69
+        high: 72
+        result: Shallow lake, bog, or fen
+      - low: 73
+        high: 76
+        result: Escarpment or ridge
+      - low: 77
+        high: 80
+        result: Way-marker or cairn
+      - low: 81
+        high: 84
+        result: Animal herd, wild or tended
+      - low: 85
+        high: 88
+        result: Camp or outpost
+      - *Feature.unusual
+      - *Feature.newTheme
+      - *Feature.newDomain
+    dangers:
+      - low: 31
+        high: 33
+        result: Denizen hunts
+      - low: 34
+        high: 36
+        result: Sinkhole or burrow
+      - low: 37
+        high: 39
+        result: Pollen, biting insects, or cold snap
+      - low: 40
+        high: 42
+        result: Extreme wind or wildfire
+      - low: 43
+        high: 45
+        result: Storm or flash flood
+  repository:
+    name: Repository
+    icon: icons/site_domains/repository.svg
+    card_type: domain
+    summary: A place to store or display precious things.
+    features:
+      - low: 21
+        high: 43
+        result: Items ordered or on display
+      - low: 44
+        high: 56
+        result: Items being organized/moved/tended
+      - low: 57
+        high: 64
+        result: Items in long-term storage
+      - low: 65
+        high: 68
+        result: Items in use
+      - low: 69
+        high: 72
+        result: Items overwhelm storage space
+      - low: 73
+        high: 76
+        result: Item in the open or prominent display
+      - low: 77
+        high: 80
+        result: Ladder or stairwell
+      - low: 81
+        high: 84
+        result: Guard post or staff quarters
+      - low: 85
+        high: 88
+        result: Office or workspace
+      - *Feature.unusual
+      - *Feature.newTheme
+      - *Feature.newDomain
+    dangers:
+      - low: 31
+        high: 33
+        result: Denizen guards items
+      - low: 34
+        high: 36
+        result: Denizen studies or tends items
+      - low: 37
+        high: 39
+        result: Denizen takes or destroys items
+      - low: 40
+        high: 42
+        result: Alarm trigger or other security feature
+      - low: 43
+        high: 45
+        result: Precarious or unnavigable storage
+  revel:
+    name: Revel
+    icon: icons/site_domains/revel.svg
+    card_type: domain
+    summary: Functions, festivities, and frolics.
+    features:
+      - low: 21
+        high: 43
+        result: Crowd of revellers
+      - low: 44
+        high: 56
+        result: Area held by one social circle/in-group
+      - low: 57
+        high: 64
+        result: Purveyor of refreshment/entertainment
+      - low: 65
+        high: 68
+        result: Denizen seeks a new lover
+      - low: 69
+        high: 72
+        result: Denizen here for duty or peer pressure
+      - low: 73
+        high: 76
+        result: Denizen here to show off or get even
+      - low: 77
+        high: 80
+        result: Denizen here to network or social-climb
+      - low: 81
+        high: 84
+        result: Public display of affection or quarrel
+      - low: 85
+        high: 88
+        result: A pocket of relative calm and quiet
+      - *Feature.unusual
+      - *Feature.newTheme
+      - *Feature.newDomain
+    dangers:
+      - low: 31
+        high: 33
+        result: Heedless revellers impede your progress
+      - low: 34
+        high: 36
+        result: Tempting or dangerous diversion
+      - low: 37
+        high: 39
+        result: Ostracism or social climbing targets you
+      - low: 40
+        high: 42
+        result: Revel used as cover for some odious end
+      - low: 43
+        high: 45
+        result: Unforeseen guest complicates matters
+  wastes:
+    name: Wastes
+    icon: icons/site_domains/wastes.svg
+    card_type: domain
+    summary: A badland, desert, tundra, or other barren place.
+    features:
+      - low: 21
+        high: 43
+        result: Barren plain or dunes
+      - low: 44
+        high: 56
+        result: Rugged, banded hills or ridge
+      - low: 57
+        high: 64
+        result: Butte or mesa
+      - low: 65
+        high: 68
+        result: Dry stream-bed
+      - low: 69
+        high: 72
+        result: Wind-carved rock formation
+      - low: 73
+        high: 76
+        result: Lichens, grass, cacti, or shrubs
+      - low: 77
+        high: 80
+        result: Canyon or ravine
+      - low: 81
+        high: 84
+        result: Eroding wind reveals relic or remains
+      - low: 85
+        high: 88
+        result: Camp or outpost
+      - *Feature.unusual
+      - *Feature.newTheme
+      - *Feature.newDomain
+    dangers:
+      - low: 31
+        high: 33
+        result: Denizen competes for scarce resource
+      - low: 34
+        high: 36
+        result: Extreme temperature
+      - low: 37
+        high: 39
+        result: Fog, mirage, or dust devil
+      - low: 40
+        high: 42
+        result: Perilous climb or descent
+      - low: 43
+        high: 45
+        result: Storm of ice, dust, or sand

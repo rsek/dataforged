@@ -1,0 +1,460 @@
+id: starforged
+source:
+  date: 2022-05-06
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  url: https://ironswornrpg.com
+  license: https://creativecommons.org/licenses/by/4.0
+oracles:
+  moves:
+    name: Move Oracles
+    collections:
+      ask_the_oracle:
+        name: Ask the Oracle
+        _source:
+          page: 229
+        contents:
+          almost_certain:
+            name: Almost Certain
+            match: &AtO.Match
+              text: On a match, envision an extreme result or twist.
+            # Aliases: ["90"]
+            table:
+              - low: 1
+                high: 90
+                result: 'Yes'
+              - low: 91
+                high: 100
+                result: 'No'
+          likely:
+            name: Likely
+            match: *AtO.Match
+            # Aliases: ["75"]
+            table:
+              - low: 1
+                high: 75
+                result: 'Yes'
+              - low: 76
+                high: 100
+                result: 'No'
+          fifty_fifty:
+            name: 50/50
+            match: *AtO.Match
+            # Aliases: ["50"]
+            table:
+              - low: 1
+                high: 50
+                result: 'Yes'
+              - low: 51
+                high: 100
+                result: 'No'
+          unlikely:
+            match: *AtO.Match
+            name: Unlikely
+            # Aliases: ["25"]
+            table:
+              - low: 1
+                high: 25
+                result: 'Yes'
+              - low: 26
+                high: 100
+                result: 'No'
+          small_chance:
+            match: *AtO.Match
+            name: Small Chance
+            # Aliases: ["10"]
+            table:
+              - low: 1
+                high: 10
+                result: 'Yes'
+              - low: 11
+                high: 100
+                result: 'No'
+    contents:
+      begin_a_session:
+        name: Begin a Session
+        _source:
+          page: 141
+        # content:
+        #   part_of_speech: [fragment]
+        table:
+          - low: 1
+            high: 10
+            result: 'Flashback reveals an aspect of your background or nature'
+            # suggestions: [*roll:Event]
+          - low: 11
+            high: 20
+            result: 'Flashback reveals an aspect of another character, place, or faction'
+            # suggestions: [*roll:Event, *obj:Faction]
+          - low: 21
+            high: 30
+            result: 'Influential character or faction is introduced or given new detail'
+            # suggestions: [*obj:Npc, *obj:Faction]
+          - low: 31
+            high: 40
+            result: 'Seemingly unrelated situations are shown to be connected'
+          - low: 41
+            high: 50
+            result: 'External factors create new danger, urgency, or importance for a quest'
+            # suggestions: [*roll:Event]
+          - low: 51
+            high: 60
+            result: 'Important character is put in danger or suffers a misadventure'
+          - low: 61
+            high: 70
+            result: 'Key location is made unsafe or becomes mired in conflict'
+          - low: 71
+            high: 80
+            result: 'Unexpected return of an enemy or threat'
+          - low: 81
+            high: 90
+            result: 'Peril lies ahead or lurks just out of view'
+          - low: 91
+            high: 100
+            result: 'Unforeseen aid is on the way or within reach'
+      make_a_discovery:
+        name: Make a Discovery
+        _source:
+          page: 176
+        # content:
+        #   part_of_speech: [fragment]
+        table:
+          - low: 1
+            high: 4
+            result: Advanced technology waiting to be harnessed or salvaged
+            # suggestions: [*roll:Object]
+          - low: 5
+            high: 8
+            result: Ancient archive or message
+            # suggestions: [*roll:Event]
+          - low: 9
+            high: 10
+            result: Artificial consciousness evolved to a higher state
+          - low: 11
+            high: 12
+            result: Clues to a crucial resource or uncharted domain
+            # suggestions: [*roll:Object]
+          - low: 13
+            high: 14
+            result: Envoy from another time or reality
+          - low: 15
+            high: 22
+            result: Extraordinary natural phenomenon
+          - low: 23
+            high: 24
+            result: First contact with intelligent life
+            # suggestions: [*obj:Creature]
+          - low: 25
+            high: 26
+            result: Gateway to another time or alternate reality
+            # suggestions: [*roll:Event]
+          - low: 27
+            high: 28
+            result: Key to unlocking a language or method of communication
+          - low: 29
+            high: 34
+            result: Lost or hidden people
+          - low: 35
+            high: 42
+            result: Majestic or unusual lifeforms
+            # suggestions: [*obj:Creature]
+          - low: 43
+            high: 46
+            result: Marvel of ancient engineering
+            # suggestions: [*roll:Object]
+          - low: 47
+            high: 50
+            result: Miraculously preserved artifact or specimen
+            # suggestions: [*roll:Object]
+          - low: 51
+            high: 56
+            result: Monumental architecture or artistry of an ancient civilization
+            # suggestions: [*roll:Object]
+          - low: 57
+            high: 62
+            result: Mysterious device or artifact of potential value
+            # suggestions: [*roll:Object]
+          - low: 63
+            high: 66
+            result: New understanding of an enduring mystery
+            # suggestions: [*roll:Event]
+          - low: 67
+            high: 68
+            result: Pathway or means of travel to a distant location
+            # suggestions: [*roll:Place]
+          - low: 69
+            high: 70
+            result: Person or lifeform with phenomenal abilities
+            # suggestions: [*obj:Creature, *obj:Npc]
+          - low: 71
+            high: 78
+            result: Place of awe-inspiring beauty
+          - low: 79
+            high: 86
+            result: Rare and valuable resource
+            # suggestions: [*roll:Object]
+          - low: 87
+            high: 88
+            result: Safeguarded or idyllic location
+          - low: 89
+            high: 90
+            result: Visions or prophesies of the future
+            # suggestions: [*roll:Event]
+          - low: 91
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+                auto: true
+      confront_chaos:
+        name: Confront Chaos
+        _source:
+          page: 177
+        # content:
+        #   part_of_speech: [fragment]
+        table:
+          - low: 1
+            high: 4
+            result: Baneful weapon of mass destruction
+            # suggestions: [*roll:Object]
+          - low: 5
+            high: 9
+            result: Cataclysmic environmental effects
+          - low: 10
+            high: 12
+            result: Dead given unnatural life
+          - low: 13
+            high: 17
+            result: Destructive lifeform of monstrous proportion
+            # suggestions: [*obj:Creature]
+          - low: 18
+            high: 20
+            result: Dread hallucinations or illusions
+          - low: 21
+            high: 24
+            result: Harbingers of an imminent invasion
+          - low: 25
+            high: 27
+            result: Horde of insatiable hunger or fury
+          - low: 28
+            high: 32
+            result: Horrific lifeforms of inscrutable purpose
+            # suggestions: [*obj:Creature]
+          - low: 33
+            high: 36
+            result: Impostors in human form
+          - low: 37
+            high: 41
+            result: Machines made enemy
+            # suggestions: [*roll:Object]
+          - low: 42
+            high: 45
+            result: Malignant contagion or parasite
+          - low: 46
+            high: 50
+            result: Messenger or signal with a dire warning
+            # suggestions: [*roll:Event]
+          - low: 51
+            high: 53
+            result: Passage to a grim alternate reality
+          - low: 54
+            high: 58
+            result: People corrupted by chaos
+          - low: 59
+            high: 63
+            result: Powerful distortions of time or space
+          - low: 64
+            high: 68
+            result: Signs of an impending catastrophe
+          - low: 69
+            high: 72
+            result: Site of a baffling disappearance
+          - low: 73
+            high: 77
+            result: Site of a horrible disaster
+            # suggestions: [*roll:Event]
+          - low: 78
+            high: 82
+            result: Site of terrible carnage
+          - low: 83
+            high: 87
+            result: Technology nullified or made unstable
+            # suggestions: [*roll:Object]
+          - low: 88
+            high: 92
+            result: Technology warped for dark purpose
+          - low: 93
+            high: 96
+            result: Vault of dread technology or power
+            # suggestions: [*obj:Vault]
+          - low: 97
+            high: 100
+            result: Worshipers of great and malevolent powers
+      take_decisive_action:
+        name: Take Decisive Action
+        _source:
+          page: 194
+        # content:
+        #   part_of_speech: [sentences]
+        table:
+          - low: 1
+            high: 40
+            result: 'It’s worse than you thought: Make a suffer move (-2)'
+          - low: 41
+            high: 52
+            result: 'Victory is short-lived: A new peril or foe appears'
+          - low: 53
+            high: 64
+            result: 'You face collateral damage: Something is lost, damaged, or broken'
+          - low: 65
+            high: 76
+            result: 'Others pay the price: Someone else suffers the cost'
+          - low: 77
+            high: 88
+            result: 'Others won’t forget: You are marked for vengeance'
+          - low: 89
+            high: 100
+            result: 'It gets complicated: The true nature of a foe or objective is revealed'
+      endure_harm:
+        name: Endure Harm
+        _source:
+          page: 200
+        # content:
+        #   part_of_speech: [sentences]
+        table:
+          - low: 1
+            high: 10
+            result: 'You suffer mortal harm. [Face Death](id:starforged/moves/threshold/face_death).'
+          - low: 11
+            high: 20
+            result: 'You are dying. Within an hour or two, you must [Heal](id:starforged/moves/recover/heal) and raise your health above 0, or [Face Death](id:starforged/moves/threshold/face_death).'
+          - low: 21
+            high: 35
+            result: 'You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to ongoing harm, [Face Death](id:starforged/moves/threshold/face_death).'
+          - low: 36
+            high: 50
+            result: 'You are reeling and fighting to stay conscious. If you engage in any vigorous activity before taking a breather for a few minutes, roll on this table again (before resolving the other move).'
+          - low: 51
+            high: 100
+            result: You are still standing.
+      endure_stress:
+        name: Endure Stress
+        _source:
+          page: 202
+        # content:
+        #   part_of_speech: [sentences]
+        table:
+          - low: 1
+            high: 10
+            result: 'You are overwhelmed. [Face Desolation](id:starforged/moves/threshold/face_desolation).'
+          - low: 11
+            high: 25
+            result: 'You give up. [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow).'
+          - low: 26
+            high: 50
+            result: 'You give in to fear or compulsion, and act against your better instincts.'
+          - low: 51
+            high: 100
+            result: You persevere.
+      withstand_damage:
+        name: Withstand Damage
+        _source:
+          page: 206
+        # content:
+        #   part_of_speech: [sentences]
+        table:
+          - low: 1
+            high: 10
+            result: 'Immediate catastrophic destruction. All aboard must [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Face Death](id:starforged/moves/threshold/face_death), as appropriate.'
+          - low: 11
+            high: 25
+            result: 'Destruction is imminent and unavoidable. If you do not have the means or intention to get clear, [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Face Death](id:starforged/moves/threshold/face_death) as appropriate.'
+          - low: 26
+            high: 40
+            result: 'Destruction is imminent, but can be averted if you [Repair](id:starforged/moves/recover/repair) your vehicle and raise its integrity above 0. If you fail, see 11-25.'
+          - low: 41
+            high: 55
+            result: 'You cannot [Repair](id:starforged/moves/recover/repair) this vehicle until you [Resupply](id:starforged/moves/recover/resupply) and obtain a crucial replacement part. If you roll this result again prior to that, see 11-25.'
+          - low: 56
+            high: 70
+            result: 'The vehicle is crippled or out of your control. To get it back in action, you must [Repair](id:starforged/moves/recover/repair) and raise its integrity above 0.'
+          - low: 71
+            high: 85
+            result: "It's a rough ride. All aboard must make the [Endure Harm](id:starforged/moves/suffer/endure_harm), [Endure Stress](id:starforged/moves/suffer/endure_stress), or [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move, suffering a serious (-2) cost."
+          - low: 86
+            high: 95
+            result: 'You’ve lost fuel, energy, or cargo. [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-2).'
+          - low: 96
+            high: 100
+            result: 'Against all odds, the vehicle holds together.'
+      pay_the_price:
+        name: Pay the Price
+        _source:
+          page: 232
+        # content:
+        #   part_of_speech: [fragment]
+        table:
+          - low: 1
+            high: 2
+            result: A trusted individual or community acts against you
+          - low: 3
+            high: 4
+            result: An individual or community you care about is exposed to danger
+          - low: 5
+            high: 7
+            result: You encounter signs of a looming threat
+          - low: 8
+            high: 10
+            result: You create an opportunity for an enemy
+          - low: 11
+            high: 14
+            result: You face a tough choice
+          - low: 15
+            high: 18
+            result: You face the consequences of an earlier choice
+          - low: 19
+            high: 22
+            result: A surprising development complicates your quest
+          - low: 23
+            high: 26
+            result: You are separated from something or someone
+          - low: 27
+            high: 32
+            result: Your action causes collateral damage or has an unintended effect
+          - low: 33
+            high: 38
+            result: Something of value is lost or destroyed
+          - low: 39
+            high: 44
+            result: The environment or terrain introduces a new hazard
+          - low: 45
+            high: 50
+            result: A new enemy is revealed
+          - low: 51
+            high: 56
+            result: 'A friend, companion, or ally is in harm’s way (or you are, if alone)'
+          - low: 57
+            high: 62
+            result: Your equipment or vehicle malfunctions
+          - low: 63
+            high: 68
+            result: Your vehicle suffers damage
+          - low: 69
+            high: 74
+            result: You waste resources
+          - low: 75
+            high: 81
+            result: You are harmed
+          - low: 82
+            high: 88
+            result: You are stressed
+          - low: 89
+            high: 95
+            result: You are delayed or put at a disadvantage
+          - low: 96
+            high: 100
+            result: Roll twice
+            rolls:
+              - times: 2
+                auto: true

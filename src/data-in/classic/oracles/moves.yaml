@@ -1,0 +1,163 @@
+id: classic
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: Ironsworn Rulebook
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2019-06-05
+oracles:
+  moves:
+    name: Moves
+    collections:
+      ask_the_oracle:
+        name: Ask the Oracle
+        _source:
+          page: 107
+        contents:
+          almost_certain:
+            name: Almost Certain
+            match: &AtO.Match
+              text: On a match, an extreme result or twist has occurred.
+            table:
+              - low: 1
+                high: 10
+                result: 'No'
+              - low: 11
+                high: 100
+                result: 'Yes'
+          likely:
+            name: Likely
+            match: *AtO.Match
+            table:
+              - low: 1
+                high: 25
+                result: 'No'
+              - low: 26
+                high: 100
+                result: 'Yes'
+          fifty_fifty:
+            name: 50/50
+            match: *AtO.Match
+            table:
+              - low: 1
+                high: 50
+                result: 'No'
+              - low: 51
+                high: 100
+                result: 'Yes'
+          unlikely:
+            name: Unlikely
+            match: *AtO.Match
+            table:
+              - low: 1
+                high: 75
+                result: 'No'
+              - low: 76
+                high: 100
+                result: 'Yes'
+          small_chance:
+            name: Small Chance
+            match: *AtO.Match
+            table:
+              - low: 1
+                high: 90
+                result: 'No'
+              - low: 91
+                high: 100
+                result: 'Yes'
+    contents:
+      endure_harm:
+        name: Endure Harm
+        _source:
+          page: 91
+        table:
+          - low: 1
+            high: 10
+            result: 'The harm is mortal. [Face Death](id:classic/moves/suffer/face_death).'
+          - low: 11
+            high: 20
+            result: 'You are dying. You need to Heal within an hour or two, or [Face Death](id:classic/moves/suffer/face_death).'
+          - low: 21
+            high: 35
+            result: 'You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are vulnerable to a foe not inclined to show mercy, [Face Death](id:classic/moves/suffer/face_death).'
+          - low: 36
+            high: 50
+            result: 'You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move).'
+          - low: 51
+            high: 100
+            result: 'You are battered but still standing.'
+      endure_stress:
+        name: Endure Stress
+        _source:
+          page: 93
+        table:
+          - low: 1
+            high: 10
+            result: 'You are overwhelmed. [Face Desolation](id:classic/moves/suffer/face_desolation).'
+          - low: 11
+            high: 25
+            result: 'You give up. [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow) (if possible, one relevant to your current crisis).'
+          - low: 26
+            high: 50
+            result: 'You give in to a fear or compulsion, and act against your better instincts.'
+          - low: 51
+            high: 100
+            result: 'You persevere.'
+      pay_the_price:
+        name: Pay the Price
+        _source:
+          page: 105
+        table:
+          - low: 1
+            high: 2
+            result: 'Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and make it happen.'
+          - low: 3
+            high: 5
+            result: 'A person or community you trusted loses faith in you, or acts against you.'
+          - low: 6
+            high: 9
+            result: 'A person or community you care about is exposed to danger.'
+          - low: 10
+            high: 16
+            result: 'You are separated from something or someone.'
+          - low: 17
+            high: 23
+            result: 'Your action has an unintended effect.'
+          - low: 24
+            high: 32
+            result: 'Something of value is lost or destroyed.'
+          - low: 33
+            high: 41
+            result: 'The current situation worsens.'
+          - low: 42
+            high: 50
+            result: 'A new danger or foe is revealed.'
+          - low: 51
+            high: 59
+            result: 'It causes a delay or puts you at a disadvantage.'
+          - low: 60
+            high: 68
+            result: 'It is harmful.'
+          - low: 69
+            high: 76
+            result: 'It is stressful.'
+          - low: 77
+            high: 85
+            result: 'A surprising development complicates your quest.'
+          - low: 86
+            high: 90
+            result: 'It wastes resources.'
+          - low: 91
+            high: 94
+            result: 'It forces you to act against your best intentions.'
+          - low: 95
+            high: 98
+            result: 'A friend, companion, or ally is put in harm’s way (or you are, if alone).'
+          - low: 99
+            high: 100
+            result: 'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
+            rolls:
+              - times: 2
+                auto: true
+                method: make_it_worse

@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { Abstract, ID, Localize, Progress } from 'schema/common'
-import { Squash } from 'schema/common/utils'
+import { Abstract, ID, Localize, Progress } from './common/index.js'
+import { Squash } from './common/utils.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:

@@ -1,31 +1,33 @@
-import { ID, Localize, Player } from 'schema/common'
-import { PartialBy, PartialExcept } from 'schema/common/utils'
-import { Type, type Static, JsonEnum } from 'typebox'
+import { ID, Localize, Player } from 'schema/common.js'
+import { PartialBy } from 'schema/common/utils.js'
+import { JsonEnum, Type, type Static } from 'typebox'
 import {
-	MoveOutcomes,
-	composeMoveType,
-	composeTrigger,
-	composeTriggerRollCondition,
-	toTriggerAugment,
-	type MoveRollType,
-	toMoveAugment,
-	toTriggerConditionAugment,
 	ActionRollMethod,
-	MoveOutcomeType
+	MoveOutcomeType,
+	MoveOutcomes,
+	type MoveRollType
 } from './common'
+import { toMoveAugment } from 'utils'
+import {
+	composeMoveType,
+	toTriggerAugment,
+	toTriggerConditionAugment,
+	composeTrigger,
+	composeTriggerRollCondition
+} from './utils'
 
-export const TriggerActionRollConditionOptionAttachedAssetRef = Type.Object(
+export const RollOptionAttachedAssetRef = Type.Object(
 	{
 		using: Type.Literal('attached_asset_meter')
 	},
-	{ $id: '#/$defs/TriggerActionRollConditionOptionAttachedAssetRef' }
+	{ $id: '#/$defs/RollOptionAttachedAssetRef' }
 )
 
-export type TriggerActionRollConditionOptionAttachedAssetRef = Static<
-	typeof TriggerActionRollConditionOptionAttachedAssetRef
+export type RollOptionAttachedAssetRef = Static<
+	typeof RollOptionAttachedAssetRef
 >
 
-export const TriggerActionRollConditionOptionRef = Type.Object(
+export const RollOptionRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
@@ -34,69 +36,64 @@ export const TriggerActionRollConditionOptionRef = Type.Object(
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
 	},
-	{ $id: '#/$defs/TriggerActionRollConditionOptionRef' }
+	{ $id: '#/$defs/RollOptionRef' }
 )
-export type TriggerActionRollConditionOptionRef = Static<
-	typeof TriggerActionRollConditionOptionRef
->
+export type RollOptionRef = Static<typeof RollOptionRef>
 
-export const TriggerActionRollConditionOptionStat = Type.Object(
+export const RollOptionStat = Type.Object(
 	{
 		using: Type.Literal('stat', { default: 'stat' }),
-		stat: Type.Union([
-			Type.Ref(Player.PlayerStat),
-			Type.Ref(Player.PlayerConditionMeter)
-		])
+		stat: Type.Ref(Player.PlayerStat)
 	},
-	{ $id: '#/$defs/TriggerActionRollConditionOptionStat' }
+	{ $id: '#/$defs/RollOptionStat' }
 )
-export type TriggerActionRollConditionOptionStat = Static<
-	typeof TriggerActionRollConditionOptionStat
->
+export type RollOptionStat = Static<typeof RollOptionStat>
 
-export const TriggerActionRollConditionOptionCustomValue = Type.Object(
+export const RollOptionConditionMeter = Type.Object(
 	{
-		using: Type.Literal('custom_value'),
+		using: Type.Literal('condition_meter', { default: 'condition_meter' }),
+		condition_meter: Type.Ref(Player.PlayerConditionMeter)
+	},
+	{ $id: '#/$defs/RollOptionConditionMeter' }
+)
+export type RollOptionConditionMeter = Static<typeof RollOptionConditionMeter>
+
+export const RollOptionCustom = Type.Object(
+	{
+		using: Type.Literal('custom'),
 		label: Type.Ref(Localize.Label),
 		value: Type.Integer({ minimum: 0 })
 	},
-	{ $id: '#/$defs/TriggerActionRollConditionOptionCustomValue' }
+	{ $id: '#/$defs/RollOptionCustom' }
 )
-export type TriggerActionRollConditionOptionCustomValue = Static<
-	typeof TriggerActionRollConditionOptionCustomValue
->
+export type RollOptionCustom = Static<typeof RollOptionCustom>
 
-const triggerActionRollConditionOptionSubtypes = [
-	TriggerActionRollConditionOptionStat,
-	TriggerActionRollConditionOptionRef,
-	TriggerActionRollConditionOptionAttachedAssetRef,
-	TriggerActionRollConditionOptionCustomValue
+const RollOptionSubtypes = [
+	RollOptionStat,
+	RollOptionConditionMeter,
+	RollOptionRef,
+	RollOptionAttachedAssetRef,
+	RollOptionCustom
 ]
 
-export const TriggerActionRollConditionOption = Type.Intersect(
+export const ActionRollOption = Type.Intersect(
 	[
 		Type.Object({
 			using: JsonEnum(
-				triggerActionRollConditionOptionSubtypes.map(
-					(opt) => opt.properties.using.const
-				),
+				RollOptionSubtypes.map((opt) => opt.properties.using.const),
 				{
 					default: 'stat'
 				}
 			)
 		}),
-		Type.Union(
-			triggerActionRollConditionOptionSubtypes.map((option) => Type.Ref(option))
-		)
+		Type.Union(RollOptionSubtypes.map((option) => Type.Ref(option)))
 	],
-	{ $id: '#/$defs/TriggerActionRollConditionOption' }
+	{ $id: '#/$defs/ActionRollOption' }
 )
-export type TriggerActionRollConditionOption = Static<
-	typeof TriggerActionRollConditionOption
->
+export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = composeTriggerRollCondition(
-	TriggerActionRollConditionOption,
+	ActionRollOption,
 	Type.Union([Type.Ref(ActionRollMethod), Type.Ref(MoveOutcomeType)], {
 		default: 'any',
 		description:

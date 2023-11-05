@@ -1,4 +1,4 @@
-import { Abstract, ID } from 'schema/common'
+import { Abstract, ID } from './common/index.js'
 import { Type, type Static } from 'typebox'
 import {
 	type MoveActionRoll,
@@ -9,7 +9,7 @@ import {
 	type MoveProgressRollAugment,
 	type MoveSpecialTrack,
 	type MoveSpecialTrackAugment
-} from 'schema/moves'
+} from './moves.js'
 
 export type Move =
 	| MoveNoRoll

@@ -3,17 +3,25 @@ import {
 	Type,
 	type TObject,
 	type TString,
-	type ObjectOptions
+	type ObjectOptions,
+	type TRef,
+	Kind,
+	type TUnsafe
 } from '@sinclair/typebox'
-import { startCase } from 'lodash'
-import { Localize, ID, Metadata, Inputs, Abstract } from 'schema/common'
-import { Dictionary } from 'schema/common/abstract'
-import { AssetID } from 'schema/common/id'
-import { Label } from 'schema/common/localize'
-import { pascalCase } from 'schema/common/utils'
-import * as Moves from 'schema/moves'
+import { startCase } from 'lodash-es'
+import { Localize, ID, Metadata, Inputs, Abstract } from './common/index.js'
+import { Dictionary } from './common/abstract.js'
+import { AssetID } from './common/id.js'
+import { Label } from './common/localize.js'
+import { pascalCase } from './common/utils.js'
+import * as Moves from './moves.js'
 
-function AssetField<TFieldID extends TString, TFieldType extends TObject>(
+const $idSelectFieldAssetState = '#/$defs/SelectFieldAssetState'
+
+function AssetField<
+	TFieldID extends TString,
+	TFieldType extends TObject | TRef<TObject> | TUnsafe<any>
+>(
 	name: string,
 	fieldDFID: TString,
 	fieldTypes: TFieldType[],
@@ -29,7 +37,9 @@ function AssetField<TFieldID extends TString, TFieldType extends TObject>(
 		type: 'object',
 		$id: `#/$defs/${pascalCase(name)}`,
 		title: startCase(name),
-		anyOf: fieldTypes.map((field) => Type.Ref(field)),
+		anyOf: fieldTypes.map((field) =>
+			field[Kind] === 'Object' ? Type.Ref(field) : field
+		),
 		properties: {
 			id: Type.Ref(fieldDFID)
 		},
@@ -148,9 +158,12 @@ export const AssetConditionMeter = Type.Object(
 )
 
 export const AssetConditionMeterAugment = Type.Partial(
-	Type.Omit(AssetConditionMeter, ['label', 'value', 'id', 'moves']),
+	Type.Omit(AssetConditionMeter, ['label', 'value', 'id', 'moves', 'min']),
 	{ $id: '#/$defs/AssetConditionMeterAugment' }
 )
+export type AssetConditionMeterAugment = Static<
+	typeof AssetConditionMeterAugment
+>
 
 export const AssetOptionField = AssetField(
 	'AssetOptionField',
@@ -158,11 +171,17 @@ export const AssetOptionField = AssetField(
 	[Inputs.SelectFieldStat, Inputs.TextField]
 )
 
-// TODO: selectFieldAugmentAsset. for e.g. Ironclad
 export const AssetControlField = AssetField(
 	'AssetControlField',
 	ID.AssetControlFieldID,
-	[Inputs.CheckboxField, AssetCardFlipField]
+	[
+		Inputs.CheckboxField,
+		AssetCardFlipField,
+		// manually type as a ref so the type system doesn't flip out
+		Type.Unsafe<
+			Inputs.InputField<'select_asset_state', Record<string, unknown>>
+		>({ $ref: $idSelectFieldAssetState })
+	]
 )
 
 function AssetAugmentSelf<T extends TObject>(
@@ -178,16 +197,22 @@ function AssetAugmentSelf<T extends TObject>(
 		'color',
 		'suggestions',
 		'requirement',
-
-		'options', // options are set when you take the asset, so it doesn't make sense to add them here
-		'controls' // using a control to create another control is silly
+		'options' // options are set when you take the asset, so it doesn't make sense to change them
 	]
-	if (omitKeys.includes('condition_meter'))
-		return Abstract.NodeAugmentSelf(tAsset as any, omitKeys, options)
-	// condition meters need special handling -- they have their own augment schema
-	return Type.Intersect(
+
+	// condition meters need special handling, so we need to strip it regardless
+	const base = Abstract.NodeAugmentSelf(
+		tAsset as any,
+		[...omitKeys, 'condition_meter'],
+		options
+	)
+
+	if (omitKeys.includes('condition_meter')) return base
+
+	// condition meters have their own augment schema
+	return Type.Composite(
 		[
-			Abstract.NodeAugmentSelf(tAsset as any, [...omitKeys, 'condition_meter']),
+			base,
 			Type.Object({
 				condition_meter: Type.Optional(Type.Ref(AssetConditionMeterAugment))
 			})
@@ -275,6 +300,18 @@ export const Asset = Type.Object(
 
 export type Asset = Static<typeof Asset>
 
+export const SelectFieldAssetState = Inputs.SelectField(
+	'select_asset_state',
+	AssetAugmentSelf(Asset, ['abilities', 'controls', 'condition_meter']),
+	{
+		$id: $idSelectFieldAssetState,
+		title: 'Select field (asset state)',
+		description:
+			'Select a defined asset state, which may augment the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
+	}
+)
+export type SelectFieldAssetState = Static<typeof SelectFieldAssetState>
+
 export const AssetAbilityOptionField = AssetField(
 	'AssetAbilityOptionField',
 	ID.AssetAbilityOptionFieldID,
@@ -314,7 +351,7 @@ export const AssetAbility = Type.Object(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
 		augment_asset: Type.Optional(
-			AssetAugmentSelf(Asset, ['abilities'], {
+			AssetAugmentSelf(Asset, ['abilities', 'controls'], {
 				description:
 					'Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
 				releaseStage: 'unstable'
@@ -382,9 +419,9 @@ export {
 	ClockField,
 	CounterField,
 	TextField,
-	SelectFieldStat,
-	SelectFieldRef
-} from 'schema/common/inputs'
+	SelectFieldStat
+	// SelectFieldRef
+} from './common/inputs.js'
 
 // what about a general purpose asset ability switch?
 // e.g. when [state], use this asset ability data.

@@ -3,17 +3,17 @@
  */
 
 import prettier from 'prettier'
-import { writeFile } from 'fs-extra'
+import { writeFile, writeFileSync } from 'fs-extra'
 import { log } from './logger'
-import ajv from 'scripts/ajv'
+import ajv from './ajv.js'
 import { getPrettierOptions } from './prettier'
 import { Schema } from 'schema'
-import * as Paths from './paths'
-import { type JSONSchema7 } from 'json-schema'
+import * as Paths from './const'
+import { type JSONSchema } from 'json-schema-library'
 
 interface SchemaOptions {
 	name: string
-	schema: JSONSchema7
+	schema: JSONSchema
 	paths: string[]
 	messages: {
 		writeStart: string
@@ -24,8 +24,8 @@ interface SchemaOptions {
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
-		schema: Schema.Datasworn,
-		paths: [Paths.DS_SCHEMA_OUT, Paths.DF_SCHEMA_OUT],
+		schema: Schema.Datasworn.getSchema(),
+		paths: [Paths.SCHEMA_OUT],
 		messages: {
 			writeStart: 'Writing schema for Datasworn',
 			writeFinish: 'Finished writing schema for Datasworn'
@@ -33,8 +33,8 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornInput',
-		schema: Schema.DataswornInput,
-		paths: [Paths.DS_SCHEMA_IN, Paths.DF_SCHEMA_IN],
+		schema: Schema.DataswornInput.getSchema(),
+		paths: [Paths.SCHEMA_IN],
 		messages: {
 			writeStart: 'Writing schema for Datasworn YAML input',
 			writeFinish: 'Finished writing schema for Datasworn YAML input'

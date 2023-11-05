@@ -1,12 +1,12 @@
-import { trackID } from 'builders/id-tracker'
-import { cloneDeep, forEach, mapValues, merge } from 'lodash'
+import { trackID } from './id-tracker.js'
+import { cloneDeep, forEach, mapValues, merge } from 'lodash-es'
 import {
 	type RecursiveCollection,
 	type Collection
-} from 'schema/common/abstract'
-import { type Source } from 'schema/common/metadata'
+} from 'schema/common/abstract.js'
+import { type Source } from 'schema/common/metadata.js'
 import { type SetOptional } from 'type-fest'
-import type * as Out from 'types/output/starforged'
+import type * as Out from '../types/io/datasworn.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>

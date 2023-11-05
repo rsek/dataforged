@@ -1,0 +1,364 @@
+id: delve
+source:
+  license: https://creativecommons.org/licenses/by/4.0
+  url: https://ironswornrpg.com
+  date: 2020-02-13
+  title: 'Ironsworn: Delve'
+  authors:
+    - name: Shawn Tomkin
+oracles:
+  monstrosity:
+    name: Monstrosity
+    summary: Discover the nature of a [nightspawn](id:delve/npcs/horrors/nightspawn) or other frightful creature within your world.
+    description: |-
+      Use the Monstrosity oracle to define the nature of a [Nightspawn](id:delve/npcs/horrors/nightspawn), or to introduce a new type of [animal](id:classic/collections/npcs/animal), [beast](id:classic/collections/npcs/beast), or [horror](id:classic/collections/npcs/horror) in your world.
+
+      To create a monstrosity, start by rolling for its [Size](id:delve/oracles/monstrosity/size) and [Primary Form](id:delve/oracles/monstrosity/primary_form). Then, roll up to four times for [Characteristics](id:delve/oracles/monstrosity/characteristics) and keep up to three of those results. Do the same for [Abilities](id:delve/oracles/monstrosity/abilities).
+
+      Give the monstrosity a rank. Choose one appropriate to its features, or use the [Challenge Rank](id:classic/oracles/turning_point/challenge_rank) oracle.
+
+      Finally, envision your creation and give it a name. It’s part of your world now.
+
+      Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
+
+      You should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.
+
+      To learn more about your creation’s nature, you can roll on additional tables. Use the [Character Goal](id:classic/oracles/character/goal) oracle to give the monstrosity a purpose. Roll on the [Character Disposition](id:classic/oracles/character/disposition) and [Activity](id:delve/oracles/character/activity) oracles to frame your initial encounter. Another roll or two can give your monstrosity nuance and complexity, making it a deeper part of your story.
+    suggestions:
+      oracles:
+        - classic/oracles/turning_point/challenge_rank
+        - classic/oracles/character/goal
+        - classic/oracles/character/disposition
+        - delve/oracles/character/activity
+    _source:
+      authors:
+        - name: Shawn Tomkin
+      title: 'Ironsworn: Delve'
+      page: 214
+      license: https://creativecommons.org/licenses/by/4.0
+    contents:
+      size:
+        name: Size
+        canonical_name: 'Monstrosity: Size'
+        # usage:
+        #   initial: true
+        _source:
+          page: 214
+        table:
+          - low: 1
+            high: 5
+            result: Tiny (rodent-sized)
+          - low: 6
+            high: 30
+            result: Small (hound-sized)
+          - low: 31
+            high: 65
+            result: Medium (person-sized)
+          - low: 66
+            high: 94
+            result: Large (giant-sized)
+          - low: 95
+            high: 99
+            result: Huge (whale-sized)
+          - low: 100
+            high: 100
+            result: Titanic (incomprehensible)
+      primary_form:
+        name: Primary Form
+        canonical_name: 'Monstrosity: Primary Form'
+        summary: |-
+          Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
+        # usage:
+        #   initial: true
+        _source:
+          page: 214
+        table:
+          - low: 1
+            high: 15
+            result: Beast / mammal
+          - low: 16
+            high: 25
+            result: Humanoid
+          - low: 26
+            high: 31
+            result: Bird
+          - low: 32
+            high: 37
+            result: Spider
+          - low: 38
+            high: 43
+            result: Snake
+          - low: 44
+            high: 49
+            result: Worm / slug
+          - low: 50
+            high: 55
+            result: Lizard
+          - low: 56
+            high: 61
+            result: Insect
+          - low: 62
+            high: 66
+            result: Amorphous
+          - low: 67
+            high: 69
+            result: Crustacean
+          - low: 70
+            high: 71
+            result: Fish
+          - low: 72
+            high: 73
+            result: Octopoid
+          - low: 74
+            high: 75
+            result: Amphibian
+          - low: 76
+            high: 77
+            result: Plant
+          - low: 78
+            high: 78
+            result: Incorporeal
+          - low: 79
+            high: 79
+            result: Mineral
+          - low: 80
+            high: 80
+            result: Elemental
+          - low: 81
+            high: 100
+            result: Hybrid (roll twice)
+            rolls:
+              - times: 2
+                auto: true
+                method: no_duplicates
+            # *result:RollTwice
+      characteristics:
+        name: Characteristics
+        canonical_name: 'Monstrosity: Characteristics'
+        # usage:
+        #   max_rolls: 4
+        #   initial: true
+        summary: Roll up to four times for Characteristics and keep up to three of those results.
+        description: |-
+          Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
+        _source:
+          page: 215
+        table:
+          - low: 1
+            high: 5
+            result: Extra limbs
+          - low: 6
+            high: 10
+            result: Fangs / rows of sharp teeth
+          - low: 11
+            high: 15
+            result: Claws / talons
+          - low: 16
+            high: 20
+            result: Strange color / markings
+          - low: 21
+            high: 25
+            result: Horns / tusks
+          - low: 26
+            high: 30
+            result: Oversized mouth
+          - low: 31
+            high: 35
+            result: Spikes / spines
+          - low: 36
+            high: 40
+            result: Tail
+          - low: 41
+            high: 45
+            result: Multi-segmented body
+          - low: 46
+            high: 50
+            result: Wings
+          - low: 51
+            high: 54
+            result: Stinger / barbs
+          - low: 55
+            high: 58
+            result: Many-eyed
+          - low: 59
+            high: 62
+            result: Distinctive sound
+          - low: 63
+            high: 66
+            result: Tentacles / tendrils
+          - low: 67
+            high: 69
+            result: Mandibles / pincers
+          - low: 70
+            high: 72
+            result: Luminescent
+          - low: 73
+            high: 75
+            result: Antennae / sensory organs
+          - low: 76
+            high: 78
+            result: Proboscis / inner jaw
+          - low: 79
+            high: 81
+            result: Exoskeleton / shell
+          - low: 82
+            high: 84
+            result: Bony protuberances
+          - low: 85
+            high: 87
+            result: Corrupted flesh
+          - low: 88
+            high: 90
+            result: Semi-transparent
+          - low: 91
+            high: 93
+            result: Scarred / injured
+          - low: 94
+            high: 95
+            result: Egg sac / carried offspring
+          - low: 96
+            high: 97
+            result: Rotting / skeletal
+          - low: 98
+            high: 98
+            result: Mummified / desiccated
+          - low: 99
+            high: 99
+            result: Multi-headed
+          - low: 100
+            high: 100
+            result: Etched with mystic runes
+      abilities:
+        name: Abilities
+        canonical_name: 'Monstrosity: Abilities'
+        # usage:
+        #   max_rolls: 4
+        #   initial: true
+        summary: Roll up to four times for Abilities and keep up to three of those results.
+        description: |-
+          Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
+
+          You should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.
+        _source:
+          page: 216
+        table:
+          - low: 1
+            high: 4
+            result: Keen senses
+          - low: 5
+            high: 8
+            result: Intimidating vocalization
+          - low: 9
+            high: 12
+            result: Climber
+          - low: 13
+            high: 16
+            result: Intelligent
+          - low: 17
+            high: 20
+            result: Swift
+          - low: 21
+            high: 24
+            result: Powerful bite
+          - low: 25
+            high: 28
+            result: Stealthy / ambusher
+          - low: 29
+            high: 32
+            result: Horrid visage
+          - low: 33
+            high: 36
+            result: Strong
+          - low: 37
+            high: 40
+            result: Camouflaged
+          - low: 41
+            high: 43
+            result: Flier / glider
+          - low: 44
+            high: 46
+            result: Poisonous
+          - low: 47
+            high: 49
+            result: Semiaquatic / swimmer
+          - low: 50
+            high: 52
+            result: Grappler / entangler
+          - low: 53
+            high: 55
+            result: Leaper
+          - low: 56
+            high: 58
+            result: Crusher / constrictor
+          - low: 59
+            high: 61
+            result: Armored
+          - low: 62
+            high: 64
+            result: Burrower
+          - low: 65
+            high: 67
+            result: Noxious smell
+          - low: 68
+            high: 69
+            result: Trap-setter
+          - low: 70
+            high: 71
+            result: Parasitic
+          - low: 72
+            high: 73
+            result: Vibration sense
+          - low: 74
+            high: 75
+            result: Breath weapon / toxic spew
+          - low: 76
+            high: 77
+            result: Mimicry
+          - low: 78
+            high: 79
+            result: Shapeshifting
+          - low: 80
+            high: 81
+            result: Control lesser creatures
+          - low: 82
+            high: 83
+            result: Echolocation
+          - low: 84
+            high: 85
+            result: Electric shock
+          - low: 86
+            high: 87
+            result: Acidic
+          - low: 88
+            high: 89
+            result: Symbiotic
+          - low: 90
+            high: 91
+            result: Shoot projectiles
+          - low: 92
+            high: 92
+            result: Paralyzing
+          - low: 93
+            high: 93
+            result: Immune to iron
+          - low: 94
+            high: 94
+            result: Feels no pain
+          - low: 95
+            high: 95
+            result: Enact rituals
+          - low: 96
+            high: 96
+            result: Create illusions
+          - low: 97
+            high: 97
+            result: Mind control / telepathy
+          - low: 98
+            high: 98
+            result: Move between realities
+          - low: 99
+            high: 99
+            result: Wield weapons
+          - low: 100
+            high: 100
+            result: Control elements

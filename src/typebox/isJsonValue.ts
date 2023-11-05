@@ -1,4 +1,4 @@
-import { isBoolean, isNull, isString } from 'lodash'
+import { isBoolean, isNull, isString } from 'lodash-es'
 import {
 	type JsonObject,
 	type JsonArray,

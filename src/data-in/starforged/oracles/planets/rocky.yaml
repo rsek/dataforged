@@ -1,0 +1,229 @@
+id: starforged
+source:
+  authors:
+    - name: Shawn Tomkin
+  title: 'Ironsworn: Starforged Rulebook'
+  license: https://creativecommons.org/licenses/by/4.0
+  date: 2022-05-06
+  url: https://ironswornrpg.com
+oracles:
+  planets:
+    name: Planets
+    collections:
+      rocky:
+        name: Rocky World
+        images:
+          - images/planets/rocky-01.webp
+          - images/planets/rocky-02.webp
+        _source:
+          page: 315
+        summary: A rugged planet scarred by eons of destructive asteroid impacts.
+        sample_names:
+          - Aphelion
+          - Artemis
+          - Capella
+          - Cobalt
+          - Crag
+          - Dusk
+          - Eos
+          - Hecate
+          - Imbrium
+          - Latona
+          - Losna
+          - Orpheus
+          - Ory
+          - Quietus
+          - Selene
+          - Silas
+          - Silex
+          - Slate
+          - Themis
+          - Umbra
+        collections:
+          settlements:
+            name: Settlements
+            contents:
+              terminus:
+                name: Terminus
+                table:
+                  - low: 1
+                    high: 50
+                    result: &Set.0 None
+                  - low: 51
+                    high: 70
+                    result: &Set.1 Orbital settlement
+                  - low: 71
+                    high: 85
+                    result: &Set.2 Planetside settlement
+                  - low: 86
+                    high: 95
+                    result: &Set.3 Multiple settlements
+                  - low: 96
+                    high: 100
+                    result: &Set.4 Settlements in conflict
+              outlands:
+                name: Outlands
+                table:
+                  - low: 1
+                    high: 75
+                    result: *Set.0
+                  - low: 76
+                    high: 87
+                    result: *Set.1
+                  - low: 88
+                    high: 95
+                    result: *Set.2
+                  - low: 96
+                    high: 98
+                    result: *Set.3
+                  - low: 99
+                    high: 100
+                    result: *Set.4
+              expanse:
+                name: Expanse
+                table:
+                  - low: 1
+                    high: 90
+                    result: *Set.0
+                  - low: 91
+                    high: 96
+                    result: *Set.1
+                  - low: 97
+                    high: 100
+                    result: *Set.2
+                  - low: null
+                    high: null
+                    result: *Set.3
+                  - low: null
+                    high: null
+                    result: *Set.4
+        contents:
+          atmosphere:
+            name: Atmosphere
+            table:
+              - low: 1
+                high: 65
+                result: None / thin
+              - low: 66
+                high: 85
+                result: Toxic
+              - low: 86
+                high: 90
+                result: Corrosive
+              - low: 91
+                high: 100
+                result: Marginal
+              - low: null
+                high: null
+                result: Breathable
+              - low: null
+                high: null
+                result: Ideal
+          observed_from_space:
+            name: Observed From Space
+            table:
+              - low: 1
+                high: 11
+                result: Barren plains
+              - low: 12
+                high: 22
+                result: Constant asteroid strikes
+              - low: 23
+                high: 33
+                result: Dense ring system
+              - low: 34
+                high: 44
+                result: Jagged mountains
+              - low: 45
+                high: 55
+                result: Massive impact crater
+              - low: 56
+                high: 66
+                result: Misshapen form (low gravity)
+              - low: 67
+                high: 77
+                result: Perpetual night
+              - low: 78
+                high: 88
+                result: Towering plateaus
+              - low: 89
+                high: 98
+                result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                rolls: &DF.rolls
+                  - oracle: starforged/oracles/core/descriptor
+                    auto: true
+                  - oracle: starforged/oracles/core/focus
+                    auto: true
+              - low: 99
+                high: 100
+                result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
+          feature:
+            name: Planetside Feature
+            table:
+              - low: 1
+                high: 7
+                result: Crystalline formations
+              - low: 8
+                high: 14
+                result: Crystalline caves
+              - low: 15
+                high: 21
+                result: Exposed mineral deposits
+              - low: 22
+                high: 28
+                result: Geometric terrain features
+              - low: 29
+                high: 35
+                result: Geothermal vents
+              - low: 36
+                high: 42
+                result: Glassy impact craters
+              - low: 43
+                high: 49
+                result: Massive dust dunes
+              - low: 50
+                high: 56
+                result: Powerful magnetic fields
+              - low: 57
+                high: 63
+                result: Rubble-strewn lava fields
+              - low: 64
+                high: 70
+                result: Steam-heated caves
+              - low: 71
+                high: 77
+                result: Subsurface magma flows
+              - low: 78
+                high: 84
+                result: Swirling low-lying gases
+              - low: 85
+                high: 91
+                result: Towering rocky spires
+              - low: 92
+                high: 98
+                result: *DF.result
+                rolls: *DF.rolls
+              - low: 99
+                high: 100
+                result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
+          life:
+            name: Life
+            table:
+              - low: 1
+                high: 65
+                result: None
+              - low: 66
+                high: 80
+                result: Extinct
+              - low: 81
+                high: 90
+                result: Scarce
+              - low: 91
+                high: 95
+                result: Diverse
+              - low: 96
+                high: 98
+                result: Bountiful
+              - low: 99
+                high: 100
+                result: Overrun

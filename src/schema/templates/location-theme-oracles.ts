@@ -1,11 +1,11 @@
 import { Type } from '@sinclair/typebox'
-import { Abstract } from 'schema/common'
+import { Abstract } from 'schema/common.js'
 import {
 	ActionThemeRow,
 	RollTwiceRow,
 	DescriptorFocusRow,
 	OracleTableRows5
-} from 'schema/templates/common'
+} from 'schema/templates/common.js'
 
 export const LocationThemeTemplate = Type.Object({
 	contents: Type.Object({

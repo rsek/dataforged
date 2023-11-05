@@ -1,17 +1,16 @@
-import type * as In from 'types/input/classic'
-import type * as Out from 'types/output/classic'
 import {
 	sourcedTransformer,
 	type Transformer,
 	type SourceHaver,
 	transform
-} from './transformer'
-import { trackID } from 'builders/id-tracker'
+} from './transformer.js'
+import { trackID } from './id-tracker.js'
 import {
 	type DelveSiteCardRowType,
 	type DelveSiteCardType
-} from 'schema/delve-sites'
-import { cloneDeep } from 'lodash'
+} from '../schema/delve-sites.js'
+import { cloneDeep } from 'lodash-es'
+import { In, Out } from '../types/index.js'
 
 type FeatureOrDangerData =
 	| In.DelveSiteThemeDangerRow

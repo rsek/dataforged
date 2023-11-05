@@ -1,5 +1,5 @@
 import prettier from 'prettier'
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 /**
  * Resolves prettier options for a specific JSON file.

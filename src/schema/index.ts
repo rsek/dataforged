@@ -2,14 +2,14 @@
  * Types from which to derive JSON schemas and JSON typedefs.
  */
 
-export { ID, Localize, Metadata } from 'schema/common'
-export * as Moves from 'schema/moves'
-export * as Assets from 'schema/assets'
-export * as Oracles from 'schema/oracles'
-export * as Npcs from 'schema/npcs'
-export * as Atlas from 'schema/atlas'
-export * as Truths from 'schema/truths'
-export * as DelveSites from 'schema/delve-sites'
-export * as Rarities from 'schema/rarities'
+export { ID, Localize, Metadata, Player, Progress } from './common/index.js'
+export * as Moves from './moves.js'
+export * as Assets from './assets.js'
+export * as Oracles from './oracles.js'
+export * as Npcs from './npcs.js'
+export * as Atlas from './atlas.js'
+export * as Truths from './truths.js'
+export * as DelveSites from './delve-sites.js'
+export * as Rarities from './rarities.js'
 
-export * as Schema from '../scripts/build-schema'
+export * as Schema from '../scripts/schema-root.js'

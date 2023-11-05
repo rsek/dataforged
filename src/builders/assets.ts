@@ -1,15 +1,15 @@
-import type * as In from 'types/input/starforged'
-import type * as Out from 'types/output/starforged'
+import type * as In from '../types/input/datasworn-input.js'
+import type * as Out from '../types/io/datasworn.js'
 import {
 	type SourceHaver,
 	sourcedTransformer,
 	collectionTransformer,
 	type Transformer,
 	transform
-} from './transformer'
-import { cloneDeep, mapValues, omit } from 'lodash'
-import { Move } from 'builders/moves'
-import { trackID } from 'builders/id-tracker'
+} from './transformer.js'
+import { cloneDeep, mapValues, omit } from 'lodash-es'
+import { Move } from './moves.js'
+import { trackID } from './id-tracker.js'
 
 export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 	options: function (

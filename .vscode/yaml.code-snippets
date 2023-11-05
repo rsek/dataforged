@@ -1,0 +1,214 @@
+{
+	"Format Collection link": {
+		"scope": ["yaml", "markdown"],
+		"prefix": "lnc",
+		"body": [
+			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/${2|collections/oracles,collections/moves,collections/assets|}/${0}${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
+		]
+	},
+  "Format Asset link": {
+		"scope": ["yaml", "markdown"],
+		"prefix": "lna",
+		"body": [
+			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/assets/${2}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
+		]
+	},
+
+  "Format Move link": {
+		"scope": ["yaml", "markdown"],
+		"prefix": "lnm",
+		"body": [
+			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/moves/${2|adventure,suffer,quest,session,connection,exploration,combat,recover,threshold,legacy,fate,scene_challenge|}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
+		]
+	},
+	"Format asset": {
+		"scope": "yaml",
+		"prefix": "asset",
+		"body": [
+			"${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}:",
+			"  name: ${10:}",
+      "  asset_type: ${11|Module,Support Vehicle,Companion,Path,Deed,Command Vehicle,Incidental Vehicle|}"
+			"  abilities:",
+			"$0${CLIPBOARD/(\\s*[A-Z].+)(\n)/${2:+          }- text: |-\n              $1\n/g}"
+		]
+	},
+	"Format table rows": {
+		"scope": "yaml",
+		"prefix": "rows",
+		"body": [
+			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s*\\n/  - low: $1\n    high: $2\n    result: $3\n/g}"
+		],
+		"description": "Formats table rows from Okular as YAML data"
+	},
+	"Format table rows (summary)": {
+		"scope": "yaml",
+		"prefix": "srows",
+		"body": [
+			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s+?(?<summary>[A-Z].+)\\s*\\n/- low: $1\n  high: $2\n  result: $3\n  summary: $4\n/g}"
+		],
+		"description": "Formats table rows from Okular as YAML data"
+	},
+	"Format table rows (blank)": {
+		"scope": "yaml",
+		"prefix": "brows",
+		"body": [
+			"${CLIPBOARD/\\s*(?<low>[0-9]+)[-–]?(?<high>[0-9]+)?\\s*\\n/- low: $1\n  high: $2\n  result:\n/g}"
+		],
+		"description": "Formats table rows from Okular as YAML data"
+	},
+
+	"Format single number rows": {
+		"scope": "yaml",
+		"prefix": "1rows",
+		"body": [
+			"${CLIPBOARD/\\s*(?<low>[0-9]+)-?(?<high>[0-9]+)?\\s*(?<result>[A-Z].+)\\s*\\n/- low: $1\n  high: $1\n  result: $3\n/g}"
+		],
+		"description": "Formats table rows from Okular as YAML data"
+	},
+	"Format unrollable/null rows": {
+		"scope": "yaml",
+		"prefix": "nrows",
+		"body": [
+			"${CLIPBOARD/(.*)\\n/- low: null\n  high: null\n  result: $1\n/g}"
+		],
+		"description": "Formats table rows from Okular as YAML data"
+	},
+	"Collection": {
+		"scope": "yaml",
+		"prefix": "col",
+		"body": [
+			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"  name: ${10:}",
+			"  contents:",
+			"    ${0}"
+		]
+	},
+	"OracleTable": {
+		"scope": "yaml",
+		"prefix": "tbl",
+		"body": [
+			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"  name: ${10:}",
+			"  table:",
+			"    ${0}"
+		]
+	},
+	"OracleTable column": {
+		"scope": "yaml",
+		"prefix": "tblcol",
+		"body": [
+			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"  label: ${10:}",
+			"  content_type: ${12|range,result,summary,description|}",
+			"${0}"
+		]
+	},
+	"MultiTable collection (3 roll columns)": {
+		"scope": "yaml",
+		"prefix": "mt3",
+		"body": [
+			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"  name: ${10:}",
+			"  rendering:",
+			"    style: multi_table",
+			"    columns:",
+			"      ${13}:",
+			"        table_key: ${13}",
+			"        content_type: range",
+			"      ${15}:",
+			"        table_key: ${15}",
+			"        content_type: range",
+			"      ${17}:",
+			"        table_key: ${17}",
+			"        content_type: range",
+			"      result:",
+			"        table_key: ${13}",
+			"        content_type: result",
+			"        label: Result",
+			"  contents:",
+			"    ${13:${12/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"      name: ${12}",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${24}",
+			"    ${15:${14/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"      name: ${14}",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${23}",
+			"    ${17:${16/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"      name: ${16}",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${22}",
+			"${0}"
+		]
+	},
+	"SI Regional table collection": {
+		"scope": "yaml",
+		"prefix": "sir",
+		"body": [
+			"${11:${10/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g}}:",
+			"  name: ${10:}",
+			"  rendering:",
+			"    style: multi_table",
+			"    columns:",
+			"      myriads:",
+			"        table_key: myriads",
+			"        content_type: range",
+			"      margins:",
+			"        table_key: margins",
+			"        content_type: range",
+			"      reaches:",
+			"        table_key: reaches",
+			"        content_type: range",
+			"      result:",
+			"        table_key: myriads",
+			"        content_type: result",
+			"        label: Result",
+			"  contents:",
+			"    myriads:",
+			"      name: Myriads",
+			"      summary: Central Seas",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${24}",
+			"    margins:",
+			"      name: Margins",
+			"      summary: Outer Seas",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${23}",
+			"    reaches:",
+			"      name: Reaches",
+			"      summary: Remote Seas",
+			"      rendering:",
+			"        style: embed_as_column",
+			"      table:",
+			"        ${22}",
+			"${0}"
+		]
+	},
+	"Sourcebook": {
+		"scope": "yaml",
+		"prefix": "sb",
+		"body": [
+			"id: ${11:sundered_isles}",
+			"ruleset: ${12|starforged,classic|}",
+			"source:",
+			"  title: ${13:Sundered Isles Book Preview}",
+			"  authors:",
+			"    - name: Shawn Tomkin",
+			"  license: ${14:null}",
+			"  url: https://ironswornrpg.com",
+			"  date: 2023-09-11",
+			"${15|oracles,assets,moves,atlas|}:",
+			"  $0"
+		]
+	}
+}

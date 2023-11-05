@@ -36,19 +36,15 @@
 
 	"editor.foldingImportsByDefault": true,
 	"yaml.schemas": {
-		"src/data-in/classic-input.schema.json": ["src/data-in/classic/**/*.yaml"],
-		"src/data-in/starforged-input.schema.json": [
+		"src/data-in/datasworn-input.schema.json": [
+			"src/data-in/classic/**/*.yaml",
 			"src/data-in/starforged/**/*.yaml"
 		]
 	},
 	"json.schemas": [
 		{
-			"url": "./src/data-out/classic.schema.json",
-			"fileMatch": ["src/data-out/classic/**/*.json"]
-		},
-		{
-			"url": "./src/data-out/starforged.schema.json",
-			"fileMatch": ["src/data-out/starforged/**/*.json"]
+			"url": "./src/data-out/datasworn.schema.json",
+			"fileMatch": ["src/data-out/*/**/*.json"]
 		}
 	],
 	"json.validate.enable": true,

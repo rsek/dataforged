@@ -2,7 +2,7 @@ import { type SchemaOptions, type TSchema, Kind } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
 import { type JsonValue } from 'type-fest'
 import { isJsonValue } from './isJsonValue'
-import { map } from 'lodash'
+import { map } from 'lodash-es'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 

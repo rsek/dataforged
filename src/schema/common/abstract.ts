@@ -14,13 +14,13 @@ import {
 	type TNumber,
 	type TProperties
 } from '@sinclair/typebox'
-import * as Utils from 'schema/common/utils'
-import * as Localize from 'schema/common/localize'
-import * as Metadata from 'schema/common/metadata'
-import type { OracleTableRow } from 'schema/oracles'
-import { mapValues } from 'lodash'
+import * as Utils from 'schema/common/utils.js'
+import * as Localize from 'schema/common/localize.js'
+import * as Metadata from 'schema/common/metadata.js'
+import type { OracleTableRow } from 'schema/oracles.js'
+import { mapValues } from 'lodash-es'
 import { type PartialDeep } from 'type-fest'
-import { REGEX_DICT_KEY } from 'schema/common/regex'
+import { REGEX_DICT_KEY } from 'schema/common/regex.js'
 
 /** Pattern for keys used in dictionary objects throughout Datasworn; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))

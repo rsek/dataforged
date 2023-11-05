@@ -1,13 +1,13 @@
-import { trackID } from 'builders/id-tracker'
+import { trackID } from './id-tracker.js'
 import {
 	transform,
 	collectionTransformer,
 	sourcedTransformer,
 	type Transformer
-} from 'builders/transformer'
-import { mapValues } from 'lodash'
-import type * as In from 'types/input/starforged'
-import type * as Out from 'types/output/starforged'
+} from './transformer.js'
+import { mapValues } from 'lodash-es'
+import type * as In from '../types/io/datasworn-input.js'
+import type * as Out from '../types/io/datasworn.js'
 
 export const NpcVariant: Transformer<In.NpcVariant, Out.NpcVariant, Out.Npc> = {
 	id(data, key, parent) {

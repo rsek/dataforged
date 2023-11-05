@@ -1,26 +1,22 @@
-import { Localize, Progress } from 'schema/common'
+import { Localize, Progress } from 'schema/common.js'
 import { Type, type Static, JsonEnumFromRecord } from 'typebox'
+import { MoveOutcomes, type MoveRollType, MoveOutcomeType } from './common'
+import { toMoveAugment } from 'utils'
 import {
-	MoveOutcomes,
 	composeMoveType,
-	composeTrigger,
-	composeTriggerRollCondition,
-	toMoveAugment,
 	toTriggerAugment,
 	toTriggerConditionAugment,
-	type MoveRollType,
-	MoveOutcomeType
-} from './common'
+	composeTrigger,
+	composeTriggerRollCondition
+} from './utils'
 
-export const TriggerProgressRollConditionOption = Type.Object(
+export const ProgressRollOption = Type.Object(
 	{
 		using: Type.Literal('progress_track')
 	},
-	{ $id: '#/$defs/TriggerProgressRollConditionOption' }
+	{ $id: '#/$defs/ProgressRollOption' }
 )
-export type TriggerProgressRollConditionOption = Static<
-	typeof TriggerProgressRollConditionOption
->
+export type ProgressRollOption = Static<typeof ProgressRollOption>
 
 export const ProgressRollMethod = JsonEnumFromRecord(
 	{
@@ -31,7 +27,7 @@ export const ProgressRollMethod = JsonEnumFromRecord(
 export type ProgressRollMethod = Static<typeof ProgressRollMethod>
 
 export const TriggerProgressRollCondition = composeTriggerRollCondition(
-	TriggerProgressRollConditionOption,
+	ProgressRollOption,
 	Type.Union([Type.Ref(ProgressRollMethod), Type.Ref(MoveOutcomeType)], {
 		default: 'any',
 		description:

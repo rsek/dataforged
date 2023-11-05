@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, ID, Metadata, Abstract } from 'schema/common'
+import { Localize, ID, Metadata, Abstract } from './common/index.js'
 
 export const Rarity = Abstract.SourcedNode(
 	{

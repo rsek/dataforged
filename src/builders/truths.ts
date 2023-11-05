@@ -1,6 +1,6 @@
-import { trackID } from 'builders/id-tracker'
-import type * as In from 'types/input/starforged'
-import type * as Out from 'types/output/starforged'
+import { trackID } from './id-tracker.js'
+import type * as In from '../types/input/datasworn-input.js'
+import type * as Out from '../types/io/datasworn.js'
 import {
 	sourcedTransformer,
 	transform,

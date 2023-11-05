@@ -4,10 +4,10 @@ import {
 	type TSchema,
 	type ObjectOptions
 } from '@sinclair/typebox'
-import * as Localize from 'schema/common/localize'
-import * as ID from 'schema/common/id'
+import * as Localize from 'schema/common/localize.js'
+import * as ID from 'schema/common/id.js'
 import * as PlayerStat from './player'
-import * as Abstract from 'schema/common/abstract'
+import * as Abstract from 'schema/common/abstract.js'
 import { JsonEnum } from 'typebox'
 
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
@@ -62,10 +62,11 @@ export interface SelectOption<T> {
 
 export const SelectFieldType = JsonEnum([
 	'select_stat',
-	'select_meter',
-	'select_ref',
-	'select_number',
-	'select_asset_augment'
+	'select_asset_state'
+	// 'select_meter',
+	// 'select_ref',
+	// 'select_number',
+	// 'select_asset_augment'
 ])
 export type SelectFieldType = Static<typeof SelectFieldType>
 
@@ -191,31 +192,28 @@ export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
 
 export const SelectFieldStat = SelectField(
 	'select_stat',
-	Type.Union([
-		Type.Ref(PlayerStat.PlayerStat),
-		Type.Ref(PlayerStat.PlayerConditionMeter)
-	]),
+	Type.Ref(PlayerStat.PlayerStat),
 	{
 		$id: '#/$defs/SelectFieldStat',
 		title: 'Select field (player stat)',
-		description: 'Select a standard player stat or condition meter.'
+		description: 'Select a standard player stat.'
 	}
 )
 export type SelectFieldStat = Static<typeof SelectFieldStat>
 
-export const SelectFieldRef = SelectField(
-	'select_ref',
-	Type.Union([
-		Type.Ref(ID.AssetControlFieldIDWildcard),
-		Type.Ref(ID.AssetOptionFieldIDWildcard)
-	]),
-	{
-		$id: '#/$defs/SelectFieldRef',
-		title: 'Select field (reference)',
-		description:
-			'Select a pointer to the value of an asset control or option field.'
-	}
-)
-export type SelectFieldRef = Static<typeof SelectFieldRef>
+// export const SelectFieldRef = SelectField(
+// 	'select_ref',
+// 	Type.Union([
+// 		Type.Ref(ID.AssetControlFieldIDWildcard),
+// 		Type.Ref(ID.AssetOptionFieldIDWildcard)
+// 	]),
+// 	{
+// 		$id: '#/$defs/SelectFieldRef',
+// 		title: 'Select field (reference)',
+// 		description:
+// 			'Select a pointer to the value of an asset control or option field.'
+// 	}
+// )
+// export type SelectFieldRef = Static<typeof SelectFieldRef>
 
 // select asset augment requires too much recursion. so what's the best way to model e.g. Ironclad?

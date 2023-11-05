@@ -1,13 +1,13 @@
-import { trackID } from 'builders/id-tracker'
+import { trackID } from './id-tracker.js'
 import {
 	transform,
 	sourcedTransformer,
 	type SourceHaver,
 	type Transformer,
 	recursiveCollectionTransformer
-} from 'builders/transformer'
-import type * as SchemaIn from 'types/input/starforged'
-import type * as SchemaOut from 'types/output/starforged'
+} from './transformer.js'
+import type * as SchemaIn from '../types/input/datasworn-input.js'
+import type * as SchemaOut from '../types/io/datasworn.js'
 
 export const OracleTableRow: Transformer<
 	SchemaIn.OracleTableRow,

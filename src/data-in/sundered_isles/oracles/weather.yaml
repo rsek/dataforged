@@ -1,0 +1,196 @@
+id: sundered_isles
+source:
+  title: Sundered Isles Book Preview
+  authors:
+    - name: Shawn Tomkin
+  license: null
+  url: https://ironswornrpg.com
+  date: 2023-09-11
+oracles:
+  weather:
+    name: Weather
+    collections:
+      conditions:
+        name: Weather Conditions
+        rendering:
+          style: multi_table
+          columns:
+            myriads:
+              table_key: myriads
+              content_type: range
+            margins:
+              table_key: margins
+              content_type: range
+            reaches:
+              table_key: reaches
+              content_type: range
+            result:
+              table_key: myriads
+              content_type: result
+              label: Result
+        contents:
+          myriads:
+            name: Myriads
+            summary: Central Seas
+            rendering:
+              style: embed_as_column
+            table:
+              - low: 1
+                high: 70
+                result: &result0 Fair Weather
+              - low: 71
+                high: 100
+                result: &result1 '[Foul Weather](id:sundered_isles/oracles/weather/foul)'
+          margins:
+            name: Margins
+            summary: Outer Seas
+            rendering:
+              style: embed_as_column
+            table:
+              - low: 1
+                high: 60
+                result: *result0
+              - low: 61
+                high: 100
+                result: *result1
+          reaches:
+            name: Reaches
+            summary: Remote Seas
+            rendering:
+              style: embed_as_column
+            table:
+              - low: 1
+                high: 50
+                result: *result0
+              - low: 51
+                high: 100
+                result: *result1
+
+    contents:
+      foul:
+        name: Foul Weather
+        table:
+          - low: 1
+            high: 10
+            result: Stifling
+            summary: Windless, oppressive heat
+          - low: 11
+            high: 25
+            result: Listless
+            summary: Light winds and sweltering heat
+          - low: 26
+            high: 40
+            result: Misty
+            summary: Light winds and damp fog
+          - low: 41
+            high: 55
+            result: Foggy
+            summary: Light winds and dense fog
+          - low: 56
+            high: 75
+            result: Heavy
+            summary: High winds, steady rain, and rough waters
+          - low: 76
+            high: 90
+            result: Stormy
+            summary: Powerful winds, pelting rain, and high seas
+          - low: 91
+            high: 100
+            result: Raging
+            summary: Destructive winds, torrential rain, and monstrous waves
+      duration:
+        name: Duration of Foul or Cursed Weather
+        dice: 1d10
+        table:
+          - low: 1
+            high: 2
+            result: Fleeting (less than an hour)
+          - low: 3
+            high: 9
+            result: Persistent (several hours)
+          - low: 10
+            high: 10
+            result: Relentless (more than a day)
+      cursed:
+        name: Cursed Weather
+        table:
+          - low: 1
+            high: 5
+            result: Ash storm
+            summary: Churning, low-level clouds of gray ash
+          - low: 6
+            high: 10
+            result: Blighting muck
+            summary: Rain of corrosive, mucous-like ooze
+          - low: 11
+            high: 15
+            result: Blood rain
+            summary: Ghastly, crimson rain
+          - low: 16
+            high: 20
+            result: Cinder rain
+            summary: Storm of fiery rock and ash
+          - low: 21
+            high: 25
+            result: Creeping mist
+            summary: Slithering, grasping fog
+          - low: 26
+            high: 30
+            result: Crimson mist
+            summary: Slow-moving fog that burns like acid
+          - low: 31
+            high: 35
+            result: Dead calm
+            summary: Disquieting stillness
+          - low: 36
+            high: 40
+            result: Fisher's Feast
+            summary: Shower of fish
+          - low: 41
+            high: 45
+            result: Forge's Fury
+            summary: Fast-moving storm of scorching heat
+          - low: 46
+            high: 50
+            result: Gloam tide
+            summary: Unnatural darkness that moves with the tide
+          - low: 51
+            high: 55
+            result: Ice fall
+            summary: Uncanny cold that leaves surfaces enveloped in thick ice
+          - low: 56
+            high: 60
+            result: Iron wind
+            summary: Strong wind that sends ships along an inevitable, fatebound course
+          - low: 61
+            high: 65
+            result: Knowing mist
+            summary: Fog that manifests visions of dark secrets and painful memories
+          - low: 66
+            high: 70
+            result: Phantom mist
+            summary: Ghost-haunted fog
+          - low: 71
+            high: 75
+            result: Rot wind
+            summary: Wind that carries the foul stench of death
+          - low: 76
+            high: 80
+            result: Sand storm
+            summary: Clouds of pelting, stinging sand, ripped from a now-barren island
+          - low: 81
+            high: 85
+            result: Seeking spouts
+            summary: Waterspouts and tornadoes that move with dreadful purpose
+          - low: 86
+            high: 90
+            result: Tempest
+            summary: Undying storm that prowls the isles in search of prey
+          - low: 91
+            high: 95
+            result: Wailing wind
+            summary: Wind that carries the mournful keen of the lost and the drowned
+          - low: 96
+            high: 100
+            result: Witch fire
+            summary: Low clouds suffused with tendrils of chaotic, mystic energy

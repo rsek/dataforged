@@ -1,7 +1,7 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { ID, Localize } from 'schema/common'
-import * as Abstract from 'schema/common/abstract'
-import * as Metadata from 'schema/common/metadata'
+import { ID, Localize } from './common/index.js'
+import * as Abstract from './common/abstract.js'
+import * as Metadata from './common/metadata.js'
 
 export const TruthOption = Type.Object(
 	{

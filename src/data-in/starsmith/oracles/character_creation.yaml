@@ -1,0 +1,815 @@
+id: starsmith
+source:
+  authors:
+    - name: Eric Bright
+  date: '2023-03-19'
+  title: Starsmith
+  license: https://creativecommons.org/licenses/by/4.0/
+  url: https://playeveryrole.com/
+oracles:
+  character_creation:
+    name: Character Creation
+    contents:
+      backstory_prompt:
+        _replace: starforged/oracles/character_creation/backstory_prompt
+        dice: 1d300
+        table:
+          - low: 1
+            high: 7
+            result: You abandoned your kin after learning a troubling truth
+          - low: 8
+            high: 13
+            result: You are guided by a vision or prophecy
+          - low: 14
+            high: 20
+            result: You are haunted by past actions or failures
+          - low: 21
+            high: 27
+            result: You are running from a criminal past
+          - low: 28
+            high: 34
+            result: You are the sole survivor of an attack or calamity
+          - low: 35
+            high: 40
+            result: You escaped an abusive or unjust situation
+          - low: 41
+            high: 46
+            result: You have no memory of your former life
+          - low: 47
+            high: 53
+            result: You rejected a duty or destiny
+          - low: 54
+            high: 60
+            result: You were banished from your former home
+          - low: 61
+            high: 67
+            result: You were denied a birthright
+          - low: 68
+            high: 74
+            result: You were on your own for as long as you can remember
+          - low: 75
+            high: 81
+            result: You were sent away on a prolonged mission
+          - low: 82
+            high: 87
+            result: You were taken or lured away by someone
+          - low: 88
+            high: 94
+            result: Your ambitions outgrew your humble origins
+          - low: 95
+            high: 100
+            result: Your wanderlust carried you far away
+          - low: 101
+            high: 107
+            result: You are plagued by a failed relationship
+          - low: 108
+            high: 113
+            result: You fled an overwhelming debt that came due
+          - low: 114
+            high: 120
+            result: You fled an unwanted birthright or family obligation
+          - low: 121
+            high: 127
+            result: You have unexplained knowledge beyond your understanding
+          - low: 128
+            high: 134
+            result: You hold dearly to a noble and philanthropic cause
+          - low: 135
+            high: 140
+            result: You left a corporation who wanted you to move up or get out
+          - low: 141
+            high: 146
+            result: You participated in a fierce attack and now seek atonement
+          - low: 147
+            high: 153
+            result: You seek to prove yourself worthy of a duty or destiny
+          - low: 154
+            high: 160
+            result: You wander aimlessly after losing a faithful companion
+          - low: 161
+            high: 167
+            result: You were adrift in space long enough to lose yourself
+          - low: 168
+            high: 174
+            result: You were away on a long-term research mission when everything changed
+          - low: 175
+            high: 181
+            result: You were falsely accused of criminal activity and fled
+          - low: 182
+            high: 187
+            result: You work to see that a vision or prophecy will not come to pass
+          - low: 188
+            high: 194
+            result: Your home did not survive a natural disaster
+          - low: 195
+            high: 200
+            result: Your kin abandoned you after learning a troubling truth
+          - low: 201
+            high: 207
+            result: You abandoned the wealth that made you a target
+          - low: 208
+            high: 213
+            result: You are guided by a mission passed down to you by kin
+          - low: 214
+            high: 220
+            result: You have knowledge others want to erase
+          - low: 221
+            high: 227
+            result: You just recovered from a dangerous addiction that still tempts you
+          - low: 228
+            high: 234
+            result: You know the truth is out there
+          - low: 235
+            high: 240
+            result: You offended a benefactor or patron
+          - low: 241
+            high: 246
+            result: You participated in an unethical or illegal experiment
+          - low: 247
+            high: 253
+            result: You squandered the security of a normal life
+          - low: 254
+            high: 260
+            result: You survived a crash landing in the Expanse but at a great cost
+          - low: 261
+            high: 267
+            result: You were duped into a shady action
+          - low: 268
+            high: 274
+            result: You were shamed by a failed tech experiment
+          - low: 275
+            high: 281
+            result: You were shunned for your beliefs
+          - low: 282
+            high: 287
+            result: You were viewed as a pariah
+          - low: 288
+            high: 294
+            result: Your search for knowledge carried you far away
+          - low: 295
+            high: 300
+            result: Your unique genetic markers make you a target for illegal research
+      starship_history:
+        _replace: starforged/oracles/character_creation/starship_history
+        dice: 1d300
+        table:
+          - low: 1
+            high: 8
+            result: Acquired in trade for a precious family heirloom
+          - low: 9
+            high: 17
+            result: Built out of repurposed scrap
+          - low: 18
+            high: 25
+            result: Claimed as spoils of war
+          - low: 26
+            high: 34
+            result: Discovered as a derelict, and patched back together
+          - low: 35
+            high: 42
+            result: Earned in exchange for a promise or vow
+          - low: 43
+            high: 50
+            result: Found abandoned in perfect condition
+          - low: 51
+            high: 58
+            result: Granted by an organization or community
+          - low: 59
+            high: 67
+            result: Inherited from a relative or mentor
+          - low: 68
+            high: 75
+            result: Purchased at a suspiciously cheap price
+          - low: 76
+            high: 84
+            result: Stolen from a notorious crime boss or criminal organization
+          - low: 85
+            high: 92
+            result: Taken while fleeing an attack or disaster
+          - low: 93
+            high: 100
+            result: Won in a bet
+          - low: 101
+            high: 108
+            result: Abandoned as a cursed vessel that no one else dared to take
+          - low: 109
+            high: 117
+            result: Bought at auction from an estate sale
+          - low: 118
+            high: 125
+            result: Claimed as a corporate cast-off after upgrading their fleet
+          - low: 126
+            high: 134
+            result: Gifted from a notorious crime boss in exchange for a favor to be called in later
+          - low: 135
+            high: 142
+            result: Given as a resolution to a promise or vow
+          - low: 143
+            high: 150
+            result: Glitchy corporate prototype given away
+          - low: 151
+            high: 158
+            result: Granted by an unknown benefactor
+          - low: 159
+            high: 167
+            result: Purchased at a suspiciously expensive price
+          - low: 168
+            high: 175
+            result: Retrofitted vessel from original generation ships
+          - low: 176
+            high: 184
+            result: Saved from the recycling heap and repaired
+          - low: 185
+            high: 192
+            result: Secondhand market purchase with poorly repaired battle damage
+          - low: 193
+            high: 200
+            result: Won in a lottery
+          - low: 201
+            high: 208
+            result: Bought at auction after repossession by authorities
+          - low: 209
+            high: 217
+            result: Custom built over the years as a hobby project
+          - low: 218
+            high: 225
+            result: Discarded training vessel that has been retrofitted
+          - low: 226
+            high: 234
+            result: Found unfinished in orbital drydock in an abandoned sector
+          - low: 235
+            high: 242
+            result: Given as a down payment for a job needing done
+          - low: 243
+            high: 250
+            result: Given as collateral for a debt you are owed
+          - low: 251
+            high: 258
+            result: Granted as a dying wish with strings attached
+          - low: 259
+            high: 267
+            result: Perk of a previous leadership position
+          - low: 268
+            high: 275
+            result: Purchased from a disgraced captain forced into retirement
+          - low: 276
+            high: 284
+            result: Retrofitted museum vessel
+          - low: 285
+            high: 292
+            result: Stolen from a faction or corporation
+          - low: 293
+            high: 300
+            result: Won as a corporate prize
+      starship_quirk:
+        _replace: starforged/oracles/character_creation/starship_quirk
+        dice: 1d300
+        table:
+          - low: 1
+            high: 5
+            result: Engine room is scorched with old burn marks
+          - low: 6
+            high: 10
+            result: Exterior is marred by rust and grime
+          - low: 11
+            high: 15
+            result: Faint, phantom music sometimes echoes through the corridors
+          - low: 16
+            high: 20
+            result: Gravity generator is notoriously fickle
+          - low: 21
+            high: 25
+            result: Hull is fused with organic growths
+          - low: 26
+            high: 30
+            result: Hull rattles and groans in atmospheric flight
+          - low: 31
+            high: 35
+            result: Interior spaces are crowded with exposed cables and conduits
+          - low: 36
+            high: 40
+            result: Looks defenseless, but exterior panels open to reveal weapons
+          - low: 41
+            high: 45
+            result: Navigation logs contain coordinates to locations that do not—or should not—exist
+          - low: 46
+            high: 50
+            result: Old bloodstain in the airlock reappears even when painted over
+          - low: 51
+            high: 55
+            result: Once a beautiful ship, now scarred by a devastating battle
+          - low: 56
+            high: 60
+            result: Patched hull covers a recent catastrophic breach
+          - low: 61
+            high: 65
+            result: Placards and control labels are in an uncommon language
+          - low: 66
+            high: 70
+            result: Removable plate decks provide access to hidden storage
+          - low: 71
+            high: 75
+            result: Segmented landing gear unfold like gangly spider legs
+          - low: 76
+            high: 80
+            result: Ship is powered by an ancient precursor device
+          - low: 81
+            high: 85
+            result: Someone marked the hull with graffiti during a recent layover
+          - low: 86
+            high: 90
+            result: Strange symbols are scrawled on the deck and bulkheads in the main corridor
+          - low: 91
+            high: 95
+            result: Things tend to go missing for no logical reason
+          - low: 96
+            high: 100
+            result: Timers and clocks are always just a bit off
+          - low: 101
+            high: 105
+            result: Ablative armor means constant patching
+          - low: 106
+            high: 110
+            result: Bulkhead doors often either slowly close or jam while closing
+          - low: 111
+            high: 115
+            result: Day and night cycles are constantly miscalibrated when in planetary orbit
+          - low: 116
+            high: 120
+            result: Engine room reacts poorly to tools made of a certain alloy
+          - low: 121
+            high: 125
+            result: Equipment only works after being hit with a certain pattern
+          - low: 126
+            high: 130
+            result: Exterior is garishly painted leaving no room for subtlety
+          - low: 131
+            high: 135
+            result: Hull and nacelles reconfigure for Eidolon jumps
+          - low: 136
+            high: 140
+            result: Hull is marked with a limerick, haiku, or joke
+          - low: 141
+            high: 145
+            result: Internal comms sometimes activate on their own, usually at inappropriate times
+          - low: 146
+            high: 150
+            result: Internal wiring runs off organic neural gel packs
+          - low: 151
+            high: 155
+            result: Landing gear can slide like skis on inclines without warning
+          - low: 156
+            high: 160
+            result: Lighting randomly shuts down a section at a time in long hallways before resetting
+          - low: 161
+            high: 165
+            result: Main crew quarters has an aquarium built into the wall that is impossible to clean
+          - low: 166
+            high: 170
+            result: Placards and control labels only use icons instead of language
+          - low: 171
+            high: 175
+            result: Previous captain or crew logs randomly plays despite being purged from the system
+          - low: 176
+            high: 180
+            result: Removable wall plates provide access to maintenance crawl spaces
+          - low: 181
+            high: 185
+            result: Rerouting power must be done manually with a large circuit board of wires and plugs
+          - low: 186
+            high: 190
+            result: Rooms are just a little too small as the builder tried to cut costs
+          - low: 191
+            high: 195
+            result: Rooms have their own gravity generators but all in different orientations
+          - low: 196
+            high: 200
+            result: Ship painted and decorated to look like a lifeform
+          - low: 201
+            high: 205
+            result: Air recycler often leaves an unusual odor
+          - low: 206
+            high: 210
+            result: Computer has an unusual acknowledgment when responding to commands
+          - low: 211
+            high: 215
+            result: Critical piece of equipment requires manual pumping to restart
+          - low: 216
+            high: 220
+            result: Diagnostic program returns data from the wrong system
+          - low: 221
+            high: 225
+            result: Each piece of major equipment is labeled with an ostentatious name
+          - low: 226
+            high: 230
+            result: Exterior is marred by pits or dimples from micro-strikes during shield failure
+          - low: 231
+            high: 235
+            result: Exterior sensors lack either visual data or the ability to zoom in visually
+          - low: 236
+            high: 240
+            result: Hull rattles and groans during Eidolon jumps
+          - low: 241
+            high: 245
+            result: Maneuvering thrusters can hiccup before fully firing
+          - low: 246
+            high: 250
+            result: Manual flight mode requires wearing a headset and pair of chunky tech gloves
+          - low: 251
+            high: 255
+            result: Restroom is only accessible via a long vertical shaft with a ladder
+          - low: 256
+            high: 260
+            result: Rudimentary AI program attempts to add appropriate emojis to logs and fails
+          - low: 261
+            high: 265
+            result: Rudimentary holodeck often malfunctions by disregarding safety protocols
+          - low: 266
+            high: 270
+            result: Ship or system alerts have unnecessarily long beep or chime patterns
+          - low: 271
+            high: 275
+            result: Space rodent nests show up randomly despite extermination
+          - low: 276
+            high: 280
+            result: The pilot chair is the most uncomfortable chair on the ship
+          - low: 281
+            high: 285
+            result: Video comms often malfunction by adding visual filters
+          - low: 286
+            high: 290
+            result: Voice commands for core computer only respond to absurd name
+          - low: 291
+            high: 295
+            result: Voice options for the computer system all have outrageous accents
+          - low: 296
+            high: 300
+            result: Water recycler leaves the water with an unpleasant color
+      sector_trouble:
+        _replace: starforged/oracles/character_creation/sector_trouble
+        dice: 1d300
+        table:
+          - low: 1
+            high: 5
+            result: Blockade prevents trade with other sectors
+          - low: 6
+            high: 10
+            result: Bounty hunters search for an infamous fugitive
+          - low: 11
+            high: 15
+            result: Chaotic breaches in spacetime spread like wildfire
+          - low: 16
+            high: 20
+            result: Criminal faction corrupts local authorities
+          - low: 21
+            high: 25
+            result: Devastating superweapon has fallen into the wrong hands
+          - low: 26
+            high: 30
+            result: Energy storms are rampant
+          - low: 31
+            high: 35
+            result: Magnetic disturbances disrupt communication
+          - low: 36
+            high: 40
+            result: Newly found resource lures greedy fortune hunters to the sector
+          - low: 41
+            high: 45
+            result: Notorious pirate clan preys on starships
+          - low: 46
+            high: 50
+            result: Parasitic lifeforms spread like a plague
+          - low: 51
+            high: 55
+            result: Precursor sites throughout the sector emit strange signals
+          - low: 56
+            high: 60
+            result: Prophecies foretell an imminent awakening of a dreadful power
+          - low: 61
+            high: 65
+            result: Raider clan emerges as a dominant threat under a new leader
+          - low: 66
+            high: 70
+            result: Religious zealots overrun the sector
+          - low: 71
+            high: 75
+            result: Rogue AI infiltrates systems throughout the sector
+          - low: 76
+            high: 80
+            result: Settlements or factions are on the brink of war
+          - low: 81
+            high: 85
+            result: Ships regularly go missing
+          - low: 86
+            high: 90
+            result: Sickness spreads among ships and settlements
+          - low: 91
+            high: 95
+            result: Supernova is imminent
+          - low: 96
+            high: 100
+            result: Titanic spaceborne lifeform stalks the spaceways
+          - low: 101
+            high: 105
+            result: Advanced technology is being weaponized
+          - low: 106
+            high: 110
+            result: Automated defense network has been hacked
+          - low: 111
+            high: 115
+            result: Cargo vessels with desperately needed supplies have gone missing
+          - low: 116
+            high: 120
+            result: Cold war between settlements or factions takes its toll
+          - low: 121
+            high: 125
+            result: Dangerous lifeforms have escaped from an illegal experimentation site
+          - low: 126
+            high: 130
+            result: Disinformation is fomenting insurrection
+          - low: 131
+            high: 135
+            result: Enhanced military presence causes tension with local citizens
+          - low: 136
+            high: 140
+            result: Greedy corporations charge astronomical tolls for travel
+          - low: 141
+            high: 145
+            result: Leadership has raised taxes for personal enrichment
+          - low: 146
+            high: 150
+            result: Local government may shut down due to underfunding
+          - low: 151
+            high: 155
+            result: Morphing star plays havoc with energy systems
+          - low: 156
+            high: 160
+            result: Necessary trade negotiations stand on the brink of failure
+          - low: 161
+            high: 165
+            result: Oppressive faction takes dominion over the sector
+          - low: 166
+            high: 170
+            result: Pirates hold a beloved leader hostage
+          - low: 171
+            high: 175
+            result: Political dissenters are disappearing
+          - low: 176
+            high: 180
+            result: Religious zealots take a slim majority in leadership and enact drastic changes
+          - low: 181
+            high: 185
+            result: Rumors and sightings of a ship captained by the dead cause panic
+          - low: 186
+            high: 190
+            result: Scarce resources lead to price gouging
+          - low: 191
+            high: 195
+            result: Starship sabotage is rampant at the largest spaceport
+          - low: 196
+            high: 200
+            result: Strange energy field suppresses Eidolon drives
+          - low: 201
+            high: 205
+            result: Access to vital resources and medication is suddenly rationed without explanation
+          - low: 206
+            high: 210
+            result: Armada of unidentified vessels is headed to the sector with weapons hot
+          - low: 211
+            high: 215
+            result: Central space hub is quarantined at the wrong time
+          - low: 216
+            high: 220
+            result: Chaos reigns after the assassination of a beloved leader
+          - low: 221
+            high: 225
+            result: Corporations prioritize profits over people and release unproven tech
+          - low: 226
+            high: 230
+            result: Damaged power supply leaves huge segments of the population without power
+          - low: 231
+            high: 235
+            result: Economy built on exploiting workers oppresses citizens
+          - low: 236
+            high: 240
+            result: Highly addictive new drug with dangerous side effects sweeps through the system
+          - low: 241
+            high: 245
+            result: Iconic cultural artifacts are being destroyed or stolen in a war
+          - low: 246
+            high: 250
+            result: Lack of infrastructure investment puts communities on the verge of collapse
+          - low: 251
+            high: 255
+            result: Natural disaster is imminent
+          - low: 256
+            high: 260
+            result: Population experiences mass visions from an unknown source
+          - low: 261
+            high: 265
+            result: Protests gather strength against an unpopular law
+          - low: 266
+            high: 270
+            result: Punishments for crime are wildly and unfairly increased
+          - low: 271
+            high: 275
+            result: Rampant inflation leads to overwhelming poor
+          - low: 276
+            high: 280
+            result: Resources mined from the asteroid belt just ran out
+          - low: 281
+            high: 285
+            result: Social unrest and riots become common under the brutality of authority
+          - low: 286
+            high: 290
+            result: The class of super-rich flaunt their power and immunity to authority
+          - low: 291
+            high: 295
+            result: Vast sections of the population must relocate after a disaster
+          - low: 296
+            high: 300
+            result: Violation of a peace treaty sets off new tensions
+      inciting_incident:
+        _replace: starforged/oracles/character_creation/inciting_incident
+        dice: 1d300
+        table:
+          - low: 1
+            high: 5
+            result: Aid a starship caught in a spacetime fracture.
+          - low: 6
+            high: 10
+            result: Broker peace between two feuding settlements
+          - low: 11
+            high: 15
+            result: Chart a new passage between isolated settlements
+          - low: 16
+            high: 20
+            result: Defend the people of a beleaguered settlement against raiders
+          - low: 21
+            high: 25
+            result: Discover who sabotaged a settlement’s air processors
+          - low: 26
+            high: 30
+            result: Escort a tradeship carrying prized cargo
+          - low: 31
+            high: 35
+            result: Ferry a rescue team to a perilous disaster site
+          - low: 36
+            high: 40
+            result: Infiltrate a fortified base to steal crucial data
+          - low: 41
+            high: 45
+            result: Investigate terrifying manifestations at a remote settlement
+          - low: 46
+            high: 50
+            result: Liberate prisoners at a cruel labor camp
+          - low: 51
+            high: 55
+            result: Locate a downed spacer on an uninhabited planet
+          - low: 56
+            high: 60
+            result: Protect a fugitive from a relentless bounty hunter
+          - low: 61
+            high: 65
+            result: Recover a cherished pre-exodus artifact from an enemy
+          - low: 66
+            high: 70
+            result: Rescue a starship crew held captive by mutineers
+          - low: 71
+            high: 75
+            result: Retrieve a cache of stolen weapons from a pirate ship
+          - low: 76
+            high: 80
+            result: Sabotage an enemy installation
+          - low: 81
+            high: 85
+            result: Search for a missing expedition in the depths of a precursor vault
+          - low: 86
+            high: 90
+            result: Shield a wondrous lifeform from those who seek to destroy it
+          - low: 91
+            high: 95
+            result: Track and slay a marauding beast
+          - low: 96
+            high: 100
+            result: Transport a displaced people to their new home
+          - low: 101
+            high: 105
+            result: Aid a starship in escaping pirates
+          - low: 106
+            high: 110
+            result: Apprehend escaped criminals
+          - low: 111
+            high: 115
+            result: Break an innocent out of prison
+          - low: 116
+            high: 120
+            result: Break through the blockade to deliver needed supplies
+          - low: 121
+            high: 125
+            result: Discover a murderer before they strike again
+          - low: 126
+            high: 130
+            result: Escort a diplomat on an important mission of peace
+          - low: 131
+            high: 135
+            result: Evacuate the population before disaster strikes
+          - low: 136
+            high: 140
+            result: Ferret out the mole before they do more damage
+          - low: 141
+            high: 145
+            result: Find a rogue agent before they sell their secrets
+          - low: 146
+            high: 150
+            result: Infiltrate a secure corporate site to steal a prototype
+          - low: 151
+            high: 155
+            result: Pull a heist to help someone pay off their crushing debt
+          - low: 156
+            high: 160
+            result: Recover goods from a crash site
+          - low: 161
+            high: 165
+            result: Rescue a political hostage
+          - low: 166
+            high: 170
+            result: Retrieve stolen tech from a pirate ship
+          - low: 171
+            high: 175
+            result: Scrub evidence of a clandestine operation
+          - low: 176
+            high: 180
+            result: Secretly deliver an encrypted data chip
+          - low: 181
+            high: 185
+            result: Smuggle a fugitive to safety
+          - low: 186
+            high: 190
+            result: Steal a symbolic artifact from an enemy
+          - low: 191
+            high: 195
+            result: Survey a desolate planet for potential to build a settlement
+          - low: 196
+            high: 200
+            result: Transport experimental tech to a dangerous location for testing
+          - low: 201
+            high: 205
+            result: Provide security while transporting hardened criminals
+          - low: 206
+            high: 210
+            result: Uncover a criminal safehouse
+          - low: 211
+            high: 215
+            result: Take a political hostage for leverage
+          - low: 216
+            high: 220
+            result: Track down a person for bounty
+          - low: 221
+            high: 225
+            result: Help an engineering crew perform emergency fixes at a dangerous location
+          - low: 226
+            high: 230
+            result: Shut down a minor ring of criminals
+          - low: 231
+            high: 235
+            result: Rescue the trapped miners
+          - low: 236
+            high: 240
+            result: Find evidence of innocence for one unjustly accused
+          - low: 241
+            high: 245
+            result: Get a resource processing facility up and running again after a revolt
+          - low: 246
+            high: 250
+            result: Gather incriminating evidence against a corrupt authority
+          - low: 251
+            high: 255
+            result: Ferry a medical team into a hotspot of disease
+          - low: 256
+            high: 260
+            result: Access physical data servers to upload a virus
+          - low: 261
+            high: 265
+            result: Retrace the steps of a known smuggler to find their hideout
+          - low: 266
+            high: 270
+            result: Deliver a ransom
+          - low: 271
+            high: 275
+            result: Spy on a para-military organization
+          - low: 276
+            high: 280
+            result: Return a runaway child to their VIP parent
+          - low: 281
+            high: 285
+            result: Gather data on a set of dangerous stellar phenomena
+          - low: 286
+            high: 290
+            result: Convince a stalker there are better uses of time than harassing a local celebrity
+          - low: 291
+            high: 295
+            result: Assist someone in faking their death
+          - low: 296
+            high: 300
+            result: Intercept a critical shipment to reroute it to where it is needed most

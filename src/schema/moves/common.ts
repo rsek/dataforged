@@ -1,20 +1,16 @@
 import {
 	Type,
-	type ArrayOptions,
-	type ObjectOptions,
 	type Static,
 	type TAnySchema,
-	type TObject
+	type TBigInt
 } from '@sinclair/typebox'
-import { Abstract, ID, Localize, Metadata } from 'schema/common'
-import { MoveIDWildcard } from 'schema/common/id'
-import { PartialExcept, Squash } from 'schema/common/utils'
+import { ID, Localize, Metadata } from 'schema/common.js'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
 	type MoveProgressRoll,
 	type MoveSpecialTrack
-} from 'schema/moves'
+} from 'schema/moves.js'
 import { JsonEnumFromRecord } from 'typebox'
 
 // ENUMS
@@ -70,30 +66,6 @@ export const TriggerBy = Type.Object(
 )
 export type TriggerBy = Static<typeof TriggerBy>
 
-export function composeTriggerRollCondition(
-	optionSchema: TAnySchema | undefined,
-	method: TAnySchema | undefined,
-	schemaOptions: ObjectOptions = {}
-) {
-	const properties = {
-		text: Type.Optional(
-			Type.Ref(Localize.MarkdownString, {
-				description:
-					'A markdown string of any trigger text specific to this trigger condition.'
-			})
-		),
-		by: Type.Optional(Type.Ref(TriggerBy))
-	}
-
-	if (optionSchema == null) return Type.Object(properties, schemaOptions)
-
-	const roll_options = Type.Array(Type.Ref(optionSchema), {
-		description: 'The options available when rolling with this trigger.'
-	})
-
-	return Type.Object({ ...properties, method, roll_options }, schemaOptions)
-}
-
 export const TriggerBase = Type.Object({
 	text: Type.Ref(Localize.MarkdownString, {
 		description:
@@ -102,27 +74,6 @@ export const TriggerBase = Type.Object({
 		pattern: /.*\.{3}/.source
 	})
 })
-
-export function composeTrigger(
-	rollConditionSchema: TObject,
-	options: ObjectOptions = {},
-	conditionsOptions: ArrayOptions = {}
-) {
-	return Type.Object(
-		{
-			text: Type.Ref(Localize.MarkdownString, {
-				description:
-					'A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.',
-				type: 'string',
-				pattern: /.*\.{3}/.source
-			}),
-			conditions: Type.Array(Type.Ref(rollConditionSchema), {
-				...conditionsOptions
-			})
-		},
-		options
-	)
-}
 
 // export const MoveReroll = Type.Object(
 // 	{
@@ -198,97 +149,10 @@ export const MoveBase = Type.Object({
 
 export type MoveBase = Static<typeof MoveBase>
 
-export function composeMoveType<T extends TObject>(schema: T, options = {}) {
-	return Type.Composite([Type.Omit(MoveBase, ['roll_type']), schema], options)
-}
+export type SchemaOf<T> = Exclude<TAnySchema, TBigInt> & { static: T }
 
-export function toTriggerAugment(
-	conditionSchema: TAnySchema,
-	options: ObjectOptions
-) {
-	return Type.Object(
-		{
-			conditions: Type.Array(conditionSchema)
-		},
-		options
-	)
-}
-export function toTriggerConditionAugment(
-	conditionSchema: TObject,
-	options: ObjectOptions
-) {
-	return PartialExcept(conditionSchema, ['text'], options)
-}
-
-export type SchemaOf<T> = TAnySchema & { static: T }
-
-type AnyMoveSchema =
+export type AnyMoveSchema =
 	| typeof MoveNoRoll
 	| typeof MoveActionRoll
 	| typeof MoveProgressRoll
 	| typeof MoveSpecialTrack
-
-export function toMoveAugment<
-	TMove extends AnyMoveSchema,
-	TAugment extends TObject
->(
-	moveSchema: TMove,
-	triggerAugmentSchema: TAugment,
-	options: ObjectOptions = {}
-) {
-	const toSquash: TObject[] = []
-
-	// FIXME: revisit whether augments should include text (because the asset ability text *does* already exist)
-	// toSquash.push(Type.Pick(moveSchema, ['text']))
-
-	toSquash.push(Type.Pick(moveSchema, ['roll_type', 'id']))
-
-	toSquash.push(
-		Type.Object({
-			trigger: Type.Optional(triggerAugmentSchema)
-		})
-	)
-
-	const combined = Squash(toSquash)
-
-	const augmentMany = Abstract.AugmentMany(
-		combined,
-		Type.Ref(MoveIDWildcard),
-		options
-	)
-
-	augmentMany.required = [...(augmentMany.required ?? []), 'roll_type']
-
-	// FIXME: revisit whether augments should include outcome-specific stuff
-	// if ('outcomes' in moveSchema.properties)
-	// 	return Squash(
-	// 		[
-	// 			augmentMany,
-	// 			Type.Object({
-	// 				outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
-	// 			})
-	// 		],
-	// 		options
-	// 	)
-
-	return augmentMany
-}
-
-// export const MoveOutcomeAugment = Type.Partial(MoveOutcome, {
-// 	$id: '#/$defs/MoveOutcomeAugment'
-// })
-// export const MoveOutcomeMatchableAugment = Type.Partial(MoveOutcomeMatchable, {
-// 	$id: '#/$defs/MoveOutcomeMatchableAugment'
-// })
-
-// export const MoveOutcomesAugment = Type.Object(
-// 	{
-// 		miss: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment)),
-// 		weak_hit: Type.Optional(Type.Ref(MoveOutcomeAugment)),
-// 		strong_hit: Type.Optional(Type.Ref(MoveOutcomeMatchableAugment))
-// 	},
-// 	{
-// 		$id: '#/$defs/MoveOutcomesAugment'
-// 	}
-// )
-// export type MoveOutcomesAugment = Static<typeof MoveOutcomesAugment>

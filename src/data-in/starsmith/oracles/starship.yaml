@@ -1,0 +1,2499 @@
+id: starsmith
+source:
+  authors:
+    - name: Eric Bright
+  date: '2023-03-19'
+  title: Starsmith
+  license: https://creativecommons.org/licenses/by/4.0/
+  url: https://playeveryrole.com/
+oracles:
+  starships:
+    name: Starships
+    contents:
+      type:
+        _replace: starforged/oracles/starships/type
+        dice: 1d300
+        table:
+          - low: 1
+            high: 2
+            result: Carrier
+            summary: Launches fighters
+          - low: 3
+            high: 6
+            result: Corvette
+            summary: Light attack ship
+          - low: 7
+            high: 11
+            result: Courier
+            summary: Fast transport
+          - low: 12
+            high: 14
+            result: Cruiser
+            summary: Medium attack ship
+          - low: 15
+            high: 16
+            result: Dreadnought
+            summary: Heavy attack ship
+          - low: 17
+            high: 19
+            result: Escape pod
+            summary: Survival craft
+          - low: 20
+            high: 22
+            result: Foundry
+            summary: Mobile construction platform
+          - low: 23
+            high: 27
+            result: Harvester
+            summary: Fuel or energy excavator
+          - low: 28
+            high: 33
+            result: Hauler
+            summary: Heavy transport
+          - low: 34
+            high: 36
+            result: Hunter
+            summary: Stealth attack ship
+          - low: 37
+            high: 38
+            result: Ironhome
+            summary: Habitat
+          - low: 39
+            high: 42
+            result: Mender
+            summary: Utility or repair
+          - low: 43
+            high: 47
+            result: Outbounder
+            summary: Remote survey or research
+          - low: 48
+            high: 50
+            result: Pennant
+            summary: Command ship
+          - low: 51
+            high: 56
+            result: Prospector
+            summary: Mineral excavator
+          - low: 57
+            high: 61
+            result: Reclaimer
+            summary: Salvage or rescue
+          - low: 62
+            high: 64
+            result: Shuttle
+            summary: Short-range transport
+          - low: 65
+            high: 67
+            result: Snub fighter
+            summary: Small attack craft
+          - low: 68
+            high: 82
+            result: Multipurpose
+            summary: '[Starship Mission](starforged/oracles/starships/mission)'
+          - low: 83
+            high: 84
+            result: Unusual or unknown
+          - low: 85
+            high: 94
+            result: '[Fleet](starforged/oracles/starships/fleet)'
+          - low: 95
+            high: 100
+            result: Ships in conflict (roll twice)
+          - low: 101
+            high: 102
+            result: Scorpion
+            summary: Launches atmospheric fighters
+          - low: 103
+            high: 106
+            result: Lightning
+            summary: Light bomber
+          - low: 107
+            high: 111
+            result: Knight
+            summary: Escort fighter
+          - low: 112
+            high: 114
+            result: Thunder
+            summary: Medium bomber
+          - low: 115
+            high: 116
+            result: Storm
+            summary: Heavy bomber
+          - low: 117
+            high: 119
+            result: Montgomery
+            summary: Maintenance craft
+          - low: 120
+            high: 122
+            result: Fabricator
+            summary: Mobile production plant
+          - low: 123
+            high: 127
+            result: Generator
+            summary: Mobile power supplier
+          - low: 128
+            high: 133
+            result: Conveyor
+            summary: Medium transport
+          - low: 134
+            high: 136
+            result: Infiltrator
+            summary: Stealthy surveillance craft
+          - low: 137
+            high: 138
+            result: Devastator
+            summary: Vessel of mass destruction
+          - low: 139
+            high: 142
+            result: Explorer
+            summary: Deep space cruiser
+          - low: 143
+            high: 147
+            result: Caduceus
+            summary: Medical ship
+          - low: 148
+            high: 150
+            result: Horizon
+            summary: Mobile communications array
+          - low: 151
+            high: 156
+            result: Compass
+            summary: Surveyor ship
+          - low: 157
+            high: 161
+            result: Tug
+            summary: Wreckage transport
+          - low: 162
+            high: 164
+            result: Coach
+            summary: Interplanetary transport
+          - low: 165
+            high: 167
+            result: Schooner
+            summary: Solar sail vessel
+          - low: 168
+            high: 182
+            result: Multipurpose
+            summary: '[Starship Mission](starforged/oracles/starships/mission)'
+          - low: 183
+            high: 184
+            result: Unusual or unknown
+          - low: 185
+            high: 194
+            result: '[Fleet](starforged/oracles/starships/fleet)'
+          - low: 195
+            high: 200
+            result: Ships in conflict (roll twice)
+          - low: 201
+            high: 202
+            result: Frigate
+            summary: Troop carrier
+          - low: 203
+            high: 206
+            result: Spartan
+            summary: Light defender
+          - low: 207
+            high: 211
+            result: Garrison
+            summary: System patrol ship
+          - low: 212
+            high: 214
+            result: Corinthian
+            summary: Medium defender
+          - low: 215
+            high: 216
+            result: Centurion
+            summary: Heavy defender
+          - low: 217
+            high: 219
+            result: Flier
+            summary: Solo racing ship
+          - low: 220
+            high: 222
+            result: Castle
+            summary: Mobile fortress
+          - low: 223
+            high: 227
+            result: Respirator
+            summary: Gas collector
+          - low: 228
+            high: 233
+            result: Invader
+            summary: Massive troop transport
+          - low: 234
+            high: 236
+            result: Crawler
+            summary: Mine layer
+          - low: 237
+            high: 238
+            result: Destroyer
+            summary: Planet killer
+          - low: 239
+            high: 242
+            result: Oracle
+            summary: Deep space science vessel
+          - low: 243
+            high: 247
+            result: Discovery
+            summary: Science vessel
+          - low: 248
+            high: 250
+            result: Shipwright
+            summary: Mobile drydock
+          - low: 251
+            high: 256
+            result: Distiller
+            summary: Mobile mineral processor
+          - low: 257
+            high: 261
+            result: Amphibian
+            summary: Planetary lander
+          - low: 262
+            high: 264
+            result: Train
+            summary: Unmanned transport
+          - low: 265
+            high: 267
+            result: Jumper
+            summary: Short burst Eidolon drive ship
+          - low: 268
+            high: 282
+            result: Multipurpose
+            summary: '[Starship Mission](starforged/oracles/starships/mission)'
+          - low: 283
+            high: 284
+            result: Unusual or unknown
+          - low: 285
+            high: 294
+            result: '[Fleet](starforged/oracles/starships/fleet)'
+          - low: 295
+            high: 300
+            result: Ships in conflict (roll twice)
+      fleet:
+        _replace: starforged/oracles/starships/fleet
+        dice: 1d300
+        table:
+          - low: 1
+            high: 10
+            result: Battle fleet
+          - low: 11
+            high: 25
+            result: Pirate wing
+          - low: 26
+            high: 35
+            result: Raider horde
+          - low: 36
+            high: 50
+            result: Salvager hive
+          - low: 51
+            high: 60
+            result: Settler caravan
+          - low: 61
+            high: 70
+            result: Trade caravan
+          - low: 71
+            high: 90
+            result: Transport and escorts
+          - low: 91
+            high: 100
+            result: '[Starship Mission](starforged/oracles/starships/mission)'
+          - low: 101
+            high: 110
+            result: Border patrol
+          - low: 111
+            high: 125
+            result: Mercenary force
+          - low: 126
+            high: 135
+            result: Engineering team
+          - low: 136
+            high: 150
+            result: Corporate excavators
+          - low: 151
+            high: 160
+            result: Automated cryo-sleepers
+          - low: 161
+            high: 170
+            result: Religious caravan
+          - low: 171
+            high: 190
+            result: Unaligned sanctuary ships
+          - low: 191
+            high: 200
+            result: '[Starship Mission](starforged/oracles/starships/mission)'
+          - low: 201
+            high: 210
+            result: Battle training group
+          - low: 211
+            high: 225
+            result: Crippled battle group
+          - low: 226
+            high: 235
+            result: Construction team
+          - low: 236
+            high: 250
+            result: Corporate survey team
+          - low: 251
+            high: 260
+            result: Sight-seeing tour
+          - low: 261
+            high: 270
+            result: Entertainment caravan
+          - low: 271
+            high: 290
+            result: Exploratory caravan
+          - low: 291
+            high: 300
+            result: '[Starship Mission](starforged/oracles/starships/mission)'
+      initial_contact:
+        _replace: starforged/oracles/starships/initial_contact
+        dice: 1d300
+        table:
+          - low: 1
+            high: 3
+            result: Familiar
+          - low: 4
+            high: 15
+            result: Friendly
+          - low: 16
+            high: 25
+            result: Neutral / automated
+          - low: 26
+            high: 35
+            result: Wary
+          - low: 36
+            high: 40
+            result: Dismissive
+          - low: 41
+            high: 50
+            result: Uncooperative
+          - low: 51
+            high: 65
+            result: Hostile
+          - low: 66
+            high: 80
+            result: Asking for help
+          - low: 81
+            high: 85
+            result: In battle
+          - low: 86
+            high: 90
+            result: Unresponsive
+          - low: 91
+            high: 95
+            result: Destroyed
+          - low: 96
+            high: 100
+            result: '[Derelict](starforged/oracles/derelicts)'
+          - low: 101
+            high: 103
+            result: Helpful
+          - low: 104
+            high: 115
+            result: All business
+          - low: 116
+            high: 125
+            result: Tolerant
+          - low: 126
+            high: 135
+            result: Defensive
+          - low: 136
+            high: 140
+            result: Reckless showboating
+          - low: 141
+            high: 150
+            result: Asking for a bribe
+          - low: 151
+            high: 165
+            result: Easily offended
+          - low: 166
+            high: 180
+            result: Demanding
+          - low: 181
+            high: 185
+            result: In crisis
+          - low: 186
+            high: 190
+            result: On emergency power
+          - low: 191
+            high: 195
+            result: Drifting dead in space
+          - low: 196
+            high: 200
+            result: '[Derelict](starforged/oracles/derelicts)'
+          - low: 201
+            high: 203
+            result: Informative
+          - low: 204
+            high: 215
+            result: Seeking mutual benefit
+          - low: 216
+            high: 225
+            result: Bureaucratic protocols
+          - low: 226
+            high: 235
+            result: Apathetic
+          - low: 236
+            high: 240
+            result: Stubborn contrarian
+          - low: 241
+            high: 250
+            result: Arrogant jerk
+          - low: 251
+            high: 265
+            result: Apathetic
+          - low: 266
+            high: 280
+            result: Wants to travel together
+          - low: 281
+            high: 285
+            result: In a time crunch
+          - low: 286
+            high: 290
+            result: Looped distress call
+          - low: 291
+            high: 295
+            result: Core going critical
+          - low: 296
+            high: 300
+            result: '[Derelict](starforged/oracles/derelicts)'
+      first_look:
+        _replace: starforged/oracles/starships/first_look
+        dice: 1d300
+        table:
+          - low: 1
+            high: 4
+            result: Abnormal sensor readings
+          - low: 5
+            high: 8
+            result: Brightly painted
+          - low: 9
+            high: 13
+            result: Bristling with weapons
+          - low: 14
+            high: 18
+            result: Dark or stealthy
+          - low: 19
+            high: 23
+            result: Heavy armor
+          - low: 24
+            high: 28
+            result: Immobile
+          - low: 29
+            high: 33
+            result: Intimidating profile
+          - low: 34
+            high: 37
+            result: Large sensor array
+          - low: 38
+            high: 41
+            result: Leaking radiation
+          - low: 42
+            high: 45
+            result: Low-profile or disguised
+          - low: 46
+            high: 49
+            result: Modern or advanced design
+          - low: 50
+            high: 54
+            result: Obsolete design
+          - low: 55
+            high: 59
+            result: Obvious damage
+          - low: 60
+            high: 63
+            result: Biological components
+          - low: 64
+            high: 67
+            result: Ornate markings
+          - low: 68
+            high: 71
+            result: Oversized engines
+          - low: 72
+            high: 75
+            result: Prominent guild emblem
+          - low: 76
+            high: 80
+            result: Refitted or repurposed hull
+          - low: 81
+            high: 85
+            result: Scarred hull
+          - low: 86
+            high: 90
+            result: Built from scrap
+          - low: 91
+            high: 94
+            result: Towing or linked
+          - low: 95
+            high: 100
+            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+            rolls:
+              - oracle: starforged/oracles/core/descriptor
+              - oracle: starforged/oracles/core/focus
+          - low: 101
+            high: 104
+            result: Strange energy spikes
+          - low: 105
+            high: 108
+            result: Highly reflective
+          - low: 109
+            high: 113
+            result: Large, central weapon
+          - low: 114
+            high: 118
+            result: Atmosphere thrusters
+          - low: 119
+            high: 123
+            result: Ablative armor
+          - low: 124
+            high: 128
+            result: Swift vector changes
+          - low: 129
+            high: 133
+            result: Ceremonial profile
+          - low: 134
+            high: 137
+            result: Specialized sensors
+          - low: 138
+            high: 141
+            result: Bussard ramscoop
+          - low: 142
+            high: 145
+            result: ID markings defaced
+          - low: 146
+            high: 149
+            result: Fluid design
+          - low: 150
+            high: 154
+            result: Retro-fitted
+          - low: 155
+            high: 159
+            result: Fresh damage
+          - low: 160
+            high: 163
+            result: AI pilot
+          - low: 164
+            high: 167
+            result: Cultural markings
+          - low: 168
+            high: 171
+            result: Streamlined engines
+          - low: 172
+            high: 175
+            result: Prominent political emblem
+          - low: 176
+            high: 180
+            result: Cobbled together hull
+          - low: 181
+            high: 185
+            result: New exterior
+          - low: 186
+            high: 190
+            result: Hull of unknown alloy
+          - low: 191
+            high: 194
+            result: Ejected life pods
+          - low: 195
+            high: 200
+            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+            rolls:
+              - oracle: starforged/oracles/core/descriptor
+              - oracle: starforged/oracles/core/focus
+          - low: 201
+            high: 204
+            result: Sensor ghosts
+          - low: 205
+            high: 208
+            result: Light sails
+          - low: 209
+            high: 213
+            result: No signs of weapons
+          - low: 214
+            high: 218
+            result: Ostentatious running lights
+          - low: 219
+            high: 223
+            result: Lack of combat armor
+          - low: 224
+            high: 228
+            result: Rotational gravity generator
+          - low: 229
+            high: 233
+            result: Designed for speed
+          - low: 234
+            high: 237
+            result: Sensor scrambler
+          - low: 238
+            high: 241
+            result: Singularity power source
+          - low: 242
+            high: 245
+            result: Vessel reported as destroyed
+          - low: 246
+            high: 249
+            result: Superfluous design
+          - low: 250
+            high: 254
+            result: Recent upgrades
+          - low: 255
+            high: 259
+            result: Non-functioning subsystem
+          - low: 260
+            high: 263
+            result: Biological rated cargo hold
+          - low: 264
+            high: 267
+            result: Kill count markings
+          - low: 268
+            high: 271
+            result: Experimental engines
+          - low: 272
+            high: 275
+            result: Prominent religious emblem
+          - low: 276
+            high: 280
+            result: Robotic appendages
+          - low: 281
+            high: 285
+            result: Hull breach
+          - low: 286
+            high: 290
+            result: Nano-tech hull
+          - low: 291
+            high: 294
+            result: Active maintenance bots
+          - low: 295
+            high: 300
+            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
+            rolls:
+              - oracle: starforged/oracles/core/descriptor
+              - oracle: starforged/oracles/core/focus
+      name:
+        _replace: starforged/oracles/starships/name
+        dice: 1d300
+        table:
+          - low: 1
+            high: 1
+            result: Arclight
+          - low: 2
+            high: 2
+            result: Argent Arrow
+          - low: 3
+            high: 3
+            result: Artemis
+          - low: 4
+            high: 4
+            result: Astral Explorer
+          - low: 5
+            high: 5
+            result: Atlas
+          - low: 6
+            high: 6
+            result: Aurora
+          - low: 7
+            high: 7
+            result: Avari’s Wake
+          - low: 8
+            high: 8
+            result: Banshee’s Cry
+          - low: 9
+            high: 9
+            result: Beowulf
+          - low: 10
+            high: 10
+            result: Bloody Jaw
+          - low: 11
+            high: 11
+            result: Broken Sword
+          - low: 12
+            high: 12
+            result: Buccaneer
+          - low: 13
+            high: 13
+            result: Cerelis Nine
+          - low: 14
+            high: 14
+            result: Clarion Call
+          - low: 15
+            high: 15
+            result: Dawn’s Herald
+          - low: 16
+            high: 16
+            result: Dead Reckoning
+          - low: 17
+            high: 17
+            result: Drift Runner
+          - low: 18
+            high: 18
+            result: Eclipse
+          - low: 19
+            high: 19
+            result: Elara Five
+          - low: 20
+            high: 20
+            result: Enchantress
+          - low: 21
+            high: 21
+            result: Endurance
+          - low: 22
+            high: 22
+            result: Excalibur
+          - low: 23
+            high: 23
+            result: Eye of the Void
+          - low: 24
+            high: 24
+            result: Fall of Icarus
+          - low: 25
+            high: 25
+            result: Fallen Light
+          - low: 26
+            high: 26
+            result: False Hope
+          - low: 27
+            high: 27
+            result: Firebreak
+          - low: 28
+            high: 28
+            result: First Light
+          - low: 29
+            high: 29
+            result: Forge Flier
+          - low: 30
+            high: 30
+            result: Fortune’s Favor
+          - low: 31
+            high: 31
+            result: Freya’s Wrath
+          - low: 32
+            high: 32
+            result: Ghost
+          - low: 33
+            high: 33
+            result: Guiding Star
+          - low: 34
+            high: 34
+            result: Hand of Fate
+          - low: 35
+            high: 35
+            result: Herald of Doom
+          - low: 36
+            high: 36
+            result: Implacable
+          - low: 37
+            high: 37
+            result: Implicit
+          - low: 38
+            high: 38
+            result: Inferno
+          - low: 39
+            high: 39
+            result: Invictus
+          - low: 40
+            high: 40
+            result: Iron Cairn
+          - low: 41
+            high: 41
+            result: Karena’s Reverie
+          - low: 42
+            high: 42
+            result: Kraken
+          - low: 43
+            high: 43
+            result: Kuno’s Hammer
+          - low: 44
+            high: 44
+            result: Lightline
+          - low: 45
+            high: 45
+            result: Lodestar
+          - low: 46
+            high: 46
+            result: Long Haul
+          - low: 47
+            high: 47
+            result: Lost Fortune
+          - low: 48
+            high: 48
+            result: Luminous Sorrow
+          - low: 49
+            high: 49
+            result: Manta
+          - low: 50
+            high: 50
+            result: Mercy
+          - low: 51
+            high: 51
+            result: Mutara
+          - low: 52
+            high: 52
+            result: Nebula Prowler
+          - low: 53
+            high: 53
+            result: Newton’s Folly
+          - low: 54
+            high: 54
+            result: Nightfall
+          - low: 55
+            high: 55
+            result: Nomad
+          - low: 56
+            high: 56
+            result: Obsidian Trident
+          - low: 57
+            high: 57
+            result: Onslaught
+          - low: 58
+            high: 58
+            result: Orca
+          - low: 59
+            high: 59
+            result: Outward Bound
+          - low: 60
+            high: 60
+            result: Phantom
+          - low: 61
+            high: 61
+            result: Photon
+          - low: 62
+            high: 62
+            result: Poltergeist
+          - low: 63
+            high: 63
+            result: Profit Margin
+          - low: 64
+            high: 64
+            result: Raven’s Call
+          - low: 65
+            high: 65
+            result: Raya’s Promise
+          - low: 66
+            high: 66
+            result: Reaper
+          - low: 67
+            high: 67
+            result: Reforged Hope
+          - low: 68
+            high: 68
+            result: Relentless
+          - low: 69
+            high: 69
+            result: Royal Signet
+          - low: 70
+            high: 70
+            result: Rubicon
+          - low: 71
+            high: 71
+            result: Sareea’s Tribute
+          - low: 72
+            high: 72
+            result: Second Chance
+          - low: 73
+            high: 73
+            result: Shard of the Sun
+          - low: 74
+            high: 74
+            result: Shattered Siege
+          - low: 75
+            high: 75
+            result: Shattered Star
+          - low: 76
+            high: 76
+            result: Silver Talon
+          - low: 77
+            high: 77
+            result: Smoldering Flame
+          - low: 78
+            high: 78
+            result: Sovereign Skies
+          - low: 79
+            high: 79
+            result: Sparrowhawk
+          - low: 80
+            high: 80
+            result: Stardust
+          - low: 81
+            high: 81
+            result: Starfall
+          - low: 82
+            high: 82
+            result: Stellar Hawk
+          - low: 83
+            high: 83
+            result: Stormswept
+          - low: 84
+            high: 84
+            result: Sundered Aegis
+          - low: 85
+            high: 85
+            result: Sundown
+          - low: 86
+            high: 86
+            result: Sureshot
+          - low: 87
+            high: 87
+            result: Terminus Clipper
+          - low: 88
+            high: 88
+            result: Terrapin
+          - low: 89
+            high: 89
+            result: Timber Wolf
+          - low: 90
+            high: 90
+            result: Tip of the Spear
+          - low: 91
+            high: 91
+            result: Titan
+          - low: 92
+            high: 92
+            result: Tormentor
+          - low: 93
+            high: 93
+            result: Trithia Six
+          - low: 94
+            high: 94
+            result: Ultraviolet
+          - low: 95
+            high: 95
+            result: Valora’s Comet
+          - low: 96
+            high: 96
+            result: Vengeance
+          - low: 97
+            high: 97
+            result: Venture
+          - low: 98
+            high: 98
+            result: Vigilant
+          - low: 99
+            high: 99
+            result: Voidtreader
+          - low: 100
+            high: 100
+            result: Vulture
+          - low: 101
+            high: 101
+            result: Aegean Foil
+          - low: 102
+            high: 102
+            result: Alpha Strike
+          - low: 103
+            high: 103
+            result: Antioch
+          - low: 104
+            high: 104
+            result: Ascender
+          - low: 105
+            high: 105
+            result: Avalon
+          - low: 106
+            high: 106
+            result: Belled Cat
+          - low: 107
+            high: 107
+            result: Beta Beast
+          - low: 108
+            high: 108
+            result: Blazing Inferno
+          - low: 109
+            high: 109
+            result: Blue Lancer
+          - low: 110
+            high: 110
+            result: Breacher
+          - low: 111
+            high: 111
+            result: Capricorn
+          - low: 112
+            high: 112
+            result: Castle Crasher
+          - low: 113
+            high: 113
+            result: Chosen Folly
+          - low: 114
+            high: 114
+            result: Cobra Strike
+          - low: 115
+            high: 115
+            result: Contessa
+          - low: 116
+            high: 116
+            result: Crane's Leap
+          - low: 117
+            high: 117
+            result: Cydonia
+          - low: 118
+            high: 118
+            result: Data Lore
+          - low: 119
+            high: 119
+            result: Deep Space Wine
+          - low: 120
+            high: 120
+            result: Delta Flier
+          - low: 121
+            high: 121
+            result: Destiny
+          - low: 122
+            high: 122
+            result: Dreamweaver
+          - low: 123
+            high: 123
+            result: Errant Fool
+          - low: 124
+            high: 124
+            result: Expeditor
+          - low: 125
+            high: 125
+            result: Fairlight
+          - low: 126
+            high: 126
+            result: Fighting Falcon
+          - low: 127
+            high: 127
+            result: Fisher King
+          - low: 128
+            high: 128
+            result: Fortitude
+          - low: 129
+            high: 129
+            result: Gale Force
+          - low: 130
+            high: 130
+            result: Gamma Ghost
+          - low: 131
+            high: 131
+            result: Golden Dragon
+          - low: 132
+            high: 132
+            result: Gosling
+          - low: 133
+            high: 133
+            result: Grey Mantis
+          - low: 134
+            high: 134
+            result: Hawker Hurricane
+          - low: 135
+            high: 135
+            result: Hellcat
+          - low: 136
+            high: 136
+            result: Hermes
+          - low: 137
+            high: 137
+            result: High Fidelity
+          - low: 138
+            high: 138
+            result: Hummingbird
+          - low: 139
+            high: 139
+            result: Icy Unicorn
+          - low: 140
+            high: 140
+            result: Infinite Horizon
+          - low: 141
+            high: 141
+            result: Iron Blade
+          - low: 142
+            high: 142
+            result: Ironclad Lady
+          - low: 143
+            high: 143
+            result: Joint Expedition
+          - low: 144
+            high: 144
+            result: Karma
+          - low: 145
+            high: 145
+            result: King's Lark
+          - low: 146
+            high: 146
+            result: Knight's Helm
+          - low: 147
+            high: 147
+            result: Lady's Lake
+          - low: 148
+            high: 148
+            result: Lavish Victor
+          - low: 149
+            high: 149
+            result: Lodestar Lock
+          - low: 150
+            high: 150
+            result: Long Shot
+          - low: 151
+            high: 151
+            result: Loyal Chancellor
+          - low: 152
+            high: 152
+            result: Market's Edge
+          - low: 153
+            high: 153
+            result: Megalodon
+          - low: 154
+            high: 154
+            result: Mighty Ranger
+          - low: 155
+            high: 155
+            result: Misty Eyes
+          - low: 156
+            high: 156
+            result: Navigator
+          - low: 157
+            high: 157
+            result: Nemesis
+          - low: 158
+            high: 158
+            result: Night Out
+          - low: 159
+            high: 159
+            result: Nightingale
+          - low: 160
+            high: 160
+            result: Nova Gremlin
+          - low: 161
+            high: 161
+            result: Odysseus
+          - low: 162
+            high: 162
+            result: Olympia
+          - low: 163
+            high: 163
+            result: Opportunity
+          - low: 164
+            high: 164
+            result: Owl's Wisdom
+          - low: 165
+            high: 165
+            result: Peak Velocity
+          - low: 166
+            high: 166
+            result: Piper's Tune
+          - low: 167
+            high: 167
+            result: Priceless Discovery
+          - low: 168
+            high: 168
+            result: Purple Raven
+          - low: 169
+            high: 169
+            result: Queen's Consort
+          - low: 170
+            high: 170
+            result: Reliant
+          - low: 171
+            high: 171
+            result: Rim Razor
+          - low: 172
+            high: 172
+            result: Risky Enterprise
+          - low: 173
+            high: 173
+            result: Running Gambler
+          - low: 174
+            high: 174
+            result: Scaled Drake
+          - low: 175
+            high: 175
+            result: Serendipity
+          - low: 176
+            high: 176
+            result: Shrike
+          - low: 177
+            high: 177
+            result: Siren Song
+          - low: 178
+            high: 178
+            result: Skymaster
+          - low: 179
+            high: 179
+            result: Space Madness
+          - low: 180
+            high: 180
+            result: Starburst
+          - low: 181
+            high: 181
+            result: Starlight
+          - low: 182
+            high: 182
+            result: Starwolf
+          - low: 183
+            high: 183
+            result: Stellar Mystery
+          - low: 184
+            high: 184
+            result: Stunning Six
+          - low: 185
+            high: 185
+            result: Swift Viper
+          - low: 186
+            high: 186
+            result: Tachyon Burst
+          - low: 187
+            high: 187
+            result: Theseus' Bones
+          - low: 188
+            high: 188
+            result: Tigercat
+          - low: 189
+            high: 189
+            result: Traveling Tutor
+          - low: 190
+            high: 190
+            result: True Talisman
+          - low: 191
+            high: 191
+            result: Ventura
+          - low: 192
+            high: 192
+            result: Visund
+          - low: 193
+            high: 193
+            result: Wanderlust
+          - low: 194
+            high: 194
+            result: Wellington Way
+          - low: 195
+            high: 195
+            result: White Wyrm
+          - low: 196
+            high: 196
+            result: Wildcat
+          - low: 197
+            high: 197
+            result: Winged Ex
+          - low: 198
+            high: 198
+            result: Wolverine
+          - low: 199
+            high: 199
+            result: Xerxes
+          - low: 200
+            high: 200
+            result: Zealous Gnat
+          - low: 201
+            high: 201
+            result: Alexandrite
+          - low: 202
+            high: 202
+            result: Ambition
+          - low: 203
+            high: 203
+            result: Argus Watch
+          - low: 204
+            high: 204
+            result: Asperity
+          - low: 205
+            high: 205
+            result: Barden
+          - low: 206
+            high: 206
+            result: Bermuda Trip
+          - low: 207
+            high: 207
+            result: Black Lion
+          - low: 208
+            high: 208
+            result: Bloodhound
+          - low: 209
+            high: 209
+            result: Bold Endeavor
+          - low: 210
+            high: 210
+            result: Breaking Wind
+          - low: 211
+            high: 211
+            result: Carpe Diem
+          - low: 212
+            high: 212
+            result: Catalina
+          - low: 213
+            high: 213
+            result: Cobalt Reaver
+          - low: 214
+            high: 214
+            result: Constellation Lock
+          - low: 215
+            high: 215
+            result: Coranado Corsair
+          - low: 216
+            high: 216
+            result: Cyclopse
+          - low: 217
+            high: 217
+            result: Dark Void
+          - low: 218
+            high: 218
+            result: Dauntless
+          - low: 219
+            high: 219
+            result: Defiance
+          - low: 220
+            high: 220
+            result: Descender
+          - low: 221
+            high: 221
+            result: Dominator
+          - low: 222
+            high: 222
+            result: Dusty Skimmer
+          - low: 223
+            high: 223
+            result: Euphoria
+          - low: 224
+            high: 224
+            result: Fairchild
+          - low: 225
+            high: 225
+            result: Fell Hammer
+          - low: 226
+            high: 226
+            result: Firelight
+          - low: 227
+            high: 227
+            result: Fleetwood Hack
+          - low: 228
+            high: 228
+            result: Galaxy's Guide
+          - low: 229
+            high: 229
+            result: Galloping Mustang
+          - low: 230
+            high: 230
+            result: Gladius
+          - low: 231
+            high: 231
+            result: Good Hope
+          - low: 232
+            high: 232
+            result: Green Havoc
+          - low: 233
+            high: 233
+            result: Haughty Bear
+          - low: 234
+            high: 234
+            result: Hedged Bet
+          - low: 235
+            high: 235
+            result: Helldiver
+          - low: 236
+            high: 236
+            result: Hidden Pearl
+          - low: 237
+            high: 237
+            result: Hoverfly
+          - low: 238
+            high: 238
+            result: Hypothetical Dilemma
+          - low: 239
+            high: 239
+            result: Infineon
+          - low: 240
+            high: 240
+            result: Ionic Boom
+          - low: 241
+            high: 241
+            result: Iron Shield
+          - low: 242
+            high: 242
+            result: Isolde
+          - low: 243
+            high: 243
+            result: Journey's Prize
+          - low: 244
+            high: 244
+            result: Kelvin Hopper
+          - low: 245
+            high: 245
+            result: Kittyhawk
+          - low: 246
+            high: 246
+            result: Kraken Released
+          - low: 247
+            high: 247
+            result: Last Hope
+          - low: 248
+            high: 248
+            result: Legacy
+          - low: 249
+            high: 249
+            result: Lonestar's Jam
+          - low: 250
+            high: 250
+            result: Long Weekend
+          - low: 251
+            high: 251
+            result: Mariner's Trident
+          - low: 252
+            high: 252
+            result: Marquise
+          - low: 253
+            high: 253
+            result: Meteor
+          - low: 254
+            high: 254
+            result: Millennium Raptor
+          - low: 255
+            high: 255
+            result: Myth Adventure
+          - low: 256
+            high: 256
+            result: Nebula Chaser
+          - low: 257
+            high: 257
+            result: Niagara
+          - low: 258
+            high: 258
+            result: Nighthawk
+          - low: 259
+            high: 259
+            result: Northrup Ram
+          - low: 260
+            high: 260
+            result: Obsidian Heart
+          - low: 261
+            high: 261
+            result: Old Buoy
+          - low: 262
+            high: 262
+            result: Opal Star
+          - low: 263
+            high: 263
+            result: Ormen Lange
+          - low: 264
+            high: 264
+            result: Paladin
+          - low: 265
+            high: 265
+            result: Pinched Penny
+          - low: 266
+            high: 266
+            result: Polaris
+          - low: 267
+            high: 267
+            result: Pura Vida
+          - low: 268
+            high: 268
+            result: Quantum Jump
+          - low: 269
+            high: 269
+            result: Red Zeppelin
+          - low: 270
+            high: 270
+            result: Resplendent
+          - low: 271
+            high: 271
+            result: Rising Tide
+          - low: 272
+            high: 272
+            result: Rosenberg Bridge
+          - low: 273
+            high: 273
+            result: Sapphira
+          - low: 274
+            high: 274
+            result: Sentinel
+          - low: 275
+            high: 275
+            result: Shallow Pass
+          - low: 276
+            high: 276
+            result: Silent Night
+          - low: 277
+            high: 277
+            result: Skyfall
+          - low: 278
+            high: 278
+            result: Slim Vector
+          - low: 279
+            high: 279
+            result: Star Voyager
+          - low: 280
+            high: 280
+            result: Stargazer
+          - low: 281
+            high: 281
+            result: Starling Jay
+          - low: 282
+            high: 282
+            result: Stellar Kart
+          - low: 283
+            high: 283
+            result: Stinson's Rocket
+          - low: 284
+            high: 284
+            result: Sunny Day
+          - low: 285
+            high: 285
+            result: Swoose Goose
+          - low: 286
+            high: 286
+            result: Taloned Eagle
+          - low: 287
+            high: 287
+            result: Thunderbolt
+          - low: 288
+            high: 288
+            result: Tiger's Claw
+          - low: 289
+            high: 289
+            result: Triumph
+          - low: 290
+            high: 290
+            result: Valiant
+          - low: 291
+            high: 291
+            result: Vindicator
+          - low: 292
+            high: 292
+            result: Vulpine Prize
+          - low: 293
+            high: 293
+            result: Wayfarer
+          - low: 294
+            high: 294
+            result: Whirlwind
+          - low: 295
+            high: 295
+            result: Wide Berth
+          - low: 296
+            high: 296
+            result: Willow Wisp
+          - low: 297
+            high: 297
+            result: Wichita Two-Step
+          - low: 298
+            high: 298
+            result: Wraith
+          - low: 299
+            high: 299
+            result: Yellow Peril
+          - low: 300
+            high: 300
+            result: Zephyr
+    collections:
+      mission:
+        name: Mission
+        contents:
+          terminus:
+            _replace: starforged/oracles/starships/mission/terminus
+            dice: 1d300
+            table:
+              - low: 1
+                high: 3
+                result: Blockade a location
+              - low: 4
+                high: 6
+                result: Break a blockade
+              - low: 7
+                high: 9
+                result: Collect a resource
+              - low: 10
+                high: 11
+                result: Command others
+              - low: 12
+                high: 14
+                result: Conduct diplomacy
+              - low: 15
+                high: 17
+                result: Conduct espionage
+              - low: 18
+                high: 20
+                result: Conduct piracy
+              - low: 21
+                high: 23
+                result: Conduct research
+              - low: 24
+                high: 26
+                result: Defend against an attack
+              - low: 27
+                high: 29
+                result: Deliver messages or data
+              - low: 30
+                high: 32
+                result: Establish a settlement
+              - low: 33
+                high: 35
+                result: Evacuate a location
+              - low: 36
+                high: 37
+                result: Explore a region
+              - low: 38
+                high: 39
+                result: Hold prisoners
+              - low: 40
+                high: 42
+                result: Hunt down another ship
+              - low: 43
+                high: 45
+                result: Launch an attack
+              - low: 46
+                high: 48
+                result: Patrol an area
+              - low: 49
+                high: 51
+                result: Provide medical aid
+              - low: 52
+                high: 54
+                result: Provide repairs
+              - low: 55
+                high: 57
+                result: Provide shelter
+              - low: 58
+                high: 59
+                result: Quarantine a danger
+              - low: 60
+                high: 62
+                result: Raid a settlement
+              - low: 63
+                high: 65
+                result: Resupply a settlement
+              - low: 66
+                high: 68
+                result: Retrieve salvage
+              - low: 69
+                high: 71
+                result: Search and rescue
+              - low: 72
+                high: 74
+                result: Smuggle cargo
+              - low: 75
+                high: 77
+                result: Survey a site
+              - low: 78
+                high: 79
+                result: Test a technology
+              - low: 80
+                high: 82
+                result: Transport cargo
+              - low: 83
+                high: 85
+                result: Transport passengers
+              - low: 86
+                high: 90
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 91
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 101
+                high: 103
+                result: Enforce martial law
+              - low: 104
+                high: 106
+                result: Reinforce supply lines
+              - low: 107
+                high: 109
+                result: Destroy a resource
+              - low: 110
+                high: 111
+                result: Follow orders
+              - low: 112
+                high: 114
+                result: Disrupt diplomatic relations
+              - low: 115
+                high: 117
+                result: Infiltrate territory
+              - low: 118
+                high: 120
+                result: Negotiate a treaty
+              - low: 121
+                high: 123
+                result: Conduct questionable experiments
+              - low: 124
+                high: 126
+                result: Prepare for impending disaster
+              - low: 127
+                high: 129
+                result: Confiscate data
+              - low: 130
+                high: 132
+                result: Establish a passage
+              - low: 133
+                high: 135
+                result: Rebuild location
+              - low: 136
+                high: 137
+                result: Investigate space lifeforms
+              - low: 138
+                high: 139
+                result: Apprehend criminals
+              - low: 140
+                high: 142
+                result: Uncover hidden location
+              - low: 143
+                high: 145
+                result: Search and destroy
+              - low: 146
+                high: 148
+                result: Protect location
+              - low: 149
+                high: 151
+                result: Provide supplies
+              - low: 152
+                high: 154
+                result: Perform satellite/probe maintenance
+              - low: 155
+                high: 157
+                result: Protect valuable witness
+              - low: 158
+                high: 159
+                result: Assess quarantined zone danger
+              - low: 160
+                high: 162
+                result: Extort a settlement
+              - low: 163
+                high: 165
+                result: Pickup sensitive cargo
+              - low: 166
+                high: 168
+                result: Scrub evidence
+              - low: 169
+                high: 171
+                result: Take hostage
+              - low: 172
+                high: 174
+                result: Establish new trade routes
+              - low: 175
+                high: 177
+                result: Map a sector
+              - low: 178
+                high: 179
+                result: Test a weapon
+              - low: 180
+                high: 182
+                result: Transport vehicles
+              - low: 183
+                high: 185
+                result: Transport leaders in secret
+              - low: 186
+                high: 190
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 191
+                high: 200
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 201
+                high: 203
+                result: Escalate regional tensions
+              - low: 204
+                high: 206
+                result: Setup defensive perimeter
+              - low: 207
+                high: 209
+                result: Trade a resource
+              - low: 210
+                high: 211
+                result: Flee duty or orders
+              - low: 212
+                high: 214
+                result: Stoke rebellion
+              - low: 215
+                high: 217
+                result: Sabotage the competition
+              - low: 218
+                high: 220
+                result: Broker a deal
+              - low: 221
+                high: 223
+                result: Eliminate evidence of research
+              - low: 224
+                high: 226
+                result: Perform saber rattling
+              - low: 227
+                high: 229
+                result: Proselytize belief
+              - low: 230
+                high: 232
+                result: Lay claim to territory
+              - low: 233
+                high: 235
+                result: Mobilize a location against a threat
+              - low: 236
+                high: 237
+                result: Study stellar phenomenon
+              - low: 238
+                high: 239
+                result: Transfer dangerous prisoner
+              - low: 240
+                high: 242
+                result: Collect a bounty
+              - low: 243
+                high: 245
+                result: Preemptive strike mission
+              - low: 246
+                high: 248
+                result: Upgrade infrastructure
+              - low: 249
+                high: 251
+                result: Transport medical specialist
+              - low: 252
+                high: 254
+                result: Transport engineering specialist
+              - low: 255
+                high: 257
+                result: Prevent stellar disaster
+              - low: 258
+                high: 259
+                result: Research quarantined environment
+              - low: 260
+                high: 262
+                result: Reinforce settlement defenses
+              - low: 263
+                high: 265
+                result: Pickup valuable cargo
+              - low: 266
+                high: 268
+                result: Deliver salvage
+              - low: 269
+                high: 271
+                result: Break out prisoner
+              - low: 272
+                high: 274
+                result: Smuggle people
+              - low: 275
+                high: 277
+                result: Shutdown illegal activity
+              - low: 278
+                high: 279
+                result: Test an alliance
+              - low: 280
+                high: 282
+                result: Transport energy source
+              - low: 283
+                high: 285
+                result: Transport lifeforms
+              - low: 286
+                high: 290
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 291
+                high: 300
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          outlands:
+            _replace: starforged/oracles/starships/mission/outlands
+            dice: 1d300
+            table:
+              - low: 1
+                high: 2
+                result: Blockade a location
+              - low: 3
+                high: 4
+                result: Break a blockade
+              - low: 5
+                high: 7
+                result: Collect a resource
+              - low: 8
+                high: 9
+                result: Command others
+              - low: 10
+                high: 11
+                result: Conduct diplomacy
+              - low: 12
+                high: 13
+                result: Conduct espionage
+              - low: 14
+                high: 16
+                result: Conduct piracy
+              - low: 17
+                high: 20
+                result: Conduct research
+              - low: 21
+                high: 24
+                result: Defend against an attack
+              - low: 25
+                high: 28
+                result: Deliver messages or data
+              - low: 29
+                high: 32
+                result: Establish a settlement
+              - low: 33
+                high: 36
+                result: Evacuate a location
+              - low: 37
+                high: 40
+                result: Explore a region
+              - low: 41
+                high: 42
+                result: Hold prisoners
+              - low: 43
+                high: 45
+                result: Hunt down another ship
+              - low: 46
+                high: 48
+                result: Launch an attack
+              - low: 49
+                high: 50
+                result: Patrol an area
+              - low: 51
+                high: 53
+                result: Provide medical aid
+              - low: 54
+                high: 56
+                result: Provide repairs
+              - low: 57
+                high: 59
+                result: Provide shelter
+              - low: 60
+                high: 61
+                result: Quarantine a danger
+              - low: 62
+                high: 64
+                result: Raid a settlement
+              - low: 65
+                high: 68
+                result: Resupply a settlement
+              - low: 69
+                high: 71
+                result: Retrieve salvage
+              - low: 72
+                high: 73
+                result: Search and rescue
+              - low: 74
+                high: 75
+                result: Smuggle cargo
+              - low: 76
+                high: 78
+                result: Survey a site
+              - low: 79
+                high: 80
+                result: Test a technology
+              - low: 81
+                high: 83
+                result: Transport cargo
+              - low: 84
+                high: 85
+                result: Transport passengers
+              - low: 86
+                high: 90
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 91
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 101
+                high: 102
+                result: Enforce martial law
+              - low: 103
+                high: 104
+                result: Reinforce supply lines
+              - low: 105
+                high: 107
+                result: Destroy a resource
+              - low: 108
+                high: 109
+                result: Follow orders
+              - low: 110
+                high: 111
+                result: Disrupt diplomatic relations
+              - low: 112
+                high: 113
+                result: Infiltrate territory
+              - low: 114
+                high: 116
+                result: Negotiate a treaty
+              - low: 117
+                high: 120
+                result: Conduct questionable experiments
+              - low: 121
+                high: 124
+                result: Prepare for impending disaster
+              - low: 125
+                high: 128
+                result: Confiscate data
+              - low: 129
+                high: 132
+                result: Establish a passage
+              - low: 133
+                high: 136
+                result: Rebuild location
+              - low: 137
+                high: 140
+                result: Investigate space lifeforms
+              - low: 141
+                high: 142
+                result: Apprehend criminals
+              - low: 143
+                high: 145
+                result: Uncover hidden location
+              - low: 146
+                high: 148
+                result: Search and destroy
+              - low: 149
+                high: 150
+                result: Protect location
+              - low: 151
+                high: 153
+                result: Provide supplies
+              - low: 154
+                high: 156
+                result: Perform satellite/probe maintenance
+              - low: 157
+                high: 159
+                result: Protect valuable witness
+              - low: 160
+                high: 161
+                result: Assess quarantined zone danger
+              - low: 162
+                high: 164
+                result: Extort a settlement
+              - low: 165
+                high: 168
+                result: Pickup sensitive cargo
+              - low: 169
+                high: 171
+                result: Scrub evidence
+              - low: 172
+                high: 173
+                result: Take hostage
+              - low: 174
+                high: 175
+                result: Establish new trade routes
+              - low: 176
+                high: 178
+                result: Map a sector
+              - low: 179
+                high: 180
+                result: Test a weapon
+              - low: 181
+                high: 183
+                result: Transport vehicles
+              - low: 184
+                high: 185
+                result: Transport leaders in secret
+              - low: 186
+                high: 190
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 191
+                high: 200
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 201
+                high: 202
+                result: Escalate regional tensions
+              - low: 203
+                high: 204
+                result: Setup defensive perimeter
+              - low: 205
+                high: 207
+                result: Trade a resource
+              - low: 208
+                high: 209
+                result: Flee duty or orders
+              - low: 210
+                high: 211
+                result: Stoke rebellion
+              - low: 212
+                high: 213
+                result: Sabotage the competition
+              - low: 214
+                high: 216
+                result: Broker a deal
+              - low: 217
+                high: 220
+                result: Eliminate evidence of research
+              - low: 221
+                high: 224
+                result: Perform saber rattling
+              - low: 225
+                high: 228
+                result: Proselytize belief
+              - low: 229
+                high: 232
+                result: Lay claim to territory
+              - low: 233
+                high: 236
+                result: Mobilize a location against a threat
+              - low: 237
+                high: 240
+                result: Study stellar phenomenon
+              - low: 241
+                high: 242
+                result: Transfer dangerous prisoner
+              - low: 243
+                high: 245
+                result: Collect a bounty
+              - low: 246
+                high: 248
+                result: Preemptive strike mission
+              - low: 249
+                high: 250
+                result: Upgrade infrastructure
+              - low: 251
+                high: 253
+                result: Transport medical specialist
+              - low: 254
+                high: 256
+                result: Transport engineering specialist
+              - low: 257
+                high: 259
+                result: Prevent stellar disaster
+              - low: 260
+                high: 261
+                result: Research quarantined environment
+              - low: 262
+                high: 264
+                result: Reinforce settlement defenses
+              - low: 265
+                high: 268
+                result: Pickup valuable cargo
+              - low: 269
+                high: 271
+                result: Deliver salvage
+              - low: 272
+                high: 273
+                result: Break out prisoner
+              - low: 274
+                high: 275
+                result: Smuggle people
+              - low: 276
+                high: 278
+                result: Shutdown illegal activity
+              - low: 279
+                high: 280
+                result: Test an alliance
+              - low: 281
+                high: 283
+                result: Transport energy source
+              - low: 284
+                high: 285
+                result: Transport lifeforms
+              - low: 286
+                high: 290
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 291
+                high: 300
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+          expanse:
+            _replace: starforged/oracles/starships/mission/expanse
+            dice: 1d300
+            table:
+              - low: 1
+                high: 2
+                result: Blockade a location
+              - low: 3
+                high: 4
+                result: Break a blockade
+              - low: 5
+                high: 8
+                result: Collect a resource
+              - low: 9
+                high: 10
+                result: Command others
+              - low: 11
+                high: 12
+                result: Conduct diplomacy
+              - low: 13
+                high: 14
+                result: Conduct espionage
+              - low: 15
+                high: 16
+                result: Conduct piracy
+              - low: 17
+                high: 22
+                result: Conduct research
+              - low: 23
+                high: 25
+                result: Defend against an attack
+              - low: 26
+                high: 29
+                result: Deliver messages or data
+              - low: 30
+                high: 35
+                result: Establish a settlement
+              - low: 36
+                high: 39
+                result: Evacuate a location
+              - low: 40
+                high: 45
+                result: Explore a region
+              - low: 46
+                high: 47
+                result: Hold prisoners
+              - low: 48
+                high: 49
+                result: Hunt down another ship
+              - low: 50
+                high: 51
+                result: Launch an attack
+              - low: 52
+                high: 53
+                result: Patrol an area
+              - low: 54
+                high: 55
+                result: Provide medical aid
+              - low: 56
+                high: 57
+                result: Provide repairs
+              - low: 58
+                high: 61
+                result: Provide shelter
+              - low: 62
+                high: 63
+                result: Quarantine a danger
+              - low: 64
+                high: 65
+                result: Raid a settlement
+              - low: 66
+                high: 69
+                result: Resupply a settlement
+              - low: 70
+                high: 71
+                result: Retrieve salvage
+              - low: 72
+                high: 73
+                result: Search and rescue
+              - low: 74
+                high: 75
+                result: Smuggle cargo
+              - low: 76
+                high: 77
+                result: Survey a site
+              - low: 78
+                high: 79
+                result: Test a technology
+              - low: 80
+                high: 83
+                result: Transport cargo
+              - low: 84
+                high: 85
+                result: Transport passengers
+              - low: 86
+                high: 90
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 91
+                high: 100
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 101
+                high: 102
+                result: Enforce martial law
+              - low: 103
+                high: 104
+                result: Reinforce supply lines
+              - low: 105
+                high: 108
+                result: Destroy a resource
+              - low: 109
+                high: 110
+                result: Follow orders
+              - low: 111
+                high: 112
+                result: Disrupt diplomatic relations
+              - low: 113
+                high: 114
+                result: Infiltrate territory
+              - low: 115
+                high: 116
+                result: Negotiate a treaty
+              - low: 117
+                high: 122
+                result: Conduct questionable experiments
+              - low: 123
+                high: 125
+                result: Prepare for impending disaster
+              - low: 126
+                high: 129
+                result: Confiscate data
+              - low: 130
+                high: 135
+                result: Establish a passage
+              - low: 136
+                high: 139
+                result: Rebuild location
+              - low: 140
+                high: 145
+                result: Investigate space lifeforms
+              - low: 146
+                high: 147
+                result: Apprehend criminals
+              - low: 148
+                high: 149
+                result: Uncover hidden location
+              - low: 150
+                high: 151
+                result: Search and destroy
+              - low: 152
+                high: 153
+                result: Protect location
+              - low: 154
+                high: 155
+                result: Provide supplies
+              - low: 156
+                high: 157
+                result: Perform satellite/probe maintenance
+              - low: 158
+                high: 161
+                result: Protect valuable witness
+              - low: 162
+                high: 163
+                result: Assess quarantined zone danger
+              - low: 164
+                high: 165
+                result: Extort a settlement
+              - low: 166
+                high: 169
+                result: Pickup sensitive cargo
+              - low: 170
+                high: 171
+                result: Scrub evidence
+              - low: 172
+                high: 173
+                result: Take hostage
+              - low: 174
+                high: 175
+                result: Establish new trade routes
+              - low: 176
+                high: 177
+                result: Map a sector
+              - low: 178
+                high: 179
+                result: Test a weapon
+              - low: 180
+                high: 183
+                result: Transport vehicles
+              - low: 184
+                high: 185
+                result: Transport leaders in secret
+              - low: 186
+                high: 190
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 191
+                high: 200
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2
+              - low: 201
+                high: 202
+                result: Escalate regional tensions
+              - low: 203
+                high: 204
+                result: Setup defensive perimeter
+              - low: 205
+                high: 208
+                result: Trade a resource
+              - low: 209
+                high: 210
+                result: Flee duty or orders
+              - low: 211
+                high: 212
+                result: Stoke rebellion
+              - low: 213
+                high: 214
+                result: Sabotage the competition
+              - low: 215
+                high: 216
+                result: Broker a deal
+              - low: 217
+                high: 222
+                result: Eliminate evidence of research
+              - low: 223
+                high: 225
+                result: Perform saber rattling
+              - low: 226
+                high: 229
+                result: Proselytize belief
+              - low: 230
+                high: 235
+                result: Lay claim to territory
+              - low: 236
+                high: 239
+                result: Mobilize a location against a threat
+              - low: 240
+                high: 245
+                result: Study stellar phenomenon
+              - low: 246
+                high: 247
+                result: Transfer dangerous prisoner
+              - low: 248
+                high: 249
+                result: Collect a bounty
+              - low: 250
+                high: 251
+                result: Preemptive strike mission
+              - low: 252
+                high: 253
+                result: Upgrade infrastructure
+              - low: 254
+                high: 255
+                result: Transport medical specialist
+              - low: 256
+                high: 257
+                result: Transport engineering specialist
+              - low: 258
+                high: 261
+                result: Prevent stellar disaster
+              - low: 262
+                high: 263
+                result: Research quarantined environment
+              - low: 264
+                high: 265
+                result: Reinforce settlement defenses
+              - low: 266
+                high: 269
+                result: Pickup valuable cargo
+              - low: 270
+                high: 271
+                result: Deliver salvage
+              - low: 272
+                high: 273
+                result: Break out prisoner
+              - low: 274
+                high: 275
+                result: Smuggle people
+              - low: 276
+                high: 277
+                result: Shutdown illegal activity
+              - low: 278
+                high: 279
+                result: Test an alliance
+              - low: 280
+                high: 283
+                result: Transport energy source
+              - low: 284
+                high: 285
+                result: Transport lifeforms
+              - low: 286
+                high: 290
+                result: '[Action + Theme](starforged/oracles/core/action)'
+                rolls:
+                  - oracle: starforged/oracles/core/action
+                  - oracle: starforged/oracles/core/theme
+              - low: 291
+                high: 300
+                result: Roll twice
+                multiple_rolls:
+                  amount: 2

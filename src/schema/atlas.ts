@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { ID, Abstract } from 'schema/common'
-import { Source } from 'schema/common/metadata'
+import { ID, Abstract } from './common/index.js'
+import { Source } from './common/metadata.js'
 
 export const AtlasEntry = Abstract.Cyclopedia(
 	{

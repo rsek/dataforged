@@ -1,7 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { JsonEnum } from 'typebox'
 
-import { ID } from 'schema/common'
+import { ID } from 'schema/common.js'
 
 export const Ruleset = JsonEnum(['classic', 'starforged'], {
 	$id: '#/$defs/Ruleset',
