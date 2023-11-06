@@ -1,5 +1,5 @@
-import type * as Types from 'schema'
-import { JTDSchemaType } from 'ajv/dist/core'
+import type * as Types from '../schema/common/index.js'
+import { JTDSchemaType } from 'ajv/dist/core.js'
 
 /** field_type: 'checkbox' */
 export const UnionCheckboxField: JTDSchemaType<

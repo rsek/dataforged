@@ -12,15 +12,17 @@ import {
 	type TRef,
 	type TBoolean,
 	type TNumber,
-	type TProperties
+	type TProperties,
+	TLiteral
 } from '@sinclair/typebox'
-import * as Utils from 'schema/common/utils.js'
-import * as Localize from 'schema/common/localize.js'
-import * as Metadata from 'schema/common/metadata.js'
-import type { OracleTableRow } from 'schema/oracles.js'
-import { mapValues } from 'lodash-es'
-import { type PartialDeep } from 'type-fest'
-import { REGEX_DICT_KEY } from 'schema/common/regex.js'
+import * as Utils from './utils.js'
+import * as Localize from './localize.js'
+import * as Metadata from './metadata.js'
+import type { OracleTableRow } from '../oracles.js'
+import { map, mapValues } from 'lodash-es'
+import { Simplify, type PartialDeep } from 'type-fest'
+import { REGEX_DICT_KEY } from '../common/regex.js'
+import { AnySchema } from 'ajv'
 
 /** Pattern for keys used in dictionary objects throughout Datasworn; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))
@@ -35,16 +37,72 @@ export function Dictionary<T extends TSchema>(
 	})
 }
 
+type TransformFn<T, K, TResult> = (value: T, key: K) => TResult
+
+type MappedKeys<T, K extends keyof T, V> = {
+	[P in keyof T]: P extends K ? V : T[P]
+}
+
+export function MappedKeys<
+	T extends TObject,
+	Keys extends keyof Static<T>,
+	Transform extends TransformFn<
+		T['properties'][keyof Static<T>],
+		keyof Static<T>,
+		TSchema
+	>
+>(schema: T, keys: Keys[], fn: Transform, options: ObjectOptions = {}) {
+	type MappedProps = MappedKeys<T['properties'], Keys, ReturnType<Transform>>
+
+	const properties: Simplify<MappedProps> = mapValues<
+		(typeof schema)['properties']
+	>(
+		schema.properties,
+		<K extends Keys>(subschema: T['properties'][K], key: K) => {
+			return keys.includes(key) ? fn(subschema, key) : subschema
+		}
+	) as any
+
+	return Type.Object(properties, options)
+}
+
 /**
  * A rollable number range for oracle table rows. Type parameters are for for row-like objects that have a static range, such as delve features/dangers.
  * @internal
  */
-export const Range = Type.Object({
-	low: Type.Union([Type.Integer({ minimum: 1, maximum: 100 }), Type.Null()]),
-	high: Type.Union([Type.Integer({ minimum: 1, maximum: 100 }), Type.Null()])
+export const DiceRange = Type.Object({
+	low: Type.Integer({ description: 'The low end of the dice range.' }),
+	high: Type.Integer({ description: 'The high end of the dice range.' })
 })
+export type DiceRange = Static<typeof DiceRange>
 
-export type Range = Static<typeof Range>
+export function StaticDiceRange<Low extends number, High extends number>(
+	range: { low: Low; high: High },
+	options: ObjectOptions = {}
+) {
+	return MappedKeys(
+		DiceRange,
+		['low', 'high'],
+		({ description }, k) => Type.Literal(range[k], { description }),
+		options
+	) as TObject<{
+		low: TLiteral<Low>
+		high: TLiteral<High>
+	}>
+}
+export type StaticDiceRange<Low extends number, High extends number> = Static<
+	ReturnType<typeof StaticDiceRange<Low, High>>
+>
+
+export const BlankDiceRange = MappedKeys(
+	DiceRange,
+	Object.keys(
+		DiceRange.properties
+	) as (keyof (typeof DiceRange)['properties'])[],
+	() => Type.Null(),
+	{}
+)
+export type BlankDiceRange = Static<typeof BlankDiceRange>
 
 export function toDefaultsStub<T extends Static<TObject>>(object: T) {
 	return mapValues(object, (v) => Type.Any({ default: v }))
@@ -134,7 +192,7 @@ export function OmitMeta<T extends TObject>(t: T) {
 export type OmitMeta<T> = Omit<T, MetaKeys>
 
 /**
- * s a single rules element
+ * Augments a single rules element
  */
 export function AugmentOne<T extends TObject<{ id: TString | TRef<TString> }>>(
 	t: T

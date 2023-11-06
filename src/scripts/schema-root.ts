@@ -20,8 +20,6 @@ import { INPUT_SCHEMA_ID } from './const.js'
 
 export const $schema = 'http://json-schema.org/draft-07/schema#'
 
-export const SOURCE_PARTIAL_KEY = '_source'
-
 export const Datasworn = prepareSchema(Rulebook, {
 	...ID,
 	...Metadata,

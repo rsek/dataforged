@@ -4,7 +4,7 @@ import { Abstract, Metadata } from './common/index.js'
 
 import { REGEX_SOURCEBOOK_KEY } from './common/regex.js'
 
-import { DELVE_SCHEMA_ID, SCHEMA_ID, VERSION } from 'scripts/const.js'
+import { DELVE_SCHEMA_ID, SCHEMA_ID, VERSION } from '../scripts/const.js'
 import {
 	Assets,
 	DelveSites,
@@ -12,9 +12,9 @@ import {
 	Npcs,
 	Oracles,
 	Rarities,
-	Truths
-} from 'schema/index.js'
-import { Atlas } from 'schema/atlas.js'
+	Truths,
+	Atlas
+} from './index.js'
 
 export const Datasworn = Type.Object(
 	{

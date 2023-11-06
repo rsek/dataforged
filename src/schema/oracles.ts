@@ -1,6 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID, Localize, Metadata, Abstract } from './common/index.js'
-import { JsonEnum, JsonEnumFromRecord } from 'typebox/enum.js'
+import { JsonEnum, JsonEnumFromRecord } from '../typebox/enum.js'
 
 export const OracleRollTemplate = Type.Object(
 	{

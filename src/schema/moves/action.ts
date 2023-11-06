@@ -1,20 +1,20 @@
-import { ID, Localize, Player } from 'schema/common.js'
-import { PartialBy } from 'schema/common/utils.js'
-import { JsonEnum, Type, type Static } from 'typebox'
+import { ID, Localize, Player } from '../common/index.js'
+import { PartialBy } from '../common/utils.js'
+import { JsonEnum, Type, type Static } from '../../typebox/index.js'
 import {
 	ActionRollMethod,
 	MoveOutcomeType,
 	MoveOutcomes,
 	type MoveRollType
-} from './common'
-import { toMoveAugment } from 'utils'
+} from './common.js'
+import { toMoveAugment } from './utils.js'
 import {
 	composeMoveType,
 	toTriggerAugment,
 	toTriggerConditionAugment,
 	composeTrigger,
 	composeTriggerRollCondition
-} from './utils'
+} from './utils.js'
 
 export const RollOptionAttachedAssetRef = Type.Object(
 	{

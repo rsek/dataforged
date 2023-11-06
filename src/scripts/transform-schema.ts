@@ -7,7 +7,7 @@ import { Type, type TSchema } from '@sinclair/typebox'
 import { type JSONSchema7 } from 'json-schema'
 import { Draft07 } from 'json-schema-library'
 import { cloneDeep, omit, set } from 'lodash-es'
-import { SourceStub } from 'schema/common/metadata.js'
+import { SourceStub } from '../schema/common/metadata.js'
 
 const schemaRefHead = '#/$defs/'
 
@@ -113,7 +113,7 @@ function addSourceCascade(schema: JSONSchema7) {
 	const SOURCE_STUB_KEY = '_source'
 
 	if (
-		Boolean(schema.title?.includes('Sourcebook')) ||
+		Boolean(schema.title?.includes('Datasworn')) ||
 		typeof schema.properties?.source !== 'object'
 	)
 		return schema

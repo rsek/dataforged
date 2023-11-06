@@ -6,13 +6,16 @@ import {
 	type Transformer,
 	recursiveCollectionTransformer
 } from './transformer.js'
-import type * as SchemaIn from '../types/input/datasworn-input.js'
+import type * as SchemaIn from '../types/io/datasworn-input.js'
 import type * as SchemaOut from '../types/io/datasworn.js'
 
 export const OracleTableRow: Transformer<
 	SchemaIn.OracleTableRow,
 	SchemaOut.OracleTableRow
 > = {
+	rolls(data, key, parent) {
+		return data.rolls as SchemaOut.OracleTableRoll[]
+	},
 	id(data: SchemaIn.OracleTableRow, key: string | number, parent: SourceHaver) {
 		// if the row has a valid range, use that instead of the index
 		if (data.high != null && data.low != null) key = `${data.low}-${data.high}`

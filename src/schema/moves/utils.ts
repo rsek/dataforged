@@ -3,13 +3,17 @@ import {
 	type ArrayOptions,
 	type ObjectOptions,
 	type TAnySchema,
+	type TBigInt,
 	type TObject,
-	type TSchema,
-	type TBigInt
+	type TSchema
 } from '@sinclair/typebox'
-import { Localize } from 'schema/common.js'
-import { PartialExcept } from 'schema/common/utils.js'
-import { MoveBase, TriggerBy } from './common'
+import { Localize } from '../common/index.js'
+import { PartialExcept } from '../common/utils.js'
+import { MoveBase, TriggerBy } from './common.js'
+import { MoveIDWildcard } from '../common/id.js'
+import { Abstract } from '../common/index.js'
+import { Squash } from '../common/utils.js'
+import { type AnyMoveSchema } from './common.js'
 
 export function composeTriggerRollCondition(
 	optionSchema: TSchema | undefined,
@@ -75,4 +79,40 @@ export function toTriggerConditionAugment(
 	options: ObjectOptions
 ) {
 	return PartialExcept(conditionSchema, ['text'], options)
+}
+export function toMoveAugment<
+	TMove extends AnyMoveSchema & TObject,
+	TAugment extends TObject
+>(
+	moveSchema: TMove,
+	triggerAugmentSchema: TAugment,
+	options: ObjectOptions = {}
+) {
+	const combined = Squash(
+		Type.Pick(moveSchema, ['roll_type', 'id']),
+		Type.Object({
+			trigger: Type.Optional(triggerAugmentSchema)
+		})
+	)
+
+	const augmentMany = Abstract.AugmentMany(
+		combined,
+		Type.Ref(MoveIDWildcard),
+		options
+	)
+
+	augmentMany.required = [...(augmentMany.required ?? []), 'roll_type']
+
+	// FIXME: revisit whether augments should include outcome-specific stuff
+	// if ('outcomes' in moveSchema.properties)
+	// 	return Squash(
+	// 		[
+	// 			augmentMany,
+	// 			Type.Object({
+	// 				outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
+	// 			})
+	// 		],
+	// 		options
+	// 	)
+	return augmentMany
 }

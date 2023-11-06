@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { SNAKE_CASE } from 'schema/common/regex.js'
+import { SNAKE_CASE } from './regex.js'
 
 export const PlayerStat = Type.String({
 	examples: ['edge', 'heart', 'iron', 'shadow', 'wits'],

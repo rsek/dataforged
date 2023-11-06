@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { SNAKE_CASE } from 'schema/common/regex.js'
-import { JsonEnumFromRecord } from 'typebox'
+import { SNAKE_CASE } from './regex.js'
+import { JsonEnumFromRecord } from '../../typebox/index.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
 	{

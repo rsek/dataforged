@@ -25,19 +25,30 @@ export const NpcNature = Type.Ref(Localize.Label, {
 })
 export type NpcNature = Static<typeof NpcNature>
 
-const NpcLike = Type.Object({
+const NpcStub = Abstract.Cyclopedia({
+	id: Type.Ref(ID.NpcID),
+
 	name: Type.Ref(Localize.Label),
 	rank: Type.Ref(Progress.ChallengeRank),
 	nature: Type.Ref(NpcNature),
 	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+
+	features: Type.Array(Type.Ref(Localize.MarkdownString)),
+	drives: Type.Array(Type.Ref(Localize.MarkdownString)),
+	tactics: Type.Array(Type.Ref(Localize.MarkdownString)),
+
 	description: Type.Ref(Localize.MarkdownString)
 })
 
-type NpcLike = Static<typeof NpcLike>
-
 export const NpcVariant = Squash(
 	[
-		NpcLike,
+		Type.Pick((() => NpcStub)(), [
+			'name',
+			'rank',
+			'nature',
+			'summary',
+			'description'
+		]),
 		Type.Object({
 			id: Type.Ref(ID.NpcVariantID)
 		})
@@ -50,14 +61,10 @@ export type NpcVariant = Static<typeof NpcVariant>
 
 export const Npc = Squash(
 	[
-		Abstract.Cyclopedia({
-			id: Type.Ref(ID.NpcID),
-			features: Type.Array(Type.Ref(Localize.MarkdownString)),
-			drives: Type.Array(Type.Ref(Localize.MarkdownString)),
-			tactics: Type.Array(Type.Ref(Localize.MarkdownString)),
+		NpcStub,
+		Type.Object({
 			variants: Type.Optional(Abstract.Dictionary(Type.Ref(NpcVariant)))
-		}),
-		NpcLike
+		})
 	],
 	{
 		$id: '#/$defs/Npc',
@@ -65,6 +72,7 @@ export const Npc = Squash(
 			'A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.'
 	}
 )
+
 export type Npc = Static<typeof Npc>
 
 export const NpcCollection = Abstract.Collection(

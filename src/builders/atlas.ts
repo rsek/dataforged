@@ -1,4 +1,4 @@
-import type * as In from '../types/input/datasworn-input.js'
+import type * as In from '../types/io/datasworn-input.js'
 import type * as Out from '../types/io/datasworn.js'
 import {
 	recursiveCollectionTransformer,

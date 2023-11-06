@@ -1,9 +1,9 @@
 import { Type } from '@sinclair/typebox'
-import * as Abstract from 'schema/common/abstract.js'
+import * as Abstract from '../schema/common/abstract.js'
 import {
 	PrecursorVaultRow,
 	DescriptorFocusRow
-} from 'schema/templates/common.js'
+} from '../schema/templates/common.js'
 
 const Settlement = <T extends 'Terminus' | 'Outlands' | 'Expanse'>(region: T) =>
 	Type.Object({

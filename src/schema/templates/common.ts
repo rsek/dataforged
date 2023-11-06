@@ -1,6 +1,6 @@
 import { Type } from '@sinclair/typebox'
-import { type Oracles } from 'schema'
-import * as Abstract from 'schema/common/abstract.js'
+import { type Oracles } from '../schema'
+import * as Abstract from '../schema/common/abstract.js'
 
 export function RollTwiceRow(
 	{ low, high }: { low: number; high: number },

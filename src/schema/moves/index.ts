@@ -1,3 +1,3 @@
-export * from './common'
-export * from './action'
-export * from './progress'
+export * from './common.js'
+export * from './action.js'
+export * from './progress.js'

@@ -6,20 +6,37 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema
+	type TSchema,
+	TupleToIntersect
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash-es'
+import {
+	LastArrayElement,
+	Merge,
+	Simplify,
+	TupleToUnion,
+	UnionToIntersection
+} from 'type-fest'
 
-export function Squash<T extends TObject>(
-	schemas: T[],
+export function Squash<Head extends TObject[], Tail extends TObject>(
+	schemas: [...Head, Tail],
 	options: ObjectOptions = {}
 ) {
-	return Type.Object(
-		schemas
-			.map((schema) => schema.properties)
-			.reduce((prevProps, currentProps) => ({ ...prevProps, ...currentProps })),
-		options
-	)
+	type MergedProps = Simplify<
+		Merge<
+			UnionToIntersection<TupleToUnion<Head>['properties']>,
+			Tail['properties']
+		>
+	>
+
+	const properties = schemas
+		.map((schema) => schema.properties)
+		.reduce((prevProps, currentProps) => ({
+			...prevProps,
+			...currentProps
+		})) as MergedProps
+
+	return Type.Object(properties, options)
 }
 
 export type ExtractKeysOfValueType<ObjectType, ValueType> = {

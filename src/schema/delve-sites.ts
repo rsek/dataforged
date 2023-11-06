@@ -7,7 +7,7 @@ import {
 import { ID, Localize, Progress, Metadata, Abstract } from './common/index.js'
 import { Squash } from './common/utils.js'
 import { OracleTableRow } from './oracles.js'
-import { JsonEnum } from 'typebox'
+import { JsonEnum } from '../typebox/index.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],

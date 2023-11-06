@@ -1,15 +1,15 @@
+import { Type, type Static } from '@sinclair/typebox'
 import { Abstract, ID } from './common/index.js'
-import { Type, type Static } from 'typebox'
 import {
-	type MoveActionRoll,
-	type MoveActionRollAugment,
-	type MoveNoRoll,
-	type MoveNoRollAugment,
-	type MoveProgressRoll,
-	type MoveProgressRollAugment,
-	type MoveSpecialTrack,
-	type MoveSpecialTrackAugment
-} from './moves.js'
+	MoveActionRoll,
+	MoveActionRollAugment,
+	MoveNoRoll,
+	MoveNoRollAugment,
+	MoveProgressRoll,
+	MoveProgressRollAugment,
+	MoveSpecialTrack,
+	MoveSpecialTrackAugment
+} from './moves/index.js'
 
 export type Move =
 	| MoveNoRoll
@@ -73,4 +73,4 @@ export const MoveCategory = Abstract.Collection(
 )
 export type MoveCategory = Static<typeof MoveCategory>
 
-export * from './moves/index'
+export * from './moves/index.js'

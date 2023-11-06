@@ -4,14 +4,14 @@ import {
 	type TAnySchema,
 	type TBigInt
 } from '@sinclair/typebox'
-import { ID, Localize, Metadata } from 'schema/common.js'
+import { ID, Localize, Metadata } from '../common/index.js'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
 	type MoveProgressRoll,
 	type MoveSpecialTrack
-} from 'schema/moves.js'
-import { JsonEnumFromRecord } from 'typebox'
+} from '../moves.js'
+import { JsonEnumFromRecord } from '../../typebox/index.js'
 
 // ENUMS
 

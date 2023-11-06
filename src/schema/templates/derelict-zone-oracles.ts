@@ -1,11 +1,11 @@
 import { Type } from '@sinclair/typebox'
-import * as Abstract from 'schema/common/abstract.js'
+import * as Abstract from '../schema/common/abstract.js'
 import {
 	ActionThemeRow,
 	DescriptorFocusRow,
 	OracleTableRows5,
 	RollTwiceRow
-} from 'schema/templates/common.js'
+} from '../schema/templates/common.js'
 
 export const DerelictZoneTemplate = Type.Object({
 	contents: Type.Object({

@@ -4,11 +4,11 @@ import {
 	type TSchema,
 	type ObjectOptions
 } from '@sinclair/typebox'
-import * as Localize from 'schema/common/localize.js'
-import * as ID from 'schema/common/id.js'
-import * as PlayerStat from './player'
-import * as Abstract from 'schema/common/abstract.js'
-import { JsonEnum } from 'typebox'
+import * as Localize from './localize.js'
+import * as ID from './id.js'
+import * as PlayerStat from './player.js'
+import * as Abstract from './abstract.js'
+import { JsonEnum } from '../../typebox/index.js'
 
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
 export function Select<T extends TSchema>(t: T) {

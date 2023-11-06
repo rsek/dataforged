@@ -1,14 +1,15 @@
-import { Localize, Progress } from 'schema/common.js'
-import { Type, type Static, JsonEnumFromRecord } from 'typebox'
-import { MoveOutcomes, type MoveRollType, MoveOutcomeType } from './common'
-import { toMoveAugment } from 'utils'
+import { Type, type Static, JsonEnumFromRecord } from '../../typebox/index.js'
+import { MoveOutcomes, type MoveRollType, MoveOutcomeType } from './common.js'
 import {
 	composeMoveType,
 	toTriggerAugment,
 	toTriggerConditionAugment,
 	composeTrigger,
-	composeTriggerRollCondition
-} from './utils'
+	composeTriggerRollCondition,
+	toMoveAugment
+} from './utils.js'
+import { Localize } from '../index.js'
+import { SpecialTrackType } from '../common/progress.js'
 
 export const ProgressRollOption = Type.Object(
 	{
@@ -112,7 +113,7 @@ export type MoveProgressRollAugment = Static<typeof MoveProgressRollAugment>
 
 export const TriggerSpecialTrackConditionOption = Type.Object(
 	{
-		using: Type.Ref(Progress.SpecialTrackType)
+		using: Type.Ref(SpecialTrackType)
 	},
 	{ $id: '#/$defs/TriggerSpecialTrackConditionOption' }
 )
