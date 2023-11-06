@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs'
+import fs from 'fs-extra'
 import { type JSONSchema7 } from 'json-schema'
 import { compile } from 'json-schema-to-typescript'
 import { startCase } from 'lodash-es'
@@ -12,7 +12,7 @@ const filePaths = [
 filePaths.forEach((filePath) => {
 	// load json to apply some data transforms
 	const schema = JSON.parse(
-		readFileSync(filePath, { encoding: 'utf-8' })
+		fs.readFileSync(filePath, { encoding: 'utf-8' })
 	) as JSONSchema7
 	if (schema.$defs == null) throw new Error("JSON file doesn't have $defs")
 
@@ -33,6 +33,6 @@ filePaths.forEach((filePath) => {
 	void compile(schema as any, startCase(basename), {
 		additionalProperties: false
 	}).then((ts) => {
-		writeFileSync(typeDeclarationPath, ts)
+		fs.writeFileSync(typeDeclarationPath, ts)
 	})
 })

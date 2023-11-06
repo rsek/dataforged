@@ -27,7 +27,7 @@ export async function assembleCorePackage() {
 		fs.copy(
 			// TODO: script to build the legacy ID map?
 			LEGACY_ID_PATH,
-			path.join(jsonDir, 'legacy_id_map.json'),
+			path.join(jsonDir, path.basename(LEGACY_ID_PATH)),
 			{
 				overwrite: true
 			}

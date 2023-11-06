@@ -3,7 +3,7 @@
  */
 
 import prettier from 'prettier'
-import { writeFile, writeFileSync } from 'fs-extra'
+import fs from 'fs-extra'
 import { log } from './logger.js'
 import ajv from './ajv.js'
 import { getPrettierOptions } from './prettier.js'
@@ -49,7 +49,7 @@ for (const options of schemaOptions) {
 		.then(async (prettierOptions) => {
 			log.info(options.messages.writeStart)
 			for (const path of options.paths)
-				await writeFile(
+				await fs.writeFile(
 					path,
 					prettier.format(
 						JSON.stringify(ajv.getSchema(options.name)?.schema),
@@ -61,6 +61,9 @@ for (const options of schemaOptions) {
 		.catch(async (e) => {
 			log.error(e)
 			for (const path of options.paths)
-				await writeFile(path, JSON.stringify(options.schema, undefined, '\t'))
+				await fs.writeFile(
+					path,
+					JSON.stringify(options.schema, undefined, '\t')
+				)
 		})
 }

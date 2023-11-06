@@ -2,11 +2,6 @@ import { type Static, Type } from '@sinclair/typebox'
 import { JsonEnum } from '../../typebox/index.js'
 import { ID } from '../index.js'
 
-export const Ruleset = JsonEnum(['classic', 'starforged'], {
-	$id: '#/$defs/Ruleset',
-	description: "The ruleset used for a sourcebook's rules content."
-})
-export type Ruleset = Static<typeof Ruleset>
 export const SVGImageURL = Type.String({
 	$id: '#/$defs/SVGImageURL',
 	format: 'uri-reference',

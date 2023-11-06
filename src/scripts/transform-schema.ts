@@ -5,16 +5,17 @@
  */
 import { Type, type TSchema } from '@sinclair/typebox'
 import { type JSONSchema7 } from 'json-schema'
-import { Draft07 } from 'json-schema-library'
 import { cloneDeep, omit, set } from 'lodash-es'
 import { SourceStub } from '../schema/common/metadata.js'
+
+import JsonSchema from 'json-schema-library'
 
 const schemaRefHead = '#/$defs/'
 
 export type SchemaDefs = Record<string, JSONSchema7>
 
 export function prepareSchema(root: TSchema, $defs: SchemaDefs) {
-	const draft = new Draft07({
+	const draft = new JsonSchema.Draft07({
 		...root,
 		$defs
 	})
@@ -22,8 +23,8 @@ export function prepareSchema(root: TSchema, $defs: SchemaDefs) {
 	return draft
 }
 
-export function prepareInputSchema(schema: Draft07, overrides = {}) {
-	const inputSchema = new Draft07({
+export function prepareInputSchema(schema: JsonSchema.Draft07, overrides = {}) {
+	const inputSchema = new JsonSchema.Draft07({
 		...cloneDeep(schema.getSchema()),
 		...overrides
 	})
