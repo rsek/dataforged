@@ -3,25 +3,19 @@
 	"version": "2.0.0-2",
 	"description": "Official content and rules data for the Ironsworn: Starforged tabletop role-playing game, formatted as JSON for use in community tools. 🚀 Includes JSON schemas and a Javascript/Typescript API.",
 	"type": "module",
-	"exports": {
-		".": {
-			"import": "./dist/index.js"
-		}
-	},
-	"types": "./dist/types/index.d.ts",
 	"scripts": {
 		"build:types-jtd": "ts-node src/json-typedef/index.ts && npm run jtd",
 		"jtd": "jtd-codegen src/json-typedef/out/dataforged.jtd.json --csharp-system-text-namespace Dataforged --csharp-system-text-out src/json-typedef/out/csharp-system-text --go-package Dataforged --go-out src/json-typedef/out/go --java-jackson-package Dataforged --java-jackson-out src/json-typedef/out/java-jackson --typescript-out src/json-typedef/out/typescript --python-out src/json-typedef/out/python --ruby-module Dataforged --ruby-out src/json-typedef/out/ruby --rust-out src/json-typedef/out/rust",
 		"build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
-		"build:schema": "ts-node ./src/scripts/write-schema.ts",
+		"build:schema": "ts-node ./src/scripts/buildSchema.ts",
 		"build:io-types": "ts-node ./src/types/write-io-types.ts",
-		"build:json": "ts-node ./src/scripts/write-json.ts",
-		"update": "npm run build:schema && npm run build:io-types && npm run build:json && ts-node ./src/scripts/build-dist.ts",
+		"build:json": "ts-node ./src/scripts/writeJson.ts",
+		"build:pkg": "ts-node ./src/scripts/assemblePackages.ts",
+		"update": "npm run build:schema && npm run build:io-types && npm run build:json && npm run build:pkg",
 		"build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",
 		"readme": "npx @appnest/readme generate -i ./src/templates/blueprint.md ./ -c ./src/templates/blueprint.json"
 	},
 	"files": [
-		"dist",
 		"docs",
 		"img",
 		"markdown"

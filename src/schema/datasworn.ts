@@ -85,11 +85,11 @@ export const Datasworn = Type.Object(
 		$id: SCHEMA_ID,
 		title: `Datasworn v${VERSION}`,
 		description:
-			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.',
+			'Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.'
 
 		// additional properties are presumed to be dictionaries of unknown types, or plain strings
 
-		additionalProperties: true
+		// additionalProperties: true
 
 		// Type.Optional(
 		// 	Type.Union([

@@ -177,9 +177,11 @@ export const DiceNotation = Type.RegEx(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
 	{
 		$id: '#/$defs/DiceNotation',
-		examples: ['1d100', '1d6+2']
+		examples: ['1d100', '1d6+2'],
+		format: 'dice_notation'
 	}
 )
+export type DiceNotation = Static<typeof DiceNotation>
 
 export const OracleTable = Abstract.SourcedNode(
 	{

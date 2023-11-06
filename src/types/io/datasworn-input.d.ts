@@ -414,7 +414,7 @@ export type DomainDangerRowID = string;
  */
 export interface Datasworn {
   id?: string;
-  source?: Source;
+  source: Source;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
    */
@@ -475,8 +475,6 @@ export interface Datasworn {
   site_domains?: {
     [k: string]: DelveSiteDomain;
   };
-  _source?: SourceStub;
-  [k: string]: unknown;
 }
 /**
  * Metadata describing the original source of this item
@@ -1321,13 +1319,13 @@ export interface Npc {
   quest_starter: MarkdownString;
   your_truths?: MarkdownString;
   id?: NpcID;
+  rank: ChallengeRank;
+  nature: NpcNature;
   drives: MarkdownString[];
   tactics: MarkdownString[];
   variants?: {
     [k: string]: NpcVariant;
   };
-  rank: ChallengeRank;
-  nature: NpcNature;
   _source?: SourceStub;
 }
 /**
@@ -1336,10 +1334,10 @@ export interface Npc {
  */
 export interface NpcVariant {
   name: Label;
-  rank: ChallengeRank;
-  nature: NpcNature;
   summary?: MarkdownString;
   description: MarkdownString;
+  rank: ChallengeRank;
+  nature: NpcNature;
   id?: NpcVariantID;
 }
 /**

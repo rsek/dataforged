@@ -1,9 +1,9 @@
-import { type Static, Type } from '@sinclair/typebox'
+import { Type, type Static } from '@sinclair/typebox'
+import { JsonEnumFromRecord } from '../../typebox/enum.js'
 
 export const Label = Type.String({
 	$id: '#/$defs/Label',
 	description: 'A localized plain text name or label.',
-	format: 'markdown',
 	i18n: true
 })
 export type Label = Static<typeof Label>
@@ -23,7 +23,26 @@ export const TemplateString = Type.String({
 
 The custom syntax \`{{some_row_key:some_oracle_table_id}}\` should be replaced by the \`some_row_key\` string of a rolled oracle table. This is usually the \`result\` key, for example \`{{result:starforged/oracles/core/action}}\`
 `,
+	format: 'markdown',
 	i18n: true,
 	releaseStage: 'experimental'
 })
 export type TemplateString = Static<typeof TemplateString>
+
+export const PartOfSpeech = JsonEnumFromRecord(
+	{
+		common_noun: 'A common noun.',
+		proper_noun: 'A proper noun.',
+		verb: 'A verb in present tense',
+		gerund:
+			'Gerund or present participle of a verb, e.g. "going", "seeing", "waving"',
+		adjective: 'An adjective.'
+	},
+	{ $id: '#/$defs/PartOfSpeech' }
+)
+export type PartOfSpeech = Static<typeof PartOfSpeech>
+
+export const Lexical = Type.Object({
+	part_of_speech: Type.Ref(PartOfSpeech)
+})
+export type Lexical = Static<typeof Lexical>

@@ -18,7 +18,7 @@ forEach({ Datasworn, DataswornInput }, async (v, k) => {
 log.info('Building sourcebooks...')
 
 await Promise.all(
-	Object.values(pkgs).map((pkg) =>
-		buildSourcebook(pkg).catch((e) => log.info(e))
+	Object.values(pkgs).map(
+		async (pkg) => await buildSourcebook(pkg).catch((e) => log.info(e))
 	)
 )

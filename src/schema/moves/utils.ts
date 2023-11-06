@@ -7,12 +7,10 @@ import {
 	type TObject,
 	type TSchema
 } from '@sinclair/typebox'
-import { Localize } from '../common/index.js'
-import { PartialExcept } from '../common/utils.js'
+import { Localize, Abstract } from '../common/index.js'
+import { PartialExcept, Squash } from '../common/utils.js'
 import { MoveBase, TriggerBy } from './common.js'
 import { MoveIDWildcard } from '../common/id.js'
-import { Abstract } from '../common/index.js'
-import { Squash } from '../common/utils.js'
 import { type AnyMoveSchema } from './common.js'
 
 export function composeTriggerRollCondition(
@@ -88,12 +86,12 @@ export function toMoveAugment<
 	triggerAugmentSchema: TAugment,
 	options: ObjectOptions = {}
 ) {
-	const combined = Squash(
+	const combined = Squash([
 		Type.Pick(moveSchema, ['roll_type', 'id']),
 		Type.Object({
 			trigger: Type.Optional(triggerAugmentSchema)
 		})
-	)
+	])
 
 	const augmentMany = Abstract.AugmentMany(
 		combined,

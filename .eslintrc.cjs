@@ -22,7 +22,8 @@ module.exports = {
 		'src/type-gen/results',
 		'.eslintrc.js',
 		'*.d.ts',
-		'*.json'
+		'*.json',
+		'*.cjs'
 	],
 	parserOptions: {
 		project: './tsconfig.json',

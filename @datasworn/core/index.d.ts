@@ -474,7 +474,6 @@ export interface Datasworn {
   site_domains?: {
     [k: string]: DelveSiteDomain;
   };
-  [k: string]: unknown;
 }
 /**
  * Metadata describing the original source of this item
@@ -1264,13 +1263,13 @@ export interface Npc {
   quest_starter: MarkdownString;
   your_truths?: MarkdownString;
   id: NpcID;
+  rank: ChallengeRank;
+  nature: NpcNature;
   drives: MarkdownString[];
   tactics: MarkdownString[];
   variants?: {
     [k: string]: NpcVariant;
   };
-  rank: ChallengeRank;
-  nature: NpcNature;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1278,10 +1277,10 @@ export interface Npc {
  */
 export interface NpcVariant {
   name: Label;
-  rank: ChallengeRank;
-  nature: NpcNature;
   summary?: MarkdownString;
   description: MarkdownString;
+  rank: ChallengeRank;
+  nature: NpcNature;
   id: NpcVariantID;
 }
 /**

@@ -2,27 +2,26 @@
  * Abstract interfaces and utility types that are only used internally. They are not included in the final schema.
  */
 import {
-	type Static,
 	Type,
-	type TObject,
-	type TSchema,
-	type TString,
-	type SchemaOptions,
 	type ObjectOptions,
-	type TRef,
+	type SchemaOptions,
+	type Static,
 	type TBoolean,
+	type TLiteral,
 	type TNumber,
+	type TObject,
 	type TProperties,
-	TLiteral
+	type TRef,
+	type TSchema,
+	type TString
 } from '@sinclair/typebox'
-import * as Utils from './utils.js'
+import { mapValues } from 'lodash-es'
+import { type PartialDeep, type Simplify } from 'type-fest'
+import { REGEX_DICT_KEY } from '../common/regex.js'
+import type { OracleTableRow } from '../oracles.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
-import type { OracleTableRow } from '../oracles.js'
-import { map, mapValues } from 'lodash-es'
-import { Simplify, type PartialDeep } from 'type-fest'
-import { REGEX_DICT_KEY } from '../common/regex.js'
-import { AnySchema } from 'ajv'
+import * as Utils from './utils.js'
 
 /** Pattern for keys used in dictionary objects throughout Datasworn; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
 export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))
@@ -96,9 +95,9 @@ export type StaticDiceRange<Low extends number, High extends number> = Static<
 
 export const BlankDiceRange = MappedKeys(
 	DiceRange,
-	Object.keys(
-		DiceRange.properties
-	) as (keyof (typeof DiceRange)['properties'])[],
+	Object.keys(DiceRange.properties) as Array<
+		keyof (typeof DiceRange)['properties']
+	>,
 	() => Type.Null(),
 	{}
 )

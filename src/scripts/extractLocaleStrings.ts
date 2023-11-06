@@ -1,21 +1,21 @@
 import JsonSchema from 'json-schema-library'
-import { Datasworn } from '../types/io/datasworn.js'
-import oracles from '../data-out/classic/oracles.json' assert { type: 'json' }
-import moves from '../data-out/classic/moves.json' assert { type: 'json' }
 import assets from '../data-out/classic/assets.json' assert { type: 'json' }
-import npcs from '../data-out/classic/npcs.json' assert { type: 'json' }
-import truths from '../data-out/classic/truths.json' assert { type: 'json' }
 import atlas from '../data-out/classic/atlas.json' assert { type: 'json' }
+import moves from '../data-out/classic/moves.json' assert { type: 'json' }
+import npcs from '../data-out/classic/npcs.json' assert { type: 'json' }
+import oracles from '../data-out/classic/oracles.json' assert { type: 'json' }
+import truths from '../data-out/classic/truths.json' assert { type: 'json' }
+import { type Datasworn } from '../types/io/datasworn.js'
 
-import schema from '../data-out/datasworn.schema.json' assert { type: 'json' }
 import JSONPointer from 'jsonpointer'
+import schema from '../data-out/datasworn.schema.json' assert { type: 'json' }
 
 const sep = '/'
 
 // 	const validator: JsonSchema.JSONSchema = await fs.readJSON(SCHEMA_OUT, )
 
 function getParentPointer(pointer: string) {
-	let parts = pointer.split(sep)
+	const parts = pointer.split(sep)
 	parts.pop()
 	return parts.join(sep)
 }

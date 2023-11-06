@@ -6,16 +6,14 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema,
-	TupleToIntersect
+	type TSchema
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash-es'
 import {
-	LastArrayElement,
-	Merge,
-	Simplify,
-	TupleToUnion,
-	UnionToIntersection
+	type Merge,
+	type Simplify,
+	type TupleToUnion,
+	type UnionToIntersection
 } from 'type-fest'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
