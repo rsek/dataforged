@@ -21,7 +21,7 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	const tempDir = path.join(ROOT_OUTPUT, id)
 
 	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
-	const oldJsonFiles = await fastGlob(`${tempDir}/**/*.json`)
+	const oldJsonFiles = await fastGlob(`${tempDir}/*.json`)
 	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
 
 	if (yamlFilesIn?.length === 0)
