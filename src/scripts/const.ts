@@ -7,7 +7,7 @@ export const PKG_SCOPE_COMMUNITY = '@datasworn-community-content'
 
 export const PKG_ROOT = path.join(process.cwd(), 'pkg')
 
-export const PKG_DIR_NODE = path.join(PKG_ROOT, 'pkg', 'node')
+export const PKG_DIR_NODE = path.join(PKG_ROOT, 'pkg', 'nodejs')
 
 export const LEGACY_ID_PATH = path.join(process.cwd(), 'src/legacy_id_map.json')
 
