@@ -1,11 +1,8 @@
 import addFormats from 'ajv-formats'
 import { log } from './logger.js'
 import Ajv from 'ajv'
-import { BlankDiceRange, DiceRange } from '../schema/common/abstract.js'
 import { Type } from '@sinclair/typebox'
 import { JsonEnum } from '../typebox/enum.js'
-import { DiceNotation } from '../schema/oracles.js'
-import { omit } from 'lodash-es'
 
 // Initialize AJV
 
@@ -55,12 +52,24 @@ const ajv = new Ajv({
 		})
 	})
 	.addKeyword({
+		keyword: 'isSourcedNode',
+		type: 'object',
+		metaSchema: Type.Boolean({})
+	})
+	.addKeyword({
 		keyword: 'inheritFromCollection',
 		type: 'object',
 		metaSchema: Type.Array(Type.String(), {
 			description:
 				'Properties that this object can inherit from its most recent Collection ancestor. Those properties can be omitted for data entry.',
 			default: []
+		})
+	})
+	// TODO
+	.addKeyword({
+		keyword: 'defaultsToValueOf',
+		metaSchema: Type.String({
+			description: 'This value defaults to the value of the provided property.'
 		})
 	})
 	.addKeyword({
@@ -84,7 +93,5 @@ const ajv = new Ajv({
 	})
 
 addFormats(ajv)
-
-ajv.schemas
 
 export default ajv

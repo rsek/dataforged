@@ -4,60 +4,44 @@ import YAML from 'js-yaml'
 import { merge, omit, pick } from 'lodash-es'
 import path from 'path'
 import * as Prettier from 'prettier'
-import { pascalCase } from '../schema/common/utils.js'
+import { pascalCase } from '../schema/datasworn/common/utils.js'
 import { Datasworn as DataswornBuilder } from '../builders/datasworn.js'
-import { transform } from '../builders/transformer.js'
+import { type SourceHaver, transform } from '../builders/transformer.js'
 import type { In, Out } from '../types/index.js'
 import ajv from './ajv.js'
-import { ROOT_DATA_IN, ROOT_DATA_OUT } from './const.js'
 import { log } from './logger.js'
-import { type DataPackageOptions } from './pkg-config.js'
 import { getPrettierOptions } from './prettier.js'
+import { type DataPackageConfig } from '../schema/tools/build/index.js'
 
 /** Builds all YAML files for a given package in {@link ROOT_DATA_IN}, and writes them to a directory in {@link ROOT_DATA_OUT} */
-export async function buildSourcebook({
-	dataDir,
-	noBuild = false
-}: DataPackageOptions) {
-	if (noBuild)
-		return log.info(`${dataDir} passed with noBuild=true, skipping...`)
-
+export async function buildSourcebook({ paths }: DataPackageConfig) {
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
-	const rootIn = path.join(ROOT_DATA_IN, dataDir)
-	const rootOut = path.join(ROOT_DATA_OUT, dataDir)
-	const yamlFilesIn = await fastGlob(`${rootIn}/**/*.yaml`)
-	const oldJsonFiles = await fastGlob(`${rootOut}/**/*.json`)
-	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${rootIn}`)
+	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
+	const oldJsonFiles = await fastGlob(`${paths.temp}/**/*.json`)
+	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
 
 	if (yamlFilesIn?.length === 0)
 		throw new Error(
-			`Could not find any YAML files with the glob ${rootIn}/**/*.yaml`
+			`Could not find any YAML files with the glob ${paths.source}/**/*.yaml`
 		)
 
 	if (oldJsonFiles?.length > 0) {
 		log.info(`Deleting ${oldJsonFiles?.length} old JSON files`)
 		// flush old files from outdir
-		for await (const filePath of oldJsonFiles) {
-			await fs.unlink(filePath)
-		}
+		for await (const filePath of oldJsonFiles) await fs.unlink(filePath)
 	}
 	for await (const filePath of yamlFilesIn) {
 		const data = await buildFile(filePath)
 
-		if (data.id !== dataDir)
-			throw new Error(
-				`Expected sourcebook with ID "${dataDir}" but got "${data.id}"`
-			)
-
 		merge(sourcebook, data)
 	}
-	const metadataKeys = ['source', 'id', 'ruleset']
+	const metadataKeys = ['source', 'id']
 
 	const sourcebookMetadata = omit(pick(sourcebook, metadataKeys), 'source.page')
 
 	const prettierOptions = await getPrettierOptions(
-		path.join(rootOut, 'any.json')
+		path.join(paths.temp, 'any.json')
 	)
 
 	// exclude certain keys which are still in development
@@ -78,7 +62,7 @@ export async function buildSourcebook({
 			prettierOptions
 		)
 
-		const outPath = path.join(rootOut, `${k}.json`)
+		const outPath = path.join(paths.temp, `${k}.json`)
 
 		log.info(`Writing to ${outPath}`)
 
@@ -112,15 +96,20 @@ async function buildFile(filePath: string) {
 	const out = transform<In.Datasworn, Out.Datasworn>(
 		data,
 		data.id as string,
-		data,
+		data as In.Datasworn & SourceHaver,
 		transformer as any
 	)
 
 	const schemaOut = pascalCase(basename)
 	if (!ajv.validate(schemaOut, out)) {
 		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
-		const errorPath = `src/data-out/${basename}/error-out.json`
-		fs.writeFile(errorPath, JSON.stringify(out, undefined, '\t'), log.error)
+		const errorPath = path.join(
+			process.cwd(),
+			`src/data-out`,
+			basename,
+			`error-out.json`
+		)
+		await fs.writeJSON(errorPath, out)
 		throw new Error(
 			`Transformed data doesn't match the ${schemaOut} schema. Dumping invalid JSON to: ${errorPath}`
 		)

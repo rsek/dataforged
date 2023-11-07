@@ -36,7 +36,7 @@ export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 			const field = cloneDeep(fieldData)
 			field.id = `${this.id}/controls/${fieldKey}`
 			return field as Out.AssetControlField
-		})
+		}) as any
 	},
 	abilities: function (
 		this: SourceHaver,

@@ -5,6 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type NamespaceID = string;
 export type PageNumber = number;
 /**
  * A localized plain text name or label.
@@ -20,11 +21,6 @@ export type DelveSiteDomainID = string;
 export type DelveSiteThemeID = string;
 export type NpcID = string;
 export type AtlasEntryID = string;
-export type OracleCollectionID = string;
-/**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
- */
-export type OracleCollectionID1 = string;
 /**
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
@@ -35,6 +31,11 @@ export type CSSColor = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString = string;
+export type OracleCollectionID = string;
+/**
+ * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ */
+export type OracleCollectionID1 = string;
 export type DiceNotation = string;
 /**
  * Localized text, formatted in Markdown.
@@ -412,7 +413,7 @@ export type DomainDangerRowID = string;
  * Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.
  */
 export interface Datasworn {
-  id: string;
+  id: NamespaceID;
   source: Source;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
@@ -527,11 +528,11 @@ export interface OracleCollection {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: OracleCollectionID;
-  extends?: OracleCollectionID1;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
+  id: OracleCollectionID;
+  extends?: OracleCollectionID1;
   contents?: {
     [k: string]: OracleTable;
   };
@@ -654,18 +655,21 @@ export interface MoveCategory {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: MoveCategoryID;
-  extends?: MoveCategoryID1;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
+  id: MoveCategoryID;
+  extends?: MoveCategoryID1;
   contents?: {
     [k: string]: Move;
   };
 }
 export interface MoveNoRoll {
-  id: MoveID;
   name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: MoveID;
   replaces?: MoveID1;
   trigger: {
     text: MarkdownString3;
@@ -675,8 +679,6 @@ export interface MoveNoRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
   roll_type: "no_roll";
 }
 export interface TriggerNoRoll {
@@ -695,8 +697,11 @@ export interface TriggerBy {
   ally: boolean;
 }
 export interface MoveActionRoll {
-  id: MoveID;
   name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: MoveID;
   replaces?: MoveID2;
   trigger: {
     text: MarkdownString7;
@@ -707,8 +712,6 @@ export interface MoveActionRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
   roll_type: "action_roll";
 }
 export interface TriggerActionRoll {
@@ -767,8 +770,11 @@ export interface MoveOutcome {
   count_as?: MoveOutcomeType;
 }
 export interface MoveProgressRoll {
-  id: MoveID;
   name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: MoveID;
   replaces?: MoveID3;
   trigger: {
     text: MarkdownString11;
@@ -779,8 +785,6 @@ export interface MoveProgressRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
   roll_type: "progress_roll";
   track_label: Label1;
 }
@@ -804,8 +808,11 @@ export interface ProgressRollOption {
   using: "progress_track";
 }
 export interface MoveSpecialTrack {
-  id: MoveID;
   name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: MoveID;
   replaces?: MoveID4;
   trigger: {
     text: MarkdownString15;
@@ -816,8 +823,6 @@ export interface MoveSpecialTrack {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
-  suggestions?: Suggestions;
-  source: Source;
   roll_type: "special_track";
 }
 export interface TriggerSpecialTrack {
@@ -848,15 +853,14 @@ export interface AssetType {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: AssetTypeID;
-  extends?: AssetTypeID1;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
+  id: AssetTypeID;
+  extends?: AssetTypeID1;
   contents?: {
     [k: string]: Asset;
   };
-  member_label?: Label;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -884,10 +888,9 @@ export interface Asset {
   suggestions?: Suggestions;
   requirement?: MarkdownString;
   /**
-   * @minItems 3
-   * @maxItems 3
+   * Abilities provided by this asset. There's almost always 3 of these.
    */
-  abilities: [AssetAbility, AssetAbility, AssetAbility];
+  abilities: AssetAbility[];
   condition_meter?: AssetConditionMeter1;
   /**
    * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
@@ -1198,11 +1201,11 @@ export interface Atlas {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: AtlasID;
-  extends?: AtlasID1;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
+  id: AtlasID;
+  extends?: AtlasID1;
   contents?: {
     [k: string]: AtlasEntry;
   };
@@ -1237,11 +1240,11 @@ export interface NpcCollection {
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
-  id: NpcCollectionID;
-  extends?: NpcCollectionID1;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
+  id: NpcCollectionID;
+  extends?: NpcCollectionID1;
   contents?: {
     [k: string]: Npc;
   };

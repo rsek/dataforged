@@ -2,31 +2,29 @@ import path from 'path'
 
 export const VERSION = '2.0.0-dev'
 
-export const PKG_NAMESPACE = '@datasworn'
+export const PKG_SCOPE_OFFICIAL = '@datasworn'
+export const PKG_SCOPE_COMMUNITY = '@datasworn-community-content'
 
-export const CORE_PKG_ID = `${PKG_NAMESPACE}/core`
+export const CORE_PKG_ID = `${PKG_SCOPE_OFFICIAL}/core`
 
 export const LEGACY_ID_PATH = path.join(process.cwd(), 'src/legacy_id_map.json')
 
 export const ROOT_DATA_IN = path.join(process.cwd(), 'src/data-in')
-export const ROOT_DATA_OUT = path.join(process.cwd(), 'src/data-out')
+export const TEMP = path.join(process.cwd(), 'src/data-out')
 const ROOT_TYPES_OUT = path.join(process.cwd(), 'src/types/io')
 
-export const ROOT_PACKAGES = path.join(process.cwd(), PKG_NAMESPACE)
+export const ROOT_PACKAGES = path.join(process.cwd(), PKG_SCOPE_OFFICIAL)
 export const CORE_PKG_DIR = path.join(ROOT_PACKAGES, 'core')
 
 export const TYPES_OUT = path.join(ROOT_TYPES_OUT, 'datasworn.d.ts')
 
-export const SCHEMA_OUT = path.join(ROOT_DATA_OUT, 'datasworn.schema.json')
+export const SCHEMA_OUT = path.join(TEMP, 'datasworn.schema.json')
 export const SCHEMA_IN = path.join(ROOT_DATA_IN, 'datasworn-input.schema.json')
 
-export const SCHEMA_DELVE_OUT = path.join(
-	ROOT_DATA_OUT,
-	'datasworn-delve.schema.json'
-)
+export const SCHEMA_DELVE_OUT = path.join(TEMP, 'datasworn-delve.schema.json')
 
 export const SCHEMA_DELVE_IN = path.join(
-	ROOT_DATA_OUT,
+	TEMP,
 	'datasworn-delve-input.schema.json'
 )
 

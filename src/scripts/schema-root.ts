@@ -12,9 +12,9 @@ import {
 	DelveSites,
 	Player,
 	Progress
-} from '../schema/index.js'
+} from '../schema/datasworn/index.js'
 
-import { Datasworn as Rulebook } from '../schema/datasworn.js'
+import { Datasworn as Rulebook } from '../schema/datasworn/datasworn.js'
 import { prepareInputSchema, prepareSchema } from './transform-schema.js'
 import { INPUT_SCHEMA_ID } from './const.js'
 

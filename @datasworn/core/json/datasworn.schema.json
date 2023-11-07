@@ -4,7 +4,7 @@
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
 	"type": "object",
 	"properties": {
-		"id": { "type": "string", "pattern": "^[a-z0-9_]{3,}$" },
+		"id": { "$ref": "#/$defs/NamespaceID" },
 		"source": { "$ref": "#/$defs/Source" },
 		"oracles": {
 			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
@@ -251,6 +251,13 @@
 			"$id": "#/$defs/MoveIDWildcard",
 			"type": "string",
 			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/abilities\\/([0-2]|\\*)\\/moves\\/([a-z_]+|\\*))$"
+		},
+		"NamespaceID": {
+			"$id": "#/$defs/NamespaceID",
+			"examples": ["classic", "delve", "starforged", "sundered_isles"],
+			"type": "string",
+			"pattern": "^[a-z0-9_]{3,}$",
+			"title": "NamespaceID"
 		},
 		"NpcCollectionID": {
 			"$id": "#/$defs/NpcCollectionID",
@@ -583,6 +590,7 @@
 			"title": "SpecialTrackType"
 		},
 		"Npc": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/Npc",
 			"description": "A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.",
 			"type": "object",
@@ -633,6 +641,7 @@
 			"title": "Npc"
 		},
 		"NpcCollection": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/NpcCollection",
 			"type": "object",
 			"properties": {
@@ -640,14 +649,14 @@
 				"canonical_name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/NpcCollectionID" },
 				"extends": {
 					"$ref": "#/$defs/NpcCollectionID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -705,14 +714,14 @@
 				"canonical_name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/OracleCollectionID" },
 				"extends": {
 					"$ref": "#/$defs/OracleCollectionID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -820,6 +829,7 @@
 			"title": "OracleRollTemplate"
 		},
 		"OracleTable": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/OracleTable",
 			"title": "Oracle table",
 			"type": "object",
@@ -993,10 +1003,14 @@
 			"required": ["roll_type"]
 		},
 		"MoveActionRoll": {
+			"isSourcedNode": true,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveID" },
 				"replaces": {
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
@@ -1032,17 +1046,15 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" },
 				"roll_type": { "const": "action_roll", "type": "string" }
 			},
 			"required": [
-				"id",
 				"name",
+				"source",
+				"id",
 				"trigger",
 				"text",
 				"outcomes",
-				"source",
 				"roll_type"
 			]
 		},
@@ -1129,6 +1141,7 @@
 			"required": ["id", "name", "roll_type", "trigger", "text", "source"]
 		},
 		"MoveCategory": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/MoveCategory",
 			"type": "object",
 			"properties": {
@@ -1136,14 +1149,14 @@
 				"canonical_name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/MoveCategoryID" },
 				"extends": {
 					"$ref": "#/$defs/MoveCategoryID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -1154,10 +1167,14 @@
 			"title": "MoveCategory"
 		},
 		"MoveNoRoll": {
+			"isSourcedNode": true,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveID" },
 				"replaces": {
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
@@ -1187,11 +1204,9 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" },
 				"roll_type": { "const": "no_roll", "type": "string" }
 			},
-			"required": ["id", "name", "trigger", "text", "source", "roll_type"]
+			"required": ["name", "source", "id", "trigger", "text", "roll_type"]
 		},
 		"MoveNoRollAugment": {
 			"$id": "#/$defs/MoveNoRollAugment",
@@ -1255,10 +1270,14 @@
 			"title": "MoveOutcomes"
 		},
 		"MoveProgressRoll": {
+			"isSourcedNode": true,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveID" },
 				"replaces": {
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
@@ -1294,8 +1313,6 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" },
 				"roll_type": { "const": "progress_roll", "type": "string" },
 				"track_label": {
 					"description": "A category label for progress tracks associated with this move.",
@@ -1312,12 +1329,12 @@
 				}
 			},
 			"required": [
-				"id",
 				"name",
+				"source",
+				"id",
 				"trigger",
 				"text",
 				"outcomes",
-				"source",
 				"roll_type",
 				"track_label"
 			]
@@ -1351,10 +1368,14 @@
 			"title": "MoveRollType"
 		},
 		"MoveSpecialTrack": {
+			"isSourcedNode": true,
 			"type": "object",
 			"properties": {
-				"id": { "$ref": "#/$defs/MoveID" },
 				"name": { "$ref": "#/$defs/Label" },
+				"canonical_name": { "$ref": "#/$defs/Label" },
+				"source": { "$ref": "#/$defs/Source" },
+				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"id": { "$ref": "#/$defs/MoveID" },
 				"replaces": {
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
@@ -1390,17 +1411,15 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
-				"suggestions": { "$ref": "#/$defs/Suggestions" },
-				"source": { "$ref": "#/$defs/Source" },
 				"roll_type": { "const": "special_track", "type": "string" }
 			},
 			"required": [
-				"id",
 				"name",
+				"source",
+				"id",
 				"trigger",
 				"text",
 				"outcomes",
-				"source",
 				"roll_type"
 			]
 		},
@@ -1878,8 +1897,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"requirement": { "$ref": "#/$defs/MarkdownString" },
 				"abilities": {
-					"minItems": 3,
-					"maxItems": 3,
+					"description": "Abilities provided by this asset. There's almost always 3 of these.",
 					"type": "array",
 					"items": { "$ref": "#/$defs/AssetAbility" }
 				},
@@ -2161,6 +2179,7 @@
 			"properties": { "id": { "$ref": "#/$defs/AssetOptionFieldID" } }
 		},
 		"AssetType": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/AssetType",
 			"type": "object",
 			"properties": {
@@ -2168,20 +2187,19 @@
 				"canonical_name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/AssetTypeID" },
 				"extends": {
 					"$ref": "#/$defs/AssetTypeID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Asset" } }
-				},
-				"member_label": { "$ref": "#/$defs/Label" }
+				}
 			},
 			"required": ["name", "source", "id"],
 			"title": "AssetType"
@@ -2330,6 +2348,7 @@
 			"title": "TextField"
 		},
 		"Truth": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/Truth",
 			"description": "A setting truth category.",
 			"type": "object",
@@ -2368,14 +2387,14 @@
 				"canonical_name": { "$ref": "#/$defs/Label" },
 				"source": { "$ref": "#/$defs/Source" },
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
+				"color": { "$ref": "#/$defs/CSSColor" },
+				"summary": { "$ref": "#/$defs/MarkdownString" },
+				"description": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/AtlasID" },
 				"extends": {
 					"$ref": "#/$defs/AtlasID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
 				},
-				"color": { "$ref": "#/$defs/CSSColor" },
-				"summary": { "$ref": "#/$defs/MarkdownString" },
-				"description": { "$ref": "#/$defs/MarkdownString" },
 				"contents": {
 					"$comment": "Deserialize as a dictionary object.",
 					"type": "object",
@@ -2393,6 +2412,7 @@
 			"title": "Atlas"
 		},
 		"AtlasEntry": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/AtlasEntry",
 			"title": "Atlas entry",
 			"description": "An atlas entry, like the Ironlands region entries found in classic Ironsworn.",
@@ -2439,6 +2459,7 @@
 			"title": "PlayerStat"
 		},
 		"Rarity": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/Rarity",
 			"description": "A rarity, as described in Ironsworn: Delve.",
 			"type": "object",
@@ -2466,6 +2487,7 @@
 			"title": "Rarity"
 		},
 		"DelveSite": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/DelveSite",
 			"description": "A delve site with a theme, domain, and denizen table.",
 			"type": "object",
@@ -2651,6 +2673,7 @@
 			"title": "DelveSiteDenizenFrequency"
 		},
 		"DelveSiteDomain": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/DelveSiteDomain",
 			"title": "Delve site domain",
 			"type": "object",
@@ -2913,6 +2936,7 @@
 			"title": "DelveSiteDomainFeatureRow"
 		},
 		"DelveSiteTheme": {
+			"isSourcedNode": true,
 			"$id": "#/$defs/DelveSiteTheme",
 			"title": "Delve site theme",
 			"type": "object",

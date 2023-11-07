@@ -1,6 +1,6 @@
-import * as DataswornInput from '../data-in/datasworn-input.schema.json' assert { type: 'json' }
-import * as Datasworn from '../data-out/datasworn.schema.json' assert { type: 'json' }
-import * as pkgs from './pkg-config.js'
+import * as DataswornInput from '../data-in/datasworn-input.schema.json'
+import * as Datasworn from '../data-out/datasworn.schema.json'
+import * as pkgs from './pkgConfig.js'
 
 import { forEach } from 'lodash-es'
 import { log } from './logger.js'

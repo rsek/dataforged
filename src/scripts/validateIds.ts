@@ -1,5 +1,5 @@
 import { Kind } from '@sinclair/typebox'
-import * as ID from '../schema/common/id.js'
+import * as ID from '../schema/datasworn/common/id.js'
 import { mapValues } from 'lodash-es'
 
 const objectIdPatterns = new Map<string, RegExp>()

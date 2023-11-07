@@ -36,6 +36,16 @@
 		"prefix": "st",
 		"body": ["export type ${CLIPBOARD} = Static<typeof ${CLIPBOARD}>"]
 	},
+	"Schema: new file": {
+		"scope": "typescript",
+		"isFileTemplate": true,
+		"prefix": "snf",
+		"body": [
+			"import { type Static, Type } from '@sinclair/typebox'",
+			"",
+			"${0}"
+		]
+	},
 	"Schema: object": {
 		"scope": "typescript",
 		"prefix": "so",
