@@ -3,13 +3,13 @@ import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import {
 	PKG_SCOPE_OFFICIAL,
 	PKG_SCOPE_COMMUNITY,
-	ROOT_DATA_IN
+	ROOT_SOURCE_DATA
 } from '../const.js'
 
 export const IronswornClassic: DataPackageConfig = {
 	type: 'standalone',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'classic')
+		source: path.join(ROOT_SOURCE_DATA, 'classic')
 	},
 	id: 'classic',
 	pkg: { name: 'ironsworn-classic', scope: PKG_SCOPE_OFFICIAL }
@@ -18,7 +18,7 @@ export const IronswornClassic: DataPackageConfig = {
 export const IronswornClassicDelve: DataPackageConfig = {
 	type: 'expansion',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'delve')
+		source: path.join(ROOT_SOURCE_DATA, 'delve')
 	},
 	id: 'delve',
 	pkg: {
@@ -31,10 +31,10 @@ export const Starforged: DataPackageConfig = {
 	id: 'starforged',
 	type: 'standalone',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'starforged'),
+		source: path.join(ROOT_SOURCE_DATA, 'starforged'),
 		assets: [
-			path.join(ROOT_DATA_IN, 'images'),
-			path.join(ROOT_DATA_IN, 'icons')
+			path.join(ROOT_SOURCE_DATA, 'images'),
+			path.join(ROOT_SOURCE_DATA, 'icons')
 		]
 	},
 	pkg: { name: 'starforged', scope: PKG_SCOPE_OFFICIAL }
@@ -44,7 +44,7 @@ export const SunderedIsles: DataPackageConfig = {
 	/** The *book* isn't standalone, but all the assets, moves, etc effectively are. */
 	type: 'standalone',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'sundered_isles')
+		source: path.join(ROOT_SOURCE_DATA, 'sundered_isles')
 	},
 	id: 'sundered_isles',
 
@@ -56,7 +56,7 @@ export const SunderedIsles: DataPackageConfig = {
 export const Rsek: DataPackageConfig = {
 	type: 'expansion',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'rsek')
+		source: path.join(ROOT_SOURCE_DATA, 'rsek')
 	},
 	id: 'rsek',
 	pkg: { name: 'rsek', scope: PKG_SCOPE_COMMUNITY }
@@ -65,7 +65,7 @@ export const Rsek: DataPackageConfig = {
 export const Starsmith: DataPackageConfig = {
 	type: 'expansion',
 	paths: {
-		source: path.join(ROOT_DATA_IN, 'starsmith')
+		source: path.join(ROOT_SOURCE_DATA, 'starsmith')
 	},
 	id: 'starsmith',
 	pkg: { name: 'starsmith', scope: PKG_SCOPE_COMMUNITY }
