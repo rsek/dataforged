@@ -9,30 +9,21 @@ import {
 	type TSchema
 } from '@sinclair/typebox'
 import { camelCase } from 'lodash-es'
-import {
-	type Merge,
-	type Simplify,
-	type TupleToUnion,
-	type UnionToIntersection
-} from 'type-fest'
+import { type Simplify } from 'type-fest'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
 	schemas: [...Head, Tail],
 	options: ObjectOptions = {}
 ) {
-	type MergedProps = Simplify<
-		Merge<
-			UnionToIntersection<TupleToUnion<Head>['properties']>,
-			Tail['properties']
-		>
-	>
+	type StripOverriddenProps = Omit<Head[number], keyof Tail>
+	type Merged = Simplify<StripOverriddenProps & Tail>
 
 	const properties = schemas
 		.map((schema) => schema.properties)
 		.reduce((prevProps, currentProps) => ({
 			...prevProps,
 			...currentProps
-		})) as MergedProps
+		})) as Merged['properties']
 
 	return Type.Object(properties, options)
 }

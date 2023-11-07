@@ -279,8 +279,7 @@ export const Asset = Type.Object(
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 		requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
 		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
-			description:
-				"Abilities provided by this asset. There's almost always 3 of these."
+			description: 'Abilities provided by this asset. Most assets have 3.'
 		}),
 		condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
 		count_as_impact: Type.Boolean({

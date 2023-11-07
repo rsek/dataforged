@@ -46,12 +46,16 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/command_vehicle/starship/condition_meter/controls/battered"
 							},
 							"cursed": {
 								"label": "cursed",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/command_vehicle/starship/condition_meter/controls/cursed"
 							}
 						},
@@ -80,12 +84,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your starship (dangerous or greater)"
+												"text": "In your starship (dangerous or greater)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/command_vehicle/starship/abilities/1"
 						},
 						{
@@ -101,7 +107,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													}
 												]
 											}
@@ -109,9 +116,11 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/command_vehicle/starship/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/command_vehicle/starship",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -155,6 +164,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/engine_upgrade/controls/broken"
 						}
 					},
@@ -174,9 +184,11 @@
 												"text": "In your vehicle",
 												"roll_options": [
 													{
-														"stat": "edge"
+														"stat": "edge",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -193,7 +205,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to maneuver)"
+												"text": "In your vehicle (and you choose to maneuver)",
+												"method": "any"
 											}
 										]
 									}
@@ -204,12 +217,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to boost)"
+												"text": "In your vehicle (and you choose to boost)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/engine_upgrade/abilities/1"
 						},
 						{
@@ -220,15 +235,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)"
+												"text": "When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/engine_upgrade/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/engine_upgrade",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -252,6 +270,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/expanded_hold/controls/broken"
 						}
 					},
@@ -276,12 +295,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "You make a move to barter or negotiate, and you have at least 1 cargo"
+												"text": "You make a move to barter or negotiate, and you have at least 1 cargo",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/expanded_hold/abilities/1"
 						},
 						{
@@ -292,15 +313,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move to outrun a threat and have at least 1 cargo"
+												"text": "When you make a move to outrun a threat and have at least 1 cargo",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/expanded_hold/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/expanded_hold",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -324,6 +348,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/grappler/controls/broken"
 						}
 					},
@@ -342,7 +367,8 @@
 												"method": "highest",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													},
 													{
 														"using": "attached_asset_meter"
@@ -390,6 +416,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/grappler/abilities/1"
 						},
 						{
@@ -401,15 +428,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By firing the grappler"
+												"text": "By firing the grappler",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/grappler/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/grappler",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -433,6 +463,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/heavy_cannons/controls/broken"
 						}
 					},
@@ -447,7 +478,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike)"
+												"text": "When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike)",
+												"method": "any"
 											}
 										]
 									}
@@ -464,12 +496,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Once per fight, when you [Clash](id:starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire"
+												"text": "Once per fight, when you [Clash](id:starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/heavy_cannons/abilities/1"
 						},
 						{
@@ -485,15 +519,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels"
+												"text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/heavy_cannons/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/heavy_cannons",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -517,6 +554,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/internal_refit/controls/broken"
 						}
 					},
@@ -533,7 +571,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On the first leg of your journey (dangerous or greater)"
+												"text": "On the first leg of your journey (dangerous or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -587,6 +626,7 @@
 									}
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/module/internal_refit/abilities/1"
 						},
 						{
@@ -598,15 +638,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To oppose an invader within your vessel"
+												"text": "To oppose an invader within your vessel",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/internal_refit/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/internal_refit",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -630,6 +673,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/medbay/controls/broken"
 						}
 					},
@@ -644,7 +688,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient"
+												"text": "When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient",
+												"method": "any"
 											}
 										]
 									}
@@ -665,12 +710,14 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/medbay/abilities/1"
 						},
 						{
@@ -685,7 +732,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By performing a risky medical procedure"
+												"text": "By performing a risky medical procedure",
+												"method": "any"
 											}
 										]
 									}
@@ -696,15 +744,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Through an autopsy or medical examination"
+												"text": "Through an autopsy or medical examination",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/medbay/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/medbay",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -735,6 +786,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/missile_array/controls/broken"
 						}
 					},
@@ -752,7 +804,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With a missile attack"
+												"text": "With a missile attack",
+												"method": "any"
 											}
 										]
 									}
@@ -763,7 +816,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In a place where your missiles can be replenished"
+												"text": "In a place where your missiles can be replenished",
+												"method": "any"
 											}
 										]
 									}
@@ -780,12 +834,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By locking a missile on target"
+												"text": "By locking a missile on target",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/missile_array/abilities/1"
 						},
 						{
@@ -797,15 +853,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles"
+												"text": "When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/missile_array/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/missile_array",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -829,6 +888,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/overseer/controls/broken"
 						}
 					},
@@ -876,6 +936,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/overseer/abilities/1"
 						},
 						{
@@ -902,9 +963,11 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/overseer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/overseer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -928,6 +991,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/reinforced_hull/controls/broken"
 						}
 					},
@@ -942,7 +1006,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To your vehicle with a Reinforced Hull"
+												"text": "To your vehicle with a Reinforced Hull",
+												"method": "any"
 											}
 										]
 									}
@@ -959,12 +1024,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Against a foe who knows your reputation"
+												"text": "Against a foe who knows your reputation",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/reinforced_hull/abilities/1"
 						},
 						{
@@ -976,15 +1043,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By letting your reinforced hull take the hit"
+												"text": "By letting your reinforced hull take the hit",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/reinforced_hull/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/reinforced_hull",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1008,6 +1078,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/research_lab/controls/broken"
 						}
 					},
@@ -1026,7 +1097,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Through careful analysis or experimentation (in your research lab)"
+												"text": "Through careful analysis or experimentation (in your research lab)",
+												"method": "any"
 											}
 										]
 									}
@@ -1046,12 +1118,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To isolate or secure a hazardous specimen"
+												"text": "To isolate or secure a hazardous specimen",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/research_lab/abilities/1"
 						},
 						{
@@ -1063,7 +1137,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To undertake a long-term research project (extreme or greater)"
+												"text": "To undertake a long-term research project (extreme or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -1077,7 +1152,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you devote extended time to the long-term research project (extreme or greater) in your lab"
+												"text": "When you devote extended time to the long-term research project (extreme or greater) in your lab",
+												"method": "any"
 											}
 										]
 									}
@@ -1088,15 +1164,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To undertake a long-term research project (extreme or greater)"
+												"text": "To undertake a long-term research project (extreme or greater)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/research_lab/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/research_lab",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1120,6 +1199,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/sensor_array/controls/broken"
 						}
 					},
@@ -1139,9 +1219,11 @@
 												"text": "In your vehicle",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -1161,7 +1243,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)"
+												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)",
+												"method": "any"
 											}
 										]
 									}
@@ -1172,12 +1255,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)"
+												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/sensor_array/abilities/1"
 						},
 						{
@@ -1221,9 +1306,11 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/sensor_array/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/sensor_array",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1247,6 +1334,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/shields/controls/broken"
 						}
 					},
@@ -1265,7 +1353,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													},
 													{
 														"using": "attached_asset_meter"
@@ -1325,6 +1414,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/shields/abilities/1"
 						},
 						{
@@ -1336,12 +1426,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your vehicle"
+												"text": "In your vehicle",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/shields/abilities/2"
 						}
 					],
@@ -1352,6 +1444,7 @@
 						"min": 0,
 						"id": "starforged/assets/module/shields/condition_meter"
 					},
+					"count_as_impact": false,
 					"id": "starforged/assets/module/shields",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1375,6 +1468,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/stealth_tech/controls/broken"
 						}
 					},
@@ -1388,7 +1482,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move against a specific foe or threat to avoid detection (in your vehicle)"
+												"text": "When you make a move against a specific foe or threat to avoid detection (in your vehicle)",
+												"method": "any"
 											}
 										]
 									}
@@ -1399,7 +1494,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By ambushing an unaware foe (in your vehicle)"
+												"text": "By ambushing an unaware foe (in your vehicle)",
+												"method": "any"
 											}
 										]
 									}
@@ -1421,14 +1517,17 @@
 												"text": "When you travel stealthily (in your vehicle)",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/stealth_tech/abilities/1"
 						},
 						{
@@ -1444,7 +1543,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
 												]
 											}
@@ -1461,7 +1561,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
 												]
 											}
@@ -1469,9 +1570,11 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/stealth_tech/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/stealth_tech",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1495,6 +1598,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/vehicle_bay/controls/broken"
 						}
 					},
@@ -1509,7 +1613,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle"
+												"text": "When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle",
+												"method": "any"
 											}
 										]
 									}
@@ -1525,6 +1630,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/vehicle_bay/abilities/1"
 						},
 						{
@@ -1535,15 +1641,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment"
+												"text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/vehicle_bay/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/vehicle_bay",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1567,6 +1676,7 @@
 							"label": "broken",
 							"field_type": "card_flip",
 							"disables_asset": true,
+							"value": false,
 							"id": "starforged/assets/module/workshop/controls/broken"
 						}
 					},
@@ -1581,7 +1691,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In the field (with your workshop)"
+												"text": "In the field (with your workshop)",
+												"method": "any"
 											}
 										]
 									}
@@ -1597,12 +1708,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine"
+												"text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/workshop/abilities/1"
 						},
 						{
@@ -1614,7 +1727,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To undertake a long-term engineering project (extreme or greater)"
+												"text": "To undertake a long-term engineering project (extreme or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -1628,7 +1742,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop"
+												"text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop",
+												"method": "any"
 											}
 										]
 									}
@@ -1639,15 +1754,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To undertake a long-term engineering project (extreme or greater)"
+												"text": "To undertake a long-term engineering project (extreme or greater)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/module/workshop/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/module/workshop",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1703,6 +1821,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/exosuit/condition_meter/controls/battered"
 							}
 						},
@@ -1722,7 +1842,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a forceful, damaging, or resistant move in your Exosuit"
+												"text": "When you make a forceful, damaging, or resistant move in your Exosuit",
+												"method": "any"
 											}
 										]
 									}
@@ -1738,12 +1859,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude"
+												"text": "You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/exosuit/abilities/1"
 						},
 						{
@@ -1755,15 +1878,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To your Exosuit"
+												"text": "To your Exosuit",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/exosuit/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/exosuit",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1799,6 +1925,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/hoverbike/condition_meter/controls/battered"
 							}
 						},
@@ -1824,9 +1952,11 @@
 												"text": "On your hoverbike",
 												"roll_options": [
 													{
-														"stat": "edge"
+														"stat": "edge",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -1842,19 +1972,23 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver"
+												"text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/hoverbike/abilities/1"
 						},
 						{
 							"text": "When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum.",
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/hoverbike/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/hoverbike",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1890,6 +2024,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/rover/condition_meter/controls/battered"
 							}
 						},
@@ -1913,7 +2049,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your rover"
+												"text": "In your rover",
+												"method": "any"
 											}
 										]
 									}
@@ -1926,7 +2063,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your rover"
+												"text": "In your rover",
+												"method": "any"
 											}
 										]
 									}
@@ -1936,6 +2074,7 @@
 						},
 						{
 							"text": "You may equip your rover with one module asset at no extra cost. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), the module can be broken or destroyed as with a command vehicle. If you reconfigure your rover, spend 1 experience, discard the module, and equip another with the same number of marked abilities.",
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/rover/abilities/1"
 						},
 						{
@@ -1964,9 +2103,11 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/rover/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/rover",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2002,6 +2143,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/service_pod/condition_meter/controls/battered"
 							}
 						},
@@ -2021,7 +2164,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move using the pod’s manipulator arms to perform a delicate or forceful task"
+												"text": "When you make a move using the pod’s manipulator arms to perform a delicate or forceful task",
+												"method": "any"
 											}
 										]
 									}
@@ -2056,6 +2200,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/service_pod/abilities/1"
 						},
 						{
@@ -2066,15 +2211,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move while controlling the pod and push its capabilities to the limit"
+												"text": "When you make a move while controlling the pod and push its capabilities to the limit",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/service_pod/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/service_pod",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2110,6 +2258,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/shuttle/condition_meter/controls/battered"
 							}
 						},
@@ -2138,12 +2288,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To navigate through hazardous skies, avoid obstacles, or evade an attack"
+												"text": "To navigate through hazardous skies, avoid obstacles, or evade an attack",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/shuttle/abilities/1"
 						},
 						{
@@ -2155,15 +2307,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To your shuttle"
+												"text": "To your shuttle",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/shuttle/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/shuttle",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2199,6 +2354,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/skiff/condition_meter/controls/battered"
 							}
 						},
@@ -2262,13 +2419,16 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/skiff/abilities/1"
 						},
 						{
 							"text": "Your skiff is fully stocked. When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear), add +1 and take +1 momentum on a hit.",
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/skiff/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/skiff",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2304,6 +2464,8 @@
 								"label": "battered",
 								"field_type": "checkbox",
 								"is_impact": true,
+								"value": false,
+								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/snub_fighter/condition_meter/controls/battered"
 							}
 						},
@@ -2351,12 +2513,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your snub fighter"
+												"text": "In your snub fighter",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/snub_fighter/abilities/1"
 						},
 						{
@@ -2370,9 +2534,11 @@
 									"id": "starforged/assets/support_vehicle/snub_fighter/abilities/2/controls/victory_marks"
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/support_vehicle/snub_fighter/abilities/2"
 						}
 					],
+					"count_as_impact": false,
 					"id": "starforged/assets/support_vehicle/snub_fighter",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2425,7 +2591,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By guiding your vehicle through a hazard or out of harm’s way"
+												"text": "By guiding your vehicle through a hazard or out of harm’s way",
+												"method": "any"
 											}
 										]
 									}
@@ -2442,12 +2609,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By maneuvering your vehicle against a foe"
+												"text": "By maneuvering your vehicle against a foe",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/ace/abilities/1"
 						},
 						{
@@ -2472,9 +2641,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/ace/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/ace",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2514,7 +2686,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -2572,6 +2745,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/archer/abilities/1"
 						},
 						{
@@ -2582,15 +2756,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter"
+												"text": "Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/archer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/archer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2625,7 +2803,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "While putting trust in your armor’s strength against physical attacks or impact"
+												"text": "While putting trust in your armor’s strength against physical attacks or impact",
+												"method": "any"
 											}
 										]
 									}
@@ -2635,6 +2814,7 @@
 						},
 						{
 							"text": "You add an important new piece to your set of armor, or upgrade its materials. As above, but preset your action die to 5 instead of 4.",
+							"enabled": false,
 							"id": "starforged/assets/path/armored/abilities/1"
 						},
 						{
@@ -2646,15 +2826,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By letting your armor take the hit"
+												"text": "By letting your armor take the hit",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/armored/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/armored",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2682,7 +2866,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location"
+												"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location",
+												"method": "any"
 											}
 										]
 									}
@@ -2703,12 +2888,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying the aesthetics of a being or culture"
+												"text": "By studying the aesthetics of a being or culture",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/artist/abilities/1"
 						},
 						{
@@ -2725,19 +2912,24 @@
 												"text": "Roll +the stat which best represents the work’s nature",
 												"roll_options": [
 													{
-														"stat": "edge"
+														"stat": "edge",
+														"using": "stat"
 													},
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													},
 													{
-														"stat": "iron"
+														"stat": "iron",
+														"using": "stat"
 													},
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													},
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -2770,9 +2962,12 @@
 									}
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/path/artist/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/artist",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2812,7 +3007,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move directly aided by your augment"
+												"text": "When you make a move directly aided by your augment",
+												"method": "any"
 											}
 										]
 									}
@@ -2822,6 +3018,7 @@
 						},
 						{
 							"text": "You are equipped with a second augment. It functions as above, but the benefits of the two augments do not stack.",
+							"enabled": false,
 							"id": "starforged/assets/path/augmented/abilities/1"
 						},
 						{
@@ -2835,9 +3032,12 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/augmented/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/augmented",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2873,7 +3073,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In service to your bound clan, faction, or creed"
+												"text": "In service to your bound clan, faction, or creed",
+												"method": "any"
 											}
 										]
 									}
@@ -2893,7 +3094,8 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
@@ -2904,12 +3106,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With anyone of your ideology"
+												"text": "With anyone of your ideology",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/bannersworn/abilities/1"
 						},
 						{
@@ -2920,15 +3124,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a progress move in direct service to your ideology"
+												"text": "When you make a progress move in direct service to your ideology",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/bannersworn/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/bannersworn",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -2961,7 +3169,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you wield a bladed weapon in close quarters"
+												"text": "When you wield a bladed weapon in close quarters",
+												"method": "any"
 											}
 										]
 									}
@@ -2981,9 +3190,11 @@
 												"text": "By moving into close quarters against your foe (and choosing to charge)",
 												"roll_options": [
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -2997,14 +3208,17 @@
 												"text": "By moving into close quarters against your foe (and choosing to evade)",
 												"roll_options": [
 													{
-														"stat": "edge"
+														"stat": "edge",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/blademaster/abilities/1"
 						},
 						{
@@ -3031,15 +3245,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By binding your promise to your iconic blade"
+												"text": "By binding your promise to your iconic blade",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/blademaster/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/blademaster",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3068,7 +3286,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you take a bounty contract and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done"
+												"text": "When you take a bounty contract and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done",
+												"method": "any"
 											}
 										]
 									}
@@ -3079,7 +3298,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On a hunt"
+												"text": "On a hunt",
+												"method": "any"
 											}
 										]
 									}
@@ -3096,12 +3316,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Related to a bounty"
+												"text": "Related to a bounty",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/bounty_hunter/abilities/1"
 						},
 						{
@@ -3113,15 +3335,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In a fight against a bounty target or their agents"
+												"text": "In a fight against a bounty target or their agents",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/bounty_hunter/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/bounty_hunter",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3151,7 +3377,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)"
+												"text": "By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)",
+												"method": "any"
 											}
 										]
 									}
@@ -3168,7 +3395,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Aggressively"
+												"text": "Aggressively",
+												"method": "any"
 											}
 										]
 									}
@@ -3179,12 +3407,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Defensively"
+												"text": "Defensively",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/brawler/abilities/1"
 						},
 						{
@@ -3196,15 +3426,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Already positioned in close quarters against your foe"
+												"text": "Already positioned in close quarters against your foe",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/brawler/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/brawler",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3233,7 +3467,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To transport and protect something precious"
+												"text": "To transport and protect something precious",
+												"method": "any"
 											}
 										]
 									}
@@ -3257,12 +3492,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To an unbonded connection by completing a courier mission"
+												"text": "To an unbonded connection by completing a courier mission",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/courier/abilities/1"
 						},
 						{
@@ -3287,6 +3524,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/courier/abilities/2"
 						}
 					],
@@ -3297,6 +3535,8 @@
 						"min": 0,
 						"id": "starforged/assets/path/courier/condition_meter"
 					},
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/courier",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3324,7 +3564,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To attack, destroy, or sabotage by deploying or triggering an explosive device"
+												"text": "To attack, destroy, or sabotage by deploying or triggering an explosive device",
+												"method": "any"
 											}
 										]
 									}
@@ -3340,12 +3581,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device"
+												"text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/demolitionist/abilities/1"
 						},
 						{
@@ -3357,15 +3600,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device"
+												"text": "When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/demolitionist/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/demolitionist",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3474,12 +3721,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On a divine quest (formidable or greater)"
+												"text": "On a divine quest (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/devotant/abilities/1"
 						},
 						{
@@ -3504,9 +3753,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/devotant/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/devotant",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3535,7 +3787,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To resolve a dispute, negotiate an agreement, or gather support"
+												"text": "To resolve a dispute, negotiate an agreement, or gather support",
+												"method": "any"
 											}
 										]
 									}
@@ -3546,7 +3799,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On a diplomatic mission (formidable or greater)"
+												"text": "On a diplomatic mission (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -3562,12 +3816,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To defuse, reason, or negotiate"
+												"text": "To defuse, reason, or negotiate",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/diplomat/abilities/1"
 						},
 						{
@@ -3585,9 +3841,12 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/diplomat/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/diplomat",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3620,7 +3879,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													}
 												]
 											}
@@ -3665,6 +3925,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/empath/abilities/1"
 						},
 						{
@@ -3692,9 +3953,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/empath/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/empath",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3734,6 +3998,7 @@
 						},
 						{
 							"text": "When you come across a wondrous sight or phenomenon, such as an extraordinary planet, majestic creature, or dazzling stellar object, choose one:\n\n  * Find inspiration: Take +1 momentum\n  * Soak it all in: [Hearten](id:starforged/moves/recover/hearten); add +1, and take +1 momentum on a hit.",
+							"enabled": false,
 							"id": "starforged/assets/path/explorer/abilities/1"
 						},
 						{
@@ -3748,15 +4013,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying a newfound place from a safe position"
+												"text": "By studying a newfound place from a safe position",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/explorer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/explorer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3813,6 +4082,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/fated/abilities/1"
 						},
 						{
@@ -3823,15 +4093,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make any progress move directly related to your background vow"
+												"text": "When you make any progress move directly related to your background vow",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/fated/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/fated",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3908,6 +4182,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/firebrand/abilities/1"
 						},
 						{
@@ -3929,6 +4204,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/firebrand/abilities/2"
 						}
 					],
@@ -3939,6 +4215,8 @@
 						"min": 0,
 						"id": "starforged/assets/path/firebrand/condition_meter"
 					},
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/firebrand",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3980,19 +4258,24 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By hiding, concealing your identity, or fleeing from a pursuer"
+												"text": "By hiding, concealing your identity, or fleeing from a pursuer",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/fugitive/abilities/1"
 						},
 						{
 							"text": "When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) (extreme or greater) by clearing your name or defeating the power or authority who marked you as a fugitive, gain this ability at no cost. You may then exchange this asset for another with the same number of marked abilities.",
+							"enabled": false,
 							"id": "starforged/assets/path/fugitive/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/fugitive",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4020,7 +4303,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To craft, repair, repurpose, or modify equipment or technology"
+												"text": "To craft, repair, repurpose, or modify equipment or technology",
+												"method": "any"
 											}
 										]
 									}
@@ -4037,12 +4321,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying or disassembling a machine or device"
+												"text": "By studying or disassembling a machine or device",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gearhead/abilities/1"
 						},
 						{
@@ -4057,15 +4343,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role"
+												"text": "By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gearhead/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/gearhead",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4095,7 +4385,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down"
+												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down",
+												"method": "any"
 											}
 										]
 									}
@@ -4106,7 +4397,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt"
+												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt",
+												"method": "any"
 											}
 										]
 									}
@@ -4123,12 +4415,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By emptying your gun as you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1)"
+												"text": "By emptying your gun as you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gunner/abilities/1"
 						},
 						{
@@ -4147,7 +4441,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With your favorite gun"
+												"text": "With your favorite gun",
+												"method": "any"
 											}
 										]
 									}
@@ -4161,15 +4456,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "While wielding your favorite gun"
+												"text": "While wielding your favorite gun",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gunner/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/gunner",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4202,17 +4501,21 @@
 												"text": "By facing off against your foe",
 												"roll_options": [
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											},
 											{
 												"text": "By preparing to act without tipping off your foe",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -4232,12 +4535,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By moving into cover"
+												"text": "By moving into cover",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gunslinger/abilities/1"
 						},
 						{
@@ -4252,15 +4557,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With the threat of violence by holding someone at gunpoint"
+												"text": "With the threat of violence by holding someone at gunpoint",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/gunslinger/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/gunslinger",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4288,7 +4597,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move to call upon the insight of the spirit that haunts you"
+												"text": "When you make a move to call upon the insight of the spirit that haunts you",
+												"method": "any"
 											}
 										]
 									}
@@ -4305,19 +4615,24 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Guided by the spirit that haunts you"
+												"text": "Guided by the spirit that haunts you",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/haunted/abilities/1"
 						},
 						{
 							"text": "One time only, when you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) (extreme or greater) in service to the spirit, take this ability at no cost and choose one.\n\n  * Let them go: Mark 2 ticks on your bonds legacy track for each marked ability, and discard this asset.\n  * Bolster your link: When you use a HAUNTED asset ability, take +1 momentum on a hit.",
+							"enabled": false,
 							"id": "starforged/assets/path/haunted/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/haunted",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4346,7 +4661,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Give medical care to yourself"
+												"text": "Give medical care to yourself",
+												"method": "any"
 											}
 										]
 									}
@@ -4357,7 +4673,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Give medical care to another character"
+												"text": "Give medical care to another character",
+												"method": "any"
 											}
 										]
 									}
@@ -4374,19 +4691,24 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying medical evidence or biological remains"
+												"text": "By studying medical evidence or biological remains",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/healer/abilities/1"
 						},
 						{
 							"text": "Once every day or so, when you are in a safe place with plenty of time on your hands, you may [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, roll only your action die. On a 1-4, automatically give +1 health to everyone whose health is greater than 0. On a 5-6, make it +2.",
+							"enabled": false,
 							"id": "starforged/assets/path/healer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/healer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4414,7 +4736,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system"
+												"text": "To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system",
+												"method": "any"
 											}
 										]
 									}
@@ -4436,12 +4759,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To establish a false identity"
+												"text": "To establish a false identity",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/infiltrator/abilities/1"
 						},
 						{
@@ -4453,15 +4778,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "For a device with a specific function to aid in infiltration, espionage, or sabotage"
+												"text": "For a device with a specific function to aid in infiltration, espionage, or sabotage",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/infiltrator/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/infiltrator",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4489,7 +4818,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are in a risky situation and draw on your kinetic powers to make a move"
+												"text": "When you are in a risky situation and draw on your kinetic powers to make a move",
+												"method": "any"
 											}
 										]
 									}
@@ -4499,6 +4829,7 @@
 						},
 						{
 							"text": "As above, but you may instead draw on your powers in a desperate effort to change the outcome of an action. If you do, add +2 (after you roll) and [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-3).",
+							"enabled": false,
 							"id": "starforged/assets/path/kinetic/abilities/1"
 						},
 						{
@@ -4516,9 +4847,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/kinetic/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/kinetic",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4552,7 +4886,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning"
+												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning",
+												"method": "any"
 											}
 										]
 									}
@@ -4569,12 +4904,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By coordinating with your team as they wade into the fight"
+												"text": "By coordinating with your team as they wade into the fight",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/leader/abilities/1"
 						},
 						{
@@ -4585,15 +4922,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To influence someone (not an ally) through leadership"
+												"text": "To influence someone (not an ally) through leadership",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/leader/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/leader",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4685,13 +5026,17 @@
 									}
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/path/looper/abilities/1"
 						},
 						{
 							"text": "When you make a reroll granted by any asset ability on an action roll, also add +1.",
+							"enabled": false,
 							"id": "starforged/assets/path/looper/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/looper",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4720,7 +5065,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)"
+												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -4731,7 +5077,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)"
+												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -4747,12 +5094,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To conduct extended research or study"
+												"text": "To conduct extended research or study",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/lore_hunter/abilities/1"
 						},
 						{
@@ -4768,15 +5117,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you recall esoteric knowledge"
+												"text": "When you recall esoteric knowledge",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/lore_hunter/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/lore_hunter",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4810,7 +5163,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally)"
+												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally)",
+												"method": "any"
 											}
 										]
 									}
@@ -4820,6 +5174,7 @@
 						},
 						{
 							"text": "You may burn momentum on behalf of an ally to improve their result on a move. If you do, your ally takes +1 momentum.",
+							"enabled": false,
 							"id": "starforged/assets/path/loyalist/abilities/1"
 						},
 						{
@@ -4834,15 +5189,19 @@
 												"by": {
 													"ally": true,
 													"player": false
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/loyalist/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/loyalist",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4871,7 +5230,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To wage war or defend others from war in exchange for payment or promises"
+												"text": "To wage war or defend others from war in exchange for payment or promises",
+												"method": "any"
 											}
 										]
 									}
@@ -4882,7 +5242,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To wage war or defend others from war in exchange for payment or promises"
+												"text": "To wage war or defend others from war in exchange for payment or promises",
+												"method": "any"
 											}
 										]
 									}
@@ -4899,12 +5260,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By searching out or making contact with someone in need of your services"
+												"text": "By searching out or making contact with someone in need of your services",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/mercenary/abilities/1"
 						},
 						{
@@ -4916,7 +5279,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In the midst of a fight"
+												"text": "In the midst of a fight",
+												"method": "any"
 											}
 										]
 									}
@@ -4927,15 +5291,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By looting the field of battle in the aftermath of a fight"
+												"text": "By looting the field of battle in the aftermath of a fight",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/mercenary/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/mercenary",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -4968,7 +5336,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Using your knowledge of lifeforms or planetside ecosystems"
+												"text": "Using your knowledge of lifeforms or planetside ecosystems",
+												"method": "any"
 											}
 										]
 									}
@@ -4984,12 +5353,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By taking a risky action to pacify, avoid, or outwit a creature"
+												"text": "By taking a risky action to pacify, avoid, or outwit a creature",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/naturalist/abilities/1"
 						},
 						{
@@ -5001,7 +5372,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To scavenge resources in a life-bearing natural environment"
+												"text": "To scavenge resources in a life-bearing natural environment",
+												"method": "any"
 											}
 										]
 									}
@@ -5015,15 +5387,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Against an environmental threat"
+												"text": "Against an environmental threat",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/naturalist/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/naturalist",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5065,7 +5441,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By charting the way forward"
+												"text": "By charting the way forward",
+												"method": "any"
 											}
 										]
 									}
@@ -5079,7 +5456,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To find a path around a hazard"
+												"text": "To find a path around a hazard",
+												"method": "any"
 											}
 										]
 									}
@@ -5090,12 +5468,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "About a location by studying your charts"
+												"text": "About a location by studying your charts",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/navigator/abilities/1"
 						},
 						{
@@ -5112,15 +5492,19 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/navigator/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/navigator",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5149,7 +5533,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In isolation, attempting find solace in fond memories or a hopeful wish."
+												"text": "In isolation, attempting find solace in fond memories or a hopeful wish.",
+												"method": "any"
 											}
 										]
 									}
@@ -5170,7 +5555,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -5203,6 +5589,7 @@
 									}
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/path/outcast/abilities/1"
 						},
 						{
@@ -5217,15 +5604,19 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/outcast/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/outcast",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5254,7 +5645,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By scavenging a wreck, ruin, or abandoned site"
+												"text": "By scavenging a wreck, ruin, or abandoned site",
+												"method": "any"
 											}
 										]
 									}
@@ -5274,12 +5666,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To cobble together an ad hoc tool, device, or weapon"
+												"text": "To cobble together an ad hoc tool, device, or weapon",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/scavenger/abilities/1"
 						},
 						{
@@ -5294,7 +5688,8 @@
 												"method": "highest",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													},
 													{
 														"using": "condition_meter",
@@ -5306,9 +5701,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/scavenger/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/scavenger",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5336,7 +5734,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By lying, bluffing, stealing, or cheating"
+												"text": "By lying, bluffing, stealing, or cheating",
+												"method": "any"
 											}
 										]
 									}
@@ -5357,7 +5756,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
 												]
 											}
@@ -5365,13 +5765,17 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/scoundrel/abilities/1"
 						},
 						{
 							"text": "When you make a quick escape or con your way out of a situation and burn momentum to gain a strong hit, take +1 momentum after you reset. If you envision how this momentary success leaves you fated for future trouble, mark 2 ticks on your quests legacy track.",
+							"enabled": false,
 							"id": "starforged/assets/path/scoundrel/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/scoundrel",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5417,6 +5821,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/seer/abilities/1"
 						},
 						{
@@ -5434,7 +5839,8 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
@@ -5448,15 +5854,19 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/seer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/seer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5484,7 +5894,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are veiled and make a move to ambush, hide, or sneak (not in darkness)"
+												"text": "When you are veiled and make a move to ambush, hide, or sneak (not in darkness)",
+												"method": "any"
 											}
 										]
 									}
@@ -5494,7 +5905,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are veiled and make a move to ambush, hide, or sneak (in darkness)"
+												"text": "When you are veiled and make a move to ambush, hide, or sneak (in darkness)",
+												"method": "any"
 											}
 										]
 									}
@@ -5515,7 +5927,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "shadow"
+														"stat": "shadow",
+														"using": "stat"
 													}
 												]
 											}
@@ -5548,13 +5961,17 @@
 									}
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/path/shade/abilities/1"
 						},
 						{
 							"text": "When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.",
+							"enabled": false,
 							"id": "starforged/assets/path/shade/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/shade",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5582,7 +5999,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To investigate, track, or stalk an inhuman foe"
+												"text": "To investigate, track, or stalk an inhuman foe",
+												"method": "any"
 											}
 										]
 									}
@@ -5599,7 +6017,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To slay an inhuman foe in service to a community (formidable or greater)"
+												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -5610,12 +6029,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To slay an inhuman foe in service to a community (formidable or greater)"
+												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/slayer/abilities/1"
 						},
 						{
@@ -5627,15 +6048,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With an objective to slay an inhuman foe"
+												"text": "With an objective to slay an inhuman foe",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/slayer/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/slayer",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5664,7 +6089,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To solve a murder, disappearance, theft, or other mystery (no greater than formidable)"
+												"text": "To solve a murder, disappearance, theft, or other mystery (no greater than formidable)",
+												"method": "any"
 											}
 										]
 									}
@@ -5680,12 +6106,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To avoid detection as you put a person or place under surveillance"
+												"text": "To avoid detection as you put a person or place under surveillance",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/sleuth/abilities/1"
 						},
 						{
@@ -5704,9 +6132,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/sleuth/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/sleuth",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5740,7 +6171,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -5788,7 +6220,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -5796,6 +6229,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/sniper/abilities/1"
 						},
 						{
@@ -5810,7 +6244,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying a distant situation through your rifle scope"
+												"text": "By studying a distant situation through your rifle scope",
+												"method": "any"
 											}
 										]
 									}
@@ -5821,15 +6256,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By taking careful aim"
+												"text": "By taking careful aim",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/sniper/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/sniper",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5857,7 +6296,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To configure, optimize, hack, or disrupt an electronic system"
+												"text": "To configure, optimize, hack, or disrupt an electronic system",
+												"method": "any"
 											}
 										]
 									}
@@ -5873,6 +6313,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/tech/abilities/1"
 						},
 						{
@@ -5887,15 +6328,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By creating a computer program to perform a specific, complex function"
+												"text": "By creating a computer program to perform a specific, complex function",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/tech/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/tech",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5950,7 +6395,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With a merchant or supplier"
+												"text": "With a merchant or supplier",
+												"method": "any"
 											}
 										]
 									}
@@ -5961,12 +6407,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By bartering with a merchant or supplier connection"
+												"text": "By bartering with a merchant or supplier connection",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/trader/abilities/1"
 						},
 						{
@@ -5981,15 +6429,19 @@
 												"by": {
 													"player": true,
 													"ally": true
-												}
+												},
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/trader/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/trader",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6042,12 +6494,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Through a tale, performance, or ceremony"
+												"text": "Through a tale, performance, or ceremony",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/vestige/abilities/1"
 						},
 						{
@@ -6065,15 +6519,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you make a move directly aided by the relic"
+												"text": "When you make a move directly aided by the relic",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/vestige/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/vestige",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6105,6 +6563,7 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/veteran/abilities/1"
 						},
 						{
@@ -6120,15 +6579,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By recounting or recalling a hard-won lesson from your battlefield experiences"
+												"text": "By recounting or recalling a hard-won lesson from your battlefield experiences",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/veteran/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/veteran",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6164,7 +6627,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Within a spacebound community"
+												"text": "Within a spacebound community",
+												"method": "any"
 											}
 										]
 									}
@@ -6175,12 +6639,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Within a spacebound community"
+												"text": "Within a spacebound community",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/voidborn/abilities/1"
 						},
 						{
@@ -6191,15 +6657,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment"
+												"text": "To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/voidborn/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/voidborn",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6228,7 +6698,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In personal combat"
+												"text": "In personal combat",
+												"method": "any"
 											}
 										]
 									}
@@ -6257,12 +6728,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Using a personal weapon which has limited ammo or a single-use mode"
+												"text": "Using a personal weapon which has limited ammo or a single-use mode",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/weapon_master/abilities/1"
 						},
 						{
@@ -6290,9 +6763,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/path/weapon_master/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/path/weapon_master",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6351,6 +6827,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/banshee/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6393,12 +6871,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To detect a threat or avoid a fight (while astride your banshee)"
+												"text": "To detect a threat or avoid a fight (while astride your banshee)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/banshee/abilities/1"
 						},
 						{
@@ -6417,15 +6897,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When aided by your banshee"
+												"text": "When aided by your banshee",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/banshee/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/banshee",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6464,6 +6948,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/combat_bot/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6480,7 +6966,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Aided by your combat bot"
+												"text": "Aided by your combat bot",
+												"method": "any"
 											}
 										]
 									}
@@ -6491,7 +6978,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Aided by your combat bot"
+												"text": "Aided by your combat bot",
+												"method": "any"
 											}
 										]
 									}
@@ -6524,6 +7012,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/combat_bot/abilities/1"
 						},
 						{
@@ -6548,9 +7037,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/combat_bot/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/combat_bot",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6589,6 +7081,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/glowcat/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6608,7 +7102,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By studying your glowcat’s reactions in a charged interaction"
+												"text": "By studying your glowcat’s reactions in a charged interaction",
+												"method": "any"
 											}
 										]
 									}
@@ -6625,12 +7120,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When your glowcat’s reactions help guide your approach"
+												"text": "When your glowcat’s reactions help guide your approach",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/glowcat/abilities/1"
 						},
 						{
@@ -6642,15 +7139,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In the company of the glowcat"
+												"text": "In the company of the glowcat",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/glowcat/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/glowcat",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6689,6 +7190,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/protocol_bot/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6704,7 +7207,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are aided by the bot as you make a move in a formal social interaction"
+												"text": "When you are aided by the bot as you make a move in a formal social interaction",
+												"method": "any"
 											}
 										]
 									}
@@ -6714,6 +7218,7 @@
 						},
 						{
 							"text": "When you first visit or interact with a new community or culture, you may ask for the bot's insight. If you do, envision what you learn and take +1 momentum.",
+							"enabled": false,
 							"id": "starforged/assets/companion/protocol_bot/abilities/1"
 						},
 						{
@@ -6724,15 +7229,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In a charged interaction"
+												"text": "In a charged interaction",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/protocol_bot/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/protocol_bot",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6771,6 +7280,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/rockhorn/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6823,6 +7334,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/rockhorn/abilities/1"
 						},
 						{
@@ -6836,9 +7348,12 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/rockhorn/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/rockhorn",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -6882,6 +7397,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/sidekick/condition_meter/controls/out_of_action"
 							}
 						},
@@ -6897,7 +7414,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Directly aided by your sidekick's expertise (outside of a fight)"
+												"text": "Directly aided by your sidekick's expertise (outside of a fight)",
+												"method": "any"
 											}
 										]
 									}
@@ -6914,7 +7432,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With the support of your sidekick"
+												"text": "With the support of your sidekick",
+												"method": "any"
 											}
 										]
 									}
@@ -6925,12 +7444,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Together with your sidekick"
+												"text": "Together with your sidekick",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/sidekick/abilities/1"
 						},
 						{
@@ -6959,9 +7480,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/sidekick/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/sidekick",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7000,6 +7524,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/sprite/condition_meter/controls/out_of_action"
 							}
 						},
@@ -7015,7 +7541,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)"
+												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)",
+												"method": "any"
 											}
 										]
 									}
@@ -7036,19 +7563,24 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By remotely observing a situation from your sprite's perspective"
+												"text": "By remotely observing a situation from your sprite's perspective",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/sprite/abilities/1"
 						},
 						{
 							"text": "With a moment's rest, the sprite can mend its form and return automatically to max health.",
+							"enabled": false,
 							"id": "starforged/assets/companion/sprite/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/sprite",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7087,6 +7619,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/survey_bot/condition_meter/controls/out_of_action"
 							}
 						},
@@ -7108,9 +7642,11 @@
 												"text": "Overland or within a site (assisted by your survey bot)",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
@@ -7143,6 +7679,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/survey_bot/abilities/1"
 						},
 						{
@@ -7190,9 +7727,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/survey_bot/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/survey_bot",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7231,6 +7771,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/symbiote/condition_meter/controls/out_of_action"
 							}
 						},
@@ -7246,7 +7788,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Make an aggressive move while giving yourself to the symbiote's power"
+												"text": "Make an aggressive move while giving yourself to the symbiote's power",
+												"method": "any"
 											}
 										]
 									}
@@ -7261,13 +7804,17 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/symbiote/abilities/1"
 						},
 						{
 							"text": "The symbiote gains power and has 3 health.",
+							"enabled": false,
 							"id": "starforged/assets/companion/symbiote/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/symbiote",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7306,6 +7853,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/utility_bot/condition_meter/controls/out_of_action"
 							}
 						},
@@ -7345,12 +7894,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Aided by the bot"
+												"text": "Aided by the bot",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/utility_bot/abilities/1"
 						},
 						{
@@ -7375,9 +7926,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/utility_bot/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/utility_bot",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7416,6 +7970,8 @@
 								"label": "Out of action",
 								"field_type": "checkbox",
 								"disables_asset": true,
+								"value": false,
+								"is_impact": false,
 								"id": "starforged/assets/companion/voidglider/condition_meter/controls/out_of_action"
 							}
 						},
@@ -7434,7 +7990,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On a spaceborne journey as your voidglider helps guide the way"
+												"text": "On a spaceborne journey as your voidglider helps guide the way",
+												"method": "any"
 											}
 										]
 									}
@@ -7463,6 +8020,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/voidglider/abilities/1"
 						},
 						{
@@ -7486,9 +8044,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/companion/voidglider/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/companion/voidglider",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7545,7 +8106,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "At your bond-mate's home"
+												"text": "At your bond-mate's home",
+												"method": "any"
 											}
 										]
 									}
@@ -7556,7 +8118,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your bond-mate's presence"
+												"text": "In your bond-mate's presence",
+												"method": "any"
 											}
 										]
 									}
@@ -7570,7 +8133,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "With your bond-mate"
+												"text": "With your bond-mate",
+												"method": "any"
 											}
 										]
 									}
@@ -7587,12 +8151,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Back to your bond-mate's location"
+												"text": "Back to your bond-mate's location",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/bonded/abilities/1"
 						},
 						{
@@ -7602,9 +8168,12 @@
 									"roll_type": "action_roll"
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/bonded/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/bonded",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7641,7 +8210,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In service to your home (formidable or greater)"
+												"text": "In service to your home (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -7652,7 +8222,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In service to your home (formidable or greater)"
+												"text": "In service to your home (formidable or greater)",
+												"method": "any"
 											}
 										]
 									}
@@ -7669,7 +8240,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your home (and you don't linger)"
+												"text": "In your home (and you don't linger)",
+												"method": "any"
 											}
 										]
 									}
@@ -7687,6 +8259,7 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/homesteader/abilities/1"
 						},
 						{
@@ -7698,15 +8271,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "For home"
+												"text": "For home",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/homesteader/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/homesteader",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7746,7 +8323,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Among those who would know your reputation"
+												"text": "Among those who would know your reputation",
+												"method": "any"
 											}
 										]
 									}
@@ -7771,6 +8349,7 @@
 									"id": "starforged/assets/deed/marked/abilities/1/controls/clock"
 								}
 							},
+							"enabled": false,
 							"id": "starforged/assets/deed/marked/abilities/1"
 						},
 						{
@@ -7782,15 +8361,19 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Through intimidation or command (once per fight)"
+												"text": "Through intimidation or command (once per fight)",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/marked/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/marked",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7821,7 +8404,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "To redeem yourself (extreme or greater, one time only)"
+												"text": "To redeem yourself (extreme or greater, one time only)",
+												"method": "any"
 											}
 										]
 									}
@@ -7846,12 +8430,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By reaffirming your commitment to your marked vow"
+												"text": "By reaffirming your commitment to your marked vow",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/oathbreaker/abilities/1"
 						},
 						{
@@ -7863,15 +8449,18 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "On your marked quest"
+												"text": "On your marked quest",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/oathbreaker/abilities/2"
 						}
 					],
+					"shared": false,
 					"id": "starforged/assets/deed/oathbreaker",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7904,7 +8493,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are at 0 health"
+												"text": "When you are at 0 health",
+												"method": "any"
 											}
 										]
 									}
@@ -7921,12 +8511,14 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "By bringing death to a foe"
+												"text": "By bringing death to a foe",
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/revenant/abilities/1"
 						},
 						{
@@ -7941,7 +8533,8 @@
 												"text": "By studying a place where death left its mark",
 												"roll_options": [
 													{
-														"stat": "heart"
+														"stat": "heart",
+														"using": "stat"
 													}
 												],
 												"method": "any"
@@ -7950,9 +8543,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/revenant/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/revenant",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -7982,7 +8578,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "When you are haunted by past experiences"
+												"text": "When you are haunted by past experiences",
+												"method": "any"
 											}
 										]
 									}
@@ -7992,13 +8589,17 @@
 						},
 						{
 							"text": "When you make a move where a lasting effect (traumatized or permanently harmed) has a narrative impact on the scene or your approach, and burn momentum to improve your result, you may envision what sustains or motivates you in this moment. If you do, mark 1 tick on your quests or bonds legacy track. On a strong hit with a match, mark 2 ticks.",
+							"enabled": false,
 							"id": "starforged/assets/deed/survivor/abilities/1"
 						},
 						{
 							"text": "You are learning to live with this impact. The lasting effect (traumatized or permanently harmed, but not both) remains marked, but no longer reduces your max momentum or reset.",
+							"enabled": false,
 							"id": "starforged/assets/deed/survivor/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/survivor",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -8077,14 +8678,17 @@
 											{
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
-												]
+												],
+												"method": "any"
 											}
 										]
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/vanguard/abilities/1"
 						},
 						{
@@ -8099,7 +8703,8 @@
 												"method": "any",
 												"roll_options": [
 													{
-														"stat": "wits"
+														"stat": "wits",
+														"using": "stat"
 													}
 												]
 											}
@@ -8107,9 +8712,12 @@
 									}
 								}
 							],
+							"enabled": false,
 							"id": "starforged/assets/deed/vanguard/abilities/2"
 						}
 					],
+					"count_as_impact": false,
+					"shared": false,
 					"id": "starforged/assets/deed/vanguard",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",

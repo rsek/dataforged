@@ -1,11 +1,13 @@
-import * as DataswornInput from '../data-in/datasworn-input.schema.json'
-import * as Datasworn from '../data-out/datasworn.schema.json'
 import * as pkgs from './pkgConfig.js'
-
+import fs from 'fs-extra'
 import { forEach } from 'lodash-es'
 import { log } from './logger.js'
 import ajv from './ajv.js'
-import { buildSourcebook } from './buildJson.js'
+import { buildSourcebook } from './buildDatasworn.js'
+import { SCHEMA_IN, SCHEMA_OUT } from './const.js'
+
+const Datasworn = await fs.readJSON(SCHEMA_OUT)
+const DataswornInput = await fs.readJSON(SCHEMA_IN)
 
 // empty schema cache and load them from files
 ajv.removeSchema()

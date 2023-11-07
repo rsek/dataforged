@@ -1,19 +1,16 @@
 import fs from 'fs-extra'
-import { type JSONSchema7 } from 'json-schema'
+import { type JSONSchema4, type JSONSchema7 } from 'json-schema'
 import { compile } from 'json-schema-to-typescript'
 import { startCase } from 'lodash-es'
 import path from 'path'
+import { ROOT_TYPES_OUT, SCHEMA_IN, SCHEMA_OUT } from '../scripts/const.js'
 
-const filePaths = [
-	'src/data-out/datasworn.schema.json',
-	'src/data-in/datasworn-input.schema.json'
-]
-
-filePaths.forEach((filePath) => {
+for await (const filePath of [SCHEMA_OUT, SCHEMA_IN]) {
 	// load json to apply some data transforms
-	const schema = JSON.parse(
-		fs.readFileSync(filePath, { encoding: 'utf-8' })
-	) as JSONSchema7
+	const schema = (await fs.readJSON(filePath, {
+		encoding: 'utf-8'
+	})) as JSONSchema7
+
 	if (schema.$defs == null) throw new Error("JSON file doesn't have $defs")
 
 	const [basename] = path.basename(filePath).split('.')
@@ -25,14 +22,14 @@ filePaths.forEach((filePath) => {
 		delete def.$id
 		if (def.title == null) def.title = startCase(key)
 	}
-
+	// override the name so that it has nicer type names
 	schema.title = 'Datasworn'
 
-	const typeDeclarationPath = `src/types/io/${basename}.d.ts`
+	const typeDeclarationPath = path.join(ROOT_TYPES_OUT, `${basename}.d.ts`)
 
-	void compile(schema as any, startCase(basename), {
+	const ts = await compile(schema as JSONSchema4, startCase(basename), {
 		additionalProperties: false
-	}).then((ts) => {
-		fs.writeFileSync(typeDeclarationPath, ts)
 	})
-})
+
+	await fs.writeFile(typeDeclarationPath, ts)
+}

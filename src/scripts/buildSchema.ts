@@ -42,28 +42,28 @@ const schemaOptions: SchemaOptions[] = [
 	}
 ]
 
-for (const options of schemaOptions) {
+for await (const options of schemaOptions) {
 	ajv.addSchema(options.schema, options.name)
+
+	log.info(options.messages.writeStart)
+
 	// FIXME this could probably stand to be more precise
-	getPrettierOptions(options.paths[0])
-		.then(async (prettierOptions) => {
-			log.info(options.messages.writeStart)
-			for (const path of options.paths)
-				await fs.writeFile(
+	const prettierOptions = await getPrettierOptions(options.paths[0])
+
+	try {
+		for await (const path of options.paths)
+			await fs
+				.writeFile(
 					path,
 					prettier.format(
 						JSON.stringify(ajv.getSchema(options.name)?.schema),
 						prettierOptions
 					)
 				)
-		})
-		.then(() => log.info(options.messages.writeFinish))
-		.catch(async (e) => {
-			log.error(e)
-			for (const path of options.paths)
-				await fs.writeFile(
-					path,
-					JSON.stringify(options.schema, undefined, '\t')
-				)
-		})
+				.then(() => log.info(options.messages.writeFinish))
+	} catch (error) {
+		log.error(error)
+		for await (const path of options.paths)
+			await fs.writeFile(path, JSON.stringify(options.schema, undefined, '\t'))
+	}
 }

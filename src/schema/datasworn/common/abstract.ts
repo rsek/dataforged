@@ -191,32 +191,30 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
 /**
  * Augments a single rules element
  */
-export function AugmentOne<T extends TObject<{ id: TString | TRef<TString> }>>(
-	t: T
-) {
+export function AugmentOne<T extends TObject>(t: T) {
 	return Type.Composite([
 		OmitMeta(t),
 		Type.Object({ augments: Type.Optional(t.properties.id) })
 	])
 }
-export type AugmentOne<T extends TObject<{ id: TString | TRef<TString> }>> =
-	Static<ReturnType<typeof AugmentOne<T>>>
+export type AugmentOne<T extends TObject> = Static<
+	ReturnType<typeof AugmentOne<T>>
+>
 
-export function AugmentMany<T extends TObject<{ id: TString | TRef<TString> }>>(
-	t: T,
+export function AugmentMany<T extends TObject>(
+	augmentSchema: T,
 	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
 ) {
+	const noMeta = Utils.DeepPartial(OmitMeta(augmentSchema))
 	return Type.Composite(
-		[
-			Utils.DeepPartial(OmitMeta(t)) as any,
-			Type.Object({ augments: Type.Optional(Type.Array(extendIds)) })
-		],
+		[noMeta, Type.Object({ augments: Type.Optional(Type.Array(extendIds)) })],
 		options
 	)
 }
-export type AugmentMany<T extends TObject<{ id: TString | TRef<TString> }>> =
-	Static<ReturnType<typeof AugmentMany<T>>>
+export type AugmentMany<T extends TObject> = Static<
+	ReturnType<typeof AugmentMany<T>>
+>
 
 const CollectionBase = Type.Object({
 	color: Type.Optional(Type.Ref(Metadata.CSSColor)),

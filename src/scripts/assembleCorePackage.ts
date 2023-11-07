@@ -2,8 +2,8 @@ import fs from 'fs-extra'
 import path from 'path'
 import {
 	CORE_PKG_DIR,
-	CORE_PKG_ID,
 	LEGACY_ID_PATH,
+	PKG_SCOPE_OFFICIAL,
 	SCHEMA_OUT,
 	TYPES_OUT
 } from './const.js'
@@ -11,7 +11,9 @@ import { log } from './logger.js'
 
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
 export async function assembleCorePackage() {
-	log.info(`Assembling ${CORE_PKG_ID}...`)
+	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
+
+	log.info(`Assembling ${corePkgId}...`)
 	const jsonDir = path.join(CORE_PKG_DIR, 'json')
 	const typesDest = path.join(CORE_PKG_DIR, 'index.d.ts')
 
@@ -34,5 +36,5 @@ export async function assembleCorePackage() {
 		)
 	])
 
-	return log.info(`Finished rebuilding ${CORE_PKG_ID}`)
+	return log.info(`Finished rebuilding ${corePkgId}`)
 }

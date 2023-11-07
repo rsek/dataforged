@@ -12,13 +12,16 @@ import ajv from './ajv.js'
 import { log } from './logger.js'
 import { getPrettierOptions } from './prettier.js'
 import { type DataPackageConfig } from '../schema/tools/build/index.js'
+import { TEMP } from './const.js'
 
 /** Builds all YAML files for a given package in {@link ROOT_DATA_IN}, and writes them to a directory in {@link ROOT_DATA_OUT} */
-export async function buildSourcebook({ paths }: DataPackageConfig) {
+export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
+	const tempDir = path.join(TEMP, id)
+
 	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
-	const oldJsonFiles = await fastGlob(`${paths.temp}/**/*.json`)
+	const oldJsonFiles = await fastGlob(`${tempDir}/**/*.json`)
 	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
 
 	if (yamlFilesIn?.length === 0)
@@ -41,7 +44,7 @@ export async function buildSourcebook({ paths }: DataPackageConfig) {
 	const sourcebookMetadata = omit(pick(sourcebook, metadataKeys), 'source.page')
 
 	const prettierOptions = await getPrettierOptions(
-		path.join(paths.temp, 'any.json')
+		path.join(tempDir, 'any.json')
 	)
 
 	// exclude certain keys which are still in development
@@ -62,7 +65,7 @@ export async function buildSourcebook({ paths }: DataPackageConfig) {
 			prettierOptions
 		)
 
-		const outPath = path.join(paths.temp, `${k}.json`)
+		const outPath = path.join(tempDir, `${k}.json`)
 
 		log.info(`Writing to ${outPath}`)
 

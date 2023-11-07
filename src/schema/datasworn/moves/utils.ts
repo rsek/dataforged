@@ -5,7 +5,8 @@ import {
 	type TAnySchema,
 	type TBigInt,
 	type TObject,
-	type TSchema
+	type TSchema,
+	type Static
 } from '@sinclair/typebox'
 import { Localize, Abstract } from '../common/index.js'
 import { PartialExcept, Squash } from '../common/utils.js'
@@ -89,31 +90,17 @@ export function toMoveAugment<
 	triggerAugmentSchema: TAugment,
 	options: ObjectOptions = {}
 ) {
-	const combined = Squash([
-		Type.Pick(moveSchema, ['roll_type', 'id']),
-		Type.Object({
-			trigger: Type.Optional(triggerAugmentSchema)
-		})
-	])
+	const { roll_type } = moveSchema.properties
+	const base = Type.Object({
+		roll_type,
+		trigger: Type.Optional(triggerAugmentSchema)
+	})
 
 	const augmentMany = Abstract.AugmentMany(
-		combined,
+		base,
 		Type.Ref(MoveIDWildcard),
 		options
 	)
 
-	augmentMany.required = [...(augmentMany.required ?? []), 'roll_type']
-
-	// FIXME: revisit whether augments should include outcome-specific stuff
-	// if ('outcomes' in moveSchema.properties)
-	// 	return Squash(
-	// 		[
-	// 			augmentMany,
-	// 			Type.Object({
-	// 				outcomes: Type.Optional(Type.Ref(MoveOutcomesAugment))
-	// 			})
-	// 		],
-	// 		options
-	// 	)
 	return augmentMany
 }

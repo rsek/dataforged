@@ -9,7 +9,7 @@
 		"build:tools": "tsc --project tsconfig.json ; tsc-alias -p tsconfig.json ./dist",
 		"build:schema": "ts-node ./src/scripts/buildSchema.ts",
 		"build:io-types": "ts-node ./src/types/write-io-types.ts",
-		"build:json": "ts-node ./src/scripts/writeJson.ts",
+		"build:json": "ts-node ./src/scripts/writeDatasworn.ts",
 		"build:pkg": "ts-node ./src/scripts/assemblePackages.ts",
 		"update": "npm run build:schema && npm run build:io-types && npm run build:json && npm run build:pkg",
 		"build:dts": "ts-node ./src/type-gen/json-schema-to-typescript.ts",

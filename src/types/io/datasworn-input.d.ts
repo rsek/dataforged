@@ -940,7 +940,7 @@ export interface Asset {
   suggestions?: Suggestions;
   requirement?: MarkdownString;
   /**
-   * Abilities provided by this asset. There's almost always 3 of these.
+   * Abilities provided by this asset. Most assets have 3.
    */
   abilities: AssetAbility[];
   condition_meter?: AssetConditionMeter1;
@@ -1150,7 +1150,7 @@ export interface AssetCheckboxField {
   disables_asset?: boolean;
 }
 export interface MoveActionRollAugment {
-  roll_type: "action_roll";
+  roll_type?: "action_roll";
   trigger?: {
     conditions?: TriggerActionRollConditionAugment[];
   };
@@ -1169,7 +1169,7 @@ export interface TriggerActionRollConditionAugment {
   roll_options?: ActionRollOption[];
 }
 export interface MoveNoRollAugment {
-  roll_type: "no_roll";
+  roll_type?: "no_roll";
   trigger?: {
     conditions?: TriggerNoRollConditionAugment[];
   };
@@ -1180,7 +1180,7 @@ export interface TriggerNoRollConditionAugment {
   by?: TriggerBy;
 }
 export interface MoveProgressRollAugment {
-  roll_type: "progress_roll";
+  roll_type?: "progress_roll";
   trigger?: {
     conditions?: TriggerProgressRollConditionAugment[];
   };
@@ -1199,7 +1199,7 @@ export interface TriggerProgressRollConditionAugment {
   roll_options?: ProgressRollOption[];
 }
 export interface MoveSpecialTrackAugment {
-  roll_type: "special_track";
+  roll_type?: "special_track";
   trigger?: {
     conditions?: TriggerSpecialTrackConditionAugment[];
   };

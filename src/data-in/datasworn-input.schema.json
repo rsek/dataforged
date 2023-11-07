@@ -1072,7 +1072,6 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				}
 			},
-			"required": ["roll_type"],
 			"title": "MoveActionRollAugment"
 		},
 		"MoveAugment": {
@@ -1225,7 +1224,6 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				}
 			},
-			"required": ["roll_type"],
 			"title": "MoveNoRollAugment"
 		},
 		"MoveOutcome": {
@@ -1355,7 +1353,6 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				}
 			},
-			"required": ["roll_type"],
 			"title": "MoveProgressRollAugment"
 		},
 		"MoveRollType": {
@@ -1432,7 +1429,6 @@
 					"items": { "$ref": "#/$defs/MoveIDWildcard" }
 				}
 			},
-			"required": ["roll_type"],
 			"title": "MoveSpecialTrackAugment"
 		},
 		"ProgressRollMethod": {
@@ -1887,7 +1883,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"requirement": { "$ref": "#/$defs/MarkdownString" },
 				"abilities": {
-					"description": "Abilities provided by this asset. There's almost always 3 of these.",
+					"description": "Abilities provided by this asset. Most assets have 3.",
 					"type": "array",
 					"items": { "$ref": "#/$defs/AssetAbility" }
 				},
