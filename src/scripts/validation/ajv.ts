@@ -1,8 +1,6 @@
 import addFormats from 'ajv-formats'
 import { log } from '../utils/logger.js'
 import Ajv from 'ajv'
-import { Type } from '@sinclair/typebox'
-import { JsonEnum } from '../../typebox/enum.js'
 import { KEYWORDS } from './keywords.js'
 import { FORMATS } from './formats.js'
 

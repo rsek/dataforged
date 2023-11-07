@@ -159,7 +159,7 @@ function addSourceCascade(schema: JSONSchema7) {
 	schema = set(
 		schema,
 		`properties.${SOURCE_STUB_KEY}`,
-		Type.Optional(Type.Ref(SourceStub))
+		Type.Optional(Type.Ref(SourceStub, { macro: true }))
 	)
 	// console.log('SOURCE CASCADE', schema)
 

@@ -21,6 +21,7 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	const tempDir = path.join(ROOT_OUTPUT, id)
 
 	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
+
 	const oldJsonFiles = await fastGlob(`${tempDir}/*.json`)
 	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
 
@@ -56,10 +57,22 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 		if (metadataKeys.includes(k)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue
 
+		const jsonOut = { ...sourcebookMetadata, [k]: v }
+
+		// TODO: rewrite this using keywords and Draft.each() from json-schema-library
+
+		ajv.validate('Datasworn', jsonOut)
+
 		const dataOut = Prettier.format(
 			JSON.stringify(
-				{ ...sourcebookMetadata, [k]: v },
-				(key, value) => (experimentalKeys.includes(key) ? undefined : value),
+				jsonOut,
+				(key, value) => {
+					if (key.startsWith('_')) return undefined
+
+					if (experimentalKeys.includes(key)) return undefined
+
+					return value
+				},
 				'\t'
 			),
 			prettierOptions
@@ -77,40 +90,49 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 /** Builds from the contents of a single YAML file */
 async function buildFile(filePath: string) {
 	log.info(`Building from ${filePath}`)
-	const data = YAML.load(await fs.readFile(filePath, { encoding: 'utf8' }), {
-		// ensures that dates are serialized as strings rather than Date objects (which prevents AJV from validating them)
-		schema: YAML.JSON_SCHEMA,
-		filename: filePath
-	}) as In.Datasworn
+	const yamlData = YAML.load(
+		await fs.readFile(filePath, { encoding: 'utf8' }),
+		{
+			// ensures that dates are serialized as strings rather than Date objects (which prevents AJV from validating them)
+			schema: YAML.JSON_SCHEMA,
+			filename: filePath
+		}
+	)
 
-	const basename = 'Datasworn'
+	const baseSchemaName = 'Datasworn'
 
 	const transformer = DataswornBuilder
 
-	const schemaIn = `${pascalCase(basename)}Input`
+	const schemaIdIn = `${pascalCase(baseSchemaName)}Input`
+	const schemaIdOut = pascalCase(baseSchemaName)
 
-	if (!ajv.validate(schemaIn, data)) {
+	if (!ajv.validate<In.Datasworn>(schemaIdIn, yamlData)) {
 		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
 		throw new Error(
-			`YAML data in ${filePath} doesn't match the ${schemaIn} schema`
+			`YAML data in ${filePath} doesn't match the ${schemaIdIn} schema`
 		)
 	}
 
-	const out = transform<In.Datasworn, Out.Datasworn>(
-		data,
-		data.id as string,
-		data as In.Datasworn & SourceHaver,
+	const builtData = transform<In.Datasworn, Out.Datasworn>(
+		yamlData,
+		yamlData.id as string,
+		yamlData as In.Datasworn & SourceHaver,
 		transformer as any
 	)
 
-	const schemaOut = pascalCase(basename)
-	if (!ajv.validate(schemaOut, out)) {
+	if (!ajv.validate<Out.Datasworn>(schemaIdOut, builtData)) {
 		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
-		const errorPath = path.join(ROOT_OUTPUT, basename, `error-out.json`)
-		await fs.writeJSON(errorPath, out)
+
+		const errorPath = path.join(
+			ROOT_OUTPUT,
+			path.dirname(filePath),
+			path.basename(filePath, '.yaml') + `.error.json`
+		)
+
+		await fs.writeJSON(errorPath, builtData, { spaces: '\t' })
 		throw new Error(
-			`Transformed data doesn't match the ${schemaOut} schema. Dumping invalid JSON to: ${errorPath}`
+			`Transformed data doesn't match the ${schemaIdOut} schema. Dumping invalid JSON to: ${errorPath}`
 		)
 	}
-	return out
+	return builtData
 }

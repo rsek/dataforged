@@ -653,7 +653,7 @@
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/NpcVariant" }
 					}
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
 				"name",
@@ -689,7 +689,7 @@
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Npc" } }
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
 			"title": "NpcCollection"
@@ -777,7 +777,7 @@
 						"^[a-z][a-z_]*$": { "$ref": "#/$defs/OracleCollection" }
 					}
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
 			"title": "OracleCollection"
@@ -888,7 +888,7 @@
 					"items": { "$ref": "#/$defs/OracleTableRow" }
 				},
 				"rendering": { "$ref": "#/$defs/OracleTableRendering" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "table"]
 		},
@@ -1079,7 +1079,7 @@
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
 				"roll_type": { "const": "action_roll", "type": "string" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
 		},
@@ -1161,7 +1161,7 @@
 				},
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"source": { "$ref": "#/$defs/Source" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "trigger", "text"]
 		},
@@ -1187,7 +1187,7 @@
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Move" } }
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
 			"title": "MoveCategory"
@@ -1231,7 +1231,7 @@
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
 				"roll_type": { "const": "no_roll", "type": "string" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "trigger", "text", "roll_type"]
 		},
@@ -1353,7 +1353,7 @@
 					],
 					"$ref": "#/$defs/Label"
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
 				"name",
@@ -1436,7 +1436,7 @@
 					"items": { "$ref": "#/$defs/OracleTableID" }
 				},
 				"roll_type": { "const": "special_track", "type": "string" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
 		},
@@ -1929,7 +1929,7 @@
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 					"type": "boolean"
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "asset_type", "abilities"]
 		},
@@ -2209,7 +2209,7 @@
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Asset" } }
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
 			"title": "AssetType"
@@ -2373,7 +2373,7 @@
 					"type": "array",
 					"items": { "$ref": "#/$defs/TruthOption" }
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "options"],
 			"title": "Truth"
@@ -2418,7 +2418,7 @@
 					"type": "object",
 					"patternProperties": { "^[a-z][a-z_]*$": { "$ref": "#/$defs/Atlas" } }
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name"],
 			"title": "Atlas"
@@ -2444,7 +2444,7 @@
 				"quest_starter": { "$ref": "#/$defs/MarkdownString" },
 				"your_truths": { "$ref": "#/$defs/MarkdownString" },
 				"id": { "$ref": "#/$defs/AtlasEntryID" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "features", "description", "quest_starter"]
 		},
@@ -2488,7 +2488,7 @@
 					"type": "integer"
 				},
 				"description": { "$ref": "#/$defs/MarkdownString" },
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "asset", "description"],
 			"title": "Rarity"
@@ -2644,7 +2644,7 @@
 						}
 					]
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": [
 				"name",
@@ -2886,7 +2886,7 @@
 						}
 					]
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "summary", "card_type", "features", "dangers"]
 		},
@@ -3119,7 +3119,7 @@
 						}
 					]
 				},
-				"_source": { "$ref": "#/$defs/SourceStub" }
+				"_source": { "macro": true, "$ref": "#/$defs/SourceStub" }
 			},
 			"required": ["name", "summary", "card_type", "features", "dangers"]
 		},
