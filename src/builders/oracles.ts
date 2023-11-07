@@ -8,6 +8,7 @@ import {
 } from './transformer.js'
 import type * as SchemaIn from '../types/io/datasworn-input.js'
 import type * as SchemaOut from '../types/io/datasworn.js'
+import { cloneDeep, merge } from 'lodash-es'
 
 export const OracleTableRow: Transformer<
 	SchemaIn.OracleTableRow,
@@ -35,7 +36,12 @@ export const OracleTable = sourcedTransformer<
 		key: string | number,
 		parent: SourceHaver
 	): SchemaOut.OracleTableRow[] {
-		return data.table.map((row, i) => transform(row, i, this, OracleTableRow))
+		return data.table.map((row, i) => {
+			const rowData =
+				data._i18n == null ? row : merge({ i18n: cloneDeep(data._i18n) }, row)
+
+			return transform(rowData, i, this, OracleTableRow)
+		})
 	}
 })
 

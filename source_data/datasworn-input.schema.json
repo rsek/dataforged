@@ -534,17 +534,36 @@
 			"type": "string",
 			"title": "WEBPImageURL"
 		},
+		"I18nHint": {
+			"$id": "#/$defs/I18nHint",
+			"type": "object",
+			"properties": { "part_of_speech": { "$ref": "#/$defs/PartOfSpeech" } },
+			"title": "I18nHint"
+		},
+		"I18nHints": {
+			"$id": "#/$defs/I18nHints",
+			"type": "object",
+			"properties": {
+				"result": { "$ref": "#/$defs/I18nHint" },
+				"summary": { "$ref": "#/$defs/I18nHint" },
+				"description": { "$ref": "#/$defs/I18nHint" },
+				"template": {
+					"type": "object",
+					"properties": {
+						"result": { "$ref": "#/$defs/I18nHint" },
+						"summary": { "$ref": "#/$defs/I18nHint" },
+						"description": { "$ref": "#/$defs/I18nHint" }
+					}
+				}
+			},
+			"title": "I18nHints"
+		},
 		"Label": {
 			"$id": "#/$defs/Label",
 			"description": "A localized plain text name or label.",
 			"i18n": true,
 			"type": "string",
 			"title": "Label"
-		},
-		"Lexical": {
-			"type": "object",
-			"properties": { "part_of_speech": { "$ref": "#/$defs/PartOfSpeech" } },
-			"required": ["part_of_speech"]
 		},
 		"MarkdownString": {
 			"$id": "#/$defs/MarkdownString",
@@ -555,9 +574,18 @@
 			"title": "MarkdownString"
 		},
 		"PartOfSpeech": {
-			"enum": ["common_noun", "proper_noun", "verb", "gerund", "adjective"],
+			"enum": [
+				"common_noun",
+				"proper_noun",
+				"adjunct_common_noun",
+				"adjunct_proper_noun",
+				"verb",
+				"gerund",
+				"adjective",
+				"attributive_verb"
+			],
 			"$id": "#/$defs/PartOfSpeech",
-			"description": "  * `common_noun`: A common noun.\n  * `proper_noun`: A proper noun.\n  * `verb`: A verb in present tense\n  * `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * `adjective`: An adjective.",
+			"description": "  * `common_noun`: A common noun.\n  * `proper_noun`: A proper noun.\n  * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.\n  * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.\n  * `verb`: A verb in present tense\n  * `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * `adjective`: An adjective.\n  * `attributive_verb`: A verb used as an adjective, to modify a noun.",
 			"title": "PartOfSpeech"
 		},
 		"TemplateString": {
@@ -841,6 +869,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"id": { "$ref": "#/$defs/OracleTableID" },
 				"dice": { "default": "1d100", "$ref": "#/$defs/DiceNotation" },
+				"_i18n": { "macro": true, "$ref": "#/$defs/I18nHints" },
 				"summary": {
 					"description": "A brief summary of the oracle table's intended usage, no more than a few sentences in length. This is intended for use in application tooltips and similar sorts of hints. Longer text should use the \"description\" key instead.",
 					"$ref": "#/$defs/MarkdownString"
@@ -941,7 +970,8 @@
 				},
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
-				"template": { "$ref": "#/$defs/OracleRollTemplate" }
+				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"i18n": { "$ref": "#/$defs/I18nHints" }
 			},
 			"required": ["low", "high", "result"],
 			"title": "OracleTableRow"
@@ -2875,6 +2905,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/DomainDangerRowID" },
 				"low": { "type": "integer" },
 				"high": { "type": "integer" }
@@ -2897,6 +2928,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/DomainFeatureRowID" },
 				"low": { "type": "integer" },
 				"high": { "type": "integer" }
@@ -3106,6 +3138,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/ThemeDangerRowID" },
 				"low": { "type": "integer" },
 				"high": { "type": "integer" }
@@ -3128,6 +3161,7 @@
 				"suggestions": { "$ref": "#/$defs/Suggestions" },
 				"embed_table": { "$ref": "#/$defs/OracleTableID" },
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
+				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/ThemeFeatureRowID" },
 				"low": { "type": "integer" },
 				"high": { "type": "integer" }

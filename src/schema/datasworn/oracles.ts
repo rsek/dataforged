@@ -109,7 +109,8 @@ export const OracleTableRow = Type.Object(
 		rolls: Type.Optional(Type.Array(Type.Ref(OracleTableRoll))),
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
 		embed_table: Type.Optional(Type.Ref(ID.OracleTableID)),
-		template: Type.Optional(Type.Ref(OracleRollTemplate))
+		template: Type.Optional(Type.Ref(OracleRollTemplate)),
+		i18n: Type.Optional(Type.Ref(Localize.I18nHints))
 	},
 	{ $id: '#/$defs/OracleTableRow' }
 )
@@ -187,6 +188,7 @@ export const OracleTable = Abstract.SourcedNode(
 	Type.Object({
 		id: Type.Ref(ID.OracleTableID),
 		dice: Type.Ref(DiceNotation, { default: '1d100' }),
+		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
 		summary: Type.Optional(
 			Type.Ref(Localize.MarkdownString, {
 				description:

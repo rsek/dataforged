@@ -30,6 +30,10 @@ oracles:
       format:
         name: Format
         canonical_name: 'Site Name: Format'
+        i18n:
+          part_of_speech:
+            template:
+              result: proper_noun
         table:
           - low: 1
             high: 25
@@ -93,6 +97,9 @@ oracles:
       description:
         canonical_name: 'Site Name: Description'
         name: Description
+        _i18n:
+          result:
+            part_of_speech: adjective
         _source:
           page: 207
         table:
@@ -132,6 +139,9 @@ oracles:
           - low: 23
             high: 24
             result: Nightmare
+            i18n:
+              result:
+                part_of_speech: adjunct_common_noun
           - low: 25
             high: 26
             result: Infernal
@@ -180,6 +190,9 @@ oracles:
           - low: 55
             high: 56
             result: Iron
+            i18n:
+              result:
+                part_of_speech: adjunct_common_noun
           - low: 57
             high: 58
             result: Frozen
@@ -249,6 +262,9 @@ oracles:
       detail:
         canonical_name: 'Site Name: Detail'
         name: Detail
+        _i18n:
+          result:
+            part_of_speech: common_noun
         _source:
           page: 208
         table:
@@ -407,6 +423,9 @@ oracles:
         name: Namesake
         summary: |-
           You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
+        _i18n:
+          result:
+            part_of_speech: proper_noun
         _source:
           page: 209
         table:
@@ -658,6 +677,9 @@ oracles:
           page: 210
         contents:
           barrow:
+            _i18n: &CommonNoun
+              result:
+                part_of_speech: common_noun
             name: Barrow
             rendering:
               style: embed_in_row
@@ -684,6 +706,7 @@ oracles:
                 high: 100
                 result: Barrow
           cavern:
+            _i18n: *CommonNoun
             name: Cavern
             rendering:
               style: embed_in_row
@@ -722,6 +745,7 @@ oracles:
                 high: 100
                 result: Warren
           frozen_cavern:
+            _i18n: *CommonNoun
             name: Frozen Cavern
             rendering:
               style: embed_in_row
@@ -760,6 +784,7 @@ oracles:
                 high: 100
                 result: Warren
           icereach:
+            _i18n: *CommonNoun
             name: Icereach
             rendering:
               style: embed_in_row
@@ -786,6 +811,7 @@ oracles:
                 high: 100
                 result: Barrens
           mine:
+            _i18n: *CommonNoun
             name: Mine
             rendering:
               style: embed_in_row
@@ -812,6 +838,7 @@ oracles:
                 high: 100
                 result: Cut
           pass:
+            _i18n: *CommonNoun
             name: Pass
             rendering:
               style: embed_in_row
@@ -850,6 +877,7 @@ oracles:
                 high: 100
                 result: Ridge
           ruin:
+            _i18n: *CommonNoun
             name: Ruin
             rendering:
               style: embed_in_row
@@ -888,6 +916,7 @@ oracles:
                 high: 100
                 result: Tower
           sea_cave:
+            _i18n: *CommonNoun
             name: Sea Cave
             rendering:
               style: embed_in_row
@@ -914,6 +943,7 @@ oracles:
                 high: 100
                 result: Gouge
           shadowfen:
+            _i18n: *CommonNoun
             name: Shadowfen
             rendering:
               style: embed_in_row
@@ -952,6 +982,7 @@ oracles:
                 high: 100
                 result: Wetlands
           stronghold:
+            _i18n: *CommonNoun
             name: Stronghold
             rendering:
               style: embed_in_row
@@ -990,6 +1021,7 @@ oracles:
                 high: 100
                 result: Watch
           tanglewood:
+            _i18n: *CommonNoun
             name: Tanglewood
             rendering:
               style: embed_in_row
@@ -1022,6 +1054,7 @@ oracles:
                 high: 100
                 result: Wood
           underkeep:
+            _i18n: *CommonNoun
             name: Underkeep
             rendering:
               style: embed_in_row

@@ -13,12 +13,18 @@
 			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/assets/${2}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
 		]
 	},
-
   "Format Move link": {
 		"scope": ["yaml", "markdown"],
 		"prefix": "lnm",
 		"body": [
 			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/moves/${2|adventure,suffer,quest,session,connection,exploration,combat,recover,threshold,legacy,fate,scene_challenge|}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
+		]
+	},
+  "Format Oracle link": {
+		"scope": ["yaml", "markdown"],
+		"prefix": "lno",
+		"body": [
+			"[${TM_SELECTED_TEXT}](id:${1|sundered_isles,starforged,classic,delve|}/oracles/${2}/${TM_SELECTED_TEXT/(\\w+)(\\s)?/${1:/downcase}${2:+_}/g})"
 		]
 	},
 	"Format asset": {

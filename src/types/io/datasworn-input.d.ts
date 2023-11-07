@@ -38,6 +38,25 @@ export type OracleCollectionID = string;
 export type OracleCollectionID1 = string;
 export type DiceNotation = string;
 /**
+ *   * `common_noun`: A common noun.
+ *   * `proper_noun`: A proper noun.
+ *   * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.
+ *   * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.
+ *   * `verb`: A verb in present tense
+ *   * `gerund`: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
+ *   * `adjective`: An adjective.
+ *   * `attributive_verb`: A verb used as an adjective, to modify a noun.
+ */
+export type PartOfSpeech =
+  | "common_noun"
+  | "proper_noun"
+  | "adjunct_common_noun"
+  | "adjunct_proper_noun"
+  | "verb"
+  | "gerund"
+  | "adjective"
+  | "attributive_verb";
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
@@ -566,6 +585,7 @@ export interface OracleTable {
   suggestions?: Suggestions;
   id?: OracleTableID;
   dice?: DiceNotation;
+  _i18n?: I18NHints;
   summary?: MarkdownString1;
   replaces?: OracleTableID1;
   description?: MarkdownString2;
@@ -573,6 +593,19 @@ export interface OracleTable {
   table: OracleTableRow[];
   rendering?: OracleTableRendering;
   _source?: SourceStub;
+}
+export interface I18NHints {
+  result?: I18NHint;
+  summary?: I18NHint;
+  description?: I18NHint;
+  template?: {
+    result?: I18NHint;
+    summary?: I18NHint;
+    description?: I18NHint;
+  };
+}
+export interface I18NHint {
+  part_of_speech?: PartOfSpeech;
 }
 export interface MatchBehavior {
   text: MarkdownString;
@@ -595,6 +628,7 @@ export interface OracleTableRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
+  i18n?: I18NHints1;
 }
 export interface OracleTableRoll {
   oracle?: OracleTableID2;
@@ -614,6 +648,16 @@ export interface OracleRollTemplate {
   result?: TemplateString;
   summary?: TemplateString1;
   description?: TemplateString2;
+}
+export interface I18NHints1 {
+  result?: I18NHint;
+  summary?: I18NHint;
+  description?: I18NHint;
+  template?: {
+    result?: I18NHint;
+    summary?: I18NHint;
+    description?: I18NHint;
+  };
 }
 export interface OracleTableRendering {
   icon?: SVGImageURL;
@@ -1584,6 +1628,7 @@ export interface DelveSiteThemeFeatureRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
+  i18n?: I18NHints1;
   id?: ThemeFeatureRowID;
   low: number;
   high: number;
@@ -1597,6 +1642,7 @@ export interface DelveSiteThemeDangerRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
+  i18n?: I18NHints1;
   id?: ThemeDangerRowID;
   low: number;
   high: number;
@@ -1713,6 +1759,7 @@ export interface DelveSiteDomainFeatureRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
+  i18n?: I18NHints1;
   id?: DomainFeatureRowID;
   low: number;
   high: number;
@@ -1726,6 +1773,7 @@ export interface DelveSiteDomainDangerRow {
   suggestions?: Suggestions;
   embed_table?: OracleTableID;
   template?: OracleRollTemplate;
+  i18n?: I18NHints1;
   id?: DomainDangerRowID;
   low: number;
   high: number;

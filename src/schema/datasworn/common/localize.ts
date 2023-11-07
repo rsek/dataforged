@@ -33,16 +33,41 @@ export const PartOfSpeech = JsonEnumFromRecord(
 	{
 		common_noun: 'A common noun.',
 		proper_noun: 'A proper noun.',
+		adjunct_common_noun:
+			'A common noun used as an adjective, to modify another noun.',
+		adjunct_proper_noun:
+			'A proper noun used as an adjective, to modify another noun.',
 		verb: 'A verb in present tense',
 		gerund:
 			'Gerund or present participle of a verb, e.g. "going", "seeing", "waving"',
-		adjective: 'An adjective.'
+		adjective: 'An adjective.',
+		attributive_verb: 'A verb used as an adjective, to modify a noun.'
 	},
 	{ $id: '#/$defs/PartOfSpeech' }
 )
 export type PartOfSpeech = Static<typeof PartOfSpeech>
 
-export const Lexical = Type.Object({
-	part_of_speech: Type.Ref(PartOfSpeech)
-})
-export type Lexical = Static<typeof Lexical>
+export const I18nHint = Type.Object(
+	{
+		part_of_speech: Type.Optional(Type.Ref(PartOfSpeech))
+	},
+	{ $id: '#/$defs/I18nHint' }
+)
+export type I18nHint = Static<typeof I18nHint>
+
+export const I18nHints = Type.Object(
+	{
+		result: Type.Optional(Type.Ref(I18nHint)),
+		summary: Type.Optional(Type.Ref(I18nHint)),
+		description: Type.Optional(Type.Ref(I18nHint)),
+		template: Type.Optional(
+			Type.Object({
+				result: Type.Optional(Type.Ref(I18nHint)),
+				summary: Type.Optional(Type.Ref(I18nHint)),
+				description: Type.Optional(Type.Ref(I18nHint))
+			})
+		)
+	},
+	{ $id: '#/$defs/I18nHints' }
+)
+export type I18nHints = Static<typeof I18nHints>

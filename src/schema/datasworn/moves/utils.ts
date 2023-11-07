@@ -80,6 +80,7 @@ export function toTriggerConditionAugment(
 	conditionSchema: TObject,
 	options: ObjectOptions
 ) {
+	// TODO: this should make `roll_options` nullable, so that null can represent augments that don't provide their own roll mechanics
 	return PartialExcept(conditionSchema, ['text'], options)
 }
 export function toMoveAugment<
