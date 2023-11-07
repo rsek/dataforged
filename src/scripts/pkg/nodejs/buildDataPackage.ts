@@ -1,8 +1,8 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { log } from './logger.js'
-import { type DataPackageConfig } from '../schema/tools/build/index.js'
-import { TEMP } from './const.js'
+import { log } from '../../utils/logger.js'
+import { type DataPackageConfig } from '../../../schema/tools/build/index.js'
+import { TEMP } from '../../const.js'
 
 /** Assemble a package using data in {@link TEMP} */
 export async function assembleDataPackage({

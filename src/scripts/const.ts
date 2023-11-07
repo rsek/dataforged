@@ -7,16 +7,13 @@ export const PKG_SCOPE_COMMUNITY = '@datasworn-community-content'
 
 export const PKG_ROOT = path.join(process.cwd(), 'pkg')
 
-export const PKG_DIR_NODE = path.join(PKG_ROOT, 'pkg', 'nodejs')
+export const PKG_DIR_NODE = path.join(PKG_ROOT, 'nodejs')
 
 export const LEGACY_ID_PATH = path.join(process.cwd(), 'src/legacy_id_map.json')
 
 export const ROOT_DATA_IN = path.join(process.cwd(), 'src/data-in')
 export const TEMP = path.join(process.cwd(), 'src/data-out')
 export const ROOT_TYPES_OUT = path.join(process.cwd(), 'src/types/io')
-
-export const ROOT_PACKAGES = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL)
-export const CORE_PKG_DIR = path.join(ROOT_PACKAGES, 'core')
 
 export const TYPES_OUT = path.join(ROOT_TYPES_OUT, 'datasworn.d.ts')
 

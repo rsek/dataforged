@@ -1,10 +1,10 @@
 import path from 'path'
-import { type DataPackageConfig } from '../schema/tools/build/index.js'
+import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import {
 	PKG_SCOPE_OFFICIAL,
 	PKG_SCOPE_COMMUNITY,
 	ROOT_DATA_IN
-} from './const.js'
+} from '../const.js'
 
 export const IronswornClassic: DataPackageConfig = {
 	type: 'standalone',

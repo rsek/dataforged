@@ -1,16 +1,27 @@
 import JsonSchema from 'json-schema-library'
-import assets from '../data-out/classic/assets.json' assert { type: 'json' }
-import atlas from '../data-out/classic/atlas.json' assert { type: 'json' }
-import moves from '../data-out/classic/moves.json' assert { type: 'json' }
-import npcs from '../data-out/classic/npcs.json' assert { type: 'json' }
-import oracles from '../data-out/classic/oracles.json' assert { type: 'json' }
-import truths from '../data-out/classic/truths.json' assert { type: 'json' }
-import { type Datasworn } from '../types/io/datasworn.js'
+
+import { type Datasworn } from '../../types/io/datasworn.js'
+import fastGlob from 'fast-glob'
 
 import JSONPointer from 'jsonpointer'
-import schema from '../data-out/datasworn.schema.json' assert { type: 'json' }
+
+import fs from 'fs-extra'
+import { SCHEMA_OUT, TEMP } from '../const.js'
+import { JSONSchema7 } from 'json-schema'
+import path from 'path'
 
 const sep = '/'
+
+const schema = (await fs.readJSON(SCHEMA_OUT)) as JSONSchema7
+
+/** All non-schema json files. */
+const jsonPaths = await fastGlob(`${TEMP}/*/**/*.json`)
+
+const jsonFiles: Record<string, Datasworn> = {}
+
+for await (const jsonPath of jsonPaths) {
+	jsonFiles[path.basename(jsonPath, '.json')] = await fs.readJSON(jsonPath)
+}
 
 // 	const validator: JsonSchema.JSONSchema = await fs.readJSON(SCHEMA_OUT, )
 
@@ -33,7 +44,7 @@ function synthesizeId(
 	if (typeof parent === 'undefined')
 		throw new Error(`Pointer ${parentPointer} doesn't exist`)
 
-	parts.unshift(key)
+	parts.unshift(key as string)
 
 	if (typeof parent.id === 'string')
 		return [parent.id as string, ...parts].join('.')
@@ -60,7 +71,7 @@ const result = new Map<string, string>()
 
 const validator = new JsonSchema.Draft07(schema as any)
 
-for (const json of [atlas, assets, moves, npcs, oracles, truths])
+for (const [name, json] of Object.entries(jsonFiles))
 	extractLocaleStrings(json as any, validator, result)
 
 const commonStrings = new Map<string, string[]>()

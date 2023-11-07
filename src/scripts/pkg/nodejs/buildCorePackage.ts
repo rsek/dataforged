@@ -1,21 +1,22 @@
 import fs from 'fs-extra'
 import path from 'path'
 import {
-	CORE_PKG_DIR,
 	LEGACY_ID_PATH,
+	PKG_DIR_NODE,
 	PKG_SCOPE_OFFICIAL,
 	SCHEMA_OUT,
 	TYPES_OUT
-} from './const.js'
-import { log } from './logger.js'
+} from '../../const.js'
+import { log } from '../../utils/logger.js'
 
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
 export async function assembleCorePackage() {
+	const corePkgDir = path.join(PKG_DIR_NODE)
 	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
 
 	log.info(`Assembling ${corePkgId}...`)
-	const jsonDir = path.join(CORE_PKG_DIR, 'json')
-	const typesDest = path.join(CORE_PKG_DIR, 'index.d.ts')
+	const jsonDir = path.join(corePkgDir, 'json')
+	const typesDest = path.join(corePkgDir, 'index.d.ts')
 
 	await fs.emptyDir(jsonDir)
 

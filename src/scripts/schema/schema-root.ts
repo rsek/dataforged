@@ -12,11 +12,11 @@ import {
 	DelveSites,
 	Player,
 	Progress
-} from '../schema/datasworn/index.js'
+} from '../../schema/datasworn/index.js'
 
-import { Datasworn as Rulebook } from '../schema/datasworn/datasworn.js'
+import { Datasworn as Rulebook } from '../../schema/datasworn/datasworn.js'
 import { prepareInputSchema, prepareSchema } from './transform-schema.js'
-import { INPUT_SCHEMA_ID } from './const.js'
+import { INPUT_SCHEMA_ID } from '../const.js'
 
 export const $schema = 'http://json-schema.org/draft-07/schema#'
 

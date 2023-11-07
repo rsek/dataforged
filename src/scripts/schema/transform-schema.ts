@@ -6,7 +6,7 @@
 import { Type, type TSchema } from '@sinclair/typebox'
 import { type JSONSchema7 } from 'json-schema'
 import { cloneDeep, omit, set } from 'lodash-es'
-import { SourceStub } from '../schema/datasworn/common/metadata.js'
+import { SourceStub } from '../../schema/datasworn/common/metadata.js'
 
 import JsonSchema from 'json-schema-library'
 

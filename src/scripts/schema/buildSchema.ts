@@ -4,11 +4,11 @@
 
 import prettier from 'prettier'
 import fs from 'fs-extra'
-import { log } from './logger.js'
-import ajv from './ajv.js'
-import { getPrettierOptions } from './prettier.js'
+import { log } from '../utils/logger.js'
+import ajv from '../validation/ajv.js'
+import { getPrettierOptions } from '../utils/prettier.js'
 import * as Schema from './schema-root.js'
-import * as CONST from './const.js'
+import * as CONST from '../const.js'
 import { type JSONSchema } from 'json-schema-library'
 
 interface SchemaOptions {
