@@ -12,13 +12,13 @@ import ajv from '../validation/ajv.js'
 import { log } from '../utils/logger.js'
 import { getPrettierOptions } from '../utils/prettier.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
-import { TEMP } from '../const.js'
+import { ROOT_OUTPUT } from '../const.js'
 
 /** Builds all YAML files for a given package in {@link ROOT_DATA_IN}, and writes them to a directory in {@link ROOT_DATA_OUT} */
 export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
-	const tempDir = path.join(TEMP, id)
+	const tempDir = path.join(ROOT_OUTPUT, id)
 
 	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
 	const oldJsonFiles = await fastGlob(`${tempDir}/**/*.json`)
@@ -106,12 +106,7 @@ async function buildFile(filePath: string) {
 	const schemaOut = pascalCase(basename)
 	if (!ajv.validate(schemaOut, out)) {
 		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
-		const errorPath = path.join(
-			process.cwd(),
-			`src/data-out`,
-			basename,
-			`error-out.json`
-		)
+		const errorPath = path.join(ROOT_OUTPUT, basename, `error-out.json`)
 		await fs.writeJSON(errorPath, out)
 		throw new Error(
 			`Transformed data doesn't match the ${schemaOut} schema. Dumping invalid JSON to: ${errorPath}`

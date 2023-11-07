@@ -11,7 +11,7 @@ import { log } from '../../utils/logger.js'
 
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
 export async function assembleCorePackage() {
-	const corePkgDir = path.join(PKG_DIR_NODE)
+	const corePkgDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
 	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
 
 	log.info(`Assembling ${corePkgId}...`)

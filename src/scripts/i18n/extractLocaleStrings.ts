@@ -6,7 +6,7 @@ import fastGlob from 'fast-glob'
 import JSONPointer from 'jsonpointer'
 
 import fs from 'fs-extra'
-import { SCHEMA_OUT, TEMP } from '../const.js'
+import { SCHEMA_OUT, ROOT_OUTPUT } from '../const.js'
 import { JSONSchema7 } from 'json-schema'
 import path from 'path'
 
@@ -15,7 +15,7 @@ const sep = '/'
 const schema = (await fs.readJSON(SCHEMA_OUT)) as JSONSchema7
 
 /** All non-schema json files. */
-const jsonPaths = await fastGlob(`${TEMP}/*/**/*.json`)
+const jsonPaths = await fastGlob(`${ROOT_OUTPUT}/*/**/*.json`)
 
 const jsonFiles: Record<string, Datasworn> = {}
 
