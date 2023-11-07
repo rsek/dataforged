@@ -14,7 +14,7 @@ const schemaRefHead = '#/$defs/'
 
 export type SchemaDefs = Record<string, JSONSchema7>
 
-export function prepareSchema(root: TSchema, $defs: SchemaDefs) {
+export function prepareBaseSchema(root: TSchema, $defs: SchemaDefs) {
 	const draft = new JsonSchema.Draft07({
 		...root,
 		$defs
@@ -23,9 +23,36 @@ export function prepareSchema(root: TSchema, $defs: SchemaDefs) {
 	return draft
 }
 
-export function prepareInputSchema(schema: JsonSchema.Draft07, overrides = {}) {
+export function prepareDistributableSchema(
+	base: JsonSchema.Draft07,
+	overrides = {}
+) {
+	const distSchema = new JsonSchema.Draft07({
+		...cloneDeep(base.getSchema()),
+		...overrides
+	})
+
+	distSchema.eachSchema((schema, pointer) => {
+		if (!('properties' in schema)) return
+
+		const props = schema.properties as Record<string, { macro?: boolean }>
+
+		for (const key in props) {
+			if (Object.prototype.hasOwnProperty.call(props, key)) {
+				const element = props[key]
+
+				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+				if (element.macro) delete props[key]
+			}
+		}
+	})
+
+	return distSchema
+}
+
+export function prepareInputSchema(base: JsonSchema.Draft07, overrides = {}) {
 	const inputSchema = new JsonSchema.Draft07({
-		...cloneDeep(schema.getSchema()),
+		...cloneDeep(base.getSchema()),
 		...overrides
 	})
 
