@@ -67,8 +67,7 @@ function prepareSchemaDef(schema: JSONSchema7) {
 		schema.title = schema.$id.replace(schemaRefHead, '')
 
 	// these are redundant once TypeBox is done with them, excluding the root schema ID
-	if (!(schema.$id as string)?.startsWith('http'))
-		schema = omitProperties(schema, '$id')
+	if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
 
 	return schema
 }

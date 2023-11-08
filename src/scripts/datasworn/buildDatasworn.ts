@@ -13,6 +13,9 @@ import { log } from '../utils/logger.js'
 import { getPrettierOptions } from '../utils/prettier.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import { ROOT_OUTPUT } from '../const.js'
+import jsc from '../validation/jsc.js'
+import JsonPointer from 'json-pointer'
+import { walkObjectWithSchema } from '../utils/walk.js'
 
 /** Builds all YAML files for a given package in {@link ROOT_DATA_IN}, and writes them to a directory in {@link ROOT_DATA_OUT} */
 export async function buildSourcebook({ id, paths }: DataPackageConfig) {
