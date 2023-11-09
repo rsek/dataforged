@@ -17,20 +17,17 @@ import {
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
 import { type PartialDeep, type Simplify } from 'type-fest'
-import { REGEX_DICT_KEY } from '../common/regex.js'
 import type { OracleTableRow } from '../oracles.js'
+import { DICT_KEY } from './regex.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
 import * as Utils from './utils.js'
-
-/** Pattern for keys used in dictionary objects throughout Datasworn; they double as ID fragments, so they require "snake case" (lower case letters and underscores only) */
-export const DICT_KEY = Type.RegEx(RegExp(`^${REGEX_DICT_KEY.source}$`))
 
 export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
 	options: ObjectOptions = {}
 ) {
-	return Type.Record(DICT_KEY, valuesSchema, {
+	return Type.Record(Type.RegEx(DICT_KEY), valuesSchema, {
 		...options,
 		$comment: 'Deserialize as a dictionary object.'
 	})

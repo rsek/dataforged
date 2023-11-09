@@ -4,23 +4,23 @@ import {
 	type Static,
 	type TString
 } from '@sinclair/typebox'
-import { cloneDeep, escapeRegExp } from 'lodash-es'
-import { SNAKE_CASE } from './regex.js'
+import { cloneDeep } from 'lodash-es'
+import { DICT_KEY, ELEMENTS, WILDCARD, WILDCARD_MULTI } from './regex.js'
 import { type Opaque } from 'type-fest'
+
+const { SEP } = ELEMENTS
 
 /** Composes regular expressions for Datasworn IDs */
 class ID {
-	static readonly JOINER = escapeRegExp('/')
-	static readonly WILDCARD = escapeRegExp('*')
-	static readonly WILDCARD_MULTI = escapeRegExp('**')
+	static readonly WILDCARD_MULTI = WILDCARD_MULTI
+	static readonly SEP = SEP.source
 	static readonly RANGE = /([1-9][0-9]*)-([1-9][0-9]*)/.source
 	static readonly INDEX = /(0|[1-9][0-9]*)/.source
-	static readonly KEY = SNAKE_CASE.source
-	static readonly KEY_WILDCARD = new RegExp(`(${this.KEY}|${this.WILDCARD})`)
-		.source
+	static readonly KEY = ELEMENTS.KEY.source
+	static readonly KEY_WILDCARD = new RegExp(`(${this.KEY}|${WILDCARD})`).source
 
 	static readonly KEY_RECURSIVE = new RegExp(
-		`${this.KEY}(${this.JOINER}${this.KEY}){0,2}`
+		`${this.KEY}(${this.SEP}${this.KEY}){0,2}`
 	).source
 
 	static readonly KEY_RECURSIVE_WILDCARD = new RegExp(
@@ -29,7 +29,7 @@ class ID {
 
 	static readonly SOURCEBOOK = /([a-z0-9_]{3,})/.source
 	static readonly SOURCEBOOK_WILDCARD = new RegExp(
-		`(${this.SOURCEBOOK}|${this.WILDCARD})`
+		`(${this.SOURCEBOOK}|${WILDCARD})`
 	).source
 
 	static forNode(type: string) {
@@ -82,7 +82,7 @@ class ID {
 
 	get regExp() {
 		return new RegExp(
-			`^${this.fragments.map((frag) => frag.source).join(ID.JOINER)}$`
+			`^${this.fragments.map((frag) => frag.source).join(ID.SEP)}$`
 		)
 	}
 
@@ -116,15 +116,12 @@ const REGEX_DICT_KEY = /[a-z][a-z_]*/
 
 const REGEX_RANGE = /([1-9][0-9]*)-([1-9][0-9]*)/
 const REGEX_INDEX = /(0|[1-9][0-9]*)/
-const JOINER = escapeRegExp('/')
-const WILDCARD = escapeRegExp('*')
-const WILDCARD_MULTI = escapeRegExp('**')
-const RANGE = `${JOINER}${REGEX_RANGE.source}`
-const INDEX = `${JOINER}${REGEX_INDEX.source}`
-const KEY = `${JOINER}(${REGEX_DICT_KEY.source})`
+const RANGE = `${ID.SEP}${REGEX_RANGE.source}`
+const INDEX = `${ID.SEP}${REGEX_INDEX.source}`
+const KEY = `${ID.SEP}(${REGEX_DICT_KEY.source})`
 const KEY_RECURSIVE = `(${KEY}){1,3}`
-const KEY_WILDCARD = `(${KEY}|${JOINER}${WILDCARD})`
-const KEY_RECURSIVE_WILDCARD = `(${KEY_RECURSIVE}|${JOINER}${WILDCARD_MULTI})`
+const KEY_WILDCARD = `(${KEY}|${ID.SEP}${WILDCARD})`
+const KEY_RECURSIVE_WILDCARD = `(${KEY_RECURSIVE}|${ID.SEP}${WILDCARD_MULTI})`
 
 const FRAGMENT_SOURCEBOOK_KEY = REGEX_SOURCEBOOK_KEY.source
 const FRAGMENT_SOURCEBOOK_WILDCARD = `(${FRAGMENT_SOURCEBOOK_KEY}|${WILDCARD})`
@@ -156,7 +153,7 @@ function NodeID(collectionType: string, recursive = false) {
 
 	return joinPatterns(
 		FRAGMENT_SOURCEBOOK_KEY,
-		JOINER,
+		SEP,
 		collectionType,
 		collectionNodeFragment,
 		KEY
@@ -169,7 +166,7 @@ function NodeIDWildcard(collectionType: string, recursive = false) {
 		: KEY_WILDCARD
 	return joinPatterns(
 		FRAGMENT_SOURCEBOOK_WILDCARD,
-		JOINER,
+		SEP,
 		collectionType,
 		collectionNodeFragment,
 		KEY_WILDCARD
@@ -183,9 +180,9 @@ function CollectionID(collectionType: string, recursive = false) {
 	const collectionNodeFragment = recursive ? KEY_RECURSIVE : KEY
 	return joinPatterns(
 		FRAGMENT_SOURCEBOOK_KEY,
-		JOINER,
+		SEP,
 		'collections',
-		JOINER,
+		SEP,
 		collectionType,
 		collectionNodeFragment
 	)
@@ -200,7 +197,7 @@ function CollectionIDWildcard(type: string, recursive = false) {
 		: KEY_WILDCARD
 	return joinPatterns(
 		FRAGMENT_SOURCEBOOK_WILDCARD,
-		JOINER,
+		SEP,
 		type,
 		collectionNodeFragment,
 		KEY_WILDCARD
@@ -218,6 +215,9 @@ export const NamespaceID = Type.RegEx(
 	}
 )
 export type NamespaceID = Static<typeof NamespaceID>
+
+export const DictKey = Type.RegEx(DICT_KEY, { $id: '#/$defs/DictKey' })
+export type DictKey = Static<typeof DictKey>
 
 export const NpcID = Type.RegEx(NodeID('npcs'), {
 	$id: '#/$defs/NpcID',
@@ -241,7 +241,7 @@ export const NpcCollectionID = Type.RegEx(CollectionID('npcs', false), {
 export type NpcCollectionID = Opaque<Static<typeof NpcCollectionID>>
 
 export const NpcVariantID = Type.RegEx(
-	joinPatterns(NodeID('npcs'), `${JOINER}variants${JOINER}${ID.KEY}`),
+	joinPatterns(NodeID('npcs'), `${ID.SEP}variants${ID.SEP}${ID.KEY}`),
 	{
 		$id: '#/$defs/NpcVariantID',
 		examples: ['starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack']
@@ -263,19 +263,14 @@ export const AssetTypeID = Type.RegEx(CollectionID('assets'), {
 export type AssetTypeID = Opaque<Static<typeof AssetTypeID>>
 
 export const AssetOptionFieldID = Type.RegEx(
-	joinPatterns(AssetID.pattern as string, ID.JOINER, 'options', KEY),
+	joinPatterns(AssetID.pattern as string, ID.SEP, 'options', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/options\/[a-z][a-z_]*/,
 	{ $id: '#/$defs/AssetOptionFieldID' }
 )
 export type AssetOptionFieldID = Opaque<Static<typeof AssetOptionFieldID>>
 
 export const AssetOptionFieldIDWildcard = Type.RegEx(
-	joinPatterns(
-		AssetIDWildcard.pattern as string,
-		JOINER,
-		'options',
-		KEY_WILDCARD
-	),
+	joinPatterns(AssetIDWildcard.pattern as string, SEP, 'options', KEY_WILDCARD),
 	// /^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/options\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetOptionFieldIDWildcard' }
 )
@@ -284,7 +279,7 @@ export type AssetOptionFieldIDWildcard = Static<
 >
 
 export const AssetControlFieldID = Type.RegEx(
-	joinPatterns(AssetID.pattern as string, ID.JOINER, 'controls', KEY),
+	joinPatterns(AssetID.pattern as string, ID.SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetControlFieldID' }
 )
@@ -293,7 +288,7 @@ export type AssetControlFieldID = Opaque<Static<typeof AssetControlFieldID>>
 export const AssetControlFieldIDWildcard = Type.RegEx(
 	joinPatterns(
 		AssetIDWildcard.pattern as string,
-		JOINER,
+		SEP,
 		'controls',
 		KEY_WILDCARD
 	),
@@ -304,13 +299,13 @@ export type AssetControlFieldIDWildcard = Static<
 >
 
 export const AssetConditionMeterID = Type.RegEx(
-	joinPatterns(AssetID.pattern as string, ID.JOINER, `condition_meter`),
+	joinPatterns(AssetID.pattern as string, ID.SEP, `condition_meter`),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter$/,
 	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
 )
 export type AssetConditionMeterID = Opaque<Static<typeof AssetConditionMeterID>>
 export const AssetConditionMeterIDWildcard = Type.RegEx(
-	joinPatterns(AssetIDWildcard.pattern as string, ID.JOINER, 'condition_meter'),
+	joinPatterns(AssetIDWildcard.pattern as string, ID.SEP, 'condition_meter'),
 	// /^([a-z0-9_]{3,}|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
 	{
 		$id: '#/$defs/AssetConditionMeterIDWildcard',
@@ -321,12 +316,7 @@ export type AssetConditionMeterIDWildcard = Static<
 	typeof AssetConditionMeterIDWildcard
 >
 export const AssetConditionMeterControlFieldID = Type.RegEx(
-	joinPatterns(
-		AssetConditionMeterID.pattern as string,
-		JOINER,
-		'controls',
-		KEY
-	),
+	joinPatterns(AssetConditionMeterID.pattern as string, SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetConditionMeterControlFieldID' }
 )
@@ -335,20 +325,14 @@ export type AssetConditionMeterControlFieldID = Static<
 >
 
 export const AssetAbilityID = Type.RegEx(
-	joinPatterns(
-		AssetID.pattern as string,
-		ID.JOINER,
-		'abilities',
-		ID.JOINER,
-		'[0-2]'
-	),
+	joinPatterns(AssetID.pattern as string, ID.SEP, 'abilities', ID.SEP, '[0-2]'),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]$/,
 	{ $id: '#/$defs/AssetAbilityID' }
 )
 export type AssetAbilityID = Opaque<Static<typeof AssetAbilityID>>
 
 export const AssetAbilityOptionFieldID = Type.RegEx(
-	joinPatterns(AssetAbilityID.pattern as string, ID.JOINER, 'options', KEY),
+	joinPatterns(AssetAbilityID.pattern as string, ID.SEP, 'options', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]\/options\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetAbilityOptionFieldID' }
 )
@@ -356,7 +340,7 @@ export type AssetAbilityOptionFieldID = Opaque<
 	Static<typeof AssetAbilityOptionFieldID>
 >
 export const AssetAbilityControlFieldID = Type.RegEx(
-	joinPatterns(AssetAbilityID.pattern as string, ID.JOINER, 'controls', KEY),
+	joinPatterns(AssetAbilityID.pattern as string, ID.SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetAbilityControlFieldID' }
 )
@@ -365,9 +349,7 @@ export type AssetAbilityControlFieldID = Static<
 >
 
 export const DelveSiteID = Type.RegEx(
-	new RegExp(
-		joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'delve_sites', KEY)
-	),
+	new RegExp(joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'delve_sites', KEY)),
 	// /^[a-z0-9_]{3,}\/delve_sites\/[a-z][a-z_]*$/,
 	{
 		examples: ['delve/delve_sites/alvas_rest'],
@@ -377,7 +359,7 @@ export const DelveSiteID = Type.RegEx(
 export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
 
 export const DelveSiteDenizenID = Type.RegEx(
-	joinPatterns(DelveSiteID.pattern as string, ID.JOINER, `denizens`, RANGE),
+	joinPatterns(DelveSiteID.pattern as string, ID.SEP, `denizens`, RANGE),
 	// /^[a-z0-9_]{3,}\/delve_sites\/[a-z][a-z_]*\/denizens\/[1-9][0-9]*-[1-9][0-9]*/,
 	{
 		examples: ['delve/delve_sites/alvas_rest/denizens/1-27'],
@@ -393,25 +375,20 @@ export const DelveSiteThemeID = ID.forNode('site_themes').toSchema({
 export type DelveSiteThemeID = Opaque<Static<typeof DelveSiteThemeID>>
 
 export const ThemeFeatureRowID = Type.RegEx(
-	joinPatterns(
-		DelveSiteThemeID.pattern as string,
-		ID.JOINER,
-		'features',
-		RANGE
-	),
+	joinPatterns(DelveSiteThemeID.pattern as string, ID.SEP, 'features', RANGE),
 	// /^[a-z0-9_]{3,}\/site_themes\/[a-z][a-z_]*\/features\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/ThemeFeatureRowID' }
 )
 export type ThemeFeatureRowID = Opaque<Static<typeof ThemeFeatureRowID>>
 
 export const ThemeDangerRowID = Type.RegEx(
-	joinPatterns(DelveSiteThemeID.pattern as string, ID.JOINER, 'dangers', RANGE),
+	joinPatterns(DelveSiteThemeID.pattern as string, ID.SEP, 'dangers', RANGE),
 	{ $id: '#/$defs/ThemeDangerRowID' }
 )
 export type ThemeDangerRowID = Opaque<Static<typeof ThemeDangerRowID>>
 
 export const DelveSiteDomainID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'site_domains', KEY),
+	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'site_domains', KEY),
 	{
 		$id: '#/$defs/DelveSiteDomainID',
 		examples: ['delve/site_domains/shadowfen']
@@ -420,23 +397,13 @@ export const DelveSiteDomainID = Type.RegEx(
 export type DelveSiteDomainID = Opaque<Static<typeof DelveSiteDomainID>>
 
 export const DomainFeatureRowID = Type.RegEx(
-	joinPatterns(
-		DelveSiteDomainID.pattern as string,
-		ID.JOINER,
-		'features',
-		RANGE
-	),
+	joinPatterns(DelveSiteDomainID.pattern as string, ID.SEP, 'features', RANGE),
 	{ $id: '#/$defs/DomainFeatureRowID' }
 )
 export type DomainFeatureRowID = Opaque<Static<typeof DomainFeatureRowID>>
 
 export const DomainDangerRowID = Type.RegEx(
-	joinPatterns(
-		DelveSiteDomainID.pattern as string,
-		ID.JOINER,
-		'dangers',
-		RANGE
-	),
+	joinPatterns(DelveSiteDomainID.pattern as string, ID.SEP, 'dangers', RANGE),
 	{ $id: '#/$defs/DomainDangerRowID' }
 )
 export type DomainDangerRowID = Opaque<Static<typeof DomainDangerRowID>>
@@ -528,7 +495,7 @@ export const OracleTableRowID = Type.RegEx(
 export type OracleTableRowID = Opaque<Static<typeof OracleCollectionID>>
 
 export const RarityID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'rarities', KEY),
+	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'rarities', KEY),
 	// /^[a-z0-9_]{3,}\/rarities\/[a-z][a-z_]*$/,
 	{
 		examples: ['classic/rarities/ayethins_journal'],
@@ -559,7 +526,7 @@ export const AtlasIDWildcard = Type.RegEx(CollectionIDWildcard('atlas', true), {
 })
 
 export const TruthID = Type.RegEx(
-	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.JOINER, 'truths', KEY),
+	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'truths', KEY),
 
 	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*$/,
 	{

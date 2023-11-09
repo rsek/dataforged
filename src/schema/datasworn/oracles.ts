@@ -153,7 +153,7 @@ export const OracleCollectionColumn = Type.Composite(
 	[
 		OracleTableColumn,
 		Type.Object({
-			table_key: Abstract.DICT_KEY,
+			table_key: Type.Ref(ID.DictKey),
 			color: Type.Optional(Type.Ref(Metadata.CSSColor))
 		})
 	],

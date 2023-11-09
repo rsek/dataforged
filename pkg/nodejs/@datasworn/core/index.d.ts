@@ -117,6 +117,7 @@ export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
  */
 export type OracleCollectionID2 = string;
 export type OracleColumnContentType = "range" | "result" | "summary" | "description";
+export type DictKey = string;
 export type OracleCollectionStyle = "multi_table";
 /**
  * A relative URL pointing to a raster image in the WEBP format.
@@ -676,7 +677,7 @@ export interface OracleTableColumn {
 export interface OracleCollectionColumn {
   label?: Label;
   content_type: OracleColumnContentType;
-  table_key: string;
+  table_key: DictKey;
   color?: CSSColor;
 }
 /**

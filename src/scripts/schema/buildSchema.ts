@@ -9,11 +9,11 @@ import ajv from '../validation/ajv.js'
 import { getPrettierOptions } from '../utils/prettier.js'
 import * as Schema from './schema-root.js'
 import * as CONST from '../const.js'
-import { type JSONSchema } from 'json-schema-library'
+import { type JsonSchema } from 'json-schema-library'
 
 interface SchemaOptions {
 	name: string
-	schema: JSONSchema
+	schema: JsonSchema
 	paths: string[]
 	messages: {
 		writeStart: string
@@ -24,7 +24,7 @@ interface SchemaOptions {
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
-		schema: Schema.Datasworn.getSchema(),
+		schema: Schema.Datasworn.getSchema() as JsonSchema,
 		paths: [CONST.SCHEMA_OUT],
 		messages: {
 			writeStart: 'Writing schema for Datasworn',
@@ -33,7 +33,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornInput',
-		schema: Schema.DataswornInput.getSchema(),
+		schema: Schema.DataswornInput.getSchema() as JsonSchema,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
 			writeStart: 'Writing schema for Datasworn YAML input',

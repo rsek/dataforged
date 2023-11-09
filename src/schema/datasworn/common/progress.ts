@@ -1,5 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { SNAKE_CASE } from './regex.js'
+import { ATTR } from './regex.js'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
@@ -17,9 +17,8 @@ export const ChallengeRank = JsonEnumFromRecord(
 )
 export type ChallengeRank = Static<typeof ChallengeRank>
 
-export const SpecialTrackType = Type.String({
+export const SpecialTrackType = Type.RegEx(ATTR, {
 	$id: '#/$defs/SpecialTrackType',
-	pattern: SNAKE_CASE.source,
 	examples: [
 		'bonds_track',
 		'failure_track',

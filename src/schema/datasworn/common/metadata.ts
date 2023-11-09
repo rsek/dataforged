@@ -1,5 +1,5 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { ID } from '../index.js'
+import { ID } from './index.js'
 
 export const SVGImageURL = Type.String({
 	$id: '#/$defs/SVGImageURL',

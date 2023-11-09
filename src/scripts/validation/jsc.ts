@@ -16,9 +16,15 @@ const validateKeyword = Object.fromEntries(
 	})
 )
 
-const jsc = new JsonSchema.Draft07(fs.readJSONSync(CONST.SCHEMA_OUT), {
+export const input = new JsonSchema.Draft07(fs.readJSONSync(CONST.SCHEMA_IN), {
 	validateFormat,
 	validateKeyword
 })
 
-export default jsc
+export const output = new JsonSchema.Draft07(
+	fs.readJSONSync(CONST.SCHEMA_OUT),
+	{
+		validateFormat,
+		validateKeyword
+	}
+)

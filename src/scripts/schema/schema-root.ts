@@ -1,17 +1,19 @@
 import {
-	Atlas,
-	Assets,
+	Metadata,
 	ID,
 	Localize,
+	Player,
+	Progress
+} from '../../schema/datasworn/common/index.js'
+import {
+	Atlas,
+	Assets,
 	Moves,
 	Oracles,
 	Npcs,
-	Metadata,
 	Truths,
 	Rarities,
-	DelveSites,
-	Player,
-	Progress
+	DelveSites
 } from '../../schema/datasworn/index.js'
 
 import { Datasworn as Rulebook } from '../../schema/datasworn/datasworn.js'

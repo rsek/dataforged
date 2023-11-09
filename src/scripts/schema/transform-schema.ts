@@ -8,13 +8,14 @@ import { type JSONSchema7 } from 'json-schema'
 import { cloneDeep, omit, set } from 'lodash-es'
 import { SourceStub } from '../../schema/datasworn/common/metadata.js'
 
-import JsonSchema from 'json-schema-library'
+import JsonSchema, { type JsonPointer } from 'json-schema-library'
 
 const schemaRefHead = '#/$defs/'
 
-export type SchemaDefs = Record<string, JSONSchema7>
-
-export function prepareBaseSchema(root: TSchema, $defs: SchemaDefs) {
+export function prepareBaseSchema(
+	root: TSchema,
+	$defs: Record<string, TSchema>
+) {
 	const draft = new JsonSchema.Draft07({
 		...root,
 		$defs
@@ -31,6 +32,8 @@ export function prepareDistributableSchema(
 		...cloneDeep(base.getSchema()),
 		...overrides
 	})
+
+	const pointersToDelete: string[] = []
 
 	distSchema.eachSchema((schema, pointer) => {
 		if (!('properties' in schema)) return
@@ -62,7 +65,7 @@ export function prepareInputSchema(base: JsonSchema.Draft07, overrides = {}) {
 }
 
 /** Mutates schema */
-function prepareSchemaDef(schema: JSONSchema7) {
+function prepareSchemaDef(schema: JsonSchema.JsonSchema, pointer: JsonPointer) {
 	if (schema.$id && !schema.title && !schema.$ref)
 		schema.title = schema.$id.replace(schemaRefHead, '')
 

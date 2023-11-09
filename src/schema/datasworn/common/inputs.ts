@@ -5,8 +5,7 @@ import {
 	type ObjectOptions
 } from '@sinclair/typebox'
 import * as Localize from './localize.js'
-import * as ID from './id.js'
-import * as PlayerStat from './player.js'
+import * as Player from './player.js'
 import * as Abstract from './abstract.js'
 import { JsonEnum } from '../../../typebox/index.js'
 
@@ -192,7 +191,7 @@ export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
 
 export const SelectFieldStat = SelectField(
 	'select_stat',
-	Type.Ref(PlayerStat.PlayerStat),
+	Type.Ref(Player.PlayerStat),
 	{
 		$id: '#/$defs/SelectFieldStat',
 		title: 'Select field (player stat)',

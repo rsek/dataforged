@@ -12,8 +12,8 @@ import {
 	composeTriggerRollCondition,
 	toMoveAugment
 } from './utils.js'
-import { Localize } from '../index.js'
 import { SpecialTrackType } from '../common/progress.js'
+import { Localize } from '../common/index.js'
 
 export const ProgressRollOption = Type.Object(
 	{

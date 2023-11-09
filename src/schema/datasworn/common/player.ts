@@ -1,17 +1,15 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { SNAKE_CASE } from './regex.js'
+import { ATTR } from './regex.js'
 
-export const PlayerStat = Type.String({
+export const PlayerStat = Type.RegEx(ATTR, {
 	examples: ['edge', 'heart', 'iron', 'shadow', 'wits'],
-	pattern: SNAKE_CASE.source,
 	$id: '#/$defs/PlayerStat',
 	description: 'A basic player character stat.'
 })
 export type PlayerStat = Static<typeof PlayerStat>
 
-export const PlayerConditionMeter = Type.String({
+export const PlayerConditionMeter = Type.RegEx(ATTR, {
 	$id: '#/$defs/PlayerConditionMeter',
-	pattern: SNAKE_CASE.source,
 	examples: ['health', 'spirit', 'supply'],
 	description: 'A basic, rollable player character resource.'
 })

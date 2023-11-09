@@ -13,7 +13,7 @@ import { log } from '../utils/logger.js'
 import { getPrettierOptions } from '../utils/prettier.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
 import { ROOT_OUTPUT } from '../const.js'
-import jsc from '../validation/jsc.js'
+import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
 import { walkObjectWithSchema } from '../utils/walk.js'
 
@@ -66,16 +66,27 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 
 		ajv.validate('Datasworn', jsonOut)
 
+		const pointersToDelete: string[] = []
+
+		jsc.input.each(jsonOut, (schema, data, pointer) => {
+			const sep = '/'
+			const key = pointer.split(sep)?.pop()
+			if (
+				key?.startsWith('_') ??
+				//  experimentalKeys.includes(key as any) ||
+				schema?.macro
+			)
+				pointersToDelete.push(pointer)
+		})
+
+		for (const pointer of pointersToDelete)
+			if (JsonPointer.has(jsonOut, pointer))
+				JsonPointer.remove(jsonOut, pointer)
+
 		const dataOut = Prettier.format(
 			JSON.stringify(
 				jsonOut,
-				(key, value) => {
-					if (key.startsWith('_')) return undefined
-
-					if (experimentalKeys.includes(key)) return undefined
-
-					return value
-				},
+				(k, v) => (k.startsWith('_') ? undefined : v),
 				'\t'
 			),
 			prettierOptions

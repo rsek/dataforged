@@ -2,7 +2,7 @@
  * Types from which to derive JSON schemas and JSON typedefs.
  */
 
-export { ID, Localize, Metadata, Player, Progress } from './common/index.js'
+// export { ID, Localize, Metadata, Player, Progress } from './common/index.js'
 export * as Moves from './moves.js'
 export * as Assets from './assets.js'
 export * as Oracles from './oracles.js'

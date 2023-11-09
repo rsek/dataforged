@@ -187,8 +187,13 @@
 		"DelveSiteThemeID": {
 			"examples": ["delve/site_themes/hallowed"],
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$",
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*$",
 			"title": "DelveSiteThemeID"
+		},
+		"DictKey": {
+			"type": "string",
+			"pattern": "^[a-z][a-z_]*$",
+			"title": "DictKey"
 		},
 		"DomainDangerRowID": {
 			"type": "string",
@@ -260,7 +265,7 @@
 				"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
 			],
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$",
+			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/[a-z][a-z_]*$",
 			"title": "NpcVariantID"
 		},
 		"OracleCollectionID": {
@@ -312,12 +317,12 @@
 		},
 		"ThemeDangerRowID": {
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$",
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$",
 			"title": "ThemeDangerRowID"
 		},
 		"ThemeFeatureRowID": {
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$",
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$",
 			"title": "ThemeFeatureRowID"
 		},
 		"TruthID": {
@@ -551,7 +556,6 @@
 			"title": "ChallengeRank"
 		},
 		"SpecialTrackType": {
-			"pattern": "([a-z][a-z_]*)",
 			"examples": [
 				"bonds_track",
 				"failure_track",
@@ -561,6 +565,7 @@
 			],
 			"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
 			"type": "string",
+			"pattern": "^[a-z][a-z_]*$",
 			"title": "SpecialTrackType"
 		},
 		"Npc": {
@@ -727,7 +732,7 @@
 			"properties": {
 				"label": { "$ref": "#/$defs/Label" },
 				"content_type": { "$ref": "#/$defs/OracleColumnContentType" },
-				"table_key": { "type": "string", "pattern": "^[a-z][a-z_]*$" },
+				"table_key": { "$ref": "#/$defs/DictKey" },
 				"color": { "$ref": "#/$defs/CSSColor" }
 			},
 			"required": ["content_type", "table_key"],
@@ -2332,17 +2337,17 @@
 			]
 		},
 		"PlayerConditionMeter": {
-			"pattern": "([a-z][a-z_]*)",
 			"examples": ["health", "spirit", "supply"],
 			"description": "A basic, rollable player character resource.",
 			"type": "string",
+			"pattern": "^[a-z][a-z_]*$",
 			"title": "PlayerConditionMeter"
 		},
 		"PlayerStat": {
 			"examples": ["edge", "heart", "iron", "shadow", "wits"],
-			"pattern": "([a-z][a-z_]*)",
 			"description": "A basic player character stat.",
 			"type": "string",
+			"pattern": "^[a-z][a-z_]*$",
 			"title": "PlayerStat"
 		},
 		"Rarity": {

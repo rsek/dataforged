@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
 
-import { Abstract, Metadata } from './common/index.js'
+import { Abstract, ID, Metadata } from './common/index.js'
 
 import { DELVE_SCHEMA_ID, SCHEMA_ID, VERSION } from '../../scripts/const.js'
 import {
@@ -11,8 +11,7 @@ import {
 	Oracles,
 	Rarities,
 	Truths,
-	Atlas,
-	ID
+	Atlas
 } from './index.js'
 
 export const Datasworn = Type.Object(
@@ -102,6 +101,8 @@ export const Datasworn = Type.Object(
 	}
 )
 export type Datasworn = Static<typeof Datasworn>
+
+// console.log(Datasworn)
 
 export const Delve = Type.Object(
 	{
