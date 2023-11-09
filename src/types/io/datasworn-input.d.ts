@@ -616,11 +616,11 @@ export interface OracleTableRow {
   /**
    * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  low: number | null;
+  min: number | null;
   /**
    * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
    */
-  high: number | null;
+  max: number | null;
   result: MarkdownString;
   icon?: SVGImageURL;
   summary?: MarkdownString;
@@ -2062,63 +2062,63 @@ export interface DelveSite {
   denizens: DelveSiteDenizen[] &
     [
       {
-        low: 1;
-        high: 27;
+        min: 1;
+        max: 27;
         frequency: "very_common";
       },
       {
-        low: 28;
-        high: 41;
+        min: 28;
+        max: 41;
         frequency: "common";
       },
       {
-        low: 42;
-        high: 55;
+        min: 42;
+        max: 55;
         frequency: "common";
       },
       {
-        low: 56;
-        high: 69;
+        min: 56;
+        max: 69;
         frequency: "common";
       },
       {
-        low: 70;
-        high: 75;
+        min: 70;
+        max: 75;
         frequency: "uncommon";
       },
       {
-        low: 76;
-        high: 81;
+        min: 76;
+        max: 81;
         frequency: "uncommon";
       },
       {
-        low: 82;
-        high: 87;
+        min: 82;
+        max: 87;
         frequency: "uncommon";
       },
       {
-        low: 88;
-        high: 93;
+        min: 88;
+        max: 93;
         frequency: "uncommon";
       },
       {
-        low: 94;
-        high: 95;
+        min: 94;
+        max: 95;
         frequency: "rare";
       },
       {
-        low: 96;
-        high: 97;
+        min: 96;
+        max: 97;
         frequency: "rare";
       },
       {
-        low: 98;
-        high: 99;
+        min: 98;
+        max: 99;
         frequency: "rare";
       },
       {
-        low: 100;
-        high: 100;
+        min: 100;
+        max: 100;
         frequency: "unforeseen";
       }
     ];
@@ -2127,8 +2127,8 @@ export interface DelveSite {
 export interface DelveSiteDenizen {
   id?: DelveSiteDenizenID;
   name?: Label;
-  low: number;
-  high: number;
+  min: number;
+  max: number;
   npc?: NpcID1;
   frequency: DelveSiteDenizenFrequency;
 }
@@ -2192,75 +2192,75 @@ export interface DelveSiteTheme {
   features: DelveSiteThemeFeatureRow[] &
     [
       {
-        low: 1;
-        high: 4;
+        min: 1;
+        max: 4;
       },
       {
-        low: 5;
-        high: 8;
+        min: 5;
+        max: 8;
       },
       {
-        low: 9;
-        high: 12;
+        min: 9;
+        max: 12;
       },
       {
-        low: 13;
-        high: 16;
+        min: 13;
+        max: 16;
       },
       {
-        low: 17;
-        high: 20;
+        min: 17;
+        max: 20;
       }
     ];
   dangers: DelveSiteThemeDangerRow[] &
     [
       {
-        low: 1;
-        high: 5;
+        min: 1;
+        max: 5;
       },
       {
-        low: 6;
-        high: 10;
+        min: 6;
+        max: 10;
       },
       {
-        low: 11;
-        high: 12;
+        min: 11;
+        max: 12;
       },
       {
-        low: 13;
-        high: 14;
+        min: 13;
+        max: 14;
       },
       {
-        low: 15;
-        high: 16;
+        min: 15;
+        max: 16;
       },
       {
-        low: 17;
-        high: 18;
+        min: 17;
+        max: 18;
       },
       {
-        low: 19;
-        high: 20;
+        min: 19;
+        max: 20;
       },
       {
-        low: 21;
-        high: 22;
+        min: 21;
+        max: 22;
       },
       {
-        low: 23;
-        high: 24;
+        min: 23;
+        max: 24;
       },
       {
-        low: 25;
-        high: 26;
+        min: 25;
+        max: 26;
       },
       {
-        low: 27;
-        high: 28;
+        min: 27;
+        max: 28;
       },
       {
-        low: 29;
-        high: 30;
+        min: 29;
+        max: 30;
       }
     ];
   _source?: SourceStub16;
@@ -2276,8 +2276,8 @@ export interface DelveSiteThemeFeatureRow {
   template?: OracleRollTemplate;
   i18n?: I18NHints1;
   id?: ThemeFeatureRowID;
-  low: number;
-  high: number;
+  min: number;
+  max: number;
 }
 export interface DelveSiteThemeDangerRow {
   result: MarkdownString;
@@ -2290,8 +2290,8 @@ export interface DelveSiteThemeDangerRow {
   template?: OracleRollTemplate;
   i18n?: I18NHints1;
   id?: ThemeDangerRowID;
-  low: number;
-  high: number;
+  min: number;
+  max: number;
 }
 /**
  * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
@@ -2354,60 +2354,60 @@ export interface DelveSiteDomain {
   features: DelveSiteDomainFeatureRow[] &
     [
       {
-        low: 21;
-        high: 43;
+        min: 21;
+        max: 43;
       },
       {
-        low: 44;
-        high: 56;
+        min: 44;
+        max: 56;
       },
       {
-        low: 57;
-        high: 64;
+        min: 57;
+        max: 64;
       },
       {
-        low: 65;
-        high: 68;
+        min: 65;
+        max: 68;
       },
       {
-        low: 69;
-        high: 72;
+        min: 69;
+        max: 72;
       },
       {
-        low: 73;
-        high: 76;
+        min: 73;
+        max: 76;
       },
       {
-        low: 77;
-        high: 80;
+        min: 77;
+        max: 80;
       },
       {
-        low: 81;
-        high: 84;
+        min: 81;
+        max: 84;
       },
       {
-        low: 85;
-        high: 88;
+        min: 85;
+        max: 88;
       },
       {
-        low: 89;
-        high: 98;
+        min: 89;
+        max: 98;
         result?: string;
         suggestions?: {
           [k: string]: unknown;
         };
       },
       {
-        low: 99;
-        high: 99;
+        min: 99;
+        max: 99;
         result?: string;
         suggestions?: {
           [k: string]: unknown;
         };
       },
       {
-        low: 100;
-        high: 100;
+        min: 100;
+        max: 100;
         result?: string;
         suggestions?: {
           [k: string]: unknown;
@@ -2417,24 +2417,24 @@ export interface DelveSiteDomain {
   dangers: DelveSiteDomainDangerRow[] &
     [
       {
-        low: 31;
-        high: 33;
+        min: 31;
+        max: 33;
       },
       {
-        low: 34;
-        high: 36;
+        min: 34;
+        max: 36;
       },
       {
-        low: 37;
-        high: 39;
+        min: 37;
+        max: 39;
       },
       {
-        low: 40;
-        high: 42;
+        min: 40;
+        max: 42;
       },
       {
-        low: 43;
-        high: 45;
+        min: 43;
+        max: 45;
       }
     ];
   _source?: SourceStub17;
@@ -2450,8 +2450,8 @@ export interface DelveSiteDomainFeatureRow {
   template?: OracleRollTemplate;
   i18n?: I18NHints1;
   id?: DomainFeatureRowID;
-  low: number;
-  high: number;
+  min: number;
+  max: number;
 }
 export interface DelveSiteDomainDangerRow {
   result: MarkdownString;
@@ -2464,8 +2464,8 @@ export interface DelveSiteDomainDangerRow {
   template?: OracleRollTemplate;
   i18n?: I18NHints1;
   id?: DomainDangerRowID;
-  low: number;
-  high: number;
+  min: number;
+  max: number;
 }
 /**
  * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.

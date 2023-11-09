@@ -23,58 +23,58 @@ oracles:
         #   part_of_speech: [noun]
         summary: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
         table:
-          - low: 1
-            high: 15
+          - min: 1
+            max: 15
             result: '[Desert World](id:starforged/collections/oracles/planets/desert)'
             # game_objects: *obj:Planet.Desert
             # images: *images:DesertWorld
-          - low: 16
-            high: 30
+          - min: 16
+            max: 30
             result: '[Furnace World](id:starforged/collections/oracles/planets/furnace)'
             # game_objects: *obj:Planet.Furnace
             # images: *images:FurnaceWorld
-          - low: 31
-            high: 35
+          - min: 31
+            max: 35
             result: '[Grave World](id:starforged/collections/oracles/planets/grave)'
             # game_objects: *obj:Planet.Grave
             # images: *images:GraveWorld
-          - low: 36
-            high: 50
+          - min: 36
+            max: 50
             result: '[Ice World](id:starforged/collections/oracles/planets/ice)'
             # game_objects: *obj:Planet.Ice
             # images: *images:IceWorld
-          - low: 51
-            high: 65
+          - min: 51
+            max: 65
             result: '[Jovian World](id:starforged/collections/oracles/planets/jovian)'
             # game_objects: *obj:Planet.Jovian
             # images: *images:JovianWorld
-          - low: 66
-            high: 70
+          - min: 66
+            max: 70
             result: '[Jungle World](id:starforged/collections/oracles/planets/jungle)'
             # game_objects: *obj:Planet.Jungle
             # images: *images:JungleWorld
-          - low: 71
-            high: 75
+          - min: 71
+            max: 75
             result: '[Ocean World](id:starforged/collections/oracles/planets/ocean)'
             # game_objects: *obj:Planet.Ocean
             # images: *images:OceanWorld
-          - low: 76
-            high: 90
+          - min: 76
+            max: 90
             result: '[Rocky World](id:starforged/collections/oracles/planets/rocky)'
             # game_objects: *obj:Planet.Rocky
             # images: *images:RockyWorld
-          - low: 91
-            high: 92
+          - min: 91
+            max: 92
             result: '[Shattered World](id:starforged/collections/oracles/planets/shattered)'
             # game_objects: *obj:Planet.Shattered
             # images: *images:ShatteredWorld
-          - low: 93
-            high: 98
+          - min: 93
+            max: 98
             result: '[Tainted World](id:starforged/collections/oracles/planets/tainted)'
             # game_objects: *obj:Planet.Tainted
             # images: *images:TaintedWorld
-          - low: 99
-            high: 100
+          - min: 99
+            max: 100
             result: '[Vital World](id:starforged/collections/oracles/planets/vital)'
             # game_objects: *obj:Planet.Vital
             # images: *images:VitalWorld
@@ -116,125 +116,125 @@ oracles:
             #     attributes:
             #       life: [none, extinct]
             table: &table:Planets.Peril
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: Corrupted or mutated lifeform
                 # suggestions: [*obj:Creature]
               # TODO: suggest chaotic theme?
-              - low: 4
-                high: 6
+              - min: 4
+                max: 6
                 result: Signs of a lifeform's power or cunning
                 # suggestions: [*obj:Creature]
-              - low: 7
-                high: 9
+              - min: 7
+                max: 9
                 result: Hazardous plant life or malignant spores
-              - low: 10
-                high: 12
+              - min: 10
+                max: 12
                 result: Lifeform hunts for prey
                 # suggestions: [*obj:Creature]
-              - low: 13
-                high: 15
+              - min: 13
+                max: 15
                 result: Lifeform lairs here
                 # suggestions: [*obj:Creature]
-              - low: 16
-                high: 18
+              - min: 16
+                max: 18
                 result: Lifeforms guided by a greater threat
                 # suggestions: [*obj:Creature]
-              - low: 19
-                high: 21
+              - min: 19
+                max: 21
                 result: Lifeforms spooked or stampeding
                 # suggestions: [*obj:Creature]
-              - low: 22
-                high: 24
+              - min: 22
+                max: 24
                 result: Threatening lifeform draws near
                 # suggestions: [*obj:Creature]
-              - low: 25
-                high: 27
+              - min: 25
+                max: 27
                 result: Life is revealed or takes an unexpected form
                 # suggestions: [*obj:Creature]
-              - low: 28
-                high: 30
+              - min: 28
+                max: 30
                 result: Blocked or impassible path
-              - low: 31
-                high: 33
+              - min: 31
+                max: 33
                 result: Corrosive substance or environment
-              - low: 34
-                high: 36
+              - min: 34
+                max: 36
                 result: Disturbing remains or evidence of death
-              - low: 37
-                high: 39
+              - min: 37
+                max: 39
                 result: Drastic environmental change
-              - low: 40
-                high: 42
+              - min: 40
+                max: 42
                 result: Enemy holds this area
                 # suggestions: [*obj:LocationTheme.Fortified]
-              - low: 43
-                high: 45
+              - min: 43
+                max: 45
                 result: Entangling or engulfing hazard
-              - low: 46
-                high: 48
+              - min: 46
+                max: 48
                 result: Equipment fails or malfunctions
-              - low: 49
-                high: 51
+              - min: 49
+                max: 51
                 result: Guarded or patrolled path
                 # suggestions: [*obj:LocationTheme.Fortified]
-              - low: 52
-                high: 54
+              - min: 52
+                max: 54
                 result: Led astray
-              - low: 55
-                high: 57
+              - min: 55
+                max: 57
                 result: Lost the path
-              - low: 58
-                high: 60
+              - min: 58
+                max: 60
                 result: Meteorites fall from the sky
-              - low: 61
-                high: 63
+              - min: 61
+                max: 63
                 result: Irradiated area or object
-              - low: 64
-                high: 66
+              - min: 64
+                max: 66
                 result: Realization that something was left behind
-              - low: 67
-                high: 69
+              - min: 67
+                max: 69
                 result: Seismic or volcanic upheaval
-              - low: 70
-                high: 72
+              - min: 70
+                max: 72
                 result: Signs of a lurking or trailing foe
-              - low: 73
-                high: 75
+              - min: 73
+                max: 75
                 result: Storm or atmospheric disruption
-              - low: 76
-                high: 78
+              - min: 76
+                max: 78
                 result: Toxic or sickening environment
-              - low: 79
-                high: 81
+              - min: 79
+                max: 81
                 result: Trap or alarm
-              - low: 82
-                high: 84
+              - min: 82
+                max: 84
                 result: Treacherous or arduous path
-              - low: 85
-                high: 87
+              - min: 85
+                max: 87
                 result: Troubling visions or apparitions
                 # suggestions: [*obj:LocationTheme.Haunted]
-              - low: 88
-                high: 90
+              - min: 88
+                max: 90
                 result: Visibility hindered by atmospheric effects
-              - low: 91
-                high: 93
+              - min: 91
+                max: 93
                 result: Worrying arrival of a ship or vehicle
                 # suggestions: [*obj:Starship]
-              - low: 94
-                high: 96
+              - min: 94
+                max: 96
                 result: Wreckage or ruins portend a new threat
-              - low: 97
-                high: 99
+              - min: 97
+                max: 99
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -248,112 +248,112 @@ oracles:
             #     attributes:
             #       life: [none, extinct]
             table:
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Corrupted or mutated lifeform
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Signs of a lifeform's power or cunning
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Hazardous plant life or malignant spores
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Lifeform hunts for prey
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Lifeform lairs here
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Lifeforms guided by a greater threat
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Lifeforms spooked or stampeding
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Threatening lifeform draws near
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: Life is revealed or takes an unexpected form
-              - low: 4
-                high: 7
+              - min: 4
+                max: 7
                 result: Blocked or impassible path
-              - low: 8
-                high: 11
+              - min: 8
+                max: 11
                 result: Corrosive substance or environment
-              - low: 12
-                high: 15
+              - min: 12
+                max: 15
                 result: Disturbing remains or evidence of death
-              - low: 16
-                high: 19
+              - min: 16
+                max: 19
                 result: Drastic environmental change
-              - low: 20
-                high: 23
+              - min: 20
+                max: 23
                 result: Enemy holds this area
-              - low: 24
-                high: 27
+              - min: 24
+                max: 27
                 result: Entangling or engulfing hazard
-              - low: 28
-                high: 31
+              - min: 28
+                max: 31
                 result: Equipment fails or malfunctions
-              - low: 32
-                high: 35
+              - min: 32
+                max: 35
                 result: Guarded or patrolled path
-              - low: 36
-                high: 39
+              - min: 36
+                max: 39
                 result: Led astray
-              - low: 40
-                high: 43
+              - min: 40
+                max: 43
                 result: Lost the path
-              - low: 44
-                high: 47
+              - min: 44
+                max: 47
                 result: Meteorites fall from the sky
-              - low: 48
-                high: 51
+              - min: 48
+                max: 51
                 result: Irradiated area or object
-              - low: 52
-                high: 55
+              - min: 52
+                max: 55
                 result: Realization that something was left behind
-              - low: 56
-                high: 59
+              - min: 56
+                max: 59
                 result: Seismic or volcanic upheaval
-              - low: 60
-                high: 63
+              - min: 60
+                max: 63
                 result: Signs of a lurking or trailing foe
-              - low: 64
-                high: 67
+              - min: 64
+                max: 67
                 result: Storm or atmospheric disruption
-              - low: 68
-                high: 71
+              - min: 68
+                max: 71
                 result: Toxic or sickening environment
-              - low: 72
-                high: 75
+              - min: 72
+                max: 75
                 result: Trap or alarm
-              - low: 76
-                high: 79
+              - min: 76
+                max: 79
                 result: Treacherous or arduous path
-              - low: 80
-                high: 83
+              - min: 80
+                max: 83
                 result: Troubling visions or apparitions
-              - low: 84
-                high: 87
+              - min: 84
+                max: 87
                 result: Visibility hindered by atmospheric effects
-              - low: 88
-                high: 91
+              - min: 88
+                max: 91
                 result: Worrying arrival of a ship or vehicle
-              - low: 92
-                high: 95
+              - min: 92
+                max: 95
                 result: Wreckage or ruins portend a new threat
-              - low: 96
-                high: 99
+              - min: 96
+                max: 99
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -394,90 +394,90 @@ oracles:
             # usage:
             #   requires: *attr:Life.Lifebearing
             table:
-              - low: 1
-                high: 4
+              - min: 1
+                max: 4
                 result: &Opp.0 Clue to a lifeform's nature or vulnerabilities
                 # suggestions: [*obj:Creature]
-              - low: 5
-                high: 8
+              - min: 5
+                max: 8
                 result: &Opp.1 Friendly interaction with a benign lifeform
                 # suggestions: [*obj:Creature]
-              - low: 9
-                high: 12
+              - min: 9
+                max: 12
                 result: &Opp.2 Hunting or foraging opportunities are plentiful
-              - low: 13
-                high: 16
+              - min: 13
+                max: 16
                 result: &Opp.3 Interesting or helpful aspect of benign creatures
                 # suggestions: [*obj:Creature]
-              - low: 17
-                high: 20
+              - min: 17
+                max: 20
                 result: &Opp.4 Interesting or helpful aspect of local plant life
-              - low: 21
-                high: 24
+              - min: 21
+                max: 24
                 result: &Opp.5 Encounter reveals unexpected benign lifeforms
                 # suggestions: [*obj:Creature]
-              - low: 25
-                high: 28
+              - min: 25
+                max: 28
                 result: &Opp.6 Abandoned camp or vehicle
                 # suggestions: [*roll:Object]
-              - low: 29
-                high: 32
+              - min: 29
+                max: 32
                 result: &Opp.7 Advance warning of an environmental threat
-              - low: 33
-                high: 36
+              - min: 33
+                max: 36
                 result: &Opp.8 Clear path through otherwise perilous terrain
-              - low: 37
-                high: 40
+              - min: 37
+                max: 40
                 result: &Opp.9 Clue offers insight into a current quest or mystery
-              - low: 41
-                high: 44
+              - min: 41
+                max: 44
                 result: &Opp.10 Clue to the history or nature of this place
-              - low: 45
-                high: 48
+              - min: 45
+                max: 48
                 result: &Opp.11 Evidence that others have passed this way
-              - low: 49
-                high: 52
+              - min: 49
+                max: 52
                 result: &Opp.12 Foe reveals themselves or tips their hand
-              - low: 53
-                high: 56
+              - min: 53
+                max: 56
                 result: &Opp.13 Fortuitous change in the weather or atmosphere
-              - low: 57
-                high: 60
+              - min: 57
+                max: 60
                 result: &Opp.14 Friendly traveler crosses your path
-              - low: 61
-                high: 64
+              - min: 61
+                max: 64
                 result: &Opp.15 Helpful resource is in ample supply
                 # suggestions: [*roll:Object]
-              - low: 65
-                high: 68
+              - min: 65
+                max: 68
                 result: &Opp.16 Impressive vista offers comfort or inspiration
-              - low: 69
-                high: 72
+              - min: 69
+                max: 72
                 result: &Opp.17 Interesting artifact or device
                 # suggestions: [*roll:Object]
-              - low: 73
-                high: 76
+              - min: 73
+                max: 76
                 result: &Opp.18 Interesting site offers opportunities for exploration
                 # suggestions: [*roll:Object]
-              - low: 77
-                high: 80
+              - min: 77
+                max: 80
                 result: &Opp.19 Moment of fellowship or inner peace
-              - low: 81
-                high: 84
+              - min: 81
+                max: 84
                 result: &Opp.20 'Opening to distract, escape, or avoid foes'
-              - low: 85
-                high: 88
+              - min: 85
+                max: 88
                 result: &Opp.21 Opening to get the drop on a foe
-              - low: 89
-                high: 92
+              - min: 89
+                max: 92
                 result: &Opp.22 Plea for help from a potential benefactor
                 # suggestions: [*obj:Npc]
-              - low: 93
-                high: 96
+              - min: 93
+                max: 96
                 result: &Opp.23 'Refuge offers a place to hide, plan, or recover'
                 # suggestions: [*roll:Object]
-              - low: 97
-                high: 100
+              - min: 97
+                max: 100
                 result: &Opp.24 Vantage point reveals the lay of the land
                 # suggestions: [*roll:Object]
           lifeless:
@@ -487,78 +487,78 @@ oracles:
             # usage:
             #   requires: *attr:Life.Lifeless
             table:
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: *Opp.0
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: *Opp.1
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: *Opp.2
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: *Opp.3
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: *Opp.4
-              - low: 1
-                high: 5
+              - min: 1
+                max: 5
                 result: *Opp.5
-              - low: 6
-                high: 10
+              - min: 6
+                max: 10
                 result: *Opp.6
-              - low: 11
-                high: 15
+              - min: 11
+                max: 15
                 result: *Opp.7
-              - low: 16
-                high: 20
+              - min: 16
+                max: 20
                 result: *Opp.8
-              - low: 21
-                high: 25
+              - min: 21
+                max: 25
                 result: *Opp.9
-              - low: 26
-                high: 30
+              - min: 26
+                max: 30
                 result: *Opp.10
-              - low: 31
-                high: 35
+              - min: 31
+                max: 35
                 result: *Opp.11
-              - low: 36
-                high: 40
+              - min: 36
+                max: 40
                 result: *Opp.12
-              - low: 41
-                high: 45
+              - min: 41
+                max: 45
                 result: *Opp.13
-              - low: 46
-                high: 50
+              - min: 46
+                max: 50
                 result: *Opp.14
-              - low: 51
-                high: 55
+              - min: 51
+                max: 55
                 result: *Opp.15
-              - low: 56
-                high: 60
+              - min: 56
+                max: 60
                 result: *Opp.16
-              - low: 61
-                high: 65
+              - min: 61
+                max: 65
                 result: *Opp.17
-              - low: 66
-                high: 70
+              - min: 66
+                max: 70
                 result: *Opp.18
-              - low: 71
-                high: 75
+              - min: 71
+                max: 75
                 result: *Opp.19
-              - low: 76
-                high: 80
+              - min: 76
+                max: 80
                 result: *Opp.20
-              - low: 81
-                high: 85
+              - min: 81
+                max: 85
                 result: *Opp.21
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: *Opp.22
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: *Opp.23
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: *Opp.24

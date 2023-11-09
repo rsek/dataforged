@@ -58,111 +58,111 @@ oracles:
             #     attributes:
             #       region: [terminus]
             table: &table:Mission
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: &Mission.0.result Blockade a location
                 # suggestions: [*roll:Place]
-              - low: 4
-                high: 6
+              - min: 4
+                max: 6
                 result: &Mission.1.result Break a blockade
-              - low: 7
-                high: 9
+              - min: 7
+                max: 9
                 result: &Mission.2.result Collect a resource
                 # suggestions: [*roll:Object]
-              - low: 10
-                high: 11
+              - min: 10
+                max: 11
                 result: &Mission.3.result Command others
-              - low: 12
-                high: 14
+              - min: 12
+                max: 14
                 result: &Mission.4.result Conduct diplomacy
-              - low: 15
-                high: 17
+              - min: 15
+                max: 17
                 result: &Mission.5.result Conduct espionage
-              - low: 18
-                high: 20
+              - min: 18
+                max: 20
                 result: &Mission.6.result Conduct piracy
-              - low: 21
-                high: 23
+              - min: 21
+                max: 23
                 result: &Mission.7.result Conduct research
-              - low: 24
-                high: 26
+              - min: 24
+                max: 26
                 result: &Mission.8.result Defend against an attack
-              - low: 27
-                high: 29
+              - min: 27
+                max: 29
                 result: &Mission.9.result Deliver messages or data
-              - low: 30
-                high: 32
+              - min: 30
+                max: 32
                 result: &Mission.10.result Establish a settlement
-              - low: 33
-                high: 35
+              - min: 33
+                max: 35
                 result: &Mission.11.result Evacuate a location
                 # suggestions: [*obj:Settlement]
-              - low: 36
-                high: 37
+              - min: 36
+                max: 37
                 result: &Mission.12.result Explore a region
-              - low: 38
-                high: 39
+              - min: 38
+                max: 39
                 result: &Mission.13.result Hold prisoners
-              - low: 40
-                high: 42
+              - min: 40
+                max: 42
                 result: &Mission.14.result Hunt down another ship
                 # suggestions: [*obj:Starship]
-              - low: 43
-                high: 45
+              - min: 43
+                max: 45
                 result: &Mission.15.result Launch an attack
-              - low: 46
-                high: 48
+              - min: 46
+                max: 48
                 result: &Mission.16.result Patrol an area
-              - low: 49
-                high: 51
+              - min: 49
+                max: 51
                 result: &Mission.17.result Provide medical aid
-              - low: 52
-                high: 54
+              - min: 52
+                max: 54
                 result: &Mission.18.result Provide repairs
-              - low: 55
-                high: 57
+              - min: 55
+                max: 57
                 result: &Mission.19.result Provide shelter
-              - low: 58
-                high: 59
+              - min: 58
+                max: 59
                 result: &Mission.20.result Quarantine a danger
                 # suggestions: [*roll:Event]
-              - low: 60
-                high: 62
+              - min: 60
+                max: 62
                 result: &Mission.21.result Raid a settlement
                 # suggestions: [*obj:Settlement]
-              - low: 63
-                high: 65
+              - min: 63
+                max: 65
                 result: &Mission.22.result Resupply a settlement
                 # suggestions: [*obj:Settlement]
-              - low: 66
-                high: 68
+              - min: 66
+                max: 68
                 result: &Mission.23.result Retrieve salvage
-              - low: 69
-                high: 71
+              - min: 69
+                max: 71
                 result: &Mission.24.result Search and rescue
-              - low: 72
-                high: 74
+              - min: 72
+                max: 74
                 result: &Mission.25.result Smuggle cargo
                 # suggestions: [*roll:Object]
-              - low: 75
-                high: 77
+              - min: 75
+                max: 77
                 result: &Mission.26.result Survey a site
                 # suggestions: [*roll:Place]
-              - low: 78
-                high: 79
+              - min: 78
+                max: 79
                 result: &Mission.27.result Test a technology
                 # suggestions: [*roll:Object]
-              - low: 80
-                high: 82
+              - min: 80
+                max: 82
                 result: &Mission.28.result Transport cargo
                 # suggestions: [*roll:Object]
-              - low: 83
-                high: 85
+              - min: 83
+                max: 85
                 result: &Mission.29.result Transport passengers
                 # suggestions: [*obj:Npc]
               - &Mission.30
-                low: 86
-                high: 90
+                min: 86
+                max: 90
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
@@ -170,8 +170,8 @@ oracles:
                   - oracle: starforged/oracles/core/theme
                     auto: true
               - &Mission.31
-                low: 91
-                high: 100
+                min: 91
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -184,95 +184,95 @@ oracles:
             #     attributes:
             #       region: [outlands]
             table:
-              - low: 1
-                high: 2
+              - min: 1
+                max: 2
                 result: *Mission.0.result
-              - low: 3
-                high: 4
+              - min: 3
+                max: 4
                 result: *Mission.1.result
-              - low: 5
-                high: 7
+              - min: 5
+                max: 7
                 result: *Mission.2.result
-              - low: 8
-                high: 9
+              - min: 8
+                max: 9
                 result: *Mission.3.result
-              - low: 10
-                high: 11
+              - min: 10
+                max: 11
                 result: *Mission.4.result
-              - low: 12
-                high: 13
+              - min: 12
+                max: 13
                 result: *Mission.5.result
-              - low: 14
-                high: 16
+              - min: 14
+                max: 16
                 result: *Mission.6.result
-              - low: 17
-                high: 20
+              - min: 17
+                max: 20
                 result: *Mission.7.result
-              - low: 21
-                high: 24
+              - min: 21
+                max: 24
                 result: *Mission.8.result
-              - low: 25
-                high: 28
+              - min: 25
+                max: 28
                 result: *Mission.9.result
-              - low: 29
-                high: 32
+              - min: 29
+                max: 32
                 result: *Mission.10.result
-              - low: 33
-                high: 36
+              - min: 33
+                max: 36
                 result: *Mission.11.result
-              - low: 37
-                high: 40
+              - min: 37
+                max: 40
                 result: *Mission.12.result
-              - low: 41
-                high: 42
+              - min: 41
+                max: 42
                 result: *Mission.13.result
-              - low: 43
-                high: 45
+              - min: 43
+                max: 45
                 result: *Mission.14.result
-              - low: 46
-                high: 48
+              - min: 46
+                max: 48
                 result: *Mission.15.result
-              - low: 49
-                high: 50
+              - min: 49
+                max: 50
                 result: *Mission.16.result
-              - low: 51
-                high: 53
+              - min: 51
+                max: 53
                 result: *Mission.17.result
-              - low: 54
-                high: 56
+              - min: 54
+                max: 56
                 result: *Mission.18.result
-              - low: 57
-                high: 59
+              - min: 57
+                max: 59
                 result: *Mission.19.result
-              - low: 60
-                high: 61
+              - min: 60
+                max: 61
                 result: *Mission.20.result
-              - low: 62
-                high: 64
+              - min: 62
+                max: 64
                 result: *Mission.21.result
-              - low: 65
-                high: 68
+              - min: 65
+                max: 68
                 result: *Mission.22.result
-              - low: 69
-                high: 71
+              - min: 69
+                max: 71
                 result: *Mission.23.result
-              - low: 72
-                high: 73
+              - min: 72
+                max: 73
                 result: *Mission.24.result
-              - low: 74
-                high: 75
+              - min: 74
+                max: 75
                 result: *Mission.25.result
-              - low: 76
-                high: 78
+              - min: 76
+                max: 78
                 result: *Mission.26.result
-              - low: 79
-                high: 80
+              - min: 79
+                max: 80
                 result: *Mission.27.result
-              - low: 81
-                high: 83
+              - min: 81
+                max: 83
                 result: *Mission.28.result
-              - low: 84
-                high: 85
+              - min: 84
+                max: 85
                 result: *Mission.29.result
               - *Mission.30
               - *Mission.31
@@ -285,95 +285,95 @@ oracles:
             #     attributes:
             #       region: [expanse]
             table:
-              - low: 1
-                high: 2
+              - min: 1
+                max: 2
                 result: *Mission.0.result
-              - low: 3
-                high: 4
+              - min: 3
+                max: 4
                 result: *Mission.1.result
-              - low: 5
-                high: 8
+              - min: 5
+                max: 8
                 result: *Mission.2.result
-              - low: 9
-                high: 10
+              - min: 9
+                max: 10
                 result: *Mission.3.result
-              - low: 11
-                high: 12
+              - min: 11
+                max: 12
                 result: *Mission.4.result
-              - low: 13
-                high: 14
+              - min: 13
+                max: 14
                 result: *Mission.5.result
-              - low: 15
-                high: 16
+              - min: 15
+                max: 16
                 result: *Mission.6.result
-              - low: 17
-                high: 22
+              - min: 17
+                max: 22
                 result: *Mission.7.result
-              - low: 23
-                high: 25
+              - min: 23
+                max: 25
                 result: *Mission.8.result
-              - low: 26
-                high: 29
+              - min: 26
+                max: 29
                 result: *Mission.9.result
-              - low: 30
-                high: 35
+              - min: 30
+                max: 35
                 result: *Mission.10.result
-              - low: 36
-                high: 39
+              - min: 36
+                max: 39
                 result: *Mission.11.result
-              - low: 40
-                high: 45
+              - min: 40
+                max: 45
                 result: *Mission.12.result
-              - low: 46
-                high: 47
+              - min: 46
+                max: 47
                 result: *Mission.13.result
-              - low: 48
-                high: 49
+              - min: 48
+                max: 49
                 result: *Mission.14.result
-              - low: 50
-                high: 51
+              - min: 50
+                max: 51
                 result: *Mission.15.result
-              - low: 52
-                high: 53
+              - min: 52
+                max: 53
                 result: *Mission.16.result
-              - low: 54
-                high: 55
+              - min: 54
+                max: 55
                 result: *Mission.17.result
-              - low: 56
-                high: 57
+              - min: 56
+                max: 57
                 result: *Mission.18.result
-              - low: 58
-                high: 61
+              - min: 58
+                max: 61
                 result: *Mission.19.result
-              - low: 62
-                high: 63
+              - min: 62
+                max: 63
                 result: *Mission.20.result
-              - low: 64
-                high: 65
+              - min: 64
+                max: 65
                 result: *Mission.21.result
-              - low: 66
-                high: 69
+              - min: 66
+                max: 69
                 result: *Mission.22.result
-              - low: 70
-                high: 71
+              - min: 70
+                max: 71
                 result: *Mission.23.result
-              - low: 72
-                high: 73
+              - min: 72
+                max: 73
                 result: *Mission.24.result
-              - low: 74
-                high: 75
+              - min: 74
+                max: 75
                 result: *Mission.25.result
-              - low: 76
-                high: 77
+              - min: 76
+                max: 77
                 result: *Mission.26.result
-              - low: 78
-                high: 79
+              - min: 78
+                max: 79
                 result: *Mission.27.result
-              - low: 80
-                high: 83
+              - min: 80
+                max: 83
                 result: *Mission.28.result
-              - low: 84
-                high: 85
+              - min: 84
+                max: 85
                 result: *Mission.29.result
               - *Mission.30
               - *Mission.31
@@ -400,113 +400,113 @@ oracles:
               label: Typical Role
               content_type: summary
         table:
-          - low: 1
-            high: 2
+          - min: 1
+            max: 2
             result: Carrier
             summary: Launches fighters
             # set_attributes: {starship_type: [carrier]}
-          - low: 3
-            high: 6
+          - min: 3
+            max: 6
             result: Corvette
             summary: Light attack ship
             # set_attributes: {starship_type: [corvette]}
-          - low: 7
-            high: 11
+          - min: 7
+            max: 11
             result: Courier
             summary: Fast transport
             # set_attributes: {starship_type: [courier]}
-          - low: 12
-            high: 14
+          - min: 12
+            max: 14
             result: Cruiser
             summary: Medium attack ship
             # set_attributes: {starship_type: [cruiser]}
-          - low: 15
-            high: 16
+          - min: 15
+            max: 16
             result: Dreadnought
             summary: Heavy attack ship
             # set_attributes: {starship_type: [dreadnought]}
-          - low: 17
-            high: 19
+          - min: 17
+            max: 19
             result: Escape pod
             summary: Survival craft
             # set_attributes: {starship_type: [escape]}
-          - low: 20
-            high: 22
+          - min: 20
+            max: 22
             result: Foundry
             summary: Mobile construction platform
             # set_attributes: {starship_type: [foundry]}
-          - low: 23
-            high: 27
+          - min: 23
+            max: 27
             result: Harvester
             summary: Fuel or energy excavator
             # set_attributes: {starship_type: [harvester]}
-          - low: 28
-            high: 33
+          - min: 28
+            max: 33
             result: Hauler
             summary: Heavy transport
             # set_attributes: {starship_type: [hauler]}
-          - low: 34
-            high: 36
+          - min: 34
+            max: 36
             result: Hunter
             summary: Stealthy attack ship
             # set_attributes: {starship_type: [hunter]}
-          - low: 37
-            high: 38
+          - min: 37
+            max: 38
             result: Ironhome
             summary: Habitat
             # set_attributes: {starship_type: [ironhome]}
-          - low: 39
-            high: 42
+          - min: 39
+            max: 42
             result: Mender
             summary: Utility or repair
             # set_attributes: {starship_type: [mender]}
-          - low: 43
-            high: 47
+          - min: 43
+            max: 47
             result: Outbounder
             summary: Remote survey or research
             # set_attributes: {starship_type: [outbounder]}
-          - low: 48
-            high: 50
+          - min: 48
+            max: 50
             result: Pennant
             summary: Command ship
             # set_attributes: {starship_type: [pennant]}
-          - low: 51
-            high: 56
+          - min: 51
+            max: 56
             result: Prospector
             summary: Mineral excavator
             # set_attributes: {starship_type: [prospector]}
-          - low: 57
-            high: 61
+          - min: 57
+            max: 61
             result: Reclaimer
             summary: Salvage or rescue
             # set_attributes: {starship_type: [reclaimer]}
-          - low: 62
-            high: 64
+          - min: 62
+            max: 64
             result: Shuttle
             summary: Short-range transport
             # set_attributes: {starship_type: [shuttle]}
-          - low: 65
-            high: 67
+          - min: 65
+            max: 67
             result: Snub fighter
             summary: Small attack craft
             # set_attributes: {starship_type: [snub_fighter]}
-          - low: 68
-            high: 82
+          - min: 68
+            max: 82
             result: Multipurpose
             summary: '[Starship Mission](id:starforged/oracles/starships/mission)'
             rolls:
               - oracle: starforged/oracles/starships/mission
               # set_attributes: {starship_type: [multipurpose]}]
-          - low: 83
-            high: 84
+          - min: 83
+            max: 84
             result: Unusual or unknown
-          - low: 85
-            high: 94
+          - min: 85
+            max: 94
             result: '[Fleet](id:starforged/oracles/starships/fleet)'
             rolls:
               - oracle: starforged/oracles/starships/fleet
-          - low: 95
-            high: 100
+          - min: 95
+            max: 100
             result: Ships in conflict (roll twice)
             rolls:
               - oracle: starforged/oracles/starships/type
@@ -522,29 +522,29 @@ oracles:
         # usage:
         #   initial: true
         table:
-          - low: 1
-            high: 10
+          - min: 1
+            max: 10
             result: Battle fleet
-          - low: 11
-            high: 25
+          - min: 11
+            max: 25
             result: Pirate wing
-          - low: 26
-            high: 35
+          - min: 26
+            max: 35
             result: Raider horde
-          - low: 36
-            high: 50
+          - min: 36
+            max: 50
             result: Salvager hive
-          - low: 51
-            high: 60
+          - min: 51
+            max: 60
             result: Settler caravan
-          - low: 61
-            high: 70
+          - min: 61
+            max: 70
             result: Trade caravan
-          - low: 71
-            high: 90
+          - min: 71
+            max: 90
             result: Transport and escorts
-          - low: 91
-            high: 100
+          - min: 91
+            max: 100
             result: '[Starship Mission](id:starforged/oracles/starships/mission)'
             rolls:
               - oracle: starforged/oracles/starships/mission
@@ -558,41 +558,41 @@ oracles:
         #   part_of_speech: [fragment]
         #   tags: [relationship]
         table:
-          - low: 1
-            high: 3
+          - min: 1
+            max: 3
             result: Familiar
-          - low: 4
-            high: 15
+          - min: 4
+            max: 15
             result: Friendly
-          - low: 16
-            high: 25
+          - min: 16
+            max: 25
             result: Neutral / automated
-          - low: 26
-            high: 35
+          - min: 26
+            max: 35
             result: Wary
-          - low: 36
-            high: 40
+          - min: 36
+            max: 40
             result: Dismissive
-          - low: 41
-            high: 50
+          - min: 41
+            max: 50
             result: Uncooperative
-          - low: 51
-            high: 65
+          - min: 51
+            max: 65
             result: Hostile
-          - low: 66
-            high: 80
+          - min: 66
+            max: 80
             result: Asking for help
-          - low: 81
-            high: 85
+          - min: 81
+            max: 85
             result: In battle
-          - low: 86
-            high: 90
+          - min: 86
+            max: 90
             result: Unresponsive
-          - low: 91
-            high: 95
+          - min: 91
+            max: 95
             result: Destroyed
-          - low: 96
-            high: 100
+          - min: 96
+            max: 100
             result: '[Derelict](id:starforged/collections/oracles/derelicts)'
             # *inherit:Derelict.Starship
       first_look:
@@ -606,71 +606,71 @@ oracles:
         #   part_of_speech: [fragment]
         #   tags: [description]
         table:
-          - low: 1
-            high: 4
+          - min: 1
+            max: 4
             result: Abnormal sensor readings
-          - low: 5
-            high: 8
+          - min: 5
+            max: 8
             result: Brightly painted
-          - low: 9
-            high: 13
+          - min: 9
+            max: 13
             result: Bristling with weapons
-          - low: 14
-            high: 18
+          - min: 14
+            max: 18
             result: Dark or stealthy
-          - low: 19
-            high: 23
+          - min: 19
+            max: 23
             result: Heavy armor
-          - low: 24
-            high: 28
+          - min: 24
+            max: 28
             result: Immobile
-          - low: 29
-            high: 33
+          - min: 29
+            max: 33
             result: Intimidating profile
-          - low: 34
-            high: 37
+          - min: 34
+            max: 37
             result: Large sensor arrays
-          - low: 38
-            high: 41
+          - min: 38
+            max: 41
             result: Leaking radiation
-          - low: 42
-            high: 45
+          - min: 42
+            max: 45
             result: Low-profile or disguised
-          - low: 46
-            high: 49
+          - min: 46
+            max: 49
             result: Modern or advanced design
-          - low: 50
-            high: 54
+          - min: 50
+            max: 54
             result: Obsolete design
-          - low: 55
-            high: 59
+          - min: 55
+            max: 59
             result: Obvious damage
-          - low: 60
-            high: 63
+          - min: 60
+            max: 63
             result: Biological components
-          - low: 64
-            high: 67
+          - min: 64
+            max: 67
             result: Ornate markings
-          - low: 68
-            high: 71
+          - min: 68
+            max: 71
             result: Oversized engines
-          - low: 72
-            high: 75
+          - min: 72
+            max: 75
             result: Prominent guild emblem
-          - low: 76
-            high: 80
+          - min: 76
+            max: 80
             result: Refitted or repurposed hull
-          - low: 81
-            high: 85
+          - min: 81
+            max: 85
             result: Scarred hull
-          - low: 86
-            high: 90
+          - min: 86
+            max: 90
             result: Built from scrap
-          - low: 91
-            high: 94
+          - min: 91
+            max: 94
             result: Towing or linked
-          - low: 95
-            high: 100
+          - min: 95
+            max: 100
             result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
             rolls:
               - oracle: starforged/oracles/core/descriptor
@@ -688,315 +688,315 @@ oracles:
         #   tags: [name]
         table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
-          - low: 1
-            high: 1
+          - min: 1
+            max: 1
             result: Arclight
             # content: {part_of_speech: [compound noun]}
-          - low: 2
-            high: 2
+          - min: 2
+            max: 2
             result: Argent Arrow
-          - low: 3
-            high: 3
+          - min: 3
+            max: 3
             result: Artemis
             # content: {part_of_speech: [proper noun]}
-          - low: 4
-            high: 4
+          - min: 4
+            max: 4
             result: Astral Explorer
-          - low: 5
-            high: 5
+          - min: 5
+            max: 5
             result: Atlas
             # content: {part_of_speech: [proper noun]}
-          - low: 6
-            high: 6
+          - min: 6
+            max: 6
             result: Aurora
-          - low: 7
-            high: 7
+          - min: 7
+            max: 7
             result: Avari’s Wake
-          - low: 8
-            high: 8
+          - min: 8
+            max: 8
             result: Banshee’s Cry
-          - low: 9
-            high: 9
+          - min: 9
+            max: 9
             result: Beowulf
             # content: {part_of_speech: [proper noun]}
-          - low: 10
-            high: 10
+          - min: 10
+            max: 10
             result: Bloody Jaw
-          - low: 11
-            high: 11
+          - min: 11
+            max: 11
             result: Broken Sword
-          - low: 12
-            high: 12
+          - min: 12
+            max: 12
             result: Buccaneer
-          - low: 13
-            high: 13
+          - min: 13
+            max: 13
             result: Cerelis Nine
-          - low: 14
-            high: 14
+          - min: 14
+            max: 14
             result: Clarion Call
-          - low: 15
-            high: 15
+          - min: 15
+            max: 15
             result: Dawn’s Herald
-          - low: 16
-            high: 16
+          - min: 16
+            max: 16
             result: Dead Reckoning
-          - low: 17
-            high: 17
+          - min: 17
+            max: 17
             result: Drift Runner
-          - low: 18
-            high: 18
+          - min: 18
+            max: 18
             result: Eclipse
-          - low: 19
-            high: 19
+          - min: 19
+            max: 19
             result: Elara Five
-          - low: 20
-            high: 20
+          - min: 20
+            max: 20
             result: Enchantress
-          - low: 21
-            high: 21
+          - min: 21
+            max: 21
             result: Endurance
-          - low: 22
-            high: 22
+          - min: 22
+            max: 22
             result: Excalibur
             # content: {part_of_speech: [proper noun]}
-          - low: 23
-            high: 23
+          - min: 23
+            max: 23
             result: Eye of the Void
-          - low: 24
-            high: 24
+          - min: 24
+            max: 24
             result: Fall of Icarus
-          - low: 25
-            high: 25
+          - min: 25
+            max: 25
             result: Fallen Light
-          - low: 26
-            high: 26
+          - min: 26
+            max: 26
             result: False Hope
-          - low: 27
-            high: 27
+          - min: 27
+            max: 27
             result: Firebreak
-          - low: 28
-            high: 28
+          - min: 28
+            max: 28
             result: First Light
-          - low: 29
-            high: 29
+          - min: 29
+            max: 29
             result: Forge Flier
-          - low: 30
-            high: 30
+          - min: 30
+            max: 30
             result: Fortune’s Favor
-          - low: 31
-            high: 31
+          - min: 31
+            max: 31
             result: Freya’s Wrath
-          - low: 32
-            high: 32
+          - min: 32
+            max: 32
             result: Ghost
-          - low: 33
-            high: 33
+          - min: 33
+            max: 33
             result: Guiding Star
-          - low: 34
-            high: 34
+          - min: 34
+            max: 34
             result: Hand of Fate
-          - low: 35
-            high: 35
+          - min: 35
+            max: 35
             result: Herald of Doom
-          - low: 36
-            high: 36
+          - min: 36
+            max: 36
             result: Implacable
-          - low: 37
-            high: 37
+          - min: 37
+            max: 37
             result: Implicit
-          - low: 38
-            high: 38
+          - min: 38
+            max: 38
             result: Inferno
-          - low: 39
-            high: 39
+          - min: 39
+            max: 39
             result: Invictus
             # content: {part_of_speech: [proper noun]}
-          - low: 40
-            high: 40
+          - min: 40
+            max: 40
             result: Iron Cairn
-          - low: 41
-            high: 41
+          - min: 41
+            max: 41
             result: Karena’s Reverie
-          - low: 42
-            high: 42
+          - min: 42
+            max: 42
             result: Kraken
-          - low: 43
-            high: 43
+          - min: 43
+            max: 43
             result: Kuno’s Hammer
-          - low: 44
-            high: 44
+          - min: 44
+            max: 44
             result: Lightline
-          - low: 45
-            high: 45
+          - min: 45
+            max: 45
             result: Lodestar
-          - low: 46
-            high: 46
+          - min: 46
+            max: 46
             result: Long Haul
-          - low: 47
-            high: 47
+          - min: 47
+            max: 47
             result: Lost Fortune
-          - low: 48
-            high: 48
+          - min: 48
+            max: 48
             result: Luminous Sorrow
-          - low: 49
-            high: 49
+          - min: 49
+            max: 49
             result: Manta
-          - low: 50
-            high: 50
+          - min: 50
+            max: 50
             result: Mercy
-          - low: 51
-            high: 51
+          - min: 51
+            max: 51
             result: Mutara
             # content: {part_of_speech: [proper noun]}
-          - low: 52
-            high: 52
+          - min: 52
+            max: 52
             result: Nebula Prowler
-          - low: 53
-            high: 53
+          - min: 53
+            max: 53
             result: Newton’s Folly
-          - low: 54
-            high: 54
+          - min: 54
+            max: 54
             result: Nightfall
-          - low: 55
-            high: 55
+          - min: 55
+            max: 55
             result: Nomad
-          - low: 56
-            high: 56
+          - min: 56
+            max: 56
             result: Obsidian Trident
-          - low: 57
-            high: 57
+          - min: 57
+            max: 57
             result: Onslaught
-          - low: 58
-            high: 58
+          - min: 58
+            max: 58
             result: Orca
-          - low: 59
-            high: 59
+          - min: 59
+            max: 59
             result: Outward Bound
-          - low: 60
-            high: 60
+          - min: 60
+            max: 60
             result: Phantom
-          - low: 61
-            high: 61
+          - min: 61
+            max: 61
             result: Photon
-          - low: 62
-            high: 62
+          - min: 62
+            max: 62
             result: Poltergeist
-          - low: 63
-            high: 63
+          - min: 63
+            max: 63
             result: Profit Margin
-          - low: 64
-            high: 64
+          - min: 64
+            max: 64
             result: Raven’s Call
-          - low: 65
-            high: 65
+          - min: 65
+            max: 65
             result: Raya’s Promise
-          - low: 66
-            high: 66
+          - min: 66
+            max: 66
             result: Reaper
-          - low: 67
-            high: 67
+          - min: 67
+            max: 67
             result: Reforged Hope
-          - low: 68
-            high: 68
+          - min: 68
+            max: 68
             result: Relentless
-          - low: 69
-            high: 69
+          - min: 69
+            max: 69
             result: Royal Signet
-          - low: 70
-            high: 70
+          - min: 70
+            max: 70
             result: Rubicon
             # content: {part_of_speech: [proper noun]}
-          - low: 71
-            high: 71
+          - min: 71
+            max: 71
             result: Sareea’s Tribute
-          - low: 72
-            high: 72
+          - min: 72
+            max: 72
             result: Second Chance
-          - low: 73
-            high: 73
+          - min: 73
+            max: 73
             result: Shard of the Sun
-          - low: 74
-            high: 74
+          - min: 74
+            max: 74
             result: Shattered Siege
-          - low: 75
-            high: 75
+          - min: 75
+            max: 75
             result: Shattered Star
-          - low: 76
-            high: 76
+          - min: 76
+            max: 76
             result: Silver Talon
-          - low: 77
-            high: 77
+          - min: 77
+            max: 77
             result: Smoldering Flame
-          - low: 78
-            high: 78
+          - min: 78
+            max: 78
             result: Sovereign Skies
-          - low: 79
-            high: 79
+          - min: 79
+            max: 79
             result: Sparrowhawk
-          - low: 80
-            high: 80
+          - min: 80
+            max: 80
             result: Stardust
-          - low: 81
-            high: 81
+          - min: 81
+            max: 81
             result: Starfall
             # content: {part_of_speech: [compound noun]}
-          - low: 82
-            high: 82
+          - min: 82
+            max: 82
             result: Stellar Hawk
-          - low: 83
-            high: 83
+          - min: 83
+            max: 83
             result: Stormswept
             # content: {part_of_speech: [compound noun]}
-          - low: 84
-            high: 84
+          - min: 84
+            max: 84
             result: Sundered Aegis
-          - low: 85
-            high: 85
+          - min: 85
+            max: 85
             result: Sundown
-          - low: 86
-            high: 86
+          - min: 86
+            max: 86
             result: Sureshot
             # content: {part_of_speech: [compound noun]}
-          - low: 87
-            high: 87
+          - min: 87
+            max: 87
             result: Terminus Clipper
-          - low: 88
-            high: 88
+          - min: 88
+            max: 88
             result: Terrapin
-          - low: 89
-            high: 89
+          - min: 89
+            max: 89
             result: Timber Wolf
-          - low: 90
-            high: 90
+          - min: 90
+            max: 90
             result: Tip of the Spear
-          - low: 91
-            high: 91
+          - min: 91
+            max: 91
             result: Titan
-          - low: 92
-            high: 92
+          - min: 92
+            max: 92
             result: Tormentor
-          - low: 93
-            high: 93
+          - min: 93
+            max: 93
             result: Trithia Six
-          - low: 94
-            high: 94
+          - min: 94
+            max: 94
             result: Ultraviolet
-          - low: 95
-            high: 95
+          - min: 95
+            max: 95
             result: Valora’s Comet
-          - low: 96
-            high: 96
+          - min: 96
+            max: 96
             result: Vengeance
-          - low: 97
-            high: 97
+          - min: 97
+            max: 97
             result: Venture
-          - low: 98
-            high: 98
+          - min: 98
+            max: 98
             result: Vigilant
-          - low: 99
-            high: 99
+          - min: 99
+            max: 99
             result: Voidtreader
             # content: {part_of_speech: [compound noun]}
-          - low: 100
-            high: 100
+          - min: 100
+            max: 100
             result: Vulture

@@ -35,11 +35,11 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 70
+              - min: 1
+                max: 70
                 result: &result0 Fair Weather
-              - low: 71
-                high: 100
+              - min: 71
+                max: 100
                 result: &result1 '[Foul Weather](id:sundered_isles/oracles/weather/foul)'
           margins:
             name: Margins
@@ -47,11 +47,11 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 60
+              - min: 1
+                max: 60
                 result: *result0
-              - low: 61
-                high: 100
+              - min: 61
+                max: 100
                 result: *result1
           reaches:
             name: Reaches
@@ -59,137 +59,137 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 50
+              - min: 1
+                max: 50
                 result: *result0
-              - low: 51
-                high: 100
+              - min: 51
+                max: 100
                 result: *result1
     contents:
       foul:
         name: Foul Weather
         table:
-          - low: 1
-            high: 10
+          - min: 1
+            max: 10
             result: Stifling
             summary: Windless, oppressive heat
-          - low: 11
-            high: 25
+          - min: 11
+            max: 25
             result: Listless
             summary: Light winds and sweltering heat
-          - low: 26
-            high: 40
+          - min: 26
+            max: 40
             result: Misty
             summary: Light winds and damp fog
-          - low: 41
-            high: 55
+          - min: 41
+            max: 55
             result: Foggy
             summary: Light winds and dense fog
-          - low: 56
-            high: 75
+          - min: 56
+            max: 75
             result: Heavy
             summary: High winds, steady rain, and rough waters
-          - low: 76
-            high: 90
+          - min: 76
+            max: 90
             result: Stormy
             summary: Powerful winds, pelting rain, and high seas
-          - low: 91
-            high: 100
+          - min: 91
+            max: 100
             result: Raging
             summary: Destructive winds, torrential rain, and monstrous waves
       duration:
         name: Duration of Foul or Cursed Weather
         dice: 1d10
         table:
-          - low: 1
-            high: 2
+          - min: 1
+            max: 2
             result: Fleeting (less than an hour)
-          - low: 3
-            high: 9
+          - min: 3
+            max: 9
             result: Persistent (several hours)
-          - low: 10
-            high: 10
+          - min: 10
+            max: 10
             result: Relentless (more than a day)
       cursed:
         name: Cursed Weather
         table:
-          - low: 1
-            high: 5
+          - min: 1
+            max: 5
             result: Ash storm
             summary: Churning, low-level clouds of gray ash
-          - low: 6
-            high: 10
+          - min: 6
+            max: 10
             result: Blighting muck
             summary: Rain of corrosive, mucous-like ooze
-          - low: 11
-            high: 15
+          - min: 11
+            max: 15
             result: Blood rain
             summary: Ghastly, crimson rain
-          - low: 16
-            high: 20
+          - min: 16
+            max: 20
             result: Cinder rain
             summary: Storm of fiery rock and ash
-          - low: 21
-            high: 25
+          - min: 21
+            max: 25
             result: Creeping mist
             summary: Slithering, grasping fog
-          - low: 26
-            high: 30
+          - min: 26
+            max: 30
             result: Crimson mist
             summary: Slow-moving fog that burns like acid
-          - low: 31
-            high: 35
+          - min: 31
+            max: 35
             result: Dead calm
             summary: Disquieting stillness
-          - low: 36
-            high: 40
+          - min: 36
+            max: 40
             result: Fisher's Feast
             summary: Shower of fish
-          - low: 41
-            high: 45
+          - min: 41
+            max: 45
             result: Forge's Fury
             summary: Fast-moving storm of scorching heat
-          - low: 46
-            high: 50
+          - min: 46
+            max: 50
             result: Gloam tide
             summary: Unnatural darkness that moves with the tide
-          - low: 51
-            high: 55
+          - min: 51
+            max: 55
             result: Ice fall
             summary: Uncanny cold that leaves surfaces enveloped in thick ice
-          - low: 56
-            high: 60
+          - min: 56
+            max: 60
             result: Iron wind
             summary: Strong wind that sends ships along an inevitable, fatebound course
-          - low: 61
-            high: 65
+          - min: 61
+            max: 65
             result: Knowing mist
             summary: Fog that manifests visions of dark secrets and painful memories
-          - low: 66
-            high: 70
+          - min: 66
+            max: 70
             result: Phantom mist
             summary: Ghost-haunted fog
-          - low: 71
-            high: 75
+          - min: 71
+            max: 75
             result: Rot wind
             summary: Wind that carries the foul stench of death
-          - low: 76
-            high: 80
+          - min: 76
+            max: 80
             result: Sand storm
             summary: Clouds of pelting, stinging sand, ripped from a now-barren island
-          - low: 81
-            high: 85
+          - min: 81
+            max: 85
             result: Seeking spouts
             summary: Waterspouts and tornadoes that move with dreadful purpose
-          - low: 86
-            high: 90
+          - min: 86
+            max: 90
             result: Tempest
             summary: Undying storm that prowls the isles in search of prey
-          - low: 91
-            high: 95
+          - min: 91
+            max: 95
             result: Wailing wind
             summary: Wind that carries the mournful keen of the lost and the drowned
-          - low: 96
-            high: 100
+          - min: 96
+            max: 100
             result: Witch fire
             summary: Low clouds suffused with tendrils of chaotic, mystic energy

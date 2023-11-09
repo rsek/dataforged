@@ -48,15 +48,15 @@ oracles:
             # usage:
             #   requires: *attr:Location.Planetside
             table:
-              - low: 1
-                high: 25
+              - min: 1
+                max: 25
                 result: Starship
                 suggestions:
                   oracles:
                     - starforged/oracles/derelicts/zones/starship
                 # *attr:DerelictType.Starship
-              - low: 26
-                high: 100
+              - min: 26
+                max: 100
                 result: Settlement
                 suggestions:
                   oracles:
@@ -69,14 +69,14 @@ oracles:
             # usage:
             #   requires: *attr:Location.Orbital
             table:
-              - low: 1
-                high: 40
+              - min: 1
+                max: 40
                 result: Starship
                 suggestions:
                   oracles:
                     - starforged/oracles/derelicts/zones/starship
-              - low: 41
-                high: 100
+              - min: 41
+                max: 100
                 result: Settlement
                 suggestions:
                   oracles:
@@ -89,14 +89,14 @@ oracles:
             # usage:
             #   requires: *attr:Location.DeepSpace
             table:
-              - low: 1
-                high: 75
+              - min: 1
+                max: 75
                 result: Starship
                 suggestions:
                   oracles:
                     - starforged/oracles/derelicts/zones/starship
-              - low: 76
-                high: 100
+              - min: 76
+                max: 100
                 result: Settlement
                 suggestions:
                   oracles:
@@ -137,43 +137,43 @@ oracles:
             #       derelict_type: [starship]
             table:
               - &ZoneRow.0
-                low: null
-                high: null
+                min: null
+                max: null
                 result: '[Access](id:starforged/collections/oracles/derelicts/access)'
                 icon: icons/derelicts/access.svg
                 # game_objects: *obj:DerelictZone.Access
-              - low: 1
-                high: 5
+              - min: 1
+                max: 5
                 result: &ZoneRow.1.result '[Community](id:starforged/collections/oracles/derelicts/community)'
                 icon: &ZoneRow.1.icon icons/derelicts/community.svg
                 # game_objects: *obj:DerelictZone.Community
-              - low: 6
-                high: 30
+              - min: 6
+                max: 30
                 result: &ZoneRow.2.result '[Engineering](id:starforged/collections/oracles/derelicts/engineering)'
                 icon: &ZoneRow.2.icon icons/derelicts/engineering.svg
                 # game_objects: *obj:DerelictZone.Engineering
-              - low: 31
-                high: 55
+              - min: 31
+                max: 55
                 result: &ZoneRow.3.result '[Living](id:starforged/collections/oracles/derelicts/living)'
                 icon: &ZoneRow.3.icon icons/derelicts/living.svg
                 # game_objects: *obj:DerelictZone.Living
-              - low: 56
-                high: 65
+              - min: 56
+                max: 65
                 result: &ZoneRow.4.result '[Medical](id:starforged/collections/oracles/derelicts/medical)'
                 icon: &ZoneRow.4.icon icons/derelicts/medical.svg
                 # game_objects: *obj:DerelictZone.Medical
-              - low: 66
-                high: 85
+              - min: 66
+                max: 85
                 result: &ZoneRow.5.result '[Operations](id:starforged/collections/oracles/derelicts/operations)'
                 icon: &ZoneRow.5.icon icons/derelicts/operations.svg
                 # game_objects: *obj:DerelictZone.Operations
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: &ZoneRow.6.result '[Production](id:starforged/collections/oracles/derelicts/production)'
                 icon: &ZoneRow.6.icon icons/derelicts/production.svg
                 # game_objects: *obj:DerelictZone.Production
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: &ZoneRow.7.result '[Research](id:starforged/collections/oracles/derelicts/research)'
                 icon: &ZoneRow.7.icon icons/derelicts/research.svg
                 # game_objects: *obj:DerelictZone.Research
@@ -188,32 +188,32 @@ oracles:
             #       derelict_type: [settlement]
             table:
               - *ZoneRow.0
-              - low: 1
-                high: 20
+              - min: 1
+                max: 20
                 result: *ZoneRow.1.result
                 icon: *ZoneRow.1.icon
-              - low: 21
-                high: 30
+              - min: 21
+                max: 30
                 result: *ZoneRow.2.result
                 icon: *ZoneRow.2.icon
-              - low: 31
-                high: 50
+              - min: 31
+                max: 50
                 result: *ZoneRow.3.result
                 icon: *ZoneRow.3.icon
-              - low: 51
-                high: 60
+              - min: 51
+                max: 60
                 result: *ZoneRow.4.result
                 icon: *ZoneRow.4.icon
-              - low: 61
-                high: 70
+              - min: 61
+                max: 70
                 result: *ZoneRow.5.result
                 icon: *ZoneRow.5.icon
-              - low: 71
-                high: 90
+              - min: 71
+                max: 90
                 result: *ZoneRow.6.result
                 icon: *ZoneRow.6.icon
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: *ZoneRow.7.result
                 icon: *ZoneRow.7.icon
     contents:
@@ -222,22 +222,22 @@ oracles:
         _source:
           page: 348
         table:
-          - low: 1
-            high: 40
+          - min: 1
+            max: 40
             result: Planetside
             icon: icon/oracles/location/planetside.svg
             suggestions:
               oracles:
                 - starforged/oracles/derelicts/type/planetside
-          - low: 41
-            high: 60
+          - min: 41
+            max: 60
             result: Orbital
             icon: icon/oracles/location/orbital.svg
             suggestions:
               oracles:
                 - starforged/oracles/derelicts/type/orbital
-          - low: 61
-            high: 100
+          - min: 61
+            max: 100
             result: Deep Space
             icon: icon/oracles/location/deep_space.svg
             suggestions:
@@ -252,23 +252,23 @@ oracles:
         # content:
         #   part_of_speech: [fragment]
         table:
-          - low: 1
-            high: 10
+          - min: 1
+            max: 10
             result: Functional
-          - low: 11
-            high: 30
+          - min: 11
+            max: 30
             result: Limited power
-          - low: 31
-            high: 60
+          - min: 31
+            max: 60
             result: Cold and dark
-          - low: 61
-            high: 90
+          - min: 61
+            max: 90
             result: Damaged or breached
-          - low: 91
-            high: 98
+          - min: 91
+            max: 98
             result: Heavily damaged
-          - low: 99
-            high: 100
+          - min: 99
+            max: 100
             result: Impending destruction
       outer_first_look:
         name: Outer First Look
@@ -281,35 +281,35 @@ oracles:
         #   part_of_speech: [fragment]
         #   tags: [first look]
         table:
-          - low: 1
-            high: 15
+          - min: 1
+            max: 15
             result: Blocked access
-          - low: 16
-            high: 30
+          - min: 16
+            max: 30
             result: Corpses
-          - low: 31
-            high: 45
+          - min: 31
+            max: 45
             result: Hazardous readings
-          - low: 46
-            high: 50
+          - min: 46
+            max: 50
             result: Mutated structure
-          - low: 51
-            high: 60
+          - min: 51
+            max: 60
             result: Odd orientation
-          - low: 61
-            high: 65
+          - min: 61
+            max: 65
             result: Overgrown or entangled
-          - low: 66
-            high: 80
+          - min: 66
+            max: 80
             result: Sending a signal or message
-          - low: 81
-            high: 85
+          - min: 81
+            max: 85
             result: Signs that others are here
-          - low: 86
-            high: 95
+          - min: 86
+            max: 95
             result: Stripped exterior
-          - low: 96
-            high: 100
+          - min: 96
+            max: 100
             result: Time or reality distortions
       inner_first_look:
         name: Inner First Look
@@ -322,101 +322,101 @@ oracles:
         # usage:
         #   max_rolls: 2
         table:
-          - low: 1
-            high: 3
+          - min: 1
+            max: 3
             result: Abnormal gravity
-          - low: 4
-            high: 6
+          - min: 4
+            max: 6
             result: Active bots
-          - low: 7
-            high: 9
+          - min: 7
+            max: 9
             result: Archaic equipment
-          - low: 10
-            high: 12
+          - min: 10
+            max: 12
             result: Automated announcements
-          - low: 13
-            high: 15
+          - min: 13
+            max: 15
             result: Biological infestation
-          - low: 16
-            high: 18
+          - min: 16
+            max: 18
             result: Charred surfaces
-          - low: 19
-            high: 21
+          - min: 19
+            max: 21
             result: Claw marks
-          - low: 22
-            high: 24
+          - min: 22
+            max: 24
             result: Cluttered with debris
-          - low: 25
-            high: 27
+          - min: 25
+            max: 27
             result: Corroded surfaces
-          - low: 28
-            high: 30
+          - min: 28
+            max: 30
             result: Cramped spaces
-          - low: 31
-            high: 33
+          - min: 31
+            max: 33
             result: Creaking hull
-          - low: 34
-            high: 36
+          - min: 34
+            max: 36
             result: Esoteric writing or symbols
-          - low: 37
-            high: 39
+          - min: 37
+            max: 39
             result: Evidence of new inhabitants
-          - low: 40
-            high: 42
+          - min: 40
+            max: 42
             result: Exposed wiring or conduits
-          - low: 43
-            high: 45
+          - min: 43
+            max: 45
             result: Flashing strobe lights
-          - low: 46
-            high: 48
+          - min: 46
+            max: 48
             result: Fluctuating power
-          - low: 49
-            high: 51
+          - min: 49
+            max: 51
             result: Haunting visions of the dead
-          - low: 52
-            high: 54
+          - min: 52
+            max: 54
             result: Hazardous temperature
-          - low: 55
-            high: 57
+          - min: 55
+            max: 57
             result: Heavy steam or moisture
-          - low: 58
-            high: 60
+          - min: 58
+            max: 60
             result: Littered with corpses
-          - low: 61
-            high: 63
+          - min: 61
+            max: 63
             result: Nesting or feeding creatures
-          - low: 64
-            high: 66
+          - min: 64
+            max: 66
             result: Ornate furnishings
-          - low: 67
-            high: 69
+          - min: 67
+            max: 69
             result: Scarred by gunfire
-          - low: 70
-            high: 72
+          - min: 70
+            max: 72
             result: Sealed against intruders
-          - low: 73
-            high: 75
+          - min: 73
+            max: 75
             result: Signs of looting or scavenging
-          - low: 76
-            high: 78
+          - min: 76
+            max: 78
             result: Smell of decay
-          - low: 79
-            high: 81
+          - min: 79
+            max: 81
             result: Splattered with blood
-          - low: 82
-            high: 84
+          - min: 82
+            max: 84
             result: Temporal distortions
-          - low: 85
-            high: 87
+          - min: 85
+            max: 87
             result: Thick haze or smoke
-          - low: 88
-            high: 90
+          - min: 88
+            max: 90
             result: Unstable energy surges
-          - low: 91
-            high: 93
+          - min: 91
+            max: 93
             result: Watchful AI
-          - low: 94
-            high: 100
+          - min: 94
+            max: 100
             result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
             rolls:
               - oracle: starforged/oracles/core/descriptor

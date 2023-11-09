@@ -44,14 +44,14 @@ function featureOrDanger<TCard extends keyof FeatureOrDangerMap>(
 	rowType: keyof FeatureOrDangerMap[TCard],
 	parentID: string
 ) {
-	if (!(typeof data.low === 'number' && typeof data.high === 'number'))
+	if (!(typeof data.min === 'number' && typeof data.max === 'number'))
 		throw new Error(
 			`Expected numeric low and high for delve card feature/danger row: ${JSON.stringify(
 				data
 			)}`
 		)
 	const id = trackID(
-		`${parentID}/${rowType as string}s/${data.low}-${data.high}`
+		`${parentID}/${rowType as string}s/${data.min}-${data.max}`
 	)
 	const result = cloneDeep(data) as FeatureOrDangerMap[TCard][typeof rowType]
 	result.id = id
@@ -126,7 +126,7 @@ export const DelveSiteDenizen: Transformer<
 		key: string | number,
 		parent: SourceHaver
 	): string {
-		return trackID(`${parent.id}/denizens/${data.low}-${data.high}`)
+		return trackID(`${parent.id}/denizens/${data.min}-${data.max}`)
 	}
 }
 

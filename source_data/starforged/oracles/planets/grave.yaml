@@ -46,184 +46,184 @@ oracles:
               terminus:
                 name: Terminus
                 table:
-                  - low: 1
-                    high: 80
+                  - min: 1
+                    max: 80
                     result: &Set.0 None
-                  - low: 81
-                    high: 90
+                  - min: 81
+                    max: 90
                     result: &Set.1 Orbital settlement
-                  - low: 91
-                    high: 95
+                  - min: 91
+                    max: 95
                     result: &Set.2 Planetside settlement
-                  - low: 96
-                    high: 98
+                  - min: 96
+                    max: 98
                     result: &Set.3 Multiple settlements
-                  - low: 99
-                    high: 100
+                  - min: 99
+                    max: 100
                     result: &Set.4 Settlements in conflict
               outlands:
                 name: Outlands
                 table:
-                  - low: 1
-                    high: 90
+                  - min: 1
+                    max: 90
                     result: *Set.0
-                  - low: 91
-                    high: 97
+                  - min: 91
+                    max: 97
                     result: *Set.1
-                  - low: 98
-                    high: 100
+                  - min: 98
+                    max: 100
                     result: *Set.2
-                  - low: null
-                    high: null
+                  - min: null
+                    max: null
                     result: *Set.3
-                  - low: null
-                    high: null
+                  - min: null
+                    max: null
                     result: *Set.4
               expanse:
                 name: Expanse
                 table:
-                  - low: 1
-                    high: 95
+                  - min: 1
+                    max: 95
                     result: *Set.0
-                  - low: 96
-                    high: 98
+                  - min: 96
+                    max: 98
                     result: *Set.1
-                  - low: 99
-                    high: 100
+                  - min: 99
+                    max: 100
                     result: *Set.2
-                  - low: null
-                    high: null
+                  - min: null
+                    max: null
                     result: *Set.3
-                  - low: null
-                    high: null
+                  - min: null
+                    max: null
                     result: *Set.4
         contents:
           atmosphere:
             name: Atmosphere
             table:
-              - low: 1
-                high: 10
+              - min: 1
+                max: 10
                 result: None / thin
-              - low: 11
-                high: 45
+              - min: 11
+                max: 45
                 result: Toxic
-              - low: 46
-                high: 70
+              - min: 46
+                max: 70
                 result: Corrosive
-              - low: 71
-                high: 90
+              - min: 71
+                max: 90
                 result: Marginal
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: Breathable
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Ideal
           observed_from_space:
             name: Observed From Space
             table:
-              - low: 1
-                high: 11
+              - min: 1
+                max: 11
                 result: Broken moon
-              - low: 12
-                high: 22
+              - min: 12
+                max: 22
                 result: Perpetual overcast
-              - low: 23
-                high: 33
+              - min: 23
+                max: 33
                 result: Cratered surface
-              - low: 34
-                high: 44
+              - min: 34
+                max: 44
                 result: Sky-breaching ruins
-              - low: 45
-                high: 55
+              - min: 45
+                max: 55
                 result: Dry seabeds
-              - low: 56
-                high: 66
+              - min: 56
+                max: 66
                 result: Vast wastelands
-              - low: 67
-                high: 77
+              - min: 67
+                max: 77
                 result: Irradiated atmosphere
-              - low: 78
-                high: 88
+              - min: 78
+                max: 88
                 result: Orbiting ship graveyard
-              - low: 89
-                high: 98
+              - min: 89
+                max: 98
                 result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls: &DF.rolls
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
                   - oracle: starforged/oracles/core/focus
                     auto: true
-              - low: 99
-                high: 100
+              - min: 99
+                max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
           feature:
             name: Planetside Feature
             table:
-              - low: 1
-                high: 7
+              - min: 1
+                max: 7
                 result: Acid pools
-              - low: 8
-                high: 14
+              - min: 8
+                max: 14
                 result: Ash dunes
-              - low: 15
-                high: 21
+              - min: 15
+                max: 21
                 result: Corrosive rains
-              - low: 22
-                high: 28
+              - min: 22
+                max: 28
                 result: Dead forests
-              - low: 29
-                high: 35
+              - min: 29
+                max: 35
                 result: Fetid mudflats
-              - low: 36
-                high: 42
+              - min: 36
+                max: 42
                 result: Mass graves
-              - low: 43
-                high: 49
+              - min: 43
+                max: 49
                 result: Moldering bones
-              - low: 50
-                high: 56
+              - min: 50
+                max: 56
                 result: Noxious fog
-              - low: 57
-                high: 63
+              - min: 57
+                max: 63
                 result: Radioactive hotspots
-              - low: 64
-                high: 70
+              - min: 64
+                max: 70
                 result: Ravaged cities
-              - low: 71
-                high: 77
+              - min: 71
+                max: 77
                 result: Scarred battlefields
-              - low: 78
-                high: 84
+              - min: 78
+                max: 84
                 result: Ship graveyards
-              - low: 85
-                high: 91
+              - min: 85
+                max: 91
                 result: Whispers of the dead
-              - low: 92
-                high: 98
+              - min: 92
+                max: 98
                 result: *DF.result
                 rolls: *DF.rolls
-              - low: 99
-                high: 100
+              - min: 99
+                max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
           life:
             name: Life
             table:
-              - low: 1
-                high: 25
+              - min: 1
+                max: 25
                 result: None
-              - low: 26
-                high: 75
+              - min: 26
+                max: 75
                 result: Extinct
-              - low: 76
-                high: 95
+              - min: 76
+                max: 95
                 result: Scarce
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: Diverse
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Bountiful
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Overrun

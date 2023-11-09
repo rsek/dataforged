@@ -48,36 +48,36 @@ export const PlanetTemplate = Type.Object({
 			observed_from_space: Type.Object({
 				name: Type.String({ default: 'Observed from space' }),
 				table: Type.Tuple([
-					Abstract.StaticRowStub({ low: 1, high: 11 }),
-					Abstract.StaticRowStub({ low: 12, high: 22 }),
-					Abstract.StaticRowStub({ low: 23, high: 33 }),
-					Abstract.StaticRowStub({ low: 34, high: 44 }),
-					Abstract.StaticRowStub({ low: 45, high: 55 }),
-					Abstract.StaticRowStub({ low: 56, high: 66 }),
-					Abstract.StaticRowStub({ low: 67, high: 77 }),
-					Abstract.StaticRowStub({ low: 78, high: 88 }),
-					DescriptorFocusRow({ low: 89, high: 98 }),
-					PrecursorVaultRow({ low: 99, high: 100 }, 'Orbital')
+					Abstract.StaticRowStub({ min: 1, max: 11 }),
+					Abstract.StaticRowStub({ min: 12, max: 22 }),
+					Abstract.StaticRowStub({ min: 23, max: 33 }),
+					Abstract.StaticRowStub({ min: 34, max: 44 }),
+					Abstract.StaticRowStub({ min: 45, max: 55 }),
+					Abstract.StaticRowStub({ min: 56, max: 66 }),
+					Abstract.StaticRowStub({ min: 67, max: 77 }),
+					Abstract.StaticRowStub({ min: 78, max: 88 }),
+					DescriptorFocusRow({ min: 89, max: 98 }),
+					PrecursorVaultRow({ min: 99, max: 100 }, 'Orbital')
 				])
 			}),
 			feature: Type.Object({
 				name: Type.String({ default: 'Planetside Feature' }),
 				table: Type.Tuple([
-					Abstract.StaticRowStub({ low: 1, high: 7 }),
-					Abstract.StaticRowStub({ low: 8, high: 14 }),
-					Abstract.StaticRowStub({ low: 15, high: 21 }),
-					Abstract.StaticRowStub({ low: 22, high: 28 }),
-					Abstract.StaticRowStub({ low: 29, high: 35 }),
-					Abstract.StaticRowStub({ low: 36, high: 42 }),
-					Abstract.StaticRowStub({ low: 43, high: 49 }),
-					Abstract.StaticRowStub({ low: 50, high: 56 }),
-					Abstract.StaticRowStub({ low: 57, high: 63 }),
-					Abstract.StaticRowStub({ low: 64, high: 70 }),
-					Abstract.StaticRowStub({ low: 71, high: 77 }),
-					Abstract.StaticRowStub({ low: 78, high: 84 }),
-					Abstract.StaticRowStub({ low: 85, high: 91 }),
-					DescriptorFocusRow({ low: 92, high: 98 }),
-					PrecursorVaultRow({ low: 99, high: 100 }, 'Planetside')
+					Abstract.StaticRowStub({ min: 1, max: 7 }),
+					Abstract.StaticRowStub({ min: 8, max: 14 }),
+					Abstract.StaticRowStub({ min: 15, max: 21 }),
+					Abstract.StaticRowStub({ min: 22, max: 28 }),
+					Abstract.StaticRowStub({ min: 29, max: 35 }),
+					Abstract.StaticRowStub({ min: 36, max: 42 }),
+					Abstract.StaticRowStub({ min: 43, max: 49 }),
+					Abstract.StaticRowStub({ min: 50, max: 56 }),
+					Abstract.StaticRowStub({ min: 57, max: 63 }),
+					Abstract.StaticRowStub({ min: 64, max: 70 }),
+					Abstract.StaticRowStub({ min: 71, max: 77 }),
+					Abstract.StaticRowStub({ min: 78, max: 84 }),
+					Abstract.StaticRowStub({ min: 85, max: 91 }),
+					DescriptorFocusRow({ min: 92, max: 98 }),
+					PrecursorVaultRow({ min: 99, max: 100 }, 'Planetside')
 				])
 			}),
 			life: Type.Object({

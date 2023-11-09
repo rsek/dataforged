@@ -25,8 +25,8 @@ export const DelveSiteDenizen = Type.Object(
 				{}
 			)
 		),
-		low: Type.Integer({ minimum: 1, maximum: 100 }),
-		high: Type.Integer({ minimum: 1, maximum: 100 }),
+		min: Type.Integer({ minimum: 1, maximum: 100 }),
+		max: Type.Integer({ minimum: 1, maximum: 100 }),
 		npc: Type.Optional(
 			Type.Ref(ID.NpcID, {
 				description: 'The ID of the relevant NPC entry, if one is specified.'
@@ -39,12 +39,12 @@ export const DelveSiteDenizen = Type.Object(
 export type DelveSiteDenizen = Static<typeof DelveSiteDenizen>
 
 const StaticDenizenRowStub = (
-	low: number,
-	high: number,
+	min: number,
+	max: number,
 	frequency: DelveSiteDenizenFrequency
 ) =>
 	Squash([
-		Abstract.StaticRowStub({ low, high }),
+		Abstract.StaticRowStub({ min, max }),
 		Type.Object({ frequency: Type.Literal(frequency) })
 	])
 
@@ -113,11 +113,11 @@ const DelveSiteCard = (properties: TProperties, options: ObjectOptions = {}) =>
 
 export const DelveSiteThemeFeatureRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
 		Type.Object({
 			id: Type.Ref(ID.ThemeFeatureRowID),
-			low: Type.Integer(),
-			high: Type.Integer()
+			min: Type.Integer(),
+			max: Type.Integer()
 		})
 	],
 	{ $id: '#/$defs/DelveSiteThemeFeatureRow' }
@@ -125,11 +125,11 @@ export const DelveSiteThemeFeatureRow = Type.Composite(
 export type DelveSiteThemeFeatureRow = Static<typeof DelveSiteThemeFeatureRow>
 export const DelveSiteThemeDangerRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
 		Type.Object({
 			id: Type.Ref(ID.ThemeDangerRowID),
-			low: Type.Integer(),
-			high: Type.Integer()
+			min: Type.Integer(),
+			max: Type.Integer()
 		})
 	],
 	{ $id: '#/$defs/DelveSiteThemeDangerRow' }
@@ -142,28 +142,28 @@ export const DelveSiteTheme = DelveSiteCard(
 		features: Type.Intersect([
 			Type.Array(Type.Ref(DelveSiteThemeFeatureRow)),
 			Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 4 }),
-				Abstract.StaticRowStub({ low: 5, high: 8 }),
-				Abstract.StaticRowStub({ low: 9, high: 12 }),
-				Abstract.StaticRowStub({ low: 13, high: 16 }),
-				Abstract.StaticRowStub({ low: 17, high: 20 })
+				Abstract.StaticRowStub({ min: 1, max: 4 }),
+				Abstract.StaticRowStub({ min: 5, max: 8 }),
+				Abstract.StaticRowStub({ min: 9, max: 12 }),
+				Abstract.StaticRowStub({ min: 13, max: 16 }),
+				Abstract.StaticRowStub({ min: 17, max: 20 })
 			])
 		]),
 		dangers: Type.Intersect([
 			Type.Array(Type.Ref(DelveSiteThemeDangerRow)),
 			Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 5 }),
-				Abstract.StaticRowStub({ low: 6, high: 10 }),
-				Abstract.StaticRowStub({ low: 11, high: 12 }),
-				Abstract.StaticRowStub({ low: 13, high: 14 }),
-				Abstract.StaticRowStub({ low: 15, high: 16 }),
-				Abstract.StaticRowStub({ low: 17, high: 18 }),
-				Abstract.StaticRowStub({ low: 19, high: 20 }),
-				Abstract.StaticRowStub({ low: 21, high: 22 }),
-				Abstract.StaticRowStub({ low: 23, high: 24 }),
-				Abstract.StaticRowStub({ low: 25, high: 26 }),
-				Abstract.StaticRowStub({ low: 27, high: 28 }),
-				Abstract.StaticRowStub({ low: 29, high: 30 })
+				Abstract.StaticRowStub({ min: 1, max: 5 }),
+				Abstract.StaticRowStub({ min: 6, max: 10 }),
+				Abstract.StaticRowStub({ min: 11, max: 12 }),
+				Abstract.StaticRowStub({ min: 13, max: 14 }),
+				Abstract.StaticRowStub({ min: 15, max: 16 }),
+				Abstract.StaticRowStub({ min: 17, max: 18 }),
+				Abstract.StaticRowStub({ min: 19, max: 20 }),
+				Abstract.StaticRowStub({ min: 21, max: 22 }),
+				Abstract.StaticRowStub({ min: 23, max: 24 }),
+				Abstract.StaticRowStub({ min: 25, max: 26 }),
+				Abstract.StaticRowStub({ min: 27, max: 28 }),
+				Abstract.StaticRowStub({ min: 29, max: 30 })
 			])
 		])
 	},
@@ -173,11 +173,11 @@ export type DelveSiteTheme = Static<typeof DelveSiteTheme>
 
 export const DelveSiteDomainFeatureRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
 		Type.Object({
 			id: Type.Ref(ID.DomainFeatureRowID),
-			low: Type.Integer(),
-			high: Type.Integer()
+			min: Type.Integer(),
+			max: Type.Integer()
 		})
 	],
 	{ $id: '#/$defs/DelveSiteDomainFeatureRow' }
@@ -185,11 +185,11 @@ export const DelveSiteDomainFeatureRow = Type.Composite(
 export type DelveSiteDomainFeatureRow = Static<typeof DelveSiteDomainFeatureRow>
 export const DelveSiteDomainDangerRow = Type.Composite(
 	[
-		Type.Omit(OracleTableRow, ['id', 'low', 'high']),
+		Type.Omit(OracleTableRow, ['id', 'min', 'max']),
 		Type.Object({
 			id: Type.Ref(ID.DomainDangerRowID),
-			low: Type.Integer(),
-			high: Type.Integer()
+			min: Type.Integer(),
+			max: Type.Integer()
 		})
 	],
 	{ $id: '#/$defs/DelveSiteDomainDangerRow' }
@@ -208,17 +208,17 @@ export const DelveSiteDomain = DelveSiteCard(
 		features: Type.Intersect([
 			Type.Array(Type.Ref(DelveSiteDomainFeatureRow)),
 			Type.Tuple([
-				Abstract.StaticRowStub({ low: 21, high: 43 }),
-				Abstract.StaticRowStub({ low: 44, high: 56 }),
-				Abstract.StaticRowStub({ low: 57, high: 64 }),
-				Abstract.StaticRowStub({ low: 65, high: 68 }),
-				Abstract.StaticRowStub({ low: 69, high: 72 }),
-				Abstract.StaticRowStub({ low: 73, high: 76 }),
-				Abstract.StaticRowStub({ low: 77, high: 80 }),
-				Abstract.StaticRowStub({ low: 81, high: 84 }),
-				Abstract.StaticRowStub({ low: 85, high: 88 }),
+				Abstract.StaticRowStub({ min: 21, max: 43 }),
+				Abstract.StaticRowStub({ min: 44, max: 56 }),
+				Abstract.StaticRowStub({ min: 57, max: 64 }),
+				Abstract.StaticRowStub({ min: 65, max: 68 }),
+				Abstract.StaticRowStub({ min: 69, max: 72 }),
+				Abstract.StaticRowStub({ min: 73, max: 76 }),
+				Abstract.StaticRowStub({ min: 77, max: 80 }),
+				Abstract.StaticRowStub({ min: 81, max: 84 }),
+				Abstract.StaticRowStub({ min: 85, max: 88 }),
 				Abstract.StaticRowStub(
-					{ low: 89, high: 98 },
+					{ min: 89, max: 98 },
 					{
 						result: 'Something unusual or unexpected',
 						suggestions: {
@@ -232,7 +232,7 @@ export const DelveSiteDomain = DelveSiteCard(
 					}
 				),
 				Abstract.StaticRowStub(
-					{ low: 99, high: 99 },
+					{ min: 99, max: 99 },
 					{
 						result: 'You transition into a new theme',
 						suggestions: {
@@ -241,7 +241,7 @@ export const DelveSiteDomain = DelveSiteCard(
 					}
 				),
 				Abstract.StaticRowStub(
-					{ low: 100, high: 100 },
+					{ min: 100, max: 100 },
 					{
 						result: 'You transition into a new domain',
 						suggestions: {
@@ -254,11 +254,11 @@ export const DelveSiteDomain = DelveSiteCard(
 		dangers: Type.Intersect([
 			Type.Array(Type.Ref(DelveSiteDomainDangerRow)),
 			Type.Tuple([
-				Abstract.StaticRowStub({ low: 31, high: 33 }),
-				Abstract.StaticRowStub({ low: 34, high: 36 }),
-				Abstract.StaticRowStub({ low: 37, high: 39 }),
-				Abstract.StaticRowStub({ low: 40, high: 42 }),
-				Abstract.StaticRowStub({ low: 43, high: 45 })
+				Abstract.StaticRowStub({ min: 31, max: 33 }),
+				Abstract.StaticRowStub({ min: 34, max: 36 }),
+				Abstract.StaticRowStub({ min: 37, max: 39 }),
+				Abstract.StaticRowStub({ min: 40, max: 42 }),
+				Abstract.StaticRowStub({ min: 43, max: 45 })
 			])
 		])
 	},

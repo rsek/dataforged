@@ -77,27 +77,27 @@ export type OracleTableRoll = Static<typeof OracleTableRoll>
 export const OracleTableRow = Type.Object(
 	{
 		id: Type.Ref(ID.OracleTableRowID),
-		low: Type.Unsafe<number | null>({
+		min: Type.Unsafe<number | null>({
 			type: ['integer', 'null'],
 			default: null,
 			// nullable: true,
 			description:
 				'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 		}),
-		high: Type.Unsafe<number | null>({
+		max: Type.Unsafe<number | null>({
 			type: ['integer', 'null'],
 			default: null,
 			// nullable: true,
 			description:
 				'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 		}),
-		// low: Type.Union([Type.Integer(), Type.Null()], {
+		// min: Type.Union([Type.Integer(), Type.Null()], {
 		// 	default: null,
 		// 	description:
 		// 		'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 		// }),
 
-		// high: Type.Union([Type.Integer(), Type.Null()], {
+		// max: Type.Union([Type.Integer(), Type.Null()], {
 		// 	default: null,
 		// 	description:
 		// 		'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'

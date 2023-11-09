@@ -46,186 +46,186 @@ oracles:
               terminus:
                 name: Terminus
                 table:
-                  - low: 1
-                    high: 20
+                  - min: 1
+                    max: 20
                     result: &Set.0 None
-                  - low: 21
-                    high: 30
+                  - min: 21
+                    max: 30
                     result: &Set.1 Orbital settlement
-                  - low: 31
-                    high: 70
+                  - min: 31
+                    max: 70
                     result: &Set.2 Planetside settlement
-                  - low: 71
-                    high: 90
+                  - min: 71
+                    max: 90
                     result: &Set.3 Multiple settlements
-                  - low: 91
-                    high: 100
+                  - min: 91
+                    max: 100
                     result: &Set.4 Settlements in conflict
               outlands:
                 name: Outlands
                 table:
-                  - low: 1
-                    high: 50
+                  - min: 1
+                    max: 50
                     result: *Set.0
-                  - low: 51
-                    high: 55
+                  - min: 51
+                    max: 55
                     result: *Set.1
-                  - low: 56
-                    high: 85
+                  - min: 56
+                    max: 85
                     result: *Set.2
-                  - low: 86
-                    high: 95
+                  - min: 86
+                    max: 95
                     result: *Set.3
-                  - low: 96
-                    high: 100
+                  - min: 96
+                    max: 100
                     result: *Set.4
               expanse:
                 name: Expanse
                 table:
-                  - low: 1
-                    high: 80
+                  - min: 1
+                    max: 80
                     result: *Set.0
-                  - low: 81
-                    high: 83
+                  - min: 81
+                    max: 83
                     result: *Set.1
-                  - low: 84
-                    high: 93
+                  - min: 84
+                    max: 93
                     result: *Set.2
-                  - low: 94
-                    high: 98
+                  - min: 94
+                    max: 98
                     result: *Set.3
-                  - low: 99
-                    high: 100
+                  - min: 99
+                    max: 100
                     result: *Set.4
         contents:
           atmosphere:
             name: Atmosphere
             table:
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: None / thin
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Toxic
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Corrosive
-              - low: 1
-                high: 20
+              - min: 1
+                max: 20
                 result: Marginal
-              - low: 21
-                high: 50
+              - min: 21
+                max: 50
                 result: Breathable
-              - low: 51
-                high: 100
+              - min: 51
+                max: 100
                 result: Ideal
           observed_from_space:
             name: Observed From Space
             table:
-              - low: 1
-                high: 11
+              - min: 1
+                max: 11
                 result: Complex ring system
-              - low: 12
-                high: 22
+              - min: 12
+                max: 22
                 result: Numerous small moons
-              - low: 23
-                high: 33
+              - min: 23
+                max: 33
                 result: Dramatic seasonal variation
-              - low: 34
-                high: 44
+              - min: 34
+                max: 44
                 result: Unusual day or night cycle
-              - low: 45
-                high: 55
+              - min: 45
+                max: 55
                 result: High gravity
-              - low: 56
-                high: 66
+              - min: 56
+                max: 66
                 result: Vibrantly colored landscapes
-              - low: 67
-                high: 77
+              - min: 67
+                max: 77
                 result: Large moon
-              - low: 78
-                high: 88
+              - min: 78
+                max: 88
                 result: Narrow livable band
-              - low: 89
-                high: 98
+              - min: 89
+                max: 98
                 result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls: &DF.rolls
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
                   - oracle: starforged/oracles/core/focus
                     auto: true
-              - low: 99
-                high: 100
+              - min: 99
+                max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
           feature:
             name: Planetside Feature
             table:
-              - low: 1
-                high: 7
+              - min: 1
+                max: 7
                 result: Background radiation
-              - low: 8
-                high: 14
+              - min: 8
+                max: 14
                 result: Chaotically juxtaposed biomes
-              - low: 15
-                high: 21
+              - min: 15
+                max: 21
                 result: Creature boneyards
-              - low: 22
-                high: 28
+              - min: 22
+                max: 28
                 result: Creature lairs or watering holes
-              - low: 29
-                high: 35
+              - min: 29
+                max: 35
                 result: Crystalline formations
-              - low: 36
-                high: 42
+              - min: 36
+                max: 42
                 result: Fierce electrical storms
-              - low: 43
-                high: 49
+              - min: 43
+                max: 49
                 result: Floating terrain
-              - low: 50
-                high: 56
+              - min: 50
+                max: 56
                 result: Frequent seismic activity
-              - low: 57
-                high: 63
+              - min: 57
+                max: 63
                 result: Magnetic disturbances
-              - low: 64
-                high: 70
+              - min: 64
+                max: 70
                 result: Scarred or excavated terrain
-              - low: 71
-                high: 77
+              - min: 71
+                max: 77
                 result: Signs of an engineered biosphere
-              - low: 78
-                high: 84
+              - min: 78
+                max: 84
                 result: Sudden weather fluctuations
-              - low: 85
-                high: 91
+              - min: 85
+                max: 91
                 result: Towering geological formations
-              - low: 92
-                high: 98
+              - min: 92
+                max: 98
                 result: *DF.result
                 rolls: *DF.rolls
-              - low: 99
-                high: 100
+              - min: 99
+                max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
           life:
             name: Life
             table:
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: None
-              - low: null
-                high: null
+              - min: null
+                max: null
                 result: Extinct
-              - low: 1
-                high: 10
+              - min: 1
+                max: 10
                 result: Scarce
-              - low: 11
-                high: 45
+              - min: 11
+                max: 45
                 result: Diverse
-              - low: 46
-                high: 85
+              - min: 46
+                max: 85
                 result: Bountiful
-              - low: 86
-                high: 100
+              - min: 86
+                max: 100
                 result: Overrun
           diversity:
             name: Diversity
@@ -233,26 +233,26 @@ oracles:
             #   part_of_speech: [adjective]
             summary: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
             table:
-              - low: 1
-                high: 20
+              - min: 1
+                max: 20
                 result: Simple (two biomes)
                 rolls:
                   - times: 2
                     oracle: &biome starforged/oracles/planets/vital/biomes
-              - low: 21
-                high: 70
+              - min: 21
+                max: 70
                 result: Diverse (three biomes)
                 rolls:
                   - times: 3
                     oracle: *biome
-              - low: 71
-                high: 90
+              - min: 71
+                max: 90
                 result: Complex (four biomes)
                 rolls:
                   - times: 4
                     oracle: *biome
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: Garden world (five or more biomes)
                 rolls:
                   - times: 5
@@ -262,63 +262,63 @@ oracles:
             # content:
             #   part_of_speech: [noun, common noun]
             table:
-              - low: 1
-                high: 5
+              - min: 1
+                max: 5
                 result: Caves
-              - low: 6
-                high: 10
+              - min: 6
+                max: 10
                 result: Cold forest
-              - low: 11
-                high: 15
+              - min: 11
+                max: 15
                 result: Fungal
-              - low: 16
-                high: 20
+              - min: 16
+                max: 20
                 result: Glacial or snow
-              - low: 21
-                high: 25
+              - min: 21
+                max: 25
                 result: Grassland
-              - low: 26
-                high: 30
+              - min: 26
+                max: 30
                 result: Islands
-              - low: 31
-                high: 35
+              - min: 31
+                max: 35
                 result: Jungle
-              - low: 36
-                high: 40
+              - min: 36
+                max: 40
                 result: Mountainous
-              - low: 41
-                high: 45
+              - min: 41
+                max: 45
                 result: Ocean
-              - low: 46
-                high: 50
+              - min: 46
+                max: 50
                 result: Rocky desert
-              - low: 51
-                high: 55
+              - min: 51
+                max: 55
                 result: Sandy desert
-              - low: 56
-                high: 60
+              - min: 56
+                max: 60
                 result: Savanna
-              - low: 61
-                high: 65
+              - min: 61
+                max: 65
                 result: Shallow seas
-              - low: 66
-                high: 70
+              - min: 66
+                max: 70
                 result: Shrubland
-              - low: 71
-                high: 75
+              - min: 71
+                max: 75
                 result: Temperate rainforest
-              - low: 76
-                high: 80
+              - min: 76
+                max: 80
                 result: Temperate forest
-              - low: 81
-                high: 85
+              - min: 81
+                max: 85
                 result: Tundra
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: Volcanic
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: Waterways
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: Wetland

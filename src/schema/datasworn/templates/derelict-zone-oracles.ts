@@ -16,21 +16,21 @@ export const DerelictZoneTemplate = Type.Object({
 					'Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.'
 			}),
 			table: Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 8 }),
-				Abstract.StaticRowStub({ low: 9, high: 16 }),
-				Abstract.StaticRowStub({ low: 17, high: 24 }),
-				Abstract.StaticRowStub({ low: 25, high: 32 }),
-				Abstract.StaticRowStub({ low: 33, high: 40 }),
-				Abstract.StaticRowStub({ low: 41, high: 48 }),
-				Abstract.StaticRowStub({ low: 49, high: 56 }),
-				Abstract.StaticRowStub({ low: 57, high: 64 }),
-				Abstract.StaticRowStub({ low: 65, high: 72 }),
-				Abstract.StaticRowStub({ low: 73, high: 80 }),
-				Abstract.StaticRowStub({ low: 81, high: 85 }, { result: 'New zone' }),
+				Abstract.StaticRowStub({ min: 1, max: 8 }),
+				Abstract.StaticRowStub({ min: 9, max: 16 }),
+				Abstract.StaticRowStub({ min: 17, max: 24 }),
+				Abstract.StaticRowStub({ min: 25, max: 32 }),
+				Abstract.StaticRowStub({ min: 33, max: 40 }),
+				Abstract.StaticRowStub({ min: 41, max: 48 }),
+				Abstract.StaticRowStub({ min: 49, max: 56 }),
+				Abstract.StaticRowStub({ min: 57, max: 64 }),
+				Abstract.StaticRowStub({ min: 65, max: 72 }),
+				Abstract.StaticRowStub({ min: 73, max: 80 }),
+				Abstract.StaticRowStub({ min: 81, max: 85 }, { result: 'New zone' }),
 				Abstract.StaticRowStub(
 					{
-						low: 86,
-						high: 100
+						min: 86,
+						max: 100
 					},
 					{
 						result:
@@ -46,18 +46,18 @@ export const DerelictZoneTemplate = Type.Object({
 					'Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.'
 			}),
 			table: Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 8 }),
-				Abstract.StaticRowStub({ low: 9, high: 16 }),
-				Abstract.StaticRowStub({ low: 17, high: 24 }),
-				Abstract.StaticRowStub({ low: 25, high: 32 }),
-				Abstract.StaticRowStub({ low: 33, high: 40 }),
-				Abstract.StaticRowStub({ low: 41, high: 48 }),
-				Abstract.StaticRowStub({ low: 49, high: 56 }),
-				Abstract.StaticRowStub({ low: 57, high: 64 }),
-				Abstract.StaticRowStub({ low: 65, high: 72 }),
-				Abstract.StaticRowStub({ low: 73, high: 80 }),
-				Abstract.StaticRowStub({ low: 81, high: 88 }),
-				DescriptorFocusRow({ low: 89, high: 100 })
+				Abstract.StaticRowStub({ min: 1, max: 8 }),
+				Abstract.StaticRowStub({ min: 9, max: 16 }),
+				Abstract.StaticRowStub({ min: 17, max: 24 }),
+				Abstract.StaticRowStub({ min: 25, max: 32 }),
+				Abstract.StaticRowStub({ min: 33, max: 40 }),
+				Abstract.StaticRowStub({ min: 41, max: 48 }),
+				Abstract.StaticRowStub({ min: 49, max: 56 }),
+				Abstract.StaticRowStub({ min: 57, max: 64 }),
+				Abstract.StaticRowStub({ min: 65, max: 72 }),
+				Abstract.StaticRowStub({ min: 73, max: 80 }),
+				Abstract.StaticRowStub({ min: 81, max: 88 }),
+				DescriptorFocusRow({ min: 89, max: 100 })
 			])
 		}),
 		peril: Type.Object({
@@ -67,17 +67,17 @@ export const DerelictZoneTemplate = Type.Object({
 					'Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.'
 			}),
 			table: Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 10 }),
-				Abstract.StaticRowStub({ low: 11, high: 20 }),
-				Abstract.StaticRowStub({ low: 21, high: 30 }),
-				Abstract.StaticRowStub({ low: 31, high: 40 }),
-				Abstract.StaticRowStub({ low: 41, high: 50 }),
-				Abstract.StaticRowStub({ low: 51, high: 60 }),
-				Abstract.StaticRowStub({ low: 61, high: 70 }),
-				Abstract.StaticRowStub({ low: 71, high: 80 }),
-				Abstract.StaticRowStub({ low: 81, high: 90 }),
-				ActionThemeRow({ low: 91, high: 98 }),
-				RollTwiceRow({ low: 99, high: 100 })
+				Abstract.StaticRowStub({ min: 1, max: 10 }),
+				Abstract.StaticRowStub({ min: 11, max: 20 }),
+				Abstract.StaticRowStub({ min: 21, max: 30 }),
+				Abstract.StaticRowStub({ min: 31, max: 40 }),
+				Abstract.StaticRowStub({ min: 41, max: 50 }),
+				Abstract.StaticRowStub({ min: 51, max: 60 }),
+				Abstract.StaticRowStub({ min: 61, max: 70 }),
+				Abstract.StaticRowStub({ min: 71, max: 80 }),
+				Abstract.StaticRowStub({ min: 81, max: 90 }),
+				ActionThemeRow({ min: 91, max: 98 }),
+				RollTwiceRow({ min: 99, max: 100 })
 			])
 		}),
 		opportunity: Type.Object({

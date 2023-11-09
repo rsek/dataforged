@@ -35,56 +35,56 @@ oracles:
           edge:
             name: Edge
             table:
-              - low: 1
-                high: 45
+              - min: 1
+                max: 45
                 result: &row:Delve_the_Depths_0 'Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger).'
-              - low: 46
-                high: 65
+              - min: 46
+                max: 65
                 result: &row:Delve_the_Depths_1 'Mark progress.'
-              - low: 66
-                high: 75
+              - min: 66
+                max: 75
                 result: &row:Delve_the_Depths_2 'Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity).'
-              - low: 76
-                high: 80
+              - min: 76
+                max: 80
                 result: &row:Delve_the_Depths_3 'Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity).'
-              - low: 81
-                high: 100
+              - min: 81
+                max: 100
                 result: &row:Delve_the_Depths_4 'Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger).'
           shadow:
             name: Shadow
             table:
-              - low: 1
-                high: 30
+              - min: 1
+                max: 30
                 result: *row:Delve_the_Depths_0
-              - low: 31
-                high: 65
+              - min: 31
+                max: 65
                 result: *row:Delve_the_Depths_1
-              - low: 66
-                high: 90
+              - min: 66
+                max: 90
                 result: *row:Delve_the_Depths_2
-              - low: 91
-                high: 99
+              - min: 91
+                max: 99
                 result: *row:Delve_the_Depths_3
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: *row:Delve_the_Depths_4
           wits:
             name: Wits
             table:
-              - low: 1
-                high: 40
+              - min: 1
+                max: 40
                 result: *row:Delve_the_Depths_0
-              - low: 41
-                high: 55
+              - min: 41
+                max: 55
                 result: *row:Delve_the_Depths_1
-              - low: 56
-                high: 80
+              - min: 56
+                max: 80
                 result: *row:Delve_the_Depths_2
-              - low: 81
-                high: 99
+              - min: 81
+                max: 99
                 result: *row:Delve_the_Depths_3
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: *row:Delve_the_Depths_4
     contents:
       find_an_opportunity:
@@ -93,76 +93,76 @@ oracles:
         _source:
           page: 30
         table:
-          - low: 1
-            high: 25
+          - min: 1
+            max: 25
             result: 'The terrain favors you, or you find a hidden path.'
-          - low: 26
-            high: 45
+          - min: 26
+            max: 45
             result: 'An aspect of the history or nature of this place is revealed.'
-          - low: 46
-            high: 57
+          - min: 46
+            max: 57
             result: 'You locate a secure area.'
-          - low: 58
-            high: 68
+          - min: 58
+            max: 68
             result: 'A clue offers insight or direction.'
-          - low: 69
-            high: 78
+          - min: 69
+            max: 78
             result: 'You get the drop on a denizen.'
-          - low: 79
-            high: 86
+          - min: 79
+            max: 86
             result: 'This area provides an opportunity to scavenge, forage, or hunt.'
-          - low: 87
-            high: 90
+          - min: 87
+            max: 90
             result: 'You locate an interesting or helpful object.'
-          - low: 91
-            high: 94
+          - min: 91
+            max: 94
             result: 'You are alerted to a potential threat.'
-          - low: 95
-            high: 98
+          - min: 95
+            max: 98
             result: 'You encounter a denizen who might support you.'
-          - low: 99
-            high: 100
+          - min: 99
+            max: 100
             result: 'You encounter a denizen in need of help.'
       reveal_a_danger:
         name: Reveal a Danger
         _source:
           page: 34
         table:
-          - low: 1
-            high: 30
+          - min: 1
+            max: 30
             result: 'Check the theme card.'
-          - low: 31
-            high: 45
+          - min: 31
+            max: 45
             result: 'Check the domain card.'
-          - low: 46
-            high: 57
+          - min: 46
+            max: 57
             result: &Reveal_a_Danger_1 'You encounter a hostile denizen.'
-          - low: 58
-            high: 68
+          - min: 58
+            max: 68
             result: &Reveal_a_Danger_2 'You face an environmental or architectural hazard.'
-          - low: 69
-            high: 76
+          - min: 69
+            max: 76
             result: &Reveal_a_Danger_3 'A discovery undermines or complicates your quest.'
-          - low: 77
-            high: 79
+          - min: 77
+            max: 79
             result: &Reveal_a_Danger_4 'You confront a harrowing situation or sensation.'
-          - low: 80
-            high: 82
+          - min: 80
+            max: 82
             result: &Reveal_a_Danger_5 'You face the consequences of an earlier choice or approach.'
-          - low: 83
-            high: 85
+          - min: 83
+            max: 85
             result: &Reveal_a_Danger_6 'Your way is blocked or trapped.'
-          - low: 86
-            high: 88
+          - min: 86
+            max: 88
             result: &Reveal_a_Danger_7 'A resource is diminished, broken, or lost.'
-          - low: 89
-            high: 91
+          - min: 89
+            max: 91
             result: &Reveal_a_Danger_8 'You face a perplexing mystery or tough choice.'
-          - low: 92
-            high: 94
+          - min: 92
+            max: 94
             result: &Reveal_a_Danger_9 'You lose your way or are delayed.'
-          - low: 95
-            high: 100
+          - min: 95
+            max: 100
             result: &Reveal_a_Danger_10 'Roll twice more on this table. Both results occur. If they are the same result, make it worse.'
             rolls:
               - times: 2
@@ -174,35 +174,35 @@ oracles:
         _source:
           page: 68
         table:
-          - low: 1
-            high: 22
+          - min: 1
+            max: 22
             result: *Reveal_a_Danger_1
-          - low: 23
-            high: 42
+          - min: 23
+            max: 42
             result: *Reveal_a_Danger_2
-          - low: 43
-            high: 58
+          - min: 43
+            max: 58
             result: *Reveal_a_Danger_3
-          - low: 59
-            high: 64
+          - min: 59
+            max: 64
             result: *Reveal_a_Danger_4
-          - low: 65
-            high: 70
+          - min: 65
+            max: 70
             result: *Reveal_a_Danger_5
-          - low: 71
-            high: 76
+          - min: 71
+            max: 76
             result: *Reveal_a_Danger_6
-          - low: 77
-            high: 82
+          - min: 77
+            max: 82
             result: *Reveal_a_Danger_7
-          - low: 83
-            high: 88
+          - min: 83
+            max: 88
             result: *Reveal_a_Danger_8
-          - low: 89
-            high: 94
+          - min: 89
+            max: 94
             result: *Reveal_a_Danger_9
-          - low: 95
-            high: 100
+          - min: 95
+            max: 100
             result: *Reveal_a_Danger_10
             rolls:
               - times: 2
@@ -216,12 +216,12 @@ oracles:
         _source:
           page: 155
         table:
-          - low: 1
-            high: 30
+          - min: 1
+            max: 30
             result: 'The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace.'
-          - low: 31
-            high: 70
+          - min: 31
+            max: 70
             result: 'The threat works subtly to advance toward its goal, or the danger escalates. Mark menace.'
-          - low: 71
-            high: 100
+          - min: 71
+            max: 100
             result: 'The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice.'

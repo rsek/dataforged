@@ -15,37 +15,37 @@ export const LocationThemeTemplate = Type.Object({
 				default: 'Use this table to reveal a new aspect of the location.'
 			}),
 			table: Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 8 }),
-				Abstract.StaticRowStub({ low: 9, high: 16 }),
-				Abstract.StaticRowStub({ low: 17, high: 24 }),
-				Abstract.StaticRowStub({ low: 25, high: 32 }),
-				Abstract.StaticRowStub({ low: 33, high: 40 }),
-				Abstract.StaticRowStub({ low: 41, high: 48 }),
-				Abstract.StaticRowStub({ low: 49, high: 56 }),
-				Abstract.StaticRowStub({ low: 57, high: 64 }),
-				Abstract.StaticRowStub({ low: 65, high: 72 }),
-				Abstract.StaticRowStub({ low: 73, high: 80 }),
-				Abstract.StaticRowStub({ low: 81, high: 88 }),
-				Abstract.StaticRowStub({ low: 89, high: 96 }),
-				DescriptorFocusRow({ low: 97, high: 100 })
+				Abstract.StaticRowStub({ min: 1, max: 8 }),
+				Abstract.StaticRowStub({ min: 9, max: 16 }),
+				Abstract.StaticRowStub({ min: 17, max: 24 }),
+				Abstract.StaticRowStub({ min: 25, max: 32 }),
+				Abstract.StaticRowStub({ min: 33, max: 40 }),
+				Abstract.StaticRowStub({ min: 41, max: 48 }),
+				Abstract.StaticRowStub({ min: 49, max: 56 }),
+				Abstract.StaticRowStub({ min: 57, max: 64 }),
+				Abstract.StaticRowStub({ min: 65, max: 72 }),
+				Abstract.StaticRowStub({ min: 73, max: 80 }),
+				Abstract.StaticRowStub({ min: 81, max: 88 }),
+				Abstract.StaticRowStub({ min: 89, max: 96 }),
+				DescriptorFocusRow({ min: 97, max: 100 })
 			])
 		}),
 		peril: Type.Object({
 			name: Type.String({ default: 'Peril' }),
 			summary: Type.String({ default: '' }),
 			table: Type.Tuple([
-				Abstract.StaticRowStub({ low: 1, high: 9 }),
-				Abstract.StaticRowStub({ low: 10, high: 18 }),
-				Abstract.StaticRowStub({ low: 19, high: 27 }),
-				Abstract.StaticRowStub({ low: 28, high: 36 }),
-				Abstract.StaticRowStub({ low: 37, high: 45 }),
-				Abstract.StaticRowStub({ low: 46, high: 54 }),
-				Abstract.StaticRowStub({ low: 55, high: 63 }),
-				Abstract.StaticRowStub({ low: 64, high: 72 }),
-				Abstract.StaticRowStub({ low: 73, high: 81 }),
-				Abstract.StaticRowStub({ low: 82, high: 90 }),
-				ActionThemeRow({ low: 91, high: 98 }),
-				RollTwiceRow({ low: 99, high: 100 })
+				Abstract.StaticRowStub({ min: 1, max: 9 }),
+				Abstract.StaticRowStub({ min: 10, max: 18 }),
+				Abstract.StaticRowStub({ min: 19, max: 27 }),
+				Abstract.StaticRowStub({ min: 28, max: 36 }),
+				Abstract.StaticRowStub({ min: 37, max: 45 }),
+				Abstract.StaticRowStub({ min: 46, max: 54 }),
+				Abstract.StaticRowStub({ min: 55, max: 63 }),
+				Abstract.StaticRowStub({ min: 64, max: 72 }),
+				Abstract.StaticRowStub({ min: 73, max: 81 }),
+				Abstract.StaticRowStub({ min: 82, max: 90 }),
+				ActionThemeRow({ min: 91, max: 98 }),
+				RollTwiceRow({ min: 99, max: 100 })
 			])
 		}),
 		opportunity: Type.Object({

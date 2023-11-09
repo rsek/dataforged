@@ -67,23 +67,23 @@ export function MappedKeys<
  * @internal
  */
 export const DiceRange = Type.Object({
-	low: Type.Integer({ description: 'The low end of the dice range.' }),
-	high: Type.Integer({ description: 'The high end of the dice range.' })
+	min: Type.Integer({ description: 'The low end of the dice range.' }),
+	max: Type.Integer({ description: 'The high end of the dice range.' })
 })
 export type DiceRange = Static<typeof DiceRange>
 
-export function StaticDiceRange<Low extends number, High extends number>(
-	range: { low: Low; high: High },
+export function StaticDiceRange<Min extends number, Max extends number>(
+	range: { min: Min; max: Max },
 	options: ObjectOptions = {}
 ) {
 	return MappedKeys(
 		DiceRange,
-		['low', 'high'],
+		['min', 'max'],
 		({ description }, k) => Type.Literal(range[k], { description }),
 		options
 	) as TObject<{
-		low: TLiteral<Low>
-		high: TLiteral<High>
+		min: TLiteral<Min>
+		max: TLiteral<Max>
 	}>
 }
 export type StaticDiceRange<Low extends number, High extends number> = Static<
@@ -119,8 +119,8 @@ type CanBeLiteral<T> = {
 
 export function StaticRowStub(
 	literals: Partial<CanBeLiteral<OracleTableRow>> & {
-		low?: number
-		high?: number
+		min?: number
+		max?: number
 	},
 	defaults: PartialDeep<OracleTableRow> = {}
 ) {

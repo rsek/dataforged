@@ -19,16 +19,16 @@ oracles:
         _source:
           page: 360
         table:
-          - low: 1
-            high: 50
+          - min: 1
+            max: 50
             result: Planetside
             icon: icon/oracles/location/planetside.svg
-          - low: 51
-            high: 75
+          - min: 51
+            max: 75
             result: Orbital
             icon: icon/oracles/location/orbital.svg
-          - low: 76
-            high: 100
+          - min: 76
+            max: 100
             result: Deep Space
             icon: icon/oracles/location/deep_space.svg
       scale:
@@ -40,20 +40,20 @@ oracles:
         # content:
         #   part_of_speech: [fragment]
         table:
-          - low: 1
-            high: 30
+          - min: 1
+            max: 30
             result: 'Minor, confined site'
-          - low: 31
-            high: 65
+          - min: 31
+            max: 65
             result: Typical site of limited scope
-          - low: 66
-            high: 90
+          - min: 66
+            max: 90
             result: 'Large, elaborate site'
-          - low: 91
-            high: 99
+          - min: 91
+            max: 99
             result: Vast site of unfathomable complexity
-          - low: 100
-            high: 100
+          - min: 100
+            max: 100
             result: World-spanning site or megastructure
       form:
         name: Form
@@ -64,20 +64,20 @@ oracles:
         # content:
         #   part_of_speech: [noun, common noun]
         table:
-          - low: 1
-            high: 35
+          - min: 1
+            max: 35
             result: Structure
-          - low: 36
-            high: 60
+          - min: 36
+            max: 60
             result: Vessel
-          - low: 61
-            high: 80
+          - min: 61
+            max: 80
             result: Monument
-          - low: 81
-            high: 95
+          - min: 81
+            max: 95
             result: Machine
-          - low: 96
-            high: 100
+          - min: 96
+            max: 100
             result: Incomprehensible
             # content: {part_of_speech: [adjective]}
       shape:
@@ -89,55 +89,55 @@ oracles:
         # content:
         #   part_of_speech: [adjective]
         table:
-          - low: 1
-            high: 15
+          - min: 1
+            max: 15
             result: Practical or functional
-          - low: 16
-            high: 20
+          - min: 16
+            max: 20
             result: Geometric (complex shape)
-          - low: 21
-            high: 25
+          - min: 21
+            max: 25
             result: Geometric (cube)
-          - low: 26
-            high: 30
+          - min: 26
+            max: 30
             result: Geometric (obelisk)
-          - low: 31
-            high: 35
+          - min: 31
+            max: 35
             result: Geometric (pyramid)
-          - low: 36
-            high: 40
+          - min: 36
+            max: 40
             result: Geometric (ring or torus)
-          - low: 41
-            high: 45
+          - min: 41
+            max: 45
             result: Geometric (sphere)
-          - low: 46
-            high: 55
+          - min: 46
+            max: 55
             result: Organic or curved
-          - low: 56
-            high: 60
+          - min: 56
+            max: 60
             result: Platform or disc
             # content: {part_of_speech: [common noun]}
-          - low: 61
-            high: 65
+          - min: 61
+            max: 65
             result: Spires or towers
             # content: {part_of_speech: [common noun, plural]}
-          - low: 66
-            high: 68
+          - min: 66
+            max: 68
             result: Domed
-          - low: 69
-            high: 73
+          - min: 69
+            max: 73
             result: Spiky
-          - low: 74
-            high: 76
+          - min: 74
+            max: 76
             result: Sculptural or effigy
-          - low: 77
-            high: 79
+          - min: 77
+            max: 79
             result: Amorphous
-          - low: 80
-            high: 85
+          - min: 80
+            max: 85
             result: Transforming
-          - low: 86
-            high: 100
+          - min: 86
+            max: 100
             result: Roll twice
             rolls:
               - times: 2
@@ -152,36 +152,36 @@ oracles:
         # content:
         #   part_of_speech: [adjective]
         table:
-          - low: 1
-            high: 30
+          - min: 1
+            max: 30
             result: Metallic (industrial)
-          - low: 31
-            high: 60
+          - min: 31
+            max: 60
             result: Metallic (smooth)
-          - low: 61
-            high: 70
+          - min: 61
+            max: 70
             result: Rocky or stone-like
-          - low: 71
-            high: 74
+          - min: 71
+            max: 74
             result: Crystalline or glass-like
-          - low: 75
-            high: 78
+          - min: 75
+            max: 78
             result: Bone-like
-          - low: 79
-            high: 82
+          - min: 79
+            max: 82
             result: Flesh-like
-          - low: 83
-            high: 86
+          - min: 83
+            max: 86
             result: Plant-like
-          - low: 87
-            high: 88
+          - min: 87
+            max: 88
             result: Energy
             # content: {part_of_speech: [common noun]}
-          - low: 89
-            high: 90
+          - min: 89
+            max: 90
             result: Liquid
-          - low: 91
-            high: 100
+          - min: 91
+            max: 100
             result: Roll twice
             rolls:
               - times: 2
@@ -197,95 +197,95 @@ oracles:
         #   initial: true
         #   max_rolls: 2
         table:
-          - low: 1
-            high: 3
+          - min: 1
+            max: 3
             result: Corrupting its environment # is
-          - low: 4
-            high: 7
+          - min: 4
+            max: 7
             result: Automated defenses # has
-          - low: 8
-            high: 10
+          - min: 8
+            max: 10
             result: Breached exterior # has
-          - low: 11
-            high: 14
+          - min: 11
+            max: 14
             result: Broken or fragmented # is
-          - low: 15
-            high: 17
+          - min: 15
+            max: 17
             result: Camouflaged or hidden # is
-          - low: 18
-            high: 20
+          - min: 18
+            max: 20
             result: Cavernous opening # has
-          - low: 21
-            high: 23
+          - min: 21
+            max: 23
             result: Dispersed structures # has
-          - low: 24
-            high: 26
+          - min: 24
+            max: 26
             result: Dreadful premonitions # emits
-          - low: 27
-            high: 30
+          - min: 27
+            max: 30
             result: Electromagnetic field # has? emits?
-          - low: 31
-            high: 33
+          - min: 31
+            max: 33
             result: Embedded within terrain # is
-          - low: 34
-            high: 36
+          - min: 34
+            max: 36
             result: Encased in an energy field # is
-          - low: 37
-            high: 40
+          - min: 37
+            max: 40
             result: Energy core or conduit # has
-          - low: 41
-            high: 43
+          - min: 41
+            max: 43
             result: Fractal patterns # has
-          - low: 44
-            high: 47
+          - min: 44
+            max: 47
             result: Glyphs or symbols # has
-          - low: 48
-            high: 51
+          - min: 48
+            max: 51
             result: Hazardous readings # emits? has?
-          - low: 52
-            high: 54
+          - min: 52
+            max: 54
             result: Levitating or in motion # is
-          - low: 55
-            high: 58
+          - min: 55
+            max: 58
             result: Lighted or illuminated # is
-          - low: 59
-            high: 61
+          - min: 59
+            max: 61
             result: No obvious point of entry # has
-          - low: 62
-            high: 64
+          - min: 62
+            max: 64
             result: Overgrown or entangled # is
-          - low: 65
-            high: 67
+          - min: 65
+            max: 67
             result: Perfectly preserved # is
-          - low: 68
-            high: 70
+          - min: 68
+            max: 70
             result: Phasing in and out of reality # is
-          - low: 71
-            high: 73
+          - min: 71
+            max: 73
             result: Physical barrier # has
-          - low: 74
-            high: 76
+          - min: 74
+            max: 76
             result: Pitted or scarred # is
-          - low: 77
-            high: 79
+          - min: 77
+            max: 79
             result: Scaled for outsized beings # is
-          - low: 80
-            high: 82
+          - min: 80
+            max: 82
             result: Shrouded in mist or haze # is
-          - low: 83
-            high: 85
+          - min: 83
+            max: 85
             result: Signs of invaders # has? bearing?
-          - low: 86
-            high: 89
+          - min: 86
+            max: 89
             result: Sound or signal # emits?
-          - low: 90
-            high: 92
+          - min: 90
+            max: 92
             result: Strong gravity well # has
-          - low: 93
-            high: 95
+          - min: 93
+            max: 95
             result: Surrounded by destruction # is
-          - low: 96
-            high: 100
+          - min: 96
+            max: 100
             result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
             rolls:
               - oracle: starforged/oracles/core/descriptor
@@ -310,101 +310,101 @@ oracles:
             #   tags: [first look]
             summary: Use this table to reveal what you see or encounter when first entering the site. These aspects, combined with the exterior features, will help you envision the nature and condition of the vault and provide context for the rest of your exploration.
             table:
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: Abnormal gravity
-              - low: 4
-                high: 6
+              - min: 4
+                max: 6
                 result: Automated defenses
-              - low: 7
-                high: 9
+              - min: 7
+                max: 9
                 result: Biological infestation
-              - low: 10
-                high: 12
+              - min: 10
+                max: 12
                 result: Carried tech is disrupted
-              - low: 13
-                high: 15
+              - min: 13
+                max: 15
                 result: Complex textures or patterns
-              - low: 16
-                high: 18
+              - min: 16
+                max: 18
                 result: Corpses of intruders
-              - low: 19
-                high: 21
+              - min: 19
+                max: 21
                 result: Damage and debris
-              - low: 22
-                high: 24
+              - min: 22
+                max: 24
                 result: Deteriorating spaces
-              - low: 25
-                high: 27
+              - min: 25
+                max: 27
                 result: Dissonant tones or music
-              - low: 28
-                high: 30
+              - min: 28
+                max: 30
                 result: Energy surges
-              - low: 31
-                high: 33
+              - min: 31
+                max: 33
                 result: Environment reacts to your presence
-              - low: 34
-                high: 36
+              - min: 34
+                max: 36
                 result: Evidence of looting or scavenging
-              - low: 37
-                high: 39
+              - min: 37
+                max: 39
                 result: Excessive cold
-              - low: 40
-                high: 42
+              - min: 40
+                max: 42
                 result: Excessive heat
-              - low: 43
-                high: 45
+              - min: 43
+                max: 45
                 result: Faint ambient lighting
-              - low: 46
-                high: 48
+              - min: 46
+                max: 48
                 result: Impenetrable darkness
-              - low: 49
-                high: 51
+              - min: 49
+                max: 51
                 result: Intense smell
-              - low: 52
-                high: 54
+              - min: 52
+                max: 54
                 result: Magnetic surfaces
-              - low: 55
-                high: 57
+              - min: 55
+                max: 57
                 result: Material does not match exterior
-              - low: 58
-                high: 60
+              - min: 58
+                max: 60
                 result: Ornate markings or symbols
-              - low: 61
-                high: 63
+              - min: 61
+                max: 63
                 result: Reactive lighting responds to your presence
-              - low: 64
-                high: 66
+              - min: 64
+                max: 66
                 result: Scale does not match exterior
-              - low: 67
-                high: 69
+              - min: 67
+                max: 69
                 result: Signs of invasive lifeforms
-              - low: 70
-                high: 72
+              - min: 70
+                max: 72
                 result: Surfaces respond to touch
-              - low: 73
-                high: 75
+              - min: 73
+                max: 75
                 result: Thick haze or smoke
-              - low: 76
-                high: 78
+              - min: 76
+                max: 78
                 result: Thick or fluid atmosphere
-              - low: 79
-                high: 81
+              - min: 79
+                max: 81
                 result: Thrumming or droning sound
-              - low: 82
-                high: 84
+              - min: 82
+                max: 84
                 result: Toxic atmosphere
-              - low: 85
-                high: 87
+              - min: 85
+                max: 87
                 result: Toxic residue
-              - low: 88
-                high: 90
+              - min: 88
+                max: 90
                 result: Well-preserved
-              - low: 91
-                high: 93
+              - min: 91
+                max: 93
                 result: Wet or humid
-              - low: 94
-                high: 100
+              - min: 94
+                max: 100
                 result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls:
                   - oracle: starforged/oracles/core/descriptor
@@ -420,115 +420,115 @@ oracles:
             # content:
             #   part_of_speech: [fragment]
             table:
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: Ascending or descending path
-              - low: 4
-                high: 6
+              - min: 4
+                max: 6
                 result: Biological growths
-              - low: 7
-                high: 8
+              - min: 7
+                max: 8
                 result: Blood trail
-              - low: 9
-                high: 10
+              - min: 9
+                max: 10
                 result: Breached or ruptured area
-              - low: 11
-                high: 13
+              - min: 11
+                max: 13
                 result: Broken or inactive machinery
-              - low: 14
-                high: 15
+              - min: 14
+                max: 15
                 result: Clinging mist
-              - low: 16
-                high: 18
+              - min: 16
+                max: 18
                 result: Damage or debris
-              - low: 19
-                high: 20
+              - min: 19
+                max: 20
                 result: Echoing noises
-              - low: 21
-                high: 22
+              - min: 21
+                max: 22
                 result: Elevated path over chasm or shaft
-              - low: 23
-                high: 25
+              - min: 23
+                max: 25
                 result: Energy discharges
-              - low: 26
-                high: 28
+              - min: 26
+                max: 28
                 result: Enigmatic controls or terminal
-              - low: 29
-                high: 30
+              - min: 29
+                max: 30
                 result: Garden or invasive plant life
-              - low: 31
-                high: 32
+              - min: 31
+                max: 32
                 result: Inscrutable object lies dark and silent
-              - low: 33
-                high: 35
+              - min: 33
+                max: 35
                 result: Intersection or hub
-              - low: 36
-                high: 38
+              - min: 36
+                max: 38
                 result: Intricate symbols or pictographs
-              - low: 39
-                high: 41
+              - min: 39
+                max: 41
                 result: Looted or dismantled technology
-              - low: 42
-                high: 44
+              - min: 42
+                max: 44
                 result: Looted or empty containers
-              - low: 45
-                high: 47
+              - min: 45
+                max: 47
                 result: Mazelike passages
-              - low: 48
-                high: 49
+              - min: 48
+                max: 49
                 result: Moving platform or lift
-              - low: 50
-                high: 52
+              - min: 50
+                max: 52
                 result: Mummified or decayed corpses
-              - low: 53
-                high: 55
+              - min: 53
+                max: 55
                 result: Narrowing or widening path
-              - low: 56
-                high: 58
+              - min: 56
+                max: 58
                 result: Pooled liquid
-              - low: 59
-                high: 61
+              - min: 59
+                max: 61
                 result: Remains of intruders
-              - low: 62
-                high: 63
+              - min: 62
+                max: 63
                 result: Scattered bones
-              - low: 64
-                high: 66
+              - min: 64
+                max: 66
                 result: Scrawled markings
-              - low: 67
-                high: 68
+              - min: 67
+                max: 68
                 result: Signs of an attack or battle
-              - low: 69
-                high: 71
+              - min: 69
+                max: 71
                 result: Signs of invasive creatures
-              - low: 72
-                high: 73
+              - min: 72
+                max: 73
                 result: Surfaces honeycombed with openings
-              - low: 74
-                high: 76
+              - min: 74
+                max: 76
                 result: Unintelligible recorded message
-              - low: 77
-                high: 79
+              - min: 77
+                max: 79
                 result: Unintelligible whispers
-              - low: 80
-                high: 82
+              - min: 80
+                max: 82
                 result: Vaulted chamber
-              - low: 83
-                high: 85
+              - min: 83
+                max: 85
                 result: Vertical shaft
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: 'Transition into the [Sanctum](id:starforged/oracles/vaults/sanctum)'
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls:
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
                   - oracle: starforged/oracles/core/focus
                     auto: true
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -544,73 +544,73 @@ oracles:
             #   part_of_speech: [fragment]
             #   tags: [peril, event, present]
             table:
-              - low: 1
-                high: 5
+              - min: 1
+                max: 5
                 result: Broken path
-              - low: 6
-                high: 10
+              - min: 6
+                max: 10
                 result: Change in atmosphere or environment
-              - low: 11
-                high: 15
+              - min: 11
+                max: 15
                 result: Corrosive environment
-              - low: 16
-                high: 20
+              - min: 16
+                max: 20
                 result: Dire warning left by other explorers
-              - low: 21
-                high: 25
+              - min: 21
+                max: 25
                 result: Foes close in
-              - low: 26
-                high: 30
+              - min: 26
+                max: 30
                 result: Fragile structural integrity
-              - low: 31
-                high: 35
+              - min: 31
+                max: 35
                 result: Hazardous path designed for traversal by other beings
-              - low: 36
-                high: 40
+              - min: 36
+                max: 40
                 result: Important gear malfunctions
-              - low: 41
-                high: 45
+              - min: 41
+                max: 45
                 result: Isolation or fear presses in
-              - low: 46
-                high: 50
+              - min: 46
+                max: 50
                 result: Mechanical trap
-              - low: 51
-                high: 55
+              - min: 51
+                max: 55
                 result: Mist or darkness conceals dangers
-              - low: 56
-                high: 60
+              - min: 56
+                max: 60
                 result: Puzzling mystery blocks the way
-              - low: 61
-                high: 65
+              - min: 61
+                max: 65
                 result: Radioactive hot spot
-              - low: 66
-                high: 70
+              - min: 66
+                max: 70
                 result: Rivals seek what lay within
-              - low: 71
-                high: 75
+              - min: 71
+                max: 75
                 result: Signs of a contagion
-              - low: 76
-                high: 80
+              - min: 76
+                max: 80
                 result: Signs of a lurking foe
-              - low: 81
-                high: 85
+              - min: 81
+                max: 85
                 result: Tempting location or object holds hidden dangers
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: Toxic atmosphere
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: Unnerving sound or sensation
-              - low: 96
-                high: 99
+              - min: 96
+                max: 99
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -626,35 +626,35 @@ oracles:
             #   part_of_speech: [fragment]
             #   tags: [opportunity]
             table:
-              - low: 1
-                high: 10
+              - min: 1
+                max: 10
                 result: Clue points the way to your destination or target
-              - low: 11
-                high: 20
+              - min: 11
+                max: 20
                 result: Clue to a lifeform's nature or vulnerabilities
-              - low: 21
-                high: 30
+              - min: 21
+                max: 30
                 result: Helpful gear left by another explorer
-              - low: 31
-                high: 40
+              - min: 31
+                max: 40
                 result: Insight into the nature or history of this site
-              - low: 41
-                high: 50
+              - min: 41
+                max: 50
                 result: Intriguing device or artifact
-              - low: 51
-                high: 60
+              - min: 51
+                max: 60
                 result: Opening to get the drop on a foe
-              - low: 61
-                high: 70
+              - min: 61
+                max: 70
                 result: Opening to outmaneuver or escape a threat or foe
-              - low: 71
-                high: 80
+              - min: 71
+                max: 80
                 result: Salvageable resource
-              - low: 81
-                high: 90
+              - min: 81
+                max: 90
                 result: Secure area offers a moment of peace
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: Shortcut or less perilous path speeds your way
       sanctum:
         name: Sanctum
@@ -670,97 +670,97 @@ oracles:
             summary: |-
               Because precursor vaults are alien and enigmatic, understanding their ultimate purpose requires investigation and exploration. Use this table to reveal the vault’s original function or role at an appropriate point in your survey. This can come as an outcome of completing an expedition, or when your story naturally leads you to a revelation of the site’s nature.
             table:
-              - low: 1
-                high: 3
+              - min: 1
+                max: 3
                 result: Capture or control of other beings
-              - low: 4
-                high: 6
+              - min: 4
+                max: 6
                 result: Command or communication relay
-              - low: 7
-                high: 9
+              - min: 7
+                max: 9
                 result: Commemoration of an event
-              - low: 10
-                high: 12
+              - min: 10
+                max: 12
                 result: Conduit to mystical powers
-              - low: 13
-                high: 16
+              - min: 13
+                max: 16
                 result: Conservation of living specimens
-              - low: 17
-                high: 20
+              - min: 17
+                max: 20
                 result: Containment of a powerful being
-              - low: 21
-                high: 24
+              - min: 21
+                max: 24
                 result: Containment of dangerous creatures
-              - low: 25
-                high: 27
+              - min: 25
+                max: 27
                 result: Containment of weapons
-              - low: 28
-                high: 31
+              - min: 28
+                max: 31
                 result: Control of a destructive weapon
-              - low: 32
-                high: 34
+              - min: 32
+                max: 34
                 result: Generation of defenses or barriers
-              - low: 35
-                high: 38
+              - min: 35
+                max: 38
                 result: Generation or transformation of energy
-              - low: 39
-                high: 41
+              - min: 39
+                max: 41
                 result: Harvesting of resources
-              - low: 42
-                high: 44
+              - min: 42
+                max: 44
                 result: Interment of the dead
-              - low: 45
-                high: 47
+              - min: 45
+                max: 47
                 result: Manipulation of spacetime
-              - low: 48
-                high: 50
+              - min: 48
+                max: 50
                 result: Manufacturing of lifeforms
-              - low: 51
-                high: 53
+              - min: 51
+                max: 53
                 result: Manufacturing of machines or devices
-              - low: 54
-                high: 56
+              - min: 54
+                max: 56
                 result: Passage to another location
-              - low: 57
-                high: 59
+              - min: 57
+                max: 59
                 result: Preservation of an ancient intelligence
-              - low: 60
-                high: 62
+              - min: 60
+                max: 62
                 result: Preservation of maps or navigational data
-              - low: 63
-                high: 66
+              - min: 63
+                max: 66
                 result: Protection of a sacred artifact
-              - low: 67
-                high: 69
+              - min: 67
+                max: 69
                 result: Researching science or technology
-              - low: 70
-                high: 73
+              - min: 70
+                max: 73
                 result: Safekeeping of cultural records or memories
-              - low: 74
-                high: 77
+              - min: 74
+                max: 77
                 result: Shelter for inhabitants
-              - low: 78
-                high: 80
+              - min: 78
+                max: 80
                 result: Stockpiling of resources
-              - low: 81
-                high: 83
+              - min: 81
+                max: 83
                 result: Surveying or monitoring of a location
-              - low: 84
-                high: 87
+              - min: 84
+                max: 87
                 result: Transformation of terrain or environments
-              - low: 88
-                high: 90
+              - min: 88
+                max: 90
                 result: Worship of a god or being
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -774,115 +774,115 @@ oracles:
             # content:
             #   part_of_speech: [fragment]
             table:
-              - low: 1
-                high: 2
+              - min: 1
+                max: 2
                 result: Abyssal pit or chasm
-              - low: 3
-                high: 5
+              - min: 3
+                max: 5
                 result: Altered gravity
-              - low: 6
-                high: 7
+              - min: 6
+                max: 7
                 result: Area filled with strange liquid
-              - low: 8
-                high: 10
+              - min: 8
+                max: 10
                 result: Area humming with aberrant energy
-              - low: 11
-                high: 13
+              - min: 11
+                max: 13
                 result: Blasted or wrecked area
-              - low: 14
-                high: 16
+              - min: 14
+                max: 16
                 result: Central chamber of immense proportions or grandeur
-              - low: 17
-                high: 19
+              - min: 17
+                max: 19
                 result: Colossal machine
-              - low: 20
-                high: 21
+              - min: 20
+                max: 21
                 result: Corrupted plant life
-              - low: 22
-                high: 24
+              - min: 22
+                max: 24
                 result: Enigmatic mechanisms come to life
-              - low: 25
-                high: 26
+              - min: 25
+                max: 26
                 result: Haze of spores or nanomachines
-              - low: 27
-                high: 28
+              - min: 27
+                max: 28
                 result: Incomprehensible architecture or geometry
-              - low: 29
-                high: 31
+              - min: 29
+                max: 31
                 result: Incongruent space contradicts the nature of this site
-              - low: 32
-                high: 34
+              - min: 32
+                max: 34
                 result: Inscrutable object emits sound and energy
-              - low: 35
-                high: 37
+              - min: 35
+                max: 37
                 result: Machinery fused with organic growths
-              - low: 38
-                high: 40
+              - min: 38
+                max: 40
                 result: Moving chamber or passage
-              - low: 41
-                high: 43
+              - min: 41
+                max: 43
                 result: Mutated remains of the dead
-              - low: 44
-                high: 46
+              - min: 44
+                max: 46
                 result: Nest of invasive creatures
-              - low: 47
-                high: 49
+              - min: 47
+                max: 49
                 result: Pockets or layers of altered atmosphere
-              - low: 50
-                high: 51
+              - min: 50
+                max: 51
                 result: Pods or chambers with preserved corpses
-              - low: 52
-                high: 54
+              - min: 52
+                max: 54
                 result: Pools of strange liquid
-              - low: 55
-                high: 57
+              - min: 55
+                max: 57
                 result: Pulsating surfaces
-              - low: 58
-                high: 60
+              - min: 58
+                max: 60
                 result: Rampant biological infestation
-              - low: 61
-                high: 63
+              - min: 61
+                max: 63
                 result: Repository of biological specimens
-              - low: 64
-                high: 66
+              - min: 64
+                max: 66
                 result: Sealed chamber
-              - low: 67
-                high: 69
+              - min: 67
+                max: 69
                 result: Sealed containers of inscrutable purpose
-              - low: 70
-                high: 72
+              - min: 70
+                max: 72
                 result: Simulated or illusionary environment
-              - low: 73
-                high: 74
+              - min: 73
+                max: 74
                 result: Surfaces covered in slime or fungus
-              - low: 75
-                high: 76
+              - min: 75
+                max: 76
                 result: Temporal distortions
-              - low: 77
-                high: 79
+              - min: 77
+                max: 79
                 result: Transforming spaces
-              - low: 80
-                high: 82
+              - min: 80
+                max: 82
                 result: Visions of this place in another time
-              - low: 83
-                high: 85
+              - min: 83
+                max: 85
                 result: Visions or reflections of another reality
-              - low: 86
-                high: 88
+              - min: 86
+                max: 88
                 result: Warped or misshapen spaces
-              - low: 89
-                high: 90
+              - min: 89
+                max: 90
                 result: Whispering voices speak to you
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
                 rolls:
                   - oracle: starforged/oracles/core/descriptor
                     auto: true
                   - oracle: starforged/oracles/core/focus
                     auto: true
-              - low: 96
-                high: 100
+              - min: 96
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -897,73 +897,73 @@ oracles:
             #   part_of_speech: [fragment]
             #   tags: [peril, event, present]
             table:
-              - low: 1
-                high: 5
+              - min: 1
+                max: 5
                 result: Camouflaged or transforming foe reveals itself
-              - low: 6
-                high: 10
+              - min: 6
+                max: 10
                 result: Confounding distortions of the timestream
-              - low: 11
-                high: 15
+              - min: 11
+                max: 15
                 result: Destructive environmental disturbance
-              - low: 16
-                high: 20
+              - min: 16
+                max: 20
                 result: Horrifying fate for a previous intruder
-              - low: 21
-                high: 25
+              - min: 21
+                max: 25
                 result: Important equipment rendered useless
-              - low: 26
-                high: 30
+              - min: 26
+                max: 30
                 result: Led astray or lured into danger by a manifestation or illusion
-              - low: 31
-                high: 35
+              - min: 31
+                max: 35
                 result: Lost the way or separated from others
-              - low: 36
-                high: 40
+              - min: 36
+                max: 40
                 result: Manifestations prey upon your weaknesses or worries
-              - low: 41
-                high: 45
+              - min: 41
+                max: 45
                 result: Other intruders have been corrupted or mutated by this place
-              - low: 46
-                high: 50
+              - min: 46
+                max: 50
                 result: Paranoia or suspicion takes hold
-              - low: 51
-                high: 55
+              - min: 51
+                max: 55
                 result: Path behind you is sealed
-              - low: 56
-                high: 60
+              - min: 56
+                max: 60
                 result: Powerful foe strikes without warning
-              - low: 61
-                high: 65
+              - min: 61
+                max: 65
                 result: Restless dead awaken
-              - low: 66
-                high: 70
+              - min: 66
+                max: 70
                 result: Scene of hideous violence or death
-              - low: 71
-                high: 75
+              - min: 71
+                max: 75
                 result: Snared in an unnatural trap
-              - low: 76
-                high: 80
+              - min: 76
+                max: 80
                 result: Spawning or swarming foes surround you
-              - low: 81
-                high: 85
+              - min: 81
+                max: 85
                 result: Sudden structural collapse or failure
-              - low: 86
-                high: 90
+              - min: 86
+                max: 90
                 result: Temptations to linger or remain in this site
-              - low: 91
-                high: 95
+              - min: 91
+                max: 95
                 result: You are marked by physical corruption or mutation
-              - low: 96
-                high: 99
+              - min: 96
+                max: 99
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
                 rolls:
                   - oracle: starforged/oracles/core/action
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - low: 100
-                high: 100
+              - min: 100
+                max: 100
                 result: Roll twice
                 rolls:
                   - times: 2
@@ -978,33 +978,33 @@ oracles:
             #   part_of_speech: [fragment]
             #   tags: [opportunity]
             table:
-              - low: 1
-                high: 10
+              - min: 1
+                max: 10
                 result: Access to a secret or protected area
-              - low: 11
-                high: 20
+              - min: 11
+                max: 20
                 result: Clue points the way to your destination or target
-              - low: 21
-                high: 30
+              - min: 21
+                max: 30
                 result: Comforting illusion or vision
-              - low: 31
-                high: 40
+              - min: 31
+                max: 40
                 result: Control or terminal adjusts to accept your input
-              - low: 41
-                high: 50
+              - min: 41
+                max: 50
                 result: Deeper insight into the history or nature of this site
-              - low: 51
-                high: 60
+              - min: 51
+                max: 60
                 result: Device or artifact reveals its purpose
-              - low: 61
-                high: 70
+              - min: 61
+                max: 70
                 result: Environment adjusts to better suit you
-              - low: 71
-                high: 80
+              - min: 71
+                max: 80
                 result: Foes stand down or give way
-              - low: 81
-                high: 90
+              - min: 81
+                max: 90
                 result: Key offers control of a function or aspect of this site
-              - low: 91
-                high: 100
+              - min: 91
+                max: 100
                 result: Shortcut or less perilous path speeds your way

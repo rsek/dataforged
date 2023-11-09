@@ -3,7 +3,7 @@ import { type Oracles } from '../schema'
 import * as Abstract from '../schema/common/abstract.js'
 
 export function RollTwiceRow(
-	{ low, high }: { low: number; high: number },
+	{ low, high }: { min: number; max: number },
 	method: Oracles.OracleTableRollMethod = 'no_duplicates'
 ) {
 	return Abstract.StaticRowStub(
@@ -15,7 +15,7 @@ export function RollTwiceRow(
 }
 
 export function PrecursorVaultRow(
-	{ low, high }: { low: number; high: number },
+	{ low, high }: { min: number; max: number },
 	location?: 'Deep Space' | 'Planetside' | 'Orbital'
 ) {
 	let resultText = 'Precursor Vault'
@@ -28,8 +28,8 @@ export function DescriptorFocusRow({
 	low,
 	high
 }: {
-	low: number
-	high: number
+	min: number
+	max: number
 }) {
 	return Abstract.StaticRowStub(
 		{
@@ -47,7 +47,7 @@ export function DescriptorFocusRow({
 	)
 }
 
-export function ActionThemeRow({ low, high }: { low: number; high: number }) {
+export function ActionThemeRow({ low, high }: { min: number; max: number }) {
 	return Abstract.StaticRowStub(
 		{
 			low,
@@ -65,45 +65,45 @@ export function ActionThemeRow({ low, high }: { low: number; high: number }) {
 }
 
 export const OracleTableRows5 = Type.Tuple([
-	Abstract.StaticRowStub({ low: 1, high: 20 }),
-	Abstract.StaticRowStub({ low: 21, high: 40 }),
-	Abstract.StaticRowStub({ low: 41, high: 60 }),
-	Abstract.StaticRowStub({ low: 61, high: 80 }),
-	Abstract.StaticRowStub({ low: 81, high: 100 })
+	Abstract.StaticRowStub({ min: 1, max: 20 }),
+	Abstract.StaticRowStub({ min: 21, max: 40 }),
+	Abstract.StaticRowStub({ min: 41, max: 60 }),
+	Abstract.StaticRowStub({ min: 61, max: 80 }),
+	Abstract.StaticRowStub({ min: 81, max: 100 })
 ])
 
 export const OracleTableRows10 = Type.Tuple([
-	Abstract.StaticRowStub({ low: 1, high: 10 }),
-	Abstract.StaticRowStub({ low: 11, high: 20 }),
-	Abstract.StaticRowStub({ low: 21, high: 30 }),
-	Abstract.StaticRowStub({ low: 31, high: 40 }),
-	Abstract.StaticRowStub({ low: 41, high: 50 }),
-	Abstract.StaticRowStub({ low: 51, high: 60 }),
-	Abstract.StaticRowStub({ low: 61, high: 70 }),
-	Abstract.StaticRowStub({ low: 71, high: 80 }),
-	Abstract.StaticRowStub({ low: 81, high: 90 }),
-	Abstract.StaticRowStub({ low: 91, high: 100 })
+	Abstract.StaticRowStub({ min: 1, max: 10 }),
+	Abstract.StaticRowStub({ min: 11, max: 20 }),
+	Abstract.StaticRowStub({ min: 21, max: 30 }),
+	Abstract.StaticRowStub({ min: 31, max: 40 }),
+	Abstract.StaticRowStub({ min: 41, max: 50 }),
+	Abstract.StaticRowStub({ min: 51, max: 60 }),
+	Abstract.StaticRowStub({ min: 61, max: 70 }),
+	Abstract.StaticRowStub({ min: 71, max: 80 }),
+	Abstract.StaticRowStub({ min: 81, max: 90 }),
+	Abstract.StaticRowStub({ min: 91, max: 100 })
 ])
 
 export const OracleTableRows20 = Type.Tuple([
-	Abstract.StaticRowStub({ low: 1, high: 5 }),
-	Abstract.StaticRowStub({ low: 6, high: 10 }),
-	Abstract.StaticRowStub({ low: 11, high: 15 }),
-	Abstract.StaticRowStub({ low: 16, high: 20 }),
-	Abstract.StaticRowStub({ low: 21, high: 25 }),
-	Abstract.StaticRowStub({ low: 26, high: 30 }),
-	Abstract.StaticRowStub({ low: 31, high: 35 }),
-	Abstract.StaticRowStub({ low: 36, high: 40 }),
-	Abstract.StaticRowStub({ low: 41, high: 45 }),
-	Abstract.StaticRowStub({ low: 46, high: 50 }),
-	Abstract.StaticRowStub({ low: 51, high: 55 }),
-	Abstract.StaticRowStub({ low: 56, high: 60 }),
-	Abstract.StaticRowStub({ low: 61, high: 65 }),
-	Abstract.StaticRowStub({ low: 66, high: 70 }),
-	Abstract.StaticRowStub({ low: 71, high: 75 }),
-	Abstract.StaticRowStub({ low: 76, high: 80 }),
-	Abstract.StaticRowStub({ low: 81, high: 85 }),
-	Abstract.StaticRowStub({ low: 86, high: 90 }),
-	Abstract.StaticRowStub({ low: 91, high: 95 }),
-	Abstract.StaticRowStub({ low: 96, high: 100 })
+	Abstract.StaticRowStub({ min: 1, max: 5 }),
+	Abstract.StaticRowStub({ min: 6, max: 10 }),
+	Abstract.StaticRowStub({ min: 11, max: 15 }),
+	Abstract.StaticRowStub({ min: 16, max: 20 }),
+	Abstract.StaticRowStub({ min: 21, max: 25 }),
+	Abstract.StaticRowStub({ min: 26, max: 30 }),
+	Abstract.StaticRowStub({ min: 31, max: 35 }),
+	Abstract.StaticRowStub({ min: 36, max: 40 }),
+	Abstract.StaticRowStub({ min: 41, max: 45 }),
+	Abstract.StaticRowStub({ min: 46, max: 50 }),
+	Abstract.StaticRowStub({ min: 51, max: 55 }),
+	Abstract.StaticRowStub({ min: 56, max: 60 }),
+	Abstract.StaticRowStub({ min: 61, max: 65 }),
+	Abstract.StaticRowStub({ min: 66, max: 70 }),
+	Abstract.StaticRowStub({ min: 71, max: 75 }),
+	Abstract.StaticRowStub({ min: 76, max: 80 }),
+	Abstract.StaticRowStub({ min: 81, max: 85 }),
+	Abstract.StaticRowStub({ min: 86, max: 90 }),
+	Abstract.StaticRowStub({ min: 91, max: 95 }),
+	Abstract.StaticRowStub({ min: 96, max: 100 })
 ])

@@ -37,46 +37,46 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 25
+              - min: 1
+                max: 25
                 result: &waypoint.0.result |-
                   **Land, ho!**
                     [Islands]
-              - low: 26
-                high: 40
+              - min: 26
+                max: 40
                 result: &waypoint.1.result |-
                   **Sails, ho!**
                     [Ships]
-              - low: 41
-                high: 50
+              - min: 41
+                max: 50
                 result: &waypoint.2.result |-
                   **Changing weather**
                     [Weather]
-              - low: 51
-                high: 65
+              - min: 51
+                max: 65
                 result: &waypoint.3.result |-
                   **Instance (choose one)**
                     * [Seafaring Details]**
                     * [Descriptor] + [Focus]
-              - low: 66
-                high: 70
+              - min: 66
+                max: 70
                 result: &waypoint.4.result |-
                   **Lost souls**
                     [Shipwrecks]
-              - low: 71
-                high: 75
+              - min: 71
+                max: 75
 
                 result: &waypoint.5.result |-
                   **Relic of the past**
                     [Ruins]
-              - low: 76
-                high: 85
+              - min: 76
+                max: 85
                 result: &waypoint.6.result |-
                   **Character focus**
                     [Interlude Scene]
               - &waypoint.7
-                low: 86
-                high: 100
+                min: 86
+                max: 100
                 result: Roll twice
           margins:
             name: Margins
@@ -84,26 +84,26 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 20
+              - min: 1
+                max: 20
                 result: *waypoint.0.result
-              - low: 21
-                high: 30
+              - min: 21
+                max: 30
                 result: *waypoint.1.result
-              - low: 31
-                high: 42
+              - min: 31
+                max: 42
                 result: *waypoint.2.result
-              - low: 43
-                high: 57
+              - min: 43
+                max: 57
                 result: *waypoint.3.result
-              - low: 58
-                high: 67
+              - min: 58
+                max: 67
                 result: *waypoint.4.result
-              - low: 68
-                high: 75
+              - min: 68
+                max: 75
                 result: *waypoint.5.result
-              - low: 76
-                high: 85
+              - min: 76
+                max: 85
                 result: *waypoint.6.result
               - *waypoint.7
           reaches:
@@ -112,745 +112,745 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: 1
-                high: 15
+              - min: 1
+                max: 15
                 result: *waypoint.0.result
-              - low: 16
-                high: 20
+              - min: 16
+                max: 20
                 result: *waypoint.1.result
-              - low: 21
-                high: 35
+              - min: 21
+                max: 35
                 result: *waypoint.2.result
-              - low: 36
-                high: 50
+              - min: 36
+                max: 50
                 result: *waypoint.3.result
-              - low: 51
-                high: 65
+              - min: 51
+                max: 65
                 result: *waypoint.4.result
-              - low: 66
-                high: 75
+              - min: 66
+                max: 75
                 result: *waypoint.5.result
-              - low: 76
-                high: 85
+              - min: 76
+                max: 85
                 result: *waypoint.6.result
               - *waypoint.7
     contents:
       details:
         name: Seafaring Details
         table:
-          - low: 1
-            high: 1
+          - min: 1
+            max: 1
             result: A plume of smoke rises on the horizon
-          - low: 2
-            high: 2
+          - min: 2
+            max: 2
             result: Carved monoliths, taller than your ship, form a circle large enough to sail through
-          - low: 3
-            high: 3
+          - min: 3
+            max: 3
             result: An albatross alights on the yardarm; it surveys the ship dispassionately
-          - low: 4
-            high: 4
+          - min: 4
+            max: 4
             result: A large plank of driftwood bears a carved message
-          - low: 5
-            high: 5
+          - min: 5
+            max: 5
             result: Buoys mark hazardous waters
-          - low: 6
-            high: 6
+          - min: 6
+            max: 6
             result: Beast hunters, sailing a sleek-hulled ship, chase their quarry
-          - low: 7
-            high: 7
+          - min: 7
+            max: 7
             result: Sea caves pocket the steep flanks of a rocky islet
-          - low: 8
-            high: 8
+          - min: 8
+            max: 8
             result: A rogue wave rises on the horizon
-          - low: 9
-            high: 9
+          - min: 9
+            max: 9
             result: Dagger-like rocks rise out of the sea
-          - low: 10
-            high: 10
+          - min: 10
+            max: 10
             result: Flags of unknown heraldry fly from a partially collapsed fort
-          - low: 11
-            high: 11
+          - min: 11
+            max: 11
             result: A massive storm wall gathers in the distance, lighting flashing
-          - low: 12
-            high: 12
+          - min: 12
+            max: 12
             result: Waves surge against an exposed reef
-          - low: 13
-            high: 13
+          - min: 13
+            max: 13
             result: A gull lands on the deck, a rolled slip of paper tied to its leg
-          - low: 14
-            high: 14
+          - min: 14
+            max: 14
             result: A ship flounders on high seas, listing dangerously to one side
-          - low: 15
-            high: 15
+          - min: 15
+            max: 15
             result: Rusted anchors, hung like trophies from a rocky mount, clatter in the wind
-          - low: 16
-            high: 16
+          - min: 16
+            max: 16
             result: Labyrinthine mangroves sprawl along the shore of a tiny islet
-          - low: 17
-            high: 17
+          - min: 17
+            max: 17
             result: Survivors aboard a meager raft desperately flag you down
-          - low: 18
-            high: 18
+          - min: 18
+            max: 18
             result: Clusters of jagged rocks lurk just below the ocean waves
-          - low: 19
-            high: 19
+          - min: 19
+            max: 19
             result: A crew struggles to refloat their ship, which is run aground on a sandbank
-          - low: 20
-            high: 20
+          - min: 20
+            max: 20
             result: Stone ruins lie just beneath the surface
-          - low: 21
-            high: 21
+          - min: 21
+            max: 21
             result: Waves pummel a shipwreck that lies split in two upon the rocks
-          - low: 22
-            high: 22
+          - min: 22
+            max: 22
             result: A battered, drifting flag bears a familiar emblem
-          - low: 23
-            high: 23
+          - min: 23
+            max: 23
             result: The air smells of smoke, and ash drifts on the wind
-          - low: 24
-            high: 24
+          - min: 24
+            max: 24
             result: A battered, oarless longboat floats on the open sea
-          - low: 25
-            high: 25
+          - min: 25
+            max: 25
             result: A planted flag and a lonely cairn stand atop a tiny rocky islet
-          - low: 26
-            high: 26
+          - min: 26
+            max: 26
             result: Something massive brushes against the hull before diving out of sight
-          - low: 27
-            high: 27
+          - min: 27
+            max: 27
             result: The sound of distant cannon fire echoes across the sea
-          - low: 28
-            high: 28
+          - min: 28
+            max: 28
             result: Water churns as a large school of fish flees a predator
-          - low: 29
-            high: 29
+          - min: 29
+            max: 29
             result: Lashed-together shipwrecks, anchored to the sea floor, form a ramshackle floating home
-          - low: 30
-            high: 30
+          - min: 30
+            max: 30
             result: A massive school of rays forms a roving shadow just below the surface
-          - low: 31
-            high: 31
+          - min: 31
+            max: 31
             result: Large sharks circle the ship
-          - low: 32
-            high: 32
+          - min: 32
+            max: 32
             result: Whales crest the surface, misting the air with saltwater spray
-          - low: 33
-            high: 33
+          - min: 33
+            max: 33
             result: Dolphins spin and jump at the bow
-          - low: 34
-            high: 34
+          - min: 34
+            max: 34
             result: A giant whale, its back pierced by a wicked-looking harpoon, breaks the surface
-          - low: 35
-            high: 35
+          - min: 35
+            max: 35
             result: A half-sunk rowboat, burdened with chests and barrels, bobs on the sea
-          - low: 36
-            high: 36
+          - min: 36
+            max: 36
             result: A vast volcano dome, belching steam, sits just above the waves
-          - low: 37
-            high: 37
+          - min: 37
+            max: 37
             result: A massive stone statue, cracked and worn by age, stands atop an eroded rock
-          - low: 38
-            high: 38
+          - min: 38
+            max: 38
             result: A broken spire stands atop a lonely rock
-          - low: 39
-            high: 39
+          - min: 39
+            max: 39
             result: A solitary mariner watches you from the deck of their single-masted boat
-          - low: 40
-            high: 40
+          - min: 40
+            max: 40
             result: Rocks and seabed muck, laid bare by a low tide, surround a narrow waterway
-          - low: 41
-            high: 41
+          - min: 41
+            max: 41
             result: A brief, passing squall batters the ship with wind and rain
-          - low: 42
-            high: 42
+          - min: 42
+            max: 42
             result: A multitude of jellyfish glimmer like pale lanterns
-          - low: 43
-            high: 43
+          - min: 43
+            max: 43
             result: A long line of boats, laden with cargo and passengers, make their way across the
-          - low: 44
-            high: 44
+          - min: 44
+            max: 44
             result: A settlement stands on an isolated islet
-          - low: 45
-            high: 45
+          - min: 45
+            max: 45
             result: A massive stone statue, weathered and worn, stands atop an eroded rock
-          - low: 46
-            high: 46
+          - min: 46
+            max: 46
             result: A rocky mount shelters a deep-water harbor
-          - low: 47
-            high: 47
+          - min: 47
+            max: 47
             result: A graveyard of sun-bleached whale bones lies atop scattered shoals
-          - low: 48
-            high: 48
+          - min: 48
+            max: 48
             result: A crumbling stone bridge spans the gap between two rocky islets
-          - low: 49
-            high: 49
+          - min: 49
+            max: 49
             result: Abundant sea life is visible in these crystal-clear shallows
-          - low: 50
-            high: 50
+          - min: 50
+            max: 50
             result: A formation of sleek coastal boats race swiftly across the waves
-          - low: 51
-            high: 51
+          - min: 51
+            max: 51
             result: A ship riddled with damage drifts past, seemingly uncrewed
-          - low: 52
-            high: 52
+          - min: 52
+            max: 52
             result: A trade ship struggles at the edge of an expanding whirlpool
-          - low: 53
-            high: 53
+          - min: 53
+            max: 53
             result: Shattered debris drifts past
-          - low: 54
-            high: 54
+          - min: 54
+            max: 54
             result: A stranded mariner waves from a tiny islet
-          - low: 55
-            high: 55
+          - min: 55
+            max: 55
             result: A storm of falling stars streaks through the sky
-          - low: 56
-            high: 56
+          - min: 56
+            max: 56
             result: A ship lies at anchor; its crew busily repairs torn sails and broken spars
-          - low: 57
-            high: 57
+          - min: 57
+            max: 57
             result: A lone survivor clings to a floating crate
-          - low: 58
-            high: 58
+          - min: 58
+            max: 58
             result: Sea turtles swim in a lazy circle over a deep blue marine sinkhole
-          - low: 59
-            high: 59
+          - min: 59
+            max: 59
             result: A long line of sails dot the horizon
-          - low: 60
-            high: 60
+          - min: 60
+            max: 60
             result: A heavy chain is strung between rocks just below the waterline
-          - low: 61
-            high: 61
+          - min: 61
+            max: 61
             result: Sinking ships and struggling survivors mark the scene of a recent battle
-          - low: 62
-            high: 62
+          - min: 62
+            max: 62
             result: A ravaged ship, burnt nearly to the waterline, floats aimlessly
-          - low: 63
-            high: 63
+          - min: 63
+            max: 63
             result: A powerful current sweeps through a passage bounded by rocky shoals
-          - low: 64
-            high: 64
+          - min: 64
+            max: 64
             result: Wind-beaten trees cling precariously to a rocky mount
-          - low: 65
-            high: 65
+          - min: 65
+            max: 65
             result: Submerged heat vents send up roiling water and plumes of steam
-          - low: 66
-            high: 66
+          - min: 66
+            max: 66
             result: A sudden gust pulls the sails and rigging taught, an omen of changing weather
-          - low: 67
-            high: 67
+          - min: 67
+            max: 67
             result: Boats gather in a circle as their passengers toss flowers into the sea
-          - low: 68
-            high: 68
+          - min: 68
+            max: 68
             result: A glass bottle with a message bobs on the waves
-          - low: 69
-            high: 69
+          - min: 69
+            max: 69
             result: Whales congregate amid deep waters
-          - low: 70
-            high: 70
+          - min: 70
+            max: 70
             result: A vibrantly-painted merchant vessel sends up a flag of welcome
-          - low: 71
-            high: 71
+          - min: 71
+            max: 71
             result: A flurry of cannon fire flashes within a fog bank
-          - low: 72
-            high: 72
+          - min: 72
+            max: 72
             result: Sandbars are scattered across shallow waters
-          - low: 73
-            high: 73
+          - min: 73
+            max: 73
             result: Fruit trees cling to a grassy islet
-          - low: 74
-            high: 74
+          - min: 74
+            max: 74
             result: A tangle of sea plants, muck, and debris spin slowly in a wide gyre
-          - low: 75
-            high: 75
+          - min: 75
+            max: 75
             result: A massive fog bank stretches the length of the horizon
-          - low: 76
-            high: 76
+          - min: 76
+            max: 76
             result: A small fleet of fishing boats head for deeper waters
-          - low: 77
-            high: 77
+          - min: 77
+            max: 77
             result: Sunken metal catches the light within clear waters
-          - low: 78
-            high: 78
+          - min: 78
+            max: 78
             result: Large lizards scamper along the narrow shore of a rocky islet
-          - low: 79
-            high: 79
+          - min: 79
+            max: 79
             result: Two ships sit side-by-side at anchor; crews move cargo from one to the other
-          - low: 80
-            high: 80
+          - min: 80
+            max: 80
             result: Flagged buoys mark a faction's claimed territory
-          - low: 81
-            high: 81
+          - min: 81
+            max: 81
             result: A dark cave sits high above the waterline on a rocky pillar
-          - low: 82
-            high: 82
+          - min: 82
+            max: 82
             result: Thickly-packed seaweed carpets the water
-          - low: 83
-            high: 83
+          - min: 83
+            max: 83
             result: Ships exchange cannon fire in the distance; acrid smoke drifts for leagues
-          - low: 84
-            high: 84
+          - min: 84
+            max: 84
             result: Coral reefs lie in shallow, crystalline waters
-          - low: 85
-            high: 85
+          - min: 85
+            max: 85
             result: Swarms of sharks feed on a dead whale carcass
-          - low: 86
-            high: 86
+          - min: 86
+            max: 86
             result: A small grove of palm trees and a simple hut stand atop a sandy islet
-          - low: 87
-            high: 87
+          - min: 87
+            max: 87
             result: Hordes of seabirds nest among a long row of guano-spattered sea stacks
-          - low: 88
-            high: 88
+          - min: 88
+            max: 88
             result: Manatees graze among a field of tall sea grass in shallow waters
-          - low: 89
-            high: 89
+          - min: 89
+            max: 89
             result: On a moonless, cloudy night, deep darkness falls over the sea
-          - low: 90
-            high: 90
+          - min: 90
+            max: 90
             result: The crew of a fishing boat struggles with a mighty catch
-          - low: 91
-            high: 91
+          - min: 91
+            max: 91
             result: Survivors wave from the deck of a sinking ship
-          - low: 92
-            high: 92
+          - min: 92
+            max: 92
             result: A flash of reflected sunlight gleams from glass or metal in the distance
-          - low: 93
-            high: 93
+          - min: 93
+            max: 93
             result: Shrubs and colorful flowers carpet a rocky islet
-          - low: 94
-            high: 94
+          - min: 94
+            max: 94
             result: A lone chest bobs in the waves
-          - low: 95
-            high: 95
+          - min: 95
+            max: 95
             result: Seals rest on the exposed keel of a capsized ship, barking as you come near
-          - low: 96
-            high: 96
+          - min: 96
+            max: 96
             result: Whale song, tinged with sadness, echoes across the sea
-          - low: 97
-            high: 97
+          - min: 97
+            max: 97
             result: An imposing fort dominates the terrain of a rocky islet
-          - low: 98
-            high: 98
+          - min: 98
+            max: 98
             result: A heap of flotsam and jetsam grinds against the shore of a rocky islet
-          - low: 99
-            high: 99
+          - min: 99
+            max: 99
             result: A distant signal or beacon flares to life
-          - low: 100
-            high: 100
+          - min: 100
+            max: 100
             result: Smoke rises from among a grove of palms on a sandy isle
       cursed_details:
         name: Cursed Seafaring Details
         table:
-          - low: 1
-            high: 1
+          - min: 1
+            max: 1
             result: An exodus of panicked birds darken the sky
-          - low: 2
-            high: 2
+          - min: 2
+            max: 2
             result: The shadowy silhouette of a flying beast, barely visible in the mist, passes overhead
-          - low: 3
-            high: 3
+          - min: 3
+            max: 3
             result: A maelstrom shimmers with mystic energies
-          - low: 4
-            high: 4
+          - min: 4
+            max: 4
             result: Iron fittings spontaneously rust and corrode
-          - low: 5
-            high: 5
+          - min: 5
+            max: 5
             result: A ship is sighted but disappears if you look directly at it
-          - low: 6
-            high: 6
+          - min: 6
+            max: 6
             result: Pale sea turtles, their shells carved with strange runes, circle the ship
-          - low: 7
-            high: 7
+          - min: 7
+            max: 7
             result: Ragged slashes, as if from claws, appear in the sails
-          - low: 8
-            high: 8
+          - min: 8
+            max: 8
             result: A parrot lands on a spar, squawks a foreboding message, and flies off
-          - low: 9
-            high: 9
+          - min: 9
+            max: 9
             result: Iron cages, each housing a sun-dried corpse, hang from a rocky mount
-          - low: 10
-            high: 10
+          - min: 10
+            max: 10
             result: A titanic, sinuous skeleton lies atop a rocky shoal
-          - low: 11
-            high: 11
+          - min: 11
+            max: 11
             result: A ship is spotted, identical to your own
-          - low: 12
-            high: 12
+          - min: 12
+            max: 12
             result: Elaborate and unsettling symbols mar the stone of a rocky islet
-          - low: 13
-            high: 13
+          - min: 13
+            max: 13
             result: Strands of kelp rise from the water, creeping and grasping
-          - low: 14
-            high: 14
+          - min: 14
+            max: 14
             result: An eclipse overtakes the sun, stealing away the day
-          - low: 15
-            high: 15
+          - min: 15
+            max: 15
             result: The sea suddenly smells of rot
-          - low: 16
-            high: 16
+          - min: 16
+            max: 16
             result: Countless dead fish float on the surface
-          - low: 17
-            high: 17
+          - min: 17
+            max: 17
             result: A single albatross alights on the yardarm, then falls instantly dead
-          - low: 18
-            high: 18
+          - min: 18
+            max: 18
             result: A perpetual fog bank, as still as a stone wall, lies ahead
-          - low: 19
-            high: 19
+          - min: 19
+            max: 19
             result: A dark swarm of giant bats circles the ship
-          - low: 20
-            high: 20
+          - min: 20
+            max: 20
             result: A monstrous sea beast appears, trailing the ship with an inexorable purpose
-          - low: 21
-            high: 21
+          - min: 21
+            max: 21
             result: The ship's bell rings of its own accord
-          - low: 22
-            high: 22
+          - min: 22
+            max: 22
             result: Your ship comes to a sudden and shuddering stop in deep waters
-          - low: 23
-            high: 23
+          - min: 23
+            max: 23
             result: The sea boils, sending up gouts of steam
-          - low: 24
-            high: 24
+          - min: 24
+            max: 24
             result: Tentacles, dripping with slimy brine, curl over the gunwales
-          - low: 25
-            high: 25
+          - min: 25
+            max: 25
             result: A vast field of algae-covered bones lies scattered in shallow waters
-          - low: 26
-            high: 26
+          - min: 26
+            max: 26
             result: The bloated corpse of an enormous beast floats past, a grisly bitemark in its flank
-          - low: 27
-            high: 27
+          - min: 27
+            max: 27
             result: Hundreds of carrion birds settle onto spars and rigging, waiting expectantly
-          - low: 28
-            high: 28
+          - min: 28
+            max: 28
             result: An unblemished iron pillar stands in shallow waters
-          - low: 29
-            high: 29
+          - min: 29
+            max: 29
             result: Crewmembers are plagued by horrific visions or dreams
-          - low: 30
-            high: 30
+          - min: 30
+            max: 30
             result: A narrow passage cuts through a churning, green fog
-          - low: 31
-            high: 31
+          - min: 31
+            max: 31
             result: The sea spills like a waterfall into an unnatural chasm
-          - low: 32
-            high: 32
+          - min: 32
+            max: 32
             result: A vast whirlpool opens ahead of the ship
-          - low: 33
-            high: 33
+          - min: 33
+            max: 33
             result: Strange shapes move within an approaching fog bank
-          - low: 34
-            high: 34
+          - min: 34
+            max: 34
             result: All at once, the ship's lanterns go dark
-          - low: 35
-            high: 35
+          - min: 35
+            max: 35
             result: The roar of a monstrous beast rises from a fog-shrouded islet
-          - low: 36
-            high: 36
+          - min: 36
+            max: 36
             result: Countless shipwrecks float in a tangle, drawn together by uncanny forces
-          - low: 37
-            high: 37
+          - min: 37
+            max: 37
             result: The compass spins wildly
-          - low: 38
-            high: 38
+          - min: 38
+            max: 38
             result: A tangled net holds the corpse of a ghastly, mutated creature
-          - low: 39
-            high: 39
+          - min: 39
+            max: 39
             result: A cloaked figure stands in a boat that moves without oar or sail
-          - low: 40
-            high: 40
+          - min: 40
+            max: 40
             result: A procession of oarless boats, hung with pale lanterns, hold silent figures
-          - low: 41
-            high: 41
+          - min: 41
+            max: 41
             result: A day passes, but you and the crew have no memory of it
-          - low: 42
-            high: 42
+          - min: 42
+            max: 42
             result: Hordes of panicked rats emerge from the lower decks
-          - low: 43
-            high: 43
+          - min: 43
+            max: 43
             result: Bladelike iron shapes, carved with faintly-glowing symbols, jut from the sea
-          - low: 44
-            high: 44
+          - min: 44
+            max: 44
             result: The seawater turns red and smells of blood
-          - low: 45
-            high: 45
+          - min: 45
+            max: 45
             result: The ship's wheel turns of its own accord and then holds fast, setting a new course
-          - low: 46
-            high: 46
+          - min: 46
+            max: 46
             result: Mangled corpses, too many to count, drift on the water
-          - low: 47
-            high: 47
+          - min: 47
+            max: 47
             result: One beast battles another, and the sea churns with blood
-          - low: 48
-            high: 48
+          - min: 48
+            max: 48
             result: An unknown island, etched in black ink by an unseen hand, appears on the ship's chart
-          - low: 49
-            high: 49
+          - min: 49
+            max: 49
             result: Something knocks insistently against the underside of the hull
-          - low: 50
-            high: 50
+          - min: 50
+            max: 50
             result: A monstrous beast stalks the ship
-          - low: 51
-            high: 51
+          - min: 51
+            max: 51
             result: Alluring songs beckon from among the rocks
-          - low: 52
-            high: 52
+          - min: 52
+            max: 52
             result: A pale child stands on the shore of an otherwise deserted islet, smiling blankly
-          - low: 53
-            high: 53
+          - min: 53
+            max: 53
             result: A giant mangrove, home to strange birdlike creatures, stands in stagnant waters
-          - low: 54
-            high: 54
+          - min: 54
+            max: 54
             result: An unnatural current sweeps the ship onto a new course
-          - low: 55
-            high: 55
+          - min: 55
+            max: 55
             result: Hordes of scrabbling bone-white crabs climb the ship's hull
-          - low: 56
-            high: 56
+          - min: 56
+            max: 56
             result: The shadowy outline of a frozen ship sits within an enormous wandering iceberg
-          - low: 57
-            high: 57
+          - min: 57
+            max: 57
             result: A tattoo spontaneously appears on your forearm
-          - low: 58
-            high: 58
+          - min: 58
+            max: 58
             result: A burning map, inscribed by an unseen hand, is scorched into the planks of the deck
-          - low: 59
-            high: 59
+          - min: 59
+            max: 59
             result: Fields of dead coral lay within foul-smelling waters
-          - low: 60
-            high: 60
+          - min: 60
+            max: 60
             result: A tall mound of skulls sits upon a rocky islet
-          - low: 61
-            high: 61
+          - min: 61
+            max: 61
             result: In the hold, frantic scratching emanates from within an unassuming crate
-          - low: 62
-            high: 62
+          - min: 62
+            max: 62
             result: Alluring lights glimmer beyond a gigantic stone archway
-          - low: 63
-            high: 63
+          - min: 63
+            max: 63
             result: Cockroaches swarm the deck
-          - low: 64
-            high: 64
+          - min: 64
+            max: 64
             result: The sea ahead is a frozen sheet
-          - low: 65
-            high: 65
+          - min: 65
+            max: 65
             result: A graveyard of dead ships lies trapped within a sargassum sea
-          - low: 66
-            high: 66
+          - min: 66
+            max: 66
             result: A large blood slick covers the water
-          - low: 67
-            high: 67
+          - min: 67
+            max: 67
             result: A watertight compartment spontaneously floods with seawater
-          - low: 68
-            high: 68
+          - min: 68
+            max: 68
             result: A sorrowful shanty, seemingly without a source, echoes across the waters
-          - low: 69
-            high: 69
+          - min: 69
+            max: 69
             result: A massive shape passes beneath your ship, sending it listing to one side
-          - low: 70
-            high: 70
+          - min: 70
+            max: 70
             result: Shadowy, vaporous ships cruise along the horizon
-          - low: 71
-            high: 71
+          - min: 71
+            max: 71
             result: The tide slips away with unnatural speed, revealing patches of seafloor
-          - low: 72
-            high: 72
+          - min: 72
+            max: 72
             result: A large winged form, cloaked in shadow, perches atop the main mast
-          - low: 73
-            high: 73
+          - min: 73
+            max: 73
             result: A coffin, nailed shut and marked with cryptic symbols, bobs on the water
-          - low: 74
-            high: 74
+          - min: 74
+            max: 74
             result: Waking from a dream, you find yourself clutching a paper marked with a black spot
-          - low: 75
-            high: 75
+          - min: 75
+            max: 75
             result: A ghostly message, written in blood, appears in the captain's logbook
-          - low: 76
-            high: 76
+          - min: 76
+            max: 76
             result: A crewmember, moving as if in a trance, climbs over the gunwales and drops into the sea
-          - low: 77
-            high: 77
+          - min: 77
+            max: 77
             result: Phantom voices carry on the wind, whispering a dreadful premonition
-          - low: 78
-            high: 78
+          - min: 78
+            max: 78
             result: Skeletal figures, welding corroded blades, clamber over the gunwales
-          - low: 79
-            high: 79
+          - min: 79
+            max: 79
             result: Bizarre jellyfish float through the air
-          - low: 80
-            high: 80
+          - min: 80
+            max: 80
             result: The apparition of someone you knew delivers a warning before fading away
-          - low: 81
-            high: 81
+          - min: 81
+            max: 81
             result: An enormous pale light rises from the murky depths
-          - low: 82
-            high: 82
+          - min: 82
+            max: 82
             result: A crewmember is stricken with a hideous sickness
-          - low: 83
-            high: 83
+          - min: 83
+            max: 83
             result: Among the ship's stores, fresh water and wine turn to brine
-          - low: 84
-            high: 84
+          - min: 84
+            max: 84
             result: Flocks of birds fling themselves carelessly against the hull and sails
-          - low: 85
-            high: 85
+          - min: 85
+            max: 85
             result: Ghostly figures stand motionless and silent on the shore of a rocky islet
-          - low: 86
-            high: 86
+          - min: 86
+            max: 86
             result: A wandering iceberg holds a tentacled form within its crystalline core
-          - low: 87
-            high: 87
+          - min: 87
+            max: 87
             result: A leviathan's corpse bobs to the surface, its desiccated skull gaping
-          - low: 88
-            high: 88
+          - min: 88
+            max: 88
             result: A spectral figure stands at the bow, pointing insistently at the horizon
-          - low: 89
-            high: 89
+          - min: 89
+            max: 89
             result: Objects fly through the air as if amid a whirlwind
-          - low: 90
-            high: 90
+          - min: 90
+            max: 90
             result: Perishable provisions turn to ash
-          - low: 91
-            high: 91
+          - min: 91
+            max: 91
             result: Barnacles foul the hull and deck, growing and spreading with uncanny speed
-          - low: 92
-            high: 92
+          - min: 92
+            max: 92
             result: The sea turns dark, and something stirs within
-          - low: 93
-            high: 93
+          - min: 93
+            max: 93
             result: Monstrous eyes glimmer within the shadowy depths of an islet sea cave
-          - low: 94
-            high: 94
+          - min: 94
+            max: 94
             result: Wet footprints and sea muck trace a path on the deck
-          - low: 95
-            high: 95
+          - min: 95
+            max: 95
             result: Spectral forms with hollow eyes drift just below the water's surface
-          - low: 96
-            high: 96
+          - min: 96
+            max: 96
             result: A distant ship floats above the water
-          - low: 97
-            high: 97
+          - min: 97
+            max: 97
             result: A lone figure strides across the water with an unnatural gait
-          - low: 98
-            high: 98
+          - min: 98
+            max: 98
             result: An unmoving fog clings to a rocky islet, shrouding all but the peak of a barren hill
-          - low: 99
-            high: 99
+          - min: 99
+            max: 99
             result: The sound of sobbing echoes across mist-shrouded seas
-          - low: 100
-            high: 100
+          - min: 100
+            max: 100
             result: The rising sun casts a baleful red glow
       peril:
         name: Seafaring
         summary: Roll or choose on this table when you want inspiration for a trouble during ocean exploration or on a seagoing expedition.
         table:
-          - low: 1
-            high: 3
+          - min: 1
+            max: 3
             result: Boarders strike without warning
-          - low: 4
-            high: 6
+          - min: 4
+            max: 6
             result: Crewmember goes missing
-          - low: 7
-            high: 9
+          - min: 7
+            max: 9
             result: Crewmember is found dead
-          - low: 10
-            high: 12
+          - min: 10
+            max: 12
             result: Crewmember is injured
-          - low: 13
-            high: 15
+          - min: 13
+            max: 15
             result: Crewmembers argue or brawl
-          - low: 16
-            high: 18
+          - min: 16
+            max: 18
             result: Crewmembers challenge your decisions or command
-          - low: 19
-            high: 21
+          - min: 19
+            max: 21
             result: Crewmembers grow bored or restless
-          - low: 22
-            high: 24
+          - min: 22
+            max: 24
             result: Crewmembers grow suspicious of each other
-          - low: 25
-            high: 27
+          - min: 25
+            max: 27
             result: Dangerous current or whirlpool takes hold
-          - low: 28
-            high: 30
+          - min: 28
+            max: 30
             result: Enemies form a blockade
-          - low: 31
-            high: 33
+          - min: 31
+            max: 33
             result: Enemy ship is sighted
-          - low: 34
-            high: 36
+          - min: 34
+            max: 36
             result: Hostile beast attacks
-          - low: 37
-            high: 39
+          - min: 37
+            max: 39
             result: Ill omens cause anxiety
-          - low: 40
-            high: 42
+          - min: 40
+            max: 42
             result: Imperiled ship signals for help
-          - low: 43
-            high: 45
+          - min: 43
+            max: 45
             result: Isolation or fear presses in
-          - low: 46
-            high: 48
+          - min: 46
+            max: 48
             result: Mysterious wreckage portends a new threat
-          - low: 49
-            high: 51
+          - min: 49
+            max: 51
             result: Provisions are spoiled or corrupted
-          - low: 52
-            high: 54
+          - min: 52
+            max: 54
             result: Rigging or equipment is damaged or broken
-          - low: 55
-            high: 57
+          - min: 55
+            max: 57
             result: Rogue wave strikes
-          - low: 58
-            high: 60
+          - min: 58
+            max: 60
             result: Sabotage is revealed
-          - low: 61
-            high: 63
+          - min: 61
+            max: 63
             result: Shallow waters or obstructions imperil navigation
-          - low: 64
-            high: 66
+          - min: 64
+            max: 66
             result: Shipboard fire breaks out
-          - low: 67
-            high: 69
+          - min: 67
+            max: 69
             result: Sickness threatens the health of the crew
-          - low: 70
-            high: 72
+          - min: 70
+            max: 72
             result: Storm looms
-          - low: 73
-            high: 75
+          - min: 73
+            max: 75
             result: Stowaway is revealed
-          - low: 76
-            high: 78
+          - min: 76
+            max: 78
             result: The hull is fouled or leaking
-          - low: 79
-            high: 81
+          - min: 79
+            max: 81
             result: True nature of a cargo, crewmember, or passenger is revealed
-          - low: 82
-            high: 84
+          - min: 82
+            max: 84
             result: Valuable cargo or provisions go missing
-          - low: 85
-            high: 87
+          - min: 85
+            max: 87
             result: Vermins infest spaces below decks
-          - low: 88
-            high: 90
+          - min: 88
+            max: 90
             result: Weather changes for the worse
-          - low: 91
-            high: 93
+          - min: 91
+            max: 93
             result: Wind recedes, and the sails fall slack
-          - low: 94
-            high: 96
+          - min: 94
+            max: 96
             result: You are lost or off course
-          - low: 97
-            high: 99
+          - min: 97
+            max: 99
             result: '[Action](id:sundered_isles/oracles/core/action) + [Theme](id:sundered_isles/oracles/core/theme)'
             rolls:
               - oracle: sundered_isles/oracles/core/action
                 auto: true
               - oracle: sundered_isles/oracles/core/theme
                 auto: true
-          - low: 100
-            high: 100
+          - min: 100
+            max: 100
             result: Roll twice
             rolls:
               - auto: true
@@ -860,78 +860,78 @@ oracles:
         name: Seafaring Opportunities
         summary: Roll or choose on this table when you want inspiration for a beneficial encounter or event on a seagoing journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:sundered_isles/moves/exploration/explore_a_waypoint) and find an opportunity.
         table:
-          - low: 1
-            high: 4
+          - min: 1
+            max: 4
             result: Cache of cargo or supplies
-          - low: 5
-            high: 8
+          - min: 5
+            max: 8
             result: Chance for a moment of inner peace
-          - low: 9
-            high: 12
+          - min: 9
+            max: 12
             result: Clear passage through otherwise perilous seas
-          - low: 13
-            high: 16
+          - min: 13
+            max: 16
             result: Clue offers insight into a current quest or mystery
-          - low: 17
-            high: 20
+          - min: 17
+            max: 20
             result: Clue to a a foe's nature or vulnerabilities
-          - low: 21
-            high: 24
+          - min: 21
+            max: 24
             result: Creatures show the way or offer inspiration
-          - low: 25
-            high: 28
+          - min: 25
+            max: 28
             result: Crewmember offers insight or proposes a clever plan
-          - low: 29
-            high: 32
+          - min: 29
+            max: 32
             result: Crewmember reveals a helpful skill or background
-          - low: 33
-            high: 36
+          - min: 33
+            max: 36
             result: Crewmembers support or validate your leadership
-          - low: 37
-            high: 40
+          - min: 37
+            max: 40
             result: Foe inadvertently reveals themselves or tips their hand
-          - low: 41
-            high: 44
+          - min: 41
+            max: 44
             result: Fortuitous wind or current speeds your way
-          - low: 45
-            high: 48
+          - min: 45
+            max: 48
             result: Friendly community in sight
-          - low: 49
-            high: 52
+          - min: 49
+            max: 52
             result: Friendly ship crosses your path
-          - low: 53
-            high: 56
+          - min: 53
+            max: 56
             result: Good omens offer encouragement
-          - low: 57
-            high: 60
+          - min: 57
+            max: 60
             result: Ideal weather takes hold
-          - low: 61
-            high: 64
+          - min: 61
+            max: 64
             result: Impressive vista offers comfort or inspiration
-          - low: 65
-            high: 68
+          - min: 65
+            max: 68
             result: Lookout pinpoints a lurking foe
-          - low: 69
-            high: 72
+          - min: 69
+            max: 72
             result: Message or map with useful information
-          - low: 73
-            high: 76
+          - min: 73
+            max: 76
             result: Occasion for celebration or rememberance with the crew
-          - low: 77
-            high: 80
+          - min: 77
+            max: 80
             result: Opening to escape or avoid foes
-          - low: 81
-            high: 84
+          - min: 81
+            max: 84
             result: Plea for help from a potential benefactor
-          - low: 85
-            high: 88
+          - min: 85
+            max: 88
             result: Refuge offers a place to hide, plan, or recover
-          - low: 89
-            high: 92
+          - min: 89
+            max: 92
             result: Ship and crew perform beyond expectations
-          - low: 93
-            high: 96
+          - min: 93
+            max: 96
             result: Shipwreck or derelict ripe for the picking
-          - low: 97
-            high: 100
+          - min: 97
+            max: 100
             result: Source of fresh provisions

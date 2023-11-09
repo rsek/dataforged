@@ -880,12 +880,12 @@
 			"type": "object",
 			"properties": {
 				"id": { "$ref": "#/$defs/OracleTableRowID" },
-				"low": {
+				"min": {
 					"type": ["integer", "null"],
 					"default": null,
 					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
 				},
-				"high": {
+				"max": {
 					"type": ["integer", "null"],
 					"default": null,
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes."
@@ -903,7 +903,7 @@
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
 				"i18n": { "$ref": "#/$defs/I18nHints" }
 			},
-			"required": ["id", "low", "high", "result"],
+			"required": ["id", "min", "max", "result"],
 			"title": "OracleTableRow"
 		},
 		"OracleTableStyle": {
@@ -2415,110 +2415,110 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 1, "type": "number" },
-										"high": { "const": 27, "type": "number" },
+										"min": { "const": 1, "type": "number" },
+										"max": { "const": 27, "type": "number" },
 										"frequency": { "const": "very_common", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 28, "type": "number" },
-										"high": { "const": 41, "type": "number" },
+										"min": { "const": 28, "type": "number" },
+										"max": { "const": 41, "type": "number" },
 										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 42, "type": "number" },
-										"high": { "const": 55, "type": "number" },
+										"min": { "const": 42, "type": "number" },
+										"max": { "const": 55, "type": "number" },
 										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 56, "type": "number" },
-										"high": { "const": 69, "type": "number" },
+										"min": { "const": 56, "type": "number" },
+										"max": { "const": 69, "type": "number" },
 										"frequency": { "const": "common", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 70, "type": "number" },
-										"high": { "const": 75, "type": "number" },
+										"min": { "const": 70, "type": "number" },
+										"max": { "const": 75, "type": "number" },
 										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 76, "type": "number" },
-										"high": { "const": 81, "type": "number" },
+										"min": { "const": 76, "type": "number" },
+										"max": { "const": 81, "type": "number" },
 										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 82, "type": "number" },
-										"high": { "const": 87, "type": "number" },
+										"min": { "const": 82, "type": "number" },
+										"max": { "const": 87, "type": "number" },
 										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 88, "type": "number" },
-										"high": { "const": 93, "type": "number" },
+										"min": { "const": 88, "type": "number" },
+										"max": { "const": 93, "type": "number" },
 										"frequency": { "const": "uncommon", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 94, "type": "number" },
-										"high": { "const": 95, "type": "number" },
+										"min": { "const": 94, "type": "number" },
+										"max": { "const": 95, "type": "number" },
 										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 96, "type": "number" },
-										"high": { "const": 97, "type": "number" },
+										"min": { "const": 96, "type": "number" },
+										"max": { "const": 97, "type": "number" },
 										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 98, "type": "number" },
-										"high": { "const": 99, "type": "number" },
+										"min": { "const": 98, "type": "number" },
+										"max": { "const": 99, "type": "number" },
 										"frequency": { "const": "rare", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 100, "type": "number" },
-										"high": { "const": 100, "type": "number" },
+										"min": { "const": 100, "type": "number" },
+										"max": { "const": 100, "type": "number" },
 										"frequency": { "const": "unforeseen", "type": "string" }
 									},
-									"required": ["low", "high", "frequency"]
+									"required": ["min", "max", "frequency"]
 								}
 							],
 							"additionalItems": false,
@@ -2545,15 +2545,15 @@
 			"properties": {
 				"id": { "$ref": "#/$defs/DelveSiteDenizenID" },
 				"name": { "$ref": "#/$defs/Label" },
-				"low": { "minimum": 1, "maximum": 100, "type": "integer" },
-				"high": { "minimum": 1, "maximum": 100, "type": "integer" },
+				"min": { "minimum": 1, "maximum": 100, "type": "integer" },
+				"max": { "minimum": 1, "maximum": 100, "type": "integer" },
 				"npc": {
 					"description": "The ID of the relevant NPC entry, if one is specified.",
 					"$ref": "#/$defs/NpcID"
 				},
 				"frequency": { "$ref": "#/$defs/DelveSiteDenizenFrequency" }
 			},
-			"required": ["id", "low", "high", "frequency"],
+			"required": ["id", "min", "max", "frequency"],
 			"title": "DelveSiteDenizen"
 		},
 		"DelveSiteDenizenFrequency": {
@@ -2590,80 +2590,80 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 21, "type": "number" },
-										"high": { "const": 43, "type": "number" }
+										"min": { "const": 21, "type": "number" },
+										"max": { "const": 43, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 44, "type": "number" },
-										"high": { "const": 56, "type": "number" }
+										"min": { "const": 44, "type": "number" },
+										"max": { "const": 56, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 57, "type": "number" },
-										"high": { "const": 64, "type": "number" }
+										"min": { "const": 57, "type": "number" },
+										"max": { "const": 64, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 65, "type": "number" },
-										"high": { "const": 68, "type": "number" }
+										"min": { "const": 65, "type": "number" },
+										"max": { "const": 68, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 69, "type": "number" },
-										"high": { "const": 72, "type": "number" }
+										"min": { "const": 69, "type": "number" },
+										"max": { "const": 72, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 73, "type": "number" },
-										"high": { "const": 76, "type": "number" }
+										"min": { "const": 73, "type": "number" },
+										"max": { "const": 76, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 77, "type": "number" },
-										"high": { "const": 80, "type": "number" }
+										"min": { "const": 77, "type": "number" },
+										"max": { "const": 80, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 81, "type": "number" },
-										"high": { "const": 84, "type": "number" }
+										"min": { "const": 81, "type": "number" },
+										"max": { "const": 84, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 85, "type": "number" },
-										"high": { "const": 88, "type": "number" }
+										"min": { "const": 85, "type": "number" },
+										"max": { "const": 88, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 89, "type": "number" },
-										"high": { "const": 98, "type": "number" },
+										"min": { "const": 89, "type": "number" },
+										"max": { "const": 98, "type": "number" },
 										"result": { "default": "Something unusual or unexpected" },
 										"suggestions": {
 											"default": {
@@ -2674,13 +2674,13 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["min", "max", "result", "suggestions"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 99, "type": "number" },
-										"high": { "const": 99, "type": "number" },
+										"min": { "const": 99, "type": "number" },
+										"max": { "const": 99, "type": "number" },
 										"result": { "default": "You transition into a new theme" },
 										"suggestions": {
 											"default": {
@@ -2688,13 +2688,13 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["min", "max", "result", "suggestions"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 100, "type": "number" },
-										"high": { "const": 100, "type": "number" },
+										"min": { "const": 100, "type": "number" },
+										"max": { "const": 100, "type": "number" },
 										"result": { "default": "You transition into a new domain" },
 										"suggestions": {
 											"default": {
@@ -2702,7 +2702,7 @@
 											}
 										}
 									},
-									"required": ["low", "high", "result", "suggestions"]
+									"required": ["min", "max", "result", "suggestions"]
 								}
 							],
 							"additionalItems": false,
@@ -2723,42 +2723,42 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 31, "type": "number" },
-										"high": { "const": 33, "type": "number" }
+										"min": { "const": 31, "type": "number" },
+										"max": { "const": 33, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 34, "type": "number" },
-										"high": { "const": 36, "type": "number" }
+										"min": { "const": 34, "type": "number" },
+										"max": { "const": 36, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 37, "type": "number" },
-										"high": { "const": 39, "type": "number" }
+										"min": { "const": 37, "type": "number" },
+										"max": { "const": 39, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 40, "type": "number" },
-										"high": { "const": 42, "type": "number" }
+										"min": { "const": 40, "type": "number" },
+										"max": { "const": 42, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 43, "type": "number" },
-										"high": { "const": 45, "type": "number" }
+										"min": { "const": 43, "type": "number" },
+										"max": { "const": 45, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								}
 							],
 							"additionalItems": false,
@@ -2794,10 +2794,10 @@
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
 				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/DomainDangerRowID" },
-				"low": { "type": "integer" },
-				"high": { "type": "integer" }
+				"min": { "type": "integer" },
+				"max": { "type": "integer" }
 			},
-			"required": ["result", "id", "low", "high"],
+			"required": ["result", "id", "min", "max"],
 			"title": "DelveSiteDomainDangerRow"
 		},
 		"DelveSiteDomainFeatureRow": {
@@ -2816,10 +2816,10 @@
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
 				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/DomainFeatureRowID" },
-				"low": { "type": "integer" },
-				"high": { "type": "integer" }
+				"min": { "type": "integer" },
+				"max": { "type": "integer" }
 			},
-			"required": ["result", "id", "low", "high"],
+			"required": ["result", "id", "min", "max"],
 			"title": "DelveSiteDomainFeatureRow"
 		},
 		"DelveSiteTheme": {
@@ -2848,42 +2848,42 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 1, "type": "number" },
-										"high": { "const": 4, "type": "number" }
+										"min": { "const": 1, "type": "number" },
+										"max": { "const": 4, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 5, "type": "number" },
-										"high": { "const": 8, "type": "number" }
+										"min": { "const": 5, "type": "number" },
+										"max": { "const": 8, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 9, "type": "number" },
-										"high": { "const": 12, "type": "number" }
+										"min": { "const": 9, "type": "number" },
+										"max": { "const": 12, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 13, "type": "number" },
-										"high": { "const": 16, "type": "number" }
+										"min": { "const": 13, "type": "number" },
+										"max": { "const": 16, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 17, "type": "number" },
-										"high": { "const": 20, "type": "number" }
+										"min": { "const": 17, "type": "number" },
+										"max": { "const": 20, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								}
 							],
 							"additionalItems": false,
@@ -2904,98 +2904,98 @@
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 1, "type": "number" },
-										"high": { "const": 5, "type": "number" }
+										"min": { "const": 1, "type": "number" },
+										"max": { "const": 5, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 6, "type": "number" },
-										"high": { "const": 10, "type": "number" }
+										"min": { "const": 6, "type": "number" },
+										"max": { "const": 10, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 11, "type": "number" },
-										"high": { "const": 12, "type": "number" }
+										"min": { "const": 11, "type": "number" },
+										"max": { "const": 12, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 13, "type": "number" },
-										"high": { "const": 14, "type": "number" }
+										"min": { "const": 13, "type": "number" },
+										"max": { "const": 14, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 15, "type": "number" },
-										"high": { "const": 16, "type": "number" }
+										"min": { "const": 15, "type": "number" },
+										"max": { "const": 16, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 17, "type": "number" },
-										"high": { "const": 18, "type": "number" }
+										"min": { "const": 17, "type": "number" },
+										"max": { "const": 18, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 19, "type": "number" },
-										"high": { "const": 20, "type": "number" }
+										"min": { "const": 19, "type": "number" },
+										"max": { "const": 20, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 21, "type": "number" },
-										"high": { "const": 22, "type": "number" }
+										"min": { "const": 21, "type": "number" },
+										"max": { "const": 22, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 23, "type": "number" },
-										"high": { "const": 24, "type": "number" }
+										"min": { "const": 23, "type": "number" },
+										"max": { "const": 24, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 25, "type": "number" },
-										"high": { "const": 26, "type": "number" }
+										"min": { "const": 25, "type": "number" },
+										"max": { "const": 26, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 27, "type": "number" },
-										"high": { "const": 28, "type": "number" }
+										"min": { "const": 27, "type": "number" },
+										"max": { "const": 28, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								},
 								{
 									"type": "object",
 									"properties": {
-										"low": { "const": 29, "type": "number" },
-										"high": { "const": 30, "type": "number" }
+										"min": { "const": 29, "type": "number" },
+										"max": { "const": 30, "type": "number" }
 									},
-									"required": ["low", "high"]
+									"required": ["min", "max"]
 								}
 							],
 							"additionalItems": false,
@@ -3031,10 +3031,10 @@
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
 				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/ThemeDangerRowID" },
-				"low": { "type": "integer" },
-				"high": { "type": "integer" }
+				"min": { "type": "integer" },
+				"max": { "type": "integer" }
 			},
-			"required": ["result", "id", "low", "high"],
+			"required": ["result", "id", "min", "max"],
 			"title": "DelveSiteThemeDangerRow"
 		},
 		"DelveSiteThemeFeatureRow": {
@@ -3053,10 +3053,10 @@
 				"template": { "$ref": "#/$defs/OracleRollTemplate" },
 				"i18n": { "$ref": "#/$defs/I18nHints" },
 				"id": { "$ref": "#/$defs/ThemeFeatureRowID" },
-				"low": { "type": "integer" },
-				"high": { "type": "integer" }
+				"min": { "type": "integer" },
+				"max": { "type": "integer" }
 			},
-			"required": ["result", "id", "low", "high"],
+			"required": ["result", "id", "min", "max"],
 			"title": "DelveSiteThemeFeatureRow"
 		}
 	}
