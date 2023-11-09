@@ -13,75 +13,76 @@ import JsonSchema, { type JsonPointer } from 'json-schema-library'
 const schemaRefHead = '#/$defs/'
 
 export function prepareBaseSchema(
-	root: TSchema,
-	$defs: Record<string, TSchema>
+  root: TSchema,
+  $defs: Record<string, TSchema>
 ) {
-	const draft = new JsonSchema.Draft07({
-		...root,
-		$defs
-	})
-	draft.eachSchema(prepareSchemaDef)
-	return draft
+  const draft = new JsonSchema.Draft07({
+    ...root,
+    $defs
+  })
+  draft.eachSchema(prepareSchemaDef)
+  return draft
 }
 
 export function prepareDistributableSchema(
-	base: JsonSchema.Draft07,
-	overrides = {}
+  base: JsonSchema.Draft07,
+  overrides = {}
 ) {
-	const distSchema = new JsonSchema.Draft07({
-		...cloneDeep(base.getSchema()),
-		...overrides
-	})
+  const distSchema = new JsonSchema.Draft07({
+    ...cloneDeep(base.getSchema()),
+    ...overrides
+  })
 
-	const pointersToDelete: string[] = []
+  const pointersToDelete: string[] = []
 
-	distSchema.eachSchema((schema, pointer) => {
-		if (!('properties' in schema)) return
+  distSchema.eachSchema((schema, pointer) => {
+    if (!('properties' in schema)) return
 
-		const props = schema.properties as Record<string, { macro?: boolean }>
+    const props = schema.properties as Record<string, { macro?: boolean }>
 
-		for (const key in props) {
-			if (Object.prototype.hasOwnProperty.call(props, key)) {
-				const element = props[key]
+    for (const key in props) {
+      if (Object.prototype.hasOwnProperty.call(props, key)) {
+        const element = props[key]
 
-				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-				if (element.macro) delete props[key]
-			}
-		}
-	})
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        if (element.macro) delete props[key]
+      }
+    }
+  })
 
-	return distSchema
+  return distSchema
 }
 
 export function prepareInputSchema(base: JsonSchema.Draft07, overrides = {}) {
-	const inputSchema = new JsonSchema.Draft07({
-		...cloneDeep(base.getSchema()),
-		...overrides
-	})
+  const inputSchema = new JsonSchema.Draft07({
+    ...cloneDeep(base.getSchema()),
+    ...overrides
+  })
 
-	inputSchema.eachSchema(prepareInputSchemaDef)
+  inputSchema.eachSchema(prepareInputSchemaDef)
 
-	return inputSchema
+  return inputSchema
 }
 
 /** Mutates schema */
 function prepareSchemaDef(schema: JsonSchema.JsonSchema, pointer: JsonPointer) {
-	if (schema.$id && !schema.title && !schema.$ref)
-		schema.title = schema.$id.replace(schemaRefHead, '')
+  if (schema.$id && !schema.title && !schema.$ref)
+    schema.title = schema.$id.replace(schemaRefHead, '')
 
-	// these are redundant once TypeBox is done with them, excluding the root schema ID
-	if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
+  // these are redundant once TypeBox is done with them, excluding the root schema ID
+  if (!(schema.$id as string)?.startsWith('http')) delete schema.$id
 
-	return schema
+  return schema
 }
 
 /** Mutates schema */
 // TODO: could this be rewritten with typebox?
 function prepareInputSchemaDef(schema: JSONSchema7) {
-	schema = setOptional(schema, 'id')
-	schema = setOptionalWhenDefault(schema)
-	schema = addSourceCascade(schema)
-	return schema
+  if (schema.title !== 'Datasworn')
+    schema = setOptional(schema, 'id')
+  schema = setOptionalWhenDefault(schema)
+  schema = addSourceCascade(schema)
+  return schema
 }
 
 // TODO: add something that sets visibility
@@ -90,10 +91,10 @@ function prepareInputSchemaDef(schema: JSONSchema7) {
  * Adjust an object schema to make the provided properties optional.
  */
 function setOptional(schema: JSONSchema7, ...keys: string[]) {
-	if (Array.isArray(schema.required))
-		schema.required = schema.required.filter((k) => !keys.includes(k))
+  if (Array.isArray(schema.required))
+    schema.required = schema.required.filter((k) => !keys.includes(k))
 
-	return schema
+  return schema
 }
 
 /**
@@ -102,35 +103,35 @@ function setOptional(schema: JSONSchema7, ...keys: string[]) {
  * Mutates the original schema.
  */
 function setOptionalWhenDefault(schema: JSONSchema7) {
-	if (
-		schema?.type !== 'object' ||
-		schema.properties == null ||
-		!Array.isArray(schema.required)
-	)
-		// doesn't qualify -- no changes required
-		return schema
+  if (
+    schema?.type !== 'object' ||
+    schema.properties == null ||
+    !Array.isArray(schema.required)
+  )
+    // doesn't qualify -- no changes required
+    return schema
 
-	const keysWithDefaults: string[] = []
-	for (const key of schema.required) {
-		const property = schema.properties[key]
-		if (typeof property !== 'object' || property.default == null) continue
-		keysWithDefaults.push(key)
-	}
-	// no defaultable properties found: no changes required
-	// if (keysWithDefaults?.length === 0) return schema
+  const keysWithDefaults: string[] = []
+  for (const key of schema.required) {
+    const property = schema.properties[key]
+    if (typeof property !== 'object' || property.default == null) continue
+    keysWithDefaults.push(key)
+  }
+  // no defaultable properties found: no changes required
+  // if (keysWithDefaults?.length === 0) return schema
 
-	schema = setOptional(schema, ...keysWithDefaults)
-	return schema
+  schema = setOptional(schema, ...keysWithDefaults)
+  return schema
 }
 
 /**
  * Omits properties from an object schema.
  */
 function omitProperties(schema: JSONSchema7, ...keys: string[]) {
-	if (schema.properties == null) return schema
-	schema = setOptional(schema, ...keys)
-	schema.properties = omit(schema.properties, ...keys)
-	return schema
+  if (schema.properties == null) return schema
+  schema = setOptional(schema, ...keys)
+  schema.properties = omit(schema.properties, ...keys)
+  return schema
 }
 
 /**
@@ -139,53 +140,53 @@ function omitProperties(schema: JSONSchema7, ...keys: string[]) {
  * Mutates the original schema.
  */
 function addSourceCascade(schema: JSONSchema7) {
-	const SOURCE_KEY = 'source'
-	const SOURCE_STUB_KEY = '_source'
+  const SOURCE_KEY = 'source'
+  const SOURCE_STUB_KEY = '_source'
 
-	if (
-		Boolean(schema.title?.includes('Datasworn')) ||
-		typeof schema.properties?.source !== 'object'
-	)
-		return schema
-	// if (
-	// 	// sourcebook objects *always* require a source object -- that's what gets cascaded to its descendants
-	// 	// (schema.title && schema.title.includes('Sourcebook')) ||
-	// 	schema.properties?.source == null ||
-	// 	!Array.isArray(schema.required) ||
-	// 	schema.required.includes(SOURCE_KEY)
-	// )
-	// 	// doesn't qualify -- no changes required
-	// 	return schema
+  if (
+    Boolean(schema.title?.includes('Datasworn')) ||
+    typeof schema.properties?.source !== 'object'
+  )
+    return schema
+  // if (
+  // 	// sourcebook objects *always* require a source object -- that's what gets cascaded to its descendants
+  // 	// (schema.title && schema.title.includes('Sourcebook')) ||
+  // 	schema.properties?.source == null ||
+  // 	!Array.isArray(schema.required) ||
+  // 	schema.required.includes(SOURCE_KEY)
+  // )
+  // 	// doesn't qualify -- no changes required
+  // 	return schema
 
-	schema = setOptional(schema, SOURCE_KEY)
-	schema = set(
-		schema,
-		`properties.${SOURCE_STUB_KEY}`,
-		Type.Optional(Type.Ref(SourceStub, { macro: true }))
-	)
-	// console.log('SOURCE CASCADE', schema)
+  schema = setOptional(schema, SOURCE_KEY)
+  schema = set(
+    schema,
+    `properties.${SOURCE_STUB_KEY}`,
+    Type.Optional(Type.Ref(SourceStub, { macro: true }))
+  )
+  // console.log('SOURCE CASCADE', schema)
 
-	return schema
+  return schema
 }
 
 export function recurseObjectSchema(
-	schema: JSONSchema7,
-	fn: (schema: JSONSchema7) => JSONSchema7
+  schema: JSONSchema7,
+  fn: (schema: JSONSchema7) => JSONSchema7
 ) {
-	if (schema?.type !== 'object') return schema
-	schema = fn(schema)
-	const subschemaKeys: Array<keyof JSONSchema7> = [
-		'oneOf',
-		'anyOf',
-		'allOf',
-		'then'
-	] // TODO: if-then-else
-	for (const k of subschemaKeys) {
-		if (schema[k] == null) continue
-		// @ts-expect-error complex union
-		schema[k] = recurseObjectSchema(schema[k], fn)
-	}
-	return schema
+  if (schema?.type !== 'object') return schema
+  schema = fn(schema)
+  const subschemaKeys: Array<keyof JSONSchema7> = [
+    'oneOf',
+    'anyOf',
+    'allOf',
+    'then'
+  ] // TODO: if-then-else
+  for (const k of subschemaKeys) {
+    if (schema[k] == null) continue
+    // @ts-expect-error complex union
+    schema[k] = recurseObjectSchema(schema[k], fn)
+  }
+  return schema
 }
 
 // export function getDataEntryDefinitions(

@@ -268,24 +268,25 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: &Troublesome.low 1
-                high: &Troublesome.high 20
+              - &Troublesome
+                min: &Troublesome.low 1
+                max: &Troublesome.high 20
                 result: Troublesome
                 summary: 'A challenging quest with a small number of obstacles'
-              - low: &Dangerous.low 21
-                high: &Dangerous.high 55
+              - min: &Dangerous.low 21
+                max: &Dangerous.high 55
                 result: Dangerous
                 summary: 'An involved quest with several tough obstacles'
-              - low: &Formidable.low 56
-                high: &Formidable.high 80
+              - min: &Formidable.low 56
+                max: &Formidable.high 80
                 result: Formidable
                 summary: 'A complex quest with many intimidating obstacles'
-              - low: &Extreme.low 81
-                high: &Extreme.high 93
+              - min: &Extreme.low 81
+                max: &Extreme.high 93
                 result: Extreme
                 summary: 'An overwhelming quest of staggering proportions'
-              - low: &Epic.low 94
-                high: &Epic.high 100
+              - min: &Epic.low 94
+                max: &Epic.high 100
                 result: Epic
                 summary: 'A life-defining quest of unknowable scope'
           journey:
@@ -293,24 +294,25 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: *Troublesome.low
-                high: *Troublesome.high
+              # - <<: *Troublesome
+              - min: *Troublesome.low
+                max: *Troublesome.high
                 result: Troublesome
                 summary: 'Traveling a moderate distance within a single region'
-              - low: *Dangerous.low
-                high: *Dangerous.high
+              - min: *Dangerous.low
+                max: *Dangerous.high
                 result: Dangerous
                 summary: 'Traveling a long distance within a single region, or across rough terrain'
-              - low: *Formidable.low
-                high: *Formidable.high
+              - min: *Formidable.low
+                max: *Formidable.high
                 result: Formidable
                 summary: 'Traveling from one region to another, or across especially challenging terrain,'
-              - low: *Extreme.low
-                high: *Extreme.high
+              - min: *Extreme.low
+                max: *Extreme.high
                 result: Extreme
                 summary: 'Traveling through multiple regions'
-              - low: *Epic.low
-                high: *Epic.high
+              - min: *Epic.low
+                max: *Epic.high
                 result: Epic
                 summary: 'Traveling from one end of the Ironlands to another, or to a separate land'
           foe:
@@ -318,23 +320,23 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              - low: *Troublesome.low
-                high: *Troublesome.high
+              - min: *Troublesome.low
+                max: *Troublesome.high
                 result: Troublesome
                 summary: 'Common enemies'
-              - low: *Dangerous.low
-                high: *Dangerous.high
+              - min: *Dangerous.low
+                max: *Dangerous.high
                 result: Dangerous
                 summary: 'Capable fighters and deadly creatures'
-              - low: *Formidable.low
-                high: *Formidable.high
+              - min: *Formidable.low
+                max: *Formidable.high
                 result: Formidable
                 summary: 'Exceptional fighters and mighty creatures'
-              - low: *Extreme.low
-                high: *Extreme.high
+              - min: *Extreme.low
+                max: *Extreme.high
                 result: Extreme
                 summary: 'Foes of overwhelming skill or power'
-              - low: *Epic.low
-                high: *Epic.high
+              - min: *Epic.low
+                max: *Epic.high
                 result: Epic
                 summary: 'Legendary foes of mythic power'
