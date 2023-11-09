@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   title: 'Ironsworn: Starforged Rulebook'
   url: https://ironswornrpg.com
   authors:
@@ -16,7 +16,8 @@ oracles:
         name: Environment
         # usage:
         #   initial: true
-        _source:
+        source:
+          <<: *Source
           page: 336
         # content:
         #   part_of_speech: [noun]
@@ -60,7 +61,8 @@ oracles:
               - oracle: starforged/oracles/creatures/basic_form/air
       scale:
         name: Scale
-        _source:
+        source:
+          <<: *Source
           page: 336
         # usage:
         #   initial: true
@@ -99,7 +101,8 @@ oracles:
                 auto: true
       ultra_scale:
         name: Ultra-scale
-        _source:
+        source:
+          <<: *Source
           page: 336
         # content:
         #   part_of_speech: [adjective]
@@ -120,7 +123,8 @@ oracles:
             # set_attributes: {creature_scale: [vast]}
       creature_first_look:
         name: Creature First Look
-        _source:
+        source:
+          <<: *Source
           page: 338
         # usage:
         #   initial: true
@@ -283,7 +287,8 @@ oracles:
             result: Visible symbiote
       encountered_behavior:
         name: Encountered Behavior
-        _source:
+        source:
+          <<: *Source
           page: 338
         summary: |-
           Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
@@ -380,7 +385,8 @@ oracles:
                 auto: true
       revealed_creature_aspect:
         name: Revealed Creature Aspect
-        _source:
+        source:
+          <<: *Source
           page: 339
         summary: |-
           Roll on this table as you interact with the creature to introduce new features or behaviors.
@@ -544,7 +550,8 @@ oracles:
     collections:
       basic_form:
         name: Creature Basic Form
-        _source:
+        source:
+          <<: *Source
           page: 337
         # usage:
         #   initial: true

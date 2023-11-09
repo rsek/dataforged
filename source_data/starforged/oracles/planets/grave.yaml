@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/grave-01.webp
           - images/planets/grave-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 310
         summary: A once-thriving world—now a grim monument to a fallen civilization.
         sample_names:

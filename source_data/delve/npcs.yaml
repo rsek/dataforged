@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   license: https://creativecommons.org/licenses/by-nc-sa/4.0
@@ -15,7 +15,8 @@ npcs:
         name: Husk
         nature: Ironlander
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 110
         features:
           - Withered flesh and black eyes
@@ -51,7 +52,8 @@ npcs:
         name: Zealot
         nature: Ironlander
         rank: 1
-        _source:
+        source:
+          <<: *Source
           page: 111
         features:
           - Sickly pallor
@@ -91,7 +93,8 @@ npcs:
         name: Atanya
         nature: Firstborn
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 112
         features:
           - Stout forms
@@ -121,7 +124,8 @@ npcs:
         name: Merrow
         nature: Firstborn
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 113
         features:
           - Gray scaled skin
@@ -156,7 +160,8 @@ npcs:
         name: Bladewing
         nature: Animal
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 114
         features:
           - Large, dagger-shaped wings
@@ -186,7 +191,8 @@ npcs:
         name: Carrion Newt
         nature: Animal
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 115
         features:
           - Long, sleek body
@@ -218,7 +224,8 @@ npcs:
         name: Cave Lion
         nature: Animal
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 116
         features:
           - Feline grace
@@ -243,7 +250,8 @@ npcs:
         name: Deep Rat
         nature: Animal
         rank: 1
-        _source:
+        source:
+          <<: *Source
           page: 117
         features:
           - Tiny, blind eyes
@@ -273,7 +281,8 @@ npcs:
         name: Nightmare Spider
         nature: Animal
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 118
         features:
           - Pale, semitransparent body
@@ -305,7 +314,8 @@ npcs:
         name: Shroud Crab
         nature: Animal
         rank: 1
-        _source:
+        source:
+          <<: *Source
           page: 119
         features:
           - Ridged shell
@@ -335,7 +345,8 @@ npcs:
         name: Trog
         nature: Animal
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 120
         features:
           - Luminescent, scaled hide
@@ -371,7 +382,8 @@ npcs:
         name: Chitter
         nature: Beast
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 121
         features:
           - Chitinous shell
@@ -402,7 +414,8 @@ npcs:
         name: Gnarl
         nature: Beast
         rank: 4
-        _source:
+        source:
+          <<: *Source
           page: 122
         features:
           - Thick, sturdy legs
@@ -431,7 +444,8 @@ npcs:
         name: Iron-Wracked Beast
         nature: Beast
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 123
         features:
           - Flesh corrupted by iron
@@ -464,7 +478,8 @@ npcs:
         name: Kraken
         nature: Beast
         rank: 5
-        _source:
+        source:
+          <<: *Source
           page: 124
         features:
           - Gargantuan size
@@ -492,7 +507,8 @@ npcs:
         name: Nightspawn
         nature: Beast
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 125
         features:
           - Mutated form (see the [Monstrosity oracle](id:delve/collections/oracles/monstrosity))
@@ -526,7 +542,8 @@ npcs:
         name: Rhaskar
         nature: Beast
         rank: 4
-        _source:
+        source:
+          <<: *Source
           page: 126
         features:
           - White fur
@@ -555,7 +572,8 @@ npcs:
         name: Wyrm
         nature: Beast
         rank: 5
-        _source:
+        source:
+          <<: *Source
           page: 127
         features:
           - Enormous size
@@ -590,7 +608,8 @@ npcs:
         name: Blighthound
         nature: Horror
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 128
         features:
           - Red eyes
@@ -622,7 +641,8 @@ npcs:
         name: Bog Rot
         nature: Horror
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 129
         features:
           - Mummified flesh
@@ -655,7 +675,8 @@ npcs:
         name: Bonehorde
         nature: Horror
         rank: 4
-        _source:
+        source:
+          <<: *Source
           page: 130
         features:
           - The bones of many corpses, held together by a dark will
@@ -688,7 +709,8 @@ npcs:
         name: Thrall
         nature: Horror
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 131
         features:
           - Sickly countenance
@@ -721,7 +743,8 @@ npcs:
         name: Wight
         nature: Horror
         rank: 3
-        _source:
+        source:
+          <<: *Source
           page: 132
         features:
           - Pallid skin and clouded eyes
@@ -756,7 +779,8 @@ npcs:
           A wight is in search of the person it is sworn to protect, now held in a [Fortified](id:delve/site_themes/fortified) [Stronghold](id:delve/site_domains/stronghold). Who does it seek? Why were they taken? Will you stand against the wight, or help them?
   anomalies:
     name: Anomalies
-    _source:
+    source:
+      <<: *Source
       page: 138
     description: Old magic permeates the Ironlands. These forces sometimes manifest as an anomaly, which is an otherworldly feature of the terrain or environment. Some are the embodiment of ancient spirits, and have unknowable motivations. Others are forces of nature given cruel purpose.
     contents:
@@ -764,7 +788,8 @@ npcs:
         name: Blood Thorn
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 138
         features:
           - Thorn-tipped branches
@@ -792,7 +817,8 @@ npcs:
         name: Circle of Stones
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 140
         features:
           - Ancient stones, etched with mysterious symbols
@@ -828,7 +854,8 @@ npcs:
         name: Glimmer
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 142
         features:
           - Dancing lights given vague form
@@ -865,7 +892,8 @@ npcs:
         name: Gloom
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 144
         features:
           - Creeping, vaporous murk
@@ -896,7 +924,8 @@ npcs:
         name: Maelstrom
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 146
         features:
           - Whirling vortex of water
@@ -927,7 +956,8 @@ npcs:
         name: Tempest
         nature: Anomaly
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 148
         features:
           - Biting winds

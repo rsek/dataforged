@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
   date: 2020-02-13
@@ -29,7 +29,8 @@ oracles:
               label: Weak Hit Result
         name: Delve the Depths
         # move: delve/moves/delve/delve_the_depths
-        _source:
+        source:
+          <<: *Source
           page: 21
         contents:
           edge:
@@ -90,7 +91,8 @@ oracles:
       find_an_opportunity:
         name: Find an Opportunity
         # Move: delve/moves/delve/find_an_opportunity
-        _source:
+        source:
+          <<: *Source
           page: 30
         table:
           - min: 1
@@ -125,7 +127,8 @@ oracles:
             result: 'You encounter a denizen in need of help.'
       reveal_a_danger:
         name: Reveal a Danger
-        _source:
+        source:
+          <<: *Source
           page: 34
         table:
           - min: 1
@@ -171,7 +174,8 @@ oracles:
       reveal_a_danger_alt:
         name: Reveal a Danger (alternate version)
         replaces: delve/oracles/moves/reveal_a_danger
-        _source:
+        source:
+          <<: *Source
           page: 68
         table:
           - min: 1
@@ -213,7 +217,8 @@ oracles:
         match:
           text: |-
             On a match, this development also exposes a surprising aspect of the threat’s plan or nature.
-        _source:
+        source:
+          <<: *Source
           page: 155
         table:
           - min: 1

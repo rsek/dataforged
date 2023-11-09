@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -9,14 +9,16 @@ source:
 oracles:
   settlement:
     name: Settlement
-    _source:
+    source:
+      <<: *Source
       page: 178
     contents:
       trouble:
         name: Settlement Trouble
         canonical_name: 'Oracle 9: Settlement Trouble'
         summary: Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.
-        _source:
+        source:
+          <<: *Source
           page: 181
         table:
           - min: 1
@@ -164,7 +166,8 @@ oracles:
       name:
         name: Settlement Name
         canonical_name: 'Oracle 7: Settlement Name'
-        _source:
+        source:
+          <<: *Source
           page: 178
         contents:
           landscape_feature:
@@ -454,7 +457,8 @@ oracles:
               table_key: suffix
         # template:
         #   result: "{{result:classic/oracles/settlement/quick_name/prefix}}{{result:classic/oracles/settlement/quick_name/suffix}}"
-        _source:
+        source:
+          <<: *Source
           page: 180
         contents:
           prefix:

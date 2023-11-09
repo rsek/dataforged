@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   title: 'Ironsworn: Starforged Rulebook'
   url: https://ironswornrpg.com
   authors:
@@ -9,12 +9,14 @@ source:
 oracles:
   core:
     name: Core Oracles
-    _source:
+    source:
+      <<: *Source
       date: 2022-05-06
     contents:
       action:
         name: Action
-        _source:
+        source:
+          <<: *Source
           page: 296
         suggestions:
           oracles:
@@ -326,7 +328,8 @@ oracles:
             result: Withdraw
       theme:
         name: Theme
-        _source:
+        source:
+          <<: *Source
           page: 297
         suggestions:
           oracles:
@@ -638,7 +641,8 @@ oracles:
             result: World
       descriptor:
         name: Descriptor
-        _source:
+        source:
+          <<: *Source
           page: 298
         suggestions:
           oracles:
@@ -950,7 +954,8 @@ oracles:
             result: Violent
       focus:
         name: Focus
-        _source:
+        source:
+          <<: *Source
           page: 299
         suggestions:
           oracles:

@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
   date: 2020-02-13
@@ -11,7 +11,8 @@ oracles:
     extends: classic/collections/oracles/character
     name: Character
     summary: Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.
-    _source:
+    source:
+      <<: *Source
       page: 213
     contents:
       activity:
@@ -25,7 +26,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: gerund
-        _source:
+        source:
+          <<: *Source
           page: 213
         table:
           - min: 1
@@ -187,7 +189,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: adjective
-        _source:
+        source:
+          <<: *Source
           page: 213
         table:
           - min: 1

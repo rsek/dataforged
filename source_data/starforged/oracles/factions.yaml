@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   date: 2022-05-06
   authors:
     - name: Shawn Tomkin
@@ -12,12 +12,14 @@ oracles:
     collections:
       name:
         name: Faction Name
-        _source:
+        source:
+          <<: *Source
           page: 344
         contents:
           template:
             name: Faction Name Template
-            _source:
+            source:
+              <<: *Source
               page: 344
             # content:
             #   part_of_speech: [name, proper noun]
@@ -204,7 +206,8 @@ oracles:
                 result: Wandering
           affiliation:
             name: Affiliation
-            _source:
+            source:
+              <<: *Source
               page: 345
             # content:
             #   part_of_speech: [noun, proper noun fragment]
@@ -287,7 +290,8 @@ oracles:
                 result: Union
           identity:
             name: Identity
-            _source:
+            source:
+              <<: *Source
               page: 345
             # content:
             #   part_of_speech: [common noun, plural, proper noun fragment]
@@ -445,7 +449,8 @@ oracles:
     contents:
       type:
         name: Faction Type
-        _source:
+        source:
+          <<: *Source
           page: 340
         # usage:
         #   initial: true
@@ -476,7 +481,8 @@ oracles:
             # set_attributes: {faction_type: [fringe_group]}
       influence:
         name: Influence
-        _source:
+        source:
+          <<: *Source
           page: 340
         # content:
         #   part_of_speech: [adjective]
@@ -521,7 +527,8 @@ oracles:
         rendering:
           style: table
           icon: icons/factions/dominion.svg
-        _source:
+        source:
+          <<: *Source
           page: 341
         # usage:
         #   max_rolls: 3
@@ -631,7 +638,8 @@ oracles:
             # set_attributes: {dominion: [wealth]}
       leadership:
         name: 'Dominion: Leadership'
-        _source:
+        source:
+          <<: *Source
           page: 341
         # usage:
         #   initial: true
@@ -687,7 +695,8 @@ oracles:
         rendering:
           style: table
           icon: icons/factions/guild.svg
-        _source:
+        source:
+          <<: *Source
           page: 341
         # usage:
         #   initial: true
@@ -765,7 +774,8 @@ oracles:
         rendering:
           style: table
           icon: icons/factions/fringe_group.svg
-        _source:
+        source:
+          <<: *Source
           page: 341
         # usage:
         #   requires:
@@ -827,7 +837,8 @@ oracles:
                 auto: true
       projects:
         name: Faction
-        _source:
+        source:
+          <<: *Source
           page: 342
         # content:
         #   part_of_speech: [fragment]
@@ -943,7 +954,8 @@ oracles:
                 auto: true
       relationships:
         name: Faction Relationships
-        _source:
+        source:
+          <<: *Source
           page: 343
         # content:
         #   part_of_speech: [fragment]
@@ -1039,7 +1051,8 @@ oracles:
                 auto: true
       quirks:
         name: Faction Quirks
-        _source:
+        source:
+          <<: *Source
           page: 346
         # content:
         #   part_of_speech: [fragment]
@@ -1155,7 +1168,8 @@ oracles:
                 auto: true
       rumors:
         name: Faction Rumors
-        _source:
+        source:
+          <<: *Source
           page: 347
         # content:
         #   part_of_speech: [fragment]

@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   title: 'Ironsworn: Starforged Rulebook'
   url: https://ironswornrpg.com
   authors:
@@ -12,7 +12,8 @@ oracles:
     contents:
       background_assets:
         name: Background Assets
-        _source:
+        source:
+          <<: *Source
           page: 105
         summary: |-
           If you want some direction for your starting paths, roll or pick from the table below and take the two paths associated with your selected background.
@@ -193,7 +194,8 @@ oracles:
             #     - starforged/assets/path/scoundrel
       backstory_prompts:
         name: Backstory Prompts
-        _source:
+        source:
+          <<: *Source
           page: 106
         summary: |-
           For some backstory inspiration, roll or pick from the table below. Then, take a moment to elaborate on the suggestion. Or just leave it a bit vague and mysterious for now; you can flesh it out in play.
@@ -248,7 +250,8 @@ oracles:
             result: 'Your wanderlust carried you far away'
       starship_history:
         name: Starship History
-        _source:
+        source:
+          <<: *Source
           page: 108
         summary: |-
           Envision how you obtained or earned this ship. You can come up with your own origin, or roll or pick from the table below. If you use a result from the table, take a moment to consider and elaborate on the suggestion.
@@ -294,7 +297,8 @@ oracles:
             result: 'Won in a bet'
       starship_quirks:
         name: Starship Quirks
-        _source:
+        source:
+          <<: *Source
           page: 109
         summary: |-
           Your ship is an important aspect of your character—and a character in its own right. What does it look like? What makes it interesting or uniquely yours? Does it have any particular quirks? If nothing occurs to you now, you can flesh it out in play, or roll once or twice on the table below.
@@ -366,7 +370,8 @@ oracles:
             result: 'Timers and clocks are always just a bit off'
       sector_trouble:
         name: Sector Trouble
-        _source:
+        source:
+          <<: *Source
           page: 126
         # content:
         #   part_of_speech: [fragment]
@@ -450,7 +455,8 @@ oracles:
             # suggestions: [*obj:Creature]
       inciting_incident:
         name: Inciting Incident
-        _source:
+        source:
+          <<: *Source
           page: 130
         # content:
         #   part_of_speech: [fragment]

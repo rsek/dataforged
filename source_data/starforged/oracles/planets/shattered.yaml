@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/shattered-01.webp
           - images/planets/shattered-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 316
         summary: A planet sundered by cataclysmic destruction.
         sample_names:

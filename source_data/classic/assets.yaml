@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   license: https://creativecommons.org/licenses/by/4.0
@@ -9,7 +9,8 @@ source:
 assets:
   companion:
     name: Companion Assets
-    _source:
+    source: &CollectionSource
+      <<: *Source
       page: 39
     description: |-
       Companions are your NPC helpers. When you acquire a companion, give them a name and envision their appearance and personality. If they don’t have a starting ability, choose one. Upgrading a companion enables additional abilities.
@@ -18,7 +19,8 @@ assets:
     contents:
       cave_lion:
         asset_type: Companion
-        _source:
+        source: &AssetSource
+          <<: *Source
           title: Ironsworn Assets Master Set
           page: 2
         name: Cave Lion
@@ -88,8 +90,8 @@ assets:
             recover: classic/moves/adventure/heal
       giant_spider:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Giant Spider
         # icon not on game-icons
@@ -159,8 +161,8 @@ assets:
           moves: *CompanionHealth.Moves
       hawk:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Hawk
         # icon not on game-icons
@@ -230,8 +232,8 @@ assets:
                 text: Add +2.
       horse:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Horse
         # icon not on game-icons
@@ -298,8 +300,8 @@ assets:
           moves: *CompanionHealth.Moves
       hound:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Hound
         # icon not on game-icons
@@ -356,8 +358,8 @@ assets:
           moves: *CompanionHealth.Moves
       kindred:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Kindred
         # icon not on game-icons
@@ -416,8 +418,8 @@ assets:
                 text: Add +1 when you [Face Desolation](id:classic/moves/suffer/face_desolation) in your companion's presence.
       mammoth:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Mammoth
         # icon not on game-icons
@@ -470,8 +472,8 @@ assets:
           moves: *CompanionHealth.Moves
       owl:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Owl
         # icon not on game-icons
@@ -533,8 +535,8 @@ assets:
           moves: *CompanionHealth.Moves
       raven:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 2
         name: Raven
         # icon not on game-icons
@@ -590,8 +592,8 @@ assets:
           moves: *CompanionHealth.Moves
       young_wyvern:
         asset_type: Companion
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Young Wyvern
         # icon not on game-icons
@@ -647,22 +649,17 @@ assets:
           moves: *CompanionHealth.Moves
   path:
     name: Path Assets
-    _source:
-      title: Ironsworn Rulebook
-      authors:
-        - name: Shawn Tomkin
+    source:
+      <<: *CollectionSource
       page: 40
-      license: https://creativecommons.org/licenses/by/4.0
-      date: 2019-06-05
-      url: https://ironswornrpg.com
     summary: Paths represent your background, interests, training, and skills.
     description: |-
       Paths represent your background, interests, training, and skills. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. For example, a [Ritualist](id:classic/assets/path/ritualist) would likely have a different outlook than a [Veteran](id:classic/assets/path/veteran). Choosing both those paths can reflect an evolution of your character or an interesting background.
     contents:
       alchemist:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Alchemist
         # https://game-icons.net/1x1/lorc/round-bottom-flask.html
@@ -727,8 +724,8 @@ assets:
                 outcomes: *take_1_momentum_on_hit
       animal_kin:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Animal Kin
         # https://game-icons.net/1x1/lorc/octogonal-eye.html
@@ -775,8 +772,8 @@ assets:
                       method: any
       banner_sworn:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Banner-Sworn
         # icon not on game-icons
@@ -833,8 +830,8 @@ assets:
 
       battle_scarred:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Battle-Scarred
         # icon not on game-icons
@@ -861,8 +858,8 @@ assets:
                 outcomes: *take_1_momentum_on_hit
       blade_bound:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Blade-Bound
         # https://game-icons.net/1x1/lorc/rune-sword.html
@@ -919,8 +916,8 @@ assets:
                     text: '[Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).'
       bonded:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Bonded
         # icon not on game-icons
@@ -948,8 +945,8 @@ assets:
                       text: *Bonded.2.text
       commander:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Commander
         # https://game-icons.net/1x1/lorc/rally-the-troops.html
@@ -1006,8 +1003,8 @@ assets:
             recover: classic/moves/adventure/make_camp
       dancer:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 4
         name: Dancer
         # unique icon composed from at least one game-icons element?
@@ -1076,8 +1073,8 @@ assets:
                   miss: *move:Generic.Miss
       devotant:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Devotant
         # https://game-icons.net/1x1/lorc/sundial.html
@@ -1155,8 +1152,8 @@ assets:
                 outcomes: *take_1_momentum_on_hit
       empowered:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Empowered
         # https://game-icons.net/1x1/delapouite/crenel-crown.html
@@ -1213,8 +1210,8 @@ assets:
                 outcomes: *outcomes.1_momentum_spirit.HIT
       fated:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Fated
         # https://game-icons.net/1x1/lorc/journey.html
@@ -1262,8 +1259,8 @@ assets:
                   miss: *Fated.Outcome
       fortune_hunter:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Fortune Hunter
         # https://game-icons.net/1x1/delapouite/receive-money.html
@@ -1313,8 +1310,8 @@ assets:
           min: 0
       herbalist:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Herbalist
         # icon not on game-icons
@@ -1373,8 +1370,8 @@ assets:
                   weak_hit: *outcome:Herbalist.2
       honorbound:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Honorbound
         # icon not on game-icons
@@ -1419,8 +1416,8 @@ assets:
 
       improviser:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Improviser
         # https://game-icons.net/1x1/lorc/divergence.html
@@ -1465,8 +1462,8 @@ assets:
                     count_as: miss
       infiltrator:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Infiltrator
         # https://game-icons.net/1x1/lorc/impact-point.html
@@ -1522,8 +1519,8 @@ assets:
                   weak_hit: *take_1_momentum_supply
       lorekeeper:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 6
         name: Lorekeeper
         # https://game-icons.net/1x1/lorc/book-aura.html
@@ -1583,8 +1580,8 @@ assets:
               One time only, you may browse the archive’s forbidden depths. If you do, raise your wits by 1 and roll an action die. On 1-3, you must also mark corrupted or [Face Desolation](id:classic/moves/suffer/face_desolation) (ignoring momentum).
       loyalist:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Loyalist
         # https://game-icons.net/1x1/delapouite/shaking-hands.html
@@ -1628,8 +1625,8 @@ assets:
                 text: Envision how you support your ally. ss move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
       masked:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Masked
         # icon not on game-icons
@@ -1697,8 +1694,8 @@ assets:
                           ref: classic/assets/path/masked/options/material
       oathbreaker:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Oathbreaker
         # https://game-icons.net/1x1/lorc/shattered-sword.html
@@ -1744,8 +1741,8 @@ assets:
                   weak_hit: *on_hit
       outcast:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Outcast
         # https://game-icons.net/1x1/lorc/orb-direction.html
@@ -1802,8 +1799,8 @@ assets:
                     text: You recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.
       pretender:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Pretender
         # unique icon, probably derived from
@@ -1867,8 +1864,8 @@ assets:
                   miss: *outcome
       revenant:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Revenant
         # https://game-icons.net/1x1/lorc/heartburn.html
@@ -1908,8 +1905,8 @@ assets:
                 text: you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).
       rider:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Rider
         # icon not on game-icons
@@ -1958,8 +1955,8 @@ assets:
 
       ritualist:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Ritualist
         # https://game-icons.net/1x1/lorc/divided-spiral.html
@@ -1990,8 +1987,8 @@ assets:
               When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 fewer experience.
       shadow_kin:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 8
         name: Shadow-Kin
         # icon not on game-icons
@@ -2026,8 +2023,8 @@ assets:
               #     - classic/moves/quest/fulfill_your_vow
       sighted:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Sighted
         # https://game-icons.net/1x1/lorc/third-eye.html
@@ -2051,8 +2048,8 @@ assets:
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by studying someone or something in a charged situation, add +1 and take +1 momentum on a hit. When you also pierce the veil to explore deeper truths (decide before rolling), you may reroll any dice. If you do, count a weak hit as a miss.
       slayer:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Slayer
         # icon not on game-icons
@@ -2069,8 +2066,8 @@ assets:
                 * Prove your worth: When you [Sojourn](id:classic/moves/relationship/sojourn), reroll any dice (one time only).
       spirit_bound:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Spirit-Bound
         # icon not on game-icons
@@ -2087,8 +2084,8 @@ assets:
                 * Deepen your connection: Add +1 more when you leverage this asset.
       storyweaver:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Storyweaver
         # icon not on game-icons
@@ -2102,8 +2099,8 @@ assets:
               When you [Sojourn](id:classic/moves/relationship/sojourn) within a community with which you share a bond, add +2 (instead of +1).
       trickster:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Trickster
         # https://game-icons.net/1x1/lorc/suspicious.html
@@ -2144,8 +2141,8 @@ assets:
                         - stat: heart
       veteran:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Veteran
         # https://game-icons.net/1x1/lorc/mailed-fist.html
@@ -2159,8 +2156,8 @@ assets:
               When you [Resupply](id:classic/moves/adventure/resupply) by looting the dead on a field of battle, add +1 and take +1 momentum on a hit.
       waterborn:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Waterborn
         # https://game-icons.net/1x1/lorc/big-wave.html
@@ -2178,8 +2175,8 @@ assets:
               When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) aboard a boat or ship, reroll any dice.
       wayfinder:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Wayfinder
         # icon not on game-icons
@@ -2193,8 +2190,8 @@ assets:
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to safely guide someone on a perilous journey, you may reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.
       weaponmaster:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 10
         name: Weaponmaster
         # https://game-icons.net/1x1/lorc/all-for-one.html
@@ -2210,8 +2207,8 @@ assets:
               When you [Turn the Tide](id:classic/moves/combat/turn_the_tide) with a sudden change of weapon or technique, and your next move is a [Strike](id:classic/moves/combat/strike), add +1 and inflict +2 harm on a strong hit.
       wildblood:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Wildblood
         # icon not on game-icons
@@ -2235,8 +2232,8 @@ assets:
                         - stat: wits
       wright:
         asset_type: Path
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Wright
         # https://game-icons.net/1x1/delapouite/3d-hammer.html
@@ -2254,14 +2251,9 @@ assets:
               When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you [Compel](id:classic/moves/relationship/compel), [Forge a Bond](id:classic/moves/relationship/forge_a_bond), or [Test Your Bond](id:classic/moves/relationship/test_your_bond).
   combat_talent:
     name: Combat Talent Assets
-    _source:
-      title: Ironsworn Rulebook
-      authors:
-        - name: Shawn Tomkin
+    source:
+      <<: *CollectionSource
       page: 40
-      license: https://creativecommons.org/licenses/by/4.0
-      date: 2019-06-05
-      url: https://ironswornrpg.com
     description: |-
       *Ironsworn* characters are assumed to be skilled fighters. Even without a combat talent, you can wield weapons and perform [combat moves](id:classic/collections/moves/combat). A combat talent reflects a particular area of expertise, and gives you additional options and bonuses.
 
@@ -2269,8 +2261,8 @@ assets:
     contents:
       archer:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Archer
         # icon not on game-icons
@@ -2289,8 +2281,8 @@ assets:
               When you [Resupply](id:classic/moves/adventure/resupply) by hunting, add +1 and take +1 momentum on a hit.
       berserker:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Berserker
         # icon not on game-icons
@@ -2310,8 +2302,8 @@ assets:
               When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, and your health is above 0, you may let the pain inflame your wildness (decide before rolling). If you then score a strong hit and choose to embrace the pain, take +momentum equal to your remaining health. A weak hit counts as a miss.
       brawler:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Brawler
         # https://game-icons.net/1x1/skoll/fist.html
@@ -2326,8 +2318,8 @@ assets:
               When you [Face Danger](id:classic/moves/adventure/face_danger) or [Clash](id:classic/moves/combat/clash) against a brawling attack, add +1 and take +1 momentum on a hit.
       cutthroat:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Cutthroat
         # icon not on game-icons
@@ -2346,8 +2338,8 @@ assets:
               Once per fight, when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +shadow by performing a feint or misdirection, reroll any dice and take +1 momentum on a hit.
       duelist:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Duelist
         # https://game-icons.net/1x1/lorc/crossed-swords.html
@@ -2365,8 +2357,8 @@ assets:
                 * Take +2 momentum on a hit.
       fletcher:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Fletcher
         # derived from:
@@ -2409,8 +2401,8 @@ assets:
                   miss: *move:Generic.Miss
       ironclad:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 12
         name: Ironclad
         # icon not on game-icons
@@ -2473,8 +2465,8 @@ assets:
                 text: Add +2.
       long_arm:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Long-Arm
         # https://game-icons.net/1x1/delapouite/bo.html
@@ -2526,8 +2518,8 @@ assets:
 
       shield_bearer:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Shield-Bearer
         # icon not on game-icons
@@ -2543,8 +2535,8 @@ assets:
               When forced to [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, you may instead sacrifice your shield and ignore all harm. If you do, the shield is destroyed. Once per fight, you also take initiative when you sacrifice your shield to avoid harm.
       skirmisher:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Skirmisher
         # icon not on game-icons
@@ -2563,8 +2555,8 @@ assets:
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit.
       slinger:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Slinger
         # https://game-icons.net/1x1/delapouite/sling.html
@@ -2582,8 +2574,8 @@ assets:
               When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by preparing stones of a special quality or material, add +1. Then, take +1 momentum or +1 supply on a hit.
       sunderer:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Sunderer
         # icon not on game-icons
@@ -2621,8 +2613,8 @@ assets:
                   miss: *move:Generic.Miss
       swordmaster:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Swordmaster
         # icon not on game-icons
@@ -2638,8 +2630,8 @@ assets:
               When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) by kneeling and grasping your sword’s blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, [Endure Harm](id:classic/moves/suffer/endure_harm) (1 harm) in exchange for an additional +1 momentum on a hit.
       thunder_bringer:
         asset_type: Combat Talent
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Thunder-Bringer
         # https://game-icons.net/1x1/lorc/hammer-drop.html
@@ -2654,13 +2646,8 @@ assets:
               When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), you may [Strike](id:classic/moves/combat/strike) with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +2 harm on a strong hit, but count a weak hit as a miss.
   ritual:
     name: Ritual Assets
-    _source:
-      title: Ironsworn Rulebook
-      authors:
-        - name: Shawn Tomkin
-      license: https://creativecommons.org/licenses/by/4.0
-      date: 2019-06-05
-      url: https://ironswornrpg.com
+    source:
+      <<: *CollectionSource
       page: 41
     description: |-
       Magic in *Ironsworn* is cast through rituals which help support your actions or act as unique moves. Like all assets, rituals can be selected as you gain experience and can be upgraded over time to make them more flexible or powerful.
@@ -2669,8 +2656,8 @@ assets:
     contents:
       augur:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Augur
         # icon not on game-icons
@@ -2703,8 +2690,8 @@ assets:
               When you perform this ritual, add +1 and take +1 momentum on a hit.
       awakening:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 14
         name: Awakening
         # icon not on game-icons
@@ -2746,8 +2733,8 @@ assets:
           min: 0
       bind:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Bind
         # icon not on game-icons
@@ -2781,8 +2768,8 @@ assets:
           - *asset:Ritual.Ability.3
       communion:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Communion
         # icon not on game-icons
@@ -2816,8 +2803,8 @@ assets:
           - *asset:Ritual.Ability.3
       divination:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Divination
         # https://game-icons.net/1x1/lorc/rune-stone.html
@@ -2855,8 +2842,8 @@ assets:
           - *asset:Ritual.Ability.3
       invoke:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Invoke
         # https://game-icons.net/1x1/lorc/embrassed-energy.html
@@ -2898,8 +2885,8 @@ assets:
           min: 0
       keen:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Keen
         # icon not on game-icons
@@ -2933,8 +2920,8 @@ assets:
           - *asset:Ritual.Ability.3
       leech:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Leech
         # icon not on game-icons
@@ -2971,8 +2958,8 @@ assets:
           - *asset:Ritual.Ability.3
       lightbearer:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Lightbearer
         condition_meter:
@@ -3013,8 +3000,8 @@ assets:
           - *asset:Ritual.Ability.3
       scry:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Scry
         # icon not on game-icons
@@ -3056,8 +3043,8 @@ assets:
           - *asset:Ritual.Ability.3
       shadow_walk:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 16
         name: Shadow-Walk
         # https://game-icons.net/1x1/lorc/concentric-crescents.html
@@ -3091,8 +3078,8 @@ assets:
           - *asset:Ritual.Ability.3
       sway:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Sway
         # icon not on game-icons
@@ -3126,8 +3113,8 @@ assets:
           - *asset:Ritual.Ability.3
       talisman:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Talisman
         # https://game-icons.net/1x1/delapouite/tribal-pendant.html
@@ -3159,8 +3146,8 @@ assets:
           - *asset:Ritual.Ability.3
       tether:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Tether
         # derived from https://game-icons.net/1x1/lorc/sonic-lightning.html ?
@@ -3194,8 +3181,8 @@ assets:
           - *asset:Ritual.Ability.3
       totem:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Totem
         # icon not on game-icons
@@ -3229,8 +3216,8 @@ assets:
           - *asset:Ritual.Ability.3
       visage:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Visage
         # icon not on game-icons
@@ -3265,8 +3252,8 @@ assets:
           - *asset:Ritual.Ability.3
       ward:
         asset_type: Ritual
-        _source:
-          title: Ironsworn Assets Master Set
+        source:
+          <<: *AssetSource
           page: 18
         name: Ward
         # icon not on game-icons

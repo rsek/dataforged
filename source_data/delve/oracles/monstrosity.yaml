@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
   date: 2020-02-13
@@ -30,7 +30,8 @@ oracles:
         - classic/oracles/character/goal
         - classic/oracles/character/disposition
         - delve/oracles/character/activity
-    _source:
+    source:
+      <<: *Source
       authors:
         - name: Shawn Tomkin
       title: 'Ironsworn: Delve'
@@ -42,7 +43,8 @@ oracles:
         canonical_name: 'Monstrosity: Size'
         # usage:
         #   initial: true
-        _source:
+        source:
+          <<: *Source
           page: 214
         table:
           - min: 1
@@ -73,7 +75,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: adjunct_common_noun
-        _source:
+        source:
+          <<: *Source
           page: 214
         table:
           - min: 1
@@ -153,7 +156,8 @@ oracles:
         summary: Roll up to four times for Characteristics and keep up to three of those results.
         description: |-
           Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
-        _source:
+        source:
+          <<: *Source
           page: 215
         table:
           - min: 1
@@ -251,7 +255,8 @@ oracles:
           Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
 
           You should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.
-        _source:
+        source:
+          <<: *Source
           page: 216
         table:
           - min: 1

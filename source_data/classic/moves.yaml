@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   license: https://creativecommons.org/licenses/by/4.0
@@ -9,7 +9,8 @@ source:
 moves:
   adventure:
     name: Adventure Moves
-    _source:
+    source:
+      <<: *Source
       page: 60
     summary: |-
       Adventure moves are used as you travel the Ironlands, investigate situations, and deal with threats.
@@ -40,7 +41,8 @@ moves:
               method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 60
         text: |-
           When **you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
@@ -100,7 +102,8 @@ moves:
               method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 61
         text: |-
           When **you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
@@ -139,7 +142,8 @@ moves:
             - method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 62
         text: |-
           When **you search an area, ask questions, conduct an investigation, or follow a track**, roll +wits. If you act within a community or ask questions of a person with whom you share a bond, add +1.
@@ -170,7 +174,8 @@ moves:
               roll_options:
                 - stat: iron
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 63
         text: |-
           When **you treat an injury or ailment**, roll +wits. If you are mending your own wounds, roll +wits or +iron, whichever is lower.
@@ -196,7 +201,8 @@ moves:
             - method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 63
         text: |-
           When **you hunt, forage, or scavenge**, roll +wits.
@@ -223,7 +229,8 @@ moves:
               roll_options:
                 - using: condition_meter
                   condition_meter: supply
-        _source:
+        source:
+          <<: *Source
           page: 64
         text: |-
           When **you rest and recover for several hours in the wild**, roll +supply.
@@ -270,7 +277,8 @@ moves:
             # - method: null
             #   text: If you are setting off from a community with which you share a bond
             #   add: 1
-        _source:
+        source:
+          <<: *Source
           page: 65
         text: |-
           When **you travel across hazardous or unfamiliar lands**, set the rank of your journey.
@@ -312,7 +320,8 @@ moves:
             - method: any
               roll_options:
                 - using: progress_track
-        _source:
+        source:
+          <<: *Source
           page: 68
         text: |-
           When **your journey comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
@@ -338,7 +347,8 @@ moves:
                 * Take +1 momentum.
   relationship:
     name: Relationship Moves
-    _source:
+    source:
+      <<: *Source
       page: 69
     summary: |-
       Relationship moves are made as you interact with others in the world, fight duels, form bonds, support your allies, and determine the ultimate fate of your character.
@@ -361,7 +371,8 @@ moves:
               method: any
               roll_options:
                 - stat: shadow
-        _source:
+        source:
+          <<: *Source
           page: 69
         text: |-
           When **you attempt to persuade someone to do something**, envision your approach and roll. If you...
@@ -394,7 +405,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 71
         text: |-
           When **you spend time in a community seeking assistance**, roll +heart. If you share a bond, add +1. On **strong hit**, you and your allies may each choose two from within the categories below. On a **weak hit**, choose one. If you share a bond, choose one more.
@@ -475,7 +487,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 73
         text: |-
           When **you challenge someone to a formal duel, or accept a challenge**, roll +heart. If you share a bond with this community, add +1.
@@ -528,7 +541,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 74
         text: |-
           When **you spend significant time with a person or community, stand together to face hardships, or make sacrifices for their cause**, you can attempt to create a bond. When you do, roll +heart. If you make this move after you successfully [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) to their benefit, you may reroll any dice.
@@ -563,7 +577,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 75
         text: |-
           When **your bond is tested through conflict, betrayal, or circumstance**, roll +heart.
@@ -591,7 +606,8 @@ moves:
               Clear the bond and [Pay the Price](id:classic/moves/fate/pay_the_price).
       aid_your_ally:
         name: Aid Your Ally
-        _source:
+        source:
+          <<: *Source
           page: 76
         roll_type: no_roll
         trigger:
@@ -600,7 +616,8 @@ moves:
         # TODO: forward to another move ID?
       write_your_epilogue:
         name: Write Your Epilogue
-        _source:
+        source:
+          <<: *Source
           page: 77
         roll_type: special_track
         trigger:
@@ -626,7 +643,8 @@ moves:
             text: Your fears are realized.
   combat:
     name: Combat Moves
-    _source:
+    source:
+      <<: *Source
       page: 78
     summary: |-
       When there are no other options, when the sword slips free of its sheath, when the arrow is nocked, when the shield is brought to bear, make these moves.
@@ -649,7 +667,8 @@ moves:
               method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 78
         text: |-
           When **you enter into combat**, set the rank of each of your foes.
@@ -699,7 +718,8 @@ moves:
               method: any
               roll_options:
                 - stat: edge
-        _source:
+        source:
+          <<: *Source
           page: 78
         text: |-
           When **you have initiative and attack in close quarters**, roll +iron. When **you have initiative and attack at range**, roll +edge.
@@ -730,7 +750,8 @@ moves:
               method: any
               roll_options:
                 - stat: edge
-        _source:
+        source:
+          <<: *Source
           page: 80
         text: |-
           When **your foe has initiative and you fight with them in close quarters**, roll +iron. When **you exchange a volley at range, or shoot at an advancing foe**, roll +edge.
@@ -759,7 +780,8 @@ moves:
         roll_type: no_roll
         trigger:
           text: Once per fight, when you risk it all...
-        _source:
+        source:
+          <<: *Source
           page: 81
         text: Once per fight, when you **risk it all**, you may steal initiative from your foe to make a move (not a progress move). When you do, add +1 and take +1 momentum on a hit. If you fail to score a hit on that move, you must suffer a dire outcome. [Pay the Price](id:classic/moves/fate/pay_the_price).
       end_the_fight:
@@ -772,7 +794,8 @@ moves:
             - method: any
               roll_options:
                 - using: progress_track
-        _source:
+        source:
+          <<: *Source
           page: 82
         text: |-
           When **you make a move to take decisive action**, and score a strong hit, you may resolve the outcome of this fight. If you do, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
@@ -832,7 +855,8 @@ moves:
               method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 84
         text: |-
           When **you fight a battle, and it happens in a blur**, envision your objective and roll. If you primarily...
@@ -857,7 +881,8 @@ moves:
             text: You are defeated and the objective is lost to you. [Pay the Price](id:classic/moves/fate/pay_the_price).
   suffer:
     name: Suffer Moves
-    _source:
+    source:
+      <<: *Source
       page: 90
     summary: |-
       These moves are made as a result of a perilous event or bad outcome on other moves. They represent what happens to you, and how you hold up against the trauma.
@@ -875,7 +900,8 @@ moves:
                 - stat: iron
                 - using: condition_meter
                   condition_meter: health
-        _source:
+        source:
+          <<: *Source
           page: 91
         text: |-
           When **you face physical damage**, suffer -health equal to your foe’s rank or as appropriate to the situation. If your health is 0, suffer -momentum equal to any remaining -health. Then, roll +health or +iron, whichever is higher.
@@ -914,7 +940,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 93
         text: |-
           When **you are brought to the brink of death**, and glimpse the world beyond, roll +heart.
@@ -949,7 +976,8 @@ moves:
                 - stat: heart
                 - using: ref
                   ref: '*/assets/companion/*/condition_meter'
-        _source:
+        source:
+          <<: *Source
           page: 94
         text: |-
           When **your companion faces physical damage**, they suffer -health equal to the amount of harm inflicted. If your companion’s health is 0, exchange any leftover -health for -momentum. Then, roll +heart or +your companion’s health, whichever is higher.
@@ -984,7 +1012,8 @@ moves:
                 - stat: heart
                 - using: condition_meter
                   condition_meter: spirit
-        _source:
+        source:
+          <<: *Source
           page: 95
         text: |-
           When **you face mental shock or despair**, suffer -spirit equal to your foe’s rank or as appropriate to the situation. If your spirit is 0, suffer -momentum equal to any remaining -spirit. Then, roll +spirit or +heart, whichever is higher.
@@ -1022,7 +1051,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 96
         text: |-
           When **you are brought to the brink of desolation**, roll +heart.
@@ -1048,7 +1078,8 @@ moves:
             text: You succumb to despair or horror and are lost.
       out_of_supply:
         name: Out of Supply
-        _source:
+        source:
+          <<: *Source
           page: 97
         roll_type: no_roll
         trigger:
@@ -1057,7 +1088,8 @@ moves:
       face_a_setback:
         name: Face a Setback
         roll_type: no_roll
-        _source:
+        source:
+          <<: *Source
           page: 97
         trigger:
           text: When your momentum is at its minimum (-6), and you suffer additional -momentum...
@@ -1068,7 +1100,8 @@ moves:
             * Envision an event or discovery ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) which undermines your progress in a current quest, journey or fight. Then, for each additional _momentum, clear 1 unit of progress on that track per its rank (troublesome=clear 3 progress; dangerous=clear 2 progress; formidable=clear 1 progress; extreme=clear 2 ticks; epic=clear 1 tick).
   quest:
     name: Quest Moves
-    _source:
+    source:
+      <<: *Source
       page: 98
     summary: |-
       Making and fulfilling vows is central to your character’s motivations. These oaths drive your story and give you the means to gain experience and acquire new abilities. When you embark upon a quest, manage your progress on a quest, seek to complete a quest, or gain the rewards of a quest, make these moves.
@@ -1082,7 +1115,8 @@ moves:
             - method: any
               roll_options:
                 - stat: heart
-        _source:
+        source:
+          <<: *Source
           page: 98
         text: |-
           When **you swear upon iron to complete a quest**, write your vow and give the quest a rank. Then, roll +heart. If you make this vow to a person or community with whom you share a bond, add +1.
@@ -1109,7 +1143,8 @@ moves:
       reach_a_milestone:
         name: Reach a Milestone
         roll_type: no_roll
-        _source:
+        source:
+          <<: *Source
           page: 100
         trigger:
           text: When you make significant progress in your quest by overcoming a critical obstacle, completing a perilous journey, solving a complex mystery, defeating a powerful threat, gaining vital support, or acquiring a crucial item...
@@ -1123,7 +1158,8 @@ moves:
             * Epic quest: Mark 1 tick.
       fulfill_your_vow:
         name: Fulfill Your Vow
-        _source:
+        source:
+          <<: *Source
           page: 101
         roll_type: progress_roll
         track_label: Vow
@@ -1157,7 +1193,8 @@ moves:
                 * You give up: [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).
       forsake_your_vow:
         name: Forsake Your Vow
-        _source:
+        source:
+          <<: *Source
           page: 102
         roll_type: no_roll
         trigger:
@@ -1165,7 +1202,8 @@ moves:
         text: When **you renounce your quest, betray your promise, or the goal is lost to you**, clear the vow and [Endure Stress](id:classic/moves/suffer/endure_stress). You suffer _spirit equal to the rank of your quest (troublesome=1; dangerous=2; formidable=3; extreme=4; epic=5). If the vow was made to a person or community with whom you share a bond, Test Your Bond when you next meet.
       advance:
         name: Advance
-        _source:
+        source:
+          <<: *Source
           page: 103
         roll_type: no_roll
         trigger:
@@ -1173,7 +1211,8 @@ moves:
         text: When **you focus on your skills, receive training, find inspiration, earn a reward, or gain a companion**, you may spend 3 experience to add a new asset, or 2 experience to upgrade an asset.
   fate:
     name: Fate Moves
-    _source:
+    source:
+      <<: *Source
       page: 98
     summary: When you face the outcome of a move, want to know what happens next, or have a question about people, places and events external to your character, the fate moves help you discover an answer.
     description: |-
@@ -1190,7 +1229,8 @@ moves:
         name: Pay the Price
         oracles:
           - classic/oracles/moves/pay_the_price
-        _source:
+        source:
+          <<: *Source
           page: 105
         roll_type: no_roll
         trigger:
@@ -1211,7 +1251,8 @@ moves:
           - classic/oracles/moves/ask_the_oracle/fifty_fifty
           - classic/oracles/moves/ask_the_oracle/likely
           - classic/oracles/moves/ask_the_oracle/almost_certain
-        _source:
+        source:
+          <<: *Source
           page: 107
         roll_type: no_roll
         trigger:

@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/ocean-01.webp
           - images/planets/ocean-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 314
         summary: A planet completely or almost entirely covered by a boundless ocean.
         sample_names:

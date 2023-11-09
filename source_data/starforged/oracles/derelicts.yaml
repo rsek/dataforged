@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -16,7 +16,8 @@ oracles:
       type:
         name: Derelict Type (by location)
         canonical_name: Type (by location)
-        _source:
+        source:
+          <<: *Source
           page: 348
         # usage:
         #   initial: true
@@ -103,7 +104,8 @@ oracles:
                     - starforged/oracles/derelicts/zones/settlement
       zones:
         name: Derelict Zones
-        _source:
+        source:
+          <<: *Source
           page: 351
         summary: &Zones.Summary If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.
         rendering:
@@ -219,7 +221,8 @@ oracles:
     contents:
       location:
         name: Location
-        _source:
+        source:
+          <<: *Source
           page: 348
         table:
           - min: 1
@@ -245,7 +248,8 @@ oracles:
                 - starforged/oracles/derelicts/type/deep_space
       condition:
         name: Condition
-        _source:
+        source:
+          <<: *Source
           page: 348
         # usage:
         #   initial: true
@@ -272,7 +276,8 @@ oracles:
             result: Impending destruction
       outer_first_look:
         name: Outer First Look
-        _source:
+        source:
+          <<: *Source
           page: 349
         summary: Use these First Look tables for your initial survey of the derelict.
         # usage:
@@ -314,7 +319,8 @@ oracles:
       inner_first_look:
         name: Inner First Look
         summary: Use these First Look tables for your initial survey of the derelict's interior.
-        _source:
+        source:
+          <<: *Source
           page: 349
         # content:
         #   part_of_speech: [fragment]

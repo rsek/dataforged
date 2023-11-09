@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -9,14 +9,16 @@ source:
 oracles:
   vaults:
     name: Precursor Vaults
-    _source:
+    source:
+      <<: *Source
       page: 360
     summary: |-
       When you first come upon a vault, use the tables on the previous two pages to help envision its form and nature. For a more abstract prompt, just use the Descriptor oracle. In either case—if that’s enough detail for the role of the vault in your story—stop there.
     contents:
       location:
         name: Location
-        _source:
+        source:
+          <<: *Source
           page: 360
         table:
           - min: 1
@@ -33,7 +35,8 @@ oracles:
             icon: icon/oracles/location/deep_space.svg
       scale:
         name: Scale
-        _source:
+        source:
+          <<: *Source
           page: 360
         # usage:
         #   initial: true
@@ -57,7 +60,8 @@ oracles:
             result: World-spanning site or megastructure
       form:
         name: Form
-        _source:
+        source:
+          <<: *Source
           page: 360
         # usage:
         #   initial: true
@@ -82,7 +86,8 @@ oracles:
             # content: {part_of_speech: [adjective]}
       shape:
         name: Shape
-        _source:
+        source:
+          <<: *Source
           page: 361
         # usage:
         #   initial: true
@@ -145,7 +150,8 @@ oracles:
 
       material:
         name: Material
-        _source:
+        source:
+          <<: *Source
           page: 361
         # usage:
         #   initial: true
@@ -188,7 +194,8 @@ oracles:
                 auto: true
       outer_first_look:
         name: Outer First Look
-        _source:
+        source:
+          <<: *Source
           page: 361
         # content:
         #   part_of_speech: [fragment]
@@ -299,7 +306,8 @@ oracles:
         icon: icons/vaults/interior.svg
         contents:
           first_look:
-            _source:
+            source:
+              <<: *Source
               page: 364
             name: Inner First Look
             # usage:
@@ -413,7 +421,8 @@ oracles:
                     auto: true
           feature:
             name: Interior Feature
-            _source:
+            source:
+              <<: *Source
               page: 366
             # usage:
             #   repeatable: true
@@ -535,7 +544,8 @@ oracles:
                     auto: true
           peril:
             name: Interior Peril
-            _source:
+            source:
+              <<: *Source
               page: 367
             # usage:
             #   repeatable: true
@@ -617,7 +627,8 @@ oracles:
                     auto: true
           opportunity:
             name: Interior Opportunity
-            _source:
+            source:
+              <<: *Source
               page: 367
             # usage:
             #   repeatable: true
@@ -662,7 +673,8 @@ oracles:
         icon: icons/vaults/sanctum.svg
         contents:
           purpose:
-            _source:
+            source:
+              <<: *Source
               page: 365
             name: Vault Purpose
             # content:
@@ -766,7 +778,8 @@ oracles:
                   - times: 2
                     auto: true
           feature:
-            _source:
+            source:
+              <<: *Source
               page: 368
             name: Sanctum Feature
             # usage:
@@ -888,7 +901,8 @@ oracles:
                   - times: 2
                     auto: true
           peril:
-            _source:
+            source:
+              <<: *Source
               page: 369
             name: Sanctum Peril
             # usage:
@@ -970,7 +984,8 @@ oracles:
                     auto: true
           opportunity:
             name: Sanctum Opportunity
-            _source:
+            source:
+              <<: *Source
               page: 369
             # usage:
             #   repeatable: true

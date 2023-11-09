@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/vital-01.webp
           - images/planets/vital-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 318
         summary: This diverse, life-bearing planet might provide some small measure of hope.
         sample_names:

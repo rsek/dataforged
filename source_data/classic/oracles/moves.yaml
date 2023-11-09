@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -12,7 +12,8 @@ oracles:
     collections:
       ask_the_oracle:
         name: Ask the Oracle
-        _source:
+        source:
+          <<: *Source
           page: 107
         contents:
           almost_certain:
@@ -69,7 +70,8 @@ oracles:
     contents:
       endure_harm:
         name: Endure Harm
-        _source:
+        source:
+          <<: *Source
           page: 91
         table:
           - min: 1
@@ -89,7 +91,8 @@ oracles:
             result: 'You are battered but still standing.'
       endure_stress:
         name: Endure Stress
-        _source:
+        source:
+          <<: *Source
           page: 93
         table:
           - min: 1
@@ -106,7 +109,8 @@ oracles:
             result: 'You persevere.'
       pay_the_price:
         name: Pay the Price
-        _source:
+        source:
+          <<: *Source
           page: 105
         table:
           - min: 1

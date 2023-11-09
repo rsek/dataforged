@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
   date: 2020-02-13
@@ -12,14 +12,16 @@ oracles:
     summary: Randomly select a theme and domain for a perilous location.
     description: |-
       Use these oracles to generate a random theme and domain for a site. Alternatively, you can print out the theme and domain cards and draw a random result. Or use the [Site Name oracles](id:delve/collections/oracles/site_name) to inspire the selection of a theme and domain.
-    _source:
+    source:
+      <<: *Source
       page: 212
       title: 'Ironsworn: Delve'
     contents:
       theme:
         name: Theme
         canonical_name: 'Site Nature: Theme'
-        _source:
+        source:
+          <<: *Source
           page: 212
         table:
           - min: 1
@@ -49,7 +51,8 @@ oracles:
       domain:
         name: Domain
         canonical_name: 'Site Nature: Domain'
-        _source:
+        source:
+          <<: *Source
           page: 212
         table:
           - min: 1

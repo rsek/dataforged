@@ -14,16 +14,23 @@
 	"moves": {
 		"delve": {
 			"name": "Delve Moves",
+			"source": {
+				"title": "Ironsworn: Delve",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com",
+				"date": "2020-02-13",
+				"page": 19
+			},
 			"summary": "As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.",
 			"contents": {
 				"discover_a_site": {
 					"roll_type": "no_roll",
 					"name": "Discover a Site",
-					"trigger": {
-						"text": "When you resolve to enter a perilous site in pursuit of an objective..."
-					},
-					"text": "When **you resolve to enter a perilous site in pursuit of an objective**, choose the theme and domain which best represent its nature ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and give it a rank.\n\n  * Troublesome site: 3 progress per area.\n  * Dangerous site: 2 progress per area.\n  * Formidable site: 1 progress per area.\n  * Extreme site: 2 ticks per area.\n  * Epic site: 1 tick per area.\n\nIf you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.\n\nThen, [Delve the Depths](id:delve/moves/delve/delve_the_depths) to explore this place.",
-					"id": "delve/moves/delve/discover_a_site",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -35,7 +42,12 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 19
-					}
+					},
+					"trigger": {
+						"text": "When you resolve to enter a perilous site in pursuit of an objective..."
+					},
+					"text": "When **you resolve to enter a perilous site in pursuit of an objective**, choose the theme and domain which best represent its nature ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and give it a rank.\n\n  * Troublesome site: 3 progress per area.\n  * Dangerous site: 2 progress per area.\n  * Formidable site: 1 progress per area.\n  * Extreme site: 2 ticks per area.\n  * Epic site: 1 tick per area.\n\nIf you are returning to a previously explored site, roll both challenge dice, take the lowest value, and clear that number of progress boxes.\n\nThen, [Delve the Depths](id:delve/moves/delve/delve_the_depths) to explore this place.",
+					"id": "delve/moves/delve/discover_a_site"
 				},
 				"delve_the_depths": {
 					"name": "Delve the Depths",
@@ -75,6 +87,18 @@
 							}
 						]
 					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 21
+					},
 					"oracles": [
 						"delve/oracles/moves/delve_the_depths/edge",
 						"delve/oracles/moves/delve_the_depths/shadow",
@@ -92,29 +116,10 @@
 							"text": "[Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
 						}
 					},
-					"id": "delve/moves/delve/delve_the_depths",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 21
-					}
+					"id": "delve/moves/delve/delve_the_depths"
 				},
 				"find_an_opportunity": {
 					"name": "Find an Opportunity",
-					"roll_type": "no_roll",
-					"trigger": {
-						"text": "When you encounter a helpful situation or feature within a site..."
-					},
-					"oracles": ["delve/oracles/moves/find_an_opportunity"],
-					"text": "When **you encounter a helpful situation or feature within a site**, roll on the following table. If you are making this move as a result of a strong hit on [Delve the Depths](id:delve/moves/delve/delve_the_depths), you may pick or envision an opportunity instead of rolling.\n\nThen, choose one.\n\n  * Gain insight or prepare: Take +1 momentum.\n  * Take action now: You and any allies may make a move (not a progress move) which directly leverages the opportunity. When you do, add +1 and take +1 momentum on a hit.\n\n{{table:delve/oracles/moves/find_an_opportunity}}",
-					"id": "delve/moves/delve/find_an_opportunity",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -126,17 +131,18 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 30
-					}
+					},
+					"roll_type": "no_roll",
+					"trigger": {
+						"text": "When you encounter a helpful situation or feature within a site..."
+					},
+					"oracles": ["delve/oracles/moves/find_an_opportunity"],
+					"text": "When **you encounter a helpful situation or feature within a site**, roll on the following table. If you are making this move as a result of a strong hit on [Delve the Depths](id:delve/moves/delve/delve_the_depths), you may pick or envision an opportunity instead of rolling.\n\nThen, choose one.\n\n  * Gain insight or prepare: Take +1 momentum.\n  * Take action now: You and any allies may make a move (not a progress move) which directly leverages the opportunity. When you do, add +1 and take +1 momentum on a hit.\n\n{{table:delve/oracles/moves/find_an_opportunity}}",
+					"id": "delve/moves/delve/find_an_opportunity"
 				},
 				"reveal_a_danger": {
 					"name": "Reveal a Danger",
 					"roll_type": "no_roll",
-					"trigger": {
-						"text": "When you encounter a risky situation within a site..."
-					},
-					"oracles": ["delve/oracles/moves/reveal_a_danger"],
-					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger}}",
-					"id": "delve/moves/delve/reveal_a_danger",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -148,7 +154,13 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 34
-					}
+					},
+					"trigger": {
+						"text": "When you encounter a risky situation within a site..."
+					},
+					"oracles": ["delve/oracles/moves/reveal_a_danger"],
+					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger}}",
+					"id": "delve/moves/delve/reveal_a_danger"
 				},
 				"check_your_gear": {
 					"name": "Check Your Gear",
@@ -167,6 +179,18 @@
 							}
 						]
 					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 38
+					},
 					"text": "When **you check to see if you have a specific helpful item**, and you have at least +1 supply, roll +supply.\n\nOn a **strong hit**, you have it. Take +1 momentum.\n\nOn a **weak hit**, you have it, but your resources are diminished. Take +1 momentum and suffer -1 supply.\n\nOn a **miss**, you don’t have it and the situation grows more perilous. [Pay the Price](id:classic/moves/fate/pay_the_price).",
 					"outcomes": {
 						"strong_hit": {
@@ -179,7 +203,10 @@
 							"text": "You don’t have it and the situation grows more perilous. [Pay the Price](id:classic/moves/fate/pay_the_price)."
 						}
 					},
-					"id": "delve/moves/delve/check_your_gear",
+					"id": "delve/moves/delve/check_your_gear"
+				},
+				"locate_your_objective": {
+					"name": "Locate Your Objective",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -190,11 +217,8 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
-						"page": 38
-					}
-				},
-				"locate_your_objective": {
-					"name": "Locate Your Objective",
+						"page": 40
+					},
 					"roll_type": "progress_roll",
 					"track_label": "Delve",
 					"trigger": {
@@ -222,19 +246,7 @@
 							"text": "Your objective falls out of reach, you have been misled about the nature of your objective, or you discover that this site holds unexpected depths. If you continue your exploration, clear all but one filled progress and raise the site’s rank by one (if not already epic)."
 						}
 					},
-					"id": "delve/moves/delve/locate_your_objective",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 40
-					}
+					"id": "delve/moves/delve/locate_your_objective"
 				},
 				"escape_the_depths": {
 					"name": "Escape the Depths",
@@ -294,6 +306,18 @@
 							}
 						]
 					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 42
+					},
 					"text": "When **you flee or withdraw from a site**, consider the situation and your approach. If you...\n\n  * Find the fastest way out: Roll +edge.\n  * Steel yourself against the horrors of this place: Roll +heart.\n  * Fight your way out: Roll +iron.\n  * Retrace your steps or locate an alternate path: Roll +wits.\n  * Keep out of sight: Roll +shadow.\n\nOn a **strong hit**, you make your way safely out of the site. Take +1 momentum.\n\nOn a **weak hit**, you find your way out, but this place exacts its price. Choose one.\n\n  * You are weary or wounded: [Endure Harm](id:classic/moves/suffer/endure_harm).\n  * The experience leaves you shaken: [Endure Stress](id:classic/moves/suffer/endure_stress).\n  * You are delayed, and it costs you.\n  * You leave behind something important.\n  * You face a new complication as you emerge from the depths.\n  * A denizen plots their revenge.\n\nOn a **miss**, a dire threat or imposing obstacle stands in your way. [Reveal a Danger](id:delve/moves/delve/reveal_a_danger). If you survive, you may make your escape.",
 					"outcomes": {
 						"strong_hit": {
@@ -306,30 +330,13 @@
 							"text": "A dire threat or imposing obstacle stands in your way. [Reveal a Danger](id:delve/moves/delve/reveal_a_danger). If you survive, you may make your escape."
 						}
 					},
-					"id": "delve/moves/delve/escape_the_depths",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 42
-					}
+					"id": "delve/moves/delve/escape_the_depths"
 				},
 				"reveal_a_danger_alt": {
 					"roll_type": "no_roll",
 					"name": "Reveal a Danger (alternate version)",
 					"replaces": "delve/moves/delve/reveal_a_danger",
 					"oracles": ["delve/oracles/moves/reveal_a_danger_alt"],
-					"trigger": {
-						"text": "When you encounter a risky situation within a site..."
-					},
-					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger_alt}}",
-					"id": "delve/moves/delve/reveal_a_danger_alt",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -341,10 +348,19 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 68
-					}
+					},
+					"trigger": {
+						"text": "When you encounter a risky situation within a site..."
+					},
+					"text": "When **you encounter a risky situation within a site**, envision the danger or roll on the following table.\n\n{{table:delve/oracles/moves/reveal_a_danger_alt}}",
+					"id": "delve/moves/delve/reveal_a_danger_alt"
 				}
 			},
-			"id": "delve/collections/moves/delve",
+			"id": "delve/collections/moves/delve"
+		},
+		"failure": {
+			"name": "Failure Moves",
+			"description": "Failure is a key part of your journey within the Ironlands. If you’d like to make those failures a more influential aspect of your character’s evolution—while taking a bit of the sting out of rolling a miss—use these optional mechanics.",
 			"source": {
 				"title": "Ironsworn: Delve",
 				"authors": [
@@ -355,21 +371,12 @@
 				"license": "https://creativecommons.org/licenses/by/4.0",
 				"url": "https://ironswornrpg.com",
 				"date": "2020-02-13",
-				"page": 19
-			}
-		},
-		"failure": {
-			"name": "Failure Moves",
-			"description": "Failure is a key part of your journey within the Ironlands. If you’d like to make those failures a more influential aspect of your character’s evolution—while taking a bit of the sting out of rolling a miss—use these optional mechanics.",
+				"page": 58
+			},
 			"contents": {
 				"mark_your_failure": {
 					"roll_type": "no_roll",
 					"name": "Mark Your Failure",
-					"trigger": {
-						"text": "When you make a move and score a miss..."
-					},
-					"text": "When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks.",
-					"id": "delve/moves/failure/mark_your_failure",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -381,10 +388,27 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 58
-					}
+					},
+					"trigger": {
+						"text": "When you make a move and score a miss..."
+					},
+					"text": "When **you make a move and score a miss**, mark a tick on your failure track. If **you score a miss when making a progress move**, mark two ticks.",
+					"id": "delve/moves/failure/mark_your_failure"
 				},
 				"learn_from_your_failures": {
 					"name": "Learn From Your Failures",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 59
+					},
 					"roll_type": "special_track",
 					"trigger": {
 						"text": "When you spend time reflecting on your hardships and missteps...",
@@ -411,85 +435,13 @@
 							"text": "You’ve learned the wrong lessons. Take 1 experience and clear all progress. Then, envision how you set off on an ill-fated path."
 						}
 					},
-					"id": "delve/moves/failure/learn_from_your_failures",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 59
-					}
+					"id": "delve/moves/failure/learn_from_your_failures"
 				}
 			},
-			"id": "delve/collections/moves/failure",
-			"source": {
-				"title": "Ironsworn: Delve",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com",
-				"date": "2020-02-13",
-				"page": 58
-			}
+			"id": "delve/collections/moves/failure"
 		},
 		"threat": {
 			"name": "Threat Moves",
-			"summary": "**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
-			"description": "The world does not wait for you. As you undertake journeys to distant locations, explore perilous places, and spend time recovering from your adventures, the forces which oppose you will advance their own agenda. When you suffer setbacks, those forces will take advantage of your failure to gain new ground.\n\n**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
-			"contents": {
-				"advance_a_threat": {
-					"roll_type": "no_roll",
-					"name": "Advance a Threat",
-					"oracles": ["delve/oracles/moves/advance_a_threat"],
-					"trigger": {
-						"text": "When you give ground to a threat through inaction, failure, or delay..."
-					},
-					"text": "When **you give ground to a threat through inaction, failure, or delay**, roll on the table below and envision how the change manifests in your world ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).\n\n{{table:delve/oracles/moves/advance_a_threat}}\n\nOn a match, this development also exposes a surprising aspect of the threat’s plan or nature.\n\nIf **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).",
-					"id": "delve/moves/threat/advance_a_threat",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 154
-					}
-				},
-				"take_a_hiatus": {
-					"name": "Take a Hiatus",
-					"roll_type": "no_roll",
-					"trigger": {
-						"text": "When you spend an extended time recovering in a safe place while a threat is active..."
-					},
-					"text": "When **you spend an extended time recovering in a safe place while a threat is active**, do any of the following.\n\n  * Clear any marked conditions.\n  * Set your health, spirit, supply, and companion health to their maximum values.\n  * Set your momentum to its reset value.\n\nThen, for each active threat, [Advance a Threat](id:delve/moves/legacy/advance_a_threat).",
-					"id": "delve/moves/threat/take_a_hiatus",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"page": 158
-					}
-				}
-			},
-			"id": "delve/collections/moves/threat",
 			"source": {
 				"title": "Ironsworn: Delve",
 				"authors": [
@@ -501,20 +453,74 @@
 				"url": "https://ironswornrpg.com",
 				"date": "2020-02-13",
 				"page": 151
-			}
+			},
+			"summary": "**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
+			"description": "The world does not wait for you. As you undertake journeys to distant locations, explore perilous places, and spend time recovering from your adventures, the forces which oppose you will advance their own agenda. When you suffer setbacks, those forces will take advantage of your failure to gain new ground.\n\n**Threats** are an optional mechanic for your *Ironsworn* campaign which will make the forces in your world more active and responsive. Your vows will gain new urgency as threats work against you.",
+			"contents": {
+				"advance_a_threat": {
+					"roll_type": "no_roll",
+					"name": "Advance a Threat",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 154
+					},
+					"oracles": ["delve/oracles/moves/advance_a_threat"],
+					"trigger": {
+						"text": "When you give ground to a threat through inaction, failure, or delay..."
+					},
+					"text": "When **you give ground to a threat through inaction, failure, or delay**, roll on the table below and envision how the change manifests in your world ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure).\n\n{{table:delve/oracles/moves/advance_a_threat}}\n\nOn a match, this development also exposes a surprising aspect of the threat’s plan or nature.\n\nIf **you mark the last box on the threat’s menace track**, the threat achieves its goal, or the final dire outcome occurs. You must [Forsake Your Vow](id:classic/moves/quest/forsake_your_vow).",
+					"id": "delve/moves/threat/advance_a_threat"
+				},
+				"take_a_hiatus": {
+					"name": "Take a Hiatus",
+					"roll_type": "no_roll",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"page": 158
+					},
+					"trigger": {
+						"text": "When you spend an extended time recovering in a safe place while a threat is active..."
+					},
+					"text": "When **you spend an extended time recovering in a safe place while a threat is active**, do any of the following.\n\n  * Clear any marked conditions.\n  * Set your health, spirit, supply, and companion health to their maximum values.\n  * Set your momentum to its reset value.\n\nThen, for each active threat, [Advance a Threat](id:delve/moves/legacy/advance_a_threat).",
+					"id": "delve/moves/threat/take_a_hiatus"
+				}
+			},
+			"id": "delve/collections/moves/threat"
 		},
 		"rarity": {
 			"name": "Rarity Moves",
+			"source": {
+				"title": "Ironsworn: Delve",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com",
+				"date": "2020-02-13"
+			},
 			"description": "History is often chronicled through objects of power. Wars and accords, struggles and triumphs, love and hate, sacrifice and death—these legacies can imbue objects with cultural importance and supernatural gifts.\n\nIn **Ironsworn**, these items are called *rarities*. They may be handed down through generations, lost or hidden away in the depths of perilous sites, coveted by powerful forces, or forgotten and discarded. When you obtain a rarity through the course of your story, you gain a subtle but lasting impact on your character and their abilities.",
 			"contents": {
 				"wield_a_rarity": {
 					"roll_type": "no_roll",
 					"name": "Wield a Rarity",
-					"trigger": {
-						"text": "When you make a move aided by an augmented asset..."
-					},
-					"text": "When **you make a move aided by an augmented asset**, roll your rarity die in place of your action die.\n\nOn **any result** with 6 showing on the rarity die, the power of the rarity manifests in a dramatic and obvious way. You score an automatic **strong hit** and take +1 momentum.\n\nOn a **hit** with 5 showing on the rarity die, the power of the rarity manifests in a subtle way. Take +1 momentum.\n\nOn a **miss** with 1 showing on the rarity die, the rarity’s power fails or works against you.",
-					"id": "delve/moves/rarity/wield_a_rarity",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"authors": [
@@ -526,21 +532,15 @@
 						"url": "https://ironswornrpg.com",
 						"date": "2020-02-13",
 						"page": 176
-					}
+					},
+					"trigger": {
+						"text": "When you make a move aided by an augmented asset..."
+					},
+					"text": "When **you make a move aided by an augmented asset**, roll your rarity die in place of your action die.\n\nOn **any result** with 6 showing on the rarity die, the power of the rarity manifests in a dramatic and obvious way. You score an automatic **strong hit** and take +1 momentum.\n\nOn a **hit** with 5 showing on the rarity die, the power of the rarity manifests in a subtle way. Take +1 momentum.\n\nOn a **miss** with 1 showing on the rarity die, the rarity’s power fails or works against you.",
+					"id": "delve/moves/rarity/wield_a_rarity"
 				}
 			},
-			"id": "delve/collections/moves/rarity",
-			"source": {
-				"title": "Ironsworn: Delve",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com",
-				"date": "2020-02-13"
-			}
+			"id": "delve/collections/moves/rarity"
 		}
 	}
 }

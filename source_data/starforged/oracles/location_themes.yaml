@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -9,7 +9,8 @@ source:
 oracles:
   location_themes:
     name: Location Themes
-    _source:
+    source:
+      <<: *Source
       page: 370
     summary: Themes help you envision atmosphere, features, and encounters within an unusual, aberrant, or important location.
     description: |-
@@ -27,7 +28,8 @@ oracles:
     contents:
       type:
         name: Theme Type
-        _source:
+        source:
+          <<: *Source
           page: 370
         # usage:
         #   initial: true
@@ -87,7 +89,8 @@ oracles:
     collections:
       chaotic:
         name: Chaotic
-        _source:
+        source:
+          <<: *Source
           page: 372
         summary: *Chaotic.summary
         icon: *Chaotic.icon
@@ -214,7 +217,8 @@ oracles:
                 result: Insight into the source or nature of the chaos
       fortified:
         name: Fortified
-        _source:
+        source:
+          <<: *Source
           page: 373
         summary: *Fortified.summary
         icon: *Fortified.icon
@@ -317,7 +321,8 @@ oracles:
                 result: Access to useful equipment or weapons
       haunted:
         name: Haunted
-        _source:
+        source:
+          <<: *Source
           page: 374
         summary: *Haunted.summary
         icon: *Haunted.icon
@@ -420,7 +425,8 @@ oracles:
                 result: Useful or interesting artifact or device
       infested:
         name: Infested
-        _source:
+        source:
+          <<: *Source
           page: 375
         summary: *Infested.summary
         icon: *Infested.icon
@@ -523,7 +529,8 @@ oracles:
                 result: Helpful resource or equipment
       inhabited:
         name: Inhabited
-        _source:
+        source:
+          <<: *Source
           page: 376
         summary: *Inhabited.summary
         icon: *Inhabited.icon
@@ -626,7 +633,8 @@ oracles:
                 result: Old friend or connection resurfaces
       mechanical:
         name: Mechanical
-        _source:
+        source:
+          <<: *Source
           page: 377
         summary: *Mechanical.summary
         icon: *Mechanical.icon
@@ -729,7 +737,8 @@ oracles:
                 result: Wondrous technology
       ruined:
         name: Ruined
-        _source:
+        source:
+          <<: *Source
           page: 378
         summary: *Ruined.summary
         icon: *Ruined.icon
@@ -832,7 +841,8 @@ oracles:
                 result: Shortcut or passage through the destruction
       sacred:
         name: Sacred
-        _source:
+        source:
+          <<: *Source
           page: 379
         summary: *Sacred.summary
         icon: *Sacred.icon

@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   title: 'Ironsworn: Delve'
   authors:
     - name: Shawn Tomkin
@@ -9,7 +9,8 @@ source:
 moves:
   delve:
     name: Delve Moves
-    _source:
+    source:
+      <<: *Source
       page: 19
     summary: |-
       As you explore a perilous site, you’ll trigger moves. The moves included with this supplement help you resolve the outcome of your expedition—whether you make progress, and what dangers or opportunities you encounter.
@@ -17,7 +18,8 @@ moves:
       discover_a_site:
         roll_type: no_roll
         name: Discover a Site
-        _source:
+        source:
+          <<: *Source
           page: 19
         trigger:
           text: When you resolve to enter a perilous site in pursuit of an objective...
@@ -51,7 +53,8 @@ moves:
               roll_options:
                 - stat: wits
               method: any
-        _source:
+        source:
+          <<: *Source
           page: 21
         oracles:
           - delve/oracles/moves/delve_the_depths/edge
@@ -82,7 +85,8 @@ moves:
               [Reveal a Danger](id:delve/moves/delve/reveal_a_danger).
       find_an_opportunity:
         name: Find an Opportunity
-        _source:
+        source:
+          <<: *Source
           page: 30
         roll_type: no_roll
         trigger:
@@ -101,7 +105,8 @@ moves:
       reveal_a_danger:
         name: Reveal a Danger
         roll_type: no_roll
-        _source:
+        source:
+          <<: *Source
           page: 34
         trigger:
           text: When you encounter a risky situation within a site...
@@ -121,7 +126,8 @@ moves:
               roll_options:
                 - using: condition_meter
                   condition_meter: supply
-        _source:
+        source:
+          <<: *Source
           page: 38
         text: |-
           When **you check to see if you have a specific helpful item**, and you have at least +1 supply, roll +supply.
@@ -140,7 +146,8 @@ moves:
             text: You don’t have it and the situation grows more perilous. [Pay the Price](id:classic/moves/fate/pay_the_price).
       locate_your_objective:
         name: Locate Your Objective
-        _source:
+        source:
+          <<: *Source
           page: 40
         roll_type: progress_roll
         track_label: Delve
@@ -198,7 +205,8 @@ moves:
               method: any
               roll_options:
                 - stat: wits
-        _source:
+        source:
+          <<: *Source
           page: 42
         text: |-
           When **you flee or withdraw from a site**, consider the situation and your approach. If you...
@@ -245,7 +253,8 @@ moves:
         oracles:
           - delve/oracles/moves/reveal_a_danger_alt
         # optional: true
-        _source:
+        source:
+          <<: *Source
           page: 68
         trigger:
           text: When you encounter a risky situation within a site...
@@ -257,7 +266,8 @@ moves:
     name: Failure Moves
     # optional: true
     description: Failure is a key part of your journey within the Ironlands. If you’d like to make those failures a more influential aspect of your character’s evolution—while taking a bit of the sting out of rolling a miss—use these optional mechanics.
-    _source:
+    source:
+      <<: *Source
       title: 'Ironsworn: Delve'
       page: 58
       authors:
@@ -270,7 +280,8 @@ moves:
         roll_type: no_roll
         name: Mark Your Failure
         # optional: true
-        _source:
+        source:
+          <<: *Source
           page: 58
         trigger:
           text: When you make a move and score a miss...
@@ -278,7 +289,8 @@ moves:
       learn_from_your_failures:
         name: Learn From Your Failures
         # optional: true
-        _source:
+        source:
+          <<: *Source
           page: 59
         roll_type: special_track
         trigger:
@@ -315,7 +327,8 @@ moves:
   threat:
     name: Threat Moves
     # optional: true
-    _source:
+    source:
+      <<: *Source
       title: 'Ironsworn: Delve'
       page: 151
       authors:
@@ -334,7 +347,8 @@ moves:
         roll_type: no_roll
         name: Advance a Threat
         # optional: true
-        _source:
+        source:
+          <<: *Source
           page: 154
         oracles:
           - delve/oracles/moves/advance_a_threat
@@ -352,7 +366,8 @@ moves:
         name: Take a Hiatus
         # optional: true
         roll_type: no_roll
-        _source:
+        source:
+          <<: *Source
           page: 158
         trigger:
           text: When you spend an extended time recovering in a safe place while a threat is active...
@@ -366,7 +381,8 @@ moves:
           Then, for each active threat, [Advance a Threat](id:delve/moves/legacy/advance_a_threat).
   rarity:
     name: Rarity Moves
-    _source:
+    source:
+      <<: *Source
       title: 'Ironsworn: Delve'
       authors:
         - name: Shawn Tomkin
@@ -383,7 +399,8 @@ moves:
         roll_type: no_roll # FIXME: not the most intuitive label. could this be done better?
         name: Wield a Rarity
         # optional: true
-        _source:
+        source:
+          <<: *Source
           page: 176
         trigger:
           text: When you make a move aided by an augmented asset...

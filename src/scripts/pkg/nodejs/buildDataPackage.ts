@@ -8,7 +8,6 @@ import { PKG_DIR_NODE, ROOT_OUTPUT } from '../../const.js'
 export async function assembleDataPackage({
 	id,
 	pkg,
-	type,
 	paths
 }: DataPackageConfig) {
 	const pkgID = path.join(pkg.scope, pkg.name)
@@ -16,7 +15,6 @@ export async function assembleDataPackage({
 	const jsonSrc = path.join(ROOT_OUTPUT, id)
 
 	/** Desination path for built package */
-
 	const pkgRoot = path.join(PKG_DIR_NODE, pkgID)
 	const pkgJsonDest = path.join(pkgRoot, 'json')
 

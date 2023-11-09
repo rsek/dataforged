@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -9,7 +9,8 @@ source:
 oracles:
   character:
     name: Character
-    _source:
+    source:
+      <<: *Source
       page: 182
     contents:
       role:
@@ -19,7 +20,8 @@ oracles:
           result:
             part_of_speech: common_noun
         summary: Use this oracle to define the background for a character, or to generate a random encounter.
-        _source:
+        source:
+          <<: *Source
           page: 182
         table:
           - min: 1
@@ -120,7 +122,8 @@ oracles:
         name: Character Goal
         canonical_name: 'Oracle 11: Character Goal'
         summary: Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.
-        _source:
+        source:
+          <<: *Source
           page: 182
         table:
           - min: 1
@@ -234,7 +237,8 @@ oracles:
             part_of_speech: adjective
         # usage:
         #   max_rolls: 3 # a bit arbitrary, but reasonable
-        _source:
+        source:
+          <<: *Source
           page: 183
         table:
           - min: 1

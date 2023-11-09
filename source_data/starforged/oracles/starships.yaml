@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -12,7 +12,8 @@ oracles:
     collections:
       mission:
         name: Starship Mission
-        _source:
+        source:
+          <<: *Source
           page: 328
         rendering:
           style: multi_table
@@ -381,7 +382,8 @@ oracles:
       type:
         name: Starship Type
         canonical_name: Type
-        _source:
+        source:
+          <<: *Source
           page: 326
         # usage:
         #   initial: true
@@ -515,7 +517,8 @@ oracles:
           # TODO: format the above as a 2nd roll of this table + a game object hint
       fleet:
         name: Fleet
-        _source:
+        source:
+          <<: *Source
           page: 326
         # content:
         #   part_of_speech: [noun, common noun]
@@ -550,7 +553,8 @@ oracles:
               - oracle: starforged/oracles/starships/mission
       initial_contact:
         name: Initial Contact
-        _source:
+        source:
+          <<: *Source
           page: 327
         # usage:
         #   initial: true
@@ -597,7 +601,8 @@ oracles:
             # *inherit:Derelict.Starship
       first_look:
         name: First Look
-        _source:
+        source:
+          <<: *Source
           page: 327
         # usage:
         #   initial: true
@@ -679,7 +684,8 @@ oracles:
                 auto: true
       starship_name:
         name: Starship Name
-        _source:
+        source:
+          <<: *Source
           page: 329
         summary: |-
           Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.

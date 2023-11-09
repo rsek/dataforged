@@ -1,5 +1,5 @@
 id: sundered_isles
-source:
+source: &Source
   title: Sundered Isles Book Preview
   authors:
     - name: Shawn Tomkin
@@ -12,7 +12,8 @@ oracles:
     contents:
       coastline_aspects:
         name: Coastline Aspects
-        _source:
+        source:
+          <<: *Source
           page: 90
         table:
           - min: 1

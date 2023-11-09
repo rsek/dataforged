@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   date: 2022-05-06
   authors:
     - name: Shawn Tomkin
@@ -12,7 +12,8 @@ oracles:
     contents:
       class:
         name: Planetary Class
-        _source:
+        source:
+          <<: *Source
           page: 306
         # usage:
         #   initial: true
@@ -81,7 +82,8 @@ oracles:
     collections:
       peril:
         name: Planetside Peril
-        _source:
+        source:
+          <<: *Source
           page: 320
         rendering:
           columns:
@@ -360,7 +362,8 @@ oracles:
                     auto: true
       opportunity:
         name: Planetside Opportunity
-        _source:
+        source:
+          <<: *Source
           page: 321
         rendering:
           columns:

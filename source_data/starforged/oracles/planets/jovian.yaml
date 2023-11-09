@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/jovian-01.webp
           - images/planets/jovian-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 312
         summary: A massive planet with vast layers of dense gases surrounding a rocky core.
         sample_names:

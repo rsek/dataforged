@@ -13,6 +13,18 @@
 	"id": "starforged",
 	"assets": {
 		"command_vehicle": {
+			"source": {
+				"title": "Ironsworn: Starforged Rulebook",
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com",
+				"date": "2022-05-06",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"page": 55
+			},
 			"name": "Command Vehicle Assets",
 			"color": "#9aa3ad",
 			"summary": "This is your interstellar spacecraft.",
@@ -22,6 +34,17 @@
 					"name": "Starship",
 					"asset_type": "Command Vehicle",
 					"shared": true,
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"attachments": {
 						"assets": ["*/assets/module/*"]
 					},
@@ -35,8 +58,8 @@
 					"condition_meter": {
 						"label": "integrity",
 						"min": 0,
-						"value": 5,
 						"max": 5,
+						"value": 5,
 						"moves": {
 							"suffer": "starforged/moves/suffer/withstand_damage",
 							"recover": "starforged/moves/recover/repair"
@@ -121,22 +144,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/command_vehicle/starship",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 55
-					}
+					"id": "starforged/assets/command_vehicle/starship"
 				}
 			},
-			"id": "starforged/collections/assets/command_vehicle",
+			"id": "starforged/collections/assets/command_vehicle"
+		},
+		"module": {
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"license": "https://creativecommons.org/licenses/by/4.0",
@@ -148,17 +161,26 @@
 					}
 				],
 				"page": 55
-			}
-		},
-		"module": {
+			},
 			"name": "Module Assets",
 			"color": "#7f5a90",
 			"description": "**Modules** are linked to your STARSHIP and offer additional options and advantages when aboard that vehicle.\n\nThese assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).\n\nWhen you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](id:starforged/moves/recover/repair) it.",
 			"contents": {
 				"engine_upgrade": {
-					"asset_type": "Module",
 					"name": "Engine Upgrade",
+					"asset_type": "Module",
 					"shared": true,
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -247,7 +269,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/engine_upgrade",
+					"id": "starforged/assets/module/engine_upgrade"
+				},
+				"expanded_hold": {
+					"name": "Expanded Hold",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -257,14 +284,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"expanded_hold": {
-					"asset_type": "Module",
-					"name": "Expanded Hold",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -325,7 +346,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/expanded_hold",
+					"id": "starforged/assets/module/expanded_hold"
+				},
+				"grappler": {
+					"name": "Grappler",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -335,14 +361,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"grappler": {
-					"asset_type": "Module",
-					"name": "Grappler",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -399,8 +419,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 55
+										]
 									}
 								}
 							},
@@ -440,7 +459,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/grappler",
+					"id": "starforged/assets/module/grappler"
+				},
+				"heavy_cannons": {
+					"name": "Heavy Cannons",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -450,14 +474,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"heavy_cannons": {
-					"asset_type": "Module",
-					"name": "Heavy Cannons",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -531,7 +549,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/heavy_cannons",
+					"id": "starforged/assets/module/heavy_cannons"
+				},
+				"internal_refit": {
+					"name": "Internal Refit",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -541,14 +564,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"internal_refit": {
-					"asset_type": "Module",
-					"name": "Internal Refit",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -621,8 +638,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 55
+										]
 									}
 								}
 							},
@@ -650,7 +666,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/internal_refit",
+					"id": "starforged/assets/module/internal_refit"
+				},
+				"medbay": {
+					"name": "Medbay",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -660,14 +681,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"medbay": {
-					"asset_type": "Module",
-					"name": "Medbay",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -756,7 +771,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/medbay",
+					"id": "starforged/assets/module/medbay"
+				},
+				"missile_array": {
+					"name": "Missile Array",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -766,20 +786,7 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"missile_array": {
-					"asset_type": "Module",
-					"name": "Missile Array",
-					"shared": true,
-					"condition_meter": {
-						"label": "ammo",
-						"max": 5,
-						"value": 5,
-						"min": 0,
-						"id": "starforged/assets/module/missile_array/condition_meter"
+						]
 					},
 					"controls": {
 						"broken": {
@@ -789,6 +796,13 @@
 							"value": false,
 							"id": "starforged/assets/module/missile_array/controls/broken"
 						}
+					},
+					"condition_meter": {
+						"label": "ammo",
+						"max": 5,
+						"value": 5,
+						"min": 0,
+						"id": "starforged/assets/module/missile_array/condition_meter"
 					},
 					"abilities": [
 						{
@@ -865,7 +879,19 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/missile_array",
+					"id": "starforged/assets/module/missile_array"
+				},
+				"overseer": {
+					"name": "Overseer",
+					"options": {
+						"name": {
+							"field_type": "text",
+							"label": "Name",
+							"id": "starforged/assets/module/overseer/options/name"
+						}
+					},
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -875,14 +901,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"overseer": {
-					"asset_type": "Module",
-					"name": "Overseer",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -890,13 +910,6 @@
 							"disables_asset": true,
 							"value": false,
 							"id": "starforged/assets/module/overseer/controls/broken"
-						}
-					},
-					"options": {
-						"name": {
-							"field_type": "text",
-							"label": "Name",
-							"id": "starforged/assets/module/overseer/options/name"
 						}
 					},
 					"abilities": [
@@ -968,7 +981,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/overseer",
+					"id": "starforged/assets/module/overseer"
+				},
+				"reinforced_hull": {
+					"name": "Reinforced Hull",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -978,14 +996,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"reinforced_hull": {
-					"asset_type": "Module",
-					"name": "Reinforced Hull",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1055,7 +1067,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/reinforced_hull",
+					"id": "starforged/assets/module/reinforced_hull"
+				},
+				"research_lab": {
+					"name": "Research Lab",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1065,14 +1082,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"research_lab": {
-					"asset_type": "Module",
-					"name": "Research Lab",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1176,7 +1187,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/research_lab",
+					"id": "starforged/assets/module/research_lab"
+				},
+				"sensor_array": {
+					"name": "Sensor Array",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1186,14 +1202,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"sensor_array": {
-					"asset_type": "Module",
-					"name": "Sensor Array",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1311,7 +1321,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/sensor_array",
+					"id": "starforged/assets/module/sensor_array"
+				},
+				"shields": {
+					"name": "Shields",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1321,14 +1336,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"shields": {
-					"asset_type": "Module",
-					"name": "Shields",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1385,8 +1394,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 55
+										]
 									}
 								}
 							},
@@ -1445,7 +1453,12 @@
 						"id": "starforged/assets/module/shields/condition_meter"
 					},
 					"count_as_impact": false,
-					"id": "starforged/assets/module/shields",
+					"id": "starforged/assets/module/shields"
+				},
+				"stealth_tech": {
+					"name": "Stealth Tech",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1455,14 +1468,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"stealth_tech": {
-					"asset_type": "Module",
-					"name": "Stealth Tech",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1575,7 +1582,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/stealth_tech",
+					"id": "starforged/assets/module/stealth_tech"
+				},
+				"vehicle_bay": {
+					"name": "Vehicle Bay",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1585,14 +1597,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"vehicle_bay": {
-					"asset_type": "Module",
-					"name": "Vehicle Bay",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1653,7 +1659,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/vehicle_bay",
+					"id": "starforged/assets/module/vehicle_bay"
+				},
+				"workshop": {
+					"name": "Workshop",
+					"asset_type": "Module",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1663,14 +1674,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 55
-					}
-				},
-				"workshop": {
-					"asset_type": "Module",
-					"name": "Workshop",
-					"shared": true,
+						]
+					},
 					"controls": {
 						"broken": {
 							"label": "broken",
@@ -1766,22 +1771,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/module/workshop",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 55
-					}
+					"id": "starforged/assets/module/workshop"
 				}
 			},
-			"id": "starforged/collections/assets/module",
+			"id": "starforged/collections/assets/module"
+		},
+		"support_vehicle": {
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1792,18 +1787,27 @@
 						"name": "Shawn Tomkin"
 					}
 				],
-				"page": 55
-			}
-		},
-		"support_vehicle": {
+				"page": 56
+			},
 			"name": "Support Vehicle Assets",
 			"color": "#495790",
 			"description": "**Support vehicles** complement your command vehicle for planetside or short-range operations. If you are playing with others, one of you might serve as the pilot or owner of a support vehicle, but anyone on board can use its abilities as appropriate to the situation.\n\nAs with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) to see how it fares.",
 			"contents": {
 				"exosuit": {
 					"name": "Exosuit",
-					"shared": true,
 					"asset_type": "Support Vehicle",
+					"shared": true,
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1813,9 +1817,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 6,
 						"min": 0,
+						"max": 6,
 						"value": 6,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -1825,10 +1833,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/exosuit/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/exosuit/condition_meter"
 					},
@@ -1890,7 +1894,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/exosuit",
+					"id": "starforged/assets/support_vehicle/exosuit"
+				},
+				"hoverbike": {
+					"name": "Hoverbike",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1900,14 +1909,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"hoverbike": {
-					"name": "Hoverbike",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -1917,9 +1920,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 3,
 						"min": 0,
+						"max": 3,
 						"value": 3,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -1929,10 +1936,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/hoverbike/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/hoverbike/condition_meter"
 					},
@@ -1989,7 +1992,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/hoverbike",
+					"id": "starforged/assets/support_vehicle/hoverbike"
+				},
+				"rover": {
+					"name": "Rover",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1999,26 +2007,24 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"rover": {
-					"name": "Rover",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
-							"label": "Name",
 							"field_type": "text",
+							"label": "Name",
 							"id": "starforged/assets/support_vehicle/rover/options/name"
 						}
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 5,
 						"min": 0,
+						"max": 5,
 						"value": 5,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -2028,10 +2034,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/rover/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/rover/condition_meter"
 					},
@@ -2116,7 +2118,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/rover",
+					"id": "starforged/assets/support_vehicle/rover"
+				},
+				"service_pod": {
+					"name": "Service Pod",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2126,14 +2133,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"service_pod": {
-					"name": "Service Pod",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -2143,9 +2144,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -2155,10 +2160,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/service_pod/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/service_pod/condition_meter"
 					},
@@ -2231,7 +2232,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/service_pod",
+					"id": "starforged/assets/support_vehicle/service_pod"
+				},
+				"shuttle": {
+					"name": "Shuttle",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2241,14 +2247,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"shuttle": {
-					"name": "Shuttle",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -2258,9 +2258,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -2270,10 +2274,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/shuttle/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/shuttle/condition_meter"
 					},
@@ -2327,7 +2327,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/shuttle",
+					"id": "starforged/assets/support_vehicle/shuttle"
+				},
+				"skiff": {
+					"name": "Skiff",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2337,14 +2342,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"skiff": {
-					"name": "Skiff",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -2354,9 +2353,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -2366,10 +2369,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/skiff/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/skiff/condition_meter"
 					},
@@ -2437,7 +2436,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/skiff",
+					"id": "starforged/assets/support_vehicle/skiff"
+				},
+				"snub_fighter": {
+					"name": "Snub Fighter",
+					"asset_type": "Support Vehicle",
+					"shared": true,
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2447,14 +2451,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"snub_fighter": {
-					"name": "Snub Fighter",
-					"shared": true,
-					"asset_type": "Support Vehicle",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -2464,9 +2462,13 @@
 					},
 					"condition_meter": {
 						"label": "integrity",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
+						"moves": {
+							"suffer": "starforged/moves/suffer/withstand_damage",
+							"recover": "starforged/moves/recover/repair"
+						},
 						"controls": {
 							"battered": {
 								"label": "battered",
@@ -2476,10 +2478,6 @@
 								"disables_asset": false,
 								"id": "starforged/assets/support_vehicle/snub_fighter/condition_meter/controls/battered"
 							}
-						},
-						"moves": {
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/support_vehicle/snub_fighter/condition_meter"
 					},
@@ -2547,22 +2545,12 @@
 						}
 					],
 					"count_as_impact": false,
-					"id": "starforged/assets/support_vehicle/snub_fighter",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 56
-					}
+					"id": "starforged/assets/support_vehicle/snub_fighter"
 				}
 			},
-			"id": "starforged/collections/assets/support_vehicle",
+			"id": "starforged/collections/assets/support_vehicle"
+		},
+		"path": {
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2574,16 +2562,25 @@
 					}
 				],
 				"page": 56
-			}
-		},
-		"path": {
+			},
 			"name": "Path Assets",
 			"color": "#3f7faa",
 			"description": "**Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.\n\nSome paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.",
 			"contents": {
 				"ace": {
-					"asset_type": "Path",
 					"name": "Ace",
+					"asset_type": "Path",
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Face Danger](id:starforged/moves/adventure/face_danger) or [React Under Fire](id:starforged/moves/combat/react_under_fire) by guiding your vehicle through a hazard or out of harm’s way, add +1 and take +1 momentum on a hit.",
@@ -2655,7 +2652,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/ace",
+					"id": "starforged/assets/path/ace"
+				},
+				"archer": {
+					"name": "Archer",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2665,13 +2666,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"archer": {
-					"asset_type": "Path",
-					"name": "Archer",
+						]
+					},
 					"requirement": "If you wield a power bow...",
 					"condition_meter": {
 						"label": "ammo",
@@ -2723,8 +2719,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -2777,7 +2772,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/archer",
+					"id": "starforged/assets/path/archer"
+				},
+				"armored": {
+					"name": "Armored",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2787,13 +2786,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"armored": {
-					"asset_type": "Path",
-					"name": "Armored",
+						]
+					},
 					"requirement": "If you wear your finely crafted set of personal armor...",
 					"abilities": [
 						{
@@ -2847,7 +2841,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/armored",
+					"id": "starforged/assets/path/armored"
+				},
+				"artist": {
+					"name": "Artist",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2857,13 +2855,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"artist": {
-					"asset_type": "Path",
-					"name": "Artist",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location, you may reroll your action die if its value is less than your spirit. On a strong hit, take +1 momentum or +1 spirit.",
@@ -2965,8 +2958,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -2976,7 +2968,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/artist",
+					"id": "starforged/assets/path/artist"
+				},
+				"augmented": {
+					"name": "Augmented",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2986,13 +2982,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"augmented": {
-					"asset_type": "Path",
-					"name": "Augmented",
+						]
+					},
 					"options": {
 						"one": {
 							"label": "One",
@@ -3046,7 +3037,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/augmented",
+					"id": "starforged/assets/path/augmented"
+				},
+				"bannersworn": {
+					"name": "Bannersworn",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3056,13 +3051,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"bannersworn": {
-					"asset_type": "Path",
-					"name": "Bannersworn",
+						]
+					},
 					"options": {
 						"ideology": {
 							"label": "Ideology",
@@ -3145,7 +3135,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/bannersworn",
+					"id": "starforged/assets/path/bannersworn"
+				},
+				"blademaster": {
+					"name": "Blademaster",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3155,13 +3149,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"blademaster": {
-					"asset_type": "Path",
-					"name": "Blademaster",
+						]
+					},
 					"requirement": "If you wield a bladed weapon...",
 					"abilities": [
 						{
@@ -3266,7 +3255,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/blademaster",
+					"id": "starforged/assets/path/blademaster"
+				},
+				"bounty_hunter": {
+					"name": "Bounty Hunter",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3276,13 +3269,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"bounty_hunter": {
-					"asset_type": "Path",
-					"name": "Bounty Hunter",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you take a bounty contract and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may mark progress on the quest. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on a hunt, make the legacy reward one rank higher (1 extra box if already epic).",
@@ -3356,7 +3344,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/bounty_hunter",
+					"id": "starforged/assets/path/bounty_hunter"
+				},
+				"brawler": {
+					"name": "Brawler",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3366,13 +3358,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"brawler": {
-					"asset_type": "Path",
-					"name": "Brawler",
+						]
+					},
 					"requirement": "If you fight unarmed or with a close quarters weapon...",
 					"abilities": [
 						{
@@ -3447,7 +3434,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/brawler",
+					"id": "starforged/assets/path/brawler"
+				},
+				"courier": {
+					"name": "Courier",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3457,13 +3448,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"courier": {
-					"asset_type": "Path",
-					"name": "Courier",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.",
@@ -3545,7 +3531,11 @@
 					},
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/courier",
+					"id": "starforged/assets/path/courier"
+				},
+				"demolitionist": {
+					"name": "Demolitionist",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3555,13 +3545,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"demolitionist": {
-					"asset_type": "Path",
-					"name": "Demolitionist",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to attack, destroy, or sabotage by deploying or triggering an explosive device, choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.",
@@ -3621,7 +3606,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/demolitionist",
+					"id": "starforged/assets/path/demolitionist"
+				},
+				"devotant": {
+					"name": "Devotant",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3631,13 +3620,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"devotant": {
-					"asset_type": "Path",
-					"name": "Devotant",
+						]
+					},
 					"options": {
 						"name": {
 							"label": "name",
@@ -3767,7 +3751,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/devotant",
+					"id": "starforged/assets/path/devotant"
+				},
+				"diplomat": {
+					"name": "Diplomat",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3777,13 +3765,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"diplomat": {
-					"asset_type": "Path",
-					"name": "Diplomat",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to resolve a dispute, negotiate an agreement, or gather support, add +1. On a strong hit, mark progress on the quest. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.",
@@ -3855,7 +3838,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/diplomat",
+					"id": "starforged/assets/path/diplomat"
+				},
+				"empath": {
+					"name": "Empath",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3865,13 +3852,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"empath": {
-					"asset_type": "Path",
-					"name": "Empath",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](id:starforged/moves/fate/pay_the_price).",
@@ -3916,8 +3898,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -3967,7 +3948,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/empath",
+					"id": "starforged/assets/path/empath"
+				},
+				"explorer": {
+					"name": "Explorer",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3977,13 +3962,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"explorer": {
-					"asset_type": "Path",
-					"name": "Explorer",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint), take +1 momentum on a hit. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) and score a hit, mark 1 extra tick on your discoveries legacy track.",
@@ -4034,7 +4014,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/explorer",
+					"id": "starforged/assets/path/explorer"
+				},
+				"fated": {
+					"name": "Fated",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4044,13 +4028,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"fated": {
-					"asset_type": "Path",
-					"name": "Fated",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you fill a box on your background vow progress track, also mark 1 tick on your quests legacy track. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on the background vow, your fate is at hand; take an automatic strong hit and envision the final sacrifice that brings your story to an end.",
@@ -4114,7 +4093,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/fated",
+					"id": "starforged/assets/path/fated"
+				},
+				"firebrand": {
+					"name": "Firebrand",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4124,13 +4107,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"firebrand": {
-					"asset_type": "Path",
-					"name": "Firebrand",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](id:starforged/moves/suffer/endure_harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.",
@@ -4175,8 +4153,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -4225,7 +4202,11 @@
 					},
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/firebrand",
+					"id": "starforged/assets/path/firebrand"
+				},
+				"fugitive": {
+					"name": "Fugitive",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4235,13 +4216,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"fugitive": {
-					"asset_type": "Path",
-					"name": "Fugitive",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.",
@@ -4284,7 +4260,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/fugitive",
+					"id": "starforged/assets/path/fugitive"
+				},
+				"gearhead": {
+					"name": "Gearhead",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4294,13 +4274,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"gearhead": {
-					"asset_type": "Path",
-					"name": "Gearhead",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to craft, repair, repurpose, or modify equipment or technology, add +1 and take +1 momentum on a hit.",
@@ -4364,7 +4339,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/gearhead",
+					"id": "starforged/assets/path/gearhead"
+				},
+				"gunner": {
+					"name": "Gunner",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4374,13 +4353,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"gunner": {
-					"asset_type": "Path",
-					"name": "Gunner",
+						]
+					},
 					"requirement": "If you wield a heavy ranged personal weapon...",
 					"abilities": [
 						{
@@ -4477,7 +4451,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/gunner",
+					"id": "starforged/assets/path/gunner"
+				},
+				"gunslinger": {
+					"name": "Gunslinger",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4487,13 +4465,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"gunslinger": {
-					"asset_type": "Path",
-					"name": "Gunslinger",
+						]
+					},
 					"requirement": "If you wield a pistol...",
 					"abilities": [
 						{
@@ -4578,7 +4551,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/gunslinger",
+					"id": "starforged/assets/path/gunslinger"
+				},
+				"haunted": {
+					"name": "Haunted",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4588,13 +4565,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"haunted": {
-					"asset_type": "Path",
-					"name": "Haunted",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also [Endure Stress](id:starforged/moves/suffer/endure_stress) (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.",
@@ -4641,7 +4613,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/haunted",
+					"id": "starforged/assets/path/haunted"
+				},
+				"healer": {
+					"name": "Healer",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4651,13 +4627,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"healer": {
-					"asset_type": "Path",
-					"name": "Healer",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you give medical care to [Heal](id:starforged/moves/recover/heal) yourself or another character, add +1. If you are treating someone other than yourself, take +1 spirit or +1 momentum on a hit.",
@@ -4717,7 +4688,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/healer",
+					"id": "starforged/assets/path/healer"
+				},
+				"infiltrator": {
+					"name": "Infiltrator",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4727,13 +4702,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"infiltrator": {
-					"asset_type": "Path",
-					"name": "Infiltrator",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to break into a secure site, infiltrate a protected area, or hack or manipulate a secure system, add +1 and take +1 momentum on a hit. On a strong hit with a match, access is easier than expected; take another +1 momentum.",
@@ -4799,7 +4769,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/infiltrator",
+					"id": "starforged/assets/path/infiltrator"
+				},
+				"kinetic": {
+					"name": "Kinetic",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4809,13 +4783,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"kinetic": {
-					"asset_type": "Path",
-					"name": "Kinetic",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You wield kinetic powers. By focusing, you may remotely push, pull, lift, or constrict objects and beings that are about your size or smaller. When you are in a risky situation and draw on your powers to make a move, add +2 and [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).",
@@ -4861,7 +4830,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/kinetic",
+					"id": "starforged/assets/path/kinetic"
+				},
+				"leader": {
+					"name": "Leader",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4871,13 +4844,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"leader": {
-					"asset_type": "Path",
-					"name": "Leader",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.",
@@ -4943,7 +4911,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/leader",
+					"id": "starforged/assets/path/leader"
+				},
+				"looper": {
+					"name": "Looper",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4953,13 +4925,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"looper": {
-					"asset_type": "Path",
-					"name": "Looper",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you score a miss on a suffer move (not [Endure Stress](id:starforged/moves/suffer/endure_stress)), you may loop back a second or two. If you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.",
@@ -5029,8 +4996,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -5045,7 +5011,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/looper",
+					"id": "starforged/assets/path/looper"
+				},
+				"lore_hunter": {
+					"name": "Lore Hunter",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5055,13 +5025,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"lore_hunter": {
-					"asset_type": "Path",
-					"name": "Lore Hunter",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) in the pursuit of that quest, take +2 momentum. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your discoveries legacy track.",
@@ -5138,7 +5103,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/lore_hunter",
+					"id": "starforged/assets/path/lore_hunter"
+				},
+				"loyalist": {
+					"name": "Loyalist",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5148,13 +5117,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"loyalist": {
-					"asset_type": "Path",
-					"name": "Loyalist",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally. On a strong hit with a match, envision how this moment marks a breakthrough or milestone in your relationship; both of you may mark 1 tick on your bonds legacy track.",
@@ -5210,7 +5174,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/loyalist",
+					"id": "starforged/assets/path/loyalist"
+				},
+				"mercenary": {
+					"name": "Mercenary",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5220,13 +5188,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"mercenary": {
-					"asset_type": "Path",
-					"name": "Mercenary",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you agree to wage war or defend others from war in exchange for payment or promises, you may [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see the mission done. If you do, reroll any dice. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow), make the legacy reward one rank higher (1 extra box if already epic).",
@@ -5312,7 +5275,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/mercenary",
+					"id": "starforged/assets/path/mercenary"
+				},
+				"naturalist": {
+					"name": "Naturalist",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5322,13 +5289,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"naturalist": {
-					"asset_type": "Path",
-					"name": "Naturalist",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) using your knowledge of lifeforms or planetside ecosystems, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.",
@@ -5408,7 +5370,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/naturalist",
+					"id": "starforged/assets/path/naturalist"
+				},
+				"navigator": {
+					"name": "Navigator",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5418,13 +5384,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"navigator": {
-					"asset_type": "Path",
-					"name": "Navigator",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Set a Course](id:starforged/moves/exploration/set_a_course), choose one.\n\n  * Follow the fastest path: Take +2 momentum on a strong hit.\n  * Follow the safest path: Add +1\n\nOn a strong hit with a match, you charted a new path during the journey; mark 1 tick on your discoveries legacy track.",
@@ -5513,7 +5474,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/navigator",
+					"id": "starforged/assets/path/navigator"
+				},
+				"outcast": {
+					"name": "Outcast",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5523,13 +5488,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"outcast": {
-					"asset_type": "Path",
-					"name": "Outcast",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Hearten](id:starforged/moves/recover/hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.",
@@ -5592,8 +5552,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -5625,7 +5584,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/outcast",
+					"id": "starforged/assets/path/outcast"
+				},
+				"scavenger": {
+					"name": "Scavenger",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5635,13 +5598,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"scavenger": {
-					"asset_type": "Path",
-					"name": "Scavenger",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Gather Information](id:starforged/moves/adventure/gather_information) or [Resupply](id:starforged/moves/recover/resupply) by scavenging a wreck, ruin, or abandoned site, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also find something of unique value, significance, or function; envision the nature of this discovery, take +2 momentum, and mark 2 ticks on your discoveries legacy track.",
@@ -5715,7 +5673,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/scavenger",
+					"id": "starforged/assets/path/scavenger"
+				},
+				"scoundrel": {
+					"name": "Scoundrel",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5725,13 +5687,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"scoundrel": {
-					"asset_type": "Path",
-					"name": "Scoundrel",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move by lying, bluffing, stealing, or cheating, add +2. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.",
@@ -5784,7 +5741,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/scoundrel",
+					"id": "starforged/assets/path/scoundrel"
+				},
+				"seer": {
+					"name": "Seer",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5794,13 +5755,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"seer": {
-					"asset_type": "Path",
-					"name": "Seer",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you envision experiencing a prophetic dream, you may [Ask the Oracle](id:starforged/moves/fate/ask_the_oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.",
@@ -5875,7 +5831,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/seer",
+					"id": "starforged/assets/path/seer"
+				},
+				"shade": {
+					"name": "Shade",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5885,13 +5845,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"shade": {
-					"asset_type": "Path",
-					"name": "Shade",
+						]
+					},
 					"abilities": [
 						{
 							"text": "Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.",
@@ -5964,8 +5919,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -5980,7 +5934,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/shade",
+					"id": "starforged/assets/path/shade"
+				},
+				"slayer": {
+					"name": "Slayer",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5990,13 +5948,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"slayer": {
-					"asset_type": "Path",
-					"name": "Slayer",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to investigate, track, or stalk an inhuman foe, add +1 and take +1 momentum on a hit.",
@@ -6069,7 +6022,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/slayer",
+					"id": "starforged/assets/path/slayer"
+				},
+				"sleuth": {
+					"name": "Sleuth",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6079,13 +6036,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"sleuth": {
-					"asset_type": "Path",
-					"name": "Sleuth",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to solve a murder, disappearance, theft, or other mystery, make the rank of the quest no greater than formidable. Then, when you [Gather Information](id:starforged/moves/adventure/gather_information) in the course of the investigation, roll three challenge dice and choose two. If any challenge dice match, you must use those values. On a miss with a match, envision what you learn of a deepening conspiracy or betrayal, make the rank of your quest one higher (no greater than epic), and use the new rank when marking future progress.",
@@ -6146,7 +6098,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/sleuth",
+					"id": "starforged/assets/path/sleuth"
+				},
+				"sniper": {
+					"name": "Sniper",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6156,13 +6112,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"sniper": {
-					"asset_type": "Path",
-					"name": "Sniper",
+						]
+					},
 					"requirement": "If you wield a rifle...",
 					"abilities": [
 						{
@@ -6208,8 +6159,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 56
+										]
 									}
 								}
 							},
@@ -6277,7 +6227,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/sniper",
+					"id": "starforged/assets/path/sniper"
+				},
+				"tech": {
+					"name": "Tech",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6287,13 +6241,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"tech": {
-					"asset_type": "Path",
-					"name": "Tech",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you make a move to configure, optimize, hack, or disrupt an electronic system, add +1. On a weak hit, you can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).",
@@ -6349,7 +6298,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/tech",
+					"id": "starforged/assets/path/tech"
+				},
+				"trader": {
+					"name": "Trader",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6359,13 +6312,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"trader": {
-					"asset_type": "Path",
-					"name": "Trader",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you [Sojourn](id:starforged/moves/recover/sojourn) or [Compel](id:starforged/moves/adventure/compel), you may roll +supply. If you do, [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).",
@@ -6450,7 +6398,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/trader",
+					"id": "starforged/assets/path/trader"
+				},
+				"vestige": {
+					"name": "Vestige",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6460,13 +6412,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"vestige": {
-					"asset_type": "Path",
-					"name": "Vestige",
+						]
+					},
 					"options": {
 						"last_of": {
 							"label": "Last of",
@@ -6540,7 +6487,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/vestige",
+					"id": "starforged/assets/path/vestige"
+				},
+				"veteran": {
+					"name": "Veteran",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6550,13 +6501,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"veteran": {
-					"asset_type": "Path",
-					"name": "Veteran",
+						]
+					},
 					"abilities": [
 						{
 							"text": "When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.",
@@ -6600,7 +6546,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/veteran",
+					"id": "starforged/assets/path/veteran"
+				},
+				"voidborn": {
+					"name": "Voidborn",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6610,13 +6560,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"voidborn": {
-					"asset_type": "Path",
-					"name": "Voidborn",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).",
@@ -6678,7 +6623,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/voidborn",
+					"id": "starforged/assets/path/voidborn"
+				},
+				"weapon_master": {
+					"name": "Weapon Master",
+					"asset_type": "Path",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6688,13 +6637,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 56
-					}
-				},
-				"weapon_master": {
-					"asset_type": "Path",
-					"name": "Weapon Master",
+						]
+					},
 					"abilities": [
 						{
 							"text": "You are a walking armory, with a weapon for every occasion. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you [Gain Ground](id:starforged/moves/combat/gain_ground) by switching weapons or changing tactics, take an automatic strong hit.",
@@ -6777,22 +6721,12 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/path/weapon_master",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 56
-					}
+					"id": "starforged/assets/path/weapon_master"
 				}
 			},
-			"id": "starforged/collections/assets/path",
+			"id": "starforged/collections/assets/path"
+		},
+		"companion": {
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6803,17 +6737,26 @@
 						"name": "Shawn Tomkin"
 					}
 				],
-				"page": 56
-			}
-		},
-		"companion": {
+				"page": 57
+			},
 			"name": "Companion Assets",
 			"color": "#3d8b8a",
 			"description": "**Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.\n\nCompanions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.",
 			"contents": {
 				"banshee": {
-					"asset_type": "Companion",
 					"name": "Banshee",
+					"asset_type": "Companion",
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -6826,10 +6769,6 @@
 						"max": 4,
 						"min": 0,
 						"value": 4,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -6839,6 +6778,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/banshee/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/banshee/condition_meter"
 					},
@@ -6918,7 +6861,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/banshee",
+					"id": "starforged/assets/companion/banshee"
+				},
+				"combat_bot": {
+					"name": "Combat Bot",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6928,13 +6875,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"combat_bot": {
-					"asset_type": "Companion",
-					"name": "Combat Bot",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -6947,10 +6889,6 @@
 						"max": 5,
 						"min": 0,
 						"value": 5,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/repair"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -6960,6 +6898,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/combat_bot/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/companion/combat_bot/condition_meter"
 					},
@@ -7051,7 +6993,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/combat_bot",
+					"id": "starforged/assets/companion/combat_bot"
+				},
+				"glowcat": {
+					"name": "Glowcat",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7061,13 +7007,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"glowcat": {
-					"asset_type": "Companion",
-					"name": "Glowcat",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7080,10 +7021,6 @@
 						"max": 3,
 						"min": 0,
 						"value": 3,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7093,6 +7030,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/glowcat/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/glowcat/condition_meter"
 					},
@@ -7160,7 +7101,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/glowcat",
+					"id": "starforged/assets/companion/glowcat"
+				},
+				"protocol_bot": {
+					"name": "Protocol Bot",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7170,13 +7115,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"protocol_bot": {
-					"asset_type": "Companion",
-					"name": "Protocol Bot",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7189,10 +7129,6 @@
 						"max": 3,
 						"min": 0,
 						"value": 3,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/repair"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7202,6 +7138,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/protocol_bot/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/companion/protocol_bot/condition_meter"
 					},
@@ -7250,7 +7190,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/protocol_bot",
+					"id": "starforged/assets/companion/protocol_bot"
+				},
+				"rockhorn": {
+					"name": "Rockhorn",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7260,13 +7204,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"rockhorn": {
-					"asset_type": "Companion",
-					"name": "Rockhorn",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7279,10 +7218,6 @@
 						"max": 5,
 						"min": 0,
 						"value": 5,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7292,6 +7227,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/rockhorn/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/rockhorn/condition_meter"
 					},
@@ -7362,7 +7301,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/rockhorn",
+					"id": "starforged/assets/companion/rockhorn"
+				},
+				"sidekick": {
+					"name": "Sidekick",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7372,13 +7315,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"sidekick": {
-					"asset_type": "Companion",
-					"name": "Sidekick",
+						]
+					},
 					"options": {
 						"name": {
 							"label": "Name",
@@ -7396,10 +7334,6 @@
 						"max": 4,
 						"min": 0,
 						"value": 4,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7409,6 +7343,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/sidekick/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/sidekick/condition_meter"
 					},
@@ -7494,7 +7432,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/sidekick",
+					"id": "starforged/assets/companion/sidekick"
+				},
+				"sprite": {
+					"name": "Sprite",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7504,13 +7446,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"sprite": {
-					"asset_type": "Companion",
-					"name": "Sprite",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7523,10 +7460,6 @@
 						"max": 2,
 						"min": 0,
 						"value": 2,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7536,6 +7469,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/sprite/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/sprite/condition_meter"
 					},
@@ -7589,7 +7526,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/sprite",
+					"id": "starforged/assets/companion/sprite"
+				},
+				"survey_bot": {
+					"name": "Survey Bot",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7599,13 +7540,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"survey_bot": {
-					"asset_type": "Companion",
-					"name": "Survey Bot",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7616,12 +7552,8 @@
 					"condition_meter": {
 						"label": "health",
 						"max": 3,
-						"value": 3,
 						"min": 0,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/repair"
-						},
+						"value": 3,
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7631,6 +7563,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/survey_bot/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/companion/survey_bot/condition_meter"
 					},
@@ -7741,7 +7677,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/survey_bot",
+					"id": "starforged/assets/companion/survey_bot"
+				},
+				"symbiote": {
+					"name": "Symbiote",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7751,13 +7691,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"symbiote": {
-					"asset_type": "Companion",
-					"name": "Symbiote",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7770,10 +7705,6 @@
 						"max": 2,
 						"min": 0,
 						"value": 2,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7783,6 +7714,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/symbiote/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/symbiote/condition_meter"
 					},
@@ -7830,7 +7765,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/symbiote",
+					"id": "starforged/assets/companion/symbiote"
+				},
+				"utility_bot": {
+					"name": "Utility Bot",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7840,13 +7779,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"utility_bot": {
-					"asset_type": "Companion",
-					"name": "Utility Bot",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7857,12 +7791,8 @@
 					"condition_meter": {
 						"label": "health",
 						"max": 4,
-						"value": 4,
 						"min": 0,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/repair"
-						},
+						"value": 4,
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7872,6 +7802,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/utility_bot/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/repair"
 						},
 						"id": "starforged/assets/companion/utility_bot/condition_meter"
 					},
@@ -7947,7 +7881,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/utility_bot",
+					"id": "starforged/assets/companion/utility_bot"
+				},
+				"voidglider": {
+					"name": "Voidglider",
+					"asset_type": "Companion",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7957,13 +7895,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"voidglider": {
-					"asset_type": "Companion",
-					"name": "Voidglider",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -7973,13 +7906,9 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"min": 0,
 						"max": 4,
+						"min": 0,
 						"value": 4,
-						"moves": {
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
 						"controls": {
 							"out_of_action": {
 								"label": "Out of action",
@@ -7989,6 +7918,10 @@
 								"is_impact": false,
 								"id": "starforged/assets/companion/voidglider/condition_meter/controls/out_of_action"
 							}
+						},
+						"moves": {
+							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
+							"recover": "starforged/moves/recover/heal"
 						},
 						"id": "starforged/assets/companion/voidglider/condition_meter"
 					},
@@ -8065,22 +7998,12 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/companion/voidglider",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 57
-					}
+					"id": "starforged/assets/companion/voidglider"
 				}
 			},
-			"id": "starforged/collections/assets/companion",
+			"id": "starforged/collections/assets/companion"
+		},
+		"deed": {
 			"source": {
 				"title": "Ironsworn: Starforged Rulebook",
 				"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8092,9 +8015,7 @@
 					}
 				],
 				"page": 57
-			}
-		},
-		"deed": {
+			},
 			"name": "Deed Assets",
 			"color": "#40834f",
 			"description": "**Deeds** represent the notable achievement and situations of your story, and how those events change your character.\n\nDeeds have a requirement listed at the top of the card, phrased as “Once you \\[blank\\].” You may not spend experience to acquire a deed until you fulfill the requirement, and you cannot choose a deed when creating your character.",
@@ -8102,6 +8023,17 @@
 				"bonded": {
 					"asset_type": "Deed",
 					"name": "Bonded",
+					"source": {
+						"title": "Ironsworn: Starforged Assets",
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2022-05-06",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						]
+					},
 					"options": {
 						"bond_mate": {
 							"label": "Bond-mate",
@@ -8189,7 +8121,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/bonded",
+					"id": "starforged/assets/deed/bonded"
+				},
+				"homesteader": {
+					"asset_type": "Deed",
+					"name": "Homesteader",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8199,13 +8135,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"homesteader": {
-					"asset_type": "Deed",
-					"name": "Homesteader",
+						]
+					},
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -8299,7 +8230,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/homesteader",
+					"id": "starforged/assets/deed/homesteader"
+				},
+				"marked": {
+					"asset_type": "Deed",
+					"name": "Marked",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8309,13 +8244,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"marked": {
-					"asset_type": "Deed",
-					"name": "Marked",
+						]
+					},
 					"options": {
 						"identifier": {
 							"label": "Identifier",
@@ -8389,7 +8319,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/marked",
+					"id": "starforged/assets/deed/marked"
+				},
+				"oathbreaker": {
+					"asset_type": "Deed",
+					"name": "Oathbreaker",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8399,13 +8333,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"oathbreaker": {
-					"asset_type": "Deed",
-					"name": "Oathbreaker",
+						]
+					},
 					"requirement": "Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...",
 					"count_as_impact": true,
 					"abilities": [
@@ -8476,7 +8405,11 @@
 						}
 					],
 					"shared": false,
-					"id": "starforged/assets/deed/oathbreaker",
+					"id": "starforged/assets/deed/oathbreaker"
+				},
+				"revenant": {
+					"asset_type": "Deed",
+					"name": "Revenant",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8486,13 +8419,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"revenant": {
-					"asset_type": "Deed",
-					"name": "Revenant",
+						]
+					},
 					"requirement": "Once you [Face Death](id:starforged/moves/threshold/face_death)...",
 					"abilities": [
 						{
@@ -8564,7 +8492,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/revenant",
+					"id": "starforged/assets/deed/revenant"
+				},
+				"survivor": {
+					"asset_type": "Deed",
+					"name": "Survivor",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8574,13 +8506,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"survivor": {
-					"asset_type": "Deed",
-					"name": "Survivor",
+						]
+					},
 					"requirement": "Once you mark traumatized or permanently harmed...",
 					"abilities": [
 						{
@@ -8615,7 +8542,11 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/survivor",
+					"id": "starforged/assets/deed/survivor"
+				},
+				"vanguard": {
+					"asset_type": "Deed",
+					"name": "Vanguard",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8625,13 +8556,8 @@
 							{
 								"name": "Shawn Tomkin"
 							}
-						],
-						"page": 57
-					}
-				},
-				"vanguard": {
-					"asset_type": "Deed",
-					"name": "Vanguard",
+						]
+					},
 					"requirement": "Once you fill 6 boxes on your discoveries legacy track...",
 					"abilities": [
 						{
@@ -8676,8 +8602,7 @@
 											{
 												"name": "Shawn Tomkin"
 											}
-										],
-										"page": 57
+										]
 									}
 								}
 							},
@@ -8733,34 +8658,10 @@
 					],
 					"count_as_impact": false,
 					"shared": false,
-					"id": "starforged/assets/deed/vanguard",
-					"source": {
-						"title": "Ironsworn: Starforged Assets",
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2022-05-06",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 57
-					}
+					"id": "starforged/assets/deed/vanguard"
 				}
 			},
-			"id": "starforged/collections/assets/deed",
-			"source": {
-				"title": "Ironsworn: Starforged Rulebook",
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com",
-				"date": "2022-05-06",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"page": 57
-			}
+			"id": "starforged/collections/assets/deed"
 		}
 	}
 }

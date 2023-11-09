@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -9,7 +9,8 @@ source:
 oracles:
   name:
     name: Name
-    _source:
+    source:
+      <<: *Source
       authors:
         - name: Shawn Tomkin
       title: 'Ironsworn Rulebook'
@@ -20,11 +21,13 @@ oracles:
         name: Ironlander Names
         canonical_name: 'Oracle 13: Ironlander Names'
         summary: Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.
-        _source:
+        source:
+          <<: *Source
           page: 184
         contents:
           a:
-            _source:
+            source:
+              <<: *Source
               page: 184
             name: Table A
             canonical_name: Ironlander Names
@@ -333,7 +336,8 @@ oracles:
                 max: 100
                 result: Tallus
           b:
-            _source:
+            source:
+              <<: *Source
               page: 185
             canonical_name: Ironlander Names
             _i18n:
@@ -663,7 +667,8 @@ oracles:
               content_type: result
               table_key: trolls
               label: Trolls
-        _source:
+        source:
+          <<: *Source
           page: 187
         contents:
           giants:
@@ -923,7 +928,8 @@ oracles:
             part_of_speech: proper_noun
         canonical_name: 'Oracle 14: Elf Names'
         summary: Use this oracle to generate a name for an elf character.
-        _source:
+        source:
+          <<: *Source
           page: 186
         table:
           - min: 1

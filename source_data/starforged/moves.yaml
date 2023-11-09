@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -10,7 +10,8 @@ moves:
   session:
     name: Session Moves
     color: '#3F8C8A'
-    _source:
+    source:
+      <<: *Source
       page: 140
     summary: |-
       **Session moves** provide methods for setting up content boundaries, adjusting content in the midst of play, and starting and ending your Starforged sessions.
@@ -36,7 +37,8 @@ moves:
           In addition, you may spotlight a new danger, opportunity, or insight. This can include a scene hidden from your character’s perspective. If you do, envision a brief vignette (you may roll or choose on the table below for inspiration). Then, all players take +1 momentum as you return to play from the viewpoint of your characters.
 
           {{table:starforged/oracles/moves/begin_a_session}}
-        _source:
+        source:
+          <<: *Source
           page: 141
       set_a_flag:
         name: Set a Flag
@@ -47,7 +49,8 @@ moves:
           **When you identify situations or topics you don’t want to include, don’t want to envision in detail, or otherwise may need mindfulness when approaching**, that content is now flagged.
 
           When you encounter content flagged as something to approach mindfully, pause to consider or discuss its role in your story. When you come across flagged content that you would rather adjust or omit, [Change Your Fate](id:starforged/moves/session/change_your_fate).
-        _source:
+        source:
+          <<: *Source
           page: 142
       change_your_fate:
         name: Change Your Fate
@@ -62,7 +65,8 @@ moves:
             * **Replace:** This happens but with a small adjustment. Switch out an element and envision how this new detail changes the scenario.
             * **Redirect:** Adjust the trajectory to involve a helping hand. Envision how another person or party becomes involved.
             * **Reshape:** The situation changes completely. Envision what happened instead.
-        _source:
+        source:
+          <<: *Source
           page: 143
       take_a_break:
         name: Take a Break
@@ -74,7 +78,8 @@ moves:
 
             * Move on: Continue the session. You or an ally may add +1 on the next move (not a progress move), bolstered by your reflection and past experiences.
             * Stop for now: [End a Session](id:starforged/moves/session/end_a_session).
-        _source:
+        source:
+          <<: *Source
           page: 144
       end_a_session:
         name: End a Session
@@ -88,12 +93,14 @@ moves:
             * If you moved forward on a quest, [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone).
 
           If there is a quest, connection, or other situation you would like to give focus in your next session, make note of it and take +1 momentum.
-        _source:
+        source:
+          <<: *Source
           page: 145
   adventure:
     name: Adventure Moves
     color: &adventure.color '#206087'
-    _source:
+    source:
+      <<: *Source
       page: 146
     summary: |-
       The **adventure moves** encompass broadly useful actions to overcome obstacles, reinforce your position, conduct investigations, influence others, and support your fellow protagonists.
@@ -142,7 +149,8 @@ moves:
             text: You succeed, but not without a cost. Make a suffer move (-1).
           miss:
             text: You fail, or a momentary success is undermined by a dire turn of events. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 147
       secure_an_advantage:
         name: Secure an Advantage
@@ -191,7 +199,8 @@ moves:
                 * Add +1 on your next move (not a progress move)
           miss:
             text: You fail or your assumptions betray you. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 148
       gather_information:
         name: Gather Information
@@ -218,7 +227,8 @@ moves:
             text: The information provides new insight, but also complicates your quest. Envision what you discover. Then, take +1 momentum.
           miss:
             text: Your investigation unearths a dire threat or reveals an unwelcome truth that undermines your quest. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 149
       compel:
         name: Compel
@@ -254,7 +264,8 @@ moves:
             text: They'll do what you want or agree to your conditions, but their agreement comes with a demand or complication. Envision their counteroffer and take +1 momentum.
           miss:
             text: They refuse or make a demand that costs you greatly. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 150
       aid_your_ally:
         name: Aid Your Ally
@@ -265,7 +276,8 @@ moves:
           **When you act in direct support of an ally**, envision how you aid them. Then, [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gain Ground](id:starforged/moves/combat/gain_ground) to take action. If you score a hit, they (instead of you) take the benefits of the move.
 
           If you [Gain Ground](id:starforged/moves/combat/gain_ground) and score a strong hit, you are both in control. On a **weak hit**, your ally is in control but you are in a bad spot.
-        _source:
+        source:
+          <<: *Source
           page: 152
       check_your_gear:
         name: Check Your Gear
@@ -298,7 +310,8 @@ moves:
                 * It's not quite right, and causes a complication or delay: [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2)
           miss:
             text: You don't have it and the situation grows more perilous. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 153
   quest:
     name: Quest Moves
@@ -308,7 +321,8 @@ moves:
       In the fiction of the *Starforged* setting, those who swear vows are the Ironsworn, and their promises are binding. Vows can be made to yourself, as a solemn representation of your personal commitment, or as a promise to someone else. Some vows might be made grudgingly—out of duty, necessity, or tradition. Others will be made with your whole heart.
 
       Make these **quest moves** when you swear vows, make progress on your quests, and resolve vows.
-    _source:
+    source:
+      <<: *Source
       page: 154
     contents:
       swear_an_iron_vow:
@@ -334,7 +348,8 @@ moves:
             text: You are determined but begin your quest with more questions than answers. Take +1 momentum, and envision what you do to find a path forward.
           miss:
             text: You must overcome a significant obstacle before you begin your quest. Envision what stands in your way.
-        _source:
+        source:
+          <<: *Source
           page: 156
       reach_a_milestone:
         name: Reach a Milestone
@@ -352,7 +367,8 @@ moves:
             * defeating a notable foe
 
           ...you may mark progress per the rank of the vow.
-        _source:
+        source:
+          <<: *Source
           page: 157
       fulfill_your_vow:
         name: Fulfill Your Vow
@@ -385,7 +401,8 @@ moves:
 
                 * Give up on the quest: [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow).
                 * Recommit to the quest: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the vow's rank by one (if not already epic).
-        _source:
+        source:
+          <<: *Source
           page: 158
       forsake_your_vow:
         name: Forsake Your Vow
@@ -403,12 +420,14 @@ moves:
             * Someone else pays a price: Envision how a person, being, or community bears the cost of the failure.
             * Someone else takes advantage: Envision how an enemy gains power.
             * Your reputation suffers: Envision how this failure marks you.
-        _source:
+        source:
+          <<: *Source
           page: 160
   connection:
     name: Connection Moves
     color: '#4A5791'
-    _source:
+    source:
+      <<: *Source
       page: 162
     summary: |-
       Make these **connection moves** when you introduce connections and as you build influence or understanding with them.
@@ -443,7 +462,8 @@ moves:
               Give the connection a role and rank. Whenever your connection aids you on a move closely associated with their role, add +1 and take +1 momentum on a hit.
           miss:
             text: You don't make a connection and the situation worsens. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 163
       develop_your_relationship:
         name: Develop Your Relationship
@@ -491,7 +511,8 @@ moves:
             text: Take +2 momentum.
           miss:
             text: Take no lasting benefit.
-        _source:
+        source:
+          <<: *Source
           page: 164
       test_your_relationship:
         name: Test Your Relationship
@@ -525,7 +546,8 @@ moves:
 
                 * Lose the connection: Envision how this impacts you and [Pay the Price](id:starforged/moves/fate/pay_the_price).
                 * Prove your loyalty: Envision what you offer or what they demand, and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) to see it done. Until you complete the quest, take no benefit for the connection. If you refuse or fail the quest, the connection is permanently undone.
-        _source:
+        source:
+          <<: *Source
           page: 165
       forge_a_bond:
         name: Forge a Bond
@@ -564,7 +586,8 @@ moves:
                 * Expand their influence: Give them a second role. When they aid you on a move closely associated with either role, add +1 and take +1 momentum on a hit.
           miss:
             text: They reveal a motivation or background that puts you at odds. If you recommit to this relationship, roll both challecustomnge dice, take the lowest value, and clear that number of progress boxes. Then, raise the connection's rank by one (if not already epic).
-        _source:
+        source:
+          <<: *Source
           page: 166
   exploration:
     name: Exploration Moves
@@ -575,7 +598,8 @@ moves:
       The Forge is a vast, chaotic, and largely unexplored galaxy. Your sworn vows will take you through uncharted space, across the surface of inhospitable planets, and into the depths of foreboding derelicts, enigmatic alien vaults, and other perilous sites.
 
       Will you survive these expeditions? What will they cost you? What wonders and horrors will you face? Use the **exploration moves** to find out.
-    _source:
+    source:
+      <<: *Source
       page: 168
     contents:
       undertake_an_expedition:
@@ -619,7 +643,8 @@ moves:
                 * Face a peril at the waypoint: Envision what you encounter.
           miss:
             text: You are waylaid by a crisis, or arrive at a waypoint to confront an immediate hardship or threat. Do not mark progress, and [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 169
       explore_a_waypoint:
         name: Explore a Waypoint
@@ -660,7 +685,8 @@ moves:
             text: You encounter an immediate hardship or threat, and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
             match:
               text: You encounter something dreadful! [Confront Chaos](id:starforged/moves/exploration/confront_chaos) or else [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 174
       make_a_discovery:
         name: Make a Discovery
@@ -673,7 +699,8 @@ moves:
           **When your exploration of a waypoint uncovers something wondrous**, roll on the table below or choose one. Then, envision the nature of the discovery and how it is revealed. When you first experience or engage with the discovery, you and your allies may mark two ticks on your discoveries legacy track.
 
           {{table:starforged/oracles/moves/make_a_discovery}}
-        _source:
+        source:
+          <<: *Source
           page: 176
       confront_chaos:
         name: Confront Chaos
@@ -688,7 +715,8 @@ moves:
           For each result, when you first confront that aspect within the scope of the encounter, you and your allies may mark one tick on your discoveries legacy track.
 
           {{table:starforged/oracles/moves/confront_chaos}}
-        _source:
+        source:
+          <<: *Source
           page: 177
       finish_an_expedition:
         name: Finish an Expedition
@@ -721,7 +749,8 @@ moves:
 
                 * Abandon the expedition: Envision the cost of this setback and [Pay the Price](id:starforged/moves/fate/pay_the_price).
                 * Return to the expedition: Roll both challenge dice, take the lowest value, and clear that number of progress boxes. Then, raise the expedition's rank by one (if not already epic).
-        _source:
+        source:
+          <<: *Source
           page: 178
       set_a_course:
         name: Set a Course
@@ -755,12 +784,14 @@ moves:
           miss:
             text: |-
               You are waylaid by a significant threat, and must [Pay the Price](id:starforged/moves/fate/pay_the_price). If you overcome this obstacle, you may push on safely to your destination.
-        _source:
+        source:
+          <<: *Source
           page: 180
   combat:
     name: Combat Moves
     color: '#818992'
-    _source:
+    source:
+      <<: *Source
       page: 182
     summary: |-
       When you face one or more foes in high-stakes, action-oriented conflict, use the **combat moves**. These moves encompass on-foot action and vehicle sorties—or both as part of the same challenge.
@@ -818,7 +849,8 @@ moves:
                 * You are in control
           miss:
             text: The fight begins with you in a bad spot.
-        _source:
+        source:
+          <<: *Source
           page: 188
       gain_ground:
         name: Gain Ground
@@ -874,7 +906,8 @@ moves:
                 * Add +1 on your next move (not a progress move)
           miss:
             text: Your foe gains the upper hand, the fight moves to a new location, or you encounter a new peril. You are in a bad spot and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 190
       react_under_fire:
         name: React Under Fire
@@ -918,7 +951,8 @@ moves:
             text: You avoid the worst of the danger or overcome the obstacle, but not without a cost. Make a suffer move (-1). You stay in a bad spot.
           miss:
             text: The situation worsens. You stay in a bad spot and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 191
       strike:
         name: Strike
@@ -947,7 +981,8 @@ moves:
             text: Mark progress twice, but you expose yourself to danger. You are in a bad spot.
           miss:
             text: The fight turns against you. You are in a bad spot and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 192
       clash:
         name: Clash
@@ -976,7 +1011,8 @@ moves:
             text: Mark progress, but you are dealt a counterblow or setback. You stay in a bad spot and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
           miss:
             text: Your foe dominates this exchange. You stay in a bad spot and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 193
       take_decisive_action:
         name: Take Decisive Action
@@ -1011,7 +1047,8 @@ moves:
               {{table:starforged/oracles/moves/take_decisive_action}}
           miss:
             text: You are defeated or your objective is lost. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 194
       face_defeat:
         name: Face Defeat
@@ -1022,7 +1059,8 @@ moves:
           **When you abandon or are deprived of an objective**, envision the consequence of this failure, clear the objective, and [Pay the Price](id:starforged/moves/fate/pay_the_price).
 
           If the fight continues, you may create a new objective and give it a rank to represent the changing situation. If any objectives remain, the fight continues and you are in a bad spot.
-        _source:
+        source:
+          <<: *Source
           page: 196
       battle:
         name: Battle
@@ -1066,7 +1104,8 @@ moves:
             text: You achieve your objective, but not without cost. [Pay the Price](id:starforged/moves/fate/pay_the_price).
           miss:
             text: You are defeated or the objective is lost. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 197
   suffer:
     name: Suffer Moves
@@ -1075,7 +1114,8 @@ moves:
       When you bear the brunt of a failed action or make a concession, the suffer moves help resolve the cost.
     description: |-
       When you bear the brunt of a failed action or make a concession, the suffer moves help resolve the cost. These moves are typically made when you must [Pay the Price](id:starforged/moves/fate/pay_the_price) and face a hardship that directly impacts your well-being and readiness, or as prompted by a move or asset.
-    _source:
+    source:
+      <<: *Source
       page: 198
     contents:
       lose_momentum:
@@ -1090,7 +1130,8 @@ moves:
 
             * Envision how the price is paid and apply the cost to a different suffer move.
             * Envision how this undermines your progress on a vow, expedition, connection, or combat. Then, clear 1 unit of progress on that track per its rank: troublesome=3 boxes; dangerous=2 boxes; formidable=1 box; extreme=2 ticks; epic=1 tick.
-        _source:
+        source:
+          <<: *Source
           page: 199
       endure_harm:
         name: Endure Harm
@@ -1134,7 +1175,8 @@ moves:
               It’s worse than you thought. Suffer an additional -1 health or [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2). If your health is 0, you must also mark wounded or permanently harmed, or roll on the table below.
 
               {{table:starforged/oracles/moves/endure_harm}}
-        _source:
+        source:
+          <<: *Source
           page: 200
       endure_stress:
         name: Endure Stress
@@ -1178,7 +1220,8 @@ moves:
               It's worse than you thought. Suffer an additional -1 spirit or [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2). If your spirit is 0, you must also mark shaken or traumatized, or roll on the table below.
 
               {{table:starforged/oracles/moves/endure_stress}}
-        _source:
+        source:
+          <<: *Source
           page: 202
       companion_takes_a_hit:
         name: Companion Takes a Hit
@@ -1211,7 +1254,8 @@ moves:
                 It's worse than you thought. They suffer an additional -1 health or you [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).
 
                 If your companion's health is 0, they are dead or destroyed; discard the asset.
-        _source:
+        source:
+          <<: *Source
           page: 204
       sacrifice_resources:
         name: Sacrifice Resources
@@ -1222,7 +1266,8 @@ moves:
           **When you lose or consume resources**, suffer -1 supply for a minor loss, -2 for a serious loss, or -3 for a major loss.
 
           If your supply is exhausted (reduced to 0), mark **unprepared**. When you suffer a loss of resources while unprepared, envision how this causes you hardship and apply the cost to a different suffer move.
-        _source:
+        source:
+          <<: *Source
           page: 205
       withstand_damage:
         name: Withstand Damage
@@ -1274,7 +1319,8 @@ moves:
                 * **Incidental vehicle:** Roll on the table below.
 
                 {{table:starforged/oracles/moves/withstand_damage}}
-        _source:
+        source:
+          <<: *Source
           page: 206
   recover:
     name: Recover Moves
@@ -1284,7 +1330,8 @@ moves:
       Life as an Ironsworn is not easy or comfortable. When your resources are strained, your health and spirit ebbing, your equipment and vehicles in disrepair, you'll need to find relief from the perils of the Forge and the burdens of your sworn oaths.
 
       Make these **recover moves** when you attempt to rest, recover, or refit.
-    _source:
+    source:
+      <<: *Source
       page: 208
     contents:
       sojourn:
@@ -1317,7 +1364,8 @@ moves:
 
                 * The community needs your help, or makes a costly demand in exchange for safe harbor. Envision what they ask of you. If you do it, or [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done, resolve this move as a strong hit.
                 * You find no relief, and the situation grows worse. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 209
       heal:
         name: Heal
@@ -1362,7 +1410,8 @@ moves:
               However, the recovery costs extra time or resources. Choose one: [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2) or [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-2).
           miss:
             text: The aid is ineffective and the situation worsens. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 210
       hearten:
         name: Hearten
@@ -1390,7 +1439,8 @@ moves:
               However, this indulgence is fleeting. Envision an interruption, complication, or inner conflict. Then, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
           miss:
             text: You take no comfort and the situation worsens. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 211
       resupply:
         name: Resupply
@@ -1443,7 +1493,8 @@ moves:
                 * If you are in need of a specific item or resource that can reasonably be obtained, you acquire it. Take +1 momentum.
           miss:
             text: You encounter an unexpected peril. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 212
       repair:
         name: Repair
@@ -1525,7 +1576,8 @@ moves:
                 * Repair any other device, but with a complication or malfunction: 2 points
           miss:
             text: The repairs are not made and the situation worsens. [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 214
   threshold:
     name: Threshold Moves
@@ -1536,7 +1588,8 @@ moves:
       Despite your best efforts to overcome the perils of the Forge, calamitous events may bring you to the precipice of life and death, redemption and desolation, perseverance and destruction.
 
       In these moments you face your greatest tests. What will become of you when all seems lost? Will you see your character undone, or find yourself on a path of renewed purpose? Make these **threshold moves** to find out.
-    _source:
+    source:
+      <<: *Source
       page: 216
     contents:
       face_death:
@@ -1569,7 +1622,8 @@ moves:
                 * There is more to be done. Envision what is revealed or asked of you at death's door, and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to complete an extreme quest. You return to the mortal world and must mark **doomed**. When you complete the deathbound quest, clear the impact.
           miss:
             text: You are dead.
-        _source:
+        source:
+          <<: *Source
           page: 217
       face_desolation:
         name: Face Desolation
@@ -1601,7 +1655,8 @@ moves:
                 * You see a vision of a dreaded event coming to pass. Envision that dark future, and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to prevent it through an extreme quest. You return to your senses and must mark **tormented**. When you complete the soul-bound quest, clear the impact.
           miss:
             text: You succumb to despair or horror and are lost.
-        _source:
+        source:
+          <<: *Source
           page: 218
       overcome_destruction:
         name: Overcome Destruction
@@ -1641,12 +1696,14 @@ moves:
               When you complete the duty-bound quest, clear the impact.
 
               If you accept the cost, take 1 experience for every marked ability on the discarded assets (minimum 3 experience). Spend this experience only on a new command vehicle, modules, and support vehicles.
-        _source:
+        source:
+          <<: *Source
           page: 220
   legacy:
     name: Legacy Moves
     color: '#4F5A69'
-    _source:
+    source:
+      <<: *Source
       page: 222
     summary: |-
       Make these **legacy moves** to gain and spend experience, and when you face a final test to learn how your accomplishments and failures will echo through time.
@@ -1664,7 +1721,8 @@ moves:
           **When you fill a box (four ticks) on any legacy track**, take 2 experience. This experience may be spent when you [Advance](id:starforged/moves/legacy/advance).
 
           Once you completely fill the tenth box on any legacy track, clear that track. You may start again marking progress on the cleared track, but earn experience at a reduced rate of 1 experience (instead of 2) for each filled progress box. If you make a progress roll against this track, resolve the outcome as if at 10 progress.
-        _source:
+        source:
+          <<: *Source
           page: 224
       advance:
         name: Advance
@@ -1679,7 +1737,8 @@ moves:
             * Path: Bolster your personal capabilities or follow a new calling
             * Companion: Gain or improve a trusted helper
             * Deed: Learn from your experiences or build a legacy
-        _source:
+        source:
+          <<: *Source
           page: 225
       continue_a_legacy:
         name: Continue a Legacy
@@ -1752,7 +1811,8 @@ moves:
                 * Deal with the aftermath: Envision how one of your former character's foes has gained power or influence.
                 * Switch loyalties: Envision how you begin in opposition to your former character's beliefs, goals, or allegiances.
                 * Open Pandora's Box: Envision how an advancement or discovery has unleashed unexpectedly dire consequences.
-        _source:
+        source:
+          <<: *Source
           page: 226
   fate:
     name: Fate Moves
@@ -1761,7 +1821,8 @@ moves:
       In solo and co-op play, the **fate moves** mediate the result of other moves or serve as inspirational prompts for your story.
     description: |-
       In solo and co-op play, the **fate moves** mediate the result of other moves or serve as inspirational prompts for your story. When you face the uncertain outcome of a move, want to know what happens next, or have a question about people, places, and events, these moves help reveal the answer.
-    _source:
+    source:
+      <<: *Source
       page: 228
     contents:
       ask_the_oracle:
@@ -1792,7 +1853,8 @@ moves:
           Almost Certain | 90 or less
 
           On a match, envision an extreme result or twist.
-        _source:
+        source:
+          <<: *Source
           page: 229
       pay_the_price:
         name: Pay the Price
@@ -1810,7 +1872,8 @@ moves:
             * Roll on the table below. If the result doesn’t fit the situation, roll again.
 
           {{table:starforged/oracles/moves/pay_the_price}}
-        _source:
+        source:
+          <<: *Source
           page: 232
   scene_challenge:
     name: Scene Challenge Moves
@@ -1822,7 +1885,8 @@ moves:
       A **scene challenge** is an optional structured approach for resolving an extended non-combat scene against a threat or other characters, particularly when a time limit or looming danger adds extra urgency.
 
       Examples of a scene challenge include disarming a timed explosive, hacking a system while evading digital countermeasures, participating in a formal debate before a council, or competing in a hoverbike race.
-    _source:
+    source:
+      <<: *Source
       page: 239
     contents:
       begin_the_scene:
@@ -1838,7 +1902,8 @@ moves:
             * You are unprepared or outmatched: Formidable
 
           Then, activate a 4-segment tension clock and [Face Danger](id:starforged/moves/scene_challenge/face_danger) or [Secure an Advantage](id:starforged/moves/scene_challenge/secure_an_advantage) to take action.
-        _source:
+        source:
+          <<: *Source
           page: 239
       face_danger:
         name: Face Danger (Scene Challenge)
@@ -1887,7 +1952,8 @@ moves:
             text: You fail, or a momentary success is undermined by a dramatic turn of events. Fill a clock segment and [Pay the Price](id:starforged/moves/fate/pay_the_price).
             match:
               text: You fail, or a momentary success is undermined by a dramatic turn of events. Fill two clock segments and [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 240
       secure_an_advantage:
         name: Secure an Advantage (Scene Challenge)
@@ -1941,7 +2007,8 @@ moves:
             text: You fail or your assumptions betray you. Fill a clock segment and [Pay the Price](id:starforged/moves/fate/pay_the_price).
             match:
               text: You fail or your assumptions betray you. Fill two clock segments and [Pay the Price](id:starforged/moves/fate/pay_the_price).
-        _source:
+        source:
+          <<: *Source
           page: 240
       finish_the_scene:
         name: Finish the Scene
@@ -1967,5 +2034,6 @@ moves:
             text: You succeed, but not without cost. You must [Pay the Price](id:starforged/moves/fate/pay_the_price). Make this a minor cost relative to the scope of the scene.
           miss:
             text: You fail, or are undermined by a dramatic and costly turn of events. [Pay the Price](id:starforged/moves/fate/pay_the_price). Make it hurt.
-        _source:
+        source:
+          <<: *Source
           page: 241

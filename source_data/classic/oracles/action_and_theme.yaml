@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -8,7 +8,8 @@ source:
   date: 2019-06-05
 oracles:
   action_and_theme:
-    _source:
+    source:
+      <<: *Source
       page: 174
     name: Action and Theme
     contents:
@@ -22,7 +23,8 @@ oracles:
           result:
             part_of_speech: verb
         summary: Use this table to inspire a discovery, event, character goal, or situation. A roll on this table can be combined with a [Theme](id:classic/oracles/action_and_theme/theme) to provide an action and a subject. Then, interpret the result based on the context of the question and your current situation.
-        _source:
+        source:
+          <<: *Source
           page: 174
         table:
           - min: 1
@@ -328,7 +330,8 @@ oracles:
       theme:
         name: Theme
         canonical_name: 'Oracle 2: Theme'
-        _source:
+        source:
+          <<: *Source
           page: 175
         _i18n:
           result:

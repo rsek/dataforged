@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   title: 'Ironsworn: Starforged Rulebook'
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
@@ -8,7 +8,8 @@ source:
     - name: Shawn Tomkin
 assets:
   command_vehicle:
-    _source:
+    source: &CollectionSource
+      <<: *Source
       page: 55
     name: Command Vehicle Assets
     color: '#9aa3ad'
@@ -22,21 +23,22 @@ assets:
         name: Starship
         asset_type: Command Vehicle
         shared: true
-        _source:
+        source: &AssetSource
+          <<: *Source
           title: 'Ironsworn: Starforged Assets'
         attachments:
           assets:
             - '*/assets/module/*'
-        options:
+        options: &Options_Name
           name: &TextField.Name
             field_type: text
             label: Name
-        condition_meter:
+        condition_meter: &Meter_CV_integrity
           label: integrity
           min: 0
-          value: 5
           max: 5
-          moves: &Vehicle.Moves
+          value: 5
+          moves:
             suffer: starforged/moves/suffer/withstand_damage
             recover: starforged/moves/recover/repair
           controls:
@@ -87,7 +89,8 @@ assets:
                     text: '[Endure Stress](id:starforged/moves/suffer/endure_stress) (-1).'
                   miss: *Starship.3
   module:
-    _source:
+    source:
+      <<: *CollectionSource
       page: 55
     name: Module Assets
     color: '#7f5a90'
@@ -98,18 +101,20 @@ assets:
       These assets are earned and managed by a single character. They can be shared with allies, but only if it's practical for them to make use of it (not everyone may know how to use a RESEARCH LAB).
 
       When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage) and score a miss, you can mark a module as broken to offset further danger for your STARSHIP. Flip the card over to indicate its broken state. A broken module cannot be used until you successfully [Repair](id:starforged/moves/recover/repair) it.
+    _common: &ModuleAsset
+      asset_type: Module
+      shared: true
+      source:
+        <<: *AssetSource
+      controls:
+        broken:
+          label: broken
+          field_type: card_flip
+          disables_asset: true
     contents:
       engine_upgrade:
-        asset_type: Module
         name: Engine Upgrade
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: &Module.Broken
-            label: broken
-            field_type: card_flip
-            disables_asset: true
+        <<: *ModuleAsset
         abilities:
           - text: |-
               Your vehicle’s finely-tuned engines speed your travels. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge) and score a strong hit, take +1 momentum; on a strong hit with a 6 on your action die, take +2 momentum instead of +1.
@@ -167,13 +172,8 @@ assets:
                   weak_hit: *Engine_Upgrade.2
                   miss: *Engine_Upgrade.2
       expanded_hold:
-        asset_type: Module
         name: Expanded Hold
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         condition_meter:
           label: cargo
           max: 3
@@ -214,13 +214,8 @@ assets:
                   You may first lighten your load by dropping cargo. If you do, suffer -cargo by the amount dropped, add +that amount, and take +2 momentum on a hit.
                 outcomes: *outcomes:+2_momentum.HIT
       grappler:
-        asset_type: Module
         name: Grappler
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: &move:Asset.Grappler |-
               Your grappler can disrupt systems and snare machines and vehicles with a magnetic tether. When you take a minute or so to ready the grappler, roll +integrity or +wits. On a strong hit, the grappler is charged and may be fired. On a weak hit, charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). On a miss, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2). If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
@@ -276,13 +271,8 @@ assets:
                   weak_hit: *Grappler.3
                   miss: *Grappler.3
       heavy_cannons:
-        asset_type: Module
         name: Heavy Cannons
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike), choose one.
@@ -334,16 +324,11 @@ assets:
                 text: Add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match: *outcome:+2_momentum
       internal_refit:
-        asset_type: Module
         name: Internal Refit
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               You have customized the cabins, common spaces, and environment of the ship to your needs. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (dangerous or greater), reroll any dice for the first leg of your journey. On a hit, you and your allies may envision how you make yourself at home; if you do, take +2 momentum or +1 spirit.
@@ -399,13 +384,8 @@ assets:
                     reroll: *reroll:any
                   miss: *outcome:reroll_any
       medbay:
-        asset_type: Module
         name: Medbay
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient, you may reroll your action die if its value is less than your vehicle's integrity.
@@ -463,20 +443,13 @@ assets:
                     - text: Through an autopsy or medical examination
                 outcomes: *Medbay.3
       missile_array:
-        asset_type: Module
         name: Missile Array
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *ModuleAsset
         condition_meter:
           label: ammo
           max: 5
           value: 5
           min: 0
-        controls:
-          broken: *Module.Broken
-        # states:
-        #   - *Broken
         abilities:
           - text: |-
               Your missile array is armed with 5 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](id:starforged/moves/recover/resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
@@ -528,15 +501,9 @@ assets:
                     - text: When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles
                 text: Roll an action die before making the progress roll. If your action die is equal to or less than ammo, you may reroll any challenge dice. Then, set ammo to 0.
       overseer:
-        asset_type: Module
         name: Overseer
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
-        options:
-          name: *TextField.Name
+        options: *Options_Name
+        <<: *ModuleAsset
         abilities:
           - text: |-
               Your AI module keeps watch over the vehicle's systems and sensor data. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gain Ground](id:starforged/moves/combat/gain_ground) by talking through a situation with the overseer, you may roll +integrity. If you do, take +1 momentum on a hit.
@@ -578,13 +545,8 @@ assets:
                         - using: attached_asset_meter
                 outcomes: *outcomes:+1_momentum.HIT
       reinforced_hull:
-        asset_type: Module
         name: Reinforced Hull
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               Your vehicle is clad in iron. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.
@@ -627,21 +589,16 @@ assets:
                     - text: By letting your reinforced hull take the hit
                 text: Add +1.
                 outcomes:
+                  <<: *outcomes:+1_momentum.HIT
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Take +2 momentum as you surge through the chaos and put yourself in perfect position.
-                  weak_hit: *outcome:+1_momentum
                   miss:
                     text: '[Pay the Price](id:starforged/moves/fate/pay_the_price) by marking this component as broken.'
       research_lab:
-        asset_type: Module
         name: Research Lab
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               When you use your lab to [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.
@@ -709,13 +666,8 @@ assets:
                     text: Mark one extra box on your discoveries legacy track.
                   weak_hit: *outcome:mark_discoveries_box
       sensor_array:
-        asset_type: Module
         name: Sensor Array
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               Your advanced sensors scan the paths ahead to help spot dangers. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits), you may reroll one challenge die.
@@ -795,13 +747,8 @@ assets:
                         - using: attached_asset_meter
                 outcomes: *Sensor_Array.3
       shields:
-        asset_type: Module
         name: Shields
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: &move:Asset.Shields |-
               When you raise your shields, roll +your vehicle's integrity or +wits. On a strong hit, set your shields to 4. On a weak hit, make them 3. On a miss, make them 2 but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1). Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
@@ -866,13 +813,8 @@ assets:
           value: 0
           min: 0
       stealth_tech:
-        asset_type: Module
         name: Stealth Tech
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               Your vehicle is rigged for silent running. When you make a move against a specific foe or threat to avoid detection, add +1. If you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) by ambushing an unaware foe, add +1 and mark progress on a strong hit.
@@ -950,13 +892,8 @@ assets:
                       text: Mark progress. You also remain totally undetected; take +2 momentum and add +1 on your next [Strike](id:starforged/moves/combat/strike).
                   weak_hit: *outcome:mark_progress
       vehicle_bay:
-        asset_type: Module
         name: Vehicle Bay
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               You may purchase or upgrade a support vehicle for 1 less experience. When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle, spend 1 repair point (instead of 2).
@@ -995,13 +932,8 @@ assets:
                   weak_hit: *Vehicle_Bay.3.Hit
                   miss: *outcome:reroll_any
       workshop:
-        asset_type: Module
         name: Workshop
-        shared: true
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        controls:
-          broken: *Module.Broken
+        <<: *ModuleAsset
         abilities:
           - text: |-
               When you [Repair](id:starforged/moves/recover/repair) in the field, add +1.
@@ -1063,32 +995,32 @@ assets:
                     text: Mark one extra box on your quests legacy track.
                   weak_hit: *Workshop.3.FYV
   support_vehicle:
-    _source:
+    source:
+      <<: *CollectionSource
       page: 56
     name: Support Vehicle Assets
     color: '#495790'
-    # Summary: Secondary vehicles that your starship can carry and launch. If you are playing with others, these are a shared asset with abilities available to any character aboard that vehicle. The person who selects a support vehicle might typically serve as the pilot or manage the asset.
+    # summary: Secondary vehicles that your starship can carry and launch. If you are playing with others, these are a shared asset with abilities available to any character aboard that vehicle. The person who selects a support vehicle might typically serve as the pilot or manage the asset.
     description: |-
       **Support vehicles** complement your command vehicle for planetside or short-range operations. If you are playing with others, one of you might serve as the pilot or owner of a support vehicle, but anyone on board can use its abilities as appropriate to the situation.
 
       As with the command vehicle, your support vehicles have integrity meters. The maximum integrity varies based on the type of vehicle. When a support vehicle faces a damaging situation or environment, you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) to see how it fares.
+    _common: &SupportVehicleAsset
+      asset_type: Support Vehicle
+      shared: true
+      source:
+        <<: *AssetSource
+      options: *Options_Name
     contents:
       exosuit:
         name: Exosuit
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        options:
-          name: *TextField.Name
-        condition_meter:
-          label: integrity
+        <<: *SupportVehicleAsset
+        condition_meter: &Meter_SV_integrity
+          <<: *Meter_CV_integrity
           max: 6
-          min: 0
           value: 6
-          controls: &SupportVehicle.Controls
+          controls:
             battered: *Vehicle.Battered
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
@@ -1128,19 +1060,11 @@ assets:
                 outcomes: *outcomes:reroll_challenge_die_all
       hoverbike:
         name: Hoverbike
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        options:
-          name: *TextField.Name
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 3
-          min: 0
           value: 3
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1156,7 +1080,7 @@ assets:
                         - stat: edge
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: You surge ahead or find a new path. Take +1 momentum and mark progress.
                   weak_hit: *outcome:+1_momentum
@@ -1185,21 +1109,11 @@ assets:
             # FIXME: this is a difficult trigger to describe in relation to moves. it might make more sense to develop a momentum burn trigger instead.
       rover:
         name: Rover
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        options:
-          name:
-            label: Name
-            field_type: text
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 5
-          min: 0
           value: 5
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.
@@ -1245,20 +1159,11 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
       service_pod:
         name: Service Pod
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-
-        options:
-          name: *TextField.Name
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 4
-          min: 0
           value: 4
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1305,20 +1210,11 @@ assets:
 
       shuttle:
         name: Shuttle
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-
-        options:
-          name: *TextField.Name
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 4
-          min: 0
           value: 4
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
@@ -1349,19 +1245,11 @@ assets:
                 text: Add +1.
       skiff:
         name: Skiff
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        options:
-          name: *TextField.Name
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 4
-          min: 0
           value: 4
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
@@ -1395,7 +1283,7 @@ assets:
                           ref: starforged/assets/support_vehicle/skiff/condition_meter
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Your shots cause extra destruction or create havoc; mark progress, and take +1 momentum.
                   weak_hit: *outcome:+1_momentum
@@ -1403,20 +1291,11 @@ assets:
               Your skiff is fully stocked. When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear), add +1 and take +1 momentum on a hit.
       snub_fighter:
         name: Snub Fighter
-        shared: true
-        asset_type: Support Vehicle
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-
-        options:
-          name: *TextField.Name
+        <<: *SupportVehicleAsset
         condition_meter:
-          label: integrity
+          <<: *Meter_SV_integrity
           max: 4
-          min: 0
           value: 4
-          controls: *SupportVehicle.Controls
-          moves: *Vehicle.Moves
         abilities:
           - text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray), you may roll +integrity; if you do, take +2 momentum on a hit.
@@ -1456,7 +1335,8 @@ assets:
                 min: 0
                 value: 0
   path:
-    _source:
+    source:
+      <<: *CollectionSource
       page: 56
     name: Path Assets
     color: '#3f7faa'
@@ -1465,12 +1345,14 @@ assets:
       **Paths** are your background, interests, training, skills, powers, and key equipment. They provide mechanical and narrative advantages, but also reflect who you are and how you interact with the world. When you create your character in the next chapter, you'll select at least two paths to get started.
 
       Some paths represent your skill with a signature weapon style or piece of equipment. If you see a requirement at the top of the asset card, such as “If you wield a bladed weapon…,” the asset is only usable when taking action using that item.
+    _common: &PathAsset
+      asset_type: Path
+      source:
+        <<: *AssetSource
     contents:
       ace:
-        asset_type: Path
         name: Ace
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Face Danger](id:starforged/moves/adventure/face_danger) or [React Under Fire](id:starforged/moves/combat/react_under_fire) by guiding your vehicle through a hazard or out of harm’s way, add +1 and take +1 momentum on a hit.
@@ -1515,10 +1397,8 @@ assets:
                 outcomes:
                   strong_hit: *outcome:+1_momentum
       archer:
-        asset_type: Path
         name: Archer
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wield a power bow...
         condition_meter:
           label: ammo
@@ -1591,10 +1471,8 @@ assets:
                     text: Envision the effects of the projectile and take +1 momentum.
                   weak_hit: *Archer.3
       armored:
-        asset_type: Path
         name: Armored
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wear your finely crafted set of personal armor...
         abilities:
           - text: |-
@@ -1642,10 +1520,8 @@ assets:
                     - text: By letting your armor take the hit
               # TODO: something to handle arbitrary rolls like this
       artist:
-        asset_type: Path
         name: Artist
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location, you may reroll your action die if its value is less than your spirit. On a strong hit, take +1 momentum or +1 spirit.
@@ -1706,10 +1582,8 @@ assets:
                     text: |-
                       The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](id:starforged/moves/fate/pay_the_price).
       augmented:
-        asset_type: Path
         name: Augmented
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         options:
           one:
             label: One
@@ -1760,10 +1634,8 @@ assets:
                 roll_type: action_roll
                 text: You may instead mark an augment as broken. [Repair](id:starforged/moves/recover/repair) it as detailed in the augmented asset.
       bannersworn:
-        asset_type: Path
         name: Bannersworn
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         options:
           ideology:
             label: Ideology
@@ -1834,10 +1706,8 @@ assets:
                     reroll: *reroll:challenge_die
                   miss: *outcome:reroll_challenge_die
       blademaster:
-        asset_type: Path
         name: Blademaster
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wield a bladed weapon...
         abilities:
           - text: |-
@@ -1906,10 +1776,8 @@ assets:
                     text: Fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
                   weak_hit: *Blademaster.3
       bounty_hunter:
-        asset_type: Path
         name: Bounty Hunter
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you take a bounty contract and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done, add +1. On a strong hit, you’ve got a solid lead and may mark progress on the quest. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on a hunt, make the legacy reward one rank higher (1 extra box if already epic).
@@ -1975,10 +1843,8 @@ assets:
                     - text: In a fight against a bounty target or their agents
                 outcomes: *outcomes:reroll_challenge_die_all
       brawler:
-        asset_type: Path
         name: Brawler
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you fight unarmed or with a close quarters weapon...
         abilities:
           - text: |-
@@ -2039,10 +1905,8 @@ assets:
                       text: Your initial assault leaves them stunned; mark progress and take +2 momentum.
                   weak_hit: *outcome:mark_progress
       courier:
-        asset_type: Path
         name: Courier
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to transport and protect something precious, set its safety to 5. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course) and score a weak hit or miss, you may suffer -1 safety as the cost. On a miss with a match, you must suffer -2 safety as the cost. When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
@@ -2067,13 +1931,13 @@ assets:
                   - starforged/moves/exploration/set_a_course
                 roll_type: action_roll
                 outcomes:
-                  weak_hit:
-                    text: &safety_cost |-
+                  weak_hit: &safety_cost_outcome
+                    text: |-
                       You may suffer -1 safety as the cost.
 
                       When safety falls to 0, envision a major complication related to this mission. If you overcome the threat, mark progress twice on this quest. Then, set safety to 3.
                   miss:
-                    text: *safety_cost
+                    <<: *safety_cost_outcome
                     match:
                       text: |-
                         You must suffer -2 safety as the cost.
@@ -2114,10 +1978,8 @@ assets:
           min: 0
 
       demolitionist:
-        asset_type: Path
         name: Demolitionist
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to attack, destroy, or sabotage by deploying or triggering an explosive device, choose the value of your charge before rolling: normal=1, high=2, or overcharged=3. If either challenge die is equal to or less than the charge, count a weak hit as a strong hit. If not, and your action die is equal to or less than the charge, you are caught up in the destruction or set off an unintended effect; count a weak hit as a miss.
@@ -2154,10 +2016,8 @@ assets:
                   weak_hit: *outcome:reroll_challenge_dice
                   miss: *outcome:reroll_challenge_dice
       devotant:
-        asset_type: Path
         name: Devotant
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         options:
           name:
             label: name
@@ -2254,10 +2114,8 @@ assets:
                   strong_hit:
                     text: Take +1 spirit or +1 momentum.
       diplomat:
-        asset_type: Path
         name: Diplomat
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to resolve a dispute, negotiate an agreement, or gather support, add +1. On a strong hit, mark progress on the quest. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on a diplomatic mission (formidable or greater) and score a hit, also mark 2 ticks on your bonds legacy track.
@@ -2310,10 +2168,8 @@ assets:
                     match:
                       text: You are shown great kindness or respect; take +2 momentum or make an extra recover move with an automatic strong hit.
       empath:
-        asset_type: Path
         name: Empath
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: &move:Asset.Empath |-
               When you read the intent, emotions, or memories of a nearby being, roll +heart. On a strong hit, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene. On a weak hit, the visions are murky; take +1 momentum. On a miss, you reveal a troubling motive or secret; [Pay the Price](id:starforged/moves/fate/pay_the_price).
@@ -2368,10 +2224,8 @@ assets:
                     text: Take +1 momentum. If they are an ally, also give them +2 spirit.
                   weak_hit: *Empath.3
       explorer:
-        asset_type: Path
         name: Explorer
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint), take +1 momentum on a hit. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) and score a hit, mark 1 extra tick on your discoveries legacy track.
@@ -2407,15 +2261,13 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Take +2 momentum and envision an unusual aspect of the site.
                   weak_hit: *outcome:+1_momentum
       fated:
-        asset_type: Path
         name: Fated
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you fill a box on your background vow progress track, also mark 1 tick on your quests legacy track. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) on the background vow, your fate is at hand; take an automatic strong hit and envision the final sacrifice that brings your story to an end.
@@ -2460,10 +2312,8 @@ assets:
                     reroll: *reroll:challenge_die_10
                   miss: *outcome:reroll_challenge_die_10
       firebrand:
-        asset_type: Path
         name: Firebrand
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: &move:Asset.Firebrand |-
               You wield fiery energy. When you rest and meditate to gather this energy, roll +spirit. On a strong hit, take up to +3 fire. On a weak hit, take +2. On a miss, take +2 fire but [Endure Harm](id:starforged/moves/suffer/endure_harm) (-2). Your max fire is +5. When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
@@ -2525,10 +2375,8 @@ assets:
           min: 0
 
       fugitive:
-        asset_type: Path
         name: Fugitive
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
@@ -2564,10 +2412,8 @@ assets:
             #           method: null
 
       gearhead:
-        asset_type: Path
         name: Gearhead
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to craft, repair, repurpose, or modify equipment or technology, add +1 and take +1 momentum on a hit.
@@ -2611,10 +2457,8 @@ assets:
                   weak_hit: *Gearhead.3
               # TODO: separate move extension for device use?
       gunner:
-        asset_type: Path
         name: Gunner
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wield a heavy ranged personal weapon...
         abilities:
           - text: |-
@@ -2679,10 +2523,8 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       gunslinger:
-        asset_type: Path
         name: Gunslinger
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wield a pistol...
         abilities:
           - text: |-
@@ -2703,7 +2545,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Take +1 momentum. You may immediately take a shot (without making a move) and mark progress twice.
                   weak_hit: *outcome:+1_momentum
@@ -2734,10 +2576,8 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       haunted:
-        asset_type: Path
         name: Haunted
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               You are haunted by the spirit of someone whose death you caused or mourn (or both). When you make a move to call upon their insight, add +1. On a weak hit, also [Endure Stress](id:starforged/moves/suffer/endure_stress) (-1). On a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -2780,10 +2620,8 @@ assets:
             #     augment_moves:
             #       - outcomes: *outcomes:+1_momentum.HIT
       healer:
-        asset_type: Path
         name: Healer
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you give medical care to [Heal](id:starforged/moves/recover/heal) yourself or another character, add +1. If you are treating someone other than yourself, take +1 spirit or +1 momentum on a hit.
@@ -2819,7 +2657,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Take +1 momentum. You also reveal an unexpected medical anomaly; mark 1 tick on your discoveries legacy track.
                   weak_hit: *outcome:+1_momentum
@@ -2827,10 +2665,8 @@ assets:
               Once every day or so, when you are in a safe place with plenty of time on your hands, you may [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1) and provide basic medical care for yourself, companions, or allies without risk. If you do, roll only your action die. On a 1-4, automatically give +1 health to everyone whose health is greater than 0. On a 5-6, make it +2.
             # TODO: style as move?
       infiltrator:
-        asset_type: Path
         name: Infiltrator
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to break into a secure site, infiltrate a protected area, or hack or manipulate a secure system, add +1 and take +1 momentum on a hit. On a strong hit with a match, access is easier than expected; take another +1 momentum.
@@ -2843,7 +2679,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Access is easier than expected. Take +2 momentum.
                   weak_hit: *outcome:+1_momentum
@@ -2882,10 +2718,8 @@ assets:
                     text: Reroll any dice the first time you make a move aided by the device.
                   weak_hit: *Infiltrator.3
       kinetic:
-        asset_type: Path
         name: Kinetic
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               You wield kinetic powers. By focusing, you may remotely push, pull, lift, or constrict objects and beings that are about your size or smaller. When you are in a risky situation and draw on your powers to make a move, add +2 and [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).
@@ -2911,10 +2745,8 @@ assets:
                       method: strong_hit
                 text: Reset momentum. Then, as you make a single move fueled by your powers, take an automatic strong hit. If you are in a fight, mark progress.
       leader:
-        asset_type: Path
         name: Leader
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.
@@ -2959,15 +2791,13 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Your command galvanizes them into unexpected action. Take +2 momentum, and mark 1 tick on your bonds legacy track.
                   weak_hit: *outcome:+1_momentum
       looper:
-        asset_type: Path
         name: Looper
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you score a miss on a suffer move (not [Endure Stress](id:starforged/moves/suffer/endure_stress)), you may loop back a second or two. If you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2), reroll any dice, and take +1 momentum on a strong hit.
@@ -3028,10 +2858,8 @@ assets:
             # TODO: this is a weird one! is there a non-silly way to apply this to every action die reroll from an asset ability?
             # what about "Alters: null"? is there a way to make it explicit that it's only supposed to be added to those?
       lore_hunter:
-        asset_type: Path
         name: Lore Hunter
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) (formidable or greater) to recover valuable knowledge or an extraordinary relic, reroll any dice. When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) in the pursuit of that quest, take +2 momentum. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, also mark 2 ticks on your discoveries legacy track.
@@ -3040,9 +2868,9 @@ assets:
               - augments:
                   - starforged/moves/quest/swear_an_iron_vow
                 roll_type: action_roll
-                trigger:
+                trigger: &LoreHunterQuestTrigger
                   conditions:
-                    - text: &Lore_Hunter.Quest To recover valuable knowledge or an extraordinary relic (formidable or greater)
+                    - text: To recover valuable knowledge or an extraordinary relic (formidable or greater)
                 outcomes:
                   strong_hit: &Lore_Hunter.1
                     text: When you [Reach a Milestone](id:starforged/moves/quest/reach_a_milestone) in the pursuit of that quest, take +2 momentum.
@@ -3056,9 +2884,7 @@ assets:
               - augments:
                   - starforged/moves/quest/fulfill_your_vow
                 roll_type: progress_roll
-                trigger:
-                  conditions:
-                    - text: *Lore_Hunter.Quest
+                trigger: *LoreHunterQuestTrigger
                 outcomes:
                   strong_hit: &Lore_Hunter.1
                     text: Also mark 2 ticks on your discoveries legacy track.
@@ -3093,10 +2919,8 @@ assets:
                     text: Envision the obscure but helpful fact, theory, or technique you put to use, and take +1 momentum.
                   weak_hit: *Lore_Hunter.2
       loyalist:
-        asset_type: Path
         name: Loyalist
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally. On a strong hit with a match, envision how this moment marks a breakthrough or milestone in your relationship; both of you may mark 1 tick on your bonds legacy track.
@@ -3136,10 +2960,8 @@ assets:
                         player: false
                 text: Envision how you support your ally. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.
       mercenary:
-        asset_type: Path
         name: Mercenary
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you agree to wage war or defend others from war in exchange for payment or promises, you may [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see the mission done. If you do, reroll any dice. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow), make the legacy reward one rank higher (1 extra box if already epic).
@@ -3174,7 +2996,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: This mission pits you against an unresolved aspect of your past or a hated foe; mark 2 ticks on your quests legacy track, and take +1 momentum.
                   weak_hit: *outcome:+1_momentum
@@ -3196,10 +3018,8 @@ assets:
                     - text: By looting the field of battle in the aftermath of a fight
                 text: Add +2.
       naturalist:
-        asset_type: Path
         name: Naturalist
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) using your knowledge of lifeforms or planetside ecosystems, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.
@@ -3216,7 +3036,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: Take +1 momentum. You also confirm an obscure theory or reveal a surprising aspect of the encounter; mark 1 tick on your discoveries legacy track.
                   weak_hit: *outcome:+1_momentum
@@ -3257,10 +3077,8 @@ assets:
                 text: Add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       navigator:
-        asset_type: Path
         name: Navigator
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Set a Course](id:starforged/moves/exploration/set_a_course), choose one.
@@ -3330,10 +3148,8 @@ assets:
                   miss:
                     text: *Navigator.3
       outcast:
-        asset_type: Path
         name: Outcast
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Hearten](id:starforged/moves/recover/hearten) in isolation, you may attempt to find solace in fond memories or a hopeful wish. If you do (decide before rolling), reroll any dice but count a strong hit as a weak hit.
@@ -3387,10 +3203,8 @@ assets:
                     match:
                       text: You may envision encountering someone who knows or understands you. If you [Make a Connection](id:starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
       scavenger:
-        asset_type: Path
         name: Scavenger
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Gather Information](id:starforged/moves/adventure/gather_information) or [Resupply](id:starforged/moves/recover/resupply) by scavenging a wreck, ruin, or abandoned site, add +1 and take +1 momentum on a hit. On a strong hit with a match, you also find something of unique value, significance, or function; envision the nature of this discovery, take +2 momentum, and mark 2 ticks on your discoveries legacy track.
@@ -3439,10 +3253,8 @@ assets:
                           condition_meter: supply
                 outcomes: *outcomes:+1_momentum.HIT
       scoundrel:
-        asset_type: Path
         name: Scoundrel
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move by lying, bluffing, stealing, or cheating, add +2. On a strong hit with a match, your deception creates an unexpected opportunity; take the value of your shadow as +momentum.
@@ -3489,10 +3301,8 @@ assets:
 
             # TODO: momentum burn trigger
       seer:
-        asset_type: Path
         name: Seer
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you envision experiencing a prophetic dream, you may [Ask the Oracle](id:starforged/moves/fate/ask_the_oracle) for details using an interpretive oracle such as Action/Theme or Descriptor/Focus. If you record the answer, and later face a situation which gives truth to the vision, take an automatic strong hit (one time only) when making a move to act on your foresight. Then, clear the prophecy. Only one prophecy can be active at a time.
@@ -3539,10 +3349,8 @@ assets:
                         ally: true
                 outcomes: *Seer.3
       shade:
-        asset_type: Path
         name: Shade
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               Drawing on esoteric energies, you may instantly cloak your form in the shadowy veil of the void. When you are veiled and make a move to ambush, hide, or sneak, you may preset your action die to 5. In darkness, make it 6. On a miss, in addition to any other cost, you are revealed and can’t veil yourself again until the current situation is resolved.
@@ -3592,10 +3400,8 @@ assets:
               When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
             # TODO: non move trigger?
       slayer:
-        asset_type: Path
         name: Slayer
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to investigate, track, or stalk an inhuman foe, add +1 and take +1 momentum on a hit.
@@ -3639,10 +3445,8 @@ assets:
                   weak_hit: *Slayer.3.text
                   miss: *Slayer.3.text
       sleuth:
-        asset_type: Path
         name: Sleuth
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: &Sleuth.1 |-
               When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to solve a murder, disappearance, theft, or other mystery, make the rank of the quest no greater than formidable. Then, when you [Gather Information](id:starforged/moves/adventure/gather_information) in the course of the investigation, roll three challenge dice and choose two. If any challenge dice match, you must use those values. On a miss with a match, envision what you learn of a deepening conspiracy or betrayal, make the rank of your quest one higher (no greater than epic), and use the new rank when marking future progress.
@@ -3676,10 +3480,8 @@ assets:
                     - text: With a potential informant
                       method: weak_hit
       sniper:
-        asset_type: Path
         name: Sniper
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         requirement: If you wield a rifle...
         abilities:
           - text: &move:Asset.Sniper |-
@@ -3723,29 +3525,26 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by studying a distant situation through your rifle scope, or [Gain Ground](id:starforged/moves/combat/gain_ground) by taking careful aim, you may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1, -2, or -3) and add that amount. Then, take +1 momentum on a strong hit.
             augment_moves:
-              - augments:
+              - &Sniper.2.Augment
+                augments:
                   - starforged/moves/adventure/secure_an_advantage
                   - starforged/moves/scene_challenge/secure_an_advantage
                 roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By studying a distant situation through your rifle scope
-                text: &Sniper.3 You may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1, -2, or -3) and add that amount.
-                outcomes: &Sniper.3.Outcomes
+                text: You may sacrifice time for greater certainty. If you do (decide before rolling), [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1, -2, or -3) and add that amount.
+                outcomes:
                   strong_hit: *outcome:+1_momentum
-              - augments:
+              - <<: *Sniper.2.Augment
+                augments:
                   - starforged/moves/adventure/gain_ground
-                roll_type: action_roll
                 trigger:
                   conditions:
                     - text: By taking careful aim
-                text: *Sniper.3
-                outcomes: *Sniper.3.Outcomes
       tech:
-        asset_type: Path
         name: Tech
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you make a move to configure, optimize, hack, or disrupt an electronic system, add +1. On a weak hit, you can choose to press your luck. If you do, reroll all dice and add +2 (instead of +1).
@@ -3789,10 +3588,8 @@ assets:
                     text: Take +1 momentum. One time only, when you trigger the program to fulfill its purpose, reroll any dice.
                   weak_hit: *Tech.3
       trader:
-        asset_type: Path
         name: Trader
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you [Sojourn](id:starforged/moves/recover/sojourn) or [Compel](id:starforged/moves/adventure/compel), you may roll +supply. If you do, [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
@@ -3855,10 +3652,8 @@ assets:
                     match:
                       text: You have a chance to secure a unique item or valuable payload. Envision the nature of the opportunity and the obstacle you must overcome to acquire it. If you are successful, mark 2 ticks on your quests legacy track. One time only, you may use this acquisition to gain an automatic strong hit on any move where your resources are a factor.
       vestige:
-        asset_type: Path
         name: Vestige
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         options:
           last_of:
             label: Last of
@@ -3913,10 +3708,8 @@ assets:
                       method: action_die
                       # default text: "You may reroll your action die."
       veteran:
-        asset_type: Path
         name: Veteran
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               When you are in a fight, increase your momentum reset by 1. Then, if you burn momentum to improve your result, add +1 on your next move.
@@ -3946,7 +3739,7 @@ assets:
                   strong_hit:
                     match:
                       text: |-
-                        you_have_a_history: you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](id:starforged/moves/connection/develop_your_relationship) now.
+                        You have a history: you once fought beside them, and they owe you a favor. Mark 1 tick on your bonds legacy track, and [Develop Your Relationship](id:starforged/moves/connection/develop_your_relationship) now.
                   miss:
                     match:
                       text: 'You have a history: You once fought against them, and they hold a grudge.'
@@ -3964,10 +3757,8 @@ assets:
                 text: Envision the memory and add +1.
                 outcomes: *outcomes:+1_momentum.HIT
       voidborn:
-        asset_type: Path
         name: Voidborn
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               You are most suited to life in the limitless void. When you are in space (or a spacebound vehicle or station), increase your momentum reset by 1. When you enter a planetside or high gravity environment, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
@@ -4014,14 +3805,12 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: You build speed or put yourself in perfect position; take +2 momentum.
       weapon_master:
-        asset_type: Path
         name: Weapon Master
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *PathAsset
         abilities:
           - text: |-
               You are a walking armory, with a weapon for every occasion. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) in personal combat, add +1 and take +1 momentum on a hit. Once per fight, when you [Gain Ground](id:starforged/moves/combat/gain_ground) by switching weapons or changing tactics, take an automatic strong hit.
@@ -4075,7 +3864,8 @@ assets:
                           condition_meter: supply
                 outcomes: *outcomes:+2_momentum.HIT
   companion:
-    _source:
+    source:
+      <<: *CollectionSource
       page: 57
     name: Companion Assets
     color: '#3d8b8a'
@@ -4084,31 +3874,29 @@ assets:
       **Companions** are NPC helpers. When you gain a companion, give them a name and envision their look and personality.
 
       Companions utilize a health meter that can be reduced if an outcome puts them in harm's way. When your companion faces harm, make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. When their health is at 0, they are in danger of being killed or destroyed.
+    _common: &CompanionAsset
+      asset_type: Companion
+      source:
+        <<: *AssetSource
+      options: *Options_Name
     contents:
       banshee:
-        asset_type: Companion
         name: Banshee
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
-
-        options:
-          name: *TextField.Name
-        condition_meter:
+        condition_meter: &Meter_bio_health
           label: health
-          # aliases:
-          #   - companion_health
           max: 4
           min: 0
           value: 4
-          moves: &CompanionBiological.Moves
-            suffer: &Companion.SufferMove starforged/moves/suffer/companion_takes_a_hit
-            recover: starforged/moves/recover/heal
           controls:
-            out_of_action: &Companion.OutOfAction
+            out_of_action:
               label: Out of action
               field_type: checkbox
               disables_asset: true
+          moves: &CompanionMovesBio
+            suffer: starforged/moves/suffer/companion_takes_a_hit
+            recover: starforged/moves/recover/heal
         abilities:
           - text: |-
               Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may roll +its health.
@@ -4135,7 +3923,7 @@ assets:
                 text: Add +1.
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: You're gone in a flash; take +2 momentum.
                   weak_hit: *outcome:+1_momentum
@@ -4161,42 +3949,32 @@ assets:
                   weak_hit: *Banshee.3
                   miss: *Banshee.3
       combat_bot:
-        asset_type: Companion
         name: Combat Bot
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        # tags: [mechanical_companion]
-
-        options:
-          name: *TextField.Name
-        condition_meter:
-          label: health
+        <<: *CompanionAsset
+        options: *Options_Name
+        condition_meter: &Meter_mech_health
+          <<: *Meter_bio_health
           max: 5
-          min: 0
           value: 5
-          moves: &CompanionMechanical.Moves
-            suffer: *Companion.SufferMove
+          moves:
+            <<: *CompanionMovesBio
             recover: starforged/moves/recover/repair
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your combat bot companion fights at your side. When you [Strike](id:starforged/moves/combat/strike) aided by the bot, add +1; if you [Clash](id:starforged/moves/combat/clash), take +1 momentum on a hit.
             enabled: true
             augment_moves:
-              - augments:
+              - &CombatBotAugment0
+                augments:
                   - starforged/moves/combat/strike
                 roll_type: action_roll
                 trigger:
                   conditions:
                     - text: Aided by your combat bot
                 text: Add +1.
-              - augments:
+              - <<: *CombatBotAugment0
+                augments:
                   - starforged/moves/combat/clash
-                roll_type: action_roll
-                trigger:
-                  conditions:
-                    - text: Aided by your combat bot
                 outcomes: *outcomes:+1_momentum.HIT
           - text: |-
               When you use the threat of violence to [Compel](id:starforged/moves/adventure/compel) or [Gain Ground](id:starforged/moves/combat/gain_ground) while the bot brings its weapons to bear, you may roll +its health. If you do, take +1 momentum on a hit. On a strong hit with a match, the bot's display is especially persuasive; take another +1 momentum.
@@ -4214,7 +3992,7 @@ assets:
                           ref: starforged/assets/companion/combat_bot/condition_meter
                 outcomes:
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: The bot's display is especially persuasive; take +2 momentum.
                   weak_hit: *outcome:+1_momentum
@@ -4238,22 +4016,15 @@ assets:
                     # TODO: add "in control" override property to interface
                     # in_control: true
       glowcat:
-        asset_type: Companion
         name: Glowcat
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_bio_health
           max: 3
-          min: 0
           value: 3
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
@@ -4298,22 +4069,15 @@ assets:
                     match:
                       text: Take +momentum equal to the glowcat's health.
       protocol_bot:
-        asset_type: Companion
         name: Protocol Bot
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [mechanical_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_mech_health
           max: 3
-          min: 0
           value: 3
-          moves: *CompanionMechanical.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
@@ -4347,22 +4111,15 @@ assets:
                   weak_hit: *Protocol_Bot.3
                   miss: *Protocol_Bot.3
       rockhorn:
-        asset_type: Companion
         name: Rockhorn
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_bio_health
           max: 5
-          min: 0
           value: 5
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
@@ -4413,10 +4170,8 @@ assets:
                       text: You may reroll your action die if its value is less than the rockhorn’s health.
 
       sidekick:
-        asset_type: Companion
         name: Sidekick
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
         options:
           name:
@@ -4426,13 +4181,9 @@ assets:
             label: Expertise
             field_type: text
         condition_meter:
-          label: health
+          <<: *Meter_bio_health
           max: 4
-          min: 0
           value: 4
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -4484,22 +4235,15 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
 
       sprite:
-        asset_type: Companion
         name: Sprite
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_bio_health
           max: 2
-          min: 0
           value: 2
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
@@ -4526,21 +4270,14 @@ assets:
               With a moment's rest, the sprite can mend its form and return automatically to max health.
 
       survey_bot:
-        asset_type: Companion
         name: Survey Bot
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [mechanical_companion]
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_mech_health
           max: 3
           value: 3
-          min: 0
-          moves: *CompanionMechanical.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your survey bot companion scans the path ahead. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits) overland or within a site, add +1.
@@ -4570,12 +4307,12 @@ assets:
                         - using: ref
                           ref: starforged/assets/companion/survey_bot/condition_meter
                 outcomes:
-                  strong_hit:
+                  weak_hit: &SurveyBotProgress
                     text: Mark progress on the expedition.
+                  strong_hit:
+                    <<: *SurveyBotProgress
                     match:
                       text: Mark progress on the expedition. The bot uncovers an unexpected feature or location; envision what it reveals and mark 1 tick on your discoveries legacy track.
-                  weak_hit:
-                    text: Mark progress on the expedition.
           - text: |-
               When you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) aided by the bot's sensors, or [Face Danger](id:starforged/moves/adventure/face_danger) to detect a threat, roll +its health and take +1 momentum on a hit.
             augment_moves:
@@ -4603,22 +4340,15 @@ assets:
                           ref: starforged/assets/companion/survey_bot/condition_meter
                 outcomes: *outcomes:+1_momentum.HIT
       symbiote:
-        asset_type: Companion
         name: Symbiote
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_bio_health
           max: 2
-          min: 0
           value: 2
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. To restore the symbiote's health, you must [Endure Stress](id:starforged/moves/suffer/endure_stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.
@@ -4648,21 +4378,14 @@ assets:
                 max: 3
 
       utility_bot:
-        asset_type: Companion
         name: Utility Bot
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [mechanical_companion]
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
+          <<: *Meter_mech_health
           max: 4
           value: 4
-          min: 0
-          moves: *CompanionMechanical.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
@@ -4677,11 +4400,11 @@ assets:
                         - using: ref
                           ref: starforged/assets/companion/utility_bot/condition_meter
                 outcomes:
+                  <<: *outcomes:+1_momentum.HIT
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: The utility bot reveals an unexpected advantage or insight. Take +2 momentum.
-                  weak_hit: *outcome:+1_momentum
           - text: |-
               When you [Repair](id:starforged/moves/recover/repair) aided by the bot, add +1. On a miss, it reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).
             augment_moves:
@@ -4714,22 +4437,15 @@ assets:
                 outcomes: *outcomes:+1_momentum.HIT
 
       voidglider:
-        asset_type: Companion
         name: Voidglider
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        <<: *CompanionAsset
         # tags: [biological_companion]
 
-        options:
-          name: *TextField.Name
+        options: *Options_Name
         condition_meter:
-          label: health
-          min: 0
+          <<: *Meter_bio_health
           max: 4
           value: 4
-          moves: *CompanionBiological.Moves
-          controls:
-            out_of_action: *Companion.OutOfAction
         abilities:
           - text: |-
               Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), add +1.
@@ -4766,7 +4482,8 @@ assets:
                           ref: starforged/assets/companion/voidglider/condition_meter
                 outcomes: *outcomes:+1_momentum.HIT
   deed:
-    _source:
+    source:
+      <<: *CollectionSource
       page: 57
     name: Deed Assets
     color: '#40834f'
@@ -4779,8 +4496,8 @@ assets:
       bonded:
         asset_type: Deed
         name: Bonded
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         options:
           bond_mate:
             label: Bond-mate
@@ -4843,10 +4560,9 @@ assets:
       homesteader:
         asset_type: Deed
         name: Homesteader
-        _source:
-          title: 'Ironsworn: Starforged Assets'
-        options:
-          name: *TextField.Name
+        source:
+          <<: *AssetSource
+        options: *Options_Name
         requirement: Once you fill 4 boxes on your bonds legacy track...
         abilities:
           - text: |-
@@ -4912,8 +4628,8 @@ assets:
       marked:
         asset_type: Deed
         name: Marked
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         options:
           identifier:
             label: Identifier
@@ -4970,8 +4686,8 @@ assets:
       oathbreaker:
         asset_type: Deed
         name: Oathbreaker
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         requirement: Once you [Forsake Your Vow](id:starforged/moves/quest/forsake_your_vow)...
         # Impact: true # TODO: add asset details for this
         count_as_impact: true
@@ -5022,8 +4738,8 @@ assets:
       revenant:
         asset_type: Deed
         name: Revenant
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         requirement: Once you [Face Death](id:starforged/moves/threshold/face_death)...
         abilities:
           - text: |-
@@ -5070,16 +4786,16 @@ assets:
                         - stat: heart
                       method: any
                 outcomes:
+                  <<: *outcomes:+1_momentum.HIT
                   strong_hit:
-                    text: Take +1 momentum.
+                    <<: *outcome:+1_momentum
                     match:
                       text: You experience a detailed vision or insightful revelation of what occurred here. Take +2 momentum.
-                  weak_hit: *outcome:+1_momentum
       survivor:
         asset_type: Deed
         name: Survivor
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         requirement: Once you mark traumatized or permanently harmed...
         abilities:
           - text: |-
@@ -5119,8 +4835,8 @@ assets:
       vanguard:
         asset_type: Deed
         name: Vanguard
-        _source:
-          title: 'Ironsworn: Starforged Assets'
+        source:
+          <<: *AssetSource
         requirement: Once you fill 6 boxes on your discoveries legacy track...
         abilities:
           - text: &move:Asset.Vanguard |-

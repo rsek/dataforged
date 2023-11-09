@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   title: 'Ironsworn: Starforged Rulebook'
   url: https://ironswornrpg.com
   authors:
@@ -15,7 +15,8 @@ oracles:
     collections:
       name:
         name: Character Name
-        _source:
+        source:
+          <<: *Source
           page: 333
         summary: |-
           Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
@@ -982,7 +983,8 @@ oracles:
     contents:
       first_look:
         name: First Look
-        _source:
+        source:
+          <<: *Source
           page: 330
         # content:
         #   part_of_speech: [adjective]
@@ -1110,7 +1112,8 @@ oracles:
             result: Youthful
       initial_disposition:
         name: Initial Disposition
-        _source:
+        source:
+          <<: *Source
           page: 330
         # content:
         #   part_of_speech: [adjective]
@@ -1155,7 +1158,8 @@ oracles:
             result: Hostile
       role:
         name: Character Role
-        _source:
+        source:
+          <<: *Source
           page: 331
         # content:
         #   part_of_speech: [noun, common noun]
@@ -1315,7 +1319,8 @@ oracles:
                 auto: true
       goal:
         name: Character Goal
-        _source:
+        source:
+          <<: *Source
           page: 331
         # content:
         #   part_of_speech: [fragment]
@@ -1478,7 +1483,8 @@ oracles:
                 auto: true
       revealed_aspect:
         name: Revealed Character Aspect
-        _source:
+        source:
+          <<: *Source
           page: 332
         summary: |-
           As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.

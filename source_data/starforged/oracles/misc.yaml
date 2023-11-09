@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   date: 2022-05-06
   page: 380
   authors:
@@ -13,7 +13,8 @@ oracles:
     contents:
       story_complication:
         name: Story Complication
-        _source:
+        source:
+          <<: *Source
           page: 380
         # content:
         #   part_of_speech: [fragment]
@@ -119,7 +120,8 @@ oracles:
                 auto: true
       story_clue:
         name: Story Clue
-        _source:
+        source:
+          <<: *Source
           page: 381
         # usage:
         #   max_rolls: 2
@@ -226,7 +228,8 @@ oracles:
                 auto: true
       anomaly_effect:
         name: Anomaly Effect
-        _source:
+        source:
+          <<: *Source
           page: 382
         # content:
         #   part_of_speech: [fragment]
@@ -338,7 +341,8 @@ oracles:
                 auto: true
       combat_action:
         name: Combat Action
-        _source:
+        source:
+          <<: *Source
           page: 383
         # content:
         #   part_of_speech: [fragment]

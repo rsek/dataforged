@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -9,14 +9,16 @@ source:
 oracles:
   turning_point:
     name: Turning Point
-    _source:
+    source:
+      <<: *Source
       page: 188
     contents:
       combat_action:
         name: Combat Action
         canonical_name: 'Oracle 16: Combat Action'
         summary: Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.
-        _source:
+        source:
+          <<: *Source
           page: 188
         table:
           - min: 1
@@ -76,7 +78,8 @@ oracles:
       mystic_backlash:
         name: Mystic Backlash
         canonical_name: 'Oracle 17: Mystic Backlash'
-        _source:
+        source:
+          <<: *Source
           page: 189
         summary: Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](id:classic/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.
         table:
@@ -164,7 +167,8 @@ oracles:
         canonical_name: 'Oracle 18: Major Plot Twist'
         name: Major Plot Twist
         summary: Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.
-        _source:
+        source:
+          <<: *Source
           page: 190
         table:
           - min: 1
@@ -260,7 +264,8 @@ oracles:
               table_key: foes
               content_type: summary
         summary: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
-        _source:
+        source:
+          <<: *Source
           page: 190
         contents:
           quest:
@@ -269,24 +274,28 @@ oracles:
               style: embed_as_column
             table:
               - &Troublesome
-                min: &Troublesome.low 1
-                max: &Troublesome.high 20
+                min: 1
+                max: 20
                 result: Troublesome
                 summary: 'A challenging quest with a small number of obstacles'
-              - min: &Dangerous.low 21
-                max: &Dangerous.high 55
+              - &Dangerous
+                min: 21
+                max: 55
                 result: Dangerous
                 summary: 'An involved quest with several tough obstacles'
-              - min: &Formidable.low 56
-                max: &Formidable.high 80
+              - &Formidable
+                min: 56
+                max: 80
                 result: Formidable
                 summary: 'A complex quest with many intimidating obstacles'
-              - min: &Extreme.low 81
-                max: &Extreme.high 93
+              - &Extreme
+                min: 81
+                max: 93
                 result: Extreme
                 summary: 'An overwhelming quest of staggering proportions'
-              - min: &Epic.low 94
-                max: &Epic.high 100
+              - &Epic
+                min: 94
+                max: 100
                 result: Epic
                 summary: 'A life-defining quest of unknowable scope'
           journey:
@@ -294,49 +303,28 @@ oracles:
             rendering:
               style: embed_as_column
             table:
-              # - <<: *Troublesome
-              - min: *Troublesome.low
-                max: *Troublesome.high
-                result: Troublesome
+              - <<: *Troublesome
                 summary: 'Traveling a moderate distance within a single region'
-              - min: *Dangerous.low
-                max: *Dangerous.high
-                result: Dangerous
+              - <<: *Dangerous
                 summary: 'Traveling a long distance within a single region, or across rough terrain'
-              - min: *Formidable.low
-                max: *Formidable.high
-                result: Formidable
+              - <<: *Formidable
                 summary: 'Traveling from one region to another, or across especially challenging terrain,'
-              - min: *Extreme.low
-                max: *Extreme.high
-                result: Extreme
+              - <<: *Extreme
                 summary: 'Traveling through multiple regions'
-              - min: *Epic.low
-                max: *Epic.high
-                result: Epic
+              - <<: *Epic
                 summary: 'Traveling from one end of the Ironlands to another, or to a separate land'
           foe:
             name: Foes
             rendering:
               style: embed_as_column
             table:
-              - min: *Troublesome.low
-                max: *Troublesome.high
-                result: Troublesome
+              - <<: *Troublesome
                 summary: 'Common enemies'
-              - min: *Dangerous.low
-                max: *Dangerous.high
-                result: Dangerous
+              - <<: *Dangerous
                 summary: 'Capable fighters and deadly creatures'
-              - min: *Formidable.low
-                max: *Formidable.high
-                result: Formidable
+              - <<: *Formidable
                 summary: 'Exceptional fighters and mighty creatures'
-              - min: *Extreme.low
-                max: *Extreme.high
-                result: Extreme
+              - <<: *Extreme
                 summary: 'Foes of overwhelming skill or power'
-              - min: *Epic.low
-                max: *Epic.high
-                result: Epic
+              - <<: *Epic
                 summary: 'Legendary foes of mythic power'

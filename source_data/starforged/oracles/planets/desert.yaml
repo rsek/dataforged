@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/desert-01.webp
           - images/planets/desert-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 308
         summary: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
         sample_names:

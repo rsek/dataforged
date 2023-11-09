@@ -1,5 +1,5 @@
 id: classic
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: Ironsworn Rulebook
@@ -9,14 +9,16 @@ source:
 oracles:
   place:
     name: Place
-    _source:
+    source:
+      <<: *Source
       page: 176
     contents:
       region:
         name: Region
         canonical_name: 'Oracle 3: Region'
         summary: Use this oracle when you want to randomly select a region with the Ironlands.
-        _source:
+        source:
+          <<: *Source
           title: Ironsworn Rulebook
           page: 176
         table:
@@ -57,7 +59,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: common_noun
-        _source:
+        source:
+          <<: *Source
           title: Ironsworn Rulebook
           page: 176
         table:
@@ -221,7 +224,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: common_noun
-        _source:
+        source:
+          <<: *Source
           title: Ironsworn Rulebook
           page: 176
         table:
@@ -283,7 +287,8 @@ oracles:
         _i18n:
           result:
             part_of_speech: adjective
-        _source:
+        source:
+          <<: *Source
           title: Ironsworn Rulebook
           page: 177
         table:

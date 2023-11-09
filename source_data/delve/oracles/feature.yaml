@@ -1,5 +1,5 @@
 id: delve
-source:
+source: &Source
   license: https://creativecommons.org/licenses/by/4.0
   url: https://ironswornrpg.com
   date: 2020-02-13
@@ -9,7 +9,8 @@ source:
 oracles:
   feature:
     name: Feature
-    _source:
+    source:
+      <<: *Source
       page: 204
     summary: Use the [Aspect](id:delve/oracles/feature/aspect) and [Focus](id:delve/oracles/feature/focus) oracles to answer questions or provide inspiration for a location or event within a site.
     description: |-
@@ -23,7 +24,8 @@ oracles:
         suggestions:
           oracles:
             - delve/oracles/feature/focus
-        _source:
+        source:
+          <<: *Source
           page: 204
 
         _i18n:
@@ -186,7 +188,8 @@ oracles:
         suggestions:
           oracles:
             - delve/oracles/feature/aspect
-        _source:
+        source:
+          <<: *Source
           page: 205
         _i18n:
           result:

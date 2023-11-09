@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged rulebook'
@@ -15,7 +15,8 @@ npcs:
         name: Chiton
         nature: Monster
         summary: Insectoid horde
-        _source:
+        source:
+          <<: *Source
           page: 259
         rank: 2
         features:
@@ -52,7 +53,8 @@ npcs:
         name: Colossus
         nature: Machine
         summary: Ancient mechanical giants
-        _source:
+        source:
+          <<: *Source
           page: 260
         rank: 5
         features:
@@ -85,7 +87,8 @@ npcs:
         name: Crystallid
         nature: Creature
         summary: Crystalline entities
-        _source:
+        source:
+          <<: *Source
           page: 261
         rank: 2
         features:
@@ -116,7 +119,8 @@ npcs:
         name: Drift pirate
         nature: Human
         summary: Spacegoing marauders
-        _source:
+        source:
+          <<: *Source
           page: 262
         rank: 2
         features:
@@ -155,7 +159,8 @@ npcs:
         name: Ember wisp
         nature: Creature
         summary: Energy-based lifeforms
-        _source:
+        source:
+          <<: *Source
           page: 264
         rank: 1
         features:
@@ -185,7 +190,8 @@ npcs:
         name: Firestorm trooper
         nature: Human
         summary: Fanatical raiders
-        _source:
+        source:
+          <<: *Source
           page: 265
         rank: 3
         features:
@@ -223,7 +229,8 @@ npcs:
         name: Flarewing shark
         nature: Creature
         summary: Deep sea predators
-        _source:
+        source:
+          <<: *Source
           page: 266
         rank: 4
         features:
@@ -254,7 +261,8 @@ npcs:
           In the twilight zone of a tidally-locked watery planet, an underwater mining settlement is the target of an ancient flarewing. In the murk of those dark waters, the beast attacks dive teams, carrier subs, dredging equipment—even undersea platforms. Operations are now stalled, cutting off a key source of unprocessed fuel in the sector. Meanwhile, the settlement's leader, grief-stricken by the loss of someone dear to them, vows to destroy the flarewing. What is your relation to this person? Do you support them in their obsession, or is there a way for the settlers to coexist with this creature?
       ghost:
         name: Ghost
-        _source:
+        source:
+          <<: *Source
           page: 268
         nature: Horror
         summary: Tormented spirits
@@ -289,7 +297,8 @@ npcs:
       gnawling:
         name: Gnawling
         nature: Creature
-        _source:
+        source:
+          <<: *Source
           page: 269
         summary: Infesting vermin
         rank: 1
@@ -320,7 +329,8 @@ npcs:
           An orbital settlement is overrun by gnawlings and abandoned. What precious thing still lies within? Why are you sworn to retrieve it from this infested place?
       howlcat:
         name: Howlcat
-        _source:
+        source:
+          <<: *Source
           page: 270
         nature: Creature
         summary: Jungle predators
@@ -356,7 +366,8 @@ npcs:
         name: Iron auger
         nature: Machine
         summary: Self-replicating harvesters
-        _source:
+        source:
+          <<: *Source
           page: 272
         rank: 3
         features:
@@ -393,7 +404,8 @@ npcs:
           As a massive auger approaches an orbital station under your protection, you face a difficult choice. Do you find a way to evacuate and save who you can, or attempt to bring down the mighty machine?
       puppet_vine:
         name: Puppet vine
-        _source:
+        source:
+          <<: *Source
           page: 273
         nature: Monster
         summary: Parasitic planets
@@ -425,7 +437,8 @@ npcs:
         name: Pyralis
         nature: Creature
         summary: Fireborne gliders
-        _source:
+        source:
+          <<: *Source
           page: 274
         rank: 3
         features:
@@ -461,7 +474,8 @@ npcs:
         nature: Horror
         summary: Shambling undead
         rank: 2
-        _source:
+        source:
+          <<: *Source
           page: 275
         features:
           - Shambling corpses given unnatural life
@@ -493,7 +507,8 @@ npcs:
         name: Scrap bandit
         nature: Human
         summary: Wandering raiders
-        _source:
+        source:
+          <<: *Source
           page: 276
         rank: 2
         features:
@@ -527,7 +542,8 @@ npcs:
       servitor:
         name: Servitor
         nature: Machine
-        _source:
+        source:
+          <<: *Source
           page: 278
         summary: Helper bots
         rank: 2
@@ -560,7 +576,8 @@ npcs:
         name: Sicklehorn
         nature: Creature
         summary: Domesticated herd animal
-        _source:
+        source:
+          <<: *Source
           page: 279
         rank: 2
         features:
@@ -596,7 +613,8 @@ npcs:
           A settlement's prized sicklehorn matriarch has been stolen, the herd is in disarray, and the settlers won't survive another year without her return. The theft is blamed on a rival settlement on the same planet, but raiders also plague this sector. How are you involved?
       sky_roost:
         name: Sky roost
-        _source:
+        source:
+          <<: *Source
           page: 280
         nature: Creature
         summary: Living skyborne islands
@@ -630,7 +648,8 @@ npcs:
           Sky roosts are dying. A disease is spreading among them, threatening the delicate ecosystem of their world. What human operations do you suspect lie at the heart of this sickness?
       technoplasm:
         name: Technoplasm
-        _source:
+        source:
+          <<: *Source
           page: 282
         nature: Monster
         summary: Bio/machine corruption
@@ -667,7 +686,8 @@ npcs:
           An outcast cult believes technoplasm is the ultimate synthesis of machine and flesh. They are plotting to unleash it upon populated space. What decisive first strike have they set in motion, and how do you learn of their scheme?
       void_shepherd:
         name: Void shepherd
-        _source:
+        source:
+          <<: *Source
           page: 283
         nature: Creature
         summary: Benevolent spacegoing guides
@@ -700,7 +720,8 @@ npcs:
           Several pods of void shepherds shelter within the debris of a shattered world. An expansive mining operation is harvesting the ore-rich rocks of the system, and the shepherds dance playfully in the wake of prospector and transport ships. But an aberrant, predatory creature has made this place its hunting ground, posing a threat to both the shepherd pods and the miners. What is the nature of this creature, and why are you sworn to end its attacks?
       warden:
         name: Warden
-        _source:
+        source:
+          <<: *Source
           page: 284
         nature: Human
         summary: Long-lived super soldiers
@@ -737,7 +758,8 @@ npcs:
           There are rumors of an enclave well beyond the inhabited sectors, a place where wardens can live in peace. An emerging threat against the people of the Forge causes you to seek out the aid of these living relics. What do you offer in return for their help?
       water_witcher:
         name: Water witcher
-        _source:
+        source:
+          <<: *Source
           page: 286
         nature: Creature
         summary: Friendly, water-finding diggers
@@ -771,7 +793,8 @@ npcs:
           A dowser has gone missing in the vast wastes of a newly-settled desert world, leaving behind their distraught waterwitcher. You are sworn to find the wayward dowser, and must serve as an unlikely keeper for their furry companion. What is your relationship to the dowser?
       worldbreaker:
         name: Worldbreaker
-        _source:
+        source:
+          <<: *Source
           page: 287
         nature: Creature
         summary: Titanic worms

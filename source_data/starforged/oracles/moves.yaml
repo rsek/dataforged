@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   date: 2022-05-06
   authors:
     - name: Shawn Tomkin
@@ -12,7 +12,8 @@ oracles:
     collections:
       ask_the_oracle:
         name: Ask the Oracle
-        _source:
+        source:
+          <<: *Source
           page: 229
         contents:
           almost_certain:
@@ -74,7 +75,8 @@ oracles:
     contents:
       begin_a_session:
         name: Begin a Session
-        _source:
+        source:
+          <<: *Source
           page: 141
         # content:
         #   part_of_speech: [fragment]
@@ -115,7 +117,8 @@ oracles:
             result: 'Unforeseen aid is on the way or within reach'
       make_a_discovery:
         name: Make a Discovery
-        _source:
+        source:
+          <<: *Source
           page: 176
         # content:
         #   part_of_speech: [fragment]
@@ -209,7 +212,8 @@ oracles:
                 auto: true
       confront_chaos:
         name: Confront Chaos
-        _source:
+        source:
+          <<: *Source
           page: 177
         # content:
         #   part_of_speech: [fragment]
@@ -293,7 +297,8 @@ oracles:
             result: Worshipers of great and malevolent powers
       take_decisive_action:
         name: Take Decisive Action
-        _source:
+        source:
+          <<: *Source
           page: 194
         # content:
         #   part_of_speech: [sentences]
@@ -318,7 +323,8 @@ oracles:
             result: 'It gets complicated: The true nature of a foe or objective is revealed'
       endure_harm:
         name: Endure Harm
-        _source:
+        source:
+          <<: *Source
           page: 200
         # content:
         #   part_of_speech: [sentences]
@@ -340,7 +346,8 @@ oracles:
             result: You are still standing.
       endure_stress:
         name: Endure Stress
-        _source:
+        source:
+          <<: *Source
           page: 202
         # content:
         #   part_of_speech: [sentences]
@@ -359,7 +366,8 @@ oracles:
             result: You persevere.
       withstand_damage:
         name: Withstand Damage
-        _source:
+        source:
+          <<: *Source
           page: 206
         # content:
         #   part_of_speech: [sentences]
@@ -390,7 +398,8 @@ oracles:
             result: 'Against all odds, the vehicle holds together.'
       pay_the_price:
         name: Pay the Price
-        _source:
+        source:
+          <<: *Source
           page: 232
         # content:
         #   part_of_speech: [fragment]

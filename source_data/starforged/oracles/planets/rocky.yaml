@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -15,7 +15,8 @@ oracles:
         images:
           - images/planets/rocky-01.webp
           - images/planets/rocky-02.webp
-        _source:
+        source:
+          <<: *Source
           page: 315
         summary: A rugged planet scarred by eons of destructive asteroid impacts.
         sample_names:

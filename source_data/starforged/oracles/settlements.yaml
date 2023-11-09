@@ -1,5 +1,5 @@
 id: starforged
-source:
+source: &Source
   authors:
     - name: Shawn Tomkin
   title: 'Ironsworn: Starforged Rulebook'
@@ -12,7 +12,8 @@ oracles:
     collections:
       population:
         name: Population
-        _source:
+        source:
+          <<: *Source
           page: 322
         # usage:
         #   initial: true
@@ -117,7 +118,8 @@ oracles:
       location:
         name: Location
         # _templateOracleTable: *template.info:Generic.Location
-        _source:
+        source:
+          <<: *Source
           page: 322
         # _templateTableRows:
         #   content: *template.content:Generic.Location
@@ -136,7 +138,8 @@ oracles:
             icon: icon/oracles/location/deep_space.svg
       first_look:
         name: First Look
-        _source:
+        source:
+          <<: *Source
           page: 323
         # usage:
         #   max_rolls: 2
@@ -217,7 +220,8 @@ oracles:
 
       initial_contact:
         name: Initial Contact
-        _source:
+        source:
+          <<: *Source
           page: 323
         # usage:
         #   initial: true
@@ -272,7 +276,8 @@ oracles:
 
       authority:
         name: Authority
-        _source:
+        source:
+          <<: *Source
           page: 323
         # usage:
         #   initial: true
@@ -309,7 +314,8 @@ oracles:
             # set_attributes: {authority: [oppressive]}
       projects:
         name: Settlement Projects
-        _source:
+        source:
+          <<: *Source
           page: 324
         # content:
         #   part_of_speech: [noun, common noun]
@@ -425,7 +431,8 @@ oracles:
                 auto: true
       trouble:
         name: Settlement Trouble
-        _source:
+        source:
+          <<: *Source
           page: 324
         # usage:
         #   max_rolls: 2
@@ -563,7 +570,8 @@ oracles:
                 auto: true
       name:
         name: Settlement Name
-        _source:
+        source:
+          <<: *Source
           page: 325
         summary: |-
           Choose a name appropriate to the nature of the settlement, or roll for a random result. You can let the name stand alone, or pair it with one of the following tags: Base, Citadel, Depot, Fortress, Hold, Landing, Outpost, Port, Station, Terminal.
