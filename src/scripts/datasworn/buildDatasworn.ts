@@ -83,7 +83,7 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 			if (JsonPointer.has(jsonOut, pointer))
 				JsonPointer.remove(jsonOut, pointer)
 
-		const dataOut = Prettier.format(
+		const dataOut = await Prettier.format(
 			JSON.stringify(
 				jsonOut,
 				(k, v) => (k.startsWith('_') ? undefined : v),

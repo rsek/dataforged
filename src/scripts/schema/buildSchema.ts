@@ -55,7 +55,7 @@ for await (const options of schemaOptions) {
 			await fs
 				.writeFile(
 					path,
-					prettier.format(
+					await prettier.format(
 						JSON.stringify(ajv.getSchema(options.name)?.schema),
 						prettierOptions
 					)
