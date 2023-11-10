@@ -1,14 +1,14 @@
 {
 	"source": {
-		"title": "Ironsworn: Starforged Rulebook",
-		"license": "https://creativecommons.org/licenses/by/4.0",
-		"url": "https://ironswornrpg.com",
-		"date": "2022-05-06",
 		"authors": [
 			{
 				"name": "Shawn Tomkin"
 			}
-		]
+		],
+		"title": "Ironsworn: Starforged Rulebook",
+		"license": "https://creativecommons.org/licenses/by/4.0",
+		"date": "2022-05-06",
+		"url": "https://ironswornrpg.com"
 	},
 	"id": "starforged",
 	"assets": {
@@ -32,8 +32,8 @@
 			"contents": {
 				"starship": {
 					"name": "Starship",
-					"asset_type": "Command Vehicle",
 					"shared": true,
+					"asset_type": "Command Vehicle",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -533,7 +533,6 @@
 										"starforged/moves/combat/enter_the_fray",
 										"starforged/moves/combat/gain_ground"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -541,7 +540,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -844,7 +844,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/combat/gain_ground"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -852,7 +851,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -1014,7 +1014,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/suffer/withstand_damage"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1022,7 +1021,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/module/reinforced_hull/abilities/0"
@@ -1051,7 +1051,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/combat/react_under_fire"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1059,7 +1058,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -1104,7 +1104,6 @@
 										"starforged/moves/scene_challenge/secure_an_advantage",
 										"starforged/moves/adventure/gather_information"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1112,7 +1111,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/module/research_lab/abilities/0"
@@ -1249,7 +1249,6 @@
 										"starforged/moves/adventure/secure_an_advantage",
 										"starforged/moves/scene_challenge/secure_an_advantage"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1257,7 +1256,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								},
 								{
 									"augments": ["starforged/moves/adventure/gather_information"],
@@ -1692,7 +1692,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/recover/repair"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1700,7 +1699,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/module/workshop/abilities/0"
@@ -1743,7 +1743,6 @@
 										"starforged/moves/adventure/face_danger",
 										"starforged/moves/scene_challenge/face_danger"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -1751,7 +1750,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								},
 								{
 									"augments": ["starforged/moves/quest/fulfill_your_vow"],
@@ -1797,6 +1797,7 @@
 					"name": "Exosuit",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1900,6 +1901,7 @@
 					"name": "Hoverbike",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -1998,6 +2000,7 @@
 					"name": "Rover",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2047,7 +2050,6 @@
 										"starforged/moves/exploration/undertake_an_expedition",
 										"starforged/moves/exploration/set_a_course"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2055,7 +2057,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								},
 								{
 									"augments": [
@@ -2124,6 +2127,7 @@
 					"name": "Service Pod",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2169,7 +2173,6 @@
 							"enabled": true,
 							"augment_moves": [
 								{
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2177,7 +2180,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"id": "starforged/assets/support_vehicle/service_pod/abilities/0"
@@ -2238,6 +2242,7 @@
 					"name": "Shuttle",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2292,7 +2297,6 @@
 										"starforged/moves/scene_challenge/face_danger",
 										"starforged/moves/combat/react_under_fire"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2300,7 +2304,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -2311,7 +2316,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/suffer/withstand_damage"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2319,7 +2323,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -2333,6 +2338,7 @@
 					"name": "Skiff",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2442,6 +2448,7 @@
 					"name": "Snub Fighter",
 					"asset_type": "Support Vehicle",
 					"shared": true,
+					"color": "#495790",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2515,7 +2522,6 @@
 										"starforged/moves/combat/strike",
 										"starforged/moves/combat/clash"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2523,7 +2529,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -2570,6 +2577,7 @@
 				"ace": {
 					"name": "Ace",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2610,7 +2618,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/combat/gain_ground"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -2618,7 +2625,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -2657,6 +2665,7 @@
 				"archer": {
 					"name": "Archer",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2777,6 +2786,7 @@
 				"armored": {
 					"name": "Armored",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2846,6 +2856,7 @@
 				"artist": {
 					"name": "Artist",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -2973,6 +2984,7 @@
 				"augmented": {
 					"name": "Augmented",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3042,6 +3054,7 @@
 				"bannersworn": {
 					"name": "Bannersworn",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3100,7 +3113,6 @@
 								},
 								{
 									"augments": ["starforged/moves/connection/forge_a_bond"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -3108,7 +3120,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "progress_roll"
 								}
 							],
 							"enabled": false,
@@ -3140,6 +3153,7 @@
 				"blademaster": {
 					"name": "Blademaster",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3238,7 +3252,6 @@
 							"augment_moves": [
 								{
 									"augments": ["starforged/moves/quest/swear_an_iron_vow"],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -3246,7 +3259,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "action_roll"
 								}
 							],
 							"enabled": false,
@@ -3260,6 +3274,7 @@
 				"bounty_hunter": {
 					"name": "Bounty Hunter",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3290,7 +3305,6 @@
 								},
 								{
 									"augments": ["starforged/moves/quest/fulfill_your_vow"],
-									"roll_type": "progress_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -3298,7 +3312,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "progress_roll"
 								}
 							],
 							"id": "starforged/assets/path/bounty_hunter/abilities/0"
@@ -3349,6 +3364,7 @@
 				"brawler": {
 					"name": "Brawler",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3439,6 +3455,7 @@
 				"courier": {
 					"name": "Courier",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3536,6 +3553,7 @@
 				"demolitionist": {
 					"name": "Demolitionist",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3611,6 +3629,7 @@
 				"devotant": {
 					"name": "Devotant",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3756,6 +3775,7 @@
 				"diplomat": {
 					"name": "Diplomat",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3843,6 +3863,7 @@
 				"empath": {
 					"name": "Empath",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -3953,6 +3974,7 @@
 				"explorer": {
 					"name": "Explorer",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4019,6 +4041,7 @@
 				"fated": {
 					"name": "Fated",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4098,6 +4121,7 @@
 				"firebrand": {
 					"name": "Firebrand",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4207,6 +4231,7 @@
 				"fugitive": {
 					"name": "Fugitive",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4265,6 +4290,7 @@
 				"gearhead": {
 					"name": "Gearhead",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4344,6 +4370,7 @@
 				"gunner": {
 					"name": "Gunner",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4456,6 +4483,7 @@
 				"gunslinger": {
 					"name": "Gunslinger",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4556,6 +4584,7 @@
 				"haunted": {
 					"name": "Haunted",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4618,6 +4647,7 @@
 				"healer": {
 					"name": "Healer",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4693,6 +4723,7 @@
 				"infiltrator": {
 					"name": "Infiltrator",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4774,6 +4805,7 @@
 				"kinetic": {
 					"name": "Kinetic",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4835,6 +4867,7 @@
 				"leader": {
 					"name": "Leader",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -4916,6 +4949,7 @@
 				"looper": {
 					"name": "Looper",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5016,6 +5050,7 @@
 				"lore_hunter": {
 					"name": "Lore Hunter",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5108,6 +5143,7 @@
 				"loyalist": {
 					"name": "Loyalist",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5179,6 +5215,7 @@
 				"mercenary": {
 					"name": "Mercenary",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5209,7 +5246,6 @@
 								},
 								{
 									"augments": ["starforged/moves/quest/fulfill_your_vow"],
-									"roll_type": "progress_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -5217,7 +5253,8 @@
 												"method": "any"
 											}
 										]
-									}
+									},
+									"roll_type": "progress_roll"
 								}
 							],
 							"id": "starforged/assets/path/mercenary/abilities/0"
@@ -5280,6 +5317,7 @@
 				"naturalist": {
 					"name": "Naturalist",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5375,6 +5413,7 @@
 				"navigator": {
 					"name": "Navigator",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5479,6 +5518,7 @@
 				"outcast": {
 					"name": "Outcast",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5589,6 +5629,7 @@
 				"scavenger": {
 					"name": "Scavenger",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5678,6 +5719,7 @@
 				"scoundrel": {
 					"name": "Scoundrel",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5746,6 +5788,7 @@
 				"seer": {
 					"name": "Seer",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5836,6 +5879,7 @@
 				"shade": {
 					"name": "Shade",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -5939,6 +5983,7 @@
 				"slayer": {
 					"name": "Slayer",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6027,6 +6072,7 @@
 				"sleuth": {
 					"name": "Sleuth",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6103,6 +6149,7 @@
 				"sniper": {
 					"name": "Sniper",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6232,6 +6279,7 @@
 				"tech": {
 					"name": "Tech",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6303,6 +6351,7 @@
 				"trader": {
 					"name": "Trader",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6403,6 +6452,7 @@
 				"vestige": {
 					"name": "Vestige",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6492,6 +6542,7 @@
 				"veteran": {
 					"name": "Veteran",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6551,6 +6602,7 @@
 				"voidborn": {
 					"name": "Voidborn",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6628,6 +6680,7 @@
 				"weapon_master": {
 					"name": "Weapon Master",
 					"asset_type": "Path",
+					"color": "#3f7faa",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6746,6 +6799,7 @@
 				"banshee": {
 					"name": "Banshee",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6766,8 +6820,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
 						"controls": {
 							"out_of_action": {
@@ -6866,6 +6920,7 @@
 				"combat_bot": {
 					"name": "Combat Bot",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -6886,8 +6941,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 5,
 						"min": 0,
+						"max": 5,
 						"value": 5,
 						"controls": {
 							"out_of_action": {
@@ -6998,6 +7053,7 @@
 				"glowcat": {
 					"name": "Glowcat",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7018,8 +7074,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 3,
 						"min": 0,
+						"max": 3,
 						"value": 3,
 						"controls": {
 							"out_of_action": {
@@ -7106,6 +7162,7 @@
 				"protocol_bot": {
 					"name": "Protocol Bot",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7126,8 +7183,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 3,
 						"min": 0,
+						"max": 3,
 						"value": 3,
 						"controls": {
 							"out_of_action": {
@@ -7195,6 +7252,7 @@
 				"rockhorn": {
 					"name": "Rockhorn",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7215,8 +7273,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 5,
 						"min": 0,
+						"max": 5,
 						"value": 5,
 						"controls": {
 							"out_of_action": {
@@ -7306,6 +7364,7 @@
 				"sidekick": {
 					"name": "Sidekick",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7331,8 +7390,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
 						"controls": {
 							"out_of_action": {
@@ -7437,6 +7496,7 @@
 				"sprite": {
 					"name": "Sprite",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7457,8 +7517,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 2,
 						"min": 0,
+						"max": 2,
 						"value": 2,
 						"controls": {
 							"out_of_action": {
@@ -7531,6 +7591,7 @@
 				"survey_bot": {
 					"name": "Survey Bot",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7551,8 +7612,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 3,
 						"min": 0,
+						"max": 3,
 						"value": 3,
 						"controls": {
 							"out_of_action": {
@@ -7682,6 +7743,7 @@
 				"symbiote": {
 					"name": "Symbiote",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7702,8 +7764,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 2,
 						"min": 0,
+						"max": 2,
 						"value": 2,
 						"controls": {
 							"out_of_action": {
@@ -7770,6 +7832,7 @@
 				"utility_bot": {
 					"name": "Utility Bot",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7790,8 +7853,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
 						"controls": {
 							"out_of_action": {
@@ -7886,6 +7949,7 @@
 				"voidglider": {
 					"name": "Voidglider",
 					"asset_type": "Companion",
+					"color": "#3d8b8a",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -7906,8 +7970,8 @@
 					},
 					"condition_meter": {
 						"label": "health",
-						"max": 4,
 						"min": 0,
+						"max": 4,
 						"value": 4,
 						"controls": {
 							"out_of_action": {
@@ -8022,7 +8086,7 @@
 			"contents": {
 				"bonded": {
 					"asset_type": "Deed",
-					"name": "Bonded",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8034,6 +8098,7 @@
 							}
 						]
 					},
+					"name": "Bonded",
 					"options": {
 						"bond_mate": {
 							"label": "Bond-mate",
@@ -8125,7 +8190,7 @@
 				},
 				"homesteader": {
 					"asset_type": "Deed",
-					"name": "Homesteader",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8137,6 +8202,7 @@
 							}
 						]
 					},
+					"name": "Homesteader",
 					"options": {
 						"name": {
 							"field_type": "text",
@@ -8233,8 +8299,9 @@
 					"id": "starforged/assets/deed/homesteader"
 				},
 				"marked": {
-					"asset_type": "Deed",
 					"name": "Marked",
+					"asset_type": "Deed",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8322,8 +8389,9 @@
 					"id": "starforged/assets/deed/marked"
 				},
 				"oathbreaker": {
-					"asset_type": "Deed",
 					"name": "Oathbreaker",
+					"asset_type": "Deed",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8408,8 +8476,9 @@
 					"id": "starforged/assets/deed/oathbreaker"
 				},
 				"revenant": {
-					"asset_type": "Deed",
 					"name": "Revenant",
+					"asset_type": "Deed",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8495,8 +8564,9 @@
 					"id": "starforged/assets/deed/revenant"
 				},
 				"survivor": {
-					"asset_type": "Deed",
 					"name": "Survivor",
+					"asset_type": "Deed",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",
@@ -8545,8 +8615,9 @@
 					"id": "starforged/assets/deed/survivor"
 				},
 				"vanguard": {
-					"asset_type": "Deed",
 					"name": "Vanguard",
+					"asset_type": "Deed",
+					"color": "#40834f",
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"license": "https://creativecommons.org/licenses/by/4.0",

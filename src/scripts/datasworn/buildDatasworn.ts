@@ -24,10 +24,12 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 
 	const tempDir = path.join(ROOT_OUTPUT, id)
 
-	const yamlFilesIn = await fastGlob(`${paths.source}/**/*.yaml`)
+	const [yamlFilesIn, oldJsonFiles] = await Promise.all([
+		fastGlob(`${paths.source}/**/*.yaml`),
+		fastGlob(`${tempDir}/*.json`)
+	])
 
-	const oldJsonFiles = await fastGlob(`${tempDir}/*.json`)
-	log.info(`Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
+	log.info(`🔍 Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
 
 	if (yamlFilesIn?.length === 0)
 		throw new Error(
@@ -35,15 +37,20 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 		)
 
 	if (oldJsonFiles?.length > 0) {
-		log.info(`Deleting ${oldJsonFiles?.length} old JSON files`)
+		log.info(
+			`🧹 Deleting ${oldJsonFiles?.length} old JSON files from ${tempDir}`
+		)
 		// flush old files from outdir
-		for await (const filePath of oldJsonFiles) await fs.unlink(filePath)
+		await Promise.all(oldJsonFiles.map((filePath) => fs.unlink(filePath)))
 	}
-	for await (const filePath of yamlFilesIn) {
-		const data = await buildFile(filePath)
 
-		merge(sourcebook, data)
-	}
+	await Promise.all(
+		yamlFilesIn.map((filePath) => {
+			log.info(`📖 Reading ${filePath}`)
+			return buildFile(filePath).then((data) => merge(sourcebook, data))
+		})
+	)
+
 	const metadataKeys = ['source', 'id']
 
 	const sourcebookMetadata = omit(pick(sourcebook, metadataKeys), 'source.page')
@@ -54,6 +61,7 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 
 	// exclude metadata keys
 	for await (const [k, v] of Object.entries(sourcebook)) {
+		if (k.startsWith('_')) continue
 		if (metadataKeys.includes(k)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue
 
@@ -86,7 +94,7 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 
 		const outPath = path.join(tempDir, `${k}.json`)
 
-		log.info(`Writing to ${outPath}`)
+		log.info(`✏️  Writing to ${outPath}`)
 
 		await fs.ensureFile(outPath)
 		await writeJSON(outPath, jsonOut, { replacer })
@@ -95,7 +103,6 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 
 /** Builds from the contents of a single YAML or JSON file */
 async function buildFile(filePath: string) {
-	log.info(`Building from ${filePath}`)
 	const sourceData = await readSource(filePath)
 
 	const baseSchemaName = 'Datasworn'

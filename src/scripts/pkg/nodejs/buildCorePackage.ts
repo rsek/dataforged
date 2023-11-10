@@ -10,11 +10,12 @@ import {
 import { log } from '../../utils/logger.js'
 
 /** Assembles the core package from built data, which contains types, schema, and documentation. */
-export async function assembleCorePackage() {
-	const corePkgDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
+export async function buildCorePackage() {
 	const corePkgId = `${PKG_SCOPE_OFFICIAL}/core`
+	log.info(`⚙️  Building ${corePkgId}...`)
 
-	log.info(`Assembling ${corePkgId}...`)
+	const corePkgDir = path.join(PKG_DIR_NODE, PKG_SCOPE_OFFICIAL, 'core')
+
 	const jsonDir = path.join(corePkgDir, 'json')
 	const typesDest = path.join(corePkgDir, 'index.d.ts')
 
@@ -37,5 +38,5 @@ export async function assembleCorePackage() {
 		)
 	])
 
-	return log.info(`Finished rebuilding ${corePkgId}`)
+	return log.info(`✅ Finished building ${corePkgId}`)
 }

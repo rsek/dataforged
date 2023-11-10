@@ -5,11 +5,7 @@ import { type DataPackageConfig } from '../../../schema/tools/build/index.js'
 import { PKG_DIR_NODE, ROOT_OUTPUT } from '../../const.js'
 
 /** Assemble a package using data in {@link ROOT_OUTPUT} */
-export async function assembleDataPackage({
-	id,
-	pkg,
-	paths
-}: DataPackageConfig) {
+export async function buildDataPackage({ id, pkg, paths }: DataPackageConfig) {
 	const pkgID = path.join(pkg.scope, pkg.name)
 
 	const jsonSrc = path.join(ROOT_OUTPUT, id)
@@ -30,5 +26,5 @@ export async function assembleDataPackage({
 		} else await fs.remove(assetDest)
 	}
 
-	return log.info(`Finished assembling ${pkgID}`)
+	return log.info(`✅ Finished building ${pkgID}`)
 }

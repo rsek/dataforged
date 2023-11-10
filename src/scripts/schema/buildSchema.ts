@@ -25,8 +25,8 @@ const schemaOptions: SchemaOptions[] = [
 		schema: Schema.Datasworn.getSchema() as JsonSchema,
 		paths: [CONST.SCHEMA_OUT],
 		messages: {
-			writeStart: 'Writing schema for Datasworn',
-			writeFinish: 'Finished writing schema for Datasworn'
+			writeStart: '✏️  Writing schema for Datasworn',
+			writeFinish: '✅ Finished writing schema for Datasworn'
 		}
 	},
 	{
@@ -34,8 +34,8 @@ const schemaOptions: SchemaOptions[] = [
 		schema: Schema.DataswornInput.getSchema() as JsonSchema,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
-			writeStart: 'Writing schema for Datasworn YAML input',
-			writeFinish: 'Finished writing schema for Datasworn YAML input'
+			writeStart: '✏️  Writing schema for Datasworn YAML input',
+			writeFinish: '✅ Finished writing schema for Datasworn YAML input'
 		}
 	}
 ]
