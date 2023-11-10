@@ -5,29 +5,30 @@ import { log } from '../utils/logger.js'
 import ajv from '../validation/ajv.js'
 import { buildSourcebook } from './buildDatasworn.js'
 import { SCHEMA_IN, SCHEMA_OUT } from '../const.js'
+import { formatPath } from '../../utils.js'
 
 log.info('📖 Reading schema...')
 
-const Datasworn = await fs.readJSON(SCHEMA_OUT)
-const DataswornInput = await fs.readJSON(SCHEMA_IN)
-
-// empty schema cache and load them from files
+// flush any old schemas
 ajv.removeSchema()
 
-const schemas = { Datasworn, DataswornInput }
+const schemas = {
+	DataswornInput: SCHEMA_IN,
+	Datasworn: SCHEMA_OUT
+}
 
-await Promise.all(
-	Object.entries(schemas).map(([k, v]) => {
-		ajv.validateSchema(v, true)
-		ajv.addSchema(v, k)
-	})
-)
+for await (const [id, filePath] of Object.entries(schemas)) {
+	const v = await fs.readJSON(filePath)
+	ajv.validateSchema(v, true)
+	ajv.addSchema(v, id)
+	log.info(`✅ Loaded ${id} schema from ${formatPath(filePath)}`)
+}
 
 // TODO: invert the logic for this so that it infers from directory structure
 log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
-	Object.values(pkgs).map(
-		async (pkg) => await buildSourcebook(pkg).catch((e) => log.info(e))
+	Object.values(pkgs).map((pkg) =>
+		buildSourcebook(pkg).catch((e) => log.error(`Failed to build ${pkg.id}`, e))
 	)
 )

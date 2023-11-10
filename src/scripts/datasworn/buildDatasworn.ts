@@ -1,9 +1,7 @@
 import fastGlob from 'fast-glob'
 import fs from 'fs-extra'
-import jsYaml from 'js-yaml'
 import { merge, omit, pick } from 'lodash-es'
 import path from 'path'
-import * as Prettier from 'prettier'
 import { pascalCase } from '../../schema/datasworn/common/utils.js'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
 import { type SourceHaver, transform } from '../../builders/transformer.js'
@@ -12,104 +10,138 @@ import ajv from '../validation/ajv.js'
 import { log } from '../utils/logger.js'
 import { writeJSON } from './readWrite.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
-import { ROOT_OUTPUT } from '../const.js'
+import { ROOT_OUTPUT, ROOT_SOURCE_DATA } from '../const.js'
 import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
-import { walkObjectWithSchema } from '../utils/walk.js'
 import { readSource } from './readWrite.js'
+import { formatPath } from '../../utils.js'
 
-/** Builds all YAML files for a given package in {@link ROOT_DATA_IN}, and writes them to a directory in {@link ROOT_DATA_OUT} */
+const metadataKeys = ['source', 'id'] as const
+const isMacroKey = (key: string) => key.startsWith('_')
+
+/** Builds all YAML files for a given package configuration */
 export async function buildSourcebook({ id, paths }: DataPackageConfig) {
+	log.info(`⚙️  Building sourcebook: ${id}`)
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
-	const tempDir = path.join(ROOT_OUTPUT, id)
+	const destDir = path.join(ROOT_OUTPUT, id)
 
-	const [yamlFilesIn, oldJsonFiles] = await Promise.all([
-		fastGlob(`${paths.source}/**/*.yaml`),
-		fastGlob(`${tempDir}/*.json`)
+	const sourceFilesGlob = `${paths.source}/**/*.yaml`
+	const oldJsonFilesGlob = `${destDir}/*.json`
+
+	const [sourceFiles, oldJsonFiles] = await Promise.all([
+		fastGlob(sourceFilesGlob),
+		fastGlob(oldJsonFilesGlob)
 	])
 
-	log.info(`🔍 Found ${yamlFilesIn?.length ?? 0} YAML files in ${paths.source}`)
+	log.info(
+		`🔍 Found ${sourceFiles?.length ?? 0} YAML files in ${formatPath(
+			paths.source
+		)}`
+	)
 
-	if (yamlFilesIn?.length === 0)
+	if (sourceFiles?.length === 0)
 		throw new Error(
-			`Could not find any YAML files with the glob ${paths.source}/**/*.yaml`
+			`Could not find any YAML files with the glob ${sourceFilesGlob}`
 		)
 
-	if (oldJsonFiles?.length > 0) {
-		log.info(
-			`🧹 Deleting ${oldJsonFiles?.length} old JSON files from ${tempDir}`
-		)
-		// flush old files from outdir
-		await Promise.all(oldJsonFiles.map((filePath) => fs.unlink(filePath)))
-	}
+	// flush old files from outdir
+	const cleanup = Promise.all(
+		oldJsonFiles.map((filePath) => fs.unlink(filePath))
+	)
 
 	const builtFiles = new Map<string, Out.Datasworn>()
 
 	await Promise.all(
-		yamlFilesIn.map((filePath) => {
-			log.info(`📖 Reading ${filePath}`)
-			return buildFile(filePath).then((data) => builtFiles.set(filePath, data))
-		})
+		sourceFiles.map((filePath) =>
+			buildFile(filePath).then((data) => builtFiles.set(filePath, data))
+		)
 	)
 
-	// sort by file name so that they merge in the same order each time
 	Array.from(builtFiles.entries())
-		.sort(([a], [b]) => a.localeCompare(b))
-		.forEach(([fileName, data]) => merge(sourcebook, data))
+		// sort by file name so that they merge in the same order every time (prevents JSON diff noise). the order itself is arbitrary, but must be the same no matter who runs it.
+		.sort(([a], [b]) => a.localeCompare(b, 'en-US'))
+		.forEach(([_, data]) => merge(sourcebook, data))
 
-	const metadataKeys = ['source', 'id']
-
-	const sourcebookMetadata = omit(pick(sourcebook, metadataKeys), 'source.page')
+	const sourcebookMetadata = omit(
+		pick(sourcebook, metadataKeys),
+		'source.page'
+	) as unknown as SourcebookMetadata
 
 	// exclude certain keys which are still in development
 	// FIXME there's probably a more elegant way to do this, by looking at the json schema's releaseFlag
 	const experimentalKeys = ['augment_asset']
 
-	// exclude metadata keys
+	const toWrite: Promise<void>[] = []
+
 	for await (const [k, v] of Object.entries(sourcebook)) {
-		if (k.startsWith('_')) continue
-		if (metadataKeys.includes(k)) continue
+		if (isMacroKey(k)) continue
+		if (metadataKeys.includes(k as any)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue
 
-		const jsonOut = { ...sourcebookMetadata, [k]: v }
+		const jsonOut = cleanDatasworn(k as any, v, sourcebookMetadata)
 
-		// TODO: rewrite this using keywords and Draft.each() from json-schema-library
+		/** JSON transformer to strip underscore (macro) properties */
+		const replacer = (k: string, v: unknown) => (isMacroKey(k) ? undefined : v)
 
-		ajv.validate('Datasworn', jsonOut)
+		const outPath = path.join(destDir, `${k}.json`)
 
-		const pointersToDelete: string[] = []
-
-		jsc.input.each(jsonOut, (schema, data, pointer) => {
-			const sep = '/'
-			const key = pointer.split(sep)?.pop()
-			if (
-				key?.startsWith('_') ??
-				//  experimentalKeys.includes(key as any) ||
-				schema?.macro
-			)
-				pointersToDelete.push(pointer)
-		})
-
-		for (const pointer of pointersToDelete)
-			if (JsonPointer.has(jsonOut, pointer))
-				JsonPointer.remove(jsonOut, pointer)
-
-		/** Transforms JSON -- removes macro/meta properties, which are prefixed with underscores */
-		const replacer = (k: string, v: unknown) =>
-			k.startsWith('_') ? undefined : v
-
-		const outPath = path.join(tempDir, `${k}.json`)
-
-		log.info(`✏️  Writing to ${outPath}`)
-
-		await fs.ensureFile(outPath)
-		await writeJSON(outPath, jsonOut, { replacer })
+		toWrite.push(
+			fs.ensureFile(outPath).then(() => {
+				log.info(`✏️  Writing to ${formatPath(outPath)}`)
+				return writeJSON(outPath, jsonOut, { replacer })
+			})
+		)
 	}
+
+	if (oldJsonFiles?.length > 0)
+		log.info(
+			`🧹 Deleting ${oldJsonFiles?.length} old JSON files from ${formatPath(
+				destDir
+			)}`
+		)
+
+	await cleanup
+
+	await Promise.all(toWrite)
+
+	log.info(`✅ Finished writing sourcebook "${id}" to ${formatPath(destDir)}`)
+}
+
+function cleanDatasworn<K extends SourcebookDataKey = SourcebookDataKey>(
+	k: K,
+	v: unknown,
+	sourcebookMetadata: SourcebookMetadata
+) {
+	const jsonOut = { ...sourcebookMetadata, [k]: v }
+
+	// TODO: rewrite this using keywords and Draft.each() from json-schema-library
+
+	ajv.validate('Datasworn', jsonOut)
+
+	const pointersToDelete: string[] = []
+
+	jsc.input.each(jsonOut, (schema, data, pointer) => {
+		const sep = '/'
+		const key = pointer.split(sep)?.pop()
+		if (
+			key?.startsWith('_') ??
+			//  experimentalKeys.includes(key as any) ||
+			schema?.macro
+		)
+			pointersToDelete.push(pointer)
+	})
+
+	for (const pointer of pointersToDelete)
+		if (JsonPointer.has(jsonOut, pointer)) JsonPointer.remove(jsonOut, pointer)
+
+	return jsonOut as Out.Datasworn
 }
 
 /** Builds from the contents of a single YAML or JSON file */
 async function buildFile(filePath: string) {
+	log.info(`📖 Reading ${formatPath(filePath)}`)
+
 	const sourceData = await readSource(filePath)
 
 	const baseSchemaName = 'Datasworn'
@@ -149,3 +181,10 @@ async function buildFile(filePath: string) {
 	}
 	return builtData
 }
+
+type SourcebookMetadataKeys = (typeof metadataKeys)[number]
+
+type SourcebookMetadata = Pick<Out.Datasworn, SourcebookMetadataKeys>
+type SourcebookDataKey = Exclude<keyof Out.Datasworn, SourcebookMetadataKeys>
+type SourcebookData<T extends SourcebookDataKey = SourcebookDataKey> =
+	Out.Datasworn[T]
