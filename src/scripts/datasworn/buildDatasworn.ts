@@ -35,9 +35,9 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	])
 
 	log.info(
-		`🔍 Found ${sourceFiles?.length ?? 0} YAML files in ${formatPath(
-			paths.source
-		)}`
+		`🔍 Found ${
+			sourceFiles?.length ?? 0
+		} YAML files for "${id}" in ${formatPath(paths.source)}`
 	)
 
 	if (sourceFiles?.length === 0)
