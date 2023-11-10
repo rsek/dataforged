@@ -12,12 +12,15 @@ log.info('📖 Reading schema...')
 // flush any old schemas
 ajv.removeSchema()
 
-const schemas = {
-	DataswornInput: SCHEMA_IN,
-	Datasworn: SCHEMA_OUT
-}
+const schemaInId = 'DataswornInput'
+const schemaOutId = 'Datasworn'
 
-for await (const [id, filePath] of Object.entries(schemas)) {
+const schemas = new Map([
+	[schemaInId, SCHEMA_IN],
+	[schemaOutId, SCHEMA_OUT]
+])
+
+for await (const [id, filePath] of schemas) {
 	const v = await fs.readJSON(filePath)
 	ajv.validateSchema(v, true)
 	ajv.addSchema(v, id)
@@ -29,6 +32,8 @@ log.info('⚙️  Building sourcebooks...')
 
 await Promise.all(
 	Object.values(pkgs).map((pkg) =>
-		buildSourcebook(pkg).catch((e) => log.error(`Failed to build ${pkg.id}`, e))
+		buildSourcebook(pkg, schemaInId, schemaOutId).catch((e) =>
+			log.error(`Failed to build ${pkg.id}`, e)
+		)
 	)
 )

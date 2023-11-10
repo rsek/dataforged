@@ -2,7 +2,6 @@ import fastGlob from 'fast-glob'
 import fs from 'fs-extra'
 import { merge, omit, pick } from 'lodash-es'
 import path from 'path'
-import { pascalCase } from '../../schema/datasworn/common/utils.js'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
 import { type SourceHaver, transform } from '../../builders/transformer.js'
 import type { In, Out } from '../../types/index.js'
@@ -10,7 +9,7 @@ import ajv from '../validation/ajv.js'
 import { log } from '../utils/logger.js'
 import { writeJSON } from './readWrite.js'
 import { type DataPackageConfig } from '../../schema/tools/build/index.js'
-import { ROOT_OUTPUT, ROOT_SOURCE_DATA } from '../const.js'
+import { ROOT_OUTPUT } from '../const.js'
 import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
 import { readSource } from './readWrite.js'
@@ -20,7 +19,11 @@ const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
 
 /** Builds all YAML files for a given package configuration */
-export async function buildSourcebook({ id, paths }: DataPackageConfig) {
+export async function buildSourcebook(
+	{ id, paths }: DataPackageConfig,
+	schemaIdIn: string,
+	schemaIdOut: string
+) {
 	log.info(`⚙️  Building sourcebook: ${id}`)
 	const sourcebook: Record<string, Record<string, unknown>> = {}
 
@@ -53,9 +56,15 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 	const builtFiles = new Map<string, Out.Datasworn>()
 
 	await Promise.all(
-		sourceFiles.map((filePath) =>
-			buildFile(filePath).then((data) => builtFiles.set(filePath, data))
-		)
+		sourceFiles.map(async (filePath) => {
+			const sourceData = await readSourcebookFile(filePath, schemaIdIn)
+			const builtData = await buildSourcebookFile(
+				filePath,
+				sourceData,
+				schemaIdOut
+			)
+			builtFiles.set(filePath, builtData)
+		})
 	)
 
 	Array.from(builtFiles.entries())
@@ -139,24 +148,12 @@ function cleanDatasworn<K extends SourcebookDataKey = SourcebookDataKey>(
 }
 
 /** Builds from the contents of a single YAML or JSON file */
-async function buildFile(filePath: string) {
-	log.info(`📖 Reading ${formatPath(filePath)}`)
-
-	const sourceData = await readSource(filePath)
-
-	const baseSchemaName = 'Datasworn'
-
+async function buildSourcebookFile(
+	filePath: string,
+	sourceData: In.Datasworn,
+	schemaIdOut: string
+) {
 	const transformer = DataswornBuilder
-
-	const schemaIdIn = `${pascalCase(baseSchemaName)}Input`
-	const schemaIdOut = pascalCase(baseSchemaName)
-
-	if (!ajv.validate<In.Datasworn>(schemaIdIn, sourceData)) {
-		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
-		throw new Error(
-			`YAML data in ${filePath} doesn't match the ${schemaIdIn} schema`
-		)
-	}
 
 	const builtData = transform<In.Datasworn, Out.Datasworn>(
 		sourceData,
@@ -188,3 +185,17 @@ type SourcebookMetadata = Pick<Out.Datasworn, SourcebookMetadataKeys>
 type SourcebookDataKey = Exclude<keyof Out.Datasworn, SourcebookMetadataKeys>
 type SourcebookData<T extends SourcebookDataKey = SourcebookDataKey> =
 	Out.Datasworn[T]
+
+async function readSourcebookFile(filePath: string, schemaIdIn: string) {
+	log.info(`📖 Reading ${formatPath(filePath)}`)
+
+	const sourceData = await readSource(filePath)
+
+	if (!ajv.validate<In.Datasworn>(schemaIdIn, sourceData)) {
+		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
+		throw new Error(
+			`YAML data in ${filePath} doesn't match the ${schemaIdIn} schema`
+		)
+	}
+	return sourceData
+}
