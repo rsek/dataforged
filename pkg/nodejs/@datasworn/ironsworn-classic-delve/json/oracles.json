@@ -12,6 +12,756 @@
 	},
 	"id": "delve",
 	"oracles": {
+		"character": {
+			"extends": "classic/collections/oracles/character",
+			"name": "Character",
+			"summary": "Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.",
+			"source": {
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com",
+				"date": "2020-02-13",
+				"title": "Ironsworn: Delve",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"page": 213
+			},
+			"contents": {
+				"activity": {
+					"name": "Activity",
+					"canonical_name": "Character: Activity",
+					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
+					"suggestions": {
+						"oracles": [
+							"delve/oracles/feature/focus",
+							"classic/oracles/action_and_theme/theme"
+						]
+					},
+					"source": {
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"page": 213
+					},
+					"table": [
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 1,
+							"max": 2,
+							"result": "Guarding",
+							"id": "delve/oracles/character/activity/1-2"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 3,
+							"max": 4,
+							"result": "Preserving",
+							"id": "delve/oracles/character/activity/3-4"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 5,
+							"max": 6,
+							"result": "Constructing",
+							"id": "delve/oracles/character/activity/5-6"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 7,
+							"max": 8,
+							"result": "Mending",
+							"id": "delve/oracles/character/activity/7-8"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 9,
+							"max": 10,
+							"result": "Assisting",
+							"id": "delve/oracles/character/activity/9-10"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 11,
+							"max": 12,
+							"result": "Securing",
+							"id": "delve/oracles/character/activity/11-12"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 13,
+							"max": 14,
+							"result": "Learning",
+							"id": "delve/oracles/character/activity/13-14"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 15,
+							"max": 16,
+							"result": "Sneaking",
+							"id": "delve/oracles/character/activity/15-16"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 17,
+							"max": 18,
+							"result": "Fleeing",
+							"id": "delve/oracles/character/activity/17-18"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 19,
+							"max": 20,
+							"result": "Sacrificing",
+							"id": "delve/oracles/character/activity/19-20"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 21,
+							"max": 22,
+							"result": "Creating",
+							"id": "delve/oracles/character/activity/21-22"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 23,
+							"max": 24,
+							"result": "Luring",
+							"id": "delve/oracles/character/activity/23-24"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 25,
+							"max": 26,
+							"result": "Hunting",
+							"id": "delve/oracles/character/activity/25-26"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 27,
+							"max": 28,
+							"result": "Seizing",
+							"id": "delve/oracles/character/activity/27-28"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 29,
+							"max": 30,
+							"result": "Bargaining",
+							"id": "delve/oracles/character/activity/29-30"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 31,
+							"max": 32,
+							"result": "Mimicking",
+							"id": "delve/oracles/character/activity/31-32"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 33,
+							"max": 34,
+							"result": "Tricking",
+							"id": "delve/oracles/character/activity/33-34"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 35,
+							"max": 36,
+							"result": "Tracking",
+							"id": "delve/oracles/character/activity/35-36"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 37,
+							"max": 38,
+							"result": "Escorting",
+							"id": "delve/oracles/character/activity/37-38"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 39,
+							"max": 40,
+							"result": "Hiding",
+							"id": "delve/oracles/character/activity/39-40"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 41,
+							"max": 42,
+							"result": "Raiding",
+							"id": "delve/oracles/character/activity/41-42"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 43,
+							"max": 44,
+							"result": "Socializing",
+							"id": "delve/oracles/character/activity/43-44"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 45,
+							"max": 46,
+							"result": "Exploring",
+							"id": "delve/oracles/character/activity/45-46"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 47,
+							"max": 48,
+							"result": "Journeying",
+							"id": "delve/oracles/character/activity/47-48"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 49,
+							"max": 50,
+							"result": "Supporting",
+							"id": "delve/oracles/character/activity/49-50"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 51,
+							"max": 52,
+							"result": "Avoiding",
+							"id": "delve/oracles/character/activity/51-52"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 53,
+							"max": 54,
+							"result": "Disabling",
+							"id": "delve/oracles/character/activity/53-54"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 55,
+							"max": 56,
+							"result": "Leading",
+							"id": "delve/oracles/character/activity/55-56"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 57,
+							"max": 58,
+							"result": "Assaulting",
+							"id": "delve/oracles/character/activity/57-58"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 59,
+							"max": 60,
+							"result": "Ensnaring",
+							"id": "delve/oracles/character/activity/59-60"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 61,
+							"max": 62,
+							"result": "Defending",
+							"id": "delve/oracles/character/activity/61-62"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 63,
+							"max": 64,
+							"result": "Recovering",
+							"id": "delve/oracles/character/activity/63-64"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 65,
+							"max": 66,
+							"result": "Patrolling",
+							"id": "delve/oracles/character/activity/65-66"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 67,
+							"max": 68,
+							"result": "Resting",
+							"id": "delve/oracles/character/activity/67-68"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 69,
+							"max": 70,
+							"result": "Distracting",
+							"id": "delve/oracles/character/activity/69-70"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 71,
+							"max": 72,
+							"result": "Leaving",
+							"id": "delve/oracles/character/activity/71-72"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 73,
+							"max": 74,
+							"result": "Fighting",
+							"id": "delve/oracles/character/activity/73-74"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 75,
+							"max": 76,
+							"result": "Ambushing",
+							"id": "delve/oracles/character/activity/75-76"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 77,
+							"max": 78,
+							"result": "Controlling",
+							"id": "delve/oracles/character/activity/77-78"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 79,
+							"max": 80,
+							"result": "Observing",
+							"id": "delve/oracles/character/activity/79-80"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 81,
+							"max": 82,
+							"result": "Gathering",
+							"id": "delve/oracles/character/activity/81-82"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 83,
+							"max": 84,
+							"result": "Suffering",
+							"id": "delve/oracles/character/activity/83-84"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 85,
+							"max": 86,
+							"result": "Threatening",
+							"id": "delve/oracles/character/activity/85-86"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 87,
+							"max": 88,
+							"result": "Searching",
+							"id": "delve/oracles/character/activity/87-88"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 89,
+							"max": 90,
+							"result": "Destroying",
+							"id": "delve/oracles/character/activity/89-90"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 91,
+							"max": 92,
+							"result": "Restoring",
+							"id": "delve/oracles/character/activity/91-92"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 93,
+							"max": 94,
+							"result": "Consuming",
+							"id": "delve/oracles/character/activity/93-94"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 95,
+							"max": 96,
+							"result": "Removing",
+							"id": "delve/oracles/character/activity/95-96"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 97,
+							"max": 98,
+							"result": "Inspecting",
+							"id": "delve/oracles/character/activity/97-98"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "gerund"
+								}
+							},
+							"min": 99,
+							"max": 100,
+							"result": "Summoning",
+							"id": "delve/oracles/character/activity/99-100"
+						}
+					],
+					"dice": "1d100",
+					"id": "delve/oracles/character/activity"
+				},
+				"disposition": {
+					"name": "Disposition",
+					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
+					"canonical_name": "Character: Disposition",
+					"source": {
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"page": 213
+					},
+					"table": [
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 1,
+							"max": 6,
+							"result": "Helpful",
+							"id": "delve/oracles/character/disposition/1-6"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 7,
+							"max": 13,
+							"result": "Friendly",
+							"id": "delve/oracles/character/disposition/7-13"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 14,
+							"max": 20,
+							"result": "Cooperative",
+							"id": "delve/oracles/character/disposition/14-20"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 21,
+							"max": 28,
+							"result": "Curious",
+							"id": "delve/oracles/character/disposition/21-28"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 29,
+							"max": 36,
+							"result": "Indifferent",
+							"id": "delve/oracles/character/disposition/29-36"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 37,
+							"max": 47,
+							"result": "Suspicious",
+							"id": "delve/oracles/character/disposition/37-47"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 48,
+							"max": 57,
+							"result": "Wanting",
+							"id": "delve/oracles/character/disposition/48-57"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 58,
+							"max": 67,
+							"result": "Desperate",
+							"id": "delve/oracles/character/disposition/58-67"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 68,
+							"max": 76,
+							"result": "Demanding",
+							"id": "delve/oracles/character/disposition/68-76"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 77,
+							"max": 85,
+							"result": "Unfriendly",
+							"id": "delve/oracles/character/disposition/77-85"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 86,
+							"max": 93,
+							"result": "Threatening",
+							"id": "delve/oracles/character/disposition/86-93"
+						},
+						{
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							},
+							"min": 94,
+							"max": 100,
+							"result": "Hostile",
+							"id": "delve/oracles/character/disposition/94-100"
+						}
+					],
+					"dice": "1d100",
+					"id": "delve/oracles/character/disposition"
+				}
+			},
+			"id": "delve/collections/oracles/character"
+		},
 		"combat_event": {
 			"name": "Combat Event",
 			"summary": "Determine the actions of a character, creature, or force during a fight.",
@@ -1179,756 +1929,6 @@
 					}
 				]
 			}
-		},
-		"character": {
-			"extends": "classic/collections/oracles/character",
-			"name": "Character",
-			"summary": "Set the initial disposition for a character, or reveal what activity they are focused on when you first encounter them.",
-			"source": {
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com",
-				"date": "2020-02-13",
-				"title": "Ironsworn: Delve",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"page": 213
-			},
-			"contents": {
-				"activity": {
-					"name": "Activity",
-					"canonical_name": "Character: Activity",
-					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
-					"suggestions": {
-						"oracles": [
-							"delve/oracles/feature/focus",
-							"classic/oracles/action_and_theme/theme"
-						]
-					},
-					"source": {
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 213
-					},
-					"table": [
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 1,
-							"max": 2,
-							"result": "Guarding",
-							"id": "delve/oracles/character/activity/1-2"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 3,
-							"max": 4,
-							"result": "Preserving",
-							"id": "delve/oracles/character/activity/3-4"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 5,
-							"max": 6,
-							"result": "Constructing",
-							"id": "delve/oracles/character/activity/5-6"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 7,
-							"max": 8,
-							"result": "Mending",
-							"id": "delve/oracles/character/activity/7-8"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 9,
-							"max": 10,
-							"result": "Assisting",
-							"id": "delve/oracles/character/activity/9-10"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 11,
-							"max": 12,
-							"result": "Securing",
-							"id": "delve/oracles/character/activity/11-12"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 13,
-							"max": 14,
-							"result": "Learning",
-							"id": "delve/oracles/character/activity/13-14"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 15,
-							"max": 16,
-							"result": "Sneaking",
-							"id": "delve/oracles/character/activity/15-16"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 17,
-							"max": 18,
-							"result": "Fleeing",
-							"id": "delve/oracles/character/activity/17-18"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 19,
-							"max": 20,
-							"result": "Sacrificing",
-							"id": "delve/oracles/character/activity/19-20"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 21,
-							"max": 22,
-							"result": "Creating",
-							"id": "delve/oracles/character/activity/21-22"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 23,
-							"max": 24,
-							"result": "Luring",
-							"id": "delve/oracles/character/activity/23-24"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 25,
-							"max": 26,
-							"result": "Hunting",
-							"id": "delve/oracles/character/activity/25-26"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 27,
-							"max": 28,
-							"result": "Seizing",
-							"id": "delve/oracles/character/activity/27-28"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 29,
-							"max": 30,
-							"result": "Bargaining",
-							"id": "delve/oracles/character/activity/29-30"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 31,
-							"max": 32,
-							"result": "Mimicking",
-							"id": "delve/oracles/character/activity/31-32"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 33,
-							"max": 34,
-							"result": "Tricking",
-							"id": "delve/oracles/character/activity/33-34"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 35,
-							"max": 36,
-							"result": "Tracking",
-							"id": "delve/oracles/character/activity/35-36"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 37,
-							"max": 38,
-							"result": "Escorting",
-							"id": "delve/oracles/character/activity/37-38"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 39,
-							"max": 40,
-							"result": "Hiding",
-							"id": "delve/oracles/character/activity/39-40"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 41,
-							"max": 42,
-							"result": "Raiding",
-							"id": "delve/oracles/character/activity/41-42"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 43,
-							"max": 44,
-							"result": "Socializing",
-							"id": "delve/oracles/character/activity/43-44"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 45,
-							"max": 46,
-							"result": "Exploring",
-							"id": "delve/oracles/character/activity/45-46"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 47,
-							"max": 48,
-							"result": "Journeying",
-							"id": "delve/oracles/character/activity/47-48"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 49,
-							"max": 50,
-							"result": "Supporting",
-							"id": "delve/oracles/character/activity/49-50"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 51,
-							"max": 52,
-							"result": "Avoiding",
-							"id": "delve/oracles/character/activity/51-52"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 53,
-							"max": 54,
-							"result": "Disabling",
-							"id": "delve/oracles/character/activity/53-54"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 55,
-							"max": 56,
-							"result": "Leading",
-							"id": "delve/oracles/character/activity/55-56"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 57,
-							"max": 58,
-							"result": "Assaulting",
-							"id": "delve/oracles/character/activity/57-58"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 59,
-							"max": 60,
-							"result": "Ensnaring",
-							"id": "delve/oracles/character/activity/59-60"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 61,
-							"max": 62,
-							"result": "Defending",
-							"id": "delve/oracles/character/activity/61-62"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 63,
-							"max": 64,
-							"result": "Recovering",
-							"id": "delve/oracles/character/activity/63-64"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 65,
-							"max": 66,
-							"result": "Patrolling",
-							"id": "delve/oracles/character/activity/65-66"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 67,
-							"max": 68,
-							"result": "Resting",
-							"id": "delve/oracles/character/activity/67-68"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 69,
-							"max": 70,
-							"result": "Distracting",
-							"id": "delve/oracles/character/activity/69-70"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 71,
-							"max": 72,
-							"result": "Leaving",
-							"id": "delve/oracles/character/activity/71-72"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 73,
-							"max": 74,
-							"result": "Fighting",
-							"id": "delve/oracles/character/activity/73-74"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 75,
-							"max": 76,
-							"result": "Ambushing",
-							"id": "delve/oracles/character/activity/75-76"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 77,
-							"max": 78,
-							"result": "Controlling",
-							"id": "delve/oracles/character/activity/77-78"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 79,
-							"max": 80,
-							"result": "Observing",
-							"id": "delve/oracles/character/activity/79-80"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 81,
-							"max": 82,
-							"result": "Gathering",
-							"id": "delve/oracles/character/activity/81-82"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 83,
-							"max": 84,
-							"result": "Suffering",
-							"id": "delve/oracles/character/activity/83-84"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 85,
-							"max": 86,
-							"result": "Threatening",
-							"id": "delve/oracles/character/activity/85-86"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 87,
-							"max": 88,
-							"result": "Searching",
-							"id": "delve/oracles/character/activity/87-88"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 89,
-							"max": 90,
-							"result": "Destroying",
-							"id": "delve/oracles/character/activity/89-90"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 91,
-							"max": 92,
-							"result": "Restoring",
-							"id": "delve/oracles/character/activity/91-92"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 93,
-							"max": 94,
-							"result": "Consuming",
-							"id": "delve/oracles/character/activity/93-94"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 95,
-							"max": 96,
-							"result": "Removing",
-							"id": "delve/oracles/character/activity/95-96"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 97,
-							"max": 98,
-							"result": "Inspecting",
-							"id": "delve/oracles/character/activity/97-98"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "gerund"
-								}
-							},
-							"min": 99,
-							"max": 100,
-							"result": "Summoning",
-							"id": "delve/oracles/character/activity/99-100"
-						}
-					],
-					"dice": "1d100",
-					"id": "delve/oracles/character/activity"
-				},
-				"disposition": {
-					"name": "Disposition",
-					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
-					"canonical_name": "Character: Disposition",
-					"source": {
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 213
-					},
-					"table": [
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 1,
-							"max": 6,
-							"result": "Helpful",
-							"id": "delve/oracles/character/disposition/1-6"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 7,
-							"max": 13,
-							"result": "Friendly",
-							"id": "delve/oracles/character/disposition/7-13"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 14,
-							"max": 20,
-							"result": "Cooperative",
-							"id": "delve/oracles/character/disposition/14-20"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 21,
-							"max": 28,
-							"result": "Curious",
-							"id": "delve/oracles/character/disposition/21-28"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 29,
-							"max": 36,
-							"result": "Indifferent",
-							"id": "delve/oracles/character/disposition/29-36"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 37,
-							"max": 47,
-							"result": "Suspicious",
-							"id": "delve/oracles/character/disposition/37-47"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 48,
-							"max": 57,
-							"result": "Wanting",
-							"id": "delve/oracles/character/disposition/48-57"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 58,
-							"max": 67,
-							"result": "Desperate",
-							"id": "delve/oracles/character/disposition/58-67"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 68,
-							"max": 76,
-							"result": "Demanding",
-							"id": "delve/oracles/character/disposition/68-76"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 77,
-							"max": 85,
-							"result": "Unfriendly",
-							"id": "delve/oracles/character/disposition/77-85"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 86,
-							"max": 93,
-							"result": "Threatening",
-							"id": "delve/oracles/character/disposition/86-93"
-						},
-						{
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							},
-							"min": 94,
-							"max": 100,
-							"result": "Hostile",
-							"id": "delve/oracles/character/disposition/94-100"
-						}
-					],
-					"dice": "1d100",
-					"id": "delve/oracles/character/disposition"
-				}
-			},
-			"id": "delve/collections/oracles/character"
 		},
 		"feature": {
 			"name": "Feature",
@@ -4367,186 +4367,6 @@
 					}
 				]
 			}
-		},
-		"site_nature": {
-			"name": "Site Nature",
-			"summary": "Randomly select a theme and domain for a perilous location.",
-			"description": "Use these oracles to generate a random theme and domain for a site. Alternatively, you can print out the theme and domain cards and draw a random result. Or use the [Site Name oracles](id:delve/collections/oracles/site_name) to inspire the selection of a theme and domain.",
-			"source": {
-				"license": "https://creativecommons.org/licenses/by/4.0",
-				"url": "https://ironswornrpg.com",
-				"date": "2020-02-13",
-				"title": "Ironsworn: Delve",
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"page": 212
-			},
-			"contents": {
-				"theme": {
-					"name": "Theme",
-					"canonical_name": "Site Nature: Theme",
-					"source": {
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 212
-					},
-					"table": [
-						{
-							"min": 1,
-							"max": 11,
-							"result": "[Ancient](id:delve/site_themes/ancient)",
-							"id": "delve/oracles/site_nature/theme/1-11"
-						},
-						{
-							"min": 12,
-							"max": 23,
-							"result": "[Corrupted](id:delve/site_themes/corrupted)",
-							"id": "delve/oracles/site_nature/theme/12-23"
-						},
-						{
-							"min": 24,
-							"max": 35,
-							"result": "[Fortified](id:delve/site_themes/fortified)",
-							"id": "delve/oracles/site_nature/theme/24-35"
-						},
-						{
-							"min": 36,
-							"max": 48,
-							"result": "[Hallowed](id:delve/site_themes/hallowed)",
-							"id": "delve/oracles/site_nature/theme/36-48"
-						},
-						{
-							"min": 49,
-							"max": 61,
-							"result": "[Haunted](id:delve/site_themes/haunted)",
-							"id": "delve/oracles/site_nature/theme/49-61"
-						},
-						{
-							"min": 62,
-							"max": 74,
-							"result": "[Infested](id:delve/site_themes/infested)",
-							"id": "delve/oracles/site_nature/theme/62-74"
-						},
-						{
-							"min": 75,
-							"max": 87,
-							"result": "[Ravaged](id:delve/site_themes/ravaged)",
-							"id": "delve/oracles/site_nature/theme/75-87"
-						},
-						{
-							"min": 88,
-							"max": 100,
-							"result": "[Wild](id:delve/site_themes/wild)",
-							"id": "delve/oracles/site_nature/theme/88-100"
-						}
-					],
-					"dice": "1d100",
-					"id": "delve/oracles/site_nature/theme"
-				},
-				"domain": {
-					"name": "Domain",
-					"canonical_name": "Site Nature: Domain",
-					"source": {
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com",
-						"date": "2020-02-13",
-						"title": "Ironsworn: Delve",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"page": 212
-					},
-					"table": [
-						{
-							"min": 1,
-							"max": 6,
-							"result": "[Barrow](id:delve/site_domains/barrow)",
-							"id": "delve/oracles/site_nature/domain/1-6"
-						},
-						{
-							"min": 7,
-							"max": 18,
-							"result": "[Cavern](id:delve/site_domains/cavern)",
-							"id": "delve/oracles/site_nature/domain/7-18"
-						},
-						{
-							"min": 19,
-							"max": 28,
-							"result": "[Frozen Cavern](id:delve/site_domains/frozen_cavern)",
-							"id": "delve/oracles/site_nature/domain/19-28"
-						},
-						{
-							"min": 29,
-							"max": 32,
-							"result": "[Icereach](id:delve/site_domains/icereach)",
-							"id": "delve/oracles/site_nature/domain/29-32"
-						},
-						{
-							"min": 33,
-							"max": 38,
-							"result": "[Mine](id:delve/site_domains/mine)",
-							"id": "delve/oracles/site_nature/domain/33-38"
-						},
-						{
-							"min": 39,
-							"max": 48,
-							"result": "[Pass](id:delve/site_domains/pass)",
-							"id": "delve/oracles/site_nature/domain/39-48"
-						},
-						{
-							"min": 49,
-							"max": 58,
-							"result": "[Ruin](id:delve/site_domains/ruin)",
-							"id": "delve/oracles/site_nature/domain/49-58"
-						},
-						{
-							"min": 59,
-							"max": 68,
-							"result": "[Sea Cave](id:delve/site_domains/sea_cave)",
-							"id": "delve/oracles/site_nature/domain/59-68"
-						},
-						{
-							"min": 69,
-							"max": 78,
-							"result": "[Shadowfen](id:delve/site_domains/shadowfen)",
-							"id": "delve/oracles/site_nature/domain/69-78"
-						},
-						{
-							"min": 79,
-							"max": 83,
-							"result": "[Stronghold](id:delve/site_domains/stronghold)",
-							"id": "delve/oracles/site_nature/domain/79-83"
-						},
-						{
-							"min": 84,
-							"max": 95,
-							"result": "[Tanglewood](id:delve/site_domains/tanglewood)",
-							"id": "delve/oracles/site_nature/domain/84-95"
-						},
-						{
-							"min": 96,
-							"max": 100,
-							"result": "[Underkeep](id:delve/site_domains/underkeep)",
-							"id": "delve/oracles/site_nature/domain/96-100"
-						}
-					],
-					"dice": "1d100",
-					"id": "delve/oracles/site_nature/domain"
-				}
-			},
-			"id": "delve/collections/oracles/site_nature"
 		},
 		"site_name": {
 			"name": "Site Name",
@@ -8074,6 +7894,186 @@
 				}
 			},
 			"id": "delve/collections/oracles/site_name"
+		},
+		"site_nature": {
+			"name": "Site Nature",
+			"summary": "Randomly select a theme and domain for a perilous location.",
+			"description": "Use these oracles to generate a random theme and domain for a site. Alternatively, you can print out the theme and domain cards and draw a random result. Or use the [Site Name oracles](id:delve/collections/oracles/site_name) to inspire the selection of a theme and domain.",
+			"source": {
+				"license": "https://creativecommons.org/licenses/by/4.0",
+				"url": "https://ironswornrpg.com",
+				"date": "2020-02-13",
+				"title": "Ironsworn: Delve",
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"page": 212
+			},
+			"contents": {
+				"theme": {
+					"name": "Theme",
+					"canonical_name": "Site Nature: Theme",
+					"source": {
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"page": 212
+					},
+					"table": [
+						{
+							"min": 1,
+							"max": 11,
+							"result": "[Ancient](id:delve/site_themes/ancient)",
+							"id": "delve/oracles/site_nature/theme/1-11"
+						},
+						{
+							"min": 12,
+							"max": 23,
+							"result": "[Corrupted](id:delve/site_themes/corrupted)",
+							"id": "delve/oracles/site_nature/theme/12-23"
+						},
+						{
+							"min": 24,
+							"max": 35,
+							"result": "[Fortified](id:delve/site_themes/fortified)",
+							"id": "delve/oracles/site_nature/theme/24-35"
+						},
+						{
+							"min": 36,
+							"max": 48,
+							"result": "[Hallowed](id:delve/site_themes/hallowed)",
+							"id": "delve/oracles/site_nature/theme/36-48"
+						},
+						{
+							"min": 49,
+							"max": 61,
+							"result": "[Haunted](id:delve/site_themes/haunted)",
+							"id": "delve/oracles/site_nature/theme/49-61"
+						},
+						{
+							"min": 62,
+							"max": 74,
+							"result": "[Infested](id:delve/site_themes/infested)",
+							"id": "delve/oracles/site_nature/theme/62-74"
+						},
+						{
+							"min": 75,
+							"max": 87,
+							"result": "[Ravaged](id:delve/site_themes/ravaged)",
+							"id": "delve/oracles/site_nature/theme/75-87"
+						},
+						{
+							"min": 88,
+							"max": 100,
+							"result": "[Wild](id:delve/site_themes/wild)",
+							"id": "delve/oracles/site_nature/theme/88-100"
+						}
+					],
+					"dice": "1d100",
+					"id": "delve/oracles/site_nature/theme"
+				},
+				"domain": {
+					"name": "Domain",
+					"canonical_name": "Site Nature: Domain",
+					"source": {
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com",
+						"date": "2020-02-13",
+						"title": "Ironsworn: Delve",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"page": 212
+					},
+					"table": [
+						{
+							"min": 1,
+							"max": 6,
+							"result": "[Barrow](id:delve/site_domains/barrow)",
+							"id": "delve/oracles/site_nature/domain/1-6"
+						},
+						{
+							"min": 7,
+							"max": 18,
+							"result": "[Cavern](id:delve/site_domains/cavern)",
+							"id": "delve/oracles/site_nature/domain/7-18"
+						},
+						{
+							"min": 19,
+							"max": 28,
+							"result": "[Frozen Cavern](id:delve/site_domains/frozen_cavern)",
+							"id": "delve/oracles/site_nature/domain/19-28"
+						},
+						{
+							"min": 29,
+							"max": 32,
+							"result": "[Icereach](id:delve/site_domains/icereach)",
+							"id": "delve/oracles/site_nature/domain/29-32"
+						},
+						{
+							"min": 33,
+							"max": 38,
+							"result": "[Mine](id:delve/site_domains/mine)",
+							"id": "delve/oracles/site_nature/domain/33-38"
+						},
+						{
+							"min": 39,
+							"max": 48,
+							"result": "[Pass](id:delve/site_domains/pass)",
+							"id": "delve/oracles/site_nature/domain/39-48"
+						},
+						{
+							"min": 49,
+							"max": 58,
+							"result": "[Ruin](id:delve/site_domains/ruin)",
+							"id": "delve/oracles/site_nature/domain/49-58"
+						},
+						{
+							"min": 59,
+							"max": 68,
+							"result": "[Sea Cave](id:delve/site_domains/sea_cave)",
+							"id": "delve/oracles/site_nature/domain/59-68"
+						},
+						{
+							"min": 69,
+							"max": 78,
+							"result": "[Shadowfen](id:delve/site_domains/shadowfen)",
+							"id": "delve/oracles/site_nature/domain/69-78"
+						},
+						{
+							"min": 79,
+							"max": 83,
+							"result": "[Stronghold](id:delve/site_domains/stronghold)",
+							"id": "delve/oracles/site_nature/domain/79-83"
+						},
+						{
+							"min": 84,
+							"max": 95,
+							"result": "[Tanglewood](id:delve/site_domains/tanglewood)",
+							"id": "delve/oracles/site_nature/domain/84-95"
+						},
+						{
+							"min": 96,
+							"max": 100,
+							"result": "[Underkeep](id:delve/site_domains/underkeep)",
+							"id": "delve/oracles/site_nature/domain/96-100"
+						}
+					],
+					"dice": "1d100",
+					"id": "delve/oracles/site_nature/domain"
+				}
+			},
+			"id": "delve/collections/oracles/site_nature"
 		},
 		"threat": {
 			"name": "Threat",

@@ -44,12 +44,19 @@ export async function buildSourcebook({ id, paths }: DataPackageConfig) {
 		await Promise.all(oldJsonFiles.map((filePath) => fs.unlink(filePath)))
 	}
 
+	const builtFiles = new Map<string, Out.Datasworn>()
+
 	await Promise.all(
 		yamlFilesIn.map((filePath) => {
 			log.info(`📖 Reading ${filePath}`)
-			return buildFile(filePath).then((data) => merge(sourcebook, data))
+			return buildFile(filePath).then((data) => builtFiles.set(filePath, data))
 		})
 	)
+
+	// sort by file name so that they merge in the same order each time
+	Array.from(builtFiles.entries())
+		.sort(([a], [b]) => a.localeCompare(b))
+		.forEach(([fileName, data]) => merge(sourcebook, data))
 
 	const metadataKeys = ['source', 'id']
 
