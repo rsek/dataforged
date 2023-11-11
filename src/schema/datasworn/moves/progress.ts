@@ -1,11 +1,12 @@
 import {
 	Type,
 	type Static,
-	JsonEnumFromRecord
+	JsonEnumFromRecord,
+	ExtractLiteralFromEnum
 } from '../../../typebox/index.js'
 import {
 	MoveOutcomes,
-	type MoveRollType,
+	MoveRollType,
 	MoveOutcomeType,
 	ProgressRollMethod,
 	SpecialTrackRollMethod
@@ -50,8 +51,7 @@ export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
 export const MoveProgressRoll = composeMoveType(
 	Type.Object({
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'progress_roll'>>('progress_roll'),
+		roll_type: ExtractLiteralFromEnum(MoveRollType, 'progress_roll'),
 		// is_progress_move: Type.Literal(true, { default: true }),
 		track_label: Type.Ref(Localize.Label, {
 			description:
@@ -140,8 +140,7 @@ export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 
 export const MoveSpecialTrack = composeMoveType(
 	Type.Object({
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'special_track'>>('special_track'),
+		roll_type: ExtractLiteralFromEnum(MoveRollType, 'special_track'),
 		// is_progress_move: Type.Literal(true, { default: true }),
 		trigger: Type.Ref(TriggerSpecialTrack),
 		outcomes: Type.Ref(MoveOutcomes)

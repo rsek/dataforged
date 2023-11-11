@@ -1,11 +1,16 @@
 import { ID, Localize, Player } from '../common/index.js'
 import { PartialBy } from '../common/utils.js'
-import { JsonEnum, Type, type Static } from '../../../typebox/index.js'
+import {
+	JsonEnum,
+	Type,
+	type Static,
+	ExtractLiteralFromEnum
+} from '../../../typebox/index.js'
 import {
 	ActionRollMethod,
 	MoveOutcomeType,
 	MoveOutcomes,
-	type MoveRollType
+	MoveRollType
 } from './common.js'
 import {
 	toMoveAugment,
@@ -111,8 +116,7 @@ export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 
 export const MoveActionRoll = composeMoveType(
 	Type.Object({
-		roll_type:
-			Type.Literal<Extract<MoveRollType, 'action_roll'>>('action_roll'),
+		roll_type: ExtractLiteralFromEnum(MoveRollType, 'action_roll'),
 		// is_progress_move: Type.Literal(false, { default: false }),
 		trigger: Type.Ref(TriggerActionRoll),
 		outcomes: Type.Ref(MoveOutcomes)
@@ -172,17 +176,13 @@ export const TriggerNoRoll = PartialBy(
 export type TriggerNoRoll = Static<typeof TriggerNoRoll>
 
 export const MoveNoRoll = SourcedNode(
-	Type.Omit(
-		composeMoveType(
-			Type.Object({
-				roll_type: Type.Literal<Extract<MoveRollType, 'no_roll'>>('no_roll'),
-				// is_progress_move: Type.Literal(false, { default: false }),
-				trigger: Type.Ref(TriggerNoRoll)
-			})
-		),
-		['outcomes']
+	composeMoveType(
+		Type.Object({
+			roll_type: ExtractLiteralFromEnum(MoveRollType, 'no_roll'),
+			// is_progress_move: Type.Literal(false, { default: false }),
+			trigger: Type.Ref(TriggerNoRoll)
+		})
 	),
-
 	{
 		title: 'Move (no roll)',
 		$id: '#/$defs/MoveNoRoll',

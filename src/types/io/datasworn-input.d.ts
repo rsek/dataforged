@@ -846,6 +846,9 @@ export interface MoveActionRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
+  /**
+   * A move that makes an action roll.
+   */
   roll_type: "action_roll";
   trigger: TriggerActionRoll;
   outcomes: MoveOutcomes;
@@ -968,6 +971,9 @@ export interface MoveNoRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
+  /**
+   * A move that makes no action rolls or progress rolls.
+   */
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
   _source?: SourceStub3;
@@ -1038,6 +1044,9 @@ export interface ProgressMove {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
+  /**
+   * A progress move that rolls on a standard progress track type (defined by this move).
+   */
   roll_type: "progress_roll";
   track_label: Label1;
   trigger: TriggerProgressRoll;
@@ -1115,6 +1124,9 @@ export interface ProgressMoveSpecialTrackRoll {
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
+  /**
+   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+   */
   roll_type: "special_track";
   trigger: TriggerSpecialTrack;
   outcomes: MoveOutcomes;
@@ -1481,6 +1493,9 @@ export interface MoveActionRollAugment {
     conditions?: TriggerActionRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  /**
+   * A move that makes an action roll.
+   */
   roll_type: "action_roll";
 }
 export interface TriggerActionRollConditionAugment {
@@ -1500,6 +1515,9 @@ export interface MoveNoRollAugment {
     conditions?: TriggerNoRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  /**
+   * A move that makes no action rolls or progress rolls.
+   */
   roll_type: "no_roll";
 }
 export interface TriggerNoRollConditionAugment {
@@ -1511,6 +1529,9 @@ export interface MoveProgressRollAugment {
     conditions?: TriggerProgressRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  /**
+   * A progress move that rolls on a standard progress track type (defined by this move).
+   */
   roll_type: "progress_roll";
 }
 export interface TriggerProgressRollConditionAugment {
@@ -1530,6 +1551,9 @@ export interface MoveSpecialTrackAugment {
     conditions?: TriggerSpecialTrackConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  /**
+   * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
+   */
   roll_type: "special_track";
 }
 /**
