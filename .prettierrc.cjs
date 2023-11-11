@@ -1,6 +1,7 @@
 /** @typedef {'lexical'|'numeric'|'reverseLexical'|'reverseNumeric'} SortingAlgorithm  */
 
 const identifierKeys = /^(id)$/
+const enabledKeys = /^(enabled)$/
 const labelKeys = /^(name|label)$/
 const appearanceKeys = /^(color|icon|images)$/
 const categoryKeys = /^(([a-z]+_)?type|nature|rank)$/
@@ -22,6 +23,7 @@ const sourceKeys = Object.fromEntries(
 const jsonSortOrder = {
 	[identifierKeys]: null,
 	[labelKeys]: 'lexical',
+	[enabledKeys]: 'lexical',
 	[categoryKeys]: 'lexical',
 	[appearanceKeys]: 'lexical',
 	[usageKeys]: 'lexical',

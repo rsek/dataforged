@@ -671,6 +671,7 @@ export interface TextField {
 export interface AssetAbility {
   id?: AssetAbilityID;
   name?: Label;
+  enabled?: boolean;
   options?: {
     [k: string]: AssetAbilityOptionField;
   };
@@ -697,7 +698,6 @@ export interface AssetAbility {
    * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
   augment_moves?: MoveAugment[];
-  enabled?: boolean;
   /**
    * Unique moves added by this asset ability.
    */

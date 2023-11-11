@@ -160,6 +160,10 @@
 				"name": {
 					"$ref": "#/$defs/Label"
 				},
+				"enabled": {
+					"type": "boolean",
+					"default": false
+				},
 				"options": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
@@ -211,10 +215,6 @@
 						"$ref": "#/$defs/MoveAugment"
 					},
 					"releaseStage": "experimental"
-				},
-				"enabled": {
-					"type": "boolean",
-					"default": false
 				},
 				"moves": {
 					"type": "object",
