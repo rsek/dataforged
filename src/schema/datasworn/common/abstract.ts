@@ -227,7 +227,7 @@ export function Collection<T extends TRef>(
 ) {
 	const params = Type.Object({
 		id: idPattern,
-		extends: Type.Optional({
+		enhances: Type.Optional({
 			...idPattern,
 			description:
 				"Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."

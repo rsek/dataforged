@@ -582,7 +582,7 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"extends": {
+				"enhances": {
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.",
 					"$ref": "#/$defs/AssetTypeID"
 				},
@@ -640,7 +640,7 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"extends": {
+				"enhances": {
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.",
 					"$ref": "#/$defs/AtlasID"
 				},
@@ -2124,6 +2124,9 @@
 					"description": "A move that makes an action roll.",
 					"const": "action_roll"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerActionRoll"
+				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
@@ -2150,9 +2153,6 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
-				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerActionRoll"
 				}
 			},
 			"required": [
@@ -2174,12 +2174,6 @@
 					"description": "A move that makes an action roll.",
 					"const": "action_roll"
 				},
-				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIDWildcard"
-					}
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -2189,6 +2183,12 @@
 								"$ref": "#/$defs/TriggerActionRollConditionEnhance"
 							}
 						}
+					}
+				},
+				"enhances": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/MoveIDWildcard"
 					}
 				}
 			},
@@ -2229,7 +2229,7 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"extends": {
+				"enhances": {
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.",
 					"$ref": "#/$defs/MoveCategoryID"
 				},
@@ -2299,6 +2299,9 @@
 					"description": "A move that makes no action rolls or progress rolls.",
 					"const": "no_roll"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerNoRoll"
+				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
@@ -2322,9 +2325,6 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
-				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerNoRoll"
 				}
 			},
 			"required": ["name", "source", "id", "text", "roll_type", "trigger"]
@@ -2338,12 +2338,6 @@
 					"description": "A move that makes no action rolls or progress rolls.",
 					"const": "no_roll"
 				},
-				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIDWildcard"
-					}
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -2353,6 +2347,12 @@
 								"$ref": "#/$defs/TriggerNoRollConditionEnhance"
 							}
 						}
+					}
+				},
+				"enhances": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/MoveIDWildcard"
 					}
 				}
 			},
@@ -2397,13 +2397,13 @@
 			"description": "A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.\n\n  This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.",
 			"title": "MoveOutcomes",
 			"properties": {
-				"miss": {
+				"strong_hit": {
 					"$ref": "#/$defs/MoveOutcomeMatchable"
 				},
 				"weak_hit": {
 					"$ref": "#/$defs/MoveOutcome"
 				},
-				"strong_hit": {
+				"miss": {
 					"$ref": "#/$defs/MoveOutcomeMatchable"
 				}
 			},
@@ -2425,6 +2425,22 @@
 					"type": "string",
 					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 					"const": "progress_roll"
+				},
+				"track_label": {
+					"description": "A category label for progress tracks associated with this move.",
+					"$ref": "#/$defs/Label",
+					"examples": [
+						"Vow",
+						"Journey",
+						"Combat",
+						"Scene Challenge",
+						"Expedition",
+						"Connection",
+						"Delve"
+					]
+				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerProgressRoll"
 				},
 				"text": {
 					"description": "The complete rules text of the move.",
@@ -2452,22 +2468,6 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
-				},
-				"track_label": {
-					"description": "A category label for progress tracks associated with this move.",
-					"$ref": "#/$defs/Label",
-					"examples": [
-						"Vow",
-						"Journey",
-						"Combat",
-						"Scene Challenge",
-						"Expedition",
-						"Connection",
-						"Delve"
-					]
-				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerProgressRoll"
 				}
 			},
 			"required": [
@@ -2490,12 +2490,6 @@
 					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 					"const": "progress_roll"
 				},
-				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIDWildcard"
-					}
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -2505,6 +2499,12 @@
 								"$ref": "#/$defs/TriggerProgressRollConditionEnhance"
 							}
 						}
+					}
+				},
+				"enhances": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/MoveIDWildcard"
 					}
 				}
 			},
@@ -2531,6 +2531,9 @@
 					"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 					"const": "special_track"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerSpecialTrack"
+				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
@@ -2557,9 +2560,6 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
-				},
-				"trigger": {
-					"$ref": "#/$defs/TriggerSpecialTrack"
 				}
 			},
 			"required": [
@@ -2581,12 +2581,6 @@
 					"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 					"const": "special_track"
 				},
-				"enhances": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIDWildcard"
-					}
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -2596,6 +2590,12 @@
 								"$ref": "#/$defs/TriggerSpecialTrackConditionEnhance"
 							}
 						}
+					}
+				},
+				"enhances": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/MoveIDWildcard"
 					}
 				}
 			},
@@ -2722,7 +2722,7 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"extends": {
+				"enhances": {
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.",
 					"$ref": "#/$defs/NpcCollectionID"
 				},
@@ -2854,7 +2854,7 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"extends": {
+				"enhances": {
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.",
 					"$ref": "#/$defs/OracleCollectionID"
 				},

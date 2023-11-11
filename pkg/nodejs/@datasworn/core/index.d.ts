@@ -62,10 +62,6 @@ export type AssetAbilityControlField = ClockField | CounterField | CheckboxField
 export type AssetConditionMeterControlField = AssetCheckboxField;
 export type MoveEnhance = MoveActionRollEnhance | MoveNoRollEnhance | MoveProgressRollEnhance | MoveSpecialTrackEnhance;
 /**
- * A move ID with wildcards
- */
-export type MoveIDWithWildcard = string;
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
@@ -100,6 +96,10 @@ export type PlayerConditionMeter = string;
 export type AssetConditionMeterID = string;
 export type AssetConditionMeterIDWildcard = string;
 export type AssetOptionFieldIDWildcard = string;
+/**
+ * A move ID with wildcards
+ */
+export type MoveIDWithWildcard = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -173,32 +173,11 @@ export type MoveID = string;
  */
 export type MarkdownString5 = string;
 /**
- *   * `miss`: The score doesn't beat either challenge die.
- *   * `weak_hit`: The score is greater than one challenge die.
- *   * `strong_hit`: The score is greater than both challenge dice.
- */
-export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
-export type OracleTableID = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID1 = string;
-export type AtlasEntryID = string;
-export type NpcID = string;
-export type DelveSiteDomainID = string;
-export type DelveSiteThemeID = string;
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString6 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString7 = string;
 /**
  *   * `miss`: An automatic miss.
  *   * `weak_hit`: An automatic weak hit.
@@ -223,11 +202,28 @@ export type ActionRollMethod1 =
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString8 = string;
+export type MarkdownString7 = string;
+/**
+ *   * `miss`: The score doesn't beat either challenge die.
+ *   * `weak_hit`: The score is greater than one challenge die.
+ *   * `strong_hit`: The score is greater than both challenge dice.
+ */
+export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
+export type OracleTableID = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID2 = string;
+export type MoveID1 = string;
+export type AtlasEntryID = string;
+export type NpcID = string;
+export type DelveSiteDomainID = string;
+export type DelveSiteThemeID = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString8 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -241,15 +237,9 @@ export type MarkdownString9 = string;
  */
 export type MarkdownString10 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString11 = string;
-/**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID3 = string;
+export type MoveID2 = string;
 /**
  * A localized plain text name or label.
  */
@@ -259,13 +249,13 @@ export type Label2 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString12 = string;
+export type MarkdownString11 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString13 = string;
+export type MarkdownString12 = string;
 /**
  *   * `miss`: An automatic miss.
  *   * `weak_hit`: An automatic weak hit.
@@ -278,11 +268,17 @@ export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString14 = string;
+export type MarkdownString13 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
-export type MoveID4 = string;
+export type MoveID3 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString14 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -295,6 +291,10 @@ export type MarkdownString15 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString16 = string;
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID4 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -586,7 +586,7 @@ export interface AssetType {
   };
   source: Source;
   canonical_name?: Label;
-  extends?: AssetTypeID1;
+  enhances?: AssetTypeID1;
   suggestions?: Suggestions;
 }
 /**
@@ -769,10 +769,10 @@ export interface MoveActionRollEnhance {
    * A move that makes an action roll.
    */
   roll_type: "action_roll";
-  enhances?: MoveIDWithWildcard[];
   trigger?: {
     conditions?: TriggerActionRollConditionEnhance[];
   };
+  enhances?: MoveIDWithWildcard[];
 }
 export interface TriggerActionRollConditionEnhance {
   text?: MarkdownString1;
@@ -818,10 +818,10 @@ export interface MoveNoRollEnhance {
    * A move that makes no action rolls or progress rolls.
    */
   roll_type: "no_roll";
-  enhances?: MoveIDWithWildcard[];
   trigger?: {
     conditions?: TriggerNoRollConditionEnhance[];
   };
+  enhances?: MoveIDWithWildcard[];
 }
 export interface TriggerNoRollConditionEnhance {
   text?: MarkdownString2;
@@ -832,10 +832,10 @@ export interface MoveProgressRollEnhance {
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
-  enhances?: MoveIDWithWildcard[];
   trigger?: {
     conditions?: TriggerProgressRollConditionEnhance[];
   };
+  enhances?: MoveIDWithWildcard[];
 }
 export interface TriggerProgressRollConditionEnhance {
   text?: MarkdownString3;
@@ -857,10 +857,10 @@ export interface MoveSpecialTrackEnhance {
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
   roll_type: "special_track";
-  enhances?: MoveIDWithWildcard[];
   trigger?: {
     conditions?: TriggerSpecialTrackConditionEnhance[];
   };
+  enhances?: MoveIDWithWildcard[];
 }
 /**
  * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
@@ -890,7 +890,8 @@ export interface MoveActionRoll {
    * A move that makes an action roll.
    */
   roll_type: "action_roll";
-  text: MarkdownString5;
+  trigger: TriggerActionRoll;
+  text: MarkdownString7;
   outcomes: MoveOutcomes;
   source: Source;
   canonical_name?: Label;
@@ -900,7 +901,19 @@ export interface MoveActionRoll {
   oracles?: OracleTableID[];
   replaces?: MoveID1;
   suggestions?: Suggestions;
-  trigger: TriggerActionRoll;
+}
+export interface TriggerActionRoll {
+  text: MarkdownString5;
+  conditions: TriggerActionRollCondition[];
+}
+export interface TriggerActionRollCondition {
+  text?: MarkdownString6;
+  by?: TriggerBy;
+  method: ActionRollMethod1;
+  /**
+   * The options available when rolling with this trigger.
+   */
+  roll_options: ActionRollOption[];
 }
 /**
  * A standalone localized description for each move outcome (miss, weak hit, or strong hit). This is for for e.g. VTT implementations, where it's often useful to display only the rules text relevant to a roll result.
@@ -908,9 +921,9 @@ export interface MoveActionRoll {
  *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
  */
 export interface MoveOutcomes {
-  miss: MoveOutcomeMatchable;
-  weak_hit: MoveOutcome;
   strong_hit: MoveOutcomeMatchable;
+  weak_hit: MoveOutcome;
+  miss: MoveOutcomeMatchable;
 }
 export interface MoveOutcomeMatchable {
   text: MarkdownString;
@@ -930,19 +943,6 @@ export interface Suggestions {
   site_domains?: DelveSiteDomainID[];
   site_themes?: DelveSiteThemeID[];
 }
-export interface TriggerActionRoll {
-  text: MarkdownString6;
-  conditions: TriggerActionRollCondition[];
-}
-export interface TriggerActionRollCondition {
-  text?: MarkdownString7;
-  by?: TriggerBy;
-  method: ActionRollMethod1;
-  /**
-   * The options available when rolling with this trigger.
-   */
-  roll_options: ActionRollOption[];
-}
 /**
  * A move that makes no action rolls or progress rolls.
  */
@@ -953,7 +953,8 @@ export interface MoveNoRoll {
    * A move that makes no action rolls or progress rolls.
    */
   roll_type: "no_roll";
-  text: MarkdownString8;
+  trigger: TriggerNoRoll;
+  text: MarkdownString10;
   source: Source;
   canonical_name?: Label;
   /**
@@ -962,14 +963,13 @@ export interface MoveNoRoll {
   oracles?: OracleTableID[];
   replaces?: MoveID2;
   suggestions?: Suggestions;
-  trigger: TriggerNoRoll;
 }
 export interface TriggerNoRoll {
-  text: MarkdownString9;
+  text: MarkdownString8;
   conditions?: TriggerNoRollCondition[];
 }
 export interface TriggerNoRollCondition {
-  text?: MarkdownString10;
+  text?: MarkdownString9;
   by?: TriggerBy;
 }
 /**
@@ -982,7 +982,9 @@ export interface ProgressMove {
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
-  text: MarkdownString11;
+  track_label: Label2;
+  trigger: TriggerProgressRoll;
+  text: MarkdownString13;
   outcomes: MoveOutcomes;
   source: Source;
   canonical_name?: Label;
@@ -992,15 +994,13 @@ export interface ProgressMove {
   oracles?: OracleTableID[];
   replaces?: MoveID3;
   suggestions?: Suggestions;
-  track_label: Label2;
-  trigger: TriggerProgressRoll;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString12;
+  text: MarkdownString11;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
-  text?: MarkdownString13;
+  text?: MarkdownString12;
   by?: TriggerBy;
   method: ProgressRollMethod1;
   /**
@@ -1015,7 +1015,8 @@ export interface ProgressMoveSpecialTrackRoll {
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
   roll_type: "special_track";
-  text: MarkdownString14;
+  trigger: TriggerSpecialTrack;
+  text: MarkdownString16;
   outcomes: MoveOutcomes;
   source: Source;
   canonical_name?: Label;
@@ -1025,14 +1026,13 @@ export interface ProgressMoveSpecialTrackRoll {
   oracles?: OracleTableID[];
   replaces?: MoveID4;
   suggestions?: Suggestions;
-  trigger: TriggerSpecialTrack;
 }
 export interface TriggerSpecialTrack {
-  text: MarkdownString15;
+  text: MarkdownString14;
   conditions: TriggerSpecialTrackCondition[];
 }
 export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString16;
+  text?: MarkdownString15;
   by?: TriggerBy;
   method: SpecialTrackRollMethod;
   /**
@@ -1142,7 +1142,7 @@ export interface Atlas {
   };
   source: Source;
   canonical_name?: Label;
-  extends?: AtlasID1;
+  enhances?: AtlasID1;
   suggestions?: Suggestions;
 }
 /**
@@ -1272,7 +1272,7 @@ export interface MoveCategory {
   };
   source: Source;
   canonical_name?: Label;
-  extends?: MoveCategoryID1;
+  enhances?: MoveCategoryID1;
   suggestions?: Suggestions;
 }
 /**
@@ -1290,7 +1290,7 @@ export interface NpcCollection {
   };
   source: Source;
   canonical_name?: Label;
-  extends?: NpcCollectionID1;
+  enhances?: NpcCollectionID1;
   suggestions?: Suggestions;
 }
 /**
@@ -1349,7 +1349,7 @@ export interface OracleCollection {
   };
   source: Source;
   canonical_name?: Label;
-  extends?: OracleCollectionID1;
+  enhances?: OracleCollectionID1;
   rendering?: OracleCollectionRendering;
   replaces?: OracleCollectionID2;
   sample_names?: Label[];

@@ -228,29 +228,6 @@
 									"id": "classic/assets/combat_talent/fletcher/abilities/2/moves/craft_arrow",
 									"name": "Craft Arrow",
 									"roll_type": "action_roll",
-									"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "Choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
-										},
-										"strong_hit": {
-											"text": "Take both:\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you craft a single arrow designated for a specific foe...",
 										"conditions": [
@@ -264,6 +241,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you craft a single arrow designated for a specific foe, envision the process and materials, and roll +wits. On a strong hit, take both. On a weak hit, choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Take both:\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
+										},
+										"weak_hit": {
+											"text": "Choose one.\n\n  * Seeker: When a shooter uses the arrow to [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) against this foe, reroll any dice (one time only).\n  * Ravager: When a shooter uses the arrow to inflict harm against this foe, inflict +1d6 harm (one time only)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -297,7 +297,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
@@ -306,11 +305,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/endure_harm"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
@@ -319,7 +318,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/endure_harm"]
 								}
 							]
 						},
@@ -330,7 +330,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/clash"],
 									"trigger": {
 										"conditions": [
 											{
@@ -339,7 +338,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/clash"]
 								}
 							]
 						},
@@ -350,7 +350,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/compel"],
 									"trigger": {
 										"conditions": [
 											{
@@ -359,7 +358,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/compel"]
 								}
 							]
 						}
@@ -392,10 +392,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -409,7 +405,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
 								}
 							]
 						},
@@ -420,7 +420,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -434,7 +433,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -445,7 +445,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/undertake_a_journey"],
 									"trigger": {
 										"conditions": [
 											{
@@ -457,7 +456,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/undertake_a_journey"]
 								}
 							]
 						}
@@ -613,29 +613,6 @@
 									"id": "classic/assets/combat_talent/sunderer/abilities/2/moves/carve_rune",
 									"name": "Carve Rune",
 									"roll_type": "action_roll",
-									"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nInflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
-										},
-										"strong_hit": {
-											"text": "Inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...",
 										"conditions": [
@@ -649,6 +626,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe, roll +heart. On a strong hit, inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). On a weak hit, as above, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Inflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
+										},
+										"weak_hit": {
+											"text": "You succeed, but this death weighs on you; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nInflict +1d6 harm (one time only) when you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -783,7 +783,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -797,7 +796,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/resupply"]
 								}
 							]
 						},
@@ -809,10 +809,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/enter_the_fray",
-										"classic/moves/combat/strike"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -826,7 +822,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/enter_the_fray",
+										"classic/moves/combat/strike"
+									]
 								}
 							]
 						},
@@ -890,7 +890,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -899,7 +898,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -911,7 +911,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -925,7 +924,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								}
 							]
 						},
@@ -937,7 +937,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
@@ -951,7 +950,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/enter_the_fray"]
 								}
 							]
 						}
@@ -1007,7 +1007,6 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1016,7 +1015,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/resupply"]
 								}
 							]
 						},
@@ -1028,7 +1028,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1042,7 +1041,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -1054,7 +1054,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1068,11 +1067,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1085,7 +1084,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/enter_the_fray"]
 								}
 							]
 						}
@@ -1141,7 +1141,6 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1155,7 +1154,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								}
 							]
 						},
@@ -1167,10 +1167,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/enter_the_fray",
-										"classic/moves/adventure/secure_an_advantage"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1184,7 +1180,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/enter_the_fray",
+										"classic/moves/adventure/secure_an_advantage"
+									]
 								}
 							]
 						},
@@ -1196,10 +1196,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1208,7 +1204,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
 								}
 							]
 						}
@@ -1260,7 +1260,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1269,7 +1268,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/gather_information"]
 								}
 							]
 						},
@@ -1281,10 +1281,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1293,7 +1289,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
 								}
 							]
 						},
@@ -1305,7 +1305,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_stress"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1314,7 +1313,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/endure_stress"]
 								}
 							]
 						}
@@ -1393,10 +1393,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/clash",
-										"classic/moves/combat/battle"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1405,11 +1401,14 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/clash",
+										"classic/moves/combat/battle"
+									]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1418,7 +1417,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								}
 							]
 						},
@@ -1488,10 +1488,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/make_camp",
-										"delve/moves/delve/check_your_gear"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1504,7 +1500,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/make_camp",
+										"delve/moves/delve/check_your_gear"
+									]
 								}
 							]
 						},
@@ -1516,10 +1516,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/strike",
-										"classic/moves/combat/clash"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1528,7 +1524,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/strike",
+										"classic/moves/combat/clash"
+									]
 								}
 							]
 						}
@@ -1580,7 +1580,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1589,11 +1588,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/resupply"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1607,7 +1606,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/enter_the_fray"]
 								}
 							]
 						},
@@ -1619,7 +1619,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["*/assets/ritual/*/abilities/*/moves/*"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1628,7 +1627,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["*/assets/ritual/*/abilities/*/moves/*"]
 								}
 							]
 						},
@@ -1692,10 +1692,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/adventure/face_danger"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1709,7 +1705,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/adventure/face_danger"
+									]
 								}
 							]
 						},
@@ -1733,11 +1733,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/adventure/gather_information",
-										"classic/moves/relationship/compel"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -1746,7 +1741,12 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/adventure/gather_information",
+										"classic/moves/relationship/compel"
+									]
 								}
 							]
 						}
@@ -1810,7 +1810,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/companion_endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1819,7 +1818,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/companion_endure_harm"]
 								}
 							]
 						},
@@ -1831,7 +1831,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1845,7 +1844,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/strike"]
 								}
 							]
 						}
@@ -1910,29 +1910,6 @@
 									"id": "classic/assets/path/alchemist/abilities/0/moves/create_elixir",
 									"name": "Create Elixir",
 									"roll_type": "action_roll",
-									"text": "When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You create a single dose, but suffer an additional -1 supply to create it.\n\nThe character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1."
-										},
-										"strong_hit": {
-											"text": "You create a single dose. The character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you create an elixir...",
 										"conditions": [
@@ -1987,6 +1964,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you create an elixir, choose an effect: Deftness (edge), audacity (heart), vigor (iron), slyness (shadow), or clarity (wits). Then, suffer -1 supply and roll +wits. On a strong hit, you create a single dose. The character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1. On a weak hit, as above, but suffer an additional -1 supply to create it.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You create a single dose. The character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1."
+										},
+										"weak_hit": {
+											"text": "You create a single dose, but suffer an additional -1 supply to create it.\n\nThe character who consumes the elixir must [Face Danger](id:classic/moves/adventure/face_danger) +iron and score a hit, after which they add +1 when making moves with the related stat until their health, spirit, or momentum fall below +1."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -2064,7 +2064,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2073,7 +2072,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/forge_a_bond"]
 								}
 							]
 						},
@@ -2136,7 +2136,6 @@
 								},
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"text": "If you mark experience, take +1 experience.",
 										"conditions": [
@@ -2146,7 +2145,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						},
@@ -2157,10 +2157,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/relationship/sojourn",
-										"classic/moves/adventure/make_camp"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -2169,7 +2165,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/relationship/sojourn",
+										"classic/moves/adventure/make_camp"
+									]
 								}
 							]
 						},
@@ -2180,7 +2180,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2189,7 +2188,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/enter_the_fray"]
 								}
 							]
 						}
@@ -2232,7 +2232,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2250,7 +2249,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/endure_harm"]
 								}
 							]
 						}
@@ -2290,10 +2290,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/combat/enter_the_fray",
-										"classic/moves/relationship/draw_the_circle"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -2302,7 +2298,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/combat/enter_the_fray",
+										"classic/moves/relationship/draw_the_circle"
+									]
 								}
 							]
 						},
@@ -2313,7 +2313,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2322,7 +2321,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/gather_information"]
 								}
 							]
 						},
@@ -2333,7 +2333,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/combat/strike"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2342,7 +2341,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/strike"]
 								}
 							]
 						}
@@ -2429,12 +2429,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/face_danger",
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel",
-										"classic/moves/combat/battle"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -2448,7 +2442,13 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/face_danger",
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/relationship/compel",
+										"classic/moves/combat/battle"
+									]
 								},
 								{
 									"roll_type": "action_roll",
@@ -2466,10 +2466,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/gather_information",
-										"classic/moves/adventure/resupply"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -2483,7 +2479,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/gather_information",
+										"classic/moves/adventure/resupply"
+									]
 								}
 							]
 						},
@@ -2530,7 +2530,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2544,7 +2543,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -2555,7 +2555,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2564,7 +2563,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								}
 							]
 						},
@@ -2594,29 +2594,6 @@
 									"id": "classic/assets/path/dancer/abilities/2/moves/commemorate",
 									"name": "Commemorate",
 									"roll_type": "action_roll",
-									"text": "When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You take +1 momentum or +1 spirit, but your allies are unmoved."
-										},
-										"strong_hit": {
-											"text": "You and each of your allies take +2 momentum and +1 spirit."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...",
 										"conditions": [
@@ -2630,6 +2607,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You and each of your allies take +2 momentum and +1 spirit."
+										},
+										"weak_hit": {
+											"text": "You take +1 momentum or +1 spirit, but your allies are unmoved."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -2696,7 +2696,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2710,7 +2709,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -2721,7 +2721,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2735,11 +2734,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								},
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2748,7 +2747,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						},
@@ -2759,7 +2759,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/sojourn"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2773,7 +2772,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/sojourn"]
 								}
 							]
 						}
@@ -2823,7 +2823,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/compel"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2832,7 +2831,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/compel"]
 								}
 							]
 						},
@@ -2843,7 +2843,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2852,11 +2851,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/forge_a_bond"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2865,7 +2864,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								}
 							]
 						}
@@ -2897,10 +2897,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/suffer/face_death",
-										"classic/moves/suffer/face_desolation"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -2909,7 +2905,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/suffer/face_death",
+										"classic/moves/suffer/face_desolation"
+									]
 								}
 							]
 						},
@@ -2920,7 +2920,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "no_roll",
-									"enhances": ["classic/moves/quest/reach_a_milestone"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2928,7 +2927,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/reach_a_milestone"]
 								}
 							]
 						},
@@ -2939,7 +2939,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2948,7 +2947,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						}
@@ -2980,7 +2980,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2989,11 +2988,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								},
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3002,7 +3001,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								},
 								{
 									"roll_type": "action_roll",
@@ -3030,7 +3030,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3039,7 +3038,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/resupply"]
 								}
 							]
 						}
@@ -3078,7 +3078,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3087,11 +3086,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/heal"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3100,7 +3099,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/heal"]
 								}
 							]
 						},
@@ -3111,7 +3111,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3120,7 +3119,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/heal"]
 								}
 							]
 						},
@@ -3131,7 +3131,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/make_camp"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3143,7 +3142,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/make_camp"]
 								}
 							]
 						}
@@ -3186,10 +3186,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -3198,7 +3194,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/relationship/compel"
+									]
 								}
 							]
 						},
@@ -3241,7 +3241,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["delve/moves/delve/check_your_gear"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3254,7 +3253,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["delve/moves/delve/check_your_gear"]
 								}
 							]
 						},
@@ -3265,10 +3265,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/adventure/face_danger"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -3277,7 +3273,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/adventure/face_danger"
+									]
 								}
 							]
 						},
@@ -3347,7 +3347,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3361,11 +3360,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/gather_information"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3379,7 +3378,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -3390,7 +3390,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3404,7 +3403,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/resupply"]
 								}
 							]
 						}
@@ -3436,10 +3436,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/adventure/gather_information"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -3448,14 +3444,14 @@
 												"roll_options": null
 											}
 										]
-									}
-								},
-								{
-									"roll_type": "action_roll",
+									},
 									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/gather_information"
-									],
+									]
+								},
+								{
+									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
@@ -3464,7 +3460,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/adventure/gather_information"
+									]
 								}
 							]
 						},
@@ -3475,7 +3475,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3484,11 +3483,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								},
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3497,7 +3496,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						},
@@ -3545,7 +3545,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/endure_stress"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3558,7 +3557,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/endure_stress"]
 								}
 							]
 						},
@@ -3687,10 +3687,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/suffer/face_death",
-										"classic/moves/suffer/face_desolation"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -3704,7 +3700,11 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/suffer/face_death",
+										"classic/moves/suffer/face_desolation"
+									]
 								}
 							]
 						}
@@ -3737,7 +3737,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3746,7 +3745,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								}
 							]
 						},
@@ -3757,10 +3757,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/secure_an_advantage",
-										"classic/moves/relationship/compel"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -3769,7 +3765,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/secure_an_advantage",
+										"classic/moves/relationship/compel"
+									]
 								}
 							]
 						},
@@ -3780,7 +3780,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3789,7 +3788,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						}
@@ -3829,29 +3829,6 @@
 									"id": "classic/assets/path/outcast/abilities/0/moves/scrape_by",
 									"name": "Scrape By",
 									"roll_type": "action_roll",
-									"text": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](id:classic/moves/suffer/out_of_supply).",
-									"outcomes": {
-										"miss": {
-											"text": "You are [Out of Supply](id:classic/moves/suffer/out_of_supply)."
-										},
-										"weak_hit": {
-											"text": "You may suffer -2 momentum in exchange for +1 supply."
-										},
-										"strong_hit": {
-											"text": "You manage to scrape by and take +1 supply."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When your supply is reduced to 0...",
 										"conditions": [
@@ -3865,6 +3842,29 @@
 												]
 											}
 										]
+									},
+									"text": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](id:classic/moves/suffer/out_of_supply).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You manage to scrape by and take +1 supply."
+										},
+										"weak_hit": {
+											"text": "You may suffer -2 momentum in exchange for +1 supply."
+										},
+										"miss": {
+											"text": "You are [Out of Supply](id:classic/moves/suffer/out_of_supply)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -3921,29 +3921,6 @@
 									"id": "classic/assets/path/pretender/abilities/0/moves/establish_false_identity",
 									"name": "Establish False Identity",
 									"roll_type": "action_roll",
-									"text": "When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You may add +1 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth."
-										},
-										"strong_hit": {
-											"text": "You may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you establish a false identity...",
 										"conditions": [
@@ -3957,6 +3934,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you establish a false identity, roll +shadow. On a strong hit, you may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth. On a weak hit, as above, but add +1 (instead of +2).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You may add +2 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth."
+										},
+										"weak_hit": {
+											"text": "You may add +1 when you make moves using this identity to deceive or influence others. If you roll a 1 on your action die when using your false identity, someone doubts you. Make appropriate moves to reassure them or prevent them from revealing the truth."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -3968,7 +3968,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/sojourn"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3982,7 +3981,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/sojourn"]
 								},
 								{
 									"roll_type": "action_roll",
@@ -3999,7 +3999,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4008,7 +4007,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						}
@@ -4041,10 +4041,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/suffer/endure_harm",
-										"classic/moves/suffer/face_death"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -4053,7 +4049,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/suffer/endure_harm",
+										"classic/moves/suffer/face_death"
+									]
 								}
 							]
 						},
@@ -4083,7 +4083,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"enhances": ["classic/moves/combat/end_the_fight"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4092,7 +4091,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/combat/end_the_fight"]
 								}
 							]
 						}
@@ -4125,7 +4125,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4134,11 +4133,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/heal"]
 								},
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4147,7 +4146,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/face_danger"]
 								}
 							]
 						},
@@ -4169,7 +4169,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4183,7 +4182,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						}
@@ -4216,7 +4216,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4225,7 +4224,8 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/secure_an_advantage"]
 								}
 							]
 						},
@@ -4290,7 +4290,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/suffer/face_death"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4303,7 +4302,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/suffer/face_death"]
 								}
 							]
 						}
@@ -4335,10 +4335,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": [
-										"classic/moves/adventure/face_danger",
-										"classic/moves/adventure/gather_information"
-									],
 									"trigger": {
 										"conditions": [
 											{
@@ -4347,7 +4343,11 @@
 												"roll_options": null
 											}
 										]
-									}
+									},
+									"enhances": [
+										"classic/moves/adventure/face_danger",
+										"classic/moves/adventure/gather_information"
+									]
 								}
 							]
 						},
@@ -4502,7 +4502,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4516,7 +4515,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/gather_information"]
 								}
 							]
 						},
@@ -4527,7 +4527,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4551,7 +4550,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/relationship/forge_a_bond"]
 								}
 							]
 						}
@@ -4738,7 +4738,6 @@
 							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"enhances": ["classic/moves/adventure/make_camp"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4752,7 +4751,8 @@
 												]
 											}
 										]
-									}
+									},
+									"enhances": ["classic/moves/adventure/make_camp"]
 								}
 							]
 						}
@@ -4848,29 +4848,6 @@
 									"id": "classic/assets/ritual/augur/abilities/0/moves/augur",
 									"name": "Augur",
 									"roll_type": "action_roll",
-									"text": "When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "The crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum."
-										},
-										"strong_hit": {
-											"text": "You interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and take +2 momentum."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you summon a flock of crows and ask a single question...",
 										"conditions": [
@@ -4884,6 +4861,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you summon a flock of crows and ask a single question, roll +wits. On a strong hit, you interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and take +2 momentum. On a weak hit, the crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You interpret their calls as a helpful omen. Envision the response ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and take +2 momentum."
+										},
+										"weak_hit": {
+											"text": "The crows ignore your question and offer a clue to an unrelated problem or opportunity in this area. Envision what you learn ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -4928,29 +4928,6 @@
 									"id": "classic/assets/ritual/awakening/abilities/0/moves/awaken_simulacrum",
 									"name": "Awaken Simulacrum",
 									"roll_type": "action_roll",
-									"text": "When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](id:classic/moves/adventure/face_danger) +heart to keep it from turning on you (as a formidable foe).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead.\n\nHowever, if you roll a 1 on your action die when aided by your creation, you must [Face Danger](id:classic/moves/adventure/face_danger) +heart to keep it from turning on you (as a formidable foe)."
-										},
-										"strong_hit": {
-											"text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you create a simulacrum...",
 										"conditions": [
@@ -4964,6 +4941,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you create a simulacrum, roll +heart. On a strong hit, your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. On a weak hit, as above, but if you roll a 1 on your action die when aided by your creation, you must [Face Danger](id:classic/moves/adventure/face_danger) +heart to keep it from turning on you (as a formidable foe).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead."
+										},
+										"weak_hit": {
+											"text": "Your creation is given unnatural life. If it aids you as you make a move to assault or overcome an obstacle through strength, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead.\n\nHowever, if you roll a 1 on your action die when aided by your creation, you must [Face Danger](id:classic/moves/adventure/face_danger) +heart to keep it from turning on you (as a formidable foe)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5020,29 +5020,6 @@
 									"id": "classic/assets/ritual/bind/abilities/0/moves/bind",
 									"name": "Bind",
 									"roll_type": "action_roll",
-									"text": "When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the wilds call as you dance; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent."
-										},
-										"strong_hit": {
-											"text": "You or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you wear an animal pelt and dance in moonlight...",
 										"conditions": [
@@ -5056,6 +5033,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you wear an animal pelt and dance in moonlight, roll +wits. On a strong hit, you or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent. On a weak hit, as above, but the wilds call as you dance; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the wilds call as you dance; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou or an ally may wear the pelt and add +1 when making moves with the related stat (wolf-edge; bear-iron; deer-heart; fox-shadow; boar-wits). If the wearer rolls a 1 on their action die while making a move using the pelt, the magic is spent."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5100,29 +5100,6 @@
 									"id": "classic/assets/ritual/communion/abilities/0/moves/commune",
 									"name": "Commune",
 									"roll_type": "action_roll",
-									"text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1).\n\nHowever, the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress)."
-										},
-										"strong_hit": {
-											"text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...",
 										"conditions": [
@@ -5136,6 +5113,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit, roll +heart. Add +1 if you share a bond. On a strong hit, the spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1). On a weak hit, as above, but the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1)."
+										},
+										"weak_hit": {
+											"text": "The spirit appears and you may converse for a few minutes. Make moves as appropriate (add +1).\n\nHowever, the spirit also delivers troubling news unrelated to your purpose. Envision what it tells you ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure) and [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5180,29 +5180,6 @@
 									"id": "classic/assets/ritual/divination/abilities/0/moves/cast_runes",
 									"name": "Cast Runes",
 									"roll_type": "action_roll",
-									"text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.\n\nYou may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1."
-										},
-										"strong_hit": {
-											"text": "You may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...",
 										"conditions": [
@@ -5216,6 +5193,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones, roll +heart. On a strong hit, you may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of. If you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1. On a weak hit, as above, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the runes reveal their secrets only with extra time and focus; suffer -2 momentum.\n\nYou may read the runes to gain insight about the subject and people close to them, including information you and the subject have no knowledge of.\n\nIf you use the reading to [Gather Information](id:classic/moves/adventure/gather_information), [Compel](id:classic/moves/relationship/compel), or [Forge a Bond](id:classic/moves/relationship/forge_a_bond), add +1."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5260,29 +5260,6 @@
 									"id": "classic/assets/ritual/invoke/abilities/0/moves/invoke_essence",
 									"name": "Invoke Essence",
 									"roll_type": "action_roll",
-									"text": "When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "Add the value of your action die to your essence track (max 6). However, capturing these energies is harrowing; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
-										},
-										"strong_hit": {
-											"text": "Add the value of your action die to your essence track (max 6).\n\nYou may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you consume the mystical essence of your surroundings...",
 										"conditions": [
@@ -5296,6 +5273,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you consume the mystical essence of your surroundings, roll +wits. On a strong hit, add the value of your action die to your essence track (max 6). You may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit. On a weak hit, as above, but capturing these energies is harrowing; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Add the value of your action die to your essence track (max 6).\n\nYou may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
+										},
+										"weak_hit": {
+											"text": "Add the value of your action die to your essence track (max 6). However, capturing these energies is harrowing; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou may then [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +essence to create minor mystical effects or illusions. If you do, suffer -1 essence and take +1 momentum on a hit."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5347,29 +5347,6 @@
 									"id": "classic/assets/ritual/keen/abilities/0/moves/keen",
 									"name": "Keen",
 									"roll_type": "action_roll",
-									"text": "When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the voices of those who were slain join in your song; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nThe wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent."
-										},
-										"strong_hit": {
-											"text": "The wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you hold a weapon and sing a keen for those it has killed...",
 										"conditions": [
@@ -5383,6 +5360,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you hold a weapon and sing a keen for those it has killed, roll +heart. On a strong hit, the wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent. On a weak hit, as above, but the voices of those who were slain join in your song; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "The wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the voices of those who were slain join in your song; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nThe wielder inflicts +1 harm when they [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash). If they roll a 1 on their action die when making a move to inflict harm, the magic is spent."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5427,29 +5427,6 @@
 									"id": "classic/assets/ritual/leech/abilities/0/moves/draw_blood_rune",
 									"name": "Draw Blood Rune",
 									"roll_type": "action_roll",
-									"text": "When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "The rune thirsts for fresh blood, but this asset counts as a debility until the rune’s thirst is quenched.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
-										},
-										"strong_hit": {
-											"text": "The rune thirsts for fresh blood.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you mark your hands or weapon with an intricate blood rune...",
 										"conditions": [
@@ -5463,6 +5440,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you mark your hands or weapon with an intricate blood rune, roll +iron. On a strong hit, the rune thirsts for fresh blood. One time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum. On a weak hit, as above, but this asset counts as a debility until the rune’s thirst is quenched.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "The rune thirsts for fresh blood.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
+										},
+										"weak_hit": {
+											"text": "The rune thirsts for fresh blood, but this asset counts as a debility until the rune’s thirst is quenched.\n\nOne time only, when you make a move to inflict harm, reroll any dice and inflict +2 harm on a hit. Then, for each point of harm inflicted, take +1 and allocate it as +health or +momentum."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5507,29 +5507,6 @@
 									"id": "classic/assets/ritual/lightbearer/abilities/0/moves/capture_light",
 									"name": "Capture Light",
 									"roll_type": "action_roll",
-									"text": "When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "Set your light track to +3.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
-										},
-										"strong_hit": {
-											"text": "Set your light track to +6.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you focus on a source of light and capture its essence...",
 										"conditions": [
@@ -5543,6 +5520,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you focus on a source of light and capture its essence, roll +wits. On a strong hit, set your light track to +6. On a weak hit, make it +3. Then, when you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Set your light track to +6.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
+										},
+										"weak_hit": {
+											"text": "Set your light track to +3.\n\nWhen you make a move to overcome or navigate darkness, you may add +2 and suffer -1 light."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5594,29 +5594,6 @@
 									"id": "classic/assets/ritual/scry/abilities/0/moves/scry",
 									"name": "Scry",
 									"roll_type": "action_roll",
-									"text": "When you look into flames to study a remote person or location, roll +shadow. You or someone with you must have knowledge of the target. On a strong hit, you may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits. On a weak hit, as above, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n  * Something precious: [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n  * Provisions: Suffer -2 supply.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n  * Something precious: [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n  * Provisions: Suffer -2 supply.\n\nYou may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits."
-										},
-										"strong_hit": {
-											"text": "You may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...",
 										"conditions": [
@@ -5630,6 +5607,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you look into flames to study a remote person or location, roll +shadow. You or someone with you must have knowledge of the target. On a strong hit, you may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits. On a weak hit, as above, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n  * Something precious: [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n  * Provisions: Suffer -2 supply.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the flames are hungry; choose one to sacrifice.\n\n  * Your blood: [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n  * Something precious: [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n  * Provisions: Suffer -2 supply.\n\nYou may [Gather Information](id:classic/moves/adventure/gather_information) through observation using +shadow or +wits."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5674,29 +5674,6 @@
 									"id": "classic/assets/ritual/shadow_walk/abilities/0/moves/walk_in_shadow",
 									"name": "Walk in Shadow",
 									"roll_type": "action_roll",
-									"text": "When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](id:classic/moves/adventure/face_danger) to find your way.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the shadows try to lead you astray. You must first [Face Danger](id:classic/moves/adventure/face_danger) to find your way.\n\nTake +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
-										},
-										"strong_hit": {
-											"text": "Take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you cloak yourself with the gossamer veil of the shadow realms...",
 										"conditions": [
@@ -5710,6 +5687,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you cloak yourself with the gossamer veil of the shadow realms, roll +shadow. On a strong hit, take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking. On a weak hit, as above, but the shadows try to lead you astray. You must first [Face Danger](id:classic/moves/adventure/face_danger) to find your way.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Take +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the shadows try to lead you astray. You must first [Face Danger](id:classic/moves/adventure/face_danger) to find your way.\n\nTake +1 momentum. Then, reroll any dice (one time only) when you make a move by ambushing, hiding, or sneaking."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5754,29 +5754,6 @@
 									"id": "classic/assets/ritual/sway/abilities/0/moves/sway",
 									"name": "Sway",
 									"roll_type": "action_roll",
-									"text": "When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but this person’s need creates a troubling dilemma or complication; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).\n\nThe wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only)."
-										},
-										"strong_hit": {
-											"text": "The wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you speak a person’s name three times to the wind...",
 										"conditions": [
@@ -5790,6 +5767,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you speak a person’s name three times to the wind, roll +wits. On a strong hit, the wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only). On a weak hit, as above, but this person’s need creates a troubling dilemma or complication; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "The wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only)."
+										},
+										"weak_hit": {
+											"text": "You succeed, but this person’s need creates a troubling dilemma or complication; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).\n\nThe wind whispers of this person’s need. Envision what you hear ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure). If you use this information or fulfill this need when you [Compel](id:classic/moves/relationship/compel) them, you may reroll any dice (one time only)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5834,29 +5834,6 @@
 									"id": "classic/assets/ritual/talisman/abilities/0/moves/fashion_talisman",
 									"name": "Fashion Talisman",
 									"roll_type": "action_roll",
-									"text": "When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "When the wearer opposes the target through a move, add +1. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
-										},
-										"strong_hit": {
-											"text": "When the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you fashion a charm that protects against a specific person or creature...",
 										"conditions": [
@@ -5870,6 +5847,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you fashion a charm, envision it and name the specific person or creature it protects against. Then roll +wits. On a strong hit, when the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent. On a weak hit, as above, but the wearer adds +1 when making a move (instead of +2).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "When the wearer opposes the target through a move, add +2. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
+										},
+										"weak_hit": {
+											"text": "When the wearer opposes the target through a move, add +1. If a 1 is rolled on the action die while making a move using the charm, the magic is spent."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5914,29 +5914,6 @@
 									"id": "classic/assets/ritual/tether/abilities/0/moves/tether",
 									"name": "Tether",
 									"roll_type": "action_roll",
-									"text": "When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the spirits reveal a disturbing aspect of the place; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation)."
-										},
-										"strong_hit": {
-											"text": "You are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation)."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you commune with the spirits of a place...",
 										"conditions": [
@@ -5950,6 +5927,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you commune with the spirits of a place, roll +heart. If you share a bond with someone there, add +1. On a strong hit, you are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation). On a weak hit, as above, but the spirits reveal a disturbing aspect of the place; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation)."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the spirits reveal a disturbing aspect of the place; [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).\n\nYou are tethered. When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) to return, you may roll +spirit or +heart (instead of +wits), and take +1 momentum on a hit. When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination), take +2 momentum on a strong hit. The tether is lost if you perform this ritual elsewhere, or when you [Face Desolation](id:classic/moves/suffer/face_desolation)."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -5994,29 +5994,6 @@
 									"id": "classic/assets/ritual/totem/abilities/0/moves/bind_beast",
 									"name": "Bind Beast",
 									"roll_type": "action_roll",
-									"text": "When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but creating this connection is unsettling; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).\n\nYou are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
-										},
-										"strong_hit": {
-											"text": "You are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you hold a totem of your animal or beast companion and focus on it...",
 										"conditions": [
@@ -6030,6 +6007,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you hold a totem of your animal or beast companion and focus on it, roll +heart. On a strong hit, you are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent. On a weak hit, as above, but creating this connection is unsettling; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
+										},
+										"weak_hit": {
+											"text": "You succeed, but creating this connection is unsettling; [Endure Stress](id:classic/moves/suffer/endure_stress) (1 stress).\n\nYou are bound together. Add +1 and take +1 momentum on a hit when you use a companion ability. If you roll a 1 on your action die when using a companion ability, the magic is spent."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -6074,29 +6074,6 @@
 									"id": "classic/assets/ritual/visage/abilities/0/moves/paint_visage",
 									"name": "Paint Visage",
 									"roll_type": "action_roll",
-									"text": "When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "You succeed, but the blood must be your own; [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n\nYou may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
-										},
-										"strong_hit": {
-											"text": "You may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you paint yourself in blood and ash...",
 										"conditions": [
@@ -6110,6 +6087,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you paint yourself in blood and ash, roll +wits. On a strong hit, you may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent. On a weak hit, as above, but the blood must be your own; [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).",
+									"outcomes": {
+										"strong_hit": {
+											"text": "You may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
+										},
+										"weak_hit": {
+											"text": "You succeed, but the blood must be your own; [Endure Harm](id:classic/moves/suffer/endure_harm) (2 harm).\n\nYou may add +2 and take +1 momentum on a hit when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) using fear or intimidation. If you roll a 1 on your action die when making a move aided by your visage, the magic is spent."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}
@@ -6154,29 +6154,6 @@
 									"id": "classic/assets/ritual/ward/abilities/0/moves/ward",
 									"name": "Ward",
 									"roll_type": "action_roll",
-									"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary.",
-									"outcomes": {
-										"miss": {
-											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
-										},
-										"weak_hit": {
-											"text": "Choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
-										},
-										"strong_hit": {
-											"text": "Choose two.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
-										}
-									},
-									"source": {
-										"title": "Ironsworn Assets Master Set",
-										"date": "2019-06-05",
-										"authors": [
-											{
-												"name": "Shawn Tomkin"
-											}
-										],
-										"license": "https://creativecommons.org/licenses/by/4.0",
-										"url": "https://ironswornrpg.com"
-									},
 									"trigger": {
 										"text": "When you walk a wide circle, sprinkling the ground with salt...",
 										"conditions": [
@@ -6190,6 +6167,29 @@
 												]
 											}
 										]
+									},
+									"text": "When you walk a wide circle, sprinkling the ground with salt, roll +wits. On a strong hit, choose two. On a weak hit, choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary.",
+									"outcomes": {
+										"strong_hit": {
+											"text": "Choose two.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
+										},
+										"weak_hit": {
+											"text": "Choose one.\n\n  * When a foe first crosses the boundary, take +1 momentum.\n  * When you first inflict harm against a foe within the boundary, inflict +1 harm.\n  * Your ward is ‘likely’ ([Ask the Oracle](id:classic/oracles/moves/ask_the_oracle/likely)) to trap a foe within the boundary."
+										},
+										"miss": {
+											"text": "You fail, or your progress is undermined by a dramatic and costly turn of events. [Pay the Price](id:classic/moves/fate/pay_the_price)."
+										}
+									},
+									"source": {
+										"title": "Ironsworn Assets Master Set",
+										"date": "2019-06-05",
+										"authors": [
+											{
+												"name": "Shawn Tomkin"
+											}
+										],
+										"license": "https://creativecommons.org/licenses/by/4.0",
+										"url": "https://ironswornrpg.com"
 									}
 								}
 							}

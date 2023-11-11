@@ -4,9 +4,9 @@ const identifierKeys = /^(id)$/
 const enabledKeys = /^(enabled)$/
 const labelKeys = /^(name|label)$/
 const appearanceKeys = /^(color|icon|images)$/
-const categoryKeys = /^(([a-z]+_)?type|nature|rank)$/
+const categoryKeys = /^(([a-z]+_)?type|nature|rank|track_label)$/
 const optionsKeys = /^(options)$/
-const usageKeys = /^(count_as_impact|shared|attachments|using)$/
+const usageKeys = /^(count_as_impact|shared|attachments|using|trigger)$/
 const shortTextKeys = /^(summary|requirement|result)$/
 const primaryContentKeys = /^(description|text)$/
 const childObjectKeys = /^(abilities|contents|collections|outcomes)$/
@@ -36,9 +36,9 @@ const jsonSortOrder = {
 	features: 'lexical',
 	drives: 'lexical',
 	tactics: 'lexical',
-	miss: 'lexical',
-	weak_hit: 'lexical',
 	strong_hit: 'lexical',
+	weak_hit: 'lexical',
+	miss: 'lexical',
 	[primaryContentKeys]: 'lexical',
 	[childObjectKeys]: 'lexical',
 	[secondaryContentKeys]: 'lexical',
