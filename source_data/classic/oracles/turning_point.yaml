@@ -264,12 +264,13 @@ oracles:
               table_key: foes
               content_type: summary
         summary: Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 190
         contents:
           quest:
             name: Quest
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             table:
@@ -300,6 +301,7 @@ oracles:
                 summary: 'A life-defining quest of unknowable scope'
           journey:
             name: Journey
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             table:
@@ -315,6 +317,7 @@ oracles:
                 summary: 'Traveling from one end of the Ironlands to another, or to a separate land'
           foe:
             name: Foes
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             table:

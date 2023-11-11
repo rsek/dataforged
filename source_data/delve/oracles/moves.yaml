@@ -10,6 +10,7 @@ oracles:
   moves:
     name: Moves
     extends: classic/collections/oracles/moves
+    source: *Source
     collections:
       delve_the_depths:
         rendering:
@@ -29,12 +30,13 @@ oracles:
               label: Weak Hit Result
         name: Delve the Depths
         # move: delve/moves/delve/delve_the_depths
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 21
         contents:
           edge:
             name: Edge
+            source: *CollectionSource
             table:
               - min: 1
                 max: 45
@@ -53,6 +55,7 @@ oracles:
                 result: &row:Delve_the_Depths_4 'Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger).'
           shadow:
             name: Shadow
+            source: *CollectionSource
             table:
               - min: 1
                 max: 30
@@ -71,6 +74,7 @@ oracles:
                 result: *row:Delve_the_Depths_4
           wits:
             name: Wits
+            source: *CollectionSource
             table:
               - min: 1
                 max: 40

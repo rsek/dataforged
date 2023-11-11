@@ -31,8 +31,8 @@ oracles:
         source:
           <<: *Source
           page: 370
+          #   initial: true
         # usage:
-        #   initial: true
         summary: |-
           Choose a theme that supports what you know of that location’s nature. For a random theme, roll on the table above.
         # content:
@@ -89,53 +89,67 @@ oracles:
     collections:
       chaotic:
         name: Chaotic
-        source:
-          <<: *Source
-          page: 372
         summary: *Chaotic.summary
-        icon: *Chaotic.icon
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 372
+          icon: *Chaotic.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: &Feature.summary Use this table to reveal a new aspect of the location.
             table:
-              - min: 1
+              - &Feature.0
+                min: 1
                 max: 8
                 result: Alterations in the flow of time
-              - min: 9
+              - &Feature.1
+                min: 9
                 max: 16
                 result: 'Chaotic portal, focus, or conduit'
-              - min: 17
+              - &Feature.2
+                min: 17
                 max: 24
                 result: Corrupted or warped architecture or terrain
-              - min: 25
+              - &Feature.3
+                min: 25
                 max: 32
                 result: Corrupted or warped environment or ecosystem
-              - min: 33
+              - &Feature.4
+                min: 33
                 max: 40
                 result: Corrupted or warped technology
-              - min: 41
+              - &Feature.5
+                min: 41
                 max: 48
                 result: Cryptic device harnesses or powers chaos
-              - min: 49
+              - &Feature.6
+                min: 49
                 max: 56
                 result: Distortions of gravity or other natural forces
-              - min: 57
+              - &Feature.7
+                min: 57
                 max: 64
                 result: Energy field or barrier
-              - min: 65
+              - &Feature.8
+                min: 65
                 max: 72
                 result: Glimpses of alternate realities
-              - min: 73
+              - &Feature.9
+                min: 73
                 max: 80
                 result: Lifeforms mutated or altered by chaos
-              - min: 81
+              - &Feature.10
+                min: 81
                 max: 88
                 result: Lifeforms spawned from chaos
-              - min: 89
+              - &Feature.11
+                min: 89
                 max: 96
                 result: Visions of your past or future
-              - &Feature.DescriptorFocus
+              - &Feature.12
                 min: 97
                 max: 100
                 result: |-
@@ -147,39 +161,50 @@ oracles:
                     auto: true
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: &Peril.summary Use this table to help envision a complication or hazard.
             table:
-              - min: 1
+              - &Peril.0
+                min: 1
                 max: 9
                 result: Chaos makes its mark upon you
-              - min: 10
+              - &Peril.1
+                min: 10
                 max: 18
                 result: Chaos spreads or intensifies
-              - min: 19
+              - &Peril.2
+                min: 19
                 max: 27
                 result: Chaos tempts or lures you
-              - min: 28
+              - &Peril.3
+                min: 28
                 max: 36
                 result: Chaotic energies block the path or assail you
-              - min: 37
+              - &Peril.4
+                min: 37
                 max: 45
                 result: Disorienting changes in time or location
-              - min: 46
+              - &Peril.5
+                min: 46
                 max: 54
                 result: Dreadful scene of those who fell prey to chaos
-              - min: 55
+              - &Peril.6
+                min: 55
                 max: 63
                 result: Equipment is made unstable or dangerous
-              - min: 64
+              - &Peril.7
+                min: 64
                 max: 72
                 result: Foes harness or wield chaos
-              - min: 73
+              - &Peril.8
+                min: 73
                 max: 81
                 result: Hazardous environmental changes
-              - min: 82
+              - &Peril.9
+                min: 82
                 max: 90
                 result: Lifeforms made hostile by chaos
-              - &Peril.ActionTheme
+              - &Peril.10
                 min: 91
                 max: 98
                 result: |-
@@ -189,7 +214,7 @@ oracles:
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - &Peril.RollTwice
+              - &Peril.11
                 min: 99
                 max: 100
                 result: Roll twice
@@ -198,748 +223,593 @@ oracles:
                     auto: true
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: &Opportunity.summary Use this table to help envision a beneficial encounter or event, such as when rolling a strong hit with a match in a location.
             table:
-              - min: 1
+              - &Opportunity.0
+                min: 1
                 max: 20
                 result: Chaos ebbs or withdraws for a time
-              - min: 21
+              - &Opportunity.1
+                min: 21
                 max: 40
                 result: Chaos empowers you with strange but useful abilities
-              - min: 41
+              - &Opportunity.2
+                min: 41
                 max: 60
                 result: Chaos manifests as comforting or inspiring visions
-              - min: 61
+              - &Opportunity.3
+                min: 61
                 max: 80
                 result: Chaotic changes hamper your foes
-              - min: 81
+              - &Opportunity.4
+                min: 81
                 max: 100
                 result: Insight into the source or nature of the chaos
       fortified:
         name: Fortified
-        source:
-          <<: *Source
-          page: 373
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 373
+          icon: *Fortified.icon
         summary: *Fortified.summary
-        icon: *Fortified.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Captives or prisoners
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Control area or terminal
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Empty or inactive area
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Enemy forces assembled for an event
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Enemy forces off-duty or at leisure
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Enemy forces on guard
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Enemy forces on patrol
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Enemy forces transporting supplies or equipment
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Enemy leader makes an inspection
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Prototype technology or equipment
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Robotic assistant or watchful AI
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Support personnel at work
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Alarm is triggered
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Automated security or weapons target you
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Checkpoint or path with restricted access
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Enemies converge on this area
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Enemies reveal new capabilities or technology
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Enemies trick you or lure you into a trap
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Powerful enemy appears
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Problematic alliance or affiliation is revealed
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Revealed schemes of an enemy leader create new urgency
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Your plan is undone by an unexpected complication
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Insight into the plans or methods of the enemy force
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Opening to get the drop on an enemy
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Opening to outmaneuver or escape enemies
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Potential collaborator or informant reveals themselves
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Access to useful equipment or weapons
       haunted:
         name: Haunted
-        source:
-          <<: *Source
-          page: 374
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 374
+          icon: *Haunted.icon
         summary: *Haunted.summary
-        icon: *Haunted.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Disembodied voices
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Eerie cold
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Foreboding omen or message
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Ghostly visions of this place in another time
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Glimpses of shadowy movement
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Objects move of their own accord
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Sensation of being watched
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Signs of death or violence
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Spectral sounds
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Twisted or altered architecture or terrain
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: 'Unnatural blight, decay, or ruin'
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Unnatural mists or darkness
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Assailed by an angry or vengeful being
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Beguiling illusions tempt you to linger or stay
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Besieged by frightening sensations
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Equipment is plagued by unexplainable malfunctions
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Plunged into disorienting darkness or illusionary surroundings
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Spectral manifestations of your fears
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Spirits or undead reveal surprising abilities or motivations
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: 'Sudden, shocking reveal of a ghostly manifestation or undead form'
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Trickery leads you into danger
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Visions reveal a horrifying aspect of this place
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Encounter with a benign spirit or being
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Helpful vision of past events
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Message or clue offers insight into the nature of this haunting
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Secret area or path is revealed
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Useful or interesting artifact or device
       infested:
         name: Infested
-        source:
-          <<: *Source
-          page: 375
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 375
+          icon: *Infested.icon
         summary: *Infested.summary
-        icon: *Infested.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Corpse of an unfortunate victim
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: 'Eggs, cocoons, or nest'
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Environment corrupted by the infestation
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Evidence of a lurking creature
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Evidence of an ill-fated victim
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Hoarded food
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Indistinct movement or sounds
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Lair of lesser creatures
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Ravaged supplies or equipment
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Remains of a creature or remnants of a previous form
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Territorial markings
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Trail or evidence of a creature's passage
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Creatures attack without warning
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Creatures guided or controlled by a greater threat
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Creatures reveal new aspects or abilities
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Creatures reveal surprising cleverness
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Creatures take or destroy something important
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Discovery of a live but threatened victim
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Hazardous architecture or terrain
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Lured or driven into a trap or dead-end
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Powerful or dominant creature reveals itself
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Toxic or sickening environment
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Clue to the nature or vulnerabilities of these creatures
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Creatures turn on each other
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Early warning of an attack or ambush
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: External event provides a helpful distraction
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Helpful resource or equipment
       inhabited:
         name: Inhabited
-        source:
-          <<: *Source
-          page: 376
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 376
+          icon: *Inhabited.icon
         summary: *Inhabited.summary
-        icon: *Inhabited.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Conspicuous patrols or surveillance
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Crews at work
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Display or monument honors a notable cultural event
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Emergency teams responding to an incident or crisis
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Families gathering or children playing
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: 'Festival, celebration, or observance'
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Fight breaks out
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Notable figure stands out from the crowd
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Protest or strike
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Unrepaired damage
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Unusually empty or quiet area
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Vendor or merchant hawking their wares
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Announcement or notification brings harrowing news
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Arrival of a foe or rival
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Blockade or security cordon cuts off needed access
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Caught in the crossfire of a dispute
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Disturbing evidence of exploitive conditions
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Lured into danger
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: 'Signs of disease, infestation, or toxic environment'
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Signs of unrest or rebellion
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Signs that you are being watched or followed
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Unwanted attention from authority or enemies
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Intriguing offer from an unexpected source
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Lively festival or gathering place provides a chance to socialize
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Local gossip proves interesting or helpful
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: 'Needed item, resource, or buyer is available'
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Old friend or connection resurfaces
       mechanical:
         name: Mechanical
-        source:
-          <<: *Source
-          page: 377
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 377
+          icon: *Mechanical.icon
         summary: *Mechanical.summary
-        icon: *Mechanical.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Control station or terminal
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Device or technology with a mysterious function
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Disassembled machinery or parts
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Heavy machinery at work
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Machine fabrication or repair
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Machines emulating or fusing with biological life
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Machines in stasis or powered down
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Machines single-mindedly executing a function or program
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Major project under construction
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Mechanical environment in motion or transforming
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Mechanical wreckage or destruction
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Power source for the machines
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Alarm or warning is triggered
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Automated weapon or trap is activated
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Environment made unsuitable for life
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Hostile machines on patrol
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Machines transform to reveal new capabilities
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Machines with corrupted or hacked programming
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Malfunctioning machines or technology
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Moving machinery creates a danger or obstacle
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Under surveillance by a central machine intelligence
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Volatile technology
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Helpful device
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Insight into the workings or purpose of the machines
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Intelligent machine offers aid
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Salvageable resource
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Wondrous technology
       ruined:
         name: Ruined
-        source:
-          <<: *Source
-          page: 378
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 378
+          icon: *Ruined.icon
         summary: *Ruined.summary
-        icon: *Ruined.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Collapsed or broken structures or terrain
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Device or artifact with residual power or function
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Focal point or nexus of the destruction
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Graves or corpses
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Innermost or hidden spaces laid bare by the destruction
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Message or recording from before the fall
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Overgrown or entombed spaces
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Rubble-strewn paths
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Sad memento of a lost life
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Sights or sounds of structural instability
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Signs of looting or scavenging
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Survivors or guardians dwell among the ruins
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: Dreadful atmosphere of loss and destruction weighs upon you
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Evidence of a horrible fate for others who passed this way
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Hazardous atmosphere or environment
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Hostile creature has staked out their territory
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Imminent collapse or destruction
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Lured into a trap or targeted by automated defenses
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Source of the destruction persists or returns anew
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Unearthed secrets best left buried
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Unstable or broken path
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Volatile device or artifact
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Access to an untouched or preserved area
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Insight into what brought this place to ruin
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Interesting or useful device or artifact
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Salvageable equipment or resources
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Shortcut or passage through the destruction
       sacred:
         name: Sacred
-        source:
-          <<: *Source
-          page: 379
+        <<: &CollectionMeta
+          source:
+            <<: *Source
+            page: 379
+          icon: *Sacred.icon
         summary: *Sacred.summary
-        icon: *Sacred.icon
         contents:
           feature:
             name: Feature
+            <<: *CollectionMeta
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Adherents performing worship or enacting rituals
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Altar or temple
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Dwellings for the faithful
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Enigmatic symbols
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Graves or remains of glorified disciples
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Holy text or archives
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Offerings or atonements
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Pilgrims arriving to pay homage
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Protected reliquary of an artifact or token
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Religious art or idols
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Subtle manifestations of mystical power or visions
-              - min: 89
-                max: 96
+              - <<: *Feature.11
                 result: Tokens or motifs representing the faith's domain
-              - *Feature.DescriptorFocus
+              - *Feature.12
           peril:
             name: Peril
+            <<: *CollectionMeta
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 9
+              - <<: *Peril.0
                 result: An aspect of the faith beguiles you or lures you into danger
-              - min: 10
-                max: 18
+              - <<: *Peril.1
                 result: Dreadful aspects or powers of the faith are revealed
-              - min: 19
-                max: 27
+              - <<: *Peril.2
                 result: Embodiment of a god or power is given corrupted form or purpose
-              - min: 28
-                max: 36
+              - <<: *Peril.3
                 result: Guardians seek martyrdom in defense of this place
-              - min: 37
-                max: 45
+              - <<: *Peril.4
                 result: Leaders corrupt or exploit their followers to oppose you
-              - min: 46
-                max: 54
+              - <<: *Peril.5
                 result: Prophecies portend a dire threat
-              - min: 55
-                max: 63
+              - <<: *Peril.6
                 result: Protective ward or enigmatic puzzle blocks the way
-              - min: 64
-                max: 72
+              - <<: *Peril.7
                 result: Religious artifact evokes unnerving power
-              - min: 73
-                max: 81
+              - <<: *Peril.8
                 result: Unnatural corruption or decay fouls the environment
-              - min: 82
-                max: 90
+              - <<: *Peril.9
                 result: Zealots enact a ceremony to unlock forbidden powers
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.10
+              - *Peril.11
           opportunity:
             name: Opportunity
+            <<: *CollectionMeta
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Access to a hidden or sealed area
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Encounter with a helpful adherent or heretic
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Insight into the nature or history of the faith
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Insight into the schemes or methods of religious zealots
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Interesting or valuable artifact or device

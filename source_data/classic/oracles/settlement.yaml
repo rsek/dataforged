@@ -166,11 +166,12 @@ oracles:
       name:
         name: Settlement Name
         canonical_name: 'Oracle 7: Settlement Name'
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 178
         contents:
           landscape_feature:
+            source: *CollectionSource
             name: Landscape Feature
             canonical_name: A feature of the landscape
             _i18n:
@@ -214,6 +215,7 @@ oracles:
             _i18n:
               result:
                 part_of_speech: proper_noun
+            source: *CollectionSource
             name: Manmade Edifice
             summary: &Manmade_Edifice |-
               **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
@@ -253,6 +255,7 @@ oracles:
             _i18n:
               result:
                 part_of_speech: proper_noun
+            source: *CollectionSource
             name: Creature
             summary: &Creature |-
               **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
@@ -292,6 +295,7 @@ oracles:
             _i18n:
               result:
                 part_of_speech: proper_noun
+            source: *CollectionSource
             name: Historical Event
             summary: &Historical_Event |-
               **A historical event.** What happened here? What place or practice commemorates this event?
@@ -331,6 +335,7 @@ oracles:
             _i18n:
               result:
                 part_of_speech: proper_noun
+            source: *CollectionSource
             name: Old World Language
             summary: &Old_World_Language |-
               **A word in an Old World language.** What culture is represented by this word? What does it translate to?
@@ -370,6 +375,7 @@ oracles:
             _i18n:
               result:
                 part_of_speech: proper_noun
+            source: *CollectionSource
             name: Environmental Aspect
             summary: &Environmental_Aspect |-
               **A season or environmental aspect.** What influence does the weather have on this settlement?
@@ -405,6 +411,7 @@ oracles:
                 max: 100
                 result: Summersong
           something_else:
+            source: *CollectionSource
             name: Something Else
             table:
               - min: 1
@@ -457,12 +464,13 @@ oracles:
               table_key: suffix
         # template:
         #   result: "{{result:classic/oracles/settlement/quick_name/prefix}}{{result:classic/oracles/settlement/quick_name/suffix}}"
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 180
         contents:
           prefix:
             name: Prefix
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             _i18n:
@@ -607,6 +615,7 @@ oracles:
                 result: Long
           suffix:
             name: Suffix
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             _i18n:
@@ -715,6 +724,8 @@ oracles:
                 result: wick
           theme:
             name: Settlement Name
+            source:
+              <<: *CollectionSource
             table:
               - min: 1
                 max: 15

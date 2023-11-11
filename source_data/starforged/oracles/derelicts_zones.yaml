@@ -9,16 +9,20 @@ source: &Source
 oracles:
   derelicts:
     name: Derelicts
+    source:
+      <<: *Source
+      page: 348
     collections:
       access:
         name: Access
         icon: icons/derelicts/access.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 352
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: &Area.Summary |-
               Roll on this table to help envision the spaces you encounter in that segment of your exploration. Each zone may consist of one or more areas as appropriate to what you envision for the overall complexity of the derelict. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), an area can serve as a waypoint in your survey of the derelict.
             table:
@@ -48,6 +52,7 @@ oracles:
                 result: Airlock or external
           feature:
             name: Feature
+            source: *CollectionSource
             summary: &Feature.summary |-
               Roll on this table when you want to reveal new aspects of your current surroundings. This is best used sparingly—a bit of occasional extra detail or ambiance—rather than rolling for every segment of your exploration.
             table:
@@ -110,45 +115,56 @@ oracles:
                 result: Wrecked passage or debris
               - min: 96
                 max: 100
-                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
           peril:
             name: Peril
+            source: *CollectionSource
             summary: &Peril.summary |-
               Roll on this table when you want help envisioning a complication or danger within a zone, such as when suffering a cost as an outcome of your exploration.
             table:
-              - min: 1
+              - &Peril.0
+                min: 1
                 max: 10
                 result: Alarm or failsafe is triggered
-              - min: 11
+              - &Peril.1
+                min: 11
                 max: 20
                 result: Automated defenses
-              - min: 21
+              - &Peril.2
+                min: 21
                 max: 30
                 result: Blocked or sealed path
-              - min: 31
+              - &Peril.3
+                min: 31
                 max: 40
                 result: Dreadful scene of death or violence
-              - min: 41
+              - &Peril.4
+                min: 41
                 max: 50
                 result: Foe closes in
-              - min: 51
+              - &Peril.5
+                min: 51
                 max: 60
                 result: Gear is failing or broken
-              - min: 61
+              - &Peril.6
+                min: 61
                 max: 70
                 result: Hazardous environmental change
-              - min: 71
+              - &Peril.7
+                min: 71
                 max: 80
                 result: Path is trapped
-              - min: 81
+              - &Peril.8
+                min: 81
                 max: 90
                 result: Unsettling sound or disturbance
-              - &Peril.ActionTheme
+              - &Peril.9
                 min: 91
                 max: 98
                 result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
@@ -157,7 +173,7 @@ oracles:
                     auto: true
                   - oracle: starforged/oracles/core/theme
                     auto: true
-              - &Peril.RollTwice
+              - &Peril.10
                 min: 99
                 max: 100
                 result: Roll twice
@@ -166,966 +182,792 @@ oracles:
                     auto: true
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: &Opportunity.summary |-
               Roll on this table when you want inspiration for a beneficial encounter or event within a derelict, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:starforged/moves/exploration/explore_a_waypoint) and find an opportunity.
             table:
-              - min: 1
+              - &Opportunity.0
+                min: 1
                 max: 20
                 result: Directions, shortcut, or alternate path
-              - min: 21
+              - &Opportunity.1
+                min: 21
                 max: 40
                 result: Encounter with a friendly survivor, explorer, or denizen
-              - min: 41
+              - &Opportunity.2
+                min: 41
                 max: 60
                 result: Hopeful signs of life
-              - min: 61
+              - &Opportunity.3
+                min: 61
                 max: 80
                 result: Opening to outmaneuver or escape a threat or foe
-              - min: 81
+              - &Opportunity.4
+                min: 81
                 max: 100
                 result: Useful equipment
       community:
         name: Community
         icon: icons/derelicts/community.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 353
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
+              - &Area.0
+                min: 1
                 max: 8
                 result: Bar or club
-              - min: 9
+              - &Area.1
+                min: 9
                 max: 16
                 result: Classroom or education
-              - min: 17
+              - &Area.2
+                min: 17
                 max: 24
                 result: Concourse or hub
-              - min: 25
+              - &Area.3
+                min: 25
                 max: 32
                 result: Entertainment
-              - min: 33
+              - &Area.4
+                min: 33
                 max: 40
                 result: Gym or fitness
-              - min: 41
+              - &Area.5
+                min: 41
                 max: 48
                 result: Market or trade
-              - min: 49
+              - &Area.6
+                min: 49
                 max: 56
                 result: Park or garden
-              - min: 57
+              - &Area.7
+                min: 57
                 max: 64
                 result: Promenade or overlook
-              - min: 65
+              - &Area.8
+                min: 65
                 max: 72
                 result: Restaurant or dining
-              - min: 73
+              - &Area.9
+                min: 73
                 max: 80
                 result: Temple or chapel
-              - &Area.NewZone
+              - &Area.10
                 min: 81
                 max: 85
                 result: New zone
-              - &Area.NewZoneViaAccess
+              - &Area.11
                 min: 86
                 max: 100
                 result: New zone via [Access](id:starforged/collections/oracles/derelicts/access)
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
+              - &Feature.0
+                min: 1
                 max: 8
                 result: Ad-hoc memorials
-              - min: 9
+              - &Feature.1
+                min: 9
                 max: 16
                 result: Art depicting historic event
-              - min: 17
+              - &Feature.2
+                min: 17
                 max: 24
                 result: Artificial environment
-              - min: 25
+              - &Feature.3
+                min: 25
                 max: 32
                 result: Automated announcements
-              - min: 33
+              - &Feature.4
+                min: 33
                 max: 40
                 result: Barricaded area
-              - min: 41
+              - &Feature.5
+                min: 41
                 max: 48
                 result: Gaming devices or interfaces
-              - min: 49
+              - &Feature.6
+                min: 49
                 max: 56
                 result: Graffiti or vandalization
-              - min: 57
+              - &Feature.7
+                min: 57
                 max: 64
                 result: Guard post or surveillance
-              - min: 65
+              - &Feature.8
+                min: 65
                 max: 72
                 result: Mass grave or corpses
-              - min: 73
+              - &Feature.9
+                min: 73
                 max: 80
                 result: Panoramic viewport
-              - min: 81
+              - &Feature.10
+                min: 81
                 max: 88
                 result: Rubble or debris
-              - &Feature.DescriptorFocus
+              - &Feature.11
+                <<: *DescriptorFocus
                 min: 89
                 max: 100
-                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Biological infestation
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Breached or broken structure
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Distressing signs of mass violence or death
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Flooded environment
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Foe lurks within concealment
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Fragile structural integrity
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Haunting vision of life here before the fall
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Hazardous environmental change
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Heartbreaking memento of lost lives
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Culturally significant object or artifact
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Salvageable goods or resources
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Secure area offers a moment of peace
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Terminal with access to site details
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Valuable item
       engineering:
         name: Engineering
         icon: icons/derelicts/engineering.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 354
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Control room
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Engine room or power core
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Engineering offices
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Equipment storage
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Fuel or coolant tanks
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Life support
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Maintenance tube
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Vehicle bay or garage
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Water processing
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Workshop
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Cluttered workbench
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Control terminal
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Crane or lift
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Disassembled equipment
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Flickering status monitors
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Jury-rigged equipment
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Multilevel layout
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Pipes and valves
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Sharp ozone smell
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Unfinished project
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Utility bots
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Corrosive leak
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Erratic utility bots
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Failing equipment requires a specific part or skill
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Fire or energy surge
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Precarious or broken path
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Radioactive hotspot
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Sabotaged equipment
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Shrouded atmosphere conceals a lurking foe
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Unstable or failing power core
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Advanced or experimental equipment
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Chance to restore power or function
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Helpful plans or schematics
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Helpful utility bot
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Useful tool or device
       living:
         name: Living
         icon: icons/derelicts/living.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 355
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Food storage
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Galley or kitchen
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Laundry
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Locker room or storage
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Mess hall or dining
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Observation lounge
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Quarters (communal)
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Quarters (individual)
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Restroom or showers
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Sleeping pods
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Abandoned pet
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Audible music
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Cherished personal item
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Failed barricade
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Half-eaten food
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Messages from loved ones
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Ransacked belongings
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Remains of the dead
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Scuttling vermin
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Shrine or altar
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Unusual art
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Booby trap
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Distressing written message
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Disturbing evidence of exploitive living conditions
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Dreadful scene of death or violence
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Lured into danger by signs of life
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Recorded message reveals a threat or complication
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Sealed door or hatch blocks access
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Signs of unwelcome invaders
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Unsettling sound or disturbance
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Culturally significant object or artifact
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Hidden stash of valuable contraband
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Intact barricade or protected area
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Recorded message reveals helpful aspects of this site
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Useful personal gear
       medical:
         name: Medical
         icon: icons/derelicts/medical.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 356
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Crematorium
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Emergency or triage
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Isolation or containment
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Medical lab
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Medical offices
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Morgue
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Operating room
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Pharmacy or drug locker
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Prosthetics workshop
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Ward or clinic
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Autopsied corpse
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Biological specimens
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Blood spatter or pools
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Bloody medical supplies
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Broken prosthetics
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Corpse of a healer
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Dissected specimen
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Improvised overflow beds
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Medical monitors
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Medical records or scans
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Stacks of body bags
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Disgusting sight / smell
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Disturbing evidence of medical misconduct
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Erratic medical bots
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Evidence of a virulent disease
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Malfunctioning medical equipment
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Repercussions of a medical experiment
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Restless dead
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Signs of a horrific death
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Signs of broken quarantine
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Cache of medicine
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Clues to a medical mystery
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Helpful medical bot
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Unusual or rare specimen
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Useful medical equipment
       operations:
         name: Operations
         icon: icons/derelicts/operations.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 357
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Admin or command offices
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Armory
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Bridge or command center
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Brig or cells
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Comms center
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Computer core
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Conference or briefing room
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Landing bay or hangar
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Lounge
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Security
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Automated warning
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Buckled blast doors
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Control terminal
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Emergency lighting
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: EV suit storage
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Hissing comms channel
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Intricate control panels
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Map of the site
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Recorded message
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Video surveillance monitors
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Written logs
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Automated defenses target you
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Broken equipment limits control
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Coded message or puzzling security device
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Discouraging evidence of failed plans or defenses
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Displays reveal a new threat elsewhere in this site
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Failing power
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Hostile AI
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Sealed blast doors block access
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Sensors indicate the arrival of an external threat
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Cache of weapons or ammo
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Helpful AI
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Keycard or access code
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Log offers insight into this site's downfall
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Secure area offers a moment of peace
       production:
         name: Production
         icon: icons/derelicts/production.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 358
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Airlock or staging area
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Assembly or processing
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Cargo bay
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Equipment storage
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Exosuit bay
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Harvesting or mining platform
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Monitoring or control room
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Processed goods storage
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Raw materials storage
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Scrapyard
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Cargo lifts
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Control panels
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Disassembled machinery
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Elevated walkways
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Environment suits
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Ill-fated workers
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Immense machinery
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Sealed or locked containers
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Tools
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Vats of chemicals or gas
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Written manifest
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Claustrophobic spaces
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Dangerous machinery
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Disturbing evidence of exploited labor
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Extreme temperatures
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Hazardous materials
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Impending industrial disaster
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Malfunctioning automation
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Rivals seek to secure these resources
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Signs of an unearthed or manufactured threat
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Helpful vehicle or transport
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Rare or valuable resource
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Salvageable materials
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Useful equipment
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Valuable cargo
       research:
         name: Research
         icon: icons/derelicts/research.svg
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 359
         contents:
           area:
             name: Area
+            source: *CollectionSource
             summary: *Area.Summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Area.0
                 result: Clean room
-              - min: 9
-                max: 16
+              - <<: *Area.1
                 result: Cold storage
-              - min: 17
-                max: 24
+              - <<: *Area.2
                 result: Creature or animal pens
-              - min: 25
-                max: 32
+              - <<: *Area.3
                 result: Decontamination room
-              - min: 33
-                max: 40
+              - <<: *Area.4
                 result: Hazardous material storage
-              - min: 41
-                max: 48
+              - <<: *Area.5
                 result: Hydroponics or agriculture
-              - min: 49
-                max: 56
+              - <<: *Area.6
                 result: Isolation or containment
-              - min: 57
-                max: 64
+              - <<: *Area.7
                 result: Lab
-              - min: 65
-                max: 72
+              - <<: *Area.8
                 result: Library or records
-              - min: 73
-                max: 80
+              - <<: *Area.9
                 result: Secure vault
-              - *Area.NewZone
-              - *Area.NewZoneViaAccess
+              - *Area.10
+              - *Area.11
           feature:
             name: Feature
+            source: *CollectionSource
             summary: *Feature.summary
             table:
-              - min: 1
-                max: 8
+              - <<: *Feature.0
                 result: Aquarium or tank
-              - min: 9
-                max: 16
+              - <<: *Feature.1
                 result: Biological specimens
-              - min: 17
-                max: 24
+              - <<: *Feature.2
                 result: Bones or fossils
-              - min: 25
-                max: 32
+              - <<: *Feature.3
                 result: Broken equipment
-              - min: 33
-                max: 40
+              - <<: *Feature.4
                 result: Cryptic research notes
-              - min: 41
-                max: 48
+              - <<: *Feature.5
                 result: Hastily destroyed data
-              - min: 49
-                max: 56
+              - <<: *Feature.6
                 result: Hazmat suits
-              - min: 57
-                max: 64
+              - <<: *Feature.7
                 result: Inscrutable artifact
-              - min: 65
-                max: 72
+              - <<: *Feature.8
                 result: Invasive plant growth
-              - min: 73
-                max: 80
+              - <<: *Feature.9
                 result: Recorded research log
-              - min: 81
-                max: 88
+              - <<: *Feature.10
                 result: Spilled chemicals
-              - *Feature.DescriptorFocus
+              - *Feature.11
           peril:
             name: Peril
+            source: *CollectionSource
             summary: *Peril.summary
             table:
-              - min: 1
-                max: 10
+              - <<: *Peril.0
                 result: Automated containment protocols are activated
-              - min: 11
-                max: 20
+              - <<: *Peril.1
                 result: Biological infestation
-              - min: 21
-                max: 30
+              - <<: *Peril.2
                 result: Dangerous specimen
-              - min: 31
-                max: 40
+              - <<: *Peril.3
                 result: Disturbing outcome of a failed experiment
-              - min: 41
-                max: 50
+              - <<: *Peril.4
                 result: Evidence of sinister experiments
-              - min: 51
-                max: 60
+              - <<: *Peril.5
                 result: Fragile vault holds a dire threat
-              - min: 61
-                max: 70
+              - <<: *Peril.6
                 result: Signs of broken containment
-              - min: 71
-                max: 80
+              - <<: *Peril.7
                 result: Toxic environment
-              - min: 81
-                max: 90
+              - <<: *Peril.8
                 result: Unstable technology
-              - *Peril.ActionTheme
-              - *Peril.RollTwice
+              - *Peril.9
+              - *Peril.10
           opportunity:
             name: Opportunity
+            source: *CollectionSource
             summary: *Opportunity.summary
             table:
-              - min: 1
-                max: 20
+              - <<: *Opportunity.0
                 result: Helpful research data
-              - min: 21
-                max: 40
+              - <<: *Opportunity.1
                 result: Records of a notable discovery
-              - min: 41
-                max: 60
+              - <<: *Opportunity.2
                 result: Specialized research tools
-              - min: 61
-                max: 80
+              - <<: *Opportunity.3
                 result: Unique prototype
-              - min: 81
-                max: 100
+              - <<: *Opportunity.4
                 result: Useful navigational data

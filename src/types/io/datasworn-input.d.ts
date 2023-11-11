@@ -112,7 +112,6 @@ export type TemplateString2 = string;
  *   * `embed_as_column`: Render as a single column of a table.
  */
 export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
-export type PageNumber1 = number;
 /**
  * Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -579,7 +578,7 @@ export interface Source {
 export interface OracleCollection {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   color?: CSSColor;
   summary?: MarkdownString;
@@ -596,7 +595,6 @@ export interface OracleCollection {
   collections?: {
     [k: string]: OracleCollection;
   };
-  _source?: SourceStub1;
 }
 export interface Suggestions {
   oracles?: OracleTableID[];
@@ -614,7 +612,7 @@ export interface Suggestions {
 export interface OracleTable {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: OracleTableID;
   dice?: DiceNotation;
@@ -625,7 +623,6 @@ export interface OracleTable {
   match?: MatchBehavior;
   table: OracleTableRow[];
   rendering?: OracleTableRendering;
-  _source?: SourceStub;
 }
 export interface I18NHints {
   result?: I18NHint;
@@ -697,49 +694,6 @@ export interface OracleTableRendering {
   style?: OracleTableStyle;
   color?: CSSColor;
 }
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
 export interface OracleCollectionRendering {
   columns: {
     [k: string]: OracleTableColumn;
@@ -770,56 +724,13 @@ export interface OracleCollectionColumn {
   color?: CSSColor;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub1 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface MoveCategory {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   color?: CSSColor;
   summary?: MarkdownString;
@@ -829,7 +740,6 @@ export interface MoveCategory {
   contents?: {
     [k: string]: Move;
   };
-  _source?: SourceStub6;
 }
 /**
  * A move that makes an action roll.
@@ -837,7 +747,7 @@ export interface MoveCategory {
 export interface MoveActionRoll {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: MoveID;
   replaces?: MoveID1;
@@ -852,7 +762,6 @@ export interface MoveActionRoll {
   roll_type: "action_roll";
   trigger: TriggerActionRoll;
   outcomes: MoveOutcomes;
-  _source?: SourceStub2;
 }
 export interface TriggerActionRoll {
   text: MarkdownString4;
@@ -914,55 +823,12 @@ export interface MoveOutcome {
   count_as?: MoveOutcomeType;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub2 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * A move that makes no action rolls or progress rolls.
  */
 export interface MoveNoRoll {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: MoveID;
   replaces?: MoveID2;
@@ -976,7 +842,6 @@ export interface MoveNoRoll {
    */
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
-  _source?: SourceStub3;
 }
 export interface TriggerNoRoll {
   text: MarkdownString7;
@@ -987,55 +852,12 @@ export interface TriggerNoRollCondition {
   by?: TriggerBy;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub3 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * A progress move that rolls on a standard progress track type (defined by the move object).
  */
 export interface ProgressMove {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: MoveID;
   replaces?: MoveID3;
@@ -1051,7 +873,6 @@ export interface ProgressMove {
   track_label: Label1;
   trigger: TriggerProgressRoll;
   outcomes: MoveOutcomes;
-  _source?: SourceStub4;
 }
 export interface TriggerProgressRoll {
   text: MarkdownString10;
@@ -1069,53 +890,10 @@ export interface TriggerProgressRollCondition {
 export interface ProgressRollOption {
   using: "progress_track";
 }
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub4 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
 export interface ProgressMoveSpecialTrackRoll {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: MoveID;
   replaces?: MoveID4;
@@ -1130,7 +908,6 @@ export interface ProgressMoveSpecialTrackRoll {
   roll_type: "special_track";
   trigger: TriggerSpecialTrack;
   outcomes: MoveOutcomes;
-  _source?: SourceStub5;
 }
 export interface TriggerSpecialTrack {
   text: MarkdownString13;
@@ -1149,99 +926,13 @@ export interface TriggerSpecialTrackConditionOption {
   using: SpecialTrackType;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub5 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub6 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface AssetType {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   color?: CSSColor;
   summary?: MarkdownString;
@@ -1251,7 +942,6 @@ export interface AssetType {
   contents?: {
     [k: string]: Asset;
   };
-  _source?: SourceStub8;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1261,7 +951,7 @@ export interface Asset {
   id?: AssetID;
   name: Label;
   asset_type: Label2;
-  source?: Source;
+  source: Source;
   icon?: SVGImageURL;
   color?: CSSColor;
   /**
@@ -1292,7 +982,6 @@ export interface Asset {
    * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
    */
   shared?: boolean;
-  _source?: SourceStub7;
 }
 /**
  * Select a standard player stat.
@@ -1597,99 +1286,13 @@ export interface AssetConditionMeter1 {
   };
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub7 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub8 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface Atlas {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   color?: CSSColor;
   summary?: MarkdownString;
@@ -1702,7 +1305,6 @@ export interface Atlas {
   collections?: {
     [k: string]: Atlas;
   };
-  _source?: SourceStub10;
 }
 /**
  * An atlas entry, like the Ironlands region entries found in classic Ironsworn.
@@ -1713,7 +1315,7 @@ export interface Atlas {
 export interface AtlasEntry {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   features: MarkdownString[];
   summary?: MarkdownString;
@@ -1721,93 +1323,6 @@ export interface AtlasEntry {
   quest_starter: MarkdownString;
   your_truths?: MarkdownString;
   id?: AtlasEntryID;
-  _source?: SourceStub9;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub9 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub10 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1816,7 +1331,7 @@ export interface SourceStub10 {
 export interface NpcCollection {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   color?: CSSColor;
   summary?: MarkdownString;
@@ -1826,7 +1341,6 @@ export interface NpcCollection {
   contents?: {
     [k: string]: Npc;
   };
-  _source?: SourceStub12;
 }
 /**
  * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.
@@ -1837,7 +1351,7 @@ export interface NpcCollection {
 export interface Npc {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   features: MarkdownString[];
   summary?: MarkdownString;
@@ -1852,7 +1366,6 @@ export interface Npc {
   variants?: {
     [k: string]: NpcVariant;
   };
-  _source?: SourceStub11;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1867,92 +1380,6 @@ export interface NpcVariant {
   id?: NpcVariantID;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub11 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub12 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * A setting truth category.
  *
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1961,61 +1388,17 @@ export interface SourceStub12 {
 export interface Truth {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: TruthID;
   icon?: SVGImageURL;
   options: TruthOption[];
-  _source?: SourceStub13;
 }
 export interface TruthOption {
   id?: TruthOptionID;
   summary?: MarkdownString;
   description: MarkdownString;
   quest_starter: MarkdownString;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub13 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
 }
 /**
  * A rarity, as described in Ironsworn: Delve.
@@ -2026,7 +1409,7 @@ export interface SourceStub13 {
 export interface Rarity {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: RarityID;
   asset: AssetID1;
@@ -2040,50 +1423,6 @@ export interface Rarity {
    */
   xp_cost?: number;
   description: MarkdownString;
-  _source?: SourceStub14;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub14 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
 }
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -2094,7 +1433,7 @@ export interface SourceStub14 {
 export interface DelveSite {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   id?: DelveSiteID;
   icon?: SVGImageURL;
@@ -2170,7 +1509,6 @@ export interface DelveSite {
         frequency: "unforeseen";
       }
     ];
-  _source?: SourceStub15;
 }
 export interface DelveSiteDenizen {
   id?: DelveSiteDenizenID;
@@ -2181,56 +1519,13 @@ export interface DelveSiteDenizen {
   frequency: DelveSiteDenizenFrequency;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub15 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface DelveSiteTheme {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   summary: MarkdownString;
   description?: MarkdownString;
@@ -2311,7 +1606,6 @@ export interface DelveSiteTheme {
         max: 30;
       }
     ];
-  _source?: SourceStub16;
 }
 export interface DelveSiteThemeFeatureRow {
   result: MarkdownString;
@@ -2342,56 +1636,13 @@ export interface DelveSiteThemeDangerRow {
   max: number;
 }
 /**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub16 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface DelveSiteDomain {
   name: Label;
   canonical_name?: Label;
-  source?: Source;
+  source: Source;
   suggestions?: Suggestions;
   summary: MarkdownString;
   description?: MarkdownString;
@@ -2485,7 +1736,6 @@ export interface DelveSiteDomain {
         max: 45;
       }
     ];
-  _source?: SourceStub17;
 }
 export interface DelveSiteDomainFeatureRow {
   result: MarkdownString;
@@ -2514,47 +1764,4 @@ export interface DelveSiteDomainDangerRow {
   id?: DomainDangerRowID;
   min: number;
   max: number;
-}
-/**
- * A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.
- */
-export interface SourceStub17 {
-  /**
-   * The title of the source document.
-   */
-  title?: string;
-  page?: PageNumber1;
-  /**
-   * @minItems 1
-   */
-  authors?: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date?: string;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url?: string;
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license?: string | null;
 }

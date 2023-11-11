@@ -9,6 +9,8 @@ source: &Source
 oracles:
   creatures:
     name: Creatures
+    source:
+      <<: *Source
     summary: |-
       Roll for a [basic form](id:starforged/oracles/creatures/basic_form), and flesh out the creature’s appearance using this [Creature First Look](id:starforged/oracles/creatures/first_look) table. Then, roll on the [Encountered Behavior](id:starforged/oracles/creatures/encountered_behavior) table to envision this creature’s motivation and frame how the encounter begins.
     contents:
@@ -596,6 +598,8 @@ oracles:
           Roll for a basic form, and flesh out the creature’s appearance using the [First Look](id:starforged/oracles/creatures/first_look) table.
         contents:
           space:
+            source:
+              <<: *Source
             name: Space
             rendering:
               icon: *icon.Space
@@ -683,6 +687,8 @@ oracles:
                     auto: true
           interior:
             name: Interior
+            source:
+              <<: *Source
             rendering:
               style: embed_as_column
               color: *color.Interior
@@ -763,6 +769,8 @@ oracles:
               - *BasicForm17
           land:
             name: Land
+            source:
+              <<: *Source
             rendering:
               style: embed_as_column
               color: *color.Land
@@ -843,6 +851,8 @@ oracles:
               - *BasicForm17
           liquid:
             name: Liquid
+            source:
+              <<: *Source
             rendering:
               style: embed_as_column
               color: *color.Liquid
@@ -923,6 +933,8 @@ oracles:
               - *BasicForm17
           air:
             name: Air
+            source:
+              <<: *Source
             rendering:
               style: embed_as_column
               color: *color.Air

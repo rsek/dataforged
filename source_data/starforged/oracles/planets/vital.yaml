@@ -9,13 +9,14 @@ source: &Source
 oracles:
   planets:
     name: Planets
+    source: *Source
     collections:
       vital:
         name: Vital World
         images:
           - images/planets/vital-01.webp
           - images/planets/vital-02.webp
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 318
         summary: This diverse, life-bearing planet might provide some small measure of hope.
@@ -43,9 +44,11 @@ oracles:
         collections:
           settlements:
             name: Settlements
+            source: *CollectionSource
             contents:
               terminus:
                 name: Terminus
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 20
@@ -64,6 +67,7 @@ oracles:
                     result: &Set.4 Settlements in conflict
               outlands:
                 name: Outlands
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 50
@@ -82,6 +86,7 @@ oracles:
                     result: *Set.4
               expanse:
                 name: Expanse
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 80
@@ -101,6 +106,7 @@ oracles:
         contents:
           atmosphere:
             name: Atmosphere
+            source: *CollectionSource
             table:
               - min: null
                 max: null
@@ -122,6 +128,7 @@ oracles:
                 result: Ideal
           observed_from_space:
             name: Observed From Space
+            source: *CollectionSource
             table:
               - min: 1
                 max: 11
@@ -160,6 +167,7 @@ oracles:
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
           feature:
             name: Planetside Feature
+            source: *CollectionSource
             table:
               - min: 1
                 max: 7
@@ -209,6 +217,7 @@ oracles:
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
           life:
             name: Life
+            source: *CollectionSource
             table:
               - min: null
                 max: null
@@ -230,6 +239,7 @@ oracles:
                 result: Overrun
           diversity:
             name: Diversity
+            source: *CollectionSource
             # content:
             #   part_of_speech: [adjective]
             summary: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
@@ -260,6 +270,7 @@ oracles:
                     oracle: *biome
           biomes:
             name: Biomes
+            source: *CollectionSource
             # content:
             #   part_of_speech: [noun, common noun]
             table:

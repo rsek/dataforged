@@ -9,6 +9,7 @@ source: &Source
 oracles:
   moves:
     name: Moves
+    source: *Source
     collections:
       ask_the_oracle:
         name: Ask the Oracle
@@ -18,8 +19,12 @@ oracles:
         contents:
           almost_certain:
             name: Almost Certain
-            match: &AtO.Match
-              text: On a match, an extreme result or twist has occurred.
+            <<: &AtO
+              source:
+                <<: *Source
+                page: 107
+              match: &AtO.Match
+                text: On a match, an extreme result or twist has occurred.
             table:
               - min: 1
                 max: 10
@@ -29,7 +34,7 @@ oracles:
                 result: 'Yes'
           likely:
             name: Likely
-            match: *AtO.Match
+            <<: *AtO
             table:
               - min: 1
                 max: 25
@@ -39,7 +44,7 @@ oracles:
                 result: 'Yes'
           fifty_fifty:
             name: 50/50
-            match: *AtO.Match
+            <<: *AtO
             table:
               - min: 1
                 max: 50
@@ -49,7 +54,7 @@ oracles:
                 result: 'Yes'
           unlikely:
             name: Unlikely
-            match: *AtO.Match
+            <<: *AtO
             table:
               - min: 1
                 max: 75
@@ -59,7 +64,7 @@ oracles:
                 result: 'Yes'
           small_chance:
             name: Small Chance
-            match: *AtO.Match
+            <<: *AtO
             table:
               - min: 1
                 max: 90

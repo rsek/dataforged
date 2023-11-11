@@ -280,6 +280,8 @@ assets:
             moves:
               ready_grappler:
                 name: Ready Grappler
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you take a minute or so to ready the grappler...
@@ -411,6 +413,8 @@ assets:
             moves:
               draw_reserves:
                 name: Draw Reserves
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
@@ -816,6 +820,8 @@ assets:
             moves:
               raise_shields:
                 name: Raise Shields
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you raise your shields...
@@ -1482,6 +1488,8 @@ assets:
             moves:
               craft_projectiles:
                 name: Craft Projectiles
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you replenish your ammo by crafting projectiles...
@@ -1631,6 +1639,8 @@ assets:
             moves:
               commemorate:
                 name: Commemorate
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you create or perform a significant artistic work as a public memorial or tribute...
@@ -2261,6 +2271,8 @@ assets:
             moves:
               read_heart:
                 name: Read Heart
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you read the intent, emotions, or memories of a nearby being...
@@ -2407,6 +2419,8 @@ assets:
             moves:
               gather_energy:
                 name: Gather Energy
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you rest and meditate to gather fiery energy...
@@ -2926,6 +2940,8 @@ assets:
             moves:
               loop_back:
                 name: Loop Back
+                source:
+                  <<: *AssetSource
                 # Burn momentum: false
                 #TODO: add to IMove? Move usage?
                 roll_type: action_roll
@@ -3288,6 +3304,8 @@ assets:
             moves:
               scrape_by:
                 name: Scrape By
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
@@ -3504,6 +3522,8 @@ assets:
             moves:
               shroud_in_darkness:
                 name: Shroud in Darkness
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you expand your veil to immerse your surroundings in darkness...
@@ -3620,6 +3640,8 @@ assets:
             moves:
               snipe_minor_foe:
                 name: Snipe Minor Foe
+                source:
+                  <<: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you target a minor foe from a distance (outside of a fight)...
@@ -5001,6 +5023,8 @@ assets:
             enabled: true
             moves:
               seek_safe_haven:
+                source:
+                  <<: *AssetSource
                 name: Seek Safe Haven
                 roll_type: special_track
                 trigger:

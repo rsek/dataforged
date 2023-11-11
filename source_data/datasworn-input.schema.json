@@ -429,6 +429,7 @@
 				},
 				"date": {
 					"format": "date",
+					"$comment": "You may prefer to deserialize this as a Date object.",
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
 					"type": "string"
 				},
@@ -457,82 +458,6 @@
 			},
 			"required": ["title", "authors", "date", "url", "license"],
 			"title": "Source"
-		},
-		"SourceStub": {
-			"description": "A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.",
-			"type": "object",
-			"properties": {
-				"title": {
-					"description": "The title of the source document.",
-					"examples": [
-						"Ironsworn Rulebook",
-						"Ironsworn Assets Master Set",
-						"Ironsworn: Delve",
-						"Ironsworn: Starforged Rulebook",
-						"Ironsworn: Starforged Assets",
-						"Sundered Isles"
-					],
-					"type": "string"
-				},
-				"page": {
-					"minimum": 1,
-					"title": "Page number",
-					"type": "integer"
-				},
-				"authors": {
-					"minItems": 1,
-					"type": "array",
-					"items": {
-						"examples": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"type": "object",
-						"properties": {
-							"name": {
-								"examples": ["Shawn Tomkin"],
-								"type": "string"
-							},
-							"email": {
-								"format": "email",
-								"description": "An optional email contact for the author",
-								"type": "string"
-							}
-						},
-						"required": ["name"]
-					}
-				},
-				"date": {
-					"format": "date",
-					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
-					"type": "string"
-				},
-				"url": {
-					"format": "uri",
-					"description": "An absolute URL where the source document is available.",
-					"examples": ["https://ironswornrpg.com"],
-					"type": "string"
-				},
-				"license": {
-					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"examples": [
-						"https://creativecommons.org/licenses/by/4.0",
-						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"anyOf": [
-						{
-							"format": "uri",
-							"type": "string"
-						},
-						{
-							"type": "null"
-						}
-					]
-				}
-			},
-			"macro": true,
-			"title": "SourceStub"
 		},
 		"Suggestions": {
 			"type": "object",
@@ -743,14 +668,11 @@
 							"$ref": "#/$defs/NpcVariant"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
 			"required": [
 				"name",
+				"source",
 				"features",
 				"description",
 				"quest_starter",
@@ -801,13 +723,9 @@
 							"$ref": "#/$defs/Npc"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name"],
+			"required": ["name", "source"],
 			"title": "NpcCollection"
 		},
 		"NpcNature": {
@@ -926,13 +844,9 @@
 							"$ref": "#/$defs/OracleCollection"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name"],
+			"required": ["name", "source"],
 			"title": "OracleCollection"
 		},
 		"OracleCollectionColumn": {
@@ -1072,13 +986,9 @@
 				},
 				"rendering": {
 					"$ref": "#/$defs/OracleTableRendering"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "table"]
+			"required": ["name", "source", "table"]
 		},
 		"OracleTableColumn": {
 			"type": "object",
@@ -1320,13 +1230,9 @@
 				},
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "text", "roll_type", "trigger", "outcomes"]
+			"required": ["name", "source", "text", "roll_type", "trigger", "outcomes"]
 		},
 		"MoveActionRollAugment": {
 			"type": "object",
@@ -1414,13 +1320,9 @@
 							"$ref": "#/$defs/Move"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name"],
+			"required": ["name", "source"],
 			"title": "MoveCategory"
 		},
 		"MoveNoRoll": {
@@ -1466,13 +1368,9 @@
 				},
 				"trigger": {
 					"$ref": "#/$defs/TriggerNoRoll"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "text", "roll_type", "trigger"]
+			"required": ["name", "source", "text", "roll_type", "trigger"]
 		},
 		"MoveNoRollAugment": {
 			"type": "object",
@@ -1613,14 +1511,11 @@
 				},
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
 			"required": [
 				"name",
+				"source",
 				"text",
 				"roll_type",
 				"track_label",
@@ -1707,13 +1602,9 @@
 				},
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "text", "roll_type", "trigger", "outcomes"]
+			"required": ["name", "source", "text", "roll_type", "trigger", "outcomes"]
 		},
 		"MoveSpecialTrackAugment": {
 			"type": "object",
@@ -2336,13 +2227,9 @@
 					"default": false,
 					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
 					"type": "boolean"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "asset_type", "abilities"]
+			"required": ["name", "asset_type", "source", "abilities"]
 		},
 		"AssetAbility": {
 			"type": "object",
@@ -2721,13 +2608,9 @@
 							"$ref": "#/$defs/Asset"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name"],
+			"required": ["name", "source"],
 			"title": "AssetType"
 		},
 		"CheckboxField": {
@@ -2971,13 +2854,9 @@
 					"items": {
 						"$ref": "#/$defs/TruthOption"
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "options"],
+			"required": ["name", "source", "options"],
 			"title": "Truth"
 		},
 		"TruthOption": {
@@ -3047,13 +2926,9 @@
 							"$ref": "#/$defs/Atlas"
 						}
 					}
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name"],
+			"required": ["name", "source"],
 			"title": "Atlas"
 		},
 		"AtlasEntry": {
@@ -3095,13 +2970,9 @@
 				},
 				"id": {
 					"$ref": "#/$defs/AtlasEntryID"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "features", "description", "quest_starter"]
+			"required": ["name", "source", "features", "description", "quest_starter"]
 		},
 		"PlayerConditionMeter": {
 			"examples": ["health", "spirit", "supply"],
@@ -3153,13 +3024,9 @@
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "asset", "description"],
+			"required": ["name", "source", "asset", "description"],
 			"title": "Rarity"
 		},
 		"DelveSite": {
@@ -3445,14 +3312,11 @@
 							"maxItems": 12
 						}
 					]
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
 			"required": [
 				"name",
+				"source",
 				"rank",
 				"theme",
 				"domain",
@@ -3832,13 +3696,16 @@
 							"maxItems": 5
 						}
 					]
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "summary", "card_type", "features", "dangers"]
+			"required": [
+				"name",
+				"source",
+				"summary",
+				"card_type",
+				"features",
+				"dangers"
+			]
 		},
 		"DelveSiteDomainDangerRow": {
 			"type": "object",
@@ -4238,13 +4105,16 @@
 							"maxItems": 12
 						}
 					]
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "summary", "card_type", "features", "dangers"]
+			"required": [
+				"name",
+				"source",
+				"summary",
+				"card_type",
+				"features",
+				"dangers"
+			]
 		},
 		"DelveSiteThemeDangerRow": {
 			"type": "object",

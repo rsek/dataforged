@@ -8,6 +8,8 @@ source: &Source
   license: https://creativecommons.org/licenses/by/4.0
 oracles:
   characters:
+    source:
+      <<: *Source
     name: Characters
     # Aliases: [NPC]
     summary: |-
@@ -41,6 +43,8 @@ oracles:
         contents:
           given:
             name: Given Name
+            source:
+              <<: *Source
             summary: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
             suggestions:
@@ -355,6 +359,8 @@ oracles:
 
           callsign:
             name: Callsign
+            source:
+              <<: *Source
             summary: |-
               Spacers are often known only by their callsigns, with their “dirtside names” reserved for family and close friends.
             suggestions:
@@ -669,6 +675,8 @@ oracles:
 
           family_name:
             name: Family Name
+            source:
+              <<: *Source
             summary: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
             # content:

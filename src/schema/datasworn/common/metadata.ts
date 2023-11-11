@@ -52,6 +52,7 @@ export const Source = Type.Object(
 		),
 		date: Type.String({
 			format: 'date',
+			$comment: 'You may prefer to deserialize this as a Date object.',
 			description:
 				"The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating."
 		}),
@@ -85,14 +86,14 @@ export const Source = Type.Object(
 
 export type Source = Static<typeof Source>
 
-export const SourceStub = Type.Partial(Source, {
-	description:
-		'A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.',
-	$id: '#/$defs/SourceStub',
-	macro: true
-})
+// export const SourceStub = Type.Partial(Source, {
+// 	description:
+// 		'A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.',
+// 	$id: '#/$defs/SourceStub',
+// 	macro: true
+// })
 
-export type SourceStub = Static<typeof SourceStub>
+// export type SourceStub = Static<typeof SourceStub>
 
 export const Suggestions = Type.Object(
 	{

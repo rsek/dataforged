@@ -9,17 +9,20 @@ source: &Source
 oracles:
   moves:
     name: Move Oracles
+    source: *Source
     collections:
       ask_the_oracle:
         name: Ask the Oracle
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 229
         contents:
           almost_certain:
             name: Almost Certain
-            match: &AtO.Match
-              text: On a match, envision an extreme result or twist.
+            <<: &AtO
+              source: *CollectionSource
+              match:
+                text: On a match, envision an extreme result or twist.
             # Aliases: ["90"]
             table:
               - min: 1
@@ -30,7 +33,7 @@ oracles:
                 result: 'No'
           likely:
             name: Likely
-            match: *AtO.Match
+            <<: *AtO
             # Aliases: ["75"]
             table:
               - min: 1
@@ -41,7 +44,7 @@ oracles:
                 result: 'No'
           fifty_fifty:
             name: 50/50
-            match: *AtO.Match
+            <<: *AtO
             # Aliases: ["50"]
             table:
               - min: 1
@@ -51,7 +54,7 @@ oracles:
                 max: 100
                 result: 'No'
           unlikely:
-            match: *AtO.Match
+            <<: *AtO
             name: Unlikely
             # Aliases: ["25"]
             table:
@@ -62,7 +65,7 @@ oracles:
                 max: 100
                 result: 'No'
           small_chance:
-            match: *AtO.Match
+            <<: *AtO
             name: Small Chance
             # Aliases: ["10"]
             table:

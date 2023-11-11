@@ -9,12 +9,14 @@ source: &Source
 oracles:
   settlements:
     name: Settlements
+
+    source: &CollectionSource
+      <<: *Source
+      page: 322
     collections:
       population:
         name: Population
-        source:
-          <<: *Source
-          page: 322
+        source: *CollectionSource
         # usage:
         #   initial: true
         #   requires:
@@ -41,6 +43,7 @@ oracles:
         contents:
           terminus:
             name: Terminus
+            source: *CollectionSource
             rendering: &Pop.rendering
               style: embed_as_column
             # usage:
@@ -70,6 +73,7 @@ oracles:
                 # set_attributes: {population: [tens_of_thousands]}
           outlands:
             name: Outlands
+            source: *CollectionSource
             rendering: *Pop.rendering
             # usage:
             #   requires:
@@ -93,6 +97,7 @@ oracles:
                 result: *Pop.4
           expanse:
             name: Expanse
+            source: *CollectionSource
             rendering: *Pop.rendering
             # usage:
             #   requires:

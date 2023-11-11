@@ -302,14 +302,15 @@ oracles:
     collections:
       interior:
         name: Interior
+        source: &CollectionSource
+          <<: *Source
+          page: 364
         summary: If you enter the site, check the [Inner First Look](id:starforged/oracles/vaults/interior/first_look) table for initial impressions of what lies within. If you explore further, use the [Interior Feature](id:starforged/oracles/vaults/interior/feature) table to define what you find or encounter. If you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) within a vault, check this table if you want help setting the scene for a waypoint.
         icon: icons/vaults/interior.svg
         contents:
           first_look:
-            source:
-              <<: *Source
-              page: 364
             name: Inner First Look
+            source: *CollectionSource
             # usage:
             #   initial: true
             #   max_rolls: 2
@@ -671,6 +672,9 @@ oracles:
         name: Sanctum
         summary: As you delve deeper into a vault, the corruption and strangeness of the place takes hold. Use the Sanctum Feature table to represent the aberrant nature of a vault’s depths.
         icon: icons/vaults/sanctum.svg
+        source:
+          <<: *Source
+          page: 368
         contents:
           purpose:
             source:

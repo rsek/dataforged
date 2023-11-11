@@ -9,18 +9,19 @@ source: &Source
 oracles:
   factions:
     name: Factions
+    source:
+      <<: *Source
+      page: 340
     collections:
       name:
         name: Faction Name
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 344
         contents:
           template:
             name: Faction Name Template
-            source:
-              <<: *Source
-              page: 344
+            source: *CollectionSource
             # content:
             #   part_of_speech: [name, proper noun]
             #   tags: [template]
@@ -51,6 +52,7 @@ oracles:
                   result: '{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}'
           legacy:
             name: Legacy
+            source: *CollectionSource
             # content:
             #   part_of_speech: [adjective, proper noun fragment]
             table:

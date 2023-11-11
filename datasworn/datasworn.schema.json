@@ -429,6 +429,7 @@
 				},
 				"date": {
 					"format": "date",
+					"$comment": "You may prefer to deserialize this as a Date object.",
 					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
 					"type": "string"
 				},
@@ -457,82 +458,6 @@
 			},
 			"required": ["title", "authors", "date", "url", "license"],
 			"title": "Source"
-		},
-		"SourceStub": {
-			"description": "A source data stub that inherits data from ancestor elements during post-processing. To prevent inheritance, use the regular `source` property instead.",
-			"type": "object",
-			"properties": {
-				"title": {
-					"description": "The title of the source document.",
-					"examples": [
-						"Ironsworn Rulebook",
-						"Ironsworn Assets Master Set",
-						"Ironsworn: Delve",
-						"Ironsworn: Starforged Rulebook",
-						"Ironsworn: Starforged Assets",
-						"Sundered Isles"
-					],
-					"type": "string"
-				},
-				"page": {
-					"minimum": 1,
-					"title": "Page number",
-					"type": "integer"
-				},
-				"authors": {
-					"minItems": 1,
-					"type": "array",
-					"items": {
-						"examples": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"type": "object",
-						"properties": {
-							"name": {
-								"examples": ["Shawn Tomkin"],
-								"type": "string"
-							},
-							"email": {
-								"format": "email",
-								"description": "An optional email contact for the author",
-								"type": "string"
-							}
-						},
-						"required": ["name"]
-					}
-				},
-				"date": {
-					"format": "date",
-					"description": "The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.",
-					"type": "string"
-				},
-				"url": {
-					"format": "uri",
-					"description": "An absolute URL where the source document is available.",
-					"examples": ["https://ironswornrpg.com"],
-					"type": "string"
-				},
-				"license": {
-					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"examples": [
-						"https://creativecommons.org/licenses/by/4.0",
-						"https://creativecommons.org/licenses/by-nc-sa/4.0"
-					],
-					"anyOf": [
-						{
-							"format": "uri",
-							"type": "string"
-						},
-						{
-							"type": "null"
-						}
-					]
-				}
-			},
-			"macro": true,
-			"title": "SourceStub"
 		},
 		"Suggestions": {
 			"type": "object",

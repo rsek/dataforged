@@ -9,10 +9,13 @@ source: &Source
 oracles:
   starships:
     name: Starships
+    source:
+      <<: *Source
+      page: 326
     collections:
       mission:
         name: Starship Mission
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 328
         rendering:
@@ -46,6 +49,7 @@ oracles:
         contents:
           terminus:
             name: Terminus
+            source: *CollectionSource
             rendering: &display:Mission
               style: embed_as_column
               columns:
@@ -179,6 +183,7 @@ oracles:
                     auto: true
           outlands:
             name: Outlands
+            source: *CollectionSource
             rendering: *display:Mission
             # usage:
             #   requires:
@@ -280,6 +285,7 @@ oracles:
 
           expanse:
             name: Expanse
+            source: *CollectionSource
             rendering: *display:Mission
             # usage:
             #   requires:

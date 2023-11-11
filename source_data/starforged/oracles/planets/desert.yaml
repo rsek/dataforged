@@ -9,13 +9,14 @@ source: &Source
 oracles:
   planets:
     name: Planets
+    source: *Source
     collections:
       desert:
         name: Desert World
         images:
           - images/planets/desert-01.webp
           - images/planets/desert-02.webp
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 308
         summary: A pitiless planet of searing heat, blowing sand, and sunbaked rock.
@@ -43,9 +44,11 @@ oracles:
         collections:
           settlements:
             name: Settlements
+            source: *CollectionSource
             contents:
               terminus:
                 name: Terminus
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 50
@@ -64,6 +67,7 @@ oracles:
                     result: &loc.4 Settlements in conflict
               outlands:
                 name: Outlands
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 75
@@ -82,6 +86,7 @@ oracles:
                     result: *loc.4
               expanse:
                 name: Expanse
+                source: *CollectionSource
                 table:
                   - min: 1
                     max: 90
@@ -101,6 +106,7 @@ oracles:
         contents:
           atmosphere:
             name: Atmosphere
+            source: *CollectionSource
             table:
               - min: 1
                 max: 10
@@ -121,6 +127,7 @@ oracles:
                 max: 100
                 result: Ideal
           observed_from_space:
+            source: *CollectionSource
             name: Observed From Space
             table:
               - min: 1
@@ -160,6 +167,7 @@ oracles:
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
           feature:
             name: Planetside Feature
+            source: *CollectionSource
             table:
               - min: 1
                 max: 7
@@ -209,6 +217,7 @@ oracles:
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
           life:
             name: Life
+            source: *CollectionSource
             table:
               - min: 1
                 max: 20

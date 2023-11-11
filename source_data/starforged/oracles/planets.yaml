@@ -9,6 +9,9 @@ source: &Source
 oracles:
   planets:
     name: Planets
+    source:
+      <<: *Source
+      page: 306
     contents:
       class:
         name: Planetary Class
@@ -82,7 +85,7 @@ oracles:
     collections:
       peril:
         name: Planetside Peril
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 320
         rendering:
@@ -110,6 +113,7 @@ oracles:
           Choose or roll on this table when you want inspiration for a trouble during planetside exploration or a planetside expedition.
         contents:
           lifebearing:
+            source: *CollectionSource
             name: Lifebearing
             rendering:
               style: embed_as_column
@@ -243,6 +247,7 @@ oracles:
                     auto: true
           lifeless:
             name: Lifeless
+            source: *CollectionSource
             rendering:
               style: embed_as_column
             # usage:
@@ -362,7 +367,7 @@ oracles:
                     auto: true
       opportunity:
         name: Planetside Opportunity
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 321
         rendering:
@@ -394,6 +399,7 @@ oracles:
             rendering:
               style: embed_as_column
             name: Lifebearing
+            source: *CollectionSource
             # usage:
             #   requires: *attr:Life.Lifebearing
             table:
@@ -487,6 +493,7 @@ oracles:
             rendering:
               style: embed_as_column
             name: Lifeless
+            source: *CollectionSource
             # usage:
             #   requires: *attr:Life.Lifeless
             table:

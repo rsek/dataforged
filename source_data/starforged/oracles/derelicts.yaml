@@ -9,6 +9,9 @@ source: &Source
 oracles:
   derelicts:
     name: Derelicts
+    source:
+      <<: *Source
+      page: 348
     summary: Derelicts are the forsaken relics of human endeavors.
     description: |-
       Derelicts are the forsaken relics of human endeavors. Use these First Look tables for your initial survey of the derelict. To reveal more about the look and original function or nature of the site, roll on appropriate tables in the [Starship](id:starforged/collections/oracles/starships) or [Settlement](id:starforged/collections/oracles/settlements) oracles. If you explore the depths of a derelict, you may use the zone oracles on the following pages to help envision what you find.
@@ -16,7 +19,7 @@ oracles:
       type:
         name: Derelict Type (by location)
         canonical_name: Type (by location)
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 348
         # usage:
@@ -43,6 +46,7 @@ oracles:
         contents:
           planetside:
             name: Planetside
+            source: *CollectionSource
             icon: icon/oracles/location/planetside.svg
             rendering: &derelictTypeDisplay
               style: embed_as_column
@@ -65,6 +69,7 @@ oracles:
                 # *attr:DerelictType.Settlement
           orbital:
             name: Orbital
+            source: *CollectionSource
             icon: icon/oracles/location/orbital.svg
             rendering: *derelictTypeDisplay
             # usage:
@@ -84,6 +89,7 @@ oracles:
                     - starforged/oracles/derelicts/zones/settlement
           deep_space:
             name: Deep Space
+            source: *CollectionSource
             icon: icon/oracles/location/deep_space.svg
             rendering:
               style: embed_as_column
@@ -104,7 +110,7 @@ oracles:
                     - starforged/oracles/derelicts/zones/settlement
       zones:
         name: Derelict Zones
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 351
         summary: &Zones.Summary If you explore the depths of a derelict, you may use the zone oracles to help envision what you find.
@@ -130,6 +136,7 @@ oracles:
         contents:
           starship:
             name: Starship
+            source: *CollectionSource
             summary: *Zones.Summary
             rendering:
               style: embed_as_column
@@ -181,6 +188,7 @@ oracles:
                 # game_objects: *obj:DerelictZone.Research
           settlement:
             name: Settlement
+            source: *CollectionSource
             summary: *Zones.Summary
             rendering:
               style: embed_as_column

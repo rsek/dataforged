@@ -667,12 +667,13 @@ oracles:
               content_type: result
               table_key: trolls
               label: Trolls
-        source:
+        source: &CollectionSource
           <<: *Source
           page: 187
         contents:
           giants:
             name: Giants
+            source: *CollectionSource
             _i18n:
               result:
                 part_of_speech: proper_noun
@@ -756,6 +757,7 @@ oracles:
                 result: Denua
           varou:
             name: Varou
+            source: *CollectionSource
             _i18n:
               result:
                 part_of_speech: proper_noun
@@ -839,6 +841,7 @@ oracles:
                 result: Vojan
           trolls:
             name: Trolls
+            source: *CollectionSource
             _i18n:
               result:
                 part_of_speech: proper_noun

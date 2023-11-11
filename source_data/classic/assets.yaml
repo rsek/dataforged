@@ -45,9 +45,10 @@ assets:
     contents:
       cave_lion:
         asset_type: Companion
-        source: &AssetSource
-          <<: *Source
-          title: Ironsworn Assets Master Set
+        source:
+          <<: &AssetSource
+            <<: *Source
+            title: Ironsworn Assets Master Set
           page: 2
         name: Cave Lion
         # icon not on game-icons
@@ -102,14 +103,15 @@ assets:
                   strong_hit: &Cave_Lion.3
                     text: If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.
                   weak_hit: *Cave_Lion.3
-        condition_meter: &CompanionHealth
-          label: health
+        condition_meter:
           max: 4
           value: 4
-          min: 0
-          moves:
-            suffer: classic/moves/suffer/companion_endure_harm
-            recover: classic/moves/adventure/heal
+          <<: &CompanionHealth
+            min: 0
+            label: health
+            moves:
+              suffer: classic/moves/suffer/companion_endure_harm
+              recover: classic/moves/adventure/heal
       giant_spider:
         asset_type: Companion
         source:
@@ -679,6 +681,7 @@ assets:
             moves:
               create_elixir:
                 name: Create Elixir
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you create an elixir...
@@ -1067,6 +1070,7 @@ assets:
             moves:
               commemorate:
                 name: Commemorate
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you or an ally make a progress move and score a hit, and you perform a dance to commemorate the event...
@@ -1789,6 +1793,7 @@ assets:
             moves:
               scrape_by:
                 name: Scrape By
+                source: *AssetSource
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/outcast
                 roll_type: action_roll
@@ -1843,6 +1848,7 @@ assets:
             moves:
               establish_false_identity:
                 name: Establish False Identity
+                source: *AssetSource
                 # category: classic/collections/moves/assets
                 # asset: classic/assets/path/pretender
                 roll_type: action_roll
@@ -2413,6 +2419,7 @@ assets:
             moves:
               craft_arrow:
                 name: Craft Arrow
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you craft a single arrow designated for a specific foe...
@@ -2636,6 +2643,7 @@ assets:
             moves:
               carve_rune:
                 name: Carve Rune
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you make a tribute to a fallen foe (formidable or greater) by carving a rune in the haft of your axe...
@@ -2711,6 +2719,7 @@ assets:
             moves:
               augur:
                 name: Augur
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you summon a flock of crows and ask a single question...
@@ -2744,6 +2753,7 @@ assets:
             moves:
               awaken_simulacrum:
                 name: Awaken Simulacrum
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you create a simulacrum...
@@ -2787,6 +2797,7 @@ assets:
             moves:
               bind:
                 name: Bind
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you wear an animal pelt and dance in moonlight...
@@ -2822,6 +2833,7 @@ assets:
             moves:
               commune:
                 name: Commune
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you surround the remains of a recently deceased intelligent creature with lit candles, and summon its spirit...
@@ -2857,6 +2869,7 @@ assets:
             moves:
               cast_runes:
                 name: Cast Runes
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you take a drop of blood from a willing subject (not yourself) and cast the rune-carved stones...
@@ -2896,6 +2909,7 @@ assets:
             moves:
               invoke_essence:
                 name: Invoke Essence
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you consume the mystical essence of your surroundings...
@@ -2939,6 +2953,7 @@ assets:
             moves:
               keen:
                 name: Keen
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you hold a weapon and sing a keen for those it has killed...
@@ -2975,6 +2990,7 @@ assets:
             moves:
               draw_blood_rune:
                 name: Draw Blood Rune
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you mark your hands or weapon with an intricate blood rune...
@@ -3017,6 +3033,7 @@ assets:
             moves:
               capture_light:
                 name: Capture Light
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you focus on a source of light and capture its essence...
@@ -3058,6 +3075,7 @@ assets:
             moves:
               scry:
                 name: Scry
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you look into flames to study a remote person or location (you or someone with you must have knowledge of the target)...
@@ -3097,6 +3115,7 @@ assets:
             moves:
               walk_in_shadow:
                 name: Walk in Shadow
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you cloak yourself with the gossamer veil of the shadow realms...
@@ -3132,6 +3151,7 @@ assets:
             moves:
               sway:
                 name: Sway
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you speak a person’s name three times to the wind...
@@ -3167,6 +3187,7 @@ assets:
             moves:
               fashion_talisman:
                 name: Fashion Talisman
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you fashion a charm that protects against a specific person or creature...
@@ -3200,6 +3221,7 @@ assets:
             moves:
               tether:
                 name: Tether
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you commune with the spirits of a place...
@@ -3235,6 +3257,7 @@ assets:
             moves:
               bind_beast:
                 name: Bind Beast
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you hold a totem of your animal or beast companion and focus on it...
@@ -3271,6 +3294,7 @@ assets:
             moves:
               paint_visage:
                 name: Paint Visage
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you paint yourself in blood and ash...
@@ -3310,6 +3334,7 @@ assets:
             moves:
               ward:
                 name: Ward
+                source: *AssetSource
                 roll_type: action_roll
                 trigger:
                   text: When you walk a wide circle, sprinkling the ground with salt...
