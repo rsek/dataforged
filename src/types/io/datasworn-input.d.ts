@@ -60,7 +60,7 @@ export type AssetAbilityControlField = ClockField | CounterField | CheckboxField
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export type AssetConditionMeterControlField = AssetCheckboxField;
-export type MoveAugment = MoveActionRollAugment | MoveNoRollAugment | MoveProgressRollAugment | MoveSpecialTrackAugment;
+export type MoveEnhance = MoveActionRollEnhance | MoveNoRollEnhance | MoveProgressRollEnhance | MoveSpecialTrackEnhance;
 /**
  * A move ID with wildcards
  */
@@ -79,7 +79,7 @@ export type MarkdownString1 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
  */
 export type ActionRollMethod =
   | "miss"
@@ -89,7 +89,7 @@ export type ActionRollMethod =
   | "highest"
   | "lowest"
   | "all"
-  | "augment";
+  | "enhance";
 export type ActionRollOption = {
   using?: "stat" | "condition_meter" | "ref" | "attached_asset_meter" | "custom";
 } & (RollOptionStat | RollOptionConditionMeter | RollOptionRef | RollOptionAttachedAssetRef | RollOptionCustom);
@@ -133,7 +133,7 @@ export type MarkdownString4 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
  */
 export type SpecialTrackRollMethod =
   | "miss"
@@ -143,7 +143,7 @@ export type SpecialTrackRollMethod =
   | "highest"
   | "lowest"
   | "all"
-  | "augment";
+  | "enhance";
 /**
  * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
@@ -207,7 +207,7 @@ export type MarkdownString7 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
  */
 export type ActionRollMethod1 =
   | "miss"
@@ -217,7 +217,7 @@ export type ActionRollMethod1 =
   | "highest"
   | "lowest"
   | "all"
-  | "augment";
+  | "enhance";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -680,9 +680,9 @@ export interface AssetAbility {
     [k: string]: AssetAbilityControlField;
   };
   /**
-   * Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
+   * Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
    */
-  augment_asset?: {
+  enhance_asset?: {
     attachments?: AssetAttachment;
     /**
      * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
@@ -697,7 +697,7 @@ export interface AssetAbility {
   /**
    * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
-  augment_moves?: MoveAugment[];
+  enhance_moves?: MoveEnhance[];
   /**
    * Unique moves added by this asset ability.
    */
@@ -764,25 +764,25 @@ export interface AssetCheckboxField {
    */
   value?: boolean;
 }
-export interface MoveActionRollAugment {
+export interface MoveActionRollEnhance {
   /**
    * A move that makes an action roll.
    */
   roll_type: "action_roll";
-  augments?: MoveIDWithWildcard[];
+  enhances?: MoveIDWithWildcard[];
   trigger?: {
-    conditions?: TriggerActionRollConditionAugment[];
+    conditions?: TriggerActionRollConditionEnhance[];
   };
 }
-export interface TriggerActionRollConditionAugment {
+export interface TriggerActionRollConditionEnhance {
   text?: MarkdownString1;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll method of its own.
    */
-  method?: "augment" | ActionRollMethod;
+  method?: "enhance" | ActionRollMethod;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
   roll_options: null | ActionRollOption[];
 }
@@ -813,67 +813,67 @@ export interface RollOptionCustom {
   using: "custom";
   value: number;
 }
-export interface MoveNoRollAugment {
+export interface MoveNoRollEnhance {
   /**
    * A move that makes no action rolls or progress rolls.
    */
   roll_type: "no_roll";
-  augments?: MoveIDWithWildcard[];
+  enhances?: MoveIDWithWildcard[];
   trigger?: {
-    conditions?: TriggerNoRollConditionAugment[];
+    conditions?: TriggerNoRollConditionEnhance[];
   };
 }
-export interface TriggerNoRollConditionAugment {
+export interface TriggerNoRollConditionEnhance {
   text?: MarkdownString2;
   by?: TriggerBy;
 }
-export interface MoveProgressRollAugment {
+export interface MoveProgressRollEnhance {
   /**
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
-  augments?: MoveIDWithWildcard[];
+  enhances?: MoveIDWithWildcard[];
   trigger?: {
-    conditions?: TriggerProgressRollConditionAugment[];
+    conditions?: TriggerProgressRollConditionEnhance[];
   };
 }
-export interface TriggerProgressRollConditionAugment {
+export interface TriggerProgressRollConditionEnhance {
   text?: MarkdownString3;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll method of its own.
    */
-  method?: "augment" | ProgressRollMethod;
+  method?: "enhance" | ProgressRollMethod;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
   roll_options: null | ProgressRollOption[];
 }
 export interface ProgressRollOption {
   using: "progress_track";
 }
-export interface MoveSpecialTrackAugment {
+export interface MoveSpecialTrackEnhance {
   /**
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
   roll_type: "special_track";
-  augments?: MoveIDWithWildcard[];
+  enhances?: MoveIDWithWildcard[];
   trigger?: {
-    conditions?: TriggerSpecialTrackConditionAugment[];
+    conditions?: TriggerSpecialTrackConditionEnhance[];
   };
 }
 /**
  * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
  */
-export interface TriggerSpecialTrackConditionAugment {
+export interface TriggerSpecialTrackConditionEnhance {
   text?: MarkdownString4;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll method of its own.
    */
-  method?: "augment" | SpecialTrackRollMethod;
+  method?: "enhance" | SpecialTrackRollMethod;
   /**
-   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
+   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
   roll_options: null | TriggerSpecialTrackConditionOption[];
 }
@@ -1085,7 +1085,7 @@ export interface AssetCardFlipField {
   value?: boolean;
 }
 /**
- * Select a defined asset state, which may augment the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
+ * Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
  */
 export interface SelectFieldAssetState {
   id?: string;

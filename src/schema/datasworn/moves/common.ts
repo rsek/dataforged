@@ -27,7 +27,7 @@ enum RollMethod {
 	Highest = 'highest',
 	Lowest = 'lowest',
 	All = 'all',
-	Augment = 'augment'
+	Enhance = 'enhance'
 }
 
 // ENUMS
@@ -69,8 +69,8 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.Highest]: 'Use the roll option with the best/highest value.',
 	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
 	[RollMethod.All]: 'Use **every** roll option at once.',
-	[RollMethod.Augment]:
-		"The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value."
+	[RollMethod.Enhance]:
+		"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value."
 }
 
 export const ActionRollMethod = JsonEnumFromRecord(

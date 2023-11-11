@@ -118,30 +118,29 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 			return field as Out.AssetAbilityControlField
 		})
 	},
-	augment_asset: function (
+	enhance_asset: function (
 		this: SourceHaver,
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
-	):
-		| {
-				suggestions?: Out.Suggestions | undefined
-				count_as_impact?: boolean | undefined
-				attachments?: Out.AssetAttachment | undefined
-				shared?: boolean | undefined
-		  } & { condition_meter?: Out.AssetConditionMeter | undefined } {
-		return data.augment_asset as any
+	): {
+		suggestions?: Out.Suggestions | undefined
+		count_as_impact?: boolean | undefined
+		attachments?: Out.AssetAttachment | undefined
+		shared?: boolean | undefined
+	} & { condition_meter?: Out.AssetConditionMeter | undefined } {
+		return data.enhance_asset as any
 	},
-	augment_moves: function (
+	enhance_moves: function (
 		this: SourceHaver,
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
-	): Out.MoveAugment[] | undefined {
-		if (data.augment_moves == null) return undefined
+	): Out.MoveEnhance[] | undefined {
+		if (data.enhance_moves == null) return undefined
 
-		return data.augment_moves?.map((moveAugment) =>
-			omit(moveAugment, ['text', 'outcomes'])
+		return data.enhance_moves?.map((moveEnhance) =>
+			omit(moveEnhance, ['text', 'outcomes'])
 		) as any
 	}
 }

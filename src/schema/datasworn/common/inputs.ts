@@ -65,7 +65,7 @@ export const SelectFieldType = JsonEnum([
 	// 'select_meter',
 	// 'select_ref',
 	// 'select_number',
-	// 'select_asset_augment'
+	// 'select_asset_enhance'
 ])
 export type SelectFieldType = Static<typeof SelectFieldType>
 
@@ -99,7 +99,7 @@ export interface InputField<T extends InputFieldType, V> {
 	value?: V
 }
 
-export function InputFieldAugment<T extends ReturnType<typeof InputField>>(
+export function InputFieldEnhance<T extends ReturnType<typeof InputField>>(
 	t: T
 ) {
 	return Type.Omit(t, ['field_type', 'label', 'value'])
@@ -215,4 +215,4 @@ export type SelectFieldStat = Static<typeof SelectFieldStat>
 // )
 // export type SelectFieldRef = Static<typeof SelectFieldRef>
 
-// select asset augment requires too much recursion. so what's the best way to model e.g. Ironclad?
+// select asset enhance requires too much recursion. so what's the best way to model e.g. Ironclad?

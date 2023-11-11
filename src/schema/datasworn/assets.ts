@@ -157,12 +157,12 @@ export const AssetConditionMeter = Type.Object(
 	}
 )
 
-export const AssetConditionMeterAugment = Type.Partial(
+export const AssetConditionMeterEnhance = Type.Partial(
 	Type.Omit(AssetConditionMeter, ['label', 'value', 'id', 'moves', 'min']),
-	{ $id: '#/$defs/AssetConditionMeterAugment' }
+	{ $id: '#/$defs/AssetConditionMeterEnhance' }
 )
-export type AssetConditionMeterAugment = Static<
-	typeof AssetConditionMeterAugment
+export type AssetConditionMeterEnhance = Static<
+	typeof AssetConditionMeterEnhance
 >
 
 export const AssetOptionField = AssetField(
@@ -184,7 +184,7 @@ export const AssetControlField = AssetField(
 	]
 )
 
-function AssetAugmentSelf<T extends TObject>(
+function AssetEnhanceSelf<T extends TObject>(
 	tAsset: T,
 	omitKeys: Array<keyof Static<TObject>> = [],
 	options: ObjectOptions = {}
@@ -201,7 +201,7 @@ function AssetAugmentSelf<T extends TObject>(
 	]
 
 	// condition meters need special handling, so we need to strip it regardless
-	const base = Abstract.NodeAugmentSelf(
+	const base = Abstract.NodeEnhanceSelf(
 		tAsset as any,
 		[...omitKeys, 'condition_meter'],
 		options
@@ -209,12 +209,12 @@ function AssetAugmentSelf<T extends TObject>(
 
 	if (omitKeys.includes('condition_meter')) return base
 
-	// condition meters have their own augment schema
+	// condition meters have their own enhance schema
 	return Type.Composite(
 		[
 			base,
 			Type.Object({
-				condition_meter: Type.Optional(Type.Ref(AssetConditionMeterAugment))
+				condition_meter: Type.Optional(Type.Ref(AssetConditionMeterEnhance))
 			})
 		],
 		options
@@ -301,12 +301,12 @@ export type Asset = Static<typeof Asset>
 
 export const SelectFieldAssetState = Inputs.SelectField(
 	'select_asset_state',
-	AssetAugmentSelf(Asset, ['abilities', 'controls', 'condition_meter']),
+	AssetEnhanceSelf(Asset, ['abilities', 'controls', 'condition_meter']),
 	{
 		$id: $idSelectFieldAssetState,
 		title: 'Select field (asset state)',
 		description:
-			'Select a defined asset state, which may augment the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
+			'Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
 	}
 )
 export type SelectFieldAssetState = Static<typeof SelectFieldAssetState>
@@ -326,7 +326,7 @@ export const AssetAbilityControlField = AssetField(
 		Inputs.ClockField,
 		Inputs.CounterField,
 		Inputs.CheckboxField
-		// Inputs.SelectAssetAugment(AssetAugmentSelf(Asset, []) as TObject)
+		// Inputs.SelectAssetEnhance(AssetEnhanceSelf(Asset, []) as TObject)
 	]
 )
 
@@ -349,15 +349,15 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		augment_asset: Type.Optional(
-			AssetAugmentSelf(Asset, ['abilities', 'controls'], {
+		enhance_asset: Type.Optional(
+			AssetEnhanceSelf(Asset, ['abilities', 'controls'], {
 				description:
-					'Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
+					'Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
 				releaseStage: 'unstable'
 			})
 		),
-		augment_moves: Type.Optional(
-			Type.Array(Type.Ref(Moves.MoveAugment), {
+		enhance_moves: Type.Optional(
+			Type.Array(Type.Ref(Moves.MoveEnhance), {
 				description:
 					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.',
 				releaseStage: 'experimental'
@@ -376,15 +376,15 @@ export const AssetType = Abstract.Collection(
 )
 export type AssetType = Static<typeof AssetType>
 
-// const AssetTypeAugment = Type.Composite(
+// const AssetTypeEnhance = Type.Composite(
 // 	[
 // 		Type.Object({
 // 			type: Type.Literal('extension')
 // 		})
 // 	],
-// 	{ $id: '#/$defs/AssetTypeAugment' }
+// 	{ $id: '#/$defs/AssetTypeEnhance' }
 // )
-// export type AssetTypeAugment = Static<typeof AssetTypeAugment>
+// export type AssetTypeEnhance = Static<typeof AssetTypeEnhance>
 
 const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
 	$id: '#/$defs/AssetImportAbility'
@@ -420,7 +420,7 @@ export {
 // not sure modelling 'forced' impacts is worth it, tbh
 
 // field_type: select_state
-// the value for each select_state option is a partial of the asset ability data: {augment_moves, augment_asset} are the only permitted properties.
+// the value for each select_state option is a partial of the asset ability data: {enhance_moves, enhance_asset} are the only permitted properties.
 //
 
-// alternate approach: some feature of augments, like requires_state: some_state_id?
+// alternate approach: some feature of enhances, like requires_state: some_state_id?

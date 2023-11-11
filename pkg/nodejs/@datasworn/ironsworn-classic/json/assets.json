@@ -294,15 +294,15 @@
 							"id": "classic/assets/combat_talent/ironclad/abilities/0",
 							"enabled": true,
 							"text": "When you equip or adjust your armor, choose one.\n\n  * Lightly armored: When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +1 and take +1 momentum on a hit.\n  * Geared for war: Mark encumbered. When you [Endure Harm](id:classic/moves/suffer/endure_harm) in a fight, add +2 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/endure_harm"],
+									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In a fight while you are lightly armored",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -310,12 +310,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/endure_harm"],
+									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In a fight while you are geared for war",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -327,15 +327,15 @@
 							"id": "classic/assets/combat_talent/ironclad/abilities/1",
 							"enabled": false,
 							"text": "When you [Clash](id:classic/moves/combat/clash) while you are geared for war, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/clash"],
+									"enhances": ["classic/moves/combat/clash"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "While you are geared for war",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -347,15 +347,15 @@
 							"id": "classic/assets/combat_talent/ironclad/abilities/2",
 							"enabled": false,
 							"text": "When you [Compel](id:classic/moves/relationship/compel) in a situation where strength of arms is a factor, add +2.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/compel"],
+									"enhances": ["classic/moves/relationship/compel"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In a situation where strength of arms is a factor",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -389,10 +389,10 @@
 							"id": "classic/assets/combat_talent/long_arm/abilities/0",
 							"enabled": true,
 							"text": "In your hands, a humble staff is a deadly weapon (2 harm). When you instead use it as a simple weapon (1 harm), you may [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) +edge (instead of iron). If you do, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -417,10 +417,10 @@
 							"id": "classic/assets/combat_talent/long_arm/abilities/1",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your staff to disarm, trip, shove, or stun your foe, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -442,10 +442,10 @@
 							"id": "classic/assets/combat_talent/long_arm/abilities/2",
 							"enabled": false,
 							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a strong hit, or if you accompany an ally who scores a strong hit on that move, your staff provides support and comfort in your travels; take +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/undertake_a_journey"],
+									"enhances": ["classic/moves/adventure/undertake_a_journey"],
 									"trigger": {
 										"conditions": [
 											{
@@ -453,7 +453,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -780,10 +780,10 @@
 							"name": "Eager",
 							"enabled": false,
 							"text": "When your cat chases down big game, you may [Resupply](id:classic/moves/adventure/resupply) with +edge (instead of +wits). If you do, take +1 supply or +1 momentum on a strong hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/resupply"],
+									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -806,10 +806,10 @@
 							"name": "Inescapable",
 							"enabled": false,
 							"text": "When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Strike](id:classic/moves/combat/strike) by sending your cat to attack, roll +edge. On a hit, take +2 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/enter_the_fray",
 										"classic/moves/combat/strike"
 									],
@@ -835,10 +835,10 @@
 							"name": "Protective",
 							"enabled": false,
 							"text": "When you [Make Camp](id:classic/moves/adventure/make_camp), your cat is alert to trouble. If you or an ally choose to relax, take +1 spirit. If you focus, take +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/make_camp"]
+									"enhances": ["classic/moves/adventure/make_camp"]
 								}
 							]
 						}
@@ -887,15 +887,15 @@
 							"name": "Discreet",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by sending your spider to scout a place, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By sending your spider to scout a place",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -908,10 +908,10 @@
 							"name": "Soul-Piercing",
 							"enabled": false,
 							"text": "You may [Face Danger](id:classic/moves/adventure/face_danger) +shadow by sending your spider to secretly study someone. On a hit, the spider returns to reveal the target’s deepest fears through a reflection in its glassy eyes. Use this to [Gather Information](id:classic/moves/adventure/gather_information) and reroll any dice.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
@@ -934,10 +934,10 @@
 							"name": "Ensnaring",
 							"enabled": false,
 							"text": "When your spider sets a trap, add +1 as you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +shadow. On a strong hit, also inflict 2 harm.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/enter_the_fray"],
+									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1000,19 +1000,19 @@
 							"name": "Far-seeing",
 							"enabled": false,
 							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), or when you [Resupply](id:classic/moves/adventure/resupply) by hunting for small game, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/undertake_a_journey"]
+									"enhances": ["classic/moves/adventure/undertake_a_journey"]
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/resupply"],
+									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By hunting for small game",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1025,10 +1025,10 @@
 							"name": "Fierce",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -1051,15 +1051,15 @@
 							"name": "Vigilant",
 							"enabled": false,
 							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) +wits to detect an approaching threat, or when you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush, add +2.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "To detect an approaching threat",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1072,11 +1072,11 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/enter_the_fray"],
+									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1134,19 +1134,19 @@
 							"name": "Swift",
 							"enabled": false,
 							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) +edge using your horse’s speed and grace, or when you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/undertake_a_journey"]
+									"enhances": ["classic/moves/adventure/undertake_a_journey"]
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "Using your horse’s speed and grace",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1164,10 +1164,10 @@
 							"name": "Fearless",
 							"enabled": false,
 							"text": "When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +heart by charging into combat, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/enter_the_fray",
 										"classic/moves/adventure/secure_an_advantage"
 									],
@@ -1175,7 +1175,7 @@
 										"conditions": [
 											{
 												"text": "By charging into combat",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1193,10 +1193,10 @@
 							"name": "Mighty",
 							"enabled": false,
 							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) at close range while mounted, add +1 and inflict +1 harm on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -1204,7 +1204,7 @@
 										"conditions": [
 											{
 												"text": "At close range while mounted",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1257,15 +1257,15 @@
 							"name": "Sharp",
 							"enabled": false,
 							"text": "When you [Gather Information](id:classic/moves/adventure/gather_information) using your hound’s keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/gather_information"],
+									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "Using your hound’s keen senses to track your quarry or investigate a scene",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1278,10 +1278,10 @@
 							"name": "Ferocious",
 							"enabled": false,
 							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) alongside your hound and score a hit, inflict +1 harm or take +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -1289,7 +1289,7 @@
 										"conditions": [
 											{
 												"text": "Alongside your hound",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1302,15 +1302,15 @@
 							"name": "Loyal",
 							"enabled": false,
 							"text": "When you [Endure Stress](id:classic/moves/suffer/endure_stress) in the company of your hound, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/endure_stress"],
+									"enhances": ["classic/moves/suffer/endure_stress"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In the company of your hound",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1370,14 +1370,14 @@
 								}
 							},
 							"text": "When you make a move outside of combat aided by your companion’s expertise, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you make a move outside of combat aided by your companion’s expertise",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1390,10 +1390,10 @@
 							"name": "Shield-Kin",
 							"enabled": false,
 							"text": "When you [Clash](id:classic/moves/combat/clash) or [Battle](id:classic/moves/combat/battle) alongside your companion, or when you [Face Danger](id:classic/moves/adventure/face_danger) against an attack by standing together, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/clash",
 										"classic/moves/combat/battle"
 									],
@@ -1401,7 +1401,7 @@
 										"conditions": [
 											{
 												"text": "Alongside your Kindred companion",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1409,12 +1409,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "Against an attack by standing together with your Kindred companion",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1427,10 +1427,10 @@
 							"name": "Bonded",
 							"enabled": false,
 							"text": "Once you mark a bond with your companion, add +1 when you [Face Desolation](id:classic/moves/suffer/face_desolation) in their presence.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/face_desolation"]
+									"enhances": ["classic/moves/suffer/face_desolation"]
 								}
 							]
 						}
@@ -1485,17 +1485,17 @@
 							"name": "Beast of burden",
 							"enabled": false,
 							"text": "When you make a move which requires you to roll +supply, you may instead roll +your mammoth’s health.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/make_camp",
 										"delve/moves/delve/check_your_gear"
 									],
 									"trigger": {
 										"conditions": [
 											{
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -1513,10 +1513,10 @@
 							"name": "Overpowering",
 							"enabled": false,
 							"text": "When you [Strike](id:classic/moves/combat/strike) or [Clash](id:classic/moves/combat/clash) by riding your mammoth against a pack of foes, add +1 and inflict +1 harm on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/strike",
 										"classic/moves/combat/clash"
 									],
@@ -1524,7 +1524,7 @@
 										"conditions": [
 											{
 												"text": "by riding your mammoth against a pack of foes",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1577,15 +1577,15 @@
 							"name": "Nocturnal",
 							"enabled": false,
 							"text": "If you [Resupply](id:classic/moves/adventure/resupply) at night by sending your owl to hunt, take +2 momentum on a hit. When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) +wits against an ambush in darkness, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/resupply"],
+									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "at night by sending your owl to hunt",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1593,12 +1593,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/enter_the_fray"],
+									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "against an ambush in darkness",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1616,15 +1616,15 @@
 							"name": "Sage",
 							"enabled": false,
 							"text": "When you leverage your owl’s secret knowledge to perform a ritual, add +1 or take +1 momentum on a hit (decide before rolling).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["*/assets/ritual/*/abilities/*/moves/*"],
+									"enhances": ["*/assets/ritual/*/abilities/*/moves/*"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "leverage your owl's secret knowledge to perform a ritual",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1637,10 +1637,10 @@
 							"name": "Embodying",
 							"enabled": false,
 							"text": "When you [Face Death](id:classic/moves/suffer/face_death), take your owl’s health as +momentum before you roll.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/face_death"]
+									"enhances": ["classic/moves/suffer/face_death"]
 								}
 							]
 						}
@@ -1689,10 +1689,10 @@
 							"name": "Sly",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/face_danger"
 									],
@@ -1700,7 +1700,7 @@
 										"conditions": [
 											{
 												"text": "using your raven to perform trickery (such as creating a distraction or stealing a small object)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1718,10 +1718,10 @@
 							"name": "Knowing",
 							"enabled": false,
 							"text": "When you [Face Death](id:classic/moves/suffer/face_death), add +2 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/face_death"]
+									"enhances": ["classic/moves/suffer/face_death"]
 								}
 							]
 						},
@@ -1730,10 +1730,10 @@
 							"name": "Diligent",
 							"enabled": false,
 							"text": "When your raven carries messages for you, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), [Gather Information](id:classic/moves/adventure/gather_information), or [Compel](id:classic/moves/relationship/compel) from a distance.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/gather_information",
 										"classic/moves/relationship/compel"
@@ -1742,7 +1742,7 @@
 										"conditions": [
 											{
 												"text": "your raven carries messages for you",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1795,10 +1795,10 @@
 							"name": "Insatiable",
 							"enabled": false,
 							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey) and score a hit, you may suffer -1 supply in exchange for +2 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/undertake_a_journey"]
+									"enhances": ["classic/moves/adventure/undertake_a_journey"]
 								}
 							]
 						},
@@ -1807,15 +1807,15 @@
 							"name": "Indomitable",
 							"enabled": false,
 							"text": "When you make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move for your wyvern, add +2 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/companion_endure_harm"],
+									"enhances": ["classic/moves/suffer/companion_endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "for your wyvern",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -1828,15 +1828,15 @@
 							"name": "Savage",
 							"enabled": false,
 							"text": "When you [Strike](id:classic/moves/combat/strike) by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/strike"],
+									"enhances": ["classic/moves/combat/strike"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By commanding your wyvern to attack",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1995,10 +1995,10 @@
 							"id": "classic/assets/path/alchemist/abilities/1",
 							"enabled": false,
 							"text": "As above, and you may choose two effects for a single dose, or create two doses of the same effect.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/assets/path/alchemist/abilities/0/moves/create_elixir"
 									]
 								}
@@ -2008,10 +2008,10 @@
 							"id": "classic/assets/path/alchemist/abilities/2",
 							"enabled": false,
 							"text": "When you prepare an elixir, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/assets/path/alchemist/abilities/0/moves/create_elixir"
 									]
 								}
@@ -2042,14 +2042,14 @@
 							"id": "classic/assets/path/animal_kin/abilities/0",
 							"enabled": true,
 							"text": "When you make a move to pacify, calm, control, aid, or fend off an animal (or an animal or beast companion), add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to pacify, calm, control, aid, or fend off an animal (or an animal or beast companion)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2061,10 +2061,10 @@
 							"id": "classic/assets/path/animal_kin/abilities/1",
 							"enabled": false,
 							"text": "You may add or upgrade an animal or beast companion asset for 1 fewer experience. Once you mark all their abilities, you may [Forge a Bond](id:classic/moves/relationship/forge_a_bond) with them and take an automatic strong hit. When you do, mark a bond twice and take 1 experience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/forge_a_bond"],
+									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2081,14 +2081,14 @@
 							"id": "classic/assets/path/animal_kin/abilities/2",
 							"enabled": false,
 							"text": "Once per fight, when you leverage your animal or beast companion to make a move, reroll any dice. On a hit, take +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "once per fight, when you leverage your animal or beast companion to make a move",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2129,20 +2129,20 @@
 							"id": "classic/assets/path/banner_sworn/abilities/0",
 							"enabled": true,
 							"text": "When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve your leader or faction on a mission, you may reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"]
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"]
 								},
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"text": "If you mark experience, take +1 experience.",
 										"conditions": [
 											{
 												"text": "to serve your leader or faction on a mission",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2154,10 +2154,10 @@
 							"id": "classic/assets/path/banner_sworn/abilities/1",
 							"enabled": false,
 							"text": "When you [Sojourn](id:classic/moves/relationship/sojourn) or [Make Camp](id:classic/moves/adventure/make_camp) in the company of your banner-kin, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/relationship/sojourn",
 										"classic/moves/adventure/make_camp"
 									],
@@ -2165,7 +2165,7 @@
 										"conditions": [
 											{
 												"text": "in the company of your banner-kin",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2177,15 +2177,15 @@
 							"id": "classic/assets/path/banner_sworn/abilities/2",
 							"enabled": false,
 							"text": "When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/enter_the_fray"],
+									"enhances": ["classic/moves/combat/enter_the_fray"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "bearing your banner",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2229,15 +2229,15 @@
 							"id": "classic/assets/path/battle_scarred/abilities/2",
 							"enabled": false,
 							"text": "You have stared down death before: When you are at 0 health and [Endure Harm](id:classic/moves/suffer/endure_harm), you may roll +wits or +heart (instead of +health or +iron). If you do, take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/endure_harm"],
+									"enhances": ["classic/moves/suffer/endure_harm"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you are at 0 health",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -2287,10 +2287,10 @@
 							"id": "classic/assets/path/blade_bound/abilities/0",
 							"enabled": false,
 							"text": "When you [Enter the Fray](id:classic/moves/combat/enter_the_fray) or [Draw the Circle](id:classic/moves/relationship/draw_the_circle) while wielding your kin-blade, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/combat/enter_the_fray",
 										"classic/moves/relationship/draw_the_circle"
 									],
@@ -2298,7 +2298,7 @@
 										"conditions": [
 											{
 												"text": "while wielding your kin-blade",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2310,15 +2310,15 @@
 							"id": "classic/assets/path/blade_bound/abilities/1",
 							"enabled": false,
 							"text": "When you [Gather Information](id:classic/moves/adventure/gather_information) by listening to the whispers of your kin-blade, add +1 and take +2 momentum on a hit. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/gather_information"],
+									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by listening to the whispers of your kin-blade",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2330,15 +2330,15 @@
 							"id": "classic/assets/path/blade_bound/abilities/2",
 							"enabled": false,
 							"text": "When you [Strike](id:classic/moves/combat/strike) with your kin-blade to inflict savage harm (decide before rolling), add +1 and inflict +2 harm on a hit. Then, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/combat/strike"],
+									"enhances": ["classic/moves/combat/strike"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "with your kin-blade to inflict savage harm (decide before rolling)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2371,14 +2371,14 @@
 							"id": "classic/assets/path/bonded/abilities/0",
 							"enabled": true,
 							"text": "When you make a move which gives you an add for sharing a bond, add +1 more.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "you make a move which gives you an add for sharing a bond",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2395,7 +2395,7 @@
 							"id": "classic/assets/path/bonded/abilities/2",
 							"enabled": false,
 							"text": "When you make a move in a crucial moment and score a miss, you may cling to thoughts of your bond-kin for courage or encouragement. If you do, reroll any dice. On another miss, in addition to the outcome of the move, you must mark shaken or corrupted. If both debilities are already marked, [Face Desolation](id:classic/moves/suffer/face_desolation).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll"
 								}
@@ -2426,10 +2426,10 @@
 							"id": "classic/assets/path/commander/abilities/0",
 							"enabled": true,
 							"text": "You lead a warband with +4 strength. Roll +strength when you command your warband to [Face Danger](id:classic/moves/adventure/face_danger), [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage), [Compel](id:classic/moves/relationship/compel), or [Battle](id:classic/moves/combat/battle). When you face the negative outcome of any move, you may suffer -1 strength as the cost. When you [Make Camp](id:classic/moves/adventure/make_camp) or [Sojourn](id:classic/moves/relationship/sojourn) and score a hit, take +1 strength. While at 0 strength, this asset counts as a debility.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/face_danger",
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/relationship/compel",
@@ -2452,7 +2452,7 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/make_camp",
 										"classic/moves/relationship/sojourn"
 									]
@@ -2463,10 +2463,10 @@
 							"id": "classic/assets/path/commander/abilities/1",
 							"enabled": false,
 							"text": "You may dispatch scouts from your warband to [Gather Information](id:classic/moves/adventure/gather_information) or [Resupply](id:classic/moves/adventure/resupply); if you do, roll +strength.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/gather_information",
 										"classic/moves/adventure/resupply"
 									],
@@ -2527,15 +2527,15 @@
 							"id": "classic/assets/path/dancer/abilities/0",
 							"enabled": true,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +edge by dancing for an audience, add +1 and take +2 momentum on a hit. On a strong hit, also add +2 (one time only) if you make a move to interact with someone in the audience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by dancing for an audience",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -2552,15 +2552,15 @@
 							"id": "classic/assets/path/dancer/abilities/1",
 							"enabled": false,
 							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) +edge in a fight by nimbly avoiding your foe’s attacks, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "in a fight by nimbly avoiding your foe’s attacks",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2572,7 +2572,7 @@
 							"id": "classic/assets/path/dancer/abilities/2",
 							"enabled": false,
 							"text": "When you or an ally make a progress move and score a hit, you may perform a dance to commemorate the event. If you do, roll +edge. On a strong hit, you and each of your allies take +2 momentum and +1 spirit. On a weak hit, you take +1 momentum or +1 spirit, but your allies are unmoved.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
 									"trigger": {
@@ -2582,7 +2582,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2693,15 +2693,15 @@
 							"id": "classic/assets/path/devotant/abilities/0",
 							"enabled": true,
 							"text": "When you say your daily prayers, you may [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by asking your god to grant a blessing. If you do, roll +your god’s stat. On a hit, take +2 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by asking your god to grant a blessing when you say your daily prayers",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -2718,15 +2718,15 @@
 							"id": "classic/assets/path/devotant/abilities/1",
 							"enabled": false,
 							"text": "When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve your god on a divine quest, you may roll +your god’s stat and reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to serve your god on a divine quest",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -2739,12 +2739,12 @@
 								},
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to serve your god on a divine quest",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2756,15 +2756,15 @@
 							"id": "classic/assets/path/devotant/abilities/2",
 							"enabled": false,
 							"text": "When you [Sojourn](id:classic/moves/relationship/sojourn) by sharing the word of your god, you may roll +your god’s stat. If you do, take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/sojourn"],
+									"enhances": ["classic/moves/relationship/sojourn"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By sharing the word of your god",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -2809,10 +2809,10 @@
 							"id": "classic/assets/path/empowered/abilities/0",
 							"enabled": true,
 							"text": "When you [Sojourn](id:classic/moves/relationship/sojourn) and score a weak hit or miss, you may claim the rights of hospitality warranted by your title or lineage. If you do, roll all dice again and add +1. On a miss, you are refused, and your presumption causes significant new trouble.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/sojourn"]
+									"enhances": ["classic/moves/relationship/sojourn"]
 								}
 							]
 						},
@@ -2820,15 +2820,15 @@
 							"id": "classic/assets/path/empowered/abilities/1",
 							"enabled": false,
 							"text": "When you exert your title or lineage to [Compel](id:classic/moves/relationship/compel), add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/compel"],
+									"enhances": ["classic/moves/relationship/compel"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you exert your title or lineage",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2840,15 +2840,15 @@
 							"id": "classic/assets/path/empowered/abilities/2",
 							"enabled": false,
 							"text": "When you forgo your title or lineage and [Forge a Bond](id:classic/moves/relationship/forge_a_bond) as an equal, or when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to serve someone of a lower station, add +1 and take +1 momentum or +1 spirit on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/forge_a_bond"],
+									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "as an equal, foregoing your title or lineage",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2856,12 +2856,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to serve someone of a lower station",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2894,10 +2894,10 @@
 							"id": "classic/assets/path/fated/abilities/0",
 							"enabled": true,
 							"text": "When you [Face Death](id:classic/moves/suffer/face_death) or [Face Desolation](id:classic/moves/suffer/face_desolation) while your epic background vow is unfulfilled, it is not yet your time. Instead of rolling, you may take an automatic strong hit. If you do, this asset counts as a debility (and you no longer have this protection) until you next [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the background vow.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/suffer/face_death",
 										"classic/moves/suffer/face_desolation"
 									],
@@ -2917,10 +2917,10 @@
 							"id": "classic/assets/path/fated/abilities/1",
 							"enabled": false,
 							"text": "When you [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on your background vow, take +2 momentum or +1 spirit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "no_roll",
-									"augments": ["classic/moves/quest/reach_a_milestone"],
+									"enhances": ["classic/moves/quest/reach_a_milestone"],
 									"trigger": {
 										"conditions": [
 											{
@@ -2936,15 +2936,15 @@
 							"id": "classic/assets/path/fated/abilities/2",
 							"enabled": false,
 							"text": "For every two boxes filled on your background vow progress track, take 1 experience. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow), your fate is at hand. Envision your final sacrifice and reroll any dice.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "on your background vow",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2977,15 +2977,15 @@
 							"id": "classic/assets/path/fortune_hunter/abilities/0",
 							"enabled": true,
 							"text": "When you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to someone under the promise of payment, add +1 and give the quest a special mark. When you successfully [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) to them, take +wealth equal to the rank of the quest. If you leverage wealth when making a move where resources are a factor, add +wealth and suffer -1 wealth.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to someone under the promise of payment",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -2993,12 +2993,12 @@
 								},
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to someone under the promise of payment",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3010,7 +3010,7 @@
 										"conditions": [
 											{
 												"text": "you leverage wealth when making a move where resources are a factor",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3027,15 +3027,15 @@
 							"id": "classic/assets/path/fortune_hunter/abilities/2",
 							"enabled": false,
 							"text": "When you [Resupply](id:classic/moves/adventure/resupply) by scavenging or looting, and score a strong hit with a match, you may envision finding an object of value. If you do, take +1 supply (instead of +2) and +1 wealth.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/resupply"],
+									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by scavenging or looting",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3075,15 +3075,15 @@
 							"id": "classic/assets/path/herbalist/abilities/0",
 							"enabled": true,
 							"text": "When you attempt to [Heal](id:classic/moves/adventure/heal) using herbal remedies, and you have at least +1 supply, choose one (decide before rolling).\n\n  * Add +2.\n  * On a hit, take or give an additional +1 health.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/heal"],
+									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "using herbal remedies, and you have at least +1 supply",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3091,12 +3091,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/heal"],
+									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "using herbal remedies, and you have at least +1 supply",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3108,15 +3108,15 @@
 							"id": "classic/assets/path/herbalist/abilities/1",
 							"enabled": false,
 							"text": "When you [Heal](id:classic/moves/adventure/heal) a companion, ally, or other character, and score a hit, take +1 spirit or +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/heal"],
+									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "a companion, ally, or other character",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3128,10 +3128,10 @@
 							"id": "classic/assets/path/herbalist/abilities/2",
 							"enabled": false,
 							"text": "When you [Make Camp](id:classic/moves/adventure/make_camp) and choose the option to partake, you can create a restorative meal. If you do, you and your companions take +1 health. Any allies who choose to partake also take +1 health, and do not suffer -supply.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/make_camp"],
+									"enhances": ["classic/moves/adventure/make_camp"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3139,7 +3139,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3172,10 +3172,10 @@
 							"id": "classic/assets/path/honorbound/abilities/0",
 							"enabled": true,
 							"text": "When you [Turn the Tide](id:classic/moves/combat/turn_the_tide), envision how your vows give you strength in this moment. Then, when you make your move, add +2 (instead of +1) and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "no_roll",
-									"augments": ["classic/moves/combat/turn_the_tide"]
+									"enhances": ["classic/moves/combat/turn_the_tide"]
 								}
 							]
 						},
@@ -3183,10 +3183,10 @@
 							"id": "classic/assets/path/honorbound/abilities/1",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by telling a hard truth, add +1 and take +1 momentum on a hit. On a weak hit or miss, envision how this truth complicates your current situation.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/relationship/compel"
 									],
@@ -3194,7 +3194,7 @@
 										"conditions": [
 											{
 												"text": "by telling a hard truth",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3206,10 +3206,10 @@
 							"id": "classic/assets/path/honorbound/abilities/2",
 							"enabled": false,
 							"text": "When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a miss, you may reroll one challenge die. If you score a miss again, reduce your maximum spirit by 1. You may recover this lost spirit when you next [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and score a strong hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"]
+									"enhances": ["classic/moves/quest/fulfill_your_vow"]
 								}
 							]
 						}
@@ -3238,10 +3238,10 @@
 							"id": "classic/assets/path/improviser/abilities/0",
 							"enabled": true,
 							"text": "When you [Check Your Gear](id:delve/moves/delve/check_your_gear), you may roll +wits (instead of +supply). If you do, envision how you make do with a clever solution, and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["delve/moves/delve/check_your_gear"],
+									"enhances": ["delve/moves/delve/check_your_gear"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3262,10 +3262,10 @@
 							"id": "classic/assets/path/improviser/abilities/1",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Face Danger](id:classic/moves/adventure/face_danger) by cobbling together an ad hoc tool or apparatus, add +1 and take +1 momentum on a hit. After rolling, you may also suffer -1 supply and add +1 more.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/face_danger"
 									],
@@ -3273,7 +3273,7 @@
 										"conditions": [
 											{
 												"text": "by cobbling together an ad hoc tool or apparatus",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3285,14 +3285,14 @@
 							"id": "classic/assets/path/improviser/abilities/2",
 							"enabled": false,
 							"text": "When you throw caution to the wind and make an impulsive move in a risky situation, you may add +2. If you do, take +1 momentum on a strong hit, but count a weak hit as a miss.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "when you throw caution to the wind and make an impulsive move in a risky situation",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3325,14 +3325,14 @@
 							"id": "classic/assets/path/infiltrator/abilities/0",
 							"enabled": true,
 							"text": "When you make a move to breach, traverse, or hide within an area held by an enemy, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to breach, traverse, or hide within an area held by an enemy",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3344,10 +3344,10 @@
 							"id": "classic/assets/path/infiltrator/abilities/1",
 							"enabled": false,
 							"text": "When you [Gather Information](id:classic/moves/adventure/gather_information) within an enemy area to discover their positions, plans, or methods, or when you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) within that area through observation, you may roll +shadow (instead of +wits). If you do, take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/gather_information"],
+									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3365,7 +3365,7 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3387,10 +3387,10 @@
 							"id": "classic/assets/path/infiltrator/abilities/2",
 							"enabled": false,
 							"text": "When you [Resupply](id:classic/moves/adventure/resupply) within an enemy area by scavenging or looting, you may roll +shadow (instead of +wits). If you do, take +1 momentum or +1 supply on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/resupply"],
+									"enhances": ["classic/moves/adventure/resupply"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3433,10 +3433,10 @@
 							"id": "classic/assets/path/lorekeeper/abilities/0",
 							"enabled": true,
 							"text": "You are the bearer of a mystical archive. When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Gather Information](id:classic/moves/adventure/gather_information) using lore recalled from your studies, add +1. If you have a few hours to search the archive, add +2. On a hit, envision the obscure but helpful knowledge you put to use ([Ask the Oracle](id:classic/moves/fate/ask_the_oracle) if unsure), and take +1 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/gather_information"
 									],
@@ -3444,7 +3444,7 @@
 										"conditions": [
 											{
 												"text": "using lore recalled from your studies",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3452,7 +3452,7 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/adventure/gather_information"
 									],
@@ -3460,7 +3460,7 @@
 										"conditions": [
 											{
 												"text": "using lore recalled from your studies, and you have a few hours to search the archive",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3472,15 +3472,15 @@
 							"id": "classic/assets/path/lorekeeper/abilities/1",
 							"enabled": false,
 							"text": "When you learn of a site or object holding lost knowledge, and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to recover it for the archive, reroll any dice. When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) and mark experience, take +1 experience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to recover a site or object's lost knowledge for the archive",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3488,12 +3488,12 @@
 								},
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to recover a site or object's lost knowledge for the archive",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3531,10 +3531,10 @@
 							"id": "classic/assets/path/loyalist/abilities/0",
 							"enabled": true,
 							"text": "When you [Aid Your Ally](id:classic/moves/adventure/aid_your_ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "no_roll",
-									"augments": ["classic/moves/adventure/aid_your_ally"]
+									"enhances": ["classic/moves/adventure/aid_your_ally"]
 								}
 							]
 						},
@@ -3542,10 +3542,10 @@
 							"id": "classic/assets/path/loyalist/abilities/1",
 							"enabled": false,
 							"text": "When an ally makes the [Endure Stress](id:classic/moves/suffer/endure_stress) move in your company, they add +1 and you take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/endure_stress"],
+									"enhances": ["classic/moves/suffer/endure_stress"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3554,7 +3554,7 @@
 													"ally": true,
 													"player": false
 												},
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3566,7 +3566,7 @@
 							"id": "classic/assets/path/loyalist/abilities/2",
 							"enabled": false,
 							"text": "When you stand with your ally as they make a progress move, envision how you support them. Then, roll one challenge die. On a 1-9, your ally may replace one of their challenge dice with yours. On a 10, envision how you inadvertently undermine their action; your ally must replace their lowest challenge die with yours.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
 									"trigger": {
@@ -3577,7 +3577,7 @@
 													"ally": true,
 													"player": false
 												},
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3636,14 +3636,14 @@
 							"id": "classic/assets/path/masked/abilities/0",
 							"enabled": false,
 							"text": "Choose your mask’s material.\n\n  * Thunderwood: Edge / Health\n  * Bloodwood: Iron / Health\n  * Ghostwood: Shadow / Spirit\n  * Whisperwood: Wits / Spirit\n\nWhen you wear the mask and make a move which uses its stat, add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "when you wear your elderwood mask",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -3660,14 +3660,14 @@
 							"id": "classic/assets/path/masked/abilities/1",
 							"enabled": false,
 							"text": "As above, and you may instead add +2 and suffer -2 (decide before rolling).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "when you wear your elderwood mask",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "ref",
@@ -3684,10 +3684,10 @@
 							"id": "classic/assets/path/masked/abilities/2",
 							"enabled": false,
 							"text": "When you [Face Death](id:classic/moves/suffer/face_death) or [Face Desolation](id:classic/moves/suffer/face_desolation) while wearing the mask, you may roll +its stat (instead of +heart).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/suffer/face_death",
 										"classic/moves/suffer/face_desolation"
 									],
@@ -3734,15 +3734,15 @@
 							"id": "classic/assets/path/oathbreaker/abilities/0",
 							"enabled": true,
 							"text": "This asset counts as a debility. One time only, when you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to redeem yourself (extreme or greater), give that vow a special mark. When you [Reach a Milestone](id:classic/moves/quest/reach_a_milestone) on the marked vow, take +2 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/quest/swear_an_iron_vow"],
+									"enhances": ["classic/moves/quest/swear_an_iron_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "one time only, to redeem yourself (extreme or greater)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3754,10 +3754,10 @@
 							"id": "classic/assets/path/oathbreaker/abilities/1",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) or [Compel](id:classic/moves/relationship/compel) by reaffirming your commitment to your marked vow, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/secure_an_advantage",
 										"classic/moves/relationship/compel"
 									],
@@ -3765,7 +3765,7 @@
 										"conditions": [
 											{
 												"text": "by reaffirming your commitment to your marked vow",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3777,15 +3777,15 @@
 							"id": "classic/assets/path/oathbreaker/abilities/2",
 							"enabled": false,
 							"text": "When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on your marked quest and score a hit, you find redemption and automatically activate this ability at no cost. You may then improve one of your stats by +1 and discard this asset.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/quest/fulfill_your_vow"],
+									"enhances": ["classic/moves/quest/fulfill_your_vow"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "one time only, to redeem yourself (extreme or greater)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -3818,10 +3818,10 @@
 							"id": "classic/assets/path/outcast/abilities/0",
 							"enabled": true,
 							"text": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then, roll +wits. On a strong hit, you manage to scrape by and take +1 supply. On a weak hit, you may suffer -2 momentum in exchange for +1 supply. On a miss, you are [Out of Supply](id:classic/moves/suffer/out_of_supply).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "no_roll",
-									"augments": ["classic/moves/suffer/out_of_supply"]
+									"enhances": ["classic/moves/suffer/out_of_supply"]
 								}
 							],
 							"moves": {
@@ -3873,10 +3873,10 @@
 							"id": "classic/assets/path/outcast/abilities/1",
 							"enabled": false,
 							"text": "When you [Sojourn](id:classic/moves/relationship/sojourn), you may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/sojourn"]
+									"enhances": ["classic/moves/relationship/sojourn"]
 								}
 							]
 						},
@@ -3884,10 +3884,10 @@
 							"id": "classic/assets/path/outcast/abilities/2",
 							"enabled": false,
 							"text": "When you [Reach Your Destination](id:classic/moves/adventure/reach_your_destination) and score a strong hit, you recall or recognize something helpful about this place. Envision what it is, and take +2 momentum.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/adventure/reach_your_destination"]
+									"enhances": ["classic/moves/adventure/reach_your_destination"]
 								}
 							]
 						}
@@ -3965,10 +3965,10 @@
 							"id": "classic/assets/path/pretender/abilities/1",
 							"enabled": false,
 							"text": "As above, and you may roll +shadow (instead of +heart) when you [Sojourn](id:classic/moves/relationship/sojourn) under your false identity. If you do, take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/sojourn"],
+									"enhances": ["classic/moves/relationship/sojourn"],
 									"trigger": {
 										"conditions": [
 											{
@@ -3986,7 +3986,7 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/assets/path/pretender/abilities/0/moves/establish_false_identity"
 									]
 								}
@@ -3996,15 +3996,15 @@
 							"id": "classic/assets/path/pretender/abilities/2",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) by revealing your true identity in a dramatic moment, reroll any dice.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by revealing your true identity in a dramatic moment",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4038,10 +4038,10 @@
 							"id": "classic/assets/path/revenant/abilities/0",
 							"enabled": true,
 							"text": "When you are at 0 health, and [Endure Harm](id:classic/moves/suffer/endure_harm) or [Face Death](id:classic/moves/suffer/face_death), add +1. If you then burn momentum to improve your result, envision what bond or vow binds you to this world, and take +2 momentum after you reset.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/suffer/endure_harm",
 										"classic/moves/suffer/face_death"
 									],
@@ -4049,7 +4049,7 @@
 										"conditions": [
 											{
 												"text": "when you are at 0 health",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4061,14 +4061,14 @@
 							"id": "classic/assets/path/revenant/abilities/1",
 							"enabled": false,
 							"text": "When you make a move to investigate, oppose, or interact with a horror, spirit, or other undead being, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to investigate, oppose, or interact with a horror, spirit, or other undead being",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4080,15 +4080,15 @@
 							"id": "classic/assets/path/revenant/abilities/2",
 							"enabled": false,
 							"text": "When you bring death to your foe to [End the Fight](id:classic/moves/combat/end_the_fight), you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:classic/moves/suffer/endure_stress) (2 stress).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "progress_roll",
-									"augments": ["classic/moves/combat/end_the_fight"],
+									"enhances": ["classic/moves/combat/end_the_fight"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you bring death to your foe to [End the Fight](id:classic/moves/combat/end_the_fight)",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4122,15 +4122,15 @@
 							"id": "classic/assets/path/rider/abilities/0",
 							"enabled": true,
 							"text": "When you [Heal](id:classic/moves/adventure/heal) your horse, or when you [Face Danger](id:classic/moves/adventure/face_danger) to calm or encourage it, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/heal"],
+									"enhances": ["classic/moves/adventure/heal"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "your horse",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4138,12 +4138,12 @@
 								},
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/face_danger"],
+									"enhances": ["classic/moves/adventure/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to calm or encourage your horse",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4155,10 +4155,10 @@
 							"id": "classic/assets/path/rider/abilities/1",
 							"enabled": false,
 							"text": "When you [Undertake a Journey](id:classic/moves/adventure/undertake_a_journey), you may push your horse harder and add +1 (after rolling). If you do, make the [Companion Endure Harm](id:classic/moves/suffer/companion_endure_harm) move (1 harm).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/undertake_a_journey"]
+									"enhances": ["classic/moves/adventure/undertake_a_journey"]
 								}
 							]
 						},
@@ -4166,15 +4166,15 @@
 							"id": "classic/assets/path/rider/abilities/2",
 							"enabled": false,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) +wits by sizing up a perilous situation from the saddle, you are one with your horse’s instincts. Add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "by sizing up a perilous situation from the saddle",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -4213,15 +4213,15 @@
 							"id": "classic/assets/path/ritualist/abilities/0",
 							"enabled": true,
 							"text": "When you [Secure an Advantage](id:classic/moves/adventure/secure_an_advantage) to ready yourself for a ritual, envision how you prepare. Then, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/secure_an_advantage"],
+									"enhances": ["classic/moves/adventure/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "to ready yourself for a ritual",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4233,10 +4233,10 @@
 							"id": "classic/assets/path/ritualist/abilities/1",
 							"enabled": false,
 							"text": "When you perform a ritual, you may suffer -1 supply and add +1 (decide before rolling).",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["*/assets/ritual/*/abilities/*/moves/*"]
+									"enhances": ["*/assets/ritual/*/abilities/*/moves/*"]
 								}
 							]
 						},
@@ -4276,10 +4276,10 @@
 							"id": "classic/assets/path/shadow_kin/abilities/1",
 							"enabled": false,
 							"text": "You are attuned to the realms of shadow: When you perform a ritual, add +1.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["*/assets/ritual/*/abilities/*/moves/*"]
+									"enhances": ["*/assets/ritual/*/abilities/*/moves/*"]
 								}
 							]
 						},
@@ -4287,10 +4287,10 @@
 							"id": "classic/assets/path/shadow_kin/abilities/2",
 							"enabled": false,
 							"text": "You know the sly ways of death: When you [Face Death](id:classic/moves/suffer/face_death), you may roll +shadow (instead of +heart). On a weak hit, if you choose to undertake a deathbound quest, you may roll +shadow (instead of +heart) and reroll any dice as you [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow). When you [Fulfill Your Vow](id:classic/moves/quest/fulfill_your_vow) on that quest and and mark experience, take +2 experience.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/suffer/face_death"],
+									"enhances": ["classic/moves/suffer/face_death"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4332,10 +4332,10 @@
 							"id": "classic/assets/path/sighted/abilities/0",
 							"enabled": true,
 							"text": "When you [Face Danger](id:classic/moves/adventure/face_danger) or [Gather Information](id:classic/moves/adventure/gather_information) to identify or detect mystic forces, add +1 and take +1 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": [
+									"enhances": [
 										"classic/moves/adventure/face_danger",
 										"classic/moves/adventure/gather_information"
 									],
@@ -4343,7 +4343,7 @@
 										"conditions": [
 											{
 												"text": "to identify or detect mystic forces",
-												"method": "augment",
+												"method": "enhance",
 												"roll_options": null
 											}
 										]
@@ -4499,10 +4499,10 @@
 							"id": "classic/assets/path/trickster/abilities/1",
 							"enabled": false,
 							"text": "When you [Gather Information](id:classic/moves/adventure/gather_information) by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/gather_information"],
+									"enhances": ["classic/moves/adventure/gather_information"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4524,10 +4524,10 @@
 							"id": "classic/assets/path/trickster/abilities/2",
 							"enabled": false,
 							"text": "When you [Forge a Bond](id:classic/moves/relationship/forge_a_bond) for a relationship founded on a lie, choose one.\n\n  * Keep your secret: Roll +shadow (instead of +heart).\n  * Reveal the truth: Roll +heart. On a strong hit, mark a bond twice and take 1 experience. A weak hit counts as a miss.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/relationship/forge_a_bond"],
+									"enhances": ["classic/moves/relationship/forge_a_bond"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4735,10 +4735,10 @@
 							"id": "classic/assets/path/wildblood/abilities/2",
 							"enabled": false,
 							"text": "When you [Make Camp](id:classic/moves/adventure/make_camp) in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies each choose 1 more option on a hit.",
-							"augment_moves": [
+							"enhance_moves": [
 								{
 									"roll_type": "action_roll",
-									"augments": ["classic/moves/adventure/make_camp"],
+									"enhances": ["classic/moves/adventure/make_camp"],
 									"trigger": {
 										"conditions": [
 											{
@@ -4973,8 +4973,6 @@
 							"enabled": false,
 							"text": "Your simulacrum has 6 health.",
 							"augment_asset": {
-								"count_as_impact": false,
-								"shared": false,
 								"condition_meter": {
 									"max": 6
 								}

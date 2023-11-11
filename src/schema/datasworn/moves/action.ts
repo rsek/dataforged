@@ -8,10 +8,10 @@ import {
 } from '../../../typebox/index.js'
 import { ActionRollMethod, MoveOutcomes, MoveRollType } from './common.js'
 import {
-	toMoveAugment,
+	toMoveEnhance,
 	composeMoveType,
-	toTriggerAugment,
-	toTriggerConditionAugment,
+	toTriggerEnhance,
+	toTriggerConditionEnhance,
 	composeTrigger,
 	composeTriggerRollCondition
 } from './utils.js'
@@ -125,22 +125,22 @@ export const MoveActionRoll = composeMoveType(
 
 export type MoveActionRoll = Static<typeof MoveActionRoll>
 
-export const TriggerActionRollConditionAugment = toTriggerConditionAugment(
+export const TriggerActionRollConditionEnhance = toTriggerConditionEnhance(
 	TriggerActionRollCondition,
-	{ $id: '#/$defs/TriggerActionRollConditionAugment' }
+	{ $id: '#/$defs/TriggerActionRollConditionEnhance' }
 )
 
-export type TriggerActionRollConditionAugment = Static<
-	typeof TriggerActionRollConditionAugment
+export type TriggerActionRollConditionEnhance = Static<
+	typeof TriggerActionRollConditionEnhance
 >
 
-export const TriggerActionRollAugment = toTriggerAugment(
-	Type.Ref(TriggerActionRollConditionAugment),
+export const TriggerActionRollEnhance = toTriggerEnhance(
+	Type.Ref(TriggerActionRollConditionEnhance),
 	{
-		$id: '#/$defs/TriggerActionRollAugment'
+		$id: '#/$defs/TriggerActionRollEnhance'
 	}
 )
-export type TriggerActionRollAugment = Static<typeof TriggerActionRollAugment>
+export type TriggerActionRollEnhance = Static<typeof TriggerActionRollEnhance>
 
 // TRIGGER: NO ROLL
 
@@ -152,12 +152,12 @@ export const TriggerNoRollCondition = composeTriggerRollCondition(
 )
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
-export const TriggerNoRollConditionAugment = toTriggerConditionAugment(
+export const TriggerNoRollConditionEnhance = toTriggerConditionEnhance(
 	TriggerNoRollCondition,
-	{ $id: '#/$defs/TriggerNoRollConditionAugment' }
+	{ $id: '#/$defs/TriggerNoRollConditionEnhance' }
 )
-export type TriggerNoRollConditionAugment = Static<
-	typeof TriggerNoRollConditionAugment
+export type TriggerNoRollConditionEnhance = Static<
+	typeof TriggerNoRollConditionEnhance
 >
 
 export const TriggerNoRoll = PartialBy(
@@ -186,28 +186,28 @@ export const MoveNoRoll = SourcedNode(
 )
 export type MoveNoRoll = Static<typeof MoveNoRoll>
 
-export const TriggerNoRollAugment = toTriggerAugment(
-	Type.Ref(TriggerNoRollConditionAugment),
+export const TriggerNoRollEnhance = toTriggerEnhance(
+	Type.Ref(TriggerNoRollConditionEnhance),
 	{
-		$id: '#/$defs/TriggerNoRollAugment'
+		$id: '#/$defs/TriggerNoRollEnhance'
 	}
 )
-export type TriggerNoRollAugment = Static<typeof TriggerNoRollAugment>
+export type TriggerNoRollEnhance = Static<typeof TriggerNoRollEnhance>
 
-export const MoveNoRollAugment = toMoveAugment(
+export const MoveNoRollEnhance = toMoveEnhance(
 	MoveNoRoll,
-	TriggerNoRollAugment,
+	TriggerNoRollEnhance,
 	{
-		$id: '#/$defs/MoveNoRollAugment'
+		$id: '#/$defs/MoveNoRollEnhance'
 	}
 )
-export type MoveNoRollAugment = Static<typeof MoveNoRollAugment>
+export type MoveNoRollEnhance = Static<typeof MoveNoRollEnhance>
 
-export const MoveActionRollAugment = toMoveAugment(
+export const MoveActionRollEnhance = toMoveEnhance(
 	MoveActionRoll,
-	TriggerActionRollAugment,
+	TriggerActionRollEnhance,
 	{
-		$id: '#/$defs/MoveActionRollAugment'
+		$id: '#/$defs/MoveActionRollEnhance'
 	}
 )
-export type MoveActionRollAugment = Static<typeof MoveActionRollAugment>
+export type MoveActionRollEnhance = Static<typeof MoveActionRollEnhance>

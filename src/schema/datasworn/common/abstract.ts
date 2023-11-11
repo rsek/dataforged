@@ -186,31 +186,31 @@ export function OmitMeta<T extends TObject>(t: T) {
 export type OmitMeta<T> = Omit<T, MetaKeys>
 
 /**
- * Augments a single rules element
+ * Enhances a single rules element
  */
-export function AugmentOne<T extends TObject>(t: T) {
+export function EnhanceOne<T extends TObject>(t: T) {
 	return Type.Composite([
 		OmitMeta(t),
-		Type.Object({ augments: Type.Optional(t.properties.id) })
+		Type.Object({ enhances: Type.Optional(t.properties.id) })
 	])
 }
-export type AugmentOne<T extends TObject> = Static<
-	ReturnType<typeof AugmentOne<T>>
+export type EnhanceOne<T extends TObject> = Static<
+	ReturnType<typeof EnhanceOne<T>>
 >
 
-export function AugmentMany<T extends TObject>(
-	augmentSchema: T,
+export function EnhanceMany<T extends TObject>(
+	enhanceSchema: T,
 	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	const noMeta = Utils.DeepPartial(OmitMeta(augmentSchema))
+	const noMeta = Utils.DeepPartial(OmitMeta(enhanceSchema))
 	return Type.Composite(
-		[noMeta, Type.Object({ augments: Type.Optional(Type.Array(extendIds)) })],
+		[noMeta, Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })],
 		options
 	)
 }
-export type AugmentMany<T extends TObject> = Static<
-	ReturnType<typeof AugmentMany<T>>
+export type EnhanceMany<T extends TObject> = Static<
+	ReturnType<typeof EnhanceMany<T>>
 >
 
 const CollectionBase = Type.Object({
@@ -273,7 +273,7 @@ export type RecursiveCollection<T> = Collection<T> & {
 /**
  * Note that `id` and `source` are always omitted.
  */
-export function NodeAugmentSelf<
+export function NodeEnhanceSelf<
 	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
 >(t: T, omitKeys: Array<keyof Static<T>> = [], options: SchemaOptions = {}) {
 	return Utils.DeepPartial(
@@ -285,7 +285,7 @@ export function NodeAugmentSelf<
 /**
  * Note that `id` is always omitted.
  */
-export function NodeAugmentForeign<
+export function NodeEnhanceForeign<
 	T extends TObject<{
 		id: TString | TRef<TString>
 		source?: TObject
@@ -302,7 +302,7 @@ export function NodeAugmentForeign<
 			Utils.DeepPartial(
 				Type.Omit(t, [...omitKeys, 'id', 'source', 'name'])
 			) as TObject,
-			Type.Object({ augments: Type.Optional(Type.Array(extendsIDType)) })
+			Type.Object({ enhances: Type.Optional(Type.Array(extendsIDType)) })
 		],
 		options
 	)

@@ -164,7 +164,7 @@ export function composeMoveType<T extends TObject>(schema: T, options = {}) {
 	)
 }
 
-export function toTriggerAugment(
+export function toTriggerEnhance(
 	conditionSchema: Exclude<TAnySchema, TBigInt>,
 	options: ObjectOptions
 ) {
@@ -176,27 +176,27 @@ export function toTriggerAugment(
 	)
 }
 
-type TriggerConditionAugmentSchema<
+type TriggerConditionEnhanceSchema<
 	Option extends TSchema | undefined,
 	Method extends TSchema | undefined
 > = TObject<
 	Option extends TSchema
 		? Method extends TSchema
 			? typeof TriggerRollConditionProperties & {
-					method: TUnion<[Method, TLiteral<'augment'>]>
+					method: TUnion<[Method, TLiteral<'enhance'>]>
 					options: TUnion<[TArray<Option>, TNull]>
 			  }
 			: typeof TriggerRollConditionProperties
 		: typeof TriggerRollConditionProperties
 >
 
-export function toTriggerConditionAugment<
+export function toTriggerConditionEnhance<
 	RollOption extends TSchema | undefined,
 	Method extends TSchema | undefined
 >(
 	base: ReturnType<typeof composeTriggerRollCondition<RollOption, Method>>,
 	options: ObjectOptions
-): TriggerConditionAugmentSchema<RollOption, Method> {
+): TriggerConditionEnhanceSchema<RollOption, Method> {
 	const optionsSchema = (base.properties as any)
 		.roll_options as RollOption extends TSchema ? TArray<RollOption> : undefined
 	const method = (base.properties as any).method as Method
@@ -204,47 +204,47 @@ export function toTriggerConditionAugment<
 	if (optionsSchema == null || method == null)
 		return Type.Object(TriggerRollConditionProperties, options) as any
 
-	const augmentLiteral = 'augment'
+	const enhanceLiteral = 'enhance'
 
 	return Type.Object(
 		{
 			...TriggerRollConditionProperties,
-			method: Type.Union([Type.Literal(augmentLiteral), method], {
-				default: augmentLiteral,
+			method: Type.Union([Type.Literal(enhanceLiteral), method], {
+				default: enhanceLiteral,
 				description:
-					'If this is null or undefined, this trigger condition augment specifies no roll method of its own.'
+					'If this is null or undefined, this trigger condition enhance specifies no roll method of its own.'
 			}),
 			roll_options: Type.Union([Type.Null(), optionsSchema], {
 				default: null,
 				description:
-					'If this is null or undefined, this trigger condition augment specifies no roll options of its own.'
+					'If this is null or undefined, this trigger condition enhance specifies no roll options of its own.'
 			})
 		},
 		options
 	) as any
 }
 
-export function toMoveAugment<
+export function toMoveEnhance<
 	TMove extends AnyMoveSchema & TObject,
-	TAugment extends TObject
+	TEnhance extends TObject
 >(
 	moveSchema: TMove,
-	triggerAugmentSchema: TAugment,
+	triggerEnhanceSchema: TEnhance,
 	options: ObjectOptions = {}
 ) {
 	const { roll_type } = moveSchema.properties
 	const base = Type.Object({
 		roll_type,
-		trigger: Type.Optional(triggerAugmentSchema)
+		trigger: Type.Optional(triggerEnhanceSchema)
 	})
 
-	const augmentMany = RequireBy(
-		Abstract.AugmentMany(base, Type.Ref(MoveIDWildcard), options),
+	const enhanceMany = RequireBy(
+		Abstract.EnhanceMany(base, Type.Ref(MoveIDWildcard), options),
 		['roll_type'],
 		options
 	)
 
-	return augmentMany
+	return enhanceMany
 }
 
 export type MoveBase = Static<typeof MoveBase>

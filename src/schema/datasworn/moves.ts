@@ -2,13 +2,13 @@ import { Type, type Static } from '@sinclair/typebox'
 import { Abstract, ID } from './common/index.js'
 import {
 	MoveActionRoll,
-	MoveActionRollAugment,
+	MoveActionRollEnhance,
 	MoveNoRoll,
-	MoveNoRollAugment,
+	MoveNoRollEnhance,
 	MoveProgressRoll,
-	MoveProgressRollAugment,
+	MoveProgressRollEnhance,
 	MoveSpecialTrack,
-	MoveSpecialTrackAugment
+	MoveSpecialTrackEnhance
 } from './moves/index.js'
 
 // discriminated union of all moves by roll_type
@@ -27,24 +27,24 @@ export const Move = Type.Union(
 
 export type Move = Static<typeof Move>
 
-export const MoveAugment = Type.Union(
+export const MoveEnhance = Type.Union(
 	[
-		Type.Ref(MoveActionRollAugment),
-		Type.Ref(MoveNoRollAugment),
-		Type.Ref(MoveProgressRollAugment),
-		Type.Ref(MoveSpecialTrackAugment)
+		Type.Ref(MoveActionRollEnhance),
+		Type.Ref(MoveNoRollEnhance),
+		Type.Ref(MoveProgressRollEnhance),
+		Type.Ref(MoveSpecialTrackEnhance)
 	],
 	{
-		$id: '#/$defs/MoveAugment',
-		title: 'Move Augment'
+		$id: '#/$defs/MoveEnhance',
+		title: 'Move Enhance'
 	}
 )
 
-export type MoveAugment =
-	| MoveNoRollAugment
-	| MoveActionRollAugment
-	| MoveProgressRollAugment
-	| MoveSpecialTrackAugment
+export type MoveEnhance =
+	| MoveNoRollEnhance
+	| MoveActionRollEnhance
+	| MoveProgressRollEnhance
+	| MoveSpecialTrackEnhance
 
 export const MoveCategory = Abstract.Collection(
 	Type.Ref(Move),

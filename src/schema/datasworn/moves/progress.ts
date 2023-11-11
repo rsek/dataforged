@@ -13,11 +13,11 @@ import {
 } from './common.js'
 import {
 	composeMoveType,
-	toTriggerAugment,
-	toTriggerConditionAugment,
+	toTriggerEnhance,
+	toTriggerConditionEnhance,
 	composeTrigger,
 	composeTriggerRollCondition,
-	toMoveAugment
+	toMoveEnhance
 } from './utils.js'
 import { SpecialTrackType } from '../common/progress.js'
 import { Localize } from '../common/index.js'
@@ -81,32 +81,32 @@ export type MoveProgressRoll = Static<typeof MoveProgressRoll>
 
 // AUGMENTS
 
-export const TriggerProgressRollConditionAugment = toTriggerConditionAugment(
+export const TriggerProgressRollConditionEnhance = toTriggerConditionEnhance(
 	TriggerProgressRollCondition,
-	{ $id: '#/$defs/TriggerProgressRollConditionAugment' }
+	{ $id: '#/$defs/TriggerProgressRollConditionEnhance' }
 )
-export type TriggerProgressRollConditionAugment = Static<
-	typeof TriggerProgressRollConditionAugment
+export type TriggerProgressRollConditionEnhance = Static<
+	typeof TriggerProgressRollConditionEnhance
 >
 
-export const TriggerProgressRollAugment = toTriggerAugment(
-	Type.Ref(TriggerProgressRollConditionAugment),
+export const TriggerProgressRollEnhance = toTriggerEnhance(
+	Type.Ref(TriggerProgressRollConditionEnhance),
 	{
-		$id: '#/$defs/TriggerProgressRollAugment'
+		$id: '#/$defs/TriggerProgressRollEnhance'
 	}
 )
-export type TriggerProgressRollAugment = Static<
-	typeof TriggerProgressRollAugment
+export type TriggerProgressRollEnhance = Static<
+	typeof TriggerProgressRollEnhance
 >
 
-export const MoveProgressRollAugment = toMoveAugment(
+export const MoveProgressRollEnhance = toMoveEnhance(
 	MoveProgressRoll,
-	TriggerProgressRollAugment,
+	TriggerProgressRollEnhance,
 	{
-		$id: '#/$defs/MoveProgressRollAugment'
+		$id: '#/$defs/MoveProgressRollEnhance'
 	}
 )
-export type MoveProgressRollAugment = Static<typeof MoveProgressRollAugment>
+export type MoveProgressRollEnhance = Static<typeof MoveProgressRollEnhance>
 
 // SPECIAL TRACK
 
@@ -153,33 +153,33 @@ export const MoveSpecialTrack = composeMoveType(
 
 export type MoveSpecialTrack = Static<typeof MoveSpecialTrack>
 
-export const TriggerSpecialTrackConditionAugment = toTriggerConditionAugment(
+export const TriggerSpecialTrackConditionEnhance = toTriggerConditionEnhance(
 	TriggerSpecialTrackCondition,
 	{
-		$id: '#/$defs/TriggerSpecialTrackConditionAugment',
+		$id: '#/$defs/TriggerSpecialTrackConditionEnhance',
 		description:
 			'A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).'
 	}
 )
-export type TriggerSpecialTrackConditionAugment = Static<
-	typeof TriggerSpecialTrackConditionAugment
+export type TriggerSpecialTrackConditionEnhance = Static<
+	typeof TriggerSpecialTrackConditionEnhance
 >
 
-export const TriggerSpecialTrackAugment = toTriggerAugment(
-	Type.Ref(TriggerSpecialTrackConditionAugment),
+export const TriggerSpecialTrackEnhance = toTriggerEnhance(
+	Type.Ref(TriggerSpecialTrackConditionEnhance),
 	{
-		$id: '#/$defs/TriggerSpecialTrackAugment'
+		$id: '#/$defs/TriggerSpecialTrackEnhance'
 	}
 )
-export type TriggerSpecialTrackAugment = Static<
-	typeof TriggerSpecialTrackAugment
+export type TriggerSpecialTrackEnhance = Static<
+	typeof TriggerSpecialTrackEnhance
 >
 
-export const MoveSpecialTrackAugment = toMoveAugment(
+export const MoveSpecialTrackEnhance = toMoveEnhance(
 	MoveSpecialTrack,
-	TriggerSpecialTrackAugment,
+	TriggerSpecialTrackEnhance,
 	{
-		$id: '#/$defs/MoveSpecialTrackAugment'
+		$id: '#/$defs/MoveSpecialTrackEnhance'
 	}
 )
-export type MoveSpecialTrackAugment = Static<typeof MoveSpecialTrackAugment>
+export type MoveSpecialTrackEnhance = Static<typeof MoveSpecialTrackEnhance>

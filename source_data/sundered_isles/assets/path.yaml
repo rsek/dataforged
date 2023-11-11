@@ -20,7 +20,7 @@ assets:
             ## TODO: to replace both this and momentum burn related effects: consider a schema that adds a note to a specified PC attribute. low-effort way to do this -- just assume it's the asset ability text!
           - text: |-
               You have a kinship with other machines. When you make a move to build, repair, or study a mechanical device, or question or convince a mechanical being, you may roll +spirit. On a match, you build new understanding or affinity; mark 1 tick on your bonds legacy track.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
                 trigger:
                   conditions:
@@ -30,7 +30,7 @@ assets:
                           condition_meter: spirit
           - text: |-
               You may purchase paths (except [Augmented](id:sundered_isles/assets/path/augmented)) to reflect an aspect of your mechanical nature for 1 less experience. When you [Pay the Price](id:sundered_isles/moves/fate/pay_the_price), you may suffer the cost by marking one of these assets as broken. Spend 2 repair points to return a broken asset to working condition.
-            augment_asset:
+            enhance_asset:
               # TODO: keys to alter controls of attached assets?
               attachments:
                 assets:
@@ -70,7 +70,7 @@ assets:
                     text: Take +2 command.
                   miss:
                     text: Take +2 but envision a threat to your crew or leadership.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
                 trigger:
                   conditions:
@@ -79,18 +79,18 @@ assets:
                         player: true
                         ally: true
               - roll_type: no_roll
-                augments:
+                enhances:
                   - sundered_isles/moves/fate/pay_the_price
           - text: |-
               Take +2 command; your max is now 6.
-            augment_asset:
+            enhance_asset:
               condition_meter:
                 max: 6
           - text: |-
               When your command is 0 and the situation desperate, you may [Compel](id:sundered_isles/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
-                augments:
+                enhances:
                   - sundered_isles/moves/adventure/compel
                 trigger:
                   conditions:
@@ -196,7 +196,7 @@ assets:
           - enabled: true
             text: |-
               While in the presence of the remains of an intelligent being, you may [Gather Information](id:sundered_isles/moves/adventure/gather_information) by summoning their spirit to answer your questions. If you do, roll +heart and take +1 momentum on a hit.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
                 trigger:
                   conditions:
@@ -205,7 +205,7 @@ assets:
                         - stat: heart
           - text: |-
               When you [Face Death](id:sundered_isles/moves/threshold/face_death), mark 2 ticks on your bonds legacy track. If an ally must [Face Death](id:sundered_isles/moves/threshold/face_death), you may [Aid Your Ally](id:sundered_isles/moves/adventure/aid_your_ally) to guide them (before or after they roll); on a hit, they may reroll any dice.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
                 trigger:
                   conditions:
@@ -214,9 +214,9 @@ assets:
                         ally: true
           - text: |-
               You may [Face Danger](id:sundered_isles/moves/adventure/face_danger) (+heart) to imbue a corpse with soulless life. On a hit, the corpse follows your commands. If it aids you through force, threat, or fear as you make a move, add +2 and fill one segment of a 4-segment clock. You may also suffer the cost of a move by filling a segment. When the clock is full, the corpse crumbles to ash.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
-                augments:
+                enhances:
                   - sundered_isles/moves/adventure/face_danger
                 trigger:
                   conditions:
@@ -402,15 +402,15 @@ assets:
                       No matter the outcome, set the winds to fair after a few hours.
           - text: |-
               As above, and add +1 when you bind the winds.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
-                augments:
+                enhances:
                   - sundered_isles/assets/path/windbinder/abilities/0/moves/bind_winds
           - text: |-
               Once per situation, you may summon a mighty cyclone. Take an automatic miss as defined above, but also wreak havoc on your foes; mark progress on a related quest, or mark progress twice on related objectives in a fight.
-            augment_moves:
+            enhance_moves:
               - roll_type: action_roll
-                augments:
+                enhances:
                   - sundered_isles/assets/path/windbinder/abilities/0/moves/bind_winds
                 trigger:
                   conditions:

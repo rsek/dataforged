@@ -4,7 +4,7 @@
 	"title": "Datasworn v2.0.0-dev",
 	"$defs": {
 		"ActionRollMethod": {
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.",
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.",
 			"title": "ActionRollMethod",
 			"enum": [
 				"miss",
@@ -14,7 +14,7 @@
 				"highest",
 				"lowest",
 				"all",
-				"augment"
+				"enhance"
 			]
 		},
 		"ActionRollOption": {
@@ -185,9 +185,9 @@
 						}
 					}
 				},
-				"augment_asset": {
+				"enhance_asset": {
 					"type": "object",
-					"description": "Describes augmentations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
+					"description": "Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
 					"properties": {
 						"attachments": {
 							"$ref": "#/$defs/AssetAttachment"
@@ -203,16 +203,16 @@
 							"default": false
 						},
 						"condition_meter": {
-							"$ref": "#/$defs/AssetConditionMeterAugment"
+							"$ref": "#/$defs/AssetConditionMeterEnhance"
 						}
 					},
 					"releaseStage": "unstable"
 				},
-				"augment_moves": {
+				"enhance_moves": {
 					"type": "array",
 					"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.",
 					"items": {
-						"$ref": "#/$defs/MoveAugment"
+						"$ref": "#/$defs/MoveEnhance"
 					},
 					"releaseStage": "experimental"
 				},
@@ -431,26 +431,6 @@
 			},
 			"required": ["min", "max", "id", "label"]
 		},
-		"AssetConditionMeterAugment": {
-			"type": "object",
-			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
-			"title": "Asset condition meter",
-			"properties": {
-				"controls": {
-					"type": "object",
-					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"$ref": "#/$defs/AssetConditionMeterControlField"
-						}
-					}
-				},
-				"max": {
-					"type": "integer"
-				}
-			}
-		},
 		"AssetConditionMeterControlField": {
 			"type": "object",
 			"title": "Asset Condition Meter Control Field",
@@ -469,6 +449,26 @@
 			"type": "string",
 			"title": "AssetConditionMeterControlFieldID",
 			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/condition_meter\\/controls\\/([a-z][a-z_]*)$"
+		},
+		"AssetConditionMeterEnhance": {
+			"type": "object",
+			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
+			"title": "Asset condition meter",
+			"properties": {
+				"controls": {
+					"type": "object",
+					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/AssetConditionMeterControlField"
+						}
+					}
+				},
+				"max": {
+					"type": "integer"
+				}
+			}
 		},
 		"AssetConditionMeterID": {
 			"type": "string",
@@ -2165,16 +2165,16 @@
 				"outcomes"
 			]
 		},
-		"MoveActionRollAugment": {
+		"MoveActionRollEnhance": {
 			"type": "object",
-			"title": "MoveActionRollAugment",
+			"title": "MoveActionRollEnhance",
 			"properties": {
 				"roll_type": {
 					"type": "string",
 					"description": "A move that makes an action roll.",
 					"const": "action_roll"
 				},
-				"augments": {
+				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
@@ -2186,30 +2186,13 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerActionRollConditionAugment"
+								"$ref": "#/$defs/TriggerActionRollConditionEnhance"
 							}
 						}
 					}
 				}
 			},
 			"required": ["roll_type"]
-		},
-		"MoveAugment": {
-			"title": "Move Augment",
-			"anyOf": [
-				{
-					"$ref": "#/$defs/MoveActionRollAugment"
-				},
-				{
-					"$ref": "#/$defs/MoveNoRollAugment"
-				},
-				{
-					"$ref": "#/$defs/MoveProgressRollAugment"
-				},
-				{
-					"$ref": "#/$defs/MoveSpecialTrackAugment"
-				}
-			]
 		},
 		"MoveCategory": {
 			"type": "object",
@@ -2261,6 +2244,23 @@
 			"title": "MoveCategoryID",
 			"examples": ["starforged/collections/moves/adventure"],
 			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/([a-z][a-z_]*)$"
+		},
+		"MoveEnhance": {
+			"title": "Move Enhance",
+			"anyOf": [
+				{
+					"$ref": "#/$defs/MoveActionRollEnhance"
+				},
+				{
+					"$ref": "#/$defs/MoveNoRollEnhance"
+				},
+				{
+					"$ref": "#/$defs/MoveProgressRollEnhance"
+				},
+				{
+					"$ref": "#/$defs/MoveSpecialTrackEnhance"
+				}
+			]
 		},
 		"MoveID": {
 			"type": "string",
@@ -2329,16 +2329,16 @@
 			},
 			"required": ["name", "source", "id", "text", "roll_type", "trigger"]
 		},
-		"MoveNoRollAugment": {
+		"MoveNoRollEnhance": {
 			"type": "object",
-			"title": "MoveNoRollAugment",
+			"title": "MoveNoRollEnhance",
 			"properties": {
 				"roll_type": {
 					"type": "string",
 					"description": "A move that makes no action rolls or progress rolls.",
 					"const": "no_roll"
 				},
-				"augments": {
+				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
@@ -2350,7 +2350,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerNoRollConditionAugment"
+								"$ref": "#/$defs/TriggerNoRollConditionEnhance"
 							}
 						}
 					}
@@ -2481,16 +2481,16 @@
 				"outcomes"
 			]
 		},
-		"MoveProgressRollAugment": {
+		"MoveProgressRollEnhance": {
 			"type": "object",
-			"title": "MoveProgressRollAugment",
+			"title": "MoveProgressRollEnhance",
 			"properties": {
 				"roll_type": {
 					"type": "string",
 					"description": "A progress move that rolls on a standard progress track type (defined by this move).",
 					"const": "progress_roll"
 				},
-				"augments": {
+				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
@@ -2502,7 +2502,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerProgressRollConditionAugment"
+								"$ref": "#/$defs/TriggerProgressRollConditionEnhance"
 							}
 						}
 					}
@@ -2572,16 +2572,16 @@
 				"outcomes"
 			]
 		},
-		"MoveSpecialTrackAugment": {
+		"MoveSpecialTrackEnhance": {
 			"type": "object",
-			"title": "MoveSpecialTrackAugment",
+			"title": "MoveSpecialTrackEnhance",
 			"properties": {
 				"roll_type": {
 					"type": "string",
 					"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 					"const": "special_track"
 				},
-				"augments": {
+				"enhances": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
@@ -2593,7 +2593,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerSpecialTrackConditionAugment"
+								"$ref": "#/$defs/TriggerSpecialTrackConditionEnhance"
 							}
 						}
 					}
@@ -3360,7 +3360,7 @@
 		},
 		"SelectFieldAssetState": {
 			"type": "object",
-			"description": "Select a defined asset state, which may augment the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+			"description": "Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
 			"title": "Select field (asset state)",
 			"properties": {
 				"id": {
@@ -3550,7 +3550,7 @@
 			"required": ["title", "authors", "date", "url", "license"]
 		},
 		"SpecialTrackRollMethod": {
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.",
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.",
 			"title": "SpecialTrackRollMethod",
 			"enum": [
 				"miss",
@@ -3560,7 +3560,7 @@
 				"highest",
 				"lowest",
 				"all",
-				"augment"
+				"enhance"
 			]
 		},
 		"SpecialTrackType": {
@@ -3681,19 +3681,6 @@
 			},
 			"required": ["text", "conditions"]
 		},
-		"TriggerActionRollAugment": {
-			"type": "object",
-			"title": "TriggerActionRollAugment",
-			"properties": {
-				"conditions": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerActionRollConditionAugment"
-					}
-				}
-			},
-			"required": ["conditions"]
-		},
 		"TriggerActionRollCondition": {
 			"type": "object",
 			"title": "TriggerActionRollCondition",
@@ -3719,9 +3706,9 @@
 			},
 			"required": ["method", "roll_options"]
 		},
-		"TriggerActionRollConditionAugment": {
+		"TriggerActionRollConditionEnhance": {
 			"type": "object",
-			"title": "TriggerActionRollConditionAugment",
+			"title": "TriggerActionRollConditionEnhance",
 			"properties": {
 				"text": {
 					"description": "A markdown string of any trigger text specific to this trigger condition.",
@@ -3731,21 +3718,21 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
 					"anyOf": [
 						{
 							"type": "string",
-							"const": "augment"
+							"const": "enhance"
 						},
 						{
 							"$ref": "#/$defs/ActionRollMethod",
 							"default": "player_choice"
 						}
 					],
-					"default": "augment"
+					"default": "enhance"
 				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"anyOf": [
 						{
 							"type": "null"
@@ -3762,6 +3749,19 @@
 				}
 			},
 			"required": ["method", "roll_options"]
+		},
+		"TriggerActionRollEnhance": {
+			"type": "object",
+			"title": "TriggerActionRollEnhance",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/TriggerActionRollConditionEnhance"
+					}
+				}
+			},
+			"required": ["conditions"]
 		},
 		"TriggerBase": {
 			"type": "object",
@@ -3810,19 +3810,6 @@
 			},
 			"required": ["text"]
 		},
-		"TriggerNoRollAugment": {
-			"type": "object",
-			"title": "TriggerNoRollAugment",
-			"properties": {
-				"conditions": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerNoRollConditionAugment"
-					}
-				}
-			},
-			"required": ["conditions"]
-		},
 		"TriggerNoRollCondition": {
 			"type": "object",
 			"title": "TriggerNoRollCondition",
@@ -3836,9 +3823,9 @@
 				}
 			}
 		},
-		"TriggerNoRollConditionAugment": {
+		"TriggerNoRollConditionEnhance": {
 			"type": "object",
-			"title": "TriggerNoRollConditionAugment",
+			"title": "TriggerNoRollConditionEnhance",
 			"properties": {
 				"text": {
 					"description": "A markdown string of any trigger text specific to this trigger condition.",
@@ -3848,6 +3835,19 @@
 					"$ref": "#/$defs/TriggerBy"
 				}
 			}
+		},
+		"TriggerNoRollEnhance": {
+			"type": "object",
+			"title": "TriggerNoRollEnhance",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/TriggerNoRollConditionEnhance"
+					}
+				}
+			},
+			"required": ["conditions"]
 		},
 		"TriggerProgressRoll": {
 			"type": "object",
@@ -3867,19 +3867,6 @@
 				}
 			},
 			"required": ["text", "conditions"]
-		},
-		"TriggerProgressRollAugment": {
-			"type": "object",
-			"title": "TriggerProgressRollAugment",
-			"properties": {
-				"conditions": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerProgressRollConditionAugment"
-					}
-				}
-			},
-			"required": ["conditions"]
 		},
 		"TriggerProgressRollCondition": {
 			"type": "object",
@@ -3906,9 +3893,9 @@
 			},
 			"required": ["method", "roll_options"]
 		},
-		"TriggerProgressRollConditionAugment": {
+		"TriggerProgressRollConditionEnhance": {
 			"type": "object",
-			"title": "TriggerProgressRollConditionAugment",
+			"title": "TriggerProgressRollConditionEnhance",
 			"properties": {
 				"text": {
 					"description": "A markdown string of any trigger text specific to this trigger condition.",
@@ -3918,21 +3905,21 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
 					"anyOf": [
 						{
 							"type": "string",
-							"const": "augment"
+							"const": "enhance"
 						},
 						{
 							"$ref": "#/$defs/ProgressRollMethod",
 							"default": "progress_roll"
 						}
 					],
-					"default": "augment"
+					"default": "enhance"
 				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"anyOf": [
 						{
 							"type": "null"
@@ -3949,6 +3936,19 @@
 				}
 			},
 			"required": ["method", "roll_options"]
+		},
+		"TriggerProgressRollEnhance": {
+			"type": "object",
+			"title": "TriggerProgressRollEnhance",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/TriggerProgressRollConditionEnhance"
+					}
+				}
+			},
+			"required": ["conditions"]
 		},
 		"TriggerSpecialTrack": {
 			"type": "object",
@@ -3968,19 +3968,6 @@
 				}
 			},
 			"required": ["text", "conditions"]
-		},
-		"TriggerSpecialTrackAugment": {
-			"type": "object",
-			"title": "TriggerSpecialTrackAugment",
-			"properties": {
-				"conditions": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerSpecialTrackConditionAugment"
-					}
-				}
-			},
-			"required": ["conditions"]
 		},
 		"TriggerSpecialTrackCondition": {
 			"type": "object",
@@ -4006,10 +3993,10 @@
 			},
 			"required": ["method", "roll_options"]
 		},
-		"TriggerSpecialTrackConditionAugment": {
+		"TriggerSpecialTrackConditionEnhance": {
 			"type": "object",
 			"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).",
-			"title": "TriggerSpecialTrackConditionAugment",
+			"title": "TriggerSpecialTrackConditionEnhance",
 			"properties": {
 				"text": {
 					"description": "A markdown string of any trigger text specific to this trigger condition.",
@@ -4019,20 +4006,20 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
 					"anyOf": [
 						{
 							"type": "string",
-							"const": "augment"
+							"const": "enhance"
 						},
 						{
 							"$ref": "#/$defs/SpecialTrackRollMethod"
 						}
 					],
-					"default": "augment"
+					"default": "enhance"
 				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"anyOf": [
 						{
 							"type": "null"
@@ -4059,6 +4046,19 @@
 				}
 			},
 			"required": ["using"]
+		},
+		"TriggerSpecialTrackEnhance": {
+			"type": "object",
+			"title": "TriggerSpecialTrackEnhance",
+			"properties": {
+				"conditions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/TriggerSpecialTrackConditionEnhance"
+					}
+				}
+			},
+			"required": ["conditions"]
 		},
 		"Truth": {
 			"type": "object",

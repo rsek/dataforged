@@ -79,7 +79,7 @@ export async function buildSourcebook(
 
 	// exclude certain keys which are still in development
 	// FIXME there's probably a more elegant way to do this, by looking at the json schema's releaseFlag
-	const experimentalKeys = ['augment_asset']
+	const experimentalKeys = ['enhance_asset']
 
 	const toWrite: Promise<void>[] = []
 
