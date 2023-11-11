@@ -6,12 +6,7 @@ import {
 	type Static,
 	ExtractLiteralFromEnum
 } from '../../../typebox/index.js'
-import {
-	ActionRollMethod,
-	MoveOutcomeType,
-	MoveOutcomes,
-	MoveRollType
-} from './common.js'
+import { ActionRollMethod, MoveOutcomes, MoveRollType } from './common.js'
 import {
 	toMoveAugment,
 	composeMoveType,
