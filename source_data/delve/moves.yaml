@@ -44,15 +44,15 @@ moves:
             - text: With haste
               roll_options:
                 - stat: edge
-              method: any
+              method: player_choice
             - text: With stealth or trickery
               roll_options:
                 - stat: shadow
-              method: any
+              method: player_choice
             - text: With observation, intuition, or expertise
               roll_options:
                 - stat: wits
-              method: any
+              method: player_choice
         source:
           <<: *Source
           page: 21
@@ -122,7 +122,7 @@ moves:
         trigger:
           text: When you check to see if you have a specific helpful item, and you have at least +1 supply...
           conditions:
-            - method: any
+            - method: player_choice
               roll_options:
                 - using: condition_meter
                   condition_meter: supply
@@ -154,8 +154,7 @@ moves:
         trigger:
           text: When your exploration of a site comes to an end...
           conditions:
-            - method: any
-              roll_options:
+            - roll_options:
                 - using: progress_track
         text: |-
           When **your exploration of a site comes to an end**, roll the challenge dice and compare to your progress. Momentum is ignored on this roll.
@@ -186,23 +185,23 @@ moves:
           text: When you flee or withdraw from a site...
           conditions:
             - text: Find the fastest way out
-              method: any
+              method: player_choice
               roll_options:
                 - stat: edge
             - text: Steel yourself against the horrors of this place
-              method: any
+              method: player_choice
               roll_options:
                 - stat: heart
             - text: Fight your way out
-              method: any
+              method: player_choice
               roll_options:
                 - stat: iron
             - text: Keep out of sight
-              method: any
+              method: player_choice
               roll_options:
                 - stat: shadow
             - text: Retrace your steps or locate an alternate path
-              method: any
+              method: player_choice
               roll_options:
                 - stat: wits
         source:
@@ -296,7 +295,8 @@ moves:
         trigger:
           text: When you spend time reflecting on your hardships and missteps...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: failure_track
         text: |-
           When **you spend time reflecting on your hardships and missteps**, and your failure track is +6 or greater, roll your challenge dice and compare to your progress. Momentum is ignored on this roll.

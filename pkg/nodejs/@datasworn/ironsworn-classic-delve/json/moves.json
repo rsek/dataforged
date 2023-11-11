@@ -63,7 +63,7 @@
 										"using": "stat"
 									}
 								],
-								"method": "any"
+								"method": "player_choice"
 							},
 							{
 								"text": "With stealth or trickery",
@@ -73,7 +73,7 @@
 										"using": "stat"
 									}
 								],
-								"method": "any"
+								"method": "player_choice"
 							},
 							{
 								"text": "With observation, intuition, or expertise",
@@ -83,7 +83,7 @@
 										"using": "stat"
 									}
 								],
-								"method": "any"
+								"method": "player_choice"
 							}
 						]
 					},
@@ -169,7 +169,7 @@
 						"text": "When you check to see if you have a specific helpful item, and you have at least +1 supply...",
 						"conditions": [
 							{
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"using": "condition_meter",
@@ -225,12 +225,12 @@
 						"text": "When your exploration of a site comes to an end...",
 						"conditions": [
 							{
-								"method": "any",
 								"roll_options": [
 									{
 										"using": "progress_track"
 									}
-								]
+								],
+								"method": "progress_roll"
 							}
 						]
 					},
@@ -256,7 +256,7 @@
 						"conditions": [
 							{
 								"text": "Find the fastest way out",
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"stat": "edge",
@@ -266,7 +266,7 @@
 							},
 							{
 								"text": "Steel yourself against the horrors of this place",
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"stat": "heart",
@@ -276,7 +276,7 @@
 							},
 							{
 								"text": "Fight your way out",
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"stat": "iron",
@@ -286,7 +286,7 @@
 							},
 							{
 								"text": "Keep out of sight",
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"stat": "shadow",
@@ -296,7 +296,7 @@
 							},
 							{
 								"text": "Retrace your steps or locate an alternate path",
-								"method": "any",
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"stat": "wits",
@@ -414,12 +414,12 @@
 						"text": "When you spend time reflecting on your hardships and missteps...",
 						"conditions": [
 							{
+								"method": "player_choice",
 								"roll_options": [
 									{
 										"using": "failure_track"
 									}
-								],
-								"method": "any"
+								]
 							}
 						]
 					},

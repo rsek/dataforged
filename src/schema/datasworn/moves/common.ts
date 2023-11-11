@@ -11,7 +11,24 @@ import {
 	type MoveSpecialTrack
 } from '../moves.js'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
-import { ID, Localize, Metadata } from '../common/index.js'
+import { Localize } from '../common/index.js'
+
+enum Outcome {
+	Miss = 'miss',
+	WeakHit = 'weak_hit',
+	StrongHit = 'strong_hit'
+}
+
+enum RollMethod {
+	Miss = Outcome.Miss,
+	WeakHit = Outcome.WeakHit,
+	StrongHit = Outcome.StrongHit,
+	PlayerChoice = 'player_choice',
+	Highest = 'highest',
+	Lowest = 'lowest',
+	All = 'all',
+	Augment = 'augment'
+}
 
 // ENUMS
 
@@ -29,27 +46,61 @@ export const MoveRollType = JsonEnumFromRecord(
 
 export type MoveRollType = Static<typeof MoveRollType>
 
-export const ActionRollMethod = JsonEnumFromRecord(
-	{
-		any: 'The player chooses which roll option to use.',
-		highest: 'Use the roll option with the highest stat value.',
-		lowest: 'Use the roll option with the lowest stat value.'
-	},
-	{ $id: '#/$defs/ActionRollMethod' }
-)
-export type ActionRollMethod = Static<typeof ActionRollMethod>
-
 export const MoveOutcomeType = JsonEnumFromRecord(
 	{
-		miss: "The score doesn't beat either challenge die.",
-		weak_hit: 'The score is greater than one challenge die.',
-		strong_hit: 'The score is greater than both challenge dice.'
+		[Outcome.Miss]: "The score doesn't beat either challenge die.",
+		[Outcome.WeakHit]: 'The score is greater than one challenge die.',
+		[Outcome.StrongHit]: 'The score is greater than both challenge dice.'
 	},
 	{
 		$id: '#/$defs/MoveOutcomeType'
 	}
 )
 export type MoveOutcomeType = Static<typeof MoveOutcomeType>
+
+const rollMethodForceOutcome = {
+	[RollMethod.Miss]: 'An automatic miss.',
+	[RollMethod.WeakHit]: 'An automatic weak hit.',
+	[RollMethod.StrongHit]: 'An automatic strong hit.'
+}
+
+const rollMethodOutcomeCommon = {
+	[RollMethod.PlayerChoice]: 'The player chooses which roll option to use.',
+	[RollMethod.Highest]: 'Use the roll option with the best/highest value.',
+	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
+	[RollMethod.All]: 'Use **every** roll option at once.',
+	[RollMethod.Augment]:
+		"The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value."
+}
+
+export const ActionRollMethod = JsonEnumFromRecord(
+	{
+		...rollMethodForceOutcome,
+		...rollMethodOutcomeCommon
+	},
+	{ $id: '#/$defs/ActionRollMethod' }
+)
+export type ActionRollMethod = Static<typeof ActionRollMethod>
+
+export const SpecialTrackRollMethod = JsonEnumFromRecord(
+	{
+		...rollMethodForceOutcome,
+		...rollMethodOutcomeCommon
+	},
+	{ $id: '#/$defs/SpecialTrackRollMethod' }
+)
+
+export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
+
+export const ProgressRollMethod = JsonEnumFromRecord(
+	{
+		...rollMethodForceOutcome,
+		progress_roll:
+			'Make a progress roll on a progress track associated with this move.'
+	},
+	{ $id: '#/$defs/ProgressRollMethod' }
+)
+export type ProgressRollMethod = Static<typeof ProgressRollMethod>
 
 // BASE TYPES
 
@@ -102,9 +153,9 @@ export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
 
 export const MoveOutcomes = Type.Object(
 	{
-		miss: Type.Ref(MoveOutcomeMatchable),
-		weak_hit: Type.Ref(MoveOutcome),
-		strong_hit: Type.Ref(MoveOutcomeMatchable)
+		[Outcome.Miss]: Type.Ref(MoveOutcomeMatchable),
+		[Outcome.WeakHit]: Type.Ref(MoveOutcome),
+		[Outcome.StrongHit]: Type.Ref(MoveOutcomeMatchable)
 	},
 	{
 		$id: '#/$defs/MoveOutcomes',
@@ -114,40 +165,6 @@ export const MoveOutcomes = Type.Object(
 	}
 )
 export type MoveOutcomes = Static<typeof MoveOutcomes>
-
-export const MoveBase = Type.Object({
-	id: Type.Ref(ID.MoveID),
-	name: Type.Ref(Localize.Label),
-	// is_progress_move: Type.Boolean({ default: false }),
-	roll_type: Type.Ref(MoveRollType, { default: 'no_roll' }),
-	replaces: Type.Optional(
-		Type.Ref(ID.MoveID, {
-			description:
-				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
-		})
-	),
-	trigger: Type.Object({
-		text: Type.Ref(Localize.MarkdownString, {
-			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
-			type: 'string'
-		})
-	}),
-	text: Type.Ref(Localize.MarkdownString, {
-		description: 'The complete rules text of the move.'
-	}),
-	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
-	oracles: Type.Optional(
-		Type.Array(Type.Ref(ID.OracleTableID), {
-			description:
-				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-		})
-	),
-	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-	source: Type.Ref(Metadata.Source)
-})
-
-export type MoveBase = Static<typeof MoveBase>
 
 export type SchemaOf<T> = Exclude<TAnySchema, TBigInt> & { static: T }
 

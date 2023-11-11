@@ -1,5 +1,7 @@
 import {
+	Static,
 	TArray,
+	TLiteral,
 	TNull,
 	TUnion,
 	Type,
@@ -8,14 +10,50 @@ import {
 	type TAnySchema,
 	type TBigInt,
 	type TObject,
-	type TSchema,
-	TLiteral
+	type TSchema
 } from '@sinclair/typebox'
 import { SourcedNode } from '../common/abstract.js'
 import { MoveIDWildcard } from '../common/id.js'
-import { Abstract, Localize } from '../common/index.js'
+import { Abstract, ID, Localize, Metadata } from '../common/index.js'
 import { RequireBy } from '../common/utils.js'
-import { MoveBase, TriggerBy, type AnyMoveSchema } from './common.js'
+import {
+	MoveOutcomes,
+	MoveRollType,
+	TriggerBy,
+	type AnyMoveSchema
+} from './common.js'
+
+export const MoveBase = Type.Object({
+	id: Type.Ref(ID.MoveID),
+	name: Type.Ref(Localize.Label),
+	// is_progress_move: Type.Boolean({ default: false }),
+	roll_type: Type.Ref(MoveRollType),
+	replaces: Type.Optional(
+		Type.Ref(ID.MoveID, {
+			description:
+				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
+		})
+	),
+	trigger: Type.Object({
+		text: Type.Ref(Localize.MarkdownString, {
+			description:
+				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
+			type: 'string'
+		})
+	}),
+	text: Type.Ref(Localize.MarkdownString, {
+		description: 'The complete rules text of the move.'
+	}),
+	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
+	oracles: Type.Optional(
+		Type.Array(Type.Ref(ID.OracleTableID), {
+			description:
+				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+		})
+	),
+	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
+	source: Type.Ref(Metadata.Source)
+})
 
 const TriggerRollConditionProperties = {
 	text: Type.Optional(
@@ -118,7 +156,11 @@ export function composeTrigger(
 }
 export function composeMoveType<T extends TObject>(schema: T, options = {}) {
 	return SourcedNode(
-		Type.Composite([Type.Omit(MoveBase, ['roll_type']), schema], options)
+		Type.Composite([
+			Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger']),
+			schema
+		]),
+		options
 	)
 }
 
@@ -204,3 +246,5 @@ export function toMoveAugment<
 
 	return augmentMany
 }
+
+export type MoveBase = Static<typeof MoveBase>

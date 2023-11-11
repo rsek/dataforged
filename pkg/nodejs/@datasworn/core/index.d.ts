@@ -135,7 +135,7 @@ export type MoveCategoryID1 = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type Move = MoveNoRoll | MoveActionRoll | MoveProgressRoll | MoveSpecialTrack;
+export type Move = MoveActionRoll | MoveNoRoll | ProgressMove | ProgressMoveSpecialTrackRoll;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -159,45 +159,24 @@ export type MarkdownString4 = string;
  */
 export type MarkdownString5 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `player_choice`: The player chooses which roll option to use.
+ *   * `highest`: Use the roll option with the best/highest value.
+ *   * `lowest`: Use the roll option with the worst/lowest value.
+ *   * `all`: Use **every** roll option at once.
+ *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
  */
-export type MarkdownString6 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID2 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString7 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString8 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString9 = string;
-/**
- *   * `any`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the highest stat value.
- *   * `lowest`: Use the roll option with the lowest stat value.
- */
-export type ActionRollMethod = "any" | "highest" | "lowest";
-/**
- *   * `miss`: The score doesn't beat either challenge die.
- *   * `weak_hit`: The score is greater than one challenge die.
- *   * `strong_hit`: The score is greater than both challenge dice.
- */
-export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
+export type ActionRollMethod =
+  | "miss"
+  | "weak_hit"
+  | "strong_hit"
+  | "player_choice"
+  | "highest"
+  | "lowest"
+  | "all"
+  | "augment";
 export type ActionRollOption = {
   using: "stat" | "condition_meter" | "ref" | "attached_asset_meter" | "custom";
 } & (RollOptionStat | RollOptionConditionMeter | RollOptionRef | RollOptionAttachedAssetRef | RollOptionCustom);
@@ -213,11 +192,33 @@ export type AssetConditionMeterID = string;
 export type AssetConditionMeterIDWildcard = string;
 export type AssetOptionFieldIDWildcard = string;
 /**
+ *   * `miss`: The score doesn't beat either challenge die.
+ *   * `weak_hit`: The score is greater than one challenge die.
+ *   * `strong_hit`: The score is greater than both challenge dice.
+ */
+export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID2 = string;
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString10 = string;
+export type MarkdownString6 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString7 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString8 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -227,7 +228,34 @@ export type MoveID3 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
+export type MarkdownString9 = string;
+/**
+ * A localized plain text name or label.
+ */
+export type Label1 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString10 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
 export type MarkdownString11 = string;
+/**
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
+ */
+export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
+/**
+ * A move ID, for a standard move or a unique asset move
+ */
+export type MoveID4 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -241,46 +269,30 @@ export type MarkdownString12 = string;
  */
 export type MarkdownString13 = string;
 /**
- *   * `any`: The player chooses which roll option to use.
- */
-export type ProgressRollMethod = "any";
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString14 = string;
 /**
- * A localized plain text name or label.
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `player_choice`: The player chooses which roll option to use.
+ *   * `highest`: Use the roll option with the best/highest value.
+ *   * `lowest`: Use the roll option with the worst/lowest value.
+ *   * `all`: Use **every** roll option at once.
+ *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
  */
-export type Label1 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID4 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString15 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString16 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString17 = string;
-/**
- *   * `any`: The player chooses which roll option to use.
- *   * `all`: Use *every* roll option at once.
- */
-export type SpecialTrackRollMethod = "any" | "all";
+export type SpecialTrackRollMethod =
+  | "miss"
+  | "weak_hit"
+  | "strong_hit"
+  | "player_choice"
+  | "highest"
+  | "lowest"
+  | "all"
+  | "augment";
 /**
  * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
@@ -291,12 +303,6 @@ export type SpecialTrackRollMethod = "any" | "all";
  *
  */
 export type SpecialTrackType = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString18 = string;
 export type AssetTypeID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
@@ -342,7 +348,26 @@ export type MoveAugment = MoveActionRollAugment | MoveNoRollAugment | MoveProgre
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString19 = string;
+export type MarkdownString15 = string;
+/**
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `player_choice`: The player chooses which roll option to use.
+ *   * `highest`: Use the roll option with the best/highest value.
+ *   * `lowest`: Use the roll option with the worst/lowest value.
+ *   * `all`: Use **every** roll option at once.
+ *   * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.
+ */
+export type ActionRollMethod1 =
+  | "miss"
+  | "weak_hit"
+  | "strong_hit"
+  | "player_choice"
+  | "highest"
+  | "lowest"
+  | "all"
+  | "augment";
 /**
  * A move ID with wildcards
  */
@@ -352,19 +377,26 @@ export type MoveIDWithWildcard = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString20 = string;
+export type MarkdownString16 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString21 = string;
+export type MarkdownString17 = string;
+/**
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
+ */
+export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString22 = string;
+export type MarkdownString18 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -698,30 +730,37 @@ export interface MoveCategory {
     [k: string]: Move;
   };
 }
-export interface MoveNoRoll {
+/**
+ * A move that makes an action roll.
+ */
+export interface MoveActionRoll {
   name: Label;
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
   id: MoveID;
   replaces?: MoveID1;
-  trigger: {
-    text: MarkdownString3;
-  } & TriggerNoRoll;
-  text: MarkdownString6;
+  text: MarkdownString3;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
-  roll_type: "no_roll";
+  roll_type: "action_roll";
+  trigger: TriggerActionRoll;
+  outcomes: MoveOutcomes;
 }
-export interface TriggerNoRoll {
+export interface TriggerActionRoll {
   text: MarkdownString4;
-  conditions?: TriggerNoRollCondition[];
+  conditions: TriggerActionRollCondition[];
 }
-export interface TriggerNoRollCondition {
+export interface TriggerActionRollCondition {
   text?: MarkdownString5;
   by?: TriggerBy;
+  method: ActionRollMethod;
+  /**
+   * The options available when rolling with this trigger.
+   */
+  roll_options: ActionRollOption[];
 }
 /**
  * Information on who can trigger this trigger condition. Usually this is just the player, but some asset abilities can trigger from an ally's move.
@@ -729,40 +768,6 @@ export interface TriggerNoRollCondition {
 export interface TriggerBy {
   player: boolean;
   ally: boolean;
-}
-export interface MoveActionRoll {
-  name: Label;
-  canonical_name?: Label;
-  source: Source;
-  suggestions?: Suggestions;
-  id: MoveID;
-  replaces?: MoveID2;
-  trigger: {
-    text: MarkdownString7;
-  } & TriggerActionRoll;
-  text: MarkdownString10;
-  outcomes: MoveOutcomes;
-  /**
-   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
-   */
-  oracles?: OracleTableID[];
-  roll_type: "action_roll";
-}
-export interface TriggerActionRoll {
-  text: MarkdownString8;
-  conditions: TriggerActionRollCondition[];
-}
-export interface TriggerActionRollCondition {
-  text?: MarkdownString9;
-  by?: TriggerBy;
-  /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
-   */
-  method: ActionRollMethod | MoveOutcomeType;
-  /**
-   * The options available when rolling with this trigger.
-   */
-  roll_options: ActionRollOption[];
 }
 export interface RollOptionStat {
   using: "stat";
@@ -803,36 +808,60 @@ export interface MoveOutcome {
   text: MarkdownString;
   count_as?: MoveOutcomeType;
 }
-export interface MoveProgressRoll {
+/**
+ * A move that makes no action rolls or progress rolls.
+ */
+export interface MoveNoRoll {
+  name: Label;
+  canonical_name?: Label;
+  source: Source;
+  suggestions?: Suggestions;
+  id: MoveID;
+  replaces?: MoveID2;
+  text: MarkdownString6;
+  /**
+   * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
+   */
+  oracles?: OracleTableID[];
+  roll_type: "no_roll";
+  trigger: TriggerNoRoll;
+}
+export interface TriggerNoRoll {
+  text: MarkdownString7;
+  conditions?: TriggerNoRollCondition[];
+}
+export interface TriggerNoRollCondition {
+  text?: MarkdownString8;
+  by?: TriggerBy;
+}
+/**
+ * A progress move that rolls on a standard progress track type (defined by the move object).
+ */
+export interface ProgressMove {
   name: Label;
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
   id: MoveID;
   replaces?: MoveID3;
-  trigger: {
-    text: MarkdownString11;
-  } & TriggerProgressRoll;
-  text: MarkdownString14;
-  outcomes: MoveOutcomes;
+  text: MarkdownString9;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   roll_type: "progress_roll";
   track_label: Label1;
+  trigger: TriggerProgressRoll;
+  outcomes: MoveOutcomes;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString12;
+  text: MarkdownString10;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
-  text?: MarkdownString13;
+  text?: MarkdownString11;
   by?: TriggerBy;
-  /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
-   */
-  method: ProgressRollMethod | MoveOutcomeType;
+  method: ProgressRollMethod;
   /**
    * The options available when rolling with this trigger.
    */
@@ -841,35 +870,30 @@ export interface TriggerProgressRollCondition {
 export interface ProgressRollOption {
   using: "progress_track";
 }
-export interface MoveSpecialTrack {
+export interface ProgressMoveSpecialTrackRoll {
   name: Label;
   canonical_name?: Label;
   source: Source;
   suggestions?: Suggestions;
   id: MoveID;
   replaces?: MoveID4;
-  trigger: {
-    text: MarkdownString15;
-  } & TriggerSpecialTrack;
-  text: MarkdownString18;
-  outcomes: MoveOutcomes;
+  text: MarkdownString12;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   roll_type: "special_track";
+  trigger: TriggerSpecialTrack;
+  outcomes: MoveOutcomes;
 }
 export interface TriggerSpecialTrack {
-  text: MarkdownString16;
+  text: MarkdownString13;
   conditions: TriggerSpecialTrackCondition[];
 }
 export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString17;
+  text?: MarkdownString14;
   by?: TriggerBy;
-  /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
-   */
-  method: SpecialTrackRollMethod | MoveOutcomeType;
+  method: SpecialTrackRollMethod;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1138,12 +1162,12 @@ export interface MoveActionRollAugment {
   roll_type: "action_roll";
 }
 export interface TriggerActionRollConditionAugment {
-  text?: MarkdownString19;
+  text?: MarkdownString15;
   by?: TriggerBy;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method: "augment" | (ActionRollMethod | MoveOutcomeType);
+  method: "augment" | ActionRollMethod1;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */
@@ -1157,7 +1181,7 @@ export interface MoveNoRollAugment {
   roll_type: "no_roll";
 }
 export interface TriggerNoRollConditionAugment {
-  text?: MarkdownString20;
+  text?: MarkdownString16;
   by?: TriggerBy;
 }
 export interface MoveProgressRollAugment {
@@ -1168,12 +1192,12 @@ export interface MoveProgressRollAugment {
   roll_type: "progress_roll";
 }
 export interface TriggerProgressRollConditionAugment {
-  text?: MarkdownString21;
+  text?: MarkdownString17;
   by?: TriggerBy;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method: "augment" | (ProgressRollMethod | MoveOutcomeType);
+  method: "augment" | ProgressRollMethod1;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */
@@ -1190,12 +1214,12 @@ export interface MoveSpecialTrackAugment {
  * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
  */
 export interface TriggerSpecialTrackConditionAugment {
-  text?: MarkdownString22;
+  text?: MarkdownString18;
   by?: TriggerBy;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method: "augment" | (SpecialTrackRollMethod | MoveOutcomeType);
+  method: "augment" | SpecialTrackRollMethod;
   /**
    * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */

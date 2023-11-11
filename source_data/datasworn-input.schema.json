@@ -1204,8 +1204,17 @@
 			"title": "OracleTableStyle"
 		},
 		"ActionRollMethod": {
-			"enum": ["any", "highest", "lowest"],
-			"description": "  * `any`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the highest stat value.\n  * `lowest`: Use the roll option with the lowest stat value.",
+			"enum": [
+				"miss",
+				"weak_hit",
+				"strong_hit",
+				"player_choice",
+				"highest",
+				"lowest",
+				"all",
+				"augment"
+			],
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.",
 			"title": "ActionRollMethod"
 		},
 		"ActionRollOption": {
@@ -1249,19 +1258,13 @@
 			"title": "ActionRollOption"
 		},
 		"Move": {
-			"type": "object",
-			"properties": {
-				"roll_type": {
-					"default": "no_roll",
-					"$ref": "#/$defs/MoveRollType"
-				}
-			},
-			"oneOf": [
-				{
-					"$ref": "#/$defs/MoveNoRoll"
-				},
+			"title": "Move",
+			"anyOf": [
 				{
 					"$ref": "#/$defs/MoveActionRoll"
+				},
+				{
+					"$ref": "#/$defs/MoveNoRoll"
 				},
 				{
 					"$ref": "#/$defs/MoveProgressRoll"
@@ -1269,12 +1272,12 @@
 				{
 					"$ref": "#/$defs/MoveSpecialTrack"
 				}
-			],
-			"title": "Move",
-			"required": []
+			]
 		},
 		"MoveActionRoll": {
 			"isSourcedNode": true,
+			"title": "Move (action roll)",
+			"description": "A move that makes an action roll.",
 			"type": "object",
 			"properties": {
 				"name": {
@@ -1296,37 +1299,9 @@
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
 				},
-				"trigger": {
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"text": {
-									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-									"type": "string",
-									"$ref": "#/$defs/MarkdownString"
-								}
-							},
-							"required": ["text"]
-						},
-						{
-							"$ref": "#/$defs/TriggerActionRoll"
-						}
-					]
-				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
-				},
-				"outcomes": {
-					"allOf": [
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						}
-					]
 				},
 				"oracles": {
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1339,12 +1314,18 @@
 					"const": "action_roll",
 					"type": "string"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerActionRoll"
+				},
+				"outcomes": {
+					"$ref": "#/$defs/MoveOutcomes"
+				},
 				"_source": {
 					"macro": true,
 					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
+			"required": ["name", "text", "roll_type", "trigger", "outcomes"]
 		},
 		"MoveActionRollAugment": {
 			"type": "object",
@@ -1375,22 +1356,8 @@
 			"title": "MoveActionRollAugment"
 		},
 		"MoveAugment": {
-			"type": "object",
-			"properties": {
-				"roll_type": {
-					"default": "action_roll",
-					"$ref": "#/$defs/MoveRollType",
-					"description": "The roll type that this "
-				},
-				"augments": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/MoveIDWildcard"
-					},
-					"description": "Move IDs (which may be wildcarded) altered by this object. An undefined/null value indicates that *any* move can be altered by this augment, so long as it fulfills the roll type, trigger conditions, and so on."
-				}
-			},
-			"oneOf": [
+			"title": "Move Augment",
+			"anyOf": [
 				{
 					"$ref": "#/$defs/MoveActionRollAugment"
 				},
@@ -1403,64 +1370,7 @@
 				{
 					"$ref": "#/$defs/MoveSpecialTrackAugment"
 				}
-			],
-			"title": "Move Augment",
-			"required": []
-		},
-		"MoveBase": {
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/MoveID"
-				},
-				"name": {
-					"$ref": "#/$defs/Label"
-				},
-				"roll_type": {
-					"default": "no_roll",
-					"$ref": "#/$defs/MoveRollType"
-				},
-				"replaces": {
-					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
-					"$ref": "#/$defs/MoveID"
-				},
-				"trigger": {
-					"type": "object",
-					"properties": {
-						"text": {
-							"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-							"type": "string",
-							"$ref": "#/$defs/MarkdownString"
-						}
-					},
-					"required": ["text"]
-				},
-				"text": {
-					"description": "The complete rules text of the move.",
-					"$ref": "#/$defs/MarkdownString"
-				},
-				"outcomes": {
-					"$ref": "#/$defs/MoveOutcomes"
-				},
-				"oracles": {
-					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableID"
-					}
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
-				"_source": {
-					"macro": true,
-					"$ref": "#/$defs/SourceStub"
-				}
-			},
-			"required": ["name", "trigger", "text"]
+			]
 		},
 		"MoveCategory": {
 			"isSourcedNode": true,
@@ -1513,6 +1423,8 @@
 		},
 		"MoveNoRoll": {
 			"isSourcedNode": true,
+			"title": "Move (no roll)",
+			"description": "A move that makes no action rolls or progress rolls.",
 			"type": "object",
 			"properties": {
 				"name": {
@@ -1534,24 +1446,6 @@
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
 				},
-				"trigger": {
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"text": {
-									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-									"type": "string",
-									"$ref": "#/$defs/MarkdownString"
-								}
-							},
-							"required": ["text"]
-						},
-						{
-							"$ref": "#/$defs/TriggerNoRoll"
-						}
-					]
-				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
@@ -1567,12 +1461,15 @@
 					"const": "no_roll",
 					"type": "string"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerNoRoll"
+				},
 				"_source": {
 					"macro": true,
 					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "trigger", "text", "roll_type"]
+			"required": ["name", "text", "roll_type", "trigger"]
 		},
 		"MoveNoRollAugment": {
 			"type": "object",
@@ -1655,6 +1552,8 @@
 		},
 		"MoveProgressRoll": {
 			"isSourcedNode": true,
+			"title": "Progress Move",
+			"description": "A progress move that rolls on a standard progress track type (defined by the move object).",
 			"type": "object",
 			"properties": {
 				"name": {
@@ -1676,37 +1575,9 @@
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
 				},
-				"trigger": {
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"text": {
-									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-									"type": "string",
-									"$ref": "#/$defs/MarkdownString"
-								}
-							},
-							"required": ["text"]
-						},
-						{
-							"$ref": "#/$defs/TriggerProgressRoll"
-						}
-					]
-				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
-				},
-				"outcomes": {
-					"allOf": [
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						}
-					]
 				},
 				"oracles": {
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1732,6 +1603,12 @@
 					],
 					"$ref": "#/$defs/Label"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerProgressRoll"
+				},
+				"outcomes": {
+					"$ref": "#/$defs/MoveOutcomes"
+				},
 				"_source": {
 					"macro": true,
 					"$ref": "#/$defs/SourceStub"
@@ -1739,11 +1616,11 @@
 			},
 			"required": [
 				"name",
-				"trigger",
 				"text",
-				"outcomes",
 				"roll_type",
-				"track_label"
+				"track_label",
+				"trigger",
+				"outcomes"
 			]
 		},
 		"MoveProgressRollAugment": {
@@ -1781,6 +1658,7 @@
 		},
 		"MoveSpecialTrack": {
 			"isSourcedNode": true,
+			"title": "Progress Move (special track roll)",
 			"type": "object",
 			"properties": {
 				"name": {
@@ -1802,37 +1680,9 @@
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.",
 					"$ref": "#/$defs/MoveID"
 				},
-				"trigger": {
-					"allOf": [
-						{
-							"type": "object",
-							"properties": {
-								"text": {
-									"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.",
-									"type": "string",
-									"$ref": "#/$defs/MarkdownString"
-								}
-							},
-							"required": ["text"]
-						},
-						{
-							"$ref": "#/$defs/TriggerSpecialTrack"
-						}
-					]
-				},
 				"text": {
 					"description": "The complete rules text of the move.",
 					"$ref": "#/$defs/MarkdownString"
-				},
-				"outcomes": {
-					"allOf": [
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomes"
-						}
-					]
 				},
 				"oracles": {
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1845,12 +1695,18 @@
 					"const": "special_track",
 					"type": "string"
 				},
+				"trigger": {
+					"$ref": "#/$defs/TriggerSpecialTrack"
+				},
+				"outcomes": {
+					"$ref": "#/$defs/MoveOutcomes"
+				},
 				"_source": {
 					"macro": true,
 					"$ref": "#/$defs/SourceStub"
 				}
 			},
-			"required": ["name", "trigger", "text", "outcomes", "roll_type"]
+			"required": ["name", "text", "roll_type", "trigger", "outcomes"]
 		},
 		"MoveSpecialTrackAugment": {
 			"type": "object",
@@ -1881,8 +1737,8 @@
 			"title": "MoveSpecialTrackAugment"
 		},
 		"ProgressRollMethod": {
-			"enum": ["any"],
-			"description": "  * `any`: The player chooses which roll option to use.",
+			"enum": ["miss", "weak_hit", "strong_hit", "progress_roll"],
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `progress_roll`: Make a progress roll on a progress track associated with this move.",
 			"title": "ProgressRollMethod"
 		},
 		"ProgressRollOption": {
@@ -1980,8 +1836,17 @@
 			"title": "RollOptionStat"
 		},
 		"SpecialTrackRollMethod": {
-			"enum": ["any", "all"],
-			"description": "  * `any`: The player chooses which roll option to use.\n  * `all`: Use *every* roll option at once.",
+			"enum": [
+				"miss",
+				"weak_hit",
+				"strong_hit",
+				"player_choice",
+				"highest",
+				"lowest",
+				"all",
+				"augment"
+			],
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `augment`: The roll options can't be used alone; instead, they can be used to augment existing roll options. The augmented option must be able to meet any requirements of these augmentations, such as the  `roll_type` and the `using` value.",
 			"title": "SpecialTrackRollMethod"
 		},
 		"TriggerActionRoll": {
@@ -2027,16 +1892,8 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-					"anyOf": [
-						{
-							"$ref": "#/$defs/ActionRollMethod"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomeType"
-						}
-					]
+					"default": "player_choice",
+					"$ref": "#/$defs/ActionRollMethod"
 				},
 				"roll_options": {
 					"description": "The options available when rolling with this trigger.",
@@ -2068,16 +1925,8 @@
 							"type": "string"
 						},
 						{
-							"default": "any",
-							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-							"anyOf": [
-								{
-									"$ref": "#/$defs/ActionRollMethod"
-								},
-								{
-									"$ref": "#/$defs/MoveOutcomeType"
-								}
-							]
+							"default": "player_choice",
+							"$ref": "#/$defs/ActionRollMethod"
 						}
 					]
 				},
@@ -2230,16 +2079,8 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-					"anyOf": [
-						{
-							"$ref": "#/$defs/ProgressRollMethod"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomeType"
-						}
-					]
+					"default": "progress_roll",
+					"$ref": "#/$defs/ProgressRollMethod"
 				},
 				"roll_options": {
 					"description": "The options available when rolling with this trigger.",
@@ -2271,16 +2112,8 @@
 							"type": "string"
 						},
 						{
-							"default": "any",
-							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-							"anyOf": [
-								{
-									"$ref": "#/$defs/ProgressRollMethod"
-								},
-								{
-									"$ref": "#/$defs/MoveOutcomeType"
-								}
-							]
+							"default": "progress_roll",
+							"$ref": "#/$defs/ProgressRollMethod"
 						}
 					]
 				},
@@ -2347,16 +2180,7 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-					"anyOf": [
-						{
-							"$ref": "#/$defs/SpecialTrackRollMethod"
-						},
-						{
-							"$ref": "#/$defs/MoveOutcomeType"
-						}
-					]
+					"$ref": "#/$defs/SpecialTrackRollMethod"
 				},
 				"roll_options": {
 					"description": "The options available when rolling with this trigger.",
@@ -2366,7 +2190,7 @@
 					}
 				}
 			},
-			"required": ["roll_options"],
+			"required": ["method", "roll_options"],
 			"title": "TriggerSpecialTrackCondition"
 		},
 		"TriggerSpecialTrackConditionAugment": {
@@ -2389,16 +2213,7 @@
 							"type": "string"
 						},
 						{
-							"default": "any",
-							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
-							"anyOf": [
-								{
-									"$ref": "#/$defs/SpecialTrackRollMethod"
-								},
-								{
-									"$ref": "#/$defs/MoveOutcomeType"
-								}
-							]
+							"$ref": "#/$defs/SpecialTrackRollMethod"
 						}
 					]
 				},

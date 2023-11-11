@@ -16,7 +16,7 @@ _common:
       strong_hit: &RerollAnyDice.outcome
         reroll:
           text: Reroll any dice.
-          method: any
+          method: player_choice
       weak_hit: *RerollAnyDice.outcome
       miss: *RerollAnyDice.outcome
   - &Take1MomentumOnHit
@@ -140,7 +140,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To your Starship
-                      method: any
+                      method: player_choice
                       roll_options:
                         - stat: heart
                 outcomes:
@@ -415,7 +415,7 @@ assets:
                 trigger:
                   text: When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - using: attached_asset_meter
                 text: *move:Asset.Internalrefit
@@ -578,7 +578,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By talking through a situation with the overseer AI
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: attached_asset_meter
                 outcomes: *Take1MomentumOnHit.outcomes
@@ -601,7 +601,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By handing over control to the AI in an emergency, or to summon the vehicle remotely within a hazardous situation
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: attached_asset_meter
                 outcomes: *Take1MomentumOnHit.outcomes
@@ -787,7 +787,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Against an ambush
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: attached_asset_meter
                 outcomes: &Sensor_Array.3
@@ -802,7 +802,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To detect a hidden threat
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: attached_asset_meter
                 outcomes: *Sensor_Array.3
@@ -820,7 +820,7 @@ assets:
                 trigger:
                   text: When you raise your shields...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: wits
                         - using: attached_asset_meter
@@ -850,7 +850,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By letting your shields take the blow
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/module/shields/condition_meter
@@ -929,7 +929,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike true)
-                      method: any
+                      method: player_choice
                       roll_options:
                         - stat: shadow
                 <<: *RerollAnyDice
@@ -945,7 +945,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You are poised to [Strike](id:starforged/moves/combat/strike) from hiding (and choose to strike hard)
-                      method: any
+                      method: player_choice
                       roll_options:
                         - stat: shadow
                 <<: *MarkProgressOnHit
@@ -1223,7 +1223,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By taking a hit or crashing through an obstacle
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/rover/condition_meter
@@ -1260,7 +1260,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By maneuvering your pod through a hazardous or obstructed area
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/service_pod/condition_meter
@@ -1331,7 +1331,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Rely on the skiff's simple durability
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/skiff/condition_meter
@@ -1347,7 +1347,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By firing the skiff's cannon
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/skiff/condition_meter
@@ -1376,7 +1376,7 @@ assets:
                 trigger:
                   conditions:
                     - text: In your snub fighter
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/support_vehicle/snub_fighter/condition_meter
@@ -1460,7 +1460,7 @@ assets:
                 trigger:
                   conditions:
                     - text: While piloting a vehicle
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: '*/assets/*/*/condition_meter'
@@ -1486,7 +1486,7 @@ assets:
                 trigger:
                   text: When you replenish your ammo by crafting projectiles...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: wits
                 text: *move:Asset.Archer
@@ -1510,7 +1510,7 @@ assets:
                 roll_type: action_roll
                 trigger:
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/path/archer/condition_meter
@@ -1635,7 +1635,7 @@ assets:
                 trigger:
                   text: When you create or perform a significant artistic work as a public memorial or tribute...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       text: Roll +the stat which best represents the work’s nature
                       roll_options:
                         - stat: edge
@@ -2042,7 +2042,7 @@ assets:
                 trigger:
                   conditions:
                     - text: During a courier mission
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/path/courier/condition_meter
@@ -2134,7 +2134,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By calling on your god, power, or entity for guidance or aid
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/path/devotant/options/linked_stat
@@ -2159,7 +2159,7 @@ assets:
                 trigger:
                   conditions:
                     - text: In service to your faith
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/path/devotant/options/linked_stat
@@ -2187,7 +2187,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Through contemplation or sharing of your faith
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/path/devotant/options/linked_stat
@@ -2265,7 +2265,7 @@ assets:
                 trigger:
                   text: When you read the intent, emotions, or memories of a nearby being...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: heart
                 text: *move:Asset.Empath
@@ -2298,7 +2298,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To soothe a being's distress by creating an empathic bond
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: spirit
@@ -2411,7 +2411,7 @@ assets:
                 trigger:
                   text: When you rest and meditate to gather fiery energy...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: spirit
@@ -2932,7 +2932,7 @@ assets:
                 trigger:
                   text: When you loop back to a linked moment in time...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       # time_gap
                       roll_options:
                         - using: custom
@@ -3162,7 +3162,7 @@ assets:
                 outcomes:
                   strong_hit: &Naturalist.2
                     reroll:
-                      method: any
+                      method: player_choice
                       text: You may reroll any dice, but must [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).
                   weak_hit: *Naturalist.2
                   miss: *Naturalist.2
@@ -3292,7 +3292,7 @@ assets:
                 trigger:
                   text: When you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) and your supply is reduced to 0...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: wits
                 text: *move:Asset.Outcast
@@ -3397,7 +3397,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To search out a new contact
-                      method: any
+                      method: player_choice
                       roll_options:
                         - stat: shadow
                 outcomes:
@@ -3436,7 +3436,7 @@ assets:
                 trigger:
                   conditions:
                     - text: When you focus or meditate to [Gather Information](id:starforged/moves/adventure/gather_information) about a place, being, or situation (in person or remotely)
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: spirit
@@ -3508,7 +3508,7 @@ assets:
                 trigger:
                   text: When you expand your veil to immerse your surroundings in darkness...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: shadow
                 text: *move:Asset.Shade
@@ -3624,7 +3624,7 @@ assets:
                 trigger:
                   text: When you target a minor foe from a distance (outside of a fight)...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: wits
                 text: *move:Asset.Sniper
@@ -3647,7 +3647,7 @@ assets:
                 trigger:
                   conditions:
                     - text: From a distance with time enough to line up your shot
-                      method: any
+                      method: player_choice
                       roll_options:
                         - stat: wits
                 outcomes:
@@ -3734,7 +3734,7 @@ assets:
                     - roll_options:
                         - using: condition_meter
                           condition_meter: supply
-                      method: any
+                      method: player_choice
                 outcomes:
                   strong_hit: &Trader.1
                     text: '[Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).'
@@ -3807,7 +3807,7 @@ assets:
                       text: A surprising new aspect of your heritage is revealed; take +2 momentum and mark 2 ticks on your bonds legacy track.
                     reroll: &Vestige.1.Reroll
                       text: Visions of your heritage give you the strength to carry on. Envision how this manifests, and reroll any dice.
-                      method: any
+                      method: player_choice
                   weak_hit: &Vestige.1
                     reroll: *Vestige.1.Reroll
                   miss: *Vestige.1
@@ -3998,7 +3998,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By suiting up and gathering your gear for a perilous encounter or mission
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: condition_meter
                           condition_meter: supply
@@ -4049,7 +4049,7 @@ assets:
                 trigger:
                   conditions:
                     - text: While riding your banshee
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/banshee/condition_meter
@@ -4130,7 +4130,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Using the threat of violence while the bot brings its weapons to bear
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/combat_bot/condition_meter
@@ -4149,7 +4149,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Once per fight, by using the combat bot to draw fire or create a diversion
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/combat_bot/condition_meter
@@ -4276,7 +4276,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By sending the rockhorn to directly attack a foe or smash an obstacle
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/rockhorn/condition_meter
@@ -4290,7 +4290,7 @@ assets:
                 trigger:
                   conditions:
                     - text: For the rockhorn
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/rockhorn/condition_meter
@@ -4378,7 +4378,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Your sidekick acts to get you out of a tough spot
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/sidekick/condition_meter
@@ -4452,7 +4452,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Once per expedition, by sending the survey bot to scout ahead
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/survey_bot/condition_meter
@@ -4472,7 +4472,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Aided by the survey bot's sensors
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/survey_bot/condition_meter
@@ -4483,7 +4483,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To detect a threat
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/survey_bot/condition_meter
@@ -4517,7 +4517,7 @@ assets:
                 outcomes:
                   strong_hit: &Symbiote.2
                     reroll:
-                      method: any
+                      method: player_choice
                       text: When you make a move and heed the symbiote's guidance (decide after rolling), you may reroll any dice. Then, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).
                   weak_hit: *Symbiote.2
                   miss: *Symbiote.2
@@ -4545,7 +4545,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/utility_bot/condition_meter
@@ -4571,7 +4571,7 @@ assets:
                   miss:
                     reroll:
                       text: The bot reveals an alternative approach which will take extra time; you may reroll any dice, but first [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-2).
-                      method: any
+                      method: player_choice
           - text: |-
               When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear) to see if the bot has a specific tool or technique available, roll +its health and take +1 momentum on a hit.
             augment_moves:
@@ -4581,7 +4581,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To see if your utility bot has a specific tool or technique available
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/utility_bot/condition_meter
@@ -4617,7 +4617,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/voidglider/condition_meter
@@ -4628,7 +4628,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
-                      method: any
+                      method: player_choice
                       roll_options:
                         - using: ref
                           ref: starforged/assets/companion/voidglider/condition_meter
@@ -4944,7 +4944,7 @@ assets:
                     - text: By studying a place where death left its mark
                       roll_options:
                         - stat: heart
-                      method: any
+                      method: player_choice
                 outcomes:
                   <<: *Take1MomentumOnHit.outcomes
                   strong_hit:
@@ -4973,7 +4973,7 @@ assets:
                     text: Take +1 momentum.
                     reroll: &Survivor.1
                       text: You may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) before rolling as you attempt to find focus or calm. If you do, reroll any dice.
-                      method: any
+                      method: player_choice
                   weak_hit:
                     reroll: *Survivor.1
                   miss:
@@ -5006,7 +5006,7 @@ assets:
                 trigger:
                   text: When you seek a safe location in a remote environment...
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - using: discoveries_legacy
                 text: *move:Asset.Vanguard
@@ -5044,7 +5044,7 @@ assets:
                 roll_type: action_roll
                 trigger:
                   conditions:
-                    - method: any
+                    - method: player_choice
                       roll_options:
                         - stat: wits
                 outcomes: *Take1MomentumOnHit.outcomes

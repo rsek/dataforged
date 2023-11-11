@@ -3,7 +3,13 @@ import {
 	type Static,
 	JsonEnumFromRecord
 } from '../../../typebox/index.js'
-import { MoveOutcomes, type MoveRollType, MoveOutcomeType } from './common.js'
+import {
+	MoveOutcomes,
+	type MoveRollType,
+	MoveOutcomeType,
+	ProgressRollMethod,
+	SpecialTrackRollMethod
+} from './common.js'
 import {
 	composeMoveType,
 	toTriggerAugment,
@@ -23,25 +29,10 @@ export const ProgressRollOption = Type.Object(
 )
 export type ProgressRollOption = Static<typeof ProgressRollOption>
 
-export const ProgressRollMethod = JsonEnumFromRecord(
-	{
-		any: 'The player chooses which roll option to use.'
-	},
-	{ $id: '#/$defs/ProgressRollMethod' }
-)
-export type ProgressRollMethod = Static<typeof ProgressRollMethod>
-
 export const TriggerProgressRollCondition = composeTriggerRollCondition(
 	{
 		optionSchema: Type.Ref(ProgressRollOption),
-		method: Type.Union(
-			[Type.Ref(ProgressRollMethod), Type.Ref(MoveOutcomeType)],
-			{
-				default: 'any',
-				description:
-					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-			}
-		)
+		method: Type.Ref(ProgressRollMethod, { default: 'progress_roll' })
 	},
 	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
@@ -58,33 +49,32 @@ export const TriggerProgressRoll = composeTrigger(
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
 export const MoveProgressRoll = composeMoveType(
-	Type.Object(
-		{
-			roll_type:
-				Type.Literal<Extract<MoveRollType, 'progress_roll'>>('progress_roll'),
-			// is_progress_move: Type.Literal(true, { default: true }),
-			track_label: Type.Ref(Localize.Label, {
-				description:
-					'A category label for progress tracks associated with this move.',
-				examples: [
-					'Vow',
-					'Journey',
-					'Combat',
-					'Scene Challenge',
-					'Expedition',
-					'Connection',
-					'Delve'
-				]
-			}),
-			trigger: Type.Ref(TriggerProgressRoll),
-			outcomes: Type.Ref(MoveOutcomes)
-		},
-		{
-			title: 'Progress Move',
+	Type.Object({
+		roll_type:
+			Type.Literal<Extract<MoveRollType, 'progress_roll'>>('progress_roll'),
+		// is_progress_move: Type.Literal(true, { default: true }),
+		track_label: Type.Ref(Localize.Label, {
 			description:
-				'A progress move that rolls on a standard progress track type (defined by the move object).'
-		}
-	)
+				'A category label for progress tracks associated with this move.',
+			examples: [
+				'Vow',
+				'Journey',
+				'Combat',
+				'Scene Challenge',
+				'Expedition',
+				'Connection',
+				'Delve'
+			]
+		}),
+		trigger: Type.Ref(TriggerProgressRoll),
+		outcomes: Type.Ref(MoveOutcomes)
+	}),
+	{
+		title: 'Progress Move',
+		description:
+			'A progress move that rolls on a standard progress track type (defined by the move object).',
+		$id: '#/$defs/MoveProgressRoll'
+	}
 )
 
 export type MoveProgressRoll = Static<typeof MoveProgressRoll>
@@ -130,27 +120,10 @@ export type TriggerSpecialTrackConditionOption = Static<
 	typeof TriggerSpecialTrackConditionOption
 >
 
-export const SpecialTrackRollMethod = JsonEnumFromRecord(
-	{
-		any: 'The player chooses which roll option to use.',
-		all: 'Use *every* roll option at once.'
-	},
-	{ $id: '#/$defs/SpecialTrackRollMethod' }
-)
-
-export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
-
 export const TriggerSpecialTrackCondition = composeTriggerRollCondition(
 	{
 		optionSchema: Type.Ref(TriggerSpecialTrackConditionOption),
-		method: Type.Union(
-			[Type.Ref(SpecialTrackRollMethod), Type.Ref(MoveOutcomeType)],
-			{
-				default: 'any',
-				description:
-					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-			}
-		)
+		method: Type.Ref(SpecialTrackRollMethod)
 	},
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
@@ -166,16 +139,17 @@ export const TriggerSpecialTrack = composeTrigger(
 export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 
 export const MoveSpecialTrack = composeMoveType(
-	Type.Object(
-		{
-			roll_type:
-				Type.Literal<Extract<MoveRollType, 'special_track'>>('special_track'),
-			// is_progress_move: Type.Literal(true, { default: true }),
-			trigger: Type.Ref(TriggerSpecialTrack),
-			outcomes: Type.Ref(MoveOutcomes)
-		},
-		{ title: 'Progress Move (special track roll)' }
-	)
+	Type.Object({
+		roll_type:
+			Type.Literal<Extract<MoveRollType, 'special_track'>>('special_track'),
+		// is_progress_move: Type.Literal(true, { default: true }),
+		trigger: Type.Ref(TriggerSpecialTrack),
+		outcomes: Type.Ref(MoveOutcomes)
+	}),
+	{
+		title: 'Progress Move (special track roll)',
+		$id: '#/$defs/MoveSpecialTrack'
+	}
 )
 
 export type MoveSpecialTrack = Static<typeof MoveSpecialTrack>

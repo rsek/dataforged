@@ -95,14 +95,7 @@ export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = composeTriggerRollCondition(
 	{
-		method: Type.Union(
-			[Type.Ref(ActionRollMethod), Type.Ref(MoveOutcomeType)],
-			{
-				default: 'any',
-				description:
-					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-			}
-		),
+		method: Type.Ref(ActionRollMethod, { default: 'player_choice' }),
 		optionSchema: Type.Ref(ActionRollOption)
 	},
 	{ $id: '#/$defs/TriggerActionRollCondition' }
@@ -117,19 +110,18 @@ export const TriggerActionRoll = composeTrigger(TriggerActionRollCondition, {
 export type TriggerActionRoll = Static<typeof TriggerActionRoll>
 
 export const MoveActionRoll = composeMoveType(
-	Type.Object(
-		{
-			roll_type:
-				Type.Literal<Extract<MoveRollType, 'action_roll'>>('action_roll'),
-			// is_progress_move: Type.Literal(false, { default: false }),
-			trigger: Type.Ref(TriggerActionRoll),
-			outcomes: Type.Ref(MoveOutcomes)
-		},
-		{
-			title: 'Move (action roll)',
-			description: 'A move that makes an action roll.'
-		}
-	)
+	Type.Object({
+		roll_type:
+			Type.Literal<Extract<MoveRollType, 'action_roll'>>('action_roll'),
+		// is_progress_move: Type.Literal(false, { default: false }),
+		trigger: Type.Ref(TriggerActionRoll),
+		outcomes: Type.Ref(MoveOutcomes)
+	}),
+	{
+		title: 'Move (action roll)',
+		description: 'A move that makes an action roll.',
+		$id: '#/$defs/MoveActionRoll'
+	}
 )
 
 export type MoveActionRoll = Static<typeof MoveActionRoll>
@@ -182,20 +174,20 @@ export type TriggerNoRoll = Static<typeof TriggerNoRoll>
 export const MoveNoRoll = SourcedNode(
 	Type.Omit(
 		composeMoveType(
-			Type.Object(
-				{
-					roll_type: Type.Literal<Extract<MoveRollType, 'no_roll'>>('no_roll'),
-					// is_progress_move: Type.Literal(false, { default: false }),
-					trigger: Type.Ref(TriggerNoRoll)
-				},
-				{
-					title: 'Move (no roll)',
-					no_roll: 'A move that makes no action rolls or progress rolls.'
-				}
-			)
+			Type.Object({
+				roll_type: Type.Literal<Extract<MoveRollType, 'no_roll'>>('no_roll'),
+				// is_progress_move: Type.Literal(false, { default: false }),
+				trigger: Type.Ref(TriggerNoRoll)
+			})
 		),
 		['outcomes']
-	)
+	),
+
+	{
+		title: 'Move (no roll)',
+		$id: '#/$defs/MoveNoRoll',
+		description: 'A move that makes no action rolls or progress rolls.'
+	}
 )
 export type MoveNoRoll = Static<typeof MoveNoRoll>
 

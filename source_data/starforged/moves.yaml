@@ -1664,7 +1664,8 @@ moves:
         trigger:
           text: When your command vehicle is destroyed or irrevocably lost...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: bonds_legacy
         text: |-
           **When your command vehicle is destroyed or irrevocably lost**, you must discard the asset, along with any modules and docked support vehicles.
