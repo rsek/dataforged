@@ -352,7 +352,7 @@ export const AssetAbility = Type.Object(
 		enhance_asset: Type.Optional(
 			AssetEnhanceSelf(Asset, ['abilities', 'controls'], {
 				description:
-					'Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
+					'Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
 				releaseStage: 'unstable'
 			})
 		),

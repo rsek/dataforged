@@ -70,7 +70,7 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
 	[RollMethod.All]: 'Use **every** roll option at once.',
 	[RollMethod.Enhance]:
-		"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value."
+		"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions)."
 }
 
 export const ActionRollMethod = JsonEnumFromRecord(

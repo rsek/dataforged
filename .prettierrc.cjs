@@ -1,10 +1,10 @@
 /** @typedef {'lexical'|'numeric'|'reverseLexical'|'reverseNumeric'} SortingAlgorithm  */
 
 const identifierKeys = /^(id)$/
-const enabledKeys = /^(enabled)$/
 const labelKeys = /^(name|label)$/
 const appearanceKeys = /^(color|icon|images)$/
 const categoryKeys = /^(([a-z]+_)?type|nature|rank|track_label)$/
+const enabledKeys = /^(enabled)$/
 const optionsKeys = /^(options)$/
 const usageKeys = /^(count_as_impact|shared|attachments|using|trigger)$/
 const shortTextKeys = /^(summary|requirement|result)$/

@@ -22,6 +22,7 @@ import { DICT_KEY } from './regex.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
 import * as Utils from './utils.js'
+import { Clone } from '@sinclair/typebox/value/clone'
 
 export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
@@ -276,10 +277,15 @@ export type RecursiveCollection<T> = Collection<T> & {
 export function NodeEnhanceSelf<
 	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
 >(t: T, omitKeys: Array<keyof Static<T>> = [], options: SchemaOptions = {}) {
-	return Utils.DeepPartial(
-		Type.Omit(t, [...omitKeys, 'id', 'source', 'name']),
-		options
-	) as TObject
+	const base = Clone(Type.Omit(t, [...omitKeys, 'id', 'source', 'name']))
+
+	// strip defaults, they just get in the way of enhancements
+	for (const k in base.properties) {
+		const v = base.properties[k]
+		if (typeof v?.default !== 'undefined') delete v.default
+	}
+
+	return Utils.DeepPartial(base, options) as TObject
 }
 
 /**

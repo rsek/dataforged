@@ -75,7 +75,7 @@ export type MarkdownString1 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
  */
 export type ActionRollMethod =
   | "miss"
@@ -133,7 +133,7 @@ export type MarkdownString4 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
  */
 export type SpecialTrackRollMethod =
   | "miss"
@@ -186,7 +186,7 @@ export type MarkdownString6 = string;
  *   * `highest`: Use the roll option with the best/highest value.
  *   * `lowest`: Use the roll option with the worst/lowest value.
  *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
  */
 export type ActionRollMethod1 =
   | "miss"
@@ -447,7 +447,7 @@ export type OracleCollectionStyle = "multi_table";
 export type OracleCollectionID2 = string;
 export type RarityID = string;
 /**
- * The asset enhanced by this rarity.
+ * The asset augmented by this rarity.
  */
 export type AssetID1 = string;
 export type DomainFeatureRowID = string;
@@ -680,7 +680,7 @@ export interface AssetAbility {
     [k: string]: AssetAbilityControlField;
   };
   /**
-   * Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
+   * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
    */
   enhance_asset?: {
     attachments?: AssetAttachment;

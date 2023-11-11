@@ -4,7 +4,7 @@
 	"title": "Datasworn v2.0.0-dev",
 	"$defs": {
 		"ActionRollMethod": {
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.",
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).",
 			"title": "ActionRollMethod",
 			"enum": [
 				"miss",
@@ -187,20 +187,18 @@
 				},
 				"enhance_asset": {
 					"type": "object",
-					"description": "Describes enhanceations made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
+					"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
 					"properties": {
 						"attachments": {
 							"$ref": "#/$defs/AssetAttachment"
 						},
 						"count_as_impact": {
 							"type": "boolean",
-							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
-							"default": false
+							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
 						},
 						"shared": {
 							"type": "boolean",
-							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-							"default": false
+							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 						},
 						"condition_meter": {
 							"$ref": "#/$defs/AssetConditionMeterEnhance"
@@ -3244,7 +3242,7 @@
 					"$ref": "#/$defs/Source"
 				},
 				"asset": {
-					"description": "The asset enhanced by this rarity.",
+					"description": "The asset augmented by this rarity.",
 					"$ref": "#/$defs/AssetID"
 				},
 				"canonical_name": {
@@ -3377,13 +3375,11 @@
 						},
 						"count_as_impact": {
 							"type": "boolean",
-							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
-							"default": false
+							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
 						},
 						"shared": {
 							"type": "boolean",
-							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-							"default": false
+							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 						}
 					}
 				},
@@ -3409,13 +3405,11 @@
 										},
 										"count_as_impact": {
 											"type": "boolean",
-											"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
-											"default": false
+											"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
 										},
 										"shared": {
 											"type": "boolean",
-											"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-											"default": false
+											"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 										}
 									}
 								},
@@ -3550,7 +3544,7 @@
 			"required": ["title", "authors", "date", "url", "license"]
 		},
 		"SpecialTrackRollMethod": {
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanceed option must be able to meet any requirements of these enhanceations, such as the  `roll_type` and the `using` value.",
+			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).",
 			"title": "SpecialTrackRollMethod",
 			"enum": [
 				"miss",
