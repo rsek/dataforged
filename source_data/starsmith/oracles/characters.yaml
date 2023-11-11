@@ -621,10 +621,11 @@ oracles:
             result: Thief
           - min: 93
             max: 95
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: &ActionTheme
+              result: '[Action + Theme](starforged/oracles/core/action)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                - oracle: starforged/oracles/core/theme
           - min: 96
             max: 100
             result: Roll twice
@@ -770,10 +771,7 @@ oracles:
             result: Xenozoologist
           - min: 193
             max: 195
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: *ActionTheme
           - min: 196
             max: 200
             result: Roll twice
@@ -919,10 +917,7 @@ oracles:
             result: Zero-Grav Welder
           - min: 293
             max: 295
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: *ActionTheme
           - min: 296
             max: 300
             result: Roll twice
@@ -1048,10 +1043,7 @@ oracles:
             result: Undermine a relationship
           - min: 81
             max: 90
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: *ActionTheme
           - min: 91
             max: 100
             result: Roll twice
@@ -1173,10 +1165,7 @@ oracles:
             result: Unite settlements
           - min: 181
             max: 190
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: *ActionTheme
           - min: 191
             max: 200
             result: Roll twice
@@ -1298,10 +1287,7 @@ oracles:
             result: Win affection
           - min: 281
             max: 290
-            result: '[Action + Theme](starforged/oracles/core/action)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-              - oracle: starforged/oracles/core/theme
+            <<: *ActionTheme
           - min: 291
             max: 300
             result: Roll twice

@@ -22,8 +22,11 @@ oracles:
           template:
             name: Faction Name Template
             source: *CollectionSource
+            _i18n:
+              template:
+                result:
+                  part_of_speech: proper_noun
             # content:
-            #   part_of_speech: [name, proper noun]
             #   tags: [template]
             description: |-
               To generate a faction name, first roll or choose the name template. Then, follow the structure of the template to build the name from individual tables. If you’ve already set the faction type, picking from the tables (instead of rolling) will likely provide a more appropriate result. For example, “Silver Jackals” is a fitting name for a criminal organization. The “Empire of the Undying Suns” is a less apt name for that gang—unless their leader is prone to delusions of grandeur. In short, choosing a name will give you more control. Rolling might give you a result that doesn’t square with known aspects, but those contradictions may prove inspiring.
@@ -53,8 +56,11 @@ oracles:
           legacy:
             name: Legacy
             source: *CollectionSource
+            _i18n:
+              result:
+                part_of_speech: adjective
             # content:
-            #   part_of_speech: [adjective, proper noun fragment]
+            #   part_of_speech: [proper noun fragment]
             table:
               - min: 1
                 max: 2
@@ -211,8 +217,11 @@ oracles:
             source:
               <<: *Source
               page: 345
+            _i18n:
+              result:
+                part_of_speech: common_noun
             # content:
-            #   part_of_speech: [noun, proper noun fragment]
+            #   part_of_speech: [proper noun fragment]
             #   tags: [organization, actor]
             table:
               - min: 1
@@ -295,8 +304,11 @@ oracles:
             source:
               <<: *Source
               page: 345
+            _i18n:
+              result:
+                part_of_speech: common_noun
             # content:
-            #   part_of_speech: [common noun, plural, proper noun fragment]
+            #   part_of_speech: [plural, proper noun fragment]
             table:
               - min: 1
                 max: 2
@@ -456,8 +468,6 @@ oracles:
           page: 340
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [noun]
         table:
           - min: 1
             max: 40
@@ -486,8 +496,9 @@ oracles:
         source:
           <<: *Source
           page: 340
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 10
@@ -532,6 +543,9 @@ oracles:
         source:
           <<: *Source
           page: 341
+        _i18n:
+          result:
+            part_of_speech: common_noun
         # usage:
         #   max_rolls: 3
         #   initial: true
@@ -539,7 +553,6 @@ oracles:
         #     attributes:
         #       faction_type: [dominion]
         # content:
-        #   part_of_speech: [noun]
         #   tags: [abstract noun]
         table:
           - min: 1
@@ -706,8 +719,10 @@ oracles:
         #     attributes:
         #       faction_type: [guild]
         # content:
-        #   part_of_speech: [noun, plural]
         #   tags: [actor]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         table:
           - min: 1
             max: 5
@@ -784,8 +799,10 @@ oracles:
         #     attributes:
         #       faction_type: [fringe_group]
         # content:
-        #   part_of_speech: [noun, plural]
         #   tags: [actor]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         table:
           - min: 1
             max: 5
@@ -948,12 +965,13 @@ oracles:
             result: Usurp leadership within a rival faction
           - min: 97
             max: 100
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: &ActionTheme
+              result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                  auto: true
+                - oracle: starforged/oracles/core/theme
+                  auto: true
       relationships:
         name: Faction Relationships
         source:
@@ -1162,12 +1180,7 @@ oracles:
             result: Work or environment causes mutations
           - min: 97
             max: 100
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: *ActionTheme
       rumors:
         name: Faction Rumors
         source:
@@ -1279,9 +1292,4 @@ oracles:
             result: Vulnerable to attack or aggression
           - min: 97
             max: 100
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: *ActionTheme

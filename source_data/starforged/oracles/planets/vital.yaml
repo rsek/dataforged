@@ -156,12 +156,13 @@ oracles:
                 result: Narrow livable band
               - min: 89
                 max: 98
-                result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls: &DF.rolls
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
               - min: 99
                 max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
@@ -210,8 +211,7 @@ oracles:
                 result: Towering geological formations
               - min: 92
                 max: 98
-                result: *DF.result
-                rolls: *DF.rolls
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'
@@ -240,8 +240,9 @@ oracles:
           diversity:
             name: Diversity
             source: *CollectionSource
-            # content:
-            #   part_of_speech: [adjective]
+            i18n:
+              result:
+                part_of_speech: adjective
             summary: To learn the major terrain and environment types found on a Vital World, first roll on the diversity table. Then, roll the indicated number of times on the biomes table. If you get a duplicate result, roll again, or envision that landscape as more dominant, unusual, or dramatic.
             table:
               - min: 1
@@ -271,8 +272,9 @@ oracles:
           biomes:
             name: Biomes
             source: *CollectionSource
-            # content:
-            #   part_of_speech: [noun, common noun]
+            i18n:
+              result:
+                part_of_speech: common_noun
             table:
               - min: 1
                 max: 5

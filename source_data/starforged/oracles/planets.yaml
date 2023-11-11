@@ -23,8 +23,6 @@ oracles:
         suggestions:
           oracles:
             - starforged/oracles/core/descriptor
-        # content:
-        #   part_of_speech: [noun]
         summary: This oracle provides a simple method of generating a planetary class. If this is enough information, stop there and envision the world as appropriate to its type. For a bit more detail, make a roll on the Descriptor oracle and envision how that aspect defines the nature of the planet or a specific planetside location.
         table:
           - min: 1
@@ -233,18 +231,20 @@ oracles:
                 result: Wreckage or ruins portend a new threat
               - min: 97
                 max: 99
-                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-                rolls:
-                  - oracle: starforged/oracles/core/action
-                    auto: true
-                  - oracle: starforged/oracles/core/theme
-                    auto: true
+                <<: &ActionTheme
+                  result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
+                  rolls:
+                    - oracle: starforged/oracles/core/action
+                      auto: true
+                    - oracle: starforged/oracles/core/theme
+                      auto: true
               - min: 100
                 max: 100
-                result: Roll twice
-                rolls:
-                  - times: 2
-                    auto: true
+                <<: &RollTwice
+                  result: Roll twice
+                  rolls:
+                    - times: 2
+                      auto: true
           lifeless:
             name: Lifeless
             source: *CollectionSource
@@ -353,18 +353,10 @@ oracles:
                 result: Wreckage or ruins portend a new threat
               - min: 96
                 max: 99
-                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-                rolls:
-                  - oracle: starforged/oracles/core/action
-                    auto: true
-                  - oracle: starforged/oracles/core/theme
-                    auto: true
+                <<: *ActionTheme
               - min: 100
                 max: 100
-                result: Roll twice
-                rolls:
-                  - times: 2
-                    auto: true
+                <<: *RollTwice
       opportunity:
         name: Planetside Opportunity
         source: &CollectionSource

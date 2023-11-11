@@ -21,8 +21,9 @@ oracles:
         source:
           <<: *Source
           page: 336
-        # content:
-        #   part_of_speech: [noun]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         summary: |-
           Choose the closest match for your location. Or roll to identify the primary habitat of a creature.
         table:
@@ -68,8 +69,9 @@ oracles:
           page: 336
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 3
@@ -106,10 +108,11 @@ oracles:
         source:
           <<: *Source
           page: 336
-        # content:
-        #   part_of_speech: [adjective]
         # usage:
         #   initial: true
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 89
@@ -294,8 +297,9 @@ oracles:
           page: 338
         summary: |-
           Roll once on the Encountered Behavior table to define this creature’s motivation and frame how the encounter begins.
-        # content:
-        #   part_of_speech: [noun, common noun]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         # usage:
         #   initial: true
         table:

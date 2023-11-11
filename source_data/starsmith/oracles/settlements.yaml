@@ -107,10 +107,13 @@ oracles:
             result: Within or near [Precursor Vault](starforged/oracles/vaults)
           - min: 91
             max: 100
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                  auto: true
+                - oracle: starforged/oracles/core/focus
+                  auto: true
           - min: 101
             max: 104
             result: Mix of cultural architecture
@@ -173,10 +176,7 @@ oracles:
             result: Within or near [Precursor Vault](starforged/oracles/vaults)
           - min: 191
             max: 200
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
           - min: 201
             max: 204
             result: Rounded or curved architecture
@@ -239,10 +239,7 @@ oracles:
             result: Within or near [Precursor Vault](starforged/oracles/vaults)
           - min: 291
             max: 300
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
       initial_contact:
         _replace: starforged/oracles/settlements/initial_contact
         dice: 1d300

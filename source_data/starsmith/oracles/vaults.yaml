@@ -406,10 +406,13 @@ oracles:
             result: Surrounded by destruction
           - min: 96
             max: 100
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                  auto: true
+                - oracle: starforged/oracles/core/focus
+                  auto: true
           - min: 101
             max: 103
             result: Artificial gravity
@@ -499,10 +502,7 @@ oracles:
             result: Teleporting to new locations
           - min: 196
             max: 200
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
           - min: 201
             max: 203
             result: Aura of cognition suppression or memory wiping
@@ -592,10 +592,7 @@ oracles:
             result: Warning signs left by previous explorers
           - min: 296
             max: 300
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
     collections:
       interior:
         name: Interior
@@ -699,10 +696,7 @@ oracles:
                 result: Wet or humid
               - min: 94
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 101
                 max: 103
                 result: Arcing electrical sparks
@@ -798,10 +792,7 @@ oracles:
                 result: Whirring or clicking sound
               - min: 194
                 max: 200
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 201
                 max: 203
                 result: Augmented reality environment
@@ -897,10 +888,7 @@ oracles:
                 result: Variable environment attuned to different biologies
               - min: 294
                 max: 300
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           feature:
             _replace: starforged/oracles/vaults/interior/feature
             dice: 1d300
@@ -1006,10 +994,7 @@ oracles:
                 result: Transition into the [Sanctum](starforged/oracles/vaults/sanctum)
               - min: 91
                 max: 95
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 96
                 max: 100
                 result: Roll twice
@@ -1116,10 +1101,7 @@ oracles:
                 result: Transition into the [Sanctum](starforged/oracles/vaults/sanctum)
               - min: 191
                 max: 195
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 196
                 max: 200
                 result: Roll twice
@@ -1226,10 +1208,7 @@ oracles:
                 result: Transition into the [Sanctum](starforged/oracles/vaults/sanctum)
               - min: 291
                 max: 295
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 296
                 max: 300
                 result: Roll twice
@@ -1925,10 +1904,7 @@ oracles:
                 result: Whispering voices speak to you
               - min: 91
                 max: 95
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 96
                 max: 100
                 result: Roll twice
@@ -2035,10 +2011,7 @@ oracles:
                 result: Visions of this place in possible futures
               - min: 191
                 max: 195
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 196
                 max: 200
                 result: Roll twice
@@ -2145,10 +2118,7 @@ oracles:
                 result: Visions of a connected vault or network
               - min: 291
                 max: 295
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 296
                 max: 300
                 result: Roll twice

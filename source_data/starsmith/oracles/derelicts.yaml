@@ -203,10 +203,13 @@ oracles:
             result: Watchful AI
           - min: 94
             max: 100
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                  auto: true
+                - oracle: starforged/oracles/core/focus
+                  auto: true
           - min: 101
             max: 103
             result: Abnormal atmosphere
@@ -302,10 +305,7 @@ oracles:
             result: Trails of ooze
           - min: 194
             max: 200
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
           - min: 201
             max: 203
             result: Abnormal structure material
@@ -401,10 +401,7 @@ oracles:
             result: Wide-open spaces
           - min: 294
             max: 300
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
       location_and_type:
         _insert: starforged/oracles/derelicts/location_and_type
         name: Location and Type

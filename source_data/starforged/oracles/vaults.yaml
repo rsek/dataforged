@@ -65,8 +65,9 @@ oracles:
           page: 360
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [noun, common noun]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         table:
           - min: 1
             max: 35
@@ -83,7 +84,9 @@ oracles:
           - min: 96
             max: 100
             result: Incomprehensible
-            # content: {part_of_speech: [adjective]}
+            i18n:
+              result:
+                part_of_speech: adjective
       shape:
         name: Shape
         source:
@@ -91,8 +94,9 @@ oracles:
           page: 361
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 15
@@ -121,11 +125,15 @@ oracles:
           - min: 56
             max: 60
             result: Platform or disc
-            # content: {part_of_speech: [common noun]}
+            i18n:
+              result:
+                part_of_speech: common_noun
           - min: 61
             max: 65
             result: Spires or towers
-            # content: {part_of_speech: [common noun, plural]}
+            i18n:
+              result:
+                part_of_speech: common_noun
           - min: 66
             max: 68
             result: Domed
@@ -141,6 +149,9 @@ oracles:
           - min: 80
             max: 85
             result: Transforming
+            i18n:
+              result:
+                part_of_speech: gerund
           - min: 86
             max: 100
             result: Roll twice
@@ -155,8 +166,9 @@ oracles:
           page: 361
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 30
@@ -182,10 +194,15 @@ oracles:
           - min: 87
             max: 88
             result: Energy
-            # content: {part_of_speech: [common noun]}
+            i18n:
+              result:
+                part_of_speech: adjunct_common_noun
           - min: 89
             max: 90
             result: Liquid
+            i18n:
+              result:
+                part_of_speech: adjunct_common_noun
           - min: 91
             max: 100
             result: Roll twice
@@ -293,12 +310,13 @@ oracles:
             result: Surrounded by destruction # is
           - min: 96
             max: 100
-            result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-                auto: true
-              - oracle: starforged/oracles/core/focus
-                auto: true
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                  auto: true
+                - oracle: starforged/oracles/core/focus
+                  auto: true
     collections:
       interior:
         name: Interior
@@ -414,12 +432,7 @@ oracles:
                 result: Wet or humid
               - min: 94
                 max: 100
-                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: *DescriptorFocus
           feature:
             name: Interior Feature
             source:
@@ -531,12 +544,7 @@ oracles:
                 result: 'Transition into the [Sanctum](id:starforged/oracles/vaults/sanctum)'
               - min: 91
                 max: 95
-                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: *DescriptorFocus
               - min: 96
                 max: 100
                 result: Roll twice
@@ -614,12 +622,13 @@ oracles:
                 result: Unnerving sound or sensation
               - min: 96
                 max: 99
-                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-                rolls:
-                  - oracle: starforged/oracles/core/action
-                    auto: true
-                  - oracle: starforged/oracles/core/theme
-                    auto: true
+                <<: &ActionTheme
+                  result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
+                  rolls:
+                    - oracle: starforged/oracles/core/action
+                      auto: true
+                    - oracle: starforged/oracles/core/theme
+                      auto: true
               - min: 100
                 max: 100
                 result: Roll twice
@@ -769,12 +778,7 @@ oracles:
                 result: Worship of a god or being
               - min: 91
                 max: 95
-                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-                rolls:
-                  - oracle: starforged/oracles/core/action
-                    auto: true
-                  - oracle: starforged/oracles/core/theme
-                    auto: true
+                <<: *ActionTheme
               - min: 96
                 max: 100
                 result: Roll twice
@@ -892,12 +896,7 @@ oracles:
                 result: Whispering voices speak to you
               - min: 91
                 max: 95
-                result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: *DescriptorFocus
               - min: 96
                 max: 100
                 result: Roll twice
@@ -974,12 +973,7 @@ oracles:
                 result: You are marked by physical corruption or mutation
               - min: 96
                 max: 99
-                result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-                rolls:
-                  - oracle: starforged/oracles/core/action
-                    auto: true
-                  - oracle: starforged/oracles/core/theme
-                    auto: true
+                <<: *ActionTheme
               - min: 100
                 max: 100
                 result: Roll twice

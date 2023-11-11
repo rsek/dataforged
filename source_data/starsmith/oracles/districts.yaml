@@ -121,10 +121,13 @@ oracles:
                 result: Windows or viewports
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
           peril:
             _insert: starforged/oracles/districts/access/peril
             name: Peril
@@ -272,10 +275,7 @@ oracles:
                 result: Significant ceremony
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/community/peril
             name: Peril
@@ -423,10 +423,7 @@ oracles:
                 result: Utility bots
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/engineering/peril
             name: Peril
@@ -574,10 +571,7 @@ oracles:
                 result: Work shift change over
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/living/peril
             name: Peril
@@ -725,10 +719,7 @@ oracles:
                 result: Sirens and flashing lights
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/medical/peril
             name: Peril
@@ -876,10 +867,7 @@ oracles:
                 result: Video surveillance monitors
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/operations/peril
             name: Peril
@@ -1027,10 +1015,7 @@ oracles:
                 result: Tools and equipment
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/production/peril
             name: Peril
@@ -1178,10 +1163,7 @@ oracles:
                 result: Strict access protocols
               - min: 89
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/districts/research/peril
             name: Peril

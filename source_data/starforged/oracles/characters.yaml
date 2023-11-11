@@ -53,8 +53,10 @@ oracles:
                 - starforged/oracles/characters/name/family_name
             rendering:
               style: embed_as_column
-            # content:
-            #   part_of_speech: [proper noun]
+
+            _i18n:
+              result:
+                part_of_speech: proper_noun
             table:
               - min: 1
                 max: 1
@@ -369,8 +371,9 @@ oracles:
                 - starforged/oracles/characters/name/family_name
             rendering:
               style: embed_as_column
-            # content:
-            #   part_of_speech: [proper noun]
+            _i18n:
+              result:
+                part_of_speech: proper_noun
             table:
               - min: 1
                 max: 1
@@ -679,14 +682,15 @@ oracles:
               <<: *Source
             summary: |-
               Given and family names can be used independently as standalone names. In many cases you can reverse the order.
-            # content:
-            #   part_of_speech: [proper noun]
             suggestions:
               oracles:
                 - starforged/oracles/characters/name/given_name
                 - starforged/oracles/characters/name/callsign
             rendering:
               style: embed_as_column
+            _i18n:
+              result:
+                part_of_speech: proper_noun
             table:
               - min: 1
                 max: 1
@@ -994,9 +998,9 @@ oracles:
         source:
           <<: *Source
           page: 330
-        # content:
-        #   part_of_speech: [adjective]
-        #   tags: [first look]
+        _i18n:
+          result:
+            part_of_speech: adjective
         # usage:
         #   initial: true
         #   max_rolls: 2
@@ -1123,8 +1127,9 @@ oracles:
         source:
           <<: *Source
           page: 330
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         # usage:
         #   initial: true
         table:
@@ -1169,9 +1174,9 @@ oracles:
         source:
           <<: *Source
           page: 331
-        # content:
-        #   part_of_speech: [noun, common noun]
-        #   tags: [people, actor]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         table:
           - min: 1
             max: 2
@@ -1313,18 +1318,20 @@ oracles:
             result: Thief
           - min: 93
             max: 95
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: &ActionTheme
+              result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                  auto: true
+                - oracle: starforged/oracles/core/theme
+                  auto: true
           - min: 96
             max: 100
-            result: Roll twice
-            rolls:
-              - times: 2
-                auto: true
+            <<: &RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
+                  auto: true
       goal:
         name: Character Goal
         source:
@@ -1428,10 +1435,10 @@ oracles:
             # suggestions: [*roll:Event]
           - min: 54
             max: 55
-            result: Rebel against power]
+            result: Rebel against power
           - min: 56
             max: 57
-            result: Refute a falsehood]
+            result: Refute a falsehood
           - min: 58
             max: 59
             result: Repair a technology
@@ -1477,18 +1484,10 @@ oracles:
             # suggestions: [*obj:Npc]
           - min: 81
             max: 90
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: *ActionTheme
           - min: 91
             max: 100
-            result: Roll twice
-            rolls:
-              - times: 2
-                auto: true
+            <<: *RollTwice
       revealed_aspect:
         name: Revealed Character Aspect
         source:
@@ -1496,8 +1495,9 @@ oracles:
           page: 332
         summary: |-
           As you interact with a person to gain a deeper understanding of their nature and personality, roll on the this table to reveal new characteristics. You may ignore, reroll, or adjust contradictions. Or envision how those contradictions add interesting complexity to the character.
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         # usage:
         #   max_rolls: 3
         table:

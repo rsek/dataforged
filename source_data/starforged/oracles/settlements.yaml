@@ -51,25 +51,30 @@ oracles:
             #     attributes:
             #       region: [terminus]
             table:
-              - min: 1
+              - &Pop.0
+                min: 1
                 max: 10
-                result: &Pop.0 Few
+                result: Few
                 # set_attributes: {population: [few]}
-              - min: 11
+              - &Pop.1
+                min: 11
                 max: 25
-                result: &Pop.1 Dozens
+                result: Dozens
                 # set_attributes: {population: [dozens]}
-              - min: 26
+              - &Pop.2
+                min: 26
                 max: 55
-                result: &Pop.2 Hundreds
+                result: Hundreds
                 # set_attributes: {population: [hundreds]}
-              - min: 56
+              - &Pop.3
+                min: 56
                 max: 85
-                result: &Pop.3 Thousands
+                result: Thousands
                 # set_attributes: {population: [thousands]}
-              - min: 86
+              - &Pop.4
+                min: 86
                 max: 100
-                result: &Pop.4 Tens of thousands
+                result: Tens of thousands
                 # set_attributes: {population: [tens_of_thousands]}
           outlands:
             name: Outlands
@@ -82,19 +87,19 @@ oracles:
             table:
               - min: 1
                 max: 15
-                result: *Pop.0
+                <<: *Pop.0
               - min: 16
                 max: 35
-                result: *Pop.1
+                <<: *Pop.1
               - min: 36
                 max: 65
-                result: *Pop.2
+                <<: *Pop.2
               - min: 66
                 max: 90
-                result: *Pop.3
+                <<: *Pop.3
               - min: 91
                 max: 100
-                result: *Pop.4
+                <<: *Pop.4
           expanse:
             name: Expanse
             source: *CollectionSource
@@ -106,19 +111,19 @@ oracles:
             table:
               - min: 1
                 max: 20
-                result: *Pop.0
+                <<: *Pop.0
               - min: 21
                 max: 50
-                result: *Pop.1
+                <<: *Pop.1
               - min: 51
                 max: 80
-                result: *Pop.2
+                <<: *Pop.2
               - min: 81
                 max: 95
-                result: *Pop.3
+                <<: *Pop.3
               - min: 96
                 max: 100
-                result: *Pop.4
+                <<: *Pop.4
     contents:
       location:
         name: Location
@@ -286,8 +291,9 @@ oracles:
           page: 323
         # usage:
         #   initial: true
-        # content:
-        #   part_of_speech: [adjective]
+        _i18n:
+          result:
+            part_of_speech: adjective
         table:
           - min: 1
             max: 15
@@ -323,10 +329,12 @@ oracles:
           <<: *Source
           page: 324
         # content:
-        #   part_of_speech: [noun, common noun]
         #   tags: [abstract noun]
         # usage:
         #   max_rolls: 2
+        _i18n:
+          result:
+            part_of_speech: common_noun
         summary: |-
           Check the Settlement Projects table when it’s appropriate for your character to know or uncover these details. Projects are the main industry, function, or focus of a settlement. They do not necessarily represent every activity at the site—particularly at a large settlement—but are the most visible or noteworthy aspects.
         table:
@@ -428,12 +436,13 @@ oracles:
             result: Warfare
           - min: 96
             max: 100
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: &ActionTheme
+              result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
+              rolls:
+                - oracle: starforged/oracles/core/action
+                  auto: true
+                - oracle: starforged/oracles/core/theme
+                  auto: true
       trouble:
         name: Settlement Trouble
         source:
@@ -567,12 +576,7 @@ oracles:
             # suggestions: [*obj:Creature]
           - min: 91
             max: 100
-            result: '[Action](id:starforged/oracles/core/action) + [Theme](id:starforged/oracles/core/theme)'
-            rolls:
-              - oracle: starforged/oracles/core/action
-                auto: true
-              - oracle: starforged/oracles/core/theme
-                auto: true
+            <<: *ActionTheme
       name:
         name: Settlement Name
         source:
@@ -583,8 +587,10 @@ oracles:
         # usage:
         #   initial: true
         # content:
-        #   part_of_speech: [proper noun]
         #   tags: [name]
+        _i18n:
+          result:
+            part_of_speech: proper_noun
         table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
           - min: 1

@@ -40,10 +40,13 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 56
                 max: 60
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
               - min: 61
                 max: 65
                 result: 'Debris field: Mineral asteroids'
@@ -112,10 +115,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 156
                 max: 160
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 161
                 max: 165
                 result: 'Debris field: Oort cloud'
@@ -184,10 +184,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 256
                 max: 260
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 261
                 max: 265
                 result: 'Debris field: Colliding asteroid fields'
@@ -260,10 +257,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 53
                 max: 58
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 59
                 max: 63
                 result: 'Debris field: Mineral asteroids'
@@ -332,10 +326,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 153
                 max: 158
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 159
                 max: 163
                 result: 'Debris field: Oort cloud'
@@ -404,10 +395,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 253
                 max: 258
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 259
                 max: 263
                 result: 'Debris field: Colliding asteroid fields'
@@ -480,10 +468,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 50
                 max: 56
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 57
                 max: 61
                 result: 'Debris field: Mineral asteroids'
@@ -549,10 +534,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 150
                 max: 156
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 157
                 max: 161
                 result: 'Debris field: Oort cloud'
@@ -621,10 +603,7 @@ oracles:
                 result: '[Creature](starforged/oracles/creatures)'
               - min: 250
                 max: 256
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 257
                 max: 261
                 result: 'Debris field: Colliding asteroid fields'

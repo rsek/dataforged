@@ -156,12 +156,13 @@ oracles:
                 result: Sludge-filled river networks
               - min: 89
                 max: 98
-                result: &DF.result '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
-                rolls: &DF.rolls
-                  - oracle: starforged/oracles/core/descriptor
-                    auto: true
-                  - oracle: starforged/oracles/core/focus
-                    auto: true
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
               - min: 99
                 max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (orbital)'
@@ -210,8 +211,7 @@ oracles:
                 result: Virulent fungal infestations
               - min: 92
                 max: 98
-                result: *DF.result
-                rolls: *DF.rolls
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](id:starforged/collections/oracles/vaults) (planetside)'

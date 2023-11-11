@@ -1274,10 +1274,13 @@ oracles:
                 result: Vibrant terrain colors
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1307,10 +1310,7 @@ oracles:
                 result: Tendrils of dry riverbeds
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1340,10 +1340,7 @@ oracles:
                 result: Variable winds cause large star dunes piling higher and higher
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1392,10 +1389,7 @@ oracles:
                 result: Windborne metallic sand
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -1440,10 +1434,7 @@ oracles:
                 result: Static charges rippling across churning sand
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -1488,10 +1479,7 @@ oracles:
                 result: Whirlwind with a compressed pillar of sand at the center
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -1713,10 +1701,7 @@ oracles:
                 result: World-spanning fissures
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1746,10 +1731,7 @@ oracles:
                 result: Smooth, flat plains dotted by sporatic volcannoes
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1779,10 +1761,7 @@ oracles:
                 result: Volcanic eruption ejecting debris nearly into space
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -1831,10 +1810,7 @@ oracles:
                 result: Steaming mudflats
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -1879,10 +1855,7 @@ oracles:
                 result: Volcano slowly building in activity
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -1927,10 +1900,7 @@ oracles:
                 result: Waterfalls of lava
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2152,10 +2122,7 @@ oracles:
                 result: Vast wastelands
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2185,10 +2152,7 @@ oracles:
                 result: Weakened and sporadic magnetosphere
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2218,10 +2182,7 @@ oracles:
                 result: Toxic coastlines
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2270,10 +2231,7 @@ oracles:
                 result: Whispers of the dead
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2318,10 +2276,7 @@ oracles:
                 result: Storm swirling with detritus
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2366,10 +2321,7 @@ oracles:
                 result: Stash of time-worn weapons
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2591,10 +2543,7 @@ oracles:
                 result: World-spanning ice canyon
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2624,10 +2573,7 @@ oracles:
                 result: Turbulent jet streams filled with ice and snow
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2657,10 +2603,7 @@ oracles:
                 result: Unfrozen ocean filled with icebergs
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -2709,10 +2652,7 @@ oracles:
                 result: Wind-carved ice formations
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2757,10 +2697,7 @@ oracles:
                 result: Whirlpool dragging icebergs to the depths
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -2805,10 +2742,7 @@ oracles:
                 result: Vertical cliffs of ice
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3030,10 +2964,7 @@ oracles:
                 result: Unusual atmospheric colors
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3063,10 +2994,7 @@ oracles:
                 result: Superstorm that produces an aurora
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3096,10 +3024,7 @@ oracles:
                 result: Varying atmospheric conditions based on layers
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3148,10 +3073,7 @@ oracles:
                 result: Zones of localized Atmosphere
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3196,10 +3118,7 @@ oracles:
                 result: Streaks of colored stratus clouds
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3244,10 +3163,7 @@ oracles:
                 result: Tiny cirrocumuls clouds all of different colors
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3469,10 +3385,7 @@ oracles:
                 result: Unusual vegetation color
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3502,10 +3415,7 @@ oracles:
                 result: Wide river deltas
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3535,10 +3445,7 @@ oracles:
                 result: Zone of petrified forest
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3587,10 +3494,7 @@ oracles:
                 result: Waterlogged caves
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3635,10 +3539,7 @@ oracles:
                 result: Trees intertwined in symbiosis
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3683,10 +3584,7 @@ oracles:
                 result: Vegetation growing in geometric designs
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -3908,10 +3806,7 @@ oracles:
                 result: Unusual water color
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3941,10 +3836,7 @@ oracles:
                 result: Sections of boiling seas
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -3974,10 +3866,7 @@ oracles:
                 result: Island-sized sponges
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4026,10 +3915,7 @@ oracles:
                 result: Windborne waterspouts
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4074,10 +3960,7 @@ oracles:
                 result: Underwater mountain ridges
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4122,10 +4005,7 @@ oracles:
                 result: Yawning sinkhole in the ocean floor
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4347,10 +4227,7 @@ oracles:
                 result: Towering plateaus
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4380,10 +4257,7 @@ oracles:
                 result: Varied colors indicating different minerals
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4413,10 +4287,7 @@ oracles:
                 result: Visible fault lines
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4465,10 +4336,7 @@ oracles:
                 result: Towering rocky spires
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4513,10 +4381,7 @@ oracles:
                 result: Spherical rocks that seem to move of their accord
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4561,10 +4426,7 @@ oracles:
                 result: Wind-carved rock formations
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4786,10 +4648,7 @@ oracles:
                 result: Unbroken moon
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4819,10 +4678,7 @@ oracles:
                 result: Storms of meteorites
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4852,10 +4708,7 @@ oracles:
                 result: Solar winds scattering planetary fragments
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -4904,10 +4757,7 @@ oracles:
                 result: Venting magma
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -4952,10 +4802,7 @@ oracles:
                 result: Terrain on a collision course
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5000,10 +4847,7 @@ oracles:
                 result: Violent atmospheric changes
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5225,10 +5069,7 @@ oracles:
                 result: Toxic seas
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5258,10 +5099,7 @@ oracles:
                 result: Vibrant, layered Atmosphere
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5291,10 +5129,7 @@ oracles:
                 result: Toxic planet covering leaking into space
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5343,10 +5178,7 @@ oracles:
                 result: Virulent fungal infestations
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5391,10 +5223,7 @@ oracles:
                 result: Warring fungal species
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5439,10 +5268,7 @@ oracles:
                 result: Violent windstorm blowing heavy chunks of fungus
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5664,10 +5490,7 @@ oracles:
                 result: Vibrantly colored landscapes
               - min: 89
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5697,10 +5520,7 @@ oracles:
                 result: Vibrantly colored waterways
               - min: 189
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5730,10 +5550,7 @@ oracles:
                 result: Vibrantly colored weather systems
               - min: 289
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (orbital)'
@@ -5782,10 +5599,7 @@ oracles:
                 result: Towering geological formations
               - min: 92
                 max: 98
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 99
                 max: 100
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5830,10 +5644,7 @@ oracles:
                 result: Yawning sinkhole
               - min: 192
                 max: 198
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 199
                 max: 200
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'
@@ -5878,10 +5689,7 @@ oracles:
                 result: Vents leaking hot gases
               - min: 292
                 max: 298
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
               - min: 299
                 max: 300
                 result: '[Precursor Vault](starforged/oracles/vaults) (planetside)'

@@ -63,107 +63,137 @@ oracles:
             #     attributes:
             #       region: [terminus]
             table: &table:Mission
-              - min: 1
+              - &Mission.0
+                min: 1
                 max: 3
-                result: &Mission.0.result Blockade a location
+                result: Blockade a location
                 # suggestions: [*roll:Place]
-              - min: 4
+              - &Mission.1
+                min: 4
                 max: 6
-                result: &Mission.1.result Break a blockade
-              - min: 7
+                result: Break a blockade
+              - &Mission.2
+                min: 7
                 max: 9
-                result: &Mission.2.result Collect a resource
+                result: Collect a resource
                 # suggestions: [*roll:Object]
-              - min: 10
+              - &Mission.3
+                min: 10
                 max: 11
-                result: &Mission.3.result Command others
-              - min: 12
+                result: Command others
+              - &Mission.4
+                min: 12
                 max: 14
-                result: &Mission.4.result Conduct diplomacy
-              - min: 15
+                result: Conduct diplomacy
+              - &Mission.5
+                min: 15
                 max: 17
-                result: &Mission.5.result Conduct espionage
-              - min: 18
+                result: Conduct espionage
+              - &Mission.6
+                min: 18
                 max: 20
-                result: &Mission.6.result Conduct piracy
-              - min: 21
+                result: Conduct piracy
+              - &Mission.7
+                min: 21
                 max: 23
-                result: &Mission.7.result Conduct research
-              - min: 24
+                result: Conduct research
+              - &Mission.8
+                min: 24
                 max: 26
-                result: &Mission.8.result Defend against an attack
-              - min: 27
+                result: Defend against an attack
+              - &Mission.9
+                min: 27
                 max: 29
-                result: &Mission.9.result Deliver messages or data
-              - min: 30
+                result: Deliver messages or data
+              - &Mission.10
+                min: 30
                 max: 32
-                result: &Mission.10.result Establish a settlement
-              - min: 33
+                result: Establish a settlement
+              - &Mission.11
+                min: 33
                 max: 35
-                result: &Mission.11.result Evacuate a location
+                result: Evacuate a location
                 # suggestions: [*obj:Settlement]
-              - min: 36
+              - &Mission.12
+                min: 36
                 max: 37
-                result: &Mission.12.result Explore a region
-              - min: 38
+                result: Explore a region
+              - &Mission.13
+                min: 38
                 max: 39
-                result: &Mission.13.result Hold prisoners
-              - min: 40
+                result: Hold prisoners
+              - &Mission.14
+                min: 40
                 max: 42
-                result: &Mission.14.result Hunt down another ship
+                result: Hunt down another ship
                 # suggestions: [*obj:Starship]
-              - min: 43
+              - &Mission.15
+                min: 43
                 max: 45
-                result: &Mission.15.result Launch an attack
-              - min: 46
+                result: Launch an attack
+              - &Mission.16
+                min: 46
                 max: 48
-                result: &Mission.16.result Patrol an area
-              - min: 49
+                result: Patrol an area
+              - &Mission.17
+                min: 49
                 max: 51
-                result: &Mission.17.result Provide medical aid
-              - min: 52
+                result: Provide medical aid
+              - &Mission.18
+                min: 52
                 max: 54
-                result: &Mission.18.result Provide repairs
-              - min: 55
+                result: Provide repairs
+              - &Mission.19
+                min: 55
                 max: 57
-                result: &Mission.19.result Provide shelter
-              - min: 58
+                result: Provide shelter
+              - &Mission.20
+                min: 58
                 max: 59
-                result: &Mission.20.result Quarantine a danger
+                result: Quarantine a danger
                 # suggestions: [*roll:Event]
-              - min: 60
+              - &Mission.21
+                min: 60
                 max: 62
-                result: &Mission.21.result Raid a settlement
+                result: Raid a settlement
                 # suggestions: [*obj:Settlement]
-              - min: 63
+              - &Mission.22
+                min: 63
                 max: 65
-                result: &Mission.22.result Resupply a settlement
+                result: Resupply a settlement
                 # suggestions: [*obj:Settlement]
-              - min: 66
+              - &Mission.23
+                min: 66
                 max: 68
-                result: &Mission.23.result Retrieve salvage
-              - min: 69
+                result: Retrieve salvage
+              - &Mission.24
+                min: 69
                 max: 71
-                result: &Mission.24.result Search and rescue
-              - min: 72
+                result: Search and rescue
+              - &Mission.25
+                min: 72
                 max: 74
-                result: &Mission.25.result Smuggle cargo
+                result: Smuggle cargo
                 # suggestions: [*roll:Object]
-              - min: 75
+              - &Mission.26
+                min: 75
                 max: 77
-                result: &Mission.26.result Survey a site
+                result: Survey a site
                 # suggestions: [*roll:Place]
-              - min: 78
+              - &Mission.27
+                min: 78
                 max: 79
-                result: &Mission.27.result Test a technology
+                result: Test a technology
                 # suggestions: [*roll:Object]
-              - min: 80
+              - &Mission.28
+                min: 80
                 max: 82
-                result: &Mission.28.result Transport cargo
+                result: Transport cargo
                 # suggestions: [*roll:Object]
-              - min: 83
+              - &Mission.29
+                min: 83
                 max: 85
-                result: &Mission.29.result Transport passengers
+                result: Transport passengers
                 # suggestions: [*obj:Npc]
               - &Mission.30
                 min: 86
@@ -190,96 +220,96 @@ oracles:
             #     attributes:
             #       region: [outlands]
             table:
-              - min: 1
+              - <<: *Mission.0
+                min: 1
                 max: 2
-                result: *Mission.0.result
-              - min: 3
+              - <<: *Mission.1
+                min: 3
                 max: 4
-                result: *Mission.1.result
-              - min: 5
+              - <<: *Mission.2
+                min: 5
                 max: 7
-                result: *Mission.2.result
-              - min: 8
+              - <<: *Mission.3
+                min: 8
                 max: 9
-                result: *Mission.3.result
-              - min: 10
+              - <<: *Mission.4
+                min: 10
                 max: 11
-                result: *Mission.4.result
-              - min: 12
+              - <<: *Mission.5
+                min: 12
                 max: 13
-                result: *Mission.5.result
-              - min: 14
+              - <<: *Mission.6
+                min: 14
                 max: 16
-                result: *Mission.6.result
-              - min: 17
+              - <<: *Mission.7
+                min: 17
                 max: 20
-                result: *Mission.7.result
-              - min: 21
+              - <<: *Mission.8
+                min: 21
                 max: 24
-                result: *Mission.8.result
-              - min: 25
+              - <<: *Mission.9
+                min: 25
                 max: 28
-                result: *Mission.9.result
-              - min: 29
+              - <<: *Mission.10
+                min: 29
                 max: 32
-                result: *Mission.10.result
-              - min: 33
+              - <<: *Mission.11
+                min: 33
                 max: 36
-                result: *Mission.11.result
-              - min: 37
+              - <<: *Mission.12
+                min: 37
                 max: 40
-                result: *Mission.12.result
-              - min: 41
+              - <<: *Mission.13
+                min: 41
                 max: 42
-                result: *Mission.13.result
-              - min: 43
+              - <<: *Mission.14
+                min: 43
                 max: 45
-                result: *Mission.14.result
-              - min: 46
+              - <<: *Mission.15
+                min: 46
                 max: 48
-                result: *Mission.15.result
-              - min: 49
+              - <<: *Mission.16
+                min: 49
                 max: 50
-                result: *Mission.16.result
-              - min: 51
+              - <<: *Mission.17
+                min: 51
                 max: 53
-                result: *Mission.17.result
-              - min: 54
+              - <<: *Mission.18
+                min: 54
                 max: 56
-                result: *Mission.18.result
-              - min: 57
+              - <<: *Mission.19
+                min: 57
                 max: 59
-                result: *Mission.19.result
-              - min: 60
+              - <<: *Mission.20
+                min: 60
                 max: 61
-                result: *Mission.20.result
-              - min: 62
+              - <<: *Mission.21
+                min: 62
                 max: 64
-                result: *Mission.21.result
-              - min: 65
+              - <<: *Mission.22
+                min: 65
                 max: 68
-                result: *Mission.22.result
-              - min: 69
+              - <<: *Mission.23
+                min: 69
                 max: 71
-                result: *Mission.23.result
-              - min: 72
+              - <<: *Mission.24
+                min: 72
                 max: 73
-                result: *Mission.24.result
-              - min: 74
+              - <<: *Mission.25
+                min: 74
                 max: 75
-                result: *Mission.25.result
-              - min: 76
+              - <<: *Mission.26
+                min: 76
                 max: 78
-                result: *Mission.26.result
-              - min: 79
+              - <<: *Mission.27
+                min: 79
                 max: 80
-                result: *Mission.27.result
-              - min: 81
+              - <<: *Mission.28
+                min: 81
                 max: 83
-                result: *Mission.28.result
-              - min: 84
+              - <<: *Mission.29
+                min: 84
                 max: 85
-                result: *Mission.29.result
               - *Mission.30
               - *Mission.31
 
@@ -292,96 +322,96 @@ oracles:
             #     attributes:
             #       region: [expanse]
             table:
-              - min: 1
+              - <<: *Mission.0
+                min: 1
                 max: 2
-                result: *Mission.0.result
-              - min: 3
+              - <<: *Mission.1
+                min: 3
                 max: 4
-                result: *Mission.1.result
-              - min: 5
+              - <<: *Mission.2
+                min: 5
                 max: 8
-                result: *Mission.2.result
-              - min: 9
+              - <<: *Mission.3
+                min: 9
                 max: 10
-                result: *Mission.3.result
-              - min: 11
+              - <<: *Mission.4
+                min: 11
                 max: 12
-                result: *Mission.4.result
-              - min: 13
+              - <<: *Mission.5
+                min: 13
                 max: 14
-                result: *Mission.5.result
-              - min: 15
+              - <<: *Mission.6
+                min: 15
                 max: 16
-                result: *Mission.6.result
-              - min: 17
+              - <<: *Mission.7
+                min: 17
                 max: 22
-                result: *Mission.7.result
-              - min: 23
+              - <<: *Mission.8
+                min: 23
                 max: 25
-                result: *Mission.8.result
-              - min: 26
+              - <<: *Mission.9
+                min: 26
                 max: 29
-                result: *Mission.9.result
-              - min: 30
+              - <<: *Mission.10
+                min: 30
                 max: 35
-                result: *Mission.10.result
-              - min: 36
+              - <<: *Mission.11
+                min: 36
                 max: 39
-                result: *Mission.11.result
-              - min: 40
+              - <<: *Mission.12
+                min: 40
                 max: 45
-                result: *Mission.12.result
-              - min: 46
+              - <<: *Mission.13
+                min: 46
                 max: 47
-                result: *Mission.13.result
-              - min: 48
+              - <<: *Mission.14
+                min: 48
                 max: 49
-                result: *Mission.14.result
-              - min: 50
+              - <<: *Mission.15
+                min: 50
                 max: 51
-                result: *Mission.15.result
-              - min: 52
+              - <<: *Mission.16
+                min: 52
                 max: 53
-                result: *Mission.16.result
-              - min: 54
+              - <<: *Mission.17
+                min: 54
                 max: 55
-                result: *Mission.17.result
-              - min: 56
+              - <<: *Mission.18
+                min: 56
                 max: 57
-                result: *Mission.18.result
-              - min: 58
+              - <<: *Mission.19
+                min: 58
                 max: 61
-                result: *Mission.19.result
-              - min: 62
+              - <<: *Mission.20
+                min: 62
                 max: 63
-                result: *Mission.20.result
-              - min: 64
+              - <<: *Mission.21
+                min: 64
                 max: 65
-                result: *Mission.21.result
-              - min: 66
+              - <<: *Mission.22
+                min: 66
                 max: 69
-                result: *Mission.22.result
-              - min: 70
+              - <<: *Mission.23
+                min: 70
                 max: 71
-                result: *Mission.23.result
-              - min: 72
+              - <<: *Mission.24
+                min: 72
                 max: 73
-                result: *Mission.24.result
-              - min: 74
+              - <<: *Mission.25
+                min: 74
                 max: 75
-                result: *Mission.25.result
-              - min: 76
+              - <<: *Mission.26
+                min: 76
                 max: 77
-                result: *Mission.26.result
-              - min: 78
+              - <<: *Mission.27
+                min: 78
                 max: 79
-                result: *Mission.27.result
-              - min: 80
+              - <<: *Mission.28
+                min: 80
                 max: 83
-                result: *Mission.28.result
-              - min: 84
+              - <<: *Mission.29
+                min: 84
                 max: 85
-                result: *Mission.29.result
               - *Mission.30
               - *Mission.31
     contents:
@@ -394,7 +424,10 @@ oracles:
         # usage:
         #   initial: true
         # content:
-        #   part_of_speech: [common noun, fragment]
+        #   part_of_speech: [fragment]
+        _i18n:
+          result:
+            part_of_speech: common_noun
         rendering:
           style: table
           columns:
@@ -505,9 +538,15 @@ oracles:
             rolls:
               - oracle: starforged/oracles/starships/mission
               # set_attributes: {starship_type: [multipurpose]}]
+            i18n:
+              result:
+                part_of_speech: adjective
           - min: 83
             max: 84
             result: Unusual or unknown
+            i18n:
+              result:
+                part_of_speech: adjective
           - min: 85
             max: 94
             result: '[Fleet](id:starforged/oracles/starships/fleet)'
@@ -520,16 +559,18 @@ oracles:
               - oracle: starforged/oracles/starships/type
                 method: keep_duplicates
                 times: 2
+            i18n: {}
           # TODO: format the above as a 2nd roll of this table + a game object hint
       fleet:
         name: Fleet
         source:
           <<: *Source
           page: 326
-        # content:
-        #   part_of_speech: [noun, common noun]
         # usage:
         #   initial: true
+        _i18n:
+          result:
+            part_of_speech: common_noun
         table:
           - min: 1
             max: 10
@@ -696,8 +737,10 @@ oracles:
         summary: |-
           Give a starship a name when it has an important role in your story. Scan this table and select a name which fits what you know of the ship’s appearance and role. Or generate a random result and let any contradictions contribute to the ship’s history or nature.
         # content:
-        #   part_of_speech: [noun, proper noun]
         #   tags: [name]
+        _i18n:
+          result:
+            part_of_speech: proper_noun
         table:
           # in the context of this table, these are all proper nouns. outside of it, some have additional use as adjectives or common nouns. I've marked the ones which appear *only* as proper nouns with a technically-redundant "proper noun" tag.
           - min: 1

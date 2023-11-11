@@ -526,10 +526,13 @@ oracles:
             result: Towing or linked
           - min: 95
             max: 100
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: &DescriptorFocus
+              result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+              rolls:
+                - oracle: starforged/oracles/core/descriptor
+                  auto: true
+                - oracle: starforged/oracles/core/focus
+                  auto: true
           - min: 101
             max: 104
             result: Strange energy spikes
@@ -595,10 +598,7 @@ oracles:
             result: Ejected life pods
           - min: 195
             max: 200
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
           - min: 201
             max: 204
             result: Sensor ghosts
@@ -664,10 +664,7 @@ oracles:
             result: Active maintenance bots
           - min: 295
             max: 300
-            result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-            rolls:
-              - oracle: starforged/oracles/core/descriptor
-              - oracle: starforged/oracles/core/focus
+            <<: *DescriptorFocus
       name:
         _replace: starforged/oracles/starships/name
         dice: 1d300

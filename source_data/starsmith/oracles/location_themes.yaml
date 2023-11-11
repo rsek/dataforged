@@ -133,10 +133,13 @@ oracles:
                 result: Unending stretch of cracked, flat ground
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: &DescriptorFocus
+                  result: '[Descriptor](id:starforged/oracles/core/descriptor) + [Focus](id:starforged/oracles/core/focus)'
+                  rolls:
+                    - oracle: starforged/oracles/core/descriptor
+                      auto: true
+                    - oracle: starforged/oracles/core/focus
+                      auto: true
           peril:
             _insert: starforged/oracles/location_themes/arid/peril
             name: Peril
@@ -249,10 +252,7 @@ oracles:
                 result: Visions of parallel universes
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/chronal/peril
             name: Peril
@@ -365,10 +365,7 @@ oracles:
                 result: Vents spewing steaming gases
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/inferno/peril
             name: Peril
@@ -481,10 +478,7 @@ oracles:
                 result: Zipline or tube transport connecting areas
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/floating/peril
             name: Peril
@@ -597,10 +591,7 @@ oracles:
                 result: Water bursting through cracked barrier
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/flooded/peril
             name: Peril
@@ -713,10 +704,7 @@ oracles:
                 result: Tiny rivulets of melt water
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/frozen/peril
             name: Peril
@@ -829,10 +817,7 @@ oracles:
                 result: Winding nutrient passageways
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/lifeform/peril
             name: Peril
@@ -945,10 +930,7 @@ oracles:
                 result: Strange specimens magically caged
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/mystical/peril
             name: Peril
@@ -1061,10 +1043,7 @@ oracles:
                 result: Well-traveled game trail
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/overgrown/peril
             name: Peril
@@ -1177,10 +1156,7 @@ oracles:
                 result: Wounded troops hunkering down
               - min: 97
                 max: 100
-                result: '[Descriptor + Focus](starforged/oracles/core/descriptor)'
-                rolls:
-                  - oracle: starforged/oracles/core/descriptor
-                  - oracle: starforged/oracles/core/focus
+                <<: *DescriptorFocus
           peril:
             _insert: starforged/oracles/location_themes/war_zone/peril
             name: Peril
