@@ -174,7 +174,7 @@ export const OracleTableRendering = Type.Object(
 )
 export type OracleTableRendering = Static<typeof OracleTableRendering>
 
-export const DiceNotation = Type.RegEx(
+export const DiceNotation = Type.RegExp(
 	/([1-9][0-9]*)d(0|[1-9][0-9]*)([+-]([1-9][0-9]*))?/,
 	{
 		$id: '#/$defs/DiceNotation',

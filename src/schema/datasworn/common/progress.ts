@@ -17,7 +17,7 @@ export const ChallengeRank = JsonEnumFromRecord(
 )
 export type ChallengeRank = Static<typeof ChallengeRank>
 
-export const SpecialTrackType = Type.RegEx(ATTR, {
+export const SpecialTrackType = Type.RegExp(ATTR, {
 	$id: '#/$defs/SpecialTrackType',
 	examples: [
 		'bonds_track',

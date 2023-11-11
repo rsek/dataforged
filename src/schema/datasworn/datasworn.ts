@@ -92,7 +92,7 @@ export const Datasworn = Type.Object(
 		// Type.Optional(
 		// 	Type.Union([
 		// 		Type.Record(
-		// 			Type.RegEx(REGEX_DICT_KEY),
+		// 			Type.RegExp(REGEX_DICT_KEY),
 		// 			Type.Object({ id: Type.String() }, { additionalProperties: true })
 		// 		),
 		// 		Type.String()

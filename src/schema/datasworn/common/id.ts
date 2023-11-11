@@ -95,7 +95,7 @@ class ID {
 	}
 
 	toSchema(options: SchemaOptions = {}) {
-		return Type.RegEx(this.regExp, options)
+		return Type.RegExp(this.regExp, options)
 	}
 
 	static fromSchema(schema: TString, ...append: Array<string | RegExp>) {
@@ -207,7 +207,7 @@ function CollectionIDWildcard(type: string, recursive = false) {
 	// )
 }
 
-export const NamespaceID = Type.RegEx(
+export const NamespaceID = Type.RegExp(
 	new RegExp(`^${REGEX_SOURCEBOOK_KEY.source}$`),
 	{
 		$id: '#/$defs/NamespaceID',
@@ -216,22 +216,22 @@ export const NamespaceID = Type.RegEx(
 )
 export type NamespaceID = Static<typeof NamespaceID>
 
-export const DictKey = Type.RegEx(DICT_KEY, { $id: '#/$defs/DictKey' })
+export const DictKey = Type.RegExp(DICT_KEY, { $id: '#/$defs/DictKey' })
 export type DictKey = Static<typeof DictKey>
 
-export const NpcID = Type.RegEx(NodeID('npcs'), {
+export const NpcID = Type.RegExp(NodeID('npcs'), {
 	$id: '#/$defs/NpcID',
 	examples: ['classic/npcs/firstborn/elf', 'starforged/npcs/sample_npcs/chiton']
 })
 
 export type NpcID = Opaque<Static<typeof NpcID>>
 
-export const NpcIDWildcard = Type.RegEx(CollectionIDWildcard('npcs'), {
+export const NpcIDWildcard = Type.RegExp(CollectionIDWildcard('npcs'), {
 	$id: '#/$defs/NpcIDWildcard'
 })
 export type NpcIDWildcard = Opaque<Static<typeof NpcIDWildcard>>
 
-export const NpcCollectionID = Type.RegEx(CollectionID('npcs', false), {
+export const NpcCollectionID = Type.RegExp(CollectionID('npcs', false), {
 	$id: '#/$defs/NpcCollectionID',
 	examples: [
 		'classic/collections/npcs/firstborn',
@@ -240,7 +240,7 @@ export const NpcCollectionID = Type.RegEx(CollectionID('npcs', false), {
 })
 export type NpcCollectionID = Opaque<Static<typeof NpcCollectionID>>
 
-export const NpcVariantID = Type.RegEx(
+export const NpcVariantID = Type.RegExp(
 	joinPatterns(NodeID('npcs'), `${ID.SEP}variants${ID.SEP}${ID.KEY}`),
 	{
 		$id: '#/$defs/NpcVariantID',
@@ -249,27 +249,27 @@ export const NpcVariantID = Type.RegEx(
 )
 export type NpcVariantID = Opaque<Static<typeof NpcVariantID>>
 
-export const AssetID = Type.RegEx(NodeID('assets'), {
+export const AssetID = Type.RegExp(NodeID('assets'), {
 	$id: '#/$defs/AssetID'
 })
 export type AssetID = Opaque<Static<typeof AssetID>>
-export const AssetIDWildcard = Type.RegEx(NodeIDWildcard('assets'), {
+export const AssetIDWildcard = Type.RegExp(NodeIDWildcard('assets'), {
 	$id: '#/$defs/AssetIDWildcard'
 })
 export type AssetIDWildcard = Opaque<Static<typeof AssetIDWildcard>>
-export const AssetTypeID = Type.RegEx(CollectionID('assets'), {
+export const AssetTypeID = Type.RegExp(CollectionID('assets'), {
 	$id: '#/$defs/AssetTypeID'
 })
 export type AssetTypeID = Opaque<Static<typeof AssetTypeID>>
 
-export const AssetOptionFieldID = Type.RegEx(
+export const AssetOptionFieldID = Type.RegExp(
 	joinPatterns(AssetID.pattern as string, ID.SEP, 'options', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/options\/[a-z][a-z_]*/,
 	{ $id: '#/$defs/AssetOptionFieldID' }
 )
 export type AssetOptionFieldID = Opaque<Static<typeof AssetOptionFieldID>>
 
-export const AssetOptionFieldIDWildcard = Type.RegEx(
+export const AssetOptionFieldIDWildcard = Type.RegExp(
 	joinPatterns(AssetIDWildcard.pattern as string, SEP, 'options', KEY_WILDCARD),
 	// /^(\*|[a-z0-9_]{3,})\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/options\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetOptionFieldIDWildcard' }
@@ -278,14 +278,14 @@ export type AssetOptionFieldIDWildcard = Static<
 	typeof AssetOptionFieldIDWildcard
 >
 
-export const AssetControlFieldID = Type.RegEx(
+export const AssetControlFieldID = Type.RegExp(
 	joinPatterns(AssetID.pattern as string, ID.SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetControlFieldID' }
 )
 export type AssetControlFieldID = Opaque<Static<typeof AssetControlFieldID>>
 
-export const AssetControlFieldIDWildcard = Type.RegEx(
+export const AssetControlFieldIDWildcard = Type.RegExp(
 	joinPatterns(
 		AssetIDWildcard.pattern as string,
 		SEP,
@@ -298,13 +298,13 @@ export type AssetControlFieldIDWildcard = Static<
 	typeof AssetControlFieldIDWildcard
 >
 
-export const AssetConditionMeterID = Type.RegEx(
+export const AssetConditionMeterID = Type.RegExp(
 	joinPatterns(AssetID.pattern as string, ID.SEP, `condition_meter`),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter$/,
 	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
 )
 export type AssetConditionMeterID = Opaque<Static<typeof AssetConditionMeterID>>
-export const AssetConditionMeterIDWildcard = Type.RegEx(
+export const AssetConditionMeterIDWildcard = Type.RegExp(
 	joinPatterns(AssetIDWildcard.pattern as string, ID.SEP, 'condition_meter'),
 	// /^([a-z0-9_]{3,}|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
 	{
@@ -315,7 +315,7 @@ export const AssetConditionMeterIDWildcard = Type.RegEx(
 export type AssetConditionMeterIDWildcard = Static<
 	typeof AssetConditionMeterIDWildcard
 >
-export const AssetConditionMeterControlFieldID = Type.RegEx(
+export const AssetConditionMeterControlFieldID = Type.RegExp(
 	joinPatterns(AssetConditionMeterID.pattern as string, SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetConditionMeterControlFieldID' }
@@ -324,14 +324,14 @@ export type AssetConditionMeterControlFieldID = Static<
 	typeof AssetConditionMeterControlFieldID
 >
 
-export const AssetAbilityID = Type.RegEx(
+export const AssetAbilityID = Type.RegExp(
 	joinPatterns(AssetID.pattern as string, ID.SEP, 'abilities', ID.SEP, '[0-2]'),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]$/,
 	{ $id: '#/$defs/AssetAbilityID' }
 )
 export type AssetAbilityID = Opaque<Static<typeof AssetAbilityID>>
 
-export const AssetAbilityOptionFieldID = Type.RegEx(
+export const AssetAbilityOptionFieldID = Type.RegExp(
 	joinPatterns(AssetAbilityID.pattern as string, ID.SEP, 'options', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]\/options\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetAbilityOptionFieldID' }
@@ -339,7 +339,7 @@ export const AssetAbilityOptionFieldID = Type.RegEx(
 export type AssetAbilityOptionFieldID = Opaque<
 	Static<typeof AssetAbilityOptionFieldID>
 >
-export const AssetAbilityControlFieldID = Type.RegEx(
+export const AssetAbilityControlFieldID = Type.RegExp(
 	joinPatterns(AssetAbilityID.pattern as string, ID.SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/abilities\/[0-2]\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetAbilityControlFieldID' }
@@ -348,7 +348,7 @@ export type AssetAbilityControlFieldID = Static<
 	typeof AssetAbilityControlFieldID
 >
 
-export const DelveSiteID = Type.RegEx(
+export const DelveSiteID = Type.RegExp(
 	new RegExp(joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'delve_sites', KEY)),
 	// /^[a-z0-9_]{3,}\/delve_sites\/[a-z][a-z_]*$/,
 	{
@@ -358,7 +358,7 @@ export const DelveSiteID = Type.RegEx(
 )
 export type DelveSiteID = Opaque<Static<typeof DelveSiteID>>
 
-export const DelveSiteDenizenID = Type.RegEx(
+export const DelveSiteDenizenID = Type.RegExp(
 	joinPatterns(DelveSiteID.pattern as string, ID.SEP, `denizens`, RANGE),
 	// /^[a-z0-9_]{3,}\/delve_sites\/[a-z][a-z_]*\/denizens\/[1-9][0-9]*-[1-9][0-9]*/,
 	{
@@ -374,20 +374,20 @@ export const DelveSiteThemeID = ID.forNode('site_themes').toSchema({
 })
 export type DelveSiteThemeID = Opaque<Static<typeof DelveSiteThemeID>>
 
-export const ThemeFeatureRowID = Type.RegEx(
+export const ThemeFeatureRowID = Type.RegExp(
 	joinPatterns(DelveSiteThemeID.pattern as string, ID.SEP, 'features', RANGE),
 	// /^[a-z0-9_]{3,}\/site_themes\/[a-z][a-z_]*\/features\/[1-9][0-9]*-[1-9][0-9]*$/,
 	{ $id: '#/$defs/ThemeFeatureRowID' }
 )
 export type ThemeFeatureRowID = Opaque<Static<typeof ThemeFeatureRowID>>
 
-export const ThemeDangerRowID = Type.RegEx(
+export const ThemeDangerRowID = Type.RegExp(
 	joinPatterns(DelveSiteThemeID.pattern as string, ID.SEP, 'dangers', RANGE),
 	{ $id: '#/$defs/ThemeDangerRowID' }
 )
 export type ThemeDangerRowID = Opaque<Static<typeof ThemeDangerRowID>>
 
-export const DelveSiteDomainID = Type.RegEx(
+export const DelveSiteDomainID = Type.RegExp(
 	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'site_domains', KEY),
 	{
 		$id: '#/$defs/DelveSiteDomainID',
@@ -396,19 +396,19 @@ export const DelveSiteDomainID = Type.RegEx(
 )
 export type DelveSiteDomainID = Opaque<Static<typeof DelveSiteDomainID>>
 
-export const DomainFeatureRowID = Type.RegEx(
+export const DomainFeatureRowID = Type.RegExp(
 	joinPatterns(DelveSiteDomainID.pattern as string, ID.SEP, 'features', RANGE),
 	{ $id: '#/$defs/DomainFeatureRowID' }
 )
 export type DomainFeatureRowID = Opaque<Static<typeof DomainFeatureRowID>>
 
-export const DomainDangerRowID = Type.RegEx(
+export const DomainDangerRowID = Type.RegExp(
 	joinPatterns(DelveSiteDomainID.pattern as string, ID.SEP, 'dangers', RANGE),
 	{ $id: '#/$defs/DomainDangerRowID' }
 )
 export type DomainDangerRowID = Opaque<Static<typeof DomainDangerRowID>>
 
-export const MoveID = Type.RegEx(
+export const MoveID = Type.RegExp(
 	/^[a-z0-9_]{3,}\/(moves\/[a-z][a-z_]*\/[a-z][a-z_]*|assets\/[a-z][a-z_]*\/[a-z][a-z_]*\/abilities\/[0-2]\/moves\/[a-z][a-z_]*)$/,
 	{
 		description: 'A move ID, for a standard move or a unique asset move',
@@ -420,7 +420,7 @@ export const MoveID = Type.RegEx(
 	}
 )
 export type MoveID = Opaque<Static<typeof MoveID>>
-export const MoveIDWildcard = Type.RegEx(
+export const MoveIDWildcard = Type.RegExp(
 	/^([a-z0-9_]{3,}|\*)\/(moves\/([a-z_]+|\*)\/([a-z_]+|\*)|assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/abilities\/([0-2]|\*)\/moves\/([a-z_]+|\*))$/,
 	{
 		title: 'Move ID (with wildcard)',
@@ -434,13 +434,13 @@ export const MoveIDWildcard = Type.RegEx(
 )
 export type MoveIDWildcard = Opaque<Static<typeof MoveIDWildcard>>
 
-export const MoveCategoryID = Type.RegEx(CollectionID('moves'), {
+export const MoveCategoryID = Type.RegExp(CollectionID('moves'), {
 	examples: ['starforged/collections/moves/adventure'],
 	$id: '#/$defs/MoveCategoryID'
 })
 export type MoveCategoryID = Opaque<Static<typeof MoveCategoryID>>
 
-export const OracleCollectionID = Type.RegEx(CollectionID('oracles', true), {
+export const OracleCollectionID = Type.RegExp(CollectionID('oracles', true), {
 	examples: [
 		'starforged/collections/oracles/core',
 		'starforged/collections/oracles/character/names',
@@ -450,7 +450,7 @@ export const OracleCollectionID = Type.RegEx(CollectionID('oracles', true), {
 })
 export type OracleCollectionID = Opaque<Static<typeof OracleCollectionID>>
 
-export const OracleTableID = Type.RegEx(NodeID('oracles', true), {
+export const OracleTableID = Type.RegExp(NodeID('oracles', true), {
 	examples: [
 		'starforged/oracles/core/action',
 		'starforged/oracles/character/names/given',
@@ -460,7 +460,7 @@ export const OracleTableID = Type.RegEx(NodeID('oracles', true), {
 })
 export type OracleTableID = Opaque<Static<typeof OracleTableID>>
 
-export const OracleTableIDWildcard = Type.RegEx(
+export const OracleTableIDWildcard = Type.RegExp(
 	NodeIDWildcard('oracles', true),
 	// /^([a-z0-9_]{3,}|\*)\/oracles((\/([a-z_]+|\*)){1,3}|\/\*\*)\/([a-z_]+|\*)$/
 
@@ -476,7 +476,7 @@ export const OracleTableIDWildcard = Type.RegEx(
 )
 export type OracleTableIDWildcard = Opaque<Static<typeof OracleTableIDWildcard>>
 
-export const OracleTableRowID = Type.RegEx(
+export const OracleTableRowID = Type.RegExp(
 	joinPatterns(
 		OracleTableID.pattern as string,
 		/([1-9][0-9]*-[1-9][0-9]*)|(0|[1-9][0-9]*)/
@@ -494,7 +494,7 @@ export const OracleTableRowID = Type.RegEx(
 )
 export type OracleTableRowID = Opaque<Static<typeof OracleCollectionID>>
 
-export const RarityID = Type.RegEx(
+export const RarityID = Type.RegExp(
 	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'rarities', KEY),
 	// /^[a-z0-9_]{3,}\/rarities\/[a-z][a-z_]*$/,
 	{
@@ -504,28 +504,31 @@ export const RarityID = Type.RegEx(
 )
 export type RarityID = Opaque<Static<typeof RarityID>>
 
-export const AtlasEntryID = Type.RegEx(NodeID('atlas', true), {
+export const AtlasEntryID = Type.RegExp(NodeID('atlas', true), {
 	examples: ['classic/atlas/ironlands/hinterlands'],
 	$id: '#/$defs/AtlasEntryID'
 })
 export type AtlasEntryID = Opaque<Static<typeof AtlasEntryID>>
 
-export const AtlasEntryIDWildcard = Type.RegEx(NodeIDWildcard('atlas', true), {
+export const AtlasEntryIDWildcard = Type.RegExp(NodeIDWildcard('atlas', true), {
 	$id: '#/$defs/AtlasEntryIDWildcard'
 })
 export type AtlasEntryIDWildcard = Opaque<Static<typeof AtlasEntryIDWildcard>>
 
-export const AtlasID = Type.RegEx(CollectionID('atlas', true), {
+export const AtlasID = Type.RegExp(CollectionID('atlas', true), {
 	examples: ['classic/collections/atlas/ironlands'],
 	$id: '#/$defs/AtlasID'
 })
 export type AtlasID = Opaque<Static<typeof AtlasID>>
 
-export const AtlasIDWildcard = Type.RegEx(CollectionIDWildcard('atlas', true), {
-	$id: '#/$defs/AtlasIDWildcard'
-})
+export const AtlasIDWildcard = Type.RegExp(
+	CollectionIDWildcard('atlas', true),
+	{
+		$id: '#/$defs/AtlasIDWildcard'
+	}
+)
 
-export const TruthID = Type.RegEx(
+export const TruthID = Type.RegExp(
 	joinPatterns(FRAGMENT_SOURCEBOOK_KEY, ID.SEP, 'truths', KEY),
 
 	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*$/,
@@ -536,7 +539,7 @@ export const TruthID = Type.RegEx(
 )
 export type TruthID = Opaque<Static<typeof TruthID>>
 
-export const TruthOptionID = Type.RegEx(
+export const TruthOptionID = Type.RegExp(
 	joinPatterns(TruthID.pattern as string, INDEX),
 	// /^[a-z0-9_]{3,}\/truths\/[a-z][a-z_]*\/(0|[1-9][0-9]*)$/,
 	{

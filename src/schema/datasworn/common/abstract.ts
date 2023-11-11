@@ -28,7 +28,7 @@ export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
 	options: ObjectOptions = {}
 ) {
-	return Type.Record(Type.RegEx(DICT_KEY), valuesSchema, {
+	return Type.Record(Type.RegExp(DICT_KEY), valuesSchema, {
 		...options,
 		$comment: 'Deserialize as a dictionary object.'
 	})
