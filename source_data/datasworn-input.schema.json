@@ -1349,10 +1349,6 @@
 		"MoveActionRollAugment": {
 			"type": "object",
 			"properties": {
-				"roll_type": {
-					"const": "action_roll",
-					"type": "string"
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -1369,8 +1365,13 @@
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"roll_type": {
+					"const": "action_roll",
+					"type": "string"
 				}
 			},
+			"required": ["roll_type"],
 			"title": "MoveActionRollAugment"
 		},
 		"MoveAugment": {
@@ -1576,10 +1577,6 @@
 		"MoveNoRollAugment": {
 			"type": "object",
 			"properties": {
-				"roll_type": {
-					"const": "no_roll",
-					"type": "string"
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -1596,8 +1593,13 @@
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"roll_type": {
+					"const": "no_roll",
+					"type": "string"
 				}
 			},
+			"required": ["roll_type"],
 			"title": "MoveNoRollAugment"
 		},
 		"MoveOutcome": {
@@ -1747,10 +1749,6 @@
 		"MoveProgressRollAugment": {
 			"type": "object",
 			"properties": {
-				"roll_type": {
-					"const": "progress_roll",
-					"type": "string"
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -1767,8 +1765,13 @@
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"roll_type": {
+					"const": "progress_roll",
+					"type": "string"
 				}
 			},
+			"required": ["roll_type"],
 			"title": "MoveProgressRollAugment"
 		},
 		"MoveRollType": {
@@ -1852,10 +1855,6 @@
 		"MoveSpecialTrackAugment": {
 			"type": "object",
 			"properties": {
-				"roll_type": {
-					"const": "special_track",
-					"type": "string"
-				},
 				"trigger": {
 					"type": "object",
 					"properties": {
@@ -1872,8 +1871,13 @@
 					"items": {
 						"$ref": "#/$defs/MoveIDWildcard"
 					}
+				},
+				"roll_type": {
+					"const": "special_track",
+					"type": "string"
 				}
 			},
+			"required": ["roll_type"],
 			"title": "MoveSpecialTrackAugment"
 		},
 		"ProgressRollMethod": {
@@ -2056,25 +2060,45 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+					"default": "augment",
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
 					"anyOf": [
 						{
-							"$ref": "#/$defs/ActionRollMethod"
+							"const": "augment",
+							"type": "string"
 						},
 						{
-							"$ref": "#/$defs/MoveOutcomeType"
+							"default": "any",
+							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/ActionRollMethod"
+								},
+								{
+									"$ref": "#/$defs/MoveOutcomeType"
+								}
+							]
 						}
 					]
 				},
 				"roll_options": {
-					"description": "The options available when rolling with this trigger.",
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/ActionRollOption"
-					}
+					"default": null,
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"description": "The options available when rolling with this trigger.",
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/ActionRollOption"
+							}
+						}
+					]
 				}
 			},
+			"required": ["roll_options"],
 			"title": "TriggerActionRollConditionAugment"
 		},
 		"TriggerBase": {
@@ -2239,25 +2263,45 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+					"default": "augment",
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
 					"anyOf": [
 						{
-							"$ref": "#/$defs/ProgressRollMethod"
+							"const": "augment",
+							"type": "string"
 						},
 						{
-							"$ref": "#/$defs/MoveOutcomeType"
+							"default": "any",
+							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/ProgressRollMethod"
+								},
+								{
+									"$ref": "#/$defs/MoveOutcomeType"
+								}
+							]
 						}
 					]
 				},
 				"roll_options": {
-					"description": "The options available when rolling with this trigger.",
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/ProgressRollOption"
-					}
+					"default": null,
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"description": "The options available when rolling with this trigger.",
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/ProgressRollOption"
+							}
+						}
+					]
 				}
 			},
+			"required": ["roll_options"],
 			"title": "TriggerProgressRollConditionAugment"
 		},
 		"TriggerSpecialTrack": {
@@ -2337,25 +2381,45 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"default": "any",
-					"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+					"default": "augment",
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll method of its own.",
 					"anyOf": [
 						{
-							"$ref": "#/$defs/SpecialTrackRollMethod"
+							"const": "augment",
+							"type": "string"
 						},
 						{
-							"$ref": "#/$defs/MoveOutcomeType"
+							"default": "any",
+							"description": "Use a MoveOutcomeType for \"rolls\" that result in an automatic outcome.",
+							"anyOf": [
+								{
+									"$ref": "#/$defs/SpecialTrackRollMethod"
+								},
+								{
+									"$ref": "#/$defs/MoveOutcomeType"
+								}
+							]
 						}
 					]
 				},
 				"roll_options": {
-					"description": "The options available when rolling with this trigger.",
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
-					}
+					"default": null,
+					"description": "If this is null or undefined, this trigger condition augment specifies no roll options of its own.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"description": "The options available when rolling with this trigger.",
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
+							}
+						}
+					]
 				}
 			},
+			"required": ["roll_options"],
 			"title": "TriggerSpecialTrackConditionAugment"
 		},
 		"TriggerSpecialTrackConditionOption": {

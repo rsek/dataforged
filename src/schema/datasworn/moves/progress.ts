@@ -32,12 +32,17 @@ export const ProgressRollMethod = JsonEnumFromRecord(
 export type ProgressRollMethod = Static<typeof ProgressRollMethod>
 
 export const TriggerProgressRollCondition = composeTriggerRollCondition(
-	ProgressRollOption,
-	Type.Union([Type.Ref(ProgressRollMethod), Type.Ref(MoveOutcomeType)], {
-		default: 'any',
-		description:
-			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-	}),
+	{
+		optionSchema: Type.Ref(ProgressRollOption),
+		method: Type.Union(
+			[Type.Ref(ProgressRollMethod), Type.Ref(MoveOutcomeType)],
+			{
+				default: 'any',
+				description:
+					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+			}
+		)
+	},
 	{ $id: '#/$defs/TriggerProgressRollCondition' }
 )
 
@@ -136,12 +141,17 @@ export const SpecialTrackRollMethod = JsonEnumFromRecord(
 export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
 
 export const TriggerSpecialTrackCondition = composeTriggerRollCondition(
-	TriggerSpecialTrackConditionOption,
-	Type.Union([Type.Ref(SpecialTrackRollMethod), Type.Ref(MoveOutcomeType)], {
-		default: 'any',
-		description:
-			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-	}),
+	{
+		optionSchema: Type.Ref(TriggerSpecialTrackConditionOption),
+		method: Type.Union(
+			[Type.Ref(SpecialTrackRollMethod), Type.Ref(MoveOutcomeType)],
+			{
+				default: 'any',
+				description:
+					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+			}
+		)
+	},
 	{ $id: '#/$defs/TriggerSpecialTrackCondition' }
 )
 export type TriggerSpecialTrackCondition = Static<

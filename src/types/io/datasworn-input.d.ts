@@ -1453,60 +1453,60 @@ export interface AssetCheckboxField {
   disables_asset?: boolean;
 }
 export interface MoveActionRollAugment {
-  roll_type?: "action_roll";
   trigger?: {
     conditions?: TriggerActionRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  roll_type: "action_roll";
 }
 export interface TriggerActionRollConditionAugment {
   text?: MarkdownString19;
   by?: TriggerBy;
   /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method?: ActionRollMethod | MoveOutcomeType;
+  method?: "augment" | (ActionRollMethod | MoveOutcomeType);
   /**
-   * The options available when rolling with this trigger.
+   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */
-  roll_options?: ActionRollOption[];
+  roll_options: null | ActionRollOption[];
 }
 export interface MoveNoRollAugment {
-  roll_type?: "no_roll";
   trigger?: {
     conditions?: TriggerNoRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  roll_type: "no_roll";
 }
 export interface TriggerNoRollConditionAugment {
   text?: MarkdownString20;
   by?: TriggerBy;
 }
 export interface MoveProgressRollAugment {
-  roll_type?: "progress_roll";
   trigger?: {
     conditions?: TriggerProgressRollConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  roll_type: "progress_roll";
 }
 export interface TriggerProgressRollConditionAugment {
   text?: MarkdownString21;
   by?: TriggerBy;
   /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method?: ProgressRollMethod | MoveOutcomeType;
+  method?: "augment" | (ProgressRollMethod | MoveOutcomeType);
   /**
-   * The options available when rolling with this trigger.
+   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */
-  roll_options?: ProgressRollOption[];
+  roll_options: null | ProgressRollOption[];
 }
 export interface MoveSpecialTrackAugment {
-  roll_type?: "special_track";
   trigger?: {
     conditions?: TriggerSpecialTrackConditionAugment[];
   };
   augments?: MoveIDWithWildcard[];
+  roll_type: "special_track";
 }
 /**
  * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
@@ -1515,13 +1515,13 @@ export interface TriggerSpecialTrackConditionAugment {
   text?: MarkdownString22;
   by?: TriggerBy;
   /**
-   * Use a MoveOutcomeType for "rolls" that result in an automatic outcome.
+   * If this is null or undefined, this trigger condition augment specifies no roll method of its own.
    */
-  method?: SpecialTrackRollMethod | MoveOutcomeType;
+  method?: "augment" | (SpecialTrackRollMethod | MoveOutcomeType);
   /**
-   * The options available when rolling with this trigger.
+   * If this is null or undefined, this trigger condition augment specifies no roll options of its own.
    */
-  roll_options?: TriggerSpecialTrackConditionOption[];
+  roll_options: null | TriggerSpecialTrackConditionOption[];
 }
 /**
  * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".

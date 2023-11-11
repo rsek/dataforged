@@ -6,9 +6,11 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema
+	type TSchema,
+	TUnion,
+	TNull
 } from '@sinclair/typebox'
-import { camelCase } from 'lodash-es'
+import { camelCase, keyBy, map } from 'lodash-es'
 import { type Simplify } from 'type-fest'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
@@ -105,7 +107,7 @@ export function PartialExcept<T extends TObject, K extends keyof Static<T>>(
 export function RequireBy<T extends TObject, K extends keyof Static<T>>(
 	schema: T,
 	requiredKeys: K[],
-	options: SchemaOptions = {}
+	options: ObjectOptions = {}
 ) {
 	return Type.Composite(
 		[
@@ -115,6 +117,7 @@ export function RequireBy<T extends TObject, K extends keyof Static<T>>(
 		options
 	)
 }
+
 export type RequireBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 
 /** Make everything required except for the provided keys */

@@ -83,7 +83,7 @@ export async function buildSourcebook(
 
 	const toWrite: Promise<void>[] = []
 
-	for await (const [k, v] of Object.entries(sourcebook)) {
+	for (const [k, v] of Object.entries(sourcebook)) {
 		if (isMacroKey(k)) continue
 		if (metadataKeys.includes(k as any)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue

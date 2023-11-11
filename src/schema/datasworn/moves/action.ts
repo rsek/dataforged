@@ -94,12 +94,17 @@ export const ActionRollOption = Type.Intersect(
 export type ActionRollOption = Static<typeof ActionRollOption>
 
 export const TriggerActionRollCondition = composeTriggerRollCondition(
-	ActionRollOption,
-	Type.Union([Type.Ref(ActionRollMethod), Type.Ref(MoveOutcomeType)], {
-		default: 'any',
-		description:
-			'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
-	}),
+	{
+		method: Type.Union(
+			[Type.Ref(ActionRollMethod), Type.Ref(MoveOutcomeType)],
+			{
+				default: 'any',
+				description:
+					'Use a MoveOutcomeType for "rolls" that result in an automatic outcome.'
+			}
+		),
+		optionSchema: Type.Ref(ActionRollOption)
+	},
 	{ $id: '#/$defs/TriggerActionRollCondition' }
 )
 export type TriggerActionRollCondition = Static<
@@ -149,8 +154,7 @@ export type TriggerActionRollAugment = Static<typeof TriggerActionRollAugment>
 // TRIGGER: NO ROLL
 
 export const TriggerNoRollCondition = composeTriggerRollCondition(
-	undefined,
-	undefined,
+	{},
 	{
 		$id: '#/$defs/TriggerNoRollCondition'
 	}
