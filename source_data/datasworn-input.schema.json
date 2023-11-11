@@ -275,17 +275,17 @@
 			"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
 			"title": "AssetAttachment",
 			"properties": {
+				"max": {
+					"type": "integer",
+					"description": "Omit if there's no upper limit to the number of attached assets.",
+					"minimum": 1
+				},
 				"assets": {
 					"type": "array",
 					"description": "Asset IDs (which may be wildcards) that may be attached to this asset",
 					"items": {
 						"$ref": "#/$defs/AssetIDWildcard"
 					}
-				},
-				"max": {
-					"type": "integer",
-					"description": "Omit if there's no upper limit to the number of attached assets.",
-					"minimum": 1
 				}
 			},
 			"required": ["assets"]
@@ -301,6 +301,11 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"value": {
+					"type": "boolean",
+					"description": "Is the card flipped over?",
+					"default": false
+				},
 				"field_type": {
 					"type": "string",
 					"const": "card_flip"
@@ -308,11 +313,6 @@
 				"disables_asset": {
 					"type": "boolean",
 					"description": "Does this field disable the asset when its value is set to `true`?",
-					"default": false
-				},
-				"value": {
-					"type": "boolean",
-					"description": "Is the card flipped over?",
 					"default": false
 				}
 			},
@@ -328,6 +328,11 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"value": {
+					"type": "boolean",
+					"description": "Is the box checked?",
+					"default": false
+				},
 				"field_type": {
 					"type": "string",
 					"const": "checkbox"
@@ -340,11 +345,6 @@
 				"is_impact": {
 					"type": "boolean",
 					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
-					"default": false
-				},
-				"value": {
-					"type": "boolean",
-					"description": "Is the box checked?",
 					"default": false
 				}
 			},
@@ -361,6 +361,16 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"min": {
+					"type": "integer",
+					"default": 0
+				},
+				"max": {
+					"type": "integer"
+				},
+				"value": {
+					"type": "integer"
+				},
 				"controls": {
 					"type": "object",
 					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
@@ -370,13 +380,6 @@
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
-				},
-				"max": {
-					"type": "integer"
-				},
-				"min": {
-					"type": "integer",
-					"default": 0
 				},
 				"moves": {
 					"type": "object",
@@ -416,9 +419,6 @@
 						}
 					},
 					"releaseStage": "unstable"
-				},
-				"value": {
-					"type": "integer"
 				}
 			},
 			"required": ["max", "label"]
@@ -447,6 +447,9 @@
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
 			"title": "Asset condition meter",
 			"properties": {
+				"max": {
+					"type": "integer"
+				},
 				"controls": {
 					"type": "object",
 					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
@@ -456,9 +459,6 @@
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
-				},
-				"max": {
-					"type": "integer"
 				}
 			}
 		},
@@ -669,9 +669,6 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"your_truths": {
-					"$ref": "#/$defs/MarkdownString"
-				},
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
@@ -680,6 +677,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"releaseStage": "experimental",
@@ -728,14 +728,14 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
-				"field_type": {
-					"type": "string",
-					"const": "checkbox"
-				},
 				"value": {
 					"type": "boolean",
 					"description": "Is the box checked?",
 					"default": false
+				},
+				"field_type": {
+					"type": "string",
+					"const": "checkbox"
 				}
 			},
 			"required": ["label", "field_type"]
@@ -750,20 +750,20 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
-				"field_type": {
-					"type": "string",
-					"const": "clock"
-				},
-				"max": {
-					"enum": [4, 6, 8, 10]
-				},
 				"min": {
 					"type": "number",
 					"const": 0
 				},
+				"max": {
+					"enum": [4, 6, 8, 10]
+				},
 				"value": {
 					"type": "integer",
 					"default": 0
+				},
+				"field_type": {
+					"type": "string",
+					"const": "clock"
 				}
 			},
 			"required": ["label", "field_type", "min", "max"]
@@ -778,20 +778,20 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
-				"field_type": {
-					"type": "string",
-					"const": "counter"
-				},
-				"max": {
-					"type": "integer"
-				},
 				"min": {
 					"type": "number",
 					"const": 0
 				},
+				"max": {
+					"type": "integer"
+				},
 				"value": {
 					"type": "integer",
 					"default": 0
+				},
+				"field_type": {
+					"type": "string",
+					"const": "counter"
 				}
 			},
 			"required": ["label", "field_type", "min"]
@@ -838,17 +838,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "very_common"
+										"min": {
+											"type": "number",
+											"const": 1
 										},
 										"max": {
 											"type": "number",
 											"const": 27
 										},
-										"min": {
-											"type": "number",
-											"const": 1
+										"frequency": {
+											"type": "string",
+											"const": "very_common"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -856,17 +856,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "common"
+										"min": {
+											"type": "number",
+											"const": 28
 										},
 										"max": {
 											"type": "number",
 											"const": 41
 										},
-										"min": {
-											"type": "number",
-											"const": 28
+										"frequency": {
+											"type": "string",
+											"const": "common"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -874,17 +874,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "common"
+										"min": {
+											"type": "number",
+											"const": 42
 										},
 										"max": {
 											"type": "number",
 											"const": 55
 										},
-										"min": {
-											"type": "number",
-											"const": 42
+										"frequency": {
+											"type": "string",
+											"const": "common"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -892,17 +892,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "common"
+										"min": {
+											"type": "number",
+											"const": 56
 										},
 										"max": {
 											"type": "number",
 											"const": 69
 										},
-										"min": {
-											"type": "number",
-											"const": 56
+										"frequency": {
+											"type": "string",
+											"const": "common"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -910,17 +910,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "uncommon"
+										"min": {
+											"type": "number",
+											"const": 70
 										},
 										"max": {
 											"type": "number",
 											"const": 75
 										},
-										"min": {
-											"type": "number",
-											"const": 70
+										"frequency": {
+											"type": "string",
+											"const": "uncommon"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -928,17 +928,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "uncommon"
+										"min": {
+											"type": "number",
+											"const": 76
 										},
 										"max": {
 											"type": "number",
 											"const": 81
 										},
-										"min": {
-											"type": "number",
-											"const": 76
+										"frequency": {
+											"type": "string",
+											"const": "uncommon"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -946,17 +946,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "uncommon"
+										"min": {
+											"type": "number",
+											"const": 82
 										},
 										"max": {
 											"type": "number",
 											"const": 87
 										},
-										"min": {
-											"type": "number",
-											"const": 82
+										"frequency": {
+											"type": "string",
+											"const": "uncommon"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -964,17 +964,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "uncommon"
+										"min": {
+											"type": "number",
+											"const": 88
 										},
 										"max": {
 											"type": "number",
 											"const": 93
 										},
-										"min": {
-											"type": "number",
-											"const": 88
+										"frequency": {
+											"type": "string",
+											"const": "uncommon"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -982,17 +982,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "rare"
+										"min": {
+											"type": "number",
+											"const": 94
 										},
 										"max": {
 											"type": "number",
 											"const": 95
 										},
-										"min": {
-											"type": "number",
-											"const": 94
+										"frequency": {
+											"type": "string",
+											"const": "rare"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -1000,17 +1000,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "rare"
+										"min": {
+											"type": "number",
+											"const": 96
 										},
 										"max": {
 											"type": "number",
 											"const": 97
 										},
-										"min": {
-											"type": "number",
-											"const": 96
+										"frequency": {
+											"type": "string",
+											"const": "rare"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -1018,17 +1018,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "rare"
+										"min": {
+											"type": "number",
+											"const": 98
 										},
 										"max": {
 											"type": "number",
 											"const": 99
 										},
-										"min": {
-											"type": "number",
-											"const": 98
+										"frequency": {
+											"type": "string",
+											"const": "rare"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -1036,17 +1036,17 @@
 								{
 									"type": "object",
 									"properties": {
-										"frequency": {
-											"type": "string",
-											"const": "unforeseen"
+										"min": {
+											"type": "number",
+											"const": 100
 										},
 										"max": {
 											"type": "number",
 											"const": 100
 										},
-										"min": {
-											"type": "number",
-											"const": 100
+										"frequency": {
+											"type": "string",
+											"const": "unforeseen"
 										}
 									},
 									"required": ["min", "max", "frequency"]
@@ -1102,18 +1102,18 @@
 				"name": {
 					"$ref": "#/$defs/Label"
 				},
-				"frequency": {
-					"$ref": "#/$defs/DelveSiteDenizenFrequency"
+				"min": {
+					"type": "integer",
+					"maximum": 100,
+					"minimum": 1
 				},
 				"max": {
 					"type": "integer",
 					"maximum": 100,
 					"minimum": 1
 				},
-				"min": {
-					"type": "integer",
-					"maximum": 100,
-					"minimum": 1
+				"frequency": {
+					"$ref": "#/$defs/DelveSiteDenizenFrequency"
 				},
 				"npc": {
 					"description": "The ID of the relevant NPC entry, if one is specified.",
@@ -1168,13 +1168,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 43
-										},
 										"min": {
 											"type": "number",
 											"const": 21
+										},
+										"max": {
+											"type": "number",
+											"const": 43
 										}
 									},
 									"required": ["min", "max"]
@@ -1182,13 +1182,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 56
-										},
 										"min": {
 											"type": "number",
 											"const": 44
+										},
+										"max": {
+											"type": "number",
+											"const": 56
 										}
 									},
 									"required": ["min", "max"]
@@ -1196,13 +1196,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 64
-										},
 										"min": {
 											"type": "number",
 											"const": 57
+										},
+										"max": {
+											"type": "number",
+											"const": 64
 										}
 									},
 									"required": ["min", "max"]
@@ -1210,13 +1210,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 68
-										},
 										"min": {
 											"type": "number",
 											"const": 65
+										},
+										"max": {
+											"type": "number",
+											"const": 68
 										}
 									},
 									"required": ["min", "max"]
@@ -1224,13 +1224,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 72
-										},
 										"min": {
 											"type": "number",
 											"const": 69
+										},
+										"max": {
+											"type": "number",
+											"const": 72
 										}
 									},
 									"required": ["min", "max"]
@@ -1238,13 +1238,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 76
-										},
 										"min": {
 											"type": "number",
 											"const": 73
+										},
+										"max": {
+											"type": "number",
+											"const": 76
 										}
 									},
 									"required": ["min", "max"]
@@ -1252,13 +1252,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 80
-										},
 										"min": {
 											"type": "number",
 											"const": 77
+										},
+										"max": {
+											"type": "number",
+											"const": 80
 										}
 									},
 									"required": ["min", "max"]
@@ -1266,13 +1266,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 84
-										},
 										"min": {
 											"type": "number",
 											"const": 81
+										},
+										"max": {
+											"type": "number",
+											"const": 84
 										}
 									},
 									"required": ["min", "max"]
@@ -1280,13 +1280,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 88
-										},
 										"min": {
 											"type": "number",
 											"const": 85
+										},
+										"max": {
+											"type": "number",
+											"const": 88
 										}
 									},
 									"required": ["min", "max"]
@@ -1294,16 +1294,16 @@
 								{
 									"type": "object",
 									"properties": {
-										"result": {
-											"default": "Something unusual or unexpected"
+										"min": {
+											"type": "number",
+											"const": 89
 										},
 										"max": {
 											"type": "number",
 											"const": 98
 										},
-										"min": {
-											"type": "number",
-											"const": 89
+										"result": {
+											"default": "Something unusual or unexpected"
 										},
 										"suggestions": {
 											"default": {
@@ -1319,16 +1319,16 @@
 								{
 									"type": "object",
 									"properties": {
-										"result": {
-											"default": "You transition into a new theme"
+										"min": {
+											"type": "number",
+											"const": 99
 										},
 										"max": {
 											"type": "number",
 											"const": 99
 										},
-										"min": {
-											"type": "number",
-											"const": 99
+										"result": {
+											"default": "You transition into a new theme"
 										},
 										"suggestions": {
 											"default": {
@@ -1341,16 +1341,16 @@
 								{
 									"type": "object",
 									"properties": {
-										"result": {
-											"default": "You transition into a new domain"
+										"min": {
+											"type": "number",
+											"const": 100
 										},
 										"max": {
 											"type": "number",
 											"const": 100
 										},
-										"min": {
-											"type": "number",
-											"const": 100
+										"result": {
+											"default": "You transition into a new domain"
 										},
 										"suggestions": {
 											"default": {
@@ -1390,13 +1390,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 33
-										},
 										"min": {
 											"type": "number",
 											"const": 31
+										},
+										"max": {
+											"type": "number",
+											"const": 33
 										}
 									},
 									"required": ["min", "max"]
@@ -1404,13 +1404,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 36
-										},
 										"min": {
 											"type": "number",
 											"const": 34
+										},
+										"max": {
+											"type": "number",
+											"const": 36
 										}
 									},
 									"required": ["min", "max"]
@@ -1418,13 +1418,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 39
-										},
 										"min": {
 											"type": "number",
 											"const": 37
+										},
+										"max": {
+											"type": "number",
+											"const": 39
 										}
 									},
 									"required": ["min", "max"]
@@ -1432,13 +1432,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 42
-										},
 										"min": {
 											"type": "number",
 											"const": 40
+										},
+										"max": {
+											"type": "number",
+											"const": 42
 										}
 									},
 									"required": ["min", "max"]
@@ -1446,13 +1446,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 45
-										},
 										"min": {
 											"type": "number",
 											"const": 43
+										},
+										"max": {
+											"type": "number",
+											"const": 45
 										}
 									},
 									"required": ["min", "max"]
@@ -1487,6 +1487,12 @@
 				"id": {
 					"$ref": "#/$defs/DomainDangerRowID"
 				},
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
@@ -1504,12 +1510,6 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
-				},
-				"max": {
-					"type": "integer"
-				},
-				"min": {
-					"type": "integer"
 				},
 				"rolls": {
 					"type": "array",
@@ -1533,6 +1533,12 @@
 				"id": {
 					"$ref": "#/$defs/DomainFeatureRowID"
 				},
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
@@ -1550,12 +1556,6 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
-				},
-				"max": {
-					"type": "integer"
-				},
-				"min": {
-					"type": "integer"
 				},
 				"rolls": {
 					"type": "array",
@@ -1620,13 +1620,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 4
-										},
 										"min": {
 											"type": "number",
 											"const": 1
+										},
+										"max": {
+											"type": "number",
+											"const": 4
 										}
 									},
 									"required": ["min", "max"]
@@ -1634,13 +1634,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 8
-										},
 										"min": {
 											"type": "number",
 											"const": 5
+										},
+										"max": {
+											"type": "number",
+											"const": 8
 										}
 									},
 									"required": ["min", "max"]
@@ -1648,13 +1648,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 12
-										},
 										"min": {
 											"type": "number",
 											"const": 9
+										},
+										"max": {
+											"type": "number",
+											"const": 12
 										}
 									},
 									"required": ["min", "max"]
@@ -1662,13 +1662,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 16
-										},
 										"min": {
 											"type": "number",
 											"const": 13
+										},
+										"max": {
+											"type": "number",
+											"const": 16
 										}
 									},
 									"required": ["min", "max"]
@@ -1676,13 +1676,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 20
-										},
 										"min": {
 											"type": "number",
 											"const": 17
+										},
+										"max": {
+											"type": "number",
+											"const": 20
 										}
 									},
 									"required": ["min", "max"]
@@ -1717,13 +1717,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 5
-										},
 										"min": {
 											"type": "number",
 											"const": 1
+										},
+										"max": {
+											"type": "number",
+											"const": 5
 										}
 									},
 									"required": ["min", "max"]
@@ -1731,13 +1731,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 10
-										},
 										"min": {
 											"type": "number",
 											"const": 6
+										},
+										"max": {
+											"type": "number",
+											"const": 10
 										}
 									},
 									"required": ["min", "max"]
@@ -1745,13 +1745,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 12
-										},
 										"min": {
 											"type": "number",
 											"const": 11
+										},
+										"max": {
+											"type": "number",
+											"const": 12
 										}
 									},
 									"required": ["min", "max"]
@@ -1759,13 +1759,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 14
-										},
 										"min": {
 											"type": "number",
 											"const": 13
+										},
+										"max": {
+											"type": "number",
+											"const": 14
 										}
 									},
 									"required": ["min", "max"]
@@ -1773,13 +1773,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 16
-										},
 										"min": {
 											"type": "number",
 											"const": 15
+										},
+										"max": {
+											"type": "number",
+											"const": 16
 										}
 									},
 									"required": ["min", "max"]
@@ -1787,13 +1787,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 18
-										},
 										"min": {
 											"type": "number",
 											"const": 17
+										},
+										"max": {
+											"type": "number",
+											"const": 18
 										}
 									},
 									"required": ["min", "max"]
@@ -1801,13 +1801,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 20
-										},
 										"min": {
 											"type": "number",
 											"const": 19
+										},
+										"max": {
+											"type": "number",
+											"const": 20
 										}
 									},
 									"required": ["min", "max"]
@@ -1815,13 +1815,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 22
-										},
 										"min": {
 											"type": "number",
 											"const": 21
+										},
+										"max": {
+											"type": "number",
+											"const": 22
 										}
 									},
 									"required": ["min", "max"]
@@ -1829,13 +1829,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 24
-										},
 										"min": {
 											"type": "number",
 											"const": 23
+										},
+										"max": {
+											"type": "number",
+											"const": 24
 										}
 									},
 									"required": ["min", "max"]
@@ -1843,13 +1843,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 26
-										},
 										"min": {
 											"type": "number",
 											"const": 25
+										},
+										"max": {
+											"type": "number",
+											"const": 26
 										}
 									},
 									"required": ["min", "max"]
@@ -1857,13 +1857,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 28
-										},
 										"min": {
 											"type": "number",
 											"const": 27
+										},
+										"max": {
+											"type": "number",
+											"const": 28
 										}
 									},
 									"required": ["min", "max"]
@@ -1871,13 +1871,13 @@
 								{
 									"type": "object",
 									"properties": {
-										"max": {
-											"type": "number",
-											"const": 30
-										},
 										"min": {
 											"type": "number",
 											"const": 29
+										},
+										"max": {
+											"type": "number",
+											"const": 30
 										}
 									},
 									"required": ["min", "max"]
@@ -1908,6 +1908,12 @@
 				"id": {
 					"$ref": "#/$defs/ThemeDangerRowID"
 				},
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
@@ -1925,12 +1931,6 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
-				},
-				"max": {
-					"type": "integer"
-				},
-				"min": {
-					"type": "integer"
 				},
 				"rolls": {
 					"type": "array",
@@ -1954,6 +1954,12 @@
 				"id": {
 					"$ref": "#/$defs/ThemeFeatureRowID"
 				},
+				"min": {
+					"type": "integer"
+				},
+				"max": {
+					"type": "integer"
+				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
@@ -1971,12 +1977,6 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
-				},
-				"max": {
-					"type": "integer"
-				},
-				"min": {
-					"type": "integer"
 				},
 				"rolls": {
 					"type": "array",
@@ -2617,9 +2617,6 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"your_truths": {
-					"$ref": "#/$defs/MarkdownString"
-				},
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
@@ -2637,6 +2634,9 @@
 							"$ref": "#/$defs/NpcVariant"
 						}
 					}
+				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"required": [
@@ -3088,6 +3088,16 @@
 				"id": {
 					"$ref": "#/$defs/OracleTableRowID"
 				},
+				"min": {
+					"type": ["integer", "null"],
+					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
+					"default": null
+				},
+				"max": {
+					"type": ["integer", "null"],
+					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
+					"default": null
+				},
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
@@ -3105,16 +3115,6 @@
 				},
 				"i18n": {
 					"$ref": "#/$defs/I18nHints"
-				},
-				"max": {
-					"type": ["integer", "null"],
-					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
-					"default": null
-				},
-				"min": {
-					"type": ["integer", "null"],
-					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
-					"default": null
 				},
 				"rolls": {
 					"type": "array",
@@ -3270,13 +3270,13 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
-				"using": {
-					"type": "string",
-					"const": "custom"
-				},
 				"value": {
 					"type": "integer",
 					"minimum": 0
+				},
+				"using": {
+					"type": "string",
+					"const": "custom"
 				}
 			},
 			"required": ["using", "label", "value"]
@@ -3337,6 +3337,24 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"value": {
+					"type": "object",
+					"properties": {
+						"attachments": {
+							"$ref": "#/$defs/AssetAttachment"
+						},
+						"count_as_impact": {
+							"type": "boolean",
+							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
+							"default": false
+						},
+						"shared": {
+							"type": "boolean",
+							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
+							"default": false
+						}
+					}
+				},
 				"field_type": {
 					"type": "string",
 					"const": "select_asset_state"
@@ -3350,9 +3368,6 @@
 							"properties": {
 								"label": {
 									"$ref": "#/$defs/Label"
-								},
-								"selected": {
-									"type": "boolean"
 								},
 								"value": {
 									"type": "object",
@@ -3371,27 +3386,12 @@
 											"default": false
 										}
 									}
+								},
+								"selected": {
+									"type": "boolean"
 								}
 							},
 							"required": ["label", "value"]
-						}
-					}
-				},
-				"value": {
-					"type": "object",
-					"properties": {
-						"attachments": {
-							"$ref": "#/$defs/AssetAttachment"
-						},
-						"count_as_impact": {
-							"type": "boolean",
-							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).",
-							"default": false
-						},
-						"shared": {
-							"type": "boolean",
-							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.",
-							"default": false
 						}
 					}
 				}
@@ -3409,6 +3409,9 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"value": {
+					"$ref": "#/$defs/PlayerStat"
+				},
 				"field_type": {
 					"type": "string",
 					"const": "select_stat"
@@ -3423,19 +3426,16 @@
 								"label": {
 									"$ref": "#/$defs/Label"
 								},
-								"selected": {
-									"type": "boolean"
-								},
 								"value": {
 									"$ref": "#/$defs/PlayerStat"
+								},
+								"selected": {
+									"type": "boolean"
 								}
 							},
 							"required": ["label", "value"]
 						}
 					}
-				},
-				"value": {
-					"$ref": "#/$defs/PlayerStat"
 				}
 			},
 			"required": ["label", "field_type", "choices"]
@@ -3610,12 +3610,12 @@
 				"label": {
 					"$ref": "#/$defs/Label"
 				},
+				"value": {
+					"type": "string"
+				},
 				"field_type": {
 					"type": "string",
 					"const": "text"
-				},
-				"value": {
-					"type": "string"
 				}
 			},
 			"required": ["label", "field_type"]

@@ -162,7 +162,7 @@ export function Cyclopedia<T extends TProperties>(
 			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			description: Type.Ref(Localize.MarkdownString),
 			quest_starter: Type.Ref(Localize.MarkdownString),
-			your_truths: Type.Optional(Type.Ref(Localize.MarkdownString)),
+			your_truth: Type.Optional(Type.Ref(Localize.MarkdownString)),
 			...properties
 		}),
 		options

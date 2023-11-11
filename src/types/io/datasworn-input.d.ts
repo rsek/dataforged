@@ -634,13 +634,13 @@ export interface Asset {
  */
 export interface AssetAttachment {
   /**
-   * Asset IDs (which may be wildcards) that may be attached to this asset
-   */
-  assets: AssetIDWildcard[];
-  /**
    * Omit if there's no upper limit to the number of attached assets.
    */
   max?: number;
+  /**
+   * Asset IDs (which may be wildcards) that may be attached to this asset
+   */
+  assets: AssetIDWildcard[];
 }
 /**
  * Select a standard player stat.
@@ -648,6 +648,7 @@ export interface AssetAttachment {
 export interface SelectFieldPlayerStat {
   id?: string;
   label: Label;
+  value?: PlayerStat;
   field_type: "select_stat";
   choices: {
     /**
@@ -656,17 +657,16 @@ export interface SelectFieldPlayerStat {
      */
     [k: string]: {
       label: Label;
-      selected?: boolean;
       value: PlayerStat;
+      selected?: boolean;
     };
   };
-  value?: PlayerStat;
 }
 export interface TextField {
   id?: string;
   label: Label;
-  field_type: "text";
   value?: string;
+  field_type: "text";
 }
 export interface AssetAbility {
   id?: AssetAbilityID;
@@ -708,18 +708,18 @@ export interface AssetAbility {
 export interface ClockField {
   id?: string;
   label: Label;
-  field_type: "clock";
-  max: 4 | 6 | 8 | 10;
   min: 0;
+  max: 4 | 6 | 8 | 10;
   value?: number;
+  field_type: "clock";
 }
 export interface CounterField {
   id?: string;
   label: Label;
-  field_type: "counter";
-  max?: number;
   min: 0;
+  max?: number;
   value?: number;
+  field_type: "counter";
 }
 /**
  * This input represents a checkbox field. It is considered checked when its value is set to `true`.
@@ -727,11 +727,11 @@ export interface CounterField {
 export interface CheckboxField {
   id?: string;
   label: Label;
-  field_type: "checkbox";
   /**
    * Is the box checked?
    */
   value?: boolean;
+  field_type: "checkbox";
 }
 /**
  * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
@@ -739,17 +739,21 @@ export interface CheckboxField {
  * The asset condition meter is always rendered at the bottom of the card.
  */
 export interface AssetConditionMeter {
+  max?: number;
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
-  max?: number;
 }
 export interface AssetCheckboxField {
   id?: string;
   label: Label;
+  /**
+   * Is the box checked?
+   */
+  value?: boolean;
   field_type: "checkbox";
   /**
    * Does this field disable the asset when its value is set to `true`?
@@ -759,10 +763,6 @@ export interface AssetCheckboxField {
    * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
    */
   is_impact?: boolean;
-  /**
-   * Is the box checked?
-   */
-  value?: boolean;
 }
 export interface MoveActionRollEnhance {
   /**
@@ -810,8 +810,8 @@ export interface RollOptionAttachedAssetRef {
 }
 export interface RollOptionCustom {
   label: Label;
-  using: "custom";
   value: number;
+  using: "custom";
 }
 export interface MoveNoRollEnhance {
   /**
@@ -1048,14 +1048,15 @@ export interface TriggerSpecialTrackCondition {
 export interface AssetConditionMeter1 {
   id?: AssetConditionMeterID;
   label: Label;
+  min?: number;
+  max: number;
+  value?: number;
   /**
    * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
-  max: number;
-  min?: number;
   /**
    * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
    */
@@ -1063,7 +1064,6 @@ export interface AssetConditionMeter1 {
     recover?: MoveID5;
     suffer?: MoveID6;
   };
-  value?: number;
 }
 /**
  * This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.
@@ -1074,15 +1074,15 @@ export interface AssetConditionMeter1 {
 export interface AssetCardFlipField {
   id?: string;
   label: Label;
+  /**
+   * Is the card flipped over?
+   */
+  value?: boolean;
   field_type: "card_flip";
   /**
    * Does this field disable the asset when its value is set to `true`?
    */
   disables_asset?: boolean;
-  /**
-   * Is the card flipped over?
-   */
-  value?: boolean;
 }
 /**
  * Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
@@ -1090,6 +1090,17 @@ export interface AssetCardFlipField {
 export interface SelectFieldAssetState {
   id?: string;
   label: Label;
+  value?: {
+    attachments?: AssetAttachment;
+    /**
+     * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
+     */
+    count_as_impact?: boolean;
+    /**
+     * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
+     */
+    shared?: boolean;
+  };
   field_type: "select_asset_state";
   choices: {
     /**
@@ -1098,7 +1109,6 @@ export interface SelectFieldAssetState {
      */
     [k: string]: {
       label: Label;
-      selected?: boolean;
       value: {
         attachments?: AssetAttachment;
         /**
@@ -1110,18 +1120,8 @@ export interface SelectFieldAssetState {
          */
         shared?: boolean;
       };
+      selected?: boolean;
     };
-  };
-  value?: {
-    attachments?: AssetAttachment;
-    /**
-     * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-     */
-    count_as_impact?: boolean;
-    /**
-     * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-     */
-    shared?: boolean;
   };
 }
 /**
@@ -1158,10 +1158,10 @@ export interface AtlasEntry {
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
-  your_truths?: MarkdownString;
   source: Source;
   canonical_name?: Label;
   suggestions?: Suggestions;
+  your_truth?: MarkdownString;
 }
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -1180,64 +1180,64 @@ export interface DelveSite {
   denizens: DelveSiteDenizen[] &
     [
       {
-        frequency: "very_common";
-        max: 27;
         min: 1;
+        max: 27;
+        frequency: "very_common";
       },
       {
-        frequency: "common";
-        max: 41;
         min: 28;
+        max: 41;
+        frequency: "common";
       },
       {
-        frequency: "common";
-        max: 55;
         min: 42;
-      },
-      {
+        max: 55;
         frequency: "common";
-        max: 69;
+      },
+      {
         min: 56;
+        max: 69;
+        frequency: "common";
       },
       {
-        frequency: "uncommon";
-        max: 75;
         min: 70;
+        max: 75;
+        frequency: "uncommon";
       },
       {
-        frequency: "uncommon";
-        max: 81;
         min: 76;
+        max: 81;
+        frequency: "uncommon";
       },
       {
-        frequency: "uncommon";
-        max: 87;
         min: 82;
-      },
-      {
+        max: 87;
         frequency: "uncommon";
-        max: 93;
+      },
+      {
         min: 88;
+        max: 93;
+        frequency: "uncommon";
       },
       {
-        frequency: "rare";
-        max: 95;
         min: 94;
+        max: 95;
+        frequency: "rare";
       },
       {
-        frequency: "rare";
-        max: 97;
         min: 96;
-      },
-      {
+        max: 97;
         frequency: "rare";
-        max: 99;
-        min: 98;
       },
       {
-        frequency: "unforeseen";
-        max: 100;
+        min: 98;
+        max: 99;
+        frequency: "rare";
+      },
+      {
         min: 100;
+        max: 100;
+        frequency: "unforeseen";
       }
     ];
   domain: DelveSiteDomainID;
@@ -1252,9 +1252,9 @@ export interface DelveSite {
 export interface DelveSiteDenizen {
   id?: DelveSiteDenizenID;
   name?: Label;
-  frequency: DelveSiteDenizenFrequency;
-  max: number;
   min: number;
+  max: number;
+  frequency: DelveSiteDenizenFrequency;
   npc?: NpcID1;
 }
 /**
@@ -1310,13 +1310,13 @@ export interface Npc {
   tactics: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
-  your_truths?: MarkdownString;
   source: Source;
   canonical_name?: Label;
   suggestions?: Suggestions;
   variants?: {
     [k: string]: NpcVariant;
   };
+  your_truth?: MarkdownString;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1397,20 +1397,20 @@ export interface OracleTableRendering {
 }
 export interface OracleTableRow {
   id?: OracleTableRowID;
+  /**
+   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  min: number | null;
+  /**
+   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
+   */
+  max: number | null;
   icon?: SVGImageURL;
   result: MarkdownString;
   summary?: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableID;
   i18n?: I18NHints1;
-  /**
-   * High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  max: number | null;
-  /**
-   * Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.
-   */
-  min: number | null;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   template?: OracleRollTemplate;
@@ -1510,61 +1510,61 @@ export interface DelveSiteDomain {
   features: DelveSiteDomainFeatureRow[] &
     [
       {
-        max: 43;
         min: 21;
+        max: 43;
       },
       {
-        max: 56;
         min: 44;
+        max: 56;
       },
       {
-        max: 64;
         min: 57;
+        max: 64;
       },
       {
-        max: 68;
         min: 65;
+        max: 68;
       },
       {
-        max: 72;
         min: 69;
+        max: 72;
       },
       {
-        max: 76;
         min: 73;
+        max: 76;
       },
       {
-        max: 80;
         min: 77;
+        max: 80;
       },
       {
-        max: 84;
         min: 81;
+        max: 84;
       },
       {
-        max: 88;
         min: 85;
+        max: 88;
       },
       {
-        result?: string;
-        max: 98;
         min: 89;
+        max: 98;
+        result?: string;
         suggestions?: {
           [k: string]: unknown;
         };
       },
       {
-        result?: string;
-        max: 99;
         min: 99;
+        max: 99;
+        result?: string;
         suggestions?: {
           [k: string]: unknown;
         };
       },
       {
-        result?: string;
-        max: 100;
         min: 100;
+        max: 100;
+        result?: string;
         suggestions?: {
           [k: string]: unknown;
         };
@@ -1576,24 +1576,24 @@ export interface DelveSiteDomain {
   dangers: DelveSiteDomainDangerRow[] &
     [
       {
-        max: 33;
         min: 31;
+        max: 33;
       },
       {
-        max: 36;
         min: 34;
+        max: 36;
       },
       {
-        max: 39;
         min: 37;
+        max: 39;
       },
       {
-        max: 42;
         min: 40;
+        max: 42;
       },
       {
-        max: 45;
         min: 43;
+        max: 45;
       }
     ];
   name_oracle?: OracleTableID3;
@@ -1601,28 +1601,28 @@ export interface DelveSiteDomain {
 }
 export interface DelveSiteDomainFeatureRow {
   id?: DomainFeatureRowID;
+  min: number;
+  max: number;
   icon?: SVGImageURL;
   result: MarkdownString;
   summary?: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableID;
   i18n?: I18NHints1;
-  max: number;
-  min: number;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   template?: OracleRollTemplate;
 }
 export interface DelveSiteDomainDangerRow {
   id?: DomainDangerRowID;
+  min: number;
+  max: number;
   icon?: SVGImageURL;
   result: MarkdownString;
   summary?: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableID;
   i18n?: I18NHints1;
-  max: number;
-  min: number;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   template?: OracleRollTemplate;
@@ -1640,24 +1640,24 @@ export interface DelveSiteTheme {
   features: DelveSiteThemeFeatureRow[] &
     [
       {
-        max: 4;
         min: 1;
+        max: 4;
       },
       {
-        max: 8;
         min: 5;
+        max: 8;
       },
       {
-        max: 12;
         min: 9;
+        max: 12;
       },
       {
-        max: 16;
         min: 13;
+        max: 16;
       },
       {
-        max: 20;
         min: 17;
+        max: 20;
       }
     ];
   description?: MarkdownString;
@@ -1666,80 +1666,80 @@ export interface DelveSiteTheme {
   dangers: DelveSiteThemeDangerRow[] &
     [
       {
-        max: 5;
         min: 1;
+        max: 5;
       },
       {
-        max: 10;
         min: 6;
+        max: 10;
       },
       {
-        max: 12;
         min: 11;
+        max: 12;
       },
       {
-        max: 14;
         min: 13;
+        max: 14;
       },
       {
-        max: 16;
         min: 15;
+        max: 16;
       },
       {
-        max: 18;
         min: 17;
+        max: 18;
       },
       {
-        max: 20;
         min: 19;
+        max: 20;
       },
       {
-        max: 22;
         min: 21;
+        max: 22;
       },
       {
-        max: 24;
         min: 23;
+        max: 24;
       },
       {
-        max: 26;
         min: 25;
+        max: 26;
       },
       {
-        max: 28;
         min: 27;
+        max: 28;
       },
       {
-        max: 30;
         min: 29;
+        max: 30;
       }
     ];
   suggestions?: Suggestions;
 }
 export interface DelveSiteThemeFeatureRow {
   id?: ThemeFeatureRowID;
+  min: number;
+  max: number;
   icon?: SVGImageURL;
   result: MarkdownString;
   summary?: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableID;
   i18n?: I18NHints1;
-  max: number;
-  min: number;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   template?: OracleRollTemplate;
 }
 export interface DelveSiteThemeDangerRow {
   id?: ThemeDangerRowID;
+  min: number;
+  max: number;
   icon?: SVGImageURL;
   result: MarkdownString;
   summary?: MarkdownString;
   description?: MarkdownString;
   embed_table?: OracleTableID;
   i18n?: I18NHints1;
-  max: number;
-  min: number;
   rolls?: OracleTableRoll[];
   suggestions?: Suggestions;
   template?: OracleRollTemplate;
