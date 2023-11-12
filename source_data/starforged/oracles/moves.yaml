@@ -209,10 +209,11 @@ oracles:
             # suggestions: [*roll:Event]
           - min: 91
             max: 100
-            result: Roll twice
-            rolls:
-              - times: 2
-                auto: true
+            <<: &RollTwice
+              result: Roll twice
+              rolls:
+                - times: 2
+                  auto: true
       confront_chaos:
         name: Confront Chaos
         source:
@@ -466,7 +467,4 @@ oracles:
             result: You are delayed or put at a disadvantage
           - min: 96
             max: 100
-            result: Roll twice
-            rolls:
-              - times: 2
-                auto: true
+            <<: *RollTwice
