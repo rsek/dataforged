@@ -93,7 +93,6 @@ export type ActionRollOption = {
  * A basic, rollable player character resource.
  */
 export type PlayerConditionMeter = string;
-export type AssetConditionMeterID = string;
 export type AssetConditionMeterIDWildcard = string;
 export type AssetOptionFieldIDWildcard = string;
 /**
@@ -295,6 +294,7 @@ export type MarkdownString16 = string;
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID4 = string;
+export type AssetConditionMeterID = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -803,7 +803,7 @@ export interface RollOptionConditionMeter {
 }
 export interface RollOptionRef {
   using: "ref";
-  ref: AssetConditionMeterID | AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
 }
 export interface RollOptionAttachedAssetRef {
   using: "attached_asset_meter";
@@ -1308,14 +1308,14 @@ export interface Npc {
   features: MarkdownString[];
   drives: MarkdownString[];
   tactics: MarkdownString[];
+  variants?: {
+    [k: string]: NpcVariant;
+  };
   description: MarkdownString;
   quest_starter: MarkdownString;
   source: Source;
   canonical_name?: Label;
   suggestions?: Suggestions;
-  variants?: {
-    [k: string]: NpcVariant;
-  };
   your_truth?: MarkdownString;
 }
 /**

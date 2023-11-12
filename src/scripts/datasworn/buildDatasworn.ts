@@ -20,7 +20,7 @@ const isMacroKey = (key: string) => key.startsWith('_')
 
 /** Builds all YAML files for a given package configuration */
 export async function buildSourcebook(
-	{ id, paths }: DataPackageConfig,
+	{ id, paths, pkg }: DataPackageConfig,
 	schemaIdIn: string,
 	schemaIdOut: string
 ) {

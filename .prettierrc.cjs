@@ -8,7 +8,7 @@ const enabledKeys = /^(enabled)$/
 const optionsKeys = /^(options)$/
 const usageKeys = /^(count_as_impact|shared|attachments|using|trigger)$/
 const shortTextKeys = /^(summary|requirement|result)$/
-const primaryContentKeys = /^(description|text)$/
+const longTextKeys = /^(description|text)$/
 const childObjectKeys = /^(abilities|contents|collections|outcomes)$/
 const secondaryContentKeys = /^(quest_starter|your_truths)$/
 const controlsKeys = /^(controls|condition_meter)$/
@@ -39,7 +39,8 @@ const jsonSortOrder = {
 	strong_hit: 'lexical',
 	weak_hit: 'lexical',
 	miss: 'lexical',
-	[primaryContentKeys]: 'lexical',
+	variants: 'lexical',
+	[longTextKeys]: 'lexical',
 	[childObjectKeys]: 'lexical',
 	[secondaryContentKeys]: 'lexical',
 	[controlsKeys]: 'lexical',

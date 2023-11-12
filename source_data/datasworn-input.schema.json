@@ -2609,6 +2609,15 @@
 						"$ref": "#/$defs/MarkdownString"
 					}
 				},
+				"variants": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/NpcVariant"
+						}
+					}
+				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
@@ -2623,15 +2632,6 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
-				},
-				"variants": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"$ref": "#/$defs/NpcVariant"
-						}
-					}
 				},
 				"your_truth": {
 					"$ref": "#/$defs/MarkdownString"
@@ -3289,9 +3289,6 @@
 				},
 				"ref": {
 					"anyOf": [
-						{
-							"$ref": "#/$defs/AssetConditionMeterID"
-						},
 						{
 							"$ref": "#/$defs/AssetConditionMeterIDWildcard"
 						},

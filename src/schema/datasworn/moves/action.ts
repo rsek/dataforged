@@ -32,7 +32,6 @@ export const RollOptionRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
-			Type.Ref(ID.AssetConditionMeterID),
 			Type.Ref(ID.AssetConditionMeterIDWildcard),
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
