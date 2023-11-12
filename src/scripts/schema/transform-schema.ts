@@ -78,7 +78,8 @@ function prepareSchemaDef(schema: JsonSchema.JsonSchema, pointer: JsonPointer) {
 /** Mutates schema */
 // TODO: could this be rewritten with typebox?
 function prepareInputSchemaDef(schema: JSONSchema7) {
-	if (schema.title !== 'Datasworn') schema = setOptional(schema, 'id')
+	// inference: its='s the root schema
+	if (!schema.$id?.startsWith('http')) schema = setOptional(schema, 'id')
 	schema = setOptionalWhenDefault(schema)
 	schema = addSourceCascade(schema)
 	return schema

@@ -5,12 +5,12 @@ import {
 	transform
 } from './transformer.js'
 import { trackID } from './id-tracker.js'
-import {
-	type DelveSiteCardRowType,
-	type DelveSiteCardType
-} from '../schema/delve-sites.js'
 import { cloneDeep } from 'lodash-es'
 import { In, Out } from '../types/index.js'
+import {
+	DelveSiteCardRowType,
+	DelveSiteCardType
+} from '../schema/datasworn/delve-sites.js'
 
 type FeatureOrDangerData =
 	| In.DelveSiteThemeDangerRow
@@ -129,5 +129,3 @@ export const DelveSiteDenizen: Transformer<
 		return trackID(`${parent.id}/denizens/${data.min}-${data.max}`)
 	}
 }
-
-export const Rarity = sourcedTransformer<In.Rarity, Out.Rarity>({})

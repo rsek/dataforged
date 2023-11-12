@@ -7,12 +7,8 @@ import { mapValues } from 'lodash-es'
 import { OracleCollection } from './oracles.js'
 import { AssetType } from './assets.js'
 import { MoveCategory } from './moves.js'
-import {
-	DelveSite,
-	DelveSiteDomain,
-	DelveSiteTheme,
-	Rarity
-} from './ruleset-classic.js'
+import { DelveSite, DelveSiteDomain, DelveSiteTheme } from './delve-site.js'
+import { Rarity } from './rarities.js'
 import { Truth } from './truths.js'
 import { NpcCollection } from './npcs.js'
 import { Atlas } from './atlas.js'

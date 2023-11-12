@@ -14,6 +14,7 @@ import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
 import { readSource } from './readWrite.js'
 import { formatPath } from '../../utils.js'
+import { isSortableSchema, sortSchemaKeys } from './sort.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -129,20 +130,25 @@ function cleanDatasworn<K extends SourcebookDataKey = SourcebookDataKey>(
 	ajv.validate('Datasworn', jsonOut)
 
 	const pointersToDelete: string[] = []
+	const pointersToSort: string[] = []
 
 	jsc.input.each(jsonOut, (schema, data, pointer) => {
 		const sep = '/'
 		const key = pointer.split(sep)?.pop()
-		if (
+		const isDeletable =
 			key?.startsWith('_') ??
 			//  experimentalKeys.includes(key as any) ||
 			schema?.macro
-		)
-			pointersToDelete.push(pointer)
+
+		if (isDeletable) return pointersToDelete.push(pointer)
+		else if (isSortableSchema(schema)) return pointersToSort.push(pointer)
 	})
 
 	for (const pointer of pointersToDelete)
 		if (JsonPointer.has(jsonOut, pointer)) JsonPointer.remove(jsonOut, pointer)
+	for (const pointer of pointersToSort)
+		if (JsonPointer.has(jsonOut, pointer))
+			JsonPointer.set(jsonOut, pointer, sortSchemaKeys(jsonOut))
 
 	return jsonOut as Out.Datasworn
 }

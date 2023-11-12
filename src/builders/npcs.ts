@@ -15,10 +15,6 @@ export const NpcVariant: Transformer<In.NpcVariant, Out.NpcVariant, Out.Npc> = {
 }
 
 export const Npc = sourcedTransformer<In.Npc, Out.Npc>({
-	// id(this, data, key, parent) {
-	// 	const id = `${}`
-	// 	return trackID(id)
-	// },
 	variants(
 		this,
 		data,
