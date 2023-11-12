@@ -376,11 +376,28 @@ export type MarkdownString17 = string;
 export type MarkdownString18 = string;
 export type DiceNotation = string;
 /**
- *   * `table`: Render as a standalone table.
+ *   * `standalone_table`: Render as a standalone table.
  *   * `embed_in_row`: Render as a table, within a row in another table.
  *   * `embed_as_column`: Render as a single column of a table.
  */
-export type OracleTableStyle = "table" | "embed_in_row" | "embed_as_column";
+export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
+/**
+ * A localized plain text name or label.
+ */
+export type Label3 = string;
+/**
+ * The value(s) from each OracleTableRow that is rendered in this column.
+ *
+ *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
+ *   * `result`: Column displays the row's `result` key.
+ *   * `summary`: Column displays the row's `summary` key.
+ *   * `description`: Column displays the row's `description` key.
+ */
+export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "description";
+/**
+ * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+ */
+export type CSSColor1 = string;
 /**
  * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
  */
@@ -438,9 +455,28 @@ export type TemplateString2 = string;
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
 export type OracleCollectionID1 = string;
-export type OracleColumnContentType = "range" | "result" | "summary" | "description";
-export type DictKey = string;
 export type OracleCollectionStyle = "multi_table";
+/**
+ * A localized plain text name or label.
+ */
+export type Label4 = string;
+/**
+ * The value(s) from each OracleTableRow that is rendered in this column.
+ *
+ *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
+ *   * `result`: Column displays the row's `result` key.
+ *   * `summary`: Column displays the row's `summary` key.
+ *   * `description`: Column displays the row's `description` key.
+ */
+export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
+/**
+ * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+ */
+export type CSSColor2 = string;
+/**
+ * The key of the OracleTable (within this collection), whose data is used to render this column.
+ */
+export type DictKey = string;
 /**
  * Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
@@ -578,6 +614,7 @@ export interface Source {
 export interface AssetType {
   id: AssetTypeID;
   name: Label;
+  canonical_name?: Label;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -585,7 +622,6 @@ export interface AssetType {
     [k: string]: Asset;
   };
   source: Source;
-  canonical_name?: Label;
   enhances?: AssetTypeID1;
   suggestions?: Suggestions;
 }
@@ -886,6 +922,7 @@ export interface TriggerSpecialTrackConditionOption {
 export interface MoveActionRoll {
   id: MoveID;
   name: Label;
+  canonical_name?: Label;
   /**
    * A move that makes an action roll.
    */
@@ -894,7 +931,6 @@ export interface MoveActionRoll {
   text: MarkdownString7;
   outcomes: MoveOutcomes;
   source: Source;
-  canonical_name?: Label;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -949,6 +985,7 @@ export interface Suggestions {
 export interface MoveNoRoll {
   id: MoveID;
   name: Label;
+  canonical_name?: Label;
   /**
    * A move that makes no action rolls or progress rolls.
    */
@@ -956,7 +993,6 @@ export interface MoveNoRoll {
   trigger: TriggerNoRoll;
   text: MarkdownString10;
   source: Source;
-  canonical_name?: Label;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -978,6 +1014,7 @@ export interface TriggerNoRollCondition {
 export interface ProgressMove {
   id: MoveID;
   name: Label;
+  canonical_name?: Label;
   /**
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
@@ -987,7 +1024,6 @@ export interface ProgressMove {
   text: MarkdownString13;
   outcomes: MoveOutcomes;
   source: Source;
-  canonical_name?: Label;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -1011,6 +1047,7 @@ export interface TriggerProgressRollCondition {
 export interface ProgressMoveSpecialTrackRoll {
   id: MoveID;
   name: Label;
+  canonical_name?: Label;
   /**
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
@@ -1019,7 +1056,6 @@ export interface ProgressMoveSpecialTrackRoll {
   text: MarkdownString16;
   outcomes: MoveOutcomes;
   source: Source;
-  canonical_name?: Label;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -1131,6 +1167,7 @@ export interface SelectFieldAssetState {
 export interface Atlas {
   id: AtlasID;
   name: Label;
+  canonical_name?: Label;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -1141,7 +1178,6 @@ export interface Atlas {
     [k: string]: AtlasEntry;
   };
   source: Source;
-  canonical_name?: Label;
   enhances?: AtlasID1;
   suggestions?: Suggestions;
 }
@@ -1154,12 +1190,12 @@ export interface Atlas {
 export interface AtlasEntry {
   id: AtlasEntryID;
   name: Label;
+  canonical_name?: Label;
   summary?: MarkdownString;
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
   source: Source;
-  canonical_name?: Label;
   suggestions?: Suggestions;
   your_truth?: MarkdownString;
 }
@@ -1172,11 +1208,11 @@ export interface AtlasEntry {
 export interface DelveSite {
   id: DelveSiteID;
   name: Label;
+  canonical_name?: Label;
   rank: ChallengeRank;
   icon?: SVGImageURL;
   description: MarkdownString;
   source: Source;
-  canonical_name?: Label;
   denizens: DelveSiteDenizen[] &
     [
       {
@@ -1264,6 +1300,7 @@ export interface DelveSiteDenizen {
 export interface MoveCategory {
   id: MoveCategoryID;
   name: Label;
+  canonical_name?: Label;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -1271,7 +1308,6 @@ export interface MoveCategory {
     [k: string]: Move;
   };
   source: Source;
-  canonical_name?: Label;
   enhances?: MoveCategoryID1;
   suggestions?: Suggestions;
 }
@@ -1282,6 +1318,7 @@ export interface MoveCategory {
 export interface NpcCollection {
   id: NpcCollectionID;
   name: Label;
+  canonical_name?: Label;
   color?: CSSColor;
   summary?: MarkdownString;
   description?: MarkdownString;
@@ -1289,7 +1326,6 @@ export interface NpcCollection {
     [k: string]: Npc;
   };
   source: Source;
-  canonical_name?: Label;
   enhances?: NpcCollectionID1;
   suggestions?: Suggestions;
 }
@@ -1302,6 +1338,7 @@ export interface NpcCollection {
 export interface Npc {
   id: NpcID;
   name: Label;
+  canonical_name?: Label;
   nature: NpcNature;
   rank: ChallengeRank;
   summary?: MarkdownString;
@@ -1314,7 +1351,6 @@ export interface Npc {
   description: MarkdownString;
   quest_starter: MarkdownString;
   source: Source;
-  canonical_name?: Label;
   suggestions?: Suggestions;
   your_truth?: MarkdownString;
 }
@@ -1337,6 +1373,7 @@ export interface NpcVariant {
 export interface OracleCollection {
   id: OracleCollectionID;
   name: Label;
+  canonical_name?: Label;
   color?: CSSColor;
   images?: WEBPImageURL[];
   summary?: MarkdownString;
@@ -1348,7 +1385,6 @@ export interface OracleCollection {
     [k: string]: OracleTable;
   };
   source: Source;
-  canonical_name?: Label;
   enhances?: OracleCollectionID1;
   rendering?: OracleCollectionRendering;
   replaces?: OracleCollectionID2;
@@ -1362,10 +1398,11 @@ export interface OracleCollection {
 export interface OracleTable {
   id: OracleTableID;
   name: Label;
+  canonical_name?: Label;
+  icon?: SVGImageURL;
   summary?: MarkdownString17;
   description?: MarkdownString18;
   source: Source;
-  canonical_name?: Label;
   dice: DiceNotation;
   match?: MatchBehavior;
   rendering?: OracleTableRendering;
@@ -1377,9 +1414,19 @@ export interface MatchBehavior {
   text: MarkdownString;
 }
 export interface OracleTableRendering {
-  color?: CSSColor;
-  icon?: SVGImageURL;
-  style?: OracleTableStyle;
+  table_style?: OracleTableStyle;
+  columns: {
+    [k: string]: OracleTableColumn;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface OracleTableColumn {
+  label?: Label3;
+  content_type: OracleTableColumnContentKey;
+  color?: CSSColor1;
 }
 export interface OracleTableRow {
   id: OracleTableRowID;
@@ -1434,32 +1481,20 @@ export interface OracleRollTemplate {
   description?: TemplateString2;
 }
 export interface OracleCollectionRendering {
+  table_style?: OracleCollectionStyle;
   color?: CSSColor;
   columns: {
-    [k: string]: OracleTableColumn;
-  } & {
-    [k: string]: OracleCollectionColumn;
+    [k: string]: OracleCollectionTableColumn;
   };
-  style?: OracleCollectionStyle;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export interface OracleTableColumn {
-  label?: Label;
-  content_type: OracleColumnContentType;
-}
-/**
- * A column's default label is the title of the source table.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- */
-export interface OracleCollectionColumn {
-  label?: Label;
-  content_type: OracleColumnContentType;
-  color?: CSSColor;
+export interface OracleCollectionTableColumn {
+  label?: Label4;
+  content_type: OracleTableColumnContentKey1;
+  color?: CSSColor2;
   table_key: DictKey;
 }
 /**
@@ -1471,11 +1506,11 @@ export interface OracleCollectionColumn {
 export interface Rarity {
   id: RarityID;
   name: Label;
+  canonical_name?: Label;
   icon?: SVGImageURL;
   description: MarkdownString;
   source: Source;
   asset: AssetID1;
-  canonical_name?: Label;
   suggestions?: Suggestions;
   /**
    * From Ironsworn: Delve, p. 174:
@@ -1493,6 +1528,7 @@ export interface Rarity {
 export interface DelveSiteDomain {
   id: DelveSiteDomainID;
   name: Label;
+  canonical_name?: Label;
   card_type: "domain";
   icon?: SVGImageURL;
   summary: MarkdownString;
@@ -1561,7 +1597,6 @@ export interface DelveSiteDomain {
     ];
   description?: MarkdownString;
   source: Source;
-  canonical_name?: Label;
   dangers: DelveSiteDomainDangerRow[] &
     [
       {
@@ -1623,6 +1658,7 @@ export interface DelveSiteDomainDangerRow {
 export interface DelveSiteTheme {
   id: DelveSiteThemeID;
   name: Label;
+  canonical_name?: Label;
   card_type: "theme";
   icon?: SVGImageURL;
   summary: MarkdownString;
@@ -1651,7 +1687,6 @@ export interface DelveSiteTheme {
     ];
   description?: MarkdownString;
   source: Source;
-  canonical_name?: Label;
   dangers: DelveSiteThemeDangerRow[] &
     [
       {
@@ -1742,10 +1777,10 @@ export interface DelveSiteThemeDangerRow {
 export interface Truth {
   id: TruthID;
   name: Label;
+  canonical_name?: Label;
   icon?: SVGImageURL;
   options: TruthOption[];
   source: Source;
-  canonical_name?: Label;
   suggestions?: Suggestions;
 }
 export interface TruthOption {

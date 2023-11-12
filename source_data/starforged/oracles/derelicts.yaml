@@ -28,15 +28,15 @@ oracles:
         rendering:
           columns:
             planetside:
-              content_type: range
+              content_type: roll
               table_key: planetside
               label: Planetside
             orbital:
-              content_type: range
+              content_type: roll
               table_key: orbital
               label: Orbital
             deep_space:
-              content_type: range
+              content_type: roll
               table_key: deep_space
               label: Deep Space
             result:
@@ -49,7 +49,7 @@ oracles:
             source: *CollectionSource
             icon: icon/oracles/location/planetside.svg
             rendering: &derelictTypeDisplay
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires: *attr:Location.Planetside
             table:
@@ -92,7 +92,7 @@ oracles:
             source: *CollectionSource
             icon: icon/oracles/location/deep_space.svg
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires: *attr:Location.DeepSpace
             table:
@@ -117,11 +117,11 @@ oracles:
         rendering:
           columns:
             starship:
-              content_type: range
+              content_type: roll
               table_key: starship
               label: Starship
             settlement:
-              content_type: range
+              content_type: roll
               table_key: settlement
               label: Settlement
             result:
@@ -139,7 +139,7 @@ oracles:
             source: *CollectionSource
             summary: *Zones.Summary
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:
@@ -191,7 +191,7 @@ oracles:
             source: *CollectionSource
             summary: *Zones.Summary
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:

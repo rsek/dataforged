@@ -13,11 +13,11 @@ oracles:
       regions:
         name: Overland Regions
         rendering:
-          style: table
+          table_style: standalone_table
           columns:
             roll:
               label: Roll
-              content_type: range
+              content_type: roll
             result:
               label: Result
               content_type: result
@@ -858,17 +858,17 @@ oracles:
       waypoints:
         name: Waypoints
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             myriads:
               table_key: myriads
-              content_type: range
+              content_type: roll
             margins:
               table_key: margins
-              content_type: range
+              content_type: roll
             reaches:
               table_key: reaches
-              content_type: range
+              content_type: roll
             result:
               table_key: myriads
               content_type: result
@@ -878,7 +878,7 @@ oracles:
             name: Myriads
             summary: Central Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 20
@@ -908,7 +908,7 @@ oracles:
             name: Margins
             summary: Outer Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 20
@@ -938,7 +938,7 @@ oracles:
             name: Reaches
             summary: Remote Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 20

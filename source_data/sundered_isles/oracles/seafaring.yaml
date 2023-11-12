@@ -15,17 +15,17 @@ oracles:
         summary: |-
           Use this table to trigger locations, events, and encounters on a seafaring expedition. If you encounter a cost or opportunity on your expedition, the [Seafaring Peril](id:sundered_isles/oracles/seafaring/peril) and [Seafaring Opportunity](id:sundered_isles/oracles/seafaring/opportunity) tables can help reveal what occurs.
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             myriads:
               table_key: myriads
-              content_type: range
+              content_type: roll
             margins:
               table_key: margins
-              content_type: range
+              content_type: roll
             reaches:
               table_key: reaches
-              content_type: range
+              content_type: roll
             result:
               table_key: myriads
               content_type: result
@@ -35,7 +35,7 @@ oracles:
             name: Myriads
             summary: Central Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 25
@@ -82,7 +82,7 @@ oracles:
             name: Margins
             summary: Outer Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 20
@@ -110,7 +110,7 @@ oracles:
             name: Reaches
             summary: Remote Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 15

@@ -7,7 +7,7 @@ import {
 	TObject
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
-import { JsonPrimitive, type JsonValue } from 'type-fest'
+import { JsonPrimitive, ValueOf, type JsonValue } from 'type-fest'
 import { isJsonValue } from './isJsonValue'
 import { map } from 'lodash-es'
 
@@ -27,22 +27,34 @@ export interface JsonEnum<T extends string[] | number[] = string[] | number[]>
 	enum: T
 }
 
-export function JsonEnumFromRecord<T extends string[] | number[]>(
+export function JsonEnumFromRecord<K extends number>(
+	entries: Record<K, string>,
+	options?: SchemaOptions
+): JsonEnum<K[]>
+export function JsonEnumFromRecord<K extends string>(
+	entries: Record<K, string>,
+	options?: SchemaOptions
+): JsonEnum<K[]>
+export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 	entries: Record<T[number], string>,
 	options: SchemaOptions = {}
-) {
+): JsonEnum<T> {
+	const arr = Object.keys(entries).map((k) =>
+		Number.isInteger(Number(k)) ? Number(k) : k
+	) as (keyof typeof entries)[]
+
 	let description = map(
 		entries,
 		(description, literal) => `  * \`${literal?.toString()}\`: ${description}`
 	).join('\n')
+
 	if (options.description)
 		description = options.description + '\n\n' + description
+
 	return {
 		[EnumDescriptions]: entries,
 		[Kind]: 'JsonEnum',
-		enum: Object.keys(entries).map((k) =>
-			Number.isInteger(Number(k)) ? Number(k) : k
-		),
+		enum: arr,
 		...options,
 		description
 	} as JsonEnum<T>

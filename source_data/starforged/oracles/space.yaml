@@ -17,17 +17,17 @@ oracles:
         name: Space Sighting
         source: *CollectionSource
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             terminus:
               table_key: terminus
-              content_type: range
+              content_type: roll
             outlands:
               table_key: outlands
-              content_type: range
+              content_type: roll
             expanse:
               table_key: expanse
-              content_type: range
+              content_type: roll
             result:
               table_key: terminus
               content_type: result
@@ -47,7 +47,7 @@ oracles:
             name: Terminus
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:
@@ -143,7 +143,7 @@ oracles:
             name: Outlands
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:
@@ -213,7 +213,7 @@ oracles:
             name: Expanse
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:
@@ -289,7 +289,7 @@ oracles:
         rendering:
           columns:
             result:
-              content_type: range
+              content_type: roll
               table_key: prefix
               label: Roll
             prefix:
@@ -306,7 +306,7 @@ oracles:
           prefix:
             name: Prefix
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             source: *CollectionSource
             # usage:
             #   initial: true
@@ -542,7 +542,7 @@ oracles:
             name: Suffix
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             summary: To give a sector or region of space a random name, roll once for the first word and once for the second word. Or just roll once choose a suitable pairing from anywhere in that row.
             # usage:
             #   initial: true

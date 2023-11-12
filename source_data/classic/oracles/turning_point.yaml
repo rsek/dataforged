@@ -242,10 +242,11 @@ oracles:
         canonical_name: 'Oracle 19: Challenge Rank'
         name: Challenge Rank
         rendering:
+          table_style: multi_table
           columns:
             roll:
               label: Roll
-              content_type: range
+              content_type: roll
               table_key: quest
             rank:
               label: Rank
@@ -272,7 +273,7 @@ oracles:
             name: Quest
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - &Troublesome
                 min: 1
@@ -303,7 +304,7 @@ oracles:
             name: Journey
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - <<: *Troublesome
                 summary: 'Traveling a moderate distance within a single region'
@@ -319,7 +320,7 @@ oracles:
             name: Foes
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - <<: *Troublesome
                 summary: 'Common enemies'

@@ -23,10 +23,10 @@ oracles:
         summary: |-
           Given and family names are presented as a pair, so you may roll once for both or twice to mix-and-match. You can also try reversing given and family names, or use either independently as a standalone name. If you’d like to give a character a callsign, which are the monikers used by spacers, you may roll separately or take the one provided for your rolled name.
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             roll:
-              content_type: range
+              content_type: roll
               table_key: given_name
               label: Roll
             given_name:
@@ -52,7 +52,7 @@ oracles:
                 - starforged/oracles/characters/name/callsign
                 - starforged/oracles/characters/name/family_name
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
 
             _i18n:
               result:
@@ -370,7 +370,7 @@ oracles:
                 - starforged/oracles/characters/name/given_name
                 - starforged/oracles/characters/name/family_name
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             _i18n:
               result:
                 part_of_speech: proper_noun
@@ -675,7 +675,6 @@ oracles:
               - min: 100
                 max: 100
                 result: Zephyr
-
           family_name:
             name: Family Name
             source:
@@ -687,7 +686,7 @@ oracles:
                 - starforged/oracles/characters/name/given_name
                 - starforged/oracles/characters/name/callsign
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             _i18n:
               result:
                 part_of_speech: proper_noun

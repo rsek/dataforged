@@ -34,7 +34,12 @@
 					},
 					"dice": "1d100",
 					"rendering": {
+						"table_style": "standalone_table",
 						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll"
+							},
 							"assets": {
 								"label": "Assets",
 								"content_type": "summary"
@@ -42,12 +47,8 @@
 							"background": {
 								"label": "Background",
 								"content_type": "result"
-							},
-							"roll": {
-								"content_type": "range"
 							}
-						},
-						"style": "table"
+						}
 					},
 					"table": [
 						{
@@ -952,7 +953,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"suggestions": {
 								"oracles": [
@@ -2080,7 +2091,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"suggestions": {
 								"oracles": [
@@ -3208,7 +3229,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"suggestions": {
 								"oracles": [
@@ -4333,7 +4364,13 @@
 						"url": "https://ironswornrpg.com"
 					},
 					"rendering": {
+						"table_style": "multi_table",
 						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll",
+								"table_key": "given_name"
+							},
 							"callsign": {
 								"content_type": "result",
 								"table_key": "callsign"
@@ -4345,14 +4382,8 @@
 							"given_name": {
 								"content_type": "result",
 								"table_key": "given_name"
-							},
-							"roll": {
-								"label": "Roll",
-								"content_type": "range",
-								"table_key": "given_name"
 							}
-						},
-						"style": "multi_table"
+						}
 					}
 				}
 			},
@@ -11466,9 +11497,19 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"color": "#90278f",
 								"icon": "icons/creature/environment/air.svg",
-								"style": "embed_as_column"
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11620,9 +11661,19 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"color": "#707a83",
 								"icon": "icons/creature/environment/interior.svg",
-								"style": "embed_as_column"
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11774,9 +11825,19 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"color": "#ed1a38",
 								"icon": "icons/creature/environment/land.svg",
-								"style": "embed_as_column"
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11928,9 +11989,19 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"color": "#0082bf",
 								"icon": "icons/creature/environment/liquid.svg",
-								"style": "embed_as_column"
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -12082,9 +12153,19 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"color": "#121b21",
 								"icon": "icons/creature/environment/space.svg",
-								"style": "embed_as_column"
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -12234,6 +12315,7 @@
 						"url": "https://ironswornrpg.com"
 					},
 					"rendering": {
+						"table_style": "multi_table",
 						"columns": {
 							"result": {
 								"label": "Result",
@@ -12242,36 +12324,35 @@
 							},
 							"air": {
 								"label": "Air",
-								"content_type": "range",
+								"content_type": "roll",
 								"color": "#90278f",
 								"table_key": "air"
 							},
 							"interior": {
 								"label": "Interior",
-								"content_type": "range",
+								"content_type": "roll",
 								"color": "#707a83",
 								"table_key": "interior"
 							},
 							"land": {
 								"label": "Land",
-								"content_type": "range",
+								"content_type": "roll",
 								"color": "#ed1a38",
 								"table_key": "land"
 							},
 							"liquid": {
 								"label": "Liquid",
-								"content_type": "range",
+								"content_type": "roll",
 								"color": "#0082bf",
 								"table_key": "liquid"
 							},
 							"space": {
 								"label": "Space",
-								"content_type": "range",
+								"content_type": "roll",
 								"color": "#121b21",
 								"table_key": "space"
 							}
-						},
-						"style": "multi_table"
+						}
 					}
 				}
 			},
@@ -13466,6 +13547,7 @@
 				"type": {
 					"id": "starforged/collections/oracles/derelicts/type",
 					"name": "Derelict Type (by location)",
+					"canonical_name": "Type (by location)",
 					"contents": {
 						"deep_space": {
 							"id": "starforged/oracles/derelicts/type/deep_space",
@@ -13485,7 +13567,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -13526,7 +13618,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -13567,7 +13669,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -13603,7 +13715,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Type (by location)",
 					"rendering": {
 						"columns": {
 							"result": {
@@ -13613,17 +13724,17 @@
 							},
 							"deep_space": {
 								"label": "Deep Space",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "deep_space"
 							},
 							"orbital": {
 								"label": "Orbital",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "orbital"
 							},
 							"planetside": {
 								"label": "Planetside",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "planetside"
 							}
 						}
@@ -16628,7 +16739,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -16707,7 +16828,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -16790,12 +16921,12 @@
 							},
 							"settlement": {
 								"label": "Settlement",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "settlement"
 							},
 							"starship": {
 								"label": "Starship",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "starship"
 							}
 						}
@@ -18848,8 +18979,18 @@
 					},
 					"dice": "1d100",
 					"rendering": {
+						"table_style": "standalone_table",
 						"icon": "icons/factions/dominion.svg",
-						"style": "table"
+						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll"
+							},
+							"result": {
+								"label": "Result",
+								"content_type": "result"
+							}
+						}
 					},
 					"table": [
 						{
@@ -19135,8 +19276,18 @@
 					},
 					"dice": "1d100",
 					"rendering": {
+						"table_style": "standalone_table",
 						"icon": "icons/factions/fringe_group.svg",
-						"style": "table"
+						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll"
+							},
+							"result": {
+								"label": "Result",
+								"content_type": "result"
+							}
+						}
 					},
 					"table": [
 						{
@@ -19296,8 +19447,18 @@
 					},
 					"dice": "1d100",
 					"rendering": {
+						"table_style": "standalone_table",
 						"icon": "icons/factions/guild.svg",
-						"style": "table"
+						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll"
+							},
+							"result": {
+								"label": "Result",
+								"content_type": "result"
+							}
+						}
 					},
 					"table": [
 						{
@@ -28616,7 +28777,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -28788,7 +28959,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -28965,12 +29146,12 @@
 							},
 							"lifebearing": {
 								"label": "Lifebearing",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
 								"label": "Lifeless",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "lifeless"
 							}
 						}
@@ -28998,7 +29179,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -29242,7 +29433,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -29490,12 +29691,12 @@
 							},
 							"lifebearing": {
 								"label": "Lifebearing",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "lifebearing"
 							},
 							"lifeless": {
 								"label": "Lifeless",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "lifeless"
 							}
 						}
@@ -31988,7 +32189,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -32040,7 +32251,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -32092,7 +32313,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -32144,7 +32375,7 @@
 						"columns": {
 							"expanse": {
 								"label": "Expanse",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"number": {
@@ -32154,12 +32385,12 @@
 							},
 							"outlands": {
 								"label": "Outlands",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"terminus": {
 								"label": "Terminus",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "terminus"
 							}
 						}
@@ -34337,7 +34568,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"suggestions": {
 								"oracles": ["starforged/oracles/space/sector_name/suffix"]
@@ -34913,7 +35154,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"suggestions": {
 								"oracles": ["starforged/oracles/space/sector_name/prefix"]
@@ -35488,7 +35739,7 @@
 						"columns": {
 							"result": {
 								"label": "Roll",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "prefix"
 							},
 							"prefix": {
@@ -35526,7 +35777,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -35700,7 +35961,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -35874,7 +36145,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -36052,6 +36333,7 @@
 						"url": "https://ironswornrpg.com"
 					},
 					"rendering": {
+						"table_style": "multi_table",
 						"columns": {
 							"result": {
 								"label": "Result",
@@ -36059,19 +36341,18 @@
 								"table_key": "terminus"
 							},
 							"expanse": {
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"outlands": {
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"terminus": {
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "terminus"
 							}
-						},
-						"style": "multi_table"
+						}
 					}
 				}
 			},
@@ -36626,16 +36907,16 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"columns": {
+									"roll": {
+										"content_type": "roll"
+									},
 									"mission": {
 										"label": "Mission",
 										"content_type": "result"
-									},
-									"roll": {
-										"content_type": "range"
 									}
-								},
-								"style": "embed_as_column"
+								}
 							},
 							"table": [
 								{
@@ -36867,16 +37148,16 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"columns": {
+									"roll": {
+										"content_type": "roll"
+									},
 									"mission": {
 										"label": "Mission",
 										"content_type": "result"
-									},
-									"roll": {
-										"content_type": "range"
 									}
-								},
-								"style": "embed_as_column"
+								}
 							},
 							"table": [
 								{
@@ -37108,16 +37389,16 @@
 							},
 							"dice": "1d100",
 							"rendering": {
+								"table_style": "embed_as_column",
 								"columns": {
+									"roll": {
+										"content_type": "roll"
+									},
 									"mission": {
 										"label": "Mission",
 										"content_type": "result"
-									},
-									"roll": {
-										"content_type": "range"
 									}
-								},
-								"style": "embed_as_column"
+								}
 							},
 							"table": [
 								{
@@ -37346,10 +37627,11 @@
 						"url": "https://creativecommons.org/licenses/by/4.0"
 					},
 					"rendering": {
+						"table_style": "multi_table",
 						"columns": {
 							"expanse": {
 								"label": "Expanse",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "expanse"
 							},
 							"mission": {
@@ -37359,16 +37641,15 @@
 							},
 							"outlands": {
 								"label": "Outlands",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "outlands"
 							},
 							"terminus": {
 								"label": "Terminus",
-								"content_type": "range",
+								"content_type": "roll",
 								"table_key": "terminus"
 							}
-						},
-						"style": "multi_table"
+						}
 					}
 				}
 			},
@@ -37376,6 +37657,7 @@
 				"type": {
 					"id": "starforged/oracles/starships/type",
 					"name": "Starship Type",
+					"canonical_name": "Type",
 					"source": {
 						"title": "Ironsworn: Starforged Rulebook",
 						"date": "2022-05-06",
@@ -37388,24 +37670,23 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://creativecommons.org/licenses/by/4.0"
 					},
-					"canonical_name": "Type",
 					"dice": "1d100",
 					"rendering": {
+						"table_style": "standalone_table",
 						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll"
+							},
 							"class": {
 								"label": "Class",
 								"content_type": "result"
-							},
-							"roll": {
-								"label": "Roll",
-								"content_type": "range"
 							},
 							"typical_role": {
 								"label": "Typical Role",
 								"content_type": "summary"
 							}
-						},
-						"style": "table"
+						}
 					},
 					"table": [
 						{

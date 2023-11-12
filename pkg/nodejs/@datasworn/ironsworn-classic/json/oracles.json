@@ -19,11 +19,13 @@
 				"ironlander": {
 					"id": "classic/collections/oracles/name/ironlander",
 					"name": "Ironlander Names",
+					"canonical_name": "Oracle 13: Ironlander Names",
 					"summary": "Use this oracle to quickly generate a name for an Ironlander character. Roll on either table. Surnames are not used in the Ironlands, and names are often gender-neutral.",
 					"contents": {
 						"a": {
 							"id": "classic/oracles/name/ironlander/a",
 							"name": "Table A",
+							"canonical_name": "Ironlander Names",
 							"source": {
 								"title": "Ironsworn Rulebook",
 								"date": "2019-06-05",
@@ -36,7 +38,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "Ironlander Names",
 							"dice": "1d100",
 							"table": [
 								{
@@ -1144,6 +1145,7 @@
 						"b": {
 							"id": "classic/oracles/name/ironlander/b",
 							"name": "Table B",
+							"canonical_name": "Ironlander Names",
 							"source": {
 								"title": "Ironsworn Rulebook",
 								"date": "2019-06-05",
@@ -1156,7 +1158,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "Ironlander Names",
 							"dice": "1d100",
 							"table": [
 								{
@@ -2273,12 +2274,12 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"canonical_name": "Oracle 13: Ironlander Names"
+					}
 				},
 				"other": {
 					"id": "classic/collections/oracles/name/other",
 					"name": "Other Names",
+					"canonical_name": "Oracle 15: Other Names",
 					"summary": "Use this oracle to generate names for other firstborn characters.",
 					"contents": {
 						"giants": {
@@ -2298,7 +2299,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -2595,7 +2606,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -2892,7 +2913,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -3185,17 +3216,16 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 15: Other Names",
 					"rendering": {
 						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll",
+								"table_key": "giants"
+							},
 							"giants": {
 								"label": "Giants",
 								"content_type": "result",
-								"table_key": "giants"
-							},
-							"roll": {
-								"label": "Roll",
-								"content_type": "range",
 								"table_key": "giants"
 							},
 							"trolls": {
@@ -3216,6 +3246,7 @@
 				"elf": {
 					"id": "classic/oracles/name/elf",
 					"name": "Elf Names",
+					"canonical_name": "Oracle 14: Elf Names",
 					"summary": "Use this oracle to generate a name for an elf character.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -3229,7 +3260,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 14: Elf Names",
 					"dice": "1d100",
 					"table": [
 						{
@@ -3805,6 +3835,7 @@
 				"action": {
 					"id": "classic/oracles/action_and_theme/action",
 					"name": "Action",
+					"canonical_name": "Oracle 1: Action",
 					"summary": "Use this table to inspire a discovery, event, character goal, or situation. A roll on this table can be combined with a [Theme](id:classic/oracles/action_and_theme/theme) to provide an action and a subject. Then, interpret the result based on the context of the question and your current situation.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -3818,7 +3849,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 1: Action",
 					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["classic/oracles/action_and_theme/theme"]
@@ -4929,6 +4959,7 @@
 				"theme": {
 					"id": "classic/oracles/action_and_theme/theme",
 					"name": "Theme",
+					"canonical_name": "Oracle 2: Theme",
 					"summary": "As with the [Action](id:classic/oracles/action_and_theme/action) oracle, this is an interpretative table which you can use to answer questions or generate new situations. Combined, the Action and Theme tables provide creative prompts suitable for most situations and questions. In fact, with some creative interpretations, it’s entirely possible to play with only these two tables.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -4942,7 +4973,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 2: Theme",
 					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["classic/oracles/action_and_theme/action"]
@@ -6071,6 +6101,7 @@
 				"descriptor": {
 					"id": "classic/oracles/character/descriptor",
 					"name": "Character Descriptor",
+					"canonical_name": "Oracle 12: Character Descriptor",
 					"summary": "Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -6084,7 +6115,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 12: Character Descriptor",
 					"dice": "1d100",
 					"table": [
 						{
@@ -7192,6 +7222,7 @@
 				"goal": {
 					"id": "classic/oracles/character/goal",
 					"name": "Character Goal",
+					"canonical_name": "Oracle 11: Character Goal",
 					"summary": "Use this oracle to define the primary motivation of an NPC or a faction. It can also be used to kick-off a personal quest for your own character.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -7205,7 +7236,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 11: Character Goal",
 					"dice": "1d100",
 					"table": [
 						{
@@ -7417,6 +7447,7 @@
 				"role": {
 					"id": "classic/oracles/character/role",
 					"name": "Character Role",
+					"canonical_name": "Oracle 10: Character Role",
 					"summary": "Use this oracle to define the background for a character, or to generate a random encounter.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -7430,7 +7461,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 10: Character Role",
 					"dice": "1d100",
 					"table": [
 						{
@@ -8213,6 +8243,7 @@
 				"coastal_waters_location": {
 					"id": "classic/oracles/place/coastal_waters_location",
 					"name": "Coastal Waters Location",
+					"canonical_name": "Oracle 5: Coastal Waters Location",
 					"summary": "Use this oracle to identify a point-of-interest or destination when you are traveling by ship or boat.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -8226,7 +8257,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 5: Coastal Waters Location",
 					"dice": "1d100",
 					"table": [
 						{
@@ -8421,6 +8451,7 @@
 				"descriptor": {
 					"id": "classic/oracles/place/descriptor",
 					"name": "Location Descriptor",
+					"canonical_name": "Oracle 6: Location Descriptor",
 					"summary": "Use this oracle to add detail to the [Location](id:classic/oracles/place/location) or [Coastal Waters Location](id:classic/oracles/place/coastal_waters_location) oracles, or by itself to generate a description of a location. Roll more than once for extra detail.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -8434,7 +8465,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 6: Location Descriptor",
 					"dice": "1d100",
 					"table": [
 						{
@@ -8992,6 +9022,7 @@
 				"location": {
 					"id": "classic/oracles/place/location",
 					"name": "Location",
+					"canonical_name": "Oracle 4: Location",
 					"summary": "Use this oracle when traveling to generate a point-of-interest or to answer a question about a place where someone or something can be found.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -9005,7 +9036,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 4: Location",
 					"dice": "1d100",
 					"table": [
 						{
@@ -9574,6 +9604,7 @@
 				"region": {
 					"id": "classic/oracles/place/region",
 					"name": "Region",
+					"canonical_name": "Oracle 3: Region",
 					"summary": "Use this oracle when you want to randomly select a region with the Ironlands.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -9587,7 +9618,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 3: Region",
 					"dice": "1d100",
 					"table": [
 						{
@@ -9673,10 +9703,12 @@
 				"name": {
 					"id": "classic/collections/oracles/settlement/name",
 					"name": "Settlement Name",
+					"canonical_name": "Oracle 7: Settlement Name",
 					"contents": {
 						"creature": {
 							"id": "classic/oracles/settlement/name/creature",
 							"name": "Creature",
+							"canonical_name": "A creature",
 							"summary": "**A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -9690,7 +9722,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A creature",
 							"dice": "1d100",
 							"table": [
 								{
@@ -9808,6 +9839,7 @@
 						"environmental_aspect": {
 							"id": "classic/oracles/settlement/name/environmental_aspect",
 							"name": "Environmental Aspect",
+							"canonical_name": "A season or environmental aspect",
 							"summary": "**A season or environmental aspect.** What influence does the weather have on this settlement?",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -9821,7 +9853,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A season or environmental aspect",
 							"dice": "1d100",
 							"table": [
 								{
@@ -9939,6 +9970,7 @@
 						"historical_event": {
 							"id": "classic/oracles/settlement/name/historical_event",
 							"name": "Historical Event",
+							"canonical_name": "A historical event",
 							"summary": "**A historical event.** What happened here? What place or practice commemorates this event?",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -9952,7 +9984,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A historical event",
 							"dice": "1d100",
 							"table": [
 								{
@@ -10070,6 +10101,7 @@
 						"landscape_feature": {
 							"id": "classic/oracles/settlement/name/landscape_feature",
 							"name": "Landscape Feature",
+							"canonical_name": "A feature of the landscape",
 							"summary": "\"**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?\",",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -10083,7 +10115,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A feature of the landscape",
 							"dice": "1d100",
 							"table": [
 								{
@@ -10201,6 +10232,7 @@
 						"manmade_edifice": {
 							"id": "classic/oracles/settlement/name/manmade_edifice",
 							"name": "Manmade Edifice",
+							"canonical_name": "A manmade edifice",
 							"summary": "**A manmade edifice.** What is it? Why is it important to this settlement’s history?,",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -10214,7 +10246,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A manmade edifice",
 							"dice": "1d100",
 							"table": [
 								{
@@ -10332,6 +10363,7 @@
 						"old_world_language": {
 							"id": "classic/oracles/settlement/name/old_world_language",
 							"name": "Old World Language",
+							"canonical_name": "A word in an Old World language",
 							"summary": "**A word in an Old World language.** What culture is represented by this word? What does it translate to?",
 							"source": {
 								"title": "Ironsworn Rulebook",
@@ -10345,7 +10377,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"canonical_name": "A word in an Old World language",
 							"dice": "1d100",
 							"table": [
 								{
@@ -10551,12 +10582,12 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
-					"canonical_name": "Oracle 7: Settlement Name"
+					}
 				},
 				"quick_name": {
 					"id": "classic/collections/oracles/settlement/quick_name",
 					"name": "Quick Settlement Name Generator",
+					"canonical_name": "Oracle 8: Quick Settlement Name Generator",
 					"summary": "Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.",
 					"contents": {
 						"prefix": {
@@ -10576,7 +10607,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -10873,7 +10914,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11283,17 +11334,16 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 8: Quick Settlement Name Generator",
 					"rendering": {
 						"columns": {
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll",
+								"table_key": "prefix"
+							},
 							"prefix": {
 								"label": "Prefix",
 								"content_type": "result",
-								"table_key": "prefix"
-							},
-							"roll": {
-								"label": "Roll",
-								"content_type": "range",
 								"table_key": "prefix"
 							},
 							"suffix": {
@@ -11309,6 +11359,7 @@
 				"trouble": {
 					"id": "classic/oracles/settlement/trouble",
 					"name": "Settlement Trouble",
+					"canonical_name": "Oracle 9: Settlement Trouble",
 					"summary": "Use this table to generate a narrative hook for a problem faced by a community. This oracle can help inspire a vow for your character or serve as a prompt for a trouble you encounter when you interact with a settlement.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -11322,7 +11373,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 9: Settlement Trouble",
 					"dice": "1d100",
 					"table": [
 						{
@@ -11630,6 +11680,7 @@
 				"challenge_rank": {
 					"id": "classic/collections/oracles/turning_point/challenge_rank",
 					"name": "Challenge Rank",
+					"canonical_name": "Oracle 19: Challenge Rank",
 					"summary": "Use this oracle when you want to randomly determine the challenge rank of a quest, journey, or foe.",
 					"contents": {
 						"foe": {
@@ -11649,7 +11700,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11706,7 +11767,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11763,7 +11834,17 @@
 							},
 							"dice": "1d100",
 							"rendering": {
-								"style": "embed_as_column"
+								"table_style": "embed_as_column",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								}
 							},
 							"table": [
 								{
@@ -11816,12 +11897,17 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 19: Challenge Rank",
 					"rendering": {
+						"table_style": "multi_table",
 						"columns": {
 							"rank": {
 								"label": "Rank",
 								"content_type": "result",
+								"table_key": "quest"
+							},
+							"roll": {
+								"label": "Roll",
+								"content_type": "roll",
 								"table_key": "quest"
 							},
 							"foes": {
@@ -11838,11 +11924,6 @@
 								"label": "Quest",
 								"content_type": "summary",
 								"table_key": "quest"
-							},
-							"roll": {
-								"label": "Roll",
-								"content_type": "range",
-								"table_key": "quest"
 							}
 						}
 					}
@@ -11852,6 +11933,7 @@
 				"combat_action": {
 					"id": "classic/oracles/turning_point/combat_action",
 					"name": "Combat Action",
+					"canonical_name": "Oracle 16: Combat Action",
 					"summary": "Use this oracle to help inspire an action for an NPC in combat. When you’re not sure what your foe does next, particularly when they have initiative, roll on this table and interpret the result as appropriate to the situation.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -11865,7 +11947,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 16: Combat Action",
 					"dice": "1d100",
 					"table": [
 						{
@@ -11981,6 +12062,7 @@
 				"major_plot_twist": {
 					"id": "classic/oracles/turning_point/major_plot_twist",
 					"name": "Major Plot Twist",
+					"canonical_name": "Oracle 18: Major Plot Twist",
 					"summary": "Use this oracle to introduce a narrative surprise or revelation. Most of these results have a negative implication, and can be used to resolve a match at a crucial moment in your story. In particular, this is an effective tool to leverage when you make a move with matched 10’s on the challenge dice.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -11994,7 +12076,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 18: Major Plot Twist",
 					"dice": "1d100",
 					"table": [
 						{
@@ -12129,6 +12210,7 @@
 				"mystic_backlash": {
 					"id": "classic/oracles/turning_point/mystic_backlash",
 					"name": "Mystic Backlash",
+					"canonical_name": "Oracle 17: Mystic Backlash",
 					"summary": "Those who deal in magic may find themselves at the mercy of chaos. This oracle can supplement, or replace, the [Pay the Price](id:classic/moves/fate/pay_the_price) table when resolving the outcome of a failed ritual or other negative interaction with mystical forces. Use this oracle in dramatic moments, or to introduce an unexpected outcome triggered by a match.",
 					"source": {
 						"title": "Ironsworn Rulebook",
@@ -12142,7 +12224,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"canonical_name": "Oracle 17: Mystic Backlash",
 					"dice": "1d100",
 					"table": [
 						{

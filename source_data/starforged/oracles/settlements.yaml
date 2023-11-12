@@ -25,15 +25,15 @@ oracles:
         rendering:
           columns:
             terminus:
-              content_type: range
+              content_type: roll
               table_key: terminus
               label: Terminus
             outlands:
-              content_type: range
+              content_type: roll
               table_key: outlands
               label: Outlands
             expanse:
-              content_type: range
+              content_type: roll
               table_key: expanse
               label: Expanse
             number:
@@ -45,7 +45,7 @@ oracles:
             name: Terminus
             source: *CollectionSource
             rendering: &Pop.rendering
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires:
             #     attributes:

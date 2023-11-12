@@ -39,7 +39,7 @@ oracles:
           columns:
             roll:
               label: Roll
-              content_type: range
+              content_type: roll
             result:
               label: Result
               content_type: result
@@ -879,24 +879,24 @@ oracles:
           <<: *Source
         name: Size
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             myriads:
               table_key: myriads
-              content_type: range
+              content_type: roll
             margins:
               table_key: margins
-              content_type: range
+              content_type: roll
             reaches:
               table_key: reaches
-              content_type: range
+              content_type: roll
             type:
               table_key: myriads
               content_type: result
               label: Type
             typical_population:
               label: typical population
-              content_type: range
+              content_type: roll
               table_key: summary
         contents:
           myriads:
@@ -905,7 +905,7 @@ oracles:
             name: Myriads
             summary: Central Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - <<: &Size.0
                   result: Village or outpost
@@ -934,7 +934,7 @@ oracles:
             name: Margins
             summary: Outer Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 40
@@ -954,7 +954,7 @@ oracles:
             name: Reaches
             summary: Remote Seas
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             table:
               - min: 1
                 max: 50
@@ -1050,17 +1050,17 @@ oracles:
               <<: *Source
             name: Controlling Faction
             rendering:
-              style: multi_table
+              table_style: multi_table
               columns:
                 myriads:
                   table_key: myriads
-                  content_type: range
+                  content_type: roll
                 margins:
                   table_key: margins
-                  content_type: range
+                  content_type: roll
                 reaches:
                   table_key: reaches
-                  content_type: range
+                  content_type: roll
                 result:
                   table_key: myriads
                   content_type: result
@@ -1072,7 +1072,7 @@ oracles:
                 name: Myriads
                 summary: Central Seas
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: 1
                     max: 60
@@ -1100,7 +1100,7 @@ oracles:
                 name: Margins
                 summary: Outer Seas
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: 1
                     max: 45
@@ -1124,7 +1124,7 @@ oracles:
                 name: Reaches
                 summary: Remote Seas
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: 1
                     max: 30
@@ -1147,17 +1147,17 @@ oracles:
             name: Settlement Focus
             summary: &focus.summary Sections of a large city or city-state can contain their own pursuits and industries, and can even span geographies (seafront, inland, or waterside). Revisit this table if you spend time in a place and learn more about its activities.
             rendering:
-              style: multi_table
+              table_style: multi_table
               columns:
                 seafront:
                   table_key: seafront
-                  content_type: range
+                  content_type: roll
                 inland:
                   table_key: inland
-                  content_type: range
+                  content_type: roll
                 waterside:
                   table_key: waterside
-                  content_type: range
+                  content_type: roll
                 result:
                   table_key: seafront
                   content_type: result
@@ -1169,7 +1169,7 @@ oracles:
                 name: Seafront
                 summary: *focus.summary
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: 1
                     max: 3
@@ -1362,7 +1362,7 @@ oracles:
                 name: Inland
                 summary: *focus.summary
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: null
                     max: null
@@ -1479,7 +1479,7 @@ oracles:
                 name: Waterside
                 summary: *focus.summary
                 rendering:
-                  style: embed_as_column
+                  table_style: embed_as_column
                 table:
                   - min: null
                     max: null

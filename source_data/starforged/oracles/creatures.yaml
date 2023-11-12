@@ -567,30 +567,30 @@ oracles:
         # content:
         # part_of_speech: [fragment]
         rendering:
-          style: multi_table
+          table_style: multi_table
           columns:
             space:
-              content_type: range
+              content_type: roll
               table_key: space
               label: Space
               color: &color.Space '#121b21'
             interior:
-              content_type: range
+              content_type: roll
               table_key: interior
               label: Interior
               color: &color.Interior '#707a83'
             land:
-              content_type: range
+              content_type: roll
               table_key: land
               label: Land
               color: &color.Land '#ed1a38'
             liquid:
-              content_type: range
+              content_type: roll
               table_key: liquid
               label: Liquid
               color: &color.Liquid '#0082bf'
             air:
-              content_type: range
+              content_type: roll
               table_key: air
               label: Air
               color: &color.Air '#90278f'
@@ -607,7 +607,7 @@ oracles:
             name: Space
             rendering:
               icon: *icon.Space
-              style: embed_as_column
+              table_style: embed_as_column
               color: *color.Space
             # usage:
             # requires:
@@ -694,7 +694,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
               color: *color.Interior
               icon: *icon.Interior
             # usage:
@@ -776,7 +776,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
               color: *color.Land
               icon: *icon.Land
             # usage:
@@ -858,7 +858,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
               color: *color.Liquid
               icon: *icon.Liquid
             # usage:
@@ -940,7 +940,7 @@ oracles:
             source:
               <<: *Source
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
               color: *color.Air
               icon: *icon.Air
             # usage:

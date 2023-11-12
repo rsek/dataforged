@@ -90,11 +90,11 @@ oracles:
           columns:
             lifebearing:
               label: Lifebearing
-              content_type: range
+              content_type: roll
               table_key: lifebearing
             lifeless:
               label: Lifeless
-              content_type: range
+              content_type: roll
               table_key: lifeless
             result:
               content_type: result
@@ -114,7 +114,7 @@ oracles:
             source: *CollectionSource
             name: Lifebearing
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires: &attr:Life.Lifebearing
             #     attributes:
@@ -249,7 +249,7 @@ oracles:
             name: Lifeless
             source: *CollectionSource
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             # usage:
             #   requires: &attr:Life.Lifeless
             #     attributes:
@@ -365,11 +365,11 @@ oracles:
         rendering:
           columns:
             lifebearing:
-              content_type: range
+              content_type: roll
               table_key: lifebearing
               label: Lifebearing
             lifeless:
-              content_type: range
+              content_type: roll
               table_key: lifeless
               label: Lifeless
             result:
@@ -389,7 +389,7 @@ oracles:
         contents:
           lifebearing:
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             name: Lifebearing
             source: *CollectionSource
             # usage:
@@ -483,7 +483,7 @@ oracles:
                 # suggestions: [*roll:Object]
           lifeless:
             rendering:
-              style: embed_as_column
+              table_style: embed_as_column
             name: Lifeless
             source: *CollectionSource
             # usage:
