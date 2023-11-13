@@ -8,9 +8,6 @@
 		"id": {
 			"$ref": "#/$defs/NamespaceID"
 		},
-		"source": {
-			"$ref": "#/$defs/Source"
-		},
 		"oracles": {
 			"type": "object",
 			"$comment": "Deserialize as a dictionary object.",
@@ -20,6 +17,9 @@
 					"$ref": "#/$defs/OracleCollection"
 				}
 			}
+		},
+		"source": {
+			"$ref": "#/$defs/Source"
 		},
 		"assets": {
 			"type": "object",
@@ -672,11 +672,11 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"your_truth": {
 					"$ref": "#/$defs/MarkdownString"
@@ -716,11 +716,11 @@
 						}
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"enhances": {
 					"$ref": "#/$defs/NpcCollectionID",
@@ -828,11 +828,11 @@
 						}
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"enhances": {
 					"$ref": "#/$defs/OracleCollectionID",
@@ -925,7 +925,7 @@
 		"OracleTable": {
 			"title": "Oracle table",
 			"type": "object",
-			"required": ["id", "name", "dice", "source", "table"],
+			"required": ["id", "name", "dice", "table", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/OracleTableID"
@@ -954,9 +954,6 @@
 					"$ref": "#/$defs/MarkdownString",
 					"description": "A longer description of the oracle table's intended usage, which might include multiple paragraphs. If it's only a couple sentences, use the `summary` key instead."
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"match": {
 					"$ref": "#/$defs/OracleTableMatchBehavior"
 				},
@@ -968,6 +965,9 @@
 					"items": {
 						"$ref": "#/$defs/OracleTableRow"
 					}
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"replaces": {
 					"$ref": "#/$defs/OracleTableID",
@@ -1248,9 +1248,6 @@
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"oracles": {
 					"type": "array",
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1260,6 +1257,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
@@ -1329,11 +1329,11 @@
 						}
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"enhances": {
 					"$ref": "#/$defs/MoveCategoryID",
@@ -1386,9 +1386,6 @@
 					"$ref": "#/$defs/MarkdownString",
 					"description": "The complete rules text of the move."
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"oracles": {
 					"type": "array",
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1398,6 +1395,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
@@ -1538,9 +1538,6 @@
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"oracles": {
 					"type": "array",
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1550,6 +1547,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
@@ -1629,9 +1629,6 @@
 				"outcomes": {
 					"$ref": "#/$defs/MoveOutcomes"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"oracles": {
 					"type": "array",
 					"description": "Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.",
@@ -1641,6 +1638,9 @@
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
@@ -2268,11 +2268,11 @@
 				"condition_meter": {
 					"$ref": "#/$defs/AssetConditionMeter"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				}
 			}
 		},
@@ -2643,11 +2643,11 @@
 						}
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"enhances": {
 					"$ref": "#/$defs/AssetTypeID",
@@ -2889,11 +2889,11 @@
 						"$ref": "#/$defs/TruthOption"
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				}
 			},
 			"isSourcedNode": true
@@ -2958,11 +2958,11 @@
 						}
 					}
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"enhances": {
 					"$ref": "#/$defs/AtlasID",
@@ -3007,11 +3007,11 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"your_truth": {
 					"$ref": "#/$defs/MarkdownString"
@@ -3055,11 +3055,11 @@
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"asset": {
 					"$ref": "#/$defs/AssetID",
@@ -3108,11 +3108,11 @@
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"denizens": {
 					"allOf": [
@@ -3742,11 +3742,11 @@
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				},
 				"name_oracle": {
 					"$ref": "#/$defs/OracleTableID",
@@ -4156,11 +4156,11 @@
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"source": {
-					"$ref": "#/$defs/Source"
-				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
+				},
+				"source": {
+					"$ref": "#/$defs/Source"
 				}
 			},
 			"isSourcedNode": true

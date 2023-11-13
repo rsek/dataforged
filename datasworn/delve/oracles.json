@@ -23,18 +23,6 @@
 					"canonical_name": "Character: Activity",
 					"dice": "1d100",
 					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 213,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"suggestions": {
 						"oracles": [
 							"delve/oracles/feature/focus",
@@ -592,14 +580,7 @@
 								}
 							}
 						}
-					]
-				},
-				"disposition": {
-					"id": "delve/oracles/character/disposition",
-					"name": "Disposition",
-					"canonical_name": "Character: Disposition",
-					"dice": "1d100",
-					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -611,7 +592,14 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"disposition": {
+					"id": "delve/oracles/character/disposition",
+					"name": "Disposition",
+					"canonical_name": "Character: Disposition",
+					"dice": "1d100",
+					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
 					"table": [
 						{
 							"id": "delve/oracles/character/disposition/1-6",
@@ -686,7 +674,7 @@
 							"result": "Wanting",
 							"i18n": {
 								"result": {
-									"part_of_speech": "adjective"
+									"part_of_speech": "gerund"
 								}
 							}
 						},
@@ -708,7 +696,7 @@
 							"result": "Demanding",
 							"i18n": {
 								"result": {
-									"part_of_speech": "adjective"
+									"part_of_speech": "gerund"
 								}
 							}
 						},
@@ -745,7 +733,19 @@
 								}
 							}
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 213,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {
@@ -773,18 +773,6 @@
 					"name": "Method",
 					"canonical_name": "Combat Event: Method",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 218,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"suggestions": {
 						"oracles": ["delve/oracles/combat_event/target"]
 					},
@@ -1339,17 +1327,11 @@
 								}
 							}
 						}
-					]
-				},
-				"target": {
-					"id": "delve/oracles/combat_event/target",
-					"name": "Target",
-					"canonical_name": "Combat Event: Target",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 219,
+						"page": 218,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -1357,7 +1339,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"target": {
+					"id": "delve/oracles/combat_event/target",
+					"name": "Target",
+					"canonical_name": "Combat Event: Target",
+					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/combat_event/method"]
 					},
@@ -1912,8 +1900,23 @@
 								}
 							}
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 219,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
+			},
+			"suggestions": {
+				"oracles": ["classic/oracles/turning_point/combat_action"]
 			},
 			"source": {
 				"title": "Ironsworn: Delve",
@@ -1926,9 +1929,6 @@
 				],
 				"license": "https://creativecommons.org/licenses/by/4.0",
 				"url": "https://ironswornrpg.com"
-			},
-			"suggestions": {
-				"oracles": ["classic/oracles/turning_point/combat_action"]
 			}
 		},
 		"feature": {
@@ -1942,18 +1942,6 @@
 					"name": "Aspect",
 					"canonical_name": "Feature: Aspect",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 204,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"suggestions": {
 						"oracles": ["delve/oracles/feature/focus"]
 					},
@@ -2508,17 +2496,11 @@
 								}
 							}
 						}
-					]
-				},
-				"focus": {
-					"id": "delve/oracles/feature/focus",
-					"name": "Focus",
-					"canonical_name": "Feature: Focus",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 205,
+						"page": 204,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -2526,7 +2508,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"focus": {
+					"id": "delve/oracles/feature/focus",
+					"name": "Focus",
+					"canonical_name": "Feature: Focus",
+					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/feature/aspect"]
 					},
@@ -3081,7 +3069,19 @@
 								}
 							}
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 205,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {
@@ -3108,18 +3108,6 @@
 					"name": "Size",
 					"canonical_name": "Monstrosity: Size",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 214,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/size/1-5",
@@ -3157,14 +3145,7 @@
 							"max": 100,
 							"result": "Titanic (incomprehensible)"
 						}
-					]
-				},
-				"primary_form": {
-					"id": "delve/oracles/monstrosity/primary_form",
-					"name": "Primary Form",
-					"canonical_name": "Monstrosity: Primary Form",
-					"dice": "1d100",
-					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -3176,7 +3157,14 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"primary_form": {
+					"id": "delve/oracles/monstrosity/primary_form",
+					"name": "Primary Form",
+					"canonical_name": "Monstrosity: Primary Form",
+					"dice": "1d100",
+					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/primary_form/1-15",
@@ -3376,14 +3364,21 @@
 									"method": "no_duplicates",
 									"times": 2
 								}
-							],
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
+							]
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 214,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				},
 				"characteristics": {
 					"id": "delve/oracles/monstrosity/characteristics",
@@ -3392,18 +3387,6 @@
 					"dice": "1d100",
 					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
 					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 215,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/characteristics/1-5",
@@ -3573,7 +3556,19 @@
 							"max": 100,
 							"result": "Etched with mystic runes"
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 215,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				},
 				"abilities": {
 					"id": "delve/oracles/monstrosity/abilities",
@@ -3582,18 +3577,6 @@
 					"dice": "1d100",
 					"summary": "Roll up to four times for Abilities and keep up to three of those results.",
 					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 216,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/abilities/1-4",
@@ -3835,8 +3818,28 @@
 							"max": 100,
 							"result": "Control elements"
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 216,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
+			},
+			"suggestions": {
+				"oracles": [
+					"classic/oracles/turning_point/challenge_rank",
+					"classic/oracles/character/goal",
+					"classic/oracles/character/disposition",
+					"delve/oracles/character/activity"
+				]
 			},
 			"source": {
 				"title": "Ironsworn: Delve",
@@ -3849,14 +3852,6 @@
 				],
 				"license": "https://creativecommons.org/licenses/by/4.0",
 				"url": "https://ironswornrpg.com"
-			},
-			"suggestions": {
-				"oracles": [
-					"classic/oracles/turning_point/challenge_rank",
-					"classic/oracles/character/goal",
-					"classic/oracles/character/disposition",
-					"delve/oracles/character/activity"
-				]
 			}
 		},
 		"moves": {
@@ -3867,18 +3862,6 @@
 					"id": "delve/oracles/moves/find_an_opportunity",
 					"name": "Find an Opportunity",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 30,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/moves/find_an_opportunity/1-25",
@@ -3940,16 +3923,11 @@
 							"max": 100,
 							"result": "You encounter a denizen in need of help."
 						}
-					]
-				},
-				"reveal_a_danger": {
-					"id": "delve/oracles/moves/reveal_a_danger",
-					"name": "Reveal a Danger",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 34,
+						"page": 30,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -3957,7 +3935,12 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"reveal_a_danger": {
+					"id": "delve/oracles/moves/reveal_a_danger",
+					"name": "Reveal a Danger",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/moves/reveal_a_danger/1-30",
@@ -4038,16 +4021,11 @@
 								}
 							]
 						}
-					]
-				},
-				"reveal_a_danger_alt": {
-					"id": "delve/oracles/moves/reveal_a_danger_alt",
-					"name": "Reveal a Danger (alternate version)",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 68,
+						"page": 34,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -4055,7 +4033,12 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"reveal_a_danger_alt": {
+					"id": "delve/oracles/moves/reveal_a_danger_alt",
+					"name": "Reveal a Danger (alternate version)",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
@@ -4125,16 +4108,10 @@
 							]
 						}
 					],
-					"replaces": "delve/oracles/moves/reveal_a_danger"
-				},
-				"advance_a_threat": {
-					"id": "delve/oracles/moves/advance_a_threat",
-					"name": "Advance a Threat",
-					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 155,
+						"page": 68,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -4143,6 +4120,12 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
+					"replaces": "delve/oracles/moves/reveal_a_danger"
+				},
+				"advance_a_threat": {
+					"id": "delve/oracles/moves/advance_a_threat",
+					"name": "Advance a Threat",
+					"dice": "1d100",
 					"match": {
 						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
 					},
@@ -4165,7 +4148,19 @@
 							"max": 100,
 							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 155,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"collections": {
@@ -4201,18 +4196,6 @@
 							"id": "delve/oracles/moves/delve_the_depths/edge",
 							"name": "Edge",
 							"dice": "1d100",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
@@ -4244,12 +4227,7 @@
 									"max": 100,
 									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
 								}
-							]
-						},
-						"shadow": {
-							"id": "delve/oracles/moves/delve_the_depths/shadow",
-							"name": "Shadow",
-							"dice": "1d100",
+							],
 							"source": {
 								"title": "Ironsworn: Delve",
 								"date": "2020-02-13",
@@ -4261,7 +4239,12 @@
 								],
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
-							},
+							}
+						},
+						"shadow": {
+							"id": "delve/oracles/moves/delve_the_depths/shadow",
+							"name": "Shadow",
+							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
@@ -4293,12 +4276,7 @@
 									"max": 100,
 									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
 								}
-							]
-						},
-						"wits": {
-							"id": "delve/oracles/moves/delve_the_depths/wits",
-							"name": "Wits",
-							"dice": "1d100",
+							],
 							"source": {
 								"title": "Ironsworn: Delve",
 								"date": "2020-02-13",
@@ -4310,7 +4288,12 @@
 								],
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
-							},
+							}
+						},
+						"wits": {
+							"id": "delve/oracles/moves/delve_the_depths/wits",
+							"name": "Wits",
+							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
@@ -4342,7 +4325,19 @@
 									"max": 100,
 									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						}
 					},
 					"source": {
@@ -4383,23 +4378,12 @@
 					"name": "Format",
 					"canonical_name": "Site Name: Format",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/site_name/format/1-25",
 							"min": 1,
 							"max": 25,
-							"result": "[Description] [Place]",
+							"result": "[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}"
 							},
@@ -4420,7 +4404,7 @@
 							"id": "delve/oracles/site_name/format/26-50",
 							"min": 26,
 							"max": 50,
-							"result": "[Place] of [Detail]",
+							"result": "[Place](id:delve/oracles/site_name/place) of [Detail](id:delve/oracles/site_name/detail)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}"
 							},
@@ -4441,7 +4425,7 @@
 							"id": "delve/oracles/site_name/format/51-70",
 							"min": 51,
 							"max": 70,
-							"result": "[Place] of [Description] [Detail]",
+							"result": "[Place](id:delve/oracles/site_name/place) of [Description](id:delve/oracles/site_name/description) [Detail](id:delve/oracles/site_name/detail)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}"
 							},
@@ -4467,7 +4451,7 @@
 							"id": "delve/oracles/site_name/format/71-80",
 							"min": 71,
 							"max": 80,
-							"result": "[Place] of [Namesake's] [Detail]",
+							"result": "[Place](id:delve/oracles/site_name/place) of [Namesake's](id:delve/oracles/site_name/namesake) [Detail](id:delve/oracles/site_name/detail)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
 							},
@@ -4493,7 +4477,7 @@
 							"id": "delve/oracles/site_name/format/81-85",
 							"min": 81,
 							"max": 85,
-							"result": "[Namesake's] [Place]",
+							"result": "[Namesake's](id:delve/oracles/site_name/namesake) [Place](id:delve/oracles/site_name/place)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
 							},
@@ -4514,7 +4498,7 @@
 							"id": "delve/oracles/site_name/format/86-95",
 							"min": 86,
 							"max": 95,
-							"result": "[Description] [Place] of [Namesake]",
+							"result": "[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
 							},
@@ -4540,7 +4524,7 @@
 							"id": "delve/oracles/site_name/format/96-100",
 							"min": 96,
 							"max": 100,
-							"result": "[Place] of [Namesake]",
+							"result": "[Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)",
 							"template": {
 								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
 							},
@@ -4558,6 +4542,17 @@
 							]
 						}
 					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
 					"i18n": {
 						"part_of_speech": {
 							"template": {
@@ -4571,18 +4566,6 @@
 					"name": "Description",
 					"canonical_name": "Site Name: Description",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 207,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/site_name/description/1-2",
@@ -5134,17 +5117,11 @@
 								}
 							}
 						}
-					]
-				},
-				"detail": {
-					"id": "delve/oracles/site_name/detail",
-					"name": "Detail",
-					"canonical_name": "Site Name: Detail",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 208,
+						"page": 207,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -5152,7 +5129,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"detail": {
+					"id": "delve/oracles/site_name/detail",
+					"name": "Detail",
+					"canonical_name": "Site Name: Detail",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/detail/1-2",
@@ -5704,18 +5687,11 @@
 								}
 							}
 						}
-					]
-				},
-				"namesake": {
-					"id": "delve/oracles/site_name/namesake",
-					"name": "Namesake",
-					"canonical_name": "Site Name: Namesake",
-					"dice": "1d100",
-					"summary": "You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 209,
+						"page": 208,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -5723,7 +5699,14 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"namesake": {
+					"id": "delve/oracles/site_name/namesake",
+					"name": "Namesake",
+					"canonical_name": "Site Name: Namesake",
+					"dice": "1d100",
+					"summary": "You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/namesake/1-2",
@@ -6275,17 +6258,11 @@
 								}
 							}
 						}
-					]
-				},
-				"place": {
-					"id": "delve/oracles/site_name/place",
-					"name": "Place",
-					"canonical_name": "Site Name: Place",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 210,
+						"page": 209,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -6293,7 +6270,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"place": {
+					"id": "delve/oracles/site_name/place",
+					"name": "Place",
+					"canonical_name": "Site Name: Place",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/place/1-6",
@@ -6463,7 +6446,19 @@
 							],
 							"embed_table": "delve/oracles/site_name/place/underkeep"
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 210,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"collections": {
@@ -6489,18 +6484,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/1-6"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -6569,7 +6552,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"cavern": {
 							"id": "delve/oracles/site_name/place/cavern",
@@ -6588,18 +6583,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/7-18"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -6712,7 +6695,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"frozen_cavern": {
 							"id": "delve/oracles/site_name/place/frozen_cavern",
@@ -6731,18 +6726,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/19-28"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -6855,7 +6838,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"icereach": {
 							"id": "delve/oracles/site_name/place/icereach",
@@ -6874,18 +6869,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/29-32"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -6954,7 +6937,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"mine": {
 							"id": "delve/oracles/site_name/place/mine",
@@ -6973,18 +6968,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/33-38"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7053,7 +7036,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"pass": {
 							"id": "delve/oracles/site_name/place/pass",
@@ -7072,18 +7067,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/39-48"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7196,7 +7179,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"ruin": {
 							"id": "delve/oracles/site_name/place/ruin",
@@ -7215,18 +7210,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/49-58"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7339,7 +7322,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"sea_cave": {
 							"id": "delve/oracles/site_name/place/sea_cave",
@@ -7358,18 +7353,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/59-68"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7438,7 +7421,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"shadowfen": {
 							"id": "delve/oracles/site_name/place/shadowfen",
@@ -7457,18 +7452,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/69-78"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7581,7 +7564,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"stronghold": {
 							"id": "delve/oracles/site_name/place/stronghold",
@@ -7600,18 +7595,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/79-83"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7724,7 +7707,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"tanglewood": {
 							"id": "delve/oracles/site_name/place/tanglewood",
@@ -7743,18 +7738,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/84-95"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7845,7 +7828,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						},
 						"underkeep": {
 							"id": "delve/oracles/site_name/place/underkeep",
@@ -7864,18 +7859,6 @@
 									}
 								},
 								"embed_in": "delve/oracles/site_name/place/96-100"
-							},
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
 							},
 							"table": [
 								{
@@ -7988,7 +7971,19 @@
 										}
 									}
 								}
-							]
+							],
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							}
 						}
 					},
 					"source": {
@@ -8029,18 +8024,6 @@
 					"name": "Theme",
 					"canonical_name": "Site Nature: Theme",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 212,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/site_nature/theme/1-11",
@@ -8090,13 +8073,7 @@
 							"max": 100,
 							"result": "[Wild](id:delve/site_themes/wild)"
 						}
-					]
-				},
-				"domain": {
-					"id": "delve/oracles/site_nature/domain",
-					"name": "Domain",
-					"canonical_name": "Site Nature: Domain",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8108,7 +8085,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"domain": {
+					"id": "delve/oracles/site_nature/domain",
+					"name": "Domain",
+					"canonical_name": "Site Nature: Domain",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_nature/domain/1-6",
@@ -8182,7 +8165,19 @@
 							"max": 100,
 							"result": "[Underkeep](id:delve/site_domains/underkeep)"
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 212,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {
@@ -8209,18 +8204,6 @@
 					"name": "Category",
 					"canonical_name": "Threat: Category",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 220,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"table": [
 						{
 							"id": "delve/oracles/threat/category/1-10",
@@ -8288,17 +8271,11 @@
 								}
 							]
 						}
-					]
-				},
-				"burgeoning_conflict": {
-					"id": "delve/oracles/threat/burgeoning_conflict",
-					"name": "Burgeoning Conflict",
-					"canonical_name": "Threat: Burgeoning Conflict",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 221,
+						"page": 220,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -8306,7 +8283,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"burgeoning_conflict": {
+					"id": "delve/oracles/threat/burgeoning_conflict",
+					"name": "Burgeoning Conflict",
+					"canonical_name": "Threat: Burgeoning Conflict",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/burgeoning_conflict/1-10",
@@ -8368,13 +8351,7 @@
 							"max": 100,
 							"result": "Introduce a new person or faction to complicate the situation"
 						}
-					]
-				},
-				"cursed_site": {
-					"id": "delve/oracles/threat/cursed_site",
-					"name": "Cursed Site",
-					"canonical_name": "Threat: Cursed Site",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8386,7 +8363,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"cursed_site": {
+					"id": "delve/oracles/threat/cursed_site",
+					"name": "Cursed Site",
+					"canonical_name": "Threat: Cursed Site",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/cursed_site/1-10",
@@ -8448,13 +8431,7 @@
 							"max": 100,
 							"result": "Transform its nature"
 						}
-					]
-				},
-				"environmental_calamity": {
-					"id": "delve/oracles/threat/environmental_calamity",
-					"name": "Environmental Calamity",
-					"canonical_name": "Threat: Environmental Calamity",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8466,7 +8443,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"environmental_calamity": {
+					"id": "delve/oracles/threat/environmental_calamity",
+					"name": "Environmental Calamity",
+					"canonical_name": "Threat: Environmental Calamity",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/environmental_calamity/1-10",
@@ -8528,17 +8511,11 @@
 							"max": 100,
 							"result": "Disrupt natural ecosystems"
 						}
-					]
-				},
-				"malignant_plague": {
-					"id": "delve/oracles/threat/malignant_plague",
-					"name": "Malignant Plague",
-					"canonical_name": "Threat: Malignant Plague",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 222,
+						"page": 221,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -8546,7 +8523,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"malignant_plague": {
+					"id": "delve/oracles/threat/malignant_plague",
+					"name": "Malignant Plague",
+					"canonical_name": "Threat: Malignant Plague",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/malignant_plague/1-10",
@@ -8608,13 +8591,7 @@
 							"max": 100,
 							"result": "Undermine a potential cure"
 						}
-					]
-				},
-				"rampaging_creature": {
-					"id": "delve/oracles/threat/rampaging_creature",
-					"name": "Rampaging Creature",
-					"canonical_name": "Threat: Rampaging Creature",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8626,7 +8603,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"rampaging_creature": {
+					"id": "delve/oracles/threat/rampaging_creature",
+					"name": "Rampaging Creature",
+					"canonical_name": "Threat: Rampaging Creature",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/rampaging_creature/1-10",
@@ -8688,13 +8671,7 @@
 							"max": 100,
 							"result": "Threaten resources"
 						}
-					]
-				},
-				"ravaging_horde": {
-					"id": "delve/oracles/threat/ravaging_horde",
-					"name": "Ravaging Horde",
-					"canonical_name": "Threat: Ravaging Horde",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8706,7 +8683,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"ravaging_horde": {
+					"id": "delve/oracles/threat/ravaging_horde",
+					"name": "Ravaging Horde",
+					"canonical_name": "Threat: Ravaging Horde",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/ravaging_horde/1-10",
@@ -8768,17 +8751,11 @@
 							"max": 100,
 							"result": "Employ a new weapon"
 						}
-					]
-				},
-				"scheming_leader": {
-					"id": "delve/oracles/threat/scheming_leader",
-					"name": "Scheming Leader",
-					"canonical_name": "Threat: Scheming Leader",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 223,
+						"page": 222,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -8786,7 +8763,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"scheming_leader": {
+					"id": "delve/oracles/threat/scheming_leader",
+					"name": "Scheming Leader",
+					"canonical_name": "Threat: Scheming Leader",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/scheming_leader/1-10",
@@ -8848,13 +8831,7 @@
 							"max": 100,
 							"result": "Use an unexpected capability or asset"
 						}
-					]
-				},
-				"power_hungry_mystic": {
-					"id": "delve/oracles/threat/power_hungry_mystic",
-					"name": "Power-Hungry Mystic",
-					"canonical_name": "Threat: Power-Hungry Mystic",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8866,7 +8843,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"power_hungry_mystic": {
+					"id": "delve/oracles/threat/power_hungry_mystic",
+					"name": "Power-Hungry Mystic",
+					"canonical_name": "Threat: Power-Hungry Mystic",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/power_hungry_mystic/1-10",
@@ -8928,13 +8911,7 @@
 							"max": 100,
 							"result": "Use magic to trick or deceive"
 						}
-					]
-				},
-				"zealous_cult": {
-					"id": "delve/oracles/threat/zealous_cult",
-					"name": "Zealous Cult",
-					"canonical_name": "Threat: Zealous Cult",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8946,7 +8923,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"zealous_cult": {
+					"id": "delve/oracles/threat/zealous_cult",
+					"name": "Zealous Cult",
+					"canonical_name": "Threat: Zealous Cult",
+					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/zealous_cult/1-10",
@@ -9008,7 +8991,19 @@
 							"max": 100,
 							"result": "Reveal its true nature or goal"
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 223,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {
@@ -9035,18 +9030,6 @@
 					"name": "Event",
 					"canonical_name": "Trap: Event",
 					"dice": "1d100",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
 					"suggestions": {
 						"oracles": ["delve/oracles/trap/component"]
 					},
@@ -9326,13 +9309,7 @@
 								}
 							}
 						}
-					]
-				},
-				"component": {
-					"id": "delve/oracles/trap/component",
-					"name": "Component",
-					"canonical_name": "Trap: Component",
-					"dice": "1d100",
+					],
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -9344,7 +9321,13 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					},
+					}
+				},
+				"component": {
+					"id": "delve/oracles/trap/component",
+					"name": "Component",
+					"canonical_name": "Trap: Component",
+					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/trap/event"]
 					},
@@ -9624,7 +9607,19 @@
 								}
 							}
 						}
-					]
+					],
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {

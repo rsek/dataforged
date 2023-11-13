@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 oracles:
   seafaring:
+    source: *Source
     name: Seafaring Adventures
     collections:
       waypoints:
+        source: *Source
         name: Seafaring Waypoints
         summary: |-
           Use this table to trigger locations, events, and encounters on a seafaring expedition. If you encounter a cost or opportunity on your expedition, the [Seafaring Peril](id:sundered_isles/oracles/seafaring/peril) and [Seafaring Opportunity](id:sundered_isles/oracles/seafaring/opportunity) tables can help reveal what occurs.
@@ -32,6 +34,7 @@ oracles:
               label: Result
         contents:
           myriads:
+            source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
@@ -79,6 +82,7 @@ oracles:
                 max: 100
                 result: Roll twice
           margins:
+            source: *Source
             name: Margins
             summary: Outer Seas
             rendering:
@@ -107,6 +111,7 @@ oracles:
                 result: *waypoint.6.result
               - *waypoint.7
           reaches:
+            source: *Source
             name: Reaches
             summary: Remote Seas
             rendering:
@@ -136,6 +141,7 @@ oracles:
               - *waypoint.7
     contents:
       details:
+        source: *Source
         name: Seafaring Details
         table:
           - min: 1
@@ -439,6 +445,7 @@ oracles:
             max: 100
             result: Smoke rises from among a grove of palms on a sandy isle
       cursed_details:
+        source: *Source
         name: Cursed Seafaring Details
         table:
           - min: 1
@@ -742,6 +749,7 @@ oracles:
             max: 100
             result: The rising sun casts a baleful red glow
       peril:
+        source: *Source
         name: Seafaring
         summary: Roll or choose on this table when you want inspiration for a trouble during ocean exploration or on a seagoing expedition.
         table:
@@ -857,6 +865,7 @@ oracles:
                 times: 2
                 method: no_duplicates
       opportunity:
+        source: *Source
         name: Seafaring Opportunities
         summary: Roll or choose on this table when you want inspiration for a beneficial encounter or event on a seagoing journey, such as when you roll a strong hit with a match as you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition), or if you [Explore a Waypoint](id:sundered_isles/moves/exploration/explore_a_waypoint) and find an opportunity.
         table:

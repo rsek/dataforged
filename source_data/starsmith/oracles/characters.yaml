@@ -8,10 +8,14 @@ source: &Source
   url: https://playeveryrole.com/
 oracles:
   characters:
+    source: *Source
     name: Characters
+    enhances: starforged/collections/oracles/characters
     contents:
       first_look:
-        _replace: starforged/oracles/characters/first_look
+        source: *Source
+        name: First Look
+        replaces: starforged/oracles/characters/first_look
         dice: 1d300
         table:
           - min: 1
@@ -366,7 +370,9 @@ oracles:
             max: 300
             result: Wavy hair
       initial_disposition:
-        _replace: starforged/oracles/characters/initial_disposition
+        source: *Source
+        name: Initial Disposition
+        replaces: starforged/oracles/characters/initial_disposition
         dice: 1d300
         table:
           - min: 1
@@ -478,7 +484,9 @@ oracles:
             max: 300
             result: Abusive
       role:
-        _replace: starforged/oracles/characters/role
+        source: *Source
+        name: Character Role
+        replaces: starforged/oracles/characters/role
         dice: 1d300
         table:
           - min: 1
@@ -924,7 +932,9 @@ oracles:
             multiple_rolls:
               amount: 2
       goal:
-        _replace: starforged/oracles/characters/goal
+        source: *Source
+        name: Character Goal
+        replaces: starforged/oracles/characters/goal
         dice: 1d300
         table:
           - min: 1
@@ -1294,7 +1304,9 @@ oracles:
             multiple_rolls:
               amount: 2
       revealed_aspect:
-        _replace: starforged/oracles/characters/revealed_aspect
+        source: *Source
+        name: Revealed Character Aspect
+        replaces: starforged/oracles/characters/revealed_aspect
         dice: 1d300
         table:
           - min: 1
@@ -2197,2720 +2209,8 @@ oracles:
           - min: 300
             max: 300
             result: Witty
-      given_name:
-        _replace: starforged/oracles/characters/given_name
-        dice: 1d300
-        table:
-          - min: 1
-            max: 1
-            result: Akim
-          - min: 2
-            max: 2
-            result: Alex
-          - min: 3
-            max: 3
-            result: Alexis
-          - min: 4
-            max: 4
-            result: Alisa
-          - min: 5
-            max: 5
-            result: Althea
-          - min: 6
-            max: 6
-            result: Amari
-          - min: 7
-            max: 7
-            result: Aparna
-          - min: 8
-            max: 8
-            result: Argus
-          - min: 9
-            max: 9
-            result: Arnav
-          - min: 10
-            max: 10
-            result: Ash
-          - min: 11
-            max: 11
-            result: Asha
-          - min: 12
-            max: 12
-            result: Astrid
-          - min: 13
-            max: 13
-            result: Aurora
-          - min: 14
-            max: 14
-            result: Ayako
-          - min: 15
-            max: 15
-            result: Azriel
-          - min: 16
-            max: 16
-            result: Blake
-          - min: 17
-            max: 17
-            result: Brennan
-          - min: 18
-            max: 18
-            result: Brianna
-          - min: 19
-            max: 19
-            result: Bruna
-          - min: 20
-            max: 20
-            result: Bruno
-          - min: 21
-            max: 21
-            result: Cassidy
-          - min: 22
-            max: 22
-            result: Christa
-          - min: 23
-            max: 23
-            result: Cole
-          - min: 24
-            max: 24
-            result: Corey
-          - min: 25
-            max: 25
-            result: Creed
-          - min: 26
-            max: 26
-            result: Derya
-          - min: 27
-            max: 27
-            result: Dex
-          - min: 28
-            max: 28
-            result: Doran
-          - min: 29
-            max: 29
-            result: Echo
-          - min: 30
-            max: 30
-            result: Eren
-          - min: 31
-            max: 31
-            result: Erim
-          - min: 32
-            max: 32
-            result: Esana
-          - min: 33
-            max: 33
-            result: Eveline
-          - min: 34
-            max: 34
-            result: Faye
-          - min: 35
-            max: 35
-            result: Fletcher
-          - min: 36
-            max: 36
-            result: Flint
-          - min: 37
-            max: 37
-            result: Florian
-          - min: 38
-            max: 38
-            result: Gavin
-          - min: 39
-            max: 39
-            result: Halia
-          - min: 40
-            max: 40
-            result: Ike
-          - min: 41
-            max: 41
-            result: Isaac
-          - min: 42
-            max: 42
-            result: James
-          - min: 43
-            max: 43
-            result: Janya
-          - min: 44
-            max: 44
-            result: Jihun
-          - min: 45
-            max: 45
-            result: Jorunn
-          - min: 46
-            max: 46
-            result: Juliana
-          - min: 47
-            max: 47
-            result: Juro
-          - min: 48
-            max: 48
-            result: Kaisa
-          - min: 49
-            max: 49
-            result: Karthik
-          - min: 50
-            max: 50
-            result: Kayla
-          - min: 51
-            max: 51
-            result: Kei
-          - min: 52
-            max: 52
-            result: Kiana
-          - min: 53
-            max: 53
-            result: Kieran
-          - min: 54
-            max: 54
-            result: Kierra
-          - min: 55
-            max: 55
-            result: Kimora
-          - min: 56
-            max: 56
-            result: Kiri
-          - min: 57
-            max: 57
-            result: Kirsa
-          - min: 58
-            max: 58
-            result: Kwan
-          - min: 59
-            max: 59
-            result: Kylar
-          - min: 60
-            max: 60
-            result: Landry
-          - min: 61
-            max: 61
-            result: Logan
-          - min: 62
-            max: 62
-            result: Lowell
-          - min: 63
-            max: 63
-            result: Lucas
-          - min: 64
-            max: 64
-            result: Curtis
-          - min: 65
-            max: 65
-            result: Luna
-          - min: 66
-            max: 66
-            result: Lux
-          - min: 67
-            max: 67
-            result: Mae
-          - min: 68
-            max: 68
-            result: Magnus
-          - min: 69
-            max: 69
-            result: Mave
-          - min: 70
-            max: 70
-            result: Merrick
-          - min: 71
-            max: 71
-            result: Mina
-          - min: 72
-            max: 72
-            result: Nashida
-          - min: 73
-            max: 73
-            result: Nassar
-          - min: 74
-            max: 74
-            result: Ostara
-          - min: 75
-            max: 75
-            result: Qasira
-          - min: 76
-            max: 76
-            result: Quinn
-          - min: 77
-            max: 77
-            result: Ragnar
-          - min: 78
-            max: 78
-            result: Raven
-          - min: 79
-            max: 79
-            result: Ria
-          - min: 80
-            max: 80
-            result: Rokuro
-          - min: 81
-            max: 81
-            result: Roland
-          - min: 82
-            max: 82
-            result: Rowena
-          - min: 83
-            max: 83
-            result: Sage
-          - min: 84
-            max: 84
-            result: Saren
-          - min: 85
-            max: 85
-            result: Annora
-          - min: 86
-            max: 86
-            result: Severinus
-          - min: 87
-            max: 87
-            result: Shen
-          - min: 88
-            max: 88
-            result: Talia
-          - min: 89
-            max: 89
-            result: Tomiko
-          - min: 90
-            max: 90
-            result: Ulan
-          - min: 91
-            max: 91
-            result: Valda
-          - min: 92
-            max: 92
-            result: Venri
-          - min: 93
-            max: 93
-            result: Vesper
-          - min: 94
-            max: 94
-            result: Vuldar
-          - min: 95
-            max: 95
-            result: William
-          - min: 96
-            max: 96
-            result: Yelena
-          - min: 97
-            max: 97
-            result: Zakia
-          - min: 98
-            max: 98
-            result: Zari
-          - min: 99
-            max: 99
-            result: Zev
-          - min: 100
-            max: 100
-            result: Zoya
-          - min: 101
-            max: 101
-            result: Abrahan
-          - min: 102
-            max: 102
-            result: Adrihan
-          - min: 103
-            max: 103
-            result: Adryel
-          - min: 104
-            max: 104
-            result: Aedard
-          - min: 105
-            max: 105
-            result: Aekira
-          - min: 106
-            max: 106
-            result: Ahlex
-          - min: 107
-            max: 107
-            result: Alaegha
-          - min: 108
-            max: 108
-            result: Alestran
-          - min: 109
-            max: 109
-            result: Andret
-          - min: 110
-            max: 110
-            result: Anthonis
-          - min: 111
-            max: 111
-            result: Arjun
-          - min: 112
-            max: 112
-            result: Armanis
-          - min: 113
-            max: 113
-            result: Aryanna
-          - min: 114
-            max: 114
-            result: Augun
-          - min: 115
-            max: 115
-            result: Avry
-          - min: 116
-            max: 116
-            result: Balee
-          - min: 117
-            max: 117
-            result: Belenne
-          - min: 118
-            max: 118
-            result: Bentlix
-          - min: 119
-            max: 119
-            result: Bouwen
-          - min: 120
-            max: 120
-            result: Braley
-          - min: 121
-            max: 121
-            result: Bridgeth
-          - min: 122
-            max: 122
-            result: Brisea
-          - min: 123
-            max: 123
-            result: Caerson
-          - min: 124
-            max: 124
-            result: Calrin
-          - min: 125
-            max: 125
-            result: Cassan
-          - min: 126
-            max: 126
-            result: Ceilia
-          - min: 127
-            max: 127
-            result: Chindlr
-          - min: 128
-            max: 128
-            result: Cohren
-          - min: 129
-            max: 129
-            result: Craix
-          - min: 130
-            max: 130
-            result: Dafnea
-          - min: 131
-            max: 131
-            result: Darren
-          - min: 132
-            max: 132
-            result: Dayana
-          - min: 133
-            max: 133
-            result: Dryx
-          - min: 134
-            max: 134
-            result: Elenoh
-          - min: 135
-            max: 135
-            result: Elriot
-          - min: 136
-            max: 136
-            result: Emilisa
-          - min: 137
-            max: 137
-            result: Ender
-          - min: 138
-            max: 138
-            result: Evlyn
-          - min: 139
-            max: 139
-            result: Fynn
-          - min: 140
-            max: 140
-            result: Gerem
-          - min: 141
-            max: 141
-            result: Haelee
-          - min: 142
-            max: 142
-            result: Harlin
-          - min: 143
-            max: 143
-            result: Idelle
-          - min: 144
-            max: 144
-            result: Iyleen
-          - min: 145
-            max: 145
-            result: Jaecob
-          - min: 146
-            max: 146
-            result: Jaenelle
-          - min: 147
-            max: 147
-            result: Jareth
-          - min: 148
-            max: 148
-            result: Jasih
-          - min: 149
-            max: 149
-            result: Jazen
-          - min: 150
-            max: 150
-            result: Jemna
-          - min: 151
-            max: 151
-            result: Jilleane
-          - min: 152
-            max: 152
-            result: Juliran
-          - min: 153
-            max: 153
-            result: Justan
-          - min: 154
-            max: 154
-            result: Kaelyn
-          - min: 155
-            max: 155
-            result: Kain
-          - min: 156
-            max: 156
-            result: Karlin
-          - min: 157
-            max: 157
-            result: Kasra
-          - min: 158
-            max: 158
-            result: Kayi
-          - min: 159
-            max: 159
-            result: Kimra
-          - min: 160
-            max: 160
-            result: Krish
-          - min: 161
-            max: 161
-            result: Kyllen
-          - min: 162
-            max: 162
-            result: Lains
-          - min: 163
-            max: 163
-            result: Leski
-          - min: 164
-            max: 164
-            result: Lukeen
-          - min: 165
-            max: 165
-            result: Lylah
-          - min: 166
-            max: 166
-            result: Maelana
-          - min: 167
-            max: 167
-            result: Makenze
-          - min: 168
-            max: 168
-            result: Marza
-          - min: 169
-            max: 169
-            result: Meegon
-          - min: 170
-            max: 170
-            result: Mikala
-          - min: 171
-            max: 171
-            result: Nadira
-          - min: 172
-            max: 172
-            result: Natlea
-          - min: 173
-            max: 173
-            result: Nayli
-          - min: 174
-            max: 174
-            result: Nyco
-          - min: 175
-            max: 175
-            result: Paxt
-          - min: 176
-            max: 176
-            result: Randis
-          - min: 177
-            max: 177
-            result: Raylar
-          - min: 178
-            max: 178
-            result: Reesha
-          - min: 179
-            max: 179
-            result: Rianara
-          - min: 180
-            max: 180
-            result: Rohn
-          - min: 181
-            max: 181
-            result: Ryliea
-          - min: 182
-            max: 182
-            result: Saera
-          - min: 183
-            max: 183
-            result: Sarina
-          - min: 184
-            max: 184
-            result: Seliena
-          - min: 185
-            max: 185
-            result: Taelor
-          - min: 186
-            max: 186
-            result: Tatm
-          - min: 187
-            max: 187
-            result: Temrance
-          - min: 188
-            max: 188
-            result: Tiana
-          - min: 189
-            max: 189
-            result: Trephor
-          - min: 190
-            max: 190
-            result: Tryst
-          - min: 191
-            max: 191
-            result: Vallun
-          - min: 192
-            max: 192
-            result: Viliana
-          - min: 193
-            max: 193
-            result: Wylow
-          - min: 194
-            max: 194
-            result: Ximon
-          - min: 195
-            max: 195
-            result: Yan
-          - min: 196
-            max: 196
-            result: Ylivea
-          - min: 197
-            max: 197
-            result: Yrenea
-          - min: 198
-            max: 198
-            result: Zaeden
-          - min: 199
-            max: 199
-            result: Zand
-          - min: 200
-            max: 200
-            result: Zavir
-          - min: 201
-            max: 201
-            result: Adahn
-          - min: 202
-            max: 202
-            result: Adryan
-          - min: 203
-            max: 203
-            result: Aebram
-          - min: 204
-            max: 204
-            result: Aedele
-          - min: 205
-            max: 205
-            result: Agost
-          - min: 206
-            max: 206
-            result: Aibel
-          - min: 207
-            max: 207
-            result: Alaena
-          - min: 208
-            max: 208
-            result: Amaeri
-          - min: 209
-            max: 209
-            result: Anlise
-          - min: 210
-            max: 210
-            result: Arana
-          - min: 211
-            max: 211
-            result: Arlox
-          - min: 212
-            max: 212
-            result: Arthir
-          - min: 213
-            max: 213
-            result: Aubriena
-          - min: 214
-            max: 214
-            result: Avae
-          - min: 215
-            max: 215
-            result: Axarea
-          - min: 216
-            max: 216
-            result: Banca
-          - min: 217
-            max: 217
-            result: Bentlae
-          - min: 218
-            max: 218
-            result: Bentom
-          - min: 219
-            max: 219
-            result: Brack
-          - min: 220
-            max: 220
-            result: Braydn
-          - min: 221
-            max: 221
-            result: Brigan
-          - min: 222
-            max: 222
-            result: Brodin
-          - min: 223
-            max: 223
-            result: Cahlun
-          - min: 224
-            max: 224
-            result: Camdon
-          - min: 225
-            max: 225
-            result: Cathrise
-          - min: 226
-            max: 226
-            result: Charlt
-          - min: 227
-            max: 227
-            result: Claytin
-          - min: 228
-            max: 228
-            result: Colbix
-          - min: 229
-            max: 229
-            result: Crux
-          - min: 230
-            max: 230
-            result: Dariux
-          - min: 231
-            max: 231
-            result: Davith
-          - min: 232
-            max: 232
-            result: Diyana
-          - min: 233
-            max: 233
-            result: Elden
-          - min: 234
-            max: 234
-            result: Elex
-          - min: 235
-            max: 235
-            result: Emex
-          - min: 236
-            max: 236
-            result: Emmed
-          - min: 237
-            max: 237
-            result: Ethin
-          - min: 238
-            max: 238
-            result: Flyx
-          - min: 239
-            max: 239
-            result: Gayge
-          - min: 240
-            max: 240
-            result: Giana
-          - min: 241
-            max: 241
-            result: Haerlo
-          - min: 242
-            max: 242
-            result: Harris
-          - min: 243
-            max: 243
-            result: Islae
-          - min: 244
-            max: 244
-            result: Izella
-          - min: 245
-            max: 245
-            result: Jaelah
-          - min: 246
-            max: 246
-            result: Jaleah
-          - min: 247
-            max: 247
-            result: Jasemine
-          - min: 248
-            max: 248
-            result: Jayda
-          - min: 249
-            max: 249
-            result: Jazmi
-          - min: 250
-            max: 250
-            result: Jexi
-          - min: 251
-            max: 251
-            result: Juliasa
-          - min: 252
-            max: 252
-            result: Julith
-          - min: 253
-            max: 253
-            result: Kaedn
-          - min: 254
-            max: 254
-            result: Kaence
-          - min: 255
-            max: 255
-            result: Karina
-          - min: 256
-            max: 256
-            result: Karsyne
-          - min: 257
-            max: 257
-            result: Kayet
-          - min: 258
-            max: 258
-            result: Kaze
-          - min: 259
-            max: 259
-            result: Kira
-          - min: 260
-            max: 260
-            result: Kyber
-          - min: 261
-            max: 261
-            result: Kyndle
-          - min: 262
-            max: 262
-            result: Lars
-          - min: 263
-            max: 263
-            result: Lillya
-          - min: 264
-            max: 264
-            result: Lushian
-          - min: 265
-            max: 265
-            result: Madlyn
-          - min: 266
-            max: 266
-            result: Maeve
-          - min: 267
-            max: 267
-            result: Makin
-          - min: 268
-            max: 268
-            result: Maxtom
-          - min: 269
-            max: 269
-            result: Melia
-          - min: 270
-            max: 270
-            result: Myha
-          - min: 271
-            max: 271
-            result: Nathanael
-          - min: 272
-            max: 272
-            result: Nayel
-          - min: 273
-            max: 273
-            result: Nekra
-          - min: 274
-            max: 274
-            result: Orin
-          - min: 275
-            max: 275
-            result: Pilzen
-          - min: 276
-            max: 276
-            result: Rayina
-          - min: 277
-            max: 277
-            result: Rayven
-          - min: 278
-            max: 278
-            result: Renette
-          - min: 279
-            max: 279
-            result: Rikzar
-          - min: 280
-            max: 280
-            result: Roseya
-          - min: 281
-            max: 281
-            result: Sabrya
-          - min: 282
-            max: 282
-            result: Sanyah
-          - min: 283
-            max: 283
-            result: Sawyr
-          - min: 284
-            max: 284
-            result: Shaene
-          - min: 285
-            max: 285
-            result: Taria
-          - min: 286
-            max: 286
-            result: Teag
-          - min: 287
-            max: 287
-            result: Thadd
-          - min: 288
-            max: 288
-            result: Tobias
-          - min: 289
-            max: 289
-            result: Tristiran
-          - min: 290
-            max: 290
-            result: Ulivia
-          - min: 291
-            max: 291
-            result: Valriya
-          - min: 292
-            max: 292
-            result: Wilm
-          - min: 293
-            max: 293
-            result: Xander
-          - min: 294
-            max: 294
-            result: Yael
-          - min: 295
-            max: 295
-            result: Yegan
-          - min: 296
-            max: 296
-            result: Yos
-          - min: 297
-            max: 297
-            result: Yve
-          - min: 298
-            max: 298
-            result: Zaid
-          - min: 299
-            max: 299
-            result: Zarina
-          - min: 300
-            max: 300
-            result: Zolmon
-      family_name:
-        _replace: starforged/oracles/characters/family_name
-        dice: 1d300
-        table:
-          - min: 1
-            max: 1
-            result: Kuzmin
-          - min: 2
-            max: 2
-            result: Durant
-          - min: 3
-            max: 3
-            result: Jefferies
-          - min: 4
-            max: 4
-            result: Velez
-          - min: 5
-            max: 5
-            result: Lontoc
-          - min: 6
-            max: 6
-            result: Wade
-          - min: 7
-            max: 7
-            result: Kade
-          - min: 8
-            max: 8
-            result: Thorn
-          - min: 9
-            max: 9
-            result: Khosla
-          - min: 10
-            max: 10
-            result: Hendrix
-          - min: 11
-            max: 11
-            result: Okiro
-          - min: 12
-            max: 12
-            result: Ripley
-          - min: 13
-            max: 13
-            result: Talin
-          - min: 14
-            max: 14
-            result: Jin
-          - min: 15
-            max: 15
-            result: Finn
-          - min: 16
-            max: 16
-            result: Solas
-          - min: 17
-            max: 17
-            result: Quint
-          - min: 18
-            max: 18
-            result: Keelan
-          - min: 19
-            max: 19
-            result: Silva
-          - min: 20
-            max: 20
-            result: Valk
-          - min: 21
-            max: 21
-            result: O’Brien
-          - min: 22
-            max: 22
-            result: Ruiz
-          - min: 23
-            max: 23
-            result: Stallard
-          - min: 24
-            max: 24
-            result: Mackenson
-          - min: 25
-            max: 25
-            result: Jensen
-          - min: 26
-            max: 26
-            result: Sakir
-          - min: 27
-            max: 27
-            result: Tolari
-          - min: 28
-            max: 28
-            result: Kain
-          - min: 29
-            max: 29
-            result: Carr
-          - min: 30
-            max: 30
-            result: Valenus
-          - min: 31
-            max: 31
-            result: Kaan
-          - min: 32
-            max: 32
-            result: Taylan
-          - min: 33
-            max: 33
-            result: Legrand
-          - min: 34
-            max: 34
-            result: Jemison
-          - min: 35
-            max: 35
-            result: Arden
-          - min: 36
-            max: 36
-            result: Sayer
-          - min: 37
-            max: 37
-            result: Kai
-          - min: 38
-            max: 38
-            result: Slater
-          - min: 39
-            max: 39
-            result: Edris
-          - min: 40
-            max: 40
-            result: Sutton
-          - min: 41
-            max: 41
-            result: Savarin
-          - min: 42
-            max: 42
-            result: Bridger
-          - min: 43
-            max: 43
-            result: Mital
-          - min: 44
-            max: 44
-            result: Shin
-          - min: 45
-            max: 45
-            result: Nadir
-          - min: 46
-            max: 46
-            result: Santos
-          - min: 47
-            max: 47
-            result: Mihara
-          - min: 48
-            max: 48
-            result: Buhari
-          - min: 49
-            max: 49
-            result: Salvi
-          - min: 50
-            max: 50
-            result: Adler
-          - min: 51
-            max: 51
-            result: Takara
-          - min: 52
-            max: 52
-            result: Shelton
-          - min: 53
-            max: 53
-            result: Vandu
-          - min: 54
-            max: 54
-            result: Vega
-          - min: 55
-            max: 55
-            result: Zhang
-          - min: 56
-            max: 56
-            result: Savela
-          - min: 57
-            max: 57
-            result: Hawking
-          - min: 58
-            max: 58
-            result: Jen
-          - min: 59
-            max: 59
-            result: Hobbs
-          - min: 60
-            max: 60
-            result: Holland
-          - min: 61
-            max: 61
-            result: Silvius
-          - min: 62
-            max: 62
-            result: Freeman
-          - min: 63
-            max: 63
-            result: Barbosa
-          - min: 64
-            max: 64
-            result: Winter
-          - min: 65
-            max: 65
-            result: Hammond
-          - min: 66
-            max: 66
-            result: Archer
-          - min: 67
-            max: 67
-            result: Barlowe
-          - min: 68
-            max: 68
-            result: Shepherd
-          - min: 69
-            max: 69
-            result: Griffin
-          - min: 70
-            max: 70
-            result: Frost
-          - min: 71
-            max: 71
-            result: Quon
-          - min: 72
-            max: 72
-            result: Malek
-          - min: 73
-            max: 73
-            result: Murad
-          - min: 74
-            max: 74
-            result: Becker
-          - min: 75
-            max: 75
-            result: Ammar
-          - min: 76
-            max: 76
-            result: Braddock
-          - min: 77
-            max: 77
-            result: Blackstone
-          - min: 78
-            max: 78
-            result: Hadley
-          - min: 79
-            max: 79
-            result: Farin
-          - min: 80
-            max: 80
-            result: Kobayashi
-          - min: 81
-            max: 81
-            result: Duval
-          - min: 82
-            max: 82
-            result: Hunter
-          - min: 83
-            max: 83
-            result: Beckett
-          - min: 84
-            max: 84
-            result: Dykstra
-          - min: 85
-            max: 85
-            result: Gray
-          - min: 86
-            max: 86
-            result: Sedano
-          - min: 87
-            max: 87
-            result: Bai
-          - min: 88
-            max: 88
-            result: Booker
-          - min: 89
-            max: 89
-            result: Sato
-          - min: 90
-            max: 90
-            result: Vayan
-          - min: 91
-            max: 91
-            result: Bond
-          - min: 92
-            max: 92
-            result: Stark
-          - min: 93
-            max: 93
-            result: Stirling
-          - min: 94
-            max: 94
-            result: Wolfe
-          - min: 95
-            max: 95
-            result: O’Niel
-          - min: 96
-            max: 96
-            result: Petrov
-          - min: 97
-            max: 97
-            result: Nazari
-          - min: 98
-            max: 98
-            result: Darwin
-          - min: 99
-            max: 99
-            result: Pearson
-          - min: 100
-            max: 100
-            result: Volkov
-          - min: 101
-            max: 101
-            result: Aguirre
-          - min: 102
-            max: 102
-            result: Anthony
-          - min: 103
-            max: 103
-            result: Arnoldo
-          - min: 104
-            max: 104
-            result: Averson
-          - min: 105
-            max: 105
-            result: Ballarn
-          - min: 106
-            max: 106
-            result: Barker
-          - min: 107
-            max: 107
-            result: Bauer
-          - min: 108
-            max: 108
-            result: Bealsen
-          - min: 109
-            max: 109
-            result: Bernster
-          - min: 110
-            max: 110
-            result: Boltinplax
-          - min: 111
-            max: 111
-            result: Brugess
-          - min: 112
-            max: 112
-            result: Bullock
-          - min: 113
-            max: 113
-            result: Camaho
-          - min: 114
-            max: 114
-            result: Castaneda
-          - min: 115
-            max: 115
-            result: Chaler
-          - min: 116
-            max: 116
-            result: Chaney
-          - min: 117
-            max: 117
-            result: Cisneros
-          - min: 118
-            max: 118
-            result: Coffey
-          - min: 119
-            max: 119
-            result: Coleman
-          - min: 120
-            max: 120
-            result: Combs
-          - min: 121
-            max: 121
-            result: Conrad
-          - min: 122
-            max: 122
-            result: Cruz
-          - min: 123
-            max: 123
-            result: Curtis
-          - min: 124
-            max: 124
-            result: Dillonber
-          - min: 125
-            max: 125
-            result: Domingue
-          - min: 126
-            max: 126
-            result: Dunlap
-          - min: 127
-            max: 127
-            result: Esparza
-          - min: 128
-            max: 128
-            result: Everest
-          - min: 129
-            max: 129
-            result: Farley
-          - min: 130
-            max: 130
-            result: Fields
-          - min: 131
-            max: 131
-            result: Florentine
-          - min: 132
-            max: 132
-            result: Franhin
-          - min: 133
-            max: 133
-            result: Gambils
-          - min: 134
-            max: 134
-            result: Gates
-          - min: 135
-            max: 135
-            result: Golenbar
-          - min: 136
-            max: 136
-            result: Gonzalo
-          - min: 137
-            max: 137
-            result: Grenshaw
-          - min: 138
-            max: 138
-            result: Guerrero
-          - min: 139
-            max: 139
-            result: Haney
-          - min: 140
-            max: 140
-            result: Hardent
-          - min: 141
-            max: 141
-            result: Harrell
-          - min: 142
-            max: 142
-            result: Henrix
-          - min: 143
-            max: 143
-            result: Hester
-          - min: 144
-            max: 144
-            result: Hodge
-          - min: 145
-            max: 145
-            result: Hofferson
-          - min: 146
-            max: 146
-            result: Hollandry
-          - min: 147
-            max: 147
-            result: Hostetler
-          - min: 148
-            max: 148
-            result: Huffington
-          - min: 149
-            max: 149
-            result: Jennerson
-          - min: 150
-            max: 150
-            result: Josten
-          - min: 151
-            max: 151
-            result: Kellyn
-          - min: 152
-            max: 152
-            result: Knapp
-          - min: 153
-            max: 153
-            result: Lambern
-          - min: 154
-            max: 154
-            result: LeBlanc
-          - min: 155
-            max: 155
-            result: Leons
-          - min: 156
-            max: 156
-            result: Livingston
-          - min: 157
-            max: 157
-            result: Love
-          - min: 158
-            max: 158
-            result: Luna
-          - min: 159
-            max: 159
-            result: Mackron
-          - min: 160
-            max: 160
-            result: Mahon
-          - min: 161
-            max: 161
-            result: Mata
-          - min: 162
-            max: 162
-            result: Maynard
-          - min: 163
-            max: 163
-            result: McGrath
-          - min: 164
-            max: 164
-            result: Milon
-          - min: 165
-            max: 165
-            result: Mora
-          - min: 166
-            max: 166
-            result: Murfrees
-          - min: 167
-            max: 167
-            result: Nealson
-          - min: 168
-            max: 168
-            result: Nolben
-          - min: 169
-            max: 169
-            result: Owens
-          - min: 170
-            max: 170
-            result: Pacheco
-          - min: 171
-            max: 171
-            result: Palmer
-          - min: 172
-            max: 172
-            result: Paraz
-          - min: 173
-            max: 173
-            result: Payna
-          - min: 174
-            max: 174
-            result: Philson
-          - min: 175
-            max: 175
-            result: Ponce
-          - min: 176
-            max: 176
-            result: Pryle
-          - min: 177
-            max: 177
-            result: Ramsey
-          - min: 178
-            max: 178
-            result: Reeves
-          - min: 179
-            max: 179
-            result: Richards
-          - min: 180
-            max: 180
-            result: Rogera
-          - min: 181
-            max: 181
-            result: Salazar
-          - min: 182
-            max: 182
-            result: Schneider
-          - min: 183
-            max: 183
-            result: Shashay
-          - min: 184
-            max: 184
-            result: Shields
-          - min: 185
-            max: 185
-            result: Snydra
-          - min: 186
-            max: 186
-            result: Staffenberg
-          - min: 187
-            max: 187
-            result: Tapia
-          - min: 188
-            max: 188
-            result: Travers
-          - min: 189
-            max: 189
-            result: Valencia
-          - min: 190
-            max: 190
-            result: Vang
-          - min: 191
-            max: 191
-            result: Vincent
-          - min: 192
-            max: 192
-            result: Walters
-          - min: 193
-            max: 193
-            result: Watson
-          - min: 194
-            max: 194
-            result: Weaver
-          - min: 195
-            max: 195
-            result: Weeks
-          - min: 196
-            max: 196
-            result: Wester
-          - min: 197
-            max: 197
-            result: Wilcox
-          - min: 198
-            max: 198
-            result: Williz
-          - min: 199
-            max: 199
-            result: Yorksher
-          - min: 200
-            max: 200
-            result: Zamora
-          - min: 201
-            max: 201
-            result: Alvarez
-          - min: 202
-            max: 202
-            result: Armstrong
-          - min: 203
-            max: 203
-            result: Austone
-          - min: 204
-            max: 204
-            result: Baird
-          - min: 205
-            max: 205
-            result: Barber
-          - min: 206
-            max: 206
-            result: Barrera
-          - min: 207
-            max: 207
-            result: Baxter
-          - min: 208
-            max: 208
-            result: Beckard
-          - min: 209
-            max: 209
-            result: Blankenship
-          - min: 210
-            max: 210
-            result: Brady
-          - min: 211
-            max: 211
-            result: Buckley
-          - min: 212
-            max: 212
-            result: Calderon
-          - min: 213
-            max: 213
-            result: Camerton
-          - min: 214
-            max: 214
-            result: Castillo
-          - min: 215
-            max: 215
-            result: Chamberman
-          - min: 216
-            max: 216
-            result: Chen
-          - min: 217
-            max: 217
-            result: Clayson
-          - min: 218
-            max: 218
-            result: Cokrin
-          - min: 219
-            max: 219
-            result: Colon
-          - min: 220
-            max: 220
-            result: Conners
-          - min: 221
-            max: 221
-            result: Cooper
-          - min: 222
-            max: 222
-            result: Cuevas
-          - min: 223
-            max: 223
-            result: Denlar
-          - min: 224
-            max: 224
-            result: Dixon
-          - min: 225
-            max: 225
-            result: Doweller
-          - min: 226
-            max: 226
-            result: Eastin
-          - min: 227
-            max: 227
-            result: Evangle
-          - min: 228
-            max: 228
-            result: Ewing
-          - min: 229
-            max: 229
-            result: Ferril
-          - min: 230
-            max: 230
-            result: Figueroa
-          - min: 231
-            max: 231
-            result: Flores
-          - min: 232
-            max: 232
-            result: Galvan
-          - min: 233
-            max: 233
-            result: Garson
-          - min: 234
-            max: 234
-            result: Gibbs
-          - min: 235
-            max: 235
-            result: Gomerza
-          - min: 236
-            max: 236
-            result: Graves
-          - min: 237
-            max: 237
-            result: Grossen
-          - min: 238
-            max: 238
-            result: Hallison
-          - min: 239
-            max: 239
-            result: Hansen
-          - min: 240
-            max: 240
-            result: Harding
-          - min: 241
-            max: 241
-            result: Haydar
-          - min: 242
-            max: 242
-            result: Herrera
-          - min: 243
-            max: 243
-            result: Hickerton
-          - min: 244
-            max: 244
-            result: Hodor
-          - min: 245
-            max: 245
-            result: Holden
-          - min: 246
-            max: 246
-            result: Hollodo
-          - min: 247
-            max: 247
-            result: Howern
-          - min: 248
-            max: 248
-            result: Ibarra
-          - min: 249
-            max: 249
-            result: Jorden
-          - min: 250
-            max: 250
-            result: Kalvin
-          - min: 251
-            max: 251
-            result: Kerrin
-          - min: 252
-            max: 252
-            result: Knightly
-          - min: 253
-            max: 253
-            result: Lane
-          - min: 254
-            max: 254
-            result: Lee
-          - min: 255
-            max: 255
-            result: Lisley
-          - min: 256
-            max: 256
-            result: Lohenz
-          - min: 257
-            max: 257
-            result: Lowray
-          - min: 258
-            max: 258
-            result: Lynn
-          - min: 259
-            max: 259
-            result: Madden
-          - min: 260
-            max: 260
-            result: Malone
-          - min: 261
-            max: 261
-            result: Mathias
-          - min: 262
-            max: 262
-            result: McCarthy
-          - min: 263
-            max: 263
-            result: Mendoza
-          - min: 264
-            max: 264
-            result: Moores
-          - min: 265
-            max: 265
-            result: Morton
-          - min: 266
-            max: 266
-            result: Myeryn
-          - min: 267
-            max: 267
-            result: Newman
-          - min: 268
-            max: 268
-            result: Norbid
-          - min: 269
-            max: 269
-            result: Ozbern
-          - min: 270
-            max: 270
-            result: Palante
-          - min: 271
-            max: 271
-            result: Palmner
-          - min: 272
-            max: 272
-            result: Parker
-          - min: 273
-            max: 273
-            result: Pham
-          - min: 274
-            max: 274
-            result: Pitton
-          - min: 275
-            max: 275
-            result: Porzer
-          - min: 276
-            max: 276
-            result: Quinix
-          - min: 277
-            max: 277
-            result: Randalla
-          - min: 278
-            max: 278
-            result: Rettag
-          - min: 279
-            max: 279
-            result: Rochester
-          - min: 280
-            max: 280
-            result: Rosston
-          - min: 281
-            max: 281
-            result: Santanaz
-          - min: 282
-            max: 282
-            result: Schroner
-          - min: 283
-            max: 283
-            result: Sheppard
-          - min: 284
-            max: 284
-            result: Simonson
-          - min: 285
-            max: 285
-            result: Spencer
-          - min: 286
-            max: 286
-            result: Stouss
-          - min: 287
-            max: 287
-            result: Tran
-          - min: 288
-            max: 288
-            result: Valdex
-          - min: 289
-            max: 289
-            result: Valentine
-          - min: 290
-            max: 290
-            result: Velasque
-          - min: 291
-            max: 291
-            result: Wallington
-          - min: 292
-            max: 292
-            result: Warn
-          - min: 293
-            max: 293
-            result: Watts
-          - min: 294
-            max: 294
-            result: Webbon
-          - min: 295
-            max: 295
-            result: Weiss
-          - min: 296
-            max: 296
-            result: Whitaker
-          - min: 297
-            max: 297
-            result: Wilkinson
-          - min: 298
-            max: 298
-            result: Woodward
-          - min: 299
-            max: 299
-            result: Yuz
-          - min: 300
-            max: 300
-            result: Zimmers
-      callsign:
-        _replace: starforged/oracles/characters/callsign
-        dice: 1d300
-        table:
-          - min: 1
-            max: 1
-            result: Albatross
-          - min: 2
-            max: 2
-            result: Angler
-          - min: 3
-            max: 3
-            result: Anvil
-          - min: 4
-            max: 4
-            result: Badger
-          - min: 5
-            max: 5
-            result: Bandit
-          - min: 6
-            max: 6
-            result: Bash
-          - min: 7
-            max: 7
-            result: Basilisk
-          - min: 8
-            max: 8
-            result: Bingo
-          - min: 9
-            max: 9
-            result: Blackbird
-          - min: 10
-            max: 10
-            result: Blade
-          - min: 11
-            max: 11
-            result: Bloodshot
-          - min: 12
-            max: 12
-            result: Bluewing
-          - min: 13
-            max: 13
-            result: Bonfire
-          - min: 14
-            max: 14
-            result: Book
-          - min: 15
-            max: 15
-            result: Breaker
-          - min: 16
-            max: 16
-            result: Brick
-          - min: 17
-            max: 17
-            result: Buzz
-          - min: 18
-            max: 18
-            result: Buzzard
-          - min: 19
-            max: 19
-            result: Centurion
-          - min: 20
-            max: 20
-            result: Chimera
-          - min: 21
-            max: 21
-            result: Circuit
-          - min: 22
-            max: 22
-            result: Clank
-          - min: 23
-            max: 23
-            result: Cleric
-          - min: 24
-            max: 24
-            result: Crash
-          - min: 25
-            max: 25
-            result: Cutter
-          - min: 26
-            max: 26
-            result: Cutthroat
-          - min: 27
-            max: 27
-            result: Cypher
-          - min: 28
-            max: 28
-            result: Dagger
-          - min: 29
-            max: 29
-            result: Dancer
-          - min: 30
-            max: 30
-            result: Dash
-          - min: 31
-            max: 31
-            result: Deadeye
-          - min: 32
-            max: 32
-            result: Deuce
-          - min: 33
-            max: 33
-            result: Failsafe
-          - min: 34
-            max: 34
-            result: Farseer
-          - min: 35
-            max: 35
-            result: Fidget
-          - min: 36
-            max: 36
-            result: Firestarter
-          - min: 37
-            max: 37
-            result: Fixer
-          - min: 38
-            max: 38
-            result: Flatline
-          - min: 39
-            max: 39
-            result: Ghost
-          - min: 40
-            max: 40
-            result: Grudge
-          - min: 41
-            max: 41
-            result: Gutshot
-          - min: 42
-            max: 42
-            result: Harrow
-          - min: 43
-            max: 43
-            result: Havoc
-          - min: 44
-            max: 44
-            result: Hellhound
-          - min: 45
-            max: 45
-            result: Hellion
-          - min: 46
-            max: 46
-            result: Hex
-          - min: 47
-            max: 47
-            result: Hush
-          - min: 48
-            max: 48
-            result: Ironclad
-          - min: 49
-            max: 49
-            result: Jackal
-          - min: 50
-            max: 50
-            result: Jackpot
-          - min: 51
-            max: 51
-            result: Jester
-          - min: 52
-            max: 52
-            result: Link
-          - min: 53
-            max: 53
-            result: Longshot
-          - min: 54
-            max: 54
-            result: Mainframe
-          - min: 55
-            max: 55
-            result: Mantis
-          - min: 56
-            max: 56
-            result: Mimic
-          - min: 57
-            max: 57
-            result: Mole
-          - min: 58
-            max: 58
-            result: Monarch
-          - min: 59
-            max: 59
-            result: Mongoose
-          - min: 60
-            max: 60
-            result: Nails
-          - min: 61
-            max: 61
-            result: Ogre
-          - min: 62
-            max: 62
-            result: Omega
-          - min: 63
-            max: 63
-            result: Overload
-          - min: 64
-            max: 64
-            result: Packrat
-          - min: 65
-            max: 65
-            result: Paladin
-          - min: 66
-            max: 66
-            result: Phantom
-          - min: 67
-            max: 67
-            result: Phoenix
-          - min: 68
-            max: 68
-            result: Pyro
-          - min: 69
-            max: 69
-            result: Quickdraw
-          - min: 70
-            max: 70
-            result: Razor
-          - min: 71
-            max: 71
-            result: Rogue
-          - min: 72
-            max: 72
-            result: Rook
-          - min: 73
-            max: 73
-            result: Rover
-          - min: 74
-            max: 74
-            result: Scout
-          - min: 75
-            max: 75
-            result: Shadow
-          - min: 76
-            max: 76
-            result: Shark
-          - min: 77
-            max: 77
-            result: Shutdown
-          - min: 78
-            max: 78
-            result: Slack
-          - min: 79
-            max: 79
-            result: Slash
-          - min: 80
-            max: 80
-            result: Snipe
-          - min: 81
-            max: 81
-            result: Spider
-          - min: 82
-            max: 82
-            result: Splinter
-          - min: 83
-            max: 83
-            result: Static
-          - min: 84
-            max: 84
-            result: Stinger
-          - min: 85
-            max: 85
-            result: Straggler
-          - min: 86
-            max: 86
-            result: Swindle
-          - min: 87
-            max: 87
-            result: Tinker
-          - min: 88
-            max: 88
-            result: Touchdown
-          - min: 89
-            max: 89
-            result: Tycoon
-          - min: 90
-            max: 90
-            result: Vagabond
-          - min: 91
-            max: 91
-            result: Valkyrie
-          - min: 92
-            max: 92
-            result: Vanguard
-          - min: 93
-            max: 93
-            result: Vertigo
-          - min: 94
-            max: 94
-            result: Warden
-          - min: 95
-            max: 95
-            result: Watchdog
-          - min: 96
-            max: 96
-            result: Wayfinder
-          - min: 97
-            max: 97
-            result: Whisper
-          - min: 98
-            max: 98
-            result: Wraith
-          - min: 99
-            max: 99
-            result: Wrongway
-          - min: 100
-            max: 100
-            result: Zephyr
-          - min: 101
-            max: 101
-            result: Ace
-          - min: 102
-            max: 102
-            result: Angel
-          - min: 103
-            max: 103
-            result: Any
-          - min: 104
-            max: 104
-            result: Arrowhead
-          - min: 105
-            max: 105
-            result: Balboa
-          - min: 106
-            max: 106
-            result: Banner
-          - min: 107
-            max: 107
-            result: Baron
-          - min: 108
-            max: 108
-            result: Beehive
-          - min: 109
-            max: 109
-            result: Belter
-          - min: 110
-            max: 110
-            result: Blackjack
-          - min: 111
-            max: 111
-            result: Bones
-          - min: 112
-            max: 112
-            result: Boomer
-          - min: 113
-            max: 113
-            result: Buckshot
-          - min: 114
-            max: 114
-            result: Bullseye
-          - min: 115
-            max: 115
-            result: Caravan
-          - min: 116
-            max: 116
-            result: Cash
-          - min: 117
-            max: 117
-            result: Castle
-          - min: 118
-            max: 118
-            result: Chariot
-          - min: 119
-            max: 119
-            result: Chip
-          - min: 120
-            max: 120
-            result: Cinder
-          - min: 121
-            max: 121
-            result: Clownface
-          - min: 122
-            max: 122
-            result: Cookie
-          - min: 123
-            max: 123
-            result: Cosmos
-          - min: 124
-            max: 124
-            result: Creeper
-          - min: 125
-            max: 125
-            result: Critter
-          - min: 126
-            max: 126
-            result: Darkwing
-          - min: 127
-            max: 127
-            result: Data
-          - min: 128
-            max: 128
-            result: Demon
-          - min: 129
-            max: 129
-            result: Dino
-          - min: 130
-            max: 130
-            result: Doc Brown
-          - min: 131
-            max: 131
-            result: Doodle
-          - min: 132
-            max: 132
-            result: Drake
-          - min: 133
-            max: 133
-            result: Dropship
-          - min: 134
-            max: 134
-            result: Dynamo
-          - min: 135
-            max: 135
-            result: Earthquake
-          - min: 136
-            max: 136
-            result: Eclipse
-          - min: 137
-            max: 137
-            result: Fang
-          - min: 138
-            max: 138
-            result: Fiddler
-          - min: 139
-            max: 139
-            result: Flamingo
-          - min: 140
-            max: 140
-            result: Flat Top
-          - min: 141
-            max: 141
-            result: Flux
-          - min: 142
-            max: 142
-            result: Fox
-          - min: 143
-            max: 143
-            result: Gadget
-          - min: 144
-            max: 144
-            result: Gargoyle
-          - min: 145
-            max: 145
-            result: Geyser
-          - min: 146
-            max: 146
-            result: Goose
-          - min: 147
-            max: 147
-            result: Granny
-          - min: 148
-            max: 148
-            result: Halo
-          - min: 149
-            max: 149
-            result: Hawk
-          - min: 150
-            max: 150
-            result: Hitch
-          - min: 151
-            max: 151
-            result: Hulk
-          - min: 152
-            max: 152
-            result: Jenkins
-          - min: 153
-            max: 153
-            result: Jumper
-          - min: 154
-            max: 154
-            result: King
-          - min: 155
-            max: 155
-            result: Leeroy
-          - min: 156
-            max: 156
-            result: Lightning
-          - min: 157
-            max: 157
-            result: Locket
-          - min: 158
-            max: 158
-            result: Lurker
-          - min: 159
-            max: 159
-            result: Melody
-          - min: 160
-            max: 160
-            result: Moose
-          - min: 161
-            max: 161
-            result: Nightcrawler
-          - min: 162
-            max: 162
-            result: Ninja
-          - min: 163
-            max: 163
-            result: Packer
-          - min: 164
-            max: 164
-            result: Panther
-          - min: 165
-            max: 165
-            result: Piggy
-          - min: 166
-            max: 166
-            result: Polaris
-          - min: 167
-            max: 167
-            result: Prince
-          - min: 168
-            max: 168
-            result: Queen
-          - min: 169
-            max: 169
-            result: Quicksilver
-          - min: 170
-            max: 170
-            result: Ringo
-          - min: 171
-            max: 171
-            result: Robin
-          - min: 172
-            max: 172
-            result: Rounder
-          - min: 173
-            max: 173
-            result: Scarecrow
-          - min: 174
-            max: 174
-            result: Sentry
-          - min: 175
-            max: 175
-            result: Shaker
-          - min: 176
-            max: 176
-            result: Shatter
-          - min: 177
-            max: 177
-            result: Songbird
-          - min: 178
-            max: 178
-            result: Spartan
-          - min: 179
-            max: 179
-            result: Squirrel
-          - min: 180
-            max: 180
-            result: Stardust
-          - min: 181
-            max: 181
-            result: Storm
-          - min: 182
-            max: 182
-            result: Suit
-          - min: 183
-            max: 183
-            result: Sunshine
-          - min: 184
-            max: 184
-            result: Surfer
-          - min: 185
-            max: 185
-            result: Swordfish
-          - min: 186
-            max: 186
-            result: Tango
-          - min: 187
-            max: 187
-            result: Templer
-          - min: 188
-            max: 188
-            result: Tiger
-          - min: 189
-            max: 189
-            result: Titan
-          - min: 190
-            max: 190
-            result: Tower
-          - min: 191
-            max: 191
-            result: Turtle
-          - min: 192
-            max: 192
-            result: Venom
-          - min: 193
-            max: 193
-            result: Viper
-          - min: 194
-            max: 194
-            result: Walker
-          - min: 195
-            max: 195
-            result: Watchman
-          - min: 196
-            max: 196
-            result: Whistle
-          - min: 197
-            max: 197
-            result: Willow
-          - min: 198
-            max: 198
-            result: Winger
-          - min: 199
-            max: 199
-            result: Wolf
-          - min: 200
-            max: 200
-            result: Wyvern
-          - min: 201
-            max: 201
-            result: Alpha
-          - min: 202
-            max: 202
-            result: Antique
-          - min: 203
-            max: 203
-            result: Arc
-          - min: 204
-            max: 204
-            result: Aurora
-          - min: 205
-            max: 205
-            result: Banjo
-          - min: 206
-            max: 206
-            result: Banshee
-          - min: 207
-            max: 207
-            result: Beast
-          - min: 208
-            max: 208
-            result: Behemoth
-          - min: 209
-            max: 209
-            result: Biscuit
-          - min: 210
-            max: 210
-            result: Blaze
-          - min: 211
-            max: 211
-            result: Bookworm
-          - min: 212
-            max: 212
-            result: Boxer
-          - min: 213
-            max: 213
-            result: Bulldog
-          - min: 214
-            max: 214
-            result: Butcher
-          - min: 215
-            max: 215
-            result: Carbine
-          - min: 216
-            max: 216
-            result: Casper
-          - min: 217
-            max: 217
-            result: Champ
-          - min: 218
-            max: 218
-            result: Chimp
-          - min: 219
-            max: 219
-            result: Chuck Norris
-          - min: 220
-            max: 220
-            result: Cloud
-          - min: 221
-            max: 221
-            result: Cobra
-          - min: 222
-            max: 222
-            result: Copper
-          - min: 223
-            max: 223
-            result: Coyote
-          - min: 224
-            max: 224
-            result: Cricket
-          - min: 225
-            max: 225
-            result: Daredevil
-          - min: 226
-            max: 226
-            result: Darling
-          - min: 227
-            max: 227
-            result: Delight
-          - min: 228
-            max: 228
-            result: Digger
-          - min: 229
-            max: 229
-            result: Dizzy
-          - min: 230
-            max: 230
-            result: Dodger
-          - min: 231
-            max: 231
-            result: Dragonfly
-          - min: 232
-            max: 232
-            result: Drift
-          - min: 233
-            max: 233
-            result: Duster
-          - min: 234
-            max: 234
-            result: Eagle
-          - min: 235
-            max: 235
-            result: Echelon
-          - min: 236
-            max: 236
-            result: Enigma
-          - min: 237
-            max: 237
-            result: Feather
-          - min: 238
-            max: 238
-            result: Firefly
-          - min: 239
-            max: 239
-            result: Flash
-          - min: 240
-            max: 240
-            result: Fluke
-          - min: 241
-            max: 241
-            result: Fly
-          - min: 242
-            max: 242
-            result: Frostbite
-          - min: 243
-            max: 243
-            result: Gambit
-          - min: 244
-            max: 244
-            result: Gator
-          - min: 245
-            max: 245
-            result: Giggles
-          - min: 246
-            max: 246
-            result: Grandpa
-          - min: 247
-            max: 247
-            result: Grizzle
-          - min: 248
-            max: 248
-            result: Hammer
-          - min: 249
-            max: 249
-            result: Hercules
-          - min: 250
-            max: 250
-            result: Hound
-          - min: 251
-            max: 251
-            result: Humility
-          - min: 252
-            max: 252
-            result: Joker
-          - min: 253
-            max: 253
-            result: Justice
-          - min: 254
-            max: 254
-            result: Lancer
-          - min: 255
-            max: 255
-            result: Liberty
-          - min: 256
-            max: 256
-            result: Lizard
-          - min: 257
-            max: 257
-            result: Lucky
-          - min: 258
-            max: 258
-            result: Magnet
-          - min: 259
-            max: 259
-            result: Merlin
-          - min: 260
-            max: 260
-            result: Mustang
-          - min: 261
-            max: 261
-            result: Nightlight
-          - min: 262
-            max: 262
-            result: Orbiter
-          - min: 263
-            max: 263
-            result: Pan
-          - min: 264
-            max: 264
-            result: Patriot
-          - min: 265
-            max: 265
-            result: Pitch
-          - min: 266
-            max: 266
-            result: Prime
-          - min: 267
-            max: 267
-            result: Prodigy
-          - min: 268
-            max: 268
-            result: Quicksand
-          - min: 269
-            max: 269
-            result: Radar
-          - min: 270
-            max: 270
-            result: Roach
-          - min: 271
-            max: 271
-            result: Rocketman
-          - min: 272
-            max: 272
-            result: Sandman
-          - min: 273
-            max: 273
-            result: Scratch
-          - min: 274
-            max: 274
-            result: Serpent
-          - min: 275
-            max: 275
-            result: Sharktooth
-          - min: 276
-            max: 276
-            result: Snapdragon
-          - min: 277
-            max: 277
-            result: Sonic
-          - min: 278
-            max: 278
-            result: Specter
-          - min: 279
-            max: 279
-            result: Stallion
-          - min: 280
-            max: 280
-            result: Stitch
-          - min: 281
-            max: 281
-            result: Stranger
-          - min: 282
-            max: 282
-            result: Sunburn
-          - min: 283
-            max: 283
-            result: Supernova
-          - min: 284
-            max: 284
-            result: Surgeon
-          - min: 285
-            max: 285
-            result: Talon
-          - min: 286
-            max: 286
-            result: Teach
-          - min: 287
-            max: 287
-            result: Thunderball
-          - min: 288
-            max: 288
-            result: Tinkerbell
-          - min: 289
-            max: 289
-            result: Torch
-          - min: 290
-            max: 290
-            result: Tsunami
-          - min: 291
-            max: 291
-            result: Twilight
-          - min: 292
-            max: 292
-            result: Viking
-          - min: 293
-            max: 293
-            result: Volcano
-          - min: 294
-            max: 294
-            result: Wasp
-          - min: 295
-            max: 295
-            result: Whirlwind
-          - min: 296
-            max: 296
-            result: Widow
-          - min: 297
-            max: 297
-            result: Windigo
-          - min: 298
-            max: 298
-            result: Witch
-          - min: 299
-            max: 299
-            result: Wolverine
-          - min: 300
-            max: 300
-            result: Zion
       conversation_topic:
-        _insert: starforged/oracles/characters/conversation_topic
+        source: *Source
         name: Random Conversation Topic
         dice: 1d300
         table:
@@ -5095,11 +2395,2735 @@ oracles:
             max: 300
             result: Why the leadership needs to change
     collections:
+      name:
+        source: *Source
+        name: Name
+        contents:
+          given_name:
+            source: *Source
+            name: Given Name
+            replaces: starforged/oracles/characters/name/given_name
+            dice: 1d300
+            table:
+              - min: 1
+                max: 1
+                result: Akim
+              - min: 2
+                max: 2
+                result: Alex
+              - min: 3
+                max: 3
+                result: Alexis
+              - min: 4
+                max: 4
+                result: Alisa
+              - min: 5
+                max: 5
+                result: Althea
+              - min: 6
+                max: 6
+                result: Amari
+              - min: 7
+                max: 7
+                result: Aparna
+              - min: 8
+                max: 8
+                result: Argus
+              - min: 9
+                max: 9
+                result: Arnav
+              - min: 10
+                max: 10
+                result: Ash
+              - min: 11
+                max: 11
+                result: Asha
+              - min: 12
+                max: 12
+                result: Astrid
+              - min: 13
+                max: 13
+                result: Aurora
+              - min: 14
+                max: 14
+                result: Ayako
+              - min: 15
+                max: 15
+                result: Azriel
+              - min: 16
+                max: 16
+                result: Blake
+              - min: 17
+                max: 17
+                result: Brennan
+              - min: 18
+                max: 18
+                result: Brianna
+              - min: 19
+                max: 19
+                result: Bruna
+              - min: 20
+                max: 20
+                result: Bruno
+              - min: 21
+                max: 21
+                result: Cassidy
+              - min: 22
+                max: 22
+                result: Christa
+              - min: 23
+                max: 23
+                result: Cole
+              - min: 24
+                max: 24
+                result: Corey
+              - min: 25
+                max: 25
+                result: Creed
+              - min: 26
+                max: 26
+                result: Derya
+              - min: 27
+                max: 27
+                result: Dex
+              - min: 28
+                max: 28
+                result: Doran
+              - min: 29
+                max: 29
+                result: Echo
+              - min: 30
+                max: 30
+                result: Eren
+              - min: 31
+                max: 31
+                result: Erim
+              - min: 32
+                max: 32
+                result: Esana
+              - min: 33
+                max: 33
+                result: Eveline
+              - min: 34
+                max: 34
+                result: Faye
+              - min: 35
+                max: 35
+                result: Fletcher
+              - min: 36
+                max: 36
+                result: Flint
+              - min: 37
+                max: 37
+                result: Florian
+              - min: 38
+                max: 38
+                result: Gavin
+              - min: 39
+                max: 39
+                result: Halia
+              - min: 40
+                max: 40
+                result: Ike
+              - min: 41
+                max: 41
+                result: Isaac
+              - min: 42
+                max: 42
+                result: James
+              - min: 43
+                max: 43
+                result: Janya
+              - min: 44
+                max: 44
+                result: Jihun
+              - min: 45
+                max: 45
+                result: Jorunn
+              - min: 46
+                max: 46
+                result: Juliana
+              - min: 47
+                max: 47
+                result: Juro
+              - min: 48
+                max: 48
+                result: Kaisa
+              - min: 49
+                max: 49
+                result: Karthik
+              - min: 50
+                max: 50
+                result: Kayla
+              - min: 51
+                max: 51
+                result: Kei
+              - min: 52
+                max: 52
+                result: Kiana
+              - min: 53
+                max: 53
+                result: Kieran
+              - min: 54
+                max: 54
+                result: Kierra
+              - min: 55
+                max: 55
+                result: Kimora
+              - min: 56
+                max: 56
+                result: Kiri
+              - min: 57
+                max: 57
+                result: Kirsa
+              - min: 58
+                max: 58
+                result: Kwan
+              - min: 59
+                max: 59
+                result: Kylar
+              - min: 60
+                max: 60
+                result: Landry
+              - min: 61
+                max: 61
+                result: Logan
+              - min: 62
+                max: 62
+                result: Lowell
+              - min: 63
+                max: 63
+                result: Lucas
+              - min: 64
+                max: 64
+                result: Curtis
+              - min: 65
+                max: 65
+                result: Luna
+              - min: 66
+                max: 66
+                result: Lux
+              - min: 67
+                max: 67
+                result: Mae
+              - min: 68
+                max: 68
+                result: Magnus
+              - min: 69
+                max: 69
+                result: Mave
+              - min: 70
+                max: 70
+                result: Merrick
+              - min: 71
+                max: 71
+                result: Mina
+              - min: 72
+                max: 72
+                result: Nashida
+              - min: 73
+                max: 73
+                result: Nassar
+              - min: 74
+                max: 74
+                result: Ostara
+              - min: 75
+                max: 75
+                result: Qasira
+              - min: 76
+                max: 76
+                result: Quinn
+              - min: 77
+                max: 77
+                result: Ragnar
+              - min: 78
+                max: 78
+                result: Raven
+              - min: 79
+                max: 79
+                result: Ria
+              - min: 80
+                max: 80
+                result: Rokuro
+              - min: 81
+                max: 81
+                result: Roland
+              - min: 82
+                max: 82
+                result: Rowena
+              - min: 83
+                max: 83
+                result: Sage
+              - min: 84
+                max: 84
+                result: Saren
+              - min: 85
+                max: 85
+                result: Annora
+              - min: 86
+                max: 86
+                result: Severinus
+              - min: 87
+                max: 87
+                result: Shen
+              - min: 88
+                max: 88
+                result: Talia
+              - min: 89
+                max: 89
+                result: Tomiko
+              - min: 90
+                max: 90
+                result: Ulan
+              - min: 91
+                max: 91
+                result: Valda
+              - min: 92
+                max: 92
+                result: Venri
+              - min: 93
+                max: 93
+                result: Vesper
+              - min: 94
+                max: 94
+                result: Vuldar
+              - min: 95
+                max: 95
+                result: William
+              - min: 96
+                max: 96
+                result: Yelena
+              - min: 97
+                max: 97
+                result: Zakia
+              - min: 98
+                max: 98
+                result: Zari
+              - min: 99
+                max: 99
+                result: Zev
+              - min: 100
+                max: 100
+                result: Zoya
+              - min: 101
+                max: 101
+                result: Abrahan
+              - min: 102
+                max: 102
+                result: Adrihan
+              - min: 103
+                max: 103
+                result: Adryel
+              - min: 104
+                max: 104
+                result: Aedard
+              - min: 105
+                max: 105
+                result: Aekira
+              - min: 106
+                max: 106
+                result: Ahlex
+              - min: 107
+                max: 107
+                result: Alaegha
+              - min: 108
+                max: 108
+                result: Alestran
+              - min: 109
+                max: 109
+                result: Andret
+              - min: 110
+                max: 110
+                result: Anthonis
+              - min: 111
+                max: 111
+                result: Arjun
+              - min: 112
+                max: 112
+                result: Armanis
+              - min: 113
+                max: 113
+                result: Aryanna
+              - min: 114
+                max: 114
+                result: Augun
+              - min: 115
+                max: 115
+                result: Avry
+              - min: 116
+                max: 116
+                result: Balee
+              - min: 117
+                max: 117
+                result: Belenne
+              - min: 118
+                max: 118
+                result: Bentlix
+              - min: 119
+                max: 119
+                result: Bouwen
+              - min: 120
+                max: 120
+                result: Braley
+              - min: 121
+                max: 121
+                result: Bridgeth
+              - min: 122
+                max: 122
+                result: Brisea
+              - min: 123
+                max: 123
+                result: Caerson
+              - min: 124
+                max: 124
+                result: Calrin
+              - min: 125
+                max: 125
+                result: Cassan
+              - min: 126
+                max: 126
+                result: Ceilia
+              - min: 127
+                max: 127
+                result: Chindlr
+              - min: 128
+                max: 128
+                result: Cohren
+              - min: 129
+                max: 129
+                result: Craix
+              - min: 130
+                max: 130
+                result: Dafnea
+              - min: 131
+                max: 131
+                result: Darren
+              - min: 132
+                max: 132
+                result: Dayana
+              - min: 133
+                max: 133
+                result: Dryx
+              - min: 134
+                max: 134
+                result: Elenoh
+              - min: 135
+                max: 135
+                result: Elriot
+              - min: 136
+                max: 136
+                result: Emilisa
+              - min: 137
+                max: 137
+                result: Ender
+              - min: 138
+                max: 138
+                result: Evlyn
+              - min: 139
+                max: 139
+                result: Fynn
+              - min: 140
+                max: 140
+                result: Gerem
+              - min: 141
+                max: 141
+                result: Haelee
+              - min: 142
+                max: 142
+                result: Harlin
+              - min: 143
+                max: 143
+                result: Idelle
+              - min: 144
+                max: 144
+                result: Iyleen
+              - min: 145
+                max: 145
+                result: Jaecob
+              - min: 146
+                max: 146
+                result: Jaenelle
+              - min: 147
+                max: 147
+                result: Jareth
+              - min: 148
+                max: 148
+                result: Jasih
+              - min: 149
+                max: 149
+                result: Jazen
+              - min: 150
+                max: 150
+                result: Jemna
+              - min: 151
+                max: 151
+                result: Jilleane
+              - min: 152
+                max: 152
+                result: Juliran
+              - min: 153
+                max: 153
+                result: Justan
+              - min: 154
+                max: 154
+                result: Kaelyn
+              - min: 155
+                max: 155
+                result: Kain
+              - min: 156
+                max: 156
+                result: Karlin
+              - min: 157
+                max: 157
+                result: Kasra
+              - min: 158
+                max: 158
+                result: Kayi
+              - min: 159
+                max: 159
+                result: Kimra
+              - min: 160
+                max: 160
+                result: Krish
+              - min: 161
+                max: 161
+                result: Kyllen
+              - min: 162
+                max: 162
+                result: Lains
+              - min: 163
+                max: 163
+                result: Leski
+              - min: 164
+                max: 164
+                result: Lukeen
+              - min: 165
+                max: 165
+                result: Lylah
+              - min: 166
+                max: 166
+                result: Maelana
+              - min: 167
+                max: 167
+                result: Makenze
+              - min: 168
+                max: 168
+                result: Marza
+              - min: 169
+                max: 169
+                result: Meegon
+              - min: 170
+                max: 170
+                result: Mikala
+              - min: 171
+                max: 171
+                result: Nadira
+              - min: 172
+                max: 172
+                result: Natlea
+              - min: 173
+                max: 173
+                result: Nayli
+              - min: 174
+                max: 174
+                result: Nyco
+              - min: 175
+                max: 175
+                result: Paxt
+              - min: 176
+                max: 176
+                result: Randis
+              - min: 177
+                max: 177
+                result: Raylar
+              - min: 178
+                max: 178
+                result: Reesha
+              - min: 179
+                max: 179
+                result: Rianara
+              - min: 180
+                max: 180
+                result: Rohn
+              - min: 181
+                max: 181
+                result: Ryliea
+              - min: 182
+                max: 182
+                result: Saera
+              - min: 183
+                max: 183
+                result: Sarina
+              - min: 184
+                max: 184
+                result: Seliena
+              - min: 185
+                max: 185
+                result: Taelor
+              - min: 186
+                max: 186
+                result: Tatm
+              - min: 187
+                max: 187
+                result: Temrance
+              - min: 188
+                max: 188
+                result: Tiana
+              - min: 189
+                max: 189
+                result: Trephor
+              - min: 190
+                max: 190
+                result: Tryst
+              - min: 191
+                max: 191
+                result: Vallun
+              - min: 192
+                max: 192
+                result: Viliana
+              - min: 193
+                max: 193
+                result: Wylow
+              - min: 194
+                max: 194
+                result: Ximon
+              - min: 195
+                max: 195
+                result: Yan
+              - min: 196
+                max: 196
+                result: Ylivea
+              - min: 197
+                max: 197
+                result: Yrenea
+              - min: 198
+                max: 198
+                result: Zaeden
+              - min: 199
+                max: 199
+                result: Zand
+              - min: 200
+                max: 200
+                result: Zavir
+              - min: 201
+                max: 201
+                result: Adahn
+              - min: 202
+                max: 202
+                result: Adryan
+              - min: 203
+                max: 203
+                result: Aebram
+              - min: 204
+                max: 204
+                result: Aedele
+              - min: 205
+                max: 205
+                result: Agost
+              - min: 206
+                max: 206
+                result: Aibel
+              - min: 207
+                max: 207
+                result: Alaena
+              - min: 208
+                max: 208
+                result: Amaeri
+              - min: 209
+                max: 209
+                result: Anlise
+              - min: 210
+                max: 210
+                result: Arana
+              - min: 211
+                max: 211
+                result: Arlox
+              - min: 212
+                max: 212
+                result: Arthir
+              - min: 213
+                max: 213
+                result: Aubriena
+              - min: 214
+                max: 214
+                result: Avae
+              - min: 215
+                max: 215
+                result: Axarea
+              - min: 216
+                max: 216
+                result: Banca
+              - min: 217
+                max: 217
+                result: Bentlae
+              - min: 218
+                max: 218
+                result: Bentom
+              - min: 219
+                max: 219
+                result: Brack
+              - min: 220
+                max: 220
+                result: Braydn
+              - min: 221
+                max: 221
+                result: Brigan
+              - min: 222
+                max: 222
+                result: Brodin
+              - min: 223
+                max: 223
+                result: Cahlun
+              - min: 224
+                max: 224
+                result: Camdon
+              - min: 225
+                max: 225
+                result: Cathrise
+              - min: 226
+                max: 226
+                result: Charlt
+              - min: 227
+                max: 227
+                result: Claytin
+              - min: 228
+                max: 228
+                result: Colbix
+              - min: 229
+                max: 229
+                result: Crux
+              - min: 230
+                max: 230
+                result: Dariux
+              - min: 231
+                max: 231
+                result: Davith
+              - min: 232
+                max: 232
+                result: Diyana
+              - min: 233
+                max: 233
+                result: Elden
+              - min: 234
+                max: 234
+                result: Elex
+              - min: 235
+                max: 235
+                result: Emex
+              - min: 236
+                max: 236
+                result: Emmed
+              - min: 237
+                max: 237
+                result: Ethin
+              - min: 238
+                max: 238
+                result: Flyx
+              - min: 239
+                max: 239
+                result: Gayge
+              - min: 240
+                max: 240
+                result: Giana
+              - min: 241
+                max: 241
+                result: Haerlo
+              - min: 242
+                max: 242
+                result: Harris
+              - min: 243
+                max: 243
+                result: Islae
+              - min: 244
+                max: 244
+                result: Izella
+              - min: 245
+                max: 245
+                result: Jaelah
+              - min: 246
+                max: 246
+                result: Jaleah
+              - min: 247
+                max: 247
+                result: Jasemine
+              - min: 248
+                max: 248
+                result: Jayda
+              - min: 249
+                max: 249
+                result: Jazmi
+              - min: 250
+                max: 250
+                result: Jexi
+              - min: 251
+                max: 251
+                result: Juliasa
+              - min: 252
+                max: 252
+                result: Julith
+              - min: 253
+                max: 253
+                result: Kaedn
+              - min: 254
+                max: 254
+                result: Kaence
+              - min: 255
+                max: 255
+                result: Karina
+              - min: 256
+                max: 256
+                result: Karsyne
+              - min: 257
+                max: 257
+                result: Kayet
+              - min: 258
+                max: 258
+                result: Kaze
+              - min: 259
+                max: 259
+                result: Kira
+              - min: 260
+                max: 260
+                result: Kyber
+              - min: 261
+                max: 261
+                result: Kyndle
+              - min: 262
+                max: 262
+                result: Lars
+              - min: 263
+                max: 263
+                result: Lillya
+              - min: 264
+                max: 264
+                result: Lushian
+              - min: 265
+                max: 265
+                result: Madlyn
+              - min: 266
+                max: 266
+                result: Maeve
+              - min: 267
+                max: 267
+                result: Makin
+              - min: 268
+                max: 268
+                result: Maxtom
+              - min: 269
+                max: 269
+                result: Melia
+              - min: 270
+                max: 270
+                result: Myha
+              - min: 271
+                max: 271
+                result: Nathanael
+              - min: 272
+                max: 272
+                result: Nayel
+              - min: 273
+                max: 273
+                result: Nekra
+              - min: 274
+                max: 274
+                result: Orin
+              - min: 275
+                max: 275
+                result: Pilzen
+              - min: 276
+                max: 276
+                result: Rayina
+              - min: 277
+                max: 277
+                result: Rayven
+              - min: 278
+                max: 278
+                result: Renette
+              - min: 279
+                max: 279
+                result: Rikzar
+              - min: 280
+                max: 280
+                result: Roseya
+              - min: 281
+                max: 281
+                result: Sabrya
+              - min: 282
+                max: 282
+                result: Sanyah
+              - min: 283
+                max: 283
+                result: Sawyr
+              - min: 284
+                max: 284
+                result: Shaene
+              - min: 285
+                max: 285
+                result: Taria
+              - min: 286
+                max: 286
+                result: Teag
+              - min: 287
+                max: 287
+                result: Thadd
+              - min: 288
+                max: 288
+                result: Tobias
+              - min: 289
+                max: 289
+                result: Tristiran
+              - min: 290
+                max: 290
+                result: Ulivia
+              - min: 291
+                max: 291
+                result: Valriya
+              - min: 292
+                max: 292
+                result: Wilm
+              - min: 293
+                max: 293
+                result: Xander
+              - min: 294
+                max: 294
+                result: Yael
+              - min: 295
+                max: 295
+                result: Yegan
+              - min: 296
+                max: 296
+                result: Yos
+              - min: 297
+                max: 297
+                result: Yve
+              - min: 298
+                max: 298
+                result: Zaid
+              - min: 299
+                max: 299
+                result: Zarina
+              - min: 300
+                max: 300
+                result: Zolmon
+          family_name:
+            source: *Source
+            name: Family Name
+            replaces: starforged/oracles/characters/name/family_name
+            dice: 1d300
+            table:
+              - min: 1
+                max: 1
+                result: Kuzmin
+              - min: 2
+                max: 2
+                result: Durant
+              - min: 3
+                max: 3
+                result: Jefferies
+              - min: 4
+                max: 4
+                result: Velez
+              - min: 5
+                max: 5
+                result: Lontoc
+              - min: 6
+                max: 6
+                result: Wade
+              - min: 7
+                max: 7
+                result: Kade
+              - min: 8
+                max: 8
+                result: Thorn
+              - min: 9
+                max: 9
+                result: Khosla
+              - min: 10
+                max: 10
+                result: Hendrix
+              - min: 11
+                max: 11
+                result: Okiro
+              - min: 12
+                max: 12
+                result: Ripley
+              - min: 13
+                max: 13
+                result: Talin
+              - min: 14
+                max: 14
+                result: Jin
+              - min: 15
+                max: 15
+                result: Finn
+              - min: 16
+                max: 16
+                result: Solas
+              - min: 17
+                max: 17
+                result: Quint
+              - min: 18
+                max: 18
+                result: Keelan
+              - min: 19
+                max: 19
+                result: Silva
+              - min: 20
+                max: 20
+                result: Valk
+              - min: 21
+                max: 21
+                result: O’Brien
+              - min: 22
+                max: 22
+                result: Ruiz
+              - min: 23
+                max: 23
+                result: Stallard
+              - min: 24
+                max: 24
+                result: Mackenson
+              - min: 25
+                max: 25
+                result: Jensen
+              - min: 26
+                max: 26
+                result: Sakir
+              - min: 27
+                max: 27
+                result: Tolari
+              - min: 28
+                max: 28
+                result: Kain
+              - min: 29
+                max: 29
+                result: Carr
+              - min: 30
+                max: 30
+                result: Valenus
+              - min: 31
+                max: 31
+                result: Kaan
+              - min: 32
+                max: 32
+                result: Taylan
+              - min: 33
+                max: 33
+                result: Legrand
+              - min: 34
+                max: 34
+                result: Jemison
+              - min: 35
+                max: 35
+                result: Arden
+              - min: 36
+                max: 36
+                result: Sayer
+              - min: 37
+                max: 37
+                result: Kai
+              - min: 38
+                max: 38
+                result: Slater
+              - min: 39
+                max: 39
+                result: Edris
+              - min: 40
+                max: 40
+                result: Sutton
+              - min: 41
+                max: 41
+                result: Savarin
+              - min: 42
+                max: 42
+                result: Bridger
+              - min: 43
+                max: 43
+                result: Mital
+              - min: 44
+                max: 44
+                result: Shin
+              - min: 45
+                max: 45
+                result: Nadir
+              - min: 46
+                max: 46
+                result: Santos
+              - min: 47
+                max: 47
+                result: Mihara
+              - min: 48
+                max: 48
+                result: Buhari
+              - min: 49
+                max: 49
+                result: Salvi
+              - min: 50
+                max: 50
+                result: Adler
+              - min: 51
+                max: 51
+                result: Takara
+              - min: 52
+                max: 52
+                result: Shelton
+              - min: 53
+                max: 53
+                result: Vandu
+              - min: 54
+                max: 54
+                result: Vega
+              - min: 55
+                max: 55
+                result: Zhang
+              - min: 56
+                max: 56
+                result: Savela
+              - min: 57
+                max: 57
+                result: Hawking
+              - min: 58
+                max: 58
+                result: Jen
+              - min: 59
+                max: 59
+                result: Hobbs
+              - min: 60
+                max: 60
+                result: Holland
+              - min: 61
+                max: 61
+                result: Silvius
+              - min: 62
+                max: 62
+                result: Freeman
+              - min: 63
+                max: 63
+                result: Barbosa
+              - min: 64
+                max: 64
+                result: Winter
+              - min: 65
+                max: 65
+                result: Hammond
+              - min: 66
+                max: 66
+                result: Archer
+              - min: 67
+                max: 67
+                result: Barlowe
+              - min: 68
+                max: 68
+                result: Shepherd
+              - min: 69
+                max: 69
+                result: Griffin
+              - min: 70
+                max: 70
+                result: Frost
+              - min: 71
+                max: 71
+                result: Quon
+              - min: 72
+                max: 72
+                result: Malek
+              - min: 73
+                max: 73
+                result: Murad
+              - min: 74
+                max: 74
+                result: Becker
+              - min: 75
+                max: 75
+                result: Ammar
+              - min: 76
+                max: 76
+                result: Braddock
+              - min: 77
+                max: 77
+                result: Blackstone
+              - min: 78
+                max: 78
+                result: Hadley
+              - min: 79
+                max: 79
+                result: Farin
+              - min: 80
+                max: 80
+                result: Kobayashi
+              - min: 81
+                max: 81
+                result: Duval
+              - min: 82
+                max: 82
+                result: Hunter
+              - min: 83
+                max: 83
+                result: Beckett
+              - min: 84
+                max: 84
+                result: Dykstra
+              - min: 85
+                max: 85
+                result: Gray
+              - min: 86
+                max: 86
+                result: Sedano
+              - min: 87
+                max: 87
+                result: Bai
+              - min: 88
+                max: 88
+                result: Booker
+              - min: 89
+                max: 89
+                result: Sato
+              - min: 90
+                max: 90
+                result: Vayan
+              - min: 91
+                max: 91
+                result: Bond
+              - min: 92
+                max: 92
+                result: Stark
+              - min: 93
+                max: 93
+                result: Stirling
+              - min: 94
+                max: 94
+                result: Wolfe
+              - min: 95
+                max: 95
+                result: O’Niel
+              - min: 96
+                max: 96
+                result: Petrov
+              - min: 97
+                max: 97
+                result: Nazari
+              - min: 98
+                max: 98
+                result: Darwin
+              - min: 99
+                max: 99
+                result: Pearson
+              - min: 100
+                max: 100
+                result: Volkov
+              - min: 101
+                max: 101
+                result: Aguirre
+              - min: 102
+                max: 102
+                result: Anthony
+              - min: 103
+                max: 103
+                result: Arnoldo
+              - min: 104
+                max: 104
+                result: Averson
+              - min: 105
+                max: 105
+                result: Ballarn
+              - min: 106
+                max: 106
+                result: Barker
+              - min: 107
+                max: 107
+                result: Bauer
+              - min: 108
+                max: 108
+                result: Bealsen
+              - min: 109
+                max: 109
+                result: Bernster
+              - min: 110
+                max: 110
+                result: Boltinplax
+              - min: 111
+                max: 111
+                result: Brugess
+              - min: 112
+                max: 112
+                result: Bullock
+              - min: 113
+                max: 113
+                result: Camaho
+              - min: 114
+                max: 114
+                result: Castaneda
+              - min: 115
+                max: 115
+                result: Chaler
+              - min: 116
+                max: 116
+                result: Chaney
+              - min: 117
+                max: 117
+                result: Cisneros
+              - min: 118
+                max: 118
+                result: Coffey
+              - min: 119
+                max: 119
+                result: Coleman
+              - min: 120
+                max: 120
+                result: Combs
+              - min: 121
+                max: 121
+                result: Conrad
+              - min: 122
+                max: 122
+                result: Cruz
+              - min: 123
+                max: 123
+                result: Curtis
+              - min: 124
+                max: 124
+                result: Dillonber
+              - min: 125
+                max: 125
+                result: Domingue
+              - min: 126
+                max: 126
+                result: Dunlap
+              - min: 127
+                max: 127
+                result: Esparza
+              - min: 128
+                max: 128
+                result: Everest
+              - min: 129
+                max: 129
+                result: Farley
+              - min: 130
+                max: 130
+                result: Fields
+              - min: 131
+                max: 131
+                result: Florentine
+              - min: 132
+                max: 132
+                result: Franhin
+              - min: 133
+                max: 133
+                result: Gambils
+              - min: 134
+                max: 134
+                result: Gates
+              - min: 135
+                max: 135
+                result: Golenbar
+              - min: 136
+                max: 136
+                result: Gonzalo
+              - min: 137
+                max: 137
+                result: Grenshaw
+              - min: 138
+                max: 138
+                result: Guerrero
+              - min: 139
+                max: 139
+                result: Haney
+              - min: 140
+                max: 140
+                result: Hardent
+              - min: 141
+                max: 141
+                result: Harrell
+              - min: 142
+                max: 142
+                result: Henrix
+              - min: 143
+                max: 143
+                result: Hester
+              - min: 144
+                max: 144
+                result: Hodge
+              - min: 145
+                max: 145
+                result: Hofferson
+              - min: 146
+                max: 146
+                result: Hollandry
+              - min: 147
+                max: 147
+                result: Hostetler
+              - min: 148
+                max: 148
+                result: Huffington
+              - min: 149
+                max: 149
+                result: Jennerson
+              - min: 150
+                max: 150
+                result: Josten
+              - min: 151
+                max: 151
+                result: Kellyn
+              - min: 152
+                max: 152
+                result: Knapp
+              - min: 153
+                max: 153
+                result: Lambern
+              - min: 154
+                max: 154
+                result: LeBlanc
+              - min: 155
+                max: 155
+                result: Leons
+              - min: 156
+                max: 156
+                result: Livingston
+              - min: 157
+                max: 157
+                result: Love
+              - min: 158
+                max: 158
+                result: Luna
+              - min: 159
+                max: 159
+                result: Mackron
+              - min: 160
+                max: 160
+                result: Mahon
+              - min: 161
+                max: 161
+                result: Mata
+              - min: 162
+                max: 162
+                result: Maynard
+              - min: 163
+                max: 163
+                result: McGrath
+              - min: 164
+                max: 164
+                result: Milon
+              - min: 165
+                max: 165
+                result: Mora
+              - min: 166
+                max: 166
+                result: Murfrees
+              - min: 167
+                max: 167
+                result: Nealson
+              - min: 168
+                max: 168
+                result: Nolben
+              - min: 169
+                max: 169
+                result: Owens
+              - min: 170
+                max: 170
+                result: Pacheco
+              - min: 171
+                max: 171
+                result: Palmer
+              - min: 172
+                max: 172
+                result: Paraz
+              - min: 173
+                max: 173
+                result: Payna
+              - min: 174
+                max: 174
+                result: Philson
+              - min: 175
+                max: 175
+                result: Ponce
+              - min: 176
+                max: 176
+                result: Pryle
+              - min: 177
+                max: 177
+                result: Ramsey
+              - min: 178
+                max: 178
+                result: Reeves
+              - min: 179
+                max: 179
+                result: Richards
+              - min: 180
+                max: 180
+                result: Rogera
+              - min: 181
+                max: 181
+                result: Salazar
+              - min: 182
+                max: 182
+                result: Schneider
+              - min: 183
+                max: 183
+                result: Shashay
+              - min: 184
+                max: 184
+                result: Shields
+              - min: 185
+                max: 185
+                result: Snydra
+              - min: 186
+                max: 186
+                result: Staffenberg
+              - min: 187
+                max: 187
+                result: Tapia
+              - min: 188
+                max: 188
+                result: Travers
+              - min: 189
+                max: 189
+                result: Valencia
+              - min: 190
+                max: 190
+                result: Vang
+              - min: 191
+                max: 191
+                result: Vincent
+              - min: 192
+                max: 192
+                result: Walters
+              - min: 193
+                max: 193
+                result: Watson
+              - min: 194
+                max: 194
+                result: Weaver
+              - min: 195
+                max: 195
+                result: Weeks
+              - min: 196
+                max: 196
+                result: Wester
+              - min: 197
+                max: 197
+                result: Wilcox
+              - min: 198
+                max: 198
+                result: Williz
+              - min: 199
+                max: 199
+                result: Yorksher
+              - min: 200
+                max: 200
+                result: Zamora
+              - min: 201
+                max: 201
+                result: Alvarez
+              - min: 202
+                max: 202
+                result: Armstrong
+              - min: 203
+                max: 203
+                result: Austone
+              - min: 204
+                max: 204
+                result: Baird
+              - min: 205
+                max: 205
+                result: Barber
+              - min: 206
+                max: 206
+                result: Barrera
+              - min: 207
+                max: 207
+                result: Baxter
+              - min: 208
+                max: 208
+                result: Beckard
+              - min: 209
+                max: 209
+                result: Blankenship
+              - min: 210
+                max: 210
+                result: Brady
+              - min: 211
+                max: 211
+                result: Buckley
+              - min: 212
+                max: 212
+                result: Calderon
+              - min: 213
+                max: 213
+                result: Camerton
+              - min: 214
+                max: 214
+                result: Castillo
+              - min: 215
+                max: 215
+                result: Chamberman
+              - min: 216
+                max: 216
+                result: Chen
+              - min: 217
+                max: 217
+                result: Clayson
+              - min: 218
+                max: 218
+                result: Cokrin
+              - min: 219
+                max: 219
+                result: Colon
+              - min: 220
+                max: 220
+                result: Conners
+              - min: 221
+                max: 221
+                result: Cooper
+              - min: 222
+                max: 222
+                result: Cuevas
+              - min: 223
+                max: 223
+                result: Denlar
+              - min: 224
+                max: 224
+                result: Dixon
+              - min: 225
+                max: 225
+                result: Doweller
+              - min: 226
+                max: 226
+                result: Eastin
+              - min: 227
+                max: 227
+                result: Evangle
+              - min: 228
+                max: 228
+                result: Ewing
+              - min: 229
+                max: 229
+                result: Ferril
+              - min: 230
+                max: 230
+                result: Figueroa
+              - min: 231
+                max: 231
+                result: Flores
+              - min: 232
+                max: 232
+                result: Galvan
+              - min: 233
+                max: 233
+                result: Garson
+              - min: 234
+                max: 234
+                result: Gibbs
+              - min: 235
+                max: 235
+                result: Gomerza
+              - min: 236
+                max: 236
+                result: Graves
+              - min: 237
+                max: 237
+                result: Grossen
+              - min: 238
+                max: 238
+                result: Hallison
+              - min: 239
+                max: 239
+                result: Hansen
+              - min: 240
+                max: 240
+                result: Harding
+              - min: 241
+                max: 241
+                result: Haydar
+              - min: 242
+                max: 242
+                result: Herrera
+              - min: 243
+                max: 243
+                result: Hickerton
+              - min: 244
+                max: 244
+                result: Hodor
+              - min: 245
+                max: 245
+                result: Holden
+              - min: 246
+                max: 246
+                result: Hollodo
+              - min: 247
+                max: 247
+                result: Howern
+              - min: 248
+                max: 248
+                result: Ibarra
+              - min: 249
+                max: 249
+                result: Jorden
+              - min: 250
+                max: 250
+                result: Kalvin
+              - min: 251
+                max: 251
+                result: Kerrin
+              - min: 252
+                max: 252
+                result: Knightly
+              - min: 253
+                max: 253
+                result: Lane
+              - min: 254
+                max: 254
+                result: Lee
+              - min: 255
+                max: 255
+                result: Lisley
+              - min: 256
+                max: 256
+                result: Lohenz
+              - min: 257
+                max: 257
+                result: Lowray
+              - min: 258
+                max: 258
+                result: Lynn
+              - min: 259
+                max: 259
+                result: Madden
+              - min: 260
+                max: 260
+                result: Malone
+              - min: 261
+                max: 261
+                result: Mathias
+              - min: 262
+                max: 262
+                result: McCarthy
+              - min: 263
+                max: 263
+                result: Mendoza
+              - min: 264
+                max: 264
+                result: Moores
+              - min: 265
+                max: 265
+                result: Morton
+              - min: 266
+                max: 266
+                result: Myeryn
+              - min: 267
+                max: 267
+                result: Newman
+              - min: 268
+                max: 268
+                result: Norbid
+              - min: 269
+                max: 269
+                result: Ozbern
+              - min: 270
+                max: 270
+                result: Palante
+              - min: 271
+                max: 271
+                result: Palmner
+              - min: 272
+                max: 272
+                result: Parker
+              - min: 273
+                max: 273
+                result: Pham
+              - min: 274
+                max: 274
+                result: Pitton
+              - min: 275
+                max: 275
+                result: Porzer
+              - min: 276
+                max: 276
+                result: Quinix
+              - min: 277
+                max: 277
+                result: Randalla
+              - min: 278
+                max: 278
+                result: Rettag
+              - min: 279
+                max: 279
+                result: Rochester
+              - min: 280
+                max: 280
+                result: Rosston
+              - min: 281
+                max: 281
+                result: Santanaz
+              - min: 282
+                max: 282
+                result: Schroner
+              - min: 283
+                max: 283
+                result: Sheppard
+              - min: 284
+                max: 284
+                result: Simonson
+              - min: 285
+                max: 285
+                result: Spencer
+              - min: 286
+                max: 286
+                result: Stouss
+              - min: 287
+                max: 287
+                result: Tran
+              - min: 288
+                max: 288
+                result: Valdex
+              - min: 289
+                max: 289
+                result: Valentine
+              - min: 290
+                max: 290
+                result: Velasque
+              - min: 291
+                max: 291
+                result: Wallington
+              - min: 292
+                max: 292
+                result: Warn
+              - min: 293
+                max: 293
+                result: Watts
+              - min: 294
+                max: 294
+                result: Webbon
+              - min: 295
+                max: 295
+                result: Weiss
+              - min: 296
+                max: 296
+                result: Whitaker
+              - min: 297
+                max: 297
+                result: Wilkinson
+              - min: 298
+                max: 298
+                result: Woodward
+              - min: 299
+                max: 299
+                result: Yuz
+              - min: 300
+                max: 300
+                result: Zimmers
+          callsign:
+            source: *Source
+            name: Callsign
+            replaces: starforged/oracles/characters/name/callsign
+            dice: 1d300
+            table:
+              - min: 1
+                max: 1
+                result: Albatross
+              - min: 2
+                max: 2
+                result: Angler
+              - min: 3
+                max: 3
+                result: Anvil
+              - min: 4
+                max: 4
+                result: Badger
+              - min: 5
+                max: 5
+                result: Bandit
+              - min: 6
+                max: 6
+                result: Bash
+              - min: 7
+                max: 7
+                result: Basilisk
+              - min: 8
+                max: 8
+                result: Bingo
+              - min: 9
+                max: 9
+                result: Blackbird
+              - min: 10
+                max: 10
+                result: Blade
+              - min: 11
+                max: 11
+                result: Bloodshot
+              - min: 12
+                max: 12
+                result: Bluewing
+              - min: 13
+                max: 13
+                result: Bonfire
+              - min: 14
+                max: 14
+                result: Book
+              - min: 15
+                max: 15
+                result: Breaker
+              - min: 16
+                max: 16
+                result: Brick
+              - min: 17
+                max: 17
+                result: Buzz
+              - min: 18
+                max: 18
+                result: Buzzard
+              - min: 19
+                max: 19
+                result: Centurion
+              - min: 20
+                max: 20
+                result: Chimera
+              - min: 21
+                max: 21
+                result: Circuit
+              - min: 22
+                max: 22
+                result: Clank
+              - min: 23
+                max: 23
+                result: Cleric
+              - min: 24
+                max: 24
+                result: Crash
+              - min: 25
+                max: 25
+                result: Cutter
+              - min: 26
+                max: 26
+                result: Cutthroat
+              - min: 27
+                max: 27
+                result: Cypher
+              - min: 28
+                max: 28
+                result: Dagger
+              - min: 29
+                max: 29
+                result: Dancer
+              - min: 30
+                max: 30
+                result: Dash
+              - min: 31
+                max: 31
+                result: Deadeye
+              - min: 32
+                max: 32
+                result: Deuce
+              - min: 33
+                max: 33
+                result: Failsafe
+              - min: 34
+                max: 34
+                result: Farseer
+              - min: 35
+                max: 35
+                result: Fidget
+              - min: 36
+                max: 36
+                result: Firestarter
+              - min: 37
+                max: 37
+                result: Fixer
+              - min: 38
+                max: 38
+                result: Flatline
+              - min: 39
+                max: 39
+                result: Ghost
+              - min: 40
+                max: 40
+                result: Grudge
+              - min: 41
+                max: 41
+                result: Gutshot
+              - min: 42
+                max: 42
+                result: Harrow
+              - min: 43
+                max: 43
+                result: Havoc
+              - min: 44
+                max: 44
+                result: Hellhound
+              - min: 45
+                max: 45
+                result: Hellion
+              - min: 46
+                max: 46
+                result: Hex
+              - min: 47
+                max: 47
+                result: Hush
+              - min: 48
+                max: 48
+                result: Ironclad
+              - min: 49
+                max: 49
+                result: Jackal
+              - min: 50
+                max: 50
+                result: Jackpot
+              - min: 51
+                max: 51
+                result: Jester
+              - min: 52
+                max: 52
+                result: Link
+              - min: 53
+                max: 53
+                result: Longshot
+              - min: 54
+                max: 54
+                result: Mainframe
+              - min: 55
+                max: 55
+                result: Mantis
+              - min: 56
+                max: 56
+                result: Mimic
+              - min: 57
+                max: 57
+                result: Mole
+              - min: 58
+                max: 58
+                result: Monarch
+              - min: 59
+                max: 59
+                result: Mongoose
+              - min: 60
+                max: 60
+                result: Nails
+              - min: 61
+                max: 61
+                result: Ogre
+              - min: 62
+                max: 62
+                result: Omega
+              - min: 63
+                max: 63
+                result: Overload
+              - min: 64
+                max: 64
+                result: Packrat
+              - min: 65
+                max: 65
+                result: Paladin
+              - min: 66
+                max: 66
+                result: Phantom
+              - min: 67
+                max: 67
+                result: Phoenix
+              - min: 68
+                max: 68
+                result: Pyro
+              - min: 69
+                max: 69
+                result: Quickdraw
+              - min: 70
+                max: 70
+                result: Razor
+              - min: 71
+                max: 71
+                result: Rogue
+              - min: 72
+                max: 72
+                result: Rook
+              - min: 73
+                max: 73
+                result: Rover
+              - min: 74
+                max: 74
+                result: Scout
+              - min: 75
+                max: 75
+                result: Shadow
+              - min: 76
+                max: 76
+                result: Shark
+              - min: 77
+                max: 77
+                result: Shutdown
+              - min: 78
+                max: 78
+                result: Slack
+              - min: 79
+                max: 79
+                result: Slash
+              - min: 80
+                max: 80
+                result: Snipe
+              - min: 81
+                max: 81
+                result: Spider
+              - min: 82
+                max: 82
+                result: Splinter
+              - min: 83
+                max: 83
+                result: Static
+              - min: 84
+                max: 84
+                result: Stinger
+              - min: 85
+                max: 85
+                result: Straggler
+              - min: 86
+                max: 86
+                result: Swindle
+              - min: 87
+                max: 87
+                result: Tinker
+              - min: 88
+                max: 88
+                result: Touchdown
+              - min: 89
+                max: 89
+                result: Tycoon
+              - min: 90
+                max: 90
+                result: Vagabond
+              - min: 91
+                max: 91
+                result: Valkyrie
+              - min: 92
+                max: 92
+                result: Vanguard
+              - min: 93
+                max: 93
+                result: Vertigo
+              - min: 94
+                max: 94
+                result: Warden
+              - min: 95
+                max: 95
+                result: Watchdog
+              - min: 96
+                max: 96
+                result: Wayfinder
+              - min: 97
+                max: 97
+                result: Whisper
+              - min: 98
+                max: 98
+                result: Wraith
+              - min: 99
+                max: 99
+                result: Wrongway
+              - min: 100
+                max: 100
+                result: Zephyr
+              - min: 101
+                max: 101
+                result: Ace
+              - min: 102
+                max: 102
+                result: Angel
+              - min: 103
+                max: 103
+                result: Any
+              - min: 104
+                max: 104
+                result: Arrowhead
+              - min: 105
+                max: 105
+                result: Balboa
+              - min: 106
+                max: 106
+                result: Banner
+              - min: 107
+                max: 107
+                result: Baron
+              - min: 108
+                max: 108
+                result: Beehive
+              - min: 109
+                max: 109
+                result: Belter
+              - min: 110
+                max: 110
+                result: Blackjack
+              - min: 111
+                max: 111
+                result: Bones
+              - min: 112
+                max: 112
+                result: Boomer
+              - min: 113
+                max: 113
+                result: Buckshot
+              - min: 114
+                max: 114
+                result: Bullseye
+              - min: 115
+                max: 115
+                result: Caravan
+              - min: 116
+                max: 116
+                result: Cash
+              - min: 117
+                max: 117
+                result: Castle
+              - min: 118
+                max: 118
+                result: Chariot
+              - min: 119
+                max: 119
+                result: Chip
+              - min: 120
+                max: 120
+                result: Cinder
+              - min: 121
+                max: 121
+                result: Clownface
+              - min: 122
+                max: 122
+                result: Cookie
+              - min: 123
+                max: 123
+                result: Cosmos
+              - min: 124
+                max: 124
+                result: Creeper
+              - min: 125
+                max: 125
+                result: Critter
+              - min: 126
+                max: 126
+                result: Darkwing
+              - min: 127
+                max: 127
+                result: Data
+              - min: 128
+                max: 128
+                result: Demon
+              - min: 129
+                max: 129
+                result: Dino
+              - min: 130
+                max: 130
+                result: Doc Brown
+              - min: 131
+                max: 131
+                result: Doodle
+              - min: 132
+                max: 132
+                result: Drake
+              - min: 133
+                max: 133
+                result: Dropship
+              - min: 134
+                max: 134
+                result: Dynamo
+              - min: 135
+                max: 135
+                result: Earthquake
+              - min: 136
+                max: 136
+                result: Eclipse
+              - min: 137
+                max: 137
+                result: Fang
+              - min: 138
+                max: 138
+                result: Fiddler
+              - min: 139
+                max: 139
+                result: Flamingo
+              - min: 140
+                max: 140
+                result: Flat Top
+              - min: 141
+                max: 141
+                result: Flux
+              - min: 142
+                max: 142
+                result: Fox
+              - min: 143
+                max: 143
+                result: Gadget
+              - min: 144
+                max: 144
+                result: Gargoyle
+              - min: 145
+                max: 145
+                result: Geyser
+              - min: 146
+                max: 146
+                result: Goose
+              - min: 147
+                max: 147
+                result: Granny
+              - min: 148
+                max: 148
+                result: Halo
+              - min: 149
+                max: 149
+                result: Hawk
+              - min: 150
+                max: 150
+                result: Hitch
+              - min: 151
+                max: 151
+                result: Hulk
+              - min: 152
+                max: 152
+                result: Jenkins
+              - min: 153
+                max: 153
+                result: Jumper
+              - min: 154
+                max: 154
+                result: King
+              - min: 155
+                max: 155
+                result: Leeroy
+              - min: 156
+                max: 156
+                result: Lightning
+              - min: 157
+                max: 157
+                result: Locket
+              - min: 158
+                max: 158
+                result: Lurker
+              - min: 159
+                max: 159
+                result: Melody
+              - min: 160
+                max: 160
+                result: Moose
+              - min: 161
+                max: 161
+                result: Nightcrawler
+              - min: 162
+                max: 162
+                result: Ninja
+              - min: 163
+                max: 163
+                result: Packer
+              - min: 164
+                max: 164
+                result: Panther
+              - min: 165
+                max: 165
+                result: Piggy
+              - min: 166
+                max: 166
+                result: Polaris
+              - min: 167
+                max: 167
+                result: Prince
+              - min: 168
+                max: 168
+                result: Queen
+              - min: 169
+                max: 169
+                result: Quicksilver
+              - min: 170
+                max: 170
+                result: Ringo
+              - min: 171
+                max: 171
+                result: Robin
+              - min: 172
+                max: 172
+                result: Rounder
+              - min: 173
+                max: 173
+                result: Scarecrow
+              - min: 174
+                max: 174
+                result: Sentry
+              - min: 175
+                max: 175
+                result: Shaker
+              - min: 176
+                max: 176
+                result: Shatter
+              - min: 177
+                max: 177
+                result: Songbird
+              - min: 178
+                max: 178
+                result: Spartan
+              - min: 179
+                max: 179
+                result: Squirrel
+              - min: 180
+                max: 180
+                result: Stardust
+              - min: 181
+                max: 181
+                result: Storm
+              - min: 182
+                max: 182
+                result: Suit
+              - min: 183
+                max: 183
+                result: Sunshine
+              - min: 184
+                max: 184
+                result: Surfer
+              - min: 185
+                max: 185
+                result: Swordfish
+              - min: 186
+                max: 186
+                result: Tango
+              - min: 187
+                max: 187
+                result: Templer
+              - min: 188
+                max: 188
+                result: Tiger
+              - min: 189
+                max: 189
+                result: Titan
+              - min: 190
+                max: 190
+                result: Tower
+              - min: 191
+                max: 191
+                result: Turtle
+              - min: 192
+                max: 192
+                result: Venom
+              - min: 193
+                max: 193
+                result: Viper
+              - min: 194
+                max: 194
+                result: Walker
+              - min: 195
+                max: 195
+                result: Watchman
+              - min: 196
+                max: 196
+                result: Whistle
+              - min: 197
+                max: 197
+                result: Willow
+              - min: 198
+                max: 198
+                result: Winger
+              - min: 199
+                max: 199
+                result: Wolf
+              - min: 200
+                max: 200
+                result: Wyvern
+              - min: 201
+                max: 201
+                result: Alpha
+              - min: 202
+                max: 202
+                result: Antique
+              - min: 203
+                max: 203
+                result: Arc
+              - min: 204
+                max: 204
+                result: Aurora
+              - min: 205
+                max: 205
+                result: Banjo
+              - min: 206
+                max: 206
+                result: Banshee
+              - min: 207
+                max: 207
+                result: Beast
+              - min: 208
+                max: 208
+                result: Behemoth
+              - min: 209
+                max: 209
+                result: Biscuit
+              - min: 210
+                max: 210
+                result: Blaze
+              - min: 211
+                max: 211
+                result: Bookworm
+              - min: 212
+                max: 212
+                result: Boxer
+              - min: 213
+                max: 213
+                result: Bulldog
+              - min: 214
+                max: 214
+                result: Butcher
+              - min: 215
+                max: 215
+                result: Carbine
+              - min: 216
+                max: 216
+                result: Casper
+              - min: 217
+                max: 217
+                result: Champ
+              - min: 218
+                max: 218
+                result: Chimp
+              - min: 219
+                max: 219
+                result: Chuck Norris
+              - min: 220
+                max: 220
+                result: Cloud
+              - min: 221
+                max: 221
+                result: Cobra
+              - min: 222
+                max: 222
+                result: Copper
+              - min: 223
+                max: 223
+                result: Coyote
+              - min: 224
+                max: 224
+                result: Cricket
+              - min: 225
+                max: 225
+                result: Daredevil
+              - min: 226
+                max: 226
+                result: Darling
+              - min: 227
+                max: 227
+                result: Delight
+              - min: 228
+                max: 228
+                result: Digger
+              - min: 229
+                max: 229
+                result: Dizzy
+              - min: 230
+                max: 230
+                result: Dodger
+              - min: 231
+                max: 231
+                result: Dragonfly
+              - min: 232
+                max: 232
+                result: Drift
+              - min: 233
+                max: 233
+                result: Duster
+              - min: 234
+                max: 234
+                result: Eagle
+              - min: 235
+                max: 235
+                result: Echelon
+              - min: 236
+                max: 236
+                result: Enigma
+              - min: 237
+                max: 237
+                result: Feather
+              - min: 238
+                max: 238
+                result: Firefly
+              - min: 239
+                max: 239
+                result: Flash
+              - min: 240
+                max: 240
+                result: Fluke
+              - min: 241
+                max: 241
+                result: Fly
+              - min: 242
+                max: 242
+                result: Frostbite
+              - min: 243
+                max: 243
+                result: Gambit
+              - min: 244
+                max: 244
+                result: Gator
+              - min: 245
+                max: 245
+                result: Giggles
+              - min: 246
+                max: 246
+                result: Grandpa
+              - min: 247
+                max: 247
+                result: Grizzle
+              - min: 248
+                max: 248
+                result: Hammer
+              - min: 249
+                max: 249
+                result: Hercules
+              - min: 250
+                max: 250
+                result: Hound
+              - min: 251
+                max: 251
+                result: Humility
+              - min: 252
+                max: 252
+                result: Joker
+              - min: 253
+                max: 253
+                result: Justice
+              - min: 254
+                max: 254
+                result: Lancer
+              - min: 255
+                max: 255
+                result: Liberty
+              - min: 256
+                max: 256
+                result: Lizard
+              - min: 257
+                max: 257
+                result: Lucky
+              - min: 258
+                max: 258
+                result: Magnet
+              - min: 259
+                max: 259
+                result: Merlin
+              - min: 260
+                max: 260
+                result: Mustang
+              - min: 261
+                max: 261
+                result: Nightlight
+              - min: 262
+                max: 262
+                result: Orbiter
+              - min: 263
+                max: 263
+                result: Pan
+              - min: 264
+                max: 264
+                result: Patriot
+              - min: 265
+                max: 265
+                result: Pitch
+              - min: 266
+                max: 266
+                result: Prime
+              - min: 267
+                max: 267
+                result: Prodigy
+              - min: 268
+                max: 268
+                result: Quicksand
+              - min: 269
+                max: 269
+                result: Radar
+              - min: 270
+                max: 270
+                result: Roach
+              - min: 271
+                max: 271
+                result: Rocketman
+              - min: 272
+                max: 272
+                result: Sandman
+              - min: 273
+                max: 273
+                result: Scratch
+              - min: 274
+                max: 274
+                result: Serpent
+              - min: 275
+                max: 275
+                result: Sharktooth
+              - min: 276
+                max: 276
+                result: Snapdragon
+              - min: 277
+                max: 277
+                result: Sonic
+              - min: 278
+                max: 278
+                result: Specter
+              - min: 279
+                max: 279
+                result: Stallion
+              - min: 280
+                max: 280
+                result: Stitch
+              - min: 281
+                max: 281
+                result: Stranger
+              - min: 282
+                max: 282
+                result: Sunburn
+              - min: 283
+                max: 283
+                result: Supernova
+              - min: 284
+                max: 284
+                result: Surgeon
+              - min: 285
+                max: 285
+                result: Talon
+              - min: 286
+                max: 286
+                result: Teach
+              - min: 287
+                max: 287
+                result: Thunderball
+              - min: 288
+                max: 288
+                result: Tinkerbell
+              - min: 289
+                max: 289
+                result: Torch
+              - min: 290
+                max: 290
+                result: Tsunami
+              - min: 291
+                max: 291
+                result: Twilight
+              - min: 292
+                max: 292
+                result: Viking
+              - min: 293
+                max: 293
+                result: Volcano
+              - min: 294
+                max: 294
+                result: Wasp
+              - min: 295
+                max: 295
+                result: Whirlwind
+              - min: 296
+                max: 296
+                result: Widow
+              - min: 297
+                max: 297
+                result: Windigo
+              - min: 298
+                max: 298
+                result: Witch
+              - min: 299
+                max: 299
+                result: Wolverine
+              - min: 300
+                max: 300
+                result: Zion
+
       plot_knowledge:
+        source: *Source
         name: Plot Knowledge
         contents:
           type:
-            _insert: starforged/oracles/characters/plot_knowledge/type
+            source: *Source
             name: Plot Knowledge Type
             dice: 1d100
             table:
@@ -5206,7 +5230,7 @@ oracles:
                 max: 100
                 result: The truth is the exact opposite of what the PCs thought about
           topic:
-            _insert: starforged/oracles/characters/plot_knowledge/topic
+            source: *Source
             name: Plot Knowledge Topic
             dice: 1d100
             table:

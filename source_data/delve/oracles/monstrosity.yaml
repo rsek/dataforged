@@ -72,73 +72,84 @@ oracles:
           Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!
         # usage:
         #   initial: true
-        _i18n:
-          result:
-            part_of_speech: adjunct_common_noun
         source:
           <<: *Source
           page: 214
         table:
-          - min: 1
+          - <<: &i18n.adjunct_common_noun
+              i18n:
+                result:
+                  part_of_speech: adjunct_common_noun
+            min: 1
             max: 15
             result: Beast / mammal
-          - min: 16
+          - <<: *i18n.adjunct_common_noun
+            min: 16
             max: 25
             result: Humanoid
-          - min: 26
+          - <<: *i18n.adjunct_common_noun
+            min: 26
             max: 31
             result: Bird
-          - min: 32
+          - <<: *i18n.adjunct_common_noun
+            min: 32
             max: 37
             result: Spider
-          - min: 38
+          - <<: *i18n.adjunct_common_noun
+            min: 38
             max: 43
             result: Snake
-          - min: 44
+          - <<: *i18n.adjunct_common_noun
+            min: 44
             max: 49
             result: Worm / slug
-          - min: 50
+          - <<: *i18n.adjunct_common_noun
+            min: 50
             max: 55
             result: Lizard
-          - min: 56
+          - <<: *i18n.adjunct_common_noun
+            min: 56
             max: 61
             result: Insect
-          - min: 62
+          - <<: &i18n.adjective
+              i18n:
+                result:
+                  part_of_speech: adjective
+            min: 62
             max: 66
             result: Amorphous
-            i18n:
-              result:
-                part_of_speech: adjective
-          - min: 67
+          - <<: *i18n.adjunct_common_noun
+            min: 67
             max: 69
             result: Crustacean
-          - min: 70
+          - <<: *i18n.adjunct_common_noun
+            min: 70
             max: 71
             result: Fish
-          - min: 72
+          - <<: *i18n.adjunct_common_noun
+            min: 72
             max: 73
             result: Octopoid
-          - min: 74
+          - <<: *i18n.adjunct_common_noun
+            min: 74
             max: 75
             result: Amphibian
-          - min: 76
+          - <<: *i18n.adjunct_common_noun
+            min: 76
             max: 77
             result: Plant
-          - min: 78
+          - <<: *i18n.adjective
+            min: 78
             max: 78
             result: Incorporeal
-            i18n:
-              result:
-                part_of_speech: adjective
-          - min: 79
+          - <<: *i18n.adjunct_common_noun
+            min: 79
             max: 79
             result: Mineral
-          - min: 80
+          - <<: *i18n.adjective
+            min: 80
             max: 80
             result: Elemental
-            i18n:
-              result:
-                part_of_speech: adjective
           - min: 81
             max: 100
             result: Hybrid (roll twice)

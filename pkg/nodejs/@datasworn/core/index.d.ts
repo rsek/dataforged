@@ -6,7 +6,6 @@
  */
 
 export type NamespaceID = string;
-export type PageNumber = number;
 export type OracleCollectionID = string;
 /**
  * A localized plain text name or label.
@@ -147,6 +146,7 @@ export type PartOfSpeech =
   | "gerund"
   | "adjective"
   | "attributive_verb";
+export type PageNumber = number;
 /**
  * Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table.
  */
@@ -502,13 +502,13 @@ export type TruthOptionID = string;
  */
 export interface Datasworn {
   id: NamespaceID;
-  source: Source;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
    */
   oracles?: {
     [k: string]: OracleCollection;
   };
+  source: Source;
   /**
    * A dictionary object containing asset types, which contain assets.
    */
@@ -565,49 +565,6 @@ export interface Datasworn {
   };
 }
 /**
- * Metadata describing the original source of this item
- */
-export interface Source {
-  /**
-   * The title of the source document.
-   */
-  title: string;
-  /**
-   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
-   */
-  date: string;
-  page?: PageNumber;
-  /**
-   * @minItems 1
-   */
-  authors: [
-    {
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    },
-    ...{
-      name: string;
-      /**
-       * An optional email contact for the author
-       */
-      email?: string;
-    }[]
-  ];
-  /**
-   * An absolute URL pointing to the location where this element's license can be found.
-   *
-   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
-   */
-  license: string | null;
-  /**
-   * An absolute URL where the source document is available.
-   */
-  url: string;
-}
-/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
@@ -626,8 +583,8 @@ export interface OracleCollection {
   collections?: {
     [k: string]: OracleCollection;
   };
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   enhances?: OracleCollectionID1;
   replaces?: OracleCollectionID2;
   sample_names?: Label[];
@@ -662,10 +619,10 @@ export interface OracleTable {
   rendering?: OracleTableRendering;
   summary?: MarkdownString1;
   description?: MarkdownString2;
-  source: Source;
   match?: MatchBehavior;
   suggestions?: Suggestions;
   table: OracleTableRow[];
+  source: Source;
   replaces?: OracleTableID2;
 }
 export interface OracleTableRendering {
@@ -748,6 +705,49 @@ export interface I18NHint {
   part_of_speech?: PartOfSpeech;
 }
 /**
+ * Metadata describing the original source of this item
+ */
+export interface Source {
+  /**
+   * The title of the source document.
+   */
+  title: string;
+  /**
+   * The date of the source documents's last update, formatted YYYY-MM-DD. Required because it's used to determine whether the data needs updating.
+   */
+  date: string;
+  page?: PageNumber;
+  /**
+   * @minItems 1
+   */
+  authors: [
+    {
+      name: string;
+      /**
+       * An optional email contact for the author
+       */
+      email?: string;
+    },
+    ...{
+      name: string;
+      /**
+       * An optional email contact for the author
+       */
+      email?: string;
+    }[]
+  ];
+  /**
+   * An absolute URL pointing to the location where this element's license can be found.
+   *
+   * A `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.
+   */
+  license: string | null;
+  /**
+   * An absolute URL where the source document is available.
+   */
+  url: string;
+}
+/**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
@@ -761,8 +761,8 @@ export interface AssetType {
   contents?: {
     [k: string]: Asset;
   };
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   enhances?: AssetTypeID1;
 }
 /**
@@ -802,8 +802,8 @@ export interface Asset {
     [k: string]: AssetControlField;
   };
   condition_meter?: AssetConditionMeter1;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
 }
 /**
  * Select a standard player stat.
@@ -1061,12 +1061,12 @@ export interface MoveActionRoll {
   trigger: TriggerActionRoll;
   text: MarkdownString9;
   outcomes: MoveOutcomes;
-  source: Source;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
+  source: Source;
   replaces?: MoveID1;
 }
 export interface TriggerActionRoll {
@@ -1114,12 +1114,12 @@ export interface MoveNoRoll {
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
   text: MarkdownString12;
-  source: Source;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
+  source: Source;
   replaces?: MoveID2;
 }
 export interface TriggerNoRoll {
@@ -1145,12 +1145,12 @@ export interface ProgressMove {
   trigger: TriggerProgressRoll;
   text: MarkdownString15;
   outcomes: MoveOutcomes;
-  source: Source;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
+  source: Source;
   replaces?: MoveID3;
 }
 export interface TriggerProgressRoll {
@@ -1177,12 +1177,12 @@ export interface ProgressMoveSpecialTrackRoll {
   trigger: TriggerSpecialTrack;
   text: MarkdownString18;
   outcomes: MoveOutcomes;
-  source: Source;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
   oracles?: OracleTableID[];
   suggestions?: Suggestions;
+  source: Source;
   replaces?: MoveID4;
 }
 export interface TriggerSpecialTrack {
@@ -1299,8 +1299,8 @@ export interface Atlas {
   collections?: {
     [k: string]: Atlas;
   };
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   enhances?: AtlasID1;
 }
 /**
@@ -1317,8 +1317,8 @@ export interface AtlasEntry {
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   your_truth?: MarkdownString;
 }
 /**
@@ -1334,8 +1334,8 @@ export interface DelveSite {
   icon?: SVGImageURL;
   rank: ChallengeRank;
   description: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   denizens: DelveSiteDenizen[] &
     [
       {
@@ -1429,8 +1429,8 @@ export interface MoveCategory {
   contents?: {
     [k: string]: Move;
   };
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   enhances?: MoveCategoryID1;
 }
 /**
@@ -1447,8 +1447,8 @@ export interface NpcCollection {
   contents?: {
     [k: string]: Npc;
   };
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   enhances?: NpcCollectionID1;
 }
 /**
@@ -1472,8 +1472,8 @@ export interface Npc {
   };
   description: MarkdownString;
   quest_starter: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   your_truth?: MarkdownString;
 }
 /**
@@ -1500,8 +1500,8 @@ export interface Rarity {
   canonical_name?: Label;
   icon?: SVGImageURL;
   description: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   asset: AssetID1;
   /**
    * From Ironsworn: Delve, p. 174:
@@ -1610,8 +1610,8 @@ export interface DelveSiteDomain {
       }
     ];
   description?: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
   name_oracle?: OracleTableID3;
 }
 export interface DelveSiteDomainFeatureRow {
@@ -1728,8 +1728,8 @@ export interface DelveSiteTheme {
       }
     ];
   description?: MarkdownString;
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
 }
 export interface DelveSiteThemeFeatureRow {
   id: ThemeFeatureRowID;
@@ -1771,8 +1771,8 @@ export interface Truth {
   canonical_name?: Label;
   icon?: SVGImageURL;
   options: TruthOption[];
-  source: Source;
   suggestions?: Suggestions;
+  source: Source;
 }
 export interface TruthOption {
   id: TruthOptionID;

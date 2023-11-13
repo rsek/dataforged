@@ -66,17 +66,16 @@ const dataSwornKeyOrder = [
 	'date',
 	'page',
 	'authors',
-	'source',
 	'license',
 	'url',
 	'embed_table',
 	'match',
 	// relationships
 	'oracles',
-	'',
 	'suggestions',
 	// very long content
 	'table',
+	'source',
 	'i18n'
 ]
 

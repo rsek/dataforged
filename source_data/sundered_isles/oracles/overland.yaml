@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 oracles:
   overland:
+    source: *Source
     name: Overland Adventures
     contents:
       regions:
+        source: *Source
         name: Overland Regions
         rendering:
           table_style: standalone_table
@@ -66,6 +68,7 @@ oracles:
             result: '[Woodland]'
             summary: &woodland.summary Forested lands
       details:
+        source: *Source
         name: Overland Details
         table:
           - min: 1
@@ -369,6 +372,7 @@ oracles:
             max: 100
             result: This area is adorned with colorful banners
       cursed_details:
+        source: *Source
         name: Cursed Overland Details
         table:
           - min: 1
@@ -672,6 +676,7 @@ oracles:
             max: 100
             result: That’s the third time today you’ve passed that tree—you’re sure of it
       peril:
+        source: *Source
         name: Overland Perils
         table:
           - min: 1
@@ -774,9 +779,10 @@ oracles:
             max: 99
             result: '[Action] + [Theme]'
           - min: 100
-            high:
+            max: 100
             result: Roll twice
       opportunity:
+        source: *Source
         name: Overland Opportunities
         table:
           - min: 1
@@ -856,6 +862,7 @@ oracles:
             result: Vantage point reveals the lay of the land
     collections:
       waypoints:
+        source: *Source
         name: Waypoints
         rendering:
           table_style: multi_table
@@ -875,6 +882,7 @@ oracles:
               label: Result
         contents:
           myriads:
+            source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
@@ -905,6 +913,7 @@ oracles:
                 max: 100
                 result: &result7 Roll twice
           margins:
+            source: *Source
             name: Margins
             summary: Outer Seas
             rendering:
@@ -935,6 +944,7 @@ oracles:
                 max: 100
                 result: *result7
           reaches:
+            source: *Source
             name: Reaches
             summary: Remote Seas
             rendering:
@@ -965,9 +975,11 @@ oracles:
                 max: 100
                 result: *result7
       regional_landmarks:
+        source: *Source
         name: Regional Landmarks
         contents:
           highlands:
+            source: *Source
             name: Highlands
             summary: *highlands.summary
             table:
@@ -1032,6 +1044,7 @@ oracles:
                 max: 100
                 result: Winding footpath
           jungle:
+            source: *Source
             name: Jungle
             summary: *jungle.summary
             table:
@@ -1097,6 +1110,7 @@ oracles:
                 result: Wide, slow-moving river
 
           lava_field:
+            source: *Source
             name: Lava Field
             summary: *lava_field.summary
             table:
@@ -1162,6 +1176,7 @@ oracles:
                 result: Vents spewing steam and volcanic gases
 
           marsh:
+            source: *Source
             name: Marsh
             summary: *marsh.summary
             table:
@@ -1227,6 +1242,7 @@ oracles:
                 result: Witchlights dance above dark pools
 
           river:
+            source: *Source
             name: River
             summary: *river.summary
             table:
@@ -1292,6 +1308,7 @@ oracles:
                 result: Wrecked ship or boat
 
           scrub:
+            source: *Source
             name: Scrub
             summary: *scrub.summary
             table:
@@ -1357,6 +1374,7 @@ oracles:
                 result: Weathered burial mounds
 
           shore:
+            source: *Source
             name: Shore
             summary: *shore.summary
             table:
@@ -1422,6 +1440,7 @@ oracles:
                 result: Wide, saltwater channel
 
           swamp:
+            source: *Source
             name: Swamp
             summary: *swamp.summary
             table:
@@ -1487,6 +1506,7 @@ oracles:
                 result: Wrecked ship or boat
 
           wastes:
+            source: *Source
             name: Wastes
             summary: *wastes.summary
             table:
@@ -1552,6 +1572,7 @@ oracles:
                 result: Animal tracks in the sand
 
           woodland:
+            source: *Source
             name: Woodland
             summary: *woodland.summary
             table:

@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 oracles:
   factions:
+    source: *Source
     name: Factions
     contents:
       relationships:
+        source: *Source
         name: Faction Relationships
         table:
           - min: 1
@@ -45,22 +47,24 @@ oracles:
             result: Trades resources or favors with
     collections:
       inspiration:
+        source: *Source
         name: Faction Inspiration
         contents:
           nations_and_cultures:
+            source: *Source
             name: Nations and Cultures
             rendering:
               table_style: standalone_table
               columns:
                 roll:
                   label: Roll
-                  contents: range
+                  content_type: roll
                 name:
                   label: Name
-                  contents: result
+                  content_type: result
                 detail:
                   label: Detail
-                  contents: summary
+                  content_type: summary
             table:
               - min: 1
                 max: 10
@@ -103,19 +107,20 @@ oracles:
                 result: Uktanu
                 summary: Reclusive people who trace their lineage to the first inhabitants of the isles; they are sworn to protect the sacred sites and relics of their ancient forebears
           organizations_and_identities:
+            source: *Source
             name: Organizations and Identities
             rendering:
               table_style: standalone_table
               columns:
                 roll:
                   label: Roll
-                  contents: range
+                  content_type: roll
                 name:
                   label: Name
-                  contents: result
+                  content_type: result
                 detail:
                   label: Detail
-                  contents: summary
+                  content_type: summary
             table:
               - min: 1
                 max: 10
@@ -158,19 +163,20 @@ oracles:
                 result: Wayfarers
                 summary: Independent merchants who range across the isles and beyond, transporting rare and unusual cargo aboard their vibrantly painted ships
           empires:
+            source: *Source
             name: Empires
             rendering:
               table_style: standalone_table
               columns:
                 roll:
                   label: Roll
-                  contents: range
+                  content_type: roll
                 name:
                   label: Name
-                  contents: result
+                  content_type: result
                 detail:
                   label: Detail
-                  contents: summary
+                  content_type: summary
             table:
               - min: 1
                 max: 10
@@ -213,19 +219,20 @@ oracles:
                 result: Sovereign States
                 summary: Industrialist power formed from the remnants of warring nations; governed by an oligarchical council whose members scheme to serve their own interests
           the_cursed:
+            source: *Source
             name: The Cursed
             rendering:
               table_style: standalone_table
               columns:
                 roll:
                   label: Roll
-                  contents: range
+                  content_type: roll
                 name:
                   label: Name
-                  contents: result
+                  content_type: result
                 detail:
                   label: Detail
-                  contents: summary
+                  content_type: summary
             table:
               - min: 1
                 max: 10

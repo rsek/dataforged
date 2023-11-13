@@ -8,6 +8,7 @@ source: &Source
   date: 2023-09-11
 oracles:
   islands:
+    source: *Source
     name: Islands
     contents:
       coastline_aspects:
@@ -95,6 +96,7 @@ oracles:
             max: 100
             result: Towering cliffs rise directly from the sea
       offshore_observations:
+        source: *Source
         name: Offshore Observations
         table:
           - min: 1
@@ -227,6 +229,7 @@ oracles:
             max: 100
             result: '[Descriptor](id:sundered_isles/oracles/core/descriptor) + [Focus](id:sundered_isles/oracles/core/focus)'
       cursed_offshore_observations:
+        source: *Source
         name: Cursed Offshore Observations
         table:
           - min: 1
@@ -351,9 +354,11 @@ oracles:
             result: '[Cursed Weather]'
     collections:
       landscape:
+        source: *Source
         name: Island Landscape
         contents:
           size:
+            source: *Source
             name: Size
             rendering:
               table_style: standalone_table
@@ -385,6 +390,7 @@ oracles:
                 result: Vast
                 summary: Weeks
           terrain:
+            source: *Source
             name: Terrain
             rendering:
               columns:
@@ -432,6 +438,7 @@ oracles:
                 summary: Active volcanoes and lava fields
         collections:
           vitality:
+            source: *Source
             name: Vitality
             rendering:
               table_style: multi_table
@@ -455,6 +462,7 @@ oracles:
                   label: Detail
             contents:
               myriads:
+                source: *Source
                 name: Myriads
                 summary: Central Seas
                 rendering:
@@ -485,6 +493,7 @@ oracles:
                     result: &result5 Primeval
                     summary: &summary5 Ancient jungles or impenetrable swamps
               margins:
+                source: *Source
                 name: Margins
                 summary: Outer Seas
                 rendering:
@@ -515,6 +524,7 @@ oracles:
                     result: *result5
                     summary: *summary5
               reaches:
+                source: *Source
                 name: Reaches
                 summary: Remote Seas
                 rendering:
@@ -545,6 +555,7 @@ oracles:
                     result: *result5
                     summary: *summary5
       visible_habitation:
+        source: *Source
         name: Visible Habitation
         rendering:
           table_style: multi_table
@@ -564,6 +575,7 @@ oracles:
               label: Result
         contents:
           myriads:
+            source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
@@ -588,6 +600,7 @@ oracles:
                 max: 100
                 result: &result5 Mutliple visible communities or extensive cultivation
           margins:
+            source: *Source
             name: Margins
             summary: Outer Seas
             rendering:
@@ -612,6 +625,7 @@ oracles:
                 max: 100
                 result: *result5
           reaches:
+            source: *Source
             name: Reaches
             summary: Remote Seas
             rendering:

@@ -22,9 +22,6 @@ oracles:
       trap:
         name: Event
         canonical_name: 'Trap: Event'
-        _i18n:
-          result:
-            part_of_speech: verb
         suggestions:
           oracles:
             - delve/oracles/trap/component
@@ -32,87 +29,112 @@ oracles:
           <<: *Source
           page: 217
         table:
-          - min: 1
+          - <<: &i18n.verb
+              i18n:
+                result:
+                  part_of_speech: verb
+            min: 1
             max: 4
             result: Block
-          - min: 5
+          - <<: *i18n.verb
+            min: 5
             max: 8
             result: Create
-          - min: 9
+          - <<: *i18n.verb
+            min: 9
             max: 12
             result: Break
-          - min: 13
+          - <<: *i18n.verb
+            min: 13
             max: 16
             result: Puncture
-          - min: 17
+          - <<: *i18n.verb
+            min: 17
             max: 20
             result: Entangle
-          - min: 21
+          - <<: *i18n.verb
+            min: 21
             max: 24
             result: Enclose
-          - min: 25
+          - <<: *i18n.verb
+            min: 25
             max: 28
             result: Ambush
-          - min: 29
+          - <<: *i18n.verb
+            min: 29
             max: 32
             result: Snare
-          - min: 33
+          - <<: *i18n.verb
+            min: 33
             max: 36
             result: Change
-          - min: 37
+          - <<: *i18n.verb
+            min: 37
             max: 40
             result: Imitate
-          - min: 41
+          - <<: *i18n.verb
+            min: 41
             max: 44
             result: Crush
-          - min: 45
+          - <<: *i18n.verb
+            min: 45
             max: 48
             result: Drop
-          - min: 49
+          - <<: *i18n.verb
+            min: 49
             max: 52
             result: Conceal
-          - min: 53
+          - <<: *i18n.verb
+            min: 53
             max: 56
             result: Lure
-          - min: 57
+          - <<: *i18n.verb
+            min: 57
             max: 60
             result: Release
-          - min: 61
+          - <<: *i18n.verb
+            min: 61
             max: 64
             result: Obscure
-          - min: 65
+          - <<: *i18n.verb
+            min: 65
             max: 68
             result: Cut
-          - min: 69
+          - <<: *i18n.verb
+            min: 69
             max: 72
             result: Smother
-          - min: 73
+          - <<: *i18n.verb
+            min: 73
             max: 76
             result: Collapse
-          - min: 77
+          - <<: *i18n.verb
+            min: 77
             max: 80
             result: Summon
-          - min: 81
+          - <<: *i18n.verb
+            min: 81
             max: 84
             result: Move
-          - min: 85
+          - <<: *i18n.verb
+            min: 85
             max: 88
             result: Surprise
-          - min: 89
+          - <<: *i18n.verb
+            min: 89
             max: 92
             result: Divert
-          - min: 93
+          - <<: *i18n.verb
+            min: 93
             max: 96
             result: Attack
-          - min: 97
+          - <<: *i18n.verb
+            min: 97
             max: 100
             result: Trigger
       component:
         name: Component
         canonical_name: 'Trap: Component'
-        _i18n:
-          result:
-            part_of_speech: common_noun
         suggestions:
           oracles:
             - delve/oracles/trap/event
@@ -120,78 +142,106 @@ oracles:
           <<: *Source
           page: 217
         table:
-          - min: 1
+          - <<: &i18n.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 4
             result: Pit
-          - min: 5
+          - <<: *i18n.common_noun
+            min: 5
             max: 8
             result: Water
-          - min: 9
+          - <<: *i18n.common_noun
+            min: 9
             max: 12
             result: Fire
-          - min: 13
+          - <<: *i18n.common_noun
+            min: 13
             max: 16
             result: Projectile
-          - min: 17
+          - <<: *i18n.common_noun
+            min: 17
             max: 20
             result: Passage
-          - min: 21
+          - <<: *i18n.common_noun
+            min: 21
             max: 24
             result: Fall
-          - min: 25
+          - <<: *i18n.common_noun
+            min: 25
             max: 28
             result: Debris
-          - min: 29
+          - <<: *i18n.common_noun
+            min: 29
             max: 32
             result: Fear
-          - min: 33
+          - <<: *i18n.common_noun
+            min: 33
             max: 36
             result: Alarm
-          - min: 37
+          - <<: *i18n.common_noun
+            min: 37
             max: 40
             result: Trigger
-          - min: 41
+          - <<: *i18n.common_noun
+            min: 41
             max: 44
             result: Cold
-          - min: 45
+          - <<: *i18n.common_noun
+            min: 45
             max: 48
             result: Weapon
-          - min: 49
+          - <<: *i18n.common_noun
+            min: 49
             max: 52
             result: Darkness
-          - min: 53
+          - <<: *i18n.common_noun
+            min: 53
             max: 56
             result: Decay
-          - min: 57
+          - <<: *i18n.common_noun
+            min: 57
             max: 60
             result: Path
-          - min: 61
+          - <<: *i18n.common_noun
+            min: 61
             max: 64
             result: Stone
-          - min: 65
+          - <<: *i18n.common_noun
+            min: 65
             max: 68
             result: Terrain
-          - min: 69
+          - <<: *i18n.common_noun
+            min: 69
             max: 72
             result: Poison
-          - min: 73
+          - <<: *i18n.common_noun
+            min: 73
             max: 76
             result: Barrier
-          - min: 77
+          - <<: *i18n.common_noun
+            min: 77
             max: 80
             result: Overhead
-          - min: 81
+          - <<: *i18n.common_noun
+            min: 81
             max: 84
             result: Magic
-          - min: 85
+          - <<: *i18n.common_noun
+            min: 85
             max: 88
             result: Toxin
-          - min: 89
+          - <<: *i18n.common_noun
+            min: 89
             max: 92
             result: Earth
-          - min: 93
+          - <<: *i18n.common_noun
+            min: 93
             max: 96
             result: Light
-          - min: 97
+          - <<: *i18n.common_noun
+            min: 97
             max: 100
             result: Denizen

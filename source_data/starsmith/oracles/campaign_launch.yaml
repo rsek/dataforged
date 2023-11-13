@@ -7,12 +7,12 @@ source: &Source
   license: https://creativecommons.org/licenses/by/4.0/
   url: https://playeveryrole.com/
 oracles:
-  character_creation:
+  campaign_launch:
     name: Character Creation
     contents:
       backstory_prompt:
         name: ''
-        _replace: starforged/oracles/character_creation/backstory_prompt
+        replaces: starforged/oracles/campaign_launch/backstory_prompt
         dice: 1d300
         table:
           - min: 1
@@ -151,7 +151,8 @@ oracles:
             max: 300
             result: Your unique genetic markers make you a target for illegal research
       starship_history:
-        _replace: starforged/oracles/character_creation/starship_history
+        name: Starship History
+        replaces: starforged/oracles/campaign_launch/starship_history
         dice: 1d300
         table:
           - min: 1
@@ -263,7 +264,8 @@ oracles:
             max: 300
             result: Won as a corporate prize
       starship_quirk:
-        _replace: starforged/oracles/character_creation/starship_quirk
+        name: Starship Quirks
+        replaces: starforged/oracles/campaign_launch/starship_quirk
         dice: 1d300
         table:
           - min: 1
@@ -447,7 +449,7 @@ oracles:
             max: 300
             result: Water recycler leaves the water with an unpleasant color
       sector_trouble:
-        _replace: starforged/oracles/character_creation/sector_trouble
+        replaces: starforged/oracles/campaign_launch/sector_trouble
         dice: 1d300
         table:
           - min: 1
@@ -631,7 +633,7 @@ oracles:
             max: 300
             result: Violation of a peace treaty sets off new tensions
       inciting_incident:
-        _replace: starforged/oracles/character_creation/inciting_incident
+        replaces: starforged/oracles/campaign_launch/inciting_incident
         dice: 1d300
         table:
           - min: 1

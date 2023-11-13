@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 oracles:
   weather:
+    source: *Source
     name: Weather
     collections:
       conditions:
+        source: *Source
         name: Weather Conditions
         rendering:
           table_style: multi_table
@@ -30,6 +32,7 @@ oracles:
               label: Result
         contents:
           myriads:
+            source: *Source
             name: Myriads
             summary: Central Seas
             rendering:
@@ -42,6 +45,7 @@ oracles:
                 max: 100
                 result: &result1 '[Foul Weather](id:sundered_isles/oracles/weather/foul)'
           margins:
+            source: *Source
             name: Margins
             summary: Outer Seas
             rendering:
@@ -54,6 +58,7 @@ oracles:
                 max: 100
                 result: *result1
           reaches:
+            source: *Source
             name: Reaches
             summary: Remote Seas
             rendering:
@@ -67,6 +72,7 @@ oracles:
                 result: *result1
     contents:
       foul:
+        source: *Source
         name: Foul Weather
         table:
           - min: 1
@@ -98,6 +104,7 @@ oracles:
             result: Raging
             summary: Destructive winds, torrential rain, and monstrous waves
       duration:
+        source: *Source
         name: Duration of Foul or Cursed Weather
         dice: 1d10
         table:
@@ -111,6 +118,7 @@ oracles:
             max: 10
             result: Relentless (more than a day)
       cursed:
+        source: *Source
         name: Cursed Weather
         table:
           - min: 1

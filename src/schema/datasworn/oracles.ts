@@ -280,6 +280,7 @@ export const OracleCollection = Abstract.RecursiveCollection(
 		rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
 		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
 		sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
+
 		// templates: Type.Optional(Type.Array(OracleRollTemplate))
 	},
 	{ title: 'Oracle collection' }

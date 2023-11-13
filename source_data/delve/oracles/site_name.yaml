@@ -39,7 +39,7 @@ oracles:
         table:
           - min: 1
             max: 25
-            result: '[Description] [Place]'
+            result: '[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place)'
             template:
               result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}'
             rolls:
@@ -47,7 +47,7 @@ oracles:
               - oracle: delve/oracles/site_name/place
           - min: 26
             max: 50
-            result: '[Place] of [Detail]'
+            result: '[Place](id:delve/oracles/site_name/place) of [Detail](id:delve/oracles/site_name/detail)'
             template:
               result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}'
             rolls:
@@ -55,7 +55,7 @@ oracles:
               - oracle: delve/oracles/site_name/detail
           - min: 51
             max: 70
-            result: '[Place] of [Description] [Detail]'
+            result: '[Place](id:delve/oracles/site_name/place) of [Description](id:delve/oracles/site_name/description) [Detail](id:delve/oracles/site_name/detail)'
             template:
               result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}'
             rolls:
@@ -64,7 +64,7 @@ oracles:
               - oracle: delve/oracles/site_name/detail
           - min: 71
             max: 80
-            result: "[Place] of [Namesake's] [Detail]"
+            result: "[Place](id:delve/oracles/site_name/place) of [Namesake's](id:delve/oracles/site_name/namesake) [Detail](id:delve/oracles/site_name/detail)"
             template:
               result: "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
             rolls:
@@ -73,7 +73,7 @@ oracles:
               - oracle: delve/oracles/site_name/detail
           - min: 81
             max: 85
-            result: "[Namesake's] [Place]"
+            result: "[Namesake's](id:delve/oracles/site_name/namesake) [Place](id:delve/oracles/site_name/place)"
             template:
               result: "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
             rolls:
@@ -81,7 +81,7 @@ oracles:
               - oracle: delve/oracles/site_name/place
           - min: 86
             max: 95
-            result: '[Description] [Place] of [Namesake]'
+            result: '[Description](id:delve/oracles/site_name/description) [Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)'
             template:
               result: '{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'
             rolls:
@@ -90,7 +90,7 @@ oracles:
               - oracle: delve/oracles/site_name/namesake
           - min: 96
             max: 100
-            result: '[Place] of [Namesake]'
+            result: '[Place](id:delve/oracles/site_name/place) of [Namesake](id:delve/oracles/site_name/namesake)'
             template:
               result: '{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'
             rolls:
@@ -99,327 +99,424 @@ oracles:
       description:
         canonical_name: 'Site Name: Description'
         name: Description
-        _i18n:
-          result:
-            part_of_speech: adjective
         source:
           <<: *Source
           page: 207
         table:
-          - min: 1
+          - <<: &i18n.adjective
+              i18n:
+                result:
+                  part_of_speech: adjective
+            min: 1
             max: 2
             result: Deep
-          - min: 3
+          - <<: *i18n.adjective
+            min: 3
             max: 4
             result: Tainted
-          - min: 5
+          - <<: *i18n.adjective
+            min: 5
             max: 6
             result: Grey
-          - min: 7
+          - <<: *i18n.adjective
+            min: 7
             max: 8
             result: Forgotten
-          - min: 9
+          - <<: *i18n.adjective
+            min: 9
             max: 10
             result: Flooded
-          - min: 11
+          - <<: *i18n.adjective
+            min: 11
             max: 12
             result: Forbidden
-          - min: 13
+          - <<: *i18n.adjective
+            min: 13
             max: 14
             result: Barren
-          - min: 15
+          - <<: *i18n.adjective
+            min: 15
             max: 16
             result: Lost
-          - min: 17
+          - <<: *i18n.adjective
+            min: 17
             max: 18
             result: Cursed
-          - min: 19
+          - <<: *i18n.adjective
+            min: 19
             max: 20
             result: Fell
-          - min: 21
+          - <<: *i18n.adjective
+            min: 21
             max: 22
             result: Sunken
-          - min: 23
+          - <<: &i18n.adjunct_common_noun
+              i18n:
+                result:
+                  part_of_speech: adjunct_common_noun
+            min: 23
             max: 24
             result: Nightmare
-            i18n:
-              result:
-                part_of_speech: adjunct_common_noun
-          - min: 25
+          - <<: *i18n.adjective
+            min: 25
             max: 26
             result: Infernal
-          - min: 27
+          - <<: *i18n.adjective
+            min: 27
             max: 28
             result: Dark
-          - min: 29
+          - <<: *i18n.adjective
+            min: 29
             max: 30
             result: Bloodstained
-          - min: 31
+          - <<: *i18n.adjective
+            min: 31
             max: 32
             result: Haunted
-          - min: 33
+          - <<: *i18n.adjective
+            min: 33
             max: 34
             result: White
-          - min: 35
+          - <<: *i18n.adjective
+            min: 35
             max: 36
             result: Shrouded
-          - min: 37
+          - <<: *i18n.adjective
+            min: 37
             max: 38
             result: Wasted
-          - min: 39
+          - <<: *i18n.adjective
+            min: 39
             max: 40
             result: Grim
-          - min: 41
+          - <<: *i18n.adjective
+            min: 41
             max: 42
             result: Endless
-          - min: 43
+          - <<: *i18n.adjective
+            min: 43
             max: 44
             result: Crumbling
-          - min: 45
+          - <<: *i18n.adjective
+            min: 45
             max: 46
             result: Undying
-          - min: 47
+          - <<: *i18n.adjective
+            min: 47
             max: 48
             result: Bloodied
-          - min: 49
+          - <<: *i18n.adjective
+            min: 49
             max: 50
             result: Forsaken
-          - min: 51
+          - <<: *i18n.adjective
+            min: 51
             max: 52
             result: Silent
-          - min: 53
+          - <<: *i18n.adjective
+            min: 53
             max: 54
             result: Blighted
-          - min: 55
+          - <<: *i18n.adjunct_common_noun
+            min: 55
             max: 56
             result: Iron
-            i18n:
-              result:
-                part_of_speech: adjunct_common_noun
-          - min: 57
+          - <<: *i18n.adjective
+            min: 57
             max: 58
             result: Frozen
-          - min: 59
+          - <<: *i18n.adjective
+            min: 59
             max: 60
             result: Abyssal
-          - min: 61
+          - <<: *i18n.adjective
+            min: 61
             max: 62
             result: Crimson
-          - min: 63
+          - <<: *i18n.adjective
+            min: 63
             max: 64
             result: Silver
-          - min: 65
+          - <<: *i18n.adjective
+            min: 65
             max: 66
             result: Desecrated
-          - min: 67
+          - <<: *i18n.adjective
+            min: 67
             max: 68
             result: Ashen
-          - min: 69
+          - <<: *i18n.adjective
+            min: 69
             max: 70
             result: Elder
-          - min: 71
+          - <<: *i18n.adjective
+            min: 71
             max: 72
             result: Scorched
-          - min: 73
+          - <<: *i18n.adjective
+            min: 73
             max: 74
             result: Unknown
-          - min: 75
+          - <<: *i18n.adjective
+            min: 75
             max: 76
             result: Scarred
-          - min: 77
+          - <<: *i18n.adjective
+            min: 77
             max: 78
             result: Broken
-          - min: 79
+          - <<: *i18n.adjective
+            min: 79
             max: 80
             result: Chaotic
-          - min: 81
+          - <<: *i18n.adjective
+            min: 81
             max: 82
             result: Black
-          - min: 83
+          - <<: *i18n.adjective
+            min: 83
             max: 84
             result: Hidden
-          - min: 85
+          - <<: *i18n.adjective
+            min: 85
             max: 86
             result: Sundered
-          - min: 87
+          - <<: *i18n.adjective
+            min: 87
             max: 88
             result: Shattered
-          - min: 89
+          - <<: *i18n.adjective
+            min: 89
             max: 90
             result: Dreaded
-          - min: 91
+          - <<: *i18n.adjective
+            min: 91
             max: 92
             result: Secret
-          - min: 93
+          - <<: *i18n.adjective
+            min: 93
             max: 94
             result: High
-          - min: 95
+          - <<: *i18n.adjective
+            min: 95
             max: 96
             result: Sacred
-          - min: 97
+          - <<: *i18n.adjective
+            min: 97
             max: 98
             result: Fallen
-          - min: 99
+          - <<: *i18n.adjective
+            min: 99
             max: 100
             result: Ruined
       detail:
         canonical_name: 'Site Name: Detail'
         name: Detail
-        _i18n:
-          result:
-            part_of_speech: common_noun
         source:
           <<: *Source
           page: 208
         table:
-          - min: 1
+          - <<: &i18n.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 2
             result: Blight
-          - min: 3
+          - <<: *i18n.common_noun
+            min: 3
             max: 4
             result: Strife
-          - min: 5
+          - <<: *i18n.common_noun
+            min: 5
             max: 6
             result: Nightfall
-          - min: 7
+          - <<: *i18n.common_noun
+            min: 7
             max: 8
             result: Fury
-          - min: 9
+          - <<: *i18n.common_noun
+            min: 9
             max: 10
             result: Terror
-          - min: 11
+          - <<: *i18n.common_noun
+            min: 11
             max: 12
             result: Truth
-          - min: 13
+          - <<: *i18n.common_noun
+            min: 13
             max: 14
             result: Spring
-          - min: 15
+          - <<: *i18n.common_noun
+            min: 15
             max: 16
             result: Sanctuary
-          - min: 17
+          - <<: *i18n.common_noun
+            min: 17
             max: 18
             result: Bone
-          - min: 19
+          - <<: *i18n.common_noun
+            min: 19
             max: 20
             result: Specters
-          - min: 21
+          - <<: *i18n.common_noun
+            min: 21
             max: 22
             result: Daybreak
-          - min: 23
+          - <<: *i18n.common_noun
+            min: 23
             max: 24
             result: Doom
-          - min: 25
+          - <<: *i18n.common_noun
+            min: 25
             max: 26
             result: Treachery
-          - min: 27
+          - <<: *i18n.common_noun
+            min: 27
             max: 28
             result: Blood
-          - min: 29
+          - <<: *i18n.common_noun
+            min: 29
             max: 30
             result: War
-          - min: 31
+          - <<: *i18n.common_noun
+            min: 31
             max: 32
             result: Torment
-          - min: 33
+          - <<: *i18n.common_noun
+            min: 33
             max: 34
             result: Iron
-          - min: 35
+          - <<: *i18n.common_noun
+            min: 35
             max: 36
             result: Silence
-          - min: 37
+          - <<: *i18n.common_noun
+            min: 37
             max: 38
             result: Mist
-          - min: 39
+          - <<: *i18n.common_noun
+            min: 39
             max: 40
             result: Isolation
-          - min: 41
+          - <<: *i18n.common_noun
+            min: 41
             max: 42
             result: Runes
-          - min: 43
+          - <<: *i18n.common_noun
+            min: 43
             max: 44
             result: Rot
-          - min: 45
+          - <<: *i18n.common_noun
+            min: 45
             max: 46
             result: Corruption
-          - min: 47
+          - <<: *i18n.common_noun
+            min: 47
             max: 48
             result: Prophecy
-          - min: 49
+          - <<: *i18n.common_noun
+            min: 49
             max: 50
             result: Fate
-          - min: 51
+          - <<: *i18n.common_noun
+            min: 51
             max: 52
             result: Twilight
-          - min: 53
+          - <<: *i18n.common_noun
+            min: 53
             max: 54
             result: Power
-          - min: 55
+          - <<: *i18n.common_noun
+            min: 55
             max: 56
             result: Darkness
-          - min: 57
+          - <<: *i18n.common_noun
+            min: 57
             max: 58
             result: Gloom
-          - min: 59
+          - <<: *i18n.common_noun
+            min: 59
             max: 60
             result: Storms
-          - min: 61
+          - <<: *i18n.common_noun
+            min: 61
             max: 62
             result: Hope
-          - min: 63
+          - <<: *i18n.common_noun
+            min: 63
             max: 64
             result: Lament
-          - min: 65
+          - <<: *i18n.common_noun
+            min: 65
             max: 66
             result: Frost
-          - min: 67
+          - <<: *i18n.common_noun
+            min: 67
             max: 68
             result: Souls
-          - min: 69
+          - <<: *i18n.common_noun
+            min: 69
             max: 70
             result: Winter
-          - min: 71
+          - <<: *i18n.common_noun
+            min: 71
             max: 72
             result: Sadness
-          - min: 73
+          - <<: *i18n.common_noun
+            min: 73
             max: 74
             result: Desolation
-          - min: 75
+          - <<: *i18n.common_noun
+            min: 75
             max: 76
             result: Bane
-          - min: 77
+          - <<: *i18n.common_noun
+            min: 77
             max: 78
             result: Lies
-          - min: 79
+          - <<: *i18n.common_noun
+            min: 79
             max: 80
             result: Ash
-          - min: 81
+          - <<: *i18n.common_noun
+            min: 81
             max: 82
             result: Banishment
-          - min: 83
+          - <<: *i18n.common_noun
+            min: 83
             max: 84
             result: Shadow
-          - min: 85
+          - <<: *i18n.common_noun
+            min: 85
             max: 86
             result: Madness
-          - min: 87
+          - <<: *i18n.common_noun
+            min: 87
             max: 88
             result: Stone
-          - min: 89
+          - <<: *i18n.common_noun
+            min: 89
             max: 90
             result: Secrets
-          - min: 91
+          - <<: *i18n.common_noun
+            min: 91
             max: 92
             result: Despair
-          - min: 93
+          - <<: *i18n.common_noun
+            min: 93
             max: 94
             result: Blades
-          - min: 95
+          - <<: *i18n.common_noun
+            min: 95
             max: 96
             result: Dread
-          - min: 97
+          - <<: *i18n.common_noun
+            min: 97
             max: 98
             result: Light
-          - min: 99
+          - <<: *i18n.common_noun
+            min: 99
             max: 100
             result: Wrath
       namesake:
@@ -427,161 +524,211 @@ oracles:
         name: Namesake
         summary: |-
           You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.
-        _i18n:
-          result:
-            part_of_speech: proper_noun
         source:
           <<: *Source
           page: 209
         table:
-          - min: 1
+          - <<: &i18n.proper_noun
+              i18n:
+                result:
+                  part_of_speech: proper_noun
+            min: 1
             max: 2
             result: Breckon
-          - min: 3
+          - <<: *i18n.proper_noun
+            min: 3
             max: 4
             result: Issara
-          - min: 5
+          - <<: *i18n.proper_noun
+            min: 5
             max: 6
             result: Milenna
-          - min: 7
+          - <<: *i18n.proper_noun
+            min: 7
             max: 8
             result: Thorval
-          - min: 9
+          - <<: *i18n.proper_noun
+            min: 9
             max: 10
             result: Khulan
-          - min: 11
+          - <<: *i18n.proper_noun
+            min: 11
             max: 12
             result: Aurvang
-          - min: 13
+          - <<: *i18n.proper_noun
+            min: 13
             max: 14
             result: Kalida
-          - min: 15
+          - <<: *i18n.proper_noun
+            min: 15
             max: 16
             result: Keeara
-          - min: 17
+          - <<: *i18n.proper_noun
+            min: 17
             max: 18
             result: Andor
-          - min: 19
+          - <<: *i18n.proper_noun
+            min: 19
             max: 20
             result: Zakaria
-          - min: 21
+          - <<: *i18n.proper_noun
+            min: 21
             max: 22
             result: Willa
-          - min: 23
+          - <<: *i18n.proper_noun
+            min: 23
             max: 24
             result: Etana
-          - min: 25
+          - <<: *i18n.proper_noun
+            min: 25
             max: 26
             result: Valgard
-          - min: 27
+          - <<: *i18n.proper_noun
+            min: 27
             max: 28
             result: Kenrick
-          - min: 29
+          - <<: *i18n.proper_noun
+            min: 29
             max: 30
             result: Wyland
-          - min: 31
+          - <<: *i18n.proper_noun
+            min: 31
             max: 32
             result: Sidura
-          - min: 33
+          - <<: *i18n.proper_noun
+            min: 33
             max: 34
             result: Svala
-          - min: 35
+          - <<: *i18n.proper_noun
+            min: 35
             max: 36
             result: Kajir
-          - min: 37
+          - <<: *i18n.proper_noun
+            min: 37
             max: 38
             result: Saiven
-          - min: 39
+          - <<: *i18n.proper_noun
+            min: 39
             max: 40
             result: Callwen
-          - min: 41
+          - <<: *i18n.proper_noun
+            min: 41
             max: 42
             result: Zhan
-          - min: 43
+          - <<: *i18n.proper_noun
+            min: 43
             max: 44
             result: Solana
-          - min: 45
+          - <<: *i18n.proper_noun
+            min: 45
             max: 46
             result: Ildar
-          - min: 47
+          - <<: *i18n.proper_noun
+            min: 47
             max: 48
             result: Keelan
-          - min: 49
+          - <<: *i18n.proper_noun
+            min: 49
             max: 50
             result: Thrain
-          - min: 51
+          - <<: *i18n.proper_noun
+            min: 51
             max: 52
             result: Kynan
-          - min: 53
+          - <<: *i18n.proper_noun
+            min: 53
             max: 54
             result: Jadina
-          - min: 55
+          - <<: *i18n.proper_noun
+            min: 55
             max: 56
             result: Radek
-          - min: 57
+          - <<: *i18n.proper_noun
+            min: 57
             max: 58
             result: Wulan
-          - min: 59
+          - <<: *i18n.proper_noun
+            min: 59
             max: 60
             result: Garion
-          - min: 61
+          - <<: *i18n.proper_noun
+            min: 61
             max: 62
             result: Eysa
-          - min: 63
+          - <<: *i18n.proper_noun
+            min: 63
             max: 64
             result: Kolor
-          - min: 65
+          - <<: *i18n.proper_noun
+            min: 65
             max: 66
             result: Katarra
-          - min: 67
+          - <<: *i18n.proper_noun
+            min: 67
             max: 68
             result: Dain
-          - min: 69
+          - <<: *i18n.proper_noun
+            min: 69
             max: 70
             result: Farina
-          - min: 71
+          - <<: *i18n.proper_noun
+            min: 71
             max: 72
             result: Yala
-          - min: 73
+          - <<: *i18n.proper_noun
+            min: 73
             max: 74
             result: Kodroth
-          - min: 75
+          - <<: *i18n.proper_noun
+            min: 75
             max: 76
             result: Morien
-          - min: 77
+          - <<: *i18n.proper_noun
+            min: 77
             max: 78
             result: Akida
-          - min: 79
+          - <<: *i18n.proper_noun
+            min: 79
             max: 80
             result: Haldorr
-          - min: 81
+          - <<: *i18n.proper_noun
+            min: 81
             max: 82
             result: Nyrad
-          - min: 83
+          - <<: *i18n.proper_noun
+            min: 83
             max: 84
             result: Edda
-          - min: 85
+          - <<: *i18n.proper_noun
+            min: 85
             max: 86
             result: Jorund
-          - min: 87
+          - <<: *i18n.proper_noun
+            min: 87
             max: 88
             result: Morraine
-          - min: 89
+          - <<: *i18n.proper_noun
+            min: 89
             max: 90
             result: Lindar
-          - min: 91
+          - <<: *i18n.proper_noun
+            min: 91
             max: 92
             result: Sithra
-          - min: 93
+          - <<: *i18n.proper_noun
+            min: 93
             max: 94
             result: Torgan
-          - min: 95
+          - <<: *i18n.proper_noun
+            min: 95
             max: 96
             result: Arnorr
-          - min: 97
+          - <<: *i18n.proper_noun
+            min: 97
             max: 98
             result: Thyri
-          - min: 99
+          - <<: *i18n.proper_noun
+            min: 99
             max: 100
             result: Erisia
       place:
@@ -684,9 +831,6 @@ oracles:
           page: 210
         contents:
           barrow:
-            _i18n: &CommonNoun
-              result:
-                part_of_speech: common_noun
             name: Barrow
             rendering:
               table_style: embed_in_row
@@ -695,26 +839,34 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: &i18n.common_noun
+                  i18n:
+                    result:
+                      part_of_speech: common_noun
+                min: 1
                 max: 16
                 result: Sepulcher
-              - min: 50
+              - <<: *i18n.common_noun
+                min: 50
                 max: 66
                 result: Mound
-              - min: 17
+              - <<: *i18n.common_noun
+                min: 17
                 max: 32
                 result: Grave
-              - min: 67
+              - <<: *i18n.common_noun
+                min: 67
                 max: 83
                 result: Tomb
-              - min: 33
+              - <<: *i18n.common_noun
+                min: 33
                 max: 49
                 result: Crypt
-              - min: 84
+              - <<: *i18n.common_noun
+                min: 84
                 max: 100
                 result: Barrow
           cavern:
-            _i18n: *CommonNoun
             name: Cavern
             rendering:
               table_style: embed_in_row
@@ -723,38 +875,47 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Abyss
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Caverns
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Caves
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Chasm
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Depths
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Hollow
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Lair
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Rift
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Tunnels
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Warren
           frozen_cavern:
-            _i18n: *CommonNoun
             name: Frozen Cavern
             rendering:
               table_style: embed_in_row
@@ -763,38 +924,47 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Abyss
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Caverns
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Caves
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Chasm
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Depths
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Hollow
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Lair
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Rift
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Tunnels
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Warren
           icereach:
-            _i18n: *CommonNoun
             name: Icereach
             rendering:
               table_style: embed_in_row
@@ -803,26 +973,31 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 16
                 result: Icemark
-              - min: 17
+              - <<: *i18n.common_noun
+                min: 17
                 max: 32
                 result: Wintertide
-              - min: 33
+              - <<: *i18n.common_noun
+                min: 33
                 max: 49
                 result: Reach
-              - min: 50
+              - <<: *i18n.common_noun
+                min: 50
                 max: 66
                 result: Waste
-              - min: 67
+              - <<: *i18n.common_noun
+                min: 67
                 max: 83
                 result: Expanse
-              - min: 84
+              - <<: *i18n.common_noun
+                min: 84
                 max: 100
                 result: Barrens
           mine:
-            _i18n: *CommonNoun
             name: Mine
             rendering:
               table_style: embed_in_row
@@ -831,26 +1006,31 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 16
                 result: Lode
-              - min: 17
+              - <<: *i18n.common_noun
+                min: 17
                 max: 32
                 result: Dig
-              - min: 33
+              - <<: *i18n.common_noun
+                min: 33
                 max: 49
                 result: Forge
-              - min: 50
+              - <<: *i18n.common_noun
+                min: 50
                 max: 66
                 result: Mine
-              - min: 67
+              - <<: *i18n.common_noun
+                min: 67
                 max: 83
                 result: Tunnels
-              - min: 84
+              - <<: *i18n.common_noun
+                min: 84
                 max: 100
                 result: Cut
           pass:
-            _i18n: *CommonNoun
             name: Pass
             rendering:
               table_style: embed_in_row
@@ -859,38 +1039,47 @@ oracles:
               <<: *Source
               page: 210
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Cliffs
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Crag
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Cut
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Gap
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Gorge
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Heights
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Highlands
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Pass
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Reach
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Ridge
           ruin:
-            _i18n: *CommonNoun
             name: Ruin
             rendering:
               table_style: embed_in_row
@@ -899,38 +1088,47 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Citadel
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Enclave
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Fortress
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Hall
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Keep
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Sanctuary
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Sanctum
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Spire
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Temple
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Tower
           sea_cave:
-            _i18n: *CommonNoun
             name: Sea Cave
             rendering:
               table_style: embed_in_row
@@ -939,26 +1137,31 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 16
                 result: Caves
-              - min: 17
+              - <<: *i18n.common_noun
+                min: 17
                 max: 32
                 result: Channel
-              - min: 33
+              - <<: *i18n.common_noun
+                min: 33
                 max: 49
                 result: Cove
-              - min: 50
+              - <<: *i18n.common_noun
+                min: 50
                 max: 66
                 result: Hollow
-              - min: 67
+              - <<: *i18n.common_noun
+                min: 67
                 max: 83
                 result: Pools
-              - min: 84
+              - <<: *i18n.common_noun
+                min: 84
                 max: 100
                 result: Gouge
           shadowfen:
-            _i18n: *CommonNoun
             name: Shadowfen
             rendering:
               table_style: embed_in_row
@@ -967,38 +1170,47 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Bog
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Fen
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Lowland
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Marsh
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Mire
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Morass
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Quagmire
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Floodlands
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Slough
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Wetlands
           stronghold:
-            _i18n: *CommonNoun
             name: Stronghold
             rendering:
               table_style: embed_in_row
@@ -1007,38 +1219,47 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Bastion
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Citadel
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Fortress
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Garrison
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Haven
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Keep
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Outpost
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Refuge
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Sanctuary
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Watch
           tanglewood:
-            _i18n: *CommonNoun
             name: Tanglewood
             rendering:
               table_style: embed_in_row
@@ -1047,32 +1268,39 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 11
                 result: Weald
-              - min: 12
+              - <<: *i18n.common_noun
+                min: 12
                 max: 23
                 result: Tangle
-              - min: 24
+              - <<: *i18n.common_noun
+                min: 24
                 max: 35
                 result: Bramble
-              - min: 36
+              - <<: *i18n.common_noun
+                min: 36
                 max: 48
                 result: Briar
-              - min: 49
+              - <<: *i18n.common_noun
+                min: 49
                 max: 61
                 result: Thicket
-              - min: 62
+              - <<: *i18n.common_noun
+                min: 62
                 max: 74
                 result: Forest
-              - min: 75
+              - <<: *i18n.common_noun
+                min: 75
                 max: 87
                 result: Wilds
-              - min: 88
+              - <<: *i18n.common_noun
+                min: 88
                 max: 100
                 result: Wood
           underkeep:
-            _i18n: *CommonNoun
             name: Underkeep
             rendering:
               table_style: embed_in_row
@@ -1081,33 +1309,43 @@ oracles:
               <<: *Source
               page: 211
             table:
-              - min: 1
+              - <<: *i18n.common_noun
+                min: 1
                 max: 10
                 result: Catacomb
-              - min: 11
+              - <<: *i18n.common_noun
+                min: 11
                 max: 20
                 result: Chambers
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 30
                 result: Den
-              - min: 31
+              - <<: *i18n.common_noun
+                min: 31
                 max: 40
                 result: Hall
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 50
                 result: Labyrinth
-              - min: 51
+              - <<: *i18n.common_noun
+                min: 51
                 max: 60
                 result: Maze
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 70
                 result: Pit
-              - min: 71
+              - <<: *i18n.common_noun
+                min: 71
                 max: 80
                 result: Sanctum
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 90
                 result: Underkeep
-              - min: 91
+              - <<: *i18n.common_noun
+                min: 91
                 max: 100
                 result: Vault
