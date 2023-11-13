@@ -11,7 +11,7 @@ oracles:
     source:
       <<: *Source
       page: 174
-    name: Action and Theme
+    name: Action and Theme Oracles
     contents:
       action:
         name: Action
@@ -19,9 +19,6 @@ oracles:
         suggestions:
           oracles:
             - classic/oracles/action_and_theme/theme
-        _i18n:
-          result:
-            part_of_speech: verb
         summary: Use this table to inspire a discovery, event, character goal, or situation. A roll on this table can be combined with a [Theme](id:classic/oracles/action_and_theme/theme) to provide an action and a subject. Then, interpret the result based on the context of the question and your current situation.
         source:
           <<: *Source
@@ -30,312 +27,412 @@ oracles:
           - min: 1
             max: 1
             result: Scheme
+            <<: &i18n.verb
+              i18n:
+                result:
+                  part_of_speech: verb
           - min: 2
             max: 2
             result: Clash
+            <<: *i18n.verb
           - min: 3
             max: 3
             result: Weaken
+            <<: *i18n.verb
           - min: 4
             max: 4
             result: Initiate
+            <<: *i18n.verb
           - min: 5
             max: 5
             result: Create
+            <<: *i18n.verb
           - min: 6
             max: 6
             result: Swear
+            <<: *i18n.verb
           - min: 7
             max: 7
             result: Avenge
+            <<: *i18n.verb
           - min: 8
             max: 8
             result: Guard
+            <<: *i18n.verb
           - min: 9
             max: 9
             result: Defeat
+            <<: *i18n.verb
           - min: 10
             max: 10
             result: Control
+            <<: *i18n.verb
           - min: 11
             max: 11
             result: Break
+            <<: *i18n.verb
           - min: 12
             max: 12
             result: Risk
+            <<: *i18n.verb
           - min: 13
             max: 13
             result: Surrender
+            <<: *i18n.verb
           - min: 14
             max: 14
             result: Inspect
+            <<: *i18n.verb
           - min: 15
             max: 15
             result: Raid
+            <<: *i18n.verb
           - min: 16
             max: 16
             result: Evade
+            <<: *i18n.verb
           - min: 17
             max: 17
             result: Assault
+            <<: *i18n.verb
           - min: 18
             max: 18
             result: Deflect
+            <<: *i18n.verb
           - min: 19
             max: 19
             result: Threaten
+            <<: *i18n.verb
           - min: 20
             max: 20
             result: Attack
+            <<: *i18n.verb
           - min: 21
             max: 21
             result: Leave
+            <<: *i18n.verb
           - min: 22
             max: 22
             result: Preserve
+            <<: *i18n.verb
           - min: 23
             max: 23
             result: Manipulate
+            <<: *i18n.verb
           - min: 24
             max: 24
             result: Remove
+            <<: *i18n.verb
           - min: 25
             max: 25
             result: Eliminate
+            <<: *i18n.verb
           - min: 26
             max: 26
             result: Withdraw
+            <<: *i18n.verb
           - min: 27
             max: 27
             result: Abandon
+            <<: *i18n.verb
           - min: 28
             max: 28
             result: Investigate
+            <<: *i18n.verb
           - min: 29
             max: 29
             result: Hold
+            <<: *i18n.verb
           - min: 30
             max: 30
             result: Focus
+            <<: *i18n.verb
           - min: 31
             max: 31
             result: Uncover
+            <<: *i18n.verb
           - min: 32
             max: 32
             result: Breach
+            <<: *i18n.verb
           - min: 33
             max: 33
             result: Aid
+            <<: *i18n.verb
           - min: 34
             max: 34
             result: Uphold
+            <<: *i18n.verb
           - min: 35
             max: 35
             result: Falter
+            <<: *i18n.verb
           - min: 36
             max: 36
             result: Suppress
+            <<: *i18n.verb
           - min: 37
             max: 37
             result: Hunt
+            <<: *i18n.verb
           - min: 38
             max: 38
             result: Share
+            <<: *i18n.verb
           - min: 39
             max: 39
             result: Destroy
+            <<: *i18n.verb
           - min: 40
             max: 40
             result: Avoid
+            <<: *i18n.verb
           - min: 41
             max: 41
             result: Reject
+            <<: *i18n.verb
           - min: 42
             max: 42
             result: Demand
+            <<: *i18n.verb
           - min: 43
             max: 43
             result: Explore
+            <<: *i18n.verb
           - min: 44
             max: 44
             result: Bolster
+            <<: *i18n.verb
           - min: 45
             max: 45
             result: Seize
+            <<: *i18n.verb
           - min: 46
             max: 46
             result: Mourn
+            <<: *i18n.verb
           - min: 47
             max: 47
             result: Reveal
+            <<: *i18n.verb
           - min: 48
             max: 48
             result: Gather
+            <<: *i18n.verb
           - min: 49
             max: 49
             result: Defy
+            <<: *i18n.verb
           - min: 50
             max: 50
             result: Transform
+            <<: *i18n.verb
           - min: 51
             max: 51
             result: Persevere
+            <<: *i18n.verb
           - min: 52
             max: 52
             result: Serve
+            <<: *i18n.verb
           - min: 53
             max: 53
             result: Begin
+            <<: *i18n.verb
           - min: 54
             max: 54
             result: Move
+            <<: *i18n.verb
           - min: 55
             max: 55
             result: Coordinate
+            <<: *i18n.verb
           - min: 56
             max: 56
             result: Resist
+            <<: *i18n.verb
           - min: 57
             max: 57
             result: Await
+            <<: *i18n.verb
           - min: 58
             max: 58
             result: Impress
+            <<: *i18n.verb
           - min: 59
             max: 59
             result: Take
+            <<: *i18n.verb
           - min: 60
             max: 60
             result: Oppose
+            <<: *i18n.verb
           - min: 61
             max: 61
             result: Capture
+            <<: *i18n.verb
           - min: 62
             max: 62
             result: Overwhelm
+            <<: *i18n.verb
           - min: 63
             max: 63
             result: Challenge
+            <<: *i18n.verb
           - min: 64
             max: 64
             result: Acquire
+            <<: *i18n.verb
           - min: 65
             max: 65
             result: Protect
+            <<: *i18n.verb
           - min: 66
             max: 66
             result: Finish
+            <<: *i18n.verb
           - min: 67
             max: 67
             result: Strengthen
+            <<: *i18n.verb
           - min: 68
             max: 68
             result: Restore
+            <<: *i18n.verb
           - min: 69
             max: 69
             result: Advance
+            <<: *i18n.verb
           - min: 70
             max: 70
             result: Command
+            <<: *i18n.verb
           - min: 71
             max: 71
             result: Refuse
+            <<: *i18n.verb
           - min: 72
             max: 72
             result: Find
+            <<: *i18n.verb
           - min: 73
             max: 73
             result: Deliver
+            <<: *i18n.verb
           - min: 74
             max: 74
             result: Hide
+            <<: *i18n.verb
           - min: 75
             max: 75
             result: Fortify
+            <<: *i18n.verb
           - min: 76
             max: 76
             result: Betray
+            <<: *i18n.verb
           - min: 77
             max: 77
             result: Secure
+            <<: *i18n.verb
           - min: 78
             max: 78
             result: Arrive
+            <<: *i18n.verb
           - min: 79
             max: 79
             result: Affect
+            <<: *i18n.verb
           - min: 80
             max: 80
             result: Change
+            <<: *i18n.verb
           - min: 81
             max: 81
             result: Defend
+            <<: *i18n.verb
           - min: 82
             max: 82
             result: Debate
+            <<: *i18n.verb
           - min: 83
             max: 83
             result: Support
+            <<: *i18n.verb
           - min: 84
             max: 84
             result: Follow
+            <<: *i18n.verb
           - min: 85
             max: 85
             result: Construct
+            <<: *i18n.verb
           - min: 86
             max: 86
             result: Locate
+            <<: *i18n.verb
           - min: 87
             max: 87
             result: Endure
+            <<: *i18n.verb
           - min: 88
             max: 88
             result: Release
+            <<: *i18n.verb
           - min: 89
             max: 89
             result: Lose
+            <<: *i18n.verb
           - min: 90
             max: 90
             result: Reduce
+            <<: *i18n.verb
           - min: 91
             max: 91
             result: Escalate
+            <<: *i18n.verb
           - min: 92
             max: 92
             result: Distract
+            <<: *i18n.verb
           - min: 93
             max: 93
             result: Journey
+            <<: *i18n.verb
           - min: 94
             max: 94
             result: Escort
+            <<: *i18n.verb
           - min: 95
             max: 95
             result: Learn
+            <<: *i18n.verb
           - min: 96
             max: 96
             result: Communicate
+            <<: *i18n.verb
           - min: 97
             max: 97
             result: Depart
+            <<: *i18n.verb
           - min: 98
             max: 98
             result: Search
+            <<: *i18n.verb
           - min: 99
             max: 99
             result: Charge
+            <<: *i18n.verb
           - min: 100
             max: 100
             result: Summon
+            <<: *i18n.verb
       theme:
         name: Theme
         canonical_name: 'Oracle 2: Theme'
         source:
           <<: *Source
           page: 175
-        _i18n:
-          result:
-            part_of_speech: common_noun
         suggestions:
           oracles:
             - classic/oracles/action_and_theme/action
@@ -344,300 +441,403 @@ oracles:
           - min: 1
             max: 1
             result: Risk
+            <<: &i18n.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
           - min: 2
             max: 2
             result: Ability
+            <<: *i18n.common_noun
           - min: 3
             max: 3
             result: Price
+            <<: *i18n.common_noun
           - min: 4
             max: 4
             result: Ally
+            <<: *i18n.common_noun
           - min: 5
             max: 5
             result: Battle
+            <<: *i18n.common_noun
           - min: 6
             max: 6
             result: Safety
+            <<: *i18n.common_noun
           - min: 7
             max: 7
             result: Survival
+            <<: *i18n.common_noun
           - min: 8
             max: 8
             result: Weapon
+            <<: *i18n.common_noun
           - min: 9
             max: 9
             result: Wound
+            <<: *i18n.common_noun
           - min: 10
             max: 10
             result: Shelter
+            <<: *i18n.common_noun
           - min: 11
             max: 11
             result: Leader
+            <<: *i18n.common_noun
           - min: 12
             max: 12
             result: Fear
+            <<: *i18n.common_noun
           - min: 13
             max: 13
             result: Time
+            <<: *i18n.common_noun
           - min: 14
             max: 14
             result: Duty
+            <<: *i18n.common_noun
           - min: 15
             max: 15
             result: Secret
+            <<: *i18n.common_noun
           - min: 16
             max: 16
             result: Innocence
+            <<: *i18n.common_noun
           - min: 17
             max: 17
             result: Renown
+            <<: *i18n.common_noun
           - min: 18
             max: 18
             result: Direction
+            <<: *i18n.common_noun
           - min: 19
             max: 19
             result: Death
+            <<: *i18n.common_noun
           - min: 20
             max: 20
             result: Honor
+            <<: *i18n.common_noun
           - min: 21
             max: 21
             result: Labor
+            <<: *i18n.common_noun
           - min: 22
             max: 22
             result: Solution
+            <<: *i18n.common_noun
           - min: 23
             max: 23
             result: Tool
+            <<: *i18n.common_noun
           - min: 24
             max: 24
             result: Balance
+            <<: *i18n.common_noun
           - min: 25
             max: 25
             result: Love
+            <<: *i18n.common_noun
           - min: 26
             max: 26
             result: Barrier
+            <<: *i18n.common_noun
           - min: 27
             max: 27
             result: Creation
+            <<: *i18n.common_noun
           - min: 28
             max: 28
             result: Decay
+            <<: *i18n.common_noun
           - min: 29
             max: 29
             result: Trade
+            <<: *i18n.common_noun
           - min: 30
             max: 30
             result: Bond
+            <<: *i18n.common_noun
           - min: 31
             max: 31
             result: Hope
+            <<: *i18n.common_noun
           - min: 32
             max: 32
             result: Superstition
+            <<: *i18n.common_noun
           - min: 33
             max: 33
             result: Peace
+            <<: *i18n.common_noun
           - min: 34
             max: 34
             result: Deception
+            <<: *i18n.common_noun
           - min: 35
             max: 35
             result: History
+            <<: *i18n.common_noun
           - min: 36
             max: 36
             result: World
+            <<: *i18n.common_noun
           - min: 37
             max: 37
             result: Vow
+            <<: *i18n.common_noun
           - min: 38
             max: 38
             result: Protection
+            <<: *i18n.common_noun
           - min: 39
             max: 39
             result: Nature
+            <<: *i18n.common_noun
           - min: 40
             max: 40
             result: Opinion
+            <<: *i18n.common_noun
           - min: 41
             max: 41
             result: Burden
+            <<: *i18n.common_noun
           - min: 42
             max: 42
             result: Vengeance
+            <<: *i18n.common_noun
           - min: 43
             max: 43
             result: Opportunity
+            <<: *i18n.common_noun
           - min: 44
             max: 44
             result: Faction
+            <<: *i18n.common_noun
           - min: 45
             max: 45
             result: Danger
+            <<: *i18n.common_noun
           - min: 46
             max: 46
             result: Corruption
+            <<: *i18n.common_noun
           - min: 47
             max: 47
             result: Freedom
+            <<: *i18n.common_noun
           - min: 48
             max: 48
             result: Debt
+            <<: *i18n.common_noun
           - min: 49
             max: 49
             result: Hate
+            <<: *i18n.common_noun
           - min: 50
             max: 50
             result: Possession
+            <<: *i18n.common_noun
           - min: 51
             max: 51
             result: Stranger
+            <<: *i18n.common_noun
           - min: 52
             max: 52
             result: Passage
+            <<: *i18n.common_noun
           - min: 53
             max: 53
             result: Land
+            <<: *i18n.common_noun
           - min: 54
             max: 54
             result: Creature
+            <<: *i18n.common_noun
           - min: 55
             max: 55
             result: Disease
+            <<: *i18n.common_noun
           - min: 56
             max: 56
             result: Advantage
+            <<: *i18n.common_noun
           - min: 57
             max: 57
             result: Blood
+            <<: *i18n.common_noun
           - min: 58
             max: 58
             result: Language
+            <<: *i18n.common_noun
           - min: 59
             max: 59
             result: Rumor
+            <<: *i18n.common_noun
           - min: 60
             max: 60
             result: Weakness
+            <<: *i18n.common_noun
           - min: 61
             max: 61
             result: Greed
+            <<: *i18n.common_noun
           - min: 62
             max: 62
             result: Family
+            <<: *i18n.common_noun
           - min: 63
             max: 63
             result: Resource
+            <<: *i18n.common_noun
           - min: 64
             max: 64
             result: Structure
+            <<: *i18n.common_noun
           - min: 65
             max: 65
             result: Dream
+            <<: *i18n.common_noun
           - min: 66
             max: 66
             result: Community
+            <<: *i18n.common_noun
           - min: 67
             max: 67
             result: War
+            <<: *i18n.common_noun
           - min: 68
             max: 68
             result: Portent
+            <<: *i18n.common_noun
           - min: 69
             max: 69
             result: Prize
+            <<: *i18n.common_noun
           - min: 70
             max: 70
             result: Destiny
+            <<: *i18n.common_noun
           - min: 71
             max: 71
             result: Momentum
+            <<: *i18n.common_noun
           - min: 72
             max: 72
             result: Power
+            <<: *i18n.common_noun
           - min: 73
             max: 73
             result: Memory
+            <<: *i18n.common_noun
           - min: 74
             max: 74
             result: Ruin
+            <<: *i18n.common_noun
           - min: 75
             max: 75
             result: Mysticism
+            <<: *i18n.common_noun
           - min: 76
             max: 76
             result: Rival
+            <<: *i18n.common_noun
           - min: 77
             max: 77
             result: Problem
+            <<: *i18n.common_noun
           - min: 78
             max: 78
             result: Idea
+            <<: *i18n.common_noun
           - min: 79
             max: 79
             result: Revenge
+            <<: *i18n.common_noun
           - min: 80
             max: 80
             result: Health
+            <<: *i18n.common_noun
           - min: 81
             max: 81
             result: Fellowship
+            <<: *i18n.common_noun
           - min: 82
             max: 82
             result: Enemy
+            <<: *i18n.common_noun
           - min: 83
             max: 83
             result: Religion
+            <<: *i18n.common_noun
           - min: 84
             max: 84
             result: Spirit
+            <<: *i18n.common_noun
           - min: 85
             max: 85
             result: Fame
+            <<: *i18n.common_noun
           - min: 86
             max: 86
             result: Desolation
+            <<: *i18n.common_noun
           - min: 87
             max: 87
             result: Strength
+            <<: *i18n.common_noun
           - min: 88
             max: 88
             result: Knowledge
+            <<: *i18n.common_noun
           - min: 89
             max: 89
             result: Truth
+            <<: *i18n.common_noun
           - min: 90
             max: 90
             result: Quest
+            <<: *i18n.common_noun
           - min: 91
             max: 91
             result: Pride
+            <<: *i18n.common_noun
           - min: 92
             max: 92
             result: Loss
+            <<: *i18n.common_noun
           - min: 93
             max: 93
             result: Law
+            <<: *i18n.common_noun
           - min: 94
             max: 94
             result: Path
+            <<: *i18n.common_noun
           - min: 95
             max: 95
             result: Warning
+            <<: *i18n.common_noun
           - min: 96
             max: 96
             result: Relationship
+            <<: *i18n.common_noun
           - min: 97
             max: 97
             result: Wealth
+            <<: *i18n.common_noun
           - min: 98
             max: 98
             result: Home
+            <<: *i18n.common_noun
           - min: 99
             max: 99
             result: Strategy
+            <<: *i18n.common_noun
           - min: 100
             max: 100
             result: Supply
+            <<: *i18n.common_noun

@@ -8,10 +8,11 @@ source: &Source
   date: 2019-06-05
 oracles:
   settlement:
-    name: Settlement
-    source:
+    name: Settlement Oracles
+    source: &CollectionSource
       <<: *Source
       page: 178
+    summary: To give the settlement additional detail, roll on the [Location Descriptor](classic/oracles/place/descriptor) oracle. To spark an idea for an event or feature related to the settlement, roll on the [Action](id:classic/oracles/action_and_theme/action) and [Theme](id:classic/oracles/action_and_theme/theme) oracles.
     contents:
       trouble:
         name: Settlement Trouble
@@ -162,6 +163,62 @@ oracles:
             rolls:
               - times: 2
                 auto: true
+      name:
+        name: Settlement Name
+        source:
+          <<: *CollectionSource
+        summary: Ask this oracle for a thematic name for an Ironlander settlement. Roll once for the category, and again to pick from the examples. Alternatively, just roll for the category and come up with a name that fits the theme.
+        table:
+          - min: 1
+            max: 15
+            result: &Landscape_Feature |-
+              **A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?
+            # technically, these embedded tables are all labeled "Examples". should this be structured differently in order to convey this?
+            embed_table: classic/oracles/settlement/name/landscape_feature
+            rolls:
+              - oracle: classic/oracles/settlement/name/landscape_feature
+          - min: 16
+            max: 30
+            result: &Manmade_Edifice |-
+              **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
+            embed_table: classic/oracles/settlement/name/manmade_edifice
+            rolls:
+              - oracle: classic/oracles/settlement/name/manmade_edifice
+          - min: 31
+            max: 45
+            result: &Creature |-
+              **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
+            embed_table: classic/oracles/settlement/name/creature
+            rolls:
+              - oracle: classic/oracles/settlement/name/creature
+          - min: 46
+            max: 60
+            result: &Historical_Event |-
+              **A historical event.** What happened here? What place or practice commemorates this event?
+            embed_table: classic/oracles/settlement/name/historical_event
+            rolls:
+              - oracle: classic/oracles/settlement/name/historical_event
+          - min: 61
+            max: 75
+            result: &Old_World_Language |-
+              **A word in an Old World language.** What culture is represented by this word? What does it translate to?
+            embed_table: classic/oracles/settlement/name/old_world_language
+            rolls:
+              - oracle: classic/oracles/settlement/name/old_world_language
+          - min: 76
+            max: 90
+            result: &Environmental_Aspect |-
+              **A season or environmental aspect.** What influence does the weather have on this settlement?
+            embed_table: classic/oracles/settlement/name/environmental_aspect
+            rolls:
+              - oracle: classic/oracles/settlement/name/environmental_aspect
+          - min: 91
+            max: 100
+            result: 'Something Else...'
+            embed_table: classic/oracles/settlement/name/something_else
+            rolls:
+              - oracle: classic/oracles/settlement/name/something_else
+                auto: true
     collections:
       name:
         name: Settlement Name
@@ -174,40 +231,49 @@ oracles:
             source: *CollectionSource
             name: Landscape Feature
             canonical_name: A feature of the landscape
-            _i18n:
-              result:
-                part_of_speech: proper_noun
-            summary: &Landscape_Feature |-
-              "**A feature of the landscape.** Envision what it is. What makes it unusual or distinctive?",
+            summary: *Landscape_Feature
             table:
-              - min: 1
+              - <<: &i18n.proper_noun
+                  i18n:
+                    result:
+                      part_of_speech: proper_noun
+                min: 1
                 max: 10
                 result: Highmount
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Brackwater
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Frostwood
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Redcrest
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Grimtree
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Stoneford
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Deepwater
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Whitefall
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Graycliff
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Three Rivers
           manmade_edifice:
@@ -217,37 +283,46 @@ oracles:
                 part_of_speech: proper_noun
             source: *CollectionSource
             name: Manmade Edifice
-            summary: &Manmade_Edifice |-
-              **A manmade edifice.** What is it? Why is it important to this settlement’s history?,
+            summary: *Manmade_Edifice
             table:
-              - min: 1
+              - <<: *i18n.proper_noun
+                min: 1
                 max: 10
                 result: Whitebridge
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Lonefort
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Highcairn
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Redhall
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Darkwell
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Timberwall
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Stonetower
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Thornhall
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Cinderhome
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Fallowfield
           creature:
@@ -257,37 +332,46 @@ oracles:
                 part_of_speech: proper_noun
             source: *CollectionSource
             name: Creature
-            summary: &Creature |-
-              **A creature.** Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?
+            summary: *Creature
             table:
-              - min: 1
+              - <<: *i18n.proper_noun
+                min: 1
                 max: 10
                 result: Ravencliff
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Bearmark
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Wolfcrag
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Eaglespire
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Wyvern's Rest
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Boarwood
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Foxhollow
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Elderwatch
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Elkfield
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Dragonshadow
           historical_event:
@@ -297,37 +381,46 @@ oracles:
                 part_of_speech: proper_noun
             source: *CollectionSource
             name: Historical Event
-            summary: &Historical_Event |-
-              **A historical event.** What happened here? What place or practice commemorates this event?
+            summary: *Historical_Event
             table:
-              - min: 1
+              - <<: *i18n.proper_noun
+                min: 1
                 max: 10
                 result: Swordbreak
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Fool's Fall
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Firstmeet
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Brokenhelm
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Mournhaunt
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Olgar's Stand
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Lostwater
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Rojirra's Lament
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Lastmarch
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Rockfall
           old_world_language:
@@ -337,37 +430,46 @@ oracles:
                 part_of_speech: proper_noun
             source: *CollectionSource
             name: Old World Language
-            summary: &Old_World_Language |-
-              **A word in an Old World language.** What culture is represented by this word? What does it translate to?
+            summary: *Old_World_Language
             table:
-              - min: 1
+              - <<: *i18n.proper_noun
+                min: 1
                 max: 10
                 result: Abon
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Daveza
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Damula
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Essus
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Sina
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Kazeera
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Khazu
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Sova
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Nabuma
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Tiza
           environmental_aspect:
@@ -377,37 +479,46 @@ oracles:
                 part_of_speech: proper_noun
             source: *CollectionSource
             name: Environmental Aspect
-            summary: &Environmental_Aspect |-
-              **A season or environmental aspect.** What influence does the weather have on this settlement?
+            summary: *Environmental_Aspect
             table:
-              - min: 1
+              - <<: *i18n.proper_noun
+                min: 1
                 max: 10
                 result: Winterhome
-              - min: 11
+              - <<: *i18n.proper_noun
+                min: 11
                 max: 20
                 result: Windhaven
-              - min: 21
+              - <<: *i18n.proper_noun
+                min: 21
                 max: 30
                 result: Stormrest
-              - min: 31
+              - <<: *i18n.proper_noun
+                min: 31
                 max: 40
                 result: Bleakfrost
-              - min: 41
+              - <<: *i18n.proper_noun
+                min: 41
                 max: 50
                 result: Springtide
-              - min: 51
+              - <<: *i18n.proper_noun
+                min: 51
                 max: 60
                 result: Duskmoor
-              - min: 61
+              - <<: *i18n.proper_noun
+                min: 61
                 max: 70
                 result: Frostcrag
-              - min: 71
+              - <<: *i18n.proper_noun
+                min: 71
                 max: 80
                 result: Springbrook
-              - min: 81
+              - <<: *i18n.proper_noun
+                min: 81
                 max: 90
                 result: Icebreak
-              - min: 91
+              - <<: *i18n.proper_noun
+                min: 91
                 max: 100
                 result: Summersong
           something_else:
@@ -449,6 +560,7 @@ oracles:
         name: Quick Settlement Name Generator
         summary: Use this oracle as a simpler alternative for settlement names. Roll once for the prefix, and once for the suffix. If the combination doesn’t quite work, look at adjacent rows or reverse the digits.
         rendering:
+          table_style: multi_table
           columns:
             roll:
               content_type: roll
@@ -502,115 +614,114 @@ oracles:
               # - [89, 92, Frost-]
               # - [93, 96, Thorn-]
               # - [97, 100, Long-]
-              - min: 1
+
+              - <<: &i18n.adjective
+                  i18n:
+                    result:
+                      part_of_speech: adjective
+                min: 1
                 max: 4
                 result: Bleak
-              - min: 5
+              - <<: *i18n.adjective
+                min: 5
                 max: 8
                 result: Green
-              - min: 9
+              - <<: &i18n.adjunct_common_noun
+                  i18n:
+                    result:
+                      part_of_speech: adjunct_common_noun
+                min: 9
                 max: 12
                 result: Wolf
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 13
+              - <<: *i18n.adjunct_common_noun
+                min: 13
                 max: 16
                 result: Raven
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 17
+              - <<: *i18n.adjective
+                min: 17
                 max: 20
                 result: Gray
-              - min: 21
+              - <<: *i18n.adjective
+                min: 21
                 max: 24
                 result: Red
-              - min: 25
+              - <<: *i18n.adjunct_common_noun
+                min: 25
                 max: 28
                 result: Axe
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 29
+              - <<: *i18n.adjective
+                min: 29
                 max: 32
                 result: Great
-              - min: 33
+              - <<: *i18n.adjunct_common_noun
+                min: 33
                 max: 36
                 result: Wood
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 37
+              - <<: *i18n.adjective
+                min: 37
                 max: 40
                 result: Low
-              - min: 41
+              - <<: *i18n.adjective
+                min: 41
                 max: 44
                 result: White
-              - min: 45
+              - <<: *i18n.adjunct_common_noun
+                min: 45
                 max: 48
                 result: Storm
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 49
+              - <<: *i18n.adjective
+                min: 49
                 max: 52
                 result: Black
-              - min: 53
+              - <<: &i18n.attributive_verb
+                  i18n:
+                    result:
+                      part_of_speech: attributive_verb
+                min: 53
                 max: 56
                 result: Mourn
-                i18n:
-                  result:
-                    part_of_speech: attributive_verb
-              - min: 57
+              - <<: *i18n.adjective
+                min: 57
                 max: 60
                 result: New
-              - min: 61
+              - <<: *i18n.adjunct_common_noun
+                min: 61
                 max: 64
                 result: Stone
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 65
+              - <<: *i18n.adjective
+                min: 65
                 max: 68
                 result: Grim
-              - min: 69
+              - <<: *i18n.adjective
+                min: 69
                 max: 72
                 result: Lost
-              - min: 73
+              - <<: *i18n.adjective
+                min: 73
                 max: 76
                 result: High
-              - min: 77
+              - <<: *i18n.adjunct_common_noun
+                min: 77
                 max: 80
                 result: Rock
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 81
+              - <<: *i18n.adjunct_common_noun
+                min: 81
                 max: 84
                 result: Shield
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 85
+              - <<: *i18n.adjunct_common_noun
+                min: 85
                 max: 88
                 result: Sword
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 89
+              - <<: *i18n.adjunct_common_noun
+                min: 89
                 max: 92
                 result: Frost
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 93
+              - <<: *i18n.adjunct_common_noun
+                min: 93
                 max: 96
                 result: Thorn
-                i18n:
-                  result:
-                    part_of_speech: adjunct_common_noun
-              - min: 97
+              - <<: *i18n.adjective
+                min: 97
                 max: 100
                 result: Long
           suffix:
@@ -618,9 +729,6 @@ oracles:
             source: *CollectionSource
             rendering:
               table_style: embed_as_column
-            _i18n:
-              result:
-                part_of_speech: common_noun
             table:
               # - [1, 4, -moor]
               # - [5, 8, -ford]
@@ -647,126 +755,106 @@ oracles:
               # - [89, 92, -stead]
               # - [93, 96, -home]
               # - [97, 100, -wick]
-              - min: 1
+              - <<: &i18n.common_noun
+                  i18n:
+                    result:
+                      part_of_speech: common_noun
+                min: 1
                 max: 4
                 result: moor
-              - min: 5
+              - <<: *i18n.common_noun
+                min: 5
                 max: 8
                 result: ford
-              - min: 9
+              - <<: *i18n.common_noun
+                min: 9
                 max: 12
                 result: crag
-              - min: 13
+              - <<: *i18n.common_noun
+                min: 13
                 max: 16
                 result: watch
-              - min: 17
+              - <<: *i18n.common_noun
+                min: 17
                 max: 20
                 result: hope
-              - min: 21
+              - <<: *i18n.common_noun
+                min: 21
                 max: 24
                 result: wood
-              - min: 25
+              - <<: *i18n.common_noun
+                min: 25
                 max: 28
                 result: ridge
-              - min: 29
+              - <<: *i18n.common_noun
+                min: 29
                 max: 32
                 result: stone
-              - min: 33
+              - <<: *i18n.common_noun
+                min: 33
                 max: 36
                 result: haven
-              - min: 37
+              - <<: *i18n.common_noun
+                min: 37
                 max: 40
                 result: fall(s)
-              - min: 41
+              - <<: *i18n.common_noun
+                min: 41
                 max: 44
                 result: river
-              - min: 45
+              - <<: *i18n.common_noun
+                min: 45
                 max: 48
                 result: field
-              - min: 49
+              - <<: *i18n.common_noun
+                min: 49
                 max: 52
                 result: hill
-              - min: 53
+              - <<: *i18n.common_noun
+                min: 53
                 max: 56
                 result: bridge
-              - min: 57
+              - <<: *i18n.common_noun
+                min: 57
                 max: 60
                 result: mark
-              - min: 61
+              - <<: *i18n.common_noun
+                min: 61
                 max: 64
                 result: cairn
-              - min: 65
+              - <<: *i18n.common_noun
+                min: 65
                 max: 68
                 result: land
-              - min: 69
+              - <<: *i18n.common_noun
+                min: 69
                 max: 72
                 result: hall
-              - min: 73
+              - <<: *i18n.common_noun
+                min: 73
                 max: 76
                 result: mount
-              - min: 77
+              - <<: *i18n.common_noun
+                min: 77
                 max: 80
                 result: rock
-              - min: 81
+              - <<: *i18n.common_noun
+                min: 81
                 max: 84
                 result: brook
-              - min: 85
+              - <<: *i18n.common_noun
+                min: 85
                 max: 88
                 result: barrow
-              - min: 89
+              - <<: *i18n.common_noun
+                min: 89
                 max: 92
                 result: stead
-              - min: 93
+              - <<: *i18n.common_noun
+                min: 93
                 max: 96
                 result: home
-              - min: 97
+              - <<: *i18n.common_noun
+                min: 97
                 max: 100
                 result: wick
-          theme:
-            name: Settlement Name
-            source:
-              <<: *CollectionSource
-            table:
-              - min: 1
-                max: 15
-                result: *Landscape_Feature
-                embed_table: classic/oracles/settlement/name/landscape_feature
-                rolls:
-                  - oracle: classic/oracles/settlement/name/landscape_feature
-              - min: 16
-                max: 30
-                result: *Manmade_Edifice
-                embed_table: classic/oracles/settlement/name/manmade_edifice
-                rolls:
-                  - oracle: classic/oracles/settlement/name/manmade_edifice
-              - min: 31
-                max: 45
-                result: *Creature
-                embed_table: classic/oracles/settlement/name/creature
-                rolls:
-                  - oracle: classic/oracles/settlement/name/creature
-              - min: 46
-                max: 60
-                result: *Historical_Event
-                embed_table: classic/oracles/settlement/name/historical_event
-                rolls:
-                  - oracle: classic/oracles/settlement/name/historical_event
-              - min: 61
-                max: 75
-                result: *Old_World_Language
-                embed_table: classic/oracles/settlement/name/old_world_language
-                rolls:
-                  - oracle: classic/oracles/settlement/name/old_world_language
-              - min: 76
-                max: 90
-                result: *Environmental_Aspect
-                embed_table: classic/oracles/settlement/name/environmental_aspect
-                rolls:
-                  - oracle: classic/oracles/settlement/name/environmental_aspect
-              - min: 91
-                max: 100
-                result: 'Something Else...'
-                embed_table: classic/oracles/settlement/name/something_else
-                rolls:
-                  - oracle: classic/oracles/settlement/name/something_else
-                    auto: true

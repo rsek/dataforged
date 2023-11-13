@@ -16,102 +16,132 @@ oracles:
       role:
         name: Character Role
         canonical_name: 'Oracle 10: Character Role'
-        _i18n:
-          result:
-            part_of_speech: common_noun
         summary: Use this oracle to define the background for a character, or to generate a random encounter.
         source:
           <<: *Source
           page: 182
         table:
-          - min: 1
+          - <<: &i18n.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 2
             result: Criminal
-          - min: 3
+          - <<: *i18n.common_noun
+            min: 3
             max: 4
             result: Healer
-          - min: 5
+          - <<: *i18n.common_noun
+            min: 5
             max: 6
             result: Bandit
-          - min: 7
+          - <<: *i18n.common_noun
+            min: 7
             max: 9
             result: Guide
-          - min: 10
+          - <<: *i18n.common_noun
+            min: 10
             max: 12
             result: Performer
-          - min: 13
+          - <<: *i18n.common_noun
+            min: 13
             max: 15
             result: Miner
-          - min: 16
+          - <<: *i18n.common_noun
+            min: 16
             max: 18
             result: Mercenary
-          - min: 19
+          - <<: *i18n.common_noun
+            min: 19
             max: 21
             result: Outcast
-          - min: 22
+          - <<: *i18n.common_noun
+            min: 22
             max: 24
             result: Vagrant
-          - min: 25
+          - <<: *i18n.common_noun
+            min: 25
             max: 27
             result: Forester
-          - min: 28
+          - <<: *i18n.common_noun
+            min: 28
             max: 30
             result: Traveler
-          - min: 31
+          - <<: *i18n.common_noun
+            min: 31
             max: 33
             result: Mystic
-          - min: 34
+          - <<: *i18n.common_noun
+            min: 34
             max: 36
             result: Priest
-          - min: 37
+          - <<: *i18n.common_noun
+            min: 37
             max: 39
             result: Sailor
-          - min: 40
+          - <<: *i18n.common_noun
+            min: 40
             max: 42
             result: Pilgrim
-          - min: 43
+          - <<: *i18n.common_noun
+            min: 43
             max: 45
             result: Thief
-          - min: 46
+          - <<: *i18n.common_noun
+            min: 46
             max: 48
             result: Adventurer
-          - min: 49
+          - <<: *i18n.common_noun
+            min: 49
             max: 51
             result: Forager
-          - min: 52
+          - <<: *i18n.common_noun
+            min: 52
             max: 54
             result: Leader
-          - min: 55
+          - <<: *i18n.common_noun
+            min: 55
             max: 58
             result: Guard
-          - min: 59
+          - <<: *i18n.common_noun
+            min: 59
             max: 62
             result: Artisan
-          - min: 63
+          - <<: *i18n.common_noun
+            min: 63
             max: 66
             result: Scout
-          - min: 67
+          - <<: *i18n.common_noun
+            min: 67
             max: 70
             result: Herder
-          - min: 71
+          - <<: *i18n.common_noun
+            min: 71
             max: 74
             result: Fisher
-          - min: 75
+          - <<: *i18n.common_noun
+            min: 75
             max: 79
             result: Warrior
-          - min: 80
+          - <<: *i18n.common_noun
+            min: 80
             max: 84
             result: Hunter
-          - min: 85
+          - <<: *i18n.common_noun
+            min: 85
             max: 89
             result: Raider
-          - min: 90
+          - <<: *i18n.common_noun
+            min: 90
             max: 94
             result: Trader
-          - min: 95
+          - <<: *i18n.common_noun
+            min: 95
             max: 99
             result: Farmer
-          - min: 100
+          - <<: *i18n.common_noun
+            min: 100
             max: 100
             result: Unusual role
             suggestions:
@@ -232,312 +262,412 @@ oracles:
         name: Character Descriptor
         canonical_name: 'Oracle 12: Character Descriptor'
         summary: Use this oracle to help flesh out a character’s personality or physical characteristics. Roll more than once to add additional detail.
-        _i18n:
-          result:
-            part_of_speech: adjective
         # usage:
         #   max_rolls: 3 # a bit arbitrary, but reasonable
         source:
           <<: *Source
           page: 183
         table:
-          - min: 1
+          - <<: &i18n.adjective
+              i18n:
+                result:
+                  part_of_speech: adjective
+            min: 1
             max: 1
             result: Stoic
-          - min: 2
+          - <<: *i18n.adjective
+            min: 2
             max: 2
             result: Attractive
-          - min: 3
+          - <<: *i18n.adjective
+            min: 3
             max: 3
             result: Passive
-          - min: 4
+          - <<: *i18n.adjective
+            min: 4
             max: 4
             result: Aloof
-          - min: 5
+          - <<: *i18n.adjective
+            min: 5
             max: 5
             result: Affectionate
-          - min: 6
+          - <<: *i18n.adjective
+            min: 6
             max: 6
             result: Generous
-          - min: 7
+          - <<: *i18n.adjective
+            min: 7
             max: 7
             result: Smug
-          - min: 8
+          - <<: *i18n.adjective
+            min: 8
             max: 8
             result: Armed
-          - min: 9
+          - <<: *i18n.adjective
+            min: 9
             max: 9
             result: Clever
-          - min: 10
+          - <<: *i18n.adjective
+            min: 10
             max: 10
             result: Brave
-          - min: 11
+          - <<: *i18n.adjective
+            min: 11
             max: 11
             result: Ugly
-          - min: 12
+          - <<: *i18n.adjective
+            min: 12
             max: 12
             result: Sociable
-          - min: 13
+          - <<: *i18n.adjective
+            min: 13
             max: 13
             result: Doomed
-          - min: 14
+          - <<: *i18n.adjective
+            min: 14
             max: 14
             result: Connected
-          - min: 15
+          - <<: *i18n.adjective
+            min: 15
             max: 15
             result: Bold
-          - min: 16
+          - <<: *i18n.adjective
+            min: 16
             max: 16
             result: Jealous
-          - min: 17
+          - <<: *i18n.adjective
+            min: 17
             max: 17
             result: Angry
-          - min: 18
+          - <<: *i18n.adjective
+            min: 18
             max: 18
             result: Active
-          - min: 19
+          - <<: *i18n.adjective
+            min: 19
             max: 19
             result: Suspicious
-          - min: 20
+          - <<: *i18n.adjective
+            min: 20
             max: 20
             result: Hostile
-          - min: 21
+          - <<: *i18n.adjective
+            min: 21
             max: 21
             result: Hardhearted
-          - min: 22
+          - <<: *i18n.adjective
+            min: 22
             max: 22
             result: Successful
-          - min: 23
+          - <<: *i18n.adjective
+            min: 23
             max: 23
             result: Talented
-          - min: 24
+          - <<: *i18n.adjective
+            min: 24
             max: 24
             result: Experienced
-          - min: 25
+          - <<: *i18n.adjective
+            min: 25
             max: 25
             result: Deceitful
-          - min: 26
+          - <<: *i18n.adjective
+            min: 26
             max: 26
             result: Ambitious
-          - min: 27
+          - <<: *i18n.adjective
+            min: 27
             max: 27
             result: Aggressive
-          - min: 28
+          - <<: *i18n.adjective
+            min: 28
             max: 28
             result: Conceited
-          - min: 29
+          - <<: *i18n.adjective
+            min: 29
             max: 29
             result: Proud
-          - min: 30
+          - <<: *i18n.adjective
+            min: 30
             max: 30
             result: Stern
-          - min: 31
+          - <<: *i18n.adjective
+            min: 31
             max: 31
             result: Dependent
-          - min: 32
+          - <<: *i18n.adjective
+            min: 32
             max: 32
             result: Wary
-          - min: 33
+          - <<: *i18n.adjective
+            min: 33
             max: 33
             result: Strong
-          - min: 34
+          - <<: *i18n.adjective
+            min: 34
             max: 34
             result: Insightful
-          - min: 35
+          - <<: *i18n.adjective
+            min: 35
             max: 35
             result: Dangerous
-          - min: 36
+          - <<: *i18n.adjective
+            min: 36
             max: 36
             result: Quirky
-          - min: 37
+          - <<: *i18n.adjective
+            min: 37
             max: 37
             result: Cheery
-          - min: 38
+          - <<: *i18n.adjective
+            min: 38
             max: 38
             result: Disfigured
-          - min: 39
+          - <<: *i18n.adjective
+            min: 39
             max: 39
             result: Intolerant
-          - min: 40
+          - <<: *i18n.adjective
+            min: 40
             max: 40
             result: Skilled
-          - min: 41
+          - <<: *i18n.adjective
+            min: 41
             max: 41
             result: Stingy
-          - min: 42
+          - <<: *i18n.adjective
+            min: 42
             max: 42
             result: Timid
-          - min: 43
+          - <<: *i18n.adjective
+            min: 43
             max: 43
             result: Insensitive
-          - min: 44
+          - <<: *i18n.adjective
+            min: 44
             max: 44
             result: Wild
-          - min: 45
+          - <<: *i18n.adjective
+            min: 45
             max: 45
             result: Bitter
-          - min: 46
+          - <<: *i18n.adjective
+            min: 46
             max: 46
             result: Cunning
-          - min: 47
+          - <<: *i18n.adjective
+            min: 47
             max: 47
             result: Remorseful
-          - min: 48
+          - <<: *i18n.adjective
+            min: 48
             max: 48
             result: Kind
-          - min: 49
+          - <<: *i18n.adjective
+            min: 49
             max: 49
             result: Charming
-          - min: 50
+          - <<: *i18n.adjective
+            min: 50
             max: 50
             result: Oblivious
-          - min: 51
+          - <<: *i18n.adjective
+            min: 51
             max: 51
             result: Critical
-          - min: 52
+          - <<: *i18n.adjective
+            min: 52
             max: 52
             result: Cautious
-          - min: 53
+          - <<: *i18n.adjective
+            min: 53
             max: 53
             result: Resourceful
-          - min: 54
+          - <<: *i18n.adjective
+            min: 54
             max: 54
             result: Weary
-          - min: 55
+          - <<: *i18n.adjective
+            min: 55
             max: 55
             result: Wounded
-          - min: 56
+          - <<: *i18n.adjective
+            min: 56
             max: 56
             result: Anxious
-          - min: 57
+          - <<: *i18n.adjective
+            min: 57
             max: 57
             result: Powerful
-          - min: 58
+          - <<: *i18n.adjective
+            min: 58
             max: 58
             result: Athletic
-          - min: 59
+          - <<: *i18n.adjective
+            min: 59
             max: 59
             result: Driven
-          - min: 60
+          - <<: *i18n.adjective
+            min: 60
             max: 60
             result: Cruel
-          - min: 61
+          - <<: *i18n.adjective
+            min: 61
             max: 61
             result: Quiet
-          - min: 62
+          - <<: *i18n.adjective
+            min: 62
             max: 62
             result: Honest
-          - min: 63
+          - <<: *i18n.adjective
+            min: 63
             max: 63
             result: Infamous
-          - min: 64
+          - <<: *i18n.adjective
+            min: 64
             max: 64
             result: Dying
-          - min: 65
+          - <<: *i18n.adjective
+            min: 65
             max: 65
             result: Reclusive
-          - min: 66
+          - <<: *i18n.adjective
+            min: 66
             max: 66
             result: Artistic
-          - min: 67
+          - <<: *i18n.adjective
+            min: 67
             max: 67
             result: Disabled
-          - min: 68
+          - <<: *i18n.adjective
+            min: 68
             max: 68
             result: Confused
-          - min: 69
+          - <<: *i18n.adjective
+            min: 69
             max: 69
             result: Manipulative
-          - min: 70
+          - <<: *i18n.adjective
+            min: 70
             max: 70
             result: Relaxed
-          - min: 71
+          - <<: *i18n.adjective
+            min: 71
             max: 71
             result: Stealthy
-          - min: 72
+          - <<: *i18n.adjective
+            min: 72
             max: 72
             result: Confident
-          - min: 73
+          - <<: *i18n.adjective
+            min: 73
             max: 73
             result: Weak
-          - min: 74
+          - <<: *i18n.adjective
+            min: 74
             max: 74
             result: Friendly
-          - min: 75
+          - <<: *i18n.adjective
+            min: 75
             max: 75
             result: Wise
-          - min: 76
+          - <<: *i18n.adjective
+            min: 76
             max: 76
             result: Influential
-          - min: 77
+          - <<: *i18n.adjective
+            min: 77
             max: 77
             result: Young
-          - min: 78
+          - <<: *i18n.adjective
+            min: 78
             max: 78
             result: Adventurous
-          - min: 79
+          - <<: *i18n.adjective
+            min: 79
             max: 79
             result: Oppressed
-          - min: 80
+          - <<: *i18n.adjective
+            min: 80
             max: 80
             result: Vengeful
-          - min: 81
+          - <<: *i18n.adjective
+            min: 81
             max: 81
             result: Cooperative
-          - min: 82
+          - <<: *i18n.adjective
+            min: 82
             max: 82
             result: Armored
-          - min: 83
+          - <<: *i18n.adjective
+            min: 83
             max: 83
             result: Apathetic
-          - min: 84
+          - <<: *i18n.adjective
+            min: 84
             max: 84
             result: Determined
-          - min: 85
+          - <<: *i18n.adjective
+            min: 85
             max: 85
             result: Loyal
-          - min: 86
+          - <<: *i18n.adjective
+            min: 86
             max: 86
             result: Sick
-          - min: 87
+          - <<: *i18n.adjective
+            min: 87
             max: 87
             result: Religious
-          - min: 88
+          - <<: *i18n.adjective
+            min: 88
             max: 88
             result: Selfish
-          - min: 89
+          - <<: *i18n.adjective
+            min: 89
             max: 89
             result: Old
-          - min: 90
+          - <<: *i18n.adjective
+            min: 90
             max: 90
             result: Fervent
-          - min: 91
+          - <<: *i18n.adjective
+            min: 91
             max: 91
             result: Violent
-          - min: 92
+          - <<: *i18n.adjective
+            min: 92
             max: 92
             result: Agreeable
-          - min: 93
+          - <<: *i18n.adjective
+            min: 93
             max: 93
             result: Hot-tempered
-          - min: 94
+          - <<: *i18n.adjective
+            min: 94
             max: 94
             result: Stubborn
-          - min: 95
+          - <<: *i18n.adjective
+            min: 95
             max: 95
             result: Incompetent
-          - min: 96
+          - <<: *i18n.adjective
+            min: 96
             max: 96
             result: Greedy
-          - min: 97
+          - <<: *i18n.adjective
+            min: 97
             max: 97
             result: Cowardly
-          - min: 98
+          - <<: *i18n.adjective
+            min: 98
             max: 98
             result: Obsessed
-          - min: 99
+          - <<: *i18n.adjective
+            min: 99
             max: 99
             result: Careless
-          - min: 100
+          - <<: *i18n.adjective
+            min: 100
             max: 100
             result: Ironsworn

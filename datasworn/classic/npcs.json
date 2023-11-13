@@ -1,5 +1,4 @@
 {
-	"id": "classic",
 	"source": {
 		"title": "Ironsworn Rulebook",
 		"date": "2019-06-05",
@@ -11,7 +10,373 @@
 		"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
 		"url": "https://ironswornrpg.com"
 	},
+	"id": "classic",
 	"npcs": {
+		"ironlanders": {
+			"id": "classic/collections/npcs/ironlanders",
+			"name": "Ironlanders",
+			"summary": "The **Ironlanders** are the humans who have settled these lands.",
+			"description": "Ironlanders are the human inhabitants of these lands. Unless your story emphasizes adventures well outside of the settled regions, the majority of your interactions will be with fellow Ironlanders.\n\nThis section covers a few broad categories of Ironlanders. They are not representative of the variety of people and cultures in these lands. When you are forced to fight an Ironlander and need to determine their rank, you can [Ask the Oracle](id:classic/oracles/turning_point/challenge_rank/foe), or follow these guidelines:\n\n  * A common citizen or brute is **troublesome**.\n  * A trained warrior is **dangerous**.\n  * A powerful or veteran warrior is **formidable**.",
+			"contents": {
+				"broken": {
+					"id": "classic/npcs/ironlanders/broken",
+					"name": "Broken",
+					"nature": "Ironlander",
+					"rank": 1,
+					"features": [
+						"Crazed eyes",
+						"Painted skin",
+						"Feral screams",
+						"Scavenged clothing and weapons"
+					],
+					"drives": ["Show my power", "Share my pain"],
+					"tactics": ["Spring from hiding", "Ferocious attacks"],
+					"description": "Another people sailed to the Ironlands from the [Old World](id:classic/truths/old_world) long before our kin settled here. Something happened. Something changed them.\n\nWhether it was the long struggle in a harsh land, the ravages of war, or the corruption of some dark force, they left their humanity behind and became what we call the broken. Now, they exist only to kill, to destroy.\n\nWe fear the broken for their savagery. But, more than this, we fear them as a dark portent of what we might one day become.",
+					"quest_starter": "Years ago, an Ironlander child was taken by a broken tribe. Now they are seen living among them. What is your connection to this person? Can they be brought home, or are they forever lost?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 138,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"common_folk": {
+					"id": "classic/npcs/ironlanders/common_folk",
+					"name": "Common Folk",
+					"nature": "Ironlander",
+					"rank": 1,
+					"features": [
+						"Diverse looks",
+						"Weary and worried",
+						"Suspicious of strangers"
+					],
+					"drives": ["Prepare for winter", "Protect my family"],
+					"tactics": ["Desperate defense", "Stand together"],
+					"description": "Most of us in the Ironlands are common folk. We are farmers, laborers, crafters, sailors, and traders. When trouble comes, we know which way the pointy end goes and we stand together to protect our homes and kin.",
+					"quest_starter": "Two prominent families are at odds. What is the source of the conflict? What is your relationship to them? What danger threatens to destroy their community if they can’t put aside their petty squabble?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 139,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"hunter": {
+					"id": "classic/npcs/ironlanders/hunter",
+					"name": "Hunter",
+					"nature": "Ironlander",
+					"rank": 2,
+					"features": [
+						"Wearing hides and furs to ward away the cold",
+						"Steely gaze",
+						"At home in the woodlands"
+					],
+					"drives": ["A clean kill", "Survive the hunt"],
+					"tactics": ["Set traps", "Keep to the shadows", "Deadly shot"],
+					"description": "Hunters face brutal weather, difficult terrain, dangerous [animals](id:classic/collections/npcs/animals), and worse. Many never return from their hunts. Others return, but are forever changed.",
+					"quest_starter": "A hunter returns to her village, panic-stricken and pleading for help. The rest of her party is still out there. What happened to them?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 139,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"mystic": {
+					"id": "classic/npcs/ironlanders/mystic",
+					"name": "Mystic",
+					"nature": "Ironlander",
+					"rank": 2,
+					"features": ["Knowing eyes", "Tattooed skin"],
+					"drives": ["Respect the old ways", "Seek the paths of power"],
+					"tactics": [
+						"Foresee the intent of my enemies",
+						"Prepare rituals",
+						"Use trickery"
+					],
+					"description": "Some say you can tell a mystic by looking them in the eye. They walk in two worlds, and their eyes shimmer with that dark reflection of realms beyond our own. We call it the sight. Some hold that darkness in check. Others are consumed by it.",
+					"quest_starter": "A mystic returns to their home after a years-long journey. They are changed. What new power or knowledge do now they wield? What do they seek to do with it? Why do you oppose them?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 140,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"raider": {
+					"id": "classic/npcs/ironlanders/raider",
+					"name": "Raider",
+					"nature": "Ironlander",
+					"rank": 2,
+					"features": ["Geared for war", "Battle fervor"],
+					"drives": [
+						"What is theirs will be ours",
+						"Stand with my kin",
+						"Die a glorious death"
+					],
+					"tactics": ["Intimidate", "Shield wall", "Burn it down"],
+					"description": "Raiders survive by seizing what they need from others. Our grain. Our meat. Our animals. Our iron. They’ll take it all, and leave us facing the long winter with nothing to sustain us but prayers to indifferent gods.",
+					"quest_starter": "You were raised as a raider, born to battle, but long ago left that life. Troubled by your past, you vow to wipe this powerful clan from the Ironlands. How can you defeat them? What will happen when you must face your former shield-kin?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 140,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "A large raider clan is known and feared throughout the Ironlands. What is it called? Who leads it?"
+				},
+				"warrior": {
+					"id": "classic/npcs/ironlanders/warrior",
+					"name": "Warrior",
+					"nature": "Ironlander",
+					"rank": 2,
+					"features": ["Battle-hardened", "Scarred"],
+					"drives": [
+						"The thrill of the fight",
+						"Protect those in my charge",
+						"Survive another day"
+					],
+					"tactics": ["Maneuver for advantage", "Find an opening"],
+					"description": "Some Ironlanders, through strength of arms, set themselves apart from the common rabble. They are trained to fight, or simply born to it. For them, a sword, spear or axe is as natural a tool as any hammer or spade.",
+					"quest_starter": "A legendary warrior, now well past their prime, swears to face a daunting foe in one final battle. What help do they ask of you and why? Who is their enemy?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 141,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "Warrior’s shields are often emblazoned with meaningful symbols. What are they? Family crests? Animal totems? Mystical sigils? Motifs honoring the nations of the [Old World](id:classic/truths/old_world)? If you carry a shield, what is painted on yours?"
+				}
+			},
+			"source": {
+				"title": "Ironsworn Rulebook",
+				"date": "2019-06-05",
+				"page": 138,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
+		"firstborn": {
+			"id": "classic/collections/npcs/firstborn",
+			"name": "Firstborn",
+			"summary": "The **Firstborn** are beings who walked the Ironlands uncountable years before humans arrived.",
+			"description": "The firstborn lived here long before the humans landed on these shores. The humans, in their arrogance, named this peninsula the Ironlands and called themselves Ironlanders—but the firstborn gave it names of their own in a time beyond the reach of memory.",
+			"contents": {
+				"elf": {
+					"id": "classic/npcs/firstborn/elf",
+					"name": "Elf",
+					"nature": "Firstborn",
+					"rank": 2,
+					"features": [
+						"Large, luminous eyes seen through wooden masks",
+						"Gray-green skin the texture of dry leaves",
+						"Sonorous voices",
+						"Wielding bows and spears"
+					],
+					"drives": [
+						"Protect the wilds",
+						"Drive out trespassers, or see them pay"
+					],
+					"tactics": [
+						"Strike from shadow",
+						"Force their surrender",
+						"Turn the forest against them"
+					],
+					"description": "Elves are strange beings of the forest, seldom seen beyond the ancient woods of the [Deep Wilds](id:classic/atlas/ironlands/deep_wilds). They are fiercely protective of their lands and suspicious of humans. Their scouts patrol the borderlands, riding the fearsome mounts we call [gaunts](id:classic/npcs/animals/gaunt). Others of their kind watch us from the shadow of the deep woods, spears and bow at the ready. Some say elven mystics can bind the animals and beasts of the forest to aid in the defense of the Wilds.\n\nA few warn that the elves are biding their time, readying the attack which will drive us from these lands.",
+					"quest_starter": "The leader of an Ironlander community seeks an audience with the elves. For what purpose? Why are you compelled to help?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 142,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "Elves conceal their faces behind ornate wooden masks. What do these masks signify?"
+				},
+				"giant": {
+					"id": "classic/npcs/firstborn/giant",
+					"name": "Giant",
+					"nature": "Firstborn",
+					"rank": 4,
+					"features": [
+						"Dark hair and ruddy skin",
+						"Twice the size of a tall man, or more",
+						"Wearing layers of wool, hide and furs",
+						"Stoic and observant"
+					],
+					"drives": ["Survive the winter", "Protect the herd"],
+					"tactics": [
+						"Fight as a last resort",
+						"Sweeping strike",
+						"Make them flee"
+					],
+					"description": "Giants dwell in the [Tempest Hills](id:classic/atlas/ironlands/tempest_hills) and [Veiled Mountains](id:classic/atlas/ironlands/veiled_mountains). They live a nomadic life alone or in small family units, herding oxen, mountain goats, and sheep. In their own language they are called the Jokul.\n\nMany Ironlanders misinterpret their quiet nature for dullness, but giants are keenly intelligent and observant. They have a great respect for life, even for our kind, and will use trickery and negotiation to avoid a fight. When they are left without other options, an enraged giant is a devastating, relentless force.",
+					"quest_starter": "A pair of giants are raiding human settlements, stealing supplies and livestock. With winter coming, the survival of those settlements is threatened. What is driving the giants down from the hills?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 143,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "Every fifth spring, the giant clans meet for a gathering. There, the memory-keepers sing of a great giant hero, revered by all. Who is this hero?"
+				},
+				"primordial": {
+					"id": "classic/npcs/firstborn/primordial",
+					"name": "Primordial",
+					"nature": "Firstborn",
+					"rank": 4,
+					"features": [
+						"Personification of the natural world",
+						"Turbulent, changing form",
+						"Vaguely human-like or animal-like form"
+					],
+					"drives": ["Embody chaos", "Cling to vestiges of power"],
+					"tactics": ["Control the elements", "Destroy with primal rage"],
+					"description": "The primordials, said to be the vestigial spirits of long-forgotten gods, are the most ancient of the firstborn. Each embodies some aspect of the natural world, bound in a form which is a crude mimicry of a human or large animal. A river primordial is a mass of rock, gravel, and flowing water. A forest primordial is comprised of wood, earth, rocks, and plants. A mountain primordial is a lumbering being of glacier stone and ice. A fire primordial, depending on its mood, might take form as embers, ash and smoke—or as a raging pyre.\n\nThey range in size from the height of an Ironlander to half-again as tall as a [giant](id:classic/npcs/firstborn/giant). Rumors persist of primordials who dwell in the deepest parts of the Wilds, or high in the ranges of the [Veiled Mountains](id:classic/atlas/ironlands/veiled_mountains), who are as tall as an ancient tree. Beyond, some suggest, in the [Shattered Wastes](id:classic/atlas/ironlands/shattered_wastes), live primordials who tower into the clouds. Is the sound of distant thunder sometimes the footfalls of mountain-sized primordials who dwell beyond the edges of the known world?\n\nPrimordials are solitary beings and as unpredictable as the natural forces they personify. They might ignore you. They might lurk at a distance, as if observing you. Or, they might attack. They do not speak in any language we can understand. Some suggest they have no intelligence, and are merely a manifestation of the natural world, no different than a winter storm.\n\nHow do you kill an primordial? Most scoff at the idea. You are just as likely to kill the rain or the sea. A mystic might tell you to use a weapon imbued with elemental power. Don’t trust them. If you see a primordial, keep your distance. Better yet, run.",
+					"quest_starter": "In the dead of winter, a fire primordial is razing homes and burning a nearby wood. At night, orange flames light the sky. What can be done to stop this destruction?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 144,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"troll": {
+					"id": "classic/npcs/firstborn/troll",
+					"name": "Troll",
+					"nature": "Firstborn",
+					"rank": 3,
+					"features": [
+						"Long limbs",
+						"Sunken, beady eyes",
+						"Translucent skin camouflaged to the environment",
+						"Keen sense of smell",
+						"Speaks in gibberish"
+					],
+					"drives": ["Find pretty things", "Keep it secret"],
+					"tactics": ["Be sneaky", "Bite and claw", "Run and hide"],
+					"description": "Trolls mostly live in the [Flooded Land](id:classic/atlas/ironlands/flooded_lands), but it’s not unusual to encounter one in the [Hinterlands](id:classic/atlas/ironlands/hinterlands) or even in the southern reaches of the [Havens](id:classic/atlas/ironlands/havens). They are solitary creatures, wary of contact with Ironlanders but likely to attack if scared or provoked.\n\nThey move with their back hunched, often skulking on all four gangly limbs. When they stand straight they are much taller than humans—nearly as tall as a giant. Their skin is a sickly pale gray, but they can camouflage themselves by changing it to match their environment.\n\nTrolls collect objects of all sorts, and particularly value Ironlander trinkets. They are tormented by the fear of others stealing their hoard, and are constantly seeking out new, better hiding places. The items are mostly junk to anyone but a troll, but occasionally an object of real value finds its way into the dregs.",
+					"quest_starter": "The villagers tolerate the troll who lives nearby because its presence serves to dissuade a greater threat. They even donate items for its hoard, and put up with its occasional thievery. But now, the troll is missing. What is the looming threat the troll helped avert?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 145,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				},
+				"varou": {
+					"id": "classic/npcs/firstborn/varou",
+					"name": "Varou",
+					"nature": "Firstborn",
+					"rank": 2,
+					"features": [
+						"Yellow eyes shining in the moonlight",
+						"Pointed ears and snout-like faces"
+					],
+					"drives": [
+						"Take their land",
+						"Defend my kin",
+						"Keep the bloodcall at bay"
+					],
+					"tactics": [
+						"Strike at night",
+						"Leap into combat",
+						"Let loose the bloodcall"
+					],
+					"description": "The varou are humanoid beings who dwell within the [Deep Wilds](id:classic/atlas/ironlands/deep_wilds) and in the woods of the [Hinterlands](id:classic/atlas/ironlands/hinterlands). They have fierce, wolf-like features and are broad-shouldered and a head taller than the average Ironlander. Their long hair is ornately groomed and decorated with beads and other trinkets.\n\nThe varou value territory above all things. They often war amongst themselves and against the [elves](id:classic/npcs/firstborn/elf) to gain or defend holdings. They mark their claims by carving clan symbols into trees. Only the foolish ignore the warning of these border signs. Several of our settlements—built too close to varou territory—are now abandoned ruins bearing the mark of a victorious varou clan.",
+					"quest_starter": "A varou clan has carved their mark into the trees surrounding an Ironlander community, claiming it as their territory. An attack is surely imminent. What will you do to prevent it?",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 146,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "A young varou receives their keth—a curved dagger—before undergoing a rite of passage. What must they do to take their place among the adults of the clan?"
+				}
+			},
+			"source": {
+				"title": "Ironsworn Rulebook",
+				"date": "2019-06-05",
+				"page": 142,
+				"authors": [
+					{
+						"name": "Shawn Tomkin"
+					}
+				],
+				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+				"url": "https://ironswornrpg.com"
+			}
+		},
 		"animals": {
 			"id": "classic/collections/npcs/animals",
 			"name": "Animals",
@@ -357,186 +722,6 @@
 				"url": "https://ironswornrpg.com"
 			}
 		},
-		"firstborn": {
-			"id": "classic/collections/npcs/firstborn",
-			"name": "Firstborn",
-			"summary": "The **Firstborn** are beings who walked the Ironlands uncountable years before humans arrived.",
-			"description": "The firstborn lived here long before the humans landed on these shores. The humans, in their arrogance, named this peninsula the Ironlands and called themselves Ironlanders—but the firstborn gave it names of their own in a time beyond the reach of memory.",
-			"contents": {
-				"elf": {
-					"id": "classic/npcs/firstborn/elf",
-					"name": "Elf",
-					"nature": "Firstborn",
-					"rank": 2,
-					"features": [
-						"Large, luminous eyes seen through wooden masks",
-						"Gray-green skin the texture of dry leaves",
-						"Sonorous voices",
-						"Wielding bows and spears"
-					],
-					"drives": [
-						"Protect the wilds",
-						"Drive out trespassers, or see them pay"
-					],
-					"tactics": [
-						"Strike from shadow",
-						"Force their surrender",
-						"Turn the forest against them"
-					],
-					"description": "Elves are strange beings of the forest, seldom seen beyond the ancient woods of the [Deep Wilds](id:classic/atlas/ironlands/deep_wilds). They are fiercely protective of their lands and suspicious of humans. Their scouts patrol the borderlands, riding the fearsome mounts we call [gaunts](id:classic/npcs/animals/gaunt). Others of their kind watch us from the shadow of the deep woods, spears and bow at the ready. Some say elven mystics can bind the animals and beasts of the forest to aid in the defense of the Wilds.\n\nA few warn that the elves are biding their time, readying the attack which will drive us from these lands.",
-					"quest_starter": "The leader of an Ironlander community seeks an audience with the elves. For what purpose? Why are you compelled to help?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 142,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "Elves conceal their faces behind ornate wooden masks. What do these masks signify?"
-				},
-				"giant": {
-					"id": "classic/npcs/firstborn/giant",
-					"name": "Giant",
-					"nature": "Firstborn",
-					"rank": 4,
-					"features": [
-						"Dark hair and ruddy skin",
-						"Twice the size of a tall man, or more",
-						"Wearing layers of wool, hide and furs",
-						"Stoic and observant"
-					],
-					"drives": ["Survive the winter", "Protect the herd"],
-					"tactics": [
-						"Fight as a last resort",
-						"Sweeping strike",
-						"Make them flee"
-					],
-					"description": "Giants dwell in the [Tempest Hills](id:classic/atlas/ironlands/tempest_hills) and [Veiled Mountains](id:classic/atlas/ironlands/veiled_mountains). They live a nomadic life alone or in small family units, herding oxen, mountain goats, and sheep. In their own language they are called the Jokul.\n\nMany Ironlanders misinterpret their quiet nature for dullness, but giants are keenly intelligent and observant. They have a great respect for life, even for our kind, and will use trickery and negotiation to avoid a fight. When they are left without other options, an enraged giant is a devastating, relentless force.",
-					"quest_starter": "A pair of giants are raiding human settlements, stealing supplies and livestock. With winter coming, the survival of those settlements is threatened. What is driving the giants down from the hills?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 143,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "Every fifth spring, the giant clans meet for a gathering. There, the memory-keepers sing of a great giant hero, revered by all. Who is this hero?"
-				},
-				"primordial": {
-					"id": "classic/npcs/firstborn/primordial",
-					"name": "Primordial",
-					"nature": "Firstborn",
-					"rank": 4,
-					"features": [
-						"Personification of the natural world",
-						"Turbulent, changing form",
-						"Vaguely human-like or animal-like form"
-					],
-					"drives": ["Embody chaos", "Cling to vestiges of power"],
-					"tactics": ["Control the elements", "Destroy with primal rage"],
-					"description": "The primordials, said to be the vestigial spirits of long-forgotten gods, are the most ancient of the firstborn. Each embodies some aspect of the natural world, bound in a form which is a crude mimicry of a human or large animal. A river primordial is a mass of rock, gravel, and flowing water. A forest primordial is comprised of wood, earth, rocks, and plants. A mountain primordial is a lumbering being of glacier stone and ice. A fire primordial, depending on its mood, might take form as embers, ash and smoke—or as a raging pyre.\n\nThey range in size from the height of an Ironlander to half-again as tall as a [giant](id:classic/npcs/firstborn/giant). Rumors persist of primordials who dwell in the deepest parts of the Wilds, or high in the ranges of the [Veiled Mountains](id:classic/atlas/ironlands/veiled_mountains), who are as tall as an ancient tree. Beyond, some suggest, in the [Shattered Wastes](id:classic/atlas/ironlands/shattered_wastes), live primordials who tower into the clouds. Is the sound of distant thunder sometimes the footfalls of mountain-sized primordials who dwell beyond the edges of the known world?\n\nPrimordials are solitary beings and as unpredictable as the natural forces they personify. They might ignore you. They might lurk at a distance, as if observing you. Or, they might attack. They do not speak in any language we can understand. Some suggest they have no intelligence, and are merely a manifestation of the natural world, no different than a winter storm.\n\nHow do you kill an primordial? Most scoff at the idea. You are just as likely to kill the rain or the sea. A mystic might tell you to use a weapon imbued with elemental power. Don’t trust them. If you see a primordial, keep your distance. Better yet, run.",
-					"quest_starter": "In the dead of winter, a fire primordial is razing homes and burning a nearby wood. At night, orange flames light the sky. What can be done to stop this destruction?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 144,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"troll": {
-					"id": "classic/npcs/firstborn/troll",
-					"name": "Troll",
-					"nature": "Firstborn",
-					"rank": 3,
-					"features": [
-						"Long limbs",
-						"Sunken, beady eyes",
-						"Translucent skin camouflaged to the environment",
-						"Keen sense of smell",
-						"Speaks in gibberish"
-					],
-					"drives": ["Find pretty things", "Keep it secret"],
-					"tactics": ["Be sneaky", "Bite and claw", "Run and hide"],
-					"description": "Trolls mostly live in the [Flooded Land](id:classic/atlas/ironlands/flooded_lands), but it’s not unusual to encounter one in the [Hinterlands](id:classic/atlas/ironlands/hinterlands) or even in the southern reaches of the [Havens](id:classic/atlas/ironlands/havens). They are solitary creatures, wary of contact with Ironlanders but likely to attack if scared or provoked.\n\nThey move with their back hunched, often skulking on all four gangly limbs. When they stand straight they are much taller than humans—nearly as tall as a giant. Their skin is a sickly pale gray, but they can camouflage themselves by changing it to match their environment.\n\nTrolls collect objects of all sorts, and particularly value Ironlander trinkets. They are tormented by the fear of others stealing their hoard, and are constantly seeking out new, better hiding places. The items are mostly junk to anyone but a troll, but occasionally an object of real value finds its way into the dregs.",
-					"quest_starter": "The villagers tolerate the troll who lives nearby because its presence serves to dissuade a greater threat. They even donate items for its hoard, and put up with its occasional thievery. But now, the troll is missing. What is the looming threat the troll helped avert?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 145,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"varou": {
-					"id": "classic/npcs/firstborn/varou",
-					"name": "Varou",
-					"nature": "Firstborn",
-					"rank": 2,
-					"features": [
-						"Yellow eyes shining in the moonlight",
-						"Pointed ears and snout-like faces"
-					],
-					"drives": [
-						"Take their land",
-						"Defend my kin",
-						"Keep the bloodcall at bay"
-					],
-					"tactics": [
-						"Strike at night",
-						"Leap into combat",
-						"Let loose the bloodcall"
-					],
-					"description": "The varou are humanoid beings who dwell within the [Deep Wilds](id:classic/atlas/ironlands/deep_wilds) and in the woods of the [Hinterlands](id:classic/atlas/ironlands/hinterlands). They have fierce, wolf-like features and are broad-shouldered and a head taller than the average Ironlander. Their long hair is ornately groomed and decorated with beads and other trinkets.\n\nThe varou value territory above all things. They often war amongst themselves and against the [elves](id:classic/npcs/firstborn/elf) to gain or defend holdings. They mark their claims by carving clan symbols into trees. Only the foolish ignore the warning of these border signs. Several of our settlements—built too close to varou territory—are now abandoned ruins bearing the mark of a victorious varou clan.",
-					"quest_starter": "A varou clan has carved their mark into the trees surrounding an Ironlander community, claiming it as their territory. An attack is surely imminent. What will you do to prevent it?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 146,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "A young varou receives their keth—a curved dagger—before undergoing a rite of passage. What must they do to take their place among the adults of the clan?"
-				}
-			},
-			"source": {
-				"title": "Ironsworn Rulebook",
-				"date": "2019-06-05",
-				"page": 142,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
 		"horrors": {
 			"id": "classic/collections/npcs/horrors",
 			"name": "Horrors",
@@ -574,6 +759,34 @@
 						"url": "https://ironswornrpg.com"
 					}
 				},
+				"frostbound": {
+					"id": "classic/npcs/horrors/frostbound",
+					"name": "Frostbound",
+					"nature": "Horror",
+					"rank": 3,
+					"features": [
+						"Mummified, desiccated flesh",
+						"Frozen blue eyes",
+						"A sorrowful, hollow scream"
+					],
+					"drives": ["Absorb the warmth of the living"],
+					"tactics": ["Sense heat", "Life-draining grasp"],
+					"description": "Some who fall prey to the long winters or the wild storms of the northern regions are given a horrible new life as the frostbound. These animated corpses are cursed to forever seek out the warmth their death took from them.",
+					"quest_starter": "A group of frostbound lurk along a mountain trail. This path is the only safe route to the lowlands from a mining village.",
+					"source": {
+						"title": "Ironsworn Rulebook",
+						"date": "2019-06-05",
+						"page": 158,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"your_truth": "Can creatures other than Ironlanders become frostbound? If so, undeath gives them uncanny strength. Make them one rank higher than their living form."
+				},
 				"chimera": {
 					"id": "classic/npcs/horrors/chimera",
 					"name": "Chimera",
@@ -603,34 +816,6 @@
 						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
 						"url": "https://ironswornrpg.com"
 					}
-				},
-				"frostbound": {
-					"id": "classic/npcs/horrors/frostbound",
-					"name": "Frostbound",
-					"nature": "Horror",
-					"rank": 3,
-					"features": [
-						"Mummified, desiccated flesh",
-						"Frozen blue eyes",
-						"A sorrowful, hollow scream"
-					],
-					"drives": ["Absorb the warmth of the living"],
-					"tactics": ["Sense heat", "Life-draining grasp"],
-					"description": "Some who fall prey to the long winters or the wild storms of the northern regions are given a horrible new life as the frostbound. These animated corpses are cursed to forever seek out the warmth their death took from them.",
-					"quest_starter": "A group of frostbound lurk along a mountain trail. This path is the only safe route to the lowlands from a mining village.",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 158,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "Can creatures other than Ironlanders become frostbound? If so, undeath gives them uncanny strength. Make them one rank higher than their living form."
 				},
 				"haunt": {
 					"id": "classic/npcs/horrors/haunt",
@@ -761,191 +946,6 @@
 				"title": "Ironsworn Rulebook",
 				"date": "2019-06-05",
 				"page": 157,
-				"authors": [
-					{
-						"name": "Shawn Tomkin"
-					}
-				],
-				"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-				"url": "https://ironswornrpg.com"
-			}
-		},
-		"ironlanders": {
-			"id": "classic/collections/npcs/ironlanders",
-			"name": "Ironlanders",
-			"summary": "The **Ironlanders** are the humans who have settled these lands.",
-			"description": "Ironlanders are the human inhabitants of these lands. Unless your story emphasizes adventures well outside of the settled regions, the majority of your interactions will be with fellow Ironlanders.\n\nThis section covers a few broad categories of Ironlanders. They are not representative of the variety of people and cultures in these lands. When you are forced to fight an Ironlander and need to determine their rank, you can [Ask the Oracle](id:classic/oracles/turning_point/challenge_rank/foe), or follow these guidelines:\n\n  * A common citizen or brute is **troublesome**.\n  * A trained warrior is **dangerous**.\n  * A powerful or veteran warrior is **formidable**.",
-			"contents": {
-				"broken": {
-					"id": "classic/npcs/ironlanders/broken",
-					"name": "Broken",
-					"nature": "Ironlander",
-					"rank": 1,
-					"features": [
-						"Crazed eyes",
-						"Painted skin",
-						"Feral screams",
-						"Scavenged clothing and weapons"
-					],
-					"drives": ["Show my power", "Share my pain"],
-					"tactics": ["Spring from hiding", "Ferocious attacks"],
-					"description": "Another people sailed to the Ironlands from the [Old World](id:classic/truths/old_world) long before our kin settled here. Something happened. Something changed them.\n\nWhether it was the long struggle in a harsh land, the ravages of war, or the corruption of some dark force, they left their humanity behind and became what we call the broken. Now, they exist only to kill, to destroy.\n\nWe fear the broken for their savagery. But, more than this, we fear them as a dark portent of what we might one day become.",
-					"quest_starter": "Years ago, an Ironlander child was taken by a broken tribe. Now they are seen living among them. What is your connection to this person? Can they be brought home, or are they forever lost?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 138,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"common_folk": {
-					"id": "classic/npcs/ironlanders/common_folk",
-					"name": "Common Folk",
-					"nature": "Ironlander",
-					"rank": 1,
-					"features": [
-						"Diverse looks",
-						"Weary and worried",
-						"Suspicious of strangers"
-					],
-					"drives": ["Prepare for winter", "Protect my family"],
-					"tactics": ["Desperate defense", "Stand together"],
-					"description": "Most of us in the Ironlands are common folk. We are farmers, laborers, crafters, sailors, and traders. When trouble comes, we know which way the pointy end goes and we stand together to protect our homes and kin.",
-					"quest_starter": "Two prominent families are at odds. What is the source of the conflict? What is your relationship to them? What danger threatens to destroy their community if they can’t put aside their petty squabble?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 139,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"hunter": {
-					"id": "classic/npcs/ironlanders/hunter",
-					"name": "Hunter",
-					"nature": "Ironlander",
-					"rank": 2,
-					"features": [
-						"Wearing hides and furs to ward away the cold",
-						"Steely gaze",
-						"At home in the woodlands"
-					],
-					"drives": ["A clean kill", "Survive the hunt"],
-					"tactics": ["Set traps", "Keep to the shadows", "Deadly shot"],
-					"description": "Hunters face brutal weather, difficult terrain, dangerous [animals](id:classic/collections/npcs/animals), and worse. Many never return from their hunts. Others return, but are forever changed.",
-					"quest_starter": "A hunter returns to her village, panic-stricken and pleading for help. The rest of her party is still out there. What happened to them?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 139,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"mystic": {
-					"id": "classic/npcs/ironlanders/mystic",
-					"name": "Mystic",
-					"nature": "Ironlander",
-					"rank": 2,
-					"features": ["Knowing eyes", "Tattooed skin"],
-					"drives": ["Respect the old ways", "Seek the paths of power"],
-					"tactics": [
-						"Foresee the intent of my enemies",
-						"Prepare rituals",
-						"Use trickery"
-					],
-					"description": "Some say you can tell a mystic by looking them in the eye. They walk in two worlds, and their eyes shimmer with that dark reflection of realms beyond our own. We call it the sight. Some hold that darkness in check. Others are consumed by it.",
-					"quest_starter": "A mystic returns to their home after a years-long journey. They are changed. What new power or knowledge do now they wield? What do they seek to do with it? Why do you oppose them?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 140,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					}
-				},
-				"raider": {
-					"id": "classic/npcs/ironlanders/raider",
-					"name": "Raider",
-					"nature": "Ironlander",
-					"rank": 2,
-					"features": ["Geared for war", "Battle fervor"],
-					"drives": [
-						"What is theirs will be ours",
-						"Stand with my kin",
-						"Die a glorious death"
-					],
-					"tactics": ["Intimidate", "Shield wall", "Burn it down"],
-					"description": "Raiders survive by seizing what they need from others. Our grain. Our meat. Our animals. Our iron. They’ll take it all, and leave us facing the long winter with nothing to sustain us but prayers to indifferent gods.",
-					"quest_starter": "You were raised as a raider, born to battle, but long ago left that life. Troubled by your past, you vow to wipe this powerful clan from the Ironlands. How can you defeat them? What will happen when you must face your former shield-kin?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 140,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "A large raider clan is known and feared throughout the Ironlands. What is it called? Who leads it?"
-				},
-				"warrior": {
-					"id": "classic/npcs/ironlanders/warrior",
-					"name": "Warrior",
-					"nature": "Ironlander",
-					"rank": 2,
-					"features": ["Battle-hardened", "Scarred"],
-					"drives": [
-						"The thrill of the fight",
-						"Protect those in my charge",
-						"Survive another day"
-					],
-					"tactics": ["Maneuver for advantage", "Find an opening"],
-					"description": "Some Ironlanders, through strength of arms, set themselves apart from the common rabble. They are trained to fight, or simply born to it. For them, a sword, spear or axe is as natural a tool as any hammer or spade.",
-					"quest_starter": "A legendary warrior, now well past their prime, swears to face a daunting foe in one final battle. What help do they ask of you and why? Who is their enemy?",
-					"source": {
-						"title": "Ironsworn Rulebook",
-						"date": "2019-06-05",
-						"page": 141,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by-nc-sa/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"your_truth": "Warrior’s shields are often emblazoned with meaningful symbols. What are they? Family crests? Animal totems? Mystical sigils? Motifs honoring the nations of the [Old World](id:classic/truths/old_world)? If you carry a shield, what is painted on yours?"
-				}
-			},
-			"source": {
-				"title": "Ironsworn Rulebook",
-				"date": "2019-06-05",
-				"page": 138,
 				"authors": [
 					{
 						"name": "Shawn Tomkin"

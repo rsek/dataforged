@@ -119,7 +119,6 @@ const sortJsonOptions = {
  * @type {import('prettier').Config }
  */
 module.exports = {
-	plugins: ['prettier-plugin-sort-json'],
 	arrowParens: 'always',
 	bracketSameLine: true,
 	bracketSpacing: true,
@@ -138,6 +137,7 @@ module.exports = {
 	trailingComma: 'none',
 	vueIndentScriptAndStyle: false,
 	// spaces are really crappy for accessibility: https://adamtuttle.codes/blog/2021/tabs-vs-spaces-its-an-accessibility-issue/
-	useTabs: true,
-	...sortJsonOptions
+	useTabs: true
+	// plugins: ['prettier-plugin-sort-json'],
+	// ...sortJsonOptions
 }

@@ -1,5 +1,4 @@
 {
-	"id": "delve",
 	"source": {
 		"title": "Ironsworn: Delve",
 		"date": "2020-02-13",
@@ -11,6 +10,7 @@
 		"license": "https://creativecommons.org/licenses/by/4.0",
 		"url": "https://ironswornrpg.com"
 	},
+	"id": "delve",
 	"oracles": {
 		"character": {
 			"id": "delve/collections/oracles/character",
@@ -3103,6 +3103,478 @@
 			"summary": "Discover the nature of a [nightspawn](id:delve/npcs/horrors/nightspawn) or other frightful creature within your world.",
 			"description": "Use the Monstrosity oracle to define the nature of a [Nightspawn](id:delve/npcs/horrors/nightspawn), or to introduce a new type of [animal](id:classic/collections/npcs/animal), [beast](id:classic/collections/npcs/beast), or [horror](id:classic/collections/npcs/horror) in your world.\n\nTo create a monstrosity, start by rolling for its [Size](id:delve/oracles/monstrosity/size) and [Primary Form](id:delve/oracles/monstrosity/primary_form). Then, roll up to four times for [Characteristics](id:delve/oracles/monstrosity/characteristics) and keep up to three of those results. Do the same for [Abilities](id:delve/oracles/monstrosity/abilities).\n\nGive the monstrosity a rank. Choose one appropriate to its features, or use the [Challenge Rank](id:classic/oracles/turning_point/challenge_rank) oracle.\n\nFinally, envision your creation and give it a name. It’s part of your world now.\n\nSome results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.\n\nTo learn more about your creation’s nature, you can roll on additional tables. Use the [Character Goal](id:classic/oracles/character/goal) oracle to give the monstrosity a purpose. Roll on the [Character Disposition](id:classic/oracles/character/disposition) and [Activity](id:delve/oracles/character/activity) oracles to frame your initial encounter. Another roll or two can give your monstrosity nuance and complexity, making it a deeper part of your story.",
 			"contents": {
+				"size": {
+					"id": "delve/oracles/monstrosity/size",
+					"name": "Size",
+					"canonical_name": "Monstrosity: Size",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 214,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/size/1-5",
+							"min": 1,
+							"max": 5,
+							"result": "Tiny (rodent-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/6-30",
+							"min": 6,
+							"max": 30,
+							"result": "Small (hound-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/31-65",
+							"min": 31,
+							"max": 65,
+							"result": "Medium (person-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/66-94",
+							"min": 66,
+							"max": 94,
+							"result": "Large (giant-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/95-99",
+							"min": 95,
+							"max": 99,
+							"result": "Huge (whale-sized)"
+						},
+						{
+							"id": "delve/oracles/monstrosity/size/100-100",
+							"min": 100,
+							"max": 100,
+							"result": "Titanic (incomprehensible)"
+						}
+					]
+				},
+				"primary_form": {
+					"id": "delve/oracles/monstrosity/primary_form",
+					"name": "Primary Form",
+					"canonical_name": "Monstrosity: Primary Form",
+					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 214,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/primary_form/1-15",
+							"min": 1,
+							"max": 15,
+							"result": "Beast / mammal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/16-25",
+							"min": 16,
+							"max": 25,
+							"result": "Humanoid",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/26-31",
+							"min": 26,
+							"max": 31,
+							"result": "Bird",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/32-37",
+							"min": 32,
+							"max": 37,
+							"result": "Spider",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/38-43",
+							"min": 38,
+							"max": 43,
+							"result": "Snake",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/44-49",
+							"min": 44,
+							"max": 49,
+							"result": "Worm / slug",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/50-55",
+							"min": 50,
+							"max": 55,
+							"result": "Lizard",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/56-61",
+							"min": 56,
+							"max": 61,
+							"result": "Insect",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/62-66",
+							"min": 62,
+							"max": 66,
+							"result": "Amorphous",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/67-69",
+							"min": 67,
+							"max": 69,
+							"result": "Crustacean",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/70-71",
+							"min": 70,
+							"max": 71,
+							"result": "Fish",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/72-73",
+							"min": 72,
+							"max": 73,
+							"result": "Octopoid",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/74-75",
+							"min": 74,
+							"max": 75,
+							"result": "Amphibian",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/76-77",
+							"min": 76,
+							"max": 77,
+							"result": "Plant",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/78-78",
+							"min": 78,
+							"max": 78,
+							"result": "Incorporeal",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/79-79",
+							"min": 79,
+							"max": 79,
+							"result": "Mineral",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/80-80",
+							"min": 80,
+							"max": 80,
+							"result": "Elemental",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjective"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/monstrosity/primary_form/81-100",
+							"min": 81,
+							"max": 100,
+							"result": "Hybrid (roll twice)",
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							},
+							"rolls": [
+								{
+									"auto": true,
+									"method": "no_duplicates",
+									"times": 2
+								}
+							]
+						}
+					]
+				},
+				"characteristics": {
+					"id": "delve/oracles/monstrosity/characteristics",
+					"name": "Characteristics",
+					"canonical_name": "Monstrosity: Characteristics",
+					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
+					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 215,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/monstrosity/characteristics/1-5",
+							"min": 1,
+							"max": 5,
+							"result": "Extra limbs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/6-10",
+							"min": 6,
+							"max": 10,
+							"result": "Fangs / rows of sharp teeth"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/11-15",
+							"min": 11,
+							"max": 15,
+							"result": "Claws / talons"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/16-20",
+							"min": 16,
+							"max": 20,
+							"result": "Strange color / markings"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/21-25",
+							"min": 21,
+							"max": 25,
+							"result": "Horns / tusks"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/26-30",
+							"min": 26,
+							"max": 30,
+							"result": "Oversized mouth"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/31-35",
+							"min": 31,
+							"max": 35,
+							"result": "Spikes / spines"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/36-40",
+							"min": 36,
+							"max": 40,
+							"result": "Tail"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/41-45",
+							"min": 41,
+							"max": 45,
+							"result": "Multi-segmented body"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/46-50",
+							"min": 46,
+							"max": 50,
+							"result": "Wings"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/51-54",
+							"min": 51,
+							"max": 54,
+							"result": "Stinger / barbs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/55-58",
+							"min": 55,
+							"max": 58,
+							"result": "Many-eyed"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/59-62",
+							"min": 59,
+							"max": 62,
+							"result": "Distinctive sound"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/63-66",
+							"min": 63,
+							"max": 66,
+							"result": "Tentacles / tendrils"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/67-69",
+							"min": 67,
+							"max": 69,
+							"result": "Mandibles / pincers"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/70-72",
+							"min": 70,
+							"max": 72,
+							"result": "Luminescent"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/73-75",
+							"min": 73,
+							"max": 75,
+							"result": "Antennae / sensory organs"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/76-78",
+							"min": 76,
+							"max": 78,
+							"result": "Proboscis / inner jaw"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/79-81",
+							"min": 79,
+							"max": 81,
+							"result": "Exoskeleton / shell"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/82-84",
+							"min": 82,
+							"max": 84,
+							"result": "Bony protuberances"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/85-87",
+							"min": 85,
+							"max": 87,
+							"result": "Corrupted flesh"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/88-90",
+							"min": 88,
+							"max": 90,
+							"result": "Semi-transparent"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/91-93",
+							"min": 91,
+							"max": 93,
+							"result": "Scarred / injured"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/94-95",
+							"min": 94,
+							"max": 95,
+							"result": "Egg sac / carried offspring"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/96-97",
+							"min": 96,
+							"max": 97,
+							"result": "Rotting / skeletal"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/98-98",
+							"min": 98,
+							"max": 98,
+							"result": "Mummified / desiccated"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/99-99",
+							"min": 99,
+							"max": 99,
+							"result": "Multi-headed"
+						},
+						{
+							"id": "delve/oracles/monstrosity/characteristics/100-100",
+							"min": 100,
+							"max": 100,
+							"result": "Etched with mystic runes"
+						}
+					]
+				},
 				"abilities": {
 					"id": "delve/oracles/monstrosity/abilities",
 					"name": "Abilities",
@@ -3364,478 +3836,6 @@
 							"result": "Control elements"
 						}
 					]
-				},
-				"characteristics": {
-					"id": "delve/oracles/monstrosity/characteristics",
-					"name": "Characteristics",
-					"canonical_name": "Monstrosity: Characteristics",
-					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
-					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 215,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/characteristics/1-5",
-							"min": 1,
-							"max": 5,
-							"result": "Extra limbs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/6-10",
-							"min": 6,
-							"max": 10,
-							"result": "Fangs / rows of sharp teeth"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/11-15",
-							"min": 11,
-							"max": 15,
-							"result": "Claws / talons"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/16-20",
-							"min": 16,
-							"max": 20,
-							"result": "Strange color / markings"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/21-25",
-							"min": 21,
-							"max": 25,
-							"result": "Horns / tusks"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/26-30",
-							"min": 26,
-							"max": 30,
-							"result": "Oversized mouth"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/31-35",
-							"min": 31,
-							"max": 35,
-							"result": "Spikes / spines"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/36-40",
-							"min": 36,
-							"max": 40,
-							"result": "Tail"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/41-45",
-							"min": 41,
-							"max": 45,
-							"result": "Multi-segmented body"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/46-50",
-							"min": 46,
-							"max": 50,
-							"result": "Wings"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/51-54",
-							"min": 51,
-							"max": 54,
-							"result": "Stinger / barbs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/55-58",
-							"min": 55,
-							"max": 58,
-							"result": "Many-eyed"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/59-62",
-							"min": 59,
-							"max": 62,
-							"result": "Distinctive sound"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/63-66",
-							"min": 63,
-							"max": 66,
-							"result": "Tentacles / tendrils"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/67-69",
-							"min": 67,
-							"max": 69,
-							"result": "Mandibles / pincers"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/70-72",
-							"min": 70,
-							"max": 72,
-							"result": "Luminescent"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/73-75",
-							"min": 73,
-							"max": 75,
-							"result": "Antennae / sensory organs"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/76-78",
-							"min": 76,
-							"max": 78,
-							"result": "Proboscis / inner jaw"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/79-81",
-							"min": 79,
-							"max": 81,
-							"result": "Exoskeleton / shell"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/82-84",
-							"min": 82,
-							"max": 84,
-							"result": "Bony protuberances"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/85-87",
-							"min": 85,
-							"max": 87,
-							"result": "Corrupted flesh"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/88-90",
-							"min": 88,
-							"max": 90,
-							"result": "Semi-transparent"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/91-93",
-							"min": 91,
-							"max": 93,
-							"result": "Scarred / injured"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/94-95",
-							"min": 94,
-							"max": 95,
-							"result": "Egg sac / carried offspring"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/96-97",
-							"min": 96,
-							"max": 97,
-							"result": "Rotting / skeletal"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/98-98",
-							"min": 98,
-							"max": 98,
-							"result": "Mummified / desiccated"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/99-99",
-							"min": 99,
-							"max": 99,
-							"result": "Multi-headed"
-						},
-						{
-							"id": "delve/oracles/monstrosity/characteristics/100-100",
-							"min": 100,
-							"max": 100,
-							"result": "Etched with mystic runes"
-						}
-					]
-				},
-				"primary_form": {
-					"id": "delve/oracles/monstrosity/primary_form",
-					"name": "Primary Form",
-					"canonical_name": "Monstrosity: Primary Form",
-					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 214,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/primary_form/1-15",
-							"min": 1,
-							"max": 15,
-							"result": "Beast / mammal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/16-25",
-							"min": 16,
-							"max": 25,
-							"result": "Humanoid",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/26-31",
-							"min": 26,
-							"max": 31,
-							"result": "Bird",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/32-37",
-							"min": 32,
-							"max": 37,
-							"result": "Spider",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/38-43",
-							"min": 38,
-							"max": 43,
-							"result": "Snake",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/44-49",
-							"min": 44,
-							"max": 49,
-							"result": "Worm / slug",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/50-55",
-							"min": 50,
-							"max": 55,
-							"result": "Lizard",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/56-61",
-							"min": 56,
-							"max": 61,
-							"result": "Insect",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/62-66",
-							"min": 62,
-							"max": 66,
-							"result": "Amorphous",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/67-69",
-							"min": 67,
-							"max": 69,
-							"result": "Crustacean",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/70-71",
-							"min": 70,
-							"max": 71,
-							"result": "Fish",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/72-73",
-							"min": 72,
-							"max": 73,
-							"result": "Octopoid",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/74-75",
-							"min": 74,
-							"max": 75,
-							"result": "Amphibian",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/76-77",
-							"min": 76,
-							"max": 77,
-							"result": "Plant",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/78-78",
-							"min": 78,
-							"max": 78,
-							"result": "Incorporeal",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/79-79",
-							"min": 79,
-							"max": 79,
-							"result": "Mineral",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/80-80",
-							"min": 80,
-							"max": 80,
-							"result": "Elemental",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjective"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/monstrosity/primary_form/81-100",
-							"min": 81,
-							"max": 100,
-							"result": "Hybrid (roll twice)",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							},
-							"rolls": [
-								{
-									"auto": true,
-									"method": "no_duplicates",
-									"times": 2
-								}
-							]
-						}
-					]
-				},
-				"size": {
-					"id": "delve/oracles/monstrosity/size",
-					"name": "Size",
-					"canonical_name": "Monstrosity: Size",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 214,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/monstrosity/size/1-5",
-							"min": 1,
-							"max": 5,
-							"result": "Tiny (rodent-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/6-30",
-							"min": 6,
-							"max": 30,
-							"result": "Small (hound-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/31-65",
-							"min": 31,
-							"max": 65,
-							"result": "Medium (person-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/66-94",
-							"min": 66,
-							"max": 94,
-							"result": "Large (giant-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/95-99",
-							"min": 95,
-							"max": 99,
-							"result": "Huge (whale-sized)"
-						},
-						{
-							"id": "delve/oracles/monstrosity/size/100-100",
-							"min": 100,
-							"max": 100,
-							"result": "Titanic (incomprehensible)"
-						}
-					]
 				}
 			},
 			"source": {
@@ -3862,238 +3862,7 @@
 		"moves": {
 			"id": "delve/collections/oracles/moves",
 			"name": "Moves",
-			"collections": {
-				"delve_the_depths": {
-					"id": "delve/collections/oracles/moves/delve_the_depths",
-					"name": "Delve the Depths",
-					"contents": {
-						"edge": {
-							"id": "delve/oracles/moves/delve_the_depths/edge",
-							"name": "Edge",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
-									"min": 1,
-									"max": 45,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
-									"min": 46,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
-									"min": 66,
-									"max": 75,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
-									"min": 76,
-									"max": 80,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
-									"min": 81,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							]
-						},
-						"shadow": {
-							"id": "delve/oracles/moves/delve_the_depths/shadow",
-							"name": "Shadow",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
-									"min": 1,
-									"max": 30,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
-									"min": 31,
-									"max": 65,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
-									"min": 66,
-									"max": 90,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
-									"min": 91,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							]
-						},
-						"wits": {
-							"id": "delve/oracles/moves/delve_the_depths/wits",
-							"name": "Wits",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 21,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"table": [
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
-									"min": 1,
-									"max": 40,
-									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
-									"min": 41,
-									"max": 55,
-									"result": "Mark progress."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
-									"min": 56,
-									"max": 80,
-									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
-									"min": 81,
-									"max": 99,
-									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
-								},
-								{
-									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
-									"min": 100,
-									"max": 100,
-									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
-								}
-							]
-						}
-					},
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 21,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"rendering": {
-						"columns": {
-							"edge": {
-								"label": "Edge",
-								"content_type": "roll",
-								"table_key": "edge"
-							},
-							"shadow": {
-								"label": "Shadow",
-								"content_type": "roll",
-								"table_key": "shadow"
-							},
-							"weak_hit_result": {
-								"label": "Weak Hit Result",
-								"content_type": "result",
-								"table_key": "edge"
-							},
-							"wits": {
-								"label": "Wits",
-								"content_type": "roll",
-								"table_key": "wits"
-							}
-						}
-					}
-				}
-			},
 			"contents": {
-				"advance_a_threat": {
-					"id": "delve/oracles/moves/advance_a_threat",
-					"name": "Advance a Threat",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 155,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"match": {
-						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
-					},
-					"table": [
-						{
-							"id": "delve/oracles/moves/advance_a_threat/1-30",
-							"min": 1,
-							"max": 30,
-							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/31-70",
-							"min": 31,
-							"max": 70,
-							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
-						},
-						{
-							"id": "delve/oracles/moves/advance_a_threat/71-100",
-							"min": 71,
-							"max": 100,
-							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
-						}
-					]
-				},
 				"find_an_opportunity": {
 					"id": "delve/oracles/moves/find_an_opportunity",
 					"name": "Find an Opportunity",
@@ -4357,6 +4126,237 @@
 							]
 						}
 					]
+				},
+				"advance_a_threat": {
+					"id": "delve/oracles/moves/advance_a_threat",
+					"name": "Advance a Threat",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 155,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"match": {
+						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
+					},
+					"table": [
+						{
+							"id": "delve/oracles/moves/advance_a_threat/1-30",
+							"min": 1,
+							"max": 30,
+							"result": "The threat readies its next step, or a new danger looms. If you are in a position to prevent this development, you may attempt to do so. If you succeed, [Reach a Milestone](id:classic/moves/quest/reach_a_milestone). Otherwise, mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/31-70",
+							"min": 31,
+							"max": 70,
+							"result": "The threat works subtly to advance toward its goal, or the danger escalates. Mark menace."
+						},
+						{
+							"id": "delve/oracles/moves/advance_a_threat/71-100",
+							"min": 71,
+							"max": 100,
+							"result": "The threat makes a dramatic and immediate move, or a major event reveals new complications. Mark menace twice."
+						}
+					]
+				}
+			},
+			"collections": {
+				"delve_the_depths": {
+					"id": "delve/collections/oracles/moves/delve_the_depths",
+					"name": "Delve the Depths",
+					"rendering": {
+						"columns": {
+							"edge": {
+								"label": "Edge",
+								"content_type": "roll",
+								"table_key": "edge"
+							},
+							"shadow": {
+								"label": "Shadow",
+								"content_type": "roll",
+								"table_key": "shadow"
+							},
+							"wits": {
+								"label": "Wits",
+								"content_type": "roll",
+								"table_key": "wits"
+							},
+							"weak_hit_result": {
+								"label": "Weak Hit Result",
+								"content_type": "result",
+								"table_key": "edge"
+							}
+						}
+					},
+					"contents": {
+						"edge": {
+							"id": "delve/oracles/moves/delve_the_depths/edge",
+							"name": "Edge",
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
+									"min": 1,
+									"max": 45,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/46-65",
+									"min": 46,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/66-75",
+									"min": 66,
+									"max": 75,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/76-80",
+									"min": 76,
+									"max": 80,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/edge/81-100",
+									"min": 81,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							]
+						},
+						"shadow": {
+							"id": "delve/oracles/moves/delve_the_depths/shadow",
+							"name": "Shadow",
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
+									"min": 1,
+									"max": 30,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/31-65",
+									"min": 31,
+									"max": 65,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/66-90",
+									"min": 66,
+									"max": 90,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/91-99",
+									"min": 91,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/shadow/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							]
+						},
+						"wits": {
+							"id": "delve/oracles/moves/delve_the_depths/wits",
+							"name": "Wits",
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 21,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
+									"min": 1,
+									"max": 40,
+									"result": "Mark progress and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/41-55",
+									"min": 41,
+									"max": 55,
+									"result": "Mark progress."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/56-80",
+									"min": 56,
+									"max": 80,
+									"result": "Choose one: Mark progress or [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/81-99",
+									"min": 81,
+									"max": 99,
+									"result": "Take both: Mark progress and [Find an Opportunity](id:delve/moves/delve/find_an_opportunity)."
+								},
+								{
+									"id": "delve/oracles/moves/delve_the_depths/wits/100-100",
+									"min": 100,
+									"max": 100,
+									"result": "Mark progress twice and [Reveal a Danger](id:delve/moves/delve/reveal_a_danger)."
+								}
+							]
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 21,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
 				}
 			},
 			"source": {
@@ -4377,1535 +4377,14 @@
 			"name": "Site Name",
 			"summary": "Give a site a name or learn more about its characteristics and history.",
 			"description": "To generate a name for a site, first roll on the [Format](id:delve/oracles/site_name/format) table. Then, fill in the blanks by using the [Description](id:delve/oracles/site_name/description), [Detail](id:delve/oracles/site_name/detail), [Namesake](id:delve/oracles/site_name/namesake), and [Place](id:delve/oracles/site_name/place) oracles.\n\nIf the form of a particular word doesn’t work, try making it plural instead of singular, or vice-versa.\n\nIf you already know the theme and domain, you can pick from the tables instead of rolling. If not, you can use these oracles to help define those aspects of the site. Use the [Place](id:delve/oracles/site_name/place) oracle to roll for a domain, and let the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles inform your selection of a theme.\n\nThe site’s name might be known in your world, or it could just be an evocative label you use to understand its history and nature.\n\nEven without giving a site a name, you can use the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) oracles to help flesh out the theme and nature of that place.\n\nFor example, you hear rumors about a nearby ruin while visiting a settlement. What do you learn? You [Ask the Oracle](id:classic/moves/fate/ask_the_oracle), using the [Description](id:delve/oracles/site_name/description) and [Detail](id:delve/oracles/site_name/detail) tables. The oracle responds, “Bloodied Banishment.”\n\nInterpreting these keywords, you envision this settlement’s grim method of enacting justice. Anyone sentenced to death for a crime is taken to the ruins. There, under the fading light of the setting sun, they are bloodied by the quick slash of a ceremonial blade. Finally, they are chained to an altar within the central courtyard. The foul creatures who dwell in that place do the rest.",
-			"collections": {
-				"place": {
-					"id": "delve/collections/oracles/site_name/place",
-					"name": "Place",
-					"canonical_name": "Site Name: Place",
-					"contents": {
-						"barrow": {
-							"id": "delve/oracles/site_name/place/barrow",
-							"name": "Barrow",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/1-6"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/barrow/1-16",
-									"min": 1,
-									"max": 16,
-									"result": "Sepulcher",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/barrow/50-66",
-									"min": 50,
-									"max": 66,
-									"result": "Mound",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/barrow/17-32",
-									"min": 17,
-									"max": 32,
-									"result": "Grave",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/barrow/67-83",
-									"min": 67,
-									"max": 83,
-									"result": "Tomb",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/barrow/33-49",
-									"min": 33,
-									"max": 49,
-									"result": "Crypt",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/barrow/84-100",
-									"min": 84,
-									"max": 100,
-									"result": "Barrow",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"cavern": {
-							"id": "delve/oracles/site_name/place/cavern",
-							"name": "Cavern",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/7-18"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/cavern/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Abyss",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Caverns",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Caves",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Chasm",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Depths",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Hollow",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Lair",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Rift",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Tunnels",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/cavern/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Warren",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"frozen_cavern": {
-							"id": "delve/oracles/site_name/place/frozen_cavern",
-							"name": "Frozen Cavern",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/19-28"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Abyss",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Caverns",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Caves",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Chasm",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Depths",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Hollow",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Lair",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Rift",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Tunnels",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/frozen_cavern/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Warren",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"icereach": {
-							"id": "delve/oracles/site_name/place/icereach",
-							"name": "Icereach",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/29-32"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/icereach/1-16",
-									"min": 1,
-									"max": 16,
-									"result": "Icemark",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/icereach/17-32",
-									"min": 17,
-									"max": 32,
-									"result": "Wintertide",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/icereach/33-49",
-									"min": 33,
-									"max": 49,
-									"result": "Reach",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/icereach/50-66",
-									"min": 50,
-									"max": 66,
-									"result": "Waste",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/icereach/67-83",
-									"min": 67,
-									"max": 83,
-									"result": "Expanse",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/icereach/84-100",
-									"min": 84,
-									"max": 100,
-									"result": "Barrens",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"mine": {
-							"id": "delve/oracles/site_name/place/mine",
-							"name": "Mine",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/33-38"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/mine/1-16",
-									"min": 1,
-									"max": 16,
-									"result": "Lode",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/mine/17-32",
-									"min": 17,
-									"max": 32,
-									"result": "Dig",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/mine/33-49",
-									"min": 33,
-									"max": 49,
-									"result": "Forge",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/mine/50-66",
-									"min": 50,
-									"max": 66,
-									"result": "Mine",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/mine/67-83",
-									"min": 67,
-									"max": 83,
-									"result": "Tunnels",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/mine/84-100",
-									"min": 84,
-									"max": 100,
-									"result": "Cut",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"pass": {
-							"id": "delve/oracles/site_name/place/pass",
-							"name": "Pass",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 210,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/39-48"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/pass/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Cliffs",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Crag",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Cut",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Gap",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Gorge",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Heights",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Highlands",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Pass",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Reach",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/pass/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Ridge",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"ruin": {
-							"id": "delve/oracles/site_name/place/ruin",
-							"name": "Ruin",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/49-58"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/ruin/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Citadel",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Enclave",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Fortress",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Hall",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Keep",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Sanctuary",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Sanctum",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Spire",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Temple",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/ruin/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Tower",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"sea_cave": {
-							"id": "delve/oracles/site_name/place/sea_cave",
-							"name": "Sea Cave",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/59-68"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/1-16",
-									"min": 1,
-									"max": 16,
-									"result": "Caves",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/17-32",
-									"min": 17,
-									"max": 32,
-									"result": "Channel",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/33-49",
-									"min": 33,
-									"max": 49,
-									"result": "Cove",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/50-66",
-									"min": 50,
-									"max": 66,
-									"result": "Hollow",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/67-83",
-									"min": 67,
-									"max": 83,
-									"result": "Pools",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/sea_cave/84-100",
-									"min": 84,
-									"max": 100,
-									"result": "Gouge",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"shadowfen": {
-							"id": "delve/oracles/site_name/place/shadowfen",
-							"name": "Shadowfen",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/69-78"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Bog",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Fen",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Lowland",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Marsh",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Mire",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Morass",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Quagmire",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Floodlands",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Slough",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/shadowfen/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Wetlands",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"stronghold": {
-							"id": "delve/oracles/site_name/place/stronghold",
-							"name": "Stronghold",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/79-83"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/stronghold/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Bastion",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Citadel",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Fortress",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Garrison",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Haven",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Keep",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Outpost",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Refuge",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Sanctuary",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/stronghold/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Watch",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"tanglewood": {
-							"id": "delve/oracles/site_name/place/tanglewood",
-							"name": "Tanglewood",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/84-95"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/1-11",
-									"min": 1,
-									"max": 11,
-									"result": "Weald",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/12-23",
-									"min": 12,
-									"max": 23,
-									"result": "Tangle",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/24-35",
-									"min": 24,
-									"max": 35,
-									"result": "Bramble",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/36-48",
-									"min": 36,
-									"max": 48,
-									"result": "Briar",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/49-61",
-									"min": 49,
-									"max": 61,
-									"result": "Thicket",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/62-74",
-									"min": 62,
-									"max": 74,
-									"result": "Forest",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/75-87",
-									"min": 75,
-									"max": 87,
-									"result": "Wilds",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/tanglewood/88-100",
-									"min": 88,
-									"max": 100,
-									"result": "Wood",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						},
-						"underkeep": {
-							"id": "delve/oracles/site_name/place/underkeep",
-							"name": "Underkeep",
-							"source": {
-								"title": "Ironsworn: Delve",
-								"date": "2020-02-13",
-								"page": 211,
-								"authors": [
-									{
-										"name": "Shawn Tomkin"
-									}
-								],
-								"license": "https://creativecommons.org/licenses/by/4.0",
-								"url": "https://ironswornrpg.com"
-							},
-							"dice": "1d100",
-							"rendering": {
-								"table_style": "embed_in_row",
-								"columns": {
-									"roll": {
-										"label": "Roll",
-										"content_type": "roll"
-									},
-									"result": {
-										"label": "Result",
-										"content_type": "result"
-									}
-								},
-								"embed_in": "delve/oracles/site_name/place/96-100"
-							},
-							"table": [
-								{
-									"id": "delve/oracles/site_name/place/underkeep/1-10",
-									"min": 1,
-									"max": 10,
-									"result": "Catacomb",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/11-20",
-									"min": 11,
-									"max": 20,
-									"result": "Chambers",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/21-30",
-									"min": 21,
-									"max": 30,
-									"result": "Den",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/31-40",
-									"min": 31,
-									"max": 40,
-									"result": "Hall",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/41-50",
-									"min": 41,
-									"max": 50,
-									"result": "Labyrinth",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/51-60",
-									"min": 51,
-									"max": 60,
-									"result": "Maze",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/61-70",
-									"min": 61,
-									"max": 70,
-									"result": "Pit",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/71-80",
-									"min": 71,
-									"max": 80,
-									"result": "Sanctum",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/81-90",
-									"min": 81,
-									"max": 90,
-									"result": "Underkeep",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								},
-								{
-									"id": "delve/oracles/site_name/place/underkeep/91-100",
-									"min": 91,
-									"max": 100,
-									"result": "Vault",
-									"i18n": {
-										"result": {
-											"part_of_speech": "common_noun"
-										}
-									}
-								}
-							]
-						}
-					},
+			"contents": {
+				"format": {
+					"id": "delve/oracles/site_name/format",
+					"name": "Format",
+					"canonical_name": "Site Name: Format",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
-						"page": 210,
 						"authors": [
 							{
 								"name": "Shawn Tomkin"
@@ -5913,10 +4392,180 @@
 						],
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
-					}
-				}
-			},
-			"contents": {
+					},
+					"dice": "1d100",
+					"i18n": {
+						"part_of_speech": {
+							"template": {
+								"result": "proper_noun"
+							}
+						}
+					},
+					"table": [
+						{
+							"id": "delve/oracles/site_name/format/1-25",
+							"min": 1,
+							"max": 25,
+							"result": "[Description] [Place]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/description",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/26-50",
+							"min": 26,
+							"max": 50,
+							"result": "[Place] of [Detail]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/detail",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/51-70",
+							"min": 51,
+							"max": 70,
+							"result": "[Place] of [Description] [Detail]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/description",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/detail",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/71-80",
+							"min": 71,
+							"max": 80,
+							"result": "[Place] of [Namesake's] [Detail]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/namesake",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/detail",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/81-85",
+							"min": 81,
+							"max": 85,
+							"result": "[Namesake's] [Place]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/namesake",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/86-95",
+							"min": 86,
+							"max": 95,
+							"result": "[Description] [Place] of [Namesake]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/description",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/namesake",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
+							}
+						},
+						{
+							"id": "delve/oracles/site_name/format/96-100",
+							"min": 96,
+							"max": 100,
+							"result": "[Place] of [Namesake]",
+							"rolls": [
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/place",
+									"times": 1
+								},
+								{
+									"auto": false,
+									"oracle": "delve/oracles/site_name/namesake",
+									"times": 1
+								}
+							],
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
+							}
+						}
+					]
+				},
 				"description": {
 					"id": "delve/oracles/site_name/description",
 					"name": "Description",
@@ -7057,194 +5706,6 @@
 						}
 					]
 				},
-				"format": {
-					"id": "delve/oracles/site_name/format",
-					"name": "Format",
-					"canonical_name": "Site Name: Format",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"i18n": {
-						"part_of_speech": {
-							"template": {
-								"result": "proper_noun"
-							}
-						}
-					},
-					"table": [
-						{
-							"id": "delve/oracles/site_name/format/1-25",
-							"min": 1,
-							"max": 25,
-							"result": "[Description] [Place]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/description",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/26-50",
-							"min": 26,
-							"max": 50,
-							"result": "[Place] of [Detail]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/detail",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/51-70",
-							"min": 51,
-							"max": 70,
-							"result": "[Place] of [Description] [Detail]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/description",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/detail",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/71-80",
-							"min": 71,
-							"max": 80,
-							"result": "[Place] of [Namesake's] [Detail]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/namesake",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/detail",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/81-85",
-							"min": 81,
-							"max": 85,
-							"result": "[Namesake's] [Place]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/namesake",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/86-95",
-							"min": 86,
-							"max": 95,
-							"result": "[Description] [Place] of [Namesake]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/description",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/namesake",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
-							}
-						},
-						{
-							"id": "delve/oracles/site_name/format/96-100",
-							"min": 96,
-							"max": 100,
-							"result": "[Place] of [Namesake]",
-							"rolls": [
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/place",
-									"times": 1
-								},
-								{
-									"auto": false,
-									"oracle": "delve/oracles/site_name/namesake",
-									"times": 1
-								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
-							}
-						}
-					]
-				},
 				"namesake": {
 					"id": "delve/oracles/site_name/namesake",
 					"name": "Namesake",
@@ -8005,6 +6466,1545 @@
 					]
 				}
 			},
+			"collections": {
+				"place": {
+					"id": "delve/collections/oracles/site_name/place",
+					"name": "Place",
+					"canonical_name": "Site Name: Place",
+					"contents": {
+						"barrow": {
+							"id": "delve/oracles/site_name/place/barrow",
+							"name": "Barrow",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/1-6"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/barrow/1-16",
+									"min": 1,
+									"max": 16,
+									"result": "Sepulcher",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/barrow/50-66",
+									"min": 50,
+									"max": 66,
+									"result": "Mound",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/barrow/17-32",
+									"min": 17,
+									"max": 32,
+									"result": "Grave",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/barrow/67-83",
+									"min": 67,
+									"max": 83,
+									"result": "Tomb",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/barrow/33-49",
+									"min": 33,
+									"max": 49,
+									"result": "Crypt",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/barrow/84-100",
+									"min": 84,
+									"max": 100,
+									"result": "Barrow",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"cavern": {
+							"id": "delve/oracles/site_name/place/cavern",
+							"name": "Cavern",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/7-18"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/cavern/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Abyss",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Caverns",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Caves",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Chasm",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Depths",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Hollow",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Lair",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Rift",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Tunnels",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/cavern/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Warren",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"frozen_cavern": {
+							"id": "delve/oracles/site_name/place/frozen_cavern",
+							"name": "Frozen Cavern",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/19-28"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Abyss",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Caverns",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Caves",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Chasm",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Depths",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Hollow",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Lair",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Rift",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Tunnels",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/frozen_cavern/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Warren",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"icereach": {
+							"id": "delve/oracles/site_name/place/icereach",
+							"name": "Icereach",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/29-32"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/icereach/1-16",
+									"min": 1,
+									"max": 16,
+									"result": "Icemark",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/icereach/17-32",
+									"min": 17,
+									"max": 32,
+									"result": "Wintertide",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/icereach/33-49",
+									"min": 33,
+									"max": 49,
+									"result": "Reach",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/icereach/50-66",
+									"min": 50,
+									"max": 66,
+									"result": "Waste",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/icereach/67-83",
+									"min": 67,
+									"max": 83,
+									"result": "Expanse",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/icereach/84-100",
+									"min": 84,
+									"max": 100,
+									"result": "Barrens",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"mine": {
+							"id": "delve/oracles/site_name/place/mine",
+							"name": "Mine",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/33-38"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/mine/1-16",
+									"min": 1,
+									"max": 16,
+									"result": "Lode",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/mine/17-32",
+									"min": 17,
+									"max": 32,
+									"result": "Dig",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/mine/33-49",
+									"min": 33,
+									"max": 49,
+									"result": "Forge",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/mine/50-66",
+									"min": 50,
+									"max": 66,
+									"result": "Mine",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/mine/67-83",
+									"min": 67,
+									"max": 83,
+									"result": "Tunnels",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/mine/84-100",
+									"min": 84,
+									"max": 100,
+									"result": "Cut",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"pass": {
+							"id": "delve/oracles/site_name/place/pass",
+							"name": "Pass",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/39-48"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 210,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/pass/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Cliffs",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Crag",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Cut",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Gap",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Gorge",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Heights",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Highlands",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Pass",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Reach",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/pass/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Ridge",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"ruin": {
+							"id": "delve/oracles/site_name/place/ruin",
+							"name": "Ruin",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/49-58"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/ruin/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Citadel",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Enclave",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Fortress",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Hall",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Keep",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Sanctuary",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Sanctum",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Spire",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Temple",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/ruin/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Tower",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"sea_cave": {
+							"id": "delve/oracles/site_name/place/sea_cave",
+							"name": "Sea Cave",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/59-68"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/1-16",
+									"min": 1,
+									"max": 16,
+									"result": "Caves",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/17-32",
+									"min": 17,
+									"max": 32,
+									"result": "Channel",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/33-49",
+									"min": 33,
+									"max": 49,
+									"result": "Cove",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/50-66",
+									"min": 50,
+									"max": 66,
+									"result": "Hollow",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/67-83",
+									"min": 67,
+									"max": 83,
+									"result": "Pools",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/sea_cave/84-100",
+									"min": 84,
+									"max": 100,
+									"result": "Gouge",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"shadowfen": {
+							"id": "delve/oracles/site_name/place/shadowfen",
+							"name": "Shadowfen",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/69-78"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Bog",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Fen",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Lowland",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Marsh",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Mire",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Morass",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Quagmire",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Floodlands",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Slough",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/shadowfen/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Wetlands",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"stronghold": {
+							"id": "delve/oracles/site_name/place/stronghold",
+							"name": "Stronghold",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/79-83"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/stronghold/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Bastion",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Citadel",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Fortress",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Garrison",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Haven",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Keep",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Outpost",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Refuge",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Sanctuary",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/stronghold/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Watch",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"tanglewood": {
+							"id": "delve/oracles/site_name/place/tanglewood",
+							"name": "Tanglewood",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/84-95"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/1-11",
+									"min": 1,
+									"max": 11,
+									"result": "Weald",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/12-23",
+									"min": 12,
+									"max": 23,
+									"result": "Tangle",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/24-35",
+									"min": 24,
+									"max": 35,
+									"result": "Bramble",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/36-48",
+									"min": 36,
+									"max": 48,
+									"result": "Briar",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/49-61",
+									"min": 49,
+									"max": 61,
+									"result": "Thicket",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/62-74",
+									"min": 62,
+									"max": 74,
+									"result": "Forest",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/75-87",
+									"min": 75,
+									"max": 87,
+									"result": "Wilds",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/tanglewood/88-100",
+									"min": 88,
+									"max": 100,
+									"result": "Wood",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						},
+						"underkeep": {
+							"id": "delve/oracles/site_name/place/underkeep",
+							"name": "Underkeep",
+							"rendering": {
+								"table_style": "embed_in_row",
+								"columns": {
+									"roll": {
+										"label": "Roll",
+										"content_type": "roll"
+									},
+									"result": {
+										"label": "Result",
+										"content_type": "result"
+									}
+								},
+								"embed_in": "delve/oracles/site_name/place/96-100"
+							},
+							"source": {
+								"title": "Ironsworn: Delve",
+								"date": "2020-02-13",
+								"page": 211,
+								"authors": [
+									{
+										"name": "Shawn Tomkin"
+									}
+								],
+								"license": "https://creativecommons.org/licenses/by/4.0",
+								"url": "https://ironswornrpg.com"
+							},
+							"dice": "1d100",
+							"table": [
+								{
+									"id": "delve/oracles/site_name/place/underkeep/1-10",
+									"min": 1,
+									"max": 10,
+									"result": "Catacomb",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/11-20",
+									"min": 11,
+									"max": 20,
+									"result": "Chambers",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/21-30",
+									"min": 21,
+									"max": 30,
+									"result": "Den",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/31-40",
+									"min": 31,
+									"max": 40,
+									"result": "Hall",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/41-50",
+									"min": 41,
+									"max": 50,
+									"result": "Labyrinth",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/51-60",
+									"min": 51,
+									"max": 60,
+									"result": "Maze",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/61-70",
+									"min": 61,
+									"max": 70,
+									"result": "Pit",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/71-80",
+									"min": 71,
+									"max": 80,
+									"result": "Sanctum",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/81-90",
+									"min": 81,
+									"max": 90,
+									"result": "Underkeep",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								},
+								{
+									"id": "delve/oracles/site_name/place/underkeep/91-100",
+									"min": 91,
+									"max": 100,
+									"result": "Vault",
+									"i18n": {
+										"result": {
+											"part_of_speech": "common_noun"
+										}
+									}
+								}
+							]
+						}
+					},
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 210,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					}
+				}
+			},
 			"source": {
 				"title": "Ironsworn: Delve",
 				"date": "2020-02-13",
@@ -8024,6 +8024,74 @@
 			"summary": "Randomly select a theme and domain for a perilous location.",
 			"description": "Use these oracles to generate a random theme and domain for a site. Alternatively, you can print out the theme and domain cards and draw a random result. Or use the [Site Name oracles](id:delve/collections/oracles/site_name) to inspire the selection of a theme and domain.",
 			"contents": {
+				"theme": {
+					"id": "delve/oracles/site_nature/theme",
+					"name": "Theme",
+					"canonical_name": "Site Nature: Theme",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 212,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/site_nature/theme/1-11",
+							"min": 1,
+							"max": 11,
+							"result": "[Ancient](id:delve/site_themes/ancient)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/12-23",
+							"min": 12,
+							"max": 23,
+							"result": "[Corrupted](id:delve/site_themes/corrupted)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/24-35",
+							"min": 24,
+							"max": 35,
+							"result": "[Fortified](id:delve/site_themes/fortified)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/36-48",
+							"min": 36,
+							"max": 48,
+							"result": "[Hallowed](id:delve/site_themes/hallowed)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/49-61",
+							"min": 49,
+							"max": 61,
+							"result": "[Haunted](id:delve/site_themes/haunted)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/62-74",
+							"min": 62,
+							"max": 74,
+							"result": "[Infested](id:delve/site_themes/infested)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/75-87",
+							"min": 75,
+							"max": 87,
+							"result": "[Ravaged](id:delve/site_themes/ravaged)"
+						},
+						{
+							"id": "delve/oracles/site_nature/theme/88-100",
+							"min": 88,
+							"max": 100,
+							"result": "[Wild](id:delve/site_themes/wild)"
+						}
+					]
+				},
 				"domain": {
 					"id": "delve/oracles/site_nature/domain",
 					"name": "Domain",
@@ -8115,74 +8183,6 @@
 							"result": "[Underkeep](id:delve/site_domains/underkeep)"
 						}
 					]
-				},
-				"theme": {
-					"id": "delve/oracles/site_nature/theme",
-					"name": "Theme",
-					"canonical_name": "Site Nature: Theme",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 212,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/site_nature/theme/1-11",
-							"min": 1,
-							"max": 11,
-							"result": "[Ancient](id:delve/site_themes/ancient)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/12-23",
-							"min": 12,
-							"max": 23,
-							"result": "[Corrupted](id:delve/site_themes/corrupted)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/24-35",
-							"min": 24,
-							"max": 35,
-							"result": "[Fortified](id:delve/site_themes/fortified)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/36-48",
-							"min": 36,
-							"max": 48,
-							"result": "[Hallowed](id:delve/site_themes/hallowed)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/49-61",
-							"min": 49,
-							"max": 61,
-							"result": "[Haunted](id:delve/site_themes/haunted)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/62-74",
-							"min": 62,
-							"max": 74,
-							"result": "[Infested](id:delve/site_themes/infested)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/75-87",
-							"min": 75,
-							"max": 87,
-							"result": "[Ravaged](id:delve/site_themes/ravaged)"
-						},
-						{
-							"id": "delve/oracles/site_nature/theme/88-100",
-							"min": 88,
-							"max": 100,
-							"result": "[Wild](id:delve/site_themes/wild)"
-						}
-					]
 				}
 			},
 			"source": {
@@ -8204,86 +8204,6 @@
 			"summary": "In support of the optional threat mechanics, use these oracles to introduce a threat and determine its actions within your world.",
 			"description": "These oracles support the optional threat mechanics detailed in Chapter 6.\n\nYou can use the [Category](id:delve/oracles/threat/category) oracle above to randomly select a broad type of threat for your campaign. If you are told to roll twice, take both results and decide how these two threats act together or represent a more complex situation. For example, choosing both a [Malignant Plague](id:delve/oracles/threat/malignant_plague) and [Zealous Cult](id:delve/oracles/threat/zealous_cult) might signify an evil sect which has unleashed a sickness upon the Ironlands in service to some dark god.\n\nFor additional detail, use other oracles as appropriate. For example, you can look to the [Action](id:classic/oracles/action_and_theme/action) and [Theme](id:classic/oracles/action_and_theme/theme) oracles (Ironsworn Core, page 174) or [Character Goal](id:classic/oracles/character/goal) oracle (Ironsworn Core, page 182) to define the motivations of a [Scheming Leader](id:delve/oracles/threat/scheming_leader).\n\nOnce you’ve introduced a threat, consider how it endangers something or someone important to you, and [Swear an Iron Vow](id:classic/moves/quest/swear_an_iron_vow) to see its goal undone.\n\nThen, as you [Advance a Threat](id:delve/moves/threat/advance_a_threat), you can roll on the oracle table for your specific threat to generate an action, approach, or complication. Interpret the oracle’s answer as appropriate to the nature of the threat and the current situation.\n\nIf you aren’t using the threat mechanics within your campaign, you can use still these oracles to inspire details for enemies, troubles, and complications.",
 			"contents": {
-				"burgeoning_conflict": {
-					"id": "delve/oracles/threat/burgeoning_conflict",
-					"name": "Burgeoning Conflict",
-					"canonical_name": "Threat: Burgeoning Conflict",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 221,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/1-10",
-							"min": 1,
-							"max": 10,
-							"result": "Allow warmongers to gain influence"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/11-20",
-							"min": 11,
-							"max": 20,
-							"result": "Break a treaty"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/21-30",
-							"min": 21,
-							"max": 30,
-							"result": "Force a hasty decision"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/31-40",
-							"min": 31,
-							"max": 40,
-							"result": "Deepen suspicions"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/41-50",
-							"min": 41,
-							"max": 50,
-							"result": "Trigger a confrontation"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/51-60",
-							"min": 51,
-							"max": 60,
-							"result": "Subvert a potential accord"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/61-70",
-							"min": 61,
-							"max": 70,
-							"result": "Isolate the antagonists"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/71-80",
-							"min": 71,
-							"max": 80,
-							"result": "Draw new battle lines"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/81-90",
-							"min": 81,
-							"max": 90,
-							"result": "Reveal an unexpected aspect of the dispute"
-						},
-						{
-							"id": "delve/oracles/threat/burgeoning_conflict/91-100",
-							"min": 91,
-							"max": 100,
-							"result": "Introduce a new person or faction to complicate the situation"
-						}
-					]
-				},
 				"category": {
 					"id": "delve/oracles/threat/category",
 					"name": "Category",
@@ -8367,6 +8287,86 @@
 									"times": 2
 								}
 							]
+						}
+					]
+				},
+				"burgeoning_conflict": {
+					"id": "delve/oracles/threat/burgeoning_conflict",
+					"name": "Burgeoning Conflict",
+					"canonical_name": "Threat: Burgeoning Conflict",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 221,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/1-10",
+							"min": 1,
+							"max": 10,
+							"result": "Allow warmongers to gain influence"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/11-20",
+							"min": 11,
+							"max": 20,
+							"result": "Break a treaty"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/21-30",
+							"min": 21,
+							"max": 30,
+							"result": "Force a hasty decision"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/31-40",
+							"min": 31,
+							"max": 40,
+							"result": "Deepen suspicions"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/41-50",
+							"min": 41,
+							"max": 50,
+							"result": "Trigger a confrontation"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/51-60",
+							"min": 51,
+							"max": 60,
+							"result": "Subvert a potential accord"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/61-70",
+							"min": 61,
+							"max": 70,
+							"result": "Isolate the antagonists"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/71-80",
+							"min": 71,
+							"max": 80,
+							"result": "Draw new battle lines"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/81-90",
+							"min": 81,
+							"max": 90,
+							"result": "Reveal an unexpected aspect of the dispute"
+						},
+						{
+							"id": "delve/oracles/threat/burgeoning_conflict/91-100",
+							"min": 91,
+							"max": 100,
+							"result": "Introduce a new person or faction to complicate the situation"
 						}
 					]
 				},
@@ -8610,86 +8610,6 @@
 						}
 					]
 				},
-				"power_hungry_mystic": {
-					"id": "delve/oracles/threat/power_hungry_mystic",
-					"name": "Power-Hungry Mystic",
-					"canonical_name": "Threat: Power-Hungry Mystic",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 223,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"table": [
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/1-10",
-							"min": 1,
-							"max": 10,
-							"result": "Gain hidden knowledge"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/11-20",
-							"min": 11,
-							"max": 20,
-							"result": "Assault an enemy with magic"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/21-30",
-							"min": 21,
-							"max": 30,
-							"result": "Despoil a place through magic"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/31-40",
-							"min": 31,
-							"max": 40,
-							"result": "Forge a bond with ancient forces"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/41-50",
-							"min": 41,
-							"max": 50,
-							"result": "Create magical wards or protections"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/51-60",
-							"min": 51,
-							"max": 60,
-							"result": "Obtain a powerful artifact"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/61-70",
-							"min": 61,
-							"max": 70,
-							"result": "Tempt with power or secrets"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/71-80",
-							"min": 71,
-							"max": 80,
-							"result": "Recruit a follower or ally"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/81-90",
-							"min": 81,
-							"max": 90,
-							"result": "Sacrifice something in exchange for greater power"
-						},
-						{
-							"id": "delve/oracles/threat/power_hungry_mystic/91-100",
-							"min": 91,
-							"max": 100,
-							"result": "Use magic to trick or deceive"
-						}
-					]
-				},
 				"rampaging_creature": {
 					"id": "delve/oracles/threat/rampaging_creature",
 					"name": "Rampaging Creature",
@@ -8930,6 +8850,86 @@
 						}
 					]
 				},
+				"power_hungry_mystic": {
+					"id": "delve/oracles/threat/power_hungry_mystic",
+					"name": "Power-Hungry Mystic",
+					"canonical_name": "Threat: Power-Hungry Mystic",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 223,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"table": [
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/1-10",
+							"min": 1,
+							"max": 10,
+							"result": "Gain hidden knowledge"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/11-20",
+							"min": 11,
+							"max": 20,
+							"result": "Assault an enemy with magic"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/21-30",
+							"min": 21,
+							"max": 30,
+							"result": "Despoil a place through magic"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/31-40",
+							"min": 31,
+							"max": 40,
+							"result": "Forge a bond with ancient forces"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/41-50",
+							"min": 41,
+							"max": 50,
+							"result": "Create magical wards or protections"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/51-60",
+							"min": 51,
+							"max": 60,
+							"result": "Obtain a powerful artifact"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/61-70",
+							"min": 61,
+							"max": 70,
+							"result": "Tempt with power or secrets"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/71-80",
+							"min": 71,
+							"max": 80,
+							"result": "Recruit a follower or ally"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/81-90",
+							"min": 81,
+							"max": 90,
+							"result": "Sacrifice something in exchange for greater power"
+						},
+						{
+							"id": "delve/oracles/threat/power_hungry_mystic/91-100",
+							"min": 91,
+							"max": 100,
+							"result": "Use magic to trick or deceive"
+						}
+					]
+				},
 				"zealous_cult": {
 					"id": "delve/oracles/threat/zealous_cult",
 					"name": "Zealous Cult",
@@ -9030,304 +9030,6 @@
 			"summary": "Identify the characteristics and effects of a trap within a site.",
 			"description": "If you encounter a trap within a site, use these oracles to better understand the nature or function of this obstacle. Roll once for an [Event](id:delve/oracles/trap/event) and once for a [Component](id:delve/oracles/trap/component), and interpret the response as appropriate to the situation and environment. A trap might be a physical, supernatural, or an ambush by a denizen.\n\nIf you are in a position to overcome or avoid the trap, make moves to see what happens. A simple trap might be dealt with in a single action, such as through the [Face Danger](id:classic/moves/adventure/face_danger) move. A complex trap could be represented as a scene challenge (*Ironsworn Core*, page 234).",
 			"contents": {
-				"component": {
-					"id": "delve/oracles/trap/component",
-					"name": "Component",
-					"canonical_name": "Trap: Component",
-					"source": {
-						"title": "Ironsworn: Delve",
-						"date": "2020-02-13",
-						"page": 217,
-						"authors": [
-							{
-								"name": "Shawn Tomkin"
-							}
-						],
-						"license": "https://creativecommons.org/licenses/by/4.0",
-						"url": "https://ironswornrpg.com"
-					},
-					"dice": "1d100",
-					"suggestions": {
-						"oracles": ["delve/oracles/trap/event"]
-					},
-					"table": [
-						{
-							"id": "delve/oracles/trap/component/1-4",
-							"min": 1,
-							"max": 4,
-							"result": "Pit",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/5-8",
-							"min": 5,
-							"max": 8,
-							"result": "Water",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/9-12",
-							"min": 9,
-							"max": 12,
-							"result": "Fire",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/13-16",
-							"min": 13,
-							"max": 16,
-							"result": "Projectile",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/17-20",
-							"min": 17,
-							"max": 20,
-							"result": "Passage",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/21-24",
-							"min": 21,
-							"max": 24,
-							"result": "Fall",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/25-28",
-							"min": 25,
-							"max": 28,
-							"result": "Debris",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/29-32",
-							"min": 29,
-							"max": 32,
-							"result": "Fear",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/33-36",
-							"min": 33,
-							"max": 36,
-							"result": "Alarm",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/37-40",
-							"min": 37,
-							"max": 40,
-							"result": "Trigger",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/41-44",
-							"min": 41,
-							"max": 44,
-							"result": "Cold",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/45-48",
-							"min": 45,
-							"max": 48,
-							"result": "Weapon",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/49-52",
-							"min": 49,
-							"max": 52,
-							"result": "Darkness",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/53-56",
-							"min": 53,
-							"max": 56,
-							"result": "Decay",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/57-60",
-							"min": 57,
-							"max": 60,
-							"result": "Path",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/61-64",
-							"min": 61,
-							"max": 64,
-							"result": "Stone",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/65-68",
-							"min": 65,
-							"max": 68,
-							"result": "Terrain",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/69-72",
-							"min": 69,
-							"max": 72,
-							"result": "Poison",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/73-76",
-							"min": 73,
-							"max": 76,
-							"result": "Barrier",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/77-80",
-							"min": 77,
-							"max": 80,
-							"result": "Overhead",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/81-84",
-							"min": 81,
-							"max": 84,
-							"result": "Magic",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/85-88",
-							"min": 85,
-							"max": 88,
-							"result": "Toxin",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/89-92",
-							"min": 89,
-							"max": 92,
-							"result": "Earth",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/93-96",
-							"min": 93,
-							"max": 96,
-							"result": "Light",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						},
-						{
-							"id": "delve/oracles/trap/component/97-100",
-							"min": 97,
-							"max": 100,
-							"result": "Denizen",
-							"i18n": {
-								"result": {
-									"part_of_speech": "common_noun"
-								}
-							}
-						}
-					]
-				},
 				"trap": {
 					"id": "delve/oracles/trap/trap",
 					"name": "Event",
@@ -9621,6 +9323,304 @@
 							"i18n": {
 								"result": {
 									"part_of_speech": "verb"
+								}
+							}
+						}
+					]
+				},
+				"component": {
+					"id": "delve/oracles/trap/component",
+					"name": "Component",
+					"canonical_name": "Trap: Component",
+					"source": {
+						"title": "Ironsworn: Delve",
+						"date": "2020-02-13",
+						"page": 217,
+						"authors": [
+							{
+								"name": "Shawn Tomkin"
+							}
+						],
+						"license": "https://creativecommons.org/licenses/by/4.0",
+						"url": "https://ironswornrpg.com"
+					},
+					"dice": "1d100",
+					"suggestions": {
+						"oracles": ["delve/oracles/trap/event"]
+					},
+					"table": [
+						{
+							"id": "delve/oracles/trap/component/1-4",
+							"min": 1,
+							"max": 4,
+							"result": "Pit",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/5-8",
+							"min": 5,
+							"max": 8,
+							"result": "Water",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/9-12",
+							"min": 9,
+							"max": 12,
+							"result": "Fire",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/13-16",
+							"min": 13,
+							"max": 16,
+							"result": "Projectile",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/17-20",
+							"min": 17,
+							"max": 20,
+							"result": "Passage",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/21-24",
+							"min": 21,
+							"max": 24,
+							"result": "Fall",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/25-28",
+							"min": 25,
+							"max": 28,
+							"result": "Debris",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/29-32",
+							"min": 29,
+							"max": 32,
+							"result": "Fear",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/33-36",
+							"min": 33,
+							"max": 36,
+							"result": "Alarm",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/37-40",
+							"min": 37,
+							"max": 40,
+							"result": "Trigger",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/41-44",
+							"min": 41,
+							"max": 44,
+							"result": "Cold",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/45-48",
+							"min": 45,
+							"max": 48,
+							"result": "Weapon",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/49-52",
+							"min": 49,
+							"max": 52,
+							"result": "Darkness",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/53-56",
+							"min": 53,
+							"max": 56,
+							"result": "Decay",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/57-60",
+							"min": 57,
+							"max": 60,
+							"result": "Path",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/61-64",
+							"min": 61,
+							"max": 64,
+							"result": "Stone",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/65-68",
+							"min": 65,
+							"max": 68,
+							"result": "Terrain",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/69-72",
+							"min": 69,
+							"max": 72,
+							"result": "Poison",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/73-76",
+							"min": 73,
+							"max": 76,
+							"result": "Barrier",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/77-80",
+							"min": 77,
+							"max": 80,
+							"result": "Overhead",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/81-84",
+							"min": 81,
+							"max": 84,
+							"result": "Magic",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/85-88",
+							"min": 85,
+							"max": 88,
+							"result": "Toxin",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/89-92",
+							"min": 89,
+							"max": 92,
+							"result": "Earth",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/93-96",
+							"min": 93,
+							"max": 96,
+							"result": "Light",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
+								}
+							}
+						},
+						{
+							"id": "delve/oracles/trap/component/97-100",
+							"min": 97,
+							"max": 100,
+							"result": "Denizen",
+							"i18n": {
+								"result": {
+									"part_of_speech": "common_noun"
 								}
 							}
 						}

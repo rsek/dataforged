@@ -31,19 +31,21 @@ oracles:
             assets:
               content_type: summary
               label: Assets
-        _i18n:
-          result:
-            part_of_speech: common_noun
         table:
           - min: 1
             max: 5
             result: Battlefield Medic
             summary: '[Healer](id:starforged/assets/path/healer); [Veteran](id:starforged/assets/path/veteran)'
+            <<: &i18n
+              i18n:
+                result:
+                  part_of_speech: common_noun
             # suggestions:
             #   assets:
             #     - starforged/assets/path/healer
             #     - starforged/assets/path/veteran
-          - min: 6
+          - <<: *i18n
+            min: 6
             max: 10
             result: Delegate
             summary: '[Bannersworn](id:starforged/assets/path/bannersworn); [Diplomat](id:starforged/assets/path/diplomat)'
@@ -51,7 +53,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/bannersworn
             #     - starforged/assets/path/diplomat
-          - min: 11
+          - <<: *i18n
+            min: 11
             max: 15
             result: Exobiologist
             summary: '[Lore Hunter](id:starforged/assets/path/lore_hunter); [Naturalist](id:starforged/assets/path/naturalist)'
@@ -59,7 +62,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/lore_hunter
             #     - starforged/assets/path/naturalist
-          - min: 16
+          - <<: *i18n
+            min: 16
             max: 20
             result: Far Trader
             summary: '[Navigator](id:starforged/assets/path/navigator); [Trader](id:starforged/assets/path/trader)'
@@ -67,7 +71,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/navigator
             #     - starforged/assets/path/trader
-          - min: 21
+          - <<: *i18n
+            min: 21
             max: 25
             result: Fugitive Hunter
             summary: '[Armored](id:starforged/assets/path/armored); [Bounty Hunter](id:starforged/assets/path/bounty_hunter)'
@@ -75,7 +80,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/armored
             #     - starforged/assets/path/bounty_hunter
-          - min: 26
+          - <<: *i18n
+            min: 26
             max: 30
             result: Hacker
             summary: '[Infiltrator](id:starforged/assets/path/infiltrator); [Tech](id:starforged/assets/path/tech)'
@@ -83,7 +89,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/infiltrator
             #     - starforged/assets/path/tech
-          - min: 31
+          - <<: *i18n
+            min: 31
             max: 35
             result: Hotshot Pilot
             summary: '[Ace](id:starforged/assets/path/ace); [Navigator](id:starforged/assets/path/navigator)'
@@ -91,7 +98,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/ace
             #     - starforged/assets/path/navigator
-          - min: 36
+          - <<: *i18n
+            min: 36
             max: 40
             result: Interstellar Scout
             summary: '[Explorer](id:starforged/assets/path/explorer); [Voidborn](id:starforged/assets/path/voidborn)'
@@ -99,7 +107,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/explorer
             #     - starforged/assets/path/voidborn
-          - min: 41
+          - <<: *i18n
+            min: 41
             max: 45
             result: Monster Hunter
             summary: '[Gunner](id:starforged/assets/path/gunner); [Slayer](id:starforged/assets/path/slayer)'
@@ -107,7 +116,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/gunner
             #     - starforged/assets/path/slayer
-          - min: 46
+          - <<: *i18n
+            min: 46
             max: 50
             result: Occultist
             summary: '[Outcast](id:starforged/assets/path/outcast); [Shade](id:starforged/assets/path/shade)'
@@ -115,7 +125,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/outcast
             #     - starforged/assets/path/shade
-          - min: 51
+          - <<: *i18n
+            min: 51
             max: 55
             result: Operative
             summary: '[Infiltrator](id:starforged/assets/path/infiltrator); [Blademaster](id:starforged/assets/path/blademaster)'
@@ -123,7 +134,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/infiltrator
             #     - starforged/assets/path/blademaster
-          - min: 56
+          - <<: *i18n
+            min: 56
             max: 60
             result: Outlaw
             summary: '[Fugitive](id:starforged/assets/path/fugitive); [Gunslinger](id:starforged/assets/path/gunslinger)'
@@ -131,7 +143,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/fugitive
             #     - starforged/assets/path/gunslinger
-          - min: 61
+          - <<: *i18n
+            min: 61
             max: 65
             result: Private Investigator
             summary: '[Brawler](id:starforged/assets/path/brawler); [Sleuth](id:starforged/assets/path/sleuth)'
@@ -139,7 +152,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/brawler
             #     - starforged/assets/path/sleuth
-          - min: 66
+          - <<: *i18n
+            min: 66
             max: 70
             result: Prophet
             summary: '[Devotant](id:starforged/assets/path/devotant); [Seer](id:starforged/assets/path/seer)'
@@ -147,7 +161,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/devotant
             #     - starforged/assets/path/seer
-          - min: 71
+          - <<: *i18n
+            min: 71
             max: 75
             result: Psionicist
             summary: '[Kinetic](id:starforged/assets/path/kinetic); [Vestige](id:starforged/assets/path/vestige)'
@@ -155,7 +170,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/kinetic
             #     - starforged/assets/path/vestige
-          - min: 76
+          - <<: *i18n
+            min: 76
             max: 80
             result: Smuggler
             summary: '[Courier](id:starforged/assets/path/courier); [Scoundrel](id:starforged/assets/path/scoundrel)'
@@ -163,7 +179,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/courier
             #     - starforged/assets/path/scoundrel
-          - min: 81
+          - <<: *i18n
+            min: 81
             max: 85
             result: Spiritualist
             summary: '[Haunted](id:starforged/assets/path/haunted); [Empath](id:starforged/assets/path/empath)'
@@ -171,7 +188,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/haunted
             #     - starforged/assets/path/empath
-          - min: 86
+          - <<: *i18n
+            min: 86
             max: 90
             result: Starship Engineer
             summary: '[Gearhead](id:starforged/assets/path/gearhead); [Tech](id:starforged/assets/path/tech)'
@@ -179,7 +197,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/gearhead
             #     - starforged/assets/path/tech
-          - min: 91
+          - <<: *i18n
+            min: 91
             max: 95
             result: Supersoldier
             summary: '[Augmented](id:starforged/assets/path/augmented); [Mercenary](id:starforged/assets/path/mercenary)'
@@ -187,7 +206,8 @@ oracles:
             #   assets:
             #     - starforged/assets/path/augmented
             #     - starforged/assets/path/mercenary
-          - min: 96
+          - <<: *i18n
+            min: 96
             max: 100
             result: Tomb Raider
             summary: '[Scavenger](id:starforged/assets/path/scavenger); [Scoundrel](id:starforged/assets/path/scoundrel)'

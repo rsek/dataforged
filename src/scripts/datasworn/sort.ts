@@ -67,24 +67,34 @@ const keyOrder = [
 	'url'
 ]
 
-export function compareKeys(a: string, b: string, keyOrder: string[] = []) {
+export function compareObjectKeys(
+	a: string,
+	b: string,
+	keyOrder: string[] = []
+) {
 	const [indexA, indexB] = [a, b].map((key) => keyOrder.indexOf(key))
 
+	// if both are the same, fall back to alphabetical order
 	if (indexA === indexB) return a.localeCompare(b, 'en-US')
 
+	// if one key lacks an explicit sort, place it last
 	if (indexA === -1) return 1
 	if (indexB === -1) return -1
 
 	return indexA - indexB
 }
 
-export function isSortableSchema(schema: JSONSchema) {
-	if (schema.type !== 'object') return true
-	// skip dictionary objects
-	if (schema.patternProperties != null) return true
-	// skip objects with no properties of their own
-	if (schema.properties == null) return true
-	return false
+export function schemaDescribesSortableValue(schema: JSONSchema) {
+	switch (true) {
+		// skip non-object schema
+		case schema.type !== 'object':
+		// skip dictionary-like object
+		case schema.patternProperties != null:
+			return false
+
+		default:
+			return true
+	}
 }
 
 export function sortDataswornKeys<T extends Record<string, unknown>>(
@@ -115,16 +125,16 @@ const schemaKeyOrder = [
 
 export function sortSchemaKeys<T extends JSONSchema>(schema: T) {
 	// TODO: sort "required" string array by the new property order
-	const result = sortObjectKeys(schema, schemaKeyOrder)
-	if (result.properties != null)
-		result.properties = sortDataswornKeys(result.properties)
-	if (Array.isArray(result.required)) {
-		result.required = result.required.sort((a, b) =>
-			compareKeys(a, b, keyOrder)
+	const sortedSchema = sortObjectKeys(schema, schemaKeyOrder)
+	if (sortedSchema.properties != null)
+		sortedSchema.properties = sortDataswornKeys(sortedSchema.properties)
+	if (Array.isArray(sortedSchema.required)) {
+		sortedSchema.required = sortedSchema.required.sort((a, b) =>
+			compareObjectKeys(a, b, keyOrder)
 		)
 	}
 
-	return result
+	return sortedSchema
 }
 
 function sortObjectKeys<T extends Record<string, unknown>>(
@@ -132,7 +142,7 @@ function sortObjectKeys<T extends Record<string, unknown>>(
 	keyOrder: string[] = []
 ) {
 	const entries = Object.entries(object).sort(([a], [b]) =>
-		compareKeys(a, b, keyOrder)
+		compareObjectKeys(a, b, keyOrder)
 	)
 	return Object.fromEntries(entries) as T
 }

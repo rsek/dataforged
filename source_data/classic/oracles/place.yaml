@@ -8,7 +8,7 @@ source: &Source
   date: 2019-06-05
 oracles:
   place:
-    name: Place
+    name: Place Oracles
     source:
       <<: *Source
       page: 176
@@ -56,389 +56,504 @@ oracles:
         name: Location
         canonical_name: 'Oracle 4: Location'
         summary: Use this oracle when traveling to generate a point-of-interest or to answer a question about a place where someone or something can be found.
-        _i18n:
-          result:
-            part_of_speech: common_noun
         source:
           <<: *Source
           title: Ironsworn Rulebook
           page: 176
         table:
-          - min: 1
+          - <<: &i18n.common_noun
+              i18n:
+                result:
+                  part_of_speech: common_noun
+            min: 1
             max: 1
             result: Hideout
-          - min: 2
+          - <<: *i18n.common_noun
+            min: 2
             max: 2
             result: Ruin
-          - min: 3
+          - <<: *i18n.common_noun
+            min: 3
             max: 3
             result: Mine
-          - min: 4
+          - <<: *i18n.common_noun
+            min: 4
             max: 4
             result: Waste
-          - min: 5
+          - <<: *i18n.common_noun
+            min: 5
             max: 5
             result: Mystical Site
-          - min: 6
+          - <<: *i18n.common_noun
+            min: 6
             max: 6
             result: Path
-          - min: 7
+          - <<: *i18n.common_noun
+            min: 7
             max: 7
             result: Outpost
-          - min: 8
+          - <<: *i18n.common_noun
+            min: 8
             max: 8
             result: Wall
-          - min: 9
+          - <<: *i18n.common_noun
+            min: 9
             max: 9
             result: Battlefield
-          - min: 10
+          - <<: *i18n.common_noun
+            min: 10
             max: 10
             result: Hovel
-          - min: 11
+          - <<: *i18n.common_noun
+            min: 11
             max: 11
             result: Spring
-          - min: 12
+          - <<: *i18n.common_noun
+            min: 12
             max: 12
             result: Lair
-          - min: 13
+          - <<: *i18n.common_noun
+            min: 13
             max: 13
             result: Fort
-          - min: 14
+          - <<: *i18n.common_noun
+            min: 14
             max: 14
             result: Bridge
-          - min: 15
+          - <<: *i18n.common_noun
+            min: 15
             max: 15
             result: Camp
-          - min: 16
+          - <<: *i18n.common_noun
+            min: 16
             max: 16
             result: Cairn/Grave
-          - min: 17
+          - <<: *i18n.common_noun
+            min: 17
             max: 18
             result: Caravan
-          - min: 19
+          - <<: *i18n.common_noun
+            min: 19
             max: 20
             result: Waterfall
-          - min: 21
+          - <<: *i18n.common_noun
+            min: 21
             max: 22
             result: Cave
-          - min: 23
+          - <<: *i18n.common_noun
+            min: 23
             max: 24
             result: Swamp
-          - min: 25
+          - <<: *i18n.common_noun
+            min: 25
             max: 26
             result: Fen
-          - min: 27
+          - <<: *i18n.common_noun
+            min: 27
             max: 28
             result: Ravine
-          - min: 29
+          - <<: *i18n.common_noun
+            min: 29
             max: 30
             result: Road
-          - min: 31
+          - <<: *i18n.common_noun
+            min: 31
             max: 32
             result: Tree
-          - min: 33
+          - <<: *i18n.common_noun
+            min: 33
             max: 34
             result: Pond
-          - min: 35
+          - <<: *i18n.common_noun
+            min: 35
             max: 36
             result: Fields
-          - min: 37
+          - <<: *i18n.common_noun
+            min: 37
             max: 38
             result: Marsh
-          - min: 39
+          - <<: *i18n.common_noun
+            min: 39
             max: 40
             result: Steading
-          - min: 41
+          - <<: *i18n.common_noun
+            min: 41
             max: 42
             result: Rapids
-          - min: 43
+          - <<: *i18n.common_noun
+            min: 43
             max: 44
             result: Pass
-          - min: 45
+          - <<: *i18n.common_noun
+            min: 45
             max: 46
             result: Trail
-          - min: 47
+          - <<: *i18n.common_noun
+            min: 47
             max: 48
             result: Glade
-          - min: 49
+          - <<: *i18n.common_noun
+            min: 49
             max: 50
             result: Plain
-          - min: 51
+          - <<: *i18n.common_noun
+            min: 51
             max: 52
             result: Ridge
-          - min: 53
+          - <<: *i18n.common_noun
+            min: 53
             max: 54
             result: Cliff
-          - min: 55
+          - <<: *i18n.common_noun
+            min: 55
             max: 56
             result: Grove
-          - min: 57
+          - <<: *i18n.common_noun
+            min: 57
             max: 58
             result: Village
-          - min: 59
+          - <<: *i18n.common_noun
+            min: 59
             max: 60
             result: Moor
-          - min: 61
+          - <<: *i18n.common_noun
+            min: 61
             max: 62
             result: Thicket
-          - min: 63
+          - <<: *i18n.common_noun
+            min: 63
             max: 64
             result: River Ford
-          - min: 65
+          - <<: *i18n.common_noun
+            min: 65
             max: 66
             result: Valley
-          - min: 67
+          - <<: *i18n.common_noun
+            min: 67
             max: 68
             result: Bay/Fjord
-          - min: 69
+          - <<: *i18n.common_noun
+            min: 69
             max: 70
             result: Foothills
-          - min: 71
+          - <<: *i18n.common_noun
+            min: 71
             max: 72
             result: Lake
-          - min: 73
+          - <<: *i18n.common_noun
+            min: 73
             max: 75
             result: River
-          - min: 76
+          - <<: *i18n.common_noun
+            min: 76
             max: 79
             result: Forest
-          - min: 80
+          - <<: *i18n.common_noun
+            min: 80
             max: 83
             result: Coast
-          - min: 84
+          - <<: *i18n.common_noun
+            min: 84
             max: 88
             result: Hill
-          - min: 89
+          - <<: *i18n.common_noun
+            min: 89
             max: 93
             result: Mountain
-          - min: 94
+          - <<: *i18n.common_noun
+            min: 94
             max: 99
             result: Woods
-          - min: 100
+          - <<: *i18n.common_noun
+            min: 100
             max: 100
             result: Anomaly
       coastal_waters_location:
         name: Coastal Waters Location
         canonical_name: 'Oracle 5: Coastal Waters Location'
         summary: Use this oracle to identify a point-of-interest or destination when you are traveling by ship or boat.
-        _i18n:
-          result:
-            part_of_speech: common_noun
         source:
           <<: *Source
           title: Ironsworn Rulebook
           page: 176
         table:
-          - min: 1
+          - <<: *i18n.common_noun
+            min: 1
             max: 1
             result: Fleet
-          - min: 2
+          - <<: *i18n.common_noun
+            min: 2
             max: 2
             result: Sargassum
-          - min: 3
+          - <<: *i18n.common_noun
+            min: 3
             max: 3
             result: Flotsam
-          - min: 4
+          - <<: *i18n.common_noun
+            min: 4
             max: 4
             result: Mystical Site
-          - min: 5
+          - <<: *i18n.common_noun
+            min: 5
             max: 5
             result: Lair
-          - min: 6
+          - <<: *i18n.common_noun
+            min: 6
             max: 10
             result: Wreck
-          - min: 11
+          - <<: *i18n.common_noun
+            min: 11
             max: 15
             result: Harbor
-          - min: 16
+          - <<: *i18n.common_noun
+            min: 16
             max: 23
             result: Ship/Boat
-          - min: 24
+          - <<: *i18n.common_noun
+            min: 24
             max: 30
             result: Rocks
-          - min: 31
+          - <<: *i18n.common_noun
+            min: 31
             max: 38
             result: Fjord
-          - min: 39
+          - <<: *i18n.common_noun
+            min: 39
             max: 46
             result: Estuary
-          - min: 47
+          - <<: *i18n.common_noun
+            min: 47
             max: 54
             result: Cove
-          - min: 55
+          - <<: *i18n.common_noun
+            min: 55
             max: 62
             result: Bay
-          - min: 63
+          - <<: *i18n.common_noun
+            min: 63
             max: 70
             result: Ice
-          - min: 71
+          - <<: *i18n.common_noun
+            min: 71
             max: 85
             result: Island
-          - min: 86
+          - <<: *i18n.common_noun
+            min: 86
             max: 99
             result: Open Water
-          - min: 100
+          - <<: *i18n.common_noun
+            min: 100
             max: 100
             result: Anomaly
       descriptor:
         name: Location Descriptor
         canonical_name: 'Oracle 6: Location Descriptor'
         summary: Use this oracle to add detail to the [Location](id:classic/oracles/place/location) or [Coastal Waters Location](id:classic/oracles/place/coastal_waters_location) oracles, or by itself to generate a description of a location. Roll more than once for extra detail.
-        _i18n:
-          result:
-            part_of_speech: adjective
         source:
           <<: *Source
           title: Ironsworn Rulebook
           page: 177
         table:
-          - min: 1
+          - <<: &i18n.adjective
+              i18n:
+                result:
+                  part_of_speech: adjective
+            min: 1
             max: 2
             result: High
-          - min: 3
+          - <<: *i18n.adjective
+            min: 3
             max: 4
             result: Remote
-          - min: 5
+          - <<: *i18n.adjective
+            min: 5
             max: 6
             result: Exposed
-          - min: 7
+          - <<: *i18n.adjective
+            min: 7
             max: 8
             result: Small
-          - min: 9
+          - <<: *i18n.adjective
+            min: 9
             max: 10
             result: Broken
-          - min: 11
+          - <<: *i18n.adjective
+            min: 11
             max: 12
             result: Diverse
-          - min: 13
+          - <<: *i18n.adjective
+            min: 13
             max: 14
             result: Rough
-          - min: 15
+          - <<: *i18n.adjective
+            min: 15
             max: 16
             result: Dark
-          - min: 17
+          - <<: *i18n.adjective
+            min: 17
             max: 18
             result: Shadowy
-          - min: 19
+          - <<: *i18n.adjective
+            min: 19
             max: 20
             result: Contested
-          - min: 21
+          - <<: *i18n.adjective
+            min: 21
             max: 22
             result: Grim
-          - min: 23
+          - <<: *i18n.adjective
+            min: 23
             max: 24
             result: Wild
-          - min: 25
+          - <<: *i18n.adjective
+            min: 25
             max: 26
             result: Fertile
-          - min: 27
+          - <<: *i18n.adjective
+            min: 27
             max: 28
             result: Blocked
-          - min: 29
+          - <<: *i18n.adjective
+            min: 29
             max: 30
             result: Ancient
-          - min: 31
+          - <<: *i18n.adjective
+            min: 31
             max: 32
             result: Perilous
-          - min: 33
+          - <<: *i18n.adjective
+            min: 33
             max: 34
             result: Hidden
-          - min: 35
+          - <<: *i18n.adjective
+            min: 35
             max: 36
             result: Occupied
-          - min: 37
+          - <<: *i18n.adjective
+            min: 37
             max: 38
             result: Rich
-          - min: 39
+          - <<: *i18n.adjective
+            min: 39
             max: 40
             result: Big
-          - min: 41
+          - <<: *i18n.adjective
+            min: 41
             max: 42
             result: Savage
-          - min: 43
+          - <<: *i18n.adjective
+            min: 43
             max: 44
             result: Defended
-          - min: 45
+          - <<: *i18n.adjective
+            min: 45
             max: 46
             result: Withered
-          - min: 47
+          - <<: *i18n.adjective
+            min: 47
             max: 48
             result: Mystical
-          - min: 49
+          - <<: *i18n.adjective
+            min: 49
             max: 50
             result: Inaccessible
-          - min: 51
+          - <<: *i18n.adjective
+            min: 51
             max: 52
             result: Protected
-          - min: 53
+          - <<: *i18n.adjective
+            min: 53
             max: 54
             result: Abandoned
-          - min: 55
+          - <<: *i18n.adjective
+            min: 55
             max: 56
             result: Wide
-          - min: 57
+          - <<: *i18n.adjective
+            min: 57
             max: 58
             result: Foul
-          - min: 59
+          - <<: *i18n.adjective
+            min: 59
             max: 60
             result: Dead
-          - min: 61
+          - <<: *i18n.adjective
+            min: 61
             max: 62
             result: Ruined
-          - min: 63
+          - <<: *i18n.adjective
+            min: 63
             max: 64
             result: Barren
-          - min: 65
+          - <<: *i18n.adjective
+            min: 65
             max: 66
             result: Cold
-          - min: 67
+          - <<: *i18n.adjective
+            min: 67
             max: 68
             result: Blighted
-          - min: 69
+          - <<: *i18n.adjective
+            min: 69
             max: 70
             result: Low
-          - min: 71
+          - <<: *i18n.adjective
+            min: 71
             max: 72
             result: Beautiful
-          - min: 73
+          - <<: *i18n.adjective
+            min: 73
             max: 74
             result: Abundant
-          - min: 75
+          - <<: *i18n.adjective
+            min: 75
             max: 76
             result: Lush
-          - min: 77
+          - <<: *i18n.adjective
+            min: 77
             max: 78
             result: Flooded
-          - min: 79
+          - <<: *i18n.adjective
+            min: 79
             max: 80
             result: Empty
-          - min: 81
+          - <<: *i18n.adjective
+            min: 81
             max: 82
             result: Strange
-          - min: 83
+          - <<: *i18n.adjective
+            min: 83
             max: 84
             result: Corrupted
-          - min: 85
+          - <<: *i18n.adjective
+            min: 85
             max: 86
             result: Peaceful
-          - min: 87
+          - <<: *i18n.adjective
+            min: 87
             max: 88
             result: Forgotten
-          - min: 89
+          - <<: *i18n.adjective
+            min: 89
             max: 90
             result: Expansive
-          - min: 91
+          - <<: *i18n.adjective
+            min: 91
             max: 92
             result: Settled
-          - min: 93
+          - <<: *i18n.adjective
+            min: 93
             max: 94
             result: Dense
-          - min: 95
+          - <<: *i18n.adjective
+            min: 95
             max: 96
             result: Civilized
-          - min: 97
+          - <<: *i18n.adjective
+            min: 97
             max: 98
             result: Desolate
-          - min: 99
+          - <<: *i18n.adjective
+            min: 99
             max: 100
             result: Isolated

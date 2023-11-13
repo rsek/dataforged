@@ -14,7 +14,11 @@ import * as jsc from '../validation/jsc.js'
 import JsonPointer from 'json-pointer'
 import { readSource } from './readWrite.js'
 import { formatPath } from '../../utils.js'
-import { isSortableSchema, sortSchemaKeys } from './sort.js'
+import {
+	schemaDescribesSortableValue,
+	sortDataswornKeys,
+	sortSchemaKeys
+} from './sort.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -58,13 +62,19 @@ export async function buildSourcebook(
 
 	await Promise.all(
 		sourceFiles.map(async (filePath) => {
-			const sourceData = await readSourcebookFile(filePath, schemaIdIn)
-			const builtData = await buildSourcebookFile(
-				filePath,
-				sourceData,
-				schemaIdOut
-			)
-			builtFiles.set(filePath, builtData)
+			try {
+				const sourceData = await readSourcebookFile(filePath, schemaIdIn)
+
+				const builtData = await buildSourcebookFile(
+					filePath,
+					sourceData,
+					schemaIdOut
+				)
+
+				builtFiles.set(filePath, builtData)
+			} catch (error) {
+				log.error(`Failed to build from ${formatPath(filePath)}:`, error)
+			}
 		})
 	)
 
@@ -89,7 +99,13 @@ export async function buildSourcebook(
 		if (metadataKeys.includes(k as any)) continue
 		if (v == null || Object.keys(v)?.length === 0) continue
 
-		const jsonOut = cleanDatasworn(k as any, v, sourcebookMetadata)
+		const jsonToValidate = { ...sourcebookMetadata, [k]: v }
+
+		// TODO: rewrite this using keywords and Draft.each() from json-schema-library
+
+		ajv.validate('Datasworn', jsonToValidate)
+
+		const jsonOut = cleanDatasworn({ ...sourcebookMetadata, [k]: v })
 
 		/** JSON transformer to strip underscore (macro) properties */
 		const replacer = (k: string, v: unknown) => (isMacroKey(k) ? undefined : v)
@@ -97,10 +113,16 @@ export async function buildSourcebook(
 		const outPath = path.join(destDir, `${k}.json`)
 
 		toWrite.push(
-			fs.ensureFile(outPath).then(() => {
-				log.info(`✏️  Writing to ${formatPath(outPath)}`)
-				return writeJSON(outPath, jsonOut, { replacer })
-			})
+			fs
+				.ensureFile(outPath)
+				.then(() => {
+					log.info(`✏️  Writing to ${formatPath(outPath)}`)
+					return writeJSON(outPath, jsonOut, { replacer })
+				})
+				.catch(
+					(err) =>
+						void log.error(`Failed to write ${formatPath(outPath)}:`, err)
+				)
 		)
 	}
 
@@ -118,37 +140,52 @@ export async function buildSourcebook(
 	log.info(`✅ Finished writing sourcebook "${id}" to ${formatPath(destDir)}`)
 }
 
-function cleanDatasworn<K extends SourcebookDataKey = SourcebookDataKey>(
-	k: K,
-	v: unknown,
-	sourcebookMetadata: SourcebookMetadata
-) {
-	const jsonOut = { ...sourcebookMetadata, [k]: v }
+function cleanDatasworn(datasworn: Out.Datasworn) {
+	// const jsonToValidate = { ...sourcebookMetadata, [k]: v }
 
 	// TODO: rewrite this using keywords and Draft.each() from json-schema-library
 
-	ajv.validate('Datasworn', jsonOut)
+	// ajv.validate('Datasworn', jsonToValidate)
 
 	const pointersToDelete: string[] = []
-	const pointersToSort: string[] = []
+	const sortedPointers: Record<string, unknown> = {}
 
-	jsc.input.each(jsonOut, (schema, data, pointer) => {
+	jsc.input.each(datasworn, (schema, data, hashPointer) => {
+		const nicePointer = hashPointer.replace(/^#/, '')
+		if (nicePointer === '') return
+
 		const sep = '/'
-		const key = pointer.split(sep)?.pop()
+		const key = hashPointer.split(sep)?.pop()
 		const isDeletable =
 			key?.startsWith('_') ??
 			//  experimentalKeys.includes(key as any) ||
 			schema?.macro
+		// skip if it refers to the root object
 
-		if (isDeletable) return pointersToDelete.push(pointer)
-		else if (isSortableSchema(schema)) return pointersToSort.push(pointer)
+		if (isDeletable) pointersToDelete.push(nicePointer)
+		else if (data != null && schemaDescribesSortableValue(schema))
+			sortedPointers[nicePointer] = sortDataswornKeys(data as any)
+
+		return
 	})
 
+	// console.log('pointersToDelete', pointersToDelete)
+	// console.log('pointersToSort', pointersToSort)
+
+	const jsonOut = JSON.parse(JSON.stringify(datasworn))
+
 	for (const pointer of pointersToDelete)
-		if (JsonPointer.has(jsonOut, pointer)) JsonPointer.remove(jsonOut, pointer)
-	for (const pointer of pointersToSort)
-		if (JsonPointer.has(jsonOut, pointer))
-			JsonPointer.set(jsonOut, pointer, sortSchemaKeys(jsonOut))
+		if (JsonPointer.has(jsonOut, pointer)) {
+			// console.log('deleting', pointer)
+
+			JsonPointer.remove(jsonOut, pointer)
+		}
+	for (const [pointer, sortedValue] of Object.entries(sortedPointers)) {
+		if (JsonPointer.has(jsonOut, pointer)) {
+			// console.log('sorting', pointer)
+			JsonPointer.set(jsonOut, pointer, sortedValue)
+		}
+	}
 
 	return jsonOut as Out.Datasworn
 }
@@ -167,22 +204,25 @@ async function buildSourcebookFile(
 		sourceData as In.Datasworn & SourceHaver,
 		transformer as any
 	)
+	try {
+		if (!ajv.validate<Out.Datasworn>(schemaIdOut, builtData)) {
+			log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
 
-	if (!ajv.validate<Out.Datasworn>(schemaIdOut, builtData)) {
-		log.error(`${JSON.stringify(ajv.errors, undefined, '\t')}`)
+			const errorPath = path.join(
+				ROOT_OUTPUT,
+				path.dirname(filePath),
+				path.basename(filePath, '.yaml') + `.error.json`
+			)
 
-		const errorPath = path.join(
-			ROOT_OUTPUT,
-			path.dirname(filePath),
-			path.basename(filePath, '.yaml') + `.error.json`
-		)
-
-		await fs.writeJSON(errorPath, builtData, { spaces: '\t' })
-		throw new Error(
-			`Transformed data doesn't match the ${schemaIdOut} schema. Dumping invalid JSON to: ${errorPath}`
-		)
+			await fs.writeJSON(errorPath, builtData, { spaces: '\t' })
+			throw new Error(
+				`Transformed data doesn't match the ${schemaIdOut} schema. Dumping invalid JSON to: ${errorPath}`
+			)
+		}
+		return builtData
+	} catch (err) {
+		log.error(`Failed to build ${formatPath(filePath)}`, err)
 	}
-	return builtData
 }
 
 type SourcebookMetadataKeys = (typeof metadataKeys)[number]
