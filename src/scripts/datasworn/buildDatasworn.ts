@@ -246,10 +246,6 @@ async function readSourcebookFile(filePath: string, schemaIdIn: string) {
 	return sourceData
 }
 
-function keyIsDeletable(key: string, schema?: JSONSchema7) {
-	return key.startsWith('_') || (schema as any).macro
-}
-
 function getDeletableKeys(value: unknown, schema: JSONSchema7): string[] {
 	if (!isUndefined(schema.properties) && value != null) {
 		return Object.keys(value).filter(

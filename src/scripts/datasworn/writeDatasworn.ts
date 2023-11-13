@@ -7,6 +7,8 @@ import { buildSourcebook } from './buildDatasworn.js'
 import { SCHEMA_IN, SCHEMA_OUT } from '../const.js'
 import { formatPath } from '../../utils.js'
 
+const profiler = log.startTimer()
+
 log.info('📖 Reading schema...')
 
 // flush any old schemas
@@ -37,3 +39,5 @@ await Promise.all(
 		)
 	)
 )
+
+profiler.done({ message: `Finished in ${Date.now() - profiler.start}ms` })

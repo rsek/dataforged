@@ -1,37 +1,24 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
-	"javascript.updateImportsOnFileMove.enabled": "always",
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"typescript.preferences.importModuleSpecifier": "relative",
-	"javascript.preferences.importModuleSpecifier": "relative",
-	"javascript.preferences.importModuleSpecifierEnding": "js",
-	"typescript.preferences.importModuleSpecifierEnding": "js",
-	"typescript.suggest.jsdoc.generateReturns": false,
-	"editor.suggest.showDeprecated": false,
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": false,
-	"eslint.validate": ["javascript", "typescript"],
-	"prettier.enable": true,
-	"prettier.requireConfig": false,
-	"prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
-	"eslint.lintTask.enable": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"yaml.format.enable": true,
-	"yaml.completion": true,
-	"yaml.suggest.parentSkeletonSelectedFirst": true,
-	"yaml.disableAdditionalProperties": false,
-	"yaml.disableDefaultProperties": false,
-	"yaml.format.singleQuote": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.foldingImportsByDefault": true,
-	"yaml.schemas": {
-		"source_data/datasworn-input.schema.json": ["source_data/**/*.yaml"]
-	},
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": true,
+	"editor.suggest.showDeprecated": false,
+	"eslint.lintTask.enable": true,
+	"eslint.validate": ["javascript", "typescript"],
+	"javascript.preferences.importModuleSpecifier": "relative",
+	"javascript.preferences.importModuleSpecifierEnding": "js",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"json.format.enable": false,
 	"json.schemas": [
 		{
 			"url": "./datasworn/datasworn.schema.json",
@@ -39,8 +26,29 @@
 		}
 	],
 	"json.validate.enable": true,
-	"json.format.enable": false,
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	"prettier.documentSelectors": ["*.ts", "*.json", "*.yaml"],
+	"prettier.enable": true,
+	"prettier.requireConfig": false,
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"typescript.preferences.importModuleSpecifierEnding": "js",
+	"typescript.suggest.jsdoc.generateReturns": false,
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"yaml-plus-json": {
+		"convertOnRename": true,
+		"fileExtensions": {
+			"json": ".json",
+			"yaml": ".yaml"
+		},
+		"yamlIndent": 2
+	},
+	"yaml.completion": true,
+	"yaml.disableAdditionalProperties": false,
+	"yaml.disableDefaultProperties": false,
+	"yaml.format.enable": true,
+	"yaml.format.singleQuote": true,
+	"yaml.schemas": {
+		"source_data/datasworn-input.schema.json": ["source_data/**/*.yaml"]
+	},
+	"yaml.suggest.parentSkeletonSelectedFirst": true
 }
