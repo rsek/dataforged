@@ -34,6 +34,7 @@ export function prepareDistributableSchema(
 	})
 
 	const pointersToDelete: string[] = []
+	const sorted: Record<string, unknown> = {}
 
 	distSchema.eachSchema((schema, pointer) => {
 		if (!('properties' in schema)) return

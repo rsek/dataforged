@@ -10,7 +10,7 @@ const typeKeys = [
 	'roll_type'
 ]
 
-const noSort = ['columns', 'controls', 'contents']
+const noSort = ['columns', 'controls', 'contents', 'collections']
 
 const dataSwornKeyOrder = [
 	'id',

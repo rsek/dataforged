@@ -7,11 +7,13 @@ import ajv from '../validation/ajv.js'
 import { getPrettierOptions, writeJSON } from '../datasworn/readWrite.js'
 import * as Schema from './schema-root.js'
 import * as CONST from '../const.js'
-import { type JsonSchema } from 'json-schema-library'
+import { Draft07, type JsonSchema } from 'json-schema-library'
+import { sortSchemaKeys } from '../datasworn/sort.js'
+import JsonPointer from 'json-pointer'
 
 interface SchemaOptions {
 	name: string
-	schema: JsonSchema
+	draft: Draft07
 	paths: string[]
 	messages: {
 		writeStart: string
@@ -22,7 +24,7 @@ interface SchemaOptions {
 const schemaOptions: SchemaOptions[] = [
 	{
 		name: 'Datasworn',
-		schema: Schema.Datasworn.getSchema() as JsonSchema,
+		draft: Schema.Datasworn,
 		paths: [CONST.SCHEMA_OUT],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn',
@@ -31,7 +33,7 @@ const schemaOptions: SchemaOptions[] = [
 	},
 	{
 		name: 'DataswornInput',
-		schema: Schema.DataswornInput.getSchema() as JsonSchema,
+		draft: Schema.DataswornInput,
 		paths: [CONST.SCHEMA_IN],
 		messages: {
 			writeStart: '✏️  Writing schema for Datasworn YAML input',
@@ -43,19 +45,37 @@ const schemaOptions: SchemaOptions[] = [
 const prettierOptions = await getPrettierOptions(CONST.SCHEMA_OUT)
 
 for (const options of schemaOptions) {
-	ajv.addSchema(options.schema, options.name)
+	ajv.addSchema(options.draft.getSchema() as JsonSchema, options.name)
 
 	log.info(options.messages.writeStart)
 
 	try {
-		for (const path of options.paths)
-			writeJSON(path, ajv.getSchema(options.name)?.schema, {
+		for (const path of options.paths) {
+			let sortedSchema: Record<string, unknown> = {}
+
+			options.draft.eachSchema((schema, hashPointer) => {
+				let pointer = hashPointer.replace(/^#/, '/')
+				const newSchema = sortSchemaKeys(JSON.parse(JSON.stringify(schema)))
+
+				console.log(newSchema)
+
+				if (pointer === '/') sortedSchema = newSchema
+				else JsonPointer.set(sortedSchema, pointer, newSchema)
+			})
+
+			// console.log(sortedSchema)
+
+			for (const path of options.paths)
+				writeJSON(path, sortedSchema, { prettierOptions })
+
+			writeJSON(path, sortedSchema, {
 				prettierOptions
 			}).then(() => log.info(options.messages.writeFinish))
+		}
 	} catch (error) {
 		log.error(error)
 
 		for (const path of options.paths)
-			writeJSON(path, options.schema, { prettierOptions })
+			writeJSON(path, options.draft.getSchema(), { prettierOptions })
 	}
 }
