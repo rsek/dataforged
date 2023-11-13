@@ -3,6 +3,115 @@
 	"title": "Datasworn v2.0.0-dev (data entry)",
 	"type": "object",
 	"description": "Describes game rules compatible with the Ironsworn tabletop role-playing game by Shawn Tomkin.",
+	"required": ["id", "source"],
+	"properties": {
+		"id": {
+			"$ref": "#/$defs/NamespaceID"
+		},
+		"source": {
+			"$ref": "#/$defs/Source"
+		},
+		"oracles": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/OracleCollection"
+				}
+			}
+		},
+		"assets": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing asset types, which contain assets.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/AssetType"
+				}
+			}
+		},
+		"atlas": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/Atlas"
+				}
+			}
+		},
+		"delve_sites": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/DelveSite"
+				}
+			}
+		},
+		"moves": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing move categories, which contain moves.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/MoveCategory"
+				}
+			}
+		},
+		"npcs": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing NPC collections, which contain NPCs.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/NpcCollection"
+				}
+			}
+		},
+		"rarities": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/Rarity"
+				}
+			}
+		},
+		"site_domains": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing delve site domains.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/DelveSiteDomain"
+				}
+			}
+		},
+		"site_themes": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object containing delve site themes.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/DelveSiteTheme"
+				}
+			}
+		},
+		"truths": {
+			"type": "object",
+			"$comment": "Deserialize as a dictionary object.",
+			"description": "A dictionary object of truth categories.",
+			"patternProperties": {
+				"^[a-z][a-z_]*$": {
+					"$ref": "#/$defs/Truth"
+				}
+			}
+		}
+	},
 	"$defs": {
 		"AssetAbilityControlFieldID": {
 			"title": "AssetAbilityControlFieldID",
@@ -354,6 +463,12 @@
 			"title": "Suggestions",
 			"type": "object",
 			"properties": {
+				"oracles": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/OracleTableID"
+					}
+				},
 				"assets": {
 					"type": "array",
 					"items": {
@@ -376,12 +491,6 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/NpcID"
-					}
-				},
-				"oracles": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/OracleTableID"
 					}
 				},
 				"site_domains": {
@@ -417,10 +526,10 @@
 			"title": "I18nHints",
 			"type": "object",
 			"properties": {
-				"summary": {
+				"result": {
 					"$ref": "#/$defs/I18nHint"
 				},
-				"result": {
+				"summary": {
 					"$ref": "#/$defs/I18nHint"
 				},
 				"description": {
@@ -429,10 +538,10 @@
 				"template": {
 					"type": "object",
 					"properties": {
-						"summary": {
+						"result": {
 							"$ref": "#/$defs/I18nHint"
 						},
-						"result": {
+						"summary": {
 							"$ref": "#/$defs/I18nHint"
 						},
 						"description": {
@@ -609,12 +718,12 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"enhances": {
 					"$ref": "#/$defs/NpcCollectionID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -721,6 +830,9 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"enhances": {
 					"$ref": "#/$defs/OracleCollectionID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
@@ -734,9 +846,6 @@
 					"items": {
 						"$ref": "#/$defs/Label"
 					}
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			}
 		},
@@ -775,14 +884,14 @@
 					"$ref": "#/$defs/Label",
 					"description": "The table column's header text."
 				},
-				"color": {
-					"$ref": "#/$defs/CSSColor",
-					"description": "The thematic color for this column."
-				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
 					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
+				},
+				"color": {
+					"$ref": "#/$defs/CSSColor",
+					"description": "The thematic color for this column."
 				},
 				"table_key": {
 					"$ref": "#/$defs/DictKey",
@@ -795,16 +904,16 @@
 			"type": "object",
 			"description": "Provides string templates that may be used in place of the static row text from `OracleTableRow#result`, `OracleTableRow#summary`, and `OracleTableRow#description`.\n\n  These strings are formatted in Markdown, but use a special syntax for their placeholders: `{{result:some_oracle_table_id}}`. The placeholder should be replaced with the value of a rolled (or selected) `OracleTableRow#result` from the target oracle table ID.",
 			"properties": {
-				"summary": {
-					"$ref": "#/$defs/TemplateString",
-					"description": "A string template that may be used in place of OracleTableRow#summary."
-				},
 				"result": {
 					"$ref": "#/$defs/TemplateString",
 					"description": "A string template that may be used in place of OracleTableRow#result.",
 					"examples": [
 						"{{result:starforged/oracles/factions/affiliation}} of the {{result:starforged/oracles/factions/legacy}} {{result:starforged/oracles/factions/identity}}"
 					]
+				},
+				"summary": {
+					"$ref": "#/$defs/TemplateString",
+					"description": "A string template that may be used in place of OracleTableRow#summary."
 				},
 				"description": {
 					"$ref": "#/$defs/TemplateString",
@@ -829,6 +938,10 @@
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
+				"dice": {
+					"$ref": "#/$defs/DiceNotation",
+					"default": "1d100"
+				},
 				"rendering": {
 					"$ref": "#/$defs/OracleTableRendering"
 				},
@@ -843,20 +956,8 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
-				"_i18n": {
-					"$ref": "#/$defs/I18nHints",
-					"macro": true
-				},
-				"dice": {
-					"$ref": "#/$defs/DiceNotation",
-					"default": "1d100"
-				},
 				"match": {
 					"$ref": "#/$defs/OracleTableMatchBehavior"
-				},
-				"replaces": {
-					"$ref": "#/$defs/OracleTableID",
-					"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table."
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -866,6 +967,14 @@
 					"items": {
 						"$ref": "#/$defs/OracleTableRow"
 					}
+				},
+				"_i18n": {
+					"$ref": "#/$defs/I18nHints",
+					"macro": true
+				},
+				"replaces": {
+					"$ref": "#/$defs/OracleTableID",
+					"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table."
 				}
 			},
 			"isSourcedNode": true
@@ -879,14 +988,14 @@
 					"$ref": "#/$defs/Label",
 					"description": "The table column's header text."
 				},
-				"color": {
-					"$ref": "#/$defs/CSSColor",
-					"description": "The thematic color for this column."
-				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
 					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
+				},
+				"color": {
+					"$ref": "#/$defs/CSSColor",
+					"description": "The thematic color for this column."
 				}
 			},
 			"examples": [
@@ -930,11 +1039,6 @@
 				"columns": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"$ref": "#/$defs/OracleTableColumn"
-						}
-					},
 					"default": {
 						"roll": {
 							"label": "Roll",
@@ -943,6 +1047,11 @@
 						"result": {
 							"label": "Result",
 							"content_type": "result"
+						}
+					},
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/OracleTableColumn"
 						}
 					}
 				}
@@ -986,9 +1095,6 @@
 				"id": {
 					"$ref": "#/$defs/OracleTableRowID"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"min": {
 					"type": ["integer", "null"],
 					"description": "Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
@@ -999,20 +1105,20 @@
 					"description": "High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.",
 					"default": null
 				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"result": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"embed_table": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"i18n": {
-					"$ref": "#/$defs/I18nHints"
+				"template": {
+					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
@@ -1020,11 +1126,14 @@
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
+				"embed_table": {
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
-				"template": {
-					"$ref": "#/$defs/OracleRollTemplate"
+				"i18n": {
+					"$ref": "#/$defs/I18nHints"
 				}
 			}
 		},
@@ -1151,12 +1260,12 @@
 						"$ref": "#/$defs/OracleTableID"
 					}
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -1225,12 +1334,12 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"enhances": {
 					"$ref": "#/$defs/MoveCategoryID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -1289,12 +1398,12 @@
 						"$ref": "#/$defs/OracleTableID"
 					}
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -1349,11 +1458,11 @@
 				"text": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"count_as": {
-					"$ref": "#/$defs/MoveOutcomeType"
-				},
 				"match": {
 					"$ref": "#/$defs/MoveOutcome"
+				},
+				"count_as": {
+					"$ref": "#/$defs/MoveOutcomeType"
 				}
 			}
 		},
@@ -1440,12 +1549,12 @@
 						"$ref": "#/$defs/OracleTableID"
 					}
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -1530,12 +1639,12 @@
 						"$ref": "#/$defs/OracleTableID"
 					}
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"replaces": {
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -1736,7 +1845,7 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
+					"default": "enhance",
 					"anyOf": [
 						{
 							"type": "string",
@@ -1746,11 +1855,11 @@
 							"$ref": "#/$defs/ActionRollMethod",
 							"default": "player_choice"
 						}
-					],
-					"default": "enhance"
+					]
 				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
+					"default": null,
 					"anyOf": [
 						{
 							"type": "null"
@@ -1762,8 +1871,7 @@
 								"$ref": "#/$defs/ActionRollOption"
 							}
 						}
-					],
-					"default": null
+					]
 				}
 			}
 		},
@@ -1923,7 +2031,7 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
+					"default": "enhance",
 					"anyOf": [
 						{
 							"type": "string",
@@ -1933,11 +2041,11 @@
 							"$ref": "#/$defs/ProgressRollMethod",
 							"default": "progress_roll"
 						}
-					],
-					"default": "enhance"
+					]
 				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
+					"default": null,
 					"anyOf": [
 						{
 							"type": "null"
@@ -1949,8 +2057,7 @@
 								"$ref": "#/$defs/ProgressRollOption"
 							}
 						}
-					],
-					"default": null
+					]
 				}
 			}
 		},
@@ -2024,7 +2131,7 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll method of its own.",
+					"default": "enhance",
 					"anyOf": [
 						{
 							"type": "string",
@@ -2033,11 +2140,11 @@
 						{
 							"$ref": "#/$defs/SpecialTrackRollMethod"
 						}
-					],
-					"default": "enhance"
+					]
 				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
+					"default": null,
 					"anyOf": [
 						{
 							"type": "null"
@@ -2049,8 +2156,7 @@
 								"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
 							}
 						}
-					],
-					"default": null
+					]
 				}
 			}
 		},
@@ -2088,12 +2194,6 @@
 				"name": {
 					"$ref": "#/$defs/Label"
 				},
-				"color": {
-					"$ref": "#/$defs/CSSColor"
-				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"asset_type": {
 					"$ref": "#/$defs/Label",
 					"description": "A localized category label for this asset. This is the surtitle above the asset's name on the card.",
@@ -2107,6 +2207,12 @@
 						"Ritual",
 						"Support Vehicle"
 					]
+				},
+				"color": {
+					"$ref": "#/$defs/CSSColor"
+				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"options": {
 					"type": "object",
@@ -2532,12 +2638,12 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"enhances": {
 					"$ref": "#/$defs/AssetTypeID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -2847,12 +2953,12 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"enhances": {
 					"$ref": "#/$defs/AtlasID",
 					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			}
 		},
@@ -2943,19 +3049,19 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"asset": {
 					"$ref": "#/$defs/AssetID",
 					"description": "The asset augmented by this rarity."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				},
 				"xp_cost": {
 					"type": "integer",
 					"description": "From Ironsworn: Delve, p. 174:\n\n      Some assets will bring a rarity into play more often than others, so the experience point cost for a rarity will vary by the linked asset. These costs are shown in the tables on page 175.\n\n      If you are playing solo, and aren’t concerned with the relative balance of rarity abilities, you can ignore these variable costs. If so, spend 3 experience points to purchase a rarity.",
 					"default": 3,
-					"maximum": 5,
-					"minimum": 3
+					"minimum": 3,
+					"maximum": 5
 				}
 			},
 			"isSourcedNode": true
@@ -2994,6 +3100,9 @@
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
 				},
 				"denizens": {
 					"allOf": [
@@ -3247,9 +3356,6 @@
 					"$ref": "#/$defs/AtlasEntryID",
 					"description": "The ID of an atlas entry representing the region in which this delve site is located."
 				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
-				},
 				"theme": {
 					"$ref": "#/$defs/DelveSiteThemeID"
 				}
@@ -3269,13 +3375,13 @@
 				},
 				"min": {
 					"type": "integer",
-					"maximum": 100,
-					"minimum": 1
+					"minimum": 1,
+					"maximum": 100
 				},
 				"max": {
 					"type": "integer",
-					"maximum": 100,
-					"minimum": 1
+					"minimum": 1,
+					"maximum": 100
 				},
 				"frequency": {
 					"$ref": "#/$defs/DelveSiteDenizenFrequency"
@@ -3311,12 +3417,12 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"card_type": {
 					"type": "string",
 					"const": "domain"
+				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -3628,12 +3734,12 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				},
 				"name_oracle": {
 					"$ref": "#/$defs/OracleTableID",
 					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
-				},
-				"suggestions": {
-					"$ref": "#/$defs/Suggestions"
 				}
 			},
 			"isSourcedNode": true
@@ -3646,29 +3752,26 @@
 				"id": {
 					"$ref": "#/$defs/DomainDangerRowID"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"min": {
 					"type": "integer"
 				},
 				"max": {
 					"type": "integer"
 				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"result": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"embed_table": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"i18n": {
-					"$ref": "#/$defs/I18nHints"
+				"template": {
+					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
@@ -3676,11 +3779,14 @@
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
+				"embed_table": {
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
-				"template": {
-					"$ref": "#/$defs/OracleRollTemplate"
+				"i18n": {
+					"$ref": "#/$defs/I18nHints"
 				}
 			}
 		},
@@ -3692,29 +3798,26 @@
 				"id": {
 					"$ref": "#/$defs/DomainFeatureRowID"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"min": {
 					"type": "integer"
 				},
 				"max": {
 					"type": "integer"
 				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"result": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"embed_table": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"i18n": {
-					"$ref": "#/$defs/I18nHints"
+				"template": {
+					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
@@ -3722,11 +3825,14 @@
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
+				"embed_table": {
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
-				"template": {
-					"$ref": "#/$defs/OracleRollTemplate"
+				"i18n": {
+					"$ref": "#/$defs/I18nHints"
 				}
 			}
 		},
@@ -3751,12 +3857,12 @@
 				"canonical_name": {
 					"$ref": "#/$defs/Label"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"card_type": {
 					"type": "string",
 					"const": "theme"
+				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -4055,29 +4161,26 @@
 				"id": {
 					"$ref": "#/$defs/ThemeDangerRowID"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"min": {
 					"type": "integer"
 				},
 				"max": {
 					"type": "integer"
 				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"result": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"embed_table": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"i18n": {
-					"$ref": "#/$defs/I18nHints"
+				"template": {
+					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
@@ -4085,11 +4188,14 @@
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
+				"embed_table": {
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
-				"template": {
-					"$ref": "#/$defs/OracleRollTemplate"
+				"i18n": {
+					"$ref": "#/$defs/I18nHints"
 				}
 			}
 		},
@@ -4101,29 +4207,26 @@
 				"id": {
 					"$ref": "#/$defs/ThemeFeatureRowID"
 				},
-				"icon": {
-					"$ref": "#/$defs/SVGImageURL"
-				},
 				"min": {
 					"type": "integer"
 				},
 				"max": {
 					"type": "integer"
 				},
-				"summary": {
-					"$ref": "#/$defs/MarkdownString"
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
 				},
 				"result": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
-				"embed_table": {
-					"$ref": "#/$defs/OracleTableID"
-				},
-				"i18n": {
-					"$ref": "#/$defs/I18nHints"
+				"template": {
+					"$ref": "#/$defs/OracleRollTemplate"
 				},
 				"rolls": {
 					"type": "array",
@@ -4131,120 +4234,14 @@
 						"$ref": "#/$defs/OracleTableRoll"
 					}
 				},
+				"embed_table": {
+					"$ref": "#/$defs/OracleTableID"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
-				"template": {
-					"$ref": "#/$defs/OracleRollTemplate"
-				}
-			}
-		}
-	},
-	"required": ["id", "source"],
-	"properties": {
-		"id": {
-			"$ref": "#/$defs/NamespaceID"
-		},
-		"source": {
-			"$ref": "#/$defs/Source"
-		},
-		"assets": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing asset types, which contain assets.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/AssetType"
-				}
-			}
-		},
-		"atlas": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/Atlas"
-				}
-			}
-		},
-		"delve_sites": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/DelveSite"
-				}
-			}
-		},
-		"moves": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing move categories, which contain moves.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/MoveCategory"
-				}
-			}
-		},
-		"npcs": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing NPC collections, which contain NPCs.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/NpcCollection"
-				}
-			}
-		},
-		"oracles": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/OracleCollection"
-				}
-			}
-		},
-		"rarities": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/Rarity"
-				}
-			}
-		},
-		"site_domains": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing delve site domains.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/DelveSiteDomain"
-				}
-			}
-		},
-		"site_themes": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object containing delve site themes.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/DelveSiteTheme"
-				}
-			}
-		},
-		"truths": {
-			"type": "object",
-			"$comment": "Deserialize as a dictionary object.",
-			"description": "A dictionary object of truth categories.",
-			"patternProperties": {
-				"^[a-z][a-z_]*$": {
-					"$ref": "#/$defs/Truth"
+				"i18n": {
+					"$ref": "#/$defs/I18nHints"
 				}
 			}
 		}

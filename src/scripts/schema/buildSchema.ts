@@ -57,8 +57,6 @@ for (const options of schemaOptions) {
 				let pointer = hashPointer.replace(/^#/, '/')
 				const newSchema = sortSchemaKeys(JSON.parse(JSON.stringify(schema)))
 
-				console.log(newSchema)
-
 				if (pointer === '/') sortedSchema = newSchema
 				else JsonPointer.set(sortedSchema, pointer, newSchema)
 			})

@@ -21,6 +21,7 @@
 					"id": "delve/oracles/character/activity",
 					"name": "Activity",
 					"canonical_name": "Character: Activity",
+					"dice": "1d100",
 					"summary": "To give an NPC or faction a task or objective, use the Activity oracle. For more detail, you can combine this prompt with the [Focus](id:delve/oracles/feature/focus) oracle or [Theme](id:classic/oracles/action_and_theme/theme) oracle.",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -34,7 +35,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": [
 							"delve/oracles/feature/focus",
@@ -598,6 +598,7 @@
 					"id": "delve/oracles/character/disposition",
 					"name": "Disposition",
 					"canonical_name": "Character: Disposition",
+					"dice": "1d100",
 					"summary": "Use this oracle when you want to define the initial tone of an encounter with an NPC or faction.",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -611,7 +612,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/character/disposition/1-6",
@@ -772,6 +772,7 @@
 					"id": "delve/oracles/combat_event/method",
 					"name": "Method",
 					"canonical_name": "Combat Event: Method",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -784,7 +785,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/combat_event/target"]
 					},
@@ -1345,6 +1345,7 @@
 					"id": "delve/oracles/combat_event/target",
 					"name": "Target",
 					"canonical_name": "Combat Event: Target",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -1357,7 +1358,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/combat_event/method"]
 					},
@@ -1941,6 +1941,7 @@
 					"id": "delve/oracles/feature/aspect",
 					"name": "Aspect",
 					"canonical_name": "Feature: Aspect",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -1953,7 +1954,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/feature/focus"]
 					},
@@ -2514,6 +2514,7 @@
 					"id": "delve/oracles/feature/focus",
 					"name": "Focus",
 					"canonical_name": "Feature: Focus",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -2526,7 +2527,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/feature/aspect"]
 					},
@@ -3107,6 +3107,7 @@
 					"id": "delve/oracles/monstrosity/size",
 					"name": "Size",
 					"canonical_name": "Monstrosity: Size",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -3119,7 +3120,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/size/1-5",
@@ -3163,6 +3163,7 @@
 					"id": "delve/oracles/monstrosity/primary_form",
 					"name": "Primary Form",
 					"canonical_name": "Monstrosity: Primary Form",
+					"dice": "1d100",
 					"summary": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -3176,7 +3177,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/primary_form/1-15",
@@ -3370,18 +3370,18 @@
 							"min": 81,
 							"max": 100,
 							"result": "Hybrid (roll twice)",
-							"i18n": {
-								"result": {
-									"part_of_speech": "adjunct_common_noun"
-								}
-							},
 							"rolls": [
 								{
 									"auto": true,
 									"method": "no_duplicates",
 									"times": 2
 								}
-							]
+							],
+							"i18n": {
+								"result": {
+									"part_of_speech": "adjunct_common_noun"
+								}
+							}
 						}
 					]
 				},
@@ -3389,6 +3389,7 @@
 					"id": "delve/oracles/monstrosity/characteristics",
 					"name": "Characteristics",
 					"canonical_name": "Monstrosity: Characteristics",
+					"dice": "1d100",
 					"summary": "Roll up to four times for Characteristics and keep up to three of those results.",
 					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!",
 					"source": {
@@ -3403,7 +3404,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/characteristics/1-5",
@@ -3579,6 +3579,7 @@
 					"id": "delve/oracles/monstrosity/abilities",
 					"name": "Abilities",
 					"canonical_name": "Monstrosity: Abilities",
+					"dice": "1d100",
 					"summary": "Roll up to four times for Abilities and keep up to three of those results.",
 					"description": "Some results on these tables include two related options separated by a slash (/). Pick the one which best fits the nature of the creature or is the most interesting. You can also make one of the options likely, and [Ask the Oracle](id:classic/moves/fate/ask_the_oracle) (using the pick two procedure) to confirm your choice. Or just take both!\n\nYou should weave these abilities into the fiction of your encounter with a monstrosity. Combined with its physical characteristics, they help define the creature’s approach and tactics. Make moves as appropriate to overcome, avoid, or face the consequences of these abilities.",
 					"source": {
@@ -3593,7 +3594,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/monstrosity/abilities/1-4",
@@ -3866,6 +3866,7 @@
 				"find_an_opportunity": {
 					"id": "delve/oracles/moves/find_an_opportunity",
 					"name": "Find an Opportunity",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -3878,7 +3879,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/moves/find_an_opportunity/1-25",
@@ -3945,6 +3945,7 @@
 				"reveal_a_danger": {
 					"id": "delve/oracles/moves/reveal_a_danger",
 					"name": "Reveal a Danger",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -3957,7 +3958,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/moves/reveal_a_danger/1-30",
@@ -4043,6 +4043,7 @@
 				"reveal_a_danger_alt": {
 					"id": "delve/oracles/moves/reveal_a_danger_alt",
 					"name": "Reveal a Danger (alternate version)",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4055,8 +4056,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
-					"replaces": "delve/oracles/moves/reveal_a_danger",
 					"table": [
 						{
 							"id": "delve/oracles/moves/reveal_a_danger_alt/1-22",
@@ -4125,11 +4124,13 @@
 								}
 							]
 						}
-					]
+					],
+					"replaces": "delve/oracles/moves/reveal_a_danger"
 				},
 				"advance_a_threat": {
 					"id": "delve/oracles/moves/advance_a_threat",
 					"name": "Advance a Threat",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4142,7 +4143,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"match": {
 						"text": "On a match, this development also exposes a surprising aspect of the threat’s plan or nature."
 					},
@@ -4200,6 +4200,7 @@
 						"edge": {
 							"id": "delve/oracles/moves/delve_the_depths/edge",
 							"name": "Edge",
+							"dice": "1d100",
 							"source": {
 								"title": "Ironsworn: Delve",
 								"date": "2020-02-13",
@@ -4212,7 +4213,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/edge/1-45",
@@ -4249,6 +4249,7 @@
 						"shadow": {
 							"id": "delve/oracles/moves/delve_the_depths/shadow",
 							"name": "Shadow",
+							"dice": "1d100",
 							"source": {
 								"title": "Ironsworn: Delve",
 								"date": "2020-02-13",
@@ -4261,7 +4262,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/shadow/1-30",
@@ -4298,6 +4298,7 @@
 						"wits": {
 							"id": "delve/oracles/moves/delve_the_depths/wits",
 							"name": "Wits",
+							"dice": "1d100",
 							"source": {
 								"title": "Ironsworn: Delve",
 								"date": "2020-02-13",
@@ -4310,7 +4311,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/moves/delve_the_depths/wits/1-40",
@@ -4382,6 +4382,7 @@
 					"id": "delve/oracles/site_name/format",
 					"name": "Format",
 					"canonical_name": "Site Name: Format",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4393,20 +4394,15 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
-					"i18n": {
-						"part_of_speech": {
-							"template": {
-								"result": "proper_noun"
-							}
-						}
-					},
 					"table": [
 						{
 							"id": "delve/oracles/site_name/format/1-25",
 							"min": 1,
 							"max": 25,
 							"result": "[Description] [Place]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4418,16 +4414,16 @@
 									"oracle": "delve/oracles/site_name/place",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/26-50",
 							"min": 26,
 							"max": 50,
 							"result": "[Place] of [Detail]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4439,16 +4435,16 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/detail}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/51-70",
 							"min": 51,
 							"max": 70,
 							"result": "[Place] of [Description] [Detail]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4465,16 +4461,16 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/detail}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/71-80",
 							"min": 71,
 							"max": 80,
 							"result": "[Place] of [Namesake's] [Detail]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4491,16 +4487,16 @@
 									"oracle": "delve/oracles/site_name/detail",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/detail}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/81-85",
 							"min": 81,
 							"max": 85,
 							"result": "[Namesake's] [Place]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4512,16 +4508,16 @@
 									"oracle": "delve/oracles/site_name/place",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/namesake}}'s {{result:delve/oracles/site_name/place}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/86-95",
 							"min": 86,
 							"max": 95,
 							"result": "[Description] [Place] of [Namesake]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4538,16 +4534,16 @@
 									"oracle": "delve/oracles/site_name/namesake",
 									"times": 1
 								}
-							],
-							"template": {
-								"result": "{{result:delve/oracles/site_name/description}} {{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
-							}
+							]
 						},
 						{
 							"id": "delve/oracles/site_name/format/96-100",
 							"min": 96,
 							"max": 100,
 							"result": "[Place] of [Namesake]",
+							"template": {
+								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
+							},
 							"rolls": [
 								{
 									"auto": false,
@@ -4559,17 +4555,22 @@
 									"oracle": "delve/oracles/site_name/namesake",
 									"times": 1
 								}
-							],
+							]
+						}
+					],
+					"i18n": {
+						"part_of_speech": {
 							"template": {
-								"result": "{{result:delve/oracles/site_name/place}} of {{result:delve/oracles/site_name/namesake}}"
+								"result": "proper_noun"
 							}
 						}
-					]
+					}
 				},
 				"description": {
 					"id": "delve/oracles/site_name/description",
 					"name": "Description",
 					"canonical_name": "Site Name: Description",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -4582,7 +4583,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/description/1-2",
@@ -5140,6 +5140,7 @@
 					"id": "delve/oracles/site_name/detail",
 					"name": "Detail",
 					"canonical_name": "Site Name: Detail",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -5152,7 +5153,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/detail/1-2",
@@ -5710,6 +5710,7 @@
 					"id": "delve/oracles/site_name/namesake",
 					"name": "Namesake",
 					"canonical_name": "Site Name: Namesake",
+					"dice": "1d100",
 					"summary": "You may also use your preferred name randomizer to generate a Namesake for your site. If you want to add details for the Namesake, use the [Character oracles](id:classic/collections/oracles/character) in *Ironsworn Core*. This may help inspire a deeper understanding of the history of the site.",
 					"source": {
 						"title": "Ironsworn: Delve",
@@ -5723,7 +5724,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/namesake/1-2",
@@ -6281,6 +6281,7 @@
 					"id": "delve/oracles/site_name/place",
 					"name": "Place",
 					"canonical_name": "Site Name: Place",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -6293,175 +6294,174 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_name/place/1-6",
 							"min": 1,
 							"max": 6,
 							"result": "[Barrow](id:delve/site_domains/barrow)",
-							"embed_table": "delve/oracles/site_name/place/barrow",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/barrow",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/barrow"
 						},
 						{
 							"id": "delve/oracles/site_name/place/7-18",
 							"min": 7,
 							"max": 18,
 							"result": "[Cavern](id:delve/site_domains/cavern)",
-							"embed_table": "delve/oracles/site_name/place/cavern",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/cavern",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/cavern"
 						},
 						{
 							"id": "delve/oracles/site_name/place/19-28",
 							"min": 19,
 							"max": 28,
 							"result": "[Frozen Cavern](id:delve/site_domains/frozen_cavern)",
-							"embed_table": "delve/oracles/site_name/place/frozen_cavern",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/frozen_cavern",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/frozen_cavern"
 						},
 						{
 							"id": "delve/oracles/site_name/place/29-32",
 							"min": 29,
 							"max": 32,
 							"result": "[Icereach](id:delve/site_domains/icereach)",
-							"embed_table": "delve/oracles/site_name/place/icereach",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/icereach",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/icereach"
 						},
 						{
 							"id": "delve/oracles/site_name/place/33-38",
 							"min": 33,
 							"max": 38,
 							"result": "[Mine](id:delve/site_domains/mine)",
-							"embed_table": "delve/oracles/site_name/place/mine",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/mine",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/mine"
 						},
 						{
 							"id": "delve/oracles/site_name/place/39-48",
 							"min": 39,
 							"max": 48,
 							"result": "[Pass](id:delve/site_domains/pass)",
-							"embed_table": "delve/oracles/site_name/place/pass",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/pass",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/pass"
 						},
 						{
 							"id": "delve/oracles/site_name/place/49-58",
 							"min": 49,
 							"max": 58,
 							"result": "[Ruin](id:delve/site_domains/ruin)",
-							"embed_table": "delve/oracles/site_name/place/ruin",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/ruin",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/ruin"
 						},
 						{
 							"id": "delve/oracles/site_name/place/59-68",
 							"min": 59,
 							"max": 68,
 							"result": "[Sea Cave](id:delve/site_domains/sea_cave)",
-							"embed_table": "delve/oracles/site_name/place/sea_cave",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/sea_cave",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/sea_cave"
 						},
 						{
 							"id": "delve/oracles/site_name/place/69-78",
 							"min": 69,
 							"max": 78,
 							"result": "[Shadowfen](id:delve/site_domains/shadowfen)",
-							"embed_table": "delve/oracles/site_name/place/shadowfen",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/shadowfen",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/shadowfen"
 						},
 						{
 							"id": "delve/oracles/site_name/place/79-83",
 							"min": 79,
 							"max": 83,
 							"result": "[Stronghold](id:delve/site_domains/stronghold)",
-							"embed_table": "delve/oracles/site_name/place/stronghold",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/stronghold",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/stronghold"
 						},
 						{
 							"id": "delve/oracles/site_name/place/84-95",
 							"min": 84,
 							"max": 95,
 							"result": "[Tanglewood](id:delve/site_domains/tanglewood)",
-							"embed_table": "delve/oracles/site_name/place/tanglewood",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/tanglewood",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/tanglewood"
 						},
 						{
 							"id": "delve/oracles/site_name/place/96-100",
 							"min": 96,
 							"max": 100,
 							"result": "[Underkeep](id:delve/site_domains/underkeep)",
-							"embed_table": "delve/oracles/site_name/place/underkeep",
 							"rolls": [
 								{
 									"auto": true,
 									"oracle": "delve/oracles/site_name/place/underkeep",
 									"times": 1
 								}
-							]
+							],
+							"embed_table": "delve/oracles/site_name/place/underkeep"
 						}
 					]
 				}
@@ -6475,6 +6475,7 @@
 						"barrow": {
 							"id": "delve/oracles/site_name/place/barrow",
 							"name": "Barrow",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -6501,7 +6502,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/barrow/1-16",
@@ -6574,6 +6574,7 @@
 						"cavern": {
 							"id": "delve/oracles/site_name/place/cavern",
 							"name": "Cavern",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -6600,7 +6601,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/cavern/1-10",
@@ -6717,6 +6717,7 @@
 						"frozen_cavern": {
 							"id": "delve/oracles/site_name/place/frozen_cavern",
 							"name": "Frozen Cavern",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -6743,7 +6744,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/frozen_cavern/1-10",
@@ -6860,6 +6860,7 @@
 						"icereach": {
 							"id": "delve/oracles/site_name/place/icereach",
 							"name": "Icereach",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -6886,7 +6887,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/icereach/1-16",
@@ -6959,6 +6959,7 @@
 						"mine": {
 							"id": "delve/oracles/site_name/place/mine",
 							"name": "Mine",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -6985,7 +6986,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/mine/1-16",
@@ -7058,6 +7058,7 @@
 						"pass": {
 							"id": "delve/oracles/site_name/place/pass",
 							"name": "Pass",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7084,7 +7085,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/pass/1-10",
@@ -7201,6 +7201,7 @@
 						"ruin": {
 							"id": "delve/oracles/site_name/place/ruin",
 							"name": "Ruin",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7227,7 +7228,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/ruin/1-10",
@@ -7344,6 +7344,7 @@
 						"sea_cave": {
 							"id": "delve/oracles/site_name/place/sea_cave",
 							"name": "Sea Cave",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7370,7 +7371,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/sea_cave/1-16",
@@ -7443,6 +7443,7 @@
 						"shadowfen": {
 							"id": "delve/oracles/site_name/place/shadowfen",
 							"name": "Shadowfen",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7469,7 +7470,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/shadowfen/1-10",
@@ -7586,6 +7586,7 @@
 						"stronghold": {
 							"id": "delve/oracles/site_name/place/stronghold",
 							"name": "Stronghold",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7612,7 +7613,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/stronghold/1-10",
@@ -7729,6 +7729,7 @@
 						"tanglewood": {
 							"id": "delve/oracles/site_name/place/tanglewood",
 							"name": "Tanglewood",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7755,7 +7756,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/tanglewood/1-11",
@@ -7850,6 +7850,7 @@
 						"underkeep": {
 							"id": "delve/oracles/site_name/place/underkeep",
 							"name": "Underkeep",
+							"dice": "1d100",
 							"rendering": {
 								"table_style": "embed_in_row",
 								"columns": {
@@ -7876,7 +7877,6 @@
 								"license": "https://creativecommons.org/licenses/by/4.0",
 								"url": "https://ironswornrpg.com"
 							},
-							"dice": "1d100",
 							"table": [
 								{
 									"id": "delve/oracles/site_name/place/underkeep/1-10",
@@ -8028,6 +8028,7 @@
 					"id": "delve/oracles/site_nature/theme",
 					"name": "Theme",
 					"canonical_name": "Site Nature: Theme",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8040,7 +8041,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_nature/theme/1-11",
@@ -8096,6 +8096,7 @@
 					"id": "delve/oracles/site_nature/domain",
 					"name": "Domain",
 					"canonical_name": "Site Nature: Domain",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8108,7 +8109,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/site_nature/domain/1-6",
@@ -8208,6 +8208,7 @@
 					"id": "delve/oracles/threat/category",
 					"name": "Category",
 					"canonical_name": "Threat: Category",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8220,7 +8221,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/category/1-10",
@@ -8294,6 +8294,7 @@
 					"id": "delve/oracles/threat/burgeoning_conflict",
 					"name": "Burgeoning Conflict",
 					"canonical_name": "Threat: Burgeoning Conflict",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8306,7 +8307,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/burgeoning_conflict/1-10",
@@ -8374,6 +8374,7 @@
 					"id": "delve/oracles/threat/cursed_site",
 					"name": "Cursed Site",
 					"canonical_name": "Threat: Cursed Site",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8386,7 +8387,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/cursed_site/1-10",
@@ -8454,6 +8454,7 @@
 					"id": "delve/oracles/threat/environmental_calamity",
 					"name": "Environmental Calamity",
 					"canonical_name": "Threat: Environmental Calamity",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8466,7 +8467,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/environmental_calamity/1-10",
@@ -8534,6 +8534,7 @@
 					"id": "delve/oracles/threat/malignant_plague",
 					"name": "Malignant Plague",
 					"canonical_name": "Threat: Malignant Plague",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8546,7 +8547,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/malignant_plague/1-10",
@@ -8614,6 +8614,7 @@
 					"id": "delve/oracles/threat/rampaging_creature",
 					"name": "Rampaging Creature",
 					"canonical_name": "Threat: Rampaging Creature",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8626,7 +8627,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/rampaging_creature/1-10",
@@ -8694,6 +8694,7 @@
 					"id": "delve/oracles/threat/ravaging_horde",
 					"name": "Ravaging Horde",
 					"canonical_name": "Threat: Ravaging Horde",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8706,7 +8707,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/ravaging_horde/1-10",
@@ -8774,6 +8774,7 @@
 					"id": "delve/oracles/threat/scheming_leader",
 					"name": "Scheming Leader",
 					"canonical_name": "Threat: Scheming Leader",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8786,7 +8787,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/scheming_leader/1-10",
@@ -8854,6 +8854,7 @@
 					"id": "delve/oracles/threat/power_hungry_mystic",
 					"name": "Power-Hungry Mystic",
 					"canonical_name": "Threat: Power-Hungry Mystic",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8866,7 +8867,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/power_hungry_mystic/1-10",
@@ -8934,6 +8934,7 @@
 					"id": "delve/oracles/threat/zealous_cult",
 					"name": "Zealous Cult",
 					"canonical_name": "Threat: Zealous Cult",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -8946,7 +8947,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"table": [
 						{
 							"id": "delve/oracles/threat/zealous_cult/1-10",
@@ -9034,6 +9034,7 @@
 					"id": "delve/oracles/trap/trap",
 					"name": "Event",
 					"canonical_name": "Trap: Event",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -9046,7 +9047,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/trap/component"]
 					},
@@ -9332,6 +9332,7 @@
 					"id": "delve/oracles/trap/component",
 					"name": "Component",
 					"canonical_name": "Trap: Component",
+					"dice": "1d100",
 					"source": {
 						"title": "Ironsworn: Delve",
 						"date": "2020-02-13",
@@ -9344,7 +9345,6 @@
 						"license": "https://creativecommons.org/licenses/by/4.0",
 						"url": "https://ironswornrpg.com"
 					},
-					"dice": "1d100",
 					"suggestions": {
 						"oracles": ["delve/oracles/trap/event"]
 					},

@@ -18,18 +18,19 @@ const dataSwornKeyOrder = [
 	'name',
 	'label',
 	'canonical_name',
+	...typeKeys,
+	'min',
+	'max',
+	'nature',
 	'color',
 	'icon',
 	'images',
-	...typeKeys,
-	'nature',
 	'rank',
 	'track_label',
+	'dice',
 	'rendering',
 	'table_style',
 	'enabled',
-	'min',
-	'max',
 	'value',
 	'frequency',
 	'options',
@@ -39,9 +40,9 @@ const dataSwornKeyOrder = [
 	'using',
 	'trigger',
 	'roll',
+	'result',
 	'summary',
 	'requirement',
-	'result',
 	'features',
 	'dangers',
 	'drives',
@@ -53,6 +54,8 @@ const dataSwornKeyOrder = [
 	'description',
 	'text',
 	'abilities',
+	'template',
+	'rolls',
 	'contents',
 	'collections',
 	'outcomes',
@@ -65,7 +68,16 @@ const dataSwornKeyOrder = [
 	'authors',
 	'source',
 	'license',
-	'url'
+	'url',
+	'embed_table',
+	'match',
+	// relationships
+	'oracles',
+	'',
+	'suggestions',
+	// very long content
+	'table',
+	'i18n'
 ]
 
 export function compareObjectKeys(
@@ -85,7 +97,7 @@ export function compareObjectKeys(
 	return indexA - indexB
 }
 
-export function schemaDescribesSortableValue(schema: JSONSchema) {
+export function isSortableObjectSchema(schema: JSONSchema) {
 	switch (true) {
 		// skip non-object schema
 		case schema.type !== 'object':
@@ -99,7 +111,8 @@ export function schemaDescribesSortableValue(schema: JSONSchema) {
 }
 
 export function sortDataswornKeys<T extends Record<string, unknown>>(
-	object: T
+	object: T,
+	sortOrder = dataSwornKeyOrder
 ) {
 	return sortObjectKeys(object, dataSwornKeyOrder)
 }
@@ -111,8 +124,10 @@ const schemaKeyOrder = [
 	'type',
 	'$comment',
 	'description',
-	'$defs',
 	'const',
+	'default',
+	'minimum',
+	'maximum',
 	'items',
 	'required',
 	'properties',
@@ -121,11 +136,11 @@ const schemaKeyOrder = [
 	'additionalProperties',
 	'allOf',
 	'anyOf',
-	'oneOf'
+	'oneOf',
+	'$defs'
 ]
 
 export function sortSchemaKeys<T extends JSONSchema>(schema: T) {
-	// TODO: sort "required" string array by the new property order
 	const sortedSchema = sortObjectKeys(schema, schemaKeyOrder)
 	if (sortedSchema.properties != null)
 		sortedSchema.properties = sortDataswornKeys(sortedSchema.properties)

@@ -210,9 +210,7 @@ export function toTriggerConditionEnhance<
 		{
 			...TriggerRollConditionProperties,
 			method: Type.Union([Type.Literal(enhanceLiteral), method], {
-				default: enhanceLiteral,
-				description:
-					'If this is null or undefined, this trigger condition enhance specifies no roll method of its own.'
+				default: enhanceLiteral
 			}),
 			roll_options: Type.Union([Type.Null(), optionsSchema], {
 				default: null,

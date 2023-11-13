@@ -1,6 +1,13 @@
 import fastGlob from 'fast-glob'
 import fs from 'fs-extra'
-import { merge, omit, pick } from 'lodash-es'
+import {
+	intersection,
+	isEqual,
+	isUndefined,
+	merge,
+	omit,
+	pick
+} from 'lodash-es'
 import path from 'path'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
 import { type SourceHaver, transform } from '../../builders/transformer.js'
@@ -15,10 +22,11 @@ import JsonPointer from 'json-pointer'
 import { readSource } from './readWrite.js'
 import { formatPath } from '../../utils.js'
 import {
-	schemaDescribesSortableValue,
+	isSortableObjectSchema,
 	sortDataswornKeys,
 	sortSchemaKeys
 } from './sort.js'
+import { JSONSchema7 } from 'json-schema'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -71,7 +79,7 @@ export async function buildSourcebook(
 					schemaIdOut
 				)
 
-				builtFiles.set(filePath, builtData)
+				builtFiles.set(filePath, builtData as any)
 			} catch (error) {
 				log.error(`Failed to build from ${formatPath(filePath)}:`, error)
 			}
@@ -150,21 +158,19 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 	const pointersToDelete: string[] = []
 	const sortedPointers: Record<string, unknown> = {}
 
-	jsc.input.each(datasworn, (schema, data, hashPointer) => {
-		const nicePointer = hashPointer.replace(/^#/, '')
-		if (nicePointer === '') return
-
+	jsc.input.each(datasworn, (schema, value, hashPointer) => {
 		const sep = '/'
-		const key = hashPointer.split(sep)?.pop()
-		const isDeletable =
-			key?.startsWith('_') ??
-			//  experimentalKeys.includes(key as any) ||
-			schema?.macro
-		// skip if it refers to the root object
 
-		if (isDeletable) pointersToDelete.push(nicePointer)
-		else if (data != null && schemaDescribesSortableValue(schema))
-			sortedPointers[nicePointer] = sortDataswornKeys(data as any)
+		const nicePointer = hashPointer.replace(/^#\//, sep)
+
+		pointersToDelete.push(
+			...getDeletableKeys(value, schema).map((k) => [nicePointer, k].join(sep))
+		)
+
+		if (nicePointer === sep) return
+
+		if (value != null && isSortableObjectSchema(schema))
+			sortedPointers[nicePointer] = sortDataswornKeys(value as any)
 
 		return
 	})
@@ -175,17 +181,11 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 	const jsonOut = JSON.parse(JSON.stringify(datasworn))
 
 	for (const pointer of pointersToDelete)
-		if (JsonPointer.has(jsonOut, pointer)) {
-			// console.log('deleting', pointer)
+		if (JsonPointer.has(jsonOut, pointer)) JsonPointer.remove(jsonOut, pointer)
 
-			JsonPointer.remove(jsonOut, pointer)
-		}
-	for (const [pointer, sortedValue] of Object.entries(sortedPointers)) {
-		if (JsonPointer.has(jsonOut, pointer)) {
-			// console.log('sorting', pointer)
+	for (const [pointer, sortedValue] of Object.entries(sortedPointers))
+		if (JsonPointer.has(jsonOut, pointer))
 			JsonPointer.set(jsonOut, pointer, sortedValue)
-		}
-	}
 
 	return jsonOut as Out.Datasworn
 }
@@ -244,4 +244,17 @@ async function readSourcebookFile(filePath: string, schemaIdIn: string) {
 		)
 	}
 	return sourceData
+}
+
+function keyIsDeletable(key: string, schema?: JSONSchema7) {
+	return key.startsWith('_') || (schema as any).macro
+}
+
+function getDeletableKeys(value: unknown, schema: JSONSchema7): string[] {
+	if (!isUndefined(schema.properties) && value != null) {
+		return Object.keys(value).filter(
+			(k) => !Object.keys(schema.properties as any).includes(k)
+		)
+	}
+	return []
 }
