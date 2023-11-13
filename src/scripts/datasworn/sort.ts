@@ -10,9 +10,9 @@ const typeKeys = [
 	'roll_type'
 ]
 
-const noSort = ['columns', 'controls', 'moves']
+const noSort = ['columns', 'controls', 'contents']
 
-const keyOrder = [
+const dataSwornKeyOrder = [
 	'id',
 	'title',
 	'name',
@@ -43,6 +43,7 @@ const keyOrder = [
 	'requirement',
 	'result',
 	'features',
+	'dangers',
 	'drives',
 	'tactics',
 	'strong_hit',
@@ -100,7 +101,7 @@ export function schemaDescribesSortableValue(schema: JSONSchema) {
 export function sortDataswornKeys<T extends Record<string, unknown>>(
 	object: T
 ) {
-	return sortObjectKeys(object, keyOrder)
+	return sortObjectKeys(object, dataSwornKeyOrder)
 }
 
 const schemaKeyOrder = [
@@ -130,7 +131,7 @@ export function sortSchemaKeys<T extends JSONSchema>(schema: T) {
 		sortedSchema.properties = sortDataswornKeys(sortedSchema.properties)
 	if (Array.isArray(sortedSchema.required)) {
 		sortedSchema.required = sortedSchema.required.sort((a, b) =>
-			compareObjectKeys(a, b, keyOrder)
+			compareObjectKeys(a, b, dataSwornKeyOrder)
 		)
 	}
 
