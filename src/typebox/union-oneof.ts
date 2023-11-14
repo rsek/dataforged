@@ -7,7 +7,9 @@ import {
 import { TypeSystem } from '@sinclair/typebox/system'
 import { Value } from '@sinclair/typebox/value'
 
-TypeSystem.Type('UnionOneOf', UnionOneOfCheck)
+const UnionOneOfKind = 'UnionOneOf'
+
+TypeSystem.Type(UnionOneOfKind, UnionOneOfCheck)
 
 function UnionOneOfCheck(schema: UnionOneOf<TSchema[]>, value: unknown) {
 	return (
@@ -20,7 +22,7 @@ function UnionOneOfCheck(schema: UnionOneOf<TSchema[]>, value: unknown) {
 }
 
 export interface UnionOneOf<T extends TSchema[]> extends TSchema {
-	[Kind]: 'UnionOneOf'
+	[Kind]: typeof UnionOneOfKind
 	static: { [K in keyof T]: Static<T[K]> }[number]
 	oneOf: T
 }
@@ -30,5 +32,5 @@ export function UnionOneOf<T extends TSchema[]>(
 	oneOf: [...T],
 	options: SchemaOptions = {}
 ) {
-	return { ...options, [Kind]: 'UnionOneOf', oneOf } as UnionOneOf<T>
+	return { ...options, [Kind]: UnionOneOfKind, oneOf } as UnionOneOf<T>
 }

@@ -1,5 +1,7 @@
 import path from 'path'
 
+export const PKG_NAME = 'Datasworn'
+
 export const VERSION = '2.0.0-dev'
 
 export const PKG_SCOPE_OFFICIAL = '@datasworn'

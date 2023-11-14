@@ -1,5 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID } from './index.js'
+import { UnionOneOf } from '../../../typebox/union-oneof.js'
 
 export const SVGImageURL = Type.String({
 	$id: '#/$defs/SVGImageURL',
@@ -61,7 +62,7 @@ export const Source = Type.Object(
 			description: 'An absolute URL where the source document is available.',
 			examples: ['https://ironswornrpg.com']
 		}),
-		license: Type.Union(
+		license: UnionOneOf(
 			[
 				Type.String({
 					format: 'uri'

@@ -1,6 +1,7 @@
 import Winston from 'winston'
 import { type TransformableInfo } from 'logform'
 import { clone, cloneDeep, merge } from 'lodash-es'
+import { PKG_NAME } from '../const.js'
 
 const { combine, timestamp, label, printf, colorize } = Winston.format
 
@@ -17,7 +18,7 @@ const logFormat = printf(
 
 const log = Winston.createLogger({
 	format: combine(
-		label({ label: 'Datasworn' }),
+		label({ label: PKG_NAME }),
 		timestamp({ format: 'hh:mm:ss.SSS' }),
 		logFormat
 		// colorize({

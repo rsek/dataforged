@@ -1,6 +1,7 @@
 import { type KeywordDefinition } from 'ajv'
 import { JsonEnum } from '../../typebox/enum.js'
 import { Type } from '@sinclair/typebox'
+import { UnionOneOf } from '../../typebox/union-oneof.js'
 
 export const KEYWORDS: Record<string, Omit<KeywordDefinition, 'keyword'>> = {
 	releaseStage: {
@@ -58,7 +59,7 @@ export const KEYWORDS: Record<string, Omit<KeywordDefinition, 'keyword'>> = {
 					description: 'They property key that contains the row objects.'
 				})
 			}),
-			Type.Union([
+			UnionOneOf([
 				Type.Object({
 					diceKey: Type.String({ description: '' })
 				}),

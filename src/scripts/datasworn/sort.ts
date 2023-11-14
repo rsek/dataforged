@@ -62,7 +62,6 @@ const dataSwornKeyOrder = [
 	'quest_starter',
 	'your_truths',
 	'controls',
-	'condition_meter',
 	'date',
 	'page',
 	'authors',

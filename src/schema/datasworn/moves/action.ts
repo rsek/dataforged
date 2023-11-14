@@ -4,7 +4,8 @@ import {
 	JsonEnum,
 	Type,
 	type Static,
-	ExtractLiteralFromEnum
+	ExtractLiteralFromEnum,
+	UnionOneOf
 } from '../../../typebox/index.js'
 import { ActionRollMethod, MoveOutcomes, MoveRollType } from './common.js'
 import {
@@ -33,7 +34,7 @@ export const RollOptionAssetControlField = Type.Object(
 	{
 		using: Type.Literal('asset_control'),
 		// TODO: should this be an array so that anything that can select multiple assets is already typed correctly?
-		assets: Type.Union([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
 			default: null,
 			description:
 				"Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
@@ -53,7 +54,7 @@ export type RollOptionAssetControlField = Static<
 export const RollOptionAssetOptionField = Type.Object(
 	{
 		using: Type.Literal('asset_option'),
-		assets: Type.Union([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
 			default: null,
 			description:
 				"Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
@@ -72,7 +73,7 @@ export type RollOptionAssetOptionField = Static<
 export const RollOptionRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
-		ref: Type.Union([
+		ref: UnionOneOf([
 			Type.Ref(ID.AssetControlFieldIDWildcard),
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
@@ -128,7 +129,7 @@ export const ActionRollOption = Type.Intersect(
 				}
 			)
 		}),
-		Type.Union(RollOptionSubtypes.map((option) => Type.Ref(option)))
+		UnionOneOf(RollOptionSubtypes.map((option) => Type.Ref(option)))
 	],
 	{ $id: '#/$defs/ActionRollOption' }
 )

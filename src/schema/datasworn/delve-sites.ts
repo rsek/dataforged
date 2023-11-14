@@ -7,7 +7,7 @@ import {
 import { ID, Localize, Progress, Metadata, Abstract } from './common/index.js'
 import { Squash } from './common/utils.js'
 import { OracleTableRow } from './oracles.js'
-import { JsonEnum } from '../../typebox/index.js'
+import { JsonEnum, UnionOneOf } from '../../typebox/index.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -62,7 +62,7 @@ export const DelveSite = Abstract.SourcedNode(
 		theme: Type.Ref(ID.DelveSiteThemeID),
 		domain: Type.Ref(ID.DelveSiteDomainID),
 		extra_card: Type.Optional(
-			Type.Union(
+			UnionOneOf(
 				[Type.Ref(ID.DelveSiteThemeID), Type.Ref(ID.DelveSiteDomainID)],
 				{
 					description:

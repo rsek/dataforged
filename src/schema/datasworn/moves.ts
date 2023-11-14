@@ -10,9 +10,10 @@ import {
 	MoveSpecialTrack,
 	MoveSpecialTrackEnhance
 } from './moves/index.js'
+import { UnionOneOf } from '../../typebox/union-oneof.js'
 
 // discriminated union of all moves by roll_type
-export const Move = Type.Union(
+export const Move = UnionOneOf(
 	[
 		Type.Ref(MoveActionRoll),
 		Type.Ref(MoveNoRoll),
@@ -27,7 +28,7 @@ export const Move = Type.Union(
 
 export type Move = Static<typeof Move>
 
-export const MoveEnhance = Type.Union(
+export const MoveEnhance = UnionOneOf(
 	[
 		Type.Ref(MoveActionRollEnhance),
 		Type.Ref(MoveNoRollEnhance),

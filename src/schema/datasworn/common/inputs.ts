@@ -7,7 +7,7 @@ import {
 import * as Localize from './localize.js'
 import * as Player from './player.js'
 import * as Abstract from './abstract.js'
-import { JsonEnum } from '../../../typebox/index.js'
+import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
 export function Select<T extends TSchema>(t: T) {
@@ -69,7 +69,7 @@ export const SelectFieldType = JsonEnum([
 ])
 export type SelectFieldType = Static<typeof SelectFieldType>
 
-export const InputFieldType = Type.Union([
+export const InputFieldType = UnionOneOf([
 	JsonEnum(['text', 'clock', 'counter', 'checkbox', 'toggle', 'card_flip']),
 	SelectFieldType
 ])
@@ -202,7 +202,7 @@ export type SelectFieldStat = Static<typeof SelectFieldStat>
 
 // export const SelectFieldRef = SelectField(
 // 	'select_ref',
-// 	Type.Union([
+// 	UnionOneOf([
 // 		Type.Ref(ID.AssetControlFieldIDWildcard),
 // 		Type.Ref(ID.AssetOptionFieldIDWildcard)
 // 	]),

@@ -437,7 +437,7 @@
 				},
 				"license": {
 					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "string",
 							"format": "uri"
@@ -1177,7 +1177,7 @@
 					}
 				},
 				{
-					"anyOf": [
+					"oneOf": [
 						{
 							"$ref": "#/$defs/RollOptionStat"
 						},
@@ -1202,7 +1202,7 @@
 		},
 		"Move": {
 			"title": "Move",
-			"anyOf": [
+			"oneOf": [
 				{
 					"$ref": "#/$defs/MoveActionRoll"
 				},
@@ -1350,7 +1350,7 @@
 		},
 		"MoveEnhance": {
 			"title": "Move Enhance",
-			"anyOf": [
+			"oneOf": [
 				{
 					"$ref": "#/$defs/MoveActionRollEnhance"
 				},
@@ -1710,7 +1710,7 @@
 				"assets": {
 					"description": "Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1741,7 +1741,7 @@
 				"assets": {
 					"description": "Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1813,7 +1813,7 @@
 					"const": "ref"
 				},
 				"ref": {
-					"anyOf": [
+					"oneOf": [
 						{
 							"$ref": "#/$defs/AssetControlFieldIDWildcard"
 						},
@@ -1911,7 +1911,7 @@
 				},
 				"method": {
 					"default": "enhance",
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "string",
 							"const": "enhance"
@@ -1925,7 +1925,7 @@
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -2097,7 +2097,7 @@
 				},
 				"method": {
 					"default": "enhance",
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "string",
 							"const": "enhance"
@@ -2111,7 +2111,7 @@
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -2197,7 +2197,7 @@
 				},
 				"method": {
 					"default": "enhance",
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "string",
 							"const": "enhance"
@@ -2210,7 +2210,7 @@
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -3413,7 +3413,7 @@
 				},
 				"extra_card": {
 					"description": "An additional theme or domain card, for use with optional rules in Ironsworn: Delve.",
-					"anyOf": [
+					"oneOf": [
 						{
 							"$ref": "#/$defs/DelveSiteThemeID"
 						},

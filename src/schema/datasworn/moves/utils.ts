@@ -22,6 +22,7 @@ import {
 	TriggerBy,
 	type AnyMoveSchema
 } from './common.js'
+import { UnionOneOf } from '../../../typebox/union-oneof.js'
 
 export const MoveBase = Type.Object({
 	id: Type.Ref(ID.MoveID),
@@ -209,10 +210,10 @@ export function toTriggerConditionEnhance<
 	return Type.Object(
 		{
 			...TriggerRollConditionProperties,
-			method: Type.Union([Type.Literal(enhanceLiteral), method], {
+			method: UnionOneOf([Type.Literal(enhanceLiteral), method], {
 				default: enhanceLiteral
 			}),
-			roll_options: Type.Union([Type.Null(), optionsSchema], {
+			roll_options: UnionOneOf([Type.Null(), optionsSchema], {
 				default: null,
 				description:
 					'If this is null or undefined, this trigger condition enhance specifies no roll options of its own.'
