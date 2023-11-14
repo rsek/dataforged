@@ -972,8 +972,10 @@ moves:
             - method: highest
               roll_options:
                 - stat: heart
-                - using: ref
-                  ref: '*/assets/companion/*/condition_meter'
+                - using: asset_control
+                  assets:
+                    - '*/assets/companion/*'
+                  control: health
         source:
           <<: *Source
           page: 94

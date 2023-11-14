@@ -1,4 +1,59 @@
 {
+  "Enhance Moves": {
+    "scope": ["yaml", "markdown"],
+    "prefix": "emvs",
+    "body": [
+      "enhance_moves:",
+
+      "  - enhances:",
+      "      - ${CLIPBOARD}"
+      "    roll_type: ${1|action_roll,no_roll,progress_roll,special_track|}",
+      "    trigger:",
+      "      conditions:",
+      "        - text: ${2}",
+      "          roll_options: ${3:null}",
+    ]
+  },
+
+  "Enhance Moves (add 1, take 1 on hit)": {
+    "scope": ["yaml", "markdown"],
+    "prefix": "emvs+",
+    "body": [
+      "enhance_moves:",
+      "  - enhances:",
+      "      - ${CLIPBOARD}",
+      "    <<: *Add+1Take1MomentumOnHit",
+      "    trigger:",
+      "      conditions:",
+      "        - text: ${1}",
+      "          roll_options: ${2:null}",
+    ]
+  },
+  "Enhance Move": {
+    "scope": ["yaml", "markdown"],
+    "prefix": "emv",
+    "body": [
+      "- enhances:",
+      "    - ${CLIPBOARD}"
+      "  roll_type: ${1|action_roll,no_roll,progress_roll,special_track|}",
+      "  trigger:",
+      "    conditions:",
+      "      - text: ${2}",
+      "        roll_options: ${3:null}",
+    ]
+  },"Enhance Move (Add +1 and take +1 momentum on a hit)": {
+    "scope": ["yaml", "markdown"],
+    "prefix": "emv+",
+    "body": [
+      "- enhances:",
+      "    - ${CLIPBOARD}",
+      "  <<: *Add+1Take1MomentumOnHit",
+      "  trigger:",
+      "    conditions:",
+      "      - text: ${1}",
+      "        roll_options: ${2:null}",
+    ]
+  },
 	"Format Collection link": {
 		"scope": ["yaml", "markdown"],
 		"prefix": "lnc",

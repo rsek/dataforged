@@ -96,33 +96,36 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/command_vehicle/starship/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 5,
-						"value": 5,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/command_vehicle/starship/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/command_vehicle/starship/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								},
+								"cursed": {
+									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/cursed",
+									"label": "cursed",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
 							},
-							"cursed": {
-								"id": "starforged/assets/command_vehicle/starship/condition_meter/controls/cursed",
-								"label": "cursed",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -250,6 +253,7 @@
 							"id": "starforged/assets/module/engine_upgrade/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -319,20 +323,14 @@
 						}
 					],
 					"controls": {
-						"broken": {
-							"id": "starforged/assets/module/expanded_hold/controls/broken",
-							"label": "broken",
-							"field_type": "card_flip",
-							"value": false,
-							"disables_asset": true
+						"cargo": {
+							"id": "starforged/assets/module/expanded_hold/controls/cargo",
+							"label": "cargo",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 0
 						}
-					},
-					"condition_meter": {
-						"id": "starforged/assets/module/expanded_hold/condition_meter",
-						"label": "cargo",
-						"min": 0,
-						"max": 3,
-						"value": 0
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -384,7 +382,8 @@
 														"using": "stat"
 													},
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -445,6 +444,7 @@
 							"id": "starforged/assets/module/grappler/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -539,6 +539,7 @@
 							"id": "starforged/assets/module/heavy_cannons/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -611,7 +612,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -659,6 +661,7 @@
 							"id": "starforged/assets/module/internal_refit/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -766,6 +769,7 @@
 							"id": "starforged/assets/module/medbay/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -868,20 +872,14 @@
 						}
 					],
 					"controls": {
-						"broken": {
-							"id": "starforged/assets/module/missile_array/controls/broken",
-							"label": "broken",
-							"field_type": "card_flip",
-							"value": false,
-							"disables_asset": true
+						"ammo": {
+							"id": "starforged/assets/module/missile_array/controls/ammo",
+							"label": "ammo",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5
 						}
-					},
-					"condition_meter": {
-						"id": "starforged/assets/module/missile_array/condition_meter",
-						"label": "ammo",
-						"min": 0,
-						"max": 5,
-						"value": 5
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -928,7 +926,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -963,7 +962,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -978,6 +978,7 @@
 							"id": "starforged/assets/module/overseer/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1068,6 +1069,7 @@
 							"id": "starforged/assets/module/reinforced_hull/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1187,6 +1189,7 @@
 							"id": "starforged/assets/module/research_lab/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1286,7 +1289,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -1303,7 +1307,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -1318,6 +1323,7 @@
 							"id": "starforged/assets/module/sensor_array/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1372,7 +1378,8 @@
 														"using": "stat"
 													},
 													{
-														"using": "attached_asset_meter"
+														"using": "attached_asset_meter",
+														"assets": null
 													}
 												]
 											}
@@ -1409,8 +1416,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/module/shields/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "shields"
 													}
 												]
 											}
@@ -1441,20 +1449,19 @@
 						}
 					],
 					"controls": {
-						"broken": {
-							"id": "starforged/assets/module/shields/controls/broken",
-							"label": "broken",
-							"field_type": "card_flip",
-							"value": false,
-							"disables_asset": true
+						"shields": {
+							"id": "starforged/assets/module/shields/controls/shields",
+							"label": "shields",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 0,
+							"moves": {
+								"recover": [
+									"starforged/assets/module/shields/abilities/0/moves/raise_shields"
+								]
+							}
 						}
-					},
-					"condition_meter": {
-						"id": "starforged/assets/module/shields/condition_meter",
-						"label": "shields",
-						"min": 0,
-						"max": 4,
-						"value": 0
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -1584,6 +1591,7 @@
 							"id": "starforged/assets/module/stealth_tech/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1664,6 +1672,7 @@
 							"id": "starforged/assets/module/vehicle_bay/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1779,6 +1788,7 @@
 							"id": "starforged/assets/module/workshop/controls/broken",
 							"label": "broken",
 							"field_type": "card_flip",
+							"min": 0,
 							"value": false,
 							"disables_asset": true
 						}
@@ -1889,25 +1899,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/exosuit/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 6,
-						"value": 6,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/exosuit/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/exosuit/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 6,
+							"value": 6,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/exosuit/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -1989,25 +2002,28 @@
 							"text": "When you make a move while maneuvering your bike and burn momentum to improve your result, roll your action die. On a 5 or 6, do not reset momentum."
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/hoverbike/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 3,
-						"value": 3,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/hoverbike/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2104,8 +2120,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/support_vehicle/rover/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "integrity"
 													}
 												]
 											}
@@ -2115,25 +2132,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/rover/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 5,
-						"value": 5,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/rover/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/rover/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/rover/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2201,8 +2221,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/support_vehicle/service_pod/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "integrity"
 													}
 												]
 											}
@@ -2231,25 +2252,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/service_pod/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/service_pod/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/service_pod/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/service_pod/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2328,25 +2352,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/shuttle/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/shuttle/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/shuttle/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/shuttle/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2394,8 +2421,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/support_vehicle/skiff/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "integrity"
 													}
 												]
 											}
@@ -2422,8 +2450,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/support_vehicle/skiff/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "integrity"
 													}
 												]
 											}
@@ -2438,25 +2467,28 @@
 							"text": "Your skiff is fully stocked. When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear), add +1 and take +1 momentum on a hit."
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/skiff/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/skiff/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/skiff/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/skiff/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2501,8 +2533,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/support_vehicle/snub_fighter/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "integrity"
 													}
 												]
 											}
@@ -2549,25 +2582,28 @@
 							}
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/support_vehicle/snub_fighter/condition_meter",
-						"label": "integrity",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"battered": {
-								"id": "starforged/assets/support_vehicle/snub_fighter/condition_meter/controls/battered",
-								"label": "battered",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": false,
-								"is_impact": true
+					"controls": {
+						"integrity": {
+							"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity",
+							"label": "integrity",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"battered": {
+									"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity/controls/battered",
+									"label": "battered",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": false,
+									"is_impact": true
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/withstand_damage"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/withstand_damage"
 						}
 					},
 					"source": {
@@ -2668,8 +2704,13 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "*/assets/*/*/condition_meter"
+														"using": "asset_control",
+														"assets": [
+															"*/assets/command_vehicle/*",
+															"*/assets/support_vehicle/*",
+															"*/assets/incidental_vehicle/*"
+														],
+														"control": "integrity"
 													}
 												]
 											}
@@ -2764,8 +2805,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/path/archer/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "ammo"
 													}
 												]
 											}
@@ -2794,12 +2836,20 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/path/archer/condition_meter",
-						"label": "ammo",
-						"min": 0,
-						"max": 6,
-						"value": 6
+					"controls": {
+						"ammo": {
+							"id": "starforged/assets/path/archer/controls/ammo",
+							"label": "ammo",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 6,
+							"value": 6,
+							"moves": {
+								"recover": [
+									"starforged/assets/path/archer/abilities/0/moves/craft_projectiles"
+								]
+							}
+						}
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3569,8 +3619,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/path/courier/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "safety"
 													}
 												]
 											}
@@ -3580,12 +3631,15 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/path/courier/condition_meter",
-						"label": "safety",
-						"min": 0,
-						"max": 5,
-						"value": 0
+					"controls": {
+						"safety": {
+							"id": "starforged/assets/path/courier/controls/safety",
+							"label": "safety",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 0
+						}
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -3738,8 +3792,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/path/devotant/options/linked_stat"
+														"using": "asset_option",
+														"assets": null,
+														"option": "linked_stat"
 													}
 												]
 											}
@@ -3763,8 +3818,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/path/devotant/options/linked_stat"
+														"using": "asset_option",
+														"assets": null,
+														"option": "linked_stat"
 													}
 												]
 											}
@@ -3801,8 +3857,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/path/devotant/options/linked_stat"
+														"using": "asset_option",
+														"assets": null,
+														"option": "linked_stat"
 													}
 												]
 											}
@@ -4263,12 +4320,15 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/path/firebrand/condition_meter",
-						"label": "fire",
-						"min": 0,
-						"max": 5,
-						"value": 0
+					"controls": {
+						"fire": {
+							"id": "starforged/assets/path/firebrand/controls/fire",
+							"label": "fire",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 0
+						}
 					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
@@ -5069,17 +5129,20 @@
 													{
 														"using": "custom",
 														"label": "Minutes",
-														"value": 4
+														"value": 4,
+														"assets": null
 													},
 													{
 														"using": "custom",
 														"label": "Hours",
-														"value": 3
+														"value": 3,
+														"assets": null
 													},
 													{
 														"using": "custom",
 														"label": "Days",
-														"value": 2
+														"value": 2,
+														"assets": null
 													}
 												]
 											}
@@ -6926,8 +6989,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/banshee/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -6976,25 +7040,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/banshee/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/banshee/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/banshee/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/banshee/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7075,8 +7142,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/combat_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7100,8 +7168,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/combat_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7111,25 +7180,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/combat_bot/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 5,
-						"value": 5,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/combat_bot/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/combat_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/combat_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7220,25 +7292,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/glowcat/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 3,
-						"value": 3,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/glowcat/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/glowcat/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/glowcat/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7312,25 +7387,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/protocol_bot/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 3,
-						"value": 3,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/protocol_bot/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/protocol_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/protocol_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7374,8 +7452,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/rockhorn/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7399,8 +7478,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/rockhorn/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7424,25 +7504,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/rockhorn/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 5,
-						"value": 5,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/rockhorn/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/rockhorn/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 5,
+							"value": 5,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/rockhorn/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7547,8 +7630,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/sidekick/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7558,25 +7642,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/sidekick/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/sidekick/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/sidekick/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/sidekick/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7654,25 +7741,28 @@
 							"text": "With a moment's rest, the sprite can mend its form and return automatically to max health."
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/sprite/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 2,
-						"value": 2,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/sprite/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/sprite/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 2,
+							"value": 2,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/sprite/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7744,8 +7834,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/survey_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7771,8 +7862,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/survey_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7789,8 +7881,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/survey_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7800,25 +7893,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/survey_bot/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 3,
-						"value": 3,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/survey_bot/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/survey_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 3,
+							"value": 3,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/survey_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7882,31 +7978,36 @@
 							"enabled": false,
 							"text": "The symbiote gains power and has 3 health.",
 							"enhance_asset": {
-								"condition_meter": {
-									"max": 3
+								"controls": {
+									"health": {
+										"max": 3
+									}
 								}
 							}
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/symbiote/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 2,
-						"value": 2,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/symbiote/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/symbiote/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 2,
+							"value": 2,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/symbiote/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -7950,8 +8051,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/utility_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -7995,8 +8097,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/utility_bot/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -8006,25 +8109,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/utility_bot/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/utility_bot/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/utility_bot/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/utility_bot/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/repair"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/repair",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {
@@ -8090,8 +8196,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/voidglider/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -8114,8 +8221,9 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "ref",
-														"ref": "starforged/assets/companion/voidglider/condition_meter"
+														"using": "asset_control",
+														"assets": null,
+														"control": "health"
 													}
 												]
 											}
@@ -8125,25 +8233,28 @@
 							]
 						}
 					],
-					"condition_meter": {
-						"id": "starforged/assets/companion/voidglider/condition_meter",
-						"label": "health",
-						"min": 0,
-						"max": 4,
-						"value": 4,
-						"controls": {
-							"out_of_action": {
-								"id": "starforged/assets/companion/voidglider/condition_meter/controls/out_of_action",
-								"label": "Out of action",
-								"field_type": "checkbox",
-								"value": false,
-								"disables_asset": true,
-								"is_impact": false
+					"controls": {
+						"health": {
+							"id": "starforged/assets/companion/voidglider/controls/health",
+							"label": "health",
+							"field_type": "condition_meter",
+							"min": 0,
+							"max": 4,
+							"value": 4,
+							"controls": {
+								"out_of_action": {
+									"id": "starforged/assets/companion/voidglider/controls/health/controls/out_of_action",
+									"label": "Out of action",
+									"field_type": "checkbox",
+									"value": false,
+									"disables_asset": true,
+									"is_impact": false
+								}
+							},
+							"moves": {
+								"recover": ["starforged/moves/recover/heal"],
+								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
 							}
-						},
-						"moves": {
-							"recover": "starforged/moves/recover/heal",
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit"
 						}
 					},
 					"source": {

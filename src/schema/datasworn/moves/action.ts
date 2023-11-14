@@ -16,6 +16,7 @@ import {
 	composeTriggerRollCondition
 } from './utils.js'
 import { SourcedNode } from '../common/abstract.js'
+import { AssetIDWildcard, DictKey } from '../common/id.js'
 
 export const RollOptionAttachedAssetRef = Type.Object(
 	{
@@ -28,11 +29,51 @@ export type RollOptionAttachedAssetRef = Static<
 	typeof RollOptionAttachedAssetRef
 >
 
+export const RollOptionAssetControlField = Type.Object(
+	{
+		using: Type.Literal('asset_control'),
+		// TODO: should this be an array so that anything that can select multiple assets is already typed correctly?
+		assets: Type.Union([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+			default: null,
+			description:
+				"Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
+		}),
+		control: Type.Ref(DictKey, {
+			description: 'The key of the asset control.',
+			examples: ['health', 'integrity']
+		})
+	},
+	{ $id: '#/$defs/RollOptionAssetControlField' }
+)
+
+export type RollOptionAssetControlField = Static<
+	typeof RollOptionAssetControlField
+>
+
+export const RollOptionAssetOptionField = Type.Object(
+	{
+		using: Type.Literal('asset_option'),
+		assets: Type.Union([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+			default: null,
+			description:
+				"Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
+		}),
+		option: Type.Ref(DictKey, {
+			description: 'The key of the asset option.'
+		})
+	},
+	{ $id: '#/$defs/RollOptionAssetOptionField' }
+)
+
+export type RollOptionAssetOptionField = Static<
+	typeof RollOptionAssetOptionField
+>
+
 export const RollOptionRef = Type.Object(
 	{
 		using: Type.Literal('ref'),
 		ref: Type.Union([
-			Type.Ref(ID.AssetConditionMeterIDWildcard),
+			Type.Ref(ID.AssetControlFieldIDWildcard),
 			Type.Ref(ID.AssetOptionFieldIDWildcard)
 		])
 	},
@@ -71,7 +112,8 @@ export type RollOptionCustom = Static<typeof RollOptionCustom>
 const RollOptionSubtypes = [
 	RollOptionStat,
 	RollOptionConditionMeter,
-	RollOptionRef,
+	RollOptionAssetControlField,
+	RollOptionAssetOptionField,
 	RollOptionAttachedAssetRef,
 	RollOptionCustom
 ]

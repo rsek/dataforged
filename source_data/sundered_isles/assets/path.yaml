@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 assets:
   path:
+    source: *Source
     name: Path Assets
     contents:
       automaton:
+        source: *Source
         name: Automaton
         asset_type: Path
         abilities:
@@ -34,8 +36,9 @@ assets:
               # TODO: keys to alter controls of attached assets?
               attachments:
                 assets:
-                  - '*/assets/*/*'
+                  - '*/assets/path/*'
       cannoneer:
+        source: *Source
         name: Cannoneer
         asset_type: Path
         abilities:
@@ -47,6 +50,7 @@ assets:
           - text: |-
               When you [Strike](id:sundered_isles/moves/combat/strike) using a vehicle’s weapons, and hold your fire for maximum effect, decide the amount of momentum you risk (1, 2, or 3) and add +that amount. On a strong hit, mark progress. On a weak hit or miss, [Lose Momentum](id:sundered_isles/moves/suffer/lose_momentum) equal to 1 + the amount risked (in addition to any other cost).
       crew_commander:
+        source: *Source
         name: Crew Commander
         asset_type: Path
         abilities:
@@ -55,6 +59,7 @@ assets:
               You have 2 command; your max is 4. When you or an ally make a move leading or aided by the crew, you may (after rolling) suffer -1 command to improve a miss to a weak hit, or a weak hit to a strong hit. When you [Pay the Price](id:sundered_isles/moves/fate/pay_the_price), you may suffer the cost as -1 command. While at 0 command, this asset counts as an impact. To bolster your crew, provide a notable reward or respite, and roll +heart. On a strong hit, take +4 command. On a weak hit, take +2. On a miss, take +2 but envision a threat to your crew or leadership.
             moves:
               bolster_crew:
+                source: *Source
                 name: Bolster Crew
                 roll_type: action_roll
                 trigger:
@@ -75,6 +80,7 @@ assets:
                 trigger:
                   conditions:
                     - text: When you or an ally make a move leading or aided by the crew
+                      roll_options: null
                       by:
                         player: true
                         ally: true
@@ -84,8 +90,9 @@ assets:
           - text: |-
               Take +2 command; your max is now 6.
             enhance_asset:
-              condition_meter:
-                max: 6
+              controls:
+                health:
+                  max: 6
           - text: |-
               When your command is 0 and the situation desperate, you may [Compel](id:sundered_isles/moves/adventure/compel) your crew to action; if you do, take +2 command on a hit.
             enhance_moves:
@@ -95,15 +102,19 @@ assets:
                 trigger:
                   conditions:
                     - text: When your command is 0 and the situation desperate, and you [Compel](id:sundered_isles/moves/adventure/compel) your crew to action
-        condition_meter:
-          min: 0
-          max: 4
-          value: 2
-          label: command
-          # TODO: counts as impact @ 0
-          moves:
-            recover: sundered_isles/assets/path/crew_commander/abilities/0/moves/bolster_crew
+                      roll_options: null
+        controls:
+          command:
+            min: 0
+            max: 4
+            value: 2
+            label: command
+            # TODO: counts as impact @ 0
+            moves:
+              recover:
+                - sundered_isles/assets/path/crew_commander/abilities/0/moves/bolster_crew
       cutthroat:
+        source: *Source
         name: Cutthroat
         asset_type: Path
         requirement: If you wield knives...
@@ -116,6 +127,7 @@ assets:
           - text: |-
               When you [End the Fight](id:sundered_isles/moves/combat/end_the_fight) without mercy or restraint, you may reroll one challenge die. If you do, [Endure Stress](id:sundered_isles/moves/suffer/endure_stress) (-2). If you then choose to resist the stress, roll +iron instead of +spirit or +heart.
       deck_clearer:
+        source: *Source
         name: Deck Clearer
         asset_type: Path
         requirement: If you wield a scattergun...
@@ -128,6 +140,7 @@ assets:
           - text: |-
               When you [Take Decisive Action](id:sundered_isles/moves/combat/take_decisive_action) with a devastating shot or by demanding surrender at the point of a readied scattergun, you may reroll one challenge die.
       duelist:
+        source: *Source
         name: Duelist
         asset_type: Path
         abilities:
@@ -139,6 +152,7 @@ assets:
           - text: |-
               When you roll a miss with a match in a situation where your reputation is known, you may suffer the cost by envisioning a notable rival who challenges you to a duel. If you defeat them, mark two ticks on your quests legacy track. If you decline, mark one tick on your bonds legacy track but envision the fallout of this refusal.
       harpooner:
+        source: *Source
         name: Harpooner
         asset_type: Path
         requirement: If you wield a handheld harpoon...
@@ -151,6 +165,7 @@ assets:
           - text: |-
               When you [Resupply](id:sundered_isles/moves/recover/resupply) by hunting large game, add +1 and take +1 supply on a hit. On a miss with a match, there’s always a bigger fish; you draw the attention of a notable threat.
       merchant:
+        source: *Source
         name: Merchant
         asset_type: Path
         abilities:
@@ -165,6 +180,7 @@ assets:
           - text: |-
               When you [Make a Connection](id:sundered_isles/moves/connection/make_a_connection) with a fellow merchant or supplier, or if you [Resupply](id:sundered_isles/moves/recover/resupply) by bartering with them, add +1 and take +1 momentum on a hit.
       musician:
+        source: *Source
         name: Musician
         asset_type: Path
         abilities:
@@ -179,6 +195,7 @@ assets:
                 * Honor the lost: mark 2 ticks on your bonds legacy track.
                 * Offer comfort or inspiration: you and your allies take +2 spirit or +2 momentum.
       musketeer:
+        source: *Source
         name: Musketeer
         asset_type: Path
         abilities:
@@ -190,6 +207,7 @@ assets:
           - text: |-
               When you [Gain Ground](id:sundered_isles/moves/combat/gain_ground) by charging into close quarters with a fixed bayonet, or if you [React Under Fire](id:sundered_isles/moves/combat/react_under_fire) by holding foes at bay or parrying close quarter attacks with your rifle, add +1 and take +1 momentum on a hit.
       necromancer:
+        source: *Source
         name: necromancer
         asset_type: Path
         abilities:
@@ -207,11 +225,17 @@ assets:
               When you [Face Death](id:sundered_isles/moves/threshold/face_death), mark 2 ticks on your bonds legacy track. If an ally must [Face Death](id:sundered_isles/moves/threshold/face_death), you may [Aid Your Ally](id:sundered_isles/moves/adventure/aid_your_ally) to guide them (before or after they roll); on a hit, they may reroll any dice.
             enhance_moves:
               - roll_type: action_roll
+                enhances:
+                  - sundered_isles/moves/threshold/face_death
                 trigger:
                   conditions:
-                    - by:
-                        player: true
+                    - roll_options: null
+                      by:
+                        player: false
                         ally: true
+              - roll_type: action_roll
+                enhances:
+                  - sundered_isles/moves/threshold/face_death
           - text: |-
               You may [Face Danger](id:sundered_isles/moves/adventure/face_danger) (+heart) to imbue a corpse with soulless life. On a hit, the corpse follows your commands. If it aids you through force, threat, or fear as you make a move, add +2 and fill one segment of a 4-segment clock. You may also suffer the cost of a move by filling a segment. When the clock is full, the corpse crumbles to ash.
             enhance_moves:
@@ -230,6 +254,7 @@ assets:
                 min: 0
                 max: 4
       overlander:
+        source: *Source
         name: Overlander
         asset_type: Path
         abilities:
@@ -241,6 +266,7 @@ assets:
           - text: |-
               When you [Resupply](id:sundered_isles/moves/recover/resupply) by searching out a source of food, water, or other natural resources in the wilds, add +1. On a strong hit with a match, you encounter an unusual or extraordinary location; you may [Explore a Waypoint](id:sundered_isles/moves/exploration/explore_a_waypoint) (even if not on an expedition) and reroll any dice.
       pirate_captain:
+        source: *Source
         name: Pirate Captain
         asset_type: Path
         abilities:
@@ -254,6 +280,7 @@ assets:
           - text: |-
               You may spend 1 experience to [Sojourn](id:sundered_isles/moves/recover/sojourn) with an automatic strong hit. If you do, you and your allies take one extra recovery move.
       pistoleer:
+        source: *Source
         name: Pistoleer
         asset_type: Path
         abilities:
@@ -265,6 +292,7 @@ assets:
           - text: |-
               When you participate in a charged or antagonistic parlay with your pistols on display, take +2 momentum at the start of the interaction.
       scholar:
+        source: *Source
         name: Scholar
         asset_type: Path
         options:
@@ -281,6 +309,7 @@ assets:
           - text: |-
               You apply yourself to another discipline. Choose a second field of study.
       seadog:
+        source: *Source
         name: Seadog
         asset_type: Path
         abilities:
@@ -292,6 +321,7 @@ assets:
           - text: |-
               When you make a move to hunt, oppose, study, pacify, or gain the favor of a creature of the sea, add +1. On a strong hit with a match, envision the surprising insight you gain into the nature of the creature or its environment; mark one tick on your discoveries legacy track.
       shipwright:
+        source: *Source
         name: Shipwright
         asset_type: Path
         abilities:
@@ -303,6 +333,7 @@ assets:
           - text: |-
               When you [Advance](id:sundered_isles/moves/legacy/advance) by conducting a refit at port, you may purchase or upgrade module assets for 1 less experience.
       socialite:
+        source: *Source
         name: Socialite
         asset_type: Path
         abilities:
@@ -318,20 +349,23 @@ assets:
           - text: |-
               When you [Hearten](id:sundered_isles/moves/recover/hearten) while attending an exclusive social event, reroll any dice. On a strong hit, you and any allies in your company take +1 momentum.
       sorcerer:
+        source: *Source
         name: Sorcerer
         asset_type: Path
-        attachments:
-          assets:
-            - '*/assets/*/*'
         abilities:
           - enabled: true
             text: |-
               When you [Secure an Advantage](id:sundered_isles/moves/adventure/secure_an_advantage) or [Gain Ground](id:sundered_isles/moves/combat/gain_ground) by creating a minor mystical effect, roll +spirit. On a strong hit, take +1 momentum. On a weak hit, take the standard benefits of the move, but first [Endure Stress](id:sundered_isles/moves/suffer/endure_stress) (-1). On a match, you learn something of magic’s nature through an unexpected boon or harrowing backlash; mark 1 tick on your discoveries legacy track.
           - text: |-
               You may purchase assets of a supernatural nature for 1 experience (instead of 3).
+            enhance_asset:
+              attachments:
+                assets:
+                  - '*/assets/*/*'
           - text: |-
               When you [Swear an Iron Vow](id:sundered_isles/moves/quest/swear_an_iron_vow) (extreme or greater) to gather the components and lore of a complex and powerful ritual, reroll any dice. When you [Reach a Milestone](id:sundered_isles/moves/quest/reach_a_milestone) on this quest, take +2 momentum. When you enact the ritual to [Fulfill Your Vow](id:sundered_isles/moves/quest/fulfill_your_vow), you may reroll any challenge dice to draw on unknowable powers at the risk of your soul. If you do, [Face Desolation](id:sundered_isles/moves/threshold/face_desolation).
       spy:
+        source: *Source
         name: Spy
         asset_type: Path
         abilities:
@@ -346,6 +380,7 @@ assets:
                 * Keep the secret: You may reroll one challenge die.
                 * Reveal the truth: On a strong hit, make the legacy reward one rank higher (1 extra box if already epic).
       swashbuckler:
+        source: *Source
         name: Swashbuckler
         asset_type: Path
         abilities:
@@ -357,17 +392,52 @@ assets:
           - text: |-
               When you [React Under Fire](id:sundered_isles/moves/combat/react_under_fire) in close quarters by parrying, and score a strong hit, you counter or turn your foe’s attack against them; mark progress.
       urchin:
+        source: *Source
         name: Urchin
         asset_type: Path
         abilities:
           - enabled: true
             text: |-
               You are unnoticed and underestimated. When you make a move to sneak, hide, or pilfer, add +1 and take +1 momentum on a hit. When you make a move to defy expectations (decide before rolling) add +1 and reroll any dice, but count a weak hit as a miss.
+            enhance_moves:
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you make a move to sneak, hide, or pilfer
+                      roll_options: null
+              - roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: When you make a move to defy expectations (decide before rolling)
+                      roll_options: null
           - text: |-
-              Name a connection as your mentor. When you Develop Your Relationship with them, take +2 momentum. When you successfully [Fulfill Your Vow](id:sundered_isles/moves/quest/fulfill_your_vow) in their service or to their benefit, also mark two ticks on your bonds legacy track. When you [Forge a Bond](id:sundered_isles/moves/connection/forge_a_bond) with them and score a hit, make the legacy reward one rank higher (1 extra box if already epic).
+              Name a connection as your mentor. When you [Develop Your Relationship](id:sundered_isles/moves/adventure/develop_your_relationship) with them, take +2 momentum. When you successfully [Fulfill Your Vow](id:sundered_isles/moves/quest/fulfill_your_vow) in their service or to their benefit, also mark two ticks on your bonds legacy track. When you [Forge a Bond](id:sundered_isles/moves/connection/forge_a_bond) with them and score a hit, make the legacy reward one rank higher (1 extra box if already epic).
+            enhance_moves:
+              - enhances:
+                  - sundered_isles/moves/adventure/develop_your_relationship
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: with your mentor connection
+                      roll_options: null
+              - enhances:
+                  - sundered_isles/moves/quest/fulfill_your_vow
+                roll_type: action_roll
+                trigger:
+                  conditions:
+                    - text: in your mentor connection's service or to their benefit
+                      roll_options: null
+              - enhances:
+                  - sundered_isles/moves/connection/forge_a_bond
+                roll_type: progress_roll
+                trigger:
+                  conditions:
+                    - text: with your mentor connection
+                      roll_options: null
           - text: |-
               When you come of age or take on a role beyond your years, gain this ability at no cost. Then, discard this asset and take two others (at no cost) to represent your new status.
       windbinder:
+        source: *Source
         name: Windbinder
         asset_type: Path
         abilities:
@@ -376,6 +446,7 @@ assets:
               When you bind the winds to your will, roll +edge. On a strong hit, the winds are fine; you and your allies take +2 momentum, and may add +1 when you make a move to navigate or maneuver. On a weak hit, the winds are fair; take +2 momentum. On a miss, the winds are foul; you and your allies [Lose Momentum](id:sundered_isles/moves/suffer/lose_momentum) (-2), and should face weather-related hazards and costs as appropriate. No matter the outcome, set the winds to fair after a few hours.
             moves:
               bind_winds:
+                source: *Source
                 name: Bind Winds
                 roll_type: action_roll
                 trigger:
@@ -416,16 +487,19 @@ assets:
                   conditions:
                     - text: to summon a mighty cyclone (once per situation)
                       method: miss
+                      roll_options: null
         controls:
           winds:
             label: Winds
-            # TODO: write a schema for this + ironclad
-            field_type: select
+            field_type: select_asset_state
             # TODO: add an icon slot? hm.
             choices:
               fine:
                 label: Fine
+                value: {}
               fair:
                 label: Fair
+                value: {}
               foul:
                 label: Foul
+                value: {}

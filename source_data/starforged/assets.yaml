@@ -90,23 +90,27 @@ assets:
             name:
               field_type: text
               label: Name
-        condition_meter: &CommandVehicleIntegrity
-          label: integrity
-          min: 0
-          max: 5
-          value: 5
-          moves:
-            suffer: starforged/moves/suffer/withstand_damage
-            recover: starforged/moves/recover/repair
-          controls:
-            battered: &Vehicle.Battered
-              label: battered
-              field_type: checkbox
-              is_impact: true
-            cursed:
-              label: cursed
-              field_type: checkbox
-              is_impact: true
+        controls:
+          integrity:
+            max: 5
+            value: 5
+            <<: &CommandVehicleIntegrity
+              label: integrity
+              min: 0
+              moves:
+                suffer:
+                  - starforged/moves/suffer/withstand_damage
+                recover:
+                  - starforged/moves/recover/repair
+              controls:
+                battered: &Vehicle.Battered
+                  label: battered
+                  field_type: checkbox
+                  is_impact: true
+                cursed:
+                  label: cursed
+                  field_type: checkbox
+                  is_impact: true
         abilities:
           - text: |-
               Your armed, multipurpose starship is suited for interstellar and atmospheric flight. It can comfortably transport several people, has space for cargo, and can carry and launch support vehicles. When you [Advance](id:starforged/moves/legacy/advance), you may spend experience to equip this vehicle with module assets.
@@ -232,11 +236,12 @@ assets:
       expanded_hold:
         name: Expanded Hold
         <<: *ModuleAsset
-        condition_meter:
-          label: cargo
-          max: 3
-          value: 0
-          min: 0
+        controls:
+          cargo:
+            label: cargo
+            max: 3
+            value: 0
+            min: 0
         # TODO: key for being interchangeable with supply?
         abilities:
           - # TODO: when you gain [condition meter] trigger?
@@ -512,11 +517,13 @@ assets:
       missile_array:
         name: Missile Array
         <<: *ModuleAsset
-        condition_meter:
-          label: ammo
-          max: 5
-          value: 5
-          min: 0
+        controls:
+          ammo:
+            field_type: condition_meter
+            label: ammo
+            max: 5
+            value: 5
+            min: 0
         abilities:
           - text: |-
               Your missile array is armed with 5 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](id:starforged/moves/recover/resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
@@ -858,8 +865,9 @@ assets:
                     - text: By letting your shields take the blow
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/module/shields/condition_meter
+                        - using: asset_control
+                          assets: null
+                          control: shields
                 <<: *Take2MomentumOnHit
           - text: |-
               When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) and score a strong hit, you may raise your shields to 3 without rolling. If you do, take +1 momentum.
@@ -874,11 +882,15 @@ assets:
                 outcomes:
                   strong_hit:
                     text: You may raise your shields to 3 without rolling. If you do, take +1 momentum.
-        condition_meter:
-          label: shields
-          max: 4
-          value: 0
-          min: 0
+        controls:
+          shields:
+            label: shields
+            max: 4
+            value: 0
+            min: 0
+            moves:
+              recover:
+                - starforged/assets/module/shields/abilities/0/moves/raise_shields
       stealth_tech:
         name: Stealth Tech
         <<: *ModuleAsset
@@ -1021,12 +1033,12 @@ assets:
                   conditions:
                     - roll_options: null
                       text: When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine
-                outcomes:
-                  strong_hit: &Workshop.2
-                    text: ''
-                    # reroll: *reroll:action_die<integrity
-                  weak_hit: *Workshop.2
-                  miss: *Workshop.2
+                # outcomes:
+                #   strong_hit: &Workshop.2
+                #     text: ''
+                #     # reroll: *reroll:action_die<integrity
+                #   weak_hit: *Workshop.2
+                #   miss: *Workshop.2
           - text: |-
               When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to undertake a long-term engineering project (extreme or greater), reroll any dice. When you obtain a crucial part or resource, mark progress on the quest and take +2 momentum. When you devote extended time to the project in your workshop, [Face Danger](id:starforged/moves/adventure/face_danger) and add +1. On a hit, mark progress. On a strong hit with a match, mark progress twice. When you [Fulfill Your Vow](id:starforged/moves/quest/fulfill_your_vow) and score a hit, mark one extra box on your quests legacy track.
             # TODO: consider a way to explicitly structure marked quests?
@@ -1087,12 +1099,13 @@ assets:
           source:
             <<: *AssetSource
           options: *Options_Name
-        condition_meter: &Meter_SV_integrity
-          <<: *CommandVehicleIntegrity
-          max: 6
-          value: 6
-          controls:
-            battered: *Vehicle.Battered
+        controls:
+          integrity: &SupportVehicle.integrity
+            <<: *CommandVehicleIntegrity
+            max: 6
+            value: 6
+            controls:
+              battered: *Vehicle.Battered
         abilities:
           - text: |-
               Your lumbering rig houses one pilot, is sealed against hostile environments, and is armed with fixed or held weapons. When you make a forceful, damaging, or resistant move, you may (after rolling) replace the value of your action die with the rig's integrity; if you do, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
@@ -1136,10 +1149,11 @@ assets:
       hoverbike:
         name: Hoverbike
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 3
-          value: 3
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 3
+            value: 3
         abilities:
           - text: |-
               Your unarmed hoverbike provides speedy planetside ground transport, and is equipped to carry up to two people and their gear. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+edge), take +1 momentum on a hit. On a strong hit with a match, you also surge ahead or find a new path; mark progress.
@@ -1187,10 +1201,11 @@ assets:
       rover:
         name: Rover
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 5
-          value: 5
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 5
+            value: 5
         abilities:
           - text: |-
               Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.
@@ -1231,16 +1246,18 @@ assets:
                     - text: By taking a hit or crashing through an obstacle
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/support_vehicle/rover/condition_meter
+                        - control: integrity
+                          using: asset_control
+                          assets: null
                 outcomes: *Take1MomentumOnHit.outcomes
       service_pod:
         name: Service Pod
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 4
-          value: 4
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.
@@ -1268,8 +1285,9 @@ assets:
                     - text: By maneuvering your pod through a hazardous or obstructed area
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/support_vehicle/service_pod/condition_meter
+                        - control: integrity
+                          using: asset_control
+                          assets: null
                 text: |-
                   Choose an approach and roll +integrity.
 
@@ -1288,10 +1306,11 @@ assets:
       shuttle:
         name: Shuttle
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 4
-          value: 4
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your unarmed shuttle provides short-range transport for several people and equipment through space or atmosphere. When you travel to a location (not your command vehicle), you and your allies may take +1 momentum when you arrive
@@ -1322,10 +1341,11 @@ assets:
       skiff:
         name: Skiff
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 4
-          value: 4
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your unarmed flatbed hover-vehicle carries several people, gear, and cargo over land or water. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may rely on the skiff's simple durability and roll +integrity. If you do, take +1 momentum on a hit.
@@ -1339,8 +1359,9 @@ assets:
                     - text: Rely on the skiff's simple durability
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/support_vehicle/skiff/condition_meter
+                        - control: integrity
+                          using: asset_control
+                          assets: null
                 outcomes: *Take1MomentumOnHit.outcomes
             enabled: true
           - text: |-
@@ -1355,8 +1376,9 @@ assets:
                     - text: By firing the skiff's cannon
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/support_vehicle/skiff/condition_meter
+                        - control: integrity
+                          using: asset_control
+                          assets: null
                 outcomes:
                   strong_hit:
                     <<: *Take1MomentumOnHit.outcomes.hit
@@ -1368,10 +1390,11 @@ assets:
       snub_fighter:
         name: Snub Fighter
         <<: *SupportVehicleAsset
-        condition_meter:
-          <<: *Meter_SV_integrity
-          max: 4
-          value: 4
+        controls:
+          integrity:
+            <<: *SupportVehicle.integrity
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your armed snub fighter carries a single pilot for space or atmospheric flight and combat. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray), you may roll +integrity; if you do, take +2 momentum on a hit.
@@ -1384,8 +1407,9 @@ assets:
                     - text: In your snub fighter
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/support_vehicle/snub_fighter/condition_meter
+                        - control: integrity
+                          using: asset_control
+                          assets: null
                 <<: *Take2MomentumOnHit
             enabled: true
           - text: |-
@@ -1468,20 +1492,27 @@ assets:
                     - text: While piloting a vehicle
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: '*/assets/*/*/condition_meter'
+                        - using: asset_control
+                          assets:
+                            - '*/assets/command_vehicle/*'
+                            - '*/assets/support_vehicle/*'
+                            - '*/assets/incidental_vehicle/*'
+                          control: integrity
                 outcomes:
                   strong_hit: *Take1MomentumOnHit.outcomes.hit
       archer:
         name: Archer
         <<: *PathAsset
         requirement: If you wield a power bow...
-        condition_meter:
-          label: ammo
-          max: 6
-          min: 0
-          value: 6
-
+        controls:
+          ammo:
+            label: ammo
+            max: 6
+            min: 0
+            value: 6
+            moves:
+              recover:
+                - starforged/assets/path/archer/abilities/0/moves/craft_projectiles
         abilities:
           - text: &move:Asset.Archer |-
               You carry 6 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash), you may add +1 or +2 and suffer that amount as -ammo. To replenish your ammo by crafting projectiles, roll +wits. On a strong hit, take up to +6 ammo. On a weak hit, take up to +4 ammo and [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1). On a miss, [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
@@ -1520,8 +1551,9 @@ assets:
                   conditions:
                     - method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/path/archer/condition_meter
+                        - using: asset_control
+                          assets: null
+                          control: ammo
                       text: By unleashing a volley of bow shots
                 outcomes:
                   strong_hit: &Archer.2
@@ -2054,17 +2086,18 @@ assets:
                     - text: During a courier mission
                       method: player_choice
                       roll_options:
-                        - using: ref
-                          ref: starforged/assets/path/courier/condition_meter
+                        - using: asset_control
+                          assets: null
+                          control: safety
                 outcomes:
                   strong_hit:
                     text: Take +1 safety or +1 momentum.
-        condition_meter:
-          label: safety
-          max: 5
-          value: 0
-          min: 0
-
+        controls:
+          safety:
+            label: safety
+            max: 5
+            value: 0
+            min: 0
       demolitionist:
         name: Demolitionist
         <<: *PathAsset
@@ -2145,9 +2178,10 @@ assets:
                   conditions:
                     - text: By calling on your god, power, or entity for guidance or aid
                       method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/path/devotant/options/linked_stat
+                      roll_options: &DevotantRollOptions
+                        - using: asset_option
+                          option: linked_stat
+                          assets: null
                 outcomes:
                   strong_hit:
                     text: &Devotant.1 Take +1 momentum or +1 spirit.
@@ -2170,9 +2204,7 @@ assets:
                   conditions:
                     - text: In service to your faith
                       method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/path/devotant/options/linked_stat
+                      roll_options: *DevotantRollOptions
                 outcomes:
                   strong_hit: &Devotant.2.1
                     text: Take +2 momentum or +2 spirit.
@@ -2198,9 +2230,7 @@ assets:
                   conditions:
                     - text: Through contemplation or sharing of your faith
                       method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/path/devotant/options/linked_stat
+                      roll_options: *DevotantRollOptions
                 outcomes:
                   strong_hit:
                     text: Take +1 spirit or +1 momentum.
@@ -2469,12 +2499,12 @@ assets:
                       method: strong_hit
                       roll_options: null
                 text: Take an automatic strong hit and mark progress. Then, set your fire to 0.
-        condition_meter:
-          label: fire
-          max: 5
-          value: 0
-          min: 0
-
+        controls:
+          fire:
+            label: fire
+            max: 5
+            value: 0
+            min: 0
       fugitive:
         name: Fugitive
         <<: *PathAsset
@@ -4046,20 +4076,23 @@ assets:
             <<: *AssetSource
           options: *Options_Name
         # tags: [biological_companion]
-        condition_meter: &BiologicalCompanionHealth
-          max: 4
-          value: 4
-          <<:
-            label: health
-            min: 0
-            controls:
-              out_of_action:
-                label: Out of action
-                field_type: checkbox
-                disables_asset: true
-            moves: &CompanionMovesBio
-              suffer: starforged/moves/suffer/companion_takes_a_hit
-              recover: starforged/moves/recover/heal
+        controls:
+          health: &BiologicalCompanionHealth
+            max: 4
+            value: 4
+            <<:
+              label: health
+              min: 0
+              controls:
+                out_of_action:
+                  label: Out of action
+                  field_type: checkbox
+                  disables_asset: true
+              moves: &CompanionMovesBio
+                suffer:
+                  - starforged/moves/suffer/companion_takes_a_hit
+                recover:
+                  - starforged/moves/recover/heal
         abilities:
           - text: |-
               Your banshee companion accompanies you on planetside missions, using its echolocation to help guide the way. When you ride your banshee as you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), you may roll +its health.
@@ -4071,10 +4104,12 @@ assets:
                 trigger:
                   conditions:
                     - text: While riding your banshee
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/banshee/condition_meter
+                      <<: &RollOptionHealth
+                        method: player_choice
+                        roll_options:
+                          - using: asset_control
+                            control: health
+                            assets: null
             enabled: true
           - text: |-
               When you make a move astride the banshee to detect a threat or avoid a fight, add +1 and take +1 momentum on a hit. On a strong hit with a match, you're gone in a flash; take another +1 momentum.
@@ -4112,13 +4147,15 @@ assets:
         name: Combat Bot
         <<: *CompanionAsset
         options: *Options_Name
-        condition_meter: &Meter_mech_health
-          <<: *BiologicalCompanionHealth
-          max: 5
-          value: 5
-          moves:
-            <<: *CompanionMovesBio
-            recover: starforged/moves/recover/repair
+        controls:
+          health: &Meter_mech_health
+            <<: *BiologicalCompanionHealth
+            max: 5
+            value: 5
+            moves:
+              <<: *CompanionMovesBio
+              recover:
+                - starforged/moves/recover/repair
         abilities:
           - text: |-
               Your combat bot companion fights at your side. When you [Strike](id:starforged/moves/combat/strike) aided by the bot, add +1; if you [Clash](id:starforged/moves/combat/clash), take +1 momentum on a hit.
@@ -4147,10 +4184,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Using the threat of violence while the bot brings its weapons to bear
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/combat_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes:
                   strong_hit:
                     <<: *Take1MomentumOnHit.outcomes.hit
@@ -4166,10 +4200,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Once per fight, by using the combat bot to draw fire or create a diversion
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/combat_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes:
                   strong_hit: *MarkProgress.outcome
                   weak_hit:
@@ -4182,10 +4213,11 @@ assets:
         # tags: [biological_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 3
-          value: 3
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 3
+            value: 3
         abilities:
           - text: |-
               Your glowcat companion perceives the inner emotions and intentions of people and creatures in its vicinity, and embodies those impressions through the colors and intensity of its luminescent fur. When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by studying the glowcat’s reactions in a charged interaction, add +its health.
@@ -4237,10 +4269,11 @@ assets:
         # tags: [mechanical_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *Meter_mech_health
-          max: 3
-          value: 3
+        controls:
+          health:
+            <<: *Meter_mech_health
+            max: 3
+            value: 3
         abilities:
           - text: |-
               Your protocol bot companion is programmed with knowledge of cultures, languages, and customs. When you are aided by the bot as you make a move in a formal social interaction, add +1. On a strong hit with a match, you learn something which builds understanding or empathy; also mark 1 tick on your bonds legacy track.
@@ -4281,10 +4314,11 @@ assets:
         # tags: [biological_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 5
-          value: 5
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 5
+            value: 5
         abilities:
           - text: |-
               Your rockhorn companion uses its resilient, stone-like hide and brute strength to overcome threats. When you make a move by sending the rockhorn to directly attack a foe or smash an obstacle, roll +its health.
@@ -4293,10 +4327,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By sending the rockhorn to directly attack a foe or smash an obstacle
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/rockhorn/condition_meter
+                      <<: *RollOptionHealth
             enabled: true
           - text: |-
               When you make the [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move for the rockhorn, count a weak hit as a strong hit. On a strong hit with a match, its rapid healing makes it unstoppable; give it another +1 health or take +1 momentum.
@@ -4307,10 +4338,7 @@ assets:
                 trigger:
                   conditions:
                     - text: For the rockhorn
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/rockhorn/condition_meter
+                      <<: *RollOptionHealth
                 outcomes:
                   strong_hit:
                     match:
@@ -4345,10 +4373,11 @@ assets:
           expertise:
             label: Expertise
             field_type: text
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 4
-          value: 4
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your sidekick has a helpful expertise. When you make a move outside of a fight directly aided by their expertise, you may reroll your action die if its value is less than your sidekick's health. If you then score a strong hit with a match, mark 1 tick on your bonds legacy track.
@@ -4395,10 +4424,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Your sidekick acts to get you out of a tough spot
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/sidekick/condition_meter
+                      <<: *RollOptionHealth
                 outcomes: *Take1MomentumOnHit.outcomes
 
       sprite:
@@ -4407,10 +4433,11 @@ assets:
         # tags: [biological_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 2
-          value: 2
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 2
+            value: 2
         abilities:
           - text: |-
               Your sprite companion alters its delicate, crystalline form to fly, swim, or scurry, and can covertly navigate even the harshest of environments. When you make a move by sending it to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object) add +its health.
@@ -4442,10 +4469,11 @@ assets:
         <<: *CompanionAsset
         # tags: [mechanical_companion]
         options: *Options_Name
-        condition_meter:
-          <<: *Meter_mech_health
-          max: 3
-          value: 3
+        controls:
+          health:
+            <<: *Meter_mech_health
+            max: 3
+            value: 3
         abilities:
           - text: |-
               Your survey bot companion scans the path ahead. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) (+wits) overland or within a site, add +1.
@@ -4469,10 +4497,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Once per expedition, by sending the survey bot to scout ahead
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/survey_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes:
                   weak_hit: &SurveyBotProgress
                     text: Mark progress on the expedition.
@@ -4489,10 +4514,7 @@ assets:
                 trigger:
                   conditions:
                     - text: Aided by the survey bot's sensors
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/survey_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes: *Take1MomentumOnHit.outcomes
               - enhances:
                   - starforged/moves/*/face_danger
@@ -4500,10 +4522,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To detect a threat
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/survey_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes: *Take1MomentumOnHit.outcomes
       symbiote:
         name: Symbiote
@@ -4511,10 +4530,11 @@ assets:
         # tags: [biological_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 2
-          value: 2
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 2
+            value: 2
         abilities:
           - text: |-
               You are physically bound to a being with 2 health. When you make aggressive moves while giving yourself to the symbiote's power, add +its health. If you face physical harm, choose either the [Endure Harm](id:starforged/moves/suffer/endure_harm) or [Companion Takes a Hit](id:starforged/moves/suffer/companion_takes_a_hit) move. To restore the symbiote's health, you must [Endure Stress](id:starforged/moves/suffer/endure_stress) and give the symbiote +health equal to the -spirit you face. If you make a move aided by the symbiote and roll a 1 on your action die, your fragile bond is broken for several hours.
@@ -4541,18 +4561,20 @@ assets:
           - text: |-
               The symbiote gains power and has 3 health.
             enhance_asset:
-              condition_meter:
-                max: 3
+              controls:
+                health:
+                  max: 3
 
       utility_bot:
         name: Utility Bot
         <<: *CompanionAsset
         # tags: [mechanical_companion]
         options: *Options_Name
-        condition_meter:
-          <<: *Meter_mech_health
-          max: 4
-          value: 4
+        controls:
+          health:
+            <<: *Meter_mech_health
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your utility bot companion has helpful tools at-hand. When you make a move by directing it to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device, roll +its health and take +1 momentum on a hit. On a strong hit with a match, it reveals an unexpected advantage or insight; take another +1 momentum.
@@ -4562,10 +4584,7 @@ assets:
                 trigger:
                   conditions:
                     - text: By directing the utility bot to access a system, cut through an obstacle, analyze a mechanical issue, or assemble or disassemble a device
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/utility_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes:
                   <<: *Take1MomentumOnHit.outcomes
                   strong_hit:
@@ -4598,10 +4617,7 @@ assets:
                 trigger:
                   conditions:
                     - text: To see if your utility bot has a specific tool or technique available
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/utility_bot/condition_meter
+                      <<: *RollOptionHealth
                 outcomes: *Take1MomentumOnHit.outcomes
 
       voidglider:
@@ -4610,10 +4626,11 @@ assets:
         # tags: [biological_companion]
 
         options: *Options_Name
-        condition_meter:
-          <<: *BiologicalCompanionHealth
-          max: 4
-          value: 4
+        controls:
+          health:
+            <<: *BiologicalCompanionHealth
+            max: 4
+            value: 4
         abilities:
           - text: |-
               Your voidglider companion cruises in your starship’s energy wake and can help guide the way on spaceborne journeys. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition), add +1.
@@ -4634,10 +4651,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You are riding the voidglider and make a move to detect or evade a threat by relying on its instincts
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/voidglider/condition_meter
+                      <<: *RollOptionHealth
           - text: |-
               When you make a move by signaling the voidglider to distract or attack a spaceborne foe, roll +its health and take +1 momentum on a hit.
             enhance_moves:
@@ -4645,10 +4659,7 @@ assets:
                 trigger:
                   conditions:
                     - text: You make a move by signaling the voidglider to distract or attack a spaceborne foe
-                      method: player_choice
-                      roll_options:
-                        - using: ref
-                          ref: starforged/assets/companion/voidglider/condition_meter
+                      <<: *RollOptionHealth
                 outcomes: *Take1MomentumOnHit.outcomes
   deed:
     source:
@@ -4795,12 +4806,6 @@ assets:
                   conditions:
                     - text: For home
                       roll_options: null
-                outcomes:
-                  strong_hit: &Homesteader.3 # reroll: *reroll:action_die<spirit
-
-
-                  weak_hit: *Homesteader.3
-                  miss: *Homesteader.3
       marked:
         name: Marked
         <<: *DeedAsset
@@ -4928,13 +4933,12 @@ assets:
                   conditions:
                     - text: When you are at 0 health
                       roll_options: null
-                <<: *Add1
-                outcomes:
-                  strong_hit: &Revenant.1 # reroll: *reroll:action_die<spirit
-
-
-                  weak_hit: *Revenant.1
-                  miss: *Revenant.1
+                # <<: *Add1
+                # outcomes:
+                #   strong_hit: &Revenant.1 # reroll: *reroll:action_die<spirit
+                #     text: ''
+                #   weak_hit: *Revenant.1
+                #   miss: *Revenant.1
           - text: |-
               When you [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by bringing death to a foe, you may burn momentum to zero out one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).
             enhance_moves:

@@ -93,30 +93,35 @@ export const AssetConditionMeterControlField = AssetField(
 export const AssetConditionMeter = Type.Object(
 	{
 		...Inputs.Meter.properties,
-		id: Type.Ref(ID.AssetConditionMeterID),
+		id: Type.Ref(ID.AssetControlFieldID),
+		field_type: Type.Literal('condition_meter', { default: 'condition_meter' }),
 		label: Type.Ref(Label),
 		moves: Type.Optional(
 			Type.Object(
 				{
 					suffer: Type.Optional(
-						Type.Ref(ID.MoveID, {
+						Type.Array(Type.Ref(ID.MoveIDWildcard), {
 							description:
-								"The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
+								"The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.",
 							examples: [
-								'classic/moves/suffer/companion_endure_harm',
-								'starforged/moves/suffer/companion_takes_a_hit',
-								'starforged/moves/suffer/withstand_damage'
+								['classic/moves/suffer/companion_endure_harm'],
+								['starforged/moves/suffer/companion_takes_a_hit'],
+								['starforged/moves/suffer/withstand_damage']
 							]
 						})
 					),
 					recover: Type.Optional(
-						Type.Ref(ID.MoveID, {
+						Type.Array(Type.Ref(ID.MoveIDWildcard), {
 							description:
-								'The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.',
+								'The ID(s) of recovery moves associated with this meter.',
 							examples: [
-								'classic/moves/adventure/heal',
-								'starforged/moves/recover/heal',
-								'starforged/moves/recover/repair'
+								[
+									'classic/moves/adventure/heal',
+									'classic/moves/adventure/make_camp',
+									'classic/moves/relationship/sojourn'
+								],
+								['starforged/moves/recover/heal'],
+								['starforged/moves/recover/repair']
 							]
 						})
 					)
@@ -124,29 +129,12 @@ export const AssetConditionMeter = Type.Object(
 				{
 					description:
 						'Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.',
-					releaseStage: 'unstable',
-					examples: [
-						{
-							suffer: 'classic/moves/suffer/endure_companion_harm',
-							recover: 'classic/moves/adventure/heal'
-						},
-						{
-							suffer: 'starforged/moves/suffer/companion_takes_a_hit',
-							recover: 'starforged/moves/recover/heal'
-						},
-						{
-							suffer: 'starforged/moves/suffer/withstand_damage',
-							recover: 'starforged/moves/recover/repair'
-						}
-					]
+					releaseStage: 'unstable'
 				}
 			)
 		),
 		controls: Type.Optional(
-			Dictionary(Type.Ref(AssetConditionMeterControlField), {
-				description:
-					'Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
-			})
+			Dictionary(Type.Ref(AssetConditionMeterControlField))
 		)
 	},
 	{
@@ -175,6 +163,7 @@ export const AssetControlField = AssetField(
 	'AssetControlField',
 	ID.AssetControlFieldID,
 	[
+		AssetConditionMeter,
 		Inputs.CheckboxField,
 		AssetCardFlipField,
 		// manually type as a ref so the type system doesn't flip out
@@ -273,7 +262,7 @@ export const Asset = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetControlField), {
 				description:
-					'Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
+					'Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
 			})
 		),
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
@@ -281,7 +270,7 @@ export const Asset = Type.Object(
 		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
 			description: 'Abilities provided by this asset. Most assets have 3.'
 		}),
-		condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
+		// condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
 		count_as_impact: Type.Boolean({
 			default: false,
 			description:
@@ -294,7 +283,7 @@ export const Asset = Type.Object(
 				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 		})
 	},
-	{ $id: '#/$defs/Asset', title: 'Asset' }
+	{ $id: '#/$defs/Asset', title: 'Asset', additionalProperties: false }
 )
 
 export type Asset = Static<typeof Asset>

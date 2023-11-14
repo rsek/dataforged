@@ -712,27 +712,32 @@
 									{
 										"label": "Troublesome",
 										"using": "custom",
-										"value": 1
+										"value": 1,
+										"assets": null
 									},
 									{
 										"label": "Dangerous",
 										"using": "custom",
-										"value": 2
+										"value": 2,
+										"assets": null
 									},
 									{
 										"label": "Formidable",
 										"using": "custom",
-										"value": 3
+										"value": 3,
+										"assets": null
 									},
 									{
 										"label": "Extreme",
 										"using": "custom",
-										"value": 4
+										"value": 4,
+										"assets": null
 									},
 									{
 										"label": "Epic",
 										"using": "custom",
-										"value": 5
+										"value": 5,
+										"assets": null
 									}
 								]
 							}
@@ -1795,8 +1800,9 @@
 								"method": "player_choice",
 								"roll_options": [
 									{
-										"using": "ref",
-										"ref": "*/assets/companion/*/condition_meter"
+										"using": "asset_control",
+										"assets": ["*/assets/companion/*"],
+										"control": "health"
 									}
 								]
 							}
@@ -1862,12 +1868,13 @@
 								"method": "player_choice",
 								"roll_options": [
 									{
-										"using": "ref",
-										"ref": "*/assets/command_vehicle/*/condition_meter"
-									},
-									{
-										"using": "ref",
-										"ref": "*/assets/support_vehicle/*/condition_meter"
+										"using": "asset_control",
+										"assets": [
+											"*/assets/command_vehicle/*",
+											"*/assets/support_vehicle/*",
+											"*/assets/incidental_vehicle/*"
+										],
+										"control": "integrity"
 									}
 								]
 							}

@@ -131,7 +131,7 @@
 		"AssetConditionMeterControlFieldID": {
 			"title": "AssetConditionMeterControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/condition_meter\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetConditionMeterID": {
 			"title": "Asset condition meter ID",
@@ -1168,7 +1168,8 @@
 							"enum": [
 								"stat",
 								"condition_meter",
-								"ref",
+								"asset_control",
+								"asset_option",
 								"attached_asset_meter",
 								"custom"
 							]
@@ -1184,7 +1185,10 @@
 							"$ref": "#/$defs/RollOptionConditionMeter"
 						},
 						{
-							"$ref": "#/$defs/RollOptionRef"
+							"$ref": "#/$defs/RollOptionAssetControlField"
+						},
+						{
+							"$ref": "#/$defs/RollOptionAssetOptionField"
 						},
 						{
 							"$ref": "#/$defs/RollOptionAttachedAssetRef"
@@ -1694,6 +1698,67 @@
 				}
 			}
 		},
+		"RollOptionAssetControlField": {
+			"title": "RollOptionAssetControlField",
+			"type": "object",
+			"required": ["using", "assets", "control"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"const": "asset_control"
+				},
+				"assets": {
+					"description": "Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetIDWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"control": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The key of the asset control.",
+					"examples": ["health", "integrity"]
+				}
+			}
+		},
+		"RollOptionAssetOptionField": {
+			"title": "RollOptionAssetOptionField",
+			"type": "object",
+			"required": ["using", "assets", "option"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"const": "asset_option"
+				},
+				"assets": {
+					"description": "Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "array",
+							"items": {
+								"$ref": "#/$defs/AssetIDWildcard"
+							}
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"option": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The key of the asset option."
+				}
+			}
+		},
 		"RollOptionAttachedAssetRef": {
 			"title": "RollOptionAttachedAssetRef",
 			"type": "object",
@@ -1750,7 +1815,7 @@
 				"ref": {
 					"anyOf": [
 						{
-							"$ref": "#/$defs/AssetConditionMeterIDWildcard"
+							"$ref": "#/$defs/AssetControlFieldIDWildcard"
 						},
 						{
 							"$ref": "#/$defs/AssetOptionFieldIDWildcard"
@@ -2250,15 +2315,12 @@
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
-					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
+					"description": "Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"$ref": "#/$defs/AssetControlField"
 						}
 					}
-				},
-				"condition_meter": {
-					"$ref": "#/$defs/AssetConditionMeter"
 				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
@@ -2266,7 +2328,8 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"AssetAbility": {
 			"title": "AssetAbility",
@@ -2466,10 +2529,15 @@
 			"required": ["label", "max"],
 			"properties": {
 				"id": {
-					"$ref": "#/$defs/AssetConditionMeterID"
+					"$ref": "#/$defs/AssetControlFieldID"
 				},
 				"label": {
 					"$ref": "#/$defs/Label"
+				},
+				"field_type": {
+					"type": "string",
+					"const": "condition_meter",
+					"default": "condition_meter"
 				},
 				"min": {
 					"type": "integer",
@@ -2484,7 +2552,6 @@
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
-					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
@@ -2496,38 +2563,34 @@
 					"description": "Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.",
 					"properties": {
 						"recover": {
-							"$ref": "#/$defs/MoveID",
-							"description": "The ID of the primary recover move associated with the condition meter. When in doubt, prefer the most specific move that can be used in the field, or whatever would be most useful to have presented as a shortcut.",
+							"type": "array",
+							"description": "The ID(s) of recovery moves associated with this meter.",
+							"items": {
+								"$ref": "#/$defs/MoveIDWildcard"
+							},
 							"examples": [
-								"classic/moves/adventure/heal",
-								"starforged/moves/recover/heal",
-								"starforged/moves/recover/repair"
+								[
+									"classic/moves/adventure/heal",
+									"classic/moves/adventure/make_camp",
+									"classic/moves/relationship/sojourn"
+								],
+								["starforged/moves/recover/heal"],
+								["starforged/moves/recover/repair"]
 							]
 						},
 						"suffer": {
-							"$ref": "#/$defs/MoveID",
-							"description": "The ID of the suffer move associated with the condition meter. If the suffer move makes an action roll, it may use this condition meter's value as a stat option.",
+							"type": "array",
+							"description": "The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.",
+							"items": {
+								"$ref": "#/$defs/MoveIDWildcard"
+							},
 							"examples": [
-								"classic/moves/suffer/companion_endure_harm",
-								"starforged/moves/suffer/companion_takes_a_hit",
-								"starforged/moves/suffer/withstand_damage"
+								["classic/moves/suffer/companion_endure_harm"],
+								["starforged/moves/suffer/companion_takes_a_hit"],
+								["starforged/moves/suffer/withstand_damage"]
 							]
 						}
 					},
-					"examples": [
-						{
-							"suffer": "classic/moves/suffer/endure_companion_harm",
-							"recover": "classic/moves/adventure/heal"
-						},
-						{
-							"suffer": "starforged/moves/suffer/companion_takes_a_hit",
-							"recover": "starforged/moves/recover/heal"
-						},
-						{
-							"suffer": "starforged/moves/suffer/withstand_damage",
-							"recover": "starforged/moves/recover/repair"
-						}
-					],
 					"releaseStage": "unstable"
 				}
 			}
@@ -2551,13 +2614,17 @@
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
 			"properties": {
+				"field_type": {
+					"type": "string",
+					"const": "condition_meter",
+					"default": "condition_meter"
+				},
 				"max": {
 					"type": "integer"
 				},
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
-					"description": "Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
@@ -2575,6 +2642,9 @@
 				}
 			},
 			"anyOf": [
+				{
+					"$ref": "#/$defs/AssetConditionMeter"
+				},
 				{
 					"$ref": "#/$defs/CheckboxField"
 				},

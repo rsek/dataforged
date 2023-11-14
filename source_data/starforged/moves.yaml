@@ -1230,8 +1230,10 @@ moves:
           text: When your companion faces physical hardship...
           conditions:
             - roll_options:
-                - using: ref
-                  ref: '*/assets/companion/*/condition_meter'
+                - using: asset_control
+                  assets:
+                    - '*/assets/companion/*'
+                  control: health
         text: |-
           **When your companion faces physical hardship**, they suffer -1 health for minor harm, -2 for serious harm, or -3 for major harm. If your companion's health is 0, [Lose Momentum](id:starforged/moves/suffer/lose_momentum) equal to any remaining harm.
 
@@ -1276,10 +1278,12 @@ moves:
           text: When your vehicle faces a damaging situation or environment...
           conditions:
             - roll_options:
-                - using: ref
-                  ref: '*/assets/command_vehicle/*/condition_meter'
-                - using: ref
-                  ref: '*/assets/support_vehicle/*/condition_meter'
+                - using: asset_control
+                  assets:
+                    - '*/assets/command_vehicle/*'
+                    - '*/assets/support_vehicle/*'
+                    - '*/assets/incidental_vehicle/*'
+                  control: integrity
         oracles:
           - starforged/oracles/moves/withstand_damage
         text: |-

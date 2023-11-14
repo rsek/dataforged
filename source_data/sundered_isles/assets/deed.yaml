@@ -8,9 +8,11 @@ source: &Source
   date: 2023-09-11
 assets:
   deed:
+    source: *Source
     name: Deed Assets
     contents:
       cohort:
+        source: *Source
         name: Cohort
         asset_type: Deed
         requirement: Once you [Make a Connection](id:sundered_isles/moves/connection/make_a_connection) and accept them as a crewmate...
@@ -23,6 +25,7 @@ assets:
           - text: |-
               When you [Secure an Advantage](id:sundered_isles/moves/adventure/secure_an_advantage) by gathering your specialists to strategize or problem-solve, you may reroll one die for each participating specialist.
       damned:
+        source: *Source
         name: Damned
         requirement: Once you mark tormented or doomed...
         asset_type: Deed
@@ -39,6 +42,7 @@ assets:
           - text: |-
               When your curse is broken through the fulfillment of a vow or other event, activate this ability at no cost. Discard this asset and any of your damned assets, exchanging them one-for-one for new assets with an equal number of marked abilities. You may then improve one of your stats by +1.
       fleet_commander:
+        source: *Source
         name: Fleet Commander
         requirement: Once you fill 12 legacy track boxes and take command of a mighty fleet...
         asset_type: Deed
@@ -49,19 +53,22 @@ assets:
           - text: |-
               Take +2 power and set your max power to 5.
             enhance_asset:
-              condition_meter:
-                max: 5
+              controls:
+                power:
+                  max: 5
           - text: |-
               When you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition), you may reroll your action die if its value is less than your fleet’s power.
-        condition_meter:
-          min: 0
-          max: 4
-          label: power
-          controls:
-            wrecked:
-              label: wrecked
-              field_type: checkbox
+        controls:
+          power:
+            min: 0
+            max: 4
+            label: power
+            controls:
+              wrecked:
+                label: wrecked
+                field_type: checkbox
       undead:
+        source: *Source
         name: Undead
         asset_type: Deed
         requirement: Once you die or are cursed with undeath...
@@ -90,6 +97,7 @@ assets:
                 trigger:
                   conditions:
                     - text: using your undead aspect to intimidate, scare, or confound
+                      roll_options: null
           - text: |-
               You may move at-will between the mortal world and the realm of the dead, can take others with you, and may navigate those paths to bypass or hasten a mortal journey. When you [Undertake an Expedition](id:sundered_isles/moves/exploration/undertake_an_expedition) within the realms of the dead, roll +spirit. On a strong hit, mark progress.
             enhance_moves:

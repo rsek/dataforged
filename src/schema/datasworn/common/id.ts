@@ -316,7 +316,7 @@ export type AssetConditionMeterIDWildcard = Static<
 	typeof AssetConditionMeterIDWildcard
 >
 export const AssetConditionMeterControlFieldID = Type.RegExp(
-	joinPatterns(AssetConditionMeterID.pattern as string, SEP, 'controls', KEY),
+	joinPatterns(AssetControlFieldID.pattern as string, SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter\/controls\/[a-z][a-z_]*$/,
 	{ $id: '#/$defs/AssetConditionMeterControlFieldID' }
 )

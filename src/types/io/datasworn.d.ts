@@ -220,14 +220,27 @@ export type ActionRollMethod =
   | "all"
   | "enhance";
 export type ActionRollOption = {
-  using: "stat" | "condition_meter" | "ref" | "attached_asset_meter" | "custom";
-} & (RollOptionStat | RollOptionConditionMeter | RollOptionRef | RollOptionAttachedAssetRef | RollOptionCustom);
+  using: "stat" | "condition_meter" | "asset_control" | "asset_option" | "attached_asset_meter" | "custom";
+} & (
+  | RollOptionStat
+  | RollOptionConditionMeter
+  | RollOptionAssetControlField
+  | RollOptionAssetOptionField
+  | RollOptionAttachedAssetRef
+  | RollOptionCustom
+);
 /**
  * A basic, rollable player character resource.
  */
 export type PlayerConditionMeter = string;
-export type AssetConditionMeterIDWildcard = string;
-export type AssetOptionFieldIDWildcard = string;
+/**
+ * The key of the asset control.
+ */
+export type DictKey1 = string;
+/**
+ * The key of the asset option.
+ */
+export type DictKey2 = string;
 /**
  * A move ID with wildcards
  */
@@ -422,16 +435,8 @@ export type MoveID4 = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetControlField = CheckboxField | AssetCardFlipField | SelectFieldAssetState;
-export type AssetConditionMeterID = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID5 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID6 = string;
+export type AssetControlField = AssetConditionMeter1 | CheckboxField | AssetCardFlipField | SelectFieldAssetState;
+export type AssetControlFieldID = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
@@ -796,12 +801,11 @@ export interface Asset {
    */
   abilities: AssetAbility[];
   /**
-   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
+   * Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
    */
   controls?: {
     [k: string]: AssetControlField;
   };
-  condition_meter?: AssetConditionMeter1;
   suggestions?: Suggestions;
   source: Source;
 }
@@ -915,10 +919,8 @@ export interface CheckboxField {
  * The asset condition meter is always rendered at the bottom of the card.
  */
 export interface AssetConditionMeter {
+  field_type?: "condition_meter";
   max?: number;
-  /**
-   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
-   */
   controls?: {
     [k: string]: AssetConditionMeterControlField;
   };
@@ -974,9 +976,21 @@ export interface RollOptionConditionMeter {
   using: "condition_meter";
   condition_meter: PlayerConditionMeter;
 }
-export interface RollOptionRef {
-  using: "ref";
-  ref: AssetConditionMeterIDWildcard | AssetOptionFieldIDWildcard;
+export interface RollOptionAssetControlField {
+  using: "asset_control";
+  /**
+   * Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
+   */
+  assets: AssetIDWildcard[] | null;
+  control: DictKey1;
+}
+export interface RollOptionAssetOptionField {
+  using: "asset_option";
+  /**
+   * Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
+   */
+  assets: AssetIDWildcard[] | null;
+  option: DictKey2;
 }
 export interface RollOptionAttachedAssetRef {
   using: "attached_asset_meter";
@@ -1199,6 +1213,35 @@ export interface TriggerSpecialTrackCondition {
   roll_options: TriggerSpecialTrackConditionOption[];
 }
 /**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * The asset condition meter is always rendered at the bottom of the card.
+ */
+export interface AssetConditionMeter1 {
+  id: AssetControlFieldID;
+  label: Label;
+  field_type: "condition_meter";
+  min: number;
+  max: number;
+  value?: number;
+  controls?: {
+    [k: string]: AssetConditionMeterControlField;
+  };
+  /**
+   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
+   */
+  moves?: {
+    /**
+     * The ID(s) of recovery moves associated with this meter.
+     */
+    recover?: MoveIDWithWildcard[];
+    /**
+     * The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.
+     */
+    suffer?: MoveIDWithWildcard[];
+  };
+}
+/**
  * This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.
  *
  *     Otherwise, it behaves similarly to a CheckboxField.
@@ -1255,31 +1298,6 @@ export interface SelectFieldAssetState {
       };
       selected?: boolean;
     };
-  };
-}
-/**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- *
- * The asset condition meter is always rendered at the bottom of the card.
- */
-export interface AssetConditionMeter1 {
-  id: AssetConditionMeterID;
-  label: Label;
-  min: number;
-  max: number;
-  value?: number;
-  /**
-   * Controls are asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
-   */
-  controls?: {
-    [k: string]: AssetConditionMeterControlField;
-  };
-  /**
-   * Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.
-   */
-  moves?: {
-    recover?: MoveID5;
-    suffer?: MoveID6;
   };
 }
 /**

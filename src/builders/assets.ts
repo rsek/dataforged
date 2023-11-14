@@ -35,6 +35,12 @@ export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 		return mapValues(data.controls, (fieldData, fieldKey) => {
 			const field = cloneDeep(fieldData)
 			field.id = `${this.id}/controls/${fieldKey}`
+
+			if (field.field_type === 'condition_meter' && field.controls != null)
+				for (const k in field.controls)
+					if (Object.prototype.hasOwnProperty.call(field.controls, k))
+						field.controls[k].id = `${field.id}/controls/${k}`
+
 			return field as Out.AssetControlField
 		}) as any
 	},
@@ -47,24 +53,6 @@ export const Asset = sourcedTransformer<In.Asset, Out.Asset>({
 		return data.abilities.map((ability, index) =>
 			transform(ability, index, this, AssetAbility)
 		) as [Out.AssetAbility, Out.AssetAbility, Out.AssetAbility]
-	},
-	condition_meter: function (
-		this: SourceHaver,
-		data: In.Asset,
-		key: string | number,
-		parent: SourceHaver
-	): Out.AssetConditionMeter1 | undefined {
-		if (data.condition_meter == null) return undefined
-		const meter = cloneDeep(data.condition_meter)
-		meter.id = `${this.id}/condition_meter`
-		if (typeof meter.value !== 'number') meter.value = meter.max
-		if (meter.controls != null) {
-			meter.controls = mapValues(meter.controls, (field, fieldKey) => {
-				field.id = trackID(`${meter.id as string}/controls/${fieldKey}`)
-				return field
-			})
-		}
-		return meter as Out.AssetConditionMeter1
 	}
 })
 
