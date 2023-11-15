@@ -61,7 +61,7 @@ export interface SelectOption<T> {
 
 export const SelectFieldType = JsonEnum([
 	'select_stat',
-	'select_asset_state'
+	'select_enhancement'
 	// 'select_meter',
 	// 'select_ref',
 	// 'select_number',

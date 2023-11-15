@@ -6,11 +6,9 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema,
-	TUnion,
-	TNull
+	type TSchema
 } from '@sinclair/typebox'
-import { camelCase, keyBy, map } from 'lodash-es'
+import { camelCase, startCase } from 'lodash-es'
 import { type Simplify } from 'type-fest'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
@@ -132,5 +130,27 @@ export function RequireExcept<T extends TObject, K extends keyof Static<T>>(
 			Type.Required(Type.Omit(schema, nonRequiredKeys))
 		],
 		options
+	)
+}
+
+export function PolymorphicWithID<
+	TFieldSchema extends TSchema[],
+	TFieldID extends TSchema
+>(
+	name: string,
+	fieldID: TFieldID,
+	fieldSchemas: TFieldSchema,
+	options: ObjectOptions = {}
+) {
+	return Type.Intersect(
+		[
+			Type.Object({ id: fieldID }, { additionalProperties: true }),
+			Type.Union(fieldSchemas)
+		],
+		{
+			$id: `#/$defs/${pascalCase(name)}`,
+			title: startCase(name),
+			...options
+		}
 	)
 }

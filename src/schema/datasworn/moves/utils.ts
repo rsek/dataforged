@@ -3,6 +3,7 @@ import {
 	TArray,
 	TLiteral,
 	TNull,
+	TProperties,
 	TUnion,
 	Type,
 	type ArrayOptions,
@@ -10,19 +11,22 @@ import {
 	type TAnySchema,
 	type TBigInt,
 	type TObject,
-	type TSchema
+	type TSchema,
+	TypeGuard
 } from '@sinclair/typebox'
+import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
+import { UnionOneOf } from '../../../typebox/union-oneof.js'
 import { SourcedNode } from '../common/abstract.js'
 import { MoveIDWildcard } from '../common/id.js'
 import { Abstract, ID, Localize, Metadata } from '../common/index.js'
 import { RequireBy } from '../common/utils.js'
+import { ActionRollUsing } from './action.js'
 import {
 	MoveOutcomes,
 	MoveRollType,
 	TriggerBy,
 	type AnyMoveSchema
 } from './common.js'
-import { UnionOneOf } from '../../../typebox/union-oneof.js'
 
 export const MoveBase = Type.Object({
 	id: Type.Ref(ID.MoveID),
@@ -56,7 +60,7 @@ export const MoveBase = Type.Object({
 	source: Type.Ref(Metadata.Source)
 })
 
-const TriggerRollConditionProperties = {
+export const TriggerConditionBase = {
 	text: Type.Optional(
 		Type.Ref(Localize.MarkdownString, {
 			description:
@@ -66,76 +70,33 @@ const TriggerRollConditionProperties = {
 	by: Type.Optional(Type.Ref(TriggerBy))
 }
 
-type TriggerRollConditionSchema<
-	RollOption extends TSchema | undefined = undefined,
-	Method extends TSchema | undefined = undefined
-> = TObject<
+export function TriggerCondition<
+	Method extends TSchema,
 	RollOption extends TSchema
-		? Method extends TSchema
-			? typeof TriggerRollConditionProperties & {
-					method: Method
-					options: TArray<RollOption>
-			  }
-			: typeof TriggerRollConditionProperties
-		: typeof TriggerRollConditionProperties
->
-
-// export function composeTriggerRollCondition<
-// 	Option extends TSchema,
-// 	Method extends TSchema
-// >(
-// 	{
-// 		optionSchema,
-// 		methodSchema
-// 	}: { optionSchema: Option; methodSchema: Method },
-// 	schemaOptions?: ObjectOptions
-// ): TObject<
-// 	typeof TriggerRollConditionProperties & {
-// 		method: Method
-// 		options: TArray<Option>
-// 	}
-// >
-// export function composeTriggerRollCondition<
-// 	Option extends undefined,
-// 	Method extends undefined
-// >(
-// 	{
-// 		optionSchema,
-// 		methodSchema
-// 	}: { optionSchema?: undefined; methodSchema?: undefined },
-// 	schemaOptions?: ObjectOptions
-// ): TObject<typeof TriggerRollConditionProperties>
-export function composeTriggerRollCondition<
-	RollOption extends TSchema | undefined,
-	Method extends TSchema | undefined
->(
-	{ optionSchema, method }: { optionSchema?: RollOption; method?: Method } = {},
-	schemaOptions: ObjectOptions = {}
-): TriggerRollConditionSchema<RollOption, Method> {
-	if (optionSchema == null)
-		return Type.Object(
-			TriggerRollConditionProperties,
-			schemaOptions
-		) as TriggerRollConditionSchema<RollOption, Method>
-
-	const roll_options = Type.Array(optionSchema, {
+>(method: Method, roll_option: RollOption, options: ObjectOptions = {}) {
+	const rollOptionsOptions = {
 		description: 'The options available when rolling with this trigger.'
-	})
-
-	const nuProps = {
-		...TriggerRollConditionProperties,
-		method,
-		roll_options
 	}
+	const roll_options = TypeGuard.TNull(roll_option)
+		? roll_option
+		: (Type.Array(roll_option, rollOptionsOptions) as RollOption extends TNull
+				? TNull
+				: TArray<RollOption>)
 
-	// @ts-expect-error ugh
-	return Type.Object(nuProps, schemaOptions) as TriggerRollConditionSchema<
-		RollOption,
-		Method
-	>
+	return Type.Object(
+		{
+			...TriggerConditionBase,
+			method,
+			roll_options
+			// roll_options: Type.Array(roll_option, {
+			// 	description: 'The options available when rolling with this trigger.'
+			// })
+		},
+		options
+	)
 }
 
-export function composeTrigger(
+export function Trigger(
 	rollConditionSchema: TObject,
 	options: ObjectOptions = {},
 	conditionsOptions: ArrayOptions = {}
@@ -165,7 +126,7 @@ export function composeMoveType<T extends TObject>(schema: T, options = {}) {
 	)
 }
 
-export function toTriggerEnhance(
+export function TriggerEnhancement(
 	conditionSchema: Exclude<TAnySchema, TBigInt>,
 	options: ObjectOptions
 ) {
@@ -177,53 +138,46 @@ export function toTriggerEnhance(
 	)
 }
 
-type TriggerConditionEnhanceSchema<
-	Option extends TSchema | undefined,
-	Method extends TSchema | undefined
-> = TObject<
-	Option extends TSchema
-		? Method extends TSchema
-			? typeof TriggerRollConditionProperties & {
-					method: TUnion<[Method, TLiteral<'enhance'>]>
-					options: TUnion<[TArray<Option>, TNull]>
-			  }
-			: typeof TriggerRollConditionProperties
-		: typeof TriggerRollConditionProperties
->
+export function TriggerConditionEnhancement<
+	T extends TObject<{ roll_options: TSchema; method: TSchema }>
+>(base: T, options: ObjectOptions) {
+	const RollOptions = base.properties.roll_options
+	type RollOptions = T['properties']['roll_options']
 
-export function toTriggerConditionEnhance<
-	RollOption extends TSchema | undefined,
-	Method extends TSchema | undefined
->(
-	base: ReturnType<typeof composeTriggerRollCondition<RollOption, Method>>,
-	options: ObjectOptions
-): TriggerConditionEnhanceSchema<RollOption, Method> {
-	const optionsSchema = (base.properties as any)
-		.roll_options as RollOption extends TSchema ? TArray<RollOption> : undefined
-	const method = (base.properties as any).method as Method
+	const Method = base.properties.method
+	type Method = T['properties']['method']
 
-	if (optionsSchema == null || method == null)
-		return Type.Object(TriggerRollConditionProperties, options) as any
+	type NullableRollOptions = Omit<
+		T['properties'],
+		'roll_options' | 'method'
+	> & {
+		roll_options: RollOptions extends TNull
+			? RollOptions
+			: TUnion<[TNull, RollOptions]>
+		method: Method extends TNull ? Method : TUnion<[TNull, Method]>
+	}
 
-	const enhanceLiteral = 'enhance'
+	const roll_options = TypeGuard.TNull(RollOptions)
+		? RollOptions
+		: Type.Union([Type.Null(), RollOptions])
 
-	return Type.Object(
-		{
-			...TriggerRollConditionProperties,
-			method: UnionOneOf([Type.Literal(enhanceLiteral), method], {
-				default: enhanceLiteral
-			}),
-			roll_options: UnionOneOf([Type.Null(), optionsSchema], {
-				default: null,
+	const method = TypeGuard.TNull(Method)
+		? Method
+		: Type.Union([Type.Null(), Method], {
 				description:
-					'If this is null or undefined, this trigger condition enhance specifies no roll options of its own.'
-			})
-		},
-		options
-	) as any
+					'A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.'
+		  })
+
+	const nuProps = {
+		...base.properties,
+		roll_options,
+		method
+	} as NullableRollOptions
+
+	return Type.Object(nuProps, options)
 }
 
-export function toMoveEnhance<
+export function toMoveEnhancement<
 	TMove extends AnyMoveSchema & TObject,
 	TEnhance extends TObject
 >(
@@ -247,3 +201,25 @@ export function toMoveEnhance<
 }
 
 export type MoveBase = Static<typeof MoveBase>
+
+export function RollOption<
+	Using extends ActionRollUsing,
+	Props extends TProperties
+>(using: Using, props: Props, options: ObjectOptions = {}) {
+	return Type.Object<Props & { using: TLiteral<Using> }>(
+		{
+			...props,
+			using: ExtractLiteralFromEnum(ActionRollUsing, using)
+		},
+		{
+			additionalProperties: false,
+			...options
+		}
+	)
+}
+export type RollOption<
+	Using extends string,
+	Props extends Record<string, unknown>
+> = {
+	using: Using
+} & Props

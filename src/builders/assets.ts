@@ -124,7 +124,7 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
-	): Out.MoveEnhance[] | undefined {
+	): Out.MoveEnhancement[] | undefined {
 		if (data.enhance_moves == null) return undefined
 
 		return data.enhance_moves?.map((moveEnhance) =>

@@ -96,10 +96,6 @@ export async function buildSourcebook(
 		'source.page'
 	) as unknown as SourcebookMetadata
 
-	// exclude certain keys which are still in development
-	// FIXME there's probably a more elegant way to do this, by looking at the json schema's releaseFlag
-	const experimentalKeys = ['enhance_asset']
-
 	const toWrite: Promise<void>[] = []
 
 	for (const [k, v] of Object.entries(sourcebook)) {

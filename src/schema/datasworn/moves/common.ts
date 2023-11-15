@@ -26,8 +26,8 @@ enum RollMethod {
 	PlayerChoice = 'player_choice',
 	Highest = 'highest',
 	Lowest = 'lowest',
-	All = 'all',
-	Enhance = 'enhance'
+	All = 'all'
+	// Enhance = 'enhance'
 }
 
 // ENUMS
@@ -68,9 +68,9 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.PlayerChoice]: 'The player chooses which roll option to use.',
 	[RollMethod.Highest]: 'Use the roll option with the best/highest value.',
 	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
-	[RollMethod.All]: 'Use **every** roll option at once.',
-	[RollMethod.Enhance]:
-		"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions)."
+	[RollMethod.All]: 'Use **every** roll option at once.'
+	// [RollMethod.Enhance]:
+	// 	"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see MoveEnhancement) and `using` (see RollOptions)."
 }
 
 export const ActionRollMethod = JsonEnumFromRecord(
@@ -95,6 +95,7 @@ export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
 export const ProgressRollMethod = JsonEnumFromRecord(
 	{
 		...rollMethodForceOutcome,
+		// [RollMethod.Enhance]: rollMethodOutcomeCommon[RollMethod.Enhance],
 		progress_roll:
 			'Make a progress roll on a progress track associated with this move.'
 	},

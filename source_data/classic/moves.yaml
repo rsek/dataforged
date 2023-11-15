@@ -24,23 +24,28 @@ moves:
             - text: With speed, agility, or precision
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
             - text: With charm, loyalty, or courage
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: With deception, stealth, or trickery
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
             - text: With expertise, insight, or observation
               method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 60
@@ -85,23 +90,28 @@ moves:
             - text: With speed, agility, or precision
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
             - text: With charm, loyalty, or courage
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: With aggressive action, forceful defense, strength, or endurance
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: With deception, stealth, or trickery
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
             - text: With expertise, insight, or observation
               method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 61
@@ -141,7 +151,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 62
@@ -167,13 +178,16 @@ moves:
           text: When you treat an injury or ailment...
           conditions:
             - roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
               method: player_choice
             - text: Mend your own wounds
               method: lowest
               roll_options:
-                - stat: iron
-                - stat: wits
+                - using: stat
+                  stat: iron
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 63
@@ -200,7 +214,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 63
@@ -273,8 +288,9 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: wits
-            # - method: enhance
+                - using: stat
+                  stat: wits
+            # - method: null
             #   text: If you are setting off from a community with which you share a bond
             #   add: 1
         source:
@@ -361,15 +377,18 @@ moves:
             - text: Charm, pacify, barter, or convince
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: Threaten or incite
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: Lie or swindle
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
         source:
           <<: *Source
           page: 69
@@ -403,7 +422,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 71
@@ -485,7 +505,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 73
@@ -539,7 +560,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 74
@@ -575,7 +597,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 75
@@ -657,15 +680,18 @@ moves:
             - text: Facing off against your foe
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: Moving into position against an unaware foe, or striking without warning
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
             - text: Ambushed
               method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 78
@@ -712,11 +738,13 @@ moves:
             - text: In close quarters
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: At range
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
         source:
           <<: *Source
           page: 78
@@ -744,11 +772,13 @@ moves:
             - text: Fight with them in close quarters
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: Exchange a volley at range, or shoot at an advancing foe
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
         source:
           <<: *Source
           page: 80
@@ -836,23 +866,28 @@ moves:
             - text: Fight at range, or using your speed and the terrain to your advantage
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
             - text: Fight depending on your courage, allies, or companions
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: Fight in close to overpower your opponents
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: Fight using trickery to befuddle your opponents
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
             - text: Fight using careful tactics to outsmart your opponents
               method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 84
@@ -895,7 +930,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
                 - using: condition_meter
                   condition_meter: health
         source:
@@ -937,7 +973,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 93
@@ -971,7 +1008,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
                 - using: asset_control
                   assets:
                     - '*/assets/companion/*'
@@ -1009,7 +1047,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
                 - using: condition_meter
                   condition_meter: spirit
         source:
@@ -1050,7 +1089,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 96
@@ -1114,7 +1154,8 @@ moves:
           conditions:
             - method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
         source:
           <<: *Source
           page: 98

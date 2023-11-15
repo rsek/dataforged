@@ -2,13 +2,13 @@ import { Type, type Static } from '@sinclair/typebox'
 import { Abstract, ID } from './common/index.js'
 import {
 	MoveActionRoll,
-	MoveActionRollEnhance,
+	MoveActionRollEnhancement,
 	MoveNoRoll,
-	MoveNoRollEnhance,
+	MoveNoRollEnhancement,
 	MoveProgressRoll,
-	MoveProgressRollEnhance,
+	MoveProgressRollEnhancement,
 	MoveSpecialTrack,
-	MoveSpecialTrackEnhance
+	MoveSpecialTrackEnhancement
 } from './moves/index.js'
 import { UnionOneOf } from '../../typebox/union-oneof.js'
 
@@ -28,24 +28,24 @@ export const Move = UnionOneOf(
 
 export type Move = Static<typeof Move>
 
-export const MoveEnhance = UnionOneOf(
+export const MoveEnhancement = UnionOneOf(
 	[
-		Type.Ref(MoveActionRollEnhance),
-		Type.Ref(MoveNoRollEnhance),
-		Type.Ref(MoveProgressRollEnhance),
-		Type.Ref(MoveSpecialTrackEnhance)
+		Type.Ref(MoveActionRollEnhancement),
+		Type.Ref(MoveNoRollEnhancement),
+		Type.Ref(MoveProgressRollEnhancement),
+		Type.Ref(MoveSpecialTrackEnhancement)
 	],
 	{
-		$id: '#/$defs/MoveEnhance',
-		title: 'Move Enhance'
+		$id: '#/$defs/MoveEnhancement',
+		title: 'Move enhancement'
 	}
 )
 
-export type MoveEnhance =
-	| MoveNoRollEnhance
-	| MoveActionRollEnhance
-	| MoveProgressRollEnhance
-	| MoveSpecialTrackEnhance
+export type MoveEnhancement =
+	| MoveNoRollEnhancement
+	| MoveActionRollEnhancement
+	| MoveProgressRollEnhancement
+	| MoveSpecialTrackEnhancement
 
 export const MoveCategory = Abstract.Collection(
 	Type.Ref(Move),

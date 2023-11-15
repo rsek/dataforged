@@ -113,21 +113,31 @@ moves:
         trigger:
           text: When you attempt something risky or react to an imminent threat...
           conditions:
-            - text: With speed, mobility, or agility
+            - method: player_choice
+              text: With speed, mobility, or agility
               roll_options:
-                - stat: edge
-            - text: With resolve, command, or sociability
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: With resolve, command, or sociability
               roll_options:
-                - stat: heart
-            - text: With strength, endurance, or aggression
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: With strength, endurance, or aggression
               roll_options:
-                - stat: iron
-            - text: With deception, stealth, or trickery
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: With deception, stealth, or trickery
               roll_options:
-                - stat: shadow
-            - text: With expertise, focus, or observation
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: With expertise, focus, or observation
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you attempt something risky or react to an imminent threat**, envision your action and roll. If you act...
 
@@ -158,21 +168,31 @@ moves:
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage...
           conditions:
-            - text: With speed, mobility, or agility
+            - method: player_choice
+              text: With speed, mobility, or agility
               roll_options:
-                - stat: edge
-            - text: With resolve, command, or sociability
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: With resolve, command, or sociability
               roll_options:
-                - stat: heart
-            - text: With strength, endurance, aggression
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: With strength, endurance, aggression
               roll_options:
-                - stat: iron
-            - text: With deception, stealth, or trickery
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: With deception, stealth, or trickery
               roll_options:
-                - stat: shadow
-            - text: With expertise, focus, or observation
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: With expertise, focus, or observation
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage**, envision your action and roll. If you act...
 
@@ -210,8 +230,10 @@ moves:
         trigger:
           text: When you search for clues, conduct an investigation, analyze evidence, or do research...
           conditions:
-            - roll_options:
-                - stat: wits
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: wits
         text: |-
           **When you search for clues, conduct an investigation, analyze evidence, or do research**, roll +wits.
 
@@ -236,15 +258,21 @@ moves:
         trigger:
           text: When you try to persuade someone or make them an offer...
           conditions:
-            - text: Charm, pacify, encourage, or barter
+            - method: player_choice
+              text: Charm, pacify, encourage, or barter
               roll_options:
-                - stat: heart
-            - text: Threaten or incite
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: Threaten or incite
               roll_options:
-                - stat: iron
-            - text: Lie or swindle
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Lie or swindle
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
         text: |-
           **When you try to persuade someone or make them an offer**, envision your approach. If you...
 
@@ -285,7 +313,8 @@ moves:
         trigger:
           text: When you check to see if you have a specific helpful item or resource...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: condition_meter
                   condition_meter: supply
         text: |-
@@ -331,8 +360,10 @@ moves:
         trigger:
           text: When you swear upon iron to complete a quest...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you swear upon iron to complete a quest**, write your vow and give it a rank. Then, roll +heart. If you swear this vow to a connection, add +1; if you share a bond, add +2.
 
@@ -442,8 +473,10 @@ moves:
         trigger:
           text: When you search out a new relationship or give focus to an existing relationship (not an ally or companion)...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you search out a new relationship or give focus to an existing relationship (not an ally or companion)**, roll +heart.
 
@@ -471,7 +504,8 @@ moves:
         trigger:
           text: When you reinforce your relationship with a connection...
           conditions:
-            - text: If you already share a bond with the connection
+            - method: player_choice
+              text: If you already share a bond with the connection
               roll_options:
                 - label: Troublesome
                   using: custom
@@ -520,8 +554,10 @@ moves:
         trigger:
           text: When your relationship with a connection is tested through conflict, betrayal, or circumstance...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When your relationship with a connection is tested through conflict, betrayal, or circumstance**, roll +heart. If you share a bond, add +1.
 
@@ -608,15 +644,21 @@ moves:
         trigger:
           text: When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site...
           conditions:
-            - text: Move at speed
+            - method: player_choice
+              text: Move at speed
               roll_options:
-                - stat: edge
-            - text: Keep under the radar
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: Keep under the radar
               roll_options:
-                - stat: shadow
-            - text: Stay vigilant
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Stay vigilant
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you trailblaze a route through perilous space, journey over hazardous terrain, or survey a mysterious site**, give the expedition a name and rank. Then, for each segment of the expedition, envision your approach. If you...
 
@@ -652,8 +694,10 @@ moves:
         trigger:
           text: When you divert from an expedition to examine a notable location...
           conditions:
-            - roll_options:
-                - stat: wits
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: wits
         text: |-
           **When you divert from an expedition to examine a notable location**, roll +wits.
 
@@ -758,7 +802,8 @@ moves:
         trigger:
           text: When you follow a known route through perilous space, across hazardous terrain, or within a mysterious site...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: condition_meter
                   condition_meter: supply
         text: |-
@@ -806,21 +851,31 @@ moves:
         trigger:
           text: When you initiate combat or are forced into a fight...
           conditions:
-            - text: On the move
+            - method: player_choice
+              text: On the move
               roll_options:
-                - stat: edge
-            - text: Facing off against your foe
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: Facing off against your foe
               roll_options:
-                - stat: heart
-            - text: In the thick of it at close quarters
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: In the thick of it at close quarters
               roll_options:
-                - stat: iron
-            - text: Preparing to act against an unaware foe
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Preparing to act against an unaware foe
               roll_options:
-                - stat: shadow
-            - text: Caught in a trap or sizing up the situation
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Caught in a trap or sizing up the situation
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you initiate combat or are forced into a fight**, envision your objective and give it a rank. If the combat includes discrete challenges or phases, set an objective with a rank for each.
 
@@ -858,21 +913,31 @@ moves:
         trigger:
           text: When you are in control and take action in a fight to reinforce your position or move toward an objective...
           conditions:
-            - text: In pursuit, fleeing, or maneuvering
+            - method: player_choice
+              text: In pursuit, fleeing, or maneuvering
               roll_options:
-                - stat: edge
-            - text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: By charging boldly into action, coming to the aid of others, negotiating, or commanding
               roll_options:
-                - stat: heart
-            - text: Gaining leverage with force, powering through, or making a threat
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: Gaining leverage with force, powering through, or making a threat
               roll_options:
-                - stat: iron
-            - text: Hiding, preparing an ambush, or misdirecting
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Hiding, preparing an ambush, or misdirecting
               roll_options:
-                - stat: shadow
-            - text: Coordinating a plan, studying a situation, or cleverly gaining leverage
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Coordinating a plan, studying a situation, or cleverly gaining leverage
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you are in control and take action in a fight to reinforce your position or move toward an objective**, envision your approach and roll. If you are...
 
@@ -915,21 +980,31 @@ moves:
         trigger:
           text: When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle...
           conditions:
-            - text: In pursuit, fleeing, dodging, getting back into position, or taking cover
+            - method: player_choice
+              text: In pursuit, fleeing, dodging, getting back into position, or taking cover
               roll_options:
-                - stat: edge
-            - text: Remaining stalwart against fear or temptation
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: Remaining stalwart against fear or temptation
               roll_options:
-                - stat: heart
-            - text: Blocking or diverting with force, or taking the hit
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: Blocking or diverting with force, or taking the hit
               roll_options:
-                - stat: iron
-            - text: Moving into hiding or creating a distraction
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Moving into hiding or creating a distraction
               roll_options:
-                - stat: shadow
-            - text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Changing the plan, finding a way out, or cleverly bypassing an obstacle
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you are in a bad spot and take action in a fight to avoid danger or overcome an obstacle**, envision your approach and roll. If you are...
 
@@ -960,12 +1035,16 @@ moves:
         trigger:
           text: When you are in control and assault a foe at close quarters, or when you attack at a distance...
           conditions:
-            - text: Assault a foe at close quarters
+            - method: player_choice
+              text: Assault a foe at close quarters
               roll_options:
-                - stat: iron
-            - text: Attack at a distance
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Attack at a distance
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
         text: |-
           **When you are in control and assault a foe at close quarters**, roll +iron; **when you attack at a distance**, roll +edge.
 
@@ -990,12 +1069,16 @@ moves:
         trigger:
           text: When you are in a bad spot and fight back against a foe at close quarters, or when you exchange fire at a distance...
           conditions:
-            - text: Fight back against a foe at close quarters
+            - method: player_choice
+              text: Fight back against a foe at close quarters
               roll_options:
-                - stat: iron
-            - text: Exchange fire at a distance
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Exchange fire at a distance
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
         text: |-
           **When you are in a bad spot and fight back against a foe at close quarters**, roll +iron; **when you exchange fire at a distance**, roll +edge.
 
@@ -1068,21 +1151,31 @@ moves:
         trigger:
           text: When you fight a battle and it happens in a blur...
           conditions:
-            - text: At range, or using your speed and the environment to your advantage
+            - method: player_choice
+              text: At range, or using your speed and the environment to your advantage
               roll_options:
-                - stat: edge
-            - text: Depending on your courage, leadership, or companions
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: Depending on your courage, leadership, or companions
               roll_options:
-                - stat: heart
-            - text: In close to overpower your foe
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: In close to overpower your foe
               roll_options:
-                - stat: iron
-            - text: Using trickery to befuddle your foe
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Using trickery to befuddle your foe
               roll_options:
-                - stat: shadow
-            - text: Using careful tactics to outsmart your foe
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Using careful tactics to outsmart your foe
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you fight a battle and it happens in a blur**, envision your objective and roll. If you primarily...
 
@@ -1141,7 +1234,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
                 - using: condition_meter
                   condition_meter: health
         oracles:
@@ -1186,7 +1280,8 @@ moves:
           conditions:
             - method: highest
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
                 - using: condition_meter
                   condition_meter: spirit
         oracles:
@@ -1229,7 +1324,8 @@ moves:
         trigger:
           text: When your companion faces physical hardship...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: asset_control
                   assets:
                     - '*/assets/companion/*'
@@ -1277,7 +1373,8 @@ moves:
         trigger:
           text: When your vehicle faces a damaging situation or environment...
           conditions:
-            - roll_options:
+            - method: player_choice
+              roll_options:
                 - using: asset_control
                   assets:
                     - '*/assets/command_vehicle/*'
@@ -1344,8 +1441,10 @@ moves:
         trigger:
           text: When you spend time recovering within a community...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you spend time recovering within a community**, roll +heart.
 
@@ -1377,20 +1476,28 @@ moves:
         trigger:
           text: When you receive medical care or provide treatment...
           conditions:
-            - text: Receive treatment from someone (not an ally)
+            - method: player_choice
+              text: Receive treatment from someone (not an ally)
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: Mend your own wounds
               method: lowest
               roll_options:
-                - stat: iron
-                - stat: wits
-            - text: Obtain treatment for a companion
+                - using: stat
+                  stat: iron
+                - using: stat
+                  stat: wits
+            - method: player_choice
+              text: Obtain treatment for a companion
               roll_options:
-                - stat: heart
-            - text: Provide care
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: Provide care
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you receive medical care or provide treatment**, envision the situation and roll. If you...
 
@@ -1423,8 +1530,10 @@ moves:
         trigger:
           text: When you socialize, share intimacy, or find a moment of peace...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you socialize, share intimacy, or find a moment of peace**, roll +heart.
 
@@ -1452,18 +1561,26 @@ moves:
         trigger:
           text: When you attempt to bolster your readiness...
           conditions:
-            - text: Barter or make an appeal
+            - method: player_choice
+              text: Barter or make an appeal
               roll_options:
-                - stat: heart
-            - text: Threaten or seize
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: Threaten or seize
               roll_options:
-                - stat: iron
-            - text: Steal or swindle
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: Steal or swindle
               roll_options:
-                - stat: shadow
-            - text: Scavenge or craft
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: Scavenge or craft
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you attempt to bolster your readiness**, envision the opportunity and your approach. If you...
 
@@ -1506,10 +1623,13 @@ moves:
         trigger:
           text: When you make repairs to your vehicles, modules, mechanical companions, or other devices...
           conditions:
-            - text: Make your own repairs, or direct a companion to make repairs
+            - method: player_choice
+              text: Make your own repairs, or direct a companion to make repairs
               roll_options:
-                - stat: wits
-            - text: Obtain repairs from someone (not an ally)
+                - using: stat
+                  stat: wits
+            - method: player_choice
+              text: Obtain repairs from someone (not an ally)
               roll_options:
                 - using: condition_meter
                   condition_meter: supply
@@ -1602,8 +1722,10 @@ moves:
         trigger:
           text: When you are brought to the brink of death with a chance for recovery or redemption...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you encounter a situation where death is an immediate and unavoidable outcome**, you are dead. **When you are instead brought to the brink of death with a chance for recovery or redemption**, roll +heart.
 
@@ -1635,8 +1757,10 @@ moves:
         trigger:
           text: When you are brought to the brink of desolation...
           conditions:
-            - roll_options:
-                - stat: heart
+            - method: player_choice
+              roll_options:
+                - using: stat
+                  stat: heart
         text: |-
           **When you are brought to the brink of desolation**, roll +heart.
 
@@ -1917,21 +2041,31 @@ moves:
         trigger:
           text: When you attempt something risky or react to an imminent threat within a scene challenge...
           conditions:
-            - text: With speed, mobility, or agility
+            - method: player_choice
+              text: With speed, mobility, or agility
               roll_options:
-                - stat: edge
-            - text: With resolve, command, or sociability
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: With resolve, command, or sociability
               roll_options:
-                - stat: heart
-            - text: With strength, endurance, or aggression
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: With strength, endurance, or aggression
               roll_options:
-                - stat: iron
-            - text: With deception, stealth, or trickery
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: With deception, stealth, or trickery
               roll_options:
-                - stat: shadow
-            - text: With expertise, focus, or observation
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: With expertise, focus, or observation
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you attempt something risky or react to an imminent threat within a scene challenge**, envision your action and roll. If you act...
 
@@ -1967,21 +2101,31 @@ moves:
         trigger:
           text: When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge...
           conditions:
-            - text: With speed, mobility, or agility
+            - method: player_choice
+              text: With speed, mobility, or agility
               roll_options:
-                - stat: edge
-            - text: With resolve, command, or sociability
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: With resolve, command, or sociability
               roll_options:
-                - stat: heart
-            - text: With strength, endurance, aggression
+                - using: stat
+                  stat: heart
+            - method: player_choice
+              text: With strength, endurance, aggression
               roll_options:
-                - stat: iron
-            - text: With deception, stealth, or trickery
+                - using: stat
+                  stat: iron
+            - method: player_choice
+              text: With deception, stealth, or trickery
               roll_options:
-                - stat: shadow
-            - text: With expertise, focus, or observation
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: With expertise, focus, or observation
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         text: |-
           **When you assess a situation, make preparations, or attempt to gain leverage within a scene challenge**, envision your action and roll. If you act...
 

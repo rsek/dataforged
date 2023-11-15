@@ -41,15 +41,21 @@ moves:
         trigger:
           text: When you traverse an area within a perilous site...
           conditions:
-            - text: With haste
+            - method: player_choice
+              text: With haste
               roll_options:
-                - stat: edge
-            - text: With stealth or trickery
+                - using: stat
+                  stat: edge
+            - method: player_choice
+              text: With stealth or trickery
               roll_options:
-                - stat: shadow
-            - text: With observation, intuition, or expertise
+                - using: stat
+                  stat: shadow
+            - method: player_choice
+              text: With observation, intuition, or expertise
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 21
@@ -184,23 +190,28 @@ moves:
             - text: Find the fastest way out
               method: player_choice
               roll_options:
-                - stat: edge
+                - using: stat
+                  stat: edge
             - text: Steel yourself against the horrors of this place
               method: player_choice
               roll_options:
-                - stat: heart
+                - using: stat
+                  stat: heart
             - text: Fight your way out
               method: player_choice
               roll_options:
-                - stat: iron
+                - using: stat
+                  stat: iron
             - text: Keep out of sight
               method: player_choice
               roll_options:
-                - stat: shadow
+                - using: stat
+                  stat: shadow
             - text: Retrace your steps or locate an alternate path
               method: player_choice
               roll_options:
-                - stat: wits
+                - using: stat
+                  stat: wits
         source:
           <<: *Source
           page: 42

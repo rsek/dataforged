@@ -1,10 +1,10 @@
 import fs from 'fs-extra'
-import jsYaml from 'js-yaml'
 import yaml from 'yaml'
 import { merge } from 'lodash-es'
 import path from 'path'
-import { default as Prettier, default as prettier } from 'prettier'
+import { default as Prettier } from 'prettier'
 import { Simplify } from 'type-fest'
+import { log } from '../utils/logger.js'
 
 const space = '\t'
 const encoding = 'utf8'
@@ -17,32 +17,21 @@ export async function readSource(filePath: string) {
 	switch (path.extname(filePath)) {
 		case '.yaml':
 		case '.yml':
-			return await nuReadYAML(filePath)
+			return await readYAML(filePath)
 		case '.json':
 			return await fs.readJSON(filePath, { encoding })
 		default:
 			throw new Error(`Unrecognized file extension in "${filePath}"`)
 	}
 }
-
 export async function readYAML(
-	filePath: string,
-	options: jsYaml.LoadOptions = {}
-) {
-	const yamlData = jsYaml.load(
-		await fs.readFile(filePath, { encoding }),
-		options
-	)
-	return yamlData
-}
-
-export async function nuReadYAML(
 	filePath: string,
 	options: YAMLOptions = {
 		// ensures that dates are serialized as strings rather than Date objects (which prevents AJV from validating them)
 		schema: 'core',
 		merge: true,
-		maxAliasCount: 1000
+		maxAliasCount: 1000,
+		logLevel: 'debug'
 	}
 ) {
 	const str = await fs.readFile(filePath, { encoding })
@@ -72,9 +61,9 @@ export async function writeJSON(
 }
 export async function getPrettierOptions(
 	filepath: string
-): Promise<prettier.Options> {
-	const defaultConfig = (await prettier.resolveConfig(filepath)) ?? {}
-	const jsonOverrides: prettier.Options = { filepath, parser: 'json' }
+): Promise<Prettier.Options> {
+	const defaultConfig = (await Prettier.resolveConfig(filepath)) ?? {}
+	const jsonOverrides: Prettier.Options = { filepath, parser: 'json' }
 	const prettierOptions = merge({}, defaultConfig, jsonOverrides)
 	return prettierOptions
 }

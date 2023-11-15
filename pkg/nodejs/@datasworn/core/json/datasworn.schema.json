@@ -437,7 +437,7 @@
 				},
 				"license": {
 					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "string",
 							"format": "uri"
@@ -1155,51 +1155,30 @@
 		},
 		"ActionRollOption": {
 			"title": "ActionRollOption",
-			"allOf": [
+			"anyOf": [
 				{
-					"type": "object",
-					"required": ["using"],
-					"properties": {
-						"using": {
-							"default": "stat",
-							"enum": [
-								"stat",
-								"condition_meter",
-								"asset_control",
-								"asset_option",
-								"attached_asset_meter",
-								"custom"
-							]
-						}
-					}
+					"$ref": "#/$defs/RollOptionStat"
 				},
 				{
-					"anyOf": [
-						{
-							"$ref": "#/$defs/RollOptionStat"
-						},
-						{
-							"$ref": "#/$defs/RollOptionConditionMeter"
-						},
-						{
-							"$ref": "#/$defs/RollOptionAssetControlField"
-						},
-						{
-							"$ref": "#/$defs/RollOptionAssetOptionField"
-						},
-						{
-							"$ref": "#/$defs/RollOptionAttachedAssetRef"
-						},
-						{
-							"$ref": "#/$defs/RollOptionCustom"
-						}
-					]
+					"$ref": "#/$defs/RollOptionConditionMeter"
+				},
+				{
+					"$ref": "#/$defs/RollOptionAssetControlField"
+				},
+				{
+					"$ref": "#/$defs/RollOptionAssetOptionField"
+				},
+				{
+					"$ref": "#/$defs/RollOptionAttachedAssetRef"
+				},
+				{
+					"$ref": "#/$defs/RollOptionCustom"
 				}
 			]
 		},
 		"Move": {
 			"title": "Move",
-			"anyOf": [
+			"oneOf": [
 				{
 					"$ref": "#/$defs/MoveActionRoll"
 				},
@@ -1348,7 +1327,7 @@
 		},
 		"MoveEnhance": {
 			"title": "Move Enhance",
-			"anyOf": [
+			"oneOf": [
 				{
 					"$ref": "#/$defs/MoveActionRollEnhance"
 				},
@@ -1710,7 +1689,7 @@
 				"assets": {
 					"description": "Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1727,7 +1706,8 @@
 					"description": "The key of the asset control.",
 					"examples": ["health", "integrity"]
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RollOptionAssetOptionField": {
 			"title": "RollOptionAssetOptionField",
@@ -1741,7 +1721,7 @@
 				"assets": {
 					"description": "Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1757,7 +1737,8 @@
 					"$ref": "#/$defs/DictKey",
 					"description": "The key of the asset option."
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RollOptionAttachedAssetRef": {
 			"title": "RollOptionAttachedAssetRef",
@@ -1768,7 +1749,8 @@
 					"type": "string",
 					"const": "attached_asset_meter"
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RollOptionConditionMeter": {
 			"title": "RollOptionConditionMeter",
@@ -1777,13 +1759,13 @@
 			"properties": {
 				"using": {
 					"type": "string",
-					"const": "condition_meter",
-					"default": "condition_meter"
+					"const": "condition_meter"
 				},
 				"condition_meter": {
 					"$ref": "#/$defs/PlayerConditionMeter"
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RollOptionCustom": {
 			"title": "RollOptionCustom",
@@ -1801,28 +1783,8 @@
 					"type": "string",
 					"const": "custom"
 				}
-			}
-		},
-		"RollOptionRef": {
-			"title": "RollOptionRef",
-			"type": "object",
-			"required": ["using", "ref"],
-			"properties": {
-				"using": {
-					"type": "string",
-					"const": "ref"
-				},
-				"ref": {
-					"anyOf": [
-						{
-							"$ref": "#/$defs/AssetControlFieldIDWildcard"
-						},
-						{
-							"$ref": "#/$defs/AssetOptionFieldIDWildcard"
-						}
-					]
-				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"RollOptionStat": {
 			"title": "RollOptionStat",
@@ -1831,13 +1793,13 @@
 			"properties": {
 				"using": {
 					"type": "string",
-					"const": "stat",
-					"default": "stat"
+					"const": "stat"
 				},
 				"stat": {
 					"$ref": "#/$defs/PlayerStat"
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"SpecialTrackRollMethod": {
 			"title": "SpecialTrackRollMethod",
@@ -1900,7 +1862,7 @@
 		"TriggerActionRollConditionEnhance": {
 			"title": "TriggerActionRollConditionEnhance",
 			"type": "object",
-			"required": ["method", "roll_options"],
+			"required": ["roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -1909,23 +1871,10 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
-				"method": {
-					"default": "enhance",
-					"anyOf": [
-						{
-							"type": "string",
-							"const": "enhance"
-						},
-						{
-							"$ref": "#/$defs/ActionRollMethod",
-							"default": "player_choice"
-						}
-					]
-				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -2086,7 +2035,7 @@
 		"TriggerProgressRollConditionEnhance": {
 			"title": "TriggerProgressRollConditionEnhance",
 			"type": "object",
-			"required": ["method", "roll_options"],
+			"required": ["roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -2095,23 +2044,10 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
-				"method": {
-					"default": "enhance",
-					"anyOf": [
-						{
-							"type": "string",
-							"const": "enhance"
-						},
-						{
-							"$ref": "#/$defs/ProgressRollMethod",
-							"default": "progress_roll"
-						}
-					]
-				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -2186,7 +2122,7 @@
 			"title": "TriggerSpecialTrackConditionEnhance",
 			"type": "object",
 			"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).",
-			"required": ["method", "roll_options"],
+			"required": ["roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -2195,22 +2131,10 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
-				"method": {
-					"default": "enhance",
-					"anyOf": [
-						{
-							"type": "string",
-							"const": "enhance"
-						},
-						{
-							"$ref": "#/$defs/SpecialTrackRollMethod"
-						}
-					]
-				},
 				"roll_options": {
 					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
 					"default": null,
-					"anyOf": [
+					"oneOf": [
 						{
 							"type": "null"
 						},
@@ -3423,7 +3347,7 @@
 				},
 				"extra_card": {
 					"description": "An additional theme or domain card, for use with optional rules in Ironsworn: Delve.",
-					"anyOf": [
+					"oneOf": [
 						{
 							"$ref": "#/$defs/DelveSiteThemeID"
 						},

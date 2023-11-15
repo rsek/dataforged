@@ -26,9 +26,9 @@
 					"color": "#9aa3ad",
 					"options": {
 						"name": {
-							"id": "starforged/assets/command_vehicle/starship/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/command_vehicle/starship/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -62,7 +62,7 @@
 										"conditions": [
 											{
 												"text": "In your starship (dangerous or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -98,34 +98,34 @@
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/command_vehicle/starship/controls/integrity",
+							"max": 5,
+							"value": 5,
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 5,
-							"value": 5,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								},
-								"cursed": {
-									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/cursed",
-									"label": "cursed",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/battered"
+								},
+								"cursed": {
+									"label": "cursed",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/command_vehicle/starship/controls/integrity/controls/cursed"
+								}
+							},
+							"id": "starforged/assets/command_vehicle/starship/controls/integrity"
 						}
 					},
 					"source": {
@@ -182,7 +182,7 @@
 										"conditions": [
 											{
 												"text": "In your vehicle",
-												"method": "enhance",
+												"method": "player_choice",
 												"roll_options": [
 													{
 														"using": "stat",
@@ -206,8 +206,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to maneuver)",
-												"method": "enhance",
+												"text": "In your vehicle and you choose to maneuver (before moving)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -219,8 +219,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In your vehicle (and you choose to boost)",
-												"method": "enhance",
+												"text": "In your vehicle and you choose to boost (before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -239,7 +239,7 @@
 										"conditions": [
 											{
 												"text": "When you make a desperate move to pursue a foe, escape a threat, or get in range (in your vehicle)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -250,12 +250,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/engine_upgrade/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/engine_upgrade/controls/broken"
 						}
 					},
 					"source": {
@@ -294,7 +294,7 @@
 										"conditions": [
 											{
 												"text": "You make a move to barter or negotiate, and you have at least 1 cargo",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -313,7 +313,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move to outrun a threat and have at least 1 cargo",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -324,12 +324,16 @@
 					],
 					"controls": {
 						"cargo": {
-							"id": "starforged/assets/module/expanded_hold/controls/cargo",
-							"label": "cargo",
 							"field_type": "condition_meter",
-							"min": 0,
+							"label": "cargo",
 							"max": 3,
-							"value": 0
+							"value": 0,
+							"min": 0,
+							"moves": {
+								"recover": ["starforged/moves/recover/resupply"],
+								"suffer": ["starforged/moves/suffer/sacrifice_resources"]
+							},
+							"id": "starforged/assets/module/expanded_hold/controls/cargo"
 						}
 					},
 					"source": {
@@ -378,12 +382,12 @@
 												"method": "highest",
 												"roll_options": [
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													},
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -430,7 +434,7 @@
 										"conditions": [
 											{
 												"text": "By firing the grappler",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -441,12 +445,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/grappler/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/grappler/controls/broken"
 						}
 					},
 					"source": {
@@ -481,7 +485,7 @@
 										"conditions": [
 											{
 												"text": "When you aim your cannons and use them to [Strike](id:starforged/moves/combat/strike)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -501,7 +505,7 @@
 										"conditions": [
 											{
 												"text": "Once per fight, when you [Clash](id:starforged/moves/combat/clash) by committing to an all-or-nothing exchange of fire",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -515,6 +519,7 @@
 							"text": "When you [Compel](id:starforged/moves/adventure/compel), [Enter the Fray](id:starforged/moves/combat/enter_the_fray), or [Gain Ground](id:starforged/moves/combat/gain_ground) by bringing your cannons to bear and sending a promise of violence to your foe over communication channels, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/adventure/compel",
 										"starforged/moves/combat/enter_the_fray",
@@ -524,24 +529,23 @@
 										"conditions": [
 											{
 												"text": "By bringing your cannons to bear and sending a promise of violence to your foe over communication channels",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						}
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/heavy_cannons/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/heavy_cannons/controls/broken"
 						}
 					},
 					"source": {
@@ -578,7 +582,7 @@
 										"conditions": [
 											{
 												"text": "On the first leg of your journey (dangerous or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -612,8 +616,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -647,7 +651,7 @@
 										"conditions": [
 											{
 												"text": "To oppose an invader within your vessel",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -658,12 +662,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/internal_refit/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/internal_refit/controls/broken"
 						}
 					},
 					"source": {
@@ -698,7 +702,7 @@
 										"conditions": [
 											{
 												"text": "When you use your medbay to [Heal](id:starforged/moves/recover/heal) yourself or another patient",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -722,7 +726,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -742,7 +746,7 @@
 										"conditions": [
 											{
 												"text": "By performing a risky medical procedure",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -755,7 +759,7 @@
 										"conditions": [
 											{
 												"text": "Through an autopsy or medical examination",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -766,12 +770,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/medbay/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/medbay/controls/broken"
 						}
 					},
 					"source": {
@@ -809,7 +813,7 @@
 										"conditions": [
 											{
 												"text": "With a missile attack",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -822,7 +826,7 @@
 										"conditions": [
 											{
 												"text": "In a place where your missiles can be replenished",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -836,17 +840,17 @@
 							"text": "When you have at least 1 ammo and [Gain Ground](id:starforged/moves/combat/gain_ground) by locking a missile on target, add +1 and take +1 momentum on a hit.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/combat/gain_ground"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By locking a missile on target (when you have at least 1 ammo)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -862,7 +866,7 @@
 										"conditions": [
 											{
 												"text": "When you have at least 3 ammo and [Take Decisive Action](id:starforged/moves/combat/take_decisive_action) by unleashing all of your missiles",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -873,12 +877,12 @@
 					],
 					"controls": {
 						"ammo": {
-							"id": "starforged/assets/module/missile_array/controls/ammo",
-							"label": "ammo",
 							"field_type": "condition_meter",
-							"min": 0,
+							"label": "ammo",
 							"max": 5,
-							"value": 5
+							"value": 5,
+							"min": 0,
+							"id": "starforged/assets/module/missile_array/controls/ammo"
 						}
 					},
 					"source": {
@@ -900,9 +904,9 @@
 					"color": "#7f5a90",
 					"options": {
 						"name": {
-							"id": "starforged/assets/module/overseer/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/module/overseer/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -926,8 +930,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -962,8 +966,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -975,12 +979,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/overseer/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/overseer/controls/broken"
 						}
 					},
 					"source": {
@@ -1009,17 +1013,17 @@
 							"text": "Your vehicle is clad in iron. When you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1. On a strong hit, take +1 momentum.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/suffer/withstand_damage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "To your vehicle with a Reinforced Hull",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -1035,7 +1039,7 @@
 										"conditions": [
 											{
 												"text": "Against a foe who knows your reputation",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1049,29 +1053,29 @@
 							"text": "When you [React Under Fire](id:starforged/moves/combat/react_under_fire) by letting your reinforced hull take the hit, add +1 and take +1 momentum on a hit. On a strong hit with a match, take another +1 momentum as you surge through the chaos and put yourself in perfect position. On a miss, [Pay the Price](id:starforged/moves/fate/pay_the_price) by marking this module as broken.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/combat/react_under_fire"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By letting your reinforced hull take the hit",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						}
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/reinforced_hull/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/reinforced_hull/controls/broken"
 						}
 					},
 					"source": {
@@ -1100,6 +1104,7 @@
 							"text": "When you use your lab to [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) through careful analysis or experimentation, add +1 and take +1 momentum on a hit.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/*/secure_an_advantage",
 										"starforged/moves/adventure/gather_information"
@@ -1108,12 +1113,11 @@
 										"conditions": [
 											{
 												"text": "Through careful analysis or experimentation (in your research lab)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -1129,7 +1133,7 @@
 										"conditions": [
 											{
 												"text": "To isolate or secure a hazardous specimen",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1149,7 +1153,7 @@
 										"conditions": [
 											{
 												"text": "To undertake a long-term research project (extreme or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1162,7 +1166,7 @@
 										"conditions": [
 											{
 												"text": "When you devote extended time to the long-term research project (extreme or greater) in your lab",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1175,7 +1179,7 @@
 										"conditions": [
 											{
 												"text": "To undertake a long-term research project (extreme or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1186,12 +1190,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/research_lab/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/research_lab/controls/broken"
 						}
 					},
 					"source": {
@@ -1228,7 +1232,7 @@
 										"conditions": [
 											{
 												"text": "In your vehicle",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1247,17 +1251,17 @@
 							"text": "When you [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) or [Gather Information](id:starforged/moves/adventure/gather_information) by scanning your vehicle's surroundings or analyzing a nearby object, choose one and take +1 momentum on a hit.\n\n  * Manual scan: Add +1\n  * Automated scan: Instead of rolling the action die, make it the value of your vehicle's integrity",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/*/secure_an_advantage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing a manual scan)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								},
 								{
 									"enhances": ["starforged/moves/adventure/gather_information"],
@@ -1266,7 +1270,7 @@
 										"conditions": [
 											{
 												"text": "By scanning your vehicle's surroundings or analyzing a nearby object (and choosing an automated scan)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1289,8 +1293,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -1307,8 +1311,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -1320,12 +1324,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/sensor_array/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/sensor_array/controls/broken"
 						}
 					},
 					"source": {
@@ -1374,12 +1378,12 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													},
 													{
-														"using": "attached_asset_meter",
-														"assets": null
+														"using": "attached_asset_control",
+														"control": "integrity"
 													}
 												]
 											}
@@ -1439,7 +1443,7 @@
 										"conditions": [
 											{
 												"text": "In your vehicle",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1450,17 +1454,17 @@
 					],
 					"controls": {
 						"shields": {
-							"id": "starforged/assets/module/shields/controls/shields",
 							"label": "shields",
 							"field_type": "condition_meter",
-							"min": 0,
 							"max": 4,
 							"value": 0,
+							"min": 0,
 							"moves": {
 								"recover": [
 									"starforged/assets/module/shields/abilities/0/moves/raise_shields"
 								]
-							}
+							},
+							"id": "starforged/assets/module/shields/controls/shields"
 						}
 					},
 					"source": {
@@ -1494,7 +1498,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move against a specific foe or threat to avoid detection (in your vehicle)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1507,7 +1511,7 @@
 										"conditions": [
 											{
 												"text": "By ambushing an unaware foe (in your vehicle)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1529,7 +1533,7 @@
 										"conditions": [
 											{
 												"text": "When you travel stealthily (in your vehicle)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1588,12 +1592,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/stealth_tech/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/stealth_tech/controls/broken"
 						}
 					},
 					"source": {
@@ -1628,7 +1632,7 @@
 										"conditions": [
 											{
 												"text": "When you [Repair](id:starforged/moves/recover/repair) a battered support vehicle",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1658,7 +1662,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move to launch from or land on your command vehicle in a perilous situation or environment",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1669,12 +1673,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/vehicle_bay/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/vehicle_bay/controls/broken"
 						}
 					},
 					"source": {
@@ -1703,17 +1707,17 @@
 							"text": "When you [Repair](id:starforged/moves/recover/repair) in the field, add +1.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/recover/repair"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In the field (with your workshop)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -1728,7 +1732,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move in your workshop to craft, modify, deactivate, or disassemble a device or machine",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1748,24 +1752,24 @@
 										"conditions": [
 											{
 												"text": "To undertake a long-term engineering project (extreme or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
 									}
 								},
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/*/face_danger"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you devote extended time to your long-term engineering project (extreme or greater) in your workshop",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								},
 								{
 									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
@@ -1774,7 +1778,7 @@
 										"conditions": [
 											{
 												"text": "To undertake a long-term engineering project (extreme or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1785,12 +1789,12 @@
 					],
 					"controls": {
 						"broken": {
-							"id": "starforged/assets/module/workshop/controls/broken",
-							"label": "broken",
 							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
 							"min": 0,
 							"value": false,
-							"disables_asset": true
+							"id": "starforged/assets/module/workshop/controls/broken"
 						}
 					},
 					"source": {
@@ -1832,9 +1836,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/exosuit/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/exosuit/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -1851,7 +1855,7 @@
 										"conditions": [
 											{
 												"text": "When you make a forceful, damaging, or resistant move in your Exosuit",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1870,7 +1874,7 @@
 										"conditions": [
 											{
 												"text": "You use your Exosuit's thrusters to maneuver in zero-g, make thrust-assisted leaps, or drop to a surface from altitude",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1890,7 +1894,7 @@
 										"conditions": [
 											{
 												"text": "To your Exosuit",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -1901,26 +1905,26 @@
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/exosuit/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 6,
-							"value": 6,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/exosuit/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/exosuit/controls/integrity/controls/battered"
+								}
+							},
+							"max": 6,
+							"value": 6,
+							"id": "starforged/assets/support_vehicle/exosuit/controls/integrity"
 						}
 					},
 					"source": {
@@ -1942,9 +1946,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/hoverbike/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/hoverbike/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -1964,7 +1968,7 @@
 										"conditions": [
 											{
 												"text": "On your hoverbike",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -1988,7 +1992,7 @@
 										"conditions": [
 											{
 												"text": "When you fire your hoverbike's afterburner and make a move to perform a risky maneuver",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2004,26 +2008,26 @@
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 3,
-							"value": 3,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity/controls/battered"
+								}
+							},
+							"max": 3,
+							"value": 3,
+							"id": "starforged/assets/support_vehicle/hoverbike/controls/integrity"
 						}
 					},
 					"source": {
@@ -2045,9 +2049,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/rover/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/rover/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -2059,6 +2063,7 @@
 							"text": "Your unarmed rover provides protected planetside transport. When you [Undertake an Expedition](id:starforged/moves/exploration/undertake_an_expedition) or [Set a Course](id:starforged/moves/exploration/set_a_course), add +1. When you [Finish an Expedition](id:starforged/moves/exploration/finish_an_expedition) in your rover, you may reroll one challenge die.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/exploration/undertake_an_expedition",
 										"starforged/moves/exploration/set_a_course"
@@ -2067,12 +2072,11 @@
 										"conditions": [
 											{
 												"text": "In your rover",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								},
 								{
 									"enhances": [
@@ -2083,7 +2087,7 @@
 										"conditions": [
 											{
 												"text": "In your rover",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2134,26 +2138,26 @@
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/rover/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 5,
-							"value": 5,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/rover/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/rover/controls/integrity/controls/battered"
+								}
+							},
+							"max": 5,
+							"value": 5,
+							"id": "starforged/assets/support_vehicle/rover/controls/integrity"
 						}
 					},
 					"source": {
@@ -2175,9 +2179,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/service_pod/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/service_pod/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -2189,16 +2193,16 @@
 							"text": "Your unarmed utility vehicle houses one pilot for short-range, low gravity operations. When you make a move using the pod’s manipulator arms to perform a delicate or forceful task, add +1 and take +1 momentum on a hit.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you make a move using the pod’s manipulator arms to perform a delicate or forceful task",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -2243,7 +2247,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move while controlling the pod and push its capabilities to the limit",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2254,26 +2258,26 @@
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/service_pod/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/service_pod/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/service_pod/controls/integrity/controls/battered"
+								}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/support_vehicle/service_pod/controls/integrity"
 						}
 					},
 					"source": {
@@ -2295,9 +2299,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/shuttle/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/shuttle/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -2314,6 +2318,7 @@
 							"text": "When you [Face Danger](id:starforged/moves/adventure/face_danger) or [React Under Fire](id:starforged/moves/combat/react_under_fire) to navigate through hazardous skies, avoid obstacles, or evade an attack, add +1 and take +1 momentum on a hit.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/*/face_danger",
 										"starforged/moves/combat/react_under_fire"
@@ -2322,12 +2327,11 @@
 										"conditions": [
 											{
 												"text": "To navigate through hazardous skies, avoid obstacles, or evade an attack",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -2337,43 +2341,43 @@
 							"text": "Your shuttle is sealed against high pressure environments, can travel underwater, and is more resistant to damage; when you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), add +1.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/suffer/withstand_damage"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "To your shuttle",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						}
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/shuttle/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/shuttle/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/shuttle/controls/integrity/controls/battered"
+								}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/support_vehicle/shuttle/controls/integrity"
 						}
 					},
 					"source": {
@@ -2395,9 +2399,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/skiff/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/skiff/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -2464,31 +2468,46 @@
 						{
 							"id": "starforged/assets/support_vehicle/skiff/abilities/2",
 							"enabled": false,
-							"text": "Your skiff is fully stocked. When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear), add +1 and take +1 momentum on a hit."
+							"text": "Your skiff is fully stocked. When you [Check Your Gear](id:starforged/moves/adventure/check_your_gear), add +1 and take +1 momentum on a hit.",
+							"enhance_moves": [
+								{
+									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/adventure/check_your_gear"],
+									"trigger": {
+										"conditions": [
+											{
+												"text": "In your skiff",
+												"method": null,
+												"roll_options": null
+											}
+										]
+									}
+								}
+							]
 						}
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/skiff/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/skiff/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/skiff/controls/integrity/controls/battered"
+								}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/support_vehicle/skiff/controls/integrity"
 						}
 					},
 					"source": {
@@ -2510,9 +2529,9 @@
 					"color": "#495790",
 					"options": {
 						"name": {
-							"id": "starforged/assets/support_vehicle/snub_fighter/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/support_vehicle/snub_fighter/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -2550,6 +2569,7 @@
 							"text": "When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash), add +1. On a strong hit with a match, mark progress.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/combat/strike",
 										"starforged/moves/combat/clash"
@@ -2558,12 +2578,11 @@
 										"conditions": [
 											{
 												"text": "In your snub fighter",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -2573,37 +2592,37 @@
 							"text": "When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.",
 							"controls": {
 								"victory_marks": {
-									"id": "starforged/assets/support_vehicle/snub_fighter/abilities/2/controls/victory_marks",
 									"label": "Victory marks",
 									"field_type": "counter",
 									"min": 0,
-									"value": 0
+									"value": 0,
+									"id": "starforged/assets/support_vehicle/snub_fighter/abilities/2/controls/victory_marks"
 								}
 							}
 						}
 					],
 					"controls": {
 						"integrity": {
-							"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity",
 							"label": "integrity",
 							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
-							"controls": {
-								"battered": {
-									"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity/controls/battered",
-									"label": "battered",
-									"field_type": "checkbox",
-									"value": false,
-									"disables_asset": false,
-									"is_impact": true
-								}
-							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/withstand_damage"]
-							}
+							},
+							"controls": {
+								"battered": {
+									"label": "battered",
+									"field_type": "checkbox",
+									"is_impact": true,
+									"value": false,
+									"disables_asset": false,
+									"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity/controls/battered"
+								}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/support_vehicle/snub_fighter/controls/integrity"
 						}
 					},
 					"source": {
@@ -2661,7 +2680,7 @@
 										"conditions": [
 											{
 												"text": "By guiding your vehicle through a hazard or out of harm’s way",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2675,17 +2694,17 @@
 							"text": "When you [Gain Ground](id:starforged/moves/combat/gain_ground) by maneuvering your vehicle against a foe, add +1. If you score a strong hit with a 4, 5, or 6 on the action die, you may put yourself in firing position. If you do, set aside the action die or note its value. If you or an ally [Strike](id:starforged/moves/combat/strike) using the vehicle’s weapons, preset your action die with that value. This persists until you fail to score a strong hit on that move, or until you make another move which changes your vehicle’s position.",
 							"enhance_moves": [
 								{
+									"roll_type": "action_roll",
 									"enhances": ["starforged/moves/combat/gain_ground"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By maneuvering your vehicle against a foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "action_roll"
+									}
 								}
 							]
 						},
@@ -2767,8 +2786,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													}
 												]
 											}
@@ -2827,7 +2846,7 @@
 										"conditions": [
 											{
 												"text": "Using a specialized projectile such as a zip line, explosive, or electromagnetic disrupter",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2838,17 +2857,17 @@
 					],
 					"controls": {
 						"ammo": {
-							"id": "starforged/assets/path/archer/controls/ammo",
-							"label": "ammo",
 							"field_type": "condition_meter",
-							"min": 0,
+							"label": "ammo",
 							"max": 6,
+							"min": 0,
 							"value": 6,
 							"moves": {
 								"recover": [
 									"starforged/assets/path/archer/abilities/0/moves/craft_projectiles"
 								]
-							}
+							},
+							"id": "starforged/assets/path/archer/controls/ammo"
 						}
 					},
 					"source": {
@@ -2888,7 +2907,7 @@
 										"conditions": [
 											{
 												"text": "While putting trust in your armor’s strength against physical attacks or impact",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2913,7 +2932,7 @@
 										"conditions": [
 											{
 												"text": "By letting your armor take the hit",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2922,6 +2941,16 @@
 							]
 						}
 					],
+					"controls": {
+						"broken": {
+							"field_type": "card_flip",
+							"label": "broken",
+							"disables_asset": true,
+							"min": 0,
+							"value": false,
+							"id": "starforged/assets/path/armored/controls/broken"
+						}
+					},
 					"source": {
 						"title": "Ironsworn: Starforged Assets",
 						"date": "2022-05-06",
@@ -2953,7 +2982,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move to craft an artistic work, present an artistic gift or performance, or leave your artistic mark on an item or location",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -2976,7 +3005,7 @@
 										"conditions": [
 											{
 												"text": "By studying the aesthetics of a being or culture",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3011,24 +3040,24 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "edge",
-														"using": "stat"
+														"using": "stat",
+														"stat": "edge"
 													},
 													{
-														"stat": "heart",
-														"using": "stat"
+														"using": "stat",
+														"stat": "heart"
 													},
 													{
-														"stat": "iron",
-														"using": "stat"
+														"using": "stat",
+														"stat": "iron"
 													},
 													{
-														"stat": "shadow",
-														"using": "stat"
+														"using": "stat",
+														"stat": "shadow"
 													},
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													}
 												]
 											}
@@ -3070,14 +3099,14 @@
 					"color": "#3f7faa",
 					"options": {
 						"one": {
-							"id": "starforged/assets/path/augmented/options/one",
 							"label": "One",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/path/augmented/options/one"
 						},
 						"two": {
-							"id": "starforged/assets/path/augmented/options/two",
 							"label": "Two",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/path/augmented/options/two"
 						}
 					},
 					"count_as_impact": false,
@@ -3094,7 +3123,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move directly aided by your augment",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3141,9 +3170,9 @@
 					"color": "#3f7faa",
 					"options": {
 						"ideology": {
-							"id": "starforged/assets/path/bannersworn/options/ideology",
 							"label": "Ideology",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/path/bannersworn/options/ideology"
 						}
 					},
 					"count_as_impact": false,
@@ -3161,7 +3190,7 @@
 										"conditions": [
 											{
 												"text": "In service to your bound clan, faction, or creed",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3184,7 +3213,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3192,16 +3221,16 @@
 								},
 								{
 									"enhances": ["starforged/moves/connection/forge_a_bond"],
+									"roll_type": "progress_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "With anyone of your ideology",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "progress_roll"
+									}
 								}
 							]
 						},
@@ -3216,7 +3245,7 @@
 										"conditions": [
 											{
 												"text": "When you make a progress move in direct service to your ideology",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3261,7 +3290,7 @@
 										"conditions": [
 											{
 												"text": "When you wield a bladed weapon in close quarters",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3281,7 +3310,7 @@
 										"conditions": [
 											{
 												"text": "By moving into close quarters against your foe (and choosing to charge)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -3299,7 +3328,7 @@
 										"conditions": [
 											{
 												"text": "By moving into close quarters against your foe (and choosing to evade)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -3317,18 +3346,18 @@
 							"enabled": false,
 							"options": {
 								"name": {
-									"id": "starforged/assets/path/blademaster/abilities/2/options/name",
 									"label": "Name",
-									"field_type": "text"
+									"field_type": "text",
+									"id": "starforged/assets/path/blademaster/abilities/2/options/name"
 								}
 							},
 							"text": "You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.",
 							"controls": {
-								"oathbound_blade": {
-									"id": "starforged/assets/path/blademaster/abilities/2/controls/oathbound_blade",
-									"label": "Oathbound blade",
+								"oathbound": {
+									"label": "Oathbound",
 									"field_type": "checkbox",
-									"value": false
+									"value": false,
+									"id": "starforged/assets/path/blademaster/abilities/2/controls/oathbound"
 								}
 							},
 							"enhance_moves": [
@@ -3338,7 +3367,7 @@
 										"conditions": [
 											{
 												"text": "By binding your promise to your iconic blade",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3380,7 +3409,7 @@
 										"conditions": [
 											{
 												"text": "When you take a bounty contract and [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) to see it done",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3388,16 +3417,16 @@
 								},
 								{
 									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
+									"roll_type": "progress_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "On a hunt",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "progress_roll"
+									}
 								}
 							]
 						},
@@ -3413,7 +3442,7 @@
 										"conditions": [
 											{
 												"text": "Related to a bounty",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3433,7 +3462,7 @@
 										"conditions": [
 											{
 												"text": "In a fight against a bounty target or their agents",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3475,7 +3504,7 @@
 										"conditions": [
 											{
 												"text": "By attempting to disarm, trip, shove, grapple, or stun your foe (while fighting unarmed or with a close quarters weapon)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3494,8 +3523,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Aggressively",
-												"method": "enhance",
+												"text": "Aggressively, in close quarters (choose before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3507,8 +3536,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "Defensively",
-												"method": "enhance",
+												"text": "Defensively, in close quarters (choose before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3528,7 +3557,7 @@
 										"conditions": [
 											{
 												"text": "Already positioned in close quarters against your foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3569,7 +3598,7 @@
 										"conditions": [
 											{
 												"text": "To transport and protect something precious",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3596,7 +3625,7 @@
 										"conditions": [
 											{
 												"text": "To an unbonded connection by completing a courier mission",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3633,12 +3662,12 @@
 					],
 					"controls": {
 						"safety": {
-							"id": "starforged/assets/path/courier/controls/safety",
-							"label": "safety",
 							"field_type": "condition_meter",
-							"min": 0,
+							"label": "safety",
 							"max": 5,
-							"value": 0
+							"value": 0,
+							"min": 0,
+							"id": "starforged/assets/path/courier/controls/safety"
 						}
 					},
 					"source": {
@@ -3672,7 +3701,7 @@
 										"conditions": [
 											{
 												"text": "To attack, destroy, or sabotage by deploying or triggering an explosive device",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3691,7 +3720,7 @@
 										"conditions": [
 											{
 												"text": "To craft, modify, or disarm an explosive device, or if you threaten or provoke by arming an explosive device",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3711,7 +3740,7 @@
 										"conditions": [
 											{
 												"text": "When your momentum is at its max, and you reset momentum (before rolling) to trigger an explosive device",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3739,12 +3768,11 @@
 					"color": "#3f7faa",
 					"options": {
 						"name": {
-							"id": "starforged/assets/path/devotant/options/name",
 							"label": "name",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/path/devotant/options/name"
 						},
 						"linked_stat": {
-							"id": "starforged/assets/path/devotant/options/linked_stat",
 							"label": "Linked stat",
 							"field_type": "select_stat",
 							"choices": {
@@ -3768,7 +3796,8 @@
 									"label": "Wits",
 									"value": "wits"
 								}
-							}
+							},
+							"id": "starforged/assets/path/devotant/options/linked_stat"
 						}
 					},
 					"count_as_impact": false,
@@ -3834,7 +3863,7 @@
 										"conditions": [
 											{
 												"text": "On a divine quest (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3901,7 +3930,7 @@
 										"conditions": [
 											{
 												"text": "To resolve a dispute, negotiate an agreement, or gather support",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3914,7 +3943,7 @@
 										"conditions": [
 											{
 												"text": "On a diplomatic mission (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -3933,7 +3962,7 @@
 										"conditions": [
 											{
 												"text": "To defuse, reason, or negotiate",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4006,8 +4035,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "heart",
-														"using": "stat"
+														"using": "stat",
+														"stat": "heart"
 													}
 												]
 											}
@@ -4124,7 +4153,7 @@
 										"conditions": [
 											{
 												"text": "By studying a newfound place from a safe position",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4207,7 +4236,7 @@
 										"conditions": [
 											{
 												"text": "When you make any progress move directly related to your background vow",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4322,12 +4351,12 @@
 					],
 					"controls": {
 						"fire": {
-							"id": "starforged/assets/path/firebrand/controls/fire",
-							"label": "fire",
 							"field_type": "condition_meter",
-							"min": 0,
+							"label": "fire",
 							"max": 5,
-							"value": 0
+							"value": 0,
+							"min": 0,
+							"id": "starforged/assets/path/firebrand/controls/fire"
 						}
 					},
 					"source": {
@@ -4356,12 +4385,12 @@
 							"text": "You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.",
 							"controls": {
 								"clock": {
-									"id": "starforged/assets/path/fugitive/abilities/0/controls/clock",
 									"label": "Notable foe or force tracks you down",
 									"field_type": "clock",
-									"min": 0,
 									"max": 4,
-									"value": 0
+									"value": 0,
+									"min": 0,
+									"id": "starforged/assets/path/fugitive/abilities/0/controls/clock"
 								}
 							}
 						},
@@ -4376,7 +4405,7 @@
 										"conditions": [
 											{
 												"text": "By hiding, concealing your identity, or fleeing from a pursuer",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4421,7 +4450,7 @@
 										"conditions": [
 											{
 												"text": "To craft, repair, repurpose, or modify equipment or technology",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4441,7 +4470,7 @@
 										"conditions": [
 											{
 												"text": "By studying or disassembling a machine or device",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4461,7 +4490,7 @@
 										"conditions": [
 											{
 												"text": "By spending sufficient time (a couple of hours or more) to assemble or enhance a device for a powerful but limited role",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4502,8 +4531,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to pin them down",
-												"method": "enhance",
+												"text": "With a heavy ranged personal weapon, and choose to pin them down (before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4515,8 +4544,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "If you [Strike](id:starforged/moves/combat/strike) with a heavy ranged personal weapon and choose to make them hurt",
-												"method": "enhance",
+												"text": "With a heavy ranged personal weapon, and choose to make them hurt (before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4536,7 +4565,7 @@
 										"conditions": [
 											{
 												"text": "By emptying your gun as you [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4549,9 +4578,9 @@
 							"enabled": false,
 							"options": {
 								"name": {
-									"id": "starforged/assets/path/gunner/abilities/2/options/name",
 									"label": "Name",
-									"field_type": "text"
+									"field_type": "text",
+									"id": "starforged/assets/path/gunner/abilities/2/options/name"
 								}
 							},
 							"text": "Give your favorite gun a name. When you [Clash](id:starforged/moves/combat/clash) with it, add +1. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) or [Endure Stress](id:starforged/moves/suffer/endure_stress) while wielding it, add +1 and take +1 momentum on a hit.",
@@ -4563,7 +4592,7 @@
 										"conditions": [
 											{
 												"text": "With your favorite gun",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4579,7 +4608,7 @@
 										"conditions": [
 											{
 												"text": "While wielding your favorite gun",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4621,7 +4650,7 @@
 										"conditions": [
 											{
 												"text": "By facing off against your foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -4631,7 +4660,7 @@
 											},
 											{
 												"text": "By preparing to act without tipping off your foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -4659,7 +4688,7 @@
 										"conditions": [
 											{
 												"text": "By moving into cover",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4682,7 +4711,7 @@
 										"conditions": [
 											{
 												"text": "With the threat of violence by holding someone at gunpoint",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4722,7 +4751,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move to call upon the insight of the spirit that haunts you",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4742,7 +4771,7 @@
 										"conditions": [
 											{
 												"text": "Guided by the spirit that haunts you",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4788,7 +4817,7 @@
 										"conditions": [
 											{
 												"text": "Give medical care to yourself",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4801,7 +4830,7 @@
 										"conditions": [
 											{
 												"text": "Give medical care to another character",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4821,7 +4850,7 @@
 										"conditions": [
 											{
 												"text": "By studying medical evidence or biological remains",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4866,7 +4895,7 @@
 										"conditions": [
 											{
 												"text": "To break into a secure site, infiltrate a protected area, or hack or manipulate a secure system",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4889,7 +4918,7 @@
 										"conditions": [
 											{
 												"text": "To establish a false identity",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4909,7 +4938,7 @@
 										"conditions": [
 											{
 												"text": "For a device with a specific function to aid in infiltration, espionage, or sabotage",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -4949,7 +4978,7 @@
 										"conditions": [
 											{
 												"text": "When you are in a risky situation and draw on your kinetic powers to make a move",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5008,17 +5037,13 @@
 							"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning, add +1. On a strong hit, any allies who are present take +1 momentum.",
 							"enhance_moves": [
 								{
-									"enhances": [
-										"starforged/moves/adventure/aid_your_ally",
-										"starforged/moves/*/secure_an_advantage",
-										"starforged/moves/combat/gain_ground"
-									],
+									"enhances": ["starforged/moves/adventure/aid_your_ally"],
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally) through leadership, coordination, or planning",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5038,7 +5063,21 @@
 										"conditions": [
 											{
 												"text": "By coordinating with your team as they wade into the fight",
-												"method": "enhance",
+												"method": null,
+												"roll_options": [
+													{
+														"using": "stat",
+														"stat": "heart"
+													}
+												]
+											},
+											{
+												"text": "Coordinated by a Leader who scores a strong hit on Enter the Fray (+heart)",
+												"by": {
+													"ally": true,
+													"player": false
+												},
+												"method": "strong_hit",
 												"roll_options": null
 											}
 										]
@@ -5057,7 +5096,7 @@
 										"conditions": [
 											{
 												"text": "To influence someone (not an ally) through leadership",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5129,20 +5168,17 @@
 													{
 														"using": "custom",
 														"label": "Minutes",
-														"value": 4,
-														"assets": null
+														"value": 4
 													},
 													{
 														"using": "custom",
 														"label": "Hours",
-														"value": 3,
-														"assets": null
+														"value": 3
 													},
 													{
 														"using": "custom",
 														"label": "Days",
-														"value": 2,
-														"assets": null
+														"value": 2
 													}
 												]
 											}
@@ -5202,11 +5238,15 @@
 										"conditions": [
 											{
 												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
 									}
+								},
+								{
+									"enhances": ["starforged/moves/quest/reach_a_milestone"],
+									"roll_type": "no_roll"
 								},
 								{
 									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
@@ -5215,7 +5255,7 @@
 										"conditions": [
 											{
 												"text": "To recover valuable knowledge or an extraordinary relic (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5234,7 +5274,7 @@
 										"conditions": [
 											{
 												"text": "To conduct extended research or study",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5257,7 +5297,7 @@
 										"conditions": [
 											{
 												"text": "When you recall esoteric knowledge",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5292,21 +5332,8 @@
 							"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally), add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally. On a strong hit with a match, envision how this moment marks a breakthrough or milestone in your relationship; both of you may mark 1 tick on your bonds legacy track.",
 							"enhance_moves": [
 								{
-									"enhances": [
-										"starforged/moves/adventure/aid_your_ally",
-										"starforged/moves/*/secure_an_advantage",
-										"starforged/moves/combat/gain_ground"
-									],
-									"roll_type": "action_roll",
-									"trigger": {
-										"conditions": [
-											{
-												"text": "When you [Aid Your Ally](id:starforged/moves/adventure/aid_your_ally)",
-												"method": "enhance",
-												"roll_options": null
-											}
-										]
-									}
+									"roll_type": "no_roll",
+									"enhances": ["starforged/moves/adventure/aid_your_ally"]
 								}
 							]
 						},
@@ -5330,7 +5357,7 @@
 													"ally": true,
 													"player": false
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5371,7 +5398,7 @@
 										"conditions": [
 											{
 												"text": "To wage war or defend others from war in exchange for payment or promises",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5379,16 +5406,16 @@
 								},
 								{
 									"enhances": ["starforged/moves/quest/fulfill_your_vow"],
+									"roll_type": "progress_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "To wage war or defend others from war in exchange for payment or promises",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
-									},
-									"roll_type": "progress_roll"
+									}
 								}
 							]
 						},
@@ -5404,7 +5431,7 @@
 										"conditions": [
 											{
 												"text": "By searching out or making contact with someone in need of your services",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5424,7 +5451,7 @@
 										"conditions": [
 											{
 												"text": "In the midst of a fight",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5437,7 +5464,7 @@
 										"conditions": [
 											{
 												"text": "By looting the field of battle in the aftermath of a fight",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5481,7 +5508,7 @@
 										"conditions": [
 											{
 												"text": "Using your knowledge of lifeforms or planetside ecosystems",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5500,7 +5527,7 @@
 										"conditions": [
 											{
 												"text": "By taking a risky action to pacify, avoid, or outwit a creature",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5520,7 +5547,7 @@
 										"conditions": [
 											{
 												"text": "To scavenge resources in a life-bearing natural environment",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5533,7 +5560,7 @@
 										"conditions": [
 											{
 												"text": "Against an environmental threat",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5585,7 +5612,7 @@
 										"conditions": [
 											{
 												"text": "By charting the way forward",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5598,7 +5625,7 @@
 										"conditions": [
 											{
 												"text": "To find a path around a hazard",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5611,7 +5638,7 @@
 										"conditions": [
 											{
 												"text": "About a location by studying your charts",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5636,7 +5663,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5676,8 +5703,8 @@
 									"trigger": {
 										"conditions": [
 											{
-												"text": "In isolation, attempting find solace in fond memories or a hopeful wish.",
-												"method": "enhance",
+												"text": "In isolation, attempting find solace in fond memories or a hopeful wish (decide before rolling)",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5711,8 +5738,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													}
 												]
 											}
@@ -5749,7 +5776,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5790,7 +5817,7 @@
 										"conditions": [
 											{
 												"text": "By scavenging a wreck, ruin, or abandoned site",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5810,7 +5837,7 @@
 										"conditions": [
 											{
 												"text": "To cobble together an ad hoc tool, device, or weapon",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5878,7 +5905,7 @@
 										"conditions": [
 											{
 												"text": "By lying, bluffing, stealing, or cheating",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -5985,7 +6012,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6001,7 +6028,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6041,7 +6068,7 @@
 										"conditions": [
 											{
 												"text": "When you are veiled and make a move to ambush, hide, or sneak (not in darkness)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6053,7 +6080,7 @@
 										"conditions": [
 											{
 												"text": "When you are veiled and make a move to ambush, hide, or sneak (in darkness)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6087,8 +6114,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "shadow",
-														"using": "stat"
+														"using": "stat",
+														"stat": "shadow"
 													}
 												]
 											}
@@ -6147,7 +6174,7 @@
 										"conditions": [
 											{
 												"text": "To investigate, track, or stalk an inhuman foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6167,7 +6194,7 @@
 										"conditions": [
 											{
 												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6180,7 +6207,7 @@
 										"conditions": [
 											{
 												"text": "To slay an inhuman foe in service to a community (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6200,7 +6227,7 @@
 										"conditions": [
 											{
 												"text": "With an objective to slay an inhuman foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6241,7 +6268,7 @@
 										"conditions": [
 											{
 												"text": "To solve a murder, disappearance, theft, or other mystery (no greater than formidable)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6260,7 +6287,7 @@
 										"conditions": [
 											{
 												"text": "To avoid detection as you put a person or place under surveillance",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6336,8 +6363,8 @@
 												"method": "player_choice",
 												"roll_options": [
 													{
-														"stat": "wits",
-														"using": "stat"
+														"using": "stat",
+														"stat": "wits"
 													}
 												]
 											}
@@ -6396,7 +6423,7 @@
 										"conditions": [
 											{
 												"text": "By studying a distant situation through your rifle scope",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6409,7 +6436,7 @@
 										"conditions": [
 											{
 												"text": "By taking careful aim",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6449,7 +6476,7 @@
 										"conditions": [
 											{
 												"text": "To configure, optimize, hack, or disrupt an electronic system",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6474,13 +6501,16 @@
 							"text": "When you [Face Danger](id:starforged/moves/adventure/face_danger) or [Secure an Advantage](id:starforged/moves/adventure/secure_an_advantage) by creating a computer program to perform a specific, complex function, add +2 and take +1 momentum on a hit. One time only, when you trigger the program to fulfill its purpose, reroll any dice.",
 							"enhance_moves": [
 								{
-									"enhances": ["starforged/moves/*/face_danger"],
+									"enhances": [
+										"starforged/moves/*/face_danger",
+										"starforged/moves/*/secure_an_advantage"
+									],
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "By creating a computer program to perform a specific, complex function",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6548,7 +6578,7 @@
 										"conditions": [
 											{
 												"text": "With a merchant or supplier",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6561,7 +6591,7 @@
 										"conditions": [
 											{
 												"text": "By bartering with a merchant or supplier connection",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6584,7 +6614,7 @@
 													"ally": true,
 													"player": true
 												},
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6612,9 +6642,9 @@
 					"color": "#3f7faa",
 					"options": {
 						"last_of": {
-							"id": "starforged/assets/path/vestige/options/last_of",
 							"label": "Last of",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/path/vestige/options/last_of"
 						}
 					},
 					"count_as_impact": false,
@@ -6649,7 +6679,7 @@
 										"conditions": [
 											{
 												"text": "Through a tale, performance, or ceremony",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6662,9 +6692,9 @@
 							"enabled": false,
 							"options": {
 								"relic": {
-									"id": "starforged/assets/path/vestige/abilities/2/options/relic",
 									"label": "Relic",
-									"field_type": "text"
+									"field_type": "text",
+									"id": "starforged/assets/path/vestige/abilities/2/options/relic"
 								}
 							},
 							"text": "You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.",
@@ -6675,7 +6705,7 @@
 										"conditions": [
 											{
 												"text": "When you make a move directly aided by the relic",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6735,7 +6765,7 @@
 										"conditions": [
 											{
 												"text": "By recounting or recalling a hard-won lesson from your battlefield experiences",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6784,7 +6814,7 @@
 										"conditions": [
 											{
 												"text": "Within a spacebound community",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6797,7 +6827,7 @@
 										"conditions": [
 											{
 												"text": "Within a spacebound community",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6816,7 +6846,7 @@
 										"conditions": [
 											{
 												"text": "To perform an agile physical maneuver (such as leaping or evading) in a low gravity environment",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6857,7 +6887,7 @@
 										"conditions": [
 											{
 												"text": "In personal combat",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6890,7 +6920,7 @@
 										"conditions": [
 											{
 												"text": "Using a personal weapon which has limited ammo or a single-use mode",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -6963,9 +6993,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/banshee/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/banshee/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7011,7 +7041,7 @@
 										"conditions": [
 											{
 												"text": "To detect a threat or avoid a fight (while astride your banshee)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7025,13 +7055,13 @@
 							"text": "When you make a combat move and roll a 1 on your action die, the banshee senses the danger and emits a powerful scream to alert you or distract your foes. You may reroll that die.",
 							"enhance_moves": [
 								{
-									"enhances": ["starforged/moves/combat/*"],
+									"enhances": ["*/moves/combat/*"],
 									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "When aided by your banshee",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7042,26 +7072,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/banshee/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/banshee/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/banshee/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/companion/banshee/controls/health"
 						}
 					},
 					"source": {
@@ -7083,9 +7113,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/combat_bot/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/combat_bot/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7103,7 +7133,7 @@
 										"conditions": [
 											{
 												"text": "Aided by your combat bot",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7116,7 +7146,7 @@
 										"conditions": [
 											{
 												"text": "Aided by your combat bot",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7182,26 +7212,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/combat_bot/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 5,
-							"value": 5,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/combat_bot/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/combat_bot/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 5,
+							"value": 5,
+							"id": "starforged/assets/companion/combat_bot/controls/health"
 						}
 					},
 					"source": {
@@ -7223,9 +7253,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/glowcat/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/glowcat/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7243,7 +7273,7 @@
 										"conditions": [
 											{
 												"text": "By studying your glowcat’s reactions in a charged interaction",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7263,7 +7293,7 @@
 										"conditions": [
 											{
 												"text": "When your glowcat’s reactions help guide your approach",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7283,7 +7313,7 @@
 										"conditions": [
 											{
 												"text": "In the company of the glowcat",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7294,26 +7324,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/glowcat/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 3,
-							"value": 3,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/glowcat/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/glowcat/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 3,
+							"value": 3,
+							"id": "starforged/assets/companion/glowcat/controls/health"
 						}
 					},
 					"source": {
@@ -7335,9 +7365,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/protocol_bot/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/protocol_bot/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7354,7 +7384,7 @@
 										"conditions": [
 											{
 												"text": "When you are aided by the bot as you make a move in a formal social interaction",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7378,7 +7408,7 @@
 										"conditions": [
 											{
 												"text": "In a charged interaction",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7389,26 +7419,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/protocol_bot/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 3,
-							"value": 3,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/protocol_bot/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/protocol_bot/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 3,
+							"value": 3,
+							"id": "starforged/assets/companion/protocol_bot/controls/health"
 						}
 					},
 					"source": {
@@ -7430,9 +7460,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/rockhorn/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/rockhorn/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7506,26 +7536,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/rockhorn/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 5,
-							"value": 5,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/rockhorn/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/rockhorn/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 5,
+							"value": 5,
+							"id": "starforged/assets/companion/rockhorn/controls/health"
 						}
 					},
 					"source": {
@@ -7547,14 +7577,14 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/sidekick/options/name",
 							"label": "Name",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/companion/sidekick/options/name"
 						},
 						"expertise": {
-							"id": "starforged/assets/companion/sidekick/options/expertise",
 							"label": "Expertise",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/companion/sidekick/options/expertise"
 						}
 					},
 					"count_as_impact": false,
@@ -7571,7 +7601,7 @@
 										"conditions": [
 											{
 												"text": "Directly aided by your sidekick's expertise (outside of a fight)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7591,7 +7621,7 @@
 										"conditions": [
 											{
 												"text": "With the support of your sidekick",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7604,7 +7634,7 @@
 										"conditions": [
 											{
 												"text": "Together with your sidekick",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7644,26 +7674,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/sidekick/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/sidekick/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/sidekick/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/companion/sidekick/controls/health"
 						}
 					},
 					"source": {
@@ -7685,9 +7715,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/sprite/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/sprite/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7704,7 +7734,7 @@
 										"conditions": [
 											{
 												"text": "By sending your sprite to perform trickery (such as creating a distraction, sneaking into a protected location, or stealing an object)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7727,7 +7757,7 @@
 										"conditions": [
 											{
 												"text": "By remotely observing a situation from your sprite's perspective",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7743,26 +7773,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/sprite/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 2,
-							"value": 2,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/sprite/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/sprite/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 2,
+							"value": 2,
+							"id": "starforged/assets/companion/sprite/controls/health"
 						}
 					},
 					"source": {
@@ -7784,9 +7814,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/survey_bot/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/survey_bot/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7806,7 +7836,7 @@
 										"conditions": [
 											{
 												"text": "Overland or within a site (assisted by your survey bot)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",
@@ -7895,26 +7925,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/survey_bot/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 3,
-							"value": 3,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/survey_bot/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/survey_bot/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 3,
+							"value": 3,
+							"id": "starforged/assets/companion/survey_bot/controls/health"
 						}
 					},
 					"source": {
@@ -7936,9 +7966,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/symbiote/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/symbiote/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -7955,7 +7985,7 @@
 										"conditions": [
 											{
 												"text": "Make an aggressive move while giving yourself to the symbiote's power",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -7988,26 +8018,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/symbiote/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 2,
-							"value": 2,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/symbiote/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/symbiote/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
-								"recover": ["starforged/moves/recover/heal"],
+								"recover": ["starforged/moves/suffer/endure_stress"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 2,
+							"value": 2,
+							"id": "starforged/assets/companion/symbiote/controls/health"
 						}
 					},
 					"source": {
@@ -8029,9 +8059,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/utility_bot/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/utility_bot/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -8074,7 +8104,7 @@
 										"conditions": [
 											{
 												"text": "Aided by the bot",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8111,26 +8141,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/utility_bot/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/utility_bot/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/utility_bot/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/repair"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/companion/utility_bot/controls/health"
 						}
 					},
 					"source": {
@@ -8152,9 +8182,9 @@
 					"color": "#3d8b8a",
 					"options": {
 						"name": {
-							"id": "starforged/assets/companion/voidglider/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/companion/voidglider/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -8174,7 +8204,7 @@
 										"conditions": [
 											{
 												"text": "On a spaceborne journey as your voidglider helps guide the way",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8235,26 +8265,26 @@
 					],
 					"controls": {
 						"health": {
-							"id": "starforged/assets/companion/voidglider/controls/health",
 							"label": "health",
-							"field_type": "condition_meter",
 							"min": 0,
-							"max": 4,
-							"value": 4,
+							"field_type": "condition_meter",
 							"controls": {
 								"out_of_action": {
-									"id": "starforged/assets/companion/voidglider/controls/health/controls/out_of_action",
 									"label": "Out of action",
 									"field_type": "checkbox",
-									"value": false,
 									"disables_asset": true,
-									"is_impact": false
+									"value": false,
+									"is_impact": false,
+									"id": "starforged/assets/companion/voidglider/controls/health/controls/out_of_action"
 								}
 							},
 							"moves": {
 								"recover": ["starforged/moves/recover/heal"],
 								"suffer": ["starforged/moves/suffer/companion_takes_a_hit"]
-							}
+							},
+							"max": 4,
+							"value": 4,
+							"id": "starforged/assets/companion/voidglider/controls/health"
 						}
 					},
 					"source": {
@@ -8296,9 +8326,9 @@
 					"color": "#40834f",
 					"options": {
 						"bond_mate": {
-							"id": "starforged/assets/deed/bonded/options/bond_mate",
 							"label": "Bond-mate",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/deed/bonded/options/bond_mate"
 						}
 					},
 					"count_as_impact": false,
@@ -8317,36 +8347,36 @@
 										"conditions": [
 											{
 												"text": "At your bond-mate's home",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
 									}
 								},
 								{
-									"enhances": ["starforged/moves/recover/hearten"],
 									"roll_type": "action_roll",
+									"enhances": ["starforged/moves/recover/hearten"],
 									"trigger": {
 										"conditions": [
 											{
 												"text": "In your bond-mate's presence",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
 									}
 								},
 								{
+									"roll_type": "action_roll",
 									"enhances": [
 										"starforged/moves/connection/test_your_relationship",
 										"starforged/moves/connection/develop_your_relationship"
 									],
-									"roll_type": "action_roll",
 									"trigger": {
 										"conditions": [
 											{
 												"text": "With your bond-mate",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8366,7 +8396,7 @@
 										"conditions": [
 											{
 												"text": "Back to your bond-mate's location",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8404,9 +8434,9 @@
 					"color": "#40834f",
 					"options": {
 						"name": {
-							"id": "starforged/assets/deed/homesteader/options/name",
+							"field_type": "text",
 							"label": "Name",
-							"field_type": "text"
+							"id": "starforged/assets/deed/homesteader/options/name"
 						}
 					},
 					"count_as_impact": false,
@@ -8425,7 +8455,7 @@
 										"conditions": [
 											{
 												"text": "In service to your home (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8438,7 +8468,7 @@
 										"conditions": [
 											{
 												"text": "In service to your home (formidable or greater)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8458,7 +8488,7 @@
 										"conditions": [
 											{
 												"text": "In your home (and you don't linger)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8491,7 +8521,7 @@
 										"conditions": [
 											{
 												"text": "For home",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8519,9 +8549,9 @@
 					"color": "#40834f",
 					"options": {
 						"identifier": {
-							"id": "starforged/assets/deed/marked/options/identifier",
 							"label": "Identifier",
-							"field_type": "text"
+							"field_type": "text",
+							"id": "starforged/assets/deed/marked/options/identifier"
 						}
 					},
 					"count_as_impact": false,
@@ -8543,7 +8573,7 @@
 										"conditions": [
 											{
 												"text": "Among those who would know your reputation",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8557,12 +8587,12 @@
 							"text": "When you risk your reputation to overcome a miss, reroll any dice. If you score a miss again, fill one segment of a six-segment clock to represent the stain on your reputation. When the clock is filled, discard this asset.",
 							"controls": {
 								"clock": {
-									"id": "starforged/assets/deed/marked/abilities/1/controls/clock",
 									"label": "Stained reputation",
 									"field_type": "clock",
-									"min": 0,
 									"max": 6,
-									"value": 0
+									"value": 0,
+									"min": 0,
+									"id": "starforged/assets/deed/marked/abilities/1/controls/clock"
 								}
 							},
 							"enhance_moves": [
@@ -8583,7 +8613,7 @@
 										"conditions": [
 											{
 												"text": "Through intimidation or command (once per fight)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8625,7 +8655,7 @@
 										"conditions": [
 											{
 												"text": "To redeem yourself (extreme or greater, one time only)",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8652,7 +8682,7 @@
 										"conditions": [
 											{
 												"text": "By reaffirming your commitment to your marked vow",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8672,7 +8702,7 @@
 										"conditions": [
 											{
 												"text": "On your marked quest",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8717,7 +8747,7 @@
 										"conditions": [
 											{
 												"text": "When you are at 0 health",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8737,7 +8767,7 @@
 										"conditions": [
 											{
 												"text": "By bringing death to a foe",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8804,7 +8834,7 @@
 										"conditions": [
 											{
 												"text": "When you are haunted by past experiences",
-												"method": "enhance",
+												"method": null,
 												"roll_options": null
 											}
 										]
@@ -8902,7 +8932,7 @@
 									"trigger": {
 										"conditions": [
 											{
-												"method": "enhance",
+												"method": null,
 												"roll_options": [
 													{
 														"using": "stat",

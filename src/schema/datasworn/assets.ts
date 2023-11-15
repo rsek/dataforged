@@ -8,44 +8,14 @@ import {
 	Kind,
 	type TUnsafe
 } from '@sinclair/typebox'
-import { startCase } from 'lodash-es'
 import { Localize, ID, Metadata, Inputs, Abstract } from './common/index.js'
 import { Dictionary } from './common/abstract.js'
 import { AssetID } from './common/id.js'
 import { Label } from './common/localize.js'
-import { pascalCase } from './common/utils.js'
 import * as Moves from './moves.js'
+import { PolymorphicWithID } from './common/utils.js'
 
 const $idSelectFieldAssetState = '#/$defs/SelectFieldAssetState'
-
-function AssetField<
-	TFieldID extends TString,
-	TFieldType extends TObject | TRef<TObject> | TUnsafe<any>
->(
-	name: string,
-	fieldDFID: TString,
-	fieldTypes: TFieldType[],
-	options: ObjectOptions = {}
-) {
-	return Type.Unsafe<
-		Static<
-			TFieldType & {
-				id: TFieldID
-			}
-		>
-	>({
-		type: 'object',
-		$id: `#/$defs/${pascalCase(name)}`,
-		title: startCase(name),
-		anyOf: fieldTypes.map((field) =>
-			field[Kind] === 'Object' ? Type.Ref(field) : field
-		),
-		properties: {
-			id: Type.Ref(fieldDFID)
-		},
-		...options
-	})
-}
 
 const isImpact = Type.Boolean({
 	default: false,
@@ -84,46 +54,52 @@ export const AssetCardFlipField = Type.Composite(
 	}
 )
 
-export const AssetConditionMeterControlField = AssetField(
+export const AssetConditionMeterControlField = PolymorphicWithID(
 	'AssetConditionMeterControlField',
-	ID.AssetConditionMeterControlFieldID,
-	[AssetCheckboxField]
+	Type.Ref(ID.AssetConditionMeterControlFieldID),
+	[AssetCheckboxField].map((schema) => Type.Ref(schema))
 )
 
 export const AssetConditionMeter = Type.Object(
 	{
 		...Inputs.Meter.properties,
 		id: Type.Ref(ID.AssetControlFieldID),
-		field_type: Type.Literal('condition_meter', { default: 'condition_meter' }),
+		field_type: Type.Literal('condition_meter'),
 		label: Type.Ref(Label),
 		moves: Type.Optional(
 			Type.Object(
 				{
 					suffer: Type.Optional(
-						Type.Array(Type.Ref(ID.MoveIDWildcard), {
-							description:
-								"The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.",
-							examples: [
-								['classic/moves/suffer/companion_endure_harm'],
-								['starforged/moves/suffer/companion_takes_a_hit'],
-								['starforged/moves/suffer/withstand_damage']
-							]
-						})
+						Type.Array(
+							Type.Ref(ID.MoveIDWildcard, {
+								examples: [
+									'classic/moves/suffer/companion_endure_harm',
+									'starforged/moves/suffer/companion_takes_a_hit',
+									'starforged/moves/suffer/withstand_damage'
+								]
+							}),
+							{
+								description:
+									'The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.'
+							}
+						)
 					),
 					recover: Type.Optional(
-						Type.Array(Type.Ref(ID.MoveIDWildcard), {
-							description:
-								'The ID(s) of recovery moves associated with this meter.',
-							examples: [
-								[
+						Type.Array(
+							Type.Ref(ID.MoveIDWildcard, {
+								examples: [
 									'classic/moves/adventure/heal',
 									'classic/moves/adventure/make_camp',
-									'classic/moves/relationship/sojourn'
-								],
-								['starforged/moves/recover/heal'],
-								['starforged/moves/recover/repair']
-							]
-						})
+									'classic/moves/relationship/sojourn',
+									'starforged/moves/recover/heal',
+									'starforged/moves/recover/repair'
+								]
+							}),
+							{
+								description:
+									'The ID(s) of recovery moves associated with this meter.'
+							}
+						)
 					)
 				},
 				{
@@ -145,30 +121,37 @@ export const AssetConditionMeter = Type.Object(
 	}
 )
 
-export const AssetConditionMeterEnhance = Type.Partial(
-	Type.Omit(AssetConditionMeter, ['label', 'value', 'id', 'moves', 'min']),
-	{ $id: '#/$defs/AssetConditionMeterEnhance' }
+export const AssetConditionMeterEnhancement = Type.Partial(
+	Type.Omit(AssetConditionMeter, [
+		'label',
+		'value',
+		'id',
+		'moves',
+		'min',
+		'field_type'
+	]),
+	{ $id: '#/$defs/AssetConditionMeterEnhancement' }
 )
-export type AssetConditionMeterEnhance = Static<
-	typeof AssetConditionMeterEnhance
+export type AssetConditionMeterEnhancement = Static<
+	typeof AssetConditionMeterEnhancement
 >
 
-export const AssetOptionField = AssetField(
+export const AssetOptionField = PolymorphicWithID(
 	'AssetOptionField',
-	ID.AssetOptionFieldID,
-	[Inputs.SelectFieldStat, Inputs.TextField]
+	Type.Ref(ID.AssetOptionFieldID),
+	[Inputs.SelectFieldStat, Inputs.TextField].map((s) => Type.Ref(s))
 )
 
-export const AssetControlField = AssetField(
+export const AssetControlField = PolymorphicWithID(
 	'AssetControlField',
-	ID.AssetControlFieldID,
+	Type.Ref(ID.AssetControlFieldID),
 	[
-		AssetConditionMeter,
-		Inputs.CheckboxField,
-		AssetCardFlipField,
+		...[AssetConditionMeter, Inputs.CheckboxField, AssetCardFlipField].map(
+			(s) => Type.Ref(s)
+		),
 		// manually type as a ref so the type system doesn't flip out
 		Type.Unsafe<
-			Inputs.InputField<'select_asset_state', Record<string, unknown>>
+			Inputs.InputField<'select_enhancement', Record<string, unknown>>
 		>({ $ref: $idSelectFieldAssetState })
 	]
 )
@@ -192,18 +175,20 @@ function AssetEnhanceSelf<T extends TObject>(
 	// condition meters need special handling, so we need to strip it regardless
 	const base = Abstract.NodeEnhanceSelf(
 		tAsset as any,
-		[...omitKeys, 'condition_meter'],
+		[...omitKeys, 'controls'],
 		options
 	)
 
-	if (omitKeys.includes('condition_meter')) return base
+	if (omitKeys.includes('controls')) return base
 
 	// condition meters have their own enhance schema
 	return Type.Composite(
 		[
 			base,
 			Type.Object({
-				condition_meter: Type.Optional(Type.Ref(AssetConditionMeterEnhance))
+				controls: Type.Optional(
+					Dictionary(Type.Ref(AssetConditionMeterEnhancement))
+				)
 			})
 		],
 		options
@@ -289,34 +274,34 @@ export const Asset = Type.Object(
 export type Asset = Static<typeof Asset>
 
 export const SelectFieldAssetState = Inputs.SelectField(
-	'select_asset_state',
+	'select_enhancement',
 	AssetEnhanceSelf(Asset, ['abilities', 'controls', 'condition_meter']),
 	{
 		$id: $idSelectFieldAssetState,
-		title: 'Select field (asset state)',
+		title: 'Select field (asset enhancement)',
 		description:
 			'Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
 	}
 )
 export type SelectFieldAssetState = Static<typeof SelectFieldAssetState>
 
-export const AssetAbilityOptionField = AssetField(
+export const AssetAbilityOptionField = PolymorphicWithID(
 	'AssetAbilityOptionField',
-	ID.AssetAbilityOptionFieldID,
-	[Inputs.TextField]
+	Type.Ref(ID.AssetAbilityOptionFieldID),
+	[Inputs.TextField].map((s) => Type.Ref(s))
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 
-export const AssetAbilityControlField = AssetField(
+export const AssetAbilityControlField = PolymorphicWithID(
 	'AssetAbilityControlField',
-	ID.AssetAbilityControlFieldID,
+	Type.Ref(ID.AssetAbilityControlFieldID),
 	[
 		Inputs.ClockField,
 		Inputs.CounterField,
 		Inputs.CheckboxField
 		// Inputs.SelectAssetEnhance(AssetEnhanceSelf(Asset, []) as TObject)
-	]
+	].map((s) => Type.Ref(s))
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -339,14 +324,14 @@ export const AssetAbility = Type.Object(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
 		enhance_asset: Type.Optional(
-			AssetEnhanceSelf(Asset, ['abilities', 'controls'], {
+			AssetEnhanceSelf(Asset, ['abilities'], {
 				description:
 					'Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
 				releaseStage: 'unstable'
 			})
 		),
 		enhance_moves: Type.Optional(
-			Type.Array(Type.Ref(Moves.MoveEnhance), {
+			Type.Array(Type.Ref(Moves.MoveEnhancement), {
 				description:
 					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.',
 				releaseStage: 'experimental'

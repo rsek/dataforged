@@ -298,23 +298,23 @@ export type AssetControlFieldIDWildcard = Static<
 	typeof AssetControlFieldIDWildcard
 >
 
-export const AssetConditionMeterID = Type.RegExp(
-	joinPatterns(AssetID.pattern as string, ID.SEP, `condition_meter`),
-	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter$/,
-	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
-)
-export type AssetConditionMeterID = Opaque<Static<typeof AssetConditionMeterID>>
-export const AssetConditionMeterIDWildcard = Type.RegExp(
-	joinPatterns(AssetIDWildcard.pattern as string, ID.SEP, 'condition_meter'),
-	// /^([a-z0-9_]{3,}|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
-	{
-		$id: '#/$defs/AssetConditionMeterIDWildcard',
-		title: 'Asset condition meter ID (wildcard)'
-	}
-)
-export type AssetConditionMeterIDWildcard = Static<
-	typeof AssetConditionMeterIDWildcard
->
+// export const AssetConditionMeterID = Type.RegExp(
+// 	joinPatterns(AssetID.pattern as string, ID.SEP, `condition_meter`),
+// 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter$/,
+// 	{ $id: '#/$defs/AssetConditionMeterID', title: 'Asset condition meter ID' }
+// )
+// export type AssetConditionMeterID = Opaque<Static<typeof AssetConditionMeterID>>
+// export const AssetConditionMeterIDWildcard = Type.RegExp(
+// 	joinPatterns(AssetIDWildcard.pattern as string, ID.SEP, 'condition_meter'),
+// 	// /^([a-z0-9_]{3,}|\*)\/assets\/([a-z_]+|\*)\/([a-z_]+|\*)\/condition_meter$/,
+// 	{
+// 		$id: '#/$defs/AssetConditionMeterIDWildcard',
+// 		title: 'Asset condition meter ID (wildcard)'
+// 	}
+// )
+// export type AssetConditionMeterIDWildcard = Static<
+// 	typeof AssetConditionMeterIDWildcard
+// >
 export const AssetConditionMeterControlFieldID = Type.RegExp(
 	joinPatterns(AssetControlFieldID.pattern as string, SEP, 'controls', KEY),
 	// /^[a-z0-9_]{3,}\/assets(\/[a-z][a-z_]*){2}\/condition_meter\/controls\/[a-z][a-z_]*$/,

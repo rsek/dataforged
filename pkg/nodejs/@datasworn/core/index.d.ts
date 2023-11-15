@@ -200,35 +200,13 @@ export type MoveEnhance = MoveActionRollEnhance | MoveNoRollEnhance | MoveProgre
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString3 = string;
-/**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
- */
-export type ActionRollMethod =
-  | "miss"
-  | "weak_hit"
-  | "strong_hit"
-  | "player_choice"
-  | "highest"
-  | "lowest"
-  | "all"
-  | "enhance";
-export type ActionRollOption = {
-  using: "stat" | "condition_meter" | "asset_control" | "asset_option" | "attached_asset_meter" | "custom";
-} & (
+export type ActionRollOption =
   | RollOptionStat
   | RollOptionConditionMeter
   | RollOptionAssetControlField
   | RollOptionAssetOptionField
   | RollOptionAttachedAssetRef
-  | RollOptionCustom
-);
+  | RollOptionCustom;
 /**
  * A basic, rollable player character resource.
  */
@@ -258,37 +236,11 @@ export type MarkdownString4 = string;
  */
 export type MarkdownString5 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
- */
-export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString6 = string;
-/**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
- */
-export type SpecialTrackRollMethod =
-  | "miss"
-  | "weak_hit"
-  | "strong_hit"
-  | "player_choice"
-  | "highest"
-  | "lowest"
-  | "all"
-  | "enhance";
 /**
  * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
@@ -329,7 +281,7 @@ export type MarkdownString8 = string;
  *   * `all`: Use **every** roll option at once.
  *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
  */
-export type ActionRollMethod1 =
+export type ActionRollMethod =
   | "miss"
   | "weak_hit"
   | "strong_hit"
@@ -398,7 +350,7 @@ export type MarkdownString14 = string;
  *   * `strong_hit`: An automatic strong hit.
  *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
  */
-export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
+export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -421,6 +373,25 @@ export type MarkdownString16 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString17 = string;
+/**
+ *   * `miss`: An automatic miss.
+ *   * `weak_hit`: An automatic weak hit.
+ *   * `strong_hit`: An automatic strong hit.
+ *   * `player_choice`: The player chooses which roll option to use.
+ *   * `highest`: Use the roll option with the best/highest value.
+ *   * `lowest`: Use the roll option with the worst/lowest value.
+ *   * `all`: Use **every** roll option at once.
+ *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
+ */
+export type SpecialTrackRollMethod =
+  | "miss"
+  | "weak_hit"
+  | "strong_hit"
+  | "player_choice"
+  | "highest"
+  | "lowest"
+  | "all"
+  | "enhance";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -955,7 +926,6 @@ export interface MoveActionRollEnhance {
 export interface TriggerActionRollConditionEnhance {
   text?: MarkdownString3;
   by?: TriggerBy;
-  method: "enhance" | ActionRollMethod;
   /**
    * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
@@ -1027,7 +997,6 @@ export interface MoveProgressRollEnhance {
 export interface TriggerProgressRollConditionEnhance {
   text?: MarkdownString5;
   by?: TriggerBy;
-  method: "enhance" | ProgressRollMethod;
   /**
    * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
@@ -1052,7 +1021,6 @@ export interface MoveSpecialTrackEnhance {
 export interface TriggerSpecialTrackConditionEnhance {
   text?: MarkdownString6;
   by?: TriggerBy;
-  method: "enhance" | SpecialTrackRollMethod;
   /**
    * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
    */
@@ -1090,7 +1058,7 @@ export interface TriggerActionRoll {
 export interface TriggerActionRollCondition {
   text?: MarkdownString8;
   by?: TriggerBy;
-  method: ActionRollMethod1;
+  method: ActionRollMethod;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1174,7 +1142,7 @@ export interface TriggerProgressRoll {
 export interface TriggerProgressRollCondition {
   text?: MarkdownString14;
   by?: TriggerBy;
-  method: ProgressRollMethod1;
+  method: ProgressRollMethod;
   /**
    * The options available when rolling with this trigger.
    */

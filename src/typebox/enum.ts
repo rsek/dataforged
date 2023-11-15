@@ -27,10 +27,10 @@ export interface JsonEnum<T extends string[] | number[] = string[] | number[]>
 	enum: T
 }
 
-export function JsonEnumFromRecord<K extends number>(
-	entries: Record<K, string>,
-	options?: SchemaOptions
-): JsonEnum<K[]>
+// export function JsonEnumFromRecord<K extends number>(
+// 	entries: Record<K, string>,
+// 	options?: SchemaOptions
+// ): JsonEnum<K[]>
 export function JsonEnumFromRecord<K extends string>(
 	entries: Record<K, string>,
 	options?: SchemaOptions
