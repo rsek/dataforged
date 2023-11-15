@@ -60,7 +60,7 @@ export const dataSwornKeyOrder = [
 	'collections',
 	'outcomes',
 	'quest_starter',
-	'your_truths',
+	'your_truth',
 	'controls',
 	'date',
 	'page',

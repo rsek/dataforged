@@ -133,16 +133,6 @@
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
-		"AssetConditionMeterID": {
-			"title": "Asset condition meter ID",
-			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/condition_meter$"
-		},
-		"AssetConditionMeterIDWildcard": {
-			"title": "Asset condition meter ID (wildcard)",
-			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)\\/condition_meter$"
-		},
 		"AssetControlFieldID": {
 			"title": "AssetControlFieldID",
 			"type": "string",
@@ -566,7 +556,7 @@
 		},
 		"PartOfSpeech": {
 			"title": "PartOfSpeech",
-			"description": "  * `common_noun`: A common noun.\n  * `proper_noun`: A proper noun.\n  * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.\n  * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.\n  * `verb`: A verb in present tense\n  * `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * `adjective`: An adjective.\n  * `attributive_verb`: A verb used as an adjective, to modify a noun.",
+			"description": "  * common_noun: A common noun.\n  * proper_noun: A proper noun.\n  * adjunct_common_noun: A common noun used as an adjective, to modify another noun.\n  * adjunct_proper_noun: A proper noun used as an adjective, to modify another noun.\n  * verb: A verb in present tense\n  * gerund: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * adjective: An adjective.\n  * attributive_verb: A verb used as an adjective, to modify a noun.",
 			"enum": [
 				"common_noun",
 				"proper_noun",
@@ -588,7 +578,7 @@
 		},
 		"ChallengeRank": {
 			"title": "ChallengeRank",
-			"description": "Challenge rank, represented as an integer:\n\n  * `1`: Troublesome\n  * `2`: Dangerous\n  * `3`: Formidable\n  * `4`: Extreme\n  * `5`: Epic",
+			"description": "Challenge rank, represented as an integer:\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
 			"enum": [1, 2, 3, 4, 5]
 		},
 		"SpecialTrackType": {
@@ -672,14 +662,14 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"your_truth": {
-					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"isSourcedNode": true
@@ -887,7 +877,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -987,7 +977,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -1012,7 +1002,7 @@
 		},
 		"OracleTableColumnContentKey": {
 			"title": "OracleTableColumnContentKey",
-			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 			"enum": ["roll", "result", "summary", "description"]
 		},
 		"OracleTableMatchBehavior": {
@@ -1080,7 +1070,7 @@
 		},
 		"OracleTableRollMethod": {
 			"title": "OracleTableRollMethod",
-			"description": "Special roll instructions to use when rolling multiple times on a single oracle table.\n\n  * `no_duplicates`: Duplicates should be re-rolled.\n  * `keep_duplicates`: Duplicates should be kept.\n  * `make_it_worse`: Duplicates should be kept, and they compound to make things worse.",
+			"description": "Special roll instructions to use when rolling multiple times on a single oracle table.\n\n  * no_duplicates: Duplicates should be re-rolled.\n  * keep_duplicates: Duplicates should be kept.\n  * make_it_worse: Duplicates should be kept, and they compound to make things worse.",
 			"default": "no_duplicates",
 			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"]
 		},
@@ -1136,12 +1126,12 @@
 		},
 		"OracleTableStyle": {
 			"title": "OracleTableStyle",
-			"description": "  * `standalone_table`: Render as a standalone table.\n  * `embed_in_row`: Render as a table, within a row in another table.\n  * `embed_as_column`: Render as a single column of a table.",
+			"description": "  * standalone_table: Render as a standalone table.\n  * embed_in_row: Render as a table, within a row in another table.\n  * embed_as_column: Render as a single column of a table.",
 			"enum": ["standalone_table", "embed_in_row", "embed_as_column"]
 		},
 		"ActionRollMethod": {
 			"title": "ActionRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * player_choice: The player chooses which roll option to use.\n  * highest: Use the roll option with the best/highest value.\n  * lowest: Use the roll option with the worst/lowest value.\n  * all: Use **every** roll option at once.",
 			"enum": [
 				"miss",
 				"weak_hit",
@@ -1149,8 +1139,7 @@
 				"player_choice",
 				"highest",
 				"lowest",
-				"all",
-				"enhance"
+				"all"
 			]
 		},
 		"ActionRollOption": {
@@ -1163,17 +1152,33 @@
 					"$ref": "#/$defs/RollOptionConditionMeter"
 				},
 				{
-					"$ref": "#/$defs/RollOptionAssetControlField"
+					"$ref": "#/$defs/RollOptionAssetControl"
 				},
 				{
-					"$ref": "#/$defs/RollOptionAssetOptionField"
+					"$ref": "#/$defs/RollOptionAssetOption"
 				},
 				{
-					"$ref": "#/$defs/RollOptionAttachedAssetRef"
+					"$ref": "#/$defs/RollOptionAttachedAssetControl"
+				},
+				{
+					"$ref": "#/$defs/RollOptionAttachedAssetOption"
 				},
 				{
 					"$ref": "#/$defs/RollOptionCustom"
 				}
+			]
+		},
+		"ActionRollUsing": {
+			"title": "ActionRollUsing",
+			"description": "  * stat: Roll using a standard player character stat.\n  * condition_meter: Roll using the value of a standard player condition meter.\n  * asset_control: Roll using the value of an asset control.\n  * asset_option: Roll using the value of an asset option.\n  * custom: Roll using an integer value with customizable labels.\n  * attached_asset_control: Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  * attached_asset_option: Roll using the value of an attached asset option.",
+			"enum": [
+				"stat",
+				"condition_meter",
+				"asset_control",
+				"asset_option",
+				"custom",
+				"attached_asset_control",
+				"attached_asset_option"
 			]
 		},
 		"Move": {
@@ -1251,8 +1256,8 @@
 			},
 			"isSourcedNode": true
 		},
-		"MoveActionRollEnhance": {
-			"title": "MoveActionRollEnhance",
+		"MoveActionRollEnhancement": {
+			"title": "MoveActionRollEnhancement",
 			"type": "object",
 			"required": ["roll_type"],
 			"properties": {
@@ -1267,7 +1272,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerActionRollConditionEnhance"
+								"$ref": "#/$defs/TriggerActionRollConditionEnhancement"
 							}
 						}
 					}
@@ -1325,20 +1330,20 @@
 			},
 			"isSourcedNode": true
 		},
-		"MoveEnhance": {
-			"title": "Move Enhance",
+		"MoveEnhancement": {
+			"title": "Move enhancement",
 			"oneOf": [
 				{
-					"$ref": "#/$defs/MoveActionRollEnhance"
+					"$ref": "#/$defs/MoveActionRollEnhancement"
 				},
 				{
-					"$ref": "#/$defs/MoveNoRollEnhance"
+					"$ref": "#/$defs/MoveNoRollEnhancement"
 				},
 				{
-					"$ref": "#/$defs/MoveProgressRollEnhance"
+					"$ref": "#/$defs/MoveProgressRollEnhancement"
 				},
 				{
-					"$ref": "#/$defs/MoveSpecialTrackEnhance"
+					"$ref": "#/$defs/MoveSpecialTrackEnhancement"
 				}
 			]
 		},
@@ -1389,8 +1394,8 @@
 			},
 			"isSourcedNode": true
 		},
-		"MoveNoRollEnhance": {
-			"title": "MoveNoRollEnhance",
+		"MoveNoRollEnhancement": {
+			"title": "MoveNoRollEnhancement",
 			"type": "object",
 			"required": ["roll_type"],
 			"properties": {
@@ -1405,7 +1410,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerNoRollConditionEnhance"
+								"$ref": "#/$defs/TriggerNoRollCondition"
 							}
 						}
 					}
@@ -1449,7 +1454,7 @@
 		},
 		"MoveOutcomeType": {
 			"title": "MoveOutcomeType",
-			"description": "  * `miss`: The score doesn't beat either challenge die.\n  * `weak_hit`: The score is greater than one challenge die.\n  * `strong_hit`: The score is greater than both challenge dice.",
+			"description": "  * miss: The score doesn't beat either challenge die.\n  * weak_hit: The score is greater than one challenge die.\n  * strong_hit: The score is greater than both challenge dice.",
 			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
 		"MoveOutcomes": {
@@ -1541,8 +1546,8 @@
 			},
 			"isSourcedNode": true
 		},
-		"MoveProgressRollEnhance": {
-			"title": "MoveProgressRollEnhance",
+		"MoveProgressRollEnhancement": {
+			"title": "MoveProgressRollEnhancement",
 			"type": "object",
 			"required": ["roll_type"],
 			"properties": {
@@ -1557,7 +1562,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerProgressRollConditionEnhance"
+								"$ref": "#/$defs/TriggerProgressRollConditionEnhancement"
 							}
 						}
 					}
@@ -1572,7 +1577,7 @@
 		},
 		"MoveRollType": {
 			"title": "MoveRollType",
-			"description": "  * `no_roll`: A move that makes no action rolls or progress rolls.\n  * `action_roll`: A move that makes an action roll.\n  * `progress_roll`: A progress move that rolls on a standard progress track type (defined by this move).\n  * `special_track`: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+			"description": "  * no_roll: A move that makes no action rolls or progress rolls.\n  * action_roll: A move that makes an action roll.\n  * progress_roll: A progress move that rolls on a standard progress track type (defined by this move).\n  * special_track: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 			"enum": ["no_roll", "action_roll", "progress_roll", "special_track"]
 		},
 		"MoveSpecialTrack": {
@@ -1632,8 +1637,8 @@
 			},
 			"isSourcedNode": true
 		},
-		"MoveSpecialTrackEnhance": {
-			"title": "MoveSpecialTrackEnhance",
+		"MoveSpecialTrackEnhancement": {
+			"title": "MoveSpecialTrackEnhancement",
 			"type": "object",
 			"required": ["roll_type"],
 			"properties": {
@@ -1648,7 +1653,7 @@
 						"conditions": {
 							"type": "array",
 							"items": {
-								"$ref": "#/$defs/TriggerSpecialTrackConditionEnhance"
+								"$ref": "#/$defs/TriggerSpecialTrackConditionEnhancement"
 							}
 						}
 					}
@@ -1663,7 +1668,7 @@
 		},
 		"ProgressRollMethod": {
 			"title": "ProgressRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `progress_roll`: Make a progress roll on a progress track associated with this move.",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * progress_roll: Make a progress roll on a progress track associated with this move.",
 			"enum": ["miss", "weak_hit", "strong_hit", "progress_roll"]
 		},
 		"ProgressRollOption": {
@@ -1677,17 +1682,18 @@
 				}
 			}
 		},
-		"RollOptionAssetControlField": {
-			"title": "RollOptionAssetControlField",
+		"RollOptionAssetControl": {
+			"title": "RollOptionAssetControl",
 			"type": "object",
 			"required": ["using", "assets", "control"],
 			"properties": {
 				"using": {
 					"type": "string",
+					"description": "Roll using the value of an asset control.",
 					"const": "asset_control"
 				},
 				"assets": {
-					"description": "Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
+					"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
 					"oneOf": [
 						{
@@ -1703,23 +1709,24 @@
 				},
 				"control": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset control.",
+					"description": "The key of the asset control field.",
 					"examples": ["health", "integrity"]
 				}
 			},
 			"additionalProperties": false
 		},
-		"RollOptionAssetOptionField": {
-			"title": "RollOptionAssetOptionField",
+		"RollOptionAssetOption": {
+			"title": "RollOptionAssetOption",
 			"type": "object",
 			"required": ["using", "assets", "option"],
 			"properties": {
 				"using": {
 					"type": "string",
+					"description": "Roll using the value of an asset option.",
 					"const": "asset_option"
 				},
 				"assets": {
-					"description": "Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
+					"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
 					"oneOf": [
 						{
@@ -1735,19 +1742,42 @@
 				},
 				"option": {
 					"$ref": "#/$defs/DictKey",
-					"description": "The key of the asset option."
+					"description": "The key of the asset option field."
 				}
 			},
 			"additionalProperties": false
 		},
-		"RollOptionAttachedAssetRef": {
-			"title": "RollOptionAttachedAssetRef",
+		"RollOptionAttachedAssetControl": {
+			"title": "RollOptionAttachedAssetControl",
 			"type": "object",
-			"required": ["using"],
+			"required": ["using", "control"],
 			"properties": {
 				"using": {
 					"type": "string",
-					"const": "attached_asset_meter"
+					"description": "Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.",
+					"const": "attached_asset_control"
+				},
+				"control": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The key of the asset control field.",
+					"examples": ["health", "integrity"]
+				}
+			},
+			"additionalProperties": false
+		},
+		"RollOptionAttachedAssetOption": {
+			"title": "RollOptionAttachedAssetOption",
+			"type": "object",
+			"required": ["using", "option"],
+			"properties": {
+				"using": {
+					"type": "string",
+					"description": "Roll using the value of an attached asset option.",
+					"const": "attached_asset_option"
+				},
+				"option": {
+					"$ref": "#/$defs/DictKey",
+					"description": "The key of the asset option field."
 				}
 			},
 			"additionalProperties": false
@@ -1759,6 +1789,7 @@
 			"properties": {
 				"using": {
 					"type": "string",
+					"description": "Roll using the value of a standard player condition meter.",
 					"const": "condition_meter"
 				},
 				"condition_meter": {
@@ -1781,6 +1812,7 @@
 				},
 				"using": {
 					"type": "string",
+					"description": "Roll using an integer value with customizable labels.",
 					"const": "custom"
 				}
 			},
@@ -1793,6 +1825,7 @@
 			"properties": {
 				"using": {
 					"type": "string",
+					"description": "Roll using a standard player character stat.",
 					"const": "stat"
 				},
 				"stat": {
@@ -1803,7 +1836,7 @@
 		},
 		"SpecialTrackRollMethod": {
 			"title": "SpecialTrackRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.\n  * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * player_choice: The player chooses which roll option to use.\n  * highest: Use the roll option with the best/highest value.\n  * lowest: Use the roll option with the worst/lowest value.\n  * all: Use **every** roll option at once.",
 			"enum": [
 				"miss",
 				"weak_hit",
@@ -1811,8 +1844,7 @@
 				"player_choice",
 				"highest",
 				"lowest",
-				"all",
-				"enhance"
+				"all"
 			]
 		},
 		"TriggerActionRoll": {
@@ -1847,8 +1879,7 @@
 					"$ref": "#/$defs/TriggerBy"
 				},
 				"method": {
-					"$ref": "#/$defs/ActionRollMethod",
-					"default": "player_choice"
+					"$ref": "#/$defs/ActionRollMethod"
 				},
 				"roll_options": {
 					"type": "array",
@@ -1859,10 +1890,10 @@
 				}
 			}
 		},
-		"TriggerActionRollConditionEnhance": {
-			"title": "TriggerActionRollConditionEnhance",
+		"TriggerActionRollConditionEnhancement": {
+			"title": "TriggerActionRollConditionEnhancement",
 			"type": "object",
-			"required": ["roll_options"],
+			"required": ["method", "roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -1871,10 +1902,19 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
+				"method": {
+					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "#/$defs/ActionRollMethod"
+						}
+					]
+				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
-					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "null"
 						},
@@ -1889,15 +1929,15 @@
 				}
 			}
 		},
-		"TriggerActionRollEnhance": {
-			"title": "TriggerActionRollEnhance",
+		"TriggerActionRollEnhancement": {
+			"title": "TriggerActionRollEnhancement",
 			"type": "object",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/TriggerActionRollConditionEnhance"
+						"$ref": "#/$defs/TriggerActionRollConditionEnhancement"
 					}
 				}
 			}
@@ -1952,6 +1992,7 @@
 		"TriggerNoRollCondition": {
 			"title": "TriggerNoRollCondition",
 			"type": "object",
+			"required": ["method", "roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -1959,31 +2000,24 @@
 				},
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
-				}
-			}
-		},
-		"TriggerNoRollConditionEnhance": {
-			"title": "TriggerNoRollConditionEnhance",
-			"type": "object",
-			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownString",
-					"description": "A markdown string of any trigger text specific to this trigger condition."
 				},
-				"by": {
-					"$ref": "#/$defs/TriggerBy"
+				"method": {
+					"type": "null"
+				},
+				"roll_options": {
+					"type": "null"
 				}
 			}
 		},
-		"TriggerNoRollEnhance": {
-			"title": "TriggerNoRollEnhance",
+		"TriggerNoRollEnhancement": {
+			"title": "TriggerNoRollEnhancement",
 			"type": "object",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/TriggerNoRollConditionEnhance"
+						"$ref": "#/$defs/TriggerNoRollCondition"
 					}
 				}
 			}
@@ -2032,10 +2066,10 @@
 				}
 			}
 		},
-		"TriggerProgressRollConditionEnhance": {
-			"title": "TriggerProgressRollConditionEnhance",
+		"TriggerProgressRollConditionEnhancement": {
+			"title": "TriggerProgressRollConditionEnhancement",
 			"type": "object",
-			"required": ["roll_options"],
+			"required": ["method", "roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -2044,10 +2078,20 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
+				"method": {
+					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "#/$defs/ProgressRollMethod",
+							"default": "progress_roll"
+						}
+					]
+				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
-					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "null"
 						},
@@ -2062,15 +2106,15 @@
 				}
 			}
 		},
-		"TriggerProgressRollEnhance": {
-			"title": "TriggerProgressRollEnhance",
+		"TriggerProgressRollEnhancement": {
+			"title": "TriggerProgressRollEnhancement",
 			"type": "object",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/TriggerProgressRollConditionEnhance"
+						"$ref": "#/$defs/TriggerProgressRollConditionEnhancement"
 					}
 				}
 			}
@@ -2118,11 +2162,11 @@
 				}
 			}
 		},
-		"TriggerSpecialTrackConditionEnhance": {
-			"title": "TriggerSpecialTrackConditionEnhance",
+		"TriggerSpecialTrackConditionEnhancement": {
+			"title": "TriggerSpecialTrackConditionEnhancement",
 			"type": "object",
 			"description": "A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).",
-			"required": ["roll_options"],
+			"required": ["method", "roll_options"],
 			"properties": {
 				"text": {
 					"$ref": "#/$defs/MarkdownString",
@@ -2131,10 +2175,19 @@
 				"by": {
 					"$ref": "#/$defs/TriggerBy"
 				},
+				"method": {
+					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"$ref": "#/$defs/SpecialTrackRollMethod"
+						}
+					]
+				},
 				"roll_options": {
-					"description": "If this is null or undefined, this trigger condition enhance specifies no roll options of its own.",
-					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "null"
 						},
@@ -2159,15 +2212,15 @@
 				}
 			}
 		},
-		"TriggerSpecialTrackEnhance": {
-			"title": "TriggerSpecialTrackEnhance",
+		"TriggerSpecialTrackEnhancement": {
+			"title": "TriggerSpecialTrackEnhancement",
 			"type": "object",
 			"required": ["conditions"],
 			"properties": {
 				"conditions": {
 					"type": "array",
 					"items": {
-						"$ref": "#/$defs/TriggerSpecialTrackConditionEnhance"
+						"$ref": "#/$defs/TriggerSpecialTrackConditionEnhancement"
 					}
 				}
 			}
@@ -2314,8 +2367,14 @@
 						"attachments": {
 							"$ref": "#/$defs/AssetAttachment"
 						},
-						"condition_meter": {
-							"$ref": "#/$defs/AssetConditionMeterEnhance"
+						"controls": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^[a-z][a-z_]*$": {
+									"$ref": "#/$defs/AssetConditionMeterEnhancement"
+								}
+							}
 						}
 					},
 					"releaseStage": "unstable"
@@ -2324,7 +2383,7 @@
 					"type": "array",
 					"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.",
 					"items": {
-						"$ref": "#/$defs/MoveEnhance"
+						"$ref": "#/$defs/MoveEnhancement"
 					},
 					"releaseStage": "experimental"
 				},
@@ -2342,33 +2401,45 @@
 		},
 		"AssetAbilityControlField": {
 			"title": "Asset Ability Control Field",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/AssetAbilityControlFieldID"
-				}
-			},
-			"anyOf": [
+			"allOf": [
 				{
-					"$ref": "#/$defs/ClockField"
+					"type": "object",
+					"required": ["id"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetAbilityControlFieldID"
+						}
+					},
+					"additionalProperties": true
 				},
 				{
-					"$ref": "#/$defs/CounterField"
-				},
-				{
-					"$ref": "#/$defs/CheckboxField"
+					"anyOf": [
+						{
+							"$ref": "#/$defs/ClockField"
+						},
+						{
+							"$ref": "#/$defs/CounterField"
+						},
+						{
+							"$ref": "#/$defs/CheckboxField"
+						}
+					]
 				}
 			]
 		},
 		"AssetAbilityOptionField": {
 			"title": "Asset Ability Option Field",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/AssetAbilityOptionFieldID"
-				}
-			},
-			"anyOf": [
+			"allOf": [
+				{
+					"type": "object",
+					"required": ["id"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetAbilityOptionFieldID"
+						}
+					},
+					"additionalProperties": true
+				},
 				{
 					"$ref": "#/$defs/TextField"
 				}
@@ -2468,8 +2539,7 @@
 				},
 				"field_type": {
 					"type": "string",
-					"const": "condition_meter",
-					"default": "condition_meter"
+					"const": "condition_meter"
 				},
 				"min": {
 					"type": "integer",
@@ -2498,29 +2568,27 @@
 							"type": "array",
 							"description": "The ID(s) of recovery moves associated with this meter.",
 							"items": {
-								"$ref": "#/$defs/MoveIDWildcard"
-							},
-							"examples": [
-								[
+								"$ref": "#/$defs/MoveIDWildcard",
+								"examples": [
 									"classic/moves/adventure/heal",
 									"classic/moves/adventure/make_camp",
-									"classic/moves/relationship/sojourn"
-								],
-								["starforged/moves/recover/heal"],
-								["starforged/moves/recover/repair"]
-							]
+									"classic/moves/relationship/sojourn",
+									"starforged/moves/recover/heal",
+									"starforged/moves/recover/repair"
+								]
+							}
 						},
 						"suffer": {
 							"type": "array",
-							"description": "The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.",
+							"description": "The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.",
 							"items": {
-								"$ref": "#/$defs/MoveIDWildcard"
-							},
-							"examples": [
-								["classic/moves/suffer/companion_endure_harm"],
-								["starforged/moves/suffer/companion_takes_a_hit"],
-								["starforged/moves/suffer/withstand_damage"]
-							]
+								"$ref": "#/$defs/MoveIDWildcard",
+								"examples": [
+									"classic/moves/suffer/companion_endure_harm",
+									"starforged/moves/suffer/companion_takes_a_hit",
+									"starforged/moves/suffer/withstand_damage"
+								]
+							}
 						}
 					},
 					"releaseStage": "unstable"
@@ -2529,28 +2597,27 @@
 		},
 		"AssetConditionMeterControlField": {
 			"title": "Asset Condition Meter Control Field",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/AssetConditionMeterControlFieldID"
-				}
-			},
-			"anyOf": [
+			"allOf": [
+				{
+					"type": "object",
+					"required": ["id"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetConditionMeterControlFieldID"
+						}
+					},
+					"additionalProperties": true
+				},
 				{
 					"$ref": "#/$defs/AssetCheckboxField"
 				}
 			]
 		},
-		"AssetConditionMeterEnhance": {
+		"AssetConditionMeterEnhancement": {
 			"title": "Asset condition meter",
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
 			"properties": {
-				"field_type": {
-					"type": "string",
-					"const": "condition_meter",
-					"default": "condition_meter"
-				},
 				"max": {
 					"type": "integer"
 				},
@@ -2567,41 +2634,57 @@
 		},
 		"AssetControlField": {
 			"title": "Asset Control Field",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/AssetControlFieldID"
-				}
-			},
-			"anyOf": [
+			"allOf": [
 				{
-					"$ref": "#/$defs/AssetConditionMeter"
+					"type": "object",
+					"required": ["id"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetControlFieldID"
+						}
+					},
+					"additionalProperties": true
 				},
 				{
-					"$ref": "#/$defs/CheckboxField"
-				},
-				{
-					"$ref": "#/$defs/AssetCardFlipField"
-				},
-				{
-					"$ref": "#/$defs/SelectFieldAssetState"
+					"anyOf": [
+						{
+							"$ref": "#/$defs/AssetConditionMeter"
+						},
+						{
+							"$ref": "#/$defs/CheckboxField"
+						},
+						{
+							"$ref": "#/$defs/AssetCardFlipField"
+						},
+						{
+							"$ref": "#/$defs/SelectFieldAssetState"
+						}
+					]
 				}
 			]
 		},
 		"AssetOptionField": {
 			"title": "Asset Option Field",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/$defs/AssetOptionFieldID"
-				}
-			},
-			"anyOf": [
+			"allOf": [
 				{
-					"$ref": "#/$defs/SelectFieldStat"
+					"type": "object",
+					"required": ["id"],
+					"properties": {
+						"id": {
+							"$ref": "#/$defs/AssetOptionFieldID"
+						}
+					},
+					"additionalProperties": true
 				},
 				{
-					"$ref": "#/$defs/TextField"
+					"anyOf": [
+						{
+							"$ref": "#/$defs/SelectFieldStat"
+						},
+						{
+							"$ref": "#/$defs/TextField"
+						}
+					]
 				}
 			]
 		},
@@ -2730,7 +2813,7 @@
 			}
 		},
 		"SelectFieldAssetState": {
-			"title": "Select field (asset state)",
+			"title": "Select field (asset enhancement)",
 			"type": "object",
 			"description": "Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
 			"required": ["id", "label", "field_type", "choices"],
@@ -2743,7 +2826,7 @@
 				},
 				"field_type": {
 					"type": "string",
-					"const": "select_asset_state"
+					"const": "select_enhancement"
 				},
 				"value": {
 					"type": "object",
@@ -3001,14 +3084,14 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"your_truth": {
-					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"isSourcedNode": true,

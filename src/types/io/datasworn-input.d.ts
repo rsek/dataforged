@@ -27,10 +27,10 @@ export type Label1 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
- *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
- *   * `result`: Column displays the row's `result` key.
- *   * `summary`: Column displays the row's `summary` key.
- *   * `description`: Column displays the row's `description` key.
+ *   * roll: Column displays the roll range (`min` and `max`) of each row.
+ *   * result: Column displays the row's `result` key.
+ *   * summary: Column displays the row's `summary` key.
+ *   * description: Column displays the row's `description` key.
  */
 export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "description";
 /**
@@ -54,9 +54,9 @@ export type OracleTableID = string;
 export type SVGImageURL = string;
 export type DiceNotation = string;
 /**
- *   * `standalone_table`: Render as a standalone table.
- *   * `embed_in_row`: Render as a table, within a row in another table.
- *   * `embed_as_column`: Render as a single column of a table.
+ *   * standalone_table: Render as a standalone table.
+ *   * embed_in_row: Render as a table, within a row in another table.
+ *   * embed_as_column: Render as a single column of a table.
  */
 export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
 /**
@@ -66,10 +66,10 @@ export type Label2 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
- *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
- *   * `result`: Column displays the row's `result` key.
- *   * `summary`: Column displays the row's `summary` key.
- *   * `description`: Column displays the row's `description` key.
+ *   * roll: Column displays the roll range (`min` and `max`) of each row.
+ *   * result: Column displays the row's `result` key.
+ *   * summary: Column displays the row's `summary` key.
+ *   * description: Column displays the row's `description` key.
  */
 export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
 /**
@@ -118,9 +118,9 @@ export type TemplateString2 = string;
 /**
  * Special roll instructions to use when rolling multiple times on a single oracle table.
  *
- *   * `no_duplicates`: Duplicates should be re-rolled.
- *   * `keep_duplicates`: Duplicates should be kept.
- *   * `make_it_worse`: Duplicates should be kept, and they compound to make things worse.
+ *   * no_duplicates: Duplicates should be re-rolled.
+ *   * keep_duplicates: Duplicates should be kept.
+ *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
  */
 export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
@@ -128,14 +128,14 @@ export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_
  */
 export type OracleTableID1 = string;
 /**
- *   * `common_noun`: A common noun.
- *   * `proper_noun`: A proper noun.
- *   * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.
- *   * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.
- *   * `verb`: A verb in present tense
- *   * `gerund`: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
- *   * `adjective`: An adjective.
- *   * `attributive_verb`: A verb used as an adjective, to modify a noun.
+ *   * common_noun: A common noun.
+ *   * proper_noun: A proper noun.
+ *   * adjunct_common_noun: A common noun used as an adjective, to modify another noun.
+ *   * adjunct_proper_noun: A proper noun used as an adjective, to modify another noun.
+ *   * verb: A verb in present tense
+ *   * gerund: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
+ *   * adjective: An adjective.
+ *   * attributive_verb: A verb used as an adjective, to modify a noun.
  */
 export type PartOfSpeech =
   | "common_noun"
@@ -221,13 +221,13 @@ export type MoveEnhancement =
  */
 export type MarkdownString3 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * player_choice: The player chooses which roll option to use.
+ *   * highest: Use the roll option with the best/highest value.
+ *   * lowest: Use the roll option with the worst/lowest value.
+ *   * all: Use **every** roll option at once.
  */
 export type ActionRollMethod = "miss" | "weak_hit" | "strong_hit" | "player_choice" | "highest" | "lowest" | "all";
 export type ActionRollOption =
@@ -275,10 +275,10 @@ export type MarkdownString4 = string;
  */
 export type MarkdownString5 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * progress_roll: Make a progress roll on a progress track associated with this move.
  */
 export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
@@ -288,13 +288,13 @@ export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_
  */
 export type MarkdownString6 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * player_choice: The player chooses which roll option to use.
+ *   * highest: Use the roll option with the best/highest value.
+ *   * lowest: Use the roll option with the worst/lowest value.
+ *   * all: Use **every** roll option at once.
  */
 export type SpecialTrackRollMethod =
   | "miss"
@@ -341,9 +341,9 @@ export type MarkdownString8 = string;
  */
 export type MarkdownString9 = string;
 /**
- *   * `miss`: The score doesn't beat either challenge die.
- *   * `weak_hit`: The score is greater than one challenge die.
- *   * `strong_hit`: The score is greater than both challenge dice.
+ *   * miss: The score doesn't beat either challenge die.
+ *   * weak_hit: The score is greater than one challenge die.
+ *   * strong_hit: The score is greater than both challenge dice.
  */
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 /**
@@ -383,10 +383,10 @@ export type MarkdownString12 = string;
  */
 export type MarkdownString13 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * progress_roll: Make a progress roll on a progress track associated with this move.
  */
 export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
@@ -451,11 +451,11 @@ export type DelveSiteID = string;
 /**
  * Challenge rank, represented as an integer:
  *
- *   * `1`: Troublesome
- *   * `2`: Dangerous
- *   * `3`: Formidable
- *   * `4`: Extreme
- *   * `5`: Epic
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
 export type DelveSiteDenizenID = string;
@@ -1375,9 +1375,9 @@ export interface AtlasEntry {
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
+  your_truth?: MarkdownString;
   suggestions?: Suggestions;
   source: Source;
-  your_truth?: MarkdownString;
 }
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -1530,9 +1530,9 @@ export interface Npc {
   };
   description: MarkdownString;
   quest_starter: MarkdownString;
+  your_truth?: MarkdownString;
   suggestions?: Suggestions;
   source: Source;
-  your_truth?: MarkdownString;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition

@@ -556,7 +556,7 @@
 		},
 		"PartOfSpeech": {
 			"title": "PartOfSpeech",
-			"description": "  * `common_noun`: A common noun.\n  * `proper_noun`: A proper noun.\n  * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.\n  * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.\n  * `verb`: A verb in present tense\n  * `gerund`: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * `adjective`: An adjective.\n  * `attributive_verb`: A verb used as an adjective, to modify a noun.",
+			"description": "  * common_noun: A common noun.\n  * proper_noun: A proper noun.\n  * adjunct_common_noun: A common noun used as an adjective, to modify another noun.\n  * adjunct_proper_noun: A proper noun used as an adjective, to modify another noun.\n  * verb: A verb in present tense\n  * gerund: Gerund or present participle of a verb, e.g. \"going\", \"seeing\", \"waving\"\n  * adjective: An adjective.\n  * attributive_verb: A verb used as an adjective, to modify a noun.",
 			"enum": [
 				"common_noun",
 				"proper_noun",
@@ -578,7 +578,7 @@
 		},
 		"ChallengeRank": {
 			"title": "ChallengeRank",
-			"description": "Challenge rank, represented as an integer:\n\n  * `1`: Troublesome\n  * `2`: Dangerous\n  * `3`: Formidable\n  * `4`: Extreme\n  * `5`: Epic",
+			"description": "Challenge rank, represented as an integer:\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
 			"enum": [1, 2, 3, 4, 5]
 		},
 		"SpecialTrackType": {
@@ -661,14 +661,14 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"your_truth": {
-					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"isSourcedNode": true
@@ -876,7 +876,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -980,7 +980,7 @@
 				},
 				"content_type": {
 					"title": "OracleTableColumnContentKey",
-					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+					"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 					"enum": ["roll", "result", "summary", "description"]
 				},
 				"color": {
@@ -1005,7 +1005,7 @@
 		},
 		"OracleTableColumnContentKey": {
 			"title": "OracleTableColumnContentKey",
-			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * `roll`: Column displays the roll range (`min` and `max`) of each row.\n  * `result`: Column displays the row's `result` key.\n  * `summary`: Column displays the row's `summary` key.\n  * `description`: Column displays the row's `description` key.",
+			"description": "The value(s) from each OracleTableRow that is rendered in this column.\n\n  * roll: Column displays the roll range (`min` and `max`) of each row.\n  * result: Column displays the row's `result` key.\n  * summary: Column displays the row's `summary` key.\n  * description: Column displays the row's `description` key.",
 			"enum": ["roll", "result", "summary", "description"]
 		},
 		"OracleTableMatchBehavior": {
@@ -1073,7 +1073,7 @@
 		},
 		"OracleTableRollMethod": {
 			"title": "OracleTableRollMethod",
-			"description": "Special roll instructions to use when rolling multiple times on a single oracle table.\n\n  * `no_duplicates`: Duplicates should be re-rolled.\n  * `keep_duplicates`: Duplicates should be kept.\n  * `make_it_worse`: Duplicates should be kept, and they compound to make things worse.",
+			"description": "Special roll instructions to use when rolling multiple times on a single oracle table.\n\n  * no_duplicates: Duplicates should be re-rolled.\n  * keep_duplicates: Duplicates should be kept.\n  * make_it_worse: Duplicates should be kept, and they compound to make things worse.",
 			"default": "no_duplicates",
 			"enum": ["no_duplicates", "keep_duplicates", "make_it_worse"]
 		},
@@ -1129,12 +1129,12 @@
 		},
 		"OracleTableStyle": {
 			"title": "OracleTableStyle",
-			"description": "  * `standalone_table`: Render as a standalone table.\n  * `embed_in_row`: Render as a table, within a row in another table.\n  * `embed_as_column`: Render as a single column of a table.",
+			"description": "  * standalone_table: Render as a standalone table.\n  * embed_in_row: Render as a table, within a row in another table.\n  * embed_as_column: Render as a single column of a table.",
 			"enum": ["standalone_table", "embed_in_row", "embed_as_column"]
 		},
 		"ActionRollMethod": {
 			"title": "ActionRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * player_choice: The player chooses which roll option to use.\n  * highest: Use the roll option with the best/highest value.\n  * lowest: Use the roll option with the worst/lowest value.\n  * all: Use **every** roll option at once.",
 			"enum": [
 				"miss",
 				"weak_hit",
@@ -1173,7 +1173,7 @@
 		},
 		"ActionRollUsing": {
 			"title": "ActionRollUsing",
-			"description": "  * `stat`: Roll using a standard player character stat.\n  * `condition_meter`: Roll using the value of a standard player condition meter.\n  * `asset_control`: Roll using the value of an asset control.\n  * `asset_option`: Roll using the value of an asset option.\n  * `custom`: Roll using an integer value with customizable labels.\n  * `attached_asset_control`: Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  * `attached_asset_option`: Roll using the value of an attached asset option.",
+			"description": "  * stat: Roll using a standard player character stat.\n  * condition_meter: Roll using the value of a standard player condition meter.\n  * asset_control: Roll using the value of an asset control.\n  * asset_option: Roll using the value of an asset option.\n  * custom: Roll using an integer value with customizable labels.\n  * attached_asset_control: Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.\n  * attached_asset_option: Roll using the value of an attached asset option.",
 			"enum": [
 				"stat",
 				"condition_meter",
@@ -1456,7 +1456,7 @@
 		},
 		"MoveOutcomeType": {
 			"title": "MoveOutcomeType",
-			"description": "  * `miss`: The score doesn't beat either challenge die.\n  * `weak_hit`: The score is greater than one challenge die.\n  * `strong_hit`: The score is greater than both challenge dice.",
+			"description": "  * miss: The score doesn't beat either challenge die.\n  * weak_hit: The score is greater than one challenge die.\n  * strong_hit: The score is greater than both challenge dice.",
 			"enum": ["miss", "weak_hit", "strong_hit"]
 		},
 		"MoveOutcomes": {
@@ -1578,7 +1578,7 @@
 		},
 		"MoveRollType": {
 			"title": "MoveRollType",
-			"description": "  * `no_roll`: A move that makes no action rolls or progress rolls.\n  * `action_roll`: A move that makes an action roll.\n  * `progress_roll`: A progress move that rolls on a standard progress track type (defined by this move).\n  * `special_track`: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
+			"description": "  * no_roll: A move that makes no action rolls or progress rolls.\n  * action_roll: A move that makes an action roll.\n  * progress_roll: A progress move that rolls on a standard progress track type (defined by this move).\n  * special_track: A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).",
 			"enum": ["no_roll", "action_roll", "progress_roll", "special_track"]
 		},
 		"MoveSpecialTrack": {
@@ -1668,7 +1668,7 @@
 		},
 		"ProgressRollMethod": {
 			"title": "ProgressRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `progress_roll`: Make a progress roll on a progress track associated with this move.",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * progress_roll: Make a progress roll on a progress track associated with this move.",
 			"enum": ["miss", "weak_hit", "strong_hit", "progress_roll"]
 		},
 		"ProgressRollOption": {
@@ -1836,7 +1836,7 @@
 		},
 		"SpecialTrackRollMethod": {
 			"title": "SpecialTrackRollMethod",
-			"description": "  * `miss`: An automatic miss.\n  * `weak_hit`: An automatic weak hit.\n  * `strong_hit`: An automatic strong hit.\n  * `player_choice`: The player chooses which roll option to use.\n  * `highest`: Use the roll option with the best/highest value.\n  * `lowest`: Use the roll option with the worst/lowest value.\n  * `all`: Use **every** roll option at once.",
+			"description": "  * miss: An automatic miss.\n  * weak_hit: An automatic weak hit.\n  * strong_hit: An automatic strong hit.\n  * player_choice: The player chooses which roll option to use.\n  * highest: Use the roll option with the best/highest value.\n  * lowest: Use the roll option with the worst/lowest value.\n  * all: Use **every** roll option at once.",
 			"enum": [
 				"miss",
 				"weak_hit",
@@ -3075,14 +3075,14 @@
 				"quest_starter": {
 					"$ref": "#/$defs/MarkdownString"
 				},
+				"your_truth": {
+					"$ref": "#/$defs/MarkdownString"
+				},
 				"suggestions": {
 					"$ref": "#/$defs/Suggestions"
 				},
 				"source": {
 					"$ref": "#/$defs/Source"
-				},
-				"your_truth": {
-					"$ref": "#/$defs/MarkdownString"
 				}
 			},
 			"isSourcedNode": true,

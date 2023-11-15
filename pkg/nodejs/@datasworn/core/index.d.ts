@@ -27,10 +27,10 @@ export type Label1 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
- *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
- *   * `result`: Column displays the row's `result` key.
- *   * `summary`: Column displays the row's `summary` key.
- *   * `description`: Column displays the row's `description` key.
+ *   * roll: Column displays the roll range (`min` and `max`) of each row.
+ *   * result: Column displays the row's `result` key.
+ *   * summary: Column displays the row's `summary` key.
+ *   * description: Column displays the row's `description` key.
  */
 export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "description";
 /**
@@ -54,9 +54,9 @@ export type OracleTableID = string;
 export type SVGImageURL = string;
 export type DiceNotation = string;
 /**
- *   * `standalone_table`: Render as a standalone table.
- *   * `embed_in_row`: Render as a table, within a row in another table.
- *   * `embed_as_column`: Render as a single column of a table.
+ *   * standalone_table: Render as a standalone table.
+ *   * embed_in_row: Render as a table, within a row in another table.
+ *   * embed_as_column: Render as a single column of a table.
  */
 export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
 /**
@@ -66,10 +66,10 @@ export type Label2 = string;
 /**
  * The value(s) from each OracleTableRow that is rendered in this column.
  *
- *   * `roll`: Column displays the roll range (`min` and `max`) of each row.
- *   * `result`: Column displays the row's `result` key.
- *   * `summary`: Column displays the row's `summary` key.
- *   * `description`: Column displays the row's `description` key.
+ *   * roll: Column displays the roll range (`min` and `max`) of each row.
+ *   * result: Column displays the row's `result` key.
+ *   * summary: Column displays the row's `summary` key.
+ *   * description: Column displays the row's `description` key.
  */
 export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
 /**
@@ -118,9 +118,9 @@ export type TemplateString2 = string;
 /**
  * Special roll instructions to use when rolling multiple times on a single oracle table.
  *
- *   * `no_duplicates`: Duplicates should be re-rolled.
- *   * `keep_duplicates`: Duplicates should be kept.
- *   * `make_it_worse`: Duplicates should be kept, and they compound to make things worse.
+ *   * no_duplicates: Duplicates should be re-rolled.
+ *   * keep_duplicates: Duplicates should be kept.
+ *   * make_it_worse: Duplicates should be kept, and they compound to make things worse.
  */
 export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_it_worse";
 /**
@@ -128,14 +128,14 @@ export type OracleTableRollMethod = "no_duplicates" | "keep_duplicates" | "make_
  */
 export type OracleTableID1 = string;
 /**
- *   * `common_noun`: A common noun.
- *   * `proper_noun`: A proper noun.
- *   * `adjunct_common_noun`: A common noun used as an adjective, to modify another noun.
- *   * `adjunct_proper_noun`: A proper noun used as an adjective, to modify another noun.
- *   * `verb`: A verb in present tense
- *   * `gerund`: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
- *   * `adjective`: An adjective.
- *   * `attributive_verb`: A verb used as an adjective, to modify a noun.
+ *   * common_noun: A common noun.
+ *   * proper_noun: A proper noun.
+ *   * adjunct_common_noun: A common noun used as an adjective, to modify another noun.
+ *   * adjunct_proper_noun: A proper noun used as an adjective, to modify another noun.
+ *   * verb: A verb in present tense
+ *   * gerund: Gerund or present participle of a verb, e.g. "going", "seeing", "waving"
+ *   * adjective: An adjective.
+ *   * attributive_verb: A verb used as an adjective, to modify a noun.
  */
 export type PartOfSpeech =
   | "common_noun"
@@ -168,7 +168,11 @@ export type Label3 = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetOptionField = SelectFieldPlayerStat | TextField;
+export type AssetOptionField = {
+  id: AssetOptionFieldID;
+  [k: string]: unknown;
+} & (SelectFieldPlayerStat | TextField);
+export type AssetOptionFieldID = string;
 /**
  * A basic player character stat.
  */
@@ -179,12 +183,20 @@ export type AssetAbilityID = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetAbilityOptionField = TextField;
+export type AssetAbilityOptionField = {
+  id: AssetAbilityOptionFieldID;
+  [k: string]: unknown;
+} & TextField;
+export type AssetAbilityOptionFieldID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetAbilityControlField = ClockField | CounterField | CheckboxField;
+export type AssetAbilityControlField = {
+  id: AssetAbilityControlFieldID;
+  [k: string]: unknown;
+} & (ClockField | CounterField | CheckboxField);
+export type AssetAbilityControlFieldID = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -192,33 +204,60 @@ export type AssetAbilityControlField = ClockField | CounterField | CheckboxField
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetConditionMeterControlField = AssetCheckboxField;
-export type MoveEnhance = MoveActionRollEnhance | MoveNoRollEnhance | MoveProgressRollEnhance | MoveSpecialTrackEnhance;
+export type AssetConditionMeterControlField = {
+  id: AssetConditionMeterControlFieldID;
+  [k: string]: unknown;
+} & AssetCheckboxField;
+export type AssetConditionMeterControlFieldID = string;
+export type MoveEnhancement =
+  | MoveActionRollEnhancement
+  | MoveNoRollEnhancement
+  | MoveProgressRollEnhancement
+  | MoveSpecialTrackEnhancement;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString3 = string;
+/**
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * player_choice: The player chooses which roll option to use.
+ *   * highest: Use the roll option with the best/highest value.
+ *   * lowest: Use the roll option with the worst/lowest value.
+ *   * all: Use **every** roll option at once.
+ */
+export type ActionRollMethod = "miss" | "weak_hit" | "strong_hit" | "player_choice" | "highest" | "lowest" | "all";
 export type ActionRollOption =
   | RollOptionStat
   | RollOptionConditionMeter
-  | RollOptionAssetControlField
-  | RollOptionAssetOptionField
-  | RollOptionAttachedAssetRef
+  | RollOptionAssetControl
+  | RollOptionAssetOption
+  | RollOptionAttachedAssetControl
+  | RollOptionAttachedAssetOption
   | RollOptionCustom;
 /**
  * A basic, rollable player character resource.
  */
 export type PlayerConditionMeter = string;
 /**
- * The key of the asset control.
+ * The key of the asset control field.
  */
 export type DictKey1 = string;
 /**
- * The key of the asset option.
+ * The key of the asset option field.
  */
 export type DictKey2 = string;
+/**
+ * The key of the asset control field.
+ */
+export type DictKey3 = string;
+/**
+ * The key of the asset option field.
+ */
+export type DictKey4 = string;
 /**
  * A move ID with wildcards
  */
@@ -236,11 +275,35 @@ export type MarkdownString4 = string;
  */
 export type MarkdownString5 = string;
 /**
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * progress_roll: Make a progress roll on a progress track associated with this move.
+ */
+export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
+/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString6 = string;
+/**
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * player_choice: The player chooses which roll option to use.
+ *   * highest: Use the roll option with the best/highest value.
+ *   * lowest: Use the roll option with the worst/lowest value.
+ *   * all: Use **every** roll option at once.
+ */
+export type SpecialTrackRollMethod =
+  | "miss"
+  | "weak_hit"
+  | "strong_hit"
+  | "player_choice"
+  | "highest"
+  | "lowest"
+  | "all";
 /**
  * Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.
  * 'Canonical' examples:
@@ -272,34 +335,15 @@ export type MarkdownString7 = string;
  */
 export type MarkdownString8 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
- */
-export type ActionRollMethod =
-  | "miss"
-  | "weak_hit"
-  | "strong_hit"
-  | "player_choice"
-  | "highest"
-  | "lowest"
-  | "all"
-  | "enhance";
-/**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString9 = string;
 /**
- *   * `miss`: The score doesn't beat either challenge die.
- *   * `weak_hit`: The score is greater than one challenge die.
- *   * `strong_hit`: The score is greater than both challenge dice.
+ *   * miss: The score doesn't beat either challenge die.
+ *   * weak_hit: The score is greater than one challenge die.
+ *   * strong_hit: The score is greater than both challenge dice.
  */
 export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
 /**
@@ -319,12 +363,6 @@ export type MarkdownString10 = string;
  */
 export type MarkdownString11 = string;
 /**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString12 = string;
-/**
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID2 = string;
@@ -337,7 +375,20 @@ export type Label4 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
+export type MarkdownString12 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
 export type MarkdownString13 = string;
+/**
+ *   * miss: An automatic miss.
+ *   * weak_hit: An automatic weak hit.
+ *   * strong_hit: An automatic strong hit.
+ *   * progress_roll: Make a progress roll on a progress track associated with this move.
+ */
+export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
 /**
  * Localized text, formatted in Markdown.
  *
@@ -345,22 +396,15 @@ export type MarkdownString13 = string;
  */
 export type MarkdownString14 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `progress_roll`: Make a progress roll on a progress track associated with this move.
+ * A move ID, for a standard move or a unique asset move
  */
-export type ProgressRollMethod = "miss" | "weak_hit" | "strong_hit" | "progress_roll";
+export type MoveID3 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString15 = string;
-/**
- * A move ID, for a standard move or a unique asset move
- */
-export type MoveID3 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -374,31 +418,6 @@ export type MarkdownString16 = string;
  */
 export type MarkdownString17 = string;
 /**
- *   * `miss`: An automatic miss.
- *   * `weak_hit`: An automatic weak hit.
- *   * `strong_hit`: An automatic strong hit.
- *   * `player_choice`: The player chooses which roll option to use.
- *   * `highest`: Use the roll option with the best/highest value.
- *   * `lowest`: Use the roll option with the worst/lowest value.
- *   * `all`: Use **every** roll option at once.
- *   * `enhance`: The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see EnhanceMove) and `using` (see RollOptions).
- */
-export type SpecialTrackRollMethod =
-  | "miss"
-  | "weak_hit"
-  | "strong_hit"
-  | "player_choice"
-  | "highest"
-  | "lowest"
-  | "all"
-  | "enhance";
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString18 = string;
-/**
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID4 = string;
@@ -406,8 +425,19 @@ export type MoveID4 = string;
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
-export type AssetControlField = AssetConditionMeter1 | CheckboxField | AssetCardFlipField | SelectFieldAssetState;
+export type AssetControlField = {
+  id: AssetControlFieldID;
+  [k: string]: unknown;
+} & (AssetConditionMeter1 | CheckboxField | AssetCardFlipField | SelectFieldAssetEnhancement);
 export type AssetControlFieldID = string;
+/**
+ * A move ID with wildcards
+ */
+export type MoveIDWithWildcard1 = string;
+/**
+ * A move ID with wildcards
+ */
+export type MoveIDWithWildcard2 = string;
 /**
  * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
  */
@@ -421,11 +451,11 @@ export type DelveSiteID = string;
 /**
  * Challenge rank, represented as an integer:
  *
- *   * `1`: Troublesome
- *   * `2`: Dangerous
- *   * `3`: Formidable
- *   * `4`: Extreme
- *   * `5`: Epic
+ *   * 1: Troublesome
+ *   * 2: Dangerous
+ *   * 3: Formidable
+ *   * 4: Extreme
+ *   * 5: Epic
  */
 export type ChallengeRank = 1 | 2 | 3 | 4 | 5;
 export type DelveSiteDenizenID = string;
@@ -843,12 +873,14 @@ export interface AssetAbility {
      */
     shared?: boolean;
     attachments?: AssetAttachment;
-    condition_meter?: AssetConditionMeter;
+    controls?: {
+      [k: string]: AssetConditionMeter;
+    };
   };
   /**
    * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
-  enhance_moves?: MoveEnhance[];
+  enhance_moves?: MoveEnhancement[];
   /**
    * Unique moves added by this asset ability.
    */
@@ -888,9 +920,11 @@ export interface CheckboxField {
  * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
  *
  * The asset condition meter is always rendered at the bottom of the card.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface AssetConditionMeter {
-  field_type?: "condition_meter";
   max?: number;
   controls?: {
     [k: string]: AssetConditionMeterControlField;
@@ -913,22 +947,23 @@ export interface AssetCheckboxField {
    */
   is_impact: boolean;
 }
-export interface MoveActionRollEnhance {
+export interface MoveActionRollEnhancement {
   /**
    * A move that makes an action roll.
    */
   roll_type: "action_roll";
   trigger?: {
-    conditions?: TriggerActionRollConditionEnhance[];
+    conditions?: TriggerActionRollConditionEnhancement[];
   };
   enhances?: MoveIDWithWildcard[];
 }
-export interface TriggerActionRollConditionEnhance {
+export interface TriggerActionRollConditionEnhancement {
   text?: MarkdownString3;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
    */
+  method: null | ActionRollMethod;
   roll_options: null | ActionRollOption[];
 }
 /**
@@ -939,91 +974,121 @@ export interface TriggerBy {
   player: boolean;
 }
 export interface RollOptionStat {
+  /**
+   * Roll using a standard player character stat.
+   */
   using: "stat";
   stat: PlayerStat;
 }
 export interface RollOptionConditionMeter {
+  /**
+   * Roll using the value of a standard player condition meter.
+   */
   using: "condition_meter";
   condition_meter: PlayerConditionMeter;
 }
-export interface RollOptionAssetControlField {
+export interface RollOptionAssetControl {
+  /**
+   * Roll using the value of an asset control.
+   */
   using: "asset_control";
   /**
-   * Assets that can provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
+   * Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
    */
   assets: AssetIDWildcard[] | null;
   control: DictKey1;
 }
-export interface RollOptionAssetOptionField {
+export interface RollOptionAssetOption {
+  /**
+   * Roll using the value of an asset option.
+   */
   using: "asset_option";
   /**
-   * Assets that can provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
+   * Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
    */
   assets: AssetIDWildcard[] | null;
   option: DictKey2;
 }
-export interface RollOptionAttachedAssetRef {
-  using: "attached_asset_meter";
+export interface RollOptionAttachedAssetControl {
+  /**
+   * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
+   */
+  using: "attached_asset_control";
+  control: DictKey3;
+}
+export interface RollOptionAttachedAssetOption {
+  /**
+   * Roll using the value of an attached asset option.
+   */
+  using: "attached_asset_option";
+  option: DictKey4;
 }
 export interface RollOptionCustom {
   label: Label;
   value: number;
+  /**
+   * Roll using an integer value with customizable labels.
+   */
   using: "custom";
 }
-export interface MoveNoRollEnhance {
+export interface MoveNoRollEnhancement {
   /**
    * A move that makes no action rolls or progress rolls.
    */
   roll_type: "no_roll";
   trigger?: {
-    conditions?: TriggerNoRollConditionEnhance[];
+    conditions?: TriggerNoRollCondition[];
   };
   enhances?: MoveIDWithWildcard[];
 }
-export interface TriggerNoRollConditionEnhance {
+export interface TriggerNoRollCondition {
   text?: MarkdownString4;
   by?: TriggerBy;
+  method: null;
+  roll_options: null;
 }
-export interface MoveProgressRollEnhance {
+export interface MoveProgressRollEnhancement {
   /**
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
   trigger?: {
-    conditions?: TriggerProgressRollConditionEnhance[];
+    conditions?: TriggerProgressRollConditionEnhancement[];
   };
   enhances?: MoveIDWithWildcard[];
 }
-export interface TriggerProgressRollConditionEnhance {
+export interface TriggerProgressRollConditionEnhancement {
   text?: MarkdownString5;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
    */
+  method: null | ProgressRollMethod;
   roll_options: null | ProgressRollOption[];
 }
 export interface ProgressRollOption {
   using: "progress_track";
 }
-export interface MoveSpecialTrackEnhance {
+export interface MoveSpecialTrackEnhancement {
   /**
    * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacies (Starforged).
    */
   roll_type: "special_track";
   trigger?: {
-    conditions?: TriggerSpecialTrackConditionEnhance[];
+    conditions?: TriggerSpecialTrackConditionEnhancement[];
   };
   enhances?: MoveIDWithWildcard[];
 }
 /**
  * A progress move that rolls on one or more special tracks, like Bonds (classic Ironsworn), Failure (Delve), or Legacy (Starforged).
  */
-export interface TriggerSpecialTrackConditionEnhance {
+export interface TriggerSpecialTrackConditionEnhancement {
   text?: MarkdownString6;
   by?: TriggerBy;
   /**
-   * If this is null or undefined, this trigger condition enhance specifies no roll options of its own.
+   * A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.
    */
+  method: null | SpecialTrackRollMethod;
   roll_options: null | TriggerSpecialTrackConditionOption[];
 }
 export interface TriggerSpecialTrackConditionOption {
@@ -1095,7 +1160,7 @@ export interface MoveNoRoll {
    */
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
-  text: MarkdownString12;
+  text: MarkdownString11;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -1107,10 +1172,6 @@ export interface MoveNoRoll {
 export interface TriggerNoRoll {
   text: MarkdownString10;
   conditions?: TriggerNoRollCondition[];
-}
-export interface TriggerNoRollCondition {
-  text?: MarkdownString11;
-  by?: TriggerBy;
 }
 /**
  * A progress move that rolls on a standard progress track type (defined by the move object).
@@ -1125,7 +1186,7 @@ export interface ProgressMove {
   roll_type: "progress_roll";
   track_label: Label4;
   trigger: TriggerProgressRoll;
-  text: MarkdownString15;
+  text: MarkdownString14;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -1136,13 +1197,13 @@ export interface ProgressMove {
   replaces?: MoveID3;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString13;
+  text: MarkdownString12;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
-  text?: MarkdownString14;
+  text?: MarkdownString13;
   by?: TriggerBy;
-  method: ProgressRollMethod;
+  method: ProgressRollMethod1;
   /**
    * The options available when rolling with this trigger.
    */
@@ -1157,7 +1218,7 @@ export interface ProgressMoveSpecialTrackRoll {
    */
   roll_type: "special_track";
   trigger: TriggerSpecialTrack;
-  text: MarkdownString18;
+  text: MarkdownString17;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -1168,11 +1229,11 @@ export interface ProgressMoveSpecialTrackRoll {
   replaces?: MoveID4;
 }
 export interface TriggerSpecialTrack {
-  text: MarkdownString16;
+  text: MarkdownString15;
   conditions: TriggerSpecialTrackCondition[];
 }
 export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString17;
+  text?: MarkdownString16;
   by?: TriggerBy;
   method: SpecialTrackRollMethod;
   /**
@@ -1202,11 +1263,11 @@ export interface AssetConditionMeter1 {
     /**
      * The ID(s) of recovery moves associated with this meter.
      */
-    recover?: MoveIDWithWildcard[];
+    recover?: MoveIDWithWildcard1[];
     /**
-     * The ID of suffer moves associated with the condition meter. If the suffer move makes an action roll, it should probably use this condition meter's value as a stat option.
+     * The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.
      */
-    suffer?: MoveIDWithWildcard[];
+    suffer?: MoveIDWithWildcard2[];
   };
 }
 /**
@@ -1231,10 +1292,10 @@ export interface AssetCardFlipField {
 /**
  * Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
  */
-export interface SelectFieldAssetState {
+export interface SelectFieldAssetEnhancement {
   id: string;
   label: Label;
-  field_type: "select_asset_state";
+  field_type: "select_enhancement";
   value?: {
     /**
      * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
@@ -1303,9 +1364,9 @@ export interface AtlasEntry {
   features: MarkdownString[];
   description: MarkdownString;
   quest_starter: MarkdownString;
+  your_truth?: MarkdownString;
   suggestions?: Suggestions;
   source: Source;
-  your_truth?: MarkdownString;
 }
 /**
  * A delve site with a theme, domain, and denizen table.
@@ -1458,9 +1519,9 @@ export interface Npc {
   };
   description: MarkdownString;
   quest_starter: MarkdownString;
+  your_truth?: MarkdownString;
   suggestions?: Suggestions;
   source: Source;
-  your_truth?: MarkdownString;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
