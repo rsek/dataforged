@@ -12,7 +12,7 @@ const typeKeys = [
 
 const noSort = ['columns', 'controls', 'contents', 'collections']
 
-const dataSwornKeyOrder = [
+export const dataSwornKeyOrder = [
 	'id',
 	'title',
 	'name',
