@@ -142,7 +142,7 @@ type OracleTableColumnContentKey = Static<typeof OracleTableColumnContentKey>
 
 export const OracleTableColumn = Type.Object(
 	{
-		label: Type.Optional(
+		name: Type.Optional(
 			Type.Ref(Localize.Label, {
 				description: "The table column's header text."
 			})
@@ -157,9 +157,9 @@ export const OracleTableColumn = Type.Object(
 	{
 		$id: '#/$defs/OracleTableColumn',
 		examples: [
-			{ label: 'Roll', content_type: 'roll' },
-			{ label: 'Result', content_type: 'result' },
-			{ label: 'Summary', content_type: 'summary' }
+			{ name: 'Roll', content_type: 'roll' },
+			{ name: 'Result', content_type: 'result' },
+			{ name: 'Summary', content_type: 'summary' }
 		]
 	}
 )
@@ -188,8 +188,8 @@ export const OracleTableRendering = Type.Object(
 		table_style: Type.Optional(Type.Ref(OracleTableStyle)),
 		columns: Abstract.Dictionary(Type.Ref(OracleTableColumn), {
 			default: {
-				roll: { label: 'Roll', content_type: 'roll' },
-				result: { label: 'Result', content_type: 'result' }
+				roll: { name: 'Roll', content_type: 'roll' },
+				result: { name: 'Result', content_type: 'result' }
 			}
 		})
 	},

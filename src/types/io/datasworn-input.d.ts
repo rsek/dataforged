@@ -604,7 +604,7 @@ export interface OracleCollectionRendering {
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleCollectionTableColumn {
-  label?: Label1;
+  name?: Label1;
   content_type: OracleTableColumnContentKey;
   color?: CSSColor1;
   table_key: DictKey;
@@ -640,7 +640,7 @@ export interface OracleTableRendering {
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleTableColumn {
-  label?: Label2;
+  name?: Label2;
   content_type: OracleTableColumnContentKey1;
   color?: CSSColor2;
 }
@@ -820,7 +820,7 @@ export interface Asset {
  */
 export interface SelectFieldPlayerStat {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "select_stat";
   value?: PlayerStat;
   choices: {
@@ -829,7 +829,7 @@ export interface SelectFieldPlayerStat {
      * via the `patternProperty` "^[a-z][a-z_]*$".
      */
     [k: string]: {
-      label: Label;
+      name: Label;
       value: PlayerStat;
       selected?: boolean;
     };
@@ -837,7 +837,7 @@ export interface SelectFieldPlayerStat {
 }
 export interface TextField {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "text";
   value?: string;
 }
@@ -882,7 +882,7 @@ export interface AssetAbility {
 }
 export interface ClockField {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "clock";
   min: 0;
   max: 4 | 6 | 8 | 10;
@@ -890,7 +890,7 @@ export interface ClockField {
 }
 export interface CounterField {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "counter";
   min: 0;
   max?: number;
@@ -901,7 +901,7 @@ export interface CounterField {
  */
 export interface AssetCheckboxField {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "checkbox";
   /**
    * Is the box checked?
@@ -1020,7 +1020,7 @@ export interface RollOptionAttachedAssetOption {
   option: DictKey4;
 }
 export interface RollOptionCustom {
-  label: Label;
+  name: Label;
   value: number;
   /**
    * Roll using an integer value with customizable labels.
@@ -1233,7 +1233,7 @@ export interface TriggerSpecialTrackCondition {
  */
 export interface AssetConditionMeter {
   id?: AssetControlFieldID;
-  label: Label;
+  name: Label;
   field_type: "condition_meter";
   min?: number;
   max: number;
@@ -1263,7 +1263,7 @@ export interface AssetConditionMeter {
  */
 export interface AssetCardFlipField {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "card_flip";
   /**
    * Is the card flipped over?
@@ -1283,7 +1283,7 @@ export interface AssetCardFlipField {
  */
 export interface SelectFieldAssetEnhancement {
   id?: string;
-  label: Label;
+  name: Label;
   field_type: "select_enhancement";
   value?: AssetEnhancement;
   choices: {
@@ -1292,7 +1292,7 @@ export interface SelectFieldAssetEnhancement {
      * via the `patternProperty` "^[a-z][a-z_]*$".
      */
     [k: string]: {
-      label: Label;
+      name: Label;
       value: AssetEnhancement;
       selected?: boolean;
     };

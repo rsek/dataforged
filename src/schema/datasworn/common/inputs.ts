@@ -12,7 +12,7 @@ import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
 export function SelectBase<T extends TSchema>(t: T) {
 	return Type.Object({
-		label: Type.Ref(Localize.Label),
+		name: Type.Ref(Localize.Label),
 		value: Type.Optional(t),
 		choices: Abstract.Dictionary(SelectOptionBase(t))
 	})
@@ -51,13 +51,13 @@ export type CounterBase = Static<typeof CounterBase>
 
 export function SelectOptionBase<T extends TSchema>(t: T) {
 	return Type.Object({
-		label: Type.Ref(Localize.Label),
+		name: Type.Ref(Localize.Label),
 		value: t,
 		selected: Type.Optional(Type.Boolean())
 	})
 }
 export interface SelectOptionBase<T> {
-	label: string
+	name: string
 	value: T
 	selected?: boolean
 }
@@ -80,7 +80,7 @@ export function InputField<T extends InputFieldType, V extends TSchema>(
 	return Type.Object(
 		{
 			id: Type.String(),
-			label: Type.Ref(Localize.Label),
+			name: Type.Ref(Localize.Label),
 			field_type: Type.Literal(fieldType),
 			value: Type.Optional(value),
 			...otherProperties
@@ -90,7 +90,7 @@ export function InputField<T extends InputFieldType, V extends TSchema>(
 }
 export interface InputField<T extends InputFieldType, V> {
 	id: string
-	label: string
+	name: string
 	field_type: T
 	value?: V
 }
@@ -98,7 +98,7 @@ export interface InputField<T extends InputFieldType, V> {
 export function InputFieldEnhance<T extends ReturnType<typeof InputField>>(
 	t: T
 ) {
-	return Type.Omit(t, ['field_type', 'label', 'value'])
+	return Type.Omit(t, ['field_type', 'name', 'value'])
 }
 
 export const CheckboxField = InputField(

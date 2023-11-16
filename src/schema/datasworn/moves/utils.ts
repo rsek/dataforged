@@ -12,7 +12,8 @@ import {
 	type TBigInt,
 	type TObject,
 	type TSchema,
-	TypeGuard
+	TypeGuard,
+	TOptional
 } from '@sinclair/typebox'
 import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
 import { UnionOneOf } from '../../../typebox/union-oneof.js'
@@ -57,6 +58,7 @@ const MoveBase = SourcedNode(
 		)
 	})
 )
+export type MoveBase = Static<typeof MoveBase>
 
 export function Move<
 	RollType extends TSchema,
@@ -181,18 +183,19 @@ export function TriggerConditionEnhancement<
 }
 
 export function toMoveEnhancement<
-	TMove extends AnyMoveSchema & TObject,
-	TEnhance extends TObject
+	T extends TObject<{ roll_type: TSchema }>,
+	TriggerEnhancement extends TObject
 >(
-	moveSchema: TMove,
-	triggerEnhanceSchema: TEnhance,
+	moveSchema: T,
+	triggerEnhanceSchema: TriggerEnhancement,
 	options: ObjectOptions = {}
 ) {
-	const { roll_type } = moveSchema.properties
-	const base = Type.Object({
-		roll_type,
-		trigger: Type.Optional(triggerEnhanceSchema)
-	})
+	const base = Type.Composite([
+		Type.Pick(moveSchema, ['roll_type']),
+		Type.Object({
+			trigger: Type.Optional(triggerEnhanceSchema)
+		})
+	])
 
 	const enhanceMany = RequireBy(
 		Abstract.EnhanceMany(base, Type.Ref(MoveIDWildcard), options),
@@ -203,17 +206,17 @@ export function toMoveEnhancement<
 	return enhanceMany
 }
 
-export type MoveBase = Static<typeof MoveBase>
-
 export function RollOption<
 	Using extends ActionRollUsing,
-	Props extends TProperties
+	Props extends TObject
 >(using: Using, props: Props, options: ObjectOptions = {}) {
-	return Type.Object<Props & { using: TLiteral<Using> }>(
-		{
-			...props,
-			using: ExtractLiteralFromEnum(ActionRollUsing, using)
-		},
+	return Type.Composite(
+		[
+			props,
+			Type.Object({
+				using: ExtractLiteralFromEnum(ActionRollUsing, using)
+			})
+		],
 		{
 			additionalProperties: false,
 			...options

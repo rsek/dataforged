@@ -34,13 +34,13 @@ assets:
           options: &Options_Name
             name:
               field_type: text
-              label: Name
+              name: Name
         controls:
           integrity:
             max: 5
             value: 5
             <<: &CommandVehicleIntegrity
-              label: integrity
+              name: integrity
               field_type: condition_meter
               min: 0
               moves:
@@ -50,11 +50,11 @@ assets:
                   - starforged/moves/recover/repair
               controls:
                 battered: &Vehicle.Battered
-                  label: battered
+                  name: battered
                   field_type: checkbox
                   is_impact: true
                 cursed:
-                  label: cursed
+                  name: cursed
                   field_type: checkbox
                   is_impact: true
         abilities:
@@ -113,7 +113,7 @@ assets:
           controls:
             broken: &BrokenControl
               field_type: card_flip
-              label: broken
+              name: broken
               disables_asset: true
         abilities:
           - text: |-
@@ -167,7 +167,7 @@ assets:
         controls:
           cargo:
             field_type: condition_meter
-            label: cargo
+            name: cargo
             max: 3
             value: 0
             min: 0
@@ -402,7 +402,7 @@ assets:
         controls:
           ammo:
             field_type: condition_meter
-            label: ammo
+            name: ammo
             max: 5
             value: 5
             min: 0
@@ -719,7 +719,7 @@ assets:
                       text: In your vehicle
         controls:
           shields:
-            label: shields
+            name: shields
             field_type: condition_meter
             max: 4
             value: 0
@@ -1193,7 +1193,7 @@ assets:
               When you personally defeat a notable foe in your snub fighter, envision the victory mark you make on the fuselage. Tally your victories in this box. For every five, mark 2 ticks on your quests legacy track.
             controls:
               victory_marks:
-                label: Victory marks
+                name: Victory marks
                 field_type: counter
                 min: 0
                 value: 0
@@ -1265,7 +1265,7 @@ assets:
         controls:
           ammo:
             field_type: condition_meter
-            label: ammo
+            name: ammo
             max: 6
             min: 0
             value: 6
@@ -1423,10 +1423,10 @@ assets:
         <<: *PathAsset
         options:
           one:
-            label: One
+            name: One
             field_type: text
           two:
-            label: Two
+            name: Two
             field_type: text
           # TODO: work out a way to model the broken state here. it can't be a card flip, because there's two separate things to break
           # maybe an ability-specific disable toggle?
@@ -1458,7 +1458,7 @@ assets:
         <<: *PathAsset
         options:
           ideology:
-            label: Ideology
+            name: Ideology
             field_type: text
         abilities:
           - text: |-
@@ -1551,11 +1551,11 @@ assets:
               You wield an iconic blade. Give it a name. When you [Swear an Iron Vow](id:starforged/moves/quest/swear_an_iron_vow) by binding your promise to the blade, add +1. On a hit, fill the box below. If you make a move (including a progress move) using this oathbound blade and score a miss, you may clear the box to reroll any dice.
             options:
               name:
-                label: Name
+                name: Name
                 field_type: text
             controls:
               oathbound:
-                label: Oathbound
+                name: Oathbound
                 field_type: checkbox
                 value: false
             enhance_moves:
@@ -1723,7 +1723,7 @@ assets:
         controls:
           safety:
             field_type: condition_meter
-            label: safety
+            name: safety
             max: 5
             value: 0
             min: 0
@@ -1767,26 +1767,26 @@ assets:
         <<: *PathAsset
         options:
           name:
-            label: name
+            name: name
             field_type: text
           linked_stat:
-            label: Linked stat
+            name: Linked stat
             field_type: select_stat
             choices:
               edge:
-                label: Edge
+                name: Edge
                 value: edge
               heart:
-                label: Heart
+                name: Heart
                 value: heart
               iron:
-                label: Iron
+                name: Iron
                 value: iron
               shadow:
-                label: Shadow
+                name: Shadow
                 value: shadow
               wits:
-                label: Wits
+                name: Wits
                 value: wits
         abilities:
           - text: |-
@@ -2066,7 +2066,7 @@ assets:
         controls:
           fire:
             field_type: condition_meter
-            label: fire
+            name: fire
             max: 5
             value: 0
             min: 0
@@ -2078,7 +2078,7 @@ assets:
               You are hunted by a power or authority. When you make a move, you may improve the result to a strong hit. If you do, fill one segment of a four-segment clock to represent hunters closing in. When the clock is filled, a notable foe or force has tracked you down. If you overcome them or escape, reset the clock and mark 1 tick on your quests legacy track.
             controls:
               clock:
-                label: Notable foe or force tracks you down
+                name: Notable foe or force tracks you down
                 field_type: clock
                 max: 4
                 value: 0
@@ -2189,7 +2189,7 @@ assets:
               Give your favorite gun a name. When you [Clash](id:starforged/moves/combat/clash) with it, add +1. When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) or [Endure Stress](id:starforged/moves/suffer/endure_stress) while wielding it, add +1 and take +1 momentum on a hit.
             options:
               name:
-                label: Name
+                name: Name
                 field_type: text
             enhance_moves:
               - enhances:
@@ -2475,13 +2475,13 @@ assets:
                       # time_gap
                       roll_options:
                         - using: custom
-                          label: Minutes
+                          name: Minutes
                           value: 4
                         - using: custom
-                          label: Hours
+                          name: Hours
                           value: 3
                         - using: custom
-                          label: Days
+                          name: Days
                           value: 2
                 text: *LooperMove
                 outcomes:
@@ -3187,7 +3187,7 @@ assets:
         <<: *PathAsset
         options:
           last_of:
-            label: Last of
+            name: Last of
             field_type: text
         abilities:
           - text: |-
@@ -3214,7 +3214,7 @@ assets:
               You carry a physical relic of your heritage. Envision its powers or nature. When you make a move directly aided by the relic and score a miss, you may reroll your action die.
             options:
               relic:
-                label: Relic
+                name: Relic
                 field_type: text
                 # position: ability_2_bottom
             enhance_moves:
@@ -3370,12 +3370,12 @@ assets:
         controls:
           health:
             <<: &BiologicalCompanionHealth
-              label: health
+              name: health
               min: 0
               field_type: condition_meter
               controls:
                 out_of_action:
-                  label: Out of action
+                  name: Out of action
                   field_type: checkbox
                   disables_asset: true
               moves: &BiologicalCompanionHealth.moves
@@ -3592,10 +3592,10 @@ assets:
         # tags: [biological_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
           expertise:
-            label: Expertise
+            name: Expertise
             field_type: text
         controls:
           health:
@@ -3865,7 +3865,7 @@ assets:
         name: Bonded
         options:
           bond_mate:
-            label: Bond-mate
+            name: Bond-mate
             field_type: text
         requirement: One time only, once you [Forge a Bond](id:starforged/moves/connection/forge_a_bond) with a special individual...
         abilities:
@@ -3978,7 +3978,7 @@ assets:
         <<: *DeedAsset
         options:
           identifier:
-            label: Identifier
+            name: Identifier
             field_type: text
         requirement: Once you fill 5 boxes on your quests legacy track...
         abilities:
@@ -4001,7 +4001,7 @@ assets:
               - roll_type: action_roll
             controls:
               clock:
-                label: Stained reputation
+                name: Stained reputation
                 field_type: clock
                 max: 6
                 value: 0

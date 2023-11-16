@@ -41,7 +41,7 @@ export type ActionRollUsing = Static<typeof ActionRollUsing>
 
 export const RollOptionAssetControl = RollOption(
 	'asset_control',
-	{
+	Type.Object({
 		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
 			default: null,
 			description:
@@ -51,7 +51,7 @@ export const RollOptionAssetControl = RollOption(
 			description: 'The key of the asset control field.',
 			examples: ['health', 'integrity']
 		})
-	},
+	}),
 	{ $id: '#/$defs/RollOptionAssetControl' }
 )
 
@@ -59,9 +59,7 @@ export type RollOptionAssetControl = Static<typeof RollOptionAssetControl>
 
 export const RollOptionAttachedAssetControl = RollOption(
 	'attached_asset_control',
-	{
-		control: RollOptionAssetControl.properties.control
-	},
+	Type.Pick(RollOptionAssetControl, ['control']),
 	{ $id: '#/$defs/RollOptionAttachedAssetControl' }
 )
 
@@ -71,7 +69,7 @@ export type RollOptionAttachedAssetControl = Static<
 
 export const RollOptionAssetOption = RollOption(
 	'asset_option',
-	{
+	Type.Object({
 		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
 			default: null,
 			description:
@@ -80,7 +78,7 @@ export const RollOptionAssetOption = RollOption(
 		option: Type.Ref(DictKey, {
 			description: 'The key of the asset option field.'
 		})
-	},
+	}),
 	{ $id: '#/$defs/RollOptionAssetOption' }
 )
 
@@ -88,9 +86,7 @@ export type RollOptionAssetOption = Static<typeof RollOptionAssetOption>
 
 export const RollOptionAttachedAssetOption = RollOption(
 	'attached_asset_option',
-	{
-		option: RollOptionAssetOption.properties.option
-	},
+	Type.Pick(RollOptionAssetOption, ['option']),
 	{ $id: '#/$defs/RollOptionAttachedAssetOption' }
 )
 
@@ -100,9 +96,9 @@ export type RollOptionAttachedAssetOption = Static<
 
 export const RollOptionStat = RollOption(
 	'stat',
-	{
+	Type.Object({
 		stat: Type.Ref(Player.PlayerStat)
-	},
+	}),
 	{ $id: '#/$defs/RollOptionStat' }
 )
 
@@ -110,19 +106,19 @@ export type RollOptionStat = Static<typeof RollOptionStat>
 
 export const RollOptionConditionMeter = RollOption(
 	'condition_meter',
-	{
+	Type.Object({
 		condition_meter: Type.Ref(Player.PlayerConditionMeter)
-	},
+	}),
 	{ $id: '#/$defs/RollOptionConditionMeter' }
 )
 export type RollOptionConditionMeter = Static<typeof RollOptionConditionMeter>
 
 export const RollOptionCustom = RollOption(
 	'custom',
-	{
-		label: Type.Ref(Localize.Label),
+	Type.Object({
+		name: Type.Ref(Localize.Label),
 		value: Type.Integer({ minimum: 0 })
-	},
+	}),
 	{ $id: '#/$defs/RollOptionCustom' }
 )
 export type RollOptionCustom = Static<typeof RollOptionCustom>

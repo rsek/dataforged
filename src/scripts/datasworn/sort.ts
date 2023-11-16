@@ -16,7 +16,6 @@ export const dataSwornKeyOrder = [
 	'id',
 	'title',
 	'name',
-	'label',
 	'canonical_name',
 	...typeKeys,
 	'min',

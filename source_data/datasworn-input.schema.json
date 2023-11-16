@@ -870,7 +870,7 @@
 			"type": "object",
 			"required": ["content_type", "table_key"],
 			"properties": {
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label",
 					"description": "The table column's header text."
 				},
@@ -974,7 +974,7 @@
 			"type": "object",
 			"required": ["content_type"],
 			"properties": {
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label",
 					"description": "The table column's header text."
 				},
@@ -990,15 +990,15 @@
 			},
 			"examples": [
 				{
-					"label": "Roll",
+					"name": "Roll",
 					"content_type": "roll"
 				},
 				{
-					"label": "Result",
+					"name": "Result",
 					"content_type": "result"
 				},
 				{
-					"label": "Summary",
+					"name": "Summary",
 					"content_type": "summary"
 				}
 			]
@@ -1031,11 +1031,11 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"default": {
 						"roll": {
-							"label": "Roll",
+							"name": "Roll",
 							"content_type": "roll"
 						},
 						"result": {
-							"label": "Result",
+							"name": "Result",
 							"content_type": "result"
 						}
 					},
@@ -1779,9 +1779,9 @@
 		"RollOptionCustom": {
 			"title": "RollOptionCustom",
 			"type": "object",
-			"required": ["label", "value", "using"],
+			"required": ["name", "value", "using"],
 			"properties": {
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"value": {
@@ -2415,12 +2415,12 @@
 			"title": "AssetCardFlipField",
 			"type": "object",
 			"description": "This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.\n\n    Otherwise, it behaves similarly to a CheckboxField.\n    ",
-			"required": ["label", "field_type"],
+			"required": ["name", "field_type"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2449,12 +2449,12 @@
 			"title": "AssetCheckboxField",
 			"type": "object",
 			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
-			"required": ["label", "field_type"],
+			"required": ["name", "field_type"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2483,12 +2483,12 @@
 			"title": "AssetConditionMeter",
 			"type": "object",
 			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
-			"required": ["label", "field_type", "max"],
+			"required": ["name", "field_type", "max"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/AssetControlFieldID"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2719,12 +2719,12 @@
 			"title": "CheckboxField",
 			"type": "object",
 			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
-			"required": ["label", "field_type"],
+			"required": ["name", "field_type"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2741,12 +2741,12 @@
 		"ClockField": {
 			"title": "ClockField",
 			"type": "object",
-			"required": ["label", "field_type", "min", "max"],
+			"required": ["name", "field_type", "min", "max"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2769,12 +2769,12 @@
 		"CounterField": {
 			"title": "CounterField",
 			"type": "object",
-			"required": ["label", "field_type", "min"],
+			"required": ["name", "field_type", "min"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2798,12 +2798,12 @@
 			"title": "Select field (asset enhancement)",
 			"type": "object",
 			"description": "Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
-			"required": ["label", "field_type", "choices"],
+			"required": ["name", "field_type", "choices"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2819,9 +2819,9 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"type": "object",
-							"required": ["label", "value"],
+							"required": ["name", "value"],
 							"properties": {
-								"label": {
+								"name": {
 									"$ref": "#/$defs/Label"
 								},
 								"value": {
@@ -2840,12 +2840,12 @@
 			"title": "Select field (player stat)",
 			"type": "object",
 			"description": "Select a standard player stat.",
-			"required": ["label", "field_type", "choices"],
+			"required": ["name", "field_type", "choices"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {
@@ -2861,9 +2861,9 @@
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"type": "object",
-							"required": ["label", "value"],
+							"required": ["name", "value"],
 							"properties": {
-								"label": {
+								"name": {
 									"$ref": "#/$defs/Label"
 								},
 								"value": {
@@ -2881,12 +2881,12 @@
 		"TextField": {
 			"title": "TextField",
 			"type": "object",
-			"required": ["label", "field_type"],
+			"required": ["name", "field_type"],
 			"properties": {
 				"id": {
 					"type": "string"
 				},
-				"label": {
+				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"field_type": {

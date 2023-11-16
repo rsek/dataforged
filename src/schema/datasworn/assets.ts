@@ -83,7 +83,7 @@ export const AssetConditionMeter = Type.Composite(
 		Type.Object({
 			id: Type.Ref(ID.AssetControlFieldID),
 			field_type: Type.Literal('condition_meter'),
-			label: Type.Ref(Localize.Label),
+			name: Type.Ref(Localize.Label),
 			moves: Type.Optional(
 				Type.Object(
 					{
@@ -144,7 +144,7 @@ export type AssetConditionMeter = Static<typeof AssetConditionMeter>
 export const AssetConditionMeterEnhancement = NoDefaults(
 	Type.Partial(
 		Type.Omit(AssetConditionMeter, [
-			'label',
+			'name',
 			'value',
 			'id',
 			'moves',

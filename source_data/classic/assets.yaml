@@ -30,7 +30,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your cat takes down its prey.
         abilities:
@@ -77,7 +77,7 @@ assets:
             <<: &CompanionHealth
               min: 0
               field_type: condition_meter
-              label: health
+              name: health
               moves:
                 suffer:
                   - classic/moves/suffer/companion_endure_harm
@@ -96,7 +96,7 @@ assets:
         # tags: [beast_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your spider uncovers secrets.
         abilities:
@@ -157,7 +157,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         controls:
           health:
@@ -228,7 +228,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: You and your horse ride as one.
         abilities:
@@ -293,7 +293,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your hound is your steadfast companion.
         abilities:
@@ -348,7 +348,7 @@ assets:
         # tags: [ironlander_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         controls:
           health:
@@ -363,7 +363,7 @@ assets:
             options:
               expertise:
                 field_type: text
-                label: Expertise
+                name: Expertise
             enhance_moves:
               - roll_type: action_roll
                 trigger:
@@ -410,7 +410,7 @@ assets:
         # tags: [beast_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your mammoth walks a resolute path.
         abilities:
@@ -462,7 +462,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your owl soars through the darkness.
         abilities:
@@ -525,7 +525,7 @@ assets:
         # tags: [animal_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your raven heeds your call.
         abilities:
@@ -580,7 +580,7 @@ assets:
         # tags: [beast_companion]
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Your wyvern won’t devour you. For now.
         abilities:
@@ -748,7 +748,7 @@ assets:
         # icon not on game-icons
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: Once you mark a bond with a leader or faction...
         abilities:
@@ -831,7 +831,7 @@ assets:
         # https://game-icons.net/1x1/lorc/rune-sword.html
         options:
           name:
-            label: Name
+            name: Name
             field_type: text
         requirement: |-
           Once you mark a bond with a kin-blade, a sentient weapon imbued with the spirit of your ancestor...
@@ -947,7 +947,7 @@ assets:
             # FIXME: conditional debility?
             # this *could* be a new feature of the condition meter object
             field_type: condition_meter
-            label: strength
+            name: strength
             max: 4
             min: 0
             value: 4
@@ -1030,26 +1030,26 @@ assets:
         # https://game-icons.net/1x1/lorc/sundial.html
         options:
           gods_name:
-            label: God's name
+            name: God's name
             field_type: text
           stat:
-            label: Stat
+            name: Stat
             field_type: select_stat
             choices:
               edge:
-                label: Edge
+                name: Edge
                 value: edge
               heart:
-                label: Heart
+                name: Heart
                 value: heart
               iron:
-                label: Iron
+                name: Iron
                 value: iron
               shadow:
-                label: Shadow
+                name: Shadow
                 value: shadow
               wits:
-                label: Wits
+                name: Wits
                 value: wits
         abilities:
           - text: |-
@@ -1113,7 +1113,7 @@ assets:
         # https://game-icons.net/1x1/delapouite/crenel-crown.html
         options:
           title_lineage:
-            label: Title/Lineage
+            name: Title/Lineage
             field_type: text
         abilities:
           - text: |-
@@ -1242,7 +1242,7 @@ assets:
         controls:
           wealth:
             field_type: condition_meter
-            label: wealth
+            name: wealth
             max: 5
             value: 0
             min: 0
@@ -1531,20 +1531,20 @@ assets:
         requirement: Once you mark a bond with elves, and are gifted a mask of precious elderwood...
         options:
           material:
-            label: Material
+            name: Material
             field_type: select_stat
             choices:
               thunderwood:
-                label: Thunderwood
+                name: Thunderwood
                 value: edge
               bloodwood:
-                label: Bloodwood
+                name: Bloodwood
                 value: iron
               ghostwood:
-                label: Ghostwood
+                name: Ghostwood
                 value: shadow
               whisperwood:
-                label: Whisperwood
+                name: Whisperwood
                 value: wits
         abilities:
           - text: |-
@@ -2365,7 +2365,7 @@ assets:
         # https://game-icons.net/1x1/delapouite/3d-hammer.html
         options:
           specialty:
-            label: Specialty
+            name: Specialty
             field_type: text
         abilities:
           - text: |-
@@ -2745,13 +2745,13 @@ assets:
         # what about assets that *require* an impact?
         # alternatively, could this handle like, IDK, checkbox impacts?
         # field_type: select_enhancement
-        # label: Equipped
+        # name: Equipped
         # choices:
         #   lightly_armored:
-        #     label: Lightly armored
+        #     name: Lightly armored
         #     value: {}
         #   geared_for_war:
-        #     label: Geared for war
+        #     name: Geared for war
         #     value: { count_as_impact: true }
         abilities:
           - text: |-
@@ -3231,7 +3231,7 @@ assets:
         controls:
           health:
             field_type: condition_meter
-            label: health
+            name: health
             max: 3
             value: 3
             min: 0
@@ -3446,7 +3446,7 @@ assets:
         controls:
           essence:
             field_type: condition_meter
-            label: essence
+            name: essence
             max: 6
             value: 0
             min: 0
@@ -3552,7 +3552,7 @@ assets:
         controls:
           light:
             field_type: condition_meter
-            label: light
+            name: light
             max: 6
             value: 0
             min: 0

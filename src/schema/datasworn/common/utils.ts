@@ -10,7 +10,8 @@ import {
 	TString,
 	TNull,
 	TUnion,
-	TLiteral
+	TLiteral,
+	ObjectProperties
 } from '@sinclair/typebox'
 import { Clone } from '@sinclair/typebox/value/clone'
 import { camelCase, startCase } from 'lodash-es'
@@ -52,32 +53,6 @@ export function pascalCase(str: string) {
 	return capitalize(camelCase(str))
 }
 
-// export type DeepPartial<T = unknown> = T extends Record<any, any>
-// 	? {
-// 			[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
-// 	  }
-// 	: T
-
-// export function DeepPartial<T extends TSchema>(
-// 	schema: T,
-// 	options: SchemaOptions = {}
-// ) {
-// 	if (schema.properties == null) return schema
-
-// 	const properties = Object.keys(schema.properties).reduce((acc, key) => {
-// 		const propertySchema = schema.properties[key]
-// 		const mapped = TypeGuard.TObject(propertySchema)
-// 			? DeepPartial(propertySchema)
-// 			: propertySchema
-// 		return { ...acc, [key]: Type.Optional(mapped) }
-// 	}, {}) as TProperties
-
-// 	return Type.Object<typeof properties>({ ...properties }, options)
-// 	// as TUnsafe<
-// 	// 	DeepPartial<Static<T>>
-// 	// >
-// }
-
 export type DeepPartial<T extends Record<any, any>> = {
 	[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
 }
@@ -101,6 +76,8 @@ export function DeepPartial<T extends TObject>(
 	return Type.Object({ ...properties }, options) as TDeepPartial<T> // required
 }
 
+export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+
 /** Make the provided keys optional */
 export function PartialBy<T extends TObject>(
 	schema: T,
@@ -115,10 +92,14 @@ export function PartialBy<T extends TObject>(
 		options
 	)
 }
+
+export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
+	Partial<Omit<T, K>>
+
 /** Make everything optional except for the provided keys  */
-export function PartialExcept<T extends TObject, K extends keyof Static<T>>(
+export function PartialExcept<T extends TObject, K extends (keyof Static<T>)[]>(
 	schema: T,
-	requiredKeys: K[],
+	requiredKeys: [...K],
 	options: SchemaOptions = {}
 ) {
 	return Type.Composite(
@@ -129,11 +110,12 @@ export function PartialExcept<T extends TObject, K extends keyof Static<T>>(
 		options
 	)
 }
+export type RequireBy<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>
 
 /** Make the provided keys required */
-export function RequireBy<T extends TObject, K extends keyof Static<T>>(
+export function RequireBy<T extends TObject, K extends (keyof Static<T>)[]>(
 	schema: T,
-	requiredKeys: K[],
+	requiredKeys: [...K],
 	options: ObjectOptions = {}
 ) {
 	return Type.Composite(
@@ -145,12 +127,12 @@ export function RequireBy<T extends TObject, K extends keyof Static<T>>(
 	)
 }
 
-export type RequireBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
-
+export type RequireExcept<T, K extends keyof T> = Required<Omit<T, K>> &
+	Pick<T, K>
 /** Make everything required except for the provided keys */
-export function RequireExcept<T extends TObject, K extends keyof Static<T>>(
+export function RequireExcept<T extends TObject, K extends (keyof Static<T>)[]>(
 	schema: T,
-	nonRequiredKeys: K[],
+	nonRequiredKeys: [...K],
 	options: SchemaOptions = {}
 ) {
 	return Type.Composite(
