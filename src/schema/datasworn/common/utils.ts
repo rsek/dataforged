@@ -6,10 +6,15 @@ import {
 	type Static,
 	type TObject,
 	type TProperties,
-	type TSchema
+	type TSchema,
+	TString,
+	TNull,
+	TUnion,
+	TLiteral
 } from '@sinclair/typebox'
+import { Clone } from '@sinclair/typebox/value/clone'
 import { camelCase, startCase } from 'lodash-es'
-import { type Simplify } from 'type-fest'
+import { KebabCase, type Simplify } from 'type-fest'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
 	schemas: [...Head, Tail],
@@ -47,31 +52,55 @@ export function pascalCase(str: string) {
 	return capitalize(camelCase(str))
 }
 
-export type DeepPartial<T = unknown> = T extends Record<any, any>
-	? {
-			[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
-	  }
-	: T
+// export type DeepPartial<T = unknown> = T extends Record<any, any>
+// 	? {
+// 			[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
+// 	  }
+// 	: T
 
-export function DeepPartial<T extends TSchema>(
+// export function DeepPartial<T extends TSchema>(
+// 	schema: T,
+// 	options: SchemaOptions = {}
+// ) {
+// 	if (schema.properties == null) return schema
+
+// 	const properties = Object.keys(schema.properties).reduce((acc, key) => {
+// 		const propertySchema = schema.properties[key]
+// 		const mapped = TypeGuard.TObject(propertySchema)
+// 			? DeepPartial(propertySchema)
+// 			: propertySchema
+// 		return { ...acc, [key]: Type.Optional(mapped) }
+// 	}, {}) as TProperties
+
+// 	return Type.Object<typeof properties>({ ...properties }, options)
+// 	// as TUnsafe<
+// 	// 	DeepPartial<Static<T>>
+// 	// >
+// }
+
+export type DeepPartial<T extends Record<any, any>> = {
+	[K in keyof T]?: T[K] extends Record<any, any> ? DeepPartial<T[K]> : T[K]
+}
+
+// Specialized TObject type that can be passed to TIntersect
+export interface TDeepPartial<T extends TObject> extends TObject {
+	static: DeepPartial<Static<T>>
+}
+
+export function DeepPartial<T extends TObject>(
 	schema: T,
-	options: SchemaOptions = {}
-) {
-	if (schema.properties == null) return schema
-
+	options: ObjectOptions = {}
+): TDeepPartial<T> {
 	const properties = Object.keys(schema.properties).reduce((acc, key) => {
-		const propertySchema = schema.properties[key]
-		const mapped = TypeGuard.TObject(propertySchema)
-			? DeepPartial(propertySchema)
-			: propertySchema
+		const property = schema.properties[key]
+		const mapped = TypeGuard.TObject(property)
+			? DeepPartial(property)
+			: property
 		return { ...acc, [key]: Type.Optional(mapped) }
 	}, {}) as TProperties
-
-	return Type.Object<typeof properties>({ ...properties }, options)
-	// as TUnsafe<
-	// 	DeepPartial<Static<T>>
-	// >
+	return Type.Object({ ...properties }, options) as TDeepPartial<T> // required
 }
+
 /** Make the provided keys optional */
 export function PartialBy<T extends TObject>(
 	schema: T,
@@ -137,20 +166,74 @@ export function PolymorphicWithID<
 	TFieldSchema extends TSchema[],
 	TFieldID extends TSchema
 >(
-	name: string,
 	fieldID: TFieldID,
-	fieldSchemas: TFieldSchema,
+	fieldSchemas: [...TFieldSchema],
 	options: ObjectOptions = {}
 ) {
-	return Type.Intersect(
-		[
-			Type.Object({ id: fieldID }, { additionalProperties: true }),
-			Type.Union(fieldSchemas)
-		],
-		{
-			$id: `#/$defs/${pascalCase(name)}`,
-			title: startCase(name),
-			...options
-		}
+	const discriminator = Type.Object(
+		{ id: fieldID },
+		{ additionalProperties: true }
 	)
+
+	return Type.Intersect<[typeof discriminator, TUnion<TFieldSchema>]>(
+		[discriminator, Type.Union(fieldSchemas)],
+		options
+	)
+}
+
+// export interface TDiscriminatedUnion<
+// 	T extends TObject[],
+// 	TDiscriminator extends keyof Static<T[number]> & string
+// > extends TObject {
+// 	static: Static<TUnion<T>>
+// 	allOf: { if: TObject; then: TObject }[]
+// 	additionalProperties: true
+// 	properties: { [K in TDiscriminator]: T[number]['properties'][K] }
+// }
+
+// export function DiscriminatedUnion<
+// 	T extends TObject[],
+// 	TDiscriminator extends keyof Static<T[number]> & string
+// >(
+// 	schemas: [...T],
+// 	discriminator: TDiscriminator,
+// 	options: ObjectOptions = {}
+// ): TDiscriminatedUnion<T, TDiscriminator> {
+// 	const allOf = schemas.map((schema) => ({
+// 		if: Type.Pick(schema, [discriminator]),
+// 		then: schema
+// 	}))
+
+// 	const discriminatorSchema = Type.Union(
+// 		schemas.map((schema) => Type.Index(schema, [discriminator]))
+// 	)
+
+// 	return Type.Object(
+// 		{ [discriminator]: discriminatorSchema },
+// 		{ allOf, additionalProperties: true, ...options }
+// 	) as any
+// }
+
+// export function DiscriminatedUnionWithID<
+// 	T extends TObject[],
+// 	TDiscriminator extends keyof Static<T[number]> & string
+// >(
+// 	schemas: [...T],
+// 	discriminator: TDiscriminator,
+// 	idSchema,
+// 	options: ObjectOptions = {}
+// ) {
+// 	const base = DiscriminatedUnion(schemas, discriminator, options)
+
+// 	base.properties.id = idSchema
+
+// 	return base as typeof base & { properties: { id: typeof idSchema } }
+// }
+
+export function NoDefaults<T extends TObject>(schema: T) {
+	const newSchema = Clone(schema)
+	for (const key in newSchema.properties)
+		delete newSchema.properties[key]?.default
+
+	return newSchema
 }

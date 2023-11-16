@@ -1,199 +1,48 @@
-import {
-	type Static,
-	Type,
-	type TObject,
-	type TString,
-	type ObjectOptions,
-	type TRef,
-	Kind,
-	type TUnsafe
-} from '@sinclair/typebox'
-import { Localize, ID, Metadata, Inputs, Abstract } from './common/index.js'
+import { TSchema, Type, type Static } from '@sinclair/typebox'
 import { Dictionary } from './common/abstract.js'
-import { AssetID } from './common/id.js'
-import { Label } from './common/localize.js'
+import {
+	Abstract,
+	ID,
+	Inputs,
+	Localize,
+	Metadata,
+	Utils
+} from './common/index.js'
 import * as Moves from './moves.js'
-import { PolymorphicWithID } from './common/utils.js'
+import { NoDefaults } from './common/utils.js'
 
-const $idSelectFieldAssetState = '#/$defs/SelectFieldAssetState'
-
-const isImpact = Type.Boolean({
-	default: false,
-	description:
-		'Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?'
-})
-const disablesAsset = Type.Boolean({
-	default: false,
-	description:
-		'Does this field disable the asset when its value is set to `true`?'
+const AssetBooleanFieldMixin = Type.Object({
+	is_impact: Type.Boolean({
+		default: false,
+		description:
+			'Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?'
+	}),
+	disables_asset: Type.Boolean({
+		default: false,
+		description:
+			'Does this field disable the asset when its value is set to `true`?'
+	})
 })
 
 export const AssetCheckboxField = Type.Composite(
-	[
-		Inputs.CheckboxField,
-		Type.Object({
-			is_impact: isImpact,
-			disables_asset: disablesAsset
-		})
-	],
+	[Inputs.CheckboxField, AssetBooleanFieldMixin],
 	{
+		description: Inputs.CheckboxField.description,
+		additionalProperties: false,
 		$id: '#/$defs/AssetCheckboxField'
 	}
 )
+export type AssetCheckboxField = Static<typeof AssetCheckboxField>
 
 export const AssetCardFlipField = Type.Composite(
-	[
-		Inputs.CardFlipField,
-		Type.Object({
-			disables_asset: disablesAsset
-		})
-	],
+	[Inputs.CardFlipField, AssetBooleanFieldMixin],
 	{
 		description: Inputs.CardFlipField.description,
+		additionalProperties: false,
 		$id: '#/$defs/AssetCardFlipField'
 	}
 )
-
-export const AssetConditionMeterControlField = PolymorphicWithID(
-	'AssetConditionMeterControlField',
-	Type.Ref(ID.AssetConditionMeterControlFieldID),
-	[AssetCheckboxField].map((schema) => Type.Ref(schema))
-)
-
-export const AssetConditionMeter = Type.Object(
-	{
-		...Inputs.Meter.properties,
-		id: Type.Ref(ID.AssetControlFieldID),
-		field_type: Type.Literal('condition_meter'),
-		label: Type.Ref(Label),
-		moves: Type.Optional(
-			Type.Object(
-				{
-					suffer: Type.Optional(
-						Type.Array(
-							Type.Ref(ID.MoveIDWildcard, {
-								examples: [
-									'classic/moves/suffer/companion_endure_harm',
-									'starforged/moves/suffer/companion_takes_a_hit',
-									'starforged/moves/suffer/withstand_damage'
-								]
-							}),
-							{
-								description:
-									'The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.'
-							}
-						)
-					),
-					recover: Type.Optional(
-						Type.Array(
-							Type.Ref(ID.MoveIDWildcard, {
-								examples: [
-									'classic/moves/adventure/heal',
-									'classic/moves/adventure/make_camp',
-									'classic/moves/relationship/sojourn',
-									'starforged/moves/recover/heal',
-									'starforged/moves/recover/repair'
-								]
-							}),
-							{
-								description:
-									'The ID(s) of recovery moves associated with this meter.'
-							}
-						)
-					)
-				},
-				{
-					description:
-						'Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.',
-					releaseStage: 'unstable'
-				}
-			)
-		),
-		controls: Type.Optional(
-			Dictionary(Type.Ref(AssetConditionMeterControlField))
-		)
-	},
-	{
-		$id: '#/$defs/AssetConditionMeter',
-		title: 'Asset condition meter',
-		description:
-			'Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".\n\nThe asset condition meter is always rendered at the bottom of the card.'
-	}
-)
-
-export const AssetConditionMeterEnhancement = Type.Partial(
-	Type.Omit(AssetConditionMeter, [
-		'label',
-		'value',
-		'id',
-		'moves',
-		'min',
-		'field_type'
-	]),
-	{ $id: '#/$defs/AssetConditionMeterEnhancement' }
-)
-export type AssetConditionMeterEnhancement = Static<
-	typeof AssetConditionMeterEnhancement
->
-
-export const AssetOptionField = PolymorphicWithID(
-	'AssetOptionField',
-	Type.Ref(ID.AssetOptionFieldID),
-	[Inputs.SelectFieldStat, Inputs.TextField].map((s) => Type.Ref(s))
-)
-
-export const AssetControlField = PolymorphicWithID(
-	'AssetControlField',
-	Type.Ref(ID.AssetControlFieldID),
-	[
-		...[AssetConditionMeter, Inputs.CheckboxField, AssetCardFlipField].map(
-			(s) => Type.Ref(s)
-		),
-		// manually type as a ref so the type system doesn't flip out
-		Type.Unsafe<
-			Inputs.InputField<'select_enhancement', Record<string, unknown>>
-		>({ $ref: $idSelectFieldAssetState })
-	]
-)
-
-function AssetEnhanceSelf<T extends TObject>(
-	tAsset: T,
-	omitKeys: Array<keyof Static<TObject>> = [],
-	options: ObjectOptions = {}
-) {
-	omitKeys = [
-		...omitKeys,
-		// metadata & cosmetic keys
-		'asset_type',
-		'icon',
-		'color',
-		'suggestions',
-		'requirement',
-		'options' // options are set when you take the asset, so it doesn't make sense to change them
-	]
-
-	// condition meters need special handling, so we need to strip it regardless
-	const base = Abstract.NodeEnhanceSelf(
-		tAsset as any,
-		[...omitKeys, 'controls'],
-		options
-	)
-
-	if (omitKeys.includes('controls')) return base
-
-	// condition meters have their own enhance schema
-	return Type.Composite(
-		[
-			base,
-			Type.Object({
-				controls: Type.Optional(
-					Dictionary(Type.Ref(AssetConditionMeterEnhancement))
-				)
-			})
-		],
-		options
-	)
-}
+export type AssetCardFlipField = Static<typeof AssetCardFlipField>
 
 export const AssetAttachment = Type.Object(
 	{
@@ -215,47 +64,114 @@ export const AssetAttachment = Type.Object(
 			"Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info."
 	}
 )
+export type AssetAttachment = Static<typeof AssetAttachment>
 
-export const Asset = Type.Object(
+export const AssetConditionMeterControlField = Utils.PolymorphicWithID(
+	Type.Ref(ID.AssetConditionMeterControlFieldID),
+	[Type.Ref(AssetCheckboxField), Type.Ref(AssetCardFlipField)],
 	{
-		id: Type.Ref(ID.AssetID),
-		name: Type.Ref(Localize.Label),
-		asset_type: Type.Ref(Localize.Label, {
-			description:
-				"A localized category label for this asset. This is the surtitle above the asset's name on the card.",
-			examples: [
-				'Combat Talent',
-				'Command Vehicle',
-				'Companion',
-				'Deed',
-				'Module',
-				'Path',
-				'Ritual',
-				'Support Vehicle'
-			]
-			// i18n: true
-		}),
-		source: Type.Ref(Metadata.Source),
-		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
-		color: Type.Optional(Type.Ref(Metadata.CSSColor)),
-		options: Type.Optional(
-			Abstract.Dictionary(Type.Ref(AssetOptionField), {
-				description:
-					'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
-			})
-		),
-		controls: Type.Optional(
-			Abstract.Dictionary(Type.Ref(AssetControlField), {
-				description:
-					'Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.'
-			})
-		),
+		$id: '#/$defs/AssetConditionMeterControlField'
+	}
+)
+export type AssetConditionMeterControlField = Static<
+	typeof AssetConditionMeterControlField
+>
+
+export const AssetConditionMeter = Type.Composite(
+	[
+		Inputs.MeterBase,
+		Type.Object({
+			id: Type.Ref(ID.AssetControlFieldID),
+			field_type: Type.Literal('condition_meter'),
+			label: Type.Ref(Localize.Label),
+			moves: Type.Optional(
+				Type.Object(
+					{
+						suffer: Type.Optional(
+							Type.Array(
+								Type.Ref(ID.MoveIDWildcard, {
+									examples: [
+										'classic/moves/suffer/companion_endure_harm',
+										'starforged/moves/suffer/companion_takes_a_hit',
+										'starforged/moves/suffer/withstand_damage'
+									]
+								}),
+								{
+									description:
+										'The ID(s) of suffer moves associated with the condition meter. If the suffer move makes an action roll, this condition meter value should be made available as a roll option.'
+								}
+							)
+						),
+						recover: Type.Optional(
+							Type.Array(
+								Type.Ref(ID.MoveIDWildcard, {
+									examples: [
+										'classic/moves/adventure/heal',
+										'classic/moves/adventure/make_camp',
+										'classic/moves/relationship/sojourn',
+										'starforged/moves/recover/heal',
+										'starforged/moves/recover/repair'
+									]
+								}),
+								{
+									description:
+										'The ID(s) of recovery moves associated with this meter.'
+								}
+							)
+						)
+					},
+					{
+						description:
+							'Provides hints for moves that interact with this condition meter, such as suffer and recovery moves.',
+						releaseStage: 'unstable'
+					}
+				)
+			),
+			controls: Type.Optional(
+				Dictionary(Type.Ref(AssetConditionMeterControlField))
+			)
+		})
+	],
+	{
+		$id: '#/$defs/AssetConditionMeter',
+		description:
+			'Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".'
+	}
+)
+
+export type AssetConditionMeter = Static<typeof AssetConditionMeter>
+
+export const AssetConditionMeterEnhancement = NoDefaults(
+	Type.Partial(
+		Type.Omit(AssetConditionMeter, [
+			'label',
+			'value',
+			'id',
+			'moves',
+			'min',
+			'field_type',
+			'controls' // condition meters accept only boolean controls, which can't be enhanced
+		]),
+		{ $id: '#/$defs/AssetConditionMeterEnhancement' }
+	)
+)
+export type AssetConditionMeterEnhancement = Static<
+	typeof AssetConditionMeterEnhancement
+>
+
+export const AssetOptionField = Utils.PolymorphicWithID(
+	Type.Ref(ID.AssetOptionFieldID),
+	[Type.Ref(Inputs.SelectFieldStat), Type.Ref(Inputs.TextField)],
+	{ $id: '#/$defs/AssetOptionField' }
+)
+export type AssetOptionField = Static<typeof AssetOptionField>
+
+function AssetPropertiesEnhanceable<Controls extends TSchema>(
+	controls: Controls
+) {
+	return Type.Object({
+		controls,
 		suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-		requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
-		abilities: Type.Array(Type.Unsafe({ $ref: '#/$defs/AssetAbility' }), {
-			description: 'Abilities provided by this asset. Most assets have 3.'
-		}),
-		// condition_meter: Type.Optional(Type.Ref(AssetConditionMeter)),
 		count_as_impact: Type.Boolean({
 			default: false,
 			description:
@@ -267,41 +183,120 @@ export const Asset = Type.Object(
 			description:
 				"Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
 		})
-	},
+	})
+}
+
+export const AssetEnhancement = Utils.DeepPartial(
+	NoDefaults(
+		AssetPropertiesEnhanceable(
+			// for the moment, it's only practical to enhance condition meters
+			Type.Optional(Dictionary(Type.Ref(AssetConditionMeterEnhancement)))
+		)
+	),
+	{
+		description:
+			'Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
+		$id: '#/$defs/AssetEnhancement'
+	}
+)
+
+export type AssetEnhancement = Static<typeof AssetEnhancement>
+
+export const SelectFieldAssetEnhancement = Inputs.SelectField(
+	'select_enhancement',
+	Type.Ref(AssetEnhancement),
+	{
+		$id: '#/$defs/SelectFieldAssetEnhancement',
+		title: 'Select field (asset enhancement)',
+		description:
+			'Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
+	}
+)
+export type SelectFieldAssetEnhancement = Static<
+	typeof SelectFieldAssetEnhancement
+>
+
+export const AssetControlField = Utils.PolymorphicWithID(
+	Type.Ref(ID.AssetControlFieldID),
+	[
+		Type.Ref(AssetConditionMeter),
+		Type.Ref(AssetCheckboxField),
+		Type.Ref(AssetCardFlipField),
+		// manually typed so that the type system doesn't flip out. doesnt provide a useful typing for the field value, but we generate static types from the finished schema anyways.
+		Type.Ref(SelectFieldAssetEnhancement)
+	],
+	{ $id: '#/$defs/AssetControlField' }
+)
+
+export type AssetControlField = Static<typeof AssetControlField>
+
+export const Asset = Type.Composite(
+	[
+		AssetPropertiesEnhanceable(
+			Type.Optional(
+				Abstract.Dictionary(Type.Ref(AssetControlField), {
+					description:
+						'Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.'
+				})
+			)
+		),
+		Type.Object({
+			name: Type.Ref(Localize.Label),
+			id: Type.Ref(ID.AssetID),
+			asset_type: Type.Ref(Localize.Label, {
+				description:
+					"A localized category label for this asset. This is the surtitle above the asset's name on the card.",
+				examples: [
+					'Combat Talent',
+					'Command Vehicle',
+					'Companion',
+					'Deed',
+					'Module',
+					'Path',
+					'Ritual',
+					'Support Vehicle'
+				]
+				// i18n: true
+			}),
+			source: Type.Ref(Metadata.Source),
+			icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+			color: Type.Optional(Type.Ref(Metadata.CSSColor)),
+			options: Type.Optional(
+				Abstract.Dictionary(Type.Ref(AssetOptionField), {
+					description:
+						'Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the "name" field on companion assets. A more complex example is the choice of a god\'s stat for the Devotant asset.'
+				})
+			),
+			requirement: Type.Optional(Type.Ref(Localize.MarkdownString)),
+
+			abilities: Type.Array(
+				Type.Ref('#/$defs/AssetAbility', {
+					description: 'Abilities provided by this asset. Most assets have 3.'
+				})
+			)
+		})
+	],
 	{ $id: '#/$defs/Asset', title: 'Asset', additionalProperties: false }
 )
 
 export type Asset = Static<typeof Asset>
 
-export const SelectFieldAssetState = Inputs.SelectField(
-	'select_enhancement',
-	AssetEnhanceSelf(Asset, ['abilities', 'controls', 'condition_meter']),
-	{
-		$id: $idSelectFieldAssetState,
-		title: 'Select field (asset enhancement)',
-		description:
-			'Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
-	}
-)
-export type SelectFieldAssetState = Static<typeof SelectFieldAssetState>
-
-export const AssetAbilityOptionField = PolymorphicWithID(
-	'AssetAbilityOptionField',
+export const AssetAbilityOptionField = Utils.PolymorphicWithID(
 	Type.Ref(ID.AssetAbilityOptionFieldID),
-	[Inputs.TextField].map((s) => Type.Ref(s))
+	[Type.Ref(Inputs.TextField)],
+	{ $id: '#/$defs/AssetAbilityOptionField' }
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 
-export const AssetAbilityControlField = PolymorphicWithID(
-	'AssetAbilityControlField',
+export const AssetAbilityControlField = Utils.PolymorphicWithID(
 	Type.Ref(ID.AssetAbilityControlFieldID),
 	[
-		Inputs.ClockField,
-		Inputs.CounterField,
-		Inputs.CheckboxField
-		// Inputs.SelectAssetEnhance(AssetEnhanceSelf(Asset, []) as TObject)
-	].map((s) => Type.Ref(s))
+		Type.Ref(Inputs.ClockField),
+		Type.Ref(Inputs.CounterField),
+		Type.Ref(AssetCheckboxField)
+	],
+	{ $id: '#/$defs/AssetAbilityControlField' }
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -323,13 +318,7 @@ export const AssetAbility = Type.Object(
 		controls: Type.Optional(
 			Abstract.Dictionary(Type.Ref(AssetAbilityControlField))
 		),
-		enhance_asset: Type.Optional(
-			AssetEnhanceSelf(Asset, ['abilities'], {
-				description:
-					'Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.',
-				releaseStage: 'unstable'
-			})
-		),
+		enhance_asset: Type.Optional(Type.Ref(AssetEnhancement)),
 		enhance_moves: Type.Optional(
 			Type.Array(Type.Ref(Moves.MoveEnhancement), {
 				description:
@@ -360,32 +349,32 @@ export type AssetType = Static<typeof AssetType>
 // )
 // export type AssetTypeEnhance = Static<typeof AssetTypeEnhance>
 
-const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
-	$id: '#/$defs/AssetImportAbility'
-})
+// const AssetImportAbility = Type.Composite([Type.Partial(AssetAbility)], {
+// 	$id: '#/$defs/AssetImportAbility'
+// })
 
-const AssetImport = Type.Composite(
-	[
-		Type.Object({
-			type: Type.Literal('import'),
-			import: Type.Ref(AssetID),
-			abilities: Type.Optional(Type.Array(AssetImportAbility))
-			// this *could* be a yaml-only situation that builds out the final asset in question. but it'd have to be deferred until the asset it depends on is built
-			// OTOH: is the use case of "clone an existing asset" better handled with a GUI?
-		}),
-		Type.Omit(Type.Partial(Asset), ['abilities', 'id'])
-	],
-	{ $id: '#/$defs/AssetImport' }
-)
-export type AssetImport = Static<typeof AssetImport>
+// const AssetImport = Type.Composite(
+// 	[
+// 		Type.Object({
+// 			type: Type.Literal('import'),
+// 			import: Type.Ref(AssetID),
+// 			abilities: Type.Optional(Type.Array(AssetImportAbility))
+// 			// this *could* be a yaml-only situation that builds out the final asset in question. but it'd have to be deferred until the asset it depends on is built
+// 			// OTOH: is the use case of "clone an existing asset" better handled with a GUI?
+// 		}),
+// 		Type.Omit(Type.Partial(Asset), ['abilities', 'id'])
+// 	],
+// 	{ $id: '#/$defs/AssetImport' }
+// )
+// export type AssetImport = Static<typeof AssetImport>
 
 export {
 	CheckboxField,
 	ClockField,
 	CounterField,
-	TextField,
-	SelectFieldStat
+	SelectFieldStat,
 	// SelectFieldRef
+	TextField
 } from './common/inputs.js'
 
 // what about a general purpose asset ability switch?

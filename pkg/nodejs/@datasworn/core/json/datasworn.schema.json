@@ -2292,15 +2292,15 @@
 				},
 				"abilities": {
 					"type": "array",
-					"description": "Abilities provided by this asset. Most assets have 3.",
 					"items": {
-						"$ref": "#/$defs/AssetAbility"
+						"$ref": "#/$defs/AssetAbility",
+						"description": "Abilities provided by this asset. Most assets have 3."
 					}
 				},
 				"controls": {
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
-					"description": "Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.",
+					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 					"patternProperties": {
 						"^[a-z][a-z_]*$": {
 							"$ref": "#/$defs/AssetControlField"
@@ -2353,31 +2353,7 @@
 					}
 				},
 				"enhance_asset": {
-					"type": "object",
-					"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
-					"properties": {
-						"count_as_impact": {
-							"type": "boolean",
-							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
-						},
-						"shared": {
-							"type": "boolean",
-							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
-						},
-						"attachments": {
-							"$ref": "#/$defs/AssetAttachment"
-						},
-						"controls": {
-							"type": "object",
-							"$comment": "Deserialize as a dictionary object.",
-							"patternProperties": {
-								"^[a-z][a-z_]*$": {
-									"$ref": "#/$defs/AssetConditionMeterEnhancement"
-								}
-							}
-						}
-					},
-					"releaseStage": "unstable"
+					"$ref": "#/$defs/AssetEnhancement"
 				},
 				"enhance_moves": {
 					"type": "array",
@@ -2400,7 +2376,7 @@
 			}
 		},
 		"AssetAbilityControlField": {
-			"title": "Asset Ability Control Field",
+			"title": "AssetAbilityControlField",
 			"allOf": [
 				{
 					"type": "object",
@@ -2421,14 +2397,14 @@
 							"$ref": "#/$defs/CounterField"
 						},
 						{
-							"$ref": "#/$defs/CheckboxField"
+							"$ref": "#/$defs/AssetCheckboxField"
 						}
 					]
 				}
 			]
 		},
 		"AssetAbilityOptionField": {
-			"title": "Asset Ability Option Field",
+			"title": "AssetAbilityOptionField",
 			"allOf": [
 				{
 					"type": "object",
@@ -2469,7 +2445,7 @@
 			"title": "AssetCardFlipField",
 			"type": "object",
 			"description": "This type of input isn't a *field* in the traditional sense. When its value is set to `true` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.\n\n    Otherwise, it behaves similarly to a CheckboxField.\n    ",
-			"required": ["id", "label", "field_type", "disables_asset"],
+			"required": ["id", "label", "field_type", "disables_asset", "is_impact"],
 			"properties": {
 				"id": {
 					"type": "string"
@@ -2490,12 +2466,19 @@
 					"type": "boolean",
 					"description": "Does this field disable the asset when its value is set to `true`?",
 					"default": false
+				},
+				"is_impact": {
+					"type": "boolean",
+					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
+					"default": false
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"AssetCheckboxField": {
 			"title": "AssetCheckboxField",
 			"type": "object",
+			"description": "This input represents a checkbox field. It is considered checked when its value is set to `true`.",
 			"required": ["id", "label", "field_type", "disables_asset", "is_impact"],
 			"properties": {
 				"id": {
@@ -2523,12 +2506,13 @@
 					"description": "Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?",
 					"default": false
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"AssetConditionMeter": {
-			"title": "Asset condition meter",
+			"title": "AssetConditionMeter",
 			"type": "object",
-			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
+			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
 			"required": ["id", "label", "field_type", "min", "max"],
 			"properties": {
 				"id": {
@@ -2596,7 +2580,7 @@
 			}
 		},
 		"AssetConditionMeterControlField": {
-			"title": "Asset Condition Meter Control Field",
+			"title": "AssetConditionMeterControlField",
 			"allOf": [
 				{
 					"type": "object",
@@ -2609,31 +2593,29 @@
 					"additionalProperties": true
 				},
 				{
-					"$ref": "#/$defs/AssetCheckboxField"
+					"anyOf": [
+						{
+							"$ref": "#/$defs/AssetCheckboxField"
+						},
+						{
+							"$ref": "#/$defs/AssetCardFlipField"
+						}
+					]
 				}
 			]
 		},
 		"AssetConditionMeterEnhancement": {
-			"title": "Asset condition meter",
+			"title": "AssetConditionMeterEnhancement",
 			"type": "object",
-			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".\n\nThe asset condition meter is always rendered at the bottom of the card.",
+			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
 			"properties": {
 				"max": {
 					"type": "integer"
-				},
-				"controls": {
-					"type": "object",
-					"$comment": "Deserialize as a dictionary object.",
-					"patternProperties": {
-						"^[a-z][a-z_]*$": {
-							"$ref": "#/$defs/AssetConditionMeterControlField"
-						}
-					}
 				}
 			}
 		},
 		"AssetControlField": {
-			"title": "Asset Control Field",
+			"title": "AssetControlField",
 			"allOf": [
 				{
 					"type": "object",
@@ -2651,20 +2633,50 @@
 							"$ref": "#/$defs/AssetConditionMeter"
 						},
 						{
-							"$ref": "#/$defs/CheckboxField"
+							"$ref": "#/$defs/AssetCheckboxField"
 						},
 						{
 							"$ref": "#/$defs/AssetCardFlipField"
 						},
 						{
-							"$ref": "#/$defs/SelectFieldAssetState"
+							"$ref": "#/$defs/SelectFieldAssetEnhancement"
 						}
 					]
 				}
 			]
 		},
+		"AssetEnhancement": {
+			"title": "AssetEnhancement",
+			"type": "object",
+			"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
+			"properties": {
+				"count_as_impact": {
+					"type": "boolean",
+					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
+				},
+				"shared": {
+					"type": "boolean",
+					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
+				},
+				"attachments": {
+					"$ref": "#/$defs/AssetAttachment"
+				},
+				"controls": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/AssetConditionMeterEnhancement"
+						}
+					}
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				}
+			}
+		},
 		"AssetOptionField": {
-			"title": "Asset Option Field",
+			"title": "AssetOptionField",
 			"allOf": [
 				{
 					"type": "object",
@@ -2812,10 +2824,10 @@
 				}
 			}
 		},
-		"SelectFieldAssetState": {
+		"SelectFieldAssetEnhancement": {
 			"title": "Select field (asset enhancement)",
 			"type": "object",
-			"description": "Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
+			"description": "Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).",
 			"required": ["id", "label", "field_type", "choices"],
 			"properties": {
 				"id": {
@@ -2829,20 +2841,7 @@
 					"const": "select_enhancement"
 				},
 				"value": {
-					"type": "object",
-					"properties": {
-						"count_as_impact": {
-							"type": "boolean",
-							"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
-						},
-						"shared": {
-							"type": "boolean",
-							"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
-						},
-						"attachments": {
-							"$ref": "#/$defs/AssetAttachment"
-						}
-					}
+					"$ref": "#/$defs/AssetEnhancement"
 				},
 				"choices": {
 					"type": "object",
@@ -2856,20 +2855,7 @@
 									"$ref": "#/$defs/Label"
 								},
 								"value": {
-									"type": "object",
-									"properties": {
-										"count_as_impact": {
-											"type": "boolean",
-											"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
-										},
-										"shared": {
-											"type": "boolean",
-											"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
-										},
-										"attachments": {
-											"$ref": "#/$defs/AssetAttachment"
-										}
-									}
+									"$ref": "#/$defs/AssetEnhancement"
 								},
 								"selected": {
 									"type": "boolean"

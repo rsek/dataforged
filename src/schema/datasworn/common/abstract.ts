@@ -204,9 +204,11 @@ export function EnhanceMany<T extends TObject>(
 	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	const noMeta = Utils.DeepPartial(OmitMeta(enhanceSchema))
+	const noMeta = OmitMeta(enhanceSchema)
+	const base = Utils.DeepPartial(noMeta)
+
 	return Type.Composite(
-		[noMeta, Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })],
+		[base, Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })],
 		options
 	)
 }
@@ -271,17 +273,30 @@ export type RecursiveCollection<T> = Collection<T> & {
 	collections?: Record<string, RecursiveCollection<T>>
 }
 
+const unenhanceableKeys = ['id', 'source', 'name']
+
 /**
- * Note that `id` and `source` are always omitted.
+ * @remarks Recommended to omit at least "id", "source", and "name"/"label"
  */
 export function NodeEnhanceSelf<
 	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
 >(t: T, omitKeys: Array<keyof Static<T>> = [], options: SchemaOptions = {}) {
-	const base = Clone(Type.Omit(t, [...omitKeys, 'id', 'source', 'name']))
+	// metadata types: id, source, name
+
+	// no required strings
+
+	const base = Clone(
+		Type.Omit<
+			T,
+			(typeof omitKeys | typeof unenhanceableKeys)[number][] &
+				(keyof Static<T>)[]
+		>(t, [...omitKeys, 'id', 'source', 'name'])
+	)
 
 	// strip defaults, they just get in the way of enhancements
 	for (const k in base.properties) {
 		const v = base.properties[k]
+		// @ts-expect-error
 		if (typeof v?.default !== 'undefined') delete v.default
 	}
 

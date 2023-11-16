@@ -195,20 +195,8 @@ export type AssetAbilityOptionFieldID = string;
 export type AssetAbilityControlField = {
   id: AssetAbilityControlFieldID;
   [k: string]: unknown;
-} & (ClockField | CounterField | CheckboxField);
+} & (ClockField | CounterField | AssetCheckboxField);
 export type AssetAbilityControlFieldID = string;
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- */
-export type AssetConditionMeterControlField = {
-  id: AssetConditionMeterControlFieldID;
-  [k: string]: unknown;
-} & AssetCheckboxField;
-export type AssetConditionMeterControlFieldID = string;
 export type MoveEnhancement =
   | MoveActionRollEnhancement
   | MoveNoRollEnhancement
@@ -428,8 +416,17 @@ export type MoveID4 = string;
 export type AssetControlField = {
   id: AssetControlFieldID;
   [k: string]: unknown;
-} & (AssetConditionMeter1 | CheckboxField | AssetCardFlipField | SelectFieldAssetEnhancement);
+} & (AssetConditionMeter | AssetCheckboxField | AssetCardFlipField | SelectFieldAssetEnhancement);
 export type AssetControlFieldID = string;
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export type AssetConditionMeterControlField = {
+  id: AssetConditionMeterControlFieldID;
+  [k: string]: unknown;
+} & (AssetCheckboxField | AssetCardFlipField);
+export type AssetConditionMeterControlFieldID = string;
 /**
  * A move ID with wildcards
  */
@@ -797,12 +794,9 @@ export interface Asset {
   shared: boolean;
   attachments?: AssetAttachment;
   requirement?: MarkdownString;
-  /**
-   * Abilities provided by this asset. Most assets have 3.
-   */
   abilities: AssetAbility[];
   /**
-   * Controls are condition meters and other asset input fields whose values are expected to change throughout the life of the asset. Usually these occur as checkboxes on condition meters, but a few assets also use them for counters or clocks.
+   * Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.
    */
   controls?: {
     [k: string]: AssetControlField;
@@ -849,6 +843,9 @@ export interface AssetAttachment {
    */
   assets: AssetIDWildcard[];
 }
+/**
+ * Abilities provided by this asset. Most assets have 3.
+ */
 export interface AssetAbility {
   id: AssetAbilityID;
   name?: Label;
@@ -860,23 +857,7 @@ export interface AssetAbility {
   controls?: {
     [k: string]: AssetAbilityControlField;
   };
-  /**
-   * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
-   */
-  enhance_asset?: {
-    /**
-     * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-     */
-    count_as_impact?: boolean;
-    /**
-     * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-     */
-    shared?: boolean;
-    attachments?: AssetAttachment;
-    controls?: {
-      [k: string]: AssetConditionMeter;
-    };
-  };
+  enhance_asset?: AssetEnhancement;
   /**
    * Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.
    */
@@ -907,29 +888,6 @@ export interface CounterField {
 /**
  * This input represents a checkbox field. It is considered checked when its value is set to `true`.
  */
-export interface CheckboxField {
-  id: string;
-  label: Label;
-  field_type: "checkbox";
-  /**
-   * Is the box checked?
-   */
-  value?: boolean;
-}
-/**
- * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- *
- * The asset condition meter is always rendered at the bottom of the card.
- *
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- */
-export interface AssetConditionMeter {
-  max?: number;
-  controls?: {
-    [k: string]: AssetConditionMeterControlField;
-  };
-}
 export interface AssetCheckboxField {
   id: string;
   label: Label;
@@ -946,6 +904,33 @@ export interface AssetCheckboxField {
    * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
    */
   is_impact: boolean;
+}
+/**
+ * Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.
+ */
+export interface AssetEnhancement {
+  /**
+   * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
+   */
+  count_as_impact?: boolean;
+  /**
+   * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
+   */
+  shared?: boolean;
+  attachments?: AssetAttachment;
+  controls?: {
+    [k: string]: AssetConditionMeterEnhancement;
+  };
+  suggestions?: Suggestions;
+}
+/**
+ * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface AssetConditionMeterEnhancement {
+  max?: number;
 }
 export interface MoveActionRollEnhancement {
   /**
@@ -1243,10 +1228,8 @@ export interface TriggerSpecialTrackCondition {
 }
 /**
  * Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are "out of action".
- *
- * The asset condition meter is always rendered at the bottom of the card.
  */
-export interface AssetConditionMeter1 {
+export interface AssetConditionMeter {
   id: AssetControlFieldID;
   label: Label;
   field_type: "condition_meter";
@@ -1288,25 +1271,19 @@ export interface AssetCardFlipField {
    * Does this field disable the asset when its value is set to `true`?
    */
   disables_asset: boolean;
+  /**
+   * Does this field count as an impact (Starforged) or debility (Ironsworn classic) when its value is set to `true`?
+   */
+  is_impact: boolean;
 }
 /**
- * Select a defined asset state, which may enhance the asset. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
+ * Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).
  */
 export interface SelectFieldAssetEnhancement {
   id: string;
   label: Label;
   field_type: "select_enhancement";
-  value?: {
-    /**
-     * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-     */
-    count_as_impact?: boolean;
-    /**
-     * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-     */
-    shared?: boolean;
-    attachments?: AssetAttachment;
-  };
+  value?: AssetEnhancement;
   choices: {
     /**
      * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1314,17 +1291,7 @@ export interface SelectFieldAssetEnhancement {
      */
     [k: string]: {
       label: Label;
-      value: {
-        /**
-         * If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn).
-         */
-        count_as_impact?: boolean;
-        /**
-         * Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too.
-         */
-        shared?: boolean;
-        attachments?: AssetAttachment;
-      };
+      value: AssetEnhancement;
       selected?: boolean;
     };
   };

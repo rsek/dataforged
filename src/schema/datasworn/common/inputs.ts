@@ -10,15 +10,15 @@ import * as Abstract from './abstract.js'
 import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
 
 /** Represents a list of choices, similar in structure to the HTML `<select>` element */
-export function Select<T extends TSchema>(t: T) {
+export function SelectBase<T extends TSchema>(t: T) {
 	return Type.Object({
 		label: Type.Ref(Localize.Label),
 		value: Type.Optional(t),
-		choices: Abstract.Dictionary(SelectOption(t))
+		choices: Abstract.Dictionary(SelectOptionBase(t))
 	})
 }
 
-const NumberRange = (
+const NumberRangeBase = (
 	min: TSchema = Type.Integer(),
 	max: TSchema = Type.Optional(Type.Integer()),
 	value: TSchema = Type.Optional(Type.Integer())
@@ -29,44 +29,40 @@ const NumberRange = (
 		value
 	})
 
-const Clock = NumberRange(
+const ClockBase = NumberRangeBase(
 	Type.Literal(0),
 	JsonEnum([4, 6, 8, 10]),
 	Type.Integer({ default: 0 })
 )
-export type Clock = Static<typeof Clock>
+export type ClockBase = Static<typeof ClockBase>
 
-export const Meter = NumberRange(Type.Integer({ default: 0 }), Type.Integer())
-export type Meter = Static<typeof Meter>
+export const MeterBase = NumberRangeBase(
+	Type.Integer({ default: 0 }),
+	Type.Integer()
+)
+export type MeterBase = Static<typeof MeterBase>
 
-const Counter = NumberRange(
+const CounterBase = NumberRangeBase(
 	Type.Literal(0),
 	Type.Optional(Type.Integer()),
 	Type.Integer({ default: 0 })
 )
-export type Counter = Static<typeof Counter>
+export type CounterBase = Static<typeof CounterBase>
 
-export function SelectOption<T extends TSchema>(t: T) {
+export function SelectOptionBase<T extends TSchema>(t: T) {
 	return Type.Object({
 		label: Type.Ref(Localize.Label),
 		value: t,
 		selected: Type.Optional(Type.Boolean())
 	})
 }
-export interface SelectOption<T> {
+export interface SelectOptionBase<T> {
 	label: string
 	value: T
 	selected?: boolean
 }
 
-export const SelectFieldType = JsonEnum([
-	'select_stat',
-	'select_enhancement'
-	// 'select_meter',
-	// 'select_ref',
-	// 'select_number',
-	// 'select_asset_enhance'
-])
+export const SelectFieldType = JsonEnum(['select_stat', 'select_enhancement'])
 export type SelectFieldType = Static<typeof SelectFieldType>
 
 export const InputFieldType = UnionOneOf([
@@ -75,7 +71,7 @@ export const InputFieldType = UnionOneOf([
 ])
 export type InputFieldType = Static<typeof InputFieldType>
 
-function InputField<T extends InputFieldType, V extends TSchema>(
+export function InputField<T extends InputFieldType, V extends TSchema>(
 	fieldType: T,
 	value: V,
 	otherProperties: Record<string, TSchema> = {},
@@ -141,7 +137,7 @@ export type CardFlipField = Static<typeof CardFlipField>
 export const ClockField = InputField(
 	'clock',
 	Type.Integer({ default: 0 }),
-	Clock.properties,
+	ClockBase.properties,
 	{
 		$id: '#/$defs/ClockField'
 	}
@@ -152,7 +148,7 @@ export type ClockField = Static<typeof ClockField>
 export const CounterField = InputField(
 	'counter',
 	Type.Integer({ default: 0 }),
-	Counter.properties,
+	CounterBase.properties,
 	{ $id: '#/$defs/CounterField' }
 )
 
@@ -180,13 +176,13 @@ export function SelectField<T extends SelectFieldType, V extends TSchema>(
 		fieldType,
 		value,
 		{
-			...Select(value).properties
+			...SelectBase(value).properties
 		},
 		options
 	)
 }
 export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
-	options: Record<string, SelectOption<T>>
+	options: Record<string, SelectOptionBase<T>>
 }
 
 export const SelectFieldStat = SelectField(
