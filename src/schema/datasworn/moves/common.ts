@@ -27,7 +27,6 @@ enum RollMethod {
 	Highest = 'highest',
 	Lowest = 'lowest',
 	All = 'all'
-	// Enhance = 'enhance'
 }
 
 // ENUMS
@@ -69,8 +68,6 @@ const rollMethodOutcomeCommon = {
 	[RollMethod.Highest]: 'Use the roll option with the best/highest value.',
 	[RollMethod.Lowest]: 'Use the roll option with the worst/lowest value.',
 	[RollMethod.All]: 'Use **every** roll option at once.'
-	// [RollMethod.Enhance]:
-	// 	"The roll options can't be used alone; instead, they can be used to enhance existing roll options. The enhanced option must be able to meet any requirements of these enhancements, such as the `roll_type` (see MoveEnhancement) and `using` (see RollOptions)."
 }
 
 export const ActionRollMethod = JsonEnumFromRecord(
@@ -95,7 +92,6 @@ export type SpecialTrackRollMethod = Static<typeof SpecialTrackRollMethod>
 export const ProgressRollMethod = JsonEnumFromRecord(
 	{
 		...rollMethodForceOutcome,
-		// [RollMethod.Enhance]: rollMethodOutcomeCommon[RollMethod.Enhance],
 		progress_roll:
 			'Make a progress roll on a progress track associated with this move.'
 	},
@@ -127,36 +123,31 @@ export const TriggerBase = Type.Object({
 	})
 })
 
-// export const MoveReroll = Type.Object(
-// 	{
-// 		text: Type.Optional(Type.Ref(Localize.MarkdownString)),
-// 		method: Type.Ref(MoveRerollMethod)
-// 	},
-// 	{ $id: '#/$defs/MoveReroll' }
-// )
-// export type MoveReroll = Static<typeof MoveReroll>
-
 export const MoveOutcome = Type.Object(
 	{
-		text: Type.Ref(Localize.MarkdownString),
-		count_as: Type.Optional(Type.Ref(MoveOutcomeType))
-		// reroll: Type.Optional(Type.Ref(MoveReroll))
+		text: Type.Ref(Localize.MarkdownString, {
+			type: 'string',
+			pattern: /On a \*\*(strong hit|weak hit|miss)\*\*/.source
+		})
+		// count_as: Type.Optional(Type.Ref(MoveOutcomeType))
 	},
 	{ $id: '#/$defs/MoveOutcome' }
 )
 export type MoveOutcome = Static<typeof MoveOutcome>
 
-export const MoveOutcomeMatchable = Type.Composite(
-	[MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
-	{ $id: '#/$defs/MoveOutcomeMatchable' }
-)
-export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
+// export const MoveOutcomeMatchable = Type.Composite(
+// 	[MoveOutcome, Type.Object({ match: Type.Optional(Type.Ref(MoveOutcome)) })],
+// 	{ $id: '#/$defs/MoveOutcomeMatchable' }
+// )
+// export type MoveOutcomeMatchable = Static<typeof MoveOutcomeMatchable>
 
 export const MoveOutcomes = Type.Object(
 	{
-		[Outcome.Miss]: Type.Ref(MoveOutcomeMatchable),
+		[Outcome.StrongHit]: Type.Ref(MoveOutcome),
+		// [Outcome.StrongHit]: Type.Ref(MoveOutcomeMatchable),
 		[Outcome.WeakHit]: Type.Ref(MoveOutcome),
-		[Outcome.StrongHit]: Type.Ref(MoveOutcomeMatchable)
+		[Outcome.Miss]: Type.Ref(MoveOutcome)
+		// [Outcome.Miss]: Type.Ref(MoveOutcomeMatchable),
 	},
 	{
 		$id: '#/$defs/MoveOutcomes',

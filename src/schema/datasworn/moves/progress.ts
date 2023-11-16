@@ -12,7 +12,7 @@ import {
 	SpecialTrackRollMethod
 } from './common.js'
 import {
-	composeMoveType,
+	Move,
 	TriggerEnhancement,
 	TriggerConditionEnhancement,
 	Trigger,
@@ -46,26 +46,31 @@ export const TriggerProgressRoll = Trigger(TriggerProgressRollCondition, {
 
 export type TriggerProgressRoll = Static<typeof TriggerProgressRoll>
 
-export const MoveProgressRoll = composeMoveType(
-	Type.Object({
-		roll_type: ExtractLiteralFromEnum(MoveRollType, 'progress_roll'),
-		// is_progress_move: Type.Literal(true, { default: true }),
-		track_label: Type.Ref(Localize.Label, {
-			description:
-				'A category label for progress tracks associated with this move.',
-			examples: [
-				'Vow',
-				'Journey',
-				'Combat',
-				'Scene Challenge',
-				'Expedition',
-				'Connection',
-				'Delve'
-			]
-		}),
-		trigger: Type.Ref(TriggerProgressRoll),
-		outcomes: Type.Ref(MoveOutcomes)
-	}),
+export const MoveProgressRoll = Type.Composite(
+	[
+		Move(
+			ExtractLiteralFromEnum(MoveRollType, 'progress_roll'),
+			Type.Ref(TriggerProgressRoll),
+			Type.Ref(MoveOutcomes)
+		),
+
+		Type.Object({
+			// is_progress_move: Type.Literal(true, { default: true }),
+			track_label: Type.Ref(Localize.Label, {
+				description:
+					'A category label for progress tracks associated with this move.',
+				examples: [
+					'Vow',
+					'Journey',
+					'Combat',
+					'Scene Challenge',
+					'Expedition',
+					'Connection',
+					'Delve'
+				]
+			})
+		})
+	],
 	{
 		title: 'Progress Move',
 		description:
@@ -134,13 +139,12 @@ export const TriggerSpecialTrack = Trigger(TriggerSpecialTrackCondition, {
 
 export type TriggerSpecialTrack = Static<typeof TriggerSpecialTrack>
 
-export const MoveSpecialTrack = composeMoveType(
-	Type.Object({
-		roll_type: ExtractLiteralFromEnum(MoveRollType, 'special_track'),
-		// is_progress_move: Type.Literal(true, { default: true }),
-		trigger: Type.Ref(TriggerSpecialTrack),
-		outcomes: Type.Ref(MoveOutcomes)
-	}),
+export const MoveSpecialTrack = Move(
+	ExtractLiteralFromEnum(MoveRollType, 'special_track'),
+	// is_progress_move: Type.Literal(true, { default: true }),
+	Type.Ref(TriggerSpecialTrack),
+	Type.Ref(MoveOutcomes),
+
 	{
 		title: 'Progress Move (special track roll)',
 		$id: '#/$defs/MoveSpecialTrack'

@@ -227,17 +227,17 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      The grappler is charged and may be fired.
+                      On a **strong hit**, the grappler is charged and may be fired.
 
                       If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
                   weak_hit:
                     text: |-
-                      The grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+                      On a **weak hit**, the grappler is charged and may be fired, but charging requires extra time or focus; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
 
                       If you make a move to attack a foe or overcome an obstacle by firing the grappler, take an automatic strong hit.
                   miss:
                     text: |-
-                      Charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2).
+                      On a **miss**, charging fails and you must [Withstand Damage](id:starforged/moves/suffer/withstand_damage) (-2).
           - text: |-
               If you score a strong hit when readying the grappler, you may [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1) to overcharge the module. When you fire an overcharged grappler, take +2 momentum; if in a fight, also mark progress.
             enhance_moves:
@@ -331,10 +331,11 @@ assets:
                 text: *InternalRefitMove
                 outcomes:
                   strong_hit:
-                    text: You don't need to mark unprepared. Take +1 supply.
-                  weak_hit: &Draw_Reserves.Outcome
-                    text: Mark unprepared as normal.
-                  miss: *Draw_Reserves.Outcome
+                    text: On a **strong hit**, you don't need to mark unprepared. Take +1 supply.
+                  weak_hit:
+                    text: On a **weak hit**, mark unprepared as normal.
+                  miss:
+                    text: On a **miss**, mark unprepared as normal.
           - text: |-
               When you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) to oppose an invader within your vessel, reroll any dice. On a strong hit, take +momentum equal to integrity. On a strong hit with a match, also mark progress.
             enhance_moves:
@@ -405,6 +406,9 @@ assets:
             max: 5
             value: 5
             min: 0
+            moves:
+              recover:
+                - starforged/moves/recover/resupply
         abilities:
           - text: |-
               Your missile array is armed with 5 ammo. When you [Strike](id:starforged/moves/combat/strike) or [Clash](id:starforged/moves/combat/clash) with a missile attack, suffer -1 ammo and mark progress on a hit. If you [Resupply](id:starforged/moves/recover/resupply) in a place where your missiles can be replenished, you may exchange any earned +supply for +ammo.
@@ -675,17 +679,17 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      Set your vehicle's shields to 4.
+                      On a **strong hit**, set your vehicle's shields to 4.
 
                       Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
                   weak_hit:
                     text: |-
-                      Set your vehicle's shields to 3.
+                      On a **weak hit**, set your vehicle's shields to 3.
 
                       Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
                   miss:
                     text: |-
-                      Set your vehicle's shields to 2, but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+                      On a **miss**, set your vehicle's shields to 2, but [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
 
                       Then, if you [Withstand Damage](id:starforged/moves/suffer/withstand_damage), ignore damage up to the value of your shields and suffer -1 shields. Raised shields last for a few minutes. If reduced to 0, they cannot be raised again for an hour or so.
           - text: |-
@@ -1287,13 +1291,13 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      Take up to +6 ammo.
+                      On a **strong hit**, take up to +6 ammo.
                   weak_hit:
                     text: |-
-                      Take up to +4 ammo and [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
+                      On a **weak hit**, take up to +4 ammo and [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
                   miss:
                     text: |-
-                      [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
+                      On a **miss**, [Sacrifice Resources](id:starforged/moves/suffer/sacrifice_resources) (-1).
 
             enabled: true
           - text: |-
@@ -1407,13 +1411,13 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      The work will stand the test of time; mark 2 ticks on your bonds legacy track.
+                      On a **strong hit**, the work will stand the test of time; mark 2 ticks on your bonds legacy track.
                   weak_hit:
                     text: |-
-                      The work's impact is short-lived; mark 1 tick on your bonds legacy track.
+                      On a **weak hit**, the work's impact is short-lived; mark 1 tick on your bonds legacy track.
                   miss:
                     text: |-
-                      The work is ignored, misunderstood, or co-opted, and you must [Pay the Price](id:starforged/moves/fate/pay_the_price).
+                      On a **miss**, the work is ignored, misunderstood, or co-opted, and you must [Pay the Price](id:starforged/moves/fate/pay_the_price).
       augmented:
         name: Augmented
         <<: *PathAsset
@@ -1909,13 +1913,13 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      You glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene.
+                      On a **strong hit**, you glimpse a helpful aspect of their inner self. Envision what you learn, take +2 momentum, and add +1 when you make moves to interact with them in this scene.
                   weak_hit:
                     text: |-
-                      The visions are murky; take +1 momentum.
+                      On a **weak hit**, the visions are murky; take +1 momentum.
                   miss:
                     text: |-
-                      You reveal a troubling motive or secret; [Pay the Price](id:starforged/moves/fate/pay_the_price).
+                      On a **miss**, you reveal a troubling motive or secret; [Pay the Price](id:starforged/moves/fate/pay_the_price).
           - text: |-
               As above, and if you score a hit as you read them, you may subtly influence their attitude or actions, such as making a hostile being hesitate. Take another +1 momentum. If in a fight, mark progress.
             enhance_moves:
@@ -2028,17 +2032,17 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      Take up to +3 fire.
+                      On a **strong hit**, take up to +3 fire.
 
                       When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
                   weak_hit:
                     text: |-
-                      Take up to +2 fire.
+                      On a **weak hit**, take up to +2 fire.
 
                       When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
                   miss:
                     text: |-
-                      Take up to +2 fire but [Endure Harm](id:starforged/moves/suffer/endure_harm) (-2).
+                      On a **miss**, take up to +2 fire but [Endure Harm](id:starforged/moves/suffer/endure_harm) (-2).
 
                       When you make moves aided by this energy to attack or overcome obstacles, add +2 and suffer -1 fire.
           - text: |-
@@ -2483,15 +2487,15 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
+                      On a **strong hit**, you and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
                   weak_hit:
                     text: |-
-                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values
+                      On a **weak hit**, you and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values
 
                       However, you [Endure Stress](id:starforged/moves/suffer/endure_stress) (-2).
                   miss:
                     text: |-
-                      You and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
+                      On a **miss**, you and your allies return to the linked point, retain any progress, and set condition meters (except for spirit) to their original values.
 
                       However, you find the timeline corrupted! [Pay the Price](id:starforged/moves/fate/pay_the_price).
           - text: |-
@@ -2762,11 +2766,11 @@ assets:
                 text: *OutcastMove
                 outcomes:
                   strong_hit:
-                    text: You manage to scrape by and take +1 supply.
+                    text: On a **strong hit**, you manage to scrape by and take +1 supply.
                   weak_hit:
-                    text: You may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) in exchange for +1 supply.
+                    text: On a **weak hit**, you may [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1) in exchange for +1 supply.
                   miss:
-                    text: Your supply remains at 0 and you [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+                    text: On a **miss**, your supply remains at 0 and you [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
           - text: |-
               When you or an ally [Sojourn](id:starforged/moves/recover/sojourn) and score a strong hit with a match, you may envision encountering someone who knows or understands you. If you [Make a Connection](id:starforged/moves/connection/make_a_connection) with them, take an automatic strong hit and mark 2 ticks on your bonds legacy track.
             enhance_moves:
@@ -2945,11 +2949,11 @@ assets:
                 text: *ShadeMove
                 outcomes:
                   strong_hit:
-                    text: The darkness extends to all adjacent spaces.
+                    text: On a **strong hit**, the darkness extends to all adjacent spaces.
                   weak_hit:
-                    text: Only your immediate surroundings are made dark.
+                    text: On a **weak hit**, only your immediate surroundings are made dark.
                   miss:
-                    text: You fail and draw unwanted attention.
+                    text: On a **miss**, you fail and draw unwanted attention.
           - text: |-
               When you intentionally drop your veil to reveal yourself for dramatic or surprising effect, foregoing its further use in this situation, take +2 momentum.
             # TODO: non move trigger?
@@ -3055,14 +3059,14 @@ assets:
                 text: *SniperMove
                 outcomes:
                   strong_hit:
-                    text: The foe is out of action. If other foes remain and you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) against them, mark progress.
+                    text: On a **strong hit**, the foe is out of action. If other foes remain and you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) against them, mark progress.
                   weak_hit:
                     text: |-
-                      The foe is out of action. However, you sacrifice time or position; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
+                      On a **weak hit**, the foe is out of action. However, you sacrifice time or position; [Lose Momentum](id:starforged/moves/suffer/lose_momentum) (-1).
 
                       If other foes remain and you [Enter the Fray](id:starforged/moves/combat/enter_the_fray) against them, mark progress.
                   miss:
-                    text: You draw attention or face a reprisal; [Pay the Price](id:starforged/moves/fate/pay_the_price).
+                    text: On a **miss**, you draw attention or face a reprisal; [Pay the Price](id:starforged/moves/fate/pay_the_price).
           - text: |-
               When you [Strike](id:starforged/moves/combat/strike) from a distance with time enough to line up your shot, you may roll +wits. If you do, mark progress on a strong hit.
             enhance_moves:
@@ -4146,17 +4150,17 @@ assets:
                 outcomes:
                   strong_hit:
                     text: |-
-                      You establish a haven; add +2 whenever you make a recovery move at that location.
+                      On a **strong hit**, you establish a haven; add +2 whenever you make a recovery move at that location.
 
                       If you establish a haven but score a miss on a recovery move, that location is no longer safe.
                   weak_hit:
                     text: |-
-                      You establish a haven; add +1 whenever you make a recovery move at that location.
+                      On a **weak hit**, you establish a haven; add +1 whenever you make a recovery move at that location.
 
                       If you establish a haven but score a miss on a recovery move, that location is no longer safe.
                   miss:
                     text: |-
-                      You are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
+                      On a **miss**, you are drawn into a bad situation and must [Pay the Price](id:starforged/moves/fate/pay_the_price).
           - text: |-
               When you make a move +wits and score a strong hit with a match, your hard-won experience lends insight; take +1 momentum.
             enhance_moves:

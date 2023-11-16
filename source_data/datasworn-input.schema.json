@@ -1255,8 +1255,7 @@
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"MoveActionRollEnhancement": {
 			"title": "MoveActionRollEnhancement",
@@ -1350,9 +1349,8 @@
 			]
 		},
 		"MoveNoRoll": {
-			"title": "Move (no roll)",
+			"title": "MoveNoRoll",
 			"type": "object",
-			"description": "A move that makes no action rolls or progress rolls.",
 			"required": ["name", "roll_type", "trigger", "text", "source"],
 			"properties": {
 				"id": {
@@ -1393,8 +1391,7 @@
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"MoveNoRollEnhancement": {
 			"title": "MoveNoRollEnhancement",
@@ -1431,26 +1428,9 @@
 			"required": ["text"],
 			"properties": {
 				"text": {
-					"$ref": "#/$defs/MarkdownString"
-				},
-				"count_as": {
-					"$ref": "#/$defs/MoveOutcomeType"
-				}
-			}
-		},
-		"MoveOutcomeMatchable": {
-			"title": "MoveOutcomeMatchable",
-			"type": "object",
-			"required": ["text"],
-			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownString"
-				},
-				"match": {
-					"$ref": "#/$defs/MoveOutcome"
-				},
-				"count_as": {
-					"$ref": "#/$defs/MoveOutcomeType"
+					"$ref": "#/$defs/MarkdownString",
+					"type": "string",
+					"pattern": "On a \\*\\*(strong hit|weak hit|miss)\\*\\*"
 				}
 			}
 		},
@@ -1466,13 +1446,13 @@
 			"required": ["strong_hit", "weak_hit", "miss"],
 			"properties": {
 				"strong_hit": {
-					"$ref": "#/$defs/MoveOutcomeMatchable"
+					"$ref": "#/$defs/MoveOutcome"
 				},
 				"weak_hit": {
 					"$ref": "#/$defs/MoveOutcome"
 				},
 				"miss": {
-					"$ref": "#/$defs/MoveOutcomeMatchable"
+					"$ref": "#/$defs/MoveOutcome"
 				}
 			}
 		},
@@ -1544,8 +1524,7 @@
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"MoveProgressRollEnhancement": {
 			"title": "MoveProgressRollEnhancement",
@@ -1634,8 +1613,7 @@
 					"$ref": "#/$defs/MoveID",
 					"description": "Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"MoveSpecialTrackEnhancement": {
 			"title": "MoveSpecialTrackEnhancement",

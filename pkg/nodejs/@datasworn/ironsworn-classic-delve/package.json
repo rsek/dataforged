@@ -3,9 +3,7 @@
 	"private": true,
 	"version": "2.0.0-2",
 	"description": "Datasworn JSON data and JSON schema extension for the Ironsworn: Delve supplement.",
-	"type": "commonjs",
 	"files": [
-		"datasworn-delve.schema.json",
 		"json"
 	],
 	"repository": {
@@ -14,6 +12,7 @@
 	},
 	"keywords": [
 		"ironsworn",
+		"datasworn",
 		"delve",
 		"TTRPG"
 	],
@@ -29,6 +28,7 @@
 	"homepage": "https://rsek.github.io/dataforged",
 	"readme": "https://rsek.github.io/dataforged",
 	"dependencies": {
-		"@datasworn/ironsworn-classic": "^2"
+		"@datasworn/core": "file:../core",
+		"@datasworn/ironsworn-classic": "file:../ironsworn-classic"
 	}
 }

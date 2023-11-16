@@ -1,18 +1,18 @@
 import { trackID } from './id-tracker.js'
 import { cloneDeep, forEach, mapValues, merge } from 'lodash-es'
-import {
-	type RecursiveCollection,
-	type Collection
-} from 'schema/common/abstract.js'
-import { type Source } from 'schema/common/metadata.js'
+
 import { type SetOptional } from 'type-fest'
 import type * as Out from '../types/io/datasworn.js'
+import {
+	Collection,
+	RecursiveCollection
+} from '../schema/datasworn/common/abstract.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>
 
 export function sourcedTransformer<
-	TIn extends Partial<SourceHaver> & { _source?: Partial<Source> },
+	TIn extends SourceHaver,
 	TOut extends SourceHaver,
 	TParent extends SourceHaver | null = SourceHaver
 >(
@@ -41,24 +41,13 @@ export function sourcedTransformer<
 			key: string | number,
 			parent: SourceHaver | null
 		): Out.Source {
-			if (data.source != null) return data.source
-			if (parent == null)
-				throw new Error(
-					'Data has no Source object of its own, and no parent to inherit from'
-				)
-			const result = merge(cloneDeep(parent.source), data._source ?? {})
-			delete data._source
-			delete result._source
-			return result
+			return data.source as any
 		},
 		...partialTransformer
 	} as Transformer<TIn, TOut, TParent>
 }
 
-type YamlData<T extends { source: Source; id: string }> = SetOptional<
-	T,
-	'id' | 'source'
-> & { _source?: Partial<Source> }
+type YamlData<T extends { id: string }> = SetOptional<T, 'id'>
 
 type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	contents?: Record<string, infer U>
@@ -85,13 +74,7 @@ export function collectionTransformer<
 			key: string | number,
 			parent: TParent
 		): Out.Source {
-			if (data.source != null) return data.source as Out.Source
-			if (parent == null)
-				throw new Error(`No inheritable source data for ${key}`)
-			const result = merge(cloneDeep(parent.source), data._source ?? {})
-			delete data._source
-			delete result._source
-			return result
+			return data.source as Out.Source
 		},
 		id: function (data: TIn, key: string | number, parent: TParent): string {
 			const baseId = parent.id.replace('/collections/', '/')
@@ -231,8 +214,6 @@ export function transform<
 			result[k] = transform.bind(result)(data, key, parent)
 		}
 	})
-	// @ts-expect-error rm internal source prop
-	delete result._source
 
 	return result as TOut
 }

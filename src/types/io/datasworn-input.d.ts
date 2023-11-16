@@ -329,11 +329,11 @@ export type MarkdownString8 = string;
  */
 export type MarkdownString9 = string;
 /**
- *   * miss: The score doesn't beat either challenge die.
- *   * weak_hit: The score is greater than one challenge die.
- *   * strong_hit: The score is greater than both challenge dice.
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MoveOutcomeType = "miss" | "weak_hit" | "strong_hit";
+export type MarkdownString10 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -343,13 +343,13 @@ export type MoveID1 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString10 = string;
+export type MarkdownString11 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString11 = string;
+export type MarkdownString12 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -363,13 +363,13 @@ export type Label4 = string;
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString12 = string;
+export type MarkdownString13 = string;
 /**
  * Localized text, formatted in Markdown.
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString13 = string;
+export type MarkdownString14 = string;
 /**
  *   * miss: An automatic miss.
  *   * weak_hit: An automatic weak hit.
@@ -382,17 +382,11 @@ export type ProgressRollMethod1 = "miss" | "weak_hit" | "strong_hit" | "progress
  *
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
-export type MarkdownString14 = string;
+export type MarkdownString15 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
 export type MoveID3 = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString15 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -405,6 +399,12 @@ export type MarkdownString16 = string;
  * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
  */
 export type MarkdownString17 = string;
+/**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString18 = string;
 /**
  * A move ID, for a standard move or a unique asset move
  */
@@ -1131,22 +1131,13 @@ export interface TriggerActionRollCondition {
  *   This often requires light editorialization to create text that can stand alone without reference to the rest of the move. For example, 'as above' (in reference to another move outcome) shouldn't be used here; instead, the relevant text should be repeated.
  */
 export interface MoveOutcomes {
-  strong_hit: MoveOutcomeMatchable;
+  strong_hit: MoveOutcome;
   weak_hit: MoveOutcome;
-  miss: MoveOutcomeMatchable;
-}
-export interface MoveOutcomeMatchable {
-  text: MarkdownString;
-  match?: MoveOutcome;
-  count_as?: MoveOutcomeType;
+  miss: MoveOutcome;
 }
 export interface MoveOutcome {
-  text: MarkdownString;
-  count_as?: MoveOutcomeType;
+  text: MarkdownString10;
 }
-/**
- * A move that makes no action rolls or progress rolls.
- */
 export interface MoveNoRoll {
   id?: MoveID;
   name: Label;
@@ -1156,7 +1147,7 @@ export interface MoveNoRoll {
    */
   roll_type: "no_roll";
   trigger: TriggerNoRoll;
-  text: MarkdownString11;
+  text: MarkdownString12;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
    */
@@ -1166,7 +1157,7 @@ export interface MoveNoRoll {
   replaces?: MoveID2;
 }
 export interface TriggerNoRoll {
-  text: MarkdownString10;
+  text: MarkdownString11;
   conditions?: TriggerNoRollCondition[];
 }
 /**
@@ -1182,7 +1173,7 @@ export interface ProgressMove {
   roll_type: "progress_roll";
   track_label: Label4;
   trigger: TriggerProgressRoll;
-  text: MarkdownString14;
+  text: MarkdownString15;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -1193,11 +1184,11 @@ export interface ProgressMove {
   replaces?: MoveID3;
 }
 export interface TriggerProgressRoll {
-  text: MarkdownString12;
+  text: MarkdownString13;
   conditions: TriggerProgressRollCondition[];
 }
 export interface TriggerProgressRollCondition {
-  text?: MarkdownString13;
+  text?: MarkdownString14;
   by?: TriggerBy;
   method?: ProgressRollMethod1;
   /**
@@ -1214,7 +1205,7 @@ export interface ProgressMoveSpecialTrackRoll {
    */
   roll_type: "special_track";
   trigger: TriggerSpecialTrack;
-  text: MarkdownString17;
+  text: MarkdownString18;
   outcomes: MoveOutcomes;
   /**
    * Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement.
@@ -1225,11 +1216,11 @@ export interface ProgressMoveSpecialTrackRoll {
   replaces?: MoveID4;
 }
 export interface TriggerSpecialTrack {
-  text: MarkdownString15;
+  text: MarkdownString16;
   conditions: TriggerSpecialTrackCondition[];
 }
 export interface TriggerSpecialTrackCondition {
-  text?: MarkdownString16;
+  text?: MarkdownString17;
   by?: TriggerBy;
   method: SpecialTrackRollMethod;
   /**

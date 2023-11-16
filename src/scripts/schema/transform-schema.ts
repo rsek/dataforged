@@ -82,7 +82,6 @@ function prepareInputSchemaDef(schema: JSONSchema7) {
 	// inference: its='s the root schema
 	if (!schema.$id?.startsWith('http')) schema = setOptional(schema, 'id')
 	schema = setOptionalWhenDefault(schema)
-	schema = addSourceCascade(schema)
 	return schema
 }
 

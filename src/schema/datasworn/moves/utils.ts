@@ -28,37 +28,49 @@ import {
 	type AnyMoveSchema
 } from './common.js'
 
-export const MoveBase = Type.Object({
-	id: Type.Ref(ID.MoveID),
-	name: Type.Ref(Localize.Label),
-	// is_progress_move: Type.Boolean({ default: false }),
-	roll_type: Type.Ref(MoveRollType),
-	replaces: Type.Optional(
-		Type.Ref(ID.MoveID, {
-			description:
-				'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
-		})
-	),
-	trigger: Type.Object({
+const MoveBase = SourcedNode(
+	Type.Object({
+		id: Type.Ref(ID.MoveID),
+		roll_type: Type.Ref(MoveRollType),
+		replaces: Type.Optional(
+			Type.Ref(ID.MoveID, {
+				description:
+					'Indicates that this move replaces the identified move. References to the replaced move can be considered equivalent to this move.'
+			})
+		),
+		trigger: Type.Object({
+			text: Type.Ref(Localize.MarkdownString, {
+				description:
+					'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
+				type: 'string'
+			})
+		}),
 		text: Type.Ref(Localize.MarkdownString, {
-			description:
-				'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
-			type: 'string'
-		})
-	}),
-	text: Type.Ref(Localize.MarkdownString, {
-		description: 'The complete rules text of the move.'
-	}),
-	outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
-	oracles: Type.Optional(
-		Type.Array(Type.Ref(ID.OracleTableID), {
-			description:
-				"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
-		})
-	),
-	suggestions: Type.Optional(Type.Ref(Metadata.Suggestions)),
-	source: Type.Ref(Metadata.Source)
-})
+			description: 'The complete rules text of the move.'
+		}),
+		outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
+		oracles: Type.Optional(
+			Type.Array(Type.Ref(ID.OracleTableID), {
+				description:
+					"Oracles associated with this move. It's not recommended to roll these automatically, as almost all moves present them as an option, not a requirement."
+			})
+		)
+	})
+)
+
+export function Move<
+	RollType extends TSchema,
+	Trigger extends TSchema,
+	Outcomes extends TSchema
+>(roll_type: RollType, trigger: Trigger, outcomes: Outcomes, options = {}) {
+	return Type.Composite(
+		[
+			Type.Object({ roll_type, trigger, outcomes }),
+			Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger'])
+		],
+		options
+	)
+}
 
 export const TriggerConditionBase = {
 	text: Type.Optional(
@@ -113,15 +125,6 @@ export function Trigger(
 				...conditionsOptions
 			})
 		},
-		options
-	)
-}
-export function composeMoveType<T extends TObject>(schema: T, options = {}) {
-	return SourcedNode(
-		Type.Composite([
-			Type.Omit(MoveBase, ['roll_type', 'outcomes', 'trigger']),
-			schema
-		]),
 		options
 	)
 }

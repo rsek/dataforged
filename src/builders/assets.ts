@@ -111,13 +111,8 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 		data: In.AssetAbility,
 		key: string | number,
 		parent: SourceHaver
-	): {
-		suggestions?: Out.Suggestions | undefined
-		count_as_impact?: boolean | undefined
-		attachments?: Out.AssetAttachment | undefined
-		shared?: boolean | undefined
-	} & { condition_meter?: Out.AssetConditionMeter | undefined } {
-		return data.enhance_asset as any
+	): Out.AssetEnhancement | undefined {
+		return data.enhance_asset
 	},
 	enhance_moves: function (
 		this: SourceHaver,
@@ -127,9 +122,7 @@ export const AssetAbility: Transformer<In.AssetAbility, Out.AssetAbility> = {
 	): Out.MoveEnhancement[] | undefined {
 		if (data.enhance_moves == null) return undefined
 
-		return data.enhance_moves?.map((moveEnhance) =>
-			omit(moveEnhance, ['text', 'outcomes'])
-		) as any
+		return data.enhance_moves
 	}
 }
 
