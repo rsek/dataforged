@@ -290,15 +290,22 @@ export function RecursiveCollection<T extends TRef>(
 	idSchema: TRef<TString>,
 	options: Utils.RequireBy<SchemaOptions, '$id'>
 ) {
+	type RecursiveSchema<C extends TRef> = MergeObjectSchemas<
+		ReturnType<typeof Collection<C>>,
+		TObject<{ collections: ReturnType<typeof Collection<C>> }>
+	>
+
 	return Type.Composite(
 		[
 			Collection(collectableSchema, idSchema, options),
 			Type.Object({
-				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
+				collections: Type.Optional(
+					Dictionary(Type.Ref<ReturnType<typeof Collection<T>>>(options.$id))
+				)
 			})
 		],
 		options
-	)
+	) as unknown as RecursiveSchema<T>
 }
 
 export type RecursiveCollection<T> = Collection<T> & {
