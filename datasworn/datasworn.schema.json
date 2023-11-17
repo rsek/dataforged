@@ -959,6 +959,28 @@
 						"$ref": "#/$defs/WEBPImageURL"
 					}
 				},
+				"rendering": {
+					"title": "OracleCollectionRendering",
+					"type": "object",
+					"required": ["columns"],
+					"properties": {
+						"color": {
+							"$ref": "#/$defs/CSSColor"
+						},
+						"table_style": {
+							"$ref": "#/$defs/OracleCollectionStyle"
+						},
+						"columns": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^[a-z][a-z_]*$": {
+									"$ref": "#/$defs/OracleCollectionTableColumn"
+								}
+							}
+						}
+					}
+				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},

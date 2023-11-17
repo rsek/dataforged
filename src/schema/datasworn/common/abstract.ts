@@ -290,14 +290,13 @@ export function RecursiveCollection<T extends TRef>(
 	idSchema: TRef<TString>,
 	options: Utils.RequireBy<SchemaOptions, '$id'>
 ) {
-	return Type.Recursive(
-		(thisType) =>
-			Type.Composite([
-				Collection(collectableSchema, idSchema, options),
-				Type.Object({
-					collections: Type.Optional(Dictionary(thisType))
-				})
-			]),
+	return Type.Composite(
+		[
+			Collection(collectableSchema, idSchema, options),
+			Type.Object({
+				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
+			})
+		],
 		options
 	)
 }

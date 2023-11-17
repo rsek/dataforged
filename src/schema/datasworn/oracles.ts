@@ -267,10 +267,17 @@ export const OracleCollectionRendering = Squash(
 )
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
-export const OracleCollection = Abstract.RecursiveCollection(
-	Type.Ref(OracleTable),
-	Type.Ref(ID.OracleCollectionID),
-
+export const OracleCollection = Type.Composite(
+	[
+		Abstract.RecursiveCollection(
+			Type.Ref(OracleTable),
+			Type.Ref(ID.OracleCollectionID),
+			{ $id: '#/$defs/OracleCollection' }
+		),
+		Type.Object({
+			rendering: Type.Optional(OracleCollectionRendering)
+		})
+	],
 	{ $id: '#/$defs/OracleCollection' }
 )
 

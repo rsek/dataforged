@@ -30,14 +30,7 @@ export type SVGImageURL = string;
  * A relative URL pointing to a raster image in the WEBP format.
  */
 export type WEBPImageURL = string;
-export type OracleTableID = string;
-export type DiceNotation = string;
-/**
- *   * standalone_table: Render as a standalone table.
- *   * embed_in_row: Render as a table, within a row in another table.
- *   * embed_as_column: Render as a single column of a table.
- */
-export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
+export type OracleCollectionStyle = "multi_table";
 /**
  * A localized plain text name or label.
  */
@@ -55,6 +48,35 @@ export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "descr
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
 export type CSSColor1 = string;
+/**
+ * The key of the OracleTable (within this collection), whose data is used to render this column.
+ */
+export type DictKey1 = string;
+export type OracleTableID = string;
+export type DiceNotation = string;
+/**
+ *   * standalone_table: Render as a standalone table.
+ *   * embed_in_row: Render as a table, within a row in another table.
+ *   * embed_as_column: Render as a single column of a table.
+ */
+export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
+/**
+ * A localized plain text name or label.
+ */
+export type Label2 = string;
+/**
+ * The value(s) from each OracleTableRow that is rendered in this column.
+ *
+ *   * roll: Column displays the roll range (`min` and `max`) of each row.
+ *   * result: Column displays the row's `result` key.
+ *   * summary: Column displays the row's `summary` key.
+ *   * description: Column displays the row's `description` key.
+ */
+export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
+/**
+ * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+ */
+export type CSSColor2 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -142,7 +164,7 @@ export type AssetTypeID = string;
 /**
  * A localized plain text name or label.
  */
-export type Label2 = string;
+export type Label3 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -212,19 +234,19 @@ export type PlayerConditionMeter = string;
 /**
  * The key of the asset control field.
  */
-export type DictKey1 = string;
-/**
- * The key of the asset option field.
- */
 export type DictKey2 = string;
 /**
- * The key of the asset control field.
+ * The key of the asset option field.
  */
 export type DictKey3 = string;
 /**
- * The key of the asset option field.
+ * The key of the asset control field.
  */
 export type DictKey4 = string;
+/**
+ * The key of the asset option field.
+ */
+export type DictKey5 = string;
 /**
  * A move ID with wildcards
  */
@@ -336,7 +358,7 @@ export type MoveID2 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label3 = string;
+export type Label4 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -639,6 +661,7 @@ export interface OracleCollection {
   color?: CSSColor;
   icon?: SVGImageURL;
   images?: WEBPImageURL[];
+  rendering?: OracleCollectionRendering;
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -651,6 +674,23 @@ export interface OracleCollection {
   source: Source;
   enhances?: OracleCollectionID1;
   replaces?: OracleCollectionID2;
+}
+export interface OracleCollectionRendering {
+  color?: CSSColor;
+  table_style?: OracleCollectionStyle;
+  columns: {
+    [k: string]: OracleCollectionTableColumn;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface OracleCollectionTableColumn {
+  name?: Label1;
+  content_type: OracleTableColumnContentKey;
+  color?: CSSColor1;
+  table_key: DictKey1;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -684,9 +724,9 @@ export interface OracleTableRendering {
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleTableColumn {
-  name?: Label1;
-  content_type: OracleTableColumnContentKey;
-  color?: CSSColor1;
+  name?: Label2;
+  content_type: OracleTableColumnContentKey1;
+  color?: CSSColor2;
 }
 export interface MatchBehavior {
   text: MarkdownString;
@@ -833,7 +873,7 @@ export interface AssetType {
 export interface Asset {
   id?: AssetID;
   name: Label;
-  asset_type: Label2;
+  asset_type: Label3;
   color?: CSSColor;
   icon?: SVGImageURL;
   /**
@@ -1039,7 +1079,7 @@ export interface RollOptionAssetControl {
    * Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.
    */
   assets: AssetIDWildcard[] | null;
-  control: DictKey1;
+  control: DictKey2;
 }
 export interface RollOptionAssetOption {
   /**
@@ -1050,21 +1090,21 @@ export interface RollOptionAssetOption {
    * Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.
    */
   assets: AssetIDWildcard[] | null;
-  option: DictKey2;
+  option: DictKey3;
 }
 export interface RollOptionAttachedAssetControl {
   /**
    * Roll using the value of an attached asset control. For example, a Module asset could use this to roll using the `integrity` control of an attached Vehicle.
    */
   using: "attached_asset_control";
-  control: DictKey3;
+  control: DictKey4;
 }
 export interface RollOptionAttachedAssetOption {
   /**
    * Roll using the value of an attached asset option.
    */
   using: "attached_asset_option";
-  option: DictKey4;
+  option: DictKey5;
 }
 export interface RollOptionCustom {
   name: Label;
@@ -1218,7 +1258,7 @@ export interface ProgressMove {
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
-  track_label: Label3;
+  track_label: Label4;
   trigger: TriggerProgressRoll;
   text: MarkdownString15;
   outcomes: MoveOutcomes;
