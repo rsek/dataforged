@@ -322,8 +322,8 @@ export const AssetAbility = Type.Object(
 		enhance_moves: Type.Optional(
 			Type.Array(Type.Ref(Moves.MoveEnhancement), {
 				description:
-					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.',
-				releaseStage: 'experimental'
+					'Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.'
+				// releaseStage: 'experimental'
 			})
 		)
 	},
@@ -334,7 +334,6 @@ export type AssetAbility = Static<typeof AssetAbility>
 export const AssetType = Abstract.Collection(
 	Type.Ref(Asset),
 	Type.Ref(ID.AssetTypeID),
-	Type.Object({}),
 	{ $id: '#/$defs/AssetType' }
 )
 export type AssetType = Static<typeof AssetType>

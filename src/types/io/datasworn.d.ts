@@ -6,20 +6,38 @@
  */
 
 export type NamespaceID = string;
-export type OracleCollectionID = string;
 /**
  * A localized plain text name or label.
  */
 export type Label = string;
 /**
+ * Localized text, formatted in Markdown.
+ *
+ * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
+ */
+export type MarkdownString = string;
+export type DictKey = string;
+export type OracleCollectionID = string;
+/**
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
 export type CSSColor = string;
 /**
+ * A relative URL pointing to a vector image in the SVG format.
+ */
+export type SVGImageURL = string;
+/**
  * A relative URL pointing to a raster image in the WEBP format.
  */
 export type WEBPImageURL = string;
-export type OracleCollectionStyle = "multi_table";
+export type OracleTableID = string;
+export type DiceNotation = string;
+/**
+ *   * standalone_table: Render as a standalone table.
+ *   * embed_in_row: Render as a table, within a row in another table.
+ *   * embed_as_column: Render as a single column of a table.
+ */
+export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
 /**
  * A localized plain text name or label.
  */
@@ -37,45 +55,6 @@ export type OracleTableColumnContentKey = "roll" | "result" | "summary" | "descr
  * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
  */
 export type CSSColor1 = string;
-/**
- * The key of the OracleTable (within this collection), whose data is used to render this column.
- */
-export type DictKey = string;
-/**
- * Localized text, formatted in Markdown.
- *
- * It uses some custom syntax; e.g. `{{table:some_oracle_table_id}}` indicates that the referenced oracle table is rendered there part of the source material.
- */
-export type MarkdownString = string;
-export type OracleTableID = string;
-/**
- * A relative URL pointing to a vector image in the SVG format.
- */
-export type SVGImageURL = string;
-export type DiceNotation = string;
-/**
- *   * standalone_table: Render as a standalone table.
- *   * embed_in_row: Render as a table, within a row in another table.
- *   * embed_as_column: Render as a single column of a table.
- */
-export type OracleTableStyle = "standalone_table" | "embed_in_row" | "embed_as_column";
-/**
- * A localized plain text name or label.
- */
-export type Label2 = string;
-/**
- * The value(s) from each OracleTableRow that is rendered in this column.
- *
- *   * roll: Column displays the roll range (`min` and `max`) of each row.
- *   * result: Column displays the row's `result` key.
- *   * summary: Column displays the row's `summary` key.
- *   * description: Column displays the row's `description` key.
- */
-export type OracleTableColumnContentKey1 = "roll" | "result" | "summary" | "description";
-/**
- * A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
- */
-export type CSSColor2 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -152,18 +131,18 @@ export type PageNumber = number;
  */
 export type OracleTableID2 = string;
 /**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
 export type OracleCollectionID1 = string;
 /**
- * Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
  */
 export type OracleCollectionID2 = string;
 export type AssetTypeID = string;
 /**
  * A localized plain text name or label.
  */
-export type Label3 = string;
+export type Label2 = string;
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[a-z][a-z_]*$".
@@ -357,7 +336,7 @@ export type MoveID2 = string;
 /**
  * A localized plain text name or label.
  */
-export type Label4 = string;
+export type Label3 = string;
 /**
  * Localized text, formatted in Markdown.
  *
@@ -436,14 +415,22 @@ export type MoveIDWithWildcard1 = string;
  */
 export type MoveIDWithWildcard2 = string;
 /**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
 export type AssetTypeID1 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type AssetTypeID2 = string;
 export type AtlasID = string;
 /**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
 export type AtlasID1 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type AtlasID2 = string;
 export type DelveSiteID = string;
 /**
  * Challenge rank, represented as an integer:
@@ -467,9 +454,13 @@ export type NpcID1 = string;
 export type AtlasEntryID1 = string;
 export type MoveCategoryID = string;
 /**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
 export type MoveCategoryID1 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type MoveCategoryID2 = string;
 export type NpcCollectionID = string;
 /**
  * A localized category label describing the nature of this NPC.
@@ -481,9 +472,13 @@ export type NpcCollectionID = string;
 export type NpcNature = string;
 export type NpcVariantID = string;
 /**
- * Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own.
+ * This collection's content enhances the identified collection, rather than being a standalone collection of its own.
  */
 export type NpcCollectionID1 = string;
+/**
+ * This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.
+ */
+export type NpcCollectionID2 = string;
 export type RarityID = string;
 /**
  * The asset augmented by this rarity.
@@ -505,13 +500,13 @@ export type TruthOptionID = string;
  */
 export interface Datasworn {
   id: NamespaceID;
+  rules?: Rules;
   /**
    * A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.
    */
   oracles?: {
     [k: string]: OracleCollection;
   };
-  source: Source;
   /**
    * A dictionary object containing asset types, which contain assets.
    */
@@ -566,6 +561,72 @@ export interface Datasworn {
   truths?: {
     [k: string]: Truth;
   };
+  source: Source;
+}
+export interface Rules {
+  condition_meters: {
+    [k: string]: ConditionMeterRule;
+  };
+  impacts: {
+    [k: string]: ImpactCategory;
+  };
+  special_tracks: {
+    [k: string]: SpecialTrackRule;
+  };
+  stats: {
+    [k: string]: StatRule;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface ConditionMeterRule {
+  name: Label;
+  min: number;
+  max: number;
+  shared: boolean;
+  description: MarkdownString;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface ImpactCategory {
+  name: Label;
+  description: MarkdownString;
+  contents: {
+    [k: string]: ImpactRule;
+  };
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface ImpactRule {
+  name: Label;
+  shared: boolean;
+  description: MarkdownString;
+  permanent: boolean;
+  prevents_recovery: DictKey[];
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface SpecialTrackRule {
+  name: Label;
+  shared: boolean;
+  description: MarkdownString;
+  optional: boolean;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema definition
+ * via the `patternProperty` "^[a-z][a-z_]*$".
+ */
+export interface StatRule {
+  name: Label;
+  description: MarkdownString;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -576,8 +637,8 @@ export interface OracleCollection {
   name: Label;
   canonical_name?: Label;
   color?: CSSColor;
+  icon?: SVGImageURL;
   images?: WEBPImageURL[];
-  rendering?: OracleCollectionRendering;
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -590,24 +651,6 @@ export interface OracleCollection {
   source: Source;
   enhances?: OracleCollectionID1;
   replaces?: OracleCollectionID2;
-  sample_names?: Label[];
-}
-export interface OracleCollectionRendering {
-  color?: CSSColor;
-  table_style?: OracleCollectionStyle;
-  columns: {
-    [k: string]: OracleCollectionTableColumn;
-  };
-}
-/**
- * This interface was referenced by `undefined`'s JSON-Schema definition
- * via the `patternProperty` "^[a-z][a-z_]*$".
- */
-export interface OracleCollectionTableColumn {
-  name?: Label1;
-  content_type: OracleTableColumnContentKey;
-  color?: CSSColor1;
-  table_key: DictKey;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -618,6 +661,7 @@ export interface OracleTable {
   name: Label;
   canonical_name?: Label;
   icon?: SVGImageURL;
+  images?: WEBPImageURL[];
   dice: DiceNotation;
   rendering?: OracleTableRendering;
   summary?: MarkdownString1;
@@ -639,9 +683,9 @@ export interface OracleTableRendering {
  * via the `patternProperty` "^[a-z][a-z_]*$".
  */
 export interface OracleTableColumn {
-  name?: Label2;
-  content_type: OracleTableColumnContentKey1;
-  color?: CSSColor2;
+  name?: Label1;
+  content_type: OracleTableColumnContentKey;
+  color?: CSSColor1;
 }
 export interface MatchBehavior {
   text: MarkdownString;
@@ -759,6 +803,8 @@ export interface AssetType {
   name: Label;
   canonical_name?: Label;
   color?: CSSColor;
+  icon?: SVGImageURL;
+  images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -767,6 +813,7 @@ export interface AssetType {
   suggestions?: Suggestions;
   source: Source;
   enhances?: AssetTypeID1;
+  replaces?: AssetTypeID2;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -775,7 +822,7 @@ export interface AssetType {
 export interface Asset {
   id: AssetID;
   name: Label;
-  asset_type: Label3;
+  asset_type: Label2;
   color?: CSSColor;
   icon?: SVGImageURL;
   /**
@@ -1160,7 +1207,7 @@ export interface ProgressMove {
    * A progress move that rolls on a standard progress track type (defined by this move).
    */
   roll_type: "progress_roll";
-  track_label: Label4;
+  track_label: Label3;
   trigger: TriggerProgressRoll;
   text: MarkdownString15;
   outcomes: MoveOutcomes;
@@ -1296,6 +1343,8 @@ export interface Atlas {
   name: Label;
   canonical_name?: Label;
   color?: CSSColor;
+  icon?: SVGImageURL;
+  images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -1307,6 +1356,7 @@ export interface Atlas {
   suggestions?: Suggestions;
   source: Source;
   enhances?: AtlasID1;
+  replaces?: AtlasID2;
 }
 /**
  * An atlas entry, like the Ironlands region entries found in classic Ironsworn.
@@ -1429,6 +1479,8 @@ export interface MoveCategory {
   name: Label;
   canonical_name?: Label;
   color?: CSSColor;
+  icon?: SVGImageURL;
+  images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -1437,6 +1489,7 @@ export interface MoveCategory {
   suggestions?: Suggestions;
   source: Source;
   enhances?: MoveCategoryID1;
+  replaces?: MoveCategoryID2;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -1447,6 +1500,8 @@ export interface NpcCollection {
   name: Label;
   canonical_name?: Label;
   color?: CSSColor;
+  icon?: SVGImageURL;
+  images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
   contents?: {
@@ -1455,6 +1510,7 @@ export interface NpcCollection {
   suggestions?: Suggestions;
   source: Source;
   enhances?: NpcCollectionID1;
+  replaces?: NpcCollectionID2;
 }
 /**
  * A non-player character entry, similar to those in Chapter 5 of the Ironsworn Rulebook, or Chapter 4 of Starforged.

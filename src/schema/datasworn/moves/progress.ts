@@ -16,7 +16,7 @@ import {
 	TriggerEnhancement,
 	TriggerConditionEnhancement,
 	Trigger,
-	toMoveEnhancement,
+	MoveEnhancement,
 	TriggerCondition
 } from './utils.js'
 import { SpecialTrackType } from '../common/progress.js'
@@ -101,7 +101,7 @@ export type TriggerProgressRollEnhancement = Static<
 	typeof TriggerProgressRollEnhancement
 >
 
-export const MoveProgressRollEnhancement = toMoveEnhancement(
+export const MoveProgressRollEnhancement = MoveEnhancement(
 	MoveProgressRoll,
 	TriggerProgressRollEnhancement,
 	{
@@ -173,7 +173,7 @@ export type TriggerSpecialTrackEnhancement = Static<
 	typeof TriggerSpecialTrackEnhancement
 >
 
-export const MoveSpecialTrackEnhancement = toMoveEnhancement(
+export const MoveSpecialTrackEnhancement = MoveEnhancement(
 	MoveSpecialTrack,
 	TriggerSpecialTrackEnhancement,
 	{

@@ -10,7 +10,7 @@ import {
 } from 'lodash-es'
 import path from 'path'
 import { Datasworn as DataswornBuilder } from '../../builders/datasworn.js'
-import { type SourceHaver, transform } from '../../builders/transformer.js'
+import { transform } from '../../builders/transformer.js'
 import type { In, Out } from '../../types/index.js'
 import ajv from '../validation/ajv.js'
 import { log } from '../utils/logger.js'
@@ -23,10 +23,12 @@ import { readSource } from './readWrite.js'
 import { formatPath } from '../../utils.js'
 import {
 	isSortableObjectSchema,
+	unsortableKeys,
 	sortDataswornKeys,
 	sortSchemaKeys
 } from './sort.js'
 import { JSONSchema7 } from 'json-schema'
+import { SourcedNode } from '../../schema/datasworn/common/abstract.js'
 
 const metadataKeys = ['source', 'id'] as const
 const isMacroKey = (key: string) => key.startsWith('_')
@@ -159,13 +161,19 @@ function cleanDatasworn(datasworn: Out.Datasworn) {
 
 		const nicePointer = hashPointer.replace(/^#\//, sep)
 
+		const key = nicePointer.split(sep).pop() as string
+
 		pointersToDelete.push(
 			...getDeletableKeys(value, schema).map((k) => [nicePointer, k].join(sep))
 		)
 
 		if (nicePointer === sep) return
 
-		if (value != null && isSortableObjectSchema(schema))
+		if (
+			value != null &&
+			!unsortableKeys.includes(key) &&
+			isSortableObjectSchema(schema)
+		)
 			sortedPointers[nicePointer] = sortDataswornKeys(value as any)
 
 		return
@@ -197,7 +205,7 @@ async function buildSourcebookFile(
 	const builtData = transform<In.Datasworn, Out.Datasworn>(
 		sourceData,
 		sourceData.id as string,
-		sourceData as In.Datasworn & SourceHaver,
+		sourceData as In.Datasworn & SourcedNode,
 		transformer as any
 	)
 	try {

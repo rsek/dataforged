@@ -13,7 +13,8 @@ import {
 	Npcs,
 	Truths,
 	Rarities,
-	DelveSites
+	DelveSites,
+	Rules
 } from '../../schema/datasworn/index.js'
 
 import { Datasworn as Rulebook } from '../../schema/datasworn/datasworn.js'
@@ -30,6 +31,7 @@ const DataswornBase = prepareBaseSchema(Rulebook, {
 	...ID,
 	...Metadata,
 	...Localize,
+	...Rules,
 	...Progress,
 	...Npcs,
 	...Oracles,
@@ -46,7 +48,7 @@ export const Datasworn = prepareDistributableSchema(DataswornBase)
 
 export const DataswornInput = prepareInputSchema(DataswornBase, {
 	$id: INPUT_SCHEMA_ID,
-	title: `${Datasworn.getSchema().title as string} (data entry)`
+	title: `${Datasworn.getSchema()?.title as string} (data entry)`
 })
 
 // {

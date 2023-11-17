@@ -36,8 +36,7 @@ export const MoveEnhancement = UnionOneOf(
 		Type.Ref(MoveSpecialTrackEnhancement)
 	],
 	{
-		$id: '#/$defs/MoveEnhancement',
-		title: 'Move enhancement'
+		$id: '#/$defs/MoveEnhancement'
 	}
 )
 
@@ -50,7 +49,6 @@ export type MoveEnhancement =
 export const MoveCategory = Abstract.Collection(
 	Type.Ref(Move),
 	Type.Ref(ID.MoveCategoryID),
-	Type.Object({}),
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>

@@ -5,16 +5,18 @@ import { type SetOptional } from 'type-fest'
 import type * as Out from '../types/io/datasworn.js'
 import {
 	Collection,
-	RecursiveCollection
+	RecursiveCollection,
+	SourcedNode
 } from '../schema/datasworn/common/abstract.js'
+import { Rules } from '../schema/datasworn/rules.js'
 
 type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>
 
 export function sourcedTransformer<
-	TIn extends SourceHaver,
-	TOut extends SourceHaver,
-	TParent extends SourceHaver | null = SourceHaver
+	TIn extends YamlData<SourcedNode>,
+	TOut extends SourcedNode,
+	TParent extends SourcedNode | Rules | null
 >(
 	partialTransformer: PartialKeys<
 		Transformer<TIn, TOut, TParent>,
@@ -25,7 +27,7 @@ export function sourcedTransformer<
 		id: function (
 			data: TIn,
 			key: string | number,
-			parent: SourceHaver | null
+			parent: SourcedNode | null
 		): string {
 			if (data.id != null) return trackID(data.id)
 
@@ -39,7 +41,7 @@ export function sourcedTransformer<
 		source: function (
 			data: TIn,
 			key: string | number,
-			parent: SourceHaver | null
+			parent: SourcedNode | null
 		): Out.Source {
 			return data.source as any
 		},
@@ -56,12 +58,12 @@ type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	: never
 
 export function collectionTransformer<
-	TIn extends YamlData<Collection<YamlData<SourceHaver>>>,
-	TOut extends Collection<SourceHaver>,
-	TParent extends SourceHaver = SourceHaver
+	TIn extends YamlData<Collection<YamlData<SourcedNode>>>,
+	TOut extends Collection<SourcedNode>,
+	TParent extends SourcedNode = SourcedNode
 >(
 	collectionKey: string,
-	itemTransformer: Transformer<Collected<TIn>, Collected<TOut>>,
+	itemTransformer: Transformer<Collected<TIn>, Collected<TOut>, TOut>,
 	partialTransformer: Omit<
 		Transformer<TIn, TOut, TParent>,
 		'source' | 'id' | 'contents'
@@ -91,7 +93,7 @@ export function collectionTransformer<
 			return trackID(parts.join('/'))
 		},
 		contents: function (
-			this: SourceHaver,
+			this: SourcedNode,
 			data: TIn,
 			key: string | number,
 			parent: TParent
@@ -102,13 +104,13 @@ export function collectionTransformer<
 			) as Record<string, Collected<TOut>>
 		},
 		...partialTransformer
-	} as Transformer<TIn, TOut>
+	} as Transformer<TIn, TOut, TParent>
 
 	if (isRecursive && !('collections' in result))
 		result = {
 			...result,
 			collections: function (
-				this: SourceHaver,
+				this: SourcedNode,
 				data: TIn,
 				key: string | number,
 				parent: TParent
@@ -119,13 +121,14 @@ export function collectionTransformer<
 }
 
 export function recursiveCollectionTransformer<
-	TIn extends YamlData<RecursiveCollection<any>>,
-	TOut extends RecursiveCollection<any>,
+	TIn extends YamlData<RecursiveCollection<SourcedNode>>,
+	TOut extends RecursiveCollection<SourcedNode>,
+	TParent extends SourcedNode,
 	TItemTransformer extends Transformer<
 		Collected<TIn>,
-		Collected<TOut>
-	> = Transformer<Collected<TIn>, Collected<TOut>>,
-	TParent extends SourceHaver = SourceHaver
+		Collected<TOut>,
+		TOut
+	> = Transformer<Collected<TIn>, Collected<TOut>, TOut>
 >(
 	collectionKey: string,
 	itemTransformer: TItemTransformer,
@@ -140,7 +143,7 @@ export function recursiveCollectionTransformer<
 		{
 			...partialTransformer,
 			collections: function (
-				this: SourceHaver,
+				this: SourcedNode,
 				data: TIn
 			): Record<string, TOut> | undefined {
 				if (data.collections == null) return undefined
@@ -163,35 +166,32 @@ export function recursiveCollectionTransformer<
 }
 
 export type Transformer<
-	TIn extends object,
-	TOut extends object,
-	TParent extends SourceHaver | null = SourceHaver
+	TIn,
+	TOut,
+	TParent extends SourcedNode | Rules | null
 > = {
 	[K in keyof Required<TOut> as K extends keyof TIn
 		? K extends InitialKeys
 			? K
 			: TIn[K] extends Partial<TOut>[K]
-			? never
-			: K
+			  ? never
+			  : K
 		: K]: K extends InitialKeys
 		? (data: TIn, key: string | number, parent: TParent) => TOut[K]
 		: (
-				this: SourceHaver,
+				this: SourcedNode,
 				data: TIn,
 				key: string | number,
 				parent: TParent
 		  ) => TOut[K] // if they both have the key and it's the same type value, omit -- it doesn't need transforming
 }
-export interface SourceHaver {
-	source: Out.Source
-	id: string
-}
+
 type InitialKeys = 'id' | 'source'
 
 export function transform<
 	TIn extends object,
 	TOut extends TIn,
-	TParent extends SourceHaver = SourceHaver
+	TParent extends SourcedNode = SourcedNode
 >(
 	data: TIn,
 	key: string | number,

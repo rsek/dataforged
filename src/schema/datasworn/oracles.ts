@@ -213,6 +213,7 @@ export const OracleTable = Abstract.SourcedNode(
 		dice: Type.Ref(DiceNotation, { default: '1d100' }),
 		_i18n: Type.Optional(Type.Ref(Localize.I18nHints, { macro: true })),
 		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL)),
+		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
 		summary: Type.Optional(
 			Type.Ref(Localize.MarkdownString, {
 				description:
@@ -269,21 +270,8 @@ export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 export const OracleCollection = Abstract.RecursiveCollection(
 	Type.Ref(OracleTable),
 	Type.Ref(ID.OracleCollectionID),
-	'#/$defs/OracleCollection',
-	{
-		replaces: Type.Optional(
-			Type.Ref(ID.OracleCollectionID, {
-				description:
-					'Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
-			})
-		),
-		rendering: Type.Optional(Type.Ref(OracleCollectionRendering)),
-		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
-		sample_names: Type.Optional(Type.Array(Type.Ref(Localize.Label)))
 
-		// templates: Type.Optional(Type.Array(OracleRollTemplate))
-	},
-	{ title: 'Oracle collection' }
+	{ $id: '#/$defs/OracleCollection' }
 )
 
 export type OracleCollection = Static<typeof OracleCollection>

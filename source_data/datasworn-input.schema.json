@@ -8,6 +8,9 @@
 		"id": {
 			"$ref": "#/$defs/NamespaceID"
 		},
+		"rules": {
+			"$ref": "#/$defs/Rules"
+		},
 		"oracles": {
 			"type": "object",
 			"$comment": "Deserialize as a dictionary object.",
@@ -17,9 +20,6 @@
 					"$ref": "#/$defs/OracleCollection"
 				}
 			}
-		},
-		"source": {
-			"$ref": "#/$defs/Source"
 		},
 		"assets": {
 			"type": "object",
@@ -110,6 +110,9 @@
 					"$ref": "#/$defs/Truth"
 				}
 			}
+		},
+		"source": {
+			"$ref": "#/$defs/Source"
 		}
 	},
 	"$defs": {
@@ -362,7 +365,7 @@
 			"pattern": "^[a-z0-9_]{3,}\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
 		"CSSColor": {
-			"title": "CSS Color",
+			"title": "CSSColor",
 			"type": "string",
 			"description": "A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value"
 		},
@@ -576,6 +579,157 @@
 			"i18n": true,
 			"releaseStage": "experimental"
 		},
+		"ConditionMeterRule": {
+			"title": "ConditionMeterRule",
+			"type": "object",
+			"required": ["name", "max", "shared", "description"],
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Label"
+				},
+				"min": {
+					"type": "integer",
+					"default": 0
+				},
+				"max": {
+					"type": "integer"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"description": {
+					"$ref": "#/$defs/MarkdownString"
+				}
+			}
+		},
+		"ImpactCategory": {
+			"title": "ImpactCategory",
+			"type": "object",
+			"required": ["name", "description", "contents"],
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Label"
+				},
+				"description": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"contents": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/ImpactRule"
+						}
+					}
+				}
+			}
+		},
+		"ImpactRule": {
+			"title": "ImpactRule",
+			"type": "object",
+			"required": [
+				"name",
+				"shared",
+				"description",
+				"permanent",
+				"prevents_recovery"
+			],
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Label"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"description": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"permanent": {
+					"type": "boolean"
+				},
+				"prevents_recovery": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/DictKey"
+					}
+				}
+			}
+		},
+		"Rules": {
+			"title": "Rules",
+			"type": "object",
+			"required": ["condition_meters", "impacts", "special_tracks", "stats"],
+			"properties": {
+				"condition_meters": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/ConditionMeterRule"
+						}
+					}
+				},
+				"impacts": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/ImpactCategory"
+						}
+					}
+				},
+				"special_tracks": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/SpecialTrackRule"
+						}
+					}
+				},
+				"stats": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"patternProperties": {
+						"^[a-z][a-z_]*$": {
+							"$ref": "#/$defs/StatRule"
+						}
+					}
+				}
+			}
+		},
+		"SpecialTrackRule": {
+			"title": "SpecialTrackRule",
+			"type": "object",
+			"required": ["name", "shared", "description", "optional"],
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Label"
+				},
+				"shared": {
+					"type": "boolean"
+				},
+				"description": {
+					"$ref": "#/$defs/MarkdownString"
+				},
+				"optional": {
+					"type": "boolean"
+				}
+			}
+		},
+		"StatRule": {
+			"title": "StatRule",
+			"type": "object",
+			"required": ["name", "description"],
+			"properties": {
+				"name": {
+					"$ref": "#/$defs/Label"
+				},
+				"description": {
+					"$ref": "#/$defs/MarkdownString"
+				}
+			}
+		},
 		"ChallengeRank": {
 			"title": "ChallengeRank",
 			"description": "Challenge rank, represented as an integer:\n\n  * 1: Troublesome\n  * 2: Dangerous\n  * 3: Formidable\n  * 4: Extreme\n  * 5: Epic",
@@ -670,8 +824,7 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"NpcCollection": {
 			"title": "NpcCollection",
@@ -689,6 +842,15 @@
 				},
 				"color": {
 					"$ref": "#/$defs/CSSColor"
+				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/WEBPImageURL"
+					}
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -713,10 +875,13 @@
 				},
 				"enhances": {
 					"$ref": "#/$defs/NpcCollectionID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
+				"replaces": {
+					"$ref": "#/$defs/NpcCollectionID",
+					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"NpcNature": {
 			"$ref": "#/$defs/Label",
@@ -784,14 +949,14 @@
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
+				},
 				"images": {
 					"type": "array",
 					"items": {
 						"$ref": "#/$defs/WEBPImageURL"
 					}
-				},
-				"rendering": {
-					"$ref": "#/$defs/OracleCollectionRendering"
 				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
@@ -825,17 +990,11 @@
 				},
 				"enhances": {
 					"$ref": "#/$defs/OracleCollectionID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 				},
 				"replaces": {
 					"$ref": "#/$defs/OracleCollectionID",
-					"description": "Indicates that this collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
-				},
-				"sample_names": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/Label"
-					}
+					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 				}
 			}
 		},
@@ -928,6 +1087,12 @@
 				"icon": {
 					"$ref": "#/$defs/SVGImageURL"
 				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/WEBPImageURL"
+					}
+				},
 				"dice": {
 					"$ref": "#/$defs/DiceNotation",
 					"default": "1d100"
@@ -966,8 +1131,7 @@
 					"$ref": "#/$defs/OracleTableID",
 					"description": "Indicates that this table replaces the identified table. References to the replaced table can be considered equivalent to this table."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"OracleTableColumn": {
 			"title": "OracleTableColumn",
@@ -1303,6 +1467,15 @@
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/WEBPImageURL"
+					}
+				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
@@ -1326,13 +1499,16 @@
 				},
 				"enhances": {
 					"$ref": "#/$defs/MoveCategoryID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
+				"replaces": {
+					"$ref": "#/$defs/MoveCategoryID",
+					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"MoveEnhancement": {
-			"title": "Move enhancement",
+			"title": "MoveEnhancement",
 			"oneOf": [
 				{
 					"$ref": "#/$defs/MoveActionRollEnhancement"
@@ -2330,8 +2506,7 @@
 					"description": "Describes changes made to various moves by this asset ability. Usually these require specific trigger conditions.",
 					"items": {
 						"$ref": "#/$defs/MoveEnhancement"
-					},
-					"releaseStage": "experimental"
+					}
 				},
 				"moves": {
 					"type": "object",
@@ -2687,6 +2862,15 @@
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/WEBPImageURL"
+					}
+				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
@@ -2710,10 +2894,13 @@
 				},
 				"enhances": {
 					"$ref": "#/$defs/AssetTypeID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
+				"replaces": {
+					"$ref": "#/$defs/AssetTypeID",
+					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"CheckboxField": {
 			"title": "CheckboxField",
@@ -2928,8 +3115,7 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"TruthOption": {
 			"title": "TruthOption",
@@ -2967,6 +3153,15 @@
 				"color": {
 					"$ref": "#/$defs/CSSColor"
 				},
+				"icon": {
+					"$ref": "#/$defs/SVGImageURL"
+				},
+				"images": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/WEBPImageURL"
+					}
+				},
 				"summary": {
 					"$ref": "#/$defs/MarkdownString"
 				},
@@ -2999,9 +3194,14 @@
 				},
 				"enhances": {
 					"$ref": "#/$defs/AtlasID",
-					"description": "Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+					"description": "This collection's content enhances the identified collection, rather than being a standalone collection of its own."
+				},
+				"replaces": {
+					"$ref": "#/$defs/AtlasID",
+					"description": "This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection."
 				}
-			}
+			},
+			"releaseStage": "experimental"
 		},
 		"AtlasEntry": {
 			"title": "Atlas entry",
@@ -3049,7 +3249,6 @@
 					"$ref": "#/$defs/Source"
 				}
 			},
-			"isSourcedNode": true,
 			"releaseStage": "experimental"
 		},
 		"PlayerConditionMeter": {
@@ -3104,8 +3303,7 @@
 					"minimum": 3,
 					"maximum": 5
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"DelveSite": {
 			"title": "DelveSite",
@@ -3400,8 +3598,7 @@
 				"theme": {
 					"$ref": "#/$defs/DelveSiteThemeID"
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"DelveSiteDenizen": {
 			"title": "DelveSiteDenizen",
@@ -3782,8 +3979,7 @@
 					"$ref": "#/$defs/OracleTableID",
 					"description": "An oracle table ID containing place name elements. For examples, see oracle ID `delve/oracles/site_name/place/barrow`, and its siblings in oracle collection ID `delve/collections/oracles/site_name/place`. These oracles are used by the site name oracle from Ironsworn: Delve (ID: delve/oracles/site_name/format) to create random names for delve sites."
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"DelveSiteDomainDangerRow": {
 			"title": "DelveSiteDomainDangerRow",
@@ -4191,8 +4387,7 @@
 				"source": {
 					"$ref": "#/$defs/Source"
 				}
-			},
-			"isSourcedNode": true
+			}
 		},
 		"DelveSiteThemeDangerRow": {
 			"title": "DelveSiteThemeDangerRow",

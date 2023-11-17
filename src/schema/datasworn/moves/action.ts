@@ -9,7 +9,7 @@ import {
 } from '../../../typebox/index.js'
 import { ActionRollMethod, MoveOutcomes, MoveRollType } from './common.js'
 import {
-	toMoveEnhancement,
+	MoveEnhancement,
 	Move,
 	TriggerEnhancement,
 	TriggerConditionEnhancement,
@@ -230,7 +230,7 @@ export const TriggerNoRollEnhancement = TriggerEnhancement(
 )
 export type TriggerNoRollEnhancement = Static<typeof TriggerNoRollEnhancement>
 
-export const MoveNoRollEnhancement = toMoveEnhancement(
+export const MoveNoRollEnhancement = MoveEnhancement(
 	MoveNoRoll,
 	TriggerNoRollEnhancement,
 	{
@@ -239,7 +239,7 @@ export const MoveNoRollEnhancement = toMoveEnhancement(
 )
 export type MoveNoRollEnhancement = Static<typeof MoveNoRollEnhancement>
 
-export const MoveActionRollEnhancement = toMoveEnhancement(
+export const MoveActionRollEnhancement = MoveEnhancement(
 	MoveActionRoll,
 	TriggerActionRollEnhancement,
 	{

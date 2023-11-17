@@ -13,11 +13,12 @@ import {
 	type TObject,
 	type TSchema,
 	TypeGuard,
-	TOptional
+	TOptional,
+	TPick
 } from '@sinclair/typebox'
 import { ExtractLiteralFromEnum } from '../../../typebox/enum.js'
 import { UnionOneOf } from '../../../typebox/union-oneof.js'
-import { SourcedNode } from '../common/abstract.js'
+import { MergeObjectSchemas, SourcedNode } from '../common/abstract.js'
 import { MoveIDWildcard } from '../common/id.js'
 import { Abstract, ID, Localize, Metadata } from '../common/index.js'
 import { RequireBy } from '../common/utils.js'
@@ -182,7 +183,7 @@ export function TriggerConditionEnhancement<
 	return Type.Object(nuProps, options)
 }
 
-export function toMoveEnhancement<
+export function MoveEnhancement<
 	T extends TObject<{ roll_type: TSchema }>,
 	TriggerEnhancement extends TObject
 >(
@@ -190,20 +191,21 @@ export function toMoveEnhancement<
 	triggerEnhanceSchema: TriggerEnhancement,
 	options: ObjectOptions = {}
 ) {
-	const base = Type.Composite([
-		Type.Pick(moveSchema, ['roll_type']),
+	// const base = Type.Composite([
+
+	// ]) as unknown as TObject<{
+	// 	roll_type: T['properties']['roll_type']
+	// 	trigger: TOptional<TriggerEnhancement>
+	// }>
+
+	const base = Abstract.EnhanceMany(
 		Type.Object({
 			trigger: Type.Optional(triggerEnhanceSchema)
-		})
-	])
-
-	const enhanceMany = RequireBy(
-		Abstract.EnhanceMany(base, Type.Ref(MoveIDWildcard), options),
-		['roll_type'],
-		options
+		}),
+		Type.Ref(MoveIDWildcard)
 	)
 
-	return enhanceMany
+	return Type.Composite([base, Type.Pick(moveSchema, ['roll_type'])], options)
 }
 
 export function RollOption<

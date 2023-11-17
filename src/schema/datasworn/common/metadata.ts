@@ -15,7 +15,6 @@ export const WEBPImageURL = Type.String({
 })
 export type WEBPImageURL = Static<typeof WEBPImageURL>
 export const CSSColor = Type.String({
-	title: 'CSS Color',
 	$id: '#/$defs/CSSColor',
 	description:
 		'A CSS color value. See: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value'

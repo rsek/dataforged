@@ -10,13 +10,20 @@ const typeKeys = [
 	'roll_type'
 ]
 
-const noSort = ['columns', 'controls', 'contents', 'collections']
+export const unsortableKeys = [
+	'columns',
+	'controls',
+	'contents',
+	'options',
+	'collections'
+]
 
 export const dataSwornKeyOrder = [
 	'id',
 	'title',
 	'name',
 	'canonical_name',
+	'rules',
 	...typeKeys,
 	'min',
 	'max',
@@ -71,8 +78,19 @@ export const dataSwornKeyOrder = [
 	// relationships
 	'oracles',
 	'suggestions',
+	'enhance_asset',
 	// very long content
+	'enhance_moves',
 	'table',
+	'assets',
+	'atlas',
+	'delve_sites',
+	'moves',
+	'npcs',
+	'rarities',
+	'site_domains',
+	'site_themes',
+	'truths',
 	'source',
 	'i18n'
 ]
@@ -100,9 +118,11 @@ export function isSortableObjectSchema(schema: JSONSchema) {
 		case schema.type !== 'object':
 		// skip dictionary-like object
 		case schema.patternProperties != null:
+			// console.log('SKIP', schema.title ?? schema)
 			return false
 
 		default:
+			// console.log('Sorting', schema.title ?? schema)
 			return true
 	}
 }
@@ -111,7 +131,7 @@ export function sortDataswornKeys<T extends Record<string, unknown>>(
 	object: T,
 	sortOrder = dataSwornKeyOrder
 ) {
-	return sortObjectKeys(object, dataSwornKeyOrder)
+	return sortObjectKeys(object, sortOrder)
 }
 
 const schemaKeyOrder = [

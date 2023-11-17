@@ -13,7 +13,10 @@ import {
 	type TProperties,
 	type TRef,
 	type TSchema,
-	type TString
+	type TString,
+	TOptional,
+	TArray,
+	TOmit
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
 import { type PartialDeep, type Simplify } from 'type-fest'
@@ -23,6 +26,10 @@ import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
 import * as Utils from './utils.js'
 import { Clone } from '@sinclair/typebox/value/clone'
+
+export type MergeObjectSchemas<A extends TObject, B extends TObject> = TObject<
+	A['properties'] & B['properties']
+>
 
 export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
@@ -132,7 +139,8 @@ export function StaticRowStub(
 	return result
 }
 
-const sourcedNodeBaseProps = Type.Object({
+const SourcedNodeBase = Type.Object({
+	id: Type.String(),
 	name: Type.Ref(Localize.Label),
 	canonical_name: Type.Optional(Type.Ref(Localize.Label)),
 	source: Type.Ref(Metadata.Source),
@@ -143,35 +151,42 @@ export function SourcedNode<T extends TObject>(
 	schema: T,
 	options: ObjectOptions = {}
 ) {
-	return Utils.Squash([sourcedNodeBaseProps, schema], {
-		isSourcedNode: true,
-		...options
-	}) as TObject<(typeof sourcedNodeBaseProps)['properties'] & T['properties']>
+	return Type.Composite(
+		[
+			Type.Omit(
+				SourcedNodeBase,
+				// @ts-expect-error
+				Object.keys(schema.properties) as (keyof Static<T>)[]
+			),
+			schema
+		],
+		options
+	) as unknown as MergeObjectSchemas<TOmit<typeof SourcedNodeBase, 'id'>, T>
+	// simplify type so TS doesn't have to do as much work
 }
-export type SourcedNode<T = Record<string, unknown>> = Static<
-	typeof sourcedNodeBaseProps
-> &
-	T
 
-export function Cyclopedia<T extends TProperties>(
-	properties: T,
+export type SourcedNode = Static<typeof SourcedNodeBase>
+
+const CyclopediaMixin = Type.Object({
+	name: Type.Ref(Localize.Label),
+	features: Type.Array(Type.Ref(Localize.MarkdownString)),
+	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+	description: Type.Ref(Localize.MarkdownString),
+	quest_starter: Type.Ref(Localize.MarkdownString),
+	your_truth: Type.Optional(Type.Ref(Localize.MarkdownString))
+})
+
+export function Cyclopedia<T extends TObject>(
+	schema: T,
 	options: ObjectOptions = {}
 ) {
-	return SourcedNode(
-		Type.Object({
-			features: Type.Array(Type.Ref(Localize.MarkdownString)),
-			summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			description: Type.Ref(Localize.MarkdownString),
-			quest_starter: Type.Ref(Localize.MarkdownString),
-			your_truth: Type.Optional(Type.Ref(Localize.MarkdownString)),
-			...properties
-		}),
-		options
-	)
+	const base = Type.Composite([
+		CyclopediaMixin,
+		schema
+	]) as unknown as MergeObjectSchemas<typeof CyclopediaMixin, T>
+
+	return SourcedNode(base, options)
 }
-export type Cyclopedia<T extends TProperties> = Static<
-	ReturnType<typeof Cyclopedia<T>>
->
 
 // type LocalizeKeys = 'name' | 'label' | 'summary' | 'description' | 'text'
 type MetaKeys = 'id' | 'source' | 'rendering' | 'name' | 'suggestions'
@@ -190,10 +205,12 @@ export type OmitMeta<T> = Omit<T, MetaKeys>
  * Enhances a single rules element
  */
 export function EnhanceOne<T extends TObject>(t: T) {
+	const base = OmitMeta(t)
+	const mixin = Type.Object({ enhances: Type.Optional(t.properties.id) })
 	return Type.Composite([
-		OmitMeta(t),
+		base,
 		Type.Object({ enhances: Type.Optional(t.properties.id) })
-	])
+	]) as unknown as MergeObjectSchemas<typeof base, typeof mixin>
 }
 export type EnhanceOne<T extends TObject> = Static<
 	ReturnType<typeof EnhanceOne<T>>
@@ -204,68 +221,84 @@ export function EnhanceMany<T extends TObject>(
 	extendIds: TString | TRef<TString>,
 	options: ObjectOptions = {}
 ) {
-	const noMeta = OmitMeta(enhanceSchema)
-	const base = Utils.DeepPartial(noMeta)
+	const base = Utils.DeepPartial(OmitMeta(enhanceSchema))
+	const mixin = Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })
 
-	return Type.Composite(
-		[base, Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })],
-		options
-	)
+	return Type.Composite([base, mixin], options) as MergeObjectSchemas<
+		typeof base,
+		typeof mixin
+	>
 }
 export type EnhanceMany<T extends TObject> = Static<
 	ReturnType<typeof EnhanceMany<T>>
 >
 
-const CollectionBase = Type.Object({
-	color: Type.Optional(Type.Ref(Metadata.CSSColor)),
-	summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
-	description: Type.Optional(Type.Ref(Localize.MarkdownString))
-})
+const CollectionMixin = SourcedNode(
+	Type.Object({
+		color: Type.Optional(Type.Ref(Metadata.CSSColor)),
+		summary: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		description: Type.Optional(Type.Ref(Localize.MarkdownString)),
+		images: Type.Optional(Type.Array(Type.Ref(Metadata.WEBPImageURL))),
+		icon: Type.Optional(Type.Ref(Metadata.SVGImageURL))
+	})
+)
 
 export function Collection<T extends TRef>(
-	memberSchema: T,
-	idPattern: TRef<TString>,
-	properties: TObject,
+	collectableSchema: T,
+	idSchema: TRef<TString>,
 	options: SchemaOptions = {}
 ) {
-	const params = Type.Object({
-		id: idPattern,
+	const base = Type.Object({
+		id: idSchema,
 		enhances: Type.Optional({
-			...idPattern,
+			...idSchema,
 			description:
-				"Indicates that this collection's content enhances another collection, rather than being a standalone collection of its own."
+				"This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 		}),
-		contents: Type.Optional(Dictionary(memberSchema))
+		replaces: Type.Optional({
+			...idSchema,
+			description:
+				'This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
+		}),
+		contents: Type.Optional(Dictionary(collectableSchema))
 	})
-	const base = Utils.Squash([CollectionBase, params])
-	type base = TObject<
-		(typeof CollectionBase)['properties'] & (typeof params)['properties']
-	>
 
-	return SourcedNode(Utils.Squash([base, properties]), options)
+	return Type.Composite(
+		[
+			base,
+			Type.Omit(
+				CollectionMixin,
+				// @ts-expect-error
+				Object.keys(base.properties)
+			)
+		],
+		options
+	) as MergeObjectSchemas<typeof base, typeof CollectionMixin>
 }
 
-export type Collection<T> = Omit<
-	Static<ReturnType<typeof Collection<TRef>>>,
-	'contents'
-> & { contents?: Record<string, T> }
+export type Collection<T> = SourcedNode &
+	Simplify<
+		Static<typeof CollectionMixin> & {
+			id: string
+			enhances?: string
+			contents: Record<string, T>
+		}
+	>
 
 export function RecursiveCollection<T extends TRef>(
-	memberSchema: T,
-	idPattern: TRef<TString>,
-	refID: string,
-	properties: TProperties = {},
-	options: SchemaOptions = {}
+	collectableSchema: T,
+	idSchema: TRef<TString>,
+	options: Utils.RequireBy<SchemaOptions, '$id'>
 ) {
 	return Type.Recursive(
 		(thisType) =>
 			Type.Composite([
-				Collection(memberSchema, idPattern, Type.Object(properties), options),
+				Collection(collectableSchema, idSchema, options),
 				Type.Object({
 					collections: Type.Optional(Dictionary(thisType))
 				})
 			]),
-		{ $id: refID }
+		options
 	)
 }
 

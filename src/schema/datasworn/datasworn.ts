@@ -13,12 +13,15 @@ import {
 	Truths,
 	Atlas
 } from './index.js'
+import { Rules } from './rules.js'
 
 export const Datasworn = Type.Object(
 	{
 		id: Type.Ref(ID.NamespaceID),
 
 		source: Type.Ref(Metadata.Source),
+
+		rules: Type.Optional(Type.Ref(Rules)),
 
 		oracles: Type.Optional(
 			Abstract.Dictionary(Type.Ref(Oracles.OracleCollection), {

@@ -15,6 +15,14 @@ import { Atlas } from './atlas.js'
 import { type In, type Out } from '../types/index.js'
 
 export const Datasworn = sourcedTransformer<In.Datasworn, Out.Datasworn, null>({
+	rules: function (
+		this: SourceHaver,
+		data: In.Datasworn,
+		key: string | number,
+		parent: null
+	) {
+		return data.rules
+	},
 	oracles: function (
 		this: SourceHaver,
 		data: In.Datasworn,
