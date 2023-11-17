@@ -592,10 +592,12 @@
 					"default": 0
 				},
 				"max": {
-					"type": "integer"
+					"type": "integer",
+					"default": 5
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
@@ -639,16 +641,19 @@
 					"$ref": "#/$defs/Label"
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"permanent": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"prevents_recovery": {
 					"type": "array",
+					"default": [],
 					"items": {
 						"$ref": "#/$defs/DictKey"
 					}
@@ -707,13 +712,15 @@
 					"$ref": "#/$defs/Label"
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"optional": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		},
@@ -830,7 +837,7 @@
 		"NpcCollection": {
 			"title": "NpcCollection",
 			"type": "object",
-			"required": ["id", "name", "source"],
+			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/NpcCollectionID"
@@ -1473,7 +1480,7 @@
 		"MoveCategory": {
 			"title": "MoveCategory",
 			"type": "object",
-			"required": ["id", "name", "source"],
+			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/MoveCategoryID"
@@ -2115,18 +2122,6 @@
 					"items": {
 						"$ref": "#/$defs/TriggerActionRollConditionEnhancement"
 					}
-				}
-			}
-		},
-		"TriggerBase": {
-			"type": "object",
-			"required": ["text"],
-			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownString",
-					"type": "string",
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
-					"pattern": ".*\\.{3}"
 				}
 			}
 		},
@@ -2878,7 +2873,7 @@
 		"AssetType": {
 			"title": "AssetType",
 			"type": "object",
-			"required": ["id", "name", "source"],
+			"required": ["id", "name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/AssetTypeID"
@@ -4515,5 +4510,6 @@
 				}
 			}
 		}
-	}
+	},
+	"$schema": "http://json-schema.org/draft-07/schema#"
 }

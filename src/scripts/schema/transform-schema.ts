@@ -3,23 +3,15 @@
  *
  * This variant schema allows several properties to be omitted. Any missing values are then generated and inserted when the JSON is compiled.
  */
-import { Type, type TSchema } from '@sinclair/typebox'
 import { type JSONSchema7 } from 'json-schema'
-import { cloneDeep, omit, set } from 'lodash-es'
-// import { SourceStub } from '../../schema/datasworn/common/metadata.js'
-
+import { cloneDeep, omit } from 'lodash-es'
 import JsonSchema, { type JsonPointer } from 'json-schema-library'
+import { TRoot } from '../../schema/datasworn/root.js'
 
 const schemaRefHead = '#/$defs/'
 
-export function prepareBaseSchema(
-	root: TSchema,
-	$defs: Record<string, TSchema>
-) {
-	const draft = new JsonSchema.Draft07({
-		...root,
-		$defs
-	})
+export function prepareBaseSchema(root: TRoot) {
+	const draft = new JsonSchema.Draft07(cloneDeep(root))
 	draft.eachSchema(prepareSchemaDef)
 	return draft
 }

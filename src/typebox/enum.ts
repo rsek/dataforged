@@ -13,13 +13,13 @@ import { map } from 'lodash-es'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 
-export function JsonEnumCheck(schema: JsonEnum, value: unknown) {
+export function JsonEnumCheck(schema: TJsonEnum, value: unknown) {
 	return schema.enum.every(isJsonValue)
 }
 
 export const EnumDescriptions = Symbol()
 
-export interface JsonEnum<T extends string[] | number[] = string[] | number[]>
+export interface TJsonEnum<T extends string[] | number[] = string[] | number[]>
 	extends TSchema {
 	[Kind]: 'JsonEnum'
 	[EnumDescriptions]: Record<T[number], string>
@@ -34,11 +34,11 @@ export interface JsonEnum<T extends string[] | number[] = string[] | number[]>
 export function JsonEnumFromRecord<K extends string>(
 	entries: Record<K, string>,
 	options?: SchemaOptions
-): JsonEnum<K[]>
+): TJsonEnum<K[]>
 export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 	entries: Record<T[number], string>,
 	options: SchemaOptions = {}
-): JsonEnum<T> {
+): TJsonEnum<T> {
 	const arr = Object.keys(entries).map((k) =>
 		Number.isInteger(Number(k)) ? Number(k) : k
 	) as (keyof typeof entries)[]
@@ -57,7 +57,7 @@ export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 		enum: arr,
 		...options,
 		description
-	} as JsonEnum<T>
+	} as TJsonEnum<T>
 }
 
 /** Extracts a literal from a JsonEnum, plus any associated description. */
@@ -76,7 +76,7 @@ export function JsonEnum<T extends string[] | number[]>(
 	literals: T,
 	options: SchemaOptions = {}
 ) {
-	return { ...options, [Kind]: 'JsonEnum', enum: literals } as JsonEnum<T>
+	return { ...options, [Kind]: 'JsonEnum', enum: literals } as TJsonEnum<T>
 }
 
 // export function StringEnum<T extends string[]>(

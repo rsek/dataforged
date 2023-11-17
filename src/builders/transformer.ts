@@ -14,7 +14,7 @@ type PartialKeys<T, K extends string | number | symbol> = Omit<T, K> &
 	Partial<T>
 
 export function sourcedTransformer<
-	TIn extends YamlData<SourcedNode>,
+	TIn extends YamlSource<SourcedNode>,
 	TOut extends SourcedNode,
 	TParent extends SourcedNode | Rules | null
 >(
@@ -49,7 +49,9 @@ export function sourcedTransformer<
 	} as Transformer<TIn, TOut, TParent>
 }
 
-type YamlData<T extends { id: string }> = SetOptional<T, 'id'>
+type YamlSource<T> = T extends { id: string }
+	? Omit<T, 'id'> & Partial<Pick<T, 'id'>>
+	: T
 
 type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	contents?: Record<string, infer U>
@@ -58,7 +60,7 @@ type Collected<T extends { contents?: Record<string, any> }> = T extends {
 	: never
 
 export function collectionTransformer<
-	TIn extends YamlData<Collection<YamlData<SourcedNode>>>,
+	TIn extends YamlSource<Collection<YamlSource<SourcedNode>>>,
 	TOut extends Collection<SourcedNode>,
 	TParent extends SourcedNode = SourcedNode
 >(
@@ -121,8 +123,10 @@ export function collectionTransformer<
 }
 
 export function recursiveCollectionTransformer<
-	TIn extends YamlData<RecursiveCollection<SourcedNode>>,
-	TOut extends RecursiveCollection<SourcedNode>,
+	TIn extends YamlSource<
+		RecursiveCollection<Collection<YamlSource<SourcedNode>>>
+	>,
+	TOut extends RecursiveCollection<Collection<SourcedNode>>,
 	TParent extends SourcedNode,
 	TItemTransformer extends Transformer<
 		Collected<TIn>,
@@ -189,9 +193,9 @@ export type Transformer<
 type InitialKeys = 'id' | 'source'
 
 export function transform<
-	TIn extends object,
-	TOut extends TIn,
-	TParent extends SourcedNode = SourcedNode
+	TIn,
+	TOut,
+	TParent extends SourcedNode | Rules | null
 >(
 	data: TIn,
 	key: string | number,

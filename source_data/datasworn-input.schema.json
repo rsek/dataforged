@@ -582,7 +582,7 @@
 		"ConditionMeterRule": {
 			"title": "ConditionMeterRule",
 			"type": "object",
-			"required": ["name", "max", "shared", "description"],
+			"required": ["name", "description"],
 			"properties": {
 				"name": {
 					"$ref": "#/$defs/Label"
@@ -592,10 +592,12 @@
 					"default": 0
 				},
 				"max": {
-					"type": "integer"
+					"type": "integer",
+					"default": 5
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
@@ -627,28 +629,25 @@
 		"ImpactRule": {
 			"title": "ImpactRule",
 			"type": "object",
-			"required": [
-				"name",
-				"shared",
-				"description",
-				"permanent",
-				"prevents_recovery"
-			],
+			"required": ["name", "description"],
 			"properties": {
 				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"permanent": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"prevents_recovery": {
 					"type": "array",
+					"default": [],
 					"items": {
 						"$ref": "#/$defs/DictKey"
 					}
@@ -701,19 +700,21 @@
 		"SpecialTrackRule": {
 			"title": "SpecialTrackRule",
 			"type": "object",
-			"required": ["name", "shared", "description", "optional"],
+			"required": ["name", "description"],
 			"properties": {
 				"name": {
 					"$ref": "#/$defs/Label"
 				},
 				"shared": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				},
 				"description": {
 					"$ref": "#/$defs/MarkdownString"
 				},
 				"optional": {
-					"type": "boolean"
+					"type": "boolean",
+					"default": false
 				}
 			}
 		},
@@ -829,7 +830,7 @@
 		"NpcCollection": {
 			"title": "NpcCollection",
 			"type": "object",
-			"required": ["name", "source"],
+			"required": ["name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/NpcCollectionID"
@@ -1475,7 +1476,7 @@
 		"MoveCategory": {
 			"title": "MoveCategory",
 			"type": "object",
-			"required": ["name", "source"],
+			"required": ["name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/MoveCategoryID"
@@ -2115,18 +2116,6 @@
 					"items": {
 						"$ref": "#/$defs/TriggerActionRollConditionEnhancement"
 					}
-				}
-			}
-		},
-		"TriggerBase": {
-			"type": "object",
-			"required": ["text"],
-			"properties": {
-				"text": {
-					"$ref": "#/$defs/MarkdownString",
-					"type": "string",
-					"description": "A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.",
-					"pattern": ".*\\.{3}"
 				}
 			}
 		},
@@ -2870,7 +2859,7 @@
 		"AssetType": {
 			"title": "AssetType",
 			"type": "object",
-			"required": ["name", "source"],
+			"required": ["name", "contents", "source"],
 			"properties": {
 				"id": {
 					"$ref": "#/$defs/AssetTypeID"
@@ -4503,5 +4492,6 @@
 				}
 			}
 		}
-	}
+	},
+	"$schema": "http://json-schema.org/draft-07/schema#"
 }

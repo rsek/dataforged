@@ -20,7 +20,7 @@ import { JSONSchemaType, JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core'
 import { inRange, omitBy, partition, pick, pickBy, set } from 'lodash'
 import { Entries, JsonValue, Simplify, TupleToUnion, ValueOf } from 'type-fest'
 import { ObjectEntries } from 'type-fest/source/entries'
-import { JsonEnum, TAnySchema, JsonEnumCheck } from 'typebox'
+import { TJsonEnum, TAnySchema, JsonEnumCheck } from 'typebox'
 import { NullableCheck } from 'typebox/nullable'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
@@ -62,7 +62,7 @@ export function setIdRef<T extends { id: string }, R extends string>(
 	>
 }
 
-export function toJtdEnum<U extends string[], T extends JsonEnum<U>>(
+export function toJtdEnum<U extends string[], T extends TJsonEnum<U>>(
 	schema: ReturnType<typeof JsonEnum<U>>
 ) {
 	return {
@@ -158,9 +158,9 @@ export function toJtdValues<
 	}
 }
 
-function isStringEnum(schema: TSchema): schema is JsonEnum<string[]> {
+function isStringEnum(schema: TSchema): schema is TJsonEnum<string[]> {
 	if (schema?.kind !== 'JsonEnum') return false
-	return (schema as JsonEnum<JsonValue[]>).enum.every(
+	return (schema as TJsonEnum<JsonValue[]>).enum.every(
 		(member) => typeof member === 'string'
 	)
 }
@@ -260,14 +260,14 @@ function toJtdForm<T extends TSchema>(schema: T): JTDSchemaType<Static<T>> {
 
 	if (schema[Kind] === 'JsonEnum') {
 		if (
-			(schema as unknown as JsonEnum).enum?.every(
+			(schema as unknown as TJsonEnum).enum?.every(
 				(member) => typeof member === 'string'
 			)
 		)
 			result = toJtdEnum(schema as any) as any
 		// FIXME: smarter typing for this; only non-string enum is ChallengeRank, which can be handled as an integer
 		if (
-			(schema as unknown as JsonEnum).enum?.every(
+			(schema as unknown as TJsonEnum).enum?.every(
 				(member) => typeof member === 'number'
 			)
 		)

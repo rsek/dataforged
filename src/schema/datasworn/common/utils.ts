@@ -11,11 +11,18 @@ import {
 	TNull,
 	TUnion,
 	TLiteral,
-	ObjectProperties
+	ObjectProperties,
+	TPartial,
+	TOmit,
+	TPick,
+	TRequired,
+	TypeClone
 } from '@sinclair/typebox'
 import { Clone } from '@sinclair/typebox/value/clone'
 import { camelCase, startCase } from 'lodash-es'
 import { KebabCase, type Simplify } from 'type-fest'
+import { MergeObjectSchemas } from './abstract.js'
+import { JsonEnum } from '../../../typebox/enum.js'
 
 export function Squash<Head extends TObject[], Tail extends TObject>(
 	schemas: [...Head, Tail],
@@ -78,10 +85,15 @@ export function DeepPartial<T extends TObject>(
 
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 
+type TPartialBy<
+	T extends TObject,
+	K extends keyof Static<T>
+> = MergeObjectSchemas<TOmit<T, K>, TPartial<TPick<T, K>>>
+
 /** Make the provided keys optional */
-export function PartialBy<T extends TObject>(
+export function PartialBy<T extends TObject, K extends (keyof Static<T>)[]>(
 	schema: T,
-	optionalKeys: Array<keyof Static<T>>,
+	optionalKeys: [...K],
 	options: ObjectOptions = {}
 ) {
 	return Type.Composite(
@@ -90,11 +102,15 @@ export function PartialBy<T extends TObject>(
 			Type.Partial(Type.Pick(schema, optionalKeys))
 		],
 		options
-	)
+	) as unknown as TPartialBy<T, K[number]>
 }
 
 export type PartialExcept<T, K extends keyof T> = Pick<T, K> &
 	Partial<Omit<T, K>>
+type TPartialExcept<
+	T extends TObject,
+	K extends keyof Static<T>
+> = MergeObjectSchemas<TPick<T, K>, TPartial<TOmit<T, K>>>
 
 /** Make everything optional except for the provided keys  */
 export function PartialExcept<T extends TObject, K extends (keyof Static<T>)[]>(
@@ -108,9 +124,14 @@ export function PartialExcept<T extends TObject, K extends (keyof Static<T>)[]>(
 			Type.Partial(Type.Omit(schema, requiredKeys))
 		],
 		options
-	)
+	) as unknown as TPartialExcept<T, K[number]>
 }
 export type RequireBy<T, K extends keyof T> = Required<Pick<T, K>> & Omit<T, K>
+
+type TRequireBy<
+	T extends TObject,
+	K extends keyof Static<T>
+> = MergeObjectSchemas<TRequired<TPick<T, K>>, TOmit<T, K>>
 
 /** Make the provided keys required */
 export function RequireBy<T extends TObject, K extends (keyof Static<T>)[]>(
@@ -124,7 +145,7 @@ export function RequireBy<T extends TObject, K extends (keyof Static<T>)[]>(
 			Type.Required(Type.Pick(schema, requiredKeys))
 		],
 		options
-	)
+	) as unknown as TRequireBy<T, K[number]>
 }
 
 export type RequireExcept<T, K extends keyof T> = Required<Omit<T, K>> &
@@ -163,57 +184,32 @@ export function PolymorphicWithID<
 	)
 }
 
-// export interface TDiscriminatedUnion<
-// 	T extends TObject[],
-// 	TDiscriminator extends keyof Static<T[number]> & string
-// > extends TObject {
-// 	static: Static<TUnion<T>>
-// 	allOf: { if: TObject; then: TObject }[]
-// 	additionalProperties: true
-// 	properties: { [K in TDiscriminator]: T[number]['properties'][K] }
-// }
-
 // export function DiscriminatedUnion<
 // 	T extends TObject[],
-// 	TDiscriminator extends keyof Static<T[number]> & string
-// >(
-// 	schemas: [...T],
-// 	discriminator: TDiscriminator,
-// 	options: ObjectOptions = {}
-// ): TDiscriminatedUnion<T, TDiscriminator> {
-// 	const allOf = schemas.map((schema) => ({
-// 		if: Type.Pick(schema, [discriminator]),
-// 		then: schema
-// 	}))
-
-// 	const discriminatorSchema = Type.Union(
-// 		schemas.map((schema) => Type.Index(schema, [discriminator]))
-// 	)
+// 	DKey extends keyof Static<T[number]>,
+// >(members: [...T], dKey: DKey, options: ObjectOptions = {}) {
+// 	const allOf = members.map((member) => ({ if: Type.Pick(member, [dKey]) }))
 
 // 	return Type.Object(
-// 		{ [discriminator]: discriminatorSchema },
-// 		{ allOf, additionalProperties: true, ...options }
-// 	) as any
+// 		{ [dKey]:  },
+// 		{ allOf, ...options }
+// 	) as any as TDiscriminatedUnion<T>
 // }
 
-// export function DiscriminatedUnionWithID<
-// 	T extends TObject[],
-// 	TDiscriminator extends keyof Static<T[number]> & string
-// >(
-// 	schemas: [...T],
-// 	discriminator: TDiscriminator,
-// 	idSchema,
-// 	options: ObjectOptions = {}
-// ) {
-// 	const base = DiscriminatedUnion(schemas, discriminator, options)
+// export type TDiscriminatedUnionResolve<T extends TObject[]> = T extends [
+// 	infer L extends TObject,
+// 	...infer R extends TObject[]
+// ]
+// 	? Static<L> | TDiscriminatedUnionResolve<R>
+// 	: {}
 
-// 	base.properties.id = idSchema
-
-// 	return base as typeof base & { properties: { id: typeof idSchema } }
+// export interface TDiscriminatedUnion<T extends TObject[] = []> extends TObject {
+// 	static: TDiscriminatedUnionResolve<T>
+// 	allOf: { if: TObject; then: TObject }[]
 // }
 
 export function NoDefaults<T extends TObject>(schema: T) {
-	const newSchema = Clone(schema)
+	const newSchema = TypeClone.Type(schema)
 	for (const key in newSchema.properties)
 		delete newSchema.properties[key]?.default
 

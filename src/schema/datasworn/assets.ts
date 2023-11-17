@@ -372,7 +372,6 @@ export {
 	ClockField,
 	CounterField,
 	SelectFieldStat,
-	// SelectFieldRef
 	TextField
 } from './common/inputs.js'
 

@@ -2,6 +2,7 @@
  * Abstract interfaces and utility types that are only used internally. They are not included in the final schema.
  */
 import {
+	TOmit,
 	Type,
 	type ObjectOptions,
 	type SchemaOptions,
@@ -10,22 +11,20 @@ import {
 	type TLiteral,
 	type TNumber,
 	type TObject,
-	type TProperties,
 	type TRef,
 	type TSchema,
 	type TString,
+	TProperties,
 	TOptional,
-	TArray,
-	TOmit
+	TRecord
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
 import { type PartialDeep, type Simplify } from 'type-fest'
 import type { OracleTableRow } from '../oracles.js'
-import { DICT_KEY } from './regex.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
+import { DICT_KEY } from './regex.js'
 import * as Utils from './utils.js'
-import { Clone } from '@sinclair/typebox/value/clone'
 
 export type MergeObjectSchemas<A extends TObject, B extends TObject> = TObject<
 	A['properties'] & B['properties']
@@ -40,6 +39,7 @@ export function Dictionary<T extends TSchema>(
 		$comment: 'Deserialize as a dictionary object.'
 	})
 }
+export type TDictionary<T extends TSchema> = TRecord<TString, TSchema>
 
 type TransformFn<T, K, TResult> = (value: T, key: K) => TResult
 
@@ -244,23 +244,23 @@ const CollectionMixin = SourcedNode(
 )
 
 export function Collection<T extends TRef>(
-	collectableSchema: T,
-	idSchema: TRef<TString>,
+	collectable: T,
+	collectionId: TRef<TString>,
 	options: SchemaOptions = {}
 ) {
 	const base = Type.Object({
-		id: idSchema,
+		id: collectionId,
 		enhances: Type.Optional({
-			...idSchema,
+			...collectionId,
 			description:
 				"This collection's content enhances the identified collection, rather than being a standalone collection of its own."
 		}),
 		replaces: Type.Optional({
-			...idSchema,
+			...collectionId,
 			description:
 				'This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
 		}),
-		contents: Type.Optional(Dictionary(collectableSchema))
+		contents: Dictionary(collectable)
 	})
 
 	return Type.Composite(
@@ -273,97 +273,47 @@ export function Collection<T extends TRef>(
 			)
 		],
 		options
-	) as MergeObjectSchemas<typeof base, typeof CollectionMixin>
+	) as MergeObjectSchemas<typeof base, typeof CollectionMixin> & { $id: string }
 }
 
-export type Collection<T> = SourcedNode &
-	Simplify<
+export type Collection<T> = Simplify<
+	SourcedNode &
 		Static<typeof CollectionMixin> & {
 			id: string
 			enhances?: string
 			contents: Record<string, T>
 		}
-	>
+>
 
-export function RecursiveCollection<T extends TRef>(
-	collectableSchema: T,
-	idSchema: TRef<TString>,
-	options: Utils.RequireBy<SchemaOptions, '$id'>
-) {
-	type RecursiveSchema<C extends TRef> = MergeObjectSchemas<
-		ReturnType<typeof Collection<C>>,
-		TObject<{ collections: ReturnType<typeof Collection<C>> }>
-	>
+export type TCollection<T extends TSchema> = ReturnType<
+	typeof Collection<TRef<T>>
+>
 
-	return Type.Composite(
-		[
-			Collection(collectableSchema, idSchema, options),
-			Type.Object({
-				collections: Type.Optional(
-					Dictionary(Type.Ref<ReturnType<typeof Collection<T>>>(options.$id))
-				)
-			})
-		],
-		options
-	) as unknown as RecursiveSchema<T>
-}
-
-export type RecursiveCollection<T> = Collection<T> & {
+export type RecursiveCollection<T extends Collection<any>> = Utils.PartialBy<
+	T,
+	'contents'
+> & {
 	collections?: Record<string, RecursiveCollection<T>>
 }
 
-const unenhanceableKeys = ['id', 'source', 'name']
+export type TRecursiveCollection<T extends TObject<{ contents: TSchema }>> =
+	TObject<
+		T['properties'] & {
+			collections: TOptional<TDictionary<TRecursiveCollection<T>>>
+		}
+	>
 
-/**
- * @remarks Recommended to omit at least "id", "source", and "name"/"label"
- */
-export function NodeEnhanceSelf<
-	T extends TObject<{ id: TString; source?: TObject; name?: TString }>
->(t: T, omitKeys: Array<keyof Static<T>> = [], options: SchemaOptions = {}) {
-	// metadata types: id, source, name
-
-	// no required strings
-
-	const base = Clone(
-		Type.Omit<
-			T,
-			(typeof omitKeys | typeof unenhanceableKeys)[number][] &
-				(keyof Static<T>)[]
-		>(t, [...omitKeys, 'id', 'source', 'name'])
-	)
-
-	// strip defaults, they just get in the way of enhancements
-	for (const k in base.properties) {
-		const v = base.properties[k]
-		// @ts-expect-error
-		if (typeof v?.default !== 'undefined') delete v.default
-	}
-
-	return Utils.DeepPartial(base, options) as TObject
-}
-
-/**
- * Note that `id` is always omitted.
- */
-export function NodeEnhanceForeign<
-	T extends TObject<{
-		id: TString | TRef<TString>
-		source?: TObject
-		name?: TString
-	}>
->(
-	t: T,
-	omitKeys: Array<keyof Static<T>> = [],
-	extendsIDType: TString | TRef<TString> = t.properties.id,
-	options: SchemaOptions = {}
+export function RecursiveCollection<T extends TObject<{ contents: TSchema }>>(
+	base: T,
+	options: Utils.RequireBy<SchemaOptions, '$id'>
 ) {
 	return Type.Composite(
 		[
-			Utils.DeepPartial(
-				Type.Omit(t, [...omitKeys, 'id', 'source', 'name'])
-			) as TObject,
-			Type.Object({ enhances: Type.Optional(Type.Array(extendsIDType)) })
+			Utils.PartialBy(base, ['contents']),
+			Type.Object({
+				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
+			})
 		],
 		options
-	)
+	) as unknown as TRecursiveCollection<typeof base>
 }

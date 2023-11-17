@@ -1,23 +1,5 @@
-import {
-	Metadata,
-	ID,
-	Localize,
-	Player,
-	Progress
-} from '../../schema/datasworn/common/index.js'
-import {
-	Atlas,
-	Assets,
-	Moves,
-	Oracles,
-	Npcs,
-	Truths,
-	Rarities,
-	DelveSites,
-	Rules
-} from '../../schema/datasworn/index.js'
+import { DataswornRoot } from '../../schema/datasworn/index.js'
 
-import { Datasworn as Rulebook } from '../../schema/datasworn/datasworn.js'
 import {
 	prepareInputSchema,
 	prepareBaseSchema,
@@ -25,24 +7,7 @@ import {
 } from './transform-schema.js'
 import { INPUT_SCHEMA_ID } from '../const.js'
 
-export const $schema = 'http://json-schema.org/draft-07/schema#'
-
-const DataswornBase = prepareBaseSchema(Rulebook, {
-	...ID,
-	...Metadata,
-	...Localize,
-	...Rules,
-	...Progress,
-	...Npcs,
-	...Oracles,
-	...Moves,
-	...Assets,
-	...Truths,
-	...Atlas,
-	...Player,
-	...Rarities,
-	...DelveSites
-})
+const DataswornBase = prepareBaseSchema(DataswornRoot)
 
 export const Datasworn = prepareDistributableSchema(DataswornBase)
 

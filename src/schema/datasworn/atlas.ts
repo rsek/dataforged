@@ -1,6 +1,7 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { ID, Abstract } from './common/index.js'
 import { Source } from './common/metadata.js'
+import { AtlasEntryID, AtlasID } from './common/id.js'
 
 export const AtlasEntry = Abstract.Cyclopedia(
 	Type.Object({
@@ -17,9 +18,10 @@ export const AtlasEntry = Abstract.Cyclopedia(
 
 export type AtlasEntry = Static<typeof AtlasEntry>
 
+const AtlasBase = Abstract.Collection(Type.Ref(AtlasEntry), Type.Ref(AtlasID))
+
 export const Atlas = Abstract.RecursiveCollection(
-	Type.Ref(AtlasEntry),
-	Type.Ref(ID.AtlasID),
+	AtlasBase,
 
 	{ $id: '#/$defs/Atlas', releaseStage: 'experimental' }
 )

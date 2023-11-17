@@ -114,7 +114,7 @@ export const TriggerBy = Type.Object(
 )
 export type TriggerBy = Static<typeof TriggerBy>
 
-export const TriggerBase = Type.Object({
+const TriggerBase = Type.Object({
 	text: Type.Ref(Localize.MarkdownString, {
 		description:
 			'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described in individual trigger conditions.',

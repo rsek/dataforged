@@ -606,8 +606,8 @@ export interface Rules {
 export interface ConditionMeterRule {
   name: Label;
   min?: number;
-  max: number;
-  shared: boolean;
+  max?: number;
+  shared?: boolean;
   description: MarkdownString;
 }
 /**
@@ -627,10 +627,10 @@ export interface ImpactCategory {
  */
 export interface ImpactRule {
   name: Label;
-  shared: boolean;
+  shared?: boolean;
   description: MarkdownString;
-  permanent: boolean;
-  prevents_recovery: DictKey[];
+  permanent?: boolean;
+  prevents_recovery?: DictKey[];
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -638,9 +638,9 @@ export interface ImpactRule {
  */
 export interface SpecialTrackRule {
   name: Label;
-  shared: boolean;
+  shared?: boolean;
   description: MarkdownString;
-  optional: boolean;
+  optional?: boolean;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema definition
@@ -858,7 +858,7 @@ export interface AssetType {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Asset;
   };
   suggestions?: Suggestions;
@@ -1534,7 +1534,7 @@ export interface MoveCategory {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Move;
   };
   suggestions?: Suggestions;
@@ -1555,7 +1555,7 @@ export interface NpcCollection {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Npc;
   };
   suggestions?: Suggestions;

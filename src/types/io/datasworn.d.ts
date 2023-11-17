@@ -847,7 +847,7 @@ export interface AssetType {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Asset;
   };
   suggestions?: Suggestions;
@@ -1523,7 +1523,7 @@ export interface MoveCategory {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Move;
   };
   suggestions?: Suggestions;
@@ -1544,7 +1544,7 @@ export interface NpcCollection {
   images?: WEBPImageURL[];
   summary?: MarkdownString;
   description?: MarkdownString;
-  contents?: {
+  contents: {
     [k: string]: Npc;
   };
   suggestions?: Suggestions;
