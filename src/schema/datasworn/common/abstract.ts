@@ -3,6 +3,8 @@
  */
 import {
 	TOmit,
+	TOptional,
+	TRecord,
 	Type,
 	type ObjectOptions,
 	type SchemaOptions,
@@ -13,17 +15,14 @@ import {
 	type TObject,
 	type TRef,
 	type TSchema,
-	type TString,
-	TProperties,
-	TOptional,
-	TRecord
+	type TString
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
 import { type PartialDeep, type Simplify } from 'type-fest'
 import type { OracleTableRow } from '../oracles.js'
+import { DictKey } from './id.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
-import { DICT_KEY } from './regex.js'
 import * as Utils from './utils.js'
 
 export type MergeObjectSchemas<A extends TObject, B extends TObject> = TObject<
@@ -34,12 +33,12 @@ export function Dictionary<T extends TSchema>(
 	valuesSchema: T,
 	options: ObjectOptions = {}
 ) {
-	return Type.Record(Type.RegExp(DICT_KEY), valuesSchema, {
+	return Type.Record(DictKey, valuesSchema, {
 		...options,
 		$comment: 'Deserialize as a dictionary object.'
-	})
+	}) as TDictionary<T>
 }
-export type TDictionary<T extends TSchema> = TRecord<TString, TSchema>
+export type TDictionary<T extends TSchema> = TRecord<TString, T>
 
 type TransformFn<T, K, TResult> = (value: T, key: K) => TResult
 

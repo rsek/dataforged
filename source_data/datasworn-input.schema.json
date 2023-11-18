@@ -16,7 +16,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing oracle collections, which may contain oracle tables and/or oracle collections.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/OracleCollection"
 				}
 			}
@@ -26,7 +26,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing asset types, which contain assets.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/AssetType"
 				}
 			}
@@ -36,7 +36,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing atlas collections, which contain atlas entries.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Atlas"
 				}
 			}
@@ -46,7 +46,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object of delve sites, like the premade delve sites presented in Ironsworn: Delve",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSite"
 				}
 			}
@@ -56,7 +56,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing move categories, which contain moves.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/MoveCategory"
 				}
 			}
@@ -66,7 +66,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing NPC collections, which contain NPCs.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/NpcCollection"
 				}
 			}
@@ -76,7 +76,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing rarities, like those presented in Ironsworn: Delve.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Rarity"
 				}
 			}
@@ -86,7 +86,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing delve site domains.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSiteDomain"
 				}
 			}
@@ -96,7 +96,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object containing delve site themes.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/DelveSiteTheme"
 				}
 			}
@@ -106,7 +106,7 @@
 			"$comment": "Deserialize as a dictionary object.",
 			"description": "A dictionary object of truth categories.",
 			"patternProperties": {
-				"^[a-z][a-z_]*$": {
+				"^([a-z][a-z_]*)$": {
 					"$ref": "#/$defs/Truth"
 				}
 			}
@@ -119,150 +119,183 @@
 		"AssetAbilityControlFieldID": {
 			"title": "AssetAbilityControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetAbilityID": {
 			"title": "AssetAbilityID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)$"
 		},
 		"AssetAbilityOptionFieldID": {
 			"title": "AssetAbilityOptionFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/[0-2]\\/options\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetConditionMeterControlFieldID": {
 			"title": "AssetConditionMeterControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldID": {
 			"title": "AssetControlFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/controls\\/([a-z][a-z_]*)$"
 		},
 		"AssetControlFieldIDWildcard": {
 			"title": "AssetControlFieldIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)\\/controls(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/controls\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetID": {
 			"title": "AssetID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AssetIDWildcard": {
 			"title": "AssetIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetOptionFieldID": {
 			"title": "AssetOptionFieldID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/options\\/([a-z][a-z_]*)$"
 		},
 		"AssetOptionFieldIDWildcard": {
 			"title": "AssetOptionFieldIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/assets(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)\\/options(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/options\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AssetTypeID": {
 			"title": "AssetTypeID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/assets\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/assets\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryID": {
 			"title": "AtlasEntryID",
 			"type": "string",
 			"examples": ["classic/atlas/ironlands/hinterlands"],
-			"pattern": "^[a-z0-9_]{3,}\\/atlas(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/atlas\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"AtlasEntryIDWildcard": {
 			"title": "AtlasEntryIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/atlas\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"AtlasID": {
 			"title": "AtlasID",
 			"type": "string",
 			"examples": ["classic/collections/atlas/ironlands"],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/atlas(\\/([a-z][a-z_]*)){1,3}$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/atlas\\/([a-z][a-z_]*)$"
 		},
 		"AtlasIDWildcard": {
 			"title": "AtlasIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/collections\\/atlas\\/(\\*|([a-z][a-z_]*))$"
+		},
+		"ConditionMeterRuleID": {
+			"title": "ConditionMeterRuleID",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/condition_meters\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteDenizenID": {
 			"title": "DelveSiteDenizenID",
 			"type": "string",
 			"examples": ["delve/delve_sites/alvas_rest/denizens/1-27"],
-			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)\\/denizens\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DelveSiteDomainID": {
 			"title": "DelveSiteDomainID",
 			"type": "string",
 			"examples": ["delve/site_domains/shadowfen"],
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteID": {
 			"title": "DelveSiteID",
 			"type": "string",
 			"examples": ["delve/delve_sites/alvas_rest"],
-			"pattern": "^[a-z0-9_]{3,}\\/delve_sites\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/delve_sites\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteThemeID": {
 			"title": "DelveSiteThemeID",
 			"type": "string",
 			"examples": ["delve/site_themes/hallowed"],
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)$"
 		},
 		"DictKey": {
 			"title": "DictKey",
 			"type": "string",
-			"pattern": "^[a-z][a-z_]*$"
+			"pattern": "^([a-z][a-z_]*)$"
 		},
 		"DomainDangerRowID": {
 			"title": "DomainDangerRowID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"DomainFeatureRowID": {
 			"title": "DomainFeatureRowID",
 			"type": "string",
-			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+		},
+		"ImpactRuleCollectionID": {
+			"title": "ImpactRuleCollectionID",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/rules\\/impacts\\/([a-z][a-z_]*)$"
+		},
+		"ImpactRuleID": {
+			"title": "ImpactRuleID",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/impacts\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"MoveCategoryID": {
 			"title": "MoveCategoryID",
 			"type": "string",
 			"examples": ["starforged/collections/moves/adventure"],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/moves\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/moves\\/([a-z][a-z_]*)$"
 		},
 		"MoveID": {
 			"title": "MoveID",
-			"type": "string",
 			"description": "A move ID, for a standard move or a unique asset move",
+			"anyOf": [
+				{
+					"type": "string",
+					"description": "A move ID for a standard move.",
+					"pattern": "^([a-z0-9_]{3,})\\/moves\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+				},
+				{
+					"type": "string",
+					"description": "A move ID for an asset move.",
+					"pattern": "^([a-z0-9_]{3,})\\/assets\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/abilities\\/(0|[1-9][0-9]*)\\/moves\\/([a-z][a-z_]*)$"
+				}
+			],
 			"examples": [
 				"classic/moves/combat/strike",
 				"starforged/assets/module/grappler/abilities/0/moves/ready_grappler"
-			],
-			"pattern": "^[a-z0-9_]{3,}\\/(moves\\/[a-z][a-z_]*\\/[a-z][a-z_]*|assets\\/[a-z][a-z_]*\\/[a-z][a-z_]*\\/abilities\\/[0-2]\\/moves\\/[a-z][a-z_]*)$"
+			]
 		},
 		"MoveIDWildcard": {
 			"title": "Move ID (with wildcard)",
-			"type": "string",
 			"description": "A move ID with wildcards",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/moves\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
+				},
+				{
+					"type": "string",
+					"pattern": "^(\\*|([a-z0-9_]{3,}))\\/assets\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))\\/abilities\\/(\\*|(0|[1-9][0-9]*))\\/moves\\/(\\*|([a-z][a-z_]*))$"
+				}
+			],
 			"examples": [
 				"*/moves/*/face_danger",
 				"*/assets/ritual/*/abilities/*/moves/*"
-			],
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/(moves\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)|assets\\/([a-z_]+|\\*)\\/([a-z_]+|\\*)\\/abilities\\/([0-2]|\\*)\\/moves\\/([a-z_]+|\\*))$"
+			]
 		},
 		"NamespaceID": {
 			"title": "NamespaceID",
 			"type": "string",
 			"examples": ["classic", "delve", "starforged", "sundered_isles"],
-			"pattern": "^[a-z0-9_]{3,}$"
+			"pattern": "^([a-z0-9_]{3,})$"
 		},
 		"NpcCollectionID": {
 			"title": "NpcCollectionID",
@@ -271,7 +304,7 @@
 				"classic/collections/npcs/firstborn",
 				"starforged/collections/npcs/sample_npcs"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/npcs\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/npcs\\/([a-z][a-z_]*)$"
 		},
 		"NpcID": {
 			"title": "NpcID",
@@ -280,12 +313,12 @@
 				"classic/npcs/firstborn/elf",
 				"starforged/npcs/sample_npcs/chiton"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"NpcIDWildcard": {
 			"title": "NpcIDWildcard",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/npcs(\\/([a-z][a-z_]*)|\\/\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/npcs\\/(\\*|([a-z][a-z_]*))\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"NpcVariantID": {
 			"title": "NpcVariantID",
@@ -293,7 +326,7 @@
 			"examples": [
 				"starforged/npcs/sample_npcs/chiton/variants/chiton_drone_pack"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/[a-z][a-z_]*$"
+			"pattern": "^([a-z0-9_]{3,})\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)\\/variants\\/([a-z][a-z_]*)$"
 		},
 		"OracleCollectionID": {
 			"title": "OracleCollectionID",
@@ -303,7 +336,7 @@
 				"starforged/collections/oracles/character/names",
 				"starforged/collections/oracles/planets/furnace/settlements"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
+			"pattern": "^([a-z0-9_]{3,})\\/collections\\/oracles(\\/([a-z][a-z_]*)){1,3}$"
 		},
 		"OracleTableID": {
 			"title": "OracleTableID",
@@ -313,7 +346,7 @@
 				"starforged/oracles/character/names/given",
 				"starforged/oracles/planets/furnace/settlements/terminus"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)$"
 		},
 		"OracleTableIDWildcard": {
 			"title": "OracleTableIDWildcard",
@@ -324,45 +357,63 @@
 				"starforged/oracles/character/names/*",
 				"starforged/oracles/planets/*/settlements/*"
 			],
-			"pattern": "^([a-z0-9_]{3,}|\\*)\\/oracles((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
+			"pattern": "^(\\*|([a-z0-9_]{3,}))\\/oracles\\/((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*|\\/\\*\\*\\/([a-z][a-z_]*)|\\/([a-z][a-z_]*)\\/\\*\\*)\\/(\\*|([a-z][a-z_]*))$"
 		},
 		"OracleTableRowID": {
 			"title": "OracleTableRowID",
-			"type": "string",
 			"description": "Normally, rows will end with two numbers separated by a dash, indicating their dice range.\n\nRows with a single number represent unrollable rows that are sometimes included for rendering purposes; in this case, the number represents the row's index.",
+			"anyOf": [
+				{
+					"type": "string",
+					"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+				},
+				{
+					"type": "string",
+					"pattern": "^([a-z0-9_]{3,})\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
+				}
+			],
 			"examples": [
 				"classic/oracles/action_and_theme/action/1-1",
 				"starforged/oracles/derelicts/zones/starship/0"
-			],
-			"pattern": "^[a-z0-9_]{3,}\\/oracles(\\/([a-z][a-z_]*)){1,3}\\/([a-z][a-z_]*)([1-9][0-9]*-[1-9][0-9]*)|(0|[1-9][0-9]*)$"
+			]
 		},
 		"RarityID": {
 			"title": "RarityID",
 			"type": "string",
 			"examples": ["classic/rarities/ayethins_journal"],
-			"pattern": "^[a-z0-9_]{3,}\\/rarities\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/rarities\\/([a-z][a-z_]*)$"
+		},
+		"SpecialTrackRuleID": {
+			"title": "SpecialTrackRuleID",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/special_tracks\\/([a-z][a-z_]*)$"
+		},
+		"StatRuleID": {
+			"title": "StatRuleID",
+			"type": "string",
+			"pattern": "^([a-z0-9_]{3,})\\/rules\\/stats\\/([a-z][a-z_]*)$"
 		},
 		"ThemeDangerRowID": {
 			"title": "ThemeDangerRowID",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/dangers\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"ThemeFeatureRowID": {
 			"title": "ThemeFeatureRowID",
 			"type": "string",
-			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/[a-z][a-z_]*\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/site_themes\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
 		},
 		"TruthID": {
 			"title": "TruthID",
 			"type": "string",
 			"examples": ["classic/truths/iron", "starforged/truths/iron"],
-			"pattern": "^[a-z0-9_]{3,}\\/truths\\/([a-z][a-z_]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)$"
 		},
 		"TruthOptionID": {
 			"title": "TruthOptionID",
 			"type": "string",
 			"examples": ["classic/truths/iron/0", "starforged/truths/iron/0"],
-			"pattern": "^[a-z0-9_]{3,}\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
+			"pattern": "^([a-z0-9_]{3,})\\/truths\\/([a-z][a-z_]*)\\/(0|[1-9][0-9]*)$"
 		},
 		"CSSColor": {
 			"title": "CSSColor",
@@ -373,7 +424,8 @@
 			"title": "SVGImageURL",
 			"type": "string",
 			"description": "A relative URL pointing to a vector image in the SVG format.",
-			"format": "uri-reference"
+			"format": "uri-reference",
+			"pattern": "\\.svg$"
 		},
 		"Source": {
 			"title": "Source",
@@ -504,7 +556,8 @@
 			"title": "WEBPImageURL",
 			"type": "string",
 			"description": "A relative URL pointing to a raster image in the WEBP format.",
-			"format": "uri-reference"
+			"format": "uri-reference",
+			"pattern": "\\.webp$"
 		},
 		"I18nHint": {
 			"title": "I18nHint",
@@ -619,7 +672,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactRule"
 						}
 					}
@@ -663,7 +716,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ConditionMeterRule"
 						}
 					}
@@ -672,7 +725,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/ImpactCategory"
 						}
 					}
@@ -681,7 +734,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/SpecialTrackRule"
 						}
 					}
@@ -690,7 +743,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/StatRule"
 						}
 					}
@@ -737,8 +790,7 @@
 			"enum": [1, 2, 3, 4, 5]
 		},
 		"SpecialTrackType": {
-			"title": "SpecialTrackType",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "Special, ruleset-specific progress tracks. Usually, one exists per player character, and they persist through the life of the player character.\n'Canonical' examples:\n  * `bonds_track`, described in the Ironsworn Rulebook. For the Starforged legacy track, use `bonds_legacy` instead.\n  * `failure_track`, described in Ironsworn: Delve\n  * `quests_legacy`, `bonds_legacy`, and `discoveries_legacy`, described Ironsworn: Starforged\n\n",
 			"examples": [
 				"bonds_track",
@@ -746,8 +798,7 @@
 				"quests_legacy",
 				"bonds_legacy",
 				"discoveries_legacy"
-			],
-			"pattern": "^[a-z][a-z_]*$"
+			]
 		},
 		"Npc": {
 			"title": "Npc",
@@ -805,7 +856,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/NpcVariant"
 						}
 					}
@@ -863,7 +914,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Npc"
 						}
 					}
@@ -974,7 +1025,7 @@
 							"type": "object",
 							"$comment": "Deserialize as a dictionary object.",
 							"patternProperties": {
-								"^[a-z][a-z_]*$": {
+								"^([a-z][a-z_]*)$": {
 									"$ref": "#/$defs/OracleCollectionTableColumn"
 								}
 							}
@@ -991,7 +1042,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleTable"
 						}
 					}
@@ -1000,7 +1051,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleCollection"
 						}
 					}
@@ -1036,7 +1087,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleCollectionTableColumn"
 						}
 					}
@@ -1227,7 +1278,7 @@
 						}
 					},
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/OracleTableColumn"
 						}
 					}
@@ -1509,7 +1560,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Move"
 						}
 					}
@@ -2426,7 +2477,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Options are asset input fields which are set once, usually when the character takes the asset. The most common example is the \"name\" field on companion assets. A more complex example is the choice of a god's stat for the Devotant asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetOptionField"
 						}
 					}
@@ -2459,7 +2510,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetControlField"
 						}
 					}
@@ -2492,7 +2543,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityOptionField"
 						}
 					}
@@ -2504,7 +2555,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetAbilityControlField"
 						}
 					}
@@ -2524,7 +2575,7 @@
 					"$comment": "Deserialize as a dictionary object.",
 					"description": "Unique moves added by this asset ability.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Move"
 						}
 					}
@@ -2695,7 +2746,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetConditionMeterControlField"
 						}
 					}
@@ -2821,7 +2872,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AssetConditionMeterEnhancement"
 						}
 					}
@@ -2892,7 +2943,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Asset"
 						}
 					}
@@ -3015,7 +3066,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"type": "object",
 							"required": ["name", "value"],
 							"properties": {
@@ -3057,7 +3108,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"type": "object",
 							"required": ["name", "value"],
 							"properties": {
@@ -3183,7 +3234,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/AtlasEntry"
 						}
 					}
@@ -3192,7 +3243,7 @@
 					"type": "object",
 					"$comment": "Deserialize as a dictionary object.",
 					"patternProperties": {
-						"^[a-z][a-z_]*$": {
+						"^([a-z][a-z_]*)$": {
 							"$ref": "#/$defs/Atlas"
 						}
 					}
@@ -3263,18 +3314,14 @@
 			"releaseStage": "experimental"
 		},
 		"PlayerConditionMeter": {
-			"title": "PlayerConditionMeter",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "A basic, rollable player character resource.",
-			"examples": ["health", "spirit", "supply"],
-			"pattern": "^[a-z][a-z_]*$"
+			"examples": ["health", "spirit", "supply"]
 		},
 		"PlayerStat": {
-			"title": "PlayerStat",
-			"type": "string",
+			"$ref": "#/$defs/DictKey",
 			"description": "A basic player character stat.",
-			"examples": ["edge", "heart", "iron", "shadow", "wits"],
-			"pattern": "^[a-z][a-z_]*$"
+			"examples": ["edge", "heart", "iron", "shadow", "wits"]
 		},
 		"Rarity": {
 			"title": "Rarity",

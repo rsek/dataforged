@@ -193,6 +193,11 @@
 			"type": "string",
 			"pattern": "^([a-z0-9_]{3,}|\\*)\\/atlas((\\/([a-z][a-z_]*)){1,3}|\\/\\*\\*)(\\/([a-z][a-z_]*)|\\/\\*)$"
 		},
+		"ConditionMeterRuleID": {
+			"title": "ConditionMeterRuleID",
+			"type": "string",
+			"pattern": "^[a-z][a-z0-9_]{3,}\\/rules\\/condition_meters\\/\\/([a-z][a-z_]*)$"
+		},
 		"DelveSiteDenizenID": {
 			"title": "DelveSiteDenizenID",
 			"type": "string",
@@ -231,6 +236,16 @@
 			"title": "DomainFeatureRowID",
 			"type": "string",
 			"pattern": "^[a-z0-9_]{3,}\\/site_domains\\/([a-z][a-z_]*)\\/features\\/([1-9][0-9]*)-([1-9][0-9]*)$"
+		},
+		"ImpactRuleCollectionID": {
+			"title": "ImpactRuleCollectionID",
+			"type": "string",
+			"pattern": "i"
+		},
+		"ImpactRuleID": {
+			"title": "ImpactRuleID",
+			"type": "string",
+			"pattern": "i"
 		},
 		"MoveCategoryID": {
 			"title": "MoveCategoryID",
@@ -271,7 +286,7 @@
 				"classic/collections/npcs/firstborn",
 				"starforged/collections/npcs/sample_npcs"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/collections\\/npcs\\/([a-z][a-z_]*)$"
+			"pattern": "^[a-z0-9_]{3,}\\/collections\\/npcs\\/[a-z][a-z_]*$"
 		},
 		"NpcID": {
 			"title": "NpcID",
@@ -280,7 +295,7 @@
 				"classic/npcs/firstborn/elf",
 				"starforged/npcs/sample_npcs/chiton"
 			],
-			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
+			"pattern": "^[a-z0-9_]{3,}\\/npcs\\/[a-z][a-z_]*\\/[a-z][a-z_]*$"
 		},
 		"NpcIDWildcard": {
 			"title": "NpcIDWildcard",
@@ -341,6 +356,16 @@
 			"type": "string",
 			"examples": ["classic/rarities/ayethins_journal"],
 			"pattern": "^[a-z0-9_]{3,}\\/rarities\\/([a-z][a-z_]*)$"
+		},
+		"SpecialTrackRuleID": {
+			"title": "SpecialTrackRuleID",
+			"type": "string",
+			"pattern": "i"
+		},
+		"StatRuleID": {
+			"title": "StatRuleID",
+			"type": "string",
+			"pattern": "i"
 		},
 		"ThemeDangerRowID": {
 			"title": "ThemeDangerRowID",

@@ -2,13 +2,13 @@ import { type Static, Type } from '@sinclair/typebox'
 import { ID } from './index.js'
 import { UnionOneOf } from '../../../typebox/union-oneof.js'
 
-export const SVGImageURL = Type.String({
+export const SVGImageURL = Type.RegExp(/\.svg$/i, {
 	$id: '#/$defs/SVGImageURL',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a vector image in the SVG format.'
 })
 export type SVGImageURL = Static<typeof SVGImageURL>
-export const WEBPImageURL = Type.String({
+export const WEBPImageURL = Type.RegExp(/\.webp$/i, {
 	$id: '#/$defs/WEBPImageURL',
 	format: 'uri-reference',
 	description: 'A relative URL pointing to a raster image in the WEBP format.'

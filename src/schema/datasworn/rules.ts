@@ -44,7 +44,6 @@ export const ImpactCategory = Type.Object(
 		description: Type.Ref(Localize.MarkdownString),
 		contents: Abstract.Dictionary(Type.Ref(ImpactRule))
 	},
-
 	{
 		$id: '#/$defs/ImpactCategory'
 	}

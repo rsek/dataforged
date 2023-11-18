@@ -1,6 +1,6 @@
 import { Type, type Static } from '@sinclair/typebox'
-import { ATTR } from './regex.js'
 import { JsonEnumFromRecord } from '../../../typebox/index.js'
+import { DictKey } from './id.js'
 
 export const ChallengeRank = JsonEnumFromRecord(
 	{
@@ -17,7 +17,7 @@ export const ChallengeRank = JsonEnumFromRecord(
 )
 export type ChallengeRank = Static<typeof ChallengeRank>
 
-export const SpecialTrackType = Type.RegExp(ATTR, {
+export const SpecialTrackType = Type.Ref(DictKey, {
 	$id: '#/$defs/SpecialTrackType',
 	examples: [
 		'bonds_track',
