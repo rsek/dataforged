@@ -306,22 +306,65 @@ export const ConditionMeterRuleID = Extend(
 	RuleIdHead,
 	['condition_meters', Node],
 	{
-		$id: '#/$defs/ConditionMeterRuleID'
+		$id: '#/$defs/ConditionMeterRuleID',
+		examples: [
+			'classic/rules/condition_meters/health',
+			'starforged/rules/condition_meters/spirit'
+		]
 	}
 )
 export type ConditionMeterRuleID = Static<typeof ConditionMeterRuleID>
 
 export const SpecialTrackRuleID = Extend(RuleIdHead, ['special_tracks', Node], {
-	$id: '#/$defs/SpecialTrackRuleID'
+	$id: '#/$defs/SpecialTrackRuleID',
+	examples: [
+		'classic/rules/special_tracks/bonds',
+		'delve/rules/special_tracks/failure',
+		'starforged/rules/special_tracks/bonds_legacy'
+	]
 })
 export type SpecialTrackRuleID = Static<typeof SpecialTrackRuleID>
 
 export const ImpactRuleCollectionID = CollectionID(['rules', 'impacts'], {
-	$id: '#/$defs/ImpactRuleCollectionID'
+	$id: '#/$defs/ImpactRuleCollectionID',
+	examples: [
+		'classic/collections/rules/impacts/conditions',
+		'starforged/collections/rules/impacts/vehicle_troubles'
+	]
 })
 export type ImpactRuleCollectionID = Static<typeof ImpactRuleCollectionID>
 
 export const ImpactRuleID = Extend(ImpactRuleCollectionID, [Node], {
-	$id: '#/$defs/ImpactRuleID'
+	$id: '#/$defs/ImpactRuleID',
+	examples: [
+		'classic/rules/impacts/conditions/wounded',
+		'starforged/rules/impacts/vehicle_troubles/battered'
+	]
 })
 export type ImpactRuleID = Static<typeof ImpactRuleID>
+
+// type DictType = keyof Omit<Out.Datasworn, 'source' | 'id'>
+// type IdType = 'collections' | DictType
+
+// function parseID(id: string, datasworn: Record<string, Out.Datasworn>) {
+// 	const [namespace, type, ...tail] = id.split('/') as [
+// 		string,
+// 		IdType,
+// 		...string[]
+// 	]
+
+// 	const ruleset = datasworn[namespace]
+
+// 	const isCollection = type === 'collections'
+
+// 	if (isCollection) return _parseCollectionID(tail, ruleset)
+// }
+
+// function _parseCollectionID(path: string[], ruleset: Out.Datasworn) {
+//   const type = path.shift() as DictType
+// 	const dict = ruleset[type]
+
+//   for (const el of path) {
+//     if (el in dict)
+//   }
+// }
