@@ -196,6 +196,10 @@
 		"ConditionMeterRuleID": {
 			"title": "ConditionMeterRuleID",
 			"type": "string",
+			"examples": [
+				"classic/rules/condition_meters/health",
+				"starforged/rules/condition_meters/spirit"
+			],
 			"pattern": "^([a-z0-9_]{3,})\\/rules\\/condition_meters\\/([a-z][a-z_]*)$"
 		},
 		"DelveSiteDenizenID": {
@@ -240,11 +244,19 @@
 		"ImpactRuleCollectionID": {
 			"title": "ImpactRuleCollectionID",
 			"type": "string",
+			"examples": [
+				"classic/collections/rules/impacts/conditions",
+				"starforged/collections/rules/impacts/vehicle_troubles"
+			],
 			"pattern": "^([a-z0-9_]{3,})\\/collections\\/rules\\/impacts\\/([a-z][a-z_]*)$"
 		},
 		"ImpactRuleID": {
 			"title": "ImpactRuleID",
 			"type": "string",
+			"examples": [
+				"classic/rules/impacts/conditions/wounded",
+				"starforged/rules/impacts/vehicle_troubles/battered"
+			],
 			"pattern": "^([a-z0-9_]{3,})\\/rules\\/impacts\\/([a-z][a-z_]*)\\/([a-z][a-z_]*)$"
 		},
 		"MoveCategoryID": {
@@ -386,6 +398,11 @@
 		"SpecialTrackRuleID": {
 			"title": "SpecialTrackRuleID",
 			"type": "string",
+			"examples": [
+				"classic/rules/special_tracks/bonds",
+				"delve/rules/special_tracks/failure",
+				"starforged/rules/special_tracks/bonds_legacy"
+			],
 			"pattern": "^([a-z0-9_]{3,})\\/rules\\/special_tracks\\/([a-z][a-z_]*)$"
 		},
 		"StatRuleID": {
@@ -482,7 +499,7 @@
 				},
 				"license": {
 					"description": "An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "string",
 							"format": "uri"
@@ -1929,7 +1946,7 @@
 				"assets": {
 					"description": "Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields.",
 					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "array",
 							"items": {
@@ -1962,7 +1979,7 @@
 				"assets": {
 					"description": "Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields.",
 					"default": null,
-					"oneOf": [
+					"anyOf": [
 						{
 							"type": "array",
 							"items": {
@@ -2140,24 +2157,24 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
+							"$ref": "#/$defs/ActionRollMethod"
 						},
 						{
-							"$ref": "#/$defs/ActionRollMethod"
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/ActionRollOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2304,25 +2321,25 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"$ref": "#/$defs/ProgressRollMethod",
 							"default": "progress_roll"
+						},
+						{
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/ProgressRollOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2401,24 +2418,24 @@
 					"description": "A `null` value means this condition provides no roll mechanic of its own; it must be used with another trigger condition that provides a non-null `method`.",
 					"anyOf": [
 						{
-							"type": "null"
+							"$ref": "#/$defs/SpecialTrackRollMethod"
 						},
 						{
-							"$ref": "#/$defs/SpecialTrackRollMethod"
+							"type": "null"
 						}
 					]
 				},
 				"roll_options": {
 					"anyOf": [
 						{
-							"type": "null"
-						},
-						{
 							"type": "array",
 							"description": "The options available when rolling with this trigger.",
 							"items": {
 								"$ref": "#/$defs/TriggerSpecialTrackConditionOption"
 							}
+						},
+						{
+							"type": "null"
 						}
 					]
 				}
@@ -2646,12 +2663,20 @@
 			"title": "AssetAttachment",
 			"type": "object",
 			"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
-			"required": ["assets"],
+			"required": ["max", "assets"],
 			"properties": {
 				"max": {
-					"type": "integer",
-					"description": "Omit if there's no upper limit to the number of attached assets.",
-					"minimum": 1
+					"description": "Null if there's no upper limit to the number of attached assets.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "integer",
+							"minimum": 1
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"assets": {
 					"type": "array",

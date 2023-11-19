@@ -1,6 +1,7 @@
 import { type Static, Type } from '@sinclair/typebox'
 import { ID } from './index.js'
 import { UnionOneOf } from '../../../typebox/union-oneof.js'
+import { Nullable } from './utils.js'
 
 export const SVGImageURL = Type.RegExp(/\.svg$/i, {
 	$id: '#/$defs/SVGImageURL',
@@ -61,13 +62,10 @@ export const Source = Type.Object(
 			description: 'An absolute URL where the source document is available.',
 			examples: ['https://ironswornrpg.com']
 		}),
-		license: UnionOneOf(
-			[
-				Type.String({
-					format: 'uri'
-				}),
-				Type.Null()
-			],
+		license: Nullable(
+			Type.String({
+				format: 'uri'
+			}),
 			{
 				description:
 					"An absolute URL pointing to the location where this element's license can be found.\n\nA `null` here indicates that the content provides **no** license, and is not intended for redistribution.  Datasworn's build process skips unlicensed content by default.",

@@ -223,7 +223,7 @@ export function recurseObjectSchema(
 // 				if (value.default != null) optionalKeys.push(key)
 // 			}
 
-// 			def = PartialBy(def as any, optionalKeys)
+// 			def = SetOptional(def as any, optionalKeys)
 // 			// TODO: check if any children have defaults, too
 // 			if (objKeys.includes(srcKey) && optionalKeys.includes(srcKey))
 // 				def = Type.Composite([

@@ -7,16 +7,12 @@ import {
 import * as Localize from './localize.js'
 import * as Player from './player.js'
 import * as Abstract from './abstract.js'
-import { JsonEnum, UnionOneOf } from '../../../typebox/index.js'
-
-/** Represents a list of choices, similar in structure to the HTML `<select>` element */
-export function SelectBase<T extends TSchema>(t: T) {
-	return Type.Object({
-		name: Type.Ref(Localize.Label),
-		value: Type.Optional(t),
-		choices: Abstract.Dictionary(SelectOptionBase(t))
-	})
-}
+import {
+	JsonEnum,
+	JsonEnumFromRecord,
+	UnionOneOf
+} from '../../../typebox/index.js'
+import { JsonTypeDef } from '../../../json-typedef/utils.js'
 
 const NumberRangeBase = (
 	min: TSchema = Type.Integer(),
@@ -29,9 +25,13 @@ const NumberRangeBase = (
 		value
 	})
 
+const LiteralZero = Type.Literal(0, {
+	[JsonTypeDef]: { schema: { type: 'uint8' } }
+})
+
 const ClockBase = NumberRangeBase(
-	Type.Literal(0),
-	JsonEnum([4, 6, 8, 10]),
+	LiteralZero,
+	JsonEnum([4, 6, 8, 10], { schema: { type: 'uint8' } }),
 	Type.Integer({ default: 0 })
 )
 export type ClockBase = Static<typeof ClockBase>
@@ -43,7 +43,7 @@ export const MeterBase = NumberRangeBase(
 export type MeterBase = Static<typeof MeterBase>
 
 const CounterBase = NumberRangeBase(
-	Type.Literal(0),
+	LiteralZero,
 	Type.Optional(Type.Integer()),
 	Type.Integer({ default: 0 })
 )
@@ -62,11 +62,20 @@ export interface SelectOptionBase<T> {
 	selected?: boolean
 }
 
-export const SelectFieldType = JsonEnum(['select_stat', 'select_enhancement'])
+export const SelectFieldType = JsonEnumFromRecord({
+	select_stat: '',
+	select_ref: ''
+})
 export type SelectFieldType = Static<typeof SelectFieldType>
 
 export const InputFieldType = UnionOneOf([
-	JsonEnum(['text', 'clock', 'counter', 'checkbox', 'toggle', 'card_flip']),
+	JsonEnumFromRecord({
+		text: 'A plain text field that accepts a string value.',
+		clock: 'A clock (see Starforged, p. XX).',
+		counter: 'A counter that starts at 0, which may or may not have a maximum.',
+		checkbox: 'A checkbox that represents a boolean value.',
+		card_flip: 'A control that represents flipping a card over'
+	}),
 	SelectFieldType
 ])
 export type InputFieldType = Static<typeof InputFieldType>
@@ -162,6 +171,15 @@ export const TextField = InputField(
 )
 
 export type TextField = Static<typeof TextField>
+
+/** Represents a list of choices, similar in structure to the HTML `<select>` element */
+export function SelectBase<T extends TSchema>(t: T) {
+	return Type.Object({
+		name: Type.Ref(Localize.Label),
+		value: Type.Optional(t),
+		choices: Abstract.Dictionary(SelectOptionBase(t))
+	})
+}
 
 /**
  * @param fieldType - The value of the `field_type` property

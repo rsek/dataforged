@@ -1,5 +1,10 @@
 import { type JTDSchemaType } from 'ajv/dist/core'
-import { mapValues } from 'lodash'
-import { Localize } from 'schema'
+import { mapValues } from 'lodash-es'
+import { Localize as base } from '../schema/datasworn/index.js'
+import { toJtdModule } from './utils.js'
 
-export default mapValues(Localize)
+const Localize = toJtdModule(base)
+
+export default Localize
+
+console.log(Localize)

@@ -1,5 +1,5 @@
 import { TSchema, Type, type Static } from '@sinclair/typebox'
-import { Dictionary } from './common/abstract.js'
+import { Dictionary, TObjectEnhancement } from './common/abstract.js'
 import {
 	Abstract,
 	ID,
@@ -9,7 +9,13 @@ import {
 	Utils
 } from './common/index.js'
 import * as Moves from './moves.js'
-import { NoDefaults } from './common/utils.js'
+import { NoDefaults, Nullable } from './common/utils.js'
+import {
+	JsonTypeDef,
+	toJtdDiscriminated,
+	toJtdDiscriminator
+} from '../../json-typedef/utils.js'
+import { DiscriminatedUnion } from '../../typebox/discriminated-union.js'
 
 const AssetBooleanFieldMixin = Type.Object({
 	is_impact: Type.Boolean({
@@ -50,13 +56,11 @@ export const AssetAttachment = Type.Object(
 			description:
 				'Asset IDs (which may be wildcards) that may be attached to this asset'
 		}),
-		max: Type.Optional(
-			Type.Integer({
-				minimum: 1,
-				description:
-					"Omit if there's no upper limit to the number of attached assets."
-			})
-		)
+		max: Nullable(Type.Integer({ minimum: 1 }), {
+			default: null,
+			description:
+				"Null if there's no upper limit to the number of attached assets."
+		})
 	},
 	{
 		$id: '#/$defs/AssetAttachment',
@@ -204,12 +208,15 @@ export type AssetEnhancement = Static<typeof AssetEnhancement>
 
 export const SelectFieldAssetEnhancement = Inputs.SelectField(
 	'select_enhancement',
-	Type.Ref(AssetEnhancement),
+	Type.Object({
+		enhance_asset: Type.Optional(Type.Ref(AssetEnhancement)),
+		enhance_player: Type.Optional(Type.Object({}))
+	}),
 	{
 		$id: '#/$defs/SelectFieldAssetEnhancement',
 		title: 'Select field (asset enhancement)',
 		description:
-			'Select from a set of AssetEnhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
+			'Select from player and/or asset enhancements. Use it to describe modal abilities. For examples, see Ironclad (classic Ironsworn) and Windbinder (Sundered Isles).'
 	}
 )
 export type SelectFieldAssetEnhancement = Static<
@@ -281,22 +288,36 @@ export const Asset = Type.Composite(
 
 export type Asset = Static<typeof Asset>
 
+export const AbilityOptionFields = [Inputs.TextField]
+
 export const AssetAbilityOptionField = Utils.PolymorphicWithID(
 	Type.Ref(ID.AssetAbilityOptionFieldID),
-	[Type.Ref(Inputs.TextField)],
-	{ $id: '#/$defs/AssetAbilityOptionField' }
+	AbilityOptionFields.map((item) => Type.Ref(item)),
+	{
+		$id: '#/$defs/AssetAbilityOptionField',
+		[JsonTypeDef]: toJtdDiscriminator(
+			DiscriminatedUnion('field_type', AbilityOptionFields)
+		)
+	}
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>
 
+const AbilityControlFields = [
+	Inputs.ClockField,
+	Inputs.CounterField,
+	AssetCheckboxField
+]
+
 export const AssetAbilityControlField = Utils.PolymorphicWithID(
 	Type.Ref(ID.AssetAbilityControlFieldID),
-	[
-		Type.Ref(Inputs.ClockField),
-		Type.Ref(Inputs.CounterField),
-		Type.Ref(AssetCheckboxField)
-	],
-	{ $id: '#/$defs/AssetAbilityControlField' }
+	AbilityControlFields.map((item) => Type.Ref(item)),
+	{
+		$id: '#/$defs/AssetAbilityControlField',
+		[JsonTypeDef]: toJtdDiscriminator(
+			DiscriminatedUnion('field_type', AbilityControlFields)
+		)
+	}
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>

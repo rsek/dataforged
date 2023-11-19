@@ -2,8 +2,12 @@
  * Abstract interfaces and utility types that are only used internally. They are not included in the final schema.
  */
 import {
+	ObjectProperties,
+	TArray,
 	TOmit,
 	TOptional,
+	TPartial,
+	TProperties,
 	TRecord,
 	Type,
 	type ObjectOptions,
@@ -18,7 +22,7 @@ import {
 	type TString
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
-import { type PartialDeep, type Simplify } from 'type-fest'
+import * as TypeFest from 'type-fest'
 import type { OracleTableRow } from '../oracles.js'
 import { DictKey } from './id.js'
 import * as Localize from './localize.js'
@@ -57,7 +61,7 @@ export function MappedKeys<
 >(schema: T, keys: Keys[], fn: Transform, options: ObjectOptions = {}) {
 	type MappedProps = MappedKeys<T['properties'], Keys, ReturnType<Transform>>
 
-	const properties: Simplify<MappedProps> = mapValues<
+	const properties: TypeFest.Simplify<MappedProps> = mapValues<
 		(typeof schema)['properties']
 	>(
 		schema.properties,
@@ -129,7 +133,7 @@ export function StaticRowStub(
 		min?: number
 		max?: number
 	},
-	defaults: PartialDeep<OracleTableRow> = {}
+	defaults: TypeFest.PartialDeep<OracleTableRow> = {}
 ) {
 	const result = Type.Object({
 		...toLiteralsStub(literals),
@@ -196,41 +200,36 @@ const MetaKeys = ['id', 'source', 'rendering', 'name', 'suggestions'] as const
  * Omits common metadata and localization keys.
  */
 export function OmitMeta<T extends TObject>(t: T) {
-	return Type.Omit(t, MetaKeys)
+	return Type.Omit(t, MetaKeys) as TOmitMeta<T>
 }
 export type OmitMeta<T> = Omit<T, MetaKeys>
+export type TOmitMeta<T extends TObject> = TOmit<T, MetaKeys>
 
 /**
  * Enhances a single rules element
  */
-export function EnhanceOne<T extends TObject>(t: T) {
-	const base = OmitMeta(t)
-	const mixin = Type.Object({ enhances: Type.Optional(t.properties.id) })
-	return Type.Composite([
-		base,
-		Type.Object({ enhances: Type.Optional(t.properties.id) })
-	]) as unknown as MergeObjectSchemas<typeof base, typeof mixin>
-}
-export type EnhanceOne<T extends TObject> = Static<
-	ReturnType<typeof EnhanceOne<T>>
->
-
-export function EnhanceMany<T extends TObject>(
-	enhanceSchema: T,
-	extendIds: TString | TRef<TString>,
+export function EnhanceMany<T extends TObject, ID extends TSchema = TString>(
+	schema: T,
+	wildcardID: ID,
 	options: ObjectOptions = {}
 ) {
-	const base = Utils.DeepPartial(OmitMeta(enhanceSchema))
-	const mixin = Type.Object({ enhances: Type.Optional(Type.Array(extendIds)) })
-
-	return Type.Composite([base, mixin], options) as MergeObjectSchemas<
-		typeof base,
-		typeof mixin
-	>
+	const base = OmitMeta(schema)
+	const mixin = Type.Object({
+		enhances: Type.Optional(Type.Array(wildcardID))
+	})
+	return Type.Composite([base, mixin], options) as any as TEnhanceMany<T, ID>
+	// as unknown as MergeObjectSchemas<typeof base, typeof mixin>
 }
-export type EnhanceMany<T extends TObject> = Static<
-	ReturnType<typeof EnhanceMany<T>>
+export type TEnhanceMany<
+	T extends TObject,
+	WildcardID extends TSchema = TString
+> = TObject<
+	ObjectProperties<TOmitMeta<T> & { enhances: TOptional<TArray<WildcardID>> }>
 >
+
+export type EnhanceMany<T, WildcardID = string> = OmitMeta<T> & {
+	enhances?: WildcardID[]
+}
 
 const CollectionMixin = SourcedNode(
 	Type.Object({
@@ -275,7 +274,7 @@ export function Collection<T extends TRef>(
 	) as MergeObjectSchemas<typeof base, typeof CollectionMixin> & { $id: string }
 }
 
-export type Collection<T> = Simplify<
+export type Collection<T> = TypeFest.Simplify<
 	SourcedNode &
 		Static<typeof CollectionMixin> & {
 			id: string
@@ -288,7 +287,7 @@ export type TCollection<T extends TSchema> = ReturnType<
 	typeof Collection<TRef<T>>
 >
 
-export type RecursiveCollection<T extends Collection<any>> = Utils.PartialBy<
+export type RecursiveCollection<T extends Collection<any>> = Utils.SetOptional<
 	T,
 	'contents'
 > & {
@@ -304,11 +303,11 @@ export type TRecursiveCollection<T extends TObject<{ contents: TSchema }>> =
 
 export function RecursiveCollection<T extends TObject<{ contents: TSchema }>>(
 	base: T,
-	options: Utils.RequireBy<SchemaOptions, '$id'>
+	options: TypeFest.SetRequired<SchemaOptions, '$id'>
 ) {
 	return Type.Composite(
 		[
-			Utils.PartialBy(base, ['contents']),
+			Utils.SetOptional(base, ['contents']),
 			Type.Object({
 				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
 			})
@@ -316,3 +315,56 @@ export function RecursiveCollection<T extends TObject<{ contents: TSchema }>>(
 		options
 	) as unknown as TRecursiveCollection<typeof base>
 }
+
+type EnhanceablePrimitive = TNumber | TBoolean
+
+type EnhanceableValue = EnhanceablePrimitive | TObject | TRef<TObject>
+
+type EnhanceableArrayItem = EnhanceableValue | TString
+type EnhanceableArray = TArray<EnhanceableArrayItem>
+
+type Enhanceable =
+	| EnhanceableValue
+	| EnhanceableArray
+	| Utils.TNullable<EnhanceableValue>
+	| Utils.TNullable<EnhanceableArray>
+	| TOptional<EnhanceableValue>
+	| TOptional<EnhanceableArray>
+	| TRef<EnhanceableValue>
+
+type UnwrapEnhanceable<T extends Enhanceable> = T extends TRef<infer U>
+	? U
+	: T extends Utils.TNullable<infer U>
+	  ? U
+	  : T
+
+type DeRef<T extends TSchema> = T extends TRef<infer U> ? U : T
+
+type Enhancer<T extends Enhanceable | TObject> = TOptional<
+	T extends TRef<EnhanceablePrimitive>
+		? DeRef<T>
+		: T extends TRef<TObject>
+		  ? Enhancer<DeRef<T>>
+		  : T extends TObject
+		    ? TObject<T>
+		    : T
+>
+
+type EnhanceableKeyBlacklist = `enhance_${string}` | `source`
+
+type PickEnhanceable<T extends TProperties> = TypeFest.ConditionalPick<
+	Omit<T, EnhanceableKeyBlacklist>,
+	Enhanceable
+>
+
+type TEnhanceableProperties<
+	T extends TProperties,
+	D extends keyof T | null
+> = D extends keyof T ? PickEnhanceable<T> & Pick<T, D> : PickEnhanceable<T>
+
+export type TObjectEnhancement<
+	T extends TObject,
+	D extends keyof Static<T> | null
+> = TPartial<TObject<TEnhanceableProperties<ObjectProperties<T>, D>>>
+
+export function Enhancer<T extends TSchema>() {}

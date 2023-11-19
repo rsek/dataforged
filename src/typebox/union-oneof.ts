@@ -1,8 +1,9 @@
 import {
 	Kind,
-	type TSchema,
+	TUnion,
 	type SchemaOptions,
-	type Static
+	type Static,
+	type TSchema
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
 import { Value } from '@sinclair/typebox/value'
@@ -11,7 +12,7 @@ const UnionOneOfKind = 'UnionOneOf'
 
 TypeSystem.Type(UnionOneOfKind, UnionOneOfCheck)
 
-function UnionOneOfCheck(schema: UnionOneOf<TSchema[]>, value: unknown) {
+function UnionOneOfCheck(schema: TUnionOneOf<TSchema[]>, value: unknown) {
 	return (
 		schema.oneOf.reduce(
 			(acc: number, schema: any) =>
@@ -21,9 +22,9 @@ function UnionOneOfCheck(schema: UnionOneOf<TSchema[]>, value: unknown) {
 	)
 }
 
-export interface UnionOneOf<T extends TSchema[]> extends TSchema {
+export interface TUnionOneOf<T extends TSchema[]> extends TSchema {
 	[Kind]: typeof UnionOneOfKind
-	static: { [K in keyof T]: Static<T[K]> }[number]
+	static: Static<TUnion<T>>
 	oneOf: T
 }
 
@@ -32,5 +33,5 @@ export function UnionOneOf<T extends TSchema[]>(
 	oneOf: [...T],
 	options: SchemaOptions = {}
 ) {
-	return { ...options, [Kind]: UnionOneOfKind, oneOf } as UnionOneOf<T>
+	return { ...options, [Kind]: UnionOneOfKind, oneOf } as TUnionOneOf<T>
 }

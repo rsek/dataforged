@@ -1,85 +1,65 @@
+import { MapValue } from 'type-fest/source/entry.js'
+import { TUnionOneOf, UnionOneOf } from './union-oneof'
+
 import {
-	type Static,
-	type TObject,
-	type TUnion,
+	TSchema,
+	TLiteral,
+	Hint,
+	SchemaOptions,
+	TObject,
+	TRef,
+	TUnion,
 	Type,
-	type ObjectOptions,
-	StringOptions
+	UnionToTuple
 } from '@sinclair/typebox'
+import { JsonTypeDef } from '../json-typedef/utils.js'
 
-// ----------------------------------------------------------------------------
-// TDiscriminatedUnion
-// ----------------------------------------------------------------------------
-export interface TDiscriminatedUnion<T extends TObject[] = []> extends TObject {
-	static: Static<TUnion<T>>
-	allOf: Array<{ if: TObject; then: TObject }>
+const DiscriminatedUnionHint = 'DiscriminatedUnion'
+export const Discriminator = Symbol('Discriminator')
+export const Members = Symbol('Members')
+
+export type TDiscriminatedUnion<
+	D extends string = string,
+	T extends TDiscriminated<D>[] = TDiscriminated<D>[]
+> = TUnionOneOf<[...TRef<T[number]>[]]> & {
+	static: TUnion<T>['static']
+	[Hint]: typeof DiscriminatedUnionHint
+	[Discriminator]: D
+	[Members]: T
 }
-// ----------------------------------------------------------------------------
-// DiscriminatedUnion
-// ----------------------------------------------------------------------------
-/**
- * @example
- * ```typescript
- * const T = DiscriminatedUnion(
- *   [
- *     Type.Object({
- *       type: Type.Literal('Vector2'),
- *       x: Type.Number(),
- *       y: Type.Number()
- *     }),
- *     Type.Object({
- *       type: Type.Literal('Vector3'),
- *       x: Type.Number(),
- *       y: Type.Number(),
- *       z: Type.Number()
- *     }),
- *     Type.Object({
- *       type: Type.Literal('Vector4'),
- *       x: Type.Number(),
- *       y: Type.Number(),
- *       z: Type.Number(),
- *       w: Type.Number()
- *     })
- *   ],
- *   'type'
- * )
 
- * ```
+export function TDiscriminatedUnion(
+	schema: unknown
+): schema is TDiscriminatedUnion {
+	return (schema as TDiscriminatedUnion)[Hint] === DiscriminatedUnionHint
+}
+
+export type TDiscriminated<Discriminator extends string> = TObject<{
+	[K in Discriminator]: TLiteral<string>
+}> & { [JsonTypeDef]?: { skip?: boolean } }
+
+/**
+ * @remarks oneOf schemas should be referenceable.
  */
 export function DiscriminatedUnion<
-	T extends TObject[],
-	TDiscriminator extends keyof Static<T[number]>
->(
-	schemas: [...T],
-	discriminator: TDiscriminator,
-	options: ObjectOptions = {},
-	discriminatorDefault?: Static<T[number]>[TDiscriminator]
-): TDiscriminatedUnion<T> {
-	const allOf = schemas.map((schema) => ({
-		if: Type.Pick(schema, [discriminator]),
-		then: Type.Omit(schema, [discriminator], {
-			// optional: prevent additional properties on then type (expect only discriminator)
-			additionalProperties: Type.Index(schema, [discriminator])
-		})
-	}))
-	// select first discriminator type as narrowed (literal), then derive to broad type.
-	const narrowType = schemas[0].properties[discriminator]
-	const broadType = Type.Extends(
-		narrowType,
-		Type.String(),
-		Type.String(),
-		Type.Extends(
-			narrowType,
-			Type.Number(),
-			Type.Number(),
-			Type.Extends(narrowType, Type.Boolean(), Type.Boolean(), Type.Never())
-		),
-		{ default: discriminatorDefault }
-	)
-	// object descriminator must be broad, narrowed literals embedded in allOf array
-	const properties = { [discriminator]: broadType }
-	return Type.Object({ ...properties }, { ...options, allOf }) as any
+	D extends string,
+	T extends TDiscriminated<D>[]
+>(discriminator: D, oneOf: [...T], options: SchemaOptions = {}) {
+	const result = UnionOneOf(
+		oneOf.map((item) => Type.Ref(item)),
+		options
+	) as TDiscriminatedUnion<D, T>
+
+	// brand the original subschema so that JTD schema generation skips them -- they don't need their own definition
+	for (const subschema of oneOf) {
+		subschema[JsonTypeDef] ||= {}
+		subschema[JsonTypeDef].skip = true
+	}
+
+	result[Hint] = DiscriminatedUnionHint
+	result[Discriminator] = discriminator
+	// so that JTD can reconstruct them into a single object later
+	result[Members] = oneOf
+
+	return result
 }
-// ----------------------------------------------------------------------------
-// Usage
-// ----------------------------------------------------------------------------

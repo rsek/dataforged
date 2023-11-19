@@ -1,15 +1,8 @@
-import { Metadata } from 'schema'
-import { toJtdForm } from 'json-typedef/utils'
-import { mapValues, merge, omitBy } from 'lodash'
-import { Squash } from 'schema/common/utils'
+import { Metadata as base } from '../schema/datasworn/index.js'
+import { toJtdModule } from './utils.js'
 
-const jtd = mapValues(
-	omitBy(Metadata, (v, k) => k.startsWith('Suggestions') || k === 'SourceStub'),
-	(v, k) => toJtdForm(v as any)
-)
+const Metadata = toJtdModule(base)
 
-const Suggestions = toJtdForm(
-	Squash([Metadata.SuggestionsStarforged, Metadata.SuggestionsClassic]) as any
-)
+export default Metadata
 
-export default { ...jtd, Suggestions }
+// console.log(Metadata)

@@ -11,15 +11,15 @@ import {
 	MoveSpecialTrackEnhancement
 } from './moves/index.js'
 import { UnionOneOf } from '../../typebox/union-oneof.js'
+import {
+	DiscriminatedUnion,
+	Members
+} from '../../typebox/discriminated-union.js'
 
 // discriminated union of all moves by roll_type
-export const Move = UnionOneOf(
-	[
-		Type.Ref(MoveActionRoll),
-		Type.Ref(MoveNoRoll),
-		Type.Ref(MoveProgressRoll),
-		Type.Ref(MoveSpecialTrack)
-	],
+export const Move = DiscriminatedUnion(
+	'roll_type',
+	[MoveActionRoll, MoveNoRoll, MoveProgressRoll, MoveSpecialTrack],
 	{
 		$id: '#/$defs/Move',
 		title: 'Move'
@@ -28,12 +28,13 @@ export const Move = UnionOneOf(
 
 export type Move = Static<typeof Move>
 
-export const MoveEnhancement = UnionOneOf(
+export const MoveEnhancement = DiscriminatedUnion(
+	'roll_type',
 	[
-		Type.Ref(MoveActionRollEnhancement),
-		Type.Ref(MoveNoRollEnhancement),
-		Type.Ref(MoveProgressRollEnhancement),
-		Type.Ref(MoveSpecialTrackEnhancement)
+		MoveActionRollEnhancement,
+		MoveNoRollEnhancement,
+		MoveProgressRollEnhancement,
+		MoveSpecialTrackEnhancement
 	],
 	{
 		$id: '#/$defs/MoveEnhancement'
@@ -45,6 +46,8 @@ export type MoveEnhancement =
 	| MoveActionRollEnhancement
 	| MoveProgressRollEnhancement
 	| MoveSpecialTrackEnhancement
+
+// export type MoveEnhancement = Static<typeof MoveEnhancement>
 
 export const MoveCategory = Abstract.Collection(
 	Type.Ref(Move),

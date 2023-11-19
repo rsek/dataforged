@@ -6,7 +6,8 @@ import {
 	Dictionary,
 	RecursiveCollection
 } from './common/abstract.js'
-import { Squash } from './common/utils.js'
+import { Nullable, Squash } from './common/utils.js'
+import { JsonTypeDef } from '../../json-typedef/utils.js'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -83,17 +84,13 @@ export type OracleTableRoll = Static<typeof OracleTableRoll>
 export const OracleTableRow = Type.Object(
 	{
 		id: Type.Ref(ID.OracleTableRowID),
-		min: Type.Unsafe<number | null>({
-			type: ['integer', 'null'],
+		min: Nullable(Type.Integer(), {
 			default: null,
-			// nullable: true,
 			description:
 				'Low end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 		}),
-		max: Type.Unsafe<number | null>({
-			type: ['integer', 'null'],
+		max: Nullable(Type.Integer(), {
 			default: null,
-			// nullable: true,
 			description:
 				'High end of the dice range for this table row. `null` represents an unrollable row, included only for rendering purposes.'
 		}),
@@ -131,10 +128,10 @@ export type OracleTableStyle = Static<typeof OracleTableStyle>
 
 export const OracleTableColumnContentKey = JsonEnumFromRecord(
 	{
-		roll: 'Column displays the roll range (`min` and `max`) of each row.',
-		result: "Column displays the row's `result` key.",
-		summary: "Column displays the row's `summary` key.",
-		description: "Column displays the row's `description` key."
+		roll: 'Column displays the roll range (`min` and `max`) of each OracleTableRow.',
+		result: "Column displays the OracleTableRow's `result` key.",
+		summary: "Column displays the OracleTableRow's `summary` key.",
+		description: "Column displays the OracleTableRow's `description` key."
 	},
 	{
 		description:

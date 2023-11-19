@@ -1,6 +1,11 @@
+import { JTDSchemaType } from 'ajv/dist/core'
 import * as Fn from '../typebox/index'
-
 import '@sinclair/typebox'
+
+interface JtdData<T = any> {
+	schema?: JTDSchemaType<T>
+	skip?: boolean
+}
 
 declare module '@sinclair/typebox' {
 	export namespace ExtendedTypeBuilder {
@@ -18,6 +23,7 @@ declare module '@sinclair/typebox' {
 		 * @default false
 		 */
 		macro?: boolean
+		jtd?: JtdData
 	}
 	export interface StringOptions extends SchemaOptions {
 		/**
@@ -27,3 +33,5 @@ declare module '@sinclair/typebox' {
 		i18n?: boolean
 	}
 }
+
+export {}

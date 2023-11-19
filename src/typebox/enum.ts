@@ -17,14 +17,20 @@ export function JsonEnumCheck(schema: TJsonEnum, value: unknown) {
 	return schema.enum.every(isJsonValue)
 }
 
+export function TJsonEnum(schema: unknown): schema is TJsonEnum {
+	return (schema as TJsonEnum)[Kind] === 'JsonEnum'
+}
+
 export const EnumDescriptions = Symbol()
+export const Description = Symbol()
 
 export interface TJsonEnum<T extends string[] | number[] = string[] | number[]>
 	extends TSchema {
 	[Kind]: 'JsonEnum'
 	[EnumDescriptions]: Record<T[number], string>
+	[Description]?: string | undefined
 	static: { [K in keyof T]: T[K] }[number]
-	enum: T
+	enum: [...T]
 }
 
 // export function JsonEnumFromRecord<K extends number>(
@@ -52,12 +58,24 @@ export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 		description = options.description + '\n\n' + description
 
 	return {
+		[Description]: options.description,
 		[EnumDescriptions]: entries,
 		[Kind]: 'JsonEnum',
 		enum: arr,
 		...options,
 		description
 	} as TJsonEnum<T>
+}
+
+export function MergeEnumSchemas<T extends TJsonEnum[]>(
+	schemas: [...T],
+	options: SchemaOptions = {}
+) {
+	const entries = schemas
+		.map((item) => item[EnumDescriptions])
+		.reduce((prev, cur) => Object.assign(prev, cur))
+
+	return JsonEnumFromRecord(entries, options)
 }
 
 /** Extracts a literal from a JsonEnum, plus any associated description. */
@@ -73,7 +91,7 @@ export function ExtractLiteralFromEnum<
 }
 
 export function JsonEnum<T extends string[] | number[]>(
-	literals: T,
+	literals: [...T],
 	options: SchemaOptions = {}
 ) {
 	return { ...options, [Kind]: 'JsonEnum', enum: literals } as TJsonEnum<T>

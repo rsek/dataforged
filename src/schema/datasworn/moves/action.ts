@@ -1,5 +1,5 @@
 import { ID, Localize, Player } from '../common/index.js'
-import { PartialBy } from '../common/utils.js'
+import { Nullable, SetOptional } from '../common/utils.js'
 import {
 	Type,
 	type Static,
@@ -17,10 +17,11 @@ import {
 	TriggerCondition,
 	TriggerConditionBase
 } from './utils.js'
-import { SourcedNode } from '../common/abstract.js'
+import { SourcedNode, TObjectEnhancement } from '../common/abstract.js'
 import { AssetIDWildcard, DictKey } from '../common/id.js'
 import { RollOption } from './utils.js'
 import { MarkdownString } from '../common/localize.js'
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
 
 export const ActionRollUsing = JsonEnumFromRecord(
 	{
@@ -42,7 +43,7 @@ export type ActionRollUsing = Static<typeof ActionRollUsing>
 export const RollOptionAssetControl = RollOption(
 	'asset_control',
 	Type.Object({
-		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the control field. For asset ability enhancements, `null` is used to represent the asset's own control fields."
@@ -70,7 +71,7 @@ export type RollOptionAttachedAssetControl = Static<
 export const RollOptionAssetOption = RollOption(
 	'asset_option',
 	Type.Object({
-		assets: UnionOneOf([Type.Array(Type.Ref(AssetIDWildcard)), Type.Null()], {
+		assets: Nullable(Type.Array(Type.Ref(AssetIDWildcard)), {
 			default: null,
 			description:
 				"Asset IDs (which may be wildcarded) that provide the option field. For asset ability enhancements, `null` is used to represent the asset's own option fields."
@@ -93,6 +94,8 @@ export const RollOptionAttachedAssetOption = RollOption(
 export type RollOptionAttachedAssetOption = Static<
 	typeof RollOptionAttachedAssetOption
 >
+
+// TODO: should using be 'option_type' instead?
 
 export const RollOptionStat = RollOption(
 	'stat',
@@ -133,8 +136,9 @@ const RollOptionSubtypes = [
 	RollOptionCustom
 ]
 
-export const ActionRollOption = Type.Union(
-	RollOptionSubtypes.map((option) => Type.Ref(option)),
+export const ActionRollOption = DiscriminatedUnion(
+	'using',
+	RollOptionSubtypes,
 	{ $id: '#/$defs/ActionRollOption' }
 )
 
@@ -197,7 +201,7 @@ export const TriggerNoRollCondition = TriggerCondition(
 
 export type TriggerNoRollCondition = Static<typeof TriggerNoRollCondition>
 
-export const TriggerNoRoll = PartialBy(
+export const TriggerNoRoll = SetOptional(
 	Trigger(TriggerNoRollCondition),
 	['conditions'],
 	{

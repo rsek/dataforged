@@ -1,27 +1,42 @@
 import {
+	Kind,
+	Optional,
 	Static,
+	TArray,
+	TBoolean,
+	TInteger,
+	TLiteral,
+	TNull,
+	TNumber,
 	TObject,
+	TOptional,
+	TRecord,
 	TRef,
 	TSchema,
 	TString,
-	TBoolean,
-	TTuple,
-	TArray,
-	TRecord,
-	Kind,
-	Modifier,
-	TOptional,
-	TypeGuard,
-	TInteger,
-	TNumber,
-	TypeClone
+	TUnion,
+	Type,
+	TypeGuard
 } from '@sinclair/typebox'
-import { JSONSchemaType, JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core'
-import { inRange, omitBy, partition, pick, pickBy, set } from 'lodash'
-import { Entries, JsonValue, Simplify, TupleToUnion, ValueOf } from 'type-fest'
-import { ObjectEntries } from 'type-fest/source/entries'
-import { TJsonEnum, TAnySchema, JsonEnumCheck } from 'typebox'
-import { NullableCheck } from 'typebox/nullable'
+import { JTDDataType, JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core'
+import { inRange, merge, pick, set } from 'lodash-es'
+import { Entries, Simplify, TupleToUnion } from 'type-fest'
+import {
+	EnumDescriptions,
+	Description,
+	TAnySchema,
+	TJsonEnum
+} from '../typebox'
+import { TNullable } from '../schema/datasworn/common/utils.js'
+import { log } from '../scripts/utils/logger.js'
+import {
+	Discriminator,
+	Members,
+	TDiscriminated,
+	TDiscriminatedUnion
+} from '../typebox/discriminated-union.js'
+
+export const JsonTypeDef = Symbol('JsonTypeDef')
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function getMetadata<T extends TAnySchema>(schema: T) {
@@ -45,6 +60,14 @@ export function getMetadata<T extends TAnySchema>(schema: T) {
 		'maxItems'
 	)
 	if (Object.keys(metadata)?.length === 0) return undefined
+
+	// @ts-ignore
+	if (schema[EnumDescriptions] != null) {
+		// @ts-ignore
+		metadata.enumDescriptions = schema[EnumDescriptions]
+		// @ts-ignore
+		metadata.description = schema[Description]
+	}
 	return metadata
 }
 
@@ -63,7 +86,7 @@ export function setIdRef<T extends { id: string }, R extends string>(
 }
 
 export function toJtdEnum<U extends string[], T extends TJsonEnum<U>>(
-	schema: ReturnType<typeof JsonEnum<U>>
+	schema: T
 ) {
 	return {
 		enum: schema.enum,
@@ -72,7 +95,7 @@ export function toJtdEnum<U extends string[], T extends TJsonEnum<U>>(
 }
 
 export function toJtdRef<T extends TSchema>(schema: TRef<T>) {
-	const ref = schema.$ref.replace(/^#\/(\$defs|definitions)\/(.+)$/, '$1')
+	const ref = schema.$ref.replace('#/$defs/', '')
 	type RefName = typeof ref
 
 	return { ref, metadata: getMetadata(schema) } as unknown as JTDSchemaType<
@@ -80,9 +103,6 @@ export function toJtdRef<T extends TSchema>(schema: TRef<T>) {
 		Record<RefName, T>
 	>
 }
-
-// TODO
-// export function toJtdDiscriminator<T extends TObject>() {}
 
 export function toJtdString<T extends TString>(
 	schema: T
@@ -121,23 +141,27 @@ export function toJtdProperties<T extends TObject>(schema: T) {
 		JTDSchemaType<Static<TSchema>>
 	>
 
-	for (const [key, propertySchema] of Object.entries(
-		schema.properties
-	) as Entries<typeof schema.properties>) {
+	for (const [key, propertySchema] of Object.entries(schema.properties)) {
+		// skip underscore properties
+		if (key.startsWith('_')) continue
+
 		const props = isOptional(propertySchema) ? optionalProperties : properties
 		props[key as keyof typeof props] = toJtdForm(propertySchema as any)
 	}
 
 	return {
 		properties,
-		optionalProperties,
+		optionalProperties:
+			Object.keys(optionalProperties).length > 0
+				? optionalProperties
+				: undefined,
 		additionalProperties: schema.additionalProperties,
 		metadata: getMetadata(schema)
 	} as unknown as JTDSchemaType<Static<T>>
 }
 
 function isOptional(schema: TSchema): schema is TOptional<TSchema> {
-	return schema[Modifier] === 'Optional'
+	return schema[Optional] === 'Optional'
 }
 
 /** Transform a Typebox record schema into JTD values */
@@ -155,13 +179,13 @@ export function toJtdValues<
 			propertyPattern
 		}
 		// TODO: metadata property describing the key pattern w/ patternproperties
-	}
+	} as any
 }
 
 function isStringEnum(schema: TSchema): schema is TJsonEnum<string[]> {
 	if (schema?.kind !== 'JsonEnum') return false
-	return (schema as TJsonEnum<JsonValue[]>).enum.every(
-		(member) => typeof member === 'string'
+	return schema.enum.every(
+		(member: string | number) => typeof member === 'string'
 	)
 }
 
@@ -223,6 +247,79 @@ export function toJtdFloat32<T extends TNumber>(schema: T) {
 	return typedef
 }
 
+export function toJtdSingleEnum<T extends TLiteral>(schema: T) {
+	if (typeof schema.const === 'number')
+		throw new Error(`Got a number literal from ${schema.$id}`)
+
+	const metadata = getMetadata(schema)
+
+	return { enum: [schema.const], metadata }
+}
+
+export function toJtdNullable<T extends TNullable<U>, U extends TSchema>(
+	schema: T
+): JTDSchemaType<Static<U> | null> {
+	const [baseSchema, nullType] = schema.anyOf
+	// @ts-expect-error
+	const result = toJtdForm(baseSchema)
+	result.nullable = true
+	return result as any
+}
+
+export function toJtdNull(schema: TNull) {
+	return { nullable: true, metadata: getMetadata(schema) }
+}
+
+export function toJtdDiscriminator<T extends TDiscriminatedUnion<any, any[]>>(
+	schema: T
+) {
+	const discriminator = schema[Discriminator]
+	// console.log('got discriminator schema', `"${discriminator}"`)
+
+	const mapping = {} as Record<string, any>
+
+	const metadata = getMetadata(schema)
+
+	// console.log(schema[Members])
+
+	for (const subschema of schema[Members]) {
+		const key = subschema.properties[discriminator].const
+
+		mapping[key] = toJtdDiscriminated(subschema, discriminator)
+	}
+
+	// console.log(mapping)
+
+	const form = {
+		discriminator,
+		mapping,
+		metadata
+	} as any
+
+	return form as JTDSchemaType<Static<T>>
+}
+
+export function toJtdDiscriminated<
+	T extends TObject,
+	D extends keyof Static<T>
+>(schema: T, discriminator: D): JTDSchemaType<Omit<Static<T>, D>> {
+	const form = toJtdProperties(schema)
+
+	// @ts-expect-error
+	delete form.properties[discriminator]
+
+	return form as any
+}
+
+function toJtdForm<T extends TDiscriminatedUnion>(
+	schema: T
+): JTDSchemaType<Static<T>>
+function toJtdForm<T extends TLiteral<string | string>>(
+	schema: T
+): JTDSchemaType<Static<T>>
+function toJtdForm<T extends TNullable<U>, U extends TSchema>(
+	schema: T
+): JTDSchemaType<Static<U> | null>
 function toJtdForm<T extends TRef<U>, U extends TSchema>(
 	schema: T
 ): JTDSchemaType<Static<U>>
@@ -247,8 +344,23 @@ function toJtdForm<T extends TObject>(
 function toJtdForm<T extends TArray>(
 	schema: T
 ): JTDSchemaType<Array<Static<TArray>>>
-function toJtdForm<T extends TSchema>(schema: T): JTDSchemaType<Static<T>> {
+function toJtdForm<T extends TSchema>(
+	schema: T
+): JTDSchemaType<Static<T>> | undefined {
+	// console.log(schema)
+
 	let result: SomeJTDSchemaType | undefined
+	// @ts-expect-error
+	if (schema[JsonTypeDef]?.skip) return undefined
+	// @ts-expect-error
+	if (schema[JsonTypeDef]?.schema != null)
+		// @ts-expect-error
+		return merge(schema[JsonTypeDef].schema, { metadata: getMetadata(schema) })
+
+	if (TypeGuard.TLiteral(schema)) result = toJtdSingleEnum(schema) as any
+	if (TypeGuard.TNull(schema)) result = toJtdNull(schema) as any
+	if (TDiscriminatedUnion(schema)) result = toJtdDiscriminator(schema)
+	if (TNullable(schema)) result = toJtdNullable(schema) as any
 	if (TypeGuard.TRef(schema)) result = toJtdRef(schema) as any
 	if (TypeGuard.TString(schema)) result = toJtdString(schema) as any
 	if (TypeGuard.TBoolean(schema)) result = toJtdBoolean(schema) as any
@@ -277,15 +389,31 @@ function toJtdForm<T extends TSchema>(schema: T): JTDSchemaType<Static<T>> {
 			} as any
 	}
 
-	if (result == null)
+	if (result == null) {
+		console.log(schema)
 		throw new Error(
-			`no transform available for typebox schema kind: ${schema[Kind]}`
+			`no transform available for typebox schema kind ${schema[Kind]}`
 		)
+	}
 
-	if (schema[Modifier] === 'Nullable') result.nullable = true
+	// console.log('JTD:', result)
 
 	return result as any
 	// TODO: const values
+}
+
+export function toJtdModule<T extends Record<string, TSchema>>(ns: T) {
+	const result = {} as { [K in keyof T]: JTDSchemaType<Static<T[K]>> }
+
+	for (const k in ns)
+		try {
+			// @ts-expect-error
+			result[k] = toJtdForm(ns[k])
+		} catch (err) {
+			log.error(`Couldn't convert ${ns[k].$id}`, err)
+		}
+
+	return result
 }
 
 export { toJtdForm }

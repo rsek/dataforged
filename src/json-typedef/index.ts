@@ -1,7 +1,7 @@
 import path from 'path'
 import * as Assets from './assets'
 import * as DelveSites from './delve-sites'
-import * as Encounters from './encounters'
+import * as Encounters from './npcs'
 // import * as GameObjects from './game-objects'
 import * as Localize from './localize'
 import * as Metadata from './metadata'
