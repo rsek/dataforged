@@ -2800,6 +2800,34 @@
 				}
 			]
 		},
+		"AssetAttachment": {
+			"title": "AssetAttachment",
+			"type": "object",
+			"description": "Describes which assets can be attached to this asset. Example: Starforged's Module assets, which can be equipped by Command Vehicle assets. See p. 55 of Starforged for more info.",
+			"required": ["max", "assets"],
+			"properties": {
+				"max": {
+					"description": "Null if there's no upper limit to the number of attached assets.",
+					"default": null,
+					"anyOf": [
+						{
+							"type": "integer",
+							"minimum": 1
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"assets": {
+					"type": "array",
+					"description": "Asset IDs (which may be wildcards) that may be attached to this asset",
+					"items": {
+						"$ref": "#/$defs/AssetIDWildcard"
+					}
+				}
+			}
+		},
 		"AssetConditionMeter": {
 			"title": "AssetConditionMeter",
 			"type": "object",
@@ -2960,6 +2988,17 @@
 				}
 			]
 		},
+		"AssetConditionMeterEnhancement": {
+			"title": "AssetConditionMeter",
+			"type": "object",
+			"description": "Some assets provide a special condition meter of their own. The most common example is the health meters on companion assets. Asset condition meters may also include their own controls, such as the checkboxes that Starforged companion assets use to indicate they are \"out of action\".",
+			"properties": {
+				"max": {
+					"type": "integer",
+					"description": "The maximum value of this meter."
+				}
+			}
+		},
 		"AssetControlField": {
 			"title": "AssetControlField",
 			"oneOf": [
@@ -3040,6 +3079,7 @@
 											}
 										},
 										{
+											"title": "SelectEnhancementOptionGroup",
 											"type": "object",
 											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
 											"description": "Represents a grouping of options in a list of choices.",
@@ -3185,6 +3225,43 @@
 				}
 			]
 		},
+		"AssetEnhancement": {
+			"title": "AssetEnhancement",
+			"type": "object",
+			"description": "Describes enhancements made to this asset in a partial asset object. The changes should be applied recursively; only the values that are specified should be changed.",
+			"properties": {
+				"count_as_impact": {
+					"type": "boolean",
+					"description": "If `true`, this asset counts as an impact (Starforged) or a debility (classic Ironsworn)."
+				},
+				"shared": {
+					"type": "boolean",
+					"description": "Most assets only benefit to their owner, but certain assets (like Starforged's module and command vehicle assets) are shared amongst the player's allies, too."
+				},
+				"attachments": {
+					"$ref": "#/$defs/AssetAttachment"
+				},
+				"controls": {
+					"type": "object",
+					"$comment": "Deserialize as a dictionary object.",
+					"description": "Controls are condition meters, clocks, counters, and other asset input fields whose values are expected to change throughout the life of the asset.",
+					"patternProperties": {
+						"^([a-z][a-z_]*)$": {
+							"type": "object",
+							"$comment": "Deserialize as a dictionary object.",
+							"patternProperties": {
+								"^([a-z][a-z_]*)$": {
+									"$ref": "#/$defs/AssetConditionMeterEnhancement"
+								}
+							}
+						}
+					}
+				},
+				"suggestions": {
+					"$ref": "#/$defs/Suggestions"
+				}
+			}
+		},
 		"AssetOptionField": {
 			"title": "AssetOptionField",
 			"oneOf": [
@@ -3226,6 +3303,7 @@
 								"^([a-z][a-z_]*)$": {
 									"oneOf": [
 										{
+											"title": "SelectStatOption",
 											"type": "object",
 											"$comment": "Semantics are similar to the HTML `<option>` element.",
 											"description": "Represents an option in a list of choices.",
@@ -3250,6 +3328,7 @@
 											}
 										},
 										{
+											"title": "SelectStatOptionGroup",
 											"type": "object",
 											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
 											"description": "Represents a grouping of options in a list of choices.",
@@ -3264,6 +3343,7 @@
 													"$comment": "Deserialize as a dictionary object.",
 													"patternProperties": {
 														"^([a-z][a-z_]*)$": {
+															"title": "SelectStatOption",
 															"type": "object",
 															"$comment": "Semantics are similar to the HTML `<option>` element.",
 															"description": "Represents an option in a list of choices.",
@@ -3376,6 +3456,7 @@
 											}
 										},
 										{
+											"title": "SelectEnhancementOptionGroup",
 											"type": "object",
 											"$comment": "Semantics are similar to the HTML `<optgroup>` element.",
 											"description": "Represents a grouping of options in a list of choices.",

@@ -250,6 +250,7 @@ export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
 	return Type.Composite([SelectOptionGroupBase, mixin], {
 		description: 'Represents a grouping of options in a list of choices.',
 		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
+		title: optionSchema.title ? optionSchema.title + 'Group' : undefined,
 		...options
 	}) as TObject<
 		ObjectProperties<typeof SelectOptionGroupBase> &

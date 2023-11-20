@@ -106,7 +106,7 @@ const AssetOptionFields = [
 export const AssetOptionField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetOptionFields,
-	{ $id: '#/$defs/AssetOptionField' }
+	{ $id: '#/$defs/AssetOptionField', title: 'AssetOptionField' }
 )
 export type AssetOptionField = Static<typeof AssetOptionField>
 export type TAssetOptionField = typeof AssetOptionField
@@ -124,7 +124,8 @@ export const AssetControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AssetControlFields,
 	{
-		$id: '#/$defs/AssetControlField'
+		$id: '#/$defs/AssetControlField',
+		title: 'AssetControlField'
 	}
 )
 export type TAssetControlField = typeof AssetControlField
@@ -139,7 +140,7 @@ const AbilityControlFields = [
 export const AssetAbilityControlField = DiscriminatedUnion(
 	Fields.DISCRIMINATOR,
 	AbilityControlFields,
-	{ $id: '#/$defs/AssetAbilityControlField' }
+	{ $id: '#/$defs/AssetAbilityControlField', title: 'AssetAbilityControlField' }
 )
 
 export type AssetAbilityControlField = Static<typeof AssetAbilityControlField>
@@ -151,7 +152,7 @@ const AbilityOptionFields = [Fields.TextField].map((fn) =>
 export const AssetAbilityOptionField = DiscriminatedUnion(
 	'field_type',
 	AbilityOptionFields,
-	{ $id: '#/$defs/AssetAbilityOptionField' }
+	{ $id: '#/$defs/AssetAbilityOptionField', title: 'AssetAbilityOptionField' }
 )
 
 export type AssetAbilityOptionField = Static<typeof AssetAbilityOptionField>

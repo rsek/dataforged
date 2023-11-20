@@ -114,7 +114,7 @@ export function SelectStatField(
 	options: ObjectOptions = {}
 ) {
 	return SelectField(
-		SelectOption(Type.Ref(Player.PlayerStat)),
+		SelectOption(Type.Ref(Player.PlayerStat), { title: 'SelectStatOption' }),
 		'select_stat',
 		id,
 		{ title: 'SelectStatField', options }

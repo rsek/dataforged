@@ -67,3 +67,4 @@ export type TAssetType = typeof AssetType
 
 export * from './assets/fields.js'
 export * from './assets/ability.js'
+export * from './assets/enhancement.js'
