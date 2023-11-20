@@ -4,14 +4,14 @@ import {
 	type TAnySchema,
 	type TBigInt
 } from '@sinclair/typebox'
+import { JsonEnumFromRecord } from '../../../typebox/index.js'
+import { Localize } from '../common/index.js'
 import {
 	type MoveActionRoll,
 	type MoveNoRoll,
 	type MoveProgressRoll,
 	type MoveSpecialTrack
 } from '../moves.js'
-import { JsonEnumFromRecord } from '../../../typebox/index.js'
-import { Localize } from '../common/index.js'
 
 enum Outcome {
 	Miss = 'miss',

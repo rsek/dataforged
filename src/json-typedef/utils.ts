@@ -14,29 +14,24 @@ import {
 	TRef,
 	TSchema,
 	TString,
-	TUnion,
-	Type,
 	TypeGuard
 } from '@sinclair/typebox'
-import { JTDDataType, JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core'
 import { inRange, merge, pick, set } from 'lodash-es'
-import { Entries, Simplify, TupleToUnion } from 'type-fest'
-import {
-	EnumDescriptions,
-	Description,
-	TAnySchema,
-	TJsonEnum
-} from '../typebox'
 import { TNullable } from '../schema/datasworn/common/utils.js'
 import { log } from '../scripts/utils/logger.js'
 import {
+	Description,
+	EnumDescriptions,
+	TAnySchema,
+	TJsonEnum
+} from '../typebox/index.js'
+import {
 	Discriminator,
 	Members,
-	TDiscriminated,
 	TDiscriminatedUnion
 } from '../typebox/discriminated-union.js'
-
-export const JsonTypeDef = Symbol('JsonTypeDef')
+import { JsonTypeDef } from './symbol.js'
+import { JTDSchemaType, SomeJTDSchemaType } from 'ajv/dist/core.js'
 
 /** Extract metadata from a JSON schema for use in a JTD schema's `metadata` property */
 export function getMetadata<T extends TAnySchema>(schema: T) {
@@ -238,7 +233,7 @@ export function toJtdInteger<T extends TInteger>(schema: T) {
 	}
 	return typedef
 }
-export function toJtdFloat32<T extends TNumber>(schema: T) {
+export function toJtdFloat<T extends TNumber>(schema: T) {
 	const typedef: JTDSchemaType<number> = {
 		type: 'float32',
 		metadata: getMetadata(schema)
@@ -262,6 +257,8 @@ export function toJtdNullable<T extends TNullable<U>, U extends TSchema>(
 	const [baseSchema, nullType] = schema.anyOf
 	// @ts-expect-error
 	const result = toJtdForm(baseSchema)
+	// @ts-expect-error
+
 	result.nullable = true
 	return result as any
 }
@@ -304,7 +301,6 @@ export function toJtdDiscriminated<
 	D extends keyof Static<T>
 >(schema: T, discriminator: D): JTDSchemaType<Omit<Static<T>, D>> {
 	const form = toJtdProperties(schema)
-
 	// @ts-expect-error
 	delete form.properties[discriminator]
 
@@ -332,9 +328,7 @@ function toJtdForm<T extends TBoolean>(
 function toJtdForm<T extends TInteger>(
 	schema: T
 ): ReturnType<typeof toJtdInteger>
-function toJtdForm<T extends TNumber>(
-	schema: T
-): ReturnType<typeof toJtdFloat32>
+function toJtdForm<T extends TNumber>(schema: T): ReturnType<typeof toJtdFloat>
 function toJtdForm<T extends TRecord<TString, U>, U extends TSchema>(
 	schema: T
 ): ReturnType<typeof toJtdValues<T, U>>
@@ -350,6 +344,7 @@ function toJtdForm<T extends TSchema>(
 	// console.log(schema)
 
 	let result: SomeJTDSchemaType | undefined
+
 	// @ts-expect-error
 	if (schema[JsonTypeDef]?.skip) return undefined
 	// @ts-expect-error
@@ -365,7 +360,7 @@ function toJtdForm<T extends TSchema>(
 	if (TypeGuard.TString(schema)) result = toJtdString(schema) as any
 	if (TypeGuard.TBoolean(schema)) result = toJtdBoolean(schema) as any
 	if (TypeGuard.TInteger(schema)) result = toJtdInteger(schema) as any
-	if (TypeGuard.TNumber(schema)) result = toJtdFloat32(schema) as any
+	if (TypeGuard.TNumber(schema)) result = toJtdFloat(schema) as any
 	if (TypeGuard.TRecord(schema)) result = toJtdValues(schema) as any
 	if (TypeGuard.TObject(schema)) result = toJtdProperties(schema) as any
 	if (TypeGuard.TArray(schema)) result = toJtdElements(schema) as any
@@ -390,16 +385,13 @@ function toJtdForm<T extends TSchema>(
 	}
 
 	if (result == null) {
-		console.log(schema)
+		log.error(schema)
 		throw new Error(
 			`no transform available for typebox schema kind ${schema[Kind]}`
 		)
 	}
 
-	// console.log('JTD:', result)
-
 	return result as any
-	// TODO: const values
 }
 
 export function toJtdModule<T extends Record<string, TSchema>>(ns: T) {

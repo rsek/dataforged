@@ -41,7 +41,8 @@ module.exports = {
 			{ prefer: 'type-imports', fixStyle: 'inline-type-imports' }
 		],
 		'@typescript-eslint/explicit-function-return-type': 'off',
-		'@typescript-eslint/strict-boolean-expressions': 'off'
+		'@typescript-eslint/strict-boolean-expressions': 'off',
+		'@typescript-eslint/ban-ts-comment': 'off'
 	},
 	overrides: [
 		{
@@ -56,8 +57,8 @@ module.exports = {
 				'@typescript-eslint/no-extraneous-class': [
 					2,
 					{ allowWithDecorator: true, allowStaticOnly: true }
-				],
-				'@typescript-eslint/array-type': [2, { array: true }]
+				]
+				// '@typescript-eslint/array-type': [2, { array: true }]
 			}
 		}
 	]

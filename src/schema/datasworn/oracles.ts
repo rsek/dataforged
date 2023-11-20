@@ -1,13 +1,8 @@
-import { type Static, Type } from '@sinclair/typebox'
-import { ID, Localize, Metadata, Abstract } from './common/index.js'
+import { Type, type Static, type TOptional } from '@sinclair/typebox'
 import { JsonEnum, JsonEnumFromRecord } from '../../typebox/enum.js'
-import {
-	Collection,
-	Dictionary,
-	RecursiveCollection
-} from './common/abstract.js'
+import { RecursiveCollection } from './common/abstract.js'
+import { Abstract, ID, Localize, Metadata } from './common/index.js'
 import { Nullable, Squash } from './common/utils.js'
-import { JsonTypeDef } from '../../json-typedef/utils.js'
 
 export const OracleRollTemplate = Type.Object(
 	{
@@ -269,14 +264,19 @@ export const OracleCollectionRendering = Squash(
 export type OracleCollectionRendering = Static<typeof OracleCollectionRendering>
 
 const OracleCollectionBase = Type.Composite([
-	Abstract.Collection(Type.Ref(OracleTable), Type.Ref(ID.OracleCollectionID)),
 	Type.Object({
 		rendering: Type.Optional(OracleCollectionRendering)
-	})
-])
+	}),
+	Abstract.Collection(Type.Ref(OracleTable), Type.Ref(ID.OracleCollectionID))
+]) as Abstract.TCollection<typeof OracleTable> & {
+	properties: { rendering: TOptional<typeof OracleCollectionRendering> }
+	static: OracleCollection
+}
 
 export const OracleCollection = RecursiveCollection(OracleCollectionBase, {
 	$id: '#/$defs/OracleCollection'
 })
-
-export type OracleCollection = Static<typeof OracleCollection>
+export type OracleCollection = RecursiveCollection<
+	Abstract.Collection<OracleTable> & { rendering?: OracleCollectionRendering }
+>
+export type TOracleCollection = typeof OracleCollection

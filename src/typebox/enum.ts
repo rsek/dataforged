@@ -4,12 +4,15 @@ import {
 	Kind,
 	Static,
 	Type,
-	TObject
+	TObject,
+	TupleToIntersect,
+	UnionToTuple
 } from '@sinclair/typebox'
 import { TypeSystem } from '@sinclair/typebox/system'
-import { JsonPrimitive, ValueOf, type JsonValue } from 'type-fest'
-import { isJsonValue } from './isJsonValue'
+import { JsonPrimitive, ValueOf, type JsonValue, Simplify } from 'type-fest'
+import { isJsonValue } from './isJsonValue.js'
 import { map } from 'lodash-es'
+import { Entries, MapEntries } from 'type-fest/source/entries.js'
 
 TypeSystem.Type('JsonEnum', JsonEnumCheck)
 
@@ -67,13 +70,15 @@ export function JsonEnumFromRecord<T extends Array<string> | Array<number>>(
 	} as TJsonEnum<T>
 }
 
-export function MergeEnumSchemas<T extends TJsonEnum[]>(
+export function MergeEnumSchemas<T extends TJsonEnum<string[]>[]>(
 	schemas: [...T],
 	options: SchemaOptions = {}
 ) {
 	const entries = schemas
 		.map((item) => item[EnumDescriptions])
-		.reduce((prev, cur) => Object.assign(prev, cur))
+		.reduce((prev, cur) => Object.assign(prev, cur)) as {
+		[P in Static<T[number]>]: string
+	}
 
 	return JsonEnumFromRecord(entries, options)
 }

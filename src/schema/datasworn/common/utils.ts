@@ -1,10 +1,11 @@
 import {
-	TNull,
-	TOmit,
-	TPartial,
-	TPick,
-	TRequired,
-	TUnion,
+	type TNull,
+	type TOmit,
+	type TPartial,
+	type TPick,
+	type TRequired,
+	type TSchema,
+	type TUnion,
 	Type,
 	TypeClone,
 	TypeGuard,
@@ -12,12 +13,12 @@ import {
 	type SchemaOptions,
 	type Static,
 	type TObject,
-	type TProperties,
-	type TSchema
+	type TProperties
 } from '@sinclair/typebox'
-import { camelCase } from 'lodash-es'
-import * as TypeFest from 'type-fest'
-import { MergeObjectSchemas } from './abstract.js'
+import { camelCase, isEmpty } from 'lodash-es'
+import type * as TypeFest from 'type-fest'
+import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+import { type MergeObjectSchemas } from './abstract.js'
 
 export const isNullable = Symbol('isNullable')
 
@@ -25,13 +26,13 @@ export type TNullable<T extends TSchema = TSchema> = TUnion<[T, TNull]> & {
 	[isNullable]: 'Nullable'
 }
 export function Nullable<T extends TSchema>(
-	base: T,
+	schema: T,
 	options: SchemaOptions = {}
 ) {
-	const schema = Type.Union([base, Type.Null()], options) as TNullable<T>
-	schema[isNullable] = 'Nullable'
+	const newSchema = Type.Union([schema, Type.Null()], options) as TNullable<T>
+	newSchema[isNullable] = 'Nullable'
 
-	return schema
+	return newSchema
 }
 
 /** Typeguard */
@@ -114,11 +115,10 @@ export type TSetOptional<
 > = MergeObjectSchemas<TOmit<T, K>, TPartial<TPick<T, K>>>
 
 /** Make the provided keys optional */
-export function SetOptional<T extends TObject, K extends (keyof Static<T>)[]>(
-	schema: T,
-	optionalKeys: [...K],
-	options: ObjectOptions = {}
-) {
+export function SetOptional<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, optionalKeys: [...K], options: ObjectOptions = {}) {
 	return Type.Composite(
 		[
 			Type.Omit(schema, optionalKeys),
@@ -136,11 +136,10 @@ type TPartialExcept<
 > = MergeObjectSchemas<TPick<T, K>, TPartial<TOmit<T, K>>>
 
 /** Make everything optional except for the provided keys  */
-export function PartialExcept<T extends TObject, K extends (keyof Static<T>)[]>(
-	schema: T,
-	requiredKeys: [...K],
-	options: SchemaOptions = {}
-) {
+export function PartialExcept<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, requiredKeys: [...K], options: SchemaOptions = {}) {
 	return Type.Composite(
 		[
 			Type.Pick(schema, requiredKeys),
@@ -156,11 +155,10 @@ type TSetRequired<
 > = MergeObjectSchemas<TRequired<TPick<T, K>>, TOmit<T, K>>
 
 /** Make the provided keys required */
-export function SetRequired<T extends TObject, K extends (keyof Static<T>)[]>(
-	schema: T,
-	requiredKeys: [...K],
-	options: ObjectOptions = {}
-) {
+export function SetRequired<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, requiredKeys: [...K], options: ObjectOptions = {}) {
 	return Type.Composite(
 		[
 			Type.Omit(schema, requiredKeys),
@@ -173,11 +171,10 @@ export function SetRequired<T extends TObject, K extends (keyof Static<T>)[]>(
 export type RequireExcept<T, K extends keyof T> = Required<Omit<T, K>> &
 	Pick<T, K>
 /** Make everything required except for the provided keys */
-export function RequireExcept<T extends TObject, K extends (keyof Static<T>)[]>(
-	schema: T,
-	nonRequiredKeys: [...K],
-	options: SchemaOptions = {}
-) {
+export function RequireExcept<
+	T extends TObject,
+	K extends Array<keyof Static<T>>
+>(schema: T, nonRequiredKeys: [...K], options: SchemaOptions = {}) {
 	return Type.Composite(
 		[
 			Type.Pick(schema, nonRequiredKeys),
@@ -206,30 +203,6 @@ export function PolymorphicWithID<
 	)
 }
 
-// export function DiscriminatedUnion<
-// 	T extends TObject[],
-// 	DKey extends keyof Static<T[number]>,
-// >(members: [...T], dKey: DKey, options: ObjectOptions = {}) {
-// 	const allOf = members.map((member) => ({ if: Type.Pick(member, [dKey]) }))
-
-// 	return Type.Object(
-// 		{ [dKey]:  },
-// 		{ allOf, ...options }
-// 	) as any as TDiscriminatedUnion<T>
-// }
-
-// export type TDiscriminatedUnionResolve<T extends TObject[]> = T extends [
-// 	infer L extends TObject,
-// 	...infer R extends TObject[]
-// ]
-// 	? Static<L> | TDiscriminatedUnionResolve<R>
-// 	: {}
-
-// export interface TDiscriminatedUnion<T extends TObject[] = []> extends TObject {
-// 	static: TDiscriminatedUnionResolve<T>
-// 	allOf: { if: TObject; then: TObject }[]
-// }
-
 export function NoDefaults<T extends TObject>(
 	schema: T,
 	options: ObjectOptions = {}
@@ -238,7 +211,7 @@ export function NoDefaults<T extends TObject>(
 	for (const key in newSchema.properties)
 		delete newSchema.properties[key]?.default
 
-	return newSchema as T
+	return newSchema
 }
 
 export function WithDefaults<T extends TObject>(
@@ -250,5 +223,47 @@ export function WithDefaults<T extends TObject>(
 
 	for (const key in defaults) newSchema.properties[key].default = defaults[key]
 
-	return newSchema as T
+	return newSchema
+}
+
+/** Resolves to `{const: 0}` in JSON schema, and falls back to uint8 for JSON TypeDef */
+export const LiteralZero = Type.Literal(0, {
+	default: 0,
+	[JsonTypeDef]: { schema: { type: 'uint8' } }
+})
+export type LiteralZero = 0
+
+/**
+ * A schema that resolves to a given type.
+ * @template T - The static type of the schema.
+ */
+export type TSchemaOf<T> = TSchema & { static: T }
+
+/**
+ * A schema that resolves to a type, which may be optional or nullable.
+ * @template T - The static type of the schema.
+ */
+export type TFuzzySchemaOf<T> =
+	| TSchemaOf<T>
+	| (TSchema & { static: T | undefined })
+	| (TSchema & { static: T | null })
+
+/**
+ * Assigns descriptions to the properties of an object schema.
+ * @param schema - The object schema.
+ * @param descriptions - The descriptions to be set on each property.
+ * @param override - Should non-empty descriptions be overwritten? (default: true)
+ * @returns The mutated object schema.
+ */
+export function setDescriptions<T extends TObject>(
+	schema: T,
+	descriptions: Partial<Record<keyof T['properties'], string | undefined>>,
+	override = true
+) {
+	for (const [property, description] of Object.entries(descriptions)) {
+		if (!override && !isEmpty(schema.properties[property].description)) continue
+		schema.properties[property].description = description
+	}
+
+	return schema
 }

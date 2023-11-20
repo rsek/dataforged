@@ -10,11 +10,7 @@ import {
 	MoveSpecialTrack,
 	MoveSpecialTrackEnhancement
 } from './moves/index.js'
-import { UnionOneOf } from '../../typebox/union-oneof.js'
-import {
-	DiscriminatedUnion,
-	Members
-} from '../../typebox/discriminated-union.js'
+import { DiscriminatedUnion } from '../../typebox/discriminated-union.js'
 
 // discriminated union of all moves by roll_type
 export const Move = DiscriminatedUnion(
@@ -40,7 +36,7 @@ export const MoveEnhancement = DiscriminatedUnion(
 		$id: '#/$defs/MoveEnhancement'
 	}
 )
-
+export type TMoveEnhancement = typeof MoveEnhancement
 export type MoveEnhancement =
 	| MoveNoRollEnhancement
 	| MoveActionRollEnhancement
@@ -55,5 +51,6 @@ export const MoveCategory = Abstract.Collection(
 	{ $id: '#/$defs/MoveCategory' }
 )
 export type MoveCategory = Static<typeof MoveCategory>
+export type TMoveCategory = typeof MoveCategory
 
 export * from './moves/index.js'

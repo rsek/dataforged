@@ -8,12 +8,8 @@ import { ID, Localize, Progress, Metadata, Abstract } from './common/index.js'
 import { Squash } from './common/utils.js'
 import { OracleTableRow } from './oracles.js'
 import { JsonEnum, UnionOneOf } from '../../typebox/index.js'
-import {
-	JsonTypeDef,
-	toJtdElements,
-	toJtdProperties,
-	toJtdRef
-} from '../../json-typedef/utils.js'
+import { toJtdElements } from '../../json-typedef/utils.js'
+import { JsonTypeDef } from '../../json-typedef/symbol.js'
 
 export const DelveSiteDenizenFrequency = JsonEnum(
 	['very_common', 'common', 'uncommon', 'rare', 'unforeseen'],
@@ -110,6 +106,7 @@ export const DelveSite = Abstract.SourcedNode(
 )
 
 export type DelveSite = Static<typeof DelveSite>
+export type TDelveSite = typeof DelveSite
 
 export type DelveSiteCardType = 'theme' | 'domain'
 export type DelveSiteCardRowType = 'feature' | 'danger'
@@ -198,6 +195,7 @@ export const DelveSiteTheme = DelveSiteCard(
 	{ $id: '#/$defs/DelveSiteTheme', title: 'Delve site theme' }
 )
 export type DelveSiteTheme = Static<typeof DelveSiteTheme>
+export type TDelveSiteTheme = typeof DelveSiteTheme
 
 export const DelveSiteDomainFeatureRow = Type.Composite(
 	[
@@ -308,3 +306,4 @@ export const DelveSiteDomain = DelveSiteCard(
 )
 
 export type DelveSiteDomain = Static<typeof DelveSiteDomain>
+export type TDelveSiteDomain = typeof DelveSiteDomain

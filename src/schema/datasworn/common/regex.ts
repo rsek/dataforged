@@ -1,6 +1,6 @@
 /** Regular expressions (and regular expression fragments) used to compose IDs and dictionary keys throughout datasworn. */
 
-import { StringOptions, TString, Type } from '@sinclair/typebox'
+import { type StringOptions, type TString, Type } from '@sinclair/typebox'
 import { escapeRegExp } from 'lodash-es'
 
 const sep = escapeRegExp('/')
@@ -112,7 +112,7 @@ function _toWildcard<T extends IdElement>(element: T) {
 		case element === NodeRecursive:
 			return recursiveElementWildcard.source
 		default: {
-			const src = (element as Symbol)?.description as string
+			const src = (element as symbol)?.description as string
 			const regexp = new RegExp(src)
 			return wildcard(regexp).source
 		}
@@ -121,7 +121,7 @@ function _toWildcard<T extends IdElement>(element: T) {
 function getPatternSubstrings(...elements: IdElement[]) {
 	elements = [...elements]
 
-	let idParts = []
+	const idParts = []
 
 	for (let i = 0; i < elements.length; i++) {
 		const element = elements[i]
@@ -131,7 +131,7 @@ function getPatternSubstrings(...elements: IdElement[]) {
 
 		if (needsSeparator) idParts.push(sep)
 
-		idParts.push((element as Symbol).description ?? element)
+		idParts.push((element as symbol).description ?? element)
 	}
 
 	return idParts

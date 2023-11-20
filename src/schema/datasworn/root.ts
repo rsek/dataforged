@@ -1,5 +1,12 @@
-import { SchemaOptions, Static, TSchema, TypeClone } from '@sinclair/typebox'
+import {
+	type SchemaOptions,
+	type Static,
+	type TSchema,
+	TypeClone
+} from '@sinclair/typebox'
 import { SCHEMA_ID, VERSION } from '../../scripts/const.js'
+
+import { Metadata, ID, Localize, Player, Progress } from './common/index.js'
 
 import * as Moves from './moves.js'
 import * as Assets from './assets.js'
@@ -11,8 +18,6 @@ import * as DelveSites from './delve-sites.js'
 import * as Rarities from './rarities.js'
 import * as Rules from './rules.js'
 import { Ruleset } from './ruleset.js'
-
-import { Metadata, ID, Localize, Player, Progress } from './common/index.js'
 
 export const $schema = 'http://json-schema.org/draft-07/schema#'
 

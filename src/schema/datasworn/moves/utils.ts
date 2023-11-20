@@ -1,22 +1,26 @@
 import {
-	Static,
-	TArray,
-	TLiteral,
-	TNull,
-	TRef,
 	Type,
 	TypeGuard,
 	type ArrayOptions,
 	type ObjectOptions,
+	type Static,
+	type TArray,
+	type TLiteral,
+	type TNull,
 	type TObject,
+	type TRef,
 	type TSchema
 } from '@sinclair/typebox'
-import { Simplify } from 'type-fest'
-import { ExtractLiteralFromEnum, TJsonEnum } from '../../../typebox/enum.js'
-import { EnhanceMany, SourcedNode } from '../common/abstract.js'
+import { type Simplify } from 'type-fest'
+import {
+	ExtractLiteralFromEnum,
+	type TJsonEnum
+} from '../../../typebox/enum.js'
+import { SourcedNode, type EnhanceMany } from '../common/abstract.js'
 import { MoveIDWildcard } from '../common/id.js'
-import { Abstract, ID, Localize } from '../common/index.js'
-import { Nullable, TNullable } from '../common/utils.js'
+import { Abstract, ID } from '../common/index.js'
+import { MarkdownString } from '../common/localize.js'
+import { Nullable, type TNullable } from '../common/utils.js'
 import { ActionRollUsing } from './action.js'
 import { MoveOutcomes, MoveRollType, TriggerBy } from './common.js'
 
@@ -31,13 +35,13 @@ const MoveBase = SourcedNode(
 			})
 		),
 		trigger: Type.Object({
-			text: Type.Ref(Localize.MarkdownString, {
+			text: Type.Ref(MarkdownString, {
 				description:
 					'A markdown string containing the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be described described in Trigger#conditions.',
 				type: 'string'
 			})
 		}),
-		text: Type.Ref(Localize.MarkdownString, {
+		text: Type.Ref(MarkdownString, {
 			description: 'The complete rules text of the move.'
 		}),
 		outcomes: Type.Optional(Type.Ref(MoveOutcomes)),
@@ -67,7 +71,7 @@ export function Move<
 
 export const TriggerConditionBase = {
 	text: Type.Optional(
-		Type.Ref(Localize.MarkdownString, {
+		Type.Ref(MarkdownString, {
 			description:
 				'A markdown string of any trigger text specific to this trigger condition.'
 		})
@@ -108,7 +112,7 @@ export function Trigger(
 ) {
 	return Type.Object(
 		{
-			text: Type.Ref(Localize.MarkdownString, {
+			text: Type.Ref(MarkdownString, {
 				description:
 					'A markdown string of the primary trigger text for this move.\n\nSecondary trigger text (for specific stats or uses of an asset ability) may be available for individual trigger conditions.',
 				type: 'string',
@@ -195,7 +199,6 @@ export function MoveEnhancement<
 
 	return result
 }
-
 export type MoveEnhancement<T extends { roll_type: string }, E> = Simplify<
 	EnhanceMany<Pick<T, 'roll_type'> & { trigger?: E }>
 >

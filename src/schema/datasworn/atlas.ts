@@ -14,15 +14,17 @@ export const AtlasEntry = Abstract.Cyclopedia(
 		releaseStage: 'experimental'
 	}
 )
-
+export type TAtlasEntry = typeof AtlasEntry
 export type AtlasEntry = Static<typeof AtlasEntry>
 
 const AtlasBase = Abstract.Collection(Type.Ref(AtlasEntry), Type.Ref(AtlasID))
 
-export const Atlas = Abstract.RecursiveCollection(
-	AtlasBase,
+export const Atlas = Abstract.RecursiveCollection(AtlasBase, {
+	$id: '#/$defs/Atlas',
+	releaseStage: 'experimental'
+})
 
-	{ $id: '#/$defs/Atlas', releaseStage: 'experimental' }
-)
-
-export type Atlas = Static<typeof Atlas>
+export type Atlas = Abstract.RecursiveCollection<
+	Abstract.Collection<AtlasEntry>
+>
+export type TAtlas = typeof Atlas

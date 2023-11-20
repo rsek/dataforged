@@ -1,6 +1,5 @@
 import { Type, type Static } from '@sinclair/typebox'
 import { Abstract, ID, Localize, Progress } from './common/index.js'
-import { Squash } from './common/utils.js'
 
 export const NpcNature = Type.Ref(Localize.Label, {
 	description:
@@ -76,3 +75,4 @@ export const NpcCollection = Abstract.Collection(
 	{ $id: '#/$defs/NpcCollection' }
 )
 export type NpcCollection = Static<typeof NpcCollection>
+export type TNpcCollection = typeof NpcCollection

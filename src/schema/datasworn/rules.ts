@@ -1,5 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox'
-import { Localize, Abstract, Inputs, ID } from './common/index.js'
+import { Localize, Abstract, ID } from './common/index.js'
+import * as Inputs from './common/inputs.js'
 
 export const StatRule = Type.Object(
 	{
@@ -17,12 +18,12 @@ export const ConditionMeterRule = Type.Composite(
 			description: Type.Ref(Localize.MarkdownString),
 			shared: Type.Boolean({ default: false })
 		}),
-		Type.Omit(Inputs.MeterBase, ['value'])
+		Type.Omit(Inputs.Meter(Type.Integer(), Type.Integer({ default: 5 })), [
+			'value'
+		])
 	],
 	{ $id: '#/$defs/ConditionMeterRule' }
 )
-
-ConditionMeterRule.properties.max.default = 5
 
 export type ConditionMeterRule = Static<typeof ConditionMeterRule>
 

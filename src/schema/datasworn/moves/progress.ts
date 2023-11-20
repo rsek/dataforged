@@ -1,26 +1,24 @@
 import {
+	ExtractLiteralFromEnum,
 	Type,
-	type Static,
-	JsonEnumFromRecord,
-	ExtractLiteralFromEnum
+	type Static
 } from '../../../typebox/index.js'
+import { Localize } from '../common/index.js'
+import { SpecialTrackType } from '../common/progress.js'
 import {
 	MoveOutcomes,
 	MoveRollType,
-	MoveOutcomeType,
 	ProgressRollMethod,
 	SpecialTrackRollMethod
 } from './common.js'
 import {
 	Move,
-	TriggerEnhancement,
-	TriggerConditionEnhancement,
-	Trigger,
 	MoveEnhancement,
-	TriggerCondition
+	Trigger,
+	TriggerCondition,
+	TriggerConditionEnhancement,
+	TriggerEnhancement
 } from './utils.js'
-import { SpecialTrackType } from '../common/progress.js'
-import { Localize } from '../common/index.js'
 
 export const ProgressRollOption = Type.Object(
 	{

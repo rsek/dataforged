@@ -1,232 +1,305 @@
+/** Abstract inputs that are used by option and control fields.  */
 import {
-	type Static,
+	type ObjectOptions,
+	type ObjectProperties,
+	type TInteger,
+	type TLiteral,
+	type TObject,
+	type TRef,
+	type TString,
 	Type,
-	type TSchema,
-	type ObjectOptions
+	type Static,
+	type TSchema
 } from '@sinclair/typebox'
-import * as Localize from './localize.js'
-import * as Player from './player.js'
-import * as Abstract from './abstract.js'
+import { type Simplify } from 'type-fest'
+import { JsonTypeDef } from '../../../json-typedef/symbol.js'
+
 import {
-	JsonEnum,
-	JsonEnumFromRecord,
-	UnionOneOf
-} from '../../../typebox/index.js'
-import { JsonTypeDef } from '../../../json-typedef/utils.js'
+	LiteralZero,
+	Nullable,
+	type TFuzzySchemaOf,
+	setDescriptions
+} from './utils.js'
 
-const NumberRangeBase = (
-	min: TSchema = Type.Integer(),
-	max: TSchema = Type.Optional(Type.Integer()),
-	value: TSchema = Type.Optional(Type.Integer())
-) =>
-	Type.Object({
-		min,
-		max,
-		value
-	})
+import { DiscriminatedUnion } from '../../../typebox/discriminated-union.js'
+import { JsonEnum } from '../../../typebox/index.js'
+import * as Localize from './localize.js'
+import { DictKey } from './id.js'
+import * as Abstract from './abstract.js'
 
-const LiteralZero = Type.Literal(0, {
-	[JsonTypeDef]: { schema: { type: 'uint8' } }
+const InputName = Type.Ref(Localize.Label, {
+	description:
+		'A label for this input. In some contexts it may be undesirable to render this text, but it should always be exposed to assistive technology (e.g. with `aria-label` in HTML).'
 })
 
-const ClockBase = NumberRangeBase(
-	LiteralZero,
-	JsonEnum([4, 6, 8, 10], { schema: { type: 'uint8' } }),
-	Type.Integer({ default: 0 })
-)
-export type ClockBase = Static<typeof ClockBase>
-
-export const MeterBase = NumberRangeBase(
-	Type.Integer({ default: 0 }),
-	Type.Integer()
-)
-export type MeterBase = Static<typeof MeterBase>
-
-const CounterBase = NumberRangeBase(
-	LiteralZero,
-	Type.Optional(Type.Integer()),
-	Type.Integer({ default: 0 })
-)
-export type CounterBase = Static<typeof CounterBase>
-
-export function SelectOptionBase<T extends TSchema>(t: T) {
-	return Type.Object({
-		name: Type.Ref(Localize.Label),
-		value: t,
-		selected: Type.Optional(Type.Boolean())
-	})
-}
-export interface SelectOptionBase<T> {
-	name: string
-	value: T
-	selected?: boolean
-}
-
-export const SelectFieldType = JsonEnumFromRecord({
-	select_stat: '',
-	select_ref: ''
-})
-export type SelectFieldType = Static<typeof SelectFieldType>
-
-export const InputFieldType = UnionOneOf([
-	JsonEnumFromRecord({
-		text: 'A plain text field that accepts a string value.',
-		clock: 'A clock (see Starforged, p. XX).',
-		counter: 'A counter that starts at 0, which may or may not have a maximum.',
-		checkbox: 'A checkbox that represents a boolean value.',
-		card_flip: 'A control that represents flipping a card over'
-	}),
-	SelectFieldType
-])
-export type InputFieldType = Static<typeof InputFieldType>
-
-export function InputField<T extends InputFieldType, V extends TSchema>(
-	fieldType: T,
-	value: V,
-	otherProperties: Record<string, TSchema> = {},
+/**
+ * @abstract
+ */
+export function Input<Value extends TSchema>(
+	value: Value,
 	options: ObjectOptions = {}
 ) {
 	return Type.Object(
 		{
-			id: Type.String(),
-			name: Type.Ref(Localize.Label),
-			field_type: Type.Literal(fieldType),
-			value: Type.Optional(value),
-			...otherProperties
+			name: InputName,
+			value: {
+				description: 'The current value of this input.',
+				...value
+			} as Value
 		},
-		{ ...options }
-	)
+		options
+	) satisfies TInput<Value>
 }
-export interface InputField<T extends InputFieldType, V> {
-	id: string
+export type TInput<Value extends TSchema> = TObject<{
+	name: TRef<TString>
+	value: Value
+}>
+export interface Input<Value> {
 	name: string
-	field_type: T
-	value?: V
-}
-
-export function InputFieldEnhance<T extends ReturnType<typeof InputField>>(
-	t: T
-) {
-	return Type.Omit(t, ['field_type', 'name', 'value'])
-}
-
-export const CheckboxField = InputField(
-	'checkbox',
-	Type.Boolean({
-		default: false,
-		description: 'Is the box checked?'
-	}),
-	{},
-	{
-		$id: '#/$defs/CheckboxField',
-		description:
-			'This input represents a checkbox field. It is considered checked when its value is set to `true`.'
-	}
-)
-
-export type CheckboxField = Static<typeof CheckboxField>
-
-export const CardFlipField = InputField(
-	'card_flip',
-	Type.Boolean({
-		default: false,
-		description: 'Is the card flipped over?'
-	}),
-	{},
-	{
-		$id: '#/$defs/CardFlipField',
-		description: `This type of input isn't a *field* in the traditional sense. When its value is set to \`true\` it means that the card is flipped over. For example, Starforged's module assets use this to represent a 'broken' state.
-
-    Otherwise, it behaves similarly to a CheckboxField.
-    `
-	}
-)
-export type CardFlipField = Static<typeof CardFlipField>
-
-export const ClockField = InputField(
-	'clock',
-	Type.Integer({ default: 0 }),
-	ClockBase.properties,
-	{
-		$id: '#/$defs/ClockField'
-	}
-)
-
-export type ClockField = Static<typeof ClockField>
-
-export const CounterField = InputField(
-	'counter',
-	Type.Integer({ default: 0 }),
-	CounterBase.properties,
-	{ $id: '#/$defs/CounterField' }
-)
-
-export type CounterField = Static<typeof CounterField>
-
-export const TextField = InputField(
-	'text',
-	Type.String(),
-	{},
-	{ $id: '#/$defs/TextField' }
-)
-
-export type TextField = Static<typeof TextField>
-
-/** Represents a list of choices, similar in structure to the HTML `<select>` element */
-export function SelectBase<T extends TSchema>(t: T) {
-	return Type.Object({
-		name: Type.Ref(Localize.Label),
-		value: Type.Optional(t),
-		choices: Abstract.Dictionary(SelectOptionBase(t))
-	})
+	value: Value
 }
 
 /**
- * @param fieldType - The value of the `field_type` property
- * @param value - The schema for the `value` field of the selection choices
+ * Represents a range of number values with a minimum and a maximum.
+ * @template Min The schema of the minimum value
+ * @template Max The schema of the maximum value
+ * @abstract
  */
-export function SelectField<T extends SelectFieldType, V extends TSchema>(
-	fieldType: T,
-	value: V,
+export function Range<
+	Min extends TFuzzySchemaOf<number>,
+	Max extends TFuzzySchemaOf<number>
+>({ min, max }: { min: Min; max: Max }, options: ObjectOptions = {}) {
+	return setDescriptions(
+		Type.Object({ min, max }, options),
+		{
+			min: 'The (inclusive) minimum value.',
+			max: 'The (inclusive) maximum value.'
+		},
+		false
+	)
+}
+export type TRange<
+	Min extends TFuzzySchemaOf<number> = TFuzzySchemaOf<number>,
+	Max extends TFuzzySchemaOf<number> = TFuzzySchemaOf<number>
+> = TObject<{ min: Min; max: Max }>
+export interface Range<
+	Min extends number | null = number | null,
+	Max extends number | null = number | null
+> {
+	min: Min
+	max: Max
+}
+
+export const Counter = Type.Composite(
+	[
+		Input(Type.Integer({ default: 0 })),
+		Range({
+			min: LiteralZero,
+			max: Nullable(Type.Integer())
+		})
+	],
+	{
+		description:
+			'A counter that starts at zero, with an optional maximum value.',
+		$comment: 'Semantics are similar to `<input type="number">`.'
+	}
+) satisfies TInput<TInteger>
+export type TCounter = typeof Counter
+export type Counter = Static<typeof Counter>
+
+export const Clock = Type.Composite(
+	[
+		Input(
+			Type.Integer({
+				default: 0,
+				description: 'The current number of filled clock segments.'
+			})
+		),
+		Range({
+			min: {
+				...LiteralZero,
+				description:
+					'The minimum number of filled clock segments. This is always 0.'
+			},
+			max: JsonEnum([4, 6, 8, 10], {
+				[JsonTypeDef]: { schema: { type: 'uint8' } },
+				description:
+					'The size of the clock -- in other words, the maximum number of filled clock segments.'
+			})
+		})
+	],
+	{
+		description: 'A clock with 4, 6, 8, or 10 segments.',
+		$comment:
+			'Semantics are similar to `<input type="number">`, but rendered as a clock (a circle with equally sized wedges).'
+	}
+) satisfies TInput<TInteger>
+export type TClock = typeof Clock
+export type Clock = Static<typeof Clock>
+
+/**
+ * A meter with a minimum, a maximum, and an optional current value.
+ * @abstract
+ */
+export function Meter<
+	Min extends TInteger | TLiteral<number> = TInteger,
+	Max extends TInteger | TLiteral<number> = TInteger
+>(min: Min, max: Max, options: ObjectOptions = {}): TMeter<Min, Max> {
+	// @ts-expect-error
+	return Type.Composite(
+		[
+			Input(Type.Integer({ description: 'The current value of this meter.' })),
+			Range<Min, Max>({
+				min: { description: 'The minimum value of this meter.', ...min },
+				max: { description: 'The maximum value of this meter.', ...max }
+			})
+		],
+		options
+	)
+}
+export type TMeter<
+	Min extends TInteger | TLiteral<number> = TInteger,
+	Max extends TInteger | TLiteral<number> = TInteger
+> = TObject<TInput<TInteger>['properties'] & TRange<Min, Max>['properties']>
+export type Meter<
+	Min extends number = number,
+	Max extends number = number
+> = Simplify<Range<Min, Max> & Input<number>>
+
+/**
+ * Represents a checkbox, similar to an HTML `<input type="checkbox">` element.
+ * @abstract
+ */
+export const Checkbox = Input(
+	Type.Boolean({ description: 'Is the box checked?', default: false }),
+	{
+		description: 'Represents a checkbox.',
+		$comment: 'Semantics are similar to the `<input type="checkbox">` element.'
+	}
+)
+export type Checkbox = Static<typeof Checkbox>
+export type TCheckbox = typeof Checkbox
+
+export const TextInput = Input(
+	Nullable(Type.String(), {
+		description: "The content of this text input, or `null` if it's empty",
+		default: null
+	}),
+	{
+		description: 'Represents an input that accepts plain text.',
+		$comment: 'Semantics are similar to the HTML `<input type="text">` element.'
+	}
+)
+export type TextInput = Static<typeof TextInput>
+export type TTextInput = typeof TextInput
+
+/**
+ * Represents an option in a list of choices.
+ * @abstract
+ */
+const SelectOptionBase = Type.Object({
+	option_type: Type.Literal('option'),
+	selected: Type.Optional(
+		Type.Boolean({ description: 'Is this option currently selected?' })
+	)
+})
+
+export function SelectOption<Value extends TSchema>(
+	value: Value,
 	options: ObjectOptions = {}
 ) {
-	return InputField(
-		fieldType,
-		value,
+	const mixin = Input(value)
+	return Type.Composite([SelectOptionBase, mixin], {
+		description: 'Represents an option in a list of choices.',
+		$comment: 'Semantics are similar to the HTML `<option>` element.',
+		...options
+	})
+}
+export type TSelectOption<Value extends TSchema> = ReturnType<
+	typeof SelectOption<Value>
+>
+export type SelectOption<Value> = Static<typeof SelectOptionBase> & Input<Value>
+
+function Choices<T extends TSchema>(
+	choiceSchema: T,
+	options: ObjectOptions = {}
+) {
+	return Type.Object(
 		{
-			...SelectBase(value).properties
+			choices: Abstract.Dictionary(choiceSchema)
 		},
 		options
 	)
 }
-export type SelectField<T extends SelectFieldType, V> = InputField<T, V> & {
-	options: Record<string, SelectOptionBase<T>>
+export type TChoices<T extends TSchema> = ReturnType<typeof Choices<T>>
+export interface Choices<T> {
+	choices: Record<string, T>
 }
 
-export const SelectFieldStat = SelectField(
-	'select_stat',
-	Type.Ref(Player.PlayerStat),
-	{
-		$id: '#/$defs/SelectFieldStat',
-		title: 'Select field (player stat)',
-		description: 'Select a standard player stat.'
-	}
+const SelectOptionGroupBase = Type.Object({
+	name: Type.Ref(Localize.Label, {
+		description: 'A label for this option group.'
+	}),
+	option_type: Type.Literal('option_group')
+})
+export function SelectOptionGroup<Option extends TSelectOption<TSchema>>(
+	optionSchema: Option,
+	options: ObjectOptions = {}
+) {
+	const mixin = Choices(optionSchema)
+	return Type.Composite([SelectOptionGroupBase, mixin], {
+		description: 'Represents a grouping of options in a list of choices.',
+		$comment: 'Semantics are similar to the HTML `<optgroup>` element.',
+		...options
+	}) as TObject<
+		ObjectProperties<typeof SelectOptionGroupBase> &
+			ObjectProperties<typeof mixin>
+	>
+}
+export type TSelectOptionGroup<Option extends TSelectOption<TSchema>> =
+	ReturnType<typeof SelectOptionGroup<Option>>
+
+export type SelectOptionGroup<Option extends SelectOption<any>> = Static<
+	typeof SelectOptionGroupBase
+> &
+	Choices<Option>
+
+const SelectBase = Input(
+	Nullable(
+		Type.Ref(DictKey, {
+			description:
+				'The key of the currently selected choice from the `choices` property, or `null` if none is selected.',
+			default: null
+		})
+	)
 )
-export type SelectFieldStat = Static<typeof SelectFieldStat>
 
-// export const SelectFieldRef = SelectField(
-// 	'select_ref',
-// 	UnionOneOf([
-// 		Type.Ref(ID.AssetControlFieldIDWildcard),
-// 		Type.Ref(ID.AssetOptionFieldIDWildcard)
-// 	]),
-// 	{
-// 		$id: '#/$defs/SelectFieldRef',
-// 		title: 'Select field (reference)',
-// 		description:
-// 			'Select a pointer to the value of an asset control or option field.'
-// 	}
-// )
-// export type SelectFieldRef = Static<typeof SelectFieldRef>
-
-// select asset enhance requires too much recursion. so what's the best way to model e.g. Ironclad?
+/**
+ * Represents a list of mutually exclusive choices.
+ * @remarks Semantics are similar to the HTML `<select>` element.
+ */
+export function Select<Option extends TSelectOption<TSchema>>(
+	optionSchema: Option,
+	options: ObjectOptions = {}
+) {
+	const mixin = Choices(
+		DiscriminatedUnion('option_type', [
+			optionSchema,
+			SelectOptionGroup(optionSchema)
+		])
+	)
+	return Type.Composite([SelectBase, mixin], {
+		description: 'Represents a list of mutually exclusive choices.',
+		$comment: 'Semantics are similar to the HTML `<select>` element',
+		...options
+	}) as TObject<
+		ObjectProperties<typeof SelectBase> & ObjectProperties<typeof mixin>
+	>
+}
+export type TSelect<Option extends TSelectOption<TSchema>> = ReturnType<
+	typeof Select<Option>
+>
+export type Select<Option extends SelectOption<any>> = Static<
+	typeof SelectBase
+> &
+	Choices<Option>

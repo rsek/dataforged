@@ -14,5 +14,5 @@ export * as Metadata from './metadata.js'
 // depends on Localize, Metadata
 export * as Abstract from './abstract.js'
 
-// depends on Localize, Player, Abstract
-export * as Inputs from './inputs.js'
+// depends on Localize, Player, Abstract, Utils
+export * as Fields from './fields.js'

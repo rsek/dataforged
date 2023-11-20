@@ -27,3 +27,4 @@ export const Rarity = Abstract.SourcedNode(
 )
 
 export type Rarity = Static<typeof Rarity>
+export type TRarity = typeof Rarity

@@ -2,13 +2,13 @@
  * Abstract interfaces and utility types that are only used internally. They are not included in the final schema.
  */
 import {
-	ObjectProperties,
-	TArray,
-	TOmit,
-	TOptional,
-	TPartial,
-	TProperties,
-	TRecord,
+	type ObjectProperties,
+	type TArray,
+	type TOmit,
+	type TOptional,
+	type TPartial,
+	type TProperties,
+	type TRecord,
 	Type,
 	type ObjectOptions,
 	type SchemaOptions,
@@ -19,15 +19,16 @@ import {
 	type TObject,
 	type TRef,
 	type TSchema,
-	type TString
+	type TString,
+	type TThis
 } from '@sinclair/typebox'
 import { mapValues } from 'lodash-es'
-import * as TypeFest from 'type-fest'
+import type * as TypeFest from 'type-fest'
 import type { OracleTableRow } from '../oracles.js'
 import { DictKey } from './id.js'
 import * as Localize from './localize.js'
 import * as Metadata from './metadata.js'
-import * as Utils from './utils.js'
+import type * as Utils from './utils.js'
 
 export type MergeObjectSchemas<A extends TObject, B extends TObject> = TObject<
 	A['properties'] & B['properties']
@@ -159,7 +160,7 @@ export function SourcedNode<T extends TObject>(
 			Type.Omit(
 				SourcedNodeBase,
 				// @ts-expect-error
-				Object.keys(schema.properties) as (keyof Static<T>)[]
+				Object.keys(schema.properties) as Array<keyof Static<T>>
 			),
 			schema
 		],
@@ -252,13 +253,13 @@ export function Collection<T extends TRef>(
 			...collectionId,
 			description:
 				"This collection's content enhances the identified collection, rather than being a standalone collection of its own."
-		}),
+		}) as TOptional<TRef<TString>>,
 		replaces: Type.Optional({
 			...collectionId,
 			description:
 				'This collection replaces the identified collection. References to the replaced collection can be considered equivalent to this collection.'
-		}),
-		contents: Dictionary(collectable)
+		} as TOptional<TRef<TString>>),
+		contents: Type.Optional(Dictionary(collectable))
 	})
 
 	return Type.Composite(
@@ -271,50 +272,64 @@ export function Collection<T extends TRef>(
 			)
 		],
 		options
-	) as MergeObjectSchemas<typeof base, typeof CollectionMixin> & { $id: string }
+	) as TObject<
+		(typeof CollectionMixin)['properties'] & (typeof base)['properties']
+	> & { $id: string }
 }
 
-export type Collection<T> = TypeFest.Simplify<
-	SourcedNode &
-		Static<typeof CollectionMixin> & {
-			id: string
-			enhances?: string
-			contents: Record<string, T>
-		}
->
+export type Collection<T> = SourcedNode &
+	Static<typeof CollectionMixin> & {
+		id: string
+		enhances?: string
+		replaces?: string
+		contents?: Record<string, T>
+	}
 
 export type TCollection<T extends TSchema> = ReturnType<
 	typeof Collection<TRef<T>>
 >
 
-export type RecursiveCollection<T extends Collection<any>> = Utils.SetOptional<
-	T,
-	'contents'
-> & {
-	collections?: Record<string, RecursiveCollection<T>>
+export type RecursiveCollection<T extends Collection<any>> = T & {
+	// type is limited to 3 levels deep to avoid infinite recursion; currently, datasworn IDs only recurse 3 levels anyways
+	collections?: Record<
+		string,
+		RecursiveCollection<
+			T & {
+				collections?: Record<
+					string,
+					RecursiveCollection<T> & {
+						collections?: Record<
+							string,
+							Omit<RecursiveCollection<T>, 'collections'>
+						>
+					}
+				>
+			}
+		>
+	>
 }
 
-export type TRecursiveCollection<T extends TObject<{ contents: TSchema }>> =
-	TObject<
-		T['properties'] & {
-			collections: TOptional<TDictionary<TRecursiveCollection<T>>>
-		}
-	>
-
-export function RecursiveCollection<T extends TObject<{ contents: TSchema }>>(
+export function RecursiveCollection<T extends TCollection<TSchema>>(
 	base: T,
 	options: TypeFest.SetRequired<SchemaOptions, '$id'>
 ) {
+	// @ts-expect-error
 	return Type.Composite(
 		[
-			Utils.SetOptional(base, ['contents']),
+			base,
 			Type.Object({
-				collections: Type.Optional(Dictionary(Type.Ref(options.$id)))
+				collections: Type.Optional(Dictionary(Type.Ref<TThis>(options.$id)))
 			})
 		],
 		options
-	) as unknown as TRecursiveCollection<typeof base>
+	) as TRecursiveCollection<T>
 }
+
+export type TRecursiveCollection<T extends TCollection<TSchema>> = TObject<
+	T['properties'] & {
+		collections: TOptional<TDictionary<TThis>>
+	}
+>
 
 type EnhanceablePrimitive = TNumber | TBoolean
 

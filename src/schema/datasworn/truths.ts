@@ -28,3 +28,4 @@ export const Truth = Abstract.SourcedNode(
 )
 
 export type Truth = Static<typeof Truth>
+export type TTruth = typeof Truth
